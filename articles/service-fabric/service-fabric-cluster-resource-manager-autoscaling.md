@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844019"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod k automatickému škálování
 Automatické škálování je další schopností Service Fabric dynamické škálování služeb na základě zatížení, které služby se hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje skvělé pružnost a umožňuje zřízení dalších instancí nebo oddíly služby na vyžádání. Celý automatické škálování zpracování je automatické a transparentní, a po nastavení zásad pro službu není nutné pro ruční operace škálování na úrovni služby. Automatické škálování je možné zapnout na buď při vytváření služby, nebo kdykoli při aktualizaci.

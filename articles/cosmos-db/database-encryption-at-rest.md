@@ -8,11 +8,11 @@ ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889574"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Šifrování dat ve službě Azure Cosmos DB 
 
@@ -36,25 +36,25 @@ Základní tok uživatelského požadavku je následujícím způsobem:
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>DOTAZ: Jak Azure Storage stát Pokud je povolené šifrování služby Storage?
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>Otázka: Jak Azure Storage stát Pokud je povolené šifrování služby Storage?
 Odpověď: Se neúčtují žádné další poplatky.
 
-### <a name="q-who-manages-the-encryption-keys"></a>DOTAZ: Kdo spravuje šifrovací klíče?
+### <a name="q-who-manages-the-encryption-keys"></a>Otázka: Kdo spravuje šifrovací klíče?
 Odpověď: Klíče jsou spravované microsoftem.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>DOTAZ: Jak často jsou otočeny šifrovací klíče?
+### <a name="q-how-often-are-encryption-keys-rotated"></a>Otázka: Jak často jsou otočeny šifrovací klíče?
 Odpověď: Microsoft má sadu interní pokyny pro rotaci klíčů šifrování, který následuje po Cosmos DB. Konkrétní pokyny nejsou publikovány. Publikování Microsoft [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), která je zobrazena jako podmnožinu interní pokyny a obsahuje užitečné osvědčené postupy pro vývojáře.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>DOTAZ: Můžete použít vlastní šifrovací klíče?
+### <a name="q-can-i-use-my-own-encryption-keys"></a>Otázka: Můžete použít vlastní šifrovací klíče?
 Odpověď: Cosmos DB je služba, PaaS a jsme intenzivně pracovala na udržet službu snadno používá. Všimli jsme si, že je tento dotaz pokládán často jako dotaz proxy pro splnění požadavků dodržování předpisů jako PCI-DSS. Jako součást vytváření tuto funkci jsme ve spolupráci s auditory dodržování předpisů k zajištění, že zákazníci, kteří používají služby Cosmos DB vyhovuje jejich požadavkům na bez nutnosti provádět správu samotných kláves.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>DOTAZ: Jaké oblasti obracejí šifrování?
+### <a name="q-what-regions-have-encryption-turned-on"></a>Otázka: Jaké oblasti obracejí šifrování?
 Odpověď: Všechny oblasti Azure Cosmos DB mají šifrování zapnout pro všechna uživatelská data.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>DOTAZ: Funkce šifrování ovlivní výkon latenci a propustnost smluv SLA?
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Otázka: Funkce šifrování ovlivní výkon latenci a propustnost smluv SLA?
 Odpověď: Neexistuje žádný dopad nebo změny výkonu smlouvy o úrovni služeb teď, když je povolené šifrování v klidovém stavu pro všechny stávající i nové účty. Další informace o [smlouvu SLA pro službu Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) stránky zobrazíte nejnovější záruky.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>DOTAZ: Podporuje místní emulátor šifrování v klidovém stavu?
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Otázka: Podporuje místní emulátor šifrování v klidovém stavu?
 Odpověď: Emulátor je samostatný nástroj pro vývoj/testování a nepoužívá služby správy klíčů, které používá spravované služby Cosmos DB. Naše doporučení je účelem zapnutí nástroje BitLocker na jednotkách, kde jsou ukládání citlivých emulátor testovací data. [Emulátor podporuje Změna výchozího datového adresáře](local-emulator.md) a rovněž použitím dobře známé umístění.
 
 ## <a name="next-steps"></a>Další postup

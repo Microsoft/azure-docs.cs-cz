@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60708613"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů Azure Blob (ABFS): Vyhrazené ovladač Azure Storage pro Hadoop
 

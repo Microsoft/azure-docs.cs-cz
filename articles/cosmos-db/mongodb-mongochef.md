@@ -5,16 +5,17 @@ description: Zjistěte, jak se připojit ke službě Cosmos DB pomocí rozhraní
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+origin.date: 12/26/2018
+ms.date: 03/18/2019
+author: rockboyfor
+ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61331893"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Připojení k účtu Cosmos použití studia 3T
 
@@ -113,3 +114,5 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty použití studia 3T, prove
 
 - Zjistěte, jak [použít Robo 3T](mongodb-robomongo.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
 - Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
+
+<!-- Update_Description: update meta properties, wording update -->

@@ -2,21 +2,23 @@
 title: Čtení Apache Cassandra API služby tabulky dat pomocí Sparku
 titleSufix: Azure Cosmos DB
 description: Tento článek popisuje, jak přečíst data z tabulky Cassandra API ve službě Azure Cosmos DB.
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+origin.date: 12/06/2018
+ms.date: 03/18/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893385"
 ---
+<!--Verify sucessfully-->
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Čtení dat z tabulky Azure Cosmos DB Cassandra API pomocí Sparku
 
  Tento článek popisuje, jak přečíst data uložená v Azure Cosmos DB Cassandra API z aplikace Spark.
@@ -32,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -139,9 +141,12 @@ select * from books_vw where book_pub_year > 1891
 ## <a name="next-steps"></a>Další postup
 
 Tady jsou další články o práci s Azure Cosmos DB Cassandra API z aplikace Spark:
- 
+
  * [Operace Upsert](cassandra-spark-upsert-ops.md)
  * [Operace odstranění](cassandra-spark-delete-ops.md)
  * [Agregační operace](cassandra-spark-aggregation-ops.md)
  * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735730"
 ---
-# <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
+# <a name="register-in-dev-center"></a>Registrace na webu Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
 1.  Zaregistrujte se jako prodejce Dev Center.  
     *   Přihlaste se a zaregistrujte se jako prodejce, najdete na webu Dev Center Azure stránky umístěného v [dev.windows.com/registration?accountprogram=azure](https://dev.windows.com/registration?accountprogram=azure).  

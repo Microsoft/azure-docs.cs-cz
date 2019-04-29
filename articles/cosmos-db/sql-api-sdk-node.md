@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033583"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626736"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.locfileid: "54033583"
 * Přepnout do direktivy odkazů pro typ AsyncIterable. Typescript uživatelé se již muset upravit jejich nastavení "lib".
 * Máte překlep opravy
 
-### <a name="2.0.2"/>bodu 2.0.2</a>
+### <a name="2.0.2"/>2.0.2</a>
 * Opravit odkazy – soubor readme
 
 ### <a name="2.0.1"/>2.0.1</a>
@@ -150,7 +150,7 @@ ms.locfileid: "54033583"
 * Oprava chyby RangePartitionResolver.resolveForRead, kde ji se vrací odkazy z důvodu chybné concat výsledků.
 
 ### <a name="1.5.5"/>1.5.5</a>
-* Oprava hashPartitionResolver resolveForRead(): Není zadaný klíč oddílu se při vyvolání výjimky, místo vrácení seznamu všechny registrované odkazů.
+* Fixed hashPartitionResolver resolveForRead(): Není zadaný klíč oddílu se při vyvolání výjimky, místo vrácení seznamu všechny registrované odkazů.
 
 ### <a name="1.5.4"/>1.5.4</a>
 * Oprava potíží [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – vyhrazený Agent HTTPS: Vyhněte se úpravy globální agenta pro účely služby Azure Cosmos DB. Použijte vyhrazený agent pro všechny požadavky na nástroj lib.
@@ -212,7 +212,7 @@ Jakákoli žádost pomocí služby Cosmos DB je vyřazeno SDK zamítne službou.
 
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2. srpna 2018 |--- |
 | [1.14.4](#1.14.4) |03. května 2018 |--- |

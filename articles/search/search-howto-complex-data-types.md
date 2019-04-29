@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 05/01/2017
 ms.custom: seodec2018
 ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61076180"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak modelování komplexních datových typů ve službě Azure Search
 Externích datových sad použitých k naplnění indexu Azure Search někdy obsahovat hierarchické, nebo jsou vnořené používání dílčích struktur, které nenaruší elegantně do tabulkového sady řádků. Příklady těchto struktur může zahrnovat více umístění a telefonní čísla pro jednoho zákazníka, více barvy a velikosti pro jeden SKU, více autoři jednoho adresáře a tak dále. V modelovacích podmínky, může se zobrazit tyto struktury říká *komplexních datových typů*, *složené datové typy*, *složené datové typy*, nebo *agregace datové typy*, pár.

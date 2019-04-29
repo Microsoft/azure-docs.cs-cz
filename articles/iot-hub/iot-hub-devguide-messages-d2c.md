@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61364497"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv služby IoT Hub pro odesílání zpráv typu zařízení cloud do různých koncových bodů
 

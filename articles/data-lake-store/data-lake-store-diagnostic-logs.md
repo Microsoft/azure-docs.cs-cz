@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877954"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60878686"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Storage Gen1
 Zjistěte, jak povolit diagnostické protokolování pro váš účet Azure Data Lake Storage Gen1 a o tom, k zobrazení protokolů shromažďovaných pro váš účet.
@@ -122,7 +122,7 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 | resultType |String |Stav operace, například 200. |
 | callerIpAddress |String |IP adresu klientovi provádějícímu žádost |
 | correlationId |String |ID protokolu, který můžete použít k seskupení sady položek protokolu související |
-| identity |Objekt |Identita, která vygeneruje protokol |
+| identity |Object |Identita, která vygeneruje protokol |
 | properties |JSON |Podrobnosti najdete níže |
 
 #### <a name="request-log-properties-schema"></a>Požadavek protokolu vlastnosti schématu
@@ -169,7 +169,7 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 | resultType |String |Stav operace, například 200. |
 | resultSignature |String |Další podrobnosti o operaci. |
 | correlationId |String |ID protokolu, který můžete použít k seskupení sady položek protokolu související |
-| identity |Objekt |Identita, která vygeneruje protokol |
+| identity |Object |Identita, která vygeneruje protokol |
 | properties |JSON |Podrobnosti najdete níže |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastnosti protokolu auditu

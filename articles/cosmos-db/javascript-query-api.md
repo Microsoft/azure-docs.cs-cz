@@ -1,18 +1,19 @@
 ---
 title: Práce s JavaScript integrovaný jazyk dotazů rozhraní API ve službě Azure Cosmos DB
 description: Tento článek představuje koncepty pro JavaScript integrovaný jazyk dotazů rozhraní API k vytvoření uložených procedur a aktivačních událostí ve službě Azure Cosmos DB.
-author: markjbrown
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/08/2018
-ms.author: mjbrown
+origin.date: 12/08/2018
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 101b5382eaa01ed87f05d83c82002fa1b93144b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61043230"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Dotaz jazyka JavaScript API ve službě Azure Cosmos DB
 
@@ -69,3 +70,5 @@ Přečtěte si další koncepty a postupy: zápis a pomocí uložené procedury,
 - [Jak používat uložené procedury, aktivační události, uživatelem definovaných funkcí ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB na straně serveru rozhraní API reference na JavaScript na](https://azure.github.io/azure-cosmosdb-js-server)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)
+
+<!-- Update_Description: update meta properties -->

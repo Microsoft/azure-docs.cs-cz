@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773362"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -162,12 +162,12 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 |TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
 | WUQuery               | string<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: false)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
+| InstallWindowsOSOnlyUpdates | Boolean <br> (výchozí: false)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90)                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
 | WURescheduleCount     | Int <br> (Výchozí: 5)                  | Maximální počet pokusů, které služba přeplánuje Windows update v případě, že docházet k chybě operace.          |
 | WURescheduleTimeInMinutes | Int <br>(Výchozí: 30) | Interval, ve kterém přeplánuje služby Windows update v případě, že chyba přetrvává. |
 | WUFrequency           | Řetězec s hodnotami oddělenými čárkou (výchozí: "Každý týden, Středa 7:00:00")     | Frekvence pro instalaci aktualizace Windows. Formát a možné hodnoty jsou: <br>– Měsíční, DD, hh, například každý měsíc, 5, 12: 22:32.<br>Povolené hodnoty pro pole DD (den) jsou čísla až rozsahu 1-28 "last". <br> – Každý týden, den, hh: mm:, například týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, třeba každý den, 12:22:32.  <br> -Žádný označuje, že by se neměly provést aktualizace Windows.  <br><br> Všimněte si, že čas ve standardu UTC.|
-| AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: true) | Tím, že nastavíte tento příznak, tato aplikace přijme licenční smlouva koncového uživatele pro Windows Update jménem vlastníka počítače.              |
+| AcceptWindowsUpdateEula | Boolean <br>(Výchozí: true) | Tím, že nastavíte tento příznak, tato aplikace přijme licenční smlouva koncového uživatele pro Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
 > Pokud chcete aktualizaci Windows okamžitě, nastavte `WUFrequency` relativní vůči času nasazení aplikace. Předpokládejme například, že máte cluster s pěti uzly testu a plánujete nasazení aplikace v přibližně 17:00:00 UTC. Pokud budete předpokládat, že upgrade aplikace nebo nasazení trvá 30 minut na maximum, nastavte WUFrequency jako "Každý den, 17:30:00"

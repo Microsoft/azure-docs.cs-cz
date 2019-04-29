@@ -10,11 +10,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784703"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy k Azure Databricks
 
@@ -40,11 +40,11 @@ Další informace najdete v tématu [použití Data Lake Store pomocí Azure Dat
 
 Tady je několik problémů, ke kterým může docházet v Databricks.
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problém: Předplatné není zaregistrované používání oboru názvů "Microsoft.Databricks.
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problém: Toto předplatné není zaregistrované používání oboru názvů "Microsoft.Databricks.
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Toto předplatné není zaregistrované používání oboru názvů"Microsoft.Databricks". Zobrazit https://aka.ms/rps-not-found o tom, jak zaregistrovat předplatná. (Code: MissingSubscriptionRegistration) "
+"Toto předplatné není zaregistrované používání oboru názvů"Microsoft.Databricks". Zobrazit https://aka.ms/rps-not-found o tom, jak zaregistrovat předplatná. (Kód: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>Řešení
 
@@ -53,7 +53,7 @@ Tady je několik problémů, ke kterým může docházet v Databricks.
 1. V seznamu poskytovatelů prostředků proti **Microsoft.Databricks**vyberte **zaregistrovat**. V předplatném zaregistrovat poskytovatele prostředků musíte mít roli Přispěvatel nebo vlastník.
 
 
-### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Problém: Váš účet {email} nemá roli vlastníka nebo přispěvatele v prostředku pracovního prostoru Databricks na portálu Azure portal
+### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Problém: Váš účet {email} nemá role přispěvatele nebo vlastníka prostředku pracovního prostoru Databricks na portálu Azure portal
 
 #### <a name="error-message"></a>Chybová zpráva
 
@@ -78,28 +78,28 @@ Tady jsou do ní několik řešení tohoto problému:
     e. Spusťte pracovní prostor Databricks jako tohoto uživatele.
 
 
-### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Problém: {Email} váš účet není zaregistrovaný ve službě Databricks 
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Problém: Váš účet {email} nebyl zaregistrován ve službě Databricks 
 
 #### <a name="solution"></a>Řešení
 
 Pokud jste nevytvořili pracovní prostor a jsou přidány jako uživatel, obraťte se na osobu, která vytvořila pracovní prostor. Máte tato osoba je přidat pomocí konzoly pro správu Azure Databricks. Pokyny najdete v tématu [přidání a Správa uživatelů](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Pokud jste vytvořili pracovní prostor a stále se zobrazí tato chyba, zkuste vybrat **inicializovat pracovní prostor** znovu z portálu Azure portal.
 
-### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problém: Selhání spuštění poskytovatele cloudu při nastavování clusteru (PublicIPCountLimitReached)
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problém: Chyba spuštění poskytovatele cloudové při nastavování clusteru (PublicIPCountLimitReached)
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Chyba spuštění poskytovatele cloudové: Při nastavování clusteru došlo k chybě zprostředkovatele cloudu. Další informace najdete v příručce k Databricks. Kód chyby Azure: PublicIPCountLimitReached. Chybová zpráva Azure: Nelze vytvořit více než 60 veřejné IP adresy pro toto předplatné v této oblasti. "
+"Selhání spuštění poskytovatele cloudu: Při nastavování clusteru došlo k chybě zprostředkovatele cloudu. Další informace najdete v příručce k Databricks. Kód chyby Azure: PublicIPCountLimitReached. Chybová zpráva Azure: Nelze vytvořit více než 60 veřejné IP adresy pro toto předplatné v této oblasti."
 
 #### <a name="solution"></a>Řešení
 
-Clustery Databricks používají jednu veřejnou IP adresu na jeden uzel. Pokud vaše předplatné se již používá všechny její veřejné IP adresy, měli byste [žádost o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Zvolte **kvóty** jako **typ problému**, a **síť: ARM** jako **typ kvóty**. V **podrobnosti**, požádat o zvýšení kvóty veřejnou IP adresu. Například pokud svůj limit je aktuálně 60 a chcete vytvořit cluster s uzly 100, požádat o zvýšení limitu pro 160.
+Clustery Databricks používají jednu veřejnou IP adresu na jeden uzel. Pokud vaše předplatné se již používá všechny její veřejné IP adresy, měli byste [žádost o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Zvolte **kvóty** jako **typ problému**, a **sítě: ARM** jako **typ kvóty**. V **podrobnosti**, požádat o zvýšení kvóty veřejnou IP adresu. Například pokud svůj limit je aktuálně 60 a chcete vytvořit cluster s uzly 100, požádat o zvýšení limitu pro 160.
 
-### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problém: Druhého typu selhání spuštění poskytovatele cloudu při nastavování clusteru (MissingSubscriptionRegistration)
+### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problém: Druhý typ selhání spuštění poskytovatele cloudu při nastavování clusteru (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Chyba spuštění poskytovatele cloudové: Při nastavování clusteru došlo k chybě zprostředkovatele cloudu. Další informace najdete v příručce k Databricks.
-Kód chyby Azure: MissingSubscriptionRegistration Azure chybová zpráva: předplatné není zaregistrované používání oboru názvů "Microsoft.Compute". Zobrazit https://aka.ms/rps-not-found o tom, jak zaregistrovat předplatná. "
+"Selhání spuštění poskytovatele cloudu: Při nastavování clusteru došlo k chybě zprostředkovatele cloudu. Další informace najdete v příručce k Databricks.
+Kód chyby Azure: MissingSubscriptionRegistration Azure chybová zpráva: Pro předplatné není zaregistrované používání oboru názvů Microsoft.Compute. Zobrazit https://aka.ms/rps-not-found o tom, jak zaregistrovat předplatná. "
 
 #### <a name="solution"></a>Řešení
 
@@ -121,6 +121,6 @@ Přihlaste se jako globální správce na webu Azure portal. Pro Azure Active Di
 
 ## <a name="next-steps"></a>Další postup
 
-- [Rychlý start: Začínáme s Azure Databricks](quickstart-create-databricks-workspace-portal.md)
+- [Rychlé zprovoznění: Začínáme s Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [Co je Azure Databricks?](what-is-azure-databricks.md)
 

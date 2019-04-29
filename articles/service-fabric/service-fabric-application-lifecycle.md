@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 1/19/2018
 ms.author: atsenthi
 ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621479"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
 Podle jiných platforem, aplikace na platformě Azure Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric poskytuje prvotřídní podporu pro celou aplikaci životního cyklu cloudových aplikací, od vývoje až po nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se účastnit životního cyklu aplikací nezávisle na sobě. Tento článek poskytuje přehled rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric.

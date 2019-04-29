@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: azfuncdf, glenga
+origin.date: 10/23/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108065"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710856"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
 
@@ -91,7 +92,7 @@ Pokud vytváříte odolné funkce jazyka JavaScript, budete muset nainstalovat [
 1. Pomocí nástroje protokolu HTTP jako je Postman nebo nástroj cURL k odeslání požadavku POST na adresu URL, kterou jste zkopírovali. V následujícím příkladu se příkaz cURL, který odešle požadavek POST do odolné funkce:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
     ```
 
     V tomto příkladu `{your-function-app-name}` je shodný s doménou, která je název vaší aplikace function App. Zpráva odpovědi obsahuje sadu koncových bodů identifikátor URI, které můžete použít ke sledování a spravuje spouštění, která vypadá jako v následujícím příkladu:
@@ -140,3 +141,5 @@ První odolné funkce je teď vytvořená a spuštěná v Azure.
 
 > [!div class="nextstepaction"]
 > [Další informace o běžných vzorech trvalý – funkce](durable-functions-concepts.md)
+
+<!-- Update_Description: wording update -->

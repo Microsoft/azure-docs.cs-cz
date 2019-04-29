@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60690810"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Začínáme s konektor Informix
 Konektor služby Microsoft pro Informix připojí k prostředkům uloženým v databázi IBM Informix Logic Apps. Konektor Informix zahrnuje klienta ke komunikaci se vzdáleným počítačům serveru Informix přes síť TCP/IP. To zahrnuje cloudových databází, jako je například IBM Informix pro Windows, které jsou spuštěné v Azure virtualizace a místních databází pomocí místní brány dat. Zobrazit [podporované seznamu](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platforem a verzí (v tomto tématu).
@@ -86,7 +86,7 @@ Tento konektor podporuje připojení k místní databáze a v cloudu s využití
 | databáze |Povinná hodnota. Přijímá řetězcovou hodnotu představující architektury DRDA název pro relační databáze (RDBNAM). Informix přijímá řetězec 128 bajtů (databáze se označuje jako název databáze IBM Informix (dbname)). |
 | Ověřování |Volitelné. Přijímá hodnotu položky seznamu, Basic nebo Windows (kerberos). |
 | uživatelské jméno |Povinná hodnota. Přijímá řetězcovou hodnotu. |
-| heslo |Povinná hodnota. Přijímá řetězcovou hodnotu. |
+| password |Povinná hodnota. Přijímá řetězcovou hodnotu. |
 | brána |Povinná hodnota. Přijímá hodnotu položky seznamu, představující na místní bránu dat definované pro Logic Apps v rámci skupiny úložišť. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Vytvořit místní připojení brány

@@ -12,11 +12,11 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574623"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635524"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -38,7 +38,7 @@ V tuto chvíli Parametrizace propojené služby je podporována v Uživatelském
 - Azure SQL Data Warehouse
 - SQL Server
 - Oracle
-- Databáze Cosmos
+- Cosmos DB
 - Amazon Redshift
 - MySQL
 - Azure Database for MySQL

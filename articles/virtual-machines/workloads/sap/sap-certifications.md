@@ -18,11 +18,11 @@ ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: ''
 ms.openlocfilehash: de282041066e18a52d596f051def598eef3d458d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287213"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648920"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace SAP a konfigurace běžící v Microsoft Azure
 
@@ -48,22 +48,22 @@ Mějte na paměti, že SAP používá termín "slučování" v [platformách Iaa
 Microsoft Azure má certifikaci pro následující produkty SAP, se zárukou plné podpory od Microsoftu i SAPu.
 Odkazy:
 
-- [1928533 – SAP aplikace v Azure: podporované produkty a virtuálních počítačů Azure typy](https://launchpad.support.sap.com/#/notes/1928533) u všech aplikací využívajících SAP NetWeaver, jako je SAP TREX, SAP LiveCache a SAP obsahu. A všechny databáze, s výjimkou SAP HANA.
+- [1928533 – SAP aplikace v Azure: Podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533) u všech aplikací využívajících SAP NetWeaver, jako je SAP TREX, SAP LiveCache a SAP obsahu. A všechny databáze, s výjimkou SAP HANA.
 
 
-| Produkt SAP | Hostovaný operační systém | Relační databázový systém | Typy virtuálních počítačů |
+| Produkt SAP | Hostovaný operační systém | RDBMS | Typy virtuálních počítačů |
 | --- | --- | --- | --- |
 | SAP Business Suite Software | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (Windows a Oracle Linux pouze), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
 | SAP Business All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (Windows a Oracle Linux pouze), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
-| SAP BusinessObjects BI | Windows |– |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
+| SAP BusinessObjects BI | Windows |neuvedeno |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (Windows a Oracle Linux pouze), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Další úlohy SAP v Azure nepodporuje
 
-| Produkt SAP | Hostovaný operační systém | Relační databázový systém | Typy virtuálních počítačů |
+| Produkt SAP | Hostovaný operační systém | RDBMS | Typy virtuálních počítačů |
 | --- | --- | --- | --- |
 | SAP Business jeden na SQL Server | Windows  | SQL Server | Všechny NetWeaver certified typy virtuálních počítačů<br /> [Poznámka SAP #928839](https://launchpad.support.sap.com/#/notes/928839) |
-| SAP SP08 10.01 MS BITŮ NA KANÁL | Windows a Linux | | Všechny typy NetWeaver certifikace virtuálního počítače<br /> Poznámka SAP #2451795 |
+| SAP BPC 10.01 MS SP08 | Windows a Linux | | Všechny typy NetWeaver certifikace virtuálního počítače<br /> Poznámka SAP #2451795 |
 | Platformy BI obchodní objekty SAP | Windows a Linux | | Poznámka SAP #2145537 |
 | SAP Data Services 4.2 | | | Poznámka SAP #2288344 |
 | SAP Hybris Commerce Platform 5.x a 6.x | Windows | SQL Server, Oracle | Všechny NetWeaver certified typy virtuálních počítačů<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |

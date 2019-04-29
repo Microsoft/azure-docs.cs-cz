@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 0fe30fe95e77adceaa5013f89206b08daf2a58a2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749032"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay výjimky
 
@@ -34,13 +34,13 @@ Rozhraní API služby Relay generovat výjimky, které může vrátit do násled
     **Obecné akce**: Zkuste opravit kód, než budete pokračovat.
 *   **Chyba instalace/konfigurace**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
 
-    **Obecné akce**: zkontrolovat svou konfiguraci. V případě potřeby změňte konfiguraci.
-*   **Přechodným výjimkám**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
+    **Obecné akce**: Zkontrolujte konfiguraci. V případě potřeby změňte konfiguraci.
+*   **Přechodným výjimkám**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
-    **Obecné akce**: operaci opakovat nebo upozornit uživatele.
+    **Obecné akce**: Zkuste operaci zopakovat, nebo upozornit uživatele.
 *   **Ostatní výjimky**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
 
-    **Obecné akce**: specifické pro daný typ výjimky. V tabulce v následující části. 
+    **Obecné akce**: Specifické pro daný typ výjimky. V tabulce v následující části. 
 
 ## <a name="exception-types"></a>Typy výjimek
 
@@ -53,13 +53,13 @@ Následující tabulka uvádí typy zasílání zpráv výjimek a jejich příč
 | [Operace byla zrušena](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Je proveden pokus o vyvolání operace u objektu, který již byl uzavřen, byla přerušena nebo odstraněn. Ve výjimečných případech je již uvolněna okolí transakce. |Zkontrolujte kód a ujistěte se, že vyvolat operace na smazaném objektu. |Opakování nepomůže. |
 | [Neoprávněný přístup](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objekt nebylo možné získat token, token je neplatný nebo token neobsahuje deklarace potřebné k provedení této operace. |Ujistěte se, že poskytovatele tokenu, kterého se vytvoří s správné hodnoty. Zkontrolujte konfiguraci služby Řízení přístupu. |V některých případech; může pomoci opakování Přidejte do kódu logiku opakování. |
 | [Výjimka argumentu](https://msdn.microsoft.com/library/system.argumentexception.aspx),<br /> [Argument Null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx),<br />[Argument mimo rozsah.](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |Došlo k jedné nebo více z následujících akcí:<br />Jeden nebo více argumentů zadaný pro metodu nejsou platné.<br /> Identifikátor URI dodaný [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [vytvořit](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) obsahuje jeden nebo více segmentů cesty.<br />Schéma identifikátoru URI předaná [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [vytvořit](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) je neplatný. <br />Hodnota vlastnosti je větší než 32 KB. |Zkontrolujte volající kód a ujistěte se, že argumenty jsou správné. |Opakování nepomůže. |
-| [Server je zaneprázdněn](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Službu není možné na zpracování žádosti. v tuto chvíli. |Klienta můžete počkat určitou dobu a pak zkuste operaci zopakovat. |Klient může opakovat pokus po uplynutí zadaného intervalu. Pokud výsledky opakování různé výjimky, podívejte se na chování opakování této výjimky. |
+| [Server Busy](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Službu není možné na zpracování žádosti. v tuto chvíli. |Klienta můžete počkat určitou dobu a pak zkuste operaci zopakovat. |Klient může opakovat pokus po uplynutí zadaného intervalu. Pokud výsledky opakování různé výjimky, podívejte se na chování opakování této výjimky. |
 | [Překročila se kvóta](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Entity pro zasílání zpráv dosáhl maximální povolenou velikost. |Příjem zpráv z entity nebo jeho podfronty k vytvoření prostoru v dané entitě. Zobrazit [QuotaExceededException](#quotaexceededexception). |Pokud do té doby byly odebrány zprávy, mohou pomoci při opakování. |
 | [Překročila se velikost zprávy](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Tělo zprávy překračuje limit 256 KB. Všimněte si, že limit 256 KB je celková velikost zpráv. Celková velikost zpráv může obsahovat vlastnosti systému a rezervy rozhraní Microsoft .NET. |Zmenšit velikost datové části zprávy a potom zkuste operaci zopakovat. |Opakování nepomůže. |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 
-[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) označuje, že byla překročena kvóta pro konkrétní entitu.
+[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) indikuje, že došlo k překročení kvóty pro některou z entit.
 
 Pro předávání, zabalí tuto výjimku [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), což znamená, že byl překročen maximální počet naslouchacích procesů pro tento koncový bod. To je uvedeno v **MaximumListenersPerEndpoint** hodnotu zpráva o výjimce.
 

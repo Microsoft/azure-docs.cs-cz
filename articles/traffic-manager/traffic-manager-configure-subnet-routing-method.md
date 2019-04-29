@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
 ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60716334"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -56,7 +56,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Nová** a zadejte *myResourceGroupTM1*.|
-    |Umístění| Vyberte **USA – východ**.|
+    |Location| Vyberte **USA – východ**.|
     |||
 
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
@@ -76,7 +76,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Nastavení|Hodnota|
     |---|---|
     |Skupina prostředků | Vyberte **Nová** a zadejte *myResourceGroupTM2*.|
-    |Umístění|Západní Evropa|
+    |Location|Západní Evropa|
     |Název virtuálního počítače | myIISVMWEurope|
     |Virtuální síť | Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet2* a jako podsíť zadejte *mySubnet*.|
     |||

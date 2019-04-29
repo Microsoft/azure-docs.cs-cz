@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
 ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60830003"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Řešení potíží s Azure Cache pro Redis
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57239823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60906059"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Analýza hrozeb a mapa výstrah zabezpečení
 Tento článek vám umožní použít mapu výstrahy zabezpečení Azure Security Center a mapa analýzy hrozeb založený na událostech zabezpečení pro řešení potíží s související se zabezpečením.

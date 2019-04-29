@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2019
 ms.author: roiyz
 ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743587"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Azure Monitor pro Linux
 

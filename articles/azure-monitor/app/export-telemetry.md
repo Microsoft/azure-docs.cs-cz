@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
 ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307815"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899338"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  

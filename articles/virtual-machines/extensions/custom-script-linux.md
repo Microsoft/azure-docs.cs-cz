@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
 ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869873"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 2
 Verze 2 pro rozšíření vlastního skriptu stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jakoukoliv jinou úlohu konfigurace a správy. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je lze zadat rozšíření modulu runtime. 
@@ -51,15 +51,15 @@ Pokud potřebujete stáhnout skript externě jako GitHub nebo služby Azure Stor
 Pokud váš skript je na místním serveru, pak může i nadále potřebovat další brány firewall nebo sítě zabezpečení musejí být otevřeny porty skupiny.
 
 ### <a name="tips-and-tricks"></a>Tipy a triky
-* Nejvyšší chybovost pro toto rozšíření je z důvodu chyby syntaxe v skriptu testu, které skript se spustí bez chyb, a také vložit další protokolování do skriptu, aby bylo snazší najít, kde se nezdařilo.
-* Psát skripty, které jsou idempotentní, takže pokud získat spusťte znovu více než jednou omylem, nesmí způsobit změny systému.
+* Selhání tohoto rozšíření nejčastěji způsobují chyby syntaxe ve skriptu. Otestujte, že se skript spustí bez chyb, a implementujte do skriptu dodatečné protokolování, které vám pomůže snadněji zjistit, kde došlo k selhání.
+* Pište skripty, které jsou idempotentní, takže když se omylem spustí více než jednou, nezpůsobí to změny systému.
 * Zajistěte, aby že skripty nevyžadují, aby uživatelský vstup při spuštění.
 * Není povolené pro spuštění skriptu 90 minut, cokoli delšího způsobí selhání zřizování rozšíření.
 * Neumisťujte restartování uvnitř skriptu, to způsobí problémy s další rozšíření, které se nainstalují, a po restartování počítače, rozšíření nebude pokračovat po restartování. 
-* Pokud máte skript, který způsobí restartování, instalace aplikací a spouštět skripty atd. Měli byste naplánovat pomocí úlohy Cron, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
+* Pokud máte skript, který způsobí restartování, pak nainstaluje aplikace, spustí skripty atd. Měli byste naplánovat pomocí úlohy Cron, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
 * Rozšíření se pouze spuštění skriptu jednou, pokud chcete spustit skript na každém spuštění počítače, můžete použít [cloud-init image](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulu. Alternativně můžete použít skript k vytvoření jednotky služby Systemd.
 * Pokud chcete naplánovat, kdy bude skript spuštěn, používejte rozšíření k vytvoření úlohy Cron. 
-* Když je spuštěný skript, zobrazí se pouze "přenos" stav rozšíření z webu Azure portal nebo rozhraní příkazového řádku. Pokud chcete častější aktualizace stavu spuštění skriptu, je potřeba vytvořit svoje vlastní řešení.
+* Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častější aktualizace stavu spuštění skriptu, je potřeba vytvořit svoje vlastní řešení.
 * Rozšíření vlastních skriptů nativně nepodporuje proxy servery, ale můžete použít nástroj pro přenos souborů, která podporuje proxy servery v rámci skriptu, jako například *Curl*. 
 * Mějte na paměti z jiné výchozí adresář umístění, které mohou spoléhat skripty nebo příkazy, mají logiky, která by to.
 

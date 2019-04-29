@@ -10,13 +10,13 @@ ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
 ms.openlocfilehash: 62d4affa5ef49de7600f9ccc800ea6bf83e4bd49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60686629"
 ---
-# <a name="share-azure-dev-spaces"></a>Sdílené složky Azure Dev mezery
+# <a name="share-azure-dev-spaces"></a>Sdílení Azure Dev Spaces
 
 Prostory Azure Dev můžete sdílet místa dev s ostatními ve vašem týmu. Každý Vývojář můžete pracovat ve vlastním bez obav z přerušení ostatních. Také spolupracují z jediného místa můžete povolit bez nutnosti vytvoření mocks nebo simulovat závislosti otestovat kód začátku do konce. Najdete v článku [přečtěte si víc o vývoj v týmu](../team-development-nodejs.md) Průvodce pro další informace.
 

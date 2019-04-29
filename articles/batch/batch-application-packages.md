@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/15/2018
+ms.date: 04/05/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60722044"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -29,14 +29,11 @@ Funkce balíčky aplikací služby Azure Batch poskytuje snadnou správu aplikac
 V tomto článku se dozvíte, jak můžete odesílat a spravovat balíčky aplikací na webu Azure Portal. Pak se naučíte k instalaci na vytvoření fondu výpočetních uzlů s [Batch .NET] [ api_net] knihovny.
 
 > [!NOTE]
-> 
 > Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací.
 >
 > Rozhraní API pro vytváření a správu balíčky aplikací jsou součástí [rozhraní Batch Management .NET] [ api_net_mgmt] knihovny. Rozhraní API pro instalaci balíčků aplikací na výpočetní uzly jsou součástí [Batch .NET] [ api_net] knihovny. V dostupných rozhraní API služby Batch pro ostatní jazyky jsou srovnatelné funkce. 
 >
 > Funkce balíčky aplikací, je zde popsáno, nahrazuje dostupnými v předchozích verzích služby Batch aplikace funkcí.
-> 
-> 
 
 ## <a name="application-package-requirements"></a>Požadavky na balíček aplikace
 Chcete-li používat balíčky aplikací, je potřeba [propojit účet Azure Storage](#link-a-storage-account) k účtu Batch.
@@ -116,6 +113,14 @@ Toto okno zobrazuje ID každé aplikace v účtu a následující vlastnosti:
 * **Balíčky**: Číslo verze přidružené k této aplikaci.
 * **Výchozí verze**: Verze aplikace nainstalovat, pokud při zadávání žádosti o fond nevyžadují verze. Toto nastavení je volitelné.
 * **Povolit aktualizace**: Hodnota, která určuje, jestli balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavené na **ne**, balíček aktualizace a odstranění jsou zakázané pro aplikaci. Je možné přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
+
+Pokud chcete zobrazit strukturu souboru balíčku aplikace na výpočetním uzlu, přejděte k účtu Batch na portálu. V účtu Batch, přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzly, které vás zajímají.
+
+![Uzly ve fondu][13]
+
+Po výběru fondu, přejděte do balíčku aplikace nainstalované na výpočetním uzlu. Tady jsou podrobnosti balíčku aplikace umístěné v **aplikací** složky. Další složky na výpočetním uzlu obsahovat jiné soubory, jako je například spouštěcích úkolů, výstupní soubory, chybový výstup atd.
+
+![Soubory v uzlu][14]
 
 ### <a name="view-application-details"></a>Zobrazení podrobností aplikace
 Chcete-li zobrazit podrobnosti o aplikaci, vyberte aplikaci v **aplikací** okna.
@@ -374,3 +379,5 @@ S balíčky aplikací, které pomáhají zákazníkům vybrat aplikace pro svou 
 [10]: ./media/batch-application-packages/app_pkg_10.png "Na webu Azure portal vyberte okno účet úložiště"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Aktualizovat balíček okna portálu Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Odstranit balíček potvrzovací dialogové okno na webu Azure portal"
+[13]: ./media/batch-application-packages/package-file-structure.png "Výpočetní uzel informace na webu Azure portal"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "Soubory na výpočetním uzlu, zobrazí na webu Azure portal"

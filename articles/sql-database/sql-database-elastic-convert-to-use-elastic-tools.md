@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075173"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
 Snadno spravovat stávající horizontálně dělené databáze horizontálním navýšením kapacity pomocí nástroje pro databáze Azure SQL Database (například [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)). Nejprve převést stávající sadu databází pro použití [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). 

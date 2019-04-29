@@ -1,8 +1,9 @@
 ---
 title: Azure Cloud Services Def. Schéma LoadBalancerProbe | Dokumentace Microsoftu
 ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+origin.date: 04/14/2015
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,17 +11,17 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: jpconnock
-ms.author: jeconnoc
+author: thraka
+ms.author: v-yiso
 manager: timlt
-ms.openlocfilehash: f7b0ba3b4797149798037dee0188850eff6baf1d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: de365de7bf93c0a612f102b3ec2b25c79d1c3d18
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003284"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613860"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Schéma LoadBalancerProbe definice služby Azure Cloud Services
+# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition LoadBalancerProbe Schema
 Test paměti nástroje pro vyrovnávání zatížení je sondu stavu definované odběratele koncové body protokolu UDP a koncových bodů v instancích rolí. `LoadBalancerProbe` Není samostatný prvek; se zkombinuje s webovou roli nebo roli pracovního procesu v definičním souboru služby. A `LoadBalancerProbe` mohou být využívána více než jednu roli.
 
 Výchozí přípona pro definiční soubor služby je .csdef.
@@ -48,7 +49,7 @@ Pokud používáte sondy nástroje pro vyrovnávání zatížení vlastní, mus�
 ## <a name="schema-elements"></a>Prvky schématu
 `LoadBalancerProbes` Element definičního souboru služby obsahuje následující prvky:
 
-- [LoadBalancerProbes – Element](#LoadBalancerProbes)
+- [LoadBalancerProbes Element](#LoadBalancerProbes)
 - [LoadBalancerProbe Element](#LoadBalancerProbe)
 
 ##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes – Element
@@ -59,7 +60,7 @@ Pokud používáte sondy nástroje pro vyrovnávání zatížení vlastní, mus�
 
 Následující tabulka popisuje atributy `LoadBalancerProbe` element:
 
-|Atribut|Typ|Popis|
+|Atribut|Type|Popis|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Povinná hodnota. Název sondy nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
 | `protocol`          | `string` | Povinná hodnota. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Pokud `tcp` není zadána, přijatý ACK, je třeba test proběhne úspěšně. Pokud `http` je zadaná, odpověď 200 OK ze zadaného identifikátoru URI, je třeba test proběhne úspěšně.|

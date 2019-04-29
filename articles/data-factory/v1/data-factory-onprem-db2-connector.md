@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824010"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z databáze DB2 pomocí aktivity kopírování objekt pro vytváření dat Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -311,17 +311,17 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Real |Single |
+| real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Čísla |Decimal |
+| Numeric |Decimal |
 | Datum |DateTime |
 | Čas |TimeSpan |
-| Časové razítko |DateTime |
-| XML |Byte[] |
-| Char |String |
+| Timestamp |DateTime |
+| Xml |Byte[] |
+| char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
@@ -337,17 +337,17 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Real |Single |
+| real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Čísla |Decimal |
+| Numeric |Decimal |
 | Datum |DateTime |
 | Čas |TimeSpan |
-| Časové razítko |DateTime |
-| XML |Byte[] |
-| Char |String |
+| Timestamp |DateTime |
+| Xml |Byte[] |
+| char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další postup mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

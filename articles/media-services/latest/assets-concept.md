@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447306"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734350"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -34,18 +34,18 @@ Prostředek je namapována na kontejner objektů blob ve službě [účtu služb
 
 Jedním z běžných pracovních Media Services je nahrávání, kódování a streamování do souboru. Tato část popisuje obecné kroky.
 
-1. Použití Media Services v3 rozhraní API k vytvoření nového prostředku "vstupní". Tato operace vytvoří kontejner v účtu úložiště přidruženého k účtu Media Services. Rozhraní API vrátí název kontejneru (například `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Použijte rozhraní API Media Services verze 3 k vytvoření nového vstupního aktiva. Tato operace vytvoří kontejner v účtu úložiště přidruženém k vašemu účtu Media Services. Rozhraní API vrátí název kontejneru (například `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
-    Pokud už máte kontejner objektů blob, který chcete přidružit k prostředku, můžete zadat název kontejneru, při vytváření prostředku. Media Services momentálně podporuje jenom objekty BLOB v kořenové složce kontejneru, nikoli zpětným cesty v názvu souboru. Proto bude fungovat kontejner s názvem souboru "input.mp4". Kontejner s názvem souboru "videos/inputs/input.mp4", ale nebudou fungovat.
+    Pokud už máte kontejner objektů blob, který chcete přidružit aktivu, můžete při vytváření aktiva zadat název kontejneru. Platforma Media Services momentálně podporuje jenom objekty blob v kořenové složce kontejneru, a ne s cestou v názvu souboru. Proto bude kontejner s názvem souboru „input.mp4“ fungovat. Kontejner s názvem souboru „videos/inputs/input.mp4“ ale fungovat nebude.
 
-    Rozhraní příkazového řádku Azure můžete použít k nahrání přímo do jakékoli účtu úložiště a kontejner, který máte oprávnění v rámci vašeho předplatného. <br/>Název kontejneru musí být jedinečný a postupujte podle úložiště pokyny pro pojmenování. Název nemá dodržovat formátování název kontejneru služby Asset média (identifikátor GUID prostředku). 
+    K nahrání přímo do jakékoli účtu úložiště a kontejneru, ke kterým máte oprávnění v rámci vašeho předplatného, můžete použít rozhraní Azure CLI. <br/>Název kontejneru musí být jedinečný a splňovat pokyny pro pojmenování úložiště. Název nemusí splňovat formátování názvů kontejnerů aktiv Media Services (Asset-GUID). 
     
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Získáte adresu URL SAS s oprávněními pro čtení i zápis, které se použijí k digitální soubory nahrát do Assetu kontejneru. Můžete použít rozhraní API služby Media Services k [seznam adres URL kontejneru asset](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Pomocí rozhraní API služby Azure Storage nebo sady SDK (například [REST API pro Storage](../../storage/common/storage-rest-api-auth.md), [sady JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), nebo [sady .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) k nahrání souborů do kontejneru Asset. 
-4. Pomocí rozhraní API služby Media Services v3 můžete vytvářet transformace a úlohy ke zpracování "vstupní" Asset. Další informace najdete v tématu [transformuje a úlohy](transform-concept.md).
+2. Získejte adresu URL SAS s oprávněními pro čtení i zápis, která se použije k nahrání digitálních souborů do kontejneru aktiva. K [vypsání adres URL kontejnerů aktiv](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) můžete použít rozhraní API Media Services.
+3. K nahrání souborů do kontejneru aktiva použijte rozhraní API služby Azure Storage nebo sady SDK (například [Storage REST API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) nebo [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). 
+4. Pomocí rozhraní API služby Media Services verze 3 můžete vytvořit transformaci a úlohu ke zpracování vstupního aktiva. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md).
 5. Stream obsahu z "výstupní" asset.
 
 Úplný příklad .NET, který ukazuje, jak: vytvořit Asset, získání zapisovatelné adresy URL SAS prostředku kontejneru v úložišti, nahrajte soubor do kontejneru v úložišti pomocí adresy URL SAS, naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md).
@@ -60,7 +60,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Například REST, najdete v článku [vytvořit prostředek s využitím REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) příklad.
 
-Tento příklad ukazuje, jak vytvořit **tělo požadavku** zadávají užitečné informace, například popis, název kontejneru, účet úložiště a další informace.
+Tento příklad ukazuje, jak vytvořit **tělo požadavku**, kde můžete zadat užitečné informace, například popis, název kontejneru, účet úložiště a další informace.
 
 #### <a name="curl"></a>cURL
 
@@ -105,5 +105,5 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 ## <a name="next-steps"></a>Další postup
 
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
-* [Použití cloudového DVR](live-event-cloud-dvr.md)
+* [Použití cloudového videorekordéru](live-event-cloud-dvr.md)
 * [Rozdíly mezi Media Services v2 a v3](migrate-from-v2-to-v3.md)

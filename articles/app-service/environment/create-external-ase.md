@@ -15,11 +15,11 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545412"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60768987"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment
 
@@ -39,7 +39,7 @@ Tento článek ukazuje, jak vytvořit externí služby ASE. Přehled služby ASE
 
 Po vytvoření služby ASE, nelze změnit následující:
 
-- Umístění
+- Location
 - Předplatné
 - Skupina prostředků
 - Použít virtuální síť

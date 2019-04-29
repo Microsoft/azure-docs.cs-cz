@@ -9,11 +9,11 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622208"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777385"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
 **Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.

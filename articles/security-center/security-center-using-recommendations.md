@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 3/26/2019
 ms.author: monhaber
 ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517687"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703448"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití služby Azure Security Center doporučení k vylepšení zabezpečení
 Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení. 

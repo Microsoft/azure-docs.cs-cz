@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: fd68846b9144c3efcc71dec369d64119427758a3
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744475"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Připojte se k virtuálnímu počítači založené na Azure
 
@@ -29,7 +29,7 @@ Tento článek vysvětluje, jak se připojit k a přihlaste se do virtuálních 
 
 Klient vzdálené plochy použijete pro připojení k založené na Windows virtuální počítač hostovaný v Azure.  Většina verze Windows nativně obsahují podporu pro remote desktop protocol (RDP).  Pro jiné počítače, můžete najít další informace o klientech v [klienty vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).  
 
-Následující článek podrobně popisuje, jak používat integrovanou podporu Windows RDP pro připojení k vašemu virtuálnímu počítači: [jak se připojit a přihlaste se na virtuálním počítači Azure s Windows](../../../virtual-machines/windows/connect-logon.md).  
+Následující článek podrobně popisuje, jak používat integrovanou podporu Windows RDP pro připojení k vašemu virtuálnímu počítači: [Jak se připojit a přihlaste se na virtuálním počítači Azure s Windows](../../../virtual-machines/windows/connect-logon.md).  
 
 >[!TIP]
 > Může se zobrazit upozornění zabezpečení během procesu, například, že soubor .rdp je od neznámého vydavatele nebo že nelze ověřit vaše přihlašovací údaje uživatele.  Je bezpečné ignorovat těchto upozornění.
@@ -54,7 +54,7 @@ Aby bylo možné připojit virtuální počítač založený na Linuxu, budete p
 7. Klikněte na tlačítko **otevřete** otevřete PuTTY terminálu.  
 8. Když se zobrazí výzva, zadejte název účtu a heslo vašeho účtu virtuálního počítače s Linuxem. 
 
-   Pokud máte problémy s připojením, najdete v dokumentaci k vašemu klientovi SSH, například [kapitoly 10: běžné chybové zprávy](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+   Pokud máte problémy s připojením, najdete v dokumentaci k vašemu klientovi SSH, například [kapitoly 10: Běžné chybové zprávy](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
 
 Další informace, včetně přidání desktopů, které je zřízená virtuálního počítače s Linuxem, v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

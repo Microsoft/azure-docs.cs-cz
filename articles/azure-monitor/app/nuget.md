@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
 ms.openlocfilehash: 3ad2f4788a765366066023724772f5432d0d56eb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699201"
 ---
 # <a name="application-insights-nuget-packages"></a>Balíčky Insights NuGet aplikací
 

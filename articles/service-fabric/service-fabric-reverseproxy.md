@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837933"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server, které jsou integrované do Azure Service Fabric pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http.

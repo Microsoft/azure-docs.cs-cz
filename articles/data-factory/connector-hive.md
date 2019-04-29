@@ -3,21 +3,22 @@ title: Kopírování dat z Hive pomocí Azure Data Factory | Dokumentace Microso
 description: Zjistěte, jak ke zkopírování dat z Hive úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: jingwang
+origin.date: 12/07/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: b245a80967d91b793fcf360772c0dec758f8f252
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808901"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z Hive pomocí Azure Data Factory 
 

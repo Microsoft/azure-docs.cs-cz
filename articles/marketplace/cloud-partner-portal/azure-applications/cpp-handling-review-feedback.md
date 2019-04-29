@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
 ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882684"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745509"
 ---
-# <a name="handling-review-feedback"></a>Zpracování zpětné vazby z revize
+# <a name="handling-review-feedback"></a>Zpracování zpětné vazby
 
 Tento článek vysvětluje, jak získat přístup k prostředí Azure DevOps používají tým Microsoft Azure Marketplace kontroly.  Pokud se nenajdou důležité problémy ve vaší nabídce aplikace Azure během **revize Microsoft** kroku, se můžete přihlásit do systému a zobrazit podrobné informace o těchto problémech (přečtěte si zpětnou vazbu).  Po opravě těchto problémů musí znovu nabídkou, chcete-li pokračovat v publikování na webu Azure Marketplace.  Následující diagram znázorňuje, jak tento proces zpětná vazba se vztahuje k procesu publikování.
 

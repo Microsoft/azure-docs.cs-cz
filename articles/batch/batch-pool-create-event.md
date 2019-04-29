@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470585"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776503"
 ---
 # <a name="pool-create-event"></a>Událost vytvoření fondu
 
@@ -91,7 +91,7 @@ ms.locfileid: "55470585"
 
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|enableAutomaticUpdates|Logická hodnota|Určuje, zda virtuální počítač je povolena pro automatické aktualizace. Pokud není tato vlastnost určena, výchozí hodnota je true.|
+|enableAutomaticUpdates|Boolean|Určuje, zda virtuální počítač je povolena pro automatické aktualizace. Pokud není tato vlastnost určena, výchozí hodnota je true.|
 
 ###  <a name="bk_netconf"></a> networkConfiguration
 

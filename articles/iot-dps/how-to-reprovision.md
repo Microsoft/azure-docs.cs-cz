@@ -2,18 +2,19 @@
 title: Jak na bázi zařízení v Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
 description: Jak na bázi zařízení s vaším zařízením zřizování instance služby
 author: wesmc7777
-ms.author: wesmc
-ms.date: 04/04/2019
+ms.author: v-yiso
+origin.date: 04/04/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627317"
 ---
 # <a name="how-to-reprovision-devices"></a>Jak na bázi zařízení
 

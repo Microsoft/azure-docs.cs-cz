@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60799152"
 ---
 # <a name="extending-geojson-geometries"></a>Rozšíření GeoJSON geometrie
 
@@ -25,12 +25,12 @@ Tato rozhraní API používají jako standard [specifikaci GeoJSON] [ 1] předst
 * GeometryCollection
 * LineString
 * MultiLineString
-* Systému multiPoint
+* MultiPoint
 * MultiPolygon
 * Bod
 * Mnohoúhelník
 
-Některá rozhraní API Azure Maps (například: [hledání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) přijměte geometrie jako "Kruh", které nejsou součástí [specifikaci GeoJSON][1].
+Některá rozhraní API Azure Maps (například: [Hledání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) přijměte geometrie jako "Kruh", které nejsou součástí [specifikaci GeoJSON][1].
 
 Tento článek poskytuje podrobné vysvětlení na tom, jak Azure Maps rozšiřuje [specifikaci GeoJSON] [ 1] k reprezentaci některých geometrie.
 
@@ -46,13 +46,13 @@ A `Circle` vyjadřuje geometrie `GeoJSON Feature` objekt __musí__ obsahovat ná
 2. Radius
    >Na kruh `radius` se vyjadřuje `GeoJSON Feature`jeho vlastnosti. Hodnota radius _měřiče_ a musí být typu `double`.
 
-3. Podtyp
+3. SubType
    >Geometrie kruh také musí obsahovat vlastnost `subType`. Tato vlastnost musí být součástí vlastnosti `GeoJSON Feature`a její hodnota by měla být _Circle_
 
 
 #### <a name="example"></a>Příklad:
 
-Zde je, jak budete představují kruh zarovnaný na střed v (zeměpisná šířka: 47.639754, zeměpisná délka:-122.126986) poloměru rovna 100 měřiče pomocí `GeoJSON Feature` objektu:
+Zde je, jak budete představují zarovnaný na střed v kruhu (zeměpisná šířka: 47.639754, zeměpisná délka:-122.126986) poloměru rovna 100 měřiče využití, používání `GeoJSON Feature` objektu:
 
 ```json            
 {

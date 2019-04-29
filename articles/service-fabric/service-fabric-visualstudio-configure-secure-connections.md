@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054822"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628276"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečených připojení ke clusteru Service Fabric v sadě Visual Studio
 Další informace o použití sady Visual Studio zabezpečený přístup k clusteru Azure Service Fabric pomocí zásad řízení přístupu nakonfigurované.
@@ -44,7 +44,7 @@ Pokud publikujete projekt Service Fabric v sadě Visual Studio, použijte **publ
 3. Zvolte **publikování...**  příkazu v místní nabídce projektu otevřete **publikování aplikaci Azure** dialogové okno a potom vyberte cílový cluster. Nástroj automaticky vyřeší, připojení a uloží parametry zabezpečených připojení v profilu publikování.
 4. Volitelné: Můžete upravit profilu publikování k určení připojení k zabezpečenému clusteru.
    
-   Protože jste ruční úpravy souboru XML profilu publikování chcete zadat informace o certifikátu, nezapomeňte si poznamenat název úložiště certifikátu, uložení umístění a kryptografický otisk certifikátu. Budete muset zadat tyto hodnoty pro úložiště certifikátu název a umístění úložiště. Zobrazit [postupy: načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Další informace.
+   Protože jste ruční úpravy souboru XML profilu publikování chcete zadat informace o certifikátu, nezapomeňte si poznamenat název úložiště certifikátu, uložení umístění a kryptografický otisk certifikátu. Budete muset zadat tyto hodnoty pro úložiště certifikátu název a umístění úložiště. Zobrazit [jak: Načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Další informace.
    
    Můžete použít *ClusterConnectionParameters* parametry se mají nastavit parametry PowerShell, který mají používat při připojování ke clusteru Service Fabric. Platné parametry jsou všechny, které akceptuje rutina Connect-ServiceFabricCluster. Zobrazit [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) seznam dostupných parametrů.
    

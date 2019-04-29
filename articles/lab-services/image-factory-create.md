@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148981"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622618"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
 V tomto článku se dozvíte, jak vytvořit objekt pro vytváření vlastní image pomocí dostupných v ukázkových skriptech [úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).

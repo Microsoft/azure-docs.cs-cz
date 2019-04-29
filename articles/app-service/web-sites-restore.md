@@ -16,11 +16,11 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832467"
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
 V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/overview.md) , který jste dříve zálohovali (viz [zálohování vaší aplikace v Azure](manage-backup.md)). Podle potřeby můžete obnovit aplikaci s připojenými databázemi do předchozího stavu nebo podle záloh původní aplikace vytvořit novou aplikaci. Azure App Service podporuje pro zálohování a obnovení následujících databází:

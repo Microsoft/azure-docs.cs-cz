@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: a498fb2bc3efcc3a081a0ab854df107135a4e008
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744954"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Připravit vaše aplikace Azure technické prostředky
 
 Tento článek popisuje prostředky pro přípravu technických prostředků pro vaši nabídku aplikací Azure.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Projděte si následující video, [sestavování řešení šablony a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603), přehled o tom, jak vytvořit šablonu Azure Resource Manageru pro definování řešení Azure aplikace a jak potom následně publikujte aplikaci na webu Azure Marketplace.
 

@@ -1,7 +1,7 @@
 ---
 title: Spravovat Web App for Containers pomocí Azure CLI – Azure App Service | Dokumentace Microsoftu
 description: Spravujte Web App for Containers pomocí Azure CLI.
-keywords: služby Azure app service, webové aplikace, rozhraní příkazového řádku, linux a oss
+keywords: azure app service, web app, cli, linux, oss
 services: app-service
 documentationCenter: ''
 author: ahmedelnably
@@ -17,11 +17,11 @@ ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
 ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60850080"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Spravovat Web App for Containers pomocí Azure CLI
 

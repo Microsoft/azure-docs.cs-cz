@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cf7216d5634adf42c2e3435b122dcff58446821a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60625308"
 ---
 # <a name="build-your-landing-page"></a>Cílová stránka sestavení
 
@@ -43,7 +43,7 @@ Cílová stránka může odkazovat napříč více marketingové strategie. Mů�
 
 Až budete mít připravený plán kampaně, vytvořte cílové stránky na webu Marketplace. Následující tabulka popisuje způsoby, jak můžete maximalizovat efektivitu cílové stránky: 
 
-| Osvědčený postup | Vyhněte se |
+| Osvědčený postup | Avoid |
 |:--- |:--- |
 | **Jaký problém zákazníků řeší vaše řešení a jak to uděláme pomocí Azure** | Žádná komunikace způsoby, ve kterém řešení spolupracuje s Azure. |
 | **Vytvoří adresu URL krátký, snadno zapamatovat** | Pomocí dlouhé adresy URL. Dlouhé adresy URL nejsou snadno zapamatovatelné a těžko najít. |

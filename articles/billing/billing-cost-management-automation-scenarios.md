@@ -16,11 +16,11 @@ ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
 ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615877"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scénáře automatizace pro správu nákladů a fakturace
 

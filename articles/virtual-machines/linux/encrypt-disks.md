@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 15bd3cf2ab6ea5285662610c2c0a850bb180e2f8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658760"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731613"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Jak šifrování virtuálního počítače s Linuxem v Azure
 

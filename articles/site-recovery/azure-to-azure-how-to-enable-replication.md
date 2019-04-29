@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: c8b5cf840b8cb5eec2a993cfe35c8a8a7ac904fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60791337"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 

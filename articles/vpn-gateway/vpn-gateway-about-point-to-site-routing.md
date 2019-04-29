@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: anzaman
 ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60653478"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 

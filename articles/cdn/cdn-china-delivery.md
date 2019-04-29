@@ -16,11 +16,11 @@ ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ce136a341809b1a485e86337f428b4685eba22f7
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093540"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681504"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Čína doručování obsahu s Azure CDN
 
@@ -34,7 +34,7 @@ Azure CDN je globální a Azure CDN China mají tyto funkce:
 
 - Azure CDN je globální:
 
-     - Portál: https://portal.azure.com  
+     - Portal: https://portal.azure.com  
 
      - Provádí doručování obsahu mimo Čína
 
@@ -44,7 +44,7 @@ Azure CDN je globální a Azure CDN China mají tyto funkce:
 
 - Azure CDN Čína:
 
-     - Portál: https://portal.azure.cn
+     - Portal: https://portal.azure.cn
 
      - Provádí doručování obsahu v Číně
 

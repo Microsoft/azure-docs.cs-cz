@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104450"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60718063"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure s využitím CSP
 
@@ -89,7 +89,7 @@ Nakonfigurujte konfiguračního serveru pomocí účtu, který má zvláštní r
 
 3. Přiřaďte úrovně přístupu na účet vCenter (používá se v tenantovi konfigurační server) pro různé objekty, následujícím způsobem:
 
->| Objekt | Role | Poznámky |
+>| Object | Role | Poznámky |
 >| --- | --- | --- |
 >| vCenter | Jen pro čtení | Potřeba pouze na povolit přístup k vCenter pro správu různé objekty. Můžete odebrat toto oprávnění, pokud nikdy být k dispozici tenanta na spravovaného účtu nebo používá pro všechny operace správy na serveru vCenter. |
 >| Datové centrum | Azure_Site_Recovery |  |

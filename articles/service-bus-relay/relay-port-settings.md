@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ef08cfc94a029f97250578e9b0366a18770c809
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696732"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60789922"
 ---
 # <a name="azure-relay-port-settings"></a>Nastavení portu služby Azure Relay
 
@@ -45,7 +45,7 @@ Hybridní připojení používá objekty Websocket na portu 443 s protokolem SSL
 |[Třída NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (služba)|Buď|9351/HTTP|  
 |[Třída WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (klient)|Ano|HTTPS|  
 |" |Ne|HTTP|  
-|[Třída WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (služba)|Buď|9351/HTTP|  
+|[WebHttpRelayBinding Class](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (service)|Buď|9351/HTTP|  
 |[Třída WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (klient)|Ano|HTTPS|  
 |" |Ne|HTTP|  
 |[Třída WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (služba)|Buď|9351/HTTP|

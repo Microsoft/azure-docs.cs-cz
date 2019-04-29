@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
 ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810542"
 ---
 # <a name="state-management-with-service-fabric"></a>Správa stavu s využitím Service Fabric
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: victorh
-ms.openlocfilehash: d84da36ad6b1ef3e2a507a0944aac583861d5ccb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 409595febded7b242eae876ebb2cb35ae4999e5e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162163"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60686800"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones scénáře
 Azure DNS Private Zones překladu názvů ve virtuální síti a jde o vztah mezi virtuálními sítěmi. V tomto článku se podíváme na některé běžné scénáře, které se dají realizovat díky této funkci. 
@@ -38,13 +38,13 @@ Následující diagram znázorňuje jednoduchá verze tohoto scénáře, kde jso
 
 ![Více možností rozlišení virtuální sítě](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Scénář: Funkce zobrazením Split-Horizon
+## <a name="scenario-split-horizon-functionality"></a>Scénář: Funkce zobrazením split-Horizon
 
 V tomto scénáři máte případ použití, ve které chcete využít různé chování překladu DNS v závislosti na tom, kde je umístěna klienta (v rámci služby Azure nebo oddálení v síti internet), pro stejnou zónu DNS. Například můžete mít privátní a veřejné verze aplikace, která má jinou funkci nebo chování, ale chcete použít pro obě verze se stejným názvem domény. Tento scénář se dají realizovat s využitím Azure DNS tak, že vytvoříte veřejná služba DNS zóny, jakož i privátních zón se stejným názvem.
 
 Následující diagram znázorňuje tento scénář. Máte virtuální síť A, který má dva virtuálních počítačů (VM1 virtuální síť a síť VNETA VM2) návratovými hodnotami typu obě privátní IP adresy a přidělovat veřejné IP adresy. Vytvořte zónu DNS veřejné s názvem contoso.com a zaregistrujte veřejné IP adresy pro tyto virtuální počítače jako záznamy DNS v zóně. Můžete také vytvořit privátní zónu DNS taky contoso.com A zadáte jako registrační virtuální síť. Azure automaticky zaregistruje virtuální počítače jako zaznamenává do privátních zón, odkazuje na jejich privátní IP adresy.
 
-Nyní když internetového klienta vydá dotaz DNS k vyhledání VM1.contoso.com virtuální síť, Azure vrátí veřejnou IP adresu záznamu z veřejné zóny. Pokud stejný dotaz DNS pochází z jiného virtuálního počítače (například: síť VNETA VM2) ve stejné virtuální síti A Azure vrátí záznam privátní IP z privátní zónu. 
+Nyní když internetového klienta vydá dotaz DNS k vyhledání VM1.contoso.com virtuální síť, Azure vrátí veřejnou IP adresu záznamu z veřejné zóny. Pokud stejný dotaz DNS pochází z jiného virtuálního počítače (například: VNETA-VM2) ve stejné virtuální síti A Azure vrátí záznam privátní IP z privátní zónu. 
 
 ![Brian rozdělení řešení](./media/private-dns-scenarios/split-brain-resolution.png)
 

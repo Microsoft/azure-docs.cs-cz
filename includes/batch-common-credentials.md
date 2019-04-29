@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: 7d90ccf55b10eff4299692b481a25ba4cdf41b8a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60616577"
 ---
 ## <a name="get-account-credentials"></a>Získání přihlašovacích údajů k účtu
 

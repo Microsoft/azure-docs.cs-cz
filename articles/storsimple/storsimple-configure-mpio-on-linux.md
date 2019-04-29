@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b968cc29a7139a4a6db5d2dea8dd6f8f4e1c7ccd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630742"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek vysvětluje kroky nutné ke konfiguraci cest vstupně-výstupních operací (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojený ke svému zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátory iSCSI. Popisuje podrobně automatické zjišťování zařízení více cest a specifické nastavení pouze pro svazky zařízení StorSimple.

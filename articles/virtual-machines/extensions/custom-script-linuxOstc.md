@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882425"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800301"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 1
 
@@ -65,15 +65,15 @@ Pokud váš skript je na místním serveru, pak může i nadále potřebovat dal
 
 ### <a name="tips-and-tricks"></a>Tipy a triky
 
-* Nejvyšší chybovost pro toto rozšíření je z důvodu chyby syntaxe v skriptu testu, které skript se spustí bez chyb, a také vložit další protokolování do skriptu, aby bylo snazší najít, kde se nezdařilo.
-* Psát skripty, které jsou idempotentní, takže pokud získat spusťte znovu více než jednou omylem, nesmí způsobit změny systému.
+* Selhání tohoto rozšíření nejčastěji způsobují chyby syntaxe ve skriptu. Otestujte, že se skript spustí bez chyb, a implementujte do skriptu dodatečné protokolování, které vám pomůže snadněji zjistit, kde došlo k selhání.
+* Pište skripty, které jsou idempotentní, takže když se omylem spustí více než jednou, nezpůsobí to změny systému.
 * Zajistěte, aby že skripty nevyžadují, aby uživatelský vstup při spuštění.
 * Není povolené pro spuštění skriptu 90 minut, cokoli delšího způsobí selhání zřizování rozšíření.
 * Neumisťujte restartování uvnitř skriptu, to způsobí problémy s další rozšíření, které se nainstalují, a po restartování počítače, rozšíření nebude pokračovat po restartování. 
-* Pokud máte skript, který způsobí restartování, instalace aplikací a spouštět skripty atd. Měli byste naplánovat pomocí úlohy Cron, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
+* Pokud máte skript, který způsobí restartování, pak nainstaluje aplikace, spustí skripty atd. Měli byste naplánovat pomocí úlohy Cron, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
 * Rozšíření se pouze spuštění skriptu jednou, pokud chcete spustit skript na každém spuštění počítače, můžete použít [cloud-init image](../linux/using-cloud-init.md) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulu. Alternativně můžete použít skript k vytvoření jednotky služby Systemd.
 * Pokud chcete naplánovat, kdy bude skript spuštěn, používejte rozšíření k vytvoření úlohy Cron.
-* Když je spuštěný skript, zobrazí se pouze "přenos" stav rozšíření z webu Azure portal nebo rozhraní příkazového řádku. Pokud chcete častější aktualizace stavu spuštění skriptu, je potřeba vytvořit svoje vlastní řešení.
+* Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častější aktualizace stavu spuštění skriptu, je potřeba vytvořit svoje vlastní řešení.
 * Rozšíření vlastních skriptů nativně nepodporuje proxy servery, ale můžete použít nástroj pro přenos souborů, která podporuje proxy servery v rámci skriptu, jako například *Curl*.
 * Mějte na paměti z jiné výchozí adresář umístění, které mohou spoléhat skripty nebo příkazy, mají logiky, která by to.
 

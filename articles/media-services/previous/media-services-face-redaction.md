@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako;
 ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61247352"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Zákona o svobodném přístupu tváří pomocí Azure Media Analytics 
 ## <a name="overview"></a>Přehled

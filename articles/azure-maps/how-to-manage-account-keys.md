@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: d158e1869cb85752b9b24e76d5227a2f7167bfcf
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569463"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794141"
 ---
 # <a name="manage-your-azure-maps-account"></a>Správa účtu Azure Maps
 

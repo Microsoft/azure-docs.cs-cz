@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
 ms.openlocfilehash: 21396a10543d388b6ac360f426272f1841b2f510
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314106"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60673846"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Migrace Contoso:  Refaktoring nasazení sady Team Foundation Server do sady Azure DevOps Services
 

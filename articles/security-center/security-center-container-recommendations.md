@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60705250"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Vysvětlení doporučení kontejneru služby Azure Security Center
 
@@ -51,13 +51,13 @@ V následujících tabulkách použijte jako vám pomůžou pochopit dostupné k
 ## <a name="next-steps"></a>Další postup
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-* [Monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md)
+* [Monitorování identity a přístupu ve službě Azure Security Center](security-center-identity-access.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 * [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Ochrana vašich počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
+* [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: mbullwin
 ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960679"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60692288"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](analytics.md)? Začněte tady. Analytics je nástroj výkonné hledání služby Azure Application Insights.
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 * V současné době jsou omezené jenom za týden posledních dat výsledků dotazu.
 * Testujeme v prohlížečích: nejnovější verze prohlížečů Chrome, Microsoft Edge a Internet Explorer.
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 430f9e57df163ad345f0740e5bd5beca6e892a4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859138"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Povolit přístup pomocí tokenu služby Google OAuth
 

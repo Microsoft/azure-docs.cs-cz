@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967976"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594925"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Řešení chyb ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP
 
@@ -83,7 +83,7 @@ Pro vzdálené připojení k virtuálnímu počítači, použijte jednu z metod 
 
 ### <a name="group-policy-client-service"></a>Služba Klient zásad skupiny
 
-Pokud je virtuální počítač připojený k doméně, nejprve zastavte službu Klient zásad skupiny tak, aby se zabránilo žádné zásady služby Active Directory přepisovat změny. Chcete-li to provést, spusťte následující příkaz:
+Pokud je virtuální počítač připojený k doméně, nejprve zastavte službu Klient zásad skupiny tak, aby se zabránilo žádné zásady služby Active Directory přepisovat změny. Provedete to spuštěním následujícího příkazu:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
@@ -202,15 +202,15 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 Podle hodnoty registru, postupujte takto:
 
-* 4 (FIPS): přejděte na [připojení algoritmy odpovídající standardu FIPs zkontrolujte](#fips-compliant).
+* 4 (FIPS): Přejděte na [připojení algoritmy odpovídající standardu FIPs zkontrolujte](#fips-compliant).
 
-* 3 (128bitové šifrování): nastavit závažnost **2** spuštěním následujícího příkazu:
+* 3 (128bitové šifrování): Nastavit závažnost **2** spuštěním následujícího příkazu:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (nejvyšší šifrování nejbližším podle klienta): můžete nastavit šifrování na minimální hodnotu **1** spuštěním následujícího příkazu:
+* 2 (nejvyšší šifrování nejbližším podle klienta): Můžete nastavit šifrování na minimální hodnotu **1** spuštěním následujícího příkazu:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f

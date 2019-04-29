@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702393"
 ---
 # <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>Vytvoření prostředí s více virtuálními počítači v rámci šablony virtuálního počítače z testovacího prostředí v učebně
 Aktuálně Azure Lab Services vám umožní nastavit jednu šablonu virtuálního počítače v testovacím prostředí a zpřístupnit jedna kopie všech uživatelů. Ale pokud profesor vyučují třídu IT o tom, jak nastavit brány firewall nebo servery, budete muset jednotlivé studenty poskytnout prostředí, ve kterém více virtuálních počítačů můžou komunikovat přes síť.

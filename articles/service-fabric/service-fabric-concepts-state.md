@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870889"
 ---
 # <a name="service-state"></a>Stav služby
 **Služba stavu** odkazuje v paměti nebo na data na disku, které vyžaduje služba pro funkce. Zahrnuje, třeba datových struktur a členské proměnné, které Služba čte a zapisuje do práce. V závislosti na tom, jak je navržený službu může také obsahovat soubory nebo jiné prostředky, které jsou uložené na disku. Například soubory byste použili databázi k ukládání dat a transakční protokoly.

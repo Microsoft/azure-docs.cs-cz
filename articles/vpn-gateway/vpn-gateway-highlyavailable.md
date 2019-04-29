@@ -3,8 +3,8 @@ title: Přehled konfigurací s vysokou dostupností s bránami Azure VPN Gateway
 description: Tento článek obsahuje přehled konfigurací s vysokou dostupností se službami Azure VPN Gateway.
 services: vpn-gateway
 documentationcenter: na
-author: yushwang
-manager: rossort
+author: WenJason
+manager: digimobile
 editor: ''
 tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2016
-ms.author: yushwang
+origin.date: 09/24/2016
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60760281"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Připojení s vysokou dostupností mezi jednotlivými místy a VNet-to-VNet
 Tento článek obsahuje přehled konfigurací s vysokou dostupností pro vaše propojení mezi jednotlivými místy a propojení VNet-to-VNet se službami Azure VPN Gateway.

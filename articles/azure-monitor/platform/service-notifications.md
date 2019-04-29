@@ -9,13 +9,13 @@ ms.date: 4/12/2018
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: ab4aa2f37d5a883c83b8ee09b5de6551ebf13d2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883602"
 ---
-# <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí webu Azure portal
+# <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 
 Oznámení o stavu služby k publikování aplikací Azure a obsahují informace o prostředcích v rámci vašeho předplatného. Tato oznámení jsou dílčí třídy aktivity protokolu události a můžete také najít v protokolu aktivit. Oznámení o stavu služby může být informační nebo praktické, v závislosti na třídě.
 

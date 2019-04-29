@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
 ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691767"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights
 Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Insights](../../azure-monitor/app/app-insights-overview.md). Neúspěšné požadavky můžete korelovat s výjimky a dalších událostí na klienta a serveru, tak, že můžete rychle Diagnostikujte příčiny.
@@ -32,8 +32,8 @@ Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Ins
 * V některých aplikační architektury, nebo s některými nastaveními je potřeba udělat některé dodatečné kroky, jak zachytávat výjimky Další:
   * [Webové formuláře](#web-forms)
   * [MVC](#mvc)
-  * [1.* webového rozhraní API](#web-api-1x)
-  * [2.* webového rozhraní API](#web-api-2x)
+  * [Web API 1.*](#web-api-1x)
+  * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostika výjimek pomocí sady Visual Studio
@@ -298,7 +298,7 @@ Neošetřených výjimek pocházejících od řadičů obvykle za následek odpo
 ### <a name="prior-versions-support"></a>Předchozí verze podporují
 Pokud používáte WebAPI 1 (a předchozí) z Application Insights Web SDK 2.5 (a předchozí), najdete v následujících příkladech ke sledování výjimek.
 
-#### <a name="web-api-1x"></a>Webové rozhraní API 1.x
+#### <a name="web-api-1x"></a>Web API 1.x
 Override System.Web.Http.Filters.ExceptionFilterAttribute:
 
 ```csharp
@@ -348,7 +348,7 @@ Může přidat tento atribut přepsané na konkrétní řadiče, nebo ho přidej
 
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-#### <a name="web-api-2x"></a>Webové rozhraní API 2.x
+#### <a name="web-api-2x"></a>Web API 2.x
 Přidáte implementaci nástroje IExceptionLogger:
 
 ```csharp

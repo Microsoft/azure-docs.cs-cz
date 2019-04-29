@@ -16,11 +16,11 @@ ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e228e73283685988247c8d419ba0a97b8c7b2974
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776148"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřízení výpočetních uzlů s Linuxem ve fondech služby Batch
 
@@ -48,7 +48,7 @@ Když nakonfigurujete referenční image virtuálního počítače, můžete zad
 | Vydavatel |Canonical |
 | Nabídka |UbuntuServer |
 | Skladová jednotka (SKU) |14.04.4-LTS |
-| Verze |nejnovější |
+| Version |nejnovější |
 
 > [!TIP]
 > Další informace o těchto vlastností a jak zobrazit seznam imagí Marketplace v [vyhledání a výběr imagí virtuálních počítačů Linux v Azure pomocí Powershellu nebo rozhraní příkazového řádku](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny Image Marketplace aktuálně kompatibilní službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).

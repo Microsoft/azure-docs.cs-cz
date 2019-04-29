@@ -14,11 +14,11 @@ ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
 ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522243"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60901906"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.

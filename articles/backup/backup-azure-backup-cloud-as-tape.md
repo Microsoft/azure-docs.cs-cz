@@ -10,11 +10,11 @@ ms.date: 1/10/2017
 ms.author: saurse
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259595"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646918"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Přesunout vaše dlouhodobé úložiště z pásky do cloudu Azure
 Zákazníci Azure Backup a System Center Data Protection Manager můžete:
@@ -44,10 +44,10 @@ Total number of "počet bodů uchovávání informací" zadat v těchto zásadá
 ## <a name="example--putting-both-together"></a>Příklad – obě sestavení
 ![Ukázka obrazovky](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Denní zásady uchovávání informací**: zálohy pořizovat denně se uchovávají po dobu sedmi dní.
-2. **Týdenní zásady uchovávání informací**: zálohy prováděny každý den o půlnoci a 18: 00 Sobota jsou zachovány čtyři týdny
-3. **Měsíční zásady uchovávání informací**: zálohy pořízené o půlnoci a 18: 00 na poslední neděle v měsíci jsou zachovány po dobu 12 měsíců
-4. **Roční zásady uchovávání dat**: zálohy pořízené půlnoci na poslední sobota každý dne se zachovají pro po dobu 10 let
+1. **Denní zásady uchovávání informací**: Denní zálohy se ukládají po dobu sedmi dní.
+2. **Týdenní zásady uchovávání informací**: Zálohy prováděny každý den o půlnoci a 18: 00 Sobota jsou zachovány čtyři týdny
+3. **Měsíční zásady uchovávání informací**: Zálohy pořízené o půlnoci a 18: 00 na poslední neděle v měsíci jsou zachovány po dobu 12 měsíců
+4. **Roční zásady uchovávání dat**: Zálohy pořízené půlnoci na poslední sobota každý dne se zachovají pro po dobu 10 let
 
 Celkový počet "počet bodů uchovávání informací" (body, ze kterých může zákazník obnovení dat) na předchozím obrázku je vypočítán takto:
 

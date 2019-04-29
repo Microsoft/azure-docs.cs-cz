@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
 ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617763"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711128"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP
 

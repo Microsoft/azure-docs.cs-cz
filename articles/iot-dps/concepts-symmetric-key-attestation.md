@@ -3,17 +3,17 @@ title: Azure IoT Hub zařízení služby zřizování – ověření identity sy
 description: Tento článek obsahuje koncepční přehled symetrického klíče ověření pomocí služby IoT Device Provisioning.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 08/18/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
+manager: timlt
 ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746074"
 ---
 # <a name="symmetric-key-attestation"></a>Osvědčení symetrického klíče
 

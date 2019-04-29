@@ -13,11 +13,11 @@ ms.date: 02/03/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: d9e86c45d535862e0c3d02b3f331bc40ebb7f6c7
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733041"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
@@ -44,5 +44,5 @@ Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities
 ## <a name="next-steps"></a>Další postup
 
 * [Použití dynamického šifrování AES-128 a doručení klíče služby](protect-with-aes128.md)
-* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+* [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
 * [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

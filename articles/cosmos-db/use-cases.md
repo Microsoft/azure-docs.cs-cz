@@ -7,11 +7,11 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043290"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60770207"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití služby Azure Cosmos DB
 Tento článek poskytuje přehled o několik běžných případů použití pro službu Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí služby Cosmos DB.   

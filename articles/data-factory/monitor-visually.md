@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
 ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54409958"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60716749"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorovat objekty pro vytváření dat Azure
 Azure Data Factory je cloudová služba pro integraci dat umožňující vytváření pracovních postupů řízených daty v cloudu za účelem orchestrace a automatizace přesunu a transformace dat. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (nazývané kanály) se schopností ingestovat data z různorodých úložišť dat, zpracovat a transformovat tato data pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning, a publikovat výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, aby je mohly využívat aplikace business intelligence (BI).

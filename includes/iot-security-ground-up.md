@@ -9,11 +9,11 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626459"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpečení pro Internet věcí (IoT) od počátku
 
@@ -103,14 +103,14 @@ Akcelerátory řešení sestavit v bezpečnostních opatření záměrné, povol
 
 Každý akcelerátor řešení vytvoří instance služeb Azure, jako například:
 
-* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): brána, která se připojuje cloudu do zařízení. Je možné škálovat na miliony připojení na rozbočovače a zpracování velkých objemů dat s podporou ověřování podle zařízení pomáhá vám zabezpečit vaše řešení.
+* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): Brána, která se připojuje cloudu do zařízení. Je možné škálovat na miliony připojení na rozbočovače a zpracování velkých objemů dat s podporou ověřování podle zařízení pomáhá vám zabezpečit vaše řešení.
 
-* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): škálovatelná, plně indexované databázovou službu pro částečně strukturovaná data, která spravuje metadat pro zařízení si zřídíte, jako jsou atributy, konfigurace a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysoce propustné zpracování, schématu nezávislé indexování dat a také bohaté rozhraní příkazů jazyka SQL.
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): Škálovatelná, plně indexované databázovou službu pro částečně strukturovaná data, která spravuje metadata pro zařízení, který zřídíte, jako jsou atributy, konfigurace a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysoce propustné zpracování, schématu nezávislé indexování dat a také bohaté rozhraní příkazů jazyka SQL.
 
-* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): v reálném čase v cloudu, která umožňuje rychlý vývoj a nasazení nízkonákladového analytického řešení pro odhalení informací v reálném čase ze zařízení, senzorů, infrastruktury a aplikací pro zpracování datových proudů . Data z této plně spravované služby můžete škálovat pro jakýkoli svazek, zatímco stále dosahuje vysoké propustnosti, nízké latence a odolnost proti chybám.
+* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): V reálném čase v cloudu, která umožňuje rychlý vývoj a nasazení nízkonákladového analytického řešení pro odhalení informací v reálném čase ze zařízení, senzorů, infrastruktury a aplikací pro zpracování datových proudů. Data z této plně spravované služby můžete škálovat pro jakýkoli svazek, zatímco stále dosahuje vysoké propustnosti, nízké latence a odolnost proti chybám.
 
-* [**Služba Azure App Services**](https://azure.microsoft.com/services/app-service/): cloudovou platformou můžete tvořit výkonné webové a mobilní aplikace, které se připojují k datům bez ohledu na; v cloudu nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s out-of-the-box připojení k desítkám cloudových služeb a podnikových aplikací. Kód v oblíbeném jazyce a integrovaném vývojovém prostředí – .NET, Node.js, PHP, Python nebo Java – k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
+* [**Azure App Services**](https://azure.microsoft.com/services/app-service/): Cloudovou platformou můžete tvořit výkonné webové a mobilní aplikace, které se připojují k datům bez ohledu na; v cloudu nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s out-of-the-box připojení k desítkám cloudových služeb a podnikových aplikací. Kód v oblíbeném jazyce a integrovaném vývojovém prostředí – .NET, Node.js, PHP, Python nebo Java – k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
 
-* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): funkci Logic Apps služby Azure App Service pomáhá vašemu řešení IoT umožní vaše stávající systémy z podnikové integrace a automatizace pracovních postupů. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají spouštěčem událostí a provádějí sérii kroků, pravidla a akce, které používají výkonné konektory pro integraci s obchodními procesy. Logic Apps nabízí out-of-the-box připojení k rozsáhlému ekosystému aplikací SaaS, cloudové a místní aplikace.
+* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Funkce Logic Apps služby Azure App Service pomáhá vašemu řešení IoT umožní vaše stávající systémy z podnikové integrace a automatizace pracovních postupů. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají spouštěčem událostí a provádějí sérii kroků, pravidla a akce, které používají výkonné konektory pro integraci s obchodními procesy. Logic Apps nabízí out-of-the-box připojení k rozsáhlému ekosystému aplikací SaaS, cloudové a místní aplikace.
 
-* [**Azure Blob storage**](https://azure.microsoft.com/services/storage/): spolehlivé, úsporné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.
+* [**Azure Blob storage**](https://azure.microsoft.com/services/storage/): Spolehlivé, úsporné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: mbullwin
 ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60898912"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Export datového modelu
 V této tabulce jsou uvedeny vlastnosti objektu telemetrická data odesílaná z [Application Insights](../../azure-monitor/app/app-insights-overview.md) sady SDK k portálu.
@@ -114,187 +114,187 @@ Odkazuje na mějte na paměti:
 ## <a name="context"></a>Kontext
 Všechny typy telemetrie doplňují oddíl kontextu. Všechna tato pole jsou přenášeny se každý datový bod.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
-| Context.Custom.Dimensions [0] |[] č. objekt |Páry klíč hodnota řetězce nastavit parametr vlastní vlastnosti. Maximální délka klíče 100 hodnot maximální délky 1024. Více než 100 jedinečné hodnoty vlastnosti lze prohledávat, ale nelze použít pro segmentace. 200 maximální počet klíčů na Instrumentační klíč. |
-| Context.Custom.Metrics [0] |[] č. objekt |Nastavit tak, že parametr vlastní měření a TrackMetrics páry klíč hodnota. Maximální délka klíče 100, mohou být číselné hodnoty. |
-| context.data.eventTime |řetězec |UTC |
+| context.custom.dimensions [0] |object [ ] |Páry klíč hodnota řetězce nastavit parametr vlastní vlastnosti. Maximální délka klíče 100 hodnot maximální délky 1024. Více než 100 jedinečné hodnoty vlastnosti lze prohledávat, ale nelze použít pro segmentace. 200 maximální počet klíčů na Instrumentační klíč. |
+| context.custom.metrics [0] |object [ ] |Nastavit tak, že parametr vlastní měření a TrackMetrics páry klíč hodnota. Maximální délka klíče 100, mohou být číselné hodnoty. |
+| context.data.eventTime |string |UTC |
 | context.data.isSynthetic |Boolean |Zdá se, že žádost o pocházejí z bot nebo webový test. |
 | context.data.samplingRate |číslo |Procento telemetrii generovanou sady SDK, která je odeslána na portál. V rozsahu od 0,0 100.0. |
-| Context.Device |objekt |Klientské zařízení |
-| Context.Device.Browser |řetězec |IE Chrome... |
-| context.device.browserVersion |řetězec |Chrome 48,0... |
-| context.device.deviceModel |řetězec | |
-| context.device.deviceName |řetězec | |
-| Context.Device.ID |řetězec | |
-| Context.Device.Locale |řetězec |de-DE, en-GB... |
-| Context.Device.Network |řetězec | |
-| context.device.oemName |řetězec | |
-| Context.Device.OS |řetězec | |
-| context.device.osVersion |řetězec |Hostitelský operační systém |
-| context.device.roleInstance |řetězec |ID hostitelského serveru |
-| context.device.roleName |řetězec | |
-| context.device.screenResolution |řetězec | |
-| Context.Device.Type |řetězec |Počítač, prohlížeč... |
-| Context.Location |objekt |Odvozený od clientip. |
-| Context.location.City |řetězec |Odvozený od clientip, pokud jsou známé |
-| Context.location.ClientIP |řetězec |Poslední osmiúhelníkem jsou anonymní na hodnotu 0. |
-| Context.location.Continent |řetězec | |
-| Context.location.Country |řetězec | |
-| Context.location.Province |řetězec |Stát nebo kraj |
-| Context.Operation.ID |řetězec |Položky, které mají stejné id operace se zobrazují jako související položky na portálu. Obvykle id požadavku. |
-| Context.Operation.Name |řetězec |Název adresy URL nebo žádosti |
-| context.operation.parentId |řetězec |Umožňuje vnořené související položky. |
-| Context.Session.ID |řetězec |ID skupiny operací z jednoho zdroje. 30 minut bez operace signalizuje ukončení relace. |
+| context.device |objekt |Klientské zařízení |
+| context.device.browser |string |IE Chrome... |
+| context.device.browserVersion |string |Chrome 48,0... |
+| context.device.deviceModel |string | |
+| context.device.deviceName |string | |
+| context.device.id |string | |
+| context.device.locale |string |en-GB, de-DE, ... |
+| context.device.network |string | |
+| context.device.oemName |string | |
+| context.device.os |string | |
+| context.device.osVersion |string |Hostitelský operační systém |
+| context.device.roleInstance |string |ID hostitelského serveru |
+| context.device.roleName |string | |
+| context.device.screenResolution |string | |
+| context.device.type |string |Počítač, prohlížeč... |
+| context.location |objekt |Odvozený od clientip. |
+| context.location.city |string |Odvozený od clientip, pokud jsou známé |
+| context.location.clientip |string |Poslední osmiúhelníkem jsou anonymní na hodnotu 0. |
+| context.location.continent |string | |
+| context.location.country |string | |
+| Context.location.Province |string |Stát nebo kraj |
+| context.operation.id |string |Položky, které mají stejné id operace se zobrazují jako související položky na portálu. Obvykle id požadavku. |
+| context.operation.name |string |Název adresy URL nebo žádosti |
+| context.operation.parentId |string |Umožňuje vnořené související položky. |
+| context.session.id |string |ID skupiny operací z jednoho zdroje. 30 minut bez operace signalizuje ukončení relace. |
 | context.session.isFirst |Boolean | |
-| context.user.accountAcquisitionDate |řetězec | |
-| context.user.accountId |řetězec | |
-| context.user.anonAcquisitionDate |řetězec | |
-| context.user.anonId |řetězec | |
-| context.user.authAcquisitionDate |řetězec |[Ověřený uživatel](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
-| context.user.authId |řetězec | |
+| context.user.accountAcquisitionDate |string | |
+| context.user.accountId |string | |
+| context.user.anonAcquisitionDate |string | |
+| context.user.anonId |string | |
+| context.user.authAcquisitionDate |string |[Ověřený uživatel](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |string | |
 | context.user.isAuthenticated |Boolean | |
-| context.user.storeRegion |řetězec | |
-| internal.data.documentVersion |řetězec | |
-| internal.data.ID |řetězec | Jedinečný identifikátor, který je přidělen položky se ingestuje do služby Application Insights |
+| context.user.storeRegion |string | |
+| internal.data.documentVersion |string | |
+| internal.data.id |string | Jedinečný identifikátor, který je přidělen položky se ingestuje do služby Application Insights |
 
 ## <a name="events"></a>Události
 Vlastní události generované modulem [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
 | počet událostí [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
-| Název události [0] |řetězec |Název události.  Maximální délka 250. |
-| Adresa url pro události [0] |řetězec | |
-| události [0] urlData.base |řetězec | |
-| události [0] urlData.host |řetězec | |
+| Název události [0] |string |Název události.  Maximální délka 250. |
+| Adresa url pro události [0] |string | |
+| události [0] urlData.base |string | |
+| události [0] urlData.host |string | |
 
 ## <a name="exceptions"></a>Výjimky
 Sestavy [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v prohlížeči.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
-| sestavení basicException [0] |řetězec | |
+| sestavení basicException [0] |string | |
 | počet basicException [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
-| exceptionGroup basicException [0] |řetězec | |
-| exceptionType basicException [0] |řetězec | |
-| failedUserCodeMethod basicException [0] |řetězec | |
-| failedUserCodeAssembly basicException [0] |řetězec | |
-| handledAt basicException [0] |řetězec | |
+| basicException [0] exceptionGroup |string | |
+| exceptionType basicException [0] |string | |
+| failedUserCodeMethod basicException [0] |string | |
+| failedUserCodeAssembly basicException [0] |string | |
+| handledAt basicException [0] |string | |
 | hasFullStack basicException [0] |Boolean | |
-| id basicException [0] |řetězec | |
-| Metoda basicException [0] |řetězec | |
-| zpráva basicException [0] |řetězec |Zpráva o výjimce. Maximální délka 10 tis. |
-| outerExceptionMessage basicException [0] |řetězec | |
-| outerExceptionThrownAtAssembly basicException [0] |řetězec | |
-| outerExceptionThrownAtMethod basicException [0] |řetězec | |
-| outerExceptionType basicException [0] |řetězec | |
-| outerId basicException [0] |řetězec | |
-| basicException [0] [0] parsedStack sestavení |řetězec | |
-| Název souboru parsedStack [0] [0] basicException |řetězec | |
+| id basicException [0] |string | |
+| Metoda basicException [0] |string | |
+| zpráva basicException [0] |string |Zpráva o výjimce. Maximální délka 10 tis. |
+| outerExceptionMessage basicException [0] |string | |
+| outerExceptionThrownAtAssembly basicException [0] |string | |
+| outerExceptionThrownAtMethod basicException [0] |string | |
+| outerExceptionType basicException [0] |string | |
+| outerId basicException [0] |string | |
+| basicException [0] [0] parsedStack sestavení |string | |
+| Název souboru parsedStack [0] [0] basicException |string | |
 | úroveň parsedStack [0] [0] basicException |integer | |
 | basicException [0] [0] parsedStack řádku |integer | |
-| basicException [0] [0] parsedStack – metoda |řetězec | |
-| Zásobník basicException [0] |řetězec |Maximální délka 10 tisíc |
-| typeName basicException [0] |řetězec | |
+| basicException [0] [0] parsedStack – metoda |string | |
+| Zásobník basicException [0] |string |Maximální délka 10 tisíc |
+| typeName basicException [0] |string | |
 
 ## <a name="trace-messages"></a>Zprávy trasování
 Odeslaný [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)a [adaptéry protokolování](../../azure-monitor/app/asp-net-trace-logs.md).
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
-| Název_protokolovače zprávy [0] |řetězec | |
-| parametry zpráv [0] |řetězec | |
-| nezpracované zprávy [0] |řetězec |Zpráva protokolu 10 tisíc znaků. |
-| severityLevel zprávy [0] |řetězec | |
+| Název_protokolovače zprávy [0] |string | |
+| parametry zpráv [0] |string | |
+| nezpracované zprávy [0] |string |Zpráva protokolu 10 tisíc znaků. |
+| severityLevel zprávy [0] |string | |
 
 ## <a name="remote-dependency"></a>Vzdálené závislosti
 Odeslaný TrackDependency. Pro sestavu výkonu a využití [volání závislostí](../../azure-monitor/app/asp-net-dependencies.md) na serveru a volání AJAX v prohlížeči.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
 | asynchronní remoteDependency [0] |Boolean | |
-| baseName remoteDependency [0] |řetězec | |
-| commandName remoteDependency [0] |řetězec |Například "home/index" |
+| baseName remoteDependency [0] |string | |
+| commandName remoteDependency [0] |string |Například "home/index" |
 | počet remoteDependency [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
-| dependencyTypeName remoteDependency [0] |řetězec |HTTP, SQL... |
+| dependencyTypeName remoteDependency [0] |string |HTTP, SQL, ... |
 | durationMetric.value remoteDependency [0] |číslo |Čas z volání do konce odpovědi závislostí |
-| id remoteDependency [0] |řetězec | |
-| Název remoteDependency [0] |řetězec |Adresa URL. Maximální délka 250. |
-| Kód výsledku remoteDependency [0] |řetězec |ze závislostí protokolu HTTP |
+| id remoteDependency [0] |string | |
+| Název remoteDependency [0] |string |Adresa URL. Maximální délka 250. |
+| Kód výsledku remoteDependency [0] |string |ze závislostí protokolu HTTP |
 | Úspěch remoteDependency [0] |Boolean | |
-| Typ remoteDependency [0] |řetězec |Http, Sql... |
-| Adresa url remoteDependency [0] |řetězec |Maximální délka 2000 |
-| urlData.base remoteDependency [0] |řetězec |Maximální délka 2000 |
-| urlData.hashTag remoteDependency [0] |řetězec | |
-| urlData.host remoteDependency [0] |řetězec |Maximální délka 200 |
+| Typ remoteDependency [0] |string |Http, Sql... |
+| Adresa url remoteDependency [0] |string |Maximální délka 2000 |
+| urlData.base remoteDependency [0] |string |Maximální délka 2000 |
+| urlData.hashTag remoteDependency [0] |string | |
+| urlData.host remoteDependency [0] |string |Maximální délka 200 |
 
 ## <a name="requests"></a>Požadavky
 Odeslaný [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). Standardní moduly využit k doba odezvy serveru sestav, měří na serveru.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
-| Počet požadavků [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad: 4 =&gt; 25 %. |
+| Počet požadavků [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad: 4 =&gt; 25%. |
 | žádost o [0] durationMetric.value |číslo |Doba od žádosti přicházející do odpovědi. 1e7 == 1s |
-| id požadavku [0] |řetězec |ID operace |
-| Název žádosti [0] |řetězec |Základ adresy url + GET/POST.  Maximální délka 250 |
+| id požadavku [0] |string |ID operace |
+| Název žádosti [0] |string |Základ adresy url + GET/POST.  Maximální délka 250 |
 | žádost o [0] responseCode |integer |Odpovědi HTTP odeslané do klienta |
 | Úspěch požadavku [0] |Boolean |Výchozí == (responseCode &lt; 400) |
-| Adresa url požadavku [0] |řetězec |Nezahrnuje hostitele |
-| žádost o [0] urlData.base |řetězec | |
-| žádost o [0] urlData.hashTag |řetězec | |
-| žádost o [0] urlData.host |řetězec | |
+| Adresa url požadavku [0] |string |Nezahrnuje hostitele |
+| žádost o [0] urlData.base |string | |
+| žádost o [0] urlData.hashTag |string | |
+| žádost o [0] urlData.host |string | |
 
 ## <a name="page-view-performance"></a>Výkon zobrazení stránky
 Odeslání v prohlížeči. Měří čas ke zpracování stránky, od uživatele inicializaci žádosti zobrazíte kompletní (s výjimkou asynchronní volání jazyka AJAX).
 
 Kontext hodnoty zobrazit klientský operační systém a verze prohlížeče.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
 | clientProcess.value clientPerformance [0] |integer |Čas od konce příjem kód HTML pro zobrazení stránky. |
-| Název clientPerformance [0] |řetězec | |
+| Název clientPerformance [0] |string | |
 | networkConnection.value clientPerformance [0] |integer |Čas potřebný k navázání připojení k síti. |
 | receiveRequest.value clientPerformance [0] |integer |Čas od konce odesílání požadavku na příjem HTML v odpovědi. |
 | sendRequest.value clientPerformance [0] |integer |Z čas potřebný k odeslání požadavku HTTP. |
 | total.value clientPerformance [0] |integer |Čas spuštění odeslat požadavek na zobrazení stránky. |
-| Adresa url clientPerformance [0] |řetězec |Adresa URL této žádosti |
-| urlData.base clientPerformance [0] |řetězec | |
-| urlData.hashTag clientPerformance [0] |řetězec | |
-| urlData.host clientPerformance [0] |řetězec | |
-| urlData.protocol clientPerformance [0] |řetězec | |
+| Adresa url clientPerformance [0] |string |Adresa URL této žádosti |
+| urlData.base clientPerformance [0] |string | |
+| urlData.hashTag clientPerformance [0] |string | |
+| urlData.host clientPerformance [0] |string | |
+| urlData.protocol clientPerformance [0] |string | |
 
 ## <a name="page-views"></a>Zobrazení stránek
 Odeslaný trackPageView() nebo [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
 | Počet zobrazení [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | zobrazení [0] durationMetric.value |integer |Volitelně můžete nastavit v trackPageView() nebo startTrackPage() – hodnota stopTrackPage(). Není stejný jako clientPerformance hodnoty. |
-| Název zobrazení [0] |řetězec |Název stránky  Maximální délka 250 |
-| Adresa url zobrazení [0] |řetězec | |
-| zobrazení [0] urlData.base |řetězec | |
-| zobrazení [0] urlData.hashTag |řetězec | |
-| zobrazení [0] urlData.host |řetězec | |
+| Název zobrazení [0] |string |Název stránky  Maximální délka 250 |
+| Adresa url zobrazení [0] |string | |
+| zobrazení [0] urlData.base |string | |
+| zobrazení [0] urlData.hashTag |string | |
+| zobrazení [0] urlData.host |string | |
 
 ## <a name="availability"></a>Dostupnost
 Sestavy [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md).
 
-| Cesta | Typ | Poznámky |
+| Cesta | Type | Poznámky |
 | --- | --- | --- |
-| availabilityMetric.name dostupnost [0] |řetězec |dostupnosti |
+| availabilityMetric.name dostupnost [0] |string |dostupnosti |
 | availabilityMetric.value dostupnost [0] |číslo |1.0 nebo 0,0 |
 | počet dostupnost [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
-| dataSizeMetric.name dostupnost [0] |řetězec | |
+| dataSizeMetric.name dostupnost [0] |string | |
 | dataSizeMetric.value dostupnost [0] |integer | |
-| durationMetric.name dostupnost [0] |řetězec | |
-| durationMetric.value dostupnost [0] |číslo |Doba trvání testu. 1e7 == 1s |
-| zpráva o dostupnosti [0] |řetězec |Diagnostika chybu |
-| výsledek dostupnosti [0] |řetězec |Úspěšný/selhání |
-| runLocation dostupnost [0] |řetězec |Geograficky příčiny No http |
-| Název_testu dostupnost [0] |řetězec | |
-| ID testovacího běhu dostupnost [0] |řetězec | |
-| testTimestamp dostupnost [0] |řetězec | |
+| durationMetric.name dostupnost [0] |string | |
+| durationMetric.value dostupnost [0] |číslo |Doba trvání testu. 1e7==1s |
+| zpráva o dostupnosti [0] |string |Diagnostika chybu |
+| výsledek dostupnosti [0] |string |Úspěšný/selhání |
+| runLocation dostupnost [0] |string |Geograficky příčiny No http |
+| Název_testu dostupnost [0] |string | |
+| ID testovacího běhu dostupnost [0] |string | |
+| testTimestamp dostupnost [0] |string | |
 
 ## <a name="metrics"></a>Metriky
 Generované metody TrackMetric().

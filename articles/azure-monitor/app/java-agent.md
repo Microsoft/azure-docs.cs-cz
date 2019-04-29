@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
 ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004045"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60900604"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 

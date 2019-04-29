@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 7cb8d494d32f2a9c192418bfab2d5ca9b679c5fe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704883"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -119,7 +119,7 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 |Předplatné|5|Odeberte zastaralé účty z předplatného|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. |
 |Předplatné|5|Určení více než jednoho vlastníka předplatného|Pokud chcete mít redundance přístupu správce určete více než jednoho vlastníka předplatného.|
 |Předplatné|5|Určete v předplatném nanejvýš 3 vlastníky.|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
-|Trezor klíčů|5|Povolení diagnostických protokolů v Key Vault|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|Trezor klíčů|5|Povolte diagnostické protokoly v Key Vaultu|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
 |Předplatné|15|Z předplatného odebrat externí účty s oprávněním pro čtení|Z předplatného odeberte externí účty s oprávněními pro čtení, aby nedocházelo k nemonitorovanému přístupu.|
 |Předplatné|1|Poskytnutí podrobností kontaktů zabezpečení|Zadejte kontaktní informace o zabezpečení pro každé z vašich předplatných. Kontaktní údaje je e-mailovou adresu a telefonní číslo. Informace, používá se vás kontaktovat, pokud náš tým zabezpečení zjistí ohrožení vašich prostředků|
 
@@ -129,7 +129,7 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 ## <a name="next-steps"></a>Další postup
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-- [Ochrana vašich počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-recommendations.md)
 - [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 - [Ochrana služby Azure SQL a data ve službě Azure Security Center](security-center-sql-service-recommendations.md)
 

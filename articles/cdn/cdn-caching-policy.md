@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61069434"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Správa Azure CDN ve službě Azure Media Services zásady ukládání do mezipaměti
 Azure Media Services nabízí adaptivní streamování a progresivní stahování založený na HTTP. Streamování na základě protokolu HTTP je vysoce škálovatelná výhody ukládání do mezipaměti v proxy serveru a vrstvy CDN, stejně jako ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné funkce streamování a také konfigurace mezipaměti hlaviček protokolu HTTP. Koncové body streamování nastaví HTTP Cache-Control: maximální stáří a záhlaví Expires. Můžete získat další informace o mezipaměti hlavičky protokolu HTTP z [adrese W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).

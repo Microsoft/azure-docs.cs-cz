@@ -1,6 +1,6 @@
 ---
 title: GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver | Dokumentace Microsoftu
-description: GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver
+description: GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711248"
 ---
-# <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver
+# <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -182,7 +182,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo systemctl enable glusterd
    </code></pre>
 
-1. **[1]**  Vytvořit GluserFS
+1. **[1]** Create GluserFS
 
    Spusťte následující příkazy k vytvoření clusteru GlusterFS
 

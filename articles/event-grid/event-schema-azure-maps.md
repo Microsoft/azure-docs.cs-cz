@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: v-musehg
 ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861850"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schéma událostí Azure Event Grid pro mapy Azure
 
@@ -104,21 +104,21 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor pro událost. |
+| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| předmět | string | Vydavatel definované cesta předmět události. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události monitorování geografických zón. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| apiCategory | řetězec | Rozhraní API kategorie události. |
-| ApiName | řetězec | Název rozhraní API události. |
+| apiCategory | string | Rozhraní API kategorie události. |
+| ApiName | string | Název rozhraní API události. |
 | Problémy | objekt | Uvádí problémy během zpracovávání. Pokud jsou vráceny všechny problémy, pak nebudou žádná geometrie odpověď se vrátí. |
 | responseCode | číslo | Kód odpovědi HTTP |
 | Geometrie | objekt | Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
@@ -133,26 +133,26 @@ Když dojde k chybě v rozhraní API pro mapy, je vrácen objekt detaily chyby. 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| kód | řetězec | Stavový kód HTTP. |
-| zpráva | řetězec | Pokud je k dispozici, lidské čitelný popis chyby. |
+| kód | string | Stavový kód HTTP. |
+| zpráva | string | Pokud je k dispozici, lidské čitelný popis chyby. |
 | innererror | InnerError | Pokud je k dispozici, objekt, který obsahuje konkrétní službu informace o této chybě. |
 
 InnerError je objekt, který obsahuje konkrétní službu informace o této chybě. Objekt InnerError má následující vlastnosti: 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| kód | řetězec | Chybová zpráva. |
+| kód | string | Chybová zpráva. |
 
 Objekt geometrie uvádí geometrie ID monitorovaná geografická zóna, které vypršely relativní vůči času uživatele v požadavku. Geometrie objektu má geometrie položky s následujícími vlastnostmi: 
 
 | Vlastnost | Typ | Popis |
 |:-------- |:---- |:----------- |
-| ID zařízení | řetězec | ID zařízení. |
-| vzdálenost | řetězec | <p>Vzdálenost od souřadnice na nejbližší okraj monitorové geografické zóny. Pozitivní znamená, že bod se souřadnicemi je mimo monitorové geografické zóny. Pokud bod se souřadnicemi je mimo monitorové geografické zóny, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorové geografické zóny, hodnota je 999. Negativní znamená, že bod se souřadnicemi je uvnitř monitorové geografické zóny. Pokud bod se souřadnicemi je uvnitř mnohoúhelníku, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorování geografických zón, hodnota je-999. Hodnota 999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je také mimo monitorové geografické zóny. Hodnota-999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je dobře uvnitř monitorové geografické zóny.<p> |
-| geometryid |řetězec | Jedinečné id identifikuje geometrie monitorové geografické zóny. |
+| ID zařízení | string | ID zařízení. |
+| vzdálenost | string | <p>Vzdálenost od souřadnice na nejbližší okraj monitorové geografické zóny. Pozitivní znamená, že bod se souřadnicemi je mimo monitorové geografické zóny. Pokud bod se souřadnicemi je mimo monitorové geografické zóny, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorové geografické zóny, hodnota je 999. Negativní znamená, že bod se souřadnicemi je uvnitř monitorové geografické zóny. Pokud bod se souřadnicemi je uvnitř mnohoúhelníku, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorování geografických zón, hodnota je-999. Hodnota 999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je také mimo monitorové geografické zóny. Hodnota-999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je dobře uvnitř monitorové geografické zóny.<p> |
+| geometryid |string | Jedinečné id identifikuje geometrie monitorové geografické zóny. |
 | nearestlat | číslo | Zeměpisná šířka nejbližší bod geometrii. |
 | nearestlon | číslo | Zeměpisná délka nejbližší bod geometrii. |
-| udId | řetězec | Jedinečné id vrácená služba nahrávání uživatele při nahrávání monitorové geografické zóny. Nebudou zahrnuty v rozhraní API příspěvku monitorování geografických zón. |
+| udId | string | Jedinečné id vrácená služba nahrávání uživatele při nahrávání monitorové geografické zóny. Nebudou zahrnuty v rozhraní API příspěvku monitorování geografických zón. |
 
 Datový objekt má následující vlastnosti:
 

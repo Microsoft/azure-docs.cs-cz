@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
 ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214296"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764284"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu ve službě Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
@@ -63,8 +63,8 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity webu | Řetězec | Ano
-type | Musí být nastaveno na **WebActivity**. | Řetězec | Ano
+jméno | Název aktivity webu | String | Ano
+type | Musí být nastaveno na **WebActivity**. | String | Ano
 method | Metoda REST API pro cílový koncový bod. | řetězec. <br/><br/>Podporované typy: "GET", "POST", "UMÍSTĚNÍ" | Ano
 url | Cílový koncový bod a cesty | Řetězec (nebo výraz s hodnotu resultType řetězec). Aktivita vyprší časový limit na 1 minutu s chybou, pokud neobdrží odpověď z koncového bodu. | Ano
 Záhlaví | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ano, vyžaduje se hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`

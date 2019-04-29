@@ -10,11 +10,11 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739168"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -32,7 +32,7 @@ Zvolte pracovní prostor Log Analytics a účet Automation a klikněte na tlač�
 
 ![Začlenění řešení Inventory](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-Při povolování řešení, pro propojení pracovního prostoru Log Analytics a účet Automation se podporují pouze určité oblasti.
+Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
 
 V následující tabulce jsou uvedeny podporované mapování:
 

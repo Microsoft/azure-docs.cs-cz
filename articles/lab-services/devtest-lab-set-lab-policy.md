@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636427"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí ve službě Azure DevTest Labs
 
@@ -91,7 +91,7 @@ Jako vlastník testovacího prostředí můžete nakonfigurovat plán vypnutí p
 
 1. Na domovské stránce testovacího prostředí, vyberte **konfigurace a zásad**.
 2. Vyberte **automatické vypnutí zásad** v **plány** část v levé nabídce.
-3. Vyberte jednu z možností. Následující části poskytují další podrobnosti o těchto možnostech: nastavení zásad platí pouze pro nové virtuální počítače vytvořené v testovacím prostředí a ne na už existující virtuální počítače. 
+3. Vyberte jednu z možností. Následující části poskytují další podrobnosti o těchto možnostech: Nastavení zásad platí pouze pro nové virtuální počítače vytvořené v testovacím prostředí a ne na už existující virtuální počítače. 
 
     ![Možnosti automatického vypnutí zásad](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 

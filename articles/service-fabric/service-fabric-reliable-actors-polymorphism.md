@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662954"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725482"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfismus v Reliable Actors rozhraní framework
 Reliable Actors rozhraní umožňuje vytvářet objekty actor využívá spoustu stejné techniky, které použijete v objektově orientovaný návrh. Jeden z těchto postupů je polymorfismus, která umožňuje typy a rozhraní dědit z více zobecnit nadřazených objektů. Dědičnost v Reliable Actors v rámci obvykle řídí modelem .NET s několika další omezení. V případě Java/Linux se řídí modelem Java.

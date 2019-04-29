@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824027"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Přesun dat z OData zdroji pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | url |Adresa URL služby OData. |Ano |
 | authenticationType. |Typ ověřování používaný pro připojení ke zdroji OData. <br/><br/> Pro cloudové prostředí OData možné hodnoty jsou Anonymous, Basic a protokolem OAuth (Poznámka: momentálně se podporuje jenom podpory Azure Data Factory, Azure Active Directory na základě OAuth). <br/><br/> V místním prostředí OData možné hodnoty jsou Anonymous, Basic a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **Authorize** tlačítko Průvodce kopírováním služby Data Factory nebo editoru a zadejte svoje přihlašovací údaje, pak hodnota této vlastnosti bude možné automaticky vygenerovat. |Ano (pouze v případě, že používáte ověřování OAuth) |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat z na místní zdroj OData. |Ne |
 
@@ -185,7 +185,7 @@ Při přesunu dat z protokolu OData, se používají následující mapování z
 | Edm.SByte |Int16 |
 | Edm.String |String |
 | Edm.Time |TimeSpan |
-| Edm.DateTimeOffset |DateTimeOffset |
+| Edm.DateTimeOffset |Datetimeoffset |
 
 > [!Note]
 > OData komplexní datové typy třeba objektu nejsou podporovány.

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Vytvoření zásady zálohování pomocí REST API služby'
+title: 'Azure Backup: Vytvoření zásady zálohování pomocí REST API'
 description: Správa zásad zálohování (plán a uchovávání) pomocí rozhraní REST API
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648801"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásady zálohování Azure Recovery Services pomocí rozhraní REST API
 
@@ -31,7 +31,7 @@ Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Servi
 - Zásady můžete přiřadit ke spoustě prostředků. Zásady zálohování virtuálního počítače Azure je možné chránit mnoha virtuálních počítačů Azure.
 - Zásady se skládá ze dvou částí:
   - Plán: Kdy se má vytvořit zálohu
-  - Uchovávání dat: Jak dlouho Každá záloha uchovávání.
+  - Uchovávání dat: Jak dlouho se uchovávají každé zálohování.
 - Plán může být definován jako "denní" nebo "týdenní" s konkrétní bod v čase.
 - Uchovávání informací lze definovat pro "denní", "každý týden", "měsíc", "roční" body záloh.
 - "každý týden" odkazuje na zálohy v určitý den v týdnu, "měsíc" znamená, že zálohy v určitý den v měsíci a "rok" odkazuje na zálohy v určitý den v roce.
@@ -52,8 +52,8 @@ Například můžete vytvořit zásadu pro zálohování virtuálních počíta�
 
 |Název  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|vlastnosti     |   True (Pravda)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
-|značky     |         | Objekt        |  Značky prostředků       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
+|tags     |         | Object        |  Značky prostředků       |
 
 Úplný seznam definic v textu požadavku, najdete [zásady zálohování rozhraní REST API dokumentu](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
 
@@ -152,11 +152,11 @@ Uvádí, že zásady:
 > [!IMPORTANT]
 > Formáty času pro plán a uchovávání podporují pouze data a času. Formát času samostatně nepodporují.
 
-## <a name="responses"></a>Odpovědi
+## <a name="responses"></a>Odezvy
 
 Vytvoření/aktualizace zásady zálohování se [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a potom 200 (OK) po dokončení této operace.
+Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|

@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 79ae38db73d55021572d04f693e5cb809e9bd056
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709845"
 ---
 Vrácená data s očekávanou hodnotou a výchozím horním a spodním okrajem. V praxi můžete definovat parametr [sensitivity] (citlivost) a potom použít (ExpectedValue + citlivost * UpperMargin) jako horní mez a (ExpectedValue – citlivost * LowerMargin) jako spodní mez a vyladit bod anomálie sami. Hodnota [sensitivity] by měla být větší než 1. Níže najdete některé diagramy pro ladění.
 

@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195094"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871525"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Protokolů serveru ve službě Azure Database for PostgreSQL 
 Azure Database for PostgreSQL generuje dotaz a chybových protokolů. Dotaz a chybových protokolů umožňuje zjistit, řešit a opravit chyby v konfiguraci a neoptimální výkonu. (Přístup k protokolům transakce není součástí). 

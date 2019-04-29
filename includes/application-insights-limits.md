@@ -9,11 +9,11 @@ ms.date: 06/21/2018
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 31ff6ae66b13eb5e5abcde94e8d3df7f6e32f63c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407890"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794414"
 ---
 Na jeden Instrumentační klíč to znamená, existují některá omezení počtu metrik a událostí na aplikaci. Omezení závisí na zvoleném [cenovém plánu](https://azure.microsoft.com/pricing/details/application-insights/).
 

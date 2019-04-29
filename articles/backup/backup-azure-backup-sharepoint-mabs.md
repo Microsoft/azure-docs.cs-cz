@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: kasinh
 ms.openlocfilehash: 7fa68e11ccac69db9335e589f5048264df9d0a47
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60645326"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Zálohujete Sharepointové farmy do Microsoft Azure s využitím Microsoft Azure Backup Server (MABS) mnohem stejným způsobem, který je zálohovat zdrojů dat. Azure Backup poskytuje flexibilitu při plán zálohování a vytvořit každý den, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body záloh. Poskytuje taky možnost k uložení kopie místního disku pro rychlé cíle plánované doby obnovení (RTO) a k uložení kopie do Azure pro hospodárná a dlouhodobé uchovávání.
@@ -21,7 +21,7 @@ Zálohujete Sharepointové farmy do Microsoft Azure s využitím Microsoft Azure
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Podporované verze služby SharePoint a související scénáře ochrany
 Azure Backup pro DPM podporuje následující scénáře:
 
-| Úloha | Verze | Nasazení služby SharePoint | Ochrana a obnovení |
+| Úloha | Version | Nasazení služby SharePoint | Ochrana a obnovení |
 | --- | --- | --- | --- |
 | SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |SharePoint nasadit jako fyzický server nebo virtuální počítač Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn | Ochrana farmy služby SharePoint možnosti obnovení: Obnovení farmy, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Obnovení farmy a databáze z bodů obnovení Azure. |
 
@@ -225,10 +225,10 @@ V následujícím příkladu *položky obnovení Sharepointu* omylem odstraněn�
 5. V tomto okamžiku postupujte podle kroků obnovení dříve v tomto článku k obnovení databáze obsahu služby SharePoint z disku.
 
 ## <a name="faqs"></a>Nejčastější dotazy
-OTÁZKA: Můžete obnovit Sharepointových položek do původního umístění, pokud je služba SharePoint nakonfigurována pomocí AlwaysOn serveru SQL (ochrana na disku)?<br>
+Otázka: Můžete obnovit Sharepointových položek do původního umístění, pokud je služba SharePoint nakonfigurována pomocí AlwaysOn serveru SQL (ochrana na disku)?<br>
 Odpověď: Ano, položka je možné obnovit do původního webu služby SharePoint.
 
-OTÁZKA: Můžete obnovit do původního umístění databáze služby SharePoint, pokud je služba SharePoint nakonfigurována s použitím SQL AlwaysOn?<br>
+Otázka: Můžete obnovit do původního umístění databáze služby SharePoint, pokud je služba SharePoint nakonfigurována s použitím SQL AlwaysOn?<br>
 Odpověď: Protože SharePoint databází nakonfigurovaných v SQL AlwaysOn, jejich nelze upravit, pokud je skupina dostupnosti odebrána. V důsledku toho MABS nelze obnovit databázi do původního umístění. Můžete obnovit databázi systému SQL Server na jinou instanci systému SQL Server.
 
 ## <a name="next-steps"></a>Další kroky

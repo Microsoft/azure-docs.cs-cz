@@ -2,18 +2,18 @@
 title: Kopírování nebo přesun dat do služby Azure Storage pomocí AzCopy ve Windows | Dokumentace Microsoftu
 description: Použijte AzCopy na nástroj Windows Pokud chcete přesunout nebo kopírovat data do nebo z objektu blob, tabulky a obsahu souboru. Kopírování dat do služby Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadno migrate data do služby Azure Storage.
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: seguler
+ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881728"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60728980"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy ve Windows
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Microsoft Azure Blob, File a Table storage, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  

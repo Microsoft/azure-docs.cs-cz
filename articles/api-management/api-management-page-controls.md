@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656880"
 ---
 # <a name="azure-api-management-page-controls"></a>Ovládací prvky stránky Azure API Management
 Azure API Management poskytuje následující ovládací prvky pro použití v vývojář šablon portálu.  
@@ -37,14 +37,14 @@ Použití ovládacího prvku, umístěte ho do požadovaného umístění v šab
   
 ## <a name="developer-portal-template-page-controls"></a>Ovládací prvky stránky šablony portálu pro vývojáře  
   
--   [aplikace akcí](#app-actions)  
--   [Basic – přihlášení](#basic-signin)  
--   [ovládací prvek stránkování](#paging-control)  
+-   [app-actions](#app-actions)  
+-   [basic-signin](#basic-signin)  
+-   [paging-control](#paging-control)  
 -   [Zprostředkovatelé](#providers)  
--   [ovládací prvek hledání](#search-control)  
+-   [search-control](#search-control)  
 -   [Zaregistrujte se](#sign-up)  
--   [tlačítko přihlášení odběru](#subscribe-button)  
--   [zrušení předplatného](#subscription-cancel)  
+-   [subscribe-button](#subscribe-button)  
+-   [subscription-cancel](#subscription-cancel)  
   
 ##  <a name="app-actions"></a> aplikace akcí  
  `app-actions` Ovládacího prvku poskytuje uživatelské rozhraní pro interakci s aplikací na stránku profilu uživatele na portálu pro vývojáře.  

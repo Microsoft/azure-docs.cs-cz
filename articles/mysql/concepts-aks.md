@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790517"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Připojení Azure Kubernetes Service a Azure Database for MySQL
 

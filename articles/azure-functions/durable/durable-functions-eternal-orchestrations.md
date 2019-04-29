@@ -2,20 +2,21 @@
 title: Externí Orchestrace v Durable Functions – Azure
 description: Zjistěte, jak implementovat externí Orchestrace pomocí rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: ggailey777
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: azfuncdf
+origin.date: 12/07/2018
+ms.date: 12/25/2018
+ms.author: v-junlch
 ms.openlocfilehash: c4adffd457338ffebfd1c9c7727023f82088dc57
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60732412"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Externí Orchestrace v Durable Functions (Azure Functions)
 
@@ -84,3 +85,4 @@ Pokud funkce orchestrátoru je v nekonečné smyčce a musí zastavit, použijte
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak implementovat Orchestrace s jedním prvkem](durable-functions-singletons.md)
+

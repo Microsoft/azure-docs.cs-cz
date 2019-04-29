@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4282c9e9b660476992ba6f948bc5e408e9b064a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 33e738f31be493d5890fc972ec71e7c6cd733bf4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968607"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736443"
 ---
 # <a name="http2-support-in-azure-front-door-service"></a>Podpora HTTP/2 branou služby Azure
 HTTP/2 je hlavní revizi HTTP/1.1. To zajišťuje rychlejší webového výkonu, snížení odezvu a vylepšené uživatelské prostředí a přitom zkušenosti metody HTTP, stavové kódy a sémantika. I když HTTP/2 je navržen pro práci s HTTP a HTTPS, mnoha webových prohlížečích klienta podporují jenom HTTP/2 přes zabezpečení TLS (Transport Layer).
@@ -60,5 +60,5 @@ Další informace o HTTP/2 najdete na následujících odkazech:
 
 - [Domovská stránka specifikaci protokolu HTTP/2](https://http2.github.io/)
 - [Oficiální HTTP/2 – nejčastější dotazy](https://http2.github.io/faq/)
-- Zjistěte, jak [vytvořit přední dveře](quickstart-create-front-door.md).
-- Přečtěte si [fungování branou](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

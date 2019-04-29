@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242356"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609594"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Zabezpečení Azure a dodržování předpisů – datový sklad pro SP NIST 800-171
 
@@ -150,7 +150,7 @@ Security Center nabízí výstrahy zabezpečení seřazené podle priority a inc
 Tato referenční architektura také využívá [sken posouzení ohrožení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) schopností ve službě Security Center. Po dokončení konfigurace, agent partnera (například Qualysu) hlásí data o ohrožení zabezpečení na platformu partnera pro správu. Platforma partnera pro správu pak poskytuje data o ohrožení zabezpečení a data monitorování stavu zpět do služby Security Center. Zákazníky můžete použít tyto informace rychle identifikovat virtuální počítače jsou zranitelné.
 
 ### <a name="business-continuity"></a>Kontinuita podnikových procesů
-**Vysoká dostupnost**: Jiné úlohy serveru jsou seskupené v [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k zajištění vysoké dostupnosti virtuálních počítačů v Azure. Alespoň jeden virtuální počítač je k dispozici během událostí plánované i neplánované údržby, který splňuje 99,95 % Azure SLA.
+**Vysoká dostupnost:** Jiné úlohy serveru jsou seskupené v [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k zajištění vysoké dostupnosti virtuálních počítačů v Azure. Alespoň jeden virtuální počítač je k dispozici během událostí plánované i neplánované údržby, který splňuje 99,95 % Azure SLA.
 
 **Trezor služby Recovery Services**: [Trezor služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) jsou uloženy zálohovaných dat a chrání všechny konfigurace virtuálních počítačů v této architektuře. Pomocí trezoru služby Recovery Services zákazníci obnovit soubory a složky z virtuálního počítače IaaS bez obnovení celého virtuálního počítače. Tento proces urychluje dobu obnovení.
 

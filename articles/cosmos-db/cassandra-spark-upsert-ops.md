@@ -1,20 +1,22 @@
 ---
 title: Upsert dat do Azure Cosmos DB Cassandra API z aplikace Spark
 description: Tento článek podrobně popisuje postupy upsert do tabulek v Azure Cosmos DB Cassandra API z aplikace Spark
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
+origin.date: 09/24/2018
+ms.date: 03/18/2019
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893396"
 ---
+<!--Verify sucessfully-->
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert dat do Azure Cosmos DB Cassandra API z aplikace Spark
 
 Tento článek popisuje, jak upsert data do Azure Cosmos DB Cassandra API z aplikace Spark.
@@ -31,7 +33,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -90,7 +92,11 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 ## <a name="next-steps"></a>Další postup
 
 Pokračujte k provádění jiných operací s daty uloženými v Azure Cosmos DB Cassandra API tabulky v následujících článcích:
- 
+
 * [Operace odstranění](cassandra-spark-delete-ops.md)
 * [Agregační operace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
+
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

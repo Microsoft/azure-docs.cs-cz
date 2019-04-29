@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
 ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610123"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpečení Azure a dodržování předpisů – chráněné PaaS webovou aplikaci pro Austrálii
 
@@ -59,7 +59,7 @@ Toto řešení používá následující služby Azure. Další podrobnosti najd
 - Azure Security Center
 - Azure SQL Database
 - Azure Storage
-- Protokoly Azure monitoru
+- Protokoly služby Azure Monitor
 - Azure Virtual Network
     - (1) /16 sítě
     - (4) /24 sítě

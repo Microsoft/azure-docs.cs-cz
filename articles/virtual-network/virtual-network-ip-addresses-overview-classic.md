@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652163"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742113"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy IP adres a metody přidělení (classic) v Azure
 Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres můžete použít v Azure: veřejné a soukromé.
@@ -144,7 +144,7 @@ Následující tabulka ukazuje, každý typ prostředku se metody možné přid�
 | Interní služby load balancer front-endu |Ano |Ano |Ano |
 | Front-endu aplikace brány |Ano |Ano |Ano |
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 Následující tabulka uvádí omezení IP adresování v Azure na jedno předplatné. Pokud chcete v závislosti na svých obchodních potřebách zvýšit výchozí omezení na povolené maximum, [kontaktujte podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 |  | Výchozí omezení | Maximální omezení |

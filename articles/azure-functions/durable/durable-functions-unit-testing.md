@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.author: kadimitr
+origin.date: 12/11/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.openlocfilehash: 69cf91f1448e36353f83de7a271abb3b53858bb0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094071"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648461"
 ---
 # <a name="durable-functions-unit-testing"></a>Odolné funkce testování
 
@@ -54,7 +55,40 @@ Další podrobnosti najdete v následujících odstavcích pro testování funkc
 
 V této části testování částí ověří logiky následující funkci triggeru HTTP pro spuštění nové Orchestrace.
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+```csharp
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+
+namespace VSSample
+{
+    public static class HttpStart
+    {
+        [FunctionName("HttpStart")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
+            [OrchestrationClient] DurableOrchestrationClientBase starter,
+            string functionName,
+            ILogger log)
+        {
+            // Function input comes from the request content.
+            dynamic eventData = await req.Content.ReadAsAsync<object>();
+            string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+            return starter.CreateCheckStatusResponse(req, instanceId);
+        }
+    }
+}
+```
 
 Úloha testu jednotek bude ověření hodnoty `Retry-After` hlavičky zadané v datové části odpovědi. Takže testování částí se napodobení některé z [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) metody bylo zajištěno předvídatelný chování.
 
@@ -126,7 +160,76 @@ Nyní `Run` metoda je volána z testu jednotek:
 
 Po spojení všech kroků testu jednotek mít následující kód:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
+```csharp
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+namespace VSSample.Tests
+{
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Net.Http.Headers;
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Extensions.Logging;
+    using Moq;
+    using Xunit;
+
+    public class HttpStartTests
+    {
+        [Fact]
+        public async Task HttpStart_returns_retryafter_header()
+        {
+            // Define constants
+            const string functionName = "SampleFunction";
+            const string instanceId = "7E467BDB-213F-407A-B86A-1954053D3C24";
+
+            // Mock TraceWriter
+            var loggerMock = new Mock<ILogger>();
+
+            // Mock DurableOrchestrationClientBase
+            var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
+
+            // Mock StartNewAsync method
+            durableOrchestrationClientBaseMock.
+                Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
+                ReturnsAsync(instanceId);
+
+            // Mock CreateCheckStatusResponse method
+            durableOrchestrationClientBaseMock
+                .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId))
+                .Returns(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = new StringContent(string.Empty),
+                    Headers =
+                    {
+                        RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
+                    }
+                });
+
+            // Call Orchestration trigger function
+            var result = await HttpStart.Run(
+                new HttpRequestMessage()
+                {
+                    Content = new StringContent("{}", Encoding.UTF8, "application/json"),
+                    RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
+                },
+                durableOrchestrationClientBaseMock.Object,
+                functionName,
+                loggerMock.Object);
+
+            // Validate that output is not null
+            Assert.NotNull(result.Headers.RetryAfter);
+
+            // Validate output's Retry-After header value
+            Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
+        }
+    }
+}
+```
 
 ## <a name="unit-testing-orchestrator-functions"></a>Testování funkce nástroje orchestrator
 
@@ -134,7 +237,47 @@ Funkce nástroje Orchestrator je ještě zajímavější jednotky testování, p
 
 V této části se jednotka se testy ověření výstupu `E1_HelloSequence` funkce Orchestrátoru:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
+```csharp
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
+
+namespace VSSample
+{
+    public static class HelloSequence
+    {
+        [FunctionName("E1_HelloSequence")]
+        public static async Task<List<string>> Run(
+            [OrchestrationTrigger] DurableOrchestrationContextBase context)
+        {
+            var outputs = new List<string>();
+
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Tokyo"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Seattle"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello_DirectInput", "London"));
+
+            // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
+            return outputs;
+        }
+
+        [FunctionName("E1_SayHello")]
+        public static string SayHello([ActivityTrigger] DurableActivityContextBase context)
+        {
+            string name = context.GetInput<string>();
+            return $"Hello {name}!";
+        }
+
+        [FunctionName("E1_SayHello_DirectInput")]
+        public static string SayHelloDirectInput([ActivityTrigger] string name)
+        {
+            return $"Hello {name}!";
+        }
+    }
+ }
+```
 
 Kód testu jednotek se spustí s vytvářením model:
 
@@ -167,7 +310,37 @@ A nakonec se ověří výstup:
 
 Po spojení všech kroků testu jednotek mít následující kód:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceOrchestratorTests.cs)]
+```csharp
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+namespace VSSample.Tests
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.WebJobs;
+    using Moq;
+    using Xunit;
+
+    public class HelloSequenceTests
+    {
+        [Fact]
+        public async Task Run_returns_multiple_greetings()
+        {
+            var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
+            durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
+            durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
+            durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello_DirectInput", "London")).ReturnsAsync("Hello London!");
+
+            var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
+
+            Assert.Equal(3, result.Count);
+            Assert.Equal("Hello Tokyo!", result[0]);
+            Assert.Equal("Hello Seattle!", result[1]);
+            Assert.Equal("Hello London!", result[2]);
+        }
+    }
+}
+```
 
 ## <a name="unit-testing-activity-functions"></a>Aktivita funkce testování částí
 
@@ -175,15 +348,85 @@ Aktivita funkce mohou být jednotky testování stejným způsobem jako jiné du
 
 V této části testování částí ověří chování `E1_SayHello` aktivita funkce:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
+```csharp
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
+
+namespace VSSample
+{
+    public static class HelloSequence
+    {
+        [FunctionName("E1_HelloSequence")]
+        public static async Task<List<string>> Run(
+            [OrchestrationTrigger] DurableOrchestrationContextBase context)
+        {
+            var outputs = new List<string>();
+
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Tokyo"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello", "Seattle"));
+            outputs.Add(await context.CallActivityAsync<string>("E1_SayHello_DirectInput", "London"));
+
+            // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
+            return outputs;
+        }
+
+        [FunctionName("E1_SayHello")]
+        public static string SayHello([ActivityTrigger] DurableActivityContextBase context)
+        {
+            string name = context.GetInput<string>();
+            return $"Hello {name}!";
+        }
+
+        [FunctionName("E1_SayHello_DirectInput")]
+        public static string SayHelloDirectInput([ActivityTrigger] string name)
+        {
+            return $"Hello {name}!";
+        }
+    }
+ }
+```
 
 A testování částí ověří formát výstupu. Testy jednotek můžete použít typy parametrů mock nebo přímo [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) třídy:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
+```csharp
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
 
+namespace VSSample.Tests
+{
+    using Microsoft.Azure.WebJobs;
+    using Xunit;
+    using Moq;
+
+    public class HelloSequenceActivityTests
+    {
+        [Fact]
+        public void SayHello_returns_greeting()
+        {
+            var durableActivityContextMock = new Mock<DurableActivityContextBase>();
+            durableActivityContextMock.Setup(x => x.GetInput<string>()).Returns("John");
+            var result = HelloSequence.SayHello(durableActivityContextMock.Object);
+            Assert.Equal("Hello John!", result);
+        }
+
+        [Fact]
+        public void SayHello_returns_greeting_direct_input()
+        {
+            var result = HelloSequence.SayHelloDirectInput("John");
+            Assert.Equal("Hello John!", result);
+        }
+    }
+}
+```
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
 > 
 > [Další informace o moq](https://github.com/Moq/moq4/wiki/Quickstart)
+
+<!-- Update_Description: wording update -->

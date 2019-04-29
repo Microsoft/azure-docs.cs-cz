@@ -7,16 +7,16 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60838075"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL s použitím import a export
 Tento článek vysvětluje dvě běžné přístupy k importu a exportu dat na serveru Azure Database for MySQL pomocí aplikace MySQL Workbench. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Pro jednotlivé kroky v této příručce s postupy, musíte:
 - Azure Database for MySQL serveru pomocí následujících [vytvoření Azure Database for MySQL pomocí webu Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md).
 - Aplikace MySQL Workbench [stáhli](https://dev.mysql.com/downloads/workbench/), nebo jiný nástroj MySQL pro import a export.
@@ -83,7 +83,7 @@ Následující příklad exportuje do souboru CSV v tabulce:
 Následující příklad importuje ze souboru CSV:
 1. Klikněte pravým tlačítkem na tabulku databáze, kterou chcete importovat. 
 2. Vyhledejte a vyberte soubor sdíleného svazku clusteru naimportují, a potom klikněte na **Další**. 
-3. Vyberte cílové tabulky (nový nebo existující) a zaškrtněte nebo zrušte zaškrtnutí **Truncate table před importem** zaškrtávací políčko. Klikněte na tlačítko **Další**.
+3. Vyberte cílové tabulky (nový nebo existující) a zaškrtněte nebo zrušte zaškrtnutí **Truncate table před importem** zaškrtávací políčko. Klikněte na **Další**.
 4. Vyberte možnost kódování a sloupce, které chcete importovat a potom klikněte na tlačítko **Další**. 
 5. Na **importovat data** klikněte na **Další**. Průvodce importuje data odpovídajícím způsobem.
 

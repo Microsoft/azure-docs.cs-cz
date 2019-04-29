@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704712"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Vyšetřování incidentů a výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.

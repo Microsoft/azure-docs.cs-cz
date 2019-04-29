@@ -14,11 +14,11 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 8925943b0a5d151d55adedcfe3f01b5a14c63c1b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613888"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules Schema
 `NetworkTrafficRules` Uzlu je volitelný prvek v souboru definice služby, která určuje způsob komunikace rolí mezi sebou. Omezuje rolí můžete přístup ke koncovým bodům s interním konkrétní role. `NetworkTrafficRules` Není samostatný prvek; se zkombinuje s dvěma nebo více rolí v definičním souboru služby.

@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612271"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -361,7 +361,7 @@ Výše uvedený příklad nastaví na veřejně dostupná služba DNS DNS server
 
 Místo `daemon.json` na správném místě pro vaši platformu: 
 
-| Platforma | Umístění |
+| Platforma | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Hostitel Windows s kontejnery Windows | `C:\ProgramData\iotedge-moby-data\config` |

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60865004"
 ---
 # <a name="testability-scenarios"></a>Scénářů testovatelnosti
 Velkých distribuovaných systémech jako cloudových infrastruktur jsou ze své podstaty nespolehlivé. Azure Service Fabric umožňuje vývojářům zápis služeb pro spuštění nad rámec nespolehlivé infrastruktury. Chcete-li vysoké kvality služeb, vývojáři musí mít možnost vyvolat takovou nespolehlivé infrastrukturu k testování stability svých služeb.
@@ -49,11 +49,11 @@ Představte si třeba test nastavena pro spuštění na jednu hodinu s délkou m
 V současné podobě modul pro generování selhání při testu chaos indukuje pouze bezpečné chyb. To znamená, že chybí externí chyb, ke ztrátě kvora nebo data nikdy nedojde.
 
 ### <a name="important-configuration-options"></a>Důležité konfigurační možnosti
-* **TimeToRun**: celkový čas, který test bude spuštěn před dokončením s úspěchem. Test můžete dokončit dříve namísto selhání ověření.
-* **MaxClusterStabilizationTimeout**: maximální dobu čekání na cluster tak, aby se obnoví dobrý stav před selháním testu. Provádí kontroly se určuje, zda stav clusteru je v pořádku, stav služby je v pořádku, velikost cílové sady replik je dosaženo oddílu služby a neexistuje žádná replik InBuild.
-* **MaxConcurrentFaults**: maximální počet souběžných chyb vyvolaných v každé iteraci. Větší číslo, mnohem vyššími testu, takže výsledkem je složitější převzetí služeb při selhání a přechod kombinace. Test zaručuje, že v absence externí chyb, nebude existovat kvora nebo ztrátu, bez ohledu na to, jak vysoká je tato konfigurace.
+* **TimeToRun**: Celkový čas, který test bude spuštěn před dokončením s úspěchem. Test můžete dokončit dříve namísto selhání ověření.
+* **MaxClusterStabilizationTimeout**: Maximální doba čekání cluster tak, aby se obnoví dobrý stav před selháním testu. Provádí kontroly se určuje, zda stav clusteru je v pořádku, stav služby je v pořádku, velikost cílové sady replik je dosaženo oddílu služby a neexistuje žádná replik InBuild.
+* **MaxConcurrentFaults**: Maximální počet souběžných chyb vyvolaných v každé iteraci. Větší číslo, mnohem vyššími testu, takže výsledkem je složitější převzetí služeb při selhání a přechod kombinace. Test zaručuje, že v absence externí chyb, nebude existovat kvora nebo ztrátu, bez ohledu na to, jak vysoká je tato konfigurace.
 * **EnableMoveReplicaFaults**: Povolí nebo zakáže chyb, které jsou příčinou přesunu primární nebo sekundární repliky. Tyto chyby jsou ve výchozím nastavení zakázané.
-* **WaitTimeBetweenIterations**: dobu čekat mezi iteracemi, např. po kruhové chyb a odpovídající ověření.
+* **WaitTimeBetweenIterations**: Množství času čekat mezi iteracemi, např. po kruhové chyb a odpovídající ověření.
 
 ### <a name="how-to-run-the-chaos-test"></a>Jak spustit testovací chaosu
 Ukázka v jazyce C#
@@ -160,10 +160,10 @@ Scénáře testovacího převzetí služeb při selhání je verze chaos testova
 Testovací převzetí služeb při selhání indukuje zvolené chybu a pak spustí ověření ve službě k zajištění jeho stabilitu. Testovací převzetí služeb při selhání indukuje jenom jedna chyba najednou, možná na rozdíl od více chyb v testu chaos. Pokud oddíl služby není stabilizaci v nakonfigurovaném časovém limitu po každé chyby, test se nezdaří. Test indukuje pouze bezpečné chyb. To znamená, neexistence externí selhání nedojde ke ztrátě kvora nebo data.
 
 ### <a name="important-configuration-options"></a>Důležité konfigurační možnosti
-* **PartitionSelector**: selektoru objektu, který určuje oddíl, který je potřeba cílit.
-* **TimeToRun**: celkový čas, který test bude spuštěn před dokončením.
-* **MaxServiceStabilizationTimeout**: maximální dobu čekání na cluster tak, aby se obnoví dobrý stav před selháním testu. Provádí kontroly se určuje, zda je v pořádku stav služby, velikost cílové sady replik je dosaženo pro všechny oddíly a neexistují žádné replik InBuild.
-* **WaitTimeBetweenFaults**: dobu čekání mezi každý cyklus selhání a ověření.
+* **PartitionSelector**: Výběr objektu, který určuje oddíl, který je potřeba cílit.
+* **TimeToRun**: Celkový čas, který test bude spuštěn před dokončením.
+* **MaxServiceStabilizationTimeout**: Maximální doba čekání cluster tak, aby se obnoví dobrý stav před selháním testu. Provádí kontroly se určuje, zda je v pořádku stav služby, velikost cílové sady replik je dosaženo pro všechny oddíly a neexistují žádné replik InBuild.
+* **WaitTimeBetweenFaults**: Dobu čekání mezi každý cyklus selhání a ověření.
 
 ### <a name="how-to-run-the-failover-test"></a>Jak spustit testovací převzetí služeb při selhání
 **C#**

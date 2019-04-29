@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: c9e771d97c037ddd07834025063233c3ede1f0c2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 585d918026ca40bc1a04c55e2bac454492c55936
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711029"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidávání a odebírání uzlů do samostatného clusteru Service Fabric běžící na Windows serveru
 Až budete mít [vytvoření samostatného clusteru Service Fabric na počítačích s Windows serverem](service-fabric-cluster-creation-for-windows-server.md), může změnit potřeb (firmy) a je potřeba přidat nebo odebrat uzly do clusteru. Tento článek obsahuje podrobné pokyny k dosažení tohoto cíle. Všimněte si, že přidání nebo odebrání v uzlu funkce není podporována v místním vývojovém clusteru.

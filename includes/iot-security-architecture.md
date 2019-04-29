@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626566"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpečení Internetu věcí (IoT)
 
@@ -171,13 +171,13 @@ V každém z kategorií uvedených v architektuře Azure IoT pokusí zmírnit ce
 
 **Falšování identity (S)**: Útočník může extrahujte kryptografický materiál klíče ze zařízení, buď na softwarové nebo hardwarové úrovni a následně přístup, který je už zabraný systému pomocí jiné fyzické nebo virtuální zařízení s identitou zařízení materiál klíče z. Dobré obrázku je dálková ovládání, který můžete zapnout jakékoli Televizi a, které jsou prankster oblíbených nástrojů.
 
-**Útok DoS (D)**: Zařízení lze vykreslit nepodporující fungovat nebo sdělování narušovaly rádiových frekvencí nebo vyjmutí vodičům stanice. Sledování fotoaparát, který má připojení k napájení nebo sítě záměrně vyseknuté například nejde hlásit data, vůbec.
+**Útok DoS (D)**: U zařízení je možné způsobit, že je neschopné funkce nebo komunikace, pomocí rušení rádiových frekvencí nebo přerušením drátů. Například bezpečnostní kamera, u které někdo záměrně odpojil napájení nebo síťové připojení, nemůže předávat žádná data.
 
-**Manipulaci (T)**: Útočník může částečně nebo zcela nahradit softwaru spuštěného v příslušném zařízení, potenciálně umožňující nahrazené softwaru využívat originální identity zařízení materiál klíče nebo šifrování zařízení obsahující klíče materiály byly k dispozici na nedovolené programu. Například může útočník využít extrahované materiál klíče zachytí a potlačit dat ze zařízení na cestě pro komunikaci a nahraďte ji metodou false data, která se ověřuje pomocí odcizeného materiál klíče.
+**Manipulaci (T)**: Útočník může částečně nebo zcela nahradit software spuštěný v zařízení, což potenciálně dovoluje nahrazenému softwaru využít reálnou identitu zařízení, pokud byly ilegálnímu programu dostupné klíčové materiály nebo kryptografické vybavení držící klíčové materiály. Například může útočník využít extrahované materiál klíče zachytí a potlačit dat ze zařízení na cestě pro komunikaci a nahraďte ji metodou false data, která se ověřuje pomocí odcizeného materiál klíče.
 
 **Přístup k informacím (I)**: Pokud je na zařízení spuštěný s ní manipulováno softwaru, s ní manipulováno software může potenciálně způsobit únik těchto dat neoprávněným osobám. Například může útočník využít extrahované materiál klíče se vložit samotné do komunikační trasa mezi zařízení a brána kontroler nebo pole nebo Cloudová brána k siphon vypnout informace.
 
-**Zvýšení úrovně oprávnění (E)**: Zařízení, která provádí konkrétní funkci se dá vynutit dělat něco jiného. Například může být ventilu, který je naprogramovaný tak, aby otevřete poloviční způsobem svých otevřete úplně.
+**Zvýšení úrovně oprávnění (E)**: U zařízení, které provádí určitou funkci, lze vynutit, aby dělalo něco jiného. Například může být ventilu, který je naprogramovaný tak, aby otevřete poloviční způsobem svých otevřete úplně.
 
 | **Komponenta** | **Před internetovými útoky** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
@@ -192,9 +192,9 @@ Tady je několik příkladů hrozby v této kategorii:
 
 **Falšování**: Útočník může extrahujte kryptografický materiál klíče ze zařízení, buď na softwarové nebo hardwarové úrovni a následně přístup, který je už zabraný systému pomocí jiné fyzické nebo virtuální zařízení s identitou zařízení materiál klíče z.
 
-**Útok DoS**: Zařízení lze vykreslit nepodporující fungovat nebo sdělování narušovaly rádiových frekvencí nebo vyjmutí vodičům stanice. Sledování fotoaparát, který má připojení k napájení nebo sítě záměrně vyseknuté například nejde hlásit data, vůbec.
+**Útok DoS**: U zařízení je možné způsobit, že je neschopné funkce nebo komunikace, pomocí rušení rádiových frekvencí nebo přerušením drátů. Například bezpečnostní kamera, u které někdo záměrně odpojil napájení nebo síťové připojení, nemůže předávat žádná data.
 
-**Manipulace**: Útočník může částečně nebo zcela nahradit softwaru spuštěného v příslušném zařízení, potenciálně umožňující nahrazené softwaru využívat originální identity zařízení materiál klíče nebo šifrování zařízení obsahující klíče materiály byly k dispozici na nedovolené programu.
+**Manipulace**: Útočník může částečně nebo zcela nahradit software spuštěný v zařízení, což potenciálně dovoluje nahrazenému softwaru využít reálnou identitu zařízení, pokud byly ilegálnímu programu dostupné klíčové materiály nebo kryptografické vybavení držící klíčové materiály.
 
 **Manipulace**: Fotoaparát institucí, který se zobrazuje obrázek viditelné spektra prázdný dále přes chodbu může zaměřené na fotografie takové dále přes chodbu. Kouř nebo fire senzor může reporting někdo uchovávající světlejší pod ním. V obou případech může být zařízení technicky plně důvěryhodný pro systém, ale hlásí informace o ní manipulováno.
 
@@ -210,7 +210,7 @@ Tady je několik příkladů hrozby v této kategorii:
 
 **Manipulace**: Zařízení můžete nakonfigurovat tak, aby provoz ve stavu Neznámý do systému správy (mimo známé kalibrací parametry) a tak poskytuje data, která může být nesprávné interpretaci
 
-**Zvýšení úrovně oprávnění**: Zařízení, která provádí konkrétní funkci se dá vynutit dělat něco jiného. Například může být ventilu, který je naprogramovaný tak, aby otevřete poloviční způsobem svých otevřete úplně.
+**Zvýšení úrovně oprávnění**: U zařízení, které provádí určitou funkci, lze vynutit, aby dělalo něco jiného. Například může být ventilu, který je naprogramovaný tak, aby otevřete poloviční způsobem svých otevřete úplně.
 
 **Útok DoS**: Zařízení je možné zapnout do stavu, kdy komunikace není možná.
 
@@ -242,7 +242,7 @@ Tady je několik příkladů hrozby v této kategorii:
 
 **Zpřístupnění informací:** útočník může tajně poslouchat vysílání a získat informace o bez autorizace **Denial of Service:** útočník může jamu signál vysílání a odepřít informace distribuce
 
-#### <a name="storage"></a>Storage
+#### <a name="storage"></a>Úložiště
 
 Každé zařízení a pole brány má určitou formu úložiště (dočasné pro službu Řízení front dat, úložiště bitové kopie operačního systému (OS)).
 

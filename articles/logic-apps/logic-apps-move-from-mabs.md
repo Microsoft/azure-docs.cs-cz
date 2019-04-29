@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61321136"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrace ze služby BizTalk Services na Azure Logic Apps
 
@@ -38,7 +38,7 @@ Tato tabulka mapuje možnosti BizTalk Services na Logic Apps.
 | Spojovací čára          | Spojovací čára             | Odesílání a příjem dat.   |
 | Přemostění             | Aplikace logiky             | Profilace procesoru           |
 | Ověření fáze     | Ověření XML akce | Ověřit proti schématu dokumentu XML | 
-| Obohacení fáze       | Tokeny dat           | Propagace vlastnosti do zprávy nebo pro rozhodování o směrování |
+| Obohacení fáze       | Data Tokens           | Propagace vlastnosti do zprávy nebo pro rozhodování o směrování |
 | Fáze transformace    | Transformace akce      | Převést XML zprávy z jednoho formátu do druhého |
 | Dekódování fáze       | Plochý soubor dekódování akce | Převod z plochého souboru do XML |
 | Kódování fáze       | Plochý soubor kódování akce | Převést XML na plochého souboru |
@@ -106,7 +106,7 @@ Při zpracování BizTalk Services, přidá fázi Enrich vlastnosti zprávy kont
 
 BizTalk Services umožňuje [spouští vlastní kód](https://msdn.microsoft.com/library/azure/dn232389.aspx) , který se nahraje do vlastní sestavení. Tato funkce je implementované [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) rozhraní. Každá fáze v most obsahuje dvě vlastnosti (inspektor na zadejte a na konec inspektor), které poskytují typ formátu .NET, kterou jste vytvořili, který implementuje toto rozhraní. Vlastní kód umožňuje provádět složitější zpracování dat a umožňuje znovu použít existující kód ve třídě sestavení, které provádějí běžné obchodní logiku. 
 
-Služba Logic Apps poskytuje dva základní způsoby spouštění vlastního kódu: Azure Functions a API Apps. Služba Azure Functions můžete vytvořit a volat z aplikace logiky. Zobrazit [přidat a spuštění vlastního kódu pro aplikace logiky pomocí Azure Functions](../logic-apps/logic-apps-azure-functions.md). Můžete vytvořit svoje vlastní aktivační události a akce součástí služby Azure App Service API Apps. Další informace o [vytváření vlastních rozhraní API pro použití s Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
+Logic Apps poskytuje dva základní způsoby spouštění vlastního kódu: Služba Azure Functions a aplikace API. Služba Azure Functions můžete vytvořit a volat z aplikace logiky. Zobrazit [přidat a spuštění vlastního kódu pro aplikace logiky pomocí Azure Functions](../logic-apps/logic-apps-azure-functions.md). Můžete vytvořit svoje vlastní aktivační události a akce součástí služby Azure App Service API Apps. Další informace o [vytváření vlastních rozhraní API pro použití s Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 
 Pokud máte vlastní kód v sestavení, které volají ze služby BizTalk Services, můžete buď přesuňte tento kód do služby Azure Functions nebo vytvořit vlastní rozhraní API pomocí funkce API Apps, v závislosti na tom, co jste implementace. Například pokud máte kód, který obtéká jiné služby, pro kterou nemá Logic Apps konektor, vytvořte aplikaci API a použijte akce, které vaše aplikace API poskytuje v rámci vaší aplikace logiky. Pokud už máte pomocné funkce nebo knihovny, pak Azure Functions je pravděpodobně nejvhodnější.
 

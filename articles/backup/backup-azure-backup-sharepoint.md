@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541280"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60644331"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Zálohujete Sharepointové farmy do Microsoft Azure mnohem stejným způsobem, který je zálohovat zdrojů dat pomocí System Center Data Protection Manager (DPM). Azure Backup poskytuje flexibilitu při plán zálohování a vytvořit každý den, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body záloh. DPM poskytuje možnost ukládat kopie místního disku pro rychlé cíle plánované doby obnovení (RTO) a k uložení kopie do Azure pro hospodárná a dlouhodobé uchovávání.
@@ -21,7 +21,7 @@ Zálohujete Sharepointové farmy do Microsoft Azure mnohem stejným způsobem, k
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Podporované verze služby SharePoint a související scénáře ochrany
 Azure Backup pro DPM podporuje následující scénáře:
 
-| Úloha | Verze | Nasazení služby SharePoint | Typ nasazení aplikace DPM | DPM – System Center 2012 R2 | Ochrana a obnovení |
+| Úloha | Version | Nasazení služby SharePoint | Typ nasazení aplikace DPM | DPM – System Center 2012 R2 | Ochrana a obnovení |
 | --- | --- | --- | --- | --- | --- |
 | SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |SharePoint nasadit jako fyzický server nebo virtuální počítač Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn |Fyzický server nebo místní Hyper-V virtuálního počítače |Podporuje zálohování do Azure od kumulativní aktualizace 5 |Ochrana farmy služby SharePoint možnosti obnovení: Obnovení farmy, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Obnovení farmy a databáze z bodů obnovení Azure. |
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 90b2dfdbec0d6dc81a05b845832fda92fe36d98c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656587"
 ---
 # <a name="api-management-policy-expressions"></a>Výrazy zásad rozhraní API Management
 Tento článek popisuje syntaxe výrazy zásad C# 7. Každý výraz má přístup k implicitně zadané [kontextu](api-management-policy-expressions.md#ContextVariables) proměnné a povolený [dílčí](api-management-policy-expressions.md#CLRTypes) typů rozhraní .NET Framework.
@@ -210,7 +210,7 @@ Proměnné s názvem `context` je implicitně k dispozici v každé zásadě [v�
 
 |Kontextové proměnné|Povolené metody, vlastnosti a hodnoty parametrů|
 |----------------------|-------------------------------------------------------|
-|Kontext|Rozhraní API: IApi<br /><br /> Nasazení<br /><br /> Uplynulý: Časový interval - časový interval mezi hodnotou časového razítka a aktuální čas<br /><br /> LastError<br /><br /> Operace<br /><br /> Produkt<br /><br /> Žádost<br /><br /> ID žádosti: Identifikátor GUID - požadavek jedinečného identifikátoru<br /><br /> Odpověď<br /><br /> Předplatné<br /><br /> Časové razítko: Datum a čas - bodu v čase, kdy byl obdržen požadavek<br /><br /> Trasování: bool – označuje, pokud je trasování zapnuto nebo vypnuto <br /><br /> Uživatel<br /><br /> Proměnné: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
+|Kontext|Rozhraní API: IApi<br /><br /> Nasazení<br /><br /> Uplynulý: Časový interval - časový interval mezi hodnotou časového razítka a aktuální čas<br /><br /> LastError<br /><br /> Operace<br /><br /> Product<br /><br /> Žádost<br /><br /> ID žádosti: Identifikátor GUID - požadavek jedinečného identifikátoru<br /><br /> Odpověď<br /><br /> Předplatné<br /><br /> Časové razítko: Datum a čas - bodu v čase, kdy byl obdržen požadavek<br /><br /> Trasování: bool – označuje, pokud je trasování zapnuto nebo vypnuto <br /><br /> Uživatel<br /><br /> Proměnné: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
 |context.Api|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: IUrl<br /><br /> Verze: řetězec |
 |context.Deployment|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty: IReadOnlyDictionary<string, X509Certificate2>|
 |kontext. Poslední chyba|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Část: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Další informace o kontextu. LastError, naleznete v tématu [zpracování chyb](api-management-error-handling-policies.md).|

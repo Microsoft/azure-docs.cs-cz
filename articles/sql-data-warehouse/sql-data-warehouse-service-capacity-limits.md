@@ -11,17 +11,17 @@ ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999633"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60778282"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
 
 ## <a name="workload-management"></a>Správa úloh
-| Category | Popis | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální počet DWU pro jeden SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí jednotek DTU na server |54,000<br></br>Každý server SQL (např. myserver.database.windows.net) má ve výchozím nastavení kvóty DTU o 54 000, což umožňuje až DW6000c. Tato kvóta je jednoduše bezpečnostní omezení. Můžete zvýšit kvótu podle [vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md) a vyberete *kvóty* jako typu požadavku.  K výpočtu vaší DTU potřebuje, vynásobte celkovou nutná DWU 7.5 nebo 9.0 vynásobte celkové cDWU potřeby. Příklad:<br></br>DW6000 x 7.5 = hodnotě 45 000 Dtu<br></br>DW6000c x 54 9.0 = 000 Dtu.<br></br>Vaši aktuální spotřebu DTU z možnosti SQL serveru můžete zobrazit na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
@@ -31,7 +31,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB na DW100. Proto v DWU1000, tempdb přizpůsoben pro 3,99 TB. |
 
 ## <a name="database-objects"></a>Databázové objekty
-| Category | Popis | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Databáze |Maximální velikost | Gen1: 240 TB na disk komprimován. Toto místo je nezávislý na místa protokolu nebo databáze tempdb, a proto je tento prostor vyhrazený pro trvalé tabulky.  Komprese columnstore clusteru se odhadují 5 X.  Tato komprese umožňuje databáze, kterou chcete dosáhnout přibližně 1 PB všech tabulek po Clusterované columnstore (výchozí typ tabulky). <br/><br/> Gen2: 240TB pro rowstore a neomezené úložiště tabulek columnstore |
 | Table |Maximální velikost |60 TB komprimované na disku |
@@ -52,12 +52,12 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | Zobrazení |Sloupce na zobrazení |1,024 |
 
 ## <a name="loads"></a>Načtení
-| Category | Popis | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Načítání Polybase |MB na řádek |1<br/><br/>Polybase načte jenom pro řádky, které jsou menší než 1 MB a nelze načíst do VARCHAR(MAX) či NVARCHAR(MAX) nebo VARBINARY(MAX).<br/><br/> |
 
 ## <a name="queries"></a>Dotazy
-| Category | Popis | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Dotaz |Ve frontě dotazů v případě uživatelských tabulek. |1000 |
 | Dotaz |Souběžné dotazy na systémová zobrazení. |100 |

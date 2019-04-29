@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
 ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155163"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61276133"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jaké úlohy je možné chránit pomocí Azure Site Recovery?
 
@@ -146,7 +146,7 @@ Azure Site Recovery poskytuje zotavení po havárii replikací kritických kompo
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>Ochrana pro Citrix XenApp a XenDesktop
 K ochraně nasazení Citrix XenApp a XenDesktop použijte Site Recovery následujícím způsobem:
 
-* Povolte ochranu nasazení Citrix XenApp a XenDesktop replikací různých vrstev nasazení (včetně serveru AD DNS, databázového serveru SQL, Citrix Delivery Controlleru, serveru StoreFront, XenApp Masteru (VDA) a Citrix XenApp License Serveru) do Azure.
+* Povolte ochranu nasazení Citrix XenApp a XenDesktop replikací různých vrstev nasazení (včetně serveru AD DNS, serveru služby SQL Database, Citrix Delivery Controlleru, serveru StoreFront, XenApp Masteru (VDA) a Citrix XenApp License Serveru) do Azure.
 * Zjednodušte migraci do cloudu tak, že použijete Site Recovery k migraci nasazení Citrix XenApp a XenDesktop do Azure.
 * Usnadněte testování pro Citrix XenApp/XenDesktop tak, že vytvoříte na vyžádání kopii produkčního prostředí pro testování a ladění.
 * Toto řešení jde použít jenom pro virtuální plochy operačního systému Windows Server, a ne virtuální plochy klienta, protože virtuální plochy klienta se ještě pro licencování v Azure nepodporují.

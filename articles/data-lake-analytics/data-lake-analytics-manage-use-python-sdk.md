@@ -10,11 +10,11 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60811702"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics pomocí Pythonu
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -97,7 +97,7 @@ Spusťte tento skript k ověření, že lze importovat moduly.
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktivním ověřování uživatelů pomocí automaticky otevírané okno
 
-Tato metoda není podporována.
+Tato metoda se nepodporuje.
 
 ### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktivním ověřování uživatelů pomocí kódu zařízení
 
@@ -115,7 +115,7 @@ credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = '
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Neinteraktivní ověřování s rozhraním API a certifikátu
 
-Tato metoda není podporována.
+Tato metoda se nepodporuje.
 
 ## <a name="common-script-variables"></a>Společné proměnné skriptu
 

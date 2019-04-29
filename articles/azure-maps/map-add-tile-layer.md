@@ -10,11 +10,11 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 3a773c24993d229f20df698113ff7535fea634ca
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60769222"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Přidat Dlaždicovou vrstvu mapy
 

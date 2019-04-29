@@ -14,14 +14,14 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0de8d4145ff41b498149774af8ed74c56375dea9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60605180"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Přesun dat z databáze Sybase pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-onprem-sybase-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sybase.md)
 
@@ -69,11 +69,11 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost type musí být nastavená na: **OnPremisesSybase** |Ano |
 | server |Název serveru Sybase. |Ano |
 | databáze |Název databáze Sybase. |Ano |
-| schéma |Název schématu databáze. |Ne |
+| schema |Název schématu databáze. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi Sybase. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
-| Název brány |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Sybase. |Ano |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
+| gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Sybase. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).

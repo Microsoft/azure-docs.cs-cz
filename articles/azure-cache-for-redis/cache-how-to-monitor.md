@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 32d0fb2ba17d322c0a273ebaf0a21d2b3ca0668f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60830627"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure mezipaměti Redis
 Mezipaměť Azure pro použití Redis [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) poskytnout několik možností, jak pro monitorování vaší instance mezipaměti. Můžete zobrazit metriky, připnout grafy metrik na úvodní panel, přizpůsobení datum a čas, množství grafy monitorování, přidání a odebrání grafy metrik a nastavit upozornění při splnění určitých podmínek. Tyto nástroje umožňují monitorování stavu vaší mezipaměti Azure pro instance Redis a snadněji tak můžete spravovat ukládání do mezipaměti aplikace.

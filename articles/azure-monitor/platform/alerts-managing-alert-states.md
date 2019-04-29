@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.subservice: alerts
+ms.component: alerts
 ms.openlocfilehash: 2aa521b0552b60e5a875a5f46ab9887c6e5b6e3e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60919599"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Správa stavů inteligentních skupin a upozornění
 Výstrahy ve službě Azure Monitor teď mají [výstrahy, stav a stav monitorování](https://aka.ms/azure-alerts-overview) a podobně, inteligentní skupiny mají [inteligentní stavu skupiny](https://aka.ms/smart-groups). Změny stavu jsou nyní zachycené v historii spojenou s příslušné výstrahy nebo inteligentní skupinu. Tento článek vás provede procesem změnu stavu pro výstrahy a inteligentní skupinu.
@@ -47,4 +47,3 @@ Výstrahy ve službě Azure Monitor teď mají [výstrahy, stav a stav monitorov
 
 1. Až to uděláte, změny stavu se zaznamená do historie příslušné inteligentní skupiny. Zobrazením otevřete příslušnou stránku informace a kontroluje v části historie.     
 ![Monitorování](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

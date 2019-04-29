@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/25/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e6387c528bb24a66edb2fa1706adc005980dc90e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: HT
+ms.openlocfilehash: 5070b6ced29599660afa28308239e1ba07c2cbd0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47186291"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710795"
 ---
-1. Klikněte na tlačítko **Nový** v levém horním rohu portálu Azure Portal a pak vyberte **Compute** > **Function App**.
+1. Vyberte **vytvořit prostředek** nalezeno tlačítko v levém horním rohu webu Azure portal, pak vyberte **Compute** > **aplikace Function App**.
 
     ![Vytvoření aplikace Function App na portálu Azure Portal](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
@@ -28,12 +28,12 @@ ms.locfileid: "47186291"
     | **Název aplikace** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
     | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. | 
     | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
-    | **OS** | Windows | Hostování bez serveru je momentálně dostupné jenom při spuštění ve Windows. Informace k hostování na Linuxu najdete v tématu [Vytvoření první funkce spuštěné v Linuxu pomocí Azure CLI](../articles/azure-functions/functions-create-first-azure-function-azure-cli-linux.md). |
+    | **OS** | Windows | Hostování bez serveru v Linuxu je aktuálně ve verzi preview. Další informace najdete v tématu [v tomto článku aspekty](https://aka.ms/funclinux).|
     | **[Plán hostování](../articles/azure-functions/functions-scale.md)** | Plán Consumption | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím **plánu Consumption** se prostředky přidávají dynamicky podle požadavků příslušných funkcí. U tohoto hostování [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za dobu, kdy jsou funkce spuštěné. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../articles/azure-functions/functions-scale.md).  |
     | **Umístění** | Západní Evropa | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. |
     | **[Úložiště](../articles/storage/common/storage-quickstart-create-account.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít také existující účet, který splňuje [požadavky na účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Výchozí | Application Insights jsou ve výchozím nastavení povolené. Vyberte umístění blízko vaší aplikace funkcí.  |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Výchozí | Vytvoří prostředek Application Insights stejného *název aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení můžete změnit **nový název prostředku** nebo zvolte jinou **umístění** v [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) kam chcete data ukládat. |
 
 3. Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**.
 

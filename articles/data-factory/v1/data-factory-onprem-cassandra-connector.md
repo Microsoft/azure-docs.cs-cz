@@ -14,11 +14,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892638"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823976"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | port |Port TCP, který Cassandra server používá k naslouchání pro připojení klientů. |Ne, výchozí hodnota: 9042 |
 | authenticationType. |Základní nebo anonymní |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
-| heslo |Zadejte heslo pro uživatelský účet. |Ano, pokud typ ověřování je nastavena na Basic. |
+| password |Zadejte heslo pro uživatelský účet. |Ano, pokud typ ověřování je nastavena na Basic. |
 | gatewayName |Název brány, který se používá pro připojení k místní databázi Cassandra. |Ano |
 | encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |Ne |
 
@@ -265,7 +265,7 @@ Zobrazit [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezna
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| DATOVÝ TYP BOOLEAN |Logická hodnota |
+| DATOVÝ TYP BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | PLOVOUCÍ DESETINNOU ČÁRKOU |Single |

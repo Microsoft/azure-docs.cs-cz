@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60846133"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Správa metadat artefakt v účty pro integraci s Azure Logic Apps a Enterprise Integration Pack
 
@@ -63,7 +63,7 @@ Můžete definovat vlastních metadat pro artefakty v integračních účtů a z
 
 1. Zadejte tyto informace pro artefakt, který chcete vyhledat:
 
-   | Vlastnost | Požaduje se | Hodnota | Popis | 
+   | Vlastnost | Požaduje se | Value | Popis | 
    |----------|---------|-------|-------------| 
    | **Typ artefaktu** | Ano | **Schéma**, **mapy**, **partnera**, **smlouvy**, nebo vlastní typ | Typ artefaktu, který chcete | 
    | **Název artefaktu** | Ano | <*Název artefaktu*> | Název artefaktu, který chcete | 
@@ -85,7 +85,7 @@ Můžete definovat vlastních metadat pro artefakty v integračních účtů a z
 
       Předpokládejme například, že chcete získat `routingUrl` metadata, která se přidá dříve v tomto tématu. Tady jsou hodnoty vlastností, které můžete například zadat: 
 
-      | Vlastnost | Požaduje se | Hodnota | Popis | 
+      | Vlastnost | Požaduje se | Value | Popis | 
       |----------|----------|-------|-------------| 
       | **Metoda** | Ano | <*operation-to-run*> | Operace protokolu HTTP pro spuštění na artefakt. Například používá tuto akci HTTP **získat** metody. | 
       | **URI** | Ano | <*metadata-location*> | Pro přístup `routingUrl` metadat hodnotu v artefaktu načíst, můžete použít ve výrazu, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 

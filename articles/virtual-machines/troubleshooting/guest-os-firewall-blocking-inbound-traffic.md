@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213107"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711551"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje příchozí provoz Azure brána firewall hostovaného operačního systému virtuálního počítače
 

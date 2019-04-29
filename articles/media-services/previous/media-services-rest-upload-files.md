@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295109"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817696"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní REST  
 > [!div class="op_single_selector"]

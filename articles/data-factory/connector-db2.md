@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
 ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019618"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60786369"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z databáze DB2 pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-onprem-db2-connector.md)
 > * [Aktuální verze](connector-db2.md)
 
@@ -32,7 +32,7 @@ Kopírování dat z databáze DB2 do jakékoli podporovaného úložiště dat j
 
 Konkrétně tento konektor DB2 podporuje tyto platformy IBM DB2 a verze pomocí distribuovaných relační databáze architektury (DRDA) SQL přístup správce (SQLAM) verze 9, 10 a 11:
 
-* IBM DB2 pro 11.1 z/OS
+* IBM DB2 for z/OS 11.1
 * IBM DB2 pro 10.1 z/OS
 * IBM DB2 pro i 7.2
 * IBM DB2 pro i 7.1
@@ -66,7 +66,7 @@ Pro DB2 propojené služby jsou podporovány následující vlastnosti:
 | databáze |Název databáze DB2. |Ano |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi DB2.<br/>Povolená hodnota je: **Základní**. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -174,31 +174,31 @@ Při kopírování dat z databáze DB2, se používají následující mapován�
 | Typ databáze DB2. | Data factory dočasné datový typ |
 |:--- |:--- |
 | BigInt |Int64 |
-| Binární hodnota |Byte] |
-| Objekt blob |Byte] |
-| Char |Řetězec |
-| Datový typ CLOB |Řetězec |
-| Datum |Datum a čas |
-| DB2DynArray |Řetězec |
-| DbClob |Řetězec |
-| Desítkově |Desítkově |
-| DecimalFloat |Desítkově |
+| Binární hodnota |Byte[] |
+| Objekt blob |Byte[] |
+| char |String |
+| Clob |String |
+| Datum |DateTime |
+| DB2DynArray |String |
+| DbClob |String |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Obrázek |Řetězec |
-| Integer |Datový typ Int32 |
-| LongVarBinary |Byte] |
-| LongVarChar |Řetězec |
-| LongVarGraphic |Řetězec |
-| Čísla |Desítkově |
-| Real |Jednoduchá |
+| Obrázek |String |
+| Integer |Int32 |
+| LongVarBinary |Byte[] |
+| LongVarChar |String |
+| LongVarGraphic |String |
+| Numeric |Decimal |
+| real |Single |
 | SmallInt |Int16 |
-| Čas |Časový interval |
-| Časové razítko |DateTime |
-| VarBinary |Byte] |
-| VarChar |Řetězec |
-| VarGraphic |Řetězec |
-| XML |Byte] |
+| Čas |TimeSpan |
+| Timestamp |DateTime |
+| VarBinary |Byte[] |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |Byte[] |
 
 
 ## <a name="next-steps"></a>Další postup

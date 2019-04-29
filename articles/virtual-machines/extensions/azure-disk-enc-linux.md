@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3ce881da4b683cf7034100d5044dd0f3c93edb52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800180"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -74,21 +74,21 @@ Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup 
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
-| vydavatele | Microsoft.Azure.Security | řetězec |
-| type | AzureDiskEncryptionForLinux | řetězec |
+| apiVersion | 2015-06-15 | date |
+| vydavatele | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 (VMSS) | int |
 | AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
-| AADClientSecret | heslo | řetězec |
-| AADClientCertificate | Kryptografický otisk | řetězec |
-| DiskFormatQuery | {"dev_path": "", "název": "","file_system": ""} | Slovník JSON |
-| EncryptionOperation | EnableEncryption EnableEncryptionFormatAll | řetězec | 
-| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | řetězec |
-| KeyEncryptionKeyURL | url | řetězec |
-| KeyVaultURL | url | řetězec |
-| Přístupové heslo | heslo | řetězec | 
-| SequenceVersion | UniqueIdentifier | řetězec |
-| VolumeType | Operačního systému, dat, všechny | řetězec |
+| AADClientSecret | password | string |
+| AADClientCertificate | thumbprint | string |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultURL | url | string |
+| Přístupové heslo | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Operačního systému, dat, všechny | string |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 

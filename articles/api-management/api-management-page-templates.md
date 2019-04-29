@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1fbafcdab938a0f8653df48631d7733cc58a3668
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441906"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656770"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Stránka šablon ve službě Azure API Management
 Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a do editoru podle vašeho výběru, jako například [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), nebo umístění zadaná sada [prostředky řetězce, které](api-management-template-resources.md#strings), [glyfů prostředky](api-management-template-resources.md#glyphs), a [stránce ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb, pomocí těchto šablon.  
@@ -101,7 +101,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [stránce ovládací prvky](api-management-page-controls.md).  
   
--   [Basic – přihlášení](api-management-page-controls.md#basic-signin)  
+-   [basic-signin](api-management-page-controls.md#basic-signin)  
   
 -   [Zprostředkovatelé](api-management-page-controls.md#providers)  
   
@@ -228,11 +228,11 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|referenceCode|řetězec|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
-|errorCode|řetězec|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
-|emailBody|řetězec|Tělo, které jsou generovány, pokud se tato stránka zobrazila v důsledku vnitřní chyby e-mailu.|  
-|requestedUrl|řetězec|Adresa URL požadovat stránka nebyla nalezena.|  
-|referrerUrl|řetězec|Adresa URL odkazující na požadovanou URL adresu.|  
+|referenceCode|string|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
+|Kód chyby|string|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
+|emailBody|string|Tělo, které jsou generovány, pokud se tato stránka zobrazila v důsledku vnitřní chyby e-mailu.|  
+|requestedUrl|string|Adresa URL požadovat stránka nebyla nalezena.|  
+|referrerUrl|string|Adresa URL odkazující na požadovanou URL adresu.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

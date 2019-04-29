@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 3459ef4caa99a2147144354165bef7d2852e87cc
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433341"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777810"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění v protokolu aktivit 
 
@@ -65,5 +65,4 @@ Další informace o skupinách akcí najdete v tématu [vytvořit a spravovat sk
 - Další informace o [vytvářet a upravovat upozornění protokolu aktivit](../../azure-monitor/platform/alerts-activity-log.md).
 - Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](activity-log-alerts-webhook.md).
 - Další informace o [služby oznámení o stavu](../../azure-monitor/platform/service-notifications.md).
-
 

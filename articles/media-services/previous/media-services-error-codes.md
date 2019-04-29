@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61217160"
 ---
 # <a name="azure-media-services-error-codes"></a>Kódy chyb služby Azure Media Services
 Při použití Microsoft Azure Media Services, můžete obdržet chybových kódech HTTP ze služby v závislosti na problémy, jako je ověřování tokenů zanedlouho vyprší. na akce, které nejsou podporované ve službě Media Services. Tady je seznam **chybových kódech HTTP** , které mohou být vráceny Media Services a možné příčiny pro ně.  

@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294412"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889042"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB – přehled
 

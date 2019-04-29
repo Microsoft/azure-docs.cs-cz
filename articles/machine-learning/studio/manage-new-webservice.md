@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838370"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861731"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Správa webové služby pomocí portálu webových služeb Azure Machine Learning Studio
 Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.

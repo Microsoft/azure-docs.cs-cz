@@ -12,11 +12,11 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61044596"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
 Předběžné zpracování a čištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady se dá efektivně využít pro machine learning. Nezpracovaná data se často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje zpracování týmových dat vědy (TDSP) a obvykle postupujte podle počáteční zkoumání použít ke zjištění a plánování předběžného zpracování požadované datové sady. Další podrobné pokyny týkající se procesu TDSP, najdete v článku podle kroků uvedených v [vědecké zpracování týmových dat](overview.md).

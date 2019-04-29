@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661169"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725894"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak objekty Reliable Actors využívají platformu Service Fabric
 Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní framework, která je hostována v implementaci spolehlivé stavové služby Reliable Actors volá se, *služba objektu actor*. Služba objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odesílání vašeho actors zpráva:

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
 ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094969"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60647949"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování DPM a Azure Backup Server
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Azure Backup komprimuje prvotní zálohy. Procesem offline předvyplnění Azure Backup můžete použít disky k nahrání komprimované počáteční zálohovací data do offline režimu do Azure.

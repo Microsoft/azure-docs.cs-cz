@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60909209"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Spravovat uživatelská data v Azure Security Center šetření
 Tento článek obsahuje informace o tom, jak spravovat uživatelská data v Azure Security Center funkci šetření. Šetření data jsou uložena v [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) a vystavené ve službě Security Center. Správa uživatelských dat zahrnuje možnost odstranit nebo exportovat data.

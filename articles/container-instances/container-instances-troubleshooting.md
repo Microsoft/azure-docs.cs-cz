@@ -10,11 +10,11 @@ ms.date: 02/15/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61067321"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak řešení běžných potíží pro řízení a nasaz
 
 Při definování vašeho kontejneru specifikace, vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka s konkrétní požadavky pro kontejner vlastnosti skupiny. Další informace o vytváření názvů Azure najdete v tématu [zásady vytváření názvů] [ azure-name-restrictions] v Azure Architecture Center.
 
-| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný model | Příklad: |
+| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad: |
 | --- | --- | --- | --- | --- | --- |
 | Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |

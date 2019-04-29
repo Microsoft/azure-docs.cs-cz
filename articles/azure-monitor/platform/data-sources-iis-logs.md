@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797838"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614504"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďování protokolů IIS ve službě Azure Monitor
 Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Azure Monitor a uložená jako [můžete vytvářet protokoly dat](data-platform.md).
@@ -42,7 +42,7 @@ Záznamy protokolu IIS mají typ **W3CIISLog** a mít vlastnosti v následujíc�
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Název počítače, který událost byla shromážděna z. |
+| Computer |Název počítače, který událost byla shromážděna z. |
 | cIP |IP adresa klienta. |
 | csMethod |Metoda požadavku, například GET nebo POST. |
 | csReferer |Lokalita, uživatele a potom odkaz z aktuální lokality. |

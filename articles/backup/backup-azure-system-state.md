@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
 ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782443"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows v nasazení podle modelu Resource Manager
 Tento článek vysvětluje, jak zálohování stavu systému Windows Server do Azure. Tento kurz vás má provést základy.

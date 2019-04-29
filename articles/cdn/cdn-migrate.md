@@ -16,11 +16,11 @@ ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635631"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrace profil Azure CDN od společnosti Verizon Standard do Premium Verizon
 
@@ -37,12 +37,12 @@ Upgrade **Azure CDN Standard od Verizonu** profilu, kontaktujte [Microsoft Suppo
 ## <a name="profile-comparison"></a>Porovnání profilu
 **Azure CDN Premium od Verizonu** profily mají následující klíčové rozdíly proti **Azure CDN Standard od Verizonu** profily:
 - Pro některé funkce Azure CDN, jako [komprese](cdn-improve-performance.md), [pravidla ukládání do mezipaměti](cdn-caching-rules.md), a [geografického filtrování](cdn-restrict-access-by-country.md), nemůžete použít rozhraní Azure CDN, je nutné použít portál společnosti Verizon prostřednictvím **Spravovat** tlačítko.
-- Rozhraní API: Na rozdíl od s Verizon úrovně Standard, nelze použít rozhraní API k řízení těchto funkcí, které jsou přístupné z portálu společnosti Verizon úrovně Premium. Můžete však použít rozhraní API provádět další běžné funkce, jako je například vytvoření nebo odstranění koncového bodu, odstraňování/načítání prostředků z mezipaměti a povolení nebo zákaz vlastní doménu.
+- API: Na rozdíl od s Verizon úrovně Standard, nelze použít rozhraní API k řízení těchto funkcí, které jsou přístupné z portálu společnosti Verizon úrovně Premium. Můžete však použít rozhraní API provádět další běžné funkce, jako je například vytvoření nebo odstranění koncového bodu, odstraňování/načítání prostředků z mezipaměti a povolení nebo zákaz vlastní doménu.
 - Ceny: Premium Verizon má jinou cenovou strukturu pro přenosy dat než Verizon úrovně Standard. Další informace najdete v tématu [ceny Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
 
 **Azure CDN Premium od Verizonu** profily mají následující funkce:
-- [Ověřování pomocí tokenu](cdn-token-auth.md): umožňuje uživatelům získat a použít token k načtení zabezpečeným prostředkům.
-- [Stroj pravidel](cdn-rules-engine.md): umožňuje přizpůsobit zpracování požadavků HTTP.
+- [Ověřování pomocí tokenu](cdn-token-auth.md): Umožňuje uživatelům získat a použít token k načtení zabezpečeným prostředkům.
+- [Stroj pravidel](cdn-rules-engine.md): Umožňuje přizpůsobit zpracování požadavků HTTP.
 - Pokročilé analytické nástroje:
    - [Podrobné analýzy protokolu HTTP](cdn-advanced-http-reports.md)
    - [Analýza výkonu hranice](cdn-edge-performance.md)

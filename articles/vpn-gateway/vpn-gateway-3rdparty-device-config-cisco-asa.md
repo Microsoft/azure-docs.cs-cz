@@ -2,17 +2,18 @@
 title: Ukázková konfigurace pro připojení zařízení Cisco ASA k Azure VPN Gateway | Dokumentace Microsoftu
 description: Tento článek poskytuje ukázkové konfiguraci pro připojení zařízení Cisco ASA k branám Azure VPN.
 services: vpn-gateway
-author: yushwang
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: yushwang
+origin.date: 10/19/2018
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817236"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648747"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: Zařízení Cisco ASA (IKEv2, bez BGP)
 Tento článek poskytuje ukázkové konfigurace pro připojení zařízení Cisco adaptivní zabezpečení zařízení (ASA) branám Azure VPN. V příkladu platí pro zařízení Cisco ASA s IKEv2 bez protokol BGP (Border Gateway). 
@@ -21,7 +22,7 @@ Tento článek poskytuje ukázkové konfigurace pro připojení zařízení Cisc
 
 |                        |                                   |
 | ---                    | ---                               |
-| Výrobce zařízení          | Cisco                             |
+| Dodavatel zařízení          | Cisco                             |
 | Model zařízení           | ASA                               |
 | Cílová verze         | 8.4 a novější                     |
 | Otestované modelu           | ASA 5505                          |
@@ -302,3 +303,4 @@ Pomocí následujících příkazů Azure Stream Analytics pro účely ladění:
 
 ## <a name="next-steps"></a>Další postup
 Konfigurace připojení typu VNet-to-VNet a aktivní aktivní mezi různými místy, najdete v článku [konfigurace brány VPN typu aktivní aktivní](vpn-gateway-activeactive-rm-powershell.md).
+<!--Update_Description: wording update -->

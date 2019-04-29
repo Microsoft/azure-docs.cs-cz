@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61261923"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -173,7 +173,7 @@ Název JSON | Popis | Povolené hodnoty | Požaduje se
 timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
 retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
 retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 20 sekund.
-secureOutput | Při nastavení vlastnosti na true se výstup aktivity považuje za bezpečný, tzn. že se nezaznamená do monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
+secureOutput | Při nastavení vlastnosti na true se výstup aktivity považuje za bezpečný, tzn. že se nezaznamená do monitorování. | Boolean | Ne. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení
 Aktivity řízení mají následující strukturu nejvyšší úrovně:
@@ -254,7 +254,7 @@ Pokud má například kanál scénář aktivita A -> aktivita B, mohou nastat r�
 ```
 
 ## <a name="sample-copy-pipeline"></a>Ukázkový kanál kopírování
-V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **Kopírování**. V této ukázce [aktivita kopírování](copy-activity-overview.md) kopíruje data ze služby Azure Blob Storage do služby Azure SQL Database.
+V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **Kopírování**. V této ukázce [aktivita kopírování](copy-activity-overview.md) kopíruje data ze služby Azure Blob Storage do databáze Azure SQL.
 
 ```json
 {

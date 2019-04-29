@@ -4,15 +4,16 @@ description: Tento článek poskytuje přehled podpory více webů Azure Applica
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/17/2019
-ms.author: amsriva
+origin.date: 01/17/2019
+ms.date: 04/16/2019
+ms.author: v-junlch
 ms.topic: conceptual
 ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60715837"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
@@ -124,3 +125,5 @@ V pravidle směrování není požadována žádná změna. Stále byste měli v
 
 Po získání informací o hostování více webů přejděte k tématu [Vytvoření služby Application Gateway používající hostování více webů](tutorial-multiple-sites-powershell.md) a vytvořte službu Application Gateway se schopností podporovat více než jednu webovou aplikaci.
 
+
+<!-- Update_Description: update metedata properties -->

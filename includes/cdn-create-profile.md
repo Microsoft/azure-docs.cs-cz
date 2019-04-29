@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: e431e7c45dc2cb41db5b9fa762abc908cc76b375
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: c58b226c0f3bd63cb2a54bd3d8c91eb750a26f0a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34665278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684617"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Vytvoření nového profilu CDN
 

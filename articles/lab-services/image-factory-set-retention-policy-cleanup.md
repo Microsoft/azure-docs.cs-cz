@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490735"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622532"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
 Tento článek se věnuje nastavení zásad uchovávání informací, čištění objekt pro vytváření a vyřazení staré Image ze všech jiných službě DevTest Labs v organizaci. 

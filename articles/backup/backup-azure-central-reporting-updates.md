@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55293957"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641874"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizace Azure Backup centrálního generování sestav balíčku obsahu 
 
@@ -46,9 +46,9 @@ Předem nakonfigurované sestavy, které jsou součástí balíčku obsahu Azure
 
 ![Dodržování předpisů](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
-![Storage](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
+![Úložiště](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Zálohované položky
 ![Zálohované položky](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)

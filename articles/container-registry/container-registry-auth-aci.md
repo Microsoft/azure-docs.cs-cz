@@ -2,17 +2,18 @@
 title: Ověřování pomocí Azure Container Registry z Azure Container Instances
 description: Zjistěte, jak poskytují přístup k obrázkům v váš privátní registr kontejnerů Azure Container Instances pomocí instančního objektu služby Azure Active Directory.
 services: container-registry
-author: dlepow
+author: rockboyfor
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
-ms.author: danlep
+origin.date: 04/23/2018
+ms.date: 03/25/2019
+ms.author: v-yeche
 ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61333572"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
 
@@ -34,12 +35,12 @@ Instanční objekty by mělo být také použít, pokud registru [uživatele s r
 
 Spusťte kontejner ve službě Azure Container Instances pomocí instančního objektu, zadejte své ID pro `--registry-username`a heslo pro `--registry-password`.
 
-```azurecli-interactive
+```azurecli
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image mycontainerregistry.azurecr.io/myimage:v1 \
-    --registry-login-server mycontainerregistry.azurecr.io \
+    --image mycontainerregistry.azurecr.cn/myimage:v1 \
+    --registry-login-server mycontainerregistry.azurecr.cn \
     --registry-username <service-principal-ID> \
     --registry-password <service-principal-password>
 ```

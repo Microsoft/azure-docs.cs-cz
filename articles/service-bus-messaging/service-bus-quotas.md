@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
 ms.openlocfilehash: f9c9059a5f66c6ba1c2e9d9dd637c0675fc7e220
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852707"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861888"
 ---
 # <a name="service-bus-quotas"></a>Kvóty Service Bus
 Tato část obsahuje základní kvóty a prahových hodnotách omezování v zasílání zpráv Azure Service Bus.

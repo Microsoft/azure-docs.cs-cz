@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
 ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646734"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.

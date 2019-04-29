@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 03/22/2019
 ms.author: tomfitz
 ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438464"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729286"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 Tento článek uvádí, zda typ prostředku Azure podporuje operace přesunu. I když typ prostředku podporuje operace přesunutí, může být podmínky, které brání přesunutí prostředku. Podrobnosti o podmínkách, které mají vliv operací přesunu najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).

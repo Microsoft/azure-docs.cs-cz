@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701938"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631124"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozbalení připojení do racku a zapojení kabeláže zařízení StorSimple 8100
 ## <a name="overview"></a>Přehled
 Vaše Microsoft Azure StorSimple 8100 je jeden skříň, skříňová zařízení. Tento kurz vysvětluje, jak rozbalit, do racku a hardwaru zařízení StorSimple 8100 kabel před konfigurací a nasazení zařízení StorSimple.
 
 ## <a name="unpack-your-storsimple-8100-device"></a>Rozbalit zařízení StorSimple 8100
-Následující kroky obsahují jasné, podrobné pokyny o tom, jak rozbalit úložného zařízení StorSimple 8100. Toto zařízení se posílá do jednoho pole.
+Následující kroky obsahují jasné, podrobné pokyny o tom, jak rozbalit úložného zařízení StorSimple 8100. Toto zařízení se dodává v jedné krabici.
 
 ### <a name="prepare-to-unpack-your-device"></a>Příprava na jeho usazení do zařízení
 Před jeho usazení do zařízení, zkontrolujte následující informace.
@@ -34,13 +34,13 @@ Před jeho usazení do zařízení, zkontrolujte následující informace.
 ![Ikona upozornění](./media/storsimple-safety/IC740879.png)![Tučná tloušťka ikonu](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **upozornění!**
 
 1. Ujistěte se, že máte dvou osob, které jsou k dispozici ke správě váhu přílohu, pokud je její zpracování ručně. Plně nakonfigurovaného skříně můžete zvážit až 32 kg (70 lbs.).
-2. Umístěte pole na povrch bez stromové struktury, úroveň.
+2. Umístěte krabici na rovný povrch.
 
 Dále proveďte následující kroky k jeho usazení do vašeho zařízení.
 
 #### <a name="to-unpack-your-device"></a>Rozbalte vaše zařízení
-1. Zkontrolujte pole a balení maskota crushes, kusy, vody poškození nebo jiných zřejmé poškození. Pokud pole nebo balení je vážně poškozen, neotevírejte pole. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) umožňují posoudit, jestli je zařízení v dobrém stavu.
-2. Rozbalte pole. Následující obrázek ukazuje rozbalené zobrazení zařízení StorSimple.
+1. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud jsou krabice nebo obal vážně poškozené, krabici neotevírejte. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) umožňují posoudit, jestli je zařízení v dobrém stavu.
+2. Rozbalte krabici. Následující obrázek ukazuje rozbalené zobrazení zařízení StorSimple.
    
      ![Rozbalit zařízení úložiště](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
@@ -53,7 +53,7 @@ Dále proveďte následující kroky k jeho usazení do vašeho zařízení.
    |   3 |Zařízení |
    |   4 |Začátek maskota |
    |   5 |Příslušenství pole |
-3. Po rozbalení pole, ujistěte se, že máte:
+3. Po rozbalení krabice se ujistěte, že obsahuje následující:
    
    * 1 jeden skříň zařízení
    * 2 napájecích kabelů
@@ -67,7 +67,7 @@ Dále proveďte následující kroky k jeho usazení do vašeho zařízení.
      
      Pokud jste některá z položek uvedených výše, neobdrželi [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 
-Dalším krokem je namontovat zařízení.
+Dalším krokem je usazení zařízení do racku.
 
 ## <a name="rack-mount-your-storsimple-8100-device"></a>Namontovat zařízení StorSimple 8100
 Postupujte podle dalších kroků při instalaci úložného zařízení StorSimple 8100 ve standardní stojanu 19 palce na přední a zadní příspěvky. Zařízení StorSimple 8100 má jeden primární skříň.
@@ -83,7 +83,7 @@ Instalace se skládá z několika kroků, z nichž každý je popsána v násled
 Zařízení musí být nainstalovány ve standardní 19 palec stojanu, který má přední a zadní příspěvky. Pomocí následujícího postupu připravte instalaci stojanu.
 
 #### <a name="to-prepare-the-site-for-rack-installation"></a>Příprava rack instalace lokality
-1. Ujistěte se, že zařízení bezpečně postavená na bez stromové struktury, stabilní a úrovni pracovní plochy (nebo podobnou).
+1. Ujistěte se, že je zařízení bezpečně umístěné na rovném a stabilním pracovním povrchu (nebo něčem podobném).
 2. Ověřte, zda má lokality, kde máte v úmyslu nastavit standardní napájení z nezávislých zdroje nebo jednotka distribuci napájení (PDU) rack s nepřerušitelný zdroj napájení (UPS).
 3. Ujistěte se, že tento jeden slot 2 u na stojan, ve které máte v úmyslu připojení zařízení k dispozici.
 
@@ -114,7 +114,7 @@ Sada připojení rails poskytuje pro použití s 19 palec rack soubor CAB. Byly 
     2     | Snímky skříně
 
 2. Připojení k CAB svislé členy rack levé vnější lišty a vnější pravé liště sestavení. Závorky jsou označeny **LH**, **RH**, a **této straně si** které vás provedou správné orientaci.
-3. Vyhledejte lišty PIN kódy na přední a zadní lišty sestavení. Rozšiřte lišty přizpůsobit mezi příspěvků do racku a vložení do přední a zadní rack příspěvek svislé člen děr kódy PIN. Ujistěte se, že je sestavení lišty úroveň.
+3. Vyhledejte čepy v přední a zadní části montážní lišty. Rozšiřte lišty přizpůsobit mezi příspěvků do racku a vložení do přední a zadní rack příspěvek svislé člen děr kódy PIN. Ujistěte se, že je sestavení lišty úroveň.
 4. Dvě zadané metriky šrouby použijte k zabezpečení sestavení lišty do racku svislé členy. Použijte jeden šroub na popředí a na zadní.
 5. Tento postup opakujte pro další lišty sestavení.<br/>
    
@@ -158,7 +158,7 @@ Dalším krokem je zapojení kabeláže zařízení kabeláž napájení, sítě
 Následující postupy popisují, jak zapojení kabeláže zařízení StorSimple 8100 kabeláž napájení, sítě a sériového portu připojení.
 
 ### <a name="prerequisites"></a>Požadavky
-Než začnete kabeláže zařízení, budete potřebovat:
+Než začnete zapojovat kabeláž zařízení, budete potřebovat následující:
 
 * Úložné zařízení zcela vybaleno a racku.
 * 2 napájecích kabelů, které byly dodány s vaší zařízení
@@ -236,11 +236,11 @@ Proveďte následující kroky a propojení kabely sériového portu.
 2. Identifikace aktivního kontroleru na propojovací rozhraní systému vašeho zařízení. Blikající Indikátor modré označuje, že je aktivní kontroler.
 3. Použijte zadaný sériové kabely (v případě potřeby USB sériové převaděč pro přenosný počítač) a připojení konzoly nebo počítače (emulaci terminálu na zařízení) k sériového portu aktivní kontroler.
 4. Instalace ovladačů sériové USB (dodané se zařízením) v počítači.
-5. Nastavte sériové připojení následujícím způsobem: 115 200 přenosová, 8 datové bity, 1 stop-bit, žádná a řízení toku na hodnotu None.
+5. Sériové připojení wmm nastavte takto: Přenosová 115 200, 8 datové bity, 1 stop-bit, žádná a tok řízení nastavený na None.
 6. Ověřte, že připojení funguje stisknutím klávesy Enter v konzole. Nabídka konzoly sériového portu zobrazit.
 
 > [!NOTE]
-> **Správa ILO**: když je zařízení nainstalované ve vzdáleném datovém centru nebo v počítačový sál s omezeným přístupem, ujistěte se, že sériové připojení na obou řadičích trvalým připojením k konzoly sériového portu přepínače nebo podobné zařízení. To umožňuje out-of-band vzdáleného řízení a podporu operací, pokud síťová přerušení nebo neočekávaných chyb.
+> **Správa ILO**: Když je zařízení nainstalované ve vzdáleném datovém centru nebo v počítačový sál s omezeným přístupem, ujistěte se, že sériové připojení na obou řadičích trvalým připojením k konzoly sériového portu přepínače nebo podobné zařízení. To umožňuje out-of-band vzdáleného řízení a podporu operací, pokud síťová přerušení nebo neočekávaných chyb.
 > 
 > 
 

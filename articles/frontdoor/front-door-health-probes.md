@@ -11,21 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 256d530590fadc9e2aeb1ea1efb7a52608014978
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988559"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736577"
 ---
 # <a name="health-probes"></a>Sondy stavu
 
-Aby bylo možné určit stav každého back-endu, každé prostředí branou pravidelně odesílá syntetické požadavku HTTP/HTTPS pro všechny vaše nakonfigurované back-EndY. Přední dveře potom použije odpovědí z těchto sond určit "doporučené" back-EndY, ke kterému se by měl směrovat požadavky real klientů.
+Aby bylo možné určit stav každého back-endu, každé prostředí branou pravidelně odesílá syntetické požadavku HTTP/HTTPS pro všechny vaše nakonfigurované back-EndY. Služba Front Door pak s využitím odpovědí z těchto sond určí nejlepší back-endy, do kterých má směrovat skutečné požadavky klientů.
 
 
 ## <a name="supported-protocols"></a>Podporované protokoly
 
-Přední dveře podporuje odesílání sondy přes protokol HTTP nebo HTTPS. Tyto testy se odesílají přes stejné porty TCP, které jsou nakonfigurované pro směrování požadavků klientů a nelze přepsat.
+Přední dveře podporuje odesílání sondy přes protokol HTTP nebo HTTPS. Tyto sondy se odesílají přes stejné porty TCP, jaké jsou nakonfigurované pro směrování požadavků klientů. Toto chování není možné přepsat.
 
 ## <a name="health-probe-responses"></a>Odpovědím sondy stavu
 
@@ -58,5 +58,5 @@ Jakmile jakéhokoli back-endu se vrátí do stavu v pořádku, branou, bude pokr
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvořit přední dveře](quickstart-create-front-door.md).
-- Přečtěte si [fungování branou](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704080"
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Řešení bezpečnostních incidentů v Azure Security Center
 Třídění a prošetřování výstrah zabezpečení může být časově náročné i pro nejzkušenější analytiky zabezpečení, a mnoho z nich dokonce ani pořádně neví, kde začít. Služba Security Center pomocí [analýzy](security-center-detection-capabilities.md) spojuje informace mezi odlišnými [výstrahami zabezpečení](security-center-managing-and-responding-alerts.md) a dokáže vám tak poskytnout ucelený přehled o útočné kampani a všech souvisejících výstrahách. Vy tak rychle porozumíte, jaké akce útočník podniká a které prostředky byly zasaženy.

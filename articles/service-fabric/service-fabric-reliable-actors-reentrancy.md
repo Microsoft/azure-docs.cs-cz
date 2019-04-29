@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725410"
 ---
 # <a name="reliable-actors-reentrancy"></a>Vícenásobný přístup Reliable Actors
 Modul runtime Reliable Actors ve výchozím nastavení, umožňuje vícenásobného přístupu na základě kontextu logické volání. To umožňuje koncepce actorů je naprosto vícenásobné, když jsou v tomtéž řetězu volání kontextu. Například objektu Actor A odešle zprávu do objektu Actor B, který odešle zprávu do objektu Actor C. Při zpracování zprávy Pokud objekt Actor C volání objektu Actor A zpráva je vícenásobné, tak bude možné. Další zprávy, které jsou součástí jiné volání kontextu se zablokuje na objektu Actor A dokud se nedokončí zpracování.

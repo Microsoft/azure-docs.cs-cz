@@ -9,11 +9,11 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787759"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
 Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.

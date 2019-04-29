@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
 ms.openlocfilehash: e4c4afefe7a4746f2d8138bde7fea152f228a8bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648872"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Použití SAP na virtuálních počítačích s Linuxem v Azure
 Cloud Computing je často používaný termín, který získává v oblasti IT čím dál větší význam – od malých firem až po velké a nadnárodní společnosti. Microsoft Azure je platforma cloudových služeb od společnosti Microsoft, která nabízí široké spektrum nových možností. Nyní mohou zákazníci rychle zřizovat a zrušit aplikace jako cloudové služby, takže už nejsou omezeni technickými nebo rozpočtovými limity. Namísto investování času a prostředků do hardwarové infrastruktury se společností můžou zaměřit na aplikace, obchodní procesy a jejich výhody pro zákazníky a uživatele.

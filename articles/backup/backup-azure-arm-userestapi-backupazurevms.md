@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646760"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes rozhraní REST API
 
@@ -41,11 +41,11 @@ Identifikátor URI POST má `{subscriptionId}`, `{vaultName}`, `{vaultresourceGr
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses"></a>Odezvy
 
 Operaci 'aktualizovat' je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a potom 200 (OK) po dokončení této operace.
+Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
@@ -108,7 +108,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *Získat* identifikátor URI má všechny požadované parametry. Je potřeba žádné další žádosti subjekt.
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses"></a>Odezvy
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
@@ -164,7 +164,7 @@ Odpověď obsahuje seznam všech nechráněných virtuálních počítačů Azur
 V příkladu výše uvedených hodnot přeložit do:
 
 - containerName = "iaasvmcontainer; iaasvmcontainerv2 testRG; testVM"
-- protectedItemName = "virtuální počítač; iaasvmcontainerv2 testRG; testVM"
+- protectedItemName = "vm;iaasvmcontainerv2;testRG;testVM"
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Povolení ochrany pro virtuální počítač Azure
 
@@ -188,7 +188,7 @@ K vytvoření chráněných položek, jsou následující komponenty datovou č�
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
-|vlastnosti     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
+|properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
 Úplný seznam definic z textu požadavku a další podrobnosti najdete v tématu [vytvořit dokument rozhraní REST API pro chráněnou položku](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
 
@@ -208,11 +208,11 @@ Následující text požadavku definuje vlastnosti potřebné k vytvoření chr�
 
 `{sourceResourceId}` Je `{virtualMachineId}` uvedených výše z [odpovědi chránitelné položky seznamu](#example-responses-1).
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses"></a>Odezvy
 
 Vytvoření chráněné položky se zobrazí [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a potom 200 (OK) po dokončení této operace.
+Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
@@ -302,7 +302,7 @@ Spustit zálohu na vyžádání, jsou následující komponenty z textu požadav
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
-|vlastnosti     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
+|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
 Úplný seznam definic z textu požadavku a další podrobnosti najdete v tématu [aktivovat zálohování chráněných položek rozhraní REST API dokumentu](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 
@@ -319,11 +319,11 @@ Následující text požadavku definuje vlastnosti potřebné k aktivaci záloho
 }
 ```
 
-### <a name="responses"></a>Odpovědi
+### <a name="responses"></a>Odezvy
 
 Aktivace zálohu na vyžádání je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a potom 200 (OK) po dokončení této operace.
+Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
@@ -439,11 +439,11 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Odpovědi
+### <a name="responses"></a>Odezvy
 
 *Odstranit* ochrana je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a potom 204 (NoContent) po dokončení této operace.
+Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 204 (NoContent) po dokončení této operace.
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
