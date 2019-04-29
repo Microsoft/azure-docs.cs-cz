@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782918"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -120,7 +120,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | Jedna dva tři |
-| toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
+| toJsonOutput | Object | {"jedna": "a", "2": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -185,7 +185,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | Jedna dva tři |
-| toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
+| toJsonOutput | Object | {"jedna": "a", "2": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -250,7 +250,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | Jedna dva tři |
-| toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
+| toJsonOutput | Object | {"jedna": "a", "2": "b"} |
 
 ## <a name="concat"></a>concat
 

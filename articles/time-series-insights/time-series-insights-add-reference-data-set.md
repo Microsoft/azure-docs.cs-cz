@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5cc06ba1a326d262c1437a941306b4d4a648260
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 17ba15ea12efc80dcc830f6338a837d1abb77a71
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101223"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764441"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí webu Azure portal
 
@@ -92,7 +92,7 @@ Referenční data není připojený zpětně. To znamená, že pouze aktuální 
 
 15. Pokud chcete nahrát data, vyberte **nahrát řádky** tlačítko.
 
-    ![Odeslat](media/add-reference-data-set/upload_rows.png)
+    ![Nahrávání](media/add-reference-data-set/upload_rows.png)
 
     Na stránce potvrdí dokončené nahrávání a zobrazení zprávy **byl úspěšně nahrán datovou sadu**.
 

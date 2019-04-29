@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614450"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Jak ovlivňuje serializaci dat upgrade aplikace
 V [aplikace upgrade se zajištěním provozu](service-fabric-application-upgrade.md), upgrade se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu jsou některé upgradovacích domén na novější verzi aplikace a jsou některé upgradu domény na starší verzi aplikace. Během zavádění novou verzi vaší aplikace musí být schopni číst staré verze vašich dat a starou verzi vaší aplikace musí být schopni číst novou verzi vaše data. Pokud formát dat není kompatibilní s vpřed a zpět, může upgrade selhat nebo horší, mohou být data ztrátě nebo poškození. Tento článek popisuje, co představuje datový formát a nabízí osvědčené postupy pro zajištění, že vaše data jsou dopředné a zpětné kompatibilní.

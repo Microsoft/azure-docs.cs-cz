@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: db701a239aedb312c7671e403cdfde7135130c6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 644cc2a4175043b523d53b39f17483c6f3acfe96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60558334"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory B2C ve službě Azure API Management
 
@@ -69,29 +69,20 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
    ![ID aplikace 1][api-management-howto-aad-b2c-app-id]
 
 9. Přepněte zpět do API managementu **přidat zprostředkovatele identity** podokně a vložte ID do **Id klienta** textového pole.
-
-   ![ID aplikace 2][api-management-howto-aad-b2c-client-id]
-
+    
 10. Vrátit zpět k registraci aplikace B2C, klikněte na tlačítko **klíče** tlačítko a pak klikněte na tlačítko **vygenerovat klíč**. Klikněte na tlačítko **Uložit** uložte konfiguraci a zobrazení **klíče aplikace**. Klíč zkopírujte do schránky.
 
     ![Klíč aplikace 1][api-management-howto-aad-b2c-app-key]
 
 11. Přepněte zpět do API managementu **přidat zprostředkovatele identity** podokně a vložte klíč do **tajný kód klienta** textového pole.
+    
+12. Zadejte název domény tenanta Azure Active Directory B2C v **přihlásit tenanta**.
 
-    ![Klíč aplikace 2][api-management-howto-aad-b2c-client-secret]
+13. **Autority** pole umožňují řídit, adresu URL pro přihlášení Azure AD B2C k použití. Nastavte hodnotu na **< your_b2c_tenant_name >. b2clogin.com**.
 
-12. Zadejte název domény tenanta Azure Active Directory B2C v **povolený Tenant**.
+14. Zadejte **zásady registrace** a **Signin zásady** ze zásad Tenanta B2C. Volitelně můžete zadat taky **zásady úprav profilu** a **zásady resetování hesel**.
 
-    ![Povoleného tenanta][api-management-howto-aad-b2c-allowed-tenant]
-
-13. Zadejte **zásady registrace** a **Signin zásady** ze zásad Tenanta B2C. Volitelně můžete zadat taky **zásady úprav profilu** a **zásady resetování hesel**.
-
-    ![Zásady][api-management-howto-aad-b2c-policies]
-
-    > [!NOTE]
-    > Další informace o zásadách najdete v tématu [Azure Active Directory B2C: Rozšiřitelná architektura zásad].
-
-14. Po zadání požadované konfigurace, klikněte na tlačítko **Uložit**.
+15. Po zadání požadované konfigurace, klikněte na tlačítko **Uložit**.
 
     Po uložení změn vývojáři budou moct vytvářet nové účty a přihlaste se k portálu pro vývojáře pomocí Azure Active Directory B2C.
 
