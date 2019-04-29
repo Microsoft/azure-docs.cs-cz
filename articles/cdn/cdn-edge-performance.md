@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320069"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61069927"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -187,5 +187,5 @@ Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky p
 * [Azure CDN – přehled](cdn-overview.md)
 * [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Přepisování výchozího chování HTTP pomocí stroje pravidel](cdn-rules-engine.md)
-* [Pokročilé sestavy HTTP](cdn-advanced-http-reports.md)
+* [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)
 

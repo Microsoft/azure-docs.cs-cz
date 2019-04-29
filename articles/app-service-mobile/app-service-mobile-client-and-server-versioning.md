@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 56c5e0582afe55dcd63aa056817898d3d4942419
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594062"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859069"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Správa verzí klienta a serveru v Mobile Apps a Mobile Services
 Nejnovější verze Azure Mobile Services je **Mobile Apps** funkce služby Azure App Service.
@@ -70,7 +70,7 @@ Klientské sady SDK v následující tabulce jsou kompatibilní s **Mobile Servi
 Poznámka: Mobile Services klientské sady SDK *nejsou* odeslat hodnotu hlavičky `ZUMO-API-VERSION`. Pokud služba přijme toto záhlaví nebo hodnotu řetězce dotazu, se vrátí chyba, pokud jste explicitně se rozhodli odhlašování, jak je popsáno výše.
 
 ### <a name="MobileServicesClients"></a> Mobilní *služby* klientské sady SDK
-| Klientskou platformu | Verze | Hodnota záhlaví verze |
+| Klientskou platformu | Version | Hodnota záhlaví verze |
 | --- | --- | --- |
 | Spravované klientské (Windows, Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |neuvedeno |
 | iOS |[2.2.2](https://aka.ms/gc6fex) |neuvedeno |
@@ -78,7 +78,7 @@ Poznámka: Mobile Services klientské sady SDK *nejsou* odeslat hodnotu hlavičk
 | HTML |[1.2.7](https://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |neuvedeno |
 
 ### <a name="mobile-services-server-sdks"></a>Mobilní *služby* sadami SDK serveru
-| Serverová platforma | Verze | Přijatá verze hlavičky |
+| Serverová platforma | Version | Přijatá verze hlavičky |
 | --- | --- | --- |
 | .NET |[WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**Žádná hlavička verze** |
 | Node.js |(připravuje se) |**Žádná hlavička verze** |
@@ -96,7 +96,7 @@ Poznámka: Mobile Services klientské sady SDK *nejsou* odeslat hodnotu hlavičk
 ### <a name="MobileAppsClients"></a> Mobilní *aplikace* klientské sady SDK
 Kontrola verze se zavedl až od s následujícími verzemi klientskou sadou SDK pro **Azure Mobile Apps**:
 
-| Klientskou platformu | Verze | Hodnota záhlaví verze |
+| Klientskou platformu | Version | Hodnota záhlaví verze |
 | --- | --- | --- |
 | Spravované klientské (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |

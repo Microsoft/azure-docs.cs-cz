@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60652209"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
 Tento článek popisuje některé běžné příčiny problémů s nasazením a poskytuje tipy pro řešení potíží, které vám pomohou vyřešit tyto problémy. Jako ukazatel toho, že existuje problém s aplikací je role instance se nepodaří spustit, nebo ho cyklů mezi stavy inicializace, zaneprázdněný a zastavuje.
@@ -40,7 +40,7 @@ Před sestavit a zabalit aplikaci, ověřte následující:
 Azure je prostředí s 64bitovým kompilátorem. Sestavení .NET, které jsou kompilovány pro 32bitové cílové proto nebude fungovat v Azure.
 
 ## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Role při inicializaci nebo zastavení vyvolává neošetřené výjimky
-Všechny výjimky, které jsou vyvolány pomocí metody [RoleEntryPoint] třída, která obsahuje [Operace OnStart], [OnStop], a [Spuštění] metody, jsou neošetřené výjimky. Pokud dojde k neošetřené výjimce v jednom z těchto metod, budou recyklovat roli. Pokud role se recykluje opakovaně, může došlo k neošetřené výjimce pokaždé, když se pokusí spustit.
+Všechny výjimky, které jsou vyvolány pomocí metody [RoleEntryPoint] třída, která obsahuje [OnStart], [OnStop], a [Spuštění] metody, jsou neošetřené výjimky. Pokud dojde k neošetřené výjimce v jednom z těchto metod, budou recyklovat roli. Pokud role se recykluje opakovaně, může došlo k neošetřené výjimce pokaždé, když se pokusí spustit.
 
 ## <a name="role-returns-from-run-method"></a>Role vracející se z metody Run
 [Spuštění] metoda je určena pro spuštění po neomezenou dobu. Pokud váš kód přepíše [Spuštění] metody ji by měl přejít do režimu spánku po neomezenou dobu. Pokud [Spuštění] metoda vrací výsledek, recyklování role.
@@ -67,6 +67,6 @@ Zobrazit další [článků o řešení potíží](https://azure.microsoft.com/d
 Zobrazit další role recykluje scénáře v [Kevin Williamson blogovou sérii](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[Operace OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
+[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Spuštění]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

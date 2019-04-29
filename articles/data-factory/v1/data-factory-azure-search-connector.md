@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567227"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Zápis dat do indexu Azure Search pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -100,13 +100,13 @@ Následující tabulka určuje, zda je nebo není podporováno typem dat Azure S
 
 | Azure Search datový typ | Podporované v Azure Search jímky |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
-| Datový typ Int32 | Ano |
+| String | Ano |
+| Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |
-| Logická hodnota | Ano |
+| Boolean | Ano |
 | DataTimeOffset | Ano |
-| Pole řetězců | Ne |
+| String Array | Ne |
 | GeographyPoint | Ne |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>Příklad JSON: Kopírování dat z místního SQL serveru do indexu Azure Search

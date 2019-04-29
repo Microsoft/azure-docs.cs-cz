@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61001289"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat ve službě Azure Data Catalog
 ## <a name="introduction"></a>Úvod

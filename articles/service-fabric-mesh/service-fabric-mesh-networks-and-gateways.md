@@ -16,11 +16,11 @@ ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60811023"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Úvod do sítě aplikace Service Fabric mřížky
 Tento článek popisuje různé typy nástrojů pro vyrovnávání zatížení, jak brány připojit k síti s vašimi aplikacemi k jiným sítím a směrování provozu mezi službami ve svých aplikacích.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421279"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931700"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Odeslání e-mailů pomocí Sendgridu z Node.js
 
@@ -59,7 +59,7 @@ var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 SendGrid modul exportuje **SendGrid** a **e-mailu** funkce.
 **SendGrid** je odpovědná za zasílání e-mailu prostřednictvím webového rozhraní API, zatímco **e-mailu** zapouzdřuje e-mailovou zprávu.
 
-## <a name="how-to-create-an-email"></a>Postupy: vytvoření e-mailu
+## <a name="how-to-create-an-email"></a>Postup: Vytvořit e-mailu
 
 Vytvoření e-mailu pomocí Sendgridu modulu zahrnuje nejdříve vytvořením e-mailu pomocí e-mailové funkce a potom odešlete pomocí funkce služby SendGrid. Následuje příklad vytvoření nové zprávy pomocí funkce e-mailu:
 
@@ -82,7 +82,7 @@ Nastavení vlastnosti text a html poskytuje bezproblémové nouzového řešení
 
 Další informace o všech vlastnostech nepodporuje funkci e-mailu, najdete v části [sendgrid nodejs][sendgrid-nodejs].
 
-## <a name="how-to-send-an-email"></a>Postupy: odesílání e-mailu
+## <a name="how-to-send-an-email"></a>Postup: Odeslání e-mailu
 
 Po vytvoření e-mailovou zprávu pomocí funkce e-mailu, můžete odeslat pomocí webového rozhraní API, které SendGrid poskytuje. 
 
@@ -108,7 +108,7 @@ sendgrid.send(email, function(err, json){
 > ```
 >
 
-## <a name="how-to-add-an-attachment"></a>Postupy: Přidání přílohy
+## <a name="how-to-add-an-attachment"></a>Postup: Přidat přílohu
 Přílohy se dají přidat na zprávu tak, že zadáte názvy souborů a cesty ve **soubory** vlastnost. Následující příklad ukazuje odesílání přílohy:
 
 ```javascript
@@ -135,7 +135,7 @@ sendgrid.send({
 > 
 > 
 
-## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Postupy: použití filtrů k povolení zápatí a sledování
+## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Postup: Použití filtrů k povolení zápatí a sledování
 
 SendGrid umožňuje zajistit další e-mailové funkce pomocí filtrů. Toto jsou nastavení, které lze přidat do e-mailovou zprávu povolit konkrétní funkce, jako například povolení sledování kliknutí, Google analytics, předplatné, sledování a tak dále. Úplný seznam filtrů, naleznete v tématu [nastavení filtru][Filter Settings].
 
@@ -186,7 +186,7 @@ email.setFilters({
 sendgrid.send(email);
 ```
 
-## <a name="how-to-update-email-properties"></a>Postupy: aktualizovat vlastnosti e-mailu
+## <a name="how-to-update-email-properties"></a>Postup: Aktualizovat vlastnosti e-mailu
 
 Některé vlastnosti e-mailu můžete přepsat pomocí **setProperty** nebo připojených pomocí **addProperty**. Například můžete přidat další příjemce pomocí
 
@@ -203,7 +203,7 @@ email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
 Další informace najdete v tématu [sendgrid nodejs][sendgrid-nodejs].
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Postupy: použití služeb další SendGrid
+## <a name="how-to-use-additional-sendgrid-services"></a>Postup: Pomocí služby SendGrid další
 
 SendGrid nabízí rozhraní API založeného na webu, která vám umožní využívat další funkce SendGrid z aplikace Azure. Úplné podrobnosti najdete v tématu [dokumentace k rozhraní API SendGrid][SendGrid API documentation].
 

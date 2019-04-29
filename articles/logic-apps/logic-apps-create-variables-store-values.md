@@ -11,11 +11,11 @@ ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61004430"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Vytvoření proměnné k ukládání a správě hodnoty v Azure Logic Apps
 

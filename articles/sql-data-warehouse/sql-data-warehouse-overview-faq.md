@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
 ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001426"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747604"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse nejčastější dotazy
 
@@ -82,19 +82,19 @@ Otázka: Jaké ovladače klienta podporujete?
 
 A. Podpora ovladačů pro datový Sklad můžete najít na [připojovací řetězce] stránky
 
-OTÁZKA: Které formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
+Otázka: Které formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
 
 Odpověď: Orc, RC, Parquet nebo bez stromové struktury text s oddělovači
 
-OTÁZKA: Co můžu připojit k z SQL data Warehouse pomocí PolyBase? 
+Otázka: Co můžu připojit k z SQL data Warehouse pomocí PolyBase? 
 
 Odpověď: [Azure Data Lake Store] a [Azure Storage Blobs]
 
-OTÁZKA: Při připojování ke službě Azure Storage Blobs nebo ADLS, je výpočet přenosu směrem dolů je to možné? 
+Otázka: Při připojování ke službě Azure Storage Blobs nebo ADLS, je výpočet přenosu směrem dolů je to možné? 
 
 Odpověď: SQL data Warehouse PolyBase Ne, pracuje pouze komponenty úložiště. 
 
-OTÁZKA: Můžu připojit ke službě Hdinsight?
+Otázka: Můžu připojit ke službě Hdinsight?
 
 Odpověď: HDI můžete použít WASB nebo ADLS jako vrstva HDFS. Pokud máte jako vrstva HDFS, můžete načíst data do SQL data Warehouse. Však nelze generovat výpočtu přenosu směrem dolů k instanci HDI. 
 

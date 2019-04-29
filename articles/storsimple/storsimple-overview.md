@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326921"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630164"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 series: řešení hybridního cloudového úložiště
 ## <a name="overview"></a>Přehled
@@ -205,7 +205,7 @@ Odstranění duplicitních dat snižuje celkové množství dat uložených odst
 ## <a name="storsimple-workload-summary"></a>Souhrn úloh StorSimple
 Přehled podporovaných úloh StorSimple v následující tabulce.
 
-| Scénář | Úloha | Podporováno | Omezení | Verze |
+| Scénář | Úloha | Podporováno | Omezení | Version |
 | --- | --- | --- | --- | --- |
 | Spolupráce |Sdílení souborů |Ano | |Všechny verze |
 | Spolupráce |Sdílení souborů DFS |Ano | |Všechny verze |
@@ -232,7 +232,7 @@ Následující úlohy nejsou podporovány zařízeních StorSimple řady 8000. P
 
 Tady je seznam komponent infrastruktury StorSimple nepodporuje.
 
-| Scénář | Úloha | Podporováno | Omezení | Verze |
+| Scénář | Úloha | Podporováno | Omezení | Version |
 | --- | --- | --- | --- | --- |
 | Obecné |ExpressRoute |Ano | |Všechny verze |
 | Obecné |DataCore FC |Ano* |Podporuje DataCore SANsymphony |Všechny verze |

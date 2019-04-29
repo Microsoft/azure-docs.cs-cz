@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: bc4673a12ec5b752a513b4a95796f2aeb8b8ce5d
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 9253051d907a811ffedad3a714112c9b25543a35
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60667410"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – škálování migrace do Azure
 
@@ -293,6 +293,7 @@ Contoso potřebuje zjistit, jak nasadit tyto komponenty založené na důležit�
 **Procesový server** | Contoso se nasadit samostatný vyhrazené procesní server s možností replikace 100 až 200 virtuálních počítačů:<br/><br/> Procesor: 16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader)<br/><br/> Paměť: 32 GB<br/><br/> Disk mezipaměti: 1 TB<br/><br/> Frekvence změny dat: 1 TB na 2 TB.<br/><br/> Procesový server bude obtížné pracovní a jako takové se musí nacházet na hostiteli ESXi, který dokáže zpracovat vstup/výstup disku, síťový provoz a procesoru vyžadované pro replikaci. Contoso zohlední vyhrazeného hostitele pro tento účel. 
 **Sítě** | Contoso má zkontrolovat aktuální infrastrukturu sítě VPN site-to-site a rozhodla implementovat Azure ExpressRoute. Implementace je důležité, protože bude nižší latenci a zvýšení šířky pásma pro primární oblast východní USA 2 platformě Azure společnosti Contoso.<br/><br/> **Monitorování**: Contoso potřeba pečlivě monitorovat data přenášejí z procesového serveru. Pokud data přetížení šířky pásma sítě bude předpokládat, že Contoso [omezení šířky pásma proces serveru](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Úložiště Azure** | Pro migraci musí identifikovat Contoso správný typ a počet cílových účtů služby Azure storage.  Site Recovery replikuje data virtuálního počítače do služby Azure storage.<br/><br/> Site Recovery můžete replikovat do účtů úložiště (SSD) úrovně standard nebo premium.<br/><br/> Při rozhodování o úložišti, musíte zkontrolovat Contoso [omezení úložiště](../virtual-machines/windows/disks-types.md)a zvážit očekávaný růst a zvyšováním využití v čase. Vzhledem k rychlost a priority migrace, Contoso se rozhodl používat premium SSD<br/><br/>
+
 Contoso se rozhodli použít spravované disky pro všechny virtuální počítače, které jsou nasazeny do Azure.  Vstupně-výstupních operací, vyžaduje se určí, jestli se disky být standardní HDD, SSD na úrovni Standard nebo Premium (SSD).<br/><br/>
 
 #### <a name="data-migration-service"></a>Data Migration Service

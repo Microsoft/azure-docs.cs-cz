@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: douglasl
 ms.openlocfilehash: 634e1b097f2ca16a8c52da02445b3f5f2af7ff3d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60708817"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure (Transact-SQL)
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "53744781"
 
 Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit pomocí provádí v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace.
 
-Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. Šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server Azure. Microsoft automaticky otočí tyto certifikáty nejméně každých 90 dní. Obecný popis transparentní šifrování dat, naleznete v tématu [transparentní šifrování dat (TDE)].
+Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. Šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server Azure. Microsoft automaticky otočí tyto certifikáty nejméně každých 90 dní. Obecný popis transparentní šifrování dat, naleznete v tématu [Transparentní šifrování dat].
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
 Povolit transparentní šifrování dat pro Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL serveru, proveďte následující akce:
@@ -67,7 +67,7 @@ FROM
 Výsledkem ```1``` Určuje databázi šifrované ```0``` Určuje databázi bez šifrování.
 
 <!--Anchors-->
-[Transparentní šifrování dat (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparentní šifrování dat]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

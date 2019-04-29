@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60996165"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly ve službě Azure Monitor
 Vlastní protokoly zdroj dat ve službě Azure Monitor umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog. Po shromáždění, můžete analyzovat data do jednotlivých polí v dotazech nebo extrahovat data během shromažďování u jednotlivých polí.

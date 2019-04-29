@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
 ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60901253"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Pomocí Stream Analytics zpracovávat data exportovaná z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovat ze služby Application Insights](export-telemetry.md). Stream Analytics můžete vyžádat data z různých zdrojů. Můžete transformovat a filtrovat data a pak směrovat na různé jímky.

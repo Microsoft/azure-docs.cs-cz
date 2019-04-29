@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
 ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300274"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731246"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 Služba Azure Functions umožňuje snadno nasadit aplikaci function app používáte průběžnou integraci služby App Service. Functions se integruje s BitBucket, Dropbox, GitHub a Azure DevOps. To umožňuje pracovní postupy s kde kód funkce aktualizace provedené pomocí jedné z těchto integrovaných služeb aktivační události nasazení do Azure. Pokud jste ještě do služby Azure Functions, začněte s [přehled Azure Functions](functions-overview.md).
