@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515841"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741976"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření IoT hubu pomocí webu Azure portal
 
@@ -36,11 +36,11 @@ Tady jsou některé vlastnosti, které můžete nastavit pro službu IoT hub:
 
 **Ceny a škálování**: Tato vlastnost slouží k migraci na jinou úroveň nebo nastavit počet služby IoT Hub jednotek. 
 
-**Monitorování operací**: zapnout nebo vypnout, různé kategorie monitorování jako je například protokolování událostí souvisejících s zpráv typu zařízení cloud nebo zprávy typu cloud zařízení.
+**Monitorování operací**: Zapněte sledování různých kategorií nebo vypnout, jako je například protokolování událostí souvisejících s zpráv typu zařízení cloud nebo zprávy typu cloud zařízení.
 
-**Filtr IP**: určit rozsah IP adres, které budou přijímat nebo odmítat službou IoT hub.
+**Filtr IP**: Zadejte rozsah IP adres, které budou přijímat nebo odmítat službou IoT hub.
 
-**Vlastnosti**: poskytuje seznam vlastností, můžete zkopírovat a použít jinde, jako je například ID prostředku, skupiny prostředků, umístění a tak dále.
+**Vlastnosti**: Poskytuje seznam vlastností, můžete zkopírovat a použít jinde, jako je například ID prostředku, skupiny prostředků, umístění a tak dále.
 
 ### <a name="shared-access-policies"></a>Zásady sdíleného přístupu
 

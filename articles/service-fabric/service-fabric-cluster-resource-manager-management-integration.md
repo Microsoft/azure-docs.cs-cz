@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743509"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager integrace s správy clusteru Service Fabric
 Service Fabric Cluster Resource Manageru není jednotka upgradu v Service Fabric, ale je zahrnuta. První způsob, který Cluster Resource Manager pomáhá se správou se sledováním požadovaný stav clusteru a služby dovnitř. Cluster Resource Manager odešle sestav o stavu pokud ho nelze vložit do požadovanou konfiguraci clusteru. Například pokud není k dispozici dostatečná kapacita Cluster Resource Manager odešle upozornění stavu a chyb, které označují problém. Další část integrace souvisí se fungování upgradu. Cluster Resource Manager mírně změní jeho chování během upgradu.  

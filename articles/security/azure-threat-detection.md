@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245236"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611008"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -75,7 +75,7 @@ PIM umožňuje:
 
 -   Dostávejte upozornění týkající se přístupu k privilegovanou roli.
 
-## <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 [Protokoly Azure monitoru](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je Microsoftu založené na cloudu IT řešení pro správu, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Protože protokoly Azure Monitor je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Nové funkce zabezpečení jsou poskytována automaticky, uložení průběžnou údržbu a upgrade náklady.
 

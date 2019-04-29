@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
 ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800047"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -84,15 +84,15 @@ Azure Disk Encryption vyžaduje připojení k Internetu pro přístup k Active D
 | type | AzureDiskEncryptionForWindows| string |
 | typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
 | (volitelné) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
-| (volitelné) AADClientSecret | heslo | string |
-| (volitelné) AADClientCertificate | Kryptografický otisk | string |
+| (volitelné) AADClientSecret | password | string |
+| (volitelné) AADClientCertificate | thumbprint | string |
 | EncryptionOperation | EnableEncryption | string | 
 | KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultResourceId | identifikátor uri prostředku | string |
 | KekVaultResourceId | identifikátor uri prostředku | string |
 | KeyVaultURL | url | string |
-| SequenceVersion | UniqueIdentifier | string |
+| SequenceVersion | uniqueidentifier | string |
 | VolumeType | Operačního systému, dat, všechny | string |
 
 ## <a name="template-deployment"></a>Nasazení šablon

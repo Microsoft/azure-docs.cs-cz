@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609496"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpečení Azure a dodržování předpisů – IaaS třívrstvé webové aplikace pro UK OFFICIAL
 
@@ -109,7 +109,7 @@ Load Balancer
 - (1) nástroj pro vyrovnávání zatížení vrstvy biz
 - (1) nástroj pro vyrovnávání zatížení vrstvy data
 
-Storage
+Úložiště
 - (14) účty úložiště celkový počet
   - Skupinu dostupnosti řadiče domény služby Active Directory
     - (2) primární účtů místně redundantního úložiště (LRS) - 1 pro každý virtuální počítač  

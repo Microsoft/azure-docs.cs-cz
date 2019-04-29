@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: pbutlerm
 ms.openlocfilehash: a42253baa1ed6dcfb8ad20d416c492cc7a677e43
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744669"
 ---
 # <a name="azure-application-support-tab"></a>Kartu Podpora aplikací Azure
 
@@ -48,5 +48,5 @@ Následující snímek obrazovky, použijte jako vodítko k poskytování požad
 
 ## <a name="next-steps"></a>Další postup
 
-[Publikovat nabídku aplikací Azure](./cpp-publish-offer.md)
+[Publikování nabídky aplikací Azure](./cpp-publish-offer.md)
 

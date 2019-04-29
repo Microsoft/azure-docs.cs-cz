@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/20/2019
 ms.openlocfilehash: b3514eca8db5d5b68b3e5784ee95e8583813945c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075231"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU
 
@@ -32,7 +32,7 @@ Následující tabulky ukazují prostředky dostupné pro izolované databáze n
 > [!IMPORTANT]
 > Škálování pokyny a důležité informace, najdete v části [škálování izolované databáze](sql-database-single-database-scale.md)
 
-### <a name="basic-service-tier"></a>Úroveň služeb Basic
+### <a name="basic-service-tier"></a>Úroveň služby Basic
 
 | **Vypočítat velikost** | **Basic** |
 | :--- | --: |
@@ -44,7 +44,7 @@ Následující tabulky ukazují prostředky dostupné pro izolované databáze n
 | Maximální počet souběžných relací | 300 |
 |||
 
-### <a name="standard-service-tier"></a>Úroveň služeb Standard
+### <a name="standard-service-tier"></a>Úroveň služby Standard
 
 | **Vypočítat velikost** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
@@ -68,7 +68,7 @@ Následující tabulky ukazují prostředky dostupné pro izolované databáze n
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Úroveň služeb Premium
+### <a name="premium-service-tier"></a>Úroveň služby Premium
 
 | **Vypočítat velikost** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|

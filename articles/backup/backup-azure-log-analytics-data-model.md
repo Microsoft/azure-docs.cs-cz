@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
 ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61234910"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Datový model log Analytics pro Azure zálohování – uložená data
 
@@ -257,7 +257,7 @@ Tato tabulka obsahuje základní pole o kontejnerech chráněné. (Byl Protected
 | ProtectedContainerLocation_s |Text |Kontejner chráněné nacházejí na místních nebo v Azure |
 | ProtectedContainerType_s |Text |Určuje, zda je kontejner chráněný server nebo kontejneru |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Tato tabulka obsahuje podrobnosti o polích týkající se úložiště.
 

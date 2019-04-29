@@ -9,11 +9,11 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60616487"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
 
@@ -134,7 +134,7 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 | resultType |String |Stav operace, například 200. |
 | callerIpAddress |String |IP adresu klientovi provádějícímu žádost |
 | correlationId |String |Identifikátor protokolu. Tato hodnota slouží k seskupení sady položek protokolu související. |
-| identity |Objekt |Identita, která vygeneruje protokol |
+| identity |Object |Identita, která vygeneruje protokol |
 | properties |JSON |Viz následující část (schéma vlastnosti požadavku protokolu) podrobnosti |
 
 #### <a name="request-log-properties-schema"></a>Požadavek protokolu vlastnosti schématu

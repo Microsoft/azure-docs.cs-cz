@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
 ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621543"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Zabezpečení služby a aplikace Service Fabric
 Architektura mikroslužeb přinést [řadu výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb, ale výzvy a jiné než Správa zabezpečení tradiční monolitické aplikace. 

@@ -1,5 +1,5 @@
 ---
-title: Co je to Test Drive? | Dokumenty Microsoft
+title: Co je testovací verze? | Dokumenty Microsoft
 description: Vysvětlení funkce Marketplace testovací verze
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 0bdff77a4be6a28e2799d4f481492d2c7ba6bda0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744778"
 ---
-<a name="what-is-test-drive"></a>Co je to Test Drive?
+<a name="what-is-test-drive"></a>Co je testovací verze?
 ===================
 
 Testovací verze je skvělým způsobem, aby ukazovala nabídky pro potenciální zákazníky tím, že je možnost \'před zakoupením vyzkoušet\'výsledkem zvýšení převodu a vytváření vysoce kvalifikovaných prodejních příležitostí.

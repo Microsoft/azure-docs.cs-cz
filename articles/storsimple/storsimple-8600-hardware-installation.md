@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719001"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630835"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení připojení do racku a zapojení kabeláže zařízení StorSimple 8600
 ## <a name="overview"></a>Přehled
@@ -34,12 +34,12 @@ Před jeho usazení do zařízení, zkontrolujte následující informace.
 ![Ikona upozornění](./media/storsimple-safety/IC740879.png)![Tučná tloušťka ikonu](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **upozornění!**
 
 1. Ujistěte se, že máte dvou osob, které jsou k dispozici ke správě váhu zařízení, pokud je její zpracování ručně. Plně nakonfigurovaného skříně můžete zvážit až 32 kg (70 lbs.).
-2. Umístěte pole na povrch bez stromové struktury, úroveň.
+2. Umístěte krabici na rovný povrch.
 
 Dále proveďte následující kroky k jeho usazení do vašeho zařízení.
 
 #### <a name="to-unpack-your-device"></a>Rozbalte vaše zařízení
-1. Zkontrolujte pole a balení maskota crushes, kusy, vody poškození nebo jiných zřejmé poškození. Pokud pole nebo balení je vážně poškozen, neotevírejte pole. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) umožňují posoudit, jestli je zařízení v dobrém stavu.
+1. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud jsou krabice nebo obal vážně poškozené, krabici neotevírejte. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) umožňují posoudit, jestli je zařízení v dobrém stavu.
 2. Otevření okna vnější a pak proveďte na dvou políček na primárním serverem a EBOD skříně. Můžete teď rozbalit primární a EBOD skříně. Následující obrázek znázorňuje rozbalené zobrazení jedné skříních.
    
     ![Rozbalit zařízení úložiště](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
@@ -69,7 +69,7 @@ Dále proveďte následující kroky k jeho usazení do vašeho zařízení.
      
      Pokud jste některá z položek uvedených výše, neobdrželi [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
-Dalším krokem je namontovat zařízení.
+Dalším krokem je usazení zařízení do racku.
 
 ## <a name="rack-mount-your-storsimple-8600-device"></a>Namontovat zařízení StorSimple 8600
 Postupujte podle dalších kroků při instalaci úložného zařízení StorSimple 8600 ve standardní stojanu 19 palce na přední a zadní příspěvky. Toto zařízení se dodává s dvě skříně: primární skříň a EBOD skříň. Obě tyto musí být skříňová.
@@ -115,7 +115,7 @@ Pro použití s soubor CAB 19 palec rack vám poskytneme sadu připojení rails.
    |  1 |M 3 x 4 šrouby hlavní tlačítko |
    |  2 |Snímky skříně |
 2. Připojení k CAB svislé členy rack lišty levé a pravé liště sestavení. Závorky jsou označeny **LH**, **RH**, a **této straně si** které vás provedou správné orientaci.
-3. Vyhledejte lišty PIN kódy na přední a zadní lišty sestavení. Rozšiřte lišty přizpůsobit mezi příspěvků do racku a vložení do přední a zadní rack příspěvek svislé člen děr kódy PIN. Ujistěte se, že je sestavení lišty úroveň.
+3. Vyhledejte čepy v přední a zadní části montážní lišty. Rozšiřte lišty přizpůsobit mezi příspěvků do racku a vložení do přední a zadní rack příspěvek svislé člen děr kódy PIN. Ujistěte se, že je sestavení lišty úroveň.
 4. Zabezpečte lišty sestavení do racku svislé členy pomocí dvou metriky šrouby k dispozici. Použijte jeden šroub na popředí a na zadní.
 5. Tento postup opakujte pro další lišty sestavení.
    
@@ -222,7 +222,7 @@ Pro podporu tohoto redundantní kontroler převzetí služeb při selhání, bud
 | E |PCM 1 |
 | F |Kontroleru EBOD 0 |
 | G |Kontroleru EBOD 1 |
-| H, MŮŽU |Hostitelé (třeba souborové servery) |
+| H,I |Hostitelé (třeba souborové servery) |
 | 0-5 |Síťová rozhraní |
 | 6 |Primární zařízení |
 | 7 |Skříň EBOD |
@@ -260,7 +260,7 @@ Proveďte následující kroky a propojení kabely sériového portu.
 6. Ověřte, že připojení funguje stisknutím klávesy Enter v konzole. Nabídka konzoly sériového portu zobrazit.
 
 > [!NOTE]
-> **Správa ILO:** při instalaci zařízení ve vzdáleném datovém centru nebo v počítačový sál s omezeným přístupem, ujistěte se, že sériové připojení na obou řadičích trvalým připojením k konzoly sériového portu přepínače nebo podobné zařízení. To umožňuje out-of-band vzdáleného řízení a podporu operací v případě výpadků sítě nebo neočekávané chyby.
+> **Správa ILO:** Když je zařízení nainstalované ve vzdáleném datovém centru nebo v počítačový sál s omezeným přístupem, ujistěte se, že sériové připojení na obou řadičích trvalým připojením k konzoly sériového portu přepínače nebo podobné zařízení. To umožňuje out-of-band vzdáleného řízení a podporu operací v případě výpadků sítě nebo neočekávané chyby.
 > 
 > 
 

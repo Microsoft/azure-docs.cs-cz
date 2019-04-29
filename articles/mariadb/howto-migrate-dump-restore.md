@@ -7,18 +7,18 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540431"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745931"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do služby Azure Database pro MariaDB pomocí výpisu a obnovení
 Tento článek vysvětluje dva běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database pro MariaDB
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump) 
 - Výpisu a obnovení pomocí phpmyadmin zobrazuje
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Pro jednotlivé kroky v této příručce s postupy, musíte mít:
 - [Vytvoření Azure Database pro MariaDB server – Azure portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) na počítači nainstalovaný nástroj příkazového řádku.

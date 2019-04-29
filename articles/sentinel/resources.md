@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
 ms.openlocfilehash: d2dcb1eb9132e68bebbe84d81a4e4f17df79f2d3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615552"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Užitečné zdroje informací pro práci s Azure Sentinelu ve verzi Preview
 

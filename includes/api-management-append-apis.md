@@ -1,15 +1,10 @@
 ---
-author: vladvino
-ms.service: api-management
-ms.topic: include
-ms.date: 11/09/2018
-ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798435"
 ---
 ## <a name="append-other-apis"></a>Připojení dalších rozhraní API
 
@@ -24,3 +19,5 @@ Pokud chcete k existujícímu rozhraní API připojit ještě jiné rozhraní AP
 3. Klikněte na **…** vedle rozhraní API, ke kterému chcete připojit jiné rozhraní API.
 4. V rozevírací nabídce vyberte **Importovat**.
 5. Vyberte službu, ze které se má importovat rozhraní API.
+
+

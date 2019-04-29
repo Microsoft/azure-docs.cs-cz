@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 11fbec81e88eec6c7daa9136eb5421387b79d71c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60998816"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B chyby a řešení pro Azure Logic Apps
 
@@ -145,7 +145,7 @@ Příklad:
 
 |   |   | 
 |---|---|
-| Popis chyby | InvalidTemplate. Nelze proces výrazy jazyka šablony ve vstupech akce 'Flat_File_Decoding' na řádku '1' ve sloupci "1902": "vyžaduje vlastnost 'content' očekává hodnotu, ale bylo obdrženo hodnotu null. Cesta ".". |
+| Popis chyby | InvalidTemplate. Na řádku vstupů nelze zpracovat výrazy jazyka šablony v akci 'Flat_File_Decoding', '1' ve sloupci "1902": "Vyžaduje vlastnost 'content' očekává hodnotu, ale bylo obdrženo hodnotu null. Cesta ".". |
 | Akce uživatele | Tato chyba označuje, že vstupní zprávy neobsahuje tělo. |
 |   |   | 
 

@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773260"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálního počítače pomocí rozhraní REST API
 
@@ -49,7 +49,7 @@ Vyžadují se následující hlavičky:
 | vmname | Název virtuálního počítače Azure. |
 | metricnames | Čárkami oddělený seznam platných [metriky Load balanceru úrovně](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | verze API-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2018-01-01`, který je obsažen v adrese URL výše.  |
-| Časový interval | Řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO` , který definuje časový rozsah vrácené metrik. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
+| TimeSpan | Řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO` , který definuje časový rozsah vrácené metrik. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku

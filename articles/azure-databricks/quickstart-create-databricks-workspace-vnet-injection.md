@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59288198"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60770518"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Rychlý start: Vytvoření pracovního prostoru Azure Databricks ve virtuální síti
 
@@ -37,7 +37,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
     |Adresní prostor|10.1.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR|
     |Předplatné|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
     |Skupina prostředků|databricks – rychlý start|Vyberte **vytvořit nový** a zadejte nový název skupiny prostředků pro váš účet.|
-    |Umístění|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisné umístění, kde je možné hostovat vaše virtuální síť. Použijte umístění co nejblíže vašim uživatelům.|
+    |Location|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisné umístění, kde je možné hostovat vaše virtuální síť. Použijte umístění co nejblíže vašim uživatelům.|
     |Název podsítě|default|Vyberte název výchozí podsíť ve virtuální síti.|
     |Rozsah adres podsítě|10.1.0.0/24|Rozsah adres podsítě v zápisu CIDR. Musí spadat do adresního prostoru virtuální sítě. Nelze upravit rozsah adres podsítě, která se používá.|
 
@@ -58,7 +58,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
     |Název pracovního prostoru|databricks – rychlý start|Zvolte název pracovního prostoru Azure Databricks.|
     |Předplatné|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
     |Skupina prostředků|databricks – rychlý start|Vyberte stejnou skupinu prostředků, které jste použili pro virtuální síť.|
-    |Umístění|\<Vyberte oblast nejbližší vašim uživatelům.\>|Zvolte stejné umístění jako virtuální síť.|
+    |Location|\<Vyberte oblast nejbližší vašim uživatelům.\>|Zvolte stejné umístění jako virtuální síť.|
     |Cenová úroveň|Vyberte mezi Standard nebo Premium.|Další informace o cenových úrovních najdete v tématu [stránku s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).|
     |Nasazení pracovního prostoru Azure Databricks ve službě Virtual Network|Ano|Toto nastavení umožňuje nasadit pracovnímu prostoru Azure Databricks ve vaší virtuální síti.|
     |Virtual Network|databricks – rychlý start|Vyberte virtuální síť, kterou jste vytvořili v předchozí části.|

@@ -4,27 +4,26 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: fa8340ec6f555258f159e14133305b847e2e3cc3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684423"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754261"
 ---
-- **Údaje objednávky** – po vytvoření objednávky se na webu Azure Portal uloží dodací adresa, e-mail a kontaktní informace uživatelů. Uložené údaje zahrnují:
+- **Podrobnosti objednávky**. Po vytvoření objednávky dodací adresu, e-mailovou adresu a kontaktní údaje uživatele, je uložen na webu Azure Portal. Uložené údaje zahrnují:
   - Jméno kontaktu
   - Telefonní číslo
-  - Email
+  - E-mailová adresa
   - Ulice a číslo
   - Město
-  - PSČ
+  - Kód ZIP/postal code
   - Stav
-  - Provincie/kraj/oblast
+  - Země/kraj/oblast
   - Sledovací číslo zásilky
 
-    Podrobnosti objednávky jsou zašifrované a uložené ve službě. Informace o službě uchová, dokud explicitně odstranit prostředek nebo pořadí. Kromě toho odstranění prostředku a odpovídající objednávka blokovaný od okamžiku, kdy zařízení se posílá, dokud se zařízení vrátí do Microsoftu.
+    Podrobnosti objednávky jsou zašifrované a uložené ve službě. Informace o službě uchová, dokud explicitně odstranit prostředek nebo pořadí. Odstranění prostředku a odpovídající objednávka blokovaný od okamžiku, kdy zařízení se posílá, dokud se zařízení vrátí do Microsoftu.
 
-- **Dodací adresa** – po se objednávka služby Data Box poskytuje k prostředníci třetích stran, jako je například UPS dodací adresu.
+- **Dodací adresa**. Po umístění objednávku zařízení Data Box služba poskytuje dodací adresu prostředníci třetích stran, například UPS.
 
-- **Sdílet uživatele** – na vašem zařízení mohou také uživatelé data uložená na sdílených složek na. Seznam uživatelů, kteří můžou přistupovat k datům sdílené složky se zobrazí a je možné zobrazit. Tento seznam se také odstraní při odstranění sdílené složky.
-
+- **Sdílet uživatele**. Uživatelé ve vašem zařízení můžete také přístup k datům umístěným v sdílených složkách. Můžete zobrazit seznam uživatelů, kteří můžou přistupovat k datům sdílené složky. Při odstranění sdílených složek na tento seznam je také odstranit.

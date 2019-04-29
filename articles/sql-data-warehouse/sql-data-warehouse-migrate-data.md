@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
 ms.openlocfilehash: 6a2acf602252ee4319f9a5eccef53a25d8e2dd7f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748182"
 ---
 # <a name="migrate-your-data"></a>Migrace dat
 Data můžete přesunout z různých zdrojů do služby SQL Data Warehouse pomocí různých nástrojů.  Kopírovat ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Ale jako objem data zvýšení byste uvažovat o rozdělení proces migrace dat do kroků. To nabízí příležitosti k optimalizaci každý krok, výkon i odolnost zajistit hladký průběh data migrace.
