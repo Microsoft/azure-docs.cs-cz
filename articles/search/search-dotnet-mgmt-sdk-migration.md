@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.custom: seodec2018
 ms.openlocfilehash: 369e5283d7350729e0d8cc44f94f1f2e71b133c3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816997"
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>Upgrade na Azure Search .NET Management SDK verze 2
 Pokud používáte verzi 1.0.2 nebo starší aplikace [Management SDK služby Azure Search .NET](https://aka.ms/search-mgmt-sdk), tento článek vám pomůže při upgradu aplikace použije verzi 2.

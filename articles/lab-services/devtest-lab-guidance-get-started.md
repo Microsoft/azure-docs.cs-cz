@@ -14,11 +14,11 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773804"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Oblíbené scénáře pro pomocí Azure DevTest Labs
 V závislosti na potřebách organizace je možné nakonfigurovat DevTest Labs pro splnění různých požadavků.  Tento článek popisuje Oblíbené scénáře. Každý scénář popisuje výhody převést do režimu s použitím DevTest Labs a prostředky používat k implementaci těchto scénářů.  

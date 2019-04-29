@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
 ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845762"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Vytvoření schémat pro sledování X12 zprávy v integračních účtů pro Azure Logic Apps
 
@@ -72,10 +72,10 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | transactionSetControlNumber | String | Kontrolní číslo sady transakcí. (Volitelné) |
 | CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
 | messageType | String | Transakce nastavit nebo typ dokumentu. (Volitelné) |
-| isMessageFailed | Logická hodnota | Zda X12 zprávy se nezdařilo. (Povinné) |
-| isTechnicalAcknowledgmentExpected | Logická hodnota | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
-| isFunctionalAcknowledgmentExpected | Logická hodnota | Určuje, zda je funkční potvrzení gurovaný X12 smlouvy. (Povinné) |
-| needAk2LoopForValidMessages | Logická hodnota | Určuje, zda je smyčka smyčku AK2 vyžaduje platnou zprávu. (Povinné) |
+| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
+| isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
+| isFunctionalAcknowledgmentExpected | Boolean | Určuje, zda je funkční potvrzení gurovaný X12 smlouvy. (Povinné) |
+| needAk2LoopForValidMessages | Boolean | Určuje, zda je smyčka smyčku AK2 vyžaduje platnou zprávu. (Povinné) |
 | segmentsCount | Integer | Počet segmentů X12 sada transakcí. (Volitelné) |
 ||||
 
@@ -131,11 +131,11 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingFunctionalGroupId | String | Neodpovídá ID funkční skupiny, který mapuje na AK101 v potvrzení. (Volitelné) |
 | respondingtransactionSetControlNumber | String | Kontrolní číslo sady transakcí reagovat. (Volitelné) |
 | respondingTransactionSetId | String | Sady transakcí odpovídá ID, který mapuje na AK201 v potvrzení. (Volitelné) |
-| statusCode | Logická hodnota | Stavový kód potvrzení sady transakcí. (Povinné) |
+| statusCode | Boolean | Stavový kód potvrzení sady transakcí. (Povinné) |
 | segmentsCount | Výčet | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
 | StavZpracování | Výčet | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
-| isMessageFailed | Logická hodnota | Zda X12 zprávy se nezdařilo. (Povinné) |
+| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | ak2Segment | String | Potvrzení transakce v rámci přijatý funkční skupiny. (Volitelné) |
 | ak3Segment | String | Sestavy chyb v datový segment. (Volitelné) |
 | ak5Segment | String | Uvádí, zda je sada identifikované v segmentu smyčku AK2 transakcí přijímat nebo odmítat a proč. (Volitelné) |
@@ -183,8 +183,8 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
 | isaSegment | String | Segment ISA zprávy. (Volitelné) |
-| isTechnicalAcknowledgmentExpected | Logická hodnota | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
-| isMessageFailed | Logická hodnota | Zda X12 zprávy se nezdařilo. (Povinné) |
+| isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
+| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | isa09 | String | X12 dokumentu výměny datum. (Volitelné) |
 | isa10 | String | X12 dokumentu výměny čas. (Volitelné) |
 | isa11 | String | Ovládací prvek interchange X12 identifikátor standardy. (Volitelné) |
@@ -235,7 +235,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | interchangeControlNumber | String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
 | isaSegment | String | Segment ISA pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
 | respondingInterchangeControlNumber |String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
-| isMessageFailed | Logická hodnota | Zda X12 zprávy se nezdařilo. (Povinné) |
+| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | statusCode | Výčet | Výměny. stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
 | StavZpracování | Výčet | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ta102 | String | Interchange datum. (Volitelné) |
@@ -288,9 +288,9 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
 | functionalGroupControlNumber | String | Funkční kontrolní číslo. (Volitelné) |
 | gsSegment | String | Zpráva GS segmentu. (Volitelné) |
-| isTechnicalAcknowledgmentExpected | Logická hodnota | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
-| isFunctionalAcknowledgmentExpected | Logická hodnota | Určuje, zda je funkční potvrzení gurovaný X12 smlouvy. (Povinné) |
-| isMessageFailed | Logická hodnota | Zda X12 zprávy se nezdařilo. (Povinné)|
+| isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
+| isFunctionalAcknowledgmentExpected | Boolean | Určuje, zda je funkční potvrzení gurovaný X12 smlouvy. (Povinné) |
+| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné)|
 | gs01 | String | Funkční kód. (Volitelné) |
 | gs02 | String | Kód aplikace odesílatele. (Volitelné) |
 | gs03 | String | Kód aplikace příjemce. (Volitelné) |
@@ -347,7 +347,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | gsSegment | String | Stejné jako funkční skupiny řídit číslo, ale mají údaj vyplněný pouze ve zvláštních případech. (Volitelné) |
 | respondingfunctionalGroupControlNumber | String | Kontrolní číslo skupiny původní funkční. (Volitelné) |
 | respondingFunctionalGroupId | String | ID mapuje AK101 ve funkční skupině potvrzení. (Volitelné) |
-| isMessageFailed | Logická hodnota | Zda X12 zprávy se nezdařilo. (Povinné) |
+| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | statusCode | Výčet | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
 | StavZpracování | Výčet | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ak903 | String | Počet přijatých sady transakcí. (Volitelné) |

@@ -17,13 +17,13 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835621"
 ---
-# <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business jeden na Azure Virtual Machines
+# <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
 Tento dokument obsahuje pokyny pro nasazení SAP Business One ve službě Azure Virtual Machines. V dokumentaci k není náhradou za dokumentaci k instalaci podnikání, jeden pro SAP. Základní pokyny pro plánování a nasazení pro infrastrukturu Azure a spustit jednu obchodní aplikace v by měly pokrývat v dokumentaci.
 
 Obchodní jeden podporuje dvě různé databáze:

@@ -12,11 +12,11 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60767961"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Nastavte proměnné aktivity ve službě Azure Data Factory
 
@@ -29,7 +29,7 @@ Vlastnost | Popis | Požaduje se
 jméno | Název aktivity v kanálu | Ano
 description | Text popisující, jakým způsobem aktivita naloží | ne
 type | Typ aktivity je SetVariable | ano
-hodnota | Řetězcový literál nebo výraz hodnotu objektu používá k nastavení zadané proměnné | ano
+value | Řetězcový literál nebo výraz hodnotu objektu používá k nastavení zadané proměnné | ano
 variableName | Název proměnné, která stanoví tato aktivita | ano
 
 

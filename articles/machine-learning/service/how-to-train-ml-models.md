@@ -12,11 +12,11 @@ ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60818495"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trénování modelů Azure Machine Learning pomocí odhad
 

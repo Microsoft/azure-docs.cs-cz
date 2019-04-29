@@ -13,11 +13,11 @@ ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60783934"
 ---
 # <a id="troubleshooting"></a> Poradce při potížích povolení Application Insights Snapshot debuggeru nebo zobrazení snímků
 Je-li povolit Application Insights Snapshot debuggeru pro aplikaci, ale nezobrazují se snímky pro výjimky, můžete použít tyto pokyny k řešení potíží s. Může existovat mnoho různých důvodů, proč se negenerují snímky. Můžete spustit kontrolu stavu snímku k identifikaci některé z běžných příčin.

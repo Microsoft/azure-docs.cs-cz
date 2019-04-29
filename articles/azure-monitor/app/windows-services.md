@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
 ms.openlocfilehash: 85764c0ee5b8ed117fb191657d54abe5bd10a703
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784384"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ruční konfigurace služby Application Insights pro aplikace .NET
 
@@ -36,7 +36,7 @@ Budete potřebovat:
 
 Prostředkem je místo na webu Azure Portal, kde jsou shromažďována a zobrazena vaše data. Musíte se rozhodnout, jestli chcete vytvořit nový nebo sdílet existující prostředek.
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>Součást větší aplikace: Použijte existující prostředek
+### <a name="part-of-a-larger-app-use-existing-resource"></a>Součást větší aplikace: Použít existující prostředek
 
 Pokud má vaše webová aplikace několik komponent – například front-end webovou aplikaci a jednu nebo více back-end služeb – pak byste měli telemetrická data ze všech komponent odesílat do stejného prostředku. To umožní jejich zobrazení v rámci jedné Mapy aplikace a bude možné trasovat požadavky mezi jednotlivými komponentami.
 

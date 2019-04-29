@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: kasinh
 ms.openlocfilehash: 72b2368979f0c9e546e1c7ef7fc462bf1d64c947
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782051"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Zálohování SQL serveru do Azure s Azure Backup serveru
 Tento článek vás provede kroky konfigurace pro zálohování databází systému SQL Server pomocí Microsoft Azure Backup Server (MABS).

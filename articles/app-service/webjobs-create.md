@@ -16,11 +16,11 @@ ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
 ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60833469"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -125,7 +125,7 @@ when making changes in one don't forget the other two.
    | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
    | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
    | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
-   | **Aktivační události** | Ručně | |
+   | **Aktivační události** | Manual | |
 
 4. Klikněte na **OK**.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003582"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899220"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -28,7 +28,7 @@ První, Stručná odpověď:
 * Moduly standardní telemetrická data, na kterých běží "mimo pole" by problém nahlásili odesílat citlivá data do služby. Telemetrická data se týká zatížení, metriky výkonu a využití, sestavy výjimek a jiné diagnostické údaje. Adresy URL; jsou viditelné v diagnostických zprávách hlavní uživatelské údaje ale aplikace by neměl v každém případě citlivá data ve formátu prostého textu v adrese URL.
 * Můžete napsat kód, který odešle další vlastní telemetrická data, vám pomůže při monitorování využití a Diagnostika. (Toto rozšíření je skvělou funkcí služby Application Insights.) Je to možné, omylem, psaní tohoto kódu tak, že obsahují osobní a další citlivá data. Pokud vaše aplikace funguje se takové údaje, byste měli použít důkladný přehled procesů pro veškerý kód, který píšete.
 * Při vývoji a testování vaší aplikace, je snadné ke kontrole, co se právě odesílá prostřednictvím sady SDK. Data se zobrazí v ladění okna výstup integrované vývojové prostředí a prohlížeče. 
-* Data se uchovávají v [Microsoft Azure](https://azure.com) serverů v USA nebo Evropa. (Ale vaše aplikace můžou běžet kdekoli.) Azure má [silné zabezpečení zpracuje a splňuje širokou škálu standardy pro dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vám a vašemu týmu určené mít přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup k němu konkrétní ojedinělých případech s vaším vědomím. Zašifrovaná při přenosu, i když nejsou v serverech.
+* Data se uchovávají v [Microsoft Azure](https://azure.com) serverů v USA nebo Evropa. (Ale vaše aplikace můžou běžet kdekoli.) Azure má [silné zabezpečení zpracuje a splňuje širokou škálu standardy pro dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vám a vašemu týmu určené mít přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup k němu konkrétní ojedinělých případech s vaším vědomím. Při přenosu i je zašifrovaná.
 
 Zbývající část tohoto článku popisuje podrobněji na těchto otázek. Je navržena jako samostatná, tak, aby je bylo možné zobrazit kolegům, kteří nejsou součástí vašeho týmu.
 
@@ -127,12 +127,9 @@ Ano, můžeme použít https k odesílání dat do portálu v téměř všech sa
 
 Ano, kanály některých telemetrických dat se zachová data místně, pokud není dostupný koncový bod. Přečtěte si prosím níže zobrazíte, které rozhraní a kanály telemetrie se vztahuje.
 
-
 Telemetrie kanály, které využívají místní úložiště vytvořit dočasné soubory v adresáři TEMP nebo APPDATA, které jsou omezeny na konkrétní účet, který spouští vaše aplikace. K tomu může dojít, když se koncový bod není dočasně k dispozici nebo dosáhl omezení limitu. Po vyřešení tohoto problému obnoví kanál telemetrie odesílá všechny nové a trvalá data.
 
-
-Tato data trvalých **nejsou šifrovaná** se důrazně doporučuje změny struktury vaší zásady shromažďování údajů zakázat shromažďování dat soukromých. (Viz [jak exportovat a odstranění dat soukromých](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) Další informace.)
-
+Tuto trvalou data nejsou šifrována místně. Pokud se jedná o problém, zkontrolujte data a omezit shromažďování dat soukromých. (Viz [jak exportovat a odstranění dat soukromých](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) Další informace.)
 
 Pokud zákazník potřebuje k tomuto adresáři nakonfigurovat specifické požadavky na zabezpečení můžete nakonfigurovat na rozhraní framework. Ujistěte se prosím, že proces běží vaše aplikace má přístup k zápisu do tohoto adresáře, ale také se ujistěte, že tento adresář je chráněný, aby telemetrie čten stranou serveru neoprávněné uživatele.
 

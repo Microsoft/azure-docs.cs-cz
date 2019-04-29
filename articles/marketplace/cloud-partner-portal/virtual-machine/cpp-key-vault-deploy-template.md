@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 01aedadfed1ce24b8b6ae75a9163dfe0629ac7c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844119"
 ---
-# <a name="key-vault-deployment-template"></a>Šablona pro nasazení služby Key vault
+# <a name="key-vault-deployment-template"></a>Šablona nasazení trezoru klíčů
 
 Následující šablony Azure Resource Manageru definuje novou instanci služby Azure Key Vault.  Používá se v článku [vytvořit certifikát služby key vault](cpp-create-key-vault-cert.md). 
 

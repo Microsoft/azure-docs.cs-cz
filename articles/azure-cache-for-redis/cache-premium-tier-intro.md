@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829816"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Úvod do mezipaměti Azure Redis na úrovni Premium
 Mezipaměť Azure pro Redis je distribuovaná spravovaná mezipaměť, která pomáhá díky mimořádně rychlému přístupu k datům vytvářet vysoce škálovatelné a rychle reagující aplikace. 

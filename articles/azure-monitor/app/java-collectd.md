@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
 ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60897740"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromážděná: Metriky výkonu systému Linux ve službě Application Insights
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 27536b0a3d7e0858a5660b4c7b33cb6679b5fbf1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452101"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60874552"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Odesílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
 

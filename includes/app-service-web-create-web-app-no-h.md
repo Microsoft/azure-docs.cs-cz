@@ -9,11 +9,11 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 9f7c82a2bd35f06da096fa0dd9d5d1fa4d08011e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60838926"
 ---
 Ve službě Cloud Shell vytvořte [webovou aplikaci](../articles/app-service/overview.md) v plánu služby `myAppServicePlan` App Service. Můžete to udělat pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). V následujícím příkladu nahraďte  *\<název aplikace >* s globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9`, a `-`).
 

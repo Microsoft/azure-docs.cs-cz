@@ -11,11 +11,11 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60820042"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 

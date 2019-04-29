@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787491"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
 Nastavení automatického škálování pomáhají, ujistěte se, že máte správného množství prostředků systémem pro zpracování zátěže fluktuující vaší aplikace. Můžete nakonfigurovat nastavení automatického škálování tak, aby se dá spouštět podle metrik, které označují zátěžové nebo výkonové, nebo spouštěnou v naplánované datum a čas. V tomto článku se podíváme podrobné na anatomie nastavení automatického škálování. Článek začíná schématu a vlastnosti nastavení a potom provede odlišných typů profilů, které lze nastavit. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje který profil ke spuštění v daném okamžiku.
@@ -95,7 +95,7 @@ Pro ilustraci schématu nastavení automatického škálování, je použít ná
 | Nastavení | jméno | Název nastavení automatického škálování. |
 | Nastavení | location | Umístění zadané nastavení automatického škálování. Toto umístění se může lišit od umístění prostředku se škálovat. |
 | properties | targetResourceUri | ID prostředku se škálovat prostředek. Můžete mít jenom jedno nastavení automatického škálování pro každý prostředek. |
-| properties | Profily | Nastavení automatického škálování se skládá z jednoho nebo více profilů. Při každém spuštění modul automatického škálování je spuštěn v jednom profilu. |
+| properties | profiles | Nastavení automatického škálování se skládá z jednoho nebo více profilů. Při každém spuštění modul automatického škálování je spuštěn v jednom profilu. |
 | profil | jméno | Název profilu. Můžete použít libovolný název, který vám pomůže určit, profil. |
 | profil | Capacity.maximum | Maximální kapacita povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek vyšší než toto číslo. |
 | profil | Capacity.minimum | Minimální kapacitu povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek pod tuto hodnotu. |
@@ -110,7 +110,7 @@ Pro ilustraci schématu nastavení automatického škálování, je použít ná
 | metricTrigger | timeAggregation | Agregace metodu používanou k agregaci vzorkovaných metrik. Například **TimeAggregation = "Average"** by měl agregaci vzorkovaných metrik zprůměrováním. V předchozím případě vzorky deseti 1 minutu a průměrné je. |
 | pravidlo | scaleAction | Akce, který se má provést při aktivaci metricTrigger pravidla. |
 | scaleAction | směr | "Zvýšit" pro horizontální navýšení kapacity, nebo "Snížení" pro horizontální snížení kapacity.|
-| scaleAction | hodnota | Kolik zvýšení nebo snížení kapacity prostředku. |
+| scaleAction | value | Kolik zvýšení nebo snížení kapacity prostředku. |
 | scaleAction | která | Množství času po operaci škálování než škálování provedete znovu. Například pokud **která = "PT10M"**, automatické škálování nebude pokoušet o škálování pro jiné 10 minut. Která se má povolit metriky stabilizovat po přidání nebo odebrání instance. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování
@@ -217,7 +217,7 @@ Existují tři typy profilů automatického škálování:
 
     V předchozí nastavení, například "weekdayProfile" nastavená na spuštění v pondělí v 12:00:00. To znamená, že tento profil spuštění v pondělí v 12:00:00. To pokračuje, dokud sobota ve 12:00, kdy je naplánováno spuštění "weekendProfile".
 
-    **Příklad 2: Pracovní doba**
+    **Příklad 2: pracovní doba**
     
     Řekněme, že budete chtít mít jeden mezní hodnota metriky během pracovní doby (9:00:00 do 17:00 hodin) a jinou používat pro jinou dobu. Toto nastavení bude vypadat takto:
     
@@ -310,4 +310,3 @@ Další informace o automatické škálování rekapitulací takto:
 * [Osvědčené postupy pro automatické škálování služby Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Pomocí akcí automatického škálování můžete odeslat emailová a webhooková oznámení výstrah](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931953.aspx)
-

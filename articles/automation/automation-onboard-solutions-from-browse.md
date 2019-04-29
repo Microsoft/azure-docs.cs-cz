@@ -10,11 +10,11 @@ ms.topic: article
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578488"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60738977"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -59,7 +59,7 @@ Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí
 
 ![Žádný pracovní prostor](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-Při povolování řešení, pro propojení pracovního prostoru Log Analytics a účet Automation se podporují pouze určité oblasti.
+Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
 
 V následující tabulce jsou uvedeny podporované mapování:
 

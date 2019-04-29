@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60768658"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání ve službě Azure Data Factory
 
@@ -53,14 +53,15 @@ Následující zdroje dat nejsou podporovány pro aktivitu vyhledávání. Nejv�
 ```
 
 ## <a name="type-properties"></a>Typ vlastnosti
-Název | Popis | Typ | Povinné?
+
+Název | Popis | Type | Povinné?
 ---- | ----------- | ---- | --------
 Datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získat tak podrobné údaje z **vlastnosti datové sady** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
 source | Obsahuje vlastnosti zdroje specifických pro datovou sadu, stejně jako zdroj kopírování. Získat tak podrobné údaje z **vlastnosti aktivity kopírování** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
-firstRowOnly | Určuje, jestli se mají vrátit pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí formát je `true`.
+firstRowOnly | Určuje, jestli se mají vrátit pouze první řádek nebo všechny řádky. | Boolean | Ne. Výchozí formát je `true`.
 
 > [!NOTE]
-
+> 
 > * Zdrojové sloupce s **ByteArray** typu nejsou podporované.
 > * **Struktura** není podporována v definicích datových sad. Pro soubory ve formátu textu použijte k poskytnutí názvu sloupce řádek záhlaví.
 > * Pokud soubor JSON, je zdrojem vyhledávání `jsonPathDefinition` nastavení pro měnící tvar objektu JSON se nepodporuje. Celé objekty budou načítat.

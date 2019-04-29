@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 348c28f6a2d72048e34f117e802abf243597b458
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737569"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scénář Azure Automation – zřízení virtuálního počítače s AWS
 V tomto článku se dozvíte, jak se dají využít Azure Automation ke zřízení virtuálního počítače ve vašem předplatném služby AWS (Amazon Web) a poskytnout tohoto virtuálního počítače konkrétním názvem – AWS označuje jako "označení" virtuální počítač.

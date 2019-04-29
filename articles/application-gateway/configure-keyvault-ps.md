@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: 62f3038957d3e6af02bbdbb80fd69757621fc494
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 7c31801156ee321fe93d73de41fc68179835261a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148449"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831108"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfiguraci ukončení protokolu SSL s využitím certifikátů služby Key Vault pomocí Azure Powershellu
 
@@ -41,20 +41,26 @@ Select-AzSubscription -Subscription <your subscription>
 
 ## <a name="example-script"></a>Ukázkový skript
 
+### <a name="set-up-variables"></a>Nastavení proměnných
+
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
 $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
+```
 
-#Create Resource Group 
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Vytvořte skupinu prostředků a identity spravované uživatelem
+
+```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
-
-#Create User Managed Identity
 $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
+```
 
-#Create Key Vault, policy and certificate to be used by Application Gateway
+### <a name="create-key-vault-policy-and-certificate-to-be-used-by-application-gateway"></a>Vytvoření služby Key Vault, zásad a certifikátů pro Application Gateway
+
+```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
 Set-AzKeyVaultAccessPolicy -VaultName $kv -PermissionsToSecrets get -ObjectId $identity.PrincipalId
 
@@ -64,18 +70,27 @@ $policy = New-AzKeyVaultCertificatePolicy -ValidityInMonths 12 `
 $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -CertificatePolicy $policy
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
+```
 
+### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
 
-#Create Application Gateway with HTTPS listener attached to Key Vault and an HTTP listener
+```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
 $sub2 = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.1.0/24"
 $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location $location `
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
+```
 
-#Application Gateway v2 Static public VIP
+### <a name="create-static-public-vip"></a>Vytvoření statické veřejné virtuální IP adresy
+
+```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
+```
 
+### <a name="create-pool-and-frontend-ports"></a>Vytvoření fondu a front-endové porty
+
+```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
 
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "AppGwIpConfig" -Subnet $gwSubnet
@@ -84,10 +99,17 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
   -BackendIPAddresses testbackend1.westus.cloudapp.azure.com, testbackend2.westus.cloudapp.azure.com
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
+```
 
-#point ssl certificate to key vault
+### <a name="point-ssl-certificate-to-key-vault"></a>Certifikát ssl bod k trezoru klíčů
+
+```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
+```
 
+### <a name="create-listeners-rules-and-autoscale"></a>Vytvořte naslouchací procesy, pravidla a automatické škálování
+
+```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Https `
   -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $sslCert01
 $listener02 = New-AzApplicationGatewayHttpListener -Name "listener2" -Protocol Http `
@@ -100,10 +122,17 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType bas
   -BackendHttpSettings $poolSetting01 -HttpListener $listener02 -BackendAddressPool $pool
 $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+```
 
-#assign user managed identity to Application Gateway
+### <a name="assign-user-managed-identity-to-the-application-gateway"></a>Přiřaďte identitu spravované uživatele ke službě application gateway
+
+```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
+```
 
+### <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
+
+```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -ResourceGroupName $rgname `
   -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 `
   -GatewayIpConfigurations $gipconfig -FrontendIpConfigurations $fipconfig01 `

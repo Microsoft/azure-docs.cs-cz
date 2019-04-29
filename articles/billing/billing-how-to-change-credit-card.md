@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 3/13/2019
 ms.author: banders
 ms.openlocfilehash: b910cb3061b1451ea80b9843e2aa4047a784548f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60918615"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Přidání, aktualizace nebo odebrání kreditní nebo debetní kartou pro Azure
 
@@ -35,12 +35,12 @@ Na webu Azure Portal můžete přidat novou platební kartu, aktualizovat stáva
 ## <a name="add-a-new-credit-or-debit-card-to-an-azure-subscription"></a>Přidat novou kreditní nebo debetní kartu k předplatnému Azure
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce účtu.
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující vyhledávání](./media/billing-how-to-change-credit-card/search.png)
 
 1. Vyberte předplatné, které chcete přidat kreditní nebo debetní kartu k.
-1. Vyberte **způsoby platby**.
+1. Vyberte **Způsoby platby**.
 
     ![Snímek obrazovky s možností metody spravovat vybrali.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -60,11 +60,11 @@ Pokud dojde k chybě po přidat platební kartu, najdete v článku [odmítl pla
 Pokud vaší platební karty získá obnoveno a počet zůstala stejná, aktualizujte existující platební karty podrobnosti jako datum vypršení platnosti. Pokud změny číslo platební karty protože karty dojde ke ztrátě nebo vám ho někdo ukradne, nebo vypršela jeho platnost, postupujte podle pokynů [přidat platební kartu jako způsob platby](#addcard) oddílu. Není nutné aktualizovat CVV.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce účtu.
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující vyhledávání](./media/billing-how-to-change-credit-card/search.png)
 
-1. Vyberte **způsoby platby**.
+1. Vyberte **Způsoby platby**.
 
     ![Snímek obrazovky s možností metody spravovat vybrali.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -80,12 +80,12 @@ Pokud vaší platební karty získá obnoveno a počet zůstala stejná, aktuali
 Pokud máte více než jednoho z vašich předplatných stejné aktivní způsob platby, změníte aktivní způsob platby na některý z těchto předplatných rovněž aktualizuje aktivní způsob platby na ostatní.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce účtu.
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující vyhledávání](./media/billing-how-to-change-credit-card/search.png)
 
 1. Vyberte předplatné, které chcete přidat kreditní nebo debetní kartu k.
-1. Vyberte **způsoby platby**.
+1. Vyberte **Způsoby platby**.
 
     ![Snímek obrazovky s možností metody spravovat vybrali.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 

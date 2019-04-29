@@ -9,11 +9,11 @@ ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158801"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772050"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Spouštění skriptů prostředí v virtuálního počítače s Linuxem pomocí příkazu Spustit
 

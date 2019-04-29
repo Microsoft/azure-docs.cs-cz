@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 06b7fb678bc79203589cfa75e8afb457d6ed344f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594317"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60866510"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Zobrazení databáze v aplikaci Azure Blockchain Workbench
 
@@ -39,7 +39,7 @@ Toto zobrazení obsahuje podrobné informace o **aplikace** , které byly nahrá
 | ApplicationName                  | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDescription           | nvarchar(255) | Ano         | Popis aplikace |
 | ApplicationDisplayName           | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled               | Bit           | Ne          | Určuje, zda aplikace je aktuálně povoleno.<br /> **Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
+| ApplicationEnabled               | bit           | Ne          | Určuje, zda aplikace je aktuálně povoleno.<br /> **Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
 | UploadedDtTm                     | datetime2(7)  | Ne          | Datum a čas, který byl nahrán kontrakt |
 | UploadedByUserId                 | int           | Ne          | ID uživatele, který nahráli aplikace |
 | UploadedByUserExternalId         | nvarchar(255) | Ne          | Externí identifikátor pro uživatele, který nahráli aplikace. Ve výchozím nastavení je toto ID uživatele z Azure Active Directory pro konsorcia.                                                                                                |
@@ -129,7 +129,7 @@ Toto zobrazení obsahuje podrobné informace o nasazených smluv. Pro každou sm
 | ApplicationId                            | int            | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                          | nvarchar (50)  | Ne          | Název aplikace |
 | ApplicationDisplayName                   | nvarchar (255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled                       | Bit            | Ne          | Určuje, zda je aplikace povolena.<br /> **Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.  |
+| ApplicationEnabled                       | bit            | Ne          | Určuje, zda je aplikace povolena.<br /> **Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.  |
 | WorkflowId                               | int            | Ne          | Jedinečný identifikátor pro pracovní postup spojený s kontraktem |
 | WorkflowName                             | nvarchar(50)   | Ne          | Název pracovního postupu spojené s kontraktem |
 | WorkflowDisplayName                      | nvarchar(255)  | Ne          | Název pracovního postupu přidružené ke smlouvě se zobrazují v uživatelském rozhraní |
@@ -164,7 +164,7 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 | ApplicationId                            | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                          | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName                   | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled                       | Bit           | Ne          | Toto pole určuje, zda je aplikace povolena. Všimněte si – i když můžete projeví aplikace jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.                                                  |
+| ApplicationEnabled                       | bit           | Ne          | Toto pole určuje, zda je aplikace povolena. Všimněte si – i když můžete projeví aplikace jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.                                                  |
 | WorkflowId                               | int           | Ne          | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                             | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName                      | nvarchar(255) | Ne          | Název pracovního postupu, který se zobrazí v uživatelském rozhraní |
@@ -203,7 +203,7 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 | TransactionFrom                          | nvarchar(255) | Ano         | Strana, která pochází transakce |
 | TransactionTo                            | nvarchar(255) | Ano         | Strana, která byla provedena s transakce |
 | TransactionHash                          | nvarchar(255) | Ano         | Hodnota hash transakce |
-| TransactionIsWorkbenchTransaction        | Bit           | Ano         | Bit, který určuje, zda transakce je transakce v rámci Azure Blockchain Workbench |
+| TransactionIsWorkbenchTransaction        | bit           | Ano         | Bit, který určuje, zda transakce je transakce v rámci Azure Blockchain Workbench |
 | TransactionProvisioningStatus            | int           | Ano         | Určuje aktuální stav procesu zřízení pro transakce. Možné hodnoty: <br />0 – transakce byla vytvořena pomocí rozhraní API v databázi<br />1 – transakce byl odeslán na účetní knize<br />2 – transakce byla úspěšně nasazena do hlavní knihy                 |
 | TransactionValue                         | Decimal(32,2) | Ano         | Částka transakce |
 
@@ -223,7 +223,7 @@ Toto zobrazení představuje většinu informací o související vlastnosti sou
 | ApplicationId                      | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                    | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName             | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled                 | Bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.                      |
+| ApplicationEnabled                 | bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi.                      |
 | WorkflowId                         | int           | Ne          | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                       | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName                | nvarchar(255) | Ne          | Název pracovního postupu, zobrazí v uživatelském rozhraní |
@@ -263,7 +263,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 | ApplicationId                      | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                    | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName             | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled                 | Bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
+| ApplicationEnabled                 | bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
 | WorkflowId                         | int           | Ne          | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                       | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName                | nvarchar(255) | Ne          | Název zobrazený v uživatelském rozhraní |
@@ -315,7 +315,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 | ApplicationId                     | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                   | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName            | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled                | Bit           | Ne          | Určuje, zda je aplikace povolena |
+| ApplicationEnabled                | bit           | Ne          | Určuje, zda je aplikace povolena |
 | WorkflowId                        | int           | Ano         | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                      | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName               | nvarchar(255) | Ne          | Název zobrazený v uživatelském rozhraní |
@@ -342,7 +342,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 | ApplicationId                        | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                      | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName               | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled                   | Bit           | Ne          | Určuje, zda je aplikace povolena |
+| ApplicationEnabled                   | bit           | Ne          | Určuje, zda je aplikace povolena |
 | WorkflowId                           | int           | Ne          | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                         | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName                  | nvarchar(255) | Ne          | Název pracovního postupu, zobrazí v uživatelském rozhraní |
@@ -351,7 +351,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 | WorkflowFunctionName                 | nvarchar(50)  | Ano         | Název funkce |
 | WorkflowFunctionDisplayName          | nvarchar(255) | Ne          | Název funkce, který se má zobrazit v uživatelském rozhraní |
 | WorkflowFunctionDescription          | nvarchar(255) | Ano         | Popis funkce workflowu |
-| WorkflowFunctionIsConstructor        | Bit           | Ne          | Určuje, zda funkce pracovního postupu je konstruktor pro pracovní postup |
+| WorkflowFunctionIsConstructor        | bit           | Ne          | Určuje, zda funkce pracovního postupu je konstruktor pro pracovní postup |
 | WorkflowFunctionParameterId          | int           | Ne          | Jedinečný identifikátor pro parametr funkce |
 | WorkflowFunctionParameterName        | nvarchar(50)  | Ne          | Název parametru funkce |
 | WorkflowFunctionParameterDisplayName | nvarchar(255) | Ne          | Název parametru funkce, který se má zobrazit v uživatelském rozhraní |
@@ -371,7 +371,7 @@ Toto zobrazení představuje vlastností definovaných pro pracovní postup. Pro
 | ApplicationId                | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName              | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName       | nvarchar(255) | Ne          | Název, který se má zobrazit v uživatelském rozhraní |
-| ApplicationEnabled           | Bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
+| ApplicationEnabled           | bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
 | WorkflowId                   | int           | Ne          | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                 | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName          | nvarchar(255) | Ne          | Název, který má být zobrazen pro pracovní postup v uživatelském rozhraní |
@@ -383,7 +383,7 @@ Toto zobrazení představuje vlastností definovaných pro pracovní postup. Pro
 | WorkflowPropertyWorkflowId   | int           | Ne          | ID pracovního postupu, ke kterému je tato vlastnost přidružená |
 | WorkflowPropertyDataTypeId   | int           | Ne          | ID datového typu definované pro vlastnost |
 | WorkflowPropertyDataTypeName | nvarchar(50)  | Ne          | Název datového typu definované pro vlastnost |
-| WorkflowPropertyIsState      | Bit           | Ne          | Toto pole určuje, zda tato vlastnost pracovního postupu obsahuje stavu pracovního postupu |
+| WorkflowPropertyIsState      | bit           | Ne          | Toto pole určuje, zda tato vlastnost pracovního postupu obsahuje stavu pracovního postupu |
 
 ## <a name="vwworkflowstate"></a>vwWorkflowState
 
@@ -398,7 +398,7 @@ Toto zobrazení znázorňuje vlastnosti související s pracovním postupem. Pro
 | ApplicationId                | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName              | nvarchar(50)  | Ne          | Název aplikace |
 | ApplicationDisplayName       | nvarchar(255) | Ne          | Popis aplikace |
-| ApplicationEnabled           | Bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
+| ApplicationEnabled           | bit           | Ne          | Určuje, zda je aplikace povolena.<br />**Poznámka:** I v případě, že aplikace může projeví jako zakázané v databázi, související smlouvy zůstávají v blockchainu a data o těchto smluv zůstat v databázi. |
 | WorkflowId                   | int           | Ne          | Jedinečný identifikátor pro pracovní postup |
 | WorkflowName                 | nvarchar(50)  | Ne          | Název pracovního postupu |
 | WorkflowDisplayName          | nvarchar(255) | Ne          | Název zobrazený v uživatelském rozhraní pro pracovní postup |

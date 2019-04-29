@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273069"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827369"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analýzu časových řad v Průzkumníku dat Azure
 
@@ -72,7 +72,7 @@ V tabulce výše máme tři oddíly. Můžeme vytvořit samostatné časové řa
 V této části provádíme obvyklé řady funkce na zpracování.
 Po vytvoření sadu časové řady ADX podporuje poskytovaná rostoucím seznamem zpracovávat a analyzovat je funkce, které najdete v [čas dokumentace k úložišti řady](/azure/kusto/query/machine-learning-and-tsa). Článků popíšeme několik reprezentativní funkce pro zpracování a analýzu časové řady.
 
-### <a name="filtering"></a>Filtrování
+### <a name="filtering"></a>Filtering
 
 Filtrování je běžnou praxí při signálu zpracování a užitečné pro časové řady úloh zpracování (například smooth hlučného signál, změnit zjišťování).
 - Existují dvě obecné funkce filtrování:

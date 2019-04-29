@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662818"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60881476"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro Service Fabric container service
 Azure Service Fabric je orchestrátor kontejnerů a podporuje obě [kontejnerů Linuxu a Windows](service-fabric-containers-overview.md).  Tento článek popisuje postup zobrazení protokolů kontejneru spuštěných služby kontejneru nebo dead kontejneru, takže můžete diagnostikovat a řešit problémy.

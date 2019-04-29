@@ -15,11 +15,11 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730995"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60838990"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a používání dílčích oprav modulu runtime ve službě Azure App Service
 
@@ -89,7 +89,7 @@ Následující tabulka ukazuje jak verzí systému Windows a modulu runtime jazy
 |-|-|
 | Verze systému Windows | Zobrazit `https://<appname>.scm.azurewebsites.net/Env.cshtml` (v části Systémové informace) |
 | Verze rozhraní .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spuštěním následujícího příkazu na příkazovém řádku: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| Verze .NET core | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spuštěním následujícího příkazu na příkazovém řádku: <br> `dotnet --version` |
+| .NET Core version | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spuštěním následujícího příkazu na příkazovém řádku: <br> `dotnet --version` |
 | Verze PHP | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spuštěním následujícího příkazu na příkazovém řádku: <br> `php --version` |
 | Výchozí verze Node.js | V [Cloud Shell](../cloud-shell/overview.md), spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Verze Pythonu | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`, spuštěním následujícího příkazu na příkazovém řádku: <br> `python --version` |  

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4629b52f3b2c9e351ddc2a68a40c5178a9a73950
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048251"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60812698"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Upravit kvóty a omezení v Azure Data Lake Analytics
 
@@ -22,7 +22,7 @@ Zjistěte, jak upravit a zvýšení kvóty a omezení v účtech Azure Data Lake
 
 ## <a name="azure-subscriptions-limits"></a>Omezení předplatných Azure
 
-**Maximální počet ADLA účty na předplatné a oblast:** 5
+**Maximální počet účtů ADLA na předplatné a oblast:**  5
 
 Pokud se pokusíte vytvořit účet ADLA šestý, zobrazí se chybu "Dosáhli jste maximálního počtu účtů Data Lake Analytics povoleno (5) v oblasti pod názvem odběru". 
 
@@ -32,14 +32,14 @@ Pokud chcete se dostat nad rámec tohoto limitu, zkuste tyto možnosti:
 
 ## <a name="default-adla-account-limits"></a>Výchozí omezení účtu ADLA
 
-**Maximální počet jednotek analýzy (AU) na jeden účet:** 32
+**Maximální počet jednotek analýzy (AU) na účet:** 32
 
 Toto je maximální počet jednotek analýzy, které můžou běžet souběžně ve vašem účtu. Pokud váš celkový počet jednotek analýzy spuštěné napříč všechny úlohy překročí tento limit, novější úlohy se zařadí do fronty automaticky. Příklad:
 
 * Pokud máte jenom jednu úlohu s 32 jednotek analýzy, když odešlete sekundy úlohy se bude čekat ve frontě úloh až po dokončení první úlohy.
 * Pokud už máte čtyři úlohy spuštěné a používají 8 jednotek analýzy, když odešlete páté úlohu, která potřebuje 8 jednotek au čeká ve frontě úloh až do 8 jednotek analýzy, které jsou k dispozici.
 
-**Maximální počet jednotek analýzy (AU) na jednu úlohu:** 32
+**Maximální počet jednotek analýzy (AU) na úlohy:** 32
 
 Toto je výchozí hodnota maximálního počtu jednotek analýzy, které je možné přiřadit každé jednotlivé úlohy ve vašem účtu. Úlohy, které jsou přiřazeny více než tento limit odmítne, pokud odesílatele je ovlivněna výpočetní zásad (omezení odesílání úlohy), která jim uděluje dalších jednotek au na úlohu. Horní mez tato hodnota je limit AU pro účet.
 

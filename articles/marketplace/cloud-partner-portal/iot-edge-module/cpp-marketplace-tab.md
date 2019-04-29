@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60913278"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Kartu Marketplace modul IoT Edge
 
@@ -136,7 +136,7 @@ As an example, the following hero icon is for the Azure Container Service.
 -->
 
 
-## <a name="lead-management"></a>Průběžná správa
+## <a name="lead-management"></a>Správa potenciálních zákazníků
 
 Tato část umožňuje nastavení možnosti k shromažďování údajů o zákazníkovi vede generované z nabídky na webu Azure Marketplace. Z rozevíracího seznamu můžete vybrat následující možnosti úložiště.
 

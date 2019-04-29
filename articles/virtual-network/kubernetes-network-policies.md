@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b4f8577724781e5df10846a5fc4e30c8320403f2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824883"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Přehled zásad sítě služby Azure Kubernetes
 
@@ -37,8 +37,8 @@ Při implementaci zabezpečení pro váš cluster, použijte skupiny zabezpečen
 ## <a name="using-azure-kubernetes-network-policies"></a>Pomocí zásady sítě Kubernetes v Azure
 Azure zásady sítě je možné stanovit mikrosegmentaci podů následujícími způsoby.
 
-### <a name="acs-engine"></a>Modul ACS
-ACS-Engine je nástroj, který generuje šablonu Azure Resource Manageru pro nasazení clusteru Kubernetes v Azure. Konfigurace clusteru je zadáno v souboru JSON, který je předán nástroj při generování šablony. Další informace o úplný seznam nastavení podporovaná clusteru a jejich popis najdete v tématu modul Microsoft Azure Container Service – definice clusteru.
+### <a name="acs-engine"></a>ACS-engine
+ACS-Engine je nástroj, který generuje šablonu Azure Resource Manageru pro nasazení clusteru Kubernetes v Azure. Konfigurace clusteru se zadává v souboru JSON, který se předá nástroji při generování šablony. Další informace o úplný seznam nastavení podporovaná clusteru a jejich popis najdete v tématu modul Microsoft Azure Container Service – definice clusteru.
 
 Pro povolení zásad v clusterech nasazených pomocí služby acs-engine, zadejte hodnotu networkPolicy nastavení v souboru definice clusteru bude "azure".
 
@@ -87,7 +87,7 @@ Níže JSON Ukázková konfigurace vytvoří novou virtuální síť a podsíť 
 
 ```
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Vytvoření vlastního clusteru Kubernetes v Azure
-Implementace je možné poskytnout zásady sítě pro Podů v clusteru Kubernetes nasadit sami, bez nutnosti spoléhat se na nástroje, jako jsou služby ACS-Engine. V takovém případě můžete nejdřív nainstalovat modul plug-in CNI a jeho povolení pro každý virtuální počítač v clusteru. Podrobné pokyny najdete v tématu [nasadit modul plug-in pro cluster Kubernetes, který nasadíte sami](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+Implementace je možné poskytnout zásady sítě pro Podů v clusteru Kubernetes nasadit sami, bez nutnosti spoléhat se na nástroje, jako jsou služby ACS-Engine. V takovém případě můžete nejdřív nainstalovat modul plug-in CNI a jeho povolení pro každý virtuální počítač v clusteru. Podrobné pokyny najdete v tématu o [nasazení modulu plug-in v clusteru Kubernetes, který nasazujete sami](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
 Jakmile se cluster nasazuje, spusťte následující příkaz `kubectl` příkaz ke stažení a použití zásady sítě Azure *daemonset* do clusteru.
 

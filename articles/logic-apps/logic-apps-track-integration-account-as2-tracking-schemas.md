@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
 ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845779"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Vytvoření schémat pro sledování zpráv AS2 a něho v integračních účtů pro Azure Logic Apps
 
@@ -67,15 +67,15 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | ID zprávy | String | ID zprávy AS2 od záhlaví zprávy AS2 (volitelné) |
 | dispositionType |String | Hodnota typu dispozice zpráva dispozice upozornění (zprávy MDN.). (Volitelné) |
 | fileName | String | Název souboru z hlavičky zprávy AS2. (Volitelné) |
-| isMessageFailed |Logická hodnota | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
-| isMessageSigned | Logická hodnota | Určuje, zda byl podepsán zpráva AS2. (Povinné) |
-| isMessageEncrypted | Logická hodnota | Určuje, zda byl zašifrován zpráva AS2. (Povinné) |
-| isMessageCompressed |Logická hodnota | Určuje, zda byl komprimované zprávy AS2. (Povinné) |
+| isMessageFailed |Boolean | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
+| isMessageSigned | Boolean | Určuje, zda byl podepsán zpráva AS2. (Povinné) |
+| isMessageEncrypted | Boolean | Určuje, zda byl zašifrován zpráva AS2. (Povinné) |
+| isMessageCompressed |Boolean | Určuje, zda byl komprimované zprávy AS2. (Povinné) |
 | correlationMessageId | String | ID zprávy AS2 ke korelaci zprávy pomocí něho. (Volitelné) |
 | incomingHeaders |Slovník JToken | Příchozí podrobnosti záhlaví zprávy AS2. (Volitelné) |
 | outgoingHeaders |Slovník JToken | Odchozí podrobnosti záhlaví zprávy AS2. (Volitelné) |
-| isNrrEnabled | Logická hodnota | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
-| isMdnExpected | Logická hodnota | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
+| isNrrEnabled | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
+| isMdnExpected | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
 | mdnType | Výčet | Povolené hodnoty jsou **NotConfigured**, **synchronizace**, a **asynchronní**. (Povinné) |
 ||||
 
@@ -120,9 +120,9 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | ID zprávy | String | ID zprávy AS2 (Volitelné) |
 | originalMessageId |String | ID původní zprávy AS2 (Volitelné) |
 | dispositionType | String | Hodnota disposition typu zprávy MDN. (Volitelné) |
-| isMessageFailed |Logická hodnota | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
-| isMessageSigned |Logická hodnota | Určuje, zda byl podepsán zpráva AS2. (Povinné) |
-| isNrrEnabled | Logická hodnota | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
+| isMessageFailed |Boolean | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
+| isMessageSigned |Boolean | Určuje, zda byl podepsán zpráva AS2. (Povinné) |
+| isNrrEnabled | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
 | statusCode | Výčet | Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
 | micVerificationStatus | Výčet | Povolené hodnoty jsou **NotApplicable**, **Succeeded**, a **neúspěšné**. (Povinné) |
 | correlationMessageId | String | ID korelace. Původní messaged ID (ID zprávy, pro který je nakonfigurovaný zprávy MDN. zprávy). (Volitelné) |

@@ -16,11 +16,11 @@ ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa78ec2b5623dfd010a8fe5709916a47e221a9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902191"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60732105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Integrace Azure Active Directory s TalentLMS
 

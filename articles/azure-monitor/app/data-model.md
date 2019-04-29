@@ -13,11 +13,11 @@ ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120661"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899186"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie datového modelu
 
@@ -25,7 +25,7 @@ ms.locfileid: "54120661"
 
 Modely dat shromážděných službou Application Insights tento model provádění Typická aplikace:
 
-![Aplikační Model Application Insights](./media/data-model/application-insights-data-model.png)
+![Application Insights Application Model](./media/data-model/application-insights-data-model.png)
 
 Následující typy telemetrických dat se používají ke sledování provádění vaší aplikace. Následující tři typy jsou obvykle automaticky shromážděná sadou Application Insights SDK z Architektura webových aplikací:
 

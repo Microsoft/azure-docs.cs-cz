@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 04cac492fd044471a646444afc21bc70f92537d2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656847"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60849104"
 ---
 # <a name="new-offer-menu"></a>Nabídka Nová nabídka
 
@@ -34,7 +34,7 @@ ms.locfileid: "55656847"
 | ![Dynamics 365 Customer Engagement položky nabídky](./media/new-offer-menu5.png) | [Nabídka Dynamics 365 for Customer Engagement](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
 | ![Dynamics 365 pro položku nabídky operace](./media/new-offer-menu6.png) | [Nabídka Dynamics 365 for Operations](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
 | ![Položka nabídky moduly IoT Edge](./media/new-offer-menu7.png) | [Nabídka modul IoT Edge](./../iot-edge-module/cpp-offer-process-parts.md) |
-| ![Položka nabídky Power BI aplikace](./media/new-offer-pbi.png)   |  [Nabídka Power BI aplikace](../power-bi/cpp-power-bi-offer.md)  |
+| ![Položka nabídky Power BI aplikace](./media/new-offer-pbi.png)   |  [Nabídka aplikací Power BI](../power-bi/cpp-power-bi-offer.md)  |
 | ![ Položka nabídky aplikace sasS](./media/new-offer-menu8.png) | [Nabídka pro aplikace sasS](../saas-app/cpp-saas-offer.md) |
 | ![ Položka nabídky virtuálních počítačů](./media/new-offer-menu9.png) | [Nabídka virtuálních počítačů](./../virtual-machine/cpp-virtual-machine-offer.md) |
 |  |  |

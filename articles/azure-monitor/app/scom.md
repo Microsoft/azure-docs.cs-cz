@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: a08a67a78362325e29b1002b44f390a94e78888a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784775"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Sledování výkonu aplikací pomocí Application Insights pro SCOM
 Pokud ke správě serverů používáte System Center Operations Manager (SCOM), můžete monitorovat výkon a diagnostikovat problémy s výkonem pomocí [Azure Application Insights](../../azure-monitor/app/asp-net.md). Application Insights monitoruje webové aplikace příchozí požadavky, odchozí REST a volání, výjimkami a trasami protokolu SQL. Poskytuje řídicí panely s grafy metrik a inteligentní výstrah, jakož i výkonné diagnostické vyhledávání a analytických dotazů nad tuto telemetrii. 

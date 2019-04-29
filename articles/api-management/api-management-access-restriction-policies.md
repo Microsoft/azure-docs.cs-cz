@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
 ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663141"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798603"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 
@@ -61,7 +61,7 @@ Použití `check-header` zásadu vynucující, žádost má zadanou hlavičku pr
 | Název         | Popis                                                                                                                                   | Požaduje se |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | Kořenový element.                                                                                                                                 | Ano      |
-| hodnota        | Povolená hodnota záhlaví HTTP. Pokud je zadaných více elementů hodnotu, kontroly se považuje za úspěchu, pokud některou z hodnot je nalezena shoda. | Ne       |
+| value        | Povolená hodnota záhlaví HTTP. Pokud je zadaných více elementů hodnotu, kontroly se považuje za úspěchu, pokud některou z hodnot je nalezena shoda. | Ne       |
 
 ### <a name="attributes"></a>Atributy
 

@@ -2,24 +2,25 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/16/2019
-ms.author: cherylmc
+origin.date: 01/16/2019
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: c6f9065786879749eee6187e93283f4c026b7fff
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568800"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60766175"
 ---
 Následující konfigurace počítače se použil pro následující postup:
 
   | | |
   |---|---|
-  |Počítač| Ubuntu Server 16.04<br>ID_LIKE=debian<br>PRETTY_NAME = "Ubuntu 16.04.4 LTS"<br>VERSION_ID="16.04" |
+  |Computer| Ubuntu Server 16.04<br>ID_LIKE=debian<br>PRETTY_NAME = "Ubuntu 16.04.4 LTS"<br>VERSION_ID="16.04" |
   |Závislosti| strongSwan |
 
 #### <a name="1-install-strongswan"></a>1. Nainstalujte strongSwan

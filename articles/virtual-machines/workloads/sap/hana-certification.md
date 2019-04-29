@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1346018d99a1c26290ad8928d9794f3b55050910
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 15de566d756d6b0f7719eabf74ee9c7ac66659d6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027972"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794010"
 ---
 # <a name="certification"></a>Certifikace
 
 Kromě certifikační NetWeaver SAP vyžaduje speciální certifikaci pro SAP HANA a SAP HANA podporují určité infrastruktury, jako je Azure IaaS.
 
-Je základní Poznámka SAP na systému NetWeaver a SAP HANA stupně certifikace [SAP Poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533).
+Je základní Poznámka SAP na systému NetWeaver a SAP HANA stupně certifikace [SAP Poznámka #1928533 – aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533).
 
 Záznamy certifikaci pro SAP HANA na jednotky Azure (velké instance) najdete v [platformách IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokality. 
 

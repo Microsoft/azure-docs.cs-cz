@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60886607"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
@@ -107,7 +107,7 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows 
 | Type            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
-| Text            | Umístění     | location   | neuvedeno       |
+| Text            | Location     | location   | neuvedeno       |
 
 ## <a name="next-steps"></a>Další postup
 

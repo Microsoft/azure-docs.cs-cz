@@ -9,11 +9,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037220"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893622"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení ke službě Azure Cosmos DB Cassandra API z aplikace Spark
 
@@ -42,14 +42,14 @@ Následující tabulka obsahuje parametry konfigurace specifické pro službu Az
 
 | **Název vlastnosti** | **Výchozí hodnota** | **Popis** |
 |---------|---------|---------|
-| Spark.cassandra.Output.batch.Size.Rows |  1 |Počet řádků v jedné dávce. Tento parametr nastavte na hodnotu 1. Tento parametr se používá k dosažení vyšší propustnost pro náročné úlohy. |
-| Spark.cassandra.Connection.connections_per_executor_max  | Žádný | Maximální počet připojení za uzel a prováděcí modul. 10 * je ekvivalentní k 10 připojení podle počtu uzlů v clusteru Cassandra uzel n n. Ano Pokud požadujete 5 připojení za uzel a prováděcí modul 5 uzlů clusteru Cassandra, pak byste měli nastavit tuto konfiguraci 25. Upravte tuto hodnotu na základě stupně paralelního zpracování nebo počtu prováděcích procesů nakonfigurovaných pro sparkových úloh.   |
-| Spark.cassandra.Output.Concurrent.Writes  |  100 | Definuje počet paralelních zápisů, které mohou nastat za prováděcího modulu. Protože "batch.size.rows" je nastavena na hodnotu 1, ujistěte se, že chcete vertikálně navýšit kapacitu této hodnoty odpovídajícím způsobem. Upravte tuto hodnotu podle stupeň paralelismu nebo propustnost, které chcete dosáhnout u svých úloh. |
-| Spark.cassandra.Concurrent.reads |  512 | Definuje počet paralelních čtení, které mohou nastat za prováděcího modulu. Upravit tuto hodnotu podle stupeň paralelismu nebo propustnost, které chcete dosáhnout vašich úloh  |
-| Spark.cassandra.Output.throughput_mb_per_sec  | Žádný | Definuje celkový zápisu propustnost za prováděcího modulu. Tento parametr lze použít jako horní omezení pro propustnost úlohy spark a založit na zřízenou propustnost vaší kolekce Cosmos DB.   |
-| Spark.cassandra.Input.reads_per_sec| Žádný   | Definuje celková propustnost čtení za prováděcího modulu. Tento parametr lze použít jako horní omezení pro propustnost úlohy spark a založit na zřízenou propustnost vaší kolekce Cosmos DB.  |
-| Spark.cassandra.Output.batch.Grouping.Buffer.Size |  1000  | Definuje počet dávek na spark jeden úkol, který můžou být uložené v paměti před odesláním do rozhraní Cassandra API |
-| Spark.cassandra.Connection.keep_alive_ms | 60000 | Definuje dobu, po kterou nepoužívané připojení jsou k dispozici. | 
+| spark.cassandra.output.batch.size.rows |  1 |Počet řádků v jedné dávce. Tento parametr nastavte na hodnotu 1. Tento parametr se používá k dosažení vyšší propustnost pro náročné úlohy. |
+| spark.cassandra.connection.connections_per_executor_max  | Žádný | Maximální počet připojení za uzel a prováděcí modul. 10 * je ekvivalentní k 10 připojení podle počtu uzlů v clusteru Cassandra uzel n n. Ano Pokud požadujete 5 připojení za uzel a prováděcí modul 5 uzlů clusteru Cassandra, pak byste měli nastavit tuto konfiguraci 25. Upravte tuto hodnotu na základě stupně paralelního zpracování nebo počtu prováděcích procesů nakonfigurovaných pro sparkových úloh.   |
+| spark.cassandra.output.concurrent.writes  |  100 | Definuje počet paralelních zápisů, které mohou nastat za prováděcího modulu. Protože "batch.size.rows" je nastavena na hodnotu 1, ujistěte se, že chcete vertikálně navýšit kapacitu této hodnoty odpovídajícím způsobem. Upravte tuto hodnotu podle stupeň paralelismu nebo propustnost, které chcete dosáhnout u svých úloh. |
+| spark.cassandra.concurrent.reads |  512 | Definuje počet paralelních čtení, které mohou nastat za prováděcího modulu. Upravit tuto hodnotu podle stupeň paralelismu nebo propustnost, které chcete dosáhnout vašich úloh  |
+| spark.cassandra.output.throughput_mb_per_sec  | Žádný | Definuje celkový zápisu propustnost za prováděcího modulu. Tento parametr lze použít jako horní omezení pro propustnost úlohy spark a založit na zřízenou propustnost vaší kolekce Cosmos DB.   |
+| spark.cassandra.input.reads_per_sec| Žádný   | Definuje celková propustnost čtení za prováděcího modulu. Tento parametr lze použít jako horní omezení pro propustnost úlohy spark a založit na zřízenou propustnost vaší kolekce Cosmos DB.  |
+| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Definuje počet dávek na spark jeden úkol, který můžou být uložené v paměti před odesláním do rozhraní Cassandra API |
+| spark.cassandra.connection.keep_alive_ms | 60000 | Definuje dobu, po kterou nepoužívané připojení jsou k dispozici. | 
 
 Nastavte propustnost a stupeň paralelismu z těchto parametrů na základě vytížení, které očekáváte, že pro vaše úlohy spark a propustnost, kterou jste zřídili pro váš účet služby Cosmos DB.
 
@@ -69,7 +69,7 @@ cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-C
 Následující článek popisuje Azure Databricks pro cluster pro zřizování a konfiguraci clusteru pro připojení k rozhraní Cassandra API služby Azure Cosmos DB a několika ukázkové poznámkové bloky, které zahrnují operace DDL, operace DML a další.<BR>
 [Práce s Azure Cosmos DB Cassandra API z Azure databricks](cassandra-spark-databricks.md)<BR>
   
-### <a name="2--azure-hdinsight-spark"></a>2.  Azure HDInsight Spark
+### <a name="2--azure-hdinsight-spark"></a>2.  Azure HDInsight-Spark
 Na článek dole zahrnuje službu HDinsight Spark, zřizování, konfigurace clusteru pro připojení k rozhraní Cassandra API služby Azure Cosmos DB a několika ukázkové poznámkové bloky, které zahrnují operace DDL, operace DML a další.<BR>
 [Práce s Azure Cosmos DB Cassandra API z Azure HDInsight Spark](cassandra-spark-hdinsight.md)
  

@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 22768e90a419e7a5c3c9e286953afbf3ba2ab311
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825556"
 ---
-# <a name="users-page"></a>Stránka uživatele
+# <a name="users-page"></a>Stránka Uživatelé
 
 [ **Uživatelé** ](https://cloudpartner.azure.com/#users) stránka zobrazuje seznam všech registrovaných uživatelů na portál Cloud Partner.  Sloupce, které zahrnují e-mailovou adresu každého uživatele, role portálu, typ nabídky a publikování organizace. Výsledky můžete seřadit podle sloupce nebo filtruje se podle zadaného řetězce.  
 
@@ -32,7 +32,7 @@ Na této stránce se zobrazí také **přidat uživatele** tlačítko pro přid�
 
 Na následujícím obrázku **uživatelé** stránka se vyfiltruje na řetězec `contoso`.
 
-![Stránka uživatele](./media/users-page1.png)
+![Stránka Uživatelé](./media/users-page1.png)
 
 
 ## <a name="next-steps"></a>Další postup

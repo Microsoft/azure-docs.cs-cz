@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821768"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Události serveru Exchange mezi spotřebiteli a výrobců, které používají různé protokoly: AMQP, Kafka a protokolu HTTPS
 Azure Event Hubs podporuje pro zákazníky a generátory tří protokolů: AMQP, Kafka a HTTPS. Každý z těchto protokolů z nich má vlastní způsob představující zprávu, takže přirozeně vzniká na následující otázku: Pokud aplikace odesílá události do centra událostí s jeden protokol a využívá jiný protokol, co dělat různé části a hodnoty události vypadat podobně jako při jejich doručení na spotřebitele? Tento článek popisuje osvědčené postupy pro producenta a konzumenta Ujistěte se, že jsou hodnoty v rámci události správně interpretovat spotřebitelskou aplikací.

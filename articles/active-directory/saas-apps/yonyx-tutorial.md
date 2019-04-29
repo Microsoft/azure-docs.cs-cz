@@ -17,11 +17,11 @@ ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fce7653770d0fb3134f266137e167125b9161865
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60862968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Kurz: Integrace Azure Active Directory s Yonyx interaktivní vodítka
 

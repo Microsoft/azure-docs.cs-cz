@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869517"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -86,7 +86,7 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
     | Oblast nasazení | Zadejte, kam chcete nasadit prostředky Blockchain Workbench. Pro nejlepší dostupnost, mělo by to odpovídat **umístění** nastavení. |
     | Předplatné | Zadejte předplatné Azure, které chcete použít pro vaše nasazení. |
     | Skupiny prostředků | Vytvořit novou skupinu prostředků tak, že vyberete **vytvořit nový** a zadejte název skupiny prostředků jedinečný. |
-    | Umístění | Zadejte oblast, kterou chcete nasadit rozhraní framework. |
+    | Location | Zadejte oblast, kterou chcete nasadit rozhraní framework. |
 
 7. Vyberte **OK** dokončete nastavení základní konfigurační oddíl.
 

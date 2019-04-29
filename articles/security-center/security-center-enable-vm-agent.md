@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 12934ad53050d16b89dd5b4175ca19a24d1ec4d9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60916265"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Povolit agenta virtuálního počítače v Azure Security Center
 Agent virtuálního počítače musí být nainstalovaný na virtuálních počítačích (VM) za účelem [Povolit shromažďování dat](security-center-enable-data-collection.md).  Azure Security Center vám umožní zobrazit které virtuální počítače vyžadují agenta virtuálního počítače a doporučí, abyste povolili agenta virtuálního počítače na těchto virtuálních počítačích.

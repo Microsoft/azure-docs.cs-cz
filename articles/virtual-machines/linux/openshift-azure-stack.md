@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: haroldw
 ms.openlocfilehash: 91b37753ae80596612eda9d3ccd34858691e35ad
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771545"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Nasadit OpenShift Container Platform nebo OKD ve službě Azure Stack
 

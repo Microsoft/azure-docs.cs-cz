@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 34c08a79abf6acb5ae8582ecd0743a890d850fc8
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60864400"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Restartování virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs
 Můžete rychle a snadno restartování virtuálního počítače ve službě DevTest Labs pomocí následujících kroků v tomto článku. Vezměte v úvahu následující před restartováním virtuálního počítače:

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 323de842645cced3c6f490e98112fcbcd184aa64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667425"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726804"
 ---
 # <a name="actor-timers-and-reminders"></a>Objekt actor časovače a připomenutí
 Objekty actor můžete naplánovat pravidelné práci na samotných tak, že zaregistrujete časovače a připomenutí. Tento článek ukazuje, jak pomocí časovače a připomenutí a vysvětluje rozdíly mezi nimi.

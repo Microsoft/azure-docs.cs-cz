@@ -14,14 +14,14 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021629"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823942"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-onprem-mysql-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-mysql.md)
 
@@ -71,11 +71,11 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost type musí být nastavená na: **OnPremisesMySql** |Ano |
 | server |Název serveru MySQL. |Ano |
 | databáze |Název databáze MySQL. |Ano |
-| schéma |Název schématu databáze. |Ne |
+| schema |Název schématu databáze. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
-| Název brány |Název brány, který služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
+| gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
@@ -301,44 +301,44 @@ Při přesouvání dat k MySQL, se používají následující mapování z typ�
 
 | Typ databáze MySQL | Typ rozhraní .NET framework |
 | --- | --- |
-| bigint bez znaménka |Desítkově |
+| bigint bez znaménka |Decimal |
 | bigint |Int64 |
-| Bit |Desítkově |
-| blob |Byte] |
-| BOOL |Logická hodnota |
-| Char |Řetězec |
-| date |Datum a čas |
-| datetime |Datum a čas |
-| decimal |Desítkově |
+| bit |Decimal |
+| blob |Byte[] |
+| bool |Boolean |
+| char |String |
+| date |DateTime |
+| datetime |DateTime |
+| decimal |Decimal |
 | dvojitou přesností |Double |
 | double |Double |
-| Výčet |Řetězec |
-| float |Jednoduchá |
+| Výčet |String |
+| float |Single |
 | int unsigned |Int64 |
-| int |Datový typ Int32 |
+| int |Int32 |
 | celé číslo bez znaménka |Int64 |
-| integer |Datový typ Int32 |
-| dlouhé varbinary |Byte] |
-| Long varchar |Řetězec |
-| longblob |Byte] |
-| LONGTEXT |Řetězec |
-| mediumblob |Byte] |
+| integer |Int32 |
+| dlouhé varbinary |Byte[] |
+| Long varchar |String |
+| longblob |Byte[] |
+| longtext |String |
+| mediumblob |Byte[] |
 | mediumint bez znaménka |Int64 |
-| mediumint |Datový typ Int32 |
-| mediumtext |Řetězec |
-| Číselné |Desítkově |
-| Real |Double |
-| set |Řetězec |
-| smallint bez znaménka |Datový typ Int32 |
+| mediumint |Int32 |
+| mediumtext |String |
+| numeric |Decimal |
+| real |Double |
+| set |String |
+| smallint bez znaménka |Int32 |
 | smallint |Int16 |
-| text |Řetězec |
-| time |Časový interval |
-| časové razítko |Datum a čas |
-| tinyblob |Byte] |
+| text |String |
+| time |TimeSpan |
+| časové razítko |DateTime |
+| tinyblob |Byte[] |
 | tinyint bez znaménka |Int16 |
 | tinyint |Int16 |
-| tinytext |Řetězec |
-| varchar |Řetězec |
+| tinytext |String |
+| varchar |String |
 | za rok |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce

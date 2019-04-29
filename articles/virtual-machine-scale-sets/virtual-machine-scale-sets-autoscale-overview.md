@@ -17,11 +17,11 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883292"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883666"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
 Škálovací sady virtuálních počítačů Azure můžete automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. Toto chování automatizované a elastické snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Můžete vytvořit pravidla, která definují přijatelný výkon pro pozitivní zkušenosti. Pokud jsou splněny tyto definované prahové hodnoty, pravidla automatického škálování provést akci Upravit kapacitu škálovací sady. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity škálovací sady na pevnou časy. Tento článek obsahuje základní informace o výkonu, které metriky jsou k dispozici a jaké akce automatického škálování můžete provádět.

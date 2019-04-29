@@ -10,11 +10,11 @@ ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749558"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Ve službě Azure Search implementovat prohledání analýzy provozu
 Prohledání analýzy provozu je vzor pro implementování smyčka zpětné vazby pro vaši vyhledávací službu. Tento model popisuje potřebná data a jak ji pomocí Application Insights, monitorování služeb ve více platformách Špička v oboru shromažďovat.

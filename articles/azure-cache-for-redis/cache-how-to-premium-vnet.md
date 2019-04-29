@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
 ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831035"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
@@ -110,7 +110,7 @@ Existuj sedm požadavků odchozí port.
 - Tři porty směrování provozu do koncových bodů Azure údržby služby Azure Storage a Azure DNS.
 - Zbývající rozsahy portů a pro interní komunikaci podsítě Redis. Žádná pravidla NSG podsítě jsou požadovány pro interní komunikaci podsítě Redis.
 
-| Port(y) pro | Směr | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
+| Port(y) pro | Direction | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage a infrastruktury veřejných KLÍČŮ (Internet) | (Redis podsítě) |* |
 | 53 |Odchozí |TCP/UDP |Redis závislostí na DNS (Internet/virtuální sítě) | (Redis podsítě) |* |
@@ -126,7 +126,7 @@ Existuj sedm požadavků odchozí port.
 
 Nejsou k dispozici osm požadavky rozsah portu pro příchozí spojení. Příchozí požadavky do tohoto rozsahu jsou příchozí z jiných služeb hostovaných ve stejné virtuální síti nebo interní podsítě komunikace Redis.
 
-| Port(y) pro | Směr | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
+| Port(y) pro | Direction | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Příchozí |TCP |Komunikace klientů Redis, Vyrovnávání zatížení Azure | (Redis podsítě) | (Redis podsítě), virtuální síť, nástroj pro vyrovnávání zatížení Azure |
 | 8443 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |

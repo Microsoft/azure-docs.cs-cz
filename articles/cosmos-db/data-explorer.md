@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
 ms.openlocfilehash: d50bf7d865cb286f2a1421156b477dc92dc978d1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889442"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty pomocí Průzkumníka služby Azure Cosmos 
+# <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
 
 Průzkumník služby Azure Cosmos DB je samostatné webové rozhraní, které vám umožní zobrazit a spravovat data uložená ve službě Azure Cosmos DB. Průzkumník služby Azure Cosmos DB je ekvivalentní ke stávající **Průzkumník dat** kartu, která je k dispozici na webu Azure portal, při vytváření účtu služby Azure Cosmos DB. Klíčové výhody služby Azure Cosmos DB explorer přes existující Průzkumník dat jsou:
 

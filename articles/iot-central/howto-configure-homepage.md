@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60886952"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicí panel aplikací
 

@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813447"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,11 +32,11 @@ Tento článek popisuje, jak spravovat účty, zdroje dat, uživatele a úlohy A
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na tlačítko **vytvořit prostředek** > **inteligence a analýza** > **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
-   1. **Název**: název účtu Data Lake Analytics.
-   2. **Předplatné**: předplatné Azure použité pro účet.
-   3. **Skupina prostředků**: Skupina prostředků Azure, ve kterém chcete vytvořit účet. 
-   4. **Umístění**: datové centrum Azure pro účet Data Lake Analytics. 
-   5. **Data Lake Store**: výchozí úložiště pro účet Data Lake Analytics. Účet Azure Data Lake Store a účet Data Lake Analytics musí být ve stejném umístění.
+   1. **Název**: Název účtu Data Lake Analytics.
+   2. **Předplatné**: Předplatné Azure použité pro účet.
+   3. **Skupina prostředků**: Skupiny prostředků Azure, ve kterém chcete vytvořit účet. 
+   4. **Umístění**: Datové centrum Azure pro účet Data Lake Analytics. 
+   5. **Data Lake Store**: Výchozí úložiště, který má být použit pro účet Data Lake Analytics. Účet Azure Data Lake Store a účet Data Lake Analytics musí být ve stejném umístění.
 4. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Odstranění účtu Data Lake Analytics
@@ -98,9 +98,9 @@ Můžete použít **Průvodce přidáním uživatele** snadno zřizovat noví u�
 Stejně jako ostatní služby Azure můžete použít řízení přístupu na základě Role (RBAC) k řízení, jak uživatelé komunikovat se službou.
 
 Standardní role RBAC mít k dispozici následující možnosti:
-* **Vlastník**: můžete odesílat úlohy, monitorování úloh, zrušit úlohy od libovolného uživatele a konfiguraci účtu.
-* **Přispěvatel**: můžete odesílat úlohy, monitorování úloh, zrušit úlohy od libovolného uživatele a konfiguraci účtu.
-* **Čtečka**: můžete monitorovat úlohy.
+* **Vlastník**: Můžete odesílat úlohy, monitorování úloh, zrušit úlohy od libovolného uživatele a konfiguraci účtu.
+* **Přispěvatel**: Můžete odesílat úlohy, monitorování úloh, zrušit úlohy od libovolného uživatele a konfiguraci účtu.
+* **Reader**: Můžete monitorovat úlohy.
 
 Pomocí Data Lake Analytics Developer role a umožňuje vývojářům U-SQL pro použití služby Data Lake Analytics. Můžete použít roli vývojář Data Lake Analytics:
 * Odesílání úloh.
@@ -113,7 +113,7 @@ Pomocí Data Lake Analytics Developer role a umožňuje vývojářům U-SQL pro 
 1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
 2. Klikněte na tlačítko **řízení přístupu (IAM)** > **přidat přiřazení role**.
 3. Vyberte roli.
-4. Přidání uživatele.
+4. Přidejte uživatele.
 5. Klikněte na **OK**.
 
 >[!NOTE]
@@ -131,9 +131,9 @@ Pomocí Data Lake Analytics Developer role a umožňuje vývojářům U-SQL pro 
 
 2. Klikněte na tlačítko **nová úloha**. Pro každou úlohu konfigurace:
 
-    1. **Název úlohy**: název úlohy.
-    2. **Priorita**: nižší čísla mají vyšší prioritu. Pokud dvě úlohy se zařadí do fronty, spustí první kategorií s nižší hodnotou priority.
-    3. **Paralelismus**: maximální počet výpočetních procesů vyhradit pro tuto úlohu.
+    1. **Název úlohy**: Název úlohy.
+    2. **Priorita**: Nižší hodnoty mají vyšší prioritu. Pokud dvě úlohy se zařadí do fronty, spustí první kategorií s nižší hodnotou priority.
+    3. **Paralelismus**: Maximální počet výpočetních procesů vyhradit pro tuto úlohu.
 
 3. Klikněte na **Odeslat úlohu**.
 

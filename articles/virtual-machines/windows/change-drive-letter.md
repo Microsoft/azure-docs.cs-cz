@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844195"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Použití disku D: jako datový disk na virtuálním počítači s Windows
 Pokud vaše aplikace potřebuje k použití jednotky D k ukládání dat, postupujte podle těchto pokynů můžete použít jiné písmeno jednotky pro dočasný disk. Nikdy použít dočasný disk k uložení dat, která je potřeba nechat.

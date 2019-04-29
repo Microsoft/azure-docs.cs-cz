@@ -11,11 +11,11 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
 ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731326"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821335"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpečení podnikové třídy pro službu Azure Machine Learning
 
@@ -86,7 +86,7 @@ Další informace o spravovaných identit najdete v tématu [spravovaných ident
 | Prostředek | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel | 
-| Účet úložiště | Přispěvatel dat objektu Blob služby Storage | 
+| Účet úložiště | Přispěvatel dat v objektech blob služby Storage | 
 | Key Vault | Přístup ke všem certifikátům klíče, tajné kódy, | 
 | Azure Container Registry | Přispěvatel | 
 | Skupiny prostředků, která obsahuje tento pracovní prostor | Přispěvatel | 
@@ -113,7 +113,7 @@ Další informace o tom, jak uvést vaše vlastní klíče pro data uložená ve
 
 Cvičná data jsou obvykle také uložená v úložišti objektů Blob v Azure tak, aby byly přístupné pro výpočetní školení. Toto úložiště není spravované službou Azure Machine Learning, ale připojené k výpočtu jako vzdálený systém souborů.
 
-#### <a name="cosmos-db"></a>Databáze Cosmos
+#### <a name="cosmos-db"></a>Cosmos DB
 Služba Azure Machine Learning ukládá metriky a metadata pro Cosmos DB, který se nachází v předplatném Microsoft spravovaném službou Azure Machine Learning. Všechna data uložená ve službě Cosmos DB zašifrovaná přinejmenším pomocí Microsoft Managed Keys.
 
 #### <a name="azure-container-registry-acr"></a>Azure Container Registry (ACR)

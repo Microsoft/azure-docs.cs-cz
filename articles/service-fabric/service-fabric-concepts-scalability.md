@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666643"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60781111"
 ---
 # <a name="scaling-in-service-fabric"></a>Škálování v Service Fabric
 Azure Service Fabric umožňuje snadno vytvářet škálovatelné aplikace tím, že spravuje služby, oddíly a repliky na uzlech clusteru. Mnoho úloh na stejném hardwaru umožňuje využití maximální prostředků, ale také poskytuje flexibilitu z hlediska zvoleném způsobu škálovat úlohy. Toto video na Channel 9 popisuje, jak se dají vytvářet škálovatelné mikroslužbových aplikací:

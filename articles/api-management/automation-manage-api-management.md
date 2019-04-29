@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 642353218960e2e995d717260ae82b6dbd7c2612
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880107"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Správa Azure API Management pomocí Azure Automation
 Tato příručka vás seznámí s služby Azure Automation a jak ji můžete použít k zjednodušení správy Azure API Management.
@@ -36,7 +36,7 @@ API Management můžete spravovat ve službě Azure Automation s použitím [rut
 
 Tady je několik příkladů použití služby API Management pomocí prostředí Powershell:
 
-* [Ukázky Azure Powershellu pro službu API Management](https://docs.microsoft.com/azure/api-management/powershell-samples)
+* [Ukázky Azure PowerShellu pro službu API Management](https://docs.microsoft.com/azure/api-management/powershell-samples)
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili základy služby Azure Automation a jak ho lze použít ke správě Azure API Management, použijte tyto odkazy na další informace.

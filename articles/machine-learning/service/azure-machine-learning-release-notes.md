@@ -10,18 +10,23 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7fc0d3a2e29a2aaa06d88f25828ff676d615939d
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: e79e610638b5ff271607da2e8855003707ea5932
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149559"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821294"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný popis jednotlivých sadách SDK navštivte referenční dokumenty pro:
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
+
+
+## <a name="2019-04-22"></a>2019-04-22
+
+### <a name="azure-machine-learning-sdk-for-python-v1030"></a>Azure Machine Learning sady SDK pro Python v1.0.30
 
 ## <a name="2019-04-17"></a>2019-04-17
 

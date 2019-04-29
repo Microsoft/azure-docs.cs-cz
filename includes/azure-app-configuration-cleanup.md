@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
 ms.openlocfilehash: a02144914e73ca1788976d8b01ccd95d1b9e9a1b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741872"
 ---
 Pokud budete chtít pokračovat k dalšímu kurzu, ponechte prostředky, které jste vytvořili v rámci tohoto rychlého startu. Můžete je použít v dalším kurzu.
 

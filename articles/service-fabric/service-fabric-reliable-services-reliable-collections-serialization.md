@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
 ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60723589"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Spolehlivá serializace kolekcí objektů v Azure Service Fabric
 Reliable Collections replikovat a zachování jejich položky, abyste měli jistotu, že jsou trvalé napříč počítači selhání a výpadky napájení.
@@ -39,7 +39,7 @@ Reliable State Manager má integrované serializátor pro následující typy:
 - byte
 - SByte
 - Byte
-- Char
+- char
 - string
 - decimal
 - double

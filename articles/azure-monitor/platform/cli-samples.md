@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
-ms.subservice: ''
+ms.component: ''
 ms.openlocfilehash: fa3293346fee6f6666db01dab5587dd760df84b2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471002"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60740879"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Úvodní ukázky v Azure Monitor, rozhraní příkazového řádku
 V tomto článku se dozvíte, ukázky, že příkazy rozhraní příkazového řádku (CLI), umožňují přístup k funkcím Azure Monitor. Azure Monitor vám umožní automatické škálování cloudové služby, virtuální počítače a webové aplikace a odesílat oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurované telemetrická data.
@@ -208,4 +208,3 @@ az monitor autoscale create --name <settings name> --resource-group <group name>
     --count <# instances> \
     --resource <target resource ID>
 ```
-

@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
 ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489543"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60753825"
 ---
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí přihlašovacích údajů pro předplatné Azure, které používáte. 
 
@@ -39,7 +39,7 @@ ms.locfileid: "54489543"
    Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **dokumentace ws**. Názvy musí být ve skupině prostředků jedinečné. Použijte název, který je snadné odvolání a odlišují jej od z pracovní prostory vytvořené jinými uživateli.  
    Předplatné |Vyberte předplatné Azure, které chcete použít.
    Skupina prostředků | Použít existující skupinu prostředků ve vašem předplatném nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **dokumentace aml**. 
-   Umístění | Vyberte umístění co nejblíže vašim uživatelům a datovým prostředkům. Toto umístění je, kde se vytvoří pracovní prostor.
+   Location | Vyberte umístění co nejblíže vašim uživatelům a datovým prostředkům. Toto umístění je, kde se vytvoří pracovní prostor.
 
    ![Vytvoření pracovního prostoru](./media/aml-create-in-portal/workspace-create.png)
 

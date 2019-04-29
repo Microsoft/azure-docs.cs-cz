@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
 ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60836076"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidat připojení Site-to-Site k virtuální síti se existující připojení brány VPN (classic)
 
@@ -56,7 +56,7 @@ Pokud už máte statické brány připojené k vaší virtuální sítě, může
 
 Musí se klidem, je používán konfigurační soubor sítě podle času jste dokončili postup Multi-Site. Pokud máte více lidí pracujících na konfiguraci sítě, budete však muset Ujistěte se, že všichni ví o toto omezení. To neznamená, že nelze použít na portálu ve všech. Můžete ho použít pro všechno ostatní, s výjimkou změn konfigurace do této konkrétní virtuální sítě.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s konfigurací, ověřte, že máte následující:
 

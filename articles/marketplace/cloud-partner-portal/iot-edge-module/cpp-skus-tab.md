@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276036"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910869"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Kartu SKU modul IoT Edge
 
@@ -41,7 +41,7 @@ Když začnete vytvářet novou nabídku, nejsou k dispozici žádné skladové 
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **SKU ID**       | Identifikátor pro toto SKU. Tento název může mít nejvýše 50 znaků, který se skládá z malé alfanumerické znaky nebo spojovníky (-), ale nemůže končit spojovníkem. **Poznámka:** po publikování nabídky nelze změnit tímto názvem. Název je veřejně viditelné v adresách URL produktu. |
+| **SKU ID**       | Identifikátor pro toto SKU. Tento název může mít nejvýše 50 znaků, který se skládá z malé alfanumerické znaky nebo spojovníky (-), ale nemůže končit spojovníkem. **Poznámka:** Po publikování nabídky nelze změnit tímto názvem. Název je veřejně viditelné v adresách URL produktu. |
 
 ## <a name="sku-details"></a>Podrobné údaje SKU
 
@@ -109,7 +109,7 @@ Následující tabulka popisuje účel, obsah a formátování polí pro:
 | **ID předplatného**        | ID předplatného Azure z vaší služby ACR.|
 | **Název skupiny prostředků**      | Název skupiny prostředků záznamu ACR.|
 | **Název registru**  | Název vašeho registru ACR. Kopírovat pouze název registru, ne název přihlašovacího serveru (například bez `azurecr.io`.) |
-| **Název úložiště**  | Název úložiště, který obsahuje modul IoT Edge záznamu ACR. **Poznámka:** po nastavení názvu nelze změnit později. Chcete-li zajistit, že v žádné jiné nabídky ve vašem účtu se stejným názvem, použijte jedinečný název. |
+| **Název úložiště**  | Název úložiště, který obsahuje modul IoT Edge záznamu ACR. **Poznámka:** Po nastavení názvu, není možné později změnit. Chcete-li zajistit, že v žádné jiné nabídky ve vašem účtu se stejným názvem, použijte jedinečný název. |
 | **Uživatelské jméno** | Uživatelské jméno přidružené k záznamu ACR (uživatelské jméno správce). |
 | **Heslo** | Heslo přidružené k záznamu ACR. |
 |  ***Verze bitové kopie***   |  |

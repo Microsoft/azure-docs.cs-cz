@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817163"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Připojte se k a indexování Azure SQL Database obsahu pomocí indexerů Azure Search
 
@@ -288,7 +288,7 @@ Při použití obnovitelného odstranění techniku, můžete určit, zásadu ob
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapování mezi datovými typy SQL a Azure Search
 | Datový typ SQL. | Povolené typy pole cílový index | Poznámky |
 | --- | --- | --- |
-| Bit |Edm.Boolean, Edm.String | |
+| bit |Edm.Boolean, Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
 | bigint |Edm.Int64, Edm.String | |
 | skutečné, float |Edm.Double, Edm.String | |

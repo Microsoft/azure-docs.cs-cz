@@ -2,20 +2,21 @@
 title: Ověření nastavení Azure Traffic Manageru
 description: Tento článek vám pomůže ověřit nastavení Traffic Manageru.
 services: traffic-manager
-author: kumudd
+author: rockboyfor
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/16/2017
-ms.author: kumud
+origin.date: 03/16/2017
+ms.date: 02/18/2019
+ms.author: v-yeche
 ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771613"
 ---
 # <a name="verify-traffic-manager-settings"></a>Ověření nastavení Traffic Manageru
 
@@ -35,7 +36,7 @@ Následující příklady můžete otestovat svůj profil Traffic Manageru.
 2. Typ `ipconfig /flushdns` vyprázdnit mezipaměť DNS překladač.
 3. Zadejte `nslookup <your Traffic Manager domain name>`. Například následující příkaz ověří název domény s předponou *myapp.contoso*
 
-        nslookup myapp.contoso.trafficmanager.net
+        nslookup myapp.contoso.trafficmanager.cn
 
     Typické výsledek zobrazí následující informace:
 
@@ -71,3 +72,5 @@ Alternativně existují webové vyhledávání DNS u bezplatných služeb a pono
 * [O metodách směrování provozu Traffic Manageru](traffic-manager-routing-methods.md)
 * [Důležité informace o výkonu nástroje Traffic Manager](traffic-manager-performance-considerations.md)
 * [Řešení potíží při sníženém výkonu Traffic Manageru](traffic-manager-troubleshooting-degraded.md)
+
+<!-- Update_Description: update meta properties -->

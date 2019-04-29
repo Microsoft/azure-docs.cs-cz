@@ -15,11 +15,11 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822540"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794898"
 ---
 # <a name="disaster-recovery-principles"></a>Zásady pro zotavení po havárii
 

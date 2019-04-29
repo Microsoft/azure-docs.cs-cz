@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666116"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60882268"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikace se službami v Service Fabric
 V Service Fabric služba někde běží v clusteru Service Fabric, obvykle distribuují na několika virtuálních počítačů. To můžete přesunout z jednoho místa do jiného, vlastník služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázán na konkrétní počítač nebo adresu.

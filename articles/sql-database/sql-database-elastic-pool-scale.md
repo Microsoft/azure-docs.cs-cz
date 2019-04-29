@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 3/14/2019
 ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015365"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848076"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování elastického fondu prostředků ve službě Azure SQL Database
 
@@ -74,7 +74,7 @@ Se vám účtovat každá hodina existence databáze pomocí nejvyšší úrove�
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-### <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
+### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
 - Úložiště lze zřídit až do limitu maximální velikost:
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899970"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](../../azure-monitor/app/app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
@@ -112,10 +112,10 @@ Můžete chtít nastavit čas rozsah, jako hledání nad kratší rozsah jsou ry
 
 Hledat celá slova, ne podřetězců. Pomocí speciální znaky, uzavřete do uvozovek.
 
-| řetězec | je *není* zjištěných aplikací | ale tyto ho najít |
+| string | je *není* zjištěných aplikací | ale tyto ho najít |
 | --- | --- | --- |
 | HomeController.About |Domovská složka<br/>Kontroler<br/>navýšení kapacity | homecontroller<br/>o produktu<br/>"homecontroller.about"|
-|Spojené státy|UNI<br/>videa TED|Spojené<br/>stavy<br/>Spojené státy a<br/>"USA"
+|Spojené státy|Uni<br/>videa TED|Spojené<br/>stavy<br/>Spojené státy a<br/>"USA"
 
 Tady jsou hledaných výrazů, které můžete použít:
 
@@ -150,7 +150,7 @@ Kromě out-of-the-box telemetrická data odesílaná sadu SDK Application Insigh
 
 [Zjistěte, jak odesílat protokoly a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
 
-## <a name="questions"></a>FUNKCE Q &AMP; A
+## <a name="questions"></a>Q & A
 ### <a name="limits"></a>Jaká data se uchovávají?
 
 Zobrazit [souhrn omezení](../../azure-monitor/app/pricing.md#limits-summary).

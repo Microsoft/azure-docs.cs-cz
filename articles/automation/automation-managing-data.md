@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784972"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60738471"
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
 Tento článek obsahuje více témat pro správu prostředí Azure Automation.

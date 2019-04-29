@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 09df1421d6deae6db305cef2a46d6c40d0c12ba3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835846"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databáze Oracle Database 12c v prostředí Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "39495005"
 ## <a name="goals"></a>Cíle
 - Návrh topologii a konfiguraci, která splňují vaše požadavky na zotavení po havárii.
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scénář 1: Servery primární a zotavení po Havárii v Azure
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scénář 1: Primární server a servery pro zotavení po Havárii v Azure
 
 Zákazník má Oracle databáze set up v primární lokalitě. Zotavení po Havárii A lokalita je v jiné oblasti. Zákazník používá Oracle Data Guard pro rychlé obnovení mezi těmito lokalitami. Primární lokalita má také sekundární databáze pro vytváření sestav a jiné účely. 
 

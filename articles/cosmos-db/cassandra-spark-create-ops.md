@@ -1,22 +1,24 @@
 ---
 title: Vytvořit/vložení dat do Azure Cosmos DB Cassandra API z aplikace Spark
 description: Tento článek podrobně popisuje, jak vložit ukázková data do tabulek Azure Cosmos DB Cassandra API
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
+origin.date: 09/24/2018
+ms.date: 03/18/2019
 ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036609"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894041"
 ---
+<!--Verify sucessfully-->
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Vytvořit/vložení dat do Azure Cosmos DB Cassandra API z aplikace Spark
- 
+
 Tento článek popisuje, jak vložit ukázková data do tabulky v Azure Cosmos DB Cassandra API z aplikace Spark.
 
 ## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní Cassandra API
@@ -31,7 +33,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -137,10 +139,13 @@ select * from books;
 ## <a name="next-steps"></a>Další postup
 
 Po vložení dat do tabulky Azure Cosmos DB Cassandra API, pokračujte v následujících článcích pro provádění jiných operací s daty uloženými v Cosmos DB Cassandra API:
- 
+
 * [operace čtení](cassandra-spark-read-ops.md)
 * [Operace Upsert](cassandra-spark-upsert-ops.md)
 * [Operace odstranění](cassandra-spark-delete-ops.md)
 * [Agregační operace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

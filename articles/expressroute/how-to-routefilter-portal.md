@@ -9,13 +9,13 @@ ms.date: 09/26/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104199"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60839209"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure portal
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: portál Azure
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -71,7 +71,7 @@ Než začnete s konfigurací, ujistěte se, že splňujete následující krité
  - Musíte mít active partnerský vztah Microsoftu. Postupujte podle pokynů na adrese [vytvoření a změny konfigurace partnerského vztahu](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnotami komunity protokolu BGP
+## <a name="prefixes"></a>Krok 1: Získat seznam předpon a hodnotami komunity protokolu BGP
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získání seznamu sad hodnotami komunity protokolu BGP
 
@@ -81,7 +81,7 @@ Je k dispozici v související se službami, které jsou přístupné prostředn
 
 Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
 
-## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidlo filtru
+## <a name="filter"></a>Krok 2: Vytvořit filtr tras a pravidlo filtru
 
 Filtr tras může mít jenom jedno pravidlo a pravidlo musí být typu "Povolit". Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
@@ -106,7 +106,7 @@ Můžete zvolit služby, které chcete připojit z rozevíracího seznamu a ulo�
 ![Vytvořit filtr tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Krok 3: Připojení filtr tras k okruhu ExpressRoute
+## <a name="attach"></a>Krok 3: Připojit filtr tras k okruhu ExpressRoute
 
 Filtr tras k okruhu můžete připojit tak, že vyberete tlačítko "Přidat okruh" a výběrem z rozevíracího seznamu okruh ExpressRoute.
 

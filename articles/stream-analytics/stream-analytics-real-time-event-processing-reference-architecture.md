@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: 7f9748a4e4f1c86362781aa80d8958237c97106a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555434"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816957"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenční architektura: S Microsoft Azure Stream Analytics pro zpracování událostí v reálném čase
 Referenční architektura pro zpracování ve službě Azure Stream Analytics událostí v reálném čase je určená k zajištění obecný plán pro nasazení v reálném čase platforma jako služba (PaaS) řešení zpracování datových proudů s Microsoft Azure.
@@ -36,7 +36,7 @@ Microsoft Azure poskytuje rozsáhlou katalogu analytických technologií, které
   * Prezentace / spotřeby vrstvy
 * Závěr
 
-**Autor:** Charles Feddersen, architekt řešení, datové centrum Insights vzdělávání profesionálů v oblasti, Microsoft Corporation
+**Autor:** Charles Feddersen, Solution Architect, Data Insights Center of Excellence, Microsoft Corporation
 
 **Publikováno:** Leden 2015
 

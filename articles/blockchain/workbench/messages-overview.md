@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878077"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896417"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integrace zasílání zpráv Azure Blockchain Workbench
 
@@ -477,7 +477,7 @@ Obsahuje informace o smlouvě o. Zpráva obsahuje oddíl s vlastnostmi smlouvy a
 |--------------------|-------------|
 | workflowPropertyId | Jedinečný identifikátor pro vlastnosti pracovního postupu uvnitř Azure Blockchain Workbench |
 | jméno | Název vlastnosti pracovního postupu |
-| hodnota | Hodnota vlastnosti pracovního postupu |
+| value | Hodnota vlastnosti pracovního postupu |
 
 Příklad *ContractMessage* z Blockchain Workbench:
 
@@ -588,7 +588,7 @@ Obsahuje informace, když je vyvolána funkce smlouvy, jako je název funkce, vs
 | Název | Popis |
 |------|-------------|
 | jméno | Název parametru |
-| hodnota | Hodnota parametru |
+| value | Hodnota parametru |
 
 #### <a name="event-message-transaction-information"></a>Informace o transakcích zprávy událostí
 

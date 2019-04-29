@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667503"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725648"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors typ serializace
 Argumenty všechny metody, vrátí typy výsledků úlohy každé metodě v rozhraní objektu actor a musí být objekty uložené v správce stavu objektu actor [kontraktů dat serializovatelný](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí i pro argumenty metody definované v [rozhraní objektu actor](service-fabric-reliable-actors-events.md). (Metody rozhraní objektu actor událostí vždy vracet typ void.)

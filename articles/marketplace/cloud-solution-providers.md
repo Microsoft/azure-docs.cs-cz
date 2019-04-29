@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: 516cb10fe368334d8fe30d998857d0688dcae972
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726893"
 ---
-# <a name="cloud-solution-providers"></a>Poskytovatele cloud Solution Provider
+# <a name="cloud-solution-providers"></a>Poskytovatelé cloudových řešení
 
 Nabídky softwaru teď můžete oslovit miliony kvalifikovaný zákazníkům Microsoftu, kteří obsluhují partnery Cloud Solution Provider (CSP) s minimálními marketingové a prodejní investice.  Vydavatelé můžou nyní využívat kanály partner CSP, kromě zveřejnění nabídky prostřednictvím [prodejních míst web společnosti Microsoft](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 

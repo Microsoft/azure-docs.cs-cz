@@ -17,11 +17,11 @@ ms.date: 11/08/2018
 ms.author: yili
 ms.custom: seodec18
 ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60852491"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování se službou Web App for Containers
 
@@ -69,4 +69,4 @@ Zkopírujte adresu URL Webhooku. Přidání webhooku pro Docker Hub, postupujte 
 * [Vytvoření webové aplikace Ruby ve službě App Service v Linuxu](quickstart-ruby.md)
 * [Nasazení webové aplikace v Dockeru/Go ve službě Web App for Containers](quickstart-docker-go.md)
 * [Nejčastější dotazy k Azure App Service v Linuxu](./app-service-linux-faq.md)
-* [Spravovat Web App for Containers pomocí Azure CLI](./app-service-linux-cli.md)
+* [Správa služby Web App for Containers pomocí Azure CLI](./app-service-linux-cli.md)

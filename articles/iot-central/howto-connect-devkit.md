@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006178"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60887204"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -208,12 +208,12 @@ Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šab
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stavy 
-| Name          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
+| Název          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | Devicestate povolená   | Stav zařízení   | Zelená  | Orange  | Červená    | 
 
 #### <a name="events"></a>Události 
-| Name             | Zobrazované jméno      | 
+| Název             | Zobrazované jméno      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Stiskne tlačítko B  | 
 

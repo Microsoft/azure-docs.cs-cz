@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998718"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808849"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Aktivita spuštění kanálu ve službě Azure Data Factory
 Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
@@ -66,7 +66,7 @@ jméno | Název aktivity spuštění kanálu. | String | Ano
 type | Musí být nastaveno na: **ExecutePipeline**. | String | Ano
 kanál | Odkaz na závislé kanál, který volá tento kanál. Odkaz na objekt kanálu má dvě vlastnosti: **referenceName** a **typ**. Vlastnost referenceName Určuje název odkazu kanálu. Vlastnost type musí být nastavená na PipelineReference. | PipelineReference | Ano
 parameters | Parametry se mají předat vyvolaný kanál | Objekt JSON, která mapuje názvy parametrů hodnoty argumentů | Ne
-waitOnCompletion | Definuje, zda provádění aktivity čeká na spuštění kanálu závislé na dokončení. Výchozí hodnota je false. | Logická hodnota | Ne
+waitOnCompletion | Definuje, zda provádění aktivity čeká na spuštění kanálu závislé na dokončení. Výchozí hodnota je false. | Boolean | Ne
 
 ## <a name="sample"></a>Ukázka
 Tento scénář má dva kanály:

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: f84cb59e7d4fd7d8301d22348ca066a7f9d9e94e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813427"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>Správa Azure Data Lake Analytics pomocí zásad
 
@@ -68,8 +68,8 @@ Pomocí zásad na úrovni projektu můžete určit maximální počet jednotek A
 
 Data Lake Analytics má dvě zásady, které můžete nastavit na úrovni úlohy:
 
-* **Limit AU na úlohu**: uživatelé mohli odesílat pouze úlohy, které je nutné tento počet jednotek au. Ve výchozím nastavení toto omezení je stejná jako maximální limit AU pro tento účet.
-* **Priorita**: uživatelé mohou odesílat pouze úlohy, s prioritou nižší než nebo rovna této hodnotě. Větší číslo označuje s nižší prioritou. Toto omezení je ve výchozím nastavení, nastavena na hodnotu 1, což je nejvyšší možná priorita.
+* **Limit AU na úlohu**: Uživatelům můžete odeslat pouze úlohy, které je nutné tento počet jednotek au. Ve výchozím nastavení toto omezení je stejná jako maximální limit AU pro tento účet.
+* **Priorita**: Uživatelé mohou odesílat pouze úlohy, s prioritou nižší než nebo rovna této hodnotě. Větší číslo označuje s nižší prioritou. Toto omezení je ve výchozím nastavení, nastavena na hodnotu 1, což je nejvyšší možná priorita.
 
 Neexistuje výchozí zásadu nastavit u všech účtů. Výchozí zásady platí pro všechny uživatele účtu. Další zásady můžete nastavit pro konkrétní uživatele a skupiny. 
 
@@ -83,9 +83,9 @@ Neexistuje výchozí zásadu nastavit u všech účtů. Výchozí zásady platí
 2. Klikněte na **Vlastnosti**.
 3. V části **omezení odesílání úloh**, klikněte na tlačítko **přidat zásadu** tlačítko. Potom vyberte nebo zadejte následující nastavení:
     1. **Název zásady pro výpočet**: Zadejte název zásady, vás upozorní účel zásady.
-    2. **Vyberte uživatele nebo skupinu**: Vyberte uživatele nebo skupiny, tyto zásady platí pro.
-    3. **Nastavit Limit AU úlohy**: nastavte limit AU, který se vztahuje na vybrané uživatele nebo skupinu.
-    4. **Nastavit Priority Limit**: omezit priority, která se použije pro vybrané uživatele nebo skupiny.
+    2. **Vyberte uživatele nebo skupinu**: Vyberte uživatele nebo skupiny, které tyto zásady platí pro.
+    3. **Nastavit Limit AU úlohy**: Nastavte limit AU, který se vztahuje na vybrané uživatele nebo skupinu.
+    4. **Nastavit Priority Limit**: Nastavte limit priority, která se použije pro vybrané uživatele nebo skupiny.
 
 4. Klikněte na tlačítko **OK**.
 

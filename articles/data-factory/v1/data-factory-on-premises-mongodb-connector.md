@@ -14,11 +14,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331533"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824180"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | port |Port TCP, který MongoDB server používá k naslouchání pro připojení klientů. |Volitelné, výchozí hodnota: 27017 |
 | authenticationType. |Basic nebo Anonymous. |Ano |
 | uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
-| heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
+| password |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Nepovinné (Pokud se používá základní ověřování). Výchozí: používá účet správce a databáze určená vlastnost databaseName. |
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
 | gatewayName |Název brány, který přistupuje k úložišti. |Ano |
@@ -295,16 +295,16 @@ Při přesouvání dat až po MongoDB se používají následující mapování 
 
 | Typ MongoDB | Typ rozhraní .NET framework |
 | --- | --- |
-| Binární hodnota |Byte] |
-| Logická hodnota |Logická hodnota |
+| Binární hodnota |Byte[] |
+| Boolean |Boolean |
 | Datum |DateTime |
 | NumberDouble |Double |
-| NumberInt |Datový typ Int32 |
+| NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Řetězec |
-| Řetězec |Řetězec |
+| ObjectID |String |
+| Řetězec |String |
 | UUID |Guid |
-| Objekt |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
+| Object |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
 > [!NOTE]
 > Další informace o podpoře pro pole pomocí virtuální tabulky, najdete v tématu [podporu pro komplexní typy s použitím virtuální tabulky](#support-for-complex-types-using-virtual-tables) níže v části.

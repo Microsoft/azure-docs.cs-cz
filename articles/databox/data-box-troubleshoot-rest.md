@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: ee2820d78e95924e09a0219753f87d6910c0e736
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013685"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782952"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Řešit problémy spojené s úložiště objektů Blob v Azure Data Box
 

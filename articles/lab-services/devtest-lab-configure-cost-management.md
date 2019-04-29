@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
 ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60868218"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledujte náklady spojené s testovacího prostředí ve službě Azure DevTest Labs
 Tento článek obsahuje informace o tom, jak sledovat náklady testovacího prostředí. Ukazuje, jak chcete zobrazit odhadované náklady trent za aktuální kalendářní měsíc pro testovací prostředí. Tento článek také ukazuje, jak zobrazit náklady za měsíc k datu jednotlivých prostředků v testovacím prostředí.

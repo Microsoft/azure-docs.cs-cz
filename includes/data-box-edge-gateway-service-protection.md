@@ -4,13 +4,13 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: cfd4ce1838ba2b48cbda3442d88362f4f1e0fd67
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684424"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754249"
 ---
-- Přístup ke službě Data Box Edge vyžaduje vaše organizace má smlouvu Enterprise (EA) nebo v rámci předplatného Cloud Solution Provider (CSP). Další informace najdete v části [zaregistrovat předplatné Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)!
-- Vzhledem k tomu, že vaše služba management je hostovaná v Azure, je chráněn funkce zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
-- Operace správy sady SDK, šifrovací klíč je k dispozici pro váš prostředek v části **vlastnosti zařízení**. Šifrovací klíč můžete zobrazit pouze v případě, že máte oprávnění pro rozhraní Graph API prostředku.
+- Přístup ke službě Data Box Edge, vaše organizace potřebuje mít s předplatným Enterprise Agreement (EA) nebo Cloud Solution Provider (CSP). Další informace najdete v tématu [zaregistrovat předplatné Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).
+- Protože tato služba správy je hostovaná v Azure, je chráněn funkce zabezpečení Azure. Další informace o funkcích zabezpečení, poskytuje Azure, přejděte [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+- Pro operace správy sady SDK, je možné získat šifrovací klíč pro prostředek v **vlastnosti zařízení**. Šifrovací klíč můžete zobrazit pouze v případě, že máte oprávnění pro rozhraní Graph API prostředku.

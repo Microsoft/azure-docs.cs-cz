@@ -16,11 +16,11 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832772"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -72,7 +72,7 @@ V **Key Vault stav** klikněte na **úložiště Key Vault** a vytvořte nový t
 |-|-|
 | Název | Jedinečný název, který se skládá alfanumerické znaky a pomlčky. |
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako služby App Service certificate. |
-| Umístění | Vyberte stejné umístění jako aplikace služby App Service. |
+| Location | Vyberte stejné umístění jako aplikace služby App Service. |
 | Cenová úroveň | Informace najdete v tématu [podrobnosti o cenách služby Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům úložiště. Můžete ho nakonfigurovat později, postupujte podle kroků v [udělit několik aplikací přístup k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Přístup k virtuální síti | Omezení přístupu trezor k určité virtuálním sítím Azure. Můžete ho nakonfigurovat později, postupujte podle kroků v [konfigurace Azure Key Vault firewallů a virtuální sítě](../key-vault/key-vault-network-security.md) |

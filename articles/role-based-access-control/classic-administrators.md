@@ -15,11 +15,11 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709481"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure classic
 
@@ -155,5 +155,5 @@ Následujícím postupem zobrazíte správce účtu.
 ## <a name="next-steps"></a>Další postup
 
 * [Vysvětlení různých rolí v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md)
+* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Přidávání a změna správců předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md)

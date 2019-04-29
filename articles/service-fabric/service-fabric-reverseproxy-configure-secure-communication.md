@@ -14,11 +14,11 @@ ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837833"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení ke službě zabezpečené pomocí reverzního proxy serveru
 
@@ -35,14 +35,14 @@ Reverzní proxy server se identifikuje ke službám pomocí jejího certifikátu
 Služby můžete implementovat logiku pro ověření certifikátu uváděnému reverzního proxy serveru. Služby můžete zadat podrobnosti o certifikátu přijaté klienta jako nastavení konfigurace v balíčku pro konfiguraci. To může číst za běhu a slouží k ověření certifikátu uváděnému reverzního proxy serveru. Odkazovat na [Správa parametrů aplikací](service-fabric-manage-multiple-environment-app-configuration.md) přidat nastavení konfigurace. 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Reverzní proxy server ověření identity služby prostřednictvím certifikát předložený službou:
-Reverzní proxy server podporuje tyto zásady k provedení ověření certifikátu serveru certifikátů předložený služby: None, ServiceCommonNameAndIssuer a ServiceCertificateThumbprints.
+Reverzní proxy server podporuje tyto zásady k provedení ověření certifikátu serveru certifikátů předložený služby: NONE, ServiceCommonNameAndIssuer a ServiceCertificateThumbprints.
 Vyberte zásadu pro reverzní proxy server používat, zadejte **ApplicationCertificateValidationPolicy** v **ApplicationGateway/Http** části [nastavení fabricSettings](service-fabric-cluster-fabric-settings.md).
 
 V další části se zobrazí podrobnosti o konfiguraci pro každý z těchto možností.
 
 ### <a name="service-certificate-validation-options"></a>Možnosti ověřování certifikátu služby 
 
-- **Žádný**: přeskočí ověření certifikátu směrovány přes proxy server služby reverzní proxy server a vytvoří zabezpečené připojení. Toto je výchozí chování.
+- **Žádný**: Reverzní proxy server přeskočí ověření certifikátu směrovány přes proxy server služby a navázat zabezpečené připojení. Toto je výchozí chování.
 Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **žádný** v [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) oddílu.
 
    ```json
@@ -63,7 +63,7 @@ Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **žádný** v [ *
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: reverzní proxy server ověří certifikát předložený službou na základě běžný název certifikátu a kryptografický otisk vystavitele okamžité: Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCommonNameAndIssuer** v [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) oddílu.
+- **ServiceCommonNameAndIssuer**: Reverzní proxy server ověří certifikát předložený službou na základě běžný název certifikátu a kryptografický otisk okamžité vystavitele: Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCommonNameAndIssuer** v [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) oddílu.
 
    ```json
    {
@@ -110,7 +110,7 @@ Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **žádný** v [ *
    }
    ```
 
-- **ServiceCertificateThumbprints**: reverzní proxy server ověří, jestli certifikát směrovány přes proxy server služby založené na jeho kryptografický otisk. Můžete také přejít tato trasa při služeb jsou nakonfigurovány s vlastní podepsané certifikáty: Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCertificateThumbprints** v [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) oddílu.
+- **ServiceCertificateThumbprints**: Reverzní proxy server ověří podle jeho kryptografický otisk certifikátu směrovány přes proxy server služby. Můžete přejít, že se tato trasa při služeb jsou nakonfigurovány s vlastní podepsané certifikáty: Zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCertificateThumbprints** v [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) oddílu.
 
    ```json
    {

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315126"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825604"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Pomocí Azure Media Analytics můžete převést textový obsah v videosouborů na digitální text  
 ## <a name="overview"></a>Přehled
@@ -106,7 +106,7 @@ Výstup obsahuje následující atributy:
 | Element | Popis |
 | --- | --- |
 | Timescale |"značky" za sekundu videa |
-| Posun |časový posun, časových razítek. Ve verzi 1.0 rozhraní API pro Video bude vždy 0. |
+| Offset |časový posun, časových razítek. Ve verzi 1.0 rozhraní API pro Video bude vždy 0. |
 | Framerate |Snímků za sekundu videa |
 | Šířka |Šířka videa v pixelech |
 | Výška |výšku v pixelech |

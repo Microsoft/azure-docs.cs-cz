@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669397"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60727127"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors – ReliableDictionaryActorStateProvider
 Výchozí konfigurace pro ReliableDictionaryActorStateProvider můžete upravit změnou souboru settings.xml vygenerované v kořenovém adresáři balíčku sady Visual Studio ve složce Konfigurace pro zadaný objekt actor.
@@ -93,7 +93,7 @@ Výchozí konfigurace vygeneruje šablony sady Visual Studio a měl postačit. T
 | MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací ve frontě sekundární. Operace je uvolněna až po zajištění vysoké dostupnosti prostřednictvím trvalého stavu. Tato hodnota musí být větší než 64 a mocninou čísla 2. |
 | CheckpointThresholdInMB |MB |200 |Množství místa souboru protokolu, po jejímž uplynutí je stav byl vytvořen kontrolní bod. |
 | MaxRecordSizeInKB |kB |1024 |Největší velikost záznamu, který Replikátor může zapisovat do protokolu. Tato hodnota musí být násobkem 4 a je větší než 16. |
-| OptimizeLogForLowerDiskUsage |Logická hodnota |true (pravda) |V případě hodnoty true je u protokolu nakonfigurována tak, aby repliky vyhrazené soubor protokolu se vytvoří pomocí chování řídkého souboru systému souborů NTFS. To snižuje využití místa na disku skutečného souboru. V případě hodnoty false se vytvoří soubor s pevnou přidělení, které poskytují nejlepší zápisu výkonu. |
+| OptimizeLogForLowerDiskUsage |Boolean |true (pravda) |V případě hodnoty true je u protokolu nakonfigurována tak, aby repliky vyhrazené soubor protokolu se vytvoří pomocí chování řídkého souboru systému souborů NTFS. To snižuje využití místa na disku skutečného souboru. V případě hodnoty false se vytvoří soubor s pevnou přidělení, které poskytují nejlepší zápisu výkonu. |
 | SharedLogId |identifikátor GUID |"" |Určuje jedinečný identifikátor guid pro účely identifikace sdílené protokol využít tuto repliku. Služby by neměl obvykle, pomocí tohoto nastavení. Nicméně pokud SharedLogId je, pak SharedLogPath musí také uvést. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde se vytvoří soubor sdílený protokolu pro tuto repliku. Služby by neměl obvykle, pomocí tohoto nastavení. Nicméně pokud SharedLogPath je, pak SharedLogId musí také uvést. |
 

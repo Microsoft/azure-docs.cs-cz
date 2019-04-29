@@ -10,11 +10,11 @@ ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894403"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 

@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60904918"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy s daty styl (Sada Web SDK)
 
@@ -83,11 +83,11 @@ Výrazy data poskytují přístup k datům vlastnost ve funkci.
 |------------|-------------|-------------|
 | `['at', number, array]` | objekt | Načte položku z pole. |
 | `['geometry-type']` | string | Získá typ geometry tuto funkci: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
-| `['get', string]` | hodnota | Získá hodnotu z vlastnosti aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['get', string, object]` | hodnota | Získá hodnotu z vlastnosti zadaného objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string]` | value | Získá hodnotu z vlastnosti aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string, object]` | value | Získá hodnotu z vlastnosti zadaného objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | Boolean | Určuje, pokud vlastnosti funkce mít zadanou vlastnost. |
 | `['has', string, object]` | Boolean | Určuje, pokud vlastnosti objektu mít zadanou vlastnost. |
-| `['id']` | hodnota | Získá ID tuto funkci, pokud jej obsahuje. |
+| `['id']` | value | Získá ID tuto funkci, pokud jej obsahuje. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 
 **Příklady**

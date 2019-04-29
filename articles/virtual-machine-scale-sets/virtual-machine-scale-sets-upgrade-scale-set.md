@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
 ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873623"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60803137"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 

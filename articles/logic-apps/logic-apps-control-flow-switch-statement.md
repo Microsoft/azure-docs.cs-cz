@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232439"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683087"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytváření příkazů přepínače, na kterých běží akcí pracovního postupu podle konkrétní hodnoty v Azure Logic Apps
 
@@ -32,7 +32,7 @@ Předpokládejme například, že chcete aplikaci logiky, která přebírá jin�
 
 * V našem příkladu v tomto článku [vytvořte Tato ukázková aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) pomocí účtu Outlook.com nebo Office 365 Outlook.
 
-  1. Při přidání akce pro odeslání e-mailu vyhledejte a vyberte tuto akci místo toho: **pošle schvalovací e-mail**
+  1. Při přidání akce pro odeslání e-mailu vyhledejte a vyberte místo toho tuto akci: **Odeslat schvalovací e-mail**
 
      ![Vyberte "Odeslat schvalovací e-mail"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -47,7 +47,7 @@ Předpokládejme například, že chcete aplikaci logiky, která přebírá jin�
 
    Pokud chcete přidat příkaz switch mezi kroky, přesuňte ukazatel nad šipku, které chcete přidat příkazu switch. Zvolte **znaménko plus** (**+**), který se zobrazí, klikněte na tlačítko **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "přepněte". Vyberte tuto akci: **přepnout – ovládací prvek**
+1. Do vyhledávacího pole zadejte jako filtr "přepněte". Vyberte tuto akci: **Switch – ovládací prvek**
 
    ![Přidejte přepínač](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 

@@ -4,14 +4,15 @@ description: Tento článek obsahuje informace o tom, jak přizpůsobení pravid
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 2/22/2019
-ms.author: victorh
+origin.date: 02/22/2019
+ms.date: 02/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832893"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí rozhraní příkazového řádku Azure
 
@@ -25,7 +26,7 @@ Následující příklady kódu ukazují, jak zobrazení pravidel a skupin pravi
 
 Následující příklad ukazuje, jak zobrazit skupiny pravidel:
 
-```azurecli-interactive
+```azurecli
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
@@ -78,7 +79,7 @@ Následující výstup je zkrácený odpovědi z předchozího příkladu:
 
 Následující příklad ukazuje, jak zobrazit pravidel ve skupině a zadané pravidlo:
 
-```azurecli-interactive
+```azurecli
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
@@ -117,7 +118,7 @@ Následující výstup je zkrácený odpovědi z předchozího příkladu:
 
 Následující příklad zakazuje pravidla `910018` a `910017` ve službě application gateway:
 
-```azurecli-interactive
+```azurecli
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
@@ -125,14 +126,14 @@ az network application-gateway waf-config set --resource-group AdatumAppGatewayR
 
 Následující seznam obsahuje podmínky, které způsobí WAF blokování požadavku v režimu ochrany před únikem informací (v režimu detekce, kterému jsou přihlášeni jako výjimky). Tyto nelze nakonfigurované nebo zakázané:
 
-* Nepodařilo se analyzovat datovou část požadavku výsledkem požadavku blokován, pokud je text kontroly nevypnuli (XML, JSON, data formuláře)
-* Délka dat požadavku textu (spolu s žádné soubory) je větší než nakonfigurovaný limit
-* Text (včetně souborů) je větší než limit požadavku
-* Došlo k vnitřní chybě v modulu WAF
+- Nepodařilo se analyzovat datovou část požadavku výsledkem požadavku blokován, pokud je text kontroly nevypnuli (XML, JSON, data formuláře)
+- Délka dat požadavku textu (spolu s žádné soubory) je větší než nakonfigurovaný limit
+- Text (včetně souborů) je větší než limit požadavku
+- Došlo k vnitřní chybě v modulu WAF
 
 CRS 3.x konkrétní:
 
-* Příchozí anomálií skóre překročil prahovou hodnotu
+- Příchozí anomálií skóre překročil prahovou hodnotu
 
 ## <a name="next-steps"></a>Další postup
 
@@ -142,3 +143,5 @@ Po dokončení konfigurace zakázaná pravidla se dozvíte, jak si chcete zobraz
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png
 [2]: ./media/application-gateway-customize-waf-rules-portal/figure2.png
 [3]: ./media/application-gateway-customize-waf-rules-portal/figure3.png
+
+<!-- Update_Description: wording update -->
