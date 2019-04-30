@@ -1,15 +1,10 @@
 ---
-author: cephalin
-ms.service: app-service-web
-ms.topic: include
-ms.date: 11/03/2016
-ms.author: cephalin
 ms.openlocfilehash: d001d76bca5b9a0837349b6e05b3b0a271ea3a73
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128514"
 ---
 > [!NOTE]
 > Pomocí Azure DNS můžete nakonfigurovat vlastní název DNS pro webovou aplikaci Azure. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](../articles/dns/dns-custom-domain.md#app-service-web-apps).

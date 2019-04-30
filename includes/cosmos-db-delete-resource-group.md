@@ -1,27 +1,27 @@
 ---
-author: SnehaGunda
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: sngun
-ms.openlocfilehash: 30efb963f34ff567c70d845a4a8891ead285b178
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+origin.date: 03/23/2019
+ms.date: 04/15/2019
+ms.author: v-yeche
+ms.openlocfilehash: e7fc8f57c0fe290809354ce19fe92337178a84b6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60890233"
 ---
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu všechny prostředky vytvořené podle tohoto rychlého startu, aby se vám neúčtovaly žádné poplatky:
+Jakmile budete hotovi s web app a účtu služby Azure Cosmos DB, můžete odstranit, kterou jste vytvořili, takže se vám neúčtovaly poplatky za další prostředky Azure. Odstranění prostředků:
 
-1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
+1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků**. Pokud je nabídka vlevo sbalená, vyberte ![tlačítko Rozbalit](./media/cosmos-db-delete-resource-group/expand.png) a rozbalte ho.
 
-    Pokud je nabídka vlevo sbalená, kliknutím na ![tlačítko Rozbalit](./media/cosmos-db-delete-resource-group/expand.png) ji rozbalte.
+2. Vyberte skupinu prostředků, kterou jste vytvořili pro účely tohoto rychlého startu.  
 
-   ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+    ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. V novém okně vyberte skupinu prostředků a klikněte na **Odstranit skupinu prostředků**.
+2. V novém okně vyberte **odstranit skupinu prostředků**.
 
-   ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+    ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
-3. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit, a pak klikněte na **Odstranit**.
-
+3. V dalším okně zadejte název skupiny prostředků, které chcete odstranit a pak vyberte **odstranit**.

@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: bda289e73b9a782cd56c0c94b8f53e8002b1ccf4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59532517"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869962"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>Vytvoření virtuální sítě pomocí souboru konfigurace sítě v Powershellu
 Azure používá soubor xml k definování všechny virtuální sítě, které jsou k dispozici na předplatné. Stažení tohoto souboru, upravte ho a upravíte nebo odstraníte existující virtuální sítě a vytvářet nové virtuální sítě. V tomto kurzu se naučíte, jak stáhnout tento soubor říká soubor konfigurace (nebo netcfg) sítě a upravte ho a vytvořte novou virtuální síť. Další informace o konfiguračním souboru sítě, najdete v článku [schéma konfigurace virtuální sítě Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).

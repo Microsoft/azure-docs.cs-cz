@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3b596e5bad8202d88ea06c7eee114bec1063a35f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58052068"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075681"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Povolení Azure ultra disky SSD
 
@@ -29,7 +29,7 @@ CLI: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS�
 
 Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pro nasazení v oblasti východní USA 2. X může být buď 1, 2 nebo 3.
 
-|ResourceType  |Název  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
+|ResourceType  |Název  |Location  |Zóny  |Omezení  |Schopnost  |Hodnota  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 

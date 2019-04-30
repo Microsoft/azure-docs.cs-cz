@@ -2,14 +2,15 @@
 author: wesmc7777
 ms.service: redis-cache
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: wesmc
+origin.date: 11/09/2018
+ms.date: 12/25/2018
+ms.author: v-junlch
 ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60830261"
 ---
 Aplikace .NET mohou použít klienta mezipaměti **StackExchange.Redis**, kterého lze nakonfigurovat v aplikaci Visual Studio pomocí balíčku NuGet, který zjednodušuje konfiguraci aplikací klientů mezipaměti. 
 
@@ -20,7 +21,7 @@ Aplikace .NET mohou použít klienta mezipaměti **StackExchange.Redis**, které
 
 Chcete-li konfigurovat klientskou aplikaci v sadě Visual Studio pomocí balíčku StackExchange.Redis NuGet, klikněte pravým tlačítkem na projekt v **Průzkumníku řešení** a vyberte**Správa balíčků NuGet**. 
 
-![Správa balíčků NuGet](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-manage-nuget-menu.png)
+![Správa balíčků NuGet](./media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-manage-nuget-menu.png)
 
 Do textového pole pro vyhledávání zadejte **StackExchange.Redis** nebo **StackExchange.Redis.StrongName**, vyberte z výsledků požadovanou verzi, a klikněte na **Instalovat**.
 
@@ -29,7 +30,7 @@ Do textového pole pro vyhledávání zadejte **StackExchange.Redis** nebo **Sta
 >
 >
 
-![Balíček StackExchange.Redis NuGet](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
+![Balíček StackExchange.Redis NuGet](./media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
 Balíček NuGet se stáhne a přidá odkazy na požadovaná sestavení pro vaši klientskou aplikaci pro přístup k mezipaměti Azure pro Redis s mezipamětí StackExchange.Azure pro klienta Redis.
 
@@ -43,3 +44,5 @@ Balíček StackExchange.Redis NuGet můžete nainstalovat také kliknutím na **
 ```
 Install-Package StackExchange.Redis
 ```
+
+<!-- ms.date: 12/25/2018 -->

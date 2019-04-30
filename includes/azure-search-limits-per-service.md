@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 30c6fc189ebcd497a214828f65213a55cefdf03f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61464472"
 ---
 Storage je omezená místem na disku nebo vynuceným omezením na *maximální počet* indexy, dokumentu nebo jiným prostředkům vysoké úrovně, podle toho, co nastane dřív. Následující tabulka popisuje omezení úložiště. Maximální omezení na indexy, dokumenty a dalších objektů najdete v tématu [omezení prostředkem](../articles/search/search-limits-quotas-capacity.md#index-limits).
 

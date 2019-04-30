@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 57f238a8f91df1271e91894b88a7f02118b1f123
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108413"
 ---
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Určení názvu DNS virtuálního počítače
 Pokud se chcete připojit k databázovému stroji SQL Serveru z jiného počítače, musíte znát název DNS (Domain Name System) virtuálního počítače. (Je to název, který internet používá k identifikaci virtuálního počítače. Můžete použít IP adres, ale IP adresa se může změnit, když Azure přesune prostředky kvůli redundanci nebo údržbě. Název DNS bude stabilní, protože je možné ho přesměrovat na novou IP adresu.)  

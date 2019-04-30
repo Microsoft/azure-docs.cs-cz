@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bb5dc4e01a872178af1bc7d5d57fc189424e7e9d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7add8c10fd3224b9c287ea4cc672191157f56a09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553442"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861887"
 ---
 V následující tabulce jsou uvedeny informace o kvótě specifické pro zasílání zpráv Azure Service Bus. Informace o cenách a další kvóty pro služby Service Bus, najdete v části [cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Název kvóty | Rozsah | Poznámky | Hodnota |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Maximální počet obory názvů Basic nebo Standard na předplatné Azure |Obor názvů |Na webu Azure portal odmítne odeslání dalších žádostí o další obory názvů Basic nebo Standard. |100|
 | Maximální počet názvových prostorů Premium za předplatné Azure |Obor názvů |Odeslání dalších žádostí o další názvové prostory úrovně Premium se odmítnul na portálu. |25 |
 | Velikost fronty nebo tématu |Entita |Definován při vytvoření fronty nebo tématu. <br/><br/> Další příchozí zprávy budou odmítnuty a volající kód obdrží výjimku. |1, 2, 3, 4 nebo 5 GB.<br /><br />V SKU úrovně Premium a standardních SKU s [dělení](/azure/service-bus-messaging/service-bus-partitioning) povolena, je maximální velikost fronty nebo tématu 80 GB. |
