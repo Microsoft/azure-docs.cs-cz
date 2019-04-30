@@ -324,7 +324,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|
 | **type** | Povinné – musí být nastavena na `eventGridTrigger`. |
 | **direction** | Povinné – musí být nastavena na `in`. |
-| **Jméno** | Požadovaná: název této proměnné v kódu funkce pro parametr, který přijímá data události. |
+| **name** | Požadovaná: název této proměnné v kódu funkce pro parametr, který přijímá data události. |
 
 ## <a name="usage"></a>Využití
 
