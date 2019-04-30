@@ -9,7 +9,7 @@ ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 19ed39fac66a7abe4c65cf37ff616ba10fd8d96b
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60875173"

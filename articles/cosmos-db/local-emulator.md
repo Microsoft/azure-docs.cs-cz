@@ -8,7 +8,7 @@ author: deborahc
 ms.author: dech
 ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "61043138"

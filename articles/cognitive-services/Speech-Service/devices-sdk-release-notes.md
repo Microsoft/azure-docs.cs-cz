@@ -12,7 +12,7 @@ ms.date: 08/07/2018
 ms.author: gracez
 ms.openlocfilehash: 33a03b24de56ab1090cc8e07c9619eda17f33e27
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "61293531"

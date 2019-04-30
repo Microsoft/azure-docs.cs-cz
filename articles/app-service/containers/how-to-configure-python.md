@@ -17,7 +17,7 @@ ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
 ms.openlocfilehash: f8894132dae179be2d5d9d9b6887851be78d7746
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60854884"

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c5979fa7ff67c5acda9ab653bc4ee52d8b5129a5
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293800"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544946"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování  
 
@@ -46,7 +46,7 @@ Pro všechny další koncové body: `{EndpointName}-{AccountName}.streaming.medi
 
 ### <a name="standardpremium-types-version-20"></a>Typy Standard nebo Premium (verze 2.0)
 
-Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **Standardní** a **Premium**. Tyto typy jsou součástí verze koncový bod streamování "2.0".
+Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **Standard** a Premium. Tyto typy jsou součástí verze koncový bod streamování "2.0".
 
 Type|Popis
 ---|---
@@ -75,8 +75,8 @@ Pokud vaše **verze "1.0"** koncový bod streamování má > = 1 (SU), jednotky 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |Classic|1.0|0|Není k dispozici|Free|Není k dispozici|
 |Koncový bod streamování Standard|2.0|0|Ano|Placené|Ano|
-|Jednotky streamování Premium|1.0|>0|Ano|Placené|Ano|
-|Jednotky streamování Premium|2.0|>0|Ano|Placené|Ano|
+|Jednotky streamování Premium|1.0|> 0|Ano|Placené|Ano|
+|Jednotky streamování Premium|2.0|> 0|Ano|Placené|Ano|
 
 ### <a name="features"></a>Funkce
 

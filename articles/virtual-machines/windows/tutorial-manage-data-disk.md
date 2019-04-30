@@ -19,7 +19,7 @@ ms.custom: mvc
 ms.subservice: disks
 ms.openlocfilehash: be6375972747c5c962bf1a8ef9b9b0093402bb7a
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60784907"

@@ -3,16 +3,16 @@ title: Vytvoření vlastní definice zásad
 description: Vytvoření vlastní definice zásady Azure Policy pro vynucení vlastních obchodních pravidel.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/12/2019
+ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e808bd18e2b23c211f1c5257881fc8a8b72271fc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267748"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760887"
 ---
 # <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
 
@@ -55,23 +55,23 @@ Ale nevíme, vlastnosti, které chcete použít v definici zásad. Zásady vyhod
 
 Existuje mnoho způsobů, jak určit vlastnosti pro prostředek Azure. Podíváme se na každý pro účely tohoto kurzu:
 
-- Šablony Resource Manageru
+- Šablony Správce prostředků
   - Exportovat existující prostředek
   - Vytvoření prostředí
   - Šablony pro rychlý start (GitHub)
   - Referenční dokumentace šablony
 - Průzkumník prostředků Azure
 
-### <a name="resource-manager-templates"></a>Šablony Resource Manageru
+### <a name="resource-manager-templates"></a>Šablony Správce prostředků
 
 Podívejte se na několika způsoby [šablony Resource Manageru](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) , který obsahuje vlastnosti, které pokud chcete spravovat.
 
 #### <a name="existing-resource-in-the-portal"></a>Existující prostředek na portálu
 
 Nejjednodušší způsob, jak najít vlastnosti je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurovaná s nastavením, které chcete vynutit poskytují také hodnota pro porovnání.
-Podívejte se na **automatizační skript** stránky (v části **nastavení**) na webu Azure Portal pro tento konkrétní prostředek.
+Podívejte se na **exportovat šablonu** stránky (v části **nastavení**) na webu Azure Portal pro tento konkrétní prostředek.
 
-![Exportovat stránku šablony na existující prostředek](../media/create-custom-policy-definition/automation-script.png)
+![Exportovat stránku šablony na existující prostředek](../media/create-custom-policy-definition/export-template.png)
 
 Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
 
@@ -197,8 +197,9 @@ Stejně jako Azure CLI ve výsledcích zobrazí alias nepodporuje účty úloži
 
 [Azure Graph prostředků](../../resource-graph/overview.md) je nová služba ve verzi Preview. Umožňuje jiné metody k vyhledání vlastnosti prostředků Azure. Tady je ukázkový dotaz pro vyhledávání na jeden účet úložiště s grafem prostředků:
 
-```Query
-where type=~'microsoft.storage/storageaccounts' | limit 1
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
 ```
 
 ```azurecli-interactive
@@ -209,7 +210,23 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Výsledky vypadat podobně jako My, co uvidí v šablonách Resource Manageru a pomocí Průzkumníka prostředků Azure. Však také obsahovat výsledky Azure Graph prostředků [alias](../concepts/definition-structure.md#aliases) podrobnosti. Tady je příklad výstupu z účtu úložiště pro aliasy:
+Výsledky vypadat podobně jako My, co uvidí v šablonách Resource Manageru a pomocí Průzkumníka prostředků Azure. Však mohou také obsahovat výsledky grafu prostředků Azure [alias](../concepts/definition-structure.md#aliases) podrobnosti podle _projekci_ _aliasy_ pole:
+
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
+| project aliases
+```
+
+```azurecli-interactive
+az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+Tady je příklad výstupu z účtu úložiště pro aliasy:
 
 ```json
 "aliases": {

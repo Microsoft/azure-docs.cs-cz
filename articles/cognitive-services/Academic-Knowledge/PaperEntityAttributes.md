@@ -12,7 +12,7 @@ ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "61336820"
