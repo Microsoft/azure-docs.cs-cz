@@ -18,7 +18,7 @@ ms.locfileid: "60419761"
 5. V poli [Skupina prostředků](../articles/azure-resource-manager/manage-resource-groups-portal.md) vyberte existující skupinu prostředků, do které se obor názvů umístí, nebo vytvořte novou.  
 6. V části **Umístění** vyberte zemi nebo oblast, ve které by se měl váš oboru názvů hostovat.
    
-    ![Vytvořit obor názvů][create-namespace]
+    ![Vytvoření oboru názvů][create-namespace]
 7. Vyberte **Vytvořit**. Systém vytvoří obor názvů a povolí ho. Po několika minutách systém zřídí prostředky pro váš účet.
 
 ### <a name="get-management-credentials"></a>Získání přihlašovacích údajů pro správu

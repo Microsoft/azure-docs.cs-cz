@@ -23,6 +23,6 @@ Centrum obsahuje bránu. Po vytvoření centra se vám bude centrum účtovat i 
 
    * Location
    * Název
-   * Adresní prostor privátních adres centra
+   * Privátní adresní prostor centra
 
 Vytvořte centrum kliknutím na **Potvrdit**. Klikněte na tlačítko **aktualizovat** zobrazíte Centrum na **rozbočovače** stránky.

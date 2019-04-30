@@ -38,7 +38,7 @@ Podrobnější nápovědu přepínače konkrétní příkazového řádku a mož
 ### <a name="get-vm-info"></a>Získání informací o virtuálním počítači
 | Úkol | Příkazy Azure CLI |
 | --- | --- |
-| Vypsat virtuální počítače | `az vm list` |
+| Výpis virtuálních počítačů | `az vm list` |
 | Získání informací o virtuálním počítači | `az vm show --resource-group myResourceGroup --name myVM` |
 | Získání využití prostředků virtuálního počítače | `az vm list-usage --location eastus` |
 | Získání všech dostupných velikostí virtuálních počítačů | `az vm list-sizes --location eastus` |

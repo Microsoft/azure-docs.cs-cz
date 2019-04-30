@@ -24,7 +24,7 @@ Použijete další nástroje a služby Azure. Jakmile budete mít připojené za
 | [Správa zpráv IoT Hub](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | Rozšíření VS Code Azure IoT Hub Toolkit|
 | [Správa zařízení IoT](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Rozhraní příkazového řádku Azure a rozšíření IoT    |
 | [Správa zařízení IoT](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | Rozšíření VS Code Azure IoT Hub Toolkit|
-| [Uložení zpráv IoT Hub do úložiště Azure](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Úložiště tabulek v Azure                |
+| [Uložení zpráv IoT Hub do úložiště Azure](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
 | [Vizualizovat data ze senzorů](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
 | [Vizualizovat data ze senzorů](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
 | [Předpověď počasí s využitím dat snímačů](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |

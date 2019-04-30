@@ -13,7 +13,7 @@ ms.locfileid: "60403546"
 ---
 V následující tabulce jsou uvedeny vazby, které jsou podporovány ve dvou hlavních verzí modulu runtime Azure Functions.
 
-| Type | 1.x | 2.x<sup>1</sup> | Aktivační událost | Vstup | Výstup |
+| Type | 1.x | 2.x<sup>1</sup> | Trigger | Vstup | Výstup |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Databáze Cosmos](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
@@ -32,7 +32,7 @@ V následující tabulce jsou uvedeny vazby, které jsou podporovány ve dvou hl
 | [Service Bus](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|
 | [Funkce SignalR](../articles/azure-functions/functions-bindings-signalr-service.md)             | |✔| |✔|✔|
 | [Table Storage](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔| |✔|✔|
-| [Timer](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
+| [Časovač](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
 <sup>1</sup> v 2.x, musí být zaregistrovaný všechny vazby s výjimkou HTTP a časovač. Zobrazit [registraci rozšíření vazby](../articles/azure-functions/functions-bindings-register.md).
