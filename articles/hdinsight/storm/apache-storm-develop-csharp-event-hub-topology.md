@@ -10,7 +10,7 @@ ms.author: hrasheed
 ROBOTS: NOINDEX
 ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62125200"

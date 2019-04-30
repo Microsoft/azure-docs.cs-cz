@@ -12,7 +12,7 @@ ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
 ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62106502"

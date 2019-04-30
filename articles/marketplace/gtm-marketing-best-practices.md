@@ -2,15 +2,8 @@
 title: Go-To-Market Services - marketingové osvědčené postupy | Azure
 description: Go-To-Market Services – Tato část popisuje marketingové osvědčené postupy pro vydavatele Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi

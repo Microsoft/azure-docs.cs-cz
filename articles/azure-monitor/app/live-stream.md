@@ -15,7 +15,7 @@ ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62115322"

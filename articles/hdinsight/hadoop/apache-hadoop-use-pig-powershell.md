@@ -10,7 +10,7 @@ ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.openlocfilehash: 9ad788989273f28f38ee95f8d669fdf17f1fd785
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62105026"

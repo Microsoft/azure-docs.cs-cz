@@ -9,7 +9,7 @@ ms.author: tyfox
 ms.custom: seodec18
 ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62098554"

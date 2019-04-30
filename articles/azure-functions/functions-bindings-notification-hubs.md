@@ -257,7 +257,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** |neuvedeno| Musí být nastavena na "notificationHub". |
 |**direction** |neuvedeno| Musí být nastavena na "out". | 
-|**Jméno** |neuvedeno| Název proměnné používá v kódu funkce pro centra oznámení. |
+|**name** |neuvedeno| Název proměnné používá v kódu funkce pro centra oznámení. |
 |**tagExpression** |**TagExpression** | Výrazy označení umožňují určit, že oznámení bude doručen do skupiny zařízení, které jste se zaregistrovali k přijímání oznámení, které odpovídají výrazu značky.  Další informace najdete v tématu [směrování a značky výrazy](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Název prostředku centra oznámení na webu Azure Portal. |
 |**připojení** | **connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec centra oznámení.  Připojovací řetězec musí být nastavena *DefaultFullSharedAccessSignature* hodnotu pro vaše Centrum oznámení. Zobrazit [nastavení řetězce připojení](#connection-string-setup) dále v tomto článku.|

@@ -13,7 +13,7 @@ ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "61371852"

@@ -11,7 +11,7 @@ ms.date: 04/19/2019
 ms.author: robinsh
 ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62126085"

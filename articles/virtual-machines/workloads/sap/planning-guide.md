@@ -19,7 +19,7 @@ ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 097b5e8ee69d945e0a9e24ba1c62b0ae82dd896b
 ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62732413"

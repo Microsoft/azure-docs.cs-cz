@@ -12,7 +12,7 @@ ms.date: 04/15/2019
 ms.author: v-yiso
 ms.openlocfilehash: 9d8d5e57d0dd7d7022e65a061360c8450848fb4b
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62114953"

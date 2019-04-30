@@ -561,7 +561,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 | **type** | neuvedeno| Povinné – musí být nastavena na `httpTrigger`. |
 | **direction** | neuvedeno| Povinné – musí být nastavena na `in`. |
-| **Jméno** | neuvedeno| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. |
+| **name** | neuvedeno| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. |
 | <a name="http-auth"></a>**authLevel** |  **authLevel** |Určuje, co klíče, pokud existuje, musí být k dispozici na vyžádání, aby bylo možné vyvolat funkci. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Žádný klíč rozhraní API je povinný.</li><li><code>function</code>&mdash;Klíč rozhraní API specifických funkcí je povinný. Toto je výchozí hodnota, pokud se žádný nezadá.</li><li><code>admin</code>&mdash;Je nezbytný hlavní klíč.</li></ul> Další informace najdete v části [autorizace klíče](#authorization-keys). |
 | **Metody** |**Metody** | Pole metody HTTP, na které odpoví funkce. Pokud není zadán, odpovídá funkci pro všechny metody HTTP. Zobrazit [přizpůsobit koncový bod http](#customize-the-http-endpoint). |
 | **trasy** | **trasy** | Definuje šablonu trasy, řízení, ke kterému adresy URL vaší funkce jako odpověď vrátí požadavků. Výchozí hodnota, pokud se žádný nezadá je `<functionname>`. Další informace najdete v tématu [přizpůsobit koncový bod http](#customize-the-http-endpoint). |
@@ -804,7 +804,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|
 | **type** |Musí být nastaveno na `http`. |
 | **direction** | Musí být nastaveno na `out`. |
-|**Jméno** | Název této proměnné v kódu funkce pro odpověď, nebo `$return` návratovou hodnotu. |
+|**name** | Název této proměnné v kódu funkce pro odpověď, nebo `$return` návratovou hodnotu. |
 
 ## <a name="output---usage"></a>Výstup – využití
 

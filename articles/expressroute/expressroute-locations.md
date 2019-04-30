@@ -16,7 +16,7 @@ ms.date: 04/19/2019
 ms.author: pareshmu
 ms.openlocfilehash: 8c61a3276ebe58c86827b32c6bd33ae4689e35dc
 ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62732523"

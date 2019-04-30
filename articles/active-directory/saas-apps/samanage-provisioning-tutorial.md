@@ -18,7 +18,7 @@ ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d474d9bfd6016885eaa21afcea5d44d39c624084
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62104625"

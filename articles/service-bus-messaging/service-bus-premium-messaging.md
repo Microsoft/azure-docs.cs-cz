@@ -16,7 +16,7 @@ ms.date: 03/05/2019
 ms.author: aschhab
 ms.openlocfilehash: 478446c834f5e6c811d78828868ba12a90e603ac
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62125827"

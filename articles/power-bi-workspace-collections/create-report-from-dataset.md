@@ -10,7 +10,7 @@ ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: e7499345f03e3deedb8972b0d51e8e676cb6c982
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62110610"

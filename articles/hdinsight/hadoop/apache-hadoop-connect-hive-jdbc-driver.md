@@ -10,7 +10,7 @@ ms.date: 02/14/2019
 ms.author: hrasheed
 ms.openlocfilehash: aaf54907ca0cf218b126fc9fc74080c02ef6cf6c
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62122111"

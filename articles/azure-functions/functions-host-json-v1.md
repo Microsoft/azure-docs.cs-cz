@@ -165,7 +165,7 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|povoleno|true (pravda)|Určuje, zda je povolena funkce. | 
+|enabled|true (pravda)|Určuje, zda je povolena funkce. | 
 |healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
 |healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 
