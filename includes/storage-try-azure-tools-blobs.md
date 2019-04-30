@@ -1,15 +1,16 @@
 ---
-author: tamram
+author: WenJason
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: tamram
+origin.date: 10/26/2018
+ms.date: 01/14/2019
+ms.author: v-jay
 ms.openlocfilehash: 54cf1ba9648625e843ca6f4d9244c25d2d55d878
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110501"
 ---
 > [!TIP]
 > 

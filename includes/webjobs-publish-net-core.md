@@ -5,15 +5,16 @@ services: app-service
 author: ggailey777
 ms.service: app-service
 ms.topic: include
-ms.date: 02/19/2019
-ms.author: glenga
+origin.date: 02/19/2019
+ms.date: 03/18/2019
+ms.author: v-biyu
 ms.custom: include file
 ms.openlocfilehash: 97387e24d5b55c1438a69da1a1fd0a9bc1720e47
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751224"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832295"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
