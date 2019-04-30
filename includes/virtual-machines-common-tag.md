@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226667"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108284"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Označení virtuálního počítače pomocí šablony
-Nejprve Podívejme se na označování prostřednictvím šablon. [Tato šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umístí na následujících odkazech: prostředky (virtuální počítač), úložiště (účet služby Storage) a sítí (veřejné IP adresy, virtuální sítě a síťové rozhraní). Tato šablona je pro virtuální počítač s Windows, ale můžete přizpůsobit pro virtuální počítače s Linuxem.
+Nejprve Podívejme se na označování prostřednictvím šablon. [Tato šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umístí na následujících odkazech: Prostředky (virtuální počítač), úložiště (účet služby Storage) a sítí (veřejná IP adresa virtuální sítě a síťové rozhraní). Tato šablona je pro virtuální počítač s Windows, ale můžete přizpůsobit pro virtuální počítače s Linuxem.
 
 Klikněte na tlačítko **nasadit do Azure** tlačítko [odkaz na šablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Tím přejdete [webu Azure portal](https://portal.azure.com/) kde můžete nasadit tuto šablonu.
 
 ![Jednoduché nasazení se značkami](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-Tato šablona obsahuje následující značky: *oddělení*, *aplikace*, a *vytvořil*. Je můžete přidat nebo upravit tyto značky přímo v šabloně Pokud byste o ni názvy různých značek.
+Tato šablona obsahuje následující značky: *Oddělení*, *aplikace*, a *vytvořil*. Je můžete přidat nebo upravit tyto značky přímo v šabloně Pokud byste o ni názvy různých značek.
 
 ![V šabloně Azure značky](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 

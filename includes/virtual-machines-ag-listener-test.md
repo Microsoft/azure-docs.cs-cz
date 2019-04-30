@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: d579e7a4fd83c1a0ce335e0b2357dcbafb217398
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227370"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097654"
 ---
 V tomto kroku testu naslouchacího procesu skupiny dostupnosti s využitím klientské aplikace, na kterém běží ve stejné síti.
 
@@ -29,3 +30,4 @@ Jedním z příkladů je pro připojení k naslouchacímu procesu z jednoho z vi
 
 Při testování naslouchací proces, ujistěte se, že jste převzetí služeb při selhání skupiny dostupnosti, abyste měli jistotu, že klienti můžou připojit k naslouchacímu procesu napříč převzetí služeb při selhání.
 
+<!-- Update_Description: update meta properties -->
