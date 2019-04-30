@@ -15,7 +15,7 @@ ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62101604"

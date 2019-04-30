@@ -17,7 +17,7 @@ ms.date: 04/18/2019
 ms.author: haroldw
 ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62127000"

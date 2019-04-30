@@ -14,7 +14,7 @@ ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: a336f7faae24517aa4e29c991886107c6a82d2b5
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62103898"

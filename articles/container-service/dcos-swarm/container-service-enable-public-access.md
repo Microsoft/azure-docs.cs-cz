@@ -39,7 +39,7 @@ Nejdřív potřebujeme pro otevření portu, jaké chceme.
    | --- | --- |
    | Název |Popisný název testu. |
    | Port |Port kontejneru pro testování. |
-   | Cesta |(Pokud v režimu HTTP) Cesta relativní webu do testu. HTTPS se nepodporuje. |
+   | `Path` |(Pokud v režimu HTTP) Cesta relativní webu do testu. HTTPS se nepodporuje. |
    | Interval |Množství času mezi test pokusí v řádu sekund. |
    | Prahová hodnota pro poškozený stav |Počet po sobě jdoucích test pokusí předtím, než kontejneru není v pořádku. |
 6. Zpět na vlastnosti nástroje pro vyrovnávání zatížení agenta, klikněte na tlačítko **pravidla Vyrovnávání zatížení** a potom **přidat**.

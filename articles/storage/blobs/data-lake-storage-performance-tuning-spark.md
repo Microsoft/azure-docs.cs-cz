@@ -2,12 +2,13 @@
 title: Azure Data Lake Storage Gen2 výkonu Sparku pokyny k ladění | Dokumentace Microsoftu
 description: Azure Data Lake Storage Gen2 výkonu Sparku pokyny k ladění
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
+ms.author: normesta
+ms.reviewer: stewu
 ms.openlocfilehash: bfd6e715e907925a1ba3db3b60c0d3eccb637930
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT

@@ -18,7 +18,7 @@ ms.author: v-ant
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 85ddcf3aff7d15c946230cedb0da190bca6aeab7
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62127493"

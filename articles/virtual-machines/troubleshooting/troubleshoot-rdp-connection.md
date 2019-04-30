@@ -17,7 +17,7 @@ ms.date: 03/23/2018
 ms.author: roiyz
 ms.openlocfilehash: 50adab1eaa199473a8da857d38c3a08c424c677a
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62123784"

@@ -257,7 +257,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type**|| Povinné – musí být nastavena na `sendGrid`.|
 |**direction**|| Povinné – musí být nastavena na `out`.|
-|**Jméno**|| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
+|**name**|| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
 |**apiKey**|**ApiKey**| Název nastavení aplikace, která obsahuje váš klíč rozhraní API. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsSendGridApiKey".|
 |**to**|**Komu**| příjemce e-mailovou adresu. |
 |**z**|**z**| E-mailová adresa odesílatele. |

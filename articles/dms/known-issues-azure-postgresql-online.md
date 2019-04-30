@@ -13,7 +13,7 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62097755"

@@ -10,7 +10,7 @@ ms.date: 04/17/2019
 ms.author: tylerfox
 ms.openlocfilehash: a7e129f43b957b271c77f451ab198a9068bb0797
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62096351"

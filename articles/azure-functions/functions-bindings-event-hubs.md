@@ -10,8 +10,9 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 11/08/2017
-ms.author: cshoe
+origin.date: 11/08/2017
+ms.date: 03/20/2019
+ms.author: v-junlch
 ms.openlocfilehash: 7ca3ab8e3becf884fdba460f1981430e0c66ef99
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
@@ -46,3 +47,5 @@ Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+
+<!-- Update_Description: wording update -->

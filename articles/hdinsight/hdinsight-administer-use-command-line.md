@@ -10,7 +10,7 @@ ms.date: 11/06/2018
 ms.author: tyfox
 ms.openlocfilehash: 94ef5a60ecc5d943d78b16a386660049cc52d82e
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62096005"

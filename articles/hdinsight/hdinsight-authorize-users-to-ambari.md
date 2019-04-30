@@ -10,7 +10,7 @@ ms.date: 09/26/2017
 ms.author: maxluk
 ms.openlocfilehash: 69ae1bd05b64912b3d53ca88b468a72a90ff5a74
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62097018"

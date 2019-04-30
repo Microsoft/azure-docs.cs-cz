@@ -8,7 +8,7 @@ ms.date: 01/24/2018
 ms.author: sngun
 ms.openlocfilehash: e03fa427227bed745b53d43aaebc4dc58ad5bb9d
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62097891"

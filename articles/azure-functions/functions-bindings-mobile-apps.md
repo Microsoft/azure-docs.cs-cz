@@ -144,7 +144,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 | **type**|| Musí být nastavena na "mobileTable"|
 | **direction**||Musí být nastavena na "in"|
-| **Jméno**|| Název vstupního parametru v signatuře funkce.|
+| **name**|| Název vstupního parametru v signatuře funkce.|
 |**tableName** |**TableName**|Název tabulky dat v mobilní aplikaci|
 | **id**| **ID** | Identifikátor záznamu, který chcete načíst. Může být statické nebo závislosti na aktivační událost, která volá funkci. Například, pokud používáte aktivační událost fronty funkce a pak `"id": "{queueTrigger}"` používá hodnotu řetězce zprávy fronty jako ID záznamu k načtení.|
 |**připojení**|**připojení**|Název nastavení aplikace, která má adresa URL mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci function app, který obsahuje adresu URL v mobilní aplikaci a pak zadejte název nastavení aplikace, které v `connection` vlastnost vstupní vazby. Adresa URL vypadá jako `http://<appname>.azurewebsites.net`.
@@ -302,7 +302,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 | **type**|| Musí být nastavena na "mobileTable"|
 | **direction**||Musí být nastavena na "out"|
-| **Jméno**|| Název výstupního parametru v signatuře funkce.|
+| **name**|| Název výstupního parametru v signatuře funkce.|
 |**tableName** |**TableName**|Název tabulky dat v mobilní aplikaci|
 |**připojení**|**MobileAppUriSetting**|Název nastavení aplikace, která má adresa URL mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci function app, který obsahuje adresu URL v mobilní aplikaci a pak zadejte název nastavení aplikace, které v `connection` vlastnost vstupní vazby. Adresa URL vypadá jako `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Název nastavení aplikace, který má klíč rozhraní API mobilní aplikaci. Zadejte if klíče rozhraní API můžete [implementovat klíč rozhraní API v back-endu mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API v back-endu mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Zadejte klíč, vytvořit nastavení aplikace v aplikaci function app, který obsahuje klíč rozhraní API a potom přidat `apiKey` vlastnost s názvem nastavení aplikace, které vaše vstupní vazby. |

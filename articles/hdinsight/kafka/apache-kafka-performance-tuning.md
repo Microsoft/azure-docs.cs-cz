@@ -11,7 +11,7 @@ origin.date: 02/21/2019
 ms.date: 04/29/2019
 ms.openlocfilehash: 8226d1f49b8ba73870dba009e97ff2718a0eee27
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62115022"

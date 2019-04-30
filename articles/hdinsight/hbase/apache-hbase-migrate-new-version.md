@@ -10,7 +10,7 @@ ms.date: 01/22/2018
 ms.author: ashishth
 ms.openlocfilehash: ac7984c50e6adec888c112cc260cf2e6af02fc97
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62114457"

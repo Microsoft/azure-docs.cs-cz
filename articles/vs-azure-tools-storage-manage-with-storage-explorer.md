@@ -10,7 +10,7 @@ ms.date: 04/22/2019
 ms.author: cawa
 ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62128275"

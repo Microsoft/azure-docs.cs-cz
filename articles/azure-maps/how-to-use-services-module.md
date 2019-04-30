@@ -10,7 +10,7 @@ services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: f3650d4db06a763308939e9fb1a98fddb0eaa04a
 ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62738768"

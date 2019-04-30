@@ -9,7 +9,7 @@ ms.date: 4/17/2019
 ms.author: victorh
 ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
 ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "62125251"
