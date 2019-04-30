@@ -473,7 +473,7 @@ Další informace o službě Soubory Azure najdete na těchto odkazech.
 * [Klientská knihovna Storage pro .NET – referenční informace](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [REST API služby File – referenční informace](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 
-### <a name="blog-posts"></a>Blogové příspěvky
+### <a name="blog-posts"></a>Příspěvky na blozích
 * [Služba Soubory Azure je teď obecně dostupná](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř služby Soubory Azure](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)

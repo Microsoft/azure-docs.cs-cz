@@ -93,7 +93,7 @@ Referenční data tabulku (ID zařízení je klíčovou vlastnost):
 | deviceId | ID zprávy | deviceLocation |
 | --- | --- | --- |
 | FXXX | ŘÁDEK\_DAT | EU |
-| FRRR | ŘÁDEK\_DAT | Spojené státy |
+| FRRR | ŘÁDEK\_DAT | USA |
 
 Tabulka událostí doby Series Insights (po sloučení):
 
@@ -101,7 +101,7 @@ Tabulka událostí doby Series Insights (po sloučení):
 | --- | --- | --- | --- | --- | --- |
 | FXXX | ŘÁDEK\_DAT | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
 | FXXX | ŘÁDEK\_DAT | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-| FRRR | ŘÁDEK\_DAT | Spojené státy | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+| FRRR | ŘÁDEK\_DAT | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 Mějte na paměti následující v předchozím příkladu:
 
@@ -168,8 +168,8 @@ Referenční Data (klíče vlastnosti se ID zařízení a series.tagId):
 | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | ŘÁDEK\_DAT | EU | Míra toku | ft3/s |
 | FXXX | oilPressure | ŘÁDEK\_DAT | EU | Modul ropy tlaku | psi |
-| FRRR | pumpRate | ŘÁDEK\_DAT | Spojené státy | Míra toku | ft3/s |
-| FRRR | oilPressure | ŘÁDEK\_DAT | Spojené státy | Modul ropy tlaku | psi |
+| FRRR | pumpRate | ŘÁDEK\_DAT | USA | Míra toku | ft3/s |
+| FRRR | oilPressure | ŘÁDEK\_DAT | USA | Modul ropy tlaku | psi |
 
 Tabulka událostí doby Series Insights (po sloučení):
 
@@ -179,8 +179,8 @@ Tabulka událostí doby Series Insights (po sloučení):
 | FXXX | oilPressure | ŘÁDEK\_DAT | EU | Modul ropy tlaku | psi | 2018-01-17T01:17:00Z | 34.7 |
 | FXXX | pumpRate | ŘÁDEK\_DAT | EU | Míra toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
 | FXXX | oilPressure | ŘÁDEK\_DAT | EU | Modul ropy tlaku | Psi | 2018-01-17T01:17:00Z | 49.2 |
-| FRRR | pumpRate | ŘÁDEK\_DAT | Spojené státy | Míra toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-| FRRR | oilPressure | ŘÁDEK\_DAT | Spojené státy | Modul ropy tlaku | psi | 2018-01-17T01:18:00Z | 22.2 |
+| FRRR | pumpRate | ŘÁDEK\_DAT | USA | Míra toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+| FRRR | oilPressure | ŘÁDEK\_DAT | USA | Modul ropy tlaku | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Mějte na paměti následující v předchozím příkladu a podobně jako v prvním příkladu:
 

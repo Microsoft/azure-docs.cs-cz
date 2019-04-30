@@ -90,7 +90,7 @@ for file_or_dir in generator:
     print(file_or_dir.name)
 ```
 
-## <a name="upload-a-file"></a>Nahrát soubor 
+## <a name="upload-a-file"></a>Nahrání souboru 
 Sdílené složky Azure obsahuje přinejmenším, kořenový adresář, kde mohou být soubory umístěny. V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
 Chcete-li vytvořit soubor a nahrát data, použijte `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou to základní metody, které provádějí nezbytné bloků, když velikost dat je větší než 64 MB.
@@ -109,7 +109,7 @@ file_service.create_file_from_path(
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
-## <a name="download-a-file"></a>Stáhnout soubor
+## <a name="download-a-file"></a>Stažení souboru
 Chcete-li stáhnout data ze souboru, použijte `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou to základní metody, které provádějí nezbytné bloků, když velikost dat je větší než 64 MB.
 
 Následující příklad ukazuje použití `get_file_to_path` stáhnout obsah **myfile** soubor a uložte ho do **mimo sunset.png** souboru.

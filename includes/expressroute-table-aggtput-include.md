@@ -20,5 +20,5 @@ ms.locfileid: "60367937"
 | **Základní SKU (zastaralé)** |500 | Neznámé | Neznámé |Ne |
 | **Standardní SKU** |1 000 | 100 000 | 7,000 | Ano |
 | **SKU pro vysoký výkon** |2 000 | 250,000 | 14,000 | Ano |
-| **SKU pro Ultra výkon** |10,000 | 1 000 000 | 28,000 | Ano |
+| **SKU pro Ultra výkon** |10 000 | 1 000 000 | 28,000 | Ano |
 

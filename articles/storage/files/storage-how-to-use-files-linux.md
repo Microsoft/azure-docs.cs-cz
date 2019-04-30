@@ -148,4 +148,4 @@ Další informace o službě Soubory Azure najdete na těchto odkazech:
 
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)
-* [Odstraňování potíží](storage-troubleshoot-linux-file-connection-problems.md)
+* [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)

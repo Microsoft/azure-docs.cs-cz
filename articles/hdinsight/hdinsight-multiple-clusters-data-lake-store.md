@@ -87,7 +87,7 @@ Tato nastavení se ví, vliv na jeden konkrétní HDInsight případ použití z
 
 Jak je uvedeno v JIRA YARN propojené dříve, při lokalizaci prostředky veřejné lokalizátora ověří, zda všechny požadované prostředky jsou skutečně veřejné jejich oprávnění ve vzdáleném systému souborů. Žádné LocalResource nevejde této podmínky je odmítnutých pro lokalizaci. Kontrola oprávnění, zahrnuje přístup pro čtení do souboru "ostatní". Tento scénář nefunguje out-of-the-box při hostování clustery HDInsight v Azure Data Lake, protože Azure Data Lake zakazuje veškerý přístup k "ostatní" na kořenové úrovni složky.
 
-#### <a name="workaround"></a>Alternativní řešení:
+#### <a name="workaround"></a>Alternativní řešení
 Sada čtení spouštěcích oprávnění k **ostatní** prostřednictvím hierarchie, například na **/**, **/clusterů** a   **/clustery/finance** jak je znázorněno v předchozí tabulce.
 
 ## <a name="see-also"></a>Další informace najdete v tématech

@@ -47,7 +47,7 @@ Tento problém řeší funkce spravovaných identit prostředků Azure v Azure A
 
 [Zásady Azure](../articles/azure-policy/azure-policy-introduction.md) slouží k definování požadované chování pro vaši organizaci [virtuální počítače s Windows](../articles/virtual-machines/windows/policy.md) a [virtuální počítače s Linuxem](../articles/virtual-machines/linux/policy.md). Pomocí zásad můžete vynutit organizace různých konvencí a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při podílení se na úspěch organizace.
 
-## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
 Pomocí [řízení přístupu na základě role (RBAC)](../articles/role-based-access-control/overview.md), můžete v rámci týmu oddělit a udělit uživatelům jenom takový přístup na virtuálním počítači, které potřebují ke své práci. Ne všichni poskytuje neomezená oprávnění na virtuálním počítači, můžete povolit pouze určité akce. Řízení přístupu můžete nakonfigurovat pro virtuální počítač v [webu Azure portal](../articles/role-based-access-control/role-assignments-portal.md), použije [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/role), nebo[prostředí Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 

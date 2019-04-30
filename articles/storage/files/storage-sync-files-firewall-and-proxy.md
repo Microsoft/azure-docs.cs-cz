@@ -111,20 +111,20 @@ Pro provozní kontinuitu a po havárii (BCDR) obnovení důvodů jste zadali, ž
 
 | Cloud  | Oblast | Primární koncový bod adresy URL | Spárovaná oblast | Adresa URL pro zjišťování |
 |--------|--------|----------------------|---------------|---------------|
-| Veřejné |Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https://kailani-aue.one.microsoft.com |
-| Veřejné |Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
-| Veřejné | Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
-| Veřejné | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
-| Veřejné | USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
-| Veřejné | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
-| Veřejné | USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
-| Veřejné | Východní USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
-| Veřejné | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
-| Veřejné | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
-| Veřejné | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
-| Veřejné | Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
-| Veřejné | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
-| Veřejné | Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
+| Public |Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https://kailani-aue.one.microsoft.com |
+| Public |Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
+| Public | Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
+| Public | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
+| Public | USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
+| Public | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
+| Public | USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
+| Public | Východní USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
+| Public | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
+| Public | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
+| Public | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
+| Public | Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
+| Public | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
+| Public | Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
 | Státní správa | USA (Gov) – Arizona | https://usgovarizona01.afs.azure.us | USA (Gov) – Texas | https://tm-usgovarizona01.afs.azure.us |
 | Státní správa | USA (Gov) – Texas | https://usgovtexas01.afs.azure.us | USA (Gov) – Arizona | https://tm-usgovtexas01.afs.azure.us |
 

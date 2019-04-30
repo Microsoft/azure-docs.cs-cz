@@ -283,7 +283,7 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
 
 **Příčina:** K této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).
 
-**Rozlišení**: Použijte heslo, které splňuje následující kritéria:
+**Řešení:** Použijte heslo, které splňuje následující kritéria:
 
 * Musí být minimálně 10 znaků.
 * Musí obsahovat alespoň jednu číslici.

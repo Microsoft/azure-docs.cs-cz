@@ -35,7 +35,7 @@ Vytvoření oboru názvů:
     6. Pro **umístění**, vyberte oblast, ve kterém by měl váš obor názvů hostovat.
     7. Vyberte **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
    
-        ![Vytvořit obor názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
+        ![Vytvoření oboru názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Potvrďte, že je obor názvů služby Service bus úspěšné nasazení. Pokud chcete zobrazit oznámení, vyberte **ikonu zvonku (výstrahy)** na panelu nástrojů. Vyberte **název skupiny prostředků** v oznámení, jak je znázorněno na obrázku. Zobrazí se skupiny prostředků, který obsahuje obor názvů služby Service bus.
 
     ![Výstraha nasazení](./media/service-bus-create-namespace-portal/deployment-alert.png)

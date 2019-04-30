@@ -35,7 +35,7 @@ K připojení dalších počítačů k virtuální síti, musíte nejprve vytvo�
 
 Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Network a nelze přistupovat přímo z Internetu. Veřejné brána poskytuje přístup k Internetu pro následující porty, které jsou společné pro všechny typy clusterů HDInsight.
 
-| Služba | Port | Protokol | Popis |
+| Služba | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |Klienti se připojí k sshd na primárnímu hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Klienti se připojí k sshd na hraničním uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
@@ -48,7 +48,7 @@ Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Netw
 
 Tady jsou k dispozici pro specifické typy clusterů:
 
-| Služba | Port | Protokol | Typ clusteru | Popis |
+| Služba | Port | Protocol (Protokol) | Typ clusteru | Popis |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |Rozhraní REST API HBase. Zobrazit [začněte používat Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Rozhraní Spark REST API. Zobrazit [úlohy odeslání Apache Spark vzdáleně pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md) |
@@ -74,7 +74,7 @@ Všechny služby veřejně zpřístupnit v síti internet musí být ověřené:
 
 ### <a name="ambari"></a>Ambari
 
-| Služba | Uzly | Port | Cesta URL | Protokol | 
+| Služba | Uzly | Port | Cesta URL | Protocol (Protokol) | 
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní Ambari | Hlavní uzly | 8080 | / | HTTP |
 | Ambari REST API | Hlavní uzly | 8080 | /api/v1 | HTTP |
@@ -85,7 +85,7 @@ Příklady:
 
 ### <a name="hdfs-ports"></a>Porty HDFS
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | NameNode webového uživatelského rozhraní |Hlavní uzly |30070 |HTTPS |Webové uživatelské rozhraní k zobrazení stavu |
 | NameNode metadat služby |Hlavní uzly |8020 |IPC |Metadatech systému souborů |
@@ -96,7 +96,7 @@ Příklady:
 
 ### <a name="yarn-ports"></a>Porty YARN
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní správce prostředků |Hlavní uzly |8088 |HTTP |Webové uživatelské rozhraní pro Resource Manager |
 | Webové uživatelské rozhraní správce prostředků |Hlavní uzly |8090 |HTTPS |Webové uživatelské rozhraní pro Resource Manager |
@@ -110,20 +110,20 @@ Příklady:
 
 ### <a name="hive-ports"></a>Porty Hive
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Hlavní uzly |10001 |Thrift |Služby pro připojení k Hivu (Thrift/JDBC) |
 | Metastore Hive |Hlavní uzly |9083 |Thrift |Služby pro připojení k metadata Hive (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat ports
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | WebHCat server |Hlavní uzly |30111 |HTTP |Webových rozhraní API jako nadstavby HCatalog a dalším službám Hadoop |
 
 ### <a name="mapreduce-ports"></a>Porty MapReduce
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | JobHistory |Hlavní uzly |19888 |HTTP |MapReduce JobHistory webového uživatelského rozhraní |
 | JobHistory |Hlavní uzly |10020 |&nbsp; |MapReduce JobHistory server |
@@ -131,21 +131,21 @@ Příklady:
 
 ### <a name="oozie"></a>Oozie
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | Oozie server |Hlavní uzly |11000 |HTTP |Adresa URL služby Oozie |
 | Oozie server |Hlavní uzly |11001 |HTTP |Port pro správce Oozie |
 
 ### <a name="ambari-metrics"></a>Metriky Ambari
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | Časová osa (historie aplikace) |Hlavní uzly |6188 |HTTP |Časová osa služby webového uživatelského rozhraní |
 | Časová osa (historie aplikace) |Hlavní uzly |30200 |RPC |Časová osa služby webového uživatelského rozhraní |
 
 ### <a name="hbase-ports"></a>Porty HBase
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | HMaster |Hlavní uzly |16000 |&nbsp; |&nbsp; |
 | Informace o HMaster webového uživatelského rozhraní |Hlavní uzly |16010 |HTTP |Port pro hlavní server HBase webového uživatelského rozhraní |
@@ -154,14 +154,14 @@ Příklady:
 
 ### <a name="kafka-ports"></a>Porty systému Kafka
 
-| Služba | Uzly | Port | Protokol | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- | --- |
 | Service Broker |Pracovní uzly |9092 |[Kafka přenosový protokol](https://kafka.apache.org/protocol.html) |Používá pro komunikaci klientů |
 | &nbsp; |Uzly Zookeeper |2181 |&nbsp; |Port, který klienti používají pro připojení k Zookeeper |
 
 ### <a name="spark-ports"></a>Porty Spark
 
-| Služba | Uzly | Port | Protokol | Cesta URL | Popis |
+| Služba | Uzly | Port | Protocol (Protokol) | Cesta URL | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift servery |Hlavní uzly |10002 |Thrift | &nbsp; | Služby pro připojení ke Spark SQL (Thrift/JDBC) |
 | Livy server | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úlohy a aplikace |

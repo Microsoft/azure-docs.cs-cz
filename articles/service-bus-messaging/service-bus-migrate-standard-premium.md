@@ -167,7 +167,7 @@ Ale ho nebude odstranění entit v oboru názvů úrovně premium nebo odstranit
 >[!IMPORTANT]
 > Pokud se rozhodnete k migraci přerušit, odstraňte premium Namespace, které bylo zřízené pro migraci tak, aby se vám neúčtují poplatky za prostředky.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci se nyní máte k vyprázdnění zpráv. Co mám dělat?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci se nyní máte k vyprázdnění zpráv. Co mám udělat?
 
 Můžou existovat zprávy, které jsou odeslané aplikací odesílatele a uložena do úložiště na standardní Namespace při migraci probíhá a těsně před plánovaným migraci potvrdit.
 

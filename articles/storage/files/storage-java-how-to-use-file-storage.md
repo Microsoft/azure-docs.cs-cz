@@ -167,7 +167,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Nahrát soubor
+## <a name="upload-a-file"></a>Nahrání souboru
 V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
 Prvním krokem při nahrání souboru se k získání odkazu na adresář, ve kterém by měl být uložený. To provedete voláním **getRootDirectoryReference** metodu objektu sdílené složky.
@@ -187,7 +187,7 @@ Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete na
         cloudFile.uploadFromFile(filePath);
 ```
 
-## <a name="download-a-file"></a>Stáhnout soubor
+## <a name="download-a-file"></a>Stažení souboru
 Jednou z častější operace, které provedete před soubory Azure je ke stažení souborů. V následujícím příkladu kódu stáhne SampleFile.txt a zobrazí jeho obsah.
 
 ```java

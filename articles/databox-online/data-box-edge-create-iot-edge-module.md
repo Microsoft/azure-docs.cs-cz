@@ -73,7 +73,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
    5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
    6. Nastavte skladovou Položku **základní**.
 
-      ![Vytvořit registr kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Vytvoření registru kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Vyberte **Vytvořit**.
 5. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.
@@ -87,7 +87,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
 
 Následujícím postupem se vytvoří projekt modul IoT Edge založené na sadě SDK .NET Core 2.1. Projekt používá Visual Studio Code a rozšíření Azure IoT Edge.
 
-### <a name="create-a-new-solution"></a>Vytvořit nové řešení
+### <a name="create-a-new-solution"></a>Vytvoření nového řešení
 
 Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí vlastního kódu.
 

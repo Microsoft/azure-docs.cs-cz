@@ -136,13 +136,13 @@ Další přizpůsobení funkcí je **bootstrap**. V případě clusterů Windows
 
 Spuštění funkce pro clustery založené na Linuxu nenabízí tuto funkci. Místo toho použijte akci skriptu dokumentovány v článku [přidat Apache Hive knihovny během vytváření clusteru](hdinsight-hadoop-add-hive-libraries.md).
 
-### <a name="virtual-networks"></a>Služby Virtual Networks
+### <a name="virtual-networks"></a>Virtuální sítě
 
 HDInsight se systémem Windows clusterů fungují jenom u klasických virtuálních sítí, zatímco clustery HDInsight založené na Linuxu vyžadují virtuální sítě Resource Manageru. Pokud máte prostředky v klasickou virtuální síť, ke kterému musí připojit ke clusteru HDInsight Linux, přečtěte si téma [připojit klasickou virtuální síť k virtuální síti správce prostředků](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 Další informace o požadavcích na konfiguraci, najdete v článku [HDInsight rozšířit možnosti pomocí virtuální sítě](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
 
-## <a name="management-and-monitoring"></a>Monitorování a správa
+## <a name="management-and-monitoring"></a>Správa a monitorování
 
 Mnoho webových uživatelských rozhraní, které jste mohli použít s HDInsight založené na Windows, jako je historie úlohy nebo uživatelském rozhraní Yarn, jsou k dispozici prostřednictvím Apache Ambari. Kromě toho zobrazení Ambari Hive poskytuje způsob, jak spouštět dotazy Hive pomocí webového prohlížeče. Webové uživatelské rozhraní Ambari je k dispozici v clusterech založených na Linuxu v https://CLUSTERNAME.azurehdinsight.net.
 

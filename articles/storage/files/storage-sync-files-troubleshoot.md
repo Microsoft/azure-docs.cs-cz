@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/24/2019
 ms.locfileid: "63759416"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Řešit problémy se Synchronizací souborů Azure
+# <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
 Tento článek je určen můžete odstraňovat potíže a řešit problémy, které se můžete setkat s nasazením Azure File Sync. Také zjistíte, jak shromažďovat důležité protokoly ze systému, pokud se vyžaduje hlubší zkoumání problému. Pokud nevidíte odpověď na svoji otázku, kontaktujte nás prostřednictvím následujících kanálů (v neustále rostoucích pořadí):
@@ -86,14 +86,14 @@ Pokud se zobrazí tato zpráva a sdílené složky Azure aktuálně není použ�
 K tomuto problému dochází, pokud váš uživatelský účet nemá dostatečná práva k vytvoření koncového bodu cloudu. 
 
 Vytvoření koncového bodu cloudu, váš uživatelský účet musí mít následující oprávnění Authorization společnosti Microsoft:  
-* Čtení: Načíst definici role
+* Čtení: Získání definice role
 * Zápis: Vytvořit nebo aktualizovat vlastní definici role
-* Čtení: Načíst přiřazení role
+* Čtení: Získat přiřazení role
 * Zápis: Vytvořit přiřazení role
 
 Následující předdefinované role mají všechna oprávnění vyžadovaná Authorization společnosti Microsoft:  
 * Vlastník
-* Správce uživatelských přístupů
+* Správce přístupu uživatelů
 
 Chcete-li zjistit, zda vaše uživatelská role účet má potřebná oprávnění:  
 1. Na webu Azure Portal, vyberte **skupiny prostředků**.
@@ -156,7 +156,7 @@ Koncový bod serveru nemůže protokolu aktivitu synchronizace z následujícíc
 > [!Note]  
 > Je-li stav serveru v okně registrované servery "Se zobrazí v režimu Offline", proveďte kroky popsané v [koncový bod serveru je ve stavu stavu "Žádná aktivita" nebo "Čeká na vyřízení" a stavu serveru v okně registrované servery je "Se zobrazí v režimu offline" ](#server-endpoint-noactivity) oddílu.
 
-## <a name="sync"></a>Synchronizace
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Když jsem vytvořil soubor přímo v mé sdílené složky Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá synchronizaci pro servery ve skupině synchronizace souboru?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 

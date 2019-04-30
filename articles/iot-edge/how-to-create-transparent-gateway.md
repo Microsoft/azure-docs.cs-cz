@@ -279,7 +279,7 @@ Standardní zařízení IoT Edge nepotřebují příchozí připojení na funkci
 
 Pro scénáře brány pro práci musí být otevřené pro příchozí provoz z podřízené zařízení alespoň jeden z podporovaných protokolů Centrum IoT Edge. Podporované protokoly jsou protokol MQTT, AMQP a protokolu HTTPS.
 
-| Port | Protokol |
+| Port | Protocol (Protokol) |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |

@@ -273,7 +273,7 @@ Jiné než znakové sady, můžete zadat jinou sadu oddělovačů pro každý ty
 > [!TIP]
 > Zadejte hodnoty speciální znak, upravit smlouvu jako dokumenty JSON a zadejte hodnotu ASCII speciální znak.
 
-### <a name="validation"></a>Ověřování
+### <a name="validation"></a>Ověření
 
 ![Nastavení vlastností ověřování pro odesílání zpráv](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 

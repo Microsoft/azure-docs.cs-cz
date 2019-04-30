@@ -25,7 +25,7 @@ Existují dva režimy kolekce závisí na typy souborů, které se mají shroma�
   
   * protokoly událostí systému a aplikací
   * Protokoly chyb HTTP
-  * Protokoly služby IIS
+  * Protokoly IIS
   * Instalační protokoly
   * Další systémové protokoly
 

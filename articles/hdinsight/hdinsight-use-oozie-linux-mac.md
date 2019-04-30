@@ -671,7 +671,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Adresy objektů Blob v Azure storage, které se používá v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
-**Rozlišení**: Změna adresy úložiště objektů Blob, které používá úlohy.
+**Řešení:** Změna adresy úložiště objektů Blob, které používá úlohy.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Není povoleno zosobnit Oozie &lt;uživatele&gt;
 
@@ -681,7 +681,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Aktuální nastavení oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
 
-**Rozlišení**: Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
+**Řešení:** Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
 
     sudo adduser USERNAME users
 
@@ -696,7 +696,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Sqoop není schopen načíst ovladač databáze vyžadované pro přístup k databázi.
 
-**Rozlišení**: Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
+**Řešení:** Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
 
 Například pro úlohy v tomto dokumentu použijete následující kroky:
 

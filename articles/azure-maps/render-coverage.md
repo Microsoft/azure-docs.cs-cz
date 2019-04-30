@@ -80,7 +80,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somálsko                          | ✓ | ✓ |
-| Jihoafrická republika                     | ✓ | ✓ |
+| Jižní Afrika                     | ✓ | ✓ |
 | Jižní Súdán                      | ✓ | ✓ |
 | Súdán                            | ✓ | ✓ |
 | Svazijsko                        | ✓ | ✓ |

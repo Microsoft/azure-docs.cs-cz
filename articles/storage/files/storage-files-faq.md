@@ -382,7 +382,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="rest-rename"></a>
 **Je k dispozici v rozhraní REST API operaci přejmenovat?**  
-    V současnosti ne.
+    V tuto chvíli to není možné.
 
 * <a id="nested-shares"></a>
 **Můžete nastavit vnořené sdílené složky? Jinými slovy sdílenou složku ve sdílené složce?**  

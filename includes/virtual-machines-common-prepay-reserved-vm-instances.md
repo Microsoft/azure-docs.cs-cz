@@ -78,7 +78,7 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
     |Oblast    |Oblast Azure, která je předmětem rezervace.|    
     |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
     |Optimalizovat pro     |Flexibilita velikost instancí virtuálních počítačů platí sleva za rezervaci pro ostatní virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Priorita kapacity upřednostňuje kapacitu datacentra pro vaše nasazení. To nabízí máte ještě větší jistotu budete moct spustit instance virtuálních počítačů, když je potřebujete. Priorita kapacity je k dispozici, pouze pokud obor rezervace je jedno předplatné. |
-    |Doba účinnosti        |Jeden nebo tři roky.|
+    |Označení        |Jeden nebo tři roky.|
     |Množství    |Počet instancí se zakoupených v rámci rezervace. Počet spuštěných instancí virtuálních počítačů, které můžete získat slevu fakturace je množství. Například pokud spustíte 10 Standard_D2 virtuálních počítačů v oblasti východní USA, potom zadáte množství jako 10 a maximalizovat pro všechny počítače spuštěný. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
@@ -96,9 +96,9 @@ Také můžete rozdělit do menších bloků dat a sloučení už rozdělit reze
 Následující typy změn nelze změnit po zakoupení přímo:
 
 - Stávající rezervaci oblasti
-- Skladová položka
+- Skladová jednotka (SKU)
 - Množství
-- Délka
+- Doba trvání
 
 Můžete však *exchange* rezervace, pokud chcete provádět změny.
 

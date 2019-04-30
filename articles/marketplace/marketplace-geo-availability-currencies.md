@@ -2,9 +2,7 @@
 title: Geografická dostupnost a podpora měny | Azure
 description: Geografickou dostupností v Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
@@ -28,7 +26,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentina                           | AR        | USD          |
-| Arménie                             | dop.        | USD          |
+| Arménie                             | AM        | USD          |
 | Austrálie                           | AU        | AUD          |
 | Rakousko                             | AT        | EUR          |
 | Ázerbájdžán                          | AZ        | USD          |
@@ -69,7 +67,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Finsko                             | FI        | EUR          |
 | Francie                              | FR        | EUR          |
 | Gruzie                             | GE        | USD          |
-| Německo                             | Německo        | EUR          |
+| Německo                             | DE        | EUR          |
 | Ghana                               | GH        | USD          |
 | Řecko                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
@@ -114,7 +112,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Nikaragua                           | NI        | USD          |
 | Nový Zéland                         | NZ        | NZD          |
 | Nigérie                             | NG        | USD          |
-| Norsko                              | NE        | NOK          |
+| Norsko                              | NO        | NOK          |
 | Omán                                | OM        | USD          |
 | Pákistán                            | PK        | USD          |
 | Palestinská samospráva               | PS        | USD          |
@@ -136,7 +134,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Singapur                           | SG        | USD          |
 | Slovensko                            | SK        | EUR          |
 | Slovinsko                            | SI        | EUR          |
-| Jihoafrická republika                        | ZA        | USD          |
+| Jižní Afrika                        | ZA        | USD          |
 | Španělsko                               | ES        | EUR          |
 | Srí Lanka                           | LK        | USD          |
 | Švédsko                              | SE        | SEK          |
@@ -155,7 +153,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Ukrajina                             | UA        | USD          |
 | Spojené arabské emiráty                | AE        | USD          |
 | Spojené království                      | GB        | GBP          |
-| Spojené státy                       | Spojené státy        | USD          |
+| Spojené státy                       | USA        | USD          |
 | Uruguay                             | UY        | USD          |
 | Uzbekistán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |

@@ -189,7 +189,7 @@ Následující operace kontejnerů můžete použít ke správě Pesimistická s
 * Nastavení ACL kontejneru
 * Zapůjčení kontejneru  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Určení podmíněné záhlaví pro operace služby objektů Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Zapůjčení kontejneru](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -249,7 +249,7 @@ Všimněte si, že **vložení nebo nahrazení Entity** a **vložení nebo slou�
 
 Vývojářům, kteří používají tabulky obecně by se neměla spoléhat na optimistického řízení souběžnosti, při vytváření škálovatelných aplikací. V případě potřeby pesimistické zamykání můžete jedním z přístupů vývojáři si při přístupu k tabulek je přiřadit určeného objektu blob pro každou tabulku a pokuste se provést zapůjčení pro objekt blob před fungujícími v tabulce. Tento přístup vyžaduje, aby aplikace k zajištění všechny cesty k datům přístup získat zapůjčení před fungujícími v tabulce. Také nezapomeňte přitom, že doba zapůjčení minimální je 15 sekund, které vyžaduje důkladné zvážení pro zajištění škálovatelnosti.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -258,7 +258,7 @@ Jeden scénář, ve které souběžnosti je problém v jejich zařazování do f
 
 Služba fronty nemá podporu pro optimistického nebo pesimistického souběžnosti a pro tuto klientů z důvodu zpracování zprávy načtené z fronty by měl zajistit zpracování zpráv způsobem idempotentní. Poslední strategie wins zapisovače se používá pro operace aktualizace, jako je například SetQueueServiceProperties, SetQueueMetaData, UpdateMessage a SetQueueACL.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Rozhraní REST API služby front](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Získání zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -268,7 +268,7 @@ Služba souborů lze přistupovat pomocí dva koncové body jiný protokol – S
 
 Když klientovi SMB se otevře soubor pro odstranění, označí soubor jako čekající na odstranění do jiných klientů protokolu SMB jsou uzavřené otevřenými popisovači v tomto souboru. Když soubor je označená jako probíhající odstranění, všechny operace REST na tento soubor vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Protože je možné, klient SMB můžete odebrat příznak čeká na odstranění před zavřením souboru není vrátil stavový kód 404 (Nenalezeno). Jinými slovy stavový kód 404 (Nenalezeno) se očekávají jenom, když se ho odebral. Všimněte si, že soubor je v SMB odstranit stav Čekání na vyřízení, nebude zahrnutý ve výsledcích seznam souborů. Nezapomeňte, že operace REST odstranit soubor a adresář odstraňte REST usilujeme o to atomicky se výsledek není ve stavu čekající na odstranění.  
 
-Další informace:  
+Další informace naleznete v tématu:  
 
 * [Správa souborů uzamkne](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

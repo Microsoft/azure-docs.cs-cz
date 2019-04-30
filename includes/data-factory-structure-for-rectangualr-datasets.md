@@ -58,7 +58,7 @@ Data factory podporuje následující kompatibilní se Specifikací kompatibiln�
 * Guid
 * DateTime
 * Datetimeoffset
-* Časový rozsah 
+* Časový interval 
 
 Pro typ Datetime a Datetimeoffset také volitelně můžete zadat řetězce "culture" & "format" usnadnit analýzu svůj vlastní řetězec data a času. Najdete v ukázce pro převod typu níže.
 

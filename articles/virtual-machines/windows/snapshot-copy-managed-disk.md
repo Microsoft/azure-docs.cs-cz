@@ -28,7 +28,7 @@ Snímek je kopie virtuálního pevného disku (VHD) úplné, jen pro čtení. Vy
 
 Pokud se chystáte pomocí tohoto snímku rychle vytvořit nový virtuální počítač, doporučujeme, že je čistě vypnout virtuální počítač před pořízení snímku, vymažte všechny procesy, které jsou v průběhu.
 
-## <a name="use-the-azure-portal"></a>Použití portálu Azure 
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **vytvořit prostředek**a poté vyhledejte a vyberte **snímku**.
@@ -40,7 +40,7 @@ Pokud se chystáte pomocí tohoto snímku rychle vytvořit nový virtuální po�
 8. Vyberte **typ účtu** používat k uložení snímku. Vyberte **Standard_HDD**, pokud potřebujete snímek uloží na disku pro vysoce výkonné.
 9. Vyberte **Vytvořit**.
 
-## <a name="use-powershell"></a>Použití PowerShellu
+## <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Následující kroky ukazují, jak zkopírujte virtuální pevný disk, vytvořte snímek konfigurace a pořízení snímku disku s použitím [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) rutiny. 
 

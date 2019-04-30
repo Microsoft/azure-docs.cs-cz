@@ -17,7 +17,7 @@ ms.locfileid: "60459823"
 ---
 V následující tabulce jsou uvedeny dostupné oblasti jsou podporované pro funkce, které jsou obecné dostupnosti.
 
-|Geopolitická oblast | Oblasti Azure|
+|Geopolitická oblast | Oblast Azure|
 |---|---|
 |Severní Amerika | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |
 |Jižní Amerika |Brazílie – jih |

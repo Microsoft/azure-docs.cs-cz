@@ -39,9 +39,9 @@ Další informace o chyb oznámených při použití WebHCat s HDInsight a způs
 
 Překročení následujících výchozích hodnot může snížit výkon WebHCat nebo dojít k chybám:
 
-| Nastavení | Výsledek | Výchozí hodnota |
+| Nastavení | Co dělá | Výchozí hodnota |
 | --- | --- | --- |
-| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10,000 |
+| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10 000 |
 | [templeton.exec.max-procs][max-procs] |Maximální počet požadavků, které se dají obsluhovat současně |20 |
 | [mapreduce.jobhistory.max-age-ms][max-age-ms] |Počet dní, které historie úlohy se zachovají. |7 dní |
 
@@ -49,7 +49,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 429
 
-| Příčina | Rozlišení |
+| Příčina | Řešení |
 | --- | --- |
 | Překročili jste maximální souběžných žádostí za minutu (20 výchozí nastavení) obsluhovat WebHCat |Snižte úloh, abyste zajistili, že neodešlete více než maximální počet souběžných požadavků nebo zvyšte limit souběžných žádostí úpravou `templeton.exec.max-procs`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
 
@@ -57,7 +57,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 503
 
-| Příčina | Rozlišení |
+| Příčina | Řešení |
 | --- | --- |
 | Tento kód stavu obvykle dochází při převzetí služeb při selhání mezi primární a sekundární hlavní uzel clusteru |Počkejte 2 minuty a potom operaci opakujte |
 
@@ -65,7 +65,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 400
 
-| Příčina | Rozlišení |
+| Příčina | Řešení |
 | --- | --- |
 | Podrobnosti úlohy nebyly vyčištěny pomocí historie úloh čisticí |Výchozí době uchování historie úlohy je 7 dní. Úpravou můžete změnit výchozí dobu uchování `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
 | Úlohy byl ukončen z důvodu převzetí služeb při selhání |Opakujte odeslání úlohy pro až dvě minuty |
@@ -75,7 +75,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 **Kód stavu HTTP**: 502
 
-| Příčina | Rozlišení |
+| Příčina | Řešení |
 | --- | --- |
 | Interní uvolňování paměti dochází v rámci procesu WebHCat |Počkejte, uvolňování paměti na dokončení nebo restartujte službu WebHCat |
 | Časový limit čekání na odpověď ze služby Správce prostředků. Této chybě může dojít, když se počet aktivních aplikací dostane nakonfigurované maximum (výchozí hodnota 10 000) |Počkejte právě probíhajících úloh dokončíte. nebo zvýšení limitu souběžných úloh tak, že upravíte `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) oddílu. |

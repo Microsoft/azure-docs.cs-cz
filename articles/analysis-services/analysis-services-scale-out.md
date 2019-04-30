@@ -108,10 +108,10 @@ Návratové kódy stavu:
 
 |Kód  |Popis  |
 |---------|---------|
-|-1     |  Neplatné       |
+|-1     |  Neplatný       |
 |0     | Replikování        |
 |1     |  Rehydratace       |
-|2     |   Dokončené       |
+|2     |   Dokončeno       |
 |3     |   Selhalo      |
 |4     |    Finalizace     |
 |||

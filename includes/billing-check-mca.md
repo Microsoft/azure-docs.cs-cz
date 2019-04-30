@@ -15,7 +15,7 @@ Zkontrolujte typ smlouvy k určení, zda máte přístup k fakturačnímu účtu
 
 1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-check-mca/billing-search-cost-management-billing.png)
 

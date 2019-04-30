@@ -246,7 +246,7 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | USA – východ | Virginie |
 | USA – východ 2 | Virginie |
 | Korea – střed| Soul |
-| Jižní Korea – jih| Pusan |
+| Jižní Korea – jih| Busan |
 | Japonsko – východ | Tokio, Saitama |
 | Japonsko – západ | Ósaka |
 | Středoseverní USA | Illinois |

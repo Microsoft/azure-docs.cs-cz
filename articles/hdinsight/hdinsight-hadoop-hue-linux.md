@@ -64,9 +64,9 @@ Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clus
    * **NÁZEV**: Zadejte popisný název akce skriptu.
    * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HLAVNÍ**: Zaškrtněte tuto možnost.
-   * **PRACOVNÍK**: Nechte prázdné.
-   * **ZOOKEEPER**: Nechte prázdné.
-   * **PARAMETRY**: Nechte prázdné.
+   * **PRACOVNÍK**: Ponechte toto nastavení prázdné.
+   * **ZOOKEEPER**: Ponechte toto nastavení prázdné.
+   * **PARAMETRY**: Ponechte toto nastavení prázdné.
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **vyberte** tlačítko v dolní části **volitelná konfigurace** okno a uložte informace o konfiguraci volitelné.
 4. Pokračovat zřizování clusteru, jak je popsáno v [zřídit HDInsight clustery v Linuxu](hdinsight-hadoop-provision-linux-clusters.md).
 

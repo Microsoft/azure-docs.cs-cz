@@ -11,7 +11,7 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/11/2019
+ms.date: 04/26/2019
 ms.openlocfilehash: f466a1c3fd0b2d527fc4ab407d096f6bb9b7d8b9
 ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
@@ -86,7 +86,7 @@ SQL Database chrání vaše zákaznická data tím, že poskytuje možnosti dete
 
 Auditování služby SQL Database sleduje databázové aktivity a pomáhá udržovat dodržování standardů zabezpečení díky zaznamenávání databázových událostí k auditu protokolu v účtu úložiště Azure vlastněné zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a pomocí analýzy a zkoumání historické aktivity identifikovat potenciální hrozby nebo možné zneužití a narušení zabezpečení. Další informace najdete v článku s [auditování služby SQL Database](sql-database-auditing.md).  
 
-### <a name="advanced-threat-protection"></a>Advanced Threat Protection
+### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
 
 Rozšířená ochrana před internetovými útoky analyzuje vaše protokoly SQL serveru ke zjištění neobvyklé chování a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Upozornění se vytvářejí pro podezřelé aktivity, jako jsou Injektáž SQL, potenciální data po infiltraci a hrubou vynutit útoků nebo anomálií v přístupu vzory pro zachycení eskalaci oprávnění a ohrožených pověření použít. Výstrahy jsou z pohledu [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření uveden spolu s akce ke zmírnění hrozby. Je možné povolit rozšířené ochrany před internetovými útoky na serveru pro žádné další poplatky. Další informace najdete v tématu [Začínáme s SQL Database Advanced Threat Protection](sql-database-threat-detection.md).
 

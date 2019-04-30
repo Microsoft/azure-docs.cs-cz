@@ -239,7 +239,7 @@ Invoke-AzResourceAction `
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat HDFS kompatibilní s Azure Data Lake Gen1 Storage s HDInsight. To umožňuje vytvářet škálovatelná a dlouhodobá řešení pro získávání archivovaných dat a používat službu HDInsight k odemčení informací uvnitř uložených strukturovaných a nestrukturovaných dat.
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
 * [Rychlé zprovoznění: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)

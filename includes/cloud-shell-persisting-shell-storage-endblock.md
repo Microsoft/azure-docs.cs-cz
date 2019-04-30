@@ -21,7 +21,7 @@ ms.locfileid: "60200184"
 2. Vyberte cílový soubor.
 3. Vyberte **Stáhnout** tlačítko.
 
-### <a name="upload-files"></a>Nahrávání souborů
+### <a name="upload-files"></a>Nahrání souborů
 
 ![Místní soubory k odeslání](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. Přejdete na připojené sdílené složky.

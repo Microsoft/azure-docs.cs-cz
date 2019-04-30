@@ -30,7 +30,7 @@ Hadoop cluster se skládá z několika virtuálních počítačů (uzlů), kter�
 ## <a name="cluster-setup-methods"></a>Metody instalace clusteru
 V následující tabulce jsou uvedeny různé metody, které slouží k nastavení clusteru HDInsight.
 
-| Clustery vytvořené pomocí | Webový prohlížeč | Příkazový řádek | REST API | SDK | 
+| Clustery vytvořené pomocí | Webový prohlížeč | Příkazový řádek | REST API | Sada SDK | 
 | --- |:---:|:---:|:---:|:---:|
 | [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |

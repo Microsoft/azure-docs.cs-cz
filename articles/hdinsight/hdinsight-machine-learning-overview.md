@@ -25,7 +25,7 @@ HDInsight umožňuje machine learning s velkými objemy dat, poskytuje schopnost
 
 Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://github.com/Azure/mmlspark). Tato knihovna je určená produktivnější odborníci přes data ve Sparku, zvýšit frekvenci experimentování a využít techniky nejmodernější strojového učení, včetně obsáhlého learningu na velmi rozsáhlých datových sadách. MMLSpark poskytuje vrstvu nad nízké úrovně rozhraní API v ve SparkML při sestavování škálovatelných modelů ML, jako jsou indexování řetězce podřízenému data do rozložení očekává počítačem učení se supervizí a propojením vektory funkce. Knihovna MMLSpark zjednodušuje tyto a další běžné úlohy vytváření modelů v PySpark.
 
-## <a name="r"></a>Č
+## <a name="r"></a>R
 
 [R](https://www.r-project.org/) je aktuálně nejoblíbenější statistický programovací jazyk na světě. Je open source nástroj vizualizace dat s komunitou uživatelů více než 2,5 milionu a stále se rozšiřující. R s jeho všechny uživatelské základny a víc než 8 000 přidružených balíčků, je pravděpodobně volba pro mnoho společností, kteří potřebují strojového učení. Můžete vytvořit cluster služby HDInsight s připravená k použití s velkými datovými sadami a modely služby ML. Tato funkce poskytuje odborníkům přes data a statistikům pomocí známých rozhraní R, kterou chcete škálovat na vyžádání prostřednictvím HDInsight, bez režie nastavení clusteru a údržby.
 
