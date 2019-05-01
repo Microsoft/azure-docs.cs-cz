@@ -551,7 +551,7 @@ Nástroj Azure Load Balancer má interního nástroje load balancer, že čas za
 
 Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SCS, nejprve přidejte tyto položky registru Windows na oba uzly clusteru Windows pro SAP ASCS/SCS:
 
-| Cesta | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (decimální) |
@@ -562,7 +562,7 @@ Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SC
 
 Pak přidejte tato položka registru Windows na oba uzly clusteru Windows pro SAP ASCS/SCS:
 
-| Cesta | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální) |

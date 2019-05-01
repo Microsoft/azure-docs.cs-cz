@@ -129,7 +129,7 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 | Název | Typ | Popis |
 | --- | --- | --- |
 | HttpMethod |String |Metoda protokolu HTTP se používá pro operaci. Třeba získáte. |
-| Cesta |String |Cesta operaci byla provedena |
+| `Path` |String |Cesta operaci byla provedena |
 | RequestContentLength |int |Délka obsahu žádosti HTTP |
 | ClientRequestId |String |ID, které jednoznačně identifikuje tento požadavek |
 | StartTime |String |Čas, kdy server přijal požadavek |

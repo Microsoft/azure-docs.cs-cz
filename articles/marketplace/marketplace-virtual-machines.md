@@ -2,21 +2,14 @@
 title: Průvodce pro Azure Marketplace publikováním nabídky virtuálních počítačů
 description: Tento článek popisuje požadavky na virtuální počítač a bezplatnou zkušební verzi softwaru k nasazení z webu Marketplace publikovat.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
 ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60764097"

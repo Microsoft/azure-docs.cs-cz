@@ -16,7 +16,7 @@ ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
 ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60744189"

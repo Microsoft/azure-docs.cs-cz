@@ -16,7 +16,7 @@ ms.date: 06/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 5c53545a6a5421bd20622fd132bb5c0b2c0940d9
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60764216"

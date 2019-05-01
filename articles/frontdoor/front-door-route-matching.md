@@ -48,7 +48,7 @@ Při párování hostitele front-endu, můžeme použít logiku jak je uvedeno n
 
 Abychom vysvětlili, tento proces dále, Podívejme se na příklad konfigurace branou tras (pouze levá strana):
 
-| Pravidlo směrování | Front-endoví hostitelé | Cesta |
+| Pravidlo směrování | Front-endoví hostitelé | `Path` |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | složku /Users/\* |
@@ -78,7 +78,7 @@ Po určení konkrétní front-endové hostitele a filtrování možných pravidl
 
 Abychom vysvětlili, dále, Podívejme se na jinou sadu příklady:
 
-| Pravidlo směrování | Hostitel front-endu    | Cesta     |
+| Pravidlo směrování | Hostitel front-endu    | `Path`     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -112,7 +112,7 @@ Zadaný tuto konfiguraci, výsledkem bude v následující tabulce odpovídajíc
 >
 > Příklad konfigurace:
 >
-> | Trasa | Hostitel             | Cesta    |
+> | Trasa | Hostitel             | `Path`    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >

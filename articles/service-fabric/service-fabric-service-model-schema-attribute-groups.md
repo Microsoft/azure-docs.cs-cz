@@ -596,7 +596,7 @@ Nová hodnota nastavení.
 |Atribut|Hodnota|
 |---|---|
 |content|1 atributy|
-|jméno|Cesta|
+|jméno|`Path`|
 
 ### <a name="xml-source"></a>Zdroj dat XML
 ```xml
@@ -611,12 +611,12 @@ Nová hodnota nastavení.
 ```
 ### <a name="attribute-details"></a>Podrobnosti atributu
 
-#### <a name="path"></a>Cesta
+#### <a name="path"></a>`Path`
 Cesta ke sdílené složce. Formát: soubor:]
 
 |Atribut|Hodnota|
 |---|---|
-|jméno|Cesta|
+|jméno|`Path`|
 |type|xs:string|
 |Použití|povinné|
 

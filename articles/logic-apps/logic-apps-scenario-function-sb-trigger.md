@@ -12,7 +12,7 @@ ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
 ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60995948"
@@ -115,7 +115,7 @@ Dál vytvořte funkci, která funguje jako aktivační událost a přijímá zpr
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
-   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
    
    public static void Run(string myQueueItem, TraceWriter log)

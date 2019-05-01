@@ -2,16 +2,16 @@
 title: Azure Data Lake Storage Gen2 hierarchické Namespace
 description: Popisuje pojem hierarchického oboru názvů pro Azure Data Lake Storage Gen2
 services: storage
-author: WenJason
+author: normesta
 ms.service: storage
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 02/25/2019
-ms.author: v-jay
+ms.date: 12/06/2018
+ms.author: normesta
+ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: b423d40884dd9132312e79ba0cbff00b8771b207
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60747536"
