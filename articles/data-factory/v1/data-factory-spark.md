@@ -347,7 +347,7 @@ Aktivita Spark nepodporuje vložený skript jako Pig a proveďte aktivity Hive. 
 
 Vytvořte následující strukturu složky v úložišti objektů blob odkazuje HDInsight propojené služby. Nahrajte závislé soubory odpovídající podsložek v kořenové složce reprezentována **entryFilePath**. Například nahrát soubory Pythonu do podsložky pyFiles a jar soubory do požadované podsložky kromě souborů JAR kořenové složky. V době běhu služba Data Factory očekává, že následující strukturu složek ve službě blob storage: 
 
-| Cesta | Popis | Požaduje se | Type |
+| `Path` | Popis | Požaduje se | Type |
 | ---- | ----------- | -------- | ---- |
 | . | Kořenová cesta úlohy Sparku na propojenou službu storage. | Ano | Složka |
 | &lt;definováno uživatelem &gt; | Cesta, která odkazuje na vstupní soubor úlohy Spark. | Ano | File |
