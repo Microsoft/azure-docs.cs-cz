@@ -12,7 +12,7 @@ ms.date: 09/25/2018
 ms.author: shlo
 ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60787436"

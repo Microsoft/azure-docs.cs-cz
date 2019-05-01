@@ -10,7 +10,7 @@ ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: e47a3e1231701f3339057e25ee4388aff0c9fbd7
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60831945"
