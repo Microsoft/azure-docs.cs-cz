@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/29/2019
+ms.date: 04/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 962b69a97b8116b82878a0a82960c9159091a9a7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 704ad915616e4f860204783462269ec68a6e4e28
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652616"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730642"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí pomocí Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 
@@ -48,9 +48,10 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
     2. Vyberte **předplatné Azure**, ve kterém chcete účet testovacího prostředí vytvořit.
     3. V části **Skupina prostředků** vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
     4. V části **Umístění** vyberte umístění nebo oblast, ve které chcete účet testovacího prostředí vytvořit. 
-    5. Pro **partnerská virtuální síť**, vyberte partnerská virtuální síť (VNet) pro síť testovacího prostředí. Testovací prostředí vytvořené v rámci tohoto účtu připojení k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. 
-    6. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** pole, zda má být creators testovacího prostředí bude moci vybrat umístění testovacího prostředí. Ve výchozím nastavení bude možnost zakázána. Pokud je zakázáno, Tvůrce prostředí nelze zadat umístění pro testovací prostředí, které se vytváří. Tato cvičení se vytvoří v nejbližší geografické umístění účtu testovacího prostředí. Pokud je povolena, Autor testovacího prostředí můžete vybrat umístění v době vytvoření testovacího prostředí. 
-    7. Vyberte **Vytvořit**. 
+    5. Vyberte existující **sdílené bitové kopie Galerie** nebo ji vytvořte. Šablonu virtuálního počítače můžete uložit v galerii sdílené bitové kopie pro ni znovu použije jinými uživateli. Podrobné informace o galeriích sdílené bitové kopie, naleznete v tématu [sdílené bitové kopie Galerie v Azure Lab Services](how-to-use-shared-image-gallery.md). 
+    6. Pro **partnerská virtuální síť**, vyberte partnerská virtuální síť (VNet) pro síť testovacího prostředí. Testovací prostředí vytvořené v rámci tohoto účtu připojení k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. 
+    7. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** pole, zda má být creators testovacího prostředí bude moci vybrat umístění testovacího prostředí. Ve výchozím nastavení bude možnost zakázána. Pokud je zakázáno, Tvůrce prostředí nelze zadat umístění pro testovací prostředí, které se vytváří. Tato cvičení se vytvoří v nejbližší geografické umístění účtu testovacího prostředí. Pokud je povolena, Autor testovacího prostředí můžete vybrat umístění v době vytvoření testovacího prostředí. 
+    8. Vyberte **Vytvořit**. 
 
         ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Vyberte **ikonu zvonku** na panelu nástrojů (**oznámení**), potvrďte, že nasazení proběhlo úspěšně a pak vyberte **přejít k prostředku**. 

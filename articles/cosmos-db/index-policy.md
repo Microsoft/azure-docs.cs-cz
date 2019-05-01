@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: thweiss
-ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61046314"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872669"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -68,6 +68,8 @@ Například jsme zahrnuli `/headquarters/employees/?` cesty a určit, že `Range
 
 - Zahrnují kořenovou cestou za účelem selektivně vyloučit cesty, které není třeba indexovat. To je doporučená, protože umožňuje proaktivně indexovat žádné nové vlastnosti, který může být přidán do modelu služby Azure Cosmos DB.
 - Vylučte kořenovou cestou za účelem selektivně zahrnout cesty, které je třeba indexovat.
+
+- Pro cesty se pravidelně znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojité uvozovky (například "/ cesta /?"). Pro cesty s jinými speciální znaky, je potřeba řídicí řetězec cesty kolem dvojité uvozovky (například "/\"cesta abc\"/?"). Pokud očekáváte, speciální znaky v zadané cestě, může uniknout každá cesta pro zabezpečení. Funkčně nevyužívá žádné rozdíly, pokud escape každá cesta Vs pouze ty, které mají speciální znaky.
 
 Zobrazit [v této části](how-to-manage-indexing-policy.md#indexing-policy-examples) indexování příklady zásad.
 

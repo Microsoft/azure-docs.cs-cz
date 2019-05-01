@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446580"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925654"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB 
 
@@ -162,7 +162,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-| customAction    | string | Název vlastní příkaz. Musí být "CreateDatabase"     |
+| customAction    | string | Název vlastní příkaz. Musí být "CreateCollection"     |
 | kolekce      | string | Název kolekce                                   |
 | offerThroughput | int    | Zřízená propustnost nastavit v databázi. Je volitelný parametr |
 | shardKey        | string | Cesta klíče horizontálních oddílů k vytvoření horizontálně dělené kolekce. Je volitelný parametr |

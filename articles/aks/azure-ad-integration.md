@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: db92526bd02ba55be5df7ce6999e3099e72b8fa5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c23c13969fd4e2814fdc1894a98a3f876da7315b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116769"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574305"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace služby Azure Active Directory s Azure Kubernetes Service
 
 Azure Kubernetes Service (AKS) je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). V této konfiguraci můžete se přihlásit k cluster AKS pomocí tokenu ověřování Azure Active Directory. Kromě toho Správce clusterů budou moct konfigurovat Kubernetes řízení přístupu na základě rolí (RBAC) na základě členství ve skupině uživatelské identity nebo adresáře.
 
-V tomto článku se dozvíte, jak nasadit požadavky pro Azure AD a AKS a pak Nasaďte cluster Azure AD povolené a vytvořte základní role RBAC v clusteru AKS.
+V tomto článku se dozvíte, jak nasadit požadavky pro Azure AD a AKS a pak Nasaďte cluster Azure AD povolené a vytvořte základní role RBAC v clusteru AKS pomocí webu Azure portal. Můžete také [proveďte následující kroky pomocí Azure CLI][azure-ad-cli].
 
 Platí následující omezení:
 
@@ -46,7 +46,7 @@ První aplikaci Azure AD slouží k získání členství ve skupině uživatel�
 
 2. Vyberte **Manifest** a upravit `groupMembershipClaims` hodnota, která se `"All"`.
 
-   Aktualizace po dokončení uložte.
+   **Uložit** aktualizace po dokončení.
 
    ![Aktualizovat členství ve skupině pro všechny](media/aad-integration/edit-manifest.png)
 
@@ -64,11 +64,11 @@ První aplikaci Azure AD slouží k získání členství ve skupině uživatel�
 
    ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/read-directory.png)
 
-6. V části **DELEGOVANÁ oprávnění**, přidejte zaškrtnutí vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Uložte změny, až to bude hotové.
+6. V části **DELEGOVANÁ oprávnění**, přidejte zaškrtnutí vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Zvolte **vyberte** uložte aktualizace.
 
    ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/delegated-permissions.png)
 
-   Vyberte **Done** (Hotovo).
+   Vyberte **provádí**.
 
 7. Zvolte *Microsoft Graphu* ze seznamu rozhraní API, vyberte **udělit oprávnění**. Tento krok selže, pokud není aktuální účet správce tenanta.
 
@@ -96,11 +96,13 @@ Druhá aplikace Azure AD se používá při přihlášení s využitím rozhran�
 
    ![Konfigurace oprávnění aplikace](media/aad-integration/select-api.png)
 
-3. Zaškrtněte políčko vedle aplikace a klikněte na tlačítko **vyberte**.
+    Vyberte serverovou aplikaci a pak zvolte **vyberte**.
+
+3. Zpět na *přístup přes rozhraní API přidat* okně zvolte **vyberte oprávnění**. Zaškrtnutí ve sloupci se prosím *delegovaná oprávnění* pro přístup do vaší aplikace, klikněte na tlačítko **vyberte**.
 
    ![Vyberte koncový bod aplikace AKS AAD serveru](media/aad-integration/select-server-app.png)
 
-   Vyberte **Hotovo**
+   Zpět na *přístup přes rozhraní API přidat* okně **provádí**.
 
 4. Vyberte svůj server API ze seznamu a klikněte na tlačítko **udělit oprávnění**:
 
@@ -259,3 +261,4 @@ Osvědčené postupy na řízení prostředků a identit, naleznete v tématu [o
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md

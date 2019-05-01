@@ -8,26 +8,26 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 7ad6d4b3a1f465f3d15e00f0164da9f2778f7f1c
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: ed2611896f2c23a3cf1d2fec5d9e711f518a65c6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63760798"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926354"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
-Clustery Enterprise Security Package (ESP) poskytují přístup k více uživatelů v clusterech Azure HDInsight. Clustery HDInsight s ESP jsou připojené k doméně tak, aby uživatelé domény můžete použít své přihlašovací údaje domény k ověření s clustery a spouštění úloh big data. 
+Clustery Enterprise Security Package (ESP) poskytují přístup k více uživatelů v clusterech Azure HDInsight. Clustery HDInsight s ESP jsou připojené k doméně tak, aby uživatelé domény můžete použít své přihlašovací údaje domény k ověření s clustery a spouštění úloh big data.
 
 V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí Azure Active Directory Domain Services (Azure AD DS).
 
 > [!NOTE]  
-> ESP je GA v HDI 3.6 pro Apache Spark, Interactive a Apache Hadoop. ESP pro typy clusterů Apache HBase a Apache Kafka je ve verzi preview.
+> ESP je obecně dostupná ve službě Hdinsight 3.6 pro typy clusteru: Interaktivní, Apache Spark a Apache Hadoop. ESP pro typy clusterů Apache HBase a Apache Kafka je ve verzi preview.
 
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 
 > [!NOTE]  
-> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2 je potřeba zakázat ověřování službou Multi-Factor Authentication (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru pomocí základního ověřování Kerberose. Můžete použít [důvěryhodné IP adresy](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) zakázat MFA pro konkrétní uživatele, pouze když přistupují rozsah adres virtuální sítě IP clusteru HDInsight. Pokud používáte podmíněný přístup, ujistěte se, že tento koncový bod služby AD v povolena na virtuální síť HDInsight.
+> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2 je potřeba zakázat ověřování službou Multi-Factor Authentication (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru pomocí základního ověřování protokolu Kerberos. Můžete použít [důvěryhodné IP adresy](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) zakázat MFA pro konkrétní uživatele, pouze když přistupují rozsah adres virtuální sítě IP clusteru HDInsight. Pokud používáte podmíněný přístup Zkontrolujte prosím, že tento koncový bod služby AD v povolena na virtuální síť HDInsight.
 >
 > Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
 
@@ -44,7 +44,7 @@ $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.contoso100.onmicrosoft.com, contoso100.onmicrosoft.com
-``` 
+```
 
 ## <a name="check-azure-ad-ds-health-status"></a>Kontrola stavu služby Azure AD – DS
 Zobrazit stav Azure Active Directory Domain Services tak, že vyberete **stavu** pod **spravovat** kategorie. Ujistěte se, že je stav Azure AD – DS zelený (s) a synchronizace byla dokončena.
@@ -68,7 +68,7 @@ Jakmile spravovaná identita je vytvořen a daný správnou roli, můžete nasta
 ## <a name="networking-considerations"></a>Aspekty sítí
 
 > [!NOTE]  
-> Azure AD DS musí být nasazený ve virtuální síti na základě Azure Resource Manageru (ARM). Klasické virtuální sítě nejsou podporovány pro Azure AD – DS. Další informace najdete v [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started-network.md).
+> Azure AD DS musí být nasazený ve virtuální síti na základě Azure Resource Manageru (ARM). Klasické virtuální sítě nejsou podporovány pro Azure AD – DS. Najdete [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) další podrobnosti.
 
 Po povolení služby Azure AD-DS místní server služby DNS (Domain Name) běží na virtuálních počítačích (VM) AD. Konfigurace služby AD DS virtuální sítě (virtuální sítě Azure) používat tyto vlastní servery DNS. Chcete-li najít správné IP adresy, vyberte **vlastnosti** pod **spravovat** kategorie a podívejte se na IP adresy uvedené pod **IP adresu ve virtuální síti**.
 
@@ -96,7 +96,6 @@ Po nastavení v předchozích krocích správně, dalším krokem je vytvoření
 > [!NOTE]  
 > Prvních šest znaků ESP názvy clusterů musí být jedinečný ve vašem prostředí. Například pokud máte více clusterů ESP v různých virtuálních sítích, měli byste zvolit pojmenování convension, která zajistí, že prvních šest znaků pro názvy clusteru musí být jedinečné.
 
-
 ![Ověření zabezpečení domény balíčku Azure HDInsight Enterprise](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 
 Jakmile povolíte ESP, časté nesprávné konfigurace související s Azure AD – DS bude automaticky zjistil a ověřit. Po opravě těchto chyb, abyste mohli pokračovat na další krok: 
@@ -119,7 +118,7 @@ Spravovaná identita, kterou jste vytvořili můžete zvolit ve z rozevíracího
 
 ![Konfigurace Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
-
 ## <a name="next-steps"></a>Další postup
+
 * Konfigurace zásad Hivu a spouštět dotazy Hive, najdete v části [zásad konfigurace Apache Hivu pro HDInsight clustery s ESP](apache-domain-joined-run-hive.md).
 * Použití SSH pro připojení ke clusterům HDInsight s ESP, naleznete v tématu [použití SSH se systémem Linux Apache Hadoop v HDInsight ze systému Linux, Unix nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

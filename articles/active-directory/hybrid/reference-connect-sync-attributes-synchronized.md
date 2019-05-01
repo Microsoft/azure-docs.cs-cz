@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096115"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729530"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -158,7 +158,6 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používat synchronizaci hesla i federací. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |Odvozený od groupType |
 | sériové číslo |X |X | | |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | St |X |X | | |
@@ -241,7 +240,6 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |Odvozený od groupType |
 | sériové číslo |X |X | | |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | St |X |X | | |
@@ -294,7 +292,6 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
-| securityEnabled | | |X |Odvozený od groupType |
 | sériové číslo |X |X | | |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | St |X |X | | |
@@ -317,7 +314,6 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | atributy objectSID |X | |X |mechanickým vlastnost. Identifikátor uživatele AD používá k udržení synchronizace mezi Azure AD a AD. |
 | proxyAddresses |X |X |X |mechanickým vlastnost. Azure AD používá. Obsahuje všechny sekundární e-mailové adresy uživatele. |
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. |
-| securityEnabled | | |X |Odvozený od groupType. |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
 | userPrincipalName (Hlavní název uživatele) |X | | |Tento název UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
@@ -336,7 +332,6 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | atributy objectSID |X | |X |mechanickým vlastnost. Identifikátor uživatele AD používá k udržení synchronizace mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
-| securityEnabled | | |X |Odvozený od groupType |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
 | userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
@@ -364,7 +359,6 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | PSČ |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
-| securityEnabled | | |X |Odvozený od groupType |
 | sériové číslo |X |X | | |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | St |X |X | | |

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853316"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919737"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linuxu pro službu Azure App Service
 
@@ -109,7 +109,6 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
 - [Použití trvalé úložiště v Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Omezení verze Preview](#preview-limitations)
 - [Možnosti docker Compose](#docker-compose-options)
-- [Možnosti konfigurace Kubernetes](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Použití trvalé úložiště v Docker Compose
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>Používání vlastního úložiště v Docker Compose
-
-Azure Storage (soubory Azure nebo objektů Blob v Azure) je možné připojit s vícekontejnerové aplikace pomocí id vlastní. Chcete-li zobrazit název vlastní id, spusťte [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
-
-Ve vaší *docker-compose.yml* souborů, mapování `volumes` umožňuje `custom-id`. Příklad:
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Omezení verze Preview
@@ -179,22 +165,6 @@ Následující seznamy shrnují podporované a nepodporované možnosti Docker C
 
 > [!NOTE]
 > Jakékoli možnosti, které nejsou výslovně uvádějí, jsou ignorovány ve verzi Public Preview.
-
-### <a name="kubernetes-configuration-options"></a>Možnosti konfigurace Kubernetes
-
-Podporovány jsou následující možnosti konfigurace pro Kubernetes:
-
-- args
-- command
-- containers
-- image
-- jméno
-- ports
-- spec
-
-> [!NOTE]
-> Další možnosti, není explicitně volána nejsou podporovány ve verzi Public Preview.
->
 
 ## <a name="next-steps"></a>Další postup
 

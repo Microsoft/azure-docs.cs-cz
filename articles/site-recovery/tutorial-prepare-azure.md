@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: d2de871176917dcc24d910b3742bdb2700c4f25d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617409"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691768"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 ## <a name="before-you-start"></a>Než začnete
 
 - Kontrola architektury pro [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md), a [fyzický server](physical-azure-architecture.md) zotavení po havárii.
-- Přečtěte si nejčastější dotazy ke [VMware](vmware-azure-common-questions.md) a Hyper-V(hyper-v-azure-common-questions.md)
+- Přečtěte si nejčastější dotazy ke [VMware](vmware-azure-common-questions.md) a [Hyper-V](hyper-v-azure-common-questions.md)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete. Potom se přihlaste k [webu Azure portal](https://portal.azure.com).
 

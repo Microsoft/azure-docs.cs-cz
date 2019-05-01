@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d48977c60fb4a13e1fc0dbd294fa4e7708f1cd5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a7462536443b2be23eef0f8b4c6f6b6412fb7032
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277487"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory s G Suite
 
@@ -185,7 +185,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
 7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ---------------| --------------- |
     | Jedinečný identifikátor uživatele | User.mail |
 
@@ -239,11 +239,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
     a. Vyberte **nastavení jednotného přihlašování pomocí zprostředkovatele identity třetí strany**.
 
-    b. V **přihlašovací adresa URL stránky** pole v G Suite, vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
+    b. V **přihlašovací adresa URL stránky** pole v G Suite, vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    c. V **adresy URL odhlašovací stránky** pole v G Suite, vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
+    c. V **adresy URL odhlašovací stránky** pole v G Suite, vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    d. V **změnit adresy URL hesla** pole v G Suite, vložte hodnotu **změnit adresy URL hesla** zkopírovanou z webu Azure portal.
+    d. V **změnit adresy URL hesla** pole v G Suite, vložte hodnotu **změnit adresy URL hesla** zkopírovanou z webu Azure portal.
 
     e. V G Suite pro **ověřovací certifikát**, nahrát certifikát, který jste si stáhli z webu Azure portal.
 

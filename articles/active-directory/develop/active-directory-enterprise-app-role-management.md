@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb426eb15d20a4bbd628897ed1c3b29c37f32afd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723299"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Konfigurace deklarace role vystavených v tokenu SAML pro podnikové aplikace
 
@@ -152,7 +152,7 @@ Pokud vaše aplikace očekává, že vlastní role se mají předat odpověď SA
 
 8. Aktualizace **atributy** můžete definovat vlastní mapování deklarace role.
 
-9. V **atributy uživatele a deklarace identity** část **jednotného přihlašování** dialogového okna zadejte nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky.
+9. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
     | Název atributu | Hodnota atributu |
     | -------------- | ----------------|
@@ -161,11 +161,11 @@ Pokud vaše aplikace očekává, že vlastní role se mají předat odpověď SA
     >[!NOTE]
     >Pokud hodnota deklarace identity role má hodnotu null, pak nebude odesílat tuto hodnotu v tokenu Azure AD, a to je výchozím nastavení shrnut podle návrhu.
 
-    a. Klikněte na tlačítko **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+    a. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele a deklarace identity** dialogového okna.
 
       ![Tlačítko "Přidat atribut"](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. Vyberte **přidat atribut** otevřít **spravovat deklarace identity uživatelů** podokně.
+    b. V **spravovat deklarace identity uživatelů** dialogové okno, kliknutím na Přidat atribut token SAML **přidat novou deklaraci**.
 
       ![Tlačítko "Přidat atribut"](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 

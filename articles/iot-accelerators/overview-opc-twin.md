@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889858"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730266"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Co je Správa zařízení Azure IoT otevřené platformy komunikací OPC ()?
+# <a name="what-is-opc-twin"></a>Co je OPC Dvojčat?
 
 Dvojče OPC se skládá z mikroslužeb, které slouží k připojení cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC poskytuje zjišťování, registrace a vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC nevyžaduje architekturu Unified OPC (OPC UA) sady SDK, je programování jazykově nezávislé a můžou být součástí bez serveru pracovního postupu. Tento článek popisuje několik případů použití Dvojčat OPC.
 

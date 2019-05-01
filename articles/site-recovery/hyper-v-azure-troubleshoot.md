@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749061"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719819"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
@@ -129,7 +129,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 
 2. Chcete-li generovat snímky VSS pro virtuální počítač, zkontrolujte, že jsou na virtuálním počítači nainstalované integrační služby Hyper-V, a zda je povolena Služba integrace zálohování (VSS).
     - Zkontrolujte, zda běží na hostovaném služby/procesy démon integrace služby VSS a jsou v **OK** stavu.
-    - Můžete to ověřit z relace Powershellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **et-VMIntegrationService - VMName<VMName>– název VSS** tuto informaci můžou získat po přihlášení na virtuálním počítači hosta. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Můžete to ověřit z relace Powershellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **et-VMIntegrationService - VMName\<VMName >-název VSS** tuto informaci můžou získat po přihlášení na virtuálním počítači hosta. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Ujistěte se, že integrační služby Backup/VSS ve virtuálním počítači jsou spuštěné a v dobrém stavu. Pokud tomu tak není, znovu tyto služby a služby Stínová kopie svazku technologie Hyper-V žadatele na hostitelském serveru Hyper-V.
 
 ### <a name="common-errors"></a>Běžné chyby

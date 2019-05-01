@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880323"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574106"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -52,14 +52,16 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Úložiště     | Název úložiště nebo projektu. Prvních 200 úložišť jsou vráceny. K vyhledání úložiště, zadejte název do pole a klikněte na tlačítko **hledání na Githubu**.|
 |Branch     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks </br>*Jenom runbooky ve složce určené synchronizují. Rekurze se nepodporuje.*        |
-|Automatická synchronizace     | Zapne nebo vypne Automatická synchronizace při potvrzení změn do úložiště správy zdrojového kódu         |
+|Auto Sync<sup>1</sup>     | Zapne nebo vypne Automatická synchronizace při potvrzení změn do úložiště správy zdrojového kódu         |
 |Publikování Runbooku     | Pokud hodnotu **na**po sady runbook se synchronizují ze správy zdrojových kódů, bude automaticky publikován.         |
 |Popis     | Textové pole poskytnout další podrobnosti        |
+
+<sup>1</sup> povolit automatickou synchronizaci při konfiguraci integrace správy zdrojového kódu pomocí úložiště Azure, musíte být správcem projektu.
 
 ![Přehled ovládacího prvku zdroje](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Ujistěte se, že jste přihlášeni správný účet při konfiguraci správy zdrojového kódu. Pokud je nejisté, otevřete novou kartu v prohlížeči a odhlaste se z visualstudio.com nebo webu github.com a opakujte připojení správy zdrojového kódu.
+> Vaše přihlašovací údaje pro svým úložištěm řízení zdrojů může být jiný než vaše přihlašovací údaje pro Azure portal. Ujistěte se, že jste přihlášeni správný účet pro svým úložištěm řízení zdrojů při konfiguraci správy zdrojového kódu. Pokud je nejisté, otevřete novou kartu v prohlížeči a odhlaste se z visualstudio.com nebo webu github.com a opakujte připojení správy zdrojového kódu.
 
 ## <a name="configure-source-control---powershell"></a>Konfigurace správy zdrojového kódu – PowerShell
 

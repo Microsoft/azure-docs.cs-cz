@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300168"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917332"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
 
@@ -51,7 +51,7 @@ Každá aplikace, kterou chce, aby se tak, aby přijímal jak osobní i pracovn�
 * A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** , který lze použít k cílení odpovědí zpět do vaší aplikace
 * Pár dalších hodnot specifické pro scénář.
 
-Pro další informace si přečtěte, jak [zaregistrovat aplikaci](quickstart-v2-register-an-app.md).
+Pro další informace si přečtěte, jak [zaregistrovat aplikaci](quickstart-register-app.md).
 
 ## <a name="endpoints"></a>Koncové body
 
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 
-| Value | Popis |
+| Hodnota | Popis |
 | --- | --- |
 | `common` | Umožňuje uživatelům s osobní účty Microsoft a pracovních nebo školních účtů ze služby Azure AD pro přihlášení do aplikace. |
 | `organizations` | Umožňuje jenom uživatelům s pracovních nebo školních účtů ze služby Azure AD pro přihlášení do aplikace. |

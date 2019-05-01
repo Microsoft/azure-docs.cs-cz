@@ -1,8 +1,7 @@
 ---
-title: 'Synchronizace Azure AD Connect: Jak spravovat účet služby Azure AD | Dokumentace Microsoftu'
-description: Toto téma popisuje postup při obnovení účtu služby Azure AD.
+title: Změnit heslo účtu konektoru Azure AD | Dokumentace Microsoftu
+description: Toto téma popisuje postup při obnovení účtu Azure AD Connector.
 services: active-directory
-keywords: AADSTS70002, AADSTS50054, jak resetovat heslo pro účet konektoru služby synchronizace Azure AD Connect
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -13,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f88318c87e29567b40b5eacf10f3b6f259adee8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351000"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571416"
 ---
-# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Synchronizace Azure AD Connect: Jak spravovat účet služby Azure AD
-Účet služby používaný nástrojem konektor služby Azure AD by měla být služba zdarma. Pokud potřebujete resetovat svoje přihlašovací údaje, toto téma je za vás. Například pokud globální správce má omylem resetovat heslo k účtu služby pomocí prostředí PowerShell.
+# <a name="change-the-azure-ad-connector-account-password"></a>Změnit heslo účtu konektoru Azure AD
+Účet Azure AD Connector by měla být služba zdarma. Pokud potřebujete resetovat svoje přihlašovací údaje, toto téma je za vás. Například pokud je globální správce omylem resetovat heslo k účtu pomocí Powershellu.
 
 ## <a name="reset-the-credentials"></a>Resetovat přihlašovací údaje
-Pokud účet služby definované v Azure AD Connector nemůže kontaktovat kvůli potížím s ověřováním Azure AD, můžete resetovat heslo.
+Pokud účet Azure AD Connector nemůže kontaktovat kvůli potížím s ověřováním Azure AD, můžete resetovat heslo.
 
 1. Přihlaste se k serveru synchronizace Azure AD Connect a spusťte prostředí PowerShell.
 2. Spusťte `Add-ADSyncAADServiceAccount`.  
@@ -38,7 +37,7 @@ Pokud účet služby definované v Azure AD Connector nemůže kontaktovat kvůl
 Tato rutina resetuje heslo pro účet služby a aktualizovat ho ve službě Azure AD i v modulu synchronizace.
 
 ## <a name="known-issues-these-steps-can-solve"></a>Známé problémy můžete vyřešit tyto kroky
-Tato část se seznam chyb hlášených zákazníky, které byly opraveny pověření resetovat na účtu služby Azure AD.
+Tato část se seznam chyb hlášených zákazníky, které byly odstraněny pověření obnovit do účtu Azure AD Connector.
 
 - - -
 Událost 6900  

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1a2d24be00b0e1224b5f8d52105e2969d64e5f64
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059601"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922479"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -29,7 +29,7 @@ Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úlo�
 Se všemi funkcemi služby řeči, při vytváření odběru klíč z [webu Azure portal](https://portal.azure.com) podle našich [Příručka Začínáme](get-started.md). Pokud budete chtít získat přepisů z našich základní modely, vytváří se klíč je všechno, co musíte udělat.
 
 >[!NOTE]
-> Standardní předplatné (S0) pro hlasové služby je potřeba pomocí služby batch určené k transkripci. Bezplatné předplatné klíče (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
+> Standardní předplatné (S0) pro hlasové služby je potřeba pomocí služby batch určené k transkripci. Bezplatné předplatné klíče (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Vlastní modely
 
@@ -72,7 +72,8 @@ Parametry konfigurace jsou k dispozici jako dokumenty JSON:
   "properties": {
     "ProfanityFilterMode": "Masked",
     "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True"
+    "AddWordLevelTimestamps" : "True",
+    "AddSentiment" : "True"
   }
 }
 ```
@@ -87,6 +88,7 @@ Parametry konfigurace jsou k dispozici jako dokumenty JSON:
 | `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže filtrování vulgárních výrazů `masked` hvězdičky, která nahradí vulgárních výrazů `removed` výsledek, který zruší všechny vulgárních výrazů nebo `tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `masked`. | Nepovinné |
 | `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. | Nepovinné |
  | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. | Nepovinné |
+ | `AddSentiment` | Určuje, že se přidaly subjektivního hodnocení utterance. Platné hodnoty jsou `true` umožňující subjektivního hodnocení na utterance a `false` (výchozí hodnota) pro jeho zakázání. | Nepovinné |
 
 ### <a name="storage"></a>Úložiště
 
@@ -97,6 +99,57 @@ Služba batch podporuje určené k transkripci [úložiště objektů Blob v Azu
 Dotazování na stav určené k transkripci nemusí být většina výkonné a poskytují nejlepší uživatelské prostředí. Dotazování na stav, můžete zaregistrovat zpětná volání, které oznámí klient po dokončení dlouho běžící úlohy určené k transkripci.
 
 Další podrobnosti najdete v tématu [Webhooky](webhooks.md).
+
+## <a name="sentiment"></a>Mínění
+
+Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci a je důležité funkce v doméně center volání. Zákazníci můžou využít `AddSentiment` parametry na jejich požadavky na 
+
+1.  Získejte přehled o spokojenosti zákazníků
+2.  Získejte přehled o výkonu z agentů (týmu trvá volání)
+3.  Přesně určit přesný okamžik v čase při volání trvala zapněte ve směru záporná
+4.  Přesně určit, co šlo dobře jenom v případě zapnutí negativní volání pozitivní
+5.  Určit, co se zákazníkům líbí a co se nelíbí produkt nebo službu
+
+Má skóre mínění na zvukový segmentu kde zvuku segmentu je definován jako časová prodleva mezi začátkem utterance (posun) a nečinnosti zjištění konce datového proudu bajtů. Celý text v rámci tohoto segmentu se používá k výpočtu mínění. Neměňte výpočtu všechny agregované mínění hodnoty pro celý volání nebo celý řeči každý kanál. Toto je ponecháno ke vlastník domény další použití.
+
+Zabarvení se použije na lexikální formuláře.
+
+Ukázka výstupu JSON vypadá níže:
+
+```json
+{
+  "AudioFileResults": [
+    {
+      "AudioFileName": "Channel.0.wav",
+      "AudioFileUrl": null,
+      "SegmentResults": [
+        {
+          "RecognitionStatus": "Success",
+          "ChannelNumber": null,
+          "Offset": 400000,
+          "Duration": 13300000,
+          "NBest": [
+            {
+              "Confidence": 0.976174,
+              "Lexical": "what's the weather like",
+              "ITN": "what's the weather like",
+              "MaskedITN": "what's the weather like",
+              "Display": "What's the weather like?",
+              "Words": null,
+              "Sentiment": {
+                "Negative": 0.206194,
+                "Neutral": 0.793785,
+                "Positive": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+Funkce používá model mínění, která je aktuálně ve verzi Beta.
 
 ## <a name="sample-code"></a>Ukázka kódu
 

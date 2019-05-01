@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e23b5ff9917eda7272e378aa70d6e2dd79f4b9f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616693"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918973"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárované oblasti Azure
 
@@ -38,7 +38,6 @@ Obrázek 1 – Azure oblastních párech
 | Evropa |Severní Evropa |Západní Evropa |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
-| Německo |Německo – sever | Německo – středozápad
 | Indie |Střed Indie |Indie – jih |
 | Indie |Indie – západ |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
@@ -47,13 +46,8 @@ Obrázek 1 – Azure oblastních párech
 | Severní Amerika |Východní USA 2 |USA – střed |
 | Severní Amerika |Středoseverní USA |Středojižní USA |
 | Severní Amerika |Západní USA 2 |Západní střed USA 
-| Severní Amerika |USA – západ 3 |USA – východ
-| Norsko |Norsko – východ |Norsko – západ
 | Jižní Afrika | Jižní Afrika – sever | Jižní Afrika – západ
-| Švédsko |Švédsko – střed |Švédsko – jih
-| Švýcarsko | Švýcarsko – sever | Švýcarsko – západ
 | Spojené království |Spojené království – západ |Velká Británie – jih |
-| Spojené království |Velká Británie – sever |Velká Británie – jih 2
 | Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty Center
 | ministerstvo obrany USA |US DoD – východ |US DoD – střed |
 | US Government |USA (Gov) – Arizona |USA (Gov) – Texas |

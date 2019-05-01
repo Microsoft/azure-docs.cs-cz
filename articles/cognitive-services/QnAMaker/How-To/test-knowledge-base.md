@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61371852"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875699"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testování znalostní báze interaktivně v nástroje QnA Maker
 
@@ -24,8 +24,8 @@ Testování znalostní báze QnA Maker je důležitou součástí iterativní pr
 
 ## <a name="test-answer-matching"></a>Odpovídající odpověď testu
 
-1.  Výběrem názvu na přístup ke znalostní báze **Moje znalostních bází** stránky.
-2.  Chcete-li získat přístup k panelu snímku na více instancí testu, vyberte **testovací** v horním panelu vaší aplikace.
+1.  Výběrem názvu na přístup ke znalostní báze **Moje znalostních bází** stránky.
+2.  Chcete-li získat přístup k panelu snímku na více instancí testu, vyberte **Test** v horním panelu vaší aplikace.
 
     ![Přístup k panelu testu](../media/qnamaker-how-to-test-kb/access-test.png)
 
@@ -35,17 +35,17 @@ Testování znalostní báze QnA Maker je důležitou součástí iterativní pr
 
 ## <a name="clear-test-panel"></a>Vymazat test panelu
 
-Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu panelu Test.
+Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu panelu Test.
 
 ## <a name="close-test-panel"></a>Test Zavřít panel
 
-Zavřít panel testu, vyberte **testovací** tlačítko znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
+Zavřít panel testu, vyberte **Test** tlačítko znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
 
 ## <a name="inspect-score"></a>Kontrola skóre
 
 Si prohlédnout podrobnosti o výsledku testu na panelu zkontrolujte, jestli se.
 
-1.  Test snímku na více instancí panelu otevřete, vyberte **zkontrolujte, jestli se** podrobné informace o této odpovědi.
+1.  Test snímku na více instancí panelu otevřete, vyberte **zkontrolujte, jestli se** podrobné informace o této odpovědi.
 
     ![Zkontrolovat odpovědi](../media/qnamaker-how-to-test-kb/inspect.png)
 

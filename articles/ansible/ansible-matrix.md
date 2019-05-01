@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/22/2019
-ms.openlocfilehash: 3f5bda36368ee1fe1f37527422c6072c3ffda177
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 721179e12ed7f21312fe848a6bef1a8e19bc8083
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763327"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866052"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Modul a verzi matice Ansible
 
@@ -53,11 +53,10 @@ Tyto moduly jsou dostupné z oficiálním vydáním Ansible a následující rol
 | azure_rm_virtualmachinescalesetinstance_facts | -            | -                         | -            | -            | Ano          | Ano          |
 | **Sítě**                              |              |                             |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | Ano          | Ano          | Ano          |
-| azure_rm_appgwroute                         | -            | -                           | -            | -            | Ano          | Ano          |
-| azure_rm_appgwroute                         | -            | -                           | -            | -            | Ano          | Ano          |
-| azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | Ano          | Ano          |
-| azure_rm_appgwroutetable                    | -            | -                           | -            | -            | Ano          | Ano          |
-| azure_rm_appgwroutetable_facts              | -            | -                           | -            | -            | Ano          | Ano          |
+| azure_rm_appgwroute                         | -            | -                           | -            | -            | -          | Ano          |
+| azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | -          | Ano          |
+| azure_rm_appgwroutetable                    | -            | -                           | -            | -            | -          | Ano          |
+| azure_rm_appgwroutetable_facts              | -            | -                           | -            | -            | -          | Ano          |
 | azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Ano          | Ano          |
 | azure_rm_applicationsecuritygroup_facts     | -            | -                           | -            | -            | Ano          | Ano          |
 | azure_rm_cdnendpoint                        | -            | -                         | -          | -            | Ano          | Ano          |

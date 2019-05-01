@@ -1,25 +1,19 @@
 ---
-title: Příprava balíčku AppSource | Dokumentace Microsoftu
+title: Příprava balíčku AppSource | Azure Marketplace
 description: Explanaion v tom, jak připravit a sestavovat balíčky AppSource.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625431"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935647"
 ---
 # <a name="appsource-package-preparation"></a>Příprava balíčků na AppSource
 
@@ -117,7 +111,7 @@ Tady je ukázkový kód pro input.xml. Viz definice v níže uvedená tabulka.
 |SolutionAnchorName |Název souboru zip řešení v package deployer, který se používá pro zobrazovaný název a popis prostředků řešení.|
 | StartDate| Toto je datum, které bude k dispozici balíček řešení. Je ve formátu MM/DD/RRRR|
 |EndDate|Toto je datum, že bude balíček řešení přestane být k dispozici. Je ve formátu MM/DD/RRRR |
-|SupportedCountries |Toto je čárkami oddělený seznam zemí, které by se měla zobrazit tento balíček. Obraťte se na seznam všech aktuální kódy zemí online služeb. V době psaní tohoto textu byl seznam: AE, AL, AM, AO, AR, AT, AUSTRÁLIE, AZ, BA, BB, BD, BÝT, BG, BH, BM, BN, BO, BRAZÍLIE, PODLE CERTIFIKAČNÍ AUTORITY, CH, PRŮBĚŽNÁ INTEGRACE, CL, CM, CO, CR, CV, SH, CY, CZ, DE, DK, PROVEĎTE, DZ, ES, EE, TŘEBA, ES, FI, FR, GB, GE, GV, GR, GT, HK , HN, HR, HU, ID, IE, IL, IN, IQ, JE HO, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MC, MD, MĚ, MK, MN, MĚSÍC, MT, JEDNOTKU ZASÍLÁNÍ ZPRÁV, MX, MY, NG, NI, NL, NE, NZ, OBJEKTOVÝ MODEL, PA, PE, PH , PK, PL, ŽÁDOSTI O PŘIJETÍ ZMĚN, PS, PT, PY, DOTAZŮ A ODPOVĚDÍ, RO, RS, RU, RW, SA, SE, SG, SI, SK, SÉRIOVÉ ČÍSLO, SV, TH, TM, TN, TR, TT, TW, UŽIVATELSKÝ AGENT, USA, UY, UZ, ULOŽIT, VI, VN, ZA, ZW |
+|SupportedCountries |Toto je čárkami oddělený seznam zemí/oblastí, které by se měla zobrazit tento balíček. Obraťte se na seznam všech aktuální kódy zemí online služeb. V době psaní tohoto textu byl seznam: AE, AL, AM, AO, AR, AT, AUSTRÁLIE, AZ, BA, BB, BD, BÝT, BG, BH, BM, BN, BO, BRAZÍLIE, PODLE CERTIFIKAČNÍ AUTORITY, CH, PRŮBĚŽNÁ INTEGRACE, CL, CM, CO, CR, CV, SH, CY, CZ, DE, DK, PROVEĎTE, DZ, ES, EE, TŘEBA, ES, FI, FR, GB, GE, GV, GR, GT, HK , HN, HR, HU, ID, IE, IL, IN, IQ, JE HO, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MC, MD, MĚ, MK, MN, MĚSÍC, MT, JEDNOTKU ZASÍLÁNÍ ZPRÁV, MX, MY, NG, NI, NL, NE, NZ, OBJEKTOVÝ MODEL, PA, PE, PH , PK, PL, ŽÁDOSTI O PŘIJETÍ ZMĚN, PS, PT, PY, DOTAZŮ A ODPOVĚDÍ, RO, RS, RU, RW, SA, SE, SG, SI, SK, SÉRIOVÉ ČÍSLO, SV, TH, TM, TN, TR, TT, TW, UŽIVATELSKÝ AGENT, USA, UY, UZ, ULOŽIT, VI, VN, ZA, ZW |
 |LearnMoreLink | Adresa URL na stránku pro další informace pro tento balíček. |
 |Národní prostředí|Jedna instance tohoto uzlu pro každý jazyk uživatelského prostředí, které chcete podporovat v upřednostňované řešení uživatelské prostředí Tento uzel obsahuje podřízené položky, které popisují národní prostředí, loga a podmínky pro jednotlivé jazyky|
 |Národní prostředí: PackageLocale.Code|LCID jazyka pro tento uzel. Příklad: Je 1033 jazykovou verzi US English|

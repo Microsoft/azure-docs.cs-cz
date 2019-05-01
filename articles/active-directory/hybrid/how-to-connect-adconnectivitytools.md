@@ -1,28 +1,28 @@
 ---
 title: 'Azure AD Connect: Co je modul Powershellu ADConnectivityTool | Dokumentace Microsoftu'
-description: Toto téma představuje nový modul prostředí ADConnectivity PowerShell
+description: Toto téma představuje nový modul prostředí ADConnectivity PowerShell a jak ho lze použít k řešení potíží.
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b2471b28132b26c41844b620f6dcf49e3802a6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60245664"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571116"
 ---
-# <a name="what-is-the-adconnectivitytool-powershell-module"></a>Co je modul Powershellu ADConnectivityTool?
+# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Řešení potíží s připojením Azure AD pomocí modulu ADConnectivityTool PowerShell
 
 Nástroj ADConnectivity je modul Powershellu, který se používá v jednom z následujících akcí:
 
-- Během instalace, pokud je problém se síťovým připojením úspěšném ověření přihlašovacích údajů Active Directory zabrání uživateli v průvodci k dispozici.
+- Během instalace Pokud problém se síťovým připojením zabraňuje úspěšným ověřením pověření služby Active Directory uživatelem zadané v průvodci.
 - Po dokončení instalace uživatelem, který volá funkce z relace prostředí PowerShell.
 
 Nástroj je umístěný v: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 

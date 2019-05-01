@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323916"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922390"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Rychlý start: Vytvoření profilu Azure CDN a koncový bod pomocí šablony Resource Manageru
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 V tomto kroku vytvoříte soubor šablony, který se nasazuje prostředky.
 
-Přestože tento příklad vás provede scénáři obecné akcelerace webu, existují mnoho dalších nastavení, které lze nakonfigurovat. Tato nastavení jsou dostupná v odkazu na šablony Azure Resource Manageru. Podrobnosti najdete odkazy pro [profil CDN](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles) a [koncového bodu CDN profilu](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+Přestože tento příklad vás provede scénáři obecné akcelerace webu, existují mnoho dalších nastavení, které lze nakonfigurovat. Tato nastavení jsou dostupná v odkazu na šablony Azure Resource Manageru. Podrobnosti najdete odkazy pro [profil CDN](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) a [koncového bodu CDN profilu](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
 Všimněte si, že Microsoft CDN nepodporuje úpravy seznamu typ obsahu.
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Odkazy
 
-* Profil CDN – [odkaz na šablonu Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* Koncový bod CDN - [dokumentaci odkaz na šablonu Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* Profil CDN – [odkaz na šablonu Azure Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* Koncový bod CDN - [dokumentaci odkaz na šablonu Azure Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>Další postup
 

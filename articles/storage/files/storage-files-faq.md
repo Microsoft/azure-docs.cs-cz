@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 77f07394eb895c08ef3e366bd486b4270714c2fc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766259"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917615"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -249,7 +249,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="port-445-blocked"></a>
 **Připojte své poskytovatele internetových služeb nebo IT bloky Port 445, které se nedaří soubory Azure. Co bych měl/a dělat?**
 
-    Informace o [různé způsoby, jak řešení blokované portu 445 zde](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Služba soubory Azure umožňuje pouze připojení přes protokol SMB 3.0 (s podporou šifrování) z mimo oblasti nebo datového centra. Protokol SMB 3.0 přináší mnoho funkcí zabezpečení, včetně šifrování kanálu, který je vysoce zabezpečená na používání přes internet. Ale jeho možné, že port 445 zablokovaný z historických důvodů slabých míst v nižší verze protokolu SMB. V ideálním případě by měly být blokovány port pro pouze pro přenosy SMB 1.0 a protokol SMB 1.0 by bylo vypnuto na všech klientských počítačích.
+    Informace o [různé způsoby, jak řešení blokované portu 445 zde](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Služba soubory Azure umožňuje pouze připojení přes protokol SMB 3.0 (s podporou šifrování) z mimo oblasti nebo datového centra. Protokol SMB 3.0 přináší mnoho funkcí zabezpečení, včetně šifrování kanálu, který je vysoce zabezpečená na používání přes internet. Ale jeho možné, že port 445 zablokovaný z historických důvodů slabých míst v nižší verze protokolu SMB. V ideálním případě by měly být blokovány port pro pouze pro přenosy SMB 1.0 a protokol SMB 1.0 by bylo vypnuto na všech klientských počítačích.
 
 * <a id="expressroute-not-required"></a>
 **Máte připojení do služby soubory Azure pomocí Azure ExpressRoute nebo použít Azure File Sync v místním?**  

@@ -3,19 +3,19 @@ title: Přepnutí na tenanta B2C v Azure Active Directory B2C | Dokumentace Micr
 description: Postup přepnutí do kontextu tenanta Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9315b3a5e1641098daf2c7dadf9fa4f09d0cb2a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee6d85788211315412b7cbd3c82532dcd45162f7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317605"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697711"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Přepnutí na tenanta Azure AD B2C
 

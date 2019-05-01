@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: da56c9664ce533709676ded677add4a2391dce03
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736594"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64865870"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování v doméně pro branou Azure?
 
-Azure Front Door Service ve výchozím nastavení reaguje na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek provádí. V některých případech však můžete chtít omezit přístup k vašim webovým aplikacím podle země. Brány firewall (WAF) služby webových aplikací za branou umožňuje definovat zásady, pomocí pravidel pro vlastní přístup pro konkrétní cestu na váš koncový bod má povolit nebo blokovat přístup ze zadaného zemí. 
+Azure Front Door Service ve výchozím nastavení reaguje na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek provádí. Ale v některých případech může chtít omezit přístup k webovým aplikacím podle země nebo oblasti. Brány firewall (WAF) služby webových aplikací za branou umožňuje definovat zásady, pomocí pravidel pro vlastní přístup pro konkrétní cestu na váš koncový bod Pokud chcete povolit nebo blokovat přístup ze zadaného zemích nebo oblastech. 
 
 Zásady WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
 
@@ -72,7 +72,7 @@ Můžete nakonfigurovat zásady geografického filtrování pro vaše branou bu�
 | CO | Kolumbie|
 | CR | Kostarika|
 | CU | Kuba|
-| CV | Kapverdy|
+| CV | Cabo Verde|
 | CY | Kypr|
 | CZ | Česká republika|
 | DE | Německo|

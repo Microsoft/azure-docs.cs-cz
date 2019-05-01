@@ -1,25 +1,18 @@
 ---
-title: Azure a Dynamics 365 konzultační služby nabízejí – požadavky | Dokumentace Microsoftu
-description: Příručka pro požadavky na Azure nebo Dynamics 365 konzultační nabídky služby na portálu partnerů cloudu.
+title: Azure a Dynamics 365 konzultační služby nabízejí požadavky | Azure Marketplace
+description: Požadavky pro Azure nebo Dynamics 365 konzultační služby nabízejí v portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 7bd0f407424d7335094f1b4ad533281fc024d000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: bd32f68037e29e38fffb0b716772040d22fdfff0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565322"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942766"
 ---
 # <a name="consulting-service-prerequisites"></a>Požadavky na konzultační služby
 

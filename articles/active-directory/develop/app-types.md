@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa4b68d48ec3f4fbb61c7144a133d9c42938c723
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411181"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917286"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikací v v1.0
 
@@ -63,7 +63,7 @@ Všechny aplikace, které outsources ověřování do služby Azure AD musí bý
   * **Klíč** – klíč, který se zasílá společně s ID aplikace při ověřování do služby Azure AD k volání webového rozhraní API.
 * Azure AD je potřeba zajistit, že aplikace má požadovaná oprávnění pro přístup k datům adresáře, jiné aplikace ve vaší organizaci a tak dále.
 
-Podrobnosti, zjistěte, jak [registrace aplikace ke koncovému bodu Azure AD v1.0](quickstart-v1-add-azure-ad-app.md).
+Podrobnosti, zjistěte, jak [registrace aplikace](quickstart-register-app.md).
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Aplikace pro jednoho tenanta a více tenantů
 

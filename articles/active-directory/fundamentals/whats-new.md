@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16f684674e69113a869346d5de9ef1d50734f01b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a50dadb7ae401a5655745a799e6e9fcebb8bb886
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351926"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935929"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -41,6 +41,106 @@ Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. P
 
 ## <a name="april-2019"></a>2019. dubna
 
+### <a name="azure-active-directory-azure-ad-entitlement-management-is-now-available-public-preview"></a>Správa nároků Azure Active Directory (Azure AD) je teď k dispozici (Public preview)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Zásady správného řízení identit  
+**Funkce produktu:** Zásady správného řízení identit
+
+Správa oprávnění Azure AD, nyní ve verzi public preview, pomáhá zákazníkům delegovat správu balíčků přístup, který definuje, jak zaměstnancům a obchodními partnery požádat o přístup, který musí schválit a jak dlouho mají přístup. Přístup balíčky můžete spravovat členství ve službě Azure AD a Office 365 skupiny přiřazení rolí v oddílu podnikové aplikace a přiřazení rolí pro weby SharePoint Online. Další informace o Správa nároků na [přehled správy oprávnění Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Další informace o škálu funkcí správy identit Azure AD, včetně Privileged Identity Management, kontroly přístupu a podmínky použití, naleznete v tématu [novinky správy identit Azure AD?](../governance/identity-governance-overview.md).
+
+---
+
+### <a name="configure-a-naming-policy-for-office-365-groups-in-azure-ad-portal-public-preview"></a>Konfigurace zásad pojmenování pro skupiny Office 365 na portálu Azure AD (Public preview)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Správa skupin  
+**Funkce produktu:** Spolupráce
+
+Správci teď můžete nakonfigurovat zásady pojmenování pro skupiny Office 365, pomocí portálu Azure AD. Tato změna pomáhá vynucovat konzistentní zásady vytváření názvů pro skupiny Office 365 vytvořených nebo upravených uživatelé ve vaší organizaci. 
+
+Zásady pojmenování pro skupiny Office 365 můžete nakonfigurovat dvěma způsoby:
+
+- Definujte předpon a přípon, které se automaticky přidají do názvu skupiny.
+
+- Nahrajte vlastní sadu blokované slova pro vaši organizaci, které nejsou povoleny v názvech skupin (například "generální ředitel, výplatních pásek, HR").
+
+Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy).
+
+---
+
+### <a name="azure-ad-activity-logs-are-now-available-in-azure-monitor-general-availability"></a>Protokoly služby Azure AD aktivit jsou teď dostupné ve službě Azure Monitor (obecná dostupnost)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Vytváření sestav  
+**Funkce produktu:** Monitorování a sestavy
+
+Pomáhají řešit svůj názor týkající se vizualizací protokolů aktivit Azure AD, jsme zavedli novou funkci Insights ve službě Log Analytics. Tato funkce umožňuje získat přehledy o vašich prostředků Azure AD s použitím našich interaktivní šablon, volá se sešity. Tyto předem připravené pracovní sešity poskytují podrobnosti pro aplikace nebo uživatele a zahrnují:
+
+- **Přihlášení.** Poskytuje podrobnosti pro aplikace a uživatele, včetně místo přihlášení, používané operačního systému nebo prohlížeče klienta a verze a počet úspěšných nebo neúspěšných přihlášení.
+
+- **Starší verze ověřování a podmíněný přístup.** Poskytuje podrobnosti pro aplikace a uživatele, kteří používají starší verze ověřování, včetně použití služby Multi-Factor Authentication aktivované zásady podmíněného přístupu, aplikace pomocí zásad podmíněného přístupu, a tak dále.
+
+- **Analýza selhání přihlášení.** Umožňuje určit, pokud se vyskytnou chyby přihlášení z důvodu akce uživatele, zásad problémy nebo infrastruktury.
+
+- **Vlastní sestavy.** Můžete vytvořit novou nebo upravit existující sešity a pomohou přizpůsobit funkce přehledů pro vaši organizaci.
+
+Další informace najdete v tématu [jak používat Azure Monitor sešity sestav Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---april-2019"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD – duben 2019
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podnikové aplikace  
+**Funkce produktu:** Integrace třetích stran
+
+V dubnu 2019 jsme přidali podporu těchto 21 nové aplikace s federací do Galerie aplikací:
+
+[Řešení SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks Single Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [provede se perkolace](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol--tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [ Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), [Benchling](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial), [EduBrite LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial), [RStudio Připojit](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [Mitel připojení](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [Alibaba cloudu (jednotné přihlašování založené na roli)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Certent jmění správu](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Správce certifikátů Sectigo](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [ SurveyMonkey Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
+
+Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
+
+---
+
+### <a name="new-access-reviews-frequency-option-and-multiple-role-selection"></a>Kontroly přístupu nové možnosti četnost a vícenásobný výběr role
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Kontroly přístupu  
+**Funkce produktu:** Zásady správného řízení identit
+
+Nové aktualizace ve službě Azure AD kontroly přístupu umožňují:
+
+- Změna revize frekvence váš přístup k **částečně annually**, kromě dříve existující možnosti jednou týdně, měsíčně, čtvrtletně a ročně.
+
+- Vyberte několik služeb Azure AD a zkontrolujte role prostředků Azure při vytváření jeden přístup. V takovém případě jsou nastavené všechny role se stejnými nastaveními a všem jejím kontrolorům se zobrazí oznámení ve stejnou dobu.
+
+Další informace o tom, jak vytvořit kontrolu přístupu najdete v tématu [vytvoření kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/governance/create-access-review).
+
+---
+
+### <a name="azure-ad-connect-email-alert-systems-are-transitioning-sending-new-email-sender-information-for-some-customers"></a>Azure AD Connect e-mailové výstrahy systémy se převádějí, odesílání nové informace odesílatele e-mailu pro některé zákazníky
+
+**Typ:** Změněná funkce  
+**Kategorie služby:** AD Sync  
+**Funkce produktu:** Platforma
+
+Azure AD Connect se právě přechod naše systémy oznámení e-mailu potenciálně zobrazující někteří zákazníci nový odesílatel e-mailu. Chcete-li to vyřešit, je nutné přidat `azure-noreply@microsoft.com` do seznamu povolených IP adres vaší organizace nebo vám nebudou moct i nadále zajistit důležité výstrahy z Office 365, Azure nebo služby synchronizace.
+
+---
+
+### <a name="upn-suffix-changes-are-now-successful-between-federated-domains-in-azure-ad-connect"></a>(UPN) příponu změny jsou nyní úspěšné mezi doménami federativní ve službě Azure AD Connect
+
+**Typ:** Pevné  
+**Kategorie služby:** AD Sync  
+**Funkce produktu:** Platforma
+
+Nyní můžete úspěšně změnit příponu UPN uživatele z jedné domény federativní do jiné domény federativní ve službě Azure AD Connect. Tato oprava znamená, že byste už prostředí FederatedDomainChangeError chybová zpráva při synchronizační cyklus nebo přijímat oznámení e-mailu s oznámením, "Nepodařilo se aktualizovat tento objekt ve službě Azure Active Directory, protože atribut [ FederatedUser.UserPrincipalName] není platný. Aktualizujte hodnotu v místních adresářových službách".
+
+Další informace najdete v tématu [řešení chyb při synchronizaci](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors#federateddomainchangeerror).
+
+---
+
 ### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Zvýšení zabezpečení pomocí zásady podmíněného přístupu na základě ochrany aplikací ve službě Azure AD (Public preview)
 
 **Typ:** Nová funkce  
@@ -59,8 +159,6 @@ Další informace najdete v tématu [vyžadování zásad ochrany aplikací pro 
 
 ---
 
-## <a name="march-2019"></a>2019. března
-
 ### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nová podpora pro Azure AD jednotného přihlašování a podmíněný přístup v Microsoft Edge (Public preview)
 
 **Typ:** Nová funkce  
@@ -69,9 +167,11 @@ Další informace najdete v tématu [vyžadování zásad ochrany aplikací pro 
 
 Rozšířili jsme naši podporu služby Azure AD pro Microsoft Edge, včetně poskytnutí novou podporu pro jednotné přihlašování a podmíněný přístup Azure AD. Pokud jste dříve používali Microsoft Intune Managed Browser, teď můžete Microsoft Edge místo toho.
 
-Další informace o vytváření a správu zařízení a aplikací pomocí podmíněného přístupu najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/require-managed-devices) a [vyžaduje schválené klientské aplikace pro cloud přístup k aplikaci s podmíněným přístupem](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/app-based-conditional-access). Další informace o tom, jak Správa přístupu k Microsoft Edge pomocí zásad Microsoft Intune najdete v tématu [Správa přístupu k Internetu pomocí prohlížeče chráněné zásad Microsoft Intune](https://docs.microsoft.com/en-us/intune/app-configuration-managed-browser).
+Další informace o vytváření a správu zařízení a aplikací pomocí podmíněného přístupu najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) a [vyžaduje schválené klientské aplikace pro cloud přístup k aplikaci s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Další informace o tom, jak Správa přístupu k Microsoft Edge pomocí zásad Microsoft Intune najdete v tématu [Správa přístupu k Internetu pomocí prohlížeče chráněné zásad Microsoft Intune](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
 ---
+
+## <a name="march-2019"></a>2019. března
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Rozhraní prostředí pro identity a vlastních zásad pro podporu v Azure Active Directory B2C je nyní dostupná (GA)
 
@@ -119,9 +219,9 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 Automatizujte vytváření, aktualizace nebo odstranění uživatelských účtů pro následující aplikace:
 
-[Zscalerem](https://aka.ms/ZscalerProvisioning), [Zscalerem Beta](http://aka.ms/ZscalerBetaProvisioning), [Zscalerem jeden](https://aka.ms/ZscalerOneProvisioning), [Zscalerem dvě](http://aka.ms/ZscalerTwoProvisioning), [Zscalerem tři](http://aka.ms/ZscalerThreeProvisioning), [Zscaler ZSCloud ](http://aka.ms/ZscalerZSCloudProvisioning), [Cloud od společnosti Atlassian](http://aka.ms/atlassianCloudProvisioning)
+[Zscalerem](https://aka.ms/ZscalerProvisioning), [Zscalerem Beta](https://aka.ms/ZscalerBetaProvisioning), [Zscalerem jeden](https://aka.ms/ZscalerOneProvisioning), [Zscalerem dvě](https://aka.ms/ZscalerTwoProvisioning), [Zscalerem tři](https://aka.ms/ZscalerThreeProvisioning), [Zscaler ZSCloud ](https://aka.ms/ZscalerZSCloudProvisioning), [Cloud od společnosti Atlassian](https://aka.ms/atlassianCloudProvisioning)
 
-Další informace o tom, jak lépe zabezpečit svou organizaci prostřednictvím zřizování automatizované uživatelských účtů najdete v tématu [automatizace zřizování uživatelů pro aplikace SaaS ve službě Azure AD](http://aka.ms/ProvisioningDocumentation).
+Další informace o tom, jak lépe zabezpečit svou organizaci prostřednictvím zřizování automatizované uživatelských účtů najdete v tématu [automatizace zřizování uživatelů pro aplikace SaaS ve službě Azure AD](https://aka.ms/ProvisioningDocumentation).
 
 ---
 
@@ -291,7 +391,7 @@ V příštích týdnech jsme budete odebrání možnost zapnout starému kombino
 
 1. Jako globální správce nebo Správce uživatelů, přihlaste se k webu Azure portal a přejděte na **Azure Active Directory > Nastavení > Spravovat nastavení pro funkce ve verzi preview panel přístupu**.  
 
-2.  Pokud **uživatelé, kteří můžou používat funkce verze preview pro registraci a správu bezpečnostních údajů** je možnost nastavená na **žádný**, možnost se odebere z vašeho tenanta.
+2. Pokud **uživatelé, kteří můžou používat funkce verze preview pro registraci a správu bezpečnostních údajů** je možnost nastavená na **žádný**, možnost se odebere z vašeho tenanta.
 
 Bez ohledu na to, zda jste dříve zapnutá staré kombinovaná registrace MFA/samoobslužné resetování HESLA ve verzi preview prostředí pro uživatele, nebo Ne, starší prostředí se vypne v budoucnu. Proto důrazně doporučujeme, že přejdete na nové a vylepšené prostředí co nejdříve.
 
@@ -482,7 +582,7 @@ Ve schématu auditu se mění následující pole:
 
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
-|Category|To bylo **název služby** pole. Je teď **kategorií auditu** pole. **Název služby** byl přejmenován na **loggedByService** pole.|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
+|Kategorie|To bylo **název služby** pole. Je teď **kategorií auditu** pole. **Název služby** byl přejmenován na **loggedByService** pole.|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
 |targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
 |loggedByService|Obsahuje název služby, která vygeneruje protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek funkce protokolů auditu. Dříve to bylo uvedené, ale zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Úspěch</li><li>Selhání</li></ul>|
@@ -696,184 +796,3 @@ Tato změna vám umožní rychleji odstranit názvů vlastních domén, pokud va
 Další informace najdete v tématu [odstranit vlastní název domény](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-manage#delete-a-custom-domain-name).
 
 ---
-
-## <a name="september-2018"></a>Září 2018
- 
-### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Aktualizovala se oprávnění role správce pro dynamické skupiny
-
-**Typ:** Pevné  
-**Kategorie služby:** Správa skupin  
-**Funkce produktu:** Spolupráce
-
-Vyřešili jsme problém, konkrétní správce rolí teď můžete vytvářet a aktualizovat pravidla dynamického členství, aniž byste museli být vlastníkem skupiny.
-
-Role jsou:
-
-- Globální správce
-
-- Správce Intune
-
-- Správce uživatelů
-
-Další informace najdete v tématu [vytvoření dynamické skupiny a zkontrolovat stav](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
-
----
-
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Zjednodušená nastavení konfigurace jednotného přihlašování pro některé aplikace třetích stran
-
-**Typ:** Nová funkce  
-**Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
-
-Uvědomujeme si, že nastavení si jednotné přihlašování (SSO) k softwaru jako služby (SaaS) aplikací může být náročné vzhledem k jedinečné povaze konfiguraci jednotlivých aplikací. Sestavili jsme zjednodušené konfigurační prostředí k automaticky vyplní nastavení konfigurace jednotného přihlašování pro následující aplikace SaaS třetích stran:
-
-- Zendesk
-
-- ArcGis Online
-
-- Jamf Pro
-
-Chcete-li začít používat toto prostředí jedním kliknutím, přejděte **webu Azure portal** > **Konfigurace jednotného přihlašování** stránku pro aplikaci. Další informace najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-
----
-
-### <a name="azure-active-directory---where-is-your-data-located-page"></a>Azure Active Directory – Kde se ukládají vaše data? stránka
-
-**Typ:** Nová funkce  
-**Kategorie služby:** Ostatní  
-**Funkce produktu:** GoLocal
-
-Vyberte oblast vaší společnosti **Azure Active Directory – kde se nachází vaše data** stránky k zobrazení, které datové centrum Azure jsou uloženy vaše data služby Azure AD v klidovém stavu pro všechny služby Azure AD. Informace můžete filtrovat podle konkrétní služby Azure AD pro oblasti vaší společnosti.
-
-Přístup k této funkci a další informace najdete v tématu [Azure Active Directory – kde se nachází vaše data](https://aka.ms/AADDataMap).
-
----
-
-### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>Pro přístupový panel Moje aplikace je k dispozici nový plán nasazení
-
-**Typ:** Nová funkce  
-**Kategorie služby:** Moje aplikace  
-**Funkce produktu:** Jednotné přihlašování
-
-Podívejte se na nový plán nasazení, který je k dispozici pro Moje aplikace přístupového panelu (https://aka.ms/deploymentplans).
-Moje aplikace přístupový panel poskytuje uživatelům na jednom místě vyhledat a získat přístup k jejich aplikacím. Tento portál poskytuje také uživatelům samoobslužné služby příležitosti, jako je žádost o přístup k aplikacím a skupinám nebo správy přístupu k těmto prostředkům jménem jiných uživatelů.
-
-Další informace najdete v tématu [novinky na portálu Moje aplikace?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
-
----
-
-### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Nová karta Řešení potíží a podpora na stránce Protokoly přihlášení na portálu Azure Portal
-
-**Typ:** Nová funkce  
-**Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
-
-Nové **řešení potíží a podpora** kartě **přihlášení** stránky Azure portal, má pomoci správce a pracovníky technické podpory řešit problémy spojené s přihlášení Azure AD. Tato nová karta poskytuje kód chyby, chybová zpráva a doporučeními k nápravě (pokud existuje) vám pomohou při řešení problému. Pokud nemůžete vyřešit problém, jsme také získáte nový způsob, jak vytvořit lístek podpory pomocí **kopírování do schránky** prostředí, která naplní **ID žádosti** a **Datum(UTC)** pole pro soubor protokolu v vašeho lístku podpory.  
-
-![Protokoly přihlášení ukazující na nové kartě](media/whats-new/troubleshooting-and-support.png)
-
----
-
-### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>Vylepšená podpora vlastních vlastností rozšíření, které se používají k vytvoření pravidel dynamického členství
-
-**Typ:** Změněná funkce  
-**Kategorie služby:** Správa skupin  
-**Funkce produktu:** Spolupráce
-
-S touto aktualizací můžete kliknout **získat vlastnosti rozšíření vlastních** propojení z Tvůrce dynamický uživatel pravidlo skupiny, zadejte svoje ID a jedinečných aplikací a zobrazit úplný seznam vlastností vlastního rozšíření má použít při vytváření dynamické pravidla členství pro uživatele. Tento seznam můžete také aktualizovat, k získání nových vlastností vlastního rozšíření pro tuto aplikaci.
-
-Další informace o použití rozšíření vlastních vlastností pro pravidla dynamického členství, naleznete v tématu [rozšíření vlastností a vlastností vlastního rozšíření](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership#extension-properties-and-custom-extension-properties)
-
----
-
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
-
-**Typ:** Plánování změn  
-**Kategorie služby:** Podmíněný přístup  
-**Funkce produktu:** Identita zabezpečení a ochrany
-
-Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
-
-- Microsoft To-Do
-
-- Microsoft Stream
-
-Další informace naleznete v tématu:
-
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
-
----
-
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nová podpora samoobslužného resetování hesla ze zamykací obrazovky ve Windows 7/8/8.1
-
-**Typ:** Nová funkce  
-**Kategorie služby:** SSPR  
-**Funkce produktu:** Ověřování uživatelů
-
-Po nastavení této nové funkce, se uživatelům zobrazí odkaz na resetování hesla z **Zámek** obrazovky zařízení se systémem Windows 7, Windows 8 nebo Windows 8.1. Když kliknete na tento odkaz, může uživatel v průvodci pomocí stejného procesu resetování hesla pomocí webového prohlížeče.
-
-Další informace najdete v tématu [povolení heslo resetovat z Windows 7, 8 a 8.1](https://aka.ms/ssprforwindows78)
-
----
-
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Oznámení o změně: Autorizační kódy se již nebude k dispozici pro opakované použití 
-
-**Typ:** Plánování změn  
-**Kategorie služby:** Ověřování (přihlášení)  
-**Funkce produktu:** Ověřování uživatelů
-
-Od 15. listopadu 2018, Azure AD, přestane přijímat předchozích ověřovací kódy pro aplikace. Tato změna zabezpečení pomáhá vám Azure AD podle specifikace OAuth a vynutí u koncových bodů v1 i v2.
-
-Pokud vaše aplikace opakovaně používá autorizační kódy k získání tokenů pro několik prostředků, doporučujeme použít kód pro získání tokenu obnovení a pak pomocí tohoto tokenu obnovení získat další tokeny pro jiné prostředky. Autorizační kódy lze použít pouze jednou, ale obnovovací tokeny lze použít více než jednou v několika prostředcích. Aplikace, která se pokusí znovu použít ověřovacího kódu během toku OAuth kódu se zobrazí chyba invalid_grant.
-
-Tato a další související s protokoly změny najdete v tématu [úplný seznam co je nového v ověřování](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – září 2018
-
-**Typ:** Nová funkce  
-**Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
- 
-V září 2018 jsme přidali podporu těchto 16 nové aplikace s federací do Galerie aplikací:
-
-[Uberflip](https://docs.microsoft.com/azure/active-directory/saas-apps/uberflip-tutorial), [Comeet náboru softwaru](https://docs.microsoft.com/azure/active-directory/saas-apps/comeetrecruitingsoftware-tutorial), [Workteam](https://docs.microsoft.com/azure/active-directory/saas-apps/workteam-tutorial), [ArcGIS Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/arcgisenterprise-tutorial), [Nuclino](https://docs.microsoft.com/azure/active-directory/saas-apps/nuclino-tutorial), [ JDA Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/jdacloud-tutorial), [Snowflake](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial), NavigoCloud, [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-tutorial), join.me, [ZephyrSSO](https://docs.microsoft.com/azure/active-directory/saas-apps/zephyrsso-tutorial), [Silverback](https://docs.microsoft.com/azure/active-directory/saas-apps/silverback-tutorial), Riverbed Xirrus EasyPass, [jednotného přihlašování Rackspace](https://docs.microsoft.com/azure/active-directory/saas-apps/rackspacesso-tutorial), Enlyft jednotné přihlašování pro Azure, SurveyMonkey [Convene](https://docs.microsoft.com/azure/active-directory/saas-apps/convene-tutorial), [dmarcian](https://docs.microsoft.com/azure/active-directory/saas-apps/dmarcian-tutorial)
-
-Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
-
----
-
-### <a name="support-for-additional-claims-transformations-methods"></a>Podporují se další metody transformace deklarací identity
-
-**Typ:** Nová funkce  
-**Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
-
-Zavedli jsme nové metody transformace deklarací identity, ToLower() byly a ToUpper(), který je možné použít na tokeny SAML ze SAML podle **Konfigurace jednotného přihlašování** stránky.
-
-Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
-
----
-
-### <a name="updated-saml-based-app-configuration-ui-preview"></a>Aktualizovalo se uživatelské rozhraní konfigurace aplikací založených na SAML (Preview)
-
-**Typ:** Změněná funkce  
-**Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
-
-Jako součást naší uživatelské rozhraní pro konfiguraci aktualizovaná aplikace založené na SAML získáte:
-
-- Názorný postup aktualizované prostředí pro konfiguraci vaší aplikace založené na SAML.
-
-- Větší přehled o tom, co je chybějící nebo nesprávné ve vaší konfiguraci.
-
-- Možnost přidat více e-mailové adresy pro oznámení o vypršení platnosti certifikátu.
-
-- Nové metody transformace deklarací identity, ToLower() byly a ToUpper() a další.
-
-- Způsob, jak nahrát vlastní token podpisový certifikát pro podnikové aplikace.
-
-- Způsob, jak nastavit formátu NameID pro aplikace SAML a způsob, jak nastavit hodnotu NameID jako rozšíření adresáře.
-
-K zapnutí nastavení v této aktualizaci zobrazení, klikněte na tlačítko **vyzkoušet naše nové rozhraní** odkaz z horní části **Single Sign-On** stránky. Další informace najdete v tématu [kurzu: Konfigurace založené na SAML jednotného přihlašování pro aplikaci pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).

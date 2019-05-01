@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979747"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728589"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 
@@ -77,7 +77,9 @@ Příklad:
 
 Chcete-li odstranit skupinu prostředků, použijte `az group delete <nameOfResourceGroup>` příkazu.
 
-## <a name="supported-container-os-images"></a>Image kontejnerů podporovaný operační systém
+## <a name="deployments"></a>Nasazení
+
+### <a name="what-container-images-are-supported"></a>Jaké Image kontejnerů jsou podporovány?
 
 Pokud vyvíjíte na počítači s Windows Fall Creators Update (verze 1709), můžete použít pouze Image dockeru s aplikací Windows verze 1709.
 
@@ -90,6 +92,10 @@ Následující Image kontejneru operačních systémů lze použít k nasazení 
     - Windows Server verze 1803
 - Linux
     - Žádné známé omezení
+
+### <a name="what-types-of-applications-can-i-deploy"></a>Jaké typy aplikací, které můžete nasadit 
+
+Můžete nasadit cokoli, co běží v kontejnerech, které se vejdou do omezení umístí na prostředek aplikace (viz výše pro další informace o kvótách). Pokud zjistíme, že používáte síť pro spouštění úloh v neplatné nebo zneužije systému (to znamená dolování), pak vyhrazujeme si právo k ukončení nasazení a seznamu blokovaných předplatného ve spuštění ve službě. Kontaktujte nás Pokud máte nějaké dotazy na konkrétní úlohu. 
 
 ## <a name="developer-experience-issues"></a>Problémy prostředí pro vývojáře
 

@@ -1,5 +1,5 @@
 ---
-title: Registrace aplikace na platformě Microsoft Identity Platform (Preview) | Azure
+title: Registrace aplikace s platformou identity Microsoft - platforma identit Microsoft
 description: Zjistěte, jak přidat a zaregistrovat aplikaci na platformě Microsoft Identity Platform.
 services: active-directory
 documentationcenter: ''
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/02/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 366d6fe8921a5330f48da2879444e0b80cbc9bd2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e78a837588ef177182f0c13db49e480845f772
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299576"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918752"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft (Preview)
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft
 
 Podnikoví vývojáři a poskytovatelé softwaru jako služby (SaaS) můžou vyvíjet komerční cloudové služby nebo obchodní aplikace s možností integrace s platformou Microsoft Identity Platform za účelem zajištění zabezpečeného přihlašování a autorizace pro služby.
 
-V tomto rychlém startu se dozvíte, jak pomocí prostředí **Registrace aplikací (Preview)** na webu Azure Portal přidat a zaregistrovat aplikaci, aby ji bylo možné integrovat s platformou Microsoft Identity Platform. Další informace o nové funkce a vylepšení v novém prostředí registrace aplikací, najdete v článku [tento příspěvek na blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/). 
+V tomto rychlém startu se dozvíte, jak přidat a registraci aplikace s využitím **registrace aplikací** prostředí na webu Azure Portal tak, aby vaše aplikace je možné integrovat s platformou identity Microsoft. Další informace o nové funkce a vylepšení v novém prostředí registrace aplikací, najdete v článku [tento příspěvek na blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
 ## <a name="prerequisite"></a>Požadavek
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 4ecee0e4f01da329e44c0f65b2c204520f2da87f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722364"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922445"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
 
@@ -68,7 +68,7 @@ Prvním krokem při používání služby Azure AD k ověřování je registrace
 
 Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID aplikace (také nazývané *ID klienta*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID aplikace, najdete v článku [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Pokud chcete zaregistrovat aplikaci služby Batch, postupujte podle kroků v [přidáním aplikace](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) tématu [integrace aplikací s Azure Active Directory][aad_integrate]. Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Nemusí být skutečný koncový bod.
+Pokud chcete zaregistrovat aplikaci služby Batch, postupujte podle kroků v [přidáním aplikace](../active-directory/develop/quickstart-register-app.md) tématu [integrace aplikací s Azure Active Directory][aad_integrate]. Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Nemusí být skutečný koncový bod.
 
 Po zaregistrování vaší aplikace, zobrazí se vám ID aplikace:
 

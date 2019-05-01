@@ -3,19 +3,19 @@ title: Kurz – přidání zprostředkovatele identity do vašich aplikací – 
 description: Zjistěte, jak přidat zprostředkovatelů identity pro vaše aplikace v Azure Active Directory B2C na webu Azure portal.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ef264622be1e66c98f8c7f17cf3e04b3239e8553
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1bd78442f6a7218dde3710236766117816c42fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360091"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710131"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidat zprostředkovatele identity pro vaše aplikace v Azure Active Directory B2C
 

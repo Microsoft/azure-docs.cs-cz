@@ -9,14 +9,14 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 044e997703f5b274215fb05c7152186948b331b4
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761399"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728827"
 ---
-# <a name="troubleshooting-guide"></a>Průvodce řešením potíží
+# <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
 Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
 
@@ -143,7 +143,7 @@ Spusťte VS Code z příkazového řádku, kde je správně nastavit proměnné 
 
 Pokud máte novější verzi rozšíření VS Codu pro Azure Dev mezery, ale starší verzi rozhraní příkazového řádku Azure Dev prostory se zobrazí tato chyba ve Visual Studio Code.
 
-### <a name="try"></a>Vyzkoušet
+### <a name="try"></a>Vyzkoušení
 
 Stáhněte a nainstalujte nejnovější verzi rozhraní příkazového řádku Azure Dev mezery:
 
@@ -157,7 +157,7 @@ Pokud azds.exe není nainstalovaná nebo správně nakonfigurovaný, může se z
 
 ### <a name="try"></a>Zkuste:
 
-1. Zkontrolujte umístění %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev prostory CLI (Preview) pro azds.exe. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
+1. Zkontrolujte umístění %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev prostory rozhraní příkazového řádku pro azds.exe. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
 2. Pokud není nainstalovaná azds.exe, spusťte následující příkaz:
 
     ```cmd
@@ -293,6 +293,16 @@ K této chybě dochází, pokud klient Helm může už sdělit pod Tiller spušt
 ### <a name="try"></a>Zkuste:
 Obvykle restartování agentské uzly v clusteru vyřeší tento problém.
 
+## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Chyba: verze azds -\<identifikátor\>-\<spacename\>-\<servicename\> se nezdařilo: služeb\<servicename\>' již existuje "nebo" o přijetí změn přístup byl odepřen pro \<servicename\>, úložiště neexistuje, nebo můžou vyžadovat "docker login."
+
+### <a name="reason"></a>Důvod
+K těmto chybám může dojít, pokud je kombinovat s přímým přístupem příkazů Helm (, jako `helm install`, `helm upgrade`, nebo `helm delete`) pomocí příkazů Dev mezery (například `azds up` a `azds down`) uvnitř stejné místo vývoj. K nim dojde, protože prostory vývoj má svoji vlastní instanci Tiller, který je v konfliktu s vlastní instanci Tiller spuštěné ve stejném dev prostoru.
+
+### <a name="try"></a>Zkuste:
+Můžete použít příkazy Helm a vývoj prostory příkazy spouštěly pro stejný cluster AKS, ale každého oboru názvů s povoleným Dev prostory by měl použít jeden z nich.
+
+Předpokládejme například, že použijete ke spuštění celé aplikace v prostoru dev nadřazeného příkazu Helm. Můžete vytvořit podřízené dev prostory vypnout nadřazeného, použít vývoje prostorů ke spouštění jednotlivých služeb uvnitř podřízených prostory vývoj a testování služeb společně. Jakmile budete připraveni k vrácení zpět se změnami, pomocí příkazu Helm nasazení aktualizovaný kód do nadřazené dev prostoru. Nepoužívejte `azds up` aktualizované službu spustit v nadřazeném prvku dev místa, protože bude v konfliktu se službou zpočátku spustit pomocí Helm.
+
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Proxy služby Azure Dev mezer může narušovat dalších podů se spuštěnou v prostoru vývoj
 
 ### <a name="reason"></a>Důvod
@@ -323,7 +333,7 @@ configurations:
 
 Byla překročena uzlu spuštěn pod aplikaci Node.js se pokoušíte připojit se ladicí program *fs.inotify.max_user_watches* hodnotu. V některých případech [na výchozí hodnotu *fs.inotify.max_user_watches* pravděpodobně příliš malá pro zpracování, ladicí program se připojuje přímo k pod](https://github.com/Azure/AKS/issues/772).
 
-### <a name="try"></a>Vyzkoušet
+### <a name="try"></a>Vyzkoušení
 Dočasným řešením tohoto problému je zvýšení hodnoty *fs.inotify.max_user_watches* na každém uzlu v clusteru a tento uzel restartovat, aby se změny projevily.
 
 ## <a name="new-pods-are-not-starting"></a>Nejsou od nových podů
@@ -338,7 +348,7 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 Tento problém může mít vliv na podů v *všechny obory názvů* v clusteru, včetně oborů názvů, ve kterém není povoleno Azure Dev prostory.
 
-### <a name="try"></a>Vyzkoušet
+### <a name="try"></a>Vyzkoušení
 
 [Aktualizace na nejnovější verzi rozhraní příkazového řádku vývojáře prostory](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) a její následné odstranění *azds InitializerConfiguration* z řadiče Azure Dev mezery:
 
@@ -363,7 +373,7 @@ Po přeinstalaci řadiče znovu nasaďte pody.
 ### <a name="reason"></a>Důvod
 Uživatele, kteří používají Azure Dev prostory kontroleru musí mít přístup ke čtení správce *kubeconfig* v clusteru AKS. Například je k dispozici v toto oprávnění [předdefinovaná Azure Kubernetes Service clusteru správce Role](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Musí také mít uživatele, kteří používají Azure Dev prostory kontroleru *Přispěvatel* nebo *vlastníka* role RBAC pro kontroler.
 
-### <a name="try"></a>Vyzkoušet
+### <a name="try"></a>Vyzkoušení
 Další podrobnosti o aktualizaci oprávnění uživatele pro AKS cluster jsou k dispozici [tady](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
 
 Aktualizace uživatelské role RBAC pro kontroler:

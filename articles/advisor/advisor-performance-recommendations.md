@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 6cca6692da37714c76f5241ed14e24c967b00563
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467693"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920451"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zvýšení výkonu aplikace na platformě Azure s využitím Azure Advisoru
 
@@ -88,11 +88,11 @@ Velmi vysoké využití procesoru po delší dobu, může způsobit výkonem pom
 Poměr přístupů do mezipaměti s nízkou může způsobit pomalejší výkon dotazů a zvýšenou vstupně-výstupních operací. To může být způsobeno plán chybný dotazu nebo spuštění úlohy náročné na paměť. Stanovení plánu dotazu nebo [zvyšuje paměť](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) Azure Database for PostgreSQL databázový server, databázový server Azure MySQL nebo Azure MariaDB server vám pomůže optimalizovat provádění úloh databáze. Azure Advisor identifikuje ovlivněné z důvodu těchto častých změn dat vysoké vyrovnávací paměti fondu serverů a doporučuje řešení plán dotazu, přechod na vyšší skladovou Položku s více paměti nebo zvýšení velikosti úložiště, chcete-li získat další vstupně-výstupních operací.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Můžete horizontálně navýšit kapacitu čtení pro úlohy náročné na čtení repliky pro čtení Azure PostgreSQL a MySQL v Azure
-Azure Advisor využívá heuristiky založený na úlohách, jako je poměr čtení na zápis na serveru za posledních sedm dní k identifikaci úlohy náročné na čtení. Databáze Azure pro PostgreSQL prostředek nebo databáze Azure pro prostředek MySQL s poměrem velmi vysoké čtení/zápisu může způsobit procesoru nebo paměti sporů, což vede ke zpomalení výkonu dotazů. Přidávání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) usnadní škálování čtení na serveru repliky, brání omezení procesoru nebo paměti na primárním serveru. Advisor se servery s takové vysokou úlohy náročné na čtení a doporučí přidávání [číst repliku](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) přesměrovat některé další úlohy.
+Azure Advisor využívá heuristiky založený na úlohách, jako je poměr čtení na zápis na serveru za posledních sedm dní k identifikaci úlohy náročné na čtení. Databáze Azure pro PostgreSQL prostředek nebo databáze Azure pro prostředek MySQL s poměrem velmi vysoké čtení/zápisu může způsobit procesoru nebo paměti sporů, což vede ke zpomalení výkonu dotazů. Přidávání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) usnadní škálování čtení na serveru repliky, brání omezení procesoru nebo paměti na primárním serveru. Advisor se servery s takové vysokou úlohy náročné na čtení a doporučí přidávání [číst repliku](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) přesměrovat některé další úlohy.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Škálování serveru Azure MySQL, PostgreSQL v Azure nebo Azure MariaDB na vyšší skladovou Položku, aby se zabránilo omezení připojení
-Nová připojení k vašemu databázovému serveru zabírá paměť. Pokud připojení k serveru se nedaří zálohovat z důvodu zhorší výkon databázového serveru [horní limit](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits) v paměti. Azure Advisor vyhledá servery s mnoha chyb připojení a doporučí upgradování limitů připojení vašeho serveru k poskytování více paměti pro váš server vertikálním navýšení kapacity výpočetních nebo pomocí paměti skladových položkách optimalizováno pro, které mají víc výpočetních prostředků na jádro.
+Nová připojení k vašemu databázovému serveru zabírá paměť. Pokud připojení k serveru se nedaří zálohovat z důvodu zhorší výkon databázového serveru [horní limit](https://docs.microsoft.com/azure/postgresql/concepts-limits) v paměti. Azure Advisor vyhledá servery s mnoha chyb připojení a doporučí upgradování limitů připojení vašeho serveru k poskytování více paměti pro váš server vertikálním navýšení kapacity výpočetních nebo pomocí paměti skladových položkách optimalizováno pro, které mají víc výpočetních prostředků na jádro.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučení k výkonu v Advisoru
 

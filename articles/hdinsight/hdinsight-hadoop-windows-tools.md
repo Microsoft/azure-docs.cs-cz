@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 05/17/2017
-ms.openlocfilehash: 4d9d1ef6b7906ecebc399948a1ca0dcd590d5910
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 5045c48a00c51a16d37dcf4b7f72f25633f23b3f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765830"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926033"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v ekosystému Apache Hadoop v HDInsight z počítače s Windows
 
@@ -29,11 +29,11 @@ Příklady úloh, které můžete provést v prostředí PowerShell:
 * [Dotazy Apache Hive pomocí Powershellu spusťte](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Správa clusterů pomocí prostředí PowerShell](hdinsight-administer-use-powershell.md).
 
-Postupujte podle kroků a [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-az-ps) získat nejnovější verzi. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny pro Azure Resource Manager, najdete v článku [migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+Postupujte podle kroků a [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-az-ps) získat nejnovější verzi.
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Nástroje můžete spustit v prohlížeči
 Následující nástroje mít webové uživatelské rozhraní, které běží v prohlížeči:
-* **[Azure Cloud Shell (preview)](https://docs.microsoft.com/azure/cloud-shell/quickstart)**  je interaktivního příkazového řádku příkazového, na kterém běží v prohlížeči a v rámci webu Azure portal.
+* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)**  je interaktivního příkazového řádku příkazového, na kterém běží v prohlížeči a v rámci webu Azure portal.
 * **[Webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)**  správy a monitorování nástroj je k dispozici na webu Azure Portal, který lze použít ke správě různých typů úloh, jako například:
     * [Pomocí rozhraní REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Hive, zobrazení Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
@@ -57,9 +57,6 @@ Příklady úloh, které vám pomůžou s využitím .NET SDK v sadě Visual Stu
 * [Spouštějte dotazy Apache Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoopu](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-> [!TIP]
-> Pokud používáte řešení .NET s clustery HDInsight se systémem Windows, je vhodná doba k plánování migrace na linuxových clusterech. Další informace najdete v tématu [řešení migrace .NET pro Windows na základě HDInsight založených na Linuxu HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
-
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Intellij IDEA a Eclipse IDE pro clustery Spark
 Obě [Intellij IDEA](https://www.jetbrains.com/idea/download) a [integrovaného vývojového prostředí Eclipse](https://www.eclipse.org/downloads/) je možné použít k:
 * Vývoj a odeslání aplikace Scala Spark na cluster HDInsight Spark.
@@ -77,14 +74,17 @@ Clustery Apache Spark v HDInsight zahrnují poznámkových bloků Apache Zeppeli
 * [Další informace o použití jádra na clusterech Apache Spark s poznámkovými bloky Jupyter pro testování aplikací Spark](spark/apache-spark-zeppelin-notebook.md)
 * [Další informace o použití poznámkových bloků Apache Zeppelin v clusterech Apache Spark pro spouštění úloh Spark](spark/apache-spark-jupyter-notebook-kernels.md) 
 
-
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Spuštění nástroje založené na Linuxu a technologie ve Windows
 
 Pokud narazíte na situace, kdy je nutné použít nástroj nebo technologii, která je jenom v Linuxu k dispozici, zvažte následující možnosti:
 
-* **Prostředí bash (beta verze) ve Windows 10** poskytuje Linux podsystému ve Windows. Bash můžete přímo spouštět nástroje Linux bez nutnosti udržovat vyhrazené instalace systému Linux. [Nainstalujte a spusťte Bash beta ve Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide)
+* **Bash na Ubuntu ve Windows 10** poskytuje Linux podsystému ve Windows. Bash můžete přímo spouštět nástroje Linux bez nutnosti udržovat vyhrazené instalace systému Linux. Zobrazit [subsystém Windows pro Linux Instalační příručka pro Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) kroky instalace.  Další [prostředí Unix](https://www.gnu.org/software/bash/) fungují stejně.
 * **Docker pro Windows** poskytuje přístup k mnoha nástrojů založených na Linuxu a můžete spustit přímo z Windows. Například můžete použít Docker a spusťte Beeline klienta pro Hive přímo z Windows. Můžete také použít Docker ke spuštění místní aplikace Jupyter notebook a vzdálené připojení ke Sparku v HDInsight. [Začínáme s Docker pro Windows](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)**  umožňuje graficky procházení systému souborů clusteru přes připojení SSH.
+
+## <a name="cross-platform-tools"></a>Nástroje pro různé platformy
+
+Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.  Další informace najdete v tématu [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Další postup
 Pokud teprve začínáte pracovat se v clusterech se systémem Linux, přečtěte si články postupujte podle:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769834"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575359"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -63,7 +63,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="bearing"></a> **Opatřené**: Vodorovném směru bodu ve vztahu k jinému bodu. Vyjadřuje se jako úhel vzhledem k severu ze stupňů 0 do 360 stupňů ve směru hodinových ručiček. 
 
-<a name="boundary"></a> **Hranice**: Řádek nebo oddělení sousední politické entit, jako je například země, oblasti a vlastnosti mnohoúhelníku. Hranice je řádek, který může nebo nemusí odpovídat fyzické funkce, jako je řek, hory nebo stěny.
+<a name="boundary"></a> **Hranice**: Řádek nebo oddělení sousední politické entit, jako je například země/oblasti, okresech a vlastnosti mnohoúhelníku. Hranice je řádek, který může nebo nemusí odpovídat fyzické funkce, jako je řek, hory nebo stěny.
 
 <a name="bounds"></a> **Hranice**: Zobrazit [Bounding pole](#bounding-box).
 
@@ -91,13 +91,13 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="coordinate-system"></a> **Systém souřadnic**: Referenční dokumentace rozhraní framework používá k definování polohy bodů v prostoru v dvě nebo tři dimenze.
 
-<a name="country-code"></a> **Kód země**: Jedinečný identifikátor pro zemi. podle standardu ISO. ISO2 je dvoumístný kód země, (například USA), která představuje ISO3 tři znaky kódu (například USA).
+<a name="country-code"></a> **Kód země**: Jedinečný identifikátor pro zemi/oblast podle standardu ISO. ISO2 je dvoumístný kód země, (například USA), která představuje ISO3 tři znaky kódu (například USA).
 
-<a name="country-subdivision"></a> **Dělení země**: Dělení na první úrovni země, obvykle označuje jako stát nebo kraj.
+<a name="country-subdivision"></a> **Dělení země**: Na první úrovni členění určitá země nebo oblast, obvykle označuje jako stát nebo kraj.
 
-<a name="country-secondary-subdivision"></a> **Sekundární dělení země**: Druhé úrovně dělení země, obvykle označuje jako okres.
+<a name="country-secondary-subdivision"></a> **Sekundární dělení země**: Součást druhé úrovně určitá země nebo oblast, obvykle označuje jako okres.
 
-<a name="country-tertiary-subdivision"></a> **Terciární dělení země**: Třetí úrovně dělení země, jako je například dál obvykle pojmenované oblasti.
+<a name="country-tertiary-subdivision"></a> **Terciární dělení země**: Součást třetí úrovně určitá země nebo oblast, jako je například dál obvykle pojmenované oblasti.
 
 <a name="cross-street"></a> **Ulice napříč**: Bod, kde dva nebo více ulice intersect.
 
@@ -283,7 +283,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="post-code"></a> **PSČ**: Zobrazit [Postal code](#postal-code).
 
-<a name="postal-code"></a> **Poštovní směrovací číslo**: Řada písmena nebo čísla nebo obojí, v určitém formátu, používá služba poštovní země na geografické oblasti rozdělení na zóny pro zjednodušení doručování e-mailu.
+<a name="postal-code"></a> **Poštovní směrovací číslo**: Řada písmena nebo čísla nebo obojí, v určitém formátu, používá služba poštovní země/oblasti na rozdělení geografické oblasti na zóny pro zjednodušení doručování e-mailu.
 
 <a name="prime-meridian"></a> **Poledníku**: Řádek zeměpisnou délku, která představuje zeměpisnou délku 0 stupňů. Obecně platí, hodnoty délky snížit cestách západním směrem do 180 stupňů a zvýšit při cestování východním směry -180-stupňů. 
 
@@ -351,11 +351,11 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="terrain"></a> **Terénu**: Oblast pozemek mají určité charakteristiky, jako je například písčitých terénu nebo povrchu.
 
-<a name="thematic-maps"></a> **Tematických mapy**: Tematických mapa je jednoduchý mapy provedené tak, aby odrážely motiv o geografické oblasti. Běžný scénář pro tento typ mapy je barva pro správu oblasti jako je například země na základě některé metriky data.
+<a name="thematic-maps"></a> **Tematických mapy**: Tematických mapa je jednoduchý mapy provedené tak, aby odrážely motiv o geografické oblasti. Běžný scénář pro tento typ mapy je barva pro správu oblasti jako je například země nebo oblasti na základě některé metriky data.
 
 <a name="tile-layer"></a> **Dlaždicová vrstva**: Vrstvě zobrazuje sestavení do průběžné vrstvy dlaždic map (obdélníkové části). Dlaždice jsou buď rastrových obrázků dlaždic nebo vektorových dlaždic. Rastrové dlaždice vrstvy jsou obvykle vykreslen předem domluvili a uložené jako bitové kopie na serveru. To může trvat až velké množství prostoru úložiště. Vrstvy dlaždic vektorových vykreslení v reálném čase v rámci klientské aplikace, proto jsou menší požadavky na úložiště na straně serveru.
 
-<a name="time-zone"></a> **Časové pásmo**: Oblasti světě, která dodržuje jednotné standardní čas pro účely právních, obchodních a sociálních sítí. Časová pásma mívají sklony dodržovat hranice země a jejich třídění.
+<a name="time-zone"></a> **Časové pásmo**: Oblasti světě, která dodržuje jednotné standardní čas pro účely právních, obchodních a sociálních sítí. Časová pásma mívají sklony dodržovat hranice země/oblasti a jejich třídění.
 
 <a name="transaction"></a> **Transakce**: Azure Maps používá transakční licenčního modelu kde;
 
@@ -398,5 +398,5 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="zip-code"></a> **PSČ**: Zobrazit [Postal code](#postal-code).
 
-<a name="Zoom level"></a> **Úroveň zvětšení**: Určuje úroveň podrobností a jak velká část mapy je viditelný. Při oddálení úplně úroveň 0, mapu světa úplné často se bude v zobrazení, ale budou vidět omezenou podrobnosti, jako jsou názvy země a ohraničení a jeho jména na oceánských. Při přiblížení blíže na úroveň 17, zobrazí na mapě oblasti několik bloků město silniční podrobné informace. Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) dokumentaci.
+<a name="Zoom level"></a> **Úroveň zvětšení**: Určuje úroveň podrobností a jak velká část mapy je viditelný. Při oddálení úplně úroveň 0, mapu světa úplné často se bude v zobrazení, ale budou vidět omezenou podrobnosti, jako jsou názvy země/oblast a ohraničení a jeho jména na oceánských. Při přiblížení blíže na úroveň 17, zobrazí na mapě oblasti několik bloků město silniční podrobné informace. Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) dokumentaci.
 

@@ -3,19 +3,18 @@ title: Vysvětlení, příklady ceny služby Azure Data Factory | Dokumentace Mi
 description: Tento článek popisuje a předvádí cenový model s podrobné příklady služby Azure Data Factory
 documentationcenter: ''
 author: shlo
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 454899cd7cc592b87f96233d73ca8c4ed6ac333f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787436"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935726"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Vysvětlení, příklady ceny služby Data Factory
 
@@ -122,6 +121,45 @@ K provedení scénáře, budete muset vytvořit kanál s následujícími polož
   - Aktivity přesunu dat = 0.166 (průběžné po dobu 10 minut doby provádění. $0,25 za hodinu v prostředí Azure Integration Runtime)
   - Kanál aktivit = 0.00003 (průběžné 1 minutu doby provádění. 0,002 USD/hod. v prostředí Azure Integration Runtime)
   - Externí aktivity kanálu = 0.000041 (průběžné po dobu 10 minut doby provádění. $0.00025 za hodinu v prostředí Azure Integration Runtime)
+
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Použití mapování ladění toku dat pro běžné pracovní doby
+
+Jako datových inženýrů zodpovídáte za navrhování, sestavování a testování mapování toků dat každý den. Přihlaste se do uživatelského rozhraní ADF ráno a povolit režim ladění pro Data proudí. Výchozí hodnota TTL pro relace ladění je 60 minut. Pracujete v průběhu dne 10 hodin, takže nikdy vyprší platnost vaší relace ladění. Proto bude váš poplatek za den:
+
+**10 (hodiny) x 8 (jádra) x 0.112 $ $8.96 =**
+
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformujte data v úložišti objektů blob s mapováním datové toky
+
+V tomto scénáři budete chtít transformace dat v Blob Store vizuálně v ADF mapování dat toky na hodinový plán.
+
+K provedení scénáře, budete muset vytvořit kanál s následujícími položkami:
+
+1. Tok dat aktivitu s logikou transformace.
+
+2. Vstupní datová sada pro data ve službě Azure Storage.
+
+3. Výstupní datovou sadu dat ve službě Azure Storage.
+
+4. Aktivační událost plánovače ke spuštění kanálu každou hodinu.
+
+| **Provoz** | **Typy a jednotky** |
+| --- | --- |
+| Vytvoření propojené služby | 2 r/w entity  |
+| Vytvoření datových sad | 4 entity čtení/zápis (2 pro vytvoření datové sady a 2 pro odkazy na propojenou službu) |
+| Vytvořit kanál | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
+| Získání kanálu | 1 pro čtení a zápis entity |
+| Spuštění kanálu | 2 spuštění aktivit (1 pro spuštění, 1 pro aktivity spuštění aktivační události) |
+| Doba provádění předpoklady toku dat: = 10 min + 10 min. hodnota TTL | 10 \* 8jádrový obecné výpočetní s TTL 10 |
+| Monitorování kanálu předpokladů: Spustit pouze 1 došlo k chybě | 2 spuštění sledování záznamů opakovat (1 pro spuštění, 1 pro spuštění aktivity kanálu) |
+
+**Celkový počet ceny scénář: $0.3011**
+
+- Data Factory operace = **0,0001 $**
+  - R/w = 10\*00001 = $0,0001 [R/W, 1 = $ 0,50/50000 = 0,00001]
+  - Monitorování = 2\*000005 = $0,00001 [monitorování 1 = $ 0,25/50000 = 0.000005]
+- Orchestrace kanálu &amp; spuštění = **0.301 $**
+  - Spuštění aktivit = 001\*2 = 0,002 [1 spuštění = 1/1 000 USD = 0,001]
+  - Aktivity toku dat = $0.299 průběžné 20 minut (10 minut doby provádění + 10 minut hodnotu TTL). compute 0.112 $za hodinu v prostředí Azure Integration Runtime s 8 jádry, obecné
 
 ## <a name="next-steps"></a>Další postup
 

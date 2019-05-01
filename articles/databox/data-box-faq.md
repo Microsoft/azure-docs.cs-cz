@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4308eea3384b20f21ffcf378f711a705f9f9e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9cef479c1d4af55ae58c61a07ff1d5348ed7183
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405456"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868264"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -50,7 +50,7 @@ A. Zařízení Data Box je k dispozici na 10 dnů za stanovený poplatek. Když 
 A. Data Box má hrubou kapacitu 100 TB a využitelnou kapacitu 80 TB. Můžou přenášet až 80 TB dat pomocí zařízení Data Box. Pokud chcete přenést více dat, musíte objednat více zařízení.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>Otázka: Jak zjistím, jestli je Data Box dostupný v mojí oblasti? 
-A.  Informace o zemích, ve kterých je Data Box dostupný, najdete v části o [dostupnosti v oblastech](data-box-overview.md#region-availability).  
+A.  Informace, ve kterých zemích nebo oblastech je k dispozici Data Box, přejděte na [dostupnost v oblastech](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Otázka: V jakých oblastech můžu k ukládání dat použít Data Box?
 A. Data Box je podporovaný ve všech oblastech USA, dále v západní Evropě, severní Evropě, Francii a Spojeném království. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované. Další informace najdete v části [Regionální dostupnost](data-box-overview.md#region-availability).

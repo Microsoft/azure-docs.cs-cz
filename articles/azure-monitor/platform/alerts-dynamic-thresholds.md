@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775788"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876201"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Upozornění na metriku s dynamickými prahovými hodnotami ve službě Azure Monitor (Public Preview)
 
@@ -42,7 +42,7 @@ Dynamickými prahovými hodnotami průběžně učí data řady metrik a pokusí
 Prahové hodnoty jsou vybrány tak, že odchylky od těchto prahových hodnot označuje anomálie v chování metrik.
 
 > [!NOTE]
-> Detekce se sezónním vzoru je nastavena na hodinu, dne nebo týdne intervalu. To znamená, že jiných vzorků jako vzor bihourly nebo semiweekly nemusí být zjištěna.
+> Detekce se sezónním vzoru je nastavena na hodinu, den nebo interval pro týden. To znamená, že jiných vzorků jako vzor bihourly nebo semiweekly nemusí být zjištěna.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Co znamená "Citlivosti" nastavení dynamickými prahovými hodnotami střední?
 
@@ -83,7 +83,7 @@ Aktivované výstrahy instance v zobrazení výstrahy můžete prozkoumat buď k
 Zobrazení výstrah obsahuje:
 
 - Všechny podrobnosti metriky v tuto chvíli aktivuje dynamickými prahovými hodnotami upozornění.
-- Graf doby, ve kterém bylo upozornění aktivační událost, která zahrnuje dynamickými prahovými hodnotami, které jsou použity v tomto okamžiku v čase.
+- Graf období, ve kterém byla výstraha, která zahrnuje dynamickými prahovými hodnotami, které jsou použity v tomto okamžiku v čase.
 - Schopnost poskytnout zpětnou vazbu na dynamickými prahovými hodnotami upozornění a výstrahy zobrazení prostředí, což může zlepšit budoucí detekcí.
 
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Pomalé chování změní v aktivační událost metriky upozornění?
@@ -92,7 +92,7 @@ Pravděpodobně není. Jsou vhodné pro zjištění významné odchylky, spíše
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Kolik dat se používá k zobrazení náhledu a pak vypočítat prahové hodnoty?
 
-Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají na základě dostatečně historická data pro výpočet hodinu nebo každý den sezónní vzory (10 dní). Jakmile se vytvoří pravidlo upozornění, dynamickými prahovými hodnotami pomocí všechny potřebné historická data, která je k dispozici a bude průběžně informace a nimiž založené na nová data zpřesnit prahové hodnoty. To znamená, že po tento výpočet graf se také zobrazí týdenní vzory.
+Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají podle dostatek historických dat k výpočtu hodinu nebo každý den sezónní vzory (10 dní). Jakmile se vytvoří pravidlo upozornění, dynamickými prahovými hodnotami použije všechny potřebné historických dat, které je k dispozici a bude průběžně učení a adaptace zpřesnit prahových hodnot na základě nová data. To znamená, že po tento výpočet v grafu se také zobrazí týdenní vzory.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Kolik dat je potřeba aktivovat upozornění?
 

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 04/07/2019
-ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: 187aa4b02e389c485b24ad7de256422d1880182b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759769"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872590"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Kurz: Příjem dat v Průzkumníku dat Azure bez jeden řádek kódu
 
@@ -380,7 +380,7 @@ Teď je potřeba vytvořit datová připojení pro diagnostické protokoly a pro
     |---|---|---|
     | **Tabulka** | *DiagnosticLogsRawRecords* | V tabulce, kterou jste vytvořili v *TestDatabase* databáze. |
     | **Formát dat** | *JSON* | Formát používaný v tabulce. |
-    | **Mapování sloupců** | *DiagnosticLogsRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *DiagnosticLogsRecords* tabulky.|
+    | **Mapování sloupců** | *DiagnosticLogsRecordsMapping* | Mapování, kterou jste vytvořili v *TestDatabase* databáze, který mapuje příchozí data JSON na typy sloupců názvy a datové sady *DiagnosticLogsRawRecords* tabulky.|
     | | |
 
 1. Vyberte **Vytvořit**.  

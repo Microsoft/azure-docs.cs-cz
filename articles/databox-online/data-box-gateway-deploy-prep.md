@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9650cdb6935fb45f0c59e8a114a9ce1c8e2d809
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620083"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686522"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box brány
 
@@ -51,6 +51,8 @@ Tady najdete požadavky na konfiguraci prostředku Data Box Gateway, zařízení
 Než začnete, ujistěte se, že:
 
 - Pro prostředek brány dat pole by měla podporovat vaše předplatné Microsoft Azure. Předplatná s průběžnými platbami nejsou podporovány.
+- Budete mít roli vlastníka nebo přispěvatele, přístup k vašemu předplatnému.
+- Máte správce nebo uživatel přístup k Azure Active Directory Graph API. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
 ### <a name="for-the-data-box-gateway-device"></a>Zařízení Data Box Gateway
@@ -85,7 +87,7 @@ Vytvoření prostředku brány pole dat, proveďte následující kroky na webu 
 
 1. K přihlášení použijte svoje přihlašovací údaje Microsoft Azure:
 
-    - Na webu Azure portal na této adrese URL: [ https://portal.azure.com ](http://portal.azure.com).
+    - Na webu Azure portal na této adrese URL: [ https://portal.azure.com ](https://portal.azure.com).
     - Nebo na portálu Azure Government na této adrese URL: [ https://portal.azure.us ](https://portal.azure.us). Další podrobnosti najdete v části [připojit se k portálu Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **Data Box Edge / Data Box brány**. Vybrat hranu pole Data nebo Data Box brány. Vyberte **Vytvořit**.

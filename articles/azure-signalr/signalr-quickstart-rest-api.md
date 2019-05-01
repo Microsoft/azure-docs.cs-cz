@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809661"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724666"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -181,4 +181,4 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku
 V tomto rychlém startu jste zjistili, jak používat rozhraní REST API pro vysílání zpráv v reálném čase ze služby SignalR pro klienty. Další informace o tom, jak vyvíjet a nasazovat s knihovnou SignalR službou Azure Functions v dalším kroku vazby, který je postavený na rozhraní REST API.
 
 > [!div class="nextstepaction"]
-> [Vývoj pomocí služeb SignalR modul vazeb Azure Functions](signalr-quickstart-azure-functions-csharp.md)
+> [Vývoj pomocí služby Azure SignalR vazeb Azure Functions](signalr-quickstart-azure-functions-csharp.md)

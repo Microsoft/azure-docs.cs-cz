@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46537ac1ca0ee8b1a163656d14f325a93f3a8717
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410361"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917255"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL
 
@@ -39,7 +39,7 @@ V tomto návodu budete zjistěte, jak nakonfigurovat sady SDK v rámci vaší ap
 
 Tento návod předpokládá, že víte, jak:
 
-- Zřídíte aplikace pomocí starší verze portálu pro Azure Active Directory (Azure AD). Další informace najdete v tématu [registrace aplikace ke koncovému bodu Azure AD verze 1.0](quickstart-v1-add-azure-ad-app.md)
+- Zřídíte aplikace pomocí starší verze portálu pro Azure Active Directory (Azure AD). Další informace najdete v tématu [registrace aplikace](quickstart-register-app.md)
 - Integrace aplikace pomocí [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
 ## <a name="single-sign-on-concepts"></a>Koncepty jednotné přihlašování

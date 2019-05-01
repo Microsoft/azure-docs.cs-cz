@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d14200faa06bc30df45a2100635ed7dc697a339
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60696779"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868612"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyka a oblasti pro hlasové služby
 
@@ -29,7 +29,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
   Kód | Jazyk | [Akustické přizpůsobení](how-to-customize-acoustic-models.md) | [Přizpůsobení jazyka](how-to-customize-language-model.md) | [Výslovnost přizpůsobení](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
  ar – například | Arabština (Egypt), moderní standard | Ne | Ano | Ne
- ES certifikační autority | katalánština (Španělsko) | Ne | Ne | Ne
+ ES certifikační autority | Katalánština | Ne | Ne | Ne
  da-DK | Dánština (Dánsko) | Ne | Ne | Ne
  de-DE | Němčina (Německo) | Ano | Ano | Ne
  cs AU | angličtina (Austrálie) | Ne | Ano | Ano
@@ -98,7 +98,7 @@ Národní prostředí | Jazyk | Pohlaví | Název mapování služby
 ar – například\* | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
 ar-SA | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
 bg-BG | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
-ES certifikační autority | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
+ES certifikační autority | Katalánština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
 cs-CZ | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)"
 da-DK | dánština | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)"
 de-AT | němčina (Rakousko) | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)"

@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020371"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922931"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -111,7 +111,7 @@ Tady je vygenerovaný odpovídající `function.json` podle [azure-functions-mav
 
 Stáhnout a použít [Azul Zulu Enterprise pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK 8 z [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. Služba Azure Functions využívá modul runtime Azul Java 8 JDK při nasazení vaší aplikace function App do cloudu.
 
-[Podpora Azure](https://azure.microsoft.com/en-us/support/) pro problémy s JDK a funkce je k dispozici s aplikací [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+[Podpora Azure](https://azure.microsoft.com/support/) pro problémy s JDK a funkce je k dispozici s aplikací [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Knihovny třetích stran 
 

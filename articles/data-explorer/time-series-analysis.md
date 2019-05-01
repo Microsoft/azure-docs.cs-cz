@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cb5e41feb9be978592a1c1708ade0188ba20d504
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827369"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873146"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analýzu časových řad v Průzkumníku dat Azure
 
@@ -260,3 +260,8 @@ demo_many_series1
 Za méně než dvě minuty ADX analyzovat blízko 20 000 časové řady a zjištěna dvě neobvyklé časové řady, ve kterých se čtení počtu náhle vyřadit.
 
 Tyto pokročilé funkce v kombinaci s rychlý výkon ADX zadat jedinečný a výkonné řešení pro analýzu časových řad.
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o [časové řady pro detekci anomálií a Prognózování](/azure/data-explorer/anomaly-detection) v Průzkumníku dat Azure.
+* Další informace o [strojového učení](/azure/data-explorer/machine-learning-clustering) v Průzkumníku dat Azure.

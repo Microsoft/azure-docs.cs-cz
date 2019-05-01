@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/29/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 21944c62f09518e20619313cd6ac28fb2ad600c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122672"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925279"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -52,16 +52,21 @@ Vybrané výchozí název souboru se používá v kořenovém adresáři a všec
 
 ## <a name="cdn-and-ssl-support"></a>Podpora CDN a SSL
 
-Aby váš statický web soubory k dispozici prostřednictvím protokolu HTTPS, naleznete v tématu [přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md). Jako součást tohoto procesu musíte *vaší sítě CDN přejděte na koncový bod webové* na rozdíl od koncový bod objektu blob. Budete muset počkat několik minut, než váš obsah je viditelné, protože konfigurace CDN není spuštěna ihned.
+Soubory statického webu zpřístupnit prostřednictvím vaší vlastní domény a HTTPS, naleznete v tématu [přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md). Jako součást tohoto procesu musíte *vaší sítě CDN přejděte na koncový bod webové* na rozdíl od koncový bod objektu blob. Budete muset počkat několik minut, než váš obsah je viditelné, protože konfigurace CDN není spuštěna ihned.
 
 Při aktualizaci statického webu, je potřeba vymazat obsah uložený v mezipaměti v krajních serverů CDN tím, že vyprázdnění koncového bodu CDN. Další informace najdete v tématu [Vyprázdnění koncového bodu Azure CDN](../../cdn/cdn-purge-endpoint.md).
+
+> [!NOTE]
+> HTTPS je nativně podporována přes webový koncový bod účtu. Použití vlastních domén přes protokol HTTPS vyžaduje použití Azure CDN v tuto chvíli. 
+>
+> Účet veřejný koncový bod webové přes protokol HTTPS: `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
 
 ## <a name="custom-domain-names"></a>Vlastní názvy domén
 
 Je možné [konfigurace vlastního názvu domény pro váš účet Azure Storage](storage-custom-domain-name.md) statického webu zpřístupnit prostřednictvím vlastní domény. Podrobný rozbor hostovat svoji doménu na [Azure, viz hostování domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Ceny
-Hostoval statický web je k dispozici bez dalších poplatků. Další podrobnosti o cenách pro službu Azure Blob Storage, podívejte se [Azure Blob Storage stránce s cenami](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Povolení hostování statického webu je zdarma. Zákazníkům se poplatky účtují náklady úložiště a operace využívaných objektů blob. Další podrobnosti o cenách pro službu Azure Blob Storage, podívejte se [Azure Blob Storage stránce s cenami](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Rychlý start
 
@@ -159,7 +164,10 @@ Ne, hostoval statický web je dostupná pouze v účtech GPv2 úložiště úrov
 Ano, nový webový koncový bod dodržuje pravidla virtuální sítě a brány firewall nakonfigurovaná pro účet úložiště.
 
 **Webový koncový bod je velká a malá písmena?**  
-Ano, je velká a malá písmena stejně jako koncový bod služby blob webový koncový bod. 
+Ano, je velká a malá písmena stejně jako koncový bod služby blob webový koncový bod.
+
+**Webový koncový bod je přístupný prostřednictvím HTTP i HTTPS?**
+Ano, webový koncový bod je přístupný prostřednictvím HTTP i HTTPS. Nicméně pokud účet úložiště je nakonfigurovaný tak, aby vyžadovala zabezpečený přenos přes protokol HTTPS, pak musí uživatelé používat koncový bod HTTPS. Další informace najdete v tématu [vyžadovat zabezpečený přenos ve službě Azure Storage](../common/storage-require-secure-transfer.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Přístup k objektům blob s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md)

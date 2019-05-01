@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361482"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570637"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
 
@@ -76,7 +76,7 @@ Když rozšíření NPS pro Azure je integrovaná se serverem NPS výsledků tok
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tato část podrobně popisuje předpoklady, které musíte splnit, předtím, než je možné integrovat MFA s Brána vzdálené plochy. Než začnete, musíte mít splněné následující požadavky na místě:
+Tato část podrobně popisuje předpoklady, které musíte splnit, předtím, než je možné integrovat MFA s VPN. Než začnete, musíte mít splněné následující požadavky na místě:
 
 * Infrastrukturu sítě VPN
 * Síťové zásady a přístup ke službám rolí
@@ -338,7 +338,7 @@ Jako součást konfigurace rozšíření serveru NPS je třeba zadat přihlašov
 
 ### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 
-Rozšíření NPS musí nainstalovat na server, který má síťové zásady a nainstalovanou rolí služby pro přístup a, který funguje jako server protokolu RADIUS v návrhu. Proveďte *není* instalace rozšíření serveru NPS na serveru vzdálené plochy.
+Rozšíření NPS musí nainstalovat na server, který má síťové zásady a nainstalovanou rolí služby pro přístup a, který funguje jako server protokolu RADIUS v návrhu. Proveďte *není* instalace rozšíření serveru NPS na serveru VPN.
 
 1. Stáhněte si rozšíření NPS z [Microsoft Download Center](https://aka.ms/npsmfa).
 

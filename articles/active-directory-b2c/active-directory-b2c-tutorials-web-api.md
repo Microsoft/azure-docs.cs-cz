@@ -3,19 +3,19 @@ title: Kurz – poskytnutí přístupu k webovému rozhraní API ASP.NET – Azu
 description: Kurz popisující použití Active Directory B2C k ochraně webového rozhraní API ASP.NET a jeho volání z webové aplikace ASP.NET.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cc4db0f2fe8f5db41f6e8332a398029bd105f3af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77e3eaeffba862c727e021427e5f27967fcf35bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60315582"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687987"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní ASP.NET API pomocí Azure Active Directory B2C
 

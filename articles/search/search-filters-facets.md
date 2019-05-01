@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ec87bdadc0e7f77cdeebb16403758026fd956c30
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290053"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939858"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak vytvořit filtr omezující vlastnosti ve službě Azure Search 
 
@@ -35,7 +35,7 @@ Teprve se fasetová navigace a chcete další podrobnosti? Zobrazit [jak ve slu�
 
 ## <a name="choose-fields"></a>Zvolte pole
 
-Omezující vlastnosti můžete počítat z polí s jednou hodnotou, stejně jako kolekce. Pole, která nejlépe fungovat ve Fasetové navigace mají nízké Kardinalita: malý počet jedinečných hodnot, které se opakují v celém dokumenty ve vaší ve vyhledávacím korpusu služby (například seznam barev, zemí nebo názvy). 
+Omezující vlastnosti můžete počítat z polí s jednou hodnotou, stejně jako kolekce. Pole, která nejlépe fungovat ve Fasetové navigace mají nízké Kardinalita: malý počet jedinečných hodnot, které se opakují v celém dokumenty ve vaší ve vyhledávacím korpusu služby (například seznam barev, země/oblasti nebo názvy). 
 
 "Faceting" je povolený na základě pole pomocí pole při vytváření indexu, tak, že nastavíte na hodnotu TRUE následující atributy: `filterable`, `facetable`. Kategorizovat je možné pouze filtrovatelná pole.
 

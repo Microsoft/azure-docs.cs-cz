@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a877dde5602553cb98d440a860c3eb8bb30487e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742234"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929362"
 ---
 ## <a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
 
@@ -51,7 +51,7 @@ ping -S 10.0.0.5 hotmail.com
 >[!NOTE]
 >Pro sekundární konfigurace IP pouze příkazem ping na Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu pomocí příkazu ping na Internetu.
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
 
 1. Otevřete okno terminálu.
 2. Ujistěte se, že jste uživatel root. Pokud ne, zadejte následující příkaz:

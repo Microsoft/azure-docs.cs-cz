@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 01/28/2019
+ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 76567db7362298b5cd35b544bf7952ebc54a2b66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361587"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723201"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -315,18 +315,16 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Všimněte si, jak skript získává data a ukládá modely:
 
-+ Trénovací skript načte argument najít adresář, který obsahuje data. Když odešlete úlohu později, přejděte na úložiště dat pro tento argument: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`.
++ Trénovací skript načte argument najít adresář, který obsahuje data. Když později odešlete úlohu, bude odkázána na úložiště dat pro tento argument: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Trénovací skript uloží do adresáře s názvem modelu **výstupy**: <br/>
-`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`.<br/>
-Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. Přistupujete k modelu v pozdější části kurzu z tohoto adresáře.
-Soubor `utils.py` je odkazován z trénovacího skriptu pro správné načtení datové sady. Zkopírujte tento skript do složky skriptu, tak, aby byla přístupná spolu s trénovací skript na vzdálený prostředek.
++ Trénovací skript uloží do adresáře s názvem modelu **výstupy**. Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. Přistupujete k modelu v pozdější části kurzu z tohoto adresáře. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
++ Trénovací skript vyžaduje soubor `utils.py` správně načíst datovou sadu. Následující kód zkopíruje `utils.py` do `script_folder` tak, aby soubor přístupný spolu s trénovací skript na vzdálený prostředek.
 
-```python
-import shutil
-shutil.copy('utils.py', script_folder)
-```
+  ```python
+  import shutil
+  shutil.copy('utils.py', script_folder)
+  ```
 
 
 ### <a name="create-an-estimator"></a>Vytvoření estimátoru

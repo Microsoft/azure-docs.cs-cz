@@ -2,22 +2,19 @@
 title: Kurz – jak používat Azure Key Vault pomocí Azure virtuálního počítače s Linuxem v rozhraní .NET – Azure Key Vault | Dokumentace Microsoftu
 description: 'Kurz: Konfigurace aplikace ASP.NET Core pro čtení tajného klíče z trezoru klíčů'
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: key-vault
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 354ffb14eb95e7f09256f337ffea069cff14b226
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 969213f4006aa842711459fed7a76d08a9d3ce37
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460855"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707063"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Kurz: Jak používat Azure Key Vault s Linuxových virtuálních počítačů Azure v .NET
 

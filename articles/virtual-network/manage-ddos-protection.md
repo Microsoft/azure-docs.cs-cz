@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: Další informace o použití Azure DDoS Protection Standard telemetrických dat ve službě Azure Monitor k zmírní útok.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
-ms.author: jdial
-ms.openlocfilehash: 32c4516c7dc68b04826b362d34841160936d682d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: kumud
+ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244515"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728343"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
 
@@ -47,7 +47,7 @@ Vytvoření více než jeden plán není vyžadováno pro většinu organizací.
     |Název           | myDdosProtectionPlan                              |
     |Předplatné   | Vyberte své předplatné.                         |
     |Skupina prostředků | Vyberte **vytvořit nový** a zadejte *myResourceGroup* |
-    |Umístění       | USA – východ                                           |
+    |Location       | USA – východ                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>Povolit před útoky DDoS pro nové virtuální sítě
 
@@ -60,7 +60,7 @@ Vytvoření více než jeden plán není vyžadováno pro většinu organizací.
     | Název            | myVirtualNetwork                                             |
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění        | USA – východ                                                      |
+    | Location        | USA – východ                                                      |
     | Služba DDos protection | Vyberte **standardní** a potom v části **DDoS protection**vyberte **myDdosProtectionPlan**. Plán, který vyberete, může být ve stejném nebo jiném předplatném než virtuální sítě, ale obě předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory.|
 
 Virtuální síť nelze přesunout do jiné skupiny prostředků nebo předplatného, pokud před útoky DDoS Standard je povolena pro virtuální síť. Pokud potřebujete přesunout virtuální síť s před útoky DDoS Standard povoleno, nejprve zakázat před útoky DDoS Standard, přesunout virtuální síť a pak povolte před útoky DDoS standard. Po přesunutí se obnoví automaticky laděná zásad prahové hodnoty pro všechny chráněné veřejné IP adresy ve virtuální síti.

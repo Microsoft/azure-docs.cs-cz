@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 16dd381301bdc650022ba5580f96a1733aeb32b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90d58d1b22e893e922aa0f3770198fc95f539419
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199948"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572888"
 ---
 # <a name="application-security-detection-pack-preview"></a>Sada zjišťování zabezpečení aplikace (preview)
 
@@ -29,7 +29,7 @@ Tato funkce vyžaduje žádné speciální instalační program, než [konfigura
 Existují tři typy, které jsou zjištěny problémy se zabezpečením:
 1. Zabezpečený přístup k adrese URL: adresa URL aplikace, je přistupováno prostřednictvím protokolu HTTP a HTTPS. Obvykle adresu URL, která přijímá požadavky HTTPS by neměla přijímat požadavky HTTP. To může znamenat chybu nebo zabezpečení problém ve vaší aplikaci.
 2. Nezabezpečené formuláře: formuláře (nebo jiný požadavek "POST") v aplikaci používá protokol HTTP místo protokolu HTTPS. Pomocí protokolu HTTP může ohrozit uživatelská data, která se ve formuláři odesílají.
-3. Podezřelé aktivity uživatele: aplikace se přistupuje z několika zemích stejným uživatelem na přibližně ve stejnou dobu. Například stejného uživatele získat přístup k aplikaci z Španělsko a USA během jedné hodiny. Tato detekce indikuje pokus o potenciálně škodlivém přístup do vaší aplikace.
+3. Podezřelé aktivity uživatele: aplikace se přistupuje z více zemí a oblastí stejným uživatelem na přibližně ve stejnou dobu. Například stejného uživatele získat přístup k aplikaci z Španělsko a USA během jedné hodiny. Tato detekce indikuje pokus o potenciálně škodlivém přístup do vaší aplikace.
 
 ## <a name="does-my-app-definitely-have-a-security-issue"></a>Moje aplikace jednoznačně má potíže se zabezpečením?
 Ne, oznámení, neznamená, že má vaše aplikace jednoznačně potíže se zabezpečením. Detekce kterékoli z výše uvedených scénářích může v mnoha případech znamenat potíže se zabezpečením. Ale zjišťování může mít fyzické obchodní odůvodnění a můžete ignorovat.
@@ -46,5 +46,5 @@ Ne, oznámení, neznamená, že má vaše aplikace jednoznačně potíže se zab
 
 ## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Jak opravit detekce "podezřelé aktivity uživatele"?
 1. **Třídění.** Oznámení obsahuje počet různých uživatelů, kteří monitorujícím podezřelého chování. Můžete přiřadit prioritu problému.
-2. **Obor.** Ze kterých zemí podezřelé požadavky pocházejí? Který uživatel byl nejvíce podezřelých? Tyto informace můžete získat z oznámení.
-3. **Diagnostika.** Zjišťování poskytuje seznam uživatelů, podezřelých a seznam zemí, pro každého uživatele, při další diagnostice problému.
+2. **Obor.** Ze kterých zemích nebo oblastech podezřelé požadavky pocházejí? Který uživatel byl nejvíce podezřelých? Tyto informace můžete získat z oznámení.
+3. **Diagnostika.** Zjišťování poskytuje seznam uživatelů, podezřelých a seznam země nebo oblasti pro každého uživatele, při další diagnostice problému.

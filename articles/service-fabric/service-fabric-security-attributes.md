@@ -9,12 +9,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b25400f21e24b18a0a21b9d849bdd505f6d47aac
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: f12d11cecbf682ae82f9c432804b1d611ee3e39f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765755"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719402"
 ---
 # <a name="common-security-attributes-for-azure-service-fabric"></a>Běžné atributy zabezpečení pro Azure Service Fabric
 
@@ -37,7 +37,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ano |  |
-| vkládání podpory virtuálních sítí| Ano |  |
+| Vkládání podpory virtuálních sítí| Ano |  |
 | Izolace sítě a podporu funkce brány firewall| Ano | Použití skupin zabezpečení sítě (NSG). |
 | Vynucené tunelování podpory| Ano | Sítě Azure poskytují vynucené tunelování. |
 

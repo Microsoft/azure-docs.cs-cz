@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b81dccf3c71fbaff7b0cbb9ba00f13b458156e73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f9f15c558e507742a641239ed25ba136dca0671a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074528"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920004"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu služby Azure Automation
 
@@ -62,8 +62,8 @@ V části **registrace**, zadejte [hodnoty prostředí PowerShell DSC Local Conf
 
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Azure virtual machines můžete nasadit a zapojený do služby Azure Automation stav konfigurace prostřednictvím šablon Azure Resource Manageru. Zobrazit [serveru spravované službou Desired State Configuration](https://azure.microsoft.com/en-us/resources/templates/101-automation-configuration/) pro příklad šablony, který připojí existujícího virtuálního počítače do Azure Automation stavu konfigurace.
-Pokud spravujete Škálovací sady virtuálních počítačů, naleznete v tématu Ukázková šablona [nastavení konfigurace škálování virtuálního počítače spravované službou Azure Automation](https://azure.microsoft.com/en-us/resources/templates/201-vmss-automation-dsc/).
+Azure virtual machines můžete nasadit a zapojený do služby Azure Automation stav konfigurace prostřednictvím šablon Azure Resource Manageru. Zobrazit [serveru spravované službou Desired State Configuration](https://azure.microsoft.com/resources/templates/101-automation-configuration/) pro příklad šablony, který připojí existujícího virtuálního počítače do Azure Automation stavu konfigurace.
+Pokud spravujete Škálovací sady virtuálních počítačů, naleznete v tématu Ukázková šablona [nastavení konfigurace škálování virtuálního počítače spravované službou Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -72,7 +72,7 @@ Pokud spravujete Škálovací sady virtuálních počítačů, naleznete v téma
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Registrace virtuálních počítačů mezi předplatnými Azure
 
 Nejlepší způsob, jak zaregistrovat virtuální počítače z jiných předplatných Azure je použít rozšíření DSC v nasazení šablony Azure Resource Manageru.
-Příklady jsou uvedeny v [Desired State Configuration rozšíření pomocí šablon Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-template).
+Příklady jsou uvedeny v [Desired State Configuration rozšíření pomocí šablon Azure Resource Manageru](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 Registrační klíč a adresa URL pro registraci k použití jako parametry v šabloně najdete v tématu následující [ **zabezpečení registrace** ](#secure-registration) oddílu.
 
 ## <a name="azure-virtual-machines-classic"></a>Virtuální počítače Azure (klasické)

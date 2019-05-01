@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance časové pásmo | Microsoft Docs"
-description: Další informace o časovém pásmu specifika Azure SQL Database Managed Instance
+title: Azure SQL Database Managed Instance časových pásem | Microsoft Docs"
+description: Další informace o časovém pásmu nespecifikuje, Azure SQL Database Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -10,40 +10,40 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/25/2019
+ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487392"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866952"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Časové pásmo ve spravované instanci Azure SQL Database (Preview)
+# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Časových pásem v Azure SQL Database Managed Instance (preview)
 
-Při použití koordinovaný univerzální čas (UTC) je doporučený postup pro datovou vrstvu Cloudová řešení, Azure SQL Database Managed Instance nabízí široký výběr časové pásmo pro potřeby existující aplikace, které ukládají hodnoty datum a čas a datum hovoru a časové funkce s implicitní kontextu konkrétní časové pásmo.
+Koordinovaný univerzální čas (UTC) je doporučené časové pásmo pro datovou vrstvu cloudových řešení. Azure SQL Database Managed Instance také nabízí široký výběr časových pásem podle potřeb stávající aplikace, které ukládají hodnoty data a času a volání funkce date a time s implicitní kontextu konkrétní časové pásmo.
 
-Funkce jazyka T-SQL, jako jsou [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) nebo kódu CLR sledovat časovému pásmu nastavenému na instanci úrovni. Úlohy agenta SQL serveru také podle plánu podle časového pásma instance.
+Funkce jazyka T-SQL, jako jsou [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) nebo kódu CLR sledovat časovému pásmu nastavenému na instanci úrovni. Úlohy agenta serveru SQL také podle plánů podle časového pásma instance.
 
   >[!NOTE]
   > Managed Instance je možnost pouze nasazení služby Azure SQL Database, která podporuje nastavení časového pásma. Další možnosti nasazení vždy postupujte podle standardu UTC.
-Použití [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) v jedné a ve fondu databází SQL potřebujete interpretovat informace o datu a času v časovém pásmu než UTC.
+Použití [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) v jedné a ve fondu databází SQL potřebujete interpretovat informace o datu a času v časovém pásmu – čas UTC.
 
 ## <a name="supported-time-zones"></a>Podporované časových pásem
 
-Sadu podporovaných časových pásem je zděděno od základního operačního systému spravovanou instanci a je pravidelně aktualizovali k získání nových definic časové pásmo a odráží změny do již existující.
+Sada podporovaných časových pásem je zděděno od základního operačního systému, spravované instance. Pravidelně se aktualizuje, k získání nových definic časové pásmo a odráží změny do již existující. 
 
 Seznam s názvy podporované časových pásem je k dispozici prostřednictvím [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) systémové zobrazení.
 
-## <a name="setting-time-zone"></a>Nastavení časového pásma
+## <a name="set-a-time-zone"></a>Nastavit časové pásmo
 
-Časové pásmo pro spravovanou instanci je možné nastavit při vytváření instance pouze. Výchozí časové pásmo je koordinovaný univerzální čas (UTC).
+Časové pásmo pro managed instance můžete nastavit při vytváření instance pouze. Výchozí časové pásmo je čas UTC.
 
   >[!NOTE]
   > Časové pásmo existující spravovanou instanci nejde změnit.
 
-### <a name="setting-the-time-zone-through-azure-portal"></a>Nastavení časového pásma prostřednictvím webu Azure portal
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Nastavte časové pásmo na webu Azure portal
 
-Při zadávání parametrů pro nové instance, vyberte ze seznamu podporovaných časových pásem časové pásmo:
+Při zadávání parametrů pro novou instanci, vyberte ze seznamu podporovaných časových pásem časové pásmo. 
   
 ![Nastavení časového pásma během vytvoření instance](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -66,11 +66,11 @@ Zadejte vlastnost ID časové zóny v vaše [šablony Resource Manageru](https:/
 
 ```
 
-Seznam podporovaných hodnot pro vlastnost ID časové zóny najdete na konci tohoto článku.
+Seznam podporovaných hodnot pro vlastnost ID časové zóny je na konci tohoto článku.
 
-Pokud není zadán, nastaví se časové pásmo na čas UTC.
+Pokud není zadán, časové pásmo je nastavena na čas UTC.
 
-## <a name="checking-the-time-zone-of-instance"></a>Kontrola časové pásmo instance
+## <a name="check-the-time-zone-of-an-instance"></a>Zkontrolujte časové pásmo instance
 
 [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) funkce vrátí zobrazovaný název časového pásma instance.
 
@@ -78,24 +78,23 @@ Pokud není zadán, nastaví se časové pásmo na čas UTC.
 
 ### <a name="restore-and-import"></a>Obnovení a import
 
-Dokáže obnovit záložní soubor nebo importovat data do spravované instance z instance nebo serveru s nastavením jiného časového pásma. Nicméně Ujistěte se, že s rozmyslem a k analýze chování aplikace a výsledky dotazů a sestav, stejně jako při přenosu dat mezi dvěma instancemi SQL serveru s nastavením jiného časového pásma.
+Dokáže obnovit záložní soubor nebo importovat data do spravované instance z instance nebo serveru s nastavením jiného časového pásma. Ujistěte se, že k tomu opatrně. Analýza chování aplikace a výsledky dotazů a sestav, stejně jako při přenosu dat mezi dvěma instancemi SQL serveru s nastavením jiného časového pásma.
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-Když provádíte obnovení k určitému bodu v čase, čas k obnovení je interpretován jako čas UTC, aby se zabránilo veškerou nejednoznačnost kvůli letního času a jeho potenciálních změn.
+Když provádíte obnovení bodu v čase, čas k obnovení je interpretován jako čas UTC. Toto nastavení zabrání veškerou nejednoznačnost kvůli letního času a jeho potenciálních změn.
 
 ### <a name="auto-failover-groups"></a>Skupiny automatického převzetí služeb při selhání
 
-Pomocí stejného časového pásma mezi primární a sekundární instance v převzetí služeb při selhání skupiny se nevynucuje, ale důrazně se doporučuje.
-  >[!IMPORTANT]
-  > I když existují platné scénáře s jiném časovém pásmu na geograficky sekundární instance použít pro škálování čtení pouze, mějte prosím na paměti, že v případě ručního nebo automatického převzetí služeb při selhání na sekundární instanci jej zachovat jeho původní časové pásmo.
+Pomocí stejného časového pásma mezi primární a sekundární instance ve skupině převzetí služeb při selhání se nevynucuje, ale důrazně doporučujeme ji.
+
+  >[!WARNING]
+  > Důrazně doporučujeme používat stejné časové pásmo pro primární a sekundární instance ve skupině převzetí služeb při selhání. Z důvodu některých výjimečných případech zachování stejného časového pásma mezi primární a sekundární instance se nevynucuje. Je důležité pochopit, že v případě ručního nebo automatického převzetí služeb při selhání, sekundární instanci si zachovají své původní časové pásmo.
 
 ## <a name="limitations"></a>Omezení
 
 - Časové pásmo existující spravovanou instanci nejde změnit.
-- Externí proces spuštěn z úlohy agenta SQL nedodržují časové pásmo instance.
-- Spravovaná Instance je nativní [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance) rutinu Powershellu není čas podpory předávání zóna parametr ještě. Použití Powershellu obálky s [šablony Resource Manageru](https://aka.ms/sql-mi-create-arm-posh) místo.
-- Rozhraní příkazového řádku [az sql mi vytvořit](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-create) zatím nepodporuje parametr časového pásma.
+- Externí proces spuštěn z úlohy agenta serveru SQL není sledujte časové pásmo instance.
 
 ## <a name="list-of-supported-time-zones"></a>Seznam podporovaných časových pásem
 
@@ -240,7 +239,7 @@ Pomocí stejného časového pásma mezi primární a sekundární instance v p�
 | Samoa (běžný čas) | (UTC+13:00) Samoa |
 | Ostrovy Line (běžný čas) | (UTC+14:00) Ostrov Kiritimati |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [NA časové pásmo (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

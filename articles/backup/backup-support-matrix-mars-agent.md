@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894389"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923005"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování pomocí agenta Microsoft Azure Recovery Services (MARS)
 
@@ -24,14 +24,14 @@ Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování m
 Azure Backup používá agenta MARS zálohovat data z místních počítačů a virtuálních počítačů Azure do trezoru služby Recovery Services zálohování v Azure. Agenta MARS provádět následující akce:
 - Spusťte na místních počítačích Windows tak, aby můžete zálohovat přímo na zálohování trezoru služby Recovery Services v Azure.
 - Spuštění na virtuálních počítačích s Windows tak, aby můžete zálohovat přímo do trezoru.
-- Spusťte na serveru System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS). V tomto scénáři počítače a úlohy zálohování na DPM server nebo MABS. Agenta MARS tento server pak zálohuje do trezoru v Azure. 
+- Spusťte na serveru System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS). V tomto scénáři počítače a úlohy zálohování na DPM server nebo MABS. Agenta MARS tento server pak zálohuje do trezoru v Azure.
 
 Možnosti zálohování závisí na instalaci agenta. Další informace najdete v tématu [architektury Azure Backup pomocí agenta MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informace o zálohování architektura MABS a aplikace DPM najdete v tématu [zpět do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) pro zálohování architekturu.
 
 **Instalace** | **Podrobnosti**
 --- | ---
 Stáhněte si nejnovější verzi agenta MARS | Nejnovější verzi agenta si můžete stáhnout z trezoru, nebo [přímo stahovat](https://aka.ms/azurebackup_agent).
-Instalace přímo do počítače | Můžete nainstalovat agenta MARS přímo na Windows serveru v místním nebo na virtuálním počítači s Windows, na kterém běží některý [podporované operační systémy](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
+Instalace přímo do počítače | Můžete nainstalovat agenta MARS přímo na Windows serveru v místním nebo na virtuálním počítači s Windows, na kterém běží některý [podporované operační systémy](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
 Nainstalujte na záložní server | Při nastavování aplikace DPM nebo MABS zálohování do Azure, stáhněte a nainstalujte agenta MARS na serveru. Agenta můžete nainstalovat na [podporované operační systémy](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) v matici podpory zálohování serveru.
 
 > [!NOTE]
@@ -45,8 +45,8 @@ Při použití agenta MARS zálohovat data agenta pořídí snímek dat a uklád
 
 **Mezipaměť** | **Podrobnosti**
 --- | ---
-Velikost |  Volné místo ve složce mezipaměti by měla být alespoň 5 až 10 procent celkové velikosti zálohovaných dat. 
-Umístění | Složka mezipaměti musí být místně uložené na počítač, který se zálohuje a musí být online. Složka mezipaměti by neměly být ve sdílené síťové složce, vyměnitelného média nebo svazek offline. 
+Velikost |  Volné místo ve složce mezipaměti by měla být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
+Location | Složka mezipaměti musí být místně uložené na počítač, který se zálohuje a musí být online. Složka mezipaměti by neměly být ve sdílené síťové složce, vyměnitelného média nebo svazek offline.
 Složka | Složka mezipaměti by se měla šifrovat na svazek s odstraněnou duplicitou nebo ve složce, která je komprimován, který je zhuštěn nebo, který má spojovací bod.
 Umístění změny | Zastavte modul zálohování můžete změnit umístění mezipaměti (`net stop bengine`) a kopírování složky mezipaměti k nové jednotce. (Zkontrolujte, že nový disk má dost volného místa.) Pak aktualizujte dvě položky registru v rámci **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** a **Config/CloudBackupProvider/ScratchLocation**) do nového umístění a restartujte modul.
 
@@ -103,9 +103,9 @@ Windows 7   | 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Podporované typy souborů pro zálohování
 
-**Typ** | **Podpora** 
---- | --- 
-Šifrované   | Podporuje se. 
+**Typ** | **Podpora**
+--- | ---
+Šifrované   | Podporuje se.
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a řídké | Podporuje se.
@@ -114,7 +114,7 @@ Spojovací bod   | Nepodporuje se. Vynecháno.
 Šifrované a zhuštěné |  Nepodporuje se. Vynecháno.
 Komprimovaný datový proud   | Nepodporuje se. Vynecháno.
 Zhuštěný datový proud   | Nepodporuje se. Vynecháno.
-OneDrive (synchronizované soubory jsou datové proudy zhuštěné)  | Nepodporuje se. 
+OneDrive (synchronizované soubory jsou datové proudy zhuštěné)  | Nepodporuje se.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 

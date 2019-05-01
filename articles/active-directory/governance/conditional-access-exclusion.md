@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4169b15304afe1ecc4af9c5354798b29ad9dba38
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351534"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571358"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Kontroly přístupu pomocí služby Azure AD ke správě uživatelů vyloučit ze zásad podmíněného přístupu
 
@@ -38,7 +38,7 @@ Další příklad, můžete použít [pojmenovaná umístění](../conditional-a
 
 ![Pojmenovaná umístění](./media/conditional-access-exclusion/named-locations.png)
 
-V některých případech ale uživatelé můžou mít rozumný důvod k přihlášení z těchto zemí blokované. Například uživatelé mohou být na služební cestě pro pracovní nebo osobní důvodů. V tomto příkladu může mít zásady podmíněného přístupu k blokování těchto zemí skupinu vyhrazené cloudové zabezpečení pro uživatele, kteří jsou ze zásad vyloučení. Uživatelé, kteří potřebují přístup při cestování, sami můžete přidat do skupiny pomocí [Azure AD Samoobslužná správa skupiny](../users-groups-roles/groups-self-service-management.md).
+V některých případech ale uživatelé můžou mít rozumný důvod k přihlášení z tato blokovaný zemích nebo oblastech. Například uživatelé mohou být na služební cestě pro pracovní nebo osobní důvodů. V tomto příkladu zásady podmíněného přístupu k blokování těchto zemí nebo oblastí může mít vyhrazené cloudové skupiny zabezpečení pro uživatele, kteří jsou ze zásad vyloučení. Uživatelé, kteří potřebují přístup při cestování, sami můžete přidat do skupiny pomocí [Azure AD Samoobslužná správa skupiny](../users-groups-roles/groups-self-service-management.md).
 
 Dalším příkladem může být, že máte zásady podmíněného přístupu, který [bloky starší verze ověřování pro většinu uživatelů](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Společnost Microsoft důrazně doporučuje blokuje použití starších verzí protokolů ve vašem tenantovi a zlepšit tak stav zabezpečení. Ale pokud máte uživatele, kteří potřebují vůbec používat metody starší verze ověřování pro přístup k prostředkům pomocí Office 2010 nebo IMAP, SMTP/POP na základě klientů, pak můžete vyloučit tyto uživatele ze zásad, kterou blokovat ověřování starší verze metody.
 
@@ -97,9 +97,9 @@ Nyní můžete vytvořit zásady podmíněného přístupu, který používá tu
 
 Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke správě vyloučení v rámci zásad podmíněného přístupu.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>Příklad 1: Kontroly přístupu pro uživatele, kteří používají ze zemí blokované
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Příklad 1: Kontroly přístupu pro uživatele, kteří používají z blokovaných zemí/oblastí
 
-Řekněme, že máte, která zablokuje přístup pro zásady podmíněného přístupu v určitých zemích. Obsahuje skupinu, která je vyloučena ze zásad. Tady je kontrola doporučené přístupu ve kterém jsou kontrolovány členy skupiny.
+Řekněme, že máte zásady podmíněného přístupu, která zablokuje přístup z určitých zemí nebo oblastí. Obsahuje skupinu, která je vyloučena ze zásad. Tady je kontrola doporučené přístupu ve kterém jsou kontrolovány členy skupiny.
 
 > [!NOTE]
 > Globální správce nebo role uživatele správce se vyžaduje k vytvoření kontroly přístupu.
@@ -110,9 +110,9 @@ Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke s
 
 3. Všichni členové této skupiny budou v oboru pro revizi.
 
-4. Každý uživatel bude mít vlastní ověřit, že stále potřebují mít přístup z těchto zemí blokované, proto ještě musí být členem skupiny.
+4. Každý uživatel bude mít vlastní ověřit, jestli stále potřebují mít přístup z tato blokovaný zemí nebo oblastí, proto ještě musí být členem skupiny.
 
-5. Pokud uživatel nemá reagovat na žádosti o revizi, se automaticky odeberou ze skupiny a proto se mít nadále přístup k tenantovi při cestě do těchto zemí.
+5. Pokud uživatel nemá reagovat na žádosti o revizi, se automaticky odeberou ze skupiny a proto se mít nadále přístup k tenantovi při cestě do těchto zemí nebo oblastí.
 
 6. Povolte e-mailová oznámení, takže uživatelům se zobrazí oznámení o zahájení a dokončení kontroly přístupu.
 

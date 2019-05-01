@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: Analýza mínění na streamovaných datech s využitím Azure Databricks'
-description: Zjistěte, jak můžete pomocí Azure Databricks se službou Event Hubs a rozhraní API služeb Cognitive Services spustit analýzu mínění na streamovaných datech téměř v reálném čase.
+description: Zjistěte, jak pomocí Azure Databricks se službou Event Hubs a rozhraní API služeb Cognitive Services spustíte analýzu mínění na streamovaných datech téměř v reálném čase.
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 12/07/2018
-ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: a4762f78b16b7798ff746770f1ea69ccebd30130
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60786064"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919017"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech s využitím Azure Databricks
 
@@ -55,7 +55,7 @@ Než začnete s tímto kurzem, ujistěte se, že splňujete následující poža
 
 Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření oboru názvů služby Azure Event Hubs a centra událostí](../event-hubs/event-hubs-create.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -154,7 +154,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
 ## <a name="get-a-cognitive-services-access-key"></a>Získání přístupového klíče služeb Cognitive Services
 
-V tomto kurzu použijete [Microsoft Text Analytics API služeb Cognitive Services](../cognitive-services/text-analytics/overview.md) spustíte analýzu mínění na streamu tweetů téměř v reálném čase. Než použijete rozhraní API, musíte vytvořit účet Microsoft Cognitive Services v Azure a načíst přístupový klíč pro použití rozhraní Text Analytics API.
+V tomto kurzu použijete [Azure Text Analytics API služeb Cognitive Services](../cognitive-services/text-analytics/overview.md) spustíte analýzu mínění na streamu tweetů téměř v reálném čase. Než použijete rozhraní API, musíte vytvořit účet Azure Cognitive Services v Azure a načíst přístupový klíč pro použití rozhraní Text Analytics API.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -227,7 +227,7 @@ val connStr = new ConnectionStringBuilder()
             .setSasKeyName(sasKeyName)
             .setSasKey(sasKey)
 
-val pool = Executors.newFixedThreadPool(1)
+val pool = Executors.newScheduledThreadPool(1)
 val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
 def sendEvent(message: String) = {

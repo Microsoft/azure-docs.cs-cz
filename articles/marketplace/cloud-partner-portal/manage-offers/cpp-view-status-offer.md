@@ -1,25 +1,18 @@
 ---
-title: Zobrazení stavu nabídky Marketplace – Azure Marketplace | Dokumentace Microsoftu
+title: Zobrazit stav nabídek na webu marketplace | Azure Marketplace
 description: Zobrazení stavu nabídky na Azure a AppSource tržišť s řešeními pomocí portál Cloud Partner
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pbutlerm
-ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: b8113552edf9dd2f886b5752b2ebc69afc0fda08
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729740"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942396"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Zobrazit stav publikování nabídek na webu Azure Marketplace a AppSource
 

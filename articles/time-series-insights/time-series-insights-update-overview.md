@@ -9,28 +9,33 @@ manager: cshankar
 ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: fbf347ceb3ccae4802c984a2737c2298a4e43e72
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: a742e9f235812cdbdafdcb0a39581e0779fcd040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63760093"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572930"
 ---
-# <a name="azure-time-series-insights-preview-overview"></a>Přehled služby Azure čas Series Insights ve verzi Preview
+# <a name="the-azure-time-series-insights-preview"></a>Azure Time Series Insights ve verzi Preview
 
-Azure čas Series Insights ve verzi Preview je nabídka platforma jako služba začátku do konce. Používá se k ingestování, zpracování, ukládání a dotazování dat IoT měřítku vysoce uvádí v kontextu, optimalizované řady čas. Time Series Insights je ideální pro zkoumání dat ad hoc a provozní analýzy. Time Series Insights je služba jednoznačně rozšiřitelný a přizpůsobené nabídky, že splňuje širší potřebuje průmyslového IoT nasazení.
+Azure čas Series Insights ve verzi Preview je nabídka platforma jako služba začátku do konce. Používá se k shromažďování, zpracování, ukládání, analýzu a dotazování dat IoT měřítku vysoce uvádí v kontextu, optimalizované řady čas. Time Series Insights je ideální pro zkoumání dat ad hoc a provozní analýzy. Time Series Insights je služba jednoznačně rozšiřitelný a přizpůsobené nabídky, že splňuje širší potřebuje průmyslového IoT nasazení.
+
+> [!TIP]
+> Funkce obecné dostupnosti, najdete [přehled Azure čas Series Insights GA](time-series-insights-overview.md).
 
 ## <a name="video"></a>Video
 
-Toto video přináší přehled Azure čas Series Insights ve verzi Preview, analytické platformy IoT založené na cloudu.
+### <a name="learn-more-about-the-azure-time-series-insights-preview-br"></a>Další informace o verzi Preview Azure čas Series Insights. </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="define-iot-data"></a>Definování dat IoT
 
-IoT data jsou všechna "průmyslové" data, která je k dispozici v organizacích asset náročné. Dat IoT je často vysoce nestrukturovaných, protože se odesílá z prostředků, které zaznamenávají poměrně hlučného měření. Tyto zahrnují teploty, pohybu a vlhkosti. Tyto datové proudy se často vyznačují významné mezery, poškozené zprávy a hodnoty false. Data z těchto datových proudů musí vyčistit, předtím, než může dojít, analýzu. IoT data často je smysluplná pouze v kontextu další datové výstupy, které pocházejí z první strany zdrojů, jako je například CRM a ERP. Vstupy pocházet také zdroje dat třetí strany, jako je například počasí nebo umístění.
+IoT data jsou všechna průmyslové data, která je k dispozici v organizacích asset náročné. Dat IoT je často vysoce nestrukturovaných, protože se odesílá z prostředků, které zaznamenávají poměrně hlučného měření. Tyto zahrnují teploty, pohybu a vlhkosti. Tyto datové proudy se často vyznačují významné mezery, poškozené zprávy a hodnoty false. Data z těchto datových proudů musí vyčistit, předtím, než může dojít, analýzu.
+
+IoT data často je smysluplná pouze v kontextu další datové výstupy, které pocházejí z první strany zdrojů, jako je například CRM a ERP. Vstupy pocházet také zdroje dat třetí strany, jako je například počasí nebo umístění.
 
 Pro účely provozní a obchodní v důsledku toho se používá jenom část data. Taková data poskytuje konzistentní vzhledem k aplikacím, komplexní, aktuální a správné informace pro hlášení a analýzy. Zapnutí shromážděná data na užitečné přehledy vyžadují IoT:
 
@@ -46,8 +51,8 @@ Typický tok dat IoT je znázorněno na následujícím obrázku.
 
 Aktuální na šířku IoT je různorodý. Zákazníci span výrobním průmyslu, energie, nástroje, Chytré budovy a konzultační odvětví. Scénáře zahrnují ad hoc zkoumání kde obrazec dat neznámý. Scénáře zahrnují také provozní analýzy schematizovanými nebo explicitně modelové data na disku provozní efektivitu. Tyto scénáře obvykle existovat vedle sebe a podporovat různé případy použití. Funkce platformy, které jsou klíčem k úspěchu průmyslové podniky IoT a jejich digitální revolution patří:
 
-- S více vrstvami úložiště, warm i cold. 
-- Možnost ukládat data časových řad za desítky let. 
+- S více vrstvami úložiště, warm i cold.
+- Možnost ukládat data časových řad za desítky let.
 - Schopnost explicitně model a optimalizace dotazů pro informace o provozu na základě asset.
 
 Time Series Insights je začátku do konce, komplexní platforma jako služba nabízí pro zkoumání dat IoT a operational insights. Time Series Insights nabízí plně spravované cloudové služby pro analýzu dat časových řad IoT měřítku.

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace aplikace pro přístup k webovým rozhraním API (Preview) | Azure
+title: Konfigurace aplikace pro přístup k webovým rozhraním API – platforma identit Microsoft
 description: Zjistěte, jak nakonfigurovat aplikaci zaregistrovanou na platformě Microsoft Identity Platform tak, aby zahrnovala identifikátory URI pro přesměrování, přihlašovací údaje nebo oprávnění pro přístup k webovým rozhraním API.
 services: active-directory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e88cedfd098f450e8faeea894f7fdfc796cf17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e5adafc251735fd25b819921514bf6d1d3c3955
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443559"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918864"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Rychlý start: Konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API (Preview)
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
 Aby se webová nebo důvěrná klientská aplikace mohla účastnit toku udělení autorizace, který vyžaduje ověření (a získání přístupového tokenu), musí mít zabezpečené přihlašovací údaje. Výchozí metodou ověřování podporovanou webem Azure Portal je ID klienta a tajný klíč.
 
@@ -61,7 +61,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Podle následujícího postupu nakonfigurujte aplikaci pro přístup k webovým rozhraním API: 
     * [Přidání identifikátorů URI pro přesměrování do aplikace](#add-redirect-uris-to-your-application)
-    * [Přidání přihlašovacích údajů do webové aplikace](#add-credentials-to-your-web-application)
+    * [Přidat přihlašovací údaje do vaší webové aplikace](#add-credentials-to-your-web-application)
     * [Přidání oprávnění pro přístup k webovým rozhraním API](#add-permissions-to-access-web-apis)
 
 ## <a name="add-redirect-uris-to-your-application"></a>Přidání identifikátorů URI pro přesměrování do aplikace

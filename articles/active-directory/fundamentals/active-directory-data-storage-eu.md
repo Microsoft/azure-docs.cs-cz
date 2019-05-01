@@ -12,53 +12,41 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21f82dc0a1eb8edf571da13e0d34fecae5f401b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249722"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875641"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Ukládání dat identity Evropského zákazníků v Azure Active Directory
-Azure Active Directory (Azure AD) pomáhá spravovat identity uživatelů a vytvářet zásady přístupu využitím inteligentních funkcí, které pomáhají zabezpečit prostředky vaší organizace. Data identit se uchovávají v umístění na základě adresy vaší organizace, kterou jste uvedli při přihlášení k odběru služby. Například při přihlášení k odběru Office 365 nebo Azure. Konkrétní informace o tom, kde se uchovávají data vašich identit, najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
+Identita data se ukládají ve službě Azure AD v zeměpisné umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru služby Microsoft Online, jako je Office 365 a Azure. Informace o uložení údajů o identitě, můžete použít [kde jsou vaše data umístěné?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) části Microsoft Trust Center.
 
-Přestože většinu služeb Azure AD související Evropského identity data zůstanou v evropských datových centrech, existují některé konkrétní služby, provozní data potřebná pro normální operace služby Azure AD, která jsou uložena v USA a neobsahuje žádné osobní údaje.
+Pro zákazníky, kteří k dispozici adresu v Evropě Azure AD udržuje většina dat identity v evropských datových centrech. Tento dokument obsahuje informace o veškerá data, která se ukládá mimo Evropa pomocí služby Azure AD.
 
-## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>Data pro evropské zákazníky uložená mimo evropská datacentra
-
-Většina dat evropských identit souvisejících s Azure AD pro organizace s evropskou adresou zůstává v evropských datacentrech. Azure AD data, která má uložená v evropských datových centrech a také replikují do datacentra v USA, zahrnují:
-
-- **Microsoft Azure Multi-Factor Authentication (MFA) a samoobslužné resetování hesla (SSPR) Azure AD**
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor authentication (MFA)
     
-    MFA uchovává všechna neaktivní uložená data uživatelů v evropských datacentrech. Určitá data specifická pro službu MFA se však uchovávají v USA:
+- Všechny dvoufaktorovým ověřováním pomocí telefonní hovory nebo SMS pocházejí z datacentra v USA a směrují globální poskytovateli.
+- Nabízená oznámení pomocí Microsoft Authenticator aplikace pocházejí z datová centra v USA. Kromě toho určité služby výrobce zařízení může také začne play a tyto služby možná mimo Evropa.
+- Kódy OATH se vždy ověřují v USA. 
+
+## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
+
+Azure AD B2C zásad konfiguračních dat a kontejnery klíčů se ukládají v datových centrech USA. Tyto neobsahuje žádné osobní údaje uživatelů. Další informace o konfiguraci zásad najdete v článku [Azure Active Directory B2C: Předdefinované zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) článku.
+
+## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
-    - Dvoufaktorové ověřování a související osobní údaje se můžou uchovávat v USA, pokud využíváte MFA nebo SSPR.
+Azure AD s B2B pozvánky úložišť s uplatnit propojit a přesměrovat adresu URL informace v datových centrech USA. Kromě toho e-mailové adresy uživatelů, kteří se odhlásit od přijetí pozvánky B2B se také ukládají v datových centrech USA.
 
-        - Veškeré dvoufaktorové ověřování pomocí telefonních hovorů nebo SMS můžou vykonávat operátoři v USA.
-    
-        - Nabízená oznámení prostřednictvím aplikace Microsoft Authenticator vyžadují oznámení ze služby oznámení výrobce (Apple nebo Google), která se může nacházet mimo Evropu.
-    
-        - Kódy OATH se vždy ověřují v USA. 
-    
-    - Určité protokoly MFA a SSPR se po dobu 30 dnů uchovávají v USA, a to bez ohledu na typ ověřování.
+## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory Domain Services (Azure AD DS)
 
-- **Microsoft Azure Active Directory B2C (Azure AD B2C)**
+Azure AD DS uchovává data uživatelů ve stejném umístění jako virtuální síť Azure vybranou zákazníkem. Takže pokud se tato síť nachází mimo Evropu, data se replikují a uchovávají mimo Evropu.
 
-    Azure AD B2C uchovává všechna neaktivní uložená data uživatelů v evropských datacentrech. Operační protokoly (z nichž se odeberou osobní údaje) však zůstávají v umístění, odkud uživatel přistupuje ke službám. Pokud například uživatel B2C přistupuje ke službě v USA, zůstanou operační protokoly v USA. Kromě toho se výhradně v USA uchovávají veškerá konfigurační data zásad, která neobsahují osobní údaje. Další informace o konfiguraci zásad najdete v článku [Azure Active Directory B2C: Předdefinované zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) článku.
+## <a name="other-considerations"></a>Další důležité informace
 
-- **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
-    
-    Azure AD B2B uchovává všechna neaktivní uložená data uživatelů v evropských datacentrech. Jiná než osobní metadata však B2B uchovává v tabulkách v rámci datacenter v USA. Tato tabulka obsahuje pole jako redeemUrl, invitationTicket, resource tenant Id, InviteRedirectUrl a InviterAppId.
+Služby a aplikace, které se integrují s Azure AD mají přístup k datům identity. Vyhodnocení jednotlivé služby a aplikace, kterou používáte k určení, jak se zpracovávají data identit podle této konkrétní služby nebo aplikace, a zda splňují požadavky na úložiště dat vaší společnosti.
 
-- **Microsoft Azure Active Directory Domain Services (Azure AD DS)**
-
-    Azure AD DS uchovává data uživatelů ve stejném umístění jako virtuální síť Azure vybranou zákazníkem. Takže pokud se tato síť nachází mimo Evropu, data se replikují a uchovávají mimo Evropu.
-
-- **Služby a aplikace integrované s Azure AD**
-
-    Všechny služby a aplikace, které se integrují s Azure AD, mají přístup k datům identit. Vyhodnoťte jednotlivé služby a aplikace a určete, jak konkrétní služby a aplikace zpracovávají data identit a jestli splňují požadavky vaší společnosti na ukládání dat.
-
-    Další informace o rezidenci dat služeb Microsoftu najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
+Další informace o rezidenci dat služeb Microsoftu najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o všech vlastností a funkcí popsaných výše najdete v těchto článcích:

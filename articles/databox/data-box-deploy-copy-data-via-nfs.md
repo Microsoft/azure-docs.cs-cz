@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat do vaší aplikace Microsoft Azure Data Box prostřednictvím systému souborů NFS | Dokumentace Microsoftu
+title: Kurz ke zkopírování dat do Azure Data Box prostřednictvím systému souborů NFS | Dokumentace Microsoftu
 description: Zjistěte, jak kopírovat data do Azure Data Box prostřednictvím systému souborů NFS
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55c880d0e795873a759ba121b6de0c98c5249061
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462410"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924484"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím systému souborů NFS
 

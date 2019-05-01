@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd2479aed1e348a27c5cba56c6d809ffb24e4fc0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711128"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925778"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP
 
@@ -29,9 +29,9 @@ ms.locfileid: "60711128"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/
-[anf-avail-matrix]:https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register
+[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
+[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -58,7 +58,7 @@ ms.locfileid: "60711128"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [NetApp soubory Azure (ve verzi Public Preview)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
+Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [NetApp soubory Azure (ve verzi Public Preview)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
 V ukázkové konfigurace, příkazy pro instalaci atd., ASCS instance je číslo 00, číslo instance Lajících 01, instance primární aplikace (Pa adresy) je 02 a instanci aplikace (AAS) je 03. Se používá QAS ID systému SAP. 
 
 Tento článek vysvětluje, jak dosáhnout vysoké dostupnosti pro SAP NetWeaver aplikace s Azure NetApp Files. V tomto článku se podrobně databázové vrstvě.
@@ -92,12 +92,12 @@ Přečtěte si následující poznámky SAP a Paper nejprve:
 Vysoká availability(HA) pro centrální služby SAP Netweaver vyžaduje sdílené úložiště.
 Abychom toho dosáhli v SUSE Linuxu zatím bylo nutné k vytvoření samostatného clusteru s vysokou dostupností systému souborů NFS. 
 
-Nyní je možné dosáhnout SAP Netweaver HA pomocí sdíleného úložiště, které jsou nasazené v Azure NetApp soubory. Použití služby soubory Azure NetApp pro sdílené úložiště se eliminují potřebu další [clusteru systému souborů NFS](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Pacemaker stále se vyžaduje pro vysokou dostupnost z centrální services(ASCS/SCS) SAP Netweaveru.
+Nyní je možné dosáhnout SAP Netweaver HA pomocí sdíleného úložiště, které jsou nasazené v Azure NetApp soubory. Použití služby soubory Azure NetApp pro sdílené úložiště se eliminují potřebu další [clusteru systému souborů NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Pacemaker stále se vyžaduje pro vysokou dostupnost z centrální services(ASCS/SCS) SAP Netweaveru.
 
 
 ![Přehled SAP NetWeaver vysoké dostupnosti](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP HANA pomocí virtuální název hostitele a virtuální IP adresy. V Azure [nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) je povinná používat virtuální IP adresu. Následující seznam obsahuje konfiguraci (A) SCS a Lajících nástroj pro vyrovnávání zatížení.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP HANA pomocí virtuální název hostitele a virtuální IP adresy. V Azure [nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) je povinná používat virtuální IP adresu. Následující seznam obsahuje konfiguraci (A) SCS a Lajících nástroj pro vyrovnávání zatížení.
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -138,17 +138,17 @@ Funkce souborů Azure NetApp je ve verzi public preview v několika oblastech Az
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Nasazení prostředků Azure souborů NetApp  
 
-V krocích se předpokládá, že jste už nasadili [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview). Uvědomte si, že Azure NetApp soubory prostředků a virtuální počítače, kde se prostředky Azure NetApp Files připojí musí nasadit do stejné virtuální síti Azure.  
+V krocích se předpokládá, že jste už nasadili [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Uvědomte si, že Azure NetApp soubory prostředků a virtuální počítače, kde se prostředky Azure NetApp Files připojí musí nasadit do stejné virtuální síti Azure.  
 
-1. Pokud jste dosud neučinili, který, požádat o [registraci ve verzi preview Azure NetApp](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register).  
+1. Pokud jste dosud neučinili, který, požádat o [registraci ve verzi preview Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
 
-2. Ve vybrané oblasti Azure, po vytvoření účtu NetApp [pokyny k vytvoření účtu NetApp](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
-3. Nastavení kapacity fondu souborů NetApp Azure, po [pokyny, jak nastavit službu Azure NetApp Files kapacity fondu](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
+2. Ve vybrané oblasti Azure, po vytvoření účtu NetApp [pokyny k vytvoření účtu NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
+3. Nastavení kapacity fondu souborů NetApp Azure, po [pokyny, jak nastavit službu Azure NetApp Files kapacity fondu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
 Architektura SAP Netweaver uvedené v tomto článku využívá jeden souborů NetApp Azure kapacitu fondu, SKU úrovně Premium. Doporučujeme, abyste SKU úrovně Premium souborů NetApp Azure pro úlohy aplikací SAP Netweaver v Azure.  
 
-4. Podsíť, která se soubory Azure NetApp delegovat, jak je popsáno v [pokyny delegovat podsítě do služby soubory Azure NetApp](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+4. Podsíť, která se soubory Azure NetApp delegovat, jak je popsáno v [pokyny delegovat podsítě do služby soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Svazky souborů Azure NetApp, následující nasadit [pokyny pro vytvoření svazku pro soubory Azure NetApp](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-volumes). Svazky v určené soubory NetApp Azure nasadit [podsítě](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp soubory prostředků a virtuální počítače Azure musí být ve stejné virtuální síti Azure. Například sapmnt<b>QAS</b>, usrsap<b>QAS</b>atd jsou názvy svazků a sapmnt<b>qas</b>, usrsap<b>qas</b>, jsou filepaths pro Azure Soubory NetApp svazky.  
+5. Svazky souborů Azure NetApp, následující nasadit [pokyny pro vytvoření svazku pro soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Svazky v určené soubory NetApp Azure nasadit [podsítě](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp soubory prostředků a virtuální počítače Azure musí být ve stejné virtuální síti Azure. Například sapmnt<b>QAS</b>, usrsap<b>QAS</b>atd jsou názvy svazků a sapmnt<b>qas</b>, usrsap<b>qas</b>, jsou filepaths pro Azure Soubory NetApp svazky.  
 
    1. svazek sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. svazek usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -158,7 +158,7 @@ Architektura SAP Netweaver uvedené v tomto článku využívá jeden souborů N
    6. svazek usrsap<b>QAS</b>pas (nfs://10.1.0.5/usrsap<b>qas</b>Pa adresy)
    7. svazek usrsap<b>QAS</b>aas (nfs://10.1.0.4/usrsap<b>qas</b>aas)
    
-V tomto příkladu jsme použili souborů NetApp Azure pro všechny systémy souborů SAP Netweaver ukazují, jak je možné NetApp soubory Azure. Je také možné nasadit systémy SAP souborů, které nemusíte připojit prostřednictvím systému souborů NFS jako [Azure disk storage](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#premium-ssd) . V tomto příkladu <b>-e</b> musí být souborů NetApp Azure a <b>f-g</b> (to znamená, / USR/sap/<b>QAS</b>/D<b>02</b>, /USR/sap/<b>QAS </b>/D<b>03</b>) může být nasazený jako Azure disk storage. 
+V tomto příkladu jsme použili souborů NetApp Azure pro všechny systémy souborů SAP Netweaver ukazují, jak je možné NetApp soubory Azure. Je také možné nasadit systémy SAP souborů, které nemusíte připojit prostřednictvím systému souborů NFS jako [Azure disk storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . V tomto příkladu <b>-e</b> musí být souborů NetApp Azure a <b>f-g</b> (to znamená, / USR/sap/<b>QAS</b>/D<b>02</b>, /USR/sap/<b>QAS </b>/D<b>03</b>) může být nasazený jako Azure disk storage. 
 
 ### <a name="important-considerations"></a>Důležité informace
 
@@ -166,10 +166,10 @@ Při zvažování souborů NetApp Azure pro SAP Netweaver na architektuře opera
 
 - Minimální kapacitu fondu je 4 TB. Velikost kapacity fondu musí být v násobcích po 4 TB.
 - Minimální objem je 100 GB
-- Služba soubory Azure NetApp a všechny virtuální počítače, kde se svazky souborů NetApp Azure připojí, musí být ve stejné virtuální síti Azure nebo v [partnerský vztah virtuálních sítí](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) ve stejné oblasti. Nyní se podporuje Azure souborů NetApp přístup přes VNET peering ve stejné oblasti. Přístup ke službě Azure NetApp přes globální partnerský vztah se ještě nepodporuje.
+- Služba soubory Azure NetApp a všechny virtuální počítače, kde se svazky souborů NetApp Azure připojí, musí být ve stejné virtuální síti Azure nebo v [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ve stejné oblasti. Nyní se podporuje Azure souborů NetApp přístup přes VNET peering ve stejné oblasti. Přístup ke službě Azure NetApp přes globální partnerský vztah se ještě nepodporuje.
 - Vybranou virtuální síť musí mít podsíť delegovat do služby soubory Azure NetApp.
 - Služba soubory Azure NetApp v současné době podporuje pouze NFSv3 
-- Služba soubory Azure NetApp nabízí [exportovat zásady](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): povolených klientů, můžete řídit přístup typu (čtení a zápis, jen pro čtení, atd.). 
+- Služba soubory Azure NetApp nabízí [exportovat zásady](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): povolených klientů, můžete řídit přístup typu (čtení a zápis, jen pro čtení, atd.). 
 - Funkce Azure souborů NetApp ještě není zóny. Funkce souborů NetApp Azure není momentálně ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti možné důsledků latence v některých oblastech Azure. 
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Ruční nasazení virtuálních počítačů s Linuxem pomocí webu Azure portal
@@ -243,7 +243,7 @@ Nejprve musíte vytvořit svazky NetApp soubory Azure. Nasazení virtuálních p
          * Opakujte předchozí kroky v části "d" pro porty 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS Lajících
 
 > [!IMPORTANT]
-> Nepovolujte TCP časová razítka na virtuálních počítačích Azure umístěných za nástrojem pro vyrovnávání zatížení Azure. Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání. Nastavte parametr **net.ipv4.tcp_timestamps** k **0**. Podrobnosti najdete v tématu [sondy stavu nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte TCP časová razítka na virtuálních počítačích Azure umístěných za nástrojem pro vyrovnávání zatížení Azure. Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání. Nastavte parametr **net.ipv4.tcp_timestamps** k **0**. Podrobnosti najdete v tématu [sondy stavu nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 

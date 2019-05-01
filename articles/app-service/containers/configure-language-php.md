@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: dc6d3fd2239624e6fccecfbd565eb815b372ed3d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853299"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920433"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace v jazyce PHP Linuxem pro Azure App Service
 
@@ -141,7 +141,7 @@ Oblíbené webové architektury umožněte přístup `X-Forwarded-*` informace o
 
 ## <a name="customize-phpini-settings"></a>Nastavení souboru php.ini
 
-Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [php.ini direktivy](http://www.php.net/manual/ini.list.php) pomocí následujících kroků.
+Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [php.ini direktivy](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
 
 > [!NOTE]
 > Nejlepší způsob, jak zobrazit verze PHP a aktuální *php.ini* konfigurace je pro volání [phpinfo()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
@@ -149,7 +149,7 @@ Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné 
 
 ### <a name="customize-non-phpinisystem-directives"></a>Přizpůsobení bez PHP_INI_SYSTEM direktivy
 
-Přizpůsobení PHP_INI_USER PHP_INI_PERDIR a PHP_INI_ALL direktivy (naleznete v tématu [php.ini direktivy](http://www.php.net/manual/ini.list.php)), přidejte *.htaccess* souboru do kořenového adresáře aplikace.
+Přizpůsobení PHP_INI_USER PHP_INI_PERDIR a PHP_INI_ALL direktivy (naleznete v tématu [php.ini direktivy](https://www.php.net/manual/ini.list.php)), přidejte *.htaccess* souboru do kořenového adresáře aplikace.
 
 V *.htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 Opětovné nasazení aplikace se změnami a restartujte ji. Pokud provádíte nasazení pomocí Kudu (například pomocí [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), se automaticky restartuje po nasazení.
 
-Jako alternativu k použití *.htaccess*, můžete použít [ini_set()](http://www.php.net/manual/function.ini-set.php) ve vaší aplikaci přizpůsobit tyto jiné PHP_INI_SYSTEM direktivy.
+Jako alternativu k použití *.htaccess*, můžete použít [ini_set()](https://www.php.net/manual/function.ini-set.php) ve vaší aplikaci přizpůsobit tyto jiné PHP_INI_SYSTEM direktivy.
 
 ### <a name="customize-phpinisystem-directives"></a>Přizpůsobení PHP_INI_SYSTEM direktivy
 
-Přizpůsobení PHP_INI_SYSTEM direktivy (naleznete v tématu [php.ini direktivy](http://www.php.net/manual/ini.list.php)), nelze použít *.htaccess* přístup. Služba App Service poskytuje samostatným mechanismem pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
+Přizpůsobení PHP_INI_SYSTEM direktivy (naleznete v tématu [php.ini direktivy](https://www.php.net/manual/ini.list.php)), nelze použít *.htaccess* přístup. Služba App Service poskytuje samostatným mechanismem pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
 
 Nejprve spusťte následující příkaz [Cloud Shell](https://shell.azure.com) přidání aplikace názvem `PHP_INI_SCAN_DIR`:
 
@@ -237,7 +237,7 @@ Když pracovní aplikace v PHP ve službě App Service se chová jinak nebo obsa
     - V závislosti na vaší *composer.json*, mohou být nainstalovány jiné balíčky k provozním režimu (`require` vs. `require-dev`).
     - Některá webová rozhraní může nasadit statické soubory jinak než v provozním režimu.
     - Některá webová rozhraní může používat vlastní spouštěcí skripty, při spuštění v produkčním režimu.
-- Spusťte aplikaci ve službě App Service v režimu ladění. Například v [Laravel](http://meanjs.org/), můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí pomocí [nastavení `APP_DEBUG` nastavení aplikace nastavte na `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Spusťte aplikaci ve službě App Service v režimu ladění. Například v [Laravel](https://meanjs.org/), můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí pomocí [nastavení `APP_DEBUG` nastavení aplikace nastavte na `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="robots933456"></a>robots933456
 

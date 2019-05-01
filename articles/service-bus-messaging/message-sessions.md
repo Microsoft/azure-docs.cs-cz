@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403674"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569788"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Zpráva relací: první, nejprve-out (FIFO) 
 
@@ -79,8 +79,7 @@ Stav relace se nachází ve frontě nebo v, že předplatné započítává kvó
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kompletní příklad](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) odesílání a příjem zpráv na základě relace ze služby Service Bus zařadí do fronty pomocí knihovny .NET Standard.
-- [Ukázka](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) , který používá klienta rozhraní .NET Framework pro zpracování zpráv s ohledem na relaci. 
+- Zobrazit buď [Microsoft.Azure.ServiceBus ukázky](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) nebo [Microsoft.ServiceBus.Messaging ukázky](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) příklad, který používá klienta rozhraní .NET Framework pro zpracování zpráv s ohledem na relaci. 
 
 Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
 

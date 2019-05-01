@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 253585d71ab2704efa0b3e4a06456e1d505b46ad
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232826"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919661"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
@@ -33,7 +33,7 @@ Sjednocení správy zabezpečení a povolit analýzu komplexní hrozeb a ochrana
 
 ## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>Ochrana IoT a hybridních cloudových úloh proti vyvíjejícími se kybernetickými útoky
 
-Internet of Things rychle transformuje potýkáme. Díky možnosti objevíte přehledy z vašimi připojenými zařízeními a back endových systémů můžete nyní transformovat tyto přehledy o výkonné aplikace a služby vaší organizaci dosáhnout bezprecedentní úrovně provozní a obchodní výkon. Nicméně, jak miliardy nová zařízení jsou připojená k Internetu a integrovat do našich denní životy a naše produkty; Vaše týmy operace zabezpečení se muset ujistit, dostatečně rychle rozvíjet své strategie zabezpečení pro tyto nové rovin útoku. Stejně jako jakýkoli jiný systém zabezpečení řešení IoT potřebují ochranu v každé fázi implementace. 
+Internet of Things rychle transformuje potýkáme. Možnost odhalit další poznatky z vašimi připojenými zařízeními a back endových systémů můžete nyní transformovat tyto přehledy o výkonné aplikace a služby vaší organizaci dosáhnout bezprecedentní úrovně provozní a obchodní výkon. Nicméně, jak miliardy nová zařízení jsou připojená k Internetu a integrovat do našich denní životy a naše produkty; Vaše týmy operace zabezpečení se muset ujistit, dostatečně rychle rozvíjet své strategie zabezpečení pro tyto nové rovin útoku. Stejně jako jakýkoli jiný systém zabezpečení řešení IoT potřebují ochranu v každé fázi implementace. 
 
 Azure Security Center (ASC) pro IoT zjednodušuje tím, že poskytuje jednotný přehled o a ovládací prvek, adaptivní ohrožení ochrany před únikem informací a inteligentní detekce hrozeb a reakce ve úlohy běžící na hraničních zařízeních, místní, v Azure a v hybridní úlohy ochrany jiných cloudech. 
 

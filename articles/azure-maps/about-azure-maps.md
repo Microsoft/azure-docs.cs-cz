@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fbb855db1ff5a2cf79826294365733614259e4b0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799357"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575743"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -123,7 +123,7 @@ V Azure Maps se používá schéma ověřování založeného na klíčích. V �
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Rozhraní API pro mapy Azure je aktuálně k dispozici ve všech zemích s výjimkou následujících oblastech:
+Rozhraní API pro mapy Azure je aktuálně k dispozici ve všech zemích nebo oblastech s výjimkou následujících oblastech:
 
 * Argentina
 * Čína
@@ -132,7 +132,7 @@ Rozhraní API pro mapy Azure je aktuálně k dispozici ve všech zemích s výji
 * Pákistán
 * Jižní Korea
 
-Ověřte, že umístění vaši aktuální IP adresu není v jedné z nepodporovaných zemích výše.
+Ověřte, že umístění vaši aktuální IP adresu není v jedné z nepodporovaných zemích nebo oblastech výše.
 
 ## <a name="next-steps"></a>Další postup
 

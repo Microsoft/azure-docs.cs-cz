@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04ed95317311b81af49f5d96addb203b7cfeb74a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466371"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725654"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -53,10 +53,27 @@ Další informace o používání kured najdete v tématu [použití aktualizac�
 
 Každé nasazení služby AKS zahrnuje dvě skupiny prostředků:
 
-- První skupina prostředků je vytvořené vámi a obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovateli prostředků pro AKS například automaticky vytvoří během nasazení, je druhý řádek *MC_myResourceGroup_myAKSCluster_eastus*.
+- První skupina prostředků je vytvořené vámi a obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovateli prostředků pro AKS například automaticky vytvoří během nasazení, je druhý řádek *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak lze zadat název této druhé skupiny prostředků najdete v další části.
 - Tento druhý zdroj skupiny jako například *MC_myResourceGroup_myAKSCluster_eastus*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Tyto prostředky zahrnují virtuální počítače uzlu Kubernetes, virtuální sítě a úložiště. Toto samostatné skupiny prostředků se vytvoří pro zjednodušení vyčištění prostředků.
 
 Pokud jste vytvořili prostředky pro použití s vaším clusterem AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adresy, je umístíte ve skupině automaticky generované prostředků.
+
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Můžete zadat vlastní název pro skupinu prostředků infrastruktury AKS?
+
+Ano. Ve výchozím nastavení, poskytovatel prostředků pro AKS automaticky vytvoří sekundární skupinu prostředků během nasazení, jako například *MC_myResourceGroup_myAKSCluster_eastus*. Pro dosažení souladu s firemní zásady, můžete zadat vlastní název pro tento spravovaný cluster (*MC_*) skupina prostředků.
+
+Chcete-li zadat vlastní název skupiny prostředků, nainstalujte [aks ve verzi preview] [ aks-preview-cli] verze rozšíření Azure CLI *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí [az aks vytvořit] [ az-aks-create] příkazu, použijte *– node-resource-group* parametr a zadejte název pro skupinu prostředků. Pokud jste [pomocí šablony Azure Resource Manageru] [ aks-rm-template] Pokud chcete nasadit AKS cluster, můžete definovat pomocí názvu skupiny prostředků *nodeResourceGroup* vlastnost.
+
+* Tato skupina prostředků se automaticky vytvoří poskytovatel prostředků Azure ve svém vlastním předplatném.
+* Název skupiny prostředků vlastní můžete zadat jenom při vytvoření clusteru.
+
+Následující scénáře nejsou podporované:
+
+* Nelze zadat existující skupinu prostředků pro *MC_* skupiny.
+* Nelze zadat pro jiné předplatné *MC_* skupinu prostředků.
+* Nelze změnit *MC_* název skupiny prostředků po vytvoření clusteru.
+* Nelze zadat názvy pro spravované prostředky v rámci *MC_* skupinu prostředků.
+* Nemůžete upravovat ani odstranit značky v rámci spravovaných prostředků *MC_* ; resource-group (viz další informace v další části).
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků MC_ *?
 
@@ -93,13 +110,16 @@ Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníko
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./container-service-quotas.md#region-availability
+[aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
+[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
 
 <!-- LINKS - external -->
 
@@ -108,4 +128,3 @@ Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníko
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
-

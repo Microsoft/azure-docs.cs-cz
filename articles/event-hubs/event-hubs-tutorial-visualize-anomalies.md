@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6786e4e3382c7c4d7a6a6a28c3cd3621df221c1
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369340"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867137"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizovat data anomálie v reálném čase událostí odeslaných do služby Azure Event Hubs
 
-V případě služby Azure Event Hubs můžete pomocí Azure Stream Analytics kontrolovat příchozí data a vytahovat anomálie, které pak můžete vizualizovat v Power BI. Řekněme, že máte tisíce zařízení, která neustále odesílají data v reálném čase do centra událostí a tato data představují až miliony událostí za sekundu. Jak v takovém množství dat kontrolovat anomálie nebo chyby? Co když zařízení odesílají například transakce provedené platebními kartami a vy potřebujete zachytávat případy, kdy během 5 sekund dojde k několika transakcím ve více zemích? K tomu může dojít, když někdo krade platební karty a pak je používá k nákupu věcí po celém světě ve stejnou dobu. 
+V případě služby Azure Event Hubs můžete pomocí Azure Stream Analytics kontrolovat příchozí data a vytahovat anomálie, které pak můžete vizualizovat v Power BI. Řekněme, že máte tisíce zařízení, která neustále odesílají data v reálném čase do centra událostí a tato data představují až miliony událostí za sekundu. Jak v takovém množství dat kontrolovat anomálie nebo chyby? Například citlivostní zařízení odesílají transakce s kreditními kartami a je potřeba zaznamenat kdekoli že ve více zemích a oblastech máte více transakcí v rámci 5 sekundách časový interval? K tomu může dojít, když někdo krade platební karty a pak je používá k nákupu věcí po celém světě ve stejnou dobu. 
 
 V tomto kurzu budete tento příklad simulovat. Spustíte aplikaci, která vytváří transakce provedené platebními kartami a odesílá je do centra událostí. Pak budete číst datový proud v reálném čase pomocí služby Azure Stream Analytics, která oddělí platné transakce od neplatných, a pak pomocí Power BI vizuálně identifikujete transakce označené jako neplatné.
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535316"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869537"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -69,9 +69,6 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku Pokud zdroj propojené služby nemá prostředí integration runtime |
 
->[!IMPORTANT]
->Při kopírování dat do Dynamics nelze provádět kopírování použít výchozí prostředí Azure Integration Runtime. Jinými slovy, pokud zdrojem propojená služba nemá zadaný integration runtime, explicitně [vytvořit prostředí Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) umístění blízko vaší instanci Dynamics. Najít, kde je umístěn v instanci Dynamics odkazováním [seznamu oblastí pro Dynamics 365](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions). Přidružte ji v propojené službě Dynamics jako v následujícím příkladu.
-
 >[!NOTE]
 >Konektor Dynamics pro volitelné "název organizace" vlastnost použít k identifikaci vaší instance Dynamics 365 s/CRM Online. Zatímco pořád funguje, můžete se doporučujeme, abyste místo toho zadejte novou vlastnost "serviceuri:" získat lepší výkon pro instanci zjišťování.
 
@@ -117,9 +114,6 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete zvolit toto pole označení SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit aktivity kopírování o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
->[!IMPORTANT]
->Můžete kopírovat data do Dynamics, explicitně [vytvořit prostředí Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) umístění blízko vaší instanci Dynamics. Přidružte ji v propojené službě jako v následujícím příkladu.
-
 **Příklad: Dynamics místně pomocí Internetového pomocí Internetového ověřování**
 
 ```json
@@ -160,8 +154,8 @@ Pro kopírování dat z a do Dynamics, nastavte vlastnost typ datové sady na **
 | entityName | Logický název entity načíst. | Ne pro zdroj (Pokud je zadán "dotaz" ve zdroji aktivity), Ano pro jímku |
 
 > [!IMPORTANT]
->- Při kopírování dat z Dynamics oddílu "struktura" je volitelné, ale recommanded v Dynamics datovou sadu, aby výsledkem deterministické kopírování. Definuje sloupce název a datový typ dat aplikace Dynamics, který chcete zkopírovat. Další informace najdete v tématu [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure) a [mapování datového typu pro Dynamics](#data-type-mapping-for-dynamics).
->- Při importu schématu při vytváření uživatelského rozhraní, ADF odvodit schéma vzorkováním horní řádky z Dynamics výsledku dotazu inicializovat konstrukce struktury, ve kterém budou vypuštěny případu sloupce s žádné hodnoty. Můžete zkontrolovat a přidat další sloupce do Dynamics datovou sadu schémat/struktury podle potřeby, které budou zachované při kopírování modulu runtime.
+>- Při kopírování dat z Dynamics oddílu "struktura" je volitelné, ale vysoce recommanded v Dynamics datovou sadu, aby výsledkem deterministické kopírování. Definuje sloupce název a datový typ dat aplikace Dynamics, který chcete zkopírovat. Další informace najdete v tématu [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure-or-schema) a [mapování datového typu pro Dynamics](#data-type-mapping-for-dynamics).
+>- Při importu schématu při vytváření uživatelského rozhraní, ADF odvodit schéma vzorkováním horní řádky z Dynamics výsledku dotazu inicializovat konstrukce struktury, ve kterém budou vypuštěny případu sloupce s žádné hodnoty. Stejné chování se vztahuje na kopírování spuštění, pokud neexistuje žádná definice explicitní strukturu. Můžete zkontrolovat a přidat další sloupce do Dynamics datovou sadu schémat/struktury podle potřeby, které budou zachované při kopírování modulu runtime.
 >- Při kopírování dat do Dynamics "struktura" část je nepovinná v datové sadě Dynamics. Sloupce, které chcete zkopírovat do se určuje podle schématu datového zdroje. Pokud je zdrojem bez záhlaví souboru CSV ve vstupní sadě, zadejte "struktura" se název a datový typ sloupce. Jsou mapovány na pole v souboru CSV postupně v pořadí.
 
 **Příklad:**
@@ -330,8 +324,8 @@ Nakonfigurujte odpovídající typ dat Data Factory ve struktuře datové sady z
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Dlouhé | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | | 
-| AttributeType.DateTime | Datetime | ✓ | ✓ |
+| AttributeType.Customer | Guid | ✓ | |
+| AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |

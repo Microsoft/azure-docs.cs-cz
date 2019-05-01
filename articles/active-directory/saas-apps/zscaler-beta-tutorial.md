@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b09e14bfee700750192c5a007cbb3140fd49d137
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7770cd5b12a14e69c00d93b1b518e5007afd9c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885483"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693709"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Integrace Azure Active Directory s Zscaler Beta
 
@@ -38,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD se Zscalerem Beta, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * Beta verze Zscalerem jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -111,11 +112,11 @@ Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem Beta, proveďt
     > [!NOTE]
     > Hodnota není skutečný. Skutečné UR Sign-On zaktualizujte příslušnou hodnotu. Kontakt [tým podpory Zscalerem beta verzi klienta](https://www.zscaler.com/company/contact) má být získána hodnota.
 
-5. Beta verze Zscalerem aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+5. Beta verze Zscalerem aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+6. Kromě toho výše Beta Zscalerem aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
     | Název | Zdrojový atribut | 
     | ---------------| --------------- |
@@ -152,15 +153,23 @@ Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem Beta, proveďt
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
 ### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurace Zscalerem Beta jednotného přihlašování
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Zscalerem Beta jako správce.
+1. K automatizaci konfigurace v rámci Zscalerem Beta, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
 
-2. Přejděte na **správy > ověřování > Nastavení ověřování** a proveďte následující kroky:
+    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče, klikněte na **instalace Beta Zscalerem** nasměruje na Beta Zscalerem aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do Zscalerem Beta. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 6.
+
+    ![Nastavení konfigurace](common/setup-sso.png)
+
+3. Pokud chcete nastavit Zscalerem Beta ručně, otevřete nové okno webového prohlížeče a přihlaste do serveru vaší společnosti Zscalerem Beta jako správce a proveďte následující kroky:
+
+4. Přejděte na **správy > ověřování > Nastavení ověřování** a proveďte následující kroky:
    
     ![Správa](./media/zscaler-beta-tutorial/ic800206.png "správy")
 
@@ -168,7 +177,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem Beta, proveďt
 
     b. Klikněte na tlačítko **konfigurace SAML**.
 
-3. Na **upravit SAML** okno, postupujte takto: a klikněte na Uložit.  
+5. Na **upravit SAML** okno, postupujte takto: a klikněte na Uložit.  
             
     ![Správa uživatelů a ověřování](./media/zscaler-beta-tutorial/ic800208.png "správu uživatelů a ověřování")
     
@@ -188,7 +197,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem Beta, proveďt
 
     h. Klikněte na **Uložit**.
 
-4. Na **konfiguraci ověření uživatele** dialogového okna stránky, proveďte následující kroky:
+6. Na **konfiguraci ověření uživatele** dialogového okna stránky, proveďte následující kroky:
 
     ![Správa](./media/zscaler-beta-tutorial/ic800207.png)
 
@@ -245,8 +254,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 

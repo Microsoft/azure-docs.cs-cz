@@ -1,20 +1,20 @@
 ---
-title: Kurz přípravy webu Azure Portal k nasazení Data Boxu Edge | Microsoft Docs
+title: Kurz Azure portal, prostředí datového centra pro nasazení Azure Data Box Edge Příprava | Dokumentace Microsoftu
 description: První kurz o Azure Data Box Edge nasazení spočívá v přípravě na webu Azure portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 04/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 19c4fc96653f966ea5642149d944886e4b7f4483
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401678"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924777"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Kurz: Příprava na nasazení Azure Data Box Edge  
 
@@ -55,6 +55,8 @@ Toto jsou požadavky na konfiguraci pro váš prostředek okraj pole Data, zař�
 Než začnete, ujistěte se, že:
 
 - Vaše předplatné Microsoft Azure je povoleno pro zdroj dat pole Edge. Předplatná s průběžnými platbami nejsou podporovány.
+- Budete mít roli vlastníka nebo přispěvatele, přístup k vašemu předplatnému.
+- Máte správce nebo uživatel přístup k Azure Active Directory Graph API. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
 ### <a name="for-the-data-box-edge-device"></a>Zařízení Data Box Edge
@@ -87,11 +89,15 @@ Vytvořit prostředek služby Data Box Edge, proveďte následující kroky na w
 
 1. Přihlaste se k pomocí svých přihlašovacích údajů Microsoft Azure 
     
-    - Na webu Azure portal na této adrese URL: [ https://portal.azure.com ](http://portal.azure.com).
-    - Nebo na portálu Azure Government na této adrese URL: [https://portal.azure.us](https://portal.azure.us)
+    - Na webu Azure portal na této adrese URL: [ https://portal.azure.com ](https://portal.azure.com).
+    - Nebo na portálu Azure Government na této adrese URL: [ https://portal.azure.us ](https://portal.azure.us). Další podrobnosti najdete v části [připojit se k portálu Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **Data Box Edge / Data Box brány**. Vyberte **Data Box Edge / Data Box brány**. Vyberte **Vytvořit**.
-3. Vyberte předplatné, které chcete použít pro zařízení Data Box Edge. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. Tato verze východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici. Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V **hrany pole Data** možnosti, vyberte **vytvořit**.
+3. Vyberte předplatné, které chcete použít pro zařízení Data Box Edge. Vyberte oblast, ve které chcete prostředek Data Box Edge nasadit. Tato verze východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici. 
+
+    Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. Oblast ukládá pouze metadata pro správu zařízení. Skutečná data mohou být uloženy v jakékoli účtu úložiště. 
+    
+    V **hrany pole Data** možnosti, vyberte **vytvořit**.
 
     ![Vyhledání služby Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fddea12d4c6b7d09d87174d29c645ef6da54af6f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364497"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917422"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv služby IoT Hub pro odesílání zpráv typu zařízení cloud do různých koncových bodů
 
@@ -119,7 +119,7 @@ Ve většině případů průměrném zvyšování latence je menší než 500 m
 
 Poskytuje službě IoT Hub, několik směrování a koncový bod související metriky, které vám poskytnou přehled o stavu centra a odeslaných zpráv. Můžete kombinovat informace z několika metrik a identifikovat hlavní příčinu problémů. Například použijte metriku **směrování: počet ztracených zpráv telemetrie** nebo **d2c.telemetry.egress.dropped** identifikovat počet zpráv, které byly při neodpovídají dotazy na žádné trasy a náhradní trasa byla zakázána. [Metriky služby IoT Hub](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolená pro službu IoT Hub.
 
-Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte [stav](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku. Například pro typ koncového bodu služby Event Hubs, můžete monitorovat **d2c.endpoints.latency.eventHubs**. Stav není v pořádku koncového bodu bude aktualizován v pořádku, zřízeno konzistentní stav stavu služby IoT Hub.
+Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte [stav](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku. Například pro typ koncového bodu služby Event Hubs, můžete monitorovat **d2c.endpoints.latency.eventHubs**. Stav není v pořádku koncového bodu bude aktualizován v pořádku, zřízeno konzistentní stav stavu služby IoT Hub.
 
 Použití **trasy** diagnostické protokoly ve službě Azure Monitor [nastavení diagnostiky](../iot-hub/iot-hub-monitor-resource-health.md), můžete sledují chyby, ke kterým dochází při vyhodnocování směrování dotazů a koncový bod stavu vnímanou ve službě IoT Hub, například Pokud koncový bod je neaktivní. Tyto diagnostické protokoly je odeslat protokoly Azure monitoru, Event Hubs nebo Azure Storage pro vlastní zpracování.
 

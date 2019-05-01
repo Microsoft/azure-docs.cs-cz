@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0236050ffcf7ad1d18ff3a8a763d0469d91eeeb5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505423"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919936"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
 
@@ -39,6 +39,7 @@ Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pr
   - Dva druhy informace jsou uloženy ve výchozím nastavení v pracovním prostoru Log Analytics služba ASC pro IoT; **výstrahy zabezpečení** a **doporučení**. 
   - Můžete také přidat další informace o typu, úložiště **nezpracovaných událostí**. Všimněte si, že ukládání **nezpracovaných událostí** v Log Analytics představuje náklady na další úložiště. 
 - IoT Hub (úrovně standard nebo vyšší)
+- Splňovat všechna [služby prerequities](service-prerequisites.md) 
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Povolit ASC pro IoT ve službě IoT Hub 
 
@@ -50,8 +51,7 @@ Pokud chcete povolit zabezpečení ve službě IoT Hub, postupujte takto:
 4. Zadejte podrobnosti vašeho pracovního prostoru Log Analytics. 
    - Zvolit k uložení **nezpracovaných událostí** kromě výchozí informace typy úložiště se zaškrtnutým políčkem **nezpracovaných událostí** přepnout **na**. 
    - Aktivujete **dvojčete kolekce** se zaškrtnutým políčkem **dvojčete kolekce** přepnout **na**. 
-5. Klikněte na **OK**. 
-6. Klikněte na **Uložit**. 
+5. Klikněte na **Uložit**. 
 
 Blahopřejeme! Dokončení povolení ASC pro IoT ve službě IoT Hub. 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64d4c48697d38cfa5942e09cb672af37c27eede2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358773"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688673"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
@@ -122,7 +122,9 @@ Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují p�
 - Ovládací prvky relací
 - Výsledek
 
-## <a name="powershell-reporting"></a>Vytváření sestav pomocí Powershellu
+## <a name="powershell-reporting-on-users-registered-for-mfa"></a>Prostředí PowerShell vytvářet zprávy o uživatelé zaregistrovaný pro MFA
+
+Nejprve zkontrolujte, že máte [modulu MSOnline Powershellu V1](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) nainstalované.
 
 Identifikujte uživatele, kterým jste se zaregistrovali pro vícefaktorové ověřování pomocí Powershellu, který následuje.
 

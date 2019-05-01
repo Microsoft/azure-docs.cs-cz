@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000925"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575400"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Zajištění geokódování Azure Maps
 
@@ -44,7 +44,6 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kajmanské ostrovy                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
-| Clippertonův ostrov                                   |                 |                |              |      ✓     |                    |
 | Kolumbie                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kostarika                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -98,12 +97,12 @@ Schopnost geokód v zemi, je závislá na data pokrytí cestách a přesnost geo
 | Britské území v Indickém oceánu                      |                 |                |              |      ✓     |          ✓         |
 | Brunej                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodža                                            |                 |                |              |      ✓     |          ✓         |
-| Čína                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
+| Čína                                               |                 |                |              |      ✓     |          ✓         |
 | Vánoční ostrov                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kokosové ostrovy (Keeling)                             |                 |                |              |      ✓     |          ✓         |
 | Komory                                             |                 |                |              |      ✓     |          ✓         |
 | Cookovy ostrovy                                        |                 |                |              |      ✓     |          ✓         |
-| Fidži                                                |                  |                |              |      ✓     |          ✓         |
+| Fidži                                                |                  |                |              |      ✓     |          ✓        |
 | Francouzská Polynésie                                    |                 |                |              |      ✓     |          ✓         |
 | Heardův ostrov a McDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong – zvláštní správní oblast                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

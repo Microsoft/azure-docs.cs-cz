@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 04/26/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299005"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946728"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -34,8 +34,8 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 
 > [!NOTE]
 > **Požadavky**
-> * Android Studio 3+
-> * Android 21 + je povinný 
+> * Android Studio 
+> * Android 16 + je povinný 
 
 
 > [!div renderon="docs"]
@@ -56,19 +56,20 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://aka.ms/MobileAppReg) stránky.
 > 1. Vyberte **registrace nové**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Android-Quickstart`.
+>      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AndroidQuickstart`.
+>      - Na této stránce můžete přeskočit další konfigurace. 
 >      - Klikněte `Register` tlačítko.
-> 1. Přejděte na `Authentication`  >  `Redirect URIs`  >  `Suggested Redirect URIs for public clients`a vyberte identifikátor URI přesměrování formátu **msal {AppId} :/ / auth**. Uložte změny.
-
+> 1. Klikněte na novou aplikaci > přejděte na `Authentication`  >  `Add Platform`  >  `Android`.    
+>      - Zadejte název balíčku z vašeho projektu Android studio. 
+>      - Generování hodnoty Hash podpisu. Odkazovat na portálu a pokyny.
+> 1. Vyberte `Configure` a uložit ***MSAL konfigurace*** JSON pro pozdější. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
-> Aby vzorek kódu pro tento rychlý start fungoval, budete muset přidat adresu URL odpovědi jako **msal{AppId}://auth** (kde {AppId} je ID vaší aplikace).
+> Ukázka kódu pro tento rychlý start pro práci budete muset přidat kompatibilní s zprostředkovatele vícefaktorového ověřování identifikátoru URI přesměrování. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -77,24 +78,34 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stáhněte si projekt
 
-* [Stáhnout projekt pro Android Studio](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
+* [Stáhněte si ukázky kódu](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 
 > [!div renderon="docs"]
-> Pokud jste vybrali možnost 1 výše, můžete přeskočit tyto kroky. Otevřete projekt v nástroji Android Studio a spusťte aplikaci. 
+> Pokud jste vybrali možnost 1 výše, můžete přeskočit tyto kroky. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Extrahujte a otevřete projekt v nástroji Android Studio.
-> 1. Uvnitř **aplikace** > **res** > **nezpracovaná**, otevřete **auth_config.json**.
-> 1. Upravit **auth_config.json** a nahraďte `client_id` a `tenant_id`:
+> 1. Uvnitř **aplikace** > **src** > **hlavní** > **res**  >   **Nezpracovaná**, otevřete **auth_config.json**.
+> 1. Upravit **auth_config.json** a nahraďte ji metodou ve formátu JSON na webu Azure Portal. Pokud chcete místo toho ručně provést změny:
 >    ```javascript
->    "client_id" : "Enter_the_Application_Id_Here",
->    "type": "Enter_the_Audience_Info_Here",
->    "tenant_id" : "Enter_the_Tenant_Info_Here"
->    ```
-> 1. Uvnitř **aplikace** > **manifesty**, otevřete **AndroidManifest.xml**.
-> 1. Do uzlu **manifest\application** přidejte následující aktivitu. Tento kód umožňuje společnosti Microsoft pro zpětné volání do vaší aplikace:   
+>    {
+>       "client_id" : "Enter_the_Application_Id_Here",
+>       "authorization_user_agent" : "DEFAULT",
+>       "redirect_uri" : "Enter_the_Redirect_Uri_Here",
+>       "authorities" : [
+>          {
+>             "type": "AAD",
+>             "audience": {
+>                "type": "Enter_the_Audience_Info_Here",
+>                "tenant_id": "Enter_the_Tenant_Info_Here"
+>             }
+>          }
+>       ]
+>    }
+> 1. Inside **app** > **manifests**, open  **AndroidManifest.xml**.
+> 1. Paste the following activity to the **manifest\application** node: 
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
 >    <activity
@@ -103,19 +114,18 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 >            <action android:name="android.intent.action.VIEW" />
 >            <category android:name="android.intent.category.DEFAULT" />
 >            <category android:name="android.intent.category.BROWSABLE" />
-> 
->            <!--Add in your scheme/host from registered redirect URI-->
->            <!--By default, the scheme should be similar to 'msal[appId]' -->
->            <data android:scheme="msalEnter_The_Application_Id_Here"
->                android:host="auth" />
+>            <data android:scheme="msauth"
+>                android:host="Enter_the_Package_Name"
+>                android:path="/Enter_the_Signature_Hash" />
 >        </intent-filter>
 >    </activity>
 >    ```
+> > 1. Spusťte aplikaci. 
 
 > [!div renderon="docs"]
 > 1. Extrahujte a otevřete projekt v nástroji Android Studio.
 > 1. Uvnitř **aplikace** > **res** > **nezpracovaná**, otevřete **auth_config.json**.
-> 1. Upravit **auth_config.json** a nahraďte `client_id` a `redirect_uri`:
+> 1. Upravit **auth_config.json** a nahraďte ji metodou ve formátu JSON na webu Azure Portal. Pokud místo toho chcete tyto změny provést ručně:
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",
 >    "redirect_uri": "ENTER_YOUR_REDIRECT_URI", 
@@ -130,27 +140,26 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 >            <action android:name="android.intent.action.VIEW" />
 >            <category android:name="android.intent.category.DEFAULT" />
 >            <category android:name="android.intent.category.BROWSABLE" />
-> 
->            <!--Add in your scheme/host from registered redirect URI-->
->            <!--By default, the scheme should be similar to 'msal[appId]' -->
->            <data android:scheme="msal<ENTER_YOUR_APPLICATION_ID>"
->                android:host="auth" />
+>            <data android:scheme="msauth"
+>                android:host="Enter_the_Package_Name"
+>                android:path="/Enter_the_Decoded_Signature_Hash" />
 >        </intent-filter>
 >    </activity>
 >    ```
-> 1. Místo `<ENTER_THE_APPLICATION_ID_HERE>` zadejte *ID vaší aplikace*. Pokud potřebuje vyhledat *ID aplikace*, přejděte na stránku *Overview* (Přehled).
+> 1. Nahraďte `Enter_the_Package_Name` a `Enter_the_Signature_Hash` hodnotami, které jste zaregistrovali na webu Azure Portal. 
+> 1. Spusťte aplikaci. 
 
 ## <a name="more-information"></a>Další informace
 
 Pročtěte si následující oddíly, které obsahují další informace o tomto rychlém startu.
 
-### <a name="msal"></a>MSAL
+### <a name="getting-msal"></a>Získávání MSAL
 
-Knihovna MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Nainstalovat ji můžete pomocí nástroje Gradle tak, že přidáte následující řetězec v části **Gradle Scripts** (Skripty Gradle)  > **build.gradle (Module: app)** v části **Dependencies** (Závislosti):
+Knihovna MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Můžete použít Gradle 3.0 nainstalovat přidáním následujícího kódu v **skriptů Gradle** > **build.gradle (modul: aplikace)** pod **závislosti**:
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
-implementation 'com.microsoft.identity.client:msal:0.2.+'
+implementation 'com.microsoft.identity.client:msal:0.3.+'
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL
@@ -171,20 +180,22 @@ Potom inicializujte knihovnu MSAL pomocí následujícího kódu:
 
 > |Kde: ||
 > |---------|---------|
-> |`R.raw.auth_config` | Tento soubor obsahuje konfigurací pro vaši aplikaci, včetně ID aplikace/klienta, přihlášení cílové skupiny a řady dalších možností přizpůsobení. |
+> |`R.raw.auth_config` | Tento soubor obsahuje konfigurací pro vaši aplikaci, včetně vaše ID klienta aplikace/přihlášení cílovou skupinu, identifikátor URI pro přesměrování a řady dalších možností přizpůsobení. |
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
 Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acquireTokenSilentAsync`.
 
-#### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
+#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Při získávání tokenu interaktivně
 
-Některé situace vyžadují vynucení uživatelům interakci s Microsoft identity platform koncový bod, jaké výsledky v kontextu přepnout prohlížeč systému se buď ověřit přihlašovací údaje uživatele nebo pro vyjádření souhlasu. Možné příklady:
+Některé situace vyžadují uživatelům interakci s platformou identity Microsoft. V těchto případech se koncový uživatel může být nutné zvolit svůj účet, zadejte své přihlašovací údaje nebo oprávnění, která vaše aplikace vyžaduje vyjádřit souhlas. Například: 
 
 * Při prvním přihlášení uživatele k aplikaci
-* Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
-* Když vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
-* Když je nutné dvoufaktorové ověřování
+* Pokud uživatel obnoví svoje heslo, bude nutné k zadání přihlašovacích údajů 
+* Pokud odvolání souhlasu 
+* Pokud vaše aplikace vyžaduje výslovně souhlas. 
+* Když vaše aplikace požaduje přístup k prostředku poprvé
+* Když se vyžaduje vícefaktorové ověřování nebo jiných zásad podmíněného přístupu
 
 ```java
 sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
@@ -195,24 +206,29 @@ sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
 > | `SCOPES` | Obsahuje požadované obory (to znamená `{ "user.read" }` pro Microsoft Graph nebo `{ "<Application ID URL>/scope" }` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`) |
 > | `getAuthInteractiveCallback` | Zpětné volání, když se ovládací prvek předá zpět do aplikace po ověření |
 
-#### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
+#### <a name="acquiretokensilent-getting-a-user-token-silently"></a>acquireTokenSilent: Získání tokenu uživatele bez upozornění
 
-Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `acquireToken` můžete použít metodu `AcquireTokenSilentAsync` a získat tokeny pro přístup k chráněným prostředkům:
+Aplikace by neměl vyžaduje, aby uživatelé přihlásit pokaždé, když požádají token. Pokud má uživatel již přihlášení, tato metoda umožňuje aplikacím požádat o tokeny bezobslužně.
 
 ```java
-List<IAccount> accounts = sampleApp.getAccounts();
-if (sample.size() == 1) {
-    sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
-} else {
-    // No or multiple accounts
-}
+    sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
+        @Override
+        public void onAccountsLoaded(final List<IAccount> accounts) {
+
+            if (!accounts.isEmpty()) {
+                sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
+            } else {
+                /* No accounts */
+            }
+        }
+    });
 ```
 
 > |Kde:||
 > |---------|---------|
 > | `SCOPES` | Obsahuje požadované obory (to znamená `{ "user.read" }` pro Microsoft Graph nebo `{ "<Application ID URL>/scope" }` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`) |
-> | `accounts.get(0)` | Obsahuje účet, který se snažíte získat tokeny pro bezobslužné |
-> | `getAuthInteractiveCallback` | Zpětné volání, když se ovládací prvek předá zpět do aplikace po ověření |
+> | `getAccounts(...)` | Obsahuje účet, který se snažíte získat tokeny pro bezobslužné |
+> | `getAuthSilentCallback()` | Zpětné volání, když se ovládací prvek předá zpět do aplikace po ověření |
 
 ## <a name="next-steps"></a>Další postup
 

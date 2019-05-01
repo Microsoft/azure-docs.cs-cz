@@ -1,5 +1,5 @@
 ---
-title: Kurz o fyzické zařízení Azure Data Box Edge instalaci | Dokumentace Microsoftu
+title: Kurz k instalaci – vybalení, racku kabel fyzické zařízení Azure Data Box Edge | Dokumentace Microsoftu
 description: Druhé části kurzu o instalaci Azure Data Box Edge zahrnuje jak Vybalte, namontujte do racku a fyzickým zařízením.
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60758279"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924529"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Kurz: Nainstalovat Azure Data Box Edge
 
@@ -145,7 +145,8 @@ Vyhledejte součásti pro instalaci sestavení lišty kit:
 
 ### <a name="engage-and-release-the-slam-latch"></a>Zapojení a uvolnit zámek slam
 
-POZNÁMKA: Pro systémy není vybaven slam zámky zabezpečení systému pomocí šrouby, jak je popsáno v kroku 3 tohoto postupu.
+> [!NOTE]
+> Pro systémy není vybaven slam zámky zabezpečení systému pomocí šrouby, jak je popsáno v kroku 3 tohoto postupu.
 
 1. Směřující popředí, vyhledejte slam zámek na obou stranách systému.
 2. Zámků zapojení automaticky jako systém odesílají do racku a vydávají roztažením na zámků.

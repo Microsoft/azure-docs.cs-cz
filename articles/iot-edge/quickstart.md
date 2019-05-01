@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: bc859dc1e33abfee765a8f5b0f2a65bc24b7c2dc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 8b446e3cfd3efc7d6f4c125747630cd3241fa804
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226942"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573938"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows – preview
 
@@ -226,34 +226,21 @@ Můžete rovněž sledovat zprávy dorazí ve službě IoT hub pomocí [rozší�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. Jinak můžete odstranit prostředky Azure, které jste vytvořili, a odebrat modul runtime IoT Edge ze zařízení.
-
-### <a name="delete-azure-resources"></a>Odstranění prostředků Azure
+Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. V opačném případě můžete odstranit prostředky Azure, které jste vytvořili nemuseli platit případné poplatky.
 
 Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině prostředků, můžete odstranit tuto skupinu a všechny související prostředky. Dvojitá kontrola obsah skupiny prostředků pro Ujistěte se, že existuje vaší nic, které chcete zachovat. Pokud nechcete odstranit celou skupinu, můžete místo toho odstranit jednotlivé prostředky.
 
 Odeberte skupinu **IoTEdgeResources**.
 
-   ```azurecli-interactive
-   az group delete --name IoTEdgeResources
-   ```
-
-### <a name="remove-the-iot-edge-runtime"></a>Odebrání modulu runtime IoT Edge
-
-Pokud chcete instalace ze zařízení odebrat, použijte následující příkazy.  
-
-Odeberte modul runtime IoT Edge. Pokud plánujete přeinstalaci IoT Edge, vynechte `-DeleteConfig` a `-DeleteMobyDataRoot` parametry tak, aby se stejnou konfigurací, které jste právě nastavili můžete znovu nainstalovat.
-
-   ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
-   ```
+```azurecli-interactive
+az group delete --name IoTEdgeResources
+```
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili zařízení IoT Edge a použít rozhraní Azure IoT Edge cloud k nasazení kódu do zařízení. Teď máte testovací zařízení, které generuje nezpracovaná data o prostředí.
 
-Jste připraveni pokračovat některým z dalších kurzů, ve kterých se seznámíte s dalšími způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace na hraničním zařízení.
+Dalším krokem je nastavení svoje místní vývojové prostředí, takže můžete začít vytvářet moduly, které spouští vaši obchodní logiku IoT Edge. 
 
 > [!div class="nextstepaction"]
-> [Filtrování dat snímače pomocí funkce Azure](tutorial-deploy-function.md)
+> [Začít s vývojem modulů IoT Edge pro zařízení s Windows](tutorial-develop-for-windows.md)

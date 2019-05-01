@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 38353ed68469ac35f04d68e19afd11ac4b47f2ae
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818412"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943950"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: Zjišťování možných podvodů v reálném čase
 
@@ -30,7 +30,7 @@ V tomto kurzu se používá příklad podvodů v reálném čase podle dat telef
 
 ## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Scénář: Telekomunikace a SIM zjišťování možných podvodů v reálném čase
 
-Telekomunikační firma má velký objem dat pro příchozí volání. Společnost chce zjistit podvodných volání v reálném čase tak, aby se upozornění zákazníků nebo vypnutí služby pro konkrétní číslo. Jeden typ SIM podvodů zahrnuje několik volání z stejnou identitu přibližně ve stejnou dobu, ale v geograficky různých umístěních. Ke zjištění tohoto typu podvodů, společnost potřebuje k prozkoumání příchozí sestavě pro telefon a vyhledávat vzory konkrétní – v takovém případě pro volání přibližně ve stejnou dobu v různých zemích. Telefon záznamy, které do této kategorie patří se zapisují do úložiště pro další analýzu.
+Telekomunikační firma má velký objem dat pro příchozí volání. Společnost chce zjistit podvodných volání v reálném čase tak, aby se upozornění zákazníků nebo vypnutí služby pro konkrétní číslo. Jeden typ SIM podvodů zahrnuje několik volání z stejnou identitu přibližně ve stejnou dobu, ale v geograficky různých umístěních. Ke zjištění tohoto typu podvodů, společnost potřebuje k prozkoumání příchozí sestavě pro telefon a vyhledávat vzory konkrétní – v takovém případě pro volání přibližně ve stejnou dobu v různých zemích nebo oblastech. Telefon záznamy, které do této kategorie patří se zapisují do úložiště pro další analýzu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -150,7 +150,7 @@ Mezi klíčová pole, které budete používat v této aplikaci zjišťování m
 |**Záznam**|**Definice**|
 |----------|--------------|
 |`CallrecTime`|Časové razítko pro počáteční čas volání. |
-|`SwitchNum`|Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou ústředny řetězce, které představují zemi původu (USA, Čína, VB, Německo nebo Austrálie). |
+|`SwitchNum`|Telefonní ústředna použitá pro spojení volání. V tomto příkladu přepínače jsou řetězce, které představují zemi původu (USA, Čína, Velká Británie, Německo nebo Austrálie). |
 |`CallingNum`|Telefonní číslo volajícího. |
 |`CallingIMSI`|IMSI (International Mobile Subscriber Identity). Toto je jedinečný identifikátor volajícího. |
 |`CalledNum`|Telefonní číslo příjemce volání. |
@@ -276,7 +276,7 @@ V mnoha případech se nemusí analýzy všechny sloupce ze vstupního datového
 
 Předpokládejme, že budete chtít zjistit počet příchozích volání v jedné oblasti. V streamovaných dat, pokud chcete provádět agregační funkce, jako je další přibývají, je potřeba rozdělit datový proud do dočasné jednotky (protože samotný datový proud je efektivně nekonečné). Můžete to provést pomocí Stream Analytics [oddílovou funkci](stream-analytics-window-functions.md). Pak můžete pracovat s daty v tomto okně jako celek.
 
-Pro tuto transformaci chcete posloupnost dočasné windows, které se nepřekrývají – každé okno bude mít samostatnou sadu dat, která můžete seskupit a agregovat. Tento typ okna se označuje jako *aktivační událost pro Přeskakující okno*. V rámci aktivační událost pro Přeskakující okno, můžete získat počet příchozích volání seskupené podle `SwitchNum`, která představuje zemi, ve kterém bylo volání provedeno. 
+Pro tuto transformaci chcete posloupnost dočasné windows, které se nepřekrývají – každé okno bude mít samostatnou sadu dat, která můžete seskupit a agregovat. Tento typ okna se označuje jako *aktivační událost pro Přeskakující okno*. V rámci aktivační událost pro Přeskakující okno, můžete získat počet příchozích volání seskupené podle `SwitchNum`, která představuje zemi nebo oblast, ve kterém bylo volání provedeno. 
 
 1. Změňte dotaz v editoru kódu takto:
 
@@ -292,7 +292,7 @@ Pro tuto transformaci chcete posloupnost dočasné windows, které se nepřekrý
 
     Projekce zahrnuje `System.Timestamp`, který vrátí časové razítko na konci každé okno. 
 
-    Chcete-li určit, že chcete použít aktivační událost pro Přeskakující okno, můžete použít [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) fungovat v `GROUP BY` klauzuli. Ve funkci zadejte časovou jednotku (od úrovni mikrosekund na den) a velikost okna (kolik jednotek). V tomto příkladu aktivační událost pro Přeskakující okno se skládá z 5 intervalech, proto se zobrazí počet podle země pro každých 5 sekund za volání.
+    Chcete-li určit, že chcete použít aktivační událost pro Přeskakující okno, můžete použít [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) fungovat v `GROUP BY` klauzuli. Ve funkci zadejte časovou jednotku (od úrovni mikrosekund na den) a velikost okna (kolik jednotek). V tomto příkladu aktivační událost pro Přeskakující okno se skládá z 5 intervalech, proto se zobrazí počet podle země nebo oblasti pro každých 5 sekund za volání.
 
 2. Klikněte na tlačítko **Test** znovu. Ve výsledcích, Všimněte si, že časová razítka v rámci **WindowEnd** jsou v přírůstcích po 5 sekund.
 

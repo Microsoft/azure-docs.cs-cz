@@ -4,237 +4,207 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ee9a924d-ccde-45b0-ab40-877f82f5dfa2
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
+ms.topic: tutorial
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33a625e82f41bee1b8e3980192076d24a7471953
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dc228f3473a4ddca8b5b68cdd99f1fced1a04cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60340543"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Kurz: Integrace Azure Active Directory s SensoScientific bezdrátové teploty monitorování systému
 
 V tomto kurzu se dozvíte, jak integrovat SensoScientific bezdrátové teploty monitorování systému s Azure Active Directory (Azure AD).
-
 Integrace SensoScientific bezdrátové teploty monitorování systému s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k SensoScientific bezdrátové teploty monitorování systému
-- Uživatele, aby automaticky získat přihlášení k SensoScientific bezdrátové teploty monitorování systému (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k SensoScientific bezdrátové teploty monitorování systému.
+* Uživatelům se automaticky přihlášeni k SensoScientific bezdrátové teploty monitorování systému (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s SensoScientific bezdrátové teploty monitorování systému, potřebujete následující položky:
 
-- Předplatné Azure AD
-- SensoScientific bezdrátové teploty monitorování systému jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Systém monitorování SensoScientific bezdrátové teploty jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání SensoScientific bezdrátové teploty monitorování systému z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje systém monitorování SensoScientific bezdrátové teploty **IDP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-sensoscientific-wireless-temperature-monitoring-system-from-the-gallery"></a>Přidání SensoScientific bezdrátové teploty monitorování systému z Galerie
+
 Ke konfiguraci integrace SensoScientific bezdrátové teploty monitorování systému do služby Azure AD, budete muset přidat SensoScientific bezdrátové teploty monitorování systému z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat SensoScientific bezdrátové teploty monitorování systému z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **SensoScientific bezdrátové teploty monitorování systému**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_search.png)
+4. Do vyhledávacího pole zadejte **SensoScientific bezdrátové teploty monitorování systému**vyberte **SensoScientific bezdrátové teploty monitorování systému** z panelu výsledků klikněte **přidat**  tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **SensoScientific bezdrátové teploty monitorování systému**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+    ![SensoScientific bezdrátové teploty sledování systému v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování s SensoScientific bezdrátové teploty monitorování systém založený na uživateli test "Britta Simon."
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek SensoScientific bezdrátové teploty monitorování systému je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské SensoScientific bezdrátové teploty monitorování systému je potřeba navázat.
-
-Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** SensoScientific bezdrátové teploty monitorování systému.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s SensoScientific bezdrátové teploty monitorování systém založený na uživateli testu **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské SensoScientific bezdrátové teploty monitorování systému.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SensoScientific bezdrátové teploty monitorování systému, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele SensoScientific bezdrátové teploty monitorování systému](#creating-a-sensoscientific-wireless-temperature-monitoring-system-test-user)**  – Pokud chcete mít protějšek Britta Simon SensoScientific bezdrátové teploty monitorování systému, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace SensoScientific bezdrátové teploty monitorování systému jednotného přihlašování](#configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele SensoScientific bezdrátové teploty monitorování systému](#create-sensoscientific-wireless-temperature-monitoring-system-test-user)**  – Pokud chcete mít protějšek Britta Simon SensoScientific bezdrátové teploty monitorování systému, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci SensoScientific bezdrátové teploty monitorování systému.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s SensoScientific bezdrátové teploty monitorování systému, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s SensoScientific bezdrátové teploty monitorování systému, proveďte následující kroky:
 
-1. Na webu Azure Portal na **SensoScientific bezdrátové teploty monitorování systému** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **SensoScientific bezdrátové teploty monitorování systému** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **SensoScientific bezdrátové teploty monitorování systému domény a adresy URL** části, nemusíte provádět žádné kroky jako aplikace je už předem integrované se službou Azure:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_certificate.png) 
+4. Na **základní konfiguraci SAML** oddílu, uživatel nebude muset provést libovolný krok, protože aplikace je už předem integrováno s Azure.
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    ![SensoScientific bezdrátové teploty monitorování systému domény a adresy URL jednotného přihlašování – informace](common/preintegrated.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_general_400.png)
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-1. Na **SensoScientific bezdrátové teploty monitorování System Configuration** klikněte na tlačítko **konfigurovat systém monitorování SensoScientific bezdrátové teploty** otevřete **konfigurace přihlašování** okna. Kopírování **URL odhlašování, SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_configure.png) 
+6. Na **nastavení SensoScientific bezdrátové teploty monitorování systému** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on"></a>Konfigurace bezdrátové SensoScientific teploty monitorování systému jednotného přihlašování
 
 1. Přihlaste se k aplikaci SensoScientific bezdrátové teploty monitorování systému jako správce.
 
-1. V navigační nabídce v horní části klikněte na tlačítko **konfigurace** a goto **konfigurovat** pod **Single Sign On** otevřete nastavení jednotného přihlašování.
+1. V navigační nabídce v horní části klikněte na tlačítko **konfigurace** a goto **konfigurovat** pod **Single Sign On** Otevřít nastavení jednotného přihlašování a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png) 
+    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
 
-1. V **nastavení jednotného přihlašování** formuláři proveďte následující kroky:
- 
     a. Vyberte **název vystavitele** jako Azure AD.
-    
-    b. Vložit **SAML Entity ID** který jste zkopírovali z portálu Azure portal do textového pole URL vystavitele.
-    
-    c. Vložit **SAML jednotné přihlašování – adresa URL služby** který jste zkopírovali z portálu Azure portal do textového pole jednotné přihlašování – adresa URL služby.
 
-    d. Vložit **odhlašování URL** který jste zkopírovali z portálu Azure portal do textového pole adresu URL jednotného odhlašování služby.
+    b. V **URL vystavitele** vložit do textového pole **Azure AD identifikátor** zkopírovanou z webu Azure portal.
+
+    c. V **jednotné přihlašování – adresa URL služby** vložit do textového pole **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
+
+    d. V **adresu URL jednotného odhlašování služby** vložit do textového pole **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
 
     e. Vyhledejte certifikát, který jste stáhli z webu Azure portal a nahrajte ji sem.
-    
-    f. Klikněte na **Uložit**.
-  
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded](https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+    f. Klikněte na **Uložit**.
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sensoscientific-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sensoscientific-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sensoscientific-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/sensoscientific-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-a-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>Vytvoření zkušebního uživatele SensoScientific bezdrátové teploty monitorování systému
 
-Povolit Azure AD uživatelům přihlášení SensoScientific bezdrátové teploty monitorování systému, musí být poskytnuty do SensoScientific bezdrátové teploty monitorování systému. Práce s [tým podpory SensoScientific bezdrátové teploty monitorování systému](https://www.sensoscientific.com/contact-us/) přidat uživatele na platformě SensoScientific bezdrátové teploty monitorování systému. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k SensoScientific bezdrátové teploty monitorování systému.
 
-![Přiřadit uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **SensoScientific bezdrátové teploty monitorování systému**.
 
-**Pokud chcete přiřadit Britta Simon SensoScientific bezdrátové teploty monitorování systému, postupujte následovně:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **SensoScientific bezdrátové teploty monitorování systému**.
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz SensoScientific bezdrátové teploty sledování systému v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **SensoScientific bezdrátové teploty monitorování systému**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_app.png) 
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Přiřadit uživatele][202] 
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Přiřadit uživatele][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>Vytvořit testovacího uživatele SensoScientific bezdrátové teploty monitorování systému
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k SensoScientific bezdrátové teploty monitorování systému, musí být poskytnuty do SensoScientific bezdrátové teploty monitorování systému. Práce s [tým podpory SensoScientific bezdrátové teploty monitorování systému](https://www.sensoscientific.com/contact-us/) přidat uživatele na platformě SensoScientific bezdrátové teploty monitorování systému. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu. Kliknutím na dlaždici SensoScientific bezdrátové teploty monitorování systému, na přístupovém panelu, je bude možné automaticky přihlášení k aplikaci SensoScientific bezdrátové teploty monitorování systému. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-## <a name="additional-resources"></a>Další materiály
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+Když kliknete na dlaždici SensoScientific bezdrátové teploty monitorování systému, na přístupovém panelu, můžete by měl být automaticky přihlášeni SensoScientific bezdrátové teploty sledování systému SQL, pro kterou nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+## <a name="additional-resources"></a>Další prostředky
 
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/sensoscientific-tutorial/tutorial_general_01.png
-[2]: ./media/sensoscientific-tutorial/tutorial_general_02.png
-[3]: ./media/sensoscientific-tutorial/tutorial_general_03.png
-[4]: ./media/sensoscientific-tutorial/tutorial_general_04.png
-
-[100]: ./media/sensoscientific-tutorial/tutorial_general_100.png
-
-[200]: ./media/sensoscientific-tutorial/tutorial_general_200.png
-[201]: ./media/sensoscientific-tutorial/tutorial_general_201.png
-[202]: ./media/sensoscientific-tutorial/tutorial_general_202.png
-[203]: ./media/sensoscientific-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

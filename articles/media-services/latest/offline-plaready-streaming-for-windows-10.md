@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d3ff97dc86ea6932ba51a4a30e53edf1082d5305
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326418"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937472"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady offline Streaming pro Windows 10
 
@@ -32,9 +32,9 @@ Azure Media Services podporují offline stažení/přehrávání s ochranou DRM.
 
 Tato část obsahuje základní informace v offline režimu přehrávání, zejména proč:
 
-* V některých zemích je stále omezena dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout nejprve stáhnout moct dál sledovat obsah v dostatečně vysoká řešení vyhovující zážitek. V takovém případě častěji, problém není dostupnost sítě, místo toho je omezena šířka pásma sítě. Poskytovatelé OTT/OVP žádáme pro podporu offline režimu.
+* V některých zemích nebo oblastech je stále omezena dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout nejprve stáhnout moct dál sledovat obsah v dostatečně vysoká řešení vyhovující zážitek. V takovém případě častěji, problém není dostupnost sítě, místo toho je omezena šířka pásma sítě. Poskytovatelé OTT/OVP žádáme pro podporu offline režimu.
 * Jak zveřejněn na konferenci společníka Netflix 2016 3. čtvrtletí, stahování obsahu je "napravo požadované funkce" a "jsme se otevřený, aby ho" říká, že podle Reed Hastingsu, generální ředitel Netflix.
-* Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení země. Pokud uživatel musí projít, v zahraničí a stále se chce sledovat obsah, je potřeba ke stažení offline.
+* Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení určitá země nebo oblast. Pokud uživatel musí projít, v zahraničí a stále se chce sledovat obsah, je potřeba ke stažení offline.
  
 Výzvy, se kterými jsme setkat při implementaci offline režimu je následující:
 

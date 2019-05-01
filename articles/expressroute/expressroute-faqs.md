@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3c8a068e2f68dcd53ad7ee6cdf3a1f39524c0fa4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 17f596abda4febbd6e532adcb44d544cd4d104df
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367841"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924667"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -43,7 +43,7 @@ Ne. Připojení k síti VPN libovolné rychlosti si můžete zakoupit od svého 
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Pokud budu platit pro okruh ExpressRoute danou šířku pásma, musím schopnost burst až vyšších rychlostí v případě potřeby?
 
-Ano. Okruhy ExpressRoute jsou nakonfigurovány a umožňuje tak burst až dvakrát limit šířky pásma, kterou jste si opatřili bez jakýchkoli dalších nákladů. Obraťte se na svého poskytovatele služby, pokud podporuje tuto možnost.
+Ano. Okruhy ExpressRoute jsou nakonfigurovány a umožňuje tak burst až dvakrát limit šířky pásma, kterou jste si opatřili bez jakýchkoli dalších nákladů. Obraťte se na svého poskytovatele služby, pokud podporuje tuto možnost. To není pro delší dobu a není zaručena. 
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Můžu použít stejné připojení privátní sítě pomocí virtuální sítě a dalšími službami Azure současně?
 
@@ -119,11 +119,11 @@ Pokud jeden z křížové připojení selže, nedojde ke ztrátě připojení. R
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Implementace redundance na soukromý partnerský vztah
 
-Víc okruhů ExpressRoute z různých umístění partnerského vztahu můžete připojené ke stejné virtuální síti zajistit vysokou dostupnost v případě, že jeden okruh, přestane být k dispozici. Pak můžete [přiřaďte vyšší váhu](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) místní připojení k upřednostnit preferovali konkrétní okruh. Důrazně doporučujeme, aby zákazníci nastavení jediné body selhání, aby měly aspoň dva okruhy ExpressRoute. 
+Víc okruhů ExpressRoute z různých umístění partnerského vztahu můžete připojené ke stejné virtuální síti zajistit vysokou dostupnost v případě, že jeden okruh, přestane být k dispozici. Pak můžete [přiřaďte vyšší váhu](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) místní připojení k upřednostnit preferovali konkrétní okruh. Důrazně doporučujeme, aby zákazníci nastavení jediné body selhání, aby měly aspoň dva okruhy ExpressRoute. 
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak můžu implementovat redundance na partnerský vztah Microsoftu?
 
-Důrazně doporučujeme při zákazníci používají partnerský vztah pro přístup k veřejné služby Azure jako Azure Storage nebo Azure SQL, jakož i zákazníkům, kteří používají partnerský vztah Microsoftu pro Office 365, které implementují víc okruhů v různých partnerský vztah Microsoftu Vyhýbejte se jediným bodů faiure umístění. Zákazníci mohou inzerovat stejné předpony v obou okruzích a použít [předřazení AS PATH](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) nebo inzerovat různými předponami určit cestu v místním.
+Důrazně doporučujeme při zákazníci používají partnerský vztah pro přístup k veřejné služby Azure jako Azure Storage nebo Azure SQL, jakož i zákazníkům, kteří používají partnerský vztah Microsoftu pro Office 365, které implementují víc okruhů v různých partnerský vztah Microsoftu Vyhýbejte se jediným bodů faiure umístění. Zákazníci mohou inzerovat stejné předpony v obou okruzích a použít [předřazení AS PATH](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) nebo inzerovat různými předponami určit cestu v místním.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak můžu zajistit vysokou dostupnost na virtuální síť připojená k ExpressRoute?
 

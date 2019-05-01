@@ -1,5 +1,5 @@
 ---
-title: Funkce zabezpečení Azure používat s virtuálními počítači Azure | Dokumentace Microsoftu
+title: Funkce zabezpečení použité s Azure virtual machines – zabezpečení Azure | Dokumentace Microsoftu
 description: Tento článek obsahuje základní informace o základní funkce zabezpečení Azure, které lze použít s Azure Virtual Machines.
 services: security
 documentationcenter: na
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c0a4a8ae270c8d8f6f3c2e86db9deed4e14f668e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3467050214cba6ce5723c2747d2c13e40e86609b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444244"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872019"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
+Tento článek obsahuje základní informace o základní funkce zabezpečení Azure, které můžete používat s virtuálními počítači.
 
 Azure Virtual Machines můžete pružně nasadit širokou škálu výpočetních řešení. Služba podporuje Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP a Azure BizTalk Services. Proto můžete nasadit jakoukoli úlohu a v jakémkoli jazyce na téměř jakýkoli operační systém.
 
@@ -33,9 +34,7 @@ S Azure můžete vytvářet s rozšířeným zabezpečením, který vyhovuje ře
 * Šifrovat citlivá data.
 * Zabezpečení provozu sítě.
 * Identifikace a detekce hrozeb.
-* Splnění požadavků na dodržování předpisů.
-
-Cílem tohoto článku je poskytnout přehled o základní funkce zabezpečení Azure, které můžete používat s virtuálními počítači. Odkazy na články poskytují podrobnosti o každé funkce tak další informace.  
+* Splnění požadavků na dodržování předpisů.  
 
 ## <a name="antimalware"></a>Antimalware
 
@@ -77,14 +76,14 @@ Pro ještě výkonnější ochrany, zvažte použití [rozšířené ochrany př
 * [Správa a rozhraní API](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Ochrana před internetovými útoky Microsoft](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-Další informace: 
+Další informace:
 
 * [Začínáme s WDATP](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
 * [Přehled možností WDATP](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
 
-Zlepšení zabezpečení klíče můžete vylepšit ochranu ověřování a šifrování. Správa a zabezpečení důležitých tajných kódů a klíčů můžete zjednodušit jejich uložením ve službě Azure Key Vault. 
+Zlepšení zabezpečení klíče můžete vylepšit ochranu ověřování a šifrování. Správa a zabezpečení důležitých tajných kódů a klíčů můžete zjednodušit jejich uložením ve službě Azure Key Vault.
 
 Key Vault umožňuje ukládat klíče v modulech zabezpečení hardwaru (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. SQL Server šifrování klíče pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) můžete všechny uloženy ve službě Key Vault všechny klíče nebo tajné kódy z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují přes [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
@@ -133,7 +132,7 @@ Další informace:
 
 ## <a name="virtual-networking"></a>Virtuální síť
 
-Virtuální počítače vyžadují připojení k síti. Splnění tohoto požadavku Azure vyžaduje virtuální počítače připojit ke službě Azure virtual network. 
+Virtuální počítače vyžadují připojení k síti. Splnění tohoto požadavku Azure vyžaduje virtuální počítače připojit ke službě Azure virtual network.
 
 Virtuální síť Azure je logická konstrukce postavené na Azure síťových prostředcích infrastruktury. Každé logické Azure virtual network je izolovaná od všech jiným virtuálním sítím Azure. Tato izolace pomáhá zajistit, že síťový provoz v nasazeních není dostupný ostatním zákazníkům Microsoft Azure.
 
@@ -169,14 +168,13 @@ Další informace:
 
 ## <a name="confidential-computing"></a>Důvěrné computingu
 
-Zatímco důvěrné computingu není technicky součástí zabezpečení virtuálních počítačů, na téma zabezpečení virtuálních počítačů patří do vyšší úrovně předmětem "vypočítat" zabezpečení. Důvěrné computingu patří v rámci kategorie "vypočítat" zabezpečení. 
+Zatímco důvěrné computingu není technicky součástí zabezpečení virtuálních počítačů, na téma zabezpečení virtuálních počítačů patří do vyšší úrovně předmětem "vypočítat" zabezpečení. Důvěrné computingu patří v rámci kategorie "vypočítat" zabezpečení.
 
 Důvěrné computingu zajistí, že když data "v nezašifrované podobě", které jsou požadovány pro efektivní zpracování dat je chráněn uvnitř prostředí pro důvěryhodného spouštění https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE – označované také jako enklávě), z nichž příklad na následujícím obrázku .  
 
-Profily tvaru t Ujistěte se, že neexistuje žádný způsob, jak zobrazit data nebo operace uvnitř zvenku, dokonce i pomocí ladicího programu. Dokonce i zajišťují, že pro přístup k datům smí obsahovat pouze autorizovaného kódu. Pokud kód je změnit nebo zfalšovat, byl odepřen operací a prostředí zakázán. TEE vynucuje tyto ochrany během spuštění kódu v ní. 
+Profily tvaru t Ujistěte se, že neexistuje žádný způsob, jak zobrazit data nebo operace uvnitř zvenku, dokonce i pomocí ladicího programu. Dokonce i zajišťují, že pro přístup k datům smí obsahovat pouze autorizovaného kódu. Pokud kód je změnit nebo zfalšovat, byl odepřen operací a prostředí zakázán. TEE vynucuje tyto ochrany během spuštění kódu v ní.
 
 Další informace:
 
 * [Představujeme Azure důvěrné computingu](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure důvěrné computingu](https://azure.microsoft.com/blog/azure-confidential-computing/)  
-

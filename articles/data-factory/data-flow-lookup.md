@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348013"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868124"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory mapování transformace vyhledávání toku dat
 
@@ -25,6 +25,10 @@ Přidat odkaz na data z jiného zdroje do toku dat pomocí vyhledávání. Trans
 Vyberte klíče, které chcete porovnává příchozí datový proud pole a pole ze zdroje odkazu na pole. Musíte nejprve vytvoříte nový zdroj na plátně návrhu toku dat použít jako pravá strana pro vyhledávání.
 
 Když shoda nenajde, výsledné řádky a sloupce ze zdrojového odkazu se přidají do vašeho datového toku. Můžete zvolit pole, která zájmu, které chcete zahrnout do na konci toku dat pro jímku.
+
+## <a name="match--no-match"></a>Odpovídá / žádná shoda
+
+Po transformaci vaše vyhledávání vám pomůže následující transformace kontrolu výsledků jednotlivých řádků shoda s použitím výrazu funkce `isMatch()` provádět další možnosti v logice podle Určuje, jestli vyhledávání výsledkem odpovídající řádek nebo ne.
 
 ## <a name="optimizations"></a>Optimalizace
 

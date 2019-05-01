@@ -9,11 +9,11 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.openlocfilehash: ed7beeadc0a550a28d1f936702aabeb45823b677
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127204"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699610"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark v HDInsight pomocí Power BI 
 

@@ -1,6 +1,6 @@
 ---
-title: Dostupnost infrastruktury Azure
-description: Tento článek popisuje úrovně redundance pro zajištění maximální dostupnosti dat zákazníků.
+title: Dostupnost infrastruktury Azure – zabezpečení Azure
+description: Tento článek obsahuje informace o co společnost Microsoft k zabezpečení infrastruktury Azure a zajištění maximální dostupnosti dat zákazníků.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d13c79152afe00cb326f69b523e9fd7f0c3550b0
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587185"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872610"
 ---
 # <a name="azure-infrastructure-availability"></a>Dostupnost infrastruktury Azure
-Azure poskytuje robustní dostupnosti podle rozsáhlé redundance dosáhnout pomocí technologie virtualizace. Azure poskytuje mnoho úrovně redundance pro zajištění maximální dostupnosti dat zákazníků.
+Tento článek obsahuje informace o co společnost Microsoft k zabezpečení infrastruktury Azure a zajištění maximální dostupnosti dat zákazníků. Azure poskytuje robustní dostupnosti podle rozsáhlé redundance dosáhnout pomocí technologie virtualizace.
 
 ## <a name="temporary-outages-and-natural-disaster"></a>Dočasných výpadků a přírodní katastrofě
 Cloudová infrastruktura Microsoftu a operace tým navrhuje, sestavení, funguje a zlepšuje zabezpečení cloudové infrastruktury. Tento tým zajišťuje, že vysokou dostupnost a spolehlivost, vysoké účinnosti a inteligentní škálovatelnost doručování infrastruktury Azure. Tým poskytuje zabezpečené, privátní a důvěryhodného cloudu.

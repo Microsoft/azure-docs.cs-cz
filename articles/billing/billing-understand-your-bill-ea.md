@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2019
 ms.author: banders
-ms.openlocfilehash: 810d0795bd005cc313ec3567811ad55ba1d9d522
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369993"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571204"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení faktury za Azure Enterprise Agreement
 
@@ -29,7 +29,7 @@ Kredit vaší organizace zahrnuje svůj peněžní závazek. Peněžní závazek
 
 ## <a name="invoices-for-most-customers"></a>Faktury pro většinu zákazníků
 
-Tato část se nevztahuje na zákazníky Azure v Austrálii, Japonska a Singapur. Pokud jste v některé z těchto zemí, přečtěte si téma [faktury pro ostatní zákazníky](#invoices-for-other-customers).
+Tato část se nevztahuje na zákazníky Azure v Austrálii, Japonska a Singapur. Pokud jste v jednom z těchto zemí/oblastí, přečtěte si téma [faktury pro ostatní zákazníky](#invoices-for-other-customers).
 
 Při jedné z následujících akcí během fakturačního cyklu obdržíte fakturu Azure:
 

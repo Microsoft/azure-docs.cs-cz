@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: b7af0149a690e3cc3a357a5cb769751e3674d374
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437680"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575616"
 ---
 # <a name="azure-functions-networking-options"></a>Služba Azure Functions možnostech sítě
 
@@ -31,15 +31,14 @@ Můžete hostovat aplikace function App v několika způsoby:
 
 ## <a name="matrix-of-networking-features"></a>Matice síťových funkcí
 
-|                |[Plán consumption](functions-scale.md#consumption-plan)|⚠ [Premium plan](functions-scale.md#premium-plan-public-preview)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
+|                |[Plán consumption](functions-scale.md#consumption-plan)|[Plán Premium (preview)](functions-scale.md#premium-plan-public-preview)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Příchozí omezení IP adres](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Omezení odchozích IP adres](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 |[Integrace virtuální sítě](#virtual-network-integration)|❌No|❌No|✅Yes|✅Yes|
-|[Přehled integrace služby virtual network (koncové body služby a Azure ExpressRoute)](#preview-version-of-virtual-network-integration)|❌No|⚠Ano|⚠Ano|✅Yes|
+|[Integrace služby virtual network ve verzi Preview (odchozí koncové body služby a Azure ExpressRoute)](#preview-version-of-virtual-network-integration)|❌No|✅Yes|✅Yes|✅Yes|
 |[Hybridní připojení](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[přístup privátního lokality](#private-site-access)|❌No| ❌No|❌No|✅Yes|
-
-⚠ Tato funkce ve verzi preview není pro použití v produkčním prostředí.
+|[přístup privátního lokality](#private-site-access)|❌No| ✅Yes|✅Yes|✅Yes|
 
 ## <a name="inbound-ip-restrictions"></a>Příchozí omezení IP adres
 
@@ -49,6 +48,10 @@ Omezení IP adres můžete použít k definování priority seřazené seznam IP
 > Použití editoru webu Azure portal, musí být přístup přímo k běžící aplikaci function app na portálu. Zařízení, které používáte pro přístup k portálu také musí mít jeho seznam povolených IP adres. Síťové omezení na místě, můžete stále přístup k žádné funkce v **funkce platformy** kartu.
 
 Další informace najdete v tématu [omezení statických přístupu službě Azure App Service](../app-service/app-service-ip-restrictions.md).
+
+## <a name="outbound-ip-restrictions"></a>Odchozí omezení IP adres
+
+Odchozí omezení IP adres jsou dostupné jenom pro funkce nasazení do služby App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve kterém je nasazená služba App Service Environment.
 
 ## <a name="virtual-network-integration"></a>Integrace virtuální sítě
 
@@ -88,7 +91,10 @@ Další informace najdete v tématu [dokumentaci služby App Service Hybrid Conn
 
 ## <a name="private-site-access"></a>Privátní přístup k webu
 
-Přístup k webům privátní odkazuje na zpřístupnění aplikace jen z privátní sítě, jako z v rámci virtuální sítě Azure. Přístup k privátním serveru je k dispozici pouze s nakonfigurovanou interní nástroj pro vyrovnávání zatížení (ILB) služby App Service Environment. Další informace najdete v tématu [vytvoření a použití interního nástroje load balancer pomocí služby App Service Environment](../app-service/environment/create-ilb-ase.md).
+Přístup k webům privátní odkazuje na zpřístupnění aplikace jen z privátní sítě, jako z v rámci virtuální sítě Azure. 
+* Přístup k privátním serveru je k dispozici v Premium a App Service při plánování **koncové body služby** jsou nakonfigurované. Další informace najdete v tématu [koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md)
+    * Uvědomte si, že s koncovými body služby, funkce má stále úplné odchozí přístup k Internetu, i s nakonfigurovanou integraci s virtuální sítí.
+* Přístup k privátním serveru je k dispozici pouze s nakonfigurovanou interní nástroj pro vyrovnávání zatížení (ILB) služby App Service Environment. Další informace najdete v tématu [vytvoření a použití interního nástroje load balancer pomocí služby App Service Environment](../app-service/environment/create-ilb-ase.md).
 
 Existuje mnoho způsobů, jak přistupovat k prostředkům virtuální sítě v další možnosti hostování. Ale službu App Service Environment je jediný způsob, jak povolit aktivačních událostí pro funkci probíhá přes virtuální síť.
 

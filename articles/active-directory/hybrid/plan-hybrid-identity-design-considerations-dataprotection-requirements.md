@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454861"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918779"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity
 Prvním krokem při ochraně dat je identifikovat, kdo má přístup k těmto datům. Navíc musíte mít řešení identit, které můžete integrovat do vašeho systému pro poskytování možností ověřování a autorizace. Ověřování a autorizace se často zaměňuje za číslo mezi sebou a nesprávně pochopeny, jejich role. Ve skutečnosti jsou různé, jak je znázorněno na následujícím obrázku:
 
-![](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
+![životního cyklu mobilních zařízení](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **Fáze životního cyklu správy mobilních zařízení**
 
@@ -44,7 +44,7 @@ Ve věku mobility, většina společností má stejný cíl – umožnit: povoli
 Existují však některé aspekty zabezpečení, které by měl prozkoumat a ověřit, bez ohledu na odvětví.
 
 ## <a name="data-protection-paths"></a>Cesty k datům ochrany
-![](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
+![Cesty k datům ochrany](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
 
 **Cesty k datům ochrany**
 

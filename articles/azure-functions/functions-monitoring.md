@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406636"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922969"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
 [Služba Azure Functions](functions-overview.md) nabízí integrovanou integraci s [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) monitorování funkce. Tento článek ukazuje postup při konfiguraci Azure Functions k odeslání systémem generovaných protokolů do služby Application Insights.
 
-Doporučujeme používat Application Insights, protože shromažďuje protokolu, výkonu a údaje o chybě. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se používají funkce. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Application Insights můžete použít i během vývoje projektu lokální funkce aplikace. Další informace najdete v tématu [co je Application Insights?](../azure-monitor/app/app-insights-overview.md)
+Doporučujeme používat Application Insights, protože shromažďuje protokolu, výkonu a údaje o chybě. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se používají funkce. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Application Insights můžete použít i během vývoje projektu lokální funkce aplikace. Další informace najdete v tématu [co je Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 Požadované instrumentace Application Insights je součástí Azure Functions, vše, co potřebujete je platný Instrumentační klíč pro připojení k prostředku služby Application Insights aplikaci function app.
 
@@ -626,7 +626,7 @@ To propojuje vaši aplikaci do protokolu, služba pro streamování a aplikačn�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Protokoly streamování můžete povolit pomocí [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli). Azure CLI použijte následující příkazy přihlásit, zvolte předplatné a datový proud protokolů:
+Protokoly streamování můžete povolit pomocí [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). Přihlásit, zvolte předplatné a datový proud protokolů použijte následující příkazy:
 
 ```azurecli
 az login

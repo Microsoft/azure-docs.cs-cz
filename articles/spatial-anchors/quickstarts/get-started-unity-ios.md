@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – vytvoření aplikace Unity pro iOS pomocí Azure prostorových kotvy | Dokumentace Microsoftu
+title: Rychlý start – vytvoření aplikace iOS Unity s Azure prostorových kotvy | Dokumentace Microsoftu
 description: V tomto rychlém startu se dozvíte, jak k vytváření aplikací pro iOS pomocí Unity pomocí prostorových ukotvení.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e3320cd6131497d0b2c794646bae7fae578488cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41189d4945ef22f8a587a51717b7dd6f40ac39ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235254"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690549"
 ---
-# <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro iOS Unity s Azure prostorových kotvy
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace iOS Unity s Azure prostorových kotvy
 
-Tento rychlý start popisuje způsob vytvoření Unity aplikace iOS pomocí [prostorových kotvy Azure](../overview.md). Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Až budete hotovi, budete mít aplikaci pro iOS ARKit vytvořených pomocí Unity, který můžete uložit a odvolat prostorových ukotvení.
+Tento rychlý start popisuje, jak vytvořit aplikaci iOS Unity pomocí [prostorových kotvy Azure](../overview.md). Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Až budete hotovi, budete mít aplikaci pro iOS ARKit vytvořených pomocí Unity, který můžete uložit a odvolat prostorových ukotvení.
 
 Dozvíte se, jak provést tyto akce:
 

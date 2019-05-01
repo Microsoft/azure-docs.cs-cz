@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775876"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922838"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -66,7 +66,7 @@ Dříve byly spojeny několik služeb Azure jako *Operations Management Suite*, 
 
 * [Azure Automation Update management](../../automation/automation-update-management.md) aktualizací operačního systému.
 * [Azure Automation Desired State Configuration](../../automation/automation-dsc-overview.md) udržovat konzistentní konfiguraci stavu.
-* Sledovat změny konfigurace s [Azure Automation Change Tracking a Inventory](../../automation/automation-change-tracking.md).
+* Sledovat změny konfigurace s [Azure Automation Change Tracking a Inventory](../../automation/change-tracking.md).
 * Služby Azure, jako [Application Insights](https://docs.microsoft.com/azure/application-insights/) a [Azure Security Center](https://docs.microsoft.com/azure/security-center/), která nativně ukládají data přímo do Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent závislostí

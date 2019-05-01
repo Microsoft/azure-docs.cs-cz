@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 88a66cae00bcd1256f6c3ad76a04d1333d1db9db
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: daab3c3b2a5b756686a4867350478faaa1142279
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917086"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726853"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Živé streamování pomocí služby Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure portal  
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Následující část představuje obecné kroky, které jsou součástí proces
 
 1. Připojte k počítači videokameru. <br/>Inspiraci, instalační program, podívejte se na [videa ozubené kolo nastavení jednoduché a přenosné události]( https://link.medium.com/KNTtiN6IeT).
 
-    Pokud nemáte přístup k fotoaparátu, nástroje, jako [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) je možné generovat živého kanálu z videosouboru.
+    Pokud nemáte přístup k fotoaparátu, nástroje, jako [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) je možné generovat živého kanálu z videosouboru.
 1. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Také přečtěte si tento blog: [Živé streamování provozu pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 
     Tento krok můžete provést i po vytvoření kanálu.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640437"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925238"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -96,7 +96,7 @@ Existuje mnoho různých DNS ukládání do mezipaměti balíčků dostupné (ja
   * Spustit službu dnsmasq s `systemctl start dnsmasq.service`. 
   * Upravit **/etc/sysconfig/network/config**a změnit *NETCONFIG_DNS_FORWARDER = ""* k *dnsmasq*.
   * Aktualizovat resolv.conf s `netconfig update`pak můžete nastavit jako místního překladače DNS do mezipaměti.
-* **OpenLogic (používá NetworkManager)**:
+* **CentOS (používá NetworkManager)**:
   * Nainstalovat balíček dnsmasq s `sudo yum install dnsmasq`.
   * Povolit službu dnsmasq s `systemctl enable dnsmasq.service`.
   * Spustit službu dnsmasq s `systemctl start dnsmasq.service`.
@@ -129,7 +129,7 @@ Soubor resolv.conf se obvykle generuje automaticky a by neměla být upravována
 * **SUSE** (používá netconf):
   1. Přidat *timeout:1 pokusy: 5* k **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametr **/etc/sysconfig/network/config**.
   2. Spustit `netconfig update` aktualizovat.
-* **OpenLogic** (používá NetworkManager):
+* **CentOS** (používá NetworkManager):
   1. Přidat *echo "možnosti timeout:1 pokusy: 5"* k **/etc/NetworkManager/dispatcher.d/11-dhclient**.
   2. Aktualizace pomocí `service network restart`.
 

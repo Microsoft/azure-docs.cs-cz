@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415000"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694838"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -85,9 +85,6 @@ Při synchronizaci hodnoty hash hesla nebo federované pokusy uživatelů o rese
    * Propojení MV objekt konektoru služby Active Directory musí mít synchronizačního pravidla `Microsoft.InfromADUserAccountEnabled.xxx` na odkaz.
    
    Při volání pocházejí z cloudu, synchronizační modul používá **cloudAnchor** atribut k vyhledání objekt prostoru konektoru služby Azure Active Directory. Potom následuje odkaz zpět do objektu MV a pak následuje odkaz zpět do objektu služby Active Directory. Vzhledem k tomu může existovat více objektů služby Active Directory (s více doménovými strukturami) pro stejného uživatele, synchronizační modul se může spolehnout `Microsoft.InfromADUserAccountEnabled.xxx` odkaz vybrat tu správnou.
-
-   > [!Note]
-   > V důsledku této logiky pro heslo zpětného zápisu pro práci s Azure AD Connect musí být schopný komunikovat s emulátoru primárního řadiče domény (PDC). Pokud je potřeba povolit ručně, můžete připojit služby Azure AD Connect k emulátoru primárního řadiče domény. Klikněte pravým tlačítkem myši **vlastnosti** konektoru synchronizace služby Active Directory a potom vyberte **Konfigurovat oddíly adresáře**. Z něj, vyhledejte **nastavení připojení řadiče domény** a vyberte políčko s názvem **použít pouze upřednostňované řadiče domény**. I v případě, že upřednostňovaného řadiče domény není emulátor primárního řadiče domény, Azure AD Connect se pokusí připojit k primární řadič domény pro zpětný zápis hesla.
 
 1. Poté, co uživatel účet nachází, je proveden pokus o resetování hesla přímo v příslušné doménové struktuře služby Active Directory.
 1. Pokud je operace nastavení hesla úspěšné, uživatel je řekli, že se že změnilo heslo.

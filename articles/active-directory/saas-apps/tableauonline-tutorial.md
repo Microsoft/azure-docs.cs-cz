@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 352ad9473a1c1a9360ddceb720ff968f4e97e012
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617299"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Integrace Azure Active Directory s Tableau Online
 
@@ -188,7 +188,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon\@contoso.com
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -229,7 +229,7 @@ V této části vytvořte uživatele Britta Simon v Tableau Online.
   
     ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Vyberte **přidat uživatele pro ověřování (SAML)**. V **zadejte e-mailové adresy** přidat textové pole britta.simon@contoso.com
+2. Vyberte **přidat uživatele pro ověřování (SAML)**. V **zadejte e-mailové adresy** textového pole přidat britta.simon\@contoso.com
   
     ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 

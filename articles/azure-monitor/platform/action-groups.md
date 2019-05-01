@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778333"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919094"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -78,7 +78,7 @@ Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitor
 
 Může mít omezený počet e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku
 
-**ITSM** – do skupiny akcí může mít omezený počet omezený počet akce ITSM. Akce ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
+**ITSM** – do skupiny akcí může mít omezený počet akce ITSM. Akce ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
 **Aplikace logiky** – může mít omezený počet akce aplikace logiky do skupiny akcí.
 
@@ -105,15 +105,12 @@ Zdrojové rozsahy IP adres
  - 51.5.148.86
  - 51.5.149.19
 
-Získat informace o změnách na tyto IP adresy, doporučujeme nakonfigurovat [služby upozornění stavu, která monitoruje Informační oznámení týkající se služby skupiny akcí.
-
+Pokud chcete dostávat informace o změnách na tyto IP adresy, doporučujeme, abyste že konfigurace upozornění Service Health, která monitoruje Informační oznámení týkající se služby skupiny akcí.
 
 ## <a name="next-steps"></a>Další postup ##
-
 * Další informace o [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Získat [pochopení schéma webhooku v upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Další informace o [konektor ITSM](../../azure-monitor/platform/itsmc-overview.md)
 * Další informace o [rychlosti](../../azure-monitor/platform/alerts-rate-limiting.md) na výstrahy.
 * Získat [přehled upozornění protokolu aktivit](../../azure-monitor/platform/alerts-overview.md)a zjistěte, jak dostávat upozornění.  
 * Zjistěte, jak [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-

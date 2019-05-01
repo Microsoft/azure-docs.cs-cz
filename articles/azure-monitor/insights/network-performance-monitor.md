@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: 29826f7f842f8dfbd7cd2a754c919f06542a161c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401856"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916763"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -263,8 +263,8 @@ Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím webu Azure p
 3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat skupinu dříve vytvořená akce. Zjistěte, jak vytvořit skupinu akcí [tady.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Po úspěšném vytvoření výstrahy můžete spravovat výstrahy odkaz jak spravovat upozornění. 
 
-Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo upozornění na základě dotazu protokolu ve službě Azure Monitor. Tento dotaz se aktivuje ve výchozím nastavení každých 5 minut. Azure monitor není účtovat prvních 250 pravidel upozornění, které jsou vytvořené protokolů a všechna pravidla upozornění výše uvedené omezení 250 pravidel upozornění protokolů se budou účtovat podle jako [výstrahy ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
-Oznámení se účtují samostatně podle [oznámení ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo upozornění na základě dotazu protokolu ve službě Azure Monitor. Tento dotaz se aktivuje ve výchozím nastavení každých 5 minut. Azure monitor není účtovat prvních 250 pravidel upozornění, které jsou vytvořené protokolů a všechna pravidla upozornění výše uvedené omezení 250 pravidel upozornění protokolů se budou účtovat podle jako [výstrahy ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/).
+Oznámení se účtují samostatně podle [oznámení ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/).
 
 
 ## <a name="pricing"></a>Ceny

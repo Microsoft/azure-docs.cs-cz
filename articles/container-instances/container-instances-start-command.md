@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537645"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569637"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru přepsat výchozí operace příkazového řádku
 
@@ -24,7 +24,15 @@ Nastavení, jako jsou [proměnné prostředí](container-instances-environment-v
 
 * Ve výchozím nastavení, určuje příkazový řádek *jeden proces, který se spustí bez prostředí* v kontejneru. Například může příkazového řádku spustit Pythonovému skriptu nebo spustitelného souboru. 
 
-* Ke spuštění více příkazů, začít tak, že nastavíte příkazové prostředí v operačním systému kontejneru příkazového řádku (příklady: `bin/sh`, `/bin/bash`, `cmd`). Dodržují konvence prostředí kombinovat více příkazů ke spuštění v sekvenci.
+* Ke spuštění více příkazů, začněte tak, že nastavíte příkazové prostředí, který je podporovaný v operačním systému kontejneru příkazového řádku. Příklady:
+
+  |Operační systém  |Výchozí prostředí  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Nástroj Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  Dodržují konvence prostředí kombinovat více příkazů ke spuštění v sekvenci.
 
 * V závislosti na konfiguraci kontejneru můžete potřebovat nastavit úplná cesta k spustitelný soubor příkazového řádku nebo argumenty.
 

@@ -10,11 +10,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 0fb884c46525c0d5d14deb1521f086451a969656
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761153"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691707"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Index Apache Hadoop v HDInsight článků o řešení potíží
 Jsou články uspořádané podle typů chyb.

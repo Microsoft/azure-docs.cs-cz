@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929446"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574178"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -49,7 +49,7 @@ Výchozí možnost databáze je Titan, což je 3.50 $. Jsme nezobrazovat náklad
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>Spouštím MySQL na vlastním virtuálním počítači Azure. Je Moje webové aplikace Azure připojit k databázi?
 Ano. Webové aplikace může připojit k vaší databázi, tak dlouho, dokud váš virtuální počítač Azure udělil vzdálený přístup do vaší webové aplikace. Další informace najdete v tématu [instalace MySQL na virtuálním počítači](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>Ve které země jsou podporované clustery ClearDB Premium MySQL?
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Ve kterém jsou země/oblasti podporované clustery ClearDB Premium MySQL?
 Clustery ClearDB Premium MySQL jsou dostupné ve všech oblastech Azure po celém světě s výjimkou Indie, Austrálie, Brazílie – jih a Čína.
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>Můžete vytvořit nový cluster před vytvořením databáze ClearDB řešení cluster úrovně premium?
@@ -68,7 +68,7 @@ Použijte Basic nebo vyšší cenovou úroveň pro webové aplikace. ClearDB dop
 V [webu Azure portal](https://portal.azure.com), je možné škálovat i databázi ClearDB sdíleného hostingu. Přečtěte si tento [článku](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) Další informace. Aktuálně Nepodporujeme upgrade ClearDB Premium clusterů na portálu Azure portal.
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Nejde Zobrazit Moje databáze ClearDB na webu Azure portal?
-Pokud jste databázi ClearDB vytvořili v klasickém, nebudete moci zobrazit vaše databáze v [webu Azure Portal](https://portal.azure.com). Neexistuje žádné alternativní pro tento scénář.
+Pokud jste databázi ClearDB vytvořili v klasickém, nebudete moci zobrazit vaše databáze v [webu Azure portal](https://portal.azure.com). Neexistuje žádné alternativní pro tento scénář.
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Koho se mám obrátit pro podporu při Moje databáze je mimo provoz?
 Kontakt [podporu ClearDB](https://www.cleardb.com/developers/help/support) pro některé databázi související problémy. Připravte se na poskytují informace o vašem předplatném Azure.

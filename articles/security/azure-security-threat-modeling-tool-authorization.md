@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121517"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935887"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Zabezpečení rámce: Autorizace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -280,7 +280,7 @@ Všimněte si že RLS jako funkce databáze out-of-the-box se vztahuje pouze na 
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | StorageType – tabulky |
 | **Odkazy**              | [Jak delegovat přístup k objektům v účtu služby Azure storage pomocí SAS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **Kroky** | V některých obchodních scénářích Azure Table Storage může být nutné ukládat citlivá data, která určeného pro různé strany. Například citlivá data týkající se různých zemí. V takových případech lze SAS podpisy sestavit, zadáním klíče oblastí oddílu a řádku tak, že uživatel má přístup k datům, které jsou specifické pro konkrétní zemi.| 
+| **Kroky** | V některých obchodních scénářích Azure Table Storage může být nutné ukládat citlivá data, která určeného pro různé strany. Například citlivá data týkající se různých zemích nebo oblastech. V takových případech lze SAS podpisy sestavit, zadáním klíče oblastí oddílu a řádku tak, že uživatel má přístup k datům, které jsou specifické pro určitou zemi/oblast.| 
 
 ## <a id="rbac-azure-manager"></a>Povolit na základě rolí řízení přístupu (RBAC) do účtu Azure storage pomocí Azure Resource Manageru
 

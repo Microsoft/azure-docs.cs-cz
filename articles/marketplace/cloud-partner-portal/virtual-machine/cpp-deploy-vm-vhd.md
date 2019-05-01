@@ -1,25 +1,18 @@
 ---
-title: Nasazení virtuálního počítače z virtuálních pevných disků pro Azure Marketplace | Dokumentace Microsoftu
+title: Nasazení virtuálního počítače z virtuálních pevných disků pro Azure Marketplace
 description: Vysvětluje postup při registraci virtuálního počítače z VHD nasazení Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046678"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938292"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Nasazení virtuálního počítače z virtuálních pevných disků
 
@@ -71,7 +64,7 @@ Po nasazení virtuálního počítače, jste připraveni [certifikaci vaší ima
    | Heslo správce              | Heslo účtu správce pro nový virtuální počítač                                  |
    | OS Type                     | Operační systém virtuálního počítače: `Windows` \| `Linux`                                    |
    | ID předplatného             | Identifikátor vybraného předplatného                                      |
-   | Umístění                    | Geografické umístění nasazení                                        |
+   | Location                    | Geografické umístění nasazení                                        |
    | Velikost virtuálního počítače                     | [Velikost virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), například `Standard_A2` |
    | Název veřejné IP adresy      | Název veřejné IP adresy                                               |
    | Název virtuálního počítače                     | Název nového virtuálního počítače                                                           |

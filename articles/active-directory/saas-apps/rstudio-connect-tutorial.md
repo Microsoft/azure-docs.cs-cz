@@ -17,11 +17,11 @@ ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32aa7a531de2e236e3941bbe8afd84d845f80f99
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104744"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Kurz: Integrace Azure Active Directory s prostředím RStudio Connect
 

@@ -1,25 +1,18 @@
 ---
-title: Publikování Dynamics 365 Customer Engagement nabídky aplikace – Azure Marketplace | Dokumentace Microsoftu
+title: Publikování Dynamics 365 Customer Engagement aplikace nabídky | Azure Marketplace
 description: Popisuje kroky pro publikování Dynamics 365 Customer Engagement aplikace nabídky na webu AppSource Marketplace a proces.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.author: pbutlerm
-ms.openlocfilehash: eeb0fa84e8cd5ac6a499e02edd5879c5bbdd8ead
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 65df08d5fa2b7e4e7f6654f520f9caacc696f7c3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308780"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942289"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Publikování Dynamics 365 Customer Engagement nabídky.
 

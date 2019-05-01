@@ -8,12 +8,12 @@ ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61002665"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727406"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Koncepce pro vývojáře Azure Data Catalog
 Microsoft **Azure Data Catalog** je plně spravovaná Cloudová služba, která poskytuje možnosti pro zjišťování zdrojů dat a crowdsourcingová metadata zdroje dat. Vývojáři můžou využívat službu přes jeho rozhraní REST API. Vysvětlení pojmů implementované ve službě je důležité pro vývojáře úspěšně integrovat **Azure Data Catalog**.
@@ -174,9 +174,9 @@ Běžné typy může sloužit jako typy vlastností, ale nejsou položky.
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>Protokol</td><td>string</td><td>Povinná hodnota. Popisuje protokol používaný ke komunikaci se zdrojem dat. Příklad: "tds" pro SQl Server, "oracle" pro Oracle, atd. Odkazovat na <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">specifikace odkazu - DSL struktury zdroje dat</a> seznam aktuálně podporovaných protokolů.</td></tr>
-<tr><td></td><td>adresa</td><td>Slovník<string, object></td><td>Povinná hodnota. Adresa je sada data specifická pro protokol, který se používá k identifikaci zdroje dat, na kterou se odkazuje. Adresa data na protokol pro konkrétní obor, to znamená, ho je význam bez znalosti protokolu.</td></tr>
+<tr><td></td><td>adresa</td><td>Slovník&lt;řetězec, objekt&gt;</td><td>Povinná hodnota. Adresa je sada data specifická pro protokol, který se používá k identifikaci zdroje dat, na kterou se odkazuje. Adresa data na protokol pro konkrétní obor, to znamená, ho je význam bez znalosti protokolu.</td></tr>
 <tr><td></td><td>Ověřování</td><td>string</td><td>Volitelné. Schéma ověřování používaný ke komunikaci se zdrojem dat. Příklad: windows, oauth, atd.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Slovník<string, object></td><td>Volitelné. Další informace o tom, jak se připojit ke zdroji dat</td></tr>
+<tr><td></td><td>connectionProperties</td><td>Slovník&lt;řetězec, objekt&gt;</td><td>Volitelné. Další informace o tom, jak se připojit ke zdroji dat</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Back-endu neprovádí žádné ověřování zadané vlastnosti pro AAD během publikování.</td></tr>
 <tr><td></td><td>upn</td><td>string</td><td>Jedinečnou e-mailovou adresu uživatele. Je třeba zadat Pokud není zadané ID objektu nebo v kontextu "lastRegisteredBy" vlastnosti, jinak volitelné.</td></tr>

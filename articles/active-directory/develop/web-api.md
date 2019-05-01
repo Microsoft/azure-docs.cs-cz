@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b477171be0f306431b0f7c5965ebede4f4680c22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f344a4f928030c07f59c2f7aba201d153da123f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249937"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918713"
 ---
 # <a name="web-api"></a>Web API
 
@@ -69,7 +69,7 @@ Zobrazit ukázky kódu pro webovou aplikaci do scénáře webového rozhraní AP
 
 ## <a name="app-registration"></a>Registrace aplikace
 
-Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace ke koncovému bodu Azure AD v1.0](quickstart-v1-add-azure-ad-app.md).
+Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace](quickstart-register-app.md).
 
 * Jednoho tenanta – identita aplikace a delegovaný uživatel identity případy, webová aplikace i webové rozhraní API musí být zaregistrovaný ve stejném adresáři, ve službě Azure AD. Webové rozhraní API je možné nakonfigurovat k vystavení sady oprávnění, které slouží k omezení přístupu k webové aplikaci na prostředky. Pokud typ identity delegovaný uživatel musí vybrat požadované oprávnění z webové aplikace **oprávnění k ostatním aplikacím** rozevírací nabídky na webu Azure Portal. Tento krok není povinný, pokud se používá typ identity aplikace.
 * Více tenantů-nejprve webové aplikace je nakonfigurovaná k označení oprávnění, která ho, aby byl funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři dává souhlas pro aplikaci, které zpřístupní jejich organizace. Některé aplikace vyžadují jenom oprávnění na úrovni uživatele, které každý uživatel v organizaci můžou udělit souhlas s. Jiné aplikace vyžadují oprávnění na úrovni správce, které nelze vyjádřit souhlas uživatele v organizaci. Pouze správce adresáře lze udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, webové aplikace a webového rozhraní API jsou obě registrované v jejich adresáře.

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709481"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924652"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure classic
 
@@ -30,7 +30,7 @@ Tento článek popisuje postup přidání nebo změna role spolupracujícího sp
 ## <a name="add-a-co-administrator"></a>Přidat jako Spolusprávce
 
 > [!TIP]
-> Stačí přidat jako Spolusprávce, je-li uživatel potřebuje ke správě nasazení Azure classic pomocí [modulu prostředí PowerShell služby správy Azure](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure). Pokud uživatel použije pouze na webu Azure portal ke správě klasických prostředků, nemusíte přidávat klasického správce pro daného uživatele.
+> Stačí přidat jako Spolusprávce, je-li uživatel potřebuje ke správě nasazení Azure classic pomocí [modulu prostředí PowerShell služby správy Azure](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Pokud uživatel použije pouze na webu Azure portal ke správě klasických prostředků, nemusíte přidávat klasického správce pro daného uživatele.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce služeb.
 

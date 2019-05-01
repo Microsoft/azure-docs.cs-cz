@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
-ms.openlocfilehash: 40aa032654d81c947e2c31e9d93954ee050f78a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 01e86d9769b07a57d44ae21b2c76d894ac29e8bc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849944"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920045"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Poskytování obsahu z Azure Storage ve službě App Service v Linuxu
 
-Tato příručka ukazuje, jak poskytovat statický obsah ve službě App Service v Linuxu pomocí [služby Azure Storage](/azure/storage/common/storage-introduction). Mezi výhody patří zabezpečené obsahu, obsah přenositelnost, přístup k více aplikací a přenosech několik metod. V této příručce se dozvíte, jak k poskytování obsahu tím, že nakonfigurujete vlastní úložiště v Azure Storage.
+Tato příručka ukazuje, jak poskytovat statický obsah ve službě App Service v Linuxu pomocí [služby Azure Storage](/azure/storage/common/storage-introduction). Mezi výhody patří zabezpečené obsahu, obsah přenositelnost, přístup k více aplikací a přenosech několik metod. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,7 +67,20 @@ Byste měli udělat pro jiné adresáře, který chcete propojit na účet úlo�
 Jakmile se kontejner úložiště je propojená do webové aplikace, můžete to ověřit spuštěním následujícího příkazu:
 
 ```azurecli
-az webapp config storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+```
+
+## <a name="use-custom-storage-in-docker-compose"></a>Používání vlastního úložiště v Docker Compose
+
+Azure Storage je možné připojit s vícekontejnerové aplikace pomocí id vlastní. Chcete-li zobrazit název vlastní id, spusťte [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+
+Ve vaší *docker-compose.yml* souborů, mapování `volumes` umožňuje `custom-id`. Příklad:
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ## <a name="next-steps"></a>Další postup

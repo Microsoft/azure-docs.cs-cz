@@ -2,19 +2,19 @@
 title: 'Rychlý start: Pomocí Průzkumníka služby Azure Storage ke správě dat v Azure Data Lake Storage Gen2 '
 description: V tomto rychlém startu se dozvíte, jak vytvořit systém souborů v účtu Azure Data Lake Storage Gen2, stejně jako adresář a soubor pomocí Průzkumníka služby Azure Storage. V dalším kroku se dozvíte, jak stáhnout soubor do místního počítače a postup zobrazení celého souboru v adresáři.
 services: storage
-author: tamram
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
-ms.author: tamram
-ms.openlocfilehash: b6add3c2402df9c0db2284945269d3fbaa1c65e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.openlocfilehash: 01743eb7ec7f6650a0fd28fd9c4f090bebd524b3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708763"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939348"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Rychlý start: Pomocí Průzkumníka služby Azure Storage ke správě dat v účtu služby Azure Data Lake Storage Gen2
 

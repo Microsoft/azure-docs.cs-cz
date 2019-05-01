@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 964e6235923402814879fe59a204985b8aaac2b4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60568260"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573821"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Sestavení prvního objektu pro vytváření dat s využitím webu Azure portal
 > [!div class="op_single_selector"]
@@ -209,16 +209,16 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     ```
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON.
 
-   | Vlastnost | Popis |
-   |:--- |:--- |
-   | type |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nacházejí v úložišti objektů blob. |
-   | linkedServiceName |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
-   | folderPath | Určuje kontejner objektů blob a složku obsahující vstupní objekty blob. | 
-   | fileName |Tato vlastnost je nepovinná. Pokud tuto vlastnost vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu se zpracovává jenom soubor input.log. |
-   | type |Soubory protokolů jsou v textovém formátu, proto použijte hodnotu **TextFormat**. |
-   | columnDelimiter |Sloupce v souborech protokolů jsou oddělené znakem čárky (`,`). |
-   | frequency/interval |Frekvence je nastavená na hodnotu **Month** (Měsíc) a interval je **1**, takže vstupní řezy jsou dostupné jednou za měsíc. |
-   | external | Pokud vstupní data negeneruje tento kanál, je tato vlastnost nastavená na hodnotu **true**. V tomto kurzu se soubor input.log pomocí tohoto kanálu negeneruje, takže je tato vlastnost nastavená na hodnotu **true**. |
+   | Vlastnost | Vnořené pod | Popis |
+   |:--- |:--- |:--- |
+   | type | properties |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nacházejí v úložišti objektů blob. |
+   | linkedServiceName | formát |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
+   | folderPath | typeProperties | Určuje kontejner objektů blob a složku obsahující vstupní objekty blob. | 
+   | fileName | typeProperties |Tato vlastnost je nepovinná. Pokud tuto vlastnost vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu se zpracovává jenom soubor input.log. |
+   | type | formát |Soubory protokolů jsou v textovém formátu, proto použijte hodnotu **TextFormat**. |
+   | columnDelimiter | formát |Sloupce v souborech protokolů jsou oddělené znakem čárky (`,`). |
+   | frequency/interval | dostupnosti |Frekvence je nastavená na hodnotu **Month** (Měsíc) a interval je **1**, takže vstupní řezy jsou dostupné jednou za měsíc. |
+   | external | properties | Pokud vstupní data negeneruje tento kanál, je tato vlastnost nastavená na hodnotu **true**. V tomto kurzu se soubor input.log pomocí tohoto kanálu negeneruje, takže je tato vlastnost nastavená na hodnotu **true**. |
 
     Další informace o těchto vlastnostech JSON najdete v tématu [Konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 04/2/2019
 ms.author: alkohli
-ms.openlocfilehash: ed6d567be255fe9b72be564c31d734541a1ffa73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9d01b56da2650be395878ce07e4aae73495061f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564905"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939639"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Řešení potíží v disku Azure Data Box
 
@@ -54,12 +54,12 @@ Chcete-li se dostat do příslušného umístění a zkopírovat si protokoly, p
 Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování toho, jak uživatel ve vaší organizaci upravil prostředek. Na základě protokolů aktivit můžete zjistit:
 
 - Jaké operace byly provedeny s prostředky ve vašem předplatném.
-- Kdo operaci zahájil. 
+- Kdo operaci zahájil.
 - Kdy k operaci došlo.
 - Stav operace.
 - Hodnoty dalších vlastností, které vám mohou pomoci při zkoumání operace.
 
-Protokoly aktivit obsahují všechny operace zápisu (jako PUT, POST nebo DELETE) prováděné s vašimi prostředky, ale neobsahuje operace čtení (např. GET). 
+Protokoly aktivit obsahují všechny operace zápisu (jako PUT, POST nebo DELETE) prováděné s vašimi prostředky, ale neobsahuje operace čtení (např. GET).
 
 Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, pokud počáteční datum neleží více než 90 dnů v minulosti. Můžete také filtrovat protokol s použitím některého z předdefinovaných dotazů ve službě Insights. Například můžete kliknout na chybu a pak na konkrétní selhání, abyste zjistili hlavní příčinu.
 
@@ -79,7 +79,7 @@ Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný r
 
 |Chybová zpráva / upozornění  |Doporučení |
 |---------|---------|
-|[Info] Načítání hesla nástroje BitLocker pro svazek: m <br>[Chyba] Došlo k výjimce při načítání klíče nástroj BitLocker pro svazek m:<br> Sekvence neobsahuje žádné prvky.|Tato chyba je vyvolána, pokud je cílový Data Box Disk offline. <br> Používejte nástroj `diskmgmt.msc` na disky, které jsou online.|
+|[Informace o] Načtení hesla nástroje BitLocker pro svazek: m <br>[Chyba] Byla zachycena výjimka při načítání klíč Bitlockeru pro svazek m:<br> Sekvence neobsahuje žádné prvky.|Tato chyba je vyvolána, pokud je cílový Data Box Disk offline. <br> Používejte nástroj `diskmgmt.msc` na disky, které jsou online.|
 |[Chyba] Došlo k výjimce: Operace WMI se nezdařilo:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=Formát poskytnutého hesla pro obnovení je neplatný. <br>Hesla pro obnovení nástroje BitLocker mají 48 číslic. <br>Zkontrolujte, jestli je heslo pro obnovení ve správném formátu, a pak to zkuste znovu.|Pomocí odemykacího nástroje Data Box Disku nejdřív disk odemkněte a pak zkuste příkaz znovu. Další informace najdete v článcích <li> [Odemknutí Data Box Disku pro klienty Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odemknutí Data Box Disku pro klienty Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
 |[Chyba] Došlo k výjimce: DriveManifest.xml soubor existuje na cílové jednotce. <br> To signalizuje, že cílový disk mohl být připraven s jiným souborem deníku. <br>Pokud chcete přidat další data na stejnou jednotku, použijte předchozí soubor deníku. Pokud chcete odstranit existující data a znovu použít cílovou jednotku pro novou úlohu importu, odstraňte soubor DriveManifest.xml na jednotce. Spusťte tento příkaz znovu s novým souborem deníku.| Tato chyba se zobrazí, když se pokusíte použít stejnou sadu jednotek pro více relací importu. <br> Používejte jednu sadu jednotek jenom pro jednu relaci rozdělení a kopírování.|
 |[Chyba] Došlo k výjimce: Data importu CopySessionId – září test-1 odkazuje na předchozí relace kopírování a nesmí znovu použít pro novou relaci kopírování.|Tato chyba se zobrazí, když se pokusíte použít pro novou úlohu stejný název jako měla předchozí úspěšně dokončená úloha.<br> Přiřaďte nové úloze jedinečný název.|
@@ -96,7 +96,7 @@ Tato část podrobně popisuje některé z hlavních problémů při používán
 
 To může být způsobeno systém souborů musí provést. 
 
-Jednotky pro čtení i zápis opakovanému připojení nebude fungovat s disků Data Box. Tento scénář není podporován s jednotkami dislocker dešifrovat. Vám může mít úspěšně znovu připojí zařízení, pomocí následujícího příkazu: 
+Jednotky pro čtení i zápis opakovanému připojení nebude fungovat s disků Data Box. Tento scénář není podporován s jednotkami dislocker dešifrovat. Vám může mít úspěšně znovu připojí zařízení, pomocí následujícího příkazu:
 
     `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
 
@@ -104,15 +104,37 @@ I když opakovanému připojení bylo úspěšné, data nezachovají.
 
 **Řešení**
 
-Pokud se zobrazí chyba výše, můžete zkusit jedno z následujících řešení:
+Proveďte následující kroky v systému Linux:
 
-- Nainstalujte [ `ntfsfix` ](https://linux.die.net/man/8/ntfsfix) (k dispozici v `ntfsprogs` balíčku) a spusťte jej na relevantní oddílu.
+1. Nainstalujte `ntfsprogs` balíček pro nástroj ntfsfix.
+2. Odpojte přípojné body podle nástroj odemknout jednotku. Počet přípojné body se bude lišit u jednotek.
 
-- Pokud máte přístup k systému Windows
+    ```
+    unmount /mnt/DataBoxDisk/mountVol1
+    ```
 
-    - Načtěte jednotky do systému Windows.
-    - Otevřete příkazový řádek s oprávněními správce. Spustit `chkdsk` na svazku.
-    - Bezpečně odeberte svazek a zkuste to znovu.
+3. Spustit `ntfsfix` na odpovídající cestě. Zvýrazněná čísla musí být stejná jako kroku 2.
+
+    ```
+    ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
+    ```
+
+4. Spuštěním následujícího příkazu odeberte režimu hibernace metadata, která může způsobit problém připojení.
+
+    ```
+    ntfs-3g -o remove_hiberfile /mnt/DataBoxDisk/bitlockerVol1/dislocker-file /mnt/DataBoxDisk/mountVol1
+    ```
+
+5. Proveďte čistou odpojení.
+
+    ```
+    ./DataBoxDiskUnlock_x86_64 /unmount
+    ```
+
+6. Proveďte čistou odemknutí a její připojení.
+7. Otestujte přípojný bod zápisu souboru.
+8. Odpojte Image a znovu připojit k ověření trvalost souborů.
+9. Pokračujte v kopírování dat.
  
 ### <a name="issue-error-with-data-not-persisting-after-copy"></a>Problém: Chyba s daty není uchování po kopírování
  

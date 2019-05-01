@@ -1,5 +1,5 @@
 ---
-title: Seznámení se službou Azure NetApp Files | Microsoft Docs
+title: Co je Azure NetApp Files | Dokumentace Microsoftu
 description: Poskytuje přehled služby Azure NetApp Files a jejích klíčových úkolů.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: d7eb73c8fb4573084ba0a213282fdb71e14ff5fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a957ac3536bff06f990e60da90df7235b6917dfe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61086325"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730549"
 ---
-# <a name="introduction-to-azure-netapp-files"></a>Seznámení se službou Azure NetApp Files
+# <a name="what-is-azure-netapp-files"></a>Co je Azure NetApp soubory
 Azure NetApp Files je vysoce výkonná měřená služba úložiště souborů na podnikové úrovni. Služba Azure NetApp Files podporuje libovolný typ úloh a je ve výchozím nastavení vysoce dostupná. Prostřednictvím této služby můžete vybrat garantované úrovně výkonu a služeb a nastavit snímky. 
 
 Dokumentace ke službě Azure NetApp Files obsahuje pokyny týkající se vytváření a správy svazků s využitím služby Azure NetApp Files. 
@@ -29,7 +29,7 @@ Dokumentace ke službě Azure NetApp Files obsahuje pokyny týkající se vytvá
 > [!IMPORTANT] 
 > Všechny úkoly popsané v této dokumentaci vyžadují, abyste se účastnili programu verze Public Preview a měli povolený přístup k poskytovateli prostředků Azure Microsoft.NetApp. Pokud chcete požádat o zařazení do programu Public Preview, přečtěte si téma věnované [registraci pro Azure NetApp Files](azure-netapp-files-register.md). 
 
-**Začínáme** 
+**Další kroky** 
 
 * [Vysvětlení hierarchii úložiště souborů Azure NetApp](azure-netapp-files-understand-storage-hierarchy.md) 
-* [Rychlé zprovoznění: Nastavení souborů NetApp Azure a vytvoření svazku](azure-netapp-files-quickstart-set-up-account-create-volumes.md)
+* [Rychlé zprovoznění: Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

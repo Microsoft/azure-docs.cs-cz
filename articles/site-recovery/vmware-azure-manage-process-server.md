@@ -1,89 +1,77 @@
 ---
-title: Spravovat procesový server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje spravovat procesový server nastavit pro zotavení po havárii virtuálních počítačů VMware a fyzické servery do Azure pomocí Azure Site Recovery.
+title: Spravovat procesový server používá pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje spravovat procesový server nastavit pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a0b6c83f800c0a479ba7a16c91b497d1a11da9e
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62732481"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925624"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
-Procesový server použít při replikaci virtuálních počítačů VMware nebo fyzických serverů do Azure je ve výchozím nastavení nainstalován na počítači místní konfigurační server. Existuje několik instancí, ve kterých budete muset nastavit samostatný procesový server:
+Tento článek popisuje běžné úlohy správy procesový server Site Recovery.
+
+Procesový server se používá pro příjem, optimalizovat a odesílání dat replikace do Azure. Také provádí nabízenou instalaci služby Mobility na virtuální počítače VMware a fyzických serverů, které chcete replikovat, a provádí automatické zjišťování místních počítačů. Pro replikaci místních virtuálních počítačů VMware nebo fyzických serverů do Azure, je na procesovém serveru nainstalované ve výchozím nastavení na počítači serveru configuration. 
 
 - Pro velká nasazení můžete potřebovat další místní Procesové servery pro horizontální kapacity.
-- Pro navrácení služeb po obnovení, budete potřebovat dočasný procesní server v Azure. Po dokončení navrácení služeb po obnovení můžete odstranit tento virtuální počítač. 
+- Pro navrácení služeb po obnovení z Azure do místní musíte vytvořit dočasný procesní server v Azure. Po dokončení navrácení služeb po obnovení můžete odstranit tento virtuální počítač. 
 
-Tento článek shrnuje obvyklé úlohy správy těchto dalších procesových serverů.
+Další informace o procesovém serveru.
+
 
 ## <a name="upgrade-a-process-server"></a>Upgrade procesového serveru
 
-Upgradujte procesový server spuštěn v místním prostředí nebo v Azure (pro účely navrácení služeb po obnovení), následujícím způsobem:
+Při nasazení procesového serveru místní, nebo jako virtuální počítač Azure pro navrácení služeb po obnovení, je nainstalovaná nejnovější verze procesového serveru. Týmy, které Site Recovery vydání opravy a vylepšení v pravidelných intervalech, a doporučujeme, abyste že informujte procesových serverů. Procesový server můžete upgradovat následovně:
 
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
-> [!NOTE]
->   Obvykle když použijete k vytvoření procesového serveru v Azure pro účely navrácení služeb po obnovení Image z Galerie Azure, běží nejnovější dostupnou verzi. Týmy, které Site Recovery vydání opravy a vylepšení v pravidelných intervalech, a doporučujeme, abyste že informujte procesových serverů.
 
-## <a name="balance-the-load-on-process-server"></a>Vyrovnávání zatížení na procesovém serveru
+## <a name="move-vms-to-balance-the-process-server-load"></a>Přesunout virtuální počítače k vyrovnávání zatížení serveru procesu
 
-K vyrovnávání zatížení mezi dvěma servery procesu
+Vyrovnávání zatížení díky přesunu virtuálních počítačů mezi dvěma procesových serverů, následujícím způsobem:
 
-1. Přejděte do **trezor služby Recovery Services** > **spravovat** > **infrastruktura Site Recovery** > **pro VMware a fyzických počítačů** > **konfigurační servery**.
-2. Klikněte na konfiguračním serveru, do kterého jsou registrované procesových serverů.
-3. Seznam procesů serverů zaregistrovaných do konfigurační servery jsou k dispozici na stránce.
-4. Klikněte na procesovém serveru, na který chcete upravit zatížení.
+1. V trezoru v části **spravovat** klikněte na tlačítko **infrastruktura Site Recovery**. V části **pro VMware a fyzických počítačů**, klikněte na tlačítko **konfigurační servery**.
+2. Klikněte na konfiguračním serveru, pomocí kterého jsou registrované procesových serverů.
+3. Klikněte na procesovém serveru, pro které chcete vyrovnávat zatížení provozu.
 
     ![Nástroje DSM](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-5. Můžete buď používat **nástroj pro vyrovnávání zatížení** nebo **přepínač** možnosti, jak je popsáno níže, podle požadavku.
-
-### <a name="load-balance"></a>Vyrovnávání zatížení
-
-Díky této možnosti můžete vybrat jeden nebo více virtuálních počítačů a můžete přenést na jiný procesový server.
-
-1. Klikněte na **Vyrovnávání zatížení**, vyberte cílový procesový server z rozevíracího seznamu. Klikněte na tlačítko **OK**.
+4. Klikněte na tlačítko **Vyrovnávání zatížení**, vyberte cílový procesový server, na který chcete přesunout počítače. Pak klikněte na tlačítko **OK**
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. Klikněte na **vyberte počítače, které**, vyberte virtuální počítače, které chcete přesunout z aktuálního procesu serveru na cílový procesový server. Pro každý virtuální počítač se zobrazí podrobnosti průměr dat změny.
-3. Klikněte na **OK**. Sledovat průběh úlohy v části **trezor služby Recovery Services** > **monitorování** > **úlohy Site Recovery**.
-4. Bude trvat 15 minut, než se změny tak, aby odrážely po úspěšném dokončení této operace nebo [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) pro přímý vliv.
+2. Klikněte na tlačítko **vyberte počítače, které**a vyberte počítače, které chcete přesunout z aktuální cílový procesový server. Pro každý virtuální počítač se zobrazí podrobnosti průměr dat změny. Pak klikněte na **OK**. 
+3. V trezoru, sledovat průběh úlohy v části **monitorování** > **úlohy Site Recovery**.
 
-### <a name="switch"></a>Přepínač
+To bude trvat přibližně 15 minut se změny projeví na portálu. Pro efekt rychlejší [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-Pomocí této možnosti se celé zatížení chráněný v rámci procesu serveru přesune na jiný procesový server.
+## <a name="switch-an-entire-workload-to-another-process-server"></a>Přepnout na jiný procesový server celé zatížení
 
-1. Klikněte na **přepínač**, vyberte cílový procesový server, klikněte na tlačítko **OK**.
+Přesuňte celé zatížení zpracovat procesový server na jiný procesový server, následujícím způsobem:
+
+1. V trezoru v části **spravovat** klikněte na tlačítko **infrastruktura Site Recovery**. V části **pro VMware a fyzických počítačů**, klikněte na tlačítko **konfigurační servery**.
+2. Klikněte na konfiguračním serveru, pomocí kterého jsou registrované procesových serverů.
+3. Klikněte na procesovém serveru, ze kterého chcete přejít úlohu.
+4. Klikněte na **přepínač**, vyberte cílový procesový server, na který chcete přesunout úlohy. Pak klikněte na tlačítko **OK**
 
     ![Přepínač](media/vmware-azure-manage-process-server/Switch.PNG)
 
-2. Sledovat průběh úlohy v části **trezor služby Recovery Services** > **monitorování** > **úlohy Site Recovery**.
-3. Bude trvat 15 minut, než se změny tak, aby odrážely po úspěšném dokončení této operace nebo [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) pro přímý vliv.
+5. V trezoru, sledovat průběh úlohy v části **monitorování** > **úlohy Site Recovery**.
 
-## <a name="process-server-selection-guidance"></a>Výběr serveru doprovodným materiálům procesu
+To bude trvat přibližně 15 minut se změny projeví na portálu. Pro efekt rychlejší [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-Azure Site Recovery automaticky určuje, zda procesového serveru se blíží jeho limity využití. Když nastavíte Škálováním procesový server, poskytujeme pokyny.
 
-|Stav  |Vysvětlení  | Dostupnost prostředků  | Doporučení|
-|---------|---------|---------|---------|
-| V pořádku (zelený)    |   Procesový server je připojený a je v pořádku      |Využití procesoru a paměti je menší než 80 %. Dostupnost volného místa je vyšší než 30 %| Tento procesový server můžete použít pro ochranu dalších serverů. Ujistěte se, že nový pracovní postup v rámci [definované limity serveru procesu](vmware-azure-set-up-process-server-scale.md#sizing-requirements).
-|Upozornění (oranžová)    |   Procesový server je připojený, ale některé prostředky se dosažení maximálního omezení  |   Využití procesoru a paměti je mezi 80 – 95 %; Dostupnost volného místa je mezi 25 – 30 %       | Využití procesového serveru se blíží prahové hodnoty. Přidávání nových serverů do stejného procesový server povede k překračování mezní hodnoty a může mít vliv na stávající chráněné položky. Doporučujeme [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
-|Upozornění (oranžová)   |   Procesový server je připojený, ale nebyl nahrávaných dat do Azure v posledních 30 minut  |   Využití prostředků je v mezích limitů prahová hodnota       | Řešení potíží s [chyby odesílání dat](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) před přidáním nových úloh **nebo** [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
-|Kritický (červený)    |     Procesový server může být odpojeno.  |  Využití prostředků je v mezích limitů prahová hodnota      | Řešení potíží s [zpracovat problémy s připojením serveru](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) nebo [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
-|Kritický (červený)    |     Využití prostředků se překročí mezní hodnoty |  Využití procesoru a paměti je nad 95 %. Dostupnost volného místa je méně než 25 %.   | Přidání nových úloh do stejné procesový server je vypnuta, protože již omezení splnění prahové hodnoty prostředků. Ano [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start) pro nové replikace.
-Kritický (červený)    |     V posledních 45 minut, nebyl nahrávaných dat z Azure do Azure. |  Využití prostředků je v mezích limitů prahová hodnota      | Řešení potíží s [chyby odesílání dat](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) před přidáním nových úloh do stejné procesový server nebo [nastavení horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md#before-you-start)
 
 ## <a name="reregister-a-process-server"></a>Opětovná registrace procesového serveru
 
-Pokud je potřeba znovu zaregistrujte procesový server spuštěné místně nebo v Azure, s konfiguračním serverem, udělejte toto:
+Opětovná registrace procesového serveru spuštěné místně nebo na Virtuálním počítači Azure s konfiguračním serverem následujícím způsobem:
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
@@ -100,7 +88,7 @@ Po uložení nastavení, postupujte takto:
 
 ## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Upravit nastavení proxy serveru pro místní procesový server
 
-Pokud na procesovém serveru používá proxy server pro připojení k Site Recovery v Azure, pomocí tohoto postupu, pokud je potřeba upravit stávající nastavení proxy serveru.
+Pokud procesového serveru v místním používá proxy server pro připojení k Azure, můžete upravit následující nastavení proxy serveru:
 
 1. Přihlaste se do počítače serveru procesu. 
 2. Otevřete okno příkazového řádku Powershellu pro správce a spusťte následující příkaz:
@@ -110,7 +98,7 @@ Pokud na procesovém serveru používá proxy server pro připojení k Site Reco
    net stop obengine
    net start obengine
    ```
-2. Přejděte do složky **%PROGRAMDATA%\ASR\Agent**, a spusťte následující příkaz:
+2. Přejděte do složky **%PROGRAMDATA%\ASR\Agent**, a spusťte tento příkaz:
    ```
    cmd
    cdpcli.exe --registermt
@@ -126,9 +114,9 @@ Pokud na procesovém serveru používá proxy server pro připojení k Site Reco
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
-## <a name="manage-anti-virus-software-on-process-servers"></a>Správa antivirový software na procesových serverech.
+## <a name="exclude-folders-from-anti-virus-software"></a>Vyloučení složek z antivirového softwaru
 
-Pokud je na samostatný procesový server nebo hlavní cílový server aktivní antivirový software, vylučte z operace antivirový program následující složky:
+Pokud antivirový software běží na horizontální navýšení kapacity procesového serveru (nebo hlavní cílový server), vylučte z operace antivirový program následující složky:
 
 
 - Agent C:\Program Files\Microsoft Azure Recovery Services
@@ -137,4 +125,4 @@ Pokud je na samostatný procesový server nebo hlavní cílový server aktivní 
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- Proces serveru instalační adresář, například: C:\Program Files (x86)\Microsoft Azure Site Recovery
+- Instalační adresář serveru procesu. Příklad: C:\Program Files (x86)\Microsoft Azure Site Recovery

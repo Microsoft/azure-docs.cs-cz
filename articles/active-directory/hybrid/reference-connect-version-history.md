@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387209"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572407"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -43,12 +43,12 @@ Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink
 Když přejdeme na tomto procesu, číslo verze vydání se nezobrazí s "X" počet umístění podverzi, stejně jako v "1.3.X.0" – to znamená, že zpráva k vydání verze v tomto dokumentu jsou platné pro všechny verze počínaje "1.3.". Poté, co jsme udrželi procesu vydávání verzí číslo vydané verze se aktualizují na nedávno vydané verze a verze stav se zaktualizuje na "Vydáno pro stahování a automatický upgrade".
 Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upgrade. Stav verze označí, zda verze je k dispozici pro automatický upgrade nebo si můžete stáhnout pouze. Pokud byl povolen automatický upgrade na serveru služby Azure AD Connect pak tento server se automaticky upgradovat na nejnovější verzi služby Azure AD Connect, která je vydána pro automatický upgrade. Všimněte si, že všechny konfigurace služby Azure AD Connect jsou způsobilé pro upgradování automaticky. Postupujte podle tohoto odkazu Další informace o tom [automatický upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13x0"></a>1.3.X.0 
+## <a name="13200"></a>1.3.20.0 
 
 ### <a name="release-status"></a>Stav verze 
 
-3/25/2019: Čekající na vyřízení
- 
+04/24/2019: Všeobecně dostupné ke stažení
+
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
 
 - Přidání podpory pro aktualizace domény 
@@ -64,7 +64,7 @@ Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upg
 - Upgrade na ADAL 3.19.8 vyzvednutí opravu WS-Trust pro příkaz Ping a přidání podpory pro nové instance Azure 
 - Upravit skupinu synchronizace pravidla pro tok samAccountName, DomainNetbios a DomainFQDN do cloudu – třeba deklarace identity 
 - Změnit výchozí synchronizační pravidlo zpracování – přečtěte si další [tady](how-to-connect-fix-default-rules.md).
-- Přidat nový agent spuštěn jako služba systému windows. Tento agent s názvem "Agent pro správu", umožňuje podrobnější diagnostice vzdálené pomoci Microsoft Engineers řešení při otevření případu podpory serveru služby Azure AD Connect. Další informace o Agent pro správu [tady](whatis-aadc-admin-agent.md). 
+- Přidat nový agent spuštěn jako služba systému windows. Tento agent s názvem "Agent pro správu", umožňuje podrobnější diagnostice vzdálené pomoci Microsoft Engineers řešení při otevření případu podpory serveru služby Azure AD Connect. Tento agent není nainstalováno a povoleno ve výchozím nastavení.  Další informace o tom, jak nainstalovat a povolit agenta najdete v části [novinky agenta Azure AD Connect správce?](whatis-aadc-admin-agent.md). 
 - Aktualizovat licenční smlouvy s koncovým uživatelem (EULA) 
 - Přidání podpory upgradu automaticky pro nasazení, která používají službu AD FS jako jejich typ přihlašovacího jména.  Tato položka odebrána také požadavek na aktualizaci AD FS Azure AD vztah důvěryhodnosti předávající strany v rámci procesu upgradu. 
 - Přidat úlohu správy důvěryhodnosti služby Azure AD, která poskytuje dvě možnosti: analýza nebo aktualizace zabezpečení a resetovat vztah důvěryhodnosti. 
@@ -387,7 +387,7 @@ Uzamčení přístupu k účtu služby AD DS díky implementaci následující z
 *   Odeberte všechny položky řízení přístupu pro daný objekt, s výjimkou ACE konkrétní sama na sebe. Chcete zachovat beze změny výchozích oprávnění, pokud jde o sama na sebe.
 *   Přiřadíte tato konkrétní oprávnění:
 
-Type     | Name                          | Access               | Platí pro
+Type     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTÉM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |

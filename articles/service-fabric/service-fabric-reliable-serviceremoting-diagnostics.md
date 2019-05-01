@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123174"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925939"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostika a sledování výkonu pro vzdálenou komunikaci Reliable Service
 Generuje runtime spolehlivé ServiceRemoting [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o tom, jak funguje ServiceRemoting a pomoci při řešení potíží a monitorování výkonu.
@@ -100,5 +100,5 @@ Když klient volá metodu prostřednictvím objektu proxy služby, výsledkem zp
 | Služba Service Fabric |Průměrný počet milisekund serializace odpovědí |Doba trvání (v milisekundách) k serializaci zprávy s odpovědí služby na službu, před odesláním odpovědi klientovi |
 
 ## <a name="next-steps"></a>Další postup
-* [Ukázka kódu](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric&sort=0)
+* [Ukázka kódu](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [Poskytovatelé EventSource v PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

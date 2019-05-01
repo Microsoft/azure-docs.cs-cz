@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cac42505cd015cb018664b765e88f40667b1759
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464552"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920465"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Tento článek se zaměřuje na aspekty, které vám pomůžou doporučené post
 
 AKS cluster je nasazený do jedné oblasti. K ochraně před selhání oblasti, nasazení aplikace do více clusterů AKS v různých oblastech. Pokud máte v úmyslu jaké oblasti k nasazení clusteru AKS, platí následující aspekty:
 
-* [Dostupnost v oblastech AKS](https://docs.microsoft.com/azure/aks/container-service-quotas#region-availability)
+* [Dostupnost v oblastech AKS](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability)
   * Zvolte oblastí blízko vašim uživatelům. AKS neustále rozšiřuje do nových oblastí.
 * [Spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * Určit vaši zeměpisnou polohu zvolte dvou oblastech, které jsou párovány mezi sebou. Tyto oblasti koordinovat aktualizace platformy a určit prioritu o obnovení místech.
@@ -62,7 +62,7 @@ Pokyny k nastavení těchto koncových bodů a směrování, najdete v článku 
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>Směrování vrstvy 7 aplikace s Azure branou
 
-Azure Traffic Manageru pomocí služby DNS (úroveň 3) tvar provoz. [Azure branou (aktuálně ve verzi preview)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) nabízí možnost směrování protokolu HTTP/HTTPS (vrstva 7). Další funkce branou zahrnují SSL ukončení, vlastní doménu, brány Firewall webových aplikací, přepisování adres URL a spřažení relace.
+Azure Traffic Manageru pomocí služby DNS (úroveň 3) tvar provoz. [Azure branou](https://docs.microsoft.com/azure/frontdoor/front-door-overview) nabízí možnost směrování protokolu HTTP/HTTPS (vrstva 7). Další funkce branou zahrnují SSL ukončení, vlastní doménu, brány Firewall webových aplikací, přepisování adres URL a spřažení relace.
 
 Zkontrolujte potřebuje provozu aplikace pochopit, jaké řešení je nejvhodnější.
 

@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24c8dd49667a359bb0fe7051dd801062f37f3db9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195021"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718434"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
@@ -106,9 +106,9 @@ Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je
 
 | Úkol | Operace | Popis |
 | --- | --- | --- |
-| Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete aktualizovat vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinition/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
+| Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
+| Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete aktualizovat vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
+| Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinitions/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
 
 ## <a name="next-steps"></a>Další postup
 - [Vytváření vlastních rolí pro prostředky Azure pomocí Azure PowerShellu](custom-roles-powershell.md)

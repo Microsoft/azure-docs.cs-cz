@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44cd18be888b18e8b045114b420ddd48ec909e3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360649"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873430"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -37,7 +37,7 @@ Síťové zásady a přístup k službám (NPS) poskytuje organizacím možnost 
 
 Organizace obvykle používají RADIUS serveru NPS () pro zjednodušení a centralizovaná správa zásad sítě VPN. Řada organizací ale používat taky NPS zjednodušují a centralizovat správu zásad autorizace připojení ke vzdálené ploše Desktop (CAP k vzdálené ploše).
 
-Organizace také můžete integrovat server NPS s Azure MFA pro zvýšení zabezpečení a poskytovat vysokou úroveň dodržování předpisů. To pomáhá zajistit, že uživatelé vytvořit dvoustupňové ověření pro přihlášení k Brána vzdálené plochy. Pro uživatele, který má být udělen přístup musí zadat jejich kombinace uživatelského jména a hesla společně s informacemi, jestli nemá uživatel v jejich řízení. Tyto informace musí být důvěryhodné a duplicitní nejsou snadno, jako je například číslo mobilního telefonu, číslo linky, aplikace na mobilním zařízení a tak dále. Další informace o podporovaných metod ověřování najdete v části [zjistit, jaké metody ověřování uživatelům používat](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
+Organizace také můžete integrovat server NPS s Azure MFA pro zvýšení zabezpečení a poskytovat vysokou úroveň dodržování předpisů. To pomáhá zajistit, že uživatelé vytvořit dvoustupňové ověření pro přihlášení k Brána vzdálené plochy. Pro uživatele, který má být udělen přístup musí zadat jejich kombinace uživatelského jména a hesla společně s informacemi, jestli nemá uživatel v jejich řízení. Tyto informace musí být důvěryhodné a duplicitní nejsou snadno, jako je například číslo mobilního telefonu, číslo linky, aplikace na mobilním zařízení a tak dále. RDG aktuálně podporuje telefonních hovorů a nabízená oznámení z metod aplikace Microsoft authenticator pro 2FA. Další informace o podporovaných metod ověřování najdete v části [zjistit, jaké metody ověřování uživatelům používat](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
 
 Před dostupnost rozšíření NPS pro Azure zákazníci, kteří si nepřejí provádět dvoustupňové ověření integrované prostředí serveru NPS a Azure MFA museli konfigurovat a spravovat samostatný Server MFA v místním prostředí, jak je uvedeno v [ Vzdálená plocha brány a Server Azure Multi-Factor Authentication pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md).
 

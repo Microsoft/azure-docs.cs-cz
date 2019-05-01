@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: f033f8e8e686165febdd2262953b2aa871686a12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e3ea1d2a0c3e8501222d57a92fad917d465022e
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330104"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866991"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie zemí/oblastí používaná pro geografickou metodu směrování provozu Azure Traffic Managerem
 
@@ -481,8 +481,6 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
         - CD (Konžská demokratická republika)
 
         - CF (Středoafrická republika)
-
-        - CG(Congo)
 
         - Průběžná integrace (Pobřeží slonoviny)
 

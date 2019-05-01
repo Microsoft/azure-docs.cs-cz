@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864212"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926232"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředku klasického úložiště.
 Tento článek obsahuje pokyny k odstraňování problémů při jedné z následujících chyb při odstraňování účtu úložiště Azure classic, kontejneru nebo souboru objektu blob stránky *.vhd. 
@@ -37,7 +37,7 @@ Prostředek "Disk" se používá k připojení *.vhd stránkovacího souboru obj
 3. Po přerušení zapůjčení disky je možné odstranit objekty BLOB stránky, samotného. Účet úložiště nebo kontejneru můžete odstraňovat, jakmile se odstraní všechny "Disk" prostředky v nich k dispozici.
 
 >[!NOTE] 
->Pokud uživatel odstraní virtuální počítač, ale ne virtuální pevný disk, poplatky za úložiště se dál nabíhat stránkovacího souboru *.vhd objektů blob. Budou se účtovat poplatky za byla v souladu s typ účtu úložiště, zkontrolujte [stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/storage/) další podrobnosti. Pokud uživatel už si klade za cíl použít virtuální pevné disky, odstraňte it nebo je na budoucím poplatkům vyhnout. 
+>Pokud uživatel odstraní virtuální počítač, ale ne virtuální pevný disk, poplatky za úložiště se dál nabíhat stránkovacího souboru *.vhd objektů blob. Budou se účtovat poplatky za byla v souladu s typ účtu úložiště, zkontrolujte [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/) další podrobnosti. Pokud uživatel už si klade za cíl použít virtuální pevné disky, odstraňte it nebo je na budoucím poplatkům vyhnout. 
 
 ## <a name="unable-to-delete-storage-account"></a>Nepovedlo se odstranit účet úložiště 
 

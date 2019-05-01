@@ -2,18 +2,19 @@
 title: 'Kurz: Provedení extrakce, transformace, načítání (ETL) operací s použitím Apache Hive v Azure HDInsight'
 description: V tomto kurzu přečtěte si, jak extrahovat data z datové sady nezpracovaná sdíleného svazku clusteru, je transformovat pomocí Apache Hive v Azure HDInsight a pak načítat Transformovaná data do Azure SQL Database pomocí Sqoop.
 services: storage
-author: jamesbak
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
 ms.date: 02/21/2019
-ms.author: jamesbak
-ms.openlocfilehash: a5e7fd200617661c38b65ebbd4473a1a729de457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.reviewer: jamesbak
+ms.openlocfilehash: be7ce4d96b7c1bd17853447448f06070637c7855
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61482062"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939193"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hive v Azure HDInsight
 

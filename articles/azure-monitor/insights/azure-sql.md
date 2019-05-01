@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03f330f429be583d3a400eb1ee00875f7c305e74
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498396"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923018"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -287,7 +287,7 @@ AzureDiagnostics
 
 ### <a name="pricing"></a>Ceny
 
-Při řešení používat, platí spotřeby telemetrická data diagnostiky nad volných jednotek ingestování přidělené každý měsíc, přečtěte si téma [přehledu cen Log Analytics](https://azure.microsoft.com/en-us/pricing/details/monitor). Volných jednotek příjem dat, které jsou k dispozici povolit bezplatné sledování několik databází každý měsíc. Všimněte si, že aktivní databáze s větším zatížení ingestování další data a nečinné databáze. Vyberte pracovní prostor OMS v navigační nabídce Azure SQL Analytics, a následným výběrem využití a odhadované náklady můžou snadno monitorovat spotřebu příjem dat v řešení.
+Při řešení používat, platí spotřeby telemetrická data diagnostiky nad volných jednotek ingestování přidělené každý měsíc, přečtěte si téma [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/monitor). Volných jednotek příjem dat, které jsou k dispozici povolit bezplatné sledování několik databází každý měsíc. Všimněte si, že aktivní databáze s větším zatížení ingestování další data a nečinné databáze. Vyberte pracovní prostor OMS v navigační nabídce Azure SQL Analytics, a následným výběrem využití a odhadované náklady můžou snadno monitorovat spotřebu příjem dat v řešení.
 
 ## <a name="next-steps"></a>Další postup
 

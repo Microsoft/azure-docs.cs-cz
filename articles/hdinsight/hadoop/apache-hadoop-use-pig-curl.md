@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
 ms.openlocfilehash: 690a4bf08c7bfd6ccc039fdd04a3dda26b5a9301
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124090"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717856"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spouštět úlohy Apache Pig s Apache Hadoop v HDInsight pomocí REST
 

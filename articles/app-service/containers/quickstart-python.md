@@ -12,17 +12,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/29/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b704e9074c8ef88d8fefd97f466884af952c46f8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396689"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919612"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu (Preview)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu
 
 V tomto rychlém startu nasadíte jednoduchou aplikaci v Pythonu do [App Service v Linuxu](app-service-linux-intro.md), která poskytuje je vysoce škálovatelnou a automatickými opravami pro hostování webů služby. Použití rozhraní příkazového řádku Azure ( [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)) prostřednictvím interaktivní, založené na prohlížeči Azure Cloud Shell, takže můžete postupovat podle kroky používají počítač Mac, Linux nebo Windows.
 
@@ -198,8 +197,6 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Další postup
-
-Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně ve verzi Preview a je možné přizpůsobit příkaz sloužící ke spuštění vaší aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 
 > [!div class="nextstepaction"]
 > [Kurz: Aplikace v Pythonu s PostgreSQL](tutorial-python-postgresql-app.md)

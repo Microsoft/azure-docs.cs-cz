@@ -1,24 +1,24 @@
 ---
-title: Jak používat s Androidem mapový ovládací prvek ve službě Azure Maps | Dokumentace Microsoftu
+title: Začínáme s Androidem mapový ovládací prvek ve službě Azure Maps | Dokumentace Microsoftu
 description: Android mapový ovládací prvek ve službě Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770329"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869829"
 ---
-# <a name="how-to-use-the-azure-maps-android-sdk"></a>Jak používat Azure Maps Android SDK
+# <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
-Azure Maps Android SDK je knihovna vektorové mapy pro Android. Tento článek vás provede procesy, které instalace sady Android SDK Azure Maps, načítání mapu a uvedení na mapě kódu pin.
+Azure Maps Android SDK je knihovna vektorové mapy pro Android. Tento článek vás provede procesy, které instalace sady Azure Maps Android SDK a načítání mapy.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +55,7 @@ Další informace o nastavení AVD v [dokumentace k sadě Android Studio](https:
 
 Dalším krokem při sestavování aplikace je instalace Azure Maps Android SDK. Dokončete tyto kroky pro instalaci sady SDK:
 
-1. Přidejte následující kód, který **všechny projekty**, **úložišť** blok, ve vaší **build.gradle** souboru.
+1. Otevřete na nejvyšší úrovni **build.gradle** a přidejte následující kód, který **všechny projekty**, **úložiště** blokovat části:
 
     ```
     maven {
@@ -64,8 +64,10 @@ Dalším krokem při sestavování aplikace je instalace Azure Maps Android SDK.
     ```
 
 2. Aktualizace vašeho **app/build.gradle** a přidejte do ní následující kód:
+    
+    1. Ujistěte se, že váš projekt **minSdkVersion** v rozhraní API 21 nebo vyšší.
 
-    1. Přidejte následující kód pro Android bloku:
+    2. Přidejte následující kód do části s Androidem:
 
         ```
         compileOptions {
@@ -73,24 +75,16 @@ Dalším krokem při sestavování aplikace je instalace Azure Maps Android SDK.
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. Aktualizujte vaše bloku závislostí a přidejte do ní následující kód:
+    3. Aktualizace vašeho bloku závislostí a přidejte nový řádek provádění závislostí pro nejnovější Azure Maps Android SDK:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.1"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
 
-3. Nastavení oprávnění tak, že přidáte následující kód XML pro vaše **AndroidManifest.xml** souboru:
+    > [!Note]
+    > Azure Maps Android SDK se pravidelně upgraduje a rozšířené. Zobrazí se [Začínáme s Androidem mapový ovládací prvek](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) dokumentaci, chcete-li získat číslo verze nejnovější implementace Azure Maps. Můžete také nastavit číslo verze od "0.2" do "0 +" tak, aby vždy odkazoval na nejnovější verzi.
 
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <manifest>
-        ...
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        ...
-    </manifest>
-    ```
-
-4. Upravit **res** > **rozložení** > **activity_main.xml** tak, aby vypadala podobně jako tato konfigurace XML:
+3. Upravit **res** > **rozložení** > **activity_main.xml** a nahraďte následujícím kódem:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -105,16 +99,20 @@ Dalším krokem při sestavování aplikace je instalace Azure Maps Android SDK.
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:mapcontrol_cameraTargetLat="47.64"
-            app:mapcontrol_cameraTargetLng="-122.33"
-            app:mapcontrol_cameraZoom="12"
             />
-
     </FrameLayout>
     ```
 
-5. Upravit **MainActivity.java** pro vytvoření třídy aktivity zobrazení mapy. Po úpravě, by měl vypadat podobně jako tato třída:
+4. V **MainActivity.java** soubor, budete muset:
+    
+    * Přidejte importy pro sadu SDK Azure Maps
+    * Nastavte vaše informace o ověřování Azure Maps
+    * získání instance ovládacího prvku mapy **onCreate** – metoda
 
+    Nastavení informací o ověřování na třídy AzureMaps globálně pomocí metody setSubscriptionKey nebo setAadProperties díky, nebudete už muset přidejte své informace o ověřování pro každé zobrazení. Mapový ovládací prvek obsahuje vlastní životního cyklu metody pro správu životního cyklu OpenGL pro Android, která musí být volána přímo z nadřazeného aktivity. V pořadí pro vaši aplikaci správně, volání metod životního cyklu mapový ovládací prvek musí přepsat následující metody životní cyklus v aktivitě, která obsahuje ovládací prvek mapy a volat metodu příslušné mapování ovládacího prvku. 
+
+    Upravit **MainActivity.java** to následujícím způsobem:
+    
     ```java
     package com.example.myapplication;
 
@@ -129,7 +127,7 @@ Dalším krokem při sestavování aplikace je instalace Azure Maps Android SDK.
     public class MainActivity extends AppCompatActivity {
         
         static {
-            AzureMaps.setSubscriptionKey("{subscription-key}");
+            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
 
         MapControl mapControl;
@@ -197,97 +195,21 @@ Tlačítka Spustit vyberte, jak ukazuje následující obrázek (nebo stiskněte
 
 Android Studio bude trvat několik sekund pro sestavení aplikace. Aplikaci můžete otestovat v emulované zařízení s Androidem, po dokončení sestavení. Měli byste vidět mapu podobné následující:
 
-![Android mapy](./media/how-to-use-android-map-control-library/android-map.png)
+<center>
 
-## <a name="add-a-marker-to-the-map"></a>Přidat značku k mapě
+![Android mapy](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-Chcete-li přidat značky do mapy, přidejte `mapView.getMapAsync()` funkce `MainActivity.java`. Finální `MainActivity.java` kód by měl vypadat takto:
+## <a name="next-steps"></a>Další postup
 
-```java
-package com.example.myapplication;
+Chcete-li přidat položky do mapy, naleznete v tématu:
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.Point;
-import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-import com.microsoft.azure.maps.mapcontrol.MapControl;
-import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-public class MainActivity extends AppCompatActivity {
-    
-    static{
-            AzureMaps.setSubscriptionKey("{subscription-key}");
-        }
+> [!div class="nextstepaction"]
+> [Přidat vrstvu symbol na mapu s Androidem](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
 
-    MapControl mapControl;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+> [!div class="nextstepaction"]
+> [Přidávání obrazců do Android mapy](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
 
-        mapControl = findViewById(R.id.mapcontrol);
+> [!div class="nextstepaction"]
+> [Styly mapy změn v rámci služby Android maps](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
 
-        mapControl.onCreate(savedInstanceState);
 
-        mapControl.getMapAsync(map -> {
-            DataSource dataSource = new DataSource();
-            dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-
-            SymbolLayer symbolLayer = new SymbolLayer(dataSource);
-            symbolLayer.setOptions(iconImage("my-icon"));
-
-            map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            map.sources.add(dataSource);
-            map.layers.add(symbolLayer);
-        });
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapControl.onStart();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapControl.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapControl.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapControl.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapControl.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapControl.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapControl.onSaveInstanceState(outState);
-    }
-}
-```
-
-Spusťte aplikaci znovu. Značky byste měli vidět na mapě, jak je znázorněno zde:
-
-![Android mapy kódu pin](./media/how-to-use-android-map-control-library/android-map-pin.png)

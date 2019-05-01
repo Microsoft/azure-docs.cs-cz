@@ -5,15 +5,15 @@ services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 4/29/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392462"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938567"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
 
@@ -36,13 +36,13 @@ Zásady správy životního cyklu je k dispozici obě obecné účely v2 (GPv2) 
 
 Funkce správy životního cyklu je zdarma. Zákazníkům se poplatky účtují náklady běžném provozu [výpis objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. Operace odstranění je zdarma. Další informace o cenách najdete v tématu [ceny za objekty Blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí 
+## <a name="regional-availability"></a>Regionální dostupnost 
 Funkce správy životního cyklu je k dispozici ve všech veřejných oblastech Azure. 
 
 
 ## <a name="add-or-remove-a-policy"></a>Přidání nebo odebrání zásady 
 
-Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases), rozhraní příkazového řádku Azure [rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies), nebo klientský nástroj. Tento článek popisuje, jak ke správě zásad pomocí portálu a metod prostředí PowerShell.  
+Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases), rozhraní příkazového řádku Azure [rozhraní REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies), nebo klientský nástroj. Tento článek popisuje, jak ke správě zásad pomocí portálu a metod prostředí PowerShell.  
 
 > [!NOTE]
 > Pokud jsou povolená pravidla brány firewall pro váš účet úložiště může být zablokován požadavky správy životního cyklu. Tyto požadavky můžete odblokovat zadáním výjimky. Jsou požadované jednorázového přihlášení: `Logging,  Metrics,  AzureServices`. Další informace najdete v části výjimky v [Konfigurace bran firewall a virtuální sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
@@ -80,7 +80,47 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 
 ```
+## <a name="arm-template-with-lifecycle-management-policy"></a>Šablony ARM pomocí zásad správy životního cyklu
 
+Můžete definovat a nasazovat správy životního cyklu jako součást nasazení řešení Azure pomocí šablon ARM. Dále je ukázka šablony nasazení účtu úložiště RA-GRS GPv2 pomocí zásad správy životního cyklu. 
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "storageAccountName": "[uniqueString(resourceGroup().id)]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-04-01",
+      "sku": {
+        "name": "Standard_RAGRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "networkAcls": {}
+      }
+    },
+    {
+      "name": "[concat(variables('storageAccountName'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/managementPolicies",
+      "apiVersion": "2019-04-01",
+      "dependsOn": [
+        "[variables('storageAccountName')]"
+      ],
+      "properties": {
+        "policy": {...}
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="policy"></a>Zásada
 
@@ -116,7 +156,7 @@ Každé pravidlo v rámci zásady má několik parametrů:
 | Název parametru | Typ parametru | Poznámky | Požaduje se |
 |----------------|----------------|-------|----------|
 | jméno           | String |Název pravidla může obsahovat až 256 znaků. Název pravidla je velká a malá písmena.  Musí být jedinečný v rámci zásady. | True |
-| povoleno | Boolean | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
+| enabled | Boolean | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
 | type           | Hodnoty výčtu | Je aktuální platný typ `Lifecycle`. | True |
 | Definice     | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. | True |
 
@@ -305,8 +345,8 @@ Pro data, která upraví a získat přístup k pravidelně v průběhu svého ž
   ]
 }
 ```
-## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>Časté otázky – jsem vytvořil nové zásady, proč nejsou akce okamžité spuštění? 
-
+## <a name="faq"></a>Nejčastější dotazy 
+**Můžu vytvořit novou zásadu, proč nejsou akce okamžité spuštění?**  
 Platforma se spustí jednou denně zásady životního cyklu. Jakmile nakonfigurujete zásadu, může trvat až 24 hodin pro některé akce (například vrstvení a odstraňování) ke spuštění poprvé.  
 
 ## <a name="next-steps"></a>Další postup

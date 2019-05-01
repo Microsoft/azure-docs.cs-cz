@@ -3,8 +3,8 @@ title: Ukázkový skript Azure PowerShellu – Vytvoření sítě pro vícevrstv
 description: Ukázkový skript Azure PowerShellu – Vytvoření virtuální sítě pro vícevrstvé aplikace
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: efd496f2f69f243b958f4e780b9f3455d2ffece3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648690"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725383"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Ukázkový skript pro vytvoření sítě pro vícevrstvé aplikace
 
@@ -34,7 +34,8 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> ID podsítě je přiřazena již vytvořené virtuální síti. Konkrétně, pomocí rutiny New-AzVirtualNetwork s parametrem - podsítě. Při konfiguraci podsítě pomocí rutiny New-AzVirtualNetworkSubnetConfig před voláním do New-AzVirtualNetwork, neuvidíte ID podsítě do po zavolání AzVirtualNetwork nový.
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
+ID podsítě je přiřazena již vytvořené virtuální síti. Konkrétně, pomocí rutiny New-AzVirtualNetwork s parametrem - podsítě. Při konfiguraci podsítě pomocí rutiny New-AzVirtualNetworkSubnetConfig před voláním do New-AzVirtualNetwork, neuvidíte ID podsítě do po zavolání AzVirtualNetwork nový.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 

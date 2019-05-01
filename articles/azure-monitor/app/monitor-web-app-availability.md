@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe8549027bb7fcf9fcfc2db26816c0b6646c9da6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60701539"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916384"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -67,7 +67,7 @@ Otevřete okno Dostupnost a přidejte test.
 
     **Odpověď HTTP**: Vrácený kód stavu, který se počítá jako úspěšný. 200 je kód, který označuje, že byla vrácena normální webová stránka.
 
-    **Shoda obsahu**: řetězec, například „Vítejte!“ U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat.
+    **Shoda obsahu**: řetězec, například „Vítejte!“ U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat. **Shody obsahu aktuálně podporují pouze anglické znaky.** 
 
 * **Mezní hodnota umístění upozornění**: Doporučujeme aspoň 3 nebo 5 umístění. Optimální vztah mezi mezní hodnota umístění upozornění a počet umístění testu je **mezní hodnota umístění upozornění** = **počet umístění testu** - 2, s minimálně pět testování umístění.
 
@@ -92,7 +92,7 @@ Slouží k zaznamenání relace webové aplikace Visual Studio Enterprise.
 
     ![Vytvořte v sadě Visual Studio Enterprise nový projekt ze šablony výkonnostního testu webu a zátěžového testu.](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *Nevidíte šablonu výkonnostního testu webu a zátěžového testu?* – Zavřete sadu Visual Studio Enterprise. Otevřete **Instalační program sady Visual Studio**, pomocí kterého upravíte svou instalaci sady Visual Studio Enterprise. V části **Jednotlivé komponenty** vyberte **Nástroje pro testování výkonnosti webů a zátěžové testování**.
+ * *Nevidíte šablonu výkonnostního testu webu a zátěžového testu?* – Zavřete sadu Visual Studio Enterprise. Otevřete **Instalační program sady Visual Studio**, pomocí kterého upravíte svou instalaci sady Visual Studio Enterprise. V části **Jednotlivé komponenty** vyberte **Nástroje pro testování výkonnosti webů a zátěžové testování**.
 
 2. Otevřete soubor .webtest a spusťte záznam.
 
@@ -273,6 +273,9 @@ Pokud váš test vyžaduje přihlášení pomocí OAuth, bude obecný postup ná
   (Sada Visual Studio se pokusí o parametrizaci testu, ale nebude tokeny parametrizovat správně.)
 
 ## <a name="performance-tests"></a>Testy výkonnosti
+> [!NOTE]  
+> Cloudové zátěžové testování služby je zastaralý. Další informace o vyřazení podpory, dostupnost služby a alternativní služeb můžete najít [tady](https://docs.microsoft.com/en-us/azure/devops/test/load-test/overview?view=azure-devops).
+
 Na svém webu můžete spustit zátěžový test. Podobně jako v testu dostupnosti můžete z našich bodů po celém světě odeslat buď jednoduché požadavky, nebo vícekrokové požadavky. Na rozdíl od testu dostupnosti se odesílá mnoho požadavků, které simulují několik souběžných uživatelů.
 
 V části **konfigurovat**, přejděte na stránku **testování výkonu** a klikněte na tlačítko Nový vytvořte test.

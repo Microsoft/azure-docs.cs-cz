@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1f94b7b2ab71afaa40831446e5e5aede00db7b1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364933"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570848"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -91,7 +91,7 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
 
 ### <a name="getmsft"></a>Chcete-li zobrazit podrobností partnerského vztahu Microsoftu
 
-Vlastnosti veřejného partnerského vztahu Azure můžete zobrazit výběrem partnerského vztahu.
+Můžete zobrazit vlastnosti partnerského vztahu výběrem partnerského vztahu Microsoftu.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
@@ -159,6 +159,10 @@ Konfiguraci partnerského vztahu můžete odebrat tak, že vyberete ikonu odstra
 ## <a name="public"></a>Veřejný partnerský vztah Azure
 
 Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfiguraci veřejného partnerského vztahu pro okruh ExpressRoute.
+
+> [!Note]
+> Veřejný partnerský vztah Azure pro nové okruhy je zastaralá. Další informace najdete v tématu [partnerský vztah ExpressRoute](expressroute-circuit-peerings.md).
+>
 
 ### <a name="to-create-azure-public-peering"></a>Vytvoření veřejného partnerského vztahu Azure
 

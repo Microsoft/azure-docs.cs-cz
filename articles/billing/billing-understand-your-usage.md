@@ -1,93 +1,130 @@
 ---
-title: Pochopení vašeho využití Azure podrobné | Dokumentace Microsoftu
-description: Zjistěte, jak si a porozuměli jim části Podrobné využití sdíleného svazku clusteru u předplatného Azure
-services: ''
-documentationcenter: ''
+title: Podrobné informace o využití a poplatky za | Dokumentace Microsoftu
+description: Zjistěte, jak číst a podrobné informace o využití a nákladů
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: micflan
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369620"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683990"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Vysvětlení podmínek vašeho Microsoft Azure podrobných poplatků za využití 
+# <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení podmínky v souboru využití a poplatky za Azure
 
-Podrobné informace o použití poplatky sdíleného svazku clusteru obsahuje poplatky za využívání úrovně denně a měřiče pro aktuální fakturační období. 
+Podrobné využití a poplatků soubor obsahuje denního využití hodnocených podle vyjednávaný sazby, nákup (například rezervace, poplatky webu Marketplace) a finanční prostředky zadanou dobu.
+Poplatky za nezahrnují kredity, daní, nebo jiné poplatky ani slevy.
+Následující tabulka popisuje které poplatky jsou zahrnuté pro každý typ účtu.
 
-Chcete-li získat podrobné informace o použití souboru, naleznete v tématu [jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
-Je k dispozici ve formátu souboru hodnot oddělených čárkami (CSV), které můžete otevřít v aplikaci tabulky. Pokud se zobrazí dvě dostupné verze, stáhněte si verzi 2. To je aktuální formát souboru.
+Typ účtu | Využití Azure | Využití webu Marketplace | Nákup | Vrácení peněz
+--- | --- | --- | --- | ---
+Smlouva Enterprise (EA) | Ano | Ano | Ano | Ne
+Smlouva se zákazníkem Microsoftu (MCA) | Ano | Ano | Ano | Ano
+Průběžných plateb (PAYG) | Ano | Ne | Ne | Ne
 
-Poplatky za využívání jsou celkové **měsíční** poplatky za využívání předplatného. Poplatky za využívání není vezměte v úvahu všechny kredity a slevy.
+Další informace o objednávkách Marketplace (označované také jako externí služba) najdete v tématu [vysvětlení Azure poplatků za externí služby](billing-understand-your-azure-marketplace-charges.md).
 
->[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
+Zobrazit [jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md) pokyny ke stažení.
+Je k dispozici ve formátu souboru hodnot oddělených čárkami (CSV), který můžete otevřít v aplikaci tabulky soubor využití a poplatků.
 
-## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Podrobné podmínky a popisy podrobné informace o využití souboru
+## <a name="list-of-terms-and-descriptions"></a>Seznam termínů a popisy
 
-Následující části popisují důležité podmínky uvedené ve verzi 2 podrobné informace o použití souboru.
+Následující tabulka popisuje důležité termíny používané v nejnovější verzi Azure file využití a poplatků.
+Seznam popisuje průběžných plateb (PAYG), smlouvy Enterprise (EA) a účty Microsoft zákazníka smlouvy (MCA).
 
-### <a name="statement"></a>Výraz
+Označení | Typ účtu | Popis
+--- | --- | ---
+Název účtu | EA | Zobrazovaný název registrace účtu.
+ID vlastníka účtu | EA | Jedinečný identifikátor pro účet pro zápis.
+Další informace | Vše | Metadata konkrétních služeb. Například typ image u virtuálního počítače.
+BillingAccountId | EA, MCA | Jedinečný identifikátor pro kořenovou fakturační účet.
+BillingAccountName | EA, MCA | Název fakturačního účtu.
+BillingCurrency | EA, MCA | Měně přidružené k fakturačnímu účtu.
+BillingPeriod | EA | Fakturační období poplatek.
+BillingPeriodEndDate | EA, MCA | Koncové datum fakturačního období.
+BillingPeriodStartDate | EA, MCA | Počáteční datum fakturačního období.
+BillingProfileId | EA, MCA | Jedinečný identifikátor registraci smlouvy Enterprise nebo MCA fakturační profil.
+BillingProfileName | EA, MCA | Název registraci smlouvy Enterprise nebo MCA fakturační profil.
+ChargeType | EA, MCA | Určuje, zda se příslušný poplatek představuje využití (**využití**), nákup (**zakoupit**), nebo refundaci (**refundaci**).
+Využité množství | PRŮBĚŽNÉ PLATBY | Podívejte se na množství.
+Využívaná služba | Vše | Název služby pro příslušný poplatek souvisí s.
+Náklady | EA | Zobrazit CostInBillingCurrency.
+Nákladové středisko | EA, MCA | Nákladové středisko definované pro předplatné pro sledování nákladů (k dispozici pouze v open fakturačních období pro MCA účty).
+CostInBillingCurrency | MCA | Náklady na poplatek za fakturační měna před kredity nebo daně.
+CostInPricingCurrency | MCA | Náklady na poplatku za v cenách měně před kredity nebo daně.
+Měna | PRŮBĚŽNÉ PLATBY | Zobrazit BillingCurrency.
+Datum | EA, MCA | Používání nebo zakoupení datum poplatku.
+ExchangeRateDate | MCA | Datum, kdy bylo vytvořeno kurzu.
+ExchangeRatePricingToBilling | MCA | Směnného kurzu slouží k převodu náklady v cenách měně fakturační Měna.
+Frekvence | EA, MCA | Určuje, zda částkou, která má opakujte. Poplatky za buď může dojít po (**OneTime**), opakování na základě měsíční nebo roční (**periodický**), nebo v závislosti na využití (**UsageBased**).
+includedQuantity | PRŮBĚŽNÉ PLATBY | Množství měřiče, které je zdarma v aktuálním fakturačním období.
+ID instance | PAGY | Zobrazit ID prostředku.
+InvoiceId | EA, MCA | ID dokumentu jedinečné uvedené na faktuře PDF.
+invoiceSection | MCA | See InvoiceSectionName.
+InvoiceSectionId | EA, MCA | Jedinečný identifikátor pro EA oddělení nebo MCA části faktury.
+InvoiceSectionName | EA, MCA | Název smlouvy EA oddělení nebo MCA části faktury.
+IsAzureCreditEligible | EA, MCA | Určuje, zda je příslušný poplatek nárok na používání kreditů Azure se budou hradit (hodnoty: Hodnota TRUE, False).
+Location | EA, MCA | Umístění datového centra, ve kterém prostředek běží.
+Kategorie měřiče | Vše | Název kategorie klasifikace pro měřidla. Například *cloudových služeb* a *sítě*.
+ID měřiče | Vše | Jedinečný identifikátor pro měřidla.
+Název měřiče | Vše | Název měřidla.
+Oblast měřiče | Vše | Název umístění datacentra u služeb, jejichž cena podle umístění. Podívejte se na umístění.
+Podkategorie měřiče | Vše | Název dílčí klasifikace v rámci kategorie měřiče.
+OfferId | EA, MCA | Název nabídky zakoupili.
+PartNumber | EA | Identifikátor sloužící k získání konkrétní měřičů, ceny.
+PlanName | EA | Název plánu služby webu Marketplace.
+PreviousInvoiceId | MCA | Odkaz na původní faktury, pokud je tato položka řádku refundaci.
+pricingCurrency | MCA | Měna použitá při hodnocení podle vyjednávaný ceny.
+Product | MCA | Zobrazit ProductName.
+ID produktu | EA, MCA | Jedinečný identifikátor pro produkt.
+ProductName | EA | Název produktu.
+productOrderId | EA, MCA | Jedinečný identifikátor pro produkt pořadí.
+productOrderName | EA, MCA | Jedinečný název pro objednávku produktu.
+Název vydavatele | EA, MCA | Vydavatele služby webu Marketplace.
+PublisherType | EA, MCA | Typ aplikace publisher (hodnoty: firstParty thirdPartyReseller, thirdPartyAgency).
+Množství | EA, MCA | Počet jednotek zakoupili nebo spotřebě.
+Sazba | PRŮBĚŽNÉ PLATBY | Zobrazit UnitPrice.
+ReservationId | EA, MCA | Jedinečný identifikátor pro zakoupené rezervované instance.
+ReservationName | EA, MCA | Název instance zakoupenou rezervaci.
+ResourceGroupId | EA, MCA | Jedinečný identifikátor [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) prostředek je v.
+ResourceGroupName | EA, MCA | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) prostředek je v.
+ResourceId | EA, MCA | Jedinečný identifikátor [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources) prostředků.
+Umístění prostředku | EA, MCA | Umístění datového centra, ve kterém prostředek běží. Podívejte se na umístění.
+ResourceName | EA | Název prostředku
+ResourceType | MCA | Typ instance prostředku.
+serviceFamily | EA, MCA | Řada služby, které patří službě.
+Informace o službách 1 | Vše | Metadata konkrétních služeb.
+Informace o službách 2 | Vše | Starší verze pole s volitelná metadata konkrétních služeb.
+ServicePeriodEndDate | MCA | Datum ukončení hodnocení období, které definované a uzamčen, ceny za služby využité nebo co si.
+ServicePeriodStartDate | MCA | Počáteční datum platnosti hodnocení, které definované a uzamčen, ceny za služby využité nebo co si.
+SubscriptionId | Vše | Jedinečný identifikátor pro předplatné.
+Název odběru | Vše | Název předplatného.
+Značky | Vše | Značky přiřazenou k prostředku. Neobsahuje značky skupiny prostředků. Slouží k seskupení nebo rozdělit náklady na interní vrácení peněz. Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Jednotka | PRŮBĚŽNÉ PLATBY | Zobrazit UnitOfMeasure.
+Měrná jednotka | Vše | Jednotka měření pro fakturaci pro službu. Například výpočetní služby se účtují po hodinách.
+UnitPrice | EA | Cena za jednotku pro příslušný poplatek.
+UsageDate | PRŮBĚŽNÉ PLATBY | Podívejte se na data.
 
-V horní části souboru CSV podrobné informace o využití obsahuje seznam služeb, které jste použili během fakturačního období v měsíci. V následující tabulce jsou uvedeny podmínky a popisy, které jsou uvedené v této části.
+Všimněte si, že některá pole se může lišit v malá a velká písmena a mezery mezi typy účtů.
+Starší verze souborů s průběžnými platbami využití mají samostatnými sekcemi pro příkazu a denního využití.
 
-| Označení | Popis |
-| --- | --- |
-|Fakturační období |Fakturační období, kdy byly použity měřiče |
-|Kategorie měření |Identifikuje službu nejvyšší úrovně za využití |
-|Podkategorie měření |Definuje typ služeb Azure, který může mít vliv na sazbu |
-|Název měření |Určuje měrnou jednotku pro měření spotřebovávanou |
-|Oblast měření |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
-|Skladová jednotka (SKU) |Určuje jedinečný identifikátor systému pro každou měřičů Azure |
-|Jednotka |Určuje jednotky, ve kterých se služba účtuje. Například GB, hodiny, 10 000 operací s. |
-|Spotřebované množství |Množství měřiče použít během fakturačního období |
-|Zahrnuté množství |Množství měřiče, které je zdarma v aktuálním fakturačním období |
-|Překročené množství |Ukazuje rozdíl mezi spotřebované množství a zahrnuté množství. Tuto částku vám budeme fakturovat. U nabídek s průběžnými platbami se žádné zahrnuté množství s nabídkou je tento součet stejný jako spotřebované množství. |
-|V rámci závazku |Ukazuje náklady měřiče, které jsou odečtena od výše závazku spojeného s nabídkou na 6 nebo 12 měsíců. Poplatky za měřiče odečtení v chronologickém pořadí. |
-|Měna |Měna použitá v aktuálním fakturačním období |
-|Překročení |Zobrazuje poplatky za měřiče, které překračují výši závazku spojeného s nabídkou na 6 nebo 12 měsíců |
-|Sazba závazku |Ukazuje sazbu závazku založenou na celkové výši závazku spojeného s nabídkou na 6 nebo 12 měsíců |
-|Sazba |Sazba se účtuje za fakturovatelnou jednotku |
-|Value |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
+## <a name="ensure-that-your-charges-are-correct"></a>Ujistěte se, že jsou správné poplatky
 
-### <a name="daily-usage"></a>Denní využívání
-
-V části denní využívání ze souboru CSV se zobrazí podrobnosti o použití, které ovlivňují fakturační sazby. V následující tabulce jsou uvedeny podmínky a popisy, které jsou uvedené v této části.
-
-| Označení | Popis |
-| --- | --- |
-|Datum využití |Datum, kdy byl použit měřič |
-|Kategorie měření |Identifikuje službu nejvyšší úrovně, pro které se využití týká. |
-|ID měření |Identifikátor fakturovaného měření, který slouží k určení ceny fakturovaného využití |
-|Podkategorie měření |Definuje typ služeb Azure, který může mít vliv na sazbu |
-|Název měření |Určuje měrnou jednotku pro měření spotřebovávanou |
-|Oblast měření |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
-|Jednotka |Určuje jednotky, ve kterých měřič účtuje. Například GB, hodiny, 10 000 operací s. |
-|Spotřebované množství |Množství měřič spotřebované za příslušný den |
-|Umístění prostředku |Určuje datové centrum, ve kterém běží měřič |
-|Spotřebovaná služba |Služby platformy Azure, který jste použili |
-|Skupina prostředků |Skupina prostředků, ve kterém je spuštěn měřič nasazené v. <br/><br/>Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
-|ID instance | Identifikátor pro měřidla. <br/><br/> Identifikátor obsahuje název, který zadáte pro měřidla při vytvoření rovnou uložil. Je název prostředku, nebo plně kvalifikované ID prostředku. Další informace najdete v tématu [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). |
-|Značky | Značka, která přiřadíte k měřidla. Použití značek k seskupení záznamů fakturace.<br/><br/>Například můžete použít značky distribuovat náklady podle oddělení, které používá měřidla. Jsou služby generování značek podporují virtuální počítače, úložiště a síťové služby zřízené pomocí [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
-|Další informace |Metadata konkrétních služeb. Například typ image u virtuálního počítače. |
-|Informace o službě 1 |Název projektu, který služba patří v rámci předplatného |
-|Informace o službě 2 |Starší verze pole, které zachycuje volitelná metadata konkrétních služeb |
-
-## <a name="how-do-i-make-sure-that-the-charges-in-my-detailed-usage-file-are-correct"></a>Jak jsem se ujistit, že poplatky v podrobné informace o použití souboru jsou správné?
-Pokud v souboru podrobné informace o využití, která chcete podrobnosti na poplatek, přečtěte si téma [vysvětlení vašeho vyúčtování služeb Microsoft Azure.](./billing-understand-your-bill.md)
-
-## <a name="external"></a>A co poplatků za externí služby?
-Externí služby (označované také jako Marketplace objednávky) jsou k dispozici služba nezávislá dodavatelé a služby se účtují zvlášť. Poplatky se nezobrazují na faktuře Azure. Další informace najdete v tématu [vysvětlení Azure poplatků za externí služby](billing-understand-your-azure-marketplace-charges.md).
+Další informace o podrobné informace o využití a nákladů, přečtěte si o tom, jak pochopit vaše [s průběžnými platbami](./billing-understand-your-bill.md) nebo [smlouvy zákazníka se společností Microsoft](billing-mca-understand-your-bill.md) faktury.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>Další postup
+
+- [Zobrazit a stáhnout fakturu Microsoft Azure](billing-download-azure-invoice.md)
+- [Zobrazovat a stahovat využití Microsoft Azure a poplatky za](billing-download-azure-daily-usage.md)

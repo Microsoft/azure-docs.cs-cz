@@ -2,24 +2,18 @@
 title: Určení vaší publikování možnost v Azure Marketplace | Azure
 description: Tento článek popisuje kritéria a požadavky partnerů snaží pochopit, jak publikovat aplikace na webu Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb306a32a9388113a9c81fa363a6e1ee2c3b30ad
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726638"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938098"
 ---
 # <a name="determine-your-publishing-option"></a>Určení publikování možnost
 Přímo na požadavky zakládající nárok i na webu marketplace výhody GTM souvisí možnost publikování, který jste vybrali pro vaši nabídku. Důležitější je výběr publikování možnost a typ nabídky na portál Cloud Partner definuje interakci uživatele v rámci vaší nabídky na webu marketplace.

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605555"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868593"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Vytvoření kontroly přepis videa pomocí .NET
 
@@ -162,7 +162,7 @@ Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**
 - **Stav**. Nastavte hodnotu na "Nepublikované." Pokud ho nenastavíte, použije se výchozí "Čeká na vyřízení", což znamená, že je publikovaná videa revize a recenze prováděné lidmi ve stavu čekání. Po publikování videa revize můžete už přidat snímky videí, přepis nebo výsledek moderování přepisu k němu.
 
 > [!NOTE]
-> **CreateVideoReviews** vrátí objekt IList<string>. Každý z těchto řetězců obsahuje ID videa revize. Tyto identifikátory jsou identifikátory GUID a nejsou stejná jako hodnota **ContentId** vlastnost.
+> **CreateVideoReviews** vrátí objekt IList\<řetězec >. Každý z těchto řetězců obsahuje ID videa revize. Tyto identifikátory jsou identifikátory GUID a nejsou stejná jako hodnota **ContentId** vlastnost.
 
 Přidejte následující definici metody do oboru názvů VideoReviews, třídu programu.
 
@@ -341,7 +341,7 @@ static void Main(string[] args)
         var transcript = @"WEBVTT
 
         01:01.000 --> 02:02.000
-        First line with a crap word in a transcript.
+        First line with a negative word in a transcript.
 
         02:03.000 --> 02:25.000
         This is another line in the transcript.

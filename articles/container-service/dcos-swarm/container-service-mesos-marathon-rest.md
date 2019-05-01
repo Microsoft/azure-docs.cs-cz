@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73fa9c4433a2af780798f0439c0a119bc32a678f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511594"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916683"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(NEPOUŽÍVANÉ) Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
 
@@ -32,7 +32,7 @@ Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurova
 ## <a name="access-the-dcos-apis"></a>Přístup k rozhraním API DC/OS
 Až se připojíte ke clusteru Azure Container Service, dostanete DC/OS a související rozhraní REST API pomocí protokolu http:\//localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například se dá kontaktovat koncové body nástroje Marathon na identifikátory URI začínající http: \/ /localhost/marathon/v2 /. 
 
-Další informace o různých rozhraních API najdete v dokumentaci Mesosphere pro rozhraní [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html) a v dokumentaci Apache pro rozhraní [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
+Další informace o různých rozhraních API najdete v dokumentaci Mesosphere pro rozhraní [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html) a v dokumentaci Apache pro rozhraní [Mesos Scheduler API](https://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Získání informací z DC/OS a Marathonu
 Před nasazení kontejnerů do clusteru DC/OS, zjistěte si určité informace o clusteru DC/OS, jako jsou názvy a stav agentů DC/OS. To provedete tak, že zašlete dotaz na koncový bod `master/slaves` rozhraní REST API DC/OS. Pokud všechno proběhne správně, dotaz vrátí seznam agentů DC/OS a u každého z nich několik vlastností.

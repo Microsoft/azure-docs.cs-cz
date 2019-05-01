@@ -3,19 +3,19 @@ title: Obecná deklarace identity transformace příklady Identity prostředí F
 description: Obecná deklarace identity transformace příklady Identity prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 831ecf2924ab6c321f69bb50c4a95a4156482585
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397154"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683961"
 ---
 # <a name="general-claims-transformations"></a>Obecná deklarace identity transformace
 

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614324"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866512"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
@@ -50,6 +50,18 @@ Můžete dál používat známá [rutin prostředí Azure PowerShell](https://do
 Všechny změny provedené u prostředků Azure, buď přímo na webu Azure portal nebo prostřednictvím rutin Powershellu pro Azure, se projeví v jednotce Azure.  Můžete spustit `dir -Force` aktualizovat vaše prostředky.
 
 ![](media/features-powershell/azure-drive.png)
+
+### <a name="manage-exchange-online"></a>Umožňuje spravovat Exchange Online
+
+PowerShell ve službě Cloud Shell obsahuje soukromé sestavení modulu Exchange Online.  Spustit `Connect-EXOPSSession` zobrazíte rutin systému Exchange.
+
+![](media/features-powershell/exchangeonline.png)
+
+ Spusťte `Get-Command -Module tmp_*`.
+> [!NOTE]
+> Název modulu by měl začínat `tmp_`, pokud jste nainstalovali moduly se stejnou předponou, se také zobrazí jejich rutiny. 
+
+![](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Těsnou integraci s open source nástroje
 

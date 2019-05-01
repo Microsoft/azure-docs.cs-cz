@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 01/08/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819908"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914891"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -359,6 +359,7 @@ response = requests.post(published_pipeline1.endpoint,
     json={"ExperimentName": "My_Pipeline",
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
 ## <a name="view-results"></a>Zobrazení výsledků
 
 Zobrazit seznam všech vašich kanálů a jejich podrobnosti o spuštění:
@@ -368,6 +369,25 @@ Zobrazit seznam všech vašich kanálů a jejich podrobnosti o spuštění:
  ![seznam kanálů strojového učení](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Vyberte konkrétní kanálu pro zobrazení výsledků spuštění.
+
+## <a name="caching--reuse"></a>Ukládání do mezipaměti a opakované použití  
+
+Aby bylo možné optimalizovat a přizpůsobit chování vašich kanálů můžete udělat pár věcí kolem ukládání do mezipaměti a opakovaně použít. Například můžete:
++ **Vypnout výchozí opakované použití kroku spuštění výstupu** nastavením `allow_reuse=False` během [krok definice](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **Rozšíření hashování nad rámec skript**, aby zahrnoval také absolutní nebo relativní cesty tak zdrojovým_adresářem na jiné soubory a adresáři používajícími `hash_paths=['<file or directory']` 
++ **Vynutit opětovné generování výstupu pro všechny kroky ve spuštění** s `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
+
+Ve výchozím nastavení, opakované použití kroku je povolená a se po zahašování použije pouze soubor hlavního skriptu. Takže pokud se skript pro daný krok zůstává stejná (`script_name`, vstupy a parametry), je výstup z předchozího kroku spustit znovu, úloha není odeslána do výpočetní a výsledků z předchozího spuštění se místo toho okamžitě k dispozici k dalšímu kroku .  
+
+```python
+step = PythonScriptStep(name="Hello World", 
+                        script_name="hello_world.py",  
+                        compute_target=aml_compute,  
+                        source_directory= source_directory, 
+                        allow_reuse=False, 
+                        hash_paths=['hello_world.ipynb']) 
+```
+ 
 
 ## <a name="next-steps"></a>Další postup
 - Použití [tyto poznámkové bloky Jupyter v Githubu](https://aka.ms/aml-pipeline-readme) prozkoumat machine learning další kanály.

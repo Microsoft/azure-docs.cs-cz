@@ -3,19 +3,19 @@ title: TrustFrameworkPolicy – Azure Active Directory B2C | Dokumentace Microso
 description: Zadejte elementu TrustFrameworkPolicy vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 558e9c3a3bfd43f6ceb958bc3be55d58e1eb7f91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 30cb6e49782b97d28b0d999f585d630477e8572f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360456"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684151"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -43,7 +43,7 @@ Vlastní zásady je vyjádřena jako jeden nebo více ve formátu XML soubory, k
 | PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
 | TenantObjectId | Ne | Identifikátor tenanta Azure Active Directory (Azure AD) B2C jedinečný objekt. |
 | TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada. |
-| PolicyId | Ano | Jedinečný identifikátor zásad. Tento identifikátor musí mít předponu *B2C_1A_* |
+| `PolicyId` | Ano | Jedinečný identifikátor zásad. Tento identifikátor musí mít předponu *B2C_1A_* |
 | PublicPolicyUri | Ano | Identifikátor URI pro zásady, které je kombinací ID tenanta a ID zásad. |
 | DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`, nebo `Development`. `Production` je výchozí možnost. Tuto vlastnost použijte, chcete-li ladit vaše zásady. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
 | UserJourneyRecorderEndpoint | Ne | Koncový bod, který se nepoužívá, pokud **DeploymentMode** je nastavena na `Development`. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
@@ -91,7 +91,7 @@ Dědit z jiné zásady, zásady **BasePolicy** elementu musí být deklarována 
 | Element | Výskyty | Popis |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor tenanta Azure AD B2C. |
-| PolicyId | 1:1 | Identifikátor nadřazené zásady. |
+| `PolicyId` | 1:1 | Identifikátor nadřazené zásady. |
 
 
 Následující příklad ukazuje, jak zadat základní zásady. To **B2C_1A_TrustFrameworkExtensions** zásad je odvozen z **B2C_1A_TrustFrameworkBase** zásad. 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: 417e9f8ae78889374983bf77900ee00fa7fc6338
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098756"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718938"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v Azure HDInsight 
 

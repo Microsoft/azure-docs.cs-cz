@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228128"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922992"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurovat Application Insights Profiler
 
@@ -41,7 +41,7 @@ V závislosti na konfiguraci služby Azure App Service Environment může být b
 ## <a id="profileondemand"></a> Ručně aktivovat Profiler
 
 ### <a name="minimum-requirements"></a>Minimální požadavky 
-Pro uživatele k ruční aktivaci relaci profileru vyžadují minimálně "" oprávnění k zápisu na jejich roli pro komponentu Application Insights. Ve většině případů získáte tento přístup automaticky a je potřeba žádné další kroky. Pokud dochází k problémům, by role obor předplatného přidáte roli "Přispěvatel součástí Application Insights". [Další informace o roli řízení přístupu pomocí Azure Monitoring](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control).
+Pro uživatele k ruční aktivaci relaci profileru vyžadují minimálně "" oprávnění k zápisu na jejich roli pro komponentu Application Insights. Ve většině případů získáte tento přístup automaticky a je potřeba žádné další kroky. Pokud dochází k problémům, by role obor předplatného přidáte roli "Přispěvatel součástí Application Insights". [Další informace o roli řízení přístupu pomocí Azure Monitoring](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
 Profiler můžete ručně aktivovat jediným kliknutím. Předpokládejme, že máte spuštěnou testu výkonnosti webu. Budete potřebovat trasování, které vám pomohou pochopit, jaký je výkon vaší webové aplikace v zatížení. Řídit, kdy jsou zachyceny trasování je zásadní, protože víte, kdy bude spuštěn zátěžový test. Ale interval vzorkování náhodné přijít.
 

@@ -1,25 +1,18 @@
 ---
-title: Vytvoření účtu Microsoft Developer | Dokumentace Microsoftu
+title: Vytvoření účtu Microsoft Developer | Azure Marketplace
 description: Požadavky a kroky pro vytvoření účtu Microsoft Developer.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326723"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935866"
 ---
 <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 ====================================
@@ -106,7 +99,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
    ![Vyberte zemi nebo oblast](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Zákazník z" země: Pokud chcete prodávat vaše služby na Azure Marketplace, musí být z jednoho z uvedené v rozevíracím seznamu země schválené "prodej z" registrované entity. Toto omezení je platební a daňové z důvodů. Další informace najdete v zásadách pro účast na webu Marketplace.
+    >"Zákazník z" zemích nebo oblastech: Pokud chcete prodávat vaše služby na Azure Marketplace, musí být z jednoho z schválené "prodej z" zemích nebo oblastech je znázorněno v rozevíracím seznamu registrovaných entity. Toto omezení je platební a daňové z důvodů. Další informace najdete v zásadách pro účast na webu Marketplace.
 
 5. Vyberte **společnosti** jako "Účtu typu" a pak vyberte **Další**.
 

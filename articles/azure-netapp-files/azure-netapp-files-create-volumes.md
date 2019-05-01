@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 4/23/2019
 ms.author: b-juche
-ms.openlocfilehash: fc748ee993855c77f25f9b115ea472df4281acec
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764356"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719433"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Vytvoření svazku pro Azure NetApp Files
 
@@ -44,7 +44,7 @@ Podsíť je potřeba delegovat do služby soubory Azure NetApp.
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
-        Název musí být v rámci skupiny prostředků jedinečný. Musí být alespoň tři znaky.  Můžete použít libovolný alfanumerické znaky.
+        Název svazku musí být jedinečný v rámci každé kapacity fondu. Musí být alespoň tři znaky. Můžete použít libovolný alfanumerické znaky.
 
     * **Kapacita fondu**  
         Zadejte kapacity fondu, ve kterém chcete svazek, který se má vytvořit.
@@ -65,14 +65,16 @@ Podsíť je potřeba delegovat do služby soubory Azure NetApp.
         
         Pokud jste ještě nedelegovali podsítě, můžete kliknout na **vytvořit nový** na vytvořit svazek stránky. Na stránce vytvořit podsítě, pak zadejte informace o podsíti a vyberte **Microsoft.NetApp/volumes** delegovat podsíť pro soubory Azure NetApp. V každé virtuální síti je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.   
  
-        ![Vytvořit svazek](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
 4. Klikněte na tlačítko **protokol**a pak vyberte **systému souborů NFS** jako typ protokolu pro daný svazek.   
     * Zadejte **cesta k souboru** , který se použije k vytvoření cesty export pro nový svazek. Cesta pro export slouží pro připojení svazku a přístup k němu.
 
-        Název cesty k souboru může obsahovat pouze písmena, číslice a pomlčky („-“). Musí být dlouhý 16 až 40 znaků.  
+        Název cesty k souboru může obsahovat pouze písmena, číslice a pomlčky („-“). Musí být dlouhý 16 až 40 znaků. 
+
+        Cesta k souboru musí být jedinečný v rámci každé předplatné a každou oblast. 
 
     * Volitelně můžete [konfigurace export zásad pro svazek systému souborů NFS](azure-netapp-files-configure-export-policy.md)
 
@@ -89,6 +91,33 @@ Podsíť je potřeba delegovat do služby soubory Azure NetApp.
 Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit připojení služby Active Directory před přidáním svazku SMB. 
 
 ### <a name="create-an-active-directory-connection"></a>Vytvoření připojení k službě Active Directory
+
+1. Ujistěte se, že splňujete následující requiements: 
+
+    * Účet správce, který používáte musí být schopen vytvořit účty počítače v cestě organizační jednotka (OU), který zadáte.
+    * Musí být na příslušný server služby Windows Active Directory (AD) otevřené správné porty.  
+        Požadované porty jsou následující: 
+
+        |     Služba           |     Port     |     Protocol (Protokol)     |
+        |-----------------------|--------------|------------------|
+        |    AD webové služby    |    9389      |    TCP           |
+        |    DNS                |    53        |    TCP           |
+        |    DNS                |    53        |    UDP           |
+        |    ICMPv4             |    neuvedeno       |    Odpovědi s odezvou    |
+        |    Kerberos           |    464       |    TCP           |
+        |    Kerberos           |    464       |    UDP           |
+        |    Kerberos           |    88        |    TCP           |
+        |    Kerberos           |    88        |    UDP           |
+        |    LDAP               |    389       |    TCP           |
+        |    LDAP               |    389       |    UDP           |
+        |    LDAP               |    3268      |    TCP           |
+        |    Název rozhraní NetBIOS       |    138       |    UDP           |
+        |    SAM/LSA            |    445       |    TCP           |
+        |    SAM/LSA            |    445       |    UDP           |
+        |    Protokol Secure LDAP        |    636       |    TCP           |
+        |    Protokol Secure LDAP        |    3269      |    TCP           |
+        |    Služba W32Time            |    123       |    UDP           |
+
 
 1. Z vašeho účtu NetApp, klikněte na tlačítko **připojení služby Active Directory**, pak klikněte na tlačítko **připojit**.  
 
@@ -134,12 +163,7 @@ Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit přip
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
-        Název musí být v rámci skupiny prostředků jedinečný. Musí být alespoň tři znaky.  Můžete použít libovolný alfanumerické znaky.
-
-    * **Cesta k souboru**  
-        Zadejte cestu k souboru, která se použije k vytvoření cesty pro export nového svazku. Cesta pro export slouží pro připojení svazku a přístup k němu.   
-     
-        Název cesty k souboru může obsahovat pouze písmena, číslice a pomlčky („-“). Musí být dlouhý 16 až 40 znaků.  
+        Název svazku musí být jedinečný v rámci každé kapacity fondu. Musí být alespoň tři znaky. Můžete použít libovolný alfanumerické znaky.
 
     * **Kapacita fondu**  
         Zadejte kapacity fondu, ve kterém chcete svazek, který se má vytvořit.
@@ -160,7 +184,7 @@ Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit přip
         
         Pokud jste ještě nedelegovali podsítě, můžete kliknout na **vytvořit nový** na vytvořit svazek stránky. Na stránce vytvořit podsítě, pak zadejte informace o podsíti a vyberte **Microsoft.NetApp/volumes** delegovat podsíť pro soubory Azure NetApp. V každé virtuální síti je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.   
  
-        ![Vytvořit svazek](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 

@@ -6,16 +6,15 @@ metadata:
   title: 'Dokumentace Azure SQL Database – kurzy, reference k rozhraní API'
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: jovanpop-msft
-  manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
-  ms.tgt_pltfrm: na
-  ms.devlang: null
   ms.topic: overview
-  ms.date: 01/25/2019
+  author: jovanpop-msft
   ms.author: jovanpop-msft
+  ms.reviewer: carlrab
+  manager: craigg
+  ms.date: 04/26/2019
 abstract:
   description: 'Azure SQL Database je relační databáze jako služba (DBaaS) založené na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonné, snadno k použití, spolehlivé a zabezpečené databázi, můžete použít k vytvoření nové aplikace, weby a mikroslužby v programovacím jazyce podle vašeho výběru, aniž byste museli spravovat infrastrukturu. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
   aside:

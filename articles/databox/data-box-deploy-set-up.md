@@ -1,5 +1,5 @@
 ---
-title: Nastavení Azure Data Boxu | Microsoft Docs
+title: Kurz k nastavení zařízení Azure Data Box | Dokumentace Microsoftu
 description: Postup zapojení kabeláže a připojení k Azure Data Boxu
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b601ad5936820e2c237b7b9d37d9af73aa468bbc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2da6bf971cc966e27fac46546bfd4e3dcac6d12f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123293"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926167"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení a připojte se k zařízení Azure Data Box
 
@@ -40,7 +40,7 @@ Než začnete, ujistěte se, že:
     - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
 6. Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
 7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
-    - Jeden nebo více 10 GbE SFP + Twinax mědi nebo SFP + kabely optického vlákna (pomocí DATA 1, DATA 2 síťových rozhraní). Zařízení data Box má adaptéry Mellanox ConnectX®-3 Pro EN dva porty 10GBASE T plánovaným bodem obnovení kratším PCI Express 3.0 síťové rozhraní, takže by měla fungovat kabely, které jsou kompatibilní s tímto rozhraním. Pro příklad, CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M kabel byl použit pro inhouse testování. Další informace najdete v tématu [seznam podporovaných kabely a přepínače z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Jeden nebo více 10 GbE SFP + Twinax mědi nebo SFP + kabely optického vlákna (pomocí DATA 1, DATA 2 síťových rozhraní). Zařízení data Box má adaptéry Mellanox ConnectX®-3 Pro EN dva porty 10GBASE T plánovaným bodem obnovení kratším PCI Express 3.0 síťové rozhraní, takže by měla fungovat kabely, které jsou kompatibilní s tímto rozhraním. Pro příklad, CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M kabel byl použit pro interní testování. Další informace najdete v tématu [seznam podporovaných kabely a přepínače z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 

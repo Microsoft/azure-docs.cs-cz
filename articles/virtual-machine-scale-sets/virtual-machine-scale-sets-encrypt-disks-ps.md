@@ -13,50 +13,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 04/26/2019
 ms.author: cynthn
-ms.openlocfilehash: cc1405d2dd972aff6091a9d5b60ff9da18185286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7ebb88317da45ff496385b72c603a44d628b0202
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978098"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869077"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Šifrování operačního systému a připojené datové disky ve virtuálním počítači škálovací sady pomocí Azure Powershellu (Preview)
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Šifrování operačního systému a připojené datové disky ve virtuálním počítači škálovací sady pomocí Azure Powershellu
 
 Pro ochranu dat v klidovém stavu pomocí standardní šifrovací technologie, podporují škálovací sady virtuálních počítačů Azure Disk Encryption (ADE). Šifrování je možné povolit pro Windows a Linux virtuálního počítače škálovací sady. Další informace najdete v tématu [Azure Disk Encryption pro Windows a Linuxem](../security/azure-security-disk-encryption.md).
-
-> [!NOTE]
->  Azure disk encryption pro škálovací sady virtuálních počítačů je aktuálně ve verzi public preview, k dispozici ve všech veřejných oblastech Azure.
 
 Azure disk encryption je podporována:
 - pro škálovací sady se spravovanými disky vytvořené a není podporováno pro nativní (nebo nespravované) disku škálovací sady.
 - pro operační systém a datové svazky ve Windows škálovacích sadách. Zakázat šifrování je podporováno pro operační systém a datové svazky pro Windows škálovací sady.
-- pro datové svazky v Linuxu škálovací sady. Šifrování disku operačního systému není podporován v aktuální verzi preview pro Linux škálovací sady.
+- pro datové svazky v Linuxu škálovací sady. Šifrování disku operačního systému není podporován v současné době pro Linux škálovací sady.
 
-Škálovací sady virtuálního počítače reimage a upgrade operace nejsou podporovány v aktuální verzi preview. Azure disk encryption pro verzi preview sady škálování virtuálních počítačů se doporučuje jenom v testovacích prostředích. Ve verzi preview Nepovolovat šifrování disku v produkčních prostředích, kde je třeba upgradovat image operačního systému v šifrované škálovací sady.
-
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
-
-
-## <a name="register-for-disk-encryption-preview"></a>Zaregistrovat se na disk encryption ve verzi preview
-
-Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-
-
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [Get-AzProviderFeature](/powershell/module/az.resources/Get-AzProviderFeature). Když `RegistrationState` sestavy *registrované*, znovu zaregistrovat *Microsoft.Compute* zprostředkovatele s [Register-AzResourceProvider](/powershell/module/az.resources/Register-AzResourceProvider):
-
-
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 ## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Vytvoření služby Azure Key Vault nepovoluje šifrování disku
 
@@ -125,6 +102,26 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 
 Po zobrazení výzvy zadejte *y* pokračujte v procesu šifrování disku škálovací nastavení virtuálního počítače instance.
 
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Povolit šifrování pomocí KEK zabalit klíč
+
+Můžete také použít klíčového šifrovacího klíče pro přidání zabezpečení při šifrování škálovací sadu virtuálních počítačů.
+
+```azurepowershell-interactive
+$diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
+$keyVaultResourceId=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
+$keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $vaultName -Name $keyEncryptionKeyName).Key.kid;
+
+Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
+    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId `
+    -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
+```
+
+> [!NOTE]
+>  Syntaxe pro hodnotu parametru disk šifrování – trezor klíčů je úplný identifikátor řetězce:</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> Syntaxe pro hodnoty parametru klíč šifrovacího klíče je úplný identifikátor URI klíče KEK jako v:</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
+
 ## <a name="check-encryption-progress"></a>Kontrola průběhu šifrování
 
 Chcete-li zkontrolovat stav šifrování disku, použijte [Get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption):
@@ -165,4 +162,5 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku se používá prostředí Azure PowerShell k šifrování škálovací sadu virtuálních počítačů. Můžete také použít [rozhraní příkazového řádku Azure](virtual-machine-scale-sets-encrypt-disks-cli.md) nebo šablony pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+- V tomto článku se používá prostředí Azure PowerShell k šifrování škálovací sadu virtuálních počítačů. Můžete také použít [rozhraní příkazového řádku Azure](virtual-machine-scale-sets-encrypt-disks-cli.md) nebo šablony pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+- Pokud chcete použít Azure Disk Encryption po zřízení jinou příponu, můžete použít [nastavení posloupnosti rozšíření](virtual-machine-scale-sets-extension-sequencing.md). Můžete použít [tyto ukázky](../security/azure-security-disk-encryption-extension-sequencing.md#sample-azure-templates) začít.

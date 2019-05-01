@@ -1,26 +1,19 @@
 ---
 title: Strukturované streamování ze systému Apache Kafka pro Azure Cosmos DB – Azure HDInsight Apache Sparku
 description: Zjistěte, jak používat strukturované streamování Apache Sparku číst data ze systému Apache Kafka a uloží je do služby Azure Cosmos DB. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
-services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-origin.date: 11/06/2018
-ms.author: v-yiso
-ms.date: 01/21/2019
+ms.date: 11/06/2018
+ms.author: hrasheed
 ms.openlocfilehash: c2f3d882ac01427ea017d4f9b81edc3c64cc932d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128394"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728711"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití Apache strukturovaného streamování Sparku s využitím Apache Kafka a Azure Cosmos DB
 
@@ -30,7 +23,7 @@ Další informace o použití [Apache Spark](https://spark.apache.org/) [struktu
 
 Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. Další informace o strukturovaném streamování najdete v tématu [strukturované streamování Průvodce programováním pro službu](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) na webu Apache.org.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tento příklad používá Spark 2.2 ve HDInsight 3.6.
 >
 > Pomocí kroků v tomto dokumentu se vytvoří skupina prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
@@ -43,14 +36,14 @@ Apache Kafka ve službě HDInsight neposkytuje přístup ke zprostředkovatelům
 
 ![Diagram clusterů Spark a Kafka ve virtuální síti Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Komunikace služby Kafka je omezená na virtuální síť. Další služby v clusteru, jako jsou SSH a Ambari, jsou přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ručně, je jednodušší použít šablonu Azure Resource Manageru. V následujícím návodu pro nasazení virtuální sítě Azure, Kafka a clustery se svým předplatným Azure Spark.
 
 1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu na webu Azure Portal.
     
-    <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
     </a>
 
@@ -64,12 +57,12 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 
    * Virtuální síť Azure obsahující clustery HDInsight.
 
-       > [!NOTE]
+       > [!NOTE]  
        > Virtuální sítě vytvořené pomocí šablony používá adresní prostor 10.0.0.0/16.
 
    * Databáze aplikace SQL API služby Azure Cosmos DB.
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > Poznámkový blok strukturovaného streamování použitý v tomto příkladu vyžaduje Spark ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
 
 2. Pomocí následujících informací vyplňte položky na **vlastní nasazení** části:
@@ -88,7 +81,7 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 
     * **Verze clusteru**: Verze clusteru HDInsight.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > V tomto příkladu je testovat pomocí HDInsight 3.6 a další typy clusterů, nemusí fungovat.
 
     * **Uživatelské jméno přihlášení clusteru**: Uživatelské jméno správce clusterů Spark a Kafka.
@@ -103,7 +96,7 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 
 4. Nakonec vyberte **nákupní**. Vytvoření clusteru trvá přibližně 20 minut.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Může trvat až 45 minut vytvářet clustery, virtuální síť a účet služby Cosmos DB.
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>Vytvoření databáze Cosmos DB a kolekce
@@ -146,7 +139,7 @@ Koncový bod dokumentu a informacemi o primárním klíči se podobá následuj�
 "YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Uložte koncový bod a hodnoty klíče, podle potřeby poznámkové bloky Jupyter.
 
 ## <a name="get-the-apache-kafka-brokers"></a>Získat zprostředkovatelům systému Apache Kafka
@@ -164,20 +157,20 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Očekává, že v příkladu Bash `$CLUSTERNAME` tak, aby obsahovala název clusteru Kafka.
 >
 > V tomto příkladu [jq](https://stedolan.github.io/jq/) nástroj a analyzovat data z dokumentu JSON.
 
 ```bash
-curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
+curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
 ```
 
 Po zobrazení výzvy zadejte heslo pro účet clusteru (správce)
 
 Výstup se bude podobat následujícímu:
 
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn:9092`
+`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
 
 Tyto informace uložte, protože se používá v následujících částech tohoto dokumentu.
 
@@ -191,7 +184,7 @@ Následujícím postupem nahrání poznámkových bloků z projektu na Spark na 
 
 1. Ve webovém prohlížeči se připojte k poznámkovému bloku Jupyter na svém clusteru Spark. V následující adrese URL nahraďte `CLUSTERNAME` názvem svého clusteru __Spark__:
 
-        https://CLUSTERNAME.azurehdinsight.cn/jupyter
+        https://CLUSTERNAME.azurehdinsight.net/jupyter
 
     Po zobrazení výzvy zadejte přihlašovací jméno (správce) a heslo clusteru, které jste použili při vytváření clusteru.
 

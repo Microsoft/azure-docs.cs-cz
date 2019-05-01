@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 678f9aa60d4970540ded8ba0bb1a4ddaa6281a49
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101893"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925480"
 ---
 # <a name="scale-with-additional-process-servers"></a>Škálování pomocí dalších procesových serverů
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení se při replikaci virtuálních počítačů VMware neb
 
 Ujistěte se, že jste provedli [plánování kapacity](site-recovery-plan-capacity-vmware.md) pro replikaci VMware. To pomáhá zjistit, jak a kdy byste měli nasadit dalších procesových serverů.
 
-Z 9.24 verze pokyny k přidání při výběru procesový server pro novou replikace. Procesový server budou označeny v pořádku, upozornění a Critial na základě určitých kritérií. Vysvětlení různých scénářů, které mohou mít vliv na stav procesového serveru, najdete v tématu [server výběr pokyny procesu](vmware-azure-manage-process-server.md#process-server-selection-guidance).
+Z 9.24 verze pokyny k přidání při výběru procesový server pro novou replikace. Procesový server budou označeny v pořádku, upozornění a kritická na základě určitých kritérií. Chcete-li pochopit různé scénáře, které mohou mít vliv na stav procesového serveru, přečtěte si téma [zpracovávat výstrahy serveru](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
 
 > [!NOTE]
 > Použití naklonované komponentu procesového serveru není podporováno. Postupujte podle kroků v tomto článku pro každý PS horizontální navýšení kapacity.

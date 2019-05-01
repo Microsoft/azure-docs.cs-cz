@@ -10,11 +10,11 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 238e5971e79b192e0ef422dcd452859ff7566580
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763477"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721664"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Vývoj pro soubory Azure pomocí Javy
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

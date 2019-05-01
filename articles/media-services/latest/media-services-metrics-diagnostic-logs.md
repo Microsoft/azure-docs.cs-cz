@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322093"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728840"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Monitorování metrik služby Media Services a diagnostické protokoly
 
@@ -34,7 +34,7 @@ Metriky se budou shromažďovat v pravidelných intervalech, zda hodnoty. Jsou u
 
 V současné době následující Media Services [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) metriky jsou emitovány Azure:
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |Požadavky|Poskytuje podrobnosti o celkový počet požadavků, které jsou obsluhovány pomocí koncového bodu streamování.|
 |Výchozí přenos|Celkový počet bajtů výchozí přenos. Například bajtů streamují koncový bod streamování.|
@@ -54,7 +54,7 @@ Informace o tom, jak vytvářet upozornění metrik, najdete v tématu [vytvoře
 
 V současné době můžete získat následující diagnostických protokolů:
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |Žádost o doručení klíče služby|Protokoly, které zobrazují informace o žádosti o doručení klíče služby. Další podrobnosti najdete v tématu [schémata](media-services-diagnostic-logs-schema.md).|
 

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3485639062f33d013152cd30f6785df4d1c79790
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350241"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918853"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server 
 
@@ -25,7 +25,7 @@ Tento dokument popisuje, jak přesunout databázi Azure AD Connect z místního 
 ## <a name="about-this-scenario"></a>O tomto scénáři
 Následuje několik stručných informací o tomto scénáři.  V tomto scénáři je na jednom řadiči domény s Windows Serverem 2016 nainstalovaný nástroj Azure AD Connect verze 1.1.819.0.  Pro svou databázi využívá integrovaný SQL Server 2012 Express Edition.  Databáze se přesune na server SQL Server 2017.
 
-![](media/how-to-connect-install-move-db/move1.png)
+![Architektury scénáře](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Přesun databáze Azure AD Connect
 Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdálený SQL Server.
@@ -37,7 +37,7 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
 5. Na vzdáleném SQL Serveru otevřete SQL Server Management Studio.
 6. V části Databáze klikněte pravým tlačítkem a vyberte Připojit.
 7. Na obrazovce **Připojit databáze** klikněte na **Přidat** a přejděte k souboru ADSync.mdf.  Klikněte na **OK**.
-   ![](media/how-to-connect-install-move-db/move2.png)
+   ![připojení databáze](media/how-to-connect-install-move-db/move2.png)
 
 8. Po připojení databáze se vraťte na server Azure AD Connect a nainstalujte Azure AD Connect.
 9. Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.

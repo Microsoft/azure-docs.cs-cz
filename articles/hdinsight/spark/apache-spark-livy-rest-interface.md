@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 99175f79e030a55991947313e4a7e32a738d6adb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097384"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570495"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
@@ -164,16 +164,6 @@ HDInsight 3.5 clusterů a výše, ve výchozím nastavení, zakázat použití m
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Odesílání úloh Livy pro cluster v rámci virtuální sítě Azure
 
 Pokud se připojíte ke clusteru HDInsight Spark z v rámci virtuální sítě Azure, můžete přímo připojit k Livy v clusteru. V takovém případě je adresa URL pro koncový bod Livy `http://<IP address of the headnode>:8998/batches`. Tady **8998** je port, na kterém poběží Livy hlavního uzlu clusteru. Další informace o přístup ke službám na jiných veřejných portech najdete v tématu [portů používaných služeb Apache Hadoop v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
-
-## <a name="troubleshooting"></a>Řešení potíží
-
-Tady jsou některé problémy, které se můžete setkat při používání Livy pro odeslání vzdálené úlohy do clusterů Spark.
-
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Použití externí jar z dodatečné úložiště se nepodporuje
-
-**Problém:** Pokud vaše úloha Sparku Livy odkazuje na externí jar z účtu úložiště přidružené ke clusteru, úloha se nezdaří.
-
-**Řešení:** Ujistěte se, že soubor jar, který chcete použít je k dispozici ve výchozím nastavení úložiště přidružené ke clusteru HDInsight.
 
 
 

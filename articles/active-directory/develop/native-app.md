@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e37e40cd0dbba7961cbde75b5dde44f2666dc21
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443891"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918616"
 ---
 # <a name="native-apps"></a>Nativní aplikace
 
@@ -52,7 +52,7 @@ Pro nativní aplikace pro scénáře webového rozhraní API najdete v ukázkác
 
 ## <a name="app-registration"></a>Registrace aplikace
 
-Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace ke koncovému bodu Azure AD v1.0](quickstart-v1-add-azure-ad-app.md).
+Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace](quickstart-register-app.md).
 
 * Jeden tenant - nativní aplikace a webové rozhraní API musí být zaregistrovaný ve stejném adresáři, ve službě Azure AD. Webové rozhraní API je možné nakonfigurovat k vystavení sady oprávnění, které slouží k omezení přístupu k nativní aplikaci na prostředky. Klientská aplikace potom vybere požadovaná oprávnění z rozevírací nabídky "Oprávnění do jiných aplikací" na webu Azure Portal.
 * Víceklientské - nejprve nativní aplikace vždy jen registrované v vývojář nebo adresář vydavatele. Za druhé nativní aplikace je nakonfigurovaná k označení oprávnění, která ho, aby byl funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři dává souhlas pro aplikaci, které zpřístupní jejich organizace. Některé aplikace vyžadují jenom oprávnění na úrovni uživatele, které každý uživatel v organizaci můžou udělit souhlas s. Jiné aplikace vyžadují oprávnění na úrovni správce, které nelze vyjádřit souhlas uživatele v organizaci. Pouze správce adresáře lze udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, pouze webová rozhraní API je zaregistrovaný v jejich adresáře. 

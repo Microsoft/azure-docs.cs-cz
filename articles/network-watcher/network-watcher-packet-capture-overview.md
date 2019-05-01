@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3ca9619dcfe9054ab69d248e20f6d8e59324d308
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4cfbfc4bed5438ed901fca86d8c2939d3860c68e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727025"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684163"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Úvod do proměnné zachytávání paketů ve službě Azure Network Watcher
 

@@ -8,19 +8,16 @@ ms.topic: tutorial
 ms.date: 2/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 616a710237c31ef2b4a19c3e1e61838164a78530
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308563"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947144"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Kurz: Vytvoření služby application gateway, která zvyšuje přístup k webové aplikaci
 
 Pokud jste obeznámeni s zlepšení přístup k webové aplikaci správce IT, můžete optimalizovat vaše brána application gateway škálování zákazníků na základě poptávky a span několika zónami dostupnosti. Tento kurz vám pomůže s konfigurací funkce Azure Application Gateway, které to: automatické škálování, zóna redundance a vyhrazené virtuální IP adresy (statické IP adresy). Chcete-li vyřešit tento problém budete používat rutin Azure Powershellu a modelu nasazení Azure Resource Manageru.
-
-> [!IMPORTANT] 
-> Skladová položka automaticky škálované a zónově redundantní Application Gateway je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 V tomto kurzu se naučíte:
 

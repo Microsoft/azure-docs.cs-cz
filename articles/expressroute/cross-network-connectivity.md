@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60368749"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866005"
 ---
 # <a name="cross-network-connectivity"></a>Možnosti připojení mezi sítěmi
 
@@ -119,7 +119,7 @@ V následující tabulce jsou uvedeny směrovací tabulky privátní partnerský
 
 Zobrazit [virtuální sítě – nejčastější dotazy][VNet-FAQ]pro všechny další otázky týkající se virtuální sítě a partnerský vztah virtuální sítě. Zobrazit [ExpressRoute – nejčastější dotazy] [ ER-FAQ] pro připojení k nějaké další dotazy na ExpressRoute a virtuální síti.
 
-Globální dosah nasazení na základě jednotlivé země. Pokud globální dosah je dostupný v zemích, které mají najdete v tématu [ExpressRoute globální dosah][Global Reach].
+Globální dosah nasazení na základě země nebo oblast podle země nebo oblast. Pokud je dostupný v zemích nebo oblastech, které mají globální dosah, najdete v sekci [ExpressRoute globální dosah][Global Reach].
 
 <!--Image References-->
 [1]: ./media/cross-network-connectivity/premergerscenario.png "scénář aplikace"

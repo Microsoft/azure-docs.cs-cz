@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6da2b63b7a9c8dc490bd30bb02ae6e7d932b2f7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bdadd2ac5c7790f9e1da57de925bfba659a5890
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60595971"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916559"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do služby Azure Monitor.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
@@ -58,8 +58,8 @@ Vysvětlení sloupců jsou následující:
 | [Azure SQL Analytics (Náhled)](../../azure-monitor/insights/azure-sql.md) | Windows | | | | | | 1 minuta |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | v oznámení |
 | [Kapacita a výkon (Preview)](../../azure-monitor/insights/capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |Při doručení |
-| [Sledování změn](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[Se liší](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
-| [Sledování změn](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |[Se liší](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
+| [Sledování změn](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[Se liší](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Sledování změn](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[Se liší](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Containers](../../azure-monitor/insights/containers.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
 | [Analýza služby Key Vault](../../azure-monitor/insights/azure-key-vault.md) |Windows | | | | | |v oznámení |
 | [Posouzení malwaru](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |

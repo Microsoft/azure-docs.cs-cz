@@ -10,21 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513715"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712828"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
 > [!NOTE]
 > Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
 > 
-> Od 1. února 2018 se přestala nabízet spolupráci překlady Framework (CTF), dříve k dispozici pro V2.0 Translator Text API. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím spolupráce Translation Framework. Po 31. ledna 2018 tyto dvě funkce nepřijímá nové příspěvky věty a uživatelé zobrazí chybová zpráva. Tyto funkce se vyřazuje a nebudou nahrazeny.
-> 
-> Podobně jako funkce jsou dostupné v rozhraní Translator API centra, vám umožní vytvářet vlastní překladový systém s terminologie a stylu, a lze vyvolat pomocí ID kategorie v rozhraní Translator Text API. Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com). Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
+> Od 1. února 2018 se přestala nabízet spolupráci překlady Framework (CTF), dříve k dispozici pro V2.0 Translator Text API. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím spolupráce Translation Framework. Po 31. ledna 2018 tyto dvě funkce nepřijímá nové příspěvky věty a uživatelé zobrazí chybová zpráva. Tyto funkce bylo vyřazeno a nebudou nahrazeny.
 
 API pro generování sestav Collaborative Translation Framework (CTF) vrátí statistiku a skutečný obsah v úložišti CTF. Toto rozhraní API se liší od metody GetTranslations() protože ji:
 * Vrátí přeloženého obsahu a jeho celkového počtu pouze z vašeho účtu (appId nebo účet Azure Marketplace).
@@ -36,7 +34,7 @@ Koncový bod rozhraní API CTF generování sestav https://api.microsofttranslat
 
 
 ## <a name="methods"></a>Metody
-| Name |    Popis|
+| Název |    Popis|
 |:---|:---|
 | GetUserTranslationCounts Method | Získáte počet překlady, které jsou vytvořené tímto uživatelem. |
 | GetUserTranslations Method | Načte překlady, které jsou vytvořené tímto uživatelem. |

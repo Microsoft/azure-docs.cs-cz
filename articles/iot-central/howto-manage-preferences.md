@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 968bb5317e06b5cf9ac1f939eaf56288122a1ae0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518417"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724392"
 ---
 # <a name="manage-your-application-preferences"></a>Správa vašich předvoleb aplikace
 
@@ -36,4 +36,4 @@ Máme podporu pro motiv tmavý a světlý motiv. Výchozí hodnota při světlý
 Teď, když jste zjistili, jak spravovat váš profil v Azure IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Konfigurovat váš řídicí panel aplikací](howto-configure-homepage.md)
+> [Přepnout živý chat](howto-show-hide-chat.md)

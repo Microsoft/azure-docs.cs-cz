@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 644054960e12979c231bbf50a5979bc12d343f89
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415850"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694771"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
-Ochrana hesel Azure AD je funkce, která vylepšuje zásady hesel v organizaci. Ochrana heslem v místním nasazení se používá i globálních a vlastních zakázané heslo seznamy, které jsou uložené ve službě Azure AD. Provádí stejné kontroly místní jako Azure AD pro změny založené na cloudu.
+Ochrana hesel Azure AD je funkce, která vylepšuje zásady hesel v organizaci. V místním nasazení ochrany heslem používá obě globálních a vlastních zakázané heslo seznamy, které jsou uložené ve službě Azure AD. Provádí stejné kontroly místní jako Azure AD pro změny založené na cloudu.
 
 ## <a name="design-principles"></a>Principy návrhu
 

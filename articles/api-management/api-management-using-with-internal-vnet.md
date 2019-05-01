@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 738dd451ca44801c799d793e6501c547655bd0e0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7db40de921c0eb8826a2fee832c1a51c57796f6d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524139"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919837"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -48,7 +48,7 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 + Po nasazení služby API Management ve virtuální síti, [seznam portů](./api-management-using-with-vnet.md#required-ports) se používají a musí být otevřen. 
 
 ## <a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální síti
-Služba API Management v interní virtuální síti je hostovaných za službou [interního nástroje load balancer (classic)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
+Služba API Management v interní virtuální síti je hostovaných za službou [interního nástroje load balancer (classic)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolit připojení k virtuální síti pomocí webu Azure portal
 

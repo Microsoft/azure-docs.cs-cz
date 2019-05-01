@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e70850ba9e5984e36643f1b9ecc9db29eec149
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386903"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572827"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje s novými funkcemi a funkce Azure AD Connect Health. Tento článek uvádí verzích a funkcích, které byly vydány.  
@@ -31,18 +31,23 @@ Tým služby Azure Active Directory pravidelně aktualizuje s novými funkcemi a
 
 Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure AD Connect. Další informace o [historie verzí služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) zpětnou vazbu funkce, Hlasujte na [Connect Health User Voice kanálu](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="april-2019"></a>2019. dubna
+**Aktualizace agenta:** 
+* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.46.0) 
+   1. Oprava výstrahy procesu zkontrolujte duplicitní hlavní název služby pro služby AD FS
+
 ## <a name="march-2019"></a>2019. března
 **Aktualizace agenta:** 
-* Agent Azure AD Connect Health pro službu AD DS (verze 3.1.41.0) 
-* Kolekce verze rozhraní .NET.
-* Zlepšení kolekce čítačů výkonu v případě, že chybí některé kategorie.
-* Oprava chyby v brání vytváření podřízeného procesu z několika instancí Monitoring Agent.
+* Agent Azure AD Connect Health pro službu AD DS (verze 3.1.41.0)  
+   1. Kolekce verze rozhraní .NET
+   2. Zlepšení kolekce čítačů výkonu v případě, že chybí některé kategorie
+   3. Oprava chyby v brání vytváření podřízeného procesu z několika instancí Monitoring Agent
 
 * Agent Azure AD Connect Health pro službu AD FS (verze 3.1.41.0) 
-* Integrace a upgradovat pomocí ADFSToolBox skriptů test služby AD FS.
-* Kolekce verze rozhraní .NET.
-* Zlepšení kolekce čítačů výkonu v případě, že chybí některé kategorie.
-* Oprava chyby v brání vytváření podřízeného procesu z několika instancí Monitoring Agent.
+   1. Integrace a upgrade služby AD FS testovací skripty pomocí ADFSToolBox
+   2. Implementovat rozhraní .NET verze kolekce
+   3. Zlepšení kolekce čítačů výkonu v případě, že chybí některé kategorie
+   4. Oprava chyby v brání vytváření podřízeného procesu z několika instancí Monitoring Agent
 
 
 ## <a name="november-2018"></a>. Listopadu 2018
@@ -51,15 +56,15 @@ Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure
 
 **Aktualizace agenta:** 
 * Agent Azure AD Connect Health pro službu AD DS (verze 3.1.24.0) 
-* Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
-* Omezily rušivé výstrahy globálního katalogu
-* Opravy chyb registrace agenta stavu
+   1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
+   2. Omezily rušivé výstrahy globálního katalogu
+   3. Opravy chyb registrace agenta stavu
 
-* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.24.0)
-* Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
-* Podpora ADFSRequestToken testovacího lokalizovaný operačního systému
-* Vyřešit problém zamykání EventHandler agenta diagnostiky
-* Opravy chyb registrace agenta stavu
+* Agent Azure AD Connect Health pro službu AD FS (verze 3.1.24.0)  
+   1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
+   2. Podpora ADFSRequestToken testovacího lokalizovaný operačního systému
+   3. Vyřešit problém zamykání EventHandler agenta diagnostiky
+   4. Opravy chyb registrace agenta stavu
 
 ## <a name="august-2018"></a>Srpen 2018 
 *  Agent Azure AD Connect Health pro synchronizaci (verze 3.1.7.0) vydané službou Azure AD Connect verze 1.1.880.0    

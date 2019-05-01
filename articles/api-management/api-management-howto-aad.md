@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 95e501eca0f7765cc5201f7b315703c3ca43df8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 422c2a8a61b1df36b452c153aa6cd78ba7e2dcef
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60529555"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723639"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management
 
@@ -79,12 +79,12 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 
 Po uložení změn, uživatelů ve službě Azure AD zadané instance můžete přihlásit k portálu pro vývojáře pomocí následujících kroků v [přihlásit k portálu pro vývojáře pomocí účtu služby Azure AD](#log_in_to_dev_portal).
 
-
 ## <a name="add-an-external-azure-ad-group"></a>Přidat vnější skupinu Azure AD
 
 Když povolíte přístup pro uživatele v instanci služby Azure AD, můžete přidat skupiny Azure AD ve službě API Management. Potom můžete snadněji spravovat přidružení požadované produkty vývojářů ve skupině.
 
-Konfigurace externího skupiny Azure AD, je nutné nejprve nakonfigurovat instanci služby Azure AD na **identit** kartu podle postupu v předchozí části. 
+ > [!IMPORTANT]
+ > Přidat vnější skupinu Azure AD, je nutné nejprve nakonfigurovat instanci služby Azure AD na **identit** kartu podle postupu v předchozí části. Kromě toho aplikace musí mít udělen přístup k Azure AD Graph API s využitím `Directory.Read.All` oprávnění. 
 
 Přidat externí Azure AD skupiny z **skupiny** kartu vaší instance služby API Management.
 

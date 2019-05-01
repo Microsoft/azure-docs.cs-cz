@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323820"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869513"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN stroj pravidel splňují podmínky 
 Tento článek obsahuje podrobný popis dostupných odpovídají podmínkám pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -28,14 +28,14 @@ Druhá část pravidla je podmínce shody. Podmínka shody identifikuje konkrét
 
 Můžete například použít podmínku shody pro:
 - Filtrovat žádosti pro obsah v konkrétních místech.
-- Filtrovat žádosti vygenerované z konkrétní IP adresu nebo zemi.
+- Filtrovat žádosti vygenerované z konkrétní IP adresu nebo zemi či oblasti.
 - Filtrovat žádosti podle informace záhlaví.
 
 ## <a name="always-match-condition"></a>Vždy podmínce shody
 
 Podmínka shody vždy platí výchozí sadu funkcí pro všechny požadavky.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Vždy](#always) | Výchozí sada funkcí se vztahuje na všechny požadavky.
 
@@ -43,7 +43,7 @@ Name | Účel
 
 Podmínka shody zařízení identifikuje žádosti z mobilního zařízení na základě jeho vlastností.  
 
-Name | Účel
+Název | Účel
 -----|--------
 [zařízení](#device) | Identifikuje žádosti z mobilního zařízení na základě jeho vlastností.
 
@@ -51,16 +51,16 @@ Name | Účel
 
 Podmínky shody umístění identifikaci požadavků v závislosti na umístění žadatele.
 
-Name | Účel
+Název | Účel
 -----|--------
 [JAKO číslo](#as-number) | Určuje požadavky, které pocházejí z určité síti.
-[Země](#country) | Určuje požadavky, které pocházejí ze zadaného zemí.
+[Země](#country) | Určuje požadavky, které pocházejí z zadanou zemí nebo oblastí.
 
 ## <a name="origin-match-conditions"></a>Podmínky shody původu
 
 Podmínky shody původu identifikaci požadavků, které odkazují na úložiště Content Delivery Network nebo zákazník zdrojový server.
 
-Name | Účel
+Název | Účel
 -----|--------
 [CDN Origin](#cdn-origin) | Identifikuje požadavky na obsah uložený v úložišti síť Content Delivery Network.
 [Zákazníka](#customer-origin) | Identifikuje požadavky na obsah uložený na původním serveru konkrétního zákazníka.
@@ -69,7 +69,7 @@ Name | Účel
 
 Podmínky shody žádost o identifikaci požadavků na základě jejich vlastností.
 
-Name | Účel
+Název | Účel
 -----|--------
 [IP adresa klienta](#client-ip-address) | Určuje požadavky, které pocházejí z konkrétní IP adresy.
 [Parametr souboru cookie](#cookie-parameter) | Ověří soubory cookie související s každou žádostí pro zadanou hodnotu.
@@ -86,7 +86,7 @@ Name | Účel
 
 Podmínky shody URL identifikaci požadavků podle jejich adresy URL.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Adresář cesty URL](#url-path-directory) | Identifikuje požadavky podle jejich relativní cesty.
 [Rozšíření cesty adresy URL](#url-path-extension) | Identifikuje požadavky podle jejich přípony názvu souboru.
@@ -235,7 +235,7 @@ Informace o klíči:
 
 ---
 ### <a name="country"></a>Země
-Můžete zadat prostřednictvím jeho směrové číslo země. 
+Můžete zadat zemi/oblast prostřednictvím jeho směrové číslo země. 
 
 **Shody**/**neodpovídá** možnost určuje splněny podmínky, za kterých země odpovídají podmínce:
 - **Odpovídá**: Vyžaduje požadavku tak, aby obsahovala kód hodnoty zadanou zemi. 
@@ -260,9 +260,9 @@ Tato podmínka shody umožňuje provádět velké množství vlastního nastaven
 - Cesta adresy URL zástupný znak shody: Nastavte [cesta URL zástupný znak odpovídají podmínce](#url-path-wildcard) k adresáři, který bude zabezpečené. 
     Připojte hvězdičku na konec relativní cesta k zajištění, že budou mít přístup ke všem jeho podřízených prvků omezené tímto pravidlem.
 
-- Shoda země: Nastavení země podmínky shody k požadované sadě zemích.
-   - Povolte: Podmínku shody země na **neodpovídá** povolit pouze zadanou zemí přístup k obsahu uloženému v umístění definovaném podmínce shody cesta URL zástupný znak.
-   - Blok: Podmínku shody země na **shody** blokování zadanou zemí v přístupu k obsahu uloženému v umístění definovaném podmínce shody cesta URL zástupný znak.
+- Shoda země: Nastavení země podmínky shody k požadované sadě zemích nebo oblastech.
+   - Povolte: Podmínku shody země na **neodpovídá** povolit pouze zadanou zemí/oblastí přístup k obsahu uloženému v umístění definovaném podmínce shody cesta URL zástupný znak.
+   - Blok: Podmínku shody země na **shody** zablokovat přístup k obsahu uloženému v umístění definovaném podmínce shody zástupné cestu adresy URL zadané zemích nebo oblastech.
 
 - Odepřít přístup (403) funkce: Povolit [funkce odepření přístupu (403)](cdn-rules-engine-reference-features.md#deny-access-403) k replikaci povolit nebo blokovat část funkce filtrování podle země.
 
@@ -752,7 +752,7 @@ Informace o klíči:
 
 Ukázková konfigurace v následující tabulce se předpokládá, že pokud požadavek odpovídá zadanému vzoru adresy URL je splněna podmínka tuto shodu:
 
-Value                   | Relativní vzhledem k    | Výsledek 
+Hodnota                   | Relativní vzhledem k    | Výsledek 
 ------------------------|----------------|-------
 */test.html */test.php  | Kořenový adresář nebo původu | Tento model je nalezena shoda s požadavky na prostředky s názvem "test.html" nebo "test.php" v jakékoli složce.
 /80ABCD/origin/text/*   | Hlavní stránka           | Tento model je nalezena shoda, pokud požadovaný prostředek splňuje následující kritéria: <br />– Musí být umístěny na zákazníka původu názvem "origin". <br />– Relativní cesta musí začínat znakem složku s názvem "text". To znamená, že požadovaný prostředek se může nacházet ve složce "text" nebo jeden z jejích podsložek rekurzivní.
@@ -868,7 +868,7 @@ Informace o klíči:
 #### <a name="sample-scenarios"></a>Ukázkové scénáře
 Následující příklad ukazuje, jak se tato možnost funguje v konkrétních situacích:
 
-Name  | Value |  Výsledek
+Název  | Hodnota |  Výsledek
 ------|-------|--------
 Uživatel  | Joe   | Tento model je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatel = joe."
 Uživatel  | *     | Tento model je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
@@ -895,7 +895,7 @@ Informace o klíči:
     
 - Některé znaky vyžadují kódování URL. Použijte symbol procenta na adresu URL kódování následující znaky:
 
-   Znak | Kódování URL | Value
+   Znak | Kódování URL | Hodnota
    ----------|--------------|------
    Kosmické aktivity     | %20          | \%20
    &         | %25          | \%25
@@ -906,7 +906,7 @@ Informace o klíči:
 
    Příklad:
 
-   Value | Interpretováno jako 
+   Hodnota | Interpretováno jako 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
@@ -960,7 +960,7 @@ Informace o klíči:
 #### <a name="sample-scenarios"></a>Ukázkové scénáře
 Následující příklad ukazuje, jak se tato možnost funguje v konkrétních situacích:
 
- Name                 | Popis
+ Název                 | Popis
  ---------------------|------------
 user=joe              | Tento model je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatel = joe."
 \*user=\* \*optout=\* | Tento model je nalezena shoda, když dotaz adresy URL CDN obsahuje uživatele nebo optout parametru.

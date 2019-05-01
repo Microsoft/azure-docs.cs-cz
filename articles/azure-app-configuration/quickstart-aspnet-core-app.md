@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b527199fd7b61609f292b13c73bfc1d6e0a6b896
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90a39693778e01da76baf19765be8801f55813b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203765"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683057"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace ASP.NET Core s konfigurací aplikace Azure
 
@@ -28,6 +28,8 @@ Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. Můž
 ASP.NET Core vytvoří objekt konfigurace jedné založené na klíč hodnota s použitím nastavení z jednoho nebo více zdrojů dat, která jsou určena podle aplikace. Tyto zdroje dat jsou označovány jako *poskytovatelé konfigurace*. Protože konfigurace aplikace .NET Core, klient je implementovaná jako takové zprostředkovatele, zobrazí se jako jiný zdroj dat služby.
 
 Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
+
+![Místní spuštění aplikace rychlý start](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +43,7 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 
 6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp:Settings:BackgroundColor | White |
     | TestApp:Settings:FontSize | 24 |
@@ -118,15 +120,12 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .SetOfflineCache(new OfflineFileCache());
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
 
-6. Otevřít v zobrazení Index.cshtml > domácí adresář a nahraďte jeho obsah následujícím kódem:
+6. Otevřít *Index.cshtml* v zobrazeních > domácí adresář a nahraďte jeho obsah následujícím kódem:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -152,7 +151,7 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
     </html>
     ```
 
-7. Otevřít v zobrazení _Layout.cshtml > sdílený adresář a nahraďte jeho obsah následujícím kódem:
+7. Otevřít *_Layout.cshtml* v zobrazeních > sdílený adresář a nahraďte jeho obsah následujícím kódem:
 
     ```html
     <!DOCTYPE html>
@@ -190,8 +189,6 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
         dotnet run
 
 3. Otevřete okno prohlížeče a přejděte na `http://localhost:5000`, což je výchozí adresa URL pro webové aplikace hostované místně.
-
-    ![Místní spuštění aplikace rychlý start](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

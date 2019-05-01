@@ -5,15 +5,15 @@ services: virtual-machines
 author: jpconnock
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
+ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: ca4063d31d93aab3814abed202b6b91b7726185f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542917"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929365"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager
 Tento článek popisuje, jak migrovat infrastrukturu jako službu (IaaS) prostředky z Classicu na modely nasazení Resource Manager a podrobnosti o tom, jak připojit prostředky z dva modely nasazení, které společně existovat ve vašem předplatném pomocí virtuální sítě brány Site-to-site. Další informace o [výhody a funkce Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -74,7 +74,20 @@ Pokud váš účet úložiště nemá žádné přidružené disky ani data virt
 
 > [!NOTE]
 > Model nasazení Resource Manager nemá koncept disků a imagí Classic. Když účtu úložiště jsou migrované, klasické Image a disky nejsou viditelné v zásobníku správce prostředků ale záložní virtuální pevné disky zůstanou v účtu úložiště.
->
+
+Na následujících snímcích obrazovky ukazují, jak upgradovat účet úložiště Classic pro účet úložiště Azure Resource Manageru pomocí webu Azure portal:
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Přejděte na svůj účet úložiště.
+3. V **nastavení** klikněte na tlačítko **migrovat do ARM**.
+4. Klikněte na **ověřit** stanovit realizovatelnost integrace migrace.
+5. V případě úspěšného ověření, klikněte na **připravit** k vytvoření účtu úložiště migrované.
+6. Typ **Ano** potvrzení migrace a klikněte na tlačítko **potvrzení** k dokončení migrace.
+
+    ![Ověření účtu úložiště](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    
+    ![Příprava účtu úložiště](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    
+    ![Dokončení migrace účtu úložiště](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>Migrace nepřipojené prostředků
 Účty úložiště bez přidružené disky nebo data virtuálních počítačů může migrovat nezávisle.
@@ -102,7 +115,7 @@ Následující konfigurace nejsou aktuálně podporovány.
 
 | Služba | Konfigurace | Doporučení |
 | --- | --- | --- |
-| Resource Manager |Na základě řízení přístupu role (RBAC) pro klasické prostředky |Protože identifikátor URI prostředků je upravené po migraci, doporučuje se, že máte v plánu aktualizace zásady RBAC, které je třeba provést po migraci. |
+| Resource Manager |Na základě rolí řízení přístupu (RBAC) pro klasické prostředky |Protože identifikátor URI prostředků je upravené po migraci, doporučuje se, že máte v plánu aktualizace zásady RBAC, které je třeba provést po migraci. |
 | Compute |Více podsítí, které jsou přidružené k virtuálnímu počítači |Aktualizujte konfiguraci podsítě odkazovat jenom jednu podsíť. To může vyžadovat odebrání sekundární síťové karty (který odkazuje na jiné podsíti) z virtuálního počítače a znovu připojit po dokončení migrace. |
 | Compute |Virtuální počítače, které patří do virtuální sítě, ale nemají explicitní podsíť přiřazené |Volitelně můžete odstranit virtuální počítač. |
 | Compute |Virtuální počítače, které se mají výstrahy, zásady automatického škálování |Prochází migrace a tato nastavení se zahodí. Důrazně doporučujeme vyhodnotit prostředí, než se pustíte do migrace. Alternativně můžete změnit konfiguraci nastavení oznámení po dokončení migrace. |

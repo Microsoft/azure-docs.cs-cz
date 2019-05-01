@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006127"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686294"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database
 
@@ -80,7 +80,7 @@ Microsoft spravuje spravované instance pomocí koncového bodu správy. Tento k
 Při připojení spustit uvnitř spravované instance (stejně jako u zálohy a protokoly auditu), provoz se zobrazí spuštění z veřejné IP adresy koncového bodu správy. Můžete omezit přístup k veřejné služby ze spravované instance pomocí nastavení pravidla brány firewall pro povolení pouze spravované instance IP adres. Další informace najdete v tématu [ověření integrované firewall spravovanou instanci](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Traffice na služby Azure, které jsou uvnitř oblasti spravované instance je optimalizované a to z důvodu není NATed spravovaných instancí správu koncový bod veřejné IP adresy. Z tohoto důvodu potřebujete používat pravidla brány firewall na základě IP adresy, nejčastěji pro úložiště, služba musí být v jiné oblasti než spravovaná instance.
+> Provoz, který přejde do služby Azure, které jsou uvnitř oblasti spravované instance je optimalizované a z tohoto důvodu není NATed do spravované instance koncový bod veřejné IP adresa pro správu. Z tohoto důvodu potřebujete používat pravidla brány firewall na základě IP adresy, nejčastěji pro úložiště, služba musí být v jiné oblasti než spravovaná instance.
 
 ## <a name="network-requirements"></a>Síťové požadavky
 
@@ -97,7 +97,7 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 
 ### <a name="mandatory-inbound-security-rules"></a>Pravidla povinné zabezpečení příchozích dat
 
-| Name       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |Správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |MI SUBNET  |Povolit |
 |mi_subnet   |Všechny                         |Všechny     |MI SUBNET        |MI SUBNET  |Povolit |
@@ -105,7 +105,7 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 
 ### <a name="mandatory-outbound-security-rules"></a>Povinné odchozí pravidla zabezpečení
 
-| Name       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |Správa  |80, 443, 12000|TCP     |MI SUBNET        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |MI SUBNET        |MI SUBNET  |Povolit |
@@ -122,7 +122,7 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 
 ### <a name="user-defined-routes"></a>Trasy definované uživatelem
 
-|Name|Předpona adresy|Další směrování|
+|Název|Předpona adresy|Další směrování|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|Virtuální síť|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

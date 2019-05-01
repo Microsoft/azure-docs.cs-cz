@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120888"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872047"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
 
-Azure Storage je řešení cloudového úložiště pro moderní aplikace, které se opírají o odolnost, dostupnost a škálovatelnost, aby mohly vyhovět potřebám zákazníků. Azure Storage nabízí komplexní sadu funkcí zabezpečení. Můžete:
+Tento článek obsahuje přehled funkcí zabezpečení služby Azure, které můžete použít se službou Azure Storage. Azure Storage je řešení cloudového úložiště pro moderní aplikace, které se opírají o odolnost, dostupnost a škálovatelnost, aby mohly vyhovět potřebám zákazníků. Azure Storage nabízí komplexní sadu funkcí zabezpečení. Můžete:
 
 * Zabezpečení účtu úložiště pomocí řízení přístupu na základě Role (RBAC) a Azure Active Directory.
 * Zabezpečení dat během přenosu mezi aplikací a službou Azure pomocí šifrování na straně klienta, HTTPS nebo SMB 3.0.
@@ -33,9 +33,6 @@ Azure Storage je řešení cloudového úložiště pro moderní aplikace, kter�
 * Pomocí analýzy můžete sledovat způsob ověřování, který používá uživatel při přístupu k úložišti.
 
 Podrobnější přehled zabezpečení ve službě Azure Storage, najdete v článku [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md). Tato příručka obsahuje podrobné informace o funkcích zabezpečení služby Azure Storage. Tyto funkce patří klíče účtu úložiště, šifrování dat během přenosu a neaktivních uložených dat a analýza úložiště.
-
-
-Tento článek obsahuje přehled funkcí zabezpečení služby Azure, které můžete použít se službou Azure Storage. Odkazy na články poskytují podrobnosti o každé funkce tak další informace.
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 

@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36ef27dfb4a5d77ec2e595013a82f55cdf240c0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465690"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868175"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Webhooků Azure pro monitorování oznámení úloh pro Media Services s .NET 
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Oznámení úlohy Media Services můžete sledovat pomocí Webhooků Azure nebo [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Tento článek popisuje, jak pracovat s webhooky.
 
@@ -31,7 +34,7 @@ Tento článek popisuje, jak
     
     V takovém případě webhooku se aktivuje službou Media Services, pokud vaše úloha kódování změní stav. Funkce naslouchá pro volání webhooku zpět z oznámení služby Media Services a publikuje výstupního prostředku, až úloha dokončí. 
     
-    >[!NOTE]
+    >[!TIP]
     >Než budete pokračovat, ujistěte se, že rozumíte jak [Azure Functions HTTP a webhookové vazby](../../azure-functions/functions-bindings-http-webhook.md) fungovat.
     >
     

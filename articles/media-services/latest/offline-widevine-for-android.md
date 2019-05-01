@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111944"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937227"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android
 
 Kromě ochrany obsah pro streamování online, obsah média předplatného a pronájem služby nabídky ke stažení obsahu, který funguje, když nejste připojeni k Internetu. Možná budete muset stáhnout veškerý obsah na váš telefon nebo tablet pro přehrávání v případě, že letíte režim v letadle odpojen od sítě. Další scénáře, ve kterých můžete chtít stahovat obsah:
 
-- Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení země. Pokud chce uživatel sledovat obsah v zahraničí cestách, je potřeba ke stažení offline.
-- V některých zemích je omezená dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout ke stahování obsahu se moci podívat v dostatečně vysoká řešení vyhovující zážitek.
+- Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení určitá země nebo oblast. Pokud chce uživatel sledovat obsah v zahraničí cestách, je potřeba ke stažení offline.
+- V některých zemích nebo oblastech je omezená dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout ke stahování obsahu se moci podívat v dostatečně vysoká řešení vyhovující zážitek.
 
 Tento článek popisuje, jak implementovat offline režimu přehrávání pro DASH obsah chráněný pomocí Widevine na zařízeních s Androidem. Offline DRM můžete zadat předplatné, pronájem a nákupní modely pro obsah, takže se zákazníci můžou vašich služeb snadno získat obsahu s nimi při odpojení od Internetu.
 

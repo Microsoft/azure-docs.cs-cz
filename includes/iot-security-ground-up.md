@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626459"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951512"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpečení pro Internet věcí (IoT) od počátku
 
@@ -33,7 +33,7 @@ Vzhledem k zabezpečení, ochrany osobních údajů, transparentnosti a dodržov
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>Zabezpečené infrastruktury od počátku
 
-[Microsoft Cloud](https://azure.microsoft.com) infrastruktura podporuje více než jednu miliardu zákazníků ve 127 zemích. Kreslení v Microsoftu pro několik desetiletí získávaným zkušenostem vytvářením podnikového softwaru a provozováním některých z největších online služeb na světě, Microsoft Cloud poskytuje vyšší úroveň nabízí vyšší zabezpečení, ochrany osobních údajů, dodržování předpisů a před internetovými útoky postupy omezení rizik než většina zákazníků může dosáhnout na své vlastní.
+[Microsoft Cloud](https://azure.microsoft.com) infrastruktura podporuje více než jednu miliardu zákazníků ve 127 zemích nebo oblastech. Kreslení v Microsoftu pro několik desetiletí získávaným zkušenostem vytvářením podnikového softwaru a provozováním některých z největších online služeb na světě, Microsoft Cloud poskytuje vyšší úroveň nabízí vyšší zabezpečení, ochrany osobních údajů, dodržování předpisů a před internetovými útoky postupy omezení rizik než většina zákazníků může dosáhnout na své vlastní.
 
 [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/) poskytuje závazného pořádaného microsoftem procesu vývoje softwaru, který začleňuje požadavky na zabezpečení celého životního cyklu softwaru. K tomu, že provozní činnosti stejnou úroveň postupy zabezpečení, používá SDL striktní bezpečnostní pokyny podle procesu Operational Security Assurance (OSA) od Microsoftu. Microsoft rovněž spolupracuje s třetích stran auditorskými probíhající ověření, že splňuje své závazky dodržování předpisů, a angažovat Microsoft v široké zabezpečení, a to prostřednictvím vytváření sad centra pro vzdělávání profesionálů v oblasti, včetně oddělení Microsoft Digital Crimes Unit, Středisko Microsoft Security Response Center a Microsoft Malware Protection Center.
 

@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096163"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919168"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Účty používané pro služby Azure AD Connect
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![Přehled účtů](media/reference-connect-accounts-permissions/account5.png)
 
 Azure AD Connect používá 3 účty, aby bylo možné synchronizovat informace z místní nebo Windows Server Active Directory do Azure Active Directory.  Tyto účty jsou:
 
@@ -111,10 +111,10 @@ Následuje souhrn stránkách Průvodce vlastní instalaci, přihlašovací úda
 | Nainstalovat synchronizační služby, možnost účet služby |AD nebo přihlašovací údaje místního uživatelského účtu |Uživatel, jsou udělena oprávnění pomocí Průvodce instalací |Pokud správce zadá účtu, tento účet se používá jako účet služby pro službu synchronizace. |
 | Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu Azure AD konektoru, který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
 | Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená ke službě Azure AD |Oprávnění závisí na funkcí, které slouží k povolení a lze nalézt v vytvořit účet AD DS konektoru |Tento účet slouží ke čtení a zápisu informací adresáře během synchronizace. |
-| Servery služby AD FS |Pro každý server v seznamu Průvodce shromažďuje přihlašovací údaje, když jsou přihlašovací údaje uživatel spustí průvodce k připojení |Správce domény |Instalace a konfigurace role serveru AD FS. |
-| Proxy servery webových aplikací |Pro každý server v seznamu Průvodce shromažďuje přihlašovací údaje, když jsou přihlašovací údaje uživatel spustí průvodce k připojení |Místní správce na cílovém počítači |Instalace a konfigurace role serveru WAP. |
+| Servery služby AD FS |Pro každý server v seznamu Průvodce shromažďuje přihlašovací údaje, když jsou přihlašovací údaje uživatele, který spustil průvodce k připojení |Správce domény |Instalace a konfigurace role serveru AD FS. |
+| Proxy servery webových aplikací |Pro každý server v seznamu Průvodce shromažďuje přihlašovací údaje, když jsou přihlašovací údaje uživatele, který spustil průvodce k připojení |Místní správce na cílovém počítači |Instalace a konfigurace role serveru WAP. |
 | Přihlašovací údaje pro vztah důvěryhodnosti proxy |Služba FS důvěřovat pověření (přihlašovací údaje proxy serveru používá k registraci pro důvěryhodný certifikát z služby FS |Účet domény, který slouží jako místní správce serveru služby AD FS |Počáteční registraci FS WAP důvěřovat certifikátu. |
-| Stránka účtu služby FS služby AD, "Použít možnost účet uživatele domény" |Přihlašovací údaje účtu uživatele AD |Doména uživatel |Uživatelský účet AD jsou k dispozici jehož přihlašovací údaje slouží jako přihlašovací účet služby AD FS. |
+| Stránka účtu služby FS služby AD, "Použít možnost účet uživatele domény" |Přihlašovací údaje účtu uživatele AD |Doména uživatel |Uživatelský účet služby Azure AD jsou k dispozici jehož přihlašovací údaje slouží jako přihlašovací účet služby AD FS. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Vytvoření konektoru služby AD DS účtu
 
@@ -239,6 +239,11 @@ Název serveru, který účet se používá na lze identifikovat v druhé část
 Platí omezení 20 účtů služeb synchronizace ve službě Azure AD. Pokud chcete získat seznam existujících účtů služby Azure AD ve službě Azure AD, spusťte následující rutinu Azure AD Powershellu: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 Chcete-li odebrat nepoužívané služby Azure AD účty služeb, spusťte následující rutinu Azure AD Powershellu: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>Než budete moct použít výše uvedené příkazy prostředí PowerShell je potřeba nainstalovat [Azure Active Directory PowerShell pro Graph modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) a připojte se k vaší instanci Azure AD pomocí [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+
+Další informace o tom, jak spravovat nebo resetování hesla pro účet Azure AD Connector najdete v části [spravovat účet služby Azure AD Connect](how-to-connect-azureadaccount.md)
 
 ## <a name="related-documentation"></a>Související dokumentace
 Pokud jste si v dokumentaci na [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md), následující tabulka obsahuje odkazy na související témata.

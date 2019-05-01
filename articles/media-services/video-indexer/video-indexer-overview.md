@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a8812e8a24082bd8c3a2e9bd489e12a12c80c76d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559848"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574122"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -37,8 +37,8 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 
 ## <a name="audio-insights"></a>Zvukový insights
 
-- **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, ruština a brazilská portugalština. Pokud jazyk nejde rozpoznat, přejde se zpátky k angličtině.
-- **Přepisování zvukového záznamu**: Převede řeči na text v 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, portugalština (Brazílie), hindština a korejštině.
+- **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a Brazilská portugalština bude záložní na angličtinu při jazyk nebyl nalezen.
+- **Přepisování zvukového záznamu**: Převede řeči na text v 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, brazilská portugalština, hindština a korejštině.
 - **Skryté titulky**: Vytvoří titulků v tří formátů: VTT, TTML, SRT.
 - **Dvě kanálu zpracování**: Automaticky detekuje, oddělte přepisu a sloučí do jediné časové osy.
 - **Noise snížení**: Vymaže nahoru nahrávky zvuku nebo hlučného telefonního subsystému (na základě Skype filtrů).
@@ -47,7 +47,7 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 - **Statistiky mluvčího**: Poskytuje statistiky pro přednášející řeči poměry.
 - **Textové moderování obsahu**: Detekuje explicitní text v přepisu zvuku.
 - **Zvukové efekty**: Identifikuje zvukové efekty, jako je ruční přípitky, zpracování řeči a nečinnosti.
-- **Rozpoznávání emocí z výrazu**: Identifikuje emoce podle pomůcky pro zpracování řeči a zvuku. Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
+- **Rozpoznávání emocí z výrazu**: Identifikuje emoce na základě rozpoznávání řeči (co se říká) a hlasové tónů (jak ho se říká, že je).  Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
 - **Překlad**: Vytvoří překlady přepisu zvuku na 54 různých jazycích.
 
 ## <a name="audio-and-video-insights-multi-channels"></a>Audio a video insights (s více kanálů)

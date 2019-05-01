@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894c42e4102a3565ff43798d33afb4046fda76bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286693"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682109"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit v Azure AD ve službě Azure Monitor
 
@@ -72,14 +72,24 @@ Pokud už máte licenci Azure AD, potřebujete k vytvoření účtu úložiště
 
 Každá událost protokolu auditu zabere v úložišti dat asi 2 kB. V případě tenanta se 100 000 uživateli, ve kterém dojde asi k 1,5 milionu událostí denně, byste za den spotřebovali asi 3 GB úložiště. Vzhledem k tomu, že k zápisům dochází v dávkách asi po pěti minutách, můžete očekávat asi 9 000 operací zápisu za měsíc. 
 
-Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecné účely v2 v oblasti Západní USA s dobou uchování minimálně jeden rok, v závislosti na velikosti tenanta. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Tabulka obsahuje pouze náklady na zpracování a ukládání a ne náklady na předplatné. 
+
+Následující tabulka obsahuje odhad nákladů na účet úložiště pro obecné účely v2 v oblasti Západní USA s dobou uchování minimálně jeden rok, v závislosti na velikosti tenanta. Přesnější odhad objemu dat, který můžete ve své aplikaci očekávat, vám poskytne [cenová kalkulačka služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 
-| Kategorie protokolu       | Počet uživatelů | Počet událostí za den | Událostí za měsíc (30 dnů) | Cena za měsíc v USD (est.) |
-| ---                | ---             | ---            | ---                        | ---                          | 
-| Audit a přihlášení | 100 000         | 16,500,000     | 495,000,000                | $1093                        |
-| Auditování              | 100 000         | 1,500,000      | 45,000,000                 | $246.66                      |
-| Přihlášení           | 100 000         | 15,000,000     | 450,000,000                | $847.28                      |
+| Kategorie protokolu | Počet uživatelů | Počet událostí za den | Objem dat za měsíc (odhad) | Náklady za měsíc (odhad) | Náklady za rok (odhad) |
+|--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
+| Auditování | 100 000 | 1,5&nbsp;milionu | 90 GB | 1,93 USD | 23,12 USD |
+| Auditování | 1 000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
+| Přihlášení | 1 000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
+| Přihlášení | 100 000 | 15&nbsp;milionů | 1,7 TB | 35,41 USD | 424,92 USD |
+ 
+
+
+
+
+
+
+
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Zprávy centra událostí pro protokoly aktivit

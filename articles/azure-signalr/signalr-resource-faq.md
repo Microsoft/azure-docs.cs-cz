@@ -6,19 +6,19 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 09788f4ded66b43fd5ecae20301a28cd01d77320
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646635"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914964"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy k službě Azure SignalR
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Služby Azure SignalR je připravena pro použití v produkčním prostředí?
 
 Ano.
-Naše oznámení všeobecné dostupnosti najdete v části [teď všeobecně dostupné služby Azure SignalR](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/). 
+Naše oznámení všeobecné dostupnosti najdete v části [teď všeobecně dostupné služby Azure SignalR](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
 
 [Funkce SignalR technologie ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) jsou plně podporovány.
 

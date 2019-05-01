@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 04929de241ff36e4d67f24907747d89a16a73898
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012491"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733796"
 ---
 #### <a name="process-automation"></a>Automatizace procesů
 
@@ -31,6 +31,7 @@ ms.locfileid: "60012491"
 | Maximální počet povolených pro izolovaný prostor síťové sokety<sup>1</sup> |1 000 |Platí pro pouze Azure karantény.|
 | Maximální povolené na sadu runbook runtime<sup>1</sup> |3 hodiny |Platí pro pouze Azure karantény.|
 | Maximální počet účtů Automation v předplatném |Bez omezení ||
+| Maximální počet skupiny hybridních pracovních procesů na účet služby Automation|4,000||
 |Maximální počet souběžných úloh, které lze spustit na jednoho procesu Hybrid Runbook Worker|50 ||
 | Velikost parametru úlohy maximální sady runbook   | 512 kB||
 | Parametry maximální runbooku   | 50|Pokud překročíte limit parametr-50, můžete předat parametr řetězec JSON nebo XML a parsování se runbook.|

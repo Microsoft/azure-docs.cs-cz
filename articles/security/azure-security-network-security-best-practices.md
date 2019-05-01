@@ -1,9 +1,8 @@
 ---
-title: Osvědčené postupy zabezpečení sítě Azure | Dokumentace Microsoftu
+title: Osvědčené postupy pro zabezpečení sítě – Microsoft Azure
 description: Tento článek obsahuje sadu osvědčené postupy při používání zabezpečení sítě vytvořené v možnosti Azure.
 services: security
-documentationcenter: na
-author: TomShinder
+author: TerryLanfear
 manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
@@ -12,18 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 04/28/2019
 ms.author: TomSh
-ms.openlocfilehash: b644a175814fb28563a2524e27f52d0285415d66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bec7db1c4409165242416df16e437b121381b49
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610963"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872561"
 ---
 # <a name="azure-network-security-best-practices"></a>Osvědčené postupy zabezpečení sítě Azure
-Můžete se připojit [Azure virtuální počítače (VM)](https://azure.microsoft.com/services/virtual-machines/) a zařízení tak, aby jejich umístěním na jiná síťová zařízení [virtuálním sítím Azure](https://azure.microsoft.com/documentation/services/virtual-network/). To znamená můžete připojit adaptéry virtuální sítě k virtuální síti a povolit založené na TCP/IP komunikaci mezi síťové zařízení. Virtuální počítače připojené ke službě Azure virtual network můžete připojit k zařízení ve stejné virtuální síti, různých virtuálních sítích, Internetu nebo vaše vlastní místní sítě.
-
 Tento článek popisuje kolekci osvědčené postupy zabezpečení sítě Azure. Tyto osvědčené postupy, které jsou odvozeny z našich zkušenostech s Azure networking a prostředí zákazníků, jako je sami.
 
 Pro každý osvědčený postup Tento článek vysvětluje:
@@ -35,8 +32,6 @@ Pro každý osvědčený postup Tento článek vysvětluje:
 * Jak lze zjistíte, jak povolit osvědčený postup
 
 Tento článek osvědčené postupy zabezpečení sítě Azure je založen na stanovisko shody a možnostech platformy Azure a sady funkcí, protože existují v okamžiku, kdy byla zapsána v tomto článku. Názory a technologie v průběhu času měnit a tento článek bude aktualizován v pravidelných intervalech, aby tyto změny projevily.
-
-Následující části popisují doporučené postupy pro zabezpečení sítě.
 
 ## <a name="logically-segment-subnets"></a>Logicky segmentu podsítě
 Virtuální sítě Azure jsou podobné sítě LAN ve vaší místní síti. Myšlenku za služby Azure virtual network je, že vytvoříte jeden privátní síť IP adres na základě místa ve kterém můžete umístit všechny virtuální počítače Azure. Privátní adresní prostory IP adres k dispozici jsou ve třídě A (10.0.0.0/8), třídy B (172.16.0.0/12), a rozsahy adres třídy C (192.168.0.0/16).

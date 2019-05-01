@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/18/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 91e94c70444430725ffec836d1663aef99eb5496
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715915"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947268"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -21,48 +21,29 @@ Azure Application Gateway je nástroj pro vyrovnávání zatížení webových p
 
 ![Koncepční Application Gateway](media/overview/figure1-720.png)
 
-Ale pomocí Application Gateway to může být ještě konkrétnější. Můžete například směrovat provoz na základě příchozí adresy URL. Pokud tedy příchozí adresa URL obsahuje `/images`, můžete směrovat provoz na konkrétní sadu serverů (označovanou jako fond), která je nakonfigurovaná pro obrázky. Pokud je v adrese URL `/video`, bude se takový provoz směrovat na jiný fond optimalizovaný pro videa.
+Pomocí služby Application Gateway můžete provádět rozhodnutí o směrování na základě dalších atributů požadavku protokolu HTTP, třeba hlavičky cestu nebo hostitele identifikátoru URI. Můžete například směrovat provoz na základě příchozí adresy URL. Pokud tedy příchozí adresa URL obsahuje `/images`, můžete směrovat provoz na konkrétní sadu serverů (označovanou jako fond), která je nakonfigurovaná pro obrázky. Pokud `/video` je v adrese URL, že provoz se směruje do jiného fondu, který je optimalizovaný pro videa.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
-Tento typ směrování se označuje jako vyrovnávání zatížení aplikační vrstvy (vrstva OSI 7). Azure Application Gateway umí směrování na základě adresy URL, ale to není vše. 
+Tento typ směrování se označuje jako vyrovnávání zatížení aplikační vrstvy (vrstva OSI 7). Azure Application Gateway umí směrování na základě adresy URL, ale to není vše.
 
 Součástí Azure Application Gateway jsou následující funkce:
 
-## <a name="autoscaling-public-preview"></a>Automatické škálování ve veřejné verzi Preview
-
-Kromě funkcí popsaných v tomto článku Služba Application Gateway také nabízí verze public preview nové SKU [Standard_V2], která nabízí automatické škálování a další vylepšení výkonu kritické.
-
-- **Automatické škálování** – nasazení služby Application Gateway nebo WAF na základě automatického škálování skladové položky můžete vertikálně navyšovat nebo snižovat podle změn vzorců provozní zátěže. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. 
-
-- **Redundance zón** – nasazení služby Application Gateway nebo WAF může zahrnovat více zón dostupnosti Azure, není potřeba zřizovat a otáčet samostatné instance služby Application Gateway v každé zóně pomocí Microsoft Azure Traffic Manageru.
-
-- **Virtuální IP adresy statické** – virtuální IP adresa služby Application Gateway nyní podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresy přidružené k službě Application Gateway nezmění ani po restartování počítače.
-
-- **Rychlejší nasazení a aktualizace** v porovnání s obecně dostupnými skladovými položkami. 
-
-- **5 x vyšší výkon přesměrování zpracování SSL** v porovnání s obecně dostupnými skladovými položkami.
-
-Další informace o funkcích Public Preview služby Application Gateway najdete v článku [Automaticky škálovaná a zónově redundantní služba Application Gateway (Public Preview)](application-gateway-autoscaling-zone-redundant.md).
-
 ## <a name="secure-sockets-layer-ssl-termination"></a>Ukončení protokolu SSL (Secure Sockets Layer)
 
-Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Ale někdy nešifrovaná komunikace s servery nepřijatelnou možností. Může to být z důvodu požadavků na zabezpečení, požadavky na dodržování předpisů, nebo aplikace může přijímat pouze zabezpečená připojení. Pro tyto aplikace služba application gateway podporuje koncové šifrování protokolu SSL.
+Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Ale někdy nešifrovaná komunikace s servery nepřijatelnou možností. Může to být kvůli požadavkům na zabezpečení, požadavky na dodržování předpisů, nebo aplikace může přijímat pouze zabezpečená připojení. Pro tyto aplikace služba application gateway podporuje koncové šifrování protokolu SSL.
 
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Preview řadiče příchozího přenosu dat služby Azure Kubernetes Service (AKS) 
+## <a name="autoscaling"></a>Automatické škálování
 
-Řadič příchozího přenosu dat služby Application Gateway běží jako pod v rámci clusteru AKS a umožňuje službě Application Gateway fungovat jako příchozí přenos dat pro cluster AKS. To je podporováno pouze v2 Application Gateway.
+Application Gateway nebo WAF nasazení na základě Standard_v2 nebo WAF_v2 SKU podporují automatické škálování můžete vertikálně navýšit kapacitu a dolů podle aktuálních vzory zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Další informace o službě Application Gateway standard_v2 a funkcích WAF_v2 najdete v tématu [SKU v2 automatické škálování](application-gateway-autoscaling-zone-redundant.md).
 
-Další informace najdete v tématu [Řadič příchozího přenosu dat služby Azure Application Gateway](https://azure.github.io/application-gateway-kubernetes-ingress/).
+## <a name="zone-redundancy"></a>Redundanci zón
 
-## <a name="connection-draining"></a>Vyprázdnění připojení
+Služba Application Gateway nebo WAF nasazení v rámci Standard_v2 nebo WAF_v2 SKU může zahrnovat více zón dostupnosti, nabízí lepší odolnost proti a není potřeba zřizovat samostatný brány Application Gateway v každé zóně.
 
-Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Je-li služba Application Gateway povolena, zajistí, aby instance back-endového fondu, u nichž se ruší registrace, nedostávaly žádné nové žádosti, a zároveň umožní dokončit stávající žádosti v nakonfigurovaném časovém limitu. To platí jak pro instance back-endu, které jsou výslovně odebrány z back-endového fondu na základě volání rozhraní API, tak pro takové, které jsou podle sond stavu hlášeny jako poškozené.
+## <a name="static-vip"></a>Statické virtuálních IP adres
 
-## <a name="custom-error-pages"></a>Vlastní chybové stránky
-Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
-
-Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](custom-error.md).
+Služba application gateway virtuální IP adresy na Standard_v2 nebo WAF_v2 SKU výhradně podporuje statického typu virtuálních IP adres. Tím se zajistí, že virtuální IP adresy přidružené k službě application gateway nemění i přes životní cyklus služby Application Gateway.
 
 ## <a name="web-application-firewall"></a>Brána firewall webových aplikací
 
@@ -92,9 +73,9 @@ Další informace najdete v tématu [hostování více webů pomocí služby App
 
 ## <a name="redirection"></a>Přesměrování
 
-Běžným scénářem pro mnoho webových aplikací je podpora automatického přesměrování HTTP na HTTPS, aby se zajistilo, že veškerá komunikace mezi aplikací a jejími uživateli probíhá přes šifrovanou cestu. 
+Běžným scénářem pro mnoho webových aplikací je podpora automatického přesměrování HTTP na HTTPS, aby se zajistilo, že veškerá komunikace mezi aplikací a jejími uživateli probíhá přes šifrovanou cestu.
 
-V minulosti jste možná používali techniku, jako je například vytváření vyhrazeného fondu, jehož jediným účelem je přesměrovat žádosti, které obdrží na HTTP, na protokol HTTPS. Aplikační brána podporuje možnost přesměrovat provoz na Application Gateway. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Podpora přesměrování Application Gateway se neomezuje jenom na přesměrování z HTTP na HTTPS. Jde o obecný mechanismus přesměrování, takže můžete provoz přesměrovat z kteréhokoliv portu a na kterýkoliv port, který definujete pomocí pravidel. Také podporuje přesměrování na externí web.
+V minulosti jste mohli použít techniky, jako je vytvoření vyhrazeného fondu, jehož jediným účelem je pro přesměrování požadavků, které obdrží na protokolu HTTP na HTTPS. Aplikační brána podporuje možnost přesměrovat provoz na Application Gateway. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Podpora služby Application Gateway přesměrování není omezený na HTTP na HTTPS přesměrování samostatně. Jde o obecný mechanismus přesměrování, takže můžete provoz přesměrovat z kteréhokoliv portu a na kterýkoliv port, který definujete pomocí pravidel. Také podporuje přesměrování na externí web.
 
 Podpora přesměrování Application Gateway nabízí následující možnosti:
 
@@ -112,24 +93,43 @@ Funkce spřažení relací na základě souborů cookie je užitečná v přípa
 
 Application Gateway poskytuje nativní podporu pro protokoly WebSocket a HTTP/2. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket.
 
-Protokoly WebSocket a HTTP/2 umožňují plně duplexní komunikaci mezi serverem a klientem přes dlouhotrvající připojení TCP. To umožňuje interaktivnější komunikaci mezi webovým serverem a klientem, která může být obousměrná, aniž by bylo nutné dotazování, jak se to vyžaduje v implementacích založených na protokolu HTTP. Tyto protokoly mají malou režii, na rozdíl od protokolu HTTP, a můžou znovu použít stejné připojení protokolu TCP pro více žádostí nebo odpovědí. Díky tomu je využití prostředků efektivnější. Tyto protokoly jsou navrženy pro práci přes tradiční porty HTTP 80 a 443.
+Protokoly WebSocket a HTTP/2 umožňují plně duplexní komunikaci mezi serverem a klientem přes dlouhotrvající připojení TCP. To umožňuje interaktivnější komunikaci mezi webovým serverem a klientem, která může být obousměrná, aniž by bylo nutné dotazování, jak se to vyžaduje v implementacích založených na protokolu HTTP. Tyto protokoly mají nízké nároky, na rozdíl od protokolu HTTP a můžete znovu použít stejné připojení TCP pro více požadavku/odpovědi, což vede k mnohem efektivnější využití prostředků. Tyto protokoly jsou navrženy pro práci přes tradiční porty HTTP 80 a 443.
 
-Další informace najdete v tématu [podpora protokolu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) a [podpora HTTP/2](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support). 
+Další informace najdete v tématu [podpora protokolu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) a [podpora HTTP/2](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
 
-## <a name="rewrite-http-headers-public-preview"></a>Přepsání hlavičky protokolu HTTP (public preview)
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Preview řadiče příchozího přenosu dat služby Azure Kubernetes Service (AKS) 
+
+Řadič příchozího přenosu dat služby Application Gateway běží jako pod v rámci clusteru AKS a umožňuje službě Application Gateway fungovat jako příchozí přenos dat pro cluster AKS. To je podporováno pouze v2 Application Gateway.
+
+Další informace najdete v tématu [Řadič příchozího přenosu dat služby Azure Application Gateway](https://azure.github.io/application-gateway-kubernetes-ingress/).
+
+## <a name="connection-draining"></a>Vyprázdnění připojení
+
+Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Po povolení Application Gateway zajišťuje, že všechny zrušit registraci instance back-endového fondu nebudou přijímat žádné nové žádosti o zároveň umožní existující žádosti o dokončení v rámci nakonfigurovaného časového limitu. To platí pro back-end instance, které jsou výslovně odebrali z back-endového fondu podle volání rozhraní API a back-endových instancí, které jsou hlášený jako špatný, počítáno od sond stavu.
+
+## <a name="custom-error-pages"></a>Vlastní chybové stránky
+
+Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
+
+Další informace najdete v tématu [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
+
+## <a name="rewrite-http-headers"></a>Přepsání hlaviček HTTP
 
 Hlavičky protokolu HTTP umožňují klientem a serverem pro předávání dalších informací s požadavku nebo odpovědi. Přepisování tyto hlavičky protokolu HTTP umožňuje provádět několik důležitých scénářů, jako například:
+
 - Přidání pole hlavičky související se zabezpečením, jako HSTS / X-XSS ochrany.
 - Odebrání pole hlavičky odpovědi, které může odhalit citlivé informace.
 - Údaje o portech z hlavičky X-předané-pro odstranění.
 
 Služba Application Gateway podporuje možnost přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP, zatímco pakety žádostí a odpovědí přesunout mezi klientem a back endové fondy. Je také poskytuje možnost přidání podmínky k zajištění, že určených hlaviček jsou zapsány pouze v případě, že jsou splněny určité podmínky.
 
-Další informace o této funkci ve verzi public preview, najdete v části [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
+Další informace najdete v tématu [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
 
 ## <a name="sizing"></a>Velikosti
 
-Služba Application Gateway je teď nabízíme ve třech velikostech: **Malé**, **střední**, a **velké**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
+Application Gateway Standard_v2 a WAF_v2 SKU můžete nakonfigurovaný pro automatické škálování nebo pevné velikosti nasazení. Tyto SKU nenabízí velikostí jinou instancí.
+
+Application Gateway Standard a WAF SKU je teď nabízíme ve třech velikostech: **Malé**, **střední**, a **velké**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
 
 Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -147,6 +147,6 @@ Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé i
 
 V závislosti na vašich požadavcích a prostředí můžete vytvořit testovací Application Gateway pomocí portálu Azure Portal, Azure PowerShellu nebo rozhraní Azure CLI:
 
-- [Rychlé zprovoznění: Směrování webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md).
+- [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md)
 - [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
 - [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – rozhraní příkazového řádku Azure](quick-create-cli.md)

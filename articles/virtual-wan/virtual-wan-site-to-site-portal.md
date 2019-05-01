@@ -9,11 +9,11 @@ ms.date: 04/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
 ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766655"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689515"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu Site-to-Site pomocí Azure virtuální sítě WAN
 
@@ -101,7 +101,7 @@ V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
 4. Kliknutím na **OK** vytvořte partnerské propojení.
 
-## <a name="device"></a>7. Stáhnout konfiguraci sítě VPN
+## <a name="device"></a>7. Stažení konfigurace zařízení VPN
 
 Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 

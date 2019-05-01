@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555417"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722153"
 ---
 # <a name="data-querying"></a>Dotazování dat
 
@@ -75,11 +75,11 @@ K dispozici jsou následující rozhraní API čas řady dotazů:
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si informace o:
+- Další informace o [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md) ve verzi Preview Azure čas Series Insights.
 
-- [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
-- [Modelování dat](./time-series-insights-update-tsm.md)
-- [Osvědčené postupy při výběru ID řady času](./time-series-insights-update-how-to-id.md)
+- Přečtěte si čas Series Insights ve verzi Preview [modelování dat](./time-series-insights-update-tsm.md) článku.
+
+- Zjistit [osvědčené postupy při výběru ID řady času](./time-series-insights-update-how-to-id.md).
 
 <!-- Images -->
 [1]: media/v2-update-tsq/tsq.png

@@ -1,25 +1,19 @@
 ---
-title: Upgrade na nejnovější platformu kódu | Dokumentace Microsoftu
+title: Upgrade na nejnovější platformu kódu | Azure Marketplace
 description: Toto téma vysvětluje postup upgradu vaší aplikace Microsoft Dynamics 365 pro verzi platformy operace na nejnovější verzi platformy
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 787d9ef509bcafeb6a21d4b0ec952ea1eb4fd52b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: aedc2c7474de0fe068a329eb2205e9bb08e62c3a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776807"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935290"
 ---
 # <a name="upgrading-code-to-the-latest-platform"></a>Kód upgradu na nejnovější platformu
 

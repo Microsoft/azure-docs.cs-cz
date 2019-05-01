@@ -1,25 +1,18 @@
 ---
-title: Azure Application nabídka testovací verze | Dokumentace Microsoftu
+title: Azure Application nabídka testovací verze | Azure Marketplace
 description: Jak nakonfigurovat testovací verze nabídky aplikace Azure na webu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: d51c7330acd37d8a861c136ea85a2ff456eb264e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744707"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942872"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Karta testovací verze aplikace Azure
 
@@ -58,23 +51,25 @@ Následující snímek obrazovky ukazuje všechny testovací verze formuláře. 
 
 ![Konfigurace testovací verze](./media/managed-app-configure-testdrive.png)
 
-Následující tabulka popisuje pole k nastavení testů jednotky pro spravované aplikace.
+Následující tabulka popisuje pole k nastavení testů jednotky pro spravované aplikace.  Pole s hvězdičkou jsou povinná.
 
-|    **Pole**       |  **Popis**  |
+|      Pole         |  Popis      |
 |  ---------------   |  ---------------  |
-|      Popis              |   Popište, co se dá dělat na vaše testovací verze. Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.                |
-|    Uživatelská příručka                |     Nahrajte uživatelská příručka pro vaši zákazníci můžou použít pro vás provedl možnostmi, testovací verze. Tento dokument musí být soubor PDF.              |
-|         Test jednotky – ukázkové Video (volitelné)           |       Můžete zadat video s návodem, vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Název</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>            |
-|       Instance             |        Kolik instancí, které chcete nakonfigurovat, v jaké oblasti a jak rychle vaši zákazníci mohou získat testovací verze. Další informace najdete v tématu [publikování si testovací jízdu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
-|       Jednotka doba trvání testu (hodiny)             |       Zadejte celé číslo pro počet hodin. Povolený rozsah je od 1 do 999.            |
-|        Šablona ARM testu jednotky            |        Nahrání komprimovaný soubor (ZIP), který má své šablony Azure Resource Manageru pro vaši aplikaci. Další informace najdete v tématu [Azure Resource Manageru Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).            |
-|        Přístup k informacím            |         Poskytuje přístup k informacím po získá váš zákazník testovací verze. Například adresa URL pro přístup k testovací verze a informace o přihlášení. . Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.          |
-|       Id předplatného přístup             |       Tím získají přístup ke službám Azure a webu Azure portal. Předplatné je používání prostředků vykazováno, kde služby se účtují. Pokud ještě nemáte samostatné předplatné Azure pro Test jednotek pouze, vytvořte předplatné.             |
-|          Azure AD Tenant Id          |        Zadejte existujícího Tenanta služby Azure Active Directory, nebo vytvořit tenanta pro tento testovací verze.           |
-|         Id aplikace Azure AD           |       Vytvořte a zaregistrujte novou aplikaci. Společnost Microsoft používá k provádění operací ve vaší instanci testovací verze této aplikace.            |
-|          Klíč aplikace Azure AD          |         Vytvoření ověřovací klíč pro aplikaci a vložte ho do tohoto pole.          |
+| **Popis\***  |  Popište, co se dá dělat na vaše testovací verze. Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.                |
+| **Uživatelská příručka\***  |  Nahrajte uživatelská příručka pro vaši zákazníci můžou použít pro vás provedl možnostmi, testovací verze. Tento dokument musí být soubor PDF.    |
+| **Test jednotky – ukázkové Video** |  Volitelné video návod vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Název</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
+| **Instance\***      | Kolik instancí, které chcete nakonfigurovat, v jaké oblasti a jak rychle vaši zákazníci mohou získat testovací verze. Další informace najdete v tématu [publikování si testovací jízdu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
+| **Jednotka doba trvání testu (hodiny)\*** | Zadejte celé číslo pro počet hodin. Povolený rozsah je od 1 do 999. |
+| **Šablona ARM testu jednotky\***     | Nahrání komprimovaný soubor (ZIP), který má své šablony Azure Resource Manageru pro vaši aplikaci. Další informace najdete v tématu [Azure Resource Manageru Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
+| **Přístup k informacím\***          | Poskytuje přístup k informacím po získá váš zákazník testovací verze. Například adresa URL pro přístup k testovací verze a informace o přihlášení. . Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví. |
+| **Id předplatného Azure\***       | Tím získají přístup ke službám Azure a webu Azure portal. Předplatné je používání prostředků vykazováno, kde služby se účtují. Pokud ještě nemáte samostatné předplatné Azure pro Test jednotek pouze, vytvořte předplatné.  |
+| **Azure AD Tenant Id\***          | Zadejte existujícího Tenanta služby Azure Active Directory, nebo vytvořit tenanta pro tento testovací verze.  |
+| **Id aplikace Azure AD\***             | Vytvořte a zaregistrujte novou aplikaci. Společnost Microsoft používá k provádění operací ve vaší instanci testovací verze této aplikace.  |
+| **Klíč aplikace Azure AD\***            | Vytvoření ověřovací klíč pro aplikaci a vložte ho do tohoto pole.   |
+|  |  |
 
 Po zadání všech požadovaných informací, vyberte **Uložit** abychom mohli dokončit nastavování testovací verze.
+
 
 ## <a name="next-steps"></a>Další postup
 

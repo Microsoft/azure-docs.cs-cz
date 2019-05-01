@@ -1,21 +1,19 @@
 ---
 title: Nastavení šifrování pomocí protokolu SSL a ověřování pro Apache Kafka v Azure HDInsight
 description: Nastavení šifrování SSL pro komunikaci mezi klienty Kafka a zprostředkovatelům systému Kafka a jde o vztah mezi zprostředkovatelům systému Kafka. Nastavení SSL ověřování klientů.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 01/15/2019
-ms.date: 04/15/2019
-ms.author: v-yiso
+ms.date: 01/15/2019
+ms.author: hrasheed
 ms.openlocfilehash: 9d8d5e57d0dd7d7022e65a061360c8450848fb4b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62114953"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682923"
 ---
 # <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování vrstvy SSL (Secure Sockets) a ověřování pro Apache Kafka v Azure HDInsight
 

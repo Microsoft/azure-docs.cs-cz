@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cf012a452d1e43134d955e03ccf34e153b1282ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bc4fd42f64bba09fd20fedf5e06dc30c3b2cc49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253828"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64680802"
 ---
 # <a name="common-security-attributes-for-azure-backup"></a>Běžné atributy zabezpečení pro službu Azure Backup
 
@@ -37,7 +37,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ne |  |
-| vkládání podpory virtuálních sítí| Ne |  |
+| Vkládání podpory virtuálních sítí| Ne |  |
 | Izolace sítě a podporu funkce brány firewall| Ano | Vynucené tunelování se podporuje pro zálohování virtuálních počítačů. Vynucené tunelování se nepodporuje pro pracovní postupy spouštěné ve virtuálních počítačích. |
 | Vynucené tunelování podpory| Ne |  |
 

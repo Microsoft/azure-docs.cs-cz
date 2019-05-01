@@ -3,19 +3,19 @@ title: Lokalizace – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zadejte vlastní zásady element Localization v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2291bdd270a15c4932d79b124616400d2667c891
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401744"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705846"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -111,7 +111,7 @@ ms.locfileid: "60401744"
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Popisný Zobrazovaný řetězec, který má být zobrazena uživateli v uživatelském rozhraní pro tuto možnost. |
-| Value | Ano | Řetězec deklarace identity hodnotu přidruženou k výběru této možnosti. |
+| Hodnota | Ano | Řetězec deklarace identity hodnotu přidruženou k výběru této možnosti. |
 
 Následující příklad ukazuje použití **LocalizedCollections** elementu. Obsahuje dva **LocalizedCollection** prvky, jeden pro angličtinu a jinou pro španělštinu. Obě nastaveny **omezení** kolekce deklarace `Gender` se seznamem položek pro angličtinu a slovenštinu.
 

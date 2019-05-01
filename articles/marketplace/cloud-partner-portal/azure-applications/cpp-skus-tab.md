@@ -1,25 +1,18 @@
 ---
-title: Konfigurace SKU pro nabídky aplikace Azure | Dokumentace Microsoftu
+title: Konfigurace SKU pro nabídky aplikace Azure | Azure Marketplace
 description: Jak nakonfigurovat skladové jednotky Azure spravované aplikace a šablony řešení Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60745003"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943397"
 ---
 # <a name="azure-application-skus-tab"></a>Karta skladové jednotky Azure aplikace
 
@@ -44,22 +37,25 @@ Pomocí těchto kroků můžete vytvořit novou skladovou Položku:
 
 ### <a name="sku-details-for-a-solution-template"></a>Podrobnosti o SKU pro šablonu řešení
 
-Zadejte následující nastavení SKU:
+Následující snímek obrazovky ukazuje formulář podrobné údaje SKU pro šablonu řešení.
 
-- **Název** – název pro danou skladovou jednotku. Tento název se zobrazí v galerii pro tuto položku.
-- **Souhrn** – krátký souhrnný popis skladové Položce. (Maximální délka je 100 znaků.)
-- **Popis** – podrobný popis SKU.
-- **Typ SKU** – rozevírací seznam s těmito hodnotami: "Šablona řešení" a "Spravované aplikace". V tomto scénáři vyberte **šablonu řešení**.
-- **Dostupnost cloudu** – umístění SKU. Výchozí hodnota je **veřejný Azure**.
-Veřejné Azure – tento virtuální počítač bude nasaditelný zákazníkům ve všech veřejných oblastech Azure, které integraci webu Marketplace.
-- **Azure Government Cloud** -tento virtuální počítač se nasadí v cloudu Azure Government. Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), společnost Microsoft doporučuje vydavatelé otestovat a ověřit svoje řešení funguje podle očekávání v prostředí. Chcete-li připravit a otestovat, požádat [zkušební účet](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).
+![Formulář podrobností SKU pro šablony řešení](./media/azureapp-sku-details-solutiontemplate.png)
 
-  >[!NOTE] 
-  >Microsoft Azure Government je cloud určený pro státní úřady s řízený přístup pro zákazníky od federální, státní, místní nebo kmenové a partnery, kteří mohou k poskytování těchto entit.
+Zadejte následující hodnoty SKU.  Pole s hvězdičkou jsou povinná.
 
-- **Je to privátní SKU?** – Pokud vyberte Ano toto SKU je dostupná jenom pro vybranou skupinu zákazníků.
+|    Pole         |       Popis                                                            |
+|  ---------       |     ---------------                                                          |
+|  **Název\***     | Název pro danou skladovou jednotku. Tento název se zobrazí v galerii pro tuto položku.   |
+| **Souhrn\***    | Krátký souhrnný popis skladové Položce. (Maximální délka je 100 znaků.)  |
+| **Popis\*** | Podrobný popis SKU. Základní HTML je podporována.                 | 
+| **Typ SKU\***   | Typ řešení Azure aplikace, vyberte ***šablonu řešení** pro tento scénář. |
+| **Dostupnost cloudu\*** | Umístění SKU. Výchozí hodnota je **veřejný Azure**.  <b/>   **Veřejné Azure** – aplikace bude možno nasadit zákazníkům ve všech veřejných oblastech Azure, které integraci webu marketplace.  <b/>   **Azure Government Cloud** – aplikace bude nasazena v cloudu Azure Government. Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), společnost Microsoft doporučuje vydavatelé otestovat a ověřit svoje řešení funguje podle očekávání v tomto prostředí. Chcete-li připravit a otestovat, požádat [zkušební účet](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).  |
+| **Je to privátní SKU?\*** | Vyberte **Ano** Pokud tato skladová položka je dostupná jenom pro vybranou skupinu zákazníků. |
+|   |   |
 
-    ![Formulář podrobností SKU pro šablony řešení](./media/azureapp-sku-details-solutiontemplate.png)
+  > [!NOTE] 
+  > Microsoft Azure Government je cloud určený pro státní úřady s řízený přístup pro zákazníky od federální, státní, místní nebo kmenové a partnery, kteří mohou k poskytování těchto entit.
+
 
 ### <a name="sku-details-for-managed-application"></a>Podrobnosti o SKU pro spravované aplikace
 
@@ -67,51 +63,45 @@ Následující snímek obrazovky ukazuje formulář podrobné údaje SKU pro spr
 
    ![Formulář podrobností SKU pro spravované aplikace](./media/azureapp-sku-details-managedapplication.png)
 
-Nakonfigurujte následující nastavení SKU:
+Nakonfigurujte následující nastavení SKU. Pole s hvězdičkou jsou povinná.
 
-- **Název** – název pro danou skladovou jednotku. Tento název se zobrazí v galerii pro tuto položku.
-- **Souhrn** – krátký souhrnný popis skladové Položce. (Maximální délka je 100 znaků.)
-- **Popis** – podrobný popis SKU.
-- **Typ SKU** – rozevírací seznam s těmito hodnotami: "Šablona řešení" a "Spravované aplikace". V tomto scénáři vyberte **spravované aplikace**.
-- **Dostupnost cloudu** – umístění SKU. Výchozí hodnota je **veřejný Azure**.
-- **Veřejné Azure** -tento virtuální počítač bude možno nasadit zákazníkům ve všech veřejných oblastech Azure, které integraci webu Marketplace.
-- **Azure Government Cloud** -tento virtuální počítač se nasadí v cloudu Azure Government. Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), společnost Microsoft doporučuje vydavatelé otestovat a ověřit svoje řešení funguje podle očekávání v prostředí. Chcete-li připravit a otestovat, požádat [zkušební účet](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).
+|    Pole         |       Popis                                                            |
+|  ---------       |     ---------------                                                          |
+|  **Název\***     | Název pro danou skladovou jednotku. Tento název se zobrazí v galerii pro tuto položku.   |
+| **Souhrn\***    | Krátký souhrnný popis skladové Položce. (Maximální délka je 100 znaků.)  |
+| **Popis\*** | Podrobný popis SKU. Základní HTML je podporována.                 | 
+| **Typ SKU\***   | Typ řešení Azure aplikace, vyberte ***spravované aplikace** pro tento scénář. 
+| **Dostupnost cloudu\*** | Umístění SKU. Výchozí hodnota je **veřejný Azure**.  <b/>   **Veřejné Azure** – aplikace bude možno nasadit zákazníkům ve všech veřejných oblastech Azure, které integraci webu marketplace.  <b/>   **Azure Government Cloud** – aplikace bude nasazena v cloudu Azure Government. Před publikováním na [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), společnost Microsoft doporučuje vydavatelé otestovat a ověřit svoje řešení funguje podle očekávání v tomto prostředí. Chcete-li připravit a otestovat, požádat [zkušební účet](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).   Microsoft Azure Government je cloud určený pro státní úřady s řízený přístup pro zákazníky od federální, státní, místní nebo kmenové a partnery, kteří mohou k poskytování těchto entit. |
+| **Je to privátní SKU?\*** | Vyberte **Ano** Pokud tato skladová položka je dostupná jenom pro vybranou skupinu zákazníků. |
+| **Dostupnost země/oblast\*** | Použití **vybrat oblasti** k zobrazení seznamu země/oblasti, které jsou k dispozici. Zkontrolujte každé země/oblasti a pak vyberte **OK** k uložení vaší položky.  <b/>   ![Seznam zemí a oblastí dostupnosti](./media/azure-app-select-country-region.png)  |
+| **Staré ceny\*** | Ceny pro SKU v USD za měsíc. Ceny se nastavují v místní měně, pomocí aktuálního směnné kurzy na konfiguraci. Ověření tyto, protože nakonec vlastní nastavení. Nastavit nebo zobrazit ceny každé země/oblast jednotlivě, cenové tabulku exportovat a importovat s vlastní ceny.  Musí uložit změny cen Povolit export a import data ocenění.  |
+| **Ceny zjednodušené měny\*** | Ceny pro SKU v USD za měsíc. Musí být stejný jako původní ceny. Další informace najdete v tématu [zjednodušená ceny měny](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer). |
+|  |  |
 
-  >[!NOTE] 
-  >Microsoft Azure Government je cloud určený pro státní úřady s řízený přístup pro zákazníky od federální, státní, místní nebo kmenové a partnery, kteří mohou k poskytování těchto entit.
-
-- **Je to privátní SKU?** – Pokud vyberte Ano toto SKU je dostupná jenom pro vybranou skupinu zákazníků.
-- **Země/oblast dostupnosti** – použití **vybrat oblasti** k zobrazení seznamu země/oblasti, které jsou k dispozici. Zkontrolujte každé země/oblasti a pak vyberte **OK** k uložení vaší položky. 
-
-   ![Seznam zemí a oblastí dostupnosti](./media/azure-app-select-country-region.png)
-
-- **Staré ceny** – zadejte ceny pro SKU v USD za měsíc. Ceny se nastavují v místní měně, pomocí aktuálního směnné kurzy na konfiguraci. Ověření tyto, protože nakonec vlastní nastavení. Nastavit nebo zobrazit ceny každé země/oblast jednotlivě, cenové tabulku exportovat a importovat s vlastní ceny.
-
-  >[!NOTE]
-  >Uložte provedené změny cen Povolit export a import data ocenění.
-
-- **Zjednodušená ceny měny** – zadejte ceny pro SKU v USD za měsíc. Musí být stejný jako původní ceny. Další informace najdete v tématu [zjednodušená ceny měny](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer).
 
 ### <a name="package-details-for-solution-template"></a>Podrobné informace balíčku pro šablony řešení
 
-Zadejte následující podrobnosti balíčku:
+   ![Podrobné informace balíčku pro šablony řešení](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
-- **Verze** – verze balíčku, který bude nahrávat. Verze značky musí být ve tvaru X.Y.Z, kde X, Y a jsou celá čísla.
-- **Soubor balíčku (.zip)** -tento balíček obsahuje následující soubory uložené v souboru ZIP.
+Zadejte následující **podrobnosti balíčku** hodnoty.  Pole s hvězdičkou jsou povinná.
+
+- **Verze\***  – verze balíčku, který bude nahrávat. Verze značky musí být ve tvaru X.Y.Z, kde X, Y a jsou celá čísla.
+- **Soubor balíčku (.zip)\***  -tento balíček obsahuje následující soubory uložené v souboru ZIP.
   - MainTemplate.json – soubor šablony nasazení, který se používá k nasazení řešení/aplikace a vytvořte prostředky, které jsou definovány pro řešení. Další informace najdete v tématu [jak si můžete vytvořit soubory šablony nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
   - createUIDefinition.json – tento soubor používá ke generování uživatelského rozhraní pro zřizování řešení/aplikaci na webu Azure portal. Další informace najdete v tématu [vytvořit Azure portal uživatelského rozhraní pro vaše spravovaná aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
   >[!IMPORTANT] 
   >Tento balíček měl obsahovat všechny vnořené šablony nebo skripty, které jsou potřebné ke zřízení této aplikace. MainTemplate.json soubor a soubor createUIDefinition.json musí být v kořenové složce.
 
-   ![Podrobné informace balíčku pro šablony řešení](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 ### <a name="package-details-for-managed-application"></a>Podrobné informace balíčku pro spravované aplikace
 
-Zadejte následující podrobnosti balíčku:
+   ![Podrobné informace balíčku pro spravované aplikace](./media/azureapp-sku-pkgdetails-managedapplication.png)
 
-- **Verze** – verze balíčku, který bude nahrávat. Verze značky musí být ve tvaru X.Y.Z, kde X, Y a jsou celá čísla.
-- **Soubor balíčku (.zip)** -tento balíček obsahuje následující soubory uložené v souboru ZIP.
+Zadejte následující podrobnosti balíčku.  Pole s hvězdičkou jsou povinná.
+
+- **Verze\***  – verze balíčku, který bude nahrávat. Verze značky musí být ve tvaru X.Y.Z, kde X, Y a jsou celá čísla.
+- **Soubor balíčku (.zip)\***  -tento balíček obsahuje následující soubory uložené v souboru ZIP.
   - applianceMainTemplate.json – soubor šablony nasazení, který se používá k nasazení řešení/aplikace a vytvořte prostředky, které jsou definovány. Další informace najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
   - applianceCreateUIDefinition.json – tento soubor používá ke generování uživatelského rozhraní pro zřizování řešení/aplikaci na webu Azure portal. Další informace najdete v tématu [vytvořit Azure portal uživatelského rozhraní pro vaše spravovaná aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
   - mainTemplate.json – soubor šablony, který obsahuje pouze příslušný prostředek Microsoft.Solution/appliances. Další informace najdete v tématu [Princip struktury a syntaxe šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). <br>
@@ -123,24 +113,23 @@ Mějte na paměti následující klíčové vlastnosti tohoto prostředku:
   >[!IMPORTANT] 
   >Tento balíček měl obsahovat všechny vnořené šablony nebo skripty, které jsou potřebné ke zřízení této aplikace. Tyto soubory musí být v kořenové složce:  MainTemplate.json applianceMainTemplate.json a applianceCreateUIDefinition.json.
 
-- **Id tenanta** – id tenanta Azure Active Directory vaší organizace.
-- **Povolit přístup JIT?** – Vyberte **Ano** povolit přístup ke správě Just-In-Time pro použití v rámci této nabídky zákaznická nasazení.
+- **Id tenanta\***  – id tenanta Azure Active Directory vaší organizace.
+- **Povolit přístup JIT? \***  – Vyberte **Ano** Just-In-Time povolit přístup pro správu pro použití v rámci této nabídky zákaznická nasazení.
 
   >[!NOTE] 
   >Pokud povolíte JIT, musí se aktualizovat soubor CreateUiDefinition.json pro podporu přístup JIT.
 
-   ![Podrobné informace balíčku pro spravované aplikace](./media/azureapp-sku-pkgdetails-managedapplication.png)
-
 Pro spravované aplikace musíte nakonfigurovat ověřování a nastavení zásad.
+
 
 #### <a name="authorization"></a>Autorizace
 
 Přidáte Azure Active Directory identifikátor uživatele, skupinu nebo aplikaci, ke kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Oprávnění, jemuž byl poskytnut se vyznačuje ID definice role To může být vlastníkem, přispěvatelem nebo jakoukoli vlastní roli.
 
+
 #### <a name="policy-settings"></a>Nastavení zásad
 
 Přidání zásad, které aplikace spravované v souladu s. Další informace o vytváření zásad prostředků Azure, přečtěte si téma [co je Azure Policy?](../../../governance/policy/overview.md)
-
 
    ![Nastavení autorizace a zásad pro spravované aplikace](./media/azureapp-sku-details-managedapp-auth-policy.png)
 
@@ -163,6 +152,7 @@ Přidání zásad, které aplikace spravované v souladu s. Další informace o 
 
 4. Pro **skladová položka zásad**, vyberte jako zásada typ skladové položky Free nebo Standard. Standardní skladová jednotka je vyžadován pro zásady auditu.
 
+
 ## <a name="next-steps"></a>Další postup
 
-[Karta Marketplace](./cpp-marketplace-tab.md)
+Bude dál popsat vaši nabídku a poskytnout marketingové prostředky v [Marketplace kartu](./cpp-marketplace-tab.md). 

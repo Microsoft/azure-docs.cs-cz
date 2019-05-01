@@ -3,8 +3,8 @@ title: Síťová rozhraní pro přidání nebo odebrání z virtuálních počí
 description: Zjistěte, jak přidat síťová rozhraní k nebo odebrání síťových rozhraní virtuálních počítačů.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: jdial
-ms.openlocfilehash: a6371746d156fb0be2d45ac94c898652a3147a6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: 23e46290af6bdb4c217d8fa0cd836673652fc81d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887484"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701373"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Síťová rozhraní pro přidání nebo odebrání síťových rozhraní z virtuálních počítačů
 
@@ -28,7 +28,7 @@ Zjistěte, jak přidat existující síťové rozhraní, když vytváříte virt
 
 Pokud potřebujete přidat, změnit, nebo odebrání IP adres pro síťové rozhraní, naleznete v tématu [správě IP adres rozhraní sítě](virtual-network-network-interface-addresses.md). Pokud potřebujete vytvořit, změnit, nebo odstranění síťových rozhraní, naleznete v tématu [Správa síťových rozhraní](virtual-network-network-interface.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

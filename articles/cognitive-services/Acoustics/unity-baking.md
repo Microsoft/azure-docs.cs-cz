@@ -10,18 +10,18 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f0fcdcdf781c86179b67eeef0223d46da0fc65b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388222"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917005"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt Akustika Unity, která má označení vytvoření kurz
 Tento kurz popisuje Akustika pečení s Akustika projektu v Unity.
 
 Požadavky na software:
-* [Unity 2018.2 +](http://unity3d.com) pro Windows
+* [Unity 2018.2 +](https://unity3d.com) pro Windows
 * [Modul plug-in Akustika projekt integrované ve vašem Unity projektu](unity-integration.md) nebo [ukázkový obsah projektu Akustika Unity](unity-quickstart.md)
 * Volitelné: [Účtu Azure Batch](create-azure-account.md) ke zrychlení vytváří pomocí cloud computingu
 

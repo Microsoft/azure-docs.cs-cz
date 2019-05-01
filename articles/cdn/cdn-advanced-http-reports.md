@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c8cb4713e38ca0da610c687325f3810f57da2b26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 67bab857e66edd8e9fae7d45c6157f018da81ccf
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216087"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867040"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analýza statistiky o využití s Azure CDN, Rozšířené sestavy HTTP
 ## <a name="overview"></a>Přehled
@@ -42,30 +42,30 @@ Tento dokument popisuje pokročilých sestav HTTP v Microsoft Azure CDN. Tyto se
 ## <a name="geography-reports-map-based"></a>Sestavy zeměpisné oblasti (založený mapě)
 Existuje pět sestav, které budou využívat mapu, která bude určit oblasti, ze kterých je požadovaný obsah. Tyto sestavy jsou mapu světa, mapa USA, Kanadě mapy, mapy Evropa a Asie a Tichomoří mapy.
 
-Každá sestava mapovou řadí geografické entity (například země, státy a provincie) podle procenta přístupů, které pocházely z této oblasti. Kromě toho mapy se poskytuje pro lepší vizualizaci umístění, ze kterých je požadovaný obsah. Je možné to tak, že se zdají nezvyklé každé oblasti závisí na množství vyžádání zkušení v dané oblasti. Zapalovače vystínovanou oblasti označení nižšími požadavky pro obsah, zatímco tmavší oblastech znamenat vyšší úrovně pro váš obsah na vyžádání.
+Každá sestava mapovou řadí geografické entity (to znamená, zemích nebo oblastech, mapy je k dispozici pro lepší vizualizaci umístění, ze které je požadováno váš obsah. Je možné to tak, že se zdají nezvyklé každé oblasti závisí na množství vyžádání zkušení v dané oblasti. Zapalovače vystínovanou oblasti označení nižšími požadavky pro obsah, zatímco tmavší oblastech znamenat vyšší úrovně pro váš obsah na vyžádání.
 
-Podrobné informace o provozu a šířky pásma pro každou oblast je k dispozici přímo pod mapou. Díky tomu můžete zobrazit celkový počet přístupů, procenta přístupů, celkové množství dat přenosu (v gigabajtech) a procentuální podíl data přenesená pro každou oblast. Zobrazte popis pro každé z těchto měřítek. A konečně když najedete myší oblasti (to znamená, země, stát nebo kraj), název procenta přístupů, ke kterým došlo v oblasti se zobrazí jako popisek.
+Podrobné informace o provozu a šířky pásma pro každou oblast je k dispozici přímo pod mapou. Díky tomu můžete zobrazit celkový počet přístupů, procenta přístupů, celkové množství dat přenosu (v gigabajtech) a procentuální podíl data přenesená pro každou oblast. Zobrazte popis pro každé z těchto měřítek. Nakonec se při najetí myší na oblasti (to znamená, země/oblast, stát nebo kraj), název a procenta přístupů, ke kterým došlo v oblasti se zobrazí jako popisek.
 
 Níže je uvedený stručný popis pro každý typ sestavy na základě mapy zeměpisné oblasti.
 
 | Název sestavy | Popis |
 | --- | --- |
-| Mapu světa |Tato sestava umožňuje zobrazit po celém světě poptávka po vaší obsahu CDN. Jednotlivé země, jsou rozlišené na mapu světa označuje Procento přístupů, které pochází z dané oblasti. |
+| Mapu světa |Tato sestava umožňuje zobrazit po celém světě poptávka po vaší obsahu CDN. Každé země/oblasti, jsou rozlišené na mapu světa označuje Procento přístupů, které pochází z dané oblasti. |
 | Mapa USA |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN ve Spojených státech. Každý stav je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
 | Kanada mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Kanadě. Každý Kraj je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
-| Evropa mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Evropě. Na tuto mapu k označení procenta přístupů, které pocházely z této oblasti je barevné označení jednotlivé země. |
-| Asie a Tichomoří mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Asii. Na tuto mapu k označení procenta přístupů, které pocházely z této oblasti je barevné označení jednotlivé země. |
+| Evropa mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Evropě. Každé země/oblasti je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
+| Asie a Tichomoří mapy |Tato sestava umožňuje zobrazit poptávka po vaší obsahu CDN v Asii. Každé země/oblasti je barevné označení na tuto mapu k označení procenta přístupů, které pochází z dané oblasti. |
 
 ## <a name="geography-reports-bar-charts"></a>Sestavy zeměpisné oblasti (pruhové grafy)
-Existují dva další sestav, které poskytují statistické údaje podle zeměpisné oblasti, které jsou horní měst a horní zemích. Tyto sestavy řadit a obsahuje města a zemí, v uvedeném pořadí podle počtu přístupů, které pochází z těchto oblastí. Při generování tento typ sestavy, pruhového grafu označí 10 nejčastějších měst nebo země, které se požadovaný obsah přes konkrétní platformy. Tomto pruhovém grafu umožňuje rychle posoudit oblastí, které generují nejvyšším počtem žádostí pro váš obsah.
+Existují dva další sestav, které poskytují statistické údaje podle zeměpisné oblasti, které jsou horní měst a horní zemích. Tyto sestavy řadit měst a země nebo oblasti, v uvedeném pořadí podle počtu přístupů, které pochází z těchto zemí nebo oblastí. Při generování tento typ sestavy, pruhového grafu označí 10 nejčastějších měst nebo země/oblasti, které požadovaný obsah přes konkrétní platformy. Tomto pruhovém grafu umožňuje rychle posoudit oblastí, které generují nejvyšším počtem žádostí pro váš obsah.
 
 Levá strana příkazu grafu (y) označuje, kolik přístupů došlo k chybě v zadané oblasti. Přímo pod grafem (osa x) zjistíte popisek pro každou hlavní oblasti 10.
 
 ### <a name="using-the-bar-charts"></a>Pomocí pruhových grafů
 * Pokud najedete myší na pruh, název celkový počet přístupů, ke kterým došlo v oblasti se zobrazí jako popisek.
-* Popis pro sestavu horní měst identifikuje Město podle jeho názvu, Kraj a země – zkratka.
-* Pokud nelze určit město nebo oblast (například stát/kraj), ze které žádost pochází, pak ho bude označovat, že neznámé. Je-li zemi neznámý, otazníky dva (tj.)??), se zobrazí.
-* Sestavy mohou zahrnovat metriky pro "Evropě" nebo "Oblast Asie/Tichomoří." Tyto položky nejsou určeny k poskytování statistické údaje na všechny IP adresy v těchto oblastech. Místo toho že platí jenom pro požadavky, které pocházejí z IP adresy, které jsou umístěny na Evropa nebo Asie/Tichomoří místo pro konkrétní město nebo okres.
+* Popis pro sestavu horní měst identifikuje Město podle jeho názvu, Kraj a země/oblast – zkratka.
+* Pokud nelze určit město nebo oblast (například stát/kraj), ze které žádost pochází, pak ho bude označovat, že neznámé. Pokud země/oblast je neznámý, pak dvě otazníky (tj.)??), zobrazí se.
+* Sestavy mohou zahrnovat metriky pro "Evropě" nebo "Oblast Asie/Tichomoří." Tyto položky nejsou určeny k poskytování statistické údaje na všechny IP adresy v těchto oblastech. Místo toho že platí jenom pro požadavky, které pocházejí z IP adresy, které jsou umístěny na Evropa nebo Asie/Tichomoří místo pro konkrétní město nebo země/oblast.
 
 Data, která se použil k vygenerování pruhovém grafu lze zobrazit pod ní. Zde zjistíte celkový počet přístupů, procenta přístupů, objemu dat přenesených (v gigabajtech) a procentuální podíl data přenesená pro oblasti horní 250. Zobrazte popis pro každé z těchto měřítek.
 
@@ -74,7 +74,7 @@ Stručný popis se poskytuje pro oba typy sestav níže.
 | Název sestavy | Popis |
 | --- | --- |
 | Horní měst |Tato sestava řadí měst podle počtu přístupů, které pocházely z této oblasti. |
-| Hlavní země |Tato sestava řadí zemí podle počtu přístupů, které pocházely z této oblasti. |
+| Hlavní země |Tato sestava řadí země/oblasti podle počtu přístupů, které pochází z zemi/oblast. |
 
 ## <a name="daily-summary"></a>Denní souhrn
 Denní souhrn sestava umožňuje zobrazit celkový počet přístupů a data přenesená prostřednictvím jednotlivých platformách každý den. Tyto informace lze rychle rozpoznat vzory aktivity CDN. Například tato sestava vám může pomoct zjistit, které dny zkušení vyšší nebo nižší než očekávaném provozu.

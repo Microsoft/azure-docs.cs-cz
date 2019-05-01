@@ -1,25 +1,18 @@
 ---
-title: Azure SaaS aplikace nabídka testu jednotky konfigurace | Dokumentace Microsoftu
+title: Azure SaaS aplikace nabídka testu jednotky konfigurace | Azure Marketplace
 description: Konfigurace testovací verze nabídky SaaS aplikace na Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pbutlerm
-ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: c76290d6c96108ff04799151c82334264a4c3dd0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594248"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941705"
 ---
 # <a name="saas-application-test-drive-tab"></a>Karta testovací verzi aplikace SaaS
 

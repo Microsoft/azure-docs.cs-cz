@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 42f6fefa930a36fbfcca7b3f792cc749723f7b99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c20e7796d152c9198786c491f9a61752d88ea6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464462"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726621"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizace ve službě Azure Kubernetes Service (AKS)
 
@@ -108,7 +108,8 @@ Vývojář v následujícím příkladu se vytvoří pod, který používá spra
 1. Vývojář nasadí pod s spravovanou identitu, která požaduje token přístupu přes NMI server.
 1. Token, který je vrácen pod a používá pro přístup k instanci serveru SQL Azure.
 
-Identity spravovaných pod je projekt open source AKS a nepodporuje technickou podporu Azure. Poskytuje shromažďovat zpětnou vazbu a chyb z naší komunitě. Projekt se nedoporučuje pro produkční použití.
+> [!NOTE]
+> Identity spravovaných pod je projekt open source a nepodporuje technickou podporu Azure.
 
 Používat pod identity, najdete v článku [identit Azure Active Directory pro Kubernetes aplikace][aad-pod-identity].
 

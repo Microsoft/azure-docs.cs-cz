@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
-ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ef5c0a4e6694e9babcb3054831e88d9edceae85
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474942"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937275"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statistika tabulky ve službě Azure SQL Data Warehouse
 
@@ -71,7 +71,7 @@ Table_name je název tabulky, která obsahuje statistiku k zobrazení. Nelze se 
 
 ## <a name="updating-statistics"></a>Aktualizovat statistiku
 
-Jeden osvědčeným postupem je aktualizovat statistiky pro sloupce Datum každý den se přidají nová data. Nové řádky každý čas se načtou do datového skladu, nové datum zatížení nebo data transakcí se přidají. Tyto změnit distribuci dat a vytvořit statistiky zastaralá. Naopak statistik země sloupce v tabulce zákazníků může nikdy potřeba aktualizovat, protože obecně nezmění distribuce hodnot. Předpokládáme, že distribuce je konstantní mezi zákazníky a přidání nových řádků do tabulky variace se chystáte změnit distribuci dat. Ale pokud váš datový sklad obsahuje pouze v jedné ze zemí a můžete přenést data z nové země, výsledkem jsou data z několika zemích, které ukládají, musíte aktualizovat statistiku sloupci země.
+Jeden osvědčeným postupem je aktualizovat statistiky pro sloupce Datum každý den se přidají nová data. Nové řádky každý čas se načtou do datového skladu, nové datum zatížení nebo data transakcí se přidají. Tyto změnit distribuci dat a vytvořit statistiky zastaralá. Naopak statistiky pro zemi/oblast sloupec v tabulce zákazníků může nikdy potřeba aktualizovat, protože obecně nezmění distribuce hodnot. Předpokládáme, že distribuce je konstantní mezi zákazníky a přidání nových řádků do tabulky variace se chystáte změnit distribuci dat. Ale pokud váš datový sklad obsahuje pouze jednu zemi/oblast a můžete přenést data z Nová země nebo oblast, výsledkem jsou data z více zemí a oblastí, ukládají, budete muset aktualizovat statistiku sloupci země/oblast.
 
 Toto jsou doporučení aktualizaci statistiky:
 

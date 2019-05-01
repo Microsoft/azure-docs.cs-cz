@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b544bfcb59bf4c2b44e6b666fcd33e9fb493692
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256630"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572516"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Na základě protokolů a předem agregovaných metrik ve službě Application Insights
 
@@ -63,7 +63,7 @@ Kolekce vlastních metrik dimenze je ve výchozím nastavení vypnuta vzhledem k
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Vytváření grafů a zkoumání založené na protokolech a standardní předem agregovaných metrik
 
-Pomocí Průzkumníka metrik služby Azure Monitor k vykreslení grafy z předem agregovat a založené na protokolech metriky a vytvořit řídicí panely s grafy. Po vybrání požadovaného prostředku Application Insights, pomocí nástroje pro výběr oboru názvů můžete přepínat mezi úrovněmi standard (preview) a metrikami založenými na protokolu, nebo vybrat vlastní metriky oboru názvů:
+Použití [Průzkumník metrik Azure monitoru](../platform/metrics-getting-started.md) k vykreslení grafy z předem agregovat a založené na protokolech metriky a vytvořit řídicí panely s grafy. Po vybrání požadovaného prostředku Application Insights, pomocí nástroje pro výběr oboru názvů můžete přepínat mezi úrovněmi standard (preview) a metrikami založenými na protokolu, nebo vybrat vlastní metriky oboru názvů:
 
 ![Obor názvů metriky](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 

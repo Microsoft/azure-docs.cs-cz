@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c4959d6abd1b33c81f731ad0479bd59d271c7797
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 979019da60c1129c6c6ef0bec42d9f9096735c1b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483976"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926043"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům BLOB a fronty
 
@@ -37,7 +37,7 @@ Prvním krokem při používání služby Azure AD k autorizaci přístupu k pro
 
 Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID klienta (také nazývané *ID aplikace*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID klienta najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
-Pokud chcete zaregistrovat aplikaci Azure Storage, postupujte podle kroků v [přidáním aplikace](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md) tématu [integrace aplikací s Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Hodnota nemusí být skutečný koncový bod.
+Pokud chcete zaregistrovat aplikaci Azure Storage, postupujte podle kroků v [přidáním aplikace](../../active-directory/develop/quickstart-register-app.md) tématu [integrace aplikací s Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Hodnota nemusí být skutečný koncový bod.
 
 ![Snímek obrazovky ukazující, jak zaregistrovat svoji aplikaci storage v Azure AD](./media/storage-auth-aad-app/app-registration.png)
 

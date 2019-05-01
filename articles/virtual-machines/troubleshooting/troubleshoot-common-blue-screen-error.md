@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 7e37d8e732408e70dbcdc86d3e21556f553506cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768480"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719786"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows se zobrazuje chyba modrá obrazovka při dalším spuštění virtuálního počítače Azure
 Tento článek popisuje modrá obrazovka chyby, které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje kroky při shromažďování dat pro lístek podpory. 
@@ -56,7 +56,7 @@ Chcete-li tento problém vyřešit, je třeba prvními, kdo se shromažďování
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a vyplňte lístek podpory
 
 1. Na virtuální počítač pro obnovení přejděte do složky systému windows v připojeném disku s operačním systémem. Pokud písmeno jednotky, která je přiřazena připojeném disku s operačním systémem je F, budete muset přejít do F:\Windows.
-2. Vyhledejte soubor memory.dmp th a potom [vyplňte lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pomocí souboru s výpisem paměti. 
+2. Vyhledejte soubor memory.dmp a potom [vyplňte lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pomocí souboru s výpisem paměti. 
 
 Pokud nemůže najít soubor s výpisem paměti, přesuňte následující krok, povolení protokolu výpisu stavu systému a konzoly sériového portu.
 

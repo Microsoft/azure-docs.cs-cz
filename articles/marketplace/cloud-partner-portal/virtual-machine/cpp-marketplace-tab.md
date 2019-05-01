@@ -1,64 +1,60 @@
 ---
-title: Virtual machine Marketplace záložce portál partnerů cloudu pro Azure | Dokumentace Microsoftu
+title: Virtual machine Marketplace záložce portál partnerů cloudu pro Azure Marketplace
 description: Popisuje kartě Marketplace použité při vytváření virtuálního počítače Azure Marketplace nabídku.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332715"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938192"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Tržiště virtuálních počítačů
 
-**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tento formulář dlouhý je rozdělen na čtyři části: **Přehled**, **marketingové artefakty**, **vést správu**, a **právní**. 
+**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tento formulář dlouhý je rozdělen na čtyři části: **Přehled**, **marketingové artefakty**, **vést správu**, a **právní**.
+
 
 ## <a name="overview-section"></a>Přehled oddílu
 V této části zadáte obecné informace o nabídky Azure Marketplace.  Připojený hvězdička (*) na název pole označuje, že je povinný.
 
-![Přehled části Marketplace karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_008.png)
+![Přehled část kartě Marketplace pro virtuální počítače](./media/publishvm_008.png)
 
-Následující tabulka popisuje účel a obsah těchto polí.
+Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou uvést hvězdičkou (*).
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Název**                 | Název nabídky, často dlouhý, oficiální název. Tento název se zobrazí výrazném místě na webu Marketplace.  Maximální délka 50 znaků. |
-| **Souhrn**               | Stručný účel nebo funkce řešení.  Delší než 100 znaků. |
-| **Dlouhé shrnutí**          | Účel nebo funkce řešení.  Delší než 256 znaků. |
-| **Popis**           | Popis řešení.  3000 znaků podporuje jednoduchý formátování HTML. |
-| **Kanál prodejců zprostředkovatele kryptografických služeb Microsoft** | Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály. |
-| **Identifikátor marketing**  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **ID předplatných ve verzi Preview** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
+| **Název\***                 | Název nabídky, často dlouhý, oficiální název. Tento název se zobrazí výrazném místě na webu Marketplace.  Maximální délka 50 znaků. |
+| **Souhrn\***               | Stručný účel nebo funkce řešení.  Delší než 100 znaků. |
+| **Dlouhé shrnutí\***          | Účel nebo funkce řešení.  Delší než 256 znaků. |
+| **Popis\***           | Popis řešení.  3000 znaků podporuje jednoduchý formátování HTML. |
+| **Kanál prodejců zprostředkovatele kryptografických služeb Microsoft\*** | Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály. |
+| **Identifikátor marketing\***  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **ID předplatných ve verzi Preview\*** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
 | **Užitečné odkazy**          | Přidejte adresy URL do dokumentace, poznámky k verzi, nejčastější dotazy a tak dále. |
-| **Navrhované kategorie (max. 5)** | Vícenásobného výběru obchodní a technické kategorií, které nabízejí lze nejlépe přidružit.  Maximální povolené pět.  |
+| **Navrhované kategorie (max. 5)\*** | Vícenásobného výběru obchodní a technické kategorií, které nabízejí lze nejlépe přidružit.  Maximální povolené pět.  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>Část artefakty marketing
 
-Tento druhý oddíl je rozdělen na tři pododdíly: **Loga**, **snímek obrazovky**, a **videa**. Loga jsou pouze požadované marketingové artefakty, ale všechny důrazně doporučujeme pro nejlepší odvolání zákazníka.
+Tento druhý oddíl je rozdělen na tři pododdíly: **Loga**, **snímek obrazovky**, a **videa**. Loga jsou pouze požadované marketingové artefakty, ale všechny důrazně doporučujeme pro nejlepší odvolání zákazníka. 
 
 ![Marketingové artefakty části Marketplace karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_009.png)
+
+Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou uvést hvězdičkou (*).
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
 | *Loga*  |  |
-| **Malé**                 | rastrový obrázek 40 x 40 pixel .ico                                                      |
-| **Střední**                | rastrový obrázek .ico 90 x 90 pixelů                                                      |
-| **Velké**                 | rastrový obrázek .ico 115 x 115 pixelů                                                   |
-| **Široký**                  | rastrový obrázek .ico 255 x 115 pixelů                                                    |
+| **Malé\***                 | rastrový obrázek 40 x 40 pixel .ico                                                      |
+| **Střední\***                | rastrový obrázek .ico 90 x 90 pixelů                                                      |
+| **Velké\***                 | rastrový obrázek .ico 115 x 115 pixelů                                                   |
+| **Široký\***                  | rastrový obrázek .ico 255 x 115 pixelů                                                    |
 | **Hero**                  | 815 x 290 rastrový obrázek.  Volitelné, ale jednou nahrané ikonu hero nelze odstranit. |
 | *Snímky obrazovky*  | Volitelné, ale maximálně pěti snímků obrazovky na SKU. |
 | **Název**                  | Název nebo název <!-- TODO - max char length? none specified in UI -->                               |
@@ -67,8 +63,7 @@ Tento druhý oddíl je rozdělen na tři pododdíly: **Loga**, **snímek obrazov
 | **Název**                  | Název nebo název  <!-- TODO - max char length? -->                              |
 | **Odkaz**                  | Adresa URL videa, hostované na YouTube nebo Vimeo                                        |
 | **Miniatura**             | 533 x 324 rastrový obrázek                                                               |
-|  |  |
-
+|   |   |
 
 ### <a name="logo-guidelines"></a>Pokyny pro použití loga
 
@@ -105,7 +100,6 @@ Následující obrázek znázorňuje, jak marketingové informace se zobrazí na
 
 
 ## <a name="lead-management-section"></a>Vedoucí bodu správy
-<!-- this all should be referenced in a common location for lead management, not in this file. nothing unique for a vm specifically. -->
 
 Třetí část umožňuje zákazníkům shromažďovat zájemce získané z nabídky na webu Azure Marketplace. Nabízí následující možnosti ukládání těchto informací potenciálních zákazníků (z rozevíracího seznamu).
 
@@ -122,15 +116,16 @@ Po úspěšném publikování vaší nabídky, realizace připojení ověříte 
 
 ## <a name="legal-section"></a>Právní oddílu
 
-Tento poslední část umožňuje poskytnout dvě právní dokumenty, vyžaduje se pro každou nabídku: Zásady ochrany osobních údajů a podmínky použití.
+Tento poslední část umožňuje zadejte povinné právní dokumenty, vyžaduje se pro každou nabídku.  
 
-|  **Pole**                |     **Popis**                                                          |
-|  ---------                |     ---------------                                                          |
-| **Adresa URL zásad ochrany osobních údajů**    | Adresa URL zásad odeslaných ochrany osobních údajů                                            |
-| **Podmínky použití**          | zásady jako prostý text nebo jednoduchého kódu HTML.  <!-- TODO - max char length? -->       |
+|  **Pole**                    |     **Popis**                                        |
+|  ---------                    |     ---------------                                        |
+| **Adresa URL zásad ochrany osobních údajů\***      | Adresa URL zásad odeslaných ochrany osobních údajů                          |
+| **Použít standardní smlouvy?\***  |   |
+| **Podmínky použití\***            | zásady jako prostý text nebo jednoduchého kódu HTML.                       |
 |  |  |
 
-<br/>
+
+## <a name="next-steps"></a>Další postup
 
 V dalším [podporují](./cpp-support-tab.md) kartu, bude poskytovat uživatele a technické podpory prostředků pro vaši nabídku.
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596076"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571148"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v monitorování Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics ve službě Azure Monitor nebo skupinu pro správu System Center Operations Manager připojené k monitorování Azure, které jsou reagovat a odesílá se provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -63,7 +63,7 @@ Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Healt
 | Distribuce podle verze agenta | Rozdělení různých verzí agentů nainstalovaných ve vašem prostředí a jejich počet.|
 | Distribuce podle kategorie agenta | Rozdělení různých kategorií agentů, kteří odesílají události prezenčního signálu: přímí agenti, agenti nástroje Operations Manager nebo server pro správu nástroje Operations Manager.|
 | Distribuce podle skupiny pro správu | Rozdělení různých skupin správy Operations Manageru ve vašem prostředí.|
-| Geografické umístění agentů | Rozdělení různých zemí, ve kterých máte agenty, a celkový počet agentů nainstalovaných v každé zemi.|
+| Geografické umístění agentů | Rozdělení různých zemích nebo oblastech kde máte agenty a celkový počet počet agentů, které jsou nainstalovány v každé zemi nebo oblast.|
 | Počet nainstalovaných bran | Počet serverů, které mají nainstalovanou bránu Log Analytics a seznam těchto serverů.|
 
 ![Ukázka řídicího panelu řešení Agent Health](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  

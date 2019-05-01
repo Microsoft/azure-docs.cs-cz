@@ -14,14 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61128080"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866973"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí webu Azure portal
+
+> [!NOTE]
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > Služba Media Services v2 se neustále přidávají žádné nové funkce nebo funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+>
+
  Pomocí služby Azure Media Services můžete zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Služba Media Services můžete použít k doručování dynamicky šifrovaných s na Standard AES (Advanced Encryption) s použitím 128bitové šifrování klíče obsahu. Také můžete ho s používat standard common encryption (CENC) pomocí technologie PlayReady nebo Widevine správy digitálních práv (DRM) a Apple FairPlay. 
 
 Služba Media Services poskytuje službu k doručování licencí DRM a standardu AES Vymazat klíče autorizovaným klientům. Na webu Azure portal můžete vytvořit jednu zásadu autorizace klíčů nebo licencí pro všechny typy šifrování.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 8d5d6ed6c14927c57279cf500518f3b3a86d591d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699714"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876853"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesouvat trezor služby Recovery Services v rámci skupiny prostředků a předplatná Azure
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje, jak přesunout trezor služby Recovery Services, kte
 
 ## <a name="supported-region"></a>Podporované oblasti
 
-Přesunutí prostředku pro trezor služby Recovery Services je podporovaná v Austrálie – východ, Austrálie – východ – Jih, Kanada – střed, Kanada – východ, jihovýchodní Asie, východní Asie, střed USA, střed USA – sever, východní části USA, východní USA 2, Jižní centrální USA, střed USA – Západ, západní střed USA 2, USA – západ Střed Indie, Jižní Indie, Japonsko – východ, Japonsko – Západ, Korea – střed, Korea – Jih, Severní Evropa, západní Evropa, Jihoafrická republika – sever, Jihoafrická republika – Západ, Velká Británie – Jih, Velká Británie – Západ, Spojené arabské emiráty – střed a Spojené arabské emiráty – sever.
+Přesunutí prostředku pro trezor služby Recovery Services je podporovaná v Austrálie – východ, Austrálie – východ – Jih, Kanada – střed, Kanada – východ, jihovýchodní Asie, východní Asie, střed USA, střed USA – sever, východní části USA, východní USA 2, Jižní centrální USA, střed USA – Západ, západní střed USA 2, USA – západ Střed Indie, Jižní Indie, Japonsko – východ, Japonsko – Západ, Korea – střed, Korea – Jih, Severní Evropa, západní Evropa, Jihoafrická republika – sever, Jihoafrická republika – Západ, Velká Británie – jih a Velká Británie – západ.
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Předpoklady pro přesun trezoru služby Recovery Services
 

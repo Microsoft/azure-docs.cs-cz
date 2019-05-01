@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc4118e54b2049f7e5d6cf4ed3b92bfc5e41ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 011991a3951adde9a0d062b40584caa74d172023
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280521"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Kurz: Integrace Azure Active Directory s Domo
 
@@ -134,7 +134,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Domo, proveďte následují
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | NameIdentifier | user.userprinicipalname |
     | jméno | user.displayname |
@@ -174,7 +174,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Domo, proveďte následují
 
 ### <a name="configure-domo-single-sign-on"></a>Konfigurace Domo jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Domo** straně, přejděte na článek znalostní báze společnosti Domo nalezen [tady](http://knowledge.domo.com?cid=azuread)a postupujte podle pokynů.
+Ke konfiguraci jednotného přihlašování na **Domo** straně, přejděte na článek znalostní báze společnosti Domo nalezen [tady](https://knowledge.domo.com?cid=azuread)a postupujte podle pokynů.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 

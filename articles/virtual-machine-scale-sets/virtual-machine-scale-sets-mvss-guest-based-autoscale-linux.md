@@ -4,7 +4,7 @@ description: Zjistěte, jak automatické škálování s použitím metrik hosta
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: na
@@ -13,24 +13,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: deddcc8623803f9d003f3fafcef5252ebd34b813
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8cd665ffd82547c4f554eb4a515a8da7dc5b3f5f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803367"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868988"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Automatické škálování s použitím metrik hosta v Linuxu šablony škálovací sady
 
-Existují dva typy metrik v Azure, která se shromažďují z virtuálních počítačů a škálovací sady: některé pocházejí z hostitelského virtuálního počítače a jiné pocházejí z hostovaného virtuálního počítače. Na vysoké úrovni Pokud používáte standardní procesoru, disku a sítě metriky, pak metriky hostitele jsou pravděpodobně vhodné. Pokud však potřebujete větší výběr metrik, metrik hosta budou pravděpodobně lépe vyhovovat. Pojďme se podívat na rozdíly mezi těmito dvěma:
+Existují dva široké typy metrik v Azure, která se shromažďují z virtuálních počítačů a škálovací sady: Metriky hostitele a metrik hosta. Na vysoké úrovni Pokud jste chtěli použít standardní procesoru, disku a sítě metriky, pak metriky hostitele skvěle hodí. Pokud však potřebujete větší výběr metrik, by měl do podívali metrik hosta.
 
-Metriky hostitele jsou jednodušší a spolehlivější. Nevyžaduje žádné další nastavení vzhledem k tomu, že byly shromážděny sadou hostitelského virtuálního počítače, zatímco metriky hosta vyžadují k instalaci [rozšíření Windows Azure Diagnostics](../virtual-machines/windows/extensions-diagnostics-template.md) nebo [rozšíření diagnostiky Azure Linux](../virtual-machines/linux/diagnostic-extension.md)ve virtuálním počítači hosta. Jedním z běžných důvodů metrik hosta nahrazujícím metriky hostitele je, že metrik hosta poskytují větší výběr metrik než metriky hostitele. Jedním z takových příkladů je metriky využití paměti, které jsou dostupné jen přes metrik hosta. Jsou uvedeny podporované hostitele metriky [tady](../azure-monitor/platform/metrics-supported.md), a jsou uvedeny běžně používané hosta metriky [tady](../azure-monitor/platform/autoscale-common-metrics.md). Tento článek popisuje, jak změnit [šablonu minimální přijatelné škálovací sady](./virtual-machine-scale-sets-mvss-start.md) použití pravidel automatického škálování na základě metrik hosta pro Linux škálovací sady.
+Metriky hostitele nevyžadují žádné další nastavení vzhledem k tomu, že byly shromážděny sadou hostitelského virtuálního počítače, zatímco metriky hosta vyžadují k instalaci [rozšíření Windows Azure Diagnostics](../virtual-machines/windows/extensions-diagnostics-template.md) nebo [rozšíření diagnostiky Azure Linux ](../virtual-machines/linux/diagnostic-extension.md) ve virtuálním počítači hosta. Jedním z běžných důvodů metrik hosta nahrazujícím metriky hostitele je, že metrik hosta poskytují větší výběr metrik než metriky hostitele. Jedním z takových příkladů je metriky využití paměti, které jsou dostupné jen přes metrik hosta. Jsou uvedeny podporované hostitele metriky [tady](../azure-monitor/platform/metrics-supported.md), a jsou uvedeny běžně používané hosta metriky [tady](../azure-monitor/platform/autoscale-common-metrics.md). Tento článek popisuje, jak změnit [šablonu základní přijatelné škálovací sady](virtual-machine-scale-sets-mvss-start.md) použití pravidel automatického škálování na základě metrik hosta pro Linux škálovací sady.
 
 ## <a name="change-the-template-definition"></a>Změna definice šablony
 
-Šablonu minimální přijatelné škálovací sady můžete zobrazit [tady](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), a šablony pro nasazení systému Linux škálovací sady s automatickým Škálováním hosta můžete vidět [tady](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json). Podívejme se na rozdíl použít k vytvoření této šablony (`git diff minimum-viable-scale-set existing-vnet`) jeden po druhém:
+V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní škálovací sadu šablony. Nyní budeme používat tento starší šablony a upravit tak, aby vytvořit šablonu, která nasadí škálovací sadu s hosta automatické škálování podle metriky pro Linux.
 
 Nejprve přidejte parametry pro `storageAccountName` a `storageAccountSasToken`. Agenta diagnostiky ukládá data metriky v [tabulky](../cosmos-db/table-storage-how-to-use-dotnet.md) v tomto účtu úložiště. Od verze diagnostiky agenta pro Linux verze 3.0 pomocí přístupového klíče úložiště se už nepodporuje. Místo toho použijte [tokenů SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -111,7 +111,7 @@ V dalším kroku změnit škálovací sady `extensionProfile` zahrnout diagnosti
        }
 ```
 
-Nakonec přidejte `autoscaleSettings` prostředek, který se konfigurace automatického škálování na základě těchto metrik. Tento prostředek nemá `dependsOn` klauzuli, která odkazuje na ose nastavena na zajistěte, aby existovala před pokusem automatického škálování škálovací sady. Pokud se rozhodnete na jiné metriky automatického škálování, můžete využít `counterSpecifier` v konfiguraci rozšíření diagnostiky jako `metricName` v konfiguraci automatického škálování. Další informace o konfiguraci automatického škálování najdete v článku [osvědčené postupy automatického škálování](..//azure-monitor/platform/autoscale-best-practices.md) a [referenční dokumentaci rozhraní API REST služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931928.aspx).
+Nakonec přidejte `autoscaleSettings` prostředek, který se konfigurace automatického škálování na základě těchto metrik. Tento prostředek nemá `dependsOn` klauzuli, která odkazuje na ose nastavena na zajistěte, aby existovala před pokusem automatického škálování škálovací sady. Pokud se rozhodnete na jiné metriky automatického škálování, můžete využít `counterSpecifier` v konfiguraci rozšíření diagnostiky jako `metricName` v konfiguraci automatického škálování. Další informace o konfiguraci automatického škálování najdete v článku [osvědčené postupy automatického škálování](../azure-monitor/platform/autoscale-best-practices.md) a [referenční dokumentaci rozhraní API REST služby Azure Monitor](/rest/api/monitor/autoscalesettings).
 
 ```diff
 +    },

@@ -1,25 +1,19 @@
 ---
-title: Nastavení aplikace v portálu pro publikování | Dokumentace Microsoftu
+title: Nastavení aplikace na portálu publikování
 description: Podle pokynů v nastavení aplikace v portálu pro publikování cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483196"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943553"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Nastavení aplikace na portálu publikování
 
@@ -59,7 +53,7 @@ například, pokud vydavatele **"contoso"** vydavatelé vytvoří v rámci nabí
 
 Tento rozevírací seznam umožňuje zvolit profil vydavatele, který chcete publikovat v rámci této nabídky. Toto pole je uzamčen, jakmile uvedete nabídky.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Toto je zobrazovaný název nabídky. Toto je název, který se zobrazí v [AppSource](https://appsource.microsoft.com/). Může mít maximálně 50 znaků.
 
@@ -88,7 +82,7 @@ Následuje vysvětlení těchto polí:
 
 ### <a name="crm-package-availability"></a>Dostupnost balíčku CRM
 
-V této části vyberte jaké oblasti vašeho balíčku bude k dispozici do CRM. Informace, na které oblasti slouží kterých zemí najdete v tématu odkazu: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+V této části vyberte jaké oblasti vašeho balíčku bude k dispozici do CRM. Informace, na které CRM oblasti slouží, které země nebo oblasti, najdete v tématu odkazu: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Poznámka: Nasazení do Německo "Suverénních a Cloud pro státní správu USA" suverénních vyžaduje speciální oprávnění a ověření během certifikace
 

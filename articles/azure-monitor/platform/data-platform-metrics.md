@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: c00f703c5cfa606eaeb6ea0dea5fe5d754d3de5d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108080"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867967"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriky na platformě Azure Monitor
 
 > [!NOTE]
-> Datová Platforma Azure Monitor je založena na dva základní datové typy: Metriky a protokoly. Tento článek popisuje metriky. Odkazovat na [protokolů ve službě Azure Monitor](data-platform-logs.md) protokolů a získat podrobný popis [platforn data Azure Monitor](data-platform.md) porovnání obou.
+> Datová Platforma Azure Monitor je založena na dva základní datové typy: Metriky a protokoly. Tento článek popisuje metriky. Odkazovat na [protokolů ve službě Azure Monitor](data-platform-logs.md) protokolů a získat podrobný popis [datová Platforma Azure Monitor](data-platform.md) porovnání obou.
 
 Metriky ve službě Azure Monitor jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře, díky kterým jsou zvláště užitečná pro výstrahy a rychlé zjišťování problémů. Tento článek popisuje, jak metriky jsou strukturovaná, co můžete dělat s nimi a identifikuje různých zdrojů dat, které ukládají data v metrikách.
 

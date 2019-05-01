@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 84efdb0297a2dc69497baee5fb746fb51d02b1b7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122655"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939514"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Více modelů možnosti služby Azure SQL Database
 
@@ -90,7 +90,7 @@ Modely dokumentů, je možné použít místo relačních modelů v některých 
 
 ## <a name="spatial-features"></a>Prostorové funkce
 
-Prostorová data představuje informace o fyzickém umístění a tvar geometrické objekty. Tyto objekty mohou být složitější objekty, jako jsou zemí, silnicích zakázána nebo jezera nebo umístění bodu.
+Prostorová data představuje informace o fyzickém umístění a tvar geometrické objekty. Tyto objekty mohou být umístění nebo složitější objekty, jako je například země nebo oblasti, cesty nebo jezera.
 
 Azure SQL Database podporuje dva typy prostorových dat – datový typ geometry a geography data typu.
 - Typ geometry představuje data v Euclidean souřadnicovém systému (bez stromové struktury).

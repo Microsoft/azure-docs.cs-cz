@@ -1,25 +1,19 @@
 ---
-title: Vyzkoušejte Azure Resource Manageru | Dokumentace Microsoftu
+title: Vyzkoušejte Azure Resource Manageru | Azure Marketplace
 description: Sestavení webu Marketplace testovací jízdu a pomocí Azure Resource Manageru
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Patrick .Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 7665050dfc9a561f42fec00c40d0a40dfa5cc183
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774330"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941575"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Testovací verze Azure Resource Manageru
 

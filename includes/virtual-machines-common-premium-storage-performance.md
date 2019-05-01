@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59736992"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64736977"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium storage: návrh pro vysoký výkon
 
@@ -299,7 +299,7 @@ Jako příklad, můžete použít tyto pokyny pro SQL Server běžící na Premi
 1. Konfigurace "None" do mezipaměti na disky premium storage, který je hostitelem souborů protokolu.  
    a.  Soubory protokolů mají primárně operace náročné na zápis. Proto že nejsou nijak přínosné mezipaměti jen pro čtení.
 
-### <a name="optimize-performance-on-linux-vms"></a>Optimalizace výkonu na virtuální počítače s Linuxem
+## <a name="optimize-performance-on-linux-vms"></a>Optimalizace výkonu na virtuální počítače s Linuxem
 
 Pro všechny disky premium SSD nebo ultra disky s mezipamětí nastavena na **jen pro čtení** nebo **žádný**, při připojení systému souborů je nutné zakázat "překážky". Překážky v tomto scénáři není nutné, protože trvalého pro tato nastavení mezipaměti zápisy na disky premium storage. Až se žádost o zápis úspěšně dokončí, data se zapsala do trvalého úložiště. Zakázat "překážky", použijte jednu z následujících metod. Vyberte si metodu pro systém souborů:
   
@@ -328,7 +328,7 @@ Některé verze nejnovější Linux Integration Services (LIS), v4.0, vyžadují
 | Oracle | 7.0-7.1 | &nbsp; | UEK4 nebo RHCK plánovaným bodem obnovení kratším[LIS verze 4.1 a vyšší](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 | Oracle | 6.4-6.7 | &nbsp; | UEK4 nebo RHCK plánovaným bodem obnovení kratším[LIS verze 4.1 a vyšší](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
-## <a name="lis-drivers-for-openlogic-centos"></a>Ovladače služby LIS OpenLogic CentOS
+### <a name="lis-drivers-for-openlogic-centos"></a>Ovladače služby LIS OpenLogic CentOS
 
 Pokud používáte OpenLogic CentOS virtuální počítače, spusťte následující příkaz k instalaci nejnovější ovladače:
 

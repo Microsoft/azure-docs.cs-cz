@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39495e11e42853bf3cf9481475d970667c56223f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381960"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919104"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategie přijetí hybridních identit pro hybridní řešení identit plnění obchodních požadavků, které byly zmíněny v:
@@ -37,7 +37,7 @@ První úloha adresy určení obchodní organizace potřebuje.  To může být v
 ## <a name="define-an-integration-strategy"></a>Definování strategie pro integraci
 Microsoft má tři hlavní integrační scénáře, které jsou federované identity, cloudové identity a synchronizované identity.  Měli byste počítat s přijetím jedné z těchto strategií integrace.  Strategie, kterou zvolíte se může lišit a může zahrnovat rozhodnutí, která při výběru jednoho, jaký typ činnost koncového uživatele, které byste chtěli poskytnout, máte stávající infrastrukturu, a co je nejúčinnějším.  
 
-![](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![Scénáře integrace](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
 Scénářích definovaných na obrázku výše jsou:
 
@@ -111,14 +111,14 @@ V průběhu let máte několik nástrojů pro synchronizaci existoval a použít
 ### <a name="supported-topologies"></a>Podporované topologie
 Při definování strategie synchronizace, musíte určit topologie, který se používá. V závislosti na informace, které bylo zjištěno v kroku 2 můžete určit, kterou topologii je ta správná pro použití. Jedné doménové struktury, jediné služby Azure AD topologie je nejčastěji používaných a se skládá z jedné doménové struktury služby Active Directory a jednu instanci služby Azure AD.  To se bude používat ve většině scénářů a je očekávané topologie, při použití Azure AD Connect Expresní instalace, jak je znázorněno na následujícím obrázku.
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest.png) Scénář jedné doménové struktury je běžné, že i malé i velké organizace s více doménovými strukturami, jak je znázorněno na obrázku 5.
+![Podporované topologie](./media/plan-hybrid-identity-design-considerations/single-forest.png) jedné doménové struktury scénáře je běžné i malé i velké organizace s více doménovými strukturami, jak je znázorněno na obrázku 5.
 
 > [!NOTE]
 > Další informace o různých místních a topologie služby Azure AD službou Azure AD Connect sync najdete v článku [topologie pro Azure AD Connect](plan-connect-topologies.md).
 > 
 > 
 
-![](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![topologie s více doménovými strukturami](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 Scénář s více doménovými strukturami
 
@@ -140,7 +140,7 @@ Pokud se jedná o tento případ a pak jednou více doménovými strukturami top
 
 Pokud máte více než jeden aktivní účet nebo poštovní schránky více než jeden výše uvedené neplatí, Azure AD Connect bude vyberte jeden a ignorovat druhou.  Pokud propojení poštovních schránek, ale žádný účet, tyto účty se nebudou exportovat do služby Azure AD a tomuto uživateli nebudou členem žádné skupiny.  Tím se liší od jak v minulosti nástrojem DirSync a je úmyslné pro lepší podpory těchto scénářů s více doménovými strukturami. Na následujícím obrázku je zobrazený scénář více doménovými strukturami.
 
-![](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![Více tenantů Azure AD](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **Více doménových struktur více scénáře služby Azure AD**
 
@@ -148,7 +148,7 @@ Doporučuje se mít jenom jeden adresář ve službě Azure AD pro organizaci, a
 
 Je možné a podporované pro jednu instanci v místním Active Directory připojit k více adresářů Azure AD, jak je znázorněno na následujícím obrázku:
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![filtrování jedné doménové struktury](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **Scénáře filtrování jednou doménovou strukturou**
 

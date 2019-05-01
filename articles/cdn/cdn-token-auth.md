@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324458"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869409"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení prostředků Azure CDN pomocí ověření tokenu
 
@@ -33,7 +33,7 @@ Ověřování pomocí tokenu je mechanismus, který umožňuje zabránit obsluhu
 
 Ověřování pomocí tokenu ověřuje, že žádosti jsou generovány jako důvěryhodný vyžadováním požadavky tak, aby obsahovala hodnotu tokenu, že kódování obsahuje informace o žadateli. Pouze v případě, že kódovaného informace splňuje požadavky; se obsah obsluhuje pro žadatele v opačném případě požadavků byl odepřen. Požadavky můžete nastavit pomocí jednoho nebo více z následujících parametrů:
 
-- Země: Povolit nebo odepřít požadavky, které pocházejí ze zemí podle jejich [směrové číslo země](/previous-versions/azure/mt761717(v=azure.100)).
+- Země: Povolit nebo odepřít požadavky, které pocházejí z určeného zemí nebo oblastí jejich [směrové číslo země](/previous-versions/azure/mt761717(v=azure.100)).
 - Adresa URL: Povolit pouze požadavky, které odpovídají zadaného prostředku nebo cesta.
 - Hostitel: Povolit nebo odmítnout požadavky, které používají zadaní hostitelé v hlavičce požadavku.
 - Odkazující server: Povolí nebo zakáže žádost ze zadaného odkazující server.
@@ -86,7 +86,7 @@ Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při 
 
       ![Klíč nastavení tokenu ověřování CDN](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. Pomocí nástroje šifrovat nastavit parametry šifrování a generovat token. Pomocí nástroje šifrování můžete povolit nebo odepřít požadavky na základě času vypršení platnosti, země, referrer, protokol a IP adresa klienta (v libovolnou kombinaci). Ačkoli neexistuje žádné omezení počtu a kombinace parametrů, které mohou být kombinovány k vytvoření tokenu, celková délka tokenu je omezen na 512 znaků. 
+   4. Pomocí nástroje šifrovat nastavit parametry šifrování a generovat token. Pomocí nástroje šifrování můžete povolit nebo odepřít požadavky na základě čas vypršení platnosti, země/oblast, referrer, protokol a IP adresa klienta (v libovolnou kombinaci). Ačkoli neexistuje žádné omezení počtu a kombinace parametrů, které mohou být kombinovány k vytvoření tokenu, celková délka tokenu je omezen na 512 znaků. 
 
       ![CDN šifrování nástroje](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -120,11 +120,11 @@ Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při 
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Umožňuje pouze požadavky, které pocházejí z jedné nebo více zadanou zemí. Požadavky, které pocházejí z jiných zemí byl odepřen. Použití dvou písmen [směrové číslo země ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) pro jednotlivé země a oddělit každou z nich čárkou; nepřidávejte mezerou. Například pokud chcete povolit přístup ze Spojených států a (Francie), zadejte `US,FR`.</td>
+      >    <td>Umožňuje pouze požadavky, které pocházejí z jednoho nebo více zadanou zemí nebo oblastí. Požadavky, které pocházejí ze všech jiných zemích nebo oblastech je odepřen. Použití dvou písmen [směrové číslo země ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) pro jednotlivé země a oddělit každou z nich čárkou; nepřidávejte mezerou. Například pokud chcete povolit přístup ze Spojených států a (Francie), zadejte `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Odmítne požadavky, které pocházejí z jedné nebo více zadanou zemí. Jsou povoleny požadavky, které pocházejí z jiných zemí. Implementace je stejné jako <b>ec_country_allow</b> parametru. Pokud je k dispozici v obou kód země <b>ec_country_allow</b> a <b>ec_country_deny</b> parametry, <b>ec_country_allow</b> parametr má přednost.</td>
+      >    <td>Odmítne požadavky, které pocházejí z jednoho nebo více zadanou zemí nebo oblastí. Jsou povoleny požadavky, které pocházejí z všechny ostatní země/oblasti. Implementace je stejné jako <b>ec_country_allow</b> parametru. Pokud je k dispozici v obou kód země <b>ec_country_allow</b> a <b>ec_country_deny</b> parametry, <b>ec_country_allow</b> parametr má přednost.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>

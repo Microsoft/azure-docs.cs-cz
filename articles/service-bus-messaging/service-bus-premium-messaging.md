@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 478446c834f5e6c811d78828868ba12a90e603ac
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125827"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872734"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -37,7 +37,7 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Možnost vertikálně navýšit a snížit kapacitu |neuvedeno |
 | Velikost zprávy do 1 MB |Velikost zprávy do 256 kB |
 
-**Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium můžete koupit 1, 2 nebo 4 jednotky zasílání zpráv. Jedna úloha nebo entita může zahrnovat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv můžete změnit podle libosti. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
+**Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Můžete koupit 1, 2, 4 nebo 8 jednotek pro každý obor názvů Service Bus úrovně Premium pro zasílání zpráv. Jedna úloha nebo entita může zahrnovat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv můžete změnit podle libosti. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
 
 Vedle toho, že je tento výkon předvídatelnější, je také rychlejší. Zasílání zpráv Service Bus úrovně Premium staví na databázovém jádru představeném ve službě [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Se zasíláním zpráv na úrovni Premium je výkon ve špičce mnohem vyšší než na úrovni Standard.
 

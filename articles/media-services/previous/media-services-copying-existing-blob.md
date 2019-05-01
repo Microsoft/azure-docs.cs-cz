@@ -13,25 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61243320"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868155"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování existujících objektů BLOB do k Assetu Media Services
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
 Tento článek popisuje, jak kopírovat objekt BLOB z účtu úložiště do nového prostředku Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+
+By se neměly pokoušet ke změně obsahu kontejnery objektů blob, které byly generovány službou Media Services bez použití rozhraní API služby Media.
 
 Rozšiřující metody pracovat:
 
 - Pravidelné prostředky.
 - Živý archív prostředky (FragBlob formátu).
 - Zdrojové a cílové prostředky, které patří do různých účtů Media Services (i v různých datových centrech). Může však být poplatky tímto způsobem. Další informace o cenách najdete v tématu [přenosy dat](https://azure.microsoft.com/pricing/#header-11).
-
-> [!NOTE]
-> By se neměly pokoušet ke změně obsahu kontejnery objektů blob, které byly generovány službou Media Services bez použití rozhraní API služby Media.
-> 
 
 Tento článek ukazuje dva příklady:
 

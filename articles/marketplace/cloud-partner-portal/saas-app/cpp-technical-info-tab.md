@@ -1,25 +1,18 @@
 ---
-title: SaaS aplikace nabídka technické konfigurace Azure | Dokumentace Microsoftu
+title: SaaS aplikace nabídka technické konfigurace Azure | Azure Marketplace
 description: Technické informace o konfiguraci pro SaaS aplikace nabídky na webu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 46dcf4aeb7ddb67028eb23dde9236f2b7709f86d
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594352"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941724"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta technické informace o SaaS aplikace
 
@@ -27,9 +20,11 @@ Technické informace o kartě poskytuje technické konfiguračním formuláři. 
 
 ![Technické konfigurace formuláře](./media/saas-techinfo-techconfig.png)
 
+
 ## <a name="technical-configuration-form"></a>Technické konfigurace formuláře
 
 Tento formulář má pole 2: Produkt a výzvu k akci.
+
 
 ### <a name="product-field"></a>Pole produktu
 
@@ -37,6 +32,7 @@ Můžete zadat aplikace SaaS pro obě následující prodejní místa:
 - Podnikový uživatel tak, že vyberete **výpis** možnost.
 - Pro IT správce, tak, že vyberete **prodávat prostřednictvím Microsoft**.
 Při rozhodování, jaký typ aplikace SaaS, kterou vytváříte, přečtěte si téma [pochopit prezentace výběr](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#understand-storefront-selection).
+
 
 #### <a name="sell-through-microsoft"></a>Jejím prostřednictvím – Microsoft
 K vytvoření tohoto prostředí budete muset nakonfigurovat následující:
@@ -46,16 +42,17 @@ K vytvoření tohoto prostředí budete muset nakonfigurovat následující:
 
   ![Prodej přes Microsoft formuláře](./media/saas-techinfo-sellthrough-ms.png)
 
-Následující tabulka popisuje povinná pole pro prodej prostřednictvím společnosti Microsoft.
+Následující tabulka popisuje pole povinná pro všechny **prodávat prostřednictvím Microsoft**.  Povinná pole jsou uvést hvězdičkou (*).
 
 |  **Název pole**   |  **Popis**  |
 |  ---------------  |  ---------------  |
-|    ID předplatných ve verzi Preview               |    Všechny předplatné Azure identifikátory použitými k otestování vaší nabídky ve verzi preview, předtím, než je veřejně dostupná.               |
-|     Začínáme se službou pokyny              |   Pokyny ke sdílení se zákazníky k usnadnění připojení k aplikaci SaaS. Jsou povolené základní značky HTML, například: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;atd.                |
-|    Cílová adresa URL stránky  |   Adresu URL vašeho webu, který bude směrovat vaši zákazníci objevil na po získání z webu Azure portal. Tato adresa URL bude také koncového bodu, který bude přijímat připojení rozhraní API pro usnadnění obchodování s Microsoftem.                |
-|  Připojení Webhooku    |  Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné Azure náramků RFID neplatný), potřebujeme, abyste nám webhooku připojení. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do něj a potom je odpovídajícím způsobem zpracovat. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps</a>                |
-|  Azure AD Tenanta, ID a ID aplikace      |   Uvnitř webu Azure portal, vyžadujeme, vytvoření aplikace Active Directory tak, že abychom mohli ověřit připojení mezi dvěma naše služby je za ověřené komunikaci. U těchto polí, vytvořit aplikaci AD a vložte odpovídající Id Tenanta a Id aplikace. Všimněte si, že je id aplikace přidružené k vaší publisherID. Ujistěte se proto, že stejné ID aplikace jako všechny nabídky.             |
-
+|  **ID předplatných ve verzi Preview\***   |  Všechny předplatné Azure identifikátory použitými k otestování vaší nabídky ve verzi preview, předtím, než je veřejně dostupná.  |
+|  **Ve verzi Preview účty AAD/MSA\***   |  Účty Azure AD/MSA, oddělených čárkami, které je udělen přístup k verzi preview. |
+|  **Začínáme se službou pokyny** |  Pokyny ke sdílení se zákazníky k usnadnění připojení k aplikaci SaaS. Jsou povolené základní značky HTML, například: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;atd.    |
+|  **Cílová adresa URL stránky\***           |  Adresu URL vašeho webu, který bude směrovat vaši zákazníci objevil na po získání z webu Azure portal. Tato adresa URL bude také koncového bodu, který bude přijímat připojení rozhraní API pro usnadnění obchodování s Microsoftem.   |
+| **Připojení Webhooku\***            |  Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné Azure náramků RFID neplatný), potřebujeme, abyste nám webhooku připojení. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do něj a potom je odpovídajícím způsobem zpracovat. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps</a>    |
+|  **ID klienta Azure AD\***  a **ID aplikace\***      |   Uvnitř webu Azure portal, vyžadujeme, vytvoření aplikace Active Directory tak, že abychom mohli ověřit připojení mezi dvěma naše služby je za ověřené komunikaci. U těchto polí, vytvořit aplikaci AD a vložte odpovídající Id Tenanta a Id aplikace. Všimněte si, že je id aplikace přidružené k vaší publisherID. Ujistěte se proto, že stejné ID aplikace jako všechny nabídky.   |
+|   |   |
 
 Nakonec Pokud vyberete **prodávat prostřednictvím Microsoft**, existuje další nová nabídka kartu s názvem **plány**. 
 

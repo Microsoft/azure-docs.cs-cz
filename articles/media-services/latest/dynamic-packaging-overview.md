@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 90af9d40f797e493696d52e4cd744b99e3b57911
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: a907e35e8e39b9dadd9106e7fd99063db28647a5
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104118"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869661"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
-Microsoft Azure Media Services umožňuje doručovat mnoho média zdrojového formátů souborů, formáty, streamování médií a ochrana obsahu formáty do různých technologií klienta (třeba iOS a XBOX). Tito klienti pochopit různé protokoly, například iOS vyžaduje, že formát protokolu HTTP Live Streaming (HLS) a služby Xbox vyžadují, technologie Smooth Streaming. Pokud máte sadu s adaptivní přenosovou rychlostí (s více přenosovými rychlostmi) MP4 soubory (ISO Base médií 14496-12) nebo sadu s adaptivní přenosovou rychlostí soubory technologie Smooth Streaming, které mají sloužit ke klientům, kteří pochopit, HLS, MPEG DASH nebo Smooth Streaming, můžete využít výhod dynamického Balení. Balení je nezávislé na rozlišení, jsou podporovány SD/HD, High Density/UHD - 4 kB.
+Microsoft Azure Media Services umožňuje doručovat mnoho média zdrojového formátů souborů, formáty, streamování médií a ochrana obsahu formáty do různých technologií klienta (třeba iOS a XBOX). Tito klienti pochopit různé protokoly, například iOS vyžaduje, že formát protokolu HTTP Live Streaming (HLS) a služby Xbox vyžadují, technologie Smooth Streaming. Pokud máte sadu s adaptivní přenosovou rychlostí (s více přenosovými rychlostmi) MP4 soubory (ISO Base médií 14496-12) nebo sadu s adaptivní přenosovou rychlostí soubory technologie Smooth Streaming, které mají sloužit ke klientům, kteří pochopit, HLS, MPEG DASH nebo Smooth Streaming, můžete využít výhod  **Dynamické balení**. Balení je nezávislé na rozlišení, jsou podporovány SD/HD, High Density/UHD - 4 kB.
 
-[Koncové body streamování](streaming-endpoint-concept.md) je služba dynamického balení ve službě Media Services používá k doručování multimediálního obsahu pro klientské přehrávače. Dynamické balení je funkce, která se dodává ve všech standardních **koncové body streamování** (Standard nebo Premium). 
+Ve službě Media Services [koncový bod streamování](streaming-endpoint-concept.md) představuje dynamické (just-in-time) obalu a původu službu, která může doručovat obsah na vyžádání a živé přímo do klientské aplikace přehrávače, jedním z běžných datových proudů mediálních protokolů (HLS nebo DASH). Dynamické balení je funkce, která se dodává ve všech standardních **koncové body streamování** (Standard nebo Premium). 
 
 Abyste mohli využívat **dynamické balení**, musíte mít **Asset** sadu souborů MP4 a datových proudů konfigurační soubory potřebné pro dynamické balení Media Services. Jedním ze způsobů, jak tyto soubory získat, je zakódovat vaše soubory mezzanine (zdrojové soubory) pomocí Media Services. Chcete-li videa v zakódovanému Assetu dostupných klientů pro přehrávání, budete muset vytvořit **Lokátor streamování** a vytvoření adresy URL pro streamování. Potom podle formátu určeného v manifestu streamování klienta (HLS, DASH nebo Smooth), můžete datový proud obdrželi v protokolu, kterou jste zvolili.
 

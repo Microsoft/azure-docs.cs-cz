@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d373bc188a4d93c122cdf2cffbc4323aca16b4a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc83d94acd25914ee57473de53afbc018f310887
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346124"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575771"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [webu Azure portal](https://portal.azure.com).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. Zvolte +**vytvořit prostředek**, klikněte na tlačítko **Internet of Things**.
+2. Zvolte +**vytvořit prostředek**, pak *Hledat na Marketplace* pro **služby IoT Hub**.
 
-3. Klikněte na tlačítko **služby Iot Hub** ze seznamu na pravé straně. Zobrazí se první obrazovka pro vytvoření služby IoT hub.
+3. Vyberte **služby IoT Hub** a klikněte na tlačítko **vytvořit** tlačítko. Zobrazí se první obrazovka pro vytvoření služby IoT hub.
 
    ![Vytvoření centra na webu Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 

@@ -13,18 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: e27b52c96f524f25aab18f45cf72c43884b7640d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4b4f2ec779c37f78b371c27df80c354eccb41e7a
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61227157"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869438"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [Verze 3](../latest/dynamic-packaging-overview.md)
 > * [Verze 2](media-services-dynamic-packaging-overview.md)
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 Ochrana obsahu formáty pro širokou škálu technologií klienta a Microsoft Azure Media Services umožňuje doručovat mnoho média zdrojového formátů souborů, formáty, streamování médií (třeba s Iosem, XBOX, Silverlight, Windows 8). Tito klienti pochopit různé protokoly, například iOS vyžaduje formátu V4 HTTP Live Streaming (HLS) a Silverlight a Xbox vyžadují, technologie Smooth Streaming. Pokud máte sadu s adaptivní přenosovou rychlostí (s více přenosovými rychlostmi) MP4 soubory (ISO Base médií 14496-12) nebo sadu s adaptivní přenosovou rychlostí soubory technologie Smooth Streaming, které mají sloužit ke klientům, kteří pochopit MPEG DASH, HLS nebo technologie Smooth Streaming, by měl využít výhod média Dynamické balení služby.
 

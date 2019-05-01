@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 4/23/2019
 ms.author: victorh
 ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62738777"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721180"
 ---
 # <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaný název domény
 

@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: b98d20a1f96a6ab4a0dc72330e85fdc98ba04eae
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576374"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727063"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
 
@@ -28,7 +28,7 @@ Aktivita funkce Azure vám umožní spustit [Azure Functions](../azure-functions
 
 ## <a name="azure-function-linked-service"></a>Služba Azure propojené – funkce
 
-Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, která [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) je *není* `JObject`.) Žádný návratový typ jiný než `JObject` selže a vyvolá chybu obecný uživatel *Chyba volání koncového bodu*.
+Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, která [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) je *není* `JObject`.) Žádný návratový typ jiný než `JObject` selže a vyvolá chybu uživatele *obsah odpovědi není platný JObject*.
 
 | **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
@@ -52,11 +52,18 @@ Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, k
 
 Zobrazit schéma datové části požadavku v [schématu datové části požadavku](control-flow-web-activity.md#request-payload-schema) oddílu.
 
-## <a name="more-info"></a>Další informace
+## <a name="routing-and-queries"></a>Směrování a dotazy
 
-Aktivita funkce Azure podporuje **směrování**. Například, pokud vaše aplikace používá následující směrování - `https://functionAPP.azurewebsites.net/api/functionName/{value}?code=<secret>` - pak bude `functionName` je `functionName/{value}`, které můžete parametrizovat poskytnout požadovaný `functionName` za běhu.
+Aktivita funkce Azure podporuje **směrování**. Například, pokud má koncový bod vaše funkce Azure Functions `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`, pak bude `functionName` použít v aktivitě funkce Azure je `<functionName>/<value>`. Tato funkce se požadovaný můžete parametrizovat `functionName` za běhu.
 
-Aktivita funkce Azure podporuje také **dotazy**. Dotaz musí být součástí `functionName` – například `HttpTriggerCSharp2?name=hello` – kde `function name` je `HttpTriggerCSharp2`.
+Aktivita funkce Azure podporuje také **dotazy**. Dotaz musí být součástí `functionName`. Například, pokud je název funkce `HttpTriggerCSharp` a dotaz, který chcete zahrnout `name=hello`, pak můžete vytvořit `functionName` v aktivitě funkce Azure jako `HttpTriggerCSharp?name=hello`. Tato funkce může být parametrizován tak můžete určit hodnotu za běhu.
+
+## <a name="timeout-and-long-running-functions"></a>Časový limit a dlouho běžící funkce
+
+Azure Functions vyprší po sekundách 230 bez ohledu `functionTimeout` nastavení, které jste nakonfigurovali v nastavení. Další informace najdete v [tomto článku](../azure-functions/functions-versions.md#timeout). Chcete-li tento problém vyřešit, postupujte podle asynchronní vzorek nebo použít Durable Functions. Výhodou odolná služba Functions je, že nabízejí vlastní mechanismus sledování stavu, takže nebudete muset implementovat vlastní.
+
+Další informace o odolná služba Functions v [v tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivita funkce Azure můžete nastavit pro volání funkce trvalý, který vrátí odpověď se jiný identifikátor URI, například [v tomto příkladu](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Protože `statusQueryGetUri` vrátí 202 stav protokolu HTTP při funkce běží, stav funkce můžete dotazovat pomocí aktivitu webu. Stačí nastavit aktivitu webu s `url` pole nastaveno `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Po dokončení funkce trvalý výstup funkce bude výstup aktivity webu.
+
 
 ## <a name="next-steps"></a>Další postup
 

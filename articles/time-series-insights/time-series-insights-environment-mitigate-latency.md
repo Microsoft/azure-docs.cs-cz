@@ -12,14 +12,15 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556743"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685152"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezování snížit latenci v Azure Time Series Insights
+
 Pokud objem příchozích dat překročí konfiguraci vašeho prostředí, můžete setkat s latencí nebo omezení využití sítě v Azure Time Series Insights.
 
 Můžete vyhnout latenci a omezování tím, že správně nakonfigurujete prostředí objem dat, který chcete analyzovat.
@@ -31,7 +32,7 @@ Které bývají nejčastějším docházet k latenci a omezování, když jste:
 - Nahrání velkého množství historických událostí do zdroje událostí, což vede k prodlevě (Time Series Insights potřebovat dohnat).
 - Připojte se k referenčních dat pomocí telemetrie, což vede k větší velikost události.  Z hlediska omezení paket ingressed data s velikost paketu 32 kB považuje za 32 události, každý velikosti 1 KB. Události maximální povolená velikost je 32 KB; datových paketů větší než 32 KB se oříznou.
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>V tomto videu se budeme zabývat chování příchozího přenosu dat Time Series Insights a jak ji plánovat.</br>
 
@@ -61,7 +62,6 @@ Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 |**Příchozí přenos dat přijaté zprávy časový interval**    |  Zdroj a čas, kdy se zpracovávají v příchozího přenosu dat, rozdíl v sekundách mezi časem, že je zpráva událostí zařazených do fronty.      |
 |**Prodleva počet zpráv přijatých příchozího přenosu dat**    |  Rozdíl mezi pořadové číslo poslední zprávy ve frontě událostí zdroje oddílu a pořadovým číslem zprávy jsou zpracovávány v příchozí.      |
 
-
 ![Latence](media/environment-mitigate-latency/latency.png)
 
 Pokud jste se omezují, zobrazí se hodnota pro *příchozího přenosu dat přijatých zpráv časová prodleva*, vás informuje o tom, kolik sekund za TSI pochází z skutečný čas zprávy narazí na zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Prodleva počet zpráv přijatých příchozího přenosu dat* by měl také obsahovat hodnotu, umožňuje určit, kolik zpráv za vás.  Nejjednodušší způsob, jak získat zachycena je zvýšení kapacity pro vaše prostředí na hodnotu, která vám umožní vám pomohou překonat rozdíl.  
@@ -74,11 +74,14 @@ Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za kap
 
 Také, pokud máte podezření, se omezují, můžete porovnat vaše **příchozího přenosu dat přijatých zpráv** pomocí události uživatele egressed zdroj zprávy.  Pokud příchozí přenos dat do vašeho centra událostí je větší než vaše **příchozího přenosu dat přijatých zpráv**, služby Time Series Insights jsou pravděpodobně omezené.
 
-## <a name="improving-performance"></a>Zvýšení výkonu 
+## <a name="improving-performance"></a>Zvýšení výkonu
+
 Ke snížení omezení šířky pásma a latence, je nejlepší způsob, jak ho opravit zvýšit kapacitu vašeho prostředí. 
 
 Můžete vyhnout latenci a omezování tím, že správně nakonfigurujete prostředí objem dat, který chcete analyzovat. Další informace o tom, jak přidat kapacitu do svého prostředí najdete v tématu [škálování prostředí](time-series-insights-how-to-scale-your-environment.md).
 
 ## <a name="next-steps"></a>Další postup
+
 - Další postup řešení potíží [diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights](time-series-insights-diagnose-and-solve-problems.md).
+
 - Další pomoc, zahájit konverzaci na [fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Taky se můžete obrátit [podpory Azure](https://azure.microsoft.com/support/options/) pro možnosti podpory s asistencí.

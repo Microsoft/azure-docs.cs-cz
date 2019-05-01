@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33d8e18dcec98710443623c03651aa568aa37009
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e821c6bc9f2f7f84f5f020d1c5e3248e7163044c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819930"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914976"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -281,7 +281,7 @@ f1_score_macro|F1 skóre je průměr přesnosti a odvolání. Aritmetický prům
 f1_score_micro|F1 skóre je průměr přesnosti a odvolání. Micro je vypočítán globálně výpočtem celkového pravdivě pozitivní, falešně negativní a počet falešně pozitivních výsledků|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Průměrná = "micro"|
 f1_score_weighted|F1 skóre je průměr přesnosti a odvolání. Vážený průměr třídy frekvence skóre F1 pro každou třídu|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Průměrná = "váha"|
 log_loss|Toto je ztráta funkce použitá v logistické regrese (multinomial) a rozšíření jako jsou neuronové sítě definované jako záporné pravděpodobnost protokolu true popisků zadaný pravděpodobnostní třídění předpovědi. Jeden vzorek hodnotou true, pokud popisek yt v {0,1} a odhad pravděpodobnosti yp této yt = 1, ztráta protokolu je – protokolování P (yt&#124;yp) =-(yt log(yp) + (1 - yt) protokolu (1 - yp))|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Žádný|
-norm_macro_recall|Normalizovaná si možná Vzpomínáte – makro je makro si možná Vzpomínáte, normalizovaná tak, aby náhodná výkonu má skóre 0 a ideální výkon má skóre 1. Toho dosáhnete pomocí norm_macro_recall: = (recall_score_macro - R) /(1-R), kde R je očekávané hodnotě recall_score_macro pro náhodné predikcí (tj, R = 0,5 pro binární klasifikaci) a R=(1/C) problémů klasifikace C – třída|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "makro" a potom (recall_score_macro - R) /(1-R), kde R je očekávané hodnotě recall_score_macro pro náhodné predikcí (tj, R = 0,5 pro binární klasifikaci) a R=(1/C) problémů klasifikace C – třída|
+norm_macro_recall|Normalizovaná si možná Vzpomínáte – makro je makro si možná Vzpomínáte, normalizovaná tak, aby náhodná výkonu má skóre 0 a ideální výkon má skóre 1. Toho dosáhnete pomocí norm_macro_recall: = (recall_score_macro - R) /(1-R), kde R je očekávané hodnotě recall_score_macro pro náhodné predikcí (tj, R = 0,5 pro binární klasifikaci) a R=(1/C) problémů klasifikace C – třída|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "makro" a potom (recall_score_macro - R) /(1-R), kde R je očekávané hodnotě recall_score_macro pro náhodné predikcí (tj, R = 0,5 pro binární klasifikaci) a R=(1/C) problémů klasifikace C – třída|
 precision_score_macro|Přesnost je procento prvky označeny jako určité třídy, které jsou ve skutečnosti v dané třídě. Aritmetický průměr přesnosti pro každou třídu je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "makro"|
 precision_score_micro|Přesnost je procento prvky označeny jako určité třídy, které jsou ve skutečnosti v dané třídě. Micro je vypočítán globálně výpočtem celkového pravdivě pozitivní a počet falešně pozitivních výsledků|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "micro"|
 precision_score_weighted|Přesnost je procento prvky označeny jako určité třídy, které jsou ve skutečnosti v dané třídě. Váha je aritmetický průměr přesnosti pro každou třídu váženo podle počtu true instancí každé třídy|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "váha"|

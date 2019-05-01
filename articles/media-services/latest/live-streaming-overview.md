@@ -1,5 +1,5 @@
 ---
-title: Přehled živého streamování využívajícího službu Azure Media Services | Dokumentace Microsoftu
+title: Přehled živé streamování pomocí služby Azure Media Services v3 | Dokumentace Microsoftu
 description: Tento článek poskytuje přehled živého streamování využívajícího službu Azure Media Services v3.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
-ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0157cdc8062d7c53aaeb3ff01762e9562aa9c394
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322464"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866340"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -26,7 +26,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 
 - Fotoaparát, který se používá k zachycení živé události.<br/>Inspiraci, instalační program, podívejte se na [videa ozubené kolo nastavení jednoduché a přenosné události]( https://link.medium.com/KNTtiN6IeT).
 
-    Pokud nemáte přístup k fotoaparátu, nástroje, jako [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) je možné generovat živého kanálu z videosouboru.
+    Pokud nemáte přístup k fotoaparátu, nástroje, jako [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) je možné generovat živého kanálu z videosouboru.
 - Živé video encoder, který převádí signály z kamery (nebo jiné zařízení, jako je přenosný počítač) příspěvek informačního kanálu, který je odeslán do Media Services. Příspěvek kanál může obsahovat signály související s reklamy, jako je například SCTE 35 značky.<br/>Seznam doporučených kodéry streamování najdete v tématu [živé streamování kodérů](recommended-on-premises-live-encoders.md). Také přečtěte si tento blog: [Živé streamování provozu pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 - Komponenty ve službě Media Services, která umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a vysílat živě přenášená akce vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
@@ -37,7 +37,7 @@ Tento článek obsahuje přehled a pokyny k živé streamování pomocí služby
 
 ## <a name="dynamic-packaging"></a>Dynamické balení
 
-Díky Media Services můžete využít výhod dynamického Packaging](dynamic-packaging-overview.md), který umožňuje zobrazení náhledu a všesměrového vysílání živé streamy v [formátů MPEG DASH, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z příspěvku informační kanál, který odešlete do služby. Vaši uživatelé můžou přehrávat živé streamování pomocí libovolné kompatibilní hráči HLS, DASH nebo Smooth Streaming. Můžete použít [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ve vašich webových nebo mobilních aplikací můžete poskytovat datový proud v některém z těchto protokolů.
+Pomocí Media Services, můžete využít výhod [dynamické balení](dynamic-packaging-overview.md), která umožňuje zobrazit náhled a všesměrového vysílání živé streamy v [formátů MPEG DASH, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z příspěvku informačního kanálu který se posílá do služby. Vaši uživatelé můžou přehrávat živé streamování pomocí libovolné kompatibilní hráči HLS, DASH nebo Smooth Streaming. Můžete použít [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ve vašich webových nebo mobilních aplikací můžete poskytovat datový proud v některém z těchto protokolů.
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
@@ -73,7 +73,7 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 
 ### <a name="general-steps"></a>Obecné kroky
 
-1. Ve vašem účtu Media Services, ujistěte se, **koncový bod streamování** běží. 
+1. Ve vašem účtu Media Services, ujistěte se, že **koncový bod streamování** (původní) je spuštěná. 
 2. Vytvoření [živá událost](live-events-outputs-concept.md). <br/>Při vytváření události, můžete je zadat na automatické spuštění. Alternativně můžete spustit událost, když budete chtít spustit streamování.<br/> Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí správné po jeho vytvoření. Účtování začne Jakmile živá událost se spustí. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace. Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
 3. Získání adresy URL ingestování a konfiguraci vaší místní kodér použití adresy URL k odeslání příspěvku informačního kanálu.<br/>Zobrazit [doporučuje kodéry](recommended-on-premises-live-encoders.md).
 4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
@@ -81,7 +81,7 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 6. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.<br/>**Live výstup** bude archivovat do datového proudu **Asset**.
 7. Vytvoření **Lokátor streamování** pomocí integrované **streamování zásad** typy.<br/>Pokud máte v úmyslu šifrování obsahu, přečtěte si [Content protection přehled](content-protection-overview.md).
 8. Seznam cest na **Lokátor streamování** získat zpět adresy URL používat (Toto jsou deterministické).
-9. Získání názvu hostitele pro **koncový bod streamování** chcete z datového proudu.
+9. Získání názvu hostitele pro **koncový bod streamování** (původní), kterou chcete z datového proudu.
 10. Adresu URL v kroku 8 v kombinaci s názvem hostitele v kroku 9 získat úplnou adresu URL.
 11. Pokud budete chtít zastavit, aby vaše **živá událost** viditelná, musíte zastavit streamování událostí a delete **Lokátor streamování**.
 
@@ -92,6 +92,10 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 - [Porovnání funkcí živého typy událostí](live-event-types-comparison.md)
 - [Stavy a fakturace](live-event-states-billing.md)
 - [Latence](live-event-latency.md)
+
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

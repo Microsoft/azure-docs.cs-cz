@@ -1,25 +1,19 @@
 ---
-title: Ověřování - Azure Marketplace kritéria obsahu | Dokumentace Microsoftu
+title: Ověření obsahu kritéria Marketplace | Azure Marketplace
 description: Tento článek popisuje, jak se stát vydavatelem na webu marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093195"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937832"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zařazení na Azure Marketplace
 

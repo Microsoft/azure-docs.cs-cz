@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 04/26/2019
 ms.author: jeedes
-ms.openlocfilehash: d16aa8442f71845e7b46377c6c290212f9c400a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 494284d32b48b810143f8c483278b2efbfb0dbc2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280498"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922309"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>Kurz: Integrace Azure Active Directory s MyWorkDrive
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Konfigurace integrace Azure AD s MyWorkDrive, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
 * MyWorkDrive jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -66,7 +66,7 @@ Konfigurace integrace MyWorkDrive do služby Azure AD, budete muset přidat MyWo
 
 4. Do vyhledávacího pole zadejte **MyWorkDrive**vyberte **MyWorkDrive** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![MyWorkDrive v seznamu výsledků](common/search-new-app.png)
+    ![MyWorkDrive v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -123,11 +123,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s MyWorkDrive, proveďte nás
 
 6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
 ### <a name="configure-myworkdrive-single-sign-on"></a>Konfigurace MyWorkDrive jednotné přihlašování
 
-1. V jiné okno webového prohlížeče, přihlaste se k MyWorkDrive jako správce zabezpečení.
+1. V okně jiné webové prohlížeče Přihlaste se k MyWorkDrive jako správce zabezpečení.
 
 2. Na serveru MyWorkDrive v panelu Správce, klikněte na **ENTERPRISE** a proveďte následující kroky:
 
@@ -141,10 +141,10 @@ Ke konfiguraci Azure AD jednotné přihlašování s MyWorkDrive, proveďte nás
 
     d. Klikněte na **Uložit**.
 
-    >[!NOTE]
-    >Pro další informace najdete [článek podpory MyWorkDrive Azure AD](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
+    > [!NOTE]
+    > Pro další informace najdete [článek podpory MyWorkDrive Azure AD](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -162,8 +162,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -199,7 +198,7 @@ V této části je povolit Britta Simon k udělení přístupu k MyWorkDrive pou
 
 V této části vytvoříte uživatele v MyWorkDrive jako Britta Simon. Práce s [tým podpory MyWorkDrive](mailto:support@myworkdrive.com) přidat uživatele na platformě MyWorkDrive. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -212,4 +211,3 @@ Po kliknutí na dlaždici MyWorkDrive na přístupovém panelu, můžete by měl
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

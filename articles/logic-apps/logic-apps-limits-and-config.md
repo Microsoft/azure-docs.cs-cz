@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f371376a7c801eecb6231d551546b13dbc68dd26
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303668"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916818"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -93,7 +93,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 ### <a name="global-logic-apps-service"></a>Globální služba Logic Apps
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Akce: Spuštění za 5 minut | Výchozí limit je 100 000, ale maximální limit je 300 000. | Chcete-li změnit výchozí omezení, [spuštění aplikace logiky v režimu "Vysoká propustnost"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), což je ve verzi preview. Nebo můžete distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby. |
 | Akce: Odchozí souběžných volání | ~2,500 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. |
@@ -105,7 +105,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 ### <a name="integration-service-environment-ise"></a>Prostředí integrační služby (ISE)
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 |------|-------|-------|
 | Základní jednotka limit provádění. | 10 000 spuštění akcí za 5 minut <br>což je přibližně 80 milionů spuštění akcí za měsíc | |
 | Limit škálování jednotek spuštění | 5 000 akcí spuštění za 5 minut <br>což je přibližně 40 milionů spuštění akcí za měsíc | |
@@ -179,45 +179,18 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 
 Tady je omezený počet artefaktů pro každý účet integrace. Další informace najdete v tématu [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-*Úroveň Free*
+> [!NOTE] 
+> Úroveň Free můžete používejte jenom pro scénáře průzkumného testování, nikoli produkčních scénářů. Tato vrstva omezuje propustnost a využití a nemá žádné smlouvu o úrovni služeb (SLA).
 
-Úroveň free můžete používejte jenom pro scénáře průzkumného testování, nikoli produkčních scénářů. Tato vrstva omezuje propustnost a využití a nemá žádné smlouvu o úrovni služeb (SLA).
-
-| Artefakt | Omezení | Poznámky |
-|----------|-------|-------|
-| Sestavení | 10 | |
-| Konfigurace dávek | 5 |
-| Certifikáty | 25 | |
-| Obchodní smluv EDI | 10 | |
-| Obchodní partneři EDI | 25 | |
-| Maps | 25 | |
-| Schémata | 25 |
-||||
-
-*Úroveň Basic*
-
-| Artefakt | Omezení | Poznámky |
-|----------|-------|-------|
-| Sestavení | 25 | |
-| Konfigurace dávek | 1 | |
-| Certifikáty | 2 | |
-| Obchodní smluv EDI | 1 | |
-| Obchodní partneři EDI | 2 | |
-| Maps | 500 | |
-| Schémata | 500 |
-||||
-
-*Úroveň Standard*
-
-| Artefakt | Omezení | Poznámky |
-|----------|-------|-------|
-| Sestavení | 50 | |
-| Konfigurace dávek | 50 |
-| Certifikáty | 500 | |
-| Obchodní smluv EDI | 500 | |
-| Obchodní partneři EDI | 500 | |
-| Maps | 1 000 | |
-| Schémata | 1 000 |
+| Artefakt | Free | Basic | Standard |
+|----------|------|-------|----------|
+| Obchodní smluv EDI | 10 | 1 | 500 |
+| Obchodní partneři EDI | 25 | 2 | 500 |
+| Maps | 25 | 500 | 1 000 |
+| Schémata | 25 | 500 | 1 000 |
+| Sestavení | 10 | 25 | 50 |
+| Certifikáty | 25 | 2 | 500 |
+| Konfigurace dávek | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -304,7 +277,7 @@ Logic Apps nepodporuje přímého připojení k účtům úložiště Azure pře
 | Indie – jih | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
 | Jihovýchodní Asie | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
 | Západní střed USA | 13.78.137.247, 52.161.8.128, 52.161.19.82, 52.161.26.172 |
-| Západní Evropa | 13.95.155.53, 52.174.49.6, 52.174.49.6, 52.174.54.218 |
+| Západní Evropa | 13.95.155.53, 51.144.176.185, 52.174.49.6, 52.174.54.218 |
 | Indie – západ | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | Západní USA | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | Západní USA 2 | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |

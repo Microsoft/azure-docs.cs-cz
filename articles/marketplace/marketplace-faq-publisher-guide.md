@@ -1,25 +1,18 @@
 ---
-title: Nejčastější dotazy k Marketplace | Azure
+title: Nejčastější dotazy k Azure Marketplace
 description: Odpovědi na nejčastější dotazy o Microsoft Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 34b9fadc976d3f37612f59a7fc8520c48b178f5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3e1bad5902bb35ce0c037835359c267582cc8bc7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709356"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938625"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k Marketplace
 
@@ -92,9 +85,9 @@ Závislosti se pro nabídky na Azure Marketplace nespravují automaticky. Pečli
 
 Pokud vydavatel má nakonfigurovanou nabídku k dispozici prostřednictvím kanálu CSP, bude k dispozici prostřednictvím svého prodejce.
 
-**Které země jsou podporovány pro zakoupení aplikace a služby prodávané nebo zřizované prostřednictvím Azure Marketplace?**
+**Kterých zemích a oblastech se podporují pro zakoupení aplikace a služby prodávané nebo zřizované prostřednictvím Azure Marketplace?**
 
-Azure Marketplace je dostupný pro zákazníky Microsoft Azure v zemích uvedených v [zásadách pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy).
+Azure Marketplace je dostupný pro zákazníky Microsoft Azure v zemích/oblastech uvedených v [zásadách pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy).
 
 **Jaké měny se podporuje Azure Marketplace?**
 
@@ -134,7 +127,7 @@ Předplatné Azure je součástí ceny za řešení tohoto vydavatele nezávisl�
 
 *Měsíční poplatek za:* Sazby se bude účtovat nebo fakturovat pevný měsíční poplatek za předplatné nabídky (od data zahájení předplatného plánu). V případě zrušení uprostřed měsíce nebo nevyužitých služeb se vám může účtovat poměrná část měsíčního poplatku.
 
-Podrobnosti o cenám jednotlivých nabídek najdete na stránce s podrobnostmi řešení na [ https://azure.microsoft.com/en-us/pricing/ ](https://azure.microsoft.com/pricing/) nebo v rámci [Microsoft Azure Management portal](https://portal.azure.com/).
+Podrobnosti o cenám jednotlivých nabídek najdete na stránce s podrobnostmi řešení na [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/) nebo v rámci [Microsoft Azure Management portal](https://portal.azure.com/).
 
 >[!Note]
 > S výjimkou měsíčních poplatků se poplatky za využití Azure vztahuje na všechny cenové modely, pokud není uvedeno jinak.
@@ -381,7 +374,7 @@ Po dokončení nabídky a nastavení cílové potenciálních zákazníků, moho
 
 **Kterých zemích a oblastech jsou k dispozici pro mohou vydavatelé prodávat na Azure Marketplace?**
 
-Na webu Azure Marketplace můžou momentálně prodávat vydavatelé se sídlem v těchto zemích: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentině, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bangladéš, Bělorusko, Belgie, Benin, Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Kambodža, Kamerun, Kanada, Středoafrická republika, Čad, Chile, Kolumbie, komory, Konžská, Konžská demokratická republika, Kostarika, Cote slonoviny, Chorvatsko, Kypr, Česká republika, Dánsko, Dominika, Dominikánská republika, Ekvádor, Egypt, El Salvador, Eritrea, Estonsko, Etiopie, Fidži Ostrovy, Finsko, Francie, Gruzie, Německo, Ghana, Řecko, Guatemala, Guinea, Haiti, Honduras, Hongkong – zvláštní administrativní oblast, Maďarsko, Island, Indie, Indonésie, Irák, Irsko, Izrael, Itálie, Jamajka, Japonsko, Jordánsko, Kazachstán, Keňa, Jižní Korea, Kuvajt, Laos, Lotyšsko, Libanon, Libérie, Lichtenštejnsko, Litva, Lucembursko, Madagaskar, Malawi, Malajsie, Mali, Malta, Mauricius, Mexiko, Monako, Mongolsko, Černá Hora, Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Katar, Rumunsko, Rusko, Rwanda, Saúdská Arábie, Senegal, Srbsko, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Jižní Afrika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Tanzanie, Thajsko, Východní Timor, Togo, Tonga, Trinidad a Tobago, Tunisko, Turecko, Turkmenistán, Uganda, Ukrajina, Spojené arabské emiráty, Spojené království, USA, Uruguay, Uzbekistán, Venezuela, Vietnam, Zambie a Zimbabwe.
+Na webu Azure Marketplace můžou momentálně prodávat vydavatelé se sídlem v těchto zemích nebo oblastech: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentině, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bangladéš, Bělorusko, Belgie, Benin, Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Kambodža, Kamerun, Kanada, Středoafrická republika, Čad, Chile, Kolumbie, komory, Konžská, Konžská demokratická republika, Kostarika, Cote slonoviny, Chorvatsko, Kypr, Česká republika, Dánsko, Dominika, Dominikánská republika, Ekvádor, Egypt, El Salvador, Eritrea, Estonsko, Etiopie, Fidži Ostrovy, Finsko, Francie, Gruzie, Německo, Ghana, Řecko, Guatemala, Guinea, Haiti, Honduras, Hongkong – zvláštní administrativní oblast, Maďarsko, Island, Indie, Indonésie, Irák, Irsko, Izrael, Itálie, Jamajka, Japonsko, Jordánsko, Kazachstán, Keňa, Jižní Korea, Kuvajt, Laos, Lotyšsko, Libanon, Libérie, Lichtenštejnsko, Litva, Lucembursko, Madagaskar, Malawi, Malajsie, Mali, Malta, Mauricius, Mexiko, Monako, Mongolsko, Černá Hora, Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Katar, Rumunsko, Rusko, Rwanda, Saúdská Arábie, Senegal, Srbsko, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Jižní Afrika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Tanzanie, Thajsko, Východní Timor, Togo, Tonga, Trinidad a Tobago, Tunisko, Turecko, Turkmenistán, Uganda, Ukrajina, Spojené arabské emiráty, Spojené království, USA, Uruguay, Uzbekistán, Venezuela, Vietnam, Zambie a Zimbabwe.
 
 **Jak odstranit najdou na Azure Marketplace?**
 
@@ -486,19 +479,19 @@ Závislosti se pro nabídky na Azure Marketplace nespravují automaticky. Pečli
 
 **Kdo si může koupit aplikace a služby prodávané nebo zřizované prostřednictvím Azure Marketplace?**
 
-Azure Marketplace je dostupný pro zákazníky Microsoft Azure v těchto zemích:
+Na webu Azure Marketplace je dostupný pro zákazníky Microsoft Azure v následujících zemích nebo oblastech:
 
 Alžírsko, Argentina, Austrálie, Rakousko, Bahrajn, Bělorusko, Belgie, Brazílie, Bulharsko, Kanada, Chile, Kolumbie, Kostarika, Chorvatsko, Kypr, Česká republika, Dánsko, Dominikánská republika, Ekvádor, Egypt, El Salvador, Estonsko, Finsko, Francie, Německo, Řecko , Guatemala, Hongkong, Chorvatsko, Island, Indie, Indonésie, Irsko, Izrael, Itálie, Japonsko, Jordánsko, Kazachstán, Keňa, Kuvajt, Lotyšsko, Lichtenštejnsko, Litva, Lucembursko, severní Makedonie, Malajsie, Malta, Mexiko, Černá Hora, Maroko, Nizozemsko, nové Zélandu, Nigérie, Norsko, Omán, Pákistán, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Portoriko, Katar, Rumunsko, Rusko, Saúdská Arábie, Srbsko, Singapur, Slovensko, Slovinsko, Jižní Afrika, Jižní Korea, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tchaj-wan, Thajsko, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Spojené arabské emiráty, Spojené království, USA, Uruguay, Venezuela.
 
-**Jak definovat Moje geografickou dostupností umožňující prodej v různých zemích?**
+**Jak definovat Moje geografickou dostupností umožňující prodej v různých zemích nebo oblastech?**
 
-1.  Portál Cloud Partner přejděte na skladovou Položku, ke kterému chcete přidat nové země.  V rámci "Podrobné údaje SKU" Přejít na "Země/oblast dostupnosti" a klikněte na tlačítko "Vybraných oblastech."
+1.  Portál Cloud Partner přejděte na skladovou Položku, ke kterému chcete přidat nové země/oblasti.  V rámci "Podrobné údaje SKU" Přejít na "Země/oblast dostupnosti" a klikněte na tlačítko "Vybraných oblastech."
 
     ![Vybrat oblasti](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Seznam objeví se všechny dostupné země prodávat.  Klikněte na zaškrtávací políčko vedle každé země, kterou chcete zpřístupnit tato skladová položka. Klikněte na tlačítko "OK".
+1.  Seznam objeví se všechny dostupné zemích nebo oblastech chcete ji prodávat.  Klikněte na zaškrtávací políčko vedle každé země/oblasti, kterou chcete zpřístupnit tato skladová položka. Klikněte na tlačítko "OK".
 
-    ![Vyberte zemi seznamu](media/marketplace-publishers-guide/FAQ-select-countries.png)
+    ![Vyberte zemi nebo oblast](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
 1.  Nakonec změny se použijí pro živé nabídky, klikněte na možnost "Publikovat".  
 
@@ -509,11 +502,11 @@ Alžírsko, Argentina, Austrálie, Rakousko, Bahrajn, Bělorusko, Belgie, Brazí
 
 **Jak změnit vydavatel geografické dostupnosti pro existující nabídky?**
 
-Vydavatele můžete upravit stávající nabídky, vyberte nové země a použití funkce ke stažení a nahrání tabulky k ocenění.
+Vydavatele můžete upravit stávající nabídky, vybrat nové země nebo oblasti a použití funkce ke stažení a nahrání tabulky k ocenění.
 
-**V zemích, které mohou zákazníci zakoupit nabídky na webu Azure Marketplace?**
+**Ve kterých zemích a oblastech mohou zákazníci zakoupit nabídky na webu Azure Marketplace?**
 
-Azure Marketplace podporuje 141 dodavatele geografické oblasti definované fakturační adresu zákazníka. Zobrazit [zásadách pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy) seznam zemí.
+Azure Marketplace podporuje 141 dodavatele geografické oblasti definované fakturační adresu zákazníka. Zobrazit [zásadách pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy) seznam zemích nebo oblastech.
 
 **Jaké měny se podporuje Azure Marketplace?**
 
@@ -545,7 +538,7 @@ Ceny se liší v závislosti na typu produktů a specifikacích vydavatele. Lice
 
 * **Měsíční poplatek**: Se bude účtovat nebo fakturovat pevný měsíční poplatek za předplatné nabídky, od začátku konkrétního plánu. V případě zrušení uprostřed měsíce nebo nevyužitých služeb se vám může účtovat poměrná část měsíčního poplatku.
 
-Podrobnosti o cenách najdete na stránce s podrobnostmi řešení na [ https://azure.microsoft.com/en-us/pricing/ ](https://azure.microsoft.com/pricing/), nebo na webu Microsoft Azure Management portal.
+Podrobnosti o cenách najdete na stránce s podrobnostmi řešení na [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/), nebo na webu Microsoft Azure Management portal.
 
 >[!Note]
 >S výjimkou měsíčních poplatků se poplatky za využití Azure vztahuje na všechny cenové modely, pokud není uvedeno jinak.

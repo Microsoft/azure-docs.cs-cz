@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: fc05c5c5917667d4bd9c869c9370ac952893ab26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456203"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924798"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -38,7 +38,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ### <a name="new"></a>Nová
 
 * Nyní můžete změnit vlastníka a vlastnící skupinu při správě přístupu pro kontejner ADLS Gen2, soubor nebo složku.
-* Na Windows aktualizace Průzkumníka služby Storage z v rámci produktu je nyní přírůstkové instalace. Výsledkem by měl být rychlejší prostředí aktualizace. Pokud dáváte přednost čistou instalaci, pak si můžete stáhnout [instalační program](https://azure.microsoft.com/en-us/features/storage-explorer/) sami a pak nainstalujte ručně. #1089
+* Na Windows aktualizace Průzkumníka služby Storage z v rámci produktu je nyní přírůstkové instalace. Výsledkem by měl být rychlejší prostředí aktualizace. Pokud dáváte přednost čistou instalaci, pak si můžete stáhnout [instalační program](https://azure.microsoft.com/features/storage-explorer/) sami a pak nainstalujte ručně. #1089
 
 ### <a name="preview-features"></a>Preview – funkce
 
@@ -59,7 +59,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
+* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
 * Pokus o přístup k objektům BLOB Gen2 ADLS při za proxy serverem může selhat.
 * Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
 * Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Další informace najdete v tématu #537.

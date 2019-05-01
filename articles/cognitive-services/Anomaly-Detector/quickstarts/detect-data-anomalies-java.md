@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 1c8ce91a0fd8805b307e1e21bc08f9050b8a47d4
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1b52e578afb505c87c4084684e345b7aff6a4362
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547035"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922431"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API služby detekce anomálií a Java
 
@@ -29,7 +29,7 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Java&trade; vývoj Kit(JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
+- [Java&trade; vývoj Kit(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
 
 - Tyto knihovny importu z úložiště Maven
     - [JSON v jazyce Java](https://mvnrepository.com/artifact/org.json/json) balíčku

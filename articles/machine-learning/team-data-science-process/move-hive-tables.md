@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522499"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681954"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure
 
@@ -47,7 +47,7 @@ Dotazy Hive můžete odeslat pomocí:
 2. [Odesílání dotazů Hive pomocí editoru Hive](#hive-editor)
 3. [Odesílání dotazů Hive pomocí příkazů prostředí PowerShell pro Azure](#ps)
 
-Dotazy Hive jsou podobném SQL. Pokud jste obeznámeni s SQL, můžete zjistit [Hive pro Ošidit seznam uživatelů SQL](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) užitečné.
+Dotazy Hive jsou podobném SQL. Pokud jste obeznámeni s SQL, můžete zjistit [Hive pro Ošidit seznam uživatelů SQL](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) užitečné.
 
 Při odesílání dotazů Hive, můžete také řídit cíl výstupu z dotazů Hive, jestli se na obrazovce nebo do místního souboru hlavního uzlu nebo do objektu blob Azure.
 

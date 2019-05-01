@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61305965"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919705"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -54,7 +54,9 @@ Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nast
 
 Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení.
 
-Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../azure-monitor/platform/computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat. Tuto dobu se nazývá časové období údržby. Deset minut časového období údržby je vyhrazený pro restartování počítače, pokud je potřeba restartovat počítač a vyberete možnost odpovídající restartování. Pokud opravy trvá déle, než se očekávalo a je menší než deset minut časového období údržby, nedojde k restartování.
+Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../azure-monitor/platform/computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů, nebo [Azure dotazu](#azure-machines) , která dynamicky vybere virtuálních počítačů Azure na základě zadaných kritérií. Tyto skupiny se liší od [konfiguraci oboru](../azure-monitor/insights/solution-targeting.md), který se používá jenom k určení, které počítače získat sady management Pack, které umožňují řešení. 
+
+Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat. Tuto dobu se nazývá časové období údržby. Deset minut časového období údržby je vyhrazený pro restartování počítače, pokud je potřeba restartovat počítač a vyberete možnost odpovídající restartování. Pokud opravy trvá déle, než se očekávalo a je menší než deset minut časového období údržby, nedojde k restartování.
 
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi k instalaci požadovaných aktualizací.
 
@@ -76,6 +78,9 @@ Následující tabulka uvádí seznam podporovaných operačních systémů:
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Ubuntu 14.04 LTS, 16.04 LTS a 18.04 (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+
+> [!NOTE]
+> Škálovací sady virtuálních počítačů Azure je možné spravovat pomocí správy aktualizací. Správa aktualizací funguje na instancích sami a ne na základní image. Bude potřeba naplánovat aktualizace přírůstkové způsobem, jako nelze aktualizovat všechny instance virtuálních počítačů najednou.
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 

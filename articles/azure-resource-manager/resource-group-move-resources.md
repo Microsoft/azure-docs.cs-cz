@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239133"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698493"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -222,6 +222,22 @@ Při přesunu webovou aplikaci _napříč předplatnými_, platí následující
 - Všechny prostředky App Service ve skupině prostředků daly přesunout najednou.
 - Prostředky App Service lze pouze přesunout ze skupiny prostředků, ve kterém byly původně vytvořeny. Pokud prostředek služby App Service je už v jeho původní skupiny prostředků, je nutné je přesunout zpět do této skupiny původní prostředek nejprve a pak ji lze přesunout mezi předplatnými.
 
+Pokud si nepamatujete původní skupiny prostředků, najdete ho pomocí diagnostiky. Pro vaši webovou aplikaci, vyberte **diagnostikovat a řešit problémy**. Vyberte **konfiguraci a správě**.
+
+![Vyberte diagnostiky](./media/resource-group-move-resources/select-diagnostics.png)
+
+Vyberte **možnosti migrace**.
+
+![Vybrat možnosti migrace](./media/resource-group-move-resources/select-migration.png)
+
+Vyberte možnost pro doporučené kroky pro přesun webové aplikace.
+
+![Vyberte doporučený postup](./media/resource-group-move-resources/recommended-steps.png)
+
+Zobrazí pomocí doporučených akcí je potřeba provést před přesunutím prostředků. Tyto informace zahrnují původní skupiny prostředků pro webovou aplikaci.
+
+![Doporučení](./media/resource-group-move-resources/recommendations.png)
+
 ### <a name="app-service-certificate-limitations"></a>App Service Certificate omezení
 
 Certifikát App Service můžete přesunout do nové skupiny prostředků nebo předplatného. Pokud certifikát App Service je svázaný s webovou aplikací, je nutné provést některé kroky před přesunutím prostředků do nového předplatného. Odstraňte vazbu SSL a privátní certifikát z webové aplikace před přesunutím prostředků. App Service Certificate se nemusí odstranit, stačí privátního certifikátu ve webové aplikaci.
@@ -251,7 +267,7 @@ Při přesouvání prostředků do nového předplatného, platí následující
 * Cílové předplatné nesmí mít ostatní klasické prostředky.
 * Přesunutí je možné jenom požádat prostřednictvím samostatných rozhraní REST API pro klasické přesuny. Standardní příkazy Resource Manager přesunout nefungují při přesouvání klasických prostředků do nového předplatného.
 
-Klasické prostředky přesunout do nového předplatného, pomocí operace REST, které jsou specifické pro klasické prostředky. Použití REST, proveďte následující kroky:
+Klasické prostředky přesunout do nového předplatného, pomocí operace REST, které jsou specifické pro klasické prostředky. Pokud chcete použít REST, proveďte následující kroky:
 
 1. Zaškrtněte, pokud zdrojové předplatné mohl podílet na přesun mezi předplatnými. Použijte následující operace:
 

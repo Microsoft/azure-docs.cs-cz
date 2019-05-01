@@ -1,6 +1,6 @@
 ---
 title: Přijmout Azure DevTest Labs pro svůj podnik.
-description: Tento článek poskytuje doporučený postup pro zavádění služby Azure DevTest Labs ve vašem podniku.
+description: Tento článek poskytuje doporučený postup pro pomocí Azure DevTest Labs ve vašem podniku.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e1d119f3c7c5d6dbdb570d362c53b80dad7886bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60198033"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916412"
 ---
-# <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>Nastavení infrastruktury Azure DevTest Labs ve vašem podniku
-Podniky se rychle zavést cloudu z důvodu jeho [výhody](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) , které zahrnují flexibilitu, flexibility a hospodárnost. Běžné prvním krokem zákazníci mohli využívat cloud je začít s úlohami vývoje a testování.  DevTest Labs poskytuje [funkce](devtest-lab-concepts.md) , využívat organizace a podpora [klíče enterprise pro vývoj/testování scénářů](devtest-lab-guidance-get-started.md).
+# <a name="devtest-labs-in-the-enterprise"></a>DevTest Labs v podnikové síti
+Podniky se rychle zavést cloudu z důvodu [výhody](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) , které zahrnují flexibilitu, flexibility a hospodárnost. První kroky jsou často vývojové a testovací úlohy. Azure DevTest Labs poskytuje [funkce](devtest-lab-concepts.md) , využívat organizace a podpora [klíče pro vývoj/testování scénářů](devtest-lab-guidance-get-started.md).
 
-Při migraci těchto úloh do cloudu je společnou sadu otázky:
+Běžné problémy pro podniky s migrací úloh do cloudu patří:
 
 - [Svázání prostředků pro vývoj a testování](devtest-lab-guidance-governance-policy-compliance.md)
 - [Správa a vysvětlení náklady](devtest-lab-guidance-governance-cost-ownership.md)
@@ -34,11 +34,11 @@ Při migraci těchto úloh do cloudu je společnou sadu otázky:
 - [Začínáme s testováním konceptu](devtest-lab-guidance-orchestrate-implementation.md)
 
 ## <a name="intended-audience"></a>Plánovaná cílová skupina
-Dokumentace ke službě zaměřili podnikový je určená pro IT plánovači, architekty a správce, kteří jsou zodpovědní za vytvoření a kontrola celkové nasazení a dohled nad operace postupy. Tento dokument v důsledku toho zvýrazní celkový proces a doporučuje Principy návrhu na podporu prostředí zabezpečené a stabilní vývoj a testování, která určuje, takže v konečném důsledku přijetí Azure DevTest Labs v rámci organizace.
+Tato dokumentace je pro podnikové IT plánovači, architekty a správce, kteří jsou zodpovědní za vytvoření a kontrola nasazení a dohled nad operace. Tyto články zvýraznit celkové procesu a doporučený návrh zásad. Cílem je podporovat prostředí zabezpečené a stabilní vývoj a testování, která určuje, takže v konečném důsledku přijetí Azure DevTest Labs v rámci organizace.
 
 ## <a name="enterprise-customers"></a>Podnikoví zákazníci
 
-Mnoho podnikových zákazníků aktuální DevTest Labs úspěšně použít DevTest Labs pro vývojové a testovací úlohy v jejich organizacích. [Další informace](https://azure.microsoft.com/en-us/case-studies/?term=DevTest+labs).
+Mnoho podnikových zákazníků aktuální DevTest Labs úspěšně použít DevTest Labs pro vývojové a testovací úlohy v jejich organizacích. [Další informace](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
 
 ## <a name="next-steps"></a>Další postup
 - [Referenční architektura pro podniky](devtest-lab-reference-architecture.md)

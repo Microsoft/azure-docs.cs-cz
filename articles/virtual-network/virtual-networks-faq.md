@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 131d62fd2cea3ed76342f0fd179b7a9e0fd673e5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713604"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925265"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -244,7 +244,7 @@ Základní služby Vyrovnávání zatížení, což znamená, že nemůže komun
 - SQL Always on
 - SQL MI
 - Rozhraní API správy
-- PŘIDÁ
+- Active Directory Domain Services (AD DS)
 - Logic Apps
 - HD Insight
 -   Azure Batch

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 5c01c2721a29bf142ee0ba53c9bc29ec66a7278f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401105"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727922"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilovat živé aplikace Azure Service Fabric pomocí Application Insights
 
@@ -32,7 +32,7 @@ Je součástí Azure Diagnostics Application Insights Profiler. S použitím ša
 
 Nastavení prostředí, pomocí následujících kroků:
 
-1. K zajištění, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější, stačí potvrdit, že je nasazený operační systém `Windows Server 2012 R2` nebo novější.
+1. Profiler podporuje rozhraní .NET Framework a.Net Core. Pokud používáte rozhraní .NET Framework, ujistěte se, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Stačí potvrdit, že je nasazený operační systém `Windows Server 2012 R2` nebo novější. Profiler podporuje .NET Core 2.1 a novější aplikace.
 
 1. Hledat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) rozšíření v souboru šablony nasazení.
 
@@ -55,11 +55,10 @@ Nastavení prostředí, pomocí následujících kroků:
   Pokud je nastavení správné, bude být nainstalované a povolené při instalaci rozšíření Azure Diagnostics Application Insights Profiler. 
 
 1. Přidejte Application Insights do vaší aplikace Service Fabric.  
-  Pro Profiler ke shromažďování profily pro své žádosti musí aplikace sledování operací pomocí nástroje Application Insights. Pro rozhraní API je bezstavové, najdete pokyny, jak [sledování požadavků pro profilaci](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Další informace o sledování vlastních operací v jiných typů aplikací, najdete [sledování vlastních operací pomocí Application Insights .NET SDK](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
+  Pro Profiler ke shromažďování profily pro své žádosti musí aplikace sledování operací pomocí nástroje Application Insights. Pro rozhraní API je bezstavové, najdete pokyny, jak [sledování požadavků pro profilaci](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Další informace o sledování vlastních operací v další druhy aplikací najdete v tématu [sledování vlastních operací pomocí Application Insights .NET SDK](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
 
 1. Znovu nasadíte aplikaci.
 
-> [TIP] Pro virtuální počítače, o alternativu k předchozí kroky na základě JSON je pro navigaci na webu Azure Portal k **virtuálních počítačů** > **nastavení diagnostiky** > **Jímky** > **sady posílat diagnostická data do Application Insights na povoleno** a zvolte účet Application Insights nebo konkrétní Instrumentační klíč.
 
 ## <a name="next-steps"></a>Další postup
 

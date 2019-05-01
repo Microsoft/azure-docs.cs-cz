@@ -8,18 +8,22 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ad6d7a60700727b73b87a78e364fde3fa1caa8c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730051"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572564"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí AzCopy v Linuxu
 
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z úložiště objektů Blob v Microsoft Azure a soubor, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
 
-Existují dvě verze AzCopy, který si můžete stáhnout. AzCopy v Linuxu cílí na platformy Linuxu nabízí možnosti příkazového řádku stylu POSIX. [AzCopy ve Windows](../storage-use-azcopy.md) stylu Windows nabízí možnosti příkazového řádku. Tento článek se týká AzCopy v Linuxu. 
+> [!IMPORTANT]
+> Tento článek popisuje starší verzi AzCopy.
+>Pokud chcete nainstalovat nejnovější verzi AzCopy, naleznete v tématu [AzCopy v10](storage-use-azcopy-v10.md).
+
+Pokud se rozhodnete pro instalaci starší verze AzCopy (AzCopy v8.1), existuje více verzí v8.1 AzCopy, který si můžete stáhnout. AzCopy v Linuxu cílí na platformy Linuxu nabízí možnosti příkazového řádku stylu POSIX. [AzCopy ve Windows](../storage-use-azcopy.md) stylu Windows nabízí možnosti příkazového řádku. Tento článek se týká AzCopy v Linuxu. 
 
 > [!NOTE]  
 > Od verze AzCopy 7.2 se závislosti .NET Core jsou zabaleny s balíčkem AzCopy. Pokud používáte verzi 7.2 nebo novější, už nebude potřeba jako předpoklad instalace .NET Core.

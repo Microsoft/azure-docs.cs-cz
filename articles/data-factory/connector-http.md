@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f25b0f2c7b5e3148bae778c4b50a3f0bd0c148da
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653768"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875947"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -160,11 +160,55 @@ Pokud používáte **certThumbprint** pro ověřování a certifikát, který je
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Tato část obsahuje seznam vlastností, které podporuje datová sada HTTP. 
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
+- Pro **Parquet a formátu odděleného textu**, odkazovat na [datovou sadu formátu Parquet a text s oddělovači](#parquet-and-delimited-text-format-dataset) oddílu.
+- Pro ostatní formáty, jako jsou **formát ORC nebo Avro/JSON nebo binární**, odkazovat na [jiné datové sady formátu](#other-format-dataset) oddílu.
 
-Chcete-li kopírovat data z protokolu HTTP, nastavte **typ** vlastnosti datové sady na **HttpFile**. Podporovány jsou následující vlastnosti:
+### <a name="parquet-and-delimited-text-format-dataset"></a>Datová sada formátu parquet a text s oddělovači
+
+Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného textu**, odkazovat na [formát Parquet](format-parquet.md) a [formátu textu odděleného](format-delimited-text.md) článek na datové sadě založené na formátu a podporované nastavení. Následující vlastnosti jsou podporovány pro protokolu HTTP v rámci `location` nastavení v datové sadě založené na formátu:
+
+| Vlastnost    | Popis                                                  | Požaduje se |
+| ----------- | ------------------------------------------------------------ | -------- |
+| type        | Vlastnost type v rámci `location` v datové sadě musí být nastaveno na **HttpServerLocation**. | Ano      |
+| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data.       | Ne       |
+
+> [!NOTE]
+> Podporovaná velikost datové části požadavku HTTP je přibližně 500 KB. Velikost datové části, které chcete předat do vašeho koncového bodu webové je větší než 500 KB, vezměte v úvahu dávkování datové části menších částech.
+
+> [!NOTE]
+> **HttpFile** typ datové sady uvedené v další části formát Parquet/textu je stále podporovány jako-je pro aktivitu kopírování a vyhledávání z důvodu zpětné kompatibility. Byly navrženy používat tento nový model do budoucna a ADF vytváření uživatelského rozhraní se přepnulo na generování tyto nové typy.
+
+**Příklad:**
+
+```json
+{
+    "name": "DelimitedTextDataset",
+    "properties": {
+        "type": "DelimitedText",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "schema": [ < physical schema, optional, auto retrieved during authoring > ],
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "<relative url>"
+            },
+            "columnDelimiter": ",",
+            "quoteChar": "\"",
+            "firstRowAsHeader": true,
+            "compressionCodec": "gzip"
+        }
+    }
+}
+```
+
+### <a name="other-format-dataset"></a>Další datové sady formátu
+
+Ke zkopírování dat z protokolu HTTP v **formát ORC nebo Avro/JSON nebo binární**, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -226,7 +270,69 @@ Tato část obsahuje seznam vlastností, které podporuje zdroje HTTP.
 
 ### <a name="http-as-source"></a>HTTP jako zdroj
 
-Chcete-li kopírovat data z protokolu HTTP, nastavte **typ zdroje** v aktivitě kopírování do **HttpSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+- Pro kopírování z **Parquet a formátu odděleného textu**, odkazovat na [Parquet a zdroj obsahující text oddělený znaky formátu](#parquet-and-delimited-text-format-source) oddílu.
+- Pro kopírování z dalších formátech, jako jsou **formát ORC nebo Avro/JSON nebo binární**, odkazovat na [jiný formát zdroj](#other-format-source) oddílu.
+
+#### <a name="parquet-and-delimited-text-format-source"></a>Parquet a zdroj formátu odděleného textu
+
+Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného textu**, odkazovat na [formát Parquet](format-parquet.md) a [formátu textu odděleného](format-delimited-text.md) článek věnovaný tomu zdroj aktivity kopírování založená na formát a podporovaná nastavení. Následující vlastnosti jsou podporovány pro protokolu HTTP v rámci `storeSettings` nastavení zdroje kopírování založená na formát:
+
+| Vlastnost                 | Popis                                                  | Požaduje se |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | Vlastnost type v rámci `storeSettings` musí být nastaveno na **HttpReadSetting**. | Ano      |
+| requestMethod            | Metoda HTTP <br>Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne       |
+| addtionalHeaders         | Další hlavičky požadavků HTTP.                             | Ne       |
+| Includesearchresults: true              | Obsah žádosti protokolu HTTP.                               | Ne       |
+| RequestTimeout           | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Tato hodnota je časový limit získat odpověď, nevypršel časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
+| maxConcurrentConnections | Počet připojení pro připojení k úložišti storage současně. Zadejte pouze v případě, že chcete omezit souběžných připojení k úložišti. | Ne       |
+
+> [!NOTE]
+> Pro formátu Parquet nebo odděleného textu **HttpSource** zdroj aktivity kopírování typů uvedených v následující části je stále podporovány jako-je z důvodu zpětné kompatibility. Byly navrženy používat tento nový model do budoucna a ADF vytváření uživatelského rozhraní se přepnulo na generování tyto nové typy.
+
+**Příklad:**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromHTTP",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSetting",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "HttpReadSetting",
+                    "requestMethod": "Post",
+                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
+                    "requestBody": "<body for POST HTTP request>"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+#### <a name="other-format-source"></a>Jiný zdroj formátu
+
+Ke zkopírování dat z protokolu HTTP v **formát ORC nebo Avro/JSON nebo binární**, jsou podporovány následující vlastnosti v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

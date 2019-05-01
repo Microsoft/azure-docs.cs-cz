@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581033"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866365"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 
-Rozhraní API pro vyhledávání místní firmy odešle dotaz vyhledávání Bing zobrazíte výsledky, které zahrnují restaurace, hotely nebo jiné místní firmy. Místa můžete dotaz zadat název místní firmy nebo kategorii (například restaurace v okolí). Mezi výsledky entit patří osoby, místa nebo věci. V tomto kontextu se obchodní entity, státy, země atd.  
+Rozhraní API pro vyhledávání místní firmy odešle dotaz vyhledávání Bing zobrazíte výsledky, které zahrnují restaurace, hotely nebo jiné místní firmy. Místa můžete dotaz zadat název místní firmy nebo kategorii (například restaurace v okolí). Mezi výsledky entit patří osoby, místa nebo věci. V tomto kontextu se obchodní entity, státy, země/oblasti, atd.  
 
 Tato část obsahuje technické podrobnosti o objekty odpovědi a parametry dotazů a hlaviček, které ovlivňují výsledky hledání. Příklady, které ukazují, jak vytvářet požadavky najdete v tématu [místní vyhledávání obchodních C# rychlý Start](quickstarts/local-quickstart.md) nebo [místní firmy hledání Java quickstart](quickstarts/local-search-java-quickstart.md). 
   

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875511"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726533"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Začínáme s R programovacím jazyku v nástroji Azure Machine Learning Studio
 
@@ -1320,7 +1320,7 @@ Existuje mnoho knih v R, které může pomoci vám začít. Tady je několik, kt
 * **Techniky programování v jazyce R: Prohlídka z statistické softwaru návrh** Norman Matloff je vynikající Úvod k programování v jazyce R.  
 * **Kuchařka R** díky Paul Teetor poskytuje řešení problému a přístupem k používání jazyka R.  
 * **R v akci** Robert Kabacoff je další užitečná úvodní knihy. Doprovodný [rychlé R webu](https://www.statmethods.net/) je užitečný prostředek.
-* **R Inferno** Burnse Patrick je překvapivě sloupku knihy, které se zabývají počet témat složité a složité, které mohou nastat při programování v jazyce R. Kniha je k dispozici zdarma na [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/).
+* **R Inferno** Burnse Patrick je překvapivě sloupku knihy, které se zabývají počet témat složité a složité, které mohou nastat při programování v jazyce R. Kniha je k dispozici zdarma na [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
 * Pokud chcete podrobné informace o Pokročilá témata týkající se jazyka R, podíváme se na knihu **pokročilé R** podle Hadley Wickham. Je k dispozici zdarma na online verze této knihy [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
 
 Katalog R čas řady balíčků lze nalézt v [CRAN zobrazení úlohy: Time Series analýzy](https://cran.r-project.org/web/views/TimeSeries.html). Informace o určité časové řady objektu balíčky by měla odkazovat v dokumentaci pro tento balíček.

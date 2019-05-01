@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291333"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918537"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -128,7 +128,7 @@ Při implementaci koncový bod SCIM pro zajištění kompatibility s Azure AD, p
      - `and`
 * Malá a velká písmena shoda s konstrukční prvky v SCIM v PATCH zejména nevyžadují `op` operace hodnoty, jak jsou definovány v https://tools.ietf.org/html/rfc7644#section-3.5.2. Azure AD vydá hodnoty "op" jako `Add`, `Replace`, a `Remove`.
 * Microsoft Azure AD díky požadavky na načtení náhodné uživatele a skupiny k zajištění, že koncový bod a přihlašovací údaje jsou platné. Také se provádí jako součást **Test připojení** tok v [webu Azure portal](https://portal.azure.com). 
-* Atribut prostředky je možné zadávat dotazy na musí být nastavená jako odpovídající atribut v aplikaci v [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [přizpůsobení mapování atributů služby uživatele zřizování](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* Atribut prostředky je možné zadávat dotazy na musí být nastavená jako odpovídající atribut v aplikaci v [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [přizpůsobení mapování atributů služby uživatele zřizování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 ### <a name="user-provisioning-and-de-provisioning"></a>Zřizování uživatelů a jeho rušení
 Následující ilustrace ukazuje zprávy, že Azure Active Directory odesílá do služby SCIM ke správě životního cyklu uživatele v úložišti identitu vaší aplikace.  

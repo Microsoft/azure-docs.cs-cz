@@ -3,8 +3,8 @@ title: Analýza provozu Azure – nejčastější dotazy | Dokumentace Microsoft
 description: Získejte odpovědi na některé nejčastější dotazy o analýze provozu.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: jdial
-ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236604"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939909"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -241,7 +241,7 @@ Příklad, jak je uvedeno [cenový plán](https://azure.microsoft.com/pricing/de
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak často Traffic Analytics zpracovávat data?
 
-Odkazovat [datové části agregace](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation) v dokumentu agregace dat a schéma analýzy provozu
+Odkazovat [datové části agregace](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) v dokumentu agregace dat a schéma analýzy provozu
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak analýzu provozu rozhodnout, že je škodlivé IP adresy? 
 
@@ -253,14 +253,14 @@ Analýza provozu nemá integrovaná podpora pro výstrahy. Ale protože analýza
 - Který můžete použít ke službě Log Analytics v analýzu provozu. 
 - Použití [schématu zdokumentované tady](traffic-analytics-schema.md) psát dotazy 
 - Klikněte na tlačítko "Nové pravidlo upozornění" k vytvoření upozornění
-- Odkazovat na [protokolu výstrahy dokumentaci](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) k vytvoření upozornění
+- Odkazovat na [protokolu výstrahy dokumentaci](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) k vytvoření upozornění
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak můžete Navigovat pomocí klávesnice v zobrazení geografické mapy?
 
 Na stránce geografické mapy obsahuje dvě hlavní části:
     
-- **Banner**: Banner v horní části geografické mapy obsahuje tlačítka a vyberte filtry distribuce přenosů (například nasazení, provoz ze zemí a škodlivé). Když vyberete tlačítko, příslušný filtr platí na mapě. Například pokud vyberete tlačítko aktivní, zvýrazní mapy aktivní datových center ve vašem nasazení.
-- **Mapa**: Následující hlavičky zobrazuje mapa oddílu distribuce provozu mezi datacentry Azure a zemí.
+- **Banner**: Banner v horní části geografické mapy obsahuje tlačítka a vyberte filtry distribuce přenosů (například nasazení, provoz ze zemí/oblastí a škodlivé). Když vyberete tlačítko, příslušný filtr platí na mapě. Například pokud vyberete tlačítko aktivní, zvýrazní mapy aktivní datových center ve vašem nasazení.
+- **Mapa**: Následující hlavičky zobrazuje mapa oddílu distribuce provozu mezi datacentry Azure a země/oblasti.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Procházení pomocí klávesnice na informační zprávě
     

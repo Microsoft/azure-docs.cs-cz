@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d90af62c8d6267001ede567c71b7e1204f6ce74
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299613"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917221"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
 
@@ -44,7 +44,7 @@ Tento postup platí pro:
 
 Tento návod předpokládá, že víte, jak:
 
-* Zřídíte aplikace pomocí starší verze portálu pro Azure AD. Další informace najdete v tématu [registrace aplikace ke koncovému bodu Azure AD verze 1.0](quickstart-v1-add-azure-ad-app.md)
+* Zřídíte aplikace pomocí starší verze portálu pro Azure AD. Další informace najdete v tématu [registrace aplikace](quickstart-register-app.md)
 * Integrace aplikace pomocí [sada SDK služby Azure AD pro iOS](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
 ## <a name="single-sign-on-concepts"></a>Koncepty jednotné přihlašování

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3b6c4b8cebdff772ea1bd4ac95e4c8c06043f5d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487868"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728161"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -63,13 +63,13 @@ Přijatelné hodnoty odpovídají nabídce **quick time** (rychlý čas) průzku
 
 Parametr `timeSeriesDefinitions=<collection of term objects>` určuje podmínky zobrazení Time Series Insights, kde:
 
-- "name":"<string>"
+- "name": "\<řetězec >"
   - Název *podmínky*.
-- "splitBy":"<string>"
+- "splitBy":"\<string>"
   - Název sloupce, podle kterého se bude *rozdělovat*.
-- "measureName":"<string>"
+- "%{measurename/": "\<řetězec >"
   - Název sloupce obsahujícího *míru*.
-- "predicate":"<string>"
+- "predikátu": "\<řetězec >"
   - Klauzule *kde* pro filtrování na straně serveru.
 - "useSum":"true"
   - Volitelný parametr určující používání součtu pro vaši míru.  Pokud je jako míra vybraná hodnota Events, je standardně vybraný počet.  Pokud není vybrána hodnota Events, je standardně vybraný průměr.  
@@ -121,4 +121,5 @@ Pokud jste k sestavení zobrazení popsaného předchozí adresou URL použili p
 ![Zobrazení grafu](media/parameterized-url/url2.png)
 
 ## <a name="next-steps"></a>Další postup
-[Dotazování dat pomocí jazyka C#](time-series-insights-query-data-csharp.md)
+
+- Zjistěte, jak [dotazování dat pomocí C# ](time-series-insights-query-data-csharp.md).

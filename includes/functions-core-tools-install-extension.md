@@ -2,33 +2,48 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: functions
-author: ggailey777
+author: craigshoemaker
 ms.service: functions
 ms.topic: include
-ms.date: 09/21/2018
-ms.author: glenga
+ms.date: 09/25/2018
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: f1b53c53b1e5fb089eb9b8a9b816b11a1eea126d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044505"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733273"
 ---
-Při vývoji funkcí místně, můžete nainstalovat rozšíření, která je třeba pomocí nástrojů Azure Functions Core z terminálu nebo z příkazového řádku.
+Ujistěte se, všechny vazby publikované týmem Azure Functions k dispozici prostřednictvím nastavení v rozšíření sady *host.json* souboru. Pro místní vývoj, zajistěte, abyste měli nejnovější verzi [nástrojů Azure Functions Core](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
 
-Po aktualizaci vašich *function.json* soubor zahrnout všechny vazby, které vaše funkce vyžaduje, spusťte následující příkaz ve složce projektu.
+Použití rozšíření sady, aktualizujte *host.json* souboru přidejte následující položku pro `extensionBundle`:
 
-```bash
-func extensions install
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
+    }
+}
 ```
 
-Tento příkaz načte *function.json* souboru a zjistěte jaké balíčky, které potřebujete, nainstaluje je a znovu sestaví projekt rozšíření. Přidá všechny nové vazby na aktuální verzi, ale neaktualizuje existující vazby. Použití `--force` možnost aktualizovat existující vazby na nejnovější verzi při instalaci nové značky.
+- `id` Vlastnost odkazuje na obor názvů pro rozšíření sady Microsoft Azure Functions.
+- `version` Odkazuje na verzi sady.
 
-Pokud chcete nainstalovat konkrétní verzi balíčku, nebo chcete provést instalaci balíčků před úpravou *function.json* souboru, použijte `func extensions install` příkaz s názvem balíčku, jak je znázorněno v následujícím příkladu:
+Zvýšení verze sady prostředků jako balíčky v sadě změn. Hlavní verze změny dojít pouze při balíčky v sadě přesuňte hlavní verze. `version` Používá vlastnost [notation interval pro zadání rozsahu verzí](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). Modul runtime služby Functions vždy vybere maximální povolenou verzi definovaný rozsah verzí nebo intervalu.
 
-```bash
-func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
+Když odkazujete sady rozšíření ve vašem projektu, všechny výchozí vazby jsou k dispozici vaše funkce. K dispozici v vazby [rozšíření sady](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) jsou:
 
-Nahraďte `<target_version>` s určitou verzí balíčku, jako například `3.0.0-beta5`. Platná verze jsou uvedeny v nějakém balíčku stránkách v [NuGet.org](https://nuget.org).
+|Balíček  |Version  |
+|---------|---------|
+|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
+|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|
+|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
+|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
+|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
+|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
+|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
+|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
+|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|

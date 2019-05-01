@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718151"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926136"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -30,7 +30,7 @@ Pokud máte jeden container service pomocí statické koncový bod v manifestu s
 Pokud služby container service restartuje nebo přesune do jiného uzlu v clusteru, změní se IP adresa. Z tohoto důvodu nedoporučujeme používat IP adresu dynamicky přiřazeného ke zjišťování služby kontejneru. Zjišťování služby by měla sloužit pouze služba pojmenování Service Fabric nebo službu DNS. 
 
 >[!WARNING]
->Azure umožňuje celkem 65,356 IP adresy na virtuální síť. Součet počtu uzlů a počet instancí služby kontejneru, (, které používají režim otevření) může mít maximálně 65,356 IP adres ve virtuální síti. Pro scénáře s vysokou hustotou doporučujeme síťový režim překladu adres. Kromě toho další závislosti, jako jsou nástroje pro vyrovnávání zatížení bude mít jiné [omezení](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) vzít v úvahu. Byly testovány a ověřené stabilní aktuálně až 50 IP adresy na jeden uzel. 
+>Azure umožňuje celkem 65,356 IP adresy na virtuální síť. Součet počtu uzlů a počet instancí služby kontejneru, (, které používají režim otevření) může mít maximálně 65,356 IP adres ve virtuální síti. Pro scénáře s vysokou hustotou doporučujeme síťový režim překladu adres. Kromě toho další závislosti, jako jsou nástroje pro vyrovnávání zatížení bude mít jiné [omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits) vzít v úvahu. Byly testovány a ověřené stabilní aktuálně až 50 IP adresy na jeden uzel. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nastavit režim otevření sítě

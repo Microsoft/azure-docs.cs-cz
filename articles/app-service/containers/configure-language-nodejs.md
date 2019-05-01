@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850169"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919786"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace v Node.js v Linuxu pro Azure App Service
 
@@ -55,7 +55,7 @@ Toto nastavení určuje verze Node.js se má použít, za běhu i během obnoven
 
 ## <a name="configure-nodejs-server"></a>Konfigurace serveru Node.js
 
-Kontejnery Node.js součástí [PM2](http://pm2.keymetrics.io/), vedoucí proces výroby. Můžete nakonfigurovat aplikaci tak, aby PM2, nebo s NPM nebo pomocí vlastního příkazu start.
+Kontejnery Node.js součástí [PM2](https://pm2.keymetrics.io/), vedoucí proces výroby. Můžete nakonfigurovat aplikaci tak, aby PM2, nebo s NPM nebo pomocí vlastního příkazu start.
 
 - [Spustit vlastní příkaz.](#run-custom-command)
 - [Spuštění npm](#run-npm-start)
@@ -99,12 +99,12 @@ Kontejneru automaticky spustí vaši aplikaci s PM2, když některý z běžnýc
 - *app.js*
 - *index.js*
 - *hostingstart.js*
-- Jeden z následujících [PM2 soubory](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* a *ecosystem.config.js*
+- Jeden z následujících [PM2 soubory](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* a *ecosystem.config.js*
 
 Můžete taky nakonfigurovat vlastní spouštěcího souboru s těmito příponami:
 
 - A *js* souboru
-- A [souboru PM2](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) s příponou *.json*, *. config.js*, *.yaml*, nebo *.yml*
+- A [souboru PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) s příponou *.json*, *. config.js*, *.yaml*, nebo *.yml*
 
 Chcete-li přidat vlastní spouštěcího souboru, spusťte následující příkaz [Cloud Shell](https://shell.azure.com):
 
@@ -226,7 +226,7 @@ fi
 
 Ve službě App Service [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) se odehrává na nástroje pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS kontaktovat vaši aplikaci jako nešifrované požadavky HTTP. Pokud požadavkům vašich aplikací logiky ke kontrole, pokud jsou zašifrované požadavky uživatelů, nebo Ne, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
-Oblíbené webové architektury umožněte přístup `X-Forwarded-*` informace o vzoru standardní aplikace. V [Express](https://expressjs.com/), můžete použít [vztah důvěryhodnosti proxy](http://expressjs.com/guide/behind-proxies.html). Příklad:
+Oblíbené webové architektury umožněte přístup `X-Forwarded-*` informace o vzoru standardní aplikace. V [Express](https://expressjs.com/), můžete použít [vztah důvěryhodnosti proxy](https://expressjs.com/guide/behind-proxies.html). Příklad:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -253,7 +253,7 @@ Když pracovní aplikace v Node.js ve službě App Service se chová jinak nebo 
     - V závislosti na vaší *package.json*, mohou být nainstalovány jiné balíčky k provozním režimu (`dependencies` vs. `devDependencies`).
     - Některá webová rozhraní může nasadit statické soubory jinak než v provozním režimu.
     - Některá webová rozhraní může používat vlastní spouštěcí skripty, při spuštění v produkčním režimu.
-- Spuštění aplikace ve službě App Service v režimu pro vývoj. Například v [MEAN.js](http://meanjs.org/), aplikaci můžete nastavit do režimu pro vývoj v modulu runtime [nastavení `NODE_ENV` nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Spuštění aplikace ve službě App Service v režimu pro vývoj. Například v [MEAN.js](https://meanjs.org/), aplikaci můžete nastavit do režimu pro vývoj v modulu runtime [nastavení `NODE_ENV` nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ## <a name="next-steps"></a>Další postup
 

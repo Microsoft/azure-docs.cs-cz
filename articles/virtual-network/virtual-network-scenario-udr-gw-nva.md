@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: c959ee3bea24955e3281feb9db66e4e0cadc8bf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61034135"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575581"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuálního zařízení
 Běžný scénář mezi větších zákazníků Azure je potřeba poskytnout aplikaci dvouvrstvém přístupný z Internetu, zároveň vám umožní přístup na úroveň zpět z místního datacentra. Tento dokument vás provede scénář použití uživatelem definované trasy (UDR), bránu sítě VPN a síťových virtuálních zařízení pro nasazení dvouvrstvé prostředí, které splňuje následující požadavky:
@@ -30,14 +30,14 @@ Běžný scénář mezi větších zákazníků Azure je potřeba poskytnout apl
 * Veškerý provoz směřující do aplikačního serveru musí procházet přes virtuální zařízení brány firewall. Tato virtuální zařízení se použije pro přístup k back-end serveru a přístup pocházející z místní sítě prostřednictvím brány VPN.
 * Správci musí mít možnost spravovat virtuální zařízení brány firewall ze své místní počítače, pomocí brány firewall třetí virtuální zařízení používá výhradně pro účely správy.
 
-Toto je standardní scénář hraniční síti DMZ a chráněné síti. Takový scénář lze sestavit v Azure pomocí skupin zabezpečení sítě, virtuální zařízení brány firewall nebo kombinaci obojího. Následující tabulka ukazuje některé výhody a nevýhody mezi skupiny zabezpečení sítě a virtuální zařízení brány firewall.
+Toto je scénář standardní hraniční sítě (knowns také jako DMZ) DMZ a chráněná síťová. Takový scénář lze sestavit v Azure pomocí skupin zabezpečení sítě, virtuální zařízení brány firewall nebo kombinaci obojího. Následující tabulka ukazuje některé výhody a nevýhody mezi skupiny zabezpečení sítě a virtuální zařízení brány firewall.
 
 |  | V oblasti IT | Nevýhody |
 | --- | --- | --- |
-| NSG |Bez poplatků. <br/>Integrovaná v Azure RBAC. <br/>Pravidla můžete vytvořit v šablonách ARM. |Složitost tak můžete pozměnit ve větších prostředí. |
+| NSG |Bez poplatků. <br/>Integrovaná v Azure RBAC. <br/>Pravidla můžete vytvořit v šablonách Azure Resource Manageru. |Složitost tak můžete pozměnit ve větších prostředí. |
 | Brána firewall |Plnou kontrolu nad rovina dat. <br/>Centrální správa prostřednictvím konzoly brány firewall. |Náklady na zařízení brány firewall. <br/>Není součástí Azure RBAC. |
 
-Toto řešení níže využívá virtuální zařízení brány firewall k implementaci scénáře nebo chráněným DMZ sítě.
+Následující řešení používá virtuální zařízení brány firewall k implementaci hraniční síti (DMZ) / chráněné scénáři.
 
 ## <a name="considerations"></a>Požadavky
 Můžete nasadit prostředí je vysvětleno výše v Azure ještě dnes, následujícím způsobem pomocí různých funkcí, které jsou k dispozici.

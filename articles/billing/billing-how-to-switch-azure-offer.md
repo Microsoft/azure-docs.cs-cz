@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 11d3deb029ef0d8478844b64c54db7982ed1091e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918587"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570978"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Změnit předplatné Azure s průběžnými platbami na jinou nabídku
 
@@ -86,7 +86,7 @@ Nemusíte to vidět **přepnout na jinou nabídku** tlačítko, pokud:
 ### <a name="why-do-i-see-there-are-no-offers-available-in-your-region-or-country-at-this-time"></a>Proč vidím, "Nejsou žádné nabídky. k dispozici ve vaší zemi v tuto chvíli"?
 
 * Je možné všechny přepínače nabídku nárok. Zkontrolujte, [seznam dostupných nabídek můžete přepnout na](#whats-supported) a ujistěte se, že po dokončení aktivace správné výhody sadou Visual Studio nebo programu Bizspark.
-* Některé nabídky nemusí být dostupné ve všech zemích.
+* Některé nabídky nemusí být k dispozici ve všech zemích nebo oblastech.
 
 ### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Co znamená přechod Azure nabízí službu a fakturace?
 

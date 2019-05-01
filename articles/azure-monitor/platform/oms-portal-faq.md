@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b353e3c0ed14c7ae42e6b1f2c8a92904bf0befd7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453106"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916281"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -97,9 +97,9 @@ Spravovat většinu dat nastavení v **upřesňující nastavení** nabídce pra
 | Vlastní protokoly                  | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | Syslog                       | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | Application Insights         | Toto řešení je zastaralá teď Log Analytics a Application Insights sdílejí stejný stroj data.  |
-| Sledování souborů Windows        | **Sledování změn** nabídky ve službě Azure Automation. Zobrazit [sledování změn ve vašem prostředí pomocí řešení Change Tracking](../../automation/automation-change-tracking.md) podrobnosti. |
-| Sledování registru Windows        | **Sledování změn** nabídky ve službě Azure Automation. Zobrazit [sledování změn ve vašem prostředí pomocí řešení Change Tracking](../../automation/automation-change-tracking.md) podrobnosti. |
-| Sledování souborů v Linuxu          | **Sledování změn** nabídky ve službě Azure Automation. Zobrazit [sledování změn ve vašem prostředí pomocí řešení Change Tracking](../../automation/automation-change-tracking.md) podrobnosti. |
+| Sledování souborů Windows        | **Sledování změn** nabídky ve službě Azure Automation. Zobrazit [sledování změn ve vašem prostředí pomocí řešení Change Tracking](../../automation/change-tracking.md) podrobnosti. |
+| Sledování registru Windows        | **Sledování změn** nabídky ve službě Azure Automation. Zobrazit [sledování změn ve vašem prostředí pomocí řešení Change Tracking](../../automation/change-tracking.md) podrobnosti. |
+| Sledování souborů v Linuxu          | **Sledování změn** nabídky ve službě Azure Automation. Zobrazit [sledování změn ve vašem prostředí pomocí řešení Change Tracking](../../automation/change-tracking.md) podrobnosti. |
 
 ### <a name="solutions"></a>Řešení
 Spravovat řešení v **řešení** nabídce pracovního prostoru. 

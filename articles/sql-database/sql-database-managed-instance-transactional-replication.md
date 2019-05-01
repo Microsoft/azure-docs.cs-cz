@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61313645"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917038"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s jedním, ve fondu a instanci databáze ve službě Azure SQL Database
 
@@ -79,7 +79,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
   > - Přistoupíte ke konfiguraci replikace pomocí starší verze může vést k chybě číslo MSSQL_REPL20084 (procesu nemůže připojit k odběrateli.) a MSSQ_REPL40532 (nejde otevřít server \<name > požadovaný v přihlášení. Přihlášení se nezdařilo.)
   > - Chcete-li používat všechny funkce služby Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
-  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Matice Supportabilty pro Instance databází a místní systémy
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Matice podpory pro Instance databází a místní systémy
   Matice podpory replikace pro instanci databáze je stejná jako ta pro místní SQL Server. 
   
   | **Publisher**   | **Distributor** | **Předplatitele** |
@@ -140,7 +140,7 @@ V této konfiguraci je Azure SQL Database (jednou, ve fondu a instanci databáze
 
 ## <a name="next-steps"></a>Další postup
 
-1. [Konfigurace transakční replikace pro Managed Instance](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example). 
+1. [Konfigurace transakční replikace pro Managed Instance](replication-with-sql-database-managed-instance.md). 
 1. [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Vytvořit nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako odběratele (například `N'azuresqldbdns.database.windows.net` a název cílové databáze Azure SQL Database (například **Adventureworks**. )
 

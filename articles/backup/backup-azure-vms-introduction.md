@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 1e80b2083a2fce90259ac0634d9e7f796f459fcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 93be913182db56941c346ef0cad47f70c0d614c9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880943"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706829"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -31,10 +31,14 @@ Zde je, jak Azure Backup dokončení zálohování pro virtuální počítače A
     - Ve výchozím nastavení zálohování trvá úplné zálohy stínové kopie svazku.
     - Pokud zálohování nelze pořízení konzistentního snímku, pak trvá konzistentními snímek základního úložiště (protože aplikace neprovádí žádné zápisy dojít při zastavení virtuálního počítače).
 1. Pro virtuální počítače s Linuxem Backup Pořídí zálohu konzistentní. Pro snímky konzistentní budete muset ručně upravit předzálohovacího nebo pozálohovacího skripty.
-1. Jakmile Backup pořídí snímek, přenese data do trezoru. 
+1. Jakmile Backup pořídí snímek, přenese data do trezoru.
     - Zálohování je optimalizované zálohování každého disku virtuálního počítače paralelně.
     - Pro každý disk, který se zálohuje Azure Backup přečte bloky na disku a identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování (rozdílového).
     - Data snímku nemusí být hned zkopírují do trezoru. Může trvat několik hodin, během špičky. Celkový čas zálohování pro virtuální počítač bude méně než 24 hodin denně zásady zálohování.
+ 1. Změny virtuálního počítače s Windows po povolení Azure Backup na ní jsou:
+    -   Microsoft Visual C++ 2013 Redistributable(x64) - 12.0.40660 je nainstalovaná ve virtuálním počítači
+    -   Typ spouštění služby Stínová kopie svazku (VSS) ručně změnit na hodnotu automaticky.
+    -   Přidání služby IaaSVmProvider Windows
 
 1. Po dokončení přenosu dat se snímek odstraní a vytvoří bod obnovení.
 
@@ -57,7 +61,7 @@ BEKs jsou také zálohovat. Takže pokud BEKs jsou ztraceny, oprávněným uživ
 
 ## <a name="snapshot-creation"></a>Vytvoření snímku
 
-Azure Backup pořizuje snímky podle plánu zálohování. 
+Azure Backup pořizuje snímky podle plánu zálohování.
 
 - **Virtuální počítače s Windows:** Pro virtuální počítače s Windows služba Backup koordinuje pomocí VSS snímek konzistentní vzhledem k diskům virtuálních počítačů.
 
@@ -82,7 +86,7 @@ Následující tabulka vysvětluje různé typy konzistence snímku:
 **Konzistentní se systémem souborů** | Konzistentní zálohování systému souborů poskytuje konzistenci, protože pořízení snímku všechny soubory ve stejnou dobu.<br/><br/> | Pokud chcete obnovit virtuální počítač s snímek konzistentní vzhledem k systému souborů, virtuální počítač se spustí. Neexistuje žádný poškození nebo ztrátu. Aplikace je třeba implementovat vlastní mechanismus "Opravit" Ujistěte se, že je obnovená data konzistentní vzhledem k aplikacím. | Windows: Některé zapisovače služby VSS se nezdařila <br/><br/> Linux: Výchozí (Pokud předzálohovacího nebo pozálohovacího skriptů nejsou nakonfigurovaná nebo neúspěšných)
 **Konzistentní při selhání** | Snímky konzistentních při chybě obvykle dochází, pokud virtuální počítač Azure vypne v době zálohování. Pouze data, která již existuje na disku v době zálohování je zaznamenat a zálohovat.<br/><br/> Vytvoření bodu obnovení konzistentního nezaručuje konzistenci dat pro operační systém nebo aplikace. | I když neexistují žádné záruky, obvykle spustí virtuální počítač a potom spustí kontrolu disku opravit chyby poškozující. Žádná data v paměti nebo operace zápisu, které nebyly převedeny na disk před selhání se ztratí. Aplikace implementovat vlastní ověřovací data. Databáze aplikace například můžete použít jeho transakční protokol pro ověřování. Pokud transakčního protokolu obsahuje položky, které nejsou v databázi, databázový software postupně transakce zpět, dokud se data konzistentní vzhledem k aplikacím. | Virtuální počítač je ve stavu vypnutí
 
-## <a name="backup-and-restore-considerations"></a>Důležité informace o zálohování a obnovení 
+## <a name="backup-and-restore-considerations"></a>Důležité informace o zálohování a obnovení
 
 **Posouzení** | **Podrobnosti**
 --- | ---
@@ -99,8 +103,8 @@ Následující tabulka vysvětluje různé typy konzistence snímku:
 Tyto běžné scénáře mohou ovlivnit celkový čas zálohování:
 
 - **Přidání nového disku na chráněném virtuálním počítači Azure:** Pokud virtuální počítač Probíhá přírůstkové zálohování a přidat nový disk, zvýší se čas zálohování. Celkový čas zálohování z důvodu počáteční replikaci nového disku spolu s rozdílovou replikaci stávající disků trvat déle než 24 hodin.
-- **Fragmentované disky:** Operace zálohování jsou rychlejší, když změny na disku jsou souvislé. Pokud změny rozprostřete a fragmentované napříč disk, bude pomalejší zálohování. 
-- **Četnost změn disku:** Pokud chráněný disky, které probíhá Přírůstková záloha mít denní četnosti změn z více než 200 GB, zálohování může trvat dlouhou dobu (víc než 8 hodin) na dokončení. 
+- **Fragmentované disky:** Operace zálohování jsou rychlejší, když změny na disku jsou souvislé. Pokud změny rozprostřete a fragmentované napříč disk, bude pomalejší zálohování.
+- **Četnost změn disku:** Pokud chráněný disky, které probíhá Přírůstková záloha mít denní četnosti změn z více než 200 GB, zálohování může trvat dlouhou dobu (víc než 8 hodin) na dokončení.
 - **Záložní verze:** Nejnovější verzi služby Backup (označovanou jako rychlé obnovení) používá více optimalizované proces než porovnání kontrolního součtu pro určení změn. Ale v případě, že používáte rychlé obnovení a odstranili snímek zálohy, zálohování přepne na porovnání kontrolního součtu. V takovém případě operace zálohování bude trvat déle než 24 hodin (nebo neúspěch).
 
 ## <a name="best-practices"></a>Osvědčené postupy

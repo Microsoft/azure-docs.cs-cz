@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 6bec12893591fb36298e9c2f1664646a4d598073
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61222248"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869448"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provést živé streamování pomocí místních kodérů pomocí .NET
 > [!div class="op_single_selector"]
@@ -28,13 +28,17 @@ ms.locfileid: "61222248"
 > 
 > 
 
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+
 Tento kurz vás provede kroky pro použití Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurován pro průchozí doručování. 
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure.
-* Účet Media Services.    Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
+* Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
+* Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
 * Nastavení vývojového prostředí. Další informace najdete v tématu [nastavení prostředí](media-services-set-up-computer.md).
 * Webová kamera. Například [kodér Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm).
 
@@ -48,6 +52,7 @@ Doporučujeme přečtení následujících článků:
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Příklad:
+
 Následující příklad kódu ukazuje, jak dokončit následující úlohy:
 
 * Připojení ke službě Media Services
@@ -60,9 +65,6 @@ Následující příklad kódu ukazuje, jak dokončit následující úlohy:
 * Vytvoření a spuštění StreamingEndpoint
 * Aktualizace koncového bodu streamování
 * Vypnout prostředky
-
->[!IMPORTANT]
->Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
     
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.

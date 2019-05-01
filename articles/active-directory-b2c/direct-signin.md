@@ -3,19 +3,19 @@ title: Nastavit přímé přihlášení pomocí Azure Active Directory B2C | Dok
 description: Zjistěte, jak předvyplní přihlašovací jméno nebo přesměrovat přímo do zprostředkovatele sociální identity.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c66fc9ecb608d211c839bab720e8f3f37b96fd5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 308fb8ea7f3429ce61b0872da9b1c10648b3f44b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389818"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695319"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Nastavit přímé přihlášení pomocí Azure Active Directory B2C
 

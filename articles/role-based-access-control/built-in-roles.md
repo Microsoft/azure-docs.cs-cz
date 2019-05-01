@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 36a98ea52ea48c9828ca5857dc480742632056fb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749321"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689861"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -87,6 +87,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) | Můžete spravovat účty služby Azure Cosmos DB. Azure Cosmos DB je dříve DocumentDB. |
 | [Přispěvatel EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Umožňuje spravovat operace předplatných událostí Event Gridu. |
 | [Čtečka EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umožňuje číst předplatná událostí Event Gridu. |
+| [HDInsight Cluster – operátor](#hdinsight-cluster-operator) | Umožňuje číst a upravovat konfigurace clusterů HDInsight. |
 | [HDInsight Domain Services Contributor](#hdinsight-domain-services-contributor) | Může číst, vytvářet, upravovat a odstraňovat operace, které souvisí s Domain Services a jsou nezbytné pro Balíček zabezpečení podniku HDInsight. |
 | [Přispěvatel účtů inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. |
 | [Přispěvatel Key Vaultu](#key-vault-contributor) | Umožňuje spravovat trezory klíčů, ale ne přistupovat k nim. |
@@ -121,6 +122,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Vlastník účtu prostorových kotvy](#spatial-anchors-account-owner) | Umožní vám správu prostorových kotev na vašem účtu, včetně jejich odstranění. |
 | [Účet čtečky prostorových kotvy](#spatial-anchors-account-reader) | Umožní vám vyhledávání a čtení vlastností prostorových kotev na vašem účtu. |
 | [Přispěvatel databází SQL](#sql-db-contributor) | Umožňuje správu databází SQL, ale ne přístup k nim. Kromě toho nemůžete spravovat jejich zásady související se zabezpečením nebo nadřazené servery SQL. |
+| [Spravovaná Instance Přispěvatel SQL](#sql-managed-instance-contributor) | Umožňuje spravovat spravovaných instancí SQL a požadované konfiguraci sítě, ale nemůže udělovat přístup ostatním uživatelům. |
 | [SQL Security Manager](#sql-security-manager) | Umožňuje vám spravovat zásady vztahující se k zabezpečení serverů a databází SQL, ale ne přístup k nim. |
 | [Přispěvatel SQL serveru](#sql-server-contributor) | Umožňuje vám spravovat servery a databáze SQL, ale ne přístup k nim ani jejich zásady vztahující se k zabezpečení. |
 | [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště, ale ne přístup k nim. |
@@ -327,7 +329,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | Získá seznam klíčů uživatelů |
+> | Microsoft.ApiManagement/service/users/keys/read | Získat klíče přidružené k uživateli |
 > | **DataActions** |  |
 > | *None* |  |
 > | **NotDataActions** |  |
@@ -349,7 +351,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | Získá seznam klíčů uživatelů |
+> | Microsoft.ApiManagement/service/users/keys/read | Získat klíče přidružené k uživateli |
 > | **DataActions** |  |
 > | *None* |  |
 > | **NotDataActions** |  |
@@ -1385,6 +1387,28 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="hdinsight-cluster-operator"></a>HDInsight Cluster – operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje číst a upravovat konfigurace clusterů HDInsight. |
+> | **ID** | 61ed4efc-fab3-44fd-b111-e24485cc132a |
+> | **Akce** |  |
+> | Microsoft.HDInsight/*/read |  |
+> | Microsoft.HDInsight/clusters/getGatewaySettings/action | Získat nastavení brány pro HDInsight Cluster |
+> | Microsoft.HDInsight/clusters/updateGatewaySettings/action | Aktualizovat nastavení brány pro HDInsight Cluster |
+> | Microsoft.HDInsight/clusters/configurations/* |  |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | Microsoft.Resources/deployments/operations/read | Načte nebo vypíše operace nasazení. |
+> | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="hdinsight-domain-services-contributor"></a>Přispěvatel Doménových služeb HDInsight
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1807,6 +1831,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **ID** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | Microsoft.Storage/storageAccounts/ListAccountSas/action | Vrátí token SAS určeného účtu úložiště. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
 > | **notActions** |  |
 > | *None* |  |
@@ -2228,6 +2253,34 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="sql-managed-instance-contributor"></a>Spravovaná Instance Přispěvatel SQL
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje spravovat spravovaných instancí SQL a požadované konfiguraci sítě, ale nemůže udělovat přístup ostatním uživatelům. |
+> | **ID** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
+> | **Akce** |  |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
+> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | Microsoft.Network/networkSecurityGroups/* |  |
+> | Microsoft.Network/routeTables/* |  |
+> | Microsoft.Sql/locations/*/read |  |
+> | Microsoft.Sql/managedInstances/* |  |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Network/virtualNetworks/subnets/* |  |
+> | Microsoft.Network/virtualNetworks/* |  |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
+> | Microsoft.Insights/metrics/read | Čtení metrik |
+> | Microsoft.Insights/metricDefinitions/read | Číst definice metrik |
+> | **notActions** |  |
+> | *None* |  |
 > | **DataActions** |  |
 > | *None* |  |
 > | **NotDataActions** |  |

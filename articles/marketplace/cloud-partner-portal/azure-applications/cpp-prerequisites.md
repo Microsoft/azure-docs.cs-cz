@@ -1,25 +1,18 @@
 ---
-title: Nabídka požadavky aplikace na Azure | Dokumentace Microsoftu
+title: Nabídka požadavky aplikace na Azure | Azure Marketplace
 description: Požadavky pro publikování aplikací Azure nabízet na webu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744920"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942879"
 ---
 # <a name="azure-application-prerequisites"></a>Požadavky na aplikace Azure
 
@@ -36,7 +29,7 @@ Technické požadavky zahrnují následující položky:
 * Šablony rychlý start Azure.<br> Další informace naleznete v tématu:
 
   * [Šablony rychlý start Azure](https://azure.microsoft.com/documentation/templates/). Nasazujte prostředky Azure prostřednictvím Azure Resource Manageru za použití šablon dodaných komunitou a udělejte víc práce. Azure Resource Manager umožňuje zřizovat aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu můžete použít k opakovanému nasazení aplikace během každé fáze životního cyklu této aplikace.
-  * [GitHub: Šablony rychlý start Azure Resource Manageru](https://github.com/azure/azure-quickstart-templates). Toto úložiště obsahuje všechny aktuálně k dispozici Azure Resource Manageru šablony přispěla komunita. Index prohledávatelných šablon je udržován na úrovni https://azure.microsoft.com/en-us/documentation/templates/.
+  * [GitHub: Šablony rychlý start Azure Resource Manageru](https://github.com/azure/azure-quickstart-templates). Toto úložiště obsahuje všechny aktuálně k dispozici Azure Resource Manageru šablony přispěla komunita. Index prohledávatelných šablon je udržován na úrovni https://azure.microsoft.com/documentation/templates/.
 * Vytvoření definice uživatelského rozhraní<br>
 Další informace najdete v tématu [vytvořit Azure portal uživatelského rozhraní pro vaše spravovaná aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). Tento článek představuje základní koncepty createUiDefinition.json souboru. Na webu Azure portal tento soubor používá k vygenerování uživatelského rozhraní pro vytvoření spravované aplikace.
 
@@ -50,7 +43,7 @@ Obchodní požadavky zahrnují následující procesní, smluvní a právní zá
 >[!NOTE]
 >K přihlášení na portál Cloud Partner musí použít stejný účet registrace Microsoft Developer Center. Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Tento účet nesmí být specifické pro jednotlivé služby nebo nabídky.
 
-* Vaše společnost (nebo její pobočka) musí být v prodeji z zemi podporovanými webem Azure Marketplace. Aktuální seznam těchto zemí najdete v tématu [zásadách pro účast na Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+* Vaše společnost (nebo její pobočka) musí být v zákazník z – země/oblasti podporuje Azure Marketplace. Aktuální seznam těchto zemí nebo oblastí najdete v tématu [zásadách pro účast na Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
 * Váš produkt musí mít licenci způsobem, který je kompatibilní s modely fakturace podporovanými webem Azure Marketplace. Další informace najdete v tématu [možností fakturace](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations) na webu Azure Marketplace.
 * Zodpovídáte za zpřístupnění technické podpory pro zákazníky přiměřené způsobem. Tato podpora může být zdarma, placená nebo prostřednictvím komunity přístupy.
 * Zodpovídáte za licencování váš software a všechny závislosti softwaru třetích stran.

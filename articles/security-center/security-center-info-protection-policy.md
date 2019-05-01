@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 04/29/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906043"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875603"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Vlastní nastavení zásad ochrany informací SQL ve službě Azure Security Center (Preview)
  
@@ -41,12 +41,11 @@ Information Protection se dodává s integrovanou sadou popisky a typy informac�
 ## <a name="customize-the-information-protection-policy"></a>Přizpůsobení zásad Information Protection
 Chcete-li upravit zásady služby information protection pro vašeho tenanta Azure, musíte mít [oprávnění správce pro vašeho tenanta skupinu root management](security-center-management-groups.md). 
  
-1. V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
-2. Zvolte **hierarchické zobrazení (preview)** a potom v části **Tenanta kořenovou skupinu**, klikněte na tlačítko **upravit nastavení**.
- 
+1. V zabezpečení Center hlavní nabídky v části **kontrolu zabezpečení prostředků** přejděte na **Data a úložiště** a klikněte na **SQL Information Protection** tlačítko.
+
    ![Nakonfigurovat zásady služby Information protection](./media/security-center-info-protection-policy/security-policy.png) 
  
-3. V části **součásti zásad**, klikněte na tlačítko **Information protection**. V **informace o nastavení ochrany** stránku, uvidíte aktuální sadu popisky. Toto jsou hlavní klasifikace atributy, které slouží ke kategorizaci úroveň citlivosti vašich dat. Z tohoto místa můžete nakonfigurovat **Information protection popisky** a **typy informací** pro příslušného tenanta. 
+2. V **SQL Information Protection** stránku, uvidíte aktuální sadu popisky. Toto jsou hlavní klasifikace atributy, které slouží ke kategorizaci úroveň citlivosti vašich dat. Z tohoto místa můžete nakonfigurovat **Information protection popisky** a **typy informací** pro příslušného tenanta. 
  
 ### <a name="customizing-labels"></a>Přizpůsobení popisků
  

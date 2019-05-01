@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: cae806953721f3cedead023f013c7d1d585efeb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341638"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573380"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář termínů
 
@@ -29,7 +29,7 @@ ms.locfileid: "60341638"
 ||Spravovaná instance|[Spravovaná instance](sql-database-managed-instance.md)|
 |Serverové objekty|Databáze SQL server nebo databázový server|[Databázový server](sql-database-servers.md)|
 ||Spravovaná instance serveru SQL Database, spravované instance serveru nebo instance serveru|[Spravovaná instance](sql-database-managed-instance.md)|
-Databázové objekty|Databáze SQL Azure|Všechny databáze ve službě Azure SQL Database|
+Databázové objekty|Databáze Azure SQL|Všechny databáze ve službě Azure SQL Database|
 ||Izolovaná databáze|Databáze vytvořené pomocí volby nasazení izolovaná databáze|
 ||Databázi ve fondu|Databáze vytvořené v rámci nebo přesunout do elastického fondu|
 ||Instance databáze|Databáze vytvořené v rámci managed instance|
@@ -39,14 +39,15 @@ Databázové objekty|Databáze SQL Azure|Všechny databáze ve službě Azure SQ
 ||Databáze pro obecné účely|Databáze vytvořené v rámci nebo přesunout do úrovně služby Obecné nákupní model založený na virtuálních jádrech|
 ||Velkokapacitní databáze|Databáze vytvořené v rámci nebo přesunout do úrovně služby hyperškálovatelného nákupní model založený na virtuálních jádrech|
 ||Kritické obchodní databáze|Databáze vytvořené v rámci nebo přesunout do úrovně služby kritické obchodní nákupní model založený na virtuálních jádrech|
+||Zřízené databáze|Databáze nakonfigurována na úrovni zřízených výpočetních|
 |[Nákupní modely a prostředky](sql-database-purchase-models.md)|Nákupní model založený na DTU|[Nákupní model založený na DTU](sql-database-service-tiers-dtu.md)|
-||Model nákupu na základě virtuálních jader|[nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)|
+||Nákupní model založený na virtuálních jádrech|[nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)|
 ||vCore|Základní do hostovaného operačního systému k dispozici na hypervisoru.|
 ||Úroveň služeb|Úroveň služeb v rámci nákupní model|
 ||Vypočítat velikost|Množství výpočetních prostředků pro izolované databáze, elastický fond nebo spravované instance v rámci úrovně služeb|
 ||Velikost úložiště|Velikost úložiště, které jsou dostupné pro izolované databáze, elastický fond nebo spravované instance|
 ||Generace výpočetních funkcí|Generování procesoru v rámci úrovně služeb|
-|Pravidla brány firewall protokolu IP databázového serveru|Pravidla firewallu protokolu IP|[Pravidla firewallu protokolu IP](sql-database-firewall-configure.md)|
-||Pravidla brány firewall protokolu IP na úrovni serveru|[Pravidla brány firewall na úrovni serveru IP](sql-database-firewall-configure.md#overview)|
+|Pravidla firewallu protokolu IP databázového serveru|Pravidla firewallu protokolu IP|[Pravidla firewallu protokolu IP](sql-database-firewall-configure.md)|
+||Pravidla firewallu protokolu IP na úrovni serveru|[Pravidla brány firewall na úrovni serveru IP](sql-database-firewall-configure.md#overview)|
 || Pravidla brány firewall na úrovni databáze IP|[Pravidla brány firewall na úrovni databáze IP](sql-database-firewall-configure.md#overview)|
 ||Koncové body virtuální sítě a pravidel|[Pravidla a koncové body virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md)|

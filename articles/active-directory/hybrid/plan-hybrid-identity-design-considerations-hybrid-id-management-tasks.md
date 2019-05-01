@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16d20e9ea2203c788a2b7b5eb0507b357350407d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455609"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918510"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Plánování životního cyklu hybridní Identity
 Identita je jedním ze základů strategii enterprise mobility a aplikaci přístup. Jestli se přihlašujete vaše mobilní zařízení nebo aplikaci SaaS, vaše identita je klíčem k získání přístupu ke všemu, co. Na nejvyšší úrovni řešení pro správu identit zahrnuje sjednocení a synchronizaci mezi vaší identity úložišť, což zahrnuje automatizuje a centralizuje proces zřizování prostředků. Řešení identit by měl být centralizované identitou napříč místním i cloudovým a zároveň použít určitou formu federace identit pro zachovat centralizované ověřování a bezpečně sdílet a spolupracovat s externími uživateli a firmy. Prostředky v rozsahu od operačních systémů a aplikací na osoby ve ani pod něj nespadá s organizací. Organizační struktura může být upraven, aby odpovídal zřizování zásad a postupů.
@@ -32,7 +32,7 @@ Je také důležité, aby byly přizpůsobeny Zlepšete možnosti svých uživat
 ## <a name="determine-hybrid-identity-management-tasks"></a>Určení úloh správy hybridní Identity
 Distribuce úloh správy ve vaší organizaci zlepšuje přesnost a efektivitu správy a vyrovnávání zatížení v organizaci. Následující části jsou pivoty, které definují systému správy identit v robustní.
 
- ![](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![aspekty správy identit](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
 Chcete-li definovat úkoly správy hybridní identity, musíte pochopit některé základní vlastnosti organizace, která bude přijímat hybridní identita. Je důležité, abyste pochopili aktuální úložišť se používají pro identitu zdroje. Musíte znát tyto základní prvky, bude mít základní požadavky a na základě, že budete muset klást podrobnější otázky, které vás přesměruje lepší rozhodnutí o návrhu pro vaše řešení identit.  
 
@@ -61,7 +61,7 @@ Při definování těchto požadavků, ujistěte se, že alespoň na následují
 ## <a name="synchronization-management"></a>Správa synchronizace
 Jedním z cílů identity Manageru, abyste mohli přenést všechny poskytovatele identit a zajistěte jejich synchronizaci. Zachovat synchronizaci dat založené na zprostředkovateli autoritativní hlavní identity. V hybridním scénáři identity, s modelem synchronizované správy spravovat všechny identity uživatelů a zařízení v místním serveru a synchronizujte účty a volitelně hesel do cloudu. Uživatel zadá stejné heslo místní dělají v cloudu, a při přihlášení, ověření hesla podle řešení identit. Tento model používá nástroje pro synchronizaci adresáře.
 
-![](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) Správné návrhu synchronizace hybridní řešení identit Ujistěte se, že jsou odpovědi na následující otázky: • co jsou k dispozici pro hybridní řešení identit synchronizace řešení?
+![synchronizace adresářů](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) správné návrhu synchronizace hybridní řešení identit Ujistěte se, že jsou odpovědi na následující otázky: • co jsou k dispozici pro hybridní řešení identit synchronizace řešení?
 • Jaké jsou dostupné možnosti jednotného přihlašování?
 • Jaké jsou možnosti pro federaci mezi B2B a B2C?
 

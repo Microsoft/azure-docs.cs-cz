@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.author: mialdridm
+ms.date: 04/24/2019
+ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 35cee297156cf64deeef8c9c6b514ec8176f9ca5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c4290473a7c1edce02d74a4a787c62ccf0d9c052
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367697"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924316"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Okruhy ExpressRoute a partnerský vztah
 
@@ -22,10 +22,11 @@ Okruhy ExpressRoute připojit místní infrastrukturu k Microsoftu prostřednict
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Veřejný partnerský vztah Azure byla vyřazena, protože není k dispozici pro okruhy ExpressRoute. Nové okruhy podporují partnerský vztah Microsoftu a soukromého partnerského vztahu.  
+> Veřejný partnerský vztah Azure je zastaralá a není k dispozici pro okruhy ExpressRoute. Nové okruhy podporují partnerský vztah Microsoftu a soukromého partnerského vztahu.  
 >
 
 ## <a name="circuits"></a>Okruhy ExpressRoute
+
 Okruh ExpressRoute představuje logické propojení mezi vaši infrastrukturou v místním a cloudovým službám Microsoftu prostřednictvím poskytovatele připojení. Můžete si objednat víc okruhů ExpressRoute. Každý okruh může být v jedné nebo několika oblastech a jde připojit k místním prostřednictvím poskytovatelů jiné připojení.
 
 Okruhy ExpressRoute nejsou namapovány na všech fyzických entit. Okruh se jednoznačně identifikují pomocí standardního GUID volá jako klíče služby (s-key). Klíč služby je jediná výměně informací mezi Microsoft, poskytovatel připojení a. Klíč s není tajným kódem z bezpečnostních důvodů. Existuje mapování 1:1 mezi okruhu ExpressRoute a s-key.
@@ -35,14 +36,17 @@ Okruhy ExpressRoute může obsahovat dva nezávislé partnerských vztahů: Souk
 Každý okruh má pevnou šířku pásma (50 MB/s, 100 MB/s, 200 MB/s, 500 MB/s, 1 GB/s, 10 GB/s) a je namapována na poskytovatele připojení a umístění partnerského vztahu. Šířku pásma, kterou jste vybrali, je sdílen mezi všechny partnerské vztahy okruhu
 
 ### <a name="quotas"></a>Kvóty, limity a omezení
+
 Výchozí kvóty a omezení platí pro každý okruh ExpressRoute. Odkazovat [předplatné Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md) stránky pro aktuální informace o kvótách.
 
 ## <a name="routingdomains"></a>Partnerský vztah ExpressRoute
+
 Okruh ExpressRoute má několik směrování domén/partnerské vztahy s ním spojená: Privátní Azure veřejné, Azure a Microsoft. Každý partnerský vztah je nakonfigurované stejně jako na pár směrovače (ve sdílení zatížení nebo aktivní aktivní konfigurace) pro zajištění vysoké dostupnosti. Služby Azure jsou klasifikovány jako *Azure veřejného* a *Azure privátní* představující IP adresování schémata.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="privatepeering"></a>Soukromý partnerský vztah Azure
+
 Výpočetní služby, a to virtuálních počítačích (IaaS) Azure a cloudové služby (PaaS), které jsou nasazeny v rámci virtuální sítě můžete připojit přes privátní partnerský vztah domény. Privátní partnerský vztah domény, se považuje za důvěryhodným rozšířením vaší základní sítě do Microsoft Azure. Můžete nastavit obousměrné připojení mezi vaší základní sítě a virtuální sítě Azure (Vnet). Tento partnerský vztah umožňuje připojení k virtuálním počítačům a cloudovým službám přímo na jejich privátní IP adresy.  
 
 Více než jedné virtuální sítě můžete připojit k privátní partnerský vztah domény. Zkontrolujte [stránku s nejčastějšími dotazy](expressroute-faqs.md) informace o omezení a omezení. Můžete přejít [předplatné Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md) stránky pro aktuální informace o limitech.  Odkazovat [směrování](expressroute-routing.md) stránku podrobné informace o konfiguraci směrování.
@@ -58,7 +62,7 @@ Zobrazit [stránku s nejčastějšími dotazy](expressroute-faqs.md) pro další
 ### <a name="publicpeering"></a>Azure veřejného partnerského vztahu (zastaralé funkce pro nové okruhy)
 
 > [!Note]
-> Veřejný partnerský vztah Azure má 1 překladu adres IP adres přidružený ke každé relace protokolu BGP. Pro větší než 2 adres IP pro NAT, přesuňte [partnerský vztah Microsoftu](https://docs.microsoft.com/en-us/azure/expressroute/how-to-move-peering), kde je můžete nakonfigurovat vlastní přidělení NAT, jakož i použít filtry tras pro selektivní předponu oznámení o inzerovaných programech. 
+> Veřejný partnerský vztah Azure má 1 překladu adres IP adres přidružený ke každé relace protokolu BGP. Pro větší než 2 adres IP pro NAT přesunete do partnerského vztahu Microsoftu. Partnerský vztah Microsoftu umožňuje nakonfigurovat vlastní přidělení NAT, jakož i použít filtry tras pro selektivní předponu oznámení o inzerovaných programech. Další informace najdete v tématu [přesunout do partnerského vztahu Microsoftu](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
 >
 
 Služby, jako je Azure Storage, SQL Database a Websites se nabízejí na veřejné IP adresy. Soukromě můžete připojit ke službám hostovaným na veřejných IP adresách, včetně virtuálních IP adres z vašich cloudových služeb prostřednictvím veřejného partnerského vztahu domény směrování. Můžete připojit veřejný partnerský vztah domény k vaší hraniční sítě a připojení ke všem službám Azure na jejich veřejné IP adresy z vaší sítě WAN, aniž byste museli připojovat prostřednictvím Internetu.
@@ -70,6 +74,7 @@ Můžete definovat vlastní trasy filtry ve vaší síti využívat pouze trasy,
 Další informace o službách, které jsou podporované prostřednictvím veřejného partnerského vztahu domény směrování, najdete v článku [nejčastější dotazy k](expressroute-faqs.md).
 
 ## <a name="peeringcompare"></a>Vytvoření partnerského vztahu porovnání
+
 Následující tabulka porovnává tři partnerské vztahy:
 
 |  | **Soukromý partnerský vztah** | **Partnerský vztah Microsoftu** |  **Veřejné partnerské vztahy** (zastaralé pro nové okruhy) |
@@ -86,11 +91,13 @@ Jako součást váš okruh ExpressRoute můžete povolit jeden nebo více domén
 Každý partnerský vztah vyžaduje samostatné relace protokolu BGP (jednu dvojici pro každý typ partnerského vztahu). Následující páry relace protokolu BGP propojují s vysokou dostupností. Pokud se chcete připojit prostřednictvím poskytovatelů vrstvy 2 připojení, zodpovídáte za konfiguraci a správu směrování. Další informace kontrolou [pracovních postupů](expressroute-workflows.md) pro nastavení ExpressRoute.
 
 ## <a name="health"></a>Stav ExpressRoute
+
 Okruhy ExpressRoute může monitorovat dostupnost, připojení k virtuálním sítím a pomocí využití šířky pásma [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
 
 NPM monitoruje stav soukromý partnerský vztah Azure a partnerský vztah Microsoftu. Podívejte se na naše [příspěvku](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) Další informace.
 
 ## <a name="next-steps"></a>Další postup
+
 * Vyhledejte poskytovatele služeb. Zobrazit [poskytovatelé a umístění služby ExpressRoute](expressroute-locations.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 * Nakonfigurujte připojení ExpressRoute.

@@ -13,25 +13,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/27/2017
-ms.date: 11/30/2018
-ms.author: v-junlch
-ms.openlocfilehash: 1dcb97a94bd5790edc2e40acf890bb47baec7a4b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.author: manayar
+ms.openlocfilehash: 8b75b9898eb767866c0843594a82570cfb65d122
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108023"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868955"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidat odkaz na existující virtuální sítě v šabloně Azure škálovací sady
 
-Tento článek popisuje, jak změnit [šablonu minimální přijatelné škálovací sady](./virtual-machine-scale-sets-mvss-start.md) k nasazení do existující virtuální sítě, místo vytvoření nového.
+Tento článek popisuje, jak změnit [šablonu základní škálovací sady](virtual-machine-scale-sets-mvss-start.md) k nasazení do existující virtuální sítě, místo vytvoření nového.
 
 ## <a name="change-the-template-definition"></a>Změna definice šablony
 
-Šablonu minimální přijatelné škálovací sady můžete zobrazit [tady](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), a šablony pro nasazení škálovací sady do existující virtuální sítě uvidíte [tady](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Podívejme se na rozdíl použít k vytvoření této šablony (`git diff minimum-viable-scale-set existing-vnet`) jeden po druhém:
+V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní škálovací sadu šablony. Nyní budeme používat tento starší šablony a upravit tak, aby vytvořit šablonu, která nasadí škálovací sady do existující virtuální sítě. 
 
-Nejprve přidejte `subnetId` parametru. Tento řetězec je předána do konfigurace škálovací sady, což škálovací sady pro identifikaci předem vytvořené podsítě k nasazení virtuálních počítačů do. Tento řetězec musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Například k nasazení škálovací sady existující virtuální síť s názvem `myvnet`, podsítě `mysubnet`, skupina prostředků `myrg`a předplatné `00000000-0000-0000-0000-000000000000`, by subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Nejprve přidejte `subnetId` parametru. Tento řetězec je předána do konfigurace škálovací sady, což škálovací sady pro identifikaci předem vytvořené podsítě k nasazení virtuálních počítačů do. Tento řetězec musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+
+Například k nasazení škálovací sady existující virtuální síť s názvem `myvnet`, podsítě `mysubnet`, skupina prostředků `myrg`a předplatné `00000000-0000-0000-0000-000000000000`, by subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -53,7 +54,7 @@ V dalším kroku odstranit prostředek virtuální sítě z `resources` pole, ja
 -      "type": "Microsoft.Network/virtualNetworks",
 -      "name": "myVnet",
 -      "location": "[resourceGroup().location]",
--      "apiVersion": "2016-12-01",
+-      "apiVersion": "2018-11-01",
 -      "properties": {
 -        "addressSpace": {
 -          "addressPrefixes": [
@@ -79,7 +80,7 @@ Virtuální síť už je před nasazením šablony proto není nutné k zadání
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
        "location": "[resourceGroup().location]",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
 -      "dependsOn": [
 -        "Microsoft.Network/virtualNetworks/myVnet"
 -      ],
@@ -88,7 +89,7 @@ Virtuální síť už je před nasazením šablony proto není nutné k zadání
          "capacity": 2
 ```
 
-A konečně, předejte `subnetId` parametru nastaveného uživatelem (namísto použití `resourceId` získat ID virtuální sítě v jednom nasazení, což je co minimální přijatelné škálovací sady šablona nemá).
+A konečně, předejte `subnetId` parametru nastaveného uživatelem (namísto použití `resourceId` získat ID virtuální sítě v jednom nasazení, což je co základní přijatelné škálovací sady šablona nemá).
 
 ```diff
                        "name": "myIpConfig",
@@ -107,5 +108,3 @@ A konečně, předejte `subnetId` parametru nastaveného uživatelem (namísto p
 ## <a name="next-steps"></a>Další postup
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-
-<!-- Update_Description: update metedata properties -->

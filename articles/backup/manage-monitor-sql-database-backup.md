@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849296"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681847"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovat databáze SQL serveru
 
@@ -129,9 +129,9 @@ Po zakázání ochrany, ale před odstraněním trezoru, zrušit registraci inst
 
 3. V **chráněné servery**, vyberte server ke zrušení registrace. Odstranit trezor, musíte zrušit registraci všech serverů.
 
-4. Klikněte pravým tlačítkem na chráněném serveru a vyberte **odstranit**.
+4. Klikněte pravým tlačítkem na chráněném serveru a vyberte **Unregister**.
 
-   ![Vyberte odstranit](./media/backup-azure-sql-database/delete-protected-server.png)
+   ![Vyberte odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Znovu zaregistrovat příponu na virtuálním počítači SQL serveru
 

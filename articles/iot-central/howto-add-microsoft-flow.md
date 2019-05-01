@@ -4,16 +4,16 @@ description: Použití konektoru pro IoT Central v Microsoft Flow spouštět pra
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887611"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693600"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 
@@ -101,9 +101,12 @@ V této části se dozvíte, jak aktualizovat nastavení zařízení a vlastnost
 
 1. Přidejte novou akci. Hledat **aktualizovat zařízení Azure IoT Central -** akce.
 
-1. Vyberte aplikace z rozevíracího seznamu. Teď budete potřebovat ID existující zařízení, které chcete aktualizovat. Můžete získat ID ze zařízení IoT Central **Device Explorer**.
+1. Vyberte aplikace z rozevíracího seznamu. Teď budete potřebovat ID existující zařízení, které chcete aktualizovat. 
 
-    ![ID zařízení Průzkumník zařízení IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.png)
+    > [!NOTE] 
+    > **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+
+    ![IoT Central ID z adresy URL](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
 1. Je-li aktualizovat název zařízení. Pokud chcete aktualizovat všechny vlastnosti a nastavení zařízení, je třeba vybrat šablonu zařízení zařízení, které chcete aktualizovat v **šablona zařízení** rozevíracího seznamu. Akce dlaždic se rozbalí a zobrazí všechny vlastnosti a nastaveních, pomocí kterých můžete aktualizovat.
 
@@ -117,19 +120,32 @@ V této části se dozvíte, jak aktualizovat nastavení zařízení a vlastnost
 
 ## <a name="get-device-information-in-a-workflow"></a>Získejte informace o zařízení v pracovním postupu
 
-Můžete získat informace o zařízení s jeho použitím ID zařízení **získat zařízení Azure IoT Central -** akce. Můžete získat informace, jako je název zařízení, název šablony zařízení, hodnoty vlastnosti a hodnoty nastavení k předání do pozdějších akcích v pracovním postupu. Tady je příklad pracovního postupu, který se předá jméno zákazníka hodnotu vlastnosti ze zařízení do Microsoft Teams.
+Můžete získat informace o zařízení s použitím jeho ID **získat zařízení Azure IoT Central -** akce. 
+> [!NOTE] 
+> **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+
+Můžete získat informace, jako je název zařízení, název šablony zařízení, hodnoty vlastnosti a hodnoty nastavení k předání do pozdějších akcích v pracovním postupu. Tady je příklad pracovního postupu, který se předá jméno zákazníka hodnotu vlastnosti ze zařízení do Microsoft Teams.
 
    ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowgetdevice.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>Spuštění příkazu na zařízení v pracovním postupu
-Příkaz můžete spustit na zařízení, zadat jeho pomocí ID zařízení **Azure IoT Central – spusťte příkaz** akce. Můžete si vybrat příkaz pro spuštění a předání v parametrech příkaz v rámci této akce. Tady je příklad pracovního postupu, který spouští příkaz restartování zařízení pomocí tlačítka v mobilní aplikaci Microsoft Flow.
+Spustíte příkaz na zařízení, zadat jeho pomocí ID **Azure IoT Central – spusťte příkaz** akce. 
+
+> [!NOTE] 
+> **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+    
+Můžete si vybrat příkaz pro spuštění a předání v parametrech příkaz v rámci této akce. Tady je příklad pracovního postupu, který spouští příkaz restartování zařízení pomocí tlačítka v mobilní aplikaci Microsoft Flow.
 
    ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>Odstranit zařízení v pracovním postupu
 
-Můžete odstranit zařízení s jeho pomocí ID zařízení **odstranit zařízení Azure IoT Central -** akce. Tady je příklad pracovního postupu, který odstraní zařízení při stisknutí tlačítka v mobilní aplikaci Microsoft Flow.
+Můžete odstranit zařízení s použitím jeho ID **odstranit zařízení Azure IoT Central -** akce. 
+> [!NOTE] 
+> **Je nutné použít ID nalezeno v adrese URL** na stránce s podrobnostmi zařízení zařízení, které chcete aktualizovat. V Průzkumníku zařízení seznam zařízení se nenašlo ID zařízení není ten správný pro použití v Microsoft Flow.
+
+Tady je příklad pracovního postupu, který odstraní zařízení při stisknutí tlačítka v mobilní aplikaci Microsoft Flow.
 
    ![Pracovní postup zařízení odstranění toku](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 

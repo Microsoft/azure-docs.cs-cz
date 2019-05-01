@@ -1,10 +1,10 @@
 ---
 title: Další informace o šablonách škálovacích sad virtuálních počítačů | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit šablonu minimální přijatelné škálovací sady pro škálovací sady virtuálních počítačů
+description: Zjistěte, jak vytvořit šablonu základní škálovací sadu pro škálovací sady virtuálních počítačů
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,27 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60805580"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868899"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Další informace o šablonách škálovacích sad virtuálních počítačů
-[Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů ukazuje, jak vytvořit šablonu minimální přijatelné škálovací sady a jak upravit tuto šablonu tak, aby odpovídala různé scénáře. Všechny příklady pocházejí z tohoto [úložiště GitHub](https://github.com/gatneil/mvss). 
+[Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů ukazuje, jak vytvořit šablonu základní škálovací sady a jak upravit tuto šablonu tak, aby odpovídala různé scénáře. Všechny příklady pocházejí z tohoto [úložiště GitHub](https://github.com/gatneil/mvss).
 
 Tato šablona je určena být jednoduché. Kompletní příklady škálovací sady šablon naleznete v tématu [úložišti šablon Azure Quickstart na Githubu](https://github.com/Azure/azure-quickstart-templates) a vyhledejte složky, které obsahují řetězec `vmss`.
 
 Pokud jste již obeznámeni s vytvořením šablony, můžete přeskočit k části "Další kroky" a uvidíte, jak upravit tuto šablonu.
-
-## <a name="review-the-template"></a>Zkontrolujte šablonu
-
-Zkontrolujte šablonu minimální přijatelné škálovací sady, můžete využít GitHub [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json).
-
-V tomto kurzu, Podívejme se na rozdíly (`git diff master minimum-viable-scale-set`) vytvoření minimální přijatelné škálovací sady šablon jeden po druhém.
 
 ## <a name="define-schema-and-contentversion"></a>Definování $schema a contentversion –
 Nejprve definujte `$schema` a `contentVersion` v šabloně. `$schema` Element definuje verze jazyka šablony a používá se pro Visual Studio zvýraznění syntaxe a podobné funkce ověřování. `contentVersion` Není použit element v Azure. Místo toho pomáhá udržovat přehled o verzi šablony.
@@ -43,6 +37,7 @@ Nejprve definujte `$schema` a `contentVersion` v šabloně. `$schema` Element de
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
+
 ## <a name="define-parameters"></a>Definovat parametry
 Dále definujte dva parametry, `adminUsername` a `adminPassword`. Parametry jsou hodnoty, které zadáte v době nasazování. `adminUsername` Parametr se používá jednoduchý `string` typu, ale protože `adminPassword` je tajný, uveďte ji zadejte `securestring`. Později tyto parametry jsou předány do konfigurace škálovací sady.
 
@@ -70,13 +65,13 @@ Dále je část zdroje šablony. Tady můžete definovat, co vlastně chcete nas
    "resources": [
 ```
 
-Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ [sítí Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)a názvem `myVnet`a verze rozhraní API `2016-03-30`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).)
+Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ [sítí Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)a názvem `myVnet`a verze rozhraní API `2018-11-01`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).)
 
 ```json
      {
        "type": "Microsoft.Network/virtualNetworks",
        "name": "myVnet",
-       "apiVersion": "2016-12-01",
+       "apiVersion": "2018-11-01",
 ```
 
 ## <a name="specify-location"></a>Zadejte umístění
@@ -117,7 +112,7 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
      {
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
          "Microsoft.Network/virtualNetworks/myVnet"
@@ -136,7 +131,7 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
 ```
 
 ### <a name="choose-type-of-updates"></a>Zvolte typ aktualizace
-Škálovací sady také je potřeba vědět, jak se pro zpracování aktualizací ve škálovací sadě. V současné době existují dvě možnosti, `Manual` a `Automatic`. Další informace o rozdílech mezi těmito dvěma, naleznete v dokumentaci na [postup upgradu škálovací sady](./virtual-machine-scale-sets-upgrade-scale-set.md).
+Škálovací sady také je potřeba vědět, jak se pro zpracování aktualizací ve škálovací sadě. V současné době jsou tři možnosti `Manual`, `Rolling` a `Automatic`. Další informace o rozdílech mezi těmito dvěma, naleznete v dokumentaci na [postup upgradu škálovací sady](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ```json
        "properties": {

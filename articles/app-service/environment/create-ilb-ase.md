@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765006"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573567"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -56,7 +56,7 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení neumožňuje n
 
 Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatížení postupujte takto:
 
-1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **webové** > **služby App Service Environment**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web** > **App Service Environment**.
 
 2. Vyberte své předplatné.
 
@@ -66,7 +66,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
 
-6. Vyberte **virtuální síť/umístění** > **konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
+6. Vyberte položky **Virtuální síť/Umístění** > **Konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
 
 7. Zadejte název domény. Tato doména se bude používat pro aplikace vytvořené v této službě ASE. Platí určitá omezení. Nesmí se používat tyto domény:
 
@@ -96,14 +96,14 @@ V okně **Virtuální síť** najdete možnost **Konfigurace virtuální sítě*
 
 Po výběru možnosti **Interní** nebude možné přidat do služby ASE další IP adresy. Místo toho je potřeba zadat doménu služby ASE. Ve službě ASE s externí virtuální IP adresou se název služby ASE používá v doméně pro aplikace vytvořené v této službě ASE.
 
-Pokud u položky **Typ VIP** nastavíte hodnotu **Interní**, váš název služby ASE se nepoužije v názvu domény pro danou službu ASE. Doménu potom zadáte explicitně. Pokud je vaší doménou *contoso.corp.net* a vytvoříte aplikaci v tom, že služba ASE s názvem *timereporting*, adresu URL pro tuto aplikaci timereporting.contoso.corp.NET.
+Pokud u položky **Typ VIP** nastavíte hodnotu **Interní**, váš název služby ASE se nepoužije v názvu domény pro danou službu ASE. Doménu potom zadáte explicitně. Pokud máte doménu *contoso.corp.net* a vytvoříte v této službě ASE aplikaci s názvem *timereporting*, tato aplikace bude mít adresu URL timereporting.contoso.corp.net.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Vytvoření aplikace ve službě ASE s interním nástrojem pro vyrovnání zatížení ##
 
 Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytvoříte stejným způsobem jako v běžné službě ASE.
 
-1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **Webová aplikace**.
 
 1. Zadejte název aplikace.
 
@@ -117,7 +117,7 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 1. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
 
-1. Vyberte **Vytvořit**. Pokud chcete, aby aplikace zobrazovala na řídicím panelu, vyberte **připnout na řídicí panel** zaškrtávací políčko.
+1. Vyberte **Vytvořit**. Pokud chcete, aby se aplikace zobrazovala na řídicím panelu, zaškrtněte políčko **Připnout na řídicí panel**.
 
     ![Vytvoření plánu služby App Service][2]
 
@@ -127,7 +127,7 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 Služba ASE s interním nástrojem pro vyrovnávání zatížení se trochu liší od služby bez interního nástroje pro vyrovnávání zatížení. Jak už jsme zmínili, je potřeba spravovat vlastní službu DNS. Taky je potřeba poskytnout vlastní certifikát pro připojení HTTPS.
 
-Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou jste zadali. Vytvoření nové položky se zobrazí v **nastavení** nabídky s názvem **ILB certifikát**. Služba ASE se vytvoří s certifikátem, který nemá určenou doménu služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud službu ASE použijete s tímto certifikátem, váš prohlížeč bude hlásit, že je certifikát neplatný. Tento certifikát usnadňuje testování protokolu HTTPS, ale je potřeba nahrát váš vlastní certifikát spojený s vaší doménou služby ASE s interním nástrojem pro vyrovnávání zatížení. Tento krok je nutný bez ohledu na to, jestli máte certifikát podepsaný svým držitelem, nebo jste ho získali od certifikační autority.
+Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou jste zadali. V nabídce **Nastavení** se objeví nová položka s názvem **Certifikát interního nástroje pro vyrovnávání zatížení**. Služba ASE se vytvoří s certifikátem, který nemá určenou doménu služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud službu ASE použijete s tímto certifikátem, váš prohlížeč bude hlásit, že je certifikát neplatný. Tento certifikát usnadňuje testování protokolu HTTPS, ale je potřeba nahrát váš vlastní certifikát spojený s vaší doménou služby ASE s interním nástrojem pro vyrovnávání zatížení. Tento krok je nutný bez ohledu na to, jestli máte certifikát podepsaný svým držitelem, nebo jste ho získali od certifikační autority.
 
 ![Název domény služby ASE s interním nástrojem pro vyrovnávání zatížení][3]
 
@@ -154,7 +154,7 @@ Certifikát generovaný těmito příkazy prostředí PowerShell označují proh
 
 Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte takto:
 
-1. Po vytvoření služby ASE přejděte do uživatelského rozhraní služby ASE. Vyberte položky **ASE** > **Nastavení** > **Certifikát interního nástroje pro vyrovnávání zatížení**.
+1. Po vytvoření služby ASE přejděte do uživatelského rozhraní služby ASE. Vyberte položky **ASE** > **Nastavení** > **Certifikát interního nástroje pro vyrovnávání zatížení**.
 
 1. Pokud chcete nastavit certifikát interního nástroje pro vyrovnávání zatížení, vyberte soubor certifikátu .pfx a zadejte heslo. Zpracování tohoto kroku nějakou dobu trvá. Zobrazí se zpráva s informací, že probíhá operace nahrávání.
 

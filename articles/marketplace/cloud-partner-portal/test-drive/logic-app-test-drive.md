@@ -1,25 +1,18 @@
 ---
-title: Jednotky Test aplikace logiky | Dokumentace Microsoftu
+title: Jednotky Test aplikace logiky | Azure Marketplace
 description: Vysvětluje, jak vytvářet jejich testovací verze, která se připojuje k instanci Dynamics AX/CRM nebo jiný prostředek mimo Azure stejně.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 3dc5642541f411acc93301f6bb9828e901aba449
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61070332"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64940011"
 ---
 <a name="logic-app-test-drive"></a>Jednotky Test aplikace logiky
 ====================

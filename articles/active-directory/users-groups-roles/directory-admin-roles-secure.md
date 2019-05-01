@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472821"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920485"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -261,7 +261,7 @@ Pokud už používáte Azure AD Privileged Identity Management, upravte časové
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Určení vystavení založené na heslech přihlášení protokoly (Pokud se používá Exchange Online)
 
-V minulosti protokoly předpokládá, že byly vloženy kombinace uživatelského jména a hesla v zařízení, e-mailové účty, telefony a tak dále. Ale nyní s riziky pro kybernetických útoků v cloudu, doporučujeme vám identifikovat každý potenciální uživatele, který, jejichž ohrožení zabezpečení přihlašovacích údajů se může mít katastrofální v organizaci a vyloučit tomu nebudou moct přihlásit k e-mailu pomocí uživatelského jména / heslo implementací požadavky na silné ověřování a podmíněného přístupu. Můžete blokovat [starší verze ověřování pomocí podmíněného přístupu](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication). Zkontrolujte prosím podrobnosti na [blokování základní ověřování](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím Exchnage online. 
+V minulosti protokoly předpokládá, že byly vloženy kombinace uživatelského jména a hesla v zařízení, e-mailové účty, telefony a tak dále. Ale nyní s riziky pro kybernetických útoků v cloudu, doporučujeme vám identifikovat každý potenciální uživatele, který, jejichž ohrožení zabezpečení přihlašovacích údajů se může mít katastrofální v organizaci a vyloučit tomu nebudou moct přihlásit k e-mailu pomocí uživatelského jména / heslo implementací požadavky na silné ověřování a podmíněného přístupu. Můžete blokovat [starší verze ověřování pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Zkontrolujte prosím podrobnosti na [blokování základní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím Exchnage online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Proveďte posouzení revize rolí pro role služeb Office 365 (Pokud používáte Office 365)
 

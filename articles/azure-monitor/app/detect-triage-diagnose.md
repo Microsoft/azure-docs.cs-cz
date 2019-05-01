@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 24523a7b244b6dee0e240291b7187e38d82a2e08
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795057"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572912"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -182,7 +182,7 @@ Diagnostika není to samé jako ladění. Než začnete s trasováním kódem, m
 
 ![Grafy chyb závislostí a doby trvání volání závislostí](./media/detect-triage-diagnose/11-dependencies.png)
 
-Některé problémy s pomalými závislostmi jsou problémy geografické polohy. Banka Fabrikam používá virtuální počítače Azure a zjistilo se, že nedopatřením umístila webový server a server účtů do jiných zemí. Migrací jednoho z nich došlo k výraznému zlepšení.
+Některé problémy s pomalými závislostmi jsou problémy geografické polohy. Banka Fabrikam používá virtuální počítače Azure a zjistit, že měl neúmyslně nacházejí umístila webový server a server účtů v různých zemích nebo oblastech. Migrací jednoho z nich došlo k výraznému zlepšení.
 
 **Co jsme udělali?** Pokud se nezdá, že by problém byl v závislosti, a pokud závislost neexistovala vždy, problém je pravděpodobně způsobený nedávnou změnou. Historická perspektiva, kterou poskytují grafy metrik a událostí, usnadňuje korelaci jakýchkoli náhlých změn s nasazeními. Tím se může zúžit oblast hledání problému. Pokud chcete identifikovat, které řádky v kódu aplikace zpomalily výkon, povolte Application Insights Profiler. Další informace najdete v tématu [Profilace živých webových aplikací Azure pomocí Application Insights](./../../azure-monitor/app/profiler.md). Po povolení profileru se zobrazí trasování podobné následujícímu. V tomto příkladu si snadno můžete všimnout, že problém způsobila metoda *GetStorageTableData*.  
 

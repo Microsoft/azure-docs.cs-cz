@@ -1,7 +1,6 @@
 ---
 title: Spuštění vlastních programů MapReduce – Azure HDInsight
 description: Kdy a jak se spuštění vlastních programů MapReduce v HDInsight.
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: c9cbea913a86a681620eea4adc0a5c99cc84f920
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433861"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713101"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Spuštění vlastních programů MapReduce
 
@@ -38,7 +37,6 @@ Ve většině scénářů HDInsight zpracování je teď jednodušší a efektiv
 Vlastní mapa/snížit komponenty jsou obvykle napsány v jazyce Java. Hadoop poskytuje datové proudy rozhraní, které také umožňuje součástem pro použití, které jsou vyvíjeny v jiných jazycích, jako například C#, F#, Visual Basic, Python a JavaScript.
 
 * Návod na vývoj vlastních programů MapReduce v Javě, naleznete v tématu [programů vývoj Java MapReduce pro Hadoop v HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
-* Příklad pomocí Pythonu najdete v tématu [Python vývoj programů MapReduce se streamováním pro HDInsight](apache-hadoop-streaming-python.md).
 
 Zvažte možnost vytvořit vlastní mapy a snížit součásti byly splněny následující podmínky:
 
@@ -76,6 +74,5 @@ Nejběžnější programů MapReduce jsou napsané v jazyce Java a kompilováno 
 
 * [Použití C# s MapReduce datových proudů na Apache Hadoop v HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu](apache-hadoop-streaming-python.md)
 * [Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro Eclipse](../spark/apache-spark-eclipse-tool-plugin.md)
 * [Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight](python-udf-hdinsight.md)

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2017
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381607"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918433"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze budete definovat strategie ochrany dat pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v:
@@ -89,7 +89,7 @@ Důležitou součástí správy obsahu je pochopit, kdo přistupuje k který pro
 ## <a name="define-access-control-options"></a>Definování možností řízení přístupu
 S využitím ověřování, autorizace a řízení přístupu určené k dispozici ve službě Azure AD můžete povolit vaší společnosti použití centrální identity úložiště současně uživatelům a partnery používat jednotné přihlašování (SSO) jak je znázorněno na následujícím obrázku:
 
-![](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![Centralizovaná správa](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
 Centralizovaná správa a plně integraci s další adresáře
 
@@ -115,7 +115,7 @@ Podpora služby Azure AD, mobilní obchodní aplikace pomocí stejných možnost
 
 Po ověření uživatele pomocí služby Azure AD, je důležité vyhodnotit úroveň přístupu, kterou má uživatel. Úroveň přístupu, kterou má uživatel na prostředku se může lišit. Zatímco Azure AD můžete přidat další vrstvu zabezpečení, řízení přístupu k některým prostředkům, mějte na paměti, že vlastního prostředku může mít také svůj vlastní seznam řízení přístupu samostatně, jako je řízení přístupu pro soubory uložené na souborovém serveru. Následující obrázek shrnuje úrovně řízení přístupu, které máte v hybridním scénáři:
 
-![](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
+![Řízení přístupu](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
 Každá interakce v diagramu, ukázalo v obrázek X představuje jeden scénář přístup ovládací prvek, který se dá pokrýt komponentami služby Azure AD. Dál budete mít popis jednotlivých scénářů:
 

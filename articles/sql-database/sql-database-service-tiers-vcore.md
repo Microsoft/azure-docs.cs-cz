@@ -11,20 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: 0f7765e5b13f2d9c1e1213064d778ce6db5ef115
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357947"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572679"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>Zvolte mezi úrovněmi služeb vCore a migrovat z jednotek DTU úrovně služeb
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Umožňuje také můžete vybrat generaci:
 
 - Gen4 - až 24 logických procesorů podle Intel E5-2673 v3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
 - Gen5 - až 80 logických procesorů podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.1 GB na jádro, rychlé eNVM SSD
+
 
 Gen4 hardware nabízí podstatně více paměti na vCore. Gen5 hardware však umožňuje vertikálně navýšit kapacitu výpočetních prostředků mnohem vyšší.
 
@@ -40,9 +41,9 @@ Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 ||**Obecné účely**|**Pro důležité obchodní informace**|**Velkokapacitní (preview)**|
 |---|---|---|---|
 |Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
-|Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
-|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro|
-|Úložiště|Používá vzdálené úložiště:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
+|Procesor|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80<br/>**Výpočetní prostředí**<br/>Gen5: 0,5 – 4 vCore|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
+|Memory (Paměť)|**Zřízení výpočetních**:<br/>Gen4: 7 GB na jádro<br/>Gen5: 5.1 GB na jádro<br/>**Výpočetní prostředí**<br/>Gen5: 3 GB na jádro|**Zřízení výpočetních**:<br/>Gen4: 7 GB na jádro<br/>Gen5: 5.1 GB na jádro |**Zřízení výpočetních**:<br/>Gen4: 7 GB na jádro<br/>Gen5: 5.1 GB na jádro|
+|Úložiště|Používá vzdálené úložiště:<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Výpočetní prostředí izolované databáze**:<br/>5 GB - 1 TB<br/>**Spravovaná Instance**: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Spravovaná Instance**:<br/>32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
 |Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200 000 maximální IOPS|Bude doplněno|
 |Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|?|
 |Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a nejsou velikost operace dat (s ohledem minut, nikoli hodin nebo dnů).|
@@ -56,16 +57,18 @@ Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 - Další informace o úrovních služeb pro obecné účely a pro důležité obchodní informace najdete v tématu [úrovně služeb pro obecné účely a pro důležité obchodní informace](sql-database-service-tiers-general-purpose-business-critical.md).
 - Podrobnosti na úrovni služby Hyperškálovatelného v nákupní model založený na virtuálních jádrech najdete v tématu [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md).  
 
-> [!IMPORTANT]
-> Pokud budete potřebovat méně než jedno virtuální jádro výpočetní kapacity, použijte nákupní model založený na DTU.
+
 
 ## <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-V nákupní model založený na virtuálních jádrech mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
+Ve vrstvě zřízené počítače nákupní model založený na virtuálních jádrech, mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
 
 ![Ceny](./media/sql-database-service-tiers/pricing.png)
 
-S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukturu Azure pomocí stávající licence SQL Server pro databázový stroj SQL samotný (**BasePrice**) nebo platby za základní infrastrukturu a licenci systému SQL Server (**LicenseIncluded**). Můžete vybrat nebo změnit váš licenční model pomocí webu Azure portal nebo pomocí jedné z následujících rozhraní API.
+S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukturu Azure pomocí stávající licence SQL Server pro databázový stroj SQL samotný (**BasePrice**) nebo platby za základní infrastrukturu a licenci systému SQL Server (**LicenseIncluded**).
+
+
+Můžete vybrat nebo změnit váš licenční model pomocí webu Azure portal nebo pomocí jedné z následujících rozhraní API.
 
 - Nastavení nebo aktualizaci typu licence pomocí Powershellu:
 
@@ -130,5 +133,5 @@ Můžete zkopírovat libovolnou databázi s velikostí výpočetními prostředk
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md)
 - Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro elastické fondy, najdete v části [limity pro elastické fondy SQL Database založené na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

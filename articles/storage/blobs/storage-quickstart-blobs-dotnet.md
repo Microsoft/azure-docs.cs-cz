@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 50bb13ecaa9e6076f00749d54b492a1e6663a93e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2708efc22d373db6ee55dfee6b8adfa35bd450ef
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62110062"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924326"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí .NET
 
@@ -48,13 +48,13 @@ Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr 
 
 Ukázková aplikace použitá v tomto rychlém startu je základní konzolová aplikace. Ukázkovou aplikaci můžete prozkoumat na [GitHubu](https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart).
 
-Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
+Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete otevřít řešení sady Visual Studio, vyhledejte složku *storage-blobs-dotnet-quickstart*, otevřete ji a dvakrát klikněte na soubor *storage-blobs-dotnet-quickstart.sln*. 
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete otevřít řešení sady Visual Studio, vyhledejte složku *storage-blobs-dotnet-quickstart*, otevřete ji a dvakrát klikněte na soubor *storage-blobs-dotnet-quickstart.sln*.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -70,7 +70,7 @@ Po zkopírování připojovacího řetězce ho zapište do nové proměnné pros
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-Po přidání proměnné prostředí možná bude nutné restartovat všechny spuštěné programy, které budou potřebovat číst tuto proměnnou prostředí, a to včetně okna konzoly. Pokud například jako editor používáte sadu Visual Studio, před spuštěním ukázky sadu Visual Studio restartujte. 
+Po přidání proměnné prostředí možná bude nutné restartovat všechny spuštěné programy, které budou potřebovat číst tuto proměnnou prostředí, a to včetně okna konzoly. Pokud například jako editor používáte sadu Visual Studio, před spuštěním ukázky sadu Visual Studio restartujte.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -85,7 +85,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 Upravte svůj soubor .bash_profile a přidejte do něj proměnnou prostředí:
 
 ```bash
-export STORAGE_CONNECTION_STRING=<yourconnectionstring>
+export storageconnectionstring=<yourconnectionstring>
 ```
 
 Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
@@ -94,15 +94,15 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Tato ukázka vytvoří v místní složce **Dokumenty** testovací soubor a nahraje ho do úložiště objektů blob. Ukázka pak vypíše objekty blob v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat starý a nový soubor. 
+Tato ukázka vytvoří v místní složce **Dokumenty** testovací soubor a nahraje ho do úložiště objektů blob. Ukázka pak vypíše objekty blob v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat starý a nový soubor.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-Pokud jako editor používáte sadu Visual Studio, můžete ukázku spustit stisknutím **F5**. 
+Pokud jako editor používáte sadu Visual Studio, můžete ukázku spustit stisknutím **F5**.
 
 Jinak, přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
 
-```
+```console
 dotnet run
 ```
 
@@ -110,7 +110,7 @@ dotnet run
 
 Přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
 
-```
+```console
 dotnet run
 ```
 
@@ -118,7 +118,7 @@ dotnet run
 
 Přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
 
-```
+```console
 dotnet run
 ```
 
@@ -126,7 +126,7 @@ dotnet run
 
 Výstup ukázkové aplikace je podobný jako v následujícím příkladu:
 
-```
+```output
 Azure Blob storage - .NET Quickstart sample
 
 Created container 'quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f'
@@ -144,7 +144,7 @@ Press any key to delete the sample files and example container.
 
 Když stisknete klávesu **Enter**, aplikace odstraní kontejner úložiště i soubory. Před jejich odstraněním zkontrolujte, jestli složka **Dokumenty** obsahuje příslušné dva soubory. Můžete je otevřít a podívat se, že jsou identické. Obsah objektu blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče.
 
-Po ověření souborů stiskněte libovolnou klávesu a dokončete ukázku a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor Program.cs a prohlédněte si kód. 
+Po ověření souborů stiskněte libovolnou klávesu a dokončete ukázku a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor Program.cs a prohlédněte si kód.
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 
@@ -184,23 +184,22 @@ else
 
 Dále ukázka vytvoří kontejner a nastaví jeho oprávnění tak, že všechny objekty blob v kontejneru budou veřejné. Když je objekt blob veřejný, může k němu anonymně přistupovat jakýkoli klient.
 
-Pokud chcete vytvořit kontejner, nejprve vytvořte instanci objektu [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient), která odkazuje na úložiště objektů blob ve vašem účtu úložiště. Dále vytvořte instanci objektu [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) a pak vytvořte kontejner. 
+Pokud chcete vytvořit kontejner, nejprve vytvořte instanci objektu [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient), která odkazuje na úložiště objektů blob ve vašem účtu úložiště. Dále vytvořte instanci objektu [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) a pak vytvořte kontejner.
 
 V tomto případě ukázka vytvoří kontejner zavoláním metody [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync). K názvu kontejneru se připojí hodnota GUID, která zajistí jeho jedinečnost. V produkčním prostředí je často vhodnější použít metodu [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync), která předchází konfliktům názvů tím, že vytvoří kontejner, pouze pokud ještě neexistuje.
 
 > [!IMPORTANT]
 > Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-
 ```csharp
 // Create the CloudBlobClient that represents the Blob storage endpoint for the storage account.
 CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
 
-// Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique. 
+// Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique.
 CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("quickstartblobs" + Guid.NewGuid().ToString());
 await cloudBlobContainer.CreateAsync();
 
-// Set the permissions so the blobs are public. 
+// Set the permissions so the blobs are public.
 BlobContainerPermissions permissions = new BlobContainerPermissions
 {
     PublicAccess = BlobContainerPublicAccessType.Blob
@@ -210,7 +209,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
-Dále ukázka nahraje místní soubor do objektu blob bloku. Příklad kódu získá odkaz na objekt **CloudBlockBlob** zavoláním metody [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) pro kontejner vytvořený v předchozí části. Pak do objektu blob nahraje vybraný soubor zavoláním metody [UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync). Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval. 
+Dále ukázka nahraje místní soubor do objektu blob bloku. Příklad kódu získá odkaz na objekt **CloudBlockBlob** zavoláním metody [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) pro kontejner vytvořený v předchozí části. Pak do objektu blob nahraje vybraný soubor zavoláním metody [UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync). Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -248,7 +247,7 @@ do
     {
         Console.WriteLine(item.Uri);
     }
-} while (blobContinuationToken != null); // Loop while the continuation token is not null. 
+} while (blobContinuationToken != null); // Loop while the continuation token is not null.
 
 ```
 
@@ -257,7 +256,7 @@ do
 Dále ukázka stáhne dříve vytvořený objekt blob do vašeho místního systému souborů pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync). Vzorový kód k názvu objektu blob přidává příponu _DOWNLOADED, takže se v systému souborů zobrazí oba soubory.
 
 ```csharp
-// Download the blob to a local file, using the reference created earlier. 
+// Download the blob to a local file, using the reference created earlier.
 // Append the string "_DOWNLOADED" before the .txt extension so that you can see both files in MyDocuments.
 destinationFile = sourceFile.Replace(".txt", "_DOWNLOADED.txt");
 Console.WriteLine("Downloading blob to {0}", destinationFile);
@@ -288,7 +287,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v .NET s využitím ú
 
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 
-- Stáhněte si balíček NuGet s nejnovější verzí [klientské knihovny pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) pro službu Azure Storage. 
+- Stáhněte si balíček NuGet s nejnovější verzí [klientské knihovny pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) pro službu Azure Storage.
 - Prohlédněte si [zdrojový kód klientské knihovny pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
@@ -298,7 +297,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v .NET s využitím ú
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty blob pomocí .NET. 
+V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty blob pomocí .NET.
 
 Pokud chcete zjistit, jak vytvořit webovou aplikaci, která odešle obrázek do úložiště objektů blob, pokračujte k tématu [Odeslání dat obrázků do cloudu v Azure Storage](storage-upload-process-images.md).
 
@@ -307,4 +306,3 @@ Pokud chcete zjistit, jak vytvořit webovou aplikaci, která odešle obrázek do
 
 - Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).
 - Pokud chcete prozkoumat ukázkovou aplikaci, kterou můžete nasadit ze sady Visual Studio pro Windows, prohlédněte si [ukázku webové aplikace fotogalerie v .NET s využitím služby Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/).
- 

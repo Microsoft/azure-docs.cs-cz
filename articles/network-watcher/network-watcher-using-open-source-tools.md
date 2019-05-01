@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 7c239bbf577645ddb8ab12c525d1b3a8832421df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680485"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64936009"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace provozu sítě do a z virtuálních počítačů pomocí opensourcových nástrojů
 
@@ -76,9 +76,9 @@ CapAnalysis nabízí různé možnosti, jak vizualizovat zachytávání paketů,
 
 1. Geografickou mapu.
 
-    V tomto podokně poskytuje zobrazení mapy síťového provozu s barvami škálovaný objem přenosů z každé země. Můžete vybrat zvýrazněné zemí, chcete-li zobrazit další tok statistiky, jako je objem dat odeslaných a přijatých z IP adres v dané zemi.
+    V tomto podokně poskytuje zobrazení mapy síťového provozu s barvami škálovaný objem přenosů z každé země/oblasti. Můžete vybrat zvýrazněné země/oblasti zobrazíte další tok statistiky, jako je objem dat odeslaných a přijatých z IP adres v zemi/oblast.
 
-    ![geografickou mapu.][8]
+    ![Geografickou mapu.][8]
 
 1. Filtry
 

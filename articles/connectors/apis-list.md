@@ -9,18 +9,18 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759439"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722986"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
 Konektory poskytují rychlý přístup z Azure Logic Apps na události, data a akcí napříč jiné aplikace, služby, systémy, protokoly a platformy. Pomocí konektorů ve svých aplikacích logiky rozšířili schopnosti pro vaše cloudové a místní aplikace provádět úlohy s daty, které vytvoříte a už máte.
 
-Zatímco Logic Apps nabízí [~ více než 200 konektorů](https://docs.microsoft.com/connectors), tento článek popisuje Oblíbené a běžně používané konektory, které jsou úspěšně používat tisíce aplikací a miliony spuštění pro zpracování dat a informací. K vyhledání úplný seznam konektorů a každý konektor referenční informace, jako je aktivačních událostí, akcí a omezení, projděte si konektor odkazuje na stránky v části [přehled konektorů](https://docs.microsoft.com/connectors). Také se dozvíte více o [aktivační události a akce](#triggers-actions).
+Zatímco Logic Apps nabízí [~ více než 200 konektorů](https://docs.microsoft.com/connectors), tento článek popisuje Oblíbené a běžně používané konektory, které jsou úspěšně používat tisíce aplikací a miliony spuštění pro zpracování dat a informací. Úplný seznam konektorů a každý konektor referenční informace, jako jsou triggery, akce a omezení, najdete v tématu Referenční stránky konektoru v rámci [přehled konektorů](https://docs.microsoft.com/connectors). Také se dozvíte více o [aktivační události a akce](#triggers-actions).
 
 > [!NOTE]
 > Integrovat službu nebo rozhraní API, které nemá konektor, můžete přímo volat službu prostřednictvím protokolu, jako je například HTTP, nebo vytvořte [vlastního konektoru](#custom).
@@ -29,27 +29,32 @@ Konektory jsou dostupné buď jako integrované aktivační události a akce, ne
 
 * [**Předdefinované**](#built-ins): Tyto integrované akce a triggery jsou "nativní" pro Azure Logic Apps a pomáhají vytvářet aplikace logiky, které spouštět na vlastní plány, komunikují s další koncové body, přijímat a reagovat na požadavky a volání funkce Azure, aplikace API Azure (webové aplikace), vaše vlastní rozhraní API spravovaná a publikovány pomocí Azure API Management a vnořené logic apps, které můžou přijímat požadavky. Můžete také použít integrované akce, které vám pomohou organizovat a řídit pracovní postup aplikace logiky a také pracovat s daty.
 
-* **Spravované konektory**: Nasazen a spravován společností Microsoft, tyto konektory poskytují triggery a akce pro přístup k dalším službám a systémům, jako jsou Office 365, Azure Blob Storage, SQL Server, Salesforce a další. Některé konektory vyžadují, abyste nejdřív vytvořili připojení, které jsou spravovány službou Azure Logic Apps. Spravované konektory jsou uspořádány do těchto skupin:
+* **Spravované konektory**: Nasazen a spravován společností Microsoft, tyto konektory poskytují triggery a akce pro přístup k cloud services, s místními systémy nebo obojí, včetně Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint a dalších. Některé konektory specificky podporují scénáře komunikace business-to-business (B2B) a vyžadovat [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) připojený k vaší aplikaci logiky. Před použitím některých konektorů, budete muset nejprve vytvořit připojení, které jsou spravovány službou Azure Logic Apps. 
+
+  Například pokud používáte Microsoft BizTalk Server, aplikace logiky můžete připojit k a komunikovat s BizTalk serverem pomocí [BizTalk Server místní konektor](#on-premises-connectors). 
+  Potom můžete rozšířit nebo provádění operací BizTalk jako ve službě logic apps s využitím [konektory účtu pro integraci](#integration-account-connectors).
+
+  Konektory jsou klasifikovány jako Standard nebo Enterprise. 
+  [Podnikové konektory](#enterprise-connectors) poskytují přístup k podnikovým systémům, jako je například SAP, IBM MQ a IBM 3270 za poplatek. Pokud chcete zjistit, zda je konektor Standard nebo Enterprise, naleznete technické podrobnosti na stránce odkaz každý konektor v části [přehled konektorů](https://docs.microsoft.com/connectors). 
+  
+  Konektory můžete také poznat podle pomocí těchto kategorií, i když některé konektory můžete napříč více kategorií. 
+  Například SAP je konektor služby Enterprise a místní konektor:
 
   |   |   |
   |---|---|
-  | [**Spravované konektory rozhraní API**](#managed-api-connectors) | Vytváření aplikací logiky, které používají služby, jako je úložiště objektů Blob v Azure, Office 365, Dynamics, Power BI, Onedrivu, Salesforce, SharePoint Online a mnoho dalších. | 
-  | [**Místní konektory**](#on-premises-connectors) | Po instalaci a nastavení [na místní bránu dat][gateway-doc], tyto konektory nápovědy přístup aplikace logiky místní systémy, jako je SQL Server, SharePoint Server, Oracle DB, sdílené složky a další. | 
-  | [**Konektory účtu pro integraci**](#integration-account-connectors) | K dispozici při vytváření a platit za účtu pro integraci, tyto konektory transformace a ověřit XML, kódovat a dekódovat ploché soubory a zpracovat business-to-business (B2B) zprávy AS2, EDIFACT a X12 protokoly. | 
-  | [**Podnikové konektory**](#enterprise-connectors) | Poskytnutí přístupu k podnikovým systémům, jako je SAP a IBM MQ za poplatek. |
-  ||| 
-
-  Například pokud používáte Microsoft BizTalk Server, aplikace logiky můžete připojit k a komunikovat s BizTalk serverem pomocí [konektor BizTalk serveru](#on-premises-connectors). 
-  Potom můžete rozšířit nebo provádění operací BizTalk jako ve službě logic apps s využitím [konektory účtu pro integraci](#integration-account-connectors). 
+  | [**Spravované konektory rozhraní API**](#managed-api-connectors) | Vytváření aplikací logiky, které používají služby, jako je úložiště objektů Blob v Azure, Office 365, Dynamics, Power BI, Onedrivu, Salesforce, SharePoint Online a mnoho dalších. |
+  | [**Místní konektory**](#on-premises-connectors) | Po instalaci a nastavení [na místní bránu dat][gateway-doc], tyto konektory nápovědy přístup aplikace logiky místní systémy, jako je SQL Server, SharePoint Server, Oracle DB, sdílené složky a další. |
+  | [**Konektory účtu pro integraci**](#integration-account-connectors) | K dispozici při vytváření a platit za účtu pro integraci, tyto konektory transformace a ověřit XML, kódovat a dekódovat ploché soubory a zpracovat business-to-business (B2B) zprávy AS2, EDIFACT a X12 protokoly. |
+  |||
 
 > [!NOTE]
-> Úplný seznam konektorů a každý konektor referenční informace, jako je například akcí a žádné aktivační události, které jsou definovány v popisu Swaggeru, plus žádná omezení, najdete úplný seznam v části [přehled konektorů](/connectors/). Informace o cenách najdete v tématu [podrobnosti o cenách Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) a [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md). 
+> Úplný seznam konektorů a každý konektor referenční informace, jako je například žádné triggery a akce, které jsou definovány pomocí rozhraní OpenAPI (dříve Swagger) popis a žádná omezení, najdete úplný seznam v části [přehled konektorů ](/connectors/). Informace o cenách najdete v tématu [podrobnosti o cenách Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) a [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md). 
 
 <a name="built-ins"></a>
 
 ## <a name="built-ins"></a>Předdefinované
 
-Logic Apps poskytuje integrované triggery a akce, můžete vytvořit pracovní postupy založené na plánu, pomáhají aplikace logiky komunikovat s jinými aplikace a služby, ovládací prvek pracovního postupu pomocí logic apps, spravovat a manipulaci s daty. 
+Logic Apps poskytuje integrované triggery a akce, můžete vytvořit pracovní postupy založené na plánu, pomáhají aplikace logiky komunikovat s jinými aplikace a služby, ovládací prvek pracovního postupu pomocí logic apps, spravovat a manipulaci s daty.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -128,10 +133,10 @@ Tady jsou konektorů pro sestavování řešení business-to-business (B2B) s lo
 
 Aplikace logiky můžete získat přístup k podnikovým systémům, jako je SAP a IBM MQ:
 
-|   |   | 
-|---|---| 
-| [![API icon][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![Ikona rozhraní API][sap-icon]<br/>**SAP**][sap-connector-doc] |
-||| 
+|   |   |   | 
+|---|---|---| 
+| [![API icon][ibm-3270-icon]<br/>**IBM 3270**][ibm-3270-doc] | [![API icon][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![Ikona rozhraní API][sap-icon]<br/>**SAP**][sap-connector-doc] |
+|||| 
 
 <a name="triggers-actions"></a>
 
@@ -156,9 +161,9 @@ Tady jsou obecné druhy aktivačních událostí, které poskytuje Azure Logic A
 
 Triggery a akce každý konektor poskytnout své vlastní vlastnosti můžete nakonfigurovat. Řada konektory také vyžadují, abyste nejdřív vytvořili *připojení* Cílová služba nebo systém a zadejte přihlašovací údaje pro ověření nebo další podrobnosti o konfiguraci triggeru nebo akce můžete používat ve vaší aplikaci logiky. Například musíte povolit připojení k účtu sítě Twitter pro přístup k datům nebo zadejte vaším jménem. 
 
-Pro konektory, které používají OAuth vytvoření připojení znamená, že přihlášení k službě, jako je Office 365, Salesforce nebo Githubu, kde je váš přístupový token zašifrované a bezpečně uložené v Azure úložiště tajných kódů. Jiné konektory, jako je například FTP a SQL, vyžadují připojení obsahující podrobnosti o konfiguraci, třeba adresu serveru, uživatelské jméno a heslo. Podrobnosti o konfiguraci tohoto připojení jsou také zašifrované a bezpečně uložené. 
+Pro konektory, které používají OAuth vytvoření připojení znamená, že přihlášení k službě, jako je Office 365, Salesforce nebo Githubu, kde je váš přístupový token zašifrované a bezpečně uložené v Azure úložiště tajných kódů. Jiné konektory, jako je například FTP a SQL, vyžadují připojení obsahující podrobnosti o konfiguraci, třeba adresu serveru, uživatelské jméno a heslo. Podrobnosti o konfiguraci těchto připojení jsou také zašifrované a bezpečně uložené. 
 
-Připojení můžete za předpokladu, že služby nebo systému umožňuje přístup Cílová služba nebo systém pro. Pro služby, které používají OAuth Azure Active Directory (AD) připojení, jako je Office 365 a Dynamics Azure Logic Apps obnoví přístupové tokeny po neomezenou dobu. Další služby ukládat omezení na jak dlouho Azure Logic Apps můžete použít token bez obnovení. Obecně platí některé akce zneplatnit všechny přístupové tokeny, jako je například změna hesla.
+Připojení můžete za předpokladu, že služby nebo systému umožňuje přístup Cílová služba nebo systém pro. Pro služby, které používají OAuth Azure Active Directory (AD) připojení, jako je Office 365 a Dynamics Azure Logic Apps obnoví přístupové tokeny po neomezenou dobu. Další služby může mít omezení na jak dlouho Azure Logic Apps můžete použít token bez obnovení. Obecně platí některé akce zneplatnit všechny přístupové tokeny, jako je například změna hesla.
 
 <a name="custom"></a>
 
@@ -222,6 +227,7 @@ Chcete-li zveřejnit vlastní aplikace API nebo konektory pro každého, kdo pro
 [google-drive-doc]: ./connectors-create-api-googledrive.md "Připojení k Disku Google a práce s daty"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "Připojte se k tabulkám Google, upravování tabulek"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "Připojení k Úkolům Google a správa úkolů"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Připojte se k aplikacím 3270 na sálové počítače IBM"
 [ibm-db2-doc]: ./connectors-create-api-db2.md "Připojení k IBM DB2 v cloudu nebo místním prostředí. Aktualizace řádku, získání tabulky a provádění dalších akcí"
 [ibm-informix-doc]: ./connectors-create-api-informix.md "Připojení k Informix v cloudu nebo místním prostředí. Čtení řádku, výpis tabulek a provádění dalších akcí"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "Připojení k IBM MQ místně nebo v Azure a odesílání a příjem zpráv"
@@ -328,6 +334,7 @@ Chcete-li zveřejnit vlastní aplikace API nebo konektory pro každého, kdo pro
 [google-sheets-icon]: ./media/apis-list/google-sheet.png
 [google-tasks-icon]: ./media/apis-list/google-tasks.png
 [hipchat-icon]: ./media/apis-list/hipchat.png
+[ibm-3270-icon]: ./media/apis-list/ibm-3270.png
 [ibm-db2-icon]: ./media/apis-list/ibm-db2.png
 [ibm-informix-icon]: ./media/apis-list/ibm-informix.png
 [ibm-mq-icon]: ./media/apis-list/ibm-mq.png

@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/29/2098
 ms.author: rajanaki
-ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792924"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925698"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -31,9 +31,10 @@ Když použijete Site Recovery provádět správu aktualizací, nasadí globáln
 Výchozí plán sad runbook se opakuje každý den v 12:00 hodin v časovém pásmu geograficky replikovaný virtuální počítač. Můžete také změnit plán sad runbook pomocí účtu služby automation.
 
 > [!NOTE]
+> Počínaje 35 kumulativní aktualizace, můžete stávající účet automation, který chcete použít pro aktualizace. Před aktualizací této Site Recovery tento účet byl vytvořen ve výchozím nastavení. Tato možnost je dostupná, když povolíte replikaci pro virtuální počítač. Pokud změníte nastavení, bude platit pro všechny virtuální počítače Azure chráněná ve stejném trezoru.
+ 
 > Zapnout automatické aktualizace nebude vyžadovat restartování virtuálních počítačů Azure nebo mít vliv na probíhající replikaci.
 
-> [!NOTE]
 > Úloha fakturace v účtu automation je podle počtu počet minut běhu úloh, která je použita v daném měsíci. Ve výchozím nastavení jsou zahrnuty jako volných jednotek pro účet automation 500 minut. Provádění úlohy trvá několik sekund na přibližně minutu denně a které pokrývá jako jednotky na úrovni free.
 
 | Zahrnuté volné jednotky (měsíčně) | Cena |
@@ -63,7 +64,7 @@ Když povolíte replikaci pro virtuální počítač buď počáteční [ze zobr
 
 
 > [!Note]
-> Možnost vás upozorní na účtu automation pro správu aktualizací. Pokud tuto funkci v trezoru používáte poprvé, vytvoří se nový účet automation. Všechny následné povolení replikace ve stejném trezoru použijte dříve vytvořenou.
+> Možnost vás upozorní na účtu automation pro správu aktualizací. Pokud používáte tuto funkci v trezoru poprvé, se standardně vytvoří nový účet automation. Alternativně můžete přizpůsobit nastavení a zvolte existující účet automation. Všechny následné povolení replikace ve stejném trezoru použijte dříve vytvořenou.
 
 Vlastní automatizace účet pomocí následujícího skriptu:
 

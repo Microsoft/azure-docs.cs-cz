@@ -1,10 +1,10 @@
 ---
-title: Přehled monitorování a Správa zabezpečení Azure | Dokumentace Microsoftu
+title: Správa a monitorování zabezpečení funkce – Microsoft Azure | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled funkcí zabezpečení a služeb, které Azure nabízí pro správu a monitorování Azure cloud services a virtual machines.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: StevenPo
+manager: barbkess
 editor: TomSh
 ms.assetid: 5cf2827b-6cd3-434d-9100-d7411f7ed424
 ms.service: security
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f741f578ea44e27814ddfcde2fadc44a0e90536
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597933"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872070"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled monitorování a Správa zabezpečení Azure
+Tento článek obsahuje přehled funkcí zabezpečení a služeb, které Azure nabízí pro správu a monitorování Azure cloud services a virtual machines.
 
-Azure nabízí mechanismy zabezpečení pro správu a monitorování Azure cloud services a virtual machines (VM). Tento článek obsahuje přehled těchto základní funkce zabezpečení a služeb. Jsou uvedeny odkazy na články, které poskytují podrobnosti o každé tak další informace.
+## <a name="shared-responsibility"></a>Sdílená odpovědnost
 
 Zabezpečení cloudových služeb Microsoftu je partnerství a sdílenou odpovědnost mezi vámi a společností Microsoft. Microsoft je zodpovědná za platformy Azure a fyzické zabezpečení svých datových center (využívala bezpečnostní ochranu, jako jsou uzamčené oznámení "BADGE" entry dveří, ohrazení a chrání). Azure poskytuje silné úrovně nad zabezpečením cloudu ve vrstvě software, který splňuje požadavky dodržování předpisů, zabezpečení a ochrany osobních údajů svých zákazníků.
 
@@ -64,7 +65,7 @@ Další informace:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication je metoda ověřování, který vyžaduje použití víc ověřovacích metod současně. Přidá velmi důležitou druhou vrstvu zabezpečení uživatelská přihlášení a transakce. 
+Azure Multi-Factor Authentication je metoda ověřování, který vyžaduje použití víc ověřovacích metod současně. Přidá velmi důležitou druhou vrstvu zabezpečení uživatelská přihlášení a transakce.
 
 Multi-Factor Authentication pomáhá chránit přístup k datům a aplikace a současně plní požadavky uživatelů na jednoduchý přihlašovací proces. Nabízí silné ověřování pomocí řady možností ověřování (telefonní hovor, textová zpráva nebo oznámení nebo ověřovací kód z mobilní aplikace) a tokeny OATH třetích stran.
 
@@ -80,7 +81,7 @@ Azure ExpressRoute můžete rozšířit vaše místní sítě do cloudu Microsof
 
 * Síti typu any-to-any (IP VPN).
 * Síť Ethernet typu point-to-point.
-* Virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. 
+* Virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
 
 Spojení ExpressRoute nevyužívají veřejný internet. Můžou nabídnout více spolehlivost, vyšší rychlost, nižší latenci a lepší zabezpečení než Typická připojení přes internet.
 
@@ -99,7 +100,7 @@ Další informace:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Někdy uživatelé budou muset provádět privilegované operace prostředků Azure nebo dalším aplikacím SaaS. To často znamená, že organizace svým uživatelům umožnit trvalé privilegovaný přístup v Azure Active Directory (Azure AD). 
+Někdy uživatelé budou muset provádět privilegované operace prostředků Azure nebo dalším aplikacím SaaS. To často znamená, že organizace svým uživatelům umožnit trvalé privilegovaný přístup v Azure Active Directory (Azure AD).
 
 To je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůže monitorovat dostatečně jak uživatelé pracují s jejich privilegovaný přístup. Kromě toho případě ohrožení bezpečnosti uživatelského účtu s privilegovaným přístupem tento jeden porušení zabezpečení může ovlivnit celkové zabezpečení cloudu organizace. Azure AD Privileged Identity Management pomáhá vyřešit toto riziko snížit dobu expozice oprávnění a zvyšuje přehled o využití.  
 
@@ -150,4 +151,3 @@ Intelligent Security Graph poskytuje ochranu v reálném čase před internetov�
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
-

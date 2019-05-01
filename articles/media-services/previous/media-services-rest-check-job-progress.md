@@ -14,20 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a7b61ba05aea817d65e7cac991ad460d708a5ea7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60873406"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869486"
 ---
 # <a name="how-to-check-job-progress"></a>Postupy: Kontrola průběhu úlohy
-> [!div class="op_single_selector"]
-> * [Azure Portal](media-services-portal-check-job-progress.md)
-> * [.NET](media-services-check-job-progress.md)
-> * [REST](media-services-rest-check-job-progress.md)
-> 
-> 
+
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Stav úlohy můžete zjistit pomocí vlastnosti stavu úlohy. Další informace o vlastnosti stavu, najdete v části [vlastnosti Entity úlohy](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 

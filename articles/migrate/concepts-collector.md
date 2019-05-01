@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679251"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728020"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -238,7 +238,7 @@ Doporučujeme následující postup k zabezpečení zařízení Kolektoru:
 
 ## <a name="os-license-in-the-collector-vm"></a>Licence operačního systému ve virtuálním počítači kolektoru
 
-Kolektor se dodává s zkušební licence Windows serveru 2012 R2, který je platný po dobu 180 dnů. Pokud vyprší platnost zkušební období pro váš virtuální počítač kolektoru, doporučujeme stáhnout nové soubory OVA a vytvořit nové zařízení.
+Kolektor se dodává s zkušební licence Windows serveru 2016, který je platný po dobu 180 dnů. Pokud vyprší platnost zkušební období pro váš virtuální počítač kolektoru, doporučujeme stáhnout nové soubory OVA a vytvořit nové zařízení.
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>Aktualizujte operační systém virtuálního počítače Kolektoru
 

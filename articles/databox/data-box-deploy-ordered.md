@@ -1,19 +1,19 @@
 ---
-title: Objednání Microsoft Azure Data Boxu | Microsoft Docs
+title: Kurz k objednávky zařízení Azure Data Box | Dokumentace Microsoftu
 description: Seznamte se s požadavky na nasazení a postupem objednání Azure Data Boxu.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/05/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 07ccd2aaec6b2325d6eef09a466a5d0707836b4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05d522550b96813c6b8326d83f09d7028466c835
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834264"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926219"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednávky zařízení Azure Data Box
 
@@ -69,7 +69,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Zdrojová země     |   Vyberte zemi, ve které jsou data aktuálně umístěna.         |
     |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést.        |
 
-5. Vyberte **Data Box**. Maximální využitelné kapacity na jednu objednávku je 786 TB. V případě větších objemů dat můžete vytvořit více objednávek.
+5. Vyberte **Data Box**. Maximální využitelné kapacity na jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
       [![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 

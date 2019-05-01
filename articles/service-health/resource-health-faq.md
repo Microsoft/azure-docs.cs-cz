@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
-ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620823"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924447"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – nejčastější dotazy
 Přečtěte si odpovědi na běžné otázky o Azure Resource Health.
@@ -50,7 +50,7 @@ Ano, pokud prostředek není k dispozici, Resource Health identifikuje původní
 Na portálu se zobrazí uživatelem iniciované akce pomocí modré ikona během plánovaných i neplánovaných událostí jsou uvedeny pomocí červená varovná ikona. Další podrobnosti jsou uvedeny v [přehled Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu integrovat s Moje monitorovací nástroje Resource Health?
-Služba Resource health je [ve verzi preview podporu](resource-health-alert-arm-template-guide.md) pro upozornění založená na protokolu aktivit. Použití upozornění protokolu aktivit [skupiny akcí](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups) uživatelům oznámit, že výstraha byla aktivována. Skupiny akcí podporují různé kanály oznámení, jako je e-mail, SMS, webhook a akce ITSM.
+Služba Resource health je [ve verzi preview podporu](resource-health-alert-arm-template-guide.md) pro upozornění založená na protokolu aktivit. Použití upozornění protokolu aktivit [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) uživatelům oznámit, že výstraha byla aktivována. Skupiny akcí podporují různé kanály oznámení, jako je e-mail, SMS, webhook a akce ITSM.
 
 ## <a name="where-do-i-find-resource-health"></a>Kde najdu Resource Health?
 Po přihlášení k webu Azure portal, mají několik možností, dostanete Resource Health:

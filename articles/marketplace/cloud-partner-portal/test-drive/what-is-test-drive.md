@@ -1,25 +1,19 @@
 ---
-title: Co je testovací verze? | Dokumenty Microsoft
+title: Co je testovací verze? | Azure Marketplace
 description: Vysvětlení funkce Marketplace testovací verze
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0bdff77a4be6a28e2799d4f481492d2c7ba6bda0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744778"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938466"
 ---
 <a name="what-is-test-drive"></a>Co je testovací verze?
 ===================

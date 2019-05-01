@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 42c1856f30484532e1ace2e84187bcaaacdf4c72
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553358"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733727"
 ---
 Azure Data Factory je víceklientská služba, která má následující výchozí omezení na místě zajistit, aby chránily zákaznických předplatných z druhé strany úlohy. Chcete-li zvýšit limity až do maximální pro vaše předplatné, obraťte se na podporu.
 
@@ -26,7 +26,7 @@ Azure Data Factory je víceklientská služba, která má následující výchoz
 | Celkový počet jader procesoru pro prostředí Azure-SSIS Integration Runtime v rámci jednoho předplatného | 256 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Souběžný kanál spuštění za služby data factory, který je sdílen mezi všechny kanály v objektu pro vytváření | 10 000  | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximální aktivity za kanál, který obsahuje vnitřní aktivity pro kontejnery | 40 | 40 |
-| Maximální počet propojených integration runtime, který je možné vytvořit pro jednu místní prostředí integration runtime | 20 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Maximální počet propojených integration runtime, který je možné vytvořit pro jednu místní prostředí integration runtime | 100 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximální parametry za kanál | 50 | 50 |
 | Položky ForEach | 100 000 | 100 000 |
 | Paralelní zpracování ForEach | 20 | 50 |

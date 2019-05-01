@@ -10,33 +10,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 04/22/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bce8a9e4018f24022fcc45733d64ce47d07ba771
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 846eb3a43955fe05531f619869878b3978ad5b9d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471344"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690245"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory
 
 K vynucení konzistentní zásady vytváření názvů pro skupiny Office 365 vytvořených nebo upravených uživatele, nastavte skupinu zásad pojmenování pro své tenanty ve službě Azure Active Directory (Azure AD). Například můžete použít zásady vytváření názvů pro komunikaci funkce skupiny, členství, geografické oblasti nebo kteří vytvořili skupinu. Můžete také použít zásady pojmenování můžete uspořádat skupiny v adresáři. Zásady můžete použít k blokování konkrétních slov z používán ve skupině názvy a aliasy.
 
 > [!IMPORTANT]
-> Použití pojmenování zásady skupiny Office 365 vyžaduje Azure AD Basic EDU licence nebo licence Azure Active Directory Premium P1 pro každý jedinečný uživatel, který je členem jedné nebo víc skupin Office 365.
+> Použití zásad vytváření názvů Azure AD pro skupiny Office 365 vyžaduje mít ale nemusí nutně jít přiřadit Azure Active Directory Premium P1 licence nebo licence Azure AD Basic EDU pro každý jedinečný uživatel, který je členem jedné nebo víc skupin Office 365.
 
-Pojmenování zásady se použijí k vytvoření nebo úpravu skupiny vytvořené napříč úlohami (například Outlook, Microsoft Teams, SharePoint, Exchange nebo plánovač). Použije se název skupiny a alias skupiny. Pokud nastavíte zásady vytváření názvů v Azure AD a máte existující skupinu Exchange pojmenování zásady, použije se pojmenování zásady služby Azure AD.
+Pojmenování zásady se použijí k vytvoření nebo úpravu skupiny vytvořené napříč úlohami (například Outlook, Microsoft Teams, SharePoint, Exchange nebo plánovač). Použije se název skupiny a alias skupiny. Pokud nastavíte zásady vytváření názvů v Azure AD a máte existující skupinu Exchange zásad pojmenování, pojmenování zásady služby Azure AD je vynutit ve vaší organizaci.
 
 ## <a name="naming-policy-features"></a>Pojmenování funkce zásad
-Zásady pojmenování pro skupiny Office 365 můžete vynutit dvěma různými způsoby:
 
--   **Zásady pojmenování předponu příponu** můžete definovat předpon a přípon, které se poté přidají automaticky k vynucení zásad vytváření názvů u skupin (například v názvu skupiny "GRP\_Japonsko\_Moje skupina\_ Technikům", GRP\_Japonsko\_ je předpona a \_inženýrství je přípona). 
+Můžete vynutit zásady pojmenování skupin dvěma různými způsoby:
 
--   **Vlastní blokované slova** nahrajete sadu blokované slova specifické pro vaši organizaci se zablokuje ve skupinách vytvořených uživatelem (například "generální ředitel, výplatních pásek, HR").
+- **Zásady pojmenování předponu příponu** můžete definovat předpon a přípon, které se poté přidají automaticky k vynucení zásad vytváření názvů u skupin (například v názvu skupiny "GRP\_Japonsko\_Moje skupina\_ Technikům", GRP\_Japonsko\_ je předpona a \_inženýrství je přípona). 
+
+- **Vlastní blokované slova** nahrajete sadu blokované slova specifické pro vaši organizaci se zablokuje ve skupinách vytvořených uživatelem (například "generální ředitel, výplatních pásek, HR").
 
 ### <a name="prefix-suffix-naming-policy"></a>Zásady pojmenování předponu příponu
 
@@ -75,48 +76,74 @@ Vybraný správce můžete vyloučené z těchto zásad ve všech skupin úloh a
 - Správce uživatelů
 - Uživatelé s oprávněním k zápisu do adresářů
 
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí webu Azure portal (preview)
+
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu správce.
+1. Vyberte **skupiny**a pak vyberte **zásad pojmenování** otevřete stránku zásad pojmenování.
+
+    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy-preview.png)
+
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Umožňuje zobrazit nebo upravit zásady vytváření názvů předponu příponu
+
+1. Na **zásad pojmenování** stránce **pojmenování zásady skupiny**.
+1. Můžete zobrazit nebo upravit aktuální předpona nebo přípona jednotlivě pojmenování zásady tak, že vyberete atributy nebo řetězce, které chcete vynutit jako součást zásady pojmenování.
+1. Prefix nebo sufix odebrat ze seznamu, vyberte, jakou předponu nebo příponu a potom vyberte **odstranit**. Více položek lze odstranit ve stejnou dobu.
+1. Uložte provedené změny pro nové zásady k cenám tak, že vyberete **Uložit**.
+
+### <a name="view-or-edit-the-custom-blocked-words"></a>Umožňuje zobrazit nebo upravit vlastní blokované slova
+
+1. Na **zásad pojmenování** stránce **blokované slova**.
+
+    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords-preview.png)
+
+1. Umožňuje zobrazit nebo upravit tak, že vyberete aktuální seznam blokovaných zadejte vlastní slova **Stáhnout**.
+1. Nahrajte nový seznam blokovaných zadejte vlastní slova tak, že vyberete ikonu souboru.
+1. Uložte provedené změny pro nové zásady k cenám tak, že vyberete **Uložit**.
+
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Instalace rutin prostředí PowerShell ke konfiguraci zásad pojmenování
 
-Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShell pro Graph pro Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – Verze Public Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137). 
+Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShell pro Graph pro Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – Verze Public Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
 1. Otevřete aplikaci Windows PowerShell jako správce.
 2. Odinstalujte všechny předchozí verze AzureADPreview.
   
-   ```
+   ```powershell
    Uninstall-Module AzureADPreview
    ```
+
 3. Nainstalujte nejnovější verzi AzureADPreview.
   
-   ```
+   ```powershell
    Install-Module AzureADPreview
    ```
-   Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišti, zadejte **Y**. Instalace nového modulu může trvat několik minut.
+
+   Pokud se zobrazí výzva o přístupu k nedůvěryhodné úložiště, zadejte **Y**. Instalace nového modulu může trvat několik minut.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí Azure AD Powershellu
 
 1. Otevřete okno Windows Powershellu ve vašem počítači. Můžete ji otevřít bez zvýšených oprávnění.
 
-2. Spuštěním následujících příkazů se připravte na spouštění rutin.
+1. Spuštěním následujících příkazů se připravte na spouštění rutin.
   
-   ```
+   ```powershell
    Import-Module AzureADPreview
    Connect-AzureAD
    ```
    Na obrazovce **Přihlášení k účtu**, která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
 
-3. Podle pokynů v tématu [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) vytvořte nastavení skupiny pro tohoto tenanta.
+1. Podle pokynů v tématu [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) vytvořte nastavení skupiny pro tohoto tenanta.
 
 ### <a name="view-the-current-settings"></a>Zobrazit aktuální nastavení
 
 1. Načte aktuální zásady pojmenování, chcete-li zobrazit aktuální nastavení.
   
-   ```
+   ```powershell
    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
    ```
   
-2. Zobrazte aktuální nastavení skupiny.
+1. Zobrazte aktuální nastavení skupiny.
   
-   ```
+   ```powershell
    $Setting.Values
    ```
   
@@ -124,38 +151,38 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
 
 1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Pro funkci tak, aby fungovala správně [GroupName] musí být součástí nastavení.
   
-   ```
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
    ```
   
-2. Nastavte vlastní blokovaná slova, která chcete zakázat. Následující příklad ukazuje, jak můžete přidat vlastní slova.
+1. Nastavte vlastní blokovaná slova, která chcete zakázat. Následující příklad ukazuje, jak můžete přidat vlastní slova.
   
-   ```
+   ```powershell
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
   
-3. Uložte nastavení, aby nová zásada vstoupila v platnost, jak je znázorněno v následujícím příkladu.
+1. Uložte nastavení pro novou zásadu cenám, jako v následujícím příkladu.
   
-   ```
+   ```powershell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
 A to je vše. Jste nastavit pojmenování zásady a přidá blokované slova.
 
-## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Exportovat nebo importovat seznam blokovaných zadejte vlastní slova
+## <a name="export-or-import-the-list-of-custom-blocked-words-using-azure-ad-powershell"></a>Exportovat nebo importovat seznam vlastních blokované slov pomocí Azure AD Powershellu
 
 Další informace najdete v článku [rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md).
 
 Tady je příklad skriptu prostředí PowerShell pro export více blokované slov:
 
-```
+```powershell
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
 Add-Content "c:\work\currentblockedwordslist.txt" -Value $words.value.Split(",").Replace("`"","")  
 ```
 
 Tady je příklad skriptu PowerShell k importu více blokované slov:
 
-```
+```powershell
 $BadWords = Get-Content "C:\work\currentblockedwordslist.txt"
 $BadWords = [string]::join(",", $BadWords)
 $Settings = Get-AzureADDirectorySetting | Where-Object {$_.DisplayName -eq "Group.Unified"}
@@ -171,31 +198,37 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>Odebrat zásady pojmenování
 
+### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Odebrat zásady pojmenování pomocí webu Azure portal (preview)
+
+1. Na **zásad pojmenování** stránce **odstranit zásadu**.
+1. Jakmile potvrdíte odstranění, zásady pojmenování Odebereme, včetně všech předpon přípon pojmenování zásady a jakékoli vlastní blokované slova.
+
+### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Odebrat zásady pojmenování pomocí Azure AD Powershellu
+
 1. Prázdná skupina název předpon a přípon v Azure AD PowerShell.
   
-   ```
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
   
-2. Prázdný vlastní blokované slova. 
+1. Prázdný vlastní blokované slova.
   
-   ```
+   ```powershell
    $Setting["CustomBlockedWordsList"]=""
    ```
   
-3. Uložte nastavení.
+1. Uložte nastavení.
   
-   ```
+   ```powershell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Pojmenování zásady prostředí v aplikacích Office 365
 
-Jakmile nastavíte zásady pojmenování skupin ve službě Azure AD, když uživatel vytvoří skupinu v aplikaci Office 365, zobrazí se jim: 
+Jakmile nastavíte zásady pojmenování skupin ve službě Azure AD, když uživatel vytvoří skupinu v aplikaci Office 365, zobrazí se jim:
 
-* Náhled A názvu souladu s vašimi zásadami vytváření názvů (u předpony a přípony) jakmile uživatel zadá název skupiny
-* Pokud uživatel zadá blokované slova, zobrazí proto jsou blokované slova odebrat chybovou zprávu.
+- Náhled A názvu souladu s vašimi zásadami vytváření názvů (u předpony a přípony) jakmile uživatel zadá název skupiny
+- Pokud uživatel zadá blokované slova, zobrazí proto jsou blokované slova odebrat chybovou zprávu.
 
 Úloha | Dodržování předpisů
 ----------- | -------------------------------
@@ -221,11 +254,12 @@ Centra pro správu Exchange | Centra pro správu Exchange je kompatibilní s zá
 Centrum pro správu služeb Microsoft 365 | Centrum pro správu služeb Microsoft 365 je kompatibilní s zásad pojmenování. Když uživatel vytvoří nebo názvy skupin úpravy, bude automaticky použito zásad vytváření názvů a uživatelé obdrží příslušné chyby při zadávání blokované zadejte vlastní slova. Centrum pro správu služeb Microsoft 365 nezobrazí zatím ve verzi preview zásady pojmenování a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny.
 
 ## <a name="next-steps"></a>Další postup
+
 Tyto články poskytují další informace o skupinách Azure AD.
 
-* [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Zásady vypršení platnosti pro skupiny Office 365](groups-lifecycle.md)
-* [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Správa členů skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)
+- [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Zásady vypršení platnosti pro skupiny Office 365](groups-lifecycle.md)
+- [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Správa členů skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
+- [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)

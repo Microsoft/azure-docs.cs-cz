@@ -3,19 +3,19 @@ title: Technický profil ověření definování ve vlastních zásadách v Azur
 description: Technický profil Azure Active Directory definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 11efd1fa3431d8200545cf1327e98cec6ed1f59e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418269"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683162"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -72,7 +72,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Value | 1: n | Data, která se používá kontrolu. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId dotazu. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId dotazu. Zatímco jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.|
+| Hodnota | 1: n | Data, která se používá kontrolu. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId dotazu. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId dotazu. Zatímco jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.|
 | Akce | 1:1 | Akce, která se má vzít při splnění předběžná kontrola v rámci na krok Orchestrace. Hodnota **akce** je nastavena na `SkipThisValidationTechnicalProfile`. Určuje, že by neměl být spouštěn technický profil přidruženého ověřování. |
 
 ### <a name="example"></a>Příklad:

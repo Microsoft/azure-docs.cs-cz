@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507878"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727567"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Basic pomocí webu Azure portal
 
@@ -37,11 +37,11 @@ Nejprve vytvořte veřejný Load balancer úrovně Basic prostřednictvím port�
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
 2. V **Základy** karty **vytvořit nástroj pro vyrovnávání zatížení** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
 
-    | Nastavení                 | Value                                              |
+    | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Type          | Vyberte **veřejné**.                                        |
     | Skladová jednotka (SKU)           | Vyberte **Basic**.                          |
@@ -235,21 +235,27 @@ Instalace Internetové informační služby (IIS) u virtuálních počítačů, 
    
    V novém okně se otevře na plochu virtuálního počítače. 
    
-**Instalace služby IIS na virtuálním počítači:**
+**Instalace služby IIS**
 
-1. Pokud **správce serveru** není již otevřete na ploše serveru, přejděte na **nástroje pro správu Windows** > **správce serveru**.
-   
-1. V **správce serveru**vyberte **přidat role a funkce**.
-   
-   ![Přidání role správce serveru](./media/load-balancer-get-started-internet-portal/servermanager.png)
-   
-1. V **funkce Průvodce přidáním rolí a**:
-   1. Na stránce **Výběr typu instalace** vyberte **Instalace na základě role nebo funkce**.
-   1. Na **vybrat cílový server** stránce **MyVM1**.
-   1. Na stránce **Výběr role serveru** vyberte na **Webový server (služba IIS)**. 
-   1. Do příkazového řádku pro instalaci požadované nástroje vyberte **přidat funkce**. 
-   1. Přijměte výchozí hodnoty a vyberte **nainstalovat**. 
-   1. Po dokončení funkce instalaci, vyberte **Zavřít**. 
+1. Vyberte **všechny služby** v nabídce vlevo vyberte **všechny prostředky**a pak v seznamu prostředků vyberte **myVM1** , který je umístěný v  *myResourceGroupSLB* skupinu prostředků.
+2. Na stránce **Přehled** vyberte **Připojit** a připojte se přes RDP k virtuálnímu počítači.
+5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při vytváření tohoto virtuálního počítače. Tím se otevře relace vzdálené plochy s virtuálním počítačem *myVM1*.
+6. Na ploše serveru přejděte do části **Nástroje pro správu Windows**>**Windows PowerShell**.
+7. V okně PowerShellu spuštěním následujících příkazů nainstalujte server služby IIS, odeberte výchozí soubor iisstart.htm a pak přidejte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
+
+   ```azurepowershell
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+    remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+   ```
+6. Ukončete relaci RDP s *myVM1*.
+7. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na *myVM2*.
    
 1. Opakujte kroky pro virtuální počítač **MyVM2**, s výjimkou nastavte na cílovém serveru **MyVM2**.
 
@@ -257,9 +263,9 @@ Instalace Internetové informační služby (IIS) u virtuálních počítačů, 
 
 Otevřete prohlížeč a vyrovnávání zatížení veřejnou IP adresu vložte do panelu Adresa prohlížeče. V prohlížeči by se zobrazit výchozí stránka serveru webové služby IIS.
 
-![Webový server služby IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
+![Webový server služby IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny tři virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče.
+Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi oba virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Chcete-li odstranit nástroj pro vyrovnávání zatížení a všech souvisejících prostředků, když je už nepotřebujete, otevřete **MyResourceGroupLB** prostředku, skupiny a vyberte **odstranit skupinu prostředků**.

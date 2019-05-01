@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: dc44cfbd24bd04caeede03dcbcfc60da06f61135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921752"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570567"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -199,7 +199,7 @@ Azure je globální Cloudová platforma, která je obecně dostupná v mnoha obl
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>Zvolte nejlepší oblast pro svoji aplikaci a data
 
-Jednou z výhod používání Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte, může ovlivnit výkon vaší aplikace. Například je lepší zvolit oblast, která je blíž k většině vašich zákazníků ke snížení latence v síťové požadavky. Můžete také chtít vyberte oblast pro splnění zákonných požadavků na distribuce aplikace v určitých zemích. Vždy je osvědčeným postupem je ukládání dat aplikací ve stejném datovém centru nebo v datacentru jako téměř co nejblíže k datovému centru, který je hostitelem vaší aplikace.
+Jednou z výhod používání Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte, může ovlivnit výkon vaší aplikace. Například je lepší zvolit oblast, která je blíž k většině vašich zákazníků ke snížení latence v síťové požadavky. Můžete také chtít vyberte oblast pro splnění zákonných požadavků na distribuce aplikace v určitých zemích nebo oblastech. Vždy je osvědčeným postupem je ukládání dat aplikací ve stejném datovém centru nebo v datacentru jako téměř co nejblíže k datovému centru, který je hostitelem vaší aplikace.
 
 ### <a name="multi-region-apps"></a>Aplikace ve více oblastech
 
