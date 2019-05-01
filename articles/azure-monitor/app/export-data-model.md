@@ -114,7 +114,7 @@ Odkazuje na mějte na paměti:
 ## <a name="context"></a>Kontext
 Všechny typy telemetrie doplňují oddíl kontextu. Všechna tato pole jsou přenášeny se každý datový bod.
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |Páry klíč hodnota řetězce nastavit parametr vlastní vlastnosti. Maximální délka klíče 100 hodnot maximální délky 1024. Více než 100 jedinečné hodnoty vlastnosti lze prohledávat, ale nelze použít pro segmentace. 200 maximální počet klíčů na Instrumentační klíč. |
 | context.custom.metrics [0] |object [ ] |Nastavit tak, že parametr vlastní měření a TrackMetrics páry klíč hodnota. Maximální délka klíče 100, mohou být číselné hodnoty. |
@@ -161,7 +161,7 @@ Všechny typy telemetrie doplňují oddíl kontextu. Všechna tato pole jsou př
 ## <a name="events"></a>Události
 Vlastní události generované modulem [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | počet událostí [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | Název události [0] |string |Název události.  Maximální délka 250. |
@@ -172,7 +172,7 @@ Vlastní události generované modulem [TrackEvent()](../../azure-monitor/app/ap
 ## <a name="exceptions"></a>Výjimky
 Sestavy [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v prohlížeči.
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | sestavení basicException [0] |string | |
 | počet basicException [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
@@ -201,7 +201,7 @@ Sestavy [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v
 ## <a name="trace-messages"></a>Zprávy trasování
 Odeslaný [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)a [adaptéry protokolování](../../azure-monitor/app/asp-net-trace-logs.md).
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | Název_protokolovače zprávy [0] |string | |
 | parametry zpráv [0] |string | |
@@ -211,7 +211,7 @@ Odeslaný [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#trac
 ## <a name="remote-dependency"></a>Vzdálené závislosti
 Odeslaný TrackDependency. Pro sestavu výkonu a využití [volání závislostí](../../azure-monitor/app/asp-net-dependencies.md) na serveru a volání AJAX v prohlížeči.
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | asynchronní remoteDependency [0] |Boolean | |
 | baseName remoteDependency [0] |string | |
@@ -232,7 +232,7 @@ Odeslaný TrackDependency. Pro sestavu výkonu a využití [volání závislost�
 ## <a name="requests"></a>Požadavky
 Odeslaný [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). Standardní moduly využit k doba odezvy serveru sestav, měří na serveru.
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | Počet požadavků [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad: 4 =&gt; 25%. |
 | žádost o [0] durationMetric.value |číslo |Doba od žádosti přicházející do odpovědi. 1e7 == 1s |
@@ -250,7 +250,7 @@ Odeslání v prohlížeči. Měří čas ke zpracování stránky, od uživatele
 
 Kontext hodnoty zobrazit klientský operační systém a verze prohlížeče.
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | clientProcess.value clientPerformance [0] |integer |Čas od konce příjem kód HTML pro zobrazení stránky. |
 | Název clientPerformance [0] |string | |
@@ -267,7 +267,7 @@ Kontext hodnoty zobrazit klientský operační systém a verze prohlížeče.
 ## <a name="page-views"></a>Zobrazení stránek
 Odeslaný trackPageView() nebo [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | Počet zobrazení [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | zobrazení [0] durationMetric.value |integer |Volitelně můžete nastavit v trackPageView() nebo startTrackPage() – hodnota stopTrackPage(). Není stejný jako clientPerformance hodnoty. |
@@ -280,7 +280,7 @@ Odeslaný trackPageView() nebo [stopTrackPage](../../azure-monitor/app/api-custo
 ## <a name="availability"></a>Dostupnost
 Sestavy [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md).
 
-| Cesta | Type | Poznámky |
+| `Path` | Type | Poznámky |
 | --- | --- | --- |
 | availabilityMetric.name dostupnost [0] |string |dostupnosti |
 | availabilityMetric.value dostupnost [0] |číslo |1.0 nebo 0,0 |
