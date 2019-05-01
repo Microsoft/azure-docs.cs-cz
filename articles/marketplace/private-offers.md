@@ -16,7 +16,7 @@ ms.date: 11/1/2018
 ms.author: qianw211
 ms.openlocfilehash: c3294aaa2b6c88e08028c8958d2ab3a7297aea74
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60735918"

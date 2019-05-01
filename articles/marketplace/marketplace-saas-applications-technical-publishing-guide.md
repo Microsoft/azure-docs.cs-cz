@@ -2,21 +2,14 @@
 title: Azure Marketplace SaaS aplikací technický průvodce publikováním
 description: Podrobný průvodce a publikování kontrolní seznamy pro publikování aplikací SaaS na Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: ''
 author: keithcharlie
-manager: nunoc
-editor: keithcharlie
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
 ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60765393"

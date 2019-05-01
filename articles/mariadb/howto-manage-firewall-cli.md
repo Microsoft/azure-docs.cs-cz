@@ -29,7 +29,7 @@ Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vaš
 Příkazy:
 - **Vytvoření**: Vytvoření pravidla brány firewall serveru Azure MariaDB.
 - **Odstranit**: Odstranění pravidla brány firewall serveru Azure MariaDB.
-- **seznam**: Seznam pravidel brány firewall serveru Azure MariaDB.
+- **Seznam**: Seznam pravidel brány firewall serveru Azure MariaDB.
 - **Zobrazit**: Zobrazí podrobnosti o serveru Azure MariaDB pravidlo brány firewall.
 - **update**: Aktualizujte pravidlo brány firewall serveru Azure MariaDB.
 
