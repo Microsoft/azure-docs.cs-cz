@@ -5,6 +5,7 @@
     - name: Informace o službě Azure Cache for Redis
       href: cache-overview.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Vytvoření aplikace v ASP.NET
       href: cache-web-app-howto.md
