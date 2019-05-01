@@ -3,18 +3,18 @@ title: Podporované formáty souborů ve službě Azure Data Factory | Dokumenta
 description: Toto téma popisuje formáty souborů a komprese kódy, které jsou podporovány souborové konektorů v Azure Data Factory.
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f117e02a063b93b8b1badbd9868f78da95c3c671
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394421"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925136"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -29,9 +29,12 @@ Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (biná
 * [Formát Avro](#avro-format)
 
 > [!TIP]
-> Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně jak metadata je určen na základě svého nastavení formátu souboru a tipy na tom, kdy k určení [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure) oddílu.
+> Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně jak metadata je určen na základě svého nastavení formátu souboru a tipy na tom, kdy k určení [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure-or-schema) oddílu.
 
 ## <a name="text-format"></a>Formát textu
+
+>[!NOTE]
+>Datset formátu textu oddělených zavedeny nové služby Data Factory najdete v tématu [formátu textu odděleného](format-delimited-text.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.
 
 Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru, nastavte `type` vlastnost `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
@@ -97,7 +100,7 @@ Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nasta
 | nestingSeparator |Znak, který se používá k oddělení úrovní vnoření. Výchozí hodnota je tečka (.). |Ne |
 
 >[!NOTE]
->Pro případ křížové použití dat v poli do několika řádků (případ 1 -> ukázka 2 v [JsonFormat příklady](#jsonformat-example)), je možné pouze jedno pole pomocí vlastnosti rozbalte `jsonNodeReference`. 
+>Pro případ křížové použití dat v poli do několika řádků (případ 1 -> ukázka 2 v [JsonFormat příklady](#jsonformat-example)), je možné pouze jedno pole pomocí vlastnosti rozbalte `jsonNodeReference`.
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
 
@@ -196,7 +199,7 @@ Aktivita kopírování může analyzovat tyto vzory souborů JSON:
 
 **Ukázka 1: Extrakce dat z objektu a pole**
 
-V této ukázce očekáváte, že jeden kořenový objekt JSON se mapuje na jeden záznam v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:  
+V této ukázce očekáváte, že jeden kořenový objekt JSON se mapuje na jeden záznam v tabulkovém výsledku. Pokud máte soubor JSON s následujícím obsahem:
 
 ```json
 {
@@ -408,6 +411,9 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 
 ## <a name="parquet-format"></a>Formát parquet
 
+>[!NOTE]
+>Data Factory zavedeny nové datset formát Parquet, přečtěte si téma [formát Parquet](format-delimited-text.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.
+
 Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **Format**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
 ```json
@@ -426,13 +432,13 @@ Je třeba počítat s následujícím:
 > [!IMPORTANT]
 > Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK** na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.
 
-Pro kopírování běží na místní prostředí IR prostřednictvím souboru Parquet serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK. 
+Pro kopírování běží na místní prostředí IR prostřednictvím souboru Parquet serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
 
 >[!TIP]
->Při kopírování dat do a z Parquet naformátovat pomocí modul Integration Runtime a přístupů o tom, že chyba "došlo k chybě při spouštění Javy, zpráva: **místo v haldě java.lang.OutOfMemoryError:Java**", můžete přidat proměnné prostředí `_JAVA_OPTIONS` na počítači, který je hostitelem místní prostředí IR upravit minimální/maximální velikost haldy pro JVM pro tyto kopie, pak znovu spusťte kanál. 
+>Při kopírování dat do a z Parquet naformátovat pomocí modul Integration Runtime a přístupů o tom, že chyba "došlo k chybě při spouštění Javy, zpráva: **místo v haldě java.lang.OutOfMemoryError:Java**", můžete přidat proměnné prostředí `_JAVA_OPTIONS` na počítači, který je hostitelem místní prostředí IR upravit minimální/maximální velikost haldy pro JVM pro tyto kopie, pak znovu spusťte kanál.
 
 ![Nastavení velikosti haldy JVM na místní prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -483,7 +489,7 @@ Je třeba počítat s následujícím:
 > [!IMPORTANT]
 > Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK**  na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.
 
-Pro kopírování běží na místní prostředí IR prostřednictvím souboru ORC serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK. 
+Pro kopírování běží na místní prostředí IR prostřednictvím souboru ORC serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
@@ -538,7 +544,7 @@ Azure Data Factory podporuje komprese nebo dekomprese dat během kopírování. 
 * Soubor ZIP ke čtení ze serveru FTP, jsou dekomprimace ho k získání souborů uvnitř a tyto soubory přímo do Azure Data Lake Store. Definujte vstupní datová sada FTP se `compression` `type` vlastnost jako ZipDeflate.
 * Čtení GZIP komprimovaných dat z objektu blob Azure, by jej dekomprimovat, je pomocí BZIP2 komprimovat a zápis Výsledná data do objektu blob Azure. Definujte vstupní datové sady objektů Blob v Azure s `compression` `type` nastavena na GZIP a výstupní datovou sadu s `compression` `type` nastavena na BZIP2.
 
-Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v datové sadě JSON jako v následujícím příkladu:   
+Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v datové sadě JSON jako v následujícím příkladu:
 
 ```json
 {
@@ -579,11 +585,12 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Nepodporované typy souborů a formátů komprese
 
-Rozšíření funkcí služby Azure Data Factory můžete použít k transformaci soubory, které nejsou podporovány. Dvě možnosti patří Azure Functions a vlastní úlohy pomocí služby Azure Batch.
+Rozšíření funkcí služby Azure Data Factory můžete použít k transformaci soubory, které nejsou podporovány.
+Dvě možnosti patří Azure Functions a vlastní úlohy pomocí služby Azure Batch.
 
 Můžete zobrazit ukázky, která používá funkci Azure pro [extrahovat obsah souboru cíl](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Další informace najdete v tématu [aktivit Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
-Můžete také sestavit této funkce s použitím vlastní dotnet aktivity. Další informace jsou k dispozici [zde](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
+Můžete také sestavit této funkce s použitím vlastní dotnet aktivity. Další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 3cf6a0d080e2d8cafcab8e69a614b59a470c7aba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b673e625e1a50c32e3d8580ec442792ed8611703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637042"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572594"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy o možnostech sítě v Azure Functions
 
@@ -28,11 +28,14 @@ Nasazení funkce ve službě App Service Environment je aktuálně jediný způs
 Můžete omezit přístup k Internetu v několika způsoby:
 
 * [Omezení IP adres](../app-service/app-service-ip-restrictions.md): Omezte příchozí provoz do aplikace funkce tak, že rozsah IP adres.
+    * V části omezení IP adres, je také možné nakonfigurovat [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md), která omezují vaši funkci tak, aby přijímal pouze příchozí provoz z konkrétní virtuální sítě.
 * Odebrání všechny aktivační události HTTP. U některých aplikací stačí jednoduše vyhnout triggerů HTTP a použít jiný zdroj událostí k aktivaci funkce.
 
 Uvědomte si, že editoru webu Azure portal vyžaduje přímý přístup ke spuštěné funkce. Změny kódu na webu Azure portal bude vyžadovat, aby zařízení, které používáte, přejděte na portál a mají svůj seznam povolených IP adres. Ale můžete pořád používat nic na kartě funkce platformy síťových omezení na místě.
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Jak omezit své aplikaci function app k virtuální síti?
+
+Budete moct omezit **příchozí** provozu pro aplikace function app k virtuální síti pomocí [koncové body služby](./functions-networking-options.md#private-site-access). Tato konfigurace umožňuje stále aplikace function app pro odchozí volání k Internetu.
 
 Jediný způsob, jak úplně omezit funkce tak, aby veškerý provoz prochází přes virtuální síť je použití interním vyrovnáváním zatížení služby App Service Environment. Tato možnost nasadí svůj web v vyhrazená infrastruktura ve virtuální síti a odešle všechny aktivační události a provozu přes virtuální síť. 
 
@@ -48,8 +51,11 @@ Pomocí integrace služby virtual network (aktuálně ve verzi preview) můžete
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Jak můžete aktivovat funkci z prostředků ve virtuální síti?
 
-Funkce z prostředků ve virtuální síti můžete aktivovat pouze nasazením aplikace function app do služby App Service Environment. Podrobnosti o používání služby App Service Environment najdete v tématu [vytvoření a použití interního nástroje load balancer pomocí služby App Service Environment](../app-service/environment/create-ilb-ase.md).
+Budete moct povolit triggerů HTTP, která se má volat z virtuální sítě pomocí [koncové body služby](./functions-networking-options.md#private-site-access). 
 
+Můžete také aktivovat funkce z prostředků ve virtuální síti a nasadit vaši aplikaci function app do služby App Service Environment. Podrobnosti o používání služby App Service Environment najdete v tématu [vytvoření a použití interního nástroje load balancer pomocí služby App Service Environment](../app-service/environment/create-ilb-ase.md).
+
+Premium a App Service plán podpory protokolu HTTP aktivačních událostí z virtuální sítě, ale pouze služby App Service environment podporují všechny typy aktivační událost další funkce prostřednictvím virtuální sítě.
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Jak můžete nasadit aplikaci funkcí ve službě virtual network?
 

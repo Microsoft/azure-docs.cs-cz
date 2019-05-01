@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2130dcc27f81eb1e33fa56a7a4f963d81ac0de5b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799547"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926118"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do obslužné rutiny rozšíření Azure Desired State Configuration
 
@@ -82,7 +82,7 @@ Tyto informace si můžete prohlédnout ve [webu Azure portal](../../automation/
 ```
 
 Název konfigurace uzlu, ujistěte se, že používáte název *konfigurace uzlu* a není konfigurace.
-Konfigurace je definován ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile).
+Konfigurace je definován ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 Název bude vždy konfigurace následovaných tečkou `.` a buď `localhost` nebo název konkrétní počítače.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozšíření DSC v šablonách Resource Manageru

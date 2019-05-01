@@ -1,54 +1,58 @@
 ---
 title: Monitorování kontejnerů ve službě Azure Container Instances
-description: Podrobnosti o způsobu monitorování využití výpočetních prostředků, jako je procesor a paměť, kontejnery ve službě Azure Container Instances.
+description: Jak monitorovat využití výpočetních prostředků, jako je procesor a paměť a kontejnerů ve službě Azure Container Instances.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 04/24/2018
+ms.date: 04/24/2019
 ms.author: danlep
-ms.openlocfilehash: 950d8b4b5ec1a55e2054039a01d6807915b5c714
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7b46ea0518038eeb908591b8438acc2a9095242c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580140"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570893"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
-Služba Azure Monitor poskytuje přehled o výpočetních prostředcích používaných instancemi kontejnerů. Použijte Azure Monitor ke sledování využití procesoru a paměti skupiny kontejnerů a jednotlivé kontejnery. Tato data o využití prostředků vám u skupin kontejnerů pomohou určit nejlepší nastavení pro procesor a paměť.
+[Azure Monitor] [ azure-monitoring] poskytuje podrobné informace o výpočetních prostředků použitých ve vašich instancí kontejnerů. Tato data použití prostředků vám pomůže určit nejlepší nastavení prostředků pro vaše skupiny kontejnerů. Platforma Azure Monitor také poskytuje metriky, které sledují aktivitu sítě ve vaší službě container instances.
 
-Tento dokument podrobně popisuje shromažďování využití procesoru a paměti u instancí kontejnerů pomocí jak webu Azure Portal, tak i rozhraní Azure CLI.
+Tento dokument podrobně popisuje shromažďování metrik Azure monitoru pro container instances pomocí webu Azure portal a rozhraní příkazového řádku Azure.
 
 > [!IMPORTANT]
-> Aktuálně jsou metriky využití prostředků dostupné pouze u linuxových kontejnerů.
->
+> Azure Monitor metriky ve službě Azure Container Instances jsou aktuálně ve verzi preview a některé [platí omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+
+## <a name="preview-limitations"></a>Omezení verze Preview
+
+V tuto chvíli Azure Monitor metriky jsou k dispozici pouze pro kontejnery Linuxu.
 
 ## <a name="available-metrics"></a>Dostupné metriky
 
-Služba Azure Monitor poskytuje u služby Azure Container Instances metriky o využití **procesoru** i **paměti**. Obě metriky jsou k dispozici pro skupinu kontejnerů i jednotlivé kontejnery.
+Platforma Azure Monitor poskytuje následující [metriky pro Azure Container Instances][supported-metrics]. Tyto metriky jsou k dispozici pro skupinu kontejnerů a jednotlivých kontejnerů.
 
-Metriky využití procesoru se uvádějí v jednotkách **millicore**. Jeden millicore je tisícina jádra procesoru, takže 500 jednotek millicore (nebo 500 m) představuje 50% využití jádra procesoru.
+* **Využití procesoru** – měřenou v **jednotkách millicore**. Jeden millicore je 1/1000th jádra procesoru, takže 500 jednotkách millicore (nebo 500 milionů) představuje 50 % využití Procesorové jádro. Agregovat jako **průměrné využití** ze všech jader.
 
-Metriky využití paměti se uvádějí v **bajtech**.
+* **Využití paměti** – agregované jako **průměrný počet bajtů**.
+
+* **Síťové bajty přijatých za sekundu** a **sítě bajtů odeslaných za sekundu** – agregované jako **průměrný počet bajtů za sekundu**. 
 
 ## <a name="get-metrics---azure-portal"></a>Získání metrik – Azure Portal
 
-Data služby Azure Monitor budou k dispozici na webu Azure Portal po vytvoření skupiny kontejnerů. Pokud si chcete zobrazit metriky skupiny kontejnerů, vyberte nejprve skupinu prostředků a potom danou skupinu kontejnerů. Níže si můžete prohlédnout předem vytvořené grafy pro využití procesoru i paměti.
+Data služby Azure Monitor budou k dispozici na webu Azure Portal po vytvoření skupiny kontejnerů. Pokud chcete zobrazit metriky pro skupinu kontejnerů, přejděte na **přehled** stránce pro skupinu kontejnerů. Tady vidíte předem vytvořené grafy pro každý z dostupných metrik.
 
 ![Dvojitý graf][dual-chart]
 
-Pokud máte skupinu kontejnerů, která obsahuje více kontejnerů, použijte k prezentování metrik jednotlivých kontejnerů [dimenzi][monitor-dimension]. Graf s metrikami jednotlivých kontejnerů vytvoříte následovně:
+Ve skupině kontejnerů, která obsahuje více kontejnerů, použijte [dimenze] [ monitor-dimension] zobrazíte metriky v kontejneru. Graf s metrikami jednotlivých kontejnerů vytvoříte následovně:
 
-1. Z levé navigační nabídky vyberte **Sledovat**.
-2. Vyberte skupinu kontejnerů a metriku (procesor nebo paměť).
-3. Vyberte zelené tlačítko dimenze a potom vyberte **Název kontejneru**.
+1. V **přehled** stránky, vyberte jednu z metrik grafů, jako je například **procesoru**. 
+1. Vyberte **použít rozdělení** tlačítko a vyberte **název kontejneru**.
 
 ![Dimenze][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Získání metrik – Azure CLI
 
-Využití procesoru a paměti instancí kontejnerů je také možné shromáždit pomocí služby Azure CLI. Nejprve pomocí následujícího příkazu získejte ID skupiny kontejnerů. Část `<resource-group>` nahraďte názvem skupiny prostředků a část `<container-group>` nahraďte názvem skupiny kontejnerů.
+Metriky pro container instances můžete shromáždit také pomocí rozhraní příkazového řádku Azure. Nejprve pomocí následujícího příkazu získejte ID skupiny kontejnerů. Část `<resource-group>` nahraďte názvem skupiny prostředků a část `<container-group>` nahraďte názvem skupiny kontejnerů.
 
 
 ```console
@@ -60,80 +64,81 @@ Pro získání metriky využití **procesoru** použijte následující příkaz
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
 
-Timestamp            Name              Average
--------------------  ------------  -----------
-2018-04-22 04:39:00  CPU Usage
-2018-04-22 04:40:00  CPU Usage
-2018-04-22 04:41:00  CPU Usage
-2018-04-22 04:42:00  CPU Usage
-2018-04-22 04:43:00  CPU Usage      0.375
-2018-04-22 04:44:00  CPU Usage      0.875
-2018-04-22 04:45:00  CPU Usage      1
-2018-04-22 04:46:00  CPU Usage      3.625
-2018-04-22 04:47:00  CPU Usage      1.5
-2018-04-22 04:48:00  CPU Usage      2.75
-2018-04-22 04:49:00  CPU Usage      1.625
-2018-04-22 04:50:00  CPU Usage      0.625
-2018-04-22 04:51:00  CPU Usage      0.5
-2018-04-22 04:52:00  CPU Usage      0.5
-2018-04-22 04:53:00  CPU Usage      0.5
+Timestamp            Name       Average
+-------------------  ---------  ---------
+2019-04-23 22:59:00  CPU Usage
+2019-04-23 23:00:00  CPU Usage
+2019-04-23 23:01:00  CPU Usage  0.0
+2019-04-23 23:02:00  CPU Usage  0.0
+2019-04-23 23:03:00  CPU Usage  0.5
+2019-04-23 23:04:00  CPU Usage  0.5
+2019-04-23 23:05:00  CPU Usage  0.5
+2019-04-23 23:06:00  CPU Usage  1.0
+2019-04-23 23:07:00  CPU Usage  0.5
+2019-04-23 23:08:00  CPU Usage  0.5
+2019-04-23 23:09:00  CPU Usage  1.0
+2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-A pro získání metriky využití **paměti** použijte tento příkaz.
+Změňte hodnotu `--metric` parametr příkazu pro získání dalších [podporované metriky][supported-metrics]. Například použijte následující příkaz k získání **paměti** metriky využití. 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
 
-Timestamp            Name              Average
--------------------  ------------  -----------
-2018-04-22 04:38:00  Memory Usage
-2018-04-22 04:39:00  Memory Usage
-2018-04-22 04:40:00  Memory Usage
-2018-04-22 04:41:00  Memory Usage
-2018-04-22 04:42:00  Memory Usage  6.76915e+06
-2018-04-22 04:43:00  Memory Usage  9.22061e+06
-2018-04-22 04:44:00  Memory Usage  9.83552e+06
-2018-04-22 04:45:00  Memory Usage  8.42906e+06
-2018-04-22 04:46:00  Memory Usage  8.39526e+06
-2018-04-22 04:47:00  Memory Usage  8.88013e+06
-2018-04-22 04:48:00  Memory Usage  8.89293e+06
-2018-04-22 04:49:00  Memory Usage  9.2073e+06
-2018-04-22 04:50:00  Memory Usage  9.36243e+06
-2018-04-22 04:51:00  Memory Usage  9.30509e+06
-2018-04-22 04:52:00  Memory Usage  9.2416e+06
-2018-04-22 04:53:00  Memory Usage  9.1008e+06
+Timestamp            Name          Average
+-------------------  ------------  ----------
+2019-04-23 22:59:00  Memory Usage
+2019-04-23 23:00:00  Memory Usage
+2019-04-23 23:01:00  Memory Usage  0.0
+2019-04-23 23:02:00  Memory Usage  8859648.0
+2019-04-23 23:03:00  Memory Usage  9181184.0
+2019-04-23 23:04:00  Memory Usage  9580544.0
+2019-04-23 23:05:00  Memory Usage  10280960.0
+2019-04-23 23:06:00  Memory Usage  7815168.0
+2019-04-23 23:07:00  Memory Usage  7739392.0
+2019-04-23 23:08:00  Memory Usage  8212480.0
+2019-04-23 23:09:00  Memory Usage  8159232.0
+2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-U skupiny více kontejnerů je možné přidat dimenzi `containerName` a získat tato data pro jednotlivé kontejnery.
+Pro skupiny více kontejnerů `containerName` dimenze mohou být přidány do vrátit metriky na kontejner.
 
 ```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --dimension containerName --output table
+$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
 
 Timestamp            Name          Containername             Average
 -------------------  ------------  --------------------  -----------
-2018-04-22 17:03:00  Memory Usage  aci-tutorial-app      1.95338e+07
-2018-04-22 17:04:00  Memory Usage  aci-tutorial-app      1.93096e+07
-2018-04-22 17:05:00  Memory Usage  aci-tutorial-app      1.91488e+07
-2018-04-22 17:06:00  Memory Usage  aci-tutorial-app      1.94335e+07
-2018-04-22 17:07:00  Memory Usage  aci-tutorial-app      1.97714e+07
-2018-04-22 17:08:00  Memory Usage  aci-tutorial-app      1.96178e+07
-2018-04-22 17:09:00  Memory Usage  aci-tutorial-app      1.93434e+07
-2018-04-22 17:10:00  Memory Usage  aci-tutorial-app      1.92614e+07
-2018-04-22 17:11:00  Memory Usage  aci-tutorial-app      1.90659e+07
-2018-04-22 16:12:00  Memory Usage  aci-tutorial-sidecar  1.35373e+06
-2018-04-22 16:13:00  Memory Usage  aci-tutorial-sidecar  1.28614e+06
-2018-04-22 16:14:00  Memory Usage  aci-tutorial-sidecar  1.31379e+06
-2018-04-22 16:15:00  Memory Usage  aci-tutorial-sidecar  1.29536e+06
-2018-04-22 16:16:00  Memory Usage  aci-tutorial-sidecar  1.38138e+06
-2018-04-22 16:17:00  Memory Usage  aci-tutorial-sidecar  1.41312e+06
-2018-04-22 16:18:00  Memory Usage  aci-tutorial-sidecar  1.49914e+06
-2018-04-22 16:19:00  Memory Usage  aci-tutorial-sidecar  1.43565e+06
-2018-04-22 16:20:00  Memory Usage  aci-tutorial-sidecar  1.408e+06
+2019-04-23 22:59:00  Memory Usage  aci-tutorial-app
+2019-04-23 23:00:00  Memory Usage  aci-tutorial-app
+2019-04-23 23:01:00  Memory Usage  aci-tutorial-app      0.0
+2019-04-23 23:02:00  Memory Usage  aci-tutorial-app      16834560.0
+2019-04-23 23:03:00  Memory Usage  aci-tutorial-app      17534976.0
+2019-04-23 23:04:00  Memory Usage  aci-tutorial-app      18329600.0
+2019-04-23 23:05:00  Memory Usage  aci-tutorial-app      19742720.0
+2019-04-23 23:06:00  Memory Usage  aci-tutorial-app      14786560.0
+2019-04-23 23:07:00  Memory Usage  aci-tutorial-app      14651392.0
+2019-04-23 23:08:00  Memory Usage  aci-tutorial-app      15470592.0
+2019-04-23 23:09:00  Memory Usage  aci-tutorial-app      15450112.0
+2019-04-23 23:10:00  Memory Usage  aci-tutorial-app      15339520.0
+2019-04-23 22:59:00  Memory Usage  aci-tutorial-sidecar
+2019-04-23 23:00:00  Memory Usage  aci-tutorial-sidecar
+2019-04-23 23:01:00  Memory Usage  aci-tutorial-sidecar  0.0
+2019-04-23 23:02:00  Memory Usage  aci-tutorial-sidecar  884736.0
+2019-04-23 23:03:00  Memory Usage  aci-tutorial-sidecar  827392.0
+2019-04-23 23:04:00  Memory Usage  aci-tutorial-sidecar  831488.0
+2019-04-23 23:05:00  Memory Usage  aci-tutorial-sidecar  819200.0
+2019-04-23 23:06:00  Memory Usage  aci-tutorial-sidecar  843776.0
+2019-04-23 23:07:00  Memory Usage  aci-tutorial-sidecar  827392.0
+2019-04-23 23:08:00  Memory Usage  aci-tutorial-sidecar  954368.0
+2019-04-23 23:09:00  Memory Usage  aci-tutorial-sidecar  868352.0
+2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o monitorování Azure najdete v [přehledu monitorování Azure][azure-monitoring].
+
+Zjistěte, jak vytvořit [upozornění na metriku] [ metric-alert] máme vás upozornit, když se překročí mezní hodnotu metriky pro Azure Container Instances.
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png
@@ -141,6 +146,11 @@ Další informace o monitorování Azure najdete v [přehledu monitorování Azu
 [dual-chart]: ./media/container-instances-monitor/metrics.png
 [memory-chart]: ./media/container-instances-monitor/memory-multi.png
 
+<!-- LINKS - External -->
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+
 <!-- LINKS - Internal -->
-[azure-monitoring]: ../monitoring-and-diagnostics/monitoring-overview.md
+[azure-monitoring]: ../azure-monitor/overview.md
+[metric-alert]: ..//azure-monitor/platform/alerts-metric.md
 [monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics
+[supported-metrics]: ../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups

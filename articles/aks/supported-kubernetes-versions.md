@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/26/2019
 ms.author: saudas
-ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d4287307ee3ed7f65b91f2865242113aa5b22bfd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031607"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684177"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ AKS podporuje čtyři dílčí verze Kubernetes:
 
 Například, pokud představuje AKS *1.12.x* v současné době také poskytuje podporu pro *1.11.a* + *1.11.b*, *1.10.c*  +  *1.10d*, *1.9.e* + *1.9f* (kde lettered aktualizací jsou dvě poslední stabilní sestavení).
 
-Při uvedení nové dílčí verze se přestane podporovat nejstarší dílčí verze a její opravná vydání. 15 dnů před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím [Azure aktualizačních kanálech][azure-update-channel]. V příkladu výše where *1.12.x* je všeobecně dostupné, jsou vyřazené verze *1.8.g* + *1.8.h*.
+Při uvedení nové dílčí verze se přestane podporovat nejstarší dílčí verze a její opravná vydání. 30 dní před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím [Azure aktualizačních kanálech][azure-update-channel]. V příkladu výše where *1.12.x* je všeobecně dostupné, jsou vyřazené verze *1.8.g* + *1.8.h*.
 
 Když nasadíte cluster AKS na portálu nebo pomocí Azure CLI, cluster se vždycky nastaví na dílčí verzi n-1 a nejnovější opravu. Například, pokud podporuje AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1.10d*, *1.9.e* + *1.9f*, je výchozí verze nových clusterů *1.11.b*.
 

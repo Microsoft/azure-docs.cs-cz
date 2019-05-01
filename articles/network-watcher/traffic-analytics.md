@@ -3,8 +3,8 @@ title: Analýza provozu Azure | Dokumentace Microsoftu
 description: Naučte se analyzovat protokoly toků skupin zabezpečení sítě Azure analýzu provozu.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;jdial
-ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: yagup;kumud
+ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429864"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939896"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -176,7 +176,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 
     ![Výběr účtu úložiště, pracovního prostoru Log Analytics a povolení analýzy provozu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
-Opakujte předchozí kroky pro žádné jiné skupiny zabezpečení sítě pro které chcete povolit analýzu provozu pro. Data z protokolů toku se odesílají do pracovního prostoru, zajistěte proto, že místní zákony a předpisy ve vaší zemi povolit ukládání dat v oblasti, ve kterém existuje pracovní prostor.
+Opakujte předchozí kroky pro žádné jiné skupiny zabezpečení sítě pro které chcete povolit analýzu provozu pro. Data z protokolů toku se odesílají do pracovního prostoru, zajistěte proto, že místní zákony a předpisy ve vaší zemi/oblasti povolit ukládání dat v oblasti, ve kterém existuje pracovní prostor.
 
 Můžete taky nakonfigurovat pomocí analýzy provozu [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) rutiny prostředí PowerShell v prostředí Azure PowerShell. Spustit `Get-Module -ListAvailable Az` nainstalovanou verzi zjistíte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
@@ -270,13 +270,13 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
 
     ![Distribuce provozu předvádí řídicí panel](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- Geografické mapy ukazuje na horním pásu karet pro výběr parametrů, jako je například datová centra (s povolenou analýzou nasazeno/No nasazení/aktivní/neaktivní/provozu/není s povolenou analýzou provozu) a země nepřispívají k provozu Benign/škodlivé na aktivní nasazení:
+- Geografické mapy ukazuje na horním pásu karet pro výběr parametrů, jako je například datová centra (s povolenou analýzou nasazeno/No nasazení/aktivní/neaktivní/provozu/není s povolenou analýzou provozu) a země nebo oblasti, které přispívají k provozu Benign/škodlivé na aktivní nasazení:
 
     ![Zobrazení geografické mapy připraveném aktivní nasazení](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
-- Geografické mapy ukazuje distribuce provozu do datového centra z jiných zemí a kontinentech komunikace k tomu modrý (neškodný provoz) a červený (škodlivý provoz) vybarvenými řádky:
+- Geografické mapy obsahuje distribuce provozu do datového centra z země/oblasti a kontinentech komunikace k tomu modrý (neškodný provoz) a červený (škodlivý provoz) vybarvenými řádky:
 
-    ![Zobrazení geografické mapy připraveném distribuce provozu do jiných zemí a kontinenty](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    ![Zobrazení geografické mapy připraveném distribuce provozu do země/oblasti a kontinenty](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![Podrobností o distribuci provozu při prohledávání protokolů toku](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
 

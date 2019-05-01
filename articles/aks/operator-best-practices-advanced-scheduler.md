@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464964"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690466"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač pokročilé funkce ve službě Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Plánovač Kubernetes můžete použít poskvrnění a tolerations omezit, co m�
 * A **taint** se použije na uzel, který označuje pouze konkrétní podů naplánovaných na ně.
 * A **toleration** se následně použije na pod, které jim umožní *tolerovat* barvu uzlu.
 
-Když nasadíte podu na AKS cluster, Kubernetes pouze naplánuje podů na uzlech, kde je v souladu toleration s barvu. Jako příklad předpokládejme, že máte nodepool ve vašem clusteru AKS pro uzly s GPU podporovat. Definovat název, jako například *gpu*, pak hodnota pro plánování. Pokud nastavíte tuto hodnotu na *NoSchedule*, Plánovač Kubernetes nelze naplánovat podů na uzlu, pokud chcete pod příslušnou toleration nedefinuje.
+Když nasadíte podu na AKS cluster, Kubernetes pouze naplánuje podů na uzlech, kde je v souladu toleration s barvu. Jako příklad předpokládejme, že máte fond uzlů v clusteru AKS pro uzly s GPU podporovat. Definovat název, jako například *gpu*, pak hodnota pro plánování. Pokud nastavíte tuto hodnotu na *NoSchedule*, Plánovač Kubernetes nelze naplánovat podů na uzlu, pokud chcete pod příslušnou toleration nedefinuje.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -72,6 +72,23 @@ Při nasazení tohoto podu, jako je třeba použití `kubectl apply -f gpu-toler
 Při použití poskvrnění pracujete s vaší aplikací vývojáři a vlastníci a povolení jejich definování požadované tolerations v jejich nasazeních.
 
 Další informace o poskvrnění a tolerations najdete v tématu [použití poskvrnění a tolerations][k8s-taints-tolerations].
+
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Chování poskvrnění a tolerations ve službě AKS
+
+Při upgradu fond uzlů ve službě AKS poskvrnění a tolerations podle vzoru sady jako už použitý pro nové uzly:
+
+- **Výchozí clusterů bez podpory škálování virtuálního počítače**
+  - Předpokládejme, že máte dvojuzlový cluster - *node1* a *node2*. Při upgradu, do dalšího uzlu (*Uzel3*) se vytvoří.
+  - Poskvrnění z *node1* aplikují i na *Uzel3*, pak *node1* se pak odstraní.
+  - Je vytvořen nový uzel jiného (s názvem *node1*, od předchozího *node1* byl odstraněn) a *node2* poskvrnění jsou použita pro nový *node1*. Potom *node2* se odstraní.
+  - V podstatě *node1* stane *Uzel3*, a *node2* stane *node1*.
+
+- **Clustery, které používají virtuální počítače škálovacích sad** (aktuálně ve verzi preview ve službě AKS)
+  - Znovu, Předpokládejme, že máte dvojuzlový cluster - *node1* a *node2*. Je-li provést upgrade fond uzlů.
+  - Jsou vytvořeny dva další uzly, *Uzel3* a *Uzel4*, a poskvrnění jsou předány v uvedeném pořadí.
+  - Původní *node1* a *node2* se odstraní.
+
+Když je potřeba škálovat fond uzlů ve službě AKS, poskvrnění a tolerations nemají od návrhu.
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Plánování s použitím selektory uzlu a vztahů pod ovládací prvek
 

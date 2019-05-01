@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: aa6b4ef76b039e9e24b4a72cfb6e76dcfae8378d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111983"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691254"
 ---
 # <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Kurz: Použití dynamického šifrování AES-128 a doručení klíče služby
 

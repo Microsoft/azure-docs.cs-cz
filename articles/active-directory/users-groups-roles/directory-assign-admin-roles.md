@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472392"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920501"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -58,6 +58,18 @@ K dispozici jsou následující role správce:
   * Vlastníci skupiny zabezpečení a skupiny Office 365, kteří můžou spravovat členství ve skupině. Těmto skupinám udělit přístup k citlivým nebo soukromých informací nebo kritické konfigurace ve službě Azure AD a jinde.
   * Správci v dalších službách mimo Azure AD, jako jsou systémy Exchange Online, Office zabezpečení a dodržování předpisů System Center a lidské zdroje.
   * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
+
+* **[Správce toku uživatele B2C](#b2c-user-flow-administrator)**: Uživatelé s touto rolí můžou vytvářet a spravovat toky uživatelů B2C (označuje se také jako "integrované" zásady) na webu Azure Portal. Vytvořením nebo úpravou toky uživatelů, tito uživatelé mohou změnit obsah html/CSS a JavaScriptu uživatelské prostředí, změnit požadavky na vícefaktorové ověřování na tok uživatele, změnit deklarace identity v tokenu a nastavení relace pro všechny zásady v tenantovi. Na druhé straně této role není patří schopnost zkontrolujte data uživatele, nebo provést změny atributů, které jsou součástí schématu tenanta. Změní na architekturu rozhraní identit (označuje se také jako vlastní) zásady je také mimo obor této role.
+
+* **[Správce atributů tok uživatelů B2C](#b2c-user-flow-attribute-administrator)**: Uživatelé s touto rolí přidání nebo odstranění uživatelských atributů, které jsou k dispozici pro všechny toky uživatelů v tenantovi. V důsledku toho uživatelé s touto rolí můžete změnit nebo přidat nové prvky schématu koncového uživatele a ovlivnit chování všechny toky uživatelů a nepřímo způsobit změny na jaká data může být koncovým uživatelům zobrazí výzva a nakonec odešle jako deklarace identity do aplikací. Tuto roli nelze upravovat toky uživatelů.
+
+* **[Správce sady klíčů IEF B2C](#b2c-ief-keyset-administrator)**:    Uživatele můžete vytvářet a spravovat zásady klíče a tajné kódy pro šifrování tokenů, token podpisů a šifrování a dešifrování deklarací identity. Přidáním nových klíčů do existující kontejnery klíčů, můžete tento správce s omezením tajné klíče výměny podle potřeby a bez dopadu na existující aplikace. Tento uživatel můžete zobrazit úplný obsah těchto tajných kódů a jejich data vypršení platnosti i po jejich vytvoření.
+    
+  <b>Důležité:</b> je citlivá role. Role správce sady klíčů by měl pečlivě Audituje a přiřadit opatrně během předprodukční prostředí a výroby.
+
+* **[Správce zásad IEF B2C](#b2c-ief-policy-administrator)**: Uživatelé s touto rolí mají možnost vytvářet, číst, aktualizovat a odstranit všechny vlastní zásady v Azure AD B2C a proto mít plnou kontrolu nad architekturu rozhraní identit v příslušné tenanta Azure AD B2C. Úpravou zásady tohoto uživatele můžete vytvořit přímé federaci se službou externích zprostředkovatelů identity, schématu adresáře, změňte všechny přístupných obsah (HTML, CSS a JavaScript) změnit, změňte požadavky pro dokončení ověření, vytvořte nové uživatele, odesílat uživatelská data k externím systémům, včetně úplné migrace a upravte všechny informace o uživateli včetně citlivé pole, jako jsou hesla a telefonního čísla. Naopak této role nelze změnit šifrovací klíče nebo upravit tajné klíče, použít pro federaci v tenantovi.
+
+  <b>Důležité:</b> Správce zásad IEF B2 je vysoce citlivé a roli, která by mělo být přiřazeno ve velmi omezené míře pro tenanty v produkčním prostředí. Aktivity podle tito uživatelé měli úzce auditovat, zejména pro tenanty v produkčním prostředí.
 
 * **[Správce fakturace](#billing-administrator)**: Nakupuje, spravuje předplatná, spravuje lístky podpory a monitoruje stav služby.
 
@@ -110,6 +122,9 @@ K dispozici jsou následující role správce:
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Exchange". Je "Správce systému Exchange" v [webu Azure portal](https://portal.azure.com). Je "Exchange Online uživatelské" v [centra pro správu Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144). 
 
+* **[Správce poskytovatele Identity externí](#external-identity-provider-administrator)**: Tento správce spravuje federace mezi tenantů Azure Active Directory a externích zprostředkovatelů identity. S touto rolí uživatele můžete přidat nového zprostředkovatele identity a nakonfigurovat všem dostupným nastavením (například ověřování cesta, id služby přiřazené kontejnery klíčů). Tento uživatel může povolit tenanta důvěřovat ověřování z externích zprostředkovatelů identity. Výsledný dopad na koncové uživatele, závisí na typu tenanta:
+  * Tenanti Azure Active Directory pro zaměstnance a partnery: Přidání federace (např. pomocí Gmailu) okamžitě ovlivní všechny pozvánky hostů dosud uplatnit. Zobrazit [přidání Google jako zprostředkovatele identity pro uživatele typu Host B2B](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
+  * Tenanti Azure Active Directory B2C: Přidání federace (např. pomocí Facebooku, nebo pomocí jiného Azure Active Directory) nemá žádný vliv okamžitě koncový uživatel toky dokud zprostředkovatele identity se přidá jako možnost v toku uživatele (označuje se také jako integrované zásady). Zobrazit [konfigurace účtu Microsoft jako zprostředkovatele identity](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) příklad. Chcete-li změnit toky uživatelů, je potřeba omezené role "B2C uživatele tok Administrator".
 
 * **[Globální správce / správce společnosti](#company-administrator)**: Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory, jakož i služeb, které používají identity Azure Active Directory jako Centrum zabezpečení Microsoft 365, Microsoft 365 centru dodržování předpisů, Exchange Online, SharePoint Online, a Online Skype pro firmy. Osoba, která se zaregistruje k tenantovi Azure Active Directory se stane globálním správcem. Další role správců můžou přiřazovat jenom globální správci. Ve vaší společnosti může být více než jednoho globálního správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
 
@@ -314,6 +329,34 @@ Povoleno zobrazení, nastavení a obnovit informace metody ověřování pro vš
 | microsoft.office365.webPortal/allEntities/basic/read | Umožňuje číst základní vlastnosti ve všech prostředcích v microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+
+### <a name="b2c-user-flow-administrator"></a>Správce toku uživatele B2C
+Vytvářejte a spravujte všechny aspekty toky uživatelů.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | Přečíst a nakonfigurovat toky uživatelů v Azure Active Directory B2C. |
+
+### <a name="b2c-user-flow-attribute-administrator"></a>Správce B2C uživatelů toku atributů
+Vytvoření a správa atribut schématu, která je k dispozici pro všechny toky uživatelů.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | Přečíst a nakonfigurovat atributy uživatele v Azure Active Directory B2C. |
+
+### <a name="b2c-ief-keyset-administrator"></a>Správce sady klíčů IEF B2C
+Správa tajných kódů pro federaci a šifrování v architekturu rozhraní identit.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/keySets/allTasks | Přečíst a nakonfigurovat klíče sad v Azure Active Directory B2C. |
+
+### <a name="b2c-ief-policy-administrator"></a>Správce zásad IEF B2C
+Vytvářejte a spravujte zásady důvěryhodnosti framework v architekturu rozhraní identit.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/policies/allTasks | Přečíst a nakonfigurovat vlastní zásady v Azure Active Directory B2C. |
 
 ### <a name="billing-administrator"></a>Správce fakturace
 Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.
@@ -675,6 +718,13 @@ Může spravovat všechny aspekty produktu Exchange.
 | microsoft.office365.exchange/allEntities/allTasks | Umožňuje spravovat všechny aspekty Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+
+### <a name="external-identity-provider-administrator"></a>Externí správce zprostředkovatele Identity
+Konfigurace zprostředkovatelů identity pro použití v s přímým přístupem federace.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.b2c/identityProviders/allTasks | Přečíst a nakonfigurovat zprostředkovatele identity v Azure Active Directory B2C. |
 
 ### <a name="guest-inviter"></a>Odesílatel pozvánek hostů
 Může zvát uživatele typu host bez ohledu na nastavení, jestli členové můžou zvát hosty.

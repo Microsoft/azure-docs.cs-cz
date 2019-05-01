@@ -2,23 +2,19 @@
 title: Správa služby Azure Key Vault pomocí Azure Automation – Azure Key Vault | Dokumentace Microsoftu
 description: Další informace o používání služby Azure Automation ke správě služby Azure Key Vault.
 services: Key-Vault, automation
-documentationcenter: ''
 author: mgoedtel
 manager: jwhit
 editor: ''
-ms.assetid: 4e780762-19b6-4ca6-b894-ebb44c538f35
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87fdb565f47e7d88342c82bd5940c1ddb9c137e6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306066"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712113"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Správa služby Azure Key Vault pomocí Azure Automation.
 

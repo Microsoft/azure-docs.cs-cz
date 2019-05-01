@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373496"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569599"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav se sešity Azure Monitor
 
@@ -206,7 +206,7 @@ Vygeneruje výsledek:
 
 ![Application Insights sešity části ovládací prvky pro úpravy](./media/usage-workbooks/011-data-table.png)
 
-Hodí víc příklad používá rozevírací seznam pro výběr ze sady zemí podle názvu:
+Hodí víc příklad používá rozevírací seznam pro výběr z několika zemích nebo oblastech podle názvu:
 
 ```
 customEvents

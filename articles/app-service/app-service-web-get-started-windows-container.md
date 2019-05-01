@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c1b3282417cd95f1aaff472890ec655e4c5a983f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 089334d32ca54035abfbf59446366ecbe3378c15
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852847"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919743"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Spuštění vlastního kontejneru s Windows v Azure (Preview)
 
@@ -178,7 +178,7 @@ Znovu [přejděte do aplikace typu kontejner](#browse-to-the-container-app). Po 
 
 Ke spuštění vaší aplikace můžete použít i jinou vlastní image Dockeru. Musíte však zvolit správnou [nadřazenou image](https://docs.docker.com/develop/develop-images/baseimages/) pro požadovanou architekturu: 
 
-- Pokud chcete nasadit aplikace rozhraní .NET Framework, použít nadřazená image založené na Windows Server Core 2019 [dlouhodobé údržby kanálu (LTSC)](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview#long-term-servicing-channel-ltsc) release. 
+- Pokud chcete nasadit aplikace rozhraní .NET Framework, použít nadřazená image založené na Windows Server Core 2019 [dlouhodobé údržby kanálu (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) release. 
 - K nasazení aplikace .NET Core použijte nadřazená image založené na Windows Server Nano 1809 [půlroční Obsluha kanálu (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) release. 
 
 Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas spuštění však můžete zkrátit použitím některé z následujících nadřazených imagí, které jsou již uložené v mezipaměti ve službě Azure App Service:

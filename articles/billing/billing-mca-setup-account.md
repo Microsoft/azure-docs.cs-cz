@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371723"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919157"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení účtu fakturační zákaznické smlouvy Microsoft
 
@@ -108,7 +108,7 @@ Nové fakturační účet tenanta služby Azure Active Directory vybraná při p
 
 Váš nový účet podporuje pouze uživatelé z tenanta, který byl vybrán při podepsání smlouvy zákazníka Microsoftu. Pokud uživatelé s oprávněním správce v rámci smlouvy Enterprise jsou součástí klienta, budete vývojáři získají přístup k nové fakturační účet během instalace. Pokud nejsou součástí klienta, nebudou moct přistupovat k nové fakturační účet, pokud jste pozvánku.
 
-Při zvaní uživatelů jsou přidány do tenanta jako uživatele typu Host a získejte přístup k fakturačnímu účtu. Pozvat uživatele, musí být zapnuta přístup hosta pro příslušného tenanta. Další informace najdete v tématu [řízení přístupu hostů v Azure Active Directory](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Pokud přístup hosta je vypnutý, obraťte se na globální správci tenanta ho chcete zapnout. <!-- Todo - How can they find their global administrator -->
+Při zvaní uživatelů jsou přidány do tenanta jako uživatele typu Host a získejte přístup k fakturačnímu účtu. Pozvat uživatele, musí být zapnuta přístup hosta pro příslušného tenanta. Další informace najdete v tématu [řízení přístupu hostů v Azure Active Directory](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Pokud přístup hosta je vypnutý, obraťte se na globální správci tenanta ho chcete zapnout. <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-features-replaced-by-the-new-billing-account"></a>Zobrazit funkce nahrazuje nové fakturační účet
 

@@ -2,17 +2,17 @@
 title: Přehled konfigurace služby Azure Application Gateway
 description: Tento článek popisuje postup konfigurace komponenty Azure Application Gateway
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998902"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946815"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -71,7 +71,7 @@ V tomto scénáři pomocí skupin Nsg na podsítě Application Gateway. Umístě
 
 Pro v1 SKU trasy definované uživatelem (udr) se podporují na podsítě Application Gateway tak dlouho, dokud není mění komunikace začátku do konce žádostí a odpovědí. Můžete například nastavit uživatelem definovaná TRASA v podsíti brány aplikace tak, aby odkazoval na zařízení brány firewall pro kontrolu paketů. Ale ujistěte se, že jeho požadovaného cíle po kontrole dostat paket. K tomu může dojít v nesprávné sondu stavu nebo chování směrování provozu. To zahrnuje zjištěné trasy nebo výchozí trasy 0.0.0.0/0, které jsou šířeny přes Azure ExpressRoute nebo bran VPN ve virtuální síti.
 
-Pro v2 SKU trasy definované uživatelem nejsou podporovány na podsítě Application Gateway. Další informace najdete v tématu [automatické škálování a redundanci zón pro službu Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+Pro v2 SKU trasy definované uživatelem nejsou podporovány na podsítě Application Gateway. Další informace najdete v tématu [SKU v2 Azure Application Gateway](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
 > Použití tras definovaných uživatelem na podsítě Application Gateway způsobí, že stav v [zobrazení stavu back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) se zobrazí "Unknown". Navíc způsobí, že generace služby Application Gateway protokoly a metriky, které selžou. Doporučujeme vám, že nepoužíváte trasy definované uživatelem na podsítě Application Gateway tak, aby se zobrazí stav back endu, protokoly a metriky.
@@ -84,7 +84,7 @@ Veřejná IP adresa není vyžadováno pro vnitřní koncový bod, který není 
 
 Je podporován pouze 1 veřejné IP adresy nebo 1 privátní IP adresu. Když vytvoříte službu application gateway zvolíte front-end IP adresu.
 
-- Pro veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako služba application gateway. Pokud jste vytvořili novou veřejnou IP adresu, typ IP adresy, kterou jste vybrali (statická nebo dynamická) není možné později změnit. Další informace najdete v tématu [statickou nebo dynamickou veřejnou IP adresu](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Pro veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako služba application gateway. Pokud jste vytvořili novou veřejnou IP adresu, typ IP adresy, kterou jste vybrali (statická nebo dynamická) není možné později změnit. Další informace najdete v tématu [statickou nebo dynamickou veřejnou IP adresu](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
 
 - Pro privátní IP adresu můžete zadat privátní IP adresu z podsítě, ve kterém se vytvoří aplikační bránu. Pokud nezadáte, je automaticky vybrán libovolnou IP adresu z podsítě. Další informace najdete v tématu [vytvoření služby application gateway pomocí interního nástroje](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 

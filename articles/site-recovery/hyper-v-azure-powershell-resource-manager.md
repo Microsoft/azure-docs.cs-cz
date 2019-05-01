@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 75a7424f6c3bb6ef13de9e44b46489ab1ef0fbcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792976"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690575"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru
 
@@ -107,7 +107,7 @@ Nastavte kontext trezoru následujícím způsobem:
 ## <a name="step-5-install-the-provider-and-agent"></a>Krok 5: Instalace zprostředkovatele a agenta
 
 1. Stažení instalačního programu pro nejnovější verzi zprostředkovatele ze [Microsoft](https://aka.ms/downloaddra).
-2. Spusťte instalační program na hostiteli theHyper-V.
+2. Spusťte instalační program na hostiteli Hyper-V.
 3. Na konci instalace pokračujte krokem registrace.
 4. Po zobrazení výzvy zadejte klíč stažený a dokončete registraci hostitele Hyper-V.
 5. Ověřte, že je hostitel Hyper-V zaregistrovaný k lokalitě:

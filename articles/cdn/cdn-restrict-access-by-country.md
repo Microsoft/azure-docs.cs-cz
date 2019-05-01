@@ -1,6 +1,6 @@
 ---
-title: Omezit přístup k obsahu Azure CDN podle země | Dokumentace Microsoftu
-description: Informace o omezení přístupu podle země k vašemu obsahu Azure CDN pomocí funkce geografické filtrování.
+title: Omezení obsahu Azure CDN podle země nebo oblasti | Dokumentace Microsoftu
+description: Zjistěte, jak omezit přístup k vašemu obsahu Azure CDN pomocí funkce geografické filtrování podle země nebo oblasti.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 083d8f66a73471548c812e27325e1ec69ad5c45c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324584"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869591"
 ---
-# <a name="restrict-azure-cdn-content-by-country"></a>Omezit přístup k obsahu Azure CDN podle země
+# <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
 
 ## <a name="overview"></a>Přehled
-Když si uživatel vyžádá obsah, ve výchozím nastavení, obsah obsluhuje bez ohledu na umístění uživatele, který zadal žádost. Ale v některých případech může chtít omezit přístup k obsahu podle země. S *geografické filtrování* funkce, můžete vytvořit pravidla na konkrétních cestách vašeho koncového bodu CDN povolit nebo blokovat obsah ve vybraných zemích.
+Když si uživatel vyžádá obsah, ve výchozím nastavení, obsah obsluhuje bez ohledu na umístění uživatele, který zadal žádost. Ale v některých případech může chtít omezit přístup k vašemu obsahu podle země nebo oblasti. S *geografické filtrování* funkce, můžete vytvořit pravidla na konkrétních cestách vašeho koncového bodu CDN povolit nebo blokovat obsah ve vybraných zemích nebo oblastech.
 
 > [!IMPORTANT]
 > **Azure CDN Standard od společnosti Microsoft** profily založené na cestě geografické filtrování nepodporují.
@@ -54,18 +54,18 @@ Například všechny následující filtry cesta adresáře jsou platné:
 
 Z **akce** seznamu vyberte **povolit** nebo **bloku**: 
 
-- **Povolit**: Přístup k prostředkům vyžádaný z cesty rekurzivní mohou pouze uživatelé z zadanou zemí.
+- **Povolit**: Přístup k prostředkům vyžádaný z cesty rekurzivní mohou pouze uživatelé z zadanou zemí nebo oblastí.
 
-- **Blok**: Uživatelé ze zemí zadané mají odepřený přístup k prostředkům vyžádané rekurzivní cesta. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země možnosti filtrování, pak všichni ostatní uživatelé budou mít přístup povolený.
+- **Blok**: Uživatelé z zadanou zemí nebo oblastí mají odepřený přístup k prostředkům vyžádané rekurzivní cesta. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země/oblast možnosti filtrování, pak všichni ostatní uživatelé budou mít přístup povolený.
 
 Například geografické filtrování pravidla pro blokování cestu */fotografie/Štrasburku/* filtry pro následující soubory:     
 *http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
 *http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
-### <a name="define-the-countries"></a>Definovat zemí
-Z **kódy zemí** seznamu, zvolte země, pro které chcete blokovat nebo povolit pro danou cestu. 
+### <a name="define-the-countriesregions"></a>Definovat zemí/oblastí
+Z **kódy zemí** vyberte u zemí nebo oblastí, které chcete blokovat nebo povolit pro danou cestu. 
 
-Po dokončení výběru země, vyberte **Uložit** k aktivaci nové geografické filtrování pravidlo. 
+Po dokončení výběru země nebo oblasti, vyberte **Uložit** k aktivaci nové geografické filtrování pravidlo. 
 
 ![Pravidla pro geografické filtrování](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
@@ -89,14 +89,14 @@ Pro **pro Azure CDN Premium od Verizonu** profily, uživatelské rozhraní pro v
 
     **Kroku dvě:** se zobrazí stránka. 
 
-5. Ze seznamu vyberte jednu nebo více zemí a pak vyberte **Dokončit** aktivovat pravidlo. 
+5. Vyberte jeden nebo více zemích nebo oblastech ze seznamu a potom vyberte **Dokončit** aktivovat pravidlo. 
     
     Nové pravidlo se zobrazí v tabulce na **filtrování podle země** stránky.
 
     ![Pravidla pro geografické filtrování](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-V tabulce země filtrování pravidla vyberte ikonu Odstranit vedle pravidlo odstranit nebo na ikonu úprav ho upravit.
+V tabulce Země/oblast filtrování pravidla vyberte ikonu Odstranit vedle pravidlo odstranit nebo na ikonu úprav ho upravit.
 
 ## <a name="considerations"></a>Požadavky
 * Změny konfigurace geografické filtrování neprojevila okamžitě:
@@ -108,7 +108,7 @@ V tabulce země filtrování pravidla vyberte ikonu Odstranit vedle pravidlo ods
 
 * Konfigurace geografické filtrování spojené s relativní cestou je aplikována rekurzivně na tuto cestu.
 
-* Na stejné relativní cesty lze použít pouze jedno pravidlo. To znamená nelze vytvořit více filtrů země, které odkazují na stejné relativní cesty. Ale protože země filtry je rekurzivní, složka může mít více filtrů země. Jinými slovy podsložka dříve konfigurované složky je možné přiřadit filtr jiné zemi.
+* Na stejné relativní cesty lze použít pouze jedno pravidlo. To znamená nelze vytvořit více filtrů země/oblast, které odkazují na stejné relativní cesty. Ale protože filtry Země/oblast je rekurzivní, složky může mít několik filtrů země/oblast. Jinými slovy podsložka dříve konfigurované složky je možné přiřadit jinou zemi či oblast filtru.
 
-* Funkce geografického filtrování používá k definování zemí, ze kterých se žádost o povolená nebo zablokovaná pro zabezpečený adresář kódy zemí. Přestože společností Akamai a Verizon profily podporují většinu stejné kódy zemí, existuje několik rozdílů. Další informace najdete v tématu [kódy zemí Azure CDN](/previous-versions/azure/mt761717(v=azure.100)). 
+* Funkce geografického filtrování používá k definování země nebo oblasti, ze kterých se žádost o povolená nebo zablokovaná pro zabezpečený adresář kódy zemí. Přestože společností Akamai a Verizon profily podporují většinu stejné kódy zemí, existuje několik rozdílů. Další informace najdete v tématu [kódy zemí Azure CDN](/previous-versions/azure/mt761717(v=azure.100)). 
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: 63f1cfbf697f9cb1211e2c4671f64b19f933bc94
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: d566b57ae12520b9eee26334a67d2e10c05f8040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129344"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709081"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Generování filmových doporučení pomocí Apache Mahout s linuxovým Apache Hadoop v HDInsight (SSH)
 
@@ -21,16 +21,13 @@ ms.locfileid: "62129344"
 
 Další informace o použití [Apache Mahout](https://mahout.apache.org) knihovna pro machine learning pomocí Azure HDInsight ke generování filmových doporučení.
 
-Mahout je [strojového učení] [ ml] knihovna pro Apache Hadoop. Mahout obsahuje algoritmy pro zpracování dat, jako je například filtrování, klasifikaci a clustering. V tomto článku můžete využít doporučovací modul generování filmových doporučení, které jsou založeny na filmy, které jste viděli vaši přátelé.
+Mahout je [strojového učení](https://en.wikipedia.org/wiki/Machine_learning) knihovna pro Apache Hadoop. Mahout obsahuje algoritmy pro zpracování dat, jako je například filtrování, klasifikaci a clustering. V tomto článku můžete využít doporučovací modul generování filmových doporučení, které jsou založeny na filmy, které jste viděli vaši přátelé.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster HDInsight se systémem Linux. Informace o vytvoření nového, najdete v části [Začínáme používat Hadoop využívající systém Linux v HDInsight][getstarted].
+* Cluster Apache Hadoop v HDInsight. Zobrazit [Začínáme s HDInsight v Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
 
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
-* Klient SSH. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout správy verzí
 
@@ -50,7 +47,7 @@ Následující pracovní postup je zjednodušený příklad, který používá d
 
 ### <a name="understanding-the-data"></a>Pochopení dat
 
-Pohodlněji [GroupLens Research] [ movielens] poskytuje data hodnocení filmů, ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici na výchozím úložištěm váš cluster na `/HdiSamples/HdiSamples/MahoutMovieData`.
+Pohodlněji [GroupLens Research](https://grouplens.org/datasets/movielens/) poskytuje data hodnocení filmů, ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici na výchozím úložištěm váš cluster na `/HdiSamples/HdiSamples/MahoutMovieData`.
 
 Existují dva soubory `moviedb.txt` a `user-ratings.txt`. `user-ratings.txt` Soubor se používá během analýzy. `moviedb.txt` Slouží k poskytování informací popisný text při prohlížení výsledků.
 
@@ -200,15 +197,3 @@ Teď, když jste se naučili, jak pomocí Mahoutu, popisující další způsoby
 * [Apache Hive s HDInsight](hdinsight-use-hive.md)
 * [Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
-
-[build]: https://mahout.apache.org/developers/buildingmahout.html
-[movielens]: https://grouplens.org/datasets/movielens/
-[100k]: https://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]:apache-hadoop-linux-tutorial-get-started.md
-[upload]: hdinsight-upload-data.md
-[ml]: https://en.wikipedia.org/wiki/Machine_learning
-[forest]: https://en.wikipedia.org/wiki/Random_forest
-[enableremote]: ./media/hdinsight-mahout/enableremote.png
-[connect]: ./media/hdinsight-mahout/connect.png
-[hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
-[tools]: https://github.com/Blackmist/hdinsight-tools

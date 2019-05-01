@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557243"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935409"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming pro iOS 
 
@@ -42,8 +42,8 @@ Správa digitálních práv (DRM) nebo na vyžádání pro různých protokolů 
 Kromě ochrany obsahu online vysílání datového proudu různých protokolů pro streamování, offline režimu pro chráněný obsah je také často požadované funkce. Podporu offline režimu, je potřeba pro následující scénáře:
 
 * Přehrávání při připojení k Internetu není k dispozici, například při cestování.
-* Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení země. Pokud uživatelé chtějí sledovat obsah při cestování mimo zemi, je potřeba ke stažení offline.
-* V některých zemích je stále omezena dostupnost Internetu a/nebo šířky pásma. Uživatelé zvolit nejprve stáhnout moct dál sledovat obsah, který je dostatečně vysoká, uspokojivé zobrazení prostředí rozlišení. V takovém případě problém obvykle není dostupnost sítě, ale omezena šířka pásma sítě. Over-the-top (OTT) / poskytovatelů online video platformy (OVP) požádat o podporu offline režimu.
+* Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení určitá země nebo oblast. Pokud uživatelé chtějí sledovat obsah při cestování mimo zemi nebo oblasti, je potřeba ke stažení offline.
+* V některých zemích nebo oblastech je stále omezena dostupnost Internetu a/nebo šířky pásma. Uživatelé zvolit nejprve stáhnout moct dál sledovat obsah, který je dostatečně vysoká, uspokojivé zobrazení prostředí rozlišení. V takovém případě problém obvykle není dostupnost sítě, ale omezena šířka pásma sítě. Over-the-top (OTT) / poskytovatelů online video platformy (OVP) požádat o podporu offline režimu.
 
 Tento článek popisuje podporu offline režimu FairPlay Streaming (FPS), která cílí na zařízení s Iosem 10 nebo novější. Tato funkce není podporována pro jiné Apple platformy, jako je například watchOS, tvOS nebo Safari v systému macOS.
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: cc298eb8757ec4b3aa968c0790b72e24cc3d1143
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103823"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699517"
 ---
 # <a name="common-power-bi-workspace-collection-scenarios"></a>Běžné scénáře kolekce pracovních prostorů Power BI
 

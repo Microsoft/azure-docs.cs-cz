@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 381ecd4681bf1d7abfc8939e256bf84db9bc2172
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ab3c680f7279ff78e0319f28f67c1cc8c203b47
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460546"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708036"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostika a řešení potíží
 
@@ -109,7 +109,8 @@ Tomuto problému může dojít, pokud vaše prostředí nemá definované hierar
 ## <a name="next-steps"></a>Další postup
 
 - Čtení [čas řady modely](./time-series-insights-update-how-to-tsm.md).
-- Čtení [tvary JSON nepodporuje](./how-to-shape-query-json.md).
+
+- Další informace o [podporované tvary JSON](./how-to-shape-query-json.md).
 
 <!-- Images -->
 [1]: media/v2-update-diagnose-and-troubleshoot/environment.png

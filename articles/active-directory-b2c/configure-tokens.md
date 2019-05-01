@@ -3,19 +3,19 @@ title: Konfigurace tokenů – Azure Active Directory B2C | Dokumentace Microsof
 description: Zjistěte, jak nakonfigurovat nastavení token doby života a kompatibility v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2455b8c12ed042af3a06a158a4e5c60a0aee748b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69a6284ea7b8905bb5efdb1f4c9f26027bd6f9d9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384004"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689616"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurace tokenů v Azure Active Directory B2C
 

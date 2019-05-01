@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – vytvoření aplikace pro Android Unity pomocí Azure prostorových kotvy | Dokumentace Microsoftu
+title: Rychlý start – vytvoření aplikace pro Android Unity s Azure prostorových kotvy | Dokumentace Microsoftu
 description: V tomto rychlém startu se dozvíte, jak k vytváření aplikací pro Android pomocí Unity pomocí prostorových ukotvení.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bce71db594d2bbd869dcc5a1ff5cb494a7a6f1c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 001042a5499b492db151853172e999cf7a3c5f88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342340"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687818"
 ---
-# <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android Unity s Azure prostorových kotev vztahů
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android Unity s Azure prostorových kotvy
 
-Tento rychlý start popisuje, jak vytvořit aplikaci Android Unity pomocí [prostorových kotvy Azure](../overview.md). Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít ARCore Android aplikace vytvořené pomocí Unity, který můžete uložit a odvolat prostorových ukotvení.
+Tento rychlý start popisuje, jak vytvořit aplikaci pro Android pomocí Unity [prostorových kotvy Azure](../overview.md). Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít ARCore Android aplikace vytvořené pomocí Unity, který můžete uložit a odvolat prostorových ukotvení.
 
 Dozvíte se, jak provést tyto akce:
 

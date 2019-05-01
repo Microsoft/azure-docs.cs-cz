@@ -1,22 +1,28 @@
 ---
-title: Podporované jazyky ve službě Azure Maps | Dokumentace Microsoftu
+title: Podpora lokalizace ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o podporovaných jazycích pro služby ve službě Azure Maps
-author: juliekohler
-ms.author: julieko
-ms.date: 04/08/2019
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ad5913224724dcb9cb9033d89010cefb4d9e1f89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769188"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686790"
 ---
-# <a name="azure-maps-supported-languages"></a>Azure Maps podporované jazyky
-Lokalizované Azure Maps v různých jazycích napříč službami.  Následující tabulka obsahuje kódy podporovaných jazyků pro každou službu.  
+# <a name="localization-support-in-azure-maps"></a>Podpora lokalizace ve službě Azure Maps
+
+Azure Maps podporuje různé jazyky a zobrazení podle země/oblast. Tento článek obsahuje seznam podporovaných jazyků a zobrazení mohou pomoci vaší implementace Azure Maps.
+
+
+## <a name="azure-maps-supported-languages"></a>Azure Maps podporované jazyky
+
+Lokalizované Azure Maps v různých jazycích napříč službami. Následující tabulka obsahuje kódy podporovaných jazyků pro každou službu.  
   
 
 | ID         | Název                   |  Maps | Search | Směrování | Provoz incidenty | Mapový ovládací prvek JS | Časové pásmo |
@@ -75,3 +81,30 @@ Lokalizované Azure Maps v různých jazycích napříč službami.  Následuj�
 | tr-TR      | turečtina                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | Spojené království UA      | Ukrajinština               |       |    ✓   |         |                   |                |     ✓     |
 | vi-VN      | Vietnamština             |       |    ✓   |         |                   |                |     ✓     |
+
+
+## <a name="azure-maps-supported-views"></a>Zobrazení nepodporuje Azure Maps
+
+Azure parametr mapy zobrazení (také označované jako "uživatelské oblasti parametr") je kód země ISO 3166 písmeno 2, které vám ukážou, že správné mapování pro určení, které sada geopoliticky zemi/oblast sporné území ohraničení a popisků se zobrazí na mapě.  Ve výchozím nastavení parametr zobrazení je nastaven na **"Unified"**.  Země nebo oblasti, které nejsou v zobrazení seznamu se ve výchozím nastavení zobrazení "Unified". Je vaší odpovědností zjistit umístění uživatelů a potom nastavit parametr zobrazení správně pro danou lokaci. Parametr zobrazení v Azure Maps je nutné použít v souladu s příslušnými zákony, včetně těch o mapování země, ve kterém mapy, obrázky a další data a třetích stran obsah, který jste oprávnění pro přístup k prostřednictvím Azure Maps je k dispozici.
+
+Následující tabulka uvádí podporované zobrazení.
+
+| Zobrazení         | Popis                            |  Maps | Search | Mapový ovládací prvek JS |
+|--------------|----------------------------------------|:-----:|:------:|:--------------:|
+| AE           | Spojené arabské emiráty (Arabské zobrazení)    |   ✓   |        |     ✓          |
+| AR           | Argentina (Argentinian View)           |   ✓   |    ✓   |     ✓          |
+| BH           | Bahrajn (Arabské zobrazení)                 |   ✓   |        |     ✓          |
+| IN           | India (Indian View)                    |   ✓   |   ✓     |     ✓          |
+| IQ           | Irák (Arabské zobrazení)                    |   ✓   |        |     ✓          |
+| JO           | Jordánsko (Arabské zobrazení)                  |   ✓   |        |     ✓          |
+| KW           | Kuvajt (Arabské zobrazení)                  |   ✓   |        |     ✓          |
+| LB           | Libanon (Arabské zobrazení)                 |   ✓   |        |     ✓          |
+| MA           | Morocco (Moroccan View)                |   ✓   |   ✓     |     ✓          |
+| OM           | Omán (Arabské zobrazení)                    |   ✓   |        |     ✓          |
+| PK           | Pákistán (Pákistánská zobrazení)              |   ✓   |    ✓    |     ✓          |
+| PS           | Palestinská samospráva (Arabské zobrazení)    |   ✓   |        |     ✓          |
+| QA           | Katar (Arabské zobrazení)                   |   ✓   |        |     ✓          |
+| SA           | Saúdská Arábie (Arabské zobrazení)            |   ✓   |        |     ✓          |
+| SY           | Sýrie (Arabské zobrazení)                   |   ✓   |        |     ✓          |
+| ANO VŠEM           | Jemen (Arabské zobrazení)                   |   ✓   |        |     ✓          |
+| Sjednocené      | Sjednocený pohled (ostatní)                  |   ✓   |   ✓     |     ✓          |

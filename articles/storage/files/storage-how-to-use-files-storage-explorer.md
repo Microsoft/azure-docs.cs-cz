@@ -9,11 +9,11 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bf87704a8055b5725178c846df71ed4d873417e3
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763403"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713870"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Průzkumníka služby Azure Storage
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Průzkumníka služby Azure Storage. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -67,7 +67,7 @@ Přidání adresáře zajistí hierarchickou strukturu pro správu sdílené slo
 
 Adresář *myDirectory* bude uvedený v seznamu na kartě sdílené složky *myshare*.
 
-### <a name="upload-a-file"></a>Nahrát soubor 
+### <a name="upload-a-file"></a>Nahrání souboru 
 Z místního počítače můžete do nového adresáře ve sdílené složce nahrát soubor. Můžete nahrát jeden soubor nebo celou složku.
 
 1. V horní nabídce vyberte **Nahrát**. Tímto způsobem můžete nahrát složku nebo soubor.
@@ -76,7 +76,7 @@ Z místního počítače můžete do nového adresáře ve sdílené složce nah
 
 Po dokončení se tento soubor objeví na seznamu v podokně *myDirectory*.
 
-### <a name="download-a-file"></a>Stáhnout soubor
+### <a name="download-a-file"></a>Stažení souboru
 Kopii souboru ze sdílené složky stáhnete pravým kliknutím na daný soubor a následným výběrem možnosti **Stáhnout**. Zvolte, kam chcete soubor na místním počítači uložit, a potom vyberte **Uložit**.
 
 V podokně **Aktivity** v dolní části okna se zobrazí průběh stahování.

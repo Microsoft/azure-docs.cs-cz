@@ -1,27 +1,20 @@
 ---
-title: Azure a Dynamics 365 nabídku konzultační služby – vytvoření nabídky | Dokumentace Microsoftu
-description: Průvodce pro vytvoření Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu.
+title: Vytvořit nabídku na konzultační | Azure Marketplace
+description: Vytvoření Azure nebo Dynamics 365 konzultační služby nabídky ve portál partnerů cloudu pro Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f130f20643ba80bf706b8b5ba8f4b7eab0acaa59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865391"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942837"
 ---
-# <a name="create-an-offer"></a>Vytvoření nabídky
+# <a name="create-a-consulting-offer"></a>Vytvoření konzultačních nabídky
 
 Tento článek popisuje postup vytvoření a publikování nabídky na konzultační služby.
 

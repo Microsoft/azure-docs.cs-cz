@@ -1,6 +1,6 @@
 ---
-title: Proměnné prostředí výpočetních uzlů – Azure Batch | Dokumentace Microsoftu
-description: Výpočetní uzel odkazu na proměnnou prostředí pro Azure Batch Analytics.
+title: Úloha proměnné prostředí runtime – Azure Batch | Dokumentace Microsoftu
+description: Úloh modulu runtime prostředí proměnné pokyny a referenční informace pro Azure Batch Analytics.
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/07/2019
+ms.date: 04/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c46f75c447becc8b15d4a6b8f979330db7ab95c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782221"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575578"
 ---
-# <a name="azure-batch-compute-node-environment-variables"></a>Azure proměnné prostředí výpočetních uzlů služby Batch
+# <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí modulu runtime služby Azure Batch
 
 [Služby Azure Batch](https://azure.microsoft.com/services/batch/) nastaví následující proměnné prostředí na výpočetních uzlech. Vám může odkazovat na tyto proměnné prostředí na příkazových řádcích úkolů a v aplikacích a spustit skripty těmito příkazovými řádky.
 
@@ -28,6 +28,12 @@ Další informace o použití proměnných prostředí pomocí služby Batch naj
 ## <a name="environment-variable-visibility"></a>Viditelnost proměnné prostředí
 
 Tyto proměnné prostředí jsou viditelné pouze v kontextu **uživatele úkolu**, uživatelský účet v uzlu, pod kterým je úkol spuštěn. *Neuvidíte je*, pokud se k výpočetnímu uzlu [vzdáleně připojíte](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) prostřednictvím protokolu RDP (Remote Desktop) nebo Secure Shell (SSH) a vypíšete si seznam proměnných prostředí. Je to proto, že uživatelský účet, který se používá pro vzdálené připojení, není stejný jako účet, který je používán úkolem.
+
+Chcete-li získat aktuální hodnotu proměnné prostředí, spusťte `cmd.exe` na Windows, na výpočetním uzlu nebo `/bin/sh` uzlu Linux:
+
+`cmd /c set <ENV_VARIABLE_NAME>`
+
+`/bin/sh printenv <ENV_VARIABLE_NAME>`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>Příkazový řádek rozšíření proměnných prostředí
 

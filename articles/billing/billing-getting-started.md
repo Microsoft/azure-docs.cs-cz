@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 146c74fe751e75fb85563378be6f812802928fe2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60919259"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918936"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -203,7 +203,7 @@ Prahové hodnoty SLA se liší podle služby. Například webová vrstva SQL má
 
 U některých služeb jsou požadavky pro smlouvu SLA k použití. Například virtuální počítače musí mít dva nebo víc instancí nasazených ve stejné sadě dostupnosti.
 
-Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/en-us/support/legal/sla/) dokumentaci a [shrnutí smluv SLA pro Azure services](https://azure.microsoft.com/en-us/support/legal/sla/summary/) dokumentaci.
+Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) dokumentaci a [shrnutí smluv SLA pro Azure services](https://azure.microsoft.com/support/legal/sla/summary/) dokumentaci.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

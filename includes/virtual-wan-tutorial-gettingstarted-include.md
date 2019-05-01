@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8a07136e78984f76355ade68dbeb926974513b0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: a5563d0bab76d11af895165a28fc0544864cfcd1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47004136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60460123"
 ---
 Na stránce **Sítě WAN** vyberte síť WAN, kterou jste vytvořili. V nabídce vlevo vyberte stránku **Začínáme**. Tato stránka zobrazuje pořadí, ve kterém byste měli vytvořit prostředky virtuální sítě WAN. K vytvoření funkční sítě WAN je potřeba dokončit kroky 1 až 4. Servery a centra můžete vytvořit v jakémkoli pořadí, protože na sobě nezávisejí. Servery a centra ale musíte mít vytvořené před jejich přidružením.
 

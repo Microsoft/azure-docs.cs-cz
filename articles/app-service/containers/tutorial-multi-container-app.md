@@ -1,7 +1,7 @@
 ---
 title: Vytvoření aplikace více kontejnerů ve službě Web App for Containers – Azure App Service
-description: Zjistěte, jak v Azure používat více kontejnerů s konfiguračními soubory Docker Compose a Kubernetes pomocí WordPressu a aplikace MySQL.
-keywords: azure app service, web app, linux, docker, compose, multicontainer, multi-container, web app for containers, multiple containers, container, kubernetes, wordpress, azure db for mysql, production database with containers
+description: Další informace o použití více kontejnerů v Azure pomocí Docker Compose, WordPress a MySQL.
+keywords: služby Azure app service, webové aplikace, od linuxu, docker a compose multicontainer, více kontejnerů, služby web app for containers, více kontejnerů, kontejner, wordpress, k azure db for mysql, provozní databáze s kontejnery
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -12,15 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: cd7edb576264ac8bb8a076bbb4b2970579056f13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4b3dc019b8d5a31986f4145d9dd2f7bd86bbb467
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767860"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920063"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (Preview) ve službě Web App for Containers
 
@@ -30,7 +29,6 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Převést konfiguraci Docker Compose tak, aby fungovala se službou Web App for Containers
-> * Převést konfiguraci Kubernetes tak, aby fungovala se službou Web App for Containers
 > * Nasadit vícekontejnerovou aplikaci do Azure
 > * Přidat nastavení aplikace
 > * Použít trvalé úložiště pro kontejnery
@@ -41,7 +39,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu musíte mít zkušenosti s [Docker Compose](https://docs.docker.com/compose/) nebo [Kubernetes](https://kubernetes.io/).
+K dokončení tohoto kurzu, budete potřebovat zkušenosti s [Docker Compose](https://docs.docker.com/compose/).
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -255,7 +253,7 @@ Další informace o proměnných prostředí, najdete v části [konfigurace pro
 
 ### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>Použití vlastní image pro MySQL SSL a jiné konfigurace
 
-Služba Azure Database for MySQL používá standardně protokol SSL. WordPress vyžaduje pro použití protokolu SSL s MySQL dodatečnou konfiguraci. „Oficiální image“ WordPressu tuto dodatečnou konfiguraci neobsahuje, ale pro vaše pohodlí je připravená [vlastní image](https://hub.docker.com/r/microsoft/multicontainerwordpress/builds/). V praxi byste požadované změny přidali do své vlastní image.
+Služba Azure Database for MySQL používá standardně protokol SSL. WordPress vyžaduje pro použití protokolu SSL s MySQL dodatečnou konfiguraci. WordPress "oficiální image" neposkytuje další konfiguraci, ale [vlastní image](https://github.com/Azure-Samples/multicontainerwordpress) připravili jsme pro vaše pohodlí. V praxi byste požadované změny přidali do své vlastní image.
 
 Tato vlastní image vychází z „oficiální image“ [WordPressu v Centru Dockeru](https://hub.docker.com/_/wordpress/). Pro službu Azure Database for MySQL byly v této vlastní imagi provedeny následující změny:
 
@@ -270,7 +268,7 @@ Následující změny byly provedeny pro Redis (bude použito později):
 * [Byl přidán modul plug-in Mezipaměť objektů Redis 1.3.8 pro WordPress.](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L74)
 * [V souboru wp-config.php WordPressu se používá nastavení aplikace pro název hostitele Redis](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L162).
 
-Abyste mohli tuto vlastní image použít, aktualizujete soubor docker-compose-wordpress.yml. Ve službě Cloud Shell otevřete textový editor nano zadáním příkazu `nano docker-compose-wordpress.yml`. `image: wordpress` změňte tak, aby se používalo `image: microsoft/multicontainerwordpress`. Kontejner databáze už nepotřebujete. Odeberte z konfiguračního souboru oddíly `db`, `environment`, `depends_on` a `volumes`. Soubor by měl připomínat následující kód:
+Abyste mohli tuto vlastní image použít, aktualizujete soubor docker-compose-wordpress.yml. Ve službě Cloud Shell otevřete textový editor nano zadáním příkazu `nano docker-compose-wordpress.yml`. `image: wordpress` změňte tak, aby se používalo `image: mcr.microsoft.com/azuredocs/multicontainerwordpress`. Kontejner databáze už nepotřebujete. Odeberte z konfiguračního souboru oddíly `db`, `environment`, `depends_on` a `volumes`. Soubor by měl připomínat následující kód:
 
 ```yaml
 version: '3.3'
@@ -404,7 +402,20 @@ Tato vlastní image vychází z „oficiální image“ [WordPressu v Centru Doc
 
 Přidejte kontejner Redis na konec konfiguračního souboru tak, aby vypadal jako v následujícím příkladu:
 
-[!code-yml[Main](../../../azure-app-service-multi-container/compose-wordpress.yml)]
+```yaml
+version: '3.3'
+
+services:
+   wordpress:
+     image: microsoft/multicontainerwordpress
+     ports:
+       - "8000:80"
+     restart: always
+
+   redis:
+     image: redis:3-alpine
+     restart: always
+```
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
@@ -459,7 +470,7 @@ Dokončete tento postup a nainstalujte WordPress.
 
 ### <a name="connect-wordpress-to-redis"></a>Připojení WordPressu k Redis
 
-Přihlaste se do správy WordPressu. V navigaci nalevo vyberte **Moduly plug-in** a pak vyberte **Nainstalované moduly plug-in**.
+Přihlaste se na správce WordPress. V navigaci nalevo vyberte **Moduly plug-in** a pak vyberte **Nainstalované moduly plug-in**.
 
 ![Výběr modulů plug-in pro WordPress][2]
 
@@ -482,172 +493,6 @@ WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav**
 ![WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav** připojení.][6]
 
 **Blahopřejeme**, připojili jste WordPress k Redis. Aplikace připravená do produkce teď používá službu **Azure Database for MySQL, trvalé úložiště a Redis**. Kapacitu plánu služby App Service teď můžete horizontálně navýšit na více instancí.
-
-## <a name="use-a-kubernetes-configuration-optional"></a>Použití konfigurace Kubernetes (volitelné)
-
-V tomto oddílu zjistíte, jak k nasazení několika kontejnerů použít konfiguraci Kubernetes. Nezapomeňte podle dřívějšího postupu vytvořit [skupinu prostředků](#create-a-resource-group) a [plán služby App Service](#create-an-azure-app-service-plan). Protože se většina těchto kroků podobá krokům v oddílu pro Docker Compose, nachystali jsme vám konfigurační soubor.
-
-### <a name="kubernetes-configuration-file"></a>Konfigurační soubor Kubernetes
-
-V této části kurzu použijete soubor *kubernetes-wordpress.yml*. Tady si ho můžete prohlédnout:
-
-[!code-yml[Main](../../../azure-app-service-multi-container/kubernetes-wordpress.yml)]
-
-Možnosti podporované konfigurace najdete v tématu [možnosti konfigurace Kubernetes](configure-custom-container.md#kubernetes-configuration-options)
-
-### <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
-
-Pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte v Azure Database for MySQL server.
-
-V následujícím příkazu nahraďte názvem vašeho serveru MySQL jedinečným  _&lt;názvem serveru mysql >_ zástupný symbol (platné znaky jsou `a-z`, `0-9`, a `-`). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
-
-```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
-```
-
-Po vytvoření serveru MySQL se ve službě Cloud Shell zobrazí podobné informace jako v následujícím příkladu:
-
-```json
-{
-  "administratorLogin": "adminuser",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql-server-name>.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>",
-  "location": "southcentralus",
-  "name": "<mysql-server-name>",
-  "resourceGroup": "myResourceGroup",
-  ...
-}
-```
-
-### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
-
-Pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure.
-
-```azurecli-interactive
-az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
-
-> [!TIP]
-> Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
->
-
-### <a name="create-the-wordpress-database"></a>Vytvoření databáze WordPressu
-
-Pokud jste to ještě neudělali, vytvořte [server Azure Database for MySQL](#create-an-azure-database-for-mysql-server).
-
-```azurecli-interactive
-az mysql db create --resource-group myResourceGroup --server-name <mysql-server-name> --name wordpress
-```
-
-Po vytvoření databáze se ve službě Cloud Shell zobrazí podobné informace jako v následujícím příkladu:
-
-```json
-{
-  "additionalProperties": {},
-  "charset": "latin1",
-  "collation": "latin1_swedish_ci",
-  "id": "/subscriptions/12db1644-4b12-4cab-ba54-8ba2f2822c1f/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>/databases/wordpress",
-  "name": "wordpress",
-  "resourceGroup": "myResourceGroup",
-  "type": "Microsoft.DBforMySQL/servers/databases"
-}
-```
-
-### <a name="create-a-multi-container-app-kubernetes"></a>Vytvoření vícekontejnerové aplikace (Kubernetes)
-
-Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) ve skupině prostředků `myResourceGroup` a v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit  _\<název aplikace >_ s jedinečným názvem aplikace.
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml
-```
-
-Po vytvoření webové aplikace se ve službě Cloud Shell zobrazí podobný výstup jako v následujícímu příkladu:
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="configure-database-variables-in-wordpress"></a>Konfigurace proměnných databáze ve WordPressu
-
-Aplikaci WordPress připojíte k tomuto novému serveru MySQL tak, že nakonfigurujete několik proměnných prostředí specifických pro WordPress. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
-```
-
-Po vytvoření nastavení aplikace se ve službě Cloud Shell zobrazí podobné informace jako v následujícím příkladu:
-
-```json
-[
-  {
-    "name": "WORDPRESS_DB_HOST",
-    "slotSetting": false,
-    "value": "<mysql-server-name>.mysql.database.azure.com"
-  },
-  {
-    "name": "WORDPRESS_DB_USER",
-    "slotSetting": false,
-    "value": "adminuser@<mysql-server-name>"
-  },
-  {
-    "name": "WORDPRESS_DB_NAME",
-    "slotSetting": false,
-    "value": "wordpress"
-  },
-  {
-    "name": "WORDPRESS_DB_PASSWORD",
-    "slotSetting": false,
-    "value": "My5up3rStr0ngPaSw0rd!"
-  }
-]
-```
-
-### <a name="add-persistent-storage"></a>Přidání trvalého úložiště
-
-Ve více kontejnerech se teď provozuje služba Web App for Containers. Tato data se při restartování vymažou, protože soubory se nezachovají. V této části budete [přidání trvalého úložiště](configure-custom-container.md#use-persistent-shared-storage) do kontejneru WordPress.
-
-### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
-
-Kvůli použití trvalého úložiště povolíte ve službě App Service toto nastavení. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
-```
-
-Po vytvoření nastavení aplikace se ve službě Cloud Shell zobrazí podobné informace jako v následujícím příkladu:
-
-```json
-[
-  {
-    "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
-    "slotSetting": false,
-    "value": "TRUE"
-  }
-]
-```
-
-### <a name="browse-to-the-app"></a>Přechod do aplikace
-
-Přejděte do nasazené aplikace na adrese `http://<app-name>.azurewebsites.net`.
-
-Aplikace teď používá několik kontejnerů ve službě Web App for Containers.
-
-![Ukázková vícekontejnerová aplikace ve službě Web App for Containers][1]
-
-**Blahopřejeme**, vytvořili jste vícekontejnerovou aplikaci ve službě Web App for Containers.
-
-Pokud chcete použít Redis, použijte postup v části [Připojení WordPressu k Redis](#connect-wordpress-to-redis).
 
 ## <a name="find-docker-container-logs"></a>Nalezení protokolů kontejneru Dockeru
 
@@ -676,7 +521,6 @@ Můžete si prohlédnout protokoly pro jednotlivé kontejnery a další protokol
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Převést konfiguraci Docker Compose tak, aby fungovala se službou Web App for Containers
-> * Převést konfiguraci Kubernetes tak, aby fungovala se službou Web App for Containers
 > * Nasadit vícekontejnerovou aplikaci do Azure
 > * Přidat nastavení aplikace
 > * Použít trvalé úložiště pro kontejnery

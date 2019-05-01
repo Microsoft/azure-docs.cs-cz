@@ -1,6 +1,6 @@
 ---
-title: Zařízení Azure, místním prostředí a fyzické zabezpečení | Dokumentace Microsoftu
-description: Tento článek popisuje datacentra Azure, včetně fyzické infrastruktury, zabezpečení a dodržování předpisů nabídky.
+title: Fyzické zabezpečení datových center Azure – Microsoft Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, co společnost Microsoft k zabezpečení datacentra Azure, včetně nabídek fyzické infrastruktury, zabezpečení a dodržování předpisů.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1b95695de809668987ebb6ef6720a3751205171
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586781"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939832"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Zařízení Azure, místním prostředí a fyzické zabezpečení
+Tento článek popisuje, co společnost Microsoft pro zabezpečení infrastruktury Azure.
+
+## <a name="datacenter-infrastructure"></a>Infrastruktury datového centra
 Azure se skládá z [infrastruktury globálně distribuovaných datacenter](https://azure.microsoft.com/global-infrastructure/), podporuje tisíce služeb online services a pokrývající více než 100 vysoce zabezpečenými zařízeními po celém světě.
 
-Infrastruktura slouží k používání dostaly blíž k uživatelům po celém světě, zachovává rezidenci dat a nabízí komplexní možnosti dodržování předpisů a odolnost proti chybám pro zákazníky. Azure má 52 oblastí po celém světě a je dostupná ve 140 zemích.
+Infrastruktura slouží k používání dostaly blíž k uživatelům po celém světě, zachovává rezidenci dat a nabízí komplexní možnosti dodržování předpisů a odolnost proti chybám pro zákazníky. Azure má 52 oblastí po celém světě a je dostupná ve 140 zemích nebo oblastech.
 
 Oblast je sada datových center, která je propojena prostřednictvím sítě masivní a odolná proti selháním. Síť obsahuje ve výchozím nastavení distribuce obsahu, Vyrovnávání zatížení, redundance a šifrování. S víc globálních oblastí než jakýkoli jiný poskytovatel cloudu Azure poskytuje flexibilitu při nasazování aplikací kdy je potřebujete.
 
@@ -67,9 +70,9 @@ Společnost Microsoft používá nejlepší postup postupy a wiping řešení, k
 Při systému ukončení životnosti technologie provozní pracovníci společnosti Microsoft podle přísné daty a postupy vyřazení hardwaru, aby zajistil, že hardware, který obsahuje vaše data není k dispozici nedůvěryhodní. Přístup založený na zabezpečené vymazání používáme pro pevné disky, které ho podporují. Pevné disky, které není možné vymazat používáme zničení proces, který zničí jednotky a vykreslí obnovení informace nemožné. Tento proces odstranění může být rozpadnout, odstranění, pulverize nebo spalování. Určíme znamená vyřazení podle typu prostředku. Budeme uchovávat záznamy zničení. Všechny služby Azure pomocí služby správy úložiště a odstraňování schválené média.
 
 ## <a name="compliance"></a>Dodržování předpisů
-Jsme návrhu a správě infrastruktury Azure pro splnění širokou škálu dodržování předpisů mezinárodní a oborové standardy, jako jsou ISO 27001, HIPAA, FedRAMP, SOC 1 a SOC 2. Také plníme standardy specifické pro zemi, třeba irap (Austrálie), hodnocení G-Cloud a Singapur MTCS. Přísné audity třetích stran, jako je například bsi British Standards Institute ověřte splňuje striktní bezpečnostní opatření vyžadovaná těmito standardy.
+Jsme návrhu a správě infrastruktury Azure pro splnění širokou škálu dodržování předpisů mezinárodní a oborové standardy, jako jsou ISO 27001, HIPAA, FedRAMP, SOC 1 a SOC 2. Také plníme standardy, konkrétní zemi nebo oblast, třeba irap (Austrálie), hodnocení G-Cloud a Singapur MTCS. Přísné audity třetích stran, jako je například bsi British Standards Institute ověřte splňuje striktní bezpečnostní opatření vyžadovaná těmito standardy.
 
-Úplný seznam, které Azure dodržuje standardy pro dodržování předpisů, najdete v článku [nabídek dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings). 
+Úplný seznam, které Azure dodržuje standardy pro dodržování předpisů, najdete v článku [nabídek dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o co společnost Microsoft k zajištění infrastruktury Azure, najdete v tématech:

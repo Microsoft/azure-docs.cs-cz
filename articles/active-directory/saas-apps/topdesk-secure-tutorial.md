@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a559191bb4e84b3b60529bf20a25e381c72f42a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 845ca13bdd8e3677f559bac373efa078f3b951be
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840932"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Integrace Azure Active Directory s TOPdesk – zabezpečení
 
@@ -180,7 +180,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TOPdesk – zabezpečení, 
 
     b. K nahrání souboru certifikátu v části **certifikátu (RSA)**, klikněte na tlačítko **Procházet**.
 
-    c. Pro **privátní klíč (RSA, PKCS8, kódování DER)**, můžete nahrát vlastní privátní klíč, nebo můžete kontaktovat [TOPdesk - tým podpory zabezpečení klienta](http://www.topdesk.com/us/support) získat soukromý klíč.
+    c. Pro **privátní klíč (RSA, PKCS8, kódování DER)**, můžete nahrát vlastní privátní klíč, nebo můžete kontaktovat [TOPdesk - tým podpory zabezpečení klienta](https://www.topdesk.com/us/support) získat soukromý klíč.
 
     d. Nahrát soubor loga jste získali v části z na tým podpory TOPdesk **ikona loga**, klikněte na tlačítko **Procházet**.
 

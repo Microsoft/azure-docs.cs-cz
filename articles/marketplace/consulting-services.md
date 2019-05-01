@@ -2,24 +2,17 @@
 title: Azure Marketplace a AppSource konzultační služby
 description: Tento článek popisuje kritéria a publikování požadavky pro nové nabídky konzultační služby na webu Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
-manager: nuno costa
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121127"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938314"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytuje partnerů Microsoftu, cíl připojení zákazníků služby na podporu a rozšiřují jejich používání Azure a obchodních cílů. 
@@ -48,7 +41,7 @@ Nabídky služeb, které jsou založeny na Microsoft Dynamics 365, Office 365 a 
 > [!TIP]
 > Pokud chcete publikovat webu Azure Marketplace z prodejních míst, provedete výběr zvolením "Azure" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu. Chcete-li publikovat na webu AppSource, bude zařaďte tuto volbu výběrem "Dynamics 365," "Power BI" nebo "Powerapps" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu.
 
-## <a name="eligible-partners-and-supported-countries"></a>Pro partnery s nárokem a podporované země
+## <a name="eligible-partners-and-supported-countriesregions"></a>Pro partnery s nárokem a podporované země/oblasti
 
 Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslušné oblasti pro příslušnou službu. 
 
@@ -74,9 +67,9 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 <b> Další informace najdete v tématu [činnost prostřednictvím programu Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
  
 
-**Partnerů SI můžete odesílat nabídky konzultační služby pro následující 18 země**
+**Partnerů SI můžete odesílat nabídky konzultační služby pro následující 18 země/oblasti**
 
-|Oprávněné země |   |   |   |
+|Oprávněné země/oblasti |   |   |   |
 |---------|----------|----------|----------|
 |Austrálie |Francie  |     Mexiko          |Španělsko       |
 |Belgie   |Německo |     Nizozemsko     |Švédsko       |
@@ -84,7 +77,7 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 |Dánsko   |Itálie   |     Norsko          |Spojené státy |
 |Finsko   |Japonsko   |     Polsko          
 
-Konzultační služby na trh bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálie. Katalogy pro jiné země, bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
+Konzultační služby na trh bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálie. Katalogy pro ostatní země/oblasti bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak se zaregistrovat pro konzultační služby v Azure Marketplace a AppSource
 Začněte tím, že [registrace](https://azuremarketplace.microsoft.com/sell/signup) údaje o společnosti na webu Marketplace. Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
@@ -124,7 +117,7 @@ Výpis nabídkou konzultační služby na Azure Marketplace a AppSource zahrnuje
 3. **Odeslat**: Zadejte požadované informace, který je uvedený v pokynech. Veškerý obsah a podpůrné materiály musí odesílat v angličtině. 
 4. **Kontrola**: Náš tým uvádění na trh a redakční kontroly váš příspěvek a optimalizuje pro lepší čitelnost, gramatiky a efektivitu. 
 5. **Pracovní**: Váš příspěvek je připraven k revizi. 
-6. **Publikování**: Pokud jste s Microsoftem jste spokojeni s připravený obsah nezkontroloval, váš výpis je připravený k publikování na webu marketplace. Datum pro uvedení do provozu pro výpis závisí na zemi, který je zadán v rámci vaší nabídky. Pokud už je katalog pro vybranou zemi živé na Azure Marketplace nebo AppSource, během pár hodin se zobrazí výpis. Výpis v opačném případě se zobrazí, jakmile uvedete v katalogu.
+6. **Publikování**: Pokud jste s Microsoftem jste spokojeni s připravený obsah nezkontroloval, váš výpis je připravený k publikování na webu marketplace. Datum pro uvedení do provozu pro výpis závisí na zemi nebo oblast, který je zadán v rámci vaší nabídky. Pokud na Azure Marketplace nebo AppSource už zprovozněném katalogu pro vybranou zemi nebo oblast, váš výpis zobrazí během pár hodin. Výpis v opačném případě se zobrazí, jakmile uvedete v katalogu.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>: Výpisy nabídek a kritéria obsahu kontroly
 Nabídky musí být jeden z následujících pět typů (můžete zobrazit seznam více než jeden): 

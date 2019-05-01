@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 033740d1ae75bb6f6fe8509d9ad123d55d9c6770
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250509"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705002"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol pro jednotné přihlašování – SAML
 
@@ -90,7 +90,7 @@ Pokud `NameIDPolicy` je k dispozici, můžete zahrnout jeho volitelné `Format` 
 Azure AD, ignoruje `AllowCreate` atribut.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` Prvek určuje požadované ověřovací metody. Zadání je volitelné v `AuthnRequest` prvky posílá službě Azure AD. Azure AD podporuje pouze jeden `AuthnContextClassRef` hodnota: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
+`RequestedAuthnContext` Prvek určuje požadované ověřovací metody. Zadání je volitelné v `AuthnRequest` prvky posílá službě Azure AD. Azure AD podporuje `AuthnContextClassRef` hodnoty jako `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
 
 ### <a name="scoping"></a>Vytváření oborů
 `Scoping` Element, který obsahuje seznam zprostředkovatelů identity, je v volitelné `AuthnRequest` prvky posílá službě Azure AD.

@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat do vaší aplikace Microsoft Azure Data Box přes SMB | Dokumentace Microsoftu
+title: Kurz ke kopírování dat prostřednictvím protokolu SMB v Azure Data Box | Dokumentace Microsoftu
 description: Zjistěte, jak kopírovat data do Azure Data Box prostřednictvím protokolu SMB
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04f7710d95f5ce7a2b6195383c2737ff3b1fbf04
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466184"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925553"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
@@ -41,8 +41,8 @@ Než začnete, ujistěte se, že:
 
 Založené na vybraný účet úložiště, zařízení Data Box vytvoří až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
-- Jedna sdílená složka pro premium storage. 
-- Jedna sdílená složka pro účet služby blob storage. 
+- Jedna sdílená složka pro premium storage.
+- Jedna sdílená složka pro účet služby blob storage.
 
 Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou entitami první úrovně kontejnery a entitami druhé úrovně objekty blob. Ve sdílených složkách souborů Azure jsou entitami první úrovně sdílené složky a entitami druhé úrovně soubory.
 
@@ -91,7 +91,7 @@ Pokud používáte počítač s Windows serverem hostitele, postupujte podle tě
 
     **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data odesílají jako objekty BLOB. Nelze kopírovat soubory přímo do *kořenové* složky v účtu úložiště.
     
-Použití klienta systému Linux, pomocí následujícího příkazu připojte sdílenou složku SMB. Parametr "ver" níže je verze protokolu SMB, která podporuje hostitele se systémem Linux. Zařaďte příslušnou verzi v následujícím příkazu. Pro verze protokolu SMB, že zařízení Data Box podporuje viz [podporované souborové systémy pro klienty Linux](https://docs.microsoft.com/en-us/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+Použití klienta systému Linux, pomocí následujícího příkazu připojte sdílenou složku SMB. Parametr "ver" níže je verze protokolu SMB, která podporuje hostitele se systémem Linux. Zařaďte příslušnou verzi v následujícím příkazu. Pro verze protokolu SMB, že zařízení Data Box podporuje viz [podporované souborové systémy pro klienty Linux](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
     
@@ -132,7 +132,7 @@ Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data. Ke
 |/z    | Zkopíruje soubory v režimu restartování. Tuto možnost použijte v případě, že je prostředí nestabilní. Tato možnost snižuje propustnost kvůli dodatečnému protokolování.      |
 | /zb     | Použije režim restartování. Pokud se přístup odepře, použije tato možnost režim zálohování. Tato možnost snižuje propustnost kvůli vytváření kontrolních bodů.         |
 |/efsraw     | Zkopíruje všechny zašifrované soubory v režimu nezpracovaného systému souborů EFS. Tuto možnost použijte pouze u zašifrovaných souborů.         |
-|log+:<LogFile>| Připojí výstup k existujícímu souboru protokolu.|    
+|protokol +:\<soubor_protokolu >| Připojí výstup k existujícímu souboru protokolu.|    
  
 Následující příklad ukazuje výstup příkazu robocopy, který slouží ke kopírování souborů do Data Boxu.
     

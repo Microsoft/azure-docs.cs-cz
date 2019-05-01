@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b80177d17e0dc5a4e54396907ecee61890ec523f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466749"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709874"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -165,26 +165,7 @@ az aks create \
     --client-secret <password>
 ```
 
-## <a name="associate-network-resources-with-the-node-subnet"></a>Přidružit podsíť uzel síťových prostředků
-
-Při vytváření clusteru AKS, se vytvoří tabulky skupiny a postupu zabezpečení sítě. Tyto síťové prostředky jsou spravována rovina řízení AKS a aktualizovat, protože můžete vytvořit tak a zpřístupnit služby. Přidružte síťové zabezpečení skupiny a směrovací tabulky podsítě vaší virtuální sítě následujícím způsobem:
-
-```azurecli-interactive
-# Get the MC_ resource group for the AKS cluster resources
-MC_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-
-# Get the route table for the cluster
-ROUTE_TABLE=$(az network route-table list -g ${MC_RESOURCE_GROUP} --query "[].id | [0]" -o tsv)
-
-# Get the network security group
-NODE_NSG=$(az network nsg list -g ${MC_RESOURCE_GROUP} --query "[].id | [0]" -o tsv)
-
-# Update the subnet to associate the route table and network security group
-az network vnet subnet update \
-    --route-table $ROUTE_TABLE \
-    --network-security-group $NODE_NSG \
-    --ids $SUBNET_ID
-```
+Při vytváření clusteru AKS, se vytvoří tabulky skupiny a postupu zabezpečení sítě. Rovina řízení AKS spravuje tyto síťové prostředky. Skupina zabezpečení sítě se automaticky přidruží virtuální síťové karty na svých uzlech. Směrovací tabulka je automaticky přiřazen k podsíti virtuální sítě. Pravidla skupiny zabezpečení sítě a směrovací tabulky a jsou automaticky aktualizovat, protože můžete vytvořit tak a zpřístupnit služby.
 
 ## <a name="next-steps"></a>Další postup
 

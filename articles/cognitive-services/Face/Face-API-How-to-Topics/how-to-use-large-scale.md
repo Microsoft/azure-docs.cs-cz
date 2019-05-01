@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 2d96a04b1287033999dd5f026dd7d8d017259eb4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 52631d0b25527d204baa11a90401b60e437137a0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859042"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691044"
 ---
 # <a name="example-how-to-use-the-large-scale-feature"></a>Příklad: Jak používat funkci ve velkém měřítku
 
@@ -37,7 +37,7 @@ Nevýhodou však je, že dokud se trénink ve velkém měřítku nedokončí, no
 
 ## <a name="concepts"></a>Koncepty
 
-Pokud jsou pro vás následující koncepty v tomto průvodci novinka, najdete jejich definice v [glosáři](../Glossary.md):
+Měli byste se seznámit s následující koncepty před od dané chvíle:
 
 - LargePersonGroup: Kolekce osob s kapacitou až 1 000 000.
 - LargeFaceList: V kolekci tváří s kapacitou až 1 000 000.
@@ -226,14 +226,14 @@ Odhadovanou dobu trénování najdete podle měřítka v následující tabulce:
 
 Pokud chcete funkce velkého měřítka lépe využít, doporučujeme zvážit některé z následujících strategií.
 
-## <a name="step-31-customize-time-interval"></a>Krok 3.1: Upravit časový Interval
+## <a name="step-31-customize-time-interval"></a>Krok 3.1: Upravit časový interval
 
 Jak je vidět v příkazu `TrainLargeFaceList()`, existuje parametr `timeIntervalInMilliseconds`, který odloží nekončící ověřování stavu trénování.
 U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady.
 Časový interval byste měli přizpůsobit podle očekávané kapacity kolekce LargeFaceList.
 
 Stejná strategie platí taky u kolekce LargePersonGroup.
-Když například trénujete kolekci LargePersonGroup s 1 000 000 osob, parametr `timeIntervalInMilliseconds` by mohl mít hodnotu 60 000 (tedy jednominutový interval).
+Například při školení LargePersonGroup s 1 000 000 osob `timeIntervalInMilliseconds` může být 60 000 (interval 1 minuta).
 
 ## <a name="step-32-small-scale-buffer"></a>Krok 3.2 Malá vyrovnávací paměť
 
@@ -251,7 +251,7 @@ Příklad pracovního postupu:
 1. Když se bude velikost kolekce vyrovnávací paměti blížit prahové hodnotě nebo když bude systém nečinný, vytvořte novou vyrovnávací paměť a spusťte trénování hlavní kolekce.
 1. Po dokončení trénování hlavní kolekce kolekci vyrovnávací paměti odstraňte.
 
-## <a name="step-33-standalone-training"></a>Krok 3.3 Samostatné trénování
+## <a name="step-33-standalone-training"></a>Krok 3.3 samostatné školení
 
 Pokud je poměrně dlouhá latence přijatelná, není nutné trénování spouštět ihned po přidání nových dat.
 Místo toho můžete operaci Train oddělit od hlavní logiky a spouštět ji pravidelně.
@@ -296,7 +296,9 @@ V tomto článku jste se naučili, jak migrovat existující kód (ne data) kole
 - Kolekce LargePersonGroup a LargeFaceList fungují podobně jako kolekce PersonGroup a FaceList, ale kolekce LargeFaceList vyžaduje operaci Train.
 - Dynamická aktualizace dat vyžaduje u rozsáhlých datových sad vhodnou strategii.
 
-## <a name="related-topics"></a>Související témata
+## <a name="next-steps"></a>Další postup
 
-- [Postup identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)
+Použijte postupy příručku a zjistěte, jak přidat tváří jeden objekt PersonGroup nebo provedení operace identifikovat na jeden objekt PersonGroup.
+
 - [Postup přidání tváří](how-to-add-faces.md)
+- [Postup identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60931755"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922787"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslat data protokolu pro monitorování Azure pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odeslání dat protokolů do Azure monitoru z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na autorizaci pomocí Azure monitoru.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -476,7 +476,7 @@ Rozhraní API kolekce dat by měl zahrnovat většinu, které potřebujete ke sh
 
 | Alternativní | Popis | Vyhovuje |
 |---|---|---|
-| [Vlastní události](https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Nativní ingestování založené na sadě SDK ve službě Application Insights | Application Insights, obvykle instrumentována prostřednictvím sady SDK v rámci vaší aplikace, nabízí možnost odesílat vlastní data prostřednictvím vlastních událostí. | <ul><li> Data, která je generována v rámci vaší aplikace, ale není vyzvednou SDK prostřednictvím jednoho z výchozí datové typy (ie: požadavky, závislosti, výjimky, atd.).</li><li> Data, která jsou nejčastěji korelována dalších dat aplikací ve službě Application Insights </li></ul> |
+| [Vlastní události](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Nativní ingestování založené na sadě SDK ve službě Application Insights | Application Insights, obvykle instrumentována prostřednictvím sady SDK v rámci vaší aplikace, nabízí možnost odesílat vlastní data prostřednictvím vlastních událostí. | <ul><li> Data, která je generována v rámci vaší aplikace, ale není vyzvednou SDK prostřednictvím jednoho z výchozí datové typy (ie: požadavky, závislosti, výjimky, atd.).</li><li> Data, která jsou nejčastěji korelována dalších dat aplikací ve službě Application Insights </li></ul> |
 | [Rozhraní API kolekce dat](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) v protokoly Azure monitoru | Rozhraní API kolekce dat v protokolech Azure Monitor je zcela otevřený způsob, jak ingestovat data. Zde nelze odesílat žádná data formátovaná v objektu JSON. Po odeslání se zpracuje a k dispozici v protokolech se korelují s další data v protokolech nebo proti jiné Application Insights data. <br/><br/> To je poměrně snadné nahrát data jako soubory do objektu blob Azure Blob z kde se tyto soubory zpracovat a nahrát do služby Log Analytics. Podrobnosti najdete na [to](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) článek ukázku implementace takových kanálu. | <ul><li> Data, která není nutně vygenerované v rámci aplikace instrumentovány v rámci Application Insights.</li><li> Příklady vyhledávání a skutečnosti, tabulky, referenční data, předem agregovaných statistik, atd. </li><li> Určená pro data, která bude křížovými odkazy na jiná data monitorování Azure (například Application Insights, jiné protokoly datové typy, Security Center, monitorování Azure pro kontejnery nebo virtuální počítače a tak dál). </li></ul> |
 | [Průzkumník dat Azure](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Průzkumník Azure dat (ADX) je datová platforma, která je základem Application Insights Analytics a monitorování protokolů Azure. Nyní obecně dostupná ("GA"), platformě data v nezpracované podobě poskytuje úplnou flexibilitu (ale vyžadující režii správy) v clusteru (RBAC, míra uchování, schéma, atd.). ADX poskytuje mnoho [možnosti ingestování](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) včetně [CSV, TSV a JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) soubory. | <ul><li> Data, která nebude korelují s jinými daty v rámci Application Insights nebo protokoly. </li><li> Data vyžadující advanced ingestování nebo zpracování funkce není ještě dnes k dispozici v protokolech monitorování Azure. </li></ul> |
 

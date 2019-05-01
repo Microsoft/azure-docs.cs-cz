@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f19d193bef718bd4ad3d98f2112a7e705051b729
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852699"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920068"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -112,7 +112,7 @@ S jednou aplikací jeden nasazovací slot v jejich plán služby App Service moh
 
 Při nastavení haldy ladění aplikace, projděte si podrobnosti vašeho plánu služby App Service a vezměte v úvahu více aplikací a slot nasazení je potřeba najít optimální přidělení paměti.
 
-Pokud nasazujete aplikaci JAR, by měly být pojmenovány `app.jar` tak, aby integrované image můžete správně identifikují vaši aplikaci. (Modul plug-in Maven nemá tomto přejmenování automaticky.) Pokud nechcete, aby přejmenovat váš soubor JAR pro `app.jar`, můžete nahrát skript prostředí pomocí příkazu Spustit váš soubor JAR. Vložte úplnou cestu pro tento skript [spouštěcí soubor](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) textového pole v části konfigurace na portálu.
+Pokud nasazujete aplikaci JAR, by měly být pojmenovány `app.jar` tak, aby integrované image můžete správně identifikují vaši aplikaci. (Modul plug-in Maven nemá tomto přejmenování automaticky.) Pokud nechcete, aby přejmenovat váš soubor JAR pro `app.jar`, můžete nahrát skript prostředí pomocí příkazu Spustit váš soubor JAR. Vložte úplnou cestu pro tento skript [spouštěcí soubor](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) textového pole v části konfigurace na portálu.
 
 ### <a name="turn-on-web-sockets"></a>Zapnout webové sokety
 

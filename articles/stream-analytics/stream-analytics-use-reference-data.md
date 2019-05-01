@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761484"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573637"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Například ve scénáři IoT může ukládají metadata o senzorů (které se nemění často) v referenčních dat a připojte ho s datovými proudy IoT reálném čase. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. 
@@ -49,7 +49,7 @@ Pokud referenční data se neočekává změna, podporu pro statická referenčn
 
 Pokud referenční data jsou pomalu se měnící datové sady, podporu pro aktualizaci odkaz, který je povolené rozhraní data tak, že zadáte vzor cesty ve vstupní konfiguraci pomocí {date} a {time} nahrazování tokenů. Stream Analytics převezme definice aktualizovaná referenční data, založené na tento vzor cesty. Například vzor `sample/{date}/{time}/products.csv` s formátem data **"Rrrr-MM-DD"** a formát času **"HH mm"** dává pokyn Stream Analytics ke sbírání aktualizované blob `sample/2015-04-16/17-30/products.csv` v 17:30:00 na 16. dubna , Časové pásmo UTC 2015.
 
-Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace referenčních dat v minutových intervalech.
+Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace referenčních dat v minutových intervalech. Pokud se objekt blob se časové razítko 10:30:00 odešle s chvíli trvat (například 10:30:30), všimnete si chvíli trvat v úloze Stream Analytics odkazující na tento objekt blob. Aby se zabránilo takové scénáře, se doporučuje k nahrání objektu blob dříve, než cílový čas efektivní (10: 30:00 v tomto příkladu) vyhradit dostatek času na úlohu Stream Analytics, zjišťovat a načíst do paměti a provádět operace. 
 
 > [!NOTE]
 > Aktuálně úlohy Stream Analytics vyhledejte aktualizace objektů blob jenom v případě, že čas počítače přejde do doby kódovaný v názvu objektu blob. Například bude hledat úlohy `sample/2015-04-16/17-30/products.csv` ihned poté, co možná, ale ne starší než 17:30:00 na 16. dubna 2015 UTC časové pásmo. Bude *nikdy* vyhledejte objekt blob s kódováním časem starší než poslední z nich, který je zjištěn.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60851149"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919977"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -136,7 +136,7 @@ Přidáte název úplnou bitovou kopii, včetně adresy URL privátního registr
 
 **Můžete zpřístupnit více než jeden port ve své vlastní image kontejneru?**
 
-Aktuálně nepodporujeme, vystavení více než jeden port.
+Nepodporujeme vystavení více než jeden port.
 
 **Můžete použít vlastní úložiště?**
 
@@ -154,11 +154,11 @@ Máme Automatická detekce portu. Můžete také určit aplikaci názvem *WEBSIT
 
 Ne, se stará platforma a ukončení HTTPS na sdílené front-endů.
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Více kontejnerů pomocí Docker Compose a Kubernetes
+## <a name="multi-container-with-docker-compose"></a>Více kontejnerů pomocí Docker Compose
 
 **Jak konfigurovat Azure Container Registry (ACR) pro použití s více kontejnerů?**
 
-Chcete-li použít služby ACR s více kontejnerů, **všech imagí kontejneru** musí být hostované na stejném serveru registru ACR. Poté, co jsou na stejném serveru registru, je potřeba vytvořit nastavení aplikace a pak aktualizovat konfigurační soubor Docker Compose nebo Kubernetes pro vložení názvu image ACR.
+Chcete-li použít služby ACR s více kontejnerů, **všech imagí kontejneru** musí být hostované na stejném serveru registru ACR. Poté, co jsou na stejném serveru registru, je potřeba vytvořit nastavení aplikace a pak aktualizovat konfigurační soubor Docker Compose pro vložení názvu image ACR.
 
 Vytvořte následující nastavení aplikace:
 

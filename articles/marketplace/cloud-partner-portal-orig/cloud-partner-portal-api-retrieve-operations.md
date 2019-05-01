@@ -1,25 +1,18 @@
 ---
-title: Načtení operací rozhraní API | Dokumentace Microsoftu
+title: Načtení operací rozhraní API | Azure Marketplace
 description: Načte všechny operace týkající se nabídky nebo na konkrétní operace pro zadané ID operace get elementu.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61094199"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935784"
 ---
 <a name="retrieve-operations"></a>Načtení operací
 ===================

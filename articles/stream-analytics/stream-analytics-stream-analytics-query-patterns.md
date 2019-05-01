@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef302ecaa6defc6ac0dc1dd58d4f8acc0f2fd263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001746"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711451"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
 
@@ -493,7 +493,7 @@ Například vygenerují událost každých 5 sekund, který bude hlásit nedávn
 
 **Vstup**:
 
-| t | hodnota |
+| t | value |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -537,7 +537,7 @@ Například ve scénáři IoT pro domácí trouby musí být vygenerována výst
 
 **Vstup**:
 
-| time | deviceId | sensorName | hodnota |
+| time | deviceId | sensorName | value |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -605,7 +605,7 @@ WHERE
 **Vysvětlení**: První dotaz `max_power_during_last_3_mins`, používá [posuvné okno](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) k nalezení maximální hodnoty pro každé zařízení, snímače power během posledních 3 minut. Druhý dotaz je připojen k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A potom, pokud jsou splněny podmínky, vygeneruje se výstraha pro zařízení.
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Příklad dotazu: Zpracování událostí, které jsou nezávislé na zařízení hodin zkreslit (substreams)
-**Popis**: Události můžete dorazí pozdě nebo mimo pořadí kvůli časovým nepřesnostem mezi producentů událostí, zkosí hodin mezi oddíly nebo latence sítě. V následujícím příkladu je deset sekund za TollID 1 hodiny zařízení TollID 2 a zařízení účtovat poplatky za TollID 3 je pět sekund za TollID 1. 
+**Popis**: Události můžete dorazí pozdě nebo mimo pořadí kvůli časovým nepřesnostem mezi producentů událostí, zkosí hodin mezi oddíly nebo latence sítě. V následujícím příkladu je pět sekund za TollID 1 hodiny zařízení TollID 2 a zařízení účtovat poplatky za TollID 3 je deset sekund za TollID 1. 
 
 
 **Vstup**:

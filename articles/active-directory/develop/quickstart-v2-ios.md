@@ -1,6 +1,6 @@
 ---
 title: Rychlý start Microsoft identity platform iOS | Azure
-description: Zjistěte, jak přihlašovat uživatele a dotazovat Microsoft Graph v nativní aplikaci pro iOS.
+description: Zjistěte, jak přihlásit uživatele a dotazů Microsoft Graphu v aplikaci iOS.
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/18/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32cc373421e6b04737f40dc987b10c6ace858e17
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298811"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937339"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z nativních aplikací pro iOS
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -32,101 +32,130 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 
 ![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-ios/ios-intro.svg)
 
+> [!NOTE]
+> **Požadavky**
+> * XCode 10 +
+> * iOS 10+ 
+
 > [!div renderon="docs"]
-> ## <a name="register-and-download"></a>Registrace a stažení
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Zaregistrujte si a nakonfigurujte svoji aplikaci a vzorový kód
+> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
+> Aplikaci pro rychlý start můžete spustit dvěma způsoby:
+> * [Express] [Možnost 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ruční] [Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
-> Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
-> 1. Abyste mohli zaregistrovat aplikaci, přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.
-> 1. Zkontrolujte, že není zaškrtnuté políčko **Guided Setup** (Instalační program s asistencí) a vyberte **Create** (Vytvořit).
-> 1. Vyberte **Add Platform** (Přidat platformu), **Native Application** (Nativní aplikace) a pak **Save** (Uložit).
+> Registrace vaší aplikace
+> 1. Přejděte k novému [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) podokně.
+> 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
+> 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
+>
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
+>
+> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://aka.ms/MobileAppReg) stránky.
+> 1. Vyberte **registrace nové**.
+> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
+>      - V **název** části, zadejte název smysluplné aplikace, který bude zobrazen uživatelům aplikace při přihlášení nebo souhlas s vaší aplikace, například `iOSQuickstart`.
+>      - Přeskočte další konfigurace na této stránce. 
+>      - Klikněte `Register` tlačítko.
+> 1. Klikněte na novou aplikaci > přejděte na `Authentication`  >  `Add Platform`  >  `iOS`.    
+>      - Zadejte ***identifikátor sady prostředků*** pro vaši aplikaci. 
+> 1. Vyberte `Configure` a uložit ***MSAL konfigurace*** podrobnosti pro pozdější. 
 
 > [!div renderon="portal" class="sxs-lookup"]
+>
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
-> Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresu URL odpovědi jako `msal<AppId>://auth` (kde msal\<AppId > je tato aplikace Id).
+> Ukázka kódu pro tento rychlý start pro práci budete muset přidat kompatibilní s zprostředkovatele vícefaktorového ověřování identifikátoru URI přesměrování. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurováno](media/quickstart-v2-ios/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
+> > ![Už nakonfigurované](media/quickstart-v2-ios/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Stažení webového serveru nebo projektu
 
-- [Stáhněte si projekt XCode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip).
+- [Stáhněte si ukázky kódu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 
-1. Extrahujte soubor zip a otevřete projekt v XCode.
-1. Upravte soubor **ViewController.swift** a nahraďte řádek začínající na „let kClientID“ následujícím fragmentem kódu:
-
-    > [!div renderon="portal" class="sxs-lookup"]
-    > ```swift
-    > let kClientID = "Enter_the_Application_Id_here"
-    > ```
-
-    > [!div renderon="docs"]
-    > ```swift
-    > let kClientID = "<ENTER_THE_APPLICATION_ID_HERE>"
-    > ```   
-1. Stiskněte Ctrl a kliknutím na soubor **Info.plist** otevřete místní nabídku. Pak vyberte **Open As** > **Source Code** (Otevřít jako > Zdrojový kód).
-1. Do kořenového uzlu adresáře přidejte následující kód:
-
-    > [!div renderon="portal" class="sxs-lookup"]
-    > ```xml
-    > <key>CFBundleURLTypes</key>
-    > <array>
-    >     <dict>
-    >         <key>CFBundleTypeRole</key>
-    >         <string>Editor</string>
-    >         <key>CFBundleURLName</key>
-    >         <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    >         <key>CFBundleURLSchemes</key>
-    >         <array>
-    >             <string>msalEnter_the_Application_Id_here</string>
-    >         </array>
-    >     </dict>
-    > </array>
-    > ```
-
-    > [!div renderon="docs"]
-    > ```xml
-    > <key>CFBundleURLTypes</key>
-    > <array>
-    >     <dict>
-    >         <key>CFBundleTypeRole</key>
-    >         <string>Editor</string>
-    >         <key>CFBundleURLName</key>
-    >         <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    >         <key>CFBundleURLSchemes</key>
-    >         <array>
-    >             <string>msal<ENTER_THE_APPLICATION_ID_HERE></string>
-    >         </array>
-    >     </dict>
-    > </array>
-    > ```
-    
 > [!div renderon="docs"]
-> <span>5.</span> Místo `<ENTER_THE_APPLICATION_ID_HERE>` zadejte *ID vaší aplikace*. Pokud potřebuje vyhledat *ID aplikace*, přejděte na stránku *Overview* (Přehled).
+> Pokud jste vybrali možnost 1 výše, můžete přeskočit tyto kroky. 
+
+> [!div renderon="portal" class="sxs-lookup"]
+> 1. Extrahujte soubor zip a otevřete projekt v XCode.
+> 1. Upravte soubor **ViewController.swift** a nahraďte řádek začínající na „let kClientID“ následujícím fragmentem kódu:
+>    ```swift
+>    let kClientID = "Enter_the_Application_Id_here"
+>    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+>
+>    ```
+> 1. Klikněte pravým tlačítkem myši **Info.plist** a vyberte **otevřít jako** > **zdrojový kód**.
+> 1. Do kořenového uzlu dict, nahraďte vaše ***Id sady prostředků***:
+>
+>    ```xml
+>    <key>CFBundleURLTypes</key>
+>    <array>
+>       <dict>
+>          <key>CFBundleURLSchemes</key>
+>          <array>
+>             <string>msauth.Enter_the_Bundle_Id_Here</string>
+>          </array>
+>       </dict>
+>    </array>
+> 
+>    ```
+> 1. Sestavení a spuštění aplikace! 
+
+> [!div renderon="docs"]
+>
+> 1. Extrahujte soubor zip a otevřete projekt v XCode.
+> 1. Upravit **ViewController.swift** a nahraďte řádek začínající "umožnit kClientID" následujícím fragmentem kódu:
+>
+>    ```swift
+>    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+> 
+>    ```
+> 1. Klikněte pravým tlačítkem myši **Info.plist** a vyberte **otevřít jako** > **zdrojový kód**.
+> 1. Do kořenového uzlu dict, nahraďte vaše ***Id sady prostředků***:
+>
+>    ```xml
+>    <key>CFBundleURLTypes</key>
+>    <array>
+>       <dict>
+>          <key>CFBundleURLSchemes</key>
+>          <array>
+>             <string>msauth.<ENTER_YOUR_BUNDLE_ID></string>
+>          </array>
+>       </dict>
+>    </array>
+>
+>    ```
+> 1. Sestavení a spuštění aplikace! 
 
 ## <a name="more-information"></a>Další informace
 
 Další informace o tomto rychlém startu najdete v následujících částech.
 
-### <a name="msal"></a>MSAL
+### <a name="getting-msal"></a>Získávání MSAL
 
-MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)) je knihovna, která slouží k přihlašování uživatelů a vyžádání tokenů pro přístup k rozhraní API chráněného službou Microsoft Azure Active Directory. Knihovnu MSAL můžete do své aplikace přidat následujícím způsobem:
+Knihovna MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Knihovnu MSAL můžete do své aplikace přidat následujícím způsobem:
 
 ```
 $ vi Podfile
-```
-Do tohoto souboru podfile přidejte následující:
 
 ```
- target 'QuickStart' do
-   use_frameworks!
- pod 'MSAL'
- end
+Přidejte do tohoto souboru podfile (s cílem projektu) následující:
+
+```
+use_frameworks!
+
+target 'MSALiOS' do
+   pod 'MSAL', '~> 0.4.0'
+end
+
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL
@@ -140,54 +169,85 @@ import MSAL
 Potom inicializujte knihovnu MSAL pomocí následujícího kódu:
 
 ```swift
-let authority = MSALAuthority(url: URL(string: kAuthority)!)
-self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, authority: authority)
+let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
+            
+let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
+self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
+
 ```
 
 > |Kde: ||
 > |---------|---------|
 > | `clientId` | ID aplikace z aplikace zaregistrované na webu *portal.azure.com* |
 > | `authority` | Microsoft identity platform koncový bod. Ve většině případů to bude *https<span/>://login.microsoftonline.com/common* |
+> | `redirectUri` | Identifikátor URI pro přesměrování aplikace. Můžete předat nil použít výchozí hodnotu, nebo vaše vlastní identifikátor URI přesměrování. |
 
-### <a name="requesting-tokens"></a>Žádosti o tokeny
+### <a name="additional-app-requirements"></a>Požadavky na další aplikace  
+
+Aplikace musí mít rovněž následující ve vaší `AppDelegate`. Díky tomu MSAL SDK zpracování odpovědi tokenu z aplikace zprostředkovatele vícefaktorového ověřování při provádění ověřování.
+
+ ```swift
+ func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+         guard let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String else {
+             return false
+         }
+         
+         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
+     }
+
+```
+
+A konečně, musí vaše aplikace má `LSApplicationQueriesSchemes` položku v vaše ***Info.plist*** spolu s `CFBundleURLTypes`. Ukázka obsahuje to zahrnuté. 
+
+   ```xml 
+   <key>LSApplicationQueriesSchemes</key>
+   <array>
+      <string>msauth</string>
+      <string>msauthv2</string>
+   </array>
+   ```
+
+### <a name="sign-in-users--request-tokens"></a>Přihlašování uživatelů a požádat o tokeny
 
 Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acquireTokenSilent`.
 
-#### <a name="getting-an-access-token-interactively"></a>Interaktivní získání přístupového tokenu
+#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Při získávání tokenu interaktivně
 
-Některé situace vyžadují vynucení uživatelům interakci s Microsoft identity platformy endpoint, který způsobí přepnutí kontextu, prohlížeč systému buď ověření přihlašovacích údajů od uživatelů nebo ho o souhlas. Možné příklady:
+Některé situace vyžadují uživatelům interakci s platformou identity Microsoft. V těchto případech může být potřeba zvolit svůj účet, zadejte své přihlašovací údaje nebo vaší aplikace oprávnění vyjádřit souhlas koncového uživatele. Například: 
 
 * Při prvním přihlášení uživatele k aplikaci
-* Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
-* Když vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
-* Když je nutné dvoufaktorové ověřování
+* Pokud uživatel obnoví svoje heslo, bude nutné k zadání přihlašovacích údajů 
+* Když vaše aplikace požaduje přístup k prostředku poprvé
+* Když se vyžaduje vícefaktorové ověřování nebo jiných zásad podmíněného přístupu
 
 ```swift
-applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /* Add your handling logic */}
+let parameters = MSALInteractiveTokenParameters(scopes: kScopes)
+applicationContext.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
 > |Kde:||
 > |---------|---------|
-> | `forScopes` | Obsahuje požadované obory (to znamená `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`)). |
+> | `scopes` | Obsahuje obory žádá (to znamená `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (`api://<Application ID>/access_as_user`) |
 
-#### <a name="getting-an-access-token-silently"></a>Získání přístupového tokenu bez upozornění
+#### <a name="acquiretokensilent-getting-an-access-token-silently"></a>acquireTokenSilent: Získání přístupového tokenu bez upozornění
 
-Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `acquireToken` můžete použít metodu `acquireTokenSilent` a získat tokeny pro přístup k chráněným prostředkům:
+Aplikace by neměl vyžaduje, aby uživatelé přihlásit pokaždé, když požádají token. Pokud má uživatel již přihlášení, tato metoda umožňuje aplikacím požádat o tokeny bezobslužně. 
 
 ```swift
-applicationContext.acquireTokenSilent(forScopes: self.kScopes, account: applicationContext.allAccounts().first) { (result, error) in /* Add your handling logic */}
+let parameters = MSALSilentTokenParameters(scopes: kScopes, account: applicationContext.allAccounts().first)
+applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
 > |Kde: ||
 > |---------|---------|
-> | `forScopes` | Obsahuje požadované obory (to znamená `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`)). |
-> | `account` | Účet, který o token žádá (knihovna podporuje více účtů v jedné aplikaci). V případě tohoto rychlého startu tato hodnota odkazuje na první účet v mezipaměti (`applicationContext.allAccounts().first`). |
+> | `scopes` | Obsahuje obory žádá (to znamená `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (`api://<Application ID>/access_as_user`) |
+> | `account` | Pro žádá token účtu. V tomto rychlém startu je jeden účet aplikace, pokud chcete sestavovat aplikace s více účtu budete muset definovat logiku k identifikaci účtu, který se má použít pro žádosti o tokeny `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
 ## <a name="next-steps"></a>Další postup
 
-Vyzkoušejte kurz pro iOS, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
+Vyzkoušejte si kurz iOS pro úplný podrobný návod na vytváření aplikací, včetně úplné vysvětlení tohoto rychlého startu.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
 
 > [!div class="nextstepaction"]
 > [Kurz volání rozhraní Graph API pro iOS](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)

@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Zjistěte, jak vytvořit, změnit nebo odstranit virtuální síť v Azure.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
-ms.author: jdial
-ms.openlocfilehash: 6e393bf9c08eaa656a1c9b2302cde937a87ccc9a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 235a82c6bba4165790c370c2641ee6cd41f10840
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088498"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700470"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -25,7 +25,7 @@ ms.locfileid: "58088498"
 
 Zjistěte, jak vytvořit a odstranit virtuální síť a změnit nastavení, jako jsou servery DNS a prostory IP adres pro existující virtuální sítě. Pokud začínáte s virtuálními sítěmi, další informace o nich v [Přehled virtuálních sítí](virtual-networks-overview.md) nebo provedením [kurzu](quick-create-portal.md). Virtuální síť obsahuje podsítě. Zjistěte, jak vytvářet, měnit a odstraňovat podsítě, najdete v článku [Správa podsítí](virtual-network-manage-subnet.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 

@@ -1,23 +1,23 @@
 ---
-title: Příručka pro správu Azure Data Boxu pomocí portálu | Microsoft Docs
+title: Správa Azure Data Box prostřednictvím webu Azure portal | Dokumentace Microsoftu
 description: Popisuje, jak spravovat Azure Data Box pomocí webu Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bf1d810733df4eaae17d092caba42888a63cc59f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128732"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919250"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>Správa Data Boxu pomocí portálu Azure Portal
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Pomocí webu Azure portal ke správě vašeho zařízení Azure Data Box
 
-Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které se dají provádět u Data Boxu. Data Box můžete spravovat přes Azure Portal nebo v místním webovém uživatelském rozhraní. 
+Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které lze provést na zařízení Azure Data Box. Data Box můžete spravovat přes Azure Portal nebo v místním webovém uživatelském rozhraní.
 
 Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Azure Portal můžete použít ke správě objednávek a Data Boxu a ke sledování stavu objednávek až do jejich dokončení.
 

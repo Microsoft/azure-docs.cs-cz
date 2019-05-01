@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 8f5cdc33e48d647dba8caeb09b57e233d64712f6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484827"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687734"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
 Tento článek obsahuje informace o tom, jak vložit různé typy reklam na straně klienta.
@@ -170,7 +170,7 @@ Application/x-shockwave-flash – prostředku se zobrazí v přehrávače pro Fl
 
 **IFrameResource** popisuje prostředek ve formátu HTML, který lze zobrazit v elementu IFrame. **HTMLResource** popisuje část kódu HTML, který může být vložen do webové stránky. **TrackingEvents** zadejte sledování událostí a identifikátor URI pro žádosti při výskytu události. V této ukázce jsou sledovány události acceptInvitation a sbalení. Další informace o **NonLinearAds** elementu a jejích potomků, najdete v části IAB.NET/VAST. Všimněte si, že **TrackingEvents** se nachází v rámci elementu **NonLinearAds** element místo **NonLinear** elementu.
 
-Doprovodná reklamy jsou definována v rámci `<CompanionAds>` elementu. `<CompanionAds>` Element může obsahovat jeden nebo více `<Companion>` elementy. Každý `<Companion>` element popisuje doprovodná ad a může obsahovat `<StaticResource>`, `<IFrameResource>`, nebo `<HTMLResource>` které je určené stejným způsobem jako v nelineárních ad. ROZSÁHLÉ soubor může obsahovat více doprovodných reklamy a aplikace přehrávače můžete vybrat nejvhodnější ad k zobrazení. Další informace o VAST najdete v tématu [ROZSÁHLÉ 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Doprovodná reklamy jsou definována v rámci `<CompanionAds>` elementu. `<CompanionAds>` Element může obsahovat jeden nebo více `<Companion>` elementy. Každý `<Companion>` element popisuje doprovodná ad a může obsahovat `<StaticResource>`, `<IFrameResource>`, nebo `<HTMLResource>` které je určené stejným způsobem jako v nelineárních ad. ROZSÁHLÉ soubor může obsahovat více doprovodných reklamy a aplikace přehrávače můžete vybrat nejvhodnější ad k zobrazení. Další informace o VAST najdete v tématu [ROZSÁHLÉ 3.0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Použití více souboru se seznamem testů (VMAP) Ad digitální Video
 Soubor VMAP umožňuje zadat, pokud dojde k zalomení ad, jak dlouho trvá každé přerušení, kolik reklamy lze zobrazit v rámci přerušení a co mohou být typy reklamy při přerušení. Následující příklad VMAP souboru, který definuje jeden ad přerušení:
@@ -243,7 +243,7 @@ V rámci `<AdBreak>` elementu, může dojít k jednomu <**AdSource**> element. <
 * `<AdTagURI>` identifikátor URI, který odkazuje na ad odpověď z jiného systému
 * `<CustomAdData>` -libovolný řetězec, který představuje-ROZSÁHLÉ odpovědi
 
-V tomto příkladu se zadaným odpověď ad v řádku `<VASTAdData>` element, který obsahuje odpověď ROZSÁHLÉ ad. Další informace o dalších prvků, naleznete v tématu [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+V tomto příkladu se zadaným odpověď ad v řádku `<VASTAdData>` element, který obsahuje odpověď ROZSÁHLÉ ad. Další informace o dalších prvků, naleznete v tématu [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
 <**AdBreak**> element může obsahovat také jeden <**TrackingEvents**> element. <**TrackingEvents**> element umožňuje sledovat začátek nebo konec přerušení ad nebo zda došlo k chybě během pozastavení ad. <**TrackingEvents**> element obsahuje jeden nebo více <**sledování**> elementy, z nichž každý určuje sledování událostí a sledování identifikátoru URI. Jsou možné sledování události:
 
@@ -363,7 +363,7 @@ Spustitelný soubor ad se vytvoří v kódu, který je třeba spustit v běhové
     </MediaFiles>
 ```
 
-Spustitelný soubor ad mohou být inicializovány pomocí `<AdParameters>` element v rámci `<Linear>` nebo `<NonLinear>` prvky v odpovědi na velké. Další informace o `<AdParameters>` prvku, naleznete v tématu [ROZSÁHLÉ 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Další informace o rozhraní API VPAID najdete v tématu [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Spustitelný soubor ad mohou být inicializovány pomocí `<AdParameters>` element v rámci `<Linear>` nebo `<NonLinear>` prvky v odpovědi na velké. Další informace o `<AdParameters>` prvku, naleznete v tématu [ROZSÁHLÉ 3.0](https://www.iab.net/media/file/VASTv3.0.pdf). Další informace o rozhraní API VPAID najdete v tématu [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementace Windows nebo Windows Phone 8 Player s podporou Ad
 Platforma Microsoft Media: Player Framework pro systém Windows 8 a Windows Phone 8 obsahuje kolekci z ukázkových aplikací, které ukazují, jak implementovat aplikace přehrávače videa pomocí rozhraní. Architekturu přehrávače a ukázky od si můžete stáhnout [Player Framework pro systém Windows 8 a Windows Phone 8](https://playerframework.codeplex.com).

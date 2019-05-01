@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60243084"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571304"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a jak spravovat Azure AD Connect
 Přizpůsobení služby Azure Active Directory (Azure AD) Connect pro splnění potřeb vaší organizace a požadavky pomocí provozní postupy v tomto článku.  
@@ -47,20 +47,21 @@ Pomocí webu Azure portal a zkontrolujte stav synchronizace.
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>Ověření úlohy naplánované synchronizace
 1. Přihlaste se k webu Azure portal jako správce.
 2. Vlevo vyberte možnost **Active Directory**.
-3. Na **služby Active Directory** stránce, poklikejte na adresář, který obsahuje uživatele, kterou chcete nastavit.
-4. V horní části stránky adresáře vyberte **integrace adresáře**.
-5. V části **integraci s místní službou active directory**, poznamenejte si čas poslední synchronizace.
+3. Na levé straně vyberte **Azure AD Connect**
+4. V horní části stránky mějte na paměti poslední synchronizace.
 
-<center>
-
-![Čas synchronizace adresáře](./media/how-to-connect-post-installation/verify.png)</center>
+![Čas synchronizace adresáře](./media/how-to-connect-post-installation/verify2.png)
 
 ## <a name="start-a-scheduled-synchronization-task"></a>Spuštění úlohy naplánované synchronizace
-Pokud je potřeba spustit úlohu synchronizace, můžete to provést opětovným spuštěním Průvodce Azure AD Connect.  Budete muset zadat svoje přihlašovací údaje Azure AD.  V průvodci vyberte **přizpůsobit možnosti synchronizace** úloh a klikněte na tlačítko **Další** procházení průvodce. Na konci, ujistěte se, že **spustit proces synchronizace ihned po dokončení počáteční konfigurace** je zaškrtnuté políčko.
+Pokud je potřeba spustit úlohu synchronizace, můžete to provést:
 
-<center>
-
-![Spustit synchronizaci](./media/how-to-connect-post-installation/startsynch.png)</center>
+1. Dvakrát klikněte na zástupce na ploše Azure AD Connect spusťte průvodce.
+2. Klikněte na **Konfigurovat**.
+3. Na obrazovce úlohy, vyberte **přizpůsobit možnosti synchronizace** a klikněte na tlačítko **další**
+4. Zadejte svoje přihlašovací údaje služby Azure AD.
+5. Klikněte na **Další**. Klikněte na **Další**.  Klikněte na **Další**.
+5.  Na **připravení konfigurovat** obrazovky, ujistěte se, že **po dokončení konfigurace spustit proces synchronizace** je zaškrtnuté políčko.
+6.  Klikněte na **Konfigurovat**.
 
 Další informace o Plánovač synchronizace Azure AD Connect najdete v tématu [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 
@@ -69,13 +70,19 @@ Po počáteční instalaci sady Azure AD Connect můžete vždy spustíte průvo
 
 Následující tabulka obsahuje souhrn těchto úloh a stručný popis jednotlivých úkolů.
 
-![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks.png)
+![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks2.png)
 
 | Další úlohy | Popis |
 | --- | --- |
-| **Zobrazit vybraný scénář** |Zobrazení vašeho aktuálního řešení Azure AD Connect.  To zahrnuje obecných nastavení, synchronizaci adresářů a nastavení synchronizace. |
+|**Nastavení ochrany osobních údajů**|Zobrazte, jaké telemetrická data se sdílí s Microsoftem.|
+|**Zobrazit aktuální konfiguraci**|Zobrazení vašeho aktuálního řešení Azure AD Connect.  To zahrnuje obecných nastavení, synchronizaci adresářů a nastavení synchronizace. |
 | **Přizpůsobit možnosti synchronizace** |Změňte aktuální konfiguraci, jako je přidání další doménové struktury služby Active Directory ke konfiguraci nebo povolení možnosti synchronizace, jako je například uživatel, skupina, zařízení nebo zpětný zápis hesla. |
-| **Zapnout pracovní režim** |Informace o fázi, který není synchronizován okamžitě a nelze exportovat do služby Azure AD nebo místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizace předtím, než k nim dojde. |
+|**Konfigurovat možnosti zařízení**|Možnosti zařízení, které jsou k dispozici pro synchronizaci|
+|**Aktualizovat schéma adresáře**|Umožňuje přidat nové objekty v místním adresáři pro synchronizaci|
+|**Konfigurovat pracovní režim** |Informace o fázi, který není synchronizován okamžitě a nelze exportovat do služby Azure AD nebo místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizace předtím, než k nim dojde. |
+|**Změnit přihlášení uživatele**|Změnit metodu ověřování, které uživatelé používají k přihlašování|
+|**Správa federace**|Správa infrastruktury služby AD FS, prodloužit platnost certifikátů a přidání serverů služby AD FS|
+|**Řešení problémů**|Pomoci při řešení potíží s Azure AD Connect|
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).

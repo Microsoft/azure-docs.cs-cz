@@ -1,22 +1,19 @@
 ---
 title: Ukládání sestav v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
 description: Zjistěte, jak uložit sestavy v rámci kolekce pracovních prostorů Power BI. To vyžaduje správná oprávnění, aby bylo možné úspěšně fungovat.
-services: power-bi-embedded
-author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
-origin.date: 09/26/2018
-ms.date: 03/05/2019
-ms.author: v-junlch
+ms.date: 09/20/2017
 ms.openlocfilehash: b61abee3382697d50b9a18de763c8a4d01e1ccba
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103878"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701851"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Ukládání sestav v kolekcích pracovních prostorů Power BI
 
@@ -29,15 +26,15 @@ V rámci kolekce pracovních prostorů Power BI můžete upravit existující se
 
 Pokud chcete uložit sestavu, musíte nejprve vytvořit token pro konkrétní sestavy se správné rozsahy:
 
-- Umožňuje uložit Report.ReadWrite obor je požadován
-- Chcete-li uložit jako, Report.Read a Workspace.Report.Copy obory se vyžadují.
-- Chcete-li uložit informace a uložit jako, Report.ReadWrite a Workspace.Report.Copy jsou povinné.
+* Umožňuje uložit Report.ReadWrite obor je požadován
+* Chcete-li uložit jako, Report.Read a Workspace.Report.Copy obory se vyžadují.
+* Chcete-li uložit informace a uložit jako, Report.ReadWrite a Workspace.Report.Copy jsou povinné.
 
 V uvedeném pořadí, chcete-li povolit právo uložit nebo uložit jako tlačítka v nabídce Soubor je potřeba zadat správné oprávnění v konfiguraci vložení při vložení sestavy:
 
-- modely. Permissions.ReadWrite
-- modely. Permissions.Copy
-- modely. Permissions.All
+* modely. Permissions.ReadWrite
+* modely. Permissions.Copy
+* modely. Permissions.All
 
 > [!NOTE]
 > Přístupový token musí také příslušných oborech. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
@@ -62,7 +59,7 @@ Například v jazyce JavaScript:
     var config= {
         type: 'report',
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
-        embedUrl: 'https://embedded.powerbi.cn/appTokenReportEmbed',
+        embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
         id:  '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
         permissions: models.Permissions.All /*both save & save as buttons will be visible*/,
         viewMode: models.ViewMode.Edit,
@@ -77,7 +74,7 @@ Například v jazyce JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
-    </script>    
+    </script>
 ```
 
 Sestavy se teď vloží do vaší aplikace v režimu úprav.
@@ -115,10 +112,10 @@ Pak musíte načíst nové sestavy po *uložit jako*. Načítají se nová sesta
 
 ```html
 <div id="reportContainer"></div>
-<script>  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
-        embedUrl: 'https://embedded.powerbi.cn/appTokenReportEmbed',
+        embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
@@ -127,7 +124,7 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
-</script>    
+</script>
 ```
 
 ## <a name="see-also"></a>Další informace najdete v tématech
@@ -141,5 +138,3 @@ var embedConfiguration = {
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)
 
-
-<!-- Update_Description: update metedata properties -->

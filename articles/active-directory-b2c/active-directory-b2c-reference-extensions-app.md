@@ -3,19 +3,19 @@ title: Rozšíření aplikace v Azure Active Directory B2C | Dokumentace Microso
 description: Obnovení aplikace rozšíření b2c.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 9/06/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1c3e96c10af9085854840029867eaf238e5a593d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aee21e6ea3c598818091aa11c3d13b9d6172743c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317254"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703441"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Aplikace rozšíření
 

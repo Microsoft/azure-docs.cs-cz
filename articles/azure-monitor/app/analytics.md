@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691900"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574260"
 ---
 # <a name="analytics-in-application-insights"></a>Analýzy ve službě Application Insights
 Analýza je výkonný nástroj hledání a dotaz z [Application Insights](app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení.
@@ -38,7 +38,7 @@ Můžete přímo k datům nelze přistoupit v pracovním prostoru Log Analytics 
 
 ## <a name="query-data-in-analytics"></a>Dotazování dat v Analytics
 Typický dotaz začíná název tabulky, za nímž následuje řadu *operátory* oddělené `|`.
-Například můžeme zjistit, kolik požadavků naši aplikaci přijatých z různých zemí, během posledních 3 hodiny:
+Například můžeme zjistit, kolik požadavků naši aplikaci získanou z různých zemí nebo oblastí, během posledních 3 hodiny:
 ```AIQL
 requests
 | where timestamp > ago(3h)

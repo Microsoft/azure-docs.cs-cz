@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: bc946587cf54142278472652449db40096ca27b8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117210"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712326"
 ---
 # <a name="expressroute-qos-requirements"></a>Požadavky na technologii QoS služby ExpressRoute
 Skype pro firmy má úlohy, které vyžadují odlišné zacházení podle QoS. Pokud budete chtít využívat hlasové služby prostřednictvím ExpressRoute, měli byste dodržovat požadavky popsané dál.
@@ -25,9 +25,9 @@ Skype pro firmy má úlohy, které vyžadují odlišné zacházení podle QoS. P
 > 
 > 
 
-V následující tabulce je seznam označení DSCP používaných Skypem pro firmy. Další informace najdete v tématu [Správa technologie QoS pro Skype pro firmy](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS).
+Následující tabulka obsahuje seznam označení DSCP používaných Microsoft Teams a Skype pro firmy. Další informace najdete v tématu [Správa technologie QoS pro Skype pro firmy](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS).
 
-| **Třída provozu** | **Zpracování (označení DSCP)** | **Úlohy Skypu pro firmy** |
+| **Třída provozu** | **Zpracování (označení DSCP)** | **Microsoft Teams a úlohy Skypu pro firmy** |
 | --- | --- | --- |
 | **Hlas** |EF (46) |Skype/Lync – hlas |
 | **Interaktivní** |AF41 (34) |Video, VBSS |

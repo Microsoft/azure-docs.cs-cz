@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359159"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570469"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -184,6 +184,8 @@ Pokud chcete použít vlastní certifikáty (a nikoli certifikáty podepsané sv
 
 Opakujte tyto kroky na dalších serverech NPS, které chcete nastavit pro vyrovnávání zatížení.
 
+Pokud vypršela platnost certifikátu vašeho předchozí počítač a byl vytvořen nový certifikát, odstraňte všechny certifikáty s vypršenou platností. S certifikáty s vypršenou platností může způsobit problémy s pomocí rozšíření NPS spuštění.
+
 > [!NOTE]
 > Pokud používáte vlastní certifikáty místo aby generovala certifikáty pomocí skriptu prostředí PowerShell, ujistěte se, že jejich zarovnání bylo k serveru NPS zásady vytváření názvů. Název subjektu musí být **CN =\<TenantID\>, OU = rozšíření NPS Microsoft**. 
 
@@ -207,7 +209,7 @@ Jakmile povolíte MFA pro klienta RADIUS pomocí rozšíření serveru NPS, veš
 
 Pokud máte uživatele, která nejsou zaregistrovaná pro vícefaktorové ověřování, můžete určit, co se stane při pokusu o ověření. Pomocí nastavení registru *REQUIRE_USER_MATCH* v cestě registru *HKLM\Software\Microsoft\AzureMFA* můžete řídit chování funkce. Toto nastavení nemá možnost jediné konfiguraci:
 
-| Klíč | Value | Výchozí |
+| Klíč | Hodnota | Výchozí |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE NEBO FALSE | Není nastavený (ekvivalentní na hodnotu TRUE) |
 

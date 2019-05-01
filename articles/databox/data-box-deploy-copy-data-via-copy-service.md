@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Kopírování dat do Microsoft Azure Data Box zařízení prostřednictvím služby kopírování dat | Dokumentace Microsoftu'
+title: Kurz ke zkopírování dat do Azure Data Box zařízení prostřednictvím služby kopírování dat | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak ke zkopírování dat do Azure Data Box zařízení prostřednictvím služby kopírování dat
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f76721129906b57a05e597aade9f2febb609968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 412b554710c552bdfdf8bf94a59e822beed55b32
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727797"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925316"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Kurz: Použít službu data kopírování pro kopírování dat do Azure Data Box (preview)
 

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844173"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691933"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro aktivační událost a akce typy v jazyka definice pracovního postupu pro Azure Logic Apps
 
@@ -2301,6 +2301,7 @@ Můžete změnit výchozí chování modulu runtime pro aktivační události a 
 | `runtimeConfiguration.concurrency.runs` | Integer | Změnit [ *výchozí limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na počet instancí pracovních postupů, které lze spustit ve stejnou dobu nebo paralelně. Tato hodnota může pomoct omezit počet požadavků, které přijímají back-endových systémů. <p>Nastavení `runs` vlastnost `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnost `SingleInstance`. Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí omezení, [souběžnosti aktivační události změnit](#change-trigger-concurrency) nebo [aktivovat instance postupně](#sequential-trigger). | Všechny aktivační události | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Změnit [ *výchozí limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na počet instancí pracovních postupů, které mohou čekat na spuštění při pracovního postupu je již spuštěn maximální počet souběžných instancí. Limit souběžnosti v můžete změnit `concurrency.runs` vlastnost. <p>Chcete-li změnit výchozí omezení, [omezit spuštění čekajících změn](#change-waiting-runs). | Všechny aktivační události | 
 | `runtimeConfiguration.concurrency.repetitions` | Integer | Změnit [ *výchozí limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) "pro každý" počet iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p>Nastavení `repetitions` vlastnost `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnost `SingleInstance`. Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí omezení, [změnit "for each" souběžnosti](#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](#sequential-for-each). | Akce: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Pro konkrétní akce, které podporují a mají povoleno stránkování, tato hodnota určuje, *minimální* počet výsledků pro načtení. <p>Chcete-li na stránkování, naleznete v tématu [získat hromadných dat, položek nebo výsledků pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akce: Různé |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2651,7 +2652,7 @@ V tomto příkladu definice akce HTTP `authentication` část určuje `ClientCer
 
 Pro [ověřování Azure AD OAuth](../active-directory/develop/authentication-scenarios.md), může obsahovat definice aktivační události nebo akce `authentication` objekt JSON, který má vlastnosti uvedené v následující tabulce. Chcete-li získat přístup k hodnoty parametrů za běhu, můžete použít `@parameters('parameterName')` výraz, který je poskytován [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs).
 
-| Vlastnost | Požaduje se | Value | Popis |
+| Vlastnost | Požaduje se | Hodnota | Popis |
 |----------|----------|-------|-------------|
 | **type** | Ano | `ActiveDirectoryOAuth` | Typ ověřování chcete používat, což je "ActiveDirectoryOAuth" pro Azure AD OAuth |
 | **Autorita** | Ne | <*URL-for-authority-token-issuer*> | Adresa URL autority, která poskytuje ověřovací token |

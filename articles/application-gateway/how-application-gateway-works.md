@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 2f27105aed940f0411abaa534cb09adf0be34bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a16421182f533f5aa2ad4bcc2e58e910cc7e8ca6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830313"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702410"
 ---
 # <a name="how-an-application-gateway-works"></a>Fungování služby application gateway
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak službu application gateway přijímá příchoz
 
 2. Azure DNS vrátí IP adresu klienta, což je IP adresa front-endu služby application gateway.
 
-3. Application gateway přijímá příchozí provoz na jeden nebo více naslouchacích procesů. Naslouchací proces je logická entita, která kontroluje pro žádosti o připojení. Má nakonfigurovanou IP adresu přední stěnou, protokol a číslo portu pro připojení klientů ke službě application gateway.
+3. Application gateway přijímá příchozí provoz na jeden nebo více naslouchacích procesů. Naslouchací proces je logická entita, která kontroluje pro žádosti o připojení. Má nakonfigurovanou IP adresu front-endu, protokol a číslo portu pro připojení klientů ke službě application gateway.
 
 4. Pokud firewall webových aplikací (WAF) se používá, application gateway kontroluje hlavičky požadavku a text, pokud jsou k dispozici pro pravidla firewallu webových aplikací. Tuto akci Určuje, zda je požadavek platným požadavkem nebo ohrožení zabezpečení. Pokud je požadavek platný, přesměruje ho na back-endu. Pokud daný požadavek není platný, je blokovaná jako bezpečnostní hrozbu.
 

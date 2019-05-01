@@ -1,5 +1,5 @@
 ---
-title: Osvědčené postupy při používání rozhraní API detekce anomálií
+title: Osvědčené postupy při používání rozhraní API Detektoru anomálií
 description: Další informace o osvědčených postupech při zjišťování anomálií s rozhraním API detekce anomálií.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 467ac4e475a1c23e25b62c76cfbc959e7ed49465
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484029"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692202"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Doporučené postupy pro používání rozhraní API detekce anomálií
 
@@ -25,6 +25,29 @@ Rozhraní API detekce anomálií je služba detekce anomálií bezstavové. Mů�
 * Počet datových bodů ve vaší žádosti rozhraní API. 
 
 Pomocí tohoto článku se dozvíte o osvědčené postupy při používání rozhraní API pro získání nejlepších výsledků pro vaše data. 
+
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Použití služby batch (celá) nebo poslední (naposledy) bodu detekce anomálií
+
+Koncový bod zjišťování služby batch API detekce anomálií vám umožní detekovat anomálie přes celou dobu data řady. V tomto režimu detekce jeden statistické model je vytvořit a použít pro každý bod v datové sadě. Pokud má vaše časové řady následující charakteristiky, doporučujeme použít zjišťování služby batch a zobrazit náhled dat v jednom volání rozhraní API.
+
+* Sezónní časové řady, s občasné anomálie.
+* Plochý trend časové řadě, s občasné provozní špičky a vyhrazené IP adresy. 
+
+Nedoporučujeme používat pro detekci anomálií služby batch pro data v reálném čase, monitorování nebo pomocí datech časových řad, který nemá nad charakteristiky. 
+
+* Zjišťování služby batch vytvoří a použije jenom jeden model, se provádí zjišťování pro každý bod v rámci celé řady. Je-li změnit čas trendy data řady směrem nahoru a dolů bez sezonnost, některé body (vyhrazené IP adresy a provozní špičky v datech) mohou chybět modelem. Podobně nemusí některé body změn, které jsou méně důležité než těch, které jsou dále v sadě dat počítá jako natolik závažné, má být zahrnut do modelu.
+
+* Zjišťování služby batch je pomalejší než zjišťování anomálií stav poslední bod při monitorování dat v reálném čase z důvodu počet bodů analyzován.
+
+Ke sledování dat v reálném čase, doporučujeme, abyste zjišťování anomálií stav pouze nejnovější data bodu. Použitím průběžně poslední bod zjišťování, streamování dat monitorování lze efektivněji a přesně.
+
+Následující příklad popisuje dopad, který tyto režimy zjišťování může mít na výkon. První obrázek ukazuje výsledek průběžně zjišťování anomálií stav nejnovějšího bodu podél 28 dříve zobrazenou datových bodů. Červená body jsou anomálie.
+
+![Obrázek znázorňující detekce anomálií pomocí posledního bodu](../media/last.png)
+
+Níže je sada dat pomocí služby batch pro detekci anomálií. Model sestavený pro operaci ignoroval několik anomálie, označen obdélníků.
+
+![Obrázek znázorňující detekce anomálií pomocí služby batch – metoda](../media/entire.png)
 
 ## <a name="data-preparation"></a>Příprava dat
 
@@ -68,7 +91,7 @@ Nejlepších výsledků dosáhnete, poskytují 4 `period`uživatele za datový b
 
 Pokud streamování dat se definuje na krátkou dobu (například několika sekund nebo minut), odesílání doporučený počet datových bodů může být delší než rozhraní API detekce anomálií maximální počet povolených (8640 datových bodů). Pokud se vaše data zobrazí stabilní sezónním vzoru, vezměte v úvahu odesílá vzorek dat časových řad na větší časový interval, jako jsou hodiny. Vzorkování dat tímto způsobem můžete také výrazně zlepšit dobu odezvy rozhraní API. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Co je API detekce anomálií?](../overview.md)
 * [Rychlé zprovoznění: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API detekce anomálií](../quickstarts/detect-data-anomalies-csharp.md)

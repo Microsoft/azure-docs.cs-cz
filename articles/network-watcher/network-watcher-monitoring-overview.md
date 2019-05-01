@@ -3,8 +3,8 @@ title: Azure Network Watcher | Microsoft Docs
 description: Seznamte se s možnostmi monitorování, diagnostiky, sledování metrik a protokolování služby Azure Network Watcher pro prostředky ve virtuální síti.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
@@ -14,14 +14,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddc577af945c01b94dae5a75725082e4e6689fd9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60532254"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697136"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896258"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712433"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 
@@ -116,7 +116,7 @@ Microsoft Enterprise Library pro škálovatelné R nebo Python můžete použít
 
 Machine Learning Server podporuje různé statistiky pro velké objemy dat, prediktivní modelování a strojové učení úlohy. Podporuje široké spektrum analytických: zkoumání, analýzu, vizualizaci a modelování. Díky používání a rozšiřování open-source jazyka R a Python, Machine Learning Server je kompatibilní se skripty R a Python a funkce. Je také kompatibilní s CRAN, pip a balíčků Conda, k analýze dat v podnikovém měřítku.
 
-Machine Learning Server řeší přidáním paralelní a blokového zpracování dat v paměti omezení open-source systému R. To znamená, že můžete spouštět analýzy na množství dat větší, než se vejde do paměti. Visual Studio Community je zahrnutá ve virtuálním počítači. Obsahuje nástroje R pro Visual Studio a nástroji Python Tools pro Visual Studio (PTVS) rozšíření, které poskytují kompletního integrovaného vývojového prostředí pro práci s R nebo Python. Poskytujeme také další prostředí IDE, jako jsou [RStudio](http://www.rstudio.com) a [PyCharm Community edition](https://www.jetbrains.com/pycharm/) na virtuálním počítači.
+Machine Learning Server řeší přidáním paralelní a blokového zpracování dat v paměti omezení open-source systému R. To znamená, že můžete spouštět analýzy na množství dat větší, než se vejde do paměti. Visual Studio Community je zahrnutá ve virtuálním počítači. Obsahuje nástroje R pro Visual Studio a nástroji Python Tools pro Visual Studio (PTVS) rozšíření, které poskytují kompletního integrovaného vývojového prostředí pro práci s R nebo Python. Poskytujeme také další prostředí IDE, jako jsou [RStudio](https://www.rstudio.com) a [PyCharm Community edition](https://www.jetbrains.com/pycharm/) na virtuálním počítači.
 
 ### <a name="python"></a>Python
 

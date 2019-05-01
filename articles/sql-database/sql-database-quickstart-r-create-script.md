@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: ada09959391c551a9eff4d96b186be29c1e3b7a8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013251"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708582"
 ---
 # <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Vytvořit a spustit jednoduché skripty jazyka R v Azure SQL Database Machine Learning Services (preview)
 
@@ -102,9 +102,9 @@ Vstupy pro tuto uloženou proceduru patří:
 
 | | |
 |-|-|
-|*@language* | definuje rozšíření jazyka v tomto případě volat R |
-|*@script* | Definuje předány modulem runtime r. příkazy. Celý skript R musí být uzavřena v tento argument, jako text v kódu Unicode. Můžete také přidat text do proměnné typu **nvarchar** a následně zavolat proměnné |
-|*@input_data_1* | data vrácená dotazem, předán modulu runtime jazyka R, který vrací data do SQL serveru jako datový rámec |
+| @language | definuje rozšíření jazyka v tomto případě volat R |
+| @script | Definuje předány modulem runtime r. příkazy. Celý skript R musí být uzavřena v tento argument, jako text v kódu Unicode. Můžete také přidat text do proměnné typu **nvarchar** a následně zavolat proměnné |
+| @input_data_1 | data vrácená dotazem, předán modulu runtime jazyka R, který vrací data do SQL serveru jako datový rámec |
 |POMOCÍ SAD VÝSLEDKŮ DOTAZU | klauzule definuje schéma tabulky vrácená data pro SQL Server, přidání "Hello World" jako název sloupce **int** pro datový typ |
 
 Tento příkaz zobrazí následující text:
@@ -146,7 +146,7 @@ Teď můžeme použít výchozí vstupní a výstupní proměnné [sp_execute_ex
 
     **Results**
 
-    ![Obsah tabulky RTestData](./media/sql-database-connect-query-r/select-rtestdata.png)
+    ![Obsah tabulky RTestData](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
 1. Spusťte následující skript jazyka R. Načte data z tabulky pomocí `SELECT` prohlášení, prochází modulem runtime r. a vrátí data jako datový rámec. `WITH RESULT SETS` Klauzule definuje schéma tabulky vrácená data pro SQL Database a přichází s názvem sloupce *NewColName*.
 
@@ -159,7 +159,7 @@ Teď můžeme použít výchozí vstupní a výstupní proměnné [sp_execute_ex
 
     **Results**
 
-    ![Výstup skriptu R, který vrací data z tabulky](./media/sql-database-connect-query-r/r-output-rtestdata.png)
+    ![Výstup skriptu R, který vrací data z tabulky](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
 1. Teď Změníme názvy vstupní a výstupní proměnné. Výchozí vstupní a výstupní názvy proměnných jsou **InputDataSet** a **OutputDataSet**, tento skript změní názvy k **SQL_in** a **SQL_out**:
 
@@ -193,7 +193,7 @@ Teď můžeme použít výchozí vstupní a výstupní proměnné [sp_execute_ex
 
     **Results**
 
-    ![Výsledky dotazu s použitím proměnné @script jako vstupu](./media/sql-database-connect-query-r/r-data-generated-output.png)
+    ![Výsledky dotazu s použitím proměnné @script jako vstupu](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
 ## <a name="check-r-version"></a>Kontrola verze jazyka R
 
@@ -251,7 +251,7 @@ Výstup je z `installed.packages()` v R a vrátí se v důsledku nastavení.
 
 **Results**
 
-![Nainstalované balíčky v jazyce R](./media/sql-database-connect-query-r/r-installed-packages.png)
+![Nainstalované balíčky v jazyce R](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -260,10 +260,8 @@ Chcete-li vytvořit model strojového učení pomocí jazyka R ve službě SQL D
 > [!div class="nextstepaction"]
 > [Vytvoření a natrénujeme prediktivní model v R s Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-train-score-model.md)
 
-Další informace o Machine Learning Services najdete v níže uvedených článků. I když některé z těchto článků pro SQL Server, většina informace platí také pro Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
+Další informace o Azure SQL Database služby Machine Learning s jazykem R (preview) naleznete v následujících článcích.
 
-- [Azure SQL Database služby Machine Learning (s jazykem R)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Kurz: Zjistěte, analýza v databázi pomocí jazyka R na SQL serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Kurz: Funkce RevoScaleR R s daty formátu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Azure SQL Database služby Machine Learning s jazykem R (preview)](sql-database-machine-learning-services-overview.md)
+- [Zápis pokročilé funkce jazyka R ve službě Azure SQL Database pomocí služby Machine Learning (preview)](sql-database-machine-learning-services-functions.md)
+- [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)

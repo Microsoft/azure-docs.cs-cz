@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611299"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926280"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -162,7 +162,7 @@ XFS svazky jsou podporovány pro datový disk encryption pouze pomocí EncryptFo
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžete zálohovat a obnovit šifrovaný virtuální počítač? 
 
-Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaných Virtuálních počítačů ve stejném předplatném a oblasti.  Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).  Obnovení šifrovaných virtuálních počítačů do jiné oblasti se momentálně nepodporuje.  
+Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaných Virtuálních počítačů ve stejném předplatném a oblasti.  Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Obnovení šifrovaných virtuálních počítačů do jiné oblasti se momentálně nepodporuje.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Kam se můžu obrátit klást otázky nebo připomínky?
 

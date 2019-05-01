@@ -9,11 +9,11 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 439a1c60942b1540328bf9972d74d7dd4d573a65
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764147"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700648"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytváření a správě sdílené složky Azure pomocí Azure Powershellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -80,7 +80,7 @@ Ve většině případů budete se sdílenou složkou Azure pracovat přes proto
 
 Následující příklady ukazují, jak použít modul Azure PowerShell k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 
 
-#### <a name="create-directory"></a>Vytvořit adresář
+#### <a name="create-directory"></a>Vytvoření adresáře
 Chcete-li vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) rutiny.
 
 ```azurepowershell-interactive
@@ -90,7 +90,7 @@ New-AzStorageDirectory `
    -Path "myDirectory"
 ```
 
-#### <a name="upload-a-file"></a>Nahrát soubor
+#### <a name="upload-a-file"></a>Nahrání souboru
 K předvedení jak nahrát soubor pomocí [Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) rutiny, musíme nejprve vytvořit soubor pomocné jednotce služby Cloud Shell s Powershellem odešlete. 
 
 Tento příklad do nového souboru v pomocné jednotce vloží aktuální datum a čas a pak soubor nahraje do sdílené složky.
@@ -115,7 +115,7 @@ Po nahrání souboru, můžete použít [Get-AzStorageFile](/powershell/module/A
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
-#### <a name="download-a-file"></a>Stáhnout soubor
+#### <a name="download-a-file"></a>Stažení souboru
 Můžete použít [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) rutiny stáhnout kopii souboru, který jste právě nahráli do pomocné jednotky vaší služby Cloud Shell.
 
 ```azurepowershell-interactive

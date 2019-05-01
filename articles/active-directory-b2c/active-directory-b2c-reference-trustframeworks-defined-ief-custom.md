@@ -3,19 +3,19 @@ title: Reference – důvěryhodnosti architektury v Azure Active Directory B2C 
 description: Téma o vlastní zásady pro Azure Active Directory B2C a architekturu rozhraní identit.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8debab073d65cd64303d2f395b73a3a04e8105b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 20767c8903cd6617db4d37b756c3d8ae95cfb6ad
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166862"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701212"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definice architektury důvěryhodnosti s architekturu rozhraní identit Azure AD B2C
 

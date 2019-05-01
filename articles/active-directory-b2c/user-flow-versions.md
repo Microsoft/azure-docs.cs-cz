@@ -3,19 +3,19 @@ title: Verze toku uživatele v Azure Active Directory B2C | Dokumentace Microsof
 description: Další informace o verzích nástroje toky uživatelů, které jsou k dispozici v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b3750768eb7346938faec7e3c1ead232923a68bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af44658b42e9132ea89aadcbff29bdba1c13f46d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359751"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689660"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Verze toku uživatele v Azure Active Directory B2C
 

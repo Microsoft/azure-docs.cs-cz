@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d25fbfc058337c7a96414cf41f321e039ebc2258
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 287cab034079c54c027e0dc7b84564458d31fc31
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61341418"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696164"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Javy a Mavenu
 
@@ -29,10 +29,10 @@ Tento článek vás provede pomocí nástroje příkazového řádku Maven k ses
 
 K vývoji funkcí pomocí Javy, musíte mít nainstalované tyto položky:
 
-- [Java Developer Kit](https://www.azul.com/downloads/zulu/) verze 8.
-- [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější.
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/), verze 8
+- [Nástroje Apache Maven](https://maven.apache.org), verze 3.0 nebo vyšší
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Nástroje Azure Functions Core](functions-run-local.md#v2) (vyžaduje **.NET Core 2.x SDK**)
+- [Nástroje Azure Functions Core](./functions-run-local.md#v2) verze 2.6.666 nebo novější
 
 > [!IMPORTANT]
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
@@ -107,6 +107,10 @@ public class Function {
 }
 
 ```
+
+## <a name="reference-bindings"></a>Odkaz na vazby
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 

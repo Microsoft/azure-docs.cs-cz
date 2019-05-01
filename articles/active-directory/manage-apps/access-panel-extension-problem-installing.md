@@ -16,12 +16,12 @@ ms.date: 5/4/2018
 ms.author: celested
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216568ac43c8e1b04c91d9a8f611a0ceb2e430af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92999f23b468c975d0f95f2628b9a5069d929031
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294187"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707335"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření prohlížeče přístupového panelu
 
@@ -63,7 +63,8 @@ Pokud chcete nainstalovat rozšíření prohlížeče přístupového panelu, po
 Můžete také stáhnout rozšíření pro Chrome a Microsoft Edgem přímo z následujících webů:
 
 - [Rozšíření Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozšíření Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Rozšíření Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Rozšíření Firefox](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Použití Moje aplikace zabezpečené přihlašování rozšíření
 * Pokud používáte Moje adresy URL aplikací jiných než `https://myapps.microsoft.com`, nakonfigurujte adresu URL svého výchozí následujícím způsobem:

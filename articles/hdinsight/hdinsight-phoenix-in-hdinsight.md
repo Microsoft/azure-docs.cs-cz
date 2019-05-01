@@ -1,7 +1,6 @@
 ---
 title: Apache Phoenix v HDInsight – Azure HDInsight
 description: ''
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
 ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763644"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697992"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix ve službě HDInsight
 
@@ -94,7 +93,7 @@ Změnit existující tabulku využívat transakce, použijte stejnou vlastnost v
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Transakční tabulku nelze přepnout zpět na právě není transakční.
 
 ### <a name="salted-tables"></a>Solené tabulky

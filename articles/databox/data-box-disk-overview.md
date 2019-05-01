@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 96ff843ada9d9043d2c10f479d488617ae56da41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 20b8d7a6a7d6da639481045d9462c484b820a4df
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869006"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575822"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -103,6 +103,8 @@ Aktuálně disku Data Box můžou přenášet data do následující oblasti Azu
 |USA – východ      |Austrálie – střed |
 |USA – východ 2     |Austrálie – střed 2|
 |Japonsko – východ     |Korea – střed |
+|Japonsko – západ     |Jižní Korea – jih |
+|Jihovýchodní Asie |
 
 
 ## <a name="pricing"></a>Ceny

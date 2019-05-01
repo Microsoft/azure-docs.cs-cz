@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457706"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685391"
 ---
 # <a name="registration-management"></a>Správa registrací
 
@@ -40,7 +40,7 @@ Registrace přidruží popisovač služby oznamování platformy (PNS) pro zař�
 
 ### <a name="installations"></a>Instalace
 
-Instalace je vylepšený vlastnosti související s registrací, který obsahuje kontejner nabízených oznámení. Je nejnovější a nejlepší přístup k registraci zařízení. Však není podporována sadou SDK pro .NET na straně klienta ([SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrace ze samotného klientského zařízení, je třeba použít [rozhraní REST API pro Notification Hubs](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) přístup pro podporu instalace. Pokud používáte službu back-endu, byste měli moct používat [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalace je vylepšený vlastnosti související s registrací, který obsahuje kontejner nabízených oznámení. Je nejnovější a nejlepší přístup k registraci zařízení. Však není podporována sadou SDK pro .NET na straně klienta ([SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ještě.  To znamená, že pokud se registrace ze samotného klientského zařízení, je třeba použít [rozhraní REST API pro Notification Hubs](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) přístup pro podporu instalace. Pokud používáte službu back-endu, byste měli moct používat [SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Tady jsou některé klíčové výhody použití zařízení:
 
@@ -48,7 +48,7 @@ Tady jsou některé klíčové výhody použití zařízení:
 - Instalační model podporuje formát speciální značka (`$InstallationId:{INSTALLATION_ID}`), která umožňuje odesílání oznámení přímo do konkrétních zařízení. Například, pokud kód aplikace nastaví ID instalace `joe93developer` pro toto konkrétní zařízení, Vývojář můžete cílit na toto zařízení při odesílání oznámení `$InstallationId:{joe93developer}` značky. To umožňuje cílit na konkrétní zařízení bez nutnosti vytvářet další kód.
 - Použití zařízení také vám umožní registraci částečné aktualizace. Částečné aktualizace instalace je požadováno pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je užitečné, pokud chcete aktualizovat značky na registraci. Není nutné stáhnout celý registrace a pak znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat rozhraní REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastnosti instalace](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -95,7 +95,7 @@ Registrace a instalace musí obsahovat platný popisovač systému oznámení pl
 
 Pokud chcete použít [šablony](notification-hubs-templates-cross-platform-push-messages.md), instalace zařízení obsahuje také všechny šablony, které jsou spojené s tímto zařízením v JSON formátu (viz ukázka výše). Názvy šablon pomoct cílové různé šablony služby pro stejné zařízení.
 
-Název každé šablony se mapuje na šablony textu a volitelná sada značky. Kromě toho jednotlivé platformy, může mít vlastnosti další šablony. Pro Windows Store (s použitím služby nabízených oznámení Windows) a Windows Phone 8 (pomocí MPNS) další sadu záhlaví může být součástí šablony. V případě služby APN můžete nastavit vlastnost vypršení platnosti buď konstanta, nebo výraz šablony. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) tématu.
+Název každé šablony se mapuje na šablony textu a volitelná sada značky. Kromě toho jednotlivé platformy, může mít vlastnosti další šablony. Pro Windows Store (s použitím služby nabízených oznámení Windows) a Windows Phone 8 (pomocí MPNS) další sadu záhlaví může být součástí šablony. V případě služby APN můžete nastavit vlastnost vypršení platnosti buď konstanta, nebo výraz šablony. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) tématu.
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace Windows Store
 
@@ -120,7 +120,7 @@ Registrace zařízení je nejjednodušší způsob, ale má určité nevýhody:
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci centra oznámení ze zařízení pomocí instalace
 
-V tuto chvíli je podporováno pouze pomocí [rozhraní REST API pro Notification Hubs](https://msdn.microsoft.com/library/mt621153.aspx).
+V tuto chvíli je podporováno pouze pomocí [rozhraní REST API pro Notification Hubs](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
 
 Můžete také pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) pro aktualizaci instalaci.
 

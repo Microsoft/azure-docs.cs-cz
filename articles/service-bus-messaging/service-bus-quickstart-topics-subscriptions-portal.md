@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
 ms.openlocfilehash: e943dbff71fdbd98773587c8ac5a62dd081b49a2
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62739560"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698867"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rychlý start: Vytvoření tématu služby Service Bus a odběrů tématu pomocí webu Azure portal
 V tomto rychlém startu použijete Azure portal k vytvoření tématu služby Service Bus a pak vytvořte odběry tohoto tématu. 

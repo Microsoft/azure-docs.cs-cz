@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 97309a24c0ab12720f968409856a16cab4ff7ac7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013247"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714893"
 ---
 # <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Vytvoření a natrénujeme prediktivní model v R s Azure SQL Database Machine Learning Services (preview)
 
@@ -171,7 +171,7 @@ VALUES (
 
 **Results**
 
-![Natrénovaný model s dalším výstupem](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
+![Natrénovaný model s dalším výstupem](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
 ## <a name="score-new-data-using-the-trained-model"></a>Stanovení skóre nových dat pomocí trénovaného modelu
 
@@ -239,7 +239,7 @@ Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je t
 
    **Results**
 
-   ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+   ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
 > V tomto příkladu skriptu `str` funkce se přidá během fáze testování zkontrolujte schéma dat se vrací z R. Můžete odebrat příkaz později.
@@ -248,10 +248,9 @@ Všimli jste si, že původní trénovací data končila rychlostí 25 MPH? Je t
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Machine Learning Services najdete v níže uvedených článků. I když některé z těchto článků pro SQL Server, většina informace platí také pro Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
+Další informace o Azure SQL Database služby Machine Learning s jazykem R (preview) naleznete v následujících článcích.
 
-- [Azure SQL Database služby Machine Learning (s jazykem R)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Kurz: Zjistěte, analýza v databázi pomocí jazyka R na SQL serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Kurz: Funkce RevoScaleR R s daty formátu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Azure SQL Database služby Machine Learning s jazykem R (preview)](sql-database-machine-learning-services-overview.md)
+- [Vytvořit a spustit jednoduché skripty jazyka R v Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md)
+- [Zápis pokročilé funkce jazyka R ve službě Azure SQL Database pomocí služby Machine Learning (preview)](sql-database-machine-learning-services-functions.md)
+- [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)

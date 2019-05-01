@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: a4c643ecff5c33ec19c607da6ef8db41cfeb90c6
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63762816"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689371"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
@@ -35,7 +35,7 @@ Služba Media Services aktuálně podporuje následující předdefinované anal
 |---|---|---|
 |[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza zvuku|Přednastavení platí předdefinovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. Přednastavení v současné době podporuje zpracování obsahu pomocí jednoho zvuková stopa, která obsahuje řeči v jednom jazyce. Vyberte jazyk datové části zvukový vstup ve formátu BCP-47 "jazyk oblast značky". Podporované jazyky jsou angličtina ("en US" a 'en-GB'), španělština ("es-ES" a "es-MX"), francouzština ("fr-FR"), italština ("it-IT"), japonština ("ja-JP"), portugalština ("pt-BR"), čínština ("zh-CN"), němčina ("de-DE"), arabština ("ar – např.), ruština ("ru-RU"), hindština ("hi v. ) a korejština ("ko-KR").<br/><br/> Pokud jazyk není zadaná nebo nastavená na hodnotu null a automatické zjišťování bude zvolte první jazyk zjištěna a zpracovat vybraný jazyk po dobu trvání souboru. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Nepodporuje aktuálně dynamicky přepínání mezi jazyky po první jazyk se detekuje. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně jasně řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejde zpět na angličtinu.|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje insights (bohatých metadat) z audio a video a uloží soubor formátu JSON. Můžete určit, zda chcete pouze poznatky zvuku při zpracování souboru videa. Další informace najdete v tématu [analyzovat video](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)||Popisuje nastavení, které se použije při analýze video k rozpoznávání tváří k dispozici.|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Rozpoznání tváře ve videu|Popisuje nastavení, které se použije při analýze video k rozpoznávání tváří k dispozici.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -66,7 +66,7 @@ Výstup obsahuje všechny informace, které byly nalezeny v video nebo zvuk soub
 |---|---|
 |id|ID řádku.|
 |text|Přepis samotný.|
-|jazyk|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
+|language|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se tento řádek. Pokud je instance přepisu, bude mít jenom 1 instance.|
 
 Příklad:
@@ -105,7 +105,7 @@ Příklad:
 |id|ID OCR řádku.|
 |text|OCR textu.|
 |spolehlivosti|Rozpoznávání spolehlivosti.|
-|jazyk|OCR jazyk.|
+|language|OCR jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
 
 ```json
@@ -146,7 +146,7 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|ID tváře.|
-|name|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
+|jméno|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
 |spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
 |description|Popis celebrity. |
 |thumbnailId|ID miniatury této pro rozpoznávání tváře.|
@@ -297,7 +297,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 |---|---|
 |id|ID popisku.|
 |jméno|Název popisku (například "Computer", "TV").|
-|jazyk|Popisek názvu jazyka (při překladu). BCP-47|
+|language|Popisek názvu jazyka (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
 
 
@@ -357,7 +357,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 |id|ID – klíčové slovo.|
 |text|Text – klíčové slovo.|
 |spolehlivosti|Klíčové slovo rozpoznávání spolehlivosti.|
-|jazyk|Jazyk – klíčové slovo (při překladu).|
+|language|Jazyk – klíčové slovo (při překladu).|
 |instance|Seznam časových rozsahů, ve kterém se nacházela toto klíčové slovo (klíčové slovo může objevit více než jednou).|
 
 ```json

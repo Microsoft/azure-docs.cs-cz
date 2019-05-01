@@ -3,19 +3,19 @@ title: Začínáme s vlastními zásadami – Azure Active Directory B2C | Dokum
 description: Zjistěte, jak začít pracovat s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b414529d7756812f1e1e16d2d0184c8472c0c55f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9ad91967b5423539f28089bbf2da22edcf8f9a6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317951"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714963"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 

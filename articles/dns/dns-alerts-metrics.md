@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: baa2a09adeba133c5348449b12e037d4a9cb3213
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a9d8bc172eb5f5e0e119a0bde56fb167f7a0c2b2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683023"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699154"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metrik a výstrah
 Azure DNS je hostitelská služba určená pro domény DNS, která nabízí řešení názvů pomocí infrastruktury Microsoft Azure. Tento článek popisuje metrik a výstrah pro službu Azure DNS.
@@ -36,7 +36,7 @@ Můžete zobrazit také [definice tyto metriky](../azure-monitor/platform/metric
 >[!NOTE]
 > V tuto chvíli tyto metriky jsou k dispozici pouze pro veřejné služby DNS zóny hostované v Azure DNS. Pokud máte hostované v Azure DNS Private Zones tyto metriky neposkytne data pro tyto zóny. Kromě toho metrik a výstrah funkce je podporován pouze v Azure veřejného cloudu. Podpora pro suverénní cloudy bude následovat později. 
 
-Velmi podrobné úrovni dimenze pro tyto metriky se zóna DNS.
+Co nejpodrobnější elementu, který mohou vidět metriky pro je zóna DNS. Teď nemůžete zobrazit metriky pro jednotlivé záznamy o prostředcích v zóně.
 
 ### <a name="query-volume"></a>Množství dotazů
 

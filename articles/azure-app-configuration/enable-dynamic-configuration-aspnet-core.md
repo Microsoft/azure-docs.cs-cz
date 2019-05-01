@@ -9,27 +9,27 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
-ms.devlang: na
+ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cf872766a18c5691f6c094d71a0c29f6bcf736da
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: b8a466234489e65458b0136619076154fa4c9f37
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579032"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688915"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: Použít dynamické konfiguraci aplikace ASP.NET Core
 
-ASP.NET Core je modulární konfigurace systému, který může číst konfigurační data z různých zdrojů. Dokáže zpracovat změny v reálném čase bez způsobení aplikací k restartování. ASP.NET Core podporuje vazbu nastavení konfigurace má být silného typu třídy rozhraní .NET. To vloží do svého kódu s použitím různých `IOptions<T>` vzory. Jedna z následujících vzorů, konkrétně `IOptionsSnapshot<T>`, automaticky znovu načte konfiguraci vaší aplikace, když se změní podkladová data. 
+ASP.NET Core je modulární konfigurace systému, který může číst konfigurační data z různých zdrojů. Dokáže zpracovat změny v reálném čase bez způsobení aplikací k restartování. ASP.NET Core podporuje vazbu nastavení konfigurace má být silného typu třídy rozhraní .NET. To vloží do svého kódu s použitím různých `IOptions<T>` vzory. Jedna z následujících vzorů, konkrétně `IOptionsSnapshot<T>`, automaticky znovu načte konfiguraci vaší aplikace, když se změní podkladová data.
 
 Můžete vložit `IOptionsSnapshot<T>` do řadiče ve vaší aplikaci přístup k nejnovější konfigurace uložené v konfiguraci aplikací Azure. Můžete také nastavit Klientská knihovna ASP.NET Core konfigurace aplikace průběžně monitorovat a načíst všechny změny v obchodě s aplikacemi konfigurace. Můžete definovat pravidelný interval pro dotazování.
 
 Tento kurz ukazuje, jak můžete implementovat konfigurace dynamické aktualizace ve vašem kódu. Sestaví ve webové aplikaci zavedený rychlých startech. Než budete pokračovat, dokončete [vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) první.
 
-Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je skvělou možnost, která je k dispozici ve Windows, macOS a Linux platformy.
+Provést kroky v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je skvělou možnost, která je k dispozici ve Windows, macOS a Linux platformy.
 
 V tomto kurzu se naučíte:
 
@@ -39,13 +39,13 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotnet.microsoft.com/download).
+V tomto kurzu provedete instalaci [.NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
-1. Otevřete soubor Program.cs a aktualizujte `CreateWebHostBuilder` metodu tak, že přidáte `config.AddAzureAppConfiguration()` metody.
+1. Otevřít *Program.cs*a aktualizovat `CreateWebHostBuilder` metodu tak, že přidáte `config.AddAzureAppConfiguration()` metody.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -64,7 +64,7 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 
     Druhý parametr `.Watch` metoda je interval dotazování, kdy Klientská knihovna ASP.NET dotazuje konfigurace app storu. Klientská knihovna zkontroluje nastavení konkrétní konfiguraci zobrazíte, pokud došlo k chybě změny.
 
-2. Přidání souboru Settings.cs, který definuje a implementuje nový `Settings` třídy.
+2. Přidat *Settings.cs* souboru, který definuje a implementuje nový `Settings` třídy.
 
     ```csharp
     namespace TestAppConfig
@@ -79,7 +79,7 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
     }
     ```
 
-3. Otevřete Startup.cs a aktualizujte `ConfigureServices` metody k vytvoření vazby na konfigurační data `Settings` třídy.
+3. Otevřít *Startup.cs*a aktualizovat `ConfigureServices` metody k vytvoření vazby na konfigurační data `Settings` třídy.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,13 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 
 ## <a name="use-the-latest-configuration-data"></a>Použít nejnovější konfigurační data
 
-1. Otevřete HomeController.cs v adresáři řadiče. Aktualizace `HomeController` třídy pro příjem `Settings` pomocí vkládání závislostí a ujistěte se, využívají jeho hodnoty.
+1. Otevřít *HomeController.cs* v adresáři řadiče a přidejte odkaz na `Microsoft.Extensions.Options` balíčku.
+
+    ```csharp
+    using Microsoft.Extensions.Options;
+    ```
+
+2. Aktualizace `HomeController` třídy pro příjem `Settings` pomocí vkládání závislostí a ujistěte se, využívají jeho hodnoty.
 
     ```csharp
     public class HomeController : Controller
@@ -121,7 +127,7 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
     }
     ```
 
-2. Otevřít v zobrazení Index.cshtml > domácí adresář a nahraďte jeho obsah následujícího skriptu:
+3. Otevřít *Index.cshtml* v zobrazeních > domácí adresář a nahraďte jeho obsah následujícího skriptu:
 
     ```html
     <!DOCTYPE html>
@@ -164,7 +170,7 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 
     | Klíč | Hodnota |
     |---|---|
-    | TestAppSettings:BackgroundColor | Modrá |
+    | TestAppSettings:BackgroundColor | green |
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Data z konfigurace aplikace Azure – nyní se živé aktualizace! |
 

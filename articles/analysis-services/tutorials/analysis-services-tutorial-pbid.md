@@ -5,15 +5,15 @@ manager: kfile
 description: Zjistěte, jak se připojit ke službě Azure Analysis Services v Power BI Desktopu.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ea2a6612a568d4080a8df2c569f79aaaa283e9c4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60788192"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702846"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Spojte se s Power BI Desktopu
 
@@ -71,4 +71,4 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 Pokud už sestavu nepotřebujete, neukládejte ji. Pokud jste ji uložili, soubor můžete odstranit.
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste se naučili používat Power BI Desktop pro připojení k datovému modelu na serveru a také vytvořit základní sestavu. Pokud nevíte, jak vytvořit datový model, podívejte se na článek týkající se [kurzu modelování tabulkových dat internetových prodejů Adventure Works](aas-adventure-works-tutorial.md).
+V tomto kurzu jste se naučili používat Power BI Desktop pro připojení k datovému modelu na serveru a také vytvořit základní sestavu. Pokud nejste obeznámeni s postupy vytvoření datového modelu, najdete v článku [kurzu modelování tabulkových dat společnosti Adventure Works Internet Sales](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) v dokumentaci SQL Server Analysis Services.

@@ -4,164 +4,178 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 2f6dbd70-c2db-4ae9-99ee-976c3090d214
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/25/2018
+ms.topic: tutorial
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0bffdf439a192fb10fe695fbfa18e8c7abf8077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3f0d42562b1c927fe0f87ddc87b5e097022d2be2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60541752"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Kurz: Integrace Azure Active Directory s Spotinst
 
 V tomto kurzu se dozvíte, jak integrovat Spotinst s Azure Active Directory (Azure AD).
-
 Spotinst integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Spotinst.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Spotinst (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k Spotinst.
+* Můžete povolit uživatelům být automaticky přihlášeni k Spotinst (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Spotinst, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Spotinst jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Spotinst jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Spotinst z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje Spotinst **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-spotinst-from-the-gallery"></a>Přidání Spotinst z Galerie
+
 Konfigurace integrace Spotinst do služby Azure AD, budete muset přidat Spotinst z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Spotinst z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **Spotinst**vyberte **Spotinst** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Spotinst v seznamu výsledků](./media/spotinst-tutorial/tutorial_spotinst_addfromgallery.png)
+    ![Spotinst v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Spotinst podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Spotinst je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Spotinst potřeba navázat.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Spotinst podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Spotinst.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Spotinst, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Spotinst](#create-a-spotinst-test-user)**  – Pokud chcete mít protějšek Britta Simon Spotinst, který je propojený s Azure AD reprezentace uživatele.
+2. **[Konfigurace Spotinst Single Sign-On](#configure-spotinst-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+5. **[Vytvořit testovacího uživatele Spotinst](#create-spotinst-test-user)**  – Pokud chcete mít protějšek Britta Simon Spotinst, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Spotinst.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Spotinst, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s Spotinst, proveďte následující kroky:
 
-1. Na webu Azure Portal na **Spotinst** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Spotinst** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/spotinst-tutorial/tutorial_spotinst_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-3. Na **Spotinst domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v režimu iniciované zprostředkovatele identity:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Spotinst domény a adresy URL jednotného přihlašování – informace](./media/spotinst-tutorial/tutorial_spotinst_url1.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. Zkontrolujte **zobrazit pokročilé nastavení URL**.
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+
+    ![Spotinst domény a adresy URL jednotného přihlašování – informace](common/idp-preintegrated-relay.png)
+
+    a. Zkontrolujte **nastavit další adresy URL**.
 
     b. V **stav přenosu** textového pole zadejte hodnotu: `<ID>`
 
-    c. Pokud chcete nakonfigurovat aplikace v **SP** zahájeno v režimu **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://console.spotinst.com`
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+
+    ![Spotinst domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://console.spotinst.com`
 
     > [!NOTE]
     > Stav přenosu hodnota není skutečný. Stav přenosu hodnota aktualizuje o skutečnou hodnotu stav přenosu, který je vysvětlen později v tomto kurzu.
 
-4. Spotinst aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro něj.
+6. Spotinst aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
 
-    ![Konfigurace jednotného přihlašování](./media/spotinst-tutorial/tutorial_Spotinst_attribute.png)
+    ![image](common/edit-attribute.png)
 
-5. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název atributu | Hodnota atributu |
-    | ---------------| --------------- |
+    | Název | Zdrojový atribut|
+    | -----| --------------- |
     | Email | user.mail |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    
-    a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
-    ![Konfigurace jednotného přihlašování](./media/spotinst-tutorial/tutorial_attribute_04.png)
+    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-    ![Konfigurace jednotného přihlašování](./media/spotinst-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
 
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    c. Nechte **Namespace** prázdné.
 
-    d. Nechte **Namespace** prázdné.
+    d. Vyberte zdroj jako **atribut**.
 
-    e. Klikněte na tlačítko **Ok**
+    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
 
-6. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+    f. Klikněte na tlačítko **Ok**
 
-    ![Odkaz ke stažení certifikátu](./media/spotinst-tutorial/tutorial_spotinst_certificate.png) 
+    g. Klikněte na **Uložit**.
 
-7. Klikněte na tlačítko **Uložit** tlačítko.
+8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/spotinst-tutorial/tutorial_general_400.png)
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-8. V jiné okno webového prohlížeče, přihlaste se k Spotinst jako správce zabezpečení.
+9. Na **nastavení Spotinst** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-9. Klikněte na **ikonu uživatele** v horní pravé straně obrazovky a klikněte na tlačítko **nastavení**.
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-spotinst-single-sign-on"></a>Konfigurace Spotinst jednotné přihlašování
+
+1. V okně jiné webové prohlížeče Přihlaste se k Spotinst jako správce zabezpečení.
+
+2. Klikněte na **ikonu uživatele** v horní pravé straně obrazovky a klikněte na tlačítko **nastavení**.
 
     ![Nastavení Spotinst](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-10. Klikněte na **zabezpečení** kartě v horní části a pak vyberte **zprostředkovatelé Identity** a proveďte následující kroky:
+3. Klikněte na **zabezpečení** kartě v horní části a pak vyberte **zprostředkovatelé Identity** a proveďte následující kroky:
 
     ![Spotinst zabezpečení](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
-    a. Kopírovat **stav přenosu** hodnotu pro vaši instanci a vložte ji **stav přenosu** textového pole v **Spotinst domény a adresy URL** části na webu Azure portal.
+    a. Kopírovat **stav přenosu** hodnotu pro vaši instanci a vložte ji **stav přenosu** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
 
     b. Klikněte na tlačítko **Procházet** nahrát soubor metadat xml, který jste si stáhli z webu Azure portal
 
@@ -171,41 +185,59 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/spotinst-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/spotinst-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/spotinst-tutorial/create_aaduser_03.png)
-
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/spotinst-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-a-spotinst-test-user"></a>Vytvoření zkušebního uživatele Spotinst
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+
+V této části je povolit Britta Simon k udělení přístupu k Spotinst použití Azure jednotného přihlašování.
+
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Spotinst**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikací vyberte **Spotinst**.
+
+    ![Odkaz Spotinst v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-spotinst-test-user"></a>Vytvoření Spotinst testovacího uživatele
 
 Cílem této části je vytvořte uživatele Britta Simon v Spotinst.
 
-1. Pokud jste nakonfigurovali v aplikaci **SP** intiated režimu, proveďte následující kroky:
+1. Pokud jste nakonfigurovali v aplikaci **SP** iniciované režimu, proveďte následující kroky:
 
-   a. V jiné okno webového prohlížeče, přihlaste se k Spotinst jako správce zabezpečení.
+   a. V okně jiné webové prohlížeče Přihlaste se k Spotinst jako správce zabezpečení.
 
    b. Klikněte na **ikonu uživatele** v horní pravé straně obrazovky a klikněte na tlačítko **nastavení**.
 
@@ -221,67 +253,23 @@ Cílem této části je vytvořte uživatele Britta Simon v Spotinst.
 
     * V **jméno a příjmení** textového pole zadejte celé jméno uživatele jako **BrittaSimon**.
 
-    * V **e-mailu** textového pole zadejte e-mailovou adresu uživatele, jako je **brittasimon\@contoso.com**.
+    * V **e-mailu** textového pole zadejte e-mailovou adresu uživatele, jako je `brittasimon\@contoso.com`.
 
     * Vyberte podrobnosti specifické pro organizaci **organizace Role, Role účtu a účty**.
 
-2. Pokud jste nakonfigurovali v aplikaci **IDP** intiated režim, zde je položky žádná akce vám v této části. Spotinst podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Nový uživatel se vytvoří během pokusu o přístup k Spotinst, pokud ještě neexistuje.
+2. Pokud jste nakonfigurovali v aplikaci **IDP** iniciované režim, zde je položky žádná akce vám v této části. Spotinst podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Nový uživatel se vytvoří během pokusu o přístup k Spotinst, pokud ještě neexistuje.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části je povolit Britta Simon k udělení přístupu k Spotinst použití Azure jednotného přihlašování.
-
-![Přiřazení role uživatele][200] 
-
-**Přiřadit Spotinst Britta Simon, proveďte následující kroky:**
-
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201] 
-
-2. V seznamu aplikací vyberte **Spotinst**.
-
-    ![Odkaz Spotinst v seznamu aplikací](./media/spotinst-tutorial/tutorial_spotinst_app.png)  
-
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"][202]
-
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení][203]
-
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Spotinst na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Spotinst.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici Spotinst na přístupovém panelu, můžete by měl být automaticky přihlášeni k Spotinst, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/spotinst-tutorial/tutorial_general_01.png
-[2]: ./media/spotinst-tutorial/tutorial_general_02.png
-[3]: ./media/spotinst-tutorial/tutorial_general_03.png
-[4]: ./media/spotinst-tutorial/tutorial_general_04.png
-
-[100]: ./media/spotinst-tutorial/tutorial_general_100.png
-
-[200]: ./media/spotinst-tutorial/tutorial_general_200.png
-[201]: ./media/spotinst-tutorial/tutorial_general_201.png
-[202]: ./media/spotinst-tutorial/tutorial_general_202.png
-[203]: ./media/spotinst-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

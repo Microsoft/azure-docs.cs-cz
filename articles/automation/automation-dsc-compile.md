@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074110"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919803"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
 
@@ -287,11 +287,11 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ## <a name="partial-configuration"></a>Částečné konfigurace
 
-Konfigurace stavu Azure Automation podporuje použití [částečné konfigurace](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+Konfigurace stavu Azure Automation podporuje použití [částečné konfigurace](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs).
 V tomto scénáři DSC je nakonfigurované pro správu konfigurací s více nezávisle na sobě, a každou konfiguraci retreieved ze služby Azure Automation.
 Pouze jedné konfigurace, ale je možné přiřadit k uzlu na účet služby automation.
 To znamená, že pokud používáte dvě konfigurace pro uzel budete potřebovat dva účty služby automation.
-Další informace o tom, jak mohou týmy pracují společně společně spravovat servery pomocí konfigurace jako kódu naleznete v tématu [Principy DSC role v kanálu CI/CD](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
+Další informace o tom, jak mohou týmy pracují společně společně spravovat servery pomocí konfigurace jako kódu naleznete v tématu [Principy DSC role v kanálu CI/CD](https://docs.microsoft.com/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Import konfigurace uzlu
 

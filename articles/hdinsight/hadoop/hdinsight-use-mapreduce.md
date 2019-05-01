@@ -1,7 +1,6 @@
 ---
 title: MapReduce se službou Apache Hadoop v HDInsight
 description: Zjistěte, jak spouštět úlohy MapReduce systému Apache Hadoop v clusterech HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521191"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707963"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce se v Apache Hadoop v HDInsight
 
@@ -49,15 +48,13 @@ Streamování Hadoop komunikuje s mapovací a redukční funkci pomocí standard
 
 Další informace najdete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
-Příklady použití streamování s HDInsight Hadoop naleznete v následujících dokumentech:
+Příklady použití streamování s HDInsight Hadoop najdete v následujícím dokumentu:
 
 * [Vývoj úloh MapReduce C#](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Vývoj úloh MapReduce Pythonu](apache-hadoop-streaming-python.md)
-
 ## <a id="data"></a>Ukázková data
 
-HDInsight poskytuje různé příklad datové sady, které jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou ve výchozím nastavení úložiště pro váš cluster. V tomto dokumentu budeme používat `/example/data/gutenberg/davinci.txt` souboru. Tento soubor obsahuje poznámkových bloků Leonardo Da Vinci.
+HDInsight poskytuje různé příklad datové sady, které jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou ve výchozím nastavení úložiště pro váš cluster. V tomto dokumentu budeme používat `/example/data/gutenberg/davinci.txt` souboru. Tento soubor obsahuje poznámkových bloků Leonardo da Vinci.
 
 ## <a id="job"></a>Příklad MapReduce
 
@@ -137,11 +134,9 @@ public class WordCount {
 }
 ```
 
-Pokyny pro psaní vlastních aplikací MapReduce naleznete v následujících dokumentech:
+Pokyny pro psaní vlastních aplikací MapReduce najdete v následujícím dokumentu:
 
 * [Vývoj aplikací Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-* [Vývoj aplikace Python MapReduce pro HDInsight](apache-hadoop-streaming-python.md)
 
 ## <a id="run"></a>Spustit MapReduce
 
@@ -158,8 +153,6 @@ HDInsight můžete spouštět úlohy HiveQL pomocí různých metod. Použijte n
 Další informace o práci s daty v HDInsight, najdete v následujících dokumentech:
 
 * [Vývoj programů Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-* [Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu](apache-hadoop-streaming-python.md)
 
 * [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
 

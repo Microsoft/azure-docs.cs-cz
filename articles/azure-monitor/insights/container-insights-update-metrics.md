@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101604"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685623"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor k zapnutí metrik pro kontejnery
 Azure Monitor pro kontejnery zavádí podporu pro shromažďování metrik z uzlů clusterů služby Kubernetes v Azure (AKS) a podů a jejich zápis do úložiště metrik Azure monitoru. Tato změna má poskytovat vylepšené včasnosti při zobrazení agregační výpočty (průměr, počet, Max, Min, součet) v grafech výkonu, podpory připínat grafy výkonu v Azure portal řídicí panely a podporují upozornění na metriku.

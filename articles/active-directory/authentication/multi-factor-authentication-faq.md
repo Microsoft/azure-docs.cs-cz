@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbebbeaad681618e8420ad842ec370ce62bc9eba
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357473"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570830"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -59,7 +59,7 @@ V Kanadě Microsoft používá následující kódy krátký SMS:
    * 759731 
    * 673801
 
-Microsoft nezaručuje konzistentní SMS nebo ověřování službou Multi-Factor Authentication pomocí hlasu výzvy doručení stejné číslo. Větší naši uživatelé mohou Microsoft přidávat nebo odebírat krátké kódy kdykoli během postupu úpravy ke zlepšení doručitelnosti SMS. Microsoft nepodporuje krátké kódy zemí kromě USA a Kanada
+Microsoft nezaručuje konzistentní SMS nebo ověřování službou Multi-Factor Authentication pomocí hlasu výzvy doručení stejné číslo. Větší naši uživatelé mohou Microsoft přidávat nebo odebírat krátké kódy kdykoli během postupu úpravy ke zlepšení doručitelnosti SMS. Microsoft nepodporuje krátké kódy zemích nebo oblastech kromě USA a Kanadě.
 
 ## <a name="billing"></a>Fakturace
 
@@ -95,7 +95,7 @@ Multi-Factor Authentication pro uživatele Office 365 nabízí podmnožinu funkc
 
 Pokud vaše organizace zakoupí MFA jako samostatná služba s využitím fakturace založený na spotřebě, zvolte model fakturace při vytváření poskytovatele MFA. Model fakturace nelze změnit po vytvoření poskytovatele MFA. Můžete však poskytovatele MFA odstranit a pak vytvořte jiný model fakturace.
 
-Po vytvoření poskytovatele MFA nesmí být propojení služby Azure Active Directory (označuje se také jako "Azure AD tenant"). Pokud aktuální poskytovatele MFA je propojený s tenantem Azure AD, můžete poskytovatele MFA odstranit a vytvořit nového, který je spojen do stejného tenanta služby Azure AD. Alternativně, pokud jste zakoupili dostatek licencí MFA, Azure AD Premium nebo Enterprise Mobility + Security (EMS) k pokrytí všech uživatelů s povoleným vícefaktorovým ověřováním, můžete poskytovatele MFA odstranit úplně.
+Po vytvoření poskytovatele MFA lze propojit na Azure Active Directory, nebo "Tenanta Azure AD". Pokud aktuální poskytovatele MFA je propojený s tenantem Azure AD, můžete poskytovatele MFA odstranit a vytvořit nového, který je spojen do stejného tenanta služby Azure AD. Alternativně, pokud jste zakoupili dostatek licencí MFA, Azure AD Premium nebo Enterprise Mobility + Security (EMS) k pokrytí všech uživatelů s povoleným vícefaktorovým ověřováním, můžete poskytovatele MFA odstranit úplně.
 
 Pokud je poskytovatel MFA *není* propojený s tenantem Azure AD nebo propojení nového poskytovatele MFA do jiné služby Azure AD tenanta, uživatelská nastavení a možnosti konfigurace se nepřenesou. Je také potřeba znovu aktivovat stávající Azure MFA Servery pomocí přihlašovacích údajů pro aktivaci vygenerovaných prostřednictvím nového poskytovatele MFA. Opětovná aktivace MFA Serverů za účelem jejich propojení s novým poskytovatelem MFA nemá vliv na ověřování pomocí telefonního hovoru a textové zprávy, ale do opětovné aktivace mobilní aplikace přestanou pro všechny uživatele fungovat oznámení mobilní aplikace.
 
@@ -142,7 +142,7 @@ Pokud vaše organizace nemá starší verze klientů, by neměla uživatelům po
 > [!NOTE]
 > Moderní ověřování pro klienty Office 2013
 >
-> Hesla aplikací jsou jenom pro aplikace, které nepodporují moderní ověřování. Podpora moderních ověřovacích protokolů klientech Office 2013, ale je potřeba nakonfigurovat. Moderní ověřování je nyní k dispozici všem zákazníkům s verzí update. března 2015 nebo novější pro Office 2013. Další informace najdete v tématu [Office 2013 moderní ověřování oznámení veřejné Preview verze](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Hesla aplikací jsou jenom pro aplikace, které nepodporují moderní ověřování. Podpora moderních ověřovacích protokolů klientech Office 2013, ale je potřeba nakonfigurovat. Moderní ověřování je nyní k dispozici všem zákazníkům s verzí update. března 2015 nebo novější pro Office 2013. Další informace naleznete v příspěvku blogu [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
 **Otázka: Moji uživatelé prohlašují, že někdy nedostávají textovou zprávu nebo se odpovědět na obousměrné textové zprávy, ale ověření vyprší časový limit.**
 

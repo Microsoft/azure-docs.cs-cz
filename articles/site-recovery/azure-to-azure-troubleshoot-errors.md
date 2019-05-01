@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789858"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699079"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -221,7 +221,17 @@ Ujistěte se, že datové disky jsou inicializované a pak zkuste operaci zopako
 
 Pokud se problém nevyřeší, obraťte se na podporu.
 
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Jeden nebo více disků jsou k dispozici pro ochranu (kód chyby: 153039)
+- **Možná příčina** </br>
+  - Pokud jeden nebo více disků byly nedávno přidány k virtuálnímu počítači po ochranu. 
+  - Pokud jeden nebo více disků byly inicializovány později po zapnutí ochrany virtuálního počítače.
 
+### <a name="fix-the-problem"></a>Tento problém vyřešit
+Buď můžete k ochraně disky nebo ignorovat upozornění opět stav replikace virtuálního počítače v dobrém stavu.</br>
+1. K ochraně disky. Přejděte na replikované položky > virtuální počítač > disky > klikněte na nechráněný disk > Povolit replikaci.
+ ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
+2. Chcete-li zrušit upozornění. Přejděte na replikované položky > virtuální počítač > klikněte na Zavřít výstrahu v části Přehled.
+![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Virtuální počítač Azure pro výběr v "povolit replikaci" se nezobrazuje
 
  **1. příčina:  Skupinu prostředků a zdrojový virtuální počítač jsou v různém umístění** <br>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 00666e27c9251248aa6ecff75d88908baabf71f3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61360145"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919691"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -40,7 +40,7 @@ ASC pro IoT cenový model se skládá ze dvou částí a účtuje se po služby 
   >[!Note]
   > Zabezpečení zprávy budou účtovat také využití kvóty ve službě IoT Hub.
 
-Další informace najdete v tématu [ceny Security Center](https://azure.microsoft.com/en-us/pricing/details/security-center/).
+Další informace najdete v tématu [ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Související náklady
 
@@ -65,7 +65,7 @@ Následující tabulka obsahuje souhrn související náklady a důsledky jednot
 |     | Využití | Poznámka |
 | --- | --- | --- |
 | **Využití kvóty služby IoT Hub** |  |
-| [Export zařízení](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) úlohy (dvojčete export) | Jednou za den | Zakázat _dvojčete kolekci metadat_ |
+| [Export zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) úlohy (dvojčete export) | Jednou za den | Zakázat _dvojčete kolekci metadat_ |
 | **Úložiště analýzy protokolů** |  |
 | Zařízení doporučení a výstrahy| Doporučení pro zabezpečení a výstrah generovaných službou | Není nepovinný |
 | Nezpracovaná zabezpečení dat| Zabezpečení nezpracovaných dat ze zařízení IoT, shromážděná agenty zabezpečení | Zakázat _ukládat události zabezpečení_ |

@@ -3,19 +3,19 @@ title: Správa jednotného přihlašování a token přizpůsobení pomocí vlas
 description: Další informace o správě jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317169"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703386"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Správa jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -23,7 +23,11 @@ Tento článek obsahuje informace o tom, jak můžete spravovat token, relace a 
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Konfigurace tokenu životnosti a deklarace identity
 
-Chcete-li změnit nastavení na vaše životností tokenů, je přidat [ClaimsProviders](claimsproviders.md) element v souboru předávající strana zásady měly týkat.  **ClaimsProviders** element je podřízeným prvkem [TrustFrameworkPolicy](trustframeworkpolicy.md) elementu. Uvnitř budete muset poskytnout informace, které má vliv na vaše životností tokenů. XML vypadá jako v tomto příkladu:
+Chcete-li změnit nastavení na vaše životností tokenů, je přidat [ClaimsProviders](claimsproviders.md) element v souboru předávající strana zásady měly týkat.  **ClaimsProviders** element je podřízeným prvkem [TrustFrameworkPolicy](trustframeworkpolicy.md) elementu. 
+
+Vložte element ClaimsProviders mezi BasePolicy element a element RelyingParty souboru předávající strany.
+
+Uvnitř budete muset poskytnout informace, které má vliv na vaše životností tokenů. XML vypadá jako v tomto příkladu:
 
 ```XML
 <ClaimsProviders>

@@ -2,24 +2,18 @@
 title: Registrace ve službě Dev Center | Azure
 description: Postup při registraci v Centru pro vývojáře (Dev Center).
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 559b5a519a48d4aa8022961a59f6f29cef28f948
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735730"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937585"
 ---
 # <a name="register-in-dev-center"></a>Registrace na webu Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -34,7 +28,7 @@ K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete
     ![Informace o účtu s poli zemi](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
    
     >[!WARNING]
-    >Pokud chcete prodávat vaše služby na webu Azure Marketplace, ověřte, zda registrované entity z jednoho schváleného *prodej z* zemích. Omezení umístění se vyžaduje platební a daňové z důvodů. 
+    >Pokud chcete prodávat vaše služby na webu Azure Marketplace, ověřte, zda registrované entity z jednoho schváleného *prodej z* zemích nebo oblastech. Omezení umístění se vyžaduje platební a daňové z důvodů. 
     >*   Další informace najdete na webu Azure Marketplace zásadách pro účast na stránce umístění [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
 4.  Pro *typ účtu*, vyberte `Company` přepínač.  

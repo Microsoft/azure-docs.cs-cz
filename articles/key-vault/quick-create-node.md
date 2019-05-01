@@ -2,21 +2,19 @@
 title: Rychlý start – nastavení a získání tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node | Dokumentace Microsoftu
 description: V tomto rychlém startu nastavení a načtení tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: sumedhb
 ms.service: key-vault
-ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9b92b691974eb9a14feaf97d760aa056ad21783
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461176"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696041"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault s využitím webovou aplikaci v Node 
 

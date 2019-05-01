@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e79e610638b5ff271607da2e8855003707ea5932
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cdd639f690d98651661226fbd340964dfdc7861f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821294"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914931"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -69,7 +69,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 + **Nové funkce**
   + Azure Machine Learning SDK teď podporuje Python 3.7.
   + Azure Machine Learning DNN odhady teď poskytuje integrovanou podporu více verzí. Například `TensorFlow`  estimator nyní přijímá `framework_version` parametr a uživatele můžete určit verzi "1.10" nebo "1.12". Seznam verzí podporuje vaší aktuální verzi sady SDK, volání `get_supported_versions()` ve třídě požadované rozhraní (třeba `TensorFlow.get_supported_versions()`).
-  Seznam verzí podporuje nejnovější vydání sady SDK, najdete v článku [DNN Estimator dokumentaci](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
+  Seznam verzí podporuje nejnovější vydání sady SDK, najdete v článku [DNN Estimator dokumentaci](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Sada SDK verze 1.1.1 pro přípravu dat Azure Machine Learning
 
@@ -143,13 +143,13 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 
 + **Nové funkce**
 
-  + Azure Machine Learning teď nabízí prvotřídní podporu pro oblíbené DNN framework Chainer. Pomocí [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) třídy uživatelů můžete snadno trénovat a nasazovat modely Chainer.
+  + Azure Machine Learning teď nabízí prvotřídní podporu pro oblíbené DNN framework Chainer. Pomocí [ `Chainer` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) třídy uživatelů můžete snadno trénovat a nasazovat modely Chainer.
     + Zjistěte, jak [spouštět distribuované trénování s ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
     + Zjistěte, jak [spustit hyperparametrů s využitím HyperDrive Chainer](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure Machine Learning kanály přidat aktivační možnost změny úložiště dat na základě spuštění kanálu. Kanál [Poznámkový blok plán](https://aka.ms/pl-schedule) se aktualizuje a představte tuto funkci.
 
 + **Opravy chyb a vylepšení**
-  + Přidali jsme podporu Azure Machine Learning kanály pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (jako je například úložiště objektů blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , které jsou předány [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Kroky ve výchozím nastavení používají jako základní úložiště dat, který se může spustit do omezování problémy, když jsou současně spouštěny velký počet kroků úložiště souborů Azure.
+  + Přidali jsme podporu Azure Machine Learning kanály pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (jako je například úložiště objektů blob) na [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , které jsou předány [ PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Kroky ve výchozím nastavení používají jako základní úložiště dat, který se může spustit do omezování problémy, když jsou současně spouštěny velký počet kroků úložiště souborů Azure.
 
 ### <a name="azure-portal"></a>portál Azure
 

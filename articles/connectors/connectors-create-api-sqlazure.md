@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540784"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696406"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Připojení k serveru SQL Server nebo databázi Azure SQL z Azure Logic Apps
 
@@ -116,23 +116,26 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="process-data-in-bulk"></a>Zpracování dat, hromadné
+## <a name="handle-bulk-data"></a>Zpracování hromadných dat
 
-Při práci s velmi velké, že konektor nemá všechny výsledky jsou vráceny ve stejnou dobu, nebo chcete lepší kontrolu nad velikosti a struktuře vaší sady výsledků sad výsledků dotazu, můžete použít *stránkování*, což umožňuje je spravovat výsledky jako menší sady. 
+V některých případech bude pravděpodobně pracovat s velmi velké, že konektor nemá všechny výsledky jsou vráceny ve stejnou dobu, nebo chcete lepší kontrolu nad velikosti a struktuře vaší sady výsledků sad výsledků dotazu. Tady je několik způsobů, může zpracovat takové velké množství výsledků:
 
-[!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
+* Které vám pomohou spravovat výsledky jako menší sady, zapněte *stránkování*. Další informace najdete v tématu [získat hromadných dat, záznamů a položky pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
 
-### <a name="create-a-stored-procedure"></a>Vytvoření uložené procedury
+* Vytvořte uloženou proceduru, která slouží k uspořádání výsledky požadovaným způsobem.
 
-Při načítání nebo vložení více řádků, aplikace logiky můžete iterovat těchto položek pomocí [ *smyčka until* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) v rámci těchto [omezení](../logic-apps/logic-apps-limits-and-config.md). Ale někdy aplikace logiky má pro práci s velmi velké, například tisíce nebo miliony řádků, které chcete minimalizovat náklady na volání do databáze sady záznamů. 
+  Při načítání nebo vložení více řádků, aplikace logiky můžete iterovat tyto řádky s použitím [ *smyčka until* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) v rámci těchto [omezení](../logic-apps/logic-apps-limits-and-config.md). 
+  Pokud vaše aplikace logiky má ale pro práci s sady záznamů velmi velké, například tisíce nebo miliony řádků, že chcete minimalizovat náklady plynoucí z volání do databáze.
 
-Místo toho můžete vytvořit <a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank"> *uloženou proceduru* </a> , která se spouští ve vaší instanci SQL a používá **vyberte - ORDER BY** příkaz k uspořádání výsledky, jak potřebujete. Toto řešení nabízí větší kontrolu nad velikosti a struktuře vaší výsledků. Aplikace logiky pomocí konektoru systému SQL Server volá uloženou proceduru **spustit uloženou proceduru** akce. 
+  Pokud chcete výsledky ve způsobu, jakým chcete uspořádat, můžete vytvořit [ *uloženou proceduru* ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , která se spouští ve vaší instanci SQL a používá **vyberte - ORDER BY** příkazu. 
+  Toto řešení nabízí větší kontrolu nad velikosti a struktuře vaší výsledků. 
+  Aplikace logiky pomocí konektoru systému SQL Server volá uloženou proceduru **spustit uloženou proceduru** akce.
 
-Podrobnosti o řešení najdete v těchto článcích:
+  Podrobnosti o řešení najdete v těchto článcích:
 
-* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">Stránkování SQL pro přenos hromadných dat pomocí funkce Logic Apps</a>
+  * [Stránkování SQL pro přenos hromadných dat pomocí funkce Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">Vyberte - ORDER BY – klauzule</a>
+  * [Vyberte - ORDER BY – klauzule](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
 

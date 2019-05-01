@@ -1,7 +1,6 @@
 ---
 title: Nainstalovat Presto v clusterech Azure HDInsight s Linuxem
 description: Zjistěte, jak nainstalovat Presto a Airpal clusterů Hadoop na systému Linux HDInsight pomocí skriptových akcí.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 435c041bb5fb0a398f92914f943166108cc20080
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2bd5e1ae02ffbb62b9a5a95846aabeeab2b448b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258339"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704815"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight se systémem Hadoop
 
@@ -26,7 +25,7 @@ HDInsight také nabízí aplikace hvězdice Presto pro clustery systému Apache 
 > Kroky v tomto článku vyžadují clusteru služby HDInsight 3.5 Hadoop, který využívá systém Linux. Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [HDInsight verze](hdinsight-component-versioning.md).
 
 ## <a name="what-is-presto"></a>Co je Presto?
-[Presto](https://prestodb.io/overview.html) distribuované fast modul dotazů SQL pro velké objemy dat je. Presto je vhodný pro interaktivní dotazování petabajty dat. Podrobnosti o součásti Presto a jak pracují společně, naleznete v tématu [Presto koncepty](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
+[Presto](https://prestosql.io) distribuované fast modul dotazů SQL pro velké objemy dat je. Presto je vhodný pro interaktivní dotazování petabajty dat. Podrobnosti o součásti Presto a jak pracují společně, naleznete v tématu [Presto koncepty](https://prestosql.io/docs/current/overview/concepts.html).
 
 > [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované. Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
@@ -86,9 +85,9 @@ Pro práci s Presto v clusteru služby HDInsight, postupujte následovně:
    
     `select count (*) from hivesampletable;`
    
-    Ve výchozím nastavení [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) a [TPCH](https://prestodb.io/docs/current/connector/tpch.html) konektory pro Presto jsou už nakonfigurovaná. Konektor Hive je nakonfigurován pro použití výchozí instalaci Hive. Proto všechny tabulky z Hive se automaticky zobrazí v Presto.
+    Ve výchozím nastavení [Apache Hive](https://prestosql.io/docs/current/connector/hive.html) a [TPCH](https://prestosql.io/docs/current/connector/tpch.html) konektory pro Presto jsou už nakonfigurovaná. Konektor Hive je nakonfigurován pro použití výchozí instalaci Hive. Proto všechny tabulky z Hive se automaticky zobrazí v Presto.
 
-    Další informace najdete v tématu [Presto dokumentaci](https://prestodb.io/docs/current/index.html).
+    Další informace najdete v tématu [Presto dokumentaci](https://prestosql.io/docs/current/index.html).
 
 ## <a name="use-airpal-with-presto"></a>Pomocí Airpal Presta
 
@@ -151,7 +150,7 @@ K přizpůsobení instalace, proveďte následující kroky:
    
     Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Proveďte požadované změny konfigurace v souboru `/var/lib/presto/presto-hdinsight-master/appConfig-default.json`. Další informace o konfiguraci Presto, naleznete v tématu [možnosti Presto konfigurace pro clustery založené na YARN](https://prestodb.io/presto-yarn/installation-yarn-configuration-options.html).
+2. Proveďte požadované změny konfigurace v souboru `/var/lib/presto/presto-hdinsight-master/appConfig-default.json`. Další informace o konfiguraci Presto, naleznete v tématu [možnosti Presto konfigurace pro clustery založené na YARN](https://prestosql.github.io/presto-yarn/installation-yarn-configuration-options.html).
 
 3. Zastavit a ukončit aktuální spuštěné instance Presto:
 

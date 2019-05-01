@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/20/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 3c8a2fe9f4486fe4d33754b58f4e7ebec1b3252d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682946"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947074"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -119,7 +119,7 @@ Traffic Manager můžete používat k distribuování síťového provozu mezi v
 
 ### <a name="does-application-gateway-support-autoscaling"></a>Služba Application Gateway podporuje automatické škálování?
 
-Ano, SKU v2 Application Gateway podporuje automatické škálování. Další informace najdete v tématu [automatické škálování a zónově redundantní služba Application Gateway (public preview)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
+Ano, SKU v2 Application Gateway podporuje automatické škálování. Další informace najdete v tématu [automatické škálování a zónově redundantní služba Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Provede ruční škálování vertikálně zvýšit nebo snížit prostoje příčina?
 
@@ -267,7 +267,7 @@ Služba Application Gateway podporuje až 10 certifikáty pro ověřování. Vý
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway nativní integrace se službou Azure Key Vault?
 
-Ne.
+Ano, SKU v2 Application Gateway podporuje službu Key Vault. Další informace najdete v tématu [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Jak nakonfigurovat naslouchací procesy HTTPS pro weby .com a .net? 
 

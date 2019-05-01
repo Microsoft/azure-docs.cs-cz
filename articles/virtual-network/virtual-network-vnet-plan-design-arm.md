@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61034735"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575418"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuální sítě
 
@@ -77,7 +77,7 @@ Můžete filtrovat síťový provoz do a z prostředků ve virtuální síti pom
 - Pokud různé virtuální počítače v podsíti, pravidla zabezpečení použitá jim, můžete přidružit síťové rozhraní ve virtuálním počítači na jeden nebo více skupin zabezpečení aplikací. Pravidlo zabezpečení můžete určit skupinu zabezpečení aplikace v její zdroj a cíl. Toto pravidlo potom vztahuje pouze na síťová rozhraní, které jsou členy skupiny zabezpečení aplikace. Další informace o [skupiny zabezpečení sítě](security-overview.md) a [skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
 - Azure vytvoří několik výchozích pravidel zabezpečení v rámci jednotlivých skupin zabezpečení sítě. Jedno výchozí pravidlo umožňuje veškerý provoz mezi všechny prostředky ve virtuální síti. Chcete-li toto chování přepsat, použijte zabezpečení sítě ve skupině, vlastního směrování směrovat provoz na síťové virtuální zařízení, nebo obojí. Doporučuje se, že je seznámit se všemi Azure [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules) a pochopit, jak se používají pravidla skupiny zabezpečení sítě k prostředku.
 
-Můžete zobrazit vzorové návrhy pro implementace DMZ mezi Azure a internet pomocí [síťové virtuální zařízení](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) nebo [skupiny zabezpečení sítě](virtual-networks-dmz-nsg.md).
+Můžete zobrazit vzorové návrhy pro implementaci hraniční síti (označované také jako DMZ) mezi Azure a internet pomocí [síťové virtuální zařízení](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) nebo [skupiny zabezpečení sítě](virtual-networks-dmz-nsg.md).
 
 ### <a name="traffic-routing"></a>Směrování provozu
 

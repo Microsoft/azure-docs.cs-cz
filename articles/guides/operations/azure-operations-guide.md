@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537989"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570602"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -145,7 +145,7 @@ Podrobnou dokumentaci na služby Azure, najdete v části [dokumentace ke služb
 
 Azure je globální Cloudová platforma, která je obecně dostupná v mnoha oblastech po celém světě. Když si zřídíte službu, aplikace nebo virtuálního počítače v Azure, budete vyzváni k výběru oblasti. Vybraná oblast představuje speciﬁc datacenter, ve kterém vaše aplikace spuštěná. Další informace najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
 
-Jednou z beneﬁts pomocí Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte můžete aﬀect výkon vaší aplikace. Je optimální vyberte oblast, která je blíž ke nejvíce svým zákazníkům snížit latenci v síťové požadavky. Můžete také vybrat oblast pro splnění zákonných požadavků na distribuce aplikace v určitých zemích.
+Jednou z beneﬁts pomocí Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte můžete aﬀect výkon vaší aplikace. Je optimální vyberte oblast, která je blíž ke nejvíce svým zákazníkům snížit latenci v síťové požadavky. Můžete také vybrat oblast pro splnění zákonných požadavků na distribuce aplikace v určitých zemích nebo oblastech.
 
 ### <a name="azure-portal"></a>portál Azure
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 25f9d4e02bcb354acf1c771157622f07c5f4bcc1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684184"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712804"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -265,7 +265,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 Počáteční verzi preview tato funkce vyžaduje několik dalších příkazů odstraňte prostředky sítě, že kterou jste vytvořili dříve. Pokud jste použili příklady příkazů v předchozích částech tohoto článku vytvořte virtuální síť a podsíť, můžete použít následující skript k odstranění těchto síťových prostředků.
 
-Před spuštěním skriptu, nastavte `RES_GROUP` proměnnou pro název skupiny prostředků obsahující virtuální síť a podsíť, která měla by být odstraněna. Skript formátována pro prostředí Bash. Pokud chcete jiné prostředí, jako je PowerShell nebo příkazového řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnné a přístupové objekty.
+Před spuštěním skriptu, nastavte `RES_GROUP` proměnnou pro název skupiny prostředků obsahující virtuální síť a podsíť, která měla by být odstraněna. Aktualizujte názvy virtuální sítě a podsítě, pokud jste nepoužili `aci-vnet` a `aci-subnet` podle výše navrhovaných názvy. Skript formátována pro prostředí Bash. Pokud chcete jiné prostředí, jako je PowerShell nebo příkazového řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnné a přístupové objekty.
 
 > [!WARNING]
 > Tento skript se odstraní prostředky! Odstraní virtuální sítě i všechny podsítě, které obsahuje. Ujistěte se, že už nepotřebujete *jakékoli* prostředků ve virtuální síti, včetně podsítí obsahuje, před spuštěním tohoto skriptu. Po odstranění **tyto prostředky neopravitelné**.
@@ -281,6 +281,8 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
+# Replace aci-vnet and aci-subnet with your VNet and subnet names in the following commands
+
 SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name aci-vnet --name aci-subnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736706"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922411"
 ---
 # <a name="language-support-for-qna-maker"></a>Jazyková podpora v nástroji QnA Maker
 
@@ -41,7 +41,7 @@ Pokud uživatel plánuje zajistit podporu více jazyků, potřebují mít nový 
 
 Ověřte primárního jazyka pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).  
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
 1. Vyhledejte a vyberte prostředek Azure Search vytvořených jako součást vašeho prostředku QnA Maker. Název prostředku Azure Search, začne se stejným názvem jako prostředek QnA Maker a bude mít typ **služba Search**. 
 1. Z **přehled** stránky vyhledávání prostředků, vyberte **indexy**. 
 1. Vyberte **testkb** indexu.

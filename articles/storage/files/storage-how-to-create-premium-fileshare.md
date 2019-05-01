@@ -1,6 +1,6 @@
 ---
-title: Vytvoření účtu služby Azure premium storage souboru
-description: V tomto článku se dozvíte, jak vytvořit účet úložiště Azure úrovně premium souborů a sdílenou složkou premium.
+title: Vytvoření účtu úložiště souborů Azure storage
+description: V tomto článku se dozvíte, jak vytvořit úložiště souborů (preview) a sdílenou složkou premium.
 services: storage
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0eca706c9082b1fa60e13a0878fbb3061425c9bf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844516"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574426"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Jak vytvořit sdílenou složku Azure úrovně premium
 

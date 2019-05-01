@@ -1,30 +1,23 @@
 ---
-title: Popis webu Marketplace pro modul služby Azure IoT Edge | Dokumentace Microsoftu
+title: Popis webu Marketplace pro modul služby Azure IoT Edge | Azure Marketplace
 description: Vytvořte popis marketplace pro modul IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913278"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942432"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Kartu Marketplace modul IoT Edge
 
-
 **Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tento formulář dlouhý je rozdělen na čtyři části: **Přehled**, **marketingové artefakty**, **vést správu**, a **právní**.
+
 
 ## <a name="overview"></a>Přehled
 
@@ -32,22 +25,25 @@ V této části zadáte obecné informace o nabídky Azure Marketplace.  Hvězdi
 
 ![Přehled část Marketplace kartě na formulář Nová nabídka pro moduly IoT Edge](./media/iot-edge-module-marketplace-tab-overview.png)
 
-Následující tabulka popisuje účel a obsah těchto polí.
+Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou uvést hvězdičkou (*).
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Název**                 | Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace.  Maximální délka 50 znaků. <!--ADD PICTURE IN ACTION-->|
-| **Souhrn**               | Krátký popis nabídky Delší než 100 znaků. <!--ADD PICTURE IN ACTION-->|
-| **Dlouhé shrnutí**          | Už souhrn nabídky (i když může být stejná jako **souhrnu**).  Delší než 256 znaků. <!--ADD PICTURE IN ACTION-->|
-| **Popis**           | Popis nabídky.  3000 znaků podporuje jednoduchý formátování HTML.<br/> Musí obsahovat *minimální požadavky na hardware* odstavce v dolní části. Příklad: <br/> <p><u>Minimální požadavky na hardware:</u> Linux x64 a arm32 operační systém, 1 GB paměti RAM, 500 Mb úložiště</p>
-| **Identifikátor marketing**  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Název\***                 | Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace.  Maximální délka 50 znaků. <!--ADD PICTURE IN ACTION-->|
+| **Souhrn\***               | Krátký popis nabídky Delší než 100 znaků. <!--ADD PICTURE IN ACTION-->|
+| **Dlouhé shrnutí\***          | Už souhrn nabídky (i když může být stejná jako **souhrnu**).  Delší než 256 znaků. <!--ADD PICTURE IN ACTION-->|
+| **Popis\***           | Popis nabídky.  3000 znaků podporuje jednoduchý formátování HTML.<br/> Musí obsahovat *minimální požadavky na hardware* odstavce v dolní části. Příklad: <br/> <p><u>Minimální požadavky na hardware:</u> Linux x64 a arm32 operační systém, 1 GB paměti RAM, 500 Mb úložiště</p>
+| **Identifikátor marketing\***  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **ID předplatných ve verzi Preview** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
 | **Užitečné odkazy**          | Vícenásobného výběru obchodní a technické kategorií, které nabízejí lze nejlépe přidružit.  Maximálně 10 povolené. Ujistěte se, že chcete přidat alespoň jeden odkaz na dokumentaci a jedno propojení kompatibilních zařízení IoT Edge z [katalog zařízení Azure IoT](https://catalog.azureiotsolutions.com/). |
-| **Navrhované kategorií** | Můžete si vyberte až o pěti kategorií. Že se zobrazí na vaší stránce s podrobnostmi o produktu. Na stránkách procházet všechny moduly IoT Edge se zobrazí pod *Internet of Things \> modul IoT Edge* kategorie.|
+| **Navrhované kategorií\*** | Můžete si vyberte až o pěti kategorií. Že se zobrazí na vaší stránce s podrobnostmi o produktu. Na stránkách procházet všechny moduly IoT Edge se zobrazí pod *Internet of Things \> modul IoT Edge* kategorie.|
+|  |  |
+
 
 ### <a name="offer-example"></a>Příklad nabídky
 
  Následující příklady ukazují jak nabídky **Title**, **Souhrn**, **popis**, **loga**, a **snímky obrazovky** pole se zobrazí v zobrazení.
+
  
 #### <a name="on-the-azure-marketplace-website"></a>Na webu Azure Marketplace:
 
@@ -58,6 +54,7 @@ Následující tabulka popisuje účel a obsah těchto polí.
 - Při prohlížení podrobnosti nabídky:
 
     ![Jak modul IoT Edge se zobrazí při hledání podrobnosti o produktu na webu](./media/iot-edge-module-ampdotcom-pdp.png)
+
 
 #### <a name="on-the-azure-portal-website"></a>Na webu Azure portal:
 
@@ -88,18 +85,19 @@ Tato část obsahuje následující témata: **Loga**, **snímek obrazovky**, a 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
 | *Loga*  | Podívejte se, že pokud chcete zobrazit, jak a kde se použije vašeho loga zachycuje na předchozí obrazovku.  |
-| **Malé**                 | 40 x 40 Pixelový formát PNG                                                     |
-| **Střední**                | Formát PNG 90 x 90 pixelů                                                     |
-| **Velké**                 | Formát PNG 115 x 115 pixelů                                                  |
-| **Široký**                  | Formát PNG 255 x 115 pixelů                                                   |
+| **Malé\***                 | 40 x 40 Pixelový formát PNG                                                     |
+| **Střední\***                | Formát PNG 90 x 90 pixelů                                                     |
+| **Velké\***                 | Formát PNG 115 x 115 pixelů                                                  |
+| **Široký\***                  | Formát PNG 255 x 115 pixelů                                                   |
 | **Hero**                  | Formát PNG 815 x 290 pixelů.  Volitelné, ale jednou nahrané ikonu hero nelze odstranit. |
 | *Snímky obrazovky*  | Snímky obrazovky se zobrazí na vaší stránce s podrobnostmi o produktu. Jsou vhodné k vizuálnímu zobrazení činnosti modulu IoT Edge a jak to funguje. Můžete zobrazit diagramy architektury nebo použít případu obrázky pro instanci. Volitelné, ale maximálně pěti snímků obrazovky na SKU. |
 | **Název**                  | Název nebo název. Delší než 100 znaků.                             |
-| **Image**                 | Snímek obrazovky, 533 x 324 Pixelový formát PNG                                         |
+| **Image**                 | Snímek obrazovky, 533 x 324 Pixelový formát PNG                               |
 | *Videa*  | Videa se zobrazí na vaší stránce s podrobnostmi o produktu. Jsou vhodné k vizuálnímu zobrazení činnosti modulu IoT Edge a jak to funguje. |
-| **Název**                  | Název nebo název. Delší než 100 znaků.                              |
+| **Název**                  | Název nebo název. Delší než 100 znaků.                             |
 | **Odkaz**                  | Adresa URL videa, hostované na YouTube nebo Vimeo                                        |
-| **Miniatura**             | Formát PNG 533 x 324 pixelů                                                           |
+| **Miniatura**             | Formát PNG 533 x 324 pixelů                                                     |
+|  |  |
 
 
 ### <a name="logo-guidelines"></a>Pokyny pro použití loga
@@ -114,6 +112,7 @@ Všechny loga nahráli na portál Cloud Partner postupujte podle pokynů:
 *  Nepoužívejte barevného přechodu pozadí na vaše logo.
 *  Předejde text – dokonce i vaše společnost nebo název značky – na loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.
 *  Logo není stretch.
+
 
 #### <a name="hero-logo"></a>Hero logo
 
@@ -158,16 +157,18 @@ Po úspěšném publikování vaší nabídky, ověření připojení potenciál
 3. amp.com the pricing tab
 4. amp.com the tile -->
 
+
 ## <a name="legal"></a>Právní informace
 
 Tato část umožňuje poskytnout dvě právní dokumenty, které jsou požadovány pro každou nabídku: Zásady ochrany osobních údajů a podmínky použití.
 
-|  **Pole**                |     **Popis**                                                          |
-|  ---------                |     ---------------                                                          |
-| **Adresa URL zásad ochrany osobních údajů**    | Adresa URL zásad odeslaných ochrany osobních údajů                                            |
-| **Podmínky použití**          | Podmínky použití jako vložený jednoduchý HTML nebo odkaz na svoje odeslaných podmínky použití       |
+|  **Pole**                    |     **Popis**                                                          |
+|  ---------                    |     ---------------                                                          |
+| **Adresa URL zásad ochrany osobních údajů\***      | Adresa URL zásad odeslaných ochrany osobních údajů                                            |
+| **Použít standardní Constract\***  | Určuje, zda použít standardní šablonu smlouvy od Microsoftu.  Další informace najdete v tématu [standardní smlouvy](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
+| **Podmínky použití\***            | *Podmínky použití* jako vložený jednoduchý HTML nebo odkaz na svoje odeslaných podmínky použití stránky     |
+|  |  |
 
-<br/>
 
 ## <a name="next-steps"></a>Další postup
 

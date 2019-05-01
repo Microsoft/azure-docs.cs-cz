@@ -1,6 +1,6 @@
 ---
-title: Připojte se ke konfiguraci a aktivovat Azure Data Box hraničního zařízení na portálu Azure portal | Dokumentace Microsoftu
-description: Třetí kurz k nasazení hrany pole dat dává pokyn k připojení a nastavení a aktivovat fyzické zařízení.
+title: Kurz pro připojení ke, konfiguraci, aktivaci zařízení Azure Data Box Edge na webu Azure portal | Dokumentace Microsoftu
+description: Kurz k nasazení hrany pole dat dává pokyn k připojení a nastavení a aktivovat fyzické zařízení.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: b97334ae60715f021cce387f9d73b5ea69eea7fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3e951e44aeaa4ca8d3d06bae80a80bcb2eb1dd52
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60758511"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924541"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Kurz: Připojení, nastavení a aktivovat Azure Data Box Edge 
 

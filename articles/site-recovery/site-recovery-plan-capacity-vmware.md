@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 7b10db06ab4ade1b23985b1a259d82d4818941b1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124962"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924830"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -120,7 +120,7 @@ Před nastavením infrastruktura Site Recovery, přístup k prostředí k měře
 
 ## <a name="deploy-additional-process-servers"></a>Nasazení dalších procesových serverů
 
-Pokud horizontální navýšení kapacity nasazení nad 200 zdrojové počítače nebo pokud máte celkem denní četnost více než 2 TB změn dat, je nutné přidat procesní servery pro zpracování objem přenosů. Vylepšili jsme produktu v 9.24 verze, kterou chcete zadat [doprovodné materiály v rámci produktu](vmware-azure-manage-process-server.md#process-server-selection-guidance) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. [Nastavit procesový server](vmware-azure-set-up-process-server-scale.md) k ochraně nové zdrojové počítače nebo [Vyrovnávání zatížení](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
+Pokud horizontální navýšení kapacity nasazení nad 200 zdrojové počítače nebo pokud máte celkem denní četnost více než 2 TB změn dat, je nutné přidat procesní servery pro zpracování objem přenosů. Vylepšili jsme produktu v 9.24 verze, kterou chcete zadat [zpracovávat výstrahy serveru](vmware-physical-azure-monitor-process-server.md#process-server-alerts) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. [Nastavit procesový server](vmware-azure-set-up-process-server-scale.md) k ochraně nové zdrojové počítače nebo [Vyrovnávání zatížení](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrace počítačů používat nový procesový server
 

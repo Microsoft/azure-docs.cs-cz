@@ -7,22 +7,20 @@ keywords: Vysoká dostupnost systému hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 596b53d468a7dfc719c16dc6e6339492381d7f41
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763811"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704938"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů systému Apache Hadoop v HDInsight
 
 Clustery HDInsight poskytují dva hlavní uzly pro zvýšení dostupnosti a spolehlivosti služeb Apache Hadoop a spouštění úloh.
 
 Hadoop dosahuje vysoké dostupnosti a spolehlivosti replikuje data a služby napříč několika uzly v clusteru. Ale standardní distribucích systému Hadoop obvykle mívají pouze jeden hlavní uzel. Jakémkoli výpadku jeden hlavní uzel může způsobit, že cluster přestane fungovat. HDInsight poskytuje dva hlavní uzly zlepšit dostupnost a spolehlivost Hadoop.
-
-[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>Dostupnost a spolehlivost uzlů
 
@@ -104,7 +102,7 @@ Pokud chcete zkontrolovat stav služby, které běží na hlavní uzly, pomocí 
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-Je viditelný na webové uživatelské rozhraní Ambari https://CLUSTERNAME.azurehdinsight.net. Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele protokolu HTTP pro váš cluster. Je výchozí uživatelské jméno HTTP **správce** a heslo je heslo, které jste zadali při vytváření clusteru.
+Je viditelný na webové uživatelské rozhraní Ambari `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele protokolu HTTP pro váš cluster. Je výchozí uživatelské jméno HTTP **správce** a heslo je heslo, které jste zadali při vytváření clusteru.
 
 Při doručení na stránce Ambari, nainstalované služby jsou uvedené na levé straně stránky.
 
@@ -247,27 +245,25 @@ Webové uživatelské rozhraní Ambari vyberte službu, kterou chcete zobrazit p
 
 ## <a name="how-to-configure-the-node-size"></a>Jak konfigurovat velikost uzlu
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Velikost uzlu lze vybrat pouze při vytváření clusteru. Pro HDInsight na najdete seznam různých velikostí virtuálních počítačů dostupných [HDInsight stránce s cenami](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak zadat velikost pomocí [webu Azure portal][preview-portal], [prostředí Azure PowerShell][azure-powershell]a [Klasické rozhraní příkazového řádku azure][azure-cli]:
+Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak zadat velikost pomocí [webu Azure portal][preview-portal], [modulu Azure PowerShell Az][azure-powershell], a [rozhraní příkazového řádku Azure][azure-cli]:
 
 * **Azure portal**: Při vytváření clusteru, můžete nastavit velikost uzlů cluster používat:
 
     ![Obrázek průvodce vytvořením clusteru s výběr velikost uzlu](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure Classic CLI**: Při použití `azure hdinsight cluster create` příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headNodeSize`, `--workerNodeSize`, a `--zookeeperNodeSize` parametry.
+* **Azure CLI**: Při použití [az hdinsight vytvořit](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headnode-size`, `--workernode-size`, a `--zookeepernode-size` parametry.
 
-* **Azure PowerShell**: Při použití `New-AzHDInsightCluster` rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeVMSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
+* **Azure PowerShell**: Při použití [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o možnosti uvedené v tomto dokumentu pomocí následujících odkazů.
 
 * [Reference k rozhraní Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalace a konfigurace rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md)
-* [Nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/overview)
+* [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Instalace a konfigurace modulu Azure PowerShell Az](/powershell/azure/overview)
 * [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)
 

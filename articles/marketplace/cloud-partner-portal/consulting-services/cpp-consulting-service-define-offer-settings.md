@@ -1,25 +1,18 @@
 ---
-title: Azure a Dynamics 365 nabídku konzultační služby – definují nastavení nabídky | Dokumentace Microsoftu
-description: Příručka pro definování nabízejí nastavení do Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu.
+title: Definujte nastavení nabídky pro nabídky na konzultační služby | Azure Marketplace
+description: Definujte nastavení nabídky v Azure nebo Dynamics 365 konzultační nabídky služeb v portálu pro partnery Cloud pro Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749635"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942774"
 ---
 # <a name="offer-settings-tab"></a>Karta nastavení nabídky
 
@@ -27,7 +20,8 @@ Na **nová nabídka** obrazovky, prvním krokem je vytvoření identity nabídky
 
 ![Vytvořit novou nabídku konzultační služby – nabízí karta nastavení](media/consultingoffer-settings-tab.png)
 
-### <a name="offer-id"></a>ID nabídky
+
+### <a name="offer-id"></a>ID nabídky *
 
 Tento identifikátor je jedinečný název, který vytvoříte, když nejdřív odešlete nabídky. Musí obsahovat jenom malé alfanumerické znaky, pomlčky nebo podtržítka. **ID nabídky** je zobrazen v adrese URL a ovlivňuje výsledků vyhledávacích webů. Příkladem je *yourcompanyname_exampleservice*.
 
@@ -36,11 +30,13 @@ Jak je znázorněno v příkladu **ID nabídky** se připojí k vašemu ID vydav
 >[!Note]
 >Po za provozu v rámci nabídky identifikátoru se nedá aktualizovat.
 
-### <a name="publisher-id"></a>ID vydavatele
+
+### <a name="publisher-id"></a>Publisher ID*
 
 Tento identifikátor se vztahuje k vašemu účtu. Po přihlášení pomocí účtu organizace vaše **ID vydavatele** se zobrazí v rozevírací nabídce.
 
-### <a name="name"></a>Název
+
+### <a name="name"></a>Název*
 
 Tento řetězec se zobrazí jako název nabídky na AppSource nebo na webu Azure Marketplace. **Název** pole je omezen na 50 znaků. Revidující může být nutné upravit dobu trvání připojení a nabízet typu na název nabídky svým názvem.
 

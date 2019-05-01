@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/17/2019
 ms.author: kumud
 ms.openlocfilehash: e10f7ad4ae8995d9efffec97a37dc64b28fa37b0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123548"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688027"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>Ukázky Azure PowerShellu pro virtuální síť
 

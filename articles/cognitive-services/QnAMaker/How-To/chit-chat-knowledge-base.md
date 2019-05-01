@@ -11,27 +11,29 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a908185f2d8475afb642250d1499cffa539aca4d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61376073"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573495"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidat Chit chat znalostní báze
 
 Přidání chit chat pro svého robota díky konverzační a poutavé. Funkci chit konverzace v nástroje QnA maker umožňuje snadno přidat předvyplněný sadu nejvyšší chit konverzace, do znalostní báze (KB). To může být výchozím bodem pro posouzení vašich osobnostních svého robota, a to vám ušetří čas a náklady na jejich vytváření od začátku.  
 
-Tato datová sada obsahuje přibližně 100 scénáře chit chat v hlasu tři osob – The Comic The Professional, The typu Friend. Vyberte osoby, která se nejvíce podobá hlasové svého robota. Zadaný uživatelský dotaz, nástroje QnA Maker se pokusí shodovat s nejbližší QnA známé chit chat. 
+Tato datová sada obsahuje přibližně 100 scénáře chit chat v hlasových více osob, jako jsou Professional, zařízení a Witty. Vyberte osoby, která se nejvíce podobá hlasové svého robota. Zadaný uživatelský dotaz, nástroje QnA Maker se pokusí shodovat s nejbližší QnA známé chit chat.  
 
-Několik příkladů různých osobnosti:
+Níže jsou příklady různých osobnosti. Zobrazí všechny datové sady pro posouzení vašich osobnostních spolu s podrobnostmi o osobnosti [tady](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets).
+
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Uživatelský dotaz|Profesionály|Spřátelené|Comic|
+|Uživatelský dotaz|Professional|Popisný|Witty|
 |--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|
+|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
 |`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`You can't handle my dulcet tones.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Aw, that's sweet.`|`Sure. Take me to city hall. See what happens.`|
+|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
+|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
+
 
 
 > [!NOTE]

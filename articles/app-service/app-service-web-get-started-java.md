@@ -16,11 +16,11 @@ ms.date: 04/23/2019
 ms.author: cephalin;robmcm
 ms.custom: seodec18
 ms.openlocfilehash: f1411ee28ca4e371f68c375242a2445c8b48f8d7
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63760036"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706133"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
@@ -121,7 +121,7 @@ V dialogovém okně **Create App Service** (Vytvoření služby App Service):
 
 * Zadejte jedinečný název své webové aplikace nebo ponechte vygenerovaný název. Tento název musí být v rámci služby Azure jedinečný. Název je součástí adresy URL webové aplikace. Příklad: Pokud je název webové aplikace **MyJavaWebApp**, bude adresa URL *myjavawebapp.azurewebsites.net*.
 * Pro účely tohoto rychlého startu ponechte výchozí webový kontejner.
-* Vyberte předplatné Azure.
+* Vyberte předplatné služby Azure.
 * Na kartě **App service plan** (Plán služby App Service):
 
   * **Vytvořit nový**: Ponechte výchozí, což je název plánu služby App Service.

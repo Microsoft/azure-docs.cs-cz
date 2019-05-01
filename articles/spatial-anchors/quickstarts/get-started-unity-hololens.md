@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – vytvoření aplikace HoloLens Unity s Azure prostorových kotvy | Dokumentace Microsoftu
+title: Rychlý start – vytvoření Unity HoloLens aplikace s využitím Azure prostorových kotvy | Dokumentace Microsoftu
 description: V tomto rychlém startu se dozvíte, jak sestavit aplikaci HoloLens s Unity pomocí prostorových ukotvení.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ce9bca3f11911677a6009b4cfe0c3f6413b9f837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31c7af3edf6364ebca021f87240e73c74e64ebc4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240583"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704134"
 ---
-# <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace HoloLens Unity, která používá Azure prostorových kotvy
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace Unity HoloLens, která používá Azure prostorových kotvy
 
-V tomto rychlém startu vytvoříte aplikaci HoloLens Unity, který používá [prostorových kotvy Azure](../overview.md). Prostorový kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí pro hybridní realitu se objekty, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít HoloLens aplikace vytvořené s Unity, který můžete uložit a odvolat prostorových ukotvení.
+V tomto rychlém startu vytvoříte aplikaci Unity HoloLens, který používá [prostorových kotvy Azure](../overview.md). Prostorový kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí pro hybridní realitu se objekty, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít HoloLens aplikace vytvořené s Unity, který můžete uložit a odvolat prostorových ukotvení.
 
 Dozvíte se, jak provést tyto akce:
 

@@ -8,26 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 013467cb64220b525d429c901c48028bf65b3852
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7da146cafaf9af5c91bbbb2a3a23d8a90d49d8cd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864923"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699332"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>Příklad: Postup identifikace tváří na obrázcích
+# <a name="example-identify-faces-in-images"></a>Příklad: Identifikace tváří na obrázcích
 
 Tato příručka ukazuje, jak identifikovat neznámé tváře pomocí skupin PersonGroup, které jsou předem vytvořené ze známých osob. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře.
-
-## <a name="concepts"></a>Koncepty
-
-Pokud nejste obeznámeni s následujícími koncepty v této příručce, můžete si kdykoli vyhledat definice v našem [glosáři](../Glossary.md):
-
-- Face - Detect
-- Face - Identify
-- PersonGroup
 
 ## <a name="preparation"></a>Příprava
 
@@ -38,7 +30,7 @@ V této ukázce demonstrujeme:
 
 Abyste mohli provést demonstraci této ukázky, musíte si připravit sadu obrázků:
 
-- Několik fotek s tváří určité osoby. [Kliknutím sem si stáhnete ukázkové fotky](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anny, Billa a Clare.
+- Několik fotek s tváří určité osoby. [Stáhněte si ukázkový fotografie](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna, faktury a Clare.
 - Sérii fotek, které mohou ale nemusí obsahovat tváře Anny, Billa nebo Clare, sloužící k testu identifikace. Můžete také vybrat některé obrázky z předchozího odkazu.
 
 ## <a name="step-1-authorize-the-api-call"></a>Krok 1: Povolit volání rozhraní API
@@ -187,6 +179,7 @@ V této příručce jste se naučili postup vytvoření skupiny PersonGroup a id
 
 ## <a name="related-topics"></a>Související témata
 
-- [Způsob rozpoznání tváří v obrázku](HowtoDetectFacesinImage.md)
+- [Koncepty rozpoznávání tváře](../concepts/face-recognition.md)
+- [Postup rozpoznávání tváří v obrázku](HowtoDetectFacesinImage.md)
 - [Způsob přidání tváří](how-to-add-faces.md)
 - [Způsob použití funkce ve velkém měřítku](how-to-use-large-scale.md)

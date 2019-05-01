@@ -4,26 +4,26 @@ titlesuffix: Azure Virtual Network
 description: Zjistěte, jak vytvořit, změnit nebo odstranit skupinu zabezpečení sítě.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
-ms.author: jdial
-ms.openlocfilehash: 5eb5a24d6126e9609d1c653948c2db6b0a4feb55
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.author: kumud
+ms.openlocfilehash: 9fc73c40d4d3241afefd67b1c4f084765b0be934
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821930"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710207"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvořit, změnit nebo odstranit skupinu zabezpečení sítě
 
 Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat typ síťového provozu, který může téct do a z podsítě virtuální sítě a síťová rozhraní. Pokud nejste obeznámeni s použitím skupin zabezpečení sítě, přečtěte si téma [přehled skupin zabezpečení sítě](security-overview.md) Další informace o nich a dokončení [filtrování síťového provozu](tutorial-filter-network-traffic.md) kurzu získáte nějaké zkušenosti s síť skupiny zabezpečení.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -197,7 +197,7 @@ Skupinu zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
     | Název           | Název musí být v rámci skupiny prostředků jedinečný.        |
     | Předplatné   | Vyberte své předplatné.                               |
     | Skupina prostředků | Vyberte existující skupinu prostředků nebo vytvořte novou. |
-    | Umístění       | Vyberte umístění                                       |
+    | Location       | Vyberte umístění                                       |
 
 **Příkazy**
 

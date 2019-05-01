@@ -9,11 +9,11 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/22/2019
 ms.openlocfilehash: 2d2ab769c2d4c5a594cb57f2fa9dfed599578506
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764578"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692834"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Rychlý start: Nasazení šablony Ansible řešení pro Azure a CentOS
 
@@ -33,7 +33,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 1. Vyberte **získat teď**.
 
-1. Zobrazí se okno s podrobnostmi o podmínkách použití, zásady ochrany osobních údajů a podmínky použití z Azure Marketplace. Vyberte **pokračovat**.
+1. Zobrazí se okno s podrobnostmi o podmínkách použití, zásady ochrany osobních údajů a podmínky použití z Azure Marketplace. Vyberte **Pokračovat**.
 
 1. Na webu Azure portal se zobrazí a zobrazí stránku Ansible, který popisuje šablonu řešení. Vyberte **Vytvořit**.
 

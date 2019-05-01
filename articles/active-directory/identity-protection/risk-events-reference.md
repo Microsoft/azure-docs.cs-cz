@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e988d03b60469940d8750cc07188a61fc7ab8b3a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294204"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709608"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection rizikem události – referenční informace
 
@@ -80,10 +80,16 @@ Tento typ rizikové události označuje přihlášení z IP adresy napadený mal
 
 ## <a name="unfamiliar-sign-in-properties"></a>Neznámé vlastnosti přihlášení
 
-**Typ zjišťování:** V reálném čase  
-**Starý název:** Přihlášení z neznámých míst
+**Typ zjišťování:** V reálném čase **starý název:** Přihlášení z neznámých míst
 
 Tento typ rizikové události bere v úvahu minulé historie přihlašování (IP, zeměpisné šířky / délky a čísla ASN) k vyhledání neobvyklou přihlašovací aktivitou. Systém uchovává informace o předchozí umístění použitá uživatelem a bere v úvahu tyto "známé" umístění. Riziková událost se aktivuje, dojde li přihlásit z umístění, které již není v seznamu známých umístění. Nově vytvořený uživatelé budou v "režimu learning" pro určitou dobu v neznámého přihlášení vlastnosti, které rizikové události se vypne při naše algoritmy přečtěte si chování uživatele. Studijní doba trvání režimu je dynamický a závisí na tom, jak dlouho trvá algoritmus shromáždit dostatek informací o vzory přihlašování uživatele. Minimální doba trvání je pět dní. Uživatele můžete přejít zpět do režimu učení po delší době nečinnosti. Systém také ignoruje přihlášení ze známé zařízení a umístění, které jsou geograficky umístěné blízko známé umístění. 
 
 Můžeme také spustit toto zjišťování pro základní ověřování (nebo starších verzí protokolů). Protože tyto protokoly nejsou moderní vlastnosti, jako je ID klienta, je omezený telemetrických dat do snížil počet falešných poplachů. Doporučujeme, aby naše zákazníky, přesunout do moderního ověřování.
 
+
+## <a name="azure-ad-threat-intelligence"></a>Analýza hrozeb Azure AD
+
+**Typ zjišťování:** Offline <br>
+**Starý název:** Toto zjišťování se zobrazí v sestavách starší verze služby Azure AD Identity Protection (uživatelé označení příznakem rizika, rizikové události) jako "Uživatelé s uniklými přihlašovacími údaji.
+
+Tento typ rizikové události označuje aktivity uživatelů, který je pro daného uživatele neobvyklé nebo odpovídají známým vzorcům útoku podle zdroje intelligence interních a externích hrozeb od Microsoftu.

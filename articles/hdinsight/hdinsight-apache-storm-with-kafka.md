@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: bf62b4f8f8dbfc7df73102bb06e4f16c0fdb806c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c89567115079887295704e216cd4046fae99c9d1
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097306"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873010"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu s Apache Kafka v HDInsight
 
@@ -79,7 +79,7 @@ Apache Storm poskytuje několik komponent pro práci s využitím Apache Kafka. 
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Mapování z řazené kolekce členů struktury dat použít v rámci topologie Storm k polím v systému Kafka.
 
 Tyto komponenty jsou dostupné v balíčku `org.apache.storm : storm-kafka`. Použijte verzi balíčku, která odpovídá verzi Stormu. Pro HDInsight 3.6 je verze Stormu 1.1.0.
-Budete také potřebovat balíček `org.apache.kafka : kafka_2.10` s dalšími komponentami systému Kafka. Použijte verzi balíčku, která odpovídá verzi systému Kafka. Pro HDInsight 3.6 je verze Kafka 0.10.0.0.
+Budete také potřebovat balíček `org.apache.kafka : kafka_2.10` s dalšími komponentami systému Kafka. Použijte verzi balíčku, která odpovídá verzi systému Kafka. Verze Kafka pro HDInsight 3.6, je 1.1.1.
 
 Následující kód XML je deklarace závislostí v `pom.xml` pro [Apache Maven](https://maven.apache.org/) projektu:
 
@@ -94,7 +94,7 @@ Následující kód XML je deklarace závislostí v `pom.xml` pro [Apache Maven]
 <dependency>
     <groupId>org.apache.kafka</groupId>
     <artifactId>kafka_2.10</artifactId>
-    <version>0.10.0.0</version>
+    <version>1.1.1</version>
     <!-- Exclude components that are loaded from the Storm cluster at runtime -->
     <exclusions>
         <exclusion>

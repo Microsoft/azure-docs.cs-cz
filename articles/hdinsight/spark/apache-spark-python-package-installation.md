@@ -2,18 +2,17 @@
 title: Akce skriptu – instalace Pythonu balíčků s Jupyterem v Azure HDInsight
 description: Podrobné pokyny o tom, jak konfigurace k dispozici poznámkové bloky Jupyter s clustery HDInsight Spark pomocí skriptových akcí můžete balíčky pythonu externí.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 876037e0e8e795ca98ddd3adf74dd0a304192a35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/22/2019
+ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097908"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574663"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití akce skriptu k instalaci externích balíčků Python pro poznámkové bloky Jupyter v clusterech Apache Spark v HDInsight
 > [!div class="op_single_selector"]
@@ -75,10 +74,10 @@ Existují dva druhy opensourcové komponenty, které jsou k dispozici ve služb�
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. Vyberte **Vytvořit**.  Nahlédněte do dokumentace na [jak použít vlastní skript akce](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+5. Vyberte **Vytvořit**.  Nahlédněte do dokumentace na [jak použít vlastní skript akce](../hdinsight-hadoop-customize-cluster-linux.md).
 
 6. Počkejte na dokončení skriptu.  **Akcí skriptů** podokně informaci **nové akce skriptu jde odeslat po dokončení aktuální operace clusteru** při provádění skriptu.  Indikátor průběhu lze zobrazit v uživatelském rozhraní Ambari **operací na pozadí** okna.
 

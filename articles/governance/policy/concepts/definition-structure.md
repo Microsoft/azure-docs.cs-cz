@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311637"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716766"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -66,7 +66,7 @@ Například následující kód JSON ukazuje zásadu, která omezí, ve které j
 }
 ```
 
-Všechny ukázky zásady Azure jsou v [ukázky zásad](../samples/index.md).
+Všechny ukázky zásady Azure jsou v [ukázek Azure Policy](../samples/index.md).
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -99,6 +99,7 @@ Parametr má následující vlastnosti, které se používají v definici zásad
   - `description`: Vysvětlení, co tento parametr se používá pro. Je možné příklady přijatelných hodnot.
   - `displayName`: Popisný název na portálu pro parametr nezobrazuje.
   - `strongType`: (Volitelné) Při přiřazení definice zásady na portálu. Obsahuje seznam vědět kontextu. Další informace najdete v tématu [strongType](#strongtype).
+  - `assignPermissions`: (Volitelné) Nastavit jako _true_ mít webu Azure portal vytvořit přiřazení role při přiřazování zásady. Tato vlastnost je užitečná v případě, že chcete přiřadit oprávnění mimo rozsah přiřazení. Existuje jedno přiřazení role na definici role v zásadách (nebo jednotlivou definice role ve všech zásad v rámci iniciativy). Hodnota parametru musí být platný prostředek nebo oboru.
 - `defaultValue`: (Volitelné) Nastaví hodnotu parametru v přiřazení-li zadána žádná hodnota. Vyžadováno při aktualizaci existující definice zásad, který je přiřazen.
 - `allowedValues`: (Volitelné) Poskytuje pole hodnot, které přijímá parametr během přiřazení.
 
@@ -148,6 +149,7 @@ V rámci `metadata` vlastností, můžete použít **strongType** poskytnout ví
 - `omsWorkspace`
 - `Microsoft.EventHub/Namespaces/EventHubs`
 - `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.EventHub/Namespaces/AuthorizationRules`
 - `Microsoft.RecoveryServices/vaults`
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -287,7 +289,7 @@ V následujícím příkladu `concat` slouží k vytváření vyhledávacího po
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>Hodnota
 
 Podmínky lze vybrat také pomocí **hodnota**. **Hodnota** zkontroluje podmínky proti [parametry](#parameters), [podporované šablony funkce](#policy-functions), nebo literály.
 **Hodnota** je spárovaná s žádným nepodporuje [podmínku](#conditions).
@@ -375,7 +377,7 @@ S tímto pravidlem upravená zásada `if()` kontroluje délku **název** před p
 
 ### <a name="effect"></a>Efekt
 
-Zásady podporuje následující typy dopadu:
+Zásady Azure podporuje následující typy dopadu:
 
 - **Odepřít**: vygeneruje událost v protokolu aktivit a požadavek selže
 - **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale neselže, je požadavek
@@ -410,7 +412,7 @@ Hodnota může být řetězec nebo objekt formátu JSON.
 }
 ```
 
-Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a příkladů, najdete v části [účinky zásad Principy](effects.md).
+Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a příkladů, najdete v části [účinky zásad Azure Principy](effects.md).
 
 ### <a name="policy-functions"></a>Funkce zásad
 
@@ -593,9 +595,9 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvě
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Kontrola [Principy účinky zásad](effects.md)
-- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md)
-- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md)
-- Zjistěte, jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [Vysvětlení efektů zásad](effects.md).
+- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md).
+- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Zjistěte, jak [nápravě nekompatibilních prostředků](../how-to/remediate-resources.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

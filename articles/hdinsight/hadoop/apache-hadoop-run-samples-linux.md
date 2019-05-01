@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 04/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5fd2d27533d725102a4c334f1e8a1abed6cd78cc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121890"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706661"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Spuštění příkladů MapReduce v HDInsight
 
@@ -24,12 +24,9 @@ Zjistěte, jak spustit MapReduce příklady součástí Apache Hadoop v HDInsigh
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **HDInsight cluster**: Zobrazit [začněte používat Apache Hadoopu s Apache Hive v HDInsight v Linuxu](apache-hadoop-linux-tutorial-get-started.md)
+* Cluster Apache Hadoop v HDInsight. Zobrazit [Začínáme s HDInsight v Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
 
-    > [!IMPORTANT]  
-    > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
-* **Klient SSH**: Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>Příklady MapReduce
 
@@ -64,7 +61,11 @@ Zjistěte, jak spustit MapReduce příklady součástí Apache Hadoop v HDInsigh
 
 ## <a name="run-the-wordcount-example"></a>Spusťte příklad wordcount
 
-1. Připojení k HDInsight pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Připojení k HDInsight pomocí SSH. Nahraďte `CLUSTER` s názvem vašeho clusteru a potom zadejte následující příkaz:
+
+    ```cmd
+    ssh sshuser@CLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. Z `username@#######:~$` výzvu, použijte následující příkaz k seznamu vzorků:
 
@@ -86,7 +87,7 @@ Zjistěte, jak spustit MapReduce příklady součástí Apache Hadoop v HDInsigh
 
     Tato zpráva znamená, že můžete zadat několik vstupní cesta pro dokumenty zdroje. Konečné cesty je ukládat výstup (počet slov v dokumentech zdroje).
 
-4. Použijte následující postupy k počítání všechna slova v poznámkových blocích z Leonardo Da Vinci, které jsou k dispozici jako ukázková data pro cluster:
+4. Použijte následující postupy k počítání všechna slova v poznámkových blocích z Leonardo da Vinci, které jsou k dispozici jako ukázková data pro cluster:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -162,11 +163,11 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 Hodnota vrácená tímto příkazem se podobá **3.14159155000000000000**. Odkazy jsou prvních 10 desetinná čísla pí 3.1415926535.
 
-## <a name="10-gb-greysort-example"></a>Příklad Greysort 10 GB
+## <a name="10-gb-graysort-example"></a>Příklad GraySort 10 GB
 
 GraySort jsou v podstatě srovnávacího testu. Metrika je dosáhnout při řazení velké objemy dat, obvykle 100 TB minimální řazení rychlost (TB za minutu).
 
-Tato ukázka používá mírné 10 GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy. Tyto aplikace získané roční kritérium řazení terabajt pro obecné účely ("daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [Sortbenchmark](https://sortbenchmark.org/) lokality.
+Tato ukázka používá mírné 10 GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy. Tyto aplikace získané roční kritérium řazení terabajt pro obecné účely ("Daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [srovnávací test řazení](https://sortbenchmark.org/) lokality.
 
 Tato ukázka používá tři páry programů MapReduce:
 
@@ -211,7 +212,3 @@ V tomto článku jste zjistili, jak ke spuštění ukázky zahrnuté v clusterec
 * [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 * [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 * [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
-
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-introduction]:apache-hadoop-introduction.md
-

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577586"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690151"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -28,7 +28,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 **V2 Translator API**
 
 > [!NOTE]
-> V2 se přestala nabízet 30. dubna 2018 a bude ukončena 30. dubna 2019.
+> 30. dubna 2018 se přestala nabízet v2. Migrujte prosím svoje aplikace na V3, abyste mohli využívat nové funkce je dostupná výhradně ve verzi 3.
 
 * Jenom statistické: Žádné neuronových sítí systému je k dispozici pro tento jazyk.
 * Neuronových sítí k dispozici: Neurální systém k dispozici. Použijte parametr `category=generalnn` pro přístup k systému neuronových sítí.
@@ -230,14 +230,17 @@ Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vl
 | Indonéština|   `id`    |
 | italština      | `it`          |
 | Japonština      | `ja`          |
+|Svahilština| `sw`    |
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
+|Malgaština|  `mg`    |
 | norština      | `nb`          |
 | polština      | `pl`          |
 | Portugalština      | `pt`          |
 | Rumunština      | `ro`          |
 | ruština      | `ru`          |
+|samojština|    `sm`    |
 | Srbština (latinka)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |

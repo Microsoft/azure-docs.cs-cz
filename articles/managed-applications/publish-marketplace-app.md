@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0bf1558f81f2936b4556ee658a235cd09dddf905
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483874"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572576"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Spravované aplikace Azure v Marketplace
 
@@ -29,7 +29,7 @@ K dokončení tohoto článku musíte mít připravený soubor .zip s definicí 
 
 Kromě toho existuje několik obchodních předpokladů. Jsou to tyto:
 
-* Vaše společnost nebo její pobočka se musí nacházet v zemi, ze které marketplace podporuje prodej.
+* Vaše společnost nebo její dceřiné společnosti se musí nacházet v zemi nebo oblast, ve kterém jsou web marketplace podporuje prodej.
 * Váš produkt musí mít licenci kompatibilní s modely fakturace, které marketplace podporuje.
 * Zákazníkům je třeba zpřístupnit z obchodního hlediska přiměřenou technickou podporu. Podpora může být bezplatná, placená nebo komunitní.
 * Licence musí pokrývat váš software a všechny závislé komponenty třetích stran.
@@ -43,7 +43,7 @@ Pokud se chcete stát vydavatelem v Azure Marketplace, musíte splnit následuj�
 
 1. Vytvořit Microsoft ID: Vytvořte si účet Microsoft pomocí e-mailové adresy, která patří do domény vaší společnosti, ale nepatří konkrétnímu uživateli. Tato e-mailová adresa se používá pro Centrum pro vývojáře Microsoft i pro portál partnerů cloudu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 1. Odeslat [nominační formulář Azure Marketplace](https://aka.ms/ampnomination): Pro **řešení, které chcete publikovat**, vyberte **spravovanou aplikaci**. Po odeslání formuláře tým registrace Marketplace aplikace zkontroluje a ověří žádost. Schvalovací proces může trvat jeden až tři dny. Pokud bude vaše nominace schválena, získáte propagační kód umožňující zproštění od poplatku za registraci do centra pro vývojáře. Pokud nominační formulář pro Marketplace **neodešlete**, činí registrační poplatek 99 USD.
-1. Zaregistrovat se v [centru pro vývojáře](https://dev.windows.com/registration?accountprogram=azure): Microsoft ověří, jestli vaše organizace je platným právním subjektem s platným kódem DIČ v zemi, ve které je zaregistrovaná. Schvalovací proces může trvat 5 až 10 dnů. Pokud nechcete platit registrační poplatek, použijte propagační kód, který jste obdrželi e-mailem v rámci nominačního procesu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
+1. Registrace v [středisko pro vývojáře](https://dev.windows.com/registration?accountprogram=azure) – Microsoft ověřuje, že vaše organizace má platné právní subjekt s platnou DAŇOVÉ identifikační pro zemi nebo oblast, ve které je zaregistrovaný. Schvalovací proces může trvat 5 až 10 dnů. Pokud nechcete platit registrační poplatek, použijte propagační kód, který jste obdrželi e-mailem v rámci nominačního procesu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 1. Přihlásit se na [portál partnerů cloudu](https://cloudpartner.azure.com): V profilu vydavatele propojte svůj účet centra pro vývojáře s profilem vydavatele Marketplace. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Vytvoření nové nabídky aplikace Azure
@@ -94,8 +94,8 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
    * **Souhrn**: Zadejte krátký popis pro tuto SKU. Tento text se zobrazí pod názvem.
    * **Popis**: Zadejte podrobný popis, o které skladová jednotka Potřebuje.
    * **Typ SKU**: Povolené hodnoty jsou *spravované aplikace* a *šablony řešení*. V tomto případě vyberte *Spravovaná aplikace*.
-   * **Země/oblast dostupnosti**: Zvolte země, kde je k dispozici spravované aplikace.
-   * **Ceny**: Zadejte cenu pro správu aplikace. Před nastavením ceny vyberte dostupné země.
+   * **Země/oblast dostupnosti**: Vyberte země nebo oblasti, kde je k dispozici spravované aplikace.
+   * **Ceny**: Zadejte cenu pro správu aplikace. Před nastavením cena vyberte dostupné zemích nebo oblastech.
 
 1. Přidejte nový balíček. V následujícím formuláři vyplňte část s **podrobnými informacemi o balíčku**:
 

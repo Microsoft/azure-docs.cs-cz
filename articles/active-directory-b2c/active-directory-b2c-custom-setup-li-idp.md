@@ -3,19 +3,19 @@ title: Nastavení přihlášení s účtem LinkedIn pomocí vlastních zásad �
 description: Nastavení přihlášení s účtem LinkedIn v Azure Active Directory B2C pomocí vlastních zásad.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/23/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5bf1126a7015e668f3770835535b81c93d01cbda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 204e6ef27e4e8db89bdeb22a25ad847ec5c6bcfc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387073"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706790"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení s účtem LinkedIn pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Použití LinkedIn jako zprostředkovatele identity v Azure AD B2C, je potřeba 
 Potřebujete ukládat tajný kód klienta, který jste si dříve poznamenali ve vašem tenantovi Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
 5. Vyberte **klíče zásad** a pak vyberte **přidat**.
@@ -95,8 +95,8 @@ Pokud chcete uživatelům umožní přihlásit se účtem LinkedIn, musíte defi
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
           </OutputClaims>
@@ -204,7 +204,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+Probíhá komunikace s Azure AD B2C prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
@@ -224,67 +224,6 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignLinkedIn).
 5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
 6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
-
-
-## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
-
-V tuto chvíli je nastavený zprostředkovatele identity, ale není k dispozici v některém z obrazovky registrace nebo přihlášení. Chcete-li k dispozici, vytvoření duplicitní cesty existující uživatele šablony a upravte ho tak, aby má také LinkedIn zprostředkovatele identity.
-
-1. Otevřít *TrustFrameworkBase.xml* soubor z starter pack.
-2. Vyhledejte a zkopírujte celý obsah **UserJourney** element, který zahrnuje `Id="SignUpOrSignIn"`.
-3. Otevřít *TrustFrameworkExtensions.xml* a najít **Userjourney** elementu. Pokud element neexistuje, přidejte jeden.
-4. Vložte celý obsah **UserJourney** element, který jste zkopírovali jako podřízený objekt **Userjourney** elementu.
-5. Přejmenujte ID cesty uživatele. Například, `SignUpSignInLinkedIn`.
-
-### <a name="display-the-button"></a>Zobrazit tlačítko
-
-**ClaimsProviderSelection** element je obdobou k tlačítku na obrazovce registrace nebo přihlášení zprostředkovatele identity. Pokud chcete přidat **ClaimsProviderSelection** – element pro účet LinkedIn, nové tlačítko se zobrazí při uživatel umístil na stránce.
-
-1. Najít **OrchestrationStep** element, který zahrnuje `Order="1"` v cestě uživatele, který jste vytvořili.
-2. V části **ClaimsProviderSelects**, přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `LinkedInExchange`:
-
-    ```XML
-    <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>Tlačítko s odkazem na akci
-
-Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem LinkedIn k získání tokenu.
-
-1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
-2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro element **TargetClaimsExchangeId**:
-
-    ```XML
-    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
-    ```
-    
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `LinkedIn-OAUTH`.
-
-3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
-
-## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
-
-Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikací**a pak vyberte **přidat**.
-5. Zadejte název aplikace, například *testapp1*.
-6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
-7. Klikněte na možnost **Vytvořit**.
-
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
-
-Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili.
-
-1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInLinkedIn.xml*.
-2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInLinkedIn`.
-3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_linkedin`
-4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignLinkedIn).
-5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
-6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
-
 
 ## <a name="migration-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
 
@@ -387,12 +326,54 @@ V posledním kroku přidáte nové transformace deklarací identity, které je p
 
 Jako součást LinkedIn migrace z verze 1.0 do verze 2.0 další volání k jinému rozhraní API je potřeba získat e-mailovou adresu. Pokud potřebujete získat při registraci e-mailovou adresu, postupujte takto:
 
-1. Máte Azure AD B2C, vytvořit federaci s Linkedinem, aby mohl uživatel přihlásit. Pokud k tomu dojde, je přístupový token z Linkedinu odesílat Azure AD B2C.
+1. Dokončete tento postup umožňuje Azure AD B2C pro vytvoření federace s Linkedinem, aby mohl uživatel přihlásit. Azure AD B2C v rámci federace, obdrží přístupový token pro LinkedIn.
 2. Uložte přístupový token Linkedinu do deklarace identity. [Postupujte podle pokynů tady](idp-pass-through-custom.md).
-3. Voláním funkce Azure a předat funkci přístupového tokenu shromážděných v předchozím kroku. [Přečtěte si pokyny v tomto poli](active-directory-b2c-rest-api-step-custom.md)
-    1. Funkce Azure Functions by měla trvat přístupový token a volání rozhraní API pro LinkedIn (`https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))`).
-    2. Funkce Azure Functions přijímá odpovědi a analyzuje e-mailovou adresu.
-    3. E-mailovou adresu se vrátí zpět do zásady.
-4. E-mailová adresa je uložen v deklaraci e-mailu a cesty uživatele bude pokračovat na.
+3. Přidejte následující zprostředkovatele deklarací identity, kterého přišel požadavek na LinkedIn `/emailAddress` rozhraní API. Aby bylo možné povolit tento požadavek, budete potřebovat přístupový token LinkedIn.
 
-Získání e-mailovou adresu z Linkedinu během registrace je volitelný. Pokud zvolíte Ne, k získání e-mailu, je potřeba ručně zadejte e-mailovou adresu a ověřte ho uživatel.
+    ```XML
+    <ClaimsProvider> 
+      <DisplayName>REST APIs</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="API-LinkedInEmail">
+          <DisplayName>Get LinkedIn email</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+              <Item Key="ServiceUrl">https://api.linkedin.com/v2/emailAddress?q=members&amp;projection=(elements*(handle~))</Item>
+              <Item Key="AuthenticationType">Bearer</Item>
+              <Item Key="UseClaimAsBearerToken">identityProviderAccessToken</Item>
+              <Item Key="SendClaimsIn">Url</Item>
+              <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
+          </Metadata>
+          <InputClaims>
+              <InputClaim ClaimTypeReferenceId="identityProviderAccessToken" />
+          </InputClaims>
+          <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="elements[0].handle~.emailAddress" />
+          </OutputClaims>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+
+4. Přidejte následující krok Orchestrace do vaší cesty uživatele, aby rozhraní API zprostředkovatele deklarací identity se aktivuje, když se uživatel přihlásí pomocí Linkedinu. Nezapomeňte aktualizovat `Order` číslo odpovídajícím způsobem. Tento krok přidejte hned za krok Orchestrace, která aktivuje technického profilu LinkedIn.
+
+    ```XML
+    <!-- Extra step for LinkedIn to get the email -->
+    <OrchestrationStep Order="4" Type="ClaimsExchange">
+      <Preconditions>
+        <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+          <Value>identityProvider</Value>
+          <Value>linkedin.com</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <ClaimsExchanges>
+        <ClaimsExchange Id="GetEmail" TechnicalProfileReferenceId="API-LinkedInEmail" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    ```
+
+Získání e-mailovou adresu z Linkedinu během registrace je volitelný. Pokud zvolíte ne získat e-mailu z Linkedinu, ale při přihlášení vyžadovat nahoru, je potřeba ručně zadejte e-mailovou adresu a ověřte ho uživatel.
+
+Úplnou ukázku zásadu, která používá zprostředkovatel identity LinkedIn, najdete v článku [vlastní zásady Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider).

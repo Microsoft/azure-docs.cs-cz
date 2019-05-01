@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: V tomto rychlém startu zjistíte, jak vytvořit virtuální síť pomocí webu Azure Portal. Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s Internetem.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 11/30/2018
-ms.author: jdial
-ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 995bc8e7b2eb4e9160b2b625067f20324df2cbfd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391395"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717008"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí Portálu Azure
 
@@ -37,9 +37,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V **vytvořit virtuální síť**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Enter *myVirtualNetwork*. |
+    | Název | Enter *myVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
@@ -59,7 +59,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V **vytvořit virtuální počítač – základní informace o**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
@@ -85,7 +85,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V **vytvoření virtuálního počítače – sítě**, vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
     | Virtuální síť | Ponechte výchozí nastavení **myVirtualNetwork**. |
     | Podsíť | Ponechte výchozí nastavení **myVirtualSubnet (10.1.0.0/24)**. |
@@ -99,9 +99,9 @@ Vytvořte ve virtuální síti dva virtuální počítače:
 
 1. V **vytvořit účet úložiště**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name | Zadejte *myvmstorageaccount*. |
+    | Název | Zadejte *myvmstorageaccount*. |
     | Account kind (Druh účtu) | Ponechte výchozí nastavení **úložiště (verze 1 pro obecné účely)**. |
     | Výkon | Ponechte výchozí nastavení **standardní**. |
     | Replikace | Ponechte výchozí nastavení **místně redundantní úložiště (LRS)**. |

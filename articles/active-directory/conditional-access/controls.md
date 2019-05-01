@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5c6f1064d2d73ab3d99ca341cffd9b296723e97
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411624"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571105"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
 
@@ -113,7 +113,7 @@ Uživatel může vyžadovat ve vašem tenantovi vyjádřit souhlas s podmínkami
 
 ### <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
-Můžete vytvořit vlastní ovládací prvky podmíněného přístupu, který přesměrovat uživatele na kompatibilní služby splňovat další požadavky mimo službu Azure Active Directory. To umožňuje použít některé externí ověřování službou Multi-Factor Authentication a zprostředkovatelů ověření vynutit pravidla podmíněného přístupu, nebo vytvářet vlastní služby. Tím se uspokojí tento ovládací prvek, prohlížeče uživatele přesměruje na externí služby, provede všechny požadované ověřování nebo ověřování aktivity a je následně přesměrován zpět do Azure Active Directory. Pokud si uživatel byl úspěšně ověřen nebo ověřit, uživatel bude pokračovat tok podmíněného přístupu. 
+Přidat vlastní ovládací prvky podmíněného přístupu, který přesměrovat uživatele na kompatibilní služby splňovat další požadavky mimo službu Azure Active Directory. To umožňuje vynucení podmíněného přístupu požadavky pomocí určitých externí ověřování službou Multi-Factor Authentication a zprostředkovatelů ověření. Tím se uspokojí tento ovládací prvek, prohlížeče uživatele přesměruje na externí služby, provede všechny požadované ověřování nebo ověřování aktivity a je následně přesměrován zpět do Azure Active Directory. Pokud si uživatel byl úspěšně ověřen nebo ověřit, uživatel bude pokračovat tok podmíněného přístupu. 
 
 ## <a name="custom-controls"></a>Vlastní ovládací prvky
 
@@ -137,6 +137,8 @@ Další informace o těchto služeb obraťte se na zprostředkovatele přímo.
 ### <a name="creating-custom-controls"></a>Vytváření vlastních ovládacích prvků
 
 Chcete-li vytvořit vlastní ovládací prvek, obrátíte nejprve poskytovatele, který chcete využívat. Každý poskytovatel jiného subjektu než Microsoft má vlastní proces a požadavky registrace, přihlášení k odběru nebo v opačném případě se stanou součástí služby a k označení, kterou chcete integrovat s podmíněným přístupem. V tomto okamžiku poskytovateli vám poskytne bloku dat ve formátu JSON. Tato data umožňuje zprostředkovatele a podmíněného přístupu spolupráce pro vašeho tenanta, vytvoří nový ovládací prvek a definuje, jak podmíněný přístup můžete říct, pokud vaši uživatelé úspěšně provedly ověřování s poskytovateli.
+
+Vlastní ovládací prvky nelze použít s Identity Protection automatizace vyžadování vícefaktorového ověřování nebo zvýšení oprávnění role v Privileged Identity Manager (PIM).
 
 Zkopírujte JSON data a vložte ho do souvisejícího textového pole. Neprovádějte žádné změny ve formátu JSON pokud rozumíte explicitně změnu, kterou děláte. Provedení jakékoli změny může přerušit spojení mezi poskytovatelem a Microsoft a potenciálně uzamčení vy a vaši uživatelé z vašich účtů.
 

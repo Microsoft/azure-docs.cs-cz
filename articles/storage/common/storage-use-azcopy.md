@@ -8,29 +8,35 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a91910d474b13fe8cc5306c53109575d2883224e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728980"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572947"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy ve Windows
+
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Microsoft Azure Blob, File a Table storage, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
 
-Existují dvě verze AzCopy, který si můžete stáhnout. AzCopy ve Windows nabízí možnosti příkazového řádku Windows style. [AzCopy v Linuxu](storage-use-azcopy-linux.md) cílí na platformy Linuxu nabízí možnosti příkazového řádku stylu POSIX. Tento článek se týká AzCopy ve Windows.
+> [!IMPORTANT]
+> Tento článek popisuje starší verzi AzCopy.
+>Pokud chcete nainstalovat nejnovější verzi AzCopy, naleznete v tématu [AzCopy v10](storage-use-azcopy-v10.md).
 
-## <a name="download-and-install-azcopy-on-windows"></a>Stáhněte a nainstalujte nástroje AzCopy ve Windows
+Pokud se rozhodnete pro instalaci starší verze AzCopy (AzCopy v8.1), existuje více verzí, které si můžete stáhnout. AzCopy ve Windows nabízí možnosti příkazového řádku Windows style. [AzCopy v Linuxu](storage-use-azcopy-linux.md) cílí na platformy Linuxu nabízí možnosti příkazového řádku stylu POSIX. Tento článek se týká AzCopy ve Windows.
 
-### <a name="latest-version-v81"></a>Nejnovější verzi (v8.1)
-Stáhněte si [nejnovější verzi AzCopy ve Windows](https://aka.ms/downloadazcopy).
+## <a name="download-and-install-azcopy-v81-on-windows"></a>Stáhněte a nainstalujte nástroje AzCopy (v8.1) na Windows
+
+Stáhněte si [AzCopy (v8.1) ve Windows](https://aka.ms/downloadazcopy).
 
 #### <a name="azcopy-on-windows-81-release-notes"></a>Zpráva k vydání verze AzCopy ve Windows 8.1
+
 - Služba tabulek je již nejsou podporovány v nejnovější verzi. Pokud používáte funkci tabulky exportu, stáhněte si verzi AzCopy 7.3.
 - Sestavován .NET Core 2.1 a všechny závislosti .NET Core jsou teď součástí v instalaci.
 - Přidání podpory ověřování OAuth. Použití ```azcopy login``` přihlášení pomocí Azure Active Directory.
 
 ### <a name="azcopy-with-table-support-v73"></a>Azcopy s podporou tabulky (v7.3)
+
 Stáhněte si [7.3 AzCopy s podporou tabulky](https://aka.ms/downloadazcopynet).
 
 ### <a name="post-installation-step"></a>Krok po instalaci

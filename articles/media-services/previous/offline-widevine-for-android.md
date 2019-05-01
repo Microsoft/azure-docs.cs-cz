@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 55d59871ee72f755fcd881e4f89e56e6d6d1d84e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64c5bff0e48f55406476e71c82763bd8f3c03afd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637569"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937246"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android  
 
@@ -32,8 +32,8 @@ ms.locfileid: "60637569"
 
 Kromě ochrany obsah pro streamování online, obsah média předplatného a pronájem služby nabídky ke stažení obsahu, který funguje, když nejste připojeni k Internetu. Možná budete muset stáhnout veškerý obsah na váš telefon nebo tablet pro přehrávání v případě, že letíte režim v letadle odpojen od sítě. Další scénáře, ve kterých můžete chtít stahovat obsah:
 
-- Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení země. Pokud chce uživatel sledovat obsah v zahraničí cestách, je potřeba ke stažení offline.
-- V některých zemích je omezená dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout ke stahování obsahu se moci podívat v dostatečně vysoká řešení vyhovující zážitek.
+- Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení určitá země nebo oblast. Pokud chce uživatel sledovat obsah v zahraničí cestách, je potřeba ke stažení offline.
+- V některých zemích nebo oblastech je omezená dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout ke stahování obsahu se moci podívat v dostatečně vysoká řešení vyhovující zážitek.
 
 Tento článek popisuje, jak implementovat offline režimu přehrávání pro DASH obsah chráněný pomocí Widevine na zařízeních s Androidem. Offline DRM můžete zadat předplatné, pronájem a nákupní modely pro obsah, takže se zákazníci můžou vašich služeb snadno získat obsahu s nimi při odpojení od Internetu.
 

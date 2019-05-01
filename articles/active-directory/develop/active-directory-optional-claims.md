@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc38e2096b6a761060fab09a8ce2518808b370e1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300140"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713353"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD
 
@@ -52,12 +52,12 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 
 **Tabulka 2: V1.0 a V2.0 volitelné množině deklarací identity**
 
-| Name                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Název                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas, kdy naposledy ověření uživatele. Specifikace OpenID Connect najdete v tématu.| JWT        |           |  |
 | `tenant_region_scope`      | Oblast prostředku tenanta | JWT        |           | |
 | `home_oid`                 | Pro uživatele typu Host, ID objektu uživatele v domovském tenantovi uživatele.| JWT        |           | |
-| `sid`                      | ID relace používané pro každou relaci uživatele Odhlásit se. | JWT        |           |         |
+| `sid`                      | ID relace používané pro každou relaci uživatele Odhlásit se. | JWT        |  Osobní a účty Azure AD.   |         |
 | `platf`                    | Platforma zařízení    | JWT        |           | Omezeno na spravovaná zařízení, které můžete ověřit typ zařízení.|
 | `verified_primary_email`   | Zdrojem je PrimaryAuthoritativeEmail uživatele      | JWT        |           |         |
 | `verified_secondary_email` | Zdrojem je SecondaryAuthoritativeEmail uživatele   | JWT        |           |        |
@@ -80,7 +80,7 @@ Tyto deklarace jsou vždy součástí v1.0 tokenů Azure AD, ale není součást
 
 **Tabulka 3: Pouze pro verze 2.0 nepovinných deklarací identity**
 
-| JWT Claim     | Name                            | Popis                                | Poznámky |
+| JWT Claim     | Název                            | Popis                                | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa přihlášení z klienta.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
@@ -91,7 +91,6 @@ Tyto deklarace jsou vždy součástí v1.0 tokenů Azure AD, ale není součást
 | `family_name` | Příjmení                       | Poskytuje poslední jméno, příjmení nebo příjmení uživatele, jak jsou definovány v objektu user. <br>"family_name": "Lukeš" | Podporované v MSA a AAD   |
 | `given_name`  | Jméno                      | Nabízí první nebo "zadány" jméno uživatele, jak v objektu user.<br>"given_name": "Frank"                   | Podporované v MSA a AAD  |
 | `upn`         | Hlavní název uživatele | Identifikátor pro uživatele, který lze použít s parametrem username_hint.  Trvalý identifikátor pro uživatele a neměl by se data klíče. | Zobrazit [další vlastnosti](#additional-properties-of-optional-claims) níže pro konfiguraci deklarace identity. |
-| `sid`         | ID relace                      | Identifikátor GUID relace použité pro sledování relace ověřování s MSA. | Pouze MSA.  Nebudou zahrnuty pro účty Azure AD. | 
 
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti nepovinných deklarací identity
@@ -164,7 +163,7 @@ Deklaruje nepovinných deklarací identity požadovaný aplikací. Aplikace mů�
 
 **Tabulka 5: Vlastnosti typu OptionalClaims**
 
-| Name        | Typ                       | Popis                                           |
+| Název        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Nepovinné deklarace vrácené v tokenu JWT ID. |
 | `accessToken` | Kolekce (OptionalClaim) | Nepovinné deklarace vrácené v přístupovém tokenu JWT. |
@@ -177,7 +176,7 @@ Pokud podporovaná konkrétní deklarace identity, můžete také upravit chová
 
 **Tabulka 6: Vlastnosti typu OptionalClaim**
 
-| Name                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelnou deklaraci.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Jsou předdefinované deklarace identity a uživatelem definované vlastnosti rozšíření deklarací identity. Pokud zdrojová hodnota je null, deklarace identity je předdefinovaný volitelnou deklaraci. Pokud zdrojová hodnota je uživatel, je hodnota vlastnosti název vlastnosti rozšíření v objektu user. |

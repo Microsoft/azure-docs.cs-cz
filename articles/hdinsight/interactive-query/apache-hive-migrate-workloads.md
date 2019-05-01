@@ -2,17 +2,17 @@
 title: Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
 description: Zjistěte, jak migrovat úlohy Apache Hive v HDInsight 3.6 do HDInsight 4.0.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
+author: msft-tacox
+ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 04/15/2019
-ms.openlocfilehash: 144e0ada0ce3a15a5dcd13b31f46f50162750a74
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126558"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707013"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
 
@@ -98,6 +98,8 @@ V HDInsight 4.0 bylo nahrazeno tématem Beeline HiveCLI. HiveCLI klienta thriftu
 Klient grafického uživatelského rozhraní pro interakci s serveru Hive v HDInsight 3.6 je zobrazení Ambari Hive. HDInsight 4.0 nahradí zobrazení Hive s Hortonworks Data Analytics Studio (DAS). DAS není dodávají spolu s HDInsight clustery out-of-box a není oficiálně podporovaných balíčků. Ale DAS můžete nainstalovat na clusteru takto:
 
 Spusťte skript akce u vašeho clusteru, s "Hlavní uzly" jako typ uzlu pro provádění. Vložte následující identifikátor URI do textového pole označená "URI skriptu Bash": https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+
+Studio analýzy dat může být spuštěn s adresou URL: https://<clustername>.azurehdinsight.net/das/
 
 
 

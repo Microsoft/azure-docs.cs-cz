@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78897e2e03085a20f07ce8724226f0e0171861e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa4eeb0a21525d636c7c1193c125d525774fa3fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291228"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707171"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Umožňuje spravovat přístup ke cloudovým aplikacím SaaS exportní tenanta
 
@@ -42,7 +42,7 @@ Celkové řešení se skládá z následujících součástí:
 
 3. **Klientský software**: Podporovat exportní tenanta, klientský software musí požádat o tokeny přímo ze služby Azure AD tak, aby infrastruktury proxy může zachytávat provoz. Aplikace využívající prohlížeč Office 365 aktuálně podporují exportní tenanta, stejně jako klienti Office, které používají moderní ověřování (jako jsou OAuth 2.0).
 
-4. **Moderní ověřování**: Cloudové služby musí používat omezení klienta a zablokovat přístup pro všechny tenanty bez povolené používají moderní ověřování. Je nutné nakonfigurovat cloudové služby Office 365, které používají moderní ověřování protokoly ve výchozím nastavení. Nejnovější informace o podpoře služeb Office 365 pro moderní ověřování, přečtěte si [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/).
+4. **Moderní ověřování**: Cloudové služby musí používat omezení klienta a zablokovat přístup pro všechny tenanty bez povolené používají moderní ověřování. Je nutné nakonfigurovat cloudové služby Office 365, které používají moderní ověřování protokoly ve výchozím nastavení. Nejnovější informace o podpoře služeb Office 365 pro moderní ověřování, přečtěte si [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Následující diagram znázorňuje tok provozu vysoké úrovně. Omezení tenanta nevyžadují kontrolu SSL pouze na provoz do služby Azure AD, nikoli do cloudové služby Office 365. Tento rozdíl je důležitý, protože objem přenosů pro ověření do služby Azure AD je obvykle mnohem nižší než objem provozu pro aplikace SaaS, jako je Exchange Online a SharePoint Online.
 
@@ -128,7 +128,7 @@ Aplikace Office 365, musí splňovat dvě kritéria pro úplnou podporu exportn�
 1. Podporuje klient používá moderní ověřování.
 2. Jako výchozí protokol ověřování pro cloudové služby je povolené moderní ověřování.
 
-Odkazovat na [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) nejnovější informace, na které Office klientů aktuálně podporují moderní ověřování. Tuto stránku obsahuje také odkazy na pokyny pro povolení moderního ověřování v konkrétní Exchange Online a Skype pro firmy Online tenanty. SharePoint Online už moderní ověřování ve výchozím nastavení povoluje.
+Odkazovat na [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) nejnovější informace, na které Office klientů aktuálně podporují moderní ověřování. Tuto stránku obsahuje také odkazy na pokyny pro povolení moderního ověřování v konkrétní Exchange Online a Skype pro firmy Online tenanty. SharePoint Online už moderní ověřování ve výchozím nastavení povoluje.
 
 Aplikace založené na prohlížeči Office 365 (SharePoint portálu Office, Yammer, weby, Outlook na webu a další) v současné době podporují exportní tenanta. Tlustých klientů (Outlook, Skype pro firmy, Word, Excel, PowerPoint a více) můžete vynutit omezení tenanta jenom při použití moderního ověřování.  
 
@@ -185,5 +185,5 @@ Konkrétní podrobnosti najdete v dokumentaci k proxy serveru.
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)
+- Přečtěte si informace o [moderní ověřování Office 365 aktualizovat](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
 - Zkontrolujte [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

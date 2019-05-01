@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 6e15149dec9fdbb7413745d36b3f6a158113b586
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684549"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925413"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toků pro skupiny zabezpečení sítě
 
@@ -91,7 +91,7 @@ Text, který následuje je příkladem protokolu toku. Jak je vidět, existují 
 
 **Povolení toku NSG protokolování na všechny skupiny Nsg, které jsou připojené k prostředku**: Tok protokolování v Azure je nakonfigurovaná na prostředek NSG. Tok pouze bude přidružen k jedno pravidlo skupiny zabezpečení sítě. Ve scénářích, kde jsou využívána více skupin zabezpečení sítě, doporučujeme vám, že je povoleno protokolování toků NSG na všechny skupiny Nsg použije zdroje podsíti nebo síťovému rozhraní k zajištění, že veškerý provoz zaznamenán. Zobrazit [jak provoz se vyhodnocuje](../virtual-network/security-overview.md#how-traffic-is-evaluated) Další informace o skupinách zabezpečení sítě. 
 
-**Tok protokolování náklady**: Protokolování toků NSG se fakturuje podle objemu protokoly vytvořené. Vysoký objem přenosů může způsobit velké tok svazek protokolu a související náklady. Protokolů toku NSG Flow ceny nezahrnují základní ceny za úložiště. Funkce zásad uchování pomocí toku NSG protokolování může vést k velkému počtu operací úložiště a souvisejících nákladů. Pokud nechcete, aby funkce zásad uchování, doporučujeme vám, nastavte tuto hodnotu na 0. Zobrazit [ceny služby Network Watcher](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) a [ceny za Azure Storage](https://azure.microsoft.com/en-us/pricing/details/storage/) další podrobnosti.
+**Tok protokolování náklady**: Protokolování toků NSG se fakturuje podle objemu protokoly vytvořené. Vysoký objem přenosů může způsobit velké tok svazek protokolu a související náklady. Protokolů toku NSG Flow ceny nezahrnují základní ceny za úložiště. Funkce zásad uchování pomocí toku NSG protokolování může vést k velkému počtu operací úložiště a souvisejících nákladů. Pokud nechcete, aby funkce zásad uchování, doporučujeme vám, nastavte tuto hodnotu na 0. Zobrazit [ceny služby Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher/) a [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) další podrobnosti.
 
 **Příchozí toky přihlášení z Internetu IP adres pro virtuální počítače bez veřejné IP adresy**: Virtuální počítače, který není k dispozici prostřednictvím veřejné IP adresy přidružené k síťovému rozhraní jako na úrovni instance, veřejnou IP adresu přiřazenou veřejnou IP adresu nebo, která jsou součástí back-end fondu nástroje pro vyrovnávání zatížení základní, použijte [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) a mít IP adresu přiřadil Azure usnadňuje odchozí připojení. V důsledku toho se mohou zobrazit položky protokolu toku pro toky z Internetu IP adresy, pokud tok je určena k portu v rozsahu portů, které jsou přiřazené k SNAT. Zatímco Azure neumožní tyto toky k virtuálnímu počítači, pokus se do protokolu zapíše a v protokolů toku NSG ve službě Network Watcher je způsobená návrhem. Doporučujeme vám, že nežádoucí příchozího internetového provozu explicitně zablokuje s skupiny zabezpečení sítě.
 

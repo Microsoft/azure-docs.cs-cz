@@ -3,8 +3,8 @@ title: Zobrazit relativní latence do oblastí Azure z konkrétních míst | Dok
 description: Zjistěte, jak zobrazit relativní latence mezi poskytovatelů internetových služeb do oblastí Azure z konkrétních míst.
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792414"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939877"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence do oblastí Azure z konkrétních míst
 
@@ -60,7 +60,7 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Oblast, kterou jste zadali v předchozím příkazu nemusí být stejná jako oblast, kterou jste zadali při, který jste získali sledovací proces sítě. Předchozí příkaz jednoduše potřeba zadat existující sledovací proces sítě. Sledovací proces sítě může být v libovolné oblasti. Pokud zadáte hodnoty pro `-Country` a `-State`, musí být platný. Hodnoty jsou malá a velká písmena. Data jsou k dispozici omezený počet země, státy a města. Spusťte příkazy [zobrazení k dispozici země, státy, města a poskytovatelé](#view-available) zobrazíte seznam dostupných země, města a stavu pro použití s předchozím příkazem. 
+> Oblast, kterou jste zadali v předchozím příkazu nemusí být stejná jako oblast, kterou jste zadali při, který jste získali sledovací proces sítě. Předchozí příkaz jednoduše potřeba zadat existující sledovací proces sítě. Sledovací proces sítě může být v libovolné oblasti. Pokud zadáte hodnoty pro `-Country` a `-State`, musí být platný. Hodnoty jsou malá a velká písmena. Data jsou k dispozici omezený počet země/oblasti, státy a města. Spusťte příkazy [zobrazení k dispozici země/oblasti, státy, města a poskytovatelé](#view-available) zobrazíte seznam dostupných země/oblasti, města a stavu pro použití s předchozím příkazem. 
 
 > [!WARNING]
 > Je nutné zadat data za posledních 30 dnů pro `-StartTime` a `-EndTime`. Určení data před způsobí žádná data se vrací.
@@ -125,15 +125,15 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > Na rozdíl od při zadávání na jednom místě, pokud nechcete zadat umístění nebo zadejte několika místy, jako je například "Západní USA 2", "Západní USA", je nutné zadat poskytovatele služeb Internetu při spuštění příkazu. 
 
-## <a name="view-available"></a>Zobrazit dostupné země, státy, města a poskytovatelé
+## <a name="view-available"></a>Zobrazit dostupné země/oblasti, státy, města a poskytovatelé
 
-Data jsou k dispozici pro konkrétní poskytovatelů internetových služeb, země, státy a města. Chcete-li zobrazit seznam všech dostupných poskytovatelů internetových služeb, země, státy a města, které můžete zobrazit data, zadejte následující příkaz:
+Data jsou k dispozici pro konkrétní poskytovatelů internetových služeb, země/oblasti, státy a města. Chcete-li zobrazit seznam všech dostupných Internetu poskytovatelů služeb, země/oblasti, státy a města, které můžete zobrazit data, zadejte následující příkaz:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Data dostupná jenom pro země, státy a města vrácené předchozím příkazem. Předchozí příkaz, musíte zadat existující sledovací proces sítě. V příkladu zadaný *NetworkWatcher_eastus* sledovací proces sítě ve skupině prostředků s názvem *NetworkWatcherRG*, ale můžete zadat všechny existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho dokončení úkolů v [vytvořit network watcher](#create-a-network-watcher). 
+Data dostupná jenom pro země/oblasti, státy a města vrácené předchozím příkazem. Předchozí příkaz, musíte zadat existující sledovací proces sítě. V příkladu zadaný *NetworkWatcher_eastus* sledovací proces sítě ve skupině prostředků s názvem *NetworkWatcherRG*, ale můžete zadat všechny existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho dokončení úkolů v [vytvořit network watcher](#create-a-network-watcher). 
 
 Po spuštění předchozího příkazu, můžete filtruje výstup vrácený zadáním platné hodnoty pro **země**, **stavu**, a **Město**, v případě potřeby.  Například chcete-li zobrazit seznam poskytovatelů služeb Internetu v Seattlu ve Washingtonu, k dispozici ve Spojených státech amerických, zadejte následující příkaz:
 

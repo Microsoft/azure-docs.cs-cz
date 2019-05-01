@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 1f950841946b65d618c7335ea3d8d42993a89481
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805257"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702291"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -49,7 +49,7 @@ Azure AD podporuje následující metody ověřování pro hybridní řešení i
 ### <a name="cloud-authentication"></a>Ověření cloudu
 Pokud zvolíte tuto metodu ověřování, Azure AD zpracuje proces přihlášení uživatelů. Pomocí bezproblémového jednotného přihlašování (SSO) s velkou provázaností, uživatelé můžou přihlásit ke cloudovým aplikacím, aniž byste museli znovu zadat své přihlašovací údaje. Pomocí cloudového ověřování můžete vybrat ze dvou možností: 
 
-**Synchronizace hodnot hash hesel Azure AD**. Nejjednodušší způsob, jak povolit ověřování místních adresářových objektů ve službě Azure AD. Uživatelé můžou používat stejné uživatelské jméno a heslo, které používají místní bez nutnosti nasazovat žádnou další infrastrukturu. Některé funkce premium služby Azure AD, jako je Identity Protection, vyžadují synchronizaci hodnot hash hesel, bez ohledu na to, jakou metodu ověřování zvolit.
+**Synchronizace hodnot hash hesel Azure AD**. Nejjednodušší způsob, jak povolit ověřování místních adresářových objektů ve službě Azure AD. Uživatelé můžou používat stejné uživatelské jméno a heslo, které používají místní bez nutnosti nasazovat žádnou další infrastrukturu. Některé funkce premium služby Azure AD Identity Protection, jako je a [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync), vyžaduje synchronizaci hodnot hash hesel, bez ohledu na to, jakou metodu ověřování vybrat.
 
 > [!NOTE] 
 > Hesla se nikdy ve formátu prostého textu nebo zašifrovaný pomocí algoritmu reverzibilního ve službě Azure AD. Další informace o skutečný proces synchronizace hodnot hash hesel najdete v tématu [implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization). 
@@ -92,7 +92,7 @@ Podrobnosti o rozhodnutí otázky:
 
 * **Činnost koncového uživatele**. Ke zlepšení prostředí přihlášení uživatelů, nasaďte bezproblémového jednotného přihlašování se synchronizace hodnot hash hesel. Bezproblémové jednotné přihlašování eliminují zbytečné výzvy při přihlášení uživatele.
 
-* **Pokročilé scénáře**. Pokud se rozhodnete organizace, je možné přehledy na základě identit pomocí Azure AD Identity Protection sestavy s Azure AD Premium P2. Příkladem je sestava uniklými přihlašovacími údaji. Má Windows Hello pro firmy [specifické požadavky při použití synchronizace hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). 
+* **Pokročilé scénáře**. Pokud se rozhodnete organizace, je možné přehledy na základě identit pomocí Azure AD Identity Protection sestavy s Azure AD Premium P2. Příkladem je sestava uniklými přihlašovacími údaji. Má Windows Hello pro firmy [specifické požadavky při použití synchronizace hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) požadovat synchronizaci hodnot hash hesel uživatelů zřizování pomocí svých firemních přihlašovacích údajů ve spravované doméně.
 
     Organizace, které vyžadují vícefaktorové ověřování se synchronizace hodnot hash hesel, musíte použít vícefaktorové ověřování Azure AD. Tyto organizace nelze použít metody vícefaktorového ověřování třetí strany nebo místně.
 

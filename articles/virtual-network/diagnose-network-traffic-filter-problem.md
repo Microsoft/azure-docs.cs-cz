@@ -3,8 +3,8 @@ title: Diagnostika potíží s filtrováním virtuální počítač síťové p�
 description: Zjistěte, jak Diagnostika potíží s filtrováním virtuální počítač síťové přenosy zobrazením platná pravidla zabezpečení pro virtuální počítač.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
-ms.author: jdial
-ms.openlocfilehash: fecab4dc3a0674b0b64638676f4538af145b52ac
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652641"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712667"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika potíží s filtrováním na provoz sítě virtuálního počítače
 

@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623982"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575297"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Export a import hromadnou registrací Azure Notification Hubs
 Existují scénáře, ve kterých je potřeba vytvořit nebo upravit velký počet registrací v centru oznámení. Některé z těchto scénářů jsou značky aktualizace následujících batch výpočtů nebo migrujete stávající implementaci nabízených oznámení používat Notification Hubs.
@@ -34,7 +34,7 @@ V této části se předpokládá, že máte následující entity:
 
 - Centrum oznámení zřízené.
 - Kontejner objektů blob služby Azure Storage.
-- Odkazy [balíčku NuGet pro Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) a [balíčku Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
+- Odkazy [balíčku NuGet pro Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) a [balíčku Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Vytvoření vstupní soubor a uložte ho do objektu BLOB
 Vstupní soubor obsahuje seznam registrací serializovanou ve formátu XML, jeden pro každý řádek. Pomocí sady Azure SDK, následující příklad kódu ukazuje, jak k serializaci registrace a nahrání do kontejneru objektů blob.

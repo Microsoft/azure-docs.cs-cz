@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1be88f0938a16302be4cf2308ba463900c067104
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471924"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920156"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -86,7 +86,7 @@ Skupiny je možné obnovit do 30 dní od jeho odstranění tak, že vyberete **o
 Pokud na skupinu, kterou jste obnovení obsahuje dokumenty, Sharepointových webech nebo další trvalé objekty, může trvat až 24 hodin plně obnovit skupiny a její obsah.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Jak načíst data vypršení platnosti skupin Office 365
-Kromě přístupovém panelu, kde uživatelé můžou zobrazit podrobnosti o skupině včetně datum vypršení platnosti a datum posledního obnovené a datum vypršení platnosti skupiny Office 365 mohou být načteny z verze Beta Microsoft Graph REST API. v Microsoft Graphu Beta se povolila expirationDateTime jako vlastnost skupiny. Se dá načíst požadavek GET. Další podrobnosti najdete [v tomto příkladu](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+Kromě přístupovém panelu, kde uživatelé můžou zobrazit podrobnosti o skupině včetně datum vypršení platnosti a datum posledního obnovené a datum vypršení platnosti skupiny Office 365 mohou být načteny z verze Beta Microsoft Graph REST API. v Microsoft Graphu Beta se povolila expirationDateTime jako vlastnost skupiny. Se dá načíst požadavek GET. Další podrobnosti najdete [v tomto příkladu](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Pokud chcete spravovat členství ve skupině na přístupovém panelu, musí být nastavena na hodnotu "Ne" v Azure Active Directory skupiny Obecné nastavení "Omezení přístupu ke skupinám na přístupovém panelu".
@@ -101,10 +101,10 @@ Zabezpečení a dodržování předpisů Center jsou nakonfigurované zásady uc
 ## <a name="powershell-examples"></a>Příklady prostředí PowerShell
 Tady jsou příklady použití rutin prostředí PowerShell a zadejte nastavení vypršení platnosti pro skupiny Office 365 ve vašem tenantovi:
 
-1. Nainstalujte modul prostředí PowerShell verze 2.0 ve verzi Preview (2.0.0.137) a přihlaste se na příkazovém řádku prostředí PowerShell:
+1. Instalace modulu prostředí PowerShell verze 2.0 a přihlaste se na příkazovém řádku prostředí PowerShell:
    ```powershell
-   Install-Module -Name AzureADPreview
-   connect-azuread 
+   Install-Module -Name AzureAD
+   Connect-AzureAD
    ```
 2. Konfigurace nastavení vypršení platnosti New-AzureADMSGroupLifecyclePolicy:  Tato rutina nastaví dobu života pro všechny skupiny Office 365 v tenantovi až 365 dnů. Oznámení o prodloužení platnosti pro Office 365 skupin bez vlastníků se odešlou do "emailaddress@contoso.com.
   

@@ -3,23 +3,23 @@ title: Co je Azure Active Directory B2C? | Dokumenty Microsoft
 description: Další informace o tom, jak vytvořit a spravovat prostředí pro identity, jako je registrace přihlášení a Správa profilů ve vaší aplikaci pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33c6f9e06439ebeb17608aa374532ac4f7a020cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317356"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701360"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C je služba pro správu identit. Tato služba umožňuje přizpůsobení a řízení, jak uživatelé bezpečně komunikovat s webových, desktopových, mobilních nebo jednostránkové aplikace. Pomocí služby Azure AD B2C, uživatelé zaregistrovat, přihlaste se, resetování hesel a upravit profily. Azure AD B2C implementuje formu protokoly OpenID Connect a OAuth 2.0. Je důležité klíč v implementaci těchto protokolů tokeny zabezpečení a jejich deklarací identity, které vám umožní poskytnout zabezpečený přístup k prostředkům.
+Azure Active Directory (Azure AD) B2C je služba pro správu business-to-consumer identit. Tato služba umožňuje přizpůsobení a řízení, jak uživatelé bezpečně komunikovat s webových, desktopových, mobilních nebo jednostránkové aplikace. Pomocí služby Azure AD B2C, uživatelé zaregistrovat, přihlaste se, resetování hesel a upravit profily. Azure AD B2C implementuje formu protokoly OpenID Connect a OAuth 2.0. Je důležité klíč v implementaci těchto protokolů tokeny zabezpečení a jejich deklarací identity, které vám umožní poskytnout zabezpečený přístup k prostředkům.
 
 A *cesty uživatele* se žádosti, která určuje zásadu, která řídí chování uživatele a aplikaci interakci s Azure AD B2C. Dvě cesty jsou k dispozici pro definování cesty uživatele v Azure AD B2C. 
 

@@ -1,25 +1,18 @@
 ---
-title: Odstranění nabídky na webu Marketplace – Azure Marketplace | Dokumentace Microsoftu
+title: Odstranění nabídky na webu marketplace | Azure Marketplace
 description: Odstranění nabídky na Azure a AppSource tržišť s řešeními pomocí portál Cloud Partner
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 1d5d02d65dd3dcf5978639818fba4ebe36ffaaff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 542bc611ac8820385c3f749aa151afc1dcdf6db5
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825145"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942137"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Odstranění nabídky Azure Marketplace a AppSource nebo skladové položky
 
@@ -28,7 +21,7 @@ Z různých důvodů se můžete rozhodnout pro stažení vaši nabídku z webu 
 - *Odebrání nabídky* zajistí, že noví zákazníci mohou už koupit a nasadit vaši nabídku, ale nemá žádný vliv na stávající zákazníky, kterým musí podporovat podle licenční smlouvou a které jsou relevantní zákony. 
 - *Nabízí ukončení* je proces ukončení služby a/nebo licenční smlouva mezi vámi a vašimi stávajícími zákazníky. 
 
-Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) a [zásadách pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (část [nabídky pozastavení nebo odebrání](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
+Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) a [zásadách pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (část [nabídky pozastavení nebo odebrání](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
 Tento článek hovoří o různých nepodporuje odstranění scénáře a kroky potřebné k provedení každého.  
 

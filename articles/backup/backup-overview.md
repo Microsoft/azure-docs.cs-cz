@@ -1,20 +1,19 @@
 ---
 title: Co je Azure Backup?
-description: Poskytuje přehled služby Azure Backup a jak ji nasadit jako součást kontinuity podnikových procesů a po havárii (BCDR) strategii zotavení.
-services: backup
+description: Poskytuje přehled služby Azure Backup a jejího přínosu pro zajištění provozní kontinuity a po havárii (BCDR) strategii zotavení.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254702"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714282"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -31,11 +30,7 @@ Azure Backup nabízí tyto klíčové výhody:
 - **Získejte neomezený přenos dat.**: Azure Backup neomezuje množství příchozích nebo odchozích dat přenosu, nebo za data přenesená.
     - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
     - Pokud provedete import velkých objemů dat pomocí služby Azure Import/Export počáteční offline zálohu, je náklady související s příchozími daty.  [Další informace](backup-azure-backup-import-export.md).
-- **Zabezpečení dat**:
-    - On-premises přenášená data se šifrují v místním počítači pomocí AES256. Data přenášená je chráněn HTTPS mezi úložiště a zálohování. Protokol iSCSI zabezpečuje data přenášená mezi zálohováním a uživatele počítače. Zabezpečené tunelové propojení se používá k ochraně kanál iSCSI.
-    - Pro místní do služby Azure backup data v Azure je šifrovaný v klidovém stavu pomocí přístupového hesla, které poskytnete při nastavování zálohování. Heslo nebo klíč se nikdy nepřenáší ani neukládá v Azure. Pokud je nutné obnovit některá data, máte šifrovací heslo (klíč) k dispozici jen vy.
-    - Pro virtuální počítače Azure, data zašifrovaná pomocí šifrování služby Storage (SSE) na resetovat. Backup automaticky šifruje data před uložením. Azure Storage se dešifruje před načtením.
-    - Backup podporuje také virtuální počítače Azure, které jsou šifrované pomocí služby Azure Disk Encryption (ADE). [Další informace](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
+- **Zabezpečení dat**: Azure Backup obsahuje řešení zabezpečení přenášená i neaktivní uložená data.
 - **Získejte konzistentní zálohování**: Konzistentní zálohování znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikací, které zajišťují, že pro obnovení dat se nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.
 - **Zachovat data krátkodobé a dlouhodobé**: Trezory služby Recovery Services můžete použít pro uchovávání dat v krátkodobém a dlouhodobém horizontu. Azure neomezuje dobu, po kterou data můžou zůstat v trezoru služby Recovery Services. Abyste mohli pro dlouho budete chtít. Služba Azure Backup má omezení 9999 bodů obnovení na chráněnou instanci. [Další informace](backup-introduction-to-azure-backup.md#backup-and-retention)o tom, jak tento limit ovlivní vaše potřeby zálohování.
 - **Automatická správa úložiště** – Hybridní prostředí často vyžadují heterogenní úložiště – některá místní a některá cloudová. Azure Backup neznamená žádné náklady na používání místních zařízení úložiště. Azure Backup automaticky přiděluje a spravuje úložiště záloh a používá model plateb jako využití, takže platíte jenom za úložiště, které skutečně využijete. [Další informace](https://azure.microsoft.com/pricing/details/backup) informace o cenách.
@@ -110,10 +105,16 @@ Další informace o [jak zálohování funguje](backup-architecture.md#architect
 **Chci zálohovat celý virtuální počítač Azure** | Povolte zálohování virtuálního počítače. Rozšíření zálohování se automaticky nakonfigurují na virtuální počítač Azure s Linuxem nebo Windows. | Je-li zálohovat celý virtuální počítač <br/><br/> Pro virtuální počítače s Windows je konzistentní zálohování. pro Linux je konzistentní zálohování. Pokud potřebujete s ohledem na aplikace pro virtuální počítače s Linuxem, budete muset nastavit tuto konfiguraci pomocí vlastních skriptů.
 **Chci, aby pro zálohování konkrétní soubory nebo složky na virtuálním počítači Azure** | Nasazení agenta MARS na virtuálním počítači.
 **Chci přímo zpět na místních počítačích Windows** | Nainstalujte agenta MARS na počítači. | Můžete zálohovat soubory, složky a stavu systému do Azure. Zálohování se s ohledem na aplikace.
-**Chci přímo zálohování místních počítačů s Linuxem** | Potřebujete k nasazení aplikace DPM nebo MABS zálohování do Azure. | Zálohování hostiteli se systémem Linux není podporována, je možné pouze zálohování hostovaný počítač s Linuxem hostovaných na Hyper-V nebo VMWare.
+**Chci přímo zálohování místních počítačů s Linuxem** | Potřebujete k nasazení aplikace DPM nebo MABS zálohování do Azure. | Zálohování hostiteli se systémem Linux není podporováno, můžete zálohovat pouze počítače s Linuxem hostovaného hostitelem Hyper-V nebo VMWare.
 **Chci, aby zálohování aplikace běžící na místních** | S ohledem na aplikace Zálohování počítačů musí být chráněn DPM nebo MABS.
 **Chci, aby podrobné a flexibilní nastavení zálohování a obnovení pro virtuální počítače Azure** | Ochrana virtuálních počítačů Azure pomocí MABS/aplikace DPM běžící na Azure pro větší flexibilita při plánování zálohování a úplnou flexibilitu pro ochranu a obnovení souborů, složek, svazků, aplikace a stavu systému.
 
+## <a name="how-does-azure-backup-work-with-encryption"></a>Jak funguje Azure Backup pomocí šifrování?
+
+**Šifrování** | **Zálohování v místním** | **Zálohování virtuálních počítačů Azure** | **Zálohování SQL na virtuálních počítačích Azure**
+--- | --- | --- | ---
+Šifrování v klidovém stavu<br/> (Šifrování dat, kde je trvalé uložení) | Zákazníkem zadaný heslo se používá k šifrování dat | Azure [šifrování služby Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) se používá k šifrování dat uložených v trezoru.<br/><br/> Backup automaticky šifruje data před uložením. Azure Storage se dešifruje před načtením. Použití klíče spravované zákazníkem pro SSE není aktuálně podporováno.<br/><br/> Můžete zálohovat virtuální počítače, které používají [Azure disk encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) pro šifrování disků s operačním systémem a daty. Azure Backup podporuje virtuální počítače jsou šifrované pomocí klíče BEK – pouze a oba klíče BEK a [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/). Zkontrolujte [omezení](backup-azure-vms-encryption.md#encryption-support). | Azure Backup podporuje zálohování databází systému SQL Server nebo server s [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) povolena. Backup podporuje transparentní šifrování dat pomocí klíčů spravovaných službou Azure nebo pomocí klíčů spravovaných zákazníkem (BYOK).<br/><br/> Backup neprovádí žádné šifrování SQL jako součást procesu zálohování.
+Šifrování během přenosu<br/> (Šifrování data přesouvaná z jednoho umístění do druhého) | Data se šifrují pomocí AES256 a zaslaného prostřednictvím protokolu HTTPS do trezoru v Azure | V rámci Azure data účtů Azure storage a trezor je chráněn HTTPS. Tato data zůstává v páteřní síti Azure.<br/><br/> Pro obnovení souborů iSCSI zabezpečuje data přenášená mezi trezoru a virtuálnímu počítači Azure. Zabezpečené tunelové propojení chrání kanál iSCSI. | V rámci Azure data účtů Azure storage a trezor je chráněn HTTPS.<br/><br/> Obnovení souborů nejsou relevantní pro SQL.
 
 ## <a name="next-steps"></a>Další postup
 

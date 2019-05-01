@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fecefbbed39f4fc12db79c7466006409e3da7dd1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095577"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574472"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -77,26 +77,16 @@ Pokud používáte sdílenou složkou Azure přístup k Azure File Sync, vždy p
 Služba soubory Azure nabízí dvě úrovně výkonu: standard a premium.
 
 * **Standardní sdílené složky** se zálohují na rotační pevných disků (HDD), které poskytují spolehlivý výkon vstupně-výstupních operací úloh, které jsou méně citlivé na variabilitu výkonu, jako je například pro obecné účely sdílené složky a prostředí pro vývoj/testování. Standardní sdílené složky jsou dostupné pouze v modelu s průběžnými platbami fakturace.
-* **Premium sdílené složky (preview)** se zálohují na discích SSD (Solid-State Drive), které poskytují konzistentní vysoký výkon a nízkou latencí v řádu milisekund pro většinu operací vstupně-výstupních operací pro maximum úlohy náročné na vstupně-výstupních operací. Díky tomu je vhodné pro celou řadu úloh, jako jsou databáze, hostování webové stránky, vývojová prostředí atd. Sdílené složky Premium jsou dostupné jenom v zřízené model fakturace. Premium sdílených složek pomocí modelu nasazení, která je oddělená od standardní sdílené složky. Pokud chcete další informace o vytvoření sdílené složky premium, najdete v našem článku k tomuto tématu: [Postup vytvoření účtu služby Azure premium storage soubor](storage-how-to-create-premium-fileshare.md).
+* **Premium sdílené složky (preview)** se zálohují na discích SSD (Solid-State Drive), které poskytují konzistentní vysoký výkon a nízkou latencí v řádu milisekund pro většinu operací vstupně-výstupních operací pro maximum úlohy náročné na vstupně-výstupních operací. Díky tomu je vhodné pro celou řadu úloh, jako jsou databáze, hostování webové stránky, vývojová prostředí atd. Sdílené složky Premium jsou dostupné jenom v zřízené model fakturace. Premium sdílených složek pomocí modelu nasazení, která je oddělená od standardní sdílené složky.
+
+Azure Backup je dostupná pro sdílené složky premium a Azure Kubernetes Service podporuje sdílené složky premium ve verzi 1.13 a vyšší.
+
+Pokud chcete další informace o vytvoření sdílené složky premium, najdete v našem článku k tomuto tématu: [Postup vytvoření účtu služby Azure premium storage soubor](storage-how-to-create-premium-fileshare.md).
+
+V současné době nelze převést přímo mezi standardní sdílené složky a sdílené složky premium. Pokud chcete přepnout na buď vrstvy, musíte vytvořit nové sdílené složky v dané úrovni a ručně zkopírujte data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. Provedete to jedním z nástroje pro kopírování nepodporuje soubory Azure, například AzCopy.
 
 > [!IMPORTANT]
-> Soubor Premium sdílené složky jsou stále ve verzi preview, k dispozici pouze při použití úložiště LRS a jsou k dispozici pouze v podmnožině oblastí s podporou Azure Backup je k dispozici ve vybrat oblasti:
-
-|Dostupné oblasti  |Podpora Azure Backup  |
-|---------|---------|
-|USA – východ 2      | Ano|
-|USA – východ       | Ano|
-|Západní USA       | Ne |
-|Západní USA 2      | Ne |
-|USA – střed    | Ne |
-|Severní Evropa  | Ne |
-|Západní Evropa   | Ano|
-|Jihovýchodní Asie       | Ano|
-|Východní Asie     | Ne |
-|Japonsko – východ    | Ne |
-|Japonsko – západ    | Ne |
-|Korea – střed | Ne |
-|Austrálie – východ| Ne |
+> Premium sdílené složky jsou stále ve verzi preview, k dispozici pouze při použití úložiště LRS a jsou k dispozici ve většině oblastí, které nabízejí účty úložiště. Pokud jsou premium sdílené složky ve vaší oblasti aktuálně k dispozici, najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage) stránky pro Azure.
 
 ### <a name="provisioned-shares"></a>Zřízené sdílené složky
 
@@ -115,7 +105,9 @@ Sdílené složky musí být zřízený v přírůstcích po 1 GB. Minimální v
 >
 > rychlost příchozího přenosu dat = 40 MiB/s + 0,04 * zřízené GiB
 
-Velikost sdílené složky je možné kdykoli zvýšit, ale lze snížit až po 24 hodinách od poslední zvýšení. Po uplynutí 24 hodin bez zvýšení velikosti, může snížit velikost sdílené složky tolikrát, kolikrát, dokud znovu zvýšit. IOPS a propustnosti škálování změny bude platit za pár minut po provedení změny velikosti.
+Velikost sdílené složky je možné kdykoli zvýšit, ale lze snížit až po 24 hodinách od poslední zvýšení. Po uplynutí 24 hodin bez zvýšení velikosti, může snížit velikost sdílené složky tolikrát, kolikrát chcete, dokud znovu zvýšit. IOPS a propustnosti škálování změny bude platit za pár minut po provedení změny velikosti.
+
+Je možné zmenšit velikost vašeho zřízené sdílené složky pod používané GiB. Pokud to uděláte, nedojde ke ztrátě dat. ale budou dál účtovat velikost použitou a přijímat výkonu (standardní hodnoty vstupně-výstupních operací, propustnosti a shluků vstupně-výstupních operací) zřízené sdílené složky, nikoli velikost použít.
 
 Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti zřízené sdílené složky:
 
@@ -141,7 +133,7 @@ Premium sdílené složky můžete převést jejich vstupně-výstupních operac
 Pokaždé, když se provoz pro svou sdílenou složku je nižší než standardní hodnoty vstupně-výstupních operací se začnou hromadit ve shluku kbelíku kredity. Sdílenou složku 100 GB má například 100 standardní hodnoty vstupně-výstupních operací. Pokud skutečný provoz ve sdílené složce se 40 vstupně-výstupních operací pro konkrétní interval 1 sekundu, 60 nevyužité vstupně-výstupních operací se kompenzací burst kbelík. Tyto kredity se potom použije později při operace by došlo k vstupně-výstupních operací směrného plánu.
 
 > [!TIP]
-> Velikost kbelíku burst = Baseline_IOPS * 2 * 3600.
+> Velikost kbelíku burst = vstupně-výstupních operací směrného plánu * 2 * 3600.
 
 Pokaždé, když se sdílenou složku překračuje základní vstupně-výstupních operací a má Kredity v intervalu burst, bude rozšíření. Sdílené složky můžete nadále burst tak dlouho, dokud se zbývající kredity, ale menší než 50 TiB sdílené složky zůstanou pouze na burst limit až na jednu hodinu. Sdílené složky, které jsou větší než 50 TiB technicky může překročit tento limit jednu hodinu, až dvě hodiny, ale to je na základě počtu kreditů burst operace, které. Každý vstupně-výstupní operace nad rámec standardních hodnot IOPS spotřebovává jednoho kredity a jakmile jsou využité všechny kredity sdílenou složku by vrátil se standardními hodnotami vstupně-výstupních operací.
 

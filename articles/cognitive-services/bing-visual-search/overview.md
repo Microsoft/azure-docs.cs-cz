@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8bcb0372ebb60ac3a46cf06bf85322b288e153ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd93166cb878fbd961795492ed9a035c919429a8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511495"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916629"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
@@ -47,7 +47,7 @@ Výsledky pro vizuální vyhledávání Bingu také obsahovat ohraničující po
 
 Bing API pro vizuální vyhledávání je RESTful webová služba, což usnadňuje volat z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsování formátu JSON. Rozhraní REST API nebo sady SDK můžete použít pro službu.
 
-1. Vytvoření [účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přístup k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [zdarma vytvořit účet](https://azure.microsoft.com/free/). Můžete získat klíč předplatného z [webu Azure portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) po vytvoření účtu, nebo [web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) až po dokončení aktivace bezplatné zkušební verze.
+1. Vytvoření [účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přístup k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [zdarma vytvořit účet](https://azure.microsoft.com/free/). Můžete získat klíč předplatného z [webu Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) po vytvoření účtu, nebo [web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) až po dokončení aktivace bezplatné zkušební verze.
 2. Odeslat požadavek na rozhraní API pomocí platný vyhledávacího dotazu.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 

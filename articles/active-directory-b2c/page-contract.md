@@ -1,30 +1,30 @@
 ---
-title: Vyberte stránku smlouvy v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Vyberte stránku smlouvy – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o tom, jak vybrat stránku smlouvy v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39198c0093f018b64a1292f023914651b51b4faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cd29df19179f07fd9b61a2f484b1d49cc05c4cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361043"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570577"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Vyberte stránku smlouvu v Azure Active Directory B2C pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Kód jazyka JavaScript na straně klienta můžete povolit v Azure Active Directory (Azure AD) B2C zásady, ať už používáte toky uživatelů nebo vlastními zásadami. Tento článek popisuje, jak v Azure AD B2C vyberte stránku smlouvy tím, že nakonfigurujete v [vlastní zásady](active-directory-b2c-overview-custom.md). Kontrakt stránky je sdružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte. Pokud máte v úmyslu použít [Javascript](javascript-samples.md), budete muset definovat verze kontraktu stránky pro všechny vaše definice obsahu ve vlastních zásadách.
+Kód jazyka JavaScript na straně klienta můžete povolit v Azure Active Directory (Azure AD) B2C zásady, ať už používáte toky uživatelů nebo vlastními zásadami. Pokud chcete povolit JavaScript pro aplikace, je nutné přidat element, který má vaše [vlastní zásady](active-directory-b2c-overview-custom.md), vyberte smlouvy stránky a použijte [b2clogin.com](b2clogin.md) v požadavcích. Kontrakt stránky je sdružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte. Tento článek popisuje, jak vybrat stránku smlouvy v Azure AD B2C nakonfigurováním vlastních zásad.
 
 > [!NOTE]
-> Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [o používání jazyka JavaScript a stránky verze kontraktu v toku uživatele](user-flow-javascript-overview.md).
+> Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [jazyka JavaScript a stránku smlouvy verze v Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="replace-datauri-values"></a>Nahraďte parametr hodnoty
 

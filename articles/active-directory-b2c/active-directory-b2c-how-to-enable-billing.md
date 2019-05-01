@@ -3,19 +3,19 @@ title: Jak propojit předplatné Azure – Azure Active Directory B2C | Dokument
 description: Podrobný průvodce pro povolení fakturace pro tenanta Azure AD B2C do předplatného Azure.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f9e3e63942c8fac5fc24ca26969b71e6ef4257f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317860"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706816"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Propojit předplatné Azure s tenantem Azure Active Directory B2C
 

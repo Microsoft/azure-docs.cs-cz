@@ -1,25 +1,18 @@
 ---
-title: Azure a Dynamics 365 konzultační služby nabízejí – publikování | Dokumentace Microsoftu
-description: Příručka pro uvedení na portál Cloud Partner Azure nebo Dynamics 365 konzultační služby nabídky.
+title: Azure a Dynamics 365 konzultační služby nabízejí publikování | Azure Marketplace
+description: Publikování Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu pro Azure Marketplace nebo AppSource.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: dae86dcdd3ada10164be0120b49a8f5f7b642ccd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 44fe7f11d365761c351e488d834a63392ea9cac1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865421"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942793"
 ---
 # <a name="publish-a-consulting-service-offer"></a>Publikovat nabídku na konzultační služby
 

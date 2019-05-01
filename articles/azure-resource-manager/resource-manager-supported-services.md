@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389651"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702700"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -31,6 +31,8 @@ Při nasazování prostředků, můžete často potřebují k načtení informac
 * Zobrazit platná verze rozhraní API pro typ prostředku
 
 Můžete provést tyto kroky prostřednictvím webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+
+Seznam, který se mapuje zprostředkovatelé prostředků služeb Azure najdete v tématu [zprostředkovatelé prostředků služeb Azure](azure-services-resource-providers.md).
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -291,5 +293,5 @@ West US
 
 * Další informace o vytváření šablon Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md). 
 * Schémata šablon zprostředkovatele prostředků najdete v tématu [referenčními informacemi k šablonám](/azure/templates/).
-* Další informace o nasazení prostředků najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Seznam, který se mapuje zprostředkovatelé prostředků služeb Azure najdete v tématu [zprostředkovatelé prostředků služeb Azure](azure-services-resource-providers.md).
 * Operace pro poskytovatele prostředků najdete v tématu [rozhraní Azure REST API](/rest/api/).

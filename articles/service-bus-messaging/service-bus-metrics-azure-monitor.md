@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5f5c1d9b1884c6e9975ceb0ce28ecd5f25e89b2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308541"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716099"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metriky Azure Service Bus ve službě Azure Monitor (preview)
 
@@ -83,14 +83,14 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 |Odchozí zprávy (preview)|Počet zpráv přijatých z Service Bus v zadaném období nebo události.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 | Zprávy (preview) | Počet zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Dimenze: EntityName |
 | ActiveMessages (preview) | Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Dimenze: EntityName |
+| Dead lettered zprávy (preview) | Počet dead lettered zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/>Dimenze: EntityName |
+| Plánované zprávy (preview) | Počet naplánovaných zprávy ve frontě nebo tématu. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr  <br/> Dimenze: EntityName |
 
 ## <a name="connection-metrics"></a>Metrik připojení
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
 |ActiveConnections (preview)|Počet aktivních připojení na obor názvů i na entity.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Připojení otevřeno (preview)|Počet otevřených připojení.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Připojení uzavřeno (preview)|Počet uzavřených připojení.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName |
 
 ## <a name="resource-usage-metrics"></a>Metriky využití prostředků
 
@@ -115,7 +115,7 @@ Azure Service Bus podporuje následující dimenze pro metriky ve službě Azure
 1. Na **metriky** karty **služby Service Bus Namespace** stránce **konfigurace výstrah**. 
 
     ![Metriky stránce – Konfigurace upozornění nabídky](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. Vyberte **Výběr cíle**, a proveďte následující akce na **vyberte prostředek** stránky: 
+2. Vyberte **Výběr cíle** možnost, a proveďte následující akce na **vyberte prostředek** stránky: 
     1. Vyberte **obory názvů služby Service Bus** pro **filtrovat podle typu prostředku** pole. 
     2. Vyberte své předplatné pro **filtrovat podle předplatného** pole.
     3. Vyberte **obor názvů služby Service bus** ze seznamu. 

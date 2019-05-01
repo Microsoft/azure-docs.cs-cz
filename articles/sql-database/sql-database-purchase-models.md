@@ -11,30 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: 89ff11246c7cd36732df1332da94ec5318d7f1d7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360187"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574091"
 ---
-# <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-model"></a>Výběr mezi virtuálních jader a model nákupu DTU
 
 Azure SQL Database umožňuje jednoduše koupit plně spravovanou PaaS databázový stroj, který nejlépe vyhovuje vašim potřebám výkonu a nákladů. V závislosti na modelu nasazení Azure SQL Database můžete vybrat nákupní model, který nejlépe vyhovuje vašim potřebám:
-
-- [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) (doporučeno), která umožňuje vybrat přesné množství kapacity úložiště a výpočetní potřebné pro vaši úlohu.
-- [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) kde můžete vybrat dodávat výpočetní výkon a úložiště balíčků s vyrovnáváním pro běžné úlohy.
 
 V modelech nasazení Azure SQL Database k dispozici jsou různé modely nákupu:
 
 - [Izolované databáze](sql-database-single-databases-manage.md) a [elastického fondu](sql-database-elastic-pool.md) možností nasazení v [Azure SQL Database](sql-database-technical-overview.md) nabízí i [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 - [Spravovanou instanci](sql-database-managed-instance.md) nabízí možnost nasazení ve službě Azure SQL Database [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
-> [!IMPORTANT]
-> [Hyperškálovatelného úroveň služby (preview)](sql-database-service-tier-hyperscale.md) je ve verzi public preview pouze pro izolované databáze pomocí virtuálních jader, model nákupu.
 
-Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
+Následující tabulku a graf porovnání a kontrastu virtuálních jader a jednotek DTU zakoupení modely.
 
 |**Nákupní model**|**Popis**|**Nejlepší pro**|
 |---|---|---|
@@ -46,7 +41,10 @@ Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
 ## <a name="compute-costs"></a>Náklady na výpočetní výkon
 
-Náklady na výpočetní odráží celkové výpočetní kapacitu, pro kterého je zřízené pro aplikaci. V obchodní vrstvě důležité služby můžeme automaticky přidělit nejméně 3 repliky. Tak, aby odrážela tuto další přidělování výpočetních prostředků, cena v nákupní model založený na virtuálních jádrech je přibližně 2.7 x vyšší v obchodní vrstvě kritické služby než v rámci úrovně služeb pro obecné účely. Ze stejného důvodu vyšší úložiště cen za GB ve vrstvě služeb kritické obchodní odráží vysoké vstupně-výstupní operace a úložiště SSD s nízkou latencí. Ve stejnou dobu náklady na úložiště pro zálohování není liší tyto dvě úrovně vzhledem k tomu v obou případech používáme třídu úložiště úrovně standard.
+### <a name="provisioned-compute-costs"></a>Zřízených výpočetních nákladů
+
+Náklady na výpočetní prostředky na úrovni zřízených výpočetních odráží celkové výpočetní kapacitu, pro kterého je zřízené pro aplikaci.  V obchodní vrstvě důležité služby můžeme automaticky přidělit nejméně 3 repliky. Tak, aby odrážela tuto další přidělování výpočetních prostředků, cena v nákupní model založený na virtuálních jádrech je přibližně 2.7 x vyšší v obchodní vrstvě kritické služby než v rámci úrovně služeb pro obecné účely. Ze stejného důvodu vyšší úložiště cen za GB ve vrstvě služeb kritické obchodní odráží vysoké vstupně-výstupní operace a úložiště SSD s nízkou latencí. Ve stejnou dobu náklady na úložiště pro zálohování není liší tyto dvě úrovně vzhledem k tomu v obou případech používáme třídu úložiště úrovně standard.
+
 
 ## <a name="storage-costs"></a>Cena za uložení
 
@@ -56,7 +54,7 @@ Ve výchozím nastavení se do úložiště objektů blob RA-GRS úrovně Standa
 
 Další informace o cenách úložiště, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) stránky.
 
-## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
+## <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
 Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu požadavků místních úlohy do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech můžete vybrat mezi [Obecné](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) úrovně u služeb [izolované databáze](sql-database-single-database-scale.md), [ elastické fondy](sql-database-elastic-pool.md), a [spravované instance](sql-database-managed-instance.md). Pro izolované databáze, můžete také [hyperškálovatelného úroveň služby (preview)](sql-database-service-tier-hyperscale.md).
 
@@ -108,9 +106,9 @@ Pokud jste v úmyslu migrovat existující místní nebo úloha virtuálního po
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají samosprávné elastického fondu prostředků
 
-Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi tento vzor charakterizován průměr nízké využití s relativně málo častými nárůsty využití. SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Další informace najdete v tématu [Kdy je vhodné používat elastický fond?](sql-database-elastic-pool.md)
+Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi tento vzor charakterizován průměr nízké využití s relativně málo častými nárůsty využití. SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru služby SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Další informace najdete v tématu [Kdy je vhodné používat elastický fond?](sql-database-elastic-pool.md)
 
-## <a name="purchase-model-frequently-asked-questions-faq"></a>Model nákupu – nejčastější dotazy (FAQ)
+## <a name="purchase-models-frequently-asked-questions-faq"></a>Nákupní modely: Nejčastější dotazy (FAQ)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Je nutné nastavit aplikaci offline převést z databáze založený na DTU pro vrstvu služby založený na virtuálních jádrech
 

@@ -1,6 +1,6 @@
 ---
-title: Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS | Dokumentace Microsoftu
-description: Popisuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek.
+title: Rychlý start – nastavení NetApp soubory Azure a vytvoření svazku systému souborů NFS | Dokumentace Microsoftu
+description: Rychlý start – popisuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 5b9e85da29b3130d5183f577a7d83d164e217310
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: f0f3dea1c30790bb109d7cb7af07abd8fbb1ace4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759865"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702880"
 ---
-# <a name="set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý start: Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS 
 
 Tento článek ukazuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek. 
+
+V tomto rychlém startu se nastavit následující položky:
+
+- Registrace pro soubory Azure NetApp a poskytovatele prostředků NetApp
+- Účet NetApp
+- Kapacita fondu
+- Svazek systému souborů NFS pro soubory Azure NetApp
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -33,7 +42,7 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
 
 1. Na webu Azure Portal klikněte na ikonu Azure Cloud Shell v pravém horním rohu.
 
-      ![Ikona Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+    ![Ikona Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell-window.png)
 
 2. Určete předplatné, které bylo přidat na seznam povolených souborů NetApp Azure:
     
@@ -130,7 +139,31 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
 
     ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Jakmile budete hotovi a chcete, můžete odstranit skupinu prostředků. Akce odstranění skupiny prostředků je nevratné.  
+
+> [!IMPORTANT]
+> Všechny prostředky v rámci skupiny prostředků se trvale odstraní a není možné vrátit zpět. 
+
+1. Na webu Azure portal vyhledávacího pole zadejte **souborů NetApp Azure** a pak vyberte **souborů NetApp Azure** ze seznamu, který se zobrazí.
+
+2. V seznamu odběrů klikněte na skupinu prostředků (myRG1), které chcete odstranit. 
+
+    ![Přejděte do skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
+
+
+3. Na stránce skupiny prostředků, klikněte na **odstranit skupinu prostředků**.
+
+    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+
+    Otevře se okno s upozorněním týkajícím se prostředků, které budou odstraněny s vybranou skupinou prostředků.
+
+4. Zadejte název skupiny prostředků (myRG1) pro potvrzení, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní a potom klikněte na tlačítko **odstranit**.
+
+    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+
 ## <a name="next-steps"></a>Další postup  
 
-* [Vysvětlení hierarchii úložiště souborů Azure NetApp](azure-netapp-files-understand-storage-hierarchy.md)
-* [Správa svazků s použitím Azure souborů NetApp](azure-netapp-files-manage-volumes.md) 
+> [!div class="nextstepaction"]
+> [Správa svazků s použitím Azure souborů NetApp](azure-netapp-files-manage-volumes.md)  

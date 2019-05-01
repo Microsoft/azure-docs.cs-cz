@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771cf093f62ef7823e57ced8223e4cc6c0dc57e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c4ef16457181b4147b763233c54bcca6598b05a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354629"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917684"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
 
@@ -50,16 +50,13 @@ Pojmenované umístění má následující komponenty:
 - **Rozsahy IP adres** – jeden nebo více rozsahů adres IPv4 ve formátu CIDR. Zadání rozsahu adres IPv6 není podporováno.
 
    > [!NOTE]
-   > IPv6 adresa rangess nelze momentálně zahrnutá do pojmenované locationThis measn IPv6 rozsahy nelze vyloučit ze zásad podmíněného přístupu.
+   > Pojmenované umístění nemůže být součástí aktuálně rangess adresu IPv6. Rozsahy IPv6 tento measn nelze vyloučit ze zásad podmíněného přístupu.
 
 - **Označit jako důvěryhodné umístění** -příznak, který můžete nastavit pro pojmenované umístění pro důvěryhodného umístění. Důvěryhodná umístění jsou obvykle oblastem sítě, které jsou řízené vaším IT oddělením. Kromě podmíněného přístupu, důvěryhodné pojmenovaná umístění jsou také používány zprávy o zabezpečení Azure Identity Protection a Azure AD ke snížení [počet falešně pozitivních výsledků](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 - **Země nebo oblasti** – tato možnost umožňuje vybrat jeden nebo více zemi nebo oblast pro definování pojmenovaných umístění.
 - **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Toto nastavení použijte, když zásady pomocí pojmenovaných umístění by se měly používat pro neznámými umístěními.
 
-Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Můžete nakonfigurovat umístěních v závislosti na následující omezení:
-
-- Jeden s názvem umístění s až 1200 rozsahy IP adres.
-- Maximálně 90 pojmenovaná umístění s jeden rozsah IP adres přiřazené ke každému z nich.
+Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Organizace, můžete nakonfigurovat až 90 místech lámed, konfigurace jednotlivých až 12000 rozsahy IP adres.
 
 Zásady podmíněného přístupu platí pro přenosy protokolu IPv4 a IPv6. Aktuálně pojmenovaná umístění neumožňují rozsahy IPv6 potřeba nakonfigurovat. Toto omezení způsobí, že v následujících případech:
 

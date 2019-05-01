@@ -2,25 +2,25 @@
 title: Rychlý start – konfigurace šifrování SSL začátku do konce pomocí Azure Application Gateway – Azure portal | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí webu Azure portal k vytvoření služby Azure Application Gateway s šifrováním SSL začátku do konce.
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/19/2019
+ms.date: 4/30/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: e47a3e1231701f3339057e25ee4388aff0c9fbd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bd165f81b45e3ae0c121fb8876ed88e68d493195
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831945"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946801"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Konfigurace-kompletního protokolu SSL pomocí Application Gateway pomocí portálu
 
 V tomto článku se dozvíte, jak pomocí webu Azure portal ke konfiguraci šifrování SSL začátku do konce pomocí služby application gateway v1 SKU.  
 
 > [!NOTE]
-> SKU brány v2 aplikace vyžaduje pro povolení začátku do konce konfiguraci důvěryhodných kořenových certifikátů. Podporu pro přidání důvěryhodných kořenových certifikátů ještě není k dispozici. Proto v případě V2 SKU najdete v článku [-kompletního protokolu SSL pomocí Powershellu nakonfigurovat](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+> SKU brány v2 aplikace vyžaduje pro povolení začátku do konce konfiguraci důvěryhodných kořenových certifikátů. Podporu pro přidání důvěryhodných kořenových certifikátů ještě není k dispozici. Proto v případě v2 SKU najdete v článku [-kompletního protokolu SSL pomocí Powershellu nakonfigurovat](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,7 +32,7 @@ Další informace najdete v tématu [SSL ukončení a -kompletního protokolu SS
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>Vytvořit novou aplikační bránu s protokolem SSL začátku do konce
 
-Pokud chcete vytvořit novou aplikační bránu pomocí šifrování SSL začátku do konce, je potřeba nejdřív povolení ukončení protokolu SSL při vytváření novou aplikační bránu. Tato možnost povolí šifrování SSL pro komunikaci mezi brány klienta a aplikace. Poté je potřeba na seznamu povolených certifikátů pro servery back-end v nastavení HTTP povolit šifrování SSL pro komunikaci mezi aplikační brány a back-end servery, tedy provádění šifrování SSL začátku do konce.
+Pokud chcete vytvořit novou aplikační bránu pomocí šifrování SSL začátku do konce, budete muset nejprve povolení ukončení protokolu SSL při vytváření novou aplikační bránu. Tato možnost povolí šifrování SSL pro komunikaci mezi brány klienta a aplikace. Pak bude nutné do seznamu povolených certifikátů pro servery back-end v nastavení HTTP povolit šifrování SSL pro komunikaci mezi aplikační brány a back-end servery, provádění šifrování SSL začátku do konce.
 
 ### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>Povolení ukončení protokolu SSL při vytváření novou aplikační bránu
 
@@ -61,9 +61,9 @@ Přečtěte si tento článek pochopit, jak [povolení ukončení protokolu SSL 
 
 ## <a name="enable-end-to-end-ssl-for-existing-application-gateway"></a>Povolit-kompletního protokolu SSL pro existující aplikační bráně
 
-Pokud chcete nakonfigurovat existující aplikační bráně pomocí šifrování SSL začátku do konce, je potřeba prvním povolení ukončení protokolu SSL v naslouchací proces. Tato možnost povolí šifrování SSL pro komunikaci mezi brány klienta a aplikace. Poté je potřeba na seznamu povolených certifikátů pro servery back-end v nastavení HTTP povolit šifrování SSL pro komunikaci mezi aplikační brány a back-end servery, tedy provádění šifrování SSL začátku do konce.
+Pokud chcete nakonfigurovat existující aplikační bráně pomocí šifrování SSL začátku do konce, budete muset prvním povolení ukončení protokolu SSL v naslouchací proces. Tato možnost povolí šifrování SSL pro komunikaci mezi brány klienta a aplikace. Pak bude nutné do seznamu povolených certifikátů pro servery back-end v nastavení HTTP povolit šifrování SSL pro komunikaci mezi aplikační brány a back-end servery, provádění šifrování SSL začátku do konce.
 
-Je potřeba použít naslouchací proces protokolu HTTPS a certifikát pro povolení ukončení protokolu SSL. Nelze změnit protokol existující naslouchací proces. Proto buď můžete použít existující naslouchací proces protokolu HTTPS a certifikát, nebo vytvořte nový naslouchací proces. V případě, že nejprve zvolíte, můžete ignorovat níže uvedených kroků **ukončení povolit šifrování SSL v existující aplikační bráně** a přejít přímo na **seznamu povolených certifikátů pro servery back-end** oddíl. Pokud zvolíte ten, proveďte tyto kroky. 
+Budete muset použít naslouchací proces protokolu HTTPS a certifikát pro povolení ukončení protokolu SSL. Nelze změnit protokol existující naslouchací proces. Takže buď můžete použijte existující naslouchací proces protokolu HTTPS a certifikát, nebo vytvořte nový naslouchací proces. V případě, že nejprve zvolíte, můžete ignorovat níže uvedených kroků **ukončení povolit šifrování SSL v existující aplikační bráně** a přejít přímo na **seznamu povolených certifikátů pro servery back-end** oddíl. Pokud zvolíte ten, použijte tyto kroky.
 
 ### <a name="enable-ssl-termination-in-existing-application-gateway"></a>Povolení ukončení protokolu SSL v existující aplikační bráně
 

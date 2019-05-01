@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 48ce99bd830d2c35e5cb9703d2ef754a602d534b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790606"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926151"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Osvědčené postupy pro úlohy ocenění a změny velikosti migrovat do Azure
 
@@ -331,7 +331,7 @@ Po dokončení migrace po důkladné revizi z těchto typů úloh zvažte migrac
 
 **Víc se uč:**
 - [Další informace o](https://azure.microsoft.com/services/functions/) Azure Functions
-- [Další informace o](https://azure.microsoft.com/en-us/services/batch/) Azure Batch
+- [Další informace o](https://azure.microsoft.com/services/batch/) Azure Batch
   
 ## <a name="next-steps"></a>Další postup 
 

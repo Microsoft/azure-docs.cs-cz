@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d146027ea3a21ab8df3750014c02893bc2f50dd6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097725"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711567"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
 
@@ -82,7 +82,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
       ![Vytvoření kontejneru objektů blob](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. Vyberte nový kontejner a nahrát vlastní instalační skript a jeho přidružené soubory. Ujistěte se, že nahrajete `main.cmd` na nejvyšší úrovni vašeho kontejneru, nikoli v jakékoli složce. Zkontrolujte také, že váš kontejner obsahuje pouze soubory nezbytné vlastní nastavení, proto je později stáhnout do prostředí Azure-SSIS IR nebude trvat dlouhou dobu.
+   1. Vyberte nový kontejner a nahrát vlastní instalační skript a jeho přidružené soubory. Ujistěte se, že nahrajete `main.cmd` na nejvyšší úrovni vašeho kontejneru, nikoli v jakékoli složce. Zkontrolujte také, že váš kontejner obsahuje pouze soubory nezbytné vlastní nastavení, proto je později stáhnout do prostředí Azure-SSIS IR nebude trvat dlouhou dobu. Maximální doba pro vlastní nastavení je aktuálně nastavený na 45 minut, než vyprší časový limit a jedná se o dobu ke stažení všechny soubory z vašeho kontejneru a nainstalujte si ji na prostředí Azure-SSIS IR. V případě potřeby delší doba prosím lístek podpory.
 
       ![Nahrání souborů do kontejneru objektů blob](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 

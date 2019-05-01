@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578559"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943920"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřízení pro hloubkové učení na virtuálním počítači Azure 
 
@@ -35,7 +35,8 @@ Tady jsou kroky pro vytvoření instance aplikace virtuální počítač pro hlo
 ).
 2. Vyberte **vytvořit** tlačítko v dolní části mají být provedeny do průvodce.![ Vytvoření dlvm](./media/dlvm-provision-wizard.PNG)
 3. Průvodce umožňuje vytvořit DLVM vyžaduje **vstupy** pro každou **čtyři kroky** uvedené na pravé straně tohoto obrázku. Tady jsou vstupy potřebné ke konfiguraci každý z těchto kroků:
-   
+
+   <a name="basics"></a>   
    1. **Základy**
       
       1. **Název**: Název serveru datové vědy, kterou vytváříte.
@@ -46,13 +47,14 @@ Tady jsou kroky pro vytvoření instance aplikace virtuální počítač pro hlo
       5. **Skupina prostředků**: Vytvořit nové nebo použijte **prázdný** existující skupinu prostředků Azure v rámci vašeho předplatného.
       6. **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. 
       
-> [!NOTE]
-> DLVM podporuje všechny síťového adaptéru a ND řady instancí virtuálního počítače s GPU. Při zřizování DLVM, musíte zvolit jedno z umístění v Azure, který má grafické procesory. Zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) stránce dostupných umístění a zkuste najít **NC-Series**, **řada NCv2**, **řady NCv3-Series** , nebo **i řada ND-Series** pod **Compute**. 
+      > [!NOTE]
+      > DLVM podporuje všechny síťového adaptéru a ND řady instancí virtuálního počítače s GPU. Při zřizování DLVM, musíte zvolit jedno z umístění v Azure, který má grafické procesory. Zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) stránce dostupných umístění a zkuste najít **NC-Series**, **řada NCv2**, **řady NCv3-Series** , nebo **i řada ND-Series** pod **Compute**. 
 
-1. **Nastavení**: Vyberte jednu z řady síťový adaptér (NC, NCv2, NCv3) nebo řady ND GPU velikosti virtuálních počítačů, která splňuje požadavek na funkční a náklady na omezení. Vytvoření účtu úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   1. **Nastavení**: Vyberte jednu z řady síťový adaptér (NC, NCv2, NCv3) nebo řady ND GPU velikosti virtuálních počítačů, která splňuje požadavek na funkční a náklady na omezení. Vytvoření účtu úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-1. **Souhrn**: Ověřte správnost všech informací, které jste zadali.
-1. **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+   1. **Souhrn**: Ověřte správnost všech informací, které jste zadali.
+
+   1. **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
 
 > [!NOTE]
 > Zřizování by měla trvat asi 10-20 minut. Stav zřizování se zobrazí na portálu Azure portal.
@@ -66,7 +68,7 @@ Po vytvoření virtuálního počítače můžete do něj pomocí přihlašovac�
 
 ### <a name="linux-edition"></a>Edice pro Linux
 
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Na klientech systému Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](https://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v [ **Základy** ](#basics) část krok 3 pro rozhraní text prostředí. Další informace o připojení SSH k virtuálním počítačům Azure najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure](/azure/virtual-machines/linux/use-remote-desktop). V klientovi Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go. 
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v našich testech. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.

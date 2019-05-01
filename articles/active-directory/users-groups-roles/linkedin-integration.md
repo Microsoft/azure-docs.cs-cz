@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/29/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e07c53192ea2c8b792256af944c81c9c909dc55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60469663"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920235"
 ---
-# <a name="consent-to-linkedin-account-connections-for-an-azure-active-directory-organization"></a>Souhlas s účtem LinkedIn organizace Azure Active Directory
+# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace s účtem LinkedIn ve službě Azure Active Directory
 
 Povolit uživatelům ve vaší organizaci pro přístup k jejich připojením Linkedinu v rámci některé aplikace Microsoftu. Žádná data se sdílí, dokud uživatelé udělit souhlas s připojit své účty. Vaše organizace v Azure Active Directory (Azure AD) můžete integrovat [centra pro správu](https://aad.portal.azure.com).
 
@@ -34,30 +34,67 @@ Povolit uživatelům ve vaší organizaci pro přístup k jejich připojením Li
 >
 > Jakmile s účtem LinkedIn, budou povolené pro vaši organizaci, účet připojení fungovat po uživatelům udělit souhlas s aplikacemi, které přistupují k firemním datům jejich jménem. Informace o nastavení souhlasu uživatele najdete v tématu [odebrání přístupu uživatele k aplikaci](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 
-## <a name="use-the-azure-portal-to-enable-linkedin-account-connections"></a>Pomocí webu Azure portal povolit s účtem LinkedIn
+## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>Povolit s účtem LinkedIn na webu Azure Portal
 
 Můžete povolit s účtem LinkedIn pouze uživatelé mají mít přístup z celé organizace jenom vybraným uživatelům ve vaší organizaci.
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/) pomocí účtu, který má oprávnění globálního správce organizace služby Azure AD.
-2. Vyberte **uživatelé**.
-3. Na **uživatelé** okně vyberte **uživatelská nastavení**.
-4. V části **s účtem LinkedIn**, umožňuje uživatelům připojit své účty pro přístup k jejich připojením Linkedinu v rámci některé aplikace Microsoftu. Žádná data se sdílí, dokud uživatelé udělit souhlas s připojit své účty.
+1. Vyberte **uživatelé**.
+1. Na **uživatelé** okně vyberte **uživatelská nastavení**.
+1. V části **s účtem LinkedIn**, umožňuje uživatelům připojit své účty pro přístup k jejich připojením Linkedinu v rámci některé aplikace Microsoftu. Žádná data se sdílí, dokud uživatelé udělit souhlas s připojit své účty.
 
-  * Vyberte **Ano** vyjádřit souhlas se službou pro všechny uživatele v organizaci
-  * Vyberte **vybrané** souhlas pouze pro vybrané uživatele v organizaci
-  * Vyberte **ne** chcete odvolat svůj souhlas pro uživatele ve vaší organizaci
+    * Vyberte **Ano** povolit službu pro všechny uživatele ve vaší organizaci
+    * Vyberte **vybrané** povolit pouze skupinu vybraných uživatelů ve vaší organizaci
+    * Vyberte **ne** chcete odvolat svůj souhlas všech uživatelů ve vaší organizaci
 
     ![Integrace s účtem LinkedIn v organizaci](./media/linkedin-integration/linkedin-integration.png)
 
-5. Jakmile budete hotovi, vyberte **Uložit** uložte nastavení.
-     
+1. Jakmile budete hotovi, vyberte **Uložit** uložte nastavení.
+
+> [!Important]
+> Integrace Linkedinu nebylo úplně povoleno pro uživatele, dokud se vyjádřit souhlas připojit své účty. Žádná data se sdílí povolit účet připojení pro vaše uživatele.
+
+### <a name="assign-selected-users-with-a-group"></a>Přiřadit vybraným uživatelům se skupinou
+Jsme nahradili možnost "Vybrané", který určuje seznam uživatelů s možností vyberte skupinu uživatelů, tak, že povolíte možnost propojení účtů LinkedIn a Microsoft pro jednu skupinu namísto mnoho jednotlivých uživatelů. Pokud nemáte s účtem LinkedIn povolená pro jednotlivé vybrané uživatele, není nutné nic dělat. Pokud jste dříve povolili s účtem LinkedIn pro jednotlivé vybrané uživatele, měli byste:
+
+1. Získat aktuální seznam jednotlivých uživatelů
+1. Přesunutí aktuálně zapnuté jednotlivé uživatele do skupiny
+1. Pomocí skupiny z předchozí jako vybrané skupiny v s účtem LinkedIn nastavení v Centru pro správu Azure AD.
+
+> [!NOTE]
+> I v případě, že vaše aktuálně vybrané jednotlivé uživatele nelze přesunout do skupiny, stále vidí LinkedIn informace v aplikacích Microsoftu.
+
+### <a name="get-the-current-list-of-selected-users"></a>Získat aktuální seznam vybraných uživatelů
+
+1. Microsoft 365 se přihlaste pomocí účtu správce.
+1. Přejděte do části https://linkedinselectedusermigration.azurewebsites.net/ (Soubor > Nový > Jiné). Zobrazí se seznam uživatelů, kteří jsou vybrány pro s účtem LinkedIn.
+1. Seznam exportujte do souboru CSV.
+
+### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Přesunout vybrané jednotlivé uživatele do skupiny
+
+1. Spuštění PowerShellu
+1. Spuštěním instalace modulu Azure AD `Install-Module AzureAD`
+1. Spusťte tento skript:
+
+  ``` PowerShell
+  $groupId = "GUID of the target group"
+  
+  $users = Get-Content 
+  Path to the CSV file
+  
+  $i = 1
+  foreach($user in $users} { Add-AzureADGroupMember -ObjectId $groupId -RefObjectId $user ; Write-Host $i Added $user ; $i++ ; Start-Sleep -Milliseconds 10 }
+  ```
+
+Na použití skupiny z kroku 2 jako vybrané skupiny v s účtem LinkedIn nastavení v Centru pro správu Azure AD, najdete v článku [povolit s účtem LinkedIn na webu Azure Portal](#enable-linkedin-account-connections-in-the-azure-portal).
+
 ## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>Pomocí zásad skupiny umožňující s účtem LinkedIn
 
 1. Stáhněte si [souborů šablon pro správu Office 2016 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-2. Extrahovat **ADMX** soubory a zkopírujte je do centrálního úložiště.
-3. Otevřete správu zásad skupiny.
-4. Vytvoření objektu zásad skupiny s následujícím nastavením: **Konfigurace uživatele** > **šablony pro správu** > **Microsoft Office 2016** > **různé**  >  **Funkcí služby LinkedIn zobrazit v aplikacích Office**.
-5. Vyberte **povolené** nebo **zakázané**.
+1. Extrahovat **ADMX** soubory a zkopírujte je do centrálního úložiště.
+1. Otevřete správu zásad skupiny.
+1. Vytvoření objektu zásad skupiny s následujícím nastavením: **Konfigurace uživatele** > **šablony pro správu** > **Microsoft Office 2016** > **různé**  >  **Funkcí služby LinkedIn zobrazit v aplikacích Office**.
+1. Vyberte **povolené** nebo **zakázané**.
   
    Stav | Efekt
    ------ | ------

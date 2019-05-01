@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d79154a8792b9017b98f9d21a2ab0360b7304d1c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820042"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697859"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 
@@ -67,7 +67,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Když trénujete model pro předpověď budoucích hodnot, zajistěte všechno, co funkce použité v školení se dá použít při spouštěním predikcí pro určené horizont. Například při vytváření prognózy poptávky, včetně funkcí pro aktuální ceny akcie může široce zvýšit přesnost školení. Nicméně pokud máte v úmyslu Prognózování s dlouhý časový horizont, nemusí být schopni přesně předpovědět budoucí uložené hodnoty odpovídající budoucí body časových řad a přesnost modelu může být negativně.
 
-## <a name="configure-experiment"></a>Konfigurace testu
+## <a name="configure-and-run-experiment"></a>Nakonfigurování a spuštění experimentu
 
 Pro předpověď úkoly, používá automatizované strojového učení úkony předběžného zpracování a odhad kroky, které jsou specifické pro data časových řad. Provede následující kroky předběžného zpracování:
 
@@ -126,6 +126,20 @@ best_run, fitted_model = local_run.get_output()
 > [!NOTE]
 > Pro procedury křížového ověřování (CV) data časových řad porušit základní statistické předpoklady canonical strategie K přeložení křížového ověřování, takže automatizované machine learning implementuje postupné postup ověření původu a vytvořte přeložení křížového ověření pro data časových řad. Pomocí tohoto postupu, zadejte `n_cross_validations` parametr `AutoMLConfig` objektu. Můžete obejít ověření a použití vlastní ověřování, nastaví se `X_valid` a `y_valid` parametry.
 
+### <a name="view-feature-engineering-summary"></a>Zobrazit funkce engineering souhrn
+
+Pro typy úloh časových řad v automatizovaných machine learning můžete zobrazit podrobnosti o funkci technické procesu. Následující kód ukazuje jednotlivé nezpracovaná funkce společně s následujícími atributy:
+
+* Název nezpracované funkce
+* Počet inženýrství funkce vytvořených tuto funkci nezpracované
+* Typ zjistil
+* Určuje, zda byla zahozena, funkce
+* Seznam transformací funkce pro funkci nezpracovaná
+
+```python
+fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+```
+
 ## <a name="forecasting-with-best-model"></a>Prognózování s nejlepší model
 
 Nejlepší model iterace použijte k předpovědi hodnot pro datovou sadu testů.
@@ -133,6 +147,16 @@ Nejlepší model iterace použijte k předpovědi hodnot pro datovou sadu testů
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
+```
+
+Alternativně můžete použít `forecast()` místo funkce `predict()`, který vám umožní specifikace zahájení předpovědi. V následujícím příkladu, je nejprve nahradit všechny hodnoty v `y_pred` s `NaN`. Prognózy původu bude na konci trénovací data v tomto případě by být obvykle při použití `predict()`. Ale pokud nahradit pouze v druhé polovině `y_pred` s `NaN`, funkce zůstane číselných hodnot v první polovině bez úprav, ale prognózy `NaN` hodnoty ve druhé polovině. Funkce vrátí předpokládaných hodnoty a zarovnané funkce.
+
+Můžete také použít `forecast_destination` parametr `forecast()` funkce k předpovědi hodnot až k zadanému datu.
+
+```python
+y_query = y_test.copy().astype(np.float)
+y_query.fill(np.nan)
+y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 Vypočítat RMSE (střední hodnotu kořenové spolehlivosti chyba) mezi `y_test` skutečnými hodnotami a předpokládané hodnoty v `y_pred`.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant
-ms.openlocfilehash: f4e76121f7815702270d6601413ff7a4c2c25839
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4e028429ca8a22915eff2b90ca63c6d05a67741b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270298"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692240"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace cloudu od společnosti Atlassian pro automatické zřizování uživatelů
 
@@ -37,7 +37,7 @@ Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné nás
 
 * Klient služby Azure AD
 * [An Atlassian Cloud tenant](https://www.atlassian.com/licensing/cloud)
-* Uživatelský účet v cloudu od společnosti Atlassian s oprávněními správce.
+* Účet uživatele s oprávněními správce v cloudu od společnosti Atlassian.
 
 > [!NOTE]
 > Zřizování integrace Azure AD spoléhá na **API SCIM Cloud od společnosti Atlassian**, který je dostupný pro Cloud od společnosti Atlassian týmy.

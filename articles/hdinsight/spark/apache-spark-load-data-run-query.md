@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 04/03/2019
 ms.openlocfilehash: f480aeb7e126cb6ab8286bbfbfb8441fefeb07ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097112"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716080"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight
 

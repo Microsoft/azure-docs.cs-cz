@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1496bf21ed1a81eedb44ca9cc9db777632e2a5cd
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62102012"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876012"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
 > [!NOTE]
 > Tento článek se týká veřejného cloudu Azure i v cloudu pro státní správu není uvedeno jinak.
 
-Na webu Azure portal je Centrum pro všechny služby Azure a nabízí bohaté možnosti správy prostředí s funkcemi, jako jsou řídicí panely pro Připnutí prostředků, inteligentní vyhledávání, vyhledání prostředků a označí pro správu prostředků. Ke konsolidaci a zjednodušte pracovní postupy monitorování a správu, bodu jsme začali přidávat možnosti portálu OMS na web Azure Portal. Všechny funkce na portálu OMS jsou teď součástí na webu Azure portal. Ve skutečnosti některé nové funkce, jako je například analýza provozu jsou k dispozici pouze na webu Azure Portal. Budete moct provádět vše, co jste dělali v portálu OMS pomocí webu Azure portal a dalších. Pokud jste tak již neučinili, měli byste začít pomocí webu Azure portal ještě dnes!
+**Na portálu OMS pro veřejný cloud Azure je oficiálně vyřazený. Na portálu OMS pro Azure Azure US Government cloud se oficiálně dostupné jenom do 15. května 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback\@microsoft.com**. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
 
-**Na portálu OMS se oficiálně vyřadí z provozu 15. ledna 2019** komerčním cloudu Azure a Azure US Government cloud, na portálu OMS **oficiálně skončí 30. března 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback\@microsoft.com**. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
+Na webu Azure portal je Centrum pro všechny služby Azure a nabízí bohaté možnosti správy prostředí s funkcemi, jako jsou řídicí panely pro Připnutí prostředků, inteligentní vyhledávání, vyhledání prostředků a označí pro správu prostředků. Ke konsolidaci a zjednodušte pracovní postupy monitorování a správu, bodu jsme začali přidávat možnosti portálu OMS na web Azure Portal. Všechny funkce na portálu OMS jsou teď součástí na webu Azure portal. Ve skutečnosti některé nové funkce, jako je například analýza provozu jsou k dispozici pouze na webu Azure Portal. Budete moct provádět vše, co jste dělali v portálu OMS pomocí webu Azure portal a dalších. Pokud jste tak již neučinili, měli byste začít pomocí webu Azure portal ještě dnes!
 
 ## <a name="what-is-changing"></a>Co se mění? 
 Tyto změny jsou právě oznámili vyřazení podpory na portálu OMS. Každá z těchto změn je popsána podrobněji v následujících částech.
@@ -76,10 +76,7 @@ Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Post
 
 ### <a name="alert-extension"></a>Oznámení rozšíření  
 
-> [!NOTE]
-> Výstrahy teď plně rozšířit do portálu Azure pro veřejný cloud. Stávající pravidla upozornění můžete zobrazit na portálu OMS, ale může být pouze spravované na portálu Azure portal. Rozšíření upozornění na web Azure Portal spustí pro cloud Azure government. února 2019.
-
-Byl [rozšíří do portálu Azure portal](alerts-extend.md). Po jejím dokončení akce správy na výstrahy budou k dispozici pouze na webu Azure portal. Existující výstrahy bude dál zobrazovat na portálu OMS. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
+Byl [rozšíří do portálu Azure portal](alerts-extend.md) budou existující upozornění dál zobrazovat na portálu OMS, ale můžete je spravovat pouze na webu Azure portal. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
 Jako změny z předchozí oznámení [řešení Alert managementu](alert-management-solution.md) budou nadále dostupné a plně se podporuje na webu Azure Portal. Můžete pokračovat v instalaci řešení z Azure Marketplace.

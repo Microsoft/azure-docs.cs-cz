@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692421"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714131"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak škálovat vaše prostředí Time Series Insights
 
@@ -60,5 +60,5 @@ Kapacity se škálují lineárně, takže S1 SKU s kapacitou 2 podporuje událos
 4. Vyberte **Uložit** škálování prostředí. Indikátor průběhu se nezobrazí, dokud se změna se potvrdí, okamžité. 
 
 ## <a name="next-steps"></a>Další postup
-> [!div class="nextstepaction"]
-> [Ověřte, zda je dostatečné k zabránění omezování novou kapacitu](time-series-insights-diagnose-and-solve-problems.md).
+
+- Ověřte, zda je nové kapacity [dostatečné k zabránění omezování](time-series-insights-diagnose-and-solve-problems.md).

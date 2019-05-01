@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: e5cf89b7fe01946de9944a7026ec448cd55dd6dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741447"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922889"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Propojení Configuration Manageru do Azure monitoru
 Můžete připojit prostředí System Center Configuration Manager do Azure monitoru k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Azure Monitor a Azure Automation.  
@@ -67,7 +67,7 @@ Pokud chcete přidat připojení k Log Analytics, musíte mít prostředí Confi
    
 2. Na **Obecné** obrazovky, potvrďte, že jste provedli následující akce a že jste podrobnosti pro každou položku a pak vyberte **Další**.
 
-   1. Na webu Azure Portal, zaregistrovaný nástroje Configuration Manager jako webovou aplikaci nebo webové rozhraní API app a že máte [ID klienta z registrace](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md).
+   1. Na webu Azure Portal, zaregistrovaný nástroje Configuration Manager jako webovou aplikaci nebo webové rozhraní API app a že máte [ID klienta z registrace](../../active-directory/develop/quickstart-register-app.md).
    2. Na webu Azure Portal vytvoříte tajného klíče aplikace registrovaná aplikace v Azure Active Directory.  
    3. Na webu Azure Portal jste zadali zaregistrovanou webovou aplikaci s oprávněním pro přístup k pracovnímu prostoru Log Analytics ve službě Azure Monitor.  
       ![Připojení k Log Analytics Průvodce Obecná stránka](./media/collect-sccm/sccm-console-general01.png)

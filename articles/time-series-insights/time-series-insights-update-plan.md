@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0472f53d11ec4c990fcf6face633444fe66ba937
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076992"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702346"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí Azure čas Series Insights ve verzi Preview
 
@@ -79,7 +79,7 @@ Základním pravidlem:
 * Store metadat v vašeho modelu časové řady
 * Časový režim řady, pole instancí a události jenom potřebné informace, jako patří:
   * ID časové řady
-  * Časové razítko
+  * Timestamp
 
 Další informace najdete v tématu [obrazce události](./time-series-insights-send-events.md#json).
 
@@ -90,9 +90,7 @@ Time Series Insights je vysoce dostupná služba, která používá redundance n
 Informace o integrovaných funkcí v Azure pro provozní kontinuitu a zotavení po havárii (BCDR), najdete v části [technickou pomoc Azure obchodní kontinuity podnikových procesů](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Doprovodné materiály k architektuře týkající se strategií pro aplikace Azure, abyste dosáhli vysoké dostupnosti a zotavení po havárii, naleznete dokumentu na [zotavení po havárii a vysoká dostupnost pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-> 
->  Time Series Insights nemá vestavěné BCDR.
-> Ve výchozím nastavení mají obnovení vytvořené Azure Storage, Azure IoT Hub a Azure Event Hubs.
+> Time Series Insights nemá vestavěné BCDR. Ve výchozím nastavení mají obnovení vytvořené Azure Storage, Azure IoT Hub a Azure Event Hubs.
 
 Další informace, přečtěte si informace o:
 
@@ -115,7 +113,6 @@ Postupujte podle těchto kroků k vytvoření a použití sekundárních prostř
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace, přečtěte si informace o:
+- Další informace o [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md) v čase Series Insights ve verzi Preview.
 
-- [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
-- [Modelování dat](./time-series-insights-update-tsm.md)
+- Další informace o [modelování dat](./time-series-insights-update-tsm.md) v čase Series Insights ve verzi Preview.
