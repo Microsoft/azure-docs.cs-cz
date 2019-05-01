@@ -292,6 +292,12 @@
           href: '/powershell/module/az.policyinsights#policy_insights'
         - name: Konfigurace hosta
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
+    - name: Sada Azure SDK pro .NET
+      items:
+        - name: Přiřazení
+          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        - name: Definice zásad
+          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
     - name: REST
       items:
         - name: Události
