@@ -59,7 +59,7 @@
     - name: Sledování změn
       items:
         - name: Přehled Change Trackingu
-          href: automation-change-tracking.md
+          href: change-tracking.md
           displayName: 'wildcard, recursion, environment variables, registry'
         - name: Zobrazení obsahu sledovaných souborů
           href: change-tracking-file-contents.md

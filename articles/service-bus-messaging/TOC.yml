@@ -81,6 +81,8 @@
       href: service-bus-async-messaging.md
     - name: Zvládání výpadků a havárií
       href: service-bus-outages-disasters.md
+    - name: Běžné atributy zabezpečení Azure
+      href: service-bus-messaging-security-attributes.md
 - name: Návody
   items:
     - name: Vytvoření oboru názvů
