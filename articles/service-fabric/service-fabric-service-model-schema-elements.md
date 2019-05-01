@@ -4274,11 +4274,11 @@ Určuje, zda je povoleno shromažďování protokolů. Lze použít pouze v pros
 ```
 ### <a name="attribute-details"></a>Podrobnosti atributu
 
-#### <a name="path"></a>Cesta
+#### <a name="path"></a>`Path`
 
 |Atribut|Hodnota|
 |---|---|
-|jméno|Cesta|
+|jméno|`Path`|
 |type|xs:string|
 |Použití|nepovinné|
 
