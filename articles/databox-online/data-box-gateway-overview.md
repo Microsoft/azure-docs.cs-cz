@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 340ff99aae9acff49ffdeaa43463521debb16a07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2905cae6d5d97062d5a2fc1da41d55290d89fb4a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754212"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924503"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Co je Azure Data Box brány?
 

@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: f3b744f676dd352bb38e5cbca6e532c650617816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 45fd716ad8542f86e4c58bb559a3745c2e61776f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60931385"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867695"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a aplikace partnery vývoj
 
@@ -19,14 +19,14 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 
 ## <a name="migration-tools"></a>Nástroje pro migraci
 
-|**Partner**  |**Možnosti a prostředí**  |**Podporované země**  |**Obraťte se na**  |
+|**Partner**  |**Možnosti a prostředí**  |**Podporované země/oblasti**  |**Obraťte se na**  |
 |---------|---------|---------|---------|
 |![ImanisData][1]   | [Migrace dat](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) z MongoDB do služby Azure Cosmos DB. <br/> Imanis Data povolí globální podniky, které chcete rychle a snadno migrujte své místní nebo cloudové databáze MongoDB do služby Azure Cosmos DB. Imanis Data poskytují přístup migrace bez agenta, přírůstkové věčný cloud pro MongoDB úložiště dat, které zjednodušuje migraci a výrazně zkracuje dobu výpadku.|  USA  |   [Web](http://www.imanisdata.com/)      |
 |![Striim][2]    |  [Přesun dat v reálném čase do služby Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z různých datových zdrojů. <br/> Striim zjednodušuje kolekce v reálném čase a přesun dat z různých místních zdrojů, včetně podnikových dokumentů a relační databáze, senzory a soubory protokolů do služby Azure Cosmos DB. |   USA   |  [Web](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partneři Integrátorům systémů
 
-|**Partner**  |**Možnosti a prostředí**  |**Podporované země**  |**Obraťte se na**  |
+|**Partner**  |**Možnosti a prostředí**  |**Podporované země/oblasti**  |**Obraťte se na**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | Migrace NoSQL; Vývoj aplikace | USA | [Web](https://www.10thmagnitude.com/)|
 |![Vývoj Altoros LLC][3]    |  Migrace NoSQL <br/> Inovace aplikací (existující aplikace) <br/> Vývoj aplikace |   USA, Norsko, Finsko, Bělorusko, Argentina |  [Web](https://www.altoros.com/)     |

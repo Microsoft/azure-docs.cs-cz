@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 97c44c9285ec7a29827361111599db37bc6a86f3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0612770c823e30578e7f4675878fc4ce2aee2bd9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282572"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702988"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -46,13 +46,13 @@ Následující tabulka uvádí typické přidruženou skóre spolehlivosti.
 |0|Žádná shoda, proto se vrátí odpověď.|"Kolik službu stojí"|
 
 ## <a name="choose-a-score-threshold"></a>Zvolte prahové hodnoty skóre
-V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Ale protože každých KB se liší a má různé druhy slova, záměry a cíle, které doporučujeme test a vyberte prahovou hodnotu, které bude nejlépe vyhovuje. Je výchozí a doporučenou prahovou hodnotu, která by měla fungovat pro většinu znalostní báze **50**.
+V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Ale protože každých KB se liší a má různé druhy slova, záměry a cíle, které doporučujeme test a vyberte prahovou hodnotu, které bude nejlépe vyhovuje. Ve výchozím nastavení prahová hodnota je nastavena na hodnotu 0, tak, aby všechny možné odpovědi jsou vráceny. Je doporučenou prahovou hodnotu, která by měla fungovat pro většinu znalostní báze **50**.
 
 Pokud zvolíte, že vaše mezní hodnota, mějte na paměti rovnováhu mezi přesnost a pokrytí a upravit vaše mezní hodnota, na základě vašich požadavků.
 
 - Pokud **přesnost** (nebo přesnosti) je důležité pro váš scénář, pak zvýšit vaše mezní hodnota. Tímto způsobem pokaždé, když se vrátí odpověď, bude mnohem více důvěrné velikosti písmen a mnohem vyšší pravděpodobnost, že hledá odpověď uživatele. V takovém případě může skončit opuštění další nezodpovězené dotazy. *Příklad:* Pokud provedete prahovou hodnotu **70**, můžete přijít o některé příklady nejednoznačný lajků "co je uložte a trénování?".
 
-- Pokud **pokrytí** (nebo odvolání) je více důležité – a vy chcete odpovězte na tolik otázek, kolik nejvíce, i v případě částečné vztahu uživatele otázku – pak nižší prahová hodnota. To znamená, že může být více případů, kdy odpověď neodpovídá skutečné dotaz uživatele, ale poskytuje některé poněkud související odpovědí. *Příklad:* Pokud provedete prahovou hodnotu **30**, dáte velmi související odpovědi jako odpovídá na výše uvedeném příkladu, například dotazy pro "kde je možné upravovat znalostní BÁZE?"
+- Pokud **pokrytí** (nebo odvolání) je více důležité – a vy chcete odpovězte na tolik otázek, kolik nejvíce, i v případě částečné vztahu uživatele otázku – pak nižší prahová hodnota. To znamená, že může být více případů, kdy odpověď neodpovídá skutečné dotaz uživatele, ale poskytuje některé poněkud související odpovědí. *Příklad:* Pokud provedete prahovou hodnotu **30**, dáte odpovědi pro dotazy, jako jsou "Kde je možné upravovat znalostní BÁZE?"
 
 > [!NOTE]
 > Novější verze nástroje QnA Maker vylepšení bodovací logiku zahrnout a může mít vliv na vaše mezní hodnota. Kdykoli můžete aktualizovat službu, ujistěte se, že pro testování a upravit prahovou hodnotu v případě potřeby. Služba QnA verzi, můžete zjistit [tady](https://www.qnamaker.ai/UserSettings)a zjistit, jak získat nejnovější aktualizace [tady](../How-To/troubleshooting-runtime.md).

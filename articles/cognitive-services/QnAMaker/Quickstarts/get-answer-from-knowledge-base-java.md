@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: a8e51534fec3dacb577ef9b79bb42c48557dc15b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 746551cf05634427f839bf33af641bc4615179fa
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60920157"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916896"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze s Javou
 
@@ -24,7 +24,7 @@ Tento rychlý start vás provede prostřednictvím kódu programu získávání 
 ## <a name="prerequisites"></a>Požadavky
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* Tato ukázka používá Apache [klienta HTTP](http://hc.apache.org/httpcomponents-client-ga/) ze součástí HTTP. Je potřeba přidat následující knihovny klienta Apache HTTP do projektu: 
+* Tato ukázka používá Apache [klienta HTTP](https://hc.apache.org/httpcomponents-client-ga/) ze součástí HTTP. Je potřeba přidat následující knihovny klienta Apache HTTP do projektu: 
     * httpclient 4.5.3.jar
     * httpcore 4.4.6.jar
     * Commons. protokolování 1.2.jar

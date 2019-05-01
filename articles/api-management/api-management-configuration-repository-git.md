@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5bf778f06ff0223fd48a1282aadf223ff032b0f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657880"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919857"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -173,9 +173,9 @@ Tyto soubory můžete vytvořit, odstranit, upravit a spravovat na místní syst
 > [!NOTE]
 > Tyto entity nejsou obsaženy v úložišti Git a nedá se konfigurovat pomocí Gitu.
 >
-> * [Uživatelé](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
-> * [Předplatná](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
-> * [Pojmenované hodnoty](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
+> * [Uživatelé](https://docs.microsoft.com/rest/api/apimanagement/user)
+> * [Předplatná](https://docs.microsoft.com/rest/api/apimanagement/subscription)
+> * [Pojmenované hodnoty](https://docs.microsoft.com/rest/api/apimanagement/property)
 > * Entity portálu pro vývojáře než styly
 >
 

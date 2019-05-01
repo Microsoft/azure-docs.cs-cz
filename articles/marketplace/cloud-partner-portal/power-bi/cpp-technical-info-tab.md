@@ -1,25 +1,18 @@
 ---
-title: Technické informace pro nabídku aplikace Power BI – Azure Marketplace | Dokumentace Microsoftu
+title: Technické informace pro nabídku aplikace Power BI | Azure Marketplace
 description: Nakonfigurujte pole technické informace pro aplikace Power BI nabídky webu Microsoft Marketplace AppSource.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.author: pbutlerm
-ms.openlocfilehash: ca77da897eed51c8d832cad7052c2144d6ada562
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 15f4e2a76724a70c15411dea767cc9bc433e4d4a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725754"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943221"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI Apps technické informace o kartě
 
@@ -34,7 +27,7 @@ Na **technické informace o** kartu, vyplňte pole jsou popsané v následujíc�
 
 |        Pole          |  Popis                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Adresa URL instalační program**     | Power BI vygeneruje tuto adresu URL, když publikujete aplikaci a přesun do produkčního prostředí.  Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavy v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+| **Adresa URL instalační program\***     | Power BI vygeneruje tuto adresu URL, když publikujete aplikaci a přesun do produkčního prostředí.  Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavy v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
 |  **Pokyny k ověřování**  |  Pokud chcete, přidejte pokyny (až 3 000 znaků), které pomohou ověřovací tým Microsoft konfiguraci, připojení a testování vaší aplikace. Zahrnují typické nastavení, účty, parametry nebo Další informace, které můžete použít k testování připojení dat možnost. Tyto informace jsou viditelné pouze pro ověřovací tým a používá se pouze pro účely ověření.  |
 | **Tuto aplikaci vytvořili jako balíček obsahu Power BI?** | V současné době toto pole se používá jen interně. Ponechejte výchozí nastavení **ne**. Pokud změníte nastavení **Ano**, může ukončit proces publikování.  |  
 |  |  |

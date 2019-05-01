@@ -1,25 +1,18 @@
 ---
-title: Nastavení pro aplikace Power BI nabízejí – Azure Marketplace nabízí | Dokumentace Microsoftu
+title: Nastavení pro aplikace Power BI nabídku nabídky | Azure Marketplace
 description: Konfigurace nastavení nabídky pro aplikaci Power BI nabídku marketplace Microsoft AppSource.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 49bbe5dcf17a9aa20cb47f477c59e7115d29dacc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: be2c2b4f5d9461aa0fdc6dde89931ed4b6418ced
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727930"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943469"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>Power BI aplikace nabízejí nastavení kartu
 
@@ -30,13 +23,13 @@ Když otevřete **nová nabídka** stránce aplikace služby, se nejprve zobraz�
 
 ## <a name="offer-settings-fields"></a>Nabídka nastavení pole 
 
-Na **nabízejí nastavení** kartě, budete muset zadat informace v následující požadované pole:
+Na **nabízejí nastavení** kartu, budete muset zadat informace o následujících požadovaných polí. Povinná pole jsou uvést hvězdičkou (*).
 
 |  Pole        |  Popis                                                               |
 |---------------|----------------------------------------------------------------------------|
-| **ID nabídky**  | Jedinečný identifikátor (v rámci profilu vydavatele) pro tuto nabídku. Tento identifikátor se nebude zobrazovat v adresách URL produktu, šablon Azure Resource Manageru, a oznámí fakturace. Maximální délka je 50 znaků. Může obsahovat jenom malé alfanumerické znaky a pomlčky (-). Nemůže končit spojovníkem. Tento identifikátor nelze změnit po ukončení nabídky za provozu. Pokud Contoso publikuje nabídka s ID nabídky `sample-SvcApp`, tuto nabídku je přiřazena adresa URL AppSource `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`.      |
-| **Publisher** | Jedinečný identifikátor vaší organizace v [AppSource](https://appsource.microsoft.com). Všechny nabídky by měly být přidruženy s vaším ID vydavatele. Tuto hodnotu nelze změnit, až se uloží nabídky.                         |
-| **Název**      | Zobrazovaný název pro vaši nabídku. Tento název se zobrazí na AppSource a na portál partnerů cloudu. Maximální délka je 50 znaků. Použijte název značky, který lze rozpoznat pro tento produkt. Pokud aplikace na trh s tímto názvem, nezahrnujte název vaší organizace. Pokud zadáváte v rámci této nabídky na jiné weby a publikací, použijte stejný název ve všech publikacích.    <br/>Pokud uvolníte nabídky během období preview pro aplikace Power BI, přidejte řetězec `(Preview)` na konec názvu vaší aplikace, například takto: `Sample Scv App (Preview)`. |
+| **ID nabídky\***  | Jedinečný identifikátor (v rámci profilu vydavatele) pro tuto nabídku. Tento identifikátor se nebude zobrazovat v adresách URL produktu, šablon Azure Resource Manageru, a oznámí fakturace. Maximální délka je 50 znaků. Může obsahovat jenom malé alfanumerické znaky a pomlčky (-). Nemůže končit spojovníkem. Tento identifikátor nelze změnit po ukončení nabídky za provozu. Pokud Contoso publikuje nabídka s ID nabídky `sample-SvcApp`, tuto nabídku je přiřazena adresa URL AppSource `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`.      |
+| **Publisher\*** | Jedinečný identifikátor vaší organizace v [AppSource](https://appsource.microsoft.com). Všechny nabídky by měly být přidruženy s vaším ID vydavatele. Tuto hodnotu nelze změnit, až se uloží nabídky.                         |
+| **Název\***      | Zobrazovaný název pro vaši nabídku. Tento název se zobrazí na AppSource a na portál partnerů cloudu. Maximální délka je 50 znaků. Použijte název značky, který lze rozpoznat pro tento produkt. Pokud aplikace na trh s tímto názvem, nezahrnujte název vaší organizace. Pokud zadáváte v rámci této nabídky na jiné weby a publikací, použijte stejný název ve všech publikacích.    <br/>Pokud uvolníte nabídky během období preview pro aplikace Power BI, přidejte řetězec `(Preview)` na konec názvu vaší aplikace, například takto: `Sample Scv App (Preview)`. |
 |     |     |
 
 

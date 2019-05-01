@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2da4ee5d60290485d87af86885dda0d72a625fef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44894694bab7d34ed9e6a71fe5e47c9e41144bca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323031"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716279"
 ---
 # <a name="dynamic-manifests"></a>Dynamické manifesty
 
@@ -131,7 +131,7 @@ Můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokáto
 - Hodnoty pro **forceEndTimestamp**, **presentationWindowDuration**, a **liveBackoffDuration** by se neměla nastavovat pro filtr videa na vyžádání. Používají se jenom pro scénáře živé filtru. 
 - Dynamický manifest funguje v GOP hranice (klíč rámce) proto ořezávání má GOP přesnost. 
 - Můžete použít stejný název filtru pro účet a Asset filtry. Asset filtry mají vyšší prioritu a přepíše filtry účtů.
-- Pokud aktualizujete filtr, může trvat až 2 minut, než se aktualizovat pravidla koncový bod streamování. Pokud obsah byl obsluhovat pomocí nějaké filtry (a uložili do mezipaměti v proxy servery a CDN mezipaměti), aktualizuje se tyto filtry může způsobit selhání přehrávače. Doporučuje se vymazání mezipaměti po aktualizaci filtr. Pokud tato možnost není možné, zvažte použití jiného filtru.
+- Pokud aktualizujete filtr, může trvat až 2 minuty, než pro koncový bod streamování se aktualizovat pravidla. Pokud obsah byl obsluhovat pomocí nějaké filtry (a uložili do mezipaměti v proxy servery a CDN mezipaměti), aktualizuje se tyto filtry může způsobit selhání přehrávače. Doporučuje se vymazání mezipaměti po aktualizaci filtr. Pokud tato možnost není možné, zvažte použití jiného filtru.
 - Zákazníci musí ručně stáhněte manifest a analyzovat přesné startTimestamp a časové měřítko.
     
     - Chcete-li zjistit vlastnosti v prostředku, která sleduje [získat a zkontrolujte soubor manifestu](#get-and-examine-manifest-files).

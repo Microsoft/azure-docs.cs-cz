@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/30/2018
+ms.date: 04/29/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 844e4a0d2715799b808f2c7630c201f6e792bd63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d20e266d1331fc15e65b2d119468483ff53a4c06
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582791"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951513"
 ---
 | Prostředek | Basic | Standard | Premium |
 |---|---|---|---|
 | Úložiště<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maximální velikost vrstvy | 20 GiB | 20 GiB | 50 GB |
+| Maximální velikost vrstvy | 200 GiB | 200 GiB | 200 GiB |
 | Operace čtení za minutu<sup>2, 3</sup> | 1 000 | 3000 | 10 000 |
 | Operace za minutu<sup>2, 4</sup> | 100 | 500 | 2 000 |
 | Stáhněte si MB/s šířky pásma<sup>2</sup> | 30 | 60 | 100 |

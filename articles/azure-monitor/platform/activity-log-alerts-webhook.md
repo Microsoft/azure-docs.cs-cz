@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731510"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688350"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 Jako součást definice skupiny akcí můžete nakonfigurovat webhooku koncových bodů pro příjem oznámení výstrah protokolu aktivit. Pomocí webhooků můžete směrovat tato oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Tento článek popisuje, jak vypadá datová část požadavku HTTP POST do webhooku.
@@ -21,6 +21,10 @@ Jako součást definice skupiny akcí můžete nakonfigurovat webhooku koncovýc
 Další informace o upozornění protokolu aktivit najdete v tématu Jak [vytvoření upozornění protokolu aktivit Azure](activity-log-alerts.md).
 
 Informace o skupinách akcí najdete v tématu Jak [vytvoření skupiny akcí](../../azure-monitor/platform/action-groups.md).
+
+> [!NOTE]
+> Můžete také použít [společné schéma produktu výstrah](https://aka.ms/commonAlertSchemaDocs), která nabízí výhodu v podobě jediného rozšiřitelné a sjednocené výstrah datová část mezi všechny výstrahy služby ve službě Azure Monitor pro vaše integrace webhooku. [Další informace o běžných výstrah schématu definice.](https://aka.ms/commonAlertSchemaDefinitions)
+
 
 ## <a name="authenticate-the-webhook"></a>Ověření se webhook.
 Webhook můžete volitelně použít ověřování založené na tokenech pro ověřování. Webhook identifikátoru URI je uložen s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.

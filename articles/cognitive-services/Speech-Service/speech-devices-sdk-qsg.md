@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dec40f7ec21a4a059c6e4a7c75f6378f9757a479
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457450"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916844"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -28,7 +28,7 @@ Zdrojový kód ukázkové aplikace je součástí sady SDK zařízení pro rozpo
 
 Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte informace a softwaru, které budete potřebovat:
 
-* Získání [sada z ROOBO](http://ddk.roobo.com/). Sady jsou k dispozici s konfiguracemi pro pole Lineární nebo cyklický mikrofon. Zvolte správnou konfiguraci pro vaše potřeby.
+* Získání [sada z ROOBO](https://ddk.roobo.com/). Sady jsou k dispozici s konfiguracemi pro pole Lineární nebo cyklický mikrofon. Zvolte správnou konfiguraci pro vaše potřeby.
 
     |Konfigurace Development kit|Umístění mluvčího|
     |-----------------------------|------------|
@@ -199,4 +199,4 @@ Pokud se zobrazí chyby certifikátů při používání hlasové služby, ujist
 
 ### <a name="audio"></a>Zvuk
 
-ROOBO poskytuje nástroj, který zachycuje všechny zvuk na flash paměti. Občas může pomoci při odstraňování problémů zvuku. Verze nástroje se poskytuje pro každou konfiguraci development kit. Na [ROOBO lokality](http://ddk.roobo.com/), vyberte zařízení a pak vyberte **ROOBO nástroje** odkaz v dolní části stránky.
+ROOBO poskytuje nástroj, který zachycuje všechny zvuk na flash paměti. Občas může pomoci při odstraňování problémů zvuku. Verze nástroje se poskytuje pro každou konfiguraci development kit. Na [ROOBO lokality](https://ddk.roobo.com/), vyberte zařízení a pak vyberte **ROOBO nástroje** odkaz v dolní části stránky.

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c68bae87440bddf704d18b575aeb1f4ba4760bbb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3f62557d024f56b7014784b6956f15a950f8cca7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578239"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926249"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak změnit licenční model virtuálního počítače s SQL serverem v Azure
 Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL VM - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – s průběžnými platbami a používání vlastní licence (BYOL). A teď se pomocí webu Azure portal, rozhraní příkazového řádku Azure nebo PowerShell můžete upravit který licenční model virtuálního počítače s SQL Server používá. 
@@ -33,10 +33,13 @@ Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez vý
 
 ## <a name="remarks"></a>Poznámky
 
+
  - Zákazníky CSP se můžou využívat výhody AHB tak, že nejprve nasazení virtuálního počítače s průběžnými platbami a jeho převodu do přineste svůj – používání vlastní licence. 
  - Při registraci vlastní image virtuálního počítače s SQL serverem s poskytovatelem prostředků, zadejte typ licence = "AHUB". Opuštění licence zadejte jako prázdné nebo zadání "PAYG" způsobí, že registrace selže. 
  - Pokud odstraníte váš prostředek virtuálního počítače s SQL serverem, přejdete zpět na pevně zakódované licence nastavení bitové kopie. 
+ - Přidání virtuálního počítače s SQL serverem na skupinu dostupnosti vyžaduje opětovné vytvoření virtuálního počítače. Jako takové, všechny virtuální počítače přidat do dostupnost sady vrátí zpátky na výchozí typ licence s průběžnými platbami a AHB muset znovu povolit. 
  - Umožňuje změnit licenční model je funkce poskytovatele prostředků virtuálního počítače s SQL. Nasazení imagí marketplace na webu Azure portal automaticky zaregistruje poskytovatele prostředků virtuálního počítače s SQL serverem. Ale zákazníci, kteří jsou vlastní instalace systému SQL Server bude nutné ručně [registraci jejich virtuální počítač s SQL serverem](#register-sql-server-vm-with-the-sql-vm-resource-provider). 
+ 
 
  
 ## <a name="limitations"></a>Omezení
@@ -172,7 +175,7 @@ Registraci virtuálního počítače SQL serverem pomocí Powershellu pomocí n�
 # Register your existing SQL Server VM with the new resource provider
 # example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
 $vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
-New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Proper
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
 ```
 
 
@@ -190,7 +193,7 @@ Chcete-li vyřešit tento problém, nainstalujte rozšíření SQL IaaS před po
   > Instalace SQL IaaS rozšíření se restartovat službu systému SQL Server a by mělo být provedeno pouze během časového období údržby. Další informace najdete v tématu [instalace rozšíření SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension#installation). 
 
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Prostředek 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/ < resource-group >"ve skupině prostředků '< resource-group >' nebyl nalezen. Vlastnost 'sqlServerLicenseType' nebyl nalezen v tomto objektu. Ověřte, že vlastnost existuje a je možné nastavit.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Prostředek "Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<; resource-group >" ve skupině prostředků "\<; resource-group >" nebyl nalezen. Vlastnost 'sqlServerLicenseType' nebyl nalezen v tomto objektu. Ověřte, že vlastnost existuje a je možné nastavit.
 Této chybě dochází při pokusu o změnu licenčního modelu na virtuálním počítači SQL serveru, který není zaregistrovaný u poskytovatele prostředků SQL. Musíte se zaregistrovat poskytovatele prostředků pro vaše [předplatné](#register-sql-vm-resource-provider-with-subscription)a pak zaregistrujte virtuální počítač s SQL serverem pomocí SQL [poskytovatele prostředků](#register-sql-server-vm-with-sql-resource-provider). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Nelze ověřit argument u parametru "Sku.

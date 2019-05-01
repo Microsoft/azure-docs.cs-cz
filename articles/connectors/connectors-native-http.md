@@ -11,26 +11,28 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22b21512c78a06f2639ca9339f3b7a20c7f5bfa3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60447548"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713815"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Volání koncových bodů HTTP nebo HTTPS s Azure Logic Apps
 
-S Azure Logic Apps a konektoru protokol HTTP (Hypertext Transfer) můžete automatizovat pracovní postupy, které komunikují s libovolný koncový bod HTTP nebo HTTPS díky vytváření aplikací logiky. Můžete například monitorovat koncový bod služby pro váš web. Pokud k události dojde na tomto koncovém, jako je například webu směrem dolů, událost aktivuje pracovní postup aplikace logiky a spustí zadané akce. 
+S Azure Logic Apps a konektoru protokol HTTP (Hypertext Transfer) můžete automatizovat pracovní postupy, které komunikují s libovolný koncový bod HTTP nebo HTTPS díky vytváření aplikací logiky. Můžete například monitorovat koncový bod služby pro váš web. Pokud k události dojde na tomto koncovém, jako je například webu směrem dolů, událost aktivuje pracovní postup aplikace logiky a spustí zadané akce.
 
 HTTP trigger můžete použít jako první krok v váš pracovní postup pro kontrolu nebo *dotazování* koncový bod v pravidelných intervalech. Na každé kontrole, odešle aktivační událost volání nebo *požadavek* ke koncovému bodu. Odpověď koncový bod určuje, jestli se spouští pracovní postup aplikace logiky. Aktivační událost předá jakýkoli obsah z odpovědi na akce ve vaší aplikaci logiky. 
 
-Akce HTTP můžete použít jako další krok v pracovním postupu pro volání koncového bodu, pokud chcete. Odpověď koncový bod určuje, jak spustit zbývající akce pracovního postupu.
+Akce HTTP můžete použít jako další krok v pracovním postupu pro volání koncového bodu, pokud chcete. Odpověď koncový bod určuje, jak spustit zbývající akce pracovního postupu. 
+
+Na základě koncový bod cílové funkce, které se tento konektor podporuje zabezpečení TLS (Transport Layer) verze 1.0, 1.1 a 1.2. Logic Apps vyjedná s koncovým bodem přes pomocí nejvyšší podporovaná verze je to možné. Ano například pokud koncový bod podporuje 1.2, konektor používá 1.2 nejprve. V opačném případě konektor používá následující nejvyšší podporovaná verze.
 
 Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
 * Adresa URL pro koncový bod cílové chcete volat 
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129201"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710406"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu pro monitorování metrik a protokolů
 
@@ -500,7 +500,9 @@ ReadsPerSecond | Operace čtení za sekundu
 WritesPerSecond | Operace zápisu za sekundu
 TransfersPerSecond | Operace čtení nebo zápisu za sekundu
 
-Agregované hodnoty napříč všechny systémy souborů je možné získat nastavení `"condition": "IsAggregate=True"`. Hodnoty pro konkrétní připojeného souboru systému, jako například "/ mnt", můžete získat tak, že nastavíte `"condition": 'Name="/mnt"'`.
+Agregované hodnoty napříč všechny systémy souborů je možné získat nastavení `"condition": "IsAggregate=True"`. Hodnoty pro konkrétní připojeného souboru systému, jako například "/ mnt", můžete získat tak, že nastavíte `"condition": 'Name="/mnt"'`. 
+
+**POZNÁMKA:** Pokud pomocí webu Azure Portal namísto formátu JSON, správném podmíněném pole má název ='/ mnt.
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>předdefinované metriky pro třídu disku
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8a9d4699ba625f575cdcba2a85af900a7c04843e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478285"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924464"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines
 
@@ -59,7 +59,7 @@ Můžete mít řešení zotavení po havárii pro databáze SQL serveru v Azure 
 | Technologie | Příklady architektur |
 | --- | --- |
 | **Skupiny dostupnosti** |Dostupnost replik spuštěných v různých datacentrech ve virtuálních počítačích Azure pro zotavení po havárii. Toto řešení mezi různými oblastmi chrání před výpadkem kompletní lokality. <br/> ![Skupiny dostupnosti](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>V rámci oblasti musí být všechny repliky v rámci stejné cloudové službě a stejné virtuální síti. Vzhledem k tomu, že každou oblast, bude mít samostatnou virtuální síť, tato řešení vyžadovat virtuální sítě pro připojení k virtuální síti. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Podrobné pokyny najdete v tématu [konfigurace skupiny dostupnosti SQL Server na virtuálních počítačích Azure v různých oblastech](virtual-machines-windows-portal-sql-availability-group-dr.md).|
-| **Zrcadlení databáze** |Instanční objekt a zrcadlové a servery spuštěné v různých datových center pro zotavení po havárii. Je nutné nasadit pomocí certifikátů serveru, protože domény služby active directory nemůžou zahrnovat víc datových center.<br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
+| **Zrcadlení databáze** |Instanční objekt a zrcadlové a servery spuštěné v různých datových center pro zotavení po havárii. Je nutné nasadit pomocí certifikátů serveru. <br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **Zálohování a obnovení pomocí služby Azure Blob Storage** |Produkční databáze zálohovat přímo do úložiště objektů blob v jiném datovém centru pro zotavení po havárii.<br/>![Zálohování a obnovení](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikace a převzetí služeb při selhání SQL serveru do Azure pomocí Azure Site Recovery** |Provozní Server SQL z jednoho datového centra Azure replikované přímo do služby Azure Storage jiné datové centrum Azure pro zotavení po havárii.<br/>![Replikovat pomocí Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>Další informace najdete v tématu [ochraně SQL serveru pomocí zotavení po havárii pro SQL Server a Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
 

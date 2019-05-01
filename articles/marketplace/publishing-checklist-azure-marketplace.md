@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 26041bbf392f9b2afaaf5af38f758deb7708b651
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b1bf77b7c04374ee81b730600658462a6283dedf
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734979"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937682"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>Publikování kontrolní seznam pro Azure Marketplace    
 Kontrola požadovaných součástí před spuštěním procesu publikování.  

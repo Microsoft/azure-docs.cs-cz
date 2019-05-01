@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c5979fa7ff67c5acda9ab653bc4ee52d8b5129a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a45e2af6f2cb9c105c084585a03a6de615fa1397
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60544946"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573042"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování  
 
-## <a name="overview"></a>Přehled
+> [!NOTE]
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 V Microsoft Azure Media Services (AMS) **koncový bod streamování** reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) k další distribuci. Služba Media Services také poskytuje bezproblémovou integraci Azure CDN. Výstupní datový proud ze služby StreamingEndpoint může být v živém datovém proudu, videa na vyžádání nebo progresivní stahování asset ve vašem účtu Media Services. Každý účet služby Azure Media Services obsahuje výchozí StreamingEndpoint. Další koncové body streamování se dají vytvořit v rámci účtu. Existují dvě verze koncové body streamování, 1.0 a 2.0. Od 10. ledna 2017, budou všechny nově vytvořené účty AMS zahrnují verze 2.0 **výchozí** StreamingEndpoint. Další koncové body streamování, které přidáte k tomuto účtu budou také verze 2.0. Tato změna neovlivní existující účty; stávající koncové body streamování se verze 1.0 a je možné upgradovat na verzi 2.0. Tato změna bude změny chování, fakturace a funkce (Další informace najdete v tématu **streamování typy a verze** části je uvedeno níže).
 
@@ -46,14 +47,17 @@ Pro všechny další koncové body: `{EndpointName}-{AccountName}.streaming.medi
 
 ### <a name="standardpremium-types-version-20"></a>Typy Standard nebo Premium (verze 2.0)
 
-Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **Standard** a Premium. Tyto typy jsou součástí verze koncový bod streamování "2.0".
+Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **Standardní** (preview) a **Premium**. Tyto typy jsou součástí verze koncový bod streamování "2.0".
 
-Type|Popis
----|---
-**Standard** |Toto je výchozí možnost, která bude fungovat pro většinu scénářů.<br/>Pomocí této možnosti získáte/limited SLA, prvních 15 dnů po spuštění koncový bod streamování je zdarma.<br/>Pokud vytvoříte více než jeden datový proud koncové body, pouze první z nich je zdarma pro prvních 15 dnů, ostatní se účtují, jakmile je spuštění. <br/>Všimněte si, že bezplatné zkušební verze platí jenom pro účty služby nově vytvořené médium a výchozí koncový bod streamování. Stávající koncové body streamování a kromě vytvořených koncových bodů streamování není zahrnuje bezplatné zkušební období ještě jsou upgradovány na verzi 2.0 nebo jsou vytvořené jako verze 2.0.
-**Premium** |Tato možnost je vhodná pro profesionální scénáře, které vyžadují větší měřítko nebo ovládací prvek.<br/>Proměnné SLA, která je založena na premium streamování (SU) jednotky zakoupená kapacita služby vyhrazené koncové body streamování živě v izolovaném prostředí a nesoupeřily o prostředky.
 
-Podrobnější informace najdete v článku **porovnání datových proudů typy** následující části.
+|Type|Popis|
+|--------|--------|  
+|**Standard**|Výchozí hodnota je koncový bod streamování **standardní** typu, typu Premium lze změnit úpravou jednotek streamování.|
+|**Premium** |Tato možnost je vhodná pro profesionální scénáře, které vyžadují větší měřítko nebo ovládací prvek. Přejdete **Premium** typ úpravou jednotek streamování.<br/>Vyhrazené koncové body streamování živě v izolovaném prostředí a nesoupeřily o prostředky.|
+
+Zákazníci, kteří se chtějí k doručování obsahu velkému publiku internet doporučujeme, abyste povolili CDN na koncový bod streamování.
+
+Podrobnější informace najdete v článku [porovnání datových proudů typy](#comparing-streaming-types) následující části.
 
 ### <a name="classic-type-version-10"></a>Typ Classic (verze 1.0)
 
@@ -71,29 +75,32 @@ Pokud vaše **verze "1.0"** koncový bod streamování má > = 1 (SU), jednotky 
 
 ### <a name="versions"></a>Verze
 
-|Type|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|SLA| 
-|--------------|----------|-----------------|-----------------|-----------------|-----------------|    
-|Classic|1.0|0|Není k dispozici|Free|Není k dispozici|
-|Koncový bod streamování Standard|2.0|0|Ano|Placené|Ano|
-|Jednotky streamování Premium|1.0|> 0|Ano|Placené|Ano|
-|Jednotky streamování Premium|2.0|> 0|Ano|Placené|Ano|
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|
+|--------------|----------|-----------------|-----------------|-----------------|
+|Classic|1.0|0|Není k dispozici|Free|
+|Koncový bod streamování Standard (preview)|2.0|0|Ano|Placené|
+|Jednotky streamování Premium|1.0|> 0|Ano|Placené|
+|Jednotky streamování Premium|2.0|> 0|Ano|Placené|
 
 ### <a name="features"></a>Funkce
 
 Funkce|Standard|Premium
 ---|---|---
-Zdarma prvních 15 dnů| Ano |Ne
-Propustnost |Až 600 MB/s při Azure CDN se nepoužívá. Škálování s CDN.|200 MB/s za jednotku (SU) pro streaming. Škálování s CDN.
-SLA | 99.9|99,9 (200 MB/s za SU).
+Zdarma prvních 15 dnů <sup>1</sup>| Ano |Ne
+Propustnost |Až 600 MB/s a může poskytnout mnohem vyšší efektivní výkon při použití sítě CDN.|200 MB/s za jednotku (SU) pro streaming. Může poskytnout mnohem vyšší efektivní výkon při použití sítě CDN.
 CDN|Azure CDN, třetích stran CDN nebo žádné CDN.|Azure CDN, třetích stran CDN nebo žádné CDN.
 Ceny jsou poměrně přepočítané| Denně|Denně
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
-Měřítko|Automatické škálování až na cílové propustnosti.|Dodatečné jednotky streamování
-IP filtrování/G20/vlastního hostitele|Ano|Ano
+Měřítko|Automatické škálování až na cílové propustnosti.|Dodatečné jednotky streamování.
+Filtrování/G20/vlastního hostitele IP <sup>2</sup>|Ano|Ano
 Progresivní stahování|Ano|Ano
-Doporučené použití |Doporučuje se pro většinu scénářů streamování.|Profesionální použití.<br/>Pokud se domníváte, že máte potřebám Standard. Kontaktujte nás (amsstreaming@microsoft.com) Pokud budete chtít souběžných cílovou skupinu velikost větší než 50 000 prohlížeče.
+Doporučené použití |Doporučuje se pro většinu scénářů streamování.|Profesionální použití. 
 
+<sup>1</sup> bezplatné zkušební verze platí jenom pro účty služby nově vytvořené médium a ve výchozím nastavení koncového bodu streamování.<br/>
+<sup>2</sup> pouze použít přímo na koncový bod streamování, pokud síť CDN není povolené pro koncový bod.<br/>
+
+Informace o smlouvách SLA najdete v článku [ceny a smlouva SLA](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="migration-between-types"></a>Migrace mezi typy
 

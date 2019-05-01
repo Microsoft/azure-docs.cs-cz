@@ -3,19 +3,19 @@ title: Nakonfigurujte složitost hesla pomocí vlastních zásad v Azure Active 
 description: Jak konfigurovat požadavky na složitost hesla pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e8e3157bc9dfc97d364effee2ea90cfad85d18ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fb90720b8ee3834a0451cc70b026099dadaf369
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317135"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682474"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Nakonfigurujte složitost hesla pomocí vlastních zásad v Azure Active Directory B2C
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9e6bc1264e668ba5c6593ce36e721f54e685c391
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b144f126e097a8db9fbbf29e47162fd6a1c2fbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461251"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916820"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
-Převod řeči na text z Azure hlasové služby, označované také jako převod řeči na text, umožňuje v reálném čase přepisu zvuku datových proudů do textu, které využívají vaše aplikace, nástroje nebo zařízení, zobrazit a provádět akce na jako vstup příkazu. Tato služba používá stejnou technologii rozpoznávání, který společnost Microsoft používá pro produkty Cortana a Office a bez problémů spolupracuje s překlad a převod textu na řeč.  Úplný seznam dostupných jazyků řeči na text, naleznete v tématu [podporované jazyky](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Převod řeči na text z Azure hlasové služby, označované také jako převod řeči na text, umožňuje v reálném čase přepisu zvuku datových proudů do textu, které využívají vaše aplikace, nástroje nebo zařízení, zobrazit a provádět akce na jako vstup příkazu. Tato služba používá stejnou technologii rozpoznávání, který společnost Microsoft používá pro produkty Cortana a Office a bez problémů spolupracuje s překlad a převod textu na řeč.  Úplný seznam dostupných jazyků řeči na text, naleznete v tématu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
 Ve výchozím nastavení používá služba speech to text univerzální jazykový model. Tento model se naučil pomocí dat ve vlastnictví společnosti Microsoft a je nasazena v cloudu. Je ideální pro konverzační a scénáře diktování. Pokud používáte speech to text pro rozpoznávání a přepis v jedinečné prostředí, můžete vytvořit a trénování vlastních akustických, jazyk a výslovnost modelů hluk adresu nebo slovníku specifických pro dané odvětví. 
 

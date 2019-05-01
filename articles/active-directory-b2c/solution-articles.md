@@ -3,17 +3,18 @@ title: Řešení a školení pro Azure Active Directory B2C | Dokumentace Micros
 description: Tento článek obsahuje odkazy na řešení a informace o školení, které vám pomohou pochopit a používat Azure Active Directory B2C pro řešení end-to-end-business.
 services: active-directory-b2c
 author: davidmu1
+manager: celestedg
 ms.author: davidmu
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 08a5e288d58d86cdad18561cb8a08a31f44ae498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b409cc80d2443b01d3025dd84348af18118d640
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360108"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691968"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
 

@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Zjistěte, co je síťové rozhraní je a jak vytvořit, změnit nastavení a toku nějaký tok odstranit.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
-ms.author: jdial
-ms.openlocfilehash: 8840944f6757813b10b01c8e512b1ef64c05a85f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: a3cb6e1b20e405cedddae8684a4b91fcb8a5514a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888283"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695354"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -25,7 +26,7 @@ Zjistěte, jak vytvořit, změnit nastavení a odstranit síťové rozhraní. S�
 
 Pokud potřebujete přidat, změnit, nebo odebrání IP adres pro síťové rozhraní, naleznete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md). Pokud je potřeba přidat síťová rozhraní nebo odebrání síťových rozhraní virtuálních počítačů, naleznete v tématu [přidání nebo odebrání síťových rozhraní](virtual-network-network-interface-vm.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -57,7 +58,7 @@ Při vytváření virtuálního počítače pomocí webu Azure portal, na portá
     |Privátní IP adresa (IPv6)|Ne| Pokud zaškrtnete toto políčko, adresa protokolu IPv6 je přiřazené k síťovému rozhraní, kromě IPv4 adresu přiřazenou k síťovému rozhraní. IPv6 části tohoto článku důležité informace o použití protokolu IPv6 se síťovými rozhraními. Nelze vybrat metodu přiřazení pro adresu IPv6. Pokud se rozhodnete přiřadit adresu protokolu IPv6, je přiřazen s dynamickou metodu.
     |Název protokolu IPv6 (se zobrazí pouze tehdy, když **privátní IP adresa (IPv6)** je zaškrtnuté políčko) |Ano, pokud **privátní IP adresa (IPv6)** je zaškrtnuté políčko.| Tento název je přiřazen k sekundární konfigurace IP adresy pro síťové rozhraní. Další informace o konfigurací protokolu IP, naleznete v tématu [zobrazení nastavení síťového rozhraní](#view-network-interface-settings).|
     |Skupina prostředků|Ano|Vyberte existující [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) nebo ji vytvořte. Síťové rozhraní může existovat ve skupině prostředků stejného nebo jiného než virtuální počítač, který připojí, nebo virtuální sítě, můžete připojit k.|
-    |Umístění|Ano|Virtuální počítač připojit síťové rozhraní a připojte ho k virtuální síti musí existovat ve stejném [umístění](https://azure.microsoft.com/regions), která se také označují jako oblast.|
+    |Location|Ano|Virtuální počítač připojit síťové rozhraní a připojte ho k virtuální síti musí existovat ve stejném [umístění](https://azure.microsoft.com/regions), která se také označují jako oblast.|
 
 Na portálu nenabízí možnost přiřadit veřejné IP adresy k síťovému rozhraní, při vytváření, i když na portálu vytvořit veřejnou IP adresu a přiřadit ji k síťovému rozhraní při vytváření virtuálního počítače pomocí portálu. Další postup přidání veřejné IP adresy k síťovému rozhraní po jeho vytvoření najdete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md). Pokud chcete vytvořit síťové rozhraní s veřejnou IP adresu, musíte použít PowerShell nebo rozhraní příkazového řádku k vytvoření síťového rozhraní.
 

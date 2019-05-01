@@ -1,25 +1,18 @@
 ---
-title: Kontaktuje informace pro nabídku aplikace Power BI – Azure Marketplace | Dokumentace Microsoftu
+title: Kontaktuje informace pro nabídku aplikace Power BI | Azure Marketplace
 description: Vyplňte pole kontakty nabídky aplikace Power BI pro webu Microsoft Marketplace AppSource.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 191f58252aadf776465bb097207a7e76c0f92003
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: f659ad2f75f9dad390c37f0e1736af5991a32dfc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594981"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943246"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI aplikace kontakty kartu
 
@@ -30,18 +23,18 @@ Použití **kontakty** karty **nová nabídka** stránku s cílem poskytnout už
 
 ## <a name="contacts-fields"></a>Pole kontakty 
 
-Následující tabulka popisuje účel každé pole: 
+Následující tabulka popisuje účel každé pole.  Povinná pole jsou uvést hvězdičkou (*). 
 
 |   Pole               |   Popis                                                            |
 |-----------------------|--------------------------------------------------------------------------|
 | *Technický kontakt* | Slouží jako technický kontakt mezi AppSource a vaší organizaci.    |
-| **Název**              | Jméno osoby nebo skupiny, která slouží jako technické nebo technické podpory. |
-| **E-mail**             | E-mailovou adresu Tento technický kontakt.                                  |
-| **Telefon**             | Telefonní číslo technické podpory.                                       |
+| **Název\***              | Jméno osoby nebo skupiny, která slouží jako technické nebo technické podpory. |
+| **E-mailu\***             | E-mailovou adresu Tento technický kontakt.                                  |
+| **Telefon\***             | Telefonní číslo technické podpory.                                       |
 | *Kontakt na podporu*     | Přijímá lístky podpory otevírány zákazníky v AppSource.            |
-| **Název**              | Jméno osoby nebo skupiny, která slouží jako zákaznickou podporu.              |
-| **E-mail**             | E-mailová adresa podpory zákazníků.                                        |
-|  |  |
+| **Název\***              | Jméno osoby nebo skupiny, která slouží jako zákaznickou podporu.              |
+| **E-mailu\***             | E-mailová adresa podpory zákazníků.                                        |
+|   |   |
 
 
 ## <a name="next-steps"></a>Další postup

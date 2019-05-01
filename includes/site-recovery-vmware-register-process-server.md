@@ -2,21 +2,29 @@
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: e18d0a6a01a86f844edc213fc95003cf4f4b46c9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cf39baf34096691144181332566cf567ebc02310
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166361"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925628"
 ---
-* Připojte se k virtuálnímu počítači procesového serveru pomocí Připojení ke vzdálené ploše.
-* Program cspsconfigtool.exe můžete spustit kliknutím na zkratku na ploše. (Nástroje budou automaticky spuštěné, pokud se to při prvním přihlášení do procesového serveru).
-  - Plně kvalifikovaný název (FQDN) nebo IP adresa konfiguračního serveru.
-  - Port, na kterém konfigurační server naslouchá. Hodnota by měla být 443.
-  - Přístupové heslo připojení pro připojení ke konfiguračnímu serveru.
-  - Port pro přenos dat, který se má pro tento procesový server nakonfigurovat. Ponechte výchozí hodnotu, pokud jste nezměnili číslo portu ve svém prostředí.
+1. Navázat připojení ke vzdálené ploše na daném počítači používají procesový server. 
+2. Spusťte cspsconfigtool.exe spusťte konfigurační nástroj Azure Site Recovery Process Server.
+    - Nástroj se spustí automaticky při prvním přihlášení k procesového serveru.
+    - Pokud se neotevře automaticky, klikněte na jeho zástupce na ploše.
 
+3. V **konfigurační server plně kvalifikovaný název domény nebo IP adresa**, zadejte název nebo IP adresu konfiguračního serveru, pomocí kterého se má registrace procesového serveru.
+4. V **Port serveru konfigurace**, zkontrolujte, zda je zadán 443. Toto je port, na kterém konfigurační server naslouchá požadavkům.
+5. V **přístupové heslo připojení**, zadejte heslo, které jste zadali při nastavení konfiguračního serveru. Vyhledání přístupového hesla:
+    -  Na konfiguračním serveru, přejděte do instalační složky Site Recovery **\home\svssystems\bin\**. 
+    - Spusťte tento příkaz: **genpassphrase.exe.n**. Zobrazí umístění přístupové heslo, které lze poté si poznamenejte.
+
+6. V **Port pro přenos dat**, ponechte výchozí hodnotu, pokud jste zadali vlastní port.
+
+7. Klikněte na tlačítko **Uložit** uložíte nastavení a zaregistrujte procesový server.
+
+    
     ![Registrace procesového serveru](./media/site-recovery-vmware-register-process-server/register-ps.png)
-* Kliknutím na tlačítko Uložit uložte konfiguraci a zaregistrujte procesový server.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 379b8ee4a78cd8b487407e92ae32a7525f428bf0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 0d606a489a069c4265088d8e07301693dc2f1c83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763854"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694275"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -63,8 +63,8 @@ Plánujeme přidat podporu pro následující operační systémy, takže se uji
 
 |Operační systém|Požadovaná licence|
 |---|---|
-|Více relací Windows 10 Enterprise nebo Windows 10 Enterprise|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
-|Windows 7 Enterprise |Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
+|Více relací Windows 10 Enterprise nebo Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows Server 2012 R2, 2016, 2019|Licence VP licence pro klientský přístup (CAL) s programem Software Assurance|
 
 Vaše infrastruktura potřebuje následující akce pro podporu virtuální plochy Windows:
@@ -72,7 +72,7 @@ Vaše infrastruktura potřebuje následující akce pro podporu virtuální ploc
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Windows Server Active Directory synchronizované se službou Azure Active Directory. To se dá nastavit pomocí:
   * Azure AD Connect
-  * Služba Azure AD Domain Services
+  * Azure AD Domain Services
 * Předplatné Azure, který obsahuje virtuální síť, která obsahuje nebo je připojený ke službě Windows Server Active Directory
   
 Virtuální počítače Azure, které vytvoříte pro virtuální plochy Windows musí být:
@@ -93,7 +93,7 @@ Pro optimální výkon Ujistěte se, že vaše síť splňuje následující po�
 * Síťový provoz může tok mimo hranice země, připojíte ke službě správy virtuálních počítačů, které hostování desktopů a aplikací.
 * Pokud chcete optimalizovat výkon sítě, doporučujeme, že jsou seřazena relace hostování virtuálních počítačů ve stejné oblasti Azure jako službu pro správu.
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy. Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview.
 

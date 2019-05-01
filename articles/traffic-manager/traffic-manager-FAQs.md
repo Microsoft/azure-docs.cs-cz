@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b89e9a48ce20c7c00bd3282623919b8066e34b25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803036"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717056"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -320,7 +320,7 @@ Ano. Traffic Manager podporuje zjišťování přes protokol HTTPS. Konfigurace 
 Traffic manager neposkytuje žádné ověření certifikátu, včetně:
 
 * Pořadí úloh se neověřuje certifikáty na straně serveru
-* SNI certifikáty na straně serveru nejsou podporovány.
+* Pořadí úloh se neověřuje certifikátů SNI na straně serveru
 * Klientské certifikáty nejsou podporovány.
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Používá adresu IP nebo název DNS při přidání koncového bodu?

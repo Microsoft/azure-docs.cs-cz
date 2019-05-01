@@ -3,17 +3,16 @@ title: Azure Marketplace zásady a podmínky | Azure
 description: Zásady webu Microsoft Azure Marketplace a podmínky platí pro všechny vydavatele a nabídky na webu Microsoft Azure Marketplace.
 services: Azure, Marketplace, AppSource
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 9dc4bfa1f2435488f7d6513f9c14e82da33a4d64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5041e9f7b19508480ff27311ba61d180f4a5a01
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322749"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937634"
 ---
 # <a name="azure-marketplace-policies-and-terms"></a>Podmínky a zásady Azure Marketplace
 
@@ -26,9 +25,12 @@ Nabídky na webu Marketplace musí dodržovat naše zásady a podmínky. Aktuali
 
 ## <a name="policies-and-terms"></a>Zásady a podmínky
 
-* [Obecné zásady seznam a nabídka](https://docs.microsoft.com/legal/marketplace/general-policies)
+* [Zásady certifikaci Azure Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies)
+
 * [Zásady účasti na webu](https://docs.microsoft.com/legal/marketplace/participation-policy)
+
 * [Zásady hodnocení a recenzí](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
+
 * [Podmínky Azure Marketplace](https://docs.microsoft.com/legal/marketplace/terms)
 
 ## <a name="next-steps"></a>Další postup

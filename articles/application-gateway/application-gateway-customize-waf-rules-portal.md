@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f7ffb8d6adfd4afc75618834a3fe82cf9a3d0c9f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733712"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720395"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Přizpůsobení pravidel firewallu webových aplikací na webu Azure portal
 
@@ -33,11 +33,14 @@ Firewall webových aplikací (WAF) Azure Application Gateway chrání webové ap
 
 ## <a name="search-for-rules-to-disable"></a>Hledat pravidla pro zakázání
 
-**Nastavení brány webových aplikací** okno umožňuje filtrovat pravidla pomocí fulltextového vyhledávání. Výsledek se zobrazí pouze skupiny pravidel a pravidel, které obsahují text, kterého jste hledali.
+**Nastavení brány webových aplikací** stránka poskytuje možnosti filtrování pravidla pomocí fulltextového vyhledávání. Výsledek se zobrazí pouze skupiny pravidel a pravidel, které obsahují text, kterého jste hledali.
 
 ![Hledat pravidla][2]
 
 ## <a name="disable-rule-groups-and-rules"></a>Zakázat pravidlo skupiny a pravidel
+
+> [!IMPORTANT]
+> Buďte opatrní při zakázání pravidla ani pravidla skupiny. To může vystavit na zvýšená rizika zabezpečení.
 
 Pokud se zakázání pravidla, můžete zakázat skupinu celé pravidlo nebo konkrétními pravidly v rámci jedné nebo několika skupin pravidel. 
 
@@ -51,7 +54,9 @@ Pokud se zakázání pravidla, můžete zakázat skupinu celé pravidlo nebo kon
 
 ## <a name="mandatory-rules"></a>Povinné pravidla
 
-Následující seznam obsahuje podmínky, které způsobí WAF blokování požadavku v režimu ochrany před únikem informací (v režimu detekce, kterému jsou přihlášeni jako výjimky). Tyto nelze nakonfigurované nebo zakázané:
+Následující seznam obsahuje podmínky, které způsobí WAF blokování požadavku v režimu ochrany před únikem informací. V režimu detekce jsou přihlášení jako výjimky.
+
+Tyto nelze nakonfigurované nebo zakázané:
 
 * Nepodařilo se analyzovat datovou část požadavku výsledkem požadavku blokován, pokud je text kontroly nevypnuli (XML, JSON, data formuláře)
 * Délka dat požadavku textu (spolu s žádné soubory) je větší než nakonfigurovaný limit

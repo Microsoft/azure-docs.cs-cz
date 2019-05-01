@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6c3accdd74ce3277181f6cdfc890de0d8c55bf07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13db0406681f676f47a3764cf2a59c4dbf251715
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344627"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729202"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -38,6 +38,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.AAD/domainServices/oucontainer/read | Kontejnery organizační jednotky pro čtení |
 > | Akce | Microsoft.AAD/domainServices/oucontainer/write | Zápis kontejneru organizační jednotky |
 > | Akce | Microsoft.AAD/domainServices/read | Read Domain Services |
+> | Akce | Microsoft.AAD/domainServices/ReplicaSets/delete | Odstranění clusteru lokality |
+> | Akce | Microsoft.AAD/domainServices/ReplicaSets/read | Lokality clusteru pro čtení |
+> | Akce | Microsoft.AAD/domainServices/ReplicaSets/write | Zápis lokality clusteru |
 > | Akce | Microsoft.AAD/domainServices/write | Write Domain Service |
 > | Akce | Microsoft.AAD/locations/operationresults/read |  |
 > | Akce | Microsoft.AAD/Operations/read |  |
@@ -100,9 +103,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/reports/availabledeployments/read | Získá seznam dostupných oblastí, používá DevOps pro podporu incidentů zákazníka. |
 > | Akce | Microsoft.ADHybridHealthService/reports/badpassword/read | Získá seznam chybná zadání hesla pro všechny uživatele v Active Directory Federation Service. |
 > | Akce | Microsoft.ADHybridHealthService/reports/badpassworduseridipfrequency/read | Získá identifikátor URI SAS objektů Blob obsahující stav a konečné výsledek zařazených do fronty úlohu sestavy nově frekvence chybné uživatelské jméno/heslo se pokusí za ID uživatele na IP adresu za den pro daného Tenanta. |
-> | Akce | Microsoft.ADHybridHealthService/reports/blobUris/read | Získá všechny sestavy rizikových IP adres identifikátory URI za posledních 7 dní. |
 > | Akce | Microsoft.ADHybridHealthService/reports/consentedtodevopstenants/read | Získá seznam DevOps schválených tenantů. Obvykle se používá pro zákaznickou podporu. |
-> | Akce | Microsoft.ADHybridHealthService/reports/generateBlobUri/action | Generuje sestavy rizikových IP adres a vrátí identifikátor URI odkazující na ni. |
 > | Akce | Microsoft.ADHybridHealthService/reports/isdevops/read | Získá hodnotu označující, zda je tenant DevOps souhlas nebo ne. |
 > | Akce | Microsoft.ADHybridHealthService/reports/selectdevopstenant/read | Aktualizace userid(objectid) pro tenanta vybrané dev ops. |
 > | Akce | Microsoft.ADHybridHealthService/reports/selecteddeployment/read | Získá vybrané nasazení pro daného tenanta. |
@@ -125,7 +126,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Přidání nebo aktualizace konfigurací monitorování pro služby. |
 > | Akce | Microsoft.ADHybridHealthService/services/premiumcheck/read | Toto rozhraní API získá seznam všech služeb připojení pro klienta premium. |
 > | Akce | Microsoft.ADHybridHealthService/services/read | Načte instance služby v tenantovi. |
+> | Akce | Microsoft.ADHybridHealthService/services/reports/blobUris/read | Získá všechny sestavy rizikových IP adres identifikátory URI za posledních 7 dní. |
 > | Akce | Microsoft.ADHybridHealthService/services/reports/details/read | Získá sestavu prvních 50 uživatelů s chybami chybných zadání hesla z posledních 7 dní |
+> | Akce | Microsoft.ADHybridHealthService/services/reports/generateBlobUri/action | Generuje sestavy rizikových IP adres a vrátí identifikátor URI odkazující na ni. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/action | Vytvoří instanci serveru ve službě. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/alerts/read | Přečte výstrahy pro server. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/credentials/read | Během registrace serveru toto rozhraní api je volána k získání přihlašovacích údajů pro připojení nové servery. |
@@ -213,163 +216,169 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ApiManagement/operations/read | Přečíst všechny operace rozhraní API dostupné pro prostředek Microsoft.ApiManagement |
 > | Akce | Microsoft.ApiManagement/register/action | Zaregistrovat předplatné u poskytovatele prostředků Microsoft.ApiManagement |
 > | Akce | Microsoft.ApiManagement/reports/read | Získání sestav agregované podle časová období, geografické oblasti, vývojáře, produkty, rozhraní API, operace, předplatné a byRequest. |
-> | Akce | Microsoft.ApiManagement/service/apis/delete | Odebrat existující rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/diagnostics/delete | Odeberte existující Diagnostika |
-> | Akce | Microsoft.ApiManagement/service/apis/diagnostics/read | Získání seznamu diagnostiky nebo načtení podrobností diagnostiky |
-> | Akce | Microsoft.ApiManagement/service/apis/diagnostics/write | Přidání nových diagnostických nebo aktualizovat existující diagnostické informace |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/attachments/delete | Odebere existující přílohy |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/attachments/read | Podrobnosti příloh získat přílohy problém nebo problém získá API Management |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/attachments/write | Přidat přílohu problém rozhraní api |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/comments/delete | Odebere existující komentáře |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/comments/read | Získá komentáře nebo získá API Management problém komentář podrobnosti o problému |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/comments/write | Přidat komentáře k problému rozhraní api |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/delete | Odebere existující problém |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/read | Získat problémy, které jsou přidružené k rozhraní API nebo správu rozhraní API získá podrobnosti o problému |
-> | Akce | Microsoft.ApiManagement/service/apis/issues/write | Přidat rozhraní api problém nebo aktualizovat problém rozhraní api |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/delete | Odeberte stávající operace rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/policies/delete | Odebrat konfiguraci zásad ze zásad operace rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/policies/read | Získat zásady pro operaci rozhraní API nebo získat podrobnosti o konfiguraci zásad pro operace rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/policies/write | Podrobnosti o sadě zásad konfigurace pro operace rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/policy/delete | Operace odebrání konfigurace zásad |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/policy/read | Získat podrobnosti o konfiguraci zásad pro operaci |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/policy/write | Podrobnosti o sadě zásad konfigurace pro operaci |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/read | Získání seznamu existující operace rozhraní API nebo získat podrobnosti o operaci rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/tags/delete | Odstranit přiřazení existující značky s existující operace |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/tags/read | Získat značky, které jsou spojené s podrobnostmi o operaci nebo získání značek |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/tags/write | Přidružit existující operace existující značky |
-> | Akce | Microsoft.ApiManagement/service/apis/operations/write | Vytvořit novou operaci rozhraní API nebo aktualizovat stávající operace rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/operationsByTags/read | Získat seznam přidružení operaci/značky |
-> | Akce | Microsoft.ApiManagement/service/apis/policies/delete | Odebrat konfiguraci zásad ze zásad rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/policies/read | Získat zásady pro rozhraní API nebo získat podrobnosti zásad konfigurace pro rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/policies/write | Podrobnosti o sadě zásad konfigurace pro rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/policy/delete | Odebrání konfigurace zásad rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/policy/read | Získat podrobnosti o konfiguraci zásad pro rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/policy/write | Podrobnosti o sadě zásad konfigurace pro rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/products/read | Získat všechny produkty, které je součástí rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/read | Získat seznam všech registrovaných rozhraní API nebo získat podrobné informace o rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/releases/delete | Odebere všechny verze rozhraní API nebo odebrat rozhraní API verze |
-> | Akce | Microsoft.ApiManagement/service/apis/releases/read | Získání verzí pro rozhraní API nebo získat podrobné informace o verzi rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/releases/write | Nová verze rozhraní API umožňuje vytvořit nebo aktualizovat stávající verze rozhraní API |
+> | Akce | Microsoft.ApiManagement/service/apis/delete | Odstraní zadané rozhraní API instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/apis/diagnostics/delete | Odstraní zadaný diagnostiky z rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/diagnostics/read | Zobrazí seznam všech diagnostiky rozhraní API. nebo získá podrobnosti o diagnostiky pro rozhraní API určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/apis/diagnostics/write | Vytvoří novou diagnostiku pro rozhraní API nebo aktualizuje nějakou existující. aktualizace nebo aktualizace zadané podrobnosti diagnostiky pro rozhraní API pomocí jeho identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/attachments/delete | Odstraní zadané komentáře týkající se problému. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/attachments/read | Seznamy všechny přílohy, které pro problém související s zadané rozhraním API. nebo získá podrobnosti o problému přílohy pro rozhraní API určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/attachments/write | Vytvoří novou přílohu k problému v rozhraní API nebo aktualizuje nějakou existující. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/comments/delete | Odstraní zadané komentáře týkající se problému. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/comments/read | Seznamy všechny komentáře pro problém související s zadané rozhraním API. nebo získá podrobnosti o problému komentář pro rozhraní API určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/comments/write | Vytvoří nový komentář k problému v rozhraní API nebo aktualizuje nějakou existující. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/delete | Odstraní zadaný problém z rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/read | Zobrazí seznam všech problémů, které jsou přidružené k zadané rozhraní API. nebo získá podrobnosti o problému pro rozhraní API určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/apis/issues/write | Vytvoří nový problém pro rozhraní API nebo aktualizuje nějakou existující. aktualizace nebo aktualizace z existujícího vydání pro rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/delete | Odstraní zadanou operaci rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/policies/delete | Odstraní konfiguraci zásad pro jednotlivé operace rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/policies/read | Získání seznamu konfigurace zásad na úrovni operace rozhraní API. nebo že konfigurace zásad na úrovni operace rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/policies/write | Vytvoří nebo aktualizuje konfigurace zásad pro úroveň operace rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/policy/delete | Odstranit konfiguraci zásad na úrovni operace |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/policy/read | Získat konfiguraci zásad na úrovni operace |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/policy/write | Vytvoření zásad konfigurace operaci úrovně |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/read | Obsahuje kolekci operací pro zadané rozhraní API. nebo získá podrobnosti o operaci rozhraní API určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/tags/delete | Odebrat značku ze operaci. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/tags/read | Uvádí všechny značky přidružené operaci. nebo získat značku přidružené operaci. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/tags/write | Přiřadíte značky k operaci. |
+> | Akce | Microsoft.ApiManagement/service/apis/operations/write | Vytvoří novou operaci v rozhraní API nebo aktualizuje nějakou existující. aktualizace nebo aktualizace zadané podrobnosti operace v rozhraní API pomocí jeho identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/apis/operationsByTags/read | Obsahuje kolekci operace spojené s značky. |
+> | Akce | Microsoft.ApiManagement/service/apis/policies/delete | Odstraní konfiguraci zásad na rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/policies/read | Získáte konfiguraci zásad na úrovni rozhraní API. nebo že konfigurace zásad na úrovni rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/policies/write | Vytvoří nebo aktualizuje konfigurace zásad pro rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/policy/delete | Odstranit konfiguraci zásad na úrovni rozhraní API |
+> | Akce | Microsoft.ApiManagement/service/apis/policy/read | Získat konfiguraci zásad na úrovni rozhraní API |
+> | Akce | Microsoft.ApiManagement/service/apis/policy/write | Vytvoření zásady konfigurace v rozhraní API úrovně |
+> | Akce | Microsoft.ApiManagement/service/apis/products/read | Obsahuje seznam všech produktů, které je součástí rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/read | Zobrazí seznam všech rozhraní API instance služby API Management. nebo získá podrobnosti o rozhraní API určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/apis/releases/delete | Odebere všechny verze rozhraní API nebo odstraní zadané verze v rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/releases/read | Uvádí všechny verze rozhraní API.<br>O verzi rozhraní API se vytvoří při provádění aktuální revizi rozhraní API.<br>Verze se také používají k vrácení zpět na předchozí revize.<br>Výsledky se stránkováním a mohou být omezeny parametry $top a $skip.<br>nebo vrátí podrobnosti o rozhraní API verze. |
+> | Akce | Microsoft.ApiManagement/service/apis/releases/write | Vytvoří novou verzi rozhraní API. nebo aktualizace uvedené podrobnosti o verzi rozhraní API pomocí jeho identifikátoru. |
 > | Akce | Microsoft.ApiManagement/service/apis/revisions/delete | Odebere všechny revize rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/revisions/read | Získat revize, které patří do rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/schemas/delete | Odebere existující schéma |
-> | Akce | Microsoft.ApiManagement/service/apis/schemas/document/read | Získat dokument popisující schématu |
-> | Akce | Microsoft.ApiManagement/service/apis/schemas/document/write | Aktualizovat dokument popisující schématu |
-> | Akce | Microsoft.ApiManagement/service/apis/schemas/read | Získá všechna schémata pro dané rozhraní API nebo získá schémata používá rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/schemas/write | Nastaví schémata používá rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/tagDescriptions/delete | Odebrat značku popis z rozhraní API. |
-> | Akce | Microsoft.ApiManagement/service/apis/tagDescriptions/read | Získat značky, popisy v oboru popis rozhraní API nebo získání značek v oboru rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/tagDescriptions/write | Vytvořit nebo změnit značky popis v oboru rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apis/tags/delete | Odeberte stávající přidružení rozhraní API/značky |
-> | Akce | Microsoft.ApiManagement/service/apis/tags/read | Získat všechna rozhraní API/značky přidružení rozhraní API nebo získat podrobnosti o rozhraní API/značky přidružení |
-> | Akce | Microsoft.ApiManagement/service/apis/tags/write | Přidat nové přidružení rozhraní API/značky |
-> | Akce | Microsoft.ApiManagement/service/apis/write | Nové rozhraní API umožňuje vytvořit nebo aktualizovat existující podrobnosti rozhraní API |
-> | Akce | Microsoft.ApiManagement/service/apisByTags/read | Získat seznam přidružení rozhraní API/značky |
-> | Akce | Microsoft.ApiManagement/service/apiVersionSets/delete | Odeberte existující VersionSet |
-> | Akce | Microsoft.ApiManagement/service/apiVersionSets/read | Získat seznam verzí skupiny entit nebo získá podrobnosti VersionSet |
+> | Akce | Microsoft.ApiManagement/service/apis/revisions/read | Uvádí všechny revize rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/schemas/delete | Odstraní schéma konfigurace v rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/schemas/read | Získání schématu konfigurace na úrovni rozhraní API. nebo získat schéma konfigurace na úrovni rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/schemas/write | Vytvoří nebo aktualizuje schéma konfigurace rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/tagDescriptions/delete | Odstraňte značku popis rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/tagDescriptions/read | Obsahuje seznam všech popisů značky v oboru rozhraní API. Model podobný swagger – tagDescription je definován na úroveň rozhraní API, ale značka může být přiřazen operace nebo získat značky popis v oboru rozhraní API |
+> | Akce | Microsoft.ApiManagement/service/apis/tagDescriptions/write | Vytvořit nebo aktualizovat popis značky v oboru pro rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/tags/delete | Odebrat značku z rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/tags/read | Uvádí všechny značky přidružené k rozhraní API. nebo získat značku přidružené k rozhraní API. |
+> | Akce | Microsoft.ApiManagement/service/apis/tags/write | Přiřadíte značky k rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apis/write | Vytvoří nový nebo aktualizuje existující zadané rozhraní API instance služby API Management. aktualizace nebo aktualizace rozhraní API pro zadanou instanci služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/apisByTags/read | Obsahuje kolekci rozhraní API související s značky. |
+> | Akce | Microsoft.ApiManagement/service/apiVersionSets/delete | Odstraní, nastavit konkrétní verzi rozhraní Api. |
+> | Akce | Microsoft.ApiManagement/service/apiVersionSets/read | Obsahuje kolekci verze sady rozhraní API v instanci určené služby. nebo získá podrobnosti o rozhraní Api verze sadě zadán pomocí jeho identifikátoru. |
 > | Akce | Microsoft.ApiManagement/service/apiVersionSets/versions/read | Získat seznam entit verze |
-> | Akce | Microsoft.ApiManagement/service/apiVersionSets/write | Vytvořit nový VersionSet nebo aktualizovat existující VersionSet podrobnosti |
+> | Akce | Microsoft.ApiManagement/service/apiVersionSets/write | Vytvoří nebo aktualizuje sadu verze rozhraní Api. aktualizace nebo aktualizace podrobnosti VersionSet rozhraní Api určené jeho identifikátor. |
 > | Akce | Microsoft.ApiManagement/service/applynetworkconfigurationupdates/action | Aktualizuje Microsoft.ApiManagement prostředky spuštěné ve virtuální síti k výběru aktualizované nastavení sítě. |
-> | Akce | Microsoft.ApiManagement/service/authorizationServers/delete | Odstranění existujícího autorizačního serveru |
-> | Akce | Microsoft.ApiManagement/service/authorizationServers/read | Načíst seznam autorizací serverů nebo získat podrobnosti o autorizačního serveru |
-> | Akce | Microsoft.ApiManagement/service/authorizationServers/write | Vytvořit nové autorizační server nebo aktualizovat podrobnosti existujícího autorizačního serveru |
-> | Akce | Microsoft.ApiManagement/service/backends/delete | Odeberte stávající back-endu |
-> | Akce | Microsoft.ApiManagement/service/backends/read | Získání seznamu back-EndY nebo získat podrobnosti o back-endu |
-> | Akce | Microsoft.ApiManagement/service/backends/reconnect/action | Vytvořit žádost o opětovné připojení |
-> | Akce | Microsoft.ApiManagement/service/backends/write | Přidat nový back-end nebo aktualizovat existující podrobnosti back-endu |
+> | Akce | Microsoft.ApiManagement/service/authorizationServers/delete | Odstraní instanci serveru konkrétní autorizace. |
+> | Akce | Microsoft.ApiManagement/service/authorizationServers/read | Obsahuje kolekci serverů autorizace definované v rámci instance služby. nebo získá podrobnosti o autorizační server určeném identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/authorizationServers/write | Vytvoří nové autorizační server nebo aktualizuje existující autorizačního serveru. aktualizace nebo aktualizace podrobnosti autorizační server určeném identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/backends/delete | Odstraní zadaný back-endu. |
+> | Akce | Microsoft.ApiManagement/service/backends/read | Obsahuje kolekci back-endů v instanci určené služby. nebo získá podrobnosti o back-end zadán pomocí jeho identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/backends/reconnect/action | Upozorní tento proxy server služby APIM vytvořit nové připojení k back-endu po zadaný časový limit. Pokud nebyla zadána žádná časový limit, časový limit dvou minut se používá. |
+> | Akce | Microsoft.ApiManagement/service/backends/write | Vytvoří nebo aktualizuje back-endu. nebo aktualizace existujícího back-endu. |
 > | Akce | Microsoft.ApiManagement/service/backup/action | Zálohování služby API Management do zadaného kontejneru v uživatelem zadaný účet úložiště |
-> | Akce | Microsoft.ApiManagement/service/certificates/delete | Odeberte existující certifikát |
-> | Akce | Microsoft.ApiManagement/service/certificates/read | Získat seznam certifikátů nebo získat podrobnosti o certifikátu |
-> | Akce | Microsoft.ApiManagement/service/certificates/write | Přidat nový certifikát |
+> | Akce | Microsoft.ApiManagement/service/caches/delete | Odstraní mezipaměti. |
+> | Akce | Microsoft.ApiManagement/service/caches/read | Obsahuje kolekce všechny externí mezipamětí v instanci určené služby. nebo získá podrobnosti o mezipaměti určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/caches/write | Vytvoří nebo aktualizuje externí mezipaměť se používá v instanci služby Api Management. aktualizace nebo aktualizace podrobnosti do mezipaměti podle identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/certificates/delete | Odstraní konkrétní certifikát. |
+> | Akce | Microsoft.ApiManagement/service/certificates/read | Obsahuje kolekce všechny certifikáty do instance určené služby. nebo získá podrobnosti o certifikátu určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/certificates/write | Vytvoří nebo aktualizuje certifikát se používá k ověřování připojení k back-endu. |
 > | Akce | Microsoft.ApiManagement/service/contentTypes/contentItems/delete | Odebere zadané položky obsahu. |
 > | Akce | Microsoft.ApiManagement/service/contentTypes/contentItems/read | Vrátí seznam položek obsahu nebo vrátí podrobnosti o obsahu položky |
 > | Akce | Microsoft.ApiManagement/service/contentTypes/contentItems/write | Vytvoří novou položku obsahu nebo aktualizuje zadanou položku obsahu |
 > | Akce | Microsoft.ApiManagement/service/contentTypes/read | Vrátí seznam typů obsahu |
 > | Akce | Microsoft.ApiManagement/service/delete | Odstranění instance služby API Management |
-> | Akce | Microsoft.ApiManagement/service/diagnostics/delete | Odeberte existující Diagnostika |
-> | Akce | Microsoft.ApiManagement/service/diagnostics/read | Získání seznamu diagnostiky nebo načtení podrobností diagnostiky |
-> | Akce | Microsoft.ApiManagement/service/diagnostics/write | Přidání nových diagnostických nebo aktualizovat existující diagnostické informace |
+> | Akce | Microsoft.ApiManagement/service/diagnostics/delete | Odstraní zadaný diagnostiky. |
+> | Akce | Microsoft.ApiManagement/service/diagnostics/read | Zobrazí seznam všech diagnostiky instance služby API Management. nebo získá podrobnosti o diagnostiky určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/diagnostics/write | Vytvoří novou diagnostiku nebo aktualizuje nějakou existující. aktualizace nebo aktualizace Podrobnosti diagnostiky určené jeho identifikátor. |
 > | Akce | Microsoft.ApiManagement/service/getssotoken/action | Získá token jednotného přihlašování, který lze použít k přihlášení do rozhraní API správy služby starší verze portálu jako správce |
-> | Akce | Microsoft.ApiManagement/service/groups/delete | Odeberte existující skupinu |
-> | Akce | Microsoft.ApiManagement/service/groups/read | Získání seznamu skupin nebo získá podrobnosti skupiny |
-> | Akce | Microsoft.ApiManagement/service/groups/users/delete | Odebrat existujícího uživatele ze stávající skupiny |
-> | Akce | Microsoft.ApiManagement/service/groups/users/read | Získání seznamu skupin uživatelů |
+> | Akce | Microsoft.ApiManagement/service/groups/delete | Odstraní konkrétní skupinu instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/groups/read | Obsahuje kolekci skupin definovaných v rámci instance služby. nebo získá podrobnosti o skupině určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/groups/users/delete | Odeberte existujícího uživatele z existující skupiny. |
+> | Akce | Microsoft.ApiManagement/service/groups/users/read | Obsahuje kolekce entit uživatelů přidružených ke skupině. |
 > | Akce | Microsoft.ApiManagement/service/groups/users/write | Přidat existující uživatele do stávající skupiny |
-> | Akce | Microsoft.ApiManagement/service/groups/write | Vytvořit novou skupinu nebo aktualizovat existující podrobnosti skupiny |
-> | Akce | Microsoft.ApiManagement/service/identityProviders/delete | Odeberte existující zprostředkovatele Identity |
-> | Akce | Microsoft.ApiManagement/service/identityProviders/read | Získání seznamu zprostředkovatelů Identity a načtení podrobností zprostředkovatele Identity |
-> | Akce | Microsoft.ApiManagement/service/identityProviders/write | Vytvoření nového zprostředkovatele Identity nebo aktualizovat podrobnosti existujícího poskytovatele Identity |
+> | Akce | Microsoft.ApiManagement/service/groups/write | Vytvoří nebo aktualizuje skupinu. aktualizace nebo aktualizace podrobnosti o skupině určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/identityProviders/delete | Odstraní zadanou identitou konfigurace zprostředkovatele. |
+> | Akce | Microsoft.ApiManagement/service/identityProviders/read | Obsahuje kolekci nakonfigurovaný v instanci služby zadaného zprostředkovatele Identity. nebo získá podrobnosti o konfiguraci zprostředkovatele identity nakonfigurovaný v instanci určené služby. |
+> | Akce | Microsoft.ApiManagement/service/identityProviders/write | Vytvoří nebo aktualizuje konfiguraci IdentityProvider. nebo aktualizuje existující IdentityProvider konfigurace. |
+> | Akce | Microsoft.ApiManagement/service/issues/read | Obsahuje kolekci problémů v instanci určené služby. nebo podrobnosti o problému získá API Management |
 > | Akce | Microsoft.ApiManagement/service/locations/networkstatus/read | Získá stav přístupu síťových prostředků, na kterých závisí služba v umístění. |
-> | Akce | Microsoft.ApiManagement/service/loggers/delete | Odeberte existující protokolovací nástroj |
-> | Akce | Microsoft.ApiManagement/service/loggers/read | Získání seznamu protokolovacích nástrojů nebo získat podrobnosti o protokolovací nástroj |
-> | Akce | Microsoft.ApiManagement/service/loggers/write | Přidat nový protokolovací nástroj nebo aktualizovat existující podrobnosti protokolovací nástroj |
+> | Akce | Microsoft.ApiManagement/service/loggers/delete | Odstraní zadaný protokolovač. |
+> | Akce | Microsoft.ApiManagement/service/loggers/read | Obsahuje kolekci protokolovacích nástrojů v instanci určené služby. nebo získá podrobnosti o protokolovacího nástroje určené jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/loggers/write | Vytvoří nebo aktualizuje protokolovač. nebo aktualizuje existující protokolovacího nástroje. |
 > | Akce | Microsoft.ApiManagement/service/managedeployments/action | Změna skladové položky a jednotek, přidat nebo odebrat místní nasazení služby API Management |
 > | Akce | Microsoft.ApiManagement/service/networkstatus/read | Získá stav přístupu síťových prostředků, na kterých závisí služba. |
 > | Akce | Microsoft.ApiManagement/service/notifications/action | Odešle oznámení pro zadaného uživatele |
-> | Akce | Microsoft.ApiManagement/service/notifications/read | Získá všechny API Management vydavatele oznámení nebo získat API Management vydavatele podrobnosti o oznámení |
-> | Akce | Microsoft.ApiManagement/service/notifications/recipientEmails/delete | Odebere existující přidružené k oznámení e-mailu |
-> | Akce | Microsoft.ApiManagement/service/notifications/recipientEmails/read | Získejte e-mailové příjemce přidružené k rozhraní API Management vydavatele oznámení |
-> | Akce | Microsoft.ApiManagement/service/notifications/recipientEmails/write | Vytvoření nového příjemce e-mailových oznámení |
-> | Akce | Microsoft.ApiManagement/service/notifications/recipientUsers/delete | Odebere uživatele přidružené k příjemců oznámení |
-> | Akce | Microsoft.ApiManagement/service/notifications/recipientUsers/read | Získat příjemce uživatelé přidružení k oznámení |
-> | Akce | Microsoft.ApiManagement/service/notifications/recipientUsers/write | Přidání uživatele do příjemců oznámení |
-> | Akce | Microsoft.ApiManagement/service/notifications/write | Vytvoření nebo aktualizace API Management vydavatele oznámení |
-> | Akce | Microsoft.ApiManagement/service/openidConnectProviders/delete | Odebrat poskytovatele stávající OpenID Connect |
-> | Akce | Microsoft.ApiManagement/service/openidConnectProviders/read | Získání seznamu poskytovatele OpenID Connect nebo načtení podrobností poskytovatele OpenID Connect |
-> | Akce | Microsoft.ApiManagement/service/openidConnectProviders/write | Vytvoření nového poskytovatele OpenID Connect nebo aktualizovat podrobnosti o stávající připojení poskytovatele OpenID |
+> | Akce | Microsoft.ApiManagement/service/notifications/read | Obsahuje kolekci vlastností definovaných v rámci instance služby. nebo získá podrobnosti o oznámení určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/notifications/recipientEmails/delete | Odebere e-mailu ze seznamu oznámení. |
+> | Akce | Microsoft.ApiManagement/service/notifications/recipientEmails/read | Získá seznam příjemců oznámení e-mailů odběru oznámení. |
+> | Akce | Microsoft.ApiManagement/service/notifications/recipientEmails/write | Přidá do seznamu příjemců oznámení e-mailovou adresu. |
+> | Akce | Microsoft.ApiManagement/service/notifications/recipientUsers/delete | API Management uživatele se odebere ze seznamu oznámení. |
+> | Akce | Microsoft.ApiManagement/service/notifications/recipientUsers/read | Získá seznam uživatelů příjemce oznámení odběru oznámení. |
+> | Akce | Microsoft.ApiManagement/service/notifications/recipientUsers/write | Uživatelské rozhraní API Management se přidá do seznamu příjemců oznámení. |
+> | Akce | Microsoft.ApiManagement/service/notifications/write | Vytvoření nebo aktualizace API Management vydavatele oznámení. |
+> | Akce | Microsoft.ApiManagement/service/openidConnectProviders/delete | Odstraní konkrétní poskytovatele OpenID Connect instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/openidConnectProviders/read | Seznam všech poskytovatele OpenId Connect. nebo získá konkrétní poskytovatele OpenID Connect. |
+> | Akce | Microsoft.ApiManagement/service/openidConnectProviders/write | Vytvoří nebo aktualizuje poskytovatele OpenID Connect. aktualizace nebo aktualizace konkrétní poskytovatele OpenID Connect. |
 > | Akce | Microsoft.ApiManagement/service/operationresults/read | Získá aktuální stav dlouho běžící operace |
-> | Akce | Microsoft.ApiManagement/service/policies/delete | Konfigurace zásad odebrat ze zásady Tenanta |
-> | Akce | Microsoft.ApiManagement/service/policies/read | Získání zásad klienta nebo získat podrobnosti konfigurace zásad pro Tenanta |
-> | Akce | Microsoft.ApiManagement/service/policies/write | Podrobnosti o sadě zásad konfigurace pro Tenanta |
-> | Akce | Microsoft.ApiManagement/service/policySnippets/read | Získat všechny fragmenty kódu zásady |
-> | Akce | Microsoft.ApiManagement/service/portalsettings/read | Získat registrační nastavení na portálu nebo získat nastavení portálu přihlášení nebo získání nastavení delegování pro portál |
-> | Akce | Microsoft.ApiManagement/service/portalsettings/write | Aktualizovat nastavení registrace nebo nastavení aktualizace zaregistrovat nebo přihlásit k aktualizaci nastavení nebo nastavení aktualizace Sign In nebo nastavení delegování aktualizace nebo nastavení delegování aktualizace |
-> | Akce | Microsoft.ApiManagement/service/products/apis/delete | Odebrat existující rozhraní API z existujícího produktu |
-> | Akce | Microsoft.ApiManagement/service/products/apis/read | Získat seznam rozhraní API přidat do existujícího produktu |
-> | Akce | Microsoft.ApiManagement/service/products/apis/write | Přidat existující rozhraní API do existujícího produktu |
-> | Akce | Microsoft.ApiManagement/service/products/delete | Odeberte existující produkt |
-> | Akce | Microsoft.ApiManagement/service/products/groups/delete | Odstranit přiřazení existující skupinu pro vývojáře s existujícím produktem |
-> | Akce | Microsoft.ApiManagement/service/products/groups/read | Získat seznam skupin pro vývojáře spojené s produktem |
-> | Akce | Microsoft.ApiManagement/service/products/groups/write | Přidružení stávající skupiny pro vývojáře s existujícím produktem |
-> | Akce | Microsoft.ApiManagement/service/products/policies/delete | Konfigurace zásad odebrat ze zásady produktu |
-> | Akce | Microsoft.ApiManagement/service/products/policies/read | Získání zásad pro produkt nebo získat podrobnosti konfigurace zásad pro produkt |
-> | Akce | Microsoft.ApiManagement/service/products/policies/write | Podrobnosti o sadě zásad konfigurace pro produkt |
-> | Akce | Microsoft.ApiManagement/service/products/policy/delete | Odebrat konfiguraci zásad z existujícího produktu |
-> | Akce | Microsoft.ApiManagement/service/products/policy/read | Získání zásad konfigurace existujícím produktem |
-> | Akce | Microsoft.ApiManagement/service/products/policy/write | Nastavení zásad konfigurace pro stávající produkt |
-> | Akce | Microsoft.ApiManagement/service/products/read | Získat seznam produktů nebo získat podrobnosti o produktu |
-> | Akce | Microsoft.ApiManagement/service/products/subscriptions/read | Získejte seznam předplatných produktu |
-> | Akce | Microsoft.ApiManagement/service/products/tags/delete | Odstranit přiřazení existující značky s existujícím produktem |
-> | Akce | Microsoft.ApiManagement/service/products/tags/read | Získat značky, které jsou spojené s podrobnostmi o produktu nebo získání značek |
-> | Akce | Microsoft.ApiManagement/service/products/tags/write | Přidružení existující značky s existujícím produktem |
-> | Akce | Microsoft.ApiManagement/service/products/write | Vytvořit nový produkt nebo aktualizovat existující podrobnosti o produktu |
-> | Akce | Microsoft.ApiManagement/service/productsByTags/read | Získat seznam přidružení produktu a značky |
-> | Akce | Microsoft.ApiManagement/service/properties/delete | Odebere existující vlastnost |
-> | Akce | Microsoft.ApiManagement/service/properties/read | Získá seznam všech vlastností nebo získá podrobnosti o zadané vlastnosti |
-> | Akce | Microsoft.ApiManagement/service/properties/write | Vytvoří novou vlastnost nebo aktualizuje hodnotu zadané vlastnosti |
+> | Akce | Microsoft.ApiManagement/service/policies/delete | Odstraní konfiguraci globální zásady služby Api Management. |
+> | Akce | Microsoft.ApiManagement/service/policies/read | Obsahuje seznam všech definic globální zásady služby Api Management. nebo získat definici globálních zásad služby Api Management. |
+> | Akce | Microsoft.ApiManagement/service/policies/write | Vytvoří nebo aktualizuje konfiguraci globální zásady služby Api Management. |
+> | Akce | Microsoft.ApiManagement/service/policy/delete | Odstranit konfiguraci zásad na úrovni Tenanta |
+> | Akce | Microsoft.ApiManagement/service/policy/read | Získat konfiguraci zásad na úrovni Tenanta |
+> | Akce | Microsoft.ApiManagement/service/policy/write | Vytvoření zásady konfigurace v Tenantovi úrovně |
+> | Akce | Microsoft.ApiManagement/service/policySnippets/read | Uvádí všechny fragmenty kódu zásady. |
+> | Akce | Microsoft.ApiManagement/service/portalsettings/read | Získejte přihlašování v nastavení na portálu nebo přihlášení Get i nastavení na portálu nebo získat nastavení delegování pro portál. |
+> | Akce | Microsoft.ApiManagement/service/portalsettings/write | Aktualizujte nastavení přihlášení. nebo vytvořit nebo aktualizovat přihlašovací nastavení. nebo zaregistrovat k aktualizaci nastavení nebo nastavení aktualizace zaregistrovat nebo nastavení delegování aktualizace. nebo vytvořit nebo aktualizovat delegování nastavení. |
+> | Akce | Microsoft.ApiManagement/service/products/apis/delete | Odstraní zadané rozhraní API z zadaný produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/apis/read | Seznamy kolekce rozhraní API související s produktem. |
+> | Akce | Microsoft.ApiManagement/service/products/apis/write | Přidá rozhraní API pro daný produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/delete | Odstraňte produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/groups/delete | Odstraní přidružení mezi zadané skupiny a produktu. |
+> | Akce | Microsoft.ApiManagement/service/products/groups/read | Obsahuje kolekci skupin pro vývojáře spojené s daný produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/groups/write | Přidá přidružení mezi skupinou zadaný pro vývojáře s zadaný produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/policies/delete | Odstraní konfiguraci zásady v produktu. |
+> | Akce | Microsoft.ApiManagement/service/products/policies/read | Získáte konfiguraci zásad na úrovni produktu. nebo že konfigurace zásad na úrovni produktu. |
+> | Akce | Microsoft.ApiManagement/service/products/policies/write | Vytvoří nebo aktualizuje konfigurace zásad pro produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/policy/delete | Odstranit konfiguraci zásad na úrovni produktu |
+> | Akce | Microsoft.ApiManagement/service/products/policy/read | Získat konfiguraci zásad na úrovni produktu |
+> | Akce | Microsoft.ApiManagement/service/products/policy/write | Vytvoření zásady konfigurace v produktu úrovně |
+> | Akce | Microsoft.ApiManagement/service/products/read | Obsahuje kolekci produktů v instanci určené služby. nebo získá podrobnosti o produktu určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/products/subscriptions/read | Obsahuje kolekci předplatná pro daný produkt. |
+> | Akce | Microsoft.ApiManagement/service/products/tags/delete | Odebrat značku produktu. |
+> | Akce | Microsoft.ApiManagement/service/products/tags/read | Uvádí všechny značky přidružené k produktu. nebo získat značku spojený s tímto produktem. |
+> | Akce | Microsoft.ApiManagement/service/products/tags/write | Přiřadíte značky k produktu. |
+> | Akce | Microsoft.ApiManagement/service/products/write | Vytvoří nebo aktualizuje produkt. nebo aktualizovat existující podrobnosti o produktu. |
+> | Akce | Microsoft.ApiManagement/service/productsByTags/read | Obsahuje sadu produkty související s značky. |
+> | Akce | Microsoft.ApiManagement/service/properties/delete | Odstraní konkrétní vlastnost z instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/properties/read | Obsahuje kolekci vlastností definovaných v rámci instance služby. nebo získá podrobnosti o vlastnost zadanou pomocí jeho identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/properties/write | Vytvoří nebo aktualizuje vlastnosti. nebo aktualizuje konkrétní vlastnost. |
 > | Akce | Microsoft.ApiManagement/service/quotas/periods/read | Získání hodnoty čítače kvóty pro období |
 > | Akce | Microsoft.ApiManagement/service/quotas/periods/write | Nastavit aktuální hodnotu čítače kvóty |
 > | Akce | Microsoft.ApiManagement/service/quotas/read | Získání hodnot pro kvótu |
 > | Akce | Microsoft.ApiManagement/service/quotas/write | Nastavit aktuální hodnotu čítače kvóty |
 > | Akce | Microsoft.ApiManagement/service/read | Čtení metadat pro instanci služby API Management |
+> | Akce | Microsoft.ApiManagement/service/regions/read | Obsahuje seznam všech oblastech azure, ve kterých se služba existuje. |
 > | Akce | Microsoft.ApiManagement/service/reports/read | Získáte sestavu agregované podle časových období nebo v sestavě Get agregované podle zeměpisné oblasti nebo sestavu Get agregované podle vývojáře.<br>nebo získat sestavu agregované podle produktů.<br>nebo získat sestavu agregované podle rozhraní API nebo získat sestavu agregované podle operace nebo získat sestavu agregované podle předplatného.<br>nebo získání žádosti o data pro generování sestav |
 > | Akce | Microsoft.ApiManagement/service/restore/action | Obnovení ze zadaného kontejneru v účtu úložiště zadanou uživatelem služby API Management |
-> | Akce | Microsoft.ApiManagement/service/subscriptions/delete | Odstraňte odběr. Tato operace slouží k odstranění předplatného |
-> | Akce | Microsoft.ApiManagement/service/subscriptions/read | Získejte seznam předplatných produktu nebo získat podrobnosti o předplatné produktu |
-> | Akce | Microsoft.ApiManagement/service/subscriptions/regeneratePrimaryKey/action | Znovu vygenerovat primární klíč předplatného |
-> | Akce | Microsoft.ApiManagement/service/subscriptions/regenerateSecondaryKey/action | Znovu vygenerovat sekundární klíč předplatného |
-> | Akce | Microsoft.ApiManagement/service/subscriptions/write | Přihlášení k odběru stávajícího uživatele do existujícího produktu nebo aktualizovat existující podrobnosti o předplatném. Tato operace slouží k prodloužení předplatného |
-> | Akce | Microsoft.ApiManagement/service/tagResources/read | Získání seznamu značek přidružených zdrojů. |
-> | Akce | Microsoft.ApiManagement/service/tags/delete | Odeberte existující značky |
-> | Akce | Microsoft.ApiManagement/service/tags/read | Získání seznamu značek a získat tak podrobné údaje značky |
-> | Akce | Microsoft.ApiManagement/service/tags/write | Přidat novou značku nebo aktualizovat existující podrobnosti značky |
+> | Akce | Microsoft.ApiManagement/service/subscriptions/delete | Odstraní určený odběr. |
+> | Akce | Microsoft.ApiManagement/service/subscriptions/read | Zobrazí všechny odběry instance služby API Management. nebo získá zadaný entita předplatného. |
+> | Akce | Microsoft.ApiManagement/service/subscriptions/regeneratePrimaryKey/action | Znovu vygeneruje primární klíč stávajícího předplatného instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/subscriptions/regenerateSecondaryKey/action | Znovu vygeneruje sekundární klíč stávajícího předplatného instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/subscriptions/write | Vytvoří nebo aktualizuje předplatné zadaný uživatel zadaný produkt. aktualizace nebo aktualizace Podrobnosti předplatného určeného jeho identifikátor. |
+> | Akce | Microsoft.ApiManagement/service/tagResources/read | Zobrazí seznam sbírka zdrojů týkající se značkami. |
+> | Akce | Microsoft.ApiManagement/service/tags/delete | Odstraní konkrétní značku instance služby API Management. |
+> | Akce | Microsoft.ApiManagement/service/tags/read | Obsahuje kolekci značky, které jsou definované v rámci instance služby. nebo získá podrobnosti o zadaný v identifikátoru značky. |
+> | Akce | Microsoft.ApiManagement/service/tags/write | Vytvoří značku. aktualizace nebo aktualizace podrobnosti zadaný v identifikátoru značky. |
 > | Akce | Microsoft.ApiManagement/service/templates/delete | Resetovat výchozí rozhraní API správy e-mailová šablona |
 > | Akce | Microsoft.ApiManagement/service/templates/read | Získá všechny e-mailové šablony nebo správu rozhraní API získá e-mailu Podrobnosti šablony |
 > | Akce | Microsoft.ApiManagement/service/templates/write | Vytvořit nebo aktualizovat rozhraní API správy e-mailové šablony nebo aktualizuje API Management e-mailová šablona |
 > | Akce | Microsoft.ApiManagement/service/tenant/delete | Odebrání konfigurace zásad pro klienta |
 > | Akce | Microsoft.ApiManagement/service/tenant/deploy/action | Spustí úlohu nasazení provést změny konfigurace v databázi z větve zadaného git. |
 > | Akce | Microsoft.ApiManagement/service/tenant/operationResults/read | Získání seznamu výsledky operace nebo získat výsledek operace s konkrétní |
-> | Akce | Microsoft.ApiManagement/service/tenant/read | Získání zásad konfigurace pro tenanta nebo získání tenanta podrobné informace o přístupu |
+> | Akce | Microsoft.ApiManagement/service/tenant/read | Získáte definici globálních zásad služby Api Management. nebo podrobností informace přístup k získání tenanta |
 > | Akce | Microsoft.ApiManagement/service/tenant/regeneratePrimaryKey/action | Znovu vygenerovat primární přístupový klíč |
 > | Akce | Microsoft.ApiManagement/service/tenant/regenerateSecondaryKey/action | Znovu vygenerovat sekundární přístupový klíč |
 > | Akce | Microsoft.ApiManagement/service/tenant/save/action | Vytvoří potvrzení se snímek konfigurace pro zadané větve v úložišti |
@@ -379,21 +388,16 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ApiManagement/service/updatecertificate/action | Nahrát certifikát SSL pro službu API Management |
 > | Akce | Microsoft.ApiManagement/service/updatehostname/action | Instalační program, aktualizovat nebo odebrat vlastní názvy domén pro službu API Management |
 > | Akce | Microsoft.ApiManagement/service/users/action | Registrace nového uživatele |
-> | Akce | Microsoft.ApiManagement/service/users/applications/attachments/delete | Odebere přílohu |
-> | Akce | Microsoft.ApiManagement/service/users/applications/attachments/read | Získá aplikaci přílohy nebo získá přílohy |
-> | Akce | Microsoft.ApiManagement/service/users/applications/attachments/write | Přidat přílohu k aplikaci |
-> | Akce | Microsoft.ApiManagement/service/users/applications/delete | Odebere existující aplikace |
-> | Akce | Microsoft.ApiManagement/service/users/applications/read | Získání seznamu všech uživatelských aplikací nebo podrobnosti o aplikaci získá API Management |
-> | Akce | Microsoft.ApiManagement/service/users/applications/write | Registruje aplikaci API Management nebo aktualizace podrobnosti o aplikaci |
 > | Akce | Microsoft.ApiManagement/service/users/confirmations/send/action | Potvrzení |
-> | Akce | Microsoft.ApiManagement/service/users/delete | Odebrat uživatelský účet |
-> | Akce | Microsoft.ApiManagement/service/users/generateSsoUrl/action | Generovat adresu URL jednotného přihlašování. Adresa URL slouží pro přístup k portálu pro správu |
-> | Akce | Microsoft.ApiManagement/service/users/groups/read | Získání seznamu skupin uživatelů. |
-> | Akce | Microsoft.ApiManagement/service/users/keys/read | Získá seznam klíčů uživatelů |
-> | Akce | Microsoft.ApiManagement/service/users/read | Získání seznamu registrovaných uživatelů nebo získat podrobnosti o účtu uživatele |
-> | Akce | Microsoft.ApiManagement/service/users/subscriptions/read | Získejte seznam předplatných uživatele |
-> | Akce | Microsoft.ApiManagement/service/users/token/action | Získat token přístupový token pro uživatele |
-> | Akce | Microsoft.ApiManagement/service/users/write | Registrovat nové uživatele nebo aktualizovat podrobnosti účtu stávajícího uživatele |
+> | Akce | Microsoft.ApiManagement/service/users/delete | Odstraní konkrétní uživatele. |
+> | Akce | Microsoft.ApiManagement/service/users/generateSsoUrl/action | Načte adresu URL přesměrování obsahující ověřovací token pro daného uživatele přihlásíte k portálu pro vývojáře. |
+> | Akce | Microsoft.ApiManagement/service/users/groups/read | Obsahuje seznam všech skupin uživatelů. |
+> | Akce | Microsoft.ApiManagement/service/users/identities/read | Seznam všech uživatelských identit. |
+> | Akce | Microsoft.ApiManagement/service/users/keys/read | Získat klíče přidružené k uživateli |
+> | Akce | Microsoft.ApiManagement/service/users/read | Obsahuje kolekci registrovaných uživatelů v instanci určené služby. nebo získá podrobnosti uživatele zadaného pomocí jeho identifikátoru. |
+> | Akce | Microsoft.ApiManagement/service/users/subscriptions/read | Obsahuje kolekci předplatné na základě zadaného uživatele. |
+> | Akce | Microsoft.ApiManagement/service/users/token/action | Získá autorizace sdílený přístupový Token pro daného uživatele. |
+> | Akce | Microsoft.ApiManagement/service/users/write | Vytvoří nebo aktualizuje uživatele. aktualizace nebo aktualizace podrobností uživatele zadaného pomocí jeho identifikátoru. |
 > | Akce | Microsoft.ApiManagement/service/write | Vytvořit novou instanci služby API Management |
 > | Akce | Microsoft.ApiManagement/unregister/action | Zrušit registraci předplatného u poskytovatele prostředků Microsoft.ApiManagement |
 
@@ -718,11 +722,13 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.Capacity/appliedreservations/read | Číst všechny rezervace |
+> | Akce | Microsoft.Capacity/calculateexchange/action | Vypočítá velikost exchange a ceny nového nákupu a vrátí zásadu chyby. |
 > | Akce | Microsoft.Capacity/calculateprice/action | Vypočítat libovolné Price rezervace |
 > | Akce | Microsoft.Capacity/catalogs/read | Přečtěte si katalog rezervace |
 > | Akce | Microsoft.Capacity/checkoffers/action | Zkontrolujte všechny nabídky předplatného |
 > | Akce | Microsoft.Capacity/checkscopes/action | Zkontrolujte všechna předplatná |
 > | Akce | Microsoft.Capacity/commercialreservationorders/read | Získat objednávky rezervace vytvořené v žádného Tenanta |
+> | Akce | Microsoft.Capacity/exchange/action | Vyměňovat žádné rezervace |
 > | Akce | Microsoft.Capacity/operations/read | Všechny operace čtení |
 > | Akce | Microsoft.Capacity/register/action | Zaregistrovat poskytovatele prostředků kapacity a povolí vytváření prostředků kapacity. |
 > | Akce | Microsoft.Capacity/reservationorders/action | Aktualizovat všechny rezervace |
@@ -1448,15 +1454,24 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.CostManagement/cloudConnectors/delete | Odstraňte zadané cloudConnector. |
+> | Akce | Microsoft.CostManagement/cloudConnectors/read | Seznam cloudConnectors pro ověřeného uživatele. |
+> | Akce | Microsoft.CostManagement/cloudConnectors/write | Vytvoří nebo aktualizuje zadaný cloudConnector. |
 > | Akce | Microsoft.CostManagement/dimensions/read | Seznam všech podporovaných dimenze oborem. |
 > | Akce | Microsoft.CostManagement/exports/action | Spusťte zadaný export. |
 > | Akce | Microsoft.CostManagement/exports/delete | Odstraňte zadaný export. |
 > | Akce | Microsoft.CostManagement/exports/read | Seznam exporty oborem. |
+> | Akce | Microsoft.CostManagement/exports/run/action | Exportuje se spustit. |
 > | Akce | Microsoft.CostManagement/exports/write | Vytvoří nebo aktualizuje zadaný exportu. |
+> | Akce | Microsoft.CostManagement/externalBillingAccounts/externalSubscriptions/read | Seznam externalSubscriptions v rámci externalBillingAccount pro ověřeného uživatele. |
+> | Akce | Microsoft.CostManagement/externalBillingAccounts/read | Seznam externalBillingAccounts pro ověřeného uživatele. |
+> | Akce | Microsoft.CostManagement/externalSubscriptions/read | Seznam externalSubscriptions pro ověřeného uživatele. |
+> | Akce | Microsoft.CostManagement/externalSubscriptions/write | Aktualizace skupiny související správou externalSubscription |
 > | Akce | Microsoft.CostManagement/query/action | Dotazování dat využití oborem. |
 > | Akce | Microsoft.CostManagement/query/read | Dotazování dat využití oborem. |
 > | Akce | Microsoft.CostManagement/reports/action | Plán sestavy o využití dat oborem. |
 > | Akce | Microsoft.CostManagement/reports/read | Plán sestavy o využití dat oborem. |
+> | Akce | Microsoft.CostManagement/tenants/register/action | Zaregistrujte akci pro obor Microsoft.CostManagement klientem. |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
@@ -1587,6 +1602,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | Obsahuje seznam nebo získá upozornění |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | Obsahuje seznam nebo získá upozornění |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/delete | Odstraní plány šířky pásma |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/read | Obsahuje seznam nebo získá plány šířky pásma |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/read | Obsahuje seznam nebo získá plány šířky pásma |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/write | Vytvoří nebo aktualizuje plány šířky pásma |
@@ -1597,8 +1613,10 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Nainstalovat aktualizace na zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Obsahuje seznam nebo získá úlohy |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Obsahuje seznam nebo získá nastavení síťového zařízení |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationsStatus/read | Obsahuje seznam nebo získá stav operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | Odstraní objednávky |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Obsahuje seznam nebo získá objednávky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Obsahuje seznam nebo získá objednávky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/write | Vytvoří nebo aktualizuje objednávky |
@@ -1606,27 +1624,33 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Obsahuje seznam nebo získá Data Box hraničních zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Obsahuje seznam nebo získá Data Box hraničních zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Odstraní role |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Obsahuje seznam nebo získá role |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Obsahuje seznam nebo získá role |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Vytvoří nebo aktualizuje role |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/action | Vyhledat aktualizace |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/update/action | Aktualizovat nastavení zabezpečení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Odstraní sdílené složky |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Obsahuje seznam nebo získá sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Obsahuje seznam nebo získá sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/refresh/action | Aktualizujte metadata sdílení daty z cloudu. |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/write | Vytvoří nebo aktualizuje sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/delete | Odstraní přihlašovací údaje účtu úložiště |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Obsahuje seznam nebo získá přihlašovací údaje účtu úložiště |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Obsahuje seznam nebo získá přihlašovací údaje účtu úložiště |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | Vytvoří nebo aktualizuje přihlašovací údaje účtu úložiště |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/delete | Odstraní aktivačních událostí |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Obsahuje seznam nebo získá aktivační události |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Obsahuje seznam nebo získá aktivační události |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/write | Vytvoří nebo aktualizuje aktivačních událostí |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/updateSummary/read | Obsahuje seznam nebo získá aktualizace souhrnu |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | Aktualizovat certifikát pro registraci zařízení |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/delete | Odstraní uživatele sdílené složky |
+> | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/operationResults/read | Obsahuje seznam nebo získá výsledek operace |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/read | Obsahuje seznam nebo získá uživatele sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/read | Obsahuje seznam nebo získá uživatele sdílené složky |
 > | Akce | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/write | Vytvoří nebo aktualizuje uživatele sdílené složky |
@@ -1651,13 +1675,12 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.DataCatalog/catalogs/delete | Odstraní katalogu. |
-> | Akce | Microsoft.DataCatalog/catalogs/read | Získání vlastností pro katalogu nebo katalozích v rámci předplatného nebo skupiny prostředků. |
-> | Akce | Microsoft.DataCatalog/catalogs/write | Katalog vytvoří nebo aktualizuje značek a vlastnosti pro katalog. |
-> | Akce | Microsoft.DataCatalog/checkNameAvailability/action | Zkontroluje dostupnost názvu katalogu pro tenanta. |
-> | Akce | Microsoft.DataCatalog/operations/read | Zobrazit seznam operací dostupných na zprostředkovateli prostředků Microsoft.DataCatalog. |
-> | Akce | Microsoft.DataCatalog/register/action | Zaregistruje předplatné u poskytovatele prostředků Microsoft.DataCatalog. |
-> | Akce | Microsoft.DataCatalog/unregister/action | Zruší registraci předplatného od zprostředkovatele prostředků Microsoft.DataCatalog. |
+> | Akce | Microsoft.DataCatalog/datacatalogs/delete | Odstraníte prostředek DataCatalog u poskytovatele prostředků služby Data Catalog. |
+> | Akce | Microsoft.DataCatalog/datacatalogs/read | Číst prostředek DataCatalog u poskytovatele prostředků služby Data Catalog. |
+> | Akce | Microsoft.DataCatalog/datacatalogs/write | Napište DataCatalog prostředků pro poskytovatele prostředků služby Data Catalog. |
+> | Akce | Microsoft.DataCatalog/operations/read | Načte všechny dostupné operace v poskytovateli prostředků služby Data Catalog. |
+> | Akce | Microsoft.DataCatalog/register/action | Zaregistrovat předplatné u poskytovatele prostředků katalogu dat |
+> | Akce | Microsoft.DataCatalog/unregister/action | Zrušit registraci předplatného u poskytovatele prostředků katalogu dat |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -1873,26 +1896,40 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.DBforMariaDB/locations/azureAsyncOperation/read | Vrátí výsledky operace serveru MariaDB |
+> | Akce | Microsoft.DBforMariaDB/locations/operationResults/read | Vrácení skupiny prostředků na základě výsledky operace serveru MariaDB |
+> | Akce | Microsoft.DBforMariaDB/locations/operationResults/read | Vrátí výsledky operace serveru MariaDB |
 > | Akce | Microsoft.DBforMariaDB/locations/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Akce | Microsoft.DBforMariaDB/locations/securityAlertPoliciesAzureAsyncOperation/read | Vrátí seznam výsledek operace detekce hrozeb serveru. |
+> | Akce | Microsoft.DBforMariaDB/locations/securityAlertPoliciesOperationResults/read | Vrátí seznam výsledek operace detekce hrozeb serveru. |
+> | Akce | Microsoft.DBforMariaDB/operations/read | Vrátí seznam MariaDB operací. |
 > | Akce | Microsoft.DBforMariaDB/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Akce | Microsoft.DBforMariaDB/register/action | Registrace poskytovatele prostředků MariaDB |
 > | Akce | Microsoft.DBforMariaDB/servers/configurations/read | Vrátí seznam konfigurací pro server nebo získá vlastnosti pro zadanou konfiguraci. |
 > | Akce | Microsoft.DBforMariaDB/servers/configurations/write | Aktualizujte hodnotu pro zadanou konfiguraci |
+> | Akce | Microsoft.DBforMariaDB/servers/databases/delete | Odstraní existující databáze MariaDB. |
+> | Akce | Microsoft.DBforMariaDB/servers/databases/read | Vrátí seznam databáze MariaDB nebo získá vlastnosti pro určenou databázi. |
+> | Akce | Microsoft.DBforMariaDB/servers/databases/write | Vytvoří databázi MariaDB se zadanými parametry nebo aktualizuje vlastnosti pro určenou databázi. |
 > | Akce | Microsoft.DBforMariaDB/servers/delete | Odstraní existující server. |
 > | Akce | Microsoft.DBforMariaDB/servers/firewallRules/delete | Odstraní stávající pravidlo brány firewall. |
 > | Akce | Microsoft.DBforMariaDB/servers/firewallRules/read | Vrátí seznam brány firewall pravidla pro server nebo načte vlastnosti pro pravidlo brány firewall na zadané. |
 > | Akce | Microsoft.DBforMariaDB/servers/firewallRules/write | Vytvoří pravidlo brány firewall se zadanými parametry nebo aktualizaci stávající pravidlo. |
+> | Akce | Microsoft.DBforMariaDB/servers/logFiles/read | Vrátí seznam MariaDB LogFiles. |
 > | Akce | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/read | Získá disagnostic nastavení pro prostředek. |
 > | Akce | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
 > | Akce | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro servery MariaDB |
 > | Akce | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro databáze |
+> | Akce | Microsoft.DBforMariaDB/servers/queryTexts/action | Vrátí text pro seznam dotazů |
 > | Akce | Microsoft.DBforMariaDB/servers/read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Akce | Microsoft.DBforMariaDB/servers/recoverableServers/read | Vrátí obnovitelné informace o serveru MariaDB |
 > | Akce | Microsoft.DBforMariaDB/servers/securityAlertPolicies/read | Načíst podrobnosti o zásadu detekce hrozeb server nakonfigurovaný na daném serveru |
 > | Akce | Microsoft.DBforMariaDB/servers/securityAlertPolicies/write | Změna serveru zásadu detekce hrozeb pro daný server |
+> | Akce | Microsoft.DBforMariaDB/servers/topQueryStatistics/read | Vrátí seznam statistiky dotazů pro nejčastější dotazy. |
 > | Akce | Microsoft.DBforMariaDB/servers/updateConfigurations/action | Aktualizace konfigurace pro zadaný server |
 > | Akce | Microsoft.DBforMariaDB/servers/virtualNetworkRules/delete | Odstraní existující pravidlo virtuální sítě |
 > | Akce | Microsoft.DBforMariaDB/servers/virtualNetworkRules/read | Vrátí seznam virtuálních sítí, pravidla nebo načte vlastnosti pro pravidlo zadané virtuální sítě. |
 > | Akce | Microsoft.DBforMariaDB/servers/virtualNetworkRules/write | Vytvoří pravidlo virtuální sítě se zadanými parametry nebo aktualizovat vlastnosti a značky pro pravidlo zadané virtuální sítě. |
+> | Akce | Microsoft.DBforMariaDB/servers/waitStatistics/read | Vrátí statistiky čekání pro instance |
 > | Akce | Microsoft.DBforMariaDB/servers/write | Vytvoří server se zadanými parametry nebo aktualizovat vlastnosti a značky pro zadaný server. |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
@@ -1900,14 +1937,25 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.DBforMySQL/locations/azureAsyncOperation/read | Vrátí výsledky operace serveru MySQL |
+> | Akce | Microsoft.DBforMySQL/locations/operationResults/read | Vrácení skupiny prostředků na základě výsledky operace serveru MySQL |
+> | Akce | Microsoft.DBforMySQL/locations/operationResults/read | Vrátí výsledky operace serveru MySQL |
 > | Akce | Microsoft.DBforMySQL/locations/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Akce | Microsoft.DBforMySQL/locations/securityAlertPoliciesAzureAsyncOperation/read | Vrátí seznam výsledek operace detekce hrozeb serveru. |
+> | Akce | Microsoft.DBforMySQL/locations/securityAlertPoliciesOperationResults/read | Vrátí seznam výsledek operace detekce hrozeb serveru. |
+> | Akce | Microsoft.DBforMySQL/operations/read | Vrátí seznam operací MySQL. |
 > | Akce | Microsoft.DBforMySQL/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Akce | Microsoft.DBforMySQL/register/action | Registrace poskytovatele prostředků MySQL |
 > | Akce | Microsoft.DBforMySQL/servers/configurations/read | Vrátí seznam konfigurací pro server nebo získá vlastnosti pro zadanou konfiguraci. |
 > | Akce | Microsoft.DBforMySQL/servers/configurations/write | Aktualizujte hodnotu pro zadanou konfiguraci |
+> | Akce | Microsoft.DBforMySQL/servers/databases/delete | Odstraní existující databázi MySQL. |
+> | Akce | Microsoft.DBforMySQL/servers/databases/read | Vrátí seznam databází MySQL nebo získá vlastnosti pro určenou databázi. |
+> | Akce | Microsoft.DBforMySQL/servers/databases/write | Vytvoří databázi MySQL se zadanými parametry nebo aktualizuje vlastnosti pro určenou databázi. |
 > | Akce | Microsoft.DBforMySQL/servers/delete | Odstraní existující server. |
 > | Akce | Microsoft.DBforMySQL/servers/firewallRules/delete | Odstraní stávající pravidlo brány firewall. |
 > | Akce | Microsoft.DBforMySQL/servers/firewallRules/read | Vrátí seznam brány firewall pravidla pro server nebo načte vlastnosti pro pravidlo brány firewall na zadané. |
 > | Akce | Microsoft.DBforMySQL/servers/firewallRules/write | Vytvoří pravidlo brány firewall se zadanými parametry nebo aktualizaci stávající pravidlo. |
+> | Akce | Microsoft.DBforMySQL/servers/logFiles/read | Vrátí seznam PostgreSQL LogFiles. |
 > | Akce | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | Získá disagnostic nastavení pro prostředek. |
 > | Akce | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
 > | Akce | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro servery MySQL |
@@ -1922,6 +1970,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Odstraní existující pravidlo virtuální sítě |
 > | Akce | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Vrátí seznam virtuálních sítí, pravidla nebo načte vlastnosti pro pravidlo zadané virtuální sítě. |
 > | Akce | Microsoft.DBforMySQL/servers/virtualNetworkRules/write | Vytvoří pravidlo virtuální sítě se zadanými parametry nebo aktualizovat vlastnosti a značky pro pravidlo zadané virtuální sítě. |
+> | Akce | Microsoft.DBforMySQL/servers/waitStatistics/read | Vrátí statistiky čekání pro instance |
 > | Akce | Microsoft.DBforMySQL/servers/write | Vytvoří server se zadanými parametry nebo aktualizovat vlastnosti a značky pro zadaný server. |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
@@ -1929,17 +1978,28 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.DBforPostgreSQL/locations/azureAsyncOperation/read | Vrátí výsledky operace serveru PostgreSQL |
+> | Akce | Microsoft.DBforPostgreSQL/locations/operationResults/read | Vrácení skupiny prostředků na základě výsledky operace serveru PostgreSQL |
+> | Akce | Microsoft.DBforPostgreSQL/locations/operationResults/read | Vrátí výsledky operace serveru PostgreSQL |
 > | Akce | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Akce | Microsoft.DBforPostgreSQL/locations/securityAlertPoliciesAzureAsyncOperation/read | Vrátí seznam výsledek operace detekce hrozeb serveru. |
+> | Akce | Microsoft.DBforPostgreSQL/locations/securityAlertPoliciesOperationResults/read | Vrátí seznam výsledek operace detekce hrozeb serveru. |
+> | Akce | Microsoft.DBforPostgreSQL/operations/read | Vrátí seznam operací PostgreSQL. |
 > | Akce | Microsoft.DBforPostgreSQL/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Akce | Microsoft.DBforPostgreSQL/register/action | Registrace poskytovatele prostředků PostgreSQL |
 > | Akce | Microsoft.DBforPostgreSQL/servers/advisors/read | Vrátí seznam poradci |
 > | Akce | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActions/read | Vrátí seznam doporučené akce |
 > | Akce | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActionSessions/action | Doporučení |
 > | Akce | Microsoft.DBforPostgreSQL/servers/configurations/read | Vrátí seznam konfigurací pro server nebo získá vlastnosti pro zadanou konfiguraci. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/configurations/write | Aktualizujte hodnotu pro zadanou konfiguraci |
+> | Akce | Microsoft.DBforPostgreSQL/servers/databases/delete | Odstraní existující databázi PostgreSQL. |
+> | Akce | Microsoft.DBforPostgreSQL/servers/databases/read | Vrátí seznam databáze PostgreSQL nebo získá vlastnosti pro určenou databázi. |
+> | Akce | Microsoft.DBforPostgreSQL/servers/databases/write | Vytvoří databázi PostgreSQL se zadanými parametry nebo aktualizuje vlastnosti pro určenou databázi. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/delete | Odstraní existující server. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/firewallRules/delete | Odstraní stávající pravidlo brány firewall. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/firewallRules/read | Vrátí seznam brány firewall pravidla pro server nebo načte vlastnosti pro pravidlo brány firewall na zadané. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/firewallRules/write | Vytvoří pravidlo brány firewall se zadanými parametry nebo aktualizaci stávající pravidlo. |
+> | Akce | Microsoft.DBforPostgreSQL/servers/logFiles/read | Vrátí seznam PostgreSQL LogFiles. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | Získá disagnostic nastavení pro prostředek. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro servery Postgres |
@@ -1957,6 +2017,10 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/write | Vytvoří pravidlo virtuální sítě se zadanými parametry nebo aktualizovat vlastnosti a značky pro pravidlo zadané virtuální sítě. |
 > | Akce | Microsoft.DBforPostgreSQL/servers/waitStatistics/read | Vrátí statistiky čekání pro instance |
 > | Akce | Microsoft.DBforPostgreSQL/servers/write | Vytvoří server se zadanými parametry nebo aktualizovat vlastnosti a značky pro zadaný server. |
+> | Akce | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/read | Získá disagnostic nastavení pro prostředek. |
+> | Akce | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
+> | Akce | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro servery Postgres |
+> | Akce | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro databáze |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -2055,6 +2119,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DevSpaces/controllers/listConnectionDetails/action | Seznam připojení podrobnosti pro kontroler serveru Azure Dev mezery infrastrukturou |
 > | Akce | Microsoft.DevSpaces/controllers/read | Vlastnosti čtení Azure Dev prostory Kontroleru |
 > | Akce | Microsoft.DevSpaces/controllers/write | Vytvoření nebo aktualizace Azure Dev prostory Kontroleru vlastnosti |
+> | Akce | Microsoft.DevSpaces/locations/operationresults/read | Umožňuje načíst stav asynchronní operace |
 > | Akce | Microsoft.DevSpaces/register/action | Registrace poskytovatele prostředků Microsoft Dev prostory s předplatným |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
@@ -2105,6 +2170,12 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DevTestLab/labs/serviceRunners/delete | Odstraňte Spouštěče služeb. |
 > | Akce | Microsoft.DevTestLab/labs/serviceRunners/read | Přečtěte si Spouštěče služeb. |
 > | Akce | Microsoft.DevTestLab/labs/serviceRunners/write | Přidat nebo upravit Spouštěče služeb. |
+> | Akce | Microsoft.DevTestLab/labs/sharedGalleries/delete | Odstraňte sdílený galerie. |
+> | Akce | Microsoft.DevTestLab/labs/sharedGalleries/read | Čtení sdílené galerie. |
+> | Akce | Microsoft.DevTestLab/labs/sharedGalleries/sharedImages/delete | Odstraňte sdílené bitové kopie. |
+> | Akce | Microsoft.DevTestLab/labs/sharedGalleries/sharedImages/read | Přečtěte si sdílené bitové kopie. |
+> | Akce | Microsoft.DevTestLab/labs/sharedGalleries/sharedImages/write | Přidat nebo upravit sdílené bitové kopie. |
+> | Akce | Microsoft.DevTestLab/labs/sharedGalleries/write | Přidat nebo upravit sdílené galerie. |
 > | Akce | Microsoft.DevTestLab/labs/users/delete | Odstraňte profily uživatelů. |
 > | Akce | Microsoft.DevTestLab/labs/users/disks/Attach/action | Připojení a vytvoří zapůjčení disku k virtuálnímu počítači. |
 > | Akce | Microsoft.DevTestLab/labs/users/disks/delete | Odstraní disky. |
@@ -2170,6 +2241,41 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.DocumentDB/databaseAccountNames/read | Zkontroluje dostupnost názvu. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | Odstranění kolekce. Platí jenom pro typy rozhraní API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | Přečíst kolekce nebo seznamu všechny kolekce. Platí jenom pro typy rozhraní API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/throughput/read | Přečtěte si propustnost kolekce. Platí jenom pro typy rozhraní API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/throughput/write | Aktualizujte propustnost kolekce. Platí jenom pro typy rozhraní API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | Vytvořit nebo aktualizovat kolekci. Platí jenom pro typy rozhraní API: "mongodb". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | Odstraňte kontejner. Platí jenom pro typy rozhraní API: "sql". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | Přečtěte si kontejner nebo vypsat všechny kontejnery. Platí jenom pro typy rozhraní API: "sql". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/throughput/read | Přečtěte si propustnosti kontejnerů. Platí jenom pro typy rozhraní API: "sql". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/throughput/write | Aktualizujte propustnosti kontejnerů. Platí jenom pro typy rozhraní API: "sql". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | Vytvořit nebo aktualizovat kontejner. Platí jenom pro typy rozhraní API: "sql". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | Odstranění databáze. Platí jenom pro typy rozhraní API: "sql", "mongodb", "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | Odstranění grafu. Platí jenom pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | Přečtěte si graf nebo seznamu všechny grafy. Platí jenom pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/throughput/read | Přečtěte si graf propustnosti. Platí jenom pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/throughput/write | Aktualizujte graf propustnosti. Platí jenom pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | Vytvořit nebo aktualizovat graf. Platí jenom pro typy rozhraní API: "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | Čtení databáze a zobrazte výpis všech databází. Platí jenom pro typy rozhraní API: "sql", "mongodb", "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/throughput/read | Databáze propustnost čtení. Platí jenom pro typy rozhraní API: "sql", "mongodb", "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/throughput/write | Aktualizujte databázi propustnost. Platí jenom pro typy rozhraní API: "sql", "mongodb", "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | Vytvoření databáze. Platí jenom pro typy rozhraní API: "sql", "mongodb", "gremlin". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | Odstraňte prostor klíčů. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | Přečtěte si prostor klíčů nebo seznam všech keyspaces. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/throughput/read | Prostor klíčů propustnost čtení. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/throughput/write | Aktualizujte propustnost prostor klíčů. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | Odstraní tabulku. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | Přečíst tabulku nebo zobrazit seznam všech tabulek. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/throughput/read | Tabulka propustnost čtení. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/throughput/write | Aktualizujte tabulku propustnost. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | Vytvořit nebo aktualizovat tabulku. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | Vytvoření prostor klíčů. Platí jenom pro typy rozhraní API: "cassandra". |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | Odstraní tabulku. Platí jenom pro typy rozhraní API: 'tabulky'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | Přečíst tabulku nebo zobrazit seznam všech tabulek. Platí jenom pro typy rozhraní API: 'tabulky'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/throughput/read | Tabulka propustnost čtení. Platí jenom pro typy rozhraní API: 'tabulky'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/throughput/write | Aktualizujte tabulku propustnost. Platí jenom pro typy rozhraní API: 'tabulky'. |
+> | Akce | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | Vytvořit nebo aktualizovat tabulku. Platí jenom pro typy rozhraní API: 'tabulky'. |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/backup/action | Odeslat žádost o konfiguraci zálohování |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/changeResourceGroup/action | Změnit skupinu prostředků účtu databáze |
 > | Akce | Microsoft.DocumentDB/databaseAccounts/databases/collections/metricDefinitions/read | Přečte definice metriky kolekce. |
@@ -2653,6 +2759,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Insights/MetricDefinitions/Microsoft.Insights/Read | Číst definice metrik |
 > | Akce | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Číst definice metrik |
 > | Akce | Microsoft.Insights/MetricDefinitions/Read | Číst definice metrik |
+> | Akce | Microsoft.Insights/Metricnamespaces/Read | Přečíst obory názvů metrik |
 > | Akce | Microsoft.Insights/Metrics/Action | Akce metriky |
 > | Akce | Microsoft.Insights/Metrics/Microsoft.Insights/Read | Čtení metrik |
 > | Akce | Microsoft.Insights/Metrics/providers/Metrics/Read | Čtení metrik |
@@ -2689,6 +2796,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
+> | Akce | Microsoft.IoTCentral/appTemplates/action | Získá všechny šablony dostupné aplikace v Azure IoT Central |
 > | Akce | Microsoft.IoTCentral/checkNameAvailability/action | Kontroluje, jestli je k dispozici název aplikace IoT Central |
 > | Akce | Microsoft.IoTCentral/checkSubdomainAvailability/action | Kontroluje, jestli je k dispozici centrální aplikaci IoT subdomény |
 > | Akce | Microsoft.IoTCentral/IoTApps/delete | Odstranění aplikace IoT Central |
@@ -3602,6 +3710,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/locations/checkDnsNameAvailability/read | Kontroluje, jestli název dns je k dispozici v zadaném umístění |
 > | Akce | Microsoft.Network/locations/operationResults/read | Získá výsledek asynchronní příspěvku nebo operace odstranění |
 > | Akce | Microsoft.Network/locations/operations/read | Získá operaci prostředek, který představuje stav asynchronní operace |
+> | Akce | Microsoft.Network/locations/serviceTags/read | Získat značky služeb |
 > | Akce | Microsoft.Network/locations/supportedVirtualMachineSizes/read | Získá podporované velikosti virtuálních počítačů |
 > | Akce | Microsoft.Network/locations/usages/read | Získá metriky využití prostředků |
 > | Akce | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | Získá seznam dostupné koncový bod služby virtuální sítě |
@@ -3911,7 +4020,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | --- | --- | --- |
 > | Akce | Microsoft.OperationalInsights/linkTargets/read | Vypíše existující účty, které nejsou přidružené předplatnému Azure. Chcete-li propojit toto předplatné Azure s pracovním prostorem, použijte vrátila tato operace ve vlastnosti id zákazníka operace vytvořit pracovní prostor id zákazníka. |
 > | Akce | microsoft.operationalinsights/operations/read | Obsahuje seznam všech dostupných operací OperationalInsights Rest API. |
+> | Akce | microsoft.operationalinsights/register/action | Rergisters předplatné. |
 > | Akce | Microsoft.OperationalInsights/register/action | Registrace předplatného u poskytovatele prostředků. |
+> | Akce | microsoft.operationalinsights/unregister/action | Zruší registraci předplatného. |
 > | Akce | Microsoft.OperationalInsights/workspaces/analytics/query/action | Hledejte pomocí nového modulu. |
 > | Akce | Microsoft.OperationalInsights/workspaces/analytics/query/schema/read | Získejte schéma vyhledávání V2. |
 > | Akce | Microsoft.OperationalInsights/workspaces/api/query/action | Hledejte pomocí nového modulu. |
@@ -3963,6 +4074,16 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ContainerLog/read | Přečte data z tabulky ContainerLog. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ContainerNodeInventory/read | Čtení dat z tabulky ContainerNodeInventory |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ContainerServiceLog/read | Přečte data z tabulky ContainerServiceLog. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksAccounts/read | Čtení dat z tabulky DatabricksAccounts |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksClusters/read | Čtení dat z tabulky DatabricksClusters |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksDBFS/read | Čtení dat z tabulky DatabricksDBFS |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksJobs/read | Čtení dat z tabulky DatabricksJobs |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksNotebook/read | Čtení dat z tabulky DatabricksNotebook |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksSecrets/read | Čtení dat z tabulky DatabricksSecrets |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksSQLPermissions/read | Čtení dat z tabulky DatabricksSQLPermissions |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksSSH/read | Čtení dat z tabulky DatabricksSSH |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksTables/read | Čtení dat z tabulky DatabricksTables |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/DatabricksWorkspace/read | Čtení dat z tabulky DatabricksWorkspace |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/DeviceAppCrash/read | Přečte data z tabulky DeviceAppCrash. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/DeviceAppLaunch/read | Přečte data z tabulky DeviceAppLaunch. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/DeviceCalendar/read | Přečte data z tabulky DeviceCalendar. |
@@ -3993,6 +4114,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.OperationalInsights/workspaces/query/HuntingBookmark/read | Čtení dat z tabulky HuntingBookmark |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | Přečte data z tabulky IISAssessmentRecommendation. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | Přečte data z tabulky InboundConnection. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/InsightsMetrics/read | Čtení dat z tabulky InsightsMetrics |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/IntuneAuditLogs/read | Čtení dat z tabulky IntuneAuditLogs |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/IntuneOperationalLogs/read | Čtení dat z tabulky IntuneOperationalLogs |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | Čtení dat z tabulky KubeEvents |
@@ -4010,6 +4132,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADeploymentPlan/read | Přečte data z tabulky MADeploymentPlan. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADevice/read | Přečte data z tabulky MADevice. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADeviceNotEnrolled/read | Čtení dat z tabulky MADeviceNotEnrolled |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MADeviceNRT/read | Čtení dat z tabulky MADeviceNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealth/read | Přečte data z tabulky MADevicePnPHealth. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealthAlternativeVersions/read | Přečte data z tabulky MADevicePnPHealthAlternativeVersions. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealthIssues/read | Přečte data z tabulky MADevicePnPHealthIssues. |
@@ -4035,7 +4158,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessment/read | Přečte data z tabulky MAOfficeCurrencyAssessment. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessmentDailyCounts/read | Přečte data z tabulky MAOfficeCurrencyAssessmentDailyCounts. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeDeploymentStatus/read | Přečte data z tabulky MAOfficeDeploymentStatus. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeDeploymentStatusNRT/read | Čtení dat z tabulky MAOfficeDeploymentStatusNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroErrorNRT/read | Čtení dat z tabulky MAOfficeMacroErrorNRT |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroGlobalHealth/read | Čtení dat z tabulky MAOfficeMacroGlobalHealth |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealth/read | Přečte data z tabulky MAOfficeMacroHealth. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealthIssues/read | Přečte data z tabulky MAOfficeMacroHealthIssues. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroIssueInstanceReadiness/read | Přečte data z tabulky MAOfficeMacroIssueInstanceReadiness. |
@@ -4048,6 +4173,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAWindowsCurrencyAssessment/read | Přečte data z tabulky MAWindowsCurrencyAssessment. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAWindowsCurrencyAssessmentDailyCounts/read | Přečte data z tabulky MAWindowsCurrencyAssessmentDailyCounts. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAWindowsDeploymentStatus/read | Přečte data z tabulky MAWindowsDeploymentStatus. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/MAWindowsDeploymentStatusNRT/read | Čtení dat z tabulky MAWindowsDeploymentStatusNRT |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/MAWindowsSysReqInstanceReadiness/read | Přečte data z tabulky MAWindowsSysReqInstanceReadiness. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/NetworkMonitoring/read | Přečte data z tabulky NetworkMonitoring. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/OfficeActivity/read | Přečte data z tabulky OfficeActivity. |
@@ -4162,6 +4288,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.PolicyInsights/asyncOperationResults/read | Získá výsledek asynchronní operace. |
+> | Akce | Microsoft.PolicyInsights/operations/read | Získá podporované operace u Microsoft.policyinsights do oboru názvů |
 > | Akce | Microsoft.PolicyInsights/policyEvents/queryResults/action | Pošle dotaz na informace o událostech zásad. |
 > | Akce | Microsoft.PolicyInsights/policyEvents/queryResults/read | Pošle dotaz na informace o událostech zásad. |
 > | Akce | Microsoft.PolicyInsights/policyStates/queryResults/action | Pošle dotaz na informace o stavech zásad. |
@@ -4466,6 +4593,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Resources/deployments/operations/read | Načte nebo vypíše operace nasazení. |
 > | Akce | Microsoft.Resources/deployments/read | Načte nebo vypíše nasazení. |
 > | Akce | Microsoft.Resources/deployments/validate/action | Ověří nasazení. |
+> | Akce | Microsoft.Resources/deployments/whatIf/action | Predikuje změny nasazení šablon. |
 > | Akce | Microsoft.Resources/deployments/write | Vytvoří nebo aktualizuje nasazení. |
 > | Akce | Microsoft.Resources/links/delete | Odstraní odkaz na prostředek. |
 > | Akce | Microsoft.Resources/links/read | Načte nebo vypíše odkazy na prostředek. |
@@ -5052,7 +5180,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/servers/importExportOperationResults/read | Získá probíhá operace importu/exportu |
 > | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | Odstraní zadané rozhraní profil koncového bodu |
 > | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/read | Vrací vlastnosti pro profil zadaný rozhraní koncového bodu |
-> | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Vytvoří profil rozhraní koncový bod se zadanými parametry nebo aktualizuje vlastnosti a značky pro koncový bod zadané rozhraní |
+> | Akce | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Vytvoří profil koncového bodu rozhraní se zadanými parametry nebo aktualizuje vlastnosti a značky pro koncový bod zadané rozhraní |
 > | Akce | Microsoft.Sql/servers/jobAgents/delete | Odstraní úlohu agenta služby Azure SQL DB |
 > | Akce | Microsoft.Sql/servers/jobAgents/read | Získá úloha agenta služby Azure SQL DB |
 > | Akce | Microsoft.Sql/servers/jobAgents/write | Vytvoří nebo aktualizuje úlohu agenta služby Azure SQL DB |
@@ -5060,6 +5188,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/servers/keys/read | Vrátí seznam serveru klíče nebo načte vlastnosti pro klíč zadaný server. |
 > | Akce | Microsoft.Sql/servers/keys/write | Vytvoří klíč se zadanými parametry nebo aktualizovat vlastnosti a značky pro klíč zadaný server. |
 > | Akce | Microsoft.Sql/servers/operationResults/read | Získá probíhajících operací serveru |
+> | Akce | Microsoft.Sql/servers/privateEndpointConnections/delete | Odstraní existující privátního koncového bodu připojení |
+> | Akce | Microsoft.Sql/servers/privateEndpointConnections/read | Vrátí seznam privátního koncového bodu připojení nebo načte vlastnosti zadaného privátního koncového bodu připojení. |
 > | Akce | Microsoft.Sql/servers/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro servery |
 > | Akce | Microsoft.Sql/servers/read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Akce | Microsoft.Sql/servers/recommendedElasticPools/databases/read | Načíst metriky pro doporučené elastických databázových fondů pro daný server |
@@ -5106,7 +5236,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | Vrátí výsledek odstranění automatického snímku. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action | Vrátí seznam objektů blob v účtu s odpovídajícím filtrem značek. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů blob. |
-> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/runAsSuperUser/action | Vrátí výsledek příkazu objektu blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read | Vrátí výsledek čtení značek objektu blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | Vrátí výsledek zápisu značek objektu blob. |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Vrátí výsledek zápisu objektu blob. |

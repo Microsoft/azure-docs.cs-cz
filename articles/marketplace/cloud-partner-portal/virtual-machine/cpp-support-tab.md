@@ -1,25 +1,18 @@
 ---
-title: Kartu Podpora virtuálního počítače na portálu partnerů cloudu pro Azure Marketplace | Dokumentace Microsoftu
+title: Kartu Podpora virtuálního počítače na portálu partnerů cloudu pro Azure Marketplace
 description: Popisuje podporu karty použité při vytváření virtuálního počítače Azure Marketplace nabídku.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 35ac9d0c4b0188724c91cdcf4f33b645dd92e98a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: 9763c8d520b8736d8f7d7bc5db81b75762cb98f9
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343205"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938207"
 ---
 # <a name="virtual-machine-support-tab"></a>Kartu Podpora virtuálního počítače
 
@@ -27,23 +20,26 @@ ms.locfileid: "60343205"
 
 ![Podpora karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_012.png)
 
-Kde:
+## <a name="field-values"></a>Hodnoty polí
 
-|  **Pole**                |     **Popis**                                                          |
-|  ---------                |     ---------------                                                          |
-| *Technický kontakt*  |  Slouží jako technický kontakt mezi Microsoftem a vaší organizaci | 
-| **Název**                  | Jméno osoby nebo skupiny, která slouží jako podpora technické/inženýrství     |
-| **E-mail**                 | E-mailovou adresu Tento technický kontakt                                      |
-| **Telefon**                 | Telefonní číslo technické podpory                                           |
-| *Zákaznická podpora*  | Přijímá lístky podpory otevírány zákazníky v rámci Azure |
-| **Název**                  | Jméno osoby nebo skupiny, která slouží jako Zákaznická podpora                  |
-| **E-mail**                 | E-mailovou adresu podpory zákazníků                                            |
-| **Telefon**                 | Telefonní číslo pro zákaznickou podporu                                            |
-| *Podporovat adresy URL*  | Podpora lokality, které společnost Microsoft použije, když vaši zákazníci otevřít lístky podpory |
+Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou uvést hvězdičkou (*).
+
+|         Pole                 |       Popis                                                        |
+|        -------                |       ------------                                                       |
+| *Technický kontakt*     | Slouží jako technický kontakt mezi Microsoftem a vaší organizaci | 
+| **Název\***                | Jméno osoby nebo skupiny, která slouží jako podpora technické/inženýrství     |
+| **E-mailu\***               | E-mailovou adresu Tento technický kontakt                                      |
+| **Telefon\***               | Telefonní číslo technické podpory                                           |
+| *Zákaznická podpora*        | Přijímá lístky podpory otevírány zákazníky v rámci Azure |
+| **Název\***                | Jméno osoby nebo skupiny, která slouží jako Zákaznická podpora                  |
+| **E-mailu\***               | E-mailovou adresu podpory zákazníků                                            |
+| **Telefon\***               | Telefonní číslo pro zákaznickou podporu                                            |
+| *Podporovat adresy URL*            | Podpora lokality, které společnost Microsoft použije, když vaši zákazníci otevřít lístky podpory |
 | **Veřejné Azure**          | Adresa URL webu podpory veřejný internet                                         |
 | **Azure Government Cloud**| Adresa URL webu podpory cloud government                                        |
 |  |  |
 
 
-<!-- I don't understand how "Support URLs" are used for customer tickets.  (Info copied from VM Pub Guide.) Are they sent via automated email msg?-->
+## <a name="next-steps"></a>Další postup
 
+Dále pokud nemáte doen tak, dokončení vaší [technických prostředků virtuálního počítače](./cpp-create-technical-assets.md).

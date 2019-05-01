@@ -1,25 +1,18 @@
 ---
-title: Prezentace podrobnosti pro aplikace Power BI nabízejí – Azure Marketplace | Dokumentace Microsoftu
+title: Prezentace podrobnosti pro aplikace Power BI nabízejí | Azure Marketplace
 description: Nakonfigurujte pole z prodejních míst podrobnosti nabídky aplikace Power BI webu Microsoft Marketplace AppSource.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 2c99b20e554d92dbe63594d63525dd8e1d765423
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 0816e7a7add430a65af9b3948aa8626f9567053a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726174"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942628"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Karta z prodejních míst podrobnosti aplikace Power BI
 
@@ -32,13 +25,13 @@ V **podrobnosti nabídky** části, zadejte obecné informace o vaší nabídce 
 
 ![Část kartu Podrobnosti výkladní skříň s podrobnostmi nabídky](./media/offer-details-section.png)
 
-Chcete-li vyplnit pole v této části, použijte následující tabulku:
+Další informace o těchto polích naleznete v následující tabulce. Povinná pole jsou uvést hvězdičkou (*).  
 
 |   Pole               |   Popis                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------|
-| **Souhrn nabídky**     | Stručný účel aplikace pomocí až 100 znaků.                             |
-| **Popis nabídky** | Popis aplikace, použijte až 3 000 znaků. Toto pole podporuje jednoduchý formátování HTML. |
-|                       |                                                                                         |
+| **Souhrn nabídky\***     | Stručný účel aplikace pomocí až 100 znaků.                             |
+| **Popis nabídky\*** | Popis aplikace, použijte až 3 000 znaků. Toto pole podporuje jednoduchý formátování HTML. |
+|   |    |
 
 
 ## <a name="listing-details-section"></a>V části Podrobnosti o výpis
@@ -47,13 +40,13 @@ Chcete-li vyplnit pole v této části, použijte následující tabulku:
 
 ![Výpis sekci podrobností na kartě s podrobnostmi výkladní skříň](./media/listing-details-section.png)
 
-Chcete-li vyplnit pole v této části, použijte následující tabulku:
+Chcete-li vyplnit pole v této části, použijte následující tabulku.  Povinná pole jsou uvést hvězdičkou (*).
  
 |   Pole                                  |   Popis                                                        |
 | --------------                           | ---------------------                                                |
 | **Odvětví**                           | Vyberte obor, ve kterém je vaše aplikace nejlépe. Pokud vaše aplikace má vztah k několika oborech, ponechte toto pole prázdné.      |
-| **Kategorie**                           | Vyberte nejvýše tři kategorie, které se týkají vaší aplikace.     |
-| **Odkaz na nápovědu pro vaši aplikaci**               | Zadejte adresu URL na stránku, která poskytuje online nápovědu pro vaši aplikaci.           |
+| **Kategorie\***                           | Vyberte nejvýše tři kategorie, které se týkají vaší aplikace.     |
+| **Odkaz na nápovědu pro vaši aplikaci\***               | Zadejte adresu URL na stránku, která poskytuje online nápovědu pro vaši aplikaci.           |
 | **Produkty, které vaše aplikace funguje se (maximálně 3)** | Vyberte **nový** znaménko plus vytvořte textové pole. Do pole zadejte název produktu, který vaše aplikace funguje se. Seznam až tři produktů.       |
 | **Klíčová slova pro vyhledávání (maximálně 3)**              | Zadejte až tři klíčová slova, které uživatelé budou pravděpodobně používat k hledání pro vaši aplikaci v AppSource. Například pokud aplikace se nazývá "Moje aplikace pro odesílání e-mailu", klíčová slova může být **e-mailů**, **poštovní**, a **e-mailové aplikace**. |
 |  |  |
@@ -65,13 +58,13 @@ V **marketingové artefakty** části, nahrání brandingu a marketingové mater
 
 ![Marketing artefakty část kartu Podrobnosti výkladní skříň](./media/marketing-artifacts-section.png)
 
-Chcete-li vyplnit pole v této části, použijte následující tabulku:
+Chcete-li vyplnit pole v této části, použijte následující tabulku. Povinná pole jsou uvést hvězdičkou (*).
  
 |    Pole                             |    Popis                                                    |
 |   -----------                        |    -------------                                                  |
 | *Loga*                              |                                                                   |
-| **Nabídka logo (formátu png, 48 x 48)**   | Nahrajte logo zobrazení v přehledu aplikace nebo ve výsledcích hledání aplikací. AppSource podporuje pouze ve formátu PNG, s rozlišením 48 x 48 px.  |
-| **Nabídka logo (formátu png, 216 x 216)** | Nahrajte logo, které se zobrazí na stránku podrobností aplikace.  AppSource podporuje pouze ve formátu PNG, s rozlišením 216 x 216 px.  |
+| **Nabídka logo (formátu png, 48 x 48)\***   | Nahrajte logo zobrazení v přehledu aplikace nebo ve výsledcích hledání aplikací. AppSource podporuje pouze ve formátu PNG, s rozlišením 48 x 48 px.  |
+| **Nabídka logo (formátu png, 216 x 216)\*** | Nahrajte logo, které se zobrazí na stránku podrobností aplikace.  AppSource podporuje pouze ve formátu PNG, s rozlišením 216 x 216 px.  |
 | *Videa*                             |                                                                   |
 | **Název**                             | Zadejte název nebo název vaší aplikace.                                          |
 | **Adresa URL**                              | Zadejte adresu URL video hostované na YouTube nebo Vimeo.                              |
@@ -79,7 +72,7 @@ Chcete-li vyplnit pole v této části, použijte následující tabulku:
 | *Dokumenty*                          | Přidat až tři dokumenty, které se zobrazí na AppSource, v části **Další** záhlaví.  |
 | **Název**                             | Zadejte název nebo název podpůrné dokumentu.                              |
 | **File**                             | Nahrajte soubor PDF.                             |
-| *Snímky obrazovky*                        | Přidejte až pět snímky obrazovky.                        |
+| *Snímky obrazovky\**                      | Přidejte až pět snímky obrazovky.                        |
 | **Název**                             | Zadejte název nebo název snímku obrazovky.                                       |
 | **Image**                            | Nahrajte snímek obrazovky PNG. Rozlišení musí být 1280 × 720 px.  | 
 |   |   |
@@ -100,8 +93,8 @@ Chcete-li vyplnit pole v této části, použijte následující tabulku:
 
 |   Pole                |   Popis                           |
 |------------------------|--------------------------------------   |
-| **Adresa URL zásad ochrany osobních údajů** | Adresa URL pro vaši zásadu odeslaných ochrany osobních údajů       |
-| **Podmínky použití**       | Použití zásad naformátované jako prostý text nebo jednoduchého kódu HTML     |
+| **Adresa URL zásad ochrany osobních údajů\*** | Adresa URL pro vaši zásadu odeslaných ochrany osobních údajů       |
+| **Podmínky použití\***       | Použití zásad naformátované jako prostý text nebo jednoduchého kódu HTML     |
 |  |  |
 
 

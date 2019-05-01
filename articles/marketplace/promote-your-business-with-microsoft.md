@@ -1,27 +1,22 @@
 ---
-title: Propagaci vašeho podnikání s Microsoftem | Azure
+title: Propagaci vašeho podnikání s Microsoftem | Azure Marketplace
 description: Propagaci vašeho podnikání. pro vydavatele aplikace a služby pomocí webu Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735880"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937652"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Propagaci vašeho podnikání s Microsoftem  
+# <a name="promote-your-business-with-microsoft"></a>Propagaci vašeho podnikání s Microsoftem 
+
 Microsoft má cíl podpora partnerů (vy) a zjednodušit prodej vaší aplikace nebo tuto nabídku v prodejní místa na webu marketplace. Ve výpisu na webu marketplace, přístup k programů a prostředků na webu marketplace. 
 
 Pokud jste se ještě nepřihlásili na Microsoft Partner Network (MPN), proveďte to před pokračováním.  

@@ -3,16 +3,16 @@ title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek je nedodržují předpisy, existuje mnoho důvodů, proč je to možné. Zjistěte, jak zjistit, co způsobilo nedodržení předpisů.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/30/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499324"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868723"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -105,9 +105,107 @@ Následující matice mapuje každé možné _důvod_ na příslušný [podmínk
 |Aktuální hodnota nesmí bez rozlišování velikosti písmen odpovídat cílové hodnotě. |notMatchInsensitively nebo **není** matchInsensitively |
 |Žádné související prostředky neodpovídají podrobnostem účinku v definici zásad. |Prostředek typu definovaného v **then.details.type** a související na prostředek definovaný v **Pokud** část tohoto pravidla zásady neexistuje. |
 
-## <a name="change-history-preview"></a>Historie změn (Preview)
+## <a name="compliance-details-for-guest-configuration"></a>Podrobnosti o dodržování předpisů pro konfiguraci typu Host
 
-Jako součást nového **ve verzi public preview**, posledních 14 dní změny není k dispozici pro všechny prostředky Azure, které podporují historie [dokončení odstranění režimu](../../../azure-resource-manager/complete-mode-deletion.md). Historie změn při byla zjištěna změna a poskytuje podrobnosti o _visual diff_ pro každou změnu. Detekce změn se aktivuje při přidání, odebrání nebo změnit vlastnosti správce prostředků.
+Pro _auditu_ zásady v _hosta konfigurace_ kategorie, může být různá nastavení, vyhodnotí ve virtuálním počítači a budete potřebovat k zobrazení podrobností podle nastavení. Například pokud sledujete seznam nainstalovaných aplikací a stav přiřazení je _nekompatibilní_, bude potřeba zjistit, konkrétní aplikace, které nebyly nalezeny.
+
+Také nemusí mít přístup k přihlášení k virtuálnímu počítači přímo, ale budete muset sestavy na to, proč tento virtuální počítač je _nekompatibilní_. Například může auditovat, že virtuální počítače jsou připojené ke správné doméně a součástí vytváření sestav o členství v aktuální doméně.
+
+### <a name="azure-portal"></a>portál Azure
+
+1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+
+1. Na **přehled** nebo **dodržování předpisů** vyberte přiřazení zásady pro všechny iniciativu, který obsahuje definici zásady Konfigurace hosta, to _nekompatibilní_.
+
+1. Vyberte _auditu_ zásad v rámci iniciativy, která _nekompatibilní_.
+
+   ![Zobrazit podrobnosti o definici audit](../media/determine-non-compliance/guestconfig-audit-compliance.png)
+
+1. Na **dodržování předpisů prostředkem** kartu, je k dispozici následující informace:
+
+   - **Název** – název konfigurace přiřazení hosta.
+   - **Nadřazený prostředek** – virtuální počítač _nekompatibilní_ stavu pro vybraný přiřazení konfigurace hosta.
+   - **Typ prostředku** – _guestConfigurationAssignments_ jméno a příjmení.
+   - **Naposledy vyhodnoceno** – čas poslední služba hosta konfigurace oznámení o stavu cílového virtuálního počítače Azure Policy.
+
+   ![Podívejte se na podrobnosti dodržování zásad.](../media/determine-non-compliance/guestconfig-assignment-view.png)
+
+1. Vyberte název přiřazení konfigurace hostovaného v **název** sloupec, který se otevře **dodržování předpisů prostředkem** stránky.
+
+1. Vyberte **zobrazení prostředků** tlačítko v horní části stránky otevřete **hosta přiřazení** stránky.
+
+**Hosta přiřazení** stránka zobrazuje všechny podrobnosti o dodržování předpisů k dispozici. Každý řádek v zobrazení představuje zkušební verzi, která byla provedena ve virtuálním počítači. V **důvod** sloupce, věta popisující, proč je přiřazení typu Host _nekompatibilní_ se zobrazí. Pokud sledujete, že virtuální počítače by měl být připojený k doméně, třeba **důvod** sloupci zobrazí text včetně členství v aktuální doméně.
+
+![Podívejte se na podrobnosti dodržování zásad.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Můžete také zobrazit podrobnosti o dodržování předpisů v Azure Powershellu. Nejprve ujistěte se, že máte modul Konfigurace hosta nainstalovaný.
+
+```azurepowershell-interactive
+Install-Module Az.GuestConfiguration
+```
+
+Můžete zobrazit aktuální stav všech přiřazení hosta pro virtuální počítač pomocí následujícího příkazu:
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+```
+
+```output
+PolicyDisplayName                                                         ComplianceReasons
+-----------------                                                         -----------------
+Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
+Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
+```
+
+Chcete-li zobrazit pouze _důvod_ slovní spojení, které popisuje, proč tento virtuální počítač je _nekompatibilní_, vrátí pouze z důvodu podřízené vlastnosti.
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+```
+
+```output
+The following applications are not installed: '<name>'.
+```
+
+Historie dodržování předpisů můžete také výstup pro přiřazení hostovaného v oboru pro virtuální počítač. Výstup tohoto příkazu obsahuje podrobnosti o jednotlivých sestav pro virtuální počítač.
+
+> [!NOTE]
+> Velké objemy dat může vrátit výstup. Doporučujeme ukládat výstup do proměnné.
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
+<truncated>
+```
+
+Pro zjednodušení tohoto zobrazení, použijte **ShowChanged** parametru. Výstup tohoto příkazu zahrnuje jenom sestavy a potom změnu stavu dodržování předpisů.
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
+Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
+```
+
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Historie změn (Preview)
+
+Jako součást nového **ve verzi public preview**, za posledních 14 dní historie změn jsou k dispozici pro všechny prostředky Azure, které podporují [dokončení odstranění režimu](../../../azure-resource-manager/complete-mode-deletion.md). Historie změn při byla zjištěna změna a poskytuje podrobnosti o _visual diff_ pro každou změnu. Detekce změn se aktivuje při přidání, odebrání nebo změnit vlastnosti správce prostředků.
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
@@ -129,10 +227,10 @@ Poskytuje data o historii změn [Azure Graph prostředků](../../resource-graph/
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Zkontrolujte [struktura definic zásad](../concepts/definition-structure.md)
-- Kontrola [Principy účinky zásad](../concepts/effects.md)
-- Pochopit postup [programové vytváření zásad](programmatically-create.md)
-- Zjistěte, jak [získat data o dodržování předpisů](getting-compliance-data.md)
-- Zjistěte, jak [opravit nekompatibilní prostředky](remediate-resources.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [strukturu definic zásad](../concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
+- Pochopit postup [programové vytváření zásad](programmatically-create.md).
+- Zjistěte, jak [získat data o dodržování předpisů](getting-compliance-data.md).
+- Zjistěte, jak [nápravě nekompatibilních prostředků](remediate-resources.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

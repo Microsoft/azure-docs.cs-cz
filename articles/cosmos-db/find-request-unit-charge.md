@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7afa815f81e2a61db8ac83623baafb97cb986b2c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888739"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925360"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Najít jednotky žádosti (RU) poplatek ve službě Azure Cosmos DB
 
@@ -186,7 +186,7 @@ double requestCharge = (double)stats["RequestCharge"];
 
 ### <a name="use-the-mongodb-java-driver"></a>Použít ovladači MongoDB Java
 
-Při použití [oficiální ovladači MongoDB Java](http://mongodb.github.io/mongo-java-driver/) (naleznete v tématu [v tomto rychlém startu](create-mongodb-java.md) související s jeho využitím), příkazy mohou být provedeny voláním `runCommand` metoda `MongoDatabase` objektu.
+Při použití [oficiální ovladači MongoDB Java](https://mongodb.github.io/mongo-java-driver/) (naleznete v tématu [v tomto rychlém startu](create-mongodb-java.md) související s jeho využitím), příkazy mohou být provedeny voláním `runCommand` metoda `MongoDatabase` objektu.
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));

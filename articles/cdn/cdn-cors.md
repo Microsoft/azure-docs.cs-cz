@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679850"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876223"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Používání Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -30,9 +30,9 @@ Existují dva typy požadavků CORS *jednoduché požadavky* a *složité požad
 
 ### <a name="for-simple-requests"></a>Pro jednoduché požadavky:
 
-1. V prohlížeči odesílá požadavek CORS ještě **původu** hlavičku požadavku HTTP. Hodnotu této hlavičky origin, která obsluhuje nadřazenou stránku, která je definována jako kombinace *protokolu* *domény,* a *portu.*  Když stránku z https://www.contoso.com pokusy o přístup k datům uživatele v fabrikam.com původ, následující hlavičky žádosti by se odeslaly na fabrikam.com:
+1. V prohlížeči odesílá požadavek CORS ještě **původu** hlavičku požadavku HTTP. Hodnotu této hlavičky origin, která obsluhuje nadřazenou stránku, která je definována jako kombinace *protokolu* *domény,* a *portu.*  Když stránku z https\:/ / www.contoso.com pokusí o přístup k datům uživatele v původu fabrikam.com, následující hlavičky žádosti by se odeslaly na fabrikam.com:
 
-   `Origin: https:\//www.contoso.com`
+   `Origin: https://www.contoso.com`
 
 2. Server může odpovídat s žádným z následujících akcí:
 

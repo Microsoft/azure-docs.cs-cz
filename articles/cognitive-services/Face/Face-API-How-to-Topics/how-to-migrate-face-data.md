@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 02e9b64c89eda1471d644e0116bbf8c1c061ccc3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548400"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682518"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace dat pro rozpoznávání tváře do jiného předplatného pro rozpoznávání tváře
 
 Tento průvodce vám ukáže, jak přesunout data pro rozpoznávání tváře (jako je například uloženého **jeden objekt PersonGroup** ploch) do jiného předplatného API pro rozpoznávání tváře pomocí funkce snímku. To umožňuje vyhnout se tak nutnosti opakovaně sestavení a jejich trénování **jeden objekt PersonGroup** nebo **FaceList** při přesouvání nebo rozšiřování vaše operace. Například jste vytvořili **jeden objekt PersonGroup** pomocí bezplatné předplatné zkušební verze a teď chcete migrovat na placené předplatné, nebo možná budete muset synchronizovat data pro rozpoznávání tváře napříč oblastmi operace velký podnik.
 
-Tato stejné strategie migrace platí také pro **LargePersonGroup** a **LargeFaceList** objekty. Pokud nejste obeznámeni s koncepty v tomto průvodci, najdete v jejich definice v [Glosář](../Glossary.md). Tato příručka používá Klientská knihovna .NET API pro rozpoznávání tváře s C#.
+Tato stejné strategie migrace platí také pro **LargePersonGroup** a **LargeFaceList** objekty. Pokud nejste obeznámeni s koncepty v tomto průvodci, najdete v jejich definice v [rozpoznávání koncepty pro rozpoznávání tváře](../concepts/face-recognition.md) průvodce. Tato příručka používá Klientská knihovna .NET API pro rozpoznávání tváře s C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,15 +29,13 @@ Tato stejné strategie migrace platí také pro **LargePersonGroup** a **LargeFa
 - Řetězec ID předplatného API pro rozpoznávání tváře odpovídající cílové předplatné (součástí **přehled** okna na webu Azure portal). 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 
-
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
 Tento průvodce použije jednoduchou konzolovou aplikaci k provedení migrace dat pro rozpoznávání tváře. Úplnou implementaci, najdete v článku [ukázka snímku rozhraní API pro rozpoznávání tváře](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) na Githubu.
 
-1. V sadě Visual Studio vytvořte nový **Konzolová aplikace (.NET Framework)** projektu a pojmenujte ho **FaceApiSnapshotSample**. 
+1. V sadě Visual Studio vytvořte nový **Konzolová aplikace (.NET Framework)** projektu a pojmenujte ho **FaceApiSnapshotSample**.
 1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**. Klikněte na tlačítko **Procházet** kartě a vyberte **zahrnout předběžné verze**; najít a nainstalovat balíček následující:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-
 
 ## <a name="create-face-clients"></a>Vytvoření klientů pro rozpoznávání tváře
 
@@ -226,7 +224,9 @@ Po dokončení migrace dat pro rozpoznávání tváře, doporučujeme, abyste ž
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="related-topics"></a>Související témata
+## <a name="next-steps"></a>Další postup
+
+V dalším kroku najdete v příslušné referenční dokumentaci k rozhraní API, prozkoumat ukázkovou aplikaci, která používá funkci snímku nebo postupujte podle nepředstavuje průvodce, pokud chcete začít používat další rozhraní API operace uvedené tady.
 
 - [Snímek referenční dokumentace (sadu .NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
 - [Ukázkový snímek rozhraní API pro rozpoznávání tváře](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)

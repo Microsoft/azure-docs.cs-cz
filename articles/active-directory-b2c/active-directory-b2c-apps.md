@@ -3,19 +3,19 @@ title: Typy aplikací, které lze použít v Azure Active Directory B2C | Dokume
 description: Další informace o typech aplikací, které můžete použít v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c3d63a4510d16268e1be3b853fd5c3225b647cd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361077"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703065"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 

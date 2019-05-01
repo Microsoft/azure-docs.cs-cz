@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 43793380fab2bcece215c53b82e09a3c3a849af3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/25/2019
+ms.openlocfilehash: f54950ab96664b17aab056b468db0644216e8654
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57833909"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706098"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrace certifikátů transparentní šifrování dat chráněné databáze do Azure SQL Database Managed Instance
 
@@ -31,7 +31,7 @@ Při migraci databáze chráněn [transparentního šifrování dat](https://doc
 Alternativní možnost migrace databáze s ochranou TDE i odpovídajícího certifikátu pomocí plně spravované služby najdete v článku [Jak migrovat místní databázi do spravované instance pomocí služby Azure Database Migration Service](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Transparentní šifrování dat pro Azure SQL Database Managed Instance pracuje v režimu spravovaný službou. Migrovaný certifikát se použije pouze k obnovení databáze chráněné transparentním šifrováním dat. Brzy po dokončení obnovení se migrovaný certifikát nahradí jiným certifikátem spravovaným systémem.
+> Migrovaný certifikát se použije pouze k obnovení databáze chráněné transparentním šifrováním dat. Krátce po dokončení obnovení migrovaných certifikát získá nahrazuje jiné ochranný, spravované službou certifikát nebo asymetrický klíč z trezoru klíčů, v závislosti na typu transparentní šifrování dat je nastavena na instanci.
 
 ## <a name="prerequisites"></a>Požadavky
 

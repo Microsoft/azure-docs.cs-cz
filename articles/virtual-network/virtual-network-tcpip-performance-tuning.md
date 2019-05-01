@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032447"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924787"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Pro virtuální počítače Azure pro optimalizaci výkonu protokolu TCP/IP
 
@@ -304,7 +304,7 @@ Akcelerované síťové služby slouží ke zlepšení výkonu sítě, včetně 
 
 Virtuální počítače Azure mají alespoň jedno síťové rozhraní připojené k nim. Mohou mít několik. Šířka pásma přidělená k virtuálnímu počítači je součet veškerého odchozího provozu přes všechna síťová rozhraní připojená k počítači. Jinými slovy se přiděluje šířku pásma pro jednotlivé virtuální počítače, bez ohledu na to, kolik síťových rozhraní jsou připojené k počítači.
 
-Očekávaná výstupní propustnost a počet síťových rozhraní, které podporuje všechny velikosti virtuálních počítačů jsou podrobně popsány v [velikosti pro Windows virtual machines v Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete zobrazit maximální propustnost, vyberte typ, jako je třeba **Obecné**a pak najdete v části o velikost series na stránce výsledný (například "řady Dv2-series"). U každé datové řady, je tabulka, která poskytuje síťové specifikace v posledním sloupci, který má název "maximální počet síťových karet / očekávaný šířka pásma (MB/s)."
+Očekávaná výstupní propustnost a počet síťových rozhraní, které podporuje všechny velikosti virtuálních počítačů jsou podrobně popsány v [velikosti pro Windows virtual machines v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete zobrazit maximální propustnost, vyberte typ, jako je třeba **Obecné**a pak najdete v části o velikost series na stránce výsledný (například "řady Dv2-series"). U každé datové řady, je tabulka, která poskytuje síťové specifikace v posledním sloupci, který má název "maximální počet síťových karet / očekávaný šířka pásma (MB/s)."
 
 Omezení propustnosti platí pro virtuální počítač. Propustnost nemá vliv tyto faktory:
 
@@ -388,4 +388,4 @@ Tyto typy paketů jsou stále, označení, že propustnost TCP nedosahuje jeho m
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili o optimalizaci výkonu protokolu TCP/IP pro virtuální počítače Azure, můžete chtít prostudovat další důležité informace pro [plánování virtuálních sítí](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) nebo [Další informace o připojení a konfigurace virtuální sítě ](https://docs.microsoft.com/en-us/azure/virtual-network/).
+Teď, když jste se naučili o optimalizaci výkonu protokolu TCP/IP pro virtuální počítače Azure, můžete chtít prostudovat další důležité informace pro [plánování virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) nebo [Další informace o připojení a konfigurace virtuální sítě ](https://docs.microsoft.com/azure/virtual-network/).

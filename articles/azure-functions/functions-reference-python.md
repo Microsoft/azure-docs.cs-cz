@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021266"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571175"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -28,7 +28,7 @@ Tento článek je Úvod do vývoje služby Azure Functions pomocí Pythonu. Nás
 
 ## <a name="programming-model"></a>Programovací model
 
-Funkce Azure by měl být bezstavové metodu ve svém skriptu Pythonu, která zpracovává vstup a výstup. Ve výchozím nastavení, modul runtime očekává, že to k implementaci jako globální metoda volána `main()` v `__init__.py` souboru.
+Funkce Azure by měl být bezstavové metodu ve svém skriptu Pythonu, která zpracovává vstup a výstup. Ve výchozím nastavení, modul runtime očekává, že metody k implementaci jako globální metoda volána `main()` v `__init__.py` souboru.
 
 Výchozí konfigurace můžete změnit zadáním `scriptFile` a `entryPoint` vlastnosti `function.json` souboru. Například _function.json_ níže říká modul runtime pro použití _customentry()_ metodu _main.py_ soubor jako vstupní bod pro vaši funkci Azure functions.
 
@@ -109,15 +109,16 @@ Sdílený kód by udržováno do samostatné složky. Moduly ve složce SharedCo
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Rozšíření vazby používá modul runtime služby Functions jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](./functions-bindings-register.md#local-development-azure-functions-core-tools) pomocí nástrojů Azure Functions Core. 
+Rozšíření vazby používá modul runtime služby Functions jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles) pomocí nástrojů Azure Functions Core. 
 
 Při nasazování projektu funkce do vaší aplikace funkcí v Azure, měly by být celý obsah složky FunctionApp součástí balíčku, ale nikoli složku.
 
-## <a name="inputs"></a>Vstupy
+## <a name="triggers-and-inputs"></a>Aktivační události a vstupy
 
-Vstupy jsou rozděleny do dvou kategorií ve službě Azure Functions: vstup triggeru a další vstupy. I když jsou v různých `function.json`, využití je stejný jako v kódu Pythonu. Pojďme se například následující fragment kódu:
+Vstupy jsou rozděleny do dvou kategorií ve službě Azure Functions: vstup triggeru a další vstupy. I když jsou v různých `function.json`, využití je stejný jako v kódu Pythonu.  Připojovací řetězce pro aktivační událost a vstupní zdroje musí namapovat na hodnoty v `local.settings.json` soubor místně a nastavení aplikace při spuštění v Azure. Pojďme se například následující fragment kódu:
 
 ```json
+// function.json
 {
   "scriptFile": "__init__.py",
   "bindings": [
@@ -139,7 +140,19 @@ Vstupy jsou rozděleny do dvou kategorií ve službě Azure Functions: vstup tri
 }
 ```
 
+```json
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<azure-storage-connection-string>"
+  }
+}
+```
+
 ```python
+# __init__.py
 import azure.functions as func
 import logging
 
@@ -149,7 +162,8 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Při vyvolání funkce požadavek HTTP je předána funkci jako `req`. Načte položku z Azure Blob Storage na základě _id_ v adrese URL trasy a k dispozici jako `obj` v těle funkce.
+Při vyvolání funkce požadavek HTTP je předána funkci jako `req`. Načte položku z Azure Blob Storage na základě _ID_ v adrese URL trasy a k dispozici jako `obj` v těle funkce.  Tady se zadat připojovací řetězec se nachází v účtu úložiště `AzureWebJobsStorage` tedy stejný účet úložiště používá aplikace function app.
+
 
 ## <a name="outputs"></a>Výstupy
 

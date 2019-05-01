@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337705"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914961"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -121,9 +121,9 @@ Poslední úlohy zálohování se nezdařila, protože je v průběhu existujíc
 3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** zobrazí všechny úlohy zálohování.
 
     * Pokud probíhá úloha zálohování, počkejte na dokončení nebo zrušení úlohy zálohování.
-        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [Powershellu](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [Powershellu](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Pokud jste změnili konfiguraci zálohování v jiném trezoru, zajistěte, neexistují žádné zálohování úloh spuštěných v starý trezor. Pokud existuje pak zrušíte úlohu zálohování.
-        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [prostředí PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. Zkuste operaci zálohování zopakujte.
 
 Pokud naplánované zálohování trvá delší dobu konfliktní s další konfigurací zálohování zkontrolujte [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance) a [obnovení posouzení ](backup-azure-vms-introduction.md#backup-and-restore-considerations).

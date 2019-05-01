@@ -7,29 +7,28 @@ ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: mimart
-author: msmimart
+author: v-miegge
 manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c2a0eaf75debf694421ac9e5f2f7eb13891a20cf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412390"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917350"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
 
 Tady jsou některé nápravná opatření pro běžné problémy se spoluprací B2B Azure Active Directory (Azure AD).
 
-
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Přidání externího uživatele, ale nevidíte v globálním adresáři nebo výběr osob
 
 V případech, kdy nejsou naplněny externí uživatele v seznamu objekt může trvat několik minut, než replikaci.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Uživatel typu Host B2B se nezobrazuje v Sharepointu Online a Onedrivu výběr osob 
- 
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Uživatel typu Host B2B se nezobrazuje v Sharepointu Online a Onedrivu výběr osob
+
 Možnost vyhledat existující uživatele typu Host v Sharepointu Online (SPO) výběr osob je vypnuto ve výchozím nastavení tak, aby odpovídaly starší verzi chování.
 
 Tuto funkci můžete povolit pomocí nastavení "ShowPeoplePickerSuggestionsForGuestUsers" na úrovni kolekce klienta a serveru. Můžete nastavit funkci pomocí rutiny Set-SPOTenant a Set-SPOSite, který umožní členům hledat všechny existující uživatele typu Host do adresáře. Změny v rámci tenanta neovlivní již zřízených SPO webů.
@@ -79,10 +78,20 @@ Pro dosažení souladu se zákony o ochraně osobních údajů, rozhraní API ne
 
 Pokud tento scénář je pro vás důležité, můžete potlačit e-mailová pozvánka naše rozhraní API a odeslat e-mailu mechanismem podle svého výběru. Poraďte se vaše organizace právním poradcem pro Ujistěte se, že všechny e-maily, které odesíláte, že tímto způsobem souladu se zákony o ochraně osobních údajů.
 
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Zobrazí chybová zpráva "AADSTS65005" při pokusu o přihlášení k prostředku Azure
+
+Uživatel, který má účet guest nemůžete se přihlásit a přijímá následující chybová zpráva:
+
+    AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
+
+Uživatel má Azure uživatelský účet a virálního tenanta, který byla opuštěna nebo nespravovaných. Kromě toho nejsou žádné globální nebo společnosti správci v tenantovi.
+
+Chcete-li tento problém vyřešit, je nutné provést přes opuštěné tenanta. Odkazovat na [převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). Musíte také přístup k DNS směřujících k Internetu pro tuto příponu domény dotyčný negace přímé důkaz, že máte pod kontrolou oboru názvů. Po tenanta se vrátí do spravovaného stavu, prosím, jestli byste museli opustit uživatelé popisují u zákazníka a ověřený název domény je nejvhodnější volbou pro svoji organizaci.
+
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Uživatel typu Host s tenantem just-in-time nebo "virální" není schopen resetování hesla
 
 Pokud je identity tenant just-in-time (JIT) nebo virálního tenanta (to znamená, že je samostatný, nespravovaného tenanta pro Azure), pouze uživatele typu Host své heslo můžou resetovat. Někdy se organizace [převzít správu virálního tenantů](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které vytvářejí, když zaměstnanci používají jejich pracovní e-mailové adresy k registraci pro služby. Po organizace převezme virálního tenanta, můžete pouze správce v této organizaci resetovat heslo uživatele nebo povolit samoobslužné resetování HESLA. V případě potřeby jako zvoucí organizaci, můžete odebrat uživatelský účet guest z adresáře a znovu odeslat pozvánku.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získat podporu pro spolupráci B2B](get-support.md)
+[Získat podporu pro spolupráci B2B](get-support.md)

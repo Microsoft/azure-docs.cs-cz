@@ -1,25 +1,18 @@
 ---
-title: Průvodce publikováním pro AppsSource storefront cloudové Tržiště, která zahrnuje Office 365, Dynamics 365, Power BI a Power Apps a Azure nabízejí AppSource
+title: Průvodce publikováním nabídky AppSource pro AppsSource prezentace | Azure Marketplace
 description: Podrobný průvodce a publikování kontrolní seznamy pro publikování aplikace na AppSource výkladní skříň pro Office 365, Dynamics 365, Power BI a Power Apps
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ellacroi
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 943f3a4739e5dffb2a7d218bf3a82a4e882538a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38175bd2365ee9ab7246f0d967c364912efda37d
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625495"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935684"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Příručka pro Office 365, Dynamics 365, Powerapps a Power BI nabídka publikování
 

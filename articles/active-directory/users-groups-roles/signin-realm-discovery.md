@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468880"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920519"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro Azure Active Directory přihlašovací stránky
 
@@ -49,7 +49,7 @@ Další výhodou této práce je vylepšené chybové zprávy. Tady je několik 
     ![heslo je chybně pomocí vhodného uživatelského jména](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Tato funkce může mít vliv na federované domény spoléhat na úroveň starého domény vyhledávání domovské sféry přinutit federace. Když se přidá Podpora federovaných domén aktualizace, naleznete v tématu [zjišťování domovské sféry během přihlašování pro služby Microsoft 365](https://azure.microsoft.com/en-us/updates/signin-hrd/). Některé organizace mají do té doby trénuje jejich zaměstnanci mohli přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory, ale obsahuje správného názvu domény, protože názvy domén nyní směruje uživatele na koncový bod domény organizace. Nové chování přihlášení to neumožňuje. Uživatel je upozorněn opravte uživatelské jméno a nejsou povoleny se přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory.
+> Tato funkce může mít vliv na federované domény spoléhat na úroveň starého domény vyhledávání domovské sféry přinutit federace. Když se přidá Podpora federovaných domén aktualizace, naleznete v tématu [zjišťování domovské sféry během přihlašování pro služby Microsoft 365](https://azure.microsoft.com/updates/signin-hrd/). Některé organizace mají do té doby trénuje jejich zaměstnanci mohli přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory, ale obsahuje správného názvu domény, protože názvy domén nyní směruje uživatele na koncový bod domény organizace. Nové chování přihlášení to neumožňuje. Uživatel je upozorněn opravte uživatelské jméno a nejsou povoleny se přihlásit pomocí uživatelského jména, která neexistuje v Azure Active Directory.
 >
 > Pokud vy nebo vaše organizace postupy, které jsou závislé na staré chování, je důležité pro správce organizace aktualizovat zaměstnance přihlašování a ověřování dokumentaci a školení uživatelům používat jejich uživatelské jméno Azure Active Directory pro přihlášení.
   

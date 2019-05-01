@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: dc455b5256f9c04e1e0af2c1ff3fea04af54d90b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8be028d11d0778c2b67788029aa400ffd3b98cb4
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565407"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872923"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -66,7 +66,7 @@ Nastavení počítače | Počítače, které se replikují do Azure, musí splň
 Úlohám počítače | Site Recovery podporuje replikace jakékoli úlohy (třeba Active Directory, SQL server atd.,) běží na podporovaném počítači. [Další informace](https://aka.ms/asr_workload).
 Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. </br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> Windows 2016 Nano Server není podporován.
 Architektura operačního systému Linux | Je podporován pouze 64bitové verzi systému. 32bitový systém se nepodporuje.
-Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.6 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.6 <br/><br/>Server se systémem Ubuntu 14.04 LTS [(podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS [(podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [(podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>-Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.</br></br> - [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a opensourcové technologie v Azure. Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> – V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> -Upgradu chráněné počítače napříč hlavní Linux není podporována verze distribuce. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> -Servery se systémem Red Hat Enterprise Linux 5,11 5.2 nebo CentOS 5.2 5,11 by měly mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
+Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.6 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.6 <br/><br/>Server se systémem Ubuntu 14.04 LTS [(podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS [(podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(podporované verze jádra)](#debian-kernel-versions)<br/><br/>Systém SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3, 4 a 5 (UEK5 UEK3 UEK4) <br/><br/></br>-Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.</br></br> - [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a opensourcové technologie v Azure. Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> – V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> -Upgradu chráněné počítače napříč hlavní Linux není podporována verze distribuce. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> -Servery se systémem Red Hat Enterprise Linux 5,11 5.2 nebo CentOS 5.2 5,11 by měly mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu verze jádra
@@ -117,8 +117,9 @@ Fyzické servery s řadič úložiště HP CCISS | Nepodporuje se.
 Zásady vytváření názvů zařízení/přípojný bod | Název zařízení nebo název přípojného bodu musí být jedinečné. Zajistěte, aby velká a malá písmena názvy žádné dvě zařízení a přípojné body. </br> Příklad: Pojmenování dvě zařízení stejný virtuální počítač jako *zařízení1* a *zařízení1* není povolený.
 Adresáře | Před [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. V následujících adresářích (Pokud nastavený jako samostatné oddíly /-systémy souborů) musí být na stejném disku operačního systému na zdrojovém serveru: / (root), Boot, / USR, /usr/local, /var, / etc.</br>2. Boot by měl být na disku oddílu a nesmí být svazku LVM.<br/><br/> Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) a vyšší, nad omezení neplatí. Boot objemu LVM napříč více než jeden disky se nepodporuje.
 Spouštěcí adresář | Více spouštěcí disky na virtuálním počítači se nepodporuje. <br/><br/> Počítač bez spouštěcí disk nejde chránit.
-
-Požadavky na místo na bezplatné | 2 GB na oddíl/root <br/><br/> 250 MB v instalační složce XFSv5 | XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou však podporovány ze služby Mobility verze dále 9.10. Pomocí nástroje xfs_info tzv XFS pro oddíl. Pokud `ftype` je nastavena na hodnotu 1, pak XFSv5 funkce se používají.
+Požadavky na volné místo| 2 GB na oddíl/root <br/><br/> 250 MB v instalační složce Nástroje
+XFSv5 | XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou však podporovány ze služby Mobility verze dále 9.10. Pomocí nástroje xfs_info tzv XFS pro oddíl. Pokud `ftype` je nastavena na hodnotu 1, pak XFSv5 funkce se používají.
+BTRFS |Z 9.22 verze je podporované BTRFS, s výjimkou následujících scénářů</br>Pokud dílčí svazek systému souborů BTRFS se změní po zapnutí ochrany, BTRFS se nepodporuje. </br>Pokud systém souborů BTRFS je rozdělena na několik disků, BTRFS se nepodporuje.</br>Pokud systém souborů BTRFS podporuje diskového pole RAID, BTRFS se nepodporuje.
 
 ## <a name="vmdisk-management"></a>Správa virtuálních počítačů/disků
 

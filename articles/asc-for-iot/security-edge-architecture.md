@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a71a0cd5888cec5c3af0e2853edf5a7f014939b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505382"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919937"
 ---
 # <a name="azure-iot-edge-security-module"></a>Modul zabezpečení Azure IoT Edge
 
@@ -27,7 +27,7 @@ ms.locfileid: "60505382"
 > Azure Security Center pro IoT je aktuálně ve verzi public preview.
 > Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční worklo§1ads. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) poskytuje výkonné funkce pro správu a provádět obchodní pracovní postupy na hraničních zařízeních.
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) poskytuje výkonné funkce pro správu a provádět obchodní pracovní postupy na hraničních zařízeních.
 Klíčovým faktorem, který přehrává IoT Edge v prostředí IoT umožňují především pro útočníky.
 
 Azure Security Center (ASC) pro modul zabezpečení IoT poskytuje komplexní řešení zabezpečení pro IoT Edge zařízení.
@@ -44,7 +44,7 @@ ASC pro IoT zabezpečení modul IoT Edge nabízí následující funkce:
 
 - Analýza manifesty nasazení IoT Edge.
 
-- Agreguje nezpracovaná bezpečnostních událostí do zprávy odeslané přes [centrum IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
+- Agreguje nezpracovaná bezpečnostních událostí do zprávy odeslané přes [centrum IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
 
 - Odeberte konfiguraci pomocí tohoto dvojčete modulu zabezpečení.
 

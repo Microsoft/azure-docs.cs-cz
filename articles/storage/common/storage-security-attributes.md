@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa43998d0b10eddacdc9e0dd512295559814255
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 7868b52fee991d4b9323fa0b7969aeca4dc83cdb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101939"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711950"
 ---
 # <a name="common-security-attributes-for-azure-storage"></a>Běžné atributy zabezpečení pro službu Azure Storage
 
@@ -37,7 +37,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ano |  |
-| vkládání podpory virtuálních sítí| neuvedeno |  |
+| Vkládání podpory virtuálních sítí| neuvedeno |  |
 | Izolace sítě a podporu funkce brány firewall| Ano | |
 | Vynucené tunelování podpory| neuvedeno |  |
 

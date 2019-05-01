@@ -3,19 +3,19 @@ title: Přehled tokenů – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o tokeny použité v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60316931"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681896"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Nová
 
 V následující tabulce jsou uvedeny deklarace identity, můžete očekávat v tokeny typu ID a přístupové tokeny vydané službou Azure AD B2C.
 
-| Name | Deklarovat | Příklad hodnoty | Popis |
+| Název | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšlený příjemce tokenu. Cílová skupina pro Azure AD B2C je ID aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. Cílové skupiny je synonymní s prostředkem. |
 | Vystavitel | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář, ve kterém byl uživatel ověřený. Vaše aplikace měla ověřit deklarace identity vystavitele tak, abyste měli jistotu, že token pochází od vhodný koncový bod. |

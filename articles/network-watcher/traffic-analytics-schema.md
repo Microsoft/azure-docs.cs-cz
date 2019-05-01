@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799318"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691416"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schéma a data a analýzy provozu
 
@@ -35,7 +35,7 @@ Analýza provozu je cloudové řešení, která poskytuje přehled o aktivitě u
 1. Všechny protokoly toku NSG mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t" jsou zachyceny v minutových intervalech v účtu úložiště jako objekty BLOB před zpracováním analýzu provozu. 
 2. Výchozí interval zpracování analýzy provozu je 60 minut. To znamená, že každých 60 minut, které analýzu provozu vybere objekty BLOB ze služby storage pro agregaci.
 3. Toky, které mají stejné Zdrojová IP adresa, cílová IP adresa, cílový port, název skupiny zabezpečení sítě, pravidlo NSG, směr toku a Transport layer protocol (TCP nebo UDP) (Poznámka: Zdrojový port je vyloučit z agregace) jsou spouštěný do jediného toku podle analýzy provozu
-4. Tento jeden záznam je upravena (podrobnosti v části níže) a přijaté v Log Analytics pomocí analýzy provozu.
+4. Tento jeden záznam je upravený (podrobnosti v následující části) a přijaté v Log Analytics provoz Analytics.This proces může trvat až 1 hodinu maximální.
 5. Pole FlowStartTime_t označuje první výskyt takové agregované tok, který (stejné čtyři-řazené kolekce členů) v protokolu toku zpracování interval mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t". 
 6. Pro libovolné prostředky v TA toky uvedené v uživatelském rozhraní jsou celkový počet toků vidět skupiny zabezpečení sítě, ale v protokolu Anlaytics uživateli se zobrazí pouze jeden, snížené záznam. Pokud chcete zobrazit všechny toky, použijte blob_id pole, které lze odkazovat z úložiště. Celkový tok pro Spolehněte se, že záznam bude odpovídat jednotlivých toků v objektu blob.
 
@@ -60,7 +60,7 @@ Tady je polí na schéma a jejich místo
 | SrcIP_s | Zdrojová IP adresa | V případě AzurePublic prázdné a ExternalPublic toky |
 | DestIP_s | Cílová IP adresa | V případě AzurePublic prázdné a ExternalPublic toky |
 | VMIP_s | IP adresu virtuálního počítače | Používá pro AzurePublic a ExternalPublic toků |
-| PublicIP_S | Veřejné IP adresy | Používá pro AzurePublic a ExternalPublic toků |
+| PublicIP_s | Veřejné IP adresy | Používá pro AzurePublic a ExternalPublic toků |
 | DestPort_d | Cílový port | Port, na kterém je příchozí provoz | 
 | L4Protocol_s  | * T <br> * U  | Přenosový protokol. T = TCP <br> U = UDP | 
 | L7Protocol_s  | Název protokolu | Odvozený od cílový port |
@@ -121,6 +121,7 @@ Tady je polí na schéma a jejich místo
 1. MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
 1. UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
 1. Neznámé – nelze mapovat buď IP adresy toky s topologií zákazníků v Azure i místní (lokalita).
+1. Některé názvy polí jsou připojeny _Malá nebo _d. Toto nemusí znamenat zdroj a cíl.
 
 ### <a name="next-steps"></a>Další kroky
 Pokud chcete získat odpovědi na nejčastější dotazy, naleznete v tématu [nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) podrobnosti o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md)

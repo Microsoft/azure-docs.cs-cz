@@ -4,229 +4,198 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: fccd5668-fe6f-4e6d-a9ce-ba4f321c33d1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/11/2017
+ms.topic: tutorial
+ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e08c8c4c576f9dd0ee6896b7adf53279afc9f53c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ca2e717e612973fa4c46c9ab4e70091d32fcf19
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60340172"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Kurz: Integrace Azure Active Directory s ZABEZPEČENÉ DORUČOVÁNÍ
 
 V tomto kurzu se dozvíte, jak integrovat ZABEZPEČENÉ DORUČOVÁNÍ se službou Azure Active Directory (Azure AD).
-
 Integrace ZABEZPEČENÉ DORUČOVÁNÍ s využitím Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k ZABEZPEČENÉ DORUČOVÁNÍ
-- Uživatele, aby automaticky získat přihlášeného k zabezpečení DORUČOVÁNÍ (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k ZABEZPEČENÉ DORUČOVÁNÍ.
+* Uživatelům se automaticky přihlášeni k zabezpečení DORUČOVÁNÍ (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s ZABEZPEČENÉ DORUČOVÁNÍ, budete potřebovat následující položky:
 
-- Předplatné Azure AD
-- ZABEZPEČENÍ poskytování jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* ZABEZPEČENÉ DORUČOVÁNÍ jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání ZABEZPEČENÉ DORUČOVÁNÍ z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* ZABEZPEČENÉ DORUČOVÁNÍ podporuje **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-secure-deliver-from-the-gallery"></a>Přidání ZABEZPEČENÉ DORUČOVÁNÍ z Galerie
+
 Pokud chcete nakonfigurovat integraci ZABEZPEČENÉ DORUČOVÁNÍ do služby Azure AD, musíte doplnit ZABEZPEČENÉ DORUČOVÁNÍ z Galerie váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat ZABEZPEČENÉ DORUČOVÁNÍ z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **ZABEZPEČENÉ DORUČOVÁNÍ**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/securedeliver-tutorial/tutorial_securedeliver_search.png)
+4. Do vyhledávacího pole zadejte **ZABEZPEČENÉ DORUČOVÁNÍ**vyberte **ZABEZPEČENÉ DORUČOVÁNÍ** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **ZABEZPEČENÉ DORUČOVÁNÍ**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+    ![ZABEZPEČENÉ DORUČOVÁNÍ v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/securedeliver-tutorial/tutorial_securedeliver_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s ZABEZPEČENÉ DORUČOVÁNÍ na základě testovací uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v ZABEZPEČENÉ DORUČOVÁNÍ je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v ZABEZPEČENÉ DORUČOVÁNÍ.
-
-V ZABEZPEČENÉ DORUČOVÁNÍ, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí ZABEZPEČENÉ DORUČOVÁNÍ podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v ZABEZPEČENÉ DORUČOVÁNÍ.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ZABEZPEČENÉ DORUČOVÁNÍ, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele ZABEZPEČENÉ DORUČOVÁNÍ](#creating-a-secure-deliver-test-user)**  – Pokud chcete mít protějšek Britta Simon v ZABEZPEČENÉ DORUČOVÁNÍ, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace zabezpečení poskytovat jednotné přihlašování](#configure-secure-deliver-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření ZABEZPEČENÉ DORUČOVÁNÍ testovacího uživatele](#create-secure-deliver-test-user)**  – Pokud chcete mít protějšek Britta Simon v ZABEZPEČENÉ DORUČOVÁNÍ, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci ZABEZPEČENÉ DORUČOVÁNÍ.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s ZABEZPEČENÉ DORUČOVÁNÍ, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s ZABEZPEČENÉ DORUČOVÁNÍ, proveďte následující kroky:
 
-1. Na webu Azure Portal na **ZABEZPEČENÉ DORUČOVÁNÍ** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **ZABEZPEČENÉ DORUČOVÁNÍ** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/securedeliver-tutorial/tutorial_securedeliver_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **ZABEZPEČENÉ DORUČOVÁNÍ domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/securedeliver-tutorial/tutorial_securedeliver_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory zabezpečení klienta poskytovat](mailto:iw-sd-support@fujifilm.com) k získání těchto hodnot. 
- 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+    ![ZABEZPEČENÉ DORUČOVÁNÍ domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    ![Konfigurace jednotného přihlašování](./media/securedeliver-tutorial/tutorial_securedeliver_certificate.png) 
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
 
-    ![Konfigurace jednotného přihlašování](./media/securedeliver-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory zabezpečení klienta poskytovat](mailto:iw-sd-support@fujifilm.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-1. Na **ZABEZPEČENÉ DORUČOVÁNÍ konfigurace** klikněte na tlačítko **nakonfigurovat ZABEZPEČENÉ DORUČOVÁNÍ** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-    ![Konfigurace jednotného přihlašování](./media/securedeliver-tutorial/tutorial_securedeliver_configure.png) 
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Ke konfiguraci jednotného přihlašování na **ZABEZPEČENÉ DORUČOVÁNÍ** straně, je nutné odeslat na stažený **certifikát (Base64)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [ZABEZPEČENÉ DORUČOVÁNÍ tým podpory](mailto:iw-sd-support@fujifilm.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+6. Na **nastavit ZABEZPEČENÉ DORUČOVÁNÍ** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-secure-deliver-single-sign-on"></a>Konfigurace zabezpečeného poskytování jednotného přihlašování
+
+Ke konfiguraci jednotného přihlašování na **ZABEZPEČENÉ DORUČOVÁNÍ** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [ZABEZPEČENÉ DORUČOVÁNÍ tým podpory ](mailto:iw-sd-support@fujifilm.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/securedeliver-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/securedeliver-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/securedeliver-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/securedeliver-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-a-secure-deliver-test-user"></a>Vytvoření ZABEZPEČENÉ DORUČOVÁNÍ testovacího uživatele
 
-Cílem této části je vytvořte uživatele Britta Simon v ZABEZPEČENÉ DORUČOVÁNÍ. Práce s [ZABEZPEČENÉ DORUČOVÁNÍ tým podpory](mailto:iw-sd-support@fujifilm.com) k přidání uživatelů v účtu ZABEZPEČENÉ DORUČOVÁNÍ.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k ZABEZPEČENÉ DORUČOVÁNÍ.
 
-![Přiřadit uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ZABEZPEČENÉ DORUČOVÁNÍ**.
 
-**Pokud chcete přiřadit k zabezpečení DORUČOVÁNÍ Britta Simon, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **ZABEZPEČENÉ DORUČOVÁNÍ**.
 
-    ![Přiřadit uživatele][201] 
+    ![ZABEZPEČENÉ DORUČOVÁNÍ odkaz v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **ZABEZPEČENÉ DORUČOVÁNÍ**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Konfigurace jednotného přihlašování](./media/securedeliver-tutorial/tutorial_securedeliver_app.png) 
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Přiřadit uživatele][202] 
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Přiřadit uživatele][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-secure-deliver-test-user"></a>Vytvoření ZABEZPEČENÉ DORUČOVÁNÍ testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+V této části vytvořte uživatele Britta Simon v ZABEZPEČENÉ DORUČOVÁNÍ. Práce s [ZABEZPEČENÉ DORUČOVÁNÍ tým podpory](mailto:iw-sd-support@fujifilm.com) přidat uživatele na platformě ZABEZPEČENÉ DORUČOVÁNÍ. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.  
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-Po kliknutí na dlaždici ZABEZPEČENÉ DORUČOVÁNÍ na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci ZABEZPEČENÉ DORUČOVÁNÍ.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-## <a name="additional-resources"></a>Další materiály
+Po kliknutí na dlaždici ZABEZPEČENÉ DORUČOVÁNÍ na přístupovém panelu, by měly být automaticky přihlásíte k ZABEZPEČENÉ DORUČOVÁNÍ u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Další prostředky
 
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/securedeliver-tutorial/tutorial_general_01.png
-[2]: ./media/securedeliver-tutorial/tutorial_general_02.png
-[3]: ./media/securedeliver-tutorial/tutorial_general_03.png
-[4]: ./media/securedeliver-tutorial/tutorial_general_04.png
-
-[100]: ./media/securedeliver-tutorial/tutorial_general_100.png
-
-[200]: ./media/securedeliver-tutorial/tutorial_general_200.png
-[201]: ./media/securedeliver-tutorial/tutorial_general_201.png
-[202]: ./media/securedeliver-tutorial/tutorial_general_202.png
-[203]: ./media/securedeliver-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

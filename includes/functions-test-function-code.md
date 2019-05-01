@@ -2,31 +2,25 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
+ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: 914c006daf49e22ebec870a549bfdbc63f882647
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a3f75b7273164abc5318f16e9ab8d9883ff0c0aa
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148060"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867310"
 ---
-## <a name="test"></a>Test funkce
+## <a name="test"></a>Testování funkce v Azure
 
-Používáme nástroj cURL k otestujete nasazenou funkci na počítači Mac nebo Linux nebo pomocí prostředí Powershell na Windows. Proveďte následující příkaz cURL, který nahradí zástupný symbol `<app_name>` názvem vaší aplikace Function App. Připojte řetězec dotazu `&name=<yourname>` k adrese URL.
-
-```powershell
-Invoke-WebRequest -Uri "https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>"
-```
+Otestujete nasazenou funkci pomocí cURL. Pomocí adresy URL, kterou jste zkopírovali v předchozím kroku, připojte řetězec dotazu `&name=<yourname>` na adresu URL, jako v následujícím příkladu:
 
 ```bash
-curl https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>
-```  
+curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
+```
 
-![Odpověď funkce se zobrazí v prohlížeči.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png)  
+![pomocí příkazu cURL k volání funkce v Azure.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-Pokud nemáte `cURL`nebo `Invoke-WebRequest` k dispozici v příkazovém řádku, zadejte stejnou adresu URL do pole adresy ve webovém prohlížeči. Znovu nahraďte zástupný symbol `<app_name>` názvem aplikace Function App, připojte řetězec dotazu `&name=<yourname>` k adrese URL a proveďte požadavek.
+Můžete také vložit zkopírovanou adresu URL na adresu ve webovém prohlížeči. Znovu připojte řetězec dotazu `&name=<yourname>` na adresu URL předtím, než provedete požadavek.
 
-    https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>
-   
-![Odpověď funkce se zobrazí v prohlížeči.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![Pomocí webového prohlížeče pro volání funkce.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

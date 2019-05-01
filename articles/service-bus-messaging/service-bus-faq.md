@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311025"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707134"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -41,6 +41,48 @@ Konvenční fronty nebo tématu je zpracovat zprostředkovatele a uložená do j
 Řazení není zajištěno, že při použití segmentované entity. V případě, že oddíl je k dispozici, můžete stále odesílání a příjem zpráv z ostatních oddílů.
 
  Dělené entity v již nejsou podporovány [SKU úrovně Premium](service-bus-premium-messaging.md). 
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Které porty je potřeba otevřít v bráně firewall? 
+Následující protokoly s Azure Service Bus můžete použít k odesílání a příjem zpráv:
+
+- Pokročilé řízení front zpráv (AMQP) protokolu
+- Service Bus Messaging Protocol (SBMP)
+- HTTP
+
+V následující tabulce pro odchozí porty, které je potřeba otevřít na použití těchto protokolů ke komunikaci s Azure Event Hubs. 
+
+| Protocol (Protokol) | Porty | Podrobnosti | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 a 5672 | Zobrazit [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350-9354 | Zobrazit [režim připojení](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| HTTP, HTTPS | 80, 443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy musí do seznamu povolených IP adres?
+Najít správné IP adresy na seznamu povolených pro vaše připojení, postupujte podle těchto kroků:
+
+1. Spusťte následující příkaz z příkazového řádku: 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Tato IP adresa je statická. Pouze bodu v čase, že by došlo ke změně je-li obnovit obor názvů do jiného clusteru.
+
+Pokud používáte redundanci zón pro váš obor názvů, je třeba provést několik dalších kroků: 
+
+1. Nejprve spusťte příkaz nslookup v oboru názvů.
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. Poznamenejte si název v **neautoritativní odpovědí** oddíl, což je v jednom z následujících formátů: 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. Spusťte nslookup pro každé z nich s příponami s1, s2 a s3 získat IP adresy všech tří instancí spuštěná ve třech zónách dostupnosti 
+
 
 ## <a name="best-practices"></a>Osvědčené postupy
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Jaké jsou některé osvědčené postupy Azure Service Bus?

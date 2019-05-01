@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354437"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918839"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -135,7 +135,11 @@ Připojení k Azure AD:
 
 ### <a name="management-platform"></a>Platforma pro správu
 
-Správu zařízení pro zařízení připojená k Azure AD je založená na platformě jako je například Intune MDM) a MDM CSP. Windows 10 obsahuje integrovaného agenta MDM, který funguje u všech řešení MDM kompatibilní.
+Správa zařízení pro zařízení připojená k Azure AD je založená na platformu MDM, jako je například Intune a MDM CSP. Windows 10 obsahuje integrovaného agenta MDM, který funguje u všech řešení MDM kompatibilní.
+
+> [!NOTE]
+> Zásady skupiny se nepodporují v zařízení připojených k Azure AD, protože nejste připojeni k místní službě Active Directory. Správa zařízení připojených k Azure AD je pouze možné provádět prostřednictvím MDM
+
 
 Pro zařízení připojená k správě služby Azure AD existují dvě metody:
 
@@ -143,7 +147,6 @@ Pro zařízení připojená k správě služby Azure AD existují dvě metody:
 
 - **Společná správa** – zařízení se spravuje pomocí poskytovatele MDM a nástroj SCCM. V takovém případě je SCCM agent nainstalovaný na zařízení spravovaná pomocí MDM spravovat některé aspekty.
 
-Protože je připojená k Azure AD zařízení nejsou připojená k místní službě Active Directory, zásady skupiny se nepodporují.
 
 
 Pokud používáte zásady skupiny, vyhodnocovat vaše parity zásady MDM pomocí [MDM migrace analýzy nástroj (MMAT)](https://github.com/WindowsDeviceManagement/MMAT). 

@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/19/2018
+ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 06809f7afb318c358ef958b1ffd21844ddfa4738
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 7238138c8a8a66c974e160a5beda45c8a464a4f2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805256"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929364"
 ---
 | **Model/metoda nasazení** | **Azure Portal** | **PowerShell** | **Azure CLI** |
 | --- | --- | --- | --- |
-| Resource Manager |[Článek](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[Článek+](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[Článek](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [Článek](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
-| Classic |[Článek ** ](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[Článek+](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Nepodporuje se |
+| Resource Manager |[Kurz](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[Kurz +](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[Kurz](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [Kurz](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
+| Classic |[Kurz **](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[Kurz +](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Nepodporuje se |
 
 Symbol ( ** ) značí, že tato metoda obsahuje kroky, které vyžadují PowerShell.
 

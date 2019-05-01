@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: f53e122eb1b2a5b6dabb9a44aef42394d0c7edb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6568e5ebf356bb0e6b4ac8ff6059cd093f8da821
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478690"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917577"
 ---
 # <a name="mapping-data-flow-derived-column-transformation"></a>Mapování toku dat odvozené sloupce transformace
 
@@ -35,4 +35,4 @@ Pokud vaše názvy sloupců jsou proměnné ze zdrojů, které staví na sestave
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [jazyk výrazů služby Data Factory pro transformace](http://aka.ms/dataflowexpressions) a [Tvůrce výrazů](concepts-data-flow-expression-builder.md)
+Další informace o [jazyk výrazů služby Data Factory pro transformace](https://aka.ms/dataflowexpressions) a [Tvůrce výrazů](concepts-data-flow-expression-builder.md)

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 013902927e0b59e5c1723868f7a3b3d553412000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: df637ee16d2116696af42fa1b162e1c77a880c19
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60879606"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922191"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Rychlý start: Použití rozhraní Translator Text API k získání seznamu podporovaných jazyků s využitím Node.js
 
@@ -89,7 +89,7 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 Ukázka je zkrácená, aby zobrazovala jenom fragment výsledku:
 

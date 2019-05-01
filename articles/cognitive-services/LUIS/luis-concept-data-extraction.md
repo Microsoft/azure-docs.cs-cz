@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812806"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867716"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahovat data z textu utterance s záměry a entity
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
@@ -441,7 +441,7 @@ Pokud používáte jednoduché entity, ujistěte se, že poskytnout příklady, 
 
 ### <a name="names-of-places"></a>Názvy míst
 
-Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a zemí. Použití předem připravených entit **[geographyV2](luis-reference-prebuilt-geographyv2.md)** extrahovat informace o poloze.
+Názvy umístění nastavují a známé jako je například města, okresy, státy, provincie a země nebo oblasti. Použití předem připravených entit **[geographyV2](luis-reference-prebuilt-geographyv2.md)** extrahovat informace o poloze.
 
 ### <a name="new-and-emerging-names"></a>Nové a chystané názvy
 

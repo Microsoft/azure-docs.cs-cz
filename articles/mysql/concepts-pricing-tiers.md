@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5d7ff8513a0659ca1107b9baf07cdf4bac4b807
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60528296"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688632"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -40,31 +40,25 @@ Po vytvoření serveru, počet virtuálních jader generace hardwaru a cenové �
 
 Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. V současné době můžete zvolit ze dvou generací compute Gen 4 a 5 Obecné. Gen 4 logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech. 4. generace a generace 5 jsou k dispozici v následujících oblastech ("X" označuje k dispozici).
 
-> [!IMPORTANT]
-> Od 12. prosince 2018, nebudou moct zřizovat výpočetní generace 4 servery v oblasti Brazílie – Jih, Kanada – střed, Kanada – východ, Asie – východ, USA – východ 2, střed Indie, Indie – Západ, Japonsko – Západ, střed USA – sever, USA – západ nové zákazníky. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. února 2019 v těchto oblastech předtím vytvořili.
->
-> [!IMPORTANT]
-> Od 15. února 2019 noví zákazníci nebude možné zřizovat výpočetní generace 4 servery v oblasti střed USA, USA – východ, Japonsko – východ, Severní Evropa, střed USA – Jih, jihovýchodní Asie, západní Evropa. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. dubna 2019 v těchto oblastech předtím vytvořili.
-
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|
 | USA – střed |  | X |
 | USA – východ |  | X |
 | Východní USA 2 |  | X |
 | Středoseverní USA |  | X |
-| Středojižní USA | X | X |
+| Středojižní USA |  | X |
 | Západní USA |  | X |
 | Západní USA 2 |  | X |
 | Brazílie – jih |  | X |
 | Kanada – střed |  | X |
 | Kanada – východ |  | X |
-| Severní Evropa | X | X |
+| Severní Evropa |  | X |
 | Západní Evropa |  | X |
 | Francie – střed |  | X |
 | Velká Británie – jih |  | X |
 | Spojené království – západ |  | X |
 | Východní Asie |  | X |
-| Jihovýchodní Asie | X | X |
+| Jihovýchodní Asie |  | X |
 | Austrálie – východ |  | X |
 | Austrálie – střed |  | X |
 | Austrálie – střed 2 |  | X |
@@ -72,7 +66,7 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Střed Indie |  | X |
 | Indie – jih |  | X |
 | Indie – západ |  | X |
-| Japonsko – východ | X | X |
+| Japonsko – východ |  | X |
 | Japonsko – západ |  | X |
 | Jižní Korea – střed |  | X |
 | Jižní Korea – jih |  | X |

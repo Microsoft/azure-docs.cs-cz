@@ -3,25 +3,25 @@ title: Soubor cookie definice – Azure Active Directory B2C | Dokumentace Micro
 description: Obsahuje definice pro soubory cookie použít v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ac422a00a919903063c96ac096882036b99a63e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7864320b71416d1b06661b8ae96c6113962250dd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384982"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703980"
 ---
 # <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Soubory cookie definice pro Azure Active Directory B2C
 
 V následující tabulce jsou uvedeny soubory cookie se používají v Azure Active Directory B2C.
 
-| Name | Domain (Doména) | Konec platnosti | Účel |
+| Název | Domain (Doména) | Konec platnosti | Účel |
 | ----------- | ------ | -------------------------- | --------- |
 | x-ms-cpim-admin | main.b2cadmin.ext.azure.com | Konec [relaci prohlížeče](active-directory-b2c-token-session-sso.md) | Obsahuje dat o členství uživatele mezi tenanty. Tenanti uživatel je členem sady a úroveň členství (správce nebo uživatel). |
 | x-ms-cpim-slice | Login.microsoftonline.com, b2clogin.com, značkové domény | Konec [relaci prohlížeče](active-directory-b2c-token-session-sso.md) | Používá pro směrování požadavků na vhodné produkční instance. |

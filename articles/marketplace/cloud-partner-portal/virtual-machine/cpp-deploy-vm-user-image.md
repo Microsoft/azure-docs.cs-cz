@@ -1,25 +1,18 @@
 ---
-title: Nasazení virtuálního počítače Azure od uživatele virtuálního pevného disku | Dokumentace Microsoftu
+title: Nasazení virtuálního počítače Azure od uživatele virtuálního pevného disku | Azure Marketplace
 description: Vysvětluje, jak nasadit uživatelské image virtuálního pevného disku pro vytvoření instance virtuálního počítače Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0885b187c4b9e9636144a3ab2a94b941008bec20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046731"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938248"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Nasazení virtuálního počítače Azure od uživatele virtuálního pevného disku
 
@@ -38,7 +31,7 @@ Kopírování šablony Azure Resource Manageru pro [nasazení virtuálního pevn
 | userStorageAccountName     | Název účtu úložiště                                                    |
 | sNameForPublicIP           | Název DNS pro veřejné IP adresy. Musí obsahovat malá písmena                                  |
 | subscriptionId             | Identifikátor předplatného Azure                                                  |
-| Umístění                   | Standardní Azure zeměpisné umístění skupiny prostředků                       |
+| Location                   | Standardní Azure zeměpisné umístění skupiny prostředků                       |
 | vmName                     | Název virtuálního počítače                                                    |
 | VaultName                  | Název trezoru klíčů.                                                          |
 | vaultResourceGroup         | Skupina prostředků trezoru klíčů.

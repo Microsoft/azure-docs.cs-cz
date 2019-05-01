@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122587"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702520"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje výkonu a metrik připojení, počítače a zpracování dat inventáře a informace o stavu a předá ji do pracovního prostoru Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [dotazu](../../azure-monitor/log-query/log-query-overview.md) ve službě Azure Monitor. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -202,7 +202,7 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 | ProductVersion_s | Verze produktu |
 | FileVersion_s | Verze souboru |
 | CommandLine_s | Příkazový řádek |
-| ExecutablePath _Malá | Cesta ke spustitelnému souboru |
+| ExecutablePath_s | Cesta ke spustitelnému souboru |
 | WorkingDirectory_s | Pracovní adresář |
 | Uživatelské jméno | Účet, pod kterým je spuštěn proces |
 | UserDomain | Domény, pod kterým je spuštěn proces |

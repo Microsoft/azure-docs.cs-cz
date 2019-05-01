@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 064c3e5fb7a65a7495c393db893e784548075daf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298879"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708217"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -75,6 +75,7 @@ Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávněn
 1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
 1. Otevřete řešení v sadě Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
 1. V závislosti na verzi sady Visual Studio možná budete muset klikněte pravým tlačítkem na projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` a **balíčky NuGet pro obnovení**
+1. Otevřete konzolu Správce balíčků (Zobrazení -> ostatní Windows -> Konzola správce balíčků) a spustit `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Upravte soubor **Web.config** a nahraďte parametry `ClientId` a `Tenant` následujícími hodnotami:
 
     ```xml

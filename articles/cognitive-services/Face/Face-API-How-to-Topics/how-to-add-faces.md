@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Přidat tváří – rozhraní API pro rozpoznávání tváře'
+title: 'Příklad: Přidat tváří jeden objekt PersonGroup – rozhraní API pro rozpoznávání tváře'
 titleSuffix: Azure Cognitive Services
 description: Použijte rozhraní API pro rozpoznávání tváře k přidání tváří do obrázků.
 services: cognitive-services
@@ -8,31 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 722a09b782c902642b599460835151928c16c5f4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 04fe9251ba124ed5d218daf915339c7f84efdeb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859024"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704194"
 ---
-# <a name="example-how-to-add-faces"></a>Příklad: Postup přidání tváří
+# <a name="how-to-add-faces-to-a-persongroup"></a>Postup přidání tváří jeden objekt PersonGroup
 
-Tento průvodce ukazuje osvědčený postup pro přidání velkého množství osob a tváří do kolekce PersonGroup.
-Stejná strategie platí taky pro kolekce FaceList a LargePersonGroup.
-Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře.
+Tato příručka ukazuje osvědčené postupy pro přidávání velkého množství osob a tváří na jeden objekt PersonGroup objekt. Stejné strategie platí také pro LargePersonGroup FaceList a LargeFaceList. Tato ukázka je napsána v C# vytvořeného v klientské knihovně .NET API pro rozpoznávání tváře.
 
 ## <a name="step-1-initialization"></a>Krok 1: Inicializace
 
-Deklaruje se několik proměnných a implementuje se pomocná funkce pro plánování žádostí.
+Následující kód deklaruje několik proměnných a implementuje přidejte pomocnou funkci rozhraním pro rozpoznávání tváře naplánování požadavků.
 
 - `PersonCount` je celkový počet osob.
 - `CallLimitPerSecond` je maximální počet volání za sekundu podle úrovně předplatného.
 - `_timeStampQueue` je fronta zaznamenávající časová razítka požadavků.
 - `await WaitCallLimitPerSecondAsync()` počká, než bude platné odeslat další požadavek.
 
-```CSharp
+```csharp
 const int PersonCount = 10000;
 const int CallLimitPerSecond = 10;
 static Queue<DateTime> _timeStampQueue = new Queue<DateTime>(CallLimitPerSecond);
@@ -62,20 +60,20 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>Krok 2: Povolit volání rozhraní API
 
-Když používáte klientskou knihovnu, klíč předplatného se předává prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
+Při použití klientské knihovny, je nutné předat do konstruktoru třídy FaceServiceClient váš klíč předplatného. Příklad:
 
-```CSharp
+```csharp
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Klíč předplatného můžete získat z webu Marketplace nebo z portálu Azure Portal. Přečtěte si téma [Předplatná](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Klíč předplatného můžete získat z webu Marketplace nebo z portálu Azure Portal. Přečtěte si téma [Předplatná](https://www.microsoft.com/cognitive-services/sign-up).
 
 ## <a name="step-3-create-the-persongroup"></a>Krok 3: Vytvořte jeden objekt PersonGroup
 
 Kolekce PersonGroup s názvem „MyPersonGroup“ slouží k ukládání osob.
 Čas žádosti se zařadí do fronty `_timeStampQueue`, aby se zajistilo celkové ověření.
 
-```CSharp
+```csharp
 const string personGroupId = "mypersongroupid";
 const string personGroupName = "MyPersonGroup";
 _timeStampQueue.Enqueue(DateTime.UtcNow);
@@ -86,7 +84,7 @@ await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 
 Osoby se vytváří současně, a aby nedošlo k překročení limitu volání, používá se příkaz `await WaitCallLimitPerSecondAsync()`.
 
-```CSharp
+```csharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
@@ -102,7 +100,7 @@ Parallel.For(0, PersonCount, async i =>
 Přidávání tváří různým osobám se zpracovává souběžně, ale u konkrétní osoby je sekvenční.
 Opět se vyvolává příkaz `await WaitCallLimitPerSecondAsync()`, aby se zajistilo, že frekvence žádostí nepřekročí limit.
 
-```CSharp
+```csharp
 Parallel.For(0, PersonCount, async i =>
 {
     Guid personId = persons[i].PersonId;

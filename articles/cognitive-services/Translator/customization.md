@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71856865eb7a0445cdcf39def9c0fc89c1f8dcec
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468359"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951430"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
@@ -43,7 +43,7 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> Starší verze centra Microsoft Translator se vyřadí z provozu 30. dubna 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).  
+> Starší verze centra Microsoft Translator se vyřadí 17. května 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Vlastní Translator oproti centra
 
@@ -60,8 +60,6 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 
 > [!NOTE]
 > Od 1. února 2018 je AddTranslation() a AddTranslationArray() již nejsou k dispozici pro použití s Translator Text API V2.0. Tyto metody se nezdaří a nic budou zapsány. Verze Translator Text API 3.0 nepodporuje tyto metody.
-> 
-> Podobně jako funkce jsou dostupné v rozhraní Translator API rozbočovače. Zobrazit [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>Další postup
 

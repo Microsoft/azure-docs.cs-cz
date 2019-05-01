@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: eaf2d4a5a34a42867debcff4163f692431c8e0ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61052386"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573862"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak napsat uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Jakmile zapsána, uložené procedury musí být zaregistrovaná s kolekcí. Dal
 
 ### <a id="create-an-item"></a>Vytvořte položku pomocí uložené procedury
 
-Když budete vytvářet položku pomocí uložené procedury, položka je vložen do kontejneru Azure Cosmos DB a id pro nově vytvořenou položku, kterou vrátil. Vytvoření položky je asynchronní operace a závisí na zpětné volání funkce jazyka JavaScript. Funkce zpětného volání má dva parametry – jeden pro objekt error, v takovém případě se operace nezdaří a druhý pro návratovou hodnotu; v tomto případě vytvořený objekt. Uvnitř zpětného volání můžete zpracovat výjimku nebo vyvolat chybu. V případě není k dispozici zpětné volání a dojde k chybě, modul runtime služby Azure Cosmos DB vyvolá chybu. 
+Když budete vytvářet položku pomocí uložené procedury, položka je vložen do kontejneru Azure Cosmos DB a vrátí se id pro nově vytvořenou položku. Vytvoření položky je asynchronní operace a závisí na zpětné volání funkce jazyka JavaScript. Funkce zpětného volání má dva parametry – jeden pro objekt error, v takovém případě se operace nezdaří a druhý pro návratovou hodnotu; v tomto případě vytvořený objekt. Uvnitř zpětného volání můžete zpracovat výjimku nebo vyvolat chybu. V případě není k dispozici zpětné volání a dojde k chybě, modul runtime služby Azure Cosmos DB vyvolá chybu. 
 
 Uložená procedura také obsahuje parametr nastavit popis, je logická hodnota. Pokud parametr je nastaven na hodnotu true a popis chybí, uložené procedury vyvolá výjimku. V opačném případě zbývající uložené procedury zůstane spuštěný.
 

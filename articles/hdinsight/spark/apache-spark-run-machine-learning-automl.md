@@ -1,36 +1,36 @@
 ---
 title: Spuštění úlohy Azure Machine Learning pomocí automatizovaných strojového učení (AutoML) na Apache Spark v Azure HDInsight
 description: Zjistěte, jak spouštět úlohy Azure Machine Learning s automatizované strojového učení (AutoML) na Apache Spark v Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 896cae9b7fc43765e340ba3b92351e04b5512efd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5135de0fc87af227073f96c653d928ace1a50fd0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762547"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917039"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Spuštění úlohy Azure Machine Learning pomocí automatizovaných strojového učení (AutoML) na Apache Spark v Azure HDInsight
 
-Azure Machine Learning je nástroj pro spolupráci, přetáhněte myší, které můžete použít k sestavení, testovat a nasazovat řešení prediktivní analýzy s vašimi daty. Azure Machine Learning publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, jako je například aplikace Excel. Automatizované strojového učení (AutoML) pomáhá vytvářet vysoce kvalitní modelů strojového učení pomocí inteligentní automatizaci a optimalizace. AutoML rozhodne správný algoritmus a hyper parametry se mají použít pro typy konkrétní problém.
+Služba Azure Machine Learning zjednodušuje a zrychluje tvorbu, školení a nasazení modelů strojového učení. V automatizovaných strojového učení (AutoML) začněte s trénovací data, která má funkci definovanému cíli a potom iteraci v rámci kombinaci algoritmů a výběry funkcí automaticky vybrat nejlepší model pro data podle skóre školení. HDInsight umožňuje zákazníkům vytvářet clustery s využitím stovek uzlů. AutoML běžící na Sparku v clusteru služby HDInsight umožňuje uživatelům používat výpočetní kapacitu na těchto uzlech spouštět úlohy trénování způsobem horizontální navýšení kapacity a k paralelnímu spouštění několika úlohy trénování. To umožňuje uživatelům spouštět experimenty AutoML při sdílení s jejich ostatními úlohami velkých objemů dat tak výpočetní prostředky.
+ 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Clusteru služby HDInsight nainstalovat Azure Machine Learning
 
-> [!Note]
-> Pracovní prostor Azure ML je teď dostupná v těchto oblastech: eastus eastus2 a westcentralus. HDInsight cluster musí také vytvořené v některém z těchto oblastí.
-
-Obecné kurzy Azure Machine Learning a automatizované strojového učení najdete na stránce [kurzu: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio](../../machine-learning/studio/create-experiment.md) a [kurzu: Automatizované machine learningu k vytváření regresní model](../../machine-learning/service/tutorial-auto-train-models.md).
-Chcete-li nainstalovat Azure ml v clusteru Azure HDInsight, spusťte skript akce – [install_aml](https://commonartifacts.blob.core.windows.net/automl/install_aml.sh) – na hlavní uzly a pracovních uzlů v clusteru HDInsight 3.6 Spark 2.3.0 (doporučeno). Tuto akci se skripty můžete spustit buď jako součást procesu vytváření clusteru, nebo v existujícím clusteru na webu Azure portal.
-
-Další informace o akcí skriptů najdete v článku [HDInsight založených na Linuxu přizpůsobit clustery pomocí akcí skriptů](../hdinsight-hadoop-customize-cluster-linux.md). Kromě instalace balíčky Azure Machine Learning a závislosti, skript také soubory ke stažení ukázkové aplikace Jupyter Notebook (do cesty `HdiNotebooks/PySpark` výchozí úložiště). Tento poznámkový blok Jupyter ukazuje, jak používat automatické strojového učení třídění pro jednoduché klasifikace problému.
+Obecné kurzy automatizované strojového učení najdete na stránce [kurzu: Automatizované machine learningu k vytváření regresní model](../../machine-learning/service/tutorial-auto-train-models.md).
+Všechny nové clustery HDInsight Spark jsou předinstalovány se sadou SDK AzureML AutoML. Můžete začít s AutoML na HDInsight s tímto [ukázkové aplikace Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi). Tento poznámkový blok Jupyter ukazuje, jak používat automatické strojového učení třídění pro jednoduché klasifikace problému.
 
 > [!Note]
 > Balíčky Azure Machine Learning jsou nainstalovány do prostředí conda Python3. Nainstalované aplikace Jupyter notebook by měl spustit pomocí PySpark3 jádra.
+
+Můžete také použít poznámkových bloků Zeppelin AutoML také používat.
+
+> [!Note]
+> Má Zeppelin [známý problém](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html) kde PySpark3 nebude vybrat správnou verzi Pythonu. Použijte prosím dokumentované řešení.
 
 ## <a name="authentication-for-workspace"></a>Ověřování pro pracovní prostor
 
@@ -42,8 +42,8 @@ Následující fragment kódu vytvoří token ověřování pomocí **aplikaci A
 from azureml.core.authentication import ServicePrincipalAuthentication
 auth_sp = ServicePrincipalAuthentication(
                 tenant_id = '<Azure Tenant ID>',
-                username = '<Azure AD Application ID>',
-                password = '<Azure AD Application Key>'
+                service_principal_id = '<Azure AD Application ID>',
+                service_principal_password = '<Azure AD Application Key>'
                 )
 ```
 Následující fragment kódu vytvoří token ověřování pomocí **uživatele Azure AD**.
@@ -69,9 +69,10 @@ dataflow_with_token = dprep.read_csv(path='https://dpreptestfiles.blob.core.wind
 
 ## <a name="experiment-submission"></a>Odeslání experimentu
 
-V konfiguraci automatizované machine learning, vlastnost `spark_context` stanovit pro spuštění v distribuovaném režimu balíčku. Vlastnost `concurrent_iterations`, což je maximální počet iterací, které spouští paralelně, musí být nastavená na číslem menším než jader prováděcí modul pro aplikace Spark.
+V [automatizované machine learning configuration](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig), vlastnost `spark_context` stanovit pro spuštění v distribuovaném režimu balíčku. Vlastnost `concurrent_iterations`, což je maximální počet iterací, které spouští paralelně, musí být nastavená na číslem menším než jader prováděcí modul pro aplikace Spark.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o motivace za automatizované strojového učení najdete v tématu [strojového učení automatizované verze modely na úrovni tempem pomocí společnosti Microsoft!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/).
+* Další informace o motivace za automatizované strojového učení najdete v tématu [strojového učení automatizované verze modely na úrovni tempem pomocí společnosti Microsoft!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
+* Další podrobnosti o použití funkce Azure ML automatizované ML, naleznete v tématu [nový automatizované technologie strojového učení ve službě Azure Machine Learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Projekt AutoML od Microsoft Research](https://www.microsoft.com/research/project/automl/)

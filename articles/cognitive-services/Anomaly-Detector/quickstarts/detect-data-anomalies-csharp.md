@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 772f15f54819f31d92411df747fc10d54b3e96cd
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544108"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922521"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API detekce anomálií aC# 
 
@@ -35,7 +35,7 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
         1. Klikněte pravým tlačítkem na **správci řešení**
         2. Klikněte na tlačítko **spravovat balíčky NuGet...**
         3. Vyhledejte `Newtonsoft.Json` a instalace balíčku
-- Pokud používáte Linux nebo MacOS, můžete tuto aplikaci spustili pomocí [Mono](http://www.mono-project.com/).
+- Pokud používáte Linux nebo MacOS, můžete tuto aplikaci spustili pomocí [Mono](https://www.mono-project.com/).
 
 - Odkazuje JSON soubor obsahující data časových řad. Ukázková data pro účely tohoto rychlého startu můžete najít na [Githubu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 

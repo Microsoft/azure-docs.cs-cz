@@ -10,95 +10,111 @@ ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 12/03/2018
-ms.openlocfilehash: de5e853db6c6a0e98dea9251cc07b526288574e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/22/2019
+ms.openlocfilehash: 604603a145ab360af18ce74748707da9f5f93427
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60805159"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726399"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumejte Azure čas Series Insights ve verzi Preview ukázkovém prostředí
 
-V tomto rychlém startu se dozvíte, jak pomocí Průzkumníka Azure čas řadu přehledů ve verzi Preview v bezplatném ukázkovém prostředí. Se dozvíte, jak pomocí webového prohlížeče vizualizovat velké objemy historických dat průmyslového IoT a můžete si klíčové funkce Průzkumníka čas Series Insights ve verzi Preview.
+Tento rychlý start vám pomůže začít s Azure čas Series Insights Preview. Prostřednictvím bezplatné ukázky budete prohlédnete si klíčové funkce, které byly přidány ve verzi Preview čas Series Insights.
 
-Time Series Insights poskytuje začátku do konce platforma jako služba (PaaS). Může ingestovat, zpracování, ukládání a dotazování dat IoT měřítku vysoce uvádí v kontextu, optimalizované řady čas pro zkoumání dat improvizovanými. Poskytuje také provozní analýzy. Time Series Insights je rozlišené nabídky, který je vytvořený na míru pro jedinečné potřeby průmyslové nasazení IoT.
+Ukázka prostředí ve verzi Preview obsahuje scénář společnost Contoso, který se ovládá dvě větrné turbíny farmy, každý s 10 turbíny. Každý turbíny mají 20 snímače, které vykazují data každou minutu pro službu Azure IoT Hub. Snímačům shromažďovat informace o počasí, výšku okna a yaw pozici. Také generátor výkon, řazením chování a bezpečnostní monitoruje.
 
-Ukázkovém prostředí ukazuje elektrické energie generování společnosti Contoso. V prostředí pomocí služby Time Series Insights užitečné přehledy v data společnosti Contoso a provést analýzu krátký hlavní příčinu. Contoso používá dva větrné turbíny farmy, každý s 10 turbíny. Každý turbíny mají 20 snímače, které vykazují data každou minutu pro službu Azure IoT Hub. Snímačům shromažďovat informace o počasí, výšku okna a yaw pozici, generátor výkonu, řazením chování a bezpečný přístup z více monitorů.
-
-Čas Series Insights ve verzi Preview můžete použít k analýze společnosti Contoso neustále se rozšiřujícímu datové sady z poslední dva roky, který je momentálně obsazená na 40 GB. To vám mohou pomoci při lepší pochopení a předvídání kritické chyby a problémy s pomalým pohybem údržby.
-
-Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
+ Naučíte se používat Time Series Insights na užitečné přehledy v data společnosti Contoso. Budete také provádět analýzu krátký příčiny lépe předpovědět kritické chyby a provedení údržby.
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Prozkoumejte službu v Průzkumníku Time Series Insights v ukázkovém prostředí
 
-1. V prohlížeči přejděte [prostředí Contoso větrné farmy](https://insights.timeseries.azure.com/preview/samples).  
+Průzkumník čas Series Insights ve verzi Preview demonstruje historických dat a hlavní příčiny potíží analýzy. Jak začít:
 
-1. Pokud se zobrazí výzva, přihlaste se do Průzkumníka služby Time Series Insights pomocí přihlašovacích údajů účtu Azure.
+1. Vytvoření [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Pokud ještě nebyl vytvořen.
 
-### <a name="demo-step-1"></a>Ukázka krok 1
+1. Přejděte [Contoso větrné farmy ukázka](https://insights.timeseries.azure.com/preview/samples) prostředí.  
 
-1. Pojďme se podívat na větrné turbíny **W7** v **1 zařízení Contoso**.  
+1. Pokud se zobrazí výzva, přihlaste se do Průzkumníka služby Time Series Insights pomocí přihlašovacích údajů svého účtu Azure.
 
-    * **Akce**: Aktualizovat rozsah zobrazení k **1/1/17 20:00 do 3/10/17 20:00 (UTC)**, přidejte **1 zařízení Contoso** > **W7** > **generátor systému**   >  **GeneratorSpeed** snímače a poté zobrazte výsledné hodnoty.
+## <a name="work-with-historical-data"></a>Práce s využitím historických dat
 
-       ![Rychlý start, jeden][1]
+1. Podívejte se na větrné turbíny **W7** v **1 zařízení Contoso**.  
 
-1. Contoso nedávno, najdete je v větrné turbíny **W7**. Teď přejdete k podrobnostem tady. Můžeme vidět, že senzor fire výstrahy se aktivovala během ohně.
+    * Aktualizace zobrazení rozsahu na **1/1/17 20:00 do 3/10/17 20:00 (UTC)**.
+    * Vyberte **Contoso zařízení 1** > **W7** > **generátor systému** > **GeneratorSpeed** senzor. Pak zkontrolujte výsledné hodnoty.
 
-    * **Akce**: Aktualizace zobrazení rozsahu na **3/9/17 20:00 do 3/10/17 20:00 (UTC)** a přidejte **bezpečnost systému** > **FireAlert** senzoru.
+      [![Rychlý start, jeden](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-      ![Rychlý start dvě][2]
+1. Contoso nedávno, najdete je v větrné turbíny **W7**. Názory liší o co blízkém požár příčina. Při kontrole podrobněji vidíme, že senzor fire výstrahy se aktivovala během ohně.
 
-1. Podívejme se, co se stalo v době výskytu ohně. Ropa tlak a aktivní upozornění vnímal špičku těsně před požár, ale během této doby je příliš pozdě, abyste zabránili tomuto problému.
+    * Aktualizace zobrazení rozsahu na **3/9/17 20:00 do 3/10/17 20:00 (UTC)**.
+    * Vyberte **bezpečnost systému** > **FireAlert** senzoru.
 
-    * **Akce**: Přidat **rozteč systému** > **HydraulicOilPressure** ze senzorů a **rozteč systému** > **ActiveWarning**senzoru.
+      [![Rychlý start dvě](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
-      ![Tři rychlém startu][3]
+1. Kontrolovat další události v době výskytu fire pochopit, co došlo k chybě. Ropa tlak a vnímal špičku těsně před požár jedno aktivní upozornění.
 
-1. Oddálit jsme můžeme vidět, byly příznaky vedoucí k ohně. Obě senzorů pohyboval. Proto se tento problém stalo před?
+    * Vyberte **rozteč systému** > **HydraulicOilPressure** senzoru.
+    * Vyberte **rozteč systému** > **ActiveWarning** senzoru.
 
-    * **Akce**: Aktualizace zobrazení rozsahu na **2/24/17 20:00 do 3/10/17 20:00 (UTC)**.
+      [![Tři rychlém startu](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
-      ![Rychlý start čtyři][4]
+1. Přetížení ropy a aktivní upozornění senzorů vnímal špičku těsně před ohně. Rozbalte zobrazené časové řady zobrazíte další příznaky k dispozici vedoucí k ohně. Obě senzorů pohyboval konzistentně časem označující trvalé a znepokojující vzor.
 
-1. Pokud nám prozkoumat celé dva roky dat, můžeme vidět předchozí událost fire stejné znaky. S těmito daty můžeme sestavit systémy tak, aby odhalte problémy s tímto způsobem jeden již v rané fázi.
+    * Aktualizace zobrazení rozsahu na **2/24/17 20:00 do 3/10/17 20:00 (UTC)**.
 
-    * **Akce**: Aktualizace zobrazení rozsahu na **1/1/16 12/31/17** (všechna data).
+      [![Rychlý start čtyři](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
-       ![Rychlý start pět][5]
+1. Zkoumání dva roky z historických odhalí jinou fire událost s stejné výkyvy senzoru.
 
-### <a name="demo-step-2"></a>Ukázka krok 2
+    * Aktualizace zobrazení rozsahu na **1/1/16 12/31/17** (všechna data).
 
-1. Další problémy se nejnenápadnější a obtížnější k diagnostice. Time Series Insights poskytuje celou řadu způsobů, jak pomáhají sledovat složitých problémů. Tady vidíme výpadek senzor upozornění na **W6** na **6/25**. Ale co se skutečně děje?
+      [![Rychlý start pět](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-    * **Akce**: Odebrat aktuální senzory, aktualizujte zobrazení rozsahu **6/1/17 20:00 do 7/1/17 20:00 (UTC)** a pak přidejte **1 zařízení Contoso** > **W6**  >  **Bezpečnost systému** > **VoltageActuatorSwitchWarning** senzoru.
+Pomocí Azure Time Series Insights a naše telemetrie ze senzorů, jsme přišli problematické tak pro dlouhodobou trend skryté v našich historická data. Díky těmto poznatkům nové vám vysvětlíme:
 
-       ![Rychlý start šest][6]
+> [!div class="checklist"]
+> * Co se skutečně stalo
+> * Odstranění problému
+> * Umístění systémy vynikající oznámení výstrah.
 
-1. Toto upozornění označuje potíže s napětí se výstup generátoru. Ale co je příčinou? Celkový výkon výstupu se zobrazila generátor vypadá dobře detailní intervalech. Ale na základě agregace dat, můžeme vidět konečné pro odložení.
+## <a name="root-cause-analysis"></a>Analýza hlavní příčiny
 
-    * **Akce**: Odeberte **VoltageActuatorSwitchWarning** senzor, přidejte **generátor systému** > **ActivePower** ze senzorů a aktualizace interval **3d**.
+1. Některé scénáře vyžadují sofistikované analýzy odhalit další drobným příčiny v datech. Vyberte windmill **W6** datu **25. ledna 6**
 
-       ![Rychlý start sedm][7]
+    * Aktualizace zobrazení rozsahu na **6/1/17 20:00 do 7/1/17 20:00 (UTC)**
+    * Vyberte **1 zařízení Contoso** > **W6** > **bezpečnost systému** > **VoltageActuatorSwitchWarning**  senzoru.
 
-1. Pokud jsme přecházení vpřed v datové sadě, vidíme, že tento problém není přechodná. Bude pokračovat.
+      [![Rychlý start šest](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-    * **Akce**: Rozšiřte časový rozsah na pravé straně.
+1. Toto upozornění označuje potíže s napětí se výstup generátoru. Celkové výkon generátoru je zpracovávána v rámci normálního parametry našich na základě aktuálního intervalu. Zvýšením naše interval splatit jiného vzor: existuje jednoznačný pro odložení.
 
-       ![Rychlý start osm][8]
+    * Odeberte **VoltageActuatorSwitchWarning** senzoru.
+    * Vyberte **generátor systému** > **ActivePower** senzoru.
+    * Interval aktualizace **3d**.
 
-1. Můžeme přejít k další. Můžeme přidat dalších datových bodů snímač napětí zobrazit podle fáze. Prohlédněte si všechny datové body srovnatelné ale. Pojďme vyřadit značky zobrazíte skutečnými hodnotami. Pravděpodobně je nějaký problém s výstupem fáze 3.
+      [![Rychlý start sedm](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
-    * **Akce**: Přidat **generátor systému** > **GridVoltagePhase1**, **GridVoltagePhase2**, a **GridVoltagePhase3** senzory. Odstranit značku na poslední datový bod viditelná oblast.
+1. Po rozbalení časový rozsah, můžeme určit, jestli problém zastavila nebo zda bude pokračovat.
 
-       ![Rychlý start osm][8]
+    * Prodloužit časový interval 60 dnů.
 
-1. Můžeme zobrazit všechny tři datových bodů ve stejném měřítku, odkládací fáze 3 se zobrazí i zřetelnější. V tuto chvíli jsme připraveni k odkazování na náš tým údržby s dobrým potenciálních zákazníků na příčina upozornění problém.  
+      [![Rychlý start osm](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
-    * **Akce**: Aktualizujte zobrazení k překrytí všechny senzory na stejné měřítko grafu.
+1. Další datové body senzor lze přidat k zajištění vynikajících kontextu. Další senzory, abychom mohli zobrazit, podrobnější je naše Principy problému. Pojďme vyřadit značky zobrazíte skutečnými hodnotami. 
 
-       ![Rychlý start devět][9]
+    * Vyberte **generátor systému** > **GridVoltagePhase1**, **GridVoltagePhase2**, a **GridVoltagePhase3** senzorů .
+    * Odstranit značku na poslední datový bod viditelná oblast.
+
+      [![Rychlý start devět](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+
+    Tři napěťovými senzory pracujete srovnatelně a v rámci normálního parametrů. To vypadá, **GridVoltagePhase3** senzor je nadměrné spotřeby.
+
+1. S vysoce kontextových dat přidali se zobrazí jako problém ještě více odkládací fáze 3. Nyní jsme připraveni najdete problém na náš tým údržby s dobrým potenciálních zákazníků na příčina upozornění.  
+
+    * Aktualizovat displej tak, aby všechny překryv **generátor systému** senzory ve stejném grafu škálování.
+
+       [![Rychlý start deset](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -106,14 +122,3 @@ Jste připraveni vytvořit vlastní prostředí čas Series Insights ve verzi Pr
 
 > [!div class="nextstepaction"]
 > [Plánování prostředí čas Series Insights ve verzi Preview](time-series-insights-update-plan.md)
-
-<!-- Images -->
-[1]: media/v2-update-quickstart/quickstart-one.png
-[2]: media/v2-update-quickstart/quickstart-two.png
-[3]: media/v2-update-quickstart/quickstart-three.png
-[4]: media/v2-update-quickstart/quickstart-four.png
-[5]: media/v2-update-quickstart/quickstart-five.png
-[6]: media/v2-update-quickstart/quickstart-six.png
-[7]: media/v2-update-quickstart/quickstart-seven.png
-[8]: media/v2-update-quickstart/quickstart-eight.png
-[9]: media/v2-update-quickstart/quickstart-nine.png

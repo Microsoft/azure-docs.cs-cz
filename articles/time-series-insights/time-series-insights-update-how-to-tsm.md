@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1686b52c9dacf5c78335f76bd19b41c4c7d15cee
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: df94290c5e62b898b6490c78ef0ae1ee79437240
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555400"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716949"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelování dat v Azure čas Series Insights ve verzi Preview
 
@@ -132,7 +132,9 @@ Vyberte instanci a vyberte **odstranit**. Pokud nejsou žádné události souvis
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o modelech řady čas, najdete v článku [modelování dat](./time-series-insights-update-tsm.md).
+
 - Další informace o verzi preview, přečtěte si [vizualizace dat v Průzkumníku Azure čas Series Insights ve verzi Preview](./time-series-insights-update-explorer.md).
+
 - Další informace o podporované tvary JSON najdete v článku [podporované tvary JSON](./time-series-insights-send-events.md#json).
 
 <!-- Images -->

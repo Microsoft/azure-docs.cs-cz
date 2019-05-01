@@ -2,24 +2,18 @@
 title: Požadavky na uvedením typu | Azure
 description: Tento článek popisuje kritéria a požadavky partnerů snaží pochopit, jak publikovat aplikace na webu Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: ebe344d9f596f862fe5ffbfef083725e6527d0d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e45346ce8bd23ea8431faf8a123d57ecdee71606
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599316"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937881"
 ---
 # <a name="requirements-by-listing-type"></a>Požadavky na uvedením typu  
 Obsahu požadavky na technickou a marketingovou se liší podle z prodejních míst, typ nabídky a výpis typu. Projděte si následující specifikace k ověření vaší dodržování předpisů.  

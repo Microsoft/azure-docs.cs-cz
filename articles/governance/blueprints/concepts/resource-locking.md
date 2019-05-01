@@ -3,17 +3,17 @@ title: Vysvětlení uzamčení prostředků
 description: Další informace o možnosti uzamčení k ochraně prostředků při přiřazování podrobný plán.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683012"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719750"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
 
@@ -53,6 +53,13 @@ Při odebrání přiřazení, se odeberou zámky vytvořené podrobné plány. A
 RBAC [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) Odepřít akce platí pro zdroje artefaktů během přiřazování podrobný plán vybrali přiřazení **jen pro čtení** nebo **neodstraňujte** možnost. Akce odepřít přidává spravovanou identitu přiřazení podrobného plánu a lze odebrat pouze ze zdroje artefaktů ve stejném spravovanou identitu. Tato bezpečnostní opatření vynucuje mechanismus zamykání a zabraňuje odebrání zámku podrobného plánu mimo podrobné plány.
 
 ![Zamítnout přiřazení ve skupině prostředků podrobného plánu](../media/resource-locking/blueprint-deny-assignment.png)
+
+[Zamítnout přiřazení vlastnosti](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) každého režimu jsou následující:
+
+|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|-|-|-|-|-|-|
+|Jen pro čtení |**\*** |**\*/ čtení** |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
+|Neodstraňovat |**\*/ DELETE** | |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho odeprete přiřazení Odepřít akce u prostředků podrobného plánu nemusí být hned v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.

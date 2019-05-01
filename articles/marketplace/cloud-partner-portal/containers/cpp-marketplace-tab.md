@@ -1,25 +1,18 @@
 ---
-title: Nastavení webu Marketplace pro image kontejnerů Azure | Dokumentace Microsoftu
+title: Nastavení webu Marketplace pro image kontejnerů Azure | Azure Marketplace
 description: Konfigurace nastavení marketplace pro Azure container.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 220084dd0a3c61205a2cf53c29cf49291000efdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: f2d735662fcd177f64d1ebc71a25b7d7629db3ce
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472957"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942673"
 ---
 # <a name="container-marketplace-tab"></a>Karta Marketplace kontejneru
 
@@ -31,16 +24,18 @@ V této části zadáte obecné informace o nabídky Azure Marketplace.  Hvězdi
 
 ![Informace z Marketplace](./media/containers-marketplace-tab.png)
 
-Následující tabulka popisuje účel a obsah těchto polí.
+Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou uvést hvězdičkou (*).
 
-|  **Pole**                |     **Popis**                                                          |
+|    Pole                  |       Popis                                                            |
 |  ---------                |     ---------------                                                          |
-| **Název**                 | Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace.  Maximální délka je 50 znaků. |
-| **Souhrn**               | Krátký popis nabídky Maximální délka je 100 znaků. |
-| **Dlouhé shrnutí**          | Už souhrn nabídky (i když může být stejná jako **souhrnu**).  Maximální délka je 256 znaků. |
-| **Popis**           | Popis nabídky.  Maximální délka je 3000 znaků, podporuje jednoduchý formátování HTML.
+| **Název\***                 | Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace.  Maximální délka je 50 znaků. |
+| **Souhrn\***               | Krátký popis nabídky Maximální délka je 100 znaků. |
+| **Dlouhé shrnutí\***          | Už souhrn nabídky (i když může být stejná jako **souhrnu**).  Maximální délka je 256 znaků. |
+| **Popis\***           | Popis nabídky.  Maximální délka je 3000 znaků, podporuje jednoduchý formátování HTML.
 | **Identifikátor marketing**  | Jedinečnou adresu URL pro přidružení k této nabídce, která obvykle obsahuje název vaší organizace a řešení. Maximální délka je 50 znaků.   |
-| **ID předplatných ve verzi Preview** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
+| **ID předplatných ve verzi Preview\*** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
+|  |  |
+
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,14 +7,14 @@ author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489618"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922466"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 
@@ -40,6 +40,10 @@ Existují dva způsoby, jak povolit funkci application monitoring pro aplikace h
 > Pokud na základě agenta monitorování a ruční SDK na základě instrumentace se zjistí, že pouze nastavení ruční instrumentace se neuplatňují. Toto je zabránit duplicitní data ze odesílat. Další informace o této rezervaci [řešení potíží s části](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.
 
 ## <a name="enable-agent-based-monitoring-net"></a>Povolit na základě agenta monitorování .NET
+
+> [!NOTE]
+> kombinace APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována. Další informace najdete v části Vysvětlení v [řešení potíží s části](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
+
 
 1. **Vyberte Application Insights** Azure ovládacího panelu pro službu app service.
 
@@ -352,6 +356,15 @@ Následující tabulka obsahuje podrobnější vysvětlení významu těchto hod
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že rozšíření zjistil odkazy na `Microsoft.AspNet.TelemetryCorrelation` v aplikaci a bude regrese. | Odeberte odkaz.
 |`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistil odkazy na `System.Diagnostics.DiagnosticSource` v aplikaci a bude regrese.| Odeberte odkaz.
 |`IKeyExists:false`|Tato hodnota označuje, že Instrumentační klíč není k dispozici v nastavení aplikace, `APPINSIGHTS_INSTRUMENTATIONKEY`. Možné příčiny: Hodnoty mohou být omylem odstraněna, si vzpomenout na nastavit hodnoty ve skriptu pro automatizaci, atd. | Zajistěte, aby že toto nastavení je k dispozici v nastavení aplikace služby App Service.
+
+### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED nebo urlCompression se nepodporuje.
+
+Pokud používáte APPINSIGHTS_JAVASCRIPT_ENABLED = true v případech, kde je obsah kódovaný, může se zobrazit chyby jako: 
+
+- 500 – Chyba adresa URL revize
+- 500.53 chyba modulu přepisování adres URL zprávou odchozí pravidla pro přepis adres nelze použít, pokud je obsah odpovědi HTTP kódovaný ("gzip"). 
+
+To je z důvodu nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED nastavena na hodnotu true a kódování obsahu se nachází ve stejnou dobu. Tento scénář se zatím nepodporuje. Alternativním řešením je odebrat APPINSIGHTS_JAVASCRIPT_ENABLED z nastavení aplikace. Bohužel to znamená, že pokud instrumentace jazyka JavaScript a prohlížeči klientů je nutné použít, jsou potřeba ruční odkazy na sadu SDK pro své webové stránky. Postupujte prosím podle [pokyny](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) pro ruční instrumentaci pomocí sady JavaScript SDK.
 
 Nejnovější informace o agent/rozšíření Application Insights, podívejte se [poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 

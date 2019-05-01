@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5fb8d4420c4d46bc8a4ffe80743578cea338dd8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 788a50b85b47b104f12c22ea3d4c39627c412cc2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733551"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937547"
 ---
 # <a name="support-for-appsource"></a>Podpora pro AppSource  
 Možnosti podpory pro AppSource.  

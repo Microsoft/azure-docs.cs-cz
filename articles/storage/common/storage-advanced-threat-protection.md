@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c42867ff7aea2210f20a2cd2adb5c067b8f36c80
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484152"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926507"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -23,7 +23,7 @@ Pokud dojde k anomálie v aktivitě se aktivují upozornění zabezpečení.  Ty
 
 > [!NOTE]
 > * Rozšířená ochrana před internetovými útoky pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob.
-> * Cenové podrobnosti, včetně bezplatné 30denní zkušební, najdete v článku [stránce s cenami za Azure Security Center]( https://azure.microsoft.com/en-us/pricing/details/security-center/).
+> * Cenové podrobnosti, včetně bezplatné 30denní zkušební, najdete v článku [stránce s cenami za Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
 > * Ochrana ATP v programu pro funkce Azure storage není aktuálně dostupná v oblastech suverénních cloudů a Azure government.
 
 Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje diagnostické protokoly pro čtení, zápisu a žádosti o odstranění do úložiště objektů Blob pro detekci hrozeb. K prozkoumání výstrahy z rozšířené ochrany před internetovými útoky, můžete zobrazit aktivitu související úložiště pomocí Storage Analytics protokolování. Další informace najdete v tématu Jak [konfigurace protokolování Storage Analytics](storage-monitor-storage-account.md#configure-logging).

@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 6b77ceb2ab9abe232cec75254b30ce37c3dbbf60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307616"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708126"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro virtuální počítač Azure do offline režimu
 Můžete resetovat hesla Windows místního virtuálního počítače v Azure s využitím [webu Azure portal nebo Azure Powershellu](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) předpokladu, že je nainstalovaný agent hosta Azure. Tato metoda je primárním způsob, jak resetování hesla pro virtuální počítač Azure. Pokud narazíte na problémy s neodpovídajícím agentem hosta Azure nebo selhání instalace po nahrání vlastní image, můžete ručně resetovat hesla Windows. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením zdrojový OS virtuální disk k jinému virtuálnímu počítači. Podle kroků popsaných v tomto článku se nevztahují na řadiče domény Windows. 
@@ -106,7 +106,7 @@ Vždy se pokusí resetovat heslo pomocí [webu Azure portal nebo Azure Powershel
      ```
      
      ![Vytvoření gpt.ini](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. Vytvoření `scripts.ini` v `\Windows\System32\GroupPolicy\Machine\Scripts\Startup`. Zajistěte, aby skryté složky jsou zobrazeny. V případě potřeby vytvořte `Machine` nebo `Scripts` složky.
+5. Vytvoření `scripts.ini` v `\Windows\System32\GroupPolicy\Machines\Scripts\`. Zajistěte, aby skryté složky jsou zobrazeny. V případě potřeby vytvořte `Machine` nebo `Scripts` složky.
    
    * Přidejte následující řádky `scripts.ini` souborů, které jste vytvořili:
      
@@ -156,7 +156,7 @@ Vždy se pokusí resetovat heslo pomocí [webu Azure portal nebo Azure Powershel
     
     * From %windir%\System32
       * odebrat FixAzureVM.cmd
-    * From %windir%\System32\GroupPolicy\Machine\
+    * From %windir%\System32\GroupPolicy\Machine\Scripts
       * odebrat scripts.ini
     * From %windir%\System32\GroupPolicy
       * Odeberte gpt.ini (pokud existoval gpt.ini a přejmenoval jej na gpt.ini.bak, přejmenujte soubor .bak zpět do gpt.ini)

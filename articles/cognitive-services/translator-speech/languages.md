@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 513fd93f148a8a133901a5dbb60722fbc4a7d9e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827509"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866254"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Jazyky podporované rozhraní Translator Speech API
 
@@ -27,13 +27,13 @@ Pro překlad řeči se podporují tyto jazyky. Pokud oba jazyky jsou podporován
 | Rozpoznávání řeči, jazyka    |
 |:----------- |
 | Arabština (moderní Standard)      |
+| Brazilská portugalština     |
 | Čínština (Mandarínština)      |
 | Angličtina      |
 | Francouzština      |
 | Němčina      |
 | italština      |
 | Japonština      |
-| Portugalština (Brazílie)     |
 | ruština      |
 | Španělština      |
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: f34e32b9bda83ac1185d0c7b7dcaaaa7b47161a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332799"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925934"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database pro MariaDB
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database pro MariaDB poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -41,7 +41,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database pro MariaDB:
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit na vašem serveru protokolování pomalých dotazů. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
+Můžete povolit na vašem serveru protokolování pomalých dotazů. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v protokolech, Event Hubs a účet úložiště Azure Monitor. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak získat přístup a exportovat metriky pomocí webu Azure portal, rozhraní REST API nebo rozhraní příkazového řádku najdete v tématu [přehled metriky Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).

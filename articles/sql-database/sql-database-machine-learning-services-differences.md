@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 92785015a1ce122b8301b56fa62d122c8d95180c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771846"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725050"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Hlavní rozdíly mezi služby Machine Learning v Azure SQL Database (preview) a SQL Server
 
@@ -61,6 +61,6 @@ Využití závisí na tom, kolik paměti se používá v svoje skripty jazyka R 
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics) dokumentaci obecné informace
-- Zjistěte, jak pomocí služby Machine Learning (s jazykem R) ve službě Azure SQL Database, najdete v článku [příručky rychlý Start](sql-database-connect-query-r.md).
-- Další informace najdete [kurzy jazyka SQL Server R](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials)
+- Naleznete v přehledu, [SQL databáze služeb Azure Machine Learning s jazykem R (preview)](sql-database-machine-learning-services-overview.md).
+- Další informace o použití jazyka R k dotazování Azure SQL Database Machine Learning Services (preview), najdete v článku [příručky rychlý Start](sql-database-connect-query-r.md).
+- Začínáme s některé jednoduché skripty jazyka R, najdete v článku [vytvořit a spustit jednoduché skripty jazyka R v Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md).

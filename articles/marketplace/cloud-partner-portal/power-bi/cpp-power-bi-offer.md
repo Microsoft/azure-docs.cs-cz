@@ -1,25 +1,18 @@
 ---
-title: Nabídka Power BI aplikace – Azure Marketplace | Dokumentace Microsoftu
+title: Nabídka Power BI aplikace | Azure Marketplace
 description: Jak publikovat aplikaci Power BI na webu Marketplace Microsoft AppSource.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f18a1b05e5a38a79945d8df6706dd2147d6b43df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 72de873b773f174499b0cdc7225b344ea30a137f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725809"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943033"
 ---
 # <a name="power-bi-app-offer"></a>Nabídka aplikací Power BI
 

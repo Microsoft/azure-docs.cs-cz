@@ -1,25 +1,18 @@
 ---
-title: Reference k rozhraní API portálu partnerů cloudu | Dokumentace Microsoftu
+title: Reference k rozhraní API portálu partnerů cloudu | Azure Marketplace
 description: Popis, požadavky na použití a seznam operací marketplace rozhraní API.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 9626fdb5dbdf720a65217421565fc559a0cee684
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61094385"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935474"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Reference k portálu rozhraní API cloud Partner
 ==================================

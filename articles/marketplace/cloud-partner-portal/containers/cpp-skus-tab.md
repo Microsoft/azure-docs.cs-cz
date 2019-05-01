@@ -1,25 +1,18 @@
 ---
-title: SKU pro image kontejnerů Azure | Dokumentace Microsoftu
+title: SKU pro image kontejnerů Azure | Azure Marketplace
 description: Skladové položky konfigurace pro Azure container.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 81f7e46e626bb061881be53e8cace36e1478e0e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472812"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942905"
 ---
 # <a name="container-skus-tab"></a>Karta skladové položky kontejneru
 
@@ -38,11 +31,13 @@ Když začnete vytvářet novou nabídku, nejsou k dispozici žádné skladové 
     -   Skladová položka metadat
     -   Metadata kontejneru
 
+
 ### <a name="sku-metadata"></a>Skladová položka metadat
 
 Skladová položka metadat obsahuje prezentace zobrazovaných informací pro výpis kontejneru.
 
 ![Skladová položka metadat](./media/containers-sku-details.png)
+
 
 ### <a name="container-metadata"></a>Metadata kontejneru
 
@@ -50,29 +45,31 @@ Metadata kontejneru obsahují referenční informace o úložišti podrobnosti v
 
 ![Metadata kontejneru](./media/containers-image-repository.png)
     
-**Podrobnosti úložiště Image** na předchozí obrazovce zachycený záznam obsahuje následující pole:
+**Podrobnosti úložiště Image** na předchozí obrazovce zachycený záznam obsahuje následující pole.  Povinná pole jsou uvést hvězdičkou (*).
 
--   **ID předplatného** – ID předplatného Azure, kde je k dispozici služby ACR.
--   **Název skupiny prostředků** – název skupiny prostředků služby ACR.
--   **Název registru** – název The ACR.
--   **Název úložiště** – název úložiště. Jakmile je tento název, tato hodnota nedá změnit. Aby nedošlo ke konfliktu s jiné nabídky ve vašem účtu použijte jedinečný název.
--   **Uživatelské jméno** -username (uživatelské jméno správce) přidružené k imagi služby ACR.
--   **Heslo** – heslo přidružené k imagi služby ACR.
+-   **ID předplatného\***  – ID předplatného Azure, kde je k dispozici služby ACR.
+-   **Název skupiny prostředků\***  – název skupiny prostředků služby ACR.
+-   **Název registru\***  – název The ACR.
+-   **Název úložiště\***  – název úložiště. Jakmile je tento název, tato hodnota nedá změnit. Aby nedošlo ke konfliktu s jiné nabídky ve vašem účtu použijte jedinečný název.
+-   **Uživatelské jméno\***  -username (uživatelské jméno správce) přidružené k imagi služby ACR.
+-   **Heslo\***  – heslo přidružené k imagi služby ACR.
 
     >[!NOTE]
     >Uživatelské jméno a heslo jsou nezbytné k zajištění, že partneři mají přístup do služby ACR uvedených v procesu publikování.
+
 
 ### <a name="image-version"></a>Verze image
 
 Při publikování image kontejneru, můžete zadat jednu nebo více značek image a hodnoty SHA Digest.
 
-**Značka obrázku nebo ověřování algoritmem Digest**
+**Obrázek značky\* nebo ověřování algoritmem Digest**
  
 - Musí obsahovat tento značek nebo přehledů `latest` značku a označení verze (například počínaje `xx.xx.xx-` kde xx je číslo). Měly by být [manifest značky](https://github.com/estesp/manifest-tool) pro více cílových platforem. Všechny značky odkazuje značku manifestu musí být rovněž přidána, takže jsme jejich nahrávání. 
 - Můžete přidat několik verzí kontejnerů pomocí značek. Všechny značky manifest (s výjimkou `latest`) musí začínat buď `X.Y-` nebo `X.Y.Z-` kde X, Y, Z jsou celá čísla. <br/> Například pokud `latest` označení odkazuje na `1.0.1-linux-x64`, `1.0.1-linux-arm32`, a `1.0.1-windows-arm32`, tyto značky je potřeba přidat tady.
 
 >[!NOTE]
 >Nezapomeňte přidat **testovací značka** do bitové kopie, abyste mohli identifikovat bitovou kopii při testování.
+
 
 ## <a name="next-steps"></a>Další postup
 

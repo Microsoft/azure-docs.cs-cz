@@ -1,25 +1,18 @@
 ---
-title: Azure a Dynamics 365 nabídku konzultační služby – zadejte podrobnosti prezentace | Dokumentace Microsoftu
-description: Příručka pro definování prezentace podrobnosti do Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu.
+title: Zadejte podrobnosti prezentace consulting nabídky | Azure Marketplace
+description: Definujte prezentace podrobnosti do Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ac383c85938f5cb7dfe4f711714f5bacd0c96b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865357"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942713"
 ---
 # <a name="storefront-details-tab"></a>Karta podrobností o prodejních místech
 
@@ -32,14 +25,16 @@ Tento článek vysvětluje, jak zadejte podrobnosti pro vaši prodejní místo. 
 
 ![Vytvořte novou konzultační služby nabídku - karta Podrobnosti výkladní skříň](media/consultingoffer-storefront-details.png)
 
+
 ## <a name="offer-details"></a>Podrobnosti nabídky
 
 **Podrobnosti nabídky** oddíl obsahuje následující pole:
 
--   **Souhrn nabídky**
--   **Popis nabídky**
+-   **Souhrn nabídky\***
+-   **Popis nabídky\***
 
-### <a name="offer-summary"></a>Souhrn nabídky
+
+### <a name="offer-summary"></a>Souhrn nabídky\*
 
 Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabídky. Zadejte souhrn nabídky, bez žádné přerušení řádku pomocí prostého textu. Následující příklady jsou dobré nabídka souhrny spolu s jejich odpovídající názvy nabídky.
 
@@ -68,7 +63,8 @@ Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabí
 -   **Název nabídky**: Dynamics a projekty: Posouzení 3 dny
 -   **Nabízí souhrn**: Požadavky na shromažďování a hodnocení pro řešení ERP pro společnosti poskytující odborné služby a podniky řízené projektu.
 
-### <a name="offer-description"></a>Popis nabídky
+
+### <a name="offer-description"></a>Popis nabídky\*
 
 Zadejte popis konzultační nabídky v **nabízejí popis** pole. Popis dobré nabídky zahrnuje najdete přesné informace, jak vypadá zapojení a dodávky zákazníkovi konec. Mělo by to jasně pomoct pochopit, co dostanou zákazníka. Zahrnout, jak vaše nabídka má vztah k produktu společnosti Microsoft, pro který nabízíte konzultační služby.
 
@@ -144,6 +140,7 @@ Zadejte nové ID partnera System Center, pokud nemáte.
 Zadejte tajný klíč k náhledu na vaši nabídku na AppSource dříve, než přejde za provozu.
 Tento identifikátor se heslo.
 
+
 ## <a name="listing-details"></a>Podrobnosti
 
 **Typ konzultační služby**
@@ -166,7 +163,7 @@ Jsou zahrnuty následující pět typů nabídek:
 Vyberte zemi a oblast, kde je k dispozici tato nabídka konzultační služby. Jediné nabídky nelze publikovat ve více zemích nebo oblastech. Nová nabídka musí být vytvořeny pro každou zemi nebo oblast.
 
 >[!Note]
->AppSource konzultační služby jsou aktuálně živě ve Spojených státech amerických, Spojené království a Kanadě. Můžete odeslat nabídku pro zemi, která ještě není za provozu a budou zkontrolovány a připravené na přechod na živý přenos. Minimální počet nabídek, které jsou připravené na přechod na živý přenos, je třeba otevřít nové země, proto doporučujeme nabídky zemích, které nejsou za provozu.
+>AppSource konzultační služby jsou aktuálně živě ve Spojených státech amerických, Spojené království a Kanadě. Můžete odeslat nabídku země/oblast, která ještě není za provozu a budou zkontrolovány a připravené na přechod na živý přenos. Minimální počet nabídek, které jsou připravené na přechod na živý přenos je třeba otevřít Nová země nebo oblast, proto doporučujeme nabídky pro zemích nebo oblastech, které nejsou za provozu.
 
 **Odvětví**
 
@@ -207,6 +204,7 @@ Nahrajte marketingové brožuru nabídkou na konzultační služby podrobně pop
 **Snímky obrazovky (omezeno na 5)**
 
 Nahrávání až o pěti obrázků, které poskytují další informace o vaší nabídce, jeho výsledky nebo vaší společnosti. Fragment kódu brožuru marketing, relevantní snímků z prezentace, nebo bitovou kopii, která ukazuje podpora společnosti nebo odbornými znalostmi o je několik příkladů.
+
 
 ## <a name="next-steps"></a>Další postup
 

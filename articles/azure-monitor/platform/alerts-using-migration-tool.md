@@ -1,99 +1,98 @@
 ---
 title: Migrace klasického upozornění ve službě Azure Monitor pomocí dobrovolné migrační nástroj
-description: Další informace o použití dobrovolné migrační nástroj pro migraci klasického pravidel upozornění.
+description: Další informace o použití dobrovolné migračního nástroje pro migraci klasického pravidel upozornění.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 58c664beee942fe7115c7fff38a039c23bed6ac3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55e6b515328df635a423e0ecf736b03e17a90b8f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346016"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698428"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Použijte nástroj dobrovolné migrace k migraci klasického pravidel upozornění
 
-Jako [jsme oznámili už dřív](monitoring-classic-retirement.md), klasických upozornění ve službě Azure Monitor se vyřazuje v červenci 2019. Nástroj pro migraci k aktivaci migrace dobrovolně je k dispozici na webu Azure portal a zavádí pro zákazníky, kteří používají klasický pravidla upozornění. Tento článek vás provede na tom, jak používat nástroj pro migraci dobrovolně migraci klasického pravidel upozornění před zahájením migrace automatické v červenci 2019.
+Jako [jsme oznámili už dřív](monitoring-classic-retirement.md), klasických upozornění ve službě Azure Monitor se vyřazuje v červenci 2019. Migrační nástroj je dostupný na webu Azure Portal pro zákazníky používající klasický pravidla upozornění a který chcete spustit migrace sami. Tento článek vysvětluje, jak používat nástroj pro migraci dobrovolně migraci klasického pravidel upozornění před zahájením migrace automatické v červenci 2019.
 
 ## <a name="benefits-of-new-alerts"></a>Výhody nové výstrahy
 
-Upozornění Classic se nahrazují nový jednotný výstrahy ve službě Azure Monitor. Novou platformu upozornění má následující výhody:
+Upozornění Classic se nahrazují nové, sjednoceném výstrahy ve službě Azure Monitor. Novou platformu upozornění má následující výhody:
 
-- Upozornění na širokou škálu vícedimenzionálních metrik pro [mnoho dalších služeb Azure](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
-- Nové metriky výstrahy podpory [pravidla upozornění více prostředky](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) což výrazně snížit režijní náklady správy mnoho pravidel.
-- Mechanismus jednotné oznámení
-  - [Skupiny akcí](action-groups.md) virtuálních sítí je mechanismus modulární oznámení, která funguje s všechny nové typy výstrah (metrik, protokolů a protokolu aktivity)
-  - Také budete moct využívat nové oznámení mechanismy, jako je SMS, hlas a konektor ITSM
-- [Jednotné rozhraní upozornění](alerts-overview.md) přináší všechny výstrahy na různým signálům (metriky, aktivity v protokolu a protokolu) do jednoho místa
+- Může upozornit na širokou škálu vícerozměrné metriky pro [mnoho dalších služeb Azure](alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+- Nové metriky výstrahy podpory [pravidla upozornění více prostředky](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) , který výrazně snížit režijní náklady správy mnoho pravidel.
+- Mechanismus jednotné oznámení, která podporuje:
+  - [Skupiny akcí](action-groups.md), modulární oznámení mechanismus, který funguje s všechny nové typy výstrah (metrik, protokolů a protokolu aktivity).
+  - Nové oznámení mechanismy, jako je SMS, hlas a konektor ITSM.
+- [Jednotné rozhraní upozornění](alerts-overview.md) přináší všechny výstrahy na různým signálům (metrik, protokolů a protokolu aktivity) do jednoho místa.
 
 ## <a name="before-you-migrate"></a>Před zahájením migrace
 
-Jako součást migrace klasické pravidla upozornění se převedou na ekvivalentní nová pravidla výstrahy a vytvořené skupiny akcí.
+Proces migrace převede classic pravidla upozornění na nové, odpovídající pravidla upozornění a vytvoří skupiny akcí. V rámci přípravy mějte na paměti následující skutečnosti:
 
-- Formát datová část oznámení, jakož i rozhraní API můžete vytvářet a spravovat nové pravidla upozornění se liší od těch, které classic pravidla upozornění jako podporují další funkce. Přečtěte si [postup přípravy na migraci](alerts-prepare-migration.md).
+- Formát datové části oznámení a rozhraní API můžete vytvářet a spravovat nové pravidla upozornění se liší od nastavení classic pravidel upozornění, protože podporují další funkce. [Informace o přípravě na migraci](alerts-prepare-migration.md).
 
-- Některé klasické pravidla upozornění se nedají migrovat pomocí nástroje. [Zjistěte, která pravidla nejsou migrovat a zjistit, jak je migrovat](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated).
+- Některé klasické pravidla upozornění není možné migrovat pomocí nástroje. [Zjistěte, která pravidla se nedají migrovat a co dělat s nimi](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated).
 
     > [!NOTE]
-    > Proces migrace nebude mít vliv na vyhodnocení pravidel upozornění classic. Budou se ke spuštění a odeslání oznámení se migrují a pořídím nová pravidla upozornění.
-
+    > Proces migrace nebude mít vliv na vyhodnocení pravidel upozornění classic. Budou dál spouštět a odesílání upozornění, dokud se migrují a projeví nová pravidla upozornění.
 
 ## <a name="how-to-use-the-migration-tool"></a>Jak používat nástroj pro migraci
 
-Následující postup popisuje, jak spustit migraci klasického pravidel upozornění na webu Azure portal:
+Spustit migraci klasického pravidel upozornění na webu Azure Portal, postupujte podle těchto kroků:
 
-1. V [webu Azure portal](https://portal.azure.com), klikněte na **monitorování**.
+1. V [webu Azure portal](https://portal.azure.com)vyberte **monitorování**.
 
-2. Klikněte na tlačítko **výstrahy** klikněte na **spravovat pravidla výstrah** nebo **zobrazit upozornění classic**.
+1. Vyberte **výstrahy**a pak vyberte **spravovat pravidla výstrah** nebo **zobrazit upozornění classic**.
 
-3. Klikněte na tlačítko **migrace do nového pravidla** přejdete na úvodní stránku migrace. Tato stránka zobrazuje seznam všech předplatných a stavu migrace pro ně.
+1. Vyberte **migrace do nového pravidla** přejdete na úvodní stránku migrace. Tato stránka zobrazuje seznam všech předplatných a jejich stav migrace:
 
     ![migrace cílová](media/alerts-migration/migration-landing.png "migrovat pravidla")
 
-4. Všechna předplatná, ke které je možné migrovat pomocí nástroje se označí jako **připraveno k migraci**.
+    Všechna předplatná, která je možné migrovat pomocí nástroje, které jsou označeny jako **připraveno k migraci**.
 
     > [!NOTE]
-    > Nástroj pro migraci zavádí ve fázích pro všechna předplatná, které používají klasický pravidla upozornění. V počátečních fázích zavádění může se zobrazit některá předplatná jako nepřipravený pro migraci.
+    > Nástroj pro migraci zavádí ve fázích pro všechna předplatná, které používají klasický pravidla upozornění. V počátečních fázích zavádění může se zobrazit některá předplatná označen jako nepřipravený pro migraci.
 
-5. Vyberte jeden nebo více odběrů a klikněte na **ve verzi Preview migrace**
+1. Vyberte jednoho nebo více předplatných a pak vyberte **ve verzi Preview migrace**.
 
-6. Na této stránce můžete zobrazit podrobnosti classic pravidel upozornění, které se budou migrovat pro jedno předplatné najednou. Můžete také **stáhnout podrobnosti o migraci pro toto předplatné** ve formátu CSV.
+    Výsledná stránka zobrazuje podrobnosti o classic pravidel upozornění, které se budou migrovat pro jedno předplatné najednou. Můžete také vybrat **stáhnout podrobnosti o migraci pro toto předplatné** zobrazíte podrobnosti ve formátu CSV.
 
     ![verzi preview migrace](media/alerts-migration/migration-preview.png "ve verzi Preview migrace")
 
-7. Zadejte jeden nebo více **e-mailové adresy** abyste dostávali oznámení o stavu migrace. Po dokončení migrace nebo nic dělat z vám pošleme e-mailu.
+1. Zadejte jeden nebo více e-mailové adresy, abyste dostávali oznámení o stavu migrace. Obdržíte e-mailu po dokončení migrace, nebo pokud potřebujete se od vás žádnou akci.
 
-8. Klikněte na **zahájit migraci**. Přečtěte si informace uvedené v potvrzovacím dialogovém okně a potvrďte, pokud jste připraveni zahájit proces migrace.
+1. Vyberte **zahájit migraci**. Přečtěte si informace uvedené v potvrzovacím dialogovém okně a potvrďte, že jste připravení začít s procesem migrace.
 
-    >[!IMPORTANT]
-    > Jakmile zahájíte proces migrace pro předplatné, nebudete moci úpravy a vytváření classic pravidla upozornění pro předplatné. Classic pravidel upozornění však budou spuštěna a umožní vám oznámení, dokud nebudou migrováni. Je to z toho věrnost mezi classic pravidla upozornění a nových pravidel vytvořených během migrace. Po dokončení migrace vašeho předplatného, nemůžete použít klasické pravidla upozornění zobrazovat.
+    > [!IMPORTANT]
+    > Po zahájení migrace pro předplatné, nebudete moci upravovat nebo vytvářet klasické pravidla upozornění pro toto předplatné. Toto omezení se zajistí, že nejsou žádné změny k pravidel upozornění classic ztraceny během migrace do nového pravidla. I když nebudete moct změnit classic pravidel upozornění, budou pořád dál spouštět a poskytují oznámení, dokud jste migrovali. Po dokončení migrace vašeho předplatného, nemůžete použít klasické pravidla upozornění zobrazovat.
 
     ![Potvrďte migraci](media/alerts-migration/migration-confirm.png "potvrdit migraci spustit")
 
-9. Jako jsme dokončení migrace nebo potřebujete akci, obdrží e-mail na e-mailové adresy uvedené v kroku 8. Můžete také pravidelně zkontrolovat stav z cílové stránky migrace na portálu.
+1. Po dokončení migrace nebo od vás se nic dělat, obdržíte e-mailem na adresy, které jste zadali dříve. Můžete také pravidelně zkontrolovat stav v cílové stránky migrace na portálu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="why-is-my-subscriptions-listed-as-not-ready-for-migration"></a>**Proč se Moje předplatná uvedená jako není připraveno k migraci?**
+### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Proč se Moje předplatné uvedená jako není připraveno k migraci?
 
-Nástroj pro migraci zavádí ve fázích pro všechny zákazníky. V počátečních fázích, většinu nebo všechny vaše předplatné může být označený jako **není připravený k migraci**. Pomocí funkce část dne, by měl být připravení migrovat všechna předplatná.
+Nástroj pro migraci zavádí zákazníkům ve fázích. V počátečních fázích, může být označena většinu nebo všechny z vašich předplatných jako **není připravený k migraci**. Pomocí funkce část dne ale všechna předplatná měli být připravení migrovat.
 
-Až bude předplatné připravené k migraci, vlastníky těchto předplatných obdrží e-mail s upozorněním dostupnost nástroje. Sledujte toto oznámení.
+Až bude předplatné připravené k migraci, vlastník předplatného obdrží e-mailovou zprávu s oznámením, že tento nástroj je k dispozici. Sledujte pro tuto zprávu.
 
-### <a name="who-can-trigger-the-migration"></a>**Kdo může aktivovat migrace?**
+### <a name="who-can-trigger-the-migration"></a>Kdo může aktivovat migrace?
 
-K aktivaci migrace budou mít uživatelé, kteří mají roli Přispěvatel monitorování přiřazené na úrovni předplatného. Další informace o [roli řízení přístupu na základě pro proces migrace](alerts-understand-migration.md#who-can-trigger-the-migration).
+Uživatelé, kteří mají přiřazenou na úrovni předplatného roli Přispěvatel monitorování budou moct aktivovat migrace. [Další informace o řízení přístupu na základě rolí pro proces migrace](alerts-understand-migration.md#who-can-trigger-the-migration).
 
-### <a name="how-long-is-the-migration-going-to-take"></a>**Jak dlouho se migrace bude trvat?**
+### <a name="how-long-will-the-migration-take"></a>Jak dlouho bude migrace trvat?
 
-Pro většinu předplatných dokončení migrace obvykle méně než hodinu. Vám může udržovat přehled o průběhu migrace z cílové stránky migrace.  Během této doby prosím zajistíte, že vaše upozornění jsou pořád spuštěné v systému klasických upozornění nebo novým.
+Dokončení migrace pro většinu předplatných na méně než hodinu. Vám může udržovat přehled o průběhu migrace na cílové stránce migrace. Během migrace je třeba zajistit upozornění jsou spuštěné v systému upozornění classic nebo v nové.
 
-### <a name="what-can-i-do-if-i-run-into-an-issue-during-migration"></a>**Co mám dělat, když dojde k problému při migraci?**
+### <a name="what-can-i-do-if-i-run-into-a-problem-during-migration"></a>Co mám dělat, když dojde k problému při migraci?
 
-Postupujte prosím podle [nápravy v případě problémů může setkat během migrace najdete v příručce pro řešení potíží s](alerts-understand-migration.md#common-issues-and-remediations). V případě potřeby jakékoli akce od vás k dokončení migrace budete upozorněni na e-mailové adresy k dispozici během migrace.
+Zobrazit [Průvodce odstraňováním potíží](alerts-understand-migration.md#common-problems-and-remedies) nápovědu k problémům se může setkat během migrace. V případě potřeby jakékoli akce od vás k dokončení migrace budete upozorněni na e-mailové adresy, které jste zadali při nastavování nástroj.
 
 ## <a name="next-steps"></a>Další postup
 

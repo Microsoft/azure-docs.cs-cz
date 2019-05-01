@@ -1,25 +1,18 @@
 ---
-title: Požadavky virtuálního počítače pro Microsoft Azure | Dokumentace Microsoftu
+title: Požadavky virtuálního počítače pro Microsoft Azure | Azure Marketplace
 description: Seznam požadovaných součástí pro publikování nabídky virtuálních počítačů na webu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5c26fd3d6c2593217aef8588e2a58377a86412ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 65ff96ba3aea889ff5b2e2431578f9344f6d840b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844036"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938064"
 ---
 # <a name="virtual-machine-prerequisites"></a>Požadavky virtuálního počítače
 
@@ -49,7 +42,7 @@ Obchodní požadavky patří procesní, smluvní a právní závazky:
     > Používejte stejné registrace účtu Microsoft Developer Center pro přihlášení do [portál partnerů cloudu](https://cloudpartner.azure.com).
     > Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Neměl by být specifické pro jednotlivé služby nebo nabídky.
     
-- Vaše společnost (nebo její pobočka) se musí nacházet v prodeji z zemi podporovanými webem Azure Marketplace.  Aktuální seznam těchto zemí najdete v tématu [zásadách pro účast na Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+- Vaše společnost (nebo její pobočka) se musí nacházet v prodeji z – země/oblasti podporovanými webem Azure Marketplace.  Aktuální seznam těchto zemí nebo oblastí najdete v tématu [zásadách pro účast na Microsoft Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
 - Váš produkt musí mít licenci způsobem, který je kompatibilní s modely fakturace podporovanými webem Azure Marketplace.  Další informace najdete v tématu [možnosti fakturace na webu Azure Marketplace](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace). 
 - Zodpovídáte za zpřístupnění technické podpory pro zákazníky přiměřené způsobem. Tato podpora může být zdarma, placená nebo prostřednictvím komunity přístupy.
 - Zodpovídáte za licencování váš software a všechny závislosti softwaru třetích stran.

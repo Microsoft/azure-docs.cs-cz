@@ -14,17 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a9d0daaacb046df7943202775adc77bc912cce11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c5dd0146fe59e7dc85787f146b10cfde7d6addb4
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217550"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867898"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování využívajícího službu Media Services
 
 > [!NOTE]
-> Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu RTP/MPEG-2 protokol ingestování. Migrujte prosím z RTP/MPEG-2 na RTMP nebo MP4 s fragmentací (Smooth Streaming) ingestovací protokoly.
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Přehled
 
@@ -44,7 +44,12 @@ Při doručování živě streamovaných událostí pomocí Azure Media Services
 
 **Microsoft Azure Media Services** (AMS) nabízí možnost ingestovat, kódovat, zobrazovat náhled, ukládat a doručovat obsah vašeho živého streamování.
 
-Při doručování obsahu zákazníkům je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách. Za tím účelem můžete kodéry překódujte svůj datový proud na datový proud videa s více přenosovými rychlostmi (adaptivní přenosová rychlost).  Pokud chcete zajistit o streamování na různá zařízení, použijte [dynamické balení](media-services-dynamic-packaging-overview.md) ve službě Media Services a dynamicky znovu zabalte datový proud do různých protokolů. Služba Media Services podporuje doručování následujících adaptivní přenosové rychlosti streamování technologií: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Díky Media Services můžete využít výhod [dynamické balení](media-services-dynamic-packaging-overview.md), která umožňuje vysílat živé streamy v MPEG DASH, HLS, technologie Smooth Streaming a formáty a z příspěvku informačního kanálu, který je odesíláno do služby. Vaši uživatelé můžou přehrávat živé streamování pomocí libovolné kompatibilní hráči HLS, DASH nebo Smooth Streaming. Azure Media Player ve vašich webových nebo mobilních aplikací slouží k poskytování datový proud v některém z těchto protokolů.
+
+> [!NOTE]
+> Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu RTP/MPEG-2 protokol ingestování. Migrujte prosím z RTP/MPEG-2 na RTMP nebo MP4 s fragmentací (Smooth Streaming) ingestovací protokoly.
+
+## <a name="streaming-endpoints-channels-programs"></a>Streamování koncové body, kanály, programy
 
 Ve službě Azure Media Services se o zpracování všech funkcí živého streamování včetně ingestování, formátování, DVR, zabezpečení, škálovatelnosti a redundance starají **kanály**, **programy** a **koncové body streamování**.
 

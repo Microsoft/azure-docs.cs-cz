@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0758105c7e2a18e976bc0c210eaf4e55e418a22d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710652"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925729"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -578,7 +578,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker konfiguraci pro Azure naplánované události
 
-Azure nabízí [naplánované události](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Naplánované události jsou k dispozici prostřednictvím služby metadata a nějakou dobu počkat aplikace přípravy na události, jako jsou vypnutí virtuálního počítače, opětovné nasazení virtuálního počítače, atd. Prostředek agenta **[akce azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** monitory pro naplánovaných událostí Azure. Pokud jsou detekovány události, agent se pokusí zastavit všechny prostředky v ovlivněných virtuálních počítačů a přesuňte je do jiného uzlu v clusteru. Musí být nakonfigurovaný k dosažení této další Pacemaker prostředky. 
+Azure nabízí [naplánované události](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Naplánované události jsou k dispozici prostřednictvím služby metadata a nějakou dobu počkat aplikace přípravy na události, jako jsou vypnutí virtuálního počítače, opětovné nasazení virtuálního počítače, atd. Prostředek agenta **[akce azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** monitory pro naplánovaných událostí Azure. Pokud jsou detekovány události, agent se pokusí zastavit všechny prostředky v ovlivněných virtuálních počítačů a přesuňte je do jiného uzlu v clusteru. Musí být nakonfigurovaný k dosažení této další Pacemaker prostředky. 
 
 1. **[A]**  Nainstalovat **akce azure** agenta. 
 

@@ -2,19 +2,18 @@
 title: Běžné atributy zabezpečení pro Azure Key Vault
 description: Kontrolní seznam společné atributy zabezpečení za vaše rozhodnutí vyzkoušet Azure Key Vault
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3ccfc38136ba3e8ec7c6130658032b7565988e5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 652e6ecb9ef9506fd306942eae45b13b52ae1c24
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461399"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691830"
 ---
 # <a name="common-security-attributes-for-azure-key-vault"></a>Běžné atributy zabezpečení pro Azure Key Vault
 
@@ -36,8 +35,8 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| Ano | Pomocí koncových bodů služby Virtual Network (Vnet). |
-| vkládání podpory virtuálních sítí| Ne |  |
+| Podpora koncového bodu služby| Ano | Pomocí koncových bodů služby Virtual Network (VNet). |
+| Vkládání podpory virtuálních sítí| Ne |  |
 | Izolace sítě a podporu funkce brány firewall| Ano | Pomocí pravidel brány firewall virtuální sítě. |
 | Vynucené tunelování podpory| Ne |  |
 

@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace a AppSource Průvodce publikováním | Azure
+title: Azure Marketplace a AppSource Průvodce publikováním
 description: Přehled webu Azure Marketplace a Microsoft AppSource pro vydavatele aplikace a služby.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5c53545a6a5421bd20622fd132bb5c0b2c0940d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a3d75f09ac21fcdb4862cf8eefff0b5c05fd3369
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764216"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937616"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace a AppSource Průvodce publikováním
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/17/2019
 ms.author: rimman
-ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4a444631de4bc26881ab195333b1b798a7ee6719
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678441"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925338"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -211,7 +211,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Jak konečný výsledek je konečné konzistence? Průměrná případech můžete nabízíme neaktuálnost hranice s ohledem na historii verzí a čas. [ **Probabilistically omezená Neaktuálnost (PBS)** ](http://pbs.cs.berkeley.edu/) metrika pokusí vyčíslení pravděpodobnost neaktuálnost a zobrazuje jako metriku. Pokud chcete zobrazit metriky PBS, přejděte k vašemu účtu Azure Cosmos na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
+Jak konečný výsledek je konečné konzistence? Průměrná případech můžete nabízíme neaktuálnost hranice s ohledem na historii verzí a čas. [ **Probabilistically omezená Neaktuálnost (PBS)** ](https://pbs.cs.berkeley.edu/) metrika pokusí vyčíslení pravděpodobnost neaktuálnost a zobrazuje jako metriku. Pokud chcete zobrazit metriky PBS, přejděte k vašemu účtu Azure Cosmos na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
 
 ![Graf PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 

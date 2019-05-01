@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ab129d7b215f0f10841b13fc2835af59227198
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 6b03dfa5a33850dfedf23375536278c4e08bed68
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565237"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Integrace Azure Active Directory s Cloudovou službou Alibaba (jednotné přihlašování založené na roli)
 
@@ -120,7 +120,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cloudovou službou Alibaba 
     | `https://signin.aliyun.com/saml-role/SSO` |
     | `https://signin.alibabacloud.com/saml-role/SSO` |
 
-5. Alibaba cloudové služby (jednotné přihlašování založené na roli) aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+5. Alibaba cloudové služby (jednotné přihlašování založené na roli) aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
@@ -220,7 +220,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Vytvořit testovacího uživatele Alibaba cloudové služby (na základě rolí jednotné přihlašování)
 
-V této části vytvořte uživatele Britta Simon v cloudové službě Alibaba (jednotné přihlašování založené na roli). Práce s [Alibaba cloudové služby (jednotné přihlašování založené na roli) tým podpory](https://www.aliyun.com/service/) přidat uživatele na platformě Alibaba Cloudovou službu (jednotné přihlašování založené na roli). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon v cloudové službě Alibaba (jednotné přihlašování založené na roli). Práce s [Alibaba cloudové služby (jednotné přihlašování založené na roli) tým podpory](https://www.aliyun.com/service/) přidat uživatele na platformě Alibaba Cloudovou službu (jednotné přihlašování založené na roli). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

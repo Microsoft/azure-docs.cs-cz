@@ -1,23 +1,23 @@
 ---
-title: Kopírování nebo přesun dat do služby Azure Storage pomocí AzCopy v10 (Preview) | Dokumentace Microsoftu
-description: Použití AzCopy v10 k přesunutí nebo zkopírování dat z objektu blob, data lake a obsah souboru nebo nástroj příkazového řádku (Preview). Kopírování dat do služby Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadno migrate data do služby Azure Storage.
+title: Kopírování nebo přesun dat do služby Azure Storage pomocí AzCopy v10 | Dokumentace Microsoftu
+description: Pomocí nástroje příkazového řádku AzCopy k přesunutí nebo zkopírování dat do nebo z objektu blob, data lake a obsah souboru. Kopírování dat do služby Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadno migrate data do služby Azure Storage.
 services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1de40b6bf3bb4dc6854a11eca92902203d492c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278424"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723179"
 ---
-# <a name="transfer-data-with-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
+# <a name="transfer-data-with-azcopy-v10"></a>Přenos dat pomocí nástroje AzCopy v10
 
-AzCopy v10 je nástroj příkazového řádku pro kopírování dat do nebo z úložiště objektů Blob v Microsoft Azure a soubor (Preview). Nabízí přepracovaný rozhraní příkazového řádku AzCopy v10 a přenese nové architektury pro spolehlivé data. Pomocí AzCopy můžete kopírovat data mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.
+AzCopy je nástroj příkazového řádku pro kopírování dat do nebo z úložiště objektů Blob v Microsoft Azure a soubor. Nabízí přepracovaný rozhraní příkazového řádku AzCopy a přenese nové architektury pro spolehlivé data. Pomocí AzCopy můžete kopírovat data mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.
 
 ## <a name="whats-new-in-azcopy-v10"></a>Co je nového v AzCopy v10
 
@@ -33,28 +33,24 @@ AzCopy v10 je nástroj příkazového řádku pro kopírování dat do nebo z ú
 
 ## <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte nástroje AzCopy
 
-### <a name="latest-preview-version-v10"></a>Nejnovější verze preview (v10)
+### <a name="latest-production-version-v10"></a>Nejnovější produkční verzi (v10)
 
-Stáhněte si nejnovější verzi AzCopy ve verzi preview:
+Stáhněte si nejnovější verzi AzCopy:
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (cíl)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-### <a name="latest-production-version-v81"></a>Nejnovější produkční verzi (v8.1)
-
-Stáhněte si [nejnovější produkční verzi AzCopy pro Windows](https://aka.ms/downloadazcopy).
-
-### <a name="azcopy-supporting-table-storage-service-v73"></a>AzCopy podporuje služba Table storage (v7.3)
+### <a name="latest-azcopy-supporting-table-storage-service-v73"></a>Služba Table storage (v7.3) podporuje nejnovější nástroje AzCopy
 
 Stáhněte si [AzCopy v7.3 podporuje kopírování dat do a ze služby Microsoft Azure Table storage](https://aka.ms/downloadazcopynet).
 
 ## <a name="post-installation-steps"></a>Kroky po instalaci
 
-AzCopy v10 nevyžaduje instalaci. Otevřete aplikaci upřednostňované příkazového řádku a přejděte do složky, kde `azcopy.exe` nachází. V případě potřeby můžete přidat umístění složky AzCopy do systémové cesty pro snadné použití.
+AzCopy nevyžaduje instalaci. Otevřete aplikaci upřednostňované příkazového řádku a přejděte do složky, kde `azcopy.exe` nachází. V případě potřeby můžete přidat umístění složky AzCopy do systémové cesty pro snadné použití.
 
 ## <a name="authentication-options"></a>Možnosti ověřování
 
-Při ověřování pomocí služby Azure Storage, AzCopy v10 podporuje následující možnosti:
+Při ověřování pomocí služby Azure Storage, AzCopy podporuje následující možnosti:
 - **Azure Active Directory** (pro podporované **službách objektů Blob a Data Lake Storage Gen2**). Použití ```.\azcopy login``` se přihlásit pomocí Azure Active Directory.  Uživatel by měl mít [přiřazenou roli "Přispěvatel dat objektu Blob úložiště"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) k zápisu do úložiště objektů Blob pomocí ověřování Azure Active Directory. Ověřování pomocí spravované identity pro prostředky Azure, použijte `azcopy login --identity`.
 - **Sdílené přístupové tokeny podpis [podporované pro služby objektů Blob a souboru]**. Připojte token sdíleného přístupového podpisu (SAS) do cesty objektu blob na příkazový řádek, který ho použít. Můžete generovat tokeny SAS pomocí webu Azure portal, [Průzkumníka služby Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [Powershellu](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), nebo jiné nástroje podle vašeho výběru. Další informace najdete v tématu [příklady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
@@ -198,7 +194,7 @@ Také můžete synchronizovat kontejner objektů blob až místního systému so
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-Tento příkaz přírůstkové synchronizace zdroje do cílového umístění podle naposledy upravené časové razítko. Pokud přidáte nebo odstraníte soubor ve zdroji, AzCopy v10 bude totéž v cílovém umístění. Před odstraněním AzCopy zobrazí výzvu k potvrzení.
+Tento příkaz přírůstkové synchronizace zdroje do cílového umístění podle naposledy upravené časové razítko. Pokud přidáte nebo odstraníte soubor ve zdroji, AzCopy se totéž v cílovém umístění. Před odstraněním AzCopy zobrazí výzvu k potvrzení.
 
 ## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Kopírování dat z Amazon Web Services (AWS) S3
 
@@ -283,7 +279,7 @@ cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
 ## <a name="troubleshooting"></a>Řešení potíží
 
-AzCopy v10 vytvoří soubory protokolů a soubory plán pro každou úlohu. Protokoly můžete prozkoumat a vyřešit potenciální problémy. Tyto protokoly budou obsahovat stav selhání (UPLOADFAILED COPYFAILED a DOWNLOADFAILED), úplnou cestu a důvod selhání. Protokoly úlohy a plán soubory jsou umístěny ve složce % USERPROFILE\\.azcopy složky na Windows nebo $HOME\\.azcopy složky na Mac a Linux.
+AzCopy vytvoří soubory protokolů a soubory plán pro každou úlohu. Protokoly můžete prozkoumat a vyřešit potenciální problémy. Tyto protokoly budou obsahovat stav selhání (UPLOADFAILED COPYFAILED a DOWNLOADFAILED), úplnou cestu a důvod selhání. Protokoly úlohy a plán soubory jsou umístěny ve složce % USERPROFILE\\.azcopy složky na Windows nebo $HOME\\.azcopy složky na Mac a Linux.
 
 > [!IMPORTANT]
 > Při odesílání požadavku na Microsoft Support (nebo řešení potíží týkajících se třetí stranu), sdílet zrevidovaně verzi příkazu, kterou chcete spustit. Tím se zajistí, že SAS není omylem sdílet s kýmkoli. Můžete najít zrevidovaně verzi na začátku souboru protokolu.

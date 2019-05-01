@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a82452f4b41aee9c4ea6f269d92fbc91a5697d16
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597101"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916941"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportovat a odstraňovat vaše zákaznická data v Language Understanding (LUIS) ve službě Cognitive Services
 
@@ -58,7 +58,7 @@ Chcete-li povolit [aktivně učit](luis-how-to-review-endpoint-utterances.md#ena
 * [Austrálie](#australia)
 * [Spojené státy americké](#united-states)
 
-S výjimkou aktivně učit dat (podrobnosti jsou dole), následuje LUIS [postupů úložiště dat pro regionální služby](http://azuredatacentermap.azurewebsites.net/). 
+S výjimkou aktivně učit dat (podrobnosti jsou dole), následuje LUIS [postupů úložiště dat pro regionální služby](https://azuredatacentermap.azurewebsites.net/). 
 
 ### <a name="europe"></a>Evropa
 

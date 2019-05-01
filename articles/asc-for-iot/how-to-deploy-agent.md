@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 8f5a6187b0a651da9dd8de1cb5670a8faffded1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c0a5e04b91d79b99935b52fd7f24752fb5d1b115
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61358399"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919622"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Vyberte a nasaďte agenta zabezpečení do zařízení IoT
 
@@ -49,7 +49,7 @@ Zabezpečení na základě C agenta má nižší paměťové nároky a je ideál
 | Open source | K dispozici v rámci [licencí MIT](https://en.wikipedia.org/wiki/MIT_License) v [Githubu](https://aka.ms/iot-security-github-cs) | K dispozici v rámci [licencí MIT](https://en.wikipedia.org/wiki/MIT_License) v [Githubu](https://aka.ms/iot-security-github-c) |
 | Vývojový jazyk    | C | C# |
 | Podporované platformy Windows? | Ne | Ano |
-| Požadavky na Windows | --- | [WMI](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/) |
+| Požadavky na Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Podporované platformy Linux? | Ano, x64 a x86 | Ano, x64 pouze |
 | Požadavky pro Linux | libunwind8 libcurl3, uuid modulu runtime, démona auditd, audispd modulů plug-in | libunwind8 libcurl3, uuid modulu runtime, démona auditd, audispd moduly plug-in, sudo, netstat, iptables |
 | Nároky na disku | 10.5 MB | 90MB |

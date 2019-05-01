@@ -1,28 +1,24 @@
 ---
 title: Upgrade clusteru HDInsight na novější verzi – Azure
 description: Zjistěte, jak do clusteru HDInsight Upgrade na novější verzi.
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
-ms.author: v-yiso
+ms.author: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 04/04/2017
-ms.date: 02/04/2019
+ms.date: 04/04/2017
 ms.openlocfilehash: b5048266fe17bc16fba8228f7cc17d0ee9f3bc0b
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763992"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714779"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
 Abyste mohli využívat nejnovější funkce HDInsight, doporučujeme, abyste clustery HDInsight upgradovali na nejnovější verzi. Postupujte níže uvedených pokynů k upgradu vašeho HDInsight clusteru verze.
 
-> [!NOTE]
+> [!NOTE]  
 > Informace o podporovaných verzích HDInsight najdete v tématu [verzí komponenty HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
->
->
 
 ## <a name="upgrade-tasks"></a>Úlohy upgradu
 Pracovní postup pro upgrade clusteru HDInsight je následujícím způsobem.

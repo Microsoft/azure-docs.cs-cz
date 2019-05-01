@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764280"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706325"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů 
 
 Při vytváření fondu Azure Batch pomocí konfigurace virtuálního počítače zadejte image virtuálního počítače, které poskytuje operační systém pro každý výpočetní uzel ve fondu. Podporované image Azure Marketplace nebo vlastní image (image virtuálního počítače po vytvoření a konfiguraci sami), můžete vytvořit fond virtuálních počítačů. Vlastní image musí být *spravované image* prostředků ve stejném předplatném Azure a oblasti jako účet Batch.
 
-## <a name="why-use-a-custom-image"></a>Proč používat vlastní image?
+## <a name="benefits-of-custom-images"></a>Výhody vlastních imagí
 
 Když zadáte vlastní image, budete mít kontrolu nad konfigurací operačního systému a typ operačního systému a datové disky, který se má použít. Vlastní image může obsahovat aplikace a referenční data, která budou k dispozici na všech uzlech fondu služby Batch, jakmile jsou zřízené.
 
@@ -32,12 +32,11 @@ Použití vlastní image nakonfigurovaný pro váš scénář poskytují několi
 - **Ušetřete čas restartování na virtuálních počítačích.** Instalace aplikace obvykle vyžaduje restartování virtuálního počítače, který je časově náročné. Před nainstalováním aplikace můžete ušetřit čas restartování. 
 - **Zkopírujte velmi velké objemy dat jednou.** Zařazení statická data spravovanou vlastní image zkopírováním do spravované image datové disky. To jenom je potřeba provést jednou a díky tomu budou data k dispozici pro každý uzel ve fondu.
 - **Výběr typů disků nevidí.** Máte taky možnost výběru z použití služby premium storage pro disk s operačním systémem a datového disku.
-- **Zvětší fondy na velké velikosti.** Pokud používáte spravovanou vlastní image k vytvoření fondu, fond můžou růst bez nutnosti vytvářet kopie objektu blob bitové kopie virtuálních pevných disků. 
-
+- **Zvětší fondy na velké velikosti.** Pokud používáte spravovanou vlastní image k vytvoření fondu, fond můžou růst bez nutnosti vytvářet kopie objektu blob bitové kopie virtuálních pevných disků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Prostředek spravované image**. Vytvoření fondu virtuálních počítačů pomocí vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Na obrázku musí být vytvořené ze snímků disku s operačním systémem Virtuálního počítače a volitelně jeho připojené datové disky. Další informace a kroky pro přípravu spravované image najdete v následující části. 
+- **Prostředek spravované image**. Vytvoření fondu virtuálních počítačů pomocí vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Na obrázku musí být vytvořené ze snímků disku s operačním systémem Virtuálního počítače a volitelně jeho připojené datové disky. Další informace a kroky pro přípravu spravované image najdete v následující části.
   - Použijte jedinečný vlastní image pro každý fond, který vytvoříte.
   - Vytvoření fondu s použitím image pomocí rozhraní API služby Batch, zadejte **ID prostředku** obrázku, který je ve formátu `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Na portálu, použijte **název** bitové kopie.  
   - Prostředek spravované image by měla existovat po dobu životnosti fondu umožňuje vertikálně navýšit kapacitu a je možné odebrat po odstranění fondu.
@@ -46,7 +45,7 @@ Použití vlastní image nakonfigurovaný pro váš scénář poskytují několi
 
 ## <a name="prepare-a-custom-image"></a>Příprava vlastní image
 
-V Azure můžete připravit spravované image ze snímků operační systém virtuálním počítači Azure a datových disků, generalizovaného virtuálního počítače Azure se spravovanými disky nebo virtuální pevný disk zobecněný lokálně, který nahrajete. Škálování fondů služby Batch spolehlivě s použitím vlastní image, doporučujeme vytvoření spravované image pomocí *pouze* první metoda: pomocí funkce vytváření snímků disků Virtuálního počítače. Podívejte se na následující postup k přípravě virtuálního počítače, pořízení snímku a vytvořit image ze snímku. 
+V Azure můžete připravit spravované image ze snímků operační systém virtuálním počítači Azure a datových disků, generalizovaného virtuálního počítače Azure se spravovanými disky nebo virtuální pevný disk zobecněný lokálně, který nahrajete. Škálování fondů služby Batch spolehlivě s použitím vlastní image, doporučujeme vytvoření spravované image pomocí *pouze* první metoda: pomocí funkce vytváření snímků disků Virtuálního počítače. Podívejte se na následující postup k přípravě virtuálního počítače, pořízení snímku a vytvořit image ze snímku.
 
 ### <a name="prepare-a-vm"></a>Příprava virtuálního počítače
 
@@ -60,6 +59,7 @@ Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte prv
 
 * Ujistěte se, že virtuální počítač se vytvoří při použití spravovaného disku. Toto je výchozí nastavení úložiště při vytváření virtuálního počítače.
 * Neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů na virtuálním počítači. Pokud image obsahuje nějaké předinstalované rozšíření, Azure setkat s problémy při nasazení fondu služby Batch.
+* Při použití připojené datové disky, budete muset připojit a naformátovat disky z v rámci virtuálního počítače k jejich použití.
 * Zajistěte, aby image základního operačního systému, který poskytnete používala výchozí dočasnou jednotku. Agent uzlu Batch aktuálně očekává, že výchozí dočasnou jednotku.
 * Jakmile je virtuální počítač spuštěný, k němu připojte přes RDP (pro Windows) nebo SSH (pro Linux). Nainstalovat potřebný software nebo zkopírovat požadovaná data.  
 

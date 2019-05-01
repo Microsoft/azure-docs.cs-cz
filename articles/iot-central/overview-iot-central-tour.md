@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: edc75711d8f727d8b1c9359835c6d5ebd575ff71
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 654528ed6137ee62ea22d552d36fda5ac5331adc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678645"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688656"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -51,7 +51,7 @@ Na každé stránce se zobrazuje horní nabídka:
 - Chcete-li hledat šablony zařízení a zařízení, zadejte **hledání** hodnotu.
 - Chcete-li změnit jazyk uživatelského rozhraní nebo motivu, zvolte **nastavení** ikonu.
 - Chcete-li odhlásit z aplikace, zvolte **účet** ikonu.
-- Pokud potřebujete nápovědu a podporu, otevřete rozevírací nabídku **Nápověda**, která obsahuje seznam zdrojů.
+- Pokud potřebujete nápovědu a podporu, otevřete rozevírací nabídku **Nápověda**, která obsahuje seznam zdrojů. Ve zkušební verzi aplikaci a prostředcích podpory zahrnují přístup k [živý chat](howto-show-hide-chat.md).
 
 Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 

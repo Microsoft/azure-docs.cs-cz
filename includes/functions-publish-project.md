@@ -5,29 +5,28 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/27/2018
+ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1b553cbd720fcb76899844712ce5053af46f7ccb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
-ms.translationtype: HT
+ms.openlocfilehash: 48bb91b3b2e9a31de63e515edb857bc2a170ea79
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452951"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867340"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>Nasazení projektu aplikace funkcí do Azure
 
-Až se aplikace funkcí vytvoří v Azure, můžete kód projektu nasadit do Azure pomocí příkazu [`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment).
+Po vytvoření aplikace function app v Azure můžete použít [ `func azure functionapp publish` ](../articles/azure-functions/functions-run-local.md#project-file-deployment) příkaz základní nástroje pro nasazení projektu kódu do Azure. V následujícím příkazu nahraďte `<APP_NAME>` s názvem vaší aplikace z předchozího kroku.
 
 ```bash
-func azure functionapp publish <FunctionAppName>
+func azure functionapp publish <APP_NAME>
 ```
 
-Zobrazí se vám něco, co se podobá následujícímu výstupu, který jsme kvůli čitelnosti zkrátili.
+Zobrazí se výstup podobný následující text, který byl zkrácen pro lepší čitelnost.
 
 ```output
 Getting site publishing info...
-
 ...
 
 Preparing archive...
@@ -35,6 +34,9 @@ Uploading content...
 Upload completed successfully.
 Deployment completed successfully.
 Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-Teď můžete své funkce otestovat v Azure.
+Zkopírujte hodnotu adresy URL vyvolat pro vaše HttpTrigger, které nyní můžete funkci otestovat v Azure. Adresa URL obsahuje `code` dotaz řetězcová hodnota, která je klíč funkce. Tento klíč je těžké pro ostatní volání váš koncový bod triggeru HTTP v Azure.

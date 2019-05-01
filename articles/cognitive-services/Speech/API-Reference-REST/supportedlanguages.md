@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2cce7203d23d5de77200fdf75ab31042d9608352
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515411"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866378"
 ---
 # <a name="supported-languages"></a>Podporované jazyky
 
@@ -29,7 +29,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v
 |Kód | Jazyk | Kód | Jazyk |
 |-----|-----|-----|-----|
 | ar – například | Arabština (Egypt), moderní standard | Dobrý den – v | hindština (Indie) |
-| ES certifikační autority | katalánština (Španělsko) | IT-IT | Italština (Itálie)  |
+| ES certifikační autority | Katalánština | IT-IT | Italština (Itálie)  |
 | da-DK | Dánština (Dánsko) | ja-JP | Japonština (Japonsko) |
 | de-DE | Němčina (Německo) |ko-KR | Korejština (Jižní Korea) |
 | cs AU | Angličtina (Austrálie) |nb-NO | Norština (Bokmal) (Norsko)  |
