@@ -54,7 +54,7 @@ Metadata objektu blob JSON odpovídá následující model:
 | Atribut | Type | Popis |
 | --- | --- | --- |
 | **parentId** | String | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
-| **Jméno** |String | Lidské – popisný název pro objekt blob |
+| **name** |String | Lidské – popisný název pro objekt blob |
 | **type** | String | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
 | **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
 | **Podtyp** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
@@ -111,7 +111,7 @@ Jednotlivě vrácené objekty BLOB splňovat následující schéma JSON:
 | Atribut | Type | Popis |
 | --- | --- | --- |
 | **id** | String | Jedinečný identifikátor pro objekt blob |
-| **Jméno** |String | Lidské – popisný název pro objekt blob |
+| **name** |String | Lidské – popisný název pro objekt blob |
 | **parentId** | String | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
 | **type** | String | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
 | **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
