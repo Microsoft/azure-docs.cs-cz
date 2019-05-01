@@ -136,8 +136,6 @@
         - name: Použití prázdných hraničních uzlů
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
-        - name: Vývoj streamovacích programů v Pythonu
-          href: apache-hadoop-streaming-python.md
         - name: Zpracování a analýza dokumentů JSON
           href: using-json-in-hive.md
         - name: 'Použití uživatelem definovaných funkcí jazyka C#'
