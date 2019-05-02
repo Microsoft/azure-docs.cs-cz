@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: 7a6fa45d0f4ea09fbc84d3185aa0e58db165ac19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300577"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947350"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Informace o registraci vaší aplikace přidejte do své aplikace
 
@@ -39,7 +39,7 @@ Konfigurace `Redirect URL` polí s adresou URL pro stránku index.html založen�
 
 > #### <a name="setting-redirect-url-for-node"></a>Nastavení adresy URL pro přesměrování pro uzel
 > Pro Node.js, můžete nastavit na webu port serveru v *server.js* souboru. Tento kurz používá port 30662 pro odkaz, ale můžete použít další dostupný port. Postupujte podle níže uvedených pokynů a nastavte adresu URL pro přesměrování v informace o registraci aplikace:<br/>
-> Nastavit `http://localhost:30662/` jako **adresy URL pro přesměrování** horní části této stránky, nebo použijte `http://localhost:[port]/` Pokud používáte vlastní port TCP (ve kterém *[port]* je vlastní číslo portu TCP) a potom klikněte na tlačítko  **Aktualizace**
+> Nastavit `http://localhost:30662/` jako **adresy URL pro přesměrování** horní části této stránky, nebo použijte `http://localhost:[port]/` Pokud používáte vlastní port TCP (ve kterém *[port]* je vlastní číslo portu TCP) a potom klikněte na tlačítko ** Aktualizace**
 
 ### <a name="configure-your-javascript-spa-application"></a>Konfigurace aplikace SPA v JavaScriptu
 

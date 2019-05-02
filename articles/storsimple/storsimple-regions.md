@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e290feb278a1cddf1cfecfcb66458d8290ec122a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628879"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943595"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro StorSimple
 
@@ -32,7 +32,7 @@ Volba určitá oblast Azure je velmi důležité a volbou oblasti je ovlivněno 
 U řešení StorSimple volbou oblasti konkrétně určena následující faktory:
 
 - Oblastech, kde je k dispozici ve službě Správce zařízení StorSimple.
-- Zemí, kde je k dispozici fyzické zařízení StorSimple, cloud nebo virtuální zařízení.
+- Země nebo oblasti kde je k dispozici fyzické zařízení StorSimple, cloud nebo virtuální zařízení.
 - Oblasti, kde by mělo být účty úložiště, které ukládají StorSimple data pro optimální výkon.
 
 Tento kurz popisuje dostupnosti oblastí pro službu Správce zařízení StorSimple, fyzické místní a cloudové zařízení. Informace obsažené v tomto článku se vztahuje na StorSimple 8000 a zařízení 1200 series.
@@ -61,36 +61,36 @@ Pokud používáte řešení StorSimple Cloud Appliance, pak doporučujeme, slu�
 
 ## <a name="availability-of-storsimple-device"></a>Dostupnost zařízení StorSimple
 
-V závislosti na modelu, zařízení StorSimple může být k dispozici v různých zeměpisných oblastech nebo země.
+V závislosti na modelu, zařízení StorSimple může být k dispozici v různých zeměpisných oblastech nebo země/oblasti.
 
 ### <a name="storsimple-physical-device-models-81008600"></a>Fyzické zařízení StorSimple (modely 8100 nebo 8600)
 
-Pokud používáte StorSimple 8100 nebo 8600 fyzické zařízení, zařízení je dostupná v těchto zemích.
+Pokud používáte StorSimple 8100 nebo 8600 fyzické zařízení, zařízení je k dispozici v následujících zemích nebo oblastech.
 
-| #  | Země        | #  | Země     | #  | Země      | #  | Země              |
-|----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Austrálie      | 16 | Hongkong – zvláštní správní oblast| 31 | Nový Zéland  | 46 | Jižní Afrika         |
-| 2  | Rakousko        | 17 | Maďarsko     | 32 | Nigérie      | 47 | Jižní Korea          |
-| 3  | Bahrajn        | 18 | Island     | 33 | Norsko       | 48 | Španělsko                |
-| 4  | Belgie        | 19 | Indie       | 34 | Peru         | 49 | Srí Lanka            |
-| 5  | Brazílie         | 20 | Indonésie   | 35 | Filipíny  | 50 | Švédsko               |
-| 6  | Kanada         | 21 | Irsko     | 36 | Polsko       | 51 | Švýcarsko          |
-| 7  | Chile          | 22 | Izrael      | 37 | Portugalsko     | 52 | Tchaj-wan               |
-| 8  | Kolumbie       | 23 | Itálie       | 38 | Portoriko  | 53 | Thajsko             |
-| 9  | Česká republika | 24 | Japonsko       | 39 | Katar        | 54 | Turecko               |
-| 10 | Dánsko        | 25 | Keňa       | 40 | Rumunsko      | 55 | Ukrajina              |
-| 11 | Egypt          | 26 | Kuvajt      | 41 | Rusko       | 56 | Spojené arabské emiráty |
-| 12 | Finsko        | 27 | Macao – zvláštní administrativní oblast   | 42 | Saúdská Arábie | 57 | Spojené království       |
-| 13 | Francie         | 28 | Malajsie    | 43 | Singapur    | 58 | Spojené státy        |
-| 14 | Německo        | 29 | Mexiko      | 44 | Slovensko     | 59 | Vietnam              |
-| 15 | Řecko         | 30 | Nizozemsko | 45 | Slovinsko     | 60 | Chorvatsko              |
+| #  | Země/oblast        | #  | Země/oblast     | #  | Země/oblast      | #  | Země/oblast             |
+|----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
+| 1  | Austrálie             | 16 | Hongkong – zvláštní správní oblast      | 31 | Nový Zéland         | 46 | Jižní Afrika               |
+| 2  | Rakousko               | 17 | Maďarsko            | 32 | Nigérie             | 47 | Jižní Korea                |
+| 3  | Bahrajn               | 18 | Island            | 33 | Norsko              | 48 | Španělsko                      |
+| 4  | Belgie               | 19 | Indie              | 34 | Peru                | 49 | Srí Lanka                  |
+| 5  | Brazílie                | 20 | Indonésie          | 35 | Filipíny         | 50 | Švédsko                     |
+| 6  | Kanada                | 21 | Irsko            | 36 | Polsko              | 51 | Švýcarsko                |
+| 7  | Chile                 | 22 | Izrael             | 37 | Portugalsko            | 52 | Tchaj-wan                     |
+| 8  | Kolumbie              | 23 | Itálie              | 38 | Portoriko         | 53 | Thajsko                   |
+| 9  | Česká republika        | 24 | Japonsko              | 39 | Katar               | 54 | Turecko                     |
+| 10 | Dánsko               | 25 | Keňa              | 40 | Rumunsko             | 55 | Ukrajina                    |
+| 11 | Egypt                 | 26 | Kuvajt             | 41 | Rusko              | 56 | Spojené arabské emiráty       |
+| 12 | Finsko               | 27 | Macao – zvláštní administrativní oblast          | 42 | Saúdská Arábie        | 57 | Spojené království             |
+| 13 | Francie                | 28 | Malajsie           | 43 | Singapur           | 58 | Spojené státy              |
+| 14 | Německo               | 29 | Mexiko             | 44 | Slovensko            | 59 | Vietnam                    |
+| 15 | Řecko                | 30 | Nizozemsko        | 45 | Slovinsko            | 60 | Chorvatsko                    |
 
-Tento seznam se změní při přidání více zemí. Nejaktuálnější seznam zeměpisných oblastech, najdete v dodatku podmínky pro pole úložiště v [podmínkách](https://www.microsoft.com/en-us/licensing/product-licensing/products).
+Tento seznam se změní při přidání více zemích nebo oblastech. Nejaktuálnější seznam zeměpisných oblastech, najdete v dodatku podmínky pro pole úložiště v [podmínkách](https://www.microsoft.com/en-us/licensing/product-licensing/products).
 
 Microsoft může dodávat fyzický hardware a poskytují náhradní díly výměna hardwaru pro StorSimple na geografické oblasti jako v předchozím seznamu.
 
 > [!IMPORTANT]
-> Neumísťujte v oblasti, kde není podporovaná StorSimple fyzickým zařízením StorSimple. Společnost Microsoft nebude moct dodávat náhradní díly do zemí, kde se StorSimple nepodporuje.
+> Neumísťujte v oblasti, kde není podporovaná StorSimple fyzickým zařízením StorSimple. Společnost Microsoft nebude moct dodávat náhradní díly do zemí/oblastí, kde se StorSimple nepodporuje.
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>Řešení StorSimple Cloud Appliance (modely 8010/8020)
 

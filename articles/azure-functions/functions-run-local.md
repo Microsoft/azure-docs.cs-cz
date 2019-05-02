@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 380cd84cc5ec56fe54c12201b9c1db810ac457bf
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61022076"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875927"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -41,6 +41,9 @@ Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x.
 ### <a name="v2"></a>Verze 2.x
 
 Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Je třeba nejprve nainstalovat rozhraní .NET Core 2.x SDK.
+
+> [!IMPORTANT]
+> Když povolíte rozšíření sady v souboru projektu host.json, není potřeba nainstalovat sadu .NET Core 2.x SDK. Další informace najdete v tématu [místní vývoj s Azure Functions Core Tools a rozšíření sady ](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Rozšíření sady vyžaduje verzi 2.6.1071 základní nástroje nebo vyšší verze.
 
 #### <a name="windows-npm"></a>Windows
 
@@ -310,6 +313,7 @@ func host start
 | **`--script-root --prefix`** | Slouží k zadání cesty do kořenového adresáře aplikace function app, který se má spustit nebo nasadit. Používá se pro kompilované projekty, které Generovat soubory projektu do podsložky. Například při vytváření knihovny tříd jazyka C# projekt, host.json, local.settings.json a function.json soubory jsou generovány *kořenové* , jako je podsložka s cestou `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. To je kořenový adresář aplikace function app, při spuštění v Azure. |
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí: 20 sekund.|
 | **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
+| **`--enableAuth`** | Povolte úplnou ověřování zpracování kanálu.|
 
 C# projekt knihovny tříd (.csproj), je třeba zahrnout `--build` možnost k vygenerování knihovny DLL.
 

@@ -30,7 +30,7 @@ Funkce výrazně zjednodušuje integraci Application Insights přidat do aplikac
     | **Název** | Jedinečný název aplikace | Je nejjednodušší použijte stejný název jako aplikace function app, který musí být jedinečný v rámci vašeho předplatného. | 
     | **Umístění** | Západní Evropa | Pokud je to možné, použijte stejný [oblasti](https://azure.microsoft.com/regions/) jako vaši aplikaci function app, nebo blízko ho. |
 
-1. Zvolte **OK**. Prostředek Application Insights se vytvoří ve stejné skupině prostředků a předplatném jako aplikace function app. Po dokončení vytváření, zavřete okno Application Insights.
+1. Vyberte **OK**. Prostředek Application Insights se vytvoří ve stejné skupině prostředků a předplatném jako aplikace function app. Po dokončení vytváření, zavřete okno Application Insights.
 
 1. Po návratu do aplikace function app, vyberte **nastavení aplikace**a přejděte dolů k položce **nastavení aplikace**. Když se zobrazí nastavení s názvem `APPINSIGHTS_INSTRUMENTATIONKEY`, znamená to, zda je povoleno integrace Application Insights pro vaši aplikaci funkcí spuštěnou v Azure.
 

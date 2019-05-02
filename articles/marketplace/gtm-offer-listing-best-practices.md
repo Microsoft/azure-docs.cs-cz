@@ -2,26 +2,19 @@
 title: Nabízí Go-To-Market Services - seznam osvědčených postupů | Azure
 description: Go-To-Market Services – Tato část popisuje výpis osvědčené postupy pro nabídku
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863929"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937987"
 ---
-# <a name="offer-listing-best-practices"></a>Nabízí seznam osvědčených postupů
+# <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
 Tabulky v této části poskytují návrhy pro vytváření a zapojení nabídky marketplace. Zápis a konfigurovat vaše marketingové materiály, přejděte na [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). 
 
@@ -35,7 +28,7 @@ Tabulky v této části poskytují návrhy pro vytváření a zapojení nabídky
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
 | Odvětví: Aplikace AppSource a pouze konzultační služby | Vyberte odvětví, pokud vaši nabídku řeší potřeby specifických pro dané odvětví: <ul><li> Volání s funkcemi konkrétní obory můžete využít nabídku popisu.</li> </ul> **Poznámka:** Maximální počet možností, které se liší podle typu nabídky a je uvedené v [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). |
-| Kategorie | Vyberte kategorie, které nejlépe odpovídají v rámci vaší nabídky:<br> <ul> <li> Pečlivě kategorie, vzhledem k tomu, že jejich zákazníky slouží k vyhledání příslušné aplikace. </li> <li> Nezapomeňte volat o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky. </li> </ul> **Poznámka:** Maximální počet možností, které se liší podle typu nabídky a je uvedené v [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). |
+| Categories | Vyberte kategorie, které nejlépe odpovídají v rámci vaší nabídky:<br> <ul> <li> Pečlivě kategorie, vzhledem k tomu, že jejich zákazníky slouží k vyhledání příslušné aplikace. </li> <li> Nezapomeňte volat o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky. </li> </ul> **Poznámka:** Maximální počet možností, které se liší podle typu nabídky a je uvedené v [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). |
 | Produkty, které vaše aplikace funguje se (maximálně 3): Jenom aplikace AppSource | Seznam dalších produktů a technologií, které vaše řešení používá nebo rozšiřuje. Například Azure IoT Hub nebo Azure Machine Learning. |
 | Klíčová slova pro vyhledávání (maximálně 3) | Klíčová slova pro vyhledávání může pomoct najít vaši nabídku při vyhledávání podnikoví uživatelé <ul> <li> v Tržišti Azure Marketplace </li> <li> v AppSource </li> <li> pomocí vyhledávací weby </li> </ul> Pro výpis se zobrazí v hledání, budete muset: <ul> <li> Identifikujte začátek tři klíčová slova pro vyhledávání pro vaši nabídku; </li> <li> začlenit klíčová slova pro vyhledávání v svoji nabídku souhrn a popis; </li> <li> seznam klíčová tady. </li> </ul> |
 

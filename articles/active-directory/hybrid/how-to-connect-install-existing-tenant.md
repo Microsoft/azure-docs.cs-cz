@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60349552"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571371"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Pokud máte existující tenanta
 Většina z témat o tom, jak používat Azure AD Connect se předpokládá začínat novou Azure AD tenant a, že neexistují žádní uživatelé, nebo existuje jiné objekty. Pokud jste začali s tenantem Azure AD, ale naplněný uživatelů a dalších objektů a teď se chcete připojit, použijte pak toto téma je pro vás.
@@ -58,6 +58,15 @@ Pro novou instalaci připojit není žádný praktické rozdíl mezi konfigurace
 
 ### <a name="other-objects-than-users"></a>Jiné objekty, než uživatelé
 Skupin s povoleným e-mailu a kontakty vám může konfigurace soft-match na základě proxyAddresses. Pevné shoda se nedá použít, protože lze aktualizovat pouze sourceAnchor/immutableID (pomocí Powershellu) pro uživatele pouze. Pro skupiny, které nejsou povolenou poštu aktuálně není dostupná podpora pro konfigurace soft-match nebo pevné match.
+
+### <a name="admin-role-considerations"></a>Důležité informace o rolích správce
+Nedůvěryhodné místní uživatelům zabránit v porovnávání s uživatelem cloud, který má libovolnou roli správce, nebude odpovídat Azure AD Connect místní uživatelské objekty s objekty, které mají roli správce. Toto je ve výchozím nastavení. Chcete-li vyřešit tento problém můžete dělat tyto věci:
+
+1.  Odebrat z objektu výhradně cloudové uživatelské role adresáře
+2.  Aktivovat synchronizaci
+3.  Volitelně přidáte role adresáře zpět do objektu uživatele v cloudu po odpovídající došlo k chybě.
+
+
 
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Vytvoření nové v místní službě Active Directory z dat ve službě Azure AD
 Zákazníci, kteří začínají čistě cloudové řešení s Azure AD a že nemají místní AD. Později, do které chtějí využívat místních prostředků a chcete vytvořit místní AD podle dat služby Azure AD. Azure AD Connect nemůže nápovědu pro tento scénář. Nevytváří žádné uživatele v místním a nemá žádné možnost nastavit heslo v místní stejně jako v Azure AD.

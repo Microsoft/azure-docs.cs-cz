@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/23/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125555"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925519"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -93,8 +93,8 @@ Nainstalujete na každý virtuální počítač, který chcete replikovat, pomoc
 
 Site Recovery replikuje místní virtuální počítače VMware a fyzických serverů do managed disks v Azure.
 - Procesový server Site Recovery zapisuje protokoly replikace do účtu úložiště mezipaměti v cílové oblasti.
-- Tyto protokoly se používají k vytvoření bodů obnovení na spravované disky.
-- Pokud dojde k převzetí služeb při selhání, vyberete bod obnovení se používá k vytvoření spravovaného disku cílového.
+- Tyto protokoly se používají k vytvoření bodů obnovení v Azure spravované disky, které mají předponu asrseeddisk.
+- Pokud dojde k převzetí služeb při selhání, vyberete bod obnovení slouží k vytvoření nového spravovaného disku cíl. Tento spravovaný disk je připojený k virtuálnímu počítači v Azure.
 - Virtuální počítače, které byly dřív replikoval do účtu úložiště (před březnem 2019) nejsou ovlivněny.
 
 
@@ -111,7 +111,7 @@ Replikace nových virtuálních počítačů na účet úložiště je dostupný
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Můžete změnit typ spravovaného disku, jakmile je chráněný počítač?
 
-Ano, můžete snadno [změnit typ spravovaného disku](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Před změnou typu, zkontrolujte následek odvolání adres URL SAS pro disk, a to tak, že přejdete na prostředek spravovaného disku na portálu Azure portal. V okně Přehled zrušte všechny probíhající exportu. Po odvolání adres URL SAS, změňte typ disku během několika minut. Pokud změníte typ spravovaného disku, počkejte však body čerstvé obnovení Azure Site Recovery vygenerovat. Pomocí nové body obnovení pro všechny testovací převzetí služeb při selhání nebo převzetí služeb při selhání do budoucna.
+Ano, můžete snadno [změnit typ spravovaného disku](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro probíhající replikace. Před změnou typu, ujistěte se, že žádná adresa URL SAS vygenerovaný na spravovaný disk. Přejít k prostředku spravovaného disku na portálu Azure portal a kontrolovat, jestli mají adresy URL SAS banner v okně přehledu. Pokud je k dispozici, klikněte na něj se zrušit probíhající export. Až to bude hotové, změňte typ disku během několika minut. Pokud změníte typ spravovaného disku, počkejte však body čerstvé obnovení Azure Site Recovery vygenerovat. Pomocí nové body obnovení pro všechny testovací převzetí služeb při selhání nebo převzetí služeb při selhání do budoucna.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Můžete přepínat replikace z spravované disky do nespravované disky?
 
@@ -133,6 +133,10 @@ Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto fu
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Můžete provést offline počáteční replikaci?
 Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+
+
+### <a name="what-is-asrseeddisk"></a>Co je asrseeddisk?
+Pro každý zdrojový disk data se replikují na spravovaný disk v Azure. Tento disk má předponu asrseeddisk. Uloží kopii zdrojový disk a všechny snímky bodu obnovení.
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Můžete vyloučit disky z replikace?
 Ano, můžete vyloučit disky.
@@ -249,7 +253,7 @@ V trezoru služby Recovery Services klikněte na tlačítko **konfigurační ser
 
 ### <a name="unable-to-select-process-server-during-enable-replication"></a>Nelze vybrat procesový server při povolení replikace
 
-Z 9.24 verzi se provedly poskytují vylepšení [doprovodné materiály v rámci produktu](vmware-azure-manage-process-server.md#process-server-selection-guidance) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. Toto je chcete zabránit omezování procesu serveru a vyhněte se použití není v pořádku procesový server.
+Z 9.24 verzi se provedly poskytují vylepšení [zpracovávat výstrahy serveru](vmware-physical-azure-monitor-process-server.md#process-server-alerts) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. Toto je chcete zabránit omezování procesu serveru a vyhněte se použití není v pořádku procesový server.
 
 ### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Co mám dělat získat přesné stav procesového serveru?
 

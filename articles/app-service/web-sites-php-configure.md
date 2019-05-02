@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ad5a4981869f992ab6823a13afc2cad0e5252d08
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: eb731dc18b1524bcf161352265af9e277f85876e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105429"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730619"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurace PHP ve službě Azure App Service
 
@@ -35,15 +35,11 @@ Verze PHP 7.0 a PHP 7.2 jsou také k dispozici, ale není ve výchozím nastaven
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přejděte do aplikace [webu Azure portal](https://portal.azure.com) a klikněte na **nastavení** tlačítko.
+1. Přejděte do vaší aplikace v [webu Azure portal](https://portal.azure.com) a přejděte **konfigurace** stránky.
 
-    ![Nastavení aplikace][settings-button]
-2. Z **nastavení** okně vyberte **nastavení aplikace** a vyberte novou verzi PHP.
+2. Z **konfigurace**vyberte **obecné nastavení** a vyberte novou verzi PHP.
 
-    ![Nastavení aplikace][application-settings]
-3. Klikněte na tlačítko **Uložit** tlačítko v horní části **nastavení aplikace** okno.
-
-    ![Uložit nastavení konfigurace][save-button]
+3. Klikněte na tlačítko **Uložit** tlačítko v horní části **obecné nastavení** okno.
 
 ### <a name="azure-powershell-windows"></a>Prostředí Azure PowerShell (Windows)
 
@@ -130,18 +126,12 @@ Jak je uvedeno v předchozí části, je nejlepší způsob, jak zobrazit výcho
 ### <a name="configure-via-app-setting"></a>Konfigurace prostřednictvím nastavení aplikace
 
 1. Přidat `bin` adresáře do kořenového adresáře.
-1. Vložit `.dll` soubory v rozšíření `bin` adresář (třeba `php_xdebug.dll`). Ujistěte se, že rozšíření jsou kompatibilní s výchozí verzi PHP a jsou VC9 a kompatibilní bez bezpečným pro vlákno (nts).
-2. Nasazení vaší aplikace.
-3. Přejděte do vaší aplikace na webu Azure Portal a klikněte na **nastavení** tlačítko.
-
-    ![Nastavení aplikace][settings-button]
-4. Z **nastavení** okno, vyberte **nastavení aplikace** a přejděte **nastavení aplikace** oddílu.
-5. V **nastavení aplikace** části, vytvořte **PHP_EXTENSIONS** klíč. Hodnota pro tento klíč bude cestu vzhledem ke kořenové složky webu: **bin\your ext, přípona souboru**.
-
-    ![Povolení rozšíření v nastavení aplikace][php-extensions]
-6. Klikněte na tlačítko **Uložit** tlačítko v horní části **nastavení aplikace** okno.
-
-    ![Uložit nastavení konfigurace][save-button]
+2. Vložit `.dll` soubory v rozšíření `bin` adresář (třeba `php_xdebug.dll`). Ujistěte se, že rozšíření jsou kompatibilní s výchozí verzi PHP a jsou VC9 a kompatibilní bez bezpečným pro vlákno (nts).
+3. Nasazení vaší aplikace.
+4. Přejděte do vaší aplikace na webu Azure Portal a klikněte na **konfigurace** nacházel pod **nastavení** oddílu.
+5. Z **konfigurace** okně vyberte **nastavení aplikace**.
+6. V **nastavení aplikace** části, klikněte na **+ nové nastavení aplikace** a vytvořit **PHP_EXTENSIONS** klíč. Hodnota pro tento klíč bude cestu vzhledem ke kořenové složky webu: **bin\your ext, přípona souboru**.
+7. Klikněte na tlačítko **aktualizace** tlačítko v dolní části a potom klikněte na **Uložit** výše **nastavení aplikace** kartu.
 
 Zend rozšíření jsou také podporovány pomocí **PHP_ZENDEXTENSIONS** klíč. Pokud chcete povolit více rozšíření, zahrnují čárkou oddělený seznam `.dll` soubory pro hodnotu nastavení aplikace.
 
@@ -154,15 +144,11 @@ Namísto výchozího PHP runtime služby App Service můžete použít modul run
 3. Volitelně přidejte rozšíření do vašeho prostředí PHP runtime a povolit je `php.ini` souboru.
 4. Přidat `bin` do kořenového adresáře a put adresáře, který obsahuje prostředí PHP runtime v něm adresáře (například `bin\php`).
 5. Nasazení vaší aplikace.
-6. Přejděte do vaší aplikace na webu Azure Portal a klikněte na **nastavení** tlačítko.
-
-    ![Nastavení aplikace][settings-button]
-7. Z **nastavení** okno, vyberte **nastavení aplikace** a přejděte **mapování obslužných rutin** oddílu. Přidat `*.php` rozšíření pole a přidejte cestu k `php-cgi.exe` spustitelný soubor. Když vložíte do vašeho prostředí runtime PHP `bin` je cesta k adresáři v kořenovém adresáři aplikace `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
-
-    ![Zadejte rutinu v mapování obslužných rutin][handler-mappings]
-8. Klikněte na tlačítko **Uložit** tlačítko v horní části **nastavení aplikace** okno.
-
-    ![Uložit nastavení konfigurace][save-button]
+6. Přejděte do vaší aplikace na webu Azure Portal a klikněte na **konfigurace** okno.
+8. Z **konfigurace** okně vyberte **cesta k mapování**. 
+9. Klikněte na tlačítko **+ novou obslužnou rutinu** a přidejte `*.php` rozšíření pole a přidejte cestu k `php-cgi.exe` spustitelného souboru v **mapě skriptů**. Když vložíte do vašeho prostředí runtime PHP `bin` je cesta k adresáři v kořenovém adresáři aplikace `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+10. V dolní části, klikněte na tlačítko **aktualizace** mohli dokončit přidávání mapování obslužné rutiny.
+11. Uložte změny kliknutím na **Uložit**.
 
 <a name="composer" />
 

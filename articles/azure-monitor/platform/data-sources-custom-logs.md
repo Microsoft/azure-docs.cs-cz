@@ -86,7 +86,7 @@ Například aplikace může vytvořit soubor protokolu každý den s datem zahrn
 
 Následující tabulka obsahuje příklady platných vzorů k určení různých protokolových souborech.
 
-| Popis | Cesta |
+| Popis | `Path` |
 |:--- |:--- |
 | Všechny soubory v *C:\Logs* s příponou .txt agenta Windows |C:\Logs\\\*.txt |
 | Všechny soubory v *C:\Logs* s názvem počínaje protokolu a příponu .txt agenta Windows |C:\Logs\log\*.txt |

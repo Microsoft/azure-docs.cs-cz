@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1d3099da3d449e29d378e2f350fdc87ce5166f2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60692616"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574398"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
@@ -71,7 +71,7 @@ Objekty wireframe zobrazit aplikace s poměrně jednoduché. Aplikace obsahuje v
 
 ## <a name="create-the-store-location-dataset"></a>Vytvořte datovou sadu umístění úložiště
 
-Než vyvíjíme aplikace Lokátor úložiště, musíte vytvořit datové sady úložišť, které chceme zobrazit na mapě. V tomto kurzu používáme datovou sadu pro fiktivní kavárny volá kávy Contoso. Datovou sadu pro tento Lokátor jednoduché úložiště se spravuje v sešitu aplikace Excel. Datová sada obsahuje 10,213 Contoso kávy kavárny umístění rozloženy devíti zemích: USA, Kanadě, Spojeném království, Francie, Německo, Itálie, Nizozemsko, Dánsko a Španělsko. Zde je snímek dat vypadá jako:
+Než vyvíjíme aplikace Lokátor úložiště, musíte vytvořit datové sady úložišť, které chceme zobrazit na mapě. V tomto kurzu používáme datovou sadu pro fiktivní kavárny volá kávy Contoso. Datovou sadu pro tento Lokátor jednoduché úložiště se spravuje v sešitu aplikace Excel. Datová sada obsahuje 10,213 Contoso kávy kavárny umístění rozloženy devíti zemích nebo oblastech: USA, Kanadě, Spojeném království, Francie, Německo, Itálie, Nizozemsko, Dánsko a Španělsko. Zde je snímek dat vypadá jako:
 
 <br/>
 <center>
@@ -403,7 +403,7 @@ V tomto okamžiku je všechno nastavené v uživatelském rozhraní. Teď potře
 
 1. Přidejte kód, který *index.js*. Následující kód inicializuje na mapě, přidá [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který čeká na stránce dokončení načítání, sváže události k monitorování načítání mapy a základem tlačítko hledání a tlačítko umístění.
 
-   Když uživatel vybere tlačítko Hledat nebo když uživatel stiskne klávesu Enter po zadání umístění, do vyhledávacího pole, je zahájeno vyhledávání přibližných shod s dotazem uživatele. Předání v poli zemi ISO 2 hodnoty `countrySet` možnost omezit rozsah výsledků vyhledávání do těchto zemí. Omezení zemích, vyhledávání pomáhá zvýšit jeho přesnost výsledků, které jsou vráceny. 
+   Když uživatel vybere tlačítko Hledat nebo když uživatel stiskne klávesu Enter po zadání umístění, do vyhledávacího pole, je zahájeno vyhledávání přibližných shod s dotazem uživatele. Předání v poli zemi ISO 2 hodnoty `countrySet` možnost omezit rozsah výsledků vyhledávání do těchto zemí/oblastí. Omezení u zemí nebo oblastí k vyhledání pomáhá zvýšit jeho přesnost výsledků, které jsou vráceny. 
   
    Po dokončení vyhledávání se provést první výsledek a nastavení fotoaparátu/kamery mapy přes tuto oblast. Když uživatel vybere tlačítko umístění, použijte rozhraní API zeměpisné polohy HTML5, která je integrována do prohlížeče k načtení podle umístění uživatele a středu mapy přes jejich umístění.  
 

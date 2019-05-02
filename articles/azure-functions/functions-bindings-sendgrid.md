@@ -288,7 +288,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|od|neuvedeno|E-mailová adresa odesílatele přes všechny funkce.| 
+|from|neuvedeno|E-mailová adresa odesílatele přes všechny funkce.| 
 
 
 ## <a name="next-steps"></a>Další postup

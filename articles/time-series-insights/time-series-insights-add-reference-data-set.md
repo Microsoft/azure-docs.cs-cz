@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
 ms.openlocfilehash: 17ba15ea12efc80dcc830f6338a837d1abb77a71
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764441"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708862"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí webu Azure portal
 
@@ -92,10 +92,12 @@ Referenční data není připojený zpětně. To znamená, že pouze aktuální 
 
 15. Pokud chcete nahrát data, vyberte **nahrát řádky** tlačítko.
 
-    ![Nahrávání](media/add-reference-data-set/upload_rows.png)
+    ![Odeslat](media/add-reference-data-set/upload_rows.png)
 
     Na stránce potvrdí dokončené nahrávání a zobrazení zprávy **byl úspěšně nahrán datovou sadu**.
 
 ## <a name="next-steps"></a>Další postup
+
 * [Spravujte referenční data](time-series-insights-manage-reference-data-csharp.md) prostřednictvím kódu programu.
+
 * Úplnou referenční dokumentaci k rozhraní API najdete v dokumentu [Rozhraní API referenčních dat](/rest/api/time-series-insights/ga-reference-data-api).

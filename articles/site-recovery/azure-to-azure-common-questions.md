@@ -1,22 +1,22 @@
 ---
-title: 'Nejčastější dotazy: Zotavení po havárii Azure do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu'
-description: Tento článek shrnuje běžné otázky při nastavování zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery
+title: Běžné dotazy týkající se zotavení po havárii Azure do Azure pomocí Azure Site Recovery
+description: Tento článek obsahuje odpovědi na běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 03/29/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: asgan
+ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790852"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925677"
 ---
-# <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Nejčastější dotazy: Zotavení po havárii Azure do Azure
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se nasazení zotavení po havárii (DR) virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fórum služby Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+Tento článek obsahuje odpovědi na běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure s použitím [Site Recovery](site-recovery-overview.md). 
 
 
 ## <a name="general"></a>Obecné
@@ -28,15 +28,15 @@ Každá instance chráněná Azure Site Recovery je prvních 31 dní ochrany zad
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Budu se mi během prvních 31 dní účtovat nějaké další poplatky Azure?
 Ano, i když je Azure Site Recovery během prvních 31 dní chráněné instance zadarmo, můžou vám být účtovány poplatky za Azure Storage, transakce úložiště a přenosy dat. U obnoveného virtuálního počítače se můžou účtovat taky poplatky za výpočty Azure. Získejte kompletní podrobnosti o cenách za [zde](https://azure.microsoft.com/pricing/details/site-recovery)
 
-### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Co jsou osvědčené postupy pro konfiguraci Site Recovery na virtuálních počítačích Azure?
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Kde najdu osvědčené postupy pro zotavení po havárii virtuálního počítače Azure? 
 1. [Vysvětlení architektury Azure do Azure](azure-to-azure-architecture.md)
 2. [Zkontrolujte podporované a nepodporované konfigurace](azure-to-azure-support-matrix.md)
 3. [Nastavení zotavení po havárii pro virtuální počítače Azure](azure-to-azure-how-to-enable-replication.md)
 4. [Spuštění testovacího převzetí služeb při selhání](azure-to-azure-tutorial-dr-drill.md)
 5. [Převzetí služeb při selhání a navrácení služeb po obnovení do primární oblasti](azure-to-azure-tutorial-failover-failback.md)
 
-### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Jak je kapacita zaručeno, že v cílové oblasti pro virtuální počítače Azure?
-Azure Site Recovery (ASR) tým pracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, ve snaze zajistit, aby virtuální počítače chráněné službou Azure Site Recovery pro po havárii se obnovení bylo úspěšně nasazeno v oblasti zotavení po havárii vždy, když jsou spuštěny operace převzetí služeb při selhání Azure Site Recovery.
+### <a name="how-is-capacity-guaranteed-in-the-target-region"></a>Jak zaručeně kapacity v cílové oblasti?
+Tým Site Recovery spolupracuje s tým pro správu Azure kapacitu naplánovat dostatek kapacity infrastruktury a při zajišťování, které chrání Site Recovery pro virtuální počítače úspěšně budou nasazené cílové oblasti po převzetí služeb při selhání je zahájené.
 
 ## <a name="replication"></a>Replikace
 
@@ -54,6 +54,16 @@ Ano, můžete [replikace virtuálních počítačů připnuté zóny](https://az
 
 Ano, můžete vyloučit disky v době provedení ochrany pomocí prostředí PowerShell. Další informace najdete v tématu [článku](azure-to-azure-exclude-disks.md)
 
+### <a name="can-i-add-new-disks-to-replicated-vms-and-enable-replication-for-them"></a>Můžete přidat nové disky replikované virtuální počítače a pro ně povolíte replikaci?
+
+Ano, to je podporováno pro virtuální počítače Azure se spravovanými disky. Když přidáte nový disk do virtuálního počítače Azure, který je povolený pro replikaci, stav replikace virtuálního počítače ukazuje varování, s poznámku určující, že jeden nebo více disků ve virtuálním počítači jsou dostupné pro ochranu. Můžete povolit replikaci pro přidané disky.
+- Pokud povolíte ochranu pro přidané disky, upozornění zmizí po počáteční replikaci.
+- Pokud se rozhodnete povolit replikaci disku, můžete vybrat zavřete upozornění.
+- Po převzetí služeb při selhání virtuálního počítače, na který přidejte disk a povolit pro něho replikaci, se zobrazí body replikace disky, které jsou k dispozici pro obnovení. Například pokud přidáte nový virtuální počítač má jeden disk, replikace body, které byly vytvořeny před přidáním disku se zobrazí, bodu replikace se skládá z "1 2 disky".
+
+Site Recovery nepodporuje "horkou odebrání" disku replikovaný virtuální počítač. Pokud odeberete disku virtuálního počítače, musíte zakázat a znovu povolte replikaci pro virtuální počítač.
+
+
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak často můžete replikovat do Azure?
 Replikace je souvislý při replikaci virtuálních počítačů Azure do jiné oblasti Azure. Další informace najdete v tématu [architektury pro replikaci Azure do Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
 
@@ -69,7 +79,7 @@ Ne, Site Recovery nevyžaduje připojení k Internetu. Ale vyžaduje přístup k
 
 ### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Můžete replikovat aplikace má samostatné skupiny prostředků pro samostatné úrovně?
 Ano, můžete replikovat aplikace a konfigurace zotavení po havárii mějte samostatné skupiny prostředků moc.
-Například pokud máte aplikace s jednotlivých úrovní aplikace, databáze a webové v samostatné skupiny prostředků, pak budete muset kliknout [Průvodce replikace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) třikrát pro ochranu u všech úrovní. Azure Site Recovery replikuje tyto tři úrovně ve třech jinou skupinu prostředků.
+Například pokud máte aplikace s jednotlivých úrovní aplikace, databáze a webové v samostatné skupiny prostředků, pak budete muset kliknout [Průvodce replikace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) třikrát pro ochranu u všech úrovní. Site Recovery replikuje tyto tři úrovně do tří různých skupin prostředků.
 
 ## <a name="replication-policy"></a>Zásady replikace
 
@@ -147,8 +157,8 @@ Protože je intenzivní nároky na procesor, povolení konzistence více virtuá
 
 ## <a name="failover"></a>Převzetí služeb při selhání
 
-### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Jak je kapacita zaručeno, že v cílové oblasti pro virtuální počítače Azure?
-Azure Site Recovery (ASR) tým pracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, ve snaze zajistit, aby virtuální počítače chráněné službou Azure Site Recovery pro po havárii se obnovení bylo úspěšně nasazeno v oblasti zotavení po havárii vždy, když jsou spuštěny operace převzetí služeb při selhání Azure Site Recovery.
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Jak je kapacita Buďte bez obav v cílové oblasti pro virtuální počítače Azure?
+Tým Site Recovery spolupracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, pomáhá zajistit, která virtuálním počítačům povolený pro zotavení po havárii se úspěšně nasadit v cílové oblasti při zahájení převzetí služeb při selhání.
 
 ### <a name="is-failover-automatic"></a>Je převzetí služeb při selhání automatické?
 
@@ -156,15 +166,19 @@ Převzetí služeb při selhání není automatické. Spuštění převzetí slu
 
 ### <a name="can-i-retain-a-public-ip-address-after-failover"></a>Můžete zachovat veřejné IP adresy po převzetí služeb při selhání?
 
-Veřejnou IP adresu produkční aplikace *nelze uchovávat v převzetí služeb při selhání*. Úlohy, které aktivují jako součást procesu převzetí služeb při selhání musíte být přiřazeni veřejný IP prostředek Azure, který je k dispozici v cílové oblasti. Můžete provést tento krok ručně, nebo Automatizace prostřednictvím plánu obnovení. Přiřazení veřejné IP adresy pomocí plán obnovení, najdete v článku [nastavení veřejné IP adresy po převzetí služeb při selhání](https://docs.microsoft.com/azure/site-recovery/concepts-public-ip-address-with-site-recovery#public-ip-address-assignment-using-recovery-plan).  
+Veřejnou IP adresu produkční aplikace nelze uchovávat po převzetí služeb při selhání.
+- Úlohy, které aktivují jako součást procesu převzetí služeb při selhání musíte být přiřazeni veřejný IP prostředek Azure, který je k dispozici v cílové oblasti.
+- Můžete to provést ručně nebo automatizace pomocí plánu obnovení.
+- Zjistěte, jak [nastavení veřejné IP adresy po převzetí služeb při selhání](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan).  
 
 ### <a name="can-i-retain-a-private-ip-address-during-failover"></a>Můžete zachovat privátní IP adresy během převzetí služeb při selhání?
-Ano, můžete zachovat privátní IP adresu. Ve výchozím nastavení když povolíte zotavení po Havárii pro virtuální počítače Azure Site Recovery vytvoří cílové prostředky na základě zdroje prostředků nastavení. Pro Azure: virtuální počítače nakonfigurované se statickými IP adresami Site Recovery se pokusí zřízení stejnou IP adresu pro cílový virtuální počítač, pokud není používán. Pokud chcete zachovat privátní IP adresou v různých podmínkách, najdete v článku [zachovat IP adresy během převzetí služeb při selhání](site-recovery-retain-ip-azure-vm-failover.md).
+Ano, můžete zachovat privátní IP adresu. Ve výchozím nastavení Pokud povolíte obnovení po havárii pro virtuální počítače Azure Site Recovery vytvoří cílové prostředky na základě zdroje prostředků nastavení. -Pro virtuální počítače Azure nakonfigurované se statickými IP adresami Site Recovery se pokusí zřízení stejnou IP adresu pro cílový virtuální počítač, pokud není používán.
+Další informace o [zachování IP adresy během převzetí služeb při selhání](site-recovery-retain-ip-azure-vm-failover.md).
 
-### <a name="after-failover-the-server-doesnt-have-the-same-ip-address-as-the-source-vm-why-is-it-assigned-a-new-ip-address"></a>Po převzetí služeb při selhání server nemá stejnou IP adresu jako zdrojový virtuální počítač. Proč se ho přiřadit novou IP adresu?
+### <a name="after-failover-why-is-the-server-assigned-a-new-ip-address"></a>Po převzetí služeb při selhání, proč je server přiřadit novou IP adresu?
 
 Site Recovery se pokusí zadat IP adresu v okamžiku převzetí služeb při selhání. Pokud jiného virtuálního počítače trvá, které řeší, Site Recovery nastaví další dostupnou IP adresu jako cíl.
-Úplné vysvětlení způsobu, jakým Site Recovery zpracovává adresování, najdete v článku [nastavit mapování sítě a IP adresování virtuálních sítí](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms).
+Další informace o [nastavení mapování sítě a IP adresy pro virtuální sítě](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms).
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>Co jsou **nejnovější verzi (nejnižší cíl bodu obnovení)** body obnovení?
 **Nejnovější verzi (nejnižší cíl bodu obnovení)** možnost nejprve zpracuje všechna data, ke které byl odeslán do služby Site Recovery k vytvoření bodu obnovení pro každý virtuální počítač před přebírání služeb při selhání do něj. Tato možnost poskytuje nejnižší cíl bodu obnovení (RPO), protože virtuální počítač vytvořen po převzetí služeb při selhání se všechna data do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
@@ -175,10 +189,10 @@ Ano. Site Recovery zpracovává všechny čekající data před selháním, prot
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Co dělá **nejnovější zpracovaný** možnost v rámci obnovování bodů průměr?
 **Poslední zpracovaná položka** možnost selže, všechny virtuální počítače v plánu obnovy nejnovější bod obnovení lokality zpracovat. Pokud chcete zobrazit nejnovější obnovení bodu pro konkrétní virtuální počítač, zkontrolujte **nejnovější body obnovení** v nastavení virtuálního počítače. Tato možnost poskytuje nízké hodnoty RTO, protože se neztrácí žádný čas zpracováním nezpracovaných dat.
 
-### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Pokud replikuji mezi dvěma oblastmi Azure, co se stane, když můj primární oblasti dojde k nečekanému výpadku?
+### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Co se stane, když můj primární oblasti dojde k nečekanému výpadku?
 Můžete aktivovat převzetí služeb při selhání po výpadek. Site Recovery nepotřebuje připojení z primární oblasti provést převzetí služeb při selhání.
 
-### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Co je RTO převzetí služeb při selhání virtuálního počítače?
+### <a name="what-is-a-rto-of-a-vm-failover-"></a>Co je RTO převzetí služeb při selhání virtuálního počítače?
 Site Recovery obsahuje [RTO smlouva SLA na úrovni 2 hodiny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Ale ve většině případů, Site Recovery převzetí služeb při selhání virtuálních počítačů během několika minut. Můžete vypočítat RTO tak, že přejdete převzetí služeb při selhání úlohy, která ukazuje čas, jakou trvalo a zobrazte si virtuální počítač. Obnovení plánování RTO, přečtěte si níže část.
 
 ## <a name="recovery-plans"></a>Plány obnovení
@@ -214,25 +228,27 @@ Ne. Pokud jste [převzetí služeb při selhání](https://docs.microsoft.com/az
 To závisí na situace. Například pokud zdrojové oblasti virtuální počítač existuje, jsou synchronizovány pouze změny mezi zdrojový disk a cílový disk. Site Recovery počítá srovnáním disky rozdíly a pak ji přesune data. Tento proces obvykle trvá několik hodin. Další informace o tom, co se stane během opětovného nastavování ochrany najdete v tématu [zpětné replikace převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Kolik času udělá provést navrácení služeb po obnovení?
-Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obvykle podobný čas potřebný pro převzetí služeb při selhání z primární oblasti do sekundární oblasti.
+Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obecně podobný dobu potřebnou pro převzetí služeb při selhání z primární oblasti do sekundární oblasti.
 
 ## <a name="capacity"></a>Kapacita
 
 ### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Jak je kapacita Buďte bez obav v cílové oblasti pro virtuální počítače Azure?
-Azure Site Recovery (ASR) tým pracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, ve snaze zajistit, aby virtuální počítače chráněné službou Azure Site Recovery pro po havárii se obnovení bylo úspěšně nasazeno v oblasti zotavení po havárii vždy, když jsou spuštěny operace převzetí služeb při selhání Azure Site Recovery.
+Tým Site Recovery spolupracuje s týmem správy kapacity Azure naplánovat dostatek kapacity infrastruktury, pomáhá zajistit, která virtuálním počítačům povolený pro zotavení po havárii se úspěšně nasadí v cílové oblasti po převzetí služeb při selhání je zahájeno.
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>Funguje Site Recovery s rezervovanými instancemi?
-Ano, můžete si koupit [rezervace instancí](https://azure.microsoft.com/pricing/reserved-vm-instances/) v DR oblasti a operace převzetí služeb při selhání Azure Site Recovery je používají. </br> Žádná další konfigurace je nutná od zákazníků.
+Ano, můžete si koupit [rezervace instancí](https://azure.microsoft.com/pricing/reserved-vm-instances/) v oblasti pro zotavení po havárii a Site Recovery operace převzetí služeb při selhání je používají. </br> Je potřeba žádná další konfigurace.
 
 
 ## <a name="security"></a>Zabezpečení
+
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Posílají se replikační data do služby Site Recovery?
-Ne, Site Recovery nepodporuje nezachycuje replikovaná data a nemá žádné informace o co běží na virtuálních počítačích. Do služby Site Recovery se odesílají jen metadata, která jsou nezbytná k orchestraci replikace a převzetí služeb při selhání.  
+Ne, Site Recovery nezachycuje replikovaná data se nepodporuje a nemá žádné informace o co běží na virtuálních počítačích. Do služby Site Recovery se odesílají jen metadata, která jsou nezbytná k orchestraci replikace a převzetí služeb při selhání.  
 Site Recovery je ISO 27001: 2013, 27018, HIPAA, DPA certifikace a probíhá SOC2 a FedRAMP JAB.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
-Ano, jak šifrování během přenosu a [šifrování v Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) jsou podporovány.
+Ano, jak šifrování během přenosu a [šifrování v klidovém stavu v Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) jsou podporovány.
 
 ## <a name="next-steps"></a>Další postup
 * [Kontrola](azure-to-azure-support-matrix.md) požadavky na podporu.
 * [Nastavit](azure-to-azure-tutorial-enable-replication.md) replikací z Azure do Azure.
+- Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fórum služby Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).

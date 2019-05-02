@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458640"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925827"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika vynechanými oznámeními ve službě Azure Notification Hubs
 
@@ -123,7 +123,7 @@ Tady jsou cesty k diagnostikovat původní příčinu vynechané oznámení v No
 
 #### <a name="push-notification-service-developer-portal"></a>Portál pro vývojáře služby nabízených oznámení ####
 
-Ověřte přihlašovací údaje v příslušných nabízená oznámení služby portálu pro vývojáře (APNs, FCM, Windows Notification Service a tak dále). Další informace najdete v tématu [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Ověřte přihlašovací údaje v příslušných nabízená oznámení služby portálu pro vývojáře (APNs, FCM, Windows Notification Service a tak dále). Další informace najdete v tématu [kurzu: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
 #### <a name="azure-portal"></a>portál Azure ####
 
@@ -180,7 +180,7 @@ Můžete také odeslat testovací oznámení ze sady Visual Studio.
 
 Další informace o používání Notification Hubs pomocí Průzkumníka serveru Visual Studia najdete v těchto článcích:
 
-* [Postup zobrazení registrace zařízení pro notification hubs](https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn792122(v=win.10))
+* [Postup zobrazení registrace zařízení pro notification hubs](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
 * [Podrobné informace: Visual Studio 2013 Update 2 RC a Azure SDK 2.3]
 * [Oznamujeme vydání sady Visual Studio 2013 Update 3 a Azure SDK 2.4]
 
@@ -261,7 +261,7 @@ Na portálu můžete získat rychlý přehled o všech aktivit v centru oznámen
 
 #### <a name="programmatic-access"></a>Programový přístup ####
 
-Další informace o programový přístup, najdete v části [programový přístup](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Další informace o programový přístup, najdete v části [programový přístup](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Některé funkce související s telemetrií jako Export a import registrace a telemetrie přístup přes rozhraní API, jsou k dispozici pouze v rámci úrovně služeb Standard. Při pokusu o použití těchto funkcí z bezplatné nebo základní úroveň služeb, pokud používáte sadu SDK zobrazí se zprávou výjimky. Pokud používáte funkce přímo z rozhraní REST API, zobrazí se chyba HTTP 403 (zakázáno).

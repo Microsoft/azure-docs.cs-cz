@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: d0908e9edce8efb7a378ee04b6076b61cae2d2bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708659"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939267"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Použití Azure Data Box pro migraci dat z úložiště místní HDFS do služby Azure Storage
 
@@ -70,14 +70,32 @@ Použijte následující postup kopírování dat prostřednictvím REST API z/o
     ```
     Pokud použijete některé mechanismus pro službu DNS, ujistěte se, že dá vyřešit koncový bod zařízení Data Box.
     
-3. Nastavte proměnnou prostředí `azjars` přejděte `hadoop-azure` a `microsoft-windowsazure-storage-sdk` jar soubory. Tyto soubory jsou v instalačním adresáři Hadoop (pokud tyto soubory existují, použijte tento příkaz můžete zkontrolovat `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` kde `<hadoop_install_dir>` je adresář, kam jste nainstalovali Hadoop) používat úplné cesty. 
+4. Nastavte proměnnou prostředí `azjars` přejděte `hadoop-azure` a `microsoft-windowsazure-storage-sdk` jar soubory. Tyto soubory jsou v instalačním adresáři Hadoop (pokud tyto soubory existují, použijte tento příkaz můžete zkontrolovat `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` kde `<hadoop_install_dir>` je adresář, kam jste nainstalovali Hadoop) používat úplné cesty. 
     
     ```
     # azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar
     # azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar
     ```
 
-4. Kopírování dat z Hadoop HDFS do služby Data Box Blob storage.
+5. Vytvoření kontejneru úložiště, který chcete použít pro kopírování dat. Jako součást tohoto příkazu byste zadat také cílovou složku. Může to být fiktivní cílové složky v tomto okamžiku.
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -mkdir -p  wasb://[container_name]@[blob_service_endpoint]/[destination_folder]
+    ```
+
+6. Spusťte příkaz seznamu k zajištění, že byly vytvořeny kontejner a složku.
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -ls -R  wasb://[container_name]@[blob_service_endpoint]/
+    ```
+
+7. Zkopírujte data z Hadoop HDFS do úložiště objektů Blob Data pole, do kontejneru, který jste vytvořili dříve. Pokud není nalezen, která kopírujete do složky, příkaz ho automaticky vytvoří.
 
     ```
     # hadoop distcp \

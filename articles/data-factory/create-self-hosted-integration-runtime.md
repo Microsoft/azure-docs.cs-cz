@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 6e88d8f1c16e7c73f5c62325e41701e6f0ea97fb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565510"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728088"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -40,7 +40,7 @@ Tento dokument popisuje, jak můžete vytvořit a nakonfigurovat v místním pro
 
     ```powershell
 
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
 
     ```
 
@@ -63,7 +63,7 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Předpoklady pro použití v místním prostředí IR
 
 - Jeden místní prostředí integration runtime je použít pro více zdrojů dat v místním. Jeden místní prostředí integration runtime je sdílet s jinou data factory ve stejném tenantovi Azure Active Directory. Další informace najdete v tématu [sdílení místního prostředí integration runtime](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Může mít pouze jednu instanci z místního prostředí integration runtime nainstalovaný na jednom počítači. Pokud máte dva datové továrny, které potřebují přístup k místním zdrojům dat, budete muset nainstalovat místní prostředí integration runtime ve dvou místních počítačích každý z datových továren nebo použít [sdílení funkceprostředíIRvmístnímprostředí](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)sdílet místní prostředí integration runtime pomocí jiné služby Data Factory.  
+- Může mít pouze jednu instanci z místního prostředí integration runtime nainstalovaný na jednom počítači. Pokud máte dva datové továrny, které potřebují přístup k místním zdrojům dat, buď použijte [sdílení funkce prostředí IR v místním prostředí](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories) sdílet místní prostředí integration runtime, nebo nainstalovat místní prostředí integration runtime na dvě místní počítače, jeden pro každou datovou továrnu.  
 - Místní prostředí IR nemusí být ve stejném počítači jako zdroj dat. Však s místní prostředí integration runtime blíže ke zdroji dat snižuje čas potřebný pro místní prostředí integration runtime připojit ke zdroji dat. Doporučujeme nainstalovat místní prostředí integration runtime na počítač, který se liší od zdroje dat v místním hostiteli. Když místního prostředí integration runtime a zdroje dat jsou na různých počítačích, místní prostředí integration runtime není soutěží o prostředky se zdrojem dat.
 - Na různých počítačích, které se připojují ke stejnému zdroji dat v místním může mít více modulů runtime integrace v místním prostředí. Například můžete mít dva moduly runtime integrace v místním prostředí, které slouží dva datové továrny, ale stejného zdroje dat v místním zaregistruje datové továrny.
 - Pokud už máte nainstalovanou ve vašem počítači k obsluze scénáři Power BI bránu, nainstalujte samostatnou místní prostředí integration runtime pro službu Azure Data Factory na jiném počítači.

@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/26/2019
 ms.author: raynew
-ms.openlocfilehash: d9fdd6f42e1443c0515c2c38496e9d474c87715c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c91629d24267d280edefdb7530e2614eb7be89fd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837393"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704883"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Z VMware do architektury pro zotavení po havárii Azure
 
@@ -53,6 +53,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použi
     - Konfigurační server orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
     - Příchozí data replikace k procesového serveru (běžícího na počítači serveru configuration) na příchozím portu HTTPS 9443 poslat virtuálních počítačů. Tento port je možné upravit.
     - Procesový server přijímá data replikace, optimalizuje je zašifruje a odesílá je do úložiště Azure přes port 443 odchozí.
+5. Data replikace zaznamená první pozemního v účtu úložiště mezipaměti v Azure. Tyto protokoly se zpracují a data se ukládají do Azure Managed Disks (označovaný jako Azure Site Recovery počáteční hodnoty disk). Body obnovení jsou vytvářeny na tomto disku.
 
 
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162641"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690274"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -50,6 +50,47 @@ Event Hubs úrovně Standard úroveň momentálně podporuje maximální doba se
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Jak můžu monitorovat Moje služby Event Hubs?
 Event Hubs vysílá vyčerpávající metriky, které poskytují stavu vašich prostředků, aby [Azure Monitor](../azure-monitor/overview.md). Také vám umožňují posouzení celkového stavu služby Event Hubs pouze na úrovni oboru názvů, ale také na úrovni entity. Další informace o monitorování, které nabízíte [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Které porty je potřeba otevřít v bráně firewall? 
+Následující protokoly s Azure Service Bus můžete použít k odesílání a příjem zpráv:
+
+- Pokročilé řízení front zpráv (AMQP) protokolu
+- HTTP
+- Apache Kafka
+
+V následující tabulce pro odchozí porty, které je potřeba otevřít na použití těchto protokolů ke komunikaci s Azure Event Hubs. 
+
+| Protocol (Protokol) | Porty | Podrobnosti | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 a 5672 | Zobrazit [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| HTTP, HTTPS | 80, 443 |  |
+| Kafka | 9092 | Zobrazit [pomocí Event Hubs v aplikacích Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy musí do seznamu povolených IP adres?
+Najít správné IP adresy na seznamu povolených pro vaše připojení, postupujte podle těchto kroků:
+
+1. Spusťte následující příkaz z příkazového řádku: 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Tato IP adresa je statická. Pouze bodu v čase, že by došlo ke změně je-li obnovit obor názvů do jiného clusteru.
+
+Pokud používáte redundanci zón pro váš obor názvů, je třeba provést několik dalších kroků: 
+
+1. Nejprve spusťte příkaz nslookup v oboru názvů.
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. Poznamenejte si název v **neautoritativní odpovědí** oddíl, což je v jednom z následujících formátů: 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. Spusťte nslookup pro každé z nich s příponami s1, s2 a s3 získat IP adresy všech tří instancí spuštěná ve třech zónách dostupnosti 
 
 ## <a name="apache-kafka-integration"></a>Integrace Apache Kafka
 
