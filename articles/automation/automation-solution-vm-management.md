@@ -282,7 +282,7 @@ Služba Automation vytváří dva typy záznamů v pracovním prostoru Log Analy
 |RunbookName | Název runbooku.|
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro službu Automation je hodnota OpsManager.|
 |StreamType | Typ datového proudu úlohy. Možné hodnoty:<br>-Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
-|Čas | Datum a čas provedení úlohy runbooku.|
+|Time | Datum a čas provedení úlohy runbooku.|
 
 Při provádění jakékoli hledání v protokolu, které vrací záznamy kategorie **JobLogs** nebo **JobStreams**, můžete vybrat **JobLogs** nebo **JobStreams**zobrazení, které obsahuje sadu dlaždic se souhrnem aktualizací vrácených hledáním.
 
