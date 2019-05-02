@@ -1,7 +1,7 @@
 ---
 title: Indexování obsahu z Azure Table storage pro fulltextové vyhledávání – Azure Search
 description: Naučte se indexovat data uložená ve službě Azure Table storage pomocí indexeru Azure Search.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -12,7 +12,7 @@ ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60871230"
@@ -49,7 +49,7 @@ Indexování tabulky zdroje dat musí mít následující vlastnosti:
 
 Chcete-li vytvořit zdroj dat:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Index určuje pole v dokumentu, atributy, a zkušeností jiných objektů, kter�
 
 K vytvoření indexu:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Indexer propojuje zdroj dat s cílovým indexem vyhledávání a poskytuje plán
 
 Po vytvoření indexu a zdroj dat, jste připraveni vytvořit indexer:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -133,7 +133,7 @@ Při nastavování tabulky indexer spustit podle plánu se Reindexuje jenom nov�
 
 K označení, je nutné odebrat některé dokumenty z indexu, můžete použít obnovitelné odstranění strategie. Nemusíte ho odstraňovat řádek, přidejte vlastnost umožňující označit, že má odstranit a nastavit zásadu obnovitelného odstranění detekce v objektu datasource. Například následující zásady domnívá, že se odstranění řádku, pokud řádek obsahuje vlastnosti `IsDeleted` s hodnotou `"true"`:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

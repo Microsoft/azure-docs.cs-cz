@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60757555"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: Zřízení Azure Data Box brány v prostředí VMware
 
@@ -145,7 +145,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
     Na stejné stránce klikněte na **Přidat pevný disk** a vyberte **Existující pevný disk**. V úložišti dat vyberte soubor VMDK. Tím přidáte disk s operačním systémem. 
 
-     ! Úprava nastavení stránky[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     !Úprava nastavení stránky[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Posuňte se dolů, dokud se nezobrazí **Nový pevný disk**, a rozbalte ho, aby se zobrazilo nastavení. Nastavte **Uzel virtuálního zařízení** na **Kontroler IDE 0**.
 
