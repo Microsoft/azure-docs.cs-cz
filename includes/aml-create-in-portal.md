@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 57fd69542a5d92b9afd1e003d8b94c1ebb64953e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753825"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65031766"
 ---
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí přihlašovacích údajů pro předplatné Azure, které používáte. 
 
@@ -26,7 +26,7 @@ ms.locfileid: "60753825"
 
 1. Na panelu hledání zadejte **Machine Learning**. Vyberte **pracovní prostor služby Machine Learning** výsledek hledání.
 
-   ![Hledat pracovní prostor](./media/aml-create-in-portal/allservices-search.PNG)
+   ![Hledat pracovní prostor](./media/aml-create-in-portal/allservices-search.png)
 
 1. V **pracovní prostor služby ML** podokno, posuňte se dolů a vyberte **vytvořit** začít.
 
