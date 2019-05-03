@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282059"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024391"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Kurz REST pro: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search
 
@@ -27,9 +27,6 @@ V tomto kurzu, používá [rozhraní REST API Azure Search](https://docs.microso
 > * Vytvoření indexu Azure Search tak, aby obsahovala prohledávatelného obsahu
 > * Nakonfigurování a spuštění indexeru ke čtení kontejneru a extrahování prohledávatelného obsahu z Azure blob storage
 > * Prohledávání právě vytvořeného indexu
-
-> [!NOTE]
-> Tento kurz se spoléhá na podporu polí JSON, která je aktuálně ve službě Azure Search funkcí ve verzi Preview. Na portálu není k dispozici. Z tohoto důvodu používáme rozhraní REST API verze Preview, které tuto funkci poskytuje, a klientský nástroj REST k volání tohoto rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -81,7 +78,7 @@ Metoda požadavku pro všechna volání v tomto kurzu je **příspěvek**. Klí�
 
 Pomocí nástroje Postman provedeme tři volání rozhraní API do služby Search, kterými vytvoříme zdroj dat, index a indexer. Zdroj dat obsahuje ukazatel na váš účet úložiště a vaše data JSON. Vaše služba Search se připojí při načítání dat.
 
-Řetězec dotazu musí obsahovat verze preview rozhraní API (například **verze api-version = 2017-11-11-Preview**) a každé volání by mělo vrátit **201 – vytvořeno**. Obecně dostupná verze rozhraní API ještě neumožňuje zpracovávat JSON jako pole JSON. V současné době to umožňuje pouze rozhraní API ve verzi Preview.
+Dotaz řetězce musí určovat verzi rozhraní api a každé volání by měl vrátit **201 – vytvořeno**. Je obecně dostupná verze rozhraní api pro použití polí JSON `2019-05-06`.
 
 Ve svém klientovi REST proveďte následující tři volání rozhraní API.
 
@@ -89,7 +86,7 @@ Ve svém klientovi REST proveďte následující tři volání rozhraní API.
 
 [Rozhraní API vytvořit zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)vytvoří objekt, který určuje, jaká data do indexu Azure Search.
 
-Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search. 
+Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search. 
 
 Pro toto volání text požadavku musí obsahovat název vašeho účtu úložiště, klíč účtu úložiště a název kontejneru objektů blob. Klíč účtu úložiště najdete na webu Azure Portal v části **Přístupové klíče** vašeho účtu úložiště. Umístění je znázorněné na následujícím obrázku:
 
@@ -132,7 +129,7 @@ Odpověď by měla vypadat nějak takto:
     
 Druhé volání je [vytvořit Index API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), vytvoření indexu Azure Search, která ukládá veškerá prohledávatelná data. Index určuje všechny parametry a jejich atributy.
 
-Adresa URL pro toto volání je `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search.
+Adresa URL pro toto volání je `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
 
 Nejprve nahraďte adresu URL. Pak zkopírujte následující kód, vložte ho do textu vašeho požadavku a spusťte dotaz.
 
@@ -222,7 +219,7 @@ Odpověď by měla vypadat nějak takto:
 
 Indexer propojuje zdroj dat, naimportuje data do cílovým indexem vyhledávání a volitelně poskytuje plán pro automatizaci aktualizace dat. Rozhraní REST API je [vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-Adresa URL pro toto volání je `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Nahraďte `[service name]` názvem vaší služby Search.
+Adresa URL pro toto volání je `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
 
 Nejprve nahraďte adresu URL. Pak zkopírujte a vložte následující kód do textu vašeho požadavku a odeslat žádost. Požadavek je zpracován okamžitě. Po odpověď se vrátí zpět, budete mít index, který je fulltextově prohledávatelné.
 
@@ -267,7 +264,7 @@ Můžete spustit vyhledávání ihned poté, co je první dokument načten. Pro 
 
 Na webu Azure portal otevřete službu search **přehled** stránce, index, kterou jste vytvořili v nalezen **indexy** seznamu.
 
-Nezapomeňte vybrat index, který jste právě vytvořili. Verze rozhraní API může být ve verzi preview nebo obecně dostupnou verzi. Jediným požadavkem ve verzi preview se pro indexování pole JSON.
+Nezapomeňte vybrat index, který jste právě vytvořili. 
 
   ![Prohledávání nestrukturovaných dat](media/search-semi-structured-data/indexespane.png)
 

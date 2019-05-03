@@ -1,7 +1,7 @@
 ---
 title: Definování vlastních modulů R
 titleSuffix: Azure Machine Learning Studio
-description: Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v nástroji Azure Machine Learning Studio. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování.
+description: Toto téma popisuje, jak vytvořit a nasadit vlastní Rstudia. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6d330340ff09ddb6c2bec04259f964f2298dbffc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751205"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025059"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definování vlastních modulů R pro Azure Machine Learning Studio
 
-Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v nástroji Azure Machine Learning Studio. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
+Toto téma popisuje, jak vytvořit a nasadit vlastní Rstudia. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
 
 
 
@@ -159,7 +159,7 @@ Volitelné **DataTable** porty, které nejsou předané jako vstup v jednom expe
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-U vlastních modulů R nemá identifikátor pro PSČ port tak, aby odpovídaly žádné parametry funkce jazyka R. Je to proto, že je soubor zip automaticky extrahován do pracovního adresáře r.
+U vlastních modulů R nemá Identifikátor pro PSČ port tak, aby odpovídaly žádné parametry funkce jazyka R. Je to proto, že je soubor zip automaticky extrahován do pracovního adresáře r.
 
 **Vstupní pravidla:**
 
@@ -225,7 +225,7 @@ A vrátí seznam objektů v seznamu ve správném pořadí v "CustomAddRows.R":
 ### <a name="arguments"></a>Argumenty
 Další data může být předán funkci R prostřednictvím modulu parametrů, které jsou definovány v **argumenty** elementu. Tyto parametry se zobrazí v podokně úplně vpravo vlastnosti uživatelského rozhraní Machine Learning, pokud je vybrána modulu. Argumenty mohou být některé z podporovaných typů nebo můžete vytvořit vlastní výčtu v případě potřeby. Podobně jako **porty** prvky, **argumenty** prvků může mít volitelně **popis** element, který určuje text, který se zobrazí, když myší najedete myší Název parametru.
 Volitelné vlastnosti pro některý z modulů, jako je například výchozí hodnota, hodnota minValue a maxValue lze přidat na libovolný argument jako atributy, které mají **vlastnosti** elementu. Platné vlastnosti pro **vlastnosti** element závisí na typu argumentu a jsou popsané společně s typy argumentů podporovaných v další části. Argumenty s **Schedule** vlastnost nastavena na hodnotu **"true"** nevyžadují, aby uživatel zadal hodnotu. Pokud hodnota není k dispozici na argument, není argument předaný funkci vstupního bodu. Je nutné explicitně zacházet funkcí, třeba přiřadit výchozí hodnotu NULL v definici vstupní bod funkce argumenty funkci vstupního bodu, které jsou volitelné. Volitelný argument bude vynucovat, jenom dalších argumentů omezení, například min nebo max, pokud je uživatel zadal hodnotu.
-Stejně jako u vstupy a výstupy, je velmi důležité, že parametry mají jedinečné id hodnoty k nim má přiřazené. V našem příkladu úvodní byla přidružená parametr/id *prohození*.
+Stejně jako u vstupy a výstupy, je velmi důležité, že každý z parametrů k nim má přiřazené jedinečné ID hodnoty. V našem příkladu rychlého startu byla přidružená parametr/id *prohození*.
 
 ### <a name="arg-element"></a>Arg – element
 Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** část definičního souboru XML. Stejně jako u podřízené elementy v **porty** části pořadí parametrů **argumenty** oddíl definuje rozložení v uživatelské prostředí Parametry zobrazí shora dolů v uživatelském rozhraní ve stejném pořadí, ve kterém jsou definovány v souboru XML. Typy podporované nástrojem Machine Learning pro parametry jsou uvedeny zde. 
@@ -270,7 +270,7 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
 
 * *Volitelné vlastnosti*: **výchozí** a **Schedule**
 
-**ColumnPicker**: Parametr výběr sloupce. Tento typ se zobrazí v uživatelském prostředí jako výběr sloupců. **Vlastnost** element zde slouží k určení id portu, ze kterého jsou vybrané sloupce, kde cílový typ portu musí být *DataTable*. Výsledek výběr sloupce je předán do funkce R jako seznam řetězců obsahující názvy vybraných sloupců. 
+**ColumnPicker**: Parametr výběr sloupce. Tento typ se zobrazí v uživatelském prostředí jako výběr sloupců. **Vlastnost** element zde slouží k určení ID portu, ze kterého jsou vybrané sloupce, kde cílový typ portu musí být *DataTable*. Výsledek výběr sloupce je předán do funkce R jako seznam řetězců obsahující názvy vybraných sloupců. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -278,7 +278,7 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
         </Arg>
 
 
-* *Požadované vlastnosti*: **identifikátor portId** -odpovídá id elementu Input s typem *DataTable*.
+* *Požadované vlastnosti*: **identifikátor portId** -odpovídá ID elementu Input s typem *DataTable*.
 * *Volitelné vlastnosti*:
   
   * **allowedTypes** – filtry sloupci typy je možné vybrat. Platné hodnoty jsou: 
@@ -327,7 +327,7 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
     </Arg>    
 
 * *Volitelné vlastnosti*:
-  * **výchozí** -hodnota pro výchozí vlastnost musí odpovídat s hodnotou id z jednoho z **položky** elementy.
+  * **výchozí** -hodnota pro výchozí vlastnost musí odpovídat s hodnotou ID z jednoho z **položky** elementy.
 
 ### <a name="auxiliary-files"></a>Pomocné soubory
 Každý soubor, který je umístěn v souboru ZIP vlastní modul bude k dispozici pro použití při spuštění. Všechny adresáře struktury k dispozici jsou zachovány. To znamená tento soubor sourcing works stejné místně a v nástroji Azure Machine Learning Studio spuštění. 
