@@ -1,98 +1,41 @@
 ---
 title: Získání sady Speech Devices SDK
 titleSuffix: Azure Cognitive Services
-description: Hlasové služby pracovat s širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. V tomto článku budete zjistěte, jak získat přístup k zařízení sadou SDK pro řeč a začít s vývojem.
+description: Hlasové služby pracovat s širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. V tomto článku se dozvíte, jak získat přístup k zařízení sadou SDK pro řeč a začít s vývojem.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3c5874625ee9d1932c401238c1586ad89d5d206d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c2cff23f66ec704fe7e7c44136160313c10c9c2
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539858"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020583"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Zařízení řeči služeb Cognitive Services SDK
 
-Sadou SDK pro řeč zařízení je v omezené verzi preview a je nutné se zaregistrovat do programu. V současné době Microsoft upřednostňuje velké firmy jako kandidáty pro přístup k tomuto produktu.
+Sadou SDK pro řeč zařízení je knihovna pretuned navrženy pro práci s účelovému development Kit a různé konfigurace pole mikrofon.
 
-## <a name="request-access"></a>Vyžádat si přístup
+## <a name="choose-a-development-kit"></a>Zvolte Development kit
 
-Pokud chcete získat přístup k sadou SDK pro řeč zařízení:
-
-1. Přejděte na Microsoft řeči Devices SDK [registrační formulář](https://aka.ms/sdsdk-signup).
-1. Přečtěte si [licenční smlouvy](speech-devices-sdk-license.md).
-1. Pokud souhlasíte s podmínkami licenční smlouvy, **souhlasím**.
-1. Odpovězte na otázky ve formuláři.
-1. Odeslání formuláře.
-1. Pokud e-mailová adresa již není součástí Azure Active Directory (Azure AD), zobrazí se při schválí pro přístup k zvací e-mail jako v následujícím příkladu. Pokud vaše e-mailová adresa je již ve službě Azure AD, obdržíte e-mailovou zprávu od týmu služeb Microsoft řeči při schválí pro přístup, a můžete přeskočit přímo k [stažení sady SDK zařízení řeči](#download-the-speech-devices-sdk).
-
-## <a name="approval-e-mail"></a>Schvalovací e-mail
-
-```
-From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com>
-Subject: You're invited to the Microsoft organization
-```
-
-![e-mailové zprávy](media/speech-devices-sdk/get-sdk-1.png)
-
-## <a name="accept-access"></a>Přijmout přístup
-
-Proveďte následující kroky pro připojení k Azure AD s e-mailovou adresu, kterou jste zadali během registrace. Tento proces uděluje přístup k zařízení sadou SDK pro řeč [web pro stažení](https://shares.datatransfer.microsoft.com/).
-
-1. V e-mailovou zprávu jste obdrželi, vyberte **Začínáme**. Pokud je vaše organizace již zákazníky s Office 365, zobrazí se výzva k přihlášení a můžete přeskočit ke kroku 7.
-
-2. V okně prohlížeče, které se otevře, vyberte **Další**.
-
-    ![okno ověřování](media/speech-devices-sdk/get-sdk-2.png)
-
-3. Pokud ho ještě nemáte, vytvořte účet Microsoft. Zadejte stejnou e-mailovou adresu, na který jste dostali e-mailová pozvánka.
-
-    ![Vytvořit účet Microsoft](media/speech-devices-sdk/get-sdk-3.png)
-
-4. Vyberte **Další** vytvoření hesla.
-
-5. Po zobrazení výzvy k ověření e-mailu, získáte ověřovací kód z e-mailová pozvánka, který jste obdrželi.
-
-7. Vložte nebo zadejte bezpečnostní kód z e-mailovou zprávu v dialogovém okně. V tomto příkladu je bezpečnostní kód **8406**. Vyberte **Další**.
-
-    ![Ověření e-mailu](media/speech-devices-sdk/get-sdk-6.png)
-
-8. Když se zobrazí Panel aplikace Access v prohlížeči, se ujistíte, že vaši e-mailová adresa je součástí služby Azure AD. Teď máte přístup k serveru pro stahování sadou SDK pro řeč zařízení.
+|Zařízení|Specifikace|Popis|Scénáře|
+|--|--|--|--|
+|[Roobo Smart zvuku Dev Kit](http://ddk.roobo.com)</br>[Instalační program](speech-devices-sdk-roobo-v1.md) / [rychlý Start](speech-devices-sdk-android-quickstart.md)![Roobo Smart zvuku Dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7 Mic Array, ARM SOC, WIFI, Audio Out, IO. </br>Android|První sada SDK zařízení řeči přizpůsobit Microsoft Mic Array a dopředu zpracování SDK pro vývoj vysoce kvalitních určené k transkripci řeči a scénáře|Přepis konverzace, inteligentní mluvčího, hlasové agenta na nošení|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 RGB pole povinná kontrola úrovně důvěryhodnosti a hloubka kamery. </br>Windows/Linux|Sady pro vývojáře s senzorů pokročilé umělé inteligence (AI) pro vytváření modelů sofistikované počítačového zpracování obrazu a řeči. Kombinuje kamera pole a hloubka prostorových mikrofon ve své třídě nejlepší s kamera a orientaci snímač – vše v jednom malé zařízení s několika režimy, možnosti a sady SDK tak, aby vyhovovaly celou řadu typy výpočtů.|Budovy chytře přepis, robotika, konverzace|
+|Roobo Smart zvuku Dev Kit 2![Roobo Smart zvuku Dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 pole mic, ARM SOC, Wi-Fi, Bluetooth, vstupně-výstupních operací. </br>Linux|2. generace sadou SDK pro řeč zařízení, která poskytuje alternativní operačního systému a další funkce v nákladově efektivní referenční návrh.|Přepis konverzace, inteligentní mluvčího, hlasové agenta na nošení|
+|Vývojářská deska URbetter T11![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 pole mic, ARM SOC, Wi-Fi, sítě Ethernet, HDMI, fotoaparát USB. </br>Linux|Úroveň oboru zařízení sadou SDK pro řeč, které se přizpůsobí pole Microsoft Mic a podporuje rozšířené vstupně-výstupních operací, jako je například HDMI/Ethernet a další periferní zařízení USB|Přepis konverzace, vzdělávání, nemocnice, roboti OTT pole hlasové agenta, disk, až po|
 
 ## <a name="download-the-speech-devices-sdk"></a>Stáhněte si zařízení řeči SDK
 
-Přejděte [serveru pro stahování sadou SDK pro řeč zařízení](https://shares.datatransfer.microsoft.com/). Přihlaste se pomocí účtu Microsoft, který jste vytvořili dříve.
-
-![Web SDK ke stažení](media/speech-devices-sdk/get-sdk-7.png)
-
-Stažení řeč zařízení SDK, přidružené ukázkový kód a referenční materiály:
-
-1. Stáhněte a nainstalujte nástroje Aspera Connect po zobrazení výzvy v prohlížeči.
-
-    ![Stáhněte si Aspera připojení](media/speech-devices-sdk/get-sdk-8.png)
-
-1. Vyberte **Ano** přepnout aplikací se Aspera připojit.
-
-    ![Přepnout na Aspera připojení](media/speech-devices-sdk/get-sdk-9.png)
-
-1. Vyberte **povolit** potvrďte stažení souborů pomocí Aspery připojení.
-
-    ![Stáhněte si pomocí Aspery připojení](media/speech-devices-sdk/get-sdk-10.png)
-
-1. Zavřete okno Aspera připojení přenosy po stažení souborů.
-
-    ![Okno připojení přenosy Aspera](media/speech-devices-sdk/get-sdk-11.png)
-
-Ve výchozím nastavení se soubory stáhnou do vaší **stáhne** složky. Se můžete přihlásit z tohoto webu teď.
+Stáhněte si [řeči zařízení SDK](https://aka.ms/sdsdk-download).
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Začínáme se sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md)
+> [Začínáme se sadou SDK pro řeč zařízení](https://aka.ms/sdsdk-quickstart)

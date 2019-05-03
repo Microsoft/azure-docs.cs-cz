@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e82e033e56af10bd8e676570e9409941753eb38
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460486"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020987"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
-Hlasové služby Azure jsou sjednocení speech to text, převod textu na řeč a překladu řeči na jedno předplatné Azure. Je snadné rozpoznávání řeči povolit aplikace, nástroje a zařízení s [sadou SDK pro řeč](speech-sdk-reference.md), [sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md), nebo [rozhraní REST API](rest-apis.md).
+Hlasové služby Azure jsou sjednocení speech to text, převod textu na řeč a překladu řeči na jedno předplatné Azure. Je snadné rozpoznávání řeči povolit aplikace, nástroje a zařízení s [sadou SDK pro řeč](speech-sdk-reference.md), [sadou SDK pro řeč zařízení](https://aka.ms/sdsdk-quickstart), nebo [rozhraní REST API](rest-apis.md).
 
 > [!IMPORTANT]
 > Hlasové služby nahradil, rozhraní Bing Speech API, Translator Speech a Custom Speech. Zobrazit *provede postupy > Migrace* pro pokyny k migraci.
@@ -30,6 +30,7 @@ Tyto funkce tvoří hlasové služby Azure. Další informace o běžných pří
 |---------|---------|-------------|-----|------|
 | [Speech-to-Text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes audiostreamy na text v reálném čase, který může využívat nebo zobrazení vaší aplikace, nástroje nebo zařízení. Použít převod řeči na text pomocí [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) odvodit záměry uživatele z přepisu řeči a zákona o hlasové příkazy. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Přepis služby batch](batch-transcription.md) | Přepis Batch umožňuje asynchronní určené k transkripci řeči na text velkých svazků s daty. Toto je nějakou službu založenou na REST, která využívá stejný koncový bod jako přizpůsobení a správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
+| | [Služby určené k transkripci konverzace](conversation-transcription-service.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Jde o ideální řešení pro přepisování schůzky osobně s možností rozlišení mluvčí. | Ano | Ne |
 | | [Vlastní nastavení](#customize-your-speech-experience) | Pokud používáte speech to text pro rozpoznávání a přepis v jedinečné prostředí, můžete vytvořit a trénování vlastních akustických, jazyk a výslovnost modelů hluk adresu nebo slovníku specifických pro dané odvětví. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
 | [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na řeč syntetizovaný podobnou té lidské. Vyberte standardní hlasy a hlasy neuronových sítí (naleznete v tématu [jazykovou podporu](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Vlastní nastavení](#customize-your-speech-experience) | Vytvoření vlastního hlasového písma jedinečné pro vaší značce nebo produktu. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -39,7 +40,8 @@ Tyto funkce tvoří hlasové služby Azure. Další informace o běžných pří
 
 Zjistěte, co je nového v hlasových služeb Azure.
 
-* 2019. dubna – vydali sadou SDK pro řeč 1.4.0 s podporou pro převod textu na řeč (beta verze) jazyka C++, C#a Java na Windows a Linux. Kromě toho sada SDK teď podporuje formáty zvuku MP3 a díle/Ogg jazyka C++ a C# v Linuxu. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md). 
+* . Května 2019 – vydali řeči SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md).
+* 2019. dubna – vydali sadou SDK pro řeč 1.4.0 s podporou pro převod textu na řeč (beta verze) jazyka C++, C#a Java na Windows a Linux. Kromě toho sada SDK teď podporuje formáty zvuku MP3 a díle/Ogg jazyka C++ a C# v Linuxu. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md).
 * 2019. března – nový koncový bod pro převod textu na ŘEČ, která vrací úplný seznam dostupných hlasy v určité oblasti je teď k dispozici. Kromě toho nové oblasti jsou nyní podporovány pro převod textu na ŘEČ. Další informace najdete v tématu [referenční dokumentace rozhraní API pro převod textu na řeč (REST)](rest-text-to-speech.md).
 * . Února 2019 – vydali sadou SDK pro řeč 1.3.0 s podporou [Unity (beta verze)](quickstart-csharp-unity.md). Přidání podpory pro `AudioInput` třídu, která vám umožní vybrat zdroji streamování Audio. Úplný seznam vylepšení a známých problémů naleznete v tématu [poznámky k verzi](releasenotes.md).
 * Prosince 2018 – vydání sadou SDK pro řeč 1.2.0 s podporou [Python](quickstart-python.md) a [Node.js](quickstart-js-node.md), stejně jako Ubuntu 18.04 LTS. Další informace najdete v tématu [poznámky k verzi](releasenotes.md).

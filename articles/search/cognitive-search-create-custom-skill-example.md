@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61344140"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023613"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Příklad: Vytvoření vlastních dovedností pomocí rozhraní API převede Text
 
@@ -243,7 +243,7 @@ Pokud jste spokojeni s chováním funkce, můžete ho publikovat.
 
 1. Použijte na obrazovce zobrazí výzvu. Zobrazí se výzva k zadání účtu Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Pokud ještě nemáte tyto, můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště. Až budete hotovi, vyberte **Create**
 
-1. Po dokončení nasazení se Poznámka: adresa URL webu. Je to adresa vaší aplikace function App v Azure. 
+1. Po dokončení nasazení, Všimněte si, že adresa URL webu. Je to adresa vaší aplikace function App v Azure. 
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do skupiny prostředků a oblast pro funkci překladu jste publikovali. V části **spravovat** oddílu, měli byste vidět klíče hostitele. Vyberte **kopírování** ikonu *výchozí* klíč hostitele.  
 
@@ -282,7 +282,7 @@ Teď, když máte nové vlastní dovednosti, přidáte jej do vaše dovednosti. 
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
         "description": "Our new translator custom skill",
-        "uri": "http://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
+        "uri": "https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
         "batchSize":1,
         "context": "/document",
         "inputs": [
