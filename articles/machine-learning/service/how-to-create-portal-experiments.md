@@ -11,18 +11,18 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 8b6d7f791300a970e71fda4f1d56354a45d07afd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 96abef29c5290770d296fb5053007e36d1eaf537
+ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029892"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035449"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytvoření a prozkoumejte automatizované se strojovým učením na webu Azure Portal (Preview)
 
- V tomto článku se dozvíte, jak vytvořit, spustit a prozkoumat automatizované se strojovým učením na webu Azure Portal bez jediný řádek kódu. Automatizované strojového učení automatizuje proces výběru nejlepší algoritmus určený pro konkrétní data, takže můžete rychle vygenerovat model strojového učení. [Další informace o automatické machine learningu](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml).
+ V tomto článku se dozvíte, jak vytvořit, spustit a prozkoumat automatizované se strojovým učením na webu Azure Portal bez jediný řádek kódu. Automatizované strojového učení automatizuje proces výběru nejlepší algoritmus určený pro konkrétní data, takže můžete rychle vygenerovat model strojového učení. [Další informace o automatické machine learningu](concept-automated-ml.md).
 
- Pokud dáváte přednost další kód podle prostředí, můžete také [konfigurovat vaše automatizované experimentů machine learningu v jazyce Python](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+ Pokud dáváte přednost prostředí více založený na kódu, můžete si také [konfigurovat vaše automatizované experimentů machine learningu v jazyce Python](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Přejděte do levého podokna pracovního prostoru. Vyberte automatického Machi
 
 ![Azure portal experiment cílová stránka](media/how-to-create-portal-experiments/landing-page.png)
 
-V opačném případě se zobrazí řídicí panel automatizovaná machine learning s přehled o všech automatizovaných strojového učení experimentů a spuštění, včetně těch, které spustit pomocí sady SDK. Tady můžete filtrovat a prozkoumejte spuštěních podle data, experimentování název a stav spuštění.
+V opačném případě se zobrazí řídicí panel automatizovaná machine learning s přehledem všechny vaše automatizované experimentů machine learningu, včetně těch, které spustit pomocí sady SDK. Tady můžete filtrovat a prozkoumejte spuštěních podle data, experimentování název a stav spuštění.
 
 ![Řídicí panel Azure portal experimentu](media/how-to-create-portal-experiments/dashboard.png)
 
@@ -148,8 +148,6 @@ Můžete získat obrovského množství různých souhrnné statistiky napříč
 
 * **Míra fluktuace**: míra fluktuace sloupce. Pro funkce s irelevantní typy se zobrazí prázdné položky.
 
-Kromě toho můžete tyto statistiky rozhodnout, zda chcete zahrnout nebo vyloučit určité sloupce. Přepnutím selektor pro každý sloupec můžete řídit obor, přes který se použije sloupce v vaše automatizované experimentu strojového učení.
-
 <a name="preprocess"></a>
 
 ### <a name="advanced-preprocessing"></a>Pokročilé předběžného zpracování
@@ -168,72 +166,24 @@ Při konfiguraci své experimenty můžete povolit upřesňující nastavení `P
 |Váha důkazů (WoE)|Vypočítá WoE jako míru korelace zařazené do kategorií sloupců do cílového sloupce. Počítá se jako protokol poměr pravděpodobnosti na více instancí třídy ve své třídě vs. Tento krok výstup jeden sloupec číselné funkce na třídu a eliminuje nutnost explicitně dává chybějící hodnoty a zpracování pravdu.|
 |Vzdálenost clusteru|Trénovat k-means model clusteringu pro všechny číselné sloupce.  Výstupy k nové funkce, nová číselné funkce na cluster, obsahující vzdálenost každý vzorek těžiště každý cluster.|
 
-## <a name="run-experiment"></a>Spusťte experiment
+## <a name="run-experiment-and-view-results"></a>Spusťte experiment a zobrazte výsledky
 
-Spusťte experiment, klikněte na tlačítko Start.
-  
-Experiment Příprava proces trvá několik minut.
+Spusťte experiment, klikněte na Start. Experiment Příprava proces trvá několik minut.
 
-## <a name="view-results"></a>Zobrazení výsledků
+### <a name="view-experiment-details"></a>Zobrazit podrobnosti o testu
 
-Po dokončení fáze přípravy experiment, uvidíte obrazovku podrobnosti o spuštění. Tím získáte úplný seznam modelů vytvořených. Ve výchozím nastavení, model, který určuje největší skóre na základě vašich parametry budou v horní části seznamu. Jak si další modely pokusí trénovací úlohu, zobrazí se vám přidat je do seznamu a grafu.
-Pomocí grafu můžete získat rychlý porovnání metrik pro modely dosud vytvořen.
-
-![Řídicí panel podrobnosti o spuštění](media/how-to-create-portal-experiments/run-details.png)
-
-Budete moct procházet hierarchii na žádném z výstupu modely, které se otevře podrobnosti tohoto modelu, včetně metriky a grafy výkonu a distribuci. [Další informace o grafech](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
-
-![Podrobnosti iterace](media/how-to-create-portal-experiments/dashboard.png)
+Po dokončení fáze přípravy experiment, zobrazí se vám na obrazovku s podrobnostmi spustit. Získáte úplný seznam modelů vytvořených. Ve výchozím nastavení, model, který určuje největší skóre na základě vašich parametrů se v horní části seznamu. Jak si další modely pokusí trénovací úlohu, se přidají do seznamu iterace a graf. Pomocí grafu iterace můžete získat rychlý porovnání metrik pro modely vytvořené zatím.
 
 Školení úlohy může trvat nějakou dobu každý kanál na dokončení.
 
-## <a name="deploy-model"></a>Nasazení modelu
+![Řídicí panel podrobnosti o spuštění](media/how-to-create-portal-experiments/run-details.png)
 
-Jakmile budete mít po ruce nejlepší model, je čas ho nasadit jako webovou službu, která předvídat na nová data.
+### <a name="view-training-run-details"></a>Podrobnosti o spuštění zobrazit školení
 
-Automatizované ML vám pomůže s nasazením modelu bez nutnosti psaní kódu:
+K podrobnostem na žádném z modelů výstup zobrazíte podrobnosti o spuštění jako grafy metrik a distribuci výkonu školení. [Další informace o grafech](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
 
-1. Shrnutí běhu podokně na pravé straně vyberte "Zaregistrujte model".
-
-    ![Registrace modelu](media/how-to-create-portal-experiments/register-model.png)
-
-1. Po registraci modelu budete moct stáhnout hodnoticí skript používané během nasazení.
-
-    ![Stáhněte si hodnoticí skript](media/how-to-create-portal-experiments/download-scoring-script.png)
-
-1. Jakmile budete mít hodnoticí skript, přejděte na stránku "Modely" (v levém navigačním podokně v části **prostředky**).
-
-    ![Model navigační podokno](media/how-to-create-portal-experiments/nav-pane-models.png)
-
-1. Zaškrtněte políčko vedle modelu, které jste zaregistrovali a vyberte "Vytvoření bitové kopie".
-
-    Model může identifikovat podle jeho popis, který zahrnuje spuštění číslo ID a iterace v následujícím formátu: **< Run_ID > _ < Iteration_number > _modelu**.
-
-1. Zadejte název bitové kopie a nahrajte soubor vyhodnocení, které jste dříve stáhli. [Další informace o vyhodnocení skriptů](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where.md#script).
-
-    Můžete použít vlastní hodnoticího skriptu a souboru systému Conda. Pokud nemáte soubor Conda [vytvořit svoje vlastní](tutorial-deploy-models-with-aml.md#create-environment-file) a nahrát ho spolu s další soubory můžete chtít použít.
-
-    ![Vytvoření image formuláře](media/how-to-create-portal-experiments/create-image.png)
-
-1. Vyberte tlačítko "Vytvořit" spusťte vytváření bitové kopie. Bude to trvat několik minut, až to bude hotové, zobrazí se zpráva na horním panelu.
-
-1. Přejděte na kartu "Image", zaškrtněte políčko vedle image, kterou chcete nasadit a vyberte možnost "Vytvořit nasazení".
-
-    ![Obrázek vytvoření obrazovky pro nasazení](media/how-to-create-portal-experiments/images-create-deployment.png)
-
-1. Zadejte název jedinečné nasazení.
-
-1. (volitelné) Zadejte popis nasazení.
-
-1. Vyberte cílový typ výpočetní prostředky k použití. 
-
-    ![Vytvoření nasazení formuláře](media/how-to-create-portal-experiments/create-deployment.png)
-
-1. Vyberte možnost "Vytvořit" k zahájení procesu nasazení, bude trvat několik minut.
-
-1. A to je vše! Budete mít funkční webové služby ke generování předpovědi.
+![Podrobnosti iterace](media/how-to-create-portal-experiments/iteration-details.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Jak využívat nasazeného modelu](how-to-consume-web-service.md).
-* [Shromažďování dat modelů v produkčním prostředí](how-to-enable-data-collection.md).
+* [Další informace o automatické machine learningu](concept-automated-ml.md) a Azure Machine Learning.

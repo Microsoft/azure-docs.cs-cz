@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d09fca68af55b577c47316363ed386e98525baf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
+ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925761"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035459"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -54,16 +54,16 @@ Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámk
 
 Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
 
-* Použití [poznámkových bloků Azure](#azure)
+* Použití [server poznámkového bloku cloudu ve vašem pracovním prostoru](#azure) 
 * Použití [serveru poznámkového bloku](#server)
 
-### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
+### <a name="azure"></a>Použít server poznámkového bloku cloudu ve vašem pracovním prostoru
 
-Je snadné začít s poznámkovými bloky Azure! [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
-
-Po dokončení následujících kroků spustit **kurzy/regrese – část2 automated-ml.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
+Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) již nainstalován a nakonfigurován pro vás, když vytvoříte tento prostředek v cloudu.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* Po spuštění webové stránky Poznámkový blok, spusťte **kurzy/regrese – část2 automated-ml.ipynb** poznámkového bloku.
 
 ### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
 
