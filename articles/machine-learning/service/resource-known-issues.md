@@ -11,16 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60752330"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021094"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
 Tento článek vám pomůže najít a opravit chyby nebo při použití služby Azure Machine Learning došlo k selhání.
+
+## <a name="visual-interface-issues"></a>Vizuální rozhraní problémy
+
+Vizuální rozhraní pro strojové učení problémy se službou.
+
+### <a name="long-compute-preparation-time"></a>Dlouho jsou výpočetní Přípravný čas
+
+Vytvořit nový výpočet nebo vyvolávat odejít ze výpočetní trvá určitou dobu, může být několik minut nebo i delší dobu. Tým pracuje pro optimalizaci.
+
+
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nelze spustit experiment obsahuje pouze datovou sadu 
+
+Můžete chtít spustit experiment obsahuje pouze datovou sadu, která bude vizualizovat datovou sadu. Však není povolené spuštění experimentu obsahuje pouze datovou sadu ještě dnes. Tento problém aktivně opravujeme.
+ 
+Před opravou můžete připojit datové sady pro jakýkoli modul transformace dat (Výběr sloupců v datové sadě, upravit Metadata, rozdělení dat atd.) a spusťte experiment. Potom můžete vizualizovat datové sady. 
+
+Následující obrázek znázorňuje, jak: ![visulize dat](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
 

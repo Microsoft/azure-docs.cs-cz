@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8201b4089759fb55fae12820f7495664c502837e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531153"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023633"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -32,13 +32,10 @@ Kognitivní dovednosti v Azure Search je založena na modely strojového učení
 Přirozený jazyk a zpracování obrázků se použije během fáze příjem dat s výsledky se stávají součástí kompozice dokumentu v prohledávatelný index ve službě Azure Search. Data Source jako Azure datové sady a poté vloženo přes kanál indexování pomocí podle toho, co [integrované znalosti](cognitive-search-predefined-skills.md) potřebujete. Tato architektura je rozšiřitelný, takže pokud předdefinované dovednosti nestačí, můžete vytvořit a připojit [vlastních dovedností](cognitive-search-create-custom-skill-example.md) integrovat vlastní zpracování. Příklady může být vlastní entitu modulu nebo dokumentu třídění, cílení na konkrétní domény, jako jsou finance, vědecké publikace nebo lékařství.
 
 > [!NOTE]
-> Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
+> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> Provádění předdefinované dovednosti je poplatek za služby Cognitive Services, účtovat stávající [platit jako můžete přejít cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce Image je poplatek za Azure Search, aktuálně účtovat ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
-
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 ## <a name="components-of-cognitive-search"></a>Součástí kognitivního vyhledávání
-
-Kognitivní vyhledávání je funkce ve verzi preview [Azure Search](search-what-is-azure-search.md).
 
 Kanál kognitivní vyhledávání je založena na [Azure Search *indexery* ](search-indexer-overview.md) , procházení zdroje dat a index začátku do konce zátěži. Dovednosti je teď připojený ke indexery, zachycení a rozšíření dokumentů podle zkušenostech definujete. Až indexovat, dostanete obsahu prostřednictvím vyhledávacích přes všechny [dotazování typy podporované službou Azure Search](search-query-overview.md).  Pokud jste ještě na indexery, tato část vás provede kroky.
 
@@ -60,9 +57,15 @@ Je na základě dovedností [předdefinované kognitivní dovednosti](cognitive-
 
 Interně kanálu vytvoří kolekce dokumentů, bohatších možností. Můžete se rozhodnout, jaké části bohatších možností dokumenty by měly být namapované na indexované pole v indexu vyhledávání. Pokud jste použili, extrakce klíčových frází a rozpoznání dovednosti entity, pak tato nová pole by se mohla stát součástí bohatších možností dokumentu a můžou být mapované na pole v indexu. Zobrazit [poznámky](cognitive-search-concept-annotations-syntax.md) získat další informace o vstupu a výstupu sestavy.
 
+#### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Přidejte prvek knowledgeStore uložit obohacení
+
+[Hledání služby REST api-version = 2019-05-06](search-api-preview.md) rozšiřuje dovednosti, které poskytuje připojení k Azure storage a projekce, které popisují, jak jsou uloženy obohacení knowledgeStore definici. 
+
+Přidání znalostní báze úložiště dovedností poskytuje schopnost projektu reprezentace vašeho obohacení pro scénáře než fulltextové vyhledávání. Další informace najdete v tématu [co je znalostní báze Store](knowledge-store-concept-intro.md).
+
 ### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: Index vyhledávání a přístupu na základě dotazu
 
-Po dokončení zpracování se mají ve vyhledávacím korpusu služby skládající se z bohatších možností dokumenty, plně text prohledávat ve službě Azure Search. [Dotazování indexu](search-query-overview.md) je, jak vývojáři a uživatelé získat přístup k bohatších možností obsah vygenerovaný pomocí kanálu. 
+Po dokončení zpracování se máte index vyhledávání, který se skládá z bohatších možností dokumenty, plně text prohledávat ve službě Azure Search. [Dotazování indexu](search-query-overview.md) je, jak vývojáři a uživatelé získat přístup k bohatších možností obsah vygenerovaný pomocí kanálu. 
 
 ![Index s ikonu hledání](./media/cognitive-search-intro/search-phase-blowup.png "Index vyhledávání ikonou ve tvaru")
 
@@ -78,7 +81,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 |---------|------------|-------|
 | Dovednosti | Nejvyšší úrovně s názvem prostředek obsahující kolekci dovednosti. Dovedností se rozšíření kanálu. Vyvolá se při indexování pomocí indexeru. | [Definování dovedností](cognitive-search-defining-skillset.md) |
 | Kognitivní dovednosti | Atomic transformace v rozšíření kanálu. Často je součást, která extrahuje nebo struktura odvodí a proto argumentech pochopíte vstupní data. Téměř vždy výstup je založený na textu a zpracování je zpracování přirozeného jazyka nebo zpracování obrázků, který extrahuje nebo generuje text z obrázků vstupy. Výstup z konkrétní dovednosti můžete namapováno na pole v indexu, nebo použít jako vstup pro příjem dat rozšíření. Předdefinované a poskytovány společností Microsoft nebo custom dovednost: vytvoření a nasazení vy. | [Předdefinované dovednosti](cognitive-search-predefined-skills.md) |
-| Extrakce dat | Zahrnuje širokou škálu zpracování, ale vztahující se na kognitivního vyhledávání, dovednosti rozpoznávání pojmenovaných entit se obvykle používá k extrakci dat (entita) ze zdroje, tyto informace neposkytuje nativní. | [Dovednosti rozpoznávání pojmenovaných entit](cognitive-search-skill-named-entity-recognition.md)| 
+| Extrakce dat | Zahrnuje širokou škálu zpracování, ale vztahující se na kognitivního vyhledávání, rozpoznávání dovednosti entity se nejčastěji používá k extrakci dat (entita) ze zdroje, tyto informace neposkytuje nativní. | [Dovednosti rozpoznávání entit](cognitive-search-skill-entity-recognition.md)| 
 | Zpracování obrázků | Odvodí z něj text pomocí bitové kopie, jako je například schopnost rozpoznat památek nebo extrahuje text z obrázku. Běžné příklady: OCR pro zrušení znaků ze souboru naskenovaného dokumentu (JPEG) nebo uznání ulici v fotografie obsahující znaménko ulice. | [Obrázek analýzy dovednosti](cognitive-search-skill-image-analysis.md) nebo [OCR dovedností](cognitive-search-skill-ocr.md)
 | Zpracování přirozeného jazyka | Přehledy a informace o textovými vstupy zpracování textu. Rozpoznávání jazyka, analýzu subjektivního hodnocení a extrakci klíčových frází jsou dovednosti, které spadají pod zpracování přirozeného jazyka.  | [Klíč frázi extrakce dovednosti](cognitive-search-skill-keyphrases.md), [dovednosti detekce jazyka](cognitive-search-skill-language-detection.md), [dovednosti analýzy mínění](cognitive-search-skill-sentiment.md) |
 | Analýzy dokumentu | Proces extrahování nebo vytvoření textového obsahu z jiné textové zdrojích během indexování. Optické rozpoznávání znaků (OCR) je příklad, ale obvykle odkazuje na základní indexer funkce jako indexeru extrahuje obsah ze souborů aplikace. Zdroj dat poskytuje umístění zdrojových souborů a poskytuje mapování polí, definice indexeru jsou obě klíčové faktory analýzy dokumentu. | Zobrazit [indexerů](search-indexer-overview.md) |
@@ -86,7 +89,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 | Bohatších možností dokumenty | Přechodné interní strukturu, není přímo přístupný v kódu. Bohatších možností dokumenty jsou generovány během zpracování, ale pouze konečný výstupy se uchovávají v indexu vyhledávání. Mapování polí určují, které datové prvky jsou přidány do indexu. | Zobrazit [přístupu k dokumentům bohatších možností](cognitive-search-tutorial-blob.md#access-enriched-document). |
 | Indexovací modul |  Prohledávací modul, který extrahuje prohledávatelná data a metadata z externího zdroje dat a naplní index na základě mapování pole pole mezi indexem a zdroj dat pro hádání dokumentu. Pro obohacení kognitivního vyhledávání indexeru vyvolá dovedností a obsahuje mapování polí přiřazení rozšíření výstup do cílového pole v indexu. Definice indexeru obsahuje všechny pokyny a odkazy pro operace kanálu a kanál se vyvolá při spuštění indexeru. | [Indexery](search-indexer-overview.md) |
 | Zdroj dat  | Objekt používaný indexerem pro připojení k externímu zdroji dat z podporovaných typů v Azure. | Zobrazit [indexerů](search-indexer-overview.md) |
-| Index | Trvalé ve vyhledávacím korpusu služby ve službě Azure Search, od schématu indexu, který definuje pole struktury a využití. | [Indexy ve službě Azure Search](search-what-is-an-index.md) | 
+| Index | Trvalé vyhledávací index ve službě Azure Search, od schématu indexu, který definuje pole struktury a využití. | [Indexy ve službě Azure Search](search-what-is-an-index.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -102,16 +105,18 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 
 Jsme bezplatnou službu pro účely výuky doporučujeme, ale mějte na paměti, že číslo bezplatné transakce je omezený na 20 dokumenty za den. Spustit kurz i rychlý start v jednom dni, použijte menší sadu souborů (10 dokumenty) tak, aby lze zobrazit v obou cvičení.
 
-**Krok 3: Projděte si rozhraní API (REST jenom)**
+**Krok 3: Projděte si rozhraní API**
 
-V současné době jsou k dispozici pouze rozhraní REST API. Použití `api-version=2017-11-11-Preview` u všech požadavků. Použijte následující rozhraní API k vytvoření řešení kognitivního vyhledávání. Pouze dvě rozhraní API se přidá nebo rozšířené pro kognitivního vyhledávání. Další rozhraní API mají stejnou syntaxi jako všeobecně dostupné verze.
+Můžete použít REST `api-version=2019-05-06` na požadavky nebo .NET SDK. 
+
+Tento krok používá rozhraní REST API k vytvoření řešení kognitivního vyhledávání. Pouze dvě rozhraní API se přidá nebo rozšířené pro kognitivního vyhledávání. Další rozhraní API mají stejnou syntaxi jako všeobecně dostupné verze.
 
 | REST API | Popis |
 |-----|-------------|
 | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikuje externího zdroje dat poskytuje zdroj dat použitých k vytvoření bohatších možností dokumenty.  |
-| [Create Skillset (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek koordinace použití [předdefinované dovednosti](cognitive-search-predefined-skills.md) a [vlastního kognitivních dovedností](cognitive-search-custom-skill-interface.md) používané rozšíření kanálu během indexování. |
+| [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek koordinace použití [předdefinované dovednosti](cognitive-search-predefined-skills.md) a [vlastního kognitivních dovedností](cognitive-search-custom-skill-interface.md) používané rozšíření kanálu během indexování. |
 | [Vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma vyjádření indexu Azure Search. Mapování polí v indexu pole ve zdrojových datech nebo pole vyrobenými během fáze rozšíření (například pole pro názvy organizací vytvořené rozpoznávání entit). |
-| [Create Indexer (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zdroj definice součástí použitých při indexování: včetně zdroje dat, dovedností, přidružení pole ze zdroje a struktury pracovních dat na cílový index a index, samotného. Spuštění indexeru je aktivační událost pro příjem dat a rozšíření. Výstup je ve vyhledávacím korpusu služby na základě schématu indexu, naplní se zdrojovými daty, rozšiřují prostřednictvím dovednosti.  |
+| [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zdroj definice součástí použitých při indexování: včetně zdroje dat, dovedností, přidružení pole ze zdroje a struktury pracovních dat na cílový index a index, samotného. Spuštění indexeru je aktivační událost pro příjem dat a rozšíření. Výstup je index vyhledávání na základě schématu indexu, naplní se zdrojovými daty, rozšiřují prostřednictvím dovednosti.  |
 
 **Kontrolní seznam: Typický pracovní postup**
 
@@ -140,3 +145,5 @@ Další informace o konkrétní dotazy nebo problémy, najdete v části [tipy p
 + [Dokumentace ke kognitivnímu vyhledávání](cognitive-search-resources-documentation.md)
 + [Rychlé zprovoznění: Vyzkoušení kognitivního vyhledávání v portálu návodu](cognitive-search-quickstart-blob.md)
 + [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)
++ [Přehled Store znalostní báze](knowledge-store-concept-intro.md)
++ [Návod Store znalostní báze](knowledge-store-howto.md)

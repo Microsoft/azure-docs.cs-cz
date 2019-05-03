@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý start: Sestavení indexu s podporou AI na webu Azure portal – Azure Search'
+title: 'Rychlý start: Sestavení indexu obohaceného AI na webu Azure portal – Azure Search'
 description: Extrakce dat, přirozeného jazyka a dovednosti na portálu Azure Search indexování pro zpracování obrázků pomocí webu Azure portal a ukázková data.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61345365"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65022101"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Rychlý start: Vytvořit kanál indexování AI pomocí kognitivní dovednosti a ukázkových dat
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Rychlý start: Vytvořit kanál indexování AI využitím kognitivních dovedností v Azure Search
 
 Služba Azure Search se integruje s [služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), přidávání obsahu extrakce, zpracování přirozeného jazyka (NLP) a dovednosti zpracování obrázků na kanál indexování Azure Search, vytváření obsahu unsearchable nebo nestrukturovaných informace prohledávatelné. 
 
@@ -30,12 +30,12 @@ V tomto rychlém startu vytvořte svůj první kanál v rozšíření [webu Azur
 > * Spustíte průvodce (dovednost entity zjistí lidi, lokality a organizace).
 > * Použití [ **Průzkumníka služby Search** ](search-explorer.md) dotazy na data bohatších možností
 
-V tomto rychlém startu běží na bezplatné služby, ale počet transakcí zdarma je omezený na 20 dokumenty za den. Pokud chcete spustit v tomto rychlém startu více než jednou v jednom dni, použijte menší soubor nastavit tak, aby se vejde do více spuštění.
+V tomto rychlém startu běží na bezplatné služby, ale počet transakcí zdarma je omezený na 20 dokumenty za den. Pokud chcete spustit v tomto rychlém startu více než jednou denně, použít menší soubor nastavit tak, aby se vejde do více spuštění.
 
 > [!NOTE]
-> Jak rozbalit obor zvýšením počtu zpracování, přidáním více dokumentů nebo přidání další algoritmy AI, musíte připojit fakturovatelné prostředku služeb Cognitive Services. Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
+> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce bitové kopie se účtuje za ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Další [informace](cognitive-search-attach-cognitive-services.md)
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

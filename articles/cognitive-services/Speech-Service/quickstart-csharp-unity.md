@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3cedfaf1ae16c17026314fc24dbdc7bb11494caf
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457081"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020952"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Unity (beta verze)
 
@@ -27,14 +27,15 @@ Pokud nejste obeznámeni s Unity, se doporučuje pro zkoumání [uživatelská p
 
 > [!NOTE]
 > Sadou SDK pro řeč pro Unity je aktuálně ve verzi beta.
-> Podporuje x86 a x64 (samostatné aplikace klasické pracovní plochy nebo univerzální platformu Windows), Windows a Android (ARM32/64, x86).
+> Podporuje Windows Desktop (x86 a x64) nebo univerzální platformu Windows (x86, x64, ARM a ARM64) a Android (x86 ARM32/64).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto projektu budete potřebovat:
 
-* [Unity 2018.3 nebo novější](https://store.unity.com/)
+* [Unity 2018.3 nebo novější](https://store.unity.com/) s [Unity 2019.1 Přidání podpory pro UPW ARM64](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+     * Pro podporu ARM64, nainstalujte [volitelné sestavení nástroje pro ARM64 a Windows 10 SDK pro ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
 * Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 * Přístup k mikrofonu v počítači.
 

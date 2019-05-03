@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126734"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025142"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Příklad: Přidat nějaké návrhy nebo automatické dokončování pro vaši aplikaci Azure Search
 
@@ -23,7 +23,7 @@ V tomto článku najdete další informace o použití [návrhy](https://docs.mi
 
 + *Návrhy* jsou navrhované výsledky vygenerované při psaní, kde každý návrh je jeden výsledek z indexu, který odpovídá, co jste jste zatím zadali. 
 
-+ *Automatické dokončování*, [funkce ve verzi preview](search-api-preview.md), "dokončení" slovo nebo frázi, která je aktuálně zadání uživatele. Místo vrácení výsledků, dokončí dotaz, který můžete spustit a vracení výsledků. Stejně jako u návrhy, dokončené slovo nebo frázi v dotazu záleží na shodu v indexu. Služba se nebude poskytovat dotazy, které vracejí nula výsledků v indexu.
++ *Automatické dokončování* "dokončení" slovo nebo frázi, která je aktuálně zadání uživatele. Místo vrácení výsledků, dokončí dotaz, který můžete spustit a vracení výsledků. Stejně jako u návrhy, dokončené slovo nebo frázi v dotazu záleží na shodu v indexu. Služba se nebude poskytovat dotazy, které vracejí nula výsledků v indexu.
 
 Můžete stáhnout a spustit ukázkový kód **DotNetHowToAutocomplete** k vyhodnocení, tyto funkce. Ukázkový kód, zaměřuje předem připravených index vyplní [NYCJobs ukázkových dat](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). NYCJobs index obsahuje [modulu pro návrhy konstrukce](index-add-suggesters.md), což je požadavek pro použití návrhy nebo automatické dokončování. Můžete použít připravený index hostovaný ve službě izolovaného prostoru, nebo [naplňte jimi index vlastní](#configure-app) pomocí zavaděče dat v ukázkovém řešení NYCJobs. 
 

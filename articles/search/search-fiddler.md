@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7db3292bc5f377d9728e42994dd3a437cb59958e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290320"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024815"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Rychlý start: Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman
 > [!div class="op_single_selector"]
@@ -63,9 +63,9 @@ V této části použijte nástroj web podle výběru nastavení připojení do 
 
 Pro kteréhokoli z těchto nástrojů můžete potřebovat zvolte příkazu (GET, POST, PUT a tak dále), zadejte koncový bod adresy URL a některé úlohy, poskytují JSON v textu požadavku. Úplná adresa URL vypadá nějak takto:
 
-    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11
+    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06
 
-Všimněte si, že předpona HTTPS, název služby, název objektu (v tomto případě kolekci indexů) a [verze api-version](search-api-versions.md). Verze api-version je povinný, malá písmena řetězec zadán jako "? api-version = 2017-11-11" pro aktuální verzi. Verze rozhraní API jsou pravidelně aktualizovány. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
+Všimněte si, že předpona HTTPS, název služby, název objektu (v tomto případě kolekci indexů) a [verze api-version](search-api-versions.md). Verze api-version je povinný, malá písmena řetězec zadán jako `?api-version=2019-05-06` pro aktuální verzi. Verze rozhraní API jsou pravidelně aktualizovány. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
 
 Složení záhlaví požadavku obsahuje dva prvky, typu obsahu a klíč rozhraní api používá k ověření do služby Azure Search:
 
@@ -85,7 +85,7 @@ Adresa URL je rozšířit `hotel` název indexu.
 Chcete-li to provést v nástroji Postman:
 
 1. Změňte operaci na **PUT**
-2. Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+2. Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`
 3. Zadejte definici indexu (viz dole) v textu požadavku
 4. Klikněte na tlačítko **odeslat**
 
@@ -129,7 +129,7 @@ Adresa URL je rozšířit `docs` kolekce a `index` operace.
 Chcete-li to provést v nástroji Postman:
 
 1. Změňte operaci na **příspěvku**
-2. Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+2. Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`
 3. Zadejte dokumentů JSON (viz dole) v textu požadavku
 4. Klikněte na tlačítko **odeslat**
 
@@ -219,7 +219,7 @@ Adresa URL je rozšířen o řetězec dotazu zadaný pomocí operátoru vyhledá
 Chcete-li to provést v nástroji Postman:
 
 + Změňte operaci na **získat**
-+ Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`
 + Klikněte na tlačítko **odeslat**
 
 Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí počet dokumentů. Žádost a odpověď by měl vypadat podobně jako na následujícím snímku obrazovky pro nástroj Postman po kliknutí na **odeslat**. Stavový kód by měl být 200.
@@ -228,7 +228,7 @@ Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí poč
 
 
 ## <a name="get-index-properties"></a>Získání vlastností indexu
-Můžete také zadat dotazy na informace o systému a získat počet dokumentů a spotřebu úložiště: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+Můžete také zadat dotazy na informace o systému a získat počet dokumentů a spotřebu úložiště: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
 
 V nástroji Postman by vaše žádost měla vypadat podobně jako v následujícím příkladu a odpověď by měla obsahovat počet dokumentů a využité místo v bajtech.
 
@@ -247,7 +247,7 @@ Tato část je ekvivalentní předchozí části, pouze pomocí Fiddleru snímky
 
 Zformulujte podobnou žádost, která vypadá jako na následujícím snímku obrazovky. Zvolte **získat** jako příkaz. Fiddler přidá `User-Agent=Fiddler`. Pod tím můžete na nové řádky vložit dvě další hlavičky žádosti. Pomocí přístupového klíče správce vaší služby zahrňte typ obsahu a klíč api-key pro vaši službu.
 
-Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06`
 
 ![Hlavička žádosti Fiddleru][1]
 
@@ -256,7 +256,7 @@ Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<placeholder-fo
 
 ### <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Změňte operaci na **UMÍSTIT**. Kopírují se upravenou verzi tuto adresu URL: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`. Zkopírujte definici indexu do textu žádosti uvedené výše. Vaše stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Klikněte na tlačítko **Execute** nahoře vpravo odešlete dokončenou žádost.
+Změňte operaci na **UMÍSTIT**. Kopírují se upravenou verzi tuto adresu URL: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Zkopírujte definici indexu do textu žádosti uvedené výše. Vaše stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Klikněte na tlačítko **Execute** nahoře vpravo odešlete dokončenou žádost.
 
 ![Text žádosti Fiddleru][7]
 
@@ -272,11 +272,11 @@ Následující příklad dotazu je převzatý z článku [Operace prohledání i
 
 **Před nahrazením mezer (v části lastRenovationDate desc):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06
 
 **Po nahrazení mezer znakem + (v části lastRenovationDate+desc):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2019-05-06
 
 ### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Tipy pro zobrazení statistik indexu ve Fiddleru
 

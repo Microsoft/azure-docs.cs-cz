@@ -8,16 +8,20 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.custom: seodec2018
-ms.openlocfilehash: 369e5283d7350729e0d8cc44f94f1f2e71b133c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/02/2019
+ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816997"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025176"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>Upgrade na Azure Search .NET Management SDK verze 2
+# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Upgrade na verzi .NET Management SDK služby Azure Search 
+
+> [!Important]
+> Tento obsah je stále zpracovávají. Verze 3.0 Management .NET SDK služby Azure Search je dostupná na webu NuGet. Pracujeme na aktualizaci tohoto průvodce migrací a vysvětluje postup při upgradu na novou verzi. 
+>
+
 Pokud používáte verzi 1.0.2 nebo starší aplikace [Management SDK služby Azure Search .NET](https://aka.ms/search-mgmt-sdk), tento článek vám pomůže při upgradu aplikace použije verzi 2.
 
 Verze 2 služby Azure Search .NET Management SDK obsahuje některé změny z předchozích verzí. Toto jsou většinou dílčí, takže změna kódu by měla trvat pouze minimálním úsilím. Zobrazit [kroky pro upgrade](#UpgradeSteps) pokyny o tom, jak změnit váš kód k použití nové verze sady SDK.

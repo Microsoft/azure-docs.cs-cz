@@ -7,17 +7,29 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4acf609ca1f81e69babfa1a319b43e20e84a8395
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 488a9fe24fb8fca0b7309dea63d0640a6384f95c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61291531"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024101"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Upgrade na Azure Search .NET SDK verze 3
+
+> [!Important]
+> Tento obsah je stále zpracovávají. Verze 9.0 Azure Search .NET SDK je k dispozici na webu NuGet. Pracujeme na tento článek vysvětluje postup při upgradu na 9.0. 
+> 
+
+<!--- DETAILS in the word doc
+cosmosdb
+NER v1 skill 
+Indexer execution result errors no longer have status
+the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
+--->
+
 Pokud používáte verzi 2.0 preview nebo starší aplikace [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace použije verzi 3.
 
 Další obecné návod sady SDK, včetně příkladů najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).

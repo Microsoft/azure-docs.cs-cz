@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126954"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024395"
 ---
 # <a name="api-versions-in-azure-search"></a>Verze rozhraní API ve službě Azure Search
 Služba Azure Search zavádění aktualizací funkcí pravidelně. Někdy, ale ne vždy tyto aktualizace vyžadují novou verzi rozhraní API pro zachování zpětné kompatibility. Publikování nové verze umožňuje řídit, kdy a jak integrovat aktualizace služby vyhledávání v kódu.
@@ -30,18 +29,19 @@ Stejné pravidlo platí i pro aktualizace sady SDK. Následuje SDK služby Azure
 ## <a name="snapshot-of-current-versions"></a>Snímek aktuální verze
 Níže je snímek aktuální verze všech programování rozhraní do služby Azure Search.
 
+
 | Rozhraní | Nejnovější hlavní verzi | Status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |5.0 |Obecně dostupné, vydáno v dubnu 2018 |
-| [.NET SDK ve verzi Preview](https://aka.ms/search-sdk-preview) |4.0.1-preview |Ve verzi Preview, všeobecně dostupné. května 2017 |
-| [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |Obecná dostupnost |
-| [Služba REST API 2017-11-11-Preview](search-api-2017-11-11-preview.md) |2017-11-11-Preview |Preview |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |2.0 |Obecná dostupnost |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně k dispozici, všeobecně dostupné. května 2019. Obsah se stále zpracovávají.  |
+| [.NET SDK ve verzi Preview](https://aka.ms/search-sdk-preview) |8.0.0-preview |Ve verzi Preview, vydáno dne 2019. Obsah se stále zpracovávají.|
+| [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Obecná dostupnost |
+| [Služba REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |Preview |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Obecná dostupnost |
 | [Rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Obecná dostupnost |
 
 Pro rozhraní REST API, včetně `api-version` při každém volání je povinný. Pomocí `api-version` umožňuje snadno cílit na konkrétní verzi, jako je ve verzi preview rozhraní API. Následující příklad ukazuje, jak `api-version` je zadán parametr:
 
-    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
+    GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
 > I když má každý požadavek `api-version`, doporučujeme používat stejnou verzi pro všechny požadavky rozhraní API. To platí zejména při zavedení nových verzích rozhraní API atributů a operací, které nejsou rozpoznány v předchozích verzích. Kombinace verze rozhraní API může mít nežádoucí důsledky a mělo by se vyhnout.

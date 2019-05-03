@@ -2,74 +2,61 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/11/2018
+ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: ef68d02f6aa23368962e08af7b35d2b81c0e80bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f48fc0ad65984df42e2a85853f39e49d7481302
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480491"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020448"
 ---
-### <a name="neural-voices"></a>Neurální hlasů
+### <a name="standard-and-neural-voices"></a>Standardní a neuronových sítí hlasů
 
-Neurální hlasy jsou k dispozici v těchto oblastech:
+Tato tabulka slouží k určování dostupnosti standardní a neuronových sítí hlasy oblasti nebo koncového bodu:
 
-| Oblast | Koncový bod |
-|--------|----------|
-| USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Západní Evropa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-
-> [!IMPORTANT]
-> Microsoft Server řeči Text na řeč hlas (zh-CN, XiaoxiaoNeural) je k dispozici prostřednictvím koncového bodu jihovýchodní Asie pouze: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1. Úplný seznam neuronových sítí hlasů, naleznete v tématu [jazykovou podporu](../articles/cognitive-services/speech-service/language-support.md).
-
-### <a name="standard-voices"></a>Standardní hlasů
-
-Standardní hlasy jsou k dispozici v těchto oblastech:
-
-| Oblast | Koncový bod |
-|--------|----------|
-| Austrálie – východ | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Kanada – střed | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA – střed | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Východní Asie | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Východní USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Francie – střed | https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Indie – střed | https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Japonsko – východ | https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Korea – střed | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Středoseverní USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Severní Evropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Středojižní USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Velká Británie – jih | https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Západní Evropa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Západní USA | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Západní USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 |
+| Oblast | Koncový bod | Standard Voices | Neural Voices |
+|--------|----------|-----------------|---------------|
+| Austrálie – východ | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Kanada – střed | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| USA – střed | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Východní Asie | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Východní USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Francie – střed | https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Indie – střed | https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Japonsko – východ | https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Korea – střed | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Středoseverní USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Severní Evropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Středojižní USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Velká Británie – jih | https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Západní Evropa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
+| Západní USA | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ne |
+| Západní USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 | Ano | Ano |
 
 ### <a name="custom-voices"></a>Vlastní hlasů
 
-Pokud vytvoříte vlastní hlasové písmo, můžete použijte koncový bod, který jste vytvořili, není jeden z koncových bodů v těchto seznamů.
+Pokud jste vytvořili vlastní hlasové písmo, použijte koncového bodu, který jste vytvořili. Můžete také použít koncových bodů uvedených níže, nahradí `{deploymentId}` s ID nasazení pro váš model hlasu.
 
 | Oblast | Koncový bod |
 |--------|----------|
-| Austrálie – východ | https://australiaeast.voice.speech.microsoft.com |
-| Kanada – střed | https://canadacentral.voice.speech.microsoft.com |
-| USA – střed | https://centralus.voice.speech.microsoft.com |
-| Východní Asie | https://eastasia.voice.speech.microsoft.com |
-| USA – východ | https://eastus.voice.speech.microsoft.com |
-| Východní USA 2 | https://eastus2.voice.speech.microsoft.com |
-| Francie – střed | https://francecentral.voice.speech.microsoft.com |
-| Indie – střed | https://centralindia.voice.speech.microsoft.com |
-| Japonsko – východ | https://japaneast.voice.speech.microsoft.com |
-| Korea – střed | https://koreacentral.voice.speech.microsoft.com |
-| Středoseverní USA | https://northcentralus.voice.speech.microsoft.com |
-| Severní Evropa | https://northeurope.voice.speech.microsoft.com |
-| Středojižní USA | https://southcentralus.voice.speech.microsoft.com |
-| Jihovýchodní Asie | https://southeastasia.voice.speech.microsoft.com |
-| Velká Británie – jih | https://uksouth.voice.speech.microsoft.com |
-| Západní Evropa | https://westeurope.voice.speech.microsoft.com |
-| Západní USA | https://westus.voice.speech.microsoft.com |
-| Západní USA 2 | https://westus2.voice.speech.microsoft.com |
+| Austrálie – východ | https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Kanada – střed | https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| USA – střed | https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Východní Asie | https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| USA – východ | https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Východní USA 2 | https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Francie – střed | https://francecentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Indie – střed | https://centralindia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Japonsko – východ | https://japaneast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Korea – střed | https://koreacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Středoseverní USA | https://northcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Severní Evropa | https://northeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Středojižní USA | https://southcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Jihovýchodní Asie | https://southeastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Velká Británie – jih | https://uksouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Západní Evropa | https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Západní USA | https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Západní USA 2 | https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |

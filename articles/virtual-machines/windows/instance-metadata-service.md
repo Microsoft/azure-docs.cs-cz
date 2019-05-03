@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 9097fef88a2c3c667416761c341a2e320c790121
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919052"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993071"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 
@@ -640,6 +640,8 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
+V případech, kdy nejde stáhnout zprostředkující certifikát z důvodu omezení sítě během ověřování je možné připnout zprostředkující certifikát. Azure se ale nespotřebujete certifikáty podle standardním postupem infrastruktury veřejných KLÍČŮ. Připojené certifikáty by potřeba aktualizovat, pokud dojde k vrácení přes. Pokaždé, když je plánovaná změna aktualizovat zprostředkující certifikát, najdete na blogu Azure se aktualizuje a zákazníky Azure, budete upozorněni. Zprostředkující certifikáty nacházejí [tady](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro každou z oblastí se může lišit.
+
 ### <a name="failover-clustering-in-windows-server"></a>Převzetí služeb clusteringu ve Windows serveru
 
 Pro určité scénáře, při dotazování služba Instance Metadata pomocí clusteringu převzetí služeb při selhání, je potřeba přidat trasy do směrovací tabulky.
@@ -686,13 +688,15 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>Vlastní data
-Služba instance Metadata poskytuje možnost pro virtuální počítač přístup k jeho vlastní data. Binární data musí být menší než 64KB a je k dispozici k virtuálnímu počítači v podobě kódování base64. Podrobnosti o tom, jak vytvořit virtuální počítač s vlastními daty, najdete v článku [nasazení virtuálního počítače s CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Služba instance Metadata poskytuje možnost pro virtuální počítač přístup k jeho vlastní data. Binární data musí být menší než 64 KB a je k dispozici k virtuálnímu počítači v podobě kódování base64. Podrobnosti o tom, jak vytvořit virtuální počítač s vlastními daty, najdete v článku [nasazení virtuálního počítače s CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+
+Vlastní data jsou k dispozici pro všechny procesy spuštěné na virtuálním počítači. Doporučuje se, že zákazníci nevkládejte tajné informace do vlastní data.
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>Načítání vlastních dat na virtuálním počítači
 Služba instance Metadata poskytuje vlastních dat k virtuálnímu počítači v podobě kódování base64. Následující příklad Dekóduje řetězec kódování base64.
 
 > [!NOTE]
-> Vlastní data v tomto příkladu je interpretován jako řetězec ve formátu ASCII, který čte "Supertajnou data.".
+> Vlastní data v tomto příkladu je interpretován jako řetězec ve formátu ASCII, který čte "Moje vlastní data.".
 
 **Požadavek**
 
@@ -703,7 +707,7 @@ curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/custom
 **Odpověď**
 
 ```text
-My super secret data.
+My custom data.
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání metadat služby používající různé jazyky ve virtuálním počítači 

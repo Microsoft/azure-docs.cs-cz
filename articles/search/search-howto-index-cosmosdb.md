@@ -1,7 +1,7 @@
 ---
 title: Indexovat zdroje dat Azure Cosmos DB – Azure Search
 description: Procházet zdroj dat služby Azure Cosmos DB a jejich ingestování v prohledávatelných fulltextového indexu ve službě Azure Search. Indexery můžete automatizovat příjem dat pro vybrané zdroje dat jako jsou služby Azure Cosmos DB.
-ms.date: 02/28/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d10a1df402fc4931c4d6cc513aa5e22cfe7ec2ba
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871691"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024727"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indexovat Cosmos DB pomocí indexeru Azure Search
 
@@ -122,9 +122,8 @@ Pokud hodnotíte MongoDB, musíte vytvořit zdroj dat použít rozhraní REST AP
 
 V účtu služby Cosmos DB můžete, zda chcete automaticky indexuje všechny dokumenty kolekci. Ve výchozím nastavení všechny dokumenty jsou automaticky indexovány, ale můžete vypnout automatické indexování. Když je vypnutý indexování, dokumentů je přístupný pouze prostřednictvím jejich odkazů na sebe sama nebo dotazy pomocí dokumentů ID. Služba Azure Search vyžaduje automatické indexování zapnuté v kolekci, které bude služba Azure Search indexovat Cosmos DB. 
 
-> [!NOTE]
-> Azure Cosmos DB je nová generace služby DocumentDB. I když se změní název produktu, `documentdb` syntaxe v indexerech Azure Search stále existuje pro zpětné kompatibility v rozhraní API služby Azure Search a stránky portálu. Při konfiguraci indexery, nezapomeňte zadat `documentdb` syntaxe podle pokynů v tomto článku.
-
+> [!WARNING]
+> Azure Cosmos DB je nová generace služby DocumentDB. Dříve se verze rozhraní API **2017-11-11** můžete použít `documentdb` syntaxe. To znamená, že můžete zadat váš typ zdroje dat jako `cosmosdb` nebo `documentdb`. Počínaje verzí rozhraní API **2019-05-06** rozhraní API služby Azure Search i portál podporuje pouze `cosmosdb` syntaxe podle pokynů v tomto článku. To znamená, že typ zdroje dat musí `cosmosdb` Pokud se chcete připojit ke koncovému bodu služby Cosmos DB.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - vstupy pro žádost o sestavení
 
@@ -150,13 +149,13 @@ A **zdroj dat** data určená k indexu, přihlašovacích údajů a zásady pro 
 
 Chcete-li vytvořit zdroj dat, zformulujte podobnou žádost POST:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
     {
-        "name": "mydocdbdatasource",
-        "type": "documentdb",
+        "name": "mycosmosdbdatasource",
+        "type": "cosmosdb",
         "credentials": {
             "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
@@ -172,7 +171,7 @@ Text žádosti obsahuje definici zdroje dat, která by měla obsahovat následuj
 | Pole   | Popis |
 |---------|-------------|
 | **name** | Povinná hodnota. Vyberte libovolný název a představují data zdrojový objekt. |
-|**type**| Povinná hodnota. Musí být `documentdb`. |
+|**type**| Povinná hodnota. Musí být `cosmosdb`. |
 |**Přihlašovací údaje** | Povinná hodnota. Musí být připojovací řetězec služby Cosmos DB.<br/>Pro kolekce SQL připojovací řetězce jsou v tomto formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Kolekce MongoDB, přidejte **ApiKind = MongoDb** na připojovací řetězec:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vyhněte se čísla portů v adresu url koncového bodu. Pokud je číslo portu, nepůjde Azure Search k indexování databáze Azure Cosmos DB.|
 | **container** | obsahuje následující prvky: <br/>**Název**: Povinná hodnota. Zadejte ID kolekce databáze, který se má indexovat.<br/>**dotaz**: Volitelné. Můžete zadat dotaz, který libovolný dokument JSON sloučit do ploché schéma, které Azure Search můžete indexovat.<br/>Dotazy nejsou podporovány pro kolekce MongoDB. |
 | **dataChangeDetectionPolicy** | Doporučené. Zobrazit [indexování dokumentů změnit](#DataChangeDetectionPolicy) oddílu.|
@@ -193,7 +192,7 @@ Ukázkový dokument:
             "lastName": "hoh"
         },
         "company": "microsoft",
-        "tags": ["azure", "documentdb", "search"]
+        "tags": ["azure", "cosmosdb", "search"]
     }
 
 Dotaz filtru:
@@ -219,7 +218,7 @@ Pole sloučení dotazu:
 
 [Vytvoření indexu Azure Search cílové](/rest/api/searchservice/create-index) Pokud již nemáte. Následující příklad vytvoří index s ID a description pole:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -263,13 +262,13 @@ Ujistěte se, že schéma cílový index je kompatibilní s schématu zdroje dok
 
 Po vytvoření index a zdroj dat jste připraveni vytvořit indexer:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
     {
-      "name" : "mydocdbindexer",
-      "dataSourceName" : "mydocdbdatasource",
+      "name" : "mycosmosdbindexer",
+      "dataSourceName" : "mycosmosdbdatasource",
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
@@ -334,17 +333,17 @@ Pokud používáte vlastní dotaz, ujistěte se, že vlastnost odkazuje `softDel
 
 Následující příklad vytvoří zdroj dat s zásadu obnovitelného odstranění:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
     {
-        "name": "mydocdbdatasource",
-        "type": "documentdb",
+        "name": "mycosmosdbdatasource",
+        "type": "cosmosdb",
         "credentials": {
-            "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
+            "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
-        "container": { "name": "myDocDbCollectionId" },
+        "container": { "name": "myCosmosDbCollectionId" },
         "dataChangeDetectionPolicy": {
             "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
             "highWaterMarkColumnName": "_ts"

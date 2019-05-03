@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1232cdd156dd473850fde6e7c4f3ce0554155764
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456168"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020412"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 
@@ -49,19 +49,26 @@ Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresá�
 
 ## <a name="linux"></a>Linux
 
-Sadou SDK pro řeč aktuálně podporuje Ubuntu 16.04 a 18.04 distribucí.
+Sadou SDK pro řeč aktuálně podporuje distribuce Ubuntu 16.04 a Ubuntu 18.04, Debian 9.
 Pro nativní aplikaci, je třeba dodávat knihovně sadou SDK pro řeč `libMicrosoft.CognitiveServices.Speech.core.so`.
 Ujistěte se, zda že jste vybrali verzi (x86, x64), která odpovídá vaší aplikace. V závislosti na verzi systému Linux můžete také potřebovat zahrnout tyto závislosti:
 
 * Sdílené knihovny knihovna GNU C (včetně knihovny POSIX vlákna programování `libpthreads`)
-* Knihovny OpenSSL (`libssl.so.1.0.0`)
+* Knihovny OpenSSL (`libssl.so.1.0.0` nebo `libssl.so.1.0.2`)
 * Sdílená knihovna pro aplikace ALSA (`libasound.so.2`)
 
 V Ubuntu by měl knihovny GNU C již nainstalován ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2
+```
+
+Na Debian 9 instalaci těchto balíčků:
+
+```sh
+sudo apt-get update
+sudo apt-get install libssl1.0.2 libasound2
 ```
 
 ## <a name="next-steps"></a>Další postup

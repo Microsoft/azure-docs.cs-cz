@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bda38825cd65f1d44b497de1445ead5689428917
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621977"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020732"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v prohlížeči pomocí sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit web pro přepis řeči na text s využitím vazby JavaScriptu na sadu Cognitive Services Speech SDK.
-Aplikace je založena na sadou SDK pro řeč pro jazyk JavaScript ([stahování verze 1.4.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikace je založena na sadou SDK pro řeč pro jazyk JavaScript ([stahování verze 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Požadavky
 

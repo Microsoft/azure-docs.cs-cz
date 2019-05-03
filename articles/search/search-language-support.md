@@ -6,15 +6,15 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc9f271c1c79f34ba62fa22d6ce4fd6bf16738f1
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197247"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025267"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Vytvoření indexu pro dokumenty v několika jazycích ve službě Azure Search
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Mnoho webových a mobilních aplikací poskytovat uživatelům na celém světě
 
 Pokud jazyk agenta zadání dotazu je znám, žádost o vyhledávání se dají vymezit na konkrétní pole pomocí **searchFields** parametr dotazu. Následující dotaz bude vydaný pouze pro popis v polština:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2019-05-06`
 
 Indexu z portálu, můžete zadávat dotazy pomocí **Průzkumníka služby Search** vložit v podobně jako výše uvedeném dotazu. Průzkumník služby Search je dostupná na panelu příkazů v okně služby. Zobrazit [dotazování indexu Azure Search na portálu](search-explorer.md) podrobnosti.
 
@@ -79,7 +79,7 @@ Někdy není známý jazyk agenta zadání dotazu, v takovém případě dotazu 
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
 Pokud jste vývojář .NET, mějte na paměti, že můžete nakonfigurovat pomocí jazykové analyzátory [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search). Nejnovější vydaná verze zahrnuje podporu pro jazykové analyzátory Microsoft také.
 

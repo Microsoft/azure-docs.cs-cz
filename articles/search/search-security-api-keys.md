@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/06/2019
+ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f12d7f1a7dfcaf80df9a71a0bfc598d72db63a2e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283642"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024414"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvoření a správa klíče rozhraní api pro službu Azure Search
 
@@ -34,7 +34,7 @@ Dva typy klíče používané pro přístup k vaší vyhledávací služby: admi
 |Klíč|Popis|Limits|  
 |---------|-----------------|------------|  
 |Správa|Uděluje úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat.<br /><br /> Dva klíče správce, označuje jako *primární* a *sekundární* klíče na portálu jsou generovány, pokud je služba se vytvoří a může znovu vygenerovat jednotlivě na vyžádání. Existence dvou klíčů umožňuje nespotřebujete jeden z nich při používání druhý klíč pro přístup ke službě.<br /><br /> Klíče správce se zadávají pouze v hlavičkách žádosti protokolu HTTP. Rozhraní api-key správce nelze umístit v adrese URL.|Maximálně 2 na službu|  
-|Dotaz|Uděluje oprávnění jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.<br /><br /> Na vyžádání se vytvoří klíče dotazu. Můžete je vytvořit ručně na portálu nebo prostřednictvím kódu programu přes [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klíče dotazu se dá nastavit v záhlaví požadavku HTTP pro hledání, návrh nebo operace vyhledávání. Alternativně můžete předat klíč dotazu jako parametr na adrese URL. V závislosti na tom, jak klientské aplikace výrobky zpracovává žádost může být snazší předat klíč jako parametr dotazu:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50 na službu|  
+|Dotaz|Uděluje oprávnění jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.<br /><br /> Na vyžádání se vytvoří klíče dotazu. Můžete je vytvořit ručně na portálu nebo prostřednictvím kódu programu přes [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klíče dotazu se dá nastavit v záhlaví požadavku HTTP pro hledání, návrh nebo operace vyhledávání. Alternativně můžete předat klíč dotazu jako parametr na adrese URL. V závislosti na tom, jak klientské aplikace výrobky zpracovává žádost může být snazší předat klíč jako parametr dotazu:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 na službu|  
 
  Vizuálně není žádný rozdíl mezi klíč správce a klíč dotazu. Oba klíče jsou řetězce, na které se skládá z 32 náhodně generované alfanumerické znaky. Pokud ztratíte přehled o jaký typ klíče, který je zadán v aplikaci, můžete si [zkontrolujte hodnoty klíče na portálu](https://portal.azure.com) nebo použijte [rozhraní REST API](https://docs.microsoft.com/rest/api/searchmanagement/) vrátí hodnotu a typ klíče.  
 

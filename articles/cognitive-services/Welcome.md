@@ -7,46 +7,48 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a3226050901f6feb17c4d9d6a6582cb622618b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608974"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020191"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?
 
-Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k dispozici, což vývojářům sestavovat inteligentní aplikace bez nutnosti přímého AI nebo data science dovedností nebo znalostní báze. Azure Cognitive Services umožňují vývojářům snadno přidávat cognitive funkce, jako je například rozpoznávání emocí a videa detekce; facial, řeči a rozpoznávání zpracování obrazu a řeči a language understanding – do svých aplikací. Cílem Azure Cognitive Services je pomoct vývojářům vytvářet aplikace, které můžete vidět, slyšet, mluvit, pochopit a dokonce začít důvod. Katalog služeb v rámci služeb Azure Cognitive Services můžete rozdělená na pět hlavních pilířů – zpracování obrazu, řeči, jazyka, vyhledávání a znalostní báze.
+Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k dispozici, což vývojářům sestavovat inteligentní aplikace bez nutnosti přímého AI nebo data science dovedností nebo znalostní báze. Azure Cognitive Services umožňují vývojářům jednoduše do svých aplikací přidávat cognitive funkce. Cílem Azure Cognitive Services je pomoct vývojářům vytvářet aplikace, které můžete vidět, slyšet, mluvit, pochopit a dokonce začít důvod. Katalog služeb v rámci služeb Azure Cognitive Services lze rozdělit do pěti hlavních pilířů – pro zpracování obrazu, řeči, jazyka, vyhledávání na webu a rozhodnutí.
 
 ## <a name="vision-apis"></a>Rozhraní API pro vizuální funkce
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
 |[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "pro počítačové zpracování obrazu")|Službu pro počítačové zpracování obrazu poskytuje přístup ke složitým algoritmům pro zpracování obrázků a vracení informací.|
-|[Službu Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "službu Custom Vision Service") (Preview)|Služba Custom Vision Service umožňuje vytvářet vlastní image Klasifikátory.|
-|[Rozhraní Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování pro možné urážlivé nežádoucí a rizikových obsah.|
+|[Službu Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "službu Custom Vision Service")|Služba Custom Vision Service umožňuje vytvářet vlastní image Klasifikátory.|
 |[Rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "rozhraní API pro rozpoznávání tváře")|Rozhraní API pro rozpoznávání tváře poskytuje přístup k pokročilé algoritmy, povolení atribut rozpoznávání tváří a uznání.|
-| [Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer umožňuje extrahovat přehledy z vašeho videa.|
+|[Formulář pro rozpoznávání](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "tvoří Rozlišovač") (Preview)|Formulář pro rozpoznávání identifikuje a extrahuje z formuláře dokumenty, páry klíč hodnota a data tabulky potom vypíše strukturovaná data, včetně vztahy v původním souboru.|
+|[Nástroj pro rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "rozpoznávání rukopisu") (Preview)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznat a analyzovat data stroke digitálních inkoust, tvary a ručně psaného obsahu a výstup strukturu dokumentu s rozpoznaný všechny entity.|
+|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer umožňuje extrahovat přehledy z vašeho videa.|
 
 ## <a name="speech-apis"></a>Rozhraní Speech API
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Service") (Preview)|Speech Service přidá funkce s podporou řeči do aplikací.|
-|[Rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "rozhraní API pro zpracování řeči Bingu")|Rozhraní Bing Speech API poskytuje snadný způsob, jak vytvořit funkce s podporou řeči ve svých aplikacích.|
-|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech")|Translator Speech je služba pro strojový překlad.|
+|[Hlasové služby](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "hlasové služby")|Speech Service přidá funkce s podporou řeči do aplikací.|
 |[Rozhraní API pro rozpoznání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci mluvčího a ověření.|
+|[Pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "pro zpracování řeči Bingu") (ukončení provozu)|Rozhraní Bing Speech API poskytuje snadný způsob, jak vytvořit funkce s podporou řeči ve svých aplikacích.|
+|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (ukončení provozu)|Translator Speech je služba pro strojový překlad.|
 
 ## <a name="language-apis"></a>Rozhraní API pro jazyky
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Pro kontrolu pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "pro kontrolu pravopisu Bingu")|Pro kontrolu pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrola pravopisu.|
 |[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding service (LUIS) umožňuje, aby aplikace věděla, požadavkům člověka ve své vlastní slova.|
+|[Nástroj QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|Nástroj QnA Maker umožňuje vytvářet otázky a odpovědi služby z částečně Strukturovaný obsah.|
 |[Rozhraní text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "pro analýzu textu")|Rozhraní text Analytics poskytuje nezpracovaný text pro analýzu mínění, extrakci klíčových frází a rozpoznání jazyka zpracování přirozeného jazyka.|
 |[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Translator text obsahuje pro překlad textu založených na počítačích v téměř v reálném čase.|
+|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer umožňuje extrahovat přehledy z vašeho videa.|
 
 ## <a name="search-apis"></a>Rozhraní API pro vyhledávání
 
@@ -61,12 +63,15 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "vyhledávání obrázků Bingu")|Vyhledávání obrázků Bingu vrátí zobrazení obrázků, jestli se má být relevantní pro dotaz uživatele.|
 |[Pro vizuální vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "pro vizuální vyhledávání Bingu")|Pro vizuální vyhledávání Bingu poskytuje vrátí informace o obrázku například vizuálně podobné obrázky, nákupní zdroje pro produkty nalezen na obrázku a související hledání.|
 |[Místní pracovní vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "místní pracovní vyhledávání Bingu")| Najít kontaktní údaje a umístění informace o místních firmách na základě dotazů vyhledávání aplikacím umožňuje místní firmy hledání rozhraní API Bingu.|
+|[Pro kontrolu pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "pro kontrolu pravopisu Bingu")|Pro kontrolu pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrola pravopisu.|
 
-## <a name="knowledge-apis"></a>Rozhraní API pro znalosti
+## <a name="decision-apis"></a>Rozhraní API pro rozhodování
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Nástroj QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|Nástroj QnA Maker umožňuje vytvářet otázky a odpovědi služby z částečně Strukturovaný obsah.|
+|[Detekce anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "detekce anomálií") (Preview)|Detekce anomálií vám umožňuje monitorovat a zjišťovat anomálie ve vašich datech časových řad.|
+|[Rozhraní Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování pro možné urážlivé nežádoucí a rizikových obsah.|
+|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer") (Preview)|Personalizer umožňuje zvolit nejvhodnější zobrazíte na uživatele, učit se z jejich chování v reálném čase.|
 
 ## <a name="use-free-trials"></a>Pomocí bezplatných zkušebních verzí
 
@@ -74,11 +79,11 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 
 ## <a name="subscription-management"></a>Správa předplatného
 
-Jakmile se přihlásíte pomocí svého Account Microsoft, dostanete [mé odběry](https://www.microsoft.com/cognitive-services/en-us/subscriptions "Moje předplatné") zobrazit produkty používáte kvóty zbývající a možnost přidávat další produkty ke svému předplatnému.
+Jakmile se přihlásíte pomocí svého Account Microsoft, dostanete [mé odběry](https://www.microsoft.com/cognitive-services/subscriptions "Moje předplatné") zobrazit produkty používáte kvóty zbývající a možnost přidávat další produkty ke svému předplatnému.
 
 ## <a name="upgrade-to-unlock-limits"></a>Upgrade na odemknout omezení
 
-Všechna rozhraní API máte bezplatnou zkušební verzi plánu.  Placené nabídky jsou k dispozici pro každé rozhraní API, budete přesměrováni na web Azure Portal k dokončení nákupu.  Můžete najít *koupit* uvedeny odkazy na stránce předplatná, pokud už používáte je, nebo můžete zcela přeskočit zkušební verze a nákupu se odkazy na [ceny](https://www.microsoft.com/cognitive-services/en-us/pricing "ceny").  Bude potřeba nastavit účet předplatitelem Azure s platební karta a telefonní číslo. Pokud máte zvláštní požadavky nebo jednoduše byste se obrátit na prodej, klikněte na tlačítko "Kontaktujte nás" v horní části stránce s cenami.
+Všechna rozhraní API mají bezplatné zkušební plán, který má využití a propustnost omezení.  Tyto limity můžete zvýšit pomocí placená nabídka a při nasazení služby na webu Azure Portal vyberete příslušnou možnost cenovou úroveň. [Další informace o nabídce a ceny](https://azure.microsoft.com/pricing/details/cognitive-services/ "nabídky a ceny"). Bude potřeba nastavit účet předplatitelem Azure s platební karta a telefonní číslo. Pokud máte zvláštní požadavky nebo jednoduše byste se obrátit na prodej, klikněte na tlačítko "Kontaktujte nás" v horní části stránce s cenami.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
@@ -96,11 +101,11 @@ Hledáte oblast nepodporujeme ještě? Dejte nám vědět, vyplňte žádost o f
 
 ## <a name="certifications-and-compliance"></a>Certifikací a dodržování předpisů
 
-Certifikace, jako je například CSA STAR certifikace FedRAMP střední a HIPAA BAA získal služeb cognitive Services. 
+Certifikace, jako je například CSA STAR certifikace FedRAMP střední a HIPAA BAA získal služeb cognitive Services.
 
-Je možné [Stáhnout](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) certifikace pro auditování a kontroly zabezpečení. 
+Je možné [Stáhnout](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) certifikace pro auditování a kontroly zabezpečení.
 
-Informace o tom ochrany osobních údajů a správu dat, přejděte na [centrum](https://servicetrust.microsoft.com/). 
+Informace o tom ochrany osobních údajů a správu dat, přejděte na [centrum](https://servicetrust.microsoft.com/).
 
 ## <a name="support"></a>Podpora
 

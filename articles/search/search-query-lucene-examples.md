@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6f7fce7eab697f6517b351d00595cb02110d3641
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61286295"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024454"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Příklady dotazů pomocí syntaxe vyhledávání "úplné" Lucene (pokročilé dotazy ve službě Azure Search)
 
@@ -54,7 +54,7 @@ Adresa URL sestavení obsahuje následující prvky:
 + **`https://azs-playground.search.windows.net/`** Vyhledávací služba izolovaného prostoru udržuje vývojový tým Azure Search. 
 + **`indexes/nycjobs/`** je index NYC Jobs v kolekci indexů této služby. Název služby a index se vyžadují v požadavku.
 + **`docs`** je kolekce dokumenty obsahující všechny prohledávatelný obsah. Dotazu api-key zadaný v hlavičce žádosti funguje pouze na operace čtení, které cílí na kolekce dokumentů.
-+ **`api-version=2017-11-11`** Nastaví verzi api-version, což je povinný parametr u každého požadavku.
++ **`api-version=2019-05-06`** Nastaví verzi api-version, což je povinný parametr u každého požadavku.
 + **`search=*`** řetězec dotazu, který počátečního dotazu má hodnotu null, vrátí prvních 50 výsledky (ve výchozím nastavení).
 
 ## <a name="send-your-first-query"></a>Odeslat svůj první dotaz
@@ -64,7 +64,7 @@ Jako ověřovací krok, vložte následující požadavek do GET a klikněte na 
 Vložte tuto adresu URL do klienta REST jako krok ověření a chcete-li zobrazit strukturu dokumentu.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 Řetězec dotazu **`search=*`**, odpovídá neurčené hledání hodnotu null nebo prázdné vyhledávání. Je nejjednodušší vyhledávání, které vám pomůžou.
@@ -76,7 +76,7 @@ Volitelně můžete přidat **`$count=true`** pro adresu URL pro vrátí počet 
 Přidat **queryType = full** k vyvolání celý dotaz v syntaxi, přepisuje výchozí jednoduchá syntaxe dotazů. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
 ```
 
 Zadejte všechny příklady v tomto článku **queryType = full** parametr určující, zda analyzátor dotazů Lucene zpracovává úplnou syntaxi vyhledávání. 
@@ -102,7 +102,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
 Odpověď pro tento dotaz by měl vypadat podobně jako na následujícím snímku obrazovky.
@@ -130,7 +130,7 @@ searchFields=business_title, posting_type&$select=business_title, posting_type&s
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
 ```
 
   ![Ukázková odpověď postman](media/search-query-lucene-examples/intrafieldfilter.png)
@@ -167,7 +167,7 @@ searchFields=business_title&$select=business_title&search=business_title:asosiat
 Tento dotaz vyhledává úlohy se termín "partner" (záměrně chybně):
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
   ![Vyhledávání přibližných shod odpovědi](media/search-query-lucene-examples/fuzzysearch.png)
 
@@ -190,14 +190,14 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 V tomto dotazu pro úlohy s označením "vedoucí analytik", kde jsou oddělené oddělovačem více než jedno slovo:
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
   ![Blízkých výrazů dotazu](media/search-query-lucene-examples/proximity-before.png)
 
 Zkuste to znovu odebrání slova mezi termín "vedoucí analytik". Všimněte si, že pro tento dotaz na rozdíl od 10 pro předchozí dotaz se vrátí 8 dokumenty.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
 ## <a name="example-5-term-boosting"></a>Příklad 5: zvýšení skóre termínu
@@ -208,14 +208,14 @@ Zvyšování skóre termínu odkazuje na hodnocení vyšší, pokud obsahuje Pos
 V tomto "dotazu before" hledání pro úlohy s označením *počítače analytik* a Všimněte si, že neexistují žádné výsledky obsahující oba slova *počítače* a *analytik*, ještě  *počítač* úlohy jsou v horní části výsledků.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![Před zvýšení skóre termínu](media/search-query-lucene-examples/termboostingbefore.png)
 
 V dotazu "po" a opakujte vyhledávání, tentokrát zvýšení skóre výsledky s označením *analytik* přes termín *počítače* Pokud oba slova neexistují. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
 Víc jako lidé čitelná verze výše uvedeném dotazu je `search=business_title:computer analyst^2`. Pro funkční dotaz `^2` zakódován `%5E2`, což je těžší zobrazíte.
 
@@ -243,7 +243,7 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 V tomto dotazu hledání úloh pomocí termín vyšší nebo nižší: `search=business_title:/(Sen|Jun)ior/`.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
   ![Regulární výraz dotazu](media/search-query-lucene-examples/regex.png)
@@ -266,7 +266,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 V tomto dotazu hledání pro úlohy, které obsahují předponu "ProgID' bude to zahrnovat obchodní názvy s podmínkami, programování a programátor v ní. Nelze použít * nebo? symbol jako první znak vyhledávání.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
   ![Zástupný znak dotazu](media/search-query-lucene-examples/wildcard.png)
 

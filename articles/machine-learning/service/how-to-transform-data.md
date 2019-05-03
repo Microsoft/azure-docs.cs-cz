@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2bd271557ae0deefeb12a2dc7343c46fbd35363
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817562"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023791"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
 V tomto článku se naučíte různými způsoby transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep. Sada SDK nabízí funkce, které se dají jednoduše přidat sloupce odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty. Referenční dokumentace pro SDK najdete v tématu [přehled](https://aka.ms/data-prep-sdk).
+
+> [!Important]
+> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
 
 Tento návod ukazuje příklady pro následující úlohy:
 
@@ -35,7 +38,7 @@ Tento návod ukazuje příklady pro následující úlohy:
 
 Obsahuje sadu SDK pro Azure Machine Learning Data Prep `substring` výrazy můžete použít k výpočtu hodnoty z existujících sloupců a vložte tuto hodnotu v novém sloupci. V tomto příkladu načtěte data a pokusu o přidání sloupců do vstupní data.
 
-```python
+```Python
 import azureml.dataprep as dprep
 
 # loading data
@@ -52,7 +55,7 @@ dflow.head(3)
 
 Použití `substring(start, length)` výraz, který se extrahovat předponu ze sloupce číslo případ a vložit tento řetězec v novém sloupci `Case Category`. Předání `substring_expression` proměnnou `expression` parametr vytvoří nový počítaný sloupec, který provádí výraz u jednotlivých záznamů.
 
-```python
+```Python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,10 +70,9 @@ case_category.head(3)
 |2|10140270|HY329253|HY|07/05/2015 11:20:00 PM|121XX LOŽIT FRONT|0486|BATERIE|JEDNODUCHÉ DOMÁCÍ BATERIE|ULICE|false (nepravda)|true (pravda)|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
-
 Použití `substring(start)` výraz k extrahování pouze číslo z případ číslo sloupce a vytvoří nový sloupec. Převod na číselný datový typ pomocí `to_number()` fungovat a předat jako parametr řetězec název sloupce.
 
-```python
+```Python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',

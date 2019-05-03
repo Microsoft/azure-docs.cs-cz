@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1a82b9256405e2cac12f4c5611ee3bdad459162b
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926322"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64992942"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Windows
 
@@ -45,7 +45,7 @@ Mnoho aplikací můžete těžit z času na přípravu pro údržbu virtuálníh
 Pomocí naplánovaných událostí aplikace můžete zjistit, kdy bude údržby dojít k a spouštění úloh a omezit jejich dopad. Povolení naplánované události poskytuje minimální množství času, před provedením aktivity údržby virtuální počítač. V části plánování událostí pod podrobnosti.
 
 Naplánované události poskytuje události v následujících případech použití:
-- Údržby iniciované platformy (například aktualizace operačního systému hostitele)
+- [Platforma iniciované údržby](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/maintenance-and-updates) (například virtuální počítač restartovat počítač, migrace za provozu nebo paměti zachování aktualizace hostitele)
 - Degradované hardwaru
 - Údržba (například uživatel restartuje nebo znovu nasadí virtuální počítač), kterou inicioval uživatel
 - [Vyřazení virtuálního počítače s nízkou prioritou](https://azure.microsoft.com/blog/low-priority-scale-sets) škále nastaví
@@ -119,7 +119,7 @@ DocumentIncarnation je značka ETag a poskytuje snadný způsob, jak zkontrolova
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
+| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit na několik sekund. Využití procesoru a připojení k síti může být pozastavený, ale neexistuje žádný vliv na paměť nebo otevřené soubory. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. To je zaručeno, obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stav události | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici; událost již nevrátí se po dokončení události.
@@ -136,7 +136,8 @@ Každé události je naplánovaný minimální množství čas v budoucnosti pod
 | Vyřizuje | 30 sekund |
 
 ### <a name="event-scope"></a>Události oboru     
-Naplánované události se doručují na:        
+Naplánované události se doručují na:
+ - Samostatné virtuální počítače
  - Všechny virtuální počítače v cloudové službě      
  - Všechny virtuální počítače ve skupině dostupnosti      
  - Všechny virtuální počítače ve skupině umístění Škálovací sady.         

@@ -7,24 +7,25 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: eddbb41f346661e86c64b1dd703321f434c5bbb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7925f3aef4123fddd3a96c6e62971b881ae4cbc3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61342602"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021864"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Předdefinované dovednosti pro rozšiřování obsahu (Azure Search)
 
 V tomto článku se dozvíte o kognitivní dovednosti s Azure Search. A *kognitivní dovednosti* je operace, která transformuje obsah nějakým způsobem. Často je součást, která extrahuje data nebo struktura odvodí a proto argumentech naše Principy vstupní data. Výstup je téměř vždy založený na textu. A *dovednosti* je kolekce dovednosti, které definují rozšíření kanálu. 
 
 > [!NOTE]
-> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Další [informace](cognitive-search-attach-cognitive-services.md)
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+
 
 ## <a name="predefined-skills"></a>Předdefinované dovednosti
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbabdde2dd5df2ca40ee45fe0f7b0437f095673b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460265"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020385"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -32,7 +32,9 @@ Standardní hlasy jsou vytvořeny pomocí statistické ukazatelů syntézu a/neb
 
 Neurální hlasy překonání omezení tradičních systémů převod textu na řeč v odpovídající vzory zátěže a intonací mluvený jazyk a syntetizační jednotky řeči do počítače hlasový vstup pomocí hluboké neuronové sítě. Standardní převod textu na řeč boří prosody do samostatných pro jazykovou analýzu a akustický předpovědi kroky, které se řídí nezávislé modely. Výsledkem může být syntézu muffled, buzzy hlasu. Naše neuronových sítí funkce nemá prosody předpovědi a způsobu vyjadřování syntézu současně, povede k více plynulá práce a přirozeného to nezní hlasový vstup.
 
-Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit systémy navigaci. Díky přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální hlasy výrazně snížit naslouchání reorganizovaly při interakci s AI systémy. Další informace o neuronových sítí hlasů, naleznete v tématu [podporované jazyky](language-support.md#text-to-speech).
+Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit systémy navigaci. Díky přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální hlasy výrazně snížit naslouchání reorganizovaly při interakci s AI systémy. 
+
+Neurální hlasy podporují různé styly, jako je například neutrální a veselejší. Například hlasové Jessa (en US) mohou mluvit cheerfully, který je optimalizovaný pro horké, vám rádi konverzace. Můžete upravit hlasový výstup, podobný tón, výšku a urychlit pomocí [Markup Language syntézu řeči](speech-synthesis-markup.md). Úplný seznam dostupných hlasů, naleznete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 Další informace o výhodách neuronových sítí hlasů, najdete v článku [společnosti Microsoft nový převod textu na řeč neuronových sítí service pomáhá počítače řeči, jako jsou lidé](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
 

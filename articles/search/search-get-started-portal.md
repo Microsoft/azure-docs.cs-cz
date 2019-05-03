@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b30fa61cd46acd4fa9da9d97c100e3b3a0aaf067
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61289358"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024744"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Použijeme tento krok prozatím přeskočit a přejít přímo k **přizpůsobit
    ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Novou funkci kognitivního vyhledávání ve verzi Preview pro Azure Search si můžete vyzkoušet v [rychlém startu pro kognitivní vyhledávání](cognitive-search-quickstart-blob.md) nebo v souvisejícím [kurzu](cognitive-search-tutorial-blob.md).
+> Můžete projít příklad indexování AI v [rychlý Start](cognitive-search-quickstart-blob.md) nebo [kurzu](cognitive-search-tutorial-blob.md).
 
 ### <a name="step-3---configure-index"></a>Krok 3: Konfigurace indexu
 
@@ -154,7 +154,7 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
    ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd2.png)
 
-2. Kliknutím na **Změnit index** na panelu příkazů přejdete k *realestate-us-sample*. Kliknutím na **Nastavit verzi API** na panelu příkazů zobrazíte, která rozhraní REST API jsou dostupná. Pro níže uvedené dotazy používejte obecně dostupnou verzi (11. listopad 2017).
+2. Kliknutím na **Změnit index** na panelu příkazů přejdete k *realestate-us-sample*. Kliknutím na **Nastavit verzi API** na panelu příkazů zobrazíte, která rozhraní REST API jsou dostupná. Pro níže uvedené dotazy použijte obecně dostupnou verzi (2019-05-06).
 
    ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 

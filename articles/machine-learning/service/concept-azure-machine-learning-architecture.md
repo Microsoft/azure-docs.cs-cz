@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821237"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025236"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -68,7 +68,7 @@ Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prost�
 
 Taxonomie pracovního prostoru je znázorněn v následujícím diagramu:
 
-[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>Experiment
 
@@ -106,6 +106,16 @@ Konfigurace spuštění můžete nastavit jako trvalý, do souboru do adresáře
 
 Příklad konfigurace spuštění, naleznete v tématu [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md).
 
+## <a name="dataset"></a>Datová sada
+
+Sady Azure Machine Learning dat (preview) usnadňují přístup a práce s daty. Datové sady spravovat data v různých scénářích, jako je například trénování modelu a vytváření kanálu. Pomocí sady SDK služby Azure Machine Learning, můžete přístup k podkladové úložiště, prozkoumejte a připravit data, spravovat životní cyklus různých definicích datových sad a porovnání mezi datové sady použité v školení a v produkčním prostředí.
+
+Datové sady, poskytuje metody pro práci s daty v oblíbených formátů, jako je třeba použití `from_delimited_files()` nebo `to_pandas_dataframe()`.
+
+Další informace najdete v tématu [vytvořit a zaregistrovat datové sady Azure Machine Learning](how-to-create-register-datasets.md).
+
+Příklad použití datových sad, najdete v článku [ukázkové poznámkové bloky](https://aka.ms/dataset-tutorial).
+
 ## <a name="datastore"></a>Úložiště dat
 
 Úložiště dat je úložiště abstrakce přes účet úložiště Azure. Úložiště můžete použít kontejner objektů blob v Azure nebo sdílené složky Azure jako úložiště back-end. Každý pracovní prostor má výchozí úložiště, a můžete zaregistrovat další úložiště.
@@ -127,7 +137,7 @@ Cílové výpočetní prostředí je výpočetní prostředek, který používá
 | Azure Container Instances | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
+| Pole programmable gate array (FPGA) | &nbsp; | ✓ |
 
 Cílových výpočetních prostředí jsou připojeny k pracovnímu prostoru. Výpočetní cíle než v místním počítači sdílejí uživatelé pracovního prostoru.
 
@@ -189,8 +199,6 @@ Azure Machine Learning můžete vytvořit dva typy obrázků:
 * **Image dockeru**: Použít při nasazení do jiné než FPGA cílových výpočetních prostředí. Příklady Azure Container Instances a Azure Kubernetes Service.
 
 Služba Azure Machine Learning poskytuje základní image, který se používá ve výchozím nastavení. Můžete taky zadat vlastní Image.
-
-Další informace naleznete v tématu Konfigurace a registrace oddíl bitové kopie z [nasazovat modely](how-to-deploy-and-where.md#configureimage).
 
 Příklad vytvoření image, najdete v části [nasadit model klasifikace obrázků ve službě Azure Container Instances](tutorial-deploy-models-with-aml.md).
 

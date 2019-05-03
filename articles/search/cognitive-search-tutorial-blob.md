@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b6e3335ba78d29896c8a253ac710e6ec0da1829a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55d4f4bdf204453ccfe353e0d79abedb118bd9d8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463042"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021614"
 ---
-# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Kurz REST pro: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu (Preview)
+# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Kurz REST pro: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu
 
-V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Dovednosti využívají možnosti analýzy image ve službě Cognitive Services a zpracování přirozeného jazyka (NLP). Prostřednictvím složení dovednosti a konfigurace můžete extrahovat text a textové reprezentace obrázek nebo soubor naskenovaného dokumentu. Můžete také zjistit jazyk, entity, klíčové fráze a další. Konečným výsledkem bude bohatý další obsah v indexu Azure Search, vytvořený kanál indexování založené na AI. 
+V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Dovednosti využívají možnosti analýzy image ve službě Cognitive Services a zpracování přirozeného jazyka (NLP). Prostřednictvím složení dovednosti a konfigurace můžete extrahovat text a textové reprezentace obrázek nebo soubor naskenovaného dokumentu. Můžete také zjistit jazyk, entity, klíčové fráze a další. Konečným výsledkem bude bohatý další obsah v indexu Azure Search, vytvořené pomocí AI obohacení v kanál indexování. 
 
 V tomto kurzu budete volat rozhraní REST API, aby provedlo tyto úlohy:
 
@@ -35,9 +35,9 @@ Výstup indexu v Azure Search, který se dá prohledávat fulltextově Index mů
 V tomto kurzu běží na bezplatné služby, ale počet transakcí zdarma je omezený na 20 dokumenty za den. Pokud chcete spustit v tomto kurzu více než jednou v jednom dni, použijte menší soubor nastavit tak, aby se vejde do více spuštění.
 
 > [!NOTE]
-> Jak rozbalit obor zvýšením počtu zpracování, přidáním více dokumentů nebo přidání další algoritmy AI, musíte připojit fakturovatelné prostředku služeb Cognitive Services. Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
+> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny extrakce bitové kopie se účtuje za ceny verze preview, jak je popsáno na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Další [informace](cognitive-search-attach-cognitive-services.md)
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -106,7 +106,7 @@ Do hlavičky požadavku zadejte název služby, který jste použili při vytvá
 
 ### <a name="sample-request"></a>Ukázkový požadavek
 ```http
-POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
+POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -129,7 +129,7 @@ Vzhledem k tomu, že je to váš první požadavek, podívejte se na portál Azu
 
   ![Dlaždice Zdroje dat na portálu](./media/cognitive-search-tutorial-blob/data-source-tile.png "Dlaždice Zdroje dat na portálu")
 
-Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2017-11-11-Preview`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Hlavičku budete moct znovu používat i v dalších krocích tohoto kurzu.
+Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2019-05-06`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Hlavičku budete moct znovu používat i v dalších krocích tohoto kurzu.
 
 ## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 
@@ -149,7 +149,7 @@ Než provedete toto volání rozhraní API, nezapomeňte v případě, že váš
 Tento požadavek vytvoří sadu dovedností. Ve zbývající části tohoto kurzu se odkazujte na název sady dovedností ```demoskillset```.
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -265,7 +265,7 @@ Než provedete toto volání rozhraní API, nezapomeňte v případě, že váš
 Tento požadavek vytvoří index. Ve zbývající části tohoto kurzu používejte název indexu ```demoindex```.
 
 ```http
-PUT https://[servicename].search.windows.net/indexes/demoindex?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -338,7 +338,7 @@ Než provedete toto volání rozhraní API, nezapomeňte v případě, že váš
 Zadejte i název indexeru. Ve zbývající části tohoto kurzu se na něj můžete odkazovat názvem ```demoindexer```.
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/demoindexer?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/indexers/demoindexer?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -410,7 +410,7 @@ Když se extrahuje obsah, můžete nastavit ```imageAction```, aby se z obrázk�
 Až se indexer nadefinuje, automaticky se spustí, až se odešle požadavek. Podle kognitivních dovedností, které jste definovali, může indexování trvat déle, než jste čekali. Pokud chcete zjistit, jestli indexer pořád běží, pošlete následující požadavek, který zjistí jeho stav.
 
 ```http
-GET https://[servicename].search.windows.net/indexers/demoindexer/status?api-version=2017-11-11-Preview
+GET https://[servicename].search.windows.net/indexers/demoindexer/status?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -426,7 +426,7 @@ Jakmile se indexování dokončí, spusťte dotazy, které vrátí obsah jednotl
 Pro ověření pošlete indexu dotaz na všechna pole.
 
 ```http
-GET https://[servicename].search.windows.net/indexes/demoindex?api-version=2017-11-11-Preview
+GET https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -436,7 +436,7 @@ Výstupem je schéma indexu s názvem, typem a atributy všech jednotlivých pol
 Pošlete druhý dotaz pro `"*"`, aby se vrátil všechen obsah jednoho pole, třeba `organizations`.
 
 ```http
-GET https://[servicename].search.windows.net/indexes/demoindex/docs?search=*&$select=organizations&api-version=2017-11-11-Preview
+GET https://[servicename].search.windows.net/indexes/demoindex/docs?search=*&$select=organizations&api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -528,7 +528,7 @@ Pokud chcete dokumenty znovu indexovat s novými definicemi:
 Na portálu můžete použít k odstranění indexy, indexery a dovednosti.
 
 ```http
-DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview
+DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```

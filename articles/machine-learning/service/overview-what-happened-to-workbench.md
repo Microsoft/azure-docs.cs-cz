@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 217eecfe8f380718361c2f1b56965e4af85d54c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753753"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023654"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -87,7 +87,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Modely, které jste zaregistrovali v registru starý model se musí migrovat na nový pracovní prostor, pokud chcete dál používat. K migraci vašich modelů, stáhněte modely a znovu je zaregistrovat v nový pracovní prostor. 
 
-Image vytvořené ve starém registru imagí je potřeba znovu vytvořit v novém pracovním prostoru, abyste je mohli dál používat. Tyto Image můžete znovu vytvořit pomocí následujících [konfigurace a vytvoření bitové kopie](how-to-deploy-and-where.md#configureimage) oddíly. 
+Obrázky, které jste vytvořili v původní registru imagí není možné migrovat přímo k novému pracovnímu prostoru. Ve většině případů je možné model nasadit bez nutnosti vytvářet image. V případě potřeby můžete vytvořit image pro model v nový pracovní prostor. Další informace najdete v tématu [spravovat, registraci, nasazení a sledování modelů strojového učení](concept-model-management-and-deployment.md).
 
 ## <a name="what-about-deployed-web-services"></a>Co se stane s nasazenými webovými službami?
 

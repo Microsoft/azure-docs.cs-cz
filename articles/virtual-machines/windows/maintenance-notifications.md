@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: cfd88118b483067f4c6ee62ee013a2202f0d7e67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76e0f496acf37d4220f57a599f0ce449ca130bba
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301740"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64992905"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Windows
 
@@ -33,7 +33,7 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 Plánovaná údržba, která vyžaduje restartování, je naplánováno ve vlnách. Každé vlně má jiný rozsah (oblasti).
 
 - Vlnu začíná oznámení pro zákazníky. Ve výchozím nastavení odešle se oznámení na předplatné vlastník a spoluvlastníci. Můžete přidat další příjemce a možnosti zasílání zpráv, jako je e-mail, SMS a Webhooky, oznámení pomocí Azure [upozornění protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md).  
-- V době oznámení *samoobslužné služby okno* je k dispozici. Během tohoto časového období můžete vyhledat, které z vašich virtuálních počítačů jsou součástí této vlny a proaktivně spustit údržbu podle svých potřeb plánování.
+- V době oznámení *samoobslužné služby okno* je k dispozici. Během tohoto časového intervalu, který je obvykle čtyři týdny zjistíte, které z vašich virtuálních počítačů jsou součástí této vlny a proaktivně spustit údržbu podle vlastních potřeb plánování.
 - Po okno samoobslužných služeb *plánované časové období údržby* začíná. Azure někdy během intervalu plánuje a může požadovaná údržba se vztahuje na virtuální počítač. 
 
 Cílem tím, že dvě okna je vám poskytnou dostatek času spuštění údržby a zároveň budete vědět, když Azure automaticky spustit údržbu restartování vašeho virtuálního počítače.
@@ -89,7 +89,7 @@ Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 
 V části MaintenanceRedeployStatus se vrátí následující vlastnosti: 
 
-| Value | Popis   |
+| Hodnota | Popis   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Určuje, zda lze spustit údržbu na virtuálním počítači v tuto chvíli |
 | PreMaintenanceWindowStartTime         | Začátek samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači |

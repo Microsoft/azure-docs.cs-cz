@@ -9,20 +9,20 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: f81aea22014a2c7d5b37c500a546f0b5350b6435
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 90e85e0030a696dd024dd65d27a0f4dbdc7e3cdc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925385"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023673"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Řešení potíží s nasazením služby AKS a ACI Azure Machine Learning
 
-V tomto článku se dozvíte, jak obejít nebo řešit běžné chyby nasazení Dockeru s Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí služby Azure Machine Learning.
+Zjistěte, jak obejít nebo řešit běžné chyby nasazení Dockeru s Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí služby Azure Machine Learning.
 
-Při nasazení modelu ve službě Azure Machine Learning, systém provádí řadu úloh. Toto je komplexní posloupnost událostí a někdy vzniku. Úkoly nasazení jsou:
+Při nasazení modelu ve službě Azure Machine Learning, systém provádí řadu úloh. Úkoly nasazení jsou:
 
 1. Zaregistrujte model v registru pracovního prostoru modelu.
 
@@ -33,6 +33,9 @@ Při nasazení modelu ve službě Azure Machine Learning, systém provádí řad
     4. Vytvářejte nová image Dockeru pomocí souboru dockerfile.
     5. Zaregistrujte image Dockeru s Azure Container Registry přidružený k pracovnímu prostoru.
 
+    > [!IMPORTANT]
+    > V závislosti na vašem kódu vytvoření bitové kopie dojít automaticky bez zásahu.
+
 3. Nasaďte image Dockeru do služby Azure Container Instance (ACI) nebo do Azure Kubernetes Service (AKS).
 
 4. Spuštění nového kontejneru (nebo kontejnery) v ACI a AKS. 
@@ -41,9 +44,9 @@ Další informace o tomto procesu v [Správa modelů ve službě](concept-model-
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém. 
+Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém.
 
-To je užitečné, pokud používáte `Webservice.deploy` rozhraní API, nebo `Webservice.deploy_from_model` rozhraní API, protože tyto funkce seskupit dohromady výše uvedené kroky v rámci jedné akce. Obvykle jsou vhodné těchto rozhraních API, ale je k rozdělení kroky při řešení potíží s nahrazením pomocí následující volání rozhraní API.
+Rozdělení nasazení do úlohy je užitečný v případě, že používáte [Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) rozhraní API, nebo [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) rozhraní API, jako obě tyto funkce provést výše uvedené kroky jako jednu akci. Obvykle jsou vhodné těchto rozhraních API, ale je k rozdělení kroky při řešení potíží s nahrazením pomocí následující volání rozhraní API.
 
 1. Zaregistrujte model. Tady je ukázkový kód:
 
@@ -86,7 +89,8 @@ To je užitečné, pokud používáte `Webservice.deploy` rozhraní API, nebo `W
 Jakmile máte rozdělené procesu nasazení do jednotlivých kroků, abychom se mohli podívat na některé z nejběžnějších chyb.
 
 ## <a name="image-building-fails"></a>Bitové kopie sestavení se nezdaří
-Pokud je systém nelze sestavit image Dockeru `image.wait_for_creation()` volání selže s některé chybové zprávy, které může nabídnout některé příčiny. Můžete také zjistit další podrobnosti o chybách v protokolu sestavení image. Níže je vzorový kód ukazuje, jak zjistit identifikátor uri protokolu bitové kopie sestavení.
+
+Pokud nejde sestavit image Dockeru, [image.wait_for_creation()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) nebo [service.wait_for_deployment()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) volání selže s některé chybové zprávy, které může nabídnout některé příčiny. Můžete také zjistit další podrobnosti o chybách v protokolu sestavení image. Níže je vzorový kód ukazuje, jak zjistit identifikátor uri protokolu bitové kopie sestavení.
 
 ```python
 # if you already have the image object handy
@@ -99,13 +103,14 @@ print(ws.images['myimg'].image_build_log_uri)
 for name, img in ws.images.items():
     print (img.name, img.version, img.image_build_log_uri)
 ```
+
 Identifikátor uri protokolu bitové kopie je adresa URL SAS odkazující na soubor protokolu se ukládají ve službě Azure blob storage. Jednoduše zkopírujte a vložte identifikátor uri do okna prohlížeče a můžete stáhnout a zobrazit soubor protokolu.
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure zásad přístupu trezoru klíčů a šablon Azure Resource Manageru
 
 Sestavení image může také selhat z důvodu problému s zásady přístupu pro Azure Key Vault. Tato situace může nastat, když použijete šablony Azure Resource Manageru k vytvoření pracovního prostoru a přidružené prostředky (včetně služby Azure Key Vault), více než jednou. Například pomocí šablony více než jednou se stejnými parametry jako součást průběžné integrace a nasazení kanálu.
 
-Většina operací vytváření prostředků prostřednictvím šablony jsou idempotentní, ale služby Key Vault vymaže zásady přístupu při každém použití této šablony. Tím je prolomen přístup ke službě Key Vault pro existující pracovní prostor, který jej používá. V důsledku chyb při pokusu o vytvoření nových imagí. Následují příklady chyb, které můžou přijímat:
+Většina operací vytváření prostředků prostřednictvím šablony jsou idempotentní, ale služby Key Vault vymaže zásady přístupu při každém použití této šablony. Vymazává se zásady konce přístupu ke službě Key Vault pro existující pracovní prostor, který jej používá. Tato podmínka způsobí chyby při pokusu o vytvoření nových imagí. Následují příklady chyb, které můžou přijímat:
 
 __Portál__:
 ```text
@@ -144,16 +149,81 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 K tomuto problému vyhnout, doporučujeme jednu z následujících postupů:
 
 * Nenasazujte šablony více než jednou pro stejné parametry. Nebo odstraňte existující prostředky před je znovu vytvořit pomocí šablony.
-* Zkontrolujte zásady přístupu trezoru klíčů a použijte ji nastavit `accessPolicies` vlastnosti šablony.
+* Zkontrolujte zásady přístupu trezoru klíčů a pak pomocí těchto zásad nastavte `accessPolicies` vlastnosti šablony.
 * Zkontrolujte, jestli prostředek Key Vault už existuje. Pokud ano, nelze jej znovu vytvořit pomocí šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku služby Key Vault, pokud již existuje.
 
-## <a name="service-launch-fails"></a>Selhání spuštění služby
-Jakmile na obrázku je úspěšně vytvořen, se systém pokusí o spuštění kontejneru v ACI a AKS v závislosti na konfiguraci vašeho nasazení. Se doporučuje nejprve vyzkoušet nasazení služby ACI, protože je jednodušší nasazení jeden kontejner. Tímto způsobem lze potom vyloučit jakýkoli problém s konkrétní AKS.
+## <a name="debug-locally"></a>Ladit v místním prostředí
 
-Jako součást procesu spouštění kontejneru `init()` vyvolání funkce v hodnoticí skript v systému. Pokud existují nezachycených výjimek `init()` fungovat, může se zobrazit **CrashLoopBackOff** chyby v chybové zprávě. Níže uvádíme tipy, které vám pomohou vyřešit problém.
+Pokud dojde k problémům při nasazování modelu ACI a AKS, zkuste nasazení jako místní webové služby. Pomocí místní webové služby usnadňuje řešení problémů. Image Dockeru obsahující model je stažena a spuštěna v místním systému.
 
-### <a name="inspect-the-docker-log"></a>Zkontrolujte protokol Dockeru.
-Můžete vytisknout podrobné zprávy protokolu modulu Dockeru z objektu služby.
+> [!IMPORTANT]
+> Nasazení místní webové služby vyžadují funkční instalace Docker v místním systému. Docker musí běžet, než nasazení místní webové služby. Informace o instalaci a použití Dockeru najdete v tématu [ https://www.docker.com/ ](https://www.docker.com/).
+
+> [!WARNING]
+> Nasazení místní webové služby nejsou podporovány pro produkční scénáře.
+
+Pokud chcete nasadit místně, upravte kód Refaktorovat pro použití `LocalWebservice.deploy_configuration()` pro vytvoření konfigurace nasazení. Pak pomocí `Model.deploy()` službu nasadíte. Tento příklad nasadí modelu (součástí `model` proměnná) jako místní webové služby:
+
+```python
+from azureml.core.model import InferenceConfig
+from azureml.core.webservice import LocalWebservice
+
+# Create inferencing configuration. This creates a docker image that contains the model.
+inference_config = InferenceConfig(runtime= "python", 
+                                   execution_script="score.py",
+                                   conda_file="myenv.yml")
+
+# Create a local deployment, using port 8890 for the web service endpoint
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+# Deploy the service
+service = Model.deploy(ws, "mymodel", [model], inference_config, deployment_config)
+# Wait for the deployment to complete
+service.wait_for_deployment(True)
+# Display the port that the web service is available on
+print(service.port)
+```
+
+V tomto okamžiku můžete pracovat se službou jako za normálních okolností. Například následující kód ukazuje odesílání dat do služby:
+
+```python
+import json
+
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10], 
+    [10,9,8,7,6,5,4,3,2,1]
+]})
+
+test_sample = bytes(test_sample,encoding = 'utf8')
+
+prediction = service.run(input_data=test_sample)
+print(prediction)
+```
+
+### <a name="update-the-service"></a>Aktualizace služby
+
+Při místním testování, budete muset aktualizovat `score.py` souboru přidat protokolování nebo pokus o vyřešení potíží, které jste se seznámili. Chcete-li znovu načíst změny `score.py` soubor `reload()`. Například následující kód znovu načte skript pro službu a pak odešle data do ní. Data vypočítává se skóre pomocí aktualizovaný `score.py` souboru:
+
+```python
+service.reload()
+print(service.run(input_data=test_sample))
+```
+
+> [!NOTE]
+> Skript je znovu načten v místě určeném `InferenceConfig` objekt použitý objektem služby.
+
+Chcete-li změnit model, závislosti systému Conda nebo konfigurace nasazení, použijte [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-). Následující příklad aktualizuje model používaný službou:
+
+```python
+service.update([different_model], inference_config, deployment_config)
+```
+
+### <a name="delete-the-service"></a>Odstranit službu
+
+Pokud chcete službu odstranit, použijte [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--).
+
+### <a id="dockerlog"></a> Zkontrolujte protokol Dockeru.
+
+Můžete vytisknout podrobné zprávy protokolu modulu Dockeru z objektu služby. Zobrazit protokol pro místní nasazení, ACI a AKS. Následující příklad ukazuje, jak vytisknout protokoly.
 
 ```python
 # if you already have the service object handy
@@ -163,82 +233,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-### <a name="debug-the-docker-image-locally"></a>Ladit místně image Dockeru
-Některé časy protokol Dockeru negeneruje dostatek informací o tom, co je špatně. Můžete přejděte o krok dál a stáhněte sestavenou image Dockeru, spusťte místní kontejner a ladit přímo v kontejneru živé interaktivní. Spuštění místního kontejneru, musíte mít místně spuštěný modul Docker, a je to mnohem jednodušší, pokud máte také [rozhraní příkazového řádku azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované.
+## <a name="service-launch-fails"></a>Selhání spuštění služby
 
-Nejprve je třeba zjistit umístění obrázku:
+Jakmile na obrázku je úspěšně vytvořen, se systém pokusí o spuštění kontejneru pomocí konfigurace vašeho nasazení. Jako součást procesu spouštění kontejneru `init()` vyvolání funkce v hodnoticí skript v systému. Pokud existují nezachycených výjimek `init()` fungovat, může se zobrazit **CrashLoopBackOff** chyby v chybové zprávě.
 
-```python
-# print image location
-print(image.image_location)
-```
-
-Umístění obrázku má tento formát: `<acr-name>.azurecr.io/<image-name>:<version-number>`, jako například `myworkpaceacr.azurecr.io/myimage:3`. 
-
-Teď přejděte do okna příkazového řádku. Pokud máte nainstalované azure cli, můžete zadat následující příkazy pro přihlášení do služby ACR (Azure Container Registry) přidružený k pracovnímu prostoru, kde je image uložená. 
-
-```sh
-# log on to Azure first if you haven't done so before
-$ az login
-
-# make sure you set the right subscription in case you have access to multiple subscriptions
-$ az account set -s <subscription_name_or_id>
-
-# now let's log in to the workspace ACR
-# note the acr-name is the domain name WITHOUT the ".azurecr.io" postfix
-# e.g.: az acr login -n myworkpaceacr
-$ az acr login -n <acr-name>
-```
-Pokud nemáte nainstalované azure cli, můžete použít `docker login` příkaz pro přihlášení služby ACR. Ale je potřeba nejdřív načíst uživatelské jméno a heslo ACR z webu Azure portal.
-
-Jakmile se přihlásíte do ACR, můžete stáhnout image Dockeru a spuštění kontejneru místně a pak spusťte relaci prostředí bash pro ladění s použitím `docker run` příkaz:
-
-```sh
-# note the image_id is <acr-name>.azurecr.io/<image-name>:<version-number>
-# for example: myworkpaceacr.azurecr.io/myimage:3
-$ docker run -it <image_id> /bin/bash
-```
-
-Po spuštění relace bashe spuštěný kontejner můžete najít v hodnoticí skripty `/var/azureml-app` složky. Potom můžete spustit relaci Pythonu se ladit hodnoticí skripty. 
-
-```sh
-# enter the directory where scoring scripts live
-cd /var/azureml-app
-
-# find what Python packages are installed in the python environment
-pip freeze
-
-# sanity-check on score.py
-# you might want to edit the score.py to trigger init().
-# as most of the errors happen in init() when you are trying to load the model.
-python score.py
-```
-V případě, že budete potřebovat textový editor k úpravě skripty, můžete nainstalovat vim, nano, (emacs) nebo svém oblíbeném editoru.
-
-```sh
-# update package index
-apt-get update
-
-# install a text editor of your choice
-apt-get install vim
-apt-get install nano
-apt-get install emacs
-
-# launch emacs (for example) to edit score.py
-emacs score.py
-
-# exit the container bash shell
-exit
-```
-
-Můžete také spustit místně webové služby a odesílat provoz protokolu HTTP. Server Flask v kontejneru Dockeru běží na portu 5001. Můžete namapovat na žádné jiné porty, které jsou k dispozici na hostitelském počítači.
-```sh
-# you can find the scoring API at: http://localhost:8000/score
-$ docker run -p 8000:5001 <image_id>
-```
+Použijte informace v [zkontrolujte protokol Dockeru](#dockerlog) můžete zkontrolovat v protokolech.
 
 ## <a name="function-fails-getmodelpath"></a>Selže funkce: get_model_path()
-Často v `init()` funkce v hodnoticí skript `Model.get_model_path()` je funkce volaná k vyhledání modelu soubor nebo složku modelu souborů v kontejneru. To je často příčiny selhání, pokud model soubor nebo složku nelze nalézt. Nejjednodušší způsob, jak ladění této chyby je spustit níže uvedeného kódu Pythonu v prostředí kontejneru:
+
+Často v `init()` funkce v hodnoticí skript [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) je funkce volaná k vyhledání modelu soubor nebo složku modelu souborů v kontejneru. Pokud model souboru nebo složky nebyl nalezen, funkce selže. Nejjednodušší způsob, jak ladění této chyby je spustit níže uvedeného kódu Pythonu v prostředí kontejneru:
 
 ```python
 import logging
@@ -247,11 +250,12 @@ from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-To by vytiskne místní cestu (vzhledem k `/var/azureml-app`) v kontejneru, kde se očekává hodnoticí skript k vyhledání souboru modelu nebo složky. Potom můžete ověřit, pokud soubor nebo složka jsou skutečně kde se očekává se.
+Tento příklad vytiskne místní cestu (vzhledem k `/var/azureml-app`) v kontejneru, kde se očekává hodnoticí skript k vyhledání souboru modelu nebo složky. Potom můžete ověřit, pokud soubor nebo složka jsou skutečně kde se očekává se.
 
-Nastavení úrovně protokolování ladění může poskytnout příčina dodatečné informace k přihlášení, které mohou být užitečné při identifikaci selhání.
+Nastavení úrovně protokolování ladění může způsobit další informace o přihlášení, které mohou být užitečné při identifikaci selhání.
 
 ## <a name="function-fails-runinputdata"></a>Selže funkce: run(input_data)
+
 Pokud úspěšně nasazení služby, ale jeho dojde k chybě při odesílání dat na bodovací koncový bod, můžete přidat chyby zachytávání příkaz v vaše `run(input_data)` fungovat tak, že místo toho vrátí podrobnou chybovou zprávu. Příklad:
 
 ```python
@@ -266,7 +270,8 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**Poznámka:** Vrací chybové zprávy z `run(input_data)` volání by mělo být provedeno pro ladění pouze pro účely. Nemusí být vhodné provést v produkčním prostředí z bezpečnostních důvodů.
+
+**Poznámka:** Vrací chybové zprávy z `run(input_data)` volání by mělo být provedeno pro ladění pouze pro účely. Z bezpečnostních důvodů, které by neměly vracet chybové zprávy tímto způsobem v produkčním prostředí.
 
 ## <a name="http-status-code-503"></a>Stavový kód HTTP 503
 
@@ -312,7 +317,7 @@ Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_re
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o nasazení: 
-* [Jak nasadit a kde](how-to-deploy-and-where.md)
+Další informace o nasazení:
 
+* [Jak nasadit a kde](how-to-deploy-and-where.md)
 * [Kurz: Trénování a nasazení modelů](tutorial-train-models-with-aml.md)

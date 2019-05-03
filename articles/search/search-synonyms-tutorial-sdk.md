@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61281773"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025158"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Příklad: Přidání synonym pro službu Azure Search vC#
 
@@ -23,13 +23,15 @@ Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považovan
 Ve službě Azure Search se synonyma definují v *mapě synonym*, pomocí *pravidel mapování*, která přidružují ekvivalentní termíny. Tento příklad popisuje základní kroky pro přidání a synonyma pomocí existujícího indexu. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Povolení synonym vytvořením a odesláním pravidel mapování 
-> * Odkázání na mapu synonym v řetězci dotazu
+> * Vytvořit mapu synonym pomocí [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) třídy. 
+> * Nastavte [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) vlastnost pro pole, která by měla podporovat dotazu rozšíření prostřednictvím synonym.
+
+Pole povolené synonymum můžete zadávat dotazy, jak byste normálně učinili. Neexistuje žádná syntaxe dalšího dotazu, požadovaná pro přístup k synonym.
 
 Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrovni služby dostupné pro všechny indexy a potom určit, který se má použít na úrovni pole. V době zpracování dotazu služba Azure Search nejenom prohledá index, ale pokud některé z polí využitých v tomto dotazu má mapu synonym, prohledá i tuto mapu.
 
 > [!NOTE]
-> Synonyma jsou podporovaná v nejnovější verzi rozhraní API a sady SDK (verze api=2017-11-11, verze SDK 5.0.0). Podpora webu Azure Portal se v současnosti neposkytuje. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
+> Synonyma mohou být vytvořeny prostřednictvím kódu programu, ale na portálu. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -172,7 +174,7 @@ Nejrychlejší způsob, jak vyčistit po příkladem je tak, že odstraníte sku
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto příkladu jsme vám ukázali [rozhraní REST API pro synonyma](https://aka.ms/rgm6rq) v C# kód k vytvoření a odesílání pravidla mapování a poté zavolejte mapu synonym v dotazu. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
+Funkce synonym v tomto příkladu jsme vám ukázali C# kód k vytvoření a odesílání pravidla mapování a poté zavolejte mapu synonym v dotazu. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
 > [Synonyma ve službě Azure Search](search-synonyms.md)

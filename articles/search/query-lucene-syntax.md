@@ -4,7 +4,7 @@ description: Referenční informace pro úplnou syntaxi Lucene, jako používá 
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61317579"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024227"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Syntaxe dotazů Lucene ve službě Azure Search
 Můžete psát dotazy ve službě Azure Search založený na získáte bohaté [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) syntaxe pro formuláře specializovaném dotazovacím: zástupný znak, vyhledávání přibližných shod, vyhledávání blízkých výrazů regulární výrazy je pár příkladů. Velká část syntaxe analyzátor dotazů Lucene [Internet implementované ve službě Azure Search](search-lucene-query-architecture.md), s výjimkou produktů *rozsahu vyhledávání* které jsou vytvořeny ve službě Azure Search prostřednictvím `$filter` výrazy. 
@@ -42,13 +42,13 @@ Následující příklad vyhledá dokumenty v indexu pomocí syntaxi dotazů Luc
 `searchMode=all` Relevantní v tomto příkladu je parametr. Pokaždé, když operátory jsou u dotazu, měli byste obecně nastavit `searchMode=all` zajistit, aby *všechny* kritéria je nalezena shoda.
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2015-02-28&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
 ```
 
  Můžete taky použijte příspěvek:  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2015-02-28
+POST /indexes/hotels/docs/search?api-version=2019-05-06
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",

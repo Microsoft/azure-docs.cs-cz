@@ -8,19 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
-ms.openlocfilehash: 1fcb12fc2cfae98376210e1924a670cce444f4f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61343335"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023860"
 ---
 # <a name="custom-web-api-skill"></a>Vlastních dovedností webového rozhraní API
 
-**Vlastního webového rozhraní API** dovednosti umožňuje rozšířit kognitivního vyhledávání ve volání do koncového bodu webového rozhraní API poskytuje vlastní operace. Předdefinované dovednosti, podobně jako **vlastního webového rozhraní API** dovedností se vstupy a výstupy. V závislosti na vstupy, webového rozhraní API přijímá datovou část JSON při spuštění indexeru a vrací datovou část JSON jako odpověď, spolu s stavový kód úspěchu. Odpověď má mít výstupy určené vlastních dovedností. Druhá odpověď se považuje za chybu a jsou prováděny žádné obohacení.
+**Vlastního webového rozhraní API** dovednosti umožňuje rozšířit kognitivního vyhledávání ve volání do koncového bodu webového rozhraní API poskytuje vlastní operace. Předdefinované dovednosti, podobně jako **vlastního webového rozhraní API** dovedností se vstupy a výstupy. V závislosti na vstupy, webové rozhraní API přijímá datovou část JSON při spuštění indexeru a vrací datovou část JSON jako odpověď, spolu s stavový kód úspěchu. Odpověď má mít výstupy určené vlastních dovedností. Druhá odpověď se považuje za chybu a jsou prováděny žádné obohacení.
 
 Struktura datové části JSON jsou popsány dále dolů v tomto dokumentu.
 
@@ -38,7 +38,7 @@ Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| identifikátor uri | Identifikátor URI webové rozhraní api, ke kterému _JSON_ odešle datovou část. Pouze **https** schéma identifikátoru URI je povolen. |
+| identifikátor uri | Identifikátor URI webového rozhraní API, ke kterému _JSON_ odešle datovou část. Pouze **https** schéma identifikátoru URI je povolen. |
 | httpMethod | Metody pro použití při odesílání datové části. Povolené metody jsou `PUT` nebo `POST` |
 | httpHeaders | Kolekce párů klíč hodnota, kde klíče představují hlavičky názvy a hodnoty představují hodnoty hlavičky, které se odešlou do webového rozhraní API spolu s datovou část. Nebudou v této kolekci jsou zakázány následující hlavičky: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | (Volitelné) -Li zadána, určuje časový limit pro volání rozhraní API klienta http. Musí být naformátovaná jako hodnotu "dayTimeDuration" XSD (omezená podmnožina [ISO 8601 trvání](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnota). Například `PT60S` po dobu 60 sekund. Pokud není sada, je vybrán výchozí hodnota je 30 sekund. Časový limit lze nastavit na maximálně 90 sekund a minimálně 1 sekunda. |
@@ -139,10 +139,10 @@ Bude vždy následovat tato omezení:
 
 ## <a name="sample-output-json-structure"></a>Ukázkový výstup JSON struktura
 
-"output" odpovídá odpověď vrácenou z vašeho webového rozhraní api. Webové rozhraní api mělo vracet pouze _JSON_ datovou část (ověřit pohledem `Content-Type` hlavička odpovědi) a musí splňovat následující omezení:
+"output" odpovídá odpověď vrácenou z vašeho webového rozhraní API. Webové rozhraní API by měl vrátit pouze _JSON_ datová část (ověřit zobrazením `Content-Type` hlavička odpovědi) a musí splňovat následující omezení:
 
 * Měla by existovat nejvyšší úrovně entitu s názvem `values` který by měl být pole objektů.
-* Počet objektů v poli, které by měl být stejný jako počet objektů, které jsou odeslány do webového rozhraní api.
+* Počet objektů v poli, které by měl být stejný jako počet objektů, které jsou odeslány do webového rozhraní API.
 * Každý objekt by měl mít:
    * A `recordId` vlastnost
    * A `data` vlastnost, která je objekt, kde jsou tato pole obohacení odpovídající "názvy" v `output` a jehož hodnota je považován za obohacení.

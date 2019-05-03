@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 8a07657d04cee57cb69c9f5f7862fed3e7965716
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283552"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024553"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie nasazení a osvědčené postupy pro optimalizaci výkonu v Azure Search
 
@@ -81,7 +81,7 @@ Existují dvě možnosti pro zachování vašich distribuovaných vyhledávací 
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Použití indexerů pro aktualizaci obsahu na několika službách
 
-Pokud už používáte indexer na jednu službu, můžete nakonfigurovat druhý indexer na druhou službu, která používá stejný objekt zdroje dat, načítání dat ze stejného umístění. Každá služba v každé z nich má vlastní indexeru a cílový index (ve vyhledávacím korpusu služby není sdílená, což znamená, že data jsou duplikovaná), ale každý indexer odkazuje stejného datového zdroje.
+Pokud už používáte indexer na jednu službu, můžete nakonfigurovat druhý indexer na druhou službu, která používá stejný objekt zdroje dat, načítání dat ze stejného umístění. Každá služba v každé z nich má vlastní indexeru a cílový index (indexu vyhledávání se nesdílí, což znamená, že data jsou duplikovaná), ale každý indexer odkazuje stejného datového zdroje.
 
 Tady je podrobný vizuálu této architektuře by vypadat.
 

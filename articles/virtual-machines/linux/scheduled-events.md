@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: aacb4521f4c6e8699be357cf396a01b7eb54b552
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: HT
+ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924373"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993152"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Linuxem
 
@@ -46,7 +46,7 @@ Pomocí naplánovaných událostí vaše aplikace můžete zjistit, kdy bude úd
 
 Naplánované události poskytuje události v následujících případech použití:
 
-- Údržby iniciované uživatelem platformy (například aktualizace hostitelský operační systém)
+- [Platforma iniciované údržby](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (například virtuální počítač restartovat počítač, migrace za provozu nebo paměti zachování aktualizace hostitele)
 - Degradované hardwaru
 - Údržba zahájená uživatelem (například uživatele restartuje nebo znovu nasadí virtuální počítač)
 - [Vyřazení virtuálního počítače s nízkou prioritou](https://azure.microsoft.com/blog/low-priority-scale-sets) škále nastaví
@@ -58,6 +58,7 @@ Naplánované události poskytuje události v následujících případech použ
 ### <a name="scope"></a>Rozsah
 Naplánované události se doručují na:
 
+- Samostatné virtuální počítače.
 - Všechny virtuální počítače v cloudové službě.
 - Všechny virtuální počítače ve skupině dostupnosti.
 - Všechny virtuální počítače ve škálovací nastavit skupiny umístění. 
@@ -129,7 +130,7 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
+| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit na několik sekund. Využití procesoru a připojení k síti může být pozastavený, ale neexistuje žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. V seznamu je zaručeno, že obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici. Vrátí události se už po dokončení události.

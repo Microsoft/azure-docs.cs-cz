@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 92f04d80ea956f3036d7778a5d6de62e53b969ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817371"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023722"
 ---
-# <a name="write-and-configure-data-using-azure-machine-learning"></a>Zápis a konfiguraci dat pomocí Azure Machine Learning
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Zápis a konfigurace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
 V tomto článku najdete informace k zápisu dat pomocí různých metod [Azure Machine Learning Data Prep Python SDK](https://aka.ms/data-prep-sdk) a konfigurace dat pro experimentování s využitím [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  V libovolném bodě toku dat je možné zapsat výstupní data. Zápisy jsou přidány jako kroky pro výsledný toku dat a postup spustit pokaždé, když se data spouštění toků. Data se zapisují do více souborů oddíl umožňuje paralelní zápisy.
+
+> [!Important]
+> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
 
 Vzhledem k tomu, že neexistují žádná omezení, kolik zapsat kroky jsou v kanálu, můžete snadno přidat další zápis kroky k získání průběžné výsledky při odstraňování problémů nebo jiných kanálů.
 

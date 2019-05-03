@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1c00fec5f56fc81b2cb73404728b214b5aaf3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764585"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025096"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
@@ -41,18 +41,16 @@ Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámk
     * Azure Machine Learning přípravy dat sady SDK pro Python
 * Výukový program Poznámkový blok
 
-Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
-
-* Použití [poznámkových bloků Azure](#azure)
+* Použití [server poznámkového bloku cloudu ve vašem pracovním prostoru](#azure) 
 * Použití [serveru poznámkového bloku](#server)
 
-### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
+### <a name="azure"></a>Použít server poznámkového bloku cloudu ve vašem pracovním prostoru
 
-Je snadné začít s poznámkovými bloky Azure! Sady SDK pro Azure Machine Learning Data Prep je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
-
-Po dokončení následujících kroků spustit **kurzy/regrese – část 1 data-prep.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
+Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) již nainstalován a nakonfigurován pro vás, když vytvoříte tento prostředek v cloudu.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* Po spuštění webové stránky Poznámkový blok, spusťte **kurzy/regrese – část 1 data-prep.ipynb** poznámkového bloku.
 
 ### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
 

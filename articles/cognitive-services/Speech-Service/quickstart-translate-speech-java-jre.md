@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 36eaaeabcf888aac10bcf9b8a27e3590d21079ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dc1852a57970c2994d9f36cbd7242a18b580a61
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619129"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020994"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro Javu
 
-V tomto rychlém startu vytvoříte jednoduchou aplikaci Java, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na Windows 64-bit nebo 16.04/18.04 64-bit Ubuntu Linux a vytvořených pomocí balíčku Maven řeči sady SDK a Eclipse Java IDE.
+V tomto rychlém startu vytvoříte jednoduchou aplikaci Java, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na 64-bit Windows 64-bit Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) nebo v systému macOS 10.13 nebo novější. Je vytvořen pomocí balíčku Maven řeči sady SDK a Eclipse Java IDE.
 
 Úplný seznam jazyků, které jsou k dispozici pro překlad řeči, naleznete v tématu [jazykovou podporu](language-support.md).
 
@@ -27,17 +27,26 @@ V tomto rychlém startu vytvoříte jednoduchou aplikaci Java, která zachycuje 
 
 K tomuto rychlému startu potřebujete:
 
-* Operační systém: 64bitová verze Windows nebo Ubuntu Linux 64-bit 16.04/18.04
+* Operační systém: 64bitová verze Windows 64-bit Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) a macOS 10.13 nebo novější
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 
-Pokud používáte Ubuntu 16.04/18.04, ujistěte se, že jsou tyto závislosti nainstalovány před zahájením Eclipse.
+Pokud používáte systém Linux, ujistěte se, že jsou tyto závislosti nainstalovány před zahájením Eclipse.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+ * On Ubuntu:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.0 libasound2
+   ```
+
+ * Na Debian 9:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.2 libasound2
+   ```
 
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 860cb2bee902c6559b7851eb05fa9c5270876fe9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b1764eaf3f496b52bdd73afb5489843ab15cacbd
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126966"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993056"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Linuxem
 
@@ -33,7 +33,7 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 Plánované údržby, které vyžaduje restartování počítače je naplánováno ve vlnách. Každé vlně má jiný rozsah (oblasti).
 
 - Vlnu začíná oznámení pro zákazníky. Ve výchozím nastavení odešle se oznámení na předplatné vlastník a spoluvlastníci. Můžete přidat další příjemce a možnosti zasílání zpráv, jako je e-mail, SMS a webhooky, oznámení pomocí Azure [upozornění protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md).  
-- V době oznámení *samoobslužné služby okno* je k dispozici. Během tohoto časového období můžete vyhledat, které z vašich virtuálních počítačů jsou součástí této vlny a proaktivně spustit údržbu podle svých potřeb plánování.
+- V době oznámení *samoobslužné služby okno* je k dispozici. Během tohoto časového intervalu, který je obvykle čtyři týdny zjistíte, které z vašich virtuálních počítačů jsou součástí této vlny a proaktivně spustit údržbu podle vlastních potřeb plánování.
 - Po okno samoobslužných služeb *plánované časové období údržby* začíná. Azure někdy během intervalu plánuje a může požadovaná údržba se vztahuje na virtuální počítač. 
 
 Cílem tím, že dvě okna je vám poskytnou dostatek času spuštění údržby a zároveň budete vědět, když Azure automaticky spustit údržbu restartování vašeho virtuálního počítače.

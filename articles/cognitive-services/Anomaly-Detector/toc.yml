@@ -20,6 +20,14 @@
   items:
     - name: Zjištění anomálií ve vašich datech
       href: how-to/identify-anomalies.md
+    - name: Použití kontejnerů
+      items:
+        - name: Instalace a spuštění kontejnerů
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: anomaly-detector-container-howto.md
+        - name: Konfigurace kontejnerů
+          href: anomaly-detector-container-configuration.md
+          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
 - name: Koncepty
   items:
     - name: Osvědčené postupy rozhraní API pro detekci anomálií

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0eefe38fdffd04bb95826f960771bd6430ea687
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871086"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024776"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Průvodce importem dat pro službu Azure Search
 
@@ -27,7 +27,7 @@ Azure Portal poskytuje v řídicím panelu služby Azure Search průvodce **Impo
 
 Průvodce nemůže připojit k předdefinovaný index nebo spuštění existujícího indexeru, ale v rámci průvodce, můžete nakonfigurovat nového indexu nebo indexeru pro podporu struktury a chování, které potřebujete.
 
-Jste nováčky ve službě Azure Search? Projít [rychlý start: Import, indexování a dotazování pomocí nástroje portálu](search-get-started-portal.md) mohli vyzkoušet importu a indexování s využitím **importovat data** a realestate integrovanou ukázkovou datovou sadu.
+Jste nováčky ve službě Azure Search? Projít [rychlý start: Import, indexování a dotazování pomocí nástroje portálu](search-get-started-portal.md) mohli vyzkoušet importu a indexování s využitím **importovat data** a nemovitosti integrovanou ukázkovou datovou sadu.
 
 ## <a name="start-importing-data"></a>Zahájení importu dat
 
@@ -77,14 +77,14 @@ Index je připraven k dotazování ihned poté, co je první dokument načten. M
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) (není podporováno pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) kanálů)
 
-Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné tabulky, jednoho zobrazení databáze nebo ekvivalentní datové struktury. 
+Můžete importovat pouze z jedné tabulky, zobrazení databáze nebo ekvivalentní datové struktury, ale struktura může obsahovat hierarchické, nebo jsou vnořené používání dílčích struktur. Další informace najdete v tématu [jak model komplexní typy](search-howto-complex-data-types.md).
 
 Tuto datovou strukturu byste měli vytvořit před spuštěním průvodce a musí obsahovat obsah. Nespouštějte **importovat data** průvodci z prázdného datového zdroje.
 
 |  Výběr | Popis |
 | ---------- | ----------- |
 | **Stávající zdroj dat** |Pokud již ve vyhledávací službě máte definované indexery, můžete pro další import vybrat stávající definici zdroje dat. Ve službě Azure Search objekty zdroje dat slouží pouze indexery. Můžete programově vytvořit objekt zdroje dat nebo prostřednictvím **importovat data** průvodce.|
-| **Ukázky**| Služba Azure Search je hostitelem bezplatné veřejné databáze Azure SQL, můžete použít další informace o importu a dotaz požadavků ve službě Azure Search. Zobrazit [rychlý start: Import, indexování a dotazování pomocí nástroje portálu](search-get-started-portal.md) návod. |
+| **Ukázky**| Služba Azure Search hostuje na bezplatné globální Azure SQL database, můžete použít další informace o importu a dotaz požadavků ve službě Azure Search. Zobrazit [rychlý start: Import, indexování a dotazování pomocí nástroje portálu](search-get-started-portal.md) návod. |
 | **Azure SQL Database** |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
 | **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [Připojení virtuálního počítače SQL ke službě Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
 | **Databáze Cosmos** |Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz, který zploští nebo vyfiltruje sadu řádků, nebo ponechejte prázdné, dotaz. Dotaz není nutné v tomto průvodci.|

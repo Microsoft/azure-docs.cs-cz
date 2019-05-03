@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 05/01/2019
 ms.author: szark
-ms.openlocfilehash: c0124d133fe2db9acb16251bc21ffb19f1b1268f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db10c95c982132c41193ed1cccfdcdca6f60ba5e
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743441"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993089"
 ---
-# <a name="linux-distributions-endorsed-on-azure"></a>Linuxové distribuce schválené pro Azure
+# <a name="endorsed-linux-distributions-on-azure"></a>Doporučených distribucích systému Linux v Azure
 Partneři poskytují imagí Linuxu v Tržišti Azure Marketplace. Pracujeme na tom s různými komunitami Linux přidejte ještě více rozšířili se schválenou sadou distribučního seznamu. Do té doby pro distribuce, které nejsou k dispozici z webu Marketplace, můžete vždy použít vlastní Linux podle pokynů v tématu [vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Podporované distribuce a verze
-V následující tabulce jsou uvedeny v Linuxových distribucích a verzích, které jsou podporovány v Azure. Odkazovat na [podporu pro Linuxové Image v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) podrobné informace o podpoře pro Linux a opensourcové technologie v Azure.
+V následující tabulce jsou uvedeny v Linuxových distribucích a verzích, které jsou podporovány v Azure. Odkazovat na [podporu pro Linuxové Image v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) podrobné informace o podpoře pro Linux a open source technologiemi v Azure.
 
-Ovladače služby Linux Integration Services (LIS) pro Hyper-V a Azure jsou jádra moduly, které Microsoft přispívá přímo do nadřazeného jádro Linuxu.  Některé ovladače služby LIS jsou ve výchozím nastavení součástí distribuce jádra. Starší distribuce, které jsou založeny na Red Hat Enterprise (RHEL) jsou dostupné jako samostatný soubor ke stažení na CentOS [Linux Integration Services verze 4.2 pro Hyper-V a Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106). Zobrazit [požadavky jádro Linuxu](create-upload-generic.md#linux-kernel-requirements) Další informace o ovladače služby LIS.
+Ovladače služby Linux Integration Services (LIS) pro Hyper-V a Azure jsou jádra moduly, které Microsoft přispívá přímo do nadřazeného jádro Linuxu.  Některé ovladače služby LIS jsou ve výchozím nastavení součástí distribuce jádra. Starší distribuce, které jsou založeny na Red Hat Enterprise (RHEL) jsou dostupné jako samostatný soubor ke stažení na CentOS [Linux Integration Services verze 4.2 pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zobrazit [požadavky jádro Linuxu](create-upload-generic.md#linux-kernel-requirements) Další informace o ovladače služby LIS.
 
 Azure Linux Agent je už předem nainstalované na Image Azure Marketplace a je obvykle k dispozici z úložiště balíčků vaší distribuce. Zdrojový kód můžete najít na [Githubu](https://github.com/azure/walinuxagent).
 
   
 | Distribuce | Version | Ovladače | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Služby LIS stahování](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4+: Jádra systému |Balíček: V [úložiště](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Služby LIS stahování](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: Jádra systému |Balíček: V [úložiště](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jádra systému |Zdrojový kód: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9 +, 8.2 + |Jádra systému |Balíček: V úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -44,7 +44,25 @@ Azure Linux Agent je už předem nainstalované na Image Azure Marketplace a je 
 | openSUSE |openSUSE přestupné 42.2 + |Jádra systému |Balíček: V [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložiště v části "python agenta azure" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jádra systému |Balíček: V úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>**  podporu pro Ubuntu 12.04 v Azure najdete [konce řádku oznámení](https://azure.microsoft.com/blog/ubuntu-12-04-precise-pangolin-nearing-end-of-life/).
+  - **<sup>1</sup>**  informace o rozšířenou podporu pro Ubuntu 12.04 a 14.04 najdete tady: [Ubuntu rozšířené zabezpečení údržby](https://www.ubuntu.com/esm).
+
+
+## <a name="image-update-cadence"></a>Obrázek rytmus
+Azure vyžaduje, aby vydavatelé doporučených distribucích systému Linux pravidelnou aktualizaci jejich imagí v Tržišti Azure Marketplace pomocí nejnovějších oprav a oprav chyb zabezpečení, v tempo čtvrtletní nebo rychlejší. Aktualizované imagí v Tržišti Azure Marketplace jsou dostupné zákazníkům se automaticky jako nové verze image SKU. Další informace o tom, jak najít Image Linuxu: [Vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+
+### <a name="additional-links"></a>Další odkazy
+ - [Životní cyklus bitové kopie operačního systému SUSE veřejného cloudu](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+
+## <a name="azure-tuned-kernels"></a>Laděná Azure jádra
+
+Azure spolupracuje s různými doporučených distribucích systému Linux Optimalizovat obrázky, které jsou publikované na webu Azure Marketplace. Jeden aspekt tato spolupráce je vývoj "vyladěný" Linuxová jádra, která jsou optimalizovaná pro platformu Azure a doručí jako komponenty plně podporované distribuce systému Linux. Jádrech Laděná Azure zahrnuje nové funkce a vylepšení výkonu a rychlejším tempem (obvykle čtvrtletní) ve srovnání s výchozí nebo obecný jader, které jsou k dispozici z distribučního.
+
+Ve většině případů tyto jádrech předinstalované na imagích výchozí na webu Azure Marketplace najdete a Zákazníci tak Azure bude okamžitě těžit z těchto optimalizovaný jádra. Další informace o těchto Laděná Azure jádrech najdete v následujících odkazů:
+
+ - CentOS Laděná Azure jádra – k dispozici prostřednictvím virtualizace CentOS SIG - [Další informace](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian cloudu jádra – k dispozici s Debian 10 a image Debian 9 "zpětné" v Azure – [More Info](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES Laděná Azure jádra - [Další informace](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu Laděná Azure jádra - [Další informace](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>Partneři

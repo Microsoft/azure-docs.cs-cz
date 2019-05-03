@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819418"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023976"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportovat nebo odstraňovat data pracovní prostor služby Machine Learning 
 
@@ -231,3 +231,29 @@ Moduly je možné získat:
 Je možné získat zdroje dat:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>Odstranit prostředky grafické rozhraní
+
+Ve vizuální rozhraní, ve které jste vytvořili experimentu odstraňte jednotlivé prostředky:
+
+1. Na levé straně vyberte typ prostředku, který chcete odstranit.
+
+    ![Odstranění prostředků](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. V seznamu vyberte jednotlivé prostředky odstranit.
+
+1. V dolní části, vyberte **odstranit**.
+
+## <a name="export-visual-interface-data"></a>Export dat vizuální rozhraní
+
+V vizuální rozhraní, ve které jste vytvořili experimentu exportujte data, která jste přidali:
+
+1. Na levé straně vyberte **Data**.
+
+1. V horní části vyberte **Moje datové sady** nebo **ukázky** vyhledejte data, kterou chcete exportovat.
+
+    ![Stáhnout data](media/how-to-export-delete-data.md/download-data.png)
+
+1. V seznamu vyberte jednotlivé datové sady pro export.
+
+1. V dolní části, vyberte **Stáhnout**.

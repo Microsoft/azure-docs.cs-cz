@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b5ace2e741f900dd4ab7ba6518d0956284af35f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2280af4bf37fdb3cd12482da855f979a9180f0ec
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461582"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020505"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Vytvořit vlastní probuzení word s použitím Speech service
 
@@ -47,29 +47,26 @@ Při výběru slova probuzení vezměte v úvahu následující pokyny:
 
 ## <a name="create-your-wake-word"></a>Vytvoření vaší aplikace word probuzení
 
-Slovo vlastní funkci mohli používat s vaším zařízením, musíte vytvořit slovo probuzení pomocí služby Microsoft vlastní funkci generování aplikace Word. Po zadání slovo probuzení, služba vytvoří soubor, který nasadíte do vaše sada povolit probuzení slovo na vašem zařízení.
+Před použitím vlastní probuzení word s vaším zařízením, budete muset vytvořit probuzení slova ve službě Microsoft vlastní funkci generování aplikace Word. Po zadání slovo probuzení, služba vytvoří soubor, který nasadíte do vaše sada povolit probuzení slovo na vašem zařízení.
 
-1. Přejděte [portál Custom Speech Service](https://cris.ai/).
+1. Přejděte na [vlastní Speech Service Portal](https://aka.ms/sdsdk-speechportal) a **přihlášení** nebo pokud máte předplatné řeči zvolte [ **vytvořit odběr**](https://go.microsoft.com/fwlink/?linkid=2086754)
 
     ![Portál Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
 
-1. Přihlaste se pomocí e-mailovou adresu, která se zobrazila pozvánky pro Azure Active Directory.
-
-1. **Slovo probuzení vlastní** stránka není dostupná, proto neexistuje žádný přímý odkaz, která vás existuje. Custom Speech funkce vyžaduje předplatné Azure, ale nebude slovo probuzení vlastní funkce. Pokud jste se dostali **nenašla se žádná předplatná.** chybové stránky, stačí nahradit **"předplatných? chybová zpráva = žádná % 20Subscriptions % 20found"** s "**customkws**" v adrese URL a přístupů ENTER. Adresa URL by měla být jedna z následujících: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws nebo https://northeurope.cris.ai/customkws, v závislosti na místě, kde vaši oblast.
-
-1. Zadejte hledané klíčové slovo probuzení podle vašeho výběru a pak vyberte **odeslat slovo**.
+1. Na [slovo probuzení vlastní](https://aka.ms/sdsdk-wakewordportal) napište v aplikaci word probuzení podle vašeho výběru a klikněte na tlačítko **přidat slovo probuzení**. Jsme našli [pokyny](#choose-an-effective-wake-word) pomoc při výběru efektivní klíčové slovo. Momentálně podporujeme pouze jazyk en US.
 
     ![Zadejte vaše slova probuzení](media/speech-devices-sdk/wake-word-5.png)
 
-1. Může trvat několik minut, než soubory, které chcete vygenerovat. Měli byste vidět pokryjte kolečko v okně prohlížeče. Za okamžik informační panel se zobrazí, s výzvou ke stažení souboru .zip.
+1. Vytvoří se tři alternativní výslovnosti vaše slova probuzení. Můžete použít všechny výslovnosti, které vám vyhovuje. Potom vyberte **odeslat** ke generování slovo probuzení. Pokud chcete změnit slovo probuzení prosím odeberte existující nejprve při najetí myší na řádku Výslovnost se zobrazí na ikonu Odstranit.
 
-1. Uložte soubor .zip na vašem počítači. Je nutné tento soubor a nasadit vlastní probuzení slovo development Kit. Pokud chcete nasadit vlastní probuzení slovo, postupujte podle pokynů v [Začínáme se sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md).
+    ![Projděte si vaše aplikace word probuzení](media/speech-devices-sdk/wake-word-6.png)
 
-1. Vyberte **Odhlásit se.**
+1. Může trvat až jednu minutu modelu, který má být vygenerována. Zobrazí výzva ke stažení souboru.
+
+    ![Stáhněte si vaše aplikace word probuzení](media/speech-devices-sdk/wake-word-7.png)
+
+1. Uložte soubor .zip na vašem počítači. Budete potřebovat tento soubor k nasazení vaší vlastní probuzení slovo development Kit.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete začít, získejte [bezplatný účet Azure](https://azure.microsoft.com/free/) a zaregistrujte sadou SDK pro řeč zařízení.
-
-> [!div class="nextstepaction"]
-> [Zaregistrujte zařízení sadou SDK pro řeč](get-speech-devices-sdk.md)
+Testovat váš vlastní probuzení word s [řeči zařízení SDK Quickstart](https://aka.ms/sdsdk-quickstart).

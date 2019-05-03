@@ -1,7 +1,7 @@
 ---
 title: Indexování objektů BLOB CSV pomocí indexeru Azure Search Blob – Azure Search
 description: Procházení objektů BLOB CSV v úložišti objektů Blob v Azure pro fulltextové vyhledávání pomocí indexu Azure Search. Indexery můžete automatizovat příjem dat pro vybrané zdroje dat jako úložiště objektů Blob v Azure.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0bbb131b5fb155443c8c3dc340185f3a6fa950a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 193ed7099293fb1ee4c056abcc5c2f34d78627b7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871259"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024715"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB CSV pomocí indexeru Azure Search blob
 Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azure-blob-storage.md) analyzuje oddělený text objektů BLOB jako jediný neodkazovaný blok textu. Nicméně s objekty BLOB, který obsahuje data ve formátu CSV, často chcete zpracovávat každý řádek v objektu blob jako samostatný dokument. Například směru následující text s oddělovači, můžete k analýze do dva dokumenty a každý obsahuje pole "tags", "datePublished" a "id": 
@@ -24,7 +24,9 @@ Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azur
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-V tomto článku se dozvíte, jak analyzovat objektů BLOB CSV pomocí indexeru Azure Search blob. 
+V tomto článku se dozvíte, jak analyzovat objektů BLOB CSV pomocí Azure Search blob indexerby nastavení `delimitedText` režim parsování. 
+
+`delimitedText` Režim parsování je aktuálně ve verzi public preview a nedoporučuje se pro produkční úlohy.
 
 > [!NOTE]
 > Postupujte podle doporučení konfigurace indexeru v [jeden mnoho indexování](search-howto-index-one-to-many-blobs.md) výstup více dokumentů vyhledávání z jednoho objektu blob Azure.
@@ -62,7 +64,7 @@ Vložení to všechny najednou, tady jsou příklady úplnou datovou část.
 
 Zdroj dat: 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -75,7 +77,7 @@ Zdroj dat:
 
 Indexer:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
     Content-Type: application/json
     api-key: [admin key]
 

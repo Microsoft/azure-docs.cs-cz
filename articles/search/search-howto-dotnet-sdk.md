@@ -7,17 +7,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25a156c4403b7a89f7a7bf7f6acf22fa34216791
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871293"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025128"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak používat Azure Search z aplikace .NET
+
+> [!Important]
+> Tento obsah je stále zpracovávají. Verze 9.0 Azure Search .NET SDK je k dispozici na webu NuGet. Pracujeme na aktualizaci tohoto průvodce migrací a vysvětluje postup při upgradu na novou verzi. Sledujte nejnovější informace.
+>
+
 Tento článek je návod, který vám pomůžou začít pracovat s [Azure Search .NET SDK](https://aka.ms/search-sdk). Sady .NET SDK můžete použít k implementaci bohaté vyhledávací funkce do vaší aplikace pomocí Azure Search.
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Novinky ve službě Azure vyhledat sady SDK
@@ -38,7 +42,7 @@ Definování různých klientských knihoven tříd jako `Index`, `Field`, a `Do
 
 Aktuální verze Azure Search .NET SDK je teď obecně dostupná. Pokud chcete poskytnout zpětnou vazbu, abychom mohli začlenit v příští verzi, navštivte prosím náš [zpětnou vazbu stránky](https://feedback.azure.com/forums/263029-azure-search/).
 
-Sady .NET SDK podporuje verzi `2017-11-11` z [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tato verze teď zahrnuje podporu pro synonyma, jakož i několik postupných vylepšení pro indexery. Funkce, které jsou ve verzi Preview *není* jsou součástí této verze, jako třeba podporu pro indexování pole JSON a souborů CSV v [ve verzi preview](search-api-2016-09-01-preview.md) a k dispozici prostřednictvím [verze 4.0 ve verzi preview sady .NET SDK](https://aka.ms/search-sdk-preview).
+Sady .NET SDK podporuje verzi `2017-11-11` z [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tato verze teď zahrnuje podporu pro synonyma, jakož i několik postupných vylepšení pro indexery. 
 
 Tato sada SDK nepodporuje [operace správy](https://docs.microsoft.com/rest/api/searchmanagement/) jako je například vytváření a škálování vyhledávací služby a správu klíčů rozhraní API. Pokud potřebujete ke správě prostředků Search z aplikace .NET, můžete použít [Management SDK služby Azure Search .NET](https://aka.ms/search-mgmt-sdk).
 
@@ -392,7 +396,7 @@ public partial class Hotel
 Všimněte si, že prvním krokem je, že každá veřejná vlastnost třídy `Hotel` odpovídá poli v definici indexu, ale s jedním zásadním rozdílem: Název každého pole začíná malým písmenem ("camelCase"), zatímco název každé veřejné vlastnosti třídy `Hotel` začíná velké písmeno ("pascalcase"). To je běžný scénář v .NET aplikacích provádějících datové vazby, kde je cílové schéma mimo kontrolu vývojáře aplikace. Místo porušování směrnic pojmenování .NET psaním názvů vlastností ve stylu CamelCase můžete pomocí atributu `[SerializePropertyNamesAsCamelCase]` říct sadě SDK, aby mapovala názvy vlastností na CamelCase automaticky.
 
 > [!NOTE]
-> .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další podrobnosti najdete v tématu [vlastní serializace pomocí technologie JSON.NET](#JsonDotNet).
+> .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další informace najdete v tématu [vlastní serializace pomocí technologie JSON.NET](#JsonDotNet).
 > 
 > 
 

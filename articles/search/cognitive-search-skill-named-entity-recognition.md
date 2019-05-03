@@ -8,27 +8,28 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 28fae27b52ea150c1fa732715212e2f2c9534bc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c462971f7ac02e35ab8df5b651da7d0a3f39e1f
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126886"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65022261"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované rozpoznávání entit kognitivních dovedností
 
 **Rozpoznávání entit s názvem** dovednosti z textu extrahuje pojmenované entity. Dostupné entity zahrnují `person`, `location` a `organization`.
 
 > [!IMPORTANT]
-> Zastaralé dovednosti rozpoznávání pojmenovaných entit nahrazuje [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora zastaví na 15 února 2019. Postupujte podle doporučení v [zastaralé kognitivní dovednosti hledání](cognitive-search-skill-deprecated.md) migrovat do podporovaných dovedností.
+> Rozpoznávání pojmenovaných entit dovedností se vyřazuje teď nahrazuje [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora zastaví na 15. února 2019 a rozhraní API se odebralo z produktu v 2. května 2019. Postupujte podle doporučení v [zastaralé kognitivní dovednosti hledání](cognitive-search-skill-deprecated.md) migrovat do podporovaných dovedností.
 
 > [!NOTE]
-> Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
+> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> [Integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) spuštění, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejné přenosové rychlosti, jako by měl provést úlohu přímo. Extrakce Image je poplatek za Azure Search, v současné době nabízena na ceny verze preview. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill

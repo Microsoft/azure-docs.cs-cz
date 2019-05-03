@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 04/30/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2992ec9f43aac9e0d80c5e42873d26ac3a9c3fd1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9cc6ad4f7b33de4d132efe63ff11c34f10b614af
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916978"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023384"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Použití rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning
 
@@ -80,7 +80,6 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     ```
 
 + Konfigurace pracovního prostoru se připojte k složku, do které umožňují kontextové povědomí o rozhraní příkazového řádku.
-
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
@@ -90,26 +89,14 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     ```azurecli-interactive
     az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
-
+    
 + Připojte jako cíl výpočetní AKS cluster.
 
     ```azurecli-interactive
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
     ```
 
-+ Vytvořit nový cíl AMLcompute
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
-    ```
-    
 ## <a id="experiments"></a>Spouštění experimentů
-
-+ Konfigurace pracovního prostoru se připojte k složku, do které umožňují kontextové povědomí o rozhraní příkazového řádku.
-
-    ```azurecli-interactive
-    az ml folder attach -w myworkspace -g myresourcegroup
-    ```
 
 * Spusťte běh experimentu. Při použití tohoto příkazu, zadejte název souboru runconfig (text před \*.runconfig, pokud chcete v systému souborů) pro parametr - c.
 
@@ -123,7 +110,7 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     az ml experiment list
     ```
 
-## <a name="model-registration-profiling-deployment"></a>Registrace modelu, profilování, nasazení
+## <a name="model-registration-profiling--deployment"></a>Model registrace, profilace a nasazení
 
 Následující příkazy ukazují, jak registrace trénovaného modelu a pak ho nasadíme jako služby v produkčním prostředí:
 

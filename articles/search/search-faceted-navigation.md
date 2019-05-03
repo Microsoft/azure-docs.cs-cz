@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924577"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023957"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
 
  ![Ukázka portálu úlohy Azure Search][1]
 
-Fasetová navigace je alternativní vstupní bod pro hledání. Nabízí vhodnou alternativu ručně psát složité hledaných výrazů. Omezující vlastnosti můžete najít, co hledáte, přitom zajistit, že nebudete mít nula výsledků. Jako vývojář omezující vlastnosti vám umožní vystavit nejužitečnější kritérií vyhledávání pro navigaci ve vyhledávacím korpusu služby. V aplikacích pro online maloobchodní prodej Fasetové navigace často integrované značky, oddělení (dětský obuv), velikost, ceny, oblíbenosti a hodnocení. 
+Fasetová navigace je alternativní vstupní bod pro hledání. Nabízí vhodnou alternativu ručně psát složité hledaných výrazů. Omezující vlastnosti můžete najít, co hledáte, přitom zajistit, že nebudete mít nula výsledků. Jako vývojář omezující vlastnosti vám umožní vystavit nejužitečnější kritérií vyhledávání pro procházení indexu vyhledávání. V aplikacích pro online maloobchodní prodej Fasetové navigace často integrované značky, oddělení (dětský obuv), velikost, ceny, oblíbenosti a hodnocení. 
 
 Implementace Fasetové navigace se liší mezi vyhledávací technologie. Fasetová navigace se ve službě Azure Search vytvořil v době zpracování dotazu pomocí polí, která dříve přidělené ve schématu.
 

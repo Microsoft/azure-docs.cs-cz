@@ -6,16 +6,16 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4383cc327d8058ca44acd892f41a7a256e3b1727
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61281798"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024321"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyma ve službě Azure Search
 
@@ -23,11 +23,13 @@ Synonyma ve vyhledávací weby přidružují ekvivalentní termíny, které impl
 
 Ve službě Azure Search se synonyma rozšíření provádí v době zpracování dotazu. Přidání mapy synonym k službě s žádné dopadem na existující operace. Můžete přidat **synonymMaps** vlastnost na definici pole bez nutnosti znovu sestavovat index.
 
-## <a name="feature-availability"></a>Dostupnost funkcí
+## <a name="create-synonyms"></a>Vytvoření synonyma
 
-Funkce synonym je podporovaná v nejnovější verzi rozhraní api (api-version = 2017-11-11). Podpora webu Azure Portal se v současnosti neposkytuje.
+Není dostupná podpora portálu pro vytváření synonyma, ale můžete použít rozhraní REST API nebo .NET SDK. Abyste mohli začít s využitím REST, doporučujeme [pomocí nástroje Postman](search-fiddler.md) a možností formulování požadavků pomocí tohoto rozhraní API: [Vytváření map Synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro C# vývojáři, můžete začít s [přidání synonym ve službě Azure vyhledávání pomocí C# ](search-synonyms-tutorial-sdk.md).
 
-## <a name="how-to-use-synonyms-in-azure-search"></a>Použití synonym ve službě Azure search
+Případně pokud používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) straně služby šifrování neaktivních, můžete použít tuto ochranu obsahu mapy synonym.
+
+## <a name="use-synonyms"></a>Použití synonym
 
 Podpora synonym ve službě Azure Search je podle map synonym, které definují a nahrát do služby. Tyto mapy představují nezávislý prostředek (jako jsou indexy nebo zdroje dat) a můžou používat v libovolném prohledávatelném poli v libovolném indexu ve vyhledávací službě.
 
@@ -49,7 +51,7 @@ Mapy synonym musí být ve formátu Apache Solr, který je popsán níže. Pokud
 
 Můžete vytvořit novou mapu synonym pomocí HTTP POST, jako v následujícím příkladu:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -62,7 +64,7 @@ Můžete vytvořit novou mapu synonym pomocí HTTP POST, jako v následujícím 
 
 Alternativně můžete pomocí PUT a zadejte název mapy synonym v identifikátoru URI. Pokud mapu synonym neexistuje, vytvoří se.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -74,38 +76,38 @@ Alternativně můžete pomocí PUT a zadejte název mapy synonym v identifikáto
 
 ##### <a name="apache-solr-synonym-format"></a>Formát synonymum Apache Solr
 
-Solr formát podporuje mapování synonym ekvivalentní a explicitní. Pravidla mapování dodržujte specifikaci opensourcových synonymum filtr Apache Solr, popsané v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Následuje ukázka pravidla ekvivalentní synonym.
+Solr formát podporuje mapování synonym ekvivalentní a explicitní. Pravidla mapování dodržujte specifikaci filtr synonymum open source Apache Solr, popsané v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Následuje ukázka pravidla ekvivalentní synonym.
 ```
 USA, United States, United States of America
 ```
 
 S pravidlem nad vyhledávací dotaz se rozbalí "USA" na "USA" nebo "USA" nebo "USA".
 
-Šipka označuje explicitního mapování "= >". Pokud zadaný výraz posloupnost vyhledávací dotaz, který odpovídá levé straně výrazu "= >" bude nahrazena adresou alternativy na pravé straně. Zadané pravidlo níže, vyhledávací dotazy "Washington", "Wash." nebo "WA" budou všechny být přepsány, aby "WA". Explicitní mapování pouze platí v určeném směru a nepřepíše dotazu "WA" k "Washington" v tomto případě.
+Šipka označuje explicitního mapování "= >". Pokud zadaný výraz posloupnost vyhledávací dotaz, který odpovídá na levé straně "= >" bude nahrazena adresou alternativy na pravé straně. Zadané pravidlo níže, vyhledávací dotazy "Washington", "Wash." nebo "WA" budou všechny být přepsány, aby "WA". Explicitní mapování pouze platí v určeném směru a nepřepíše dotazu "WA" k "Washington" v tomto případě.
 ```
 Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>V rámci služby mapy synonym seznamu.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Získáte mapu synonym v rámci služby.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Odstraňte mapu synonym v rámci služby.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Nakonfigurujte prohledávatelná pole mapy synonym v definici indexu.
 
 Nové vlastnosti pole **synonymMaps** slouží k určení mapu synonym pro prohledávatelné pole. Mapy synonym jsou prostředky úrovně služeb a může být odkazováno podle libovolného pole indexu v rámci služby.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
 
     {

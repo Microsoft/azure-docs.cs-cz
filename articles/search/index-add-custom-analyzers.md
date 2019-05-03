@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60914904"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021661"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Vlastní analyzátory přidat do indexu Azure Search
 
@@ -324,7 +324,7 @@ V následující tabulce jsou propojené, které jsou implementovány pomocí Ap
 |[uax_url_email](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenizes adresy URL a e-mailů jako jeden token.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int)-maximální délka tokenu. Výchozí: 255, maximální: 300. Tokeny delší než maximální délka je rozdělit.|  
 |[Prázdné znaky](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(typ platí, pouze když jsou k dispozici možnosti) |Rozdělí text na prázdné znaky. Jsou rozděleny tokeny, které jsou delší než 255 znaků.|  
 
- <sup>1</sup> tokenizátor typy mají vždy předponu v kódu s "#Microsoft.Azure.Search" tak, aby "ClassicTokenizer" by ve skutečnosti byl zadán jako "#Microsoft.Azure.Search.ClassicTokenizer". Odebrali jsme předpona, kterou chcete omezit šířku v tabulce, ale nezapomeňte zadat v kódu. Všimněte si, že tento tokenizer_type je k dispozici pouze pro tokenizátory, které lze přizpůsobit. Pokud nejsou žádné možnosti, jako je tomu u tokenizátor písmeno, neexistuje žádný typ přidružené #Microsoft.Azure.Search.
+ <sup>1</sup> tokenizátor typy mají vždy předponu v kódu s "#Microsoft.Azure.Search" tak, aby "ClassicTokenizer" by ve skutečnosti byl zadán jako "#Microsoft.Azure.Search.ClassicTokenizer". Odebrali jsme předpona, kterou chcete omezit šířku v tabulce, ale nezapomeňte zadat v kódu. Všimněte si, že tokenizer_type je k dispozici pouze pro tokenizátory, které lze přizpůsobit. Pokud nejsou žádné možnosti, jako je tomu u tokenizátor písmeno, neexistuje žádný typ přidružené #Microsoft.Azure.Search.
 
 <a name="TokenFilters"></a>
 

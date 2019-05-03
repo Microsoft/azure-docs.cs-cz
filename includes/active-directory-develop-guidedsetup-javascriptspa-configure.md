@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: c0dcfc4ad7edf4d9203b807aa799eb047c753bed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 387adcdf8bdabf90bc1e691a7a8ec9ae0a8e90dc
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297885"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993290"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -52,17 +52,21 @@ ms.locfileid: "60297885"
 1. V `index.html` soubor vytvořen během instalace projektu, přidejte informace o registraci aplikace. Přidejte následující kód v horní části v rámci `<script></script>` značky v těle vaše `index.html` souboru:
 
     ```javascript
-    var applicationConfig = {
-        clientID: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
-        graphScopes: ["user.read"],
-        graphEndpoint: "https://graph.microsoft.com/v1.0/me"
+    var msalConfig = {
+        auth: {
+            clientId: "Enter_the_Application_Id_here",
+            authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        },
+        cache: {
+            cacheLocation: "localStorage",
+            storeAuthStateInCookie: true
+        }
     };
     ```
 
     Kde:
     - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
     - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
-       - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
+       - Pokud vaše aplikace podporuje **účty v tomto adresáři organizace**, nahraďte tuto hodnotu **ID Tenanta** nebo **název Tenanta** (například) contoso.microsoft.com)
        - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
-       - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
+       - Pokud vaše aplikace podporuje **účty v jakékoli organizaci adresáři a osobní účty Microsoft**, nahradí tato hodnota se `common`. K omezení podpory *Microsoft osobní účty pouze*, nahradí tato hodnota se `consumers`.

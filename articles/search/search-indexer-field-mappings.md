@@ -1,7 +1,7 @@
 ---
 title: Mapování polí pro automatické indexování pomocí indexerů – Azure Search
 description: Nakonfigurujte mapování polí indexeru Azure Search pro rozdíly v názvy polí a formátovaná data.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9bb8a168f54658ea14b174d19a1795e575646304
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d3e0d876550b0c3baf89f3f13e0458fc97e11351
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749338"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025221"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapování polí v indexerech Azure Search
 Když pomocí indexerů Azure Search, čas od času najdete sami v situacích, kde vstupní data poměrně neodpovídá schématu cílový index. V takových případech můžete použít **mapování polí** pro transformaci dat do požadované podoby.

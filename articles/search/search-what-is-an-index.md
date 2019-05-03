@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308221"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024426"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Vytvoření základní indexu ve službě Azure Search
 
@@ -54,7 +54,7 @@ Kód, nikoli portálu přístup se doporučuje pro iterativní návrhu. Pokud se
 
 Schéma index Azure Search se skládá z následujících elementů. 
 
-[ *Kolekci pole* ](#fields-collection) je obvykle největší část indexu, kde každé pole má název, typu a s atributy s povolenou chování, které určují, jak se používají. Mezi další prvky patří [moduly pro návrhy](#suggesters), [profily skórování](#scoring-profiles), [analyzátory](#analyzers) pomocí součásti podporující přizpůsobení, a [CORS](#cors) Možnosti.
+[ *Kolekci pole* ](#fields-collection) je obvykle největší část indexu, kde každé pole má název, typu a s atributy s povolenou chování, které určují, jak se používají. Mezi další prvky patří [moduly pro návrhy](#suggesters), [profily skórování](#scoring-profiles), [analyzátory](#analyzers) pomocí součásti podporující přizpůsobení, [CORS](#cors) a [šifrovací klíč](#encryption-key) možnosti.
 
 ```json
 {
@@ -126,6 +126,15 @@ Schéma index Azure Search se skládá z následujících elementů.
   "corsOptions": (optional) {
     "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
     "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
+  },
+  "encryptionKey":(optional){
+    "keyVaultUri": "azure_key_vault_uri",
+    "keyVaultKeyName": "name_of_azure_key_vault_key",
+    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
+    "accessCredentials":(optional){
+      "applicationId": "azure_active_directory_application_id",
+      "applicationSecret": "azure_active_directory_application_authentication_key"
+    }
   }
 }
 ```
@@ -166,7 +175,7 @@ Podrobnější informace o [atributech indexu služby Azure Search najdete tady]
 
 Atributy, které jste vybrali mít vliv na úložiště. Následující snímek obrazovky ukazuje index úložiště vzory vyplývající z různých kombinací atributů.
 
-Index je založen na [ukázkové vestavěné realestate](search-get-started-portal.md) zdroj dat, který může indexování a dotazování na portálu. I když nejsou zobrazeny schémata index, lze odvodit atributů na základě názvu indexu. Například *realestate prohledávatelné* indexu je **prohledávatelné** vybraný atribut a nic jiného, *realestate-retrievable* indexu je  **retrievable** vybraný atribut a nic jiného a podobně.
+Index je založen na [ukázkové vestavěné nemovitosti](search-get-started-portal.md) zdroj dat, který může indexování a dotazování na portálu. I když nejsou zobrazeny schémata index, lze odvodit atributů na základě názvu indexu. Například *realestate prohledávatelné* indexu je **prohledávatelné** vybraný atribut a nic jiného, *realestate-retrievable* indexu je  **retrievable** vybraný atribut a nic jiného a podobně.
 
 ![Index velikost na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "indexu velikost na základě výběru atributu")
 
@@ -203,6 +212,10 @@ Následující možnosti můžete nastavit pro CORS:
   Pokud chcete povolit přístup pro všechny zdroje, zahrnují `*` jako jedna položka v **allowedOrigins** pole. *Toto nastavení nedoporučujeme normy pro produkční vyhledávací služby* ale často je užitečné pro vývoj a ladění.
 
 + **maxAgeInSeconds** (optional): Prohlížeče tato hodnota slouží k určení doby trvání (v sekundách) pro předběžných odpovědí CORS mezipaměti. Musí se jednat o nezáporné celé číslo. Čím větší je tato hodnota, bude lepší výkon, ale tím déle bude taky trvat změny zásad CORS se projeví. Pokud není nastavená, použije se výchozí hodnota 5 minut.
+
+## <a name="encryption-key"></a>Šifrovací klíč
+
+Při všech indexů Azure search se šifrují ve výchozím nastavení používání klíčů spravovaná Microsoftem, indexy můžete nakonfigurovaný k šifrování s **klíče spravované zákazníkem** ve službě Key Vault. Další informace najdete v tématu [správu šifrovacích klíčů ve službě Azure Search](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Další postup
 

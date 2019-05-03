@@ -1,0 +1,53 @@
+---
+title: Nejčastější dotazy k přímé řádku řeči
+titleSuffix: Azure Cognitive Services
+description: Získejte odpovědi na oblíbené otázky o hlasové první virtuální Asistenti pomocí kanálu s přímým přístupem řádku řeči.
+services: cognitive-services
+author: trrwilson
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: conceptual
+ms.date: 05/02/2019
+ms.author: travisw
+ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025893"
+---
+# <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>První hlasové virtuálních asistentů ve verzi Preview: Nejčastější dotazy
+
+Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si [další možnosti podpory](support.md).
+
+## <a name="general"></a>Obecné
+
+**Otázka: Co je přímé řádku řeči?**
+
+**Odpověď:** `SpeechBotConnector` z sadou SDK pro řeč poskytuje obousměrné, asynchronní komunikaci s roboty, které jsou připojeny k přímé řeči řádek kanál na rozhraní Bot Framework. Tento kanál obsahuje koordinovat přístup k rozpoznávání řeči na text a převod textu na řeč z hlasové služby Azure, které umožňují robotům budou plně plaformu, hlasové si konverzační prostředí. Díky podpoře pro probuzení slova a funkce ověřování aplikace Word toto řešení umožňuje vytvářet vysoce přizpůsobitelné hlasové první virtuální pomocníci pro vaší značce nebo produktu.
+
+**Otázka: Jak mám začít?**
+
+**Odpověď:** Nejlepším způsobem začneme vytvořením virtuálních asistentů hlasu na prvním je začít s [vytvoření základního robota Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Dalším krokem je propojení robotům, aby [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+
+## <a name="debugging"></a>Ladění
+
+**Otázka: Při připojování se zobrazí chyba 401 a nic funguje. Vím, že můj klíč předplatného řeči je platný. Co se děje?**
+
+**Odpověď:** Ve verzi preview má přímý řeči řádku velmi konkrétní omezení na předplatné použité. Zkontrolujte, že používáte **řeči** prostředků (Microsoft.CognitiveServicesSpeechServices, "Speech") a *není* **služeb Cognitive Services** prostředků ( Microsoft.CognitiveServicesAllInOne, "Všechny služby Cognitive Services"). Navíc Upozorňujeme pouze **westus2** oblast je aktuálně nepodporuje.
+
+![Opravte předplatné pro přímou linku řeči](media/voice-first-virtual-assistants/faq-supported-subscription.png "příklad kompatibilní předplatného řeči")
+
+**Otázka: Můžu vrátit rozpoznávání textu z přímé řeči řádku, ale zobrazí chyba "1011", ale nic z mé robota. Proč?**
+
+**Odpověď:** Tato chyba označuje s komunikací mezi robotů a přímé řádku řeči. Ujistěte se, že jste [připojené přímé řeči řádek kanál](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md), [přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) bot (s podporou související webové sokety) a potom zkontrolujte, jestli váš robot reaguje na příchozí požadavky z tohoto kanálu.
+
+**Otázka: To pořád nefunguje a/nebo dochází k jiné chybě při použití SpeechBotConnector a není jasné, co mám dělat. Co *by měl* můžu dělat?**
+
+**Odpověď:** Protokolování souborů poskytuje podstatně více podrobností a pomáhají zrychlit žádosti o podporu. Chcete-li povolit, přečtěte si téma [použití protokolování do souboru](how-to-use-logging.md).
+
+## <a name="next-steps"></a>Další postup
+
+* [Řešení potíží](troubleshooting.md)
+* [Poznámky k verzi](releasenotes.md)

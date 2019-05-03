@@ -8,24 +8,24 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 2a245a6e3d76a7df41b5ef28f9bac8a2c2122402
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f05161dbbfd9293cd7b1cbf447bb7ca1c313250c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127048"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023450"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Kognitivní dovednosti rozpoznávání entit
 
 **Rozpoznávání entit** dovednosti z textu extrahuje entit různých typů. Tato dovednosti pomocí strojového učení modelů poskytované [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) ve službě Cognitive Services.
 
 > [!NOTE]
-> Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
+> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> [Integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) spuštění, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejné přenosové rychlosti, jako by měl provést úlohu přímo. Extrakce Image je poplatek za Azure Search, v současné době nabízena na ceny verze preview. Podrobnosti najdete v tématu [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) nebo [fakturace](search-sku-tier.md#how-billing-works).
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -56,8 +56,8 @@ Toto jsou entity, které jsou dobře známé, ale nejsou klasifikovány jako sou
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-**POZNÁMKA:** Pro všechny jazyky jsou podporovány všechny kategorie entity.
-Pouze _en_, _es_ podporují extrakce `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` typy.
+> [!NOTE]
+> Pro všechny jazyky jsou podporovány všechny kategorie entity. Pouze _en_, _es_ podporují extrakce `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` typy.
 
 | Název výstupního     | Popis                   |
 |---------------|-------------------------------|

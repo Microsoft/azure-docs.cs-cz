@@ -7,15 +7,15 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61296965"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024534"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů pomocí syntaxe "jednoduchý" vyhledávání ve službě Azure Search
 
@@ -50,7 +50,7 @@ Adresa URL sestavení obsahuje následující prvky:
 + **`https://azs-playground.search.windows.net/`** Vyhledávací služba izolovaného prostoru udržuje vývojový tým Azure Search. 
 + **`indexes/nycjobs/`** je index NYC Jobs v kolekci indexů této služby. Název služby a index se vyžadují v požadavku.
 + **`docs`** je kolekce dokumenty obsahující všechny prohledávatelný obsah. Dotazu api-key zadaný v hlavičce žádosti funguje pouze na operace čtení, které cílí na kolekce dokumentů.
-+ **`api-version=2017-11-11`** Nastaví verzi api-version, což je povinný parametr u každého požadavku.
++ **`api-version=2019-05-06`** Nastaví verzi api-version, což je povinný parametr u každého požadavku.
 + **`search=*`** řetězec dotazu, který počátečního dotazu má hodnotu null, vrátí prvních 50 výsledky (ve výchozím nastavení).
 
 ## <a name="send-your-first-query"></a>Odeslat svůj první dotaz
@@ -60,7 +60,7 @@ Jako ověřovací krok, vložte následující požadavek do GET a klikněte na 
 Vložte tuto adresu URL do klienta REST jako krok ověření a chcete-li zobrazit strukturu dokumentu.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 Řetězec dotazu **`search=*`**, odpovídá neurčené hledání hodnotu null nebo prázdné vyhledávání. Není zvlášť užitečné, ale je nejjednodušší vyhledávání, které vám pomůžou.
@@ -92,7 +92,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
 Odpověď pro tento dotaz by měl vypadat podobně jako na následujícím snímku obrazovky.
@@ -108,13 +108,13 @@ V tomto příkladu je o něco neobvyklé, ale při vyhodnocování chování vyh
 Všechny dokumenty měly jedinečný identifikátor. Vyzkoušet syntaxe vyhledávacího dotazu, nejprve vrátíte seznam ID dokumentu, abyste našli, z nich se má použít. NYC Jobs identifikátory jsou uloženy v `id` pole.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
 Následující příklad je vyhledávací dotaz vrací na základě určitého dokumentu `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", která se nacházela v předchozí odpovědi. Následující dotaz vrátí celý dokument, pouze vybraná pole. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
 ## <a name="example-3-filter-queries"></a>Příklad 3: Filtrování dotazů
@@ -122,7 +122,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 [Syntaxe filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) je výraz OData, který vám pomůže s **hledání** nebo samostatně. Filtr samostatné bez parametrů vyhledávání, je užitečná, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu, neexistuje žádná lexikální nebo jazyková analýza bez výsledků (všechny hodnoty jsou 1) a žádné řazení. Všimněte si, že se že hledaný řetězec je prázdný.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
@@ -138,13 +138,13 @@ Použijí společně, filtr je na celý index použije první, a pak provede vyh
 Pokud chcete v nástroji Postman, pomocí GET to vyzkoušet, můžete vložit do tento řetězec:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
 Další efektivní způsob, jak kombinovat filtru a vyhledávání je prostřednictvím **`search.ismatch*()`** ve výrazu filtru, kde můžete použít vyhledávací dotaz v rámci filtru. Tento výraz filtr používá zástupný znak na *plán* vyberte business_title včetně plánu termín, planner, plánování a tak dále.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
 Další informace o této funkci najdete v části [search.ismatch v "Příklady filtrů"](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
@@ -158,7 +158,7 @@ Datové typy jsou důležité pro filtry rozsahu a fungují lépe, když je čí
 Následující příklady jsou ve formátu POST pro lepší čitelnost (číselného rozsahu, za nímž následuje rozsah textu):
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
@@ -171,7 +171,7 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
@@ -186,11 +186,11 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 Můžete také vyzkoušet tyto v nástroji Postman, pomocí GET:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
 ```
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
 ```
 
 > [!NOTE]
@@ -203,7 +203,7 @@ Ukázkového indexu zahrnuje pole geo_location pomocí zeměpisné šířky a d�
 V následujícím příkladu je ve formátu POST pro lepší čitelnost:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
@@ -216,7 +216,7 @@ Výsledky hledání jsou výsledků dosáhnete lépe čitelný, oříznut ID úl
 Můžete také vyzkoušet to v nástroji Postman, pomocí GET:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
 ## <a name="example-6-search-precision"></a>Příklad 6: Hledání přesnosti
@@ -226,19 +226,19 @@ Termín dotazy jsou jedněch podmínkách, možná spousta z nich, které vyhodn
 Příklad 1: **`&search=fire`** vrátí výsledky, 150, pokud obsahují všechny shody fire slovo někde v dokumentu.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
 Příklad 2: **`&search=fire department`** vrátí 2002 výsledky. Shody jsou vráceny pro dokumenty, které obsahují fire nebo oddělení.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire department
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
 Příklad 3: **`&search="fire department"`** vrátí 82 výsledky. Vnější řetězec v uvozovkách je verbatim hledání na oba výrazy a shoda nenajde na tokenizovaná podmínky v indexu skládající se z kombinované podmínky. To vysvětluje, proč vyhledávání jako **`search=+fire +department`** není ekvivalentní. Oba výrazy jsou povinné, ale vyhledávají, nezávisle na sobě. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
 ## <a name="example-7-booleans-with-searchmode"></a>Příklad 7: Logických hodnot s searchMode
@@ -248,7 +248,7 @@ Jednoduchá syntaxe podporuje logické operátory ve formě znaků (`+, -, |`). 
 Pomocí searchMode výchozí (všechny), se vrátí 2800 dokumenty: těch, které obsahují více částí termín "fire oddělení" a navíc všechny dokumenty, které nemají termín "Metrotech Center".
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
   ![Hledat všechny režimu](media/search-query-simple-examples/searchmodeany.png)
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Změna searchMode k `all` vynucuje kumulativní efekt na kritériích a vrátí menší sadu výsledků – 21 dokumentů - skládající se z dokumenty, které obsahují celou frázi "fire oddělení" minus tyto úlohy na adrese Metrotech Center.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
   ![režim hledání všech](media/search-query-simple-examples/searchmodeall.png)
 
@@ -265,24 +265,24 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Několik parametrů řídit, která pole jsou v hledání výsledků, počet dokumentů v každé dávky a pořadí řazení. V tomto příkladu resurfaces některé z předchozích příkladů omezení výsledků na konkrétní pole pomocí **$select** příkazu a kritéria hledání verbatim vrácení 82 shody 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
 Připojí na předchozí příklad, můžete seřadit podle názvu. Tento typ funguje, protože je civil_service_title *seřaditelné* v indexu.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
 Výsledky stránkování je implementováno pomocí **$top** parametrů v tomto případě vrátí prvních 5 dokumenty:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
 Pokud chcete získat další 5, přeskočte první dávky:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307960"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024341"
 ---
 # <a name="data-import-overview---azure-search"></a>Import dat přehled – Azure Search
 
@@ -63,9 +63,9 @@ Import dat pomocí sady .NET SDK, (odeslání, sloučení, odstranění a mergeO
 ### <a name="formulate-your-query"></a>Formulování dotazu
 Existují dva způsoby [vyhledávání v indexu pomocí REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
 
-U metody POST i GET budete muset v URL požadavku poskytnout *název služby*, *název indexu* a správnou *verzi rozhraní API* (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2017-11-11`). U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
+U metody POST i GET budete muset v URL požadavku poskytnout *název služby*, *název indexu* a správnou *verzi rozhraní API* (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2019-05-06`). U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
 
 Formát pro metodu POST je stejný, ale jako parametr řetězce dotazu obsahuje pouze api-version.
 
@@ -76,7 +76,7 @@ Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do va�
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
-+ [Azure SQL Database a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Databáze Azure SQL a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Indexery propojují index se zdrojem dat (obvykle tabulka, zobrazení nebo ekvivalentní struktura) a mapují pole zdroje na odpovídající pole v indexu. Během provádění je sada řádků automaticky převedena na formát JSON a načtena do určeného indexu. Všechny indexery podporují plánování, takže můžete určit, jak často se data budou aktualizovat. Většina indexerů umožňuje sledování změn dat, pokud ho zdroj dat podporuje. Indexery sledují změny a odstranění ve stávajících dokumentech a rozpoznávají nové dokumenty, a díky tomu není potřeba aktivně spravovat data v indexu. 
 

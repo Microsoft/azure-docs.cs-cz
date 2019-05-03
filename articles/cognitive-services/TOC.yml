@@ -27,6 +27,8 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://cognitive.uservoice.com/'
     - name: Pravidla chování
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
     - name: Znalostní báze

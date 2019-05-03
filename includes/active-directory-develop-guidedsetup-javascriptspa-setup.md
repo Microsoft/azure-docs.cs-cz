@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: da2477b19327273fe922ac81f909233cb4ef8f06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 805b773795e7c8a96fe1b94abecd860475a4c7a1
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297881"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993289"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
 > Stáhněte si tento ukázkový projekt místo toho raději?
-> - [Stáhnout soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) pro místní webový server, jako je například uzel
+> - [Stáhnout soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) pomocí místního webového serveru, jako je například uzel
 >
 > nebo
-> - [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+> - (Volitelné) [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip) pomocí serveru služby IIS
 >
 > A potom přejděte ke [potřeba provádět krok konfigurace](#register-your-application) konfigurace ukázkového kódu před jeho provedením.
 
@@ -63,8 +63,7 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
    <head>
        <title>Quickstart for MSAL JS</title>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.js"></script>
-       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0-preview.4/js/msal.js"></script>
    </head>
    <body>
        <h2>Welcome to MSAL.js Quickstart</h2><br/>
@@ -77,3 +76,6 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
    </body>
    </html>
    ```
+
+   > [!TIP]
+   > Verze MSAL.js v nad skriptu můžete nahradit nejnovější vydanou verzi v části [uvolní MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344497"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024586"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
@@ -28,8 +28,7 @@ Pokud váš kanál se skládá z dovednosti, které nesouvisí se rozhraní API 
 > [!NOTE]
 > Jak rozbalit obor zvýšením počtu zpracování, přidáním více dokumentů nebo přidání další algoritmy AI, musíte připojit fakturovatelné prostředku služeb Cognitive Services. Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
 >
-> Provádění [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) spuštění, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services), na stejná sazba jako by měl provést úlohu přímo. Extrakce Image je poplatek za Azure Search, projeví na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
-
+> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 ## <a name="use-free-resources"></a>Použití uvolnění prostředků
 
@@ -100,7 +99,7 @@ Když definujete zkušenostech prostřednictvím kódu programu, přidejte `cogn
 Následující příklad ukazuje tento model. Všimněte si části cognitiveServices v dolní části definice
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -110,7 +109,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -142,7 +141,7 @@ Pokud chcete odhadnout náklady spojené s využitím kognitivního vyhledáván
 + Jednu image pro každou stránku (6000 imagí)
 + 3000 znaků na jednu stránku
 
-Předpokládejme kanálu, který se skládá z dokumentu analýzy každého souboru PDF s obrázků a textu extrakce, optické rozpoznávání znaků (OCR) imagí a s názvem rozpoznávání entit organizací. 
+Předpokládejme kanál sestávající z dokumentu hádání každý soubor PDF s obrázků a textu extrakce, optické rozpoznávání znaků (OCR) imagí a rozpoznávání entit organizací. 
 
 V tomto cvičení používáme nejdražší cena za transakce. Skutečné náklady by mohla být nižší z důvodu jsou odstupňované ceny. Zobrazit [ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services).
 

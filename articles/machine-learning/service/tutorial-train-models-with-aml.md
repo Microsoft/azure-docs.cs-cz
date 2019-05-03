@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 76567db7362298b5cd35b544bf7952ebc54a2b66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723201"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021729"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -45,31 +45,29 @@ Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámk
 * Server poznámkového bloku Python 3.6 s nainstalované tyto položky:
     * Azure Machine Learning sady SDK pro Python
     * `matplotlib` a `scikit-learn`
-* Výukový program Poznámkový blok a utils.py souboru
-* Pracovní prostor machine learning 
-* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako poznámkového bloku 
+* Výukový program Poznámkový blok a soubor **utils.py**
+* Pracovní prostor machine learning
+* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako poznámkového bloku
 
 Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
  
-* Použití [poznámkových bloků Azure](#azure) 
+* Použití [server poznámkového bloku cloudu ve vašem pracovním prostoru](#azure) 
 * Použití [serveru poznámkového bloku](#server)
 
-### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
+### <a name="azure"></a>Použít server poznámkového bloku cloudu ve vašem pracovním prostoru
 
-Je snadné začít s poznámkovými bloky Azure! [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
-
-Po dokončení následujících kroků spustit **kurzy/img – klasifikace – část 1 – training.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
+Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) již nainstalován a nakonfigurován pro vás, když vytvoříte tento prostředek v cloudu.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* Po spuštění webové stránky Poznámkový blok otevřete **kurzy/img – klasifikace – část 1 – training.ipynb** poznámkového bloku.
 
 
 ### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
 
-Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači. 
-
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
- Po dokončení kroků, spusťte **kurzy/img – klasifikace – část 1 – training.ipynb** poznámkového bloku.
+ Po dokončení kroků, spusťte **kurzy/img – klasifikace – část 1 – training.ipynb** Poznámkový blok z naklonovaného adresáře.
 
 ## <a name="start"></a>Nastavení vývojového prostředí
 

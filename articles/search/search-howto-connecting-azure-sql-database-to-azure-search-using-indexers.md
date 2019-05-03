@@ -1,7 +1,7 @@
 ---
 title: Připojení a indexování Azure SQL Database obsahu pomocí indexerů – Azure Search
 description: Zjistěte, jak k procházení dat ve službě Azure SQL Database pro fulltextové vyhledávání ve službě Azure Search pomocí indexerů. Tento článek se týká připojení, konfigurace indexeru a přijímat data.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817163"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025346"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Připojte se k a indexování Azure SQL Database obsahu pomocí indexerů Azure Search
 
@@ -63,7 +63,7 @@ V závislosti na několika různými faktory týkající se vašich dat použijt
 1. Vytvoření zdroje dat:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
+    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -82,7 +82,7 @@ V závislosti na několika různými faktory týkající se vašich dat použijt
 3. Vytvoření indexeru tak, že ho pojmenujete a odkazuje na index zdroj a cíl dat:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -95,7 +95,7 @@ V závislosti na několika různými faktory týkající se vašich dat použijt
 
 Indexer vytvořené v tomto případě nemá plán. Automaticky spustí, až když je vytvořena. Můžete ji spustit znovu kdykoliv **spustit indexer** žádosti:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
     api-key: admin-key
 
 Můžete přizpůsobit několik aspektů indexer chování, jako je například velikost dávky a kolik dokumentů mohou být přeskočeny, předtím, než se nezdaří spuštění indexeru. Další informace najdete v tématu [vytvořit Indexer API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
@@ -104,7 +104,7 @@ Budete muset povolit službám Azure pro připojení k vaší databázi. Zobrazi
 
 K monitorování indexer stavu a spouštění historie (počet položek indexovaných, chyby atd.), použijte **indexer stav** žádosti:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
     api-key: admin-key
 
 Odpověď by měl vypadat nějak takto:
@@ -146,7 +146,7 @@ Další informace o odpovědi můžete najít v [získání stavu indexeru](http
 ## <a name="run-indexers-on-a-schedule"></a>Indexery spouštět podle plánu
 Můžete také uspořádat indexer pravidelné spouštění podle plánu. Chcete-li to provést, přidejte **plán** vlastnost při vytváření nebo aktualizaci indexeru. Následující příklad ukazuje požadavek PUT aktualizovat indexer:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -168,7 +168,7 @@ Zvažte následující příklad to lze provést konkrétnější. Předpokláde
 
 Stane se toto:
 
-1. Dojde k prvnímu spuštění indexeru začíná na nebo okolo 1. března 2015 12:00 dop. UTC.
+1. Dojde k prvnímu spuštění indexeru začíná na nebo okolo 1. března 2015 12:00 dop. (UTC).
 2. Předpokládejme, že toto spuštění trvá 20 minut (nebo vždy menší než 1 hodina).
 3. Spuštění druhého začíná na nebo okolo 1. března 2015 1:00 dop.
 4. Nyní předpokládejme, že toto spuštění trvá déle než hodinu – například 70 minut – tak, aby nedokončí přibližně 2:10:00

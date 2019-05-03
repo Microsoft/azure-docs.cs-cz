@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193093"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024639"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
 Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**,  **Standardní**, nebo **optimalizované pro úložiště** cenové úrovně.
@@ -50,7 +50,10 @@ Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a d
 | Prostředek | Free | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |10 |10 |
-| Maximální počet polí na indexu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maximální jednoduché polí v indexu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maximální komplexní kolekci polí v indexu |40 |40 |40 |40 |40 |40 |40 |40 |
+| Maximální počet prvků přes všechny kolekce komplexních v jednom dokumentu |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Maximální hloubka komplexní polí |10 |10 |10 |10 |10 |10 |10 |10 |
 | Maximální [moduly pro návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) každý index |1 |1 |1 |1 |1 |1 |1 |1 |
 | Maximální [profily skórování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) každý index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximální funkce podle profilů. |8 |8 |8 |8 |8 |8 |8 |8 |

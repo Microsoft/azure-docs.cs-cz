@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344202"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023873"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Způsob vytvoření odkazu poznámky v dovedností kognitivního vyhledávání
 
@@ -36,13 +36,13 @@ Před kontrola syntaxe, Vraťme se k pár důležitých konceptů k lepšímu po
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>Příklad 1: Odkaz na jednoduché poznámku
 
-Ve službě Azure Blob storage Předpokládejme, že máte celou řadu soubory, které obsahují odkazy na jména osob, které mají být extrahovány pomocí rozpoznávání pojmenovaných entit. V definici dovednosti níže `"/document/content"` textovou reprezentaci celého dokumentu a "osob" je extrakci úplné názvy pro entity identifikované jako osoby.
+Ve službě Azure Blob storage Předpokládejme, že máte celou řadu soubory, které obsahují odkazy na jména osob, které mají být extrahovány pomocí rozpoznávání entit. V definici dovednosti níže `"/document/content"` textovou reprezentaci celého dokumentu a "osob" je extrakci úplné názvy pro entity identifikované jako osoby.
 
 Protože je výchozí kontext `"/document"`, seznam lidí, kteří teď může odkazovat jako `"/document/people"`. V tomto konkrétním případě `"/document/people"` je poznámka, která může nyní být namapováno na pole v indexu, nebo použít v jiné dovednosti v stejné dovednosti.
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [

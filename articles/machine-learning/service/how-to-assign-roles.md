@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 2/20/2019
+ms.date: 02/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5cc86c40f56cee28ff6a6912acd67961285bffc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820056"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025313"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Spravovat přístup k pracovnímu prostoru Azure Machine Learning
 
@@ -67,7 +67,7 @@ Pokud předdefinované role nestačí, můžete vytvořit vlastní role. Může 
 
 Chcete-li vytvořit vlastní roli, nejprve vytvořte role definiční soubor JSON, který určuje oprávnění a obor pro roli. Následující příklad definuje vlastní roli s názvem "Mezi odborníky přes Data" oboru na úrovni konkrétní pracovní prostor:
 
-`data_scientist_role.json` :
+:`data_scientist_role.json`
 ```json
 {
     "Name": "Data Scientist",

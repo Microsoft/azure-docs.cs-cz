@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: e4849487c2dd9330dbf9e6b6cf0ed4d1b6b96020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f773cd298c8faaac90b30d88a74e8ddcb51c3afa
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637514"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021953"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Dovednosti nepoužívané Kognitivního vyhledávání
 
@@ -31,7 +31,7 @@ Tento dokument popisuje kognitivní dovednosti, které se považují za zastaral
 
 ### <a name="last-available-api-version"></a>Poslední dostupná verze rozhraní api
 
-2017-11-11-preview
+2019-05-06-Preview
 
 ### <a name="end-of-support"></a>Ukončení podpory
 
@@ -43,7 +43,8 @@ Use [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity
 
 Migrace na [dovednosti rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jeden nebo více z následujících změn do definice dovedností. Můžete aktualizovat definici dovednosti pomocí [aktualizovat rozhraní API dovednosti](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
-_Poznámka:_ Skóre spolehlivosti jako koncept v současné době se nepodporuje. Bude podporovat v blízké budoucnosti. `minimumPrecision` Parametr existuje na `EntityRecognitionSkill` pro budoucí použití a zpětné kompatibility.
+> [!NOTE]
+> Skóre spolehlivosti jako koncept v současné době se nepodporuje. `minimumPrecision` Parametr existuje na `EntityRecognitionSkill` pro budoucí použití a zpětné kompatibility.
 
 1. *(Povinné)*  Změnit `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` k `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 

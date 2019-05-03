@@ -9,57 +9,101 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 12/12/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 620dbd22613df37fdc3c20e34906684446b2251f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cba01b5ad5c2cfea32f1faa6cb67c5ce7ee98fcd
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821169"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024907"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
-Automatizované machine learning je proces trvá trénovacích dat pomocí funkce definovanému cíli a provede iterace přes kombinace algoritmy a výběry funkcí automaticky vybrat nejlepší model pro data podle skóre školení. Tradiční strojového učení proces vývoje modelu je velmi náročná a vyžaduje investice významné domény znalostní báze a čas ke spuštění a porovnávat výsledky desítky modely. Automatizované strojového učení zjednodušuje tento proces vygenerováním modelů, která je vyladěná z cíle a omezení, které jste definovali pro experiment, jako je čas potřebný pro experiment ke spuštění nebo které modelů blokovaných.
+Automatizované strojové učení, které jsou také označovány jako AutoML, umožňuje datovým vědcům, analytiky a vývojáři k sestavení modelů ML s vysokou škálovatelností, efektivity a produktivity vše při udržování kvality modelu. 
 
-## <a name="how-it-works"></a>Jak to funguje
+Automatizované ML vytvoří sadu automaticky, inteligentně výběr modelů pro trénování modelů ML a následně doporučí toho nejlepšího za vás. Tradiční strojového učení vývoje modelů je náročné vyžadující významné znalosti a čas vytvoření a porovnat desítky modely. Automatizované ml budete zrychlení čas potřebný k získání skvělé snadnou a efektivní modelů ML připravené pro produkční prostředí.
 
-1. Nakonfigurujete typ problému machine learning, který se snažíte vyřešit. Kategorie učení se podporují:
-   + Klasifikace
-   + Regrese
-   + Prognózování
+Na pozadí trénovacích dat provést s funkcí definovanému cíli a monetizace provést při iteraci pomocí kombinace algoritmů ML a výběry funkcí. Potom podle skóre školení, nejlépe vybavené modelu je identifikovat a doporučujeme vám. 
 
-   Při automatizované machine learning je obecně dostupná, **prognóz funkce je stále ve verzi public preview.**
+Budete mít stále kontrolu nad experiment a přehled o tom, co se děje. Můžete definovat omezení a experimentů na základě času, přesnost nebo počet iterací, třeba cílů. Uvidíte každý model, který byl vygenerován pro experiment, tok školení pro každou iteraci a největší vliv funkce pro daný model.
 
-   Zobrazit [seznamu modelů](how-to-configure-auto-train.md#select-your-experiment-type) Azure Machine Learning můžete zkusit při cvičení.
+## <a name="how-automated-ml-works"></a>Funguje jak automatizované ML
 
-1. Můžete zadat zdroj a formát pro trénovací data. Data musí být označeny a mohou být uloženy ve svém vývojovém prostředí nebo ve službě Azure Blob Storage. Pokud jsou data uložená ve svém vývojovém prostředí, musí být ve stejném adresáři jako trénovací skripty. Tento adresář je zkopírován do cílové výpočetní prostředí, které vyberete pro vzdělávání.
+Pomocí **služby Azure Machine Learning**, můžete navrhnout a spustit vaše automatizované školení experimenty ML tímto postupem:
 
-    Ve skriptu školení lze data načíst do Numpy pole nebo Pandas dataframe.
+1. **Zjistěte, co problém ML** mají být vyřešeny: klasifikace, Prognózování nebo regrese
+   
+1. **Zadat zdroj a formát s popiskem trénovacích dat**: Pole Numpy nebo Pandas dataframe
 
-    Můžete provést konfiguraci možností rozdělení pro výběr školení a ověření dat, nebo můžete zadat samostatné školení a ověřování datových sad.
+1. **Konfigurace cílové výpočetní prostředí k tréninku modelu**, jako například vaše [místního počítače, Azure Machine Learning vypočítá, vzdálených virtuálních počítačích nebo Azure Databricks](how-to-set-up-training-targets.md).  Další informace o automatické školení [vzdáleného prostředku](how-to-auto-train-remote.md).
 
-1. Konfigurace [cílové výpočetní prostředí](how-to-set-up-training-targets.md) , který se používá pro trénování modelu.
+1. **Konfigurace automatizovaného strojového učení parametry** , které definují, kolik iterací prostřednictvím různých modelů, nastavení hyperparameter pokročilé předběžného zpracování a snadné a které metriky se podívat na při určování nejlepší model.  Můžete nakonfigurovat nastavení pro automatické výukového experimentu [na webu Azure portal](how-to-create-portal-experiments.md) nebo [pomocí sady SDK](how-to-configure-auto-train.md).
 
-1. Nakonfigurujte konfiguraci automatizované machine learning. Tato volba určuje parametry používané jako Azure Machine Learning Iteruje přes různé modely hyperparameter nastavení, a které metriky se podívat na při určení nejvhodnějšího modelu
+1. **Odešlete školení spustit.** 
 
-1. Odešlete školení spustit.
-
-Při školení, vytvoří službu Azure Machine Learning počet kanálů, které se pokoušejí různé algoritmy a parametry. Zastaví se po volání počtu iterací, které poskytnete, nebo když dosáhne cílové hodnoty pro metriku, kterou zadáte.
 
 [![Automatizované Machine learning](./media/how-to-automated-ml/automated-machine-learning.png)](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
 
-Můžete si prohlédnout protokolu spuštění informace, které obsahuje metriky shromážděné za běhu. Spuštění trénovací také vytvoří objekt serializován Python (`.pkl` souboru), který obsahuje model a předzpracování dat.
+Při školení, vytvoří službu Azure Machine Learning počet kanálů, které se pokoušejí různé algoritmy a parametry. Zastaví se po volání ukončit kritéria definovaná v experimentu. 
 
+Můžete také zkontrolovat zaznamenané spuštění informace, které obsahuje metriky shromážděné za běhu. Školení vznikly Python serializovat objekt (`.pkl` souboru), který obsahuje model a data předběžného zpracování.
+
+
+Při vytváření modelů je automatické, můžete také [zjistěte, jak důležité nebo užitečné funkce jsou](how-to-configure-auto-train.md#explain) pro generované modely. 
+
+> [!VIDEO https://www.youtube.com/embed/l8c-4iDPE0M]
+
+<a name="preprocess"></a>
+
+## <a name="preprocessing"></a>Předzpracování
+
+V každé automatizované experimentu strojového učení je Předzpracovaný vašich dat pomocí výchozí metody a volitelně prostřednictvím pokročilého předběžného zpracování.
+
+### <a name="automatic-preprocessing-standard"></a>Automatické předběžného zpracování (standard)
+V každé automatizované experimentu strojového učení vaše data automaticky škálovat nebo normalizovány na Nápověda algoritmy dobře fungují.  Při tréninku modelu, jeden z následujících postupů škálování nebo normalizace se použijí pro každý model.
+
+|Škálování&nbsp;&&nbsp;normalizace| Popis |
+| ------------- | ------------- |
+| [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizovat funkce odebráním střední a škáluje se na odchylky jednotky  |
+| [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Funkce transformuje Škálováním každé funkce tak, že minimum a maximum tento sloupec  |
+| [MaxAbsScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |    Můžete škálovat jednotlivé funkce maximální absolutní hodnota |  
+| [RobustScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |   Tato funkce Scaler podle jejich rozsah quantile |
+| [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) | Lineární snížení projekt k nižší rozměrného prostoru pomocí singulární rozložené hodnota dat. | 
+| [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |    Tato transformace provádí lineární snížení prostřednictvím zkrácená hodnota singulární rozložené (SVD). Rozporu PCA tento odhad není datacentra data před computingu rozložené singulární hodnotu. To znamená, že ho můžete efektivně spolupracovat s scipy.sparse matice | 
+| [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Každá ukázka (to znamená, že každý řádek v matici dat) se alespoň jedna součást nenulové je měřítka nezávisle na ostatních vzorků tak, aby jeho norm (l1 nebo l2) má jednu | 
+
+### <a name="advanced-preprocessing-optional-featurization"></a>Pokročilé předběžného zpracování: volitelné snadné
+
+K dispozici, například chybějící hodnoty imputace, kódování a transformace jsou taky další pokročilé předběžného zpracování a snadné. [Další informace o tom, jaké snadné je součástí](how-to-create-portal-experiments.md#preprocess). Povolením tohoto nastavení se:
++ Azure portal: Výběr **předzpracování** zaškrtávací políčko ve **upřesňující nastavení** [tímto postupem](how-to-create-portal-experiments.md). 
++ Python SDK: Určení `"preprocess": True` pro [ `AutoMLConfig` třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+## <a name="ensemble-models"></a>Modely skupiny stromů
+
+Trénovat modely komplet pomocí automatizovaných machine learning s [algoritmus výběru skupiny stromů Caruana s inicializací seřazený komplet](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf). Komplet learning zlepšuje výsledky machine learning a prediktivní výkon kombinace mnoha modelů na rozdíl od použití jedné modelů. Komplet iterace se zobrazí jako poslední iteraci spuštění.
+
+## <a name="use-with-onnx-in-c-apps"></a>Použití s ONNX v C# aplikace
+
+Pomocí služby Azure Machine Learning slouží k sestavení modelu Python a jeho převodu do formátu ONNX automatizované ML. Podporuje modul runtime ONNX C#, abyste mohli použít model sestavený automaticky ve vaší C# aplikace bez nutnosti pro nahrávání nebo některý z síťovou latenci, které zavádějí koncové body REST. Zkuste příkladem tento tok [v tento poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-with-onnx/auto-ml-classification-with-onnx.ipynb).
+
+## <a name="automated-ml-across-microsoft"></a>Automatizované ML rámci společnosti Microsoft
+
+Automatizované ML je také dostupná v dalších řešení Microsoftu, jako:
++ V aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/what-is-mldotnet)
++ [V HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md), kde horizontální navýšení kapacity automatizované ML trénovací úlohy ve Sparku v clusterech HDInsight paralelně. 
++ [V Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)
 
 ## <a name="next-steps"></a>Další postup
 
 Podívejte se na příklady a další informace o vytváření modelů pomocí automatizované Machine Learning:
 
-+ [Kurz: Automaticky vyškolíme model klasifikace pomocí automatizované Azure Machine Learning](tutorial-auto-train-models.md)
++ Postupujte podle [kurzu: Automaticky vyškolíme model klasifikace pomocí automatizované Azure Machine Learning](tutorial-auto-train-models.md)
 
-+ [Ukázky poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
++ Nakonfigurujte nastavení pro automatické výukového experimentu: 
+   + V rozhraní Azure portal [postupujte podle tohoto návodu](how-to-create-portal-experiments.md).
+   + Pomocí sady Python SDK [postupujte podle tohoto návodu](how-to-configure-auto-train.md).
+  
+ + Zjistěte, jak automaticky pomocí dat časových řad, trénování [postupujte podle tohoto návodu](how-to-auto-train-forecast.md).
 
-+ [Použít automatické školení na vzdálený prostředek](how-to-auto-train-remote.md)
-
-+ [Konfigurace nastavení pro automatické školení](how-to-configure-auto-train.md)
++ Vyzkoušejte si [ukázky Poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/06/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283346"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024504"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search
 
@@ -43,11 +43,8 @@ Standardy dodržování předpisů se vztahuje na funkce obecně dostupná. Při
 | Vrstva zabezpečení | Popis |
 |----------------|-------------|
 | Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Služba Azure Search naslouchá na portu HTTPS 443. Napříč platformami jsou šifrované připojení ke službám Azure. <br/><br/>Všechny interakce klienta služby Azure Search jsou schopné SSL/TLS 1.2.  Nezapomeňte použít TLSv1.2 pro připojení SSL na vaši službu.|
-| Šifrování v klidovém stavu | V procesu indexování bez jakéhokoli dopadu na měřitelné indexování čas dokončení nebo velikost indexu je plně internalized šifrování. Automaticky se objeví na veškeré indexování, včetně na přírůstkové aktualizace, které nejsou šifrovány plně indexu (vytvořené před lednem 2018).<br><br>Interně, je šifrování na základě [šifrování služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
-
-Šifrování je interní do služby Azure Search, s certifikáty a šifrovacích klíčů interně spravuje Microsoft a použít univerzálně. Nelze vypnout nebo zapnout šifrování, spravovat nebo nahradit vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo prostřednictvím kódu programu. 
-
-Šifrování v klidovém stavu ve 24. ledna 2018 jsme představili a platí pro všechny úrovně služby, včetně sdílených služeb (zdarma) ve všech oblastech. Úplné šifrování musí být vyřazen a znovu vytvořen, aby se šifrování na indexy vytvořené před tímto datem. V opačném případě je šifrována pouze nová data přidá za leden 24.
+| Šifrování v klidovém stavu <br>Spravovaná Microsoftem klíče | V procesu indexování bez jakéhokoli dopadu na měřitelné indexování čas dokončení nebo velikost indexu je plně internalized šifrování. Automaticky se objeví na veškeré indexování, včetně na přírůstkové aktualizace, které nejsou šifrovány plně indexu (vytvořené před lednem 2018).<br><br>Interně, je šifrování na základě [šifrování služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Šifrování je interní do služby Azure Search, s certifikáty a šifrovacích klíčů interně spravuje Microsoft a použít univerzálně. Nelze vypnout nebo zapnout šifrování, spravovat nebo nahradit vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo prostřednictvím kódu programu.<br><br>Šifrování v klidovém stavu ve 24. ledna 2018 jsme představili a platí pro všechny úrovně služby, včetně sdílených služeb (zdarma) ve všech oblastech. Úplné šifrování musí být vyřazen a znovu vytvořen, aby se šifrování na indexy vytvořené před tímto datem. V opačném případě je šifrována pouze nová data přidá za leden 24.|
+| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování pomocí klíčů zákazníka spravovat je **ve verzi preview** služby funkce, která není k dispozici zdarma. Pro placené služby, je dostupná jenom pro vyhledávacích služeb vytvořených na nebo za leden 2019 použitím nejnovější preview verze api-version (verze api-version = 2019-05-06-Preview).<br><br>Indexy Azure Search a mapy synonym lze nyní šifrovat v klidovém stavu pomocí klíčů zákazníka spravované klíče ve službě Azure Key Vault. Další informace najdete v tématu [správu šifrovacích klíčů ve službě Azure Search](search-security-manage-encryption-keys.md).<br>Tato funkce se nahradí výchozí šifrování v klidovém stavu, ale místo toho se použijí společně s jeho.<br>Povolení této funkce zvýšit velikost indexu a snížit výkon dotazů. Podle vyjádření data, můžete očekávat nezvýší o 30 – 60 % zrychlení, i když skutečný výkon se bude lišit v závislosti na definici indexu a typy dotazů. Z důvodu této dopad na výkon doporučujeme povolit pouze tuto funkci na indexy, které skutečně potřebujete.
 
 ## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatele v Azure – celé
 

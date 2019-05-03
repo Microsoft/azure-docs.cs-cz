@@ -10,22 +10,24 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 2/22/2019
+ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819228"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024001"
 ---
-# <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
-
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Načtení a čtení dat pomocí sady SDK pro Azure Machine Learning Data Prep
 V tomto článku se naučíte různými způsoby načítání dat pomocí sady SDK pro Azure Machine Learning Data Prep. Referenční dokumentace pro SDK najdete v tématu [přehled](https://aka.ms/data-prep-sdk). Sada SDK podporuje různé funkce příjem dat, včetně:
 
 * Načtení z mnoha typů souborů s analýzy odvozování parametrů (kódování, oddělovač, hlavičky)
 * Převod typu pomocí odvození během načítání souboru
 * Podpora připojení pro MS SQL Server a úložiště Azure Data Lake
+
+> [!Important]
+> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) pro zkoumání dat a přípravy. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
 
 V následující tabulce jsou uvedeny výběru sady funkcí pro načítání dat z běžných typů souborů.
 

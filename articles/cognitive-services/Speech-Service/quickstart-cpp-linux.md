@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 05/02/2019
 ms.author: wolfma
-ms.openlocfilehash: d504e3abe148f1f607d8ee359e182832ec7d19f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7bd0bf135cb20292dc2b6253cdfe901e14b4206
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461421"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020866"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte pro Ubuntu Linux 16.04 nebo 18.04 konzolové aplikace jazyka C++. Použijete sadu Cognitive Services [Speech SDK](speech-sdk.md) k přepisu řeči na text v reálném čase z mikrofonu počítače. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
+V tomto článku vytvoříte C++ konzolové aplikace pro Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). Použijete sadu Cognitive Services [Speech SDK](speech-sdk.md) k přepisu řeči na text v reálném čase z mikrofonu počítače. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.4.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.5.0`.
 
 Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a soubory hlaviček si můžete stáhnout jako soubor tar z https://aka.ms/csspeech/linuxbinary.
 
@@ -39,10 +39,19 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
 1. Ujistěte se, že jsou závislosti sady SDK nainstalované.
 
-   ```sh
-   sudo apt-get update
-   sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-   ```
+   * On Ubuntu:
+
+     ```sh
+     sudo apt-get update
+     sudo apt-get install build-essential libssl1.0.0 libasound2 wget
+     ```
+
+   * Na Debian 9:
+
+     ```sh
+     sudo apt-get update
+     sudo apt-get install build-essential libssl1.0.2 libasound2 wget
+     ```
 
 1. Vyberte adresář, do kterého se mají soubory sady Speech SDK extrahovat, a proměnnou prostředí `SPEECHSDK_ROOT` nastavte tak, aby odkazovala na tento adresář. Tato proměnná umožňuje snadno odkazovat na adresář v budoucích příkazech. Pokud třeba chcete používat adresář `speechsdk` ve svém domovském adresáři, použijte příkaz podobný tomuto:
 
@@ -91,13 +100,13 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 * V systému **x64** (64bitovém systému) spusťte následující příkaz, kterým vytvoříte aplikaci.
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libasound.so.2
   ```
 
 * V systému **x86** (32bitovém systému) spusťte následující příkaz, kterým vytvoříte aplikaci.
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
 ## <a name="run-the-app"></a>Spuštění aplikace

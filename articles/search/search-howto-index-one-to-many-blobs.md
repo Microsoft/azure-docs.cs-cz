@@ -1,7 +1,7 @@
 ---
 title: Objekty BLOB indexu, které obsahují více hledání dokumentů indexu z objektů Blob v Azure indexeru pro fulltextové vyhledávání – Azure Search
 description: Procházejte objekty BLOB Azure pro textový obsah pomocí indexeru Azure Search Blob. Každý objekt blob může obsahovat jeden nebo více dokumentů index Azure Search.
-ms.date: 02/12/2019
+ms.date: 05/02/2019
 author: arv100kri
 manager: briansmi
 ms.author: arjagann
@@ -10,21 +10,18 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
-ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871195"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024653"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Indexování objektů BLOB vytváření více vyhledávání dokumentů
 Ve výchozím nastavení indexeru blob bude považovat za obsah objektu blob jednotné hledání v dokumentech. Některé **parsingMode** hodnoty podporují scénáře, kde jednotlivých objektů blob může vést k více vyhledávání dokumentů. Různé druhy **parsingMode** , která umožňují indexer pro extrahování a více než jeden hledání v dokumentech z objektu blob jsou:
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
-
-> [!IMPORTANT]
-> `jsonLines` režim parsování je ve verzi public preview a neměli byste používat v produkčním prostředí. Další informace najdete v tématu [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
 
 ## <a name="one-to-many-document-key"></a>Klíč dokumentu jeden mnoho
 Každý dokument, který se zobrazuje v indexu Azure Search je jedinečně identifikovaný klíč dokumentu. 
@@ -106,7 +103,7 @@ Pokud chcete nastavit mapování explicitní pole, ujistěte se, že _sourceFiel
 + [Indexery ve službě Azure Search](search-indexer-overview.md)
 + [Indexování služby Azure Blob Storage pomocí služby Azure Search](search-howto-index-json-blobs.md)
 + [Indexování objektů BLOB CSV pomocí indexeru Azure Search blob](search-howto-index-csv-blobs.md)
-+ [Indexování objektů BLOB JSON pomocí indexeru Azure Search blob](search-howto-index-csv-blobs.md)
++ [Indexování objektů BLOB JSON pomocí indexeru Azure Search blob](search-howto-index-json-blobs.md)
 
 ## <a name="NextSteps"></a>Další kroky
 * Další informace o službě Azure Search najdete v tématu [stránku vyhledávací služby](https://azure.microsoft.com/services/search/).

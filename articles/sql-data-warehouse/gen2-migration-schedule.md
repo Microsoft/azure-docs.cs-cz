@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 0d3927fbc1826f9ab4f613a7c2a310f581b7f7c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a5d93a77652f540fde44b33963b13df04b45ecee
+ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729298"
+ms.lasthandoff: 05/01/2019
+ms.locfileid: "64987947"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -67,7 +67,7 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 
-Podle výše uvedených graf dostupnosti, jsme budete plánovat automatické upgrady pro vaše instance Gen1. Pokud chcete vyhnout neočekávaným přerušení na dostupnost datového skladu, bude naplánováno automatizované upgrady během vašeho plánu údržby. Další informace v rámci plánů najdete v tématu [zobrazit plán údržby](viewing-maintenance-schedule.md)
+Podle výše uvedených graf dostupnosti, jsme budete plánovat automatické upgrady pro vaše instance Gen1. Pokud chcete vyhnout neočekávaným přerušení na dostupnost datového skladu, bude naplánováno automatizované upgrady během vašeho plánu údržby. Schopnost vytvářet nové instance Gen1 se deaktivuje v oblastech prochází automatický upgrade na Gen2. Další informace v rámci plánů najdete v tématu [zobrazit plán údržby](viewing-maintenance-schedule.md)
 
 Procesu upgradu bude zahrnovat stručný pokles připojení (přibližně 5 minut), jak jsme restartování služby data warehouse.  Po restartování služby data warehouse je plně k dispozici pro použití. Ale můžete setkat snížení výkonu během procesu upgradu nadále upgrade datové soubory na pozadí. Celková doba pro snížení výkonu se budou lišit závisí na velikosti datových souborů.
 

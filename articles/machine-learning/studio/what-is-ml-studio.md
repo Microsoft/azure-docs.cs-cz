@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345510"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024229"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -29,7 +29,7 @@ Machine Learning Studio je místo, kde se setkává datová věda, prediktivní 
 
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>Interaktivní pracovní prostor Machine Learning Studio
-K vývoji modelu prediktivní analýzy zpravidla použijete data z jednoho nebo více zdrojů, transformujete a analyzujete je prostřednictvím různých statistických funkcí a funkcí pro manipulaci s daty a vygenerujete sadu výsledků. Vývoj takového modelu je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, dokud nebudete přesvědčeni, že máte natrénován efektivní model.
+K vývoji modelu prediktivní analýzy, obvykle používají data z jednoho nebo více zdrojů, transformace a analyzovat tato data prostřednictvím různých statistických funkcí a manipulace s daty a generují sadu výsledků. Vývoj takového modelu je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, dokud nebudete přesvědčeni, že máte natrénován efektivní model.
 
 **Azure Machine Learning Studio** nabízí interaktivní vizuální pracovní prostor, abyste mohli snadno vytvářet, testovat a iterovat model prediktivní analýzy. Při práci přetahujete ***datové sady*** a analytické ***moduly*** na interaktivní ***plátno***, kde je vzájemně propojujete. Tím vzniká experiment, který pak spustíte v nástroji Machine Learning Studio. Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Jakmile budete připraveni, můžete ***výukový experiment*** převést na ***prediktivní experiment*** a publikovat jej jako ***webovou službu***, aby k vašemu modelu měli přístup i jiní uživatelé.
 
@@ -44,7 +44,7 @@ Stáhněte si diagram s **přehledem možností nástroje Machine Learning Studi
 ![Microsoft Azure Machine Learning Studio přehled možností](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Začínáme s nástrojem Machine Learning Studio
-Když poprvé vstoupíte do nástroje [Machine Learning Studio](https://studio.azureml.net), zobrazí se stránka **Domů**. Zde si můžete zobrazit dokumentaci, videa a webináře a najdete tu i další přínosné materiály.
+Když poprvé vstoupíte Machine Learning Studio] (https://studio.azureml.net) uvidíte **Domů** stránky. Zde si můžete zobrazit dokumentaci, videa a webináře a najdete tu i další přínosné materiály.
 
 Vlevo nahoře klikněte na nabídku ![Nabídka](./media/what-is-ml-studio/menu.png) a zobrazí se několik možností.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -87,7 +87,7 @@ Datová sada obsahuje data, která byla nahrána do nástroje Machine Learning S
 * **Data o rakovině prsu** – Diagnostická data rakoviny prsu
 * **Data o lesních požárech** – Rozsahy lesních požárů v severovýchodním Portugalsku
 
-Během vytváření experimentu je možné si vybírat ze seznamu datových sad, které jsou k dispozici v nabídce nalevo od plátna.
+Během vytváření experimentu je možné ze seznamu datových sad, které jsou k dispozici nalevo od plátna.
 
 Seznam ukázkových datových sad obsažených v nástroji Machine Learning Studio, najdete v tématu o [využití ukázkových datových sad v nástroji Azure Machine Learning Studio](use-sample-datasets.md).
 
@@ -111,14 +111,22 @@ Jakmile je váš model prediktivní analýzy připraven, můžete jej přímo v 
 <a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Čím se liší od služby Azure Machine Learning Machine Learning Studio?
 
-[Služba Azure Machine Learning](../service/overview-what-is-azure-ml.md) poskytuje sady SDK a služby, a rychle pro přípravu dat, trénovat a nasazovat modely strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetních funkcí a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. 
+[Služba Azure Machine Learning](../service/overview-what-is-azure-ml.md) poskytuje obě sady SDK **- a -** visual interface(preview), chcete-li rychle pro přípravu dat, trénovat a nasazovat modely machine learningu. Toto rozhraní visual (preview) poskytuje fungují na podobném principu přetahování myší do sady Studio. Na rozdíl od proprietární výpočetní platforma sady Studio, ale vizuální rozhraní používá výpočetních prostředků a je plně integrován do služby Azure Machine Learning.
 
-Machine Learning Studio použijte, pokud chcete rychle a snadno experimentovat s modely strojového učení a předdefinované algoritmy strojového učení jsou pro vaše řešení dostačující.
+Tady je rychlý porovnání.
 
-Službu Machine Learning použijte, pokud pracujete v prostředí Python, chcete mít větší kontrolu nad algoritmy strojového učení nebo chcete použít Open Source knihovny strojového učení.
+|| Machine Learning Studio | Služba Azure Machine Learning:<br/>Vizuální rozhraní|
+|---| --- | --- |
+|| Obecně dostupná (GA) | Ve verzi Preview|
+|Moduly pro rozhraní| mnoho | Počáteční sadu Oblíbené moduly|
+|Cílových výpočetních prostředí pro školení| Cílové výpočetní prostředí proprietární, pouze Podpora procesoru| Podporuje Azure Machine Learning compute, GPU nebo CPU.<br/>(Další výpočetní prostředí nepodporuje v sadě Windows SDK)|
+|Nasazení cílových výpočetních prostředí| Formát vlastnické webové služby, nelze přizpůsobit | Možnosti zabezpečení organizace a službě Azure Kubernetes. <br/>([Další výpočetní prostředí](../service/how-to-deploy-and-where.md) podporováno v sadě Windows SDK) |
+|Cvičení modelu automatizované a hyperparametrů | Ne | Ještě nejsou součástí vizuální rozhraní. <br/> (Podporováno v sadě SDK a Azure portal.) | 
+
+Vyzkoušejte si službu rozhraní visual (preview) [rychlý start: Příprava a vizualizace dat bez psaní kódu](../service/ui-quickstart-run-experiment.md)
 
 > [!NOTE]
-> Modelů sestavených v nástroji Azure Machine Learning Studio nelze nasadit nebo spravované službou Azure Machine Learning.
+> Modely vytvořené v sadě Studio nelze nasadit nebo spravované službou Azure Machine Learning. Modely vytvořené a nasazené ve vizuální rozhraní služby však můžete spravovat prostřednictvím pracovního prostoru služby Azure Machine Learning.
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze
 

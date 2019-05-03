@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290444"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023996"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – nejčastější dotazy (FAQ)
 
@@ -64,7 +64,7 @@ Neexistují žádná omezení týkající se použití primární nebo sekundár
 
 Ne, tato operace není podporována. Hledání je vždy s rozsahem jednoho indexu.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Můžete omezit přístup souhrnu hledání podle identity uživatele?
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Můžete omezit přístup index vyhledávání podle identity uživatele?
 
 Můžete implementovat [filtry zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) s `search.in()` filtru. Filtr lze kombinovat s [služby správy identit, jako je Azure Active prodloužil platnost](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) oříznout výsledky hledání na základě definované členství ve skupině uživatelů.
 
