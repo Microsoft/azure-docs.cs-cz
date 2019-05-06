@@ -129,6 +129,8 @@
           href: platform/activity-log-alerts.md
         - name: Běžné schéma upozornění
           href: platform/alerts-common-schema.md
+        - name: Pravidla akcí
+          href: platform/alerts-action-rules.md
     - name: Vizualizace dat
       href: visualizations.md
     - name: Integrace partnerů
@@ -309,6 +311,29 @@
                   href: app/asp-net.md
                 - name: Monitorování stavu
                   href: app/monitor-performance-live-website-now.md
+                - name: Monitorování stavu v2
+                  href: app/status-monitor-v2-overview.md
+                  items:
+                    - name: Začínáme
+                      href: app/status-monitor-v2-get-started.md
+                    - name: Podrobné pokyny
+                      href: app/status-monitor-v2-detailed-instructions.md
+                    - name: Řešení potíží a známé problémy
+                      href: app/status-monitor-v2-troubleshoot.md
+                    - name: API Disable-InstrumentationEngine
+                      href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                    - name: API Disable-ApplicationInsightsMonitoring
+                      href: app/status-monitor-v2-api-disable-monitoring.md
+                    - name: API Enable-InstrumentationEngine
+                      href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                    - name: API Enable-ApplicationInsightsMonitoring
+                      href: app/status-monitor-v2-api-enable-monitoring.md
+                    - name: API Get-ApplicationInsightsMonitoringConfig
+                      href: app/status-monitor-v2-api-get-config.md
+                    - name: API Get-ApplicationInsightsMonitoringStatus
+                      href: app/status-monitor-v2-api-get-status.md
+                    - name: API Set-ApplicationInsightsMonitoringConfig
+                      href: app/status-monitor-v2-api-set-config.md
                 - name: Služby pro Windows
                   href: app/windows-services.md
                 - name: Plocha Windows
@@ -560,6 +585,8 @@
               href: insights/containers.md
             - name: Monitorování aplikací Dockeru
               href: app/docker.md
+            - name: Application Insights pro Kubernetes
+              href: app/kubernetes.md
         - name: Monitorování skupin prostředků
           href: insights/resource-group-insights.md
         - name: Monitorování databází
@@ -684,6 +711,8 @@
               href: platform/metrics-charts.md
             - name: Příklady grafů metrik
               href: platform/metric-chart-samples.md
+            - name: Řešení potíží s grafy metrik
+              href: platform/metrics-troubleshoot.md
         - name: Protokoly
           items:
             - name: Dotazy na protokoly

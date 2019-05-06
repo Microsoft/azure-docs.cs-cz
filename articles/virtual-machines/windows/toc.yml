@@ -25,7 +25,7 @@
       href: tutorial-custom-images.md
     - name: 5. Vysoce dostupné virtuální počítače
       href: tutorial-availability-sets.md
-    - name: 6. Vytvoření škálovací sady virtuálních počítačů
+    - name: 6. Vytvoření škálovací sady
       href: tutorial-create-vmss.md
     - name: 7. Vyrovnávání zatížení virtuálních počítačů
       href: tutorial-load-balancer.md
@@ -251,6 +251,8 @@
               href: shared-images.md
             - name: Vytváření sdílených imagí s využitím CLI
               href: ../linux/shared-images.md
+            - name: Portál
+              href: shared-images-portal.md
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
         - name: Vyhledání a použití imagí

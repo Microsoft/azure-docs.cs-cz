@@ -57,3 +57,17 @@ sections:
               src: media/logo_python.svg
             href: quickstarts/detect-data-anomalies-python
             text: Python
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API
+            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Rozhraní API Detektoru anomálií</a></p>'
+          - title: Sady SDK
+            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Rozhraní příkazového řádku
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

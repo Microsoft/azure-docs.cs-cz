@@ -40,10 +40,10 @@
       href: best-practices.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
-    - name: Řízení přístupu k Exchangi Online a SharePointu Online
-      href: conditional-access-for-exo-and-spo.md
     - name: Migrace klasických zásad
       href: policy-migration.md
+    - name: Kontroly četnosti přihlášení a trvalosti prohlížeče
+      href: howto-conditional-access-session-lifetime.md
     - name: Vyžadování klientem schválených aplikací
       href: app-based-conditional-access.md
     - name: Vyžadování zásad ochrany aplikací

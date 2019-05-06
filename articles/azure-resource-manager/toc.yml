@@ -68,6 +68,8 @@
       href: resource-group-delete.md
     - name: Resource Manager a klasické nasazení
       href: resource-manager-deployment-model.md
+    - name: Běžné atributy zabezpečení Azure
+      href: azure-resource-manager-security-attributes.md
 - name: Postup
   items:
     - name: Vytváření šablon
@@ -225,6 +227,8 @@
           href: move-support-resources.md
         - name: Podpora značek
           href: tag-support.md
+    - name: Poskytovatelé prostředků podle služeb
+      href: azure-services-resource-providers.md
     - name: REST – Resource Manager
       href: /rest/api/resources/
     - name: REST – Deployment Manager

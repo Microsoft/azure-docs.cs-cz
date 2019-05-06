@@ -45,6 +45,8 @@
       href: container-instances-region-availability.md
     - name: Vztah k orchestrátorům
       href: container-instances-orchestrator-relationship.md
+    - name: Aspekty zabezpečení
+      href: container-instances-image-security.md
 - name: Návody
   items:
     - name: Nasazení
@@ -69,6 +71,8 @@
           href: container-instances-managed-identity.md
         - name: Použití prostředků GPU (Preview)
           href: container-instances-gpu.md
+        - name: Povolení koncového bodu protokolu SSL
+          href: container-instances-container-group-ssl.md
     - name: Připojení datových svazků
       items:
         - name: Sdílená složka Azure

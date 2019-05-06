@@ -49,6 +49,8 @@
       href: batch-pool-vm-sizes.md
     - name: Vysoká dostupnost a zotavení po havárii
       href: high-availability-disaster-recovery.md
+    - name: Proměnné prostředí modulu runtime úloh
+      href: batch-compute-node-environment-variables.md
 - name: Návody
   items:
     - name: Správa účtů služby Batch
@@ -199,8 +201,6 @@
           href: batch-task-complete-event.md
         - name: Událost selhání úlohy
           href: batch-task-fail-event.md
-    - name: Proměnné prostředí výpočetních uzlů Batch
-      href: batch-compute-node-environment-variables.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

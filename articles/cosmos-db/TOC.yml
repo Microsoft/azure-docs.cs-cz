@@ -143,17 +143,6 @@
             - name: Zásady indexování
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: Změna kanálu
-          items:
-            - name: Přehled
-              href: change-feed.md
-            - name: Čtení kanálu změn
-              href: read-change-feed.md
-            - name: Procesor kanálu změn
-              href: change-feed-processor.md
-            - name: Aktivace Azure Functions
-              displayName: change feed
-              href: change-feed-functions.md
         - name: Hodnota TTL (Time to Live)
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -498,6 +487,9 @@
           href: data-explorer.md
         - name: Správa zásad indexování
           href: how-to-manage-indexing-policy.md
+        - name: Příklady poddotazů jazyka SQL
+          displayName: 'subquery, exists'
+          href: how-to-sql-subquery.md
     - name: Kanál změn
       items:
         - name: Několik triggerů Azure Cosmos DB

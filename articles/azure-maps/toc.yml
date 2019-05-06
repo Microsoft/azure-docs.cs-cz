@@ -42,7 +42,7 @@
           href: render-coverage.md
         - name: Zajištění směrování
           href: routing-coverage.md
-    - name: Podporované jazyky
+    - name: Podpora lokalizace
       href: supported-languages.md
     - name: Podporované styly map
       href: supported-map-styles.md
@@ -74,11 +74,11 @@
       items:
         - name: Mapový ovládací prvek
           items:
-            - name: Použití mapového ovládacího prvku
+            - name: Začínáme s webovým mapovým ovládacím prvkem
               href: how-to-use-map-control.md
             - name: Vytvoření mapy
               href: map-create.md
-            - name: Výběr stylu mapy
+            - name: Změna stylu mapy
               href: choose-map-style.md
             - name: Přidání ovládacích prvků do mapy
               href: map-add-controls.md
@@ -120,8 +120,14 @@
               href: map-route.md
     - name: Vývoj s využitím sady Android SDK
       items:
-        - name: Jak používat mapový ovládací prvek pro Android
+        - name: Začínáme s mapovým ovládacím prvkem Androidu
           href: how-to-use-android-map-control-library.md
+        - name: Přidání vrstvy symbolů
+          href: how-to-add-symbol-to-android-map.md
+        - name: Přidání tvarů
+          href: how-to-add-shapes-to-android-map.md
+        - name: Změna stylu mapy
+          href: set-android-map-styles.md
 - name: Referenční informace
   items:
     - name: Rozšíření rozhraní API a parametrů

@@ -93,9 +93,11 @@
           href: vmware-azure-about-disaster-recovery.md
         - name: Časté dotazy
           href: vmware-azure-common-questions.md
-        - name: Systém podpory replikace z VMware / fyzických prostředků do Azure
+        - name: Systém podpory replikace z VMware/fyzických prostředků do Azure
           href: vmware-physical-azure-support-matrix.md
-        - name: Požadavky podpory pro nasazení konfiguračního serveru
+        - name: 'O součástech Site Recovery (konfigurační, procesový a hlavní cílový server)'
+          href: vmware-physical-azure-config-process-server-overview.md
+        - name: Požadavky podpory pro nasazení konfiguračního a procesového serveru
           href: vmware-azure-configuration-server-requirements.md
         - name: Architektura replikace z VMware do Azure
           href: vmware-azure-architecture.md
@@ -113,7 +115,7 @@
           href: hyper-v-azure-architecture.md
     - name: O zotavení po havárii fyzického serveru do Azure
       items:
-        - name: Systém podpory replikace z VMware / fyzických prostředků do Azure
+        - name: Systém podpory replikace z VMware/fyzických prostředků do Azure
           href: vmware-physical-azure-support-matrix.md
         - name: Architektura replikace z fyzických serverů do Azure
           href: physical-azure-architecture.md
@@ -197,6 +199,8 @@
               items:
                 - name: Přehled a požadavky
                   href: site-recovery-deployment-planner.md
+                - name: Historie verzí Plánovače nasazení
+                  href: site-recovery-deployment-planner-history.md
                 - name: Spuštění nástroje Plánovač nasazení
                   href: site-recovery-vmware-deployment-planner-run.md
                 - name: Analýza vygenerované sestavy
@@ -319,6 +323,8 @@
               items:
                 - name: Přehled a požadavky
                   href: hyper-v-deployment-planner-overview.md
+                - name: Historie verzí Plánovače nasazení
+                  href: site-recovery-deployment-planner-history.md
                 - name: Spuštění nástroje Plánovač nasazení
                   href: hyper-v-deployment-planner-run.md
                 - name: Analýza vygenerované sestavy
@@ -425,10 +431,14 @@
           href: site-recovery-extension-troubleshoot.md
     - name: VMware / fyzický server
       items:
+        - name: Monitorování procesových serverů
+          href: vmware-physical-azure-monitor-process-server.md
         - name: Řešení potíží s replikací z VMware do Azure
           href: vmware-azure-troubleshoot-replication.md
         - name: Řešení potíží s konfiguračním serverem
           href: vmware-azure-troubleshoot-configuration-server.md
+        - name: Řešení potíží procesových serverů
+          href: vmware-physical-azure-troubleshoot-process-server.md
         - name: Řešení potíží s nabízenou instalací služby Mobility pro virtuální počítače / fyzické servery VMware
           href: vmware-azure-troubleshoot-push-install.md
         - name: Řešení potíží s převzetím služeb při selhání do Azure

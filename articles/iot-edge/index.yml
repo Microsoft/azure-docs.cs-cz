@@ -43,15 +43,13 @@ sections:
       - type: paragraph
         text: 'Zjistěte, jak nainstalovat a nakonfigurovat IoT Edge, nasazovat moduly a využívat na hraničních zařízeních služby Azure, jako je Stream Analytics a Custom Vision.'
       - type: list
-        style: unordered
+        style: ordered
         items:
+          - html: Nastavte svůj vývojový počítač a zjistěte víc o modulech IoT Edge pro <a href="/azure/iot-edge/tutorial-develop-for-linux">zařízení s Linuxem</a> nebo <a href="/azure/iot-edge/tutorial-develop-for-windows">zařízení s Windows</a>.
+          - html: 'Vytvořte moduly vlastního kódu pro zařízení s Linuxem v jazyce <a href="/azure/iot-edge/tutorial-c-module">C</a>, <a href="/azure/iot-edge/tutorial-csharp-module">C#</a>, <a href="/azure/iot-edge/tutorial-python-module">Python</a>, <a href="/azure/iot-edge/tutorial-node-module">Node.js</a> nebo <a href="/azure/iot-edge/tutorial-java-module">Java</a>.'
+          - html: 'Vytvořte moduly vlastního kódu pro zařízení s Windows v jazyce <a href="/azure/iot-edge/tutorial-c-module-windows">C</a> nebo <a href="/azure/iot-edge/tutorial-csharp-module-windows">C#</a>.'
           - html: <a href="/azure/iot-edge/tutorial-deploy-function">Filtrování zpráv s využitím Azure Functions</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Zjištění průměrů s využitím Azure Stream Analytics jako modulu</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Hodnocení dat s využitím služby Azure Machine Learning jako modulu</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Klasifikace obrázků s využitím služby Custom Vision jako modulu</a>
-          - html: '<a href="/azure/iot-edge/tutorial-csharp-module">Filtrování dat s využitím modulu C#</a>'
-          - html: <a href="/azure/iot-edge/tutorial-python-module">Filtrování dat s využitím modulu Python</a>
-          - html: <a href="/azure/iot-edge/tutorial-node-module">Filtrování dat s využitím modulu Node.js</a>
-          - html: <a href="/azure/iot-edge/tutorial-java-module">Filtrování dat s využitím modulu Javy</a>
-          - html: <a href="/azure/iot-edge/tutorial-c-module">Filtrování dat s využitím modulu C</a>
           - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Uložení dat na hraničních zařízeních s využitím SQL Serveru</a>

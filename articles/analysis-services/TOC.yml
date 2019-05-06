@@ -70,41 +70,10 @@
           href: analysis-services-deploy.md
         - name: Aktualizace pomocí REST API
           href: analysis-services-async-refresh.md
-        - name: Modelování dat v sadě Visual Studio – Kurz k Adventure Works (1400)
-          href: tutorials/aas-adventure-works-tutorial.md
-          items:
-            - name: 1 – Vytvoření projektu s tabelárním modelem
-              href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
-            - name: 2 – Získání dat
-              href: tutorials/aas-lesson-2-get-data.md
-            - name: 3 – Označit jako tabulku kalendářních dat
-              href: tutorials/aas-lesson-3-mark-as-date-table.md
-            - name: 4 – Vytvoření relací
-              href: tutorials/aas-lesson-4-create-relationships.md
-            - name: 5 – Vytvoření počítaných sloupců
-              href: tutorials/aas-lesson-5-create-calculated-columns.md
-            - name: 6 – Vytvoření měr
-              href: tutorials/aas-lesson-6-create-measures.md
-            - name: 7 – Vytvoření klíčových ukazatelů výkonu
-              href: tutorials/aas-lesson-7-create-key-performance-indicators.md
-            - name: 8 – Vytvoření perspektiv
-              href: tutorials/aas-lesson-8-create-perspectives.md
-            - name: 9 – Vytvoření hierarchií
-              href: tutorials/aas-lesson-9-create-hierarchies.md
-            - name: 10 – Vytvoření oddílů
-              href: tutorials/aas-lesson-10-create-partitions.md
-            - name: 11 – Vytvoření rolí
-              href: tutorials/aas-lesson-11-create-roles.md
-            - name: 12 – Analýza v aplikaci Excel
-              href: tutorials/aas-lesson-12-analyze-in-excel.md
-            - name: 13 – Nasazení
-              href: tutorials/aas-lesson-13-deploy.md
-            - name: Doplňková lekce – Řádky podrobností
-              href: tutorials/aas-supplemental-lesson-detail-rows.md
-            - name: Doplňková lekce – Dynamické zabezpečení
-              href: tutorials/aas-supplemental-lesson-dynamic-security.md
-            - name: Doplňková lekce – Nepravidelné hierarchie
-              href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+        - name: Aktualizace pomocí Logic Apps
+          href: analysis-services-refresh-logic-app.md
+        - name: Aktualizace pomocí Azure Automation
+          href: analysis-services-refresh-azure-automation.md
     - name: Zabezpečení
       items:
         - name: Správa uživatelů databáze

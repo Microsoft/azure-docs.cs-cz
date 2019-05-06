@@ -7,10 +7,15 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření clusteru AKS – rozhraní příkazového řádku
-      href: kubernetes-walkthrough.md
-    - name: Vytvoření clusteru AKS – portál
-      href: kubernetes-walkthrough-portal.md
+    - name: Vytvoření clusteru AKS
+      expanded: true
+      items:
+        - name: Použití Azure CLI
+          href: kubernetes-walkthrough.md
+        - name: Použití webu Azure Portal
+          href: kubernetes-walkthrough-portal.md
+        - name: Použití šablony Resource Manageru
+          href: kubernetes-walkthrough-rm-template.md
     - name: Vývoj aplikací
       expanded: true
       items:
@@ -87,7 +92,7 @@
             - name: Zabezpečení podů
               href: developer-best-practices-pod-security.md
     - name: Kvóty a místní omezení
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: Migrace z ACS do AKS
       href: acs-aks-migration.md
     - name: Podporovaná verze Kubernetes

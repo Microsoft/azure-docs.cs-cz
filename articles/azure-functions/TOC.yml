@@ -19,6 +19,8 @@
       href: functions-create-first-java-maven.md
     - name: Vytvoření funkce – Python
       href: functions-create-first-function-python.md
+    - name: Vytvoření funkce – PowerShell
+      href: functions-create-first-function-powershell.md
     - name: Vytvoření funkce – Azure CLI
       href: functions-create-first-azure-function-azure-cli.md
     - name: Vytvoření funkce – portál
@@ -39,7 +41,9 @@
       items:
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-        - name: Úložiště
+        - name: Storage – Python
+          href: functions-add-output-binding-storage-queue-python.md
+        - name: Storage – portál
           href: functions-integrate-storage-queue-output-binding.md
 - name: Kurzy
   items:
@@ -100,6 +104,8 @@
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
+        - name: PowerShell
+          href: functions-reference-powershell.md
         - name: Python
           href: functions-reference-python.md
     - name: Diagnostika
@@ -134,6 +140,8 @@
           href: functions-create-maven-eclipse.md
         - name: Vytvoření linuxové aplikace funkcí
           href: create-function-app-linux-app-service-plan.md
+        - name: Ladění místních funkcí PowerShellu
+          href: functions-debug-powershell-local.md
         - name: Správa připojení
           href: manage-connections.md
         - name: Zpracování chyb
@@ -148,6 +156,8 @@
       items:
         - name: Průběžné nasazování
           href: functions-continuous-deployment.md
+        - name: Vývoj a nasazení pomocí Azure Pipelines
+          href: functions-how-to-azure-devops.md
         - name: Nasazení souboru Zip
           href: deployment-zip-push.md
         - name: Spuštění z balíčku

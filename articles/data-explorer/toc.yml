@@ -60,16 +60,22 @@
     - name: Přehled ingestování dat
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
-    - name: Analýza časových řad
-      href: time-series-analysis.md
 - name: Návody
   items:
     - name: Začínáme
       items:
-        - name: Zápis dotazů
-          href: write-queries.md
         - name: Ingestace ukázkových dat
           href: ingest-sample-data.md
+    - name: Dotazování dat
+      items:
+        - name: Zápis dotazů
+          href: write-queries.md
+        - name: Analýza časových řad
+          href: time-series-analysis.md
+        - name: Detekce a předpovědi anomálií
+          href: anomaly-detection.md
+        - name: Strojové učení
+          href: machine-learning-clustering.md
     - name: Spravovat
       items:
         - name: Správa databázových oprávnění
@@ -90,6 +96,8 @@
           href: using-metrics.md
     - name: Práce s dalšími nástroji
       items:
+        - name: Konektor Apache Spark
+          href: spark-connector.md
         - name: Připojení z Databricks pomocí Pythonu
           href: connect-from-databricks.md
         - name: Analýza dat v aplikacích Jupyter Notebook a Kqlmagic
