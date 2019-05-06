@@ -45,14 +45,22 @@
           href: Tutorials/FaceAPIinCSharpTutorial.md
         - name: Android
           href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
-- name: Návody
+- name: Koncepty
   items:
     - name: Rozpoznávání tváře
+      href: concepts/face-detection.md
+    - name: Rozpoznávání tváře
+      href: concepts/face-recognition.md
+- name: Návody
+  items:
+    - name: Rozpoznávání tváří
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Identifikace tváře
+    - name: Identifikace tváří
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: Přidání tváří
       href: Face-API-How-to-Topics/how-to-add-faces.md
+    - name: Použití HeadPose k otočení obdélníku
+      href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Určení modelu rozpoznávání obličeje
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: Použití funkce ve velkém měřítku
@@ -69,10 +77,6 @@
           href: face-resource-container-config.md
     - name: Použití připojené služby rozhraní API pro rozpoznávání tváře
       href: vs-face-connected-service.md
-- name: Ukázky
-  items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
 - name: Referenční informace
   items:
     - name: Rozhraní API pro rozpoznávání tváře
@@ -93,10 +97,10 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Zdroje a prostředky
   items:
-    - name: Glosář
-      href: Glossary.md
-    - name: Nejčastější dotazy
-      href: FAQ.md
+    - name: Ukázky
+      items:
+        - name: Ukázky rozhraní API pro rozpoznávání tváře
+          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice

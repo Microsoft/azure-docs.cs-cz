@@ -14,20 +14,14 @@
         - name: Konfigurace aplikace
           items:
             - name: Registrace aplikace
-              href: quickstart-v1-add-azure-ad-app.md
-            - name: Aktualizace aplikace
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Odebrání aplikace
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Registrace aplikace (Preview)
               href: quickstart-register-app.md
-            - name: Konfigurace aplikace pro přístup k webovým rozhraním API (Preview)
+            - name: Konfigurace aplikace pro přístup k webovým rozhraním API
               href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurace aplikace pro zveřejnění webových rozhraní API (Preview)
+            - name: Konfigurace aplikace pro zveřejnění webových rozhraní API
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Úprava účtů podporovaných aplikací (Preview)
+            - name: Úprava účtů podporovaných aplikací
               href: quickstart-modify-supported-accounts.md
-            - name: Odebrání aplikace (Preview)
+            - name: Odebrání aplikace
               href: quickstart-remove-app.md
         - name: Jednostránkové aplikace
           items:
@@ -243,20 +237,14 @@
         - name: Konfigurace aplikace
           items:
             - name: Registrace aplikace
-              href: quickstart-v2-register-an-app.md
-            - name: Aktualizace aplikace
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Odebrání aplikace
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Registrace aplikace (Preview)
               href: quickstart-register-app.md
-            - name: Konfigurace aplikace pro přístup k webovým rozhraním API (Preview)
+            - name: Konfigurace aplikace pro přístup k webovým rozhraním API
               href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurace aplikace pro zveřejnění webových rozhraní API (Preview)
+            - name: Konfigurace aplikace pro zveřejnění webových rozhraní API
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Úprava účtů podporovaných aplikací (Preview)
+            - name: Úprava účtů podporovaných aplikací
               href: quickstart-modify-supported-accounts.md
-            - name: Odebrání aplikace (Preview)
+            - name: Odebrání aplikace
               href: quickstart-remove-app.md
         - name: Jednostránkové aplikace
           items:
@@ -350,6 +338,8 @@
               href: active-directory-certificate-credentials.md
         - name: Konfigurace aplikací
           items:
+            - name: Průvodce školením registrace aplikací
+              href: app-registrations-training-guide.md
             - name: Aplikace a instanční objekty
               href: app-objects-and-service-principals.md
             - name: Aplikace s jedním a více tenanty

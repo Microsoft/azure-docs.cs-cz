@@ -152,6 +152,8 @@
         - name: Kvóty virtuálních procesorů
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Nejčastější dotazy týkající se škálovacích sad
+      href: virtual-machine-scale-sets-faq.md
 - name: Postup
   items:
     - name: Plánování a návrh
@@ -183,6 +185,9 @@
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: Pokročilé automatické škálování
               href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: Řešení potíží s automatickým škálováním
+              href: virtual-machine-scale-sets-troubleshoot.md
         - name: Aplikace ve škálovacích sadách
           href: virtual-machine-scale-sets-deploy-app.md
         - name: Rozšíření ve škálovacích sadách
@@ -199,6 +204,9 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Použití Azure CLI
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: Šifrování disků s nastavením pořadí rozšíření
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
         - name: Práce s velkými škálovacími sadami
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Převod šablony škálovací sady pro použití spravovaného disku
@@ -247,14 +255,6 @@
         - name: Automatické škálování škálovací sady
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-    - name: Řešení potíží
-      items:
-        - name: Automatické škálování
-          href: virtual-machine-scale-sets-troubleshoot.md
-    - name: Nejčastější dotazy
-      items:
-        - name: Nejčastější dotazy týkající se škálovacích sad
-          href: virtual-machine-scale-sets-faq.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

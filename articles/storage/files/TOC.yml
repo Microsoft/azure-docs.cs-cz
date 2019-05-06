@@ -153,6 +153,8 @@
           href: storage-troubleshoot-windows-file-connection-problems.md
         - name: Řešení problémů se Soubory Azure v Linuxu
           href: storage-troubleshoot-linux-file-connection-problems.md
+        - name: Řešení problémů s výkonem Azure Files
+          href: storage-troubleshooting-files-performance.md
         - name: Řešení problémů se Synchronizací souborů Azure
           href: storage-sync-files-troubleshoot.md
 - name: Referenční informace

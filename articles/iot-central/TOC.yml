@@ -113,6 +113,8 @@
           href: howto-personalize-dashboard.md
         - name: Správa vašich předvoleb
           href: howto-manage-preferences.md
+        - name: Přepnutí živého chatu
+          href: howto-show-hide-chat.md
 - name: Související
   items:
     - name: Řešení

@@ -107,7 +107,7 @@
               href: image-factory-save-distribute-custom-images.md
             - name: Nastavení zásad uchovávání informací a spuštění čisticích skriptů
               href: image-factory-set-retention-policy-cleanup.md
-        - name: Nastavení infrastruktury DevTest Labs ve vašem podniku
+        - name: DevTest Labs v podniku
           href: devtest-lab-guidance-prescriptive-adoption.md
           items:
             - name: Referenční architektura

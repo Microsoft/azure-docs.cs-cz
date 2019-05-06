@@ -4,7 +4,7 @@ title: Dokumentace k hybridní identitě
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
   title: Dokumentace k hybridní identitě
-  meta.description: 'Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.'
+  description: 'Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD.'
   services: active-directory
   author: billmath
   manager: daveba
@@ -18,7 +18,7 @@ abstract:
   description: 'Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita.</br></br></br>Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.'
   aside:
     image:
-      alt: null
+      alt: video na webu Channel 9
       height: 110
       src: media/index/video2.png
       width: 250
@@ -36,16 +36,19 @@ sections:
           - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
             html: '<p>Zjistěte, jak začít rozšiřovat vaše identity do cloudu s využitím synchronizace hodnot hash hesel</p>'
             image:
+              alt: synchronizace hodnot hash hesel
               src: media/index/azuread2.png
             title: Integrace jedné doménové struktury AD s využitím synchronizace hodnot hash hesel (PHS)
           - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
             html: '<p>Zjistěte, jak začít rozšiřovat vaše identity do cloudu s využitím předávacího ověřování.</p>'
             image:
+              alt: předávací ověřování
               src: media/index/manage2.png
             title: Integrace jedné doménové struktury AD s využitím předávacího ověřování (PTA)
           - href: /azure/active-directory/hybrid/tutorial-federation
             html: '<p>Podívejte se, jak federovat službu Azure Active Directory (Azure AD) Connect s místními službami Active Directory Federation Services (AD FS) a Azure AD.</p>'
             image:
+              alt: metadata
               src: media/index/federate2.png
             title: Integrace jedné doménové struktury AD s využitím federace
   - title: Návody

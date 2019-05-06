@@ -97,7 +97,7 @@
           href: iot-accelerators-remote-monitoring-rbac.md
         - name: Zkoumání telemetrie
           items:
-            - name: Vizualizace telemetrických dat s využitím PowerBI
+            - name: Vizualizace telemetrie pomocí Power BI
               href: iot-accelerators-integrate-data-powerbi.md
             - name: Integrace služby Azure Time Series Insights se vzdáleným monitorováním
               href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
@@ -133,26 +133,22 @@
       items:
         - name: Co je průmyslové IoT
           href: overview-iot-industrial.md
-        - name: OPC Twin
-          items:
-            - name: Co je OPC Twin
-              href: overview-opc-twin.md
-            - name: Architektura využívající technologii OPC Twin
-              href: overview-opc-twin-architecture.md
-        - name: OPC Vault
-          items:
-            - name: Co je OPC Vault
-              href: overview-opc-vault.md
-        - name: Propojená továrna
-          items:
-            - name: Přehled propojené továrny
-              href: iot-accelerators-connected-factory-features.md
-            - name: Architektura propojené továrny
-              href: iot-accelerators-connected-factory-sample-walkthrough.md
+        - name: Co je OPC Twin
+          href: overview-opc-twin.md
+        - name: Co je OPC Vault
+          href: overview-opc-vault.md
+        - name: Co je propojená továrna
+          href: iot-accelerators-connected-factory-features.md
     - name: Šablony Rychlý start
       items:
         - name: Vyzkoušení řešení propojené továrny
           href: quickstart-connected-factory-deploy.md
+    - name: Koncepty
+      items:
+        - name: Architektura využívající technologii OPC Twin
+          href: overview-opc-twin-architecture.md
+        - name: Architektura propojené továrny
+          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: Návody
       items:
         - name: Propojená továrna

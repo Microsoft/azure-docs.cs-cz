@@ -18,7 +18,7 @@ sections:
       - type: markdown
         text: |-
           > [!IMPORTANT]
-          > Služba Azure Dev Spaces je aktuálně ve verzi Preview a podporují ji jenom clustery AKS v oblastech **USA – východ**,**USA – východ 2**, **USA – střed**, **Západní USA 2**, **Severní Evropa**, **Západní Evropa**, **Jihovýchodní Asie**, **Kanada – střed** a **Kanada – východ**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+          > Službu Azure Dev Spaces podporují jenom clustery AKS v oblastech **USA – východ**,**USA – východ 2**, **USA – střed**, **Západní USA 2**, **Severní Evropa**, **Západní Evropa**, **Jihovýchodní Asie**, **Kanada – střed** a **Kanada – východ**. Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo editoru [Visual Studio Code](https://code.visualstudio.com/download). Aby bylo možné kompilovat a spouštět aplikace v AKS, [rozšíření Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) musí být nainstalované v systému Linux, MacOS nebo Windows 8 nebo novějším. Podporuje také použití sady [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) s úlohou Vývoj webu a rozšíření [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) nainstalované v systému Windows 8 nebo novějším.
   - title: Začínáme s Azure Dev Spaces
     items:
       - type: paragraph

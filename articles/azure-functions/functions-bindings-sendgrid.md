@@ -260,9 +260,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**name**|| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
 |**apiKey**|**ApiKey**| Název nastavení aplikace, která obsahuje váš klíč rozhraní API. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsSendGridApiKey".|
 |**to**|**Komu**| příjemce e-mailovou adresu. |
-|**from**|**z**| E-mailová adresa odesílatele. |
+|**from**|**from**| E-mailová adresa odesílatele. |
 |**subject**|**Předmět**| Předmět e-mailu. |
-|**text**|**Text**| obsah e-mailu. |
+|**text**|**text**| obsah e-mailu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

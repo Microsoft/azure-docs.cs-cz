@@ -4,6 +4,8 @@
       href: index.yml
     - name: Šablony Rychlý start
       items:
+        - name: Týmový vývoj
+          href: quickstart-team-development.md
         - name: Java (VS Code a CLI)
           href: quickstart-java.md
         - name: .NET Core (VS Code a CLI)

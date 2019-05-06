@@ -5,13 +5,13 @@
   expanded: false
   items:
     - name: Pokročilá detekce hrozeb
-      displayName: 'vulnerability, virus, ids, incident'
+      displayName: 'vulnerability, virus, IDs, incident'
       href: azure-threat-detection.md
     - name: Protokolování a auditování Azure
       displayName: incident
       href: azure-log-audit.md
     - name: Zabezpečení sítě Azure
-      displayName: 'firewall, ssl, vpn, ids, gateway, https, application gateway, azure application gateway, ips, waf'
+      displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
       href: abstract-azure-network-security.md
     - name: Zabezpečení platformy bez serveru Azure
       href: abstract-serverless-platform-security.md
@@ -50,7 +50,7 @@
         - name: Šifrování disků pro virtuální počítače IaaS
           items:
             - name: Informace o službě Azure Disk Encryption
-              displayName: 'bitlocker, bek'
+              displayName: 'Bitlocker, bek'
               href: azure-security-disk-encryption-overview.md
             - name: Šablony Rychlý start
               items:
@@ -141,7 +141,7 @@
           displayName: identity
           href: azure-security-global-admin.md
     - name: Zabezpečení sítě
-      displayName: 'firewall, ssl, vpn, ids, gateway, https, azure application gateway, application gateway, ips, waf'
+      displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
       href: security-network-overview.md
       items:
         - name: Osvědčené postupy
@@ -270,6 +270,11 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: Webová aplikace PaaS
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: SCCA
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: Secure Azure Computing Architecture
+          href: ./compliance/secure-azure-computing-architecture.md
     - name: TIC
       displayName: 'blueprint, privacy, certifications'
       items:
@@ -329,11 +334,11 @@
           items:
             - name: 'Threat Modeling Tool, vydání GA 7.1.5091.2 – 12. 9. 2018'
               href: azure-security-threat-modeling-tool-releases-71509112.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 11. 2018'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 10. 2018'
               href: azure-security-threat-modeling-tool-releases-71510231.md
             - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60126.1 – 29. 1. 2019'
               href: azure-security-threat-modeling-tool-releases-71601261.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60408.1 – 4/09/2019'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60408.1 – 9. 4. 2019'
               href: azure-security-threat-modeling-tool-releases-71604081.md
         - name: Omezení rizik
           href: azure-security-threat-modeling-tool-mitigations.md

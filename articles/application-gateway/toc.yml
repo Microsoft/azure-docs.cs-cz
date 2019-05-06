@@ -45,6 +45,8 @@
           href: application-gateway-components.md
         - name: Přehled konfigurace
           href: configuration-overview.md
+    - name: SKU pro Automatické škálování v2
+      href: application-gateway-autoscaling-zone-redundant.md
     - name: Směrování
       items:
         - name: Hostování několika webů
@@ -77,8 +79,6 @@
           href: application-gateway-probe-overview.md
         - name: Diagnostika
           href: application-gateway-diagnostics.md
-    - name: Automatické škálování a redundance zón
-      href: application-gateway-autoscaling-zone-redundant.md
     - name: Podpora více tenantů a webová aplikace App Service
       href: application-gateway-web-app-overview.md
     - name: Podpora protokolu WebSocket
@@ -183,6 +183,8 @@
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
+        - name: Vytvoření a přepsání hlaviček HTTP
+          href: tutorial-http-header-rewrite-powershell.md
     - name: Konfigurace služby více tenantů a webové aplikace App Service
       items:
         - name: Portál

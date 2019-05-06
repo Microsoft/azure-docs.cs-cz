@@ -44,6 +44,18 @@
       href: delegated-access-virtual-desktop.md
     - name: Metody vyrovnávání zatížení fondu hostitelů
       href: host-pool-load-balancing.md
+- name: Řešení potíží
+  items:
+    - name: 'Přehled řešení potíží, zpětná vazba a podpora'
+      href: troubleshoot-set-up-overview.md
+    - name: Vytvoření tenanta a fondu hostitelů
+      href: troubleshoot-set-up-issues.md
+    - name: Konfigurace virtuálního počítače hostitele relace
+      href: troubleshoot-vm-configuration.md
+    - name: Připojení klientů Vzdálené plochy
+      href: troubleshoot-client-connection.md
+    - name: PowerShell pro Windows Virtual Desktop
+      href: troubleshoot-powershell.md
 - name: Referenční informace
   items:
     - name: PowerShell

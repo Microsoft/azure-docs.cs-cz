@@ -2,14 +2,14 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Seznámení se službou Azure NetApp Files
+    - name: Co je služba Azure NetApp Files
       href: azure-netapp-files-introduction.md
     - name: Vysvětlení hierarchie úložiště
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Nastavení služby Azure NetApp Files a vytvoření svazku
+    - name: Nastavení služby Azure NetApp Files a vytvoření svazku NFS
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Koncepty
   items:
@@ -19,8 +19,8 @@
       href: azure-netapp-files-resource-limits.md
     - name: Metriky pro Azure NetApp Files
       href: azure-netapp-files-metrics.md
-    - name: Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
-      href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Srovnávací testy výkonu pro Azure NetApp Files
+      href: azure-netapp-files-performance-benchmarks.md
 - name: Návody
   items:
     - name: Registrace pro Azure NetApp Files
@@ -47,6 +47,8 @@
       items:
         - name: REST
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Referenční informace
   items:
     - name: REST

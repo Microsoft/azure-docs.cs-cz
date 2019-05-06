@@ -61,6 +61,8 @@
           href: logic-apps-scenario-function-sb-trigger.md
         - name: 'Volání, triggery nebo vnořené aplikace logiky'
           href: logic-apps-http-endpoint.md
+        - name: Získání hromadných dat se stránkováním
+          href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: Zprávy dávkového zpracování
           href: logic-apps-batch-process-send-receive-messages.md
         - name: Vytvoření definic JSON
@@ -103,11 +105,8 @@
           href: logic-apps-enterprise-integration-b2b.md
         - name: Výměna zpráv AS2
           href: logic-apps-enterprise-integration-as2.md
-          items:
-            - name: Kódování AS2
-              href: logic-apps-enterprise-integration-as2-encode.md
-            - name: Dekódování AS2
-              href: logic-apps-enterprise-integration-as2-decode.md
+        - name: Nastavení zpráv AS2
+          href: logic-apps-enterprise-integration-as2-message-settings.md
         - name: Výměna zpráv EDIFACT
           href: logic-apps-enterprise-integration-edifact.md
           items:

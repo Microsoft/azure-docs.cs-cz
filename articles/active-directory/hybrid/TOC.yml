@@ -186,7 +186,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: Změna hesla účtu služby Azure AD Sync
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: Změna účtu konektoru služby Azure AD
+        - name: Změna hesla účtu konektoru služby Azure AD
           href: how-to-connect-azureadaccount.md
         - name: Změna hesla účtu konektoru služby AD DS
           href: how-to-connect-sync-change-addsacct-pass.md
