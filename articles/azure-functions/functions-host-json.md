@@ -203,8 +203,8 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jaké úroveň protokolování do souboru je povolená.  Možnosti jsou `never`, `always`, `debugOnly`. |
-|LogLevel|neuvedeno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|neuvedeno| [Konzoly](#console) nastavení protokolování. |
+|logLevel|neuvedeno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|console|neuvedeno| [Konzoly](#console) nastavení protokolování. |
 |applicationInsights|neuvedeno| [ApplicationInsights](#applicationinsights) nastavení. |
 
 ## <a name="console"></a>konzola
