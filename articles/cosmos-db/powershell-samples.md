@@ -1,37 +1,48 @@
 ---
 title: Ukázky Azure Powershellu pro službu Azure Cosmos DB
 description: Ukázky Azure PowerShellu – skripty, které vám pomohou vytvořit a spravovat účty služby Azure Cosmos DB.
-author: SnehaGunda
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/16/2017
-ms.author: sngun
-ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/08/2019
+ms.author: mjbrown
+ms.openlocfilehash: 68e845a05f4ebe2d1f25b55c00042c8925c8109e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926152"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069301"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Ukázky Azure PowerShellu pro službu Azure Cosmos DB
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu pro službu Azure Cosmos DB. V současné době můžete prostřednictvím PowerShellu spravovat jenom účet služby Azure Cosmos DB. Jiné prostředky, například databáze a kontejnery, nelze prostřednictvím PowerShellu spravovat.
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure Powershellu pro službu Azure Cosmos DB pro jádra (SQL) rozhraní API.
 
 | |  |
 |---|---|
-|**Vytvoření účtu služby Azure Cosmos DB**||
-|[Vytvořit a nakonfigurovat účet Cosmos pomocí rozhraní SQL API](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním SQL API. |
-|[Vytvořit a nakonfigurovat účet Cosmos s rozhraním API služby Azure Cosmos DB pro MongoDB](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet Cosmos s rozhraním API služby Azure Cosmos DB pro MongoDB. |
-|[Vytvořit a nakonfigurovat účet Cosmos pomocí rozhraní Gremlin API](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním Gremlin API. |
-|[Vytvořit a nakonfigurovat účet Cosmos s rozhraním Cassandra API](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB pro použití s rozhraním API Cassandra. |
-|[Vytvořit a nakonfigurovat účet Cosmos s rozhraním Table API](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB pro použití s rozhraním Table API. |
-|**Škálování služby Azure Cosmos DB**||
-|[Replikace účtu služby Azure Cosmos DB ve více oblastech a konfigurace priorit převzetí služeb při selhání](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Globálně replikuje data účtu do několika oblastí s určenou prioritou převzetí služeb při selhání.|
-|**Zabezpečení služby Azure Cosmos DB**||
-| [Získání klíčů účtu](scripts/secure-get-account-key-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Získá pro účet primární a sekundární hlavní klíč pro zápis a primární a sekundární klíč jen pro čtení.|
-| [Získání připojovacího řetězce MongoDB](scripts/secure-mongo-connection-string-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Získá připojovací řetězec pro připojení aplikace MongoDB k účtu služby Azure Cosmos DB.|
-|[Opětovné vygenerování klíčů účtu](scripts/secure-regenerate-key-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Znovu vygeneruje pro účet hlavní klíč nebo klíč jen pro čtení.|
-|[Vytvoření brány firewall](scripts/create-firewall-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří zásadu řízení příchozího přístupu z IP adres pro omezení přístupu k účtu na schválenou sadu počítačů nebo cloudových služeb.|
-|**Vysoká dostupnost, zotavení po havárii, zálohování a obnovení**||
-|[Konfigurace zásad převzetí služeb při selhání](scripts/ha-failover-policy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Nastaví prioritu převzetí služeb při selhání pro všechny oblasti, do kterých se účet replikuje.|
+|**Účty služby Azure Cosmos**||
+|[Vytvoření účtu](scripts/powershell/sql/ps-account-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet rozhraní SQL API služby Azure Cosmos. |
+|[Vytvoření účtu](scripts/powershell/sql/ps-account-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získání vlastností účtu Azure Cosmos. |
+|[Přidat oblast](scripts/powershell/sql/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoření účtu Azure Cosmos a přidejte do seznamu umístění oblast. |
+|[Změna priority převzetí služeb při selhání](scripts/powershell/sql/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Změna priority převzetí služeb při selhání účtu Azure Cosmos pomocí triggeru ruční převzetí služeb při selhání. |
+|[Aktualizace značky](scripts/powershell/sql/ps-account-tags-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizace značky pro účet Azure Cosmos. |
+|[Získání klíčů účtu](scripts/powershell/sql/ps-account-key-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte primární a sekundární klíče účtu Azure Cosmos. |
+|[Opětovné vygenerování klíčů účtu](scripts/powershell/sql/ps-account-key-regenerate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Znovu vygenerujete primární a sekundární klíče účtu Azure Cosmos. |
+|[Seznam připojovacích řetězců](scripts/powershell/sql/ps-account-connection-string-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Získejte primární a sekundární připojovací řetězce účtu Azure Cosmos. |
+|[Vytvoření brány Firewall protokolu IP](scripts/powershell/sql/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoření brány Firewall protokolu IP pro účet Azure Cosmos. |
+|[Odstranit účet Azure Cosmos](scripts/powershell/sql/ps-account-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Odstraňte účet Azure Cosmos. |
+|**Databáze Azure Cosmos**||
+| [Vytvoření databáze](scripts/powershell/sql/ps-database-create.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření databáze v rámci účtu Azure Cosmos.|
+| [Vytvoření databáze s propustností sdílené/úrovni databáze](scripts/powershell/sql/ps-database-create-shared.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvořte databázi Azure Cosmos pomocí databáze úroveň propustnosti, jež jsou sdílena s jejím kontejnerům.|
+| [Vypsat všechny databáze](scripts/powershell/sql/ps-database-list.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vypsat všechny databáze v účtu služby Azure Cosmos.|
+| [Získat databázi](scripts/powershell/sql/ps-database-get.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Umožňuje získáte vlastnosti databáze Azure Cosmos.|
+|**Azure Cosmos containers**||
+| [Vytvoření kontejneru](scripts/powershell/sql/ps-container-create.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření kontejneru Azure Cosmos s vyhrazenou propustností.|
+| [Vytvořit kontejner s sdílené propustnost](scripts/powershell/sql/ps-container-create-shared.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření kontejneru Azure Cosmos s propustností dostaly jiných kontejnerů v databázi.|
+| [Vytvořit kontejner s indexem zásad](scripts/powershell/sql/ps-container-create-index-custom.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření kontejneru Azure Cosmos pomocí zásad vlastní indexu.|
+| [Vytvořit kontejner s žádná zásada indexu](scripts/powershell/sql/ps-container-create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření kontejneru Azure Cosmos zásadám index vypnuté.|
+| [Vytvořit kontejner s jedinečné klíče a hodnoty TTL](scripts/powershell/sql/ps-container-create-unique-key-ttl.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření Azure Cosmos nakonfigurovaný kontejner s jedinečnosti klíče a time-to-live.|
+| [Vytvořit kontejner s řešení konfliktů](scripts/powershell/sql/ps-container-create-conflict-policy.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoření kontejneru Azure Cosmos se poslední zápis konflikt zásada řešení.|
+| [Vypsat všechny kontejnery](scripts/powershell/sql/ps-container-list.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vypsat všechny kontejnery v databázi Azure Cosmos.|
+| [Získání kontejneru](scripts/powershell/sql/ps-container-get.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Získá vlastnosti pro kontejner v databázi Azure Cosmos.|
+| [Odstranění kontejneru](scripts/powershell/sql/ps-container-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Odstraňte kontejner v databázi Azure Cosmos.|
 |||

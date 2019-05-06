@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: dd6d527020bbf5e2fb510fa9605af408673e89dd
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514233"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071842"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Rychlý start: Vytvořit úlohu Azure Stream Analytics cloudu ve Visual Studio Code (Preview)
 
@@ -26,23 +26,13 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 * Nainstalujte [Visual Studio Code](https://code.visualstudio.com/).
 
-* Stáhněte si [Azure Stream Analytics rozšíření pro VS Code](https://usqldownload.blob.core.windows.net/ext/asa/vscode-asa-0.0.2.vsix).
-
 ## <a name="install-the-azure-stream-analytics-extension"></a>Nainstalujte rozšíření Azure Stream Analytics
-
-Nainstalujte rozšíření Azure Stream Analytics z privátní balíčku VSIX, který jste stáhli.
 
 1. Otevřete Visual Studio Code.
 
-2. Z **rozšíření** v levém podokně vyberte symbol tří teček **(...)**  v pravém horním rohu. Potom vyberte **instalace ze souboru VSIX**.
+2. Z **rozšíření** v levém podokně vyhledejte **Stream Analytics** a vyberte **nainstalovat** na **Azure Stream Analytics** rozšíření.
 
-   ![Instalace ze souboru VSIX v aplikaci Visual Studio Code](./media/quick-create-vs-code/install-vsix.png)
-
-3. Vyberte rozšíření, které jste stáhli jako předpoklad a vyberte **nainstalovat**.  To může trvat několik sekund.
-
-4. Po úspěšném dokončení instalace vyberte **teď znovu načíst** v zobrazeném okně, pokud se zobrazí výzva.
-
-5. Ověřte, že **Azure Stream Analytics Tools** je viditelná ve vaší **povolené rozšíření**.
+3. Po instalaci rozšíření, ověřte, že **Azure Stream Analytics Tools** je viditelná ve vaší **povolené rozšíření**.
 
    ![Azure Stream Analytics Tools v seznamu povolených rozšíření ve Visual Studio Code](./media/quick-create-vs-code/enabled-extensions.png)
 
@@ -123,7 +113,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
 
    ![Soubory projektu Stream Analytics ve VS Code](./media/quick-create-vs-code/asa-project-files.png)
 
-4. Konfigurační soubor asaproj.json obsahuje vstupy, výstupy a úlohy konfigurační soubor informace potřebné k odeslání úlohy Azure Stream Analytics k Azure.
+4. **Asaproj.json** konfigurační soubor obsahuje vstupy, výstupy a úlohy konfigurační soubor informace potřebné k odeslání úlohy Stream Analytics k Azure.
 
    ![Soubor konfigurace úlohy Stream Analytics ve VS Code](./media/quick-create-vs-code/job-configuration.png)
 
@@ -146,7 +136,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
 
 4. Zadejte název vstupního souboru jako **IotHub.json**.
 
-5. Upravit **IoTHub.json** s použitím následujících hodnot. Ponechte výchozí hodnoty pro pole není uvedená níže. Použití CodeLens vám pomůžou zadat řetězec nebo vyberte z rozevíracího seznamu.
+5. Upravit **IoTHub.json** s použitím následujících hodnot. Ponechte výchozí hodnoty pro pole není uvedená níže. Použití CodeLens vám pomůžou zadat řetězec, vyberte z rozevíracího seznamu nebo změní celý text přímo v souboru.
 
    |Nastavení|Navrhovaná hodnota|Popis|
    |-------|---------------|-----------|
@@ -189,9 +179,9 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
    HAVING Temperature > 27
    ```
 
-## <a name="compile-script"></a>Kompilace skriptu
+## <a name="compile-the-script"></a>Kompilace skriptu
 
-Kompilace skriptu provede dvě věci: Zkontrolujte syntaxi a generování šablon Azure Resource Manageru pro automatické nasazení.
+Kompilace skriptu provede dvě věci: Zkontrolujte syntaxi a generování šablon Azure Resource Manageru pro automatického nasazení.
 
 Existují dva způsoby, jak aktivovat kompilace skriptu:
 
@@ -203,7 +193,9 @@ Existují dva způsoby, jak aktivovat kompilace skriptu:
 
     ![Klikněte pravým tlačítkem na skript ASA kompilace](./media/quick-create-vs-code/compile-script2.png)
 
-3. Po kompilaci najdete dvě vygenerované šablony Azure Resource Manageru v **nasadit** složky vašeho projektu. Tyto dva soubory se používají pro automatické nasazení.
+3. Po kompilaci najdete dvě vygenerované šablony Azure Resource Manageru v **nasadit** složky vašeho projektu. Tyto dva soubory se používají pro automatického nasazení.
+
+    ![Stream Analytics nasazení šablony v Průzkumníku souborů](./media/quick-create-vs-code/deployment-templates.png)
 
 ## <a name="submit-a-stream-analytics-job-to-azure"></a>Odeslání úlohy Stream Analytics do Azure
 
@@ -213,7 +205,7 @@ Existují dva způsoby, jak aktivovat kompilace skriptu:
 
 2. Vyberte své předplatné ze seznamu místní nabídky.
 
-3. Vyberte **vyberte úlohu**. Pak zvolte možnost vytvořit novou úlohu.
+3. Vyberte úlohu **. Pak zvolte možnost vytvořit novou úlohu.
 
 4. Zadejte název úlohy, **myASAjob** a pak postupujte podle pokynů pro výběr skupiny prostředků a umístění.
 
@@ -233,13 +225,15 @@ Existují dva způsoby, jak aktivovat kompilace skriptu:
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-1. Otevřete Průzkumníka Stream Analytics ve Visual Studio Code a vyhledejte vaši úlohu**myASAJob**.
+1. Otevřít **Průzkumníku Stream Analytics** ve Visual Studio Code a vyhledejte vaši úlohu **myASAJob**.
 
 2. Klikněte pravým tlačítkem na název úlohy. Vyberte **Start** v místní nabídce.
 
+![Spuštění úlohy Stream Analytics ve VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+
 3. Zvolte **nyní** v automaticky otevíraném okně spustíte úlohu.
 
-4. Poznámka: stav úlohy se změnila na **systémem**. Klikněte pravým tlačítkem na název projektu a zvolte **otevřete zobrazení úloh portálu** naleznete v tématu vstupní a výstupní události metriky. Může to trvat několik minut.
+4. Poznámka: stav úlohy se změnila na **systémem**. Klikněte pravým tlačítkem na název projektu a zvolte **otevřete zobrazení úloh portálu** naleznete v tématu vstupní a výstupní události metriky. Tato akce může trvat několik minut.
 
 5. Chcete-li zobrazit výsledky, otevřete úložiště objektů blob v rozšíření Visual Studio Code nebo na webu Azure Portal.
 

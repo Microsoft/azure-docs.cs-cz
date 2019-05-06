@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI'
-description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první server Azure Database for PostgreSQL pomocí Azure CLI.
+title: 'Kurz: Návrh databáze Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure'
+description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první databáze Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/01/2018
-ms.openlocfilehash: eba1ffcbe07c617661d902de0726f17e4fec0a00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.date: 5/6/2019
+ms.openlocfilehash: ed272afcfedaf6c781d2a96e5732fe2368914a67
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992085"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073068"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL

@@ -1,25 +1,25 @@
 ---
-title: Rychlý start – vytvoření Azure Database for PostgreSQL pomocí jednoduchého příkazu Azure CLI – az postgres nahoru (preview)
-description: Úvodní příručka k vytvoření Azure Database for PostgreSQL pomocí Azure CLI (rozhraní příkazového řádku) se příkaz.
+title: 'Rychlý start: Vytvoření Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku příkaz az postgres nahoru'
+description: Úvodní příručka k vytvoření Azure Database for PostgreSQL – jeden Server pomocí Azure CLI (rozhraní příkazového řádku) se příkaz.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
-ms.openlocfilehash: 0db49e2c370aee37cca4181cecbe4cf0b5585c51
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091627"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069078"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-a-simple-azure-cli-command---az-postgres-up-preview"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL pomocí jednoduchého příkazu Azure CLI – az postgres nahoru (preview)
+# <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure, az postgres nahoru (preview)
 
 > [!IMPORTANT]
 > [Az postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) rozhraní příkazového řádku Azure je ve verzi preview.
 
-Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak používat [az postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) příkaz pro vytvoření Azure Database for PostgreSQL pomocí Azure CLI. Kromě vytvoření serveru, `az postgres up` příkaz vytvoří ukázkovou databázi, uživatele root v databázi, otevře bránu firewall služby Azure a vytvoří výchozí pravidla brány firewall pro klientské počítače. To pomáhá urychlit proces vývoje.
+Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak používat [az postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) příkaz pro vytvoření Azure Database for PostgreSQL pomocí Azure CLI. Kromě vytvoření serveru, `az postgres up` příkaz vytvoří ukázkovou databázi, uživatele root v databázi, otevře bránu firewall služby Azure a vytvoří výchozí pravidla brány firewall pro klientské počítače. Tyto výchozí hodnoty pomáhají urychlit proces vývoje.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,13 +27,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tento článek vyžaduje, že používáte Azure CLI verze 2.0 nebo novější místně. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Budete se muset přihlásit ke svému účtu pomocí [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) příkazu. Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
+Budete se muset přihlásit ke svému účtu pomocí [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) příkazu. Poznámka: **ID** vlastnost z výstupu příkazu pro odpovídající název předplatného.
 
 ```azurecli
 az login
 ```
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Náhradní **id předplatného** vlastnost z **az login** výstupu pro vaše předplatné do zástupnou hodnotu id předplatného.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Náhradní **ID předplatného** vlastnost z **az login** výstupu pro vaše předplatné do zástupnou hodnotu ID předplatného.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -60,13 +60,13 @@ Vytvoří se následující výchozí hodnoty (Pokud jste ručně je přepsat):
 název-serveru | Vygenerované systémem | Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL.
 resource-group | Vygenerované systémem | Novou skupinu prostředků Azure.
 sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Výchozí hodnota je server s 2 virtuální jádra pro obecné účely Gen5. Najdete v našich [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) Další informace o úrovních.
-backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny.
+backup-retention | 7 | Jak dlouho zálohy se uchovávají. Jednotkou jsou dny.
 geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy.
 location | westus2 | Lokace Azure pro server.
 ssl-enforcement | Zakázáno | Určuje, jestli pro tento server má nebo nemá být povolený protokol SSL.
 velikost úložiště | 5120 | Kapacita úložiště serveru (jednotkou jsou megabajty).
 version | 10 | Hlavní verze PostgreSQL.
-admin-user | Vygenerované systémem | Uživatelské jméno pro přihlášení správce.
+admin-user | Vygenerované systémem | Uživatelské jméno správce.
 admin-password | Vygenerované systémem | Heslo uživatele, který je správcem.
 
 > [!NOTE]

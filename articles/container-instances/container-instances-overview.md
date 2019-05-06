@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ec0280ab2a39674a1b41120f0a8791dfb8b1922
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582767"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073292"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
 
@@ -56,7 +56,10 @@ Některé funkce jsou momentálně omezené jenom na Linuxové kontejnery:
 * [Nasazení virtuální sítě](container-instances-vnet.md) (preview)
 * [Prostředky GPU](container-instances-gpu.md) (preview)
 
-Na základě dlouhodobé údržby kanálu (LTSC) verze Image Windows serveru 2016 v současné době podporuje služba Azure Container Instances. Vydané verze Windows půlročního kanálu, jako jsou 1709 nebo 1803, podporované nejsou.
+Nasazení kontejneru Windows, použijte Image na společné platformě [základní Image Windows](container-instances-faq.md#what-windows-base-os-images-are-supported).
+
+> [!NOTE]
+> Použití založené na Windows Server 2019 imagí ve službě Azure Container Instances je ve verzi preview.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 

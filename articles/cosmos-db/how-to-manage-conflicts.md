@@ -4,14 +4,14 @@ description: Informace o správě konfliktů ve službě Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/16/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6e57dc5b4bcfa3f02e323253e24d68381c3535d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054794"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068740"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktu ve službě Azure Cosmos DB
 
@@ -19,7 +19,7 @@ S více oblastí zápisu když víc klientů zapisuje do jedné položce, je v k
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvořit zásadu řešení konfliktu poslední zápis
 
-Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Výchozí cesta pro poslední zápis je pole časového razítka nebo `_ts` vlastnost. To může být také nastaven na cestu pro číselný typ definovaný uživatelem. Konflikt wins nejvyšší hodnota. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts`. Konflikty byly vyřešeny tato zásada nezobrazí v informačním kanálu ke konfliktu. Tyto zásady můžete použít všechny rozhraní API.
+Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Výchozí cesta pro poslední zápis je pole časového razítka nebo `_ts` vlastnost. To může být také nastaven na cestu pro číselný typ definovaný uživatelem. Ke konfliktu wins nejvyšší hodnota. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts`. Konflikty byly vyřešeny tato zásada nezobrazí v informačním kanálu ke konfliktu. Tyto zásady můžete použít všechny rozhraní API.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -86,16 +86,16 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvořit zásadu rozlišení vlastní konflikt pomocí uložené procedury
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře. Po vytvoření zásady s kontejnerem, budete muset vytvořit uloženou proceduru. Sady .NET SDK ukázka níže ukazuje příklad, který. Tato zásada je podporována pouze na jádro (SQL) rozhraní Api.
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře. Po vytvoření zásady s kontejnerem, budete muset vytvořit uloženou proceduru. Ukázka sady .NET SDK níže ukazuje příklad. Tato zásada je podporována pouze na jádro (SQL) rozhraní Api.
 
 ### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Ukázka vlastních konfliktů uložené procedury
 
 Vlastní konflikt řešení uložené procedury musí být implementovaná pomocí signatura funkce je uvedeno níže. Název funkce se nemusí shodovat s názvem používá při registraci uloženou proceduru s kontejnerem ale zjednodušit, pojmenování. Tady je popis parametrů, které je nutné implementovat pro tuto uloženou proceduru.
 
 - **incomingItem**: Položka se přidají nebo aktualizují v potvrzení, která generuje konflikty. Má hodnotu null pro operace odstranění.
-- **existingItem**: Aktuálně zabýváme položky. Tato hodnota je null v aktualizaci a hodnotu null pro insert nebo delete.
+- **existingItem**: Aktuálně zabýváme položky. Tato hodnota je null v aktualizaci a hodnotu null pro vložení nebo odstraní.
 - **isTombstone**: Logická hodnota označující, pokud incomingItem je v konfliktu s dříve odstraněné položky. V případě hodnoty true, má také existingItem hodnotu null.
-- **conflictingItems**: Pole v potvrzené verzi všechny položky v kontejneru, které jsou v konfliktu s incomingItem na id nebo jakékoli jiné vlastnosti jedinečný index.
+- **conflictingItems**: Pole v potvrzené verzi všechny položky v kontejneru, které jsou v konfliktu s incomingItem na ID nebo jakékoli jiné vlastnosti jedinečný index.
 
 > [!IMPORTANT]
 > Stejně jako pomocí uložené procedury, postup řešení konfliktu vlastních můžete přístup k žádným datům se stejným klíčem oddílu a můžete provést všechny vložit, aktualizovat nebo odstranit operaci k řešení konfliktů.
@@ -361,7 +361,7 @@ Další informace o konceptech služby Azure Cosmos DB, následující:
 
 * [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
 * [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
-* [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Přidat nebo odebrat oblasti ze svého účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md).
 * [Dělení a distribuce dat](partition-data.md)

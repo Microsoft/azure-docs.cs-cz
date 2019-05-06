@@ -1,21 +1,21 @@
 ---
-title: Rychlý start – Vytvoření Azure Database for PostgreSQL pomocí Azure CLI
-description: Úvodní příručka k vytvoření a správě serveru Azure Database for PostgreSQL pomocí Azure CLI (rozhraní příkazového řádku).
+title: Rychlý start – vytvoření Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
+description: Úvodní příručka k vytvoření a správa Azure Database for PostgreSQL – jeden Server pomocí Azure CLI (rozhraní příkazového řádku).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/12/2019
+ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 07e3f1f2dd672fcfd0b7a3a4d102c429ac123c08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b16d87a69ecdac578da2a90be22013744c32bd7
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902014"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069057"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL pomocí rozhraní CLI Azure
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
 
 > [!TIP]
 > Zvažte použití jednodušší [az postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) rozhraní příkazového řádku Azure (aktuálně ve verzi preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
@@ -28,12 +28,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-Pokud používáte rozhraní příkazového řádku místně, musíte se přihlásit ke svému účtu pomocí příkazu [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in). Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
+Pokud používáte rozhraní příkazového řádku místně, musíte se přihlásit ke svému účtu pomocí [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) příkazu. Poznámka: **ID** vlastnost z výstupu příkazu pro odpovídající název předplatného.
 ```azurecli-interactive
 az login
 ```
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Náhradní **ID** vlastnost z **az login** výstupu pro vaše předplatné do zástupnou hodnotu ID předplatného.
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```

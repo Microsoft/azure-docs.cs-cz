@@ -1,17 +1,17 @@
 ---
 title: Konfigurovat bránu firewall protokolu IP pro váš účet Azure Cosmos DB
 description: Zjistěte, jak nakonfigurovat zásady řízení přístupu IP pro podporu brány firewall u účtů databáze Azure Cosmos DB.
-author: kanshiG
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: govindk
-ms.openlocfilehash: 26f2131fd62ddc83c2a6d93c4cff557402a88463
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: sample
+ms.date: 05/06/2019
+ms.author: mjbrown
+ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61060786"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068725"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP ve službě Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Pokud je zapnuté řízení přístupu IP, na webu Azure portal umožňuje zadat
 > [!NOTE]
 > Když povolíte zásadu řízení přístupu IP pro váš účet Azure Cosmos DB, všechny požadavky na účtu služby Azure Cosmos DB z počítačů mimo seznamu povolených rozsahů IP adres jsou odmítnuty. Procházení prostředků Azure Cosmos DB z portálu se taky zablokuje k zajištění integrity řízení přístupu.
 
-### <a name="allow-requests-from-the-azure-portal"></a>Povolení požadavků na webu Azure Portal 
+### <a name="allow-requests-from-the-azure-portal"></a>Povolení požadavků na webu Azure Portal
 
 Pokud povolíte zásadu řízení přístupu IP prostřednictvím kódu programu, je potřeba přidat IP adresu na webu Azure portal **ipRangeFilter** vlastnost chcete zachovat přístup. Portálu IP adresy jsou:
 
@@ -80,7 +80,7 @@ Při horizontálním navýšením kapacity cloudové služby tak, že přidáte 
 
 ### <a name="requests-from-virtual-machines"></a>Požadavky z virtuálních počítačů
 
-Můžete také použít [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/) nebo [škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro hostování střední vrstvy služeb s využitím služby Azure Cosmos DB. Ke konfiguraci účtu služby Cosmos DB, pokud chcete povolit přístup z virtuálních počítačů, musíte nakonfigurovat veřejnou IP adresu virtuálního počítače nebo škálovací sady jako jeden z povolených IP adres pro váš účet Azure Cosmos DB pomocí virtuálních počítačů [ Konfigurace zásad řízení přístupu IP](#configure-ip-policy). 
+Můžete také použít [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/) nebo [škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro hostování střední vrstvy služeb s využitím služby Azure Cosmos DB. Ke konfiguraci účtu služby Cosmos DB, tak, že umožňuje přístup z virtuálních počítačů, musíte nakonfigurovat veřejnou IP adresu virtuálního počítače nebo škálovací sady jako jeden z povolených IP adres pro váš účet Azure Cosmos DB pomocí virtuálních počítačů [ Konfigurace zásad řízení přístupu IP](#configure-ip-policy). 
 
 Můžete získat IP adresy pro virtuální počítače na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -138,6 +138,37 @@ az cosmosdb update \
       --ip-range-filter "183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
 ```
 
+## <a id="configure-ip-firewall-ps"></a>Konfigurace zásad řízení přístupu IP pomocí prostředí PowerShell
+
+Tento skript ukazuje, jak vytvořit účet služby Azure Cosmos DB pomocí řízení přístupu IP:
+
+```azurepowershell-interactive
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "myaccountname"
+
+$locations = @(
+    @{ "locationName"="West US"; "failoverPriority"=0 },
+    @{ "locationName"="East US"; "failoverPriority"=1 }
+)
+
+# Add local machine's IP address to firewall, InterfaceAlias is your Network Adapter's name
+$ipRangeFilter = Get-NetIPConfiguration | Where-Object InterfaceAlias -eq "Ethernet 2" | Select-Object IPv4Address
+
+$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+
+$CosmosDBProperties = @{
+    "databaseAccountOfferType"="Standard";
+    "locations"=$locations;
+    "consistencyPolicy"=$consistencyPolicy;
+    "ipRangeFilter"=$ipRangeFilter
+}
+
+Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $accountName -PropertyObject $CosmosDBProperties
+```
+
 ## <a id="troubleshoot-ip-firewall"></a>Řešení potíží s zásadu řízení přístupu IP
 
 Řešit potíže s zásadu řízení přístupu IP s použitím následujících možností: 
@@ -161,5 +192,4 @@ Pokud chcete nakonfigurovat koncový bod služby virtuální sítě pro váš ú
 
 * [Virtuální síť a podsíť, řízení přístupu pro váš účet Azure Cosmos DB](vnet-service-endpoint.md)
 * [Konfigurace virtuální sítě a přístupu na základě podsítě pro váš účet Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md)
-
 

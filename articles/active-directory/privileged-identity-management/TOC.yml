@@ -27,12 +27,6 @@
       href: pim-deployment-plan.md
     - name: Zahájení práce s využitím PIM
       href: pim-getting-started.md
-    - name: Aktivace mých rolí
-      items:
-        - name: Aktivace mých rolí Azure AD
-          href: pim-how-to-activate-role.md
-        - name: Aktivace mých rolí prostředků Azure
-          href: pim-resource-roles-activate-your-roles.md
     - name: Konfigurace PIM
       items:
         - name: Průvodce zabezpečením
@@ -43,6 +37,12 @@
           href: pim-how-to-give-access-to-pim.md
         - name: Zvýšení úrovně přístupu pro správu všech předplatných
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: Aktivace mých rolí
+      items:
+        - name: Aktivace mých rolí Azure AD
+          href: pim-how-to-activate-role.md
+        - name: Aktivace mých rolí prostředků Azure
+          href: pim-resource-roles-activate-your-roles.md
     - name: Správa rolí Azure AD
       items:
         - name: Přiřazení rolí
@@ -73,21 +73,21 @@
           href: azure-pim-resource-rbac.md
         - name: Použití vlastních rolí
           href: pim-resource-roles-custom-role-policy.md
-    - name: Kontrola přístupu
+    - name: Kontroly přístupu
       items:
         - name: Role Azure AD
           items:
-            - name: Kontrola mých rolí Azure AD
-              href: pim-how-to-perform-security-review.md
-            - name: Zahájení kontroly přístupu
+            - name: Vytvoření kontroly přístupu
               href: pim-how-to-start-security-review.md
+            - name: Kontrola přístupu
+              href: pim-how-to-perform-security-review.md
             - name: Dokončení kontroly přístupu
               href: pim-how-to-complete-review.md
         - name: Role prostředků Azure
           items:
-            - name: Kontrola mých rolí prostředků Azure
-              href: pim-resource-roles-perform-access-review.md
-            - name: Zahájení kontroly přístupu
+            - name: Vytvoření kontroly přístupu
               href: pim-resource-roles-start-access-review.md
+            - name: Kontrola přístupu
+              href: pim-resource-roles-perform-access-review.md
             - name: Dokončení kontroly přístupu
               href: pim-resource-roles-complete-access-review.md

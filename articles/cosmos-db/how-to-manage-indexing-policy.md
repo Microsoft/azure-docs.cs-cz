@@ -4,14 +4,14 @@ description: Další informace o správě zásad indexování ve službě Azure 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 76275420e1e6ed7fdec8309da9e11a272f08fee0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054667"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068677"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Spravovat zásady indexování ve službě Azure Cosmos DB
 
@@ -162,7 +162,7 @@ response = client.ReplaceContainer(containerPath, container)
 Tady je několik příkladů indexování zásady, které jsou uvedené v jejich formát JSON, který je, jak jsou zveřejněné na webu Azure portal. Stejné parametry lze nastavit pomocí rozhraní příkazového řádku Azure, nebo všechny sady SDK.
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Zásady odhlásit selektivně vyloučit některé vlastnosti cesty
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -193,9 +193,10 @@ Tady je několik příkladů indexování zásady, které jsou uvedené v jejich
             }
         ]
     }
+```
 
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Zásady vyjádřit výslovný souhlas pro selektivní některé vlastnosti cesty zahrnutí
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -224,11 +225,12 @@ Tady je několik příkladů indexování zásady, které jsou uvedené v jejich
             }
         ]
     }
+```
 
 Poznámka: Obecně se doporučuje používat **Odhlásit** zásady služby Azure Cosmos DB umožní aktivně indexování indexovat žádné nové vlastnosti, který může být přidán do modelu.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Použití prostorový index na cestu určitou vlastnost
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -257,11 +259,12 @@ Poznámka: Obecně se doporučuje používat **Odhlásit** zásady služby Azure
         ],
         "excludedPaths": []
     }
+```
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Kromě všech cest vlastnost ale je zachováno indexování active
 
 Tyto zásady můžete použít v situacích, kde [Time-to-Live (TTL) funkce](time-to-live.md) je aktivní, ale sekundární index je povinný (pro použití služby Azure Cosmos DB jako čistě úložiště dvojic klíč hodnota).
-
+```
     {
         "indexingMode": "consistent",
         "includedPaths": [],
@@ -269,12 +272,130 @@ Tyto zásady můžete použít v situacích, kde [Time-to-Live (TTL) funkce](tim
             "path": "/*"
         }]
     }
+```
 
 ### <a name="no-indexing"></a>Žádné indexování
-
+```
     {
         "indexingPolicy": "none"
     }
+```
+
+## <a name="composite-indexing-policy-examples"></a>Složený indexování příklady zásad
+
+Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti, můžete také určit složeném indexu. Pokud chcete provést dotaz, který má `ORDER BY` klauzule pro více vlastností [složeném indexu](index-policy.md#composite-indexes) u těchto vlastností je povinný.
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Složeném indexu definované pro (název asc, věk desc):
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+Tato složeném indexu bude moci podporovat následující dva dotazy:
+
+Dotaz #1:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name asc, age desc    
+```
+
+Dotaz #2:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name desc, age asc
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Složeném indexu definované pro (název asc, věk asc) a (název asc, stáří desc):
+
+Můžete definovat více různých Složené indexy v rámci stejné zásady indexování. 
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ]
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Složeném indexu definované pro (název asc, věk asc):
+
+Zadání je volitelné pro určení pořadí. Pokud není zadán, je vzestupné pořadí.
+```
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 

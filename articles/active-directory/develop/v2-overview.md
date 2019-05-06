@@ -1,6 +1,6 @@
 ---
-title: Informace o v2.0 | Azure
-description: Seznamte se s koncovým bodem a platformou v2.0.
+title: Microsoft identity platform (v2.0) přehled – Azure
+description: Další informace o Microsoft identity platform (v2.0) koncového bodu a platformu.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -12,55 +12,75 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/07/2019
 ms.author: celested
-ms.reviewer: saeeda
+ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb269df035bcc11583ebb7cff7d1ee2c3f6d8bca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6aa0af1ff5a8600f43ab92a5f2534a8e3ff253c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250243"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067670"
 ---
-# <a name="about-v20"></a>Informace o v2.0
+# <a name="microsoft-identity-platform-v20-overview"></a>Přehled Microsoft identity platform (v2.0)
 
-Koncový bod a platforma v2.0 je k dispozici ve verzi Preview a průběžně se vylepšuje. V současné době jsou scénáře pro jednostránkové aplikace (SPA) v JavaScriptu z hlediska funkcí dokončené, takže můžete pomocí MSAL.js začít vytvářet aplikace založené na prohlížeči. Dejte nám vědět svůj názor, abychom mohli aktualizovat stav z verze Preview na obecnou dostupnost.
+Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které všechny Microsoft identity Přihlaste se a získat tokeny pro volání APIs Microsoftu, jako je například Microsoft Graphu nebo rozhraní API, která jste vytvořili vývojáři. Platforma Microsoft identity se skládá ze:
 
-> [!NOTE]
-> Funkce knihoven MSAL pro Android, iOS a .NET se zatím stále vyvíjejí. Můžete je vyzkoušet při vytváření aplikací a poslat nám svoje připomínky a názory.
+- **Kompatibilní se standardní ověřovací službu OAuth 2.0 a OpenID Connect** , který umožňuje vývojářům k ověření libovolné identitě společnosti Microsoft, včetně:
+  - Pracovní nebo školní účty (poskytované prostřednictvím Azure AD)
+  - Osobní účty Microsoft (jako je Skype, Xbox a Outlook.com)
+  - Účty sociálních sítí nebo místní (přes Azure AD B2C)
+- **Knihovny Open-source**: Knihovny Microsoft Authentication (MSAL) a podporu pro další standardům knihovny
+- **Portál pro správu aplikace**: Registrace a konfigurace prostředí založená na webu Azure Portal, spolu s všechny další možnosti správy Azure.
+- **Konfigurace aplikace API a PowerShell**: Programová konfigurace aplikací pomocí rozhraní REST API (Microsoft Graph a Azure Active Directory Graph 1.6) a prostředí PowerShell, který umožňuje tak můžete automatizovat úlohy DevOps.
+- **Obsah pro vývojáře**: konceptuální a referenční dokumentaci, ukázky rychlý start, ukázky, kurzy a návody.
 
-Na webu Azure portal [registrace aplikací (preview)](quickstart-register-app.md) prostředí výrazně aktualizovali jsme teď obsahuje všechny aplikace vytvořené pomocí knihovny ADAL nebo MSAL a použitelnosti.
+Vývojářům nabízí platforma identit Microsoft bezproblémovou integraci do inovací v prostoru identity a zabezpečení, jako je například passwordless ověřování, stupňované ověřování a podmíněný přístup.  Není nutné implementovat tyto funkce sami: aplikace integrovaná s platformou identity Microsoft nativně využít výhod těchto inovací.
 
-Vývojáři aplikací, kteří chtěli v minulosti ze služby Azure Active Directory (Azure AD) podporovat osobní i pracovní účty Microsoft, museli integrovat řešení v rámci dvou samostatných systémů. Koncový bod a platforma v2.0 přináší verzi rozhraní API pro ověřování, která tento proces zjednodušuje. Umožňuje přihlášení přes oba typy účtů, přičemž se integruje v rámci jediného systému. Aplikace s podporou koncového bodu v2.0 zároveň můžou využívat rozhraní REST API přes rozhraní [Microsoft Graph API](https://developer.microsoft.com/graph) prostřednictvím obou typů účtu.
+S platformou identity Microsoft můžete napsat kód jednou a oslovení uživatelů. Můžete vytvořit aplikaci jednou a jeho práci na mnoha platformách nebo sestavit aplikaci, která funguje jako klient, stejně jako aplikace prostředků (API).
 
 ## <a name="getting-started"></a>Začínáme
 
-Zvolte vaši oblíbenou platformu z následujícího seznamu k sestavení aplikace s použitím Microsoft otevřete source knihoven a architektur:
+Práce s identitou nemusí být obtížné. Zvolte scénář, který se vás týká – každá cesta scénář má rychlý start a na stránce Přehled, které vám pomůžou rychle zprovoznit během několika minut:
 
-[!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
+- [Sestavení jednostránkové aplikace](scenario-spa-overview.md)
+- [Vytvoření webové aplikace, který se přihlásí uživatelé](scenario-web-app-sign-user-overview.md)
+- [Vytvoření webové aplikace, která volá webové rozhraní API](scenario-web-app-call-api-overview.md)
+- [Vytvoření chráněného webového rozhraní API](scenario-protected-web-api-overview.md)
+- [Vytvoření webového rozhraní API, která volá webové rozhraní API](scenario-web-api-call-api-overview.md)
+- [Vytváření desktopových aplikací](scenario-desktop-overview.md)
+- [Vytvoření aplikace démona](scenario-daemon-overview.md)
+- [Vytvořte mobilní aplikaci](scenario-mobile-overview.md)
 
-## <a name="learn-more-about-the-v20-endpoint-and-platform"></a>Další informace o koncovém bodu a platformě v2.0
+<!--- We are making updates to the application scenarios chart. This is placeholder text for it.
 
-Zjistěte, jaké možnosti nabízí koncový bod služby Azure AD v2.0:
+The following chart outlines the full set of authentication scenarios and best practices – use it as a reference when integrating the Microsoft identity platform before shipping your app.
 
-* Podívejte se na [typy aplikací, které můžete pomocí koncového bodu služby Azure AD v2.0 vytvořit](v2-app-types.md).
-* Seznamte se s [limity a omezeními](active-directory-v2-limitations.md), které může koncový bod Azure AD v2.0 představovat.
+[![Application scenarios in Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="additional-resources"></a>Další materiály
+--->
 
-Prostudujte si podrobné informace týkající se v2.0:
+## <a name="next-steps"></a>Další postup
 
-* [O platforma identit Microsoft](about-microsoft-identity-platform.md)
-* [informace o protokolech v2.0](active-directory-v2-protocols.md)
-* [informace o přístupových tokenech](access-tokens.md)
-* [informace o tokenech ID](id-tokens.md)
-* [informace o knihovnách ověřování v2.0](reference-v2-libraries.md)
-* [Oprávnění a souhlas ve v2.0](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://developer.microsoft.com/graph)
+Pokud chcete získat další informace o základních konceptů ověřování, doporučujeme že začít s těmito tématy:
 
-> [!NOTE]
-> Pokud potřebujete řešit přihlášení jen pracovními a školními účty v rámci Azure Active Directory, začněte [průvodcem Azure AD pro vývojáře](v1-overview.md). Koncový bod v2.0 je určen pro vývojáře, kteří explicitně potřebují řešit přihlášení osobními účty Microsoft.
+- [Základy ověřování](authentication-scenarios.md)
+- [Aplikace a instanční objekty](app-objects-and-service-principals.md)
+- [cílové skupiny](v2-supported-account-types.md)
+- [Oprávnění a souhlas](v2-permissions-and-consent.md)
+- [Tokeny typu ID](id-tokens.md) a [přístupové tokeny](access-tokens.md)
 
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+Sestavit aplikaci bohatého na data, která volá [Microsoft Graphu](https://docs.microsoft.com/graph/overview).
+
+Jakmile budete připraveni ke spuštění vaší aplikace do **produkčního prostředí**, tyto osvědčené postupy:
+
+- [Povolení protokolování](msal-logging.md) ve vaší aplikaci.
+- Povolte telemetrii v aplikaci.
+- Povolit [proxy servery a vlastní nastavení klientů protokolu HTTP](msal-net-provide-httpclient.md).
+- Otestovat integraci vašich podle [kontrolní seznam k Microsoft identity platform integrace](identity-platform-integration-checklist.md).
+
+## <a name="learn-more"></a>Další informace
+
+Pokud jste měli v úmyslu vytvořit aplikaci určenou pro zákazníky, který se přihlásí sociálních sítí a místní identity, podívejte se na [přehled Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
