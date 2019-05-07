@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917615"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190069"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -145,7 +145,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="afs-os-support"></a>
   **Můžete použít Azure File Sync s Windows serverem 2008 R2, Linux nebo zařízení úložiště připojeného k síti (NAS)?**  
-    Azure File Sync v současné době podporuje pouze systém Windows Server 2016 a Windows Server 2012 R2. V tuto chvíli nemáme jakékoli jiné plány, které společnost Microsoft může sdílet, ale jsme otevření podporuje další platformy založené na požadavcích zákazníků. Dejte nám vědět v [UserVoice soubory Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files) jaké platformy který byste nám chtěli na podporu.
+    Azure File Sync v současné době podporuje pouze 2019 serveru systému Windows, Windows Server 2016 a Windows Server 2012 R2. V tuto chvíli nemáme jakékoli jiné plány, které společnost Microsoft může sdílet, ale jsme otevření podporuje další platformy založené na požadavcích zákazníků. Dejte nám vědět v [UserVoice soubory Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files) jaké platformy který byste nám chtěli na podporu.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Proč vrstvené soubory existují mimo obor názvů koncový bod serveru?**  
@@ -222,7 +222,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="encryption-at-rest"></a>
 **Jak můžete zajistit, že Moje sdílené složky Azure se šifrují při nečinnosti**  
 
-    Šifrování služby Azure Storage se právě probíhá povolená ve výchozím nastavení ve všech oblastech. Pro tyto oblasti nemusíte provádět žádné akce Povolit šifrování. Pro ostatní oblasti, naleznete v tématu [šifrování na straně serveru](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Ano. Další informace najdete v části [šifrování služby Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Jak umožním přístup ke konkrétnímu souboru pomocí webového prohlížeče?**  

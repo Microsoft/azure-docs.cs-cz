@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302354"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190867"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -73,13 +73,13 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Stáhněte si svůj projekt ASP.NET Core
 
-- [Stáhněte si řešení Visual Studio 2017.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Stáhněte si Visual Studio 2019 řešení](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky v kořenové složce – například **C:\Azure-Samples**
-1. Pokud používáte Visual Studio 2017, otevřete řešení v sadě Visual Studio (volitelné).
-1. Upravit **appsettings.json** souboru. Najít `ClientId` a aktualizujte hodnotu `ClientId` s **ID aplikace (klient)** hodnotu aplikace, které jste právě zaregistrovali. 
+1. Pokud používáte Visual Studio 2019, otevřete řešení v sadě Visual Studio (volitelné).
+1. Upravit **appsettings.json** souboru. Najít `ClientId` a aktualizujte hodnotu `ClientId` s **ID aplikace (klient)** hodnotu aplikace, které jste zaregistrovali. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -99,7 +99,7 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 
 ## <a name="more-information"></a>Další informace
 
-Tato část obsahuje základní informace o kódu, který je nutný pro přihlášení uživatelů. To může být užitečné k pochopení, jak kód funguje, hlavní argumenty i pokud budete chtít přidání přihlašování do stávající aplikace ASP.NET Core.
+Tato část poskytuje přehled o je kód potřebný k přihlášení uživatelů. Tento přehled může být užitečné k pochopení, jak kód funguje, hlavní argumenty i pokud budete chtít přidání přihlašování do stávající aplikace ASP.NET Core.
 
 ### <a name="startup-class"></a>Třída při spuštění
 
@@ -136,9 +136,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Metoda `AddAuthentication` konfiguruje službu architektura pro přidání ověřování na základě souboru cookie, což je používat v prohlížeči scénáře, stejně jako nastavit před obrovskou výzvou k OpenID Connect. 
+Metoda `AddAuthentication` konfiguruje službu architektura pro přidání ověřování na základě souborů cookie, který se používá pro scénáře prohlížeče a nastavit před obrovskou výzvou – OpenID Connect. 
 
-Na řádek obsahující `.AddAzureAd` přidá ověření Microsoft identity platform pro vaši aplikaci. To se pak nakonfiguruje k přihlášení pomocí koncového bodu Microsoft identity platform.
+Na řádek obsahující `.AddAzureAd` přidá ověření Microsoft identity platform pro vaši aplikaci. Pak je nakonfigurován k přihlášení pomocí koncového bodu Microsoft identity platform.
 
 > |Kde  |  |
 > |---------|---------|
@@ -159,7 +159,7 @@ Můžete chránit kontroleru nebo pomocí metody kontroleru `[Authorize]` atribu
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si úložiště GitHub pro účely tohoto kurzu ASP.NET Core pro další informace včetně informací o tom, jak přidat ověřování do aplikace zcela nové webové aplikace ASP.NET Core, volání Microsoft Graphu, jiné APIs Microsoft a volání vlastních rozhraní API, jak přidat autorizace, jak přihlásit uživatele v národních cloudech, nebo s sociálních identit a další:
+Projděte si úložiště GitHub pro účely tohoto kurzu ASP.NET Core pro další informace včetně informací o tom, jak přidat ověřování do aplikace zcela nové webové aplikace ASP.NET Core, volání Microsoft Graphu, jiné APIs Microsoft a volání vlastních rozhraní API, jak přidat autorizace, jak se přihlásit uživatele v národních cloudech, nebo s sociálních identit a další:
 
 > [!div class="nextstepaction"]
 > [Kurz základní webovou aplikaci ASP.NET](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

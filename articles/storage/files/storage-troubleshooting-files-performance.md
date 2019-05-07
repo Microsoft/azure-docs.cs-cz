@@ -2,22 +2,22 @@
 title: Průvodce odstraňováním potíží Azure souborů výkonu
 description: Známé problémy s výkonem se sdílenými složkami Azure úrovně premium (preview) a přidružené alternativní řešení.
 services: storage
-author: jeffpatt24
+author: gunjanj
 ms.service: storage
 ms.topic: article
 ms.date: 04/25/2019
-ms.author: jeffpatt
+ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 767473a037bf890756df68719698c3872fed6a9c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577912"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190056"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení problémů s výkonem Azure Files
 
-Tento článek uvádí některé běžné problémy související s Microsoft Azure premium sdílené složky (preview). Pokud nedojde k těmto problémům poskytuje možné příčiny a řešení.
+Tento článek uvádí některé běžné problémy související s premium sdílených složek Azure (preview). Pokud nedojde k těmto problémům poskytuje možné příčiny a řešení.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Vysoká latence, Nízká propustnost a obecné informace o výkonu problémy
 
@@ -80,7 +80,7 @@ Klientského virtuálního počítače může nacházet v jiné oblasti než pre
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepodařilo dosáhnout maximální propustnost, které jsou podporovány v síti
 
-Jedna z možných příčin této je nedostatek fo SMB podpora vícekanálové. Soubory typu premium podporují v současné době pouze jeden kanál, tedy jenom jedno připojení z klientského virtuálního počítače k serveru. Toto jediné připojení je propojen s jedním jádrem na straně klienta virtuálního počítače, tak maximální propustnost dosažitelný z virtuálního počítače je svázaná s jedním jádrem.
+Jedna z možných příčin této je nedostatek fo SMB podpora vícekanálové. Aktuálně sdílené složky Azure podporují pouze jeden kanál, tedy pouze jedno připojení z klientského virtuálního počítače k serveru. Toto jediné připojení je propojen s jedním jádrem na straně klienta virtuálního počítače, tak maximální propustnost dosažitelný z virtuálního počítače je svázaná s jedním jádrem.
 
 ### <a name="workaround"></a>Alternativní řešení
 
@@ -137,7 +137,7 @@ Klientská aplikace trvale překračuje základní vstupně-výstupních operac�
 
 ### <a name="cause"></a>Příčina
 
-Pokud je počet volání DirectoryOpen/DirectoryClose mezi horní volání rozhraní API a nečekáte klientovi provádět, že mnoho volání, může být problém s antivirus nainstalované v klientovi Azure VM.
+Pokud je počet volání DirectoryOpen/DirectoryClose mezi horní volání rozhraní API a nečekáte klientovi provádět, že mnoho volání, může být problém s antivirové ochrany nainstalovaný na Azure klientského virtuálního počítače.
 
 ### <a name="workaround"></a>Alternativní řešení
 

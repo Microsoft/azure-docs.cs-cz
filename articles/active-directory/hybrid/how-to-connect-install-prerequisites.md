@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2746775c72976159cdcdb6bdd86e39a5dbe3a4fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bf8df2374d373ad36eada8a7de08be76396a76
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348820"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190806"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -76,8 +76,8 @@ Další informace naleznete v tématu:
 * [Omezení prostoru pro útok služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server používá Azure AD Connect
-* Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaný SQL Server 2012 Express LocalDB (světle verze systému SQL Server Express). SQL Server Express má omezení velikosti 10GB, která umožňuje spravovat přibližně 100 000 objektů. Pokud je potřeba spravovat větší objem adresářových objektů, je potřeba nasměrovat Průvodce instalací na jinou instalaci systému SQL Server.
-* Pokud budete používat samostatný SQL Server, pak platí tyto požadavky:
+* Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaný SQL Server 2012 Express LocalDB (světle verze systému SQL Server Express). SQL Server Express má omezení velikosti 10GB, která umožňuje spravovat přibližně 100 000 objektů. Pokud je potřeba spravovat větší objem adresářových objektů, je potřeba nasměrovat Průvodce instalací na jinou instalaci systému SQL Server. Typ instalace systému SQL Server může mít vliv [výkonu služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Pokud používáte jinou instalaci systému SQL Server, pak platí tyto požadavky:
   * Azure AD Connect podporuje všechny verze Microsoft SQL serveru z 2008 R2 (s nejnovější aktualizací Service Pack) pro SQL Server 2019. Microsoft Azure SQL Database je **nepodporuje** jako databáze.
   * Je nutné použít malá a velká písmena kolace SQL. Tyto kolace jsou označeny ikonou \_CI_ v názvu. Je **nepodporuje** pro používání malá a velká písmena kolace, identifikovaný \_cs_ – v názvu.
   * Můžete mít jenom jeden synchronizační modul za instanci SQL. Je **nepodporuje** sdílení SQL instance s FIM nebo MIM Sync nebo DirSync, Azure AD Sync.

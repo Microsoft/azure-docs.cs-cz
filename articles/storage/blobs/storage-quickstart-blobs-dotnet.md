@@ -2,18 +2,19 @@
 title: 'Rychlý start: Vytvoření objektu blob v úložišti objektů – Azure Storage pomocí .NET'
 description: V tomto rychlém startu se naučíte používat klientskou knihovnu Azure Storage pro .NET k vytvoření kontejneru a objektu blob v úložišti objektů blob. Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.author: tamram
-ms.openlocfilehash: 2708efc22d373db6ee55dfee6b8adfa35bd450ef
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 0b7a7ac7b8a71f33871247a1117c16609bbbcd88
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924326"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191054"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí .NET
 
@@ -152,7 +153,7 @@ Dále prozkoumejte vzorový kód, abyste pochopili, jak funguje.
 
 ### <a name="try-parsing-the-connection-string"></a>Zkouška parsování připojovacího řetězce
 
-Ukázka jako první zkontroluje, že proměnná prostředí obsahuje připojovací řetězec, jehož parsováním je možné vytvořit objekt [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) odkazující na účet úložiště. Ke kontrole platnosti připojovacího řetězce použijte metodu [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse). Pokud se metoda **TryParse** úspěšně provede, inicializuje proměnnou *storageAccount* a vrátí hodnotu **true**.
+Ukázka jako první zkontroluje, že proměnná prostředí obsahuje připojovací řetězec, jehož parsováním je možné vytvořit objekt [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) odkazující na účet úložiště. Ke kontrole platnosti připojovacího řetězce použijte metodu [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse). Pokud se metoda **TryParse** úspěšně provede, inicializuje proměnnou *storageAccount* a vrátí hodnotu **true**.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -184,9 +185,9 @@ else
 
 Dále ukázka vytvoří kontejner a nastaví jeho oprávnění tak, že všechny objekty blob v kontejneru budou veřejné. Když je objekt blob veřejný, může k němu anonymně přistupovat jakýkoli klient.
 
-Pokud chcete vytvořit kontejner, nejprve vytvořte instanci objektu [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient), která odkazuje na úložiště objektů blob ve vašem účtu úložiště. Dále vytvořte instanci objektu [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) a pak vytvořte kontejner.
+Pokud chcete vytvořit kontejner, nejprve vytvořte instanci objektu [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient), která odkazuje na úložiště objektů blob ve vašem účtu úložiště. Dále vytvořte instanci objektu [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) a pak vytvořte kontejner.
 
-V tomto případě ukázka vytvoří kontejner zavoláním metody [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync). K názvu kontejneru se připojí hodnota GUID, která zajistí jeho jedinečnost. V produkčním prostředí je často vhodnější použít metodu [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync), která předchází konfliktům názvů tím, že vytvoří kontejner, pouze pokud ještě neexistuje.
+V tomto případě ukázka vytvoří kontejner zavoláním metody [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync). K názvu kontejneru se připojí hodnota GUID, která zajistí jeho jedinečnost. V produkčním prostředí je často vhodnější použít metodu [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync), která předchází konfliktům názvů tím, že vytvoří kontejner, pouze pokud ještě neexistuje.
 
 > [!IMPORTANT]
 > Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
@@ -209,7 +210,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
-Dále ukázka nahraje místní soubor do objektu blob bloku. Příklad kódu získá odkaz na objekt **CloudBlockBlob** zavoláním metody [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) pro kontejner vytvořený v předchozí části. Pak do objektu blob nahraje vybraný soubor zavoláním metody [UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync). Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
+Dále ukázka nahraje místní soubor do objektu blob bloku. Příklad kódu získá odkaz na objekt **CloudBlockBlob** zavoláním metody [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) pro kontejner vytvořený v předchozí části. Pak do objektu blob nahraje vybraný soubor zavoláním metody [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync). Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -230,7 +231,7 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Ukázka vypíše objekty blob v kontejneru pomocí metody [ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync). V případě ukázky se do kontejneru přidal pouze jeden objekt blob, takže operace výpisu vrátí jenom tento jeden objekt blob.
+Ukázka vypíše objekty blob v kontejneru pomocí metody [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync). V případě ukázky se do kontejneru přidal pouze jeden objekt blob, takže operace výpisu vrátí jenom tento jeden objekt blob.
 
 Pokud je na vrácení v jednom volání příliš mnoho objektů blob (ve výchozím nastavení více než 5 000), pak metoda **ListBlobsSegmentedAsync** vrátí segment celkové sady výsledků dotazu a token pro pokračování. K načtení dalšího segmentu objektů blob zadáte token pro pokračování vrácený z předchozího volání a tak dále, dokud token pro pokračování není nulový. Nulový token pro pokračování značí, že se načetly všechny objekty blob. Vzorový kód ukazuje, jak použít token pro pokračování v souladu s osvědčenými postupy.
 
@@ -253,7 +254,7 @@ do
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Dále ukázka stáhne dříve vytvořený objekt blob do vašeho místního systému souborů pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync). Vzorový kód k názvu objektu blob přidává příponu _DOWNLOADED, takže se v systému souborů zobrazí oba soubory.
+Dále ukázka stáhne dříve vytvořený objekt blob do vašeho místního systému souborů pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync). Vzorový kód k názvu objektu blob přidává příponu _DOWNLOADED, takže se v systému souborů zobrazí oba soubory.
 
 ```csharp
 // Download the blob to a local file, using the reference created earlier.
@@ -265,7 +266,7 @@ await cloudBlockBlob.DownloadToFileAsync(destinationFile, FileMode.Create);
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Ukázka vyčistí prostředky, které vytvořila, odstraněním celého kontejneru pomocí metody [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync). Pokud chcete, můžete odstranit také místní soubory.
+Ukázka vyčistí prostředky, které vytvořila, odstraněním celého kontejneru pomocí metody [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync). Pokud chcete, můžete odstranit také místní soubory.
 
 ```csharp
 Console.WriteLine("Press the 'Enter' key to delete the sample files, example container, and exit the application.");

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694838"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190734"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -165,6 +165,9 @@ Hesla jsou *není* zpětný zápis v některém z následujících situací:
 * **Nepodporovaný správce operací**
    * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [portálu pro správu Office](https://portal.office.com)
    * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
+
+> [!WARNING]
+> Použití zaškrtávacího políčka "uživatel musí změnit heslo při příštím přihlášení" nástroje pro správu služby Active Directory on-premises jako jsou uživatelé služby Active Directory a počítače nebo Centrum správy služby Active Directory není podporováno. Při změně hesla místních nekontrolují tuto možnost. 
 
 ## <a name="next-steps"></a>Další postup
 

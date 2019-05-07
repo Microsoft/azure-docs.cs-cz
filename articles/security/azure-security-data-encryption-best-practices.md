@@ -1,10 +1,10 @@
 ---
-title: Osvědčené postupy šifrování a zabezpečení dat | Dokumentace Microsoftu
+title: Zabezpečení a šifrování dat osvědčené postupy – Microsoft Azure
 description: Tento článek poskytuje sadu osvědčených postupů pro zabezpečení dat a šifrování pomocí integrovaných v možnosti Azure.
 services: security
 documentationcenter: na
-author: barclayn
-manager: mbalwin
+author: TerryLanfear
+manager: barbkess
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,33 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
-ms.author: barclayn
-ms.openlocfilehash: 686d4a8ac5239af12206b57072cc00aa10114d79
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/06/2019
+ms.author: terrylan
+ms.openlocfilehash: 9955450b468ef38ba456d7ee73d9681de677494d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125115"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190710"
 ---
-# <a name="azure-data-security-and-encryption-best-practices"></a>Doporučené postupy pro zabezpečení dat v Azure a šifrování
+# <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
+Tento článek popisuje osvědčené postupy pro zabezpečení dat a šifrování.
 
+Osvědčené postupy jsou založené na konsenzus názorů a práci s aktuální možnosti platformy Azure a sady funkcí. Názory a technologie v průběhu času měnit a tento článek se aktualizuje v pravidelných intervalech, aby tyto změny projevily.
+
+## <a name="protect-data"></a>Ochrana dat
 K ochraně dat v cloudu, budete muset počítat možné stavy, v nichž může dojít, vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Osvědčené postupy pro zabezpečení dat v Azure a šifrování se týkají následující stavy dat:
 
 - V klidovém stavu: To zahrnuje všechny objekty úložiště informace, kontejnery a typy, které existují staticky na fyzickém médiu, zda magnetické nebo optické disk.
 - Při přenosu: Data se přenášejí mezi komponentami, umístění nebo programy, je při přenosu. Příklady jsou přenos v síti v rámci služby Service bus (z místního na cloud (a naopak), včetně hybridních připojení, jako je například ExpressRoute), nebo během vstupně výstupní.
-
-V tomto článku se budeme zabývat kolekce dat Azure zabezpečení a šifrování osvědčené postupy. Tyto osvědčené postupy jsou odvozeny z našich zkušeností s Azure data zabezpečení a šifrování a prostředí zákazníků, jako sami.
-
-Pro každý osvědčeným postupem je vysvětlíme:
-
-* Jaký je doporučený postup
-* Proč chcete povolit tento osvědčený postup
-* Pokud chcete povolit osvědčený postup, co mohou být způsobeny
-* Je to možné alternativy doporučené postupy
-* Jak lze zjistíte, jak povolit osvědčený postup
-
-Tento článek osvědčené postupy šifrování a zabezpečení dat Azure vychází stanovisko shody a možnostech platformy Azure a sady funkcí, protože existují v okamžiku, kdy byla zapsána v tomto článku. Názory a technologie v průběhu času měnit a tento článek bude aktualizován v pravidelných intervalech, aby tyto změny projevily.
 
 ## <a name="choose-a-key-management-solution"></a>Výběr řešení správy klíčů
 
@@ -95,7 +87,7 @@ Protože většina útoků cílí na koncové uživatele, stane se koncový bod 
 
 Azure Storage a Azure SQL Database šifrování neaktivních uložených dat ve výchozím nastavení a mnoho služeb nabídky šifrování jako možnost. Pro kontrolu nad klíči, které k přístupu a šifrování dat můžete použít Azure Key Vault. Zobrazit [podpora modelu šifrování poskytovatele prostředků Azure získat další](azure-security-encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**Osvědčené postupy**: Šifrování pro zmírnění rizika související s neoprávněného přístupu k datům.
+**Osvědčené postupy**: Šifrování pro zmírnění rizika související s neoprávněného přístupu k datům.   
 **Podrobnosti o**: Šifrování jednotky, než k nim napíšete citlivá data.
 
 Organizace, které nevynucují šifrování dat jsou vystaveny více dat důvěrnosti. Například může neoprávněným nebo neautorizovaných serverů uživatelů odcizit data v ohrožením účtů nebo získání neoprávněného přístupu k datům zakódovaný ve formátu vymazat. Společnosti také musíte prokázat, že jsou pečlivé a pomocí správný bezpečnostní mechanismy pro zvýšení zabezpečení svých dat pro dosažení souladu s předpisy odvětví.
@@ -118,7 +110,7 @@ Toto jsou osvědčené postupy, které jsou specifické pro pomocí Azure VPN Ga
 **Podrobnosti o**: Použití [ExpressRoute](../expressroute/expressroute-introduction.md). Pokud se rozhodnete používat ExpressRoute, můžete taky k šifrování dat na úrovni aplikace s použitím [SSL/TLS](https://support.microsoft.com/kb/257591) nebo jiné protokoly pro zvýšení ochrany.
 
 **Osvědčený postup**: Pracovat s Azure Storage na webu Azure portal.   
-**Podrobnosti o**: Všechny transakce nastat prostřednictvím protokolu HTTPS. Můžete také použít [REST API pro Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx) přes protokol HTTPS pro interakci s [služby Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
+**Podrobnosti o**: Všechny transakce nastat prostřednictvím protokolu HTTPS. Můžete také použít [REST API pro Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx) přes protokol HTTPS pro interakci s [služby Azure Storage](https://azure.microsoft.com/services/storage/).
 
 Organizace, které se nepodařilo ochranu přenášených dat budou náchylnější k [útoky man-in-the-middle](https://technet.microsoft.com/library/gg195821.aspx), [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a napadení relace. Tyto útoky může být prvním krokem v získání přístupu k důvěrným datům.
 

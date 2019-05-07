@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591461"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190172"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -176,13 +176,13 @@ Přidělení SNAT porty jsou konkrétní IP přenosový protokol (TCP a UDP se z
 
 ### <a name="tcp-snat-port-release"></a>Port TCP SNAT vydání verze
 
-- Pokud obě server/klient odešle FIN/potvrzení, bude vydána SNAT port po 240 sekund.
+- Pokud buď server/klient odešle FINACK, bude vydána SNAT port po 240 sekund.
 - Pokud je zobrazena RVNÍ, bude vydána SNAT port po 15 sekundách.
-- bylo dosaženo časového limitu nečinnosti
+- Pokud bylo dosaženo časového limitu nečinnosti, je vydána portu.
 
 ### <a name="udp-snat-port-release"></a>Port UDP SNAT vydání verze
 
-- bylo dosaženo časového limitu nečinnosti
+- Pokud bylo dosaženo časového limitu nečinnosti, je vydána portu.
 
 ## <a name="problemsolving"></a> Řešení problémů 
 

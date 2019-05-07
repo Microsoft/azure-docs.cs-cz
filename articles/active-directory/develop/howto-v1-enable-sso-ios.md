@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d90af62c8d6267001ede567c71b7e1204f6ce74
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 73d3c2846ed97b725d745cc76714738ac34ed1a0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917221"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190204"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
 
@@ -165,7 +165,7 @@ Pro jiné zprostředkovatele s asistencí jednotné přihlašování napříč a
 
 Pokud chcete povolit jednotné přihlašování napříč aplikacemi, které vlastníte, že budete muset provést následující:
 
-1. Zajistěte, aby všechny uživatelské aplikace stejné ID klienta nebo ID aplikace.
+1. Ujistěte se, že vaše aplikace používat stejné ID klienta nebo ID aplikace.
 2. Ujistěte se, že všechny vaše aplikace sdílet stejný podpisový certifikát od společnosti Apple tak, aby vám sdílení řetězce klíčů.
 3. Požádat o stejné nároků řetězce klíčů pro každou z vašich aplikací.
 4. Řekněte sady SDK o sdíleném řetězci klíčů, že je vhodné, abyste mohli používat.

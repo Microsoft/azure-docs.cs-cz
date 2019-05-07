@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064c3e5fb7a65a7495c393db893e784548075daf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708217"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190904"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -68,13 +68,13 @@ Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávněn
 
 #### <a name="step-2-download-your-project"></a>Krok 2: Stáhněte si svůj projekt
 
-[Stáhněte si řešení Visual Studio 2017.](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Stáhněte si Visual Studio 2019 řešení](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
 1. Otevřete řešení v sadě Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
-1. V závislosti na verzi sady Visual Studio možná budete muset klikněte pravým tlačítkem na projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` a **balíčky NuGet pro obnovení**
+1. V závislosti na verzi sady Visual Studio, možná budete muset klikněte pravým tlačítkem na projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` a **balíčky NuGet pro obnovení**
 1. Otevřete konzolu Správce balíčků (Zobrazení -> ostatní Windows -> Konzola správce balíčků) a spustit `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Upravte soubor **Web.config** a nahraďte parametry `ClientId` a `Tenant` následujícími hodnotami:
 
@@ -96,7 +96,7 @@ Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávněn
 
 ## <a name="more-information"></a>Další informace
 
-Tato část obsahuje základní informace o kódu, který je nutný pro přihlášení uživatelů. Tyto informace vám pomůžou pochopit způsob fungování kódu a hlavní argumenty a budou užitečné i v případě, že budete chtít implementovat přihlášení do existující aplikace ASP.NET.
+Tato část obsahuje základní informace o kódu, který je nutný pro přihlášení uživatelů. Tento přehled může být užitečné k pochopení, jak kód funguje, hlavní argumenty i pokud budete chtít přidání přihlašování do stávající aplikace ASP.NET.
 
 ### <a name="owin-middleware-nuget-packages"></a>Balíčky NuGet middlewaru OWIN
 
@@ -110,7 +110,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>Třída OWIN Startup
 
-Middleware OWIN používá *třídu Startup*, která se spustí při inicializaci hostitelského procesu (v případě tohoto rychlého startu jde o soubor *startup.cs* v kořenové složce). Následující kód obsahuje parametr použitý v rámci tohoto rychlého startu:
+Middlewaru OWIN, který používá *třídu pro spuštění* , která se spustí, jakmile inicializuje hostitelský proces. V tomto rychlém startu *startup.cs* souboru umístěného v kořenové složce. Následující kód obsahuje parametr použitý v rámci tohoto rychlého startu:
 
 ```csharp
 public void Configuration(IAppBuilder app)

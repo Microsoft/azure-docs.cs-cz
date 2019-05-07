@@ -1,6 +1,6 @@
 ---
 title: Přidání přihlášení účtem Microsoft do webové aplikace ASP.NET | Microsoft Docs
-description: Přečtěte si, jak přidat přihlášení účtem Microsoft v řešení ASP.NET s tradiční webovou aplikací pomocí standardu OpenID Connect.
+description: Zjistěte, jak přidat přihlašování společnosti Microsoft v řešení technologie ASP.NET s tradiční webové aplikace založené na prohlížeči pomocí OpenID Connect standard.
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,18 +16,18 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299315"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191027"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-V tomto rychlém startu se naučíte, jak implementovat přihlášení účtem Microsoft pomocí řešení ASP.NET MVC s tradiční webovou aplikací s využitím standardu OpenID Connect. Naučíte se povolit přihlášení z pracovního a školního účtu v aplikaci ASP.NET.
+V tomto rychlém startu dozvíte, jak implementovat přihlášení u Microsoftu pomocí řešení ASP.NET řadiče MVC (Model View) s tradiční webové aplikace založené na prohlížeči pomocí OpenID Connect. Naučíte se povolit přihlášení z pracovního a školního účtu v aplikaci ASP.NET.
 
 Na konci tohoto rychlého startu přijmete přihlášení pracovního a školního účtu z organizace, která má integrovanou službu Azure Active Directory (Azure AD).
 
@@ -38,15 +38,15 @@ Na konci tohoto rychlého startu přijmete přihlášení pracovního a školní
 
 Abyste mohli začít, musíte splnit tyto předpoklady:
 
-* Musíte mít nainstalovanou sadu Visual Studio 2015 Update 3 nebo Visual Studio 2017. Nemáte ji? [Stáhnout Visual Studio 2017 zdarma](https://www.visualstudio.com/downloads/)
+* Nainstalována aplikace Visual Studio 2015 Update 3 nebo Visual Studio 2019. Nemáte ji? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Scénář: Přihlášení uživatele z pracovním a školním účtům v aplikaci ASP.NET
 
 ![Jak funguje tento průvodce](./media/quickstart-v1-aspnet-webapp/aspnet-intro.png)
 
-V tomto scénáři prohlížeč přejde na web ASP.NET a požádá uživatele, aby se ověřil pomocí tlačítka pro přihlášení. V tomto scénáři se většina aktivit vykreslení webové stránky odehrává na straně serveru.
+V prohlížeči přejde na web ASP.NET a požádá uživatele o ověření pomocí přihlášení tlačítku v tomto scénáři. V tomto scénáři se většina aktivit vykreslení webové stránky odehrává na straně serveru.
 
-Rychlý start ukazuje, jak přihlásit uživatele ve webové aplikaci ASP.NET z prázdné šablony, a zahrnuje postupy, jako je přidání tlačítka pro přihlášení a jednotlivých kontrolerů a metod a vysvětluje koncepty skrývající se za těmito úlohami. Můžete také vytvořit projekt pro přihlášení uživatelů Azure AD (pracovní a školní účty) pomocí [webové šablony sady Visual Studio](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options), výběrem **účtů organizace** a poté jedné z cloudových možností – tato možnost používá podrobnější šablonu s dalšími kontrolery, metodami a zobrazeními.
+Rychlý start ukazuje, jak přihlásit uživatele na spuštění z prázdné šablony webové aplikace ASP.NET. Také obsahuje kroky, jako je například přidávání tlačítko přihlásit a každý kontroler a metody a tento článek popisuje koncepty za tyto úlohy. Můžete také vytvořit projekt k přihlášení uživatelů Azure AD (pracovní a školní účty) s použitím [šablony webové aplikace Visual Studio](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) a vyberete **účty organizace** a pak jednu z možností cloudu – to možnost používá šablonu bohatší s další řadiče, metody a zobrazení.
 
 ## <a name="libraries"></a>Knihovny
 
@@ -158,7 +158,7 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
 1. Vyberte **Kontroler MVC {version} – prázdný**.
 1. Vyberte **Přidat**.
 1. Pojmenujte ho **ClaimsController**.
-1. Nahraďte kód třídy kontroleru následujícím kódem – tím se do třídy přidá atribut `[Authorize]`:
+1. Nahraďte kód třídy kontroleru následující kód – v tomto příkladu přidá `[Authorize]` atribut pro třídu:
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
@@ -196,29 +196,29 @@ V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat
 4. Zkopírujte adresu URL protokolu SSL projektu do schránky:<br/><br/>![Vlastnosti projektu](./media/quickstart-v1-aspnet-webapp/visual-studio-project-properties.png)<br />
 5. V souboru <code>web.config</code> nahraďte řetězec <code>Enter_the_Redirect_URL_here</code> adresou URL protokolu SSL projektu.
 
-### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Zaregistrujte aplikaci na webu Azure Portal a potom přidejte její informace do souboru *web.config*.
+### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Registrace vaší aplikace na webu Azure Portal a pak přidejte informace o jeho *web.config*
 
 1. Abyste mohli zaregistrovat aplikaci, přejděte na [Microsoft Azure Portal – Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 2. Vyberte **Registrace nové aplikace**.
 3. Zadejte název své aplikace.
-4. Vložte *adresu URL protokolu SSL* projektu sady Visual Studio do pole **Přihlašovací adresa URL**. Tato adresa URL se také automaticky přidá do seznamu adres URL pro odpověď pro aplikaci, kterou registrujete.
+4. Vložte *adresu URL protokolu SSL* projektu sady Visual Studio do pole **Přihlašovací adresa URL**. Tato adresa URL je také automaticky přidán do seznamu adres URL odpovědí pro aplikaci, kterou jste registrace.
 5. Aplikaci zaregistrujte výběrem možnosti **Vytvořit**. Tato akce vás převede zpět do seznamu aplikací.
 6. Nyní vyhledejte a vyberte aplikaci, kterou jste právě vytvořili, a otevřete její vlastnosti.
 7. Zkopírujte identifikátor GUID v části **ID aplikace** do schránky.
-8. Vraťte se zpět do sady Visual Studio a v souboru `web.config` nahraďte řetězec `Enter_the_Application_Id_here` ID aplikace, kterou jste právě zaregistrovali.
+8. Vraťte se do sady Visual Studio a v `web.config`, nahraďte `Enter_the_Application_Id_here` s ID aplikace z aplikace, které jste zaregistrovali.
 
 > [!TIP]
 > Pokud máte účet nakonfigurovaný na přístup k více adresářům, nezapomeňte vybrat správný adresář pro organizaci, pro kterou chcete aplikaci zaregistrovat. Klikněte na název účtu v pravém horním rohu webu Azure Portal a potom zkontrolujte vybraný adresář, jak je uvedeno na obrázku:<br/>![Výběr správného adresáře](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
 
 ## <a name="step-10-configure-sign-in-options"></a>Krok 10: Konfigurovat možnosti přihlášení
 
-Aplikaci můžete nakonfigurovat tak, aby povolovala přihlášení pouze uživatelů, kteří patří do instance Azure AD jedné organizace, nebo aby přijímala přihlášení od uživatelů z libovolné organizace. Postupujte podle pokynů pro některou z následujících možností:
+Můžete nakonfigurovat svoji aplikaci povolit pouze uživatele, kteří patří do jedné organizace instancí Azure AD pro přihlášení, nebo přijměte přihlášení od uživatele, kteří patří do organizace. Postupujte podle pokynů jednoho z následujících možností:
 
 ### <a name="configure-your-application-to-allow-sign-ins-of-work-and-school-accounts-from-any-company-or-organization-multi-tenant"></a>Konfigurace aplikace na povolení přihlášení pracovním a školním účtem z libovolné společnosti nebo organizace (více tenantů)
 
-Podle následujících pokynů postupujte, pokud chcete povolit přihlášení pracovním a školním účtem z libovolné společnosti nebo organizace, které jsou integrovány s Azure AD. Tento scénář je společný pro *aplikace SaaS*:
+Podle následujících pokynů postupujte, pokud chcete povolit přihlášení pracovním a školním účtem z libovolné společnosti nebo organizace, které jsou integrovány s Azure AD. Tento scénář je běžné, že *aplikací SaaS*:
 
-1. Přejděte zpět na [Microsoft Azure Portal – Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) a vyhledejte aplikaci, kterou jste právě zaregistrovali.
+1. Přejděte zpět na [portálu Microsoft Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) a vyhledejte aplikaci, které jste zaregistrovali.
 2. V části **Všechna nastavení** vyberte **Vlastnosti**.
 3. Změňte vlastnost **Více tenantů** na **Ano** a vyberte **Uložit**.
 
@@ -238,7 +238,7 @@ Pokud chcete povolit přihlášení pouze uživatelů, kteří jsou uvedeni v se
 1. Nastavte `ValidateIssuer` na true.
 1. K zadání seznamu organizací použijte parametr `ValidIssuers`.
 
-Další možností je implementovat vlastní metodu pro ověření vystavitelů pomocí parametru *IssuerValidator*. Další informace o parametrech `TokenValidationParameters`, najdete v [tomto článku MSDN](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "článek MSDN o parametrech TokenValidationParameters").
+Další možností je implementovat vlastní metodu pro ověření vystavitelů pomocí parametru *IssuerValidator*. Další informace o `TokenValidationParameters`, naleznete v tématu [článku na webu MSDN](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "článku na webu MSDN parametry tokenvalidationparameters").
 
 <!--end-configure-->
 
@@ -278,7 +278,7 @@ Až budete připraveni kód otestovat, přihlaste se pracovním účtem (Azure A
 
 #### <a name="expected-results"></a>Očekávané výsledky
 
-Po přihlášení je uživatel přesměrován na domovskou stránku webu s adresou URL protokolu HTTPS, kterou jste zadali při registraci aplikace na portálu Microsoft pro registraci aplikací. Tato stránka nyní zobrazuje *Vítejte, {User}*, odkaz pro odhlášení a odkaz pro zobrazení deklarací identity uživatele. To je odkaz na ověřovací kontroler, který jste vytvořili dříve.
+Po přihlášení uživatele, uživatel je přesměrován na domovskou stránku vašeho webu, což je adresa URL HTTPS, zadaný v informace o registraci vaší aplikace v portálu pro registraci aplikací společnosti Microsoft. Tato stránka nyní zobrazuje *Vítejte, {User}*, odkaz pro odhlášení a odkaz pro zobrazení deklarací identity uživatele. To je odkaz na ověřovací kontroler, který jste vytvořili dříve.
 
 ### <a name="see-users-claims"></a>Zobrazení deklarací identity uživatele
 
@@ -288,11 +288,11 @@ Výběrem odkazu zobrazíte deklarace identity uživatele. Tato akce vás převe
 
  Měli byste vidět tabulku obsahující základní vlastnosti přihlášeného uživatele:
 
-| Vlastnost | Value | Popis |
+| Vlastnost | Hodnota | Popis |
 |---|---|---|
-| Name | {User Full Name} | Jméno a příjmení uživatele |
+| Název | {User Full Name} | Jméno a příjmení uživatele |
 | Uživatelské jméno | <span>user@domain.com</span> | Uživatelské jméno identifikující přihlášeného uživatele |
-| Subjekt| {Subject} |Řetězec pro jednoznačnou identifikaci přihlášení uživatele na webu |
+| Subjekt| {Subject} |Řetězec k jednoznačné identifikaci uživatele přihlásit na webu |
 | ID tenanta | {Guid} | Identifikátor *guid*, který jedinečně identifikuje organizaci Azure AD uživatele |
 
 Kromě toho uvidíte tabulku obsahující všechny deklarace identity uživatele, které jsou obsaženy v žádosti o ověření. Seznam všech deklarací identity v tokenu ID a jejich vysvětlení najdete v [seznamu deklarací identity v tokenu ID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).

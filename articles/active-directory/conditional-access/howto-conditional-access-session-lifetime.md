@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 884b3c2d3f4414427df87ee5f04138416f363b1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577222"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190224"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace ověřování relace správy s podmíněným přístupem
 
@@ -53,7 +53,7 @@ Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživ
 Podmíněný přístup je schopnost Azure AD Premium a vyžaduje licenci premium. Pokud chcete další informace o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements-for-using-conditional-access)
 
 > [!WARNING]
-> Pokud používáte [konfigurovatelné životnost tokenu](../develop/active-directory-configurable-token-lifetimes.md) funkce aktuálně ve verzi public preview, mějte prosím na paměti, že nepodporujeme vytvoříte dva různé zásady pro stejného uživatele nebo aplikaci kombinaci: jednu s tuto funkci a jinou s Funkce konfigurovat doba platnosti tokenu. Společnost Microsoft plánuje vyřadit z provozu funkci konfigurovatelné doby života tokenů na 1. listopadu a nahraďte ji metodou funkce podmíněného přístupu ověřování relace správy.  
+> Pokud používáte [konfigurovatelné životnost tokenu](../develop/active-directory-configurable-token-lifetimes.md) funkce aktuálně ve verzi public preview, mějte prosím na paměti, že nepodporujeme vytvoříte dva různé zásady pro stejného uživatele nebo aplikaci kombinaci: jednu s tuto funkci a jinou s Funkce konfigurovat doba platnosti tokenu. Společnost Microsoft plánuje vyřadit z provozu funkci konfigurovatelné doby života tokenů na 15. října a nahraďte ji metodou funkce podmíněného přístupu ověřování relace správy.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: Řízení přihlašování frekvence
 

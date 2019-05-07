@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/06/2019
 ms.locfileid: "60525570"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorování v Azure Database for MySQL
@@ -33,9 +33,9 @@ Tyto metriky jsou k dispozici pro službu Azure Database for MySQL:
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |storage_limit|Limit úložiště.|B|Maximální velikost úložiště pro tento server.|
-|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
-|seconds_behind_master|Zpoždění replikace v řádu sekund|Počet|Počet sekund, po které server repliky zaostává s hlavním serverem.|
+|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Count|Počet selhání připojení k serveru.|
+|seconds_behind_master|Zpoždění replikace v řádu sekund|Count|Počet sekund, po které server repliky zaostává s hlavním serverem.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|

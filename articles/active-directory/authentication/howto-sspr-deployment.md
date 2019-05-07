@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357987"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190367"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Úspěšné zavedení samoobslužného resetování hesla
 
@@ -32,6 +32,10 @@ K zajištění hladkého zavedení funkce samoobslužného resetování hesla (S
    * Mít zadané adresy URL pro registraci a resetování?
       * Registrace:  https://aka.ms/ssprsetup
       * Reset: https://aka.ms/sspr
+
+   > [!WARNING]
+   > Použití zaškrtávacího políčka "uživatel musí změnit heslo při příštím přihlášení" nástroje pro správu služby Active Directory on-premises jako jsou uživatelé služby Active Directory a počítače nebo Centrum správy služby Active Directory není podporováno. Při změně hesla místních nekontrolují tuto možnost. 
+
 1. Naučit vaše uživatele.
    * Následující části tohoto dokumentu se přenášejí prostřednictvím ukázka komunikace portály hesel, vynucování registrace a naplnění ověřovacích dat.
    * Produktová skupina Azure Active Directory vytvořila [podrobný plán nasazení](https://aka.ms/SSPRDeploymentPlan), které organizace mohou při vytváření obchodního případu a plánování nasazení samoobslužného obnovení hesel využít současně s dokumentací, kterou najdou na tomto webu.

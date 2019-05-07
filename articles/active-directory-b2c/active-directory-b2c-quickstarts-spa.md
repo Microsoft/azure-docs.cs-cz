@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 51e0f6b7162c9bfa6c34f091bdce2b896bd5e284
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e5f16fa42e86442f6600e375df343f3b6369986
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688937"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190391"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Sada [Visual Studio 2017](https://www.visualstudio.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) s **vývoj pro ASP.NET a web** pracovního vytížení.
 - Instalovat [Node.js](https://nodejs.org/en/download/)
 - Účet na sociální síti Facebook, Google, Microsoft nebo Twitter.
 - [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu.
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
     ![Zprostředkovatel registrace nebo přihlašování](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    Ověříte (přihlásíte) se pomocí přihlašovacích údajů ke svému účtu na sociální síti a autorizujete aplikaci ke čtení informací z tohoto účtu. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město. 
+    Ověřování (přihlášení) se pomocí přihlašovacích údajů vašeho účtu na sociální síti a autorizujete aplikaci ke čtení informací z vašeho účtu na sociální síti. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město. 
 
 3. Dokončete proces přihlašování příslušného zprostředkovatele identity.
 
@@ -82,7 +82,12 @@ Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili ukázkovou jednostránkovou aplikaci k přihlášení pomocí vlastní přihlašovací stránky, přihlášení pomocí zprostředkovatele sociální identity, vytvoření účtu Azure AD B2C a zavolání webového rozhraní API chráněného službou Azure AD B2C. 
+V tomto rychlém startu použijete ukázkovou jednostránkovou aplikaci pro:
+
+* Přihlaste se pomocí vlastní přihlašovací stránky
+* Přihlaste se pomocí zprostředkovatele sociální identity
+* Vytvoření účtu služby Azure AD B2C
+* Volání webového rozhraní API chráněného službou Azure AD B2C
 
 Začněte s vytvářením vlastního tenanta Azure AD B2C.
 

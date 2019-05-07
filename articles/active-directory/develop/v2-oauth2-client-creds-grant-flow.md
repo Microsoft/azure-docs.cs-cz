@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6aed38c8c670c751ee51de95e6622685caea1ce
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112194"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190836"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma identit Microsoft a tok přihlašovacích údajů klienta OAuth 2.0
 
@@ -249,6 +249,10 @@ Chybová odpověď vypadá takto:
 | `timestamp` | Čas, kdy došlo k chybě. |
 | `trace_id` | Jedinečný identifikátor pro žádost o pomoct s diagnostikou. |
 | `correlation_id` | Jedinečný identifikátor pro žádost o pomoct s diagnostikou komponentami. |
+
+> [!NOTE]
+> Aby se vaše aplikace bude moct přijímat v2 token můžete aktualizovat soubor manifestu aplikace z webu azure portal. Můžete přidat atribut `accessTokenAcceptedVersion` a nastavte hodnotu na 2 jako `"accessTokenAcceptedVersion": 2`. Zkontrolujte článek [manifest aplikace](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference) bližší informace o stejné. Ve výchozím nastavení aplikace aktuálně recieves v1 token. Pokud to není definován v manifestu aplikace/webové rozhraní API, je výchozí hodnota pro tento atribut v manifestu je 1, a proto bude aplikace přijímat po v1 token.  
+
 
 ## <a name="use-a-token"></a>Použít token
 

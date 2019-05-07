@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 15bb64917fa58ba2d13c6f372640957508ab29c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60700154"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190509"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -109,7 +109,7 @@ Klíčovým aspektem je spouštěcí podmínka výstrahy. Kliknutím na "Podmín
 
 ![LAAzureBackupAlertCondition](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-V případě potřeby upravit dotaz Kusto, vyberte správné prahovou hodnotu (která se rozhodnout, kdy bude vyvoláno upozornění), správné období (časový interval pro niž je proveden dotaz) a četnost. Pro příklad: Pokud je prahová hodnota větší než 0, doba je 5 minut a četnost je 5 minut, pak toto pravidlo je přeložen jako "Spustit dotaz pro posledních 5 minut každých 5 minut a pokud počet výsledků, které je větší než 0, upozornit mě zprávou skupině vybranou akci"
+V případě potřeby upravit dotaz Kusto, vyberte správné prahovou hodnotu (která se rozhodnout, kdy bude vyvoláno upozornění), správné období (časový interval pro niž je proveden dotaz) a četnost. Příklad: Pokud je prahová hodnota větší než 0, doba je 5 minut a četnost je 5 minut, pak toto pravidlo je přeložen jako "Spustit dotaz pro posledních 5 minut každých 5 minut a pokud počet výsledků, které je větší než 0, upozornit mě zprávou skupině vybranou akci"
 
 #### <a name="action-group-integration"></a>Integrace skupiny akcí
 

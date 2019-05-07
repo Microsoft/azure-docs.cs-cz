@@ -1,9 +1,9 @@
 ---
-title: Azure database osvědčené postupy zabezpečení | Dokumentace Microsoftu
+title: Databáze osvědčené postupy zabezpečení – Microsoft Azure
 description: Tento článek poskytuje sadu osvědčených postupů pro zabezpečení služby Azure database.
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''
@@ -13,27 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: tomsh
-ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: terrylan
+ms.openlocfilehash: f59d349da023f9a1b21477a05750d4f8e9aef500
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587512"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187761"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení Azure database
+Tento článek popisuje osvědčené postupy pro zabezpečení databáze.
+
+Osvědčené postupy jsou založené na konsenzus názorů a práci s aktuální možnosti platformy Azure a sady funkcí. Názory a technologie v průběhu času měnit a tento článek se aktualizuje v pravidelných intervalech, aby tyto změny projevily.
+
+## <a name="secure-databases"></a>Zabezpečení databází
 Zabezpečení je velmi důležité pro správu databází a byl vždy prioritu [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Vaše databáze je možné úzce svázat s pomáhají splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/services/). Můžete také umístit své databáze v určité síti datových center Azure na základě zákonných požadavků.
-
-V tomto článku se podíváme na kolekci osvědčené postupy zabezpečení Azure database. Tyto osvědčené postupy jsou odvozeny z našich zkušeností s zabezpečení služby Azure database a prostředí zákazníků, jako je sami.
-
-Pro každý osvědčeným postupem je vám vysvětlíme:
-
--   Jaký je doporučený postup
--   Proč chcete povolit tento osvědčený postup
--   Pokud chcete povolit osvědčený postup, co mohou být způsobeny
--   Jak lze zjistíte, jak povolit osvědčený postup
-
-Tento článek osvědčené postupy zabezpečení Azure databáze je založen na stanovisko shody a možnostech platformy Azure a sady funkcí, protože existují v okamžiku, kdy byla zapsána v tomto článku. Názory a technologie v průběhu času měnit a tento článek bude aktualizován v pravidelných intervalech, aby tyto změny projevily.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Omezení přístupu k databázi pomocí pravidel brány firewall
 Microsoft Azure SQL Database poskytuje relační databázovou službu pro Azure a další internetové aplikace. K zajištění zabezpečení přístupu, SQL Database – ovládací prvky přístupu pomocí:
@@ -60,7 +54,7 @@ Další informace o pravidlech brány firewall pro SQL Database najdete v témat
 ## <a name="enable-database-authentication"></a>Povolit ověřování databáze
 SQL Database podporuje dva typy ověřování, ověřování SQL serveru a ověřování Azure AD.
 
-### <a name="sql-server-authentication"></a>*Ověřování systému SQL Server*
+### <a name="sql-server-authentication"></a>*Ověřování serveru SQL Server*
 
 Mezi výhody patří následující:
 
