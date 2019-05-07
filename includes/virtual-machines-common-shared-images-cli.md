@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 04/30/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 36c4757feb367fd39ae94640cb8e8a0f1714a0d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e4ca54d8f97646192d19d5923bee24a906e8df7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542462"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149711"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -25,24 +25,12 @@ Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním roh
 
 K dokončení příkladu v tomto článku, musíte mít existující spravované image zobecněného virtuálního počítače. Další informace najdete v tématu [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
 
-## <a name="preview-register-the-feature"></a>Verze Preview: Zaregistrovat funkci
-
-Sdílené Galerie obrázků je ve verzi preview, ale budete muset zaregistrovat funkci, než budete moct použít. Postup pro registraci Galerie obrázků sdílené funkce:
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name GalleryPreview
-az provider register -n Microsoft.Compute
-```
-
-Může trvat několik minut, než zaregistrovat funkci. Můžete zkontrolovat průběh pomocí:
-
-```azurecli-interactive
-az provider show -n Microsoft.Compute
-```
 
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie obrázků 
 
-Galerie obrázků je primární prostředek, který používá k povolení sdílení imagí. Galerie názvy musí být jedinečné v rámci vašeho předplatného. Vytvoření galerie obrázků s využitím [az sig vytvořit](/cli/azure/sig#az-sig-create). Následující příklad vytvoří galerii s názvem *myGallery* v *myGalleryRG*.
+Galerie obrázků je primární prostředek, který používá k povolení sdílení imagí. Povolené znaky pro název galerie jsou malá a velká písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Galerie názvy musí být jedinečné v rámci vašeho předplatného. 
+
+Vytvoření galerie obrázků s využitím [az sig vytvořit](/cli/azure/sig#az-sig-create). Následující příklad vytvoří galerii s názvem *myGallery* v *myGalleryRG*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
@@ -50,6 +38,8 @@ az sig create -g myGalleryRG --gallery-name myGallery
 ```
 
 ## <a name="create-an-image-definition"></a>Vytvoření definice bitové kopie
+
+Definice Image vytvořte logické seskupení pro bitové kopie. Používají se ke správě informace o verzích bitové kopie, které jsou vytvořeny v nich. Názvy imagí definice mohou být tvořené malá a velká písmena, číslice, tečky, pomlčky a tečky. Další informace o hodnotách, můžete použít definici image, najdete v části [obrázku definice](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
 
 Vytvoření definice počáteční image v galerii pomocí [vytvoření sig az image definice](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
@@ -64,9 +54,15 @@ az sig image-definition create \
    --os-type Linux 
 ```
 
+
 ## <a name="create-an-image-version"></a>Vytvoření image verze 
- 
-Vytvoření verze Image podle potřeby pomocí [az image Galerie vytvořit image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Je potřeba předat ID spravované image se má použít jako základ pro vytvoření verze image. Můžete použít [az image list](/cli/azure/image?view#az-image-list) zobrazíte informace o imagích, které jsou ve skupině prostředků. V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 5 repliky v *střed USA – západ* oblast, 1 repliky v *střed USA – jih* oblasti a 1 repliky v *USA – východ 2* oblasti.
+
+Vytvoření verze Image podle potřeby pomocí [az image Galerie vytvořit image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Je potřeba předat ID spravované image se má použít jako základ pro vytvoření verze image. Můžete použít [az image list](/cli/azure/image?view#az-image-list) zobrazíte informace o imagích, které jsou ve skupině prostředků. 
+
+Povolené znaky pro verze image jsou čísla a tečky. Čísla musí být v rozsahu 32bitového celého čísla. Formát: *Hlavní verze*. *Podverze*. *Oprava*.
+
+V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 2 repliky v *střed USA – západ* oblast, 1 repliky v *střed USA – jih* oblasti a 1 repliky v *USA – východ 2* oblasti.
+
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -75,7 +71,9 @@ az sig image-version create \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
    --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1" \
-   --replica-count 5 \
+   --replica-count 2 \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
 ```
 
+> [!NOTE]
+> Budete muset počkat na verzi image, aby zcela dokončit právě vytvořené a replikované před stejné spravované image můžete vytvořit jinou verzi image.

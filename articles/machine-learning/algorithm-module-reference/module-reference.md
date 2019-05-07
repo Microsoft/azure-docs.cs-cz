@@ -9,103 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 6602eb4bacdc3b6382c1b6873a465cdfc0632693
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029337"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145140"
 ---
 # <a name="algorithm--module-reference-overview"></a>Přehled modulům a algoritmům
 
-Tato referenční obsah poskytuje technické znalosti potřebné v každém strojového učení algoritmů a modulů k dispozici v rozhraní visual (preview) služby Azure Machine Learning. 
+Tato referenční obsah poskytuje technické znalosti potřebné v každém strojového učení algoritmů a modulů k dispozici v rozhraní visual (preview) služby Azure Machine Learning.
 
-Každý modul představuje sadu kód, který můžete spustit nezávisle a provést služby machine learning úkolu, zadané vstupy. Modul může obsahovat konkrétního algoritmu nebo provést úlohu, která je důležitý pro strojové učení, jako je například chybějící hodnota náhrada nebo statistická analýza. 
+Každý modul představuje sadu kód, který můžete spustit nezávisle a provést služby machine learning úkolu, zadané vstupy. Modul může obsahovat konkrétního algoritmu nebo provést úlohu, která je důležitý pro strojové učení, jako je například chybějící hodnota náhrada nebo statistická analýza.
 
 > [!TIP]
 > V experimentu vizuální rozhraní můžete získat informace o konkrétní modulu. Vyberte modul, a pak vyberte **další pomoc** odkaz v **rychlou nápovědu** podokně.
 
+## <a name="modules"></a>Moduly
+
 Moduly jsou uspořádané podle funkce:
 
-**Převody formátů data**
+| Funkce | Popis | Modul |
+| --- |--- | ---- |
+| Převody formátů data | Převod dat mezi různými formáty souborů používaných pro strojové učení | [Převést na sdílený svazek clusteru](convert-to-csv.md) |
+| Datový vstup a výstup | Přesun dat z cloudových zdrojů do svého experimentu. Zapsat výsledky nebo dočasných dat do služby Azure Storage, SQL database nebo Hivu, při spuštění experimentu, nebo použít cloudové úložiště pro výměnu dat mezi pokusy.  | [Import dat](import-data.md)<br/>[Export dat](export-data.md)<br/>[Ruční zadání dat](enter-data-manually.md) |
+| Transformace dat | Operace s daty, které jsou jedinečné pro strojové učení, jako je například normalizace nebo binning dat, výběr funkce a snížení.| [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Upravit Metadata](edit-metadata.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Přidání sloupců](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [Rozdělení dat.](split-data.md) <br/> [Normalizovat Data](normalize-data.md) <br/> [Rozdělení a vzorky](partition-and-sample.md) |
+| Modul Python | Psaní kódu a vložení v modulu integrace Python s experimentu. | [Spusťte skript Pythonu](execute-python-script.md)   <br/> [Create Python Model](create-python-model.md)
+|  | **Strojového učení se supervizí**: | |
+| Klasifikace | Předpověď třídu.  Vyberte si z binárního souboru (dvěma třídami) nebo víc tříd algoritmy.| [Rozhodovací les se multiclass](multiclass-decision-forest.md) <br/> [Víc tříd logistické regrese](multiclass-logistic-regression.md)  <br/> [Multiclass Neural Network](multiclass-neural-network.md)  <br/>  [Logistické regrese Two-Class](two-class-logistic-regression.md)  <br/>[Průměrné Perceptron Two-Class](two-class-averaged-perceptron.md) <br/> [Two-Class&nbsp;Boosted&nbsp;rozhodnutí&nbsp;stromu](two-class-boosted-decision-tree.md)  <br/> [Rozhodovací les se dvěma třídami](two-class-decision-forest.md)  <br/> [Two-Class Neuronové sítě](two-class-neural-network.md)  <br/> [Dvě&#8209;třídy&nbsp;podporu&nbsp;vektoru&nbsp;počítače](two-class-support-vector-machine.md) 
+| Clustering | Data seskupit dohromady.| [K-Means Clustering](k-means-clustering.md)
+| Regrese | Předvídejte hodnotu. | [Lineární regrese](linear-regression.md)  <br/> [Regrese neuronové sítě](neural-network-regression.md)  <br/> [Rozhodovací les regrese](decision-forest-regression.md)  <br/> [Vylepšené&nbsp;rozhodnutí&nbsp;stromu&nbsp;regrese](boosted-decision-tree-regression.md)
+|  | **Sestavení a vyhodnocení modelů**: | |
+| Trénování   | Zpracování dat pomocí algoritmu. | [Trénování modelu](train-model.md)  <br/> [Trénování modelu Clustering](train-clustering-model.md)    |
+| Vyhodnocení modelu | Měří přesnost trénovaného modelu. |  [Vyhodnocení modelu](evaluate-model.md)
+| Skóre | Získání předpovědi z jsme právě natrénovaného modelu. | [Použije transformace](apply-transformation.md)<br/>[Přiřadit&nbsp;Data&nbsp;k&nbsp;clusterů](assign-data-to-clusters.md) <br/>[Určení skóre modelu](score-model.md)
 
-  + [Převést na sdílený svazek clusteru ](convert-to-csv.md)
+## <a name="error-messages"></a>Chybové zprávy
 
-**Data vstupní a výstupní moduly** práci pro přesun dat z cloudových zdrojů do svého experimentu. Můžete napsat výsledků nebo dočasných dat do služby Azure Storage, SQL database nebo Hivu, při spuštění experimentu nebo používat cloudové úložiště pro výměnu dat mezi pokusy.  
-
-  + [Import dat](import-data.md)
-
-  + [Export dat](export-data.md)
-
-  + [Ruční zadání dat](enter-data-manually.md)
-
-
-**Moduly transformace dat** podporují operace pro data, která jsou jedinečné pro strojové učení, jako je například normalizace nebo binning dat, výběr funkce a snížení.
-
-  + [Výběr sloupců v datové sadě](select-columns-in-dataset.md)
-
-  + [Upravit Metadata](edit-metadata.md)
-
-  + [Vyčištění chybějících dat](clean-missing-data.md)
-
-  + [Přidání sloupců](add-columns.md)
-
-  + [Přidání řádků](add-rows.md)
-
-  + [Odebrání duplicitních řádků](remove-duplicate-rows.md)
-
-  + [Rozdělení dat.](split-data.md)
-
-  + [Normalizovat Data](normalize-data.md)
-
-  + [Rozdělení a vzorky](partition-and-sample.md)
-
-
-**Strojového učení se supervizí** například clustering, počítač vektorové podpory nebo neuronové sítě, jsou k dispozici v rámci jednotlivých modulů, které umožňují přizpůsobit úlohy strojového učení s příslušnými parametry.  
-  + [Určení skóre modelu](score-model.md)
-
-  + [Přiřaďte Data do clusterů ](assign-data-to-clusters.md)
-
-  + [Trénování modelu](train-model.md)
-
-  + [Trénování modelu Clustering](train-clustering-model.md)
-
-  + [Vyhodnocení modelu](evaluate-model.md)
-
-  + [Použije transformace](apply-transformation.md)
-
-  + [Lineární regrese](linear-regression.md)
-
-  + [Regrese neuronové sítě](neural-network-regression.md)
-
-  + [Rozhodovací les regrese](decision-forest-regression.md)
-
-  + [Posílená regrese rozhodovacího stromu](boosted-decision-tree-regression.md)
-
-  + [Two-Class posíleného rozhodovacího stromu](two-class-boosted-decision-tree.md)
-
-  + [Logistické regrese Two-Class](two-class-logistic-regression.md)
-
-  + [Víc tříd logistické regrese](multiclass-logistic-regression.md)
-
-  + [Multiclass Neural Network](multiclass-neural-network.md)
-
-  + [Rozhodovací les se multiclass](multiclass-decision-forest.md)
-
-  + [Průměrné Perceptron Two-Class](two-class-averaged-perceptron.md)
-
-  + [Rozhodovací les se dvěma třídami](two-class-decision-forest.md)
-
-  + [Two-Class Neuronové sítě](two-class-neural-network.md)
-
-  + [Two-Class Support Vector Machine](two-class-support-vector-machine.md)
-  
-  + [K-Means Clustering](k-means-clustering.md)
-
-
-**Modul Pythonu** umožňuje snadno spouštět vlastní funkci. Psát kód a vložit do modulu integrace Pythonu pomocí služby experimentu.
-  + [Spusťte skript Pythonu](execute-python-script.md)
-
-  + [Create Python Model](create-python-model.md)
-
-
+Další informace o [chybové zprávy a kódy výjimek](machine-learning-module-error-codes.md) může dojít k používání modulů ve vizuální rozhraní služby Azure Machine Learning.

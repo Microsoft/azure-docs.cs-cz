@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: fac14281365ccf3c191684af8cfdebda69e734e0
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 77c2cd9e0eac6717d91a73a6fc033dcaa2390444
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870444"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145031"
 ---
-# <a name="status-monitor-v2"></a>Stav monitorování v2
+# <a name="status-monitor-v2"></a>Monitorování stavu v2
 
 Stav monitorování v2 je modul Powershellu publikovaná [PowerShellGallery](https://www.powershellgallery.com/packages/Az.ApplicationMonitor) a je náhradou [monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now). Tento modul poskytuje méně kód instrumentace webové aplikace .NET hostované službou IIS.
 Telemetrická data se odešlou na portál Azure Portal kde pak můžete [monitorování](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) vaší aplikace.
@@ -61,3 +61,19 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - Ověření povolení byla úspěšná?
 
    Pokud chcete ověřit že úspěšné této funkce pro kontrolu nemáme rutinu. Doporučujeme používat [Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) rychle sledovat, pokud vaše aplikace je odeslání telemetrie.
+
+## <a name="next-steps"></a>Další postup
+
+Zobrazení telemetrických dat:
+
+* [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
+* [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů
+* [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
+* [Vytváření řídicích panelů](../../azure-monitor/app/app-insights-dashboards.md)
+
+Přidání další telemetrie:
+
+* [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.
+* [Přidání telemetrie webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění vložení trasovacích volání.
+* [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , mohli vložit trasování a protokolování volání
+

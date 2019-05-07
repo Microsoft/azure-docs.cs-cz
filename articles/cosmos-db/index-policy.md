@@ -4,14 +4,14 @@ description: Zjistěte, jak konfigurovat a měnit výchozí zásady pro automati
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: c7f2ccd2c074f2488c86b45a09859b308655df8d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872669"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068608"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -72,6 +72,36 @@ Například jsme zahrnuli `/headquarters/employees/?` cesty a určit, že `Range
 - Pro cesty se pravidelně znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojité uvozovky (například "/ cesta /?"). Pro cesty s jinými speciální znaky, je potřeba řídicí řetězec cesty kolem dvojité uvozovky (například "/\"cesta abc\"/?"). Pokud očekáváte, speciální znaky v zadané cestě, může uniknout každá cesta pro zabezpečení. Funkčně nevyužívá žádné rozdíly, pokud escape každá cesta Vs pouze ty, které mají speciální znaky.
 
 Zobrazit [v této části](how-to-manage-indexing-policy.md#indexing-policy-examples) indexování příklady zásad.
+
+## <a name="composite-indexes"></a>Složené indexy
+
+Dotazy, které `ORDER BY` vyžadují dva nebo více vlastností složeném indexu. V současné době jsou složené indexy pouze využíván několika `ORDER BY` dotazy. Ve výchozím nastavení, jsou definovány žádné Složené indexy, takže byste měli [přidat Složené indexy](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) podle potřeby.
+
+Při definování složeném indexu, zadejte:
+
+- Dva nebo více vlastnost cesty. Pořadí, ve kterých se vlastnosti cesty jsou definovány věcech.
+- Pořadí (vzestupně nebo sestupně).
+
+Při použití Složené indexy se používají následující aspekty:
+
+- Pokud složeném indexu cesty se neshodují pořadí vlastností v klauzuli ORDER by, pak složeném indexu nemůže podporovat dotazu
+
+- Pořadí složeném indexu cest (vzestupně nebo sestupně) by měl odpovídat také pořadí, v klauzuli ORDER by.
+
+- Složeném indexu také podporuje klauzuli ORDER BY s opačném pořadí ve všech cestách.
+
+Zvažte následující příklad, ve kterém je definována složeném indexu na vlastnosti a, b a c:
+
+| **Složeném indexu**     | **Ukázka `ORDER BY` dotazu**      | **Podporuje Index?** |
+| ----------------------- | -------------------------------- | -------------- |
+| ```(a asc, b asc)```         | ```ORDER BY  a asc, bcasc```        | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  b asc, a asc```        | ```No```             |
+| ```(a asc, b asc)```          | ```ORDER BY  a desc, b desc```      | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  a asc, b desc```       | ```No```             |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc, c asc``` | ```Yes```            |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc```        | ```No```            |
+
+Můžete přizpůsobit zásady indexování tak můžete poskytovat všechny nezbytné `ORDER BY` dotazy.
 
 ## <a name="modifying-the-indexing-policy"></a>Úprava zásady indexování
 

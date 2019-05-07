@@ -1,21 +1,21 @@
 ---
-title: Konfigurace a získat přístup k protokolům server for PostgreSQL na webu Azure Portal
-description: Tento článek popisuje, jak nakonfigurovat a přístup k protokolům serveru ve službě Azure Database for PostgreSQL na webu Azure Portal.
+title: Konfigurace a získat přístup k protokolům serveru pro službu Azure Database for PostgreSQL – jeden Server na webu Azure Portal
+description: Tento článek popisuje, jak nakonfigurovat a přístup k protokolům serveru ve službě Azure Database for PostgreSQL – jeden Server z webu Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 509c3af66e8228f142126dae6938ad74daf1d7ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421843"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067454"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k serveru přihlášení na webu Azure portal
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k Azure Database for PostgreSQL – protokoly jednoho serveru na webu Azure Portal
 
-Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database for postgresql – protokoly serveru](concepts-server-logs.md) z portálu Azure portal.
+Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database for postgresql – protokoly](concepts-server-logs.md) z portálu Azure portal.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:

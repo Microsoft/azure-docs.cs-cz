@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495813"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073705"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
 
-Účelem složený entity je nadřazená entita kategorie pro seskupení souvisejících entit. Informace o existuje jako samostatný entity před vytvořením složeného. Je podobné hierarchické entity, ale může obsahovat různé typy entit. 
+Účelem složený entity je nadřazená entita kategorie pro seskupení souvisejících entit. Informace o existuje jako samostatný entity před vytvořením složeného. 
 
 Složený entita je vhodný pro tento typ dat, protože data:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 62c7c6b2f78ea90999f72597291e8347ddc14029
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3aca64c7b0f1ad04967782cb3349da302db557a0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870429"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145092"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Stav monitorování v2 podrobné pokyny
 
@@ -229,3 +229,24 @@ Application Insights SDK potřebovat k odesílání telemetrie vaší aplikace s
 Cmd: `Enable-ApplicationInsightsMonitoring`
 
 Kontrola naše [Reference k rozhraní API](status-monitor-v2-api-enable-monitoring.md) podrobný popis toho, jak použít tuto rutinu. 
+
+
+
+## <a name="next-steps"></a>Další postup
+
+ Zobrazení telemetrických dat:
+
+- [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
+- [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů
+- [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
+- [Vytváření řídicích panelů](../../azure-monitor/app/app-insights-dashboards.md)
+
+ Přidání další telemetrie:
+
+- [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.
+- [Přidání telemetrie webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění vložení trasovacích volání.
+- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , mohli vložit trasování a protokolování volání
+
+Lepší využití v2 monitorování stavu:
+
+- Pomocí naší příručce ke [Poradce při potížích](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.

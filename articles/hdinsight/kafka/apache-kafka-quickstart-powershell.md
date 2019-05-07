@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/16/2018
-ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/02/2019
+ms.openlocfilehash: 8a0397440e2b10bf1ad6b4f1be999888e09bad8f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850325"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148132"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
@@ -30,40 +30,35 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Azure PowerShell Další informace najdete v dokumentu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* PowerShell [Az modulu](https://docs.microsoft.com/powershell/azure/overview) nainstalované.
 
-* Klient SSH. V krocích v tomto dokumentu se pro připojení ke clusteru používá SSH.
+* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-    Příkaz `ssh` je ve výchozím nastavení k dispozici v systémech Linux, Unix a macOS. Ve Windows 10 nainstalujte příkaz `ssh` některým z těchto způsobů:
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-  * Použijte [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart). Cloud Shell poskytuje příkaz `ssh` a dá se nakonfigurovat tak, aby jako prostředí používal Bash nebo PowerShell.
+Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` rutiny a postupujte podle pokynů na obrazovce pokynů.
 
-  * [Nainstalujte podsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10). Distribuce Linuxu dostupné v Microsoft Storu poskytují příkaz `ssh`.
+```azurepowershell-interactive
+# Login to your Azure subscription
+$sub = Get-AzSubscription -ErrorAction SilentlyContinue
+if(-not($sub))
+{
+    Connect-AzAccount
+}
 
-    > [!IMPORTANT]  
-    > Kroky v tomto dokumentu předpokládají, že používáte některého z klientů SSH uvedených výše. Pokud používáte jiného klienta SSH a narazíte na potíže, zkuste najít řešení v dokumentaci pro vašeho klienta SSH.
-    >
-    > Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k předplatnému Azure pomocí rutiny `Login-AzAccount` a postupujte podle pokynů na obrazovce.
-
-```powershell
-Login-AzAccount
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 ```
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Tento příklad vás vyzve k zadání názvu a umístění a pak vytvoří novou skupinu prostředků:
 
-```powershell
-$resourceGroup = Read-Input -Prompt "Enter the resource group name"
-$location = Read-Input -Prompt "Enter the Azure region to use"
+```azurepowershell-interactive
+$resourceGroup = Read-Host -Prompt "Enter the resource group name"
+$location = Read-Host -Prompt "Enter the Azure region to use"
 
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
@@ -72,19 +67,24 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 I když Kafka v HDInsight ukládá data Kafka pomocí Spravovaných disků Azure, cluster používá i Azure Storage k ukládání informací, jako jsou protokoly. Použití [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) k vytvoření nového účtu úložiště.
 
-```powershell
+> [!IMPORTANT]  
+> Druh účtu úložiště `BlobStorage` jde použít jenom jako sekundární úložiště pro clustery HDInsight.
+
+```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
 
 New-AzStorageAccount `
-        -ResourceGroupName $resourceGroup `
-        -Name $storageName `
-        -Type Standard_LRS `
-        -Location $location
+    -ResourceGroupName $resourceGroup `
+    -Name $storageName `
+    -Location $location `
+    -SkuName Standard_LRS `
+    -Kind StorageV2 `
+    -EnableHttpsTrafficOnly 1
 ```
 
 HDInsight ukládá data v účtu úložiště v kontejneru objektů blob. Použití [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) vytvořit nový kontejner.
 
-```powershell
+```azurepowershell-interactive
 $containerName = Read-Host -Prompt "Enter the container name"
 
 $storageKey = (Get-AzStorageAccountKey `
@@ -93,28 +93,27 @@ $storageKey = (Get-AzStorageAccountKey `
 $storageContext = New-AzStorageContext `
                     -StorageAccountName $storageName `
                     -StorageAccountKey $storageKey
-New-AzStorageContainer -Name $containerName -Context $storageContext 
+
+New-AzStorageContainer -Name $containerName -Context $storageContext
 ```
 
 ## <a name="create-an-apache-kafka-cluster"></a>Vytvoření clusteru Apache Kafka
 
 Vytvoření Apache Kafka v clusteru HDInsight s [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
-```powershell
-# Create a Kafka 1.0 cluster
+```azurepowershell-interactive
+# Create a Kafka 1.1 cluster
 $clusterName = Read-Host -Prompt "Enter the name of the Kafka cluster"
-$httpCredential = Get-Credential -Message "Enter the cluster login credentials" `
-    -UserName "admin"
-$sshCredentials = Get-Credential -Message "Enter the SSH user credentials"
+$httpCredential = Get-Credential -Message "Enter the cluster login credentials" -UserName "admin"
+$sshCredentials = Get-Credential -Message "Enter the SSH user credentials" -UserName "sshuser"
 
 $numberOfWorkerNodes = "4"
 $clusterVersion = "3.6"
 $clusterType="Kafka"
-$clusterOS="Linux"
 $disksPerNode=2
 
 $kafkaConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-$kafkaConfig.Add("kafka", "1.0")
+$kafkaConfig.Add("kafka", "1.1")
 
 New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroup `
@@ -122,7 +121,7 @@ New-AzHDInsightCluster `
         -Location $location `
         -ClusterSizeInNodes $numberOfWorkerNodes `
         -ClusterType $clusterType `
-        -OSType $clusterOS `
+        -OSType "Linux" `
         -Version $clusterVersion `
         -ComponentVersion $kafkaConfig `
         -HttpCredential $httpCredential `
@@ -336,7 +335,7 @@ Můžete také programově vytvořit producenty a spotřebitele. Příklad použ
 
 Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odebrání skupiny prostředků, HDInsight, a všechny související prostředky.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 

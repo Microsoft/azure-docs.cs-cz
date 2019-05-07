@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60489414"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143308"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -205,8 +205,8 @@ Můžete zobrazit a aktualizovat server proxy protokolu HTTP pomocí nástroje C
 ### <a name="configure-proxy-server-settings"></a>Konfigurace nastavení proxy serveru
 Pokud vyberete **použít systémový proxy server** nastavení pro proxy server HTTP, brána používá nastavení proxy v diahost.exe.config a diawp.exe.config. Pokud v diahost.exe.config a diawp.exe.config není zadán žádný proxy server, brána se připojí ke cloudové službě přímo bez proxy serveru. Následující postup obsahuje pokyny pro aktualizaci diahost.exe.config souboru.
 
-1. V Průzkumníku souborů vytvořte kopii bezpečné C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config zálohovat původní soubor.
-2. Spusťte Notepad.exe spuštěný v režimu správce a otevřete textový soubor "C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config. Najít výchozí značka pro system.net, jak je znázorněno v následujícím kódu:
+1. V Průzkumníku souborů, vytvořte bezpečné kopii *C:\\\\Program Files\\Brána pro správu dat společnosti Microsoft\\2.0\\Shared\\diahost.exe.config* do Zálohujte původní soubor.
+2. Spusťte Notepad.exe spuštěný v režimu správce a otevřete textový soubor *C:\\\\Program Files\\Brána pro správu dat společnosti Microsoft\\2.0\\Shared\\ diahost.exe.config*. Najít výchozí značka pro system.net, jak je znázorněno v následujícím kódu:
 
     ```
     <system.net>
@@ -280,7 +280,7 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
 
 [Pro jeden uzel brány]
 1. Spusťte Windows PowerShell na počítači brány.
-2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
+2. Přepněte *C:\\\\Program Files\\prostředí Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  složky.
 3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).
 
     ```powershell
@@ -293,7 +293,7 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
     ```
    [Pro vysoce dostupnou a škálovatelnou bránu několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Spusťte Windows PowerShell na počítači brány.
-2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
+2. Přepněte *C:\\\\Program Files\\prostředí Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  složky.
 3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).
 
     Pro bránu s vysokou dostupností funkcí je navíc param AuthKey vyžaduje.
@@ -310,7 +310,7 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
 Po instalaci brány, můžete spustit Správce konfigurace brány správy dat v jednom z následujících způsobů:
 
 1. V **hledání** okno, zadejte **brána správy dat** pro přístup k tohoto nástroje.
-2. Spuštění spustitelného souboru **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
+2. Spuštění spustitelného souboru *ConfigManager.exe* ve složce: *C:\\\\programové soubory\\Brána pro správu dat společnosti Microsoft\\2.0\\sdílené*.
 
 ### <a name="home-page"></a>Domovská stránka
 Na domovské stránce umožňuje provádět následující akce:
@@ -365,7 +365,7 @@ Následující tabulka obsahuje popis sloupců **uzly brány** seznamu:
 
 Vlastnosti monitorování | Popis
 :------------------ | :----------
-Name | Název logické brány a uzly, které jsou přidružená k bráně. Uzel je místní počítač Windows, která je brána nainstalovaná na něm. Informace o tom, že máte více než jeden uzel (až čtyři uzly) v jedné logické brány, naleznete v tématu [brána správy dat – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Název | Název logické brány a uzly, které jsou přidružená k bráně. Uzel je místní počítač Windows, která je brána nainstalovaná na něm. Informace o tom, že máte více než jeden uzel (až čtyři uzly) v jedné logické brány, naleznete v tématu [brána správy dat – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Stav logické brány a uzly brány. Příklad: Online/Offline/Limited/atd. Informace o těchto stavů najdete v tématu [stav brány](#gateway-status) oddílu.
 Version | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže).
 Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímek téměř v reálném čase.
@@ -511,7 +511,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V prostředí Azure PowerShell přejděte do složky: **C:\\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript\\**. Spustit **RegisterGateway.ps1** přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
+1. V prostředí Azure PowerShell přejděte do složky: *C:\\\\programové soubory\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*. Spustit *RegisterGateway.ps1* přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

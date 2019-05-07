@@ -1,5 +1,5 @@
 ---
-title: Použití služby doručování licencí s ochranou DRM s dynamickým šifrováním ve službě Azure Media Services| Microsoft Docs
+title: Pomocí DRM dynamického šifrování a licence služby pro doručování pomocí Azure Media Services | Dokumentace Microsoftu
 description: Azure Media Services můžete použít k doručování datových proudů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay.
 services: media-services
 documentationcenter: ''
@@ -11,62 +11,43 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 066863a49abc517019785a578d2761d1c50432a7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60995750"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141294"
 ---
-# <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí
+# <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí
 
-Službu Azure Media Services můžete použít k doručování datových proudů MPEG-DASH, Smooth Streaming a HTTP Live Streaming (HLS) chráněných [technologií správy digitálních práv (DRM) PlayReady](https://www.microsoft.com/playready/overview/). Službu Media Services můžete taky použít k doručování šifrovaných datových proudů DASH chráněných licencemi **Google Widevine** s ochranou DRM. Technologie PlayReady i Widevine jsou šifrované podle specifikace Common Encryption (ISO/IEC CENC 23001-7). Služba Media Services umožňuje taky šifrovat obsah HLS pomocí **Apple FairPlay** (AES-128 CBC). 
+Azure Media Services můžete použít k doručování datových proudů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay. Podrobnější vysvětlení najdete v tématu [Content protection v případě dynamického šifrování](content-protection-overview.md).
 
 Kromě toho Media Services poskytuje službu doručování licencí DRM PlayReady, Widevine a FairPlay. Když si uživatel vyžádá obsah chráněný pomocí DRM, aplikace přehrávače požádá o licenci z licenční služby Media Services. Pokud je aplikace přehrávače oprávněná, licenční služba Media Services vydá přehrávači licenci. Licence obsahuje dešifrovací klíč, kterým může klientský přehrávač dešifrovat a streamovat obsah.
 
-Tento článek vychází z ukázky [šifrování pomocí ochrany DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM). Tato ukázka mimo jiné předvádí tyto úkony:
-
-* Vytvoření transformace kódování, která provádí kódování s adaptivní přenosovou rychlostí pomocí integrované předvolby a ingestuje soubor přímo z [adresy URL zdroje HTTPs](job-input-from-http-how-to.md).
-* Nastavení podpisového klíče sloužícího k ověření vašeho tokenu.
-* Nastavení požadavků (omezení) v zásadě symetrického klíče, které je třeba splnit, aby bylo možné doručit klíče se stanovenou konfigurací. 
-
-    * Konfigurace 
-    
-        V této ukázce jsou licence [PlayReady](playready-license-template-overview.md) a [Widevine](widevine-license-template-overview.md) nakonfigurované tak, že se dají doručit pomocí služby doručení licencí Media Services. Tato ukázková aplikace sice nekonfiguruje licenci [FairPlay](fairplay-license-overview.md), ale obsahuje metodu, kterou můžete ke konfiguraci FairPlay použít. Pokud chcete, můžete konfiguraci FairPlay přidat jako další možnost.
-
-    * Omezení
-
-        Aplikace nastavuje v zásadě omezení typu tokenu JWT.
-
-* Vytvoření streamovacího lokátoru StreamingLocator s určeným názvem zásady streamování pro určitý prostředek. V tomto případě se použije předdefinovaná zásada. Nastaví dva klíče obsahu na StreamingLocator: AES-128 (obálky) a šifrování CENC (PlayReady a Widevine).  
-    
-    Po vytvoření streamovacího lokátoru StreamingLocator dojde k publikování výstupního prostředku a k jeho zpřístupnění klientům pro účely přehrávání.
-
-    > [!NOTE]
-    > Zkontrolujte, jestli je koncový bod streamování, ze kterého chcete streamovat, ve stavu Spuštěno.
-
-* Vytvoření adresy URL pro Azure Media Player, která obsahuje jak manifest DASH, tak token PlayReady nutný k přehrávání obsahu zašifrovaného pomocí PlayReady. Ukázka nastaví dobu platnosti tokenu na 1 hodinu. 
-
-    Můžete otevřít prohlížeč a zadáním výsledné adresy URL spustit ukázkovou stránku Azure Media Player, na které je už předem vyplněná adresa URL a token.  
-
-    ![Ochrana s využitím DRM](./media/protect-with-drm/playready_encrypted_url.png)
-
-> [!NOTE]
-> Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.
+Tento článek vychází z ukázky [šifrování pomocí ochrany DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM). 
 
 Ukázka popsaná v tomto článku vede k tomuto výsledku:
 
 ![Video chráněný pomocí DRM AMS](./media/protect-with-drm/ams_player.png)
+
+V tomto kurzu získáte informace o následujících postupech:    
+
+> [!div class="checklist"]
+> * Vytvoření kódování transformace
+> * Nastavte podpisový klíč používaný k ověření tokenu
+> * Nastavit požadavky na obsahu klíče zásad
+> * Vytvoření StreamingLocator zásadám zadaného datového proudu
+> * Vytvořit adresu URL použít k přehrávání souboru
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující:
 
 * Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
-* Přečíst si článek [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
+* Zkontrolujte [návrhu systému s více variantami DRM ochrany obsahu pomocí řízení přístupu](design-multi-drm-system-with-access-control.md)
 * Nainstalovat Visual Studio Code nebo Visual Studio
 * Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](create-account-cli-quickstart.md)
 * Získat přihlašovací údaje nutné k používání rozhraní API služby Media Services podle článku [Přístup k rozhraním API](access-api-cli-how-to.md)
@@ -163,18 +144,40 @@ V zásadě ContentKeyPolicy se používá deklarace ContentKeyIdentifierClaim, c
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetToken)]
 
-## <a name="build-a-dash-streaming-url"></a>Vytvoření adresy URL pro streamování DASH
+## <a name="build-a-streaming-url"></a>Vytvořit adresu URL streamování
 
 Vytvořili jste streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) a teď můžete vytvořit adresy URL pro streamování. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele [koncového bodu hostování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu **streamovacího lokátoru**. V této ukázce je použit *výchozí* **koncový bod streamování**. Když poprvé vytvoříte účet Media Service, tento *výchozí* **koncový bod streamování** bude v zastaveném stavu, proto je potřeba zavolat **spuštění**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
+Po spuštění aplikace se zobrazí následující:
+
+![Ochrana s využitím DRM](./media/protect-with-drm/playready_encrypted_url.png)
+
+Můžete otevřít prohlížeč a zadáním výsledné adresy URL spustit ukázkovou stránku Azure Media Player, na které je už předem vyplněná adresa URL a token. 
+ 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
 Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte v plánu použít znovu, (obvykle jsou to transformace, streamovací lokátory apod.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  Následující kód například odstraní Úlohy.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. 
+
+Spusťte následující příkaz rozhraní příkazového řádku:
+
+```azurecli
+az group delete --name amsResourceGroup
+```
+
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
+
+Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
+
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se, jak zajistit [ochranu pomocí AES-128](protect-with-aes128.md).
+> [!div class="nextstepaction"]
+> Podívejte se, jak zajistit [ochranu pomocí AES-128](protect-with-aes128.md).
+

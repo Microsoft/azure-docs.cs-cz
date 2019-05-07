@@ -4,14 +4,14 @@ description: Zjistěte, jak funguje indexování ve službě Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44706e5ebe2442dcb45dfc45e2c322938cf7dca9
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61051857"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068661"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
 
@@ -66,19 +66,41 @@ Azure Cosmos DB v současné době podporuje dva druhy indexů:
 
 **Rozsah** typ indexu se používá pro:
 
-- dotazy na rovnost: `SELECT * FROM container c WHERE c.property = 'value'`
-- dotazy v rozsahu: `SELECT * FROM container c WHERE c.property > 'value'` (se dá použít pro `>`, `<`, `>=`, `<=`, `!=`)
-- `ORDER BY` dotazy: `SELECT * FROM container c ORDER BY c.property`
-- `JOIN` dotazy: `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+- dotazy na rovnost: 
+
+   ```sql SELECT * FROM container c WHERE c.property = 'value'```
+
+- Dotazy na rozsah: 
+
+   ```sql SELECT * FROM container c WHERE c.property > 'value'``` (funguje pro `>`, `<`, `>=`, `<=`, `!=`)
+
+- `ORDER BY` dotazy:
+
+   ```sql SELECT * FROM container c ORDER BY c.property```
+
+- `JOIN` dotazy: 
+
+   ```sql SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'```
 
 Rozsah indexů lze na skalární hodnoty (řetězec nebo číslo).
 
 **Prostorových** typ indexu se používá pro:
 
-- geoprostorové dotazy vzdálenost: `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
-- geoprostorové v rámci dotazů: `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+- geoprostorové dotazy vzdálenost: 
+
+   ```sql SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40```
+
+- geoprostorové v rámci dotazů: 
+
+   ```sql SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })```
 
 Prostorové indexy jde použít na správný formát [GeoJSON](geospatial.md) objekty. LineStrings bodů a mnohoúhelníků jsou aktuálně podporovány.
+
+**Složené** typ indexu se používá pro:
+
+- `ORDER BY` dotazy na více vlastností: 
+
+   ```sql SELECT * FROM container c ORDER BY c.firstName, c.lastName```
 
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 
@@ -89,7 +111,7 @@ Zvažte například následující dotaz: `SELECT location FROM location IN comp
 ![Odpovídající konkrétní cestě v rámci stromu](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> `ORDER BY` Klauzule *vždy* potřebuje rozsah indexu a selže, pokud cesta odkazuje na nemá.
+> `ORDER BY` Klauzuli, která řadí podle jedné vlastnosti *vždy* potřebuje rozsah indexu a selže, pokud cesta odkazuje na nemá. Podobně s více `ORDER BY` dotazu *vždy* potřebuje složeném indexu.
 
 ## <a name="next-steps"></a>Další postup
 

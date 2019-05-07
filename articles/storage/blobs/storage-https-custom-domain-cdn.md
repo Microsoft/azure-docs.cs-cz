@@ -2,18 +2,19 @@
 title: Přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN
 description: Zjistěte, jak integrovat Azure CDN pomocí úložiště objektů Blob a přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS
 services: storage
-author: michaelhauss
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: mihauss
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da3a6dcb0d125ac4666bc375e843c57cf12fb2fc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392517"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148410"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN
 

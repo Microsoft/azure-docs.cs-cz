@@ -15,12 +15,12 @@ ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 36a98ea52ea48c9828ca5857dc480742632056fb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ce23b891decd20db239e653702533ac7af21b980
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689861"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073342"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -74,6 +74,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Cognitive Services Data Reader (Preview)](#cognitive-services-data-reader-preview) | Umožní vám čtení dat Cognitive Services. |
 | [Cognitive Services User](#cognitive-services-user) | Umožňuje přečíst a vypsat klíče služeb Cognitive Services. |
 | [Role čtenáře účtu cosmos DB](#cosmos-db-account-reader-role) | Může číst data účtu služby Azure Cosmos DB. Zobrazit [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) ke správě účtů službu Azure Cosmos DB. |
+| [Cosmos DB – operátor](#cosmos-db-operator) | Umožňuje spravovat účty služby Azure Cosmos DB, ale ne přístup k datům v nich. Brání v přístupu k účtu klíče a připojovací řetězce. |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Může odesílat požadavky na obnovení databáze Cosmos DB nebo kontejneru pro určitý účet. |
 | [Služba Cost Management přispěvatele](#cost-management-contributor) | Může zobrazovat náklady a spravovat jejich konfiguraci (např. rozpočty, exporty). |
 | [Služba Cost Management čtečky](#cost-management-reader) | Může zobrazovat data a konfiguraci nákladů (např. rozpočty, exporty). |
@@ -1080,6 +1081,30 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
 > | *None* |  |
+> | **DataActions** |  |
+> | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="cosmos-db-operator"></a>Cosmos DB – operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje spravovat účty služby Azure Cosmos DB, ale ne přístup k datům v nich. Brání v přístupu k účtu klíče a připojovací řetězce. |
+> | **ID** | 230815da-be43-4aae-9cb4-875f7bd000aa |
+> | **Akce** |  |
+> | Microsoft.DocumentDb/databaseAccounts/* |  |
+> | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
+> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | **notActions** |  |
+> | Microsoft.DocumentDB/databaseAccounts/readonlyKeys/* |  |
+> | Microsoft.DocumentDB/databaseAccounts/regenerateKey/* |  |
+> | Microsoft.DocumentDB/databaseAccounts/listKeys/* |  |
+> | Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/* |  |
 > | **DataActions** |  |
 > | *None* |  |
 > | **NotDataActions** |  |

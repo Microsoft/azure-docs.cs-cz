@@ -1,19 +1,19 @@
 ---
-title: Optimalizace autovacuum na serveru Azure Database for PostgreSQL
-description: Tento článek popisuje, jak můžete optimalizovat autovacuum na serveru Azure Database for PostgreSQL.
+title: Optimalizace autovacuum ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje, jak můžete optimalizovat autovacuum ve službě Azure Database for PostgreSQL – jeden Server
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: fb1ab9525974601a8b8c22ccc44e2cf37baf21a1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420266"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069115"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Optimalizace autovacuum na serveru Azure Database for PostgreSQL 
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimalizace autovacuum ve službě Azure Database for PostgreSQL – jeden Server
 Tento článek popisuje, jak efektivně optimalizovat autovacuum na serveru Azure Database for PostgreSQL.
 
 ## <a name="overview-of-autovacuum"></a>Přehled autovacuum

@@ -2,20 +2,20 @@
 title: 'Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
 description: Kurz používá Azure portal a SQL Server Management Studio k načtení dat taxislužby města New York z veřejného Azure blob do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/27/2019
-ms.author: mlee3gsd
+ms.date: 04/26/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca4084fb271320eb4cdfdeb6cb9026367761be0a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61078874"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143663"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse
 
@@ -561,6 +561,49 @@ Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/
 
     ![Zobrazení načtených tabulek](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Ověření pomocí spravované identity načíst (volitelné)
+Načítání při použití technologie PolyBase a ověřování pomocí spravované identity je nejbezpečnější mechanismus a umožňuje vám to využívat koncové body služby virtuální sítě s Azure storage. 
+
+### <a name="prerequisites"></a>Požadavky
+1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps).
+2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
+
+#### <a name="steps"></a>Kroky
+1. V prostředí PowerShell **registraci serveru služby SQL Database** s Azure Active Directory (AAD):
+
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
+    
+   1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+
+   > [!NOTE]
+   > - Pokud máte účet pro obecné účely v1 a blob storage, je nutné **nejprve upgradovat na v2** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+    
+1. V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob úložiště** role RBAC pro váš server SQL Database.
+
+   > [!NOTE] 
+   > Tento krok lze provést pouze členové s oprávněními vlastníka. Různé předdefinované role pro prostředky Azure, najdete to [průvodce](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  
+1. **Polybase připojením k účtu Azure Storage:**
+    
+   1. Vytvořte své přihlašovací údaje s rozsahem databáze s **IDENTITY = "Identita spravované služby"**:
+
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - Není nutné zadat tajný kód se přístupový klíč k úložišti Azure, protože tento mechanismus využívá [Identity spravované](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pod pokličkou.
+       > - Název IDENTITY by měl být **Managed Service Identity** PolyBase připojení k práci s účtem úložiště Azure.
+    
+   1. Create External Data Source zadání Database Scoped Credential se identita spravované služby.
+        
+   1. Dotaz jako normální použití [externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+
+Přečtěte si následující [dokumentace] (https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview ) Pokud chcete nastavit koncové body služeb virtuální sítě pro službu SQL Data Warehouse. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

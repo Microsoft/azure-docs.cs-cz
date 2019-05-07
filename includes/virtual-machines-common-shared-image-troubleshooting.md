@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418642"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149630"
 ---
 Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním **– ladění** přepnout pomocí rozhraní příkazového řádku a **– ladění** přepnout pomocí Powershellu. Jakmile jste vyhledali chyby, postupujte podle tohoto dokumentu pro řešení těchto chyb.
 
@@ -24,7 +24,7 @@ Možné příčiny:
 
 *Název galerie je neplatný.*
 
-Povolené znaky pro název galerie jsou malá a velká písmena, číslice, tečky a tečky. Název galerie nemůže mít pomlčky v ní. Změňte název galerie a zkuste to znovu. 
+Povolené znaky pro název galerie jsou malá a velká písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Změňte název galerie a zkuste to znovu. 
 
 *Název galerie není jedinečné v rámci vašeho předplatného.*
 
@@ -62,20 +62,7 @@ Zkontrolujte, jestli zdrojový obraz existuje a je ve stejné oblasti jako verze
 
 Ujistěte se, že je stav zřizování spravované image zdroj **Succeeded**.
 
-*Zdrojová oblast se ještě nepodporuje.*
-
-Chcete-li zobrazit, pokud se podporuje zamýšlený zdrojové oblasti, použijte následující tabulku:
-<br>
-
-| Vytvoření v galerii nebo "zdrojové oblasti"   | Replikovat verzi nebo "cílové oblasti" |
-|----------------------------------------|-------------------------------------------|
-| Západní střed USA                        | Všechny oblasti veřejném cloudu Azure            |
-| Středojižní USA                       |                                           |
-| Východní USA 2                              |                                           |
-| Jihovýchodní Asie                         |                                           |
-| Západní Evropa                            |                                           |
-
-<br>
+*Seznam oblastí cíl neobsahuje zdrojové oblasti.*
 
 Seznam cílové oblasti, musí obsahovat zdrojové oblasti verze image. Ujistěte se, že jste zadali v seznamu cílové oblasti, kde má Azure k replikaci adresáře vaší verze image do zdrojové oblasti.
 
@@ -101,7 +88,7 @@ Ověřte, že **OSType** obrázku verze, kterou se pokoušíte vytvořit virtuá
 
 ## <a name="unable-to-share-resources"></a>Nelze sdílet prostředky
 
-Sdílení Galerie sdílené bitové kopie, definici image a image verze prostředků napříč předplatnými se aktivuje pomocí [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Sdílení Galerie sdílené bitové kopie, definici image a image verze prostředků napříč předplatnými se aktivuje pomocí [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
 
 ## <a name="replication-is-slow"></a>Replikace je pomalá
 

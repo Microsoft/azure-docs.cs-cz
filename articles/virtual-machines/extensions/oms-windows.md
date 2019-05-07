@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: 7c56b54f2d5be2bd47644e07369120468bb6015e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2287a0c39a82509e21ff35d8c3786cf1c85b1b24
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468376"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142877"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Azure Monitor pro Windows
 
@@ -32,7 +32,10 @@ Protokoly Azure monitoru poskytuje funkce sledování v rámci cloudových a mí
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta Log Analytics pro Windows můžete spustit na Windows Server 2008 R2, 2012, 2012 R2 a 2016 uvolní.
+Rozšíření agenta Log Analytics pro Windows podporuje následující verze operačního systému Windows:
+
+- Windows Server 2019
+- Windows Server 2008 R2, 2012, 2012 R2, 2016, verze 1709 a 1803
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -43,7 +46,7 @@ Rozšíření agenta Log Analytics pro Windows vyžaduje, aby cílový virtuáln
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics. Rozšíření vyžaduje pracovní prostor Id a klíč pracovního prostoru z cílového pracovního prostoru Log Analytics. Ty najdete v nastavení pracovního prostoru na webu Azure Portal. Protože klíč pracovního prostoru by měl být považován za citlivá data, by měl být uložený v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaný a dešifrovat jenom na cílovém virtuálním počítači. Všimněte si, že **ID pracovního prostoru** a **workspaceKey** jsou malá a velká písmena.
+Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics. Rozšíření vyžaduje ID pracovního prostoru a klíč pracovního prostoru z cílového pracovního prostoru Log Analytics. Ty najdete v nastavení pracovního prostoru na webu Azure Portal. Protože klíč pracovního prostoru by měl být považován za citlivá data, by měl být uložený v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaný a dešifrovat jenom na cílovém virtuálním počítači. Všimněte si, že **ID pracovního prostoru** a **workspaceKey** jsou malá a velká písmena.
 
 ```json
 {
@@ -84,6 +87,9 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 ## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění rozšíření agenta Log Analytics při nasazení šablony Azure Resource Manageru. Ukázková šablona, která zahrnuje rozšíření virtuálního počítače agenta Log Analytics můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+
+>[!NOTE]
+>Šablony nepodporuje zadání více než jeden pracovní prostor s ID a klíč pracovního prostoru, pokud chcete provést konfiguraci agenta na generování sestav k několika pracovním prostorům. Konfigurace agenta na generování sestav k několika pracovním prostorům, naleznete v tématu [přidání nebo odebrání pracovního prostoru](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
 JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění ve formátu JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
 

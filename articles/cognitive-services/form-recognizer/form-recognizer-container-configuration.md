@@ -1,7 +1,7 @@
 ---
 title: Konfigurace kontejneru – nástroj pro rozpoznávání formuláře
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití kontejneru formuláře Rozlišovač analyzovat data formuláře a tabulek.
+description: Zjistěte, jak konfigurovat kontejner formuláře Rozlišovač analyzovat data formuláře a tabulek.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 6066e7856ddf8ef757afc2072218c87420a37c10
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3f6cc32f6fb2a9fb11220ac1a3134fb3ae4d2f84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027177"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147471"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurace formuláře Rozlišovač kontejnery
 
@@ -70,7 +70,7 @@ Toto nastavení najdete v následujícím místě:
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
 
-Kontejnery pro formulář rozpoznávání vyžaduje vstupní a výstupní připojení. Vstupní připojení může být jen pro čtení a je potřeba přístup k datům, který se použije pro trénování a vyhodnocování. Výstup připojení musí být zapisovatelný a se použije k ukládání dočasných dat a modely.
+Kontejner modulu pro rozpoznávání formuláře vyžaduje vstupní a výstupní připojení. Vstupní připojení může být jen pro čtení a je potřeba přístup k datům, který se použije pro trénování a vyhodnocování. Výstup připojení musí být zapisovatelný a se použije k ukládání dočasných dat a modely.
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](form-recognizer-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění.
 

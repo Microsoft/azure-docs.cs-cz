@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1553bede87aab118b1fdddae20201a5d283a7b24
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 2a8ab0d22321be0095743228463ac859925f0847
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870459"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147502"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v021-alpha"></a>Rozhraní API v2 monitorování stavu: Get-ApplicationInsightsMonitoringStatus (v0.2.1-alpha)
 
@@ -129,3 +129,7 @@ Pokud tento proces z nějakého důvodu selže, můžete ručně spustit tyto p�
 **Volitelné**. Použít pouze s InspectProcess. Tento přepínač se přeskočí uživateli zobrazí výzva ke stažení Další nástroje.
 
 
+## <a name="next-steps"></a>Další postup
+
+ Lepší využití v2 monitorování stavu:
+ - Pomocí naší příručce ke [Poradce při potížích](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.

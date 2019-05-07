@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 8fd5b726c01b056d38e7e187cec8270ee4e127a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466729"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074023"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)
 
@@ -34,9 +34,11 @@ Ve výchozím nastavení na serveru Kubernetes API používá veřejnou IP adres
 
 ## <a name="node-security"></a>Zabezpečení uzlu
 
-Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. V uzlech je spuštěný optimalizované Ubuntu Linuxovou distribuci pomocí modulu runtime Moby kontejneru. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
+Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. Spuštění optimalizované distribuce Ubuntu pomocí modulu runtime kontejneru Moby uzly s Linuxem. Uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) spuštění. 2019 optimalizované systému Windows Server verze a také použít modul runtime kontejneru Moby. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
 
-Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly přes noc. Pokud aktualizace zabezpečení operačního systému, vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly, nebo běžným přístupem je použití [Kured][kured], open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet] [ aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
+Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly s Linuxem přes noc. Pokud aktualizace zabezpečení operačního systému Linux vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly s Linuxem nebo běžným přístupem je použití [Kured][kured], open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet] [ aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
+
+Pro uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) Windows Update automaticky spustit a použijte nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání verzí Windows Update a procesu ověřování měli byste provést upgrade na fondy uzlů Windows Server ve vašem clusteru AKS. Pomocí tohoto procesu vytvoří uzly, na kterých běží nejnovější image Windows serveru a oprav a pak odstraní starší uzly. Další informace o tomto procesu najdete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 
 Uzly jsou nasazené do privátní virtuální síť podsíť s žádné veřejné IP adresy přiřazené. Pro účely řešení potíží a správu SSH ve výchozím nastavení zapnutá. Tento přístup přes SSH je dostupný pouze pomocí interní IP adresa.
 
@@ -52,10 +54,10 @@ Zabezpečení a dodržování předpisů, nebo pokud chcete používat nejnověj
 
 Během procesu upgradu jsou uzly AKS jednotlivě kapacity z clusteru tak nových podů nejsou na ně. Uzly jsou pak Vyprázdněné a upgradovat takto:
 
-- Existující podů se řádně ukončit a naplánováno na zbývajících uzlech.
-- Po restartování uzlu, na dokončení procesu upgradu a pak spojení zpět do clusteru AKS.
-- Podů jsou naplánovány ke spuštění na nich znovu.
-- Další uzel v clusteru je uzavřené a Vyprázdněné pomocí stejného procesu, dokud všechny uzly jsou úspěšně upgradoval.
+- Nový uzel se nasazuje do fond uzlů. Tento uzel spustí nejnovější image operačního systému a opravy.
+- Jeden z existujících uzlů je určen pro upgrade. Podů v tomto uzlu se řádně ukončit a naplánované na jiných uzlech ve fondu uzlů.
+- Tento existující uzel je odstraněn z clusteru AKS.
+- Další uzel v clusteru je uzavřené a Vyprázdněné pomocí stejného procesu, dokud všechny uzly jsou úspěšně nahrazen jako součást procesu upgradu.
 
 Další informace najdete v tématu [Upgrade clusteru AKS][aks-upgrade-cluster].
 
@@ -102,3 +104,4 @@ Další informace o základní Kubernetes a AKS koncepty najdete v následujíc�
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

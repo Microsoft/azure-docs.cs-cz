@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: cc6e8cdb7cd1719a8cd14cbfe6e576e07c34b32c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1afe9239dcc3f5a24d2e950ec7b563bf53d1f04c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027261"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143235"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahování dat formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -90,7 +90,7 @@ Poznamenejte si `"modelId"` hodnota; je budete potřebovat následující postup
 
 V dalším kroku se analýza dokumentu a z něj extrahovat páry klíč hodnota a tabulky. Volání **Model – analýza** rozhraní API pomocí provádí následující příkaz cURL. Před spuštěním příkazu, proveďte následující změny:
 
-* Nahraďte `<Endpoint>` s koncovým bodem jste získali váš klíč předplatného Rozlišovač formuláře. Najdete ho na kartě Přehled prostředků vaší Rozlišovač formuláře.
+* Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Najdete ho ve svém prostředku formuláře Rozlišovač **přehled** kartu.
 * Nahraďte `<modelID>` s ID modelu, který jste získali v předchozím kroku tohoto cvičení modelu.
 * Nahraďte `<path to your form>` s cestou k souboru do formuláře.
 * Místo `<subscription key>` použijte váš klíč předplatného.

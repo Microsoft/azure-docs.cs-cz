@@ -1,23 +1,23 @@
 ---
-title: Koncepty serveru ve službě Azure Database for PostgreSQL
-description: Tento článek obsahuje důležité informace a pokyny pro konfiguraci a správu databáze Azure pro servery PostgreSQL.
+title: Koncepty serveru ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek obsahuje důležité informace a pokyny pro konfigurace a Správa služby Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.openlocfilehash: a5b6db9f4bfbe9a11119270e9236580b41fae8c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422095"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067164"
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Servery Azure Database for PostgreSQL
-Tento článek obsahuje důležité informace a pokyny pro pracovat se službou Azure Database for PostgreSQL servery.
+# <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – jeden Server
+Tento článek obsahuje důležité informace a pokyny pro práci se službou Azure Database for PostgreSQL – jeden Server.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Co je serveru Azure Database for PostgreSQL?
-Serveru Azure Database for PostgreSQL je centrální administrativní bod pro více databází. Je to stejné konstrukci server PostgreSQL, která je pravděpodobně znáte místního prostředí. Konkrétně služba PostgreSQL je spravovaná, poskytuje záruky týkající se výkonu, poskytují přístup a funkce na úrovni serveru.
+Server ve službě Azure Database for PostgreSQL – možnost nasazení jednoho serveru je centrální administrativní bod pro více databází. Je to stejné konstrukci server PostgreSQL, která je pravděpodobně znáte místního prostředí. Konkrétně služba PostgreSQL je spravovaná, poskytuje záruky týkající se výkonu, poskytují přístup a funkce na úrovni serveru.
 
 Azure Database for PostgreSQL server:
 

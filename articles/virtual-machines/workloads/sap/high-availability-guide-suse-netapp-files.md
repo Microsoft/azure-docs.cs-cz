@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: cd2479aed1e348a27c5cba56c6d809ffb24e4fc0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3bd8600d0839c31a17221bb5421dc36165deb434
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925778"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142983"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP
 
@@ -99,6 +99,10 @@ Nyní je možné dosáhnout SAP Netweaver HA pomocí sdíleného úložiště, k
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP HANA pomocí virtuální název hostitele a virtuální IP adresy. V Azure [nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) je povinná používat virtuální IP adresu. Následující seznam obsahuje konfiguraci (A) SCS a Lajících nástroj pro vyrovnávání zatížení.
 
+> [!IMPORTANT]
+> S několika SID clusteringu SAP ASCS/Lajících s operačním systémem SUSE Linux jako hostovaný operační systém na virtuálních počítačích Azure je **nepodporuje**. Popisuje instalaci více instancí SAP ASCS/Lajících s různé identifikátory SID v jednom clusteru Pacemaker clustering s několika SID
+
+
 ### <a name="ascs"></a>(A)SCS
 
 * Konfiguraci front-endu
@@ -107,7 +111,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP 
   * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
 * Port testu
   * Port 620<strong>&lt;nr&gt;</strong>
-* Pravidla vyrovnávání zatížení
+* Pravidla Vyrovnávání zatížení
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
@@ -124,7 +128,8 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP 
   * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
 * Port testu
   * Port 621<strong>&lt;nr&gt;</strong>
-* Pravidla vyrovnávání zatížení
+* Pravidla Vyrovnávání zatížení
+  * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -228,9 +233,9 @@ Nejprve musíte vytvořit svazky NetApp soubory Azure. Nasazení virtuálních p
          1. Klikněte na tlačítko OK
       1. Port 621**01** pro ASCS Lajících
             * Opakujte předchozí kroky v části "c" k vytvoření sondy stavu pro Lajících (například 621**01** a **stavu. QAS. Lajících**)
-   1. Pravidla vyrovnávání zatížení
+   1. Pravidla Vyrovnávání zatížení
       1. 32**00** TCP pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, pravidel Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
+         1. Otevřete nástroj pro vyrovnávání zatížení, pravidla Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
          1. Zadejte název nového pravidla služby load balancer (například **lb. QAS. ASCS.3200**)
          1. Vyberte IP adresu front-endu pro ASCS, back-endového fondu a sondu stavu, které jste vytvořili dříve (například **front-endu. QAS. ASCS**)
          1. Zachovat protokol **TCP**, zadejte port **3200**
@@ -626,7 +631,7 @@ Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://he
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-   Pokud jste upgrade ze starší verze a přechodu k zařazení do fronty server 2, viz poznámka sap [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+   Pokud jsou upgradu ze starší verze a přechodu k zařazení do fronty server 2, přečtěte si téma SAP Poznámka [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
 

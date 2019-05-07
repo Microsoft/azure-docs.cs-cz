@@ -3,17 +3,18 @@ title: Jak používat úložiště objektů (Blob) z Xamarin | Dokumentace Micro
 description: Klientská knihovna pro úložiště Azure pro Xamarin umožňuje vývojářům vytvářet svá nativní uživatelská rozhraní iOS, Android a Windows Store apps. Tento kurz ukazuje, jak pomocí Xamarinu můžete vytvořit aplikaci, která využívá úložiště objektů Blob v Azure.
 services: storage
 documentationcenter: xamarin
-author: michaelhauss
+author: mhopkins-msft
 ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: michaelhauss
-ms.openlocfilehash: b9c707dcc1628f685661f88aaed29612465a5469
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 1953a0af89e5ea018bd3654c3b82087331b3d565
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098054"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141286"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Používání úložiště Blob z Xamarin
 

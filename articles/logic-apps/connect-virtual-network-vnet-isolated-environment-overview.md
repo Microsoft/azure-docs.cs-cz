@@ -8,18 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/11/2019
-ms.openlocfilehash: b53cd54afdf6243769602971ab77145cfa9ba9cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 0206fd2b2ea0a7cfaf79aaf19052e0174645780b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506815"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143116"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network v Azure Logic Apps s využitím prostředí integrační služby (ISEs)
-
-> [!NOTE]
-> Tato funkce je v [ *ve verzi public preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V některých případech logic apps a účty pro integraci potřebují přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a jiné systémy nebo služby, v [virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Chcete-li nastavit tento přístup můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) pro spouštění vašich logic apps a účty pro integraci. Při vytváření ISE Azure nasadí privátní a izolované instance služby Logic Apps do vaší virtuální sítí Azure. Tato privátní instance používá vyhrazené prostředky, jako jsou úložiště a běží odděleně od veřejné "globální" služba Logic Apps. Oddělení vaší izolované instance privátní a veřejné globální instanci také pomáhá snižovat dopad, který jiných tenantů Azure může mít na výkon vaší aplikace, která je také označována jako ["" hlučným sousedům"" efekt](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
 
@@ -70,11 +67,6 @@ Rozdíl mezi konektory ISE a jiných ISE je v umístění, kde spouštění trig
 ## <a name="integration-accounts-with-ise"></a>Účty pro integraci s ISE
 
 Můžete použít účty pro integraci s logic apps uvnitř prostředí integrační služby (ISE). Ale musí používat tyto účty pro integraci *stejné ISE* jako propojené logic apps. Aplikace logiky do ISE může odkazovat pouze tyto účty pro integraci, které jsou ve stejném ISE. Při vytváření účtu pro integraci, můžete vybrat vaše ISE jako umístění pro váš účet integrace.
-
-## <a name="get-support"></a>Získat podporu
-
-* Pokud máte dotazy, navštivte <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">fórum Azure Logic Apps</a>.
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte <a href="https://aka.ms/logicapps-wish" target="_blank">web zpětné vazby od uživatelů Logic Apps</a>.
 
 ## <a name="next-steps"></a>Další postup
 

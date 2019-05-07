@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 198faf6791a4a2caa2cefee2181a13ed8185310e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475367"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150390"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>Rychlý start: Vytvoření úlohy třídění pomocí jazyka T-SQL (Preview)
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý start: Vytvoření úlohy třídění pomocí jazyka T-SQL
 
 V tomto rychlém startu rychle vytvoříte klasifikátor úlohy s vysokou důležitostí pro generální ředitel vaší organizace. Tato úloha třídění vám umožní dotazy generální ředitel pro přednost před další dotazy s důležitostí nižší ve frontě.
-
-> [!Note]
-> Úloha klasifikace je dostupná ve verzi preview na SQL Data Warehouse Gen2. Klasifikace úlohy správy a význam ve verzi preview je pro sestavení s datem vydání verze z 9. dubna 2019 nebo novější.  Uživatelé byste neměli používat sestavení starší než toto datum pro testování úloh správy.  K určení, zda je sestavení umožňující správu úloh, spustit, vyberte @@version při připojení k vaší instanci SQL Data Warehouse.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

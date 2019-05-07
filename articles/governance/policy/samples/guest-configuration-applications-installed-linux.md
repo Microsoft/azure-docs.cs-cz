@@ -5,18 +5,18 @@ author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: b432d8557c4244d58c23e7b068874dd747f6249f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8ee73da16f4f3de2378e38d273051355c5c624c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545091"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142847"
 ---
-# <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Ukázkový – Audit, pokud nejsou určené aplikace nainstalované uvnitř virtuálních počítačů s Linuxem
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Ukázkový – Audit, pokud nejsou určené aplikace nainstalované uvnitř virtuálních počítačů s Linuxem
 
-Této iniciativy hosta konfiguraci zásad auditování nainstalované zadaná aplikace uvnitř virtuálních počítačů s Linuxem. ID této integrované iniciativy je `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Této iniciativy konfigurace zásad hosta, vytváří událost auditu při určitých aplikací nejsou nainstalovány uvnitř virtuálních počítačů s Linuxem. ID této integrované iniciativy je `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
 > Všechny konfigurace hostovaného iniciativy se skládají z **auditu** a **deployIfNotExists** definic zásad. Přiřazuje se jen jednu z definic zásad způsobit, že konfigurace hostovaného nefunguje správně.
@@ -32,9 +32,9 @@ Můžete přiřadit tato ukázka pomocí:
 
 To [hosta konfigurace](../concepts/guest-configuration.md) iniciativy se skládá z následujících zásad:
 
-- [auditovat](#audit-definition) – auditování, že je nainstalovaná určitá aplikace uvnitř virtuálních počítačů s Linuxem
+- [auditovat](#audit-definition) – Audit, když nejsou nainstalované aplikace uvnitř virtuálních počítačů s Linuxem
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition) – nasazení virtuálního počítače rozšíření auditovat, jestli je nainstalovaná určitá aplikace uvnitř virtuálních počítačů s Linuxem
+- [deployIfNotExists](#deployIfNotExists-definition) – rozšíření nasazení virtuálního počítače pro audit, když nejsou nainstalované aplikace uvnitř virtuálních počítačů s Linuxem
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Definice iniciativy
@@ -45,7 +45,9 @@ Iniciativy je vytvořený spojením **auditu** a **deployIfNotExists** definice 
 
 ### <a name="initiative-parameters"></a>Parametry iniciativ
 
-| Název | Typ || Popis | |---|---|| ---| | applicationName | Řetězec | Názvy aplikací. Příklad: "python", "powershell" nebo čárkami oddělený seznam, jako je například "python, prostředí powershell". Použití \* pro porovnávání se zástupnými znaky, jako je třeba "power\*". |
+|Název |Typ |Popis |
+|---|---|---|
+|applicationName |String |Názvy aplikací. Příklad: "python", "powershell" nebo čárkami oddělený seznam, jako je například "python, prostředí powershell". Použití \* pro porovnávání se zástupnými znaky, jako je třeba "power\*". |
 
 Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
 PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.

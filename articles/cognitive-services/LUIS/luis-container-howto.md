@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598781"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073010"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -337,19 +337,28 @@ Odešle kontejneru LUIS fakturační údaje do Azure, pomocí _služeb Cognitive
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](luis-container-configuration.md).
 
-## <a name="unsupported-dependencies"></a>Nepodporovaná závislosti
+## <a name="supported-dependencies-for-latest-container"></a>Podporované závislosti pro `latest` kontejneru
+
+Nejnovější kontejner vydané ve 2019 / / vytvoření, bude podporovat:
+
+* Pro kontrolu pravopisu Bingu: žádosti na koncový bod dotaz předpovědi s `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` parametry řetězce dotazu. Použití [kontrolu pravopisu Bingu v7 kurzu](luis-tutorial-bing-spellcheck.md) Další informace. Pokud tuto funkci použít, odešle kontejneru utterance prostředek V7 kontrola pravopisu Bingu.
+* [Nové předem připravených domén](luis-reference-prebuilt-domains.md): tyto domény zaměřili podnikový obsahují entity, příklad projevy a vzory. Rozšíření pro vlastní použití těchto domén. 
+
+<a name="unsupported-dependencies"></a>
+
+## <a name="unsupported-dependencies-for-latest-container"></a>Nepodporovaný závislosti pro `latest` kontejneru
+
+Pokud aplikace LUIS má nepodporovanou závislosti, nebudete moct [export pro kontejner](#export-packaged-app-from-luis) dokud neodeberete nepodporované funkce. Při pokusu o export pro kontejner sestav na portálu služby LUIS nepodporované funkce, které je potřeba odebrat.
 
 Aplikace LUIS můžete použít, pokud ho **neobsahuje** některý z následujících podmínek:
 
 Konfigurace nepodporované aplikací.|Podrobnosti|
 |--|--|
-|Nepodporovaná kontejneru jazykových verzí| Němčina (de-DE)<br>Holandština (nl-NL)<br>Japonština (ja-JP)<br>|
-|Nepodporovaná domén|Předem připravených domén, včetně předem připravených domény záměry a entity|
+|Nepodporovaná kontejneru jazykových verzí| Holandština (nl-NL)<br>Japonština (ja-JP)<br>Němčina je podporováno pouze [1.0.1 tokenizátor nebo novější](luis-language-support.md#custom-tokenizer-versions).|
 |Nepodporovaná entity pro všechny jazykové verze|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) předem připravených entit pro všechny jazykové verze|
 |Nepodporovaná entity pro jazykovou verzi Angličtina (en US)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) předem připravených entit|
 |Dočištění řeči|Vnější závislosti nejsou podporovány v kontejneru.|
 |Analýza mínění|Vnější závislosti nejsou podporovány v kontejneru.|
-|Pro kontrolu pravopisu Bingu|Vnější závislosti nejsou podporovány v kontejneru.|
 
 ## <a name="summary"></a>Souhrn
 

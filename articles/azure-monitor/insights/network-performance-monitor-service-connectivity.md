@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 3eb53fa88a0757d22fc4575e9d9f402d6eebee13
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719305"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145021"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -64,6 +64,7 @@ Začněte vytvářet testy monitorování síťové připojení ke koncovým bod
 
     * Vyberte **webové** k monitorování připojení ke službě, která bude reagovat na požadavky HTTP/S, třeba outlook.office365.com nebo bing.com.<br>
     * Vyberte **sítě** k monitorování připojení ke službě, která reaguje na požadavky protokolu TCP ale nereaguje na požadavky HTTP/S, jako je například SQL server, FTP server nebo SSH port. 
+    * Příklad: Pokud chcete vytvořit test webu do účtu úložiště blob, vyberte **webové** a zadejte cíl jako <your storageaccount>. blob.core.windows.net. Podobně můžete vytvořit testy pro dalších table storage, úložiště fronty a soubory Azure pomocí [tento odkaz.](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints)
 4. Pokud nechcete provést měření sítě, jako je latence sítě, ztráta paketů a zjišťování topologie, zrušte zaškrtnutí políčka **provést měření sítě** zaškrtávací políčko. Zachovat jeho vybrané získat maximální výhody z funkce. 
 5. V **cílové**, zadejte adresu URL nebo plně kvalifikovaný název domény nebo IP adresu, ke které chcete monitorovat síťové připojení.
 6. V **číslo portu**, zadejte číslo portu, cílové služby. 

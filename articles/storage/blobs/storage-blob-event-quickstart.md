@@ -2,19 +2,20 @@
 title: Odesílání událostí služby Azure Blob storage na web koncového bodu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage. Události odesíláte na Webhooku. Zpracování událostí ve webové aplikaci.
 services: storage,event-grid
-author: cbrooksmsft
-ms.author: cbrooks
+author: normesta
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: blobs
 ms.custom: seodec18
-ms.openlocfilehash: f38c6fec7ff98e7d5c46661741ff036edb791673
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7d92614556fdc6822f749002d2e5a8fc92946d0a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756372"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141134"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý start: Směrování událostí služby úložiště na webový koncový bod pomocí rozhraní příkazového řádku Azure
 

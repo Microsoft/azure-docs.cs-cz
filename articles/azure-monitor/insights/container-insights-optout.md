@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 2493866f2926f29e673a7825dbd3c4a2d0e41808
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e4268cb3a8d6ac62da12f689560338eee7e6935
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494915"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071816"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery
 
@@ -32,7 +32,7 @@ Použití [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Chcete-li znovu povolte sledování pro váš cluster, přečtěte si téma [povolte monitorování pomocí Azure CLI](container-insights-onboard.md#enable-using-azure-cli).
+Chcete-li znovu povolte sledování pro váš cluster, přečtěte si téma [povolte monitorování pomocí Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 Zadaná jsou dvě šablony Azure Resource Manageru pro podporu odebrání prostředků řešení ve vaší skupině prostředků konzistentně a opakovaně. Jedna je určení konfigurace se zastavit monitorování šablony JSON a druhý obsahuje hodnoty parametrů, které můžete nakonfigurovat a určit tak AKS skupinu prostředků clusteru ID a prostředků, která je nasazená clusteru. 

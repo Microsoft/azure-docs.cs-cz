@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 328aa4c80c830014de8ee8b573d13ae56af73efc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925807"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142956"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -87,6 +87,9 @@ Abyste dosáhli vysoké dostupnosti, SAP NetWeaver vyžaduje serverem NFS. Serve
 
 Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP HANA pomocí virtuální název hostitele a virtuální IP adresy. V Azure je potřeba nástroj pro vyrovnávání zatížení pomocí virtuální IP adresu. Následující seznam obsahuje konfiguraci (A) SCS a Lajících nástroj pro vyrovnávání zatížení.
 
+> [!IMPORTANT]
+> S několika SID clusteringu SAP ASCS/Lajících s operačním systémem SUSE Linux jako hostovaný operační systém na virtuálních počítačích Azure je **nepodporuje**. Popisuje instalaci více instancí SAP ASCS/Lajících s různé identifikátory SID v jednom clusteru Pacemaker clustering s několika SID
+
 ### <a name="ascs"></a>(A)SCS
 
 * Konfiguraci front-endu
@@ -113,7 +116,8 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
   * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
 * Port testu
   * Port 621<strong>&lt;nr&gt;</strong>
-* Pravidla vyrovnávání zatížení
+* Pravidla Vyrovnávání zatížení
+  * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -200,9 +204,9 @@ Nejprve musíte vytvořit virtuální počítače pro tento cluster systému sou
          1. Klikněte na tlačítko OK
       1. Port 621**02** pro ASCS Lajících
          * Zopakujte výše uvedené kroky a vytvořte sondu stavu pro Lajících (například 621**02** a **nw1. aers hp**)
-   1. Pravidla vyrovnávání zatížení
+   1. Pravidla Vyrovnávání zatížení
       1. 32**00** TCP pro ASC
-         1. Otevřete nástroj pro vyrovnávání zatížení, pravidel Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
+         1. Otevřete nástroj pro vyrovnávání zatížení, pravidla Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
          1. Zadejte název nového pravidla služby load balancer (například **nw1-lb-3200**)
          1. Vyberte IP adresu front-endu, back-endového fondu a sondu stavu, které jste vytvořili dříve (například **nw1. ascs front-end**)
          1. Zachovat protokol **TCP**, zadejte port **3200**
@@ -587,7 +591,7 @@ Pokud používáte architekturu serveru 2 zařadit do fronty ([ENSA2](https://he
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  Pokud jste upgrade ze starší verze a přechodu k zařazení do fronty server 2, viz poznámka sap [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+  Pokud jsou upgradu ze starší verze a přechodu k zařazení do fronty server 2, přečtěte si téma SAP Poznámka [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Ujistěte se, že stav clusteru je ok a zda jsou spuštěny všechny prostředky. Není důležité na uzlu, které jsou spuštěné prostředky.
 

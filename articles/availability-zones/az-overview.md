@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 04/18/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c5a57ab6d84e1eeda62ab149a9aa7eb3ca71a7a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 302354484142619813ef58bf185c3556d4492de1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697125"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147792"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co jsou zóny dostupnosti v Azure?
 Zóny dostupnosti je vysoká dostupnost služeb, které chrání vaše aplikace a data z datacenter selhání. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zónově redundantní služby replikaci vašich aplikací a dat napříč zónami dostupnosti pro zajištění ochrany z jednoho body z chyby. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -53,8 +53,8 @@ Kombinace služeb Azure a oblasti, které podporují zóny dostupnosti jsou:
 | Spravované disky                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Zónově redundantní úložiště          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | **Sítě**                     |            |              |           |           |                |              |          |             |            |                |
-| Standardní IP adresu        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; &#42;| &#10003;    | &#10003;   | &#10003;       |
-| Load Balancer úrovně Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; &#42;| &#10003;    | &#10003;   | &#10003;       |
+| Standardní IP adresu        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Load Balancer úrovně Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | VPN Gateway                     | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 | ExpressRoute                    | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 | Služba Application Gateway (Preview)   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
@@ -66,7 +66,6 @@ Kombinace služeb Azure a oblasti, které podporují zóny dostupnosti jsou:
 | Service Bus (pouze úroveň Premium) | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 
 
-&#42;Prostředky vytvořené v rámci Velká Británie – jih před 25. března 2019 se brzy převedou na být zónově redundantní. Prostředky vytvořené po 25. března 2019 bude okamžitě zónově redundantní.
 
 ## <a name="services-resiliency"></a>Odolnost proti chybám služby
 Všech služeb Azure pro správu dokáže odolné proti chybám v případě selhání úrovni oblasti. V celé spektrum od selhání mají nejmíň jeden chyby zóna dostupnosti v rámci oblasti menší radius chyby ve srovnání s selhání celé oblasti. Azure můžete obnovit v případě selhání zóny úrovně služeb pro správu v rámci oblasti nebo z jiné oblasti Azure. Azure provádí po jednom v rámci oblasti, aby se zabránilo chybám vliv na prostředky zákazníků nasazení napříč zónami dostupnosti v rámci oblasti kritické údržby jednu zónu.

@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580654"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073614"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database
 
@@ -54,7 +54,7 @@ SQL Database nabízí předvídatelný výkon s více typů prostředků, úrovn
 
 ## <a name="scalable-performance-and-pools"></a>Škálovatelnost výkonu a fondy
 
-- U izolovaných databází je každá databáze izolovaná od všech ostatních a, každý s vlastní garantováno množství výpočetních, paměťových a úložiště prostředků. SQL Database nabízí různé prostředky výpočetních, paměťových a úložiště pro různé potřeby – a umožňuje dynamicky [škálování izolované databáze prostředků](sql-database-single-database-scale.md) nahoru a dolů. [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) (preview) pro izolované databáze umožňuje škálování až na 100 TB, rychlé zálohování a obnovení funkce.
+- U izolovaných databází je každá databáze izolovaná od všech ostatních a, každý s vlastní garantováno množství výpočetních, paměťových a úložiště prostředků. SQL Database nabízí různé prostředky výpočetních, paměťových a úložiště pro různé potřeby – a umožňuje dynamicky [škálování izolované databáze prostředků](sql-database-single-database-scale.md) nahoru a dolů. [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) pro izolované databáze umožňuje škálování až na 100 TB, rychlé zálohování a obnovení funkce.
 - S elastickými fondy, můžete vytvářet nové databáze nebo přesuňte izolovaných databází do fondu zdrojů pro maximalizaci využití prostředků a ušetřit peníze - i schopnost dynamicky [škálování elastického fondu prostředků](sql-database-elastic-pool-scale.md) nahoru a dolů.
 - S spravované instance každé managed instance je izolovaná od ostatních instancí mají garantované prostředky. V rámci managed instance, instance databáze sdílejí sadu prostředků – a umožňuje dynamicky [škálovat prostředky spravované instance](sql-database-managed-instance-resource-limits.md) nahoru a dolů.
 
@@ -69,8 +69,7 @@ SQL Database nabízí dva modely nákupu:
 - [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí výpočetní, paměti, vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
 - [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště. Nákupní model založený na virtuálních jádrech také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů. Další informace o programu Azure Hybrid Benefit najdete v tématu [– nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
 
-  > [!IMPORTANT]
-  > [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) pro izolované databáze je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii hyperškálovatelného vrstvu služby.
+  
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 

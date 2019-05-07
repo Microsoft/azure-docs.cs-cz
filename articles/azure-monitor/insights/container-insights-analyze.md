@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 05/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed387f7038c5dee1a1685c918abcae49942cd55d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497088"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148851"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery 
 Díky Azure monitoru pro kontejnery můžete použít grafy výkonu a stavu ke sledování těchto úloh své clustery Azure Kubernetes Service (AKS) za dvou hledisek, přímo z clusteru AKS nebo všechny AKS clusterů v rámci předplatného Azure Monitorování. Zobrazení služby Azure Container Instances (ACI) je také možné, při sledování konkrétní clusteru AKS.
@@ -27,7 +27,19 @@ Tento článek vám pomůže pochopit prostředí mezi dvěma perspektivy a jak 
 
 Informace o povolení monitorování Azure pro kontejnery, naleznete v tématu [připojení Azure Monitor pro kontejnery](container-insights-onboard.md).
 
-Azure Monitor nabízí více clusteru zobrazení, které zobrazí stav všech monitorovaných AKS clusterech nasazených napříč skupinami prostředků v rámci vašich předplatných.  Zobrazuje se v clusteru AKS zjistí, která nemonitoruje řešení. Okamžitě můžete porozumět stavu clusteru a z tohoto místa můžete potom přejít na stránku výkonu uzlu a řadič nebo přejděte na Zobrazit grafy výkonu pro cluster.  Pro zjištění a identifikuje jako nemonitorované AKS clustery můžete povolit monitorování pro tento cluster v každém okamžiku.  
+> [!IMPORTANT]
+> Azure Monitor pro podporu kontejnerů pro monitorování clusteru AKS systémem Windows Server 2019 je aktuálně ve verzi public preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Monitor nabízí více clusteru zobrazení, které zobrazí stav všech monitorovaných AKS clustery se systémem Linux a Windows Server. 2019 nasazení napříč skupinami prostředků v rámci vašich předplatných.  Zobrazuje se v clusteru AKS zjistí, která nemonitoruje řešení. Okamžitě můžete porozumět stavu clusteru a z tohoto místa můžete potom přejít na stránku výkonu uzlu a řadič nebo přejděte na Zobrazit grafy výkonu pro cluster.  Pro zjištění a identifikuje jako nemonitorované AKS clustery můžete povolit monitorování pro tento cluster v každém okamžiku.  
+
+Hlavní rozdíly monitorování clusteru s Windows serverem pomocí Azure monitoru pro kontejnery ve srovnání s cluster s Linuxem jsou následující:
+
+- Metrika RSS paměti není k dispozici pro uzel Windows a kontejnery 
+- Informace o kapacitě úložiště disku není k dispozici pro uzly Windows
+- Živé protokoly podpora je k dispozici s výjimkou protokoly kontejneru Windows.
+- Pouze pod, které jsou monitorovány prostředí, nikoli prostředí Dockeru.
+- S verzí preview jsou podporované maximálně 30 kontejnery Windows serveru. Toto omezení se nevztahuje na Linuxové kontejnery.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
@@ -35,7 +47,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusteru ze služby Azure Monitor 
 Chcete-li zobrazit stav všech clusterech AKS nasadit, vyberte **monitorování** z podokna vlevo na webu Azure Portal.  V části **Insights** vyberte **kontejnery**.  
 
-![Ukázkový řídicí panel clusteru více služby Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview-1018.png)
+![Ukázkový řídicí panel clusteru více služby Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
 
 Na **monitorovat clustery** kartu, je možné získat následující:
 
@@ -128,11 +140,11 @@ Můžete použít [rozdělení](../platform/metrics-charts.md#apply-splitting-to
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analýza uzly, kontrolerů a stavu kontejneru
 
-Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností.  Zobrazuje vlastnosti položky vybraná, včetně popisků definujete uspořádat objekty Kubernetes. Klikněte na **>>** propojit v podokně view\hide podokna.  
+Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností. Zobrazuje vlastnosti položky vybraná, včetně popisků definujete uspořádat objekty Kubernetes. Když je vybrán uzel systému Linux, také ukazuje části **místní kapacita disku** volného místa na disku a % využití pro všechny disky uvedené k uzlu. Klikněte na **>>** propojit v podokně view\hide podokna. 
 
 ![Podokno vlastností perspektivy příklad Kubernetes](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-Při rozbalení objekty v hierarchii, aktualizace podokna vlastností založené na vybraný objekt. V podokně můžete také zobrazit události Kubernetes pomocí prohledávání protokolu předem definovaných kliknutím na **protokoly událostí Kubernetes zobrazení** odkazu v horní části podokna. Další informace o zobrazování dat protokolu Kubernetes najdete v tématu [vyhledávání protokolů pro analýzu dat](container-insights-log-search.md). Když kontrolujete kontejnery v **kontejnery** zobrazení, můžete zobrazit protokoly kontejneru v reálném čase. Další informace o této funkci a požadované konfigurace a řízení přístupu najdete v tématu [zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery](container-insights-live-logs.md). 
+Při rozbalení objekty v hierarchii, aktualizace podokna vlastností založené na vybraný objekt. V podokně můžete také zobrazit události Kubernetes pomocí prohledávání protokolu předem definovaných kliknutím na **protokoly událostí Kubernetes zobrazení** odkazu v horní části podokna. Další informace o zobrazování dat protokolu Kubernetes najdete v tématu [vyhledávání protokolů pro analýzu dat](container-insights-log-search.md). Když kontrolujete prostředky clusteru, můžete zobrazit protokoly kontejneru a událostí v reálném čase. Další informace o této funkci a požadované konfigurace a řízení přístupu najdete v tématu [jak chcete-li zobrazit protokoly reálném čase pomocí Azure monitoru pro kontejnery](container-insights-live-logs.md). 
 
 Použití **+ přidat filtr** možnost z horní části stránky filtrovat výsledky zobrazit podle **služby**, **uzel**, **Namespace**, nebo  **Fond uzlů** a po výběru rozsah filtru, můžete pak vyberte jednu z hodnoty zobrazené **vyberte hodnoty** pole.  Po dokončení konfigurace filtru se globálně použije při zobrazování všechny perspektivy clusteru AKS.  Vzorec podporuje pouze znaménko rovná se.  Můžete přidat další filtry na první z nich můžete dále zúžit výsledky.  Například, pokud jste zadali filtrovat podle **uzel**, druhý filtr by pouze umožňuje zvolit **služby** nebo **Namespace**.  
 
@@ -143,6 +155,10 @@ Zadáním filtru v jedné karty se i dál používá při vyberte jiný a odstra
 Přepněte **uzly** kartu a hierarchii řádek následuje objektový model Kubernetes, počínaje uzlu v clusteru. Rozbalte uzel a můžete zobrazit jeden nebo více podů se spuštěnou na uzlu. Pokud více než jednoho kontejneru je seskupení pod, se zobrazí jako poslední řádek v hierarchii. Můžete také zobrazit, kolik souvisejících úlohách bez pod běží na hostiteli, pokud má hostitel procesoru nebo tlaku na paměť.
 
 ![Příklad Kubernetes uzlu hierarchie v zobrazení výkonu](./media/container-insights-analyze/containers-nodes-view.png)
+
+Operační systém Windows Server. 2019 kontejnery Windows serveru se zobrazí po všechny uzly založené na Linuxu v seznamu. Po rozbalení uzlu Windows serveru se zobrazí jeden nebo více podů a kontejnery běží na uzlu. Když je vybrán uzel, v podokně vlastností se zobrazí informace o verzi, s výjimkou informace o agentovi, protože uzly Windows serveru nemají nainstalovaný agent.  
+
+![Příklad uzlů hierarchie s uvedené uzly Windows serveru](./media/container-insights-analyze/nodes-view-windows.png) 
 
 Azure Container instance virtuální uzly spuštěnými operačního systému Linux jsou uvedeny po poslední uzel clusteru AKS v seznamu.  Při rozšiřování virtuálního uzlu ACI můžete zobrazit jednu nebo více podů v ACI a kontejnery běží na uzlu.  Metriky nejsou shromážděných a nahlášených pro uzly pouze tyto pody.
 

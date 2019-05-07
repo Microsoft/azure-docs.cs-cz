@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05e7dd11274bb120e40df4a63d428ac6b6d7489f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60647949"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143335"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování DPM a Azure Backup Server
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Azure Backup komprimuje prvotní zálohy. Procesem offline předvyplnění Azure Backup můžete použít disky k nahrání komprimované počáteční zálohovací data do offline režimu do Azure.
@@ -98,7 +98,7 @@ Informace v této části vám pomůže dokončit pracovní postup offline zálo
 ### <a name="prepare-sata-drives-and-ship-to-azure"></a>Jednotky SATA Připravíme a odešleme do Azure
 *AzureOfflineBackupDiskPrep* nástroj slouží k přípravě disky SATA, které se odesílají do nejbližší datové centrum Azure. Tento nástroj je k dispozici v instalačním adresáři agenta služeb zotavení v následující cestě:
 
-   *\Microsoft* *azure* *obnovení* *služby* * Agent\Utils\*
+*\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. Přejděte do adresáře a zkopírujte **AzureOfflineBackupDiskPrep** adresáře pro kopírování počítače, na kterém jsou připojené disky SATA, abyste byli připraveni. Zajistěte následující s ohledem na počítači kopírování:
 

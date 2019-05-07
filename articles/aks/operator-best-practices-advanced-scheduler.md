@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690466"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074187"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač pokročilé funkce ve službě Azure Kubernetes Service (AKS)
 
@@ -30,6 +30,8 @@ Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce pl
 **Osvědčené postupy pro moduly** – omezení přístupu pro aplikace náročné na prostředek, jako jsou řadiče příchozího přenosu dat, ke konkrétním uzlům. Zachovat uzel prostředky dostupné pro úlohy, které požadují a Nepovolovat plánování dalších úloh v uzlech.
 
 Při vytváření clusteru AKS je možné nasadit uzly s podporou GPU nebo velký počet procesory. Tyto uzly jsou často používá pro úlohy zpracování velkých dat, jako jsou machine learning (ML) nebo umělé inteligence (AI). Tento typ hardwaru je obvykle prostředek nákladné uzel k nasazení, omezte zátěží, které je možné naplánovat na těchto uzlech. Místo toho můžete chtít vyhradit některé uzly v klastru, aby spouštění služeb příchozího přenosu dat a zabránilo jiné úlohy.
+
+Tato podpora pro různé uzly se poskytuje s použitím více fondy uzlů. AKS cluster obsahuje jeden nebo více fondy uzlů. Podpora pro více fondy uzlů ve službě AKS je aktuálně ve verzi preview.
 
 Plánovač Kubernetes můžete použít poskvrnění a tolerations omezit, co můžete spouštět úlohy na uzlech.
 
@@ -53,13 +55,13 @@ spec:
   containers:
   - name: tf-mnist
     image: microsoft/samples-tf-mnist-demo:gpu
-  resources:
-    requests:
-      cpu: 0.5
-      memory: 2Gi
-    limits:
-      cpu: 4.0
-      memory: 16Gi
+    resources:
+      requests:
+        cpu: 0.5
+        memory: 2Gi
+      limits:
+        cpu: 4.0
+        memory: 16Gi
   tolerations:
   - key: "sku"
     operator: "Equal"
@@ -72,6 +74,8 @@ Při nasazení tohoto podu, jako je třeba použití `kubectl apply -f gpu-toler
 Při použití poskvrnění pracujete s vaší aplikací vývojáři a vlastníci a povolení jejich definování požadované tolerations v jejich nasazeních.
 
 Další informace o poskvrnění a tolerations najdete v tématu [použití poskvrnění a tolerations][k8s-taints-tolerations].
+
+Další informace o tom, jak používat více fondy uzlů ve službě AKS najdete v tématu [vytvořit a spravovat více fondy uzlů clusteru ve službě AKS][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Chování poskvrnění a tolerations ve službě AKS
 
@@ -195,3 +199,4 @@ Tento článek se zaměřuje na pokročilé funkce plánovače Kubernetes. Dalš
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

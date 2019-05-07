@@ -3,19 +3,20 @@ title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů p
 description: Zjistěte, jak pomocí instance třídy BlobService nahrávat, vypisovat a odstraňovat objekty blob s využitím JavaScriptu na stránce HTML.
 services: storage
 keywords: storage, javascript, html
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
-ms.author: tamram
+ms.author: mhopkins
+ms.reviewer: seguler
 ms.date: 11/14/2018
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: a5433284d9722ce907b962be7ba437ef32ad819c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df697ab31875c8f806456c1e60820e7e8d752539
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392432"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149583"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -78,7 +79,7 @@ az storage account generate-sas
 ```
 Několik hodnot uvedených za jednotlivými parametry je možná trochu nesrozumitelných. Tyto hodnoty parametrů představují první písmeno odpovídajícího oprávnění. Následující tabulka vysvětluje, odkud hodnoty pochází: 
 
-| Parametr        | Value   | Popis  |
+| Parametr        | Hodnota   | Popis  |
 |------------------|---------|---------|
 | *oprávnění*    | racwdl  | Tento SAS povoluje funkce *read* (čtení), *append* (připojení), *create* (vytvoření), *write* (zápis), *delete* (odstranění) a *list* (výpis). |
 | *resource-types* | sco     | Tento SAS ovlivňuje prostředky *service* (služba), *container* (kontejner) a *object* (objekt). |

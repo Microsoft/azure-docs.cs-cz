@@ -1,19 +1,19 @@
 ---
-title: Optimalizace Hromadná vložení na serveru Azure Database for PostgreSQL
-description: Tento článek popisuje, jak můžete optimalizovat hromadné operace insert v databázi Azure pro PostgreSQL server.
+title: Optimalizace Hromadná vložení ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje, jak můžete optimalizovat operace hromadného vložení ve službě Azure Database for PostgreSQL – jeden Server.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422113"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067035"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optimalizujte operace hromadného vložení a používat přechodné data ve službě Azure Database pro PostgreSQL server 
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optimalizujte operace hromadného vložení a používat přechodné data ve službě Azure Database for PostgreSQL – jeden Server 
 Tento článek popisuje, jak můžete optimalizovat operace hromadného vložení a přechodné data ve službě Azure Database použít pro PostgreSQL server.
 
 ## <a name="use-unlogged-tables"></a>Použití neprotokolovaného tabulek

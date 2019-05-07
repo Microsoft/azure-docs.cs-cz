@@ -9,19 +9,17 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74d2601c2319ccad9cc980b83894a3242705aa46
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998513"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148118"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Seznamte se s rozšířenou offline funkcí pro zařízení, moduly a podřízená zařízení IoT Edge
 
 Azure IoT Edge podporuje rozšířené offline operace s vašimi zařízeními IoT Edge a umožní offline operace na zařízeních bez okrajů podřízené příliš. Tak dlouho, dokud zařízení IoT Edge došlo jednu příležitost k připojení ke službě IoT Hub a všechny podřízené zařízení můžete nadále funkce s přerušovaným nebo žádné připojení k Internetu. 
 
->[!NOTE]
->Podporu offline režimu pro IoT Edge je v [ve verzi public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -61,24 +59,49 @@ Pro zařízení IoT Edge rozšířit možnosti rozšířené offline do zaříze
 
 ### <a name="assign-child-devices"></a>Přiřazení zařízení podřízené
 
-Podřízená zařízení může být jakékoli zařízení bez okrajů zaregistrované u stejné služby IoT Hub. Můžete spravovat relaci nadřazený podřízený na vytvoření nového zařízení nebo ze stránky detaily zařízení buď nadřazené zařízení IoT Edge nebo podřízené zařízení IoT. 
+Podřízená zařízení může být jakékoli zařízení bez okrajů zaregistrované u stejné služby IoT Hub. Nadřazené zařízení může mít více podřízených zařízení, ale podřízené zařízení může mít pouze jeden nadřazený prvek. Existují tři možnosti, jak nastavit podřízené zařízení do hraničního zařízení:
+
+#### <a name="option-1-iot-hub-portal"></a>Option 1: IoT Hub Portal
+
+ Můžete spravovat relaci nadřazený podřízený na vytvoření nového zařízení nebo ze stránky detaily zařízení buď nadřazené zařízení IoT Edge nebo podřízené zařízení IoT. 
 
    ![Správa podřízených zařízení ze stránky detaily zařízení IoT Edge](./media/offline-capabilities/manage-child-devices.png)
 
-Nadřazené zařízení může mít více podřízených zařízení, ale podřízené zařízení může mít pouze jeden nadřazený prvek.
+
+#### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Použití `az` nástroj příkazového řádku
+
+Použití [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) s [rozšíření IoT](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 nebo novější), můžete spravovat nadřazené vztahy podřízenosti a nadřízenosti s [identitu zařízení](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) dílčí příkazy. V příkladě níž jsme spuštění dotazu k přiřazení všech hraničních zařízeních IoT bez zařízení v centru jako podřízená zařízení zařízení IoT Edge. 
+
+```shell
+# Set IoT Edge parent device
+egde_device="edge-device1"
+
+# Get All IoT Devices
+device_list=$(az iot hub query \
+        --hub-name replace-with-hub-name \
+        --subscription replace-with-sub-name \
+        --resource-group replace-with-rg-name \
+        -q "SELECT * FROM devices WHERE capabilities.iotEdge = false" \
+        --query 'join(`, `, [].deviceId)' -o tsv)
+
+# Add all IoT devices to IoT Edge (as child)
+az iot hub device-identity add-children \
+  --device-id $egde_device \
+  --child-list $device_list \
+  --hub-name replace-with-hub-name \
+  --resource-group replace-with-rg-name \
+  --subscription replace-with-sub-name 
+```
+
+Můžete upravit [dotazu](../iot-hub/iot-hub-devguide-query-language.md) vybrat podmnožinu různých zařízení. Příkaz může trvat několik sekund, pokud zadáte velké sady zařízení.
+
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Možnost 3: Použití sady SDK služby IoT Hub 
+
+Nakonec můžete spravovat nadřazené vztahy podřízenosti a nadřízenosti prostřednictvím kódu programu pomocí C#, Java nebo Node.js sady SDK služby IoT Hub. Tady je [příklad přiřazení podřízené zařízení](https://aka.ms/set-child-iot-device-c-sharp) pomocí C# SDK.
 
 ### <a name="specifying-dns-servers"></a>Určení serverů DNS 
 
-Pokud chcete zlepšit odolnost, se doporučuje zadejte adresy serverů DNS ve svém prostředí. Například v Linuxu, aktualizovat **/etc/docker/daemon.json** (můžete potřebovat pro vytvoření souboru) zahrnout:
-
-```json
-{
-    "dns": ["1.1.1.1"]
-}
-```
-
-Pokud používáte místní server DNS, nahraďte 1.1.1.1 IP adresu místního serveru DNS. Restartujte službu docker pro změny projevily.
-
+Pokud chcete zlepšit odolnost, důrazně doporučujeme zadejte adresy serverů DNS ve svém prostředí. Podrobnosti najdete [dvě možnosti, jak to provést z článku Poradce při potížích](troubleshoot.md#resolution-7).
 
 ## <a name="optional-offline-settings"></a>Volitelná nastavení
 
@@ -86,7 +109,7 @@ Pokud budete chtít shromažďovat všechny zprávy, které generují zařízen�
 
 ### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
 
-Time to live nastavení je množství času (v sekundách), který zprávu počkat, který bude doručen před vypršením platnosti. Výchozí hodnota je 7200 sekund (dva hodin). 
+Time to live nastavení je množství času (v sekundách), který zprávu počkat, který bude doručen před vypršením platnosti. Výchozí hodnota je 7200 sekund (dva hodin). Maximální hodnota je omezen pouze maximální hodnotu proměnnou celého čísla, což je přibližně 2 miliardy. 
 
 Toto nastavení je požadovaná vlastnost centra IoT Edge, která je uložena ve dvojčeti modulu. Můžete ho nakonfigurovat na webu Azure Portal, v **konfigurovat rozšířená nastavení modulu Runtime Edge** části nebo přímo v nasazení manifestu. 
 

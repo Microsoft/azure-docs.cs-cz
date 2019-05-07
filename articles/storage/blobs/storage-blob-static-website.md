@@ -2,18 +2,19 @@
 title: Hostování statického webu ve službě Azure Storage
 description: Azure Storage statický web hostovat, poskytuje nákladově efektivní, škálovatelné řešení pro hostování moderních webových aplikací.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
+ms.author: normesta
+ms.reviewer: seguler
 ms.date: 04/29/2019
-ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 21944c62f09518e20619313cd6ac28fb2ad600c7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cd1fa71cb2a10c7e61f76bdd224ba6d0f039346f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925279"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148473"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.

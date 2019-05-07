@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f66a2699b6d29f10633b4853801240f0590ff918
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483413"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147642"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
 Microsoft Azure poskytuje několik funkcí ve službě Azure Storage k ukládání a přístup k datům v cloudu. Tento článek popisuje soubory Azure, objekty BLOB a disků a pomůže vám zvolit mezi těmito funkcemi.

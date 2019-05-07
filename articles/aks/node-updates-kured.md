@@ -1,27 +1,29 @@
 ---
-title: Aktualizovat a restartovat uzly s kured ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak aktualizovat uzly a automaticky je restartovat s kured ve službě Azure Kubernetes Service (AKS)
+title: Aktualizovat a restartovat uzly s Linuxem pomocí kured ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak aktualizovat uzly s Linuxem a automaticky je restartovat s kured ve službě Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b426399f73375618a2084eff82abba5d4934b914
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464985"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074205"
 ---
-# <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Použít zabezpečení a aktualizace jádra na uzly ve službě Azure Kubernetes Service (AKS)
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Použít zabezpečení a aktualizace jádra na uzly s Linuxem ve službě Azure Kubernetes Service (AKS)
 
-K ochraně vašich clusterů, jsou aktualizace zabezpečení automaticky použít pro uzly ve službě AKS. Tyto aktualizace zahrnují oprav chyb zabezpečení operačního systému nebo aktualizace jádra. Některé z těchto aktualizací vyžadují restartování uzlu dokončete proces. AKS nebude automatickému restartování uzlů pro dokončení procesu aktualizace.
+K ochraně vašich clusterů, jsou aktualizace zabezpečení automaticky použít pro uzly s Linuxem ve službě AKS. Tyto aktualizace zahrnují oprav chyb zabezpečení operačního systému nebo aktualizace jádra. Některé z těchto aktualizací vyžadují restartování uzlu dokončete proces. AKS nebude automatickému restartování tyto uzly s Linuxem k dokončení procesu aktualizace.
 
-V tomto článku se dozvíte, jak používat open source [kured (KUbernetes restartování démona)] [ kured] sledovat pro uzly, které vyžadují restartování, pak automaticky zpracovat přeplánování spuštěných podů a restartování uzlu proces.
+Proces zajištění aktuálnosti uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) je trochu jiné. Windows Server uzly nepřijímají denní aktualizace. Místo toho upgradujete AKS, který se nasazuje nových uzlů s opravy a nejnovější základní image Windows serveru. AKS clustery, které používají uzly Windows serveru, naleznete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
+
+V tomto článku se dozvíte, jak používat open source [kured (KUbernetes restartování démona)] [ kured] sledovat pro uzly s Linuxem, které vyžadují restartování, pak automaticky zpracovává přeplánování spuštěných podů a uzlu Restartujte proces.
 
 > [!NOTE]
-> `Kured` je open source projekt podle Weaveworks. Na základě best effort poskytuje podporu pro tento projekt ve službě AKS. Další podpora lze nalézt v slackový kanál # úřady weave
+> `Kured` je open source projekt podle Weaveworks. Na základě best effort poskytuje podporu pro tento projekt ve službě AKS. Další podporu najdete v # úřady weave slackový kanál.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -35,9 +37,9 @@ V clusteru AKS uzly Kubernetes spouštět jako virtuální počítače Azure (VM
 
 ![Uzlů AKS aktualizaci nebo restartování procesu s kured](media/node-updates-kured/node-reboot-process.png)
 
-Některé aktualizace zabezpečení, jako je například jádra aktualizace vyžadují restartování uzlu pro dokončení procesu. Uzel, který vyžaduje restart, vytvoří soubor s názvem */var/run/reboot-required*. Tento proces restartováním počítače nedojde automaticky.
+Některé aktualizace zabezpečení, jako je například jádra aktualizace vyžadují restartování uzlu pro dokončení procesu. Uzel systému Linux, který vyžaduje restartování počítače vytvoří soubor s názvem */var/run/reboot-required*. Tento proces restartováním počítače nedojde automaticky.
 
-Můžete použít vlastní pracovní postupy a procesy a zpracovat restartování uzlu, nebo použít `kured` k orchestraci procesu. S `kured`, [DaemonSet] [ DaemonSet] nasazení, který spustí pod na každém uzlu v clusteru. Podívejte se na tyto pody v DaemonSet existenci */var/run/reboot-required* souboru a potom zahájí proces restartování uzlů.
+Můžete použít vlastní pracovní postupy a procesy a zpracovat restartování uzlu, nebo použít `kured` k orchestraci procesu. S `kured`, [DaemonSet] [ DaemonSet] nasazení, který spustí pod v každém uzlu clusteru systému Linux. Podívejte se na tyto pody v DaemonSet existenci */var/run/reboot-required* souboru a potom zahájí proces restartování uzlů.
 
 ### <a name="node-upgrades"></a>Upgrady uzlů
 
@@ -62,7 +64,7 @@ Můžete také nakonfigurovat další parametry pro `kured`, jako je například
 
 ## <a name="update-cluster-nodes"></a>Aktualizovat uzly clusteru
 
-Ve výchozím nastavení uzlů AKS vyhledat aktualizace každý večer. Pokud nechcete čekat, můžete ručně provádět aktualizace zkontroluje, jestli `kured` běží správně. Nejprve, postupujte podle kroků pro [SSH k jednomu z uzlů AKS][aks-ssh]. Jakmile budete mít připojení SSH k uzlu, zkontrolujte aktualizace a použít je následujícím způsobem:
+Ve výchozím nastavení uzly s Linuxem ve službě AKS vyhledat aktualizace každý večer. Pokud nechcete čekat, můžete ručně provádět aktualizace zkontroluje, jestli `kured` běží správně. Nejprve, postupujte podle kroků pro [SSH k jednomu z uzlů AKS][aks-ssh]. Jakmile budete mít připojení k SSH na Linux uzel, zkontrolujte aktualizace a použít je následujícím způsobem:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -91,7 +93,9 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek podrobně popsané použití `kured` restartování uzlů automaticky jako součást procesu aktualizace zabezpečení. Chcete-li upgradovat na nejnovější verzi Kubernetes, můžete [upgrade clusteru AKS][aks-upgrade].
+Tento článek podrobně popsané použití `kured` restartování uzlů s Linuxem automaticky jako součást procesu aktualizace zabezpečení. Chcete-li upgradovat na nejnovější verzi Kubernetes, můžete [upgrade clusteru AKS][aks-upgrade].
+
+AKS clustery, které používají uzly Windows serveru, naleznete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
@@ -105,3 +109,4 @@ Tento článek podrobně popsané použití `kured` restartování uzlů automat
 [DaemonSet]: concepts-clusters-workloads.md#statefulsets-and-daemonsets
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

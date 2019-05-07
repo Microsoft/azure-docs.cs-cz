@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 84ce13ae3bb0a4b66b8167e61b720fe6cecbe95c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888803"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071945"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB - pod pokličkou
 
@@ -84,5 +84,5 @@ Sémantika pět modelů konzistence ve službě Cosmos DB jsou popsány [tady](c
 Další informace o konfigurace globální distribuce pomocí následujících článcích:
 
 * [Přidat/odebrat oblasti ze svého účtu databáze](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Konfigurování klientů pro vícenásobné navádění](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurování klientů pro vícenásobné navádění](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Jak vytvořit zásady překladu IP adres vlastní konflikt](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

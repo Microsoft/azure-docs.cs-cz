@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657556"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141074"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API s použitím OAuth 2.0 s Azure Active Directory a API Management
 
@@ -44,7 +44,7 @@ Tady je stručný přehled kroků:
 
 Pokud chcete chránit rozhraní API s využitím Azure AD, prvním krokem je registrace aplikace ve službě Azure AD, který představuje rozhraní API. 
 
-1. Přejděte do svého tenanta Azure AD a potom vyhledejte **registrace aplikací**.
+1. Přejděte do svého tenanta Azure AD a potom vyhledejte **registrace aplikací (starší verze)**.
 
 2. Vyberte **Registrace nové aplikace**. 
 
@@ -62,7 +62,7 @@ Když se aplikace, poznamenejte si, **ID aplikace**, pro použití v následném
 
 Každá klientská aplikace, která volá rozhraní API musí být registrován jako aplikaci v Azure AD také. V tomto příkladu je ukázková aplikace klientské konzole pro vývojáře na portálu pro vývojáře API Management. Tady je postup při registraci jiná aplikace ve službě Azure AD k reprezentaci konzole pro vývojáře.
 
-1. Vyberte **Registrace nové aplikace**. 
+1. Během činnosti v **registrace aplikací (starší verze)** vyberte **registrace nové aplikace**. 
 
 2. Zadejte název aplikace. (V tomto příkladu je název `client-app`.)
 
@@ -86,7 +86,7 @@ Poznamenejte si hodnotu klíče.
 
 Teď, když jste se zaregistrovali k reprezentaci rozhraní API a vývojářské konzole dvě aplikace, budete muset udělit oprávnění, aby klientská aplikace volat back-end app.  
 
-1. Přejděte do **registrace aplikací**. 
+1. Přejděte do **registrace aplikací (starší verze)**. 
 
 2. Vyberte `client-app`a přejděte na **nastavení**.
 

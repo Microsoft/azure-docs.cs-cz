@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: a907e35e8e39b9dadd9106e7fd99063db28647a5
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 02c3fb309755964f1a4b196189b7742fa3f91a9a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869661"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148217"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -198,7 +198,7 @@ Dynamické filtrování se používá k řízení počet stop, formáty, přenos
 > [!NOTE]
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8b446e3cfd3efc7d6f4c125747630cd3241fa804
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7b4fcf34831d17d35e9f4d8b38455ea22293076f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573938"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148089"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows – preview
+# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows
 
 V tomto rychlém startu použijeme cloudové rozhraní Azure IoT Edge ke vzdálenému nasazení předem připraveného kódu do zařízení IoT Edge. Chcete-li provést tento úkol, nejprve vytvoříte a nakonfigurujete virtuální počítač s Windows a fungovat jako zařízení IoT Edge, pak můžete nasadit modul k němu.
 
@@ -30,9 +30,6 @@ V tomto rychlém startu se naučíte:
 ![Diagram – rychlý start architektury pro zařízení a cloud](./media/quickstart/install-edge-full.png)
 
 Modul, který v tomto rychlém startu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací.
-
-> [!NOTE]
-> Modul runtime IoT Edge ve Windows je ve verzi [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -71,6 +68,10 @@ Zařízení IoT Edge:
   1. Na **RDP** kartu, vyberte možnost **stáhnout soubor RDP**.
 
   Otevřete tento soubor pomocí připojení ke vzdálené ploše pro připojení k Windows virtuální počítač pomocí jména správce a heslo jste zadali pomocí `az vm create` příkazu.
+
+
+> [!NOTE]
+> Tento rychlý start využívá virtuální počítač klasické pracovní plochy Windows pro zjednodušení. Informace o tom, které Windows jsou obecně dostupné pro produkční scénáře operačních systémů najdete v tématu [Azure IoT Edge podporované systémy](support.md).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -130,30 +131,33 @@ Během instalace modulu runtime se zobrazí výzva k zadání připojovacího ř
 
 Kroky v této části všechny proběhla na zařízení IoT Edge, takže chcete připojit k tomuto virtuálnímu počítači teď přes vzdálenou plochu.
 
-### <a name="prepare-your-device-for-containers"></a>Příprava zařízení pro kontejnery
-
-Instalační skript automaticky nainstaluje modul Moby na vašem zařízení před instalací IoT Edge. Připravte zařízení zapnutím funkce kontejnery.
-
-1. Na panelu spuštění vyhledat **Windows zapnout nebo vypnout funkce** a otevřít programu v Ovládacích panelech.
-1. Vyhledejte a vyberte **kontejnery**.
-1. Vyberte **OK**.
-
-Po dokončení, je nutné restartovat Windows, aby se změny projevily, ale můžete tak učinit z relace vzdálené plochy místo restartování virtuálního počítače z portálu Azure portal.
-
-### <a name="download-and-install-the-iot-edge-service"></a>Stažení a instalace služby IoT Edge
+### <a name="install-and-configure-the-iot-edge-service"></a>Instalace a konfigurace služby IoT Edge
 
 Pomocí PowerShellu stáhněte a nainstalujte modul runtime IoT Edge. Ke konfiguraci svého zařízení použijte připojovací řetězec zařízení, který jste získali ze služby IoT Hub.
 
-1. Na svém zařízení IoT Edge spusťte PowerShell jako správce.
+1. Pokud jste tak dosud neučinili, postupujte podle kroků v [zaregistrovat nová zařízení Azure IoT Edge](how-to-register-device-portal.md) načíst připojovací řetězec zařízení a zaregistrovat své zařízení. 
 
-2. Stáhněte a nainstalujte na svém zařízení službu IoT Edge.
+2. Spusťte PowerShell jako správce.
+
+3. **Nasadit IoTEdge** příkaz ověří, že váš počítač Windows na podporovanou verzi, zapne funkci kontejnery, stáhne moby modulu runtime a potom stáhne modul runtime IoT Edge.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Install-SecurityDaemon -Manual -ContainerOs Windows
+   Deploy-IoTEdge -ContainerOs Windows
    ```
 
-3. Po zobrazení výzvy k zadání **připojovacího řetězce** zadejte řetězec, který jste si zkopírovali v předchozí části. Připojovací řetězec zadejte bez uvozovek.
+4. Váš počítač může automaticky restartuje. Pokud se zobrazí výzva příkazem IoTEdge nasazení až po restartování, to teď. 
+
+5. Znovu spusťte PowerShell jako správce.
+
+6. **Inicializace IoTEdge** příkaz nakonfiguruje modul runtime IoT Edge na svém počítači. Příkaz výchozí hodnota je ruční zřizování s kontejnery Windows. 
+
+   ```powershell
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -ContainerOs Windows
+   ```
+
+7. Po zobrazení výzvy k zadání **připojovacího řetězce** zadejte řetězec, který jste si zkopírovali v předchozí části. Připojovací řetězec zadejte bez uvozovek.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Zobrazení stavu modulu runtime IoT Edge
 
@@ -168,14 +172,7 @@ Ověřte, že se modul runtime úspěšně nainstaloval a nakonfiguroval.
 2. Pokud potřebujete řešit potíže se službou, načtěte protokoly služby.
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
-
-   Get-WinEvent -ea SilentlyContinue `
-    -FilterHashtable @{ProviderName= "iotedged";
-      LogName = "application"; StartTime = [datetime]::Today} |
-    select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false} |
-    format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent**. Modul edgeAgent se spouští ve výchozím nastavení a pomáhá s instalací a spouštěním všech dalších modulů, které do zařízení nasadíte.

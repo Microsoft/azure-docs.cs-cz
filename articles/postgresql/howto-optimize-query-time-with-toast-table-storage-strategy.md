@@ -1,17 +1,17 @@
 ---
-title: Optimalizace času dotaz na databázi Azure pro PostgreSQL server s použitím strategie úložiště tabulky informační zprávy
-description: Tento článek popisuje způsob optimalizace dotazů, když se strategie úložiště tabulku informačních zpráv ve službě Azure Database pro PostgreSQL server.
+title: Optimalizace času dotaz s použitím strategie úložiště tabulku informačních zpráv ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje, jak optimalizovat době zpracování dotazu se strategií úložiště tabulku informačních zpráv ve službě Azure Database for PostgreSQL – jeden Server.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421052"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066983"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimalizace času dotazu s strategie úložiště tabulky informační zprávy 
 Tento článek popisuje, jak optimalizovat dotaz časy s strategie úložiště zvětšená atribut technika (informační zpráva) tabulky úložiště.

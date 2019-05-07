@@ -1,20 +1,20 @@
 ---
-title: Připojte se k Windows virtuálních klientů ve verzi Preview s Windows 7 a Windows 10 – Azure
-description: Jak se připojit ke službě Windows Virtual Desktop Preview s Windows 7 nebo Windows 10.
+title: Připojení k virtuální ploše Preview Windows z Windows 10 nebo Windows 7 – Azure
+description: Jak se připojit k verzi Preview virtuální plochy Windows z Windows 10 nebo Windows 7.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/27/2019
+ms.date: 04/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328846"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145994"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>Připojení k Windows 7 a Windows 10
+# <a name="connect-from-windows-10-or-windows-7"></a>Připojení z Windows 10 nebo Windows 7
 
 > Týká se Windows 7 a Windows 10.
 
@@ -25,11 +25,11 @@ Je k dispozici ke stažení klienta, která poskytuje přístup k prostředkům 
 
 ## <a name="install-the-client"></a>Instalace klienta
 
-[Stáhněte si](https://go.microsoft.com/fwlink/?linkid=2068602) a instalaci klienta do vašeho místního počítače. To vyžaduje oprávnění správce.
+[Stáhněte si](https://go.microsoft.com/fwlink/?linkid=2068602) a instalaci klienta do vašeho místního počítače. Instalace vyžaduje oprávnění správce.
 
 ## <a name="subscribe-to-a-feed"></a>Přihlášení odběru informačního kanálu
 
-Získání seznamu prostředky dostupné pro vás z vašeho místního počítače prostřednictvím přihlášení odběru informačního kanálu zadané váš správce.
+Získání seznamu spravované prostředky, které jsou k dispozici pro vás prostřednictvím přihlášení odběru informačního kanálu zadané váš správce. Přihlášení k odběru zpřístupní prostředky ve vašem místním počítači.
 
 K odběru informačního kanálu:
 
@@ -44,6 +44,33 @@ Prostředky můžete spustit pomocí jedné ze dvou způsobů.
 - Na hlavní stránce klienta dvakrát klikněte na prostředek se ho spustit.
 - Spusťte prostředek běžným způsobem další aplikace v nabídce Start.
   - Můžete také vyhledat aplikaci v panelu vyhledávání.
+
+Jakmile se předplatné služby informačního kanálu, obsah informačního kanálu se aktualizuje automaticky v pravidelných intervalech. Prostředky mohou přidávání, změny a odebírání na základě změn provedená správcem.
+
+## <a name="view-the-details-of-a-feed"></a>Zobrazit podrobnosti o informačního kanálu
+
+Po přihlášení k odběru, můžete zobrazit další informace o kanálu díky přístupu do panelu podrobností.
+
+1. Na hlavní stránce klienta, vyberte tři tečky (**...** ) napravo od názvu informačního kanálu.
+1. Z rozevírací nabídky vyberte **podrobnosti**.
+1. Panel podrobností se zobrazí na pravé straně klienta.
+
+Panel podrobnosti obsahuje užitečné informace o informačního kanálu:
+
+- Adresa URL a uživatelské jméno používané pro přihlášení odběru
+- Počet aplikací a stolní počítače
+- Datum a čas poslední aktualizace
+- Stav poslední aktualizace
+
+V případě potřeby můžete spustit ruční aktualizaci tak, že vyberete na **aktualizovat**.
+
+## <a name="unsubscribe-from-a-feed"></a>Odhlásit z informačního kanálu
+
+V této části se dozvíte, jak k odhlášení odběru z informačního kanálu. Může odhlásit odběr znovu s jiným účtem nebo odebrat zdroje ze systému.
+
+1. Na hlavní stránce klienta, vyberte tři tečky (**...** ) napravo od názvu informačního kanálu.
+1. Z rozevírací nabídky vyberte **Unsubscribe**.
+1. Zkontrolujte a vyberte **pokračovat** z tohoto dialogového okna.
 
 ## <a name="update-the-client"></a>Aktualizace klienta
 

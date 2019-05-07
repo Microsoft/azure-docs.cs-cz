@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 4992ca9d1a09fa751697d6608400eb4dda688108
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 752a26b21854ec9030fc1945024ae461445815a9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473157"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146719"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Ordinální předem připravených entit pro aplikace LUIS
 Řadová číslovka je číselnou reprezentaci objektu uvnitř sady: `first`, `second`, `third`. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující ordinální záměry aplikace. Ordinální entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
@@ -25,6 +25,9 @@ ms.locfileid: "61473157"
 Spravuje se z pořadí [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) úložiště GitHub
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předem připravených entit podle pořadového čísla
+
+### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+
 Následující příklad ukazuje rozlišení **builtin.ordinal** entity.
 
 ```json
@@ -58,6 +61,73 @@ Následující příklad ukazuje rozlišení **builtin.ordinal** entity.
 }
 ```
 
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+
+Následující kód JSON je `verbose` parametr nastaven na `false`:
+
+```json
+{
+    "query": "Order the second option",
+    "prediction": {
+        "normalizedQuery": "order the second option",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "ordinal": [
+                {
+                    "offset": 2,
+                    "relativeTo": "start"
+                }
+            ]
+        }
+    }
+}
+```
+
+Následující kód JSON je `verbose` parametr nastaven na `true`:
+
+```json
+{
+    "query": "Order the second option",
+    "prediction": {
+        "normalizedQuery": "order the second option",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "ordinal": [
+                {
+                    "offset": 2,
+                    "relativeTo": "start"
+                }
+            ],
+            "$instance": {
+                "ordinal": [
+                  {
+                    "type": "builtin.ordinal",
+                    "text": "second",
+                    "startIndex": 10,
+                    "length": 6,
+                    "modelTypeId": 2,
+                    "modelType": "Prebuilt Entity Extractor",
+                    "recognitionSources": [
+                        "model"
+                    ]
+                  }
+                ]
+            }
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [procento](luis-reference-prebuilt-percentage.md), [phonenumber](luis-reference-prebuilt-phonenumber.md), a [teploty](luis-reference-prebuilt-temperature.md) entity. 
+Další informace o [procento](luis-reference-prebuilt-percentage.md), [telefonní číslo](luis-reference-prebuilt-phonenumber.md), a [teploty](luis-reference-prebuilt-temperature.md) entity. 

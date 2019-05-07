@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/31/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306395"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146043"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -46,6 +46,50 @@ Toto jsou omezení do aktuálního řešení:
 Sady runbook pro toto řešení pracovat [účet Spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může být vypršení platnosti nebo se často měnit.
 
 Doporučujeme použít samostatný účet Automation pro řešení spuštění/zastavení virtuálního počítače. Je to proto, že modul Azure verze jsou často upgradována, a jejich parametrů se může změnit. Řešení spuštění/zastavení virtuálního počítače není upgradována na stejné tempo tak nemusí fungovat s novějšími verzemi rutiny, které používá. Doporučuje se pro účely testování aktualizací modulu v rámci účtu Automation testu před importem do svého produkčního účtu Automation.
+
+### <a name="permissions-needed-to-deploy"></a>Oprávnění potřebná k nasazení
+
+Existují určitá oprávnění, které uživatel musí mít k nasazení spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení. Tato oprávnění se liší v případě použití předem vytvořený účet Automation a Log Analytics pracovního prostoru nebo vytvořením nových během nasazení.
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Účet už existující účet Automation a Log Analytics
+
+Nasazení do účtu Automation a Log Analytics uživatele nasazení řešení vyžaduje následující oprávnění na spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení **skupiny prostředků**. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
+
+| Oprávnění | Rozsah|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/variables/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/schedules/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/runbooks/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/connections/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/certificates/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/modules/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/modules/read | Skupina prostředků |
+| Microsoft.automation/automationAccounts/jobSchedules/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/jobs/write | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/jobs/read | Skupina prostředků |
+| Microsoft.OperationsManagement/solutions/write | Skupina prostředků |
+| Microsoft.OperationalInsights/workspaces/* | Skupina prostředků |
+| Microsoft.Insights/diagnosticSettings/write | Skupina prostředků |
+| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | Skupina prostředků |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Skupina prostředků |
+| Microsoft.Resources/deployments/* | Skupina prostředků |
+
+### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nový účet Automation a nový pracovní prostor Log Analytics
+
+Spouštění/zastavování virtuálních počítačů během mimo špičku nasazení řešení do nového účtu Automation a Log Analytics pracovního prostoru uživatele nasazení řešení potřebuje oprávnění definované v předchozí části, jakož i následující oprávnění:
+
+- Spolusprávce pro předplatné – to je potřeba k vytvoření klasického účtu spustit jako
+- Součástí **vývojář aplikace** role. Další podrobnosti o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
+
+| Oprávnění |Rozsah|
+| --- | --- |
+| Microsoft.Authorization/roleAssignments/read | Předplatné |
+| Microsoft.Authorization/roleAssignments/write | Předplatné |
+| Microsoft.Automation/automationAccounts/connections/read | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/certificates/read | Skupina prostředků |
+| Microsoft.Automation/automationAccounts/write | Skupina prostředků |
+| Microsoft.OperationalInsights/workspaces/write | Skupina prostředků |
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -292,8 +336,8 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 |Dotaz | Popis|
 |----------|----------|
-|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>Zobrazení řešení
 

@@ -9,18 +9,18 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: df3db534550e709e40cc94d5f951056d93a1003e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2a120a59a58eb8d7a017cce0dd85c21038bdcf51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027072"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143219"
 ---
 # <a name="what-is-form-recognizer"></a>Co je nástroj pro rozpoznávání formuláře?
 
 Azure formuláře Rozlišovač není služby cognitive Services, který používá technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a data tabulky z formuláře dokumentů. Potom vypíše strukturovanými daty, která obsahuje vztahy v původním souboru. Můžete zavolat vlastní formulář Rozlišovač modelu pomocí jednoduchých rozhraní REST API k zjednodušení a snadno ji integrovat do vašich pracovních postupů nebo aplikace. Potřebujete pouze pět dokumenty formuláře nebo prázdný formulář stejného typu jako vstupní materiál, abyste mohli začít. Můžete rychle, přesně získat výsledky a přizpůsobená pro váš konkrétní obsah bez nutnosti náročné ruční zásah nebo odbornými znalostmi o rozsáhlé datové vědy.
 
-## <a name="request-access"></a>Vyžádat si přístup
+## <a name="request-access"></a>Vyžádání přístup
 Formulář Rozlišovač není k dispozici jako verze preview omezený přístup. Pokud chcete získat přístup k verzi preview, prosím vyplňte a odešlete [Cognitive Services pro rozpoznávání formulář žádosti o přístup](https://aka.ms/FormRecognizerRequestAccess) formuláře. Formulář požádá o informace o vás, vaše společnost a uživatelský scénář, který budete používat nástroj pro rozpoznávání formuláře. Pokud vaše žádost o schválení od týmu služeb Azure Cognitive Services, dostanete e-mail s pokyny, jak získat přístup k službě.
 
 ## <a name="what-it-does"></a>Co dělá
@@ -73,13 +73,7 @@ Prozkoumejte [rozhraní REST API referenční dokument](https://aka.ms/form-reco
 
 ## <a name="data-privacy-and-security"></a>Ochrany osobních údajů a zabezpečení
 
-Služba se nabízí jako [ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) služby Azure v rámci [Online podmínek použití služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Zachová vlastnictví vašich dat a můžeme použít klíč jen pro poskytování služeb Online Services, jak je popsáno ve vaší smlouvě:
-
-### <a name="processing-of-customer-data-ownership"></a>Zpracování zákaznických dat; vlastnictví
-
-Zákaznická Data se používá nebo jinak zpracovat pouze k poskytování služeb Online účelům slučitelným s poskytováním těchto služeb. Microsoft nebude pomocí nebo jinak zpracovávat Data zákazníků nebo získávání informací pro reklamní nebo podobné obchodní účely. Jde o vztah mezi smluvní strany souhlasí zákazník uchovává tak Jo, název a zajímají v a k zákaznickým datům. Microsoft kupuje žádná práva v zákaznická Data, než práva, která uděluje zákazníků společnosti Microsoft k poskytování služeb Online Services pro zákazníka.
-
-Jako u všech kognitivních služeb vývojářům, kteří používají službu rozpoznávání formuláře měli vědět zásady společnosti Microsoft na zákaznická data. Zobrazit [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na webu Microsoft Trust Center další informace.
+Služba se nabízí jako [ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) služby Azure v rámci [Online podmínek použití služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Jako u všech kognitivních služeb vývojářům, kteří používají službu rozpoznávání formuláře měli vědět zásady společnosti Microsoft na zákaznická data. Zobrazit [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na webu Microsoft Trust Center další informace.
 
 ## <a name="next-steps"></a>Další postup
 

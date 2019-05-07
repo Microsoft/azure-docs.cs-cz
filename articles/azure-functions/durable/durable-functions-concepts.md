@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: aa9563266f6b43e3bc2f21fbc0b340c86c5895ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60862017"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071339"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Odolné funkce vzory a technických konceptech (Azure Functions)
 
@@ -219,9 +219,6 @@ module.exports = async function (context, req) {
 };
 ```
 
-> [!WARNING]
-> Při vývoji místně v kódu jazyka JavaScript, používají metody `DurableOrchestrationClient`, musíte nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>` (například `localhost:7071`). Další informace o tomto požadavku najdete v tématu [problém Githubu 28](https://github.com/Azure/azure-functions-durable-js/issues/28).
-
 V rozhraní .NET [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` parametr je hodnota z `orchestrationClient` výstupní vazby, který je součástí rozšíření Durable Functions. V jazyce JavaScript tento objekt je vrácen voláním `df.getClient(context)`. Tyto objekty poskytují metody, které můžete použít pro spuštění, odesílání událostí do, ukončení a dotaz pro instancemi nástroje orchestrator nové nebo existující funkce.
 
 V předchozích ukázkách přijímá funkci aktivovanou protokolem HTTP `functionName` hodnotu z adresy URL příchozích a předává hodnotu [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) vazba rozhraní API potom vrátí odpověď, která obsahuje `Location` záhlaví a další informace o instanci. Informace můžete použít později k vyhledání stav instance spuštěna nebo k ukončení instance.
@@ -377,6 +374,63 @@ module.exports = async function (context) {
 };
 ```
 
+## <a name="pattern-6-aggregator-preview"></a>Vzor #6: Agregátoru (preview)
+
+Šestý vzor spočívá v agregaci data události po určitou dobu do jediného adresovatelný *entity*. V tomto vzoru data agregují mohou pocházet z několika zdrojů, mohou být dodávány v dávkách nebo mohou být rozmístěny long-časová období. Agregátor potřebovat reagovat na data události po doručení a externí klienti mohou muset dotázat agregovaná data.
+
+![Agregátor diagramu](./media/durable-functions-concepts/aggregator.png)
+
+Velmi obtížné to při implementaci tohoto modelu s normální, bezstavové funkce je, že řízení souběžnosti stane velmi náročná. Jenom je potřeba si dělat starosti úpravy stejná data ve stejnou dobu více vláken, je také potřeba starat o zajištění, že agregátor pouze na jeden virtuální počítač byla najednou spuštěna.
+
+Použití [trvalý Entity funkce](durable-functions-preview.md#entity-functions), jednu implementaci tohoto modelu snadno jako jedinou funkci.
+
+```csharp
+public static async Task Counter(
+    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+    int operand = ctx.GetInput<int>();
+
+    switch (ctx.OperationName)
+    {
+        case "add":
+            currentValue += operand;
+            break;
+        case "subtract":
+            currentValue -= operand;
+            break;
+        case "reset":
+            await SendResetNotificationAsync();
+            currentValue = 0;
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+Klienty můžete zařadit do fronty *operace* pro (označované také jako "signalizace") pomocí funkce entity `orchestrationClient` vazby.
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static async Task Run(
+    [EventHubTrigger("device-sensor-events")] EventData eventData,
+    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+{
+    var metricType = (string)eventData.Properties["metric"];
+    var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
+
+    // The "Counter/{metricType}" entity is created on-demand.
+    var entityId = new EntityId("Counter", metricType);
+    await entityClient.SignalEntityAsync(entityId, "add", delta);
+}
+```
+
+Podobně můžou klienti dotazovat pro stav entity funkce pomocí metod na `orchestrationClient` vazby.
+
+> [!NOTE]
+> Funkce entity jsou aktuálně dostupné jen [náhled odolné Functions 2.0](durable-functions-preview.md).
+
 ## <a name="the-technology"></a>Tato technologie
 
 Na pozadí rozšíření Durable Functions je postavený na [trvalý Framework úloh](https://github.com/Azure/durabletask), knihovny open source na Githubu, který se používá k vytváření orchestrací trvalý úloh. Jako Azure Functions bez serveru vývoj Azure WebJobs, je Durable Functions bez serveru vývoj odolné architektury úloh. Microsoft a jiných společností pomocí rozhraní trvalý úlohy výrazně automatizovat klíčové procesy. Je přirozeně vhodná pro prostředí bez serveru Azure Functions.
@@ -423,7 +477,7 @@ Historie provádění pro účty orchestrator je uložen v úložišti tabulek. 
 
 ![Snímek obrazovky Průzkumníka služby Azure Storage](./media/durable-functions-concepts/storage-explorer.png)
 
-> [!WARNING]
+> [!NOTE]
 > I když je snadné a pohodlné zobrazit historii provádění ve službě table storage, neprovádějte žádné závislosti pro tuto tabulku. Tabulka může změnit, protože rozšíření Durable Functions vyvíjí.
 
 ## <a name="known-issues"></a>Známé problémy

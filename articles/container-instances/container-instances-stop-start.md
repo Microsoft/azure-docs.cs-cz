@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 50f3ecf69561313a5bda67827cfb02d2f61d461f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653657"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070817"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ručně zastavení nebo spuštění kontejnerů ve službě Azure Container Instances
 
@@ -24,7 +24,7 @@ Ručně zastavte spuštěnou skupinu kontejnerů – například s použitím [a
 
 *Když skupiny kontejnerů přejde do stavu Zastaveno, ukončí a recykluje všechny kontejnery ve skupině. Stav kontejneru nezachová.*
 
-I když jsou recyklovány kontejnerů ve skupině kontejnerů Zastaveno [prostředky](container-instances-container-groups.md#resource-allocation) zůstanou přidělené pro použití. Proto se pokračuje fakturace pro skupinu kontejnerů zastaveno.
+Po recyklaci, kontejnery [prostředky](container-instances-container-groups.md#resource-allocation) počítače uvolní a fakturaci zarážky pro skupinu kontejnerů.
 
 Akce zastavení nemá žádný vliv, pokud již byla ukončena skupiny kontejnerů (je ve stavu úspěšné nebo neúspěšné). Například skupinu kontejnerů s úlohy spouštěné jednou kontejneru, které byly úspěšně spuštěny skončí ve stavu úspěch. Limitu pokusí zastavit skupině, stav se nezmění stav. 
 

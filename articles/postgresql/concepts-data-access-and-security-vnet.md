@@ -1,20 +1,19 @@
 ---
-title: Přehled koncových bodů služby Azure Database for virtuální sítě serveru PostgreSQL
-description: Zjistěte, jak fungují koncové body služby virtuální sítě pro váš server Azure Database for PostgreSQL.
-author: WenJason
-ms.author: v-jay
+title: Služby Virtual Network (VNet) přehled koncových bodů ve službě Azure Database for PostgreSQL – jeden Server
+description: Zjistěte, jak fungují koncové body služeb virtuální sítě (VNet) pro službu Azure Database for PostgreSQL – jeden Server.
+author: bolzmj
+ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 08/20/2018
-ms.date: 04/22/2019
-ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560112"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073481"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for PostgreSQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for PostgreSQL – jeden Server
 
 *Pravidla virtuální sítě* jsou jednu funkci brány firewall na zabezpečení, která určuje, jestli váš server Azure Database for PostgreSQL přijímá komunikaci, kterou jsou odesílány z konkrétní podsítě ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost povolení zabezpečené komunikace pro váš server Azure Database for PostgreSQL.
 

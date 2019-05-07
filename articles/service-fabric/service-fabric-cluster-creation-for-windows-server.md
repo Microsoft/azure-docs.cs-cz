@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 3e9e3afd5172783c6b5ed8e6342ce9927353d006
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386839"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142694"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžící na Windows serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů Windows serveru, už to jsou v místním prostředí nebo jakýkoli jiný poskytovatel cloudu. Service Fabric nabízí instalační balíček pro vytváření clusterů Service Fabric volá samostatného balíčku Windows serveru.
@@ -27,7 +27,7 @@ Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na
 Tento článek vás provede kroky pro vytvoření samostatného clusteru Service Fabric.
 
 > [!NOTE]
-> Tento samostatný balíček Windows serveru je komerčně dostupný a mohou být použity pro nasazení v produkčním prostředí. Tento balíček může obsahovat nové funkce Service Fabric, které jsou v "Verze Preview". Přejděte dolů k položce "[součástí tohoto balíčku funkce ve verzi Preview](#previewfeatures_anchor)." oddíl seznamu funkce ve verzi preview. Je možné [stáhnout kopii této smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) nyní.
+> Tento samostatný balíček Windows serveru je komerčně dostupná zdarma a mohou být použity pro nasazení v produkčním prostředí. Tento balíček může obsahovat nové funkce Service Fabric, které jsou v "Verze Preview". Přejděte dolů k položce "[součástí tohoto balíčku funkce ve verzi Preview](#previewfeatures_anchor)." oddíl seznamu funkce ve verzi preview. Je možné [stáhnout kopii této smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) nyní.
 > 
 > 
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a336f7faae24517aa4e29c991886107c6a82d2b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b80f11ef97a10728f07cebe1fe80b954e506da52
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692559"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147898"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 
@@ -88,7 +88,7 @@ Služba Media Services má následující dlouho běžící operace:
 
 Zobrazit [filtrování, řazení, stránkování entit Azure Media Services](entities-overview.md)
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9bfe3cf78c7b8ac30088ffe6a5baa0d460d37607
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867344"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143057"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -120,7 +120,7 @@ Následující příkaz spustí aplikace function app, který se spouští míst
 func host start
 ```
 
-Při spuštění funkce hostitele se vám zobrazí něco, co se podobá následujícímu výstupu, který jsme kvůli čitelnosti zkrátili:
+Při spuštění hostitele funkce zapíše něco jako následující výstup, který byl zkrácen pro lepší čitelnost:
 
 ```output
 

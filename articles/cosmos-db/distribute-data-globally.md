@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b90e495e0901c0caa14d9451f365e17f6c075e2b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889042"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070791"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB – přehled
 
@@ -51,6 +51,6 @@ Přečtěte si další informace o globální distribuci v následujících čl�
 
 * [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
 * [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
-* [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Přidat nebo odebrat oblasti ze svého účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Vytvořit zásadu konflikt vlastní řešení pro účty rozhraní SQL API](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 03/11/2019
+ms.date: 05/03/2019
 ms.author: juliako
-ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2167a74dc81bdbb2562211cf5c0195a755941d9d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733670"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148341"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Kódování s vlastní transformace – .NET
 
@@ -32,7 +32,7 @@ Při vytváření vlastní předvolby, platí následující aspekty:
 
 ## <a name="prerequisites"></a>Požadavky 
 
-[Vytvoření účtu Media Services](create-account-cli-how-to.md). <br/>Ujistěte se, že si pamatovat název skupiny prostředků a název účtu Media Services. 
+[Vytvoření účtu Media Services](create-account-cli-how-to.md)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -46,7 +46,7 @@ Vlastní předvolby ukázka se nachází v [EncodeCustomTransform](https://githu
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Vytvoření transformace s vlastní předvolba 
 
-Při vytváření nového [transformace](https://docs.microsoft.com/rest/api/media/transforms), budete muset určit, co chcete, aby vytvoří jako výstup. Objekt [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Následující **TransformOutput** vytvoří vlastní nastavení výstupní kodek a vrstvy.
+Při vytváření nového [transformace](https://docs.microsoft.com/rest/api/media/transforms), budete muset určit, co chcete, aby vytvoří jako výstup. Objekt [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Přednastavení** popisuje podrobný postup zpracování videa nebo zvukový operací, které se mají použít ke generování požadované **TransformOutput**. Následující **TransformOutput** vytvoří vlastní nastavení výstupní kodek a vrstvy.
 
 Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže). V Media Services v3 **získat** metody u entit vrací **null** Pokud entita neexistuje (velká a malá písmena kontrolu název).
 

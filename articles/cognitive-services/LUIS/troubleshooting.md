@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894453"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072783"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -282,27 +282,19 @@ Použijte ukázku služby LUIS [najít oblast](https://github.com/Azure-Samples/
 
 Ano, můžete použít LUIS [kontejneru](luis-container-howto.md) pro tyto scénáře, pokud máte nezbytné připojení k měření využití. 
 
-### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferenci Build 2018 funkce umožňující porozumět jazyku nebo ukázka slyšeli, ale nepamatuji byla volána?
+## <a name="migrating-to-the-next-version"></a>Migrace na novou verzi
 
-Následující funkce byly vydány na konferenci Build 2018:
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Jak migrovat do verze preview rozhraní API V3 
 
-|Název|Obsah|
-|--|--|
-|Vylepšení|[Regulární výraz](luis-concept-data-extraction.md##regular-expression-entity-data) entity a [klíčových frází to](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) entity
-|Vzory|Vzory [koncept](luis-concept-patterns.md), [kurzu](luis-tutorial-pattern.md), [s postupy](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) entity koncept včetně [explicitní seznam](luis-concept-patterns.md#explicit-lists) pro výjimky<br>[Role](luis-concept-roles.md) koncept|
-|Integrace|[Rozhraní text analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrace [analýzu subjektivního hodnocení](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech) integrace dočištění řeči ve spojení s [sadou SDK pro řeč](https://aka.ms/SpeechSDK)|
-|Nástroj pro odesílání|Součást [BotBuilder nástroje](https://github.com/Microsoft/botbuilder-tools), odeslání příkazového řádku [nástroj](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) zkombinovat více LUIS a nástroje QnA Maker aplikace do jedné aplikace LUIS pro lepší rozpoznání záměru v robota
+Zobrazit [příručka k rozhraní API v2 na v3 migrace pro aplikace LUIS](luis-migration-api-v3.md)
 
-Další vytváření [trasy rozhraní API](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) byly zahrnuty.
+## <a name="build-2019-conference-announcements"></a>Konference Build 2019 oznámení
 
-Videa:
-* [Azure Friday At Build 2018: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Build 2018 AI Show - co je nového službou Language Understanding](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Seminář na konferenci Build 2018 – Inteligence robotů, možnosti využití řeči a osvědčené postupy NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - aktualizace LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+Následující funkce byly vydány na konferenci Build. 2019:
 
-Projekty:
-* [Contoso Cafe bot](https://github.com/botbuilderbuild2018/build2018demo) demo - zdrojového kódu na Githubu
+* [Ve verzi Preview rozhraní API V3 Průvodce migrací](luis-migration-api-v3.md)
+* [Řídicí panel vylepšených analýz](luis-how-to-use-dashboard.md)
+* [Vylepšené, předem připravených domén](luis-reference-prebuilt-domains.md) pracovní verze 2 a rozhraní API V3
 
 ## <a name="next-steps"></a>Další postup
 

@@ -4,27 +4,53 @@ description: Další standardní diagnostiky dovednosti pro Azure IoT Edge, tře
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612271"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142864"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
-Pokud ve vašem prostředí dochází k potížím s provozem služby Azure IoT Edge, použijte tento článek jako vodítko k jejich řešení. 
+Pokud ve vašem prostředí dochází k potížím s provozem služby Azure IoT Edge, použijte tento článek jako vodítko k jejich řešení.
 
-## <a name="standard-diagnostic-steps"></a>Standardní postup diagnostiky 
+## <a name="run-the-iotedge-check-command"></a>Spustit iotedge kontrola příkaz
 
-Pokud narazíte na problém, další informace o stavu zařízení IoT Edge kontrolou protokolů kontejneru a zprávy, předávané do a ze zařízení. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části. 
+Prvním krokem při řešení potíží s IoT Edge by měl být použít `check` příkaz, který provádí sběr konfigurací a připojením testů pro běžné problémy. `check` Příkaz je k dispozici v [release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) a novější.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Zkontrolujte stav IoT Edge Security Manager a jeho protokoly:
+Můžete spustit `check` následující příkaz, nebo zahrnout `--help` příznak, který chcete zobrazit úplný seznam možností:
+
+* V Linuxu:
+
+  ```bash
+  sudo iotedge check
+  ```
+
+* Ve Windows:
+
+  ```powershell
+  iotedge check
+  ```
+
+Typy kontrol, spusťte nástroj dají považovat za:
+
+* Kontrola konfigurace: Zkontroluje informace, které by mohly bránit připojení ke cloudu, včetně problémů s hraniční zařízení *config.yaml* a modul kontejneru.
+* Kontroluje se připojení: Ověřuje se modul runtime IoT Edge přístupné portů na hostitele zařízení a všechny součásti IoT Edge můžete připojit ke službě IoT Hub.
+* Zkontroluje připravenost: Vyhledá produkční doporučené osvědčené postupy, jako je například stav zařízení certifikáty od certifikační autority (CA) a konfigurace souborů protokolu modulu.
+
+Úplný seznam diagnostických kontrol najdete v tématu [integrované řešení potíží s funkcí](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+
+## <a name="standard-diagnostic-steps"></a>Standardní postup diagnostiky
+
+Pokud narazíte na problém, můžete další informace o stavu zařízení IoT Edge kontrolou protokolů kontejneru a zprávy, předávané do a ze zařízení. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části.
+
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Zkontrolovat stav správce zabezpečení IoT Edge a protokolům
 
 V Linuxu:
 - Chcete-li zobrazit stav správce zabezpečení Edge IoT:
@@ -72,20 +98,13 @@ Ve Windows:
 - Chcete-li zobrazit protokoly správce zabezpečení Edge IoT:
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
- 
-   Get-WinEvent -ea SilentlyContinue `
-   -FilterHashtable @{ProviderName= "iotedged";
-     LogName = "application"; StartTime = [datetime]::Today} |
-   select TimeCreated, Message |
-   sort-object @{Expression="TimeCreated";Descending=$false} |
-   format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Pokud není spuštěn Správce zabezpečení IoT Edge, ověřte váš konfigurační soubor yaml
 
 > [!WARNING]
-> Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
+> Soubory YAML nesmí obsahovat tabulátory jako odsazení. Místo toho použijte 2 mezery.
 
 V Linuxu:
 

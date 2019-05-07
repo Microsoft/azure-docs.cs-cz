@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 61d958ae4e53b5f2b123f3fa3660ef62a6cdcabe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021507"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147570"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -26,6 +26,7 @@ Podpora kontejnerů ve službě Azure Cognitive Services umožňuje vývojářů
 * [Rozpoznávání tváře](Face/Overview.md)
 * [Nástroj pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Language Understanding](LUIS/luis-container-howto.md) (LUIS)
+* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 * [Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Analýza textu](text-analytics/overview.md)
 
@@ -56,6 +57,7 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 |[Rozpoznávání tváře](Face/face-how-to-install-containers.md) |F0, S0|**Rozpoznávání tváře** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Žádost o přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Nástroj pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Nástroj pro rozpoznávání formuláře** |Principy formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře.<br>[Žádost o přístup](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**Služba LUIS** ([image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Načte trénovaného nebo publikované Language Understanding modelu, označované také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět a [LUIS portál](https://www.luis.ai) zvyšte přesnost předpovědi aplikace.|
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer je Cloudová služba rozhraní API, který umožňuje zvolit nejvhodnější zobrazíte na uživatele, učit se z jejich chování v reálném čase.|
 |[Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Převod řeči na text** |Přepisuje plynulou řeč v reálném čase do textové podoby.<br>[Žádost o přístup](https://aka.ms/speechcontainerspreview/)|
 |[Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Převod textu na řeč** |Převádí text do přirozeně znějící řeči.<br>[Žádost o přístup](https://aka.ms/speechcontainerspreview/)|
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Extrakce frází klíč** ([image](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
@@ -103,5 +105,6 @@ Instalace a prozkoumejte funkce poskytované službou kontejnerů ve službě Az
 * [Kontejnery pro rozpoznávání tváře](Face/face-how-to-install-containers.md)
 * [Kontejner modulu pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Kontejnery Language Understanding (LUIS)](LUIS/luis-container-howto.md)
+* [Personalizer kontejnery](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 * [Speech API služby kontejnerů](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Text Analytics kontejnery](text-analytics/how-tos/text-analytics-how-to-install-containers.md)

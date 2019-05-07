@@ -1,23 +1,19 @@
 ---
-title: Připojení knihoven pro službu Azure Database for PostgreSQL
-description: Tento článek popisuje několik knihoven a ovladače, že vývojáři mohou použít při psaní kódu aplikace k připojení a dotazování Azure Database for PostgreSQL.
-services: postgresql
-author: WenJason
-ms.author: v-jay
-manager: digimobile
-editor: jasonwhowell
+title: Připojení knihoven pro službu Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje několik knihoven a ovladače, že vývojáři mohou použít při psaní kódu aplikace k připojení a dotazování Azure Database for PostgreSQL – jeden Server.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
-ms.topic: article
-origin.date: 02/28/2018
-ms.date: 12/03/2018
-ms.openlocfilehash: 0e762a2d7cf82e2957fb276fcea0a20553f719e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 5/6/2019
+ms.openlocfilehash: 85110126f9bdec225b1644860814cd89832132a1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559768"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073596"
 ---
-# <a name="connection-libraries-for-azure-database-for-postgresql"></a>Připojení knihoven pro službu Azure Database for PostgreSQL
+# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Připojení knihoven pro službu Azure Database for PostgreSQL – jeden Server
 Tento článek obsahuje seznam knihoven a ovladače, které mohou vývojáři k vývoji aplikací k připojení a dotazování Azure Database for PostgreSQL.
 
 ## <a name="client-interfaces"></a>Klientská rozhraní

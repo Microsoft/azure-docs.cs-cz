@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025893"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072610"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>První hlasové virtuálních asistentů ve verzi Preview: Nejčastější dotazy
 
@@ -29,7 +29,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Otázka: Jak mám začít?**
 
-**Odpověď:** Nejlepším způsobem začneme vytvořením virtuálních asistentů hlasu na prvním je začít s [vytvoření základního robota Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Dalším krokem je propojení robotům, aby [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+**Odpověď:** Nejlepším způsobem začneme vytvořením virtuálních asistentů hlasu na prvním je začít s [vytvoření základního robota Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Dalším krokem je propojení robotům, aby [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="debugging"></a>Ladění
 
@@ -41,7 +41,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Otázka: Můžu vrátit rozpoznávání textu z přímé řeči řádku, ale zobrazí chyba "1011", ale nic z mé robota. Proč?**
 
-**Odpověď:** Tato chyba označuje s komunikací mezi robotů a přímé řádku řeči. Ujistěte se, že jste [připojené přímé řeči řádek kanál](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md), [přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) bot (s podporou související webové sokety) a potom zkontrolujte, jestli váš robot reaguje na příchozí požadavky z tohoto kanálu.
+**Odpověď:** Tato chyba označuje s komunikací mezi robotů a přímé řádku řeči. Ujistěte se, že jste [připojené přímé řeči řádek kanál](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) bot (s podporou související webové sokety) a potom zkontrolujte, jestli váš robot reaguje na příchozí požadavky z tohoto kanálu.
 
 **Otázka: To pořád nefunguje a/nebo dochází k jiné chybě při použití SpeechBotConnector a není jasné, co mám dělat. Co *by měl* můžu dělat?**
 

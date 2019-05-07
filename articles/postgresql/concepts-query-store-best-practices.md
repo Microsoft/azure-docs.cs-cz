@@ -1,21 +1,21 @@
 ---
-title: Query Store osvědčené postupy ve službě Azure Database for PostgreSQL
-description: Tento článek popisuje osvědčené postupy pro Query Store ve službě Azure Database for PostgreSQL.
+title: Query Store osvědčené postupy ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje osvědčené postupy pro Query Store ve službě Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: af68d5cdc891a8c924ca493d8e798edaa4670ab5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 798a7a3edbf11c8421848871d26ba55b5bada0b6
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563167"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067240"
 ---
 # <a name="best-practices-for-query-store"></a>Osvědčené postupy pro Query Store
 
-**Platí pro:** Azure Database for PostgreSQL 9.6 a 10
+**Platí pro:** Azure Database for PostgreSQL – jeden Server 9.6 a 10
 
 Tento článek popisuje doporučené postupy pro používání Query Store ve službě Azure Database for PostgreSQL.
 

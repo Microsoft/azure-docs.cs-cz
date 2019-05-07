@@ -1,19 +1,19 @@
 ---
-title: Přehled kontinuity se službou Azure Database for PostgreSQL
+title: Přehled kontinuity se službou Azure Database for PostgreSQL – jeden Server
 description: Přehled kontinuity se službou Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456270"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068934"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Přehled kontinuity se službou Azure Database for PostgreSQL
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled kontinuity se službou Azure Database for PostgreSQL – jeden Server
 
 Tento přehled popisuje možnosti, které poskytuje Azure Database for PostgreSQL pro provozní kontinuitu a zotavení po havárii. Další informace o možnosti pro zotavení z ničivých událostí, které by mohly způsobit ztrátu dat nebo nedostupnost databáze a aplikace přestanou být dostupné. Zjistěte, co můžete dělat, když chyba uživatele nebo aplikace ovlivňuje integritu dat, má k výpadku oblasti Azure nebo aplikace vyžaduje údržbu.
 

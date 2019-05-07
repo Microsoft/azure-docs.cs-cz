@@ -1,19 +1,19 @@
 ---
-title: Postup obnovení serveru ve službě Azure Database for PostgreSQL
-description: Tento článek popisuje, jak obnovit server ve službě Azure Database for PostgreSQL pomocí webu Azure portal.
+title: Postup obnovení serveru ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje, jak obnovit server ve službě Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 60489e3fc7fc6482a14a241e777066b3805a4d5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 1950b43e0922eebe34463c06db9a5d67dce76f56
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420398"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068880"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL pomocí webu Azure portal
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
 
 ## <a name="backup-happens-automatically"></a>Zálohování se automaticky stane
 Azure Database for PostgreSQL servery se pravidelně zálohují k povolení funkce obnovení. Pomocí této funkce může obnovení serveru a jeho databázím do starší v daném okamžiku, na novém serveru.

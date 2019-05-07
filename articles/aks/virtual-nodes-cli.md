@@ -5,23 +5,20 @@ services: container-service
 author: iainfoulds
 ms.topic: conceptual
 ms.service: container-service
-ms.date: 12/03/2018
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 38b2654c8f3e8d302a66cac335913583bd4426ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe837c4d89a59325040355e35f12c3499aee7d98
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61024550"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072813"
 ---
-# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Ve verzi Preview – vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly pomocí Azure CLI
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly pomocí Azure CLI
 
-Rychlé škálování úloh aplikací v clusteru služby Azure Kubernetes Service (AKS), můžete použít virtuální uzly. S virtuální uzly mají rychlé zřízení podů a platíte jenom za sekundu pro jejich spuštění. Nemusíte čekat automatického škálování clusteru Kubernetes nasadit virtuální počítač výpočetních uzlů pro spouštění budou další pody. Tento článek ukazuje, jak vytvořit a konfigurovat prostředky virtuální sítě a clusteru AKS a potom povolit virtuální uzly.
+Rychlé škálování úloh aplikací v clusteru služby Azure Kubernetes Service (AKS), můžete použít virtuální uzly. S virtuální uzly mají rychlé zřízení podů a platíte jenom za sekundu pro jejich spuštění. Nemusíte čekat automatického škálování clusteru Kubernetes nasadit virtuální počítač výpočetních uzlů pro spouštění budou další pody. Virtuální uzly jsou podporovaná jenom s uzly a podů Linux.
 
-> [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
->
-> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
+Tento článek ukazuje, jak vytvořit a konfigurovat prostředky virtuální sítě a clusteru AKS a potom povolit virtuální uzly.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -52,10 +49,16 @@ az provider register --namespace Microsoft.ContainerInstance
 Tyto oblasti jsou podporovány pro nasazení virtuálního uzlu:
 
 * Austrálie – východ (australiaeast)
+* Střed USA (centralus)
 * USA – východ (eastus)
+* East US 2 (eastus2)
+* Japonsko – východ (japaneast)
+* Severní Evropa (northeurope)
+* Jihovýchodní Asie (southeastasia)
 * Střed USA – západ (westcentralus)
 * Západní Evropa (westeurope)
 * USA – západ (westus)
+* Západní USA 2 (westus2)
 
 ## <a name="known-limitations"></a>Známá omezení
 Virtuální funkce uzlů je silně závisí na sadě funkcí v ACI. Následující scénáře nejsou ještě podporované s virtuální uzly
@@ -183,11 +186,6 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
-> [!NOTE]
-> Pokud se zobrazí chyba týkající se virtuální uzel nebyl nalezen, budete muset nainstalovat jeho rozšíření rozhraní příkazového řádku 
-> ```azurecli-interactive
-> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-> ```
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
@@ -266,7 +264,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Pod přiřazena vnitřní IP adresu z podsítě virtuální sítě Azure delegované pro použití s virtuálními uzly.
 
 > [!NOTE]
-> Pokud používáte Image uložená ve službě Azure Container Registry, [nakonfigurovat a používat tajného kódu Kubernetes][acr-aks-secrets]. Aktuální omezení virtuální uzly, které ve verzi preview je, že nemůžete použít integrované ověřování instančních objektů Azure AD. Pokud nepoužíváte tajného klíče, pody naplánována na virtuální uzly nepodaří spustit a nahlaste jim chybu `HTTP response status code 400 error code "InaccessibleImage"`.
+> Pokud používáte Image uložená ve službě Azure Container Registry, [nakonfigurovat a používat tajného kódu Kubernetes][acr-aks-secrets]. Aktuální omezení virtuální uzly je, že nemůžete použít Azure integrované ověřování instančních objektů služby AD. Pokud nepoužíváte tajného klíče, pody naplánována na virtuální uzly nepodaří spustit a nahlaste jim chybu `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>Testovat virtuální uzel pod
 

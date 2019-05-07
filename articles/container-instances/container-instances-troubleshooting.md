@@ -6,19 +6,19 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61067321"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070852"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
-Tento článek ukazuje, jak řešení běžných potíží pro řízení a nasazení kontejnerů do služby Azure Container Instances.
+Tento článek ukazuje, jak řešení běžných potíží pro řízení a nasazení kontejnerů do služby Azure Container Instances. Viz také [– nejčastější dotazy](container-instances-faq.md).
 
 ## <a name="naming-conventions"></a>Zásady vytváření názvů
 
@@ -46,11 +46,7 @@ Pokud zadáte bitovou kopii, která nepodporuje Azure Container Instances, `OsVe
 }
 ```
 
-K této chybě nejčastěji dochází při nasazení Image Windows, které jsou založeny na půlroční kanál (SAC) verze. Například Windows verze 1709 a 1803 jsou SAC verze a generování této chyby při nasazování.
-
-Služba Azure Container Instances v současné době podporuje pouze na základě Image Windows **systému Windows Server 2016 dlouhodobé údržby kanálu (LTSC)** release. Chcete-li tento problém zmírnit, při nasazování kontejnerů Windows, vždy nasazení založené na Windows serveru 2016 LTSC imagí. Imagí založených na Windows serveru. 2019 (LTSC) nejsou podporovány.
-
-Podrobnosti o LTSC a SAC verzích Windows najdete v tématu [přehled Windows serveru prostřednictvím půlročního kanálu][windows-sac-overview].
+K této chybě nejčastěji dochází při nasazení Image Windows, které jsou založeny na půlroční kanál verze 1709 nebo 1803, které nejsou podporované. Podporované Image Windows v Azure Container Instances, naleznete v tématu [– nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ## <a name="unable-to-pull-image"></a>Nejde o přijetí změn image
 
@@ -102,7 +98,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
  --command-line "ping -t localhost"
 ```
 
@@ -156,7 +152,7 @@ Jsou dva primární faktory, které přispívají k čas spuštění kontejneru 
 * [Velikost bitové kopie](#image-size)
 * [Umístění obrázku](#image-location)
 
-Image Windows obsahují [další aspekty](#cached-windows-images).
+Image Windows obsahují [další aspekty](#cached-images).
 
 ### <a name="image-size"></a>Velikost bitové kopie
 
@@ -176,14 +172,12 @@ Klíčem k udržování velikosti obrázků malé zajišťuje, že finální ima
 
 Dalším způsobem, jak omezit dopad obrázek o přijetí změn na dobu spuštění vašeho kontejneru je hostování image kontejneru v [Azure Container Registry](/azure/container-registry/) ve stejné oblasti, kde máte v úmyslu nasadit kontejner instancí. To zkracuje síťovou cestu, která image kontejneru musí projít, výrazně zkrácení doby stahování.
 
-### <a name="cached-windows-images"></a>Bitové kopie v mezipaměti Windows
+### <a name="cached-images"></a>Bitové kopie v mezipaměti
 
-Služba Azure Container Instances pomocí mechanismu ukládání do mezipaměti urychlili čas spuštění kontejneru pro Image založené na běžných imagí Windows a Linuxem. Podrobný seznam v mezipaměti obrázků a značek, použijte [bitové kopie v mezipaměti seznamu] [ list-cached-images] rozhraní API.
+Služba Azure Container Instances pomocí mechanismu ukládání do mezipaměti Doba spuštění kontejneru rychlost imagí vytvořených na běžné [základní Image Windows](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809`, `servercore:ltsc2019`, a `servercore:1809`. Nejčastěji používaných imagí Linuxu, jako `ubuntu:1604` a `alpine:3.6` jsou také uloženy v mezipaměti. Aktuální seznam v mezipaměti obrázků a značek, použijte [bitové kopie v mezipaměti seznamu] [ list-cached-images] rozhraní API.
 
-Pokud chcete zajistit nejrychlejší doba spuštění kontejneru Windows, použijte jednu z **poslední tři** verze následující **dvě bitové kopie** jako základní image:
-
-* [Jádra Windows serveru 2016] [ docker-hub-windows-core] (pouze LTSC)
-* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+> [!NOTE]
+> Použití založené na Windows Server 2019 imagí ve službě Azure Container Instances je ve verzi preview.
 
 ### <a name="windows-containers-slow-network-readiness"></a>Připravenost pomalou síť kontejnery Windows
 

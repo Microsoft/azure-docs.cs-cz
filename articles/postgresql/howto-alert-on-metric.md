@@ -1,19 +1,19 @@
 ---
-title: Konfigurace upozornění metriky pro službu Azure Database for PostgreSQL na webu Azure portal
-description: Tento článek popisuje postup konfigurace a upozornění na metriku přístupu pro službu Azure Database for PostgreSQL na webu Azure Portal.
+title: Konfigurace upozornění metriky pro službu Azure Database for PostgreSQL – jeden Server na webu Azure portal
+description: Tento článek popisuje postup konfigurace a upozornění na metriku přístupu pro službu Azure Database for PostgreSQL – jeden Server z webu Azure portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.openlocfilehash: 7211ffddf82b38ca27b776ecfd12bca25ebbb0f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421949"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067300"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Nastavte si upozornění na metriky pro službu Azure Database for PostgreSQL pomocí webu Azure portal 
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Nastavte si upozornění na metriky pro službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
 
 V tomto článku se dozvíte, jak nastavit – Azure Database for postgresql – výstrah pomocí webu Azure portal. Obdržíte výstrahu na základě monitorování metrik pro služby Azure.
 

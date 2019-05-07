@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee52cde6feeb69f9140df497a9abee300c93fd71
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 258b603b8cd2e0cdfcc72ca17cd3cb0d034caf5b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692102"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143349"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí IoT hub do prostředí Time Series Insights
 
@@ -42,7 +42,7 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
 
 1. V nabídce v části **nastavení**vyberte **integrovaných koncových bodech**a pak vyberte **události** koncového bodu.
 
-   ![Na stránce sestavení v koncových bodů vyberte tlačítko události][1]
+   [![Na stránce sestavení v koncových bodů vyberte tlačítko události](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
 
 1. V části **skupiny příjemců**, zadejte jedinečný název pro skupinu příjemců. Když vytvoříte nový zdroj událostí, použijte tento stejný název ve vašem prostředí Time Series Insights.
 
@@ -56,7 +56,7 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
 
 1. V části **topologie prostředí**vyberte **zdroje událostí**a pak vyberte **přidat**.
 
-   ![Vyberte zdroje událostí a pak vyberte tlačítko Přidat][2]
+   [![Vyberte zdroje událostí a pak vyberte tlačítko Přidat](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png#lightbox)
 
 1. V **nový zdroj událostí** podokně pro **název zdroje událostí**, zadejte název, který je jedinečný pro toto prostředí Time Series Insights. Zadejte například **datového proudu událostí**.
 
@@ -67,11 +67,11 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
    * Pokud už máte službu IoT hub v jednom z vašich předplatných, vyberte **pomocí služby IoT Hub z dostupných předplatných**. Tato možnost je nejjednodušší přístup.
    * Pokud je pro vaše předplatná externí služby IoT hub nebo pokud chcete zvolit Pokročilá nastavení, vyberte **nastavení poskytovat služby IoT Hub ručně**.
 
-   ![Vyberte možnosti v podokně nový zdroj událostí][3]
+   [![Vyberte možnosti v podokně nový zdroj událostí](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
 
 1. Následující tabulka popisuje vlastnosti, které jsou požadovány pro **pomocí služby IoT Hub z dostupných předplatných** možnost:
 
-   ![Podokno zdroj nové události – vlastnosti, které chcete nastavit ve službě IoT Hub pomocí z možnosti předplatné k dispozici][4]
+   [![Podokno zdroj nové události – vlastnosti, které chcete nastavit ve službě IoT Hub pomocí z možnosti předplatné k dispozici](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
 
    | Vlastnost | Popis |
    | --- | --- |
@@ -100,7 +100,7 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
 
 1. Vyberte **Vytvořit**.
 
-   ![Tlačítka pro vytvoření][5]
+   [![Tlačítka pro vytvoření](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png#lightbox)
 
 1. Po vytvoření zdroje událostí Time Series Insights automaticky spustí, streamování dat do vašeho prostředí.
 
@@ -111,10 +111,3 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
 * [Odesílání událostí](time-series-insights-send-events.md) ke zdroji události.
 
 * Přístup k prostředí na [Průzkumníka služby Time Series Insights](https://insights.timeseries.azure.com).
-
-<!-- Images -->
-[1]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png
-[2]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png
-[3]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png
-[4]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png
-[5]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png

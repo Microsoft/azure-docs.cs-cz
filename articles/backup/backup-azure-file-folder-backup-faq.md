@@ -1,33 +1,40 @@
 ---
-title: Nejčastější dotazy k agentovi Azure Backup
-description: Odpovědi na běžné dotazy týkající se fungování agenta Azure Backup a omezení zálohování a uchovávání.
-services: backup
-author: trinadhk
-manager: shreeshd
-keywords: zálohování a zotavení po havárii; služba zálohování
+title: Běžné otázky při zálohování souborů a složek pomocí Azure Backup
+description: Řeší běžné otázky týkající se zálohování souborů a složek s Azure Backup.
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.author: trinadhk
-ms.openlocfilehash: c1690fe6d0ce24bd319b042a3850bbfe487ffcfc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/30/2019
+ms.author: dacurwin
+ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641224"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148597"
 ---
-# <a name="questions-about-the-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup
-Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám agenta Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+# <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek 
 
-## <a name="configure-backup"></a>Konfigurace zálohování
-### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Kde mohu stáhnout nejnovější verzi agenta Azure Backup? <br/>
-Nejnovější verzi agenta pro zálohování Windows Serveru, aplikace System Center DPM nebo klienta Windows si můžete stáhnout [zde](https://aka.ms/azurebackup_agent). Chcete-li zálohovat virtuální počítač, použijte agenta virtuálního počítače (který automaticky nainstaluje správné rozšíření). Agent virtuálního počítače je již nainstalován na virtuálních počítačích vytvořených z galerie Azure.
+Tento článek obsahuje odpovědi na běžné dotazy abound zálohování souborů a složek pomocí agenta Microsoft Azure Recovery Services (MARS) v [Azure Backup](backup-overview.md) služby.
 
-### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Při konfiguraci agenta Azure Backup se zobrazí výzva k zadání přihlašovacích údajů trezoru. Mohou přihlašovací údaje trezoru vypršet?
-Ano, přihlašovací údaje trezoru vyprší po 48 hodinách. Pokud soubor vyprší, přihlaste se k webu Azure portal a stáhněte soubory s přihlašovacími údaji trezoru z trezoru.
+## <a name="general"></a>Obecné
 
-### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>Z jakých typů jednotek můžu zálohovat soubory a složky? <br/>
-Nemůžete zálohovat následující jednotky a svazky:
+### <a name="why-does-the-mars-agent-need-net-framework-452-or-higher"></a>Proč agenta MARS musí rozhraní .NET framework 4.5.2 nebo novější?
+
+Nové funkce, které jsou k dispozici v [okamžitá obnova](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) vyžaduje rozhraní .NET Framework 4.5.2 nebo novější.
+
+## <a name="configure-backups"></a>Konfigurace zálohování
+
+### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Kde lze stáhnout nejnovější verzi agenta MARS? 
+Nejnovější verzi agenta MARS při zálohování počítačů s Windows serverem, System Center DPM a Microsoft Azure Backup server je k dispozici pro [Stáhnout](https://aka.ms/azurebackup_agent). 
+
+### <a name="how-long-are-vault-credentials-valid"></a>Jak dlouho jsou platné přihlašovací údaje trezoru?
+Platnost přihlašovacích údajů trezoru vyprší po 48 hodinách. Pokud vyprší platnost soubor s přihlašovacími údaji, stáhněte soubor znovu z portálu Azure portal.
+
+### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Z jaké jednotek můžu zálohovat soubory a složky? 
+
+Nemůžete zálohovat následující typy jednotek a svazků:
 
 * Vyměnitelné médium: Všechny zdroje položek k zálohování se musí hlásit jako pevné.
 * Svazky jen pro čtení: Svazek musí být zapisovatelný služby Stínová kopie svazku (VSS) fungovat.
@@ -36,7 +43,8 @@ Nemůžete zálohovat následující jednotky a svazky:
 * Svazky chráněné nástrojem BitLocker: Předtím, než může dojít k zálohování, musí být svazek odemčený.
 * Identifikace systému souborů: Je jediným podporovaným systémem souborů NTFS.
 
-### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Jaké typy souborů a složek mohu zálohovat ze svého serveru?<br/>
+### <a name="what-file-and-folder-types-are-supported"></a>Jaké typy souborů a složek se podporují?
+
 Jsou podporovány následující typy:
 
 * Šifrované
@@ -47,57 +55,83 @@ Jsou podporovány následující typy:
 * Bod rozboru: Není podporováno, vynecháno
 * Šifrované a řídké: Není podporováno, vynecháno
 * Komprimovaný Stream: Není podporováno, vynecháno
-* Zhuštěný Stream: Není podporováno, vynecháno
+* Body rozboru, včetně odkazů DFS a spojovacích bodů
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Mohu nainstalovat agenta Azure Backup na virtuální počítač Azure, který už je zálohovaný službou Azure Backup pomocí rozšíření virtuálního počítače? <br/>
-Jistě. Azure Backup poskytuje zálohování na úrovni virtuálních počítačů pro virtuální počítače Azure, které používají rozšíření virtuálního počítače. Pokud chcete chránit soubory a složky na hostovaném operačním systému Windows, nainstalujte na něj agenta Azure Backup.
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Mohu nainstalovat agenta Azure Backup na virtuální počítač Azure a použít ho k zálohování souborů a složek umístěných na dočasném úložišti poskytnutém virtuálním počítačem Azure? <br/>
-Ano. Nainstalujte agenta Azure Backup na hostovaný operační systém Windows a zálohujte soubory a složky do dočasného úložiště. Jakmile dojde k vymazání dat na dočasném úložišti, úlohy zálohování selžou. Navíc pokud dojde k vymazání dat na dočasném úložišti, budete moci provést obnovení pouze na stálé úložiště.
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>Můžete pomocí agenta MARS zálohovat soubory a složky na Virtuálním počítači Azure?  
+Ano. Azure Backup poskytuje zálohování na úrovni virtuálního počítače pro virtuální počítače Azure pomocí rozšíření virtuálního počítače pro agenta virtuálního počítače Azure. Pokud chcete zálohovat soubory a složky na hostovaném operačním systému Windows na virtuálním počítači, můžete nainstalovat agenta MARS na to. 
 
-### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Jaký je požadavek na minimální velikost složky mezipaměti? <br/>
-Velikost složky mezipaměti určuje množství dat, která zálohujete. Objem složka mezipaměti musí být alespoň 5 až 10 % volného místa, ve srovnání s celkové velikosti dat zálohy. Pokud svazek obsahuje méně než 5 % volné místo, buď zvyšte velikost svazku, nebo [přesuňte složku mezipaměti na svazek s dostatkem volného místa](backup-azure-file-folder-backup-faq.md#backup).
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>Můžete pomocí agenta MARS zálohovat soubory a složky na dočasné úložiště pro virtuální počítač Azure? 
+Ano. Nainstalujte agenta MARS a zálohovat soubory a složky na hostovaném operačním systému Windows do dočasného úložiště. – Úlohy zálohování neúspěšné o dočasné úložiště dat dojde k vymazání.
+- Pokud dojde k odstranění dat na dočasném úložišti, lze obnovit pouze na stálé úložiště.
 
-### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Jak mohu zaregistrovat svůj server k jinému datovému centru?<br/>
-Zálohovaná data se odesílají do datového centra trezoru, ke kterému je agent registrován. Nejjednodušší způsob, jak změnit datové centrum, je odinstalování agenta a jeho přeinstalování a zaregistrování k novému trezoru, který patří k požadovanému datovému centru.
+### <a name="how-do-i-register-a-server-to-another-region"></a>Jak se zaregistrovat server do jiné oblasti?
 
-### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Funguje agent Azure Backup na serveru, který používá odstranění duplicit Windows Serveru 2012? <br/>
-Ano. Služba agenta během přípravy operace zálohování převádí odstraněná duplicitní data na normální data. Poté optimalizuje data pro zálohování, zašifruje je, a zašifrovaná data odešle do online služby zálohování.
+Zálohovaná data se odesílají do datového centra trezoru, ve kterém je server zaregistrovaný. Nejjednodušší způsob, jak změnit datové centrum je potřeba odinstalovat a znovu nainstalujte agenta a pak v oblasti, které potřebujete zaregistrovat počítače do nového trezoru
 
-## <a name="prerequisites-and-dependencies"></a>Požadavky a závislosti
-### <a name="what-features-of-microsoft-azure-recovery-services-mars-agent-require-net-framework-452-and-higher"></a>Jaké funkce agenta Microsoft Azure Recovery Services (MARS) vyžadují rozhraní .NET framework 4.5.2 nebo novější?
-[Rychlé obnovení](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) funkce, která umožňuje obnovení jednotlivých souborů a složek z *obnovit Data* Průvodce vyžaduje rozhraní .NET Framework 4.5.2 nebo novější.
+### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Odstranění duplicit podporu agenta MARS Windows serveru 2012?
+Ano. Agenta MARS převádí Odstraněná duplicitní data na normální data během přípravy operace zálohování. Potom optimalizuje data pro zálohování, zašifruje je a potom zašifrovaná data odešle do trezoru.
 
-## <a name="backup"></a>Backup
-### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Jak změním umístění mezipaměti, zadané pro agenta Azure Backup?<br/>
-Umístění mezipaměti můžete změnit pomocí následujícího seznamu.
+## <a name="manage-backups"></a>Správa záloh
 
-1. Zastavte modul zálohování spuštěním následujícího příkazu v příkazovém řádku se zvýšenými oprávněními:
+### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>Co se stane, když přejmenuji nakonfigurovaných pro zálohování počítače s Windows?
+
+Při přejmenování počítače s Windows, všechna stávající nastavená zálohování se zastaví.
+
+- Budete muset zaregistrovat nový název počítače k trezoru služby Backup.
+- Když zaregistrujete nový název trezoru, je první operace *úplné* zálohování.
+- Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovit do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine). 
+
+### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaký je maximální délka cesty pro zálohu?
+Agenta MARS spoléhá na systém souborů NTFS a používá specifikace délky cesty k souboru omezený [rozhraní Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Pokud jsou delší než povolená hodnota soubory, které chcete chránit, zálohujte nadřazenou složku nebo diskovou jednotku.  
+
+### <a name="what-characters-are-allowed-in-file-paths"></a>Jaké znaky jsou povolené v cestách k souborům?
+
+Agenta MARS spoléhá na systém souborů NTFS a umožňuje [podporované znaky](/windows/desktop/FileIO/naming-a-file#naming_conventions) v názvy cest.
+
+### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Zobrazí se upozornění "Zálohování Azure nebyly nakonfigurovány pro tento server".
+Toto upozornění se může zobrazit i v případě, že nakonfigurujete zásady zálohování, nastavení plánu zálohování uložené na místním serveru neshodují s nastavením uloženým v trezoru služby backup.
+- Když serveru nebo nastavení bylo obnoveno do známého funkčního stavu, se může stát nesynchronizované plánů zálohování.
+- Pokud se zobrazí toto upozornění [konfigurace](backup-azure-manage-windows-server.md) znovu zásady zálohování a pak spustit na vyžádání zálohování opakovanou synchronizaci místního serveru s Azure.
+
+
+## <a name="manage-the-backup-cache-folder"></a>Spravovat složku mezipaměť zálohování
+
+### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>Jaký je požadavek na minimální velikost složky mezipaměti?
+Velikost složky mezipaměti určuje množství dat, která zálohujete.
+- Svazky složka mezipaměti musí mít volné místo, které se rovná aspoň 5 až 10 % celkové velikosti dat zálohy.
+- Pokud svazek obsahuje méně než 5 % volné místo, zvětšete svazek nebo přesuňte složku mezipaměti na svazek s dostatkem místa.
+- 
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Změna umístění mezipaměti pro agenta MARS
+
+
+1. V příkazovém řádku se zvýšenými oprávněními na zastavte modul zálohování spuštěním tohoto příkazu:
 
     ```PS C:\> Net stop obengine```
 
-2. Soubory nepřesouvejte. Místo toho zkopírujte složku s místem v mezipaměti na jinou jednotku s dostatkem volného místa. Po potvrzení, že zálohování s novým místem v mezipaměti funguje správně, můžete původní místo v mezipaměti odebrat.
-3. U následujících položek registru aktualizujte cestu k nové složce s místem v mezipaměti.<br/>
+2. Soubory nepřesouvejte. Místo toho zkopírujte složku mezipaměti místo na jinou jednotku, která má dost volného místa.
+3. Aktualizujte následující položky registru cesty nové složky mezipaměti.<br/>
 
     | Cesta k registru | Klíč registru | Hodnota |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |
 
-4. Restartujte modul Backup spuštěním následujícího příkazu v příkazovém řádku se zvýšenými oprávněními:
+4. Restartujte modul Backup na příkazovém řádku se zvýšenými oprávněními:
 
     ```PS C:\> Net start obengine```
 
-Po úspěšném dokončení vytvoření zálohy v novém umístění mezipaměti můžete původní složku mezipaměti odebrat.
+5. Po dokončení zálohování úspěšně pomocí nové umístění, můžete původní složku mezipaměti odebrat.
 
 
-### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Kam můžu dát složku mezipaměti, aby agent Azure Backup fungoval podle očekávání?<br/>
+### <a name="where-should-the-cache-folder-be-located"></a>Pokud třeba složky mezipaměti umístěné?
+
 Pro složku mezipaměti nedoporučujeme používat následující umístění:
 
-* Sdílené síťové složky nebo vyměnitelné médium: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění a vyměnitelná média jako jednotky USB nejsou podporovány.
+* Síťové sdílené složky a vyměnitelné médium: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění a vyměnitelná média jako jednotky USB nejsou podporovány.
 * Offline svazky: Složka mezipaměti musí být online pro očekávané zálohování pomocí agenta Azure Backup
 
-### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Jsou nějaké atributy složky mezipaměti, které nejsou podporované?<br/>
+### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Jsou nějaké atributy složky mezipaměti, které nejsou podporované?
 Složka mezipaměti nepodporuje následující atributy nebo jejich kombinace:
 
 * Šifrované
@@ -108,25 +142,17 @@ Složka mezipaměti nepodporuje následující atributy nebo jejich kombinace:
 
 Složka mezipaměti ani virtuální pevný disk s metadaty nemají atributy vyžadované pro agenta Azure Backup.
 
-### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Existuje způsob, jak nastavit šířku pásma používaného službou Backup?<br/>
-  Ano, k úpravě šířky pásma použijte možnost **Změnit vlastnosti** v agentu Backup. Můžete upravit šířku pásma a dobu, kdy tuto šířku pásma používáte. Podrobné pokyny najdete v tématu **[Povolení omezení využití sítě](backup-configure-vault.md#enable-network-throttling)**.
+### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Existuje způsob, jak nastavit šířku pásma používanou pro zálohování?
+ 
+Ano, můžete použít **změnit vlastnosti** možnost v agenta MARS k úpravě šířky pásma a časování. [Další informace](backup-configure-vault.md#enable-network-throttling)**.
 
 ## <a name="restore"></a>Obnovení
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším úlohu probíhající obnovení?
-Pokud dojde ke zrušení úlohy aktuálnímu obnovení, zastaví proces obnovení a všechny soubory obnovit před zrušením, budete mít všechno pod nakonfigurované cílové (původního nebo alternativního umístění) bez vrácení všech změn.
+
+Pokud se zruší úlohu obnovení probíhající, zastaví proces obnovení. Všechny soubory obnovit před zrušením zůstat v nakonfigurovaných cíl (původního nebo alternativního umístění), bez jakékoli vrácení zpět.
 
 
-## <a name="manage-backups"></a>Správa záloh
+## <a name="next-steps"></a>Další postup
 
-### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Co se stane, když přejmenuji server Windows, který zálohuje data do Azure?<br/>
-Když server přejmenujete, všechna stávající nastavená zálohování se zastaví. Zaregistrujte nový název serveru k trezoru služby Backup. Když zaregistrujete nový název trezoru, první zálohování bude provedeno jako *úplné*. Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost [**Jiný server**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) v průvodci **Obnova dat**.
-
-### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Jaká je maximální délka cesty k souboru, kterou lze zadat v zásadě služby Backup pomocí agenta Azure Backup? <br/>
-Agent Azure Backup se spoléhá na systém souborů NTFS. [Specifikace délky cesty k souboru je omezená rozhraním API systému Windows](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Pokud mají soubory, které chcete chránit, délku cesty k souboru větší než povoluje rozhraní API systému Windows, zálohujte nadřazenou složku nebo diskovou jednotku.  
-
-### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Jaké znaky jsou povolené v cestě k souboru zásady Azure Backup pomocí agenta Azure Backup? <br>
- Agent Azure Backup se spoléhá na systém souborů NTFS. Pro specifikaci souboru povoluje [znaky podporované systémem souborů NTFS](/windows/desktop/FileIO/naming-a-file#naming_conventions).
-
-### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Zobrazuje se upozornění „Služba Azure Backup nebyla pro tento server nakonfigurovaná“ i přesto, že jsem nakonfiguroval zásadu zálohování. <br/>
-Toto upozornění se zobrazí v případě, že se nastavení plánu zálohování uložené na místním serveru neshodují s nastaveními uloženými v trezoru záloh. Pokud došlo k obnovení serveru nebo nastavení do známého stavu, může dojít ke ztrátě synchronizace plánů zálohování. Pokud se zobrazí toto upozornění, [překonfigurujte zásadu zálohování](backup-azure-manage-windows-server.md) a poté **spusťte Zálohovat nyní**, aby došlo k opětovné synchronizaci místního serveru s Azure. 
+[Přečtěte si](tutorial-backup-windows-server-to-azure.md) jak zálohovat počítač s Windows.

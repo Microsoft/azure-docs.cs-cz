@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: f117e02a063b93b8b1badbd9868f78da95c3c671
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6af5c8cdad00802052f08be844f77d36420da3c9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925136"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142375"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -409,10 +409,10 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 }
 ```
 
-## <a name="parquet-format"></a>Formát parquet
+## <a name="parquet-format"></a>Formát Parquet
 
 >[!NOTE]
->Data Factory zavedeny nové datset formát Parquet, přečtěte si téma [formát Parquet](format-delimited-text.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.
+>Data Factory zavedeny nové datset formát Parquet, přečtěte si téma [formát Parquet](format-parquet.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.
 
 Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **Format**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 

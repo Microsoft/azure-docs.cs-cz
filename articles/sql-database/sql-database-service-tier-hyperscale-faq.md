@@ -3,7 +3,7 @@ title: Azure SQL Database Hyperškálovatelného – nejčastější dotazy | Do
 description: Odpovědi na běžné dotazy zákazníků požádat o Azure SQL database ve vrstvě služeb Hyperškálovatelného - říká Hyperškálovatelného databáze.
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: 679de1d5accbd0f4f955bf5af95bc8dcc97e3b78
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 10/17/2018
+ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574287"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067812"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
-Tento článek obsahuje odpovědi na nejčastější dotazy pro zákazníky, kteří uvažují databáze v rámci úrovně služeb Azure SQL Database Hyperškálovatelného, říká Hyperškálovatelného databáze (aktuálně ve verzi public preview). Tento článek popisuje scénáře, které podporuje Velkokapacitní a různé funkce služby jsou obecně kompatibilní s Hyperškálováním databáze SQL.
+Tento článek obsahuje odpovědi na nejčastější dotazy pro zákazníky, kteří uvažují databáze v rámci úrovně služeb Azure SQL Database Hyperškálovatelného, říká Hyperškálovatelného databáze. Tento článek popisuje scénáře, které podporuje Velkokapacitní a různé funkce služby jsou obecně kompatibilní s Hyperškálováním databáze SQL.
 
 - Tyto nejčastější dotazy je určená pro čtenáře, kteří mají stručné vysvětlení vrstvy služby s Hyperškálováním a chtějí mít jejich konkrétní otázky a připomínky odpovědi.
 - Tyto nejčastější dotazy neměl být aby se nebo odpovídejte na tom, jak používat velkokapacitní databáze SQL database. K tomu, doporučujeme odkazujete i [mírou škálování Azure SQL Database](sql-database-service-tier-hyperscale.md) dokumentaci.
@@ -45,7 +45,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 - Úroveň pro důležité obchodní informace služby jsou vhodné pro firemní úlohy kde vstupně-výstupní latence je prioritou.
 
 | | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
-|:---|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** |Vše|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
 |  **Typ prostředku** ||Izolované databáze nebo elastického fondu / spravované instance | Izolovaná databáze | Izolované databáze nebo elastického fondu / spravované instance |
 | **Vypočítat velikost**|Izolovanou databázi nebo elastický fond * | 1 až 80 virtuálních jader | 1 až 80 virtuálních jader * | 1 až 80 virtuálních jader |
@@ -56,7 +56,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 | **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Zatím neznámý | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
 | | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovanou instanci: Závisí na velikosti souboru|
 |**Dostupnost**|Vše|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
-|**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas in0time bodu obnovení (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
+|**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
 
 \* Elastické fondy nejsou podporovány v rámci úrovně služeb hyperškálovatelný systém
 
@@ -73,15 +73,19 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jaké oblasti v současné době podporují Hyperškálováním
 
-Velkokapacitní je aktuálně dostupné pro izolované databáze v těchto oblastech:  Západní US1, západní USA 2, východní US1, střed USA, západní Evropa, Severní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – jihovýchod a Austrálie – východ.
+Azure SQL Database Hyperškálovatelného úroveň je momentálně dostupná v těchto oblastech:
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Můžete vytvořit více databází hyperškálovatelný systém na serveru služby SQL Database
+Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Kanada – střed, střed USA, východní Asie, východní USA, Východ USA 2, Francie – střed, Japonsko – východ, Japonsko – Západ, severní centrální USA, Severní Evropa, Jižní Afrika – sever, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, Velká Británie – Západ, západní Evropa , USA – Západ, USA – západ 2
 
-Ano. Další informace a omezení počtu databází hyperškálovatelný systém na serveru služby SQL Database najdete v tématu [limity prostředků SQL Database pro jeden a ve fondu databází na serveru služby SQL Database](sql-database-resource-limits-database-server.md).
+Zobrazit [Hyperškálovatelného Přehled služby Azure SQL Database](sql-database-service-tier-hyperscale-faq.md) pro proceduru, pokud potřebujete přístup v jiné oblasti.
+
+### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Můžete vytvořit více databází Hyperškálovatelného v rámci logického serveru
+
+Ano. Další informace a omezení počtu databází Hyperškálovatelného v rámci logického serveru, najdete v článku [limity prostředků SQL Database pro databáze ve fondu a jeden na logickém serveru](sql-database-resource-limits-logical-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Co jsou charakteristické výkonu databáze hyperškálovatelný systém
 
-Architektura Hyperškálovatelného SQL Database poskytuje vysoký výkon a propustnost při současné podpoře velikosti velké databáze. Charakteristiky a přesný výkon profil není ve verzi public preview k dispozici.
+Architektura Hyperškálovatelného SQL Database poskytuje vysoký výkon a propustnost při současné podpoře velikosti velké databáze. 
 
 ### <a name="what-is-the-scalability-of-a-hyperscale-database"></a>Jaká je škálovatelnost Hyperškálovatelného databáze
 
@@ -98,7 +102,7 @@ Velkokapacitní SQL Database nabízí rychlou škálovatelnost podle potřeb va�
 
 ## <a name="deep-dive-questions"></a>Podrobné informace o dotazy
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Můžete používat kombinaci Velkokapacitní a izolované databáze serveru SQL Database
+### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-logical-server"></a>Můžete kombinovat Velkokapacitní a izolované databáze na jeden logický server
 
 Ano, je to možné.
 
@@ -116,7 +120,7 @@ Ano, [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/prici
 
 ### <a name="what-kind-of-workloads-is-sql-database-hyperscale-designed-for"></a>Jaký druh úloh je velkokapacitní SQL databáze určená pro
 
-Velkokapacitní SQL Database podporuje všechny úlohy SQL serveru, ale je primárně optimalizováno pro OLTP. Je možné přenést hybridní data a analytické (datové Tržiště) procesy.
+Velkokapacitní SQL Database podporuje všechny úlohy SQL serveru, ale je primárně optimalizováno pro OLTP. Je možné přenést hybridní (HTAP) a analytické (datové Tržiště) procesy.
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Jak můžu si zvolit mezi Azure SQL Data Warehouse a velkokapacitní databáze SQL
 
@@ -128,11 +132,11 @@ Pokud jsou spuštěné analýzy dat ve velkém měřítku s složitých dotazů 
 
 ### <a name="can-i-pause-my-compute-at-any-time"></a>Můžete pozastavit výpočetní operace Moje kdykoli
 
-Ne.
+Není v tuto chvíli však můžete škálovat výpočetní prostředky a počet replik dolů na snížení nákladů v obdobích mimo špičku.
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Můžete zřídit výpočetní prostředí s další paměti RAM pro úlohy náročné na paměť
 
-Ne. Chcete-li získat více paměti RAM, budete muset upgradovat na vyšší výpočetní velikost. Gen4 hardware poskytuje víc paměti RAM ve srovnání s Gen5 hardwaru. Další informace najdete v tématu [velkokapacitní úložiště a objem výpočtů velikostí](sql-database-vcore-resource-limits-single-databases.md).
+Ne. Chcete-li získat více paměti RAM, budete muset upgradovat na vyšší výpočetní velikost. Další informace najdete v tématu [velkokapacitní úložiště a objem výpočtů velikostí](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Můžete zřídit několika výpočetních uzlech různých velikostí
 
@@ -140,11 +144,11 @@ Ne.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Počet replik škálování pro čtení jsou podporované.
 
-Ve verzi public preview jsou vytvořeny databáze Hyperškálovatelného s jedna replika škálování pro čtení (dvě repliky celkem) ve výchozím nastavení. Pokud chcete přidat nebo odebrat repliky škálování pro čtení, požádejte prosím prostřednictvím žádosti o podporu pomocí webu Azure portal.
+Ve výchozím nastavení se databáze hyperškálovatelný systém vytvoří se jedna replika škálování pro čtení (dvě repliky celkem). Můžete škálovat počet replik jen pro čtení mezi 0 a 4 s využitím [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Pro zajištění vysoké dostupnosti můžu potřebujete ke zřízení dalších výpočetních uzlů
 
-V databázích hyperškálovatelný systém vysoké dostupnosti najdete na úrovni úložiště. Potřebujete jenom jednu repliku pro zajištění vysoké dostupnosti. Když výpočetní repliky je vypnutý, novou repliku se vytvoří automaticky bez ztráty.
+V Hyperškálovacím databází odolnost proti chybám poskytuje na úrovni úložiště. Potřebujete jenom jednu repliku zajistit odolnost proti chybám. Když výpočetní repliky je vypnutý, novou repliku se vytvoří automaticky bez ztráty.
 
 Pokud existuje pouze jedna replika, ale může trvat nějakou dobu sestavení místní mezipaměti v nové repliky po převzetí služeb při selhání. Během fáze opětovné sestavení mezipaměti databáze načte data přímo ze stránky servery, výsledkem je důvodem sníženého výkonu vstupně-výstupních operací a dotazu.
 
@@ -158,7 +162,7 @@ Pro kritické aplikace, které vyžadují vysokou dostupnost měli byste zřídi
 
 ### <a name="what-is-the-size-of-the-transaction-log-with-hyperscale"></a>Jaká je velikost protokolu transakcí s Hyperškálováním
 
-Transakční protokol s Hyperškálováním je téměř nekonečné. Nemusíte starat o nedostatku místa protokolu na systému, který má protokol vysokou propustnost. Frekvence generování protokolu může však omezit průběžné agresivní úlohy. Maximální a průměrná protokolu generování kurzu není ještě známý (stále ve verzi preview).
+Transakční protokol s Hyperškálováním je téměř nekonečné. Nemusíte starat o nedostatku místa protokolu na systému, který má protokol vysokou propustnost. Frekvence generování protokolu může však omezit průběžné agresivní úlohy. Frekvence generování zachovaného protokolu ve špičce je přibližně 100 MB/s.
 
 ### <a name="does-my-temp-db-scale-as-my-database-grows"></a>Moje dočasné databáze škálovat s růstem databáze
 
@@ -170,7 +174,7 @@ Velikost vaší databáze automaticky rozšíří, jak můžete vložit/ingestov
 
 ### <a name="what-is-the-smallest-database-size-that-sql-database-hyperscale-supports-or-starts-with"></a>Co je nejmenší velikost databáze, která podporuje Hyperškálovatelného databáze SQL nebo začíná
 
-5 GB
+10 GB
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Jaké přírůstky svoji velikost databáze zvětšit
 
@@ -208,15 +212,15 @@ Ano. Stránky data související s danou tabulku můžete skončit ve více dato
 
 ### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>Můžete přesunout mé existující databáze Azure SQL na vrstvu služby hyperškálovatelný systém
 
-Ano. Můžete přesunout vaše stávající databáze Azure SQL na hyperškálovatelný systém. Ve verzi public preview Toto je jednosměrná migrace. Nelze přesunout databáze z Hyperškálovatelného na jinou úroveň služby. Doporučujeme vytvořit kopii provozní databáze a migrace na Hyperškálovatelného pro testování konceptů (upozorníme).
+Ano. Můžete přesunout vaše stávající databáze Azure SQL na hyperškálovatelný systém. Toto je jednosměrná migrace. Nelze přesunout databáze z Hyperškálovatelného na jinou úroveň služby. Doporučujeme vytvořit kopii provozní databáze a migrace na Hyperškálovatelného pro testování konceptů (upozorníme).
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>Můžete přesunout Moje Hyperškálovatelného databáze do jiné edice
 
-Ne. Ve verzi public preview nejde přesunout databázi Hyperškálovatelného na jinou vrstvu služby.
+Ne. V tuto chvíli nelze přesunout databázi Hyperškálovatelného na jinou vrstvu služby.
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Ztratit všechny možnosti nebo funkce po migraci na vrstvu služby hyperškálovatelný systém
 
-Ano. Dlouhodobé uchovávání záloh ve službě Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview. Po dokončení migrace databází do hyperškálovatelný systém tuto funkci přestane fungovat.
+Ano. Některé funkce služby Azure SQL Database zatím nejsou podporované v Hyperškálovacím, včetně, ale mimo jiné dlouho období uchování zálohy. Po dokončení migrace databází do Hyperškálovatelného tyto funkce přestanou fungovat.  Očekáváme, že tato omezení být dočasné.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Můžu přesunout místní databázi systému SQL Server nebo virtuální počítač databázi systému SQL Server na hyperškálovatelný systém
 
@@ -229,13 +233,13 @@ Výpadek je stejný jako výpadek při migraci databází do jediné databáze v
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>Kolik času by ho zkuste umožňuje přinést si X množství dat do SQL Database Hyperškálovatelného
 
-Ještě není známý (stále ve verzi preview)
+Velkokapacitní je schopen využívání nové nebo upravené dat je 100 MB/s.
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Může číst data z úložiště objektů blob a také rychlé zatížení (jako je Polybase a SQL Data Warehouse)
 
 Můžete číst data ze služby Azure Storage a načíst načtení dat do databáze Hyperškálovatelného (stejně jako vám pomůžou s regulární izolované databáze). Polybase se aktuálně nepodporuje v Azure SQL Database. Můžete provést pomocí Polybase [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) nebo spuštění úlohy Spark job [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) s [konektor Spark pro SQL](sql-database-spark-connector.md). Konektor Spark SQL podporuje příkaz bulk insert.
 
-Jednoduché obnovení nebo hromadné protokolování modelu se nepodporuje v Hyperškálovacím. Úplný model obnovení se vyžaduje pro zajištění vysoké dostupnosti. Však nabízí lepší hyperškálovatelný systém pro příjem rychlost v porovnání s izolovanou databázi z důvodu novou architekturu protokolu.
+Jednoduché obnovení nebo hromadné protokolování modelu se nepodporuje v Hyperškálovacím. Úplný model obnovení se vyžaduje pro zajištění vysoké dostupnosti. Však nabízí lepší hyperškálovatelný systém pro příjem rychlost v porovnání s izolovanou databázi Azure SQL z důvodu novou architekturu protokolu.
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>Umožňuje SQL Database Hyperškálovatelného zřizování více uzlů pro příjem velkých objemů dat
 
@@ -253,7 +257,7 @@ Ano. Pocházejí z různých zdrojů dat jiné než SQL Server vyžaduje logicko
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Co smlouvy SLA jsou k dispozici pro mírou škálování databáze
 
-Obecně platí Smlouva SLA není k dispozici ve verzi public preview. Velkokapacitní však nabízí stejnou úroveň Vysoká dostupnost s aktuálně dostupných nabídek SQL DB. Zobrazit [SLA](https://azure.microsoft.com/support/legal/sla/).
+Výchozí primární plus 1 čitelné sekundární je smlouvu SLA zaručující 99,95 % dostupnost.  S více replikami přejde smlouva SLA o 99,99 %.  
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Zálohování databáze spravují mi ve službě Azure SQL Database
 
@@ -269,7 +273,7 @@ Ano
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>Co je cíl bodu obnovení (RPO) a cíl času obnovení (RTO) pomocí zálohování a obnovení v Hyperškálovacím databáze SQL
 
-Plánovaný bod obnovení je 0 min. Cílem RTO je menší než 10 minut, bez ohledu na velikost databáze. Ve verzi public preview, ale může docházet delší dobu obnovení.
+Plánovaný bod obnovení je 0 min. Cílem RTO je menší než 10 minut, bez ohledu na velikost databáze. 
 
 ### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Vliv zálohováním databází velký výpočetní výkon na mé primární
 
@@ -277,15 +281,15 @@ Ne. Zálohy se spravují přes subsystému úložiště a využívat snímky. U�
 
 ### <a name="can-i-perform-geo-restore-with-a-sql-database-hyperscale-database"></a>Můžete provést geografické obnovení s Hyperškálovacím databáze SQL database
 
-Ne, není ve verzi public preview.
+Ano.  Geografické obnovení je plně podporováno.
 
 ### <a name="can-i-setup-geo-replication-with-sql-database-hyperscale-database"></a>Můžete nastavit geografickou replikaci s Hyperškálováním databáze SQL database
 
-Ne, není ve verzi public preview.
+V tuto chvíli to není možné.
 
 ### <a name="do-my-secondary-compute-nodes-get-geo-replicated-with-sql-database-hyperscale"></a>Moje sekundární výpočetních uzlů můžete získat geograficky replikované s Hyperškálováním databáze SQL
 
-Ne, není ve verzi public preview.
+V tuto chvíli to není možné.
 
 ### <a name="can-i-take-a-sql-database-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-sql-server-in-vm"></a>Můžete vytvořit zálohu databáze SQL Database Velkokapacitní a obnovíte své místní server nebo SQL Server na virtuálním počítači
 
@@ -295,7 +299,7 @@ Ne. Formát úložiště pro databáze hyperškálovatelný systém se liší od
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Ztratit všechny možnosti nebo funkce po migraci na vrstvu služby hyperškálovatelný systém
 
-Ano. Dlouhodobé uchovávání záloh ve službě Azure SQL Database nepodporuje Hyperškálovatelného ve verzi public preview. Po dokončení migrace databází do hyperškálovatelný systém tuto funkci přestane fungovat.
+Ano. Některé funkce služby Azure SQL Database nepodporuje hyperškálovatelný systém, včetně mimo jiné dlouhodobého uchování zálohy. Po dokončení migrace databází do Hyperškálovatelného tyto funkce přestanou fungovat.
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Polybase se práce s Hyperškálováním databáze SQL
 
@@ -313,11 +317,11 @@ Ne. Vaše databáze se nachází na výpočetní výkon virtuálních počítač
 
 ### <a name="how-much-throughput-can-i-push-on-the-largest-sql-database-hyperscale-compute"></a>Jakou propustnost můžete odeslat na největší výpočetní Hyperškálovatelného databáze SQL
 
-Ještě není známý (stále ve verzi preview)
+Jsme viděli konzistentní 100 MB za sekundu změn dat (generování dat protokolu transakcí)
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-sql-database-hyperscale-compute"></a>Kolik vstupně-výstupních operací získat největší výpočtově Hyperškálovatelného databáze SQL
 
-Ještě není známý (stále ve verzi preview)
+Vstupně-výstupních operací a vstupně-výstupní latence se bude lišit v závislosti na vzorech zatížení.  Pokud jsou data potřebují přístup k místní mezipaměti tak výpočetní prostředky, bude mít stejné vzorce vstupně-výstupní operace jako místní disk SSD.   
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Moje propustnost získat ovlivněny zálohy
 
@@ -325,13 +329,13 @@ Ne. Výpočetní prostředky, je oddělený od úložné vrstvy, aby se zabráni
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-nodes"></a>Moje propustnost získat ovlivněna jsem zřízení dalších výpočetních uzlů
 
-Protože sdílené úložiště a neexistuje žádné přímé fyzické replikace děje mezi primárním a sekundárním výpočetních uzlů, technicky vzato propustnosti na primárním uzlu ovlivní tak, že přidáte uzly škálování pro čtení. Ale jsme může omezit průběžné agresivní pracovního vytížení k povolení přihlášení použít na servery stránky dohnat a sekundární uzly a vyhnout se chybné výkonu při čtení na sekundární uzly.
+Protože sdílené úložiště a neexistuje žádné přímé fyzické replikace děje mezi primárním a sekundárním výpočetních uzlů, technicky vzato propustnosti na primárním uzlu tyto zásady neovlivní přidáním uzlů škálování pro čtení. Ale jsme může omezit průběžné agresivní pracovního vytížení k povolení přihlášení použít na servery stránky dohnat a sekundární uzly a vyhnout se chybné výkonu při čtení na sekundární uzly.
 
 ## <a name="scalability-questions"></a>Otázky týkající se škálovatelnosti
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-node"></a>Jak dlouho bude trvat škálování nahoru a dolů výpočetním uzlu
 
-Několik minut
+Vertikální navýšení kapacity výpočetních nebo dolů, by měla trvat 5 až 10 minut bez ohledu na velikost dat.
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>Probíhá škálování nahoru/dolů operace je Moje databáze v režimu offline
 
@@ -357,7 +361,7 @@ Ne. Jenom primární výpočetním uzlu přijímá požadavky na čtení/zápis.
 
 ### <a name="how-many-secondary-compute-nodes-can-i-provision"></a>Kolik sekundární výpočetních uzlů můžete zřídit
 
-Ve verzi public preview vytvoříme 2 repliky pro databáze Hyperškálovatelného ve výchozím nastavení. Pokud chcete nastavit počet replik, požádejte prosím prostřednictvím žádosti o podporu pomocí webu Azure portal.
+Ve výchozím nastavení se nám vytvořit 2 repliky pro Hyperškálovatelného databáze. Pokud chcete nastavit počet replik, můžete to udělat pomocí [webu Azure portal](https://portal.azure.com).
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Jak připojit k těmto sekundární výpočetních uzlů
 
@@ -365,19 +369,19 @@ Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení 
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Můžete vytvořit vyhrazený koncový bod pro repliku škálování pro čtení
 
-Ne. Ve verzi public preview, můžete připojit jenom k replice škálování pro čtení tak, že zadáte `ApplicationIntent=ReadOnly`.
+Ne. Můžete připojit jenom k replice škálování pro čtení tak, že zadáte `ApplicationIntent=ReadOnly`.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Dělá systém Vyrovnávání zatížení inteligentní čtení úloh
 
-Ne. Čtení pouze úloha je ve verzi preview, znovu orientovaného na náhodných repliku škálování pro čtení.
+Ne. Čtení pouze úlohy se znovu orientovaného na náhodných repliku škálování pro čtení.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Můžete škálovat nahoru/dolů sekundární výpočetních uzlů bez ohledu na jejich primárních výpočetní
 
-Ne, není ve verzi public preview.
+Ne. Sekundární výpočetních uzlů se také používají pro vysokou dostupnost, proto musí mít stejnou konfiguraci jako primární, v případě selhání.
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Pro můj primární výpočty a Moje sekundární dalších výpočetních uzlů získat velikosti různé dočasné databáze
 
-Ne. Vaše `tempdb` je nakonfigurovaný podle zřizování výpočetních velikost, ve verzi public preview, sekundární výpočetních uzlů mají stejnou velikost jako primární výpočty.
+Ne. Vaše `tempdb` je nakonfigurovaný jsou založené na zřizování výpočetních velikost, sekundární výpočetních uzlů se stejnou velikostí jako primární výpočty.
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>Můžete přidat zobrazení na můj sekundární indexy a výpočetních uzlů
 
@@ -389,4 +393,4 @@ Od doby, kdy je transakce potvrzeny při primární, v závislosti na míru gene
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Hyperškálovatelného úroveň služby, najdete v části [Hyperškálovatelného úroveň služby (preview)](sql-database-service-tier-hyperscale.md).
+Další informace o Hyperškálovatelného úroveň služby, najdete v části [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md).

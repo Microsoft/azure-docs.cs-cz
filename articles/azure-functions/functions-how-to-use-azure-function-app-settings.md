@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737841"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143191"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
 
@@ -25,24 +25,6 @@ Aplikace function app ve službě Azure Functions poskytuje kontext spuštění 
 Pokud chcete začít, přejděte [webu Azure portal](https://portal.azure.com) a přihlaste se ke svému účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace function app, naleznete na následující stránce:
 
 ![Přehled funkcí aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
-
-## <a name="favorite"></a>Oblíbené funkce na portálu 
-
-Může být někdy obtížné najít prostředky v [Azure Portal]. Aby bylo snazší najít aplikace function App, kterou jste vytvořili, přidáte aplikace Function App do oblíbených položek na portálu. 
-
-1. Přihlaste se k webu [Azure Portal].
-
-2. Kliknutím na šipku vlevo dole rozbalte všechny služby, do pole **Filtr** zadejte `Functions` a potom klikněte na hvězdičku vedle možnosti **Aplikace Function App**.  
- 
-    ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
-
-    Tím přidáte do nabídky na levé straně portálu ikonu Funkce.
-
-3. Zavřete nabídku a potom přejděte úplně dolů, kde uvidíte ikonu Funkce. Kliknutím na tuto ikonu zobrazíte seznam všech aplikací Function App. Po kliknutí na určitou aplikaci Function App můžete pracovat s funkcemi této aplikace. 
- 
-    ![Aplikace Function App do oblíbených položek](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
- 
-[Azure Portal]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>Karta nastavení aplikace – funkce
 

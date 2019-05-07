@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61372659"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144972"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktivní studium slouží ke zlepšení znalostní báze
 
@@ -75,7 +75,7 @@ Aktivní učení je vypnuto ve výchozím nastavení. Zapněte navrhované dotaz
 
 ## <a name="add-active-learning-suggestion-to-knowledge-base"></a>Přidat aktivně učit návrh znalostní báze
 
-1. Chcete-li zobrazit navržené otázky, na **upravit** znalostní báze stránce **zobrazit návrhy**. 
+1. Chcete-li zobrazit navržené otázky, na **upravit** znalostní báze stránce **možnosti zobrazení**a pak vyberte **zobrazovat návrhy aktivně učit**. 
 
     [![V části upravit na portálu vyberte Zobrazit návrhy, chcete-li zobrazit aktivně učit nový dotaz alternativy.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 

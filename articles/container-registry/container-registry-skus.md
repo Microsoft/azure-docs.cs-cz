@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: 7fdc1417ac524b422a12a087cf1661040efb9f8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f36b206ff015511dea7369617febe9220282bbe5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582792"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069043"
 ---
 # <a name="azure-container-registry-skus"></a>Skladové položky registru kontejnerů Azure
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR) je k dispozici v několika úrovních služeb, oz
 | --- | :-------: | ----------- |
 | **Basic** | Ano | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové funkce jako Standard a Premium (jako je Azure Active Directory [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad), [obrázku odstranění][container-registry-delete], a [webhooky][container-registry-webhook]). Zahrnuté úložiště a propustnost bitové kopie jsou však nejvhodnější pro nižší scénáře použití. |
 | **Standard** | Ano | Standardními registry nabízí stejné funkce jako základní s zahrnuty vyšší propustnost úložiště a image. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |
-| **Premium** | Ano | Registry úrovně Premium poskytují nejvyšší velikost zahrnutého úložiště a souběžné operace povolení scénářů s vysokými objemy. Kromě vyšší propustnost image Premium přidává funkce včetně [geografickou replikaci] [ container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi a [obsahu důvěryhodnosti(veverzipreview)](container-registry-content-trust.md) k podepisování značka obrázku, a [brány firewall a virtuální sítě (preview)](container-registry-vnet.md) k omezení přístupu k registru. |
+| **Premium** | Ano | Registry úrovně Premium poskytují nejvyšší velikost zahrnutého úložiště a souběžné operace povolení scénářů s vysokými objemy. Kromě vyšší propustnost image Premium přidává funkce včetně [geografickou replikaci] [ container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi a [obsahu důvěryhodnosti](container-registry-content-trust.md) pro podepisování značka obrázku, a [brány firewall a virtuální sítě (preview)](container-registry-vnet.md) k omezení přístupu k registru. |
 |  Klasické (*není k dispozici po dubna 2019*) | Ne | Tato skladová položka povolena počáteční verzi služby Azure Container Registry v Azure. Registry Classic se zálohují na účet úložiště Azure se vytvoří v rámci vašeho předplatného, což omezí možnosti pro službu ACR a poskytují vyšší úrovně možnosti, jako je například vyšší propustnost a geografická replikace. |
 
 > [!IMPORTANT]

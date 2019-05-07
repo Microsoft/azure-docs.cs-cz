@@ -1,19 +1,19 @@
 ---
-title: Použití rozšíření PostgreSQL v Azure Database for PostgreSQL
-description: Popisuje možnosti k rozšíření funkčnosti vaší databáze pomocí rozšíření ve službě Azure Database for PostgreSQL.
+title: Použití rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden Server
+description: Popisuje možnosti k rozšíření funkčnosti vaší databáze pomocí rozšíření ve službě Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 8bbb638190928e0478053843264fde585ae17222
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: 1e3a27f953246ce29de419949362c23b8932b0d5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720590"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073492"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL
+# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden Server
 PostgreSQL poskytuje schopnost rozšiřovat funkce vaší databáze pomocí rozšíření. Rozšíření umožňují sdružování více souvisejících objektů SQL společně v jednom balíčku, který může načíst nebo odstranit z databáze pomocí jediného příkazu. Po načtení v databázi, můžou rozšíření fungovat stejně jako integrované funkce. Další informace o rozšíření PostgreSQL, naleznete v tématu [balení souvisejících objektů do rozšíření](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
 ## <a name="how-to-use-postgresql-extensions"></a>Jak používat rozšíření PostgreSQL

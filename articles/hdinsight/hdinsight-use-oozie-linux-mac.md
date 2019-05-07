@@ -2,18 +2,17 @@
 title: Využijte pracovní postupy Hadoop Oozie v Azure HDInsight založených na Linuxu
 description: Použití Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724161"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142834"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -38,13 +37,8 @@ Oozie můžete také použít k plánování úloh, které jsou specifické pro 
 
 * **Azure SQL Database**.  Zobrazit [vytvořit databázi Azure SQL na webu Azure Portal](../sql-database/sql-database-get-started.md).  Tento článek používá databázi s názvem `oozietest`.
 
-* **Možné změny úložiště konfigurace.**  Zobrazit [konfiguraci úložiště](#storage-configuration) při použití druhu účtu úložiště `BlobStorage`.
+* [Schéma identifikátoru URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) jako primární úložiště vašich clusterů. To může být `wasb://` pro službu Azure Storage, `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud pro Azure Storage nebo Azure Data Lake Storage Gen2 je povoleno zabezpečený přenos, identifikátor URI by `wasbs://` nebo `abfss://`, respektive najdete [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="storage-configuration"></a>Konfigurace úložiště
-Není vyžadována žádná akce, pokud je účet úložiště používané druhu `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`.  Proces v článku vygeneruje výstup do alespoň `/mapreducestaging`.  Výchozí konfigurace hadoop bude obsahovat `/mapreducestaging` v `fs.azure.page.blob.dir` konfigurační proměnnou v `core-site.xml` služby `HDFS`.  Způsobí, že tato konfigurace výstup do adresáře se objekty BLOB stránky, která se nepodporuje pro druh účtu úložiště `BlobStorage`.  Použití `BlobStorage` pro účely tohoto článku, odeberte `/mapreducestaging` z `fs.azure.page.blob.dir` konfigurační proměnnou.  Konfigurace je přístupný z [uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva: `Page blob is not supported for this account type.`
-
-> [!NOTE]  
-> Účet úložiště používané v tomto článku obsahuje [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) povolena. proto `wasbs` spíše než `wasb` se používá v celém článku.
 
 ## <a name="example-workflow"></a>Ukázkový pracovní postup
 
@@ -451,7 +445,7 @@ Následující postup použijte příkaz Oozie odesílat a spravovat pracovní p
 5. Upravit kód uvedený níže má nahradit `<JOBID>` s ID vrátil dříve.  Spustit úlohu, použijte následující příkaz:
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
     Pokud po spuštění tohoto příkazu můžete zkontrolovat stav, je ve spuštěném stavu, a vrátí informace pro akce v rámci úlohy.  Úloha bude trvat několik minut.

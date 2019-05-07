@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 04/18/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 6876ffd76c5a7ba5745e8014bca2abdc5e5264a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91297a02966000899ab79dfb86446890e9c4439a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321940"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148702"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
 
@@ -80,7 +80,7 @@ Kurzy ukazují postupy založené na scénářích pro některé nejčastější
 * [Dynamicky šifrovat pomocí několika variant DRM – .NET](protect-with-drm.md) 
 * [Kódování s vlastní transformace – rozhraní příkazového řádku](custom-preset-cli-howto.md)
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 

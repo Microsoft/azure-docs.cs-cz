@@ -9,12 +9,12 @@ ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728589"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143281"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 
@@ -28,7 +28,7 @@ Ptejte se, získejte odpovědi od odborníků Microsoftu a hlášení problémů
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Kolik stojí účast ve verzi preview?
 
-Aktuálně se nic neplatí pro nasazování aplikací nebo kontejnerů sítě ve verzi Preview. Ale doporučujeme vám odstranit prostředky, nasadit a ne nechat běžet je aktivně testování.
+Aktuálně neúčtují žádné poplatky pro nasazování aplikací nebo kontejnerů na síť ve verzi preview. Aktualizace v květnu sledujte podpora pro fakturaci. Ale doporučujeme vám odstranit prostředky, nasadit a ne nechat běžet je aktivně testování.
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Existuje nějaké omezení kvóty počtu jader a paměti RAM?
 
@@ -88,10 +88,15 @@ Pokud vyvíjíte ve Windows 10. dubna 2018 update (verze 1803) počítače, mů�
 Následující Image kontejneru operačních systémů lze použít k nasazení služeb:
 
 - Windows – windowsservercore a nanoserver
-    - Windows Server verze 1709
-    - Windows Server verze 1803
+    - Windows Server 1709
+    - Windows Server 1803
+    - Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - Žádné známé omezení
+
+> [!NOTE]
+> Nástroje pro síť sady Visual Studio zatím nepodporuje nasazování do systému Windows Server 2019 a 1809 kontejnerů.
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>Jaké typy aplikací, které můžete nasadit 
 
@@ -138,6 +143,10 @@ Může dojít k dostupnosti procesoru a mezích ve všech aplikacích. Zmírnit:
 Více aplikací nejde nasadit do clusteru s jedním uzlem. Zmírnit:
 - Při nasazování více aplikací do místního clusteru, použijte cluster s pěti uzly.
 - Odebrání aplikací, které nejsou aktuálně testování.
+
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS nástrojů má omezenou podporu pro kontejnery Windows
+
+Nástroje sady Visual Studio podporuje pouze nasazení kontejnerů Windows v základní operační systém verzi Windows serveru 1709 a 1803 ještě dnes. 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>Funkce a dalších známých problémech
 

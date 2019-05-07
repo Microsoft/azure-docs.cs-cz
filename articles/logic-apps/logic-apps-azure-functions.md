@@ -1,37 +1,35 @@
 ---
-title: Přidání a spuštění vlastního kódu v Azure Logic Apps s využitím Azure Functions | Dokumentace Microsoftu
-description: Zjistěte, jak přidat a spouštění vlastních fragmentech kódu v Azure Logic Apps s využitím Azure Functions
+title: Přidání a spuštění kódu v Azure Logic Apps s využitím Azure Functions
+description: Přidání a spuštění kódu v Azure Logic Apps s využitím Azure Functions
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687595"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142313"
 ---
-# <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Přidání a spuštění vlastních fragmentech kódu v Azure Logic Apps s využitím Azure Functions
+# <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>Přidání a spuštění kódu s využitím Azure Functions v Azure Logic Apps
 
-Když chcete spustit pouze dostatek kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkce s [Azure Functions](../azure-functions/functions-overview.md). Tato služba vám pomůže vytvořit Node.js s využitím C#, a F# fragmenty kódu, takže není nutné vytvářet kompletní aplikace nebo infrastrukturu pro spouštění kódu. Služba Azure Functions poskytuje architekturu bez serverů v cloudu a je užitečná při provádění úlohy, jako jsou tyto příklady:
+Když budete chtít spustit kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkce s [Azure Functions](../azure-functions/functions-overview.md). Tato služba vám pomůže vytvořit Node.js s využitím C#, a F# kódu, takže není nutné vytvářet kompletní aplikace nebo infrastrukturu pro spouštění kódu. Můžete také [volání aplikací logiky ze uvnitř Azure functions](#call-logic-app).
+Služba Azure Functions poskytuje architekturu bez serverů v cloudu a je užitečná při provádění úlohy, jako jsou tyto příklady:
 
 * Rozšíření chování vaší aplikace logiky s funkcí v Node.js, nebo C#.
 * Provádění výpočtů ve vaší aplikaci logiky.
 * Pokročilé formátování nebo výpočetní pole ve svých aplikacích logiky.
 
-Můžete také [volání aplikací logiky ze uvnitř Azure functions](#call-logic-app).
+Pokud chcete spouštět fragmenty kódu bez vytvoření funkce Azure, přečtěte si postup [přidání a spuštění vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku, budete potřebovat tyto položky:
-
-* Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Aplikace funkcí Azure, což je kontejner pro Azure functions a Azure function. Pokud nemáte aplikaci function app, [nejprve vytvořit aplikaci function app](../azure-functions/functions-create-first-azure-function.md). Potom můžete vytvořit funkci buď [samostatně mimo svou aplikaci logiky](#create-function-external), nebo [z ve svých aplikacích logiky](#create-function-designer) v návrháři aplikace logiky.
 
@@ -58,7 +56,7 @@ V tomto článku, budete potřebovat tyto položky:
 
 ## <a name="create-functions-outside-logic-apps"></a>Funkce můžete vytvářet mimo logic apps
 
-V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, vytvořit aplikaci funkcí Azure, která musí mít stejné předplatné Azure jako svou aplikaci logiky a pak vytvořte funkci Azure.
+V [webu Azure portal](https://portal.azure.com), vytvořit aplikaci funkcí Azure, která musí mít stejné předplatné Azure jako svou aplikaci logiky a pak vytvořte funkci Azure.
 Pokud začínáte vytváření Azure functions, přečtěte si postup [vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md), ale mějte na paměti tyto požadavky pro vytvoření funkce, které můžete volat z aplikace logiky:
 
 * Ujistěte se, že jste vybrali **triggeru HTTP** šablona funkce pro buď **JavaScript** nebo **jazyka C#**.
@@ -116,7 +114,7 @@ Teď, když jste vytvořili funkci Azure, postupujte podle kroků týkajících 
 
 Předtím, než budete moct vytvořit funkci Azure od ve svých aplikacích logiky v návrháři aplikace logiky, musíte nejprve mít aplikaci Azure function app, což je kontejner pro vaše funkce. Pokud nemáte aplikaci function app, nejprve vytvořte tuto aplikaci function app. Zobrazit [vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md). 
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky aplikace logiky. 
 
 2. Vytvoření a přidání funkce, postupujte podle kroku, která se použije pro váš scénář:
 
@@ -176,7 +174,7 @@ Ze seznamu akcí vyberte tuto akci: **Zvolte funkci Azure – Azure Functions**
 
 Pokud chcete volat existující služba Azure functions z aplikace logiky, můžete přidat Azure functions stejně jako jakoukoli jinou akci v návrháři aplikace logiky. 
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete v návrháři aplikace logiky aplikace logiky. 
+1. V [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky aplikace logiky. 
 
 2. V části krok, ve které chcete přidat funkce, zvolte **nový krok** > **přidat akci**. 
 
