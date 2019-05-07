@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90c20bcd289c3bcf4a7fa3c41d245f2b7f159582
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510597"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154112"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure portal
 
@@ -26,11 +26,11 @@ V tomto rychlém startu se seznámíte se sestavením prvního automatizovaného
 
 Abyste mohli postupovat podle tohoto rychlého startu, potřebujete e-mailový účet od poskytovatele podporovaného v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit. 
 
-Zároveň pokud ještě nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+Zároveň pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí přihlašovacích údajů svého účtu Azure.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky 
 
@@ -38,11 +38,11 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
 
    ![Vytvoření aplikace logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, zvolte **vytvořit**.
+1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, zvolte **vytvořit**.
 
    ![Zadání podrobností o aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------| 
    | **Název** | MyFirstLogicApp | Název vaší aplikace logiky | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
@@ -51,7 +51,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    |||| 
 
-3. Jakmile Azure nasadí vaši aplikaci, otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. V části **Šablony** zvolte **Prázdná aplikace logiky**.
+1. Jakmile Azure nasadí vaši aplikaci, otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. V části **Šablony** zvolte **Prázdná aplikace logiky**.
 
    ![Výběr šablony prázdné aplikace logiky](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
@@ -61,15 +61,17 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Kontrola informačního kanálu RSS pomocí triggeru
 
-1. V návrháři zadejte do vyhledávacího pole „rss“. Vyberte tento trigger: **RSS – při publikování položky informačního kanálu**
+1. V návrháři aplikace logiky zvolte pod vyhledávacím polem **všechny**.
+
+1. Do vyhledávacího pole zadejte "rss". Ze seznamu triggerů vyberte tento trigger: **Když se publikuje položka kanálu - RSS**
 
    ![Výběr triggeru: "RSS – při publikování položky informačního kanálu"](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
 
-2. Zadejte pro trigger informace zobrazené a popsané níže: 
+1. Zadejte pro trigger informace zobrazené a popsané níže:
 
    ![Nastavení triggeru s informačním kanálem RSS, frekvencí a intervalem](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------| 
    | **Adresa URL informačního kanálu RSS** | ```http://feeds.reuters.com/reuters/topNews``` | Odkaz na informační kanál RSS, který chcete monitorovat | 
    | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami | 
@@ -79,23 +81,25 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
    Interval a frekvence společně definují plán pro trigger vaší aplikace logiky. 
    Tato aplikace logiky kontroluje kanál každou minutu.
 
-3. Pokud chcete podrobnosti o triggeru prozatím skrýt, klikněte na záhlaví triggeru.
+1. Pokud chcete podrobnosti o triggeru prozatím skrýt, klikněte na záhlaví triggeru.
 
    ![Tvar sbalení pro skrytí podrobností](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-4. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**. 
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
 
 Vaše aplikace logiky je teď v provozu, ale kromě kontroly informačního kanálu nic nedělá. Přidejte tedy akci, která bude reagovat na aktivaci triggeru.
 
 ## <a name="send-email-with-an-action"></a>Odeslání e-mailu pomocí akce
 
-Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts), která odešle e-mail, když se v informačním kanálu RSS objeví nová položka. 
+Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts), která odešle e-mail, když se v informačním kanálu RSS objeví nová položka.
 
 1. V části **při publikování položky informačního kanálu** aktivovat, vyberte **nový krok**.
 
    ![Přidání akce](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. V části **zvolte akci**, do vyhledávacího pole zadejte "Odeslat e-mail". Pod vyhledávacím polem vyberte **všechny**. V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu. 
+1. V části **zvolte akci** a vyhledávání vyberte **všechny**.
+
+1. Do vyhledávacího pole zadejte "Odeslat e-mail". V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu.
 
    ![Vyberte tuto akci: "Office 365 Outlook – odeslat e-mail"](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -104,9 +108,9 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
    * Pro pracovní nebo školní účty Azure vyberte Office 365 Outlook. 
    * Pro osobní účty Microsoft vyberte Outlook.com.
 
-3. Pokud se zobrazí výzva k zadání přihlašovacích údajů, přihlaste se ke svému e-mailovému účtu a Logic Apps vytvoří připojení k vašemu e-mailovému účtu.
+1. Pokud se zobrazí výzva k zadání přihlašovacích údajů, přihlaste se ke svému e-mailovému účtu a Logic Apps vytvoří připojení k vašemu e-mailovému účtu.
 
-4. V akci **Odeslat e-mail** určete data, která má e-mail zahrnovat. 
+1. V akci **Odeslat e-mail** určete data, která má e-mail zahrnovat.
 
    1. Do pole **Komu** zadejte e-mailovou adresu příjemce. 
    Pro účely testování můžete použít svou vlastní e-mailovou adresu.
@@ -114,11 +118,11 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
       Prozatím ignorujte seznam **Přidat dynamický obsah**, který se zobrazí. 
       Tento seznam se zobrazí po kliknutí do některých textových polí a zobrazí všechny dostupné parametry z předchozího kroku, které můžete do svého pracovního postupu zahrnout jako vstupy. 
 
-   2. Do pole **Předmět** zadejte tento text s mezerou na konci: ```New RSS item:```
+   1. Do pole **Předmět** zadejte tento text s mezerou na konci: ```New RSS item:```
 
       ![Zadání předmětu e-mailu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
- 
-   3. V seznamu **Přidat dynamický obsah** vyberte **Název informačního kanálu** a zahrňte název položky RSS.
+
+   1. V seznamu **Přidat dynamický obsah** vyberte **Název informačního kanálu** a zahrňte název položky RSS.
 
       ![Seznam dynamického obsahu – Název informačního kanálu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
@@ -131,7 +135,7 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
       Aplikace logiky tak provede stejnou akci pro každou položku pole. 
       Pokud chcete smyčku odebrat, zvolte **tři tečky** (**...**) v záhlaví smyčky a pak zvolte **Odstranit**.
 
-   4. Do pole **Text** zadejte tento text a pro text e-mailu vyberte tyto tokeny. 
+   1. Do pole **Text** zadejte tento text a pro text e-mailu vyberte tyto tokeny. 
    Pokud chcete do textového pole přidat prázdné řádky, stiskněte Shift + Enter. 
 
       ![Přidání obsahu e-mailu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
@@ -141,9 +145,9 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
       | **Název informačního kanálu** | Název položky | 
       | **Datum publikování informačního kanálu** | Datum a čas publikování položky | 
       | **Odkaz na primární informační kanál** | Adresa URL položky | 
-      ||| 
-   
-5. Uložte svou aplikaci logiky.
+      |||
+
+1. Uložte svou aplikaci logiky.
 
 Dále svou aplikaci logiky otestujte.
 
@@ -168,7 +172,7 @@ Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která o
 
    ![Skupiny prostředků > Přehled > Odstranit skupinu prostředků](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-2. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
+1. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
 
    ![Potvrzení odstranění](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
@@ -177,8 +181,7 @@ Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která o
 
 ## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
+Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 05/07/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a908185f2d8475afb642250d1499cffa539aca4d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573495"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153683"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidat Chit chat znalostní báze
 
@@ -54,10 +54,12 @@ Při úpravě znalostní BÁZÍ, zobrazí se nový zdroj pro chit chat, založen
 
 ![Upravit maximálně chit chatu](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
+Chcete-li zobrazit metadata, vyberte **možnosti zobrazení** na panelu nástrojů vyberte **zobrazit metadata**.
+
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Přidat další chit chat otázek a odpovědí
 Můžete přidat nové QnA chit chatu, který ne v předdefinovaném nastaven. Ujistěte se, že nereplikujete QnA pár, který je již zahrnut v sadě chit konverzace. Když přidáte všechny nové nástroje QnA chit chatu, získá přidá do vašeho **redakční** zdroje. Aby klasifikátor rozumí, že se jedná o chit chatu, přidejte dvojici klíč/hodnota metadat "redakční: chit chat", jak je znázorněno na následujícím obrázku:
    
-![Přidejte maximálně chit chatu](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)
+![! [Přidat maximálně chit chat] (.. / media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Odstranit chit chat z existující KB
 Vyberte znalostní BÁZÍ a přejděte **nastavení** stránky. Váš konkrétní chit chat zdroj je uveden jako soubor s názvem vybrané posouzení vašich osobnostních. Odstranit tento jako zdrojový soubor.

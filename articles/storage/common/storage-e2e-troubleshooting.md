@@ -2,19 +2,20 @@
 title: Řešení potíží s Azure Storage s Diagnostika a Message Analyzer | Dokumentace Microsoftu
 description: Kurz demonstrace začátku do konce řešení potíží s Azure Storage Analytics, AzCopy a Microsoft Message Analyzer
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2707081adafa74237e3fb7730837f581e0c8b790
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098605"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154227"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]

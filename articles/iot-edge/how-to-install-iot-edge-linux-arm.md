@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kgremban
-ms.openlocfilehash: ad7e34110b0c6d047eb7454b7fac9f8c10df8be2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6c22680102c57fdfc3d25beb19e5bc9847995b28
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126360"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152731"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (ARM32v7/armhf)
 
@@ -22,7 +22,7 @@ Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT 
 
 Další informace o fungování modul runtime IoT Edge a jaké součásti jsou zahrnuty, naleznete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na zařízení IoT Edge Linux ARM32v7/armhf. Například tyto kroky by fungovalo pro Raspberry Pi zařízení. Seznam podporovaných operačních systémech ARM32 najdete v tématu [podpory Azure IoT Edge](support.md#operating-systems). 
+V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na zařízení IoT Edge Linux ARM32v7/armhf. Například tyto kroky by fungovalo pro Raspberry Pi zařízení. Seznam podporovaných operačních systémech ARM32 najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems). 
 
 >[!NOTE]
 >Balíčky v úložiště softwaru Linux jsou souladu s licenčními podmínkami v jednotlivých balíčků (/ usr/sdílet/doc/*název balíčku*). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.

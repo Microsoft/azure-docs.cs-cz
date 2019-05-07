@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f29db5786c682188b4eadec12275df46ae3b547
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093943"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153344"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -142,7 +142,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro použití k definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Database Managed Instance.
 
-Pro kopírování dat do a z Azure SQL Database Managed Instance, nastavte vlastnost typ datové sady na **SqlServerTable**. Podporovány jsou následující vlastnosti:
+Pro kopírování dat do a z Azure SQL Database Managed Instance, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -161,6 +161,7 @@ Pro kopírování dat do a z Azure SQL Database Managed Instance, nastavte vlast
             "referenceName": "<Managed Instance linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -282,7 +283,7 @@ Ke zkopírování dat do Azure SQL Database Managed Instance, nastavte typ jímk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **SqlSink**. | Ano. |
-| writeBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. |Ne (výchozí: 10,000). |
+| writeBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. Ve výchozím nastavení služby Data Factory dynamicky určí příslušné batch velikost podle velikosti řádku.  |Ne |
 | writeBatchTimeout |Tato vlastnost určuje doba čekání na dokončení před vypršením časového limitu operace insert služby batch.<br/>Povolené jsou hodnoty pro časové období. Příkladem je "00: 30:00," což je 30 minut. |Ne. |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování ke spuštění před zápisu dat do spravované instance. Je vyvolána pouze jednou za kopírování spustit. Tuto vlastnost můžete použít k vyčištění dat předem. |Ne. |
 | sqlWriterStoredProcedureName |Tento název je pro uloženou proceduru, která definuje, jak použít zdroj dat do cílové tabulky. Příklady postupy jsou to upsertuje nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se *za batch*. Chcete-li provést operaci, která se spustí pouze jednou a nemá nic se zdrojovými daty, například delete nebo truncate, použijte `preCopyScript` vlastnost. |Ne. |

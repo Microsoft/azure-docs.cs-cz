@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60814035"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154560"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -31,9 +31,11 @@ Pokud vaše aplikace překračuje omezení modelů služby LUIS a hranice, zvaž
 | [Název aplikace][luis-get-started-create-app] | * Znak výchozí maximální |
 | [Testování služby batch][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
 | Explicitní seznam | 50 na aplikaci.|
+| Externí entity | bez omezení |
 | [Záměrů][intents]|500 na aplikaci: 499 vlastní záměry a požadované _žádný_ záměr.<br>[Na základě odeslání](https://aka.ms/dispatch-tool) aplikace nemá odpovídající 500 odeslání zdroje.|
 | [Seznam entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonymum hodnoty mají žádné omezení délky. |
-| [Počítače zjištěné entity](./luis-concept-entity-types.md):<br> Složené,<br>  Hierarchické<br> Jednoduchý|Limit 100 nadřazené entity (včetně není hierarchický podřízených prvků) nebo 330 entity (včetně hierarchické podřízených prvků), podle toho, co omezit přístupů uživatel poprvé.<br><br>Příklad s hierarchií by 30 hierarchie každý s 10 podřízených objektů.  Podřízené objekty spotřebuje 300 celkový a prvky hierarchie spotřebuje zbývajících 30. |
+| [Počítače zjištěné entity a role](./luis-concept-entity-types.md):<br> Složené,<br>jednoduché,<br>Entita role|Limit 100 entit nadřazené nebo 330 entity, podle toho, co omezit přístupů uživatel nejprve. Role se počítá jako entity pro účely této hranice. Příkladem je, že je složeného s jednoduchou entitu, která má 2 role: jednoduché 1 složený + 1 a 2 rolemi = 4 330 entit.|
+| [Ve verzi Preview – dynamický seznam entit](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 seznamy přibližně 1 kB za dotazu požadavku koncového bodu predikcí|
 | [Vzory](luis-concept-patterns.md)|500 vzory na jednu žádost.<br>Maximální délka vzor je až 400 znaků.<br>3 entity Pattern.any za vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
 | [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 entity pattern.any za vzor |
 | [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznam|

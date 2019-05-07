@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9a54cad9212bdb514f7742121909221863ba75e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713517"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154529"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý start: Nasazení aplikace na portálu služby LUIS
 
@@ -73,11 +73,11 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, musíte přiřadit zdro
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
 
-Jakmile budete připraveni k testování, trénování aplikace. Publikování aplikace, pokud chcete, aby právě natrénovaného verze k dispozici pro klientské aplikace z modulu runtime předpovědi koncový bod.
+Jakmile budete připraveni k testování, trénování aplikace. Publikování aplikace, pokud chcete, aby právě natrénovaného verze k dispozici pro klientské aplikace z modulu runtime dotazu předpovědi koncový bod.
 
 1. Pokud je aplikace Nezkušený, vyberte **Train** z nabídky v pravém horním rohu.
 
-1. Vyberte **publikovat** z nabídky. Přijměte výchozí nastavení prostředí a vyberte **publikovat**.
+1. Vyberte **publikovat** z hlavní nabídky. Přijměte výchozí nastavení prostředí a vyberte **publikovat**.
 
 1. Jakmile se zobrazí zelená úspěch oznamovací pruh v horní části okna prohlížeče, vyberte **najdete v seznamu koncových bodů**.
 

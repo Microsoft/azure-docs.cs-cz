@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 09f9731f78093354f324f263899519bc5d31fa5d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682152"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153066"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -34,9 +34,19 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 
 Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="may-2019"></a>. Května 2019.
+
+### <a name="performance-improvements"></a>Vylepšení výkonu
+
+* Maximální velikost souboru podporovaná při zpracování byl aktualizován. Zobrazit, [kvóty a omezení](limits-quotas-constraints.md).
+* [Kódování vylepšení rychlosti](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+
 ## <a name="april-2019"></a>2019. dubna
 
-[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) byl přidán do přednastavení integrovaná analýza.
+### <a name="new-presets"></a>Nové přednastavení
+
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) byl přidán do přednastavení integrovaná analýza.
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) přidal do předdefinované kodér přednastavení. Další informace najdete v tématu [kódování obsahu](cae-experimental.md). 
 
 ## <a name="march-2019"></a>2019. března
 
@@ -205,7 +215,7 @@ Následující funkce jsou k dispozici v sadě .NET SDK:
 
 * Po odeslání úlohy, můžete ingestovat zdrojového videa zdroje pomocí adresy URL HTTPS, adresy URL SAS nebo cesty k souborům umístěným v úložišti objektů Blob v Azure. AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 

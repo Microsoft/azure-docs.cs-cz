@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/06/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869517"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154691"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -27,16 +27,16 @@ Další informace o komponentách Blockchain Workbench najdete v tématu [archit
 
 Blockchain Workbench umožňuje nasadit blockchain účetní kniha společně se sadou relevantní služby Azure, které jsou nejčastěji používají k vytvoření blockchainové aplikace. Nasazení Blockchain Workbench výsledkem v rámci skupiny prostředků ve vašem předplatném Azure zřídí následující služby Azure.
 
-* Téma 1 event gridu
-* Namespace 1 Service Bus
-* 1 Application Insights
-* 1 SQL Database (Standard S0)
-* 2 App Services (Standard)
-* 2 trezory klíčů azure
-* 2 účtů služby azure Storage (Standard LRS)
-* 2 škálovací sady virtuálních počítačů (pro program pro ověření a pracovní uzly)
-* 2 virtuální sítě (včetně nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě a veřejnou IP adresu pro každou virtuální síť)
-* Volitelné: Azure Monitor
+* Plán služby App Service (Standard)
+* Application Insights
+* Event Grid
+* Azure Key Vault
+* Service Bus
+* SQL Database (Standard S0) + logický Server SQL
+* Účet služby Azure Storage (Standard LRS)
+* Škálovací sady kapacitou 1 virtuálních počítačů
+* Skupiny prostředků virtuální sítě (s virtuální sítí zatížení vyrovnávání, skupiny zabezpečení sítě, veřejnou IP adresu)
+* Volitelné: Služba Azure Blockchain (Basic B0 výchozí)
 
 Tady je příklad nasazení vytvořit v **myblockchain** skupinu prostředků.
 
@@ -44,17 +44,12 @@ Tady je příklad nasazení vytvořit v **myblockchain** skupinu prostředků.
 
 Náklady na Blockchain Workbench není agregovaný a nákladů na podpůrné služby Azure. Informace o cenách pro Azure services je možné vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/).
 
-> [!IMPORTANT]
-> Pokud používáte předplatné s omezení s nízkou služeb, jako je předplatné Azure na úrovni free, může nasazení selhat z důvodu Nedostatečná kvóta jader virtuálního počítače. Před nasazením, zkontrolujte pomocí pokynů od kvótu [kvóty virtuálních procesorů virtuálního počítače](../../virtual-machines/windows/quotas.md) článku. Výchozí výběr VM vyžaduje 6 jader virtuálního počítače. Změnit na menší velikost virtuálního počítače, jako *v2 Standard DS1* omezuje počet jader na 4.
-
 ## <a name="prerequisites"></a>Požadavky
 
 Azure Blockchain Workbench vyžaduje konfiguraci a uplatnění registrace Azure AD. Můžete také provést Azure AD [konfigurace ručně](#azure-ad-configuration) před nasazení nebo spusťte skript po nasazení. Pokud nasazujete Blockchain Workbench, přečtěte si téma [konfigurace služby Azure AD](#azure-ad-configuration) konfiguraci Azure AD ověřit.
 
 > [!IMPORTANT]
 > Aplikace Workbench nemusí být nasazená ve stejném tenantovi, které používáte k registraci aplikace Azure AD. Aplikace Workbench musí být nasazeny v tenantovi, kde máte dostatečná oprávnění k nasazení prostředků. Další informace o tenantů Azure AD najdete v tématu [získání tenanta služby Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md) a [integrace aplikací s Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-
-
 
 ## <a name="deploy-blockchain-workbench"></a>Nasadit Blockchain Workbench
 
@@ -82,7 +77,7 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
     | Typ ověřování | Vyberte, pokud chcete použít hesla nebo klíče pro připojení k virtuálním počítačům. |
     | Heslo | Heslo se používá pro připojení k virtuálním počítačům. |
     | SSH | Použít veřejný klíč RSA v jednořádkovém formátu začíná **ssh-rsa** nebo víceřádkovém formátu PEM. Pomocí klíče SSH můžete vygenerovat `ssh-keygen` v Linuxu a OS X nebo PuTTYGen ve Windows. Další informace o klíči SSH, viz [klíče, jak použít SSH s Windows v Azure](../../virtual-machines/linux/ssh-from-windows.md). |
-    | Heslo databáze / potvrďte heslo k databázi | Zadejte heslo pro přístup k databázi vytvořenou jako součást nasazení. |
+    | Heslo databáze a Blockchain | Zadejte heslo pro přístup k databázi vytvořenou jako součást nasazení. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí od 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslici a 1 speciální znak, který ne číslo znaku, procentech (%), čárkou (,), star(*), zadní uvozovky (\`), dvojité quote("), jeden uvozovky ('), pomlčky a semicolumn(;) |
     | Oblast nasazení | Zadejte, kam chcete nasadit prostředky Blockchain Workbench. Pro nejlepší dostupnost, mělo by to odpovídat **umístění** nastavení. |
     | Předplatné | Zadejte předplatné Azure, které chcete použít pro vaše nasazení. |
     | Skupiny prostředků | Vytvořit novou skupinu prostředků tak, že vyberete **vytvořit nový** a zadejte název skupiny prostředků jedinečný. |
@@ -94,15 +89,15 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
 
     Pro **vytvořit nový**:
 
-    *Vytvořit nový* se vytvoří sada uzlů ethereum během testování of Authority (PoA) v rámci předplatného jeden člen. 
+    *Vytvořit nový* možnost nasadí účetní knihy kvora služby Azure Blockchain s výchozí základní sku.
 
     ![Upřesňující nastavení pro novou síť blockchain](media/deploy/advanced-blockchain-settings-new.png)
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Monitorování | Zvolte, jestli chcete povolit Azure Monitor k monitorování sítě blockchain |
+    | Cenová úroveň služby Azure Blockchain | Zvolte **základní** nebo **standardní** Azure Blockchain úrovně, který se používá pro Blockchain Workbench |
     | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
-    | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. Zvolte menší velikost virtuálního počítače, jako *v2 Standard DS1* na předplatné s omezení s nízkou služeb, jako je Azure – úroveň free. |
+    | Výběr VM | Vyberte požadované úložiště výkon a velikost virtuálního počítače pro vaši síť blockchain. Zvolte menší velikost virtuálního počítače, jako *v2 Standard DS1* na předplatné s omezení s nízkou služeb, jako je Azure – úroveň free. |
 
     Pro **použít existující**:
 
@@ -121,7 +116,7 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
      |---------|--------------|
      | Ethereum RPC Endpoint | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `http<s>://<network-url>:<port>`. |
      | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
-     | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
+     | Výběr VM | Vyberte požadované úložiště výkon a velikost virtuálního počítače pro vaši síť blockchain. Zvolte menší velikost virtuálního počítače, jako *v2 Standard DS1* na předplatné s omezení s nízkou služeb, jako je Azure – úroveň free. |
 
 9. Vyberte **OK** dokončete Upřesnit nastavení.
 

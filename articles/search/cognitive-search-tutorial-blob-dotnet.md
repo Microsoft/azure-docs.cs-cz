@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 4e6f0317df2f0f631d2c8d3f8e5cefba06e154fd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1b3353cae73bb5710dc9343f1d211266d15743a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026834"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153211"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Kurz: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu
 
@@ -94,9 +94,9 @@ Začněte tím, že otevření sady Visual Studio a vytvoření nového projektu
 
 [Azure Search .NET SDK](https://aka.ms/search-sdk) se skládá z několika klientských knihoven, které vám umožní spravovat zdroje dat, indexy, indexery a dovednosti, stejně jako nahrávat a spravovat dokumenty a spouštění dotazů, aniž byste museli potýkat se Podrobnosti o protokolu HTTP a JSON. Tyto klientské knihovny se distribuují jako balíčky NuGet.
 
-Pro tento projekt, budete muset nainstalovat verzi 7.x.x preview `Microsoft.Azure.Search` NuGet package a nejnovější `Microsoft.Extensions.Configuration.Json` balíček NuGet.
+Pro tento projekt, budete muset nainstalovat verzi 9 `Microsoft.Azure.Search` NuGet package a nejnovější `Microsoft.Extensions.Configuration.Json` balíček NuGet.
 
-Nainstalujte `Microsoft.Azure.Search` balíčku NuGet pomocí konzole Správce balíčků v sadě Visual Studio. Otevřete konzoly vyberte Správce balíčků **nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**. Získat příkaz ke spuštění, přejděte [stránky balíčku Microsoft.Azure.Search NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search), vyberte verzi 7.x.x-preview a zkopírujte tento příkaz Správce balíčků. V konzole Správce balíčků, spusťte tento příkaz.
+Nainstalujte `Microsoft.Azure.Search` balíčku NuGet pomocí konzole Správce balíčků v sadě Visual Studio. Otevřete konzoly vyberte Správce balíčků **nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**. Získat příkaz ke spuštění, přejděte [stránky balíčku Microsoft.Azure.Search NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search), vyberte verze 9 a zkopírujte tento příkaz Správce balíčků. V konzole Správce balíčků, spusťte tento příkaz.
 
 Chcete-li nainstalovat `Microsoft.Extensions.Configuration.Json` balíček NuGet v sadě Visual Studio, vyberte **nástroje** > **Správce balíčků NuGet** > **spravovat balíčky NuGet pro řešení...** . Kliknout na Procházet a vyhledejte `Microsoft.Extensions.Configuration.Json` balíček NuGet. Až ji najdete, vyberte balíček, váš projekt, potvrďte, že je verze na nejnovější stabilní verzi a potom kliknout na tlačítko nainstalovat.
 
@@ -137,13 +137,25 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="create-a-client"></a>Vytvoření klienta
 
-Vytvoření instance `SearchServiceClient` pomocí informace, které jste přidali do `appsettings.json`.
+Vytvoření instance `SearchServiceClient` třídy.
 
 ```csharp
 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 IConfigurationRoot configuration = builder.Build();
-
 SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+```
+
+`CreateSearchServiceClient` Vytvoří novou `SearchServiceClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json).
+
+```csharp
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string adminApiKey = configuration["SearchServiceAdminApiKey"];
+
+   SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+   return serviceClient;
+}
 ```
 
 > [!NOTE]
@@ -197,9 +209,9 @@ V této části definují sadu rozšíření kroky, které má být použita k v
 
 + [Rozpoznávání jazyka](cognitive-search-skill-language-detection.md), které identifikuje jazyk obsahu
 
-+ [Rozdělení textu](cognitive-search-skill-textsplit.md) k rozdělení velké obsah do menších bloků před voláním dovednosti extrakce klíčových frází a dovednosti rozpoznávání pojmenovaných entit. Extrakce klíčových frází a rozpoznávání pojmenovaných entit přijímat vstupy 50 000 znaků nebo méně. Některé ze zdrojových souborů je nutné rozdělit, aby se do tohoto limitu vešly.
++ [Rozdělení textu](cognitive-search-skill-textsplit.md) k rozdělení velké obsah do menších bloků před voláním dovednosti extrakce klíčových frází a rozpoznání odborností entity. Extrakce klíčových frází a rozpoznání entity přijímat vstupy 50 000 znaků nebo méně. Některé ze zdrojových souborů je nutné rozdělit, aby se do tohoto limitu vešly.
 
-+ [Rozpoznávání pojmenovaných entit](cognitive-search-skill-named-entity-recognition.md) pro extrakci názvů organizací z obsahu v kontejneru objektů blob
++ [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro extrahování názvů organizace z obsahu v kontejneru objektů blob.
 
 + [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md), která získává hlavní klíčové fráze
 
@@ -225,7 +237,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "text"));
 
 OcrSkill ocrSkill = new OcrSkill(
-    description: "Extract text (plain and structured) from image).",
+    description: "Extract text (plain and structured) from image",
     context: "/document/normalized_images/*",
     inputs: inputMappings,
     outputs: outputMappings,
@@ -279,7 +291,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "languageCode"));
 
 LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
-    description: "Language detection skill",
+    description: "Detect the language used in the document",
     context: "/document",
     inputs: inputMappings,
     outputs: outputMappings);
@@ -312,9 +324,9 @@ SplitSkill splitSkill = new SplitSkill(
     maximumPageLength: 4000);
 ```
 
-### <a name="named-entity-recognition-skill"></a>Dovednosti rozpoznávání pojmenovaných entit
+### <a name="entity-recognition-skill"></a>Dovednosti rozpoznávání entit
 
-To `NamedEntityRecognitionSkill` instance je nastavena na rozpoznat typ kategorie `organization`. **Rozpoznávání entit s názvem** dovednosti můžete také rozpoznává kategorie typů `person` a `location`.
+To `EntityRecognitionSkill` instance je nastavena na rozpoznat typ kategorie `organization`. **Rozpoznávání entit** dovednosti můžete také rozpoznává kategorie typů `person` a `location`.
 
 Všimněte si, že pole "kontext" nastavena na ```"/document/pages/*"``` hvězdičkou, to znamená kroku rozšíření je volána pro každou stránku v rámci ```"/document/pages"```.
 
@@ -329,21 +341,21 @@ outputMappings.Add(new OutputFieldMappingEntry(
     name: "organizations",
     targetName: "organizations"));
 
-List<NamedEntityCategory> namedEntityCategory = new List<NamedEntityCategory>();
-namedEntityCategory.Add(NamedEntityCategory.Organization);
+List<EntityCategory> entityCategory = new List<EntityCategory>();
+entityCategory.Add(EntityCategory.Organization);
     
-NamedEntityRecognitionSkill namedEntityRecognition = new NamedEntityRecognitionSkill(
+EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
     description: "Recognize organizations",
     context: "/document/pages/*",
     inputs: inputMappings,
     outputs: outputMappings,
-    categories: namedEntityCategory,
-    defaultLanguageCode: NamedEntityRecognitionSkillLanguage.En);
+    categories: entityCategory,
+    defaultLanguageCode: EntityRecognitionSkillLanguage.En);
 ```
 
 ### <a name="key-phrase-extraction-skill"></a>Dovednosti extrakce klíčových frází
 
-Stejně jako `NamedEntityRecognitionSkill` instanci, kterou jste právě vytvořili, **extrakce frází klíč** dovedností se volá pro každou stránku z dokumentu.
+Stejně jako `EntityRecognitionSkill` instanci, kterou jste právě vytvořili, **extrakce frází klíč** dovedností se volá pro každou stránku z dokumentu.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -368,7 +380,7 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
 
 ### <a name="build-and-create-the-skillset"></a>Sestavování a vytváření zkušenostech
 
-Sestavení `SkillSet` pomocí dovedností, které jste vytvořili.
+Sestavení `Skillset` pomocí dovedností, které jste vytvořili.
 
 ```csharp
 List<Skill> skills = new List<Skill>();
@@ -376,12 +388,12 @@ skills.Add(ocrSkill);
 skills.Add(mergeSkill);
 skills.Add(languageDetectionSkill);
 skills.Add(splitSkill);
-skills.Add(namedEntityRecognition);
+skills.Add(entityRecognitionSkill);
 skills.Add(keyPhraseExtractionSkill);
 
-Skillset skillSet = new Skillset(
+Skillset skillset = new Skillset(
     name: "demoskillset",
-    description: "Demo Skillset",
+    description: "Demo skillset",
     skills: skills);
 ```
 
@@ -390,7 +402,7 @@ Vytvoření zkušenostech ve vyhledávací službě.
 ```csharp
 try
 {
-    serviceClient.Skillsets.CreateOrUpdate(skillSet);
+    serviceClient.Skillsets.CreateOrUpdate(skillset);
 }
 catch (Exception e)
 {
@@ -459,16 +471,24 @@ var index = new Index()
 };
 ```
 
-Při testování můžete zjistit, že se pokoušíte vytvořit index více než jednou. Z tohoto důvodu zkontrolujte, zda existuje index, který se chystáte vytvořit, již před pokusem o jeho vytvoření. 
+Při testování můžete zjistit, že se pokoušíte vytvořit index více než jednou. Z tohoto důvodu zkontrolujte, zda existuje index, který se chystáte vytvořit, již před pokusem o jeho vytvoření.
 
 ```csharp
-bool exists = serviceClient.Indexes.Exists(index.Name);
-if (exists)
+try
 {
-    serviceClient.Indexes.Delete(index.Name);
-}
+    bool exists = serviceClient.Indexes.Exists(index.Name);
 
-serviceClient.Indexes.Create(index);
+    if (exists)
+    {
+        serviceClient.Indexes.Delete(index.Name);
+    }
+
+    serviceClient.Indexes.Create(index);
+}
+catch (Exception e)
+{
+    // Handle exception
+}
 ```
 
 Další informace o definování indexu najdete v článku o [vytvoření indexu (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
@@ -526,14 +546,15 @@ Indexer indexer = new Indexer(
     fieldMappings: fieldMappings,
     outputFieldMappings: outputMappings);
 
-bool exists = serviceClient.Indexers.Exists(indexer.Name);
-if (exists)
-{
-    serviceClient.Indexers.Delete(indexer.Name);
-}
-
 try
 {
+    bool exists = serviceClient.Indexers.Exists(indexer.Name);
+
+    if (exists)
+    {
+        serviceClient.Indexers.Delete(indexer.Name);
+    }
+
     serviceClient.Indexers.Create(indexer);
 }
 catch (Exception e)
@@ -560,21 +581,29 @@ Když se extrahuje obsah, můžete nastavit `imageAction`, aby se z obrázků na
 Až se indexer nadefinuje, automaticky se spustí, až se odešle požadavek. Podle kognitivních dovedností, které jste definovali, může indexování trvat déle, než jste čekali. Chcete-li zjistit, jestli stále běží indexeru, použijte `GetStatus` metody.
 
 ```csharp
-IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
-switch (demoIndexerExecutionInfo.Status)
+try
 {
-    case IndexerStatus.Error:
-        Console.WriteLine("Indexer has error status");
-        break;
-    case IndexerStatus.Running:
-        Console.WriteLine("Indexer is running");
-        break;
-    case IndexerStatus.Unknown:
-        Console.WriteLine("Indexer status is unknown");
-        break;
-    default:
-        Console.WriteLine("No indexer status information");
-        break;
+    IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
+
+    switch (demoIndexerExecutionInfo.Status)
+    {
+        case IndexerStatus.Error:
+            Console.WriteLine("Indexer has error status");
+            break;
+        case IndexerStatus.Running:
+            Console.WriteLine("Indexer is running");
+            break;
+        case IndexerStatus.Unknown:
+            Console.WriteLine("Indexer status is unknown");
+            break;
+        default:
+            Console.WriteLine("No indexer information");
+            break;
+    }
+}
+catch (Exception e)
+{
+    // Handle exception
 }
 ```
 
@@ -603,6 +632,19 @@ catch (Exception e)
 }
 ```
 
+`CreateSearchIndexClient` Vytvoří novou `SearchIndexClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). Všimněte si, že se používá klíč dotazu rozhraní API služby search a ne klíč správce.
+
+```csharp
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string queryApiKey = configuration["SearchServiceQueryApiKey"];
+
+   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
+   return indexClient;
+}
+```
+
 Výstupem je schéma indexu s názvem, typem a atributy všech jednotlivých polí.
 
 Pošlete druhý dotaz pro `"*"`, aby se vrátil všechen obsah jednoho pole, třeba `organizations`.
@@ -626,52 +668,11 @@ catch (Exception e)
 
 Opakujte pro další pole: obsah, prostředí, keyPhrases a organizace v tomto cvičení. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
 
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>Přístup k rozšířenému dokumentu
-
-Kognitivní hledání umožňuje zobrazit si strukturu rozšířeného dokumentu. Rozšířené dokumenty jsou dočasné struktury, které se vytvářejí během rozšiřování a po dokončení procesu se odstraňují.
-
-Pokud chcete zachytit snímek rozšířeného dokumentu vytvořeného během indexování, přidejte do indexu pole s názvem ```enriched```. Indexer do tohoto pole automaticky vypíše řetězcovou reprezentaci všech rozšíření daného dokumentu.
-
-Pole ```enriched``` bude obsahovat řetězec, který je logickou reprezentací rozšířeného dokumentu uloženého v paměti ve formátu JSON.  Hodnota pole je ale platný dokument JSON. Abyste si mohli dokument zobrazit jako formátovaný dokument JSON, bude nutné nahradit `\"` za `"`, protože pro uvozovky se používají řídicí sekvence.  
-
-Pole ```enriched``` existuje kvůli ladění, aby vám pomohlo pochopit logický formát obsahu, proti kterému se vyhodnocují výrazy. Může to být užitečný nástroj, který vám pomůže pochopit a ladit sadu dovedností.
-
-Opakujte předchozí cvičení, včetně zachycení obsahu rozšířeného dokumentu pomocí pole `enriched`:
-
-### <a name="request-body-syntax"></a>Syntaxe tělo požadavku
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-
-    public string Enriched { get; set; }
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
-V počátečních fázích experimentální vývoje většina praktický pro počítají s iteracemi návrhu je odstranit objekty z Azure Search a umožňují vašemu kódu znovu. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem. 
+V počátečních fázích experimentální vývoje většina praktický pro počítají s iteracemi návrhu je odstranit objekty z Azure Search a umožňují vašemu kódu znovu. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
 
 V tomto kurzu trvalo Hotovo vyhledávají se stávající indexery a indexy a jejich odstranění, pokud už existoval tak, aby váš kód můžete znovu spustit.
 
@@ -681,11 +682,11 @@ Až se váš kód bude blížit dokončení, možná budete chtít zdokonalit st
 
 ## <a name="takeaways"></a>Shrnutí
 
-Tento kurz ukazuje základní postup sestavení kanálu pro rozšířené indexování, při kterém se vytvářejí součásti: zdroj dat, sada dovedností, index a indexer.
+V tomto kurzu jsme vám ukázali základní kroky pro vytváření bohatších možností kanál indexování prostřednictvím vytváření součásti: zdroj dat, dovednosti, indexu a indexeru.
 
 Představili jsme si [předdefinované dovednosti](cognitive-search-predefined-skills.md), definice sad dovedností a mechanismy, jak pomocí vstupů a výstupů řetězit dovednosti za sebe. Naučili jste se, že `outputFieldMappings` v definici indexu umožňuje směrovat rozšířené hodnoty z kanálu do prohledávatelného indexu ve službě Azure Search.
 
-Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. V této verzi existuje mechanismus, jak si zobrazit vnitřní konstrukce (rozšířené dokumenty, které systém vytvořil). K tomu všemu jste se naučili, jak zkontrolovat stav indexeru a které objekty se mají před opětovným spuštěním kanálu odstranit.
+Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. K tomu všemu jste se naučili, jak zkontrolovat stav indexeru a které objekty se mají před opětovným spuštěním kanálu odstranit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

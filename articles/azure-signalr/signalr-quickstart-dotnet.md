@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
 ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081063"
+ms.locfileid: "65154499"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s technologií ASP.NET a služby SignalR
 

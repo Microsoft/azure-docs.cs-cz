@@ -10,16 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 33a03b24de56ab1090cc8e07c9619eda17f33e27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9147f02f6ef2e2f3f776e67aa1f103e95ef132aa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711903"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153034"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 
 Následující změny části seznamu v nejnovější vydané verze.
+
+## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>Zařízení řeči služeb cognitive Services SDK 1.5.0: Května 2019 vydání
+
+*   Sadou SDK pro řeč zařízení je teď GA a už verzi chráněného preview.
+*   Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.5.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew).
+*   Novou technologii wake slovo přináší značné kvality vylepšení naleznete v tématu Rozbíjející změny.
+*   Nový kanál zpracování zvuku pro zlepšení rozpoznávání úplně pole.
+
+**Rozbíjející změny v**
+
+*   Z důvodu novou technologii wake word je potřeba znovu vytvořit na náš portál slovo vylepšené probuzení všechna slova probuzení. Úplně odebrat starý klíčová slova ze zařízení odinstalujte staré aplikace.
+    - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
 
 ## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Zařízení řeči služeb cognitive Services SDK 1.4.0: 2019 dubna vydání 
 

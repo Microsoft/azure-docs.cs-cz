@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d1e2e35dafd90c16e9d0dbf38afb1e981653d1fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65cac484a9395aca47a38e2ba430b80c868267f5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445013"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152664"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
@@ -69,15 +69,7 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Offline možnosti
 
-Azure IoT Edge podporuje offline operace s vašimi zařízeními IoT Edge. Tyto možnosti jsou teď omezená. Další možnosti offline jsou dostupné ve verzi public preview. Další informace najdete v tématu [porozumění rozšířené offline možnosti pro IoT Edge, zařízení, moduly a podřízená zařízení](offline-capabilities.md).
-
-Moduly IoT Edge může být offline delší dobu, za předpokladu splnění následujících požadavků: 
-
-* **Zpráva time to live (TTL) nevypršela platnost**. Výchozí hodnota TTL zprávy je dvě hodiny, ale může být změněné vyšší nebo nižší v Store a přeposlat konfiguraci ve službě IoT Edge hub nastavení. 
-* **Moduly není nutné donutit s centrem IoT Edge v režimu offline**. Moduly lze pouze ověření pomocí centra IoT Edge, které mají aktivní připojení k službě IoT hub. Moduly nutné donutit, pokud se restartují z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra IoT Edge po vypršení platnosti tokenu SAS. Po obnovení připojení k centru IoT Edge vyžádá nový token z modulu a ověřuje prostřednictvím služby IoT hub. V případě úspěchu, že Centrum IoT Edge předává zprávy modulu, které jsou uloženy, dokonce i zprávy, které byly odeslány, zatímco byl vypršela platnost tokenu modulu. 
-* **Modul, který odeslané zprávy při offline je stále funkční po obnovení připojení**. Při opětovném připojení ke službě IoT Hub, je potřeba ověřit nový token modulu (Pokud předchozí platnost) předtím, než nebude moct přesměrovávat zprávy modulu Centrum IoT Edge. Pokud modul není k dispozici nový token, Centrum IoT Edge nemůže reagovat na zprávy uložené modulu. 
-* **Centrum IoT Edge je místo na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v systému souborů kontejneru centra IoT Edge. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech musí být místa pro ukládání zpráv pro odložené doručování do služby IoT Hub.  
-
+Moduly Azure IoT Edge může fungovat v režimu offline po neomezenou dobu, po synchronizaci se službou IoT Hub alespoň jednou. Zařízení IoT Edge můžete rozšířit také tato offline funkce s jinými zařízeními IoT. Další informace najdete v tématu [porozumění rozšířené offline možnosti pro IoT Edge, zařízení, moduly a podřízená zařízení](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Další postup
  - [Pochopení požadavků a nástroje pro vývoj modulů IoT Edge](module-development.md)

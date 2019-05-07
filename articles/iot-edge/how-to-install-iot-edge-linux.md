@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 5829606f3ad226507c49f18dcc8ac4831d573b17
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126305"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152852"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
 
@@ -23,7 +23,7 @@ Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT 
 
 Další informace najdete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge v systému Ubuntu Linux x64 (Intel nebo AMD) zařízení IoT Edge. Odkazovat na [podpory Azure IoT Edge](support.md#operating-systems) seznam podporovaných operačních systémech AMD64.
+V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge v systému Ubuntu Linux x64 (Intel nebo AMD) zařízení IoT Edge. Odkazovat na [Azure IoT Edge podporované systémy](support.md#operating-systems) seznam podporovaných operačních systémech AMD64.
 
 > [!NOTE]
 > Balíčky v úložiště softwaru Linux jsou souladu s licenčními podmínkami v jednotlivých balíčků (/ usr/sdílet/doc/*název balíčku*). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.

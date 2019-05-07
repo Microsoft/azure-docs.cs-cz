@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: juliako
-ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42b8c4caa53ffa6b3bc1148544c75602597ac452
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322562"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153832"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services v3
 
 Tento článek popisuje kvóty a omezení v Azure Media Services v3.
 
-| Prostředek | Výchozí omezení | 
+| Resource | Výchozí omezení | 
 | --- | --- | 
 | Prostředky na účet Azure Media Services | 1 000 000|
 | Filtry dynamických manifestů|100|
@@ -36,26 +36,36 @@ Tento článek popisuje kvóty a omezení v Azure Media Services v3.
 | Výpis úloh|Stránkování odpovědi s 500 úlohami na stránku|
 | Živé události na účet Media Services |5|
 | Účty Media Services v rámci jednoho předplatného | 25 (pevné) |
-| Živé výstupy ve spuštěném stavu na živá událost |3|
+| Live výstupů na živou událost |3 <sup>(3)</sup> |
 | Výstup živého maximální doba trvání | 25 hodin |
 | Účty úložiště | 100<sup>(4)</sup> (fixní) |
 | Koncové body streamování (zastavení nebo spuštění) na účtu Azure Media Services|2 (fixní)|
-| Zásady streamování | 100 <sup>(3)</sup> |
+| Zásady streamování | 100 <sup>(5)</sup> |
 | Transformuje na účtu Azure Media Services | 100 (fixní)|
-| Jedinečné lokátory streamování přidružené k prostředku najednou | 100<sup>(5)</sup> (fixní) |
+| Jedinečné lokátory streamování přidružené k prostředku najednou | 100<sup>(6)</sup> (fixní) |
 | Zásady symetrických klíčů |30 | 
 
-<sup>1</sup> maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí ale, v závislosti na velikosti virtuálních počítačů, které používají službu Azure Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. Pokud máte 4 kB obsah, který je větší než limit 260 GB, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
+<sup>1</sup> maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí v závislosti na velikosti virtuálních počítačů, které se používají ve službě Media Services. Omezení velikosti platí pro soubory, které nahrajete a také soubory, které se vygeneruje jako výsledek zpracování (kódování nebo analýza) Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. 
+
+Následující tabulka uvádí omezení na média rezervované jednotky S1, S2 a S3. Pokud zdrojový soubor je větší než omezení v tabulce, vaše úlohy kódování se nezdaří. Pokud kódujete zdroje rozlišení 4K dlouhá doba trvání, budete muset použít S3 rezervovaných jednotek médií k zajištění výkonu potřeba. Pokud máte 4 kB obsah, který je větší než limit 260 GB S3 rezervovaných jednotek médií, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
+
+|Typ jednotky rezervované pro média   |Maximální velikost vstupu (GB)|
+|---|---|
+|S1 |   26|
+|S2 | 60|
+|S3 |260|
 
 <sup>2</sup> toto číslo zahrnuje zařazených do fronty, dokončené, aktivní a zrušené úlohy. Nezahrnuje odstraněné úlohy. 
 
 Libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní automaticky odstraní, i v případě, že celkový počet záznamů je nižší než maximální kvóta. 
 
-<sup>3</sup> při použití vlastního [streamování zásad](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše StreamingLocators pokaždé, když se na stejné šifrování možnosti a protokoly jsou potřeba. By neměl být vytváření nových zásad streamování pro každý Lokátor streamování.
+<sup>3</sup> live výstupů spuštění při vytvoření a zastavení při odstranění.
 
 <sup>4</sup> účtů úložiště musí být ve stejném předplatném Azure.
 
-<sup>5</sup> streamování lokátory nejsou určené pro správu řízení přístupu na uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM).
+<sup>5</sup> při použití vlastního [streamování zásad](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše StreamingLocators pokaždé, když se na stejné šifrování možnosti a protokoly jsou potřeba. By neměl být vytváření nových zásad streamování pro každý Lokátor streamování.
+
+<sup>6</sup> streamování lokátory nejsou určené pro správu řízení přístupu na uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM).
 
 ## <a name="support-ticket"></a>Lístek podpory
 

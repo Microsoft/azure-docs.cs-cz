@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125929"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152636"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
@@ -50,25 +50,15 @@ apt-get install libiothsm iotedge
 
 ### <a name="windows-devices"></a>Zařízení Windows
 
-Na zařízeních s Windows pomocí skriptu prostředí PowerShell pro odinstalaci a opětovnou instalací démona zabezpečení. Instalační skript automaticky stáhne nejnovější verzi démona zabezpečení. 
-
-Odinstalujte démona zabezpečení v rámci relace prostředí PowerShell správce. 
+Na zařízeních s Windows použijte skript Powershellu k aktualizaci démona zabezpečení. Skript automaticky stáhne nejnovější verzi démona zabezpečení. 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Uninstall-SecurityDaemon
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Spuštění `Uninstall-SecurityDaemon` démona zabezpečení příkaz bez parametrů pouze odebere ze zařízení, spolu s dvěma imagí kontejnerů modulu runtime. Soubor config.yaml se ukládají na zařízení, a také data z kontejnerů modulu Moby. Udržování znamená konfigurační informace, že není nutné zadat připojovací řetězec nebo informace o službě Device Provisioning pro vaše zařízení znovu během procesu instalace. 
+Proces démon zabezpečení spuštění příkazu Update-IoTEdge odebere ze zařízení, spolu s dvěma imagí kontejnerů modulu runtime. Soubor config.yaml se ukládají na zařízení, a také data z kontejnerů modulu Moby (Pokud používáte Windows kontejnery). Udržování znamená konfigurační informace, že není nutné zadat připojovací řetězec nebo informace o službě Device Provisioning pro vaše zařízení znovu během procesu aktualizace. 
 
-Přeinstalujte démona zabezpečení v závislosti na tom, zda zařízení IoT Edge používá kontejnery Windows nebo kontejnery Linuxu. Nahraďte frázi **\<Windows nebo Linux\>** s operačními systémy odpovídajícího kontejneru. Použití **- ExistingConfig** příznak tak, aby odkazovala na existující soubor config.yaml na vašem zařízení. 
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -ExistingConfig -ContainerOS <Windows or Linux>
-```
-
-Pokud chcete nainstalovat konkrétní verzi démona zabezpečení, stáhněte si soubor odpovídající iotedged windows.zip z [uvolní IoT Edge](https://github.com/Azure/azure-iotedge/releases). Potom použijte `-OfflineInstallationPath` parametru tak, aby odkazoval na umístění souboru. Další informace najdete v tématu [Offline instalaci](how-to-install-iot-edge-windows.md#offline-installation).
+Pokud chcete nainstalovat konkrétní verzi démona zabezpečení, stáhněte si odpovídající souboru Microsoft-Azure-IoTEdge.cab z [uvolní IoT Edge](https://github.com/Azure/azure-iotedge/releases). Potom použijte `-OfflineInstallationPath` parametru tak, aby odkazoval na umístění souboru. Další informace najdete v tématu [Offline instalaci](how-to-install-iot-edge-windows.md#offline-installation).
 
 ## <a name="update-the-runtime-containers"></a>Aktualizovat kontejnerů modulu runtime
 

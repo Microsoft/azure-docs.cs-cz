@@ -1,20 +1,20 @@
 ---
-title: Azure Database for pravidla brány firewall na serveru PostgreSQL
-description: Tento článek popisuje pravidla brány firewall pro váš server Azure Database for PostgreSQL.
+title: Pravidla brány firewall ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje pravidla brány firewall pro službu Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 793a68ee829d87a8433d5bdd77fe7b43e2f3af19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 40a675fbefe9743f5de1f9766cf33ae7dba9e5a7
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560184"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073572"
 ---
-# <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure Database for pravidla brány firewall na serveru PostgreSQL
-Azure Database for PostgreSQL Server brány firewall brání veškerému přístupu k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru, na základě původní IP adresy každé žádosti.
+# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Pravidla brány firewall ve službě Azure Database for PostgreSQL – jeden Server
+Azure Database for PostgreSQL server brány firewall brání veškerému přístupu k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru, na základě původní IP adresy každé žádosti.
 Bránu firewall nakonfigurujete tak, že vytvoříte pravidla brány firewall určující rozsahy přípustných IP adres. Můžete vytvořit pravidla brány firewall na úrovni serveru.
 
 **Pravidla brány firewall:** Tato pravidla umožňují klientům přístup k celou databázi Azure PostgreSQL server, to znamená, že všechny databáze v rámci stejného logického serveru. Pomocí webu Azure portal nebo pomocí příkazů Azure CLI je možné nakonfigurovat pravidla brány firewall na úrovni serveru. K vytvoření pravidla brány firewall na úrovni serveru, musíte být vlastníkem nebo přispěvatelem předplatného.

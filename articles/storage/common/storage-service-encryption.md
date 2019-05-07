@@ -1,25 +1,28 @@
 ---
 title: Šifrování služby Azure Storage pro neaktivní uložená data | Dokumentace Microsoftu
-description: Úložiště Azure chrání vaše data tím, že automaticky šifruje před uložením do cloudu. Všechna data ve službě Azure Storage v objekty BLOB, disky, soubory, fronty nebo tabulky, je šifrovaný a dešifrovat transparentně pomocí 256bitového šifrování AES a je kompatibilní s FIPS 140-2.
+description: Úložiště Azure chrání vaše data tím, že automaticky šifruje před uložením do cloudu. Všechna data ve službě Azure Storage je šifrovaný a dešifrovat transparentně pomocí 256bitového šifrování AES a je kompatibilní s FIPS 140-2.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 04/30/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 211cfeb3aba29245e154f4a7db86fb4a3659c36f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730820"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153088"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
 Azure Storage automaticky šifruje vaše data při zachování do cloudu. Šifrování chrání vaše data a také jí pomohou zvládnout organizační závazky zabezpečení a dodržování předpisů. Data ve službě Azure Storage je šifrovaný a dešifrovat transparentně pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jedna z nejsilnějších bloku šifer k dispozici a je kompatibilní s FIPS 140-2. Šifrování Azure Storage je podobný šifrování nástroje BitLocker v Windows.
 
-Šifrování Azure Storage je povolená pro všechny účty nová a existující úložiště a nejde zakázat. Vzhledem k tomu, že ve výchozím nastavení jsou vaše data zabezpečená, není nutné upravovat kód vaší aplikace a chcete využít výhod šifrování služby Azure Storage. Účty úložiště se zašifrují bez ohledu na jejich úroveň výkonu (standard nebo premium) nebo model nasazení (Azure Resource Manager nebo classic). Všechny možnosti redundance Azure Storage podporují šifrování, a zašifrují veškeré kopie tohoto účtu úložiště. Všechny prostředky služby Azure Storage jsou zašifrovaná, včetně objektů BLOB, disky, soubory, fronty a tabulky.
+Šifrování Azure Storage je povolená pro všechny účty nová a existující úložiště a nejde zakázat. Vzhledem k tomu, že ve výchozím nastavení jsou vaše data zabezpečená, není nutné upravovat kód vaší aplikace a chcete využít výhod šifrování služby Azure Storage. 
+
+Účty úložiště se zašifrují bez ohledu na jejich úroveň výkonu (standard nebo premium) nebo model nasazení (Azure Resource Manager nebo classic). Všechny možnosti redundance Azure Storage podporují šifrování, a zašifrují veškeré kopie tohoto účtu úložiště. Všechny prostředky služby Azure Storage jsou zašifrovaná, včetně objektů BLOB, disky, soubory, fronty a tabulky. Všechna metadata objektu se šifrují taky.
 
 Šifrování nemá vliv na výkon služby Azure Storage. Se neúčtují žádné další poplatky pro šifrování Azure Storage.
 
