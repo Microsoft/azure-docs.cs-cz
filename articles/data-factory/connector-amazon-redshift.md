@@ -56,8 +56,8 @@ Amazon Redshift propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost type musí být nastavená na: **AmazonRedshift** | Ano |
 | server |IP adresa nebo název hostitele serveru Amazon Redshift. |Ano |
 | port |Číslo portu TCP, které server Amazon Redshift používá k naslouchání pro připojení klientů. |Ne, výchozí hodnota je 5439 |
-| databáze |Název databáze Amazon Redshift. |Ano |
-| uživatelské jméno |Jméno uživatele, který má přístup k databázi. |Ano |
+| database |Název databáze Amazon Redshift. |Ano |
+| username jméno |Jméno uživatele, který má přístup k databázi. |Ano |
 | password |Heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -210,16 +210,16 @@ Při kopírování dat z Amazon Redshift, se používají následující mapová
 | Datový typ Amazon Redshift | Data factory dočasné datový typ |
 |:--- |:--- |
 | BIGINT |Int64 |
-| DATOVÝ TYP BOOLEAN |String |
+| BOOLEAN |String |
 | CHAR |String |
-| DATE (Datum) |DateTime |
+| DATE |DateTime |
 | DECIMAL |Decimal |
-| DVOJITOU PŘESNOSTÍ |Double |
-| CELÉ ČÍSLO |Int32 |
+| DOUBLE PRECISION |Double |
+| INTEGER |Int32 |
 | REAL |Single |
 | SMALLINT |Int16 |
 | TEXT |String |
-| ČASOVÉ RAZÍTKO |DateTime |
+| TIMESTAMP |DateTime |
 | VARCHAR |String |
 
 ## <a name="next-steps"></a>Další postup
