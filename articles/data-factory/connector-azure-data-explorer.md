@@ -70,7 +70,7 @@ Průzkumník dat Azure, propojené služby jsou podporovány následující vlas
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **AzureDataExplorer** | Ano |
 | endpoint | Adresa URL koncového bodu clusteru Průzkumník dat Azure, ve formátu jako `https://<clusterName>.<regionName>.kusto.windows.net`. | Ano |
-| databáze | Název databáze. | Ano |
+| database | Název databáze. | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. To je, co je obvykle říká "**ID úřadu**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtení ukázáním pomocí myši v pravém horním rohu webu Azure portal. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. To je, co je obvykle říká "**ID klienta aplikace AAD**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. To je, co je obvykle říká "**klíč aplikace AAD**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -107,7 +107,7 @@ Podporovány jsou následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **AzureDataExplorerTable** | Ano |
-| tabulka | Název tabulky, která odkazuje propojenou službu. | Ano pro jímku; Ne pro zdroj |
+| table | Název tabulky, která odkazuje propojenou službu. | Ano pro jímku; Ne pro zdroj |
 
 **Příklad vlastnosti datové sady**
 
