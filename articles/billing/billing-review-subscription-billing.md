@@ -47,8 +47,8 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|
 |--------------------|-----------------|
-|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|
-|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|
+|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Odpověď
 
