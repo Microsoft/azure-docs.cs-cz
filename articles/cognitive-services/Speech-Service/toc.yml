@@ -174,8 +174,12 @@
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Převod textu na řeč
           items:
-            - name: Vytváření hlasových písem (rozpoznatelný hlas robota)
-              href: how-to-customize-voice-font.md
+            - name: Začínáme se službou Custom Voice
+              href: how-to-custom-voice.md
+            - name: Příprava dat
+              href: how-to-custom-voice-prepare-data.md
+            - name: Vytváření a využití modelů Custom Voice
+              href: how-to-custom-voice-create-voice.md
             - name: Záznam hlasových ukázek
               href: record-custom-voice-samples.md
             - name: Vyladění výstupu převodu textu na řeč

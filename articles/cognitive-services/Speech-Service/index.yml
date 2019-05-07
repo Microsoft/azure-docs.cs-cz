@@ -234,7 +234,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Ukázky sady SDK pro službu</a><br/>'
+          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Ukázky Speech SDK</a><br/>'
           - html: '<a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">Ukázky sady SDK pro zařízení</a><br/>'
   - title: Referenční informace
     items:

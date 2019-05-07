@@ -37,13 +37,21 @@
           displayName: 'learning policy, Counterfactual, features'
 - name: Návody
   items:
-    - name: Konfigurace služby Personalizace
+    - name: Vytvoření a konfigurace služby Personalizace
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy'
     - name: Analýza
       items:
         - name: Offline vyhodnocení
           href: how-to-offline-evaluation.md
+    - name: Použití kontejnerů
+      items:
+        - name: Instalace a spuštění kontejnerů
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
+          href: personalizer-container-howto.md
+        - name: Konfigurace kontejnerů
+          href: personalizer-container-configuration.md
+          displayName: 'docker, run, apikey'
 - name: Referenční informace
   items:
     - name: Ukázky

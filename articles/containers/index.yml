@@ -63,7 +63,7 @@ sections:
           - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Vytvoření vícekontejnerové aplikace ve službě Web App for Containers</a>
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Sestavení a nasazení imagí kontejnerů s využitím Úloh služby Azure Container Registry</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Nasazení kontejneru do služby Azure Container Instances</a>
-          - html: <a href="/azure/openshift/tutorial-create-cluster">Vytvoření clusteru Red Hat OpenShift v Azure</a>
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Vytvoření clusteru Azure Red Hat OpenShift</a>
   - title: Získávání dovedností pomocí Microsoft Learn
     items:
       - type: list

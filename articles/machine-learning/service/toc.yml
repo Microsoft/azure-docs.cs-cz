@@ -6,9 +6,6 @@
     - name: Co je služba Azure Machine Learning?
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
-    - name: Co se stalo s Workbenchem
-      displayName: desktop ui Workbench upgrade update transfer
-      href: overview-what-happened-to-workbench.md
 - name: Nastavení
   items:
     - name: Vytvoření pracovního prostoru
@@ -92,6 +89,8 @@
     - name: Interpretovatelnost modelů
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
+    - name: Zrychlení pomocí GPU
+      href: concept-accelerate-inferencing-with-gpus.md
     - name: Zrychlení pomocí FPGA
       href: concept-accelerate-with-fpgas.md
     - name: Optimalizace s využitím ONNX a modulu runtime ONNX
@@ -117,6 +116,7 @@
         - name: Použití portálu pro pracovní prostory
           href: how-to-manage-workspace.md
         - name: Použití šablony Resource Manageru
+          displayName: arm
           href: how-to-create-workspace-template.md
     - name: "Nastavení vývojového prostředí\_"
       items:
@@ -352,3 +352,6 @@
     - name: Porovnání našich produktů ML
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
       maintainContext: true
+    - name: Co se stalo s Workbenchem
+      displayName: desktop ui Workbench upgrade update transfer
+      href: overview-what-happened-to-workbench.md

@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Disky OS s kratší platností
+          href: ephemeral-os-disks.md
     - name: Sítě
       href: network-overview.md
     - name: Automatické škálování aplikací
@@ -243,18 +245,38 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: Použití imagí
       items:
-        - name: Sdílené image (Preview)
+        - name: Sdílené image
           items:
             - name: Přehled
               href: shared-image-galleries.md
-            - name: Vytváření sdílených imagí s využitím PowerShellu
+            - name: PowerShell
               href: shared-images.md
-            - name: Vytváření sdílených imagí s využitím CLI
+            - name: Portál
+              href: shared-images-portal.md
+            - name: Rozhraní příkazového řádku
               href: ../linux/shared-images.md
             - name: Portál
               href: shared-images-portal.md
+            - name: Sdílení imagí napříč tenanty
+              href: share-images-across-tenants.md
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
+        - name: Image Builder (Preview)
+          items:
+            - name: Přehled
+              href: ../linux/image-builder-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: Použití CLI
+              href: image-builder.md
+            - name: Použití společně s galeriemi
+              href: image-builder-gallery.md
+            - name: Aktualizace verze image
+              href: image-builder-gallery-update-image-version.md
+            - name: Použití skriptů ve službě Azure Storage
+              href: ../linux/image-builder-user-assigned-identity.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: Referenční informace k šablonám
+              href: ../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: Řešení potíží
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Vyhledání a použití imagí
           href: cli-ps-findimage.md
         - name: Příprava virtuálního počítače pro nahrání
@@ -326,8 +348,6 @@
           href: detach-disk.md
         - name: Nasazení disků pomocí šablony
           href: using-managed-disks-template-deployments.md
-        - name: Nahrání virtuálního pevného disku na disk – PowerShell
-          href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Změna velikosti disku
           href: expand-os-disk.md
         - name: Pořízení snímku disku

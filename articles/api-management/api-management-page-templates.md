@@ -229,7 +229,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |referenceCode|string|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
-|Kód chyby|string|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
+|errorCode|string|Kód generovaný, pokud se tato stránka zobrazila v důsledku vnitřní chyby.|  
 |emailBody|string|Tělo, které jsou generovány, pokud se tato stránka zobrazila v důsledku vnitřní chyby e-mailu.|  
 |requestedUrl|string|Adresa URL požadovat stránka nebyla nalezena.|  
 |referrerUrl|string|Adresa URL odkazující na požadovanou URL adresu.|  
