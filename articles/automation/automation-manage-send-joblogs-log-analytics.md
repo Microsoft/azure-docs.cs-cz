@@ -1,6 +1,6 @@
 ---
 title: Předávání dat úloh Azure Automation do protokolů Azure Monitoru
-description: Tento článek předvádí postup odesílání stavu úlohy a runbook datové proudy úlohy do protokolů Azure Azure Monitor k poskytování dalších přehledů a správu.
+description: Tento článek předvádí postup odesílání stavu úlohy a runbook datové proudy úlohy do protokolů Azure Monitor k poskytování dalších přehledů a správu.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739101"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65200614"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Dál stavu úlohy a datové proudy úlohy ze služby Automation na protokoly Azure monitoru
 
@@ -97,7 +97,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | JobId_g |Identifikátor GUID, který představuje ID úlohy runbooku. |
 | ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>– Dokončení |
-| Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
+| Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
 | OperationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha. |
 | Resource | Název účtu služby Automation |
 | SourceSystem | Jak protokoly Azure monitoru shromažďuje data. Vždy *Azure* Azure Diagnostics. |
@@ -120,7 +120,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | JobId_g |Identifikátor GUID, který představuje ID úlohy runbooku. |
 | ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |
-| Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams. |
+| Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams. |
 | OperationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha. |
 | Resource | Název účtu služby Automation |
 | SourceSystem | Jak protokoly Azure monitoru shromažďuje data. Vždy *Azure* Azure Diagnostics. |

@@ -1,19 +1,19 @@
 ---
-title: Vytvoření a Správa pravidel brány firewall ve službě Azure Database for PostgreSQL
-description: Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí webu Azure portal
+title: Vytvoření a Správa pravidel brány firewall ve službě Azure Database for PostgreSQL – jeden Server
+description: Vytvoření a Správa pravidel brány firewall pro službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: cb142e01009efbeaabd5d4e56dbedfe6384c5fc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420970"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069004"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí webu Azure portal
+# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Vytvoření a Správa pravidel brány firewall pro službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
 Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database for PostgreSQL Server ze zadané IP adresy nebo rozsah IP adres.
 
 Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).

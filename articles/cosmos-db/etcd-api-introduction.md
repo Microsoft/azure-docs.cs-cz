@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 30d18e1e23767ce3a179221714e001574f8e9778
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075487"
+ms.locfileid: "65205806"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Úvod do služby Azure Cosmos DB etcd rozhraní API (preview)
 
@@ -23,7 +23,7 @@ Azure Cosmos DB je globálně distribuovaná a vícemodelová databázová služ
 Etcd rozhraní API ve službě Azure Cosmos DB umožňuje používat službu Azure Cosmos DB jako back-endu úložiště pro [Kubernetes se službou Azure](../aks/index.yml). etcd rozhraní API ve službě Azure Cosmos DB je aktuálně ve verzi preview. Azure Cosmos DB implementuje přenosový protokol etcd. S etcd rozhraní API ve službě Azure Cosmos DB, vývojáře, automaticky získá vysoce spolehlivé [dostupné](high-availability.md), [globálně distribuované](distribute-data-globally.md) Kubernetes. Toto rozhraní API umožňuje vývojářům umožní škálování správy stavu Kubernetes na plně spravovanou cloudovou nativní služby PaaS. 
 
 > [!NOTE]
-> Na rozdíl od jiných rozhraní API ve službě Azure Cosmos DB nemůžete zřídit účet etcd rozhraní API na webu Azure portal, sady SDK nebo rozhraní příkazového řádku. Můžete zřídit účet rozhraní API etcd nasazením šablony Resource Manageru. podrobné pokyny najdete v článku [jak zřídit Kubernetes v Azure pomocí služby Azure Cosmos DB](bootstrap-kubernetes-cluster.md) článku.  
+> Na rozdíl od jiných rozhraní API ve službě Azure Cosmos DB nemůžete zřídit účet etcd rozhraní API na webu Azure portal, sady SDK nebo rozhraní příkazového řádku. Můžete zřídit účet rozhraní API etcd nasazením šablony Resource Manageru. podrobné pokyny najdete v článku [jak zřídit Kubernetes v Azure pomocí služby Azure Cosmos DB](bootstrap-kubernetes-cluster.md) článku. Azure Cosmos DB etcd rozhraní API je aktuálně ve verzi limited preview. Je možné [zaregistrovat verzi preview](https://aka.ms/cosmosetcdapi-signup), po vyplnění registračního formuláře.
 
 ## <a name="wire-level-compatibility"></a>Úroveň kompatibility při přenosu
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: ee1568274792621b8ed9f25d211c40440a82208c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 46df484303237722f4eb66099748f2fcef8240b4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160032"
+ms.locfileid: "65205838"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Vytvoření kontejnerů s klíči velkých oddílů
 
@@ -43,6 +43,17 @@ database,
 Chcete-li vytvořit klíči velkých oddílů, když vytvoříte nový kontejner pomocí webu Azure portal, zkontrolujte **Můj klíč oddílu je větší než 100 bajtů** možnost. Ve výchozím nastavení jsou nové kontejnery přihlášení ke službě pomocí klíči velkých oddílů. Pokud už nepotřebujete klíči velkých oddílů, nebo pokud máte aplikace běžící na verzi sady SDK, které jsou starší než 1.18, zrušte zaškrtnutí políčka.
 
 ![Vytvoření klíči velkých oddílů pomocí webu Azure portal](./media/large-partition-keys/large-partition-key-with-portal.png)
+
+
+## <a name="supported-sdk-versions"></a>Podporované verze sady SDK
+
+Klíči velkých oddílů je podporovaná v následujících minimálních verzích sady SDK:
+
+|Typ sady SDK  | Minimální verze   |
+|---------|---------|
+|.Net     |    1.18     |
+|Synchronizace Java     |   2.4.0      |
+|Java Async   |  2.5.0        |
  
 ## <a name="next-steps"></a>Další postup
 

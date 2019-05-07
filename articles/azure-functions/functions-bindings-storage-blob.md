@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 0294c7eefb6cad17ef83c24a59c37a42e68861b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e4ec13453c204885f38b10272e76245e641fbef9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728548"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203596"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby Azure Blob storage pro službu Azure Functions
 
@@ -389,13 +389,13 @@ Pokud je název objektu blob  *{20140101}-soundfile.mp3*, `name` hodnotu proměn
 
 ## <a name="trigger---metadata"></a>Aktivační události – metadat
 
-Aktivační událost objektů blob poskytuje několik vlastností metadat. Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Tyto hodnoty mají stejnou sémantiku jako [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) typu.
+Aktivační událost objektů blob poskytuje několik vlastností metadat. Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Tyto hodnoty mají stejnou sémantiku jako [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) typu.
 
 |Vlastnost  |Typ  |Popis  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Cesta k spouštěcí objekt blob.|
 |`Uri`|`System.Uri`|Identifikátor URI objektu blob pro primární umístění.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|Systémové vlastnosti objektu blob. |
+|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Systémové vlastnosti objektu blob. |
 |`Metadata` |`IDictionary<string,string>`|Metadata definovaná uživatelem pro tento objekt blob.|
 
 Protokolujte například, následující skript jazyka C# a JavaScript příklady cestu pro spouštěcí objekt blob, včetně kontejneru:
@@ -426,7 +426,7 @@ Azure Functions úložiště objektů blob příjmy v kontejneru nazvaném *azur
 * Název objektu blob
 * Značka ETag (identifikátor verze objektů blob, například: "0x8D1DC6E70A277EF")
 
-Pokud chcete vynutit opětovné zpracování objektu blob, odstranit potvrzení tohoto objektu blob z objektu blob *azure – webjobs – hostitelé* kontejneru ručně. Při opětovném zpracování nemusí být okamžité, má garantované nastat později v čase.
+Pokud chcete vynutit opětovné zpracování objektu blob, odstranit potvrzení tohoto objektu blob z objektu blob *azure – webjobs – hostitelé* kontejneru ručně. Při opětovném zpracování nemusí být okamžité, má zaručeno nastat později v čase.
 
 ## <a name="trigger---poison-blobs"></a>Aktivační události – počet poškozených objekty BLOB
 
@@ -1068,7 +1068,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastaveno na `blob`. |
 |**direction** | neuvedeno | Musí být nastaveno na `out` pro výstupní vazbu. Výjimky jsou uvedeny v [využití](#output---usage) oddílu. |
 |**name** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce.  Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.|
-|**Cesta** |**BlobPath** | Cesta blobco. |
+|**Cesta** |**BlobPath** | Cesta ke kontejneru objektů blob. |
 |**připojení** |**připojení**| Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účtu úložiště pouze objektů blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |neuvedeno | **Přístup** | Označuje, zda jste se čtení či zápis. |
 

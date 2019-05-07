@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s pomalé nebo jeho selháním HDInsight clusteru – Azure HDInsight
+title: Řešení potíží s pomalé nebo selhání úlohy na clusteru HDInsight – Azure HDInsight
 description: Diagnostika a řešení potíží pomalé nebo selhání clusteru HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708910"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203633"
 ---
-# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalé nebo selhání úlohy na HDInsight cluster
 
-Pokud se HDInsight cluster pracuje pomalu nebo neúspěšné s kódem chyby, máte několik možností, jak řešení potíží. Pokud vaše úlohy trvá delší dobu, než se očekávalo, nebo pomalé odezvy se zobrazuje v obecných, může být selhání upstream z vašeho clusteru, jako jsou služby, na kterých běží clusteru. Nejčastější příčinou tomuto zpomalování je však nedostatečné škálování. Když vytvoříte nový cluster HDInsight, vyberte odpovídající [velikostí virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
+Pokud aplikace zpracovává data v clusteru HDInsight je buď neběží pomalu nebo neúspěšné s kódem chyby, máte několik možností, jak řešení potíží. Pokud vaše úlohy trvá delší dobu, než se očekávalo, nebo pomalé odezvy se zobrazuje v obecných, může být selhání upstream z vašeho clusteru, jako jsou služby, na kterých běží clusteru. Nejčastější příčinou tomuto zpomalování je však nedostatečné škálování. Když vytvoříte nový cluster HDInsight, vyberte odpovídající [velikostí virtuálních počítačů](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
 K diagnostice pomalé nebo selhání clusteru, shromážděte informace o všech aspektech prostředí, jako jsou přidružené služby Azure, konfiguraci clusteru a informace o spuštění úlohy. Užitečné Diagnostika je pokusit se reprodukovat chyby stavu na jiném clusteru.
 

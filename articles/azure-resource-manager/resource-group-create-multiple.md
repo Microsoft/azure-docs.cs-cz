@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2019
+ms.date: 05/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 84f2d82ba6103382d7f9ff850bb6f1930ebbeb9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05b68fde30587967f65ee362344eea9a258f89a7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904589"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205978"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasadit více než jednu instanci zdroje nebo vlastnosti v šablonách Azure Resource Manageru
 
@@ -148,6 +148,8 @@ Například účty úložiště, dva sériově nasazení najednou, použijte:
 ```
 
 Vlastnost mode přijímá také **paralelní**, což je výchozí hodnota.
+
+Informace o používání kopírování s vnořené šablony najdete v tématu [pomocí kopírování](resource-group-linked-templates.md#using-copy).
 
 ## <a name="property-iteration"></a>Vlastnost iterace
 

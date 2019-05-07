@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 4b3fa69156146037ff59a41eab8c8373f6e01dc4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029112"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205045"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Vytvoření a registrace Azure Machine Learning, datové sady (Preview)
 
@@ -44,7 +44,7 @@ Načíst soubory z místního počítače zadáním cesty souboru nebo složky s
 * Odvození a převádění datových typů sloupce.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
@@ -60,7 +60,9 @@ Pokud chcete vytvořit datové sady ze úložiště Azure, nezapomeňte na násl
 * Import [ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) a [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition) a `Dataset` balíčky ze sady SDK.
 
 ```Python
-from azureml.core import Workspace, Datastore, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.datastore import Datastore
+from azureml.core.dataset import Dataset
 
 datastore_name = 'your datastore name'
 
@@ -74,7 +76,7 @@ workspace = Workspace.from_config()
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Použití `from_delimited_files()` metody pro čtení v textových souborů s oddělovači a vytvoření datových sad v paměti.
+Použití `from_delimited_files()` metodu pro načtení souborů s oddělovači a zrušit datovou sadu vytvořit.
 
 ```Python
 # create an in-memory Dataset on your local machine
@@ -98,23 +100,22 @@ dataset.head(5)
 Použití [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) metoda k registraci datových sad do pracovního prostoru pro sdílení a opětovné použití v rámci vaší organizace a napříč různými experimentů.
 
 ```Python
-dataset = dataset.register(workspace = 'workspace_name',
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
+
                            description = 'Training data',
                            exist_ok = False
                            )
 ```
 
 >[!NOTE]
-> Výchozí nastavení parametrů pro `register()` je "exist_ok = False". Pokud se pokusíte zaregistrovat datovou sadu se stejným názvem beze změny tohoto nastavení dojde k chybě.
+> Výchozí nastavení parametrů pro `register()` je `exist_ok = False`. Pokud se pokusíte zaregistrovat datovou sadu se stejným názvem beze změny tohoto nastavení dojde k chybě.
 
-`register()` Metoda aktualizuje definice už registrované datové sady s nastavením parametru `exist_ok = True`.
+`register()` Metoda vrátí už registrované datové sady s nastavením parametru `exist_ok = True`.
 
 ```Python
-dataset = dataset.register(workspace = workspace_name,
-                           name = "dataset_crime",
-                           description = 'Training data',
-                           exist_ok = True)
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
 ```
 
 Použití `list()` zobrazíte všechny registrované datové sady ve vašem pracovním prostoru.
@@ -137,7 +138,7 @@ Registrované datové sady jsou přístupná a použitelné místně, vzdáleně
 ```Python
 workspace = Workspace.from_config()
 
-dataset = workspace.Datasets['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -1,19 +1,19 @@
 ---
-title: Sledování a ladění ve službě Azure Database for PostgreSQL
-description: Tento článek popisuje monitorování a ladění funkcí ve službě Azure Database for PostgreSQL.
+title: Sledování a ladění ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje monitorování a ladění funkcí ve službě Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 5e03a3e33d618c393241a649be50fe78632caafe
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456219"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069001"
 ---
-# <a name="monitor-and-tune"></a>Monitorování a ladění
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Sledování a ladění – Azure Database for PostgreSQL – jeden Server
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
 
 ## <a name="metrics"></a>Metriky
@@ -33,8 +33,8 @@ Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 |serverlog_storage_percent|Procento úložiště protokolů serveru|Procento|Procento úložiště protokolů serveru používat úložiště protokolů maximální server na server.|
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
-|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
+|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Count|Počet selhání připojení k serveru.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|

@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e988d03b60469940d8750cc07188a61fc7ab8b3a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709608"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191528"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection rizikem události – referenční informace
 
@@ -80,7 +80,9 @@ Tento typ rizikové události označuje přihlášení z IP adresy napadený mal
 
 ## <a name="unfamiliar-sign-in-properties"></a>Neznámé vlastnosti přihlášení
 
-**Typ zjišťování:** V reálném čase **starý název:** Přihlášení z neznámých míst
+**Typ zjišťování:** V reálném čase  
+**Starý název:** Přihlášení z neznámých míst
+
 
 Tento typ rizikové události bere v úvahu minulé historie přihlašování (IP, zeměpisné šířky / délky a čísla ASN) k vyhledání neobvyklou přihlašovací aktivitou. Systém uchovává informace o předchozí umístění použitá uživatelem a bere v úvahu tyto "známé" umístění. Riziková událost se aktivuje, dojde li přihlásit z umístění, které již není v seznamu známých umístění. Nově vytvořený uživatelé budou v "režimu learning" pro určitou dobu v neznámého přihlášení vlastnosti, které rizikové události se vypne při naše algoritmy přečtěte si chování uživatele. Studijní doba trvání režimu je dynamický a závisí na tom, jak dlouho trvá algoritmus shromáždit dostatek informací o vzory přihlašování uživatele. Minimální doba trvání je pět dní. Uživatele můžete přejít zpět do režimu učení po delší době nečinnosti. Systém také ignoruje přihlášení ze známé zařízení a umístění, které jsou geograficky umístěné blízko známé umístění. 
 

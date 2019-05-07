@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154282"
+ms.locfileid: "65204898"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -25,7 +25,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 |:--- |:--- |:--- |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální počet DWU pro jeden SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí jednotek DTU na server |54,000<br></br>Každý server SQL (např. myserver.database.windows.net) má ve výchozím nastavení kvóty DTU o 54 000, což umožňuje až DW6000c. Tato kvóta je jednoduše bezpečnostní omezení. Můžete zvýšit kvótu podle [vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md) a vyberete *kvóty* jako typu požadavku.  K výpočtu vaší DTU potřebuje, vynásobte celkovou nutná DWU 7.5 nebo 9.0 vynásobte celkové cDWU potřeby. Příklad:<br></br>DW6000 x 7.5 = hodnotě 45 000 Dtu<br></br>DW6000c x 54 9.0 = 000 Dtu.<br></br>Vaši aktuální spotřebu DTU z možnosti SQL serveru můžete zobrazit na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
-| Připojení databáze |Maximální souběžných otevření relace |1024<br/><br/>Počet souběžných relací otevřít budou lišit v závislosti na vybrané DWU. DWU500c a nad podporu maximálně 1 024 otevření relace. DWU400c a starší podporují maximální souběžných otevřít relaci maximálně 512. Mějte na paměti, existují omezení počtu dotazů, které mohou být prováděna současně. Při překročení limitu souběžnosti, požadavek přejde do vnitřní fronty, kde čeká na zpracování. |
+| Připojení databáze |Maximální souběžných otevření relace |1024<br/><br/>Počet souběžných relací otevřít budou lišit v závislosti na vybrané DWU. DWU600c a nad podporu maximálně 1 024 otevření relace. DWU500c a starší podporují maximální souběžných otevřít relaci maximálně 512. Mějte na paměti, existují omezení počtu dotazů, které mohou být prováděna současně. Při překročení limitu souběžnosti, požadavek přejde do vnitřní fronty, kde čeká na zpracování. |
 | Připojení databáze |Maximální velikost paměti pro připravené příkazy |20 MB |
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |128<br/><br/> SQL Data Warehouse mohou spouštět maximálně 128 souběžných dotazů a fronty zbývající dotazy.<br/><br/>Počet souběžných dotazů můžete snížit, když uživatelé přiřazeni k vyšší třídy prostředků nebo pokud SQL Data Warehouse má nižší [jednotka datového skladu](memory-and-concurrency-limits.md) nastavení. Některé dotazy, jako jsou dotazy na zobrazení dynamické správy, jsou vždy povoleny ke spuštění a provést negativní vliv na omezení souběžných dotazu. Další podrobnosti o spuštění souběžných dotazů, najdete v článku [souběžnosti maxima](memory-and-concurrency-limits.md#concurrency-maximums) článku. |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB na DW100. Proto v DWU1000, tempdb přizpůsoben pro 3,99 TB. |

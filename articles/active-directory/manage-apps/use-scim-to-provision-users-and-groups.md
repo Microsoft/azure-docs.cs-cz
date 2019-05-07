@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/03/2019
+ms.date: 5/06/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918537"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191542"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -31,7 +31,7 @@ SCIM je standardizovaná protokol a schéma, které se zaměřuje na disku vět�
 
 Aplikace, pro který Azure AD podporuje mnoho [předem integrované automatické zřizování uživatelů](../saas-apps/tutorial-list.md) implementovat SCIM jako způsob, jak uživatel dostávat upozornění na změnu.  Kromě toho zákazníci mohou připojit aplikace, které podporují konkrétní profil [SCIM 2.0 specifikace protokolu](https://tools.ietf.org/html/rfc7644) pomocí možnosti integrace obecný "mimo Galerii" na webu Azure Portal. 
 
-Hlavní hlavním cílem tohoto článku je v profilu SCIM 2.0, který implementuje Azure AD jako součást její obecný konektor SCIM pro aplikace mimo galerii. Ale úspěšně testování aplikace, která podporuje SCIM pomocí obecného Azure AD connector je krok uvedená v galerii Azure AD jako podpora zřizování uživatelů pro aplikaci. Další informace o zařazení vaší aplikace, uvedená v galerii aplikací Azure AD, najdete v článku [Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
+Hlavní hlavním cílem tohoto článku je v profilu SCIM 2.0, který implementuje Azure AD jako součást její obecný konektor SCIM pro aplikace mimo galerii. Ale úspěšně testování aplikace, která podporuje SCIM pomocí obecného Azure AD connector je krok uvedená v galerii Azure AD jako podpora zřizování uživatelů pro aplikaci. Další informace o zařazení vaší aplikace, uvedená v galerii aplikací Azure AD najdete v tématu [jak: Uvedení aplikace v galerii aplikací Azure AD](../develop/howto-app-gallery-listing.md).
  
 
 >[!IMPORTANT]

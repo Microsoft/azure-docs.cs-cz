@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0506ef82a00b46bf9be14757f15195bcbf8ab432
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148888"
+ms.locfileid: "65202910"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatické škálování a zónově redundantní služba Application Gateway 
 
@@ -22,6 +22,8 @@ Nové SKU v2 zahrnuje následující vylepšení:
 
 - **Automatické škálování**: Služba Application Gateway nebo WAF nasazení na základě automatického škálování SKU můžete vertikálně navýšit kapacitu nebo dolů podle aktuálních vzory zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Tato skladová jednotka nabízí true elasticitu. Standard_v2 a WAF_v2 SKU Application Gateway může pracovat v pevnou kapacitu (automatické škálování, zakázané) a v režimu s povoleným automatickým Škálováním. Režim pevné kapacity je užitečné pro scénáře s konzistentní a předvídatelné zatížení. Režim automatického škálování je výhodné v aplikacích, které najdete v článku odchylky v provozu aplikací.
 - **Zóna redundance**: Application Gateway nebo nasazení WAF může zahrnovat více zón dostupnosti, není potřeba zřizovat samostatných instancí Application Gateway v každé zóně s Traffic Managerem. Můžete zónu jednoho nebo několika zónami, ve které jsou nasazené instance aplikační brány, díky tomu odolnější vůči selhání zóny. Fond back-endu pro aplikace můžete podobně distribuované napříč zónami dostupnosti.
+
+  Redundanci zón je k dispozici, pouze pokud Azure nejsou k dispozici zóny. V jiných oblastech jsou podporovány všechny ostatní funkce. Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Virtuální IP adresy statické**: Application gateway v2 skladová položka podporuje statické virtuální IP adresy zadejte výhradně. Tím se zajistí, že nedojde ke změně virtuální IP adresy přidružené k službě application gateway pro životní cyklus nasazení, i po restartování počítače.
 - **Přepište záhlaví**: Služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP s v2 SKU. Další informace najdete v tématu [hlavičky HTTP přepsat pomocí služby Application Gateway](rewrite-http-headers.md)
 - **Integrace se službou Key Vault (preview)**: Application Gateway v2 podporuje integraci se službou Key Vault (ve verzi public preview) pro certifikáty serveru, které jsou připojeny k naslouchací procesy HTTPS povolené. Další informace najdete v tématu [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md).

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832772"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202931"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
 V tomto kurzu se dozvíte, jak zabezpečit vaše [aplikace služby App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikace function app](https://docs.microsoft.com/azure/azure-functions/) tak, že vytvoříte (nákup) služby App Service certificate v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) a pak vytvořte mu vazbu k Aplikace služby App Service.
 
 > [!TIP]
-> Certifikáty služby App Service můžete použít pro Azure nebo Azure Services a není omezena pouze na App Services. Uděláte to tak, musíte vytvořit místní kopii PFX certifikátu služby App Service můžete jej můžete použít všude, kde chcete. Další informace najdete v tématu [vytváření místní kopie PFX App Service Certificate](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+> Certifikáty služby App Service můžete použít pro Azure nebo Azure Services a není omezena pouze na App Services. Uděláte to tak, musíte vytvořit místní kopii PFX certifikátu služby App Service můžete jej můžete použít všude, kde chcete. Další informace najdete v tématu [vytváření místní kopie PFX App Service Certificate](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
 >
 
 ## <a name="prerequisites"></a>Požadavky

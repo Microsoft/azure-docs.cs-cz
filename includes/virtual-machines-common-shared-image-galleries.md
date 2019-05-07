@@ -5,22 +5,21 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: fd1dd1f8af8fee9b1fecb05405381dba879facde
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149812"
+ms.locfileid: "65192370"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Zadejte sdílený Galerie obrázků:
 
 - Spravovat globální replikací obrázků.
 - Správa verzí a seskupení obrázky pro snadnější správu.
-- Vyšší limity škálování. Vlastních imagí umožňují 600 souběžných virtuálních počítačů, zatímco Galerie obrázků Shared povolit pro 1 000 souběžných virtuálních počítačů.
-- S vysokou dostupností obrázků s využitím Zónově redundantní úložiště. I v případě, že datové centrum ocitne mimo provoz, budete mít přístup k obrázkům v dané oblasti.
+- Zpřístupníte vaše Image s účty Zónově redundantního úložiště (ZRS) s vysokou dostupností v oblasti, které podporují zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám oblastmi.
 - Sdílení napříč předplatnými a dokonce i mezi tenanty používající RBAC.
 
 Pomocí Galerie obrázků Shared můžete sdílet vaše Image jiným uživatelům, objektů služby nebo skupiny služby AD v rámci vaší organizace. Sdílené bitové kopie je možné replikovat do více oblastí, pro rychlejší škálování vašeho nasazení.
@@ -92,12 +91,10 @@ V následující tabulce jsou uvedeny zdrojových oblastí. Všech veřejných o
 
 ## <a name="limits"></a>Limits 
 
-Spravované Image můžete mít jenom 600 souběžných virtuálních počítačů na image s galerií sdílené bitové kopie, to je zvýšena na 1 000 souběžných virtuálních počítačů podle verze image.
-
 Existují omezení na jedno předplatné, pro nasazení prostředků pomocí Galerie sdílené bitové kopie:
-- 10 sdílených image Galerie na předplatné a oblast
-- 200 definice bitové kopie, na předplatné a oblast
-- verze image 2000, na předplatné a oblast
+- 100 Galerie sdílené bitové kopie na předplatné a oblast
+- 1 000 obrázků definice na předplatné a oblast
+- 10 000 obrázků verze na předplatné a oblast
 
 Další informace najdete v tématu [kontrola využití prostředků proti omezení](https://docs.microsoft.com/azure/networking/check-usage-against-limits) příklady o tom, jak zkontrolovat aktuální využití.
  

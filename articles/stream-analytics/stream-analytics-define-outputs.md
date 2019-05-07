@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926068"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205532"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Když použijete výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
@@ -228,7 +228,7 @@ Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvořen�
 | Název tabulky |Název tabulky V tabulce se vytvoří, pokud neexistuje. |
 | Klíč oddílu |Název výstupního sloupce obsahujícího klíč oddílu. Klíč oddílu je jedinečný identifikátor pro oddíl v tabulce, která tvoří první část primárního klíče entity. Je řetězec, který může mít velikost až 1 KB. |
 | Klíč řádku |Název výstupního sloupce obsahujícího klíč řádku. Klíč řádku je jedinečný identifikátor pro entitu v rámci oddílu. Tvoří druhou část primárního klíče entity. Klíč řádku je řetězcová hodnota, která může mít velikost až 1 KB. |
-| Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí hodnota (100) je dostatečné pro většinu úloh. Najdete v článku [tabulky dávkové operace specifikace](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx) další podrobnosti ke změně tohoto nastavení. |
+| Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí hodnota (100) je dostatečné pro většinu úloh. Najdete v článku [tabulky dávkové operace specifikace](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) další podrobnosti ke změně tohoto nastavení. |
 
 ## <a name="service-bus-queues"></a>Fronty služby Service Bus
 [Fronty služby Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) nabízejí doručení zpráv FIFO na jeden nebo několik konkurenčních spotřebitelů. Zprávy jsou obvykle přijata a zpracovávají v pořadí, ve kterém byly přidány do fronty. Je každou zprávu přijme a zpracuje jenom jeden spotřebitel zprávy.

@@ -14,23 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2573ad64830247d232bbd6d156fac7f50d65f410
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925087"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192629"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.
 
 > [!NOTE]
-> Vlastní upozornění se už brzy nebude podporováno, přečtěte si další na alternativní následujícími službami.
+> Vlastní upozornění se vyřadí z provozu 30. června 2019.
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Vyřazení oznámení na vlastní pravidla ve službě Azure Security Center
 
 Prostředí vlastní upozornění se vyřadí z důvodu vyřazení základní infrastruktury, je založen na 30. června 2019. V časovém rámci až do vyřazení uživatelé budou moci upravit existující vlastní pravidla výstrah ale nebudete moct přidat nové.
-Uživatelé by měli povolit [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) s připojováním jedním kliknutím automaticky migrovat své existující výstrahy a vytvářet nové nebo případně znovu vytvořit jejich výstrahy se službou Azure Monitor upozornění protokolů.
+Uživatelé by měli buď:
+- Povolit [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) s připojováním jedním kliknutím automaticky migrovat své existující výstrahy a vytvořit nové
+- Znovu vytvořit s využitím upozornění log Azure Monitor výstrah
                                      
 Chcete-li zachovat existující výstrahy a migrací do Azure Sentinelu, [spusťte Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" automaticky migrovat vaše upozornění.
 

@@ -1,21 +1,21 @@
 ---
-title: Doporučení k výkonu ve službě Azure Database for PostgreSQL
-description: Tento článek popisuje funkce výkonu doporučení ve službě Azure Database for PostgreSQL.
+title: Doporučení k výkonu ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje funkce výkonu doporučení ve službě Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/28/2018
-ms.openlocfilehash: c5324618eeda90b4ef1a512385fb2f14bf391215
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564429"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068844"
 ---
-# <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Doporučení k výkonu ve službě Azure Database for PostgreSQL
+# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Doporučení k výkonu ve službě Azure Database for PostgreSQL – jeden Server
 
-**Platí pro:** Azure Database for PostgreSQL 9.6 a 10
+**Platí pro:** Azure Database for PostgreSQL – jeden Server 9.6 a 10
 
 Doporučení k výkonu funkce analyzuje vaše databáze pro vytvoření přizpůsobené návrhy pro zlepšení výkonu. K vytvoření doporučení, analýza zjistí různé vlastnosti databáze, včetně schémat. Povolit [Query Store](concepts-query-store.md) na serveru plně využívat funkci doporučení k výkonu. Po implementaci jakékoli výkonu doporučení, měli byste otestovat výkon a vyhodnotit její dopad tyto změny. 
 

@@ -1,19 +1,19 @@
 ---
-title: Zálohování a obnovení ve službě Azure Database for PostgreSQL
-description: Další informace o automatické zálohování a obnovení vašeho serveru Azure Database for PostgreSQL.
+title: Zálohování a obnovení ve službě Azure Database for PostgreSQL – jeden Server
+description: Další informace o automatické zálohování a obnovení vašeho serveru Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 08a061a76f1532441817e61d423533bcc0850227
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456253"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068858"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Zálohování a obnovení ve službě Azure Database for PostgreSQL
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení ve službě Azure Database for PostgreSQL – jeden Server
 
 Azure Database for PostgreSQL automaticky vytvoří serverových záloh a ukládá je do nakonfigurovaného uživatele místně redundantní a geograficky redundantní úložiště. Zálohy lze použít k obnovení vašeho serveru v daném okamžiku. Zálohování a obnovení jsou nedílnou součást každé strategie obchodní kontinuity podnikových procesů, protože jejich Chraňte svoje data před náhodným poškozením nebo odstranění.
 

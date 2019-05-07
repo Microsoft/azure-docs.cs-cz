@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722153"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205022"
 ---
 # <a name="data-querying"></a>Dotazování dat
 
@@ -35,9 +35,9 @@ Tři hlavní kategorie rozhraní API jsou k dispozici v Time Series Insights:
 
 Následující základní rozhraní API jsou podporovány.
 
-![tsq][1]
+[![Přehled řady dotazu čas](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
-### <a name="environment-apis"></a>Rozhraní API prostředí
+## <a name="environment-apis"></a>Rozhraní API prostředí
 
 K dispozici jsou následující rozhraní API prostředí:
 
@@ -45,7 +45,7 @@ K dispozici jsou následující rozhraní API prostředí:
 * [Zjistit dostupnost prostředí rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Vrací distribuce počet událostí v časové razítko události `$ts`. Toto rozhraní API pomáhá, určete, jestli jsou všechny události v časové razítko tak, že vrací počet událostí, pokud nějaké existují.
 * [Získat schéma událostí rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Vrátí metadata schématu událostí pro daný hledaný rozpětí. Toto rozhraní API pomáhá načíst všechny metadat a vlastností, které jsou k dispozici ve schématu pro daný hledaný rozpětí.
 
-### <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API pro čas řady Model-Query (TSM-Q)
+## <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API pro čas řady Model-Query (TSM-Q)
 
 K dispozici jsou následující rozhraní API modelu dotazu řady čas:
 
@@ -54,7 +54,7 @@ K dispozici jsou následující rozhraní API modelu dotazu řady čas:
 * [Rozhraní API hierarchie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): Umožňuje CRUD v časové řadě hierarchie a jejich přidružené pole cesty.
 * [Instance rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): Povolí CRUD na časové řady instancí a jejich polí přidruženou instanci.
 
-### <a name="time-series-query-tsq-apis"></a>Čas řady dotazů (TSQ) rozhraní API
+## <a name="time-series-query-tsq-apis"></a>Čas řady dotazů (TSQ) rozhraní API
 
 K dispozici jsou následující rozhraní API čas řady dotazů:
 
@@ -80,6 +80,3 @@ K dispozici jsou následující rozhraní API čas řady dotazů:
 - Přečtěte si čas Series Insights ve verzi Preview [modelování dat](./time-series-insights-update-tsm.md) článku.
 
 - Zjistit [osvědčené postupy při výběru ID řady času](./time-series-insights-update-how-to-id.md).
-
-<!-- Images -->
-[1]: media/v2-update-tsq/tsq.png

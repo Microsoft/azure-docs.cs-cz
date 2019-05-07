@@ -207,7 +207,7 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
 |console|neuvedeno| [Konzoly](#console) nastavení protokolování. |
 |applicationInsights|neuvedeno| [ApplicationInsights](#applicationinsights) nastavení. |
 
-## <a name="console"></a>konzola
+## <a name="console"></a>console
 
 Toto nastavení je podřízeným prvkem [protokolování](#logging). Určuje konzoly protokolování není v režimu ladění.
 

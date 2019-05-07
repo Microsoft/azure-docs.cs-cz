@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 82cbffb257d85197848b8bca14231e5363d6d45c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 360674514aff79908dcab8c8b93095ca2feb5d51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729834"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198949"
 ---
 Některé databázové úlohy, jako je SQL Server nebo Oracle vyžadují vysoký poměr paměti, úložiště a šířku pásma vstupně-výstupních operací, ale ne počet vysokou jader. Mnoho úloh databáze nejsou náročné na CPU. Azure nabízí určité velikosti virtuálních počítačů, ve kterém lze omezit počet virtuálních procesorů virtuálního počítače chcete snížit náklady na licencování softwaru, a přitom stejnou paměť, úložiště a šířku pásma vstupně-výstupních operací.
 
@@ -41,7 +41,7 @@ Licenční poplatky za SQL Server nebo Oracle jsou omezeny na nový počet virtu
 | Standard_E8-2s_v3   | 2    | Stejné jako E8s_v3  |
 | Standard_E16-8s_v3  | 8    | Stejné jako E16s_v3 |
 | Standard_E16-4s_v3  | 4    | Stejné jako E16s_v3 |
-| Standard_E32-16_v3  | 16   | Stejné jako E32s_v3 |
+| Standard_E32-16s_v3 | 16   | Stejné jako E32s_v3 |
 | Standard_E32-8s_v3  | 8    | Stejné jako E32s_v3 |
 | Standard_E64-32s_v3 | 32   | Stejné jako E64s_v3 |
 | Standard_E64-16s_v3 | 16   | Stejné jako E64s_v3 |

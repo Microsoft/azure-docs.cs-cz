@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b97fe5d638b5967f533e489a67d4235bbc5a3db1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128411"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198580"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování. Tyto sítě můžou potom připojené k vaší místní sítí pomocí technologie VPN. 
@@ -271,9 +271,9 @@ Nová verze je ve verzi Preview a má následující vlastnosti.
 * Prostředky můžete přistupovat přes připojení ExpressRoute, bez jakékoli další konfigurace nad rámec integraci se službou ExpressRoute připojené virtuální sítě.
 * Aplikace a virtuální síť musí být ve stejné oblasti
 * Nová funkce vyžaduje nevyužité podsítě ve virtuální síti správce prostředků.
+* Aplikace musí být v nasazení služby Azure App Service, který je schopen vertikální navýšení kapacity Premium v2.
 * Plán služby App Service musí být na plán Standard, Premium nebo PremiumV2
 * Produkční úlohy nejsou podporovány na novou funkci, i když je ve verzi Preview
-* Aplikace musí být v nasazení služby Azure App Service, který je schopen vertikální navýšení kapacity Premium v2.
 * Novou funkci integrace virtuální sítě nefunguje pro aplikace ve službě App Service Environment.
 * Nelze odstranit virtuální síť, která integrované aplikace.  
 * Směrovací tabulky a globální partnerský vztah ještě nejsou k dispozici díky nově zavedené integraci virtuální sítě.  

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616878"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204156"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -113,7 +113,7 @@ Podrobnosti najdete v souboru `Program.cs` a v následujících částech.
 
 ### <a name="preliminaries"></a>Nezbytné úkony
 
-Za účelem práce s účtem úložiště aplikace použije klientskou knihovnu služby Azure Storage pro .NET. Vytvoří odkaz na účet pomocí třídy [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) a z té vytvoří třídu [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient).
+Za účelem práce s účtem úložiště aplikace použije klientskou knihovnu služby Azure Storage pro .NET. Vytvoří odkaz na účet pomocí třídy [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) a z té vytvoří třídu [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient).
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

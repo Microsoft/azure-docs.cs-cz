@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: be5719d2c383c838ef70c6862c1055c3374e05e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362443"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204254"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
 
@@ -68,7 +68,7 @@ Pomocí Průvodce instalací a provede vás provede kroky pro konfigurace webov�
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Ve výchozím nastavení je zadán TCP port číslo 8080.
-4. Zvolte typ ověřování jako **NTLM**, **základní**, nebo **žádný**. Základní je nejméně bezpečná ověřování pro konfiguraci proxy serveru. NT LAN Manager (NTLM) je vysoce zabezpečené a komplexní ověřovací protokol, který používá třícestné systému zasílání zpráv (někdy čtyři Pokud je potřeba další integrity) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu [základní](http://hc.apache.org/httpclient-3.x/authentication.html) a [ověřování protokolem NTLM](http://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Zvolte typ ověřování jako **NTLM**, **základní**, nebo **žádný**. Základní je nejméně bezpečná ověřování pro konfiguraci proxy serveru. NT LAN Manager (NTLM) je vysoce zabezpečené a komplexní ověřovací protokol, který používá třícestné systému zasílání zpráv (někdy čtyři Pokud je potřeba další integrity) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu [základní](https://hc.apache.org/httpclient-3.x/authentication.html) a [ověřování protokolem NTLM](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **Ve službě Správce zařízení StorSimple grafy monitorování zařízení, nebudou fungovat Basic nebo v konfiguraci proxy serveru pro toto zařízení je povolené ověřování NTLM. Monitorování grafy pro práci budete muset zajistit, že ověřování je nastavena na hodnotu NONE.**

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: kumud
-ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728343"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203535"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-ddos-protection-plan"></a>Vytvořit plán DDoS Protection
 
-Plán DDoS protection definuje sadu virtuálních sítí, které mají před útoky DDoS standard protection povolené napříč předplatnými. Můžete nakonfigurovat jeden plán DDoS protection vaší organizace a propojení virtuálních sítí z několika předplatných stejný plán. Plán DDoS Protection samotného je také přidružený k předplatnému, kterou jste vybrali při vytváření plánu. Předplatné plánu souvisí s sebou nese náklady na měsíční opakované náklady pro plán, jakož i poplatky za Nadlimitní využití, v případě, že počet chráněné veřejné IP adresy překračuje 100. Další informace o cenách za DDoS najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
+Plán DDoS protection definuje sadu virtuálních sítí, které mají před útoky DDoS standard protection povolené napříč předplatnými. Můžete nakonfigurovat jeden plán DDoS protection vaší organizace a propojení virtuálních sítí z několika předplatných stejný plán. Plán DDoS Protection samotného je také přidružený k předplatnému, kterou jste vybrali při vytváření plánu. Plánu služby DDoS Protection funguje napříč oblastmi a předplatných. Příklad – můžete vytvořit plán v oblasti East-US a odkaz k předplatnému #1 ve vašem tenantovi. Stejný plán, který lze propojit k virtuálním sítím z jiných předplatných v různých oblastech, ve vašem tenantovi. Předplatné plánu souvisí s sebou nese náklady na měsíční opakované náklady pro plán, jakož i poplatky za Nadlimitní využití, v případě, že počet chráněné veřejné IP adresy překračuje 100. Další informace o cenách za DDoS najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
 Vytvoření více než jeden plán není vyžadováno pro většinu organizací. Plán nejde mezi předplatnými přesunout. Pokud chcete změnit přihlášení k odběru plánu je v, budete muset [odstranit existující plán](#work-with-ddos-protection-plans) a vytvořte novou.
 
@@ -101,7 +101,7 @@ Můžete vybrat libovolný dostupných metrik DDoS protection vás upozorní, kd
     |Název                     | myDdosAlert                                                                                        |
     |Předplatné             | Vyberte předplatné, které obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na.        |
     |Skupina prostředků           | Vyberte skupinu prostředků, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na.      |
-    |Prostředek                 | Vyberte veřejnou IP adresu, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na. Před útoky DDoS monitoruje veřejné IP adresy přiřazené k prostředkům ve virtuální síti. Pokud nemáte k dispozici žádné prostředky s veřejnými IP adresami ve virtuální síti, musíte nejprve vytvořit prostředek s veřejnou IP adresu. Můžete monitorovat veřejnou IP adresu všechny prostředky nasazena prostřednictvím Resource Manageru (ne classic) uvedené v [virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), s výjimkou služby Azure App Service Environment a Azure VPN Gateway. Chcete-li pokračovat v tomto kurzu, můžete rychle vytvářet [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače.                   |
+    |Resource                 | Vyberte veřejnou IP adresu, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na. Před útoky DDoS monitoruje veřejné IP adresy přiřazené k prostředkům ve virtuální síti. Pokud nemáte k dispozici žádné prostředky s veřejnými IP adresami ve virtuální síti, musíte nejprve vytvořit prostředek s veřejnou IP adresu. Můžete monitorovat veřejnou IP adresu všechny prostředky nasazena prostřednictvím Resource Manageru (ne classic) uvedené v [virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), s výjimkou služby Azure App Service Environment a Azure VPN Gateway. Chcete-li pokračovat v tomto kurzu, můžete rychle vytvářet [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače.                   |
     |Metrika                   | V části před útoky DDoS útoku nebo ne                                                                            |
     |Prahová hodnota                | 1 - **1** znamená, že jsou terčem útoku. **0** znamená, že nejste terčem útoku.                         |
     |Období                   | Vyberte jakékoli hodnotu zvolíte.                                                                   |
@@ -127,6 +127,7 @@ Telemetrie na útok je zajišťováno prostřednictvím Azure monitorování v r
 4. Vyberte **předplatné** a **skupiny prostředků** obsahující veřejnou IP adresu, který chcete telemetrii.
 5. Vyberte **veřejnou IP adresu** pro **typ prostředku**, pak vyberte konkrétní veřejná IP adresa má telemetrii.
 6. Řada **dostupné metriky** se zobrazí na levé straně obrazovky. Tyto metriky, pokud je vybráno, vykreslovacích v **graf metrik Azure monitoru** na obrazovce Přehled.
+7. Vyberte **agregace** zadejte jako **Max**
 
 Názvy metrik prezentují paketů různých typů a bajtů vs. pakety, základní konstrukce názvy značek na každou metriku následujícím způsobem:
 
@@ -138,7 +139,7 @@ Pro simulaci s útoky DDoS pro ověření telemetrická data, najdete v článku
 
 ## <a name="view-ddos-mitigation-policies"></a>Zobrazit zásady omezení rizik před útoky DDoS
 
-DDoS Protection standardní použije tři zásady automaticky laděná omezení rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněných prostředků ve virtuální síti, který má povolené před útoky DDoS. Prahové hodnoty zásady můžete zobrazit tak, že vyberete **TCP příchozí pakety pro aktivaci omezení rizik útoků DDoS** a **UDP příchozí pakety pro aktivaci omezení rizik útoků DDoS** metriky, jak je znázorněno na následujícím obrázku:
+DDoS Protection standardní použije tři zásady automaticky laděná omezení rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněných prostředků ve virtuální síti, který má povolené před útoky DDoS. Prahové hodnoty zásady můžete zobrazit tak, že vyberete **TCP příchozí pakety pro aktivaci omezení rizik útoků DDoS** a **UDP příchozí pakety pro aktivaci omezení rizik útoků DDoS** metriky ve službě **agregace** zadejte jako "Max", jak je znázorněno na následujícím obrázku:
 
 ![Zobrazit zásady omezení rizik](./media/manage-ddos-protection/view-mitigation-policies.png)
 

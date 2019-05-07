@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487563"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204025"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -409,7 +409,7 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
 #### <a name="execute-method"></a>Execute – metoda
 Tato část obsahuje bližší informace o kódu v metodě Execute.
 
-1. Členy pro iterace v rámci vstupní kolekce se nacházejí v [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) oboru názvů. Pro iteraci prostřednictvím kolekce objektů blob, je nutné použít **BlobContinuationToken** třídy. V podstatě je nutné použít DNT-při smyčky s tokenem jako mechanismus pro ukončení opakování. Další informace najdete v tématu [použití Blob storage pomocí technologie .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Základní smyčky je znázorněna zde:
+1. Členy pro iterace v rámci vstupní kolekce se nacházejí v [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) oboru názvů. Pro iteraci prostřednictvím kolekce objektů blob, je nutné použít **BlobContinuationToken** třídy. V podstatě je nutné použít DNT-při smyčky s tokenem jako mechanismus pro ukončení opakování. Další informace najdete v tématu [použití Blob storage pomocí technologie .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Základní smyčky je znázorněna zde:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,7 +432,7 @@ Tato část obsahuje bližší informace o kódu v metodě Execute.
     } while (continuationToken != null);
 
     ```
-   Další informace najdete v tématu v dokumentaci [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) metody.
+   Další informace najdete v tématu v dokumentaci [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) metody.
 
 1. Kód pro práci prostřednictvím sady objektů BLOB logicky přejde v rámci provést-smyčku while. V **Execute** metody, provést – zatímco smyčka projde seznam objektů blob pro metodu s názvem **Calculate**. Metoda vrátí řetězcovou proměnnou s názvem **výstup** , který je výsledkem by bylo provést iteraci pomocí všech objektů BLOB v segmentu.
 

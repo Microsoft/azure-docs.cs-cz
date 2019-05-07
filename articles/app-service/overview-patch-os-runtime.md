@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838990"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203332"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a používání dílčích oprav modulu runtime ve službě Azure App Service
 
@@ -37,7 +37,7 @@ Z bezpečnostních důvodů nejsou publikovány určitá specifika informace o z
 
 Azure slouží ke správě opravy operačního systému na dvou úrovních, fyzických serverů a hostované virtuální počítače (VM), na kterých běží prostředky App Service. Obě se aktualizuje každý měsíc, které odpovídá měsíční [Patch Tuesday](https://technet.microsoft.com/security/bulletins.aspx) plánu. Tyto aktualizace se použijí automaticky, tak, aby zaručuje vysokou dostupnost služby smlouvy SLA Azure. 
 
-Podrobné informace o tom, jak se aktualizace najdete v tématu [uvedení magic za aktualizace operačního systému aplikace služby](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/).
+Podrobné informace o tom, jak se aktualizace najdete v tématu [uvedení magic za aktualizace operačního systému aplikace služby](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Jak Azure zacházet s významnou ohrožení zabezpečení?
 

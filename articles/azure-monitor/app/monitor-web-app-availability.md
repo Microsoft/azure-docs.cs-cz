@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: fe8549027bb7fcf9fcfc2db26816c0b6646c9da6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916384"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205374"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -274,7 +274,7 @@ Pokud váš test vyžaduje přihlášení pomocí OAuth, bude obecný postup ná
 
 ## <a name="performance-tests"></a>Testy výkonnosti
 > [!NOTE]  
-> Cloudové zátěžové testování služby je zastaralý. Další informace o vyřazení podpory, dostupnost služby a alternativní služeb můžete najít [tady](https://docs.microsoft.com/en-us/azure/devops/test/load-test/overview?view=azure-devops).
+> Cloudové zátěžové testování služby je zastaralý. Další informace o vyřazení podpory, dostupnost služby a alternativní služeb můžete najít [tady](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
 
 Na svém webu můžete spustit zátěžový test. Podobně jako v testu dostupnosti můžete z našich bodů po celém světě odeslat buď jednoduché požadavky, nebo vícekrokové požadavky. Na rozdíl od testu dostupnosti se odesílá mnoho požadavků, které simulují několik souběžných uživatelů.
 

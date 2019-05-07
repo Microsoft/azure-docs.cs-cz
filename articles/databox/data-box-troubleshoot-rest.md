@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: ee2820d78e95924e09a0219753f87d6910c0e736
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5ceeb2e6419cab7945454087edd4c821db28343
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782952"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204223"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Řešit problémy spojené s úložiště objektů Blob v Azure Data Box
 
@@ -55,7 +55,7 @@ Tato část podrobně popisuje některé z hlavních problémů při používán
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
 |Hodnota pro jednu z hlaviček HTTP není ve správném formátu. |Nainstalovaná verze knihovnu Microsoft Azure Storage pro Python nepodporuje zařízení Data Box. Viz požadavky na úložiště objektů Blob v Azure Data Box pro podporované verze.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Před spuštěním Pythonu, nastavte prostředí requests_ca_bundle na cestu k souboru certifikátu SSL s kódováním Base64 (viz postup [stáhněte si certifikát]()). <br>Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativně přidejte certifikát do úložiště certifikátů systému a potom nastavte tuto proměnnou prostředí k cestě daného úložiště. <br> Například na Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Před spuštěním Pythonu, nastavte prostředí requests_ca_bundle na cestu k souboru certifikátu SSL s kódováním Base64 (viz postup [stáhněte si certifikát](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativně přidejte certifikát do úložiště certifikátů systému a potom nastavte tuto proměnnou prostředí k cestě daného úložiště. <br> Například na Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Běžné chyby

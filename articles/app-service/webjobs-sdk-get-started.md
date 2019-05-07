@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60833197"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198622"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -195,7 +195,7 @@ Počínaje verzí 3.x, je nutné explicitně nainstalovat rozšíření vazby ú
 
    `QueueTrigger` Atribut oznamuje modul runtime tuto funkci volat při zápisu novou zprávu ve frontě služby Azure Storage volá `queue`. Obsah zprávy fronty jsou k dispozici metoda kódu v `message` parametru. Tělo metody je, kde můžete zpracovávat data aktivační události. V tomto příkladu pouze kód zaprotokoluje zprávu.
 
-   `message` Nemá parametr bude řetězec. Můžete také navázat na objekt JSON s polem bajtů nebo [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) objektu. [Zobrazit využití aktivační událost fronty](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Každý typ vazby (například fronty, objekty BLOB nebo tabulky) má jinou sadu typů parametrů polí, které lze svázat.
+   `message` Nemá parametr bude řetězec. Můžete také navázat na objekt JSON s polem bajtů nebo [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektu. [Zobrazit využití aktivační událost fronty](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Každý typ vazby (například fronty, objekty BLOB nebo tabulky) má jinou sadu typů parametrů polí, které lze svázat.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 

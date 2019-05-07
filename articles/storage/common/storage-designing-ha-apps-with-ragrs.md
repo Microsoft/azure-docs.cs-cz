@@ -1,5 +1,5 @@
 ---
-title: Návrh s vysokou dostupností Aaplications pomocí geograficky redundantního úložiště jen pro čtení (RA-GRS) | Dokumentace Microsoftu
+title: Navrhování aplikací s vysokou dostupností pomocí geograficky redundantního úložiště jen pro čtení (RA-GRS) | Dokumentace Microsoftu
 description: Jak používat úložiště Azure RA-GRS se navrhovat vysoce dostupné aplikace dostatečně flexibilní, aby zpracování výpadků.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6dc497ac2afd54965485ff553bb25f47d7cf0491
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139342"
+ms.locfileid: "65205503"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -148,7 +148,7 @@ Dalším aspektem je způsob zpracování více instancí aplikace a co dělat, 
 
 Budete mít tři hlavní možnosti monitorování četnost opakování v primární oblasti, aby bylo možné zjistit, kdy se má přejít do sekundární oblasti a změňte aplikace na spouštění v režimu jen pro čtení.
 
-*   Přidání obslužné rutiny [ **opakování** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) událostí na [ **OperationContext** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) požaduje objekt posílají do úložiště – metoda zobrazí v tomto článku a používá se v průvodní ukázce. Tyto události se aktivuje vždy, když klient pokus obnovuje žádost, vám umožní sledovat, jak často klient zaznamená opakovatelná chyby na primární koncový bod.
+*   Přidání obslužné rutiny [ **opakování** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) událostí na [ **OperationContext** ](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) požaduje objekt posílají do úložiště – metoda zobrazí v tomto článku a používá se v průvodní ukázce. Tyto události se aktivuje vždy, když klient pokus obnovuje žádost, vám umožní sledovat, jak často klient zaznamená opakovatelná chyby na primární koncový bod.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -159,7 +159,7 @@ Budete mít tři hlavní možnosti monitorování četnost opakování v primár
     };
     ```
 
-*   V [ **vyhodnotit** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metoda ve vlastní zásady opakování, můžete spustit vlastní kód pokaždé, když probíhá opakování. Kromě zápisu při opakování proběhne, tím také získáte možnost změnit chování opakování.
+*   V [ **vyhodnotit** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metoda ve vlastní zásady opakování, můžete spustit vlastní kód pokaždé, když probíhá opakování. Kromě zápisu při opakování proběhne, tím také získáte možnost změnit chování opakování.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

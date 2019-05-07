@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031401"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192280"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -94,3 +94,27 @@ Operace clusteru jsou omezené, když dochází k upgradu aktivní operace nebo 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Můžu přesunout cluster do jiného předplatného nebo předplatného s clusteru do nového tenanta?
 
 Pokud váš cluster AKS přesunuty do jiného předplatného nebo clusteru, který je vlastníkem předplatného do nového tenanta, přijdete o funkce z důvodu ztráta přiřazení rolí a práva objekty zabezpečení služby clusteru. **AKS nepodporuje přesun clustery napříč předplatných a tenantů** z důvodu tohoto omezení.
+
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>Zobrazuje chyby pokusu o použití funkcí, které vyžadují škálovací sady virtuálních počítačů
+
+*Tato pomoc s řešením potíží se přesměruje z aka.ms/aks-vmss povolení*
+
+Může dojít k chybám, které označují, že AKS cluster není ve škálovací sadě virtuálních počítačů, jako v následujícím příkladu:
+
+**Neznámá "Neznámá" nastavil, automatické škálování jako povolené, ale není ve službě Virtual Machine Scale Sets**
+
+Pokud chcete používat funkce jako je například automatického škálování clusteru nebo uzlu více fondů, AKS clusterů musí být vytvořeny, které používají škálovací sady virtuálních počítačů. Chyby jsou vráceny, pokud se pokusíte použít funkce, které závisí na škálovací sady virtuálních počítačů a cílit cluster AKS pravidelný, virtuálního počítače škálovací sady. Podpora škálovací sady virtuálních počítačů je aktuálně ve verzi preview ve službě AKS.
+
+Postupujte podle *před zahájením* kroků v příslušné doc pro správně registraci pro virtuální počítač škálovací sady funkcí ve verzi preview a vytvoření clusteru AKS:
+
+* [Použití automatického škálování clusteru](cluster-autoscaler.md)
+* [Vytvoření a použití více fondy uzlů](use-multiple-node-pools.md)
+ 
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>Jaká pojmenování omezení se vynucují s ohledem prostředků pro AKS a parametry?
+
+*Tato pomoc s řešením potíží se přesměruje z aka.ms/aks – – pravidla pojmenování*
+
+Omezení názvů jsou implementovány pomocí platformy Azure a AKS. Pokud název prostředku nebo parametr přeruší jednu z těchto omezení, vrátí se chyba, která požádá poskytují různé vstupní. Platí následující pokyny pro běžné pojmenování:
+
+* AKS *MC_* kombinuje název skupiny prostředků název skupiny prostředků a název prostředku. Automaticky generované syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby Zkraťte délku názvu skupiny prostředků nebo název clusteru AKS.
+* *DnsPrefix* musí začínat a končit jenom alfanumerické hodnoty. Platné znaky zahrnují hodnoty alfanumerické znaky a spojovníky (-). *DnsPrefix* nemůže obsahovat speciální znaky, jako je tečka (.).

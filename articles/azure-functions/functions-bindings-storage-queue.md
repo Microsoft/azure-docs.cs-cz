@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 8b9cc112f51840a6bf2cf659863f61ab5962f6e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72e51deb31ad2894ccfc0fc71884c99863184f5b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306845"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203658"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
 
@@ -273,7 +273,7 @@ V jazyce JavaScript, použijte `context.bindings.<name>` pro přístup k datové
 
 ## <a name="trigger---message-metadata"></a>Aktivační události – zpráva metadat
 
-Aktivační událost fronty nabízí několik [vlastnosti metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Toto jsou vlastnosti [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) třídy.
+Aktivační událost fronty nabízí několik [vlastnosti metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Toto jsou vlastnosti [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) třídy.
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
@@ -526,7 +526,7 @@ Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová
 V jazyce C# a skript jazyka C# psát více zpráv fronty pomocí jedné z následujících typů: 
 
 * `ICollector<T>` nebo `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
 Do funkce jazyka JavaScript, použijte `context.bindings.<name>` pro přístup k výstupní fronty zprávu. Řetězec nebo objekt JSON serializovatelný můžete použít pro datovou část položky fronty.
 
@@ -586,4 +586,4 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 <!-- LINKS -->
 
-[CloudQueueMessage]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+[CloudQueueMessage]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage

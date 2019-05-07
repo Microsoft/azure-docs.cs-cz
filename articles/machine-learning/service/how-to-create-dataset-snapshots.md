@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.date: 05/02/2019
-ms.openlocfilehash: ed10cb259802321769605bc0399a610131ddb174
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 51d0dcfc543834e9a8725d11fa82b566a5132a6b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029142"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205002"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>Porovnání dat a zajištění reprodukovatelnost se snímky (preview)
 
-V tomto článku zjistíte, jak vytvořit a spravovat snímky vašich [datové sady Azure Machine Learning](how-to-create-register-datasets.md) (datové sady), můžete zachytit nebo porovnání dat v čase. Datové sady usnadňují přístup a práce s daty v cloudu v různých scénářích. 
+V tomto článku zjistíte, jak vytvořit a spravovat snímky vašich [datové sady Azure Machine Learning](how-to-create-register-datasets.md) (datové sady), můžete zachytit nebo porovnání dat v čase. Datové sady usnadňují přístup a práce s daty v cloudu v různých scénářích.
 
-**Datová sada snímky** uložení profilu (souhrnné statistiky) dat v době jeho vytvoření. Můžete také uložit kopii dat ve vašem snímku pro reprodukovatelnost. 
+**Datová sada snímky** uložení profilu (souhrnné statistiky) dat v době jeho vytvoření. Můžete také uložit kopii dat ve vašem snímku pro reprodukovatelnost.
 
 >[!Important]
 > Snímky se vám účtovat poplatky za úložiště. Ukládání kopie dat ve vašem snímku se vyžaduje ještě více úložiště. Použití [ `dataset.delete_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#delete-snapshot-snapshot-name-) když jsou už nepotřebujete.
@@ -29,9 +29,9 @@ V tomto článku zjistíte, jak vytvořit a spravovat snímky vašich [datové s
 
 Existují tři hlavní využití pro snímky:
 
-+ **Ověření modelu**: Porovnání dat profilu různých snímků mezi tréninkových spuštění nebo proti produkční data. 
++ **Ověření modelu**: Porovnání dat profilu různých snímků mezi tréninkových spuštění nebo proti produkční data.
 
-+ **Model reprodukovatelnost**: Vaše výsledky reprodukujte voláním snímek, který obsahuje data během cvičení. 
++ **Model reprodukovatelnost**: Vaše výsledky reprodukujte voláním snímek, který obsahuje data během cvičení.
 
 + **Sledování dat v čase**: Zobrazit, jak datovou sadu se vyvinula tak [porovnání profily](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py#compare-profiles-rhs-dataset-snapshot--include-columns-none--exclude-columns-none--histogram-compare-method--histogramcomparemethod-wasserstein--0--)
   
@@ -41,16 +41,17 @@ Pokud chcete vytvořit datovou sadu snímky, budete potřebovat registrované da
 
 ## <a name="create-dataset-snapshots"></a>Vytvořit datovou sadu snímky
 
-Chcete-li vytvořit snímek datovou sadu, použijte [ `dataset.create_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) ze sady SDK Azure Machine Learning. 
+Chcete-li vytvořit snímek datovou sadu, použijte [ `dataset.create_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) ze sady SDK Azure Machine Learning.
 
 Ve výchozím nastavení, uloží snímek profilu (souhrnné statistiky) data na nejnovější [definici datové sady](how-to-manage-dataset-definitions.md) použít. Definice datové sady obsahuje záznam o jakékoli kroky transformace definované pro data. To je skvělý způsob, jak vytvořit reprodukovatelné vaše přípravy dat, pracovat.
 
-Volitelně můžete použít také kopii dat ve vašem snímku přidáním `create_data_snapshot = True`.  Tato data můžou být užitečná pro reprodukovatelnost. 
+Volitelně můžete použít také kopii dat ve vašem snímku přidáním `create_data_snapshot = True`.  Tato data můžou být užitečná pro reprodukovatelnost.
 
 Tento příklad používá [ukázková crime data](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) datovou sadu s názvem `dataset_crime` vytvořené pomocí článku ["datové sady vytvořit a zaregistrovat"](how-to-create-register-datasets.md).
 
 ```Python
-from azureml.core.dataset import Workspace, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.dataset import Dataset
 from azureml.data.dataset_snapshot import DatasetSnapshot
 import datetime
 
@@ -58,7 +59,7 @@ import datetime
 workspace = Workspace.from_config()
 
 # get existing, named dataset:
-dataset = workspace.Dataset['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 
 # assign name to snapshot
 snapshot_name = 'snapshot_' + datetime.datetime.today().strftime('%Y%m%d%H%M%S')
@@ -69,11 +70,10 @@ snapshot = dataset.create_snapshot(snapshot_name = snapshot_name,
                                    compute_target = remote_compute_target,
                                    create_data_snapshot = True)
 ```
- 
 
 Vzhledem k tomu, že asynchronní vytváření snímků, použít [ `wait_for_completion()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py#wait-for-completion-show-output-true--status-update-frequency-10-) metoda monitorování procesu.
 
-```python
+```Python
 # monitor process every 10 seconds
 snapshot.wait_for_completion(show_output=True, status_update_frequency=10)
 
@@ -102,7 +102,7 @@ Použití [ `dataset.delete_snapshot()` ](https://docs.microsoft.com/python/api/
 
 Pokud chcete načíst existující snímek, použijte [ `get_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#get-snapshot-snapshot-name-).
 
-Chcete-li získat seznam vašich uložené snímky dané datové sadě, použijte [ `get_all_snapshots()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#get-all-snapshots--). 
+Chcete-li získat seznam vašich uložené snímky dané datové sadě, použijte [ `get_all_snapshots()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#get-all-snapshots--).
 
 ```Python
 # Get named snapshot for this dataset
@@ -141,12 +141,11 @@ Okres|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13
 Dál|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 Oblast komunity|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 
-
 ### <a name="get-the-data-from-the-snapshot"></a>Získání dat ze snímku
 
 Pokud chcete získat kopii data uložená v datové sadě snímků, generovat pandas DataFrame s [ `to_pandas_dataframe()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#to-pandas-dataframe--) metody.
 
-Tato metoda selže, pokud nebyl požadován kopii dat během vytváření snímku. 
+Tato metoda selže, pokud nebyl požadován kopii dat během vytváření snímku.
 
 ```Python
 snapshot.to_pandas_dataframe().head(3)
@@ -157,7 +156,6 @@ snapshot.to_pandas_dataframe().head(3)
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|1153|PODVODNÝ POSTUPEM|KRÁDEŽE FINANČNÍ IDENTITY PŘES 300 USD|OSTATNÍ|False|False|...|9|50|11|1183356.0|1831503.0|2016|2016-05-11 15:48:00|41.692834|-87.604319|(41.692833841, -87.60431945)
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX LOŽIT MARSHFIELD|890|KRÁDEŽ|ZE SESTAVENÍ|MÍSTO POBYTU|False|False|...|21|71|6|1166776.0|1850053.0|2016|2016-05-12 15:48:00|41.744107|-87.664494|(41.744106973, -87.664494285)
 2|10519196|HZ261252|2016-04-15 10:00:00|104XX LOŽIT SACRAMENTO|1154|PODVODNÝ POSTUPEM|KRÁDEŽE FINANČNÍ IDENTITY 300 USD A V ČÁSTI|MÍSTO POBYTU|False|False|...|19|74|11|NaN|NaN|2016|2016-05-12 15:50:00|NaN|NaN|
-
 
 ## <a name="next-steps"></a>Další postup
 

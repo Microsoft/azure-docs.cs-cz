@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 921d154226862d822802562442f59bf1c37c4745
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e64b18cef44a5fa6d63137f57fcada27adcd0299
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148910"
+ms.locfileid: "65205484"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -71,7 +71,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
     * Lokátor streamování nahradí Lokátor.
     * Živé události nahradí kanálu.<br/>Živé události se účtuje podle měřiče živý kanál. Další informace najdete v tématu [fakturační](live-event-states-billing.md) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Živé nahradí výstup programu.
-* Výstupy za provozu není nutné explicitně spustit, spusťte na vytváření a zastavit při odstranění. Programy pracoval odlišně v rozhraních API v2, měly spustit po jeho vytvoření.
+* Live výstupů spuštění při vytvoření a přestanou při odstranění. Programy pracoval odlišně v rozhraních API v2, měly spustit po jeho vytvoření.
 *  Pokud chcete získat informace o úloze, musíte znát název transformace, ve kterém byla úloha vytvořena. 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkce mezer s ohledem na rozhraní API v2

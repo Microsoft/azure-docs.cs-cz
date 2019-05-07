@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/2/2019
+ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771695"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205459"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -25,8 +25,8 @@ Ale některé nové funkce ve službě může představovat velkou změnu, jako 
 
 Azure Stream Analytics aktuálně podporuje tři úrovně kompatibility:
 
-* 1.0 – výchozí úroveň
-* 1.1 – současné chování při vydání verze
+* Dřívější chování při 1.0-
+* 1.1 – výchozí chování
 * 1.2 (preview) – nejnovější chování pomocí nejnovější vylepšení ve vyhodnocování
 
 Původní 1.0 úroveň kompatibility byla zavedena v období všeobecné dostupnosti služby Azure Stream Analytics už před několika lety.
@@ -49,7 +49,7 @@ Chcete-li aktualizovat úroveň kompatibility úlohy na webu Azure Portal:
 
 Při aktualizaci úrovní kompatibility T-SQL compiler ověří úlohy pomocí syntaxe, která odpovídá úroveň kompatibility vybrané.
 
-## <a name="compatibility-level-12"></a>Úroveň kompatibility 1.2
+## <a name="compatibility-level-12-preview"></a>Úroveň kompatibility 1.2 (Preview)
 
 V úrovni kompatibility 1.2 byly zavedeny následující hlavní změny:
 

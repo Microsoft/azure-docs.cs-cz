@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899220"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204887"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -87,7 +87,7 @@ Nezpracované datové body (to znamená, položky, které se můžete dotazovat 
 
 Agregovaná data (to znamená, počty, průměr a jiných statistická data, která se zobrazí v Průzkumníku metrik) jsou zachovány za interval 1 minuta po dobu 90 dnů.
 
-[Ladění snímků](../../azure-monitor/app/snapshot-debugger.md) ukládají po dobu sedmi dní. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
+[Ladění snímků](../../azure-monitor/app/snapshot-debugger.md) ukládají po dobu patnácti dnů. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 Data jsou viditelné pro vás a, pokud již máte účet organizace, členové týmu. 

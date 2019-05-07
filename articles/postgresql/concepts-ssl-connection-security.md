@@ -1,19 +1,19 @@
 ---
-title: Konfigurace připojení SSL ve službě Azure Database for PostgreSQL
-description: Pokyny a informace o konfiguraci – Azure Database for PostgreSQL a přidružené aplikace pro správné použití připojení SSL.
+title: Konfigurace připojení SSL ve službě Azure Database for PostgreSQL – jeden Server
+description: Pokyny a informace o konfiguraci – Azure Database for PostgreSQL – jeden Server a přidružené aplikace pro správné použití připojení SSL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: 5a0fc99052b18dc1fa837147aa914a473d27d832
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 56611267872ca79d7d2fe3a08c9b9f49a9b1840b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871405"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067415"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfigurace připojení SSL ve službě Azure Database for PostgreSQL
+# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení SSL ve službě Azure Database for PostgreSQL – jeden Server
 Azure Database for PostgreSQL upřednostňuje připojení klientských aplikací do služby PostgreSQL pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 Ve výchozím nastavení je databázová služba PostgreSQL nakonfigurované vyžadování připojení SSL. Volitelně můžete zakázat, vyžadování SSL pro připojení k vaší databázové službě, pokud klientská aplikace nepodporuje připojení SSL. 

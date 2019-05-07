@@ -1,19 +1,19 @@
 ---
-title: Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
-description: Tento článek popisuje, jak je možné restartovat Azure Database for PostgreSQL pomocí webu Azure portal.
+title: Restartovat – Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
+description: Tento článek popisuje, jak je možné restartovat službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 3/18/2019
-ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420399"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066843"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Restartovat – Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
 Toto téma popisuje, jak je možné restartovat serveru Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
 
 Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.

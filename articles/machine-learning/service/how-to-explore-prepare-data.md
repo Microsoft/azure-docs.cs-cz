@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 683f916596b4c77ec1dbc2acf1f91876c0752c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028827"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204973"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Prozkoumejte a příprava dat pomocí třídy datové sady (Preview)
 
@@ -44,7 +44,7 @@ K prozkoumání a připravit data, budete potřebovat:
 Využijte ukázku vaše data, abyste získali počáteční pochopení architektury dat a obsahu. V tuto chvíli [ `sample()` ](https://docs.microsoft.com//python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#sample-sample-strategy--arguments-) metoda ze třídy Dataset podporuje strategie Top N, jednoduchý náhodné a Stratified vzorkování.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import random
 
 # create an in-memory Dataset from a local file
@@ -109,7 +109,6 @@ sample_dataset.to_pandas_dataframe()
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|KRÁDEŽ|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX LOŽIT KILBOURN|810|KRÁDEŽ|...
 
-
 ## <a name="explore-with-summary-statistics"></a>Prozkoumat s souhrnné statistiky
 
  Detekovat anomálie, chybějící hodnoty, nebo se vrátí chyba [ `get_profile()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-profile-arguments-none--generate-if-not-exist-true--workspace-none--compute-target-none-) metody. Tato funkce získá profil a souhrnné statistiky svá data, která zase pomáhá určit operace přípravy potřebná data použít.
@@ -152,7 +151,7 @@ Z datové sady profilu generovány v předchozí části, uvidíme `Latitude` a 
 Nejprve získejte nejnovější definice datové sady s [ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) a Zredukovat data s využitím [ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow), takže můžeme zobrazit jenom sloupce chceme, aby na adresu.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import azureml.dataprep as dprep
 
 # get the latest definition of Dataset
@@ -222,7 +221,6 @@ Jak je znázorněno v následující tabulce výstup, chybějící šířky byl 
 1|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
 
-
 Aktualizovat definici datové sady, [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) zachovat kroky prováděné transformace.
 
 ```Python
@@ -240,12 +238,13 @@ dataset.head(3)
 
 Často data spolupracujeme se při čištění a příprava dat je pouze podmnožinu celkové množství dat, kterou potřebujeme pro produkční prostředí. V důsledku toho některé předpoklady, které můžeme udělat v rámci naší čištění může třeba vyjít najevo jako NEPRAVDA. Například v sadě dat, která průběžně aktualizuje, může obsahovat sloupec, který původně obsahoval pouze čísla v určitém rozsahu širší rozsah hodnot v pozdější spuštění. Tyto chyby často způsobit přerušení kanály nebo chybnými daty.
 
-Vytváří se kontrolní výrazy s daty, které jsou vyhodnocovány, jak se kanál spustí podporuje datové sady. Tyto kontrolní výrazy nám ověřte, že naše předpoklady na data i nadále být přesné a pokud ne, řešit selhání odpovídajícím způsobem.
+Vytváří se kontrolní výrazy s daty, které jsou vyhodnocovány, jak se kanál spustí podpora datové sady. Tyto kontrolní výrazy nám ověřte, že naše předpoklady na data i nadále být přesné a pokud ne, řešit selhání odpovídajícím způsobem.
 
 Například, pokud chcete omezit `Latitude` a `Longitude` hodnoty ve vaší datové sadě konkrétní číselných rozsahů [ `assert_value()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#assert-value-columns--multicolumnselection--expression--azureml-dataprep-api-expressions-expression--policy--azureml-dataprep-api-engineapi-typedefinitions-assertpolicy----assertpolicy-errorvalue--1---error-code--str----assertionfailed------azureml-dataprep-api-dataflow-dataflow) metoda zajišťuje, že tomu tak vždycky.
 
 ```Python
 from azureml.dataprep import value
+from azureml.core.dataset import Dataset
 
 # get the latest definition of the Dataset
 ds_def = dataset.get_definition()
@@ -282,7 +281,7 @@ print(error.originalValue)
 Jeden z rozšířené nástroje pro datové sady je schopnost odvodit sloupců pomocí příklady požadovaných výsledků. Díky tomu můžete poskytnout sadu SDK příklad, tak může také generovat kód pro dosažení zamýšlený transformace.
 
 ```Python
-from azureml.dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local file
 dataset = Dataset.auto_read_files('./data/crime.csv')
@@ -302,8 +301,8 @@ Následující kód obsahuje dva příklady požadovaného výstupu ("2016-04-04
 ```Python
 ds_def = dataset.get_definition()
 ds_def = ds_def.derive_column_by_example(
-        source_columns = "Date", 
-        new_column_name = "Date_Time_Range", 
+        source_columns = "Date",
+        new_column_name = "Date_Time_Range",
         example_data = [("2016-04-04 23:56:00", "2016-04-04 10PM-12AM"), ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM")]
     )
 ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
@@ -329,7 +328,7 @@ Při shromažďování dat z různých zdrojů můžete setkat, kolísání prav
 Například sloupec `inspections.business.city` obsahuje několik tvarů název města "San Francisco".
 
 ```Python
-from azureml.Dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local json file
 dataset = Dataset.auto_read_files('./data/city.json')

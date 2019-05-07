@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: a887d6c69b9fa80f3144434e72a097e80d123a1b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722298"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203640"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy operačního systému pro HDInsight 
 
@@ -23,29 +23,25 @@ ms.locfileid: "64722298"
 Virtuální počítače v clusteru služby HDInsight je potřeba restartovat příležitostně tak, že je možné nainstalovat důležité opravy. 
 
 Pomocí skriptových akcí popsaných v tomto článku, můžete upravit následujícím způsobem plán oprav operačního systému:
-1. Povolení nebo zakázání automatického restartování počítače
-2. Nastavení četnosti restartuje (ve dnech mezi jednotlivými restartováními)
-3. Nastavte dne v týdnu, kdy dojde k restartování
+1. Úplná aktualizace operačního systému nebo jenom aktualizace zabezpečení
+2. Restartujte virtuální počítač
 
 > [!NOTE]  
-> Tuto akci se skripty budou fungovat jenom s clustery HDInsight založené na Linuxu vytvořená po 1. srpna 2016. Opravy bude platit pouze v případě, že virtuální počítače se restartují. 
+> Tuto akci se skripty budou fungovat jenom s clustery HDInsight založené na Linuxu vytvořená po 1. srpna 2016. Opravy bude platit pouze v případě, že virtuální počítače se restartují. Tento skript nebude automaticky použít aktualizace pro všechny aktualizace budoucí cykly. Spusťte skript, který každý čas nové aktualizace je potřeba použít k instalaci aktualizací a restartování virtuálního počítače.
 
 ## <a name="how-to-use-the-script"></a>Jak používat skript 
 
 Při použití tento skript vyžaduje následující informace:
-1. Umístění skriptu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačů v clusteru.
+1. Umístění skriptu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh.  HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačů v clusteru.
   
-2. Typy uzlů clusteru, které skript platí pro: hlavního uzlu, workernode, zookeeper. Tento skript se musí použít na všechny typy uzlů v clusteru. Pokud není použité u typu uzlu, virtuálních počítačů pro daný typ uzlu bude nadále používat předchozí plán oprav.
+2. Typy uzlů clusteru, které skript platí pro: hlavního uzlu, workernode, zookeeper. Tento skript se musí použít na všechny typy uzlů v clusteru. Pokud není použité u typu uzlu, nebudou aktualizovány virtuálních počítačů pro daný typ uzlu.
 
 
-3.  Parametr: Tento skript je možné zadat tři číselné parametry:
+3.  Parametr: Tento skript přijímá jeden číselný parametr:
 
     | Parametr | Definice |
     | --- | --- |
-    | Povolit nebo zakázat automatické restartování počítače |0 nebo 1. Hodnota 0 zakáže automatického restartování počítače během 1 povolí automatické restartování počítače. |
-    | Frekvence |7 až 90 (včetně). Počet dní čekání před restartem systému virtuálních počítačů pro opravy, které vyžadují restartování. |
-    | Den v týdnu |1 až 7 (včetně). Hodnota 1 značí restartování počítače se budou objevovat v pondělí a 7 znamená Sunday.For příklad, pomocí parametrů 1 60 2 výsledky v automaticky restartuje každých 60 dní (maximální) úterý. |
-    | Trvalost |Při použití akce skriptu do existujícího clusteru, můžete skript označit jako trvalý. Trvalých skriptů se použijí, když se přidají nové workernodes ke clusteru prostřednictvím operace škálování. |
+    | Aktualizace/nainstalovat úplný operační systém instalovat pouze aktualizace zabezpečení |0 nebo 1. Hodnota 0 se nainstaluje aktualizace zabezpečení jenom v průběhu 1 nainstaluje úplná aktualizace operačního systému. Pokud je k dispozici žádný parametr, že výchozí hodnota je 0. |
 
 > [!NOTE]  
 > Tento skript je třeba označit jako trvalý, při použití do existujícího clusteru. V opačném případě žádné nové uzly, které jsou vytvořené prostřednictvím operací škálování bude používat výchozí plán oprav.  Pokud použijete skript jako součást procesu vytváření clusteru, se ukládají automaticky.

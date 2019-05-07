@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 05/06/2019
 ms.locfileid: "64925934"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database pro MariaDB
@@ -35,8 +35,8 @@ Tyto metriky jsou k dispozici pro službu Azure Database pro MariaDB:
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |storage_limit|Limit úložiště.|B|Maximální velikost úložiště pro tento server.|
-|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
+|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Count|Počet selhání připojení k serveru.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 

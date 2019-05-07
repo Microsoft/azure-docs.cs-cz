@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49fe9c0921579802b726e02a074bb0a911d88231
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889574"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204197"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Šifrování dat ve službě Azure Cosmos DB 
 
 Šifrování v klidovém stavu je frázi, která se běžně používá k šifrování dat na zařízeních stálé úložiště, jako je jednotkami SSD (Solid-State Drive) a pevných disků (HDD). Cosmos DB ukládá své primární databáze na jednotkách SSD. Jeho přílohy média a zálohy jsou uloženy v Azure Blob storage, která je obecně zálohovat pevných discích. S vydáním šifrování v klidovém stavu pro službu Cosmos DB všechny databáze, přílohy média a zálohy zašifrují. Vaše data teď šifrují během přenosu (v síti) a v klidovém stavu (stálé úložiště), získáte-koncové šifrování.
 
-Je velmi snadno se používá služba PaaS, Cosmos DB. Vzhledem k tomu, že všechna uživatelská data uložená ve službě Cosmos DB je v klidovém stavu a přenosu šifrovaný, není nutné provádět žádnou akci. Dalším způsobem, jak to put je, že je "na" ve výchozím nastavení šifrování v klidovém stavu. Neexistují žádná opatření můžete zapnout nebo vypnout. Tato funkce zajišťuje My zatím budeme pokračovat podle našich [SLA o dostupnosti a výkonu](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+Je velmi snadno se používá služba PaaS, Cosmos DB. Vzhledem k tomu, že všechna uživatelská data uložená ve službě Cosmos DB je v klidovém stavu a přenosu šifrovaný, není nutné provádět žádnou akci. Dalším způsobem, jak to put je, že je "na" ve výchozím nastavení šifrování v klidovém stavu. Neexistují žádná opatření můžete zapnout nebo vypnout. Azure Cosmos DB používá ve všech oblastech, kde běží účet šifrování AES-256. Tato funkce zajišťuje My zatím budeme pokračovat podle našich [SLA o dostupnosti a výkonu](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Provádění šifrování v klidovém stavu pro službu Azure Cosmos DB
 

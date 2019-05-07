@@ -15,12 +15,12 @@ ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b63118a7c5fae49edebe4ae4976a1362781ae8cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c9db6babff3ae0c91f730e6ec2e6e2a41d55b0bf
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712866"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191519"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
 Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, G Suite a dalších. Pokud povolíte zřizování uživatelů pro aplikaci SaaS třetí strany, řídí na webu Azure portal jeho hodnoty atributů pomocí mapování atributů.
@@ -149,6 +149,8 @@ Výběrem této možnosti vynutí efektivně Opětovná synchronizace všech už
 * Aktualizace mapování atributů má vliv na výkon synchronizační cyklus. Aktualizace konfigurace mapování atributů, vyžaduje se znovu vyhodnotit všechny spravované objekty. 
 
 * Doporučené osvědčeným postupem je ponechat počet po sobě jdoucích změny vašeho mapování atributů minimálně.
+
+* Přidání fotografií atribut zřídit aplikace nepodporuje ještě dnes nelze určit formát synchronizovat fotky. Můžete požádat o funkci na [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
 ## <a name="next-steps"></a>Další postup

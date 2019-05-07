@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573567"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199644"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -133,8 +133,8 @@ Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou j
 
 Vaše služba ASE s interním nástrojem pro vyrovnávání zatížení potřebuje platný certifikát SSL. Použijte interní certifikační autority, kupte si certifikát od externího vystavitele nebo použijte certifikát podepsaný svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
-* **Předmět**: Tento atribut musí být nastaven na hodnotu *.vase kořenové zdejsi korenova.
-* **Alternativní název subjektu**: Tento atribut musí obsahovat **.vase kořenové zdejsi korenova* a **.vase-kořenové-domain-tady*. Připojení SSL k webu SCM/Kudu spojenému s každou aplikací používá adresu ve formátu *nazev-vasi-aplikace.scm.vase-zdejsi-korenova-domena*.
+* **Předmět**: Tento atribut musí být nastaven *\.your zdejsi korenova.
+* **Alternativní název subjektu**: Tento atribut musí obsahovat *.vase kořenové zdejsi korenova* a *.vase-kořenové-domain-tady*. Připojení SSL k webu SCM/Kudu spojenému s každou aplikací používá adresu ve formátu *nazev-vasi-aplikace.scm.vase-zdejsi-korenova-domena*.
 
 Převeďte/uložte certifikát SSL jako soubor .pfx. Soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
 

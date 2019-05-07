@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 57fbab4194f6cd232e1462ecea9a07d104c6cb51
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977554"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205740"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
 Můžete vytvořit několik virtuálních počítačů (VM) z virtuálního počítače Azure spravované image pomocí webu Azure portal nebo Powershellu. Spravované image virtuálního počítače obsahuje informace potřebné k vytvoření virtuálního počítače, včetně operačního systému a datové disky. Virtuální pevné disky (VHD), které tvoří image, včetně disků operačního systému a všechny datové disky se ukládají jako spravované disky. 
 
-Před vytvořením nového virtuálního počítače, budete muset [vytvoření spravované image virtuálního počítače](capture-image-resource.md) chcete použít jako zdroj bitové kopie. 
+Před vytvořením nového virtuálního počítače, budete muset [vytvoření spravované image virtuálního počítače](capture-image-resource.md) použít jako zdrojový obrázek a udělte oprávnění ke čtení na bitovou kopii s žádným uživatelem, kteří mají mít přístup k bitové kopii. 
 
 
 ## <a name="use-the-portal"></a>Použití portálu
@@ -44,7 +44,7 @@ Před vytvořením nového virtuálního počítače, budete muset [vytvoření 
 
 Můžete použít PowerShell k vytvoření virtuálního počítače z image pomocí zjednodušené sady parametrů [rutiny New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) rutiny. Na obrázku musí být ve stejné skupině prostředků, kde vytvoříte virtuální počítač.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 Zjednodušené sady parametrů pro [rutiny New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vyžaduje pouze, že zadáte název, skupinu prostředků a název image vytvořit virtuální počítač z bitové kopie. Nový-AzVm použije hodnotu **– název** parametr jako název všech prostředků, které se vytvoří automaticky. V tomto příkladu budeme poskytovat podrobnější názvy pro všechny prostředky ale nechat rutiny automaticky vytvořit. Můžete také vytvořit prostředky předem, jako je například virtuální síť a předat název prostředku do rutiny. Nový-AzVm bude používat existující prostředky, pokud jej lze najít podle názvu.
 

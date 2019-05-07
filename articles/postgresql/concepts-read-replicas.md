@@ -1,20 +1,19 @@
 ---
-title: Repliky pro čtení v Azure Database for PostgreSQL
-description: Tento článek popisuje funkce repliky pro čtení ve službě Azure Database for PostgreSQL.
-author: WenJason
-ms.author: v-jay
+title: Repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje funkce repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 04/01/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564353"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067437"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql"></a>Repliky pro čtení v Azure Database for PostgreSQL
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server
 
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL na serveru jen pro čtení. Můžete replikovat z hlavního serveru až pěti replikami v rámci stejné oblasti Azure. Repliky jsou aktualizované asynchronně technologie replikace nativní modul PostgreSQL.
 
@@ -51,7 +50,7 @@ Replika dědí z hlavního serveru účet správce. Všechny uživatelské účt
 Můžete připojit k replice pomocí jeho názvu hostitele a platný uživatelský účet, jako byste to zvládli pravidelné serveru Azure Database for PostgreSQL. Pro server s názvem **myreplica** s uživatelským jménem správce **myadmin**, můžete se připojíte k replice pomocí nástroje psql:
 
 ```
-psql -h myreplica.postgres.database.chinacloudapi.cn -U myadmin@myreplica -d postgres
+psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ```
 
 Do příkazového řádku zadejte heslo pro uživatelský účet.

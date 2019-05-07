@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a4f3b37b0dc4d74b03ffcfa61c97fbb571d57f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaaaa5c2fe87b419bf38d6e6522ef745476ac1ad
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465588"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204945"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -563,7 +563,7 @@ Potřebujete cluster sdíleného úložiště pro instanci SAP ASCS/SCS vysokou 
 2. Spusťte SIOS DataKeeper Cluster Edition na oba uzly virtuálních počítačů.
 3. Nakonfigurujte SIOS DataKeeper Cluster Edition, takže zrcadlí obsah další virtuální pevný disk připojený svazek ze zdrojového virtuálního počítače na další svazek připojený virtuální pevný disk cílového virtuálního počítače. SIOS DataKeeper abstrahuje zdroj a cíl místní svazky a prezentuje je na Windows Server Failover Clustering jako jeden sdílený disk.
 
-Získejte další informace o [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
+Získejte další informace o [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
 ![Obrázek 3: Konfigurace systému Windows Server Failover Clustering v Azure se SIOS Datakeeperem][sap-ha-guide-figure-1002]
 

@@ -1,6 +1,6 @@
 ---
-title: Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny – Azure Active Directory | Dokumentace Microsoftu
-description: Jak přepínat z jednotlivých uživatelských licencí pro licencování na základě skupiny pomocí služby Azure Active Directory
+title: Přidejte jednotlivě licencovaných uživatelů na licencování na základě skupin – Azure Active Directory | Dokumentace Microsoftu
+description: Jak migrovat z jednotlivých uživatelských licencí pro licencování na základě skupiny pomocí služby Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470999"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192460"
 ---
-# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak přidat uživatele s licencemi na jednotlivé migrovat do skupin pro licencování
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Migrace uživatelů s licencemi na jednotlivé do skupin pro licencování
 
 Máte stávající licence k nasazení uživatelům v organizacích prostřednictvím "přímého přiřazení"; To znamená pomocí skriptů Powershellu nebo jiných nástrojů k přiřazení licencí jednotlivým uživatelům. Než začnete používat licencování na základě skupiny pro správu licencí ve vaší organizaci, můžete tento plán migrace bez problému nahradit stávající řešení s licencováním na základě skupin.
 

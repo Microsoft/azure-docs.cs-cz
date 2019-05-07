@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 44cb068f1aa40169e728fc28787990b161e148ae
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: ff8d94213e4e07b6597f6195126116a607c18bf7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150081"
+ms.locfileid: "65191705"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Vytvoření a použití sdílené bitové kopie pro škálovací sady virtuálních počítačů pomocí Azure Powershellu
 
@@ -48,7 +48,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Následující postup podrobně popisuje přeměnu existujícího virtuálního počítače na opětovně použitelnou vlastní image, pomocí které můžete vytvářet nové instance virtuálních počítačů.
 
-K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure Powershellu](tutorial-use-custom-image-powershell.md) ji vytvořit v případě potřeby. Při procházení článku, nahraďte skupinu prostředků a virtuální počítač příslušných místech názvy.
+K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure Powershellu](tutorial-use-custom-image-powershell.md) ji vytvořit v případě potřeby. Pokud spravované image obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+
+Při procházení článku, nahraďte skupinu prostředků a virtuální počítač příslušných místech názvy.
 
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]

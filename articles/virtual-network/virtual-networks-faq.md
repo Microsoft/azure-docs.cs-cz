@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: bf36de1965a8c819af0ef5af98a2393d4cefa1b3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148522"
+ms.locfileid: "65205718"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -67,7 +67,7 @@ Ano. Další informace o veřejné rozsahy IP adres najdete v tématu [vytvořen
 Ano. Zobrazit [omezeních Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) podrobnosti. Adresní prostory podsítě navzájem překrývají.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Existují nějaká omezení pomocí IP adresy v rámci těchto podsítí?
-Ano. Azure si vyhrazuje některé IP adresy v každé podsíti. První a poslední IP adresy každé podsíti jsou vyhrazené pro udržování souladu s protokoly, spolu s x.x.x.1 x.x.x.3 adres každé podsítě, které se používají pro služby Azure.
+Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. První a poslední IP adresy každé podsíti jsou vyhrazené pro udržování souladu s protokoly, spolu s x.x.x.1 x.x.x.3 adres každé podsítě, které se používají pro služby Azure.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Způsob, jakým malé a jak velká může být virtuální sítě a podsítě?
 Nejmenší podporované podsítě je minimální velikostí/29 a největší /8 (pomocí definice podsítě CIDR).
@@ -231,7 +231,7 @@ Ano. Další informace o používání:
 Partnerský vztah virtuální sítě (nebo partnerský vztah virtuální sítě) můžete použít k propojení virtuálních sítí. Připojení partnerského vztahu virtuální sítě mezi virtuálními sítěmi umožňuje směrovat přenosy mezi nimi soukromě prostřednictvím adresy IPv4. Virtuální počítače v partnerských virtuálních sítích komunikovat mezi sebou, jako kdyby byly ve stejné síti. Tyto virtuální sítě může být ve stejné oblasti nebo v různých oblastech (označované také jako globální VNet Peering). Partnerské vztahy virtuálních sítí můžete také vytvořit napříč předplatnými Azure.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Můžete vytvořit připojení s partnerským vztahem k virtuální síti v jiné oblasti?
-Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních sítí v různých oblastech. Globální VNet peering je k dispozici ve všech veřejných oblastech Azure a cloudových oblastech Čína. Můžete nejde vytvořit partnerský vztah globálně z veřejných oblastech Azure do národních cloudů oblastí. Globální partnerský vztah není aktuálně k dispozici v cloudu pro státní správu.
+Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních sítí v různých oblastech. Globální VNet peering je k dispozici ve všech veřejných oblastech Azure, Čína cloudové oblasti a oblasti cloud Government. Můžete nejde vytvořit partnerský vztah globálně z veřejných oblastech Azure do národních cloudů oblastí.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jaká jsou omezení související s globální VNet Peering a nástroje pro vyrovnávání zatížení?
 Pokud dvě virtuální sítě v různých oblastech (globální VNet Peering) se nemůže připojit k prostředkům, které používají základní nástroje pro vyrovnávání zatížení. Můžete připojit k prostředkům, které používají Load balanceru úrovně Standard.
@@ -241,7 +241,6 @@ Základní služby Vyrovnávání zatížení, což znamená, že nemůže komun
 - Redis Cache 
 - Služba Application Gateway (v1) skladové položky
 - Service Fabric
-- SQL Always on
 - SQL MI
 - Rozhraní API správy
 - Active Directory Domain Services (AD DS)
