@@ -2,18 +2,19 @@
 title: Kopírování nebo přesun dat do služby Azure Storage pomocí AzCopy v10 | Dokumentace Microsoftu
 description: Pomocí nástroje příkazového řádku AzCopy k přesunutí nebo zkopírování dat do nebo z objektu blob, data lake a obsah souboru. Kopírování dat do služby Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadno migrate data do služby Azure Storage.
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2019
-ms.author: seguler
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: c1de40b6bf3bb4dc6854a11eca92902203d492c3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d05cbd30565ced73352736508fc4bcc376985554
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723179"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149036"
 ---
 # <a name="transfer-data-with-azcopy-v10"></a>Přenos dat pomocí nástroje AzCopy v10
 

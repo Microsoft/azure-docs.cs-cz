@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 05/02/2019
 ms.author: monhaber
-ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 581db3ebe3ce1cad5c8db3702af179e141f334b4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910407"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143472"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
@@ -154,6 +154,22 @@ Seznam obsahuje:
 
 Azure Security Center vám umožní definovat zásady na seznam povolených aplikací v jiných doporučuje i pro skupinu virtuálních počítačů. Postupujte podle stejné zásady, jak bylo popsáno, nakonfigurovat zásadu na seznam povolených aplikací na těchto skupin také.
 
+## <a name="move-a-vm-from-one-group-to-another"></a>Přesun virtuálního počítače z jedné skupiny
+
+ Při přesunutí virtuálního počítače z jedné skupiny do druhého, zásady řízení aplikací použít změny nastavení skupiny, které jste přesunuli ji do. Můžete také přesun virtuálního počítače z nakonfigurované skupiny do skupiny není nakonfigurované, což vede k odebrání zásady řízení aplikací, která již byla použita k virtuálnímu počítači.
+
+ 1. Z **adaptivní řízení aplikací** stránky, od **NAKONFIGUROVÁNO** kartu, klikněte na skupinu, kterou aktuálně přesunout virtuální počítač patří.
+1. Klikněte na tlačítko **nakonfigurované virtuální počítače a počítače**.
+1. Klikněte na tlačítko se třemi tečkami v řádku virtuální počítač přesunout, a klikněte na tlačítko **přesunout**. **Počítač přesunout do jiné skupiny** otevře se okno.
+
+    ![Ochrana](./media/security-center-adaptive-application/adaptive-application-move-group.png)
+
+ 1. Vyberte skupinu, kterou chcete přesunout virtuální počítač a klikněte na tlačítko **přesunout počítače**a klikněte na tlačítko **Uložit**.
+
+    ![Ochrana](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
+
+ > [!NOTE]
+> Nezapomeňte kliknout na **Uložit** po kliknutí na tlačítko **přesunout počítače**. Pokud jste neklikejte na **Uložit**, pak nebudou přesunuta do počítače.
 
 ## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací na spouštění v Azure a jiné – virtuální počítače Azure. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:

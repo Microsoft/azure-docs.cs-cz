@@ -4,14 +4,14 @@ description: Další informace o syntaxi jazyka SQL, databázových koncepcí a 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054112"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148948"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -139,14 +139,14 @@ Výsledky dotazu jsou:
     }]
 ```
 
-Následující dotaz vrátí křestní jména všech dětí v rodině jehož `id` odpovídá `WakefieldFamily`, seřazený podle na podnikové úrovni.
+Následující dotaz vrátí křestní jména všech dětí v rodině jehož `id` odpovídá `WakefieldFamily`, seřazený podle města, kde bydlíte.
 
 ```sql
     SELECT c.givenName
     FROM Families f
     JOIN c IN f.children
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.grade ASC
+    ORDER BY f.address.city ASC
 ```
 
 Výsledky jsou:
@@ -314,6 +314,70 @@ Výsledky jsou:
     ]
 ```
 
+## <a id="DistinctKeyword"></a>Klíčové slovo DISTINCT
+
+Klíčové slovo DISTINCT odstraňuje duplicity v projekci dotazu.
+
+```sql
+SELECT DISTINCT VALUE f.lastName
+FROM Families f
+```
+
+V tomto příkladu dotaz projekty hodnoty pro každý příjmení.
+
+Výsledky jsou:
+
+```json
+[
+    "Andersen"
+]
+```
+
+Můžete také promítnout tento počet jedinečných objektů. V tomto případě pole lastName neexistuje v jednom ze dvou dokumentů, takže dotaz vrátí prázdný objekt.
+
+```sql
+SELECT DISTINCT f.lastName
+FROM Families f
+```
+
+Výsledky jsou:
+
+```json
+[
+    {
+        "lastName": "Andersen"
+    },
+    {}
+]
+```
+
+DISTINCT je také možné v projekci v poddotazu:
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
+```
+
+Tento dotaz projekty obsahující jednotlivých podřízených givenName s odebranými pole. Toto pole je alias jako ChildNames a vykreslují ve vnější dotaz.
+
+Výsledky jsou:
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="aliasing"></a>Vyhlazení
 
 Můžete explicitně alias hodnoty v dotazech. Pokud dotaz má dvě vlastnosti se stejným názvem, přejmenujte jednu nebo obě vlastnosti tak, aby se jednoznačně rozlišit ve výsledku předpokládané pomocí aliasů.
@@ -380,7 +444,7 @@ Výsledky jsou:
         }
       ],
       [
-        {
+       {
             "familyName": "Merriam",
             "givenName": "Jesse",
             "gender": "female",
@@ -599,7 +663,7 @@ Použití?? operátor efektivně vyhledávat vlastnosti v položce při dotazov�
 
 ## <a id="TopKeyword"></a>Operátor TOP
 
-HORNÍ – klíčové slovo vrátí první `N` počet výsledků dotazu v nedefinované pořadí. Jako osvědčený postup, použijte horní s klauzulí ORDER BY omezit rozsah výsledků na první `N` počet seřazené hodnoty. Kombinace těchto dvou klauzulí je jediný způsob, jak předvídatelně označení, které řádky nejvyšší ovlivňuje. 
+HORNÍ – klíčové slovo vrátí první `N` počet výsledků dotazu v nedefinované pořadí. Jako osvědčený postup, použijte horní s klauzulí ORDER BY omezit rozsah výsledků na první `N` počet seřazené hodnoty. Kombinace těchto dvou klauzulí je jediný způsob, jak předvídatelně označení, které řádky nejvyšší ovlivňuje.
 
 Horní části můžete použít s konstantní hodnotou, stejně jako v následujícím příkladu nebo s hodnotou proměnné použití parametrizovaných dotazů. Další informace najdete v tématu [parametrizované dotazy](#parameterized-queries) oddílu.
 
@@ -679,6 +743,65 @@ Výsledky jsou:
       }
     ]
 ```
+
+Kromě toho můžete uspořádat podle několika vlastností. Dotaz, který seřadí podle několika vlastností vyžaduje [složeném indexu](index-policy.md#composite-indexes). Vezměte v úvahu následující dotaz:
+
+```sql
+    SELECT f.id, f.creationDate
+    FROM Families f
+    ORDER BY f.address.city ASC, f.creationDate DESC
+```
+
+Tento dotaz načte rodině `id` ve vzestupném pořadí název města. Pokud více položek mají stejný název města, bude order dotaz `creationDate` v sestupném pořadí.
+
+## <a id="OffsetLimitClause"></a>OFFSET LIMIT clause
+
+Posun omezení je volitelná klauzule přeskočit pak provést některé hodnoty z dotazu. Počet POSUNUTÍ a počtu LIMIT se vyžadují v klauzuli LIMIT posun.
+
+Při posunu omezení se používá ve spojení s klauzulí ORDER BY, sadu výsledků dotazu je vytvořen tímto způsobem přeskočit a provádět s nimi seřazené hodnoty. Pokud se používá bez klauzule ORDER by, způsobí deterministické pořadí hodnot.
+
+Tady je příklad dotaz, který přeskočí první hodnotu a vrátí hodnotu druhého (v pořadí podle název rezidenční města):
+
+```sql
+    SELECT f.id, f.address.city
+    FROM Families f
+    ORDER BY f.address.city
+    OFFSET 1 LIMIT 1
+```
+
+Výsledky jsou:
+
+```json
+    [
+      {
+        "id": "AndersenFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+Tady je dotaz, který přeskočí první hodnotu a vrátí hodnotu druhého (bez řazení):
+
+```sql
+   SELECT f.id, f.address.city
+    FROM Families f
+    OFFSET 1 LIMIT 1
+```
+
+Výsledky jsou:
+
+```json
+    [
+      {
+        "id": "WakefieldFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+
+
+
 ## <a name="scalar-expressions"></a>Skalární výrazy
 
 Klauzule SELECT podporuje skalární výrazy jako konstanty aritmetických výrazů a logických výrazů. Následující dotaz používá skalární výraz, který:
@@ -1018,7 +1141,7 @@ Následující příklad registruje UDF pod kontejner položek v databázi Cosmo
        {
            Id = "REGEX_MATCH",
            Body = @"function (input, pattern) {
-                       return input.match(pattern) !== null;
+                      return input.match(pattern) !== null;
                    };",
        };
 

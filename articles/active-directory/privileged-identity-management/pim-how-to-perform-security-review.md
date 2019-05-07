@@ -1,6 +1,6 @@
 ---
-title: Provádění kontroly přístupu sady Moje role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak k provádění kontroly přístupu Azure AD role v Azure AD Privileged Identity Management (PIM).
+title: Kontrola přístupu pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak kontrolovat přístup role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,15 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f16e02716ceb94d2c8b10bb246a13dc566229c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3850af026ea13e1920aea65e18358ebb04ef0d25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287808"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140965"
 ---
-# <a name="perform-an-access-review-of-my-azure-ad-roles-in-pim"></a>Provádění kontroly přístupu sady Moje role Azure AD v PIM
+# <a name="review-access-to-azure-ad-roles-in-pim"></a>Kontrola přístupu pro role Azure AD v PIM
+
 Azure Active Directory (AD) Privileged Identity Management (PIM) zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  
 
 Pokud máte přiřazenou roli správce privilegovaných rolí správce ve vaší organizaci může vás vyzve k pravidelně potvrzení pro vaše úloha stále potřebovat danou roli. Může se zobrazit e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [webu Azure portal](https://portal.azure.com). Postupujte podle kroků v tomto článku provádět svým přezkoumat přiřazených rolí.

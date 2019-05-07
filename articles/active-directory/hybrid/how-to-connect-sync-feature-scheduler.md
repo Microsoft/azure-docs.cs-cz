@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347874"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139291"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Scheduler
-Toto téma popisuje (označovaný také jako integrované plánovače ve službě Azure AD Connect sync synchronizační stroj).
+Toto téma popisuje integrované plánovače v synchronizace Azure AD Connect (synchronizační stroj).
 
 Tato funkce byla zavedena v systému sestavení 1.1.105.0 (všeobecně dostupné. února 2016).
 
@@ -92,29 +92,62 @@ Pokud jste provedli změny, nezapomeňte povolit Plánovač znovu s `Set-ADSyncS
 ## <a name="start-the-scheduler"></a>Spustit Plánovač
 Plánovač se ve výchozím nastavení spouští každých 30 minut. V některých případech můžete chtít spustit cyklus synchronizace mezi cykly plánované nebo budete muset spustit jiného typu.
 
-**Cyklus synchronizace delta**  
+### <a name="delta-sync-cycle"></a>Cyklus synchronizace delta
 Cyklus synchronizace delta zahrnuje následující kroky:
 
-* Rozdílový import na všechny konektory
-* Rozdílová synchronizace na všechny konektory
-* Exportovat na všechny konektory
 
-Je možné, že máte naléhavé změny, která musí být synchronizovány okamžitě, proto budete muset ručně spustit cyklus. Pokud je potřeba ručně spustit cyklus, pak z prostředí PowerShell spustit `Start-ADSyncSyncCycle -PolicyType Delta`.
+- Rozdílový import na všechny konektory
+- Rozdílová synchronizace na všechny konektory
+- Exportovat na všechny konektory
 
-**Cyklus úplné synchronizace**  
-Pokud jste provedli jednu z následující změny konfigurace, budete muset spustit cyklus úplné synchronizace (označovaný také jako Počáteční):
+### <a name="full-sync-cycle"></a>Cyklus úplné synchronizace
+Úplná synchronizace cyklus zahrnuje následující kroky:
 
-* Přidat více objektů nebo atributů, které mají být importována ze zdrojového adresáře
-* Změny provedené v synchronizační pravidla
-* Změnit [filtrování](how-to-connect-sync-configure-filtering.md) jiný počet objektů, které by tak měly být zahrnuté
+- Úplný Import na všechny konektory
+- Plná synchronizace v všechny konektory
+- Exportovat na všechny konektory
 
-Pokud jste provedli jednu z těchto změn, budete muset spustit cyklus úplné synchronizace, synchronizační modul je moci znovu sloučit prostor konektoru. Úplná synchronizace cyklus zahrnuje následující kroky:
+Je možné, že máte naléhavé změny, která musí být synchronizovány okamžitě, proto budete muset ručně spustit cyklus. 
 
-* Úplný Import na všechny konektory
-* Plná synchronizace v všechny konektory
-* Exportovat na všechny konektory
+Pokud je potřeba ručně spustit synchronizační cyklus, pak z prostředí PowerShell spustit `Start-ADSyncSyncCycle -PolicyType Delta`.
 
-K zahájení cyklu úplné synchronizace, spusťte `Start-ADSyncSyncCycle -PolicyType Initial` z příkazového řádku Powershellu. Tento příkaz spustí cyklus úplné synchronizace.
+K zahájení cyklu úplné synchronizace, spusťte `Start-ADSyncSyncCycle -PolicyType Initial` z příkazového řádku Powershellu.   
+
+Spuštění cyklu úplná synchronizace může být časově velmi náročné, přečtěte si další části a přečtěte si, jak optimalizovat tento proces.
+
+### <a name="sync-steps-required-for-different-configuration-changes"></a>Synchronizovat kroky potřebné pro jinou konfiguraci změny
+Změny konfigurace různých vyžadují různé synchronizace postup, jak zajistit, že změny jsou správně použity na všechny objekty.
+
+- Přidat více objektů nebo atributů importovat ze zdrojového adresáře (přidání/úprava pravidel synchronizace)
+    - Vyžaduje úplný Import v konektoru pro tento zdrojový adresář
+- Změny provedené v synchronizační pravidla
+    - Úplná synchronizace je nezbytná pro konektor pro změněné synchronizační pravidla
+- Změnit [filtrování](how-to-connect-sync-configure-filtering.md) jiný počet objektů, které by tak měly být zahrnuté
+    - Úplný Import je u konektoru vyžadováno pro jednotlivé konektory AD NEPOUŽÍVÁTE, že filtrování na základě atributů na základě atributů, které jsou již importují do synchronizačního modulu
+
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Přizpůsobení cyklus synchronizace správné kombinaci kroků synchronizace Delta a úplné spuštění
+Vyhnout se spouštění cyklus úplnou synchronizaci můžete označit konkrétní konektory spustit úplné kroku pomocí následující rutiny.
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullSyncRequired $true`
+
+`Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
+
+Příklad:  Pokud jste provedli změny pravidla synchronizace pro konektor "A doménovou strukturu AD", které nevyžadují žádné nové atributy, které se importovaná spustili byste následující rutiny pro rozdílovou synchronizaci spuštění cyklu, ve kterém také úplná synchronizace kroku pro tento konektor.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
+Příklad:  Pokud jste provedli změny pravidla synchronizace pro konektor "A doménovou strukturu AD" tak, aby teď vyžadují nový atribut mají být importovány by spuštění následujících rutin pro spuštění cyklu rozdílová synchronizace, který také měli úplný Import krok úplnou synchronizaci pro tento konektor.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
 
 ## <a name="stop-the-scheduler"></a>Zastavení plánovače
 Plánovač synchronizační cyklus běží, potřebujete ji zastavit. Například pokud spustíte Průvodce instalací a tato chyba:

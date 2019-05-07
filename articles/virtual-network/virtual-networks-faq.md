@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 131d62fd2cea3ed76342f0fd179b7a9e0fd673e5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925265"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148522"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -170,7 +170,7 @@ Ano. Můžete najít další informace najdete v [postup přesunutí role virtu�
 Ne. Adresa MAC není staticky nakonfigurovat.
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Adresa MAC zůstane stejný pro můj virtuální počítač po jeho vytvoření?
-Ano, adresa MAC zůstává stejná pro virtuální počítače nasazené prostřednictvím Resource Manageru a modely nasazení classic, dokud je neodstraníte. Adresa MAC byla vydána dříve, pokud virtuální počítač bylo zastaveno (přidělení zrušeno), ale teď je adresa MAC zachovány i v případě, že virtuální počítač je ve stavu Uvolněno.
+Ano, adresa MAC zůstává stejná pro virtuální počítače nasazené prostřednictvím Resource Manageru a modely nasazení classic, dokud je neodstraníte. Adresa MAC byla vydána dříve, pokud virtuální počítač bylo zastaveno (přidělení zrušeno), ale teď je adresa MAC zachovány i v případě, že virtuální počítač je ve stavu Uvolněno. Adresa MAC zůstane přiřazené k síťovému rozhraní, dokud odstranění síťového rozhraní nebo privátní IP adresa přiřazená primární konfigurace IP primárního síťového rozhraní se změnilo. 
 
 ### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Můžu připojit k Internetu z virtuálního počítače ve virtuální síti?
 Ano. Všechny virtuální počítače a Cloud Services instance rolí, které jsou nasazené v rámci virtuální sítě můžete připojit k Internetu.

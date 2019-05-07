@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2d56aba6d62d70c482ed1489a09276eeaa11f956
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025841"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147994"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Vyladění převod textu na řeč výstupu
 
@@ -43,7 +43,7 @@ Před zahájením dolaďování převod textu na řeč výstup pomocí nástroje
    * Vyhledejte a vyberte **Všechna předplatná**.  
    * Vyberte **připojit stávající předplatné**.  
      ![Připojit stávající předplatné](./media/custom-voice/custom-voice-connect-subscription.png).
-   * Zadejte klíč předplatného Azure hlasové služby z webu Azure portal a pak vyberte **přidat**. Klíče předplatného jsou dostupné na webu Azure Portal v podokně Správa prostředků.  Může také získat klíče ze seznamu předplatné na portálu pro hlasové ladění.
+   * Zadejte klíč předplatného Azure hlasových služeb a pak vyberte **přidat**. Klíče předplatného jsou dostupné na portálu přizpůsobení řeči z [stránku odběru služby](https://go.microsoft.com/fwlink/?linkid=2090458). Můžete také získat klíče z podokna Správa prostředků [webu Azure portal](https://portal.azure.com/). 
    * Pokud máte více než jedno předplatné hlasové služby, který chcete použít tento postup opakujte u každého odběru.
 
 ## <a name="customize-the-text-to-speech-output"></a>Vlastní převod textu na řeč výstupu

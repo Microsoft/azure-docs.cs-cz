@@ -2,18 +2,19 @@
 title: Seznam prostředků služby Azure Storage s klientskou knihovnu pro úložiště pro C++ | Dokumentace Microsoftu
 description: Další informace o použití seznamu rozhraní API v Microsoft Azure Storage Client Library pro jazyk C++ k vytvoření výčtu kontejnerů, objektů BLOB, fronty, tabulky a entity.
 services: storage
-author: dineshmurthy
+author: mhopkins-msft
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dineshm
+ms.author: mhopkins
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: edf50b97ff25a67b41bad266df9236145f288409
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483447"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146884"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Seznam prostředků služby Azure Storage v C++
 Operace výpisu jsou klíčem k mnoha vývojové scénáře se službou Azure Storage. Tento článek popisuje, jak co nejefektivněji vytvořit výčet objektů ve službě Azure Storage pomocí seznamu rozhraní API poskytovaných v Microsoft Azure Storage Client Library jazyka C++.

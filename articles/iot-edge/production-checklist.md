@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80bf4718b63496c0b220aa79dcdd27f2711b70ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998451"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148101"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava k nasazení svého řešení IoT Edge v produkčním prostředí
 
@@ -186,7 +186,11 @@ Pokud vaše zařízení se chystáte nasadit v síti, která používá proxy se
 
 ### <a name="set-up-logs-and-diagnostics"></a>Nastavení diagnostiky a protokolování
 
-Démon IoT Edge v Linuxu, použije deníky jako výchozí protokolování ovladače. Můžete použít nástroj příkazového řádku `journalctl` k dotazování démona protokoly. Démon IoT Edge na Windows, používá diagnostiky prostředí PowerShell. Použití `Get-WinEvent` do protokolů dotazu z démona. Moduly IoT Edge používat ovladač JSON pro protokolování, což je výchozí hodnota.  
+Démon IoT Edge v Linuxu, použije deníky jako výchozí protokolování ovladače. Můžete použít nástroj příkazového řádku `journalctl` k dotazování démona protokoly. Démon IoT Edge na Windows, používá diagnostiky prostředí PowerShell. Použití `Get-IoTEdgeLog` do protokolů dotazu z démona. Moduly IoT Edge používat ovladač JSON pro protokolování, což je výchozí hodnota.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
 
 Při testování nasazení IoT Edge, obvykle možné získat přístup zařízení k načtení protokolů a řešení potíží. V případě nasazení nemusí mít tuto možnost. Zvažte, jak budete shromažďovat informace o zařízeních v produkčním prostředí. Jednou z možností je použít modul protokolování, který shromažďuje informace z jiných modulů a odešle ji do cloudu. Jedním z příkladů modulu protokolování je [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), nebo můžete navrhnout vlastní. 
 

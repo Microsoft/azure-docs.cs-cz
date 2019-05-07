@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7c9a578cb3c3a59ae6bba13e585188020f35f03a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080937"
+ms.locfileid: "65138975"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Zpracování výjimek a chyb s použitím MSAL
 Výjimky v Microsoft Authentication Library (MSAL) jsou určené pro vývojáře aplikací pro řešení potíží a ne pro zobrazení koncovým uživatelům. Zprávy o výjimkách nejsou lokalizovány.
@@ -82,21 +82,18 @@ K dispozici jsou následující typy chyb:
 
 * *InteractionRequiredAuthError:* Chyba třídy rozšíření ServerError představující chyby serveru, které vyžadují interaktivní volání. To je vyvolána `acquireTokenSilent` Pokud musí uživatel zadat komunikovat se serverem k zadání přihlašovacích údajů nebo souhlas pro ověřování/autorizace. Kódy chyb zahrnují "interaction_required", "login_required", "consent_required".
 
-Pro přesměrování zpracování chyb v ověřování toků pomocí metody (`loginRedirect`, `acquireTokenRedirect`), budete muset registrace zpětných volání úspěchu a neúspěchu která bude volána po přesměrování pomocí `handleRedirectCallbacks()` metodu následujícím způsobem:
+Pro přesměrování zpracování chyb v ověřování toků pomocí metody (`loginRedirect`, `acquireTokenRedirect`), budete muset zaregistrovat úspěch nebo neúspěch zpětné volání, které je voláno po použití přesměrování `handleRedirectCallback()` metodu následujícím způsobem:
 
 ```javascript
-function acquireTokenRedirectCallBack(response) {
-    // success response
+function authCallback(error, response) {
+    //handle redirect response
 }
 
-function  acquireTokenErrorRedirectCallBack(error) {
-    console.log(error);
-}
 
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 // Register Callbacks for redirect flow
-myMSALObj.handleRedirectCallbacks(acquireTokenRedirectCallBack, acquireTokenErrorRedirectCallBack);
+myMSALObj.handleRedirectCallback(authCallback);
 
 myMSALObj.acquireTokenRedirect(request);
 ```
@@ -143,7 +140,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>Podmíněného přístupu a deklarace identity výzvy
-Při získávání tokenů tiše, vaše aplikace může dojít k chybám při [podmíněného přístupu deklarací challenge](conditional-access-dev-guide.md#scenario-single-page-app-spa-using-adaljs) , jako je rozhraní API vyžaduje zásad vícefaktorového ověřování se pokoušíte získat přístup.
+Při získávání tokenů tiše, vaše aplikace může dojít k chybám při [podmíněného přístupu deklarací challenge](conditional-access-dev-guide.md) , jako je rozhraní API vyžaduje zásad vícefaktorového ověřování se pokoušíte získat přístup.
 
 Vzor pro zpracování této chyby je interaktivní získání tokenu s využitím MSAL. Interaktivní získávání tokenu se zobrazí výzva a dává jim možnost splňovat zásady podmíněného přístupu vyžaduje.
 
@@ -155,7 +152,7 @@ Při volání rozhraní API, které vyžadují podmíněný přístup z MSAL.NET
 Pro zpracování před obrovskou výzvou – deklarace identity, budete muset použít `.WithClaim()` metodu `PublicClientApplicationBuilder` třídy.
 
 ### <a name="javascript"></a>JavaScript
-Při získávání tokenů tiše (pomocí `acquireTokenSilent`) využitím MSAL.js, vaše aplikace může dojít k chybám při [podmíněného přístupu deklarací challenge](conditional-access-dev-guide.md#scenario-single-page-app-spa-using-adaljs) , jako je rozhraní API vyžaduje zásad vícefaktorového ověřování se pokoušíte získat přístup k.
+Při získávání tokenů tiše (pomocí `acquireTokenSilent`) využitím MSAL.js, vaše aplikace může dojít k chybám při [podmíněného přístupu deklarací challenge](conditional-access-dev-guide.md) , jako je rozhraní API vyžaduje zásad vícefaktorového ověřování se pokoušíte získat přístup k.
 
 Vzor pro zpracování této chyby je, aby interaktivní volání k získání tokenu v MSAL.js například `acquireTokenPopup` nebo `acquireTokenRedirect` jako v následujícím příkladu:
 

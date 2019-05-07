@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325449"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148817"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky ve službě Azure Functions
 
@@ -37,7 +37,7 @@ Existují tři úrovně podpory:
 
 ### <a name="experimental-languages"></a>Experimentálních jazyků
 
-Experimentálních jazyků ve verzi 1.x dobře neškálují a nepodporují všechny vazby. Například je omezena na verze 5.1, experimentální podporu pro prostředí PowerShell v 1.x, protože to je, co se instaluje standardně na virtuálních počítačích, na které spuštění aplikace function App. Pokud chcete spustit Powershellové skripty, vezměte v úvahu [Azure Automation](https://azure.microsoft.com/services/automation/).
+Experimentálních jazyků ve verzi 1.x dobře neškálují a nepodporují všechny vazby.
 
 Nepoužívejte seznámit s experimentálními funkcemi pro všechny položky, které využívají, protože neexistuje žádné oficiální podpora pro ně. Případy podpory by měl být otevřen pro problémy s experimentálních jazyků. 
 

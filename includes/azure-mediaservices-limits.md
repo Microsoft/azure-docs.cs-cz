@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557137"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150354"
 ---
 >[!NOTE]
 >Pro prostředky, které nejsou pevné otevřete lístek podpory a požádejte o zvýšení kvóty. Nevytvářejte další účty Azure Media Services ve snaze zajistit vyšší limity.
 
-| Prostředek | Výchozí omezení | 
+| Resource | Výchozí omezení | 
 | --- | --- | 
 | Účty Azure Media Services v rámci jednoho předplatného | 25 (pevné) |
 | Každý účet Media Services jednotky rezervované pro média |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -50,12 +50,12 @@ Od 1. dubna 2017 libovolný záznam úlohy ve vašem účtu, který je starší 
 >[!NOTE]
 > Pokud vždycky používáte stejné dny a přístupová oprávnění, použijte stejné ID zásad. Informace a příklad najdete v tématu [Správa prostředků pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup>nahrávání obsahu do prostředku ve službě Media Services zpracovat ho pomocí některého z procesorů médií služby, mějte na paměti maximální velikosti souborů, které jsou podporovány. Prostředky zahrnují kodérů jako Media Encoder Standard a Media Encoderu Premium Workflow nebo analytických modulů, jako je Face Detectoru.
+<sup>7</sup>maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí v závislosti na velikosti virtuálních počítačů, které se používají ve službě Media Services. Omezení velikosti platí pro soubory, které nahrajete a také soubory, které se vygeneruje jako výsledek zpracování (kódování nebo analýza) Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. 
 
-Maximální velikost, která je podporována pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí v závislosti na velikosti virtuálních počítačů, které se používají ve službě Media Services. Následující tabulka uvádí omezení na média rezervované jednotky S1, S2 a S3. Pokud zdrojový soubor je větší než omezení v tabulce, vaše úlohy kódování se nezdaří. Pokud kódujete zdroje rozlišení 4K dlouhá doba trvání, budete muset použít S3 rezervovaných jednotek médií k zajištění výkonu potřeba. Pokud máte 4 kB obsah, který je větší než limit 260 GB S3 rezervovaných jednotek médií, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
+Následující tabulka uvádí omezení na média rezervované jednotky S1, S2 a S3. Pokud zdrojový soubor je větší než omezení v tabulce, vaše úlohy kódování se nezdaří. Pokud kódujete zdroje rozlišení 4K dlouhá doba trvání, budete muset použít S3 rezervovaných jednotek médií k zajištění výkonu potřeba. Pokud máte 4 kB obsah, který je větší než limit 260 GB S3 rezervovaných jednotek médií, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
 
-| Typ jednotky rezervované pro média | Maximální velikost vstupu (GB)| 
-| --- | --- | 
-|S1 | 325|
-|S2 | 640|
-|S3 | 260|
+|Typ jednotky rezervované pro média   |Maximální velikost vstupu (GB)|
+|---|---|
+|S1 |   26|
+|S2 | 60|
+|S3 |260|

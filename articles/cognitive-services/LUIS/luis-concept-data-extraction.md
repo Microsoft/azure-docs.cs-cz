@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867716"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150685"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahovat data z textu utterance s záměry a entity
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
@@ -172,34 +172,6 @@ Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utte
 |--|--|--|
 |Jednoduché Entity|`Customer`|`bob jones`|
 
-## <a name="hierarchical-entity-data"></a>Data hierarchická entity
-
-**Nakonec se přestanou hierarchické entity. Použití [entity role](luis-concept-roles.md) určit podtypy entity, namísto hierarchické entity.**
-
-[Hierarchické](luis-concept-entity-types.md) entity jsou zjištěné počítače a může obsahovat slova nebo fráze. Podřízené položky se identifikují podle kontextu. Pokud hledáte vztahu nadřazený podřízený se shodou přesný text, použití [seznamu](#list-entity-data) entity.
-
-`book 2 tickets to paris`
-
-V předchozím utterance `paris` má popisek `Location::ToLocation` podřízený `Location` hierarchické entity.
-
-Data vrácená z koncového bodu obsahuje název entity a názvu podřízené, zjištěný text z utterance, umístění zjištěných textu a skóre:
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Location::ToLocation",
-    "startIndex": 18,
-    "endIndex": 22,
-    "score": 0.6866132
-  }
-]
-```
-
-|Datový objekt|Nadřazené|Podřízené|Hodnota|
-|--|--|--|--|
-|Hierarchické Entity|Umístění|ToLocation|"Paříž"|
-
 ## <a name="composite-entity-data"></a>Složený entitu dat
 [Složený](luis-concept-entity-types.md) entity jsou zjištěné počítače a může obsahovat slova nebo fráze. Představte si třeba složený entity z předem připravených `number` a `Location::ToLocation` s utterance následující:
 
@@ -212,53 +184,54 @@ Všimněte si, že `2`, je číslo, a `paris`, slova mezi nimi, které nejsou so
 Složený entity jsou vráceny v `compositeEntities` pole a všechny entity v rámci složeného jsou vráceny také v `entities` pole:
 
 ```JSON
-  "entities": [
+
+"entities": [
     {
-      "entity": "paris",
-      "type": "Location::ToLocation",
-      "startIndex": 18,
-      "endIndex": 22,
-      "score": 0.956998169
+    "entity": "2 tickets to cairo",
+    "type": "ticketInfo",
+    "startIndex": 0,
+    "endIndex": 17,
+    "score": 0.67200166
     },
     {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 5,
-      "endIndex": 5,
-      "resolution": {
+    "entity": "2",
+    "type": "builtin.number",
+    "startIndex": 0,
+    "endIndex": 0,
+    "resolution": {
+        "subtype": "integer",
         "value": "2"
-      }
+    }
     },
     {
-      "entity": "2 tickets to paris",
-      "type": "Order",
-      "startIndex": 5,
-      "endIndex": 22,
-      "score": 0.7714499
+    "entity": "cairo",
+    "type": "builtin.geographyV2",
+    "startIndex": 13,
+    "endIndex": 17
     }
-  ],
-  "compositeEntities": [
+],
+"compositeEntities": [
     {
-      "parentType": "Order",
-      "value": "2 tickets to paris",
-      "children": [
+    "parentType": "ticketInfo",
+    "value": "2 tickets to cairo",
+    "children": [
         {
-          "type": "builtin.number",
-          "value": "2"
+        "type": "builtin.geographyV2",
+        "value": "cairo"
         },
         {
-          "type": "Location::ToLocation",
-          "value": "paris"
+        "type": "builtin.number",
+        "value": "2"
         }
-      ]
+    ]
     }
-  ]
+]
 ```    
 
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
 |Předem připravených entit – počet|"builtin.number"|"2"|
-|Hierarchické entitu, umístění|"Location::ToLocation"|"Paříž"|
+|Předem připravených entit - GeographyV2|"Location::ToLocation"|"Paříž"|
 
 ## <a name="list-entity-data"></a>Seznam dat entity
 
@@ -268,8 +241,8 @@ Předpokládejme, že aplikace má seznam s názvem `Cities`, což každodenně 
 
 |Položka seznamu|Synonyma položky|
 |---|---|
-|Seattle|mořská hrají, moři, 98101, 206, + 1 |
-|Paříž|cdg roissy historie, 75001, 1, +33|
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 

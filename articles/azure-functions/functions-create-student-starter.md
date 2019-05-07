@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5fd9f51185b8461269d498b254d9e9d9f4118270
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 860fedb13e84054e8ba264116be4e452445b7e9b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107138"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143101"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
 
@@ -76,8 +76,6 @@ K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace 
 
 8. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte.
 
-> [!TIP]
-> Pokud máte potíže najít na portálu své aplikace funkcí, zkuste [přidat aplikace funkcí mezi oblíbené na webu Azure Portal](./functions-how-to-use-azure-function-app-settings.md#favorite).
 Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP

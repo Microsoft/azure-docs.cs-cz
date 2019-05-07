@@ -8,12 +8,12 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 81cb5e62c8abc93aa5defb690628c7178fd2a869
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720341"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142539"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
@@ -29,7 +29,7 @@ Detekce změn a podrobnosti jsou důležité pro následující ukázkové scén
 - Zachování databáze správy konfigurace, se označuje jako CMDB aktuální. Místo aktualizace všechny prostředky a jejich celou vlastnost nastaví na frekvenci naplánované pouze najdete, co se změnilo.
 - Vysvětlení, jaké vlastnosti mohou být změněna při změně stavu dodržování předpisů prostředkem. Hodnocení produktu tyto další vlastnosti může poskytnout přehled o dalších vlastností, které možná bude nutné ke správě prostřednictvím Azure Policy definition.
 
-Tento článek ukazuje, jak shromažďování těchto informací prostřednictvím grafu prostředků sady SDK. Tyto informace na webu Azure Portal najdete v tématu Azure Policy [historii změn](../../policy/how-to/determine-non-compliance.md#change-history-preview).
+Tento článek ukazuje, jak shromažďování těchto informací prostřednictvím grafu prostředků sady SDK. Tyto informace na webu Azure Portal najdete v tématu Azure Policy [historii změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) nebo protokol aktivit Azure [historii změn](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history).
 
 > [!NOTE]
 > Podrobnosti o změnách v grafu prostředků jsou vlastností Resource Manageru. Sledování změn uvnitř virtuálního počítače, naleznete v tématu Azure Automation [Change tracking](../../../automation/automation-change-tracking.md) nebo Azure Policy [konfigurace hosta pro virtuální počítače](../../policy/concepts/guest-configuration.md).

@@ -2,19 +2,19 @@
 title: Autorizace přístupu ke službě Azure Storage | Dokumentace Microsoftu
 description: Další informace o různé způsoby, jak autorizovat přístup k úložišti Azure, včetně Azure Active Directory, ověřování pomocí sdíleného klíče nebo signatur sdíleného přístupu.
 services: storage
-author: WenJason
+author: tamram
 ms.service: storage
 ms.topic: article
-origin.date: 03/21/2019
-ms.date: 04/08/2019
-ms.author: v-jay
+ms.date: 03/21/2019
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ba4d83d620a597c9a59f1a3c7f2f9d6722ba42d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e8c9755c444ca7b81891f5f83164bc51aa694eb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483702"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147070"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Autorizace přístupu ke službě Azure Storage
 

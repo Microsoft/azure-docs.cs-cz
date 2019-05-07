@@ -1,20 +1,20 @@
 ---
-title: Napojení na webového klienta Preview virtuální plochy Windows – Azure
-description: Jak se připojit k webovému klientovi Windows virtuální Desktop ve verzi Preview HTML5.
+title: Připojení k virtuální ploše Preview Windows z webového prohlížeče – Azure
+description: Jak se připojit k verzi Preview virtuální plochy Windows z webového prohlížeče.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 231dc2b777ce7fa37f445215863a55e93562e411
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328863"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142453"
 ---
-# <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
+# <a name="connect-from-a-web-browser"></a>Připojte se z webového prohlížeče
 
 Webový klient umožňuje přístup k prostředkům Windows Preview virtuální plochy z webového prohlížeče bez zdlouhavé instalační proces.
 

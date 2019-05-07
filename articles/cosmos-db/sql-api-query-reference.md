@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626873"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145184"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Referenční příručka jazyka SQL pro službu Azure Cosmos DB 
 
@@ -31,7 +31,8 @@ Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za st
 SELECT <select_specification>   
     [ FROM <from_specification>]   
     [ WHERE <filter_condition> ]  
-    [ ORDER BY <sort_specification> ]  
+    [ ORDER BY <sort_specification> ] 
+    [ OFFSET <offset_amount> LIMIT <limit_amount>]
 ```  
   
  **Poznámky**  
@@ -42,6 +43,8 @@ SELECT <select_specification>
 -   [FROM – klauzule](#bk_from_clause)    
 -   [Klauzule WHERE](#bk_where_clause)    
 -   [ORDER BY – klauzule](#bk_orderby_clause)  
+-   [OFFSET LIMIT clause](#bk_offsetlimit_clause)
+
   
 Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí.  
   
@@ -52,7 +55,8 @@ Pořadí, ve kterém jsou zpracovány klauzulí je:
 1.  [FROM – klauzule](#bk_from_clause)  
 2.  [Klauzule WHERE](#bk_where_clause)  
 3.  [ORDER BY – klauzule](#bk_orderby_clause)  
-4.  [Klauzule SELECT](#bk_select_query)  
+4.  [Klauzule SELECT](#bk_select_query)
+5.  [OFFSET LIMIT clause](#bk_offsetlimit_clause)
 
 Všimněte si, že se liší od pořadí, v jakém jsou uvedeny v syntaxi. Řazení je tak, aby všechny nové symboly zavedených v klauzuli zpracovaných vidí a můžou používat v klauzulích zpracovány později. Pro instanci, jsou dostupné aliasy, které jsou deklarované v klauzuli FROM tam, kde a klauzule FROM.  
 
@@ -76,8 +80,8 @@ SELECT <select_specification>
 
 <select_specification> ::=   
       '*'   
-      | <object_property_list>   
-      | VALUE <scalar_expression> [[ AS ] value_alias]  
+      | [DISTINCT] <object_property_list>   
+      | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
 <object_property_list> ::=   
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
@@ -101,7 +105,11 @@ SELECT <select_specification>
 - `VALUE`  
 
   Určuje, že hodnota JSON má být načtena namísto kompletního objektu JSON. To, na rozdíl od `<property_list>` nezalamuje očekávaná hodnota do objektu.  
+ 
+- `DISTINCT`
   
+  Určuje, zda by měly být odstraněny duplicity projektovaných vlastností.  
+
 - `<scalar_expression>`  
 
   Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární výrazy](#bk_scalar_expressions) podrobné informace.  
@@ -341,23 +349,23 @@ WHERE <filter_condition>
 ```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
-<sort_expression> ::= <scalar_expression> [ASC | DESC]  
+<sort_expression> ::= {<scalar_expression> [ASC | DESC]} [ ,...n ]  
   
 ```  
-  
+
  **Argumenty**  
   
 - `<sort_specification>`  
   
-   Určuje vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu. Sloupec pro řazení lze zadat jako název nebo sloupci alias.  
+   Určuje vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu. Sloupec pro řazení lze zadat jako alias názvu nebo vlastnosti.  
   
-   Je možné zadat více sloupců seřadit. Názvy sloupců musí být jedinečné. Definuje pořadí řazení sloupců v klauzuli ORDER by organizace sady seřazených výsledků. To znamená sada výsledků je seřazený podle první vlastnost a potom tuto seřazený seznam je seřazen podle druhý vlastnosti a tak dále.  
+   Je možné zadat víc vlastností. Názvy vlastností musí být jedinečný. Posloupnost vlastnosti řazení v klauzuli ORDER by definuje organizace sady seřazených výsledků. To znamená sada výsledků je seřazený podle první vlastnost a potom tuto seřazený seznam je seřazen podle druhý vlastnosti a tak dále.  
   
-   Názvy sloupců odkazovat v klauzuli ORDER by musí odpovídat na sloupec v seznamu select nebo sloupce definované v tabulce zadaný v klauzuli FROM bez jakékoli nejednoznačnosti.  
+   Názvy vlastností, které odkazuje v klauzuli ORDER by musí odpovídat vlastnosti v seznamu select nebo vlastnosti definované v kolekci specifikované v klauzuli FROM bez jakékoli nejednoznačnosti.  
   
 - `<sort_expression>`  
   
-   Určuje jednu vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu.  
+   Určuje jeden nebo více vlastností nebo výrazy, na kterém se má seřadit sady výsledků dotazu.  
   
 - `<scalar_expression>`  
   
@@ -369,8 +377,34 @@ ORDER BY <sort_specification>
   
   **Poznámky**  
   
-  I když gramatiky dotazů podporuje více pořadí podle vlastností, modul runtime dotazu Cosmos DB podporuje řazení pouze proti jedné vlastnosti a pouze názvy vlastností (ne před vypočítané vlastnosti). Řazení také vyžaduje, zásady indexování obsahuje index rozsahu pro vlastnost a zadaného typu s nejvyšší přesností. Odkazovat na indexování dokumentace k zásadám pro další podrobnosti.  
+   Klauzule ORDER by vyžaduje zásady indexování index pro pole seřazený. Modul runtime dotazu služby Azure Cosmos DB podporuje řazení proti název vlastnosti a ne vypočítané vlastnosti. Azure Cosmos DB podporuje více vlastností klauzule ORDER BY. Chcete-li spustit dotaz s více vlastnostmi klauzule ORDER BY, byste měli definovat [složeném indexu](index-policy.md#composite-indexes) na seřazený pole.
+
+
+##  <a name=bk_offsetlimit_clause></a> Klauzule posun omezení
+
+Určuje počet položek přeskočen a počtu vrácených položek. Příklady najdete v tématu [ukázky použití klauzule posun omezení](how-to-sql-query.md#OffsetLimitClause)
   
+ **Syntaxe**  
+  
+```sql  
+OFFSET <offset_amount> LIMIT <limit_amount>
+```  
+  
+ **Argumenty**  
+ 
+- `<offset_amount>`
+
+   Určuje celočíselný počet položek, které by měl přeskočit výsledky dotazu.
+
+
+- `<limit_amount>`
+  
+   Určuje celočíselný počet položek, které by měla obsahovat výsledky dotazu
+
+  **Poznámky**  
+  
+  Počet POSUNUTÍ i počet omezení se vyžadují v klauzuli LIMIT posun. Pokud volitelný `ORDER BY` klauzule, sadu výsledků dotazu je vytvořen tímto způsobem přeskočení přes seřazený hodnoty. V opačném případě dotaz vrátí pevné pořadí hodnot.
+
 ##  <a name="bk_scalar_expressions"></a> Skalární výrazy  
  Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů. Příklady najdete v tématu [příklady skalární výrazy](how-to-sql-query.md#scalar-expressions)
   
@@ -681,7 +715,8 @@ ORDER BY <sort_specification>
 |[Matematické funkce](#bk_mathematical_functions)|Matematické funkce provádí výpočet, obvykle podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátit číselnou hodnotu.|  
 |[Kontrola funkce typu](#bk_type_checking_functions)|Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL.|  
 |[Funkce řetězců](#bk_string_functions)|Řetězcové funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu.|  
-|[Funkce pole](#bk_array_functions)|Funkce pole provádění operací na hodnotu vstupního pole a vrácené číselné, logickou hodnotu nebo hodnotu pole.|  
+|[Funkce pole](#bk_array_functions)|Funkce pole provádění operací na hodnotu vstupního pole a vrácené číselné, logickou hodnotu nebo hodnotu pole.|
+|[Funkce Date a Time](#bk_date_and_time_functions)|Funkce date a time umožňují získat aktuální datum a čas UTC ve dvou formách; číselné timestamp, jehož hodnota je epocha Unix v milisekundách, nebo jako řetězec, který odpovídá formátu ISO 8601.|
 |[Prostorové funkce](#bk_spatial_functions)|Prostorové funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.|  
   
 ###  <a name="bk_mathematical_functions"></a> Matematické funkce  
@@ -2363,13 +2398,13 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
- Tady je sada výsledků.
+Tady je sada výsledků.
 
 ```
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
- Následuje příklad neplatný vstup. 
+Následuje příklad neplatný vstup. 
    
  Jednoduchých uvozovek a být v rámci pole nejsou platný kód JSON.
 I když jsou platné v rámci dotazu, se nebude analyzovat na platné pole. Buď musí být uvozena řetězců v rámci pole řetězce "[\\"\\"]" nebo okolních uvozovek musí být jeden "[" "]".
@@ -2379,13 +2414,13 @@ SELECT
     StringToArray("['5','6','7']")
 ```
 
- Tady je sada výsledků.
+Tady je sada výsledků.
 
 ```
 [{}]
 ```
 
- Následují příklady neplatný vstup.
+Následují příklady neplatný vstup.
    
  Výraz předaný bude možné analyzovat jako pole JSON. Následující není vyhodnocen na typ pole a tak vrátit nedefinovaný.
    
@@ -2398,7 +2433,7 @@ SELECT
     StringToArray(undefined)
 ```
 
- Tady je sada výsledků.
+Tady je sada výsledků.
 
 ```
 [{}]
@@ -2429,7 +2464,7 @@ StringToBoolean(<expr>)
  
  Následují příklady s platným vstupem.
 
- Prázdný znak je povolen pouze před nebo za "true"/ "false".
+Prázdný znak je povolen pouze před nebo za "true"/ "false".
 
 ```  
 SELECT 
@@ -2444,8 +2479,8 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
- Následují příklady s neplatný vstup.
- 
+Následují příklady s neplatný vstup.
+
  Logické hodnoty jsou malá a velká písmena a musí být zapsaný s všechna malá písmena, to znamená "true" a "false".
 
 ```  
@@ -2454,15 +2489,15 @@ SELECT
     StringToBoolean("False")
 ```  
 
- Tady je sada výsledků.  
+Tady je sada výsledků.  
   
 ```  
 [{}]
 ``` 
 
- Výraz předaný bude možné analyzovat jako logický výraz; tyto vstupy není vyhodnocen na typu Boolean a vrátit tak nedefinovaný.
+Výraz předaný bude možné analyzovat jako logický výraz; tyto vstupy není vyhodnocen na typu Boolean a vrátit tak nedefinovaný.
 
- ```  
+```  
 SELECT 
     StringToBoolean("null"),
     StringToBoolean(undefined),
@@ -2471,7 +2506,7 @@ SELECT
     StringToBoolean(true)
 ```  
 
- Tady je sada výsledků.  
+Tady je sada výsledků.  
   
 ```  
 [{}]
@@ -2500,8 +2535,8 @@ StringToNull(<expr>)
   
   Následující příklad ukazuje, jak se chová StringToNull do různých typů. 
 
- Následují příklady s platným vstupem.
- 
+Následují příklady s platným vstupem.
+
  Prázdný znak je povolen pouze před nebo po "null".
 
 ```  
@@ -2517,9 +2552,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
- Následují příklady s neplatný vstup.
+Následují příklady s neplatný vstup.
 
- Hodnota null je velká a malá písmena a musí být zapsaný s všechna malá písmena, například "null".
+Hodnota null je velká a malá písmena a musí být zapsaný s všechna malá písmena, například "null".
 
 ```  
 SELECT    
@@ -2533,7 +2568,7 @@ SELECT
 [{}]
 ```  
 
- Výraz předaný bude možné analyzovat jako výrazu hodnotu null; Zadejte hodnotu null a vrátit tak nedefinované nevyhodnocují tyto vstupy.
+Výraz předaný bude možné analyzovat jako výrazu hodnotu null; Zadejte hodnotu null a vrátit tak nedefinované nevyhodnocují tyto vstupy.
 
 ```  
 SELECT    
@@ -2572,8 +2607,8 @@ StringToNumber(<expr>)
   
   Následující příklad ukazuje, jak se chová StringToNumber do různých typů. 
 
- Prázdný znak je povolen pouze před nebo po číslo.
- 
+Prázdný znak je povolen pouze před nebo po číslo.
+
 ```  
 SELECT 
     StringToNumber("1.000000") AS num1, 
@@ -2588,8 +2623,8 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
- Ve formátu JSON musí být platné číslo být celé číslo nebo plovoucí číslo bodu.
- 
+Ve formátu JSON musí být platné číslo být celé číslo nebo plovoucí číslo bodu.
+
 ```  
 SELECT   
     StringToNumber("0xF")
@@ -2601,7 +2636,7 @@ SELECT
 {{}}
 ```  
 
- Výraz předaný bude možné analyzovat jako číslo výrazu; Zadejte číslo a vrátit tak nedefinované nevyhodnocují tyto vstupy. 
+Výraz předaný bude možné analyzovat jako číslo výrazu; Zadejte číslo a vrátit tak nedefinované nevyhodnocují tyto vstupy. 
 
 ```  
 SELECT 
@@ -2643,7 +2678,7 @@ StringToObject(<expr>)
   Následující příklad ukazuje, jak se chová StringToObject do různých typů. 
   
  Následují příklady s platným vstupem.
- 
+
 ``` 
 SELECT 
     StringToObject("{}") AS obj1, 
@@ -2652,7 +2687,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
- Tady je sada výsledků.
+Tady je sada výsledků.
 
 ```
 [{"obj1": {}, 
@@ -2660,40 +2695,40 @@ SELECT
   "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
- 
+
  Následují příklady s neplatný vstup.
 I když jsou platné v rámci dotazu, se nebude analyzovat na platné objekty. Řetězce v rámci řetězce objektu musí buď být uvozeny řídicími znaky "{\\"\\":\\" str\\"}" nebo okolních uvozovek musí být jeden ' {"a": "str"} ".
 
- Jednoduché uvozovky kolem názvy vlastností nejsou platný kód JSON.
+Jednoduché uvozovky kolem názvy vlastností nejsou platný kód JSON.
 
 ``` 
 SELECT 
     StringToObject("{'a':[1,2,3]}")
 ```
 
- Tady je sada výsledků.
+Tady je sada výsledků.
 
 ```  
 [{}]
 ```  
 
- Názvy vlastností bez okolních uvozovek nejsou platný kód JSON.
+Názvy vlastností bez okolních uvozovek nejsou platný kód JSON.
 
 ``` 
 SELECT 
     StringToObject("{a:[1,2,3]}")
 ```
 
- Tady je sada výsledků.
+Tady je sada výsledků.
 
 ```  
 [{}]
 ``` 
 
- Následují příklady s neplatný vstup.
- 
+Následují příklady s neplatný vstup.
+
  Výraz předaný bude možné analyzovat jako objekt JSON; tyto vstupy není vyhodnocen na typ objektu a tak vrátit nedefinovaný.
- 
+
 ``` 
 SELECT 
     StringToObject("}"),
@@ -2798,20 +2833,20 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
- Tady je sada výsledků.  
+Tady je sada výsledků.  
   
 ```  
 [{"$1":"4lb" },
- {"$1":"32kg"},
- {"$1":"400g" },
- {"$1":"8999mg" }]
+{"$1":"32kg"},
+{"$1":"400g" },
+{"$1":"8999mg" }]
 
 ```  
 Daný následující vstup.
 ```
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
- Následující příklad ukazuje, jak lze ToString s jinými funkcemi řetězec jako nahradit.   
+Následující příklad ukazuje, jak lze ToString s jinými funkcemi řetězec jako nahradit.   
 ```
 SELECT 
     n.id AS nutrientID,
@@ -2819,14 +2854,14 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
- Tady je sada výsledků.  
+Tady je sada výsledků.  
  ```
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ``` 
+``` 
  
 ####  <a name="bk_trim"></a> UVOLNĚNÍ DOČASNÉ PAMĚTI  
  Vrátí řetězcový výraz po odstraní úvodní a koncové prázdné znaky.  
@@ -2937,7 +2972,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
 Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Částečné nebo úplné shody objektu můžete zkontrolovat pomocí logický výraz v příkazu. 
 
- **Syntaxe**  
+**Syntaxe**  
   
 ```  
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
@@ -2977,7 +3012,7 @@ SELECT
 [{"b1": true, "b2": false}]  
 ```  
 
- Následující příklad návod k ověření pro částečnou shodu JSON v poli pomocí ARRAY_CONTAINS.  
+Následující příklad návod k ověření pro částečnou shodu JSON v poli pomocí ARRAY_CONTAINS.  
   
 ```  
 SELECT  
@@ -3085,7 +3120,100 @@ SELECT
            "s7": [] 
 }]  
 ```  
- 
+
+###  <a name="bk_date_and_time_functions"></a> Funkce Date a Time
+ Následující skalární funkce umožňují získat aktuální datum a čas UTC ve dvou formách; číselné timestamp, jehož hodnota je epocha Unix v milisekundách, nebo jako řetězec, který odpovídá formátu ISO 8601. 
+
+|||
+|-|-|
+|[GetCurrentDateTime](#bk_get_current_date_time)|[GetCurrentTimestamp](#bk_get_current_timestamp)||
+
+####  <a name="bk_get_current_date_time"></a> GetCurrentDateTime
+ Vrátí aktuální datum UTC a času jako řetězec ve formátu ISO 8601.
+  
+ **Syntaxe**
+  
+```
+GetCurrentDateTime ()
+```
+  
+  **Návratové typy**
+  
+  Vrátí aktuální čas UTC datum a čas ISO 8601 řetězcovou hodnotu. 
+
+  To je vyjádřená ve formátu RRRR-MM-DDThh:mm:ss.sssZ kde:
+  
+  |||
+  |-|-|
+  |RRRR|čtyřmístný rok|
+  |MM|dvoumístným měsícem (01 = January, atd.)|
+  |DD|dvěma číslicemi den v měsíci (01 do 31)|
+  |T|signifier pro začátek prvků času|
+  |hh|Hodina dvou číslic (00 do 23)|
+  |mm|dvě číslice minut (00 do 59)|
+  |ss|dvě číslice sekund (00 do 59)|
+  |.sss|tři číslice desetinné zlomků sekund|
+  |Z|Označení UTC (Coordinated Universal Time)||
+  
+  Další podrobnosti o formátu ISO 8601, naleznete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+
+  **Poznámky**
+
+  GetCurrentDateTime je Nedeterministický funkce. 
+  
+  Vrácený výsledek je čas UTC (Coordinated Universal Time).
+
+  **Příklady**  
+  
+  Následující příklad ukazuje, jak získat aktuální datum čas UTC pomocí integrované funkce GetCurrentDateTime.
+  
+```  
+SELECT GetCurrentDateTime() AS currentUtcDateTime
+```  
+  
+ Tady je Ukázková sada výsledků.
+  
+```  
+[{
+  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+}]  
+```  
+
+####  <a name="bk_get_current_timestamp"></a> GetCurrentTimestamp
+ Vrátí počet milisekund, které uplynuly od 00:00:00 čtvrtek, 1. ledna 1970. 
+  
+ **Syntaxe**  
+  
+```  
+GetCurrentTimestamp ()  
+```  
+  
+  **Návratové typy**  
+  
+  Vrátí číselnou hodnotu, aktuální počet milisekund uplynulých od epochy Unix to znamená počet milisekund, které uplynuly od 00:00:00 čtvrtek, 1. ledna 1970.
+
+  **Poznámky**
+
+  GetCurrentTimestamp je Nedeterministický funkce. 
+  
+  Vrácený výsledek je čas UTC (Coordinated Universal Time).
+
+  **Příklady**  
+  
+  Následující příklad ukazuje, jak získat aktuální časové razítko pomocí integrované funkce GetCurrentTimestamp.
+  
+```  
+SELECT GetCurrentTimestamp() AS currentUtcTimestamp
+```  
+  
+ Tady je Ukázková sada výsledků.
+  
+```  
+[{
+  "currentUtcTimestamp": 1556916469065
+}]  
+```  
+
 ###  <a name="bk_spatial_functions"></a> Prostorové funkce  
  Následující skalární funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.  
   
@@ -3292,7 +3420,7 @@ SELECT ST_ISVALIDDETAILED({
   }  
 }]  
 ```  
-  
+ 
 ## <a name="next-steps"></a>Další postup  
 
 - [Syntaxe SQL a dotaz SQL pro službu Cosmos DB](how-to-sql-query.md)

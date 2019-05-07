@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e2b2c39cf9039c78a610e9b28065b972484123e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069273"
+ms.locfileid: "65149259"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrahovat kontextově souvisejících dat ze utterance
 
@@ -93,12 +93,8 @@ Předem připravených entit geographyV2, extrahuje informace o poloze, včetně
     ![Přidání rolí na předem připravených entit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Vyberte **záměry** z levé navigace, vyberte **MoveEmployeeToCity** záměr. Všimněte si, že názvy měst jsou označeny pomocí předem připravených entit **geogrpahyV2**.
 1. V první utterance seznamu vyberte umístění, původu. Zobrazí se rozevírací nabídka. Vyberte **geographyV2** v seznamu, postupujte podle nabídce napříč vyberte **původu**.
-
-    [![Snímek obrazovky s označením město jako původní umístění](media/tutorial-entity-roles/tag-origin-city-with-role.png "snímek obrazovky s označením město jako původní umístění")](media/tutorial-entity-roles/tag-origin-city-with-role.png#lightbox)
-
 1. K označení všechny role, umístění v všechny projevy, použijte metodu z předchozího kroku. 
 
-    [![Snímek obrazovky umístění entity označené v projevy](media/tutorial-entity-roles/all-locations-marked-with-roles.png "entity umístění snímek obrazovky s popisem projevy")](media/tutorial-entity-roles/all-locations-marked-with-roles.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
 

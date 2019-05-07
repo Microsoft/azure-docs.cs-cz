@@ -2,19 +2,20 @@
 title: Šifrování na straně klienta s využitím Pythonu pro službu Microsoft Azure Storage | Dokumentace Microsoftu
 description: Klientská knihovna Azure Storage pro Python podporuje šifrování na straně klienta z důvodu maximálního zabezpečení pro vaše aplikace Azure Storage.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011123"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146898"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Šifrování na straně klienta s využitím Pythonu pro službu Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -138,7 +139,7 @@ Překladač klíčů alespoň musí implementovat metodu, která zadané id klí
   * Překladač klíče je vyvolána, pokud zadaná k získání klíče. Pokud překladač je zadána, ale nemá žádné mapování pro identifikátor klíče, je vržena chyba.
   * Pokud překladač není zadán, ale zadaný klíč, klíč se používá, pokud jeho identifikátor odpovídá požadovaný identifikátor klíče. Pokud se neshoduje identifikátor, je vržena chyba.
 
-    Ukázky šifrování azure.storage.samples <fix URL>předvádí podrobnější scénář začátku do konce pro objekty BLOB, fronty a tabulky.
+    Ukázky šifrování azure.storage.samples předvádí podrobnější scénář začátku do konce pro objekty BLOB, fronty a tabulky.
       Ukázková implementace KEK a překladač klíče jsou k dispozici v ukázkové soubory jako KeyWrapper a KeyResolver v uvedeném pořadí.
 
 ### <a name="requireencryption-mode"></a>Režim RequireEncryption

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497386"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141162"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 Místní brána dat zajišťuje zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
@@ -176,30 +176,9 @@ Soubory protokolu jsou důležité prostředků při řešení potíží.
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
 
-
 #### <a name="event-logs"></a>Protokoly událostí
 
 Můžete najít protokoly brány správy dat a PowerBIGateway pod **protokoly aplikací a služeb**.
-
-
-## <a name="telemetry"></a>Telemetrie
-Telemetrie je možné pro monitorování a řešení potíží. Ve výchozím nastavení
-
-**Zapnout telemetrii**
-
-1.  Kontrola klienta On-premises data gateway adresáře na počítači. Obvykle je **%systemdrive%\Program Files\On-premises data gateway**. Nebo můžete otevřít konzolu služby a zkontrolujte cestu ke spustitelnému souboru: Vlastnosti služby On-premises data gateway.
-2.  V souboru Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config z adresáře klienta. Nastavení SendTelemetry změňte na hodnotu true.
-        
-    ```
-        <setting name="SendTelemetry" serializeAs="String">
-                    <value>true</value>
-        </setting>
-    ```
-
-3.  Uložte změny a restartujte službu Windows: Místní služba brány data.
-
-
-
 
 ## <a name="next-steps"></a>Další postup
 * [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).   

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření definice OpenAPI pro funkci | Dokumentace Microsoftu
+title: Vytvoření definice OpenAPI pro funkci s Azure API Management
 description: Vytvořte definici OpenAPI, která umožní ostatním aplikacím a službám volat vaši funkci v Azure.
 services: functions
 keywords: OpenAPI, Swagger, cloud apps, cloud services,
@@ -12,87 +12,95 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 6daa29b4e8f09a4f8a40c3b92d2e2e86a5dea6aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ad304bc8f038d4009352dae72d70079828c26ba
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61026574"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141593"
 ---
-# <a name="create-an-openapi-definition-for-a-function"></a>Vytvoření definice OpenAPI pro funkci
+# <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Vytvoření definice OpenAPI pro funkci s Azure API Management
 
-Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](https://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
+Rozhraní REST API se často popisují pomocí definice OpenAPI. Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
 
-V tomto kurzu vytvoříte funkci, která určí, jestli je nouzová oprava větrné turbíny nákladově efektivní. Pak vytvoříte definici OpenAPI pro aplikaci funkcí, aby bylo možné funkci volat i z jiných aplikací a služeb.
+V tomto kurzu vytvoříte funkci, která určí, jestli je nouzová oprava větrné turbíny nákladově efektivní. Pak vytvoříte definici OpenAPI pro funkci aplikace pomocí [Azure API Management](../api-management/api-management-key-concepts.md) tak, aby funkci lze volat z jiných aplikací a služeb.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření funkce v Azure
-> * Vygenerování definice OpenAPI pomocí nástrojů OpenAPI
-> * Úprava definice, aby poskytovala další metadata
+> * Vygeneruje definici rozhraní OpenAPI pomocí služby Azure API Management
 > * Otestování definice zavoláním funkce
-
-> [!IMPORTANT]
-> OpenAPI funkce je aktuálně ve verzi preview a je dostupná jenom pro verzi 1.x modulu runtime Azure Functions.
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků. 
+K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace function app umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="set-the-functions-runtime-version"></a>Nastavení verze modulu runtime Functions
-
-Ve výchozím nastavení používá aplikace function app vytvoříte verze 2.x modulu runtime. Verze modulu runtime je nutné nastavit zpět do 1.x před vytvořením funkce.
-
-[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
-
 ## <a name="create-the-function"></a>Vytvoření funkce
 
-Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva parametry: odhadovaný čas opravy turbíny (v hodinách) a kapacitu turbíny (v kilowattech). Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za 24 hodin.
+Tento kurz používá funkci aktivovanou protokolem HTTP, který přijímá dva parametry:
 
-1. Rozbalte aplikaci funkcí a vyberte tlačítko **+** vedle položky **Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte možnost **Vlastní funkce**. Zobrazí se kompletní sada šablon funkcí. 
+* Odhadovaný čas, aby turbíny opravit, v hodinách.
+* Kapacitu turbíny v kilowattech. 
 
-    ![Stručný úvod do služby Functions na webu Azure Portal](media/functions-openapi-definition/add-first-function.png)
+Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za 24 hodin. Chcete-li vytvořit HTTP funkce aktivovaná [webu Azure portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte `http` a zvolte pro šablonu triggeru HTTP **jazyk C#**. 
+1. Rozbalte aplikaci funkcí a vyberte tlačítko **+** vedle položky **Funkce**. Vyberte **na portálu** > **pokračovat**.
 
-    ![Volba triggeru HTTP](./media/functions-openapi-definition/select-http-trigger-portal.png)
+1. Vyberte **další šablony...** a pak vyberte **dokončit a zobrazení šablony**
 
-1. Jako **Název** funkce zadejte `TurbineRepair`, jako **[Úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** zvolte `Function` a pak vyberte **Vytvořit**.  
+1. Výběr triggeru HTTP, zadejte `TurbineRepair` pro funkci **název**, zvolte `Function` pro  **[úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** a pak vyberte  **Vytvoření**.  
 
-    ![Vytvoření funkce aktivované protokolem HTTP](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
+    ![Vytvoření funkce protokolu HTTP pro OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
-1. Nahraďte obsah souboru run.csx následujícím kódem a klikněte na **Uložit**:
+1. Nahraďte jeho obsah run.csx C# skriptu souboru následujícím kódem a pak zvolte **Uložit**:
 
     ```csharp
+    #r "Newtonsoft.Json"
+    
     using System.Net;
-
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
+    
     const double revenuePerkW = 0.12;
     const double technicianCost = 250;
     const double turbineCost = 100;
-
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {
-        //Get request body
-        dynamic data = await req.Content.ReadAsAsync<object>();
-        int hours = data.hours;
-        int capacity = data.capacity;
-
-        //Formulas to calculate revenue and cost
-        double revenueOpportunity = capacity * revenuePerkW * 24;  
-        double costToFix = (hours * technicianCost) +  turbineCost;
+        // Get query strings if they exist
+        int tempVal;
+        int? hours = Int32.TryParse(req.Query["hours"], out tempVal) ? tempVal : (int?)null;
+        int? capacity = Int32.TryParse(req.Query["capacity"], out tempVal) ? tempVal : (int?)null;
+    
+        // Get request body
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+    
+        // Use request body if a query was not sent
+        capacity = capacity ?? data?.capacity;
+        hours = hours ?? data?.hours;
+    
+        // Return bad request if capacity or hours are not passed in
+        if (capacity == null || hours == null){
+            return new BadRequestObjectResult("Please pass capacity and hours on the query string or in the request body");
+        }
+        // Formulas to calculate revenue and cost
+        double? revenueOpportunity = capacity * revenuePerkW * 24;  
+        double? costToFix = (hours * technicianCost) +  turbineCost;
         string repairTurbine;
-
+    
         if (revenueOpportunity > costToFix){
             repairTurbine = "Yes";
         }
         else {
             repairTurbine = "No";
-        }
-
-        return req.CreateResponse(HttpStatusCode.OK, new{
+        };
+    
+        return (ActionResult)new OkObjectResult(new{
             message = repairTurbine,
             revenueOpportunity = "$"+ revenueOpportunity,
             costToFix = "$"+ costToFix
@@ -100,7 +108,7 @@ Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva 
     }
     ```
 
-    Tento kód funkce vrátí zprávu `Yes` nebo `No`, která značí, jestli je nouzová oprava nákladově efektivní, a obsahuje také možné výnosy turbíny a náklady na opravu turbíny. 
+    Tento kód funkce vrátí zprávu `Yes` nebo `No`, která značí, jestli je nouzová oprava nákladově efektivní, a obsahuje také možné výnosy turbíny a náklady na opravu turbíny.
 
 1. Pokud chcete funkci otestovat, kliknutím na **Test** úplně vpravo rozbalte kartu Test. Jako **Text požadavku** zadejte následující hodnotu a klikněte na **Spustit**.
 
@@ -119,182 +127,67 @@ Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva 
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. Dále pro aplikaci funkcí vygenerujete a upravíte definici OpenAPI.
+Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. V dalším kroku vygenerujete definice OpenAPI pro aplikaci function app.
 
 ## <a name="generate-the-openapi-definition"></a>Generování definice OpenAPI
 
-Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou používat jiné technologie Microsoftu, jako jsou API Apps, [PowerApps](functions-powerapps-scenario.md) a [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), i vývojářské nástroje třetích stran, jako je [Postman](https://www.getpostman.com/docs/importing_swagger) a [řada dalších balíčků](https://swagger.io/tools/).
+Nyní jste připraveni vygenerovat definici OpenAPI.
 
-1. Vyberte pouze *operace*, které vaše rozhraní API podporuje (v tomto případě POST). Díky tomu bude vygenerovaná definice rozhraní API přehlednější.
+1. Vyberte aplikaci function app a potom vyberte **funkce platformy**, **všechna nastavení**
 
-    1. Na kartě **Integrace** vaší nové funkce triggeru HTTP změňte **Povolené metody HTTP** na **Vybrané metody**.
+    ![Test funkce na webu Azure Portal](media/functions-openapi-definition/select-all-settings-openapi.png)
 
-    1. V části **Vybrané metody HTTP** zrušte všechny možnosti kromě **POST** a pak klikněte na **Uložit**.
+1. Posuňte se dolů a pak zvolte **API Management** > **vytvořit nový** k vytvoření nové instance API managementu.
 
-        ![Vybrané metody HTTP](media/functions-openapi-definition/selected-http-methods.png)
+    ![Odkaz – funkce](media/functions-openapi-definition/link-apim-openapi.png)
 
-1. Klikněte na název vaší aplikace funkcí (například **function-demo-energy**) > **Funkce platformy** > **Definice rozhraní API**.
+1. Pomocí API Management nastavení uvedená v tabulce pod obrázkem.
 
-    ![Definice rozhraní API](media/functions-openapi-definition/api-definition.png)
+    ![Vytvořit novou službu API Management](media/functions-openapi-definition/new-apim-service-openapi.png)
 
-1. Na kartě **Definice rozhraní API** klikněte na **Funkce**.
+    | Nastavení      | Navrhovaná hodnota  | Popis                                        |
+    | ------------ |  ------- | -------------------------------------------------- |
+    | **Název** | Globálně jedinečný název | Název je generován a základě název vaší aplikace function App. |
+    | **Předplatné** | Vaše předplatné | Předplatné, ve kterém tento nový prostředek vytvoří. |  
+    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Stejného prostředku jako aplikace function app, který by měl získat nastavení za vás. |
+    | **Umístění** | Západní USA | Zvolte umístění USA – západ |
+    | **Název organizace** | Contoso | Název organizace používá na portálu pro vývojáře a e-mailových oznámení. |
+    | **E-mail správce** | e-mailu | E-mailu, který přijal systémová oznámení ze služby API Management. |
+    | **Cenová úroveň** | Využití (Preview) | Úplné podrobnosti o cenách, najdete v článku [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **Application Insights** | Vaše instance | Použijte stejné služby Application Insights, který se používá aplikace function App. |
 
-    ![Zdroj definice rozhraní API](media/functions-openapi-definition/api-definition-source.png)
+1. Zvolte **vytvořit** k vytvoření instance API Management, což může trvat několik minut.
 
-    Tento krok pro vaši aplikaci funkcí povolí sadu možností OpenAPI, včetně koncového bodu pro hostování souboru OpenAPI z domény vaší aplikace funkcí, vložené kopie [editoru OpenAPI](https://editor.swagger.io) a generátoru šablon definic rozhraní API.
+1. Vyberte **povolení Application Insights** odeslat protokoly na stejném místě jako funkce aplikace, potvrďte zbývající výchozí hodnoty a vyberte **rozhraní API odkazu**.
 
-1. Klikněte na **Vygenerovat šablonu definic rozhraní API** > **Uložit**.
+1. **Import Azure Functions** otevře s **TurbineRepair** funkce zvýrazní. Zvolte **vyberte** pokračujte.
 
-    ![Vygenerovat šablonu definic rozhraní API](media/functions-openapi-definition/generate-template.png)
+    ![Služba Azure Functions importovat do API managementu](media/functions-openapi-definition/import-function-openapi.png)
 
-    Azure ve vaší aplikaci funkcí zkontroluje funkce triggeru HTTP a s použitím informací v souboru functions.json vygeneruje definici rozhraní OpenAPI. Tady je vygenerovaná definice:
+1. V **vytvořit z aplikace Function App** stránce, přijměte výchozí hodnoty a vyberte **Create**
 
-    ```yaml
-    swagger: '2.0'
-    info:
-    title: function-demo-energy.azurewebsites.net
-    version: 1.0.0
-    host: function-demo-energy.azurewebsites.net
-    basePath: /
-    schemes:
-    - https
-    - http
-    paths:
-    /api/TurbineRepair:
-        post:
-        operationId: /api/TurbineRepair/post
-        produces: []
-        consumes: []
-        parameters: []
-        description: >-
-            Replace with Operation Object
-            #https://swagger.io/specification/#operationObject
-        responses:
-            '200':
-            description: Success operation
-        security:
-            - apikeyQuery: []
-    definitions: {}
-    securityDefinitions:
-    apikeyQuery:
-        type: apiKey
-        name: code
-        in: query
-    ```
+    ![Vytvořit z aplikace Function App](media/functions-openapi-definition/create-function-openapi.png)
 
-    Tato definice je popsaná jako _šablona_, protože k tomu, aby byla úplnou definicí OpenAPI, vyžaduje více metadat. Definici upravíte v dalším kroku.
-
-## <a name="modify-the-openapi-definition"></a>Úprava definice OpenAPI
-
-Teď, když máte definici šablony, upravíte ji, aby poskytovala další metadata týkající se operací rozhraní API a datových struktur. V **definici rozhraní API** odstraňte vygenerovanou definici od `post` až do konce definice, vložte níže uvedený obsah a klikněte na **Uložit**.
-
-```yaml
-    post:
-      operationId: CalculateCosts
-      description: Determines if a technician should be sent for repair
-      summary: Calculates costs
-      x-ms-summary: Calculates costs
-      x-ms-visibility: important
-      produces:
-        - application/json
-      consumes:
-        - application/json
-      parameters:
-        - name: body
-          in: body
-          description: Hours and capacity used to calculate costs
-          x-ms-summary: Hours and capacity
-          x-ms-visibility: important
-          required: true
-          schema:
-            type: object
-            properties:
-              hours:
-                description: The amount of effort in hours required to conduct repair
-                type: number
-                x-ms-summary: Hours
-                x-ms-visibility: important
-              capacity:
-                description: The max output of a turbine in kilowatts
-                type: number
-                x-ms-summary: Capacity
-                x-ms-visibility: important
-      responses:
-        200:
-          description: Message with cost and revenue numbers
-          x-ms-summary: Message
-          schema:
-           type: object
-           properties:
-            message:
-              type: string
-              description: Returns Yes or No depending on calculations
-              x-ms-summary: Message 
-            revenueOpportunity:
-              type: string
-              description: The revenue opportunity cost
-              x-ms-summary: RevenueOpportunity 
-            costToFix:
-              type: string
-              description: The cost in $ to fix the turbine
-              x-ms-summary: CostToFix
-      security:
-        - apikeyQuery: []
-definitions: {}
-securityDefinitions:
-  apikeyQuery:
-    type: apiKey
-    name: code
-    in: query
-```
-
-V tomto případě můžete prostě vložit aktualizovaná metadata, ale je důležité porozumět typům úprav, které jsme s výchozí šablonou provedli:
-
-* Určili jsme, že rozhraní API generuje a spotřebovává data ve formátu JSON.
-
-* Určili jsme požadované parametry a jejich názvy a datové typy.
-
-* Určili jsme návratové hodnoty úspěšné odpovědi a jejich názvy a datové typy.
-
-* Zadali jsme popisné souhrny a popisy rozhraní API, jeho operací a parametrů. To je důležité pro lidi, kteří budou tuto funkci používat.
-
-* Přidali jsme x-ms-summary a x-ms-visibility, které se používají v uživatelském rozhraní pro Microsoft Flow a Logic Apps. Další informace najdete v tématu [Rozšíření OpenAPI pro vlastní rozhraní API v Microsoft Flow](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
-
-> [!NOTE]
-> V definici zabezpečení jsme ponechali výchozí metodu ověřování – klíč rozhraní API. Kdybyste použili jiný typ ověřování, tuto část definice byste změnili.
-
-Další informace o definování operací rozhraní API najdete ve [specifikaci OpenAPI](https://swagger.io/specification/#operationObject).
+Rozhraní API je vytvořený pro funkci.
 
 ## <a name="test-the-openapi-definition"></a>Test definice OpenAPI
 
-Než definici rozhraní API použijete, je vhodné ji otestovat v uživatelském rozhraní služby Azure Functions.
+Než použijete definice rozhraní API, měli byste ověřit, že funguje.
 
-1. Na kartě **Správa** pro vaši funkci v části **Klíče hostitele** zkopírujte **výchozí** klíč.
+1. Na **testovací** funkce, vyberte na kartě **příspěvek** operace
 
-    ![Zkopírování klíče rozhraní API](media/functions-openapi-definition/copy-api-key.png)
+1. Zadejte hodnoty pro **hodin** a **kapacity**
 
-    > [!NOTE]
-    >Tento klíč použijete při testování a také při volání rozhraní API z aplikace nebo služby.
+```json
+{
+"hours": "6",
+"capacity": "2500"
+}
+```
 
-1. Vraťte se do definice rozhraní API: **function-demo-energy** > **Funkce platformy** > **Definice rozhraní API**.
+1. Klikněte na tlačítko **odeslat**, následně zobrazit odpověď HTTP.
 
-1. V pravém podokně klikněte na **Ověřit**, zadejte klíč rozhraní API, který jste zkopírovali, a klikněte na **Ověřit**.
-
-    ![Ověření pomocí klíče rozhraní API](media/functions-openapi-definition/authenticate-api-key.png)
-
-1. Posuňte se dolů a klikněte na **Vyzkoušet tuto operaci**.
-
-    ![Vyzkoušet tuto operaci](media/functions-openapi-definition/try-operation.png)
-
-1. Zadejte hodnoty pro **hours** (hodiny) a **capacity** (kapacita).
-
-    ![Zadání parametrů](media/functions-openapi-definition/parameters.png)
-
-    Všimněte si, že uživatelské rozhraní používá popisy z definice rozhraní API.
-
-1. Klikněte na **Odeslat požadavek** a pak kliknutím na kartu **Přehledný** zobrazte výstup.
-
-    ![Odeslání požadavku](media/functions-openapi-definition/send-request.png)
+    ![Test rozhraní API – funkce](media/functions-openapi-definition/test-function-api-openapi.png)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -302,11 +195,10 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření funkce v Azure
-> * Vygenerování definice OpenAPI pomocí nástrojů OpenAPI
-> * Úprava definice, aby poskytovala další metadata
+> * Vygeneruje definici rozhraní OpenAPI pomocí služby Azure API Management
 > * Otestování definice zavoláním funkce
 
-Přejděte k dalšímu tématu, kde se naučíte vytvořit aplikaci PowerApps používající definici OpenAPI, kterou jste vytvořili.
+Přejděte k dalšímu tématu, další informace o službě API Management.
 
 > [!div class="nextstepaction"]
-> [Volání funkce z PowerApps](functions-powerapps-scenario.md)
+> [API Management](../api-management/api-management-key-concepts.md)

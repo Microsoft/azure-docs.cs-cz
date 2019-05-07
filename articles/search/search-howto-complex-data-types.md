@@ -10,12 +10,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 397b3ea7fee67e25cd160f6b529a660e18c44046
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 00606ed5cbcd8681748241e9404c6e6e5aa95021
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024732"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147320"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak modelování komplexních datových typů ve službě Azure Search
 
@@ -28,7 +28,7 @@ Abyste mohli začít, doporučujeme, abyste [Hotels datovou sadu](https://github
 > [!Note]
 > Podpora pro komplexní typy je všeobecně dostupná v `api-version=2019-05-06`. 
 >
-> Pokud vaše hledání řešení je vybudováno na starší řešení plochá datových sad v kolekci, měli byste změnit indexu na komplexní typy jako v nejnovější verzi rozhraní API nepodporuje. Další informace o upgradu verze rozhraní API najdete v tématu [upgradovat na nejnovější verzi rozhraní REST API](search-api-migration.md) nebo [upgradovat na nejnovější verzi sady .NET SDK](search-dotnet-sdk-migration.md).
+> Pokud vaše hledání řešení je vybudováno na starší řešení plochá datových sad v kolekci, měli byste změnit indexu na komplexní typy jako v nejnovější verzi rozhraní API nepodporuje. Další informace o upgradu verze rozhraní API najdete v tématu [upgradovat na nejnovější verzi rozhraní REST API](search-api-migration.md) nebo [upgradovat na nejnovější verzi sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
 ## <a name="example-of-a-complex-structure"></a>Příklad složité struktury
 

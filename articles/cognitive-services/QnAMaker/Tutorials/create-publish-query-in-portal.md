@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463633"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149945"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Kurz: Nástroj QnA Maker portal vytvořte znalostní báze
 
@@ -68,7 +68,7 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
     |--|--|--|
     |zprostředkovatele identity|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Obsah nejčastějších dotazů na této adrese URL je formátovaný jako otázka, za níž následuje odpověď. Služba QnA Maker může tento formát interpretovat a extrahovat otázky a přidružené odpovědi.|
     |File |_v tomto kurzu se nepoužívá_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
-    |Chit-chat personality (Charakter konverzace)|The friend (Přítel)|Díky tomuto nastavení budou časté otázky a odpovědi popisné a neformální. Tyto otázky a odpovědi můžete později upravit. |
+    |Chit-chat personality (Charakter konverzace)|Popisný|Díky tomuto nastavení budou časté otázky a odpovědi popisné a neformální. Tyto otázky a odpovědi můžete později upravit. |
 
     ![Proces vytváření znalostní báze – krok 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -84,9 +84,9 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
 
 1. V dolní části tabulky vyberte poslední stránku otázek a odpovědí. Na stránce se zobrazí otázky a odpovědi s charakterem konverzace. 
 
-1. Na panelu nástrojů nad seznamem otázek a odpovědí vyberte ikonu metadat. Zobrazí metadata značky pro každý otázek a odpovědí. Otázky Chit chat mají **redakční: chit chat** metadat již nastaven. Tato metadata se vrátí do klientské aplikace spolu s vybranou odpovědí. Klientská aplikace, jako je chatovací robot, slouží k určení interakcí s uživatelem nebo další zpracování tohoto filtrovaných metadat.
+1. Vyberte z panelu nástrojů nad seznamem otázek a odpovědí **zobrazit možnosti** ikonu, pak vyberte **zobrazit metadata**. Zobrazí metadata značky pro každý otázek a odpovědí. Otázky Chit chat mají **redakční: chit chat** metadat již nastaven. Tato metadata se vrátí do klientské aplikace spolu s vybranou odpovědí. Klientská aplikace, jako je chatovací robot, slouží k určení interakcí s uživatelem nebo další zpracování tohoto filtrovaných metadat.
 
-    ![Zobrazit značky metadat](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![! [Zobrazit značky metadat] (.. / media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
 
 1. V horní nabídce vyberte **Save and train** (Uložit a natrénovat).
 

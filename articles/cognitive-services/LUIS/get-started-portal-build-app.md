@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5ec38c510fedee7f489b3b100285eeb7c75f4561
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690973"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146555"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý start: Vytvoření nové aplikace na portálu služby LUIS
 
@@ -72,6 +72,8 @@ Příklad projevy přidáte po vytvoření záměry. Příklad projevy jsou text
 
 Pro tuto aplikaci příklad `FindForm` záměru, příklad projevy bude obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění žádost uživatele, takže je důležité zahrnout utterance číslo formuláře.
 
+[![Zadejte projevy příklad pro FindForm záměr](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+
 Přidejte následující projevy 15 příklad do `FindForm` záměr.
 
 |#|Ukázkové promluvy|
@@ -100,11 +102,11 @@ Návrh těchto projevů příklad liší následujícími způsoby:
 * příkaz čas (je, byla, bude)
 * pořadí slov
 
-[![Zadejte projevy příklad pro FindForm záměr](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+
 
 ## <a name="create-a-regular-expression-entity"></a>Vytvoření entity regulárního výrazu
 
-Chcete-li získat formuláře číslo vrácen jako část předpovědi odpověď modulu runtime, formulář musí být označen jako entity. Protože text čísla formuláře je vysoce strukturovaná, může být označený, pomocí regulárních výrazů entity. Vytvoření entity pomocí následujících kroků:
+V modulu runtime předpověď odpovědi vrátit číslo formuláře, formulář musí být označen jako entity. Protože text čísla formuláře je vysoce strukturovaná, můžete označit pomocí regulárních výrazů entity. Vytvoření entity pomocí následujících kroků:
 
 1. Vyberte **entity** z nabídky na levé straně.
 

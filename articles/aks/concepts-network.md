@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d51699138914e4a8ad5d2a133161fcfce71e9fe
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467247"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074053"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -108,7 +108,7 @@ Skupina zabezpečení sítě pro virtuální počítače, filtruje provoz, jako 
 
 Ve výchozím nastavení můžete všechny podů v clusteru AKS odesílat a přijímat provoz bez omezení. Pro lepší zabezpečení můžete definovat pravidla, která řídí tok provozu. Back-endové aplikace jsou často dostupná jenom v případě do požadované front-endové služby nebo databáze součásti jsou pouze přístupné aplikačních vrstev, které k nim připojit.
 
-Zásady sítě je Kubernetes funkce aktuálně ve verzi preview ve službě AKS, který umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Skupiny zabezpečení sítě se více uzlů AKS, není pody. Použití zásady sítě je vhodnější, nativní pro cloud způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít.
+Zásady sítě je k dispozici ve službě AKS, které řídí tok přenosů mezi podů Kubernetes funkce. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Skupiny zabezpečení sítě se více uzlů AKS, není pody. Použití zásady sítě je vhodnější, nativní pro cloud způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít.
 
 Další informace najdete v tématu [zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)][use-network-policies].
 

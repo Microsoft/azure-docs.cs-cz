@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d04bb965ddf9616aaa01f4c8822ac42aea6dab2d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869569"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150878"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
@@ -176,12 +176,14 @@ Podrobnosti provádění aktivity kopírování a výkonové charakteristiky se 
 | DataRead | Velikost dat číst ze zdroje | Hodnota Int64 v **bajtů** |
 | DataWritten | Velikost dat zapsaných do jímky | Hodnota Int64 v **bajtů** |
 | filesRead | Počet souborů, které jsou kopírovány při kopírování dat z úložiště souborů. | Hodnota Int64 (žádná jednotka) |
-| fileScanned | Počet souborů, které se má zkontrolovat ze zdrojového souboru úložiště. | Hodnota Int64 (žádná jednotka) |
 | filesWritten | Počet souborů, které jsou kopírovány při kopírování dat do služby file storage. | Hodnota Int64 (žádná jednotka) |
-| rowsCopied | Počet řádků, které jsou kopírovány (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
+| rowsRead | Počet řádků, který je čten ze zdroje (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
+| rowsCopied | Počet řádků, které byly zkopírovány na jímky (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
 | rowsSkipped | Počet nekompatibilních řádků se přeskakuje. Funkci můžete zapnout pomocí nastavení "enableSkipIncompatibleRow" na hodnotu true. | Hodnota Int64 (žádná jednotka) |
-| Propustnost | Poměr, ve kterém jsou přenesená data | Plovoucí desetinné číslo s desetinnou čárkou v **KB/s** |
-| copyDuration | Doba kopírování | Hodnota Int32 v řádu sekund |
+| Propustnost | Poměr, ve kterém se data přenáší. | Plovoucí desetinné číslo s desetinnou čárkou v **KB/s** |
+| copyDuration | Doba kopírování. | Hodnota Int32 v řádu sekund |
+| sourcePeakConnections | Nejvyšší počet souběžných připojení do zdrojového úložiště dat během kopírování. | Hodnota Int32 |
+| sinkPeakConnections| Nejvyšší počet souběžných připojení k úložišti dat jímky během kopírování.| Hodnota Int32 |
 | sqlDwPolyBase | Pokud při kopírování dat do SQL Data Warehouse PolyBase používá. | Logická hodnota |
 | redshiftUnload | Pokud uvolnění se používá při kopírování dat z Redshift. | Logická hodnota |
 | hdfsDistcp | Pokud DistCp se používá při kopírování dat z HDFS. | Logická hodnota |

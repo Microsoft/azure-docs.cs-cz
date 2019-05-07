@@ -41,15 +41,15 @@
         - name: Správa účtů
           href: cloudsimple-account.md
         - name: Správa aktivit
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-activity/'
+          href: cloudsimple-activity.md
         - name: VMware v privátním cloudu
-          href: 'https://docs.azure.cloudsimple.com/vmware-components/'
+          href: vmware-components.md
         - name: Přehled zabezpečení
           href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
         - name: Kvóta pro uzly
-          href: 'https://docs.azure.cloudsimple.com/node-quota/'
+          href: node-quota.md
         - name: Údržba a aktualizace
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-maintenance-updates/'
+          href: cloudsimple-maintenance-updates.md
         - name: Nejčastější dotazy
           href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
     - name: Kurzy

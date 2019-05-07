@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e46db4c07826bb5f58d50fdd5ab25120b9f251d0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: 2576121bfc945b90ce8ec0260ea30ec110e14dd8
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080958"
+ms.locfileid: "65138832"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -43,7 +43,7 @@ Následující obrázek shrnuje některé rozdíly mezi ADAL.NET a MSAL.NET ![k�
 
 ADAL.NET spotřebované [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) balíček NuGet. obor názvů pro použití se `Microsoft.IdentityModel.Clients.ActiveDirectory`.
 
-Použití MSAL.NET budete muset přidat [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet balíčku (pro tuto chvíli ve verzi Preview) a použít `Microsoft.Identity.Client` obor názvů
+Použití MSAL.NET budete muset přidat [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet balení a použít `Microsoft.Identity.Client` obor názvů
 
 ### <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
@@ -127,7 +127,7 @@ Tady jsou uděluje podporovaných ADAL.NET a MSAL.NET pro webové aplikace, webo
 
 Typ aplikace | Udělení | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Webové aplikace, webové rozhraní API, démona | Přihlašovací údaje klienta | [Toky přihlašovacích údajů klienta v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Toky přihlašovacích údajů klienta v MSAL.NET](msal-authentication-flows.md#confidential-client)
+Webové aplikace, webové rozhraní API, démona | Přihlašovací údaje klienta | [Toky přihlašovacích údajů klienta v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Pověření klienta toků MSAL.NET](msal-authentication-flows.md#client-credentials))
 Web API | Jménem: | [Komunikace mezi službami volá jménem uživatele s ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem aplikace v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
 Webová aplikace | Ověřování kódu | [Získávání tokenů s autorizační kódy ve službě web apps s ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získávání tokenů s autorizační kódy ve službě web apps pomocí A MSAL.NET](msal-authentication-flows.md#authorization-code)
 

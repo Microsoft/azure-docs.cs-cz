@@ -5,29 +5,37 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd1dd1f8af8fee9b1fecb05405381dba879facde
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620340"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149812"
 ---
-Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Pomocí Galerie obrázků Shared můžete sdílet vaše Image jiným uživatelům, objektů služby nebo skupiny služby AD v rámci vaší organizace. Sdílené bitové kopie je možné replikovat do více oblastí, pro rychlejší škálování vašeho nasazení.
+Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Zadejte sdílený Galerie obrázků:
+
+- Spravovat globální replikací obrázků.
+- Správa verzí a seskupení obrázky pro snadnější správu.
+- Vyšší limity škálování. Vlastních imagí umožňují 600 souběžných virtuálních počítačů, zatímco Galerie obrázků Shared povolit pro 1 000 souběžných virtuálních počítačů.
+- S vysokou dostupností obrázků s využitím Zónově redundantní úložiště. I v případě, že datové centrum ocitne mimo provoz, budete mít přístup k obrázkům v dané oblasti.
+- Sdílení napříč předplatnými a dokonce i mezi tenanty používající RBAC.
+
+Pomocí Galerie obrázků Shared můžete sdílet vaše Image jiným uživatelům, objektů služby nebo skupiny služby AD v rámci vaší organizace. Sdílené bitové kopie je možné replikovat do více oblastí, pro rychlejší škálování vašeho nasazení.
 
 Spravované image je kopie buď úplná virtuálního počítače (včetně jakýchkoliv připojených datových disků) nebo jenom disk s operačním systémem, v závislosti na tom, jak vytvořit image. Při vytváření virtuálního počítače z image kopie virtuálních pevných disků na obrázku se používají k vytvoření disky pro nový virtuální počítač. Spravované image zůstává v úložišti a je možné znovu a znovu vytvořit nové virtuální počítače.
 
-Pokud máte velký počet spravované Image, které je potřeba, abyste a chcete zpřístupnit v rámci vaší společnosti, můžete jako úložiště, který umožňuje snadno aktualizovat a sdílet vaše Image Galerie obrázků Shared. Poplatky za používání galerie obrázků Shared jsou jenom náklady na úložiště využitá službou imagí a navíc všechny náklady na celkový výstup sítě při replikaci imagí ze zdrojové oblasti do publikované oblastí.
+Pokud máte velký počet spravované Image, které je potřeba, abyste a chcete zpřístupnit v rámci vaší společnosti, můžete jako úložiště, který umožňuje snadno sdílet vaše Image Galerie obrázků Shared. 
 
 Galerie obrázků sdílené funkce má více typů prostředků:
 
 | Prostředek | Popis|
 |----------|------------|
-| **Spravované image** | Toto je základní image, který můžete používat samostatně nebo použít k vytvoření **verze image** v Galerie obrázků. Vytváření spravovaných imagí z generalizovaného virtuálních počítačů. Spravované image je speciální typ virtuálního pevného disku, který je možné vytvořit několik virtuálních počítačů a můžete teď použít k vytvoření verze sdílené bitové kopie. |
+| **Spravované image** | Základní image, který můžete používat samostatně nebo použít k vytvoření **verze image** v Galerie obrázků. Vytváření spravovaných imagí z generalizovaného virtuálních počítačů. Spravované image je speciální typ virtuálního pevného disku, který je možné vytvořit několik virtuálních počítačů a můžete teď použít k vytvoření verze sdílené bitové kopie. |
 | **Galerie obrázků** | Na webu Azure Marketplace, jako jsou **Galerie obrázků** je úložiště pro správu a sdílení imagí, ale vy řídíte, kdo má přístup. |
-| **Definici Image** | Bitové kopie jsou definovány v rámci Galerie a budou mít informace o požadavcích pro interní použití a image. To zahrnuje, jestli obrázek je Windows nebo Linux, poznámky k verzi a požadavky na minimální a maximální paměť. Je to definice typu bitové kopie. |
+| **Definici Image** | Image jsou definovány v rámci Galerie a nesou informaci o image a požadavky pro použití v rámci vaší organizace. Můžete zahrnout informace, například, jestli je image Windows nebo Linux, požadavky na minimální a maximální paměť a zpráva k vydání verze. Je to definice typu bitové kopie. |
 | **Verze bitové kopie** | **Verze image** se používá k vytvoření virtuálního počítače, když použijete galerii. Podle potřeby pro vaše prostředí můžete mít více verze Image. Při použití, jako jsou spravované image **verze image** vytvoření virtuálního počítače, verze image slouží k vytvoření nové disky pro virtuální počítač. Verze Image můžete použít více než jednou. |
 
 <br>
@@ -35,25 +43,64 @@ Galerie obrázků sdílené funkce má více typů prostředků:
 
 ![Obrázek znázorňující, jak může mít více verzí image v galerii](./media/shared-image-galleries/shared-image-gallery.png)
 
-### <a name="regional-support"></a>Místní podpora
+## <a name="image-definitions"></a>Definice imagí
 
-Místní podpora pro sdílené bitové kopie Galerie je ve verzi limited preview, ale se rozbalí v čase. Pro verzi limited preview tady je seznam oblastí, kde můžete vytvořit galerie a seznam oblastí, ve kterém se dají replikovat všechny image z galerie: 
-
-| Vytvoření galerie v  | Verze, kterou chcete replikaci |
-|--------------------|----------------------|
-| Západní střed USA    |Všech veřejných oblastech&#42;|
-| Východní USA 2          ||
-| Středojižní USA   ||
-| Jihovýchodní Asie     ||
-| Západní Evropa        ||
-| Západní USA            ||
-| USA – východ            ||
-| Kanada – střed     ||
-|                    ||
+Definice bitové kopie jsou logické seskupení pro verze image. K definici image obsahuje informace o proč image byla vytvořena, jaké je pro operační systém a informace o pomocí image. Definici image je jako plán pro všechny podrobnosti související s vytvářením konkrétní image. Není-li nasadit virtuální počítač z definice bitové kopie, ale z verze image vytvořené z definice.
 
 
+Existují tři parametry pro každou definici bitové kopie, které se používají v kombinaci - **vydavatele**, **nabízejí** a **SKU**. Ty se používají pro vyhledání definice konkrétní image. Verze bitové kopie, které sdílejí jeden nebo dva, ale ne všechny tři hodnoty může mít.  Tady jsou například tři definice, které image a jejich hodnoty:
 
-&#42;Pokud chcete replikovat do Austrálie-střed a Austrálie – střed 2 musíte mít vaše předplatné povolený. Chcete-li požádat o přidávání na seznam povolených, přejděte na: https://www.microsoft.com/en-au/central-regions-eligibility/
+|Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
+|---|---|---|---|
+|myImage1|Contoso|Finance|Back-end|
+|myImage2|Contoso|Finance|Front-end|
+|myImage3|Testování|Finance|Front-end|
+
+Všechny tyto tři mají jedinečné sady hodnot. Formát je podobný jak aktuálně určíte vydavatele, nabídky a skladové položky pro [Image Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) v prostředí Azure PowerShell, abyste získali nejnovější verzi Marketplace image. Každá definice obrázek musí mít jedinečnou sadu tyto hodnoty.
+
+Tady jsou další parametry, které lze nastavit ve vaší image definice, aby mohli snadněji sledovat prostředky:
+
+* Stav operačního systému – stav operačního systému můžete nastavit na generalizovaný nebo specializovaná, ale pouze zobecněn je momentálně podporován. Bitové kopie musí být vytvořené z virtuálních počítačů, které byl zobecněn pomocí nástroje Sysprep pro Windows nebo `waagent -deprovision` pro Linux.
+* Operační systém – může být Windows nebo Linux.
+* Popis – popis použití poskytnout podrobné informace o Proč existuje k definici image. Například může mít definici image pro front-endového serveru, na němž byla aplikace předem nainstalována.
+* Smlouva EULA – je možné tak, aby odkazoval na licenční smlouva s koncovým uživatelem specifické pro definici image.
+* Zásady ochrany osobních údajů a verze poznámky – ukládání poznámky k verzi a ochrany osobních údajů ve službě Azure storage a zadejte identifikátor URI pro přístup k nim jako součást k definici image.
+* Ukončenou životností datum – aby bylo možné pomocí služby automation můžete odstranit staré image definice připojení datem ukončení životnosti technologie definici image.
+* Značka – značky můžete přidat, při vytváření vaší image definice. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/resource-group-using-tags.md)
+* Minimální a maximální virtuálních procesorů a paměti doporučení – Pokud image obsahuje doporučení pro virtuální procesory a paměti, můžete připojit tyto informace do definice bitové kopie.
+* Nepovolené typy disků – můžete zadat informace o potřeby úložiště pro virtuální počítač. Například pokud bitovou kopii není vhodné pro disky standard pevný disk, je přidáte do seznamu zakázat.
+
+
+## <a name="regional-support"></a>Místní podpora
+
+V následující tabulce jsou uvedeny zdrojových oblastí. Všech veřejných oblastech může být cílové oblasti, ale pokud chcete replikovat do Austrálie-střed a Austrálie – střed 2, musíte mít vaše předplatné povolený. Chcete-li požádat o přidávání na seznam povolených, přejděte na: https://www.microsoft.com/en-au/central-regions-eligibility/
+
+
+| Zdrojových oblastí |
+|---------------------|-----------------|------------------|-----------------|
+| Austrálie – střed   | Střed USA – EUAP | Korea – střed    | Velká Británie – jih 2      |
+| Austrálie – střed 2 | Východní Asie       | Jižní Korea – jih      | Spojené království – západ         |
+| Austrálie – východ      | USA – východ         | Středoseverní USA | Západní střed USA |
+| Austrálie – jihovýchod | Východní USA 2       | Severní Evropa     | Západní Evropa     |
+| Brazílie – jih        | Východ USA 2 – EUAP  | Středojižní USA | Indie – západ      |
+| Kanada – střed      | Francie – střed  | Indie – jih      | Západní USA         |
+| Kanada – východ         | Francie – jih    | Jihovýchodní Asie   | Západní USA         |
+| Střed Indie       | Japonsko – východ      | Velká Británie – sever         | Západní USA 2       |
+| USA – střed          | Japonsko – západ      | Velká Británie – jih         |                 |
+
+
+
+## <a name="limits"></a>Limits 
+
+Spravované Image můžete mít jenom 600 souběžných virtuálních počítačů na image s galerií sdílené bitové kopie, to je zvýšena na 1 000 souběžných virtuálních počítačů podle verze image.
+
+Existují omezení na jedno předplatné, pro nasazení prostředků pomocí Galerie sdílené bitové kopie:
+- 10 sdílených image Galerie na předplatné a oblast
+- 200 definice bitové kopie, na předplatné a oblast
+- verze image 2000, na předplatné a oblast
+
+Další informace najdete v tématu [kontrola využití prostředků proti omezení](https://docs.microsoft.com/azure/networking/check-usage-against-limits) příklady o tom, jak zkontrolovat aktuální využití.
+ 
 
 ## <a name="scaling"></a>Škálování
 Sdílené Galerie Imagí můžete zadat počet replik, které chcete do imagí Azure. Tato funkce umožňuje scénáře nasazení více virtuálních počítačů při nasazení virtuálního počítače je možné rozdělit do různých replik snižuje pravděpodobnost vytvoření instance zpracování omezený přetížení jen jednu repliku.
@@ -64,13 +111,14 @@ Sdílené Galerie Imagí můžete zadat počet replik, které chcete do imagí A
 ## <a name="replication"></a>Replikace
 Sdílené Galerie obrázků vám také umožní automaticky replikovat vaši Image do jiných oblastí Azure. Každá verze sdílené bitové kopie je možné replikovat do různých oblastí v závislosti na tom, co dává smysl pro vaši organizaci. Jedním z příkladů je vždy replikovat nejnovější image v několika oblastech, všechny starší verze jsou k dispozici pouze v 1 oblast. To může pomoct ušetřit na náklady na úložiště pro sdílené bitové kopie verze. 
 
-Oblasti, kterou verzi sdílené bitové kopie se replikuje do je možné aktualizovat po času vytvoření. Čas potřebný k replikaci do různých oblastí závisí na množství dat, kopírování a počtem oblastí verze se replikuje do. V některých případech to může trvat několik hodin. Replikace se děje, ale když zobrazíte stav replikace v jedné oblasti. Po dokončení replikace image je v oblasti, pak můžete nasadit virtuální počítač nebo VMSS použití dané verze obrázku v oblasti.
+Oblasti, kterou verzi sdílené bitové kopie se replikuje do je možné aktualizovat po času vytvoření. Čas potřebný k replikaci do různých oblastí závisí na množství dat, kopírování a počtem oblastí verze se replikuje do. V některých případech to může trvat několik hodin. Replikace se děje, ale když zobrazíte stav replikace v jedné oblasti. Po dokončení replikace image je v oblasti, pak můžete nasadit virtuální počítač nebo škálovací sadě pomocí této verze image v oblasti.
 
 ![Obrázek znázorňující, jak se dají replikovat imagí](./media/shared-image-galleries/replication.png)
 
 
 ## <a name="access"></a>Access
-Galerie obrázků sdílené, sdílené bitové kopie a sdílené bitové kopie verze jsou všechny prostředky, je může sdílet, pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny ve vaší organizaci. Rozsah sdílení těchto prostředků je ve stejném tenantovi Azure AD. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo virtuální počítač Škálovací sady v některém z předplatných, ke kterým mají přístup v rámci stejné služby Azure AD tenanta jako verze sdílené bitové kopie.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
+
+Galerie obrázků sdílené, sdílené bitové kopie a sdílené bitové kopie verze jsou všechny prostředky, je může sdílet, pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny. Můžete sdílet i přístup osobám mimo tenanta, které byly vytvořeny v rámci. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo Škálovací sady virtuálních počítačů.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
 
 | Sdílené s uživatelem     | Sdílená galerie obrázků | Sdílené bitové kopie | Sdílené verze Image |
 |----------------------|----------------------|--------------|----------------------|
@@ -78,12 +126,34 @@ Galerie obrázků sdílené, sdílené bitové kopie a sdílené bitové kopie v
 | Sdílené bitové kopie         | Ne                   | Ano          | Ano                  |
 | Sdílené verze Image | Ne                   | Ne           | Ano                  |
 
+Doporučujeme, abyste sdílení na úrovni Galerie pro dosažení co nejlepších výsledků. Další informace o RBAC najdete v tématu [spravovat přístup k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
+Image můžete také sdílet, ve velkém měřítku, mezi tenanty používající registrace aplikace s více tenanty. Další informace o sdílení imagí mezi tenanty najdete v tématu [sdílet Galerie imagí virtuálních počítačů tenantů Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Fakturace
 Neexistuje žádné další poplatky za využívání služby Shared Galerie obrázků. Účtuje se pro následující prostředky:
-- Náklady na úložiště ukládání verzí sdílených bitových kopií. To závisí na počtu replik verze a počtem oblastí verze se replikuje do.
-- Poplatky za výchozí přenos dat sítě pro replikaci z zdrojové oblasti verze do replikovaných oblastech.
+- Náklady na úložiště ukládání verzí sdílených bitových kopií. Cena závisí na počtu replik verze image a počtem oblastí verze se replikuje do. Například pokud máte 2 bitových kopií a obě se replikují do 3 oblasti, pak jste se změní za 6 spravované disky na základě jejich velikosti. Další informace najdete v tématu [cenami služby Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+- Poplatky za výchozí přenos dat sítě pro replikaci první verze image ze zdrojové oblasti na replikovaných oblastech. Následující repliky jsou zpracovány v rámci oblasti, takže se neúčtují žádné další poplatky. 
+
+## <a name="updating-resources"></a>Aktualizují se prostředky.
+
+Po vytvoření můžete provedete některé změny prostředků Galerie obrázků. Je omezený na:
+ 
+Galerie sdílené bitové kopie:
+- Popis
+
+definice bitové kopie:
+- Doporučené virtuálních procesorů
+- Doporučená velikost paměti
+- Popis
+- Životnost datum ukončení
+
+Verze Image:
+- Počet replik místní
+- Cílové oblasti
+- Vyloučení z nejnovější
+- Životnost datum ukončení
+
 
 ## <a name="sdk-support"></a>Podpora v sadě SDK
 
@@ -106,24 +176,6 @@ Můžete vytvořit Galerie obrázků sdílených prostředků pomocí šablon. N
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
 
-**Otázka:** Jak se mám zaregistrovat sdílené Image Galerie verze Public Preview?
- 
- A. Pokud se chcete zaregistrovat ve galerii Imagí sdílené veřejné verzi preview, budete muset zaregistrovat pro funkci spuštěním následujících příkazů z každého předplatného, ve kterých máte v úmyslu vytvořit Galerie obrázků sdílené, definici Image nebo Image verze prostředky, a také pokud máte v úmyslu nasadit virtuální počítače pomocí verze image.
-
-**CLI**: 
-
-```bash 
-az feature register --namespace Microsoft.Compute --name GalleryPreview
-az provider register --name Microsoft.Compute
-```
-
-**PowerShell**: 
-
-```powershell
-Register-AzProviderFeature -FeatureName GalleryPreview -ProviderNamespace Microsoft.Compute
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
 **Otázka:** Jak vytvořit seznam všech prostředků Galerie obrázků sdílené napříč předplatnými? 
  
  A. Pokud chcete vypsat všechny prostředky Galerie obrázků sdílené napříč předplatnými, že máte přístup k webu Azure portal, postupujte podle následujících kroků:
@@ -140,11 +192,6 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
    ```bash
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
-
-
-**Otázka:** Jak se dá sdílet Moje Image napříč předplatnými?
- 
- A. Image můžete sdílet napříč předplatnými pomocí na základě řízení přístupu Role (RBAC). Každý uživatel, který má oprávnění ke čtení na verzi image, dokonce i mezi předplatnými, budou moct nasadit virtuální počítač pomocí image verze.
 
 
 **Otázka:** Můžete přesunout svůj stávající obrázek v galerii sdílené bitové kopie
@@ -164,32 +211,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializovaného disku k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
 
-
-**Otázka:** Můžete vytvořit sdílené bitové kopie galerie, definici image a verze image na webu Azure portal?
-
- A. Ne, aktuálně nepodporujeme vytváření některý z Galerie Imagí sdílených prostředků prostřednictvím webu Azure portal. Nicméně podporujeme vytvoření Galerie obrázků sdílené prostředky přes rozhraní příkazového řádku, šablony a sady SDK. Prostředí PowerShell, budou také vydané brzy.
-
  
-**Otázka:** Po vytvoření můžete aktualizovat definici image nebo verze image? Jaký druh podrobnosti můžete změnit?
-
- A. Níže jsou uvedené podrobnosti, které mohou být aktualizovány na všech prostředcích:
- 
-Galerie sdílené bitové kopie:
-- Popis
-
-definice bitové kopie:
-- Doporučené virtuálních procesorů
-- Memory (Paměť)
-- Popis
-- Životnost datum ukončení
-
-Verze Image:
-- Počet replik místní
-- Cílové oblasti
-- Vyloučení z nejnovější
-- Životnost datum ukončení
-
-
 **Otázka:** Po vytvoření můžu přesunout Galerie obrázků sdíleného prostředku do jiného předplatného?
 
  A. Ne, nelze přesunout prostředek Galerie sdílené bitové kopie do jiného předplatného. Nicméně je možné replikovat do jiných oblastí podle potřeby verze image v galerii.
@@ -204,20 +226,12 @@ Verze Image:
 
 **Otázka:** Můžete sdílet verze image tenantů Azure AD? 
 
- A. Ne, galerie aktuálně sdílené bitové kopie nepodporuje sdílení verze image tenantů Azure AD. Ale může použít funkci soukromé nabídky na webu Azure Marketplace k dosažení tohoto cíle.
+ A. Ano, vám pomůže RBAC sdílet s jednotlivci napříč tenanty. Sdílet ve velkém měřítku, ale v tématu "sdílené položky galerie obrázků tenantů Azure" použití [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) nebo [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 
 **Otázka:** Jak dlouho trvá replikovat verze bitové kopie do cílové oblasti?
 
  A. Doba replikace verze image je zcela závisí na velikosti image a počtem oblastí, které je právě replikován pro. Jako osvědčený postup, je však doporučeno, zachovat malý obrázek a zavřete zdrojovou a cílovou oblastí pro dosažení co nejlepších výsledků. Můžete zkontrolovat stav replikace použitím příznaku - stav replikace.
-
-
-**Otázka:** Kolik sdílených image galerie můžete vytvořit v jednom předplatném?
-
- A. Výchozí kvóta je: 
-- 10 sdílených image Galerie na předplatné a oblast
-- 200 definice bitové kopie, na předplatné a oblast
-- verze image 2000, na předplatné a oblast
 
 
 **Otázka:** Jaký je rozdíl mezi oblast zdrojové a cílové oblasti?
@@ -237,7 +251,7 @@ Verze Image:
 1. Počet místní repliku, která určuje počet replik, budete chtít vytvořit v jedné oblasti. 
 2. Běžné počet replik, což je výchozí za počet oblastí v případě, že není zadaný počet místních replik. 
 
-Chcete-li určit počet místních replik, předejte umístění spolu s počtem replik, které chcete vytvořit v dané oblasti takto: "Střední část jihu USA = 2". 
+Chcete-li určit počet místních replik, předejte umístění spolu s počtem replik, které chcete vytvořit v dané oblasti: "Střední část jihu USA = 2". 
 
 Pokud počet místní replika není zadán s každé umístění, bude výchozí počet replik běžné počet replik, které jste zadali. 
 

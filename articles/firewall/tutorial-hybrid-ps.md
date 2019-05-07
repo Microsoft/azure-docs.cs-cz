@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 3/18/2019
+ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7beb3d986b016688c4ee0a512b9406dbf3dfbb40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194250"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144925"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -61,9 +61,9 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-the-routes) v tomto kurzu.
 
 >[!NOTE]
->Azure brány Firewall musí mít přímé připojení k Internetu. Ve výchozím nastavení, měli povolit AzureFirewallSubnet pouze 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**.
+>Azure brány Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet učí výchozí trasu k vaší místní síti přes protokol BGP, je nutné to přepsat s UDR 0.0.0.0/0 s **NextHopType** hodnota nastavená na **Internet** udržovat s přímým přístupem Připojení k Internetu. Ve výchozím nastavení brána Firewall služby Azure nepodporuje vynuceného tunelování k místní síti.
 >
->Pokud povolíte vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset explicitně uživatelem definovaná TRASA 0.0.0.0/0 nakonfigurovat NextHopType hodnotu nastavenou jako **Internet** a přidružte jej k vaší AzureFirewallSubnet. Pokud vaše organizace vyžaduje, aby vynucené tunelování provozu Brána Firewall služby Azure, kontaktujte prosím podporu tak, že můžeme seznamu povolených IP adres vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.
+>Však vyžaduje-li vaše konfigurace vynuceného tunelování k místní síti, Microsoft bude podporovat v případ od případu. Takže si můžete přečíst váš případ, obraťte se na podporu. Pokud přijat, vytvoříme seznamu povolených IP adres vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.
 
 >[!NOTE]
 >Přenos dat mezi přímo partnerských virtuálních sítích je směrován přímo i v případě, že trasu UDR odkazuje na jako výchozí brána Firewall služby Azure. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat trasu UDR předpona cílové podsítě sítě explicitně v obou podsítích.
@@ -138,7 +138,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Požádat o veřejnou IP adresu, která bude přidělena pro bránu VPN, kterou vytvoříte pro vaše virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Není možné určit IP adresu, kterou chcete používat. Bráně VPN se přidělí automaticky. 
+Požádat o veřejnou IP adresu, která bude přidělena pro bránu VPN, které vytvoříte pro vaše virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Nelze zadat IP adresu, kterou chcete použít. Bráně VPN se přidělí automaticky.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +177,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Požádat o veřejnou IP adresu, která bude přidělena pro bránu, kterou vytvoříte pro virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Není možné určit IP adresu, kterou chcete používat. Přiděluje se pro bránu dynamicky. 
+Požádat o veřejnou IP adresu, která bude přidělena pro bránu, kterou vytvoříte pro virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Nelze zadat IP adresu, kterou chcete použít. Přiděluje se pro bránu dynamicky.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -471,7 +471,7 @@ Na virtuálním počítači **VM-Onprem** otevřete připojení vzdálené ploch
 
 Přípojení by mělo proběhnout úspěšně a měli byste být schopni se přihlásit pomocí zvoleného uživatelského jména a hesla.
 
-Nyní jste ověřili, že pravidla brány firewall fungují:
+Teď jste ověřili funkčnost pravidla brány firewall:
 
 <!---- You can ping the server on the spoke VNet.--->
 - Můžete procházet webový server na virtuální sítě paprsků.

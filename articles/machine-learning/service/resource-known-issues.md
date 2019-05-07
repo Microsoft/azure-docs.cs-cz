@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021094"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149760"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -69,6 +69,9 @@ Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro
 
 Tensor Flow automatizované strojového učení v současné době nepodporuje verzi tensor flow 1.13. Instalace této verze způsobí závislosti balíčků přestane fungovat. Pracujeme na řešení tohoto problému v budoucí verzi. 
 
+### <a name="experiment-charts"></a>Grafy experimentů
+
+Binární klasifikace grafy (přesnosti a úplnosti, roc s více TŘÍDAMI, získat křivky atd.) je znázorněno v automatizovaných iterací experimentů v ML nejsou corectly vykreslení v uživatelském rozhraní od 4/12. Vykreslení grafu jsou aktuálně inverzní výsledky znázorňující, kde jsou uvedené lépe uskutečnitelný modely s nižší výsledky. Řešení je v části šetření.
 
 ## <a name="databricks"></a>Databricks
 

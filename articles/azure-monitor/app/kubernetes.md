@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor – Application Insights pro Kubernetes s využitím služby sítě Istio | Dokumentace Microsoftu
-description: Application Insights pro Kubernetes je řešení pro monitorování, která umožňuje shromažďovat telemetrii Application Insights vztahující se na příchozí a odchozí požadavky do a z podů se spuštěnou v clusteru Kubernetes s využitím technologie sítě služby názvem Istio.
+title: Azure Monitor – monitorování kubernetes hostované aplikace nulové instrumentace aplikací | Dokumentace Microsoftu
+description: Monitorování pro Kubernetes hostované aplikace nulové instrumentace aplikací je řešení pro monitorování, která umožňuje shromažďovat telemetrii Application Insights vztahující se na příchozí a odchozí požadavky do a z podů se spuštěnou v clusteru Kubernetes pomocí použití technologie sítě služby volat Istio.
 services: application-insights
-author: tokaplan
+author: rishabjolly
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: alkaplan
-ms.openlocfilehash: f3b278c2678542ec127c1c644cc0267622ca39fa
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: rijolly
+ms.openlocfilehash: 73f95ab75b49fb8ec5b61f6e30080f8f6d474c16
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870684"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149880"
 ---
-# <a name="application-insights-for-kubernetes-with-service-mesh"></a>Application Insights pro Kubernetes s využitím služby sítě
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Nulové instrumentace application monitoring pro aplikace pro systém Kubernetes hostované aplikace
 
 > [!IMPORTANT]
-> Application Insights pro Kubernetes přes síť služby je aktuálně ve verzi public preview.
+> Tato funkce je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -36,7 +36,7 @@ Azure Monitor teď využívá technická sítě služby v clusteru Kubernetes po
 
 ## <a name="capabilities"></a>Možnosti
 
-S využitím Application Insights pro vaše aplikace hostovaná Kubernetes, bude moct používat:
+Pomocí nulové instrumentace aplikace pro monitorování Kubernetes hostované aplikace bude moct používat:
 
 - [Mapa aplikace](../../azure-monitor/app/app-map.md)
 - [Live Stream Metrics](../../azure-monitor/app/live-stream.md)
@@ -71,9 +71,9 @@ Aplikace běžící mimo síť služby nejsou ovlivněny.
 - Nasazení aplikace na *my namespace aplikace* oboru názvů. Pokud je aplikace již nasazená, a jste postupovali podle metody Automatické sajdkára vkládání je popsáno výše, budete muset znovu vytvořit podů Ujistěte se, že Istio vkládá jeho sajdkára; Spustit kumulativní aktualizaci nebo odstranění jednotlivých podů a počkat na jejich znovu vytvořit.
 - Ujistěte se vaše aplikace splňuje [Istio požadavky](https://istio.io/docs/setup/kubernetes/prepare/requirements/).
 
-### <a name="deploy-application-insights-for-kubernetes"></a>Nasazení služby Application Insights pro Kubernetes
+### <a name="deploy-zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Nasazení aplikace žádnou instrumentaci monitorování Kubernetes hostované aplikace
 
-1. Stažení a extrakci [ *Application Insights pro Kubernetes* release](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
+1. Stažení a extrakci [ *adaptér Application Insights* release](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
 2. Přejděte do */src/kubernetes/* ve složce release.
 3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
     - Upravit hodnotu daného *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* proměnnou prostředí tak, aby obsahovala Instrumentační klíč tohoto prostředku Application Insights na webu Azure portal tak, aby obsahovala telemetrická data.
@@ -84,9 +84,9 @@ Aplikace běžící mimo síť služby nejsou ovlivněny.
    kubectl apply -f .
    ```
 
-### <a name="verify-application-insights-for-kubernetes-deployment"></a>Ověření služby Application Insights pro nasazení Kubernetes
+### <a name="verify-deployment"></a>Ověření nasazení
 
-- Ověřte, že byla nasazena Application Insights pro adaptér Kubernetes:
+- Ověřte, že byla nasazena adaptér Application Insights:
 
   ```console
   kubectl get pods -n istio-system -l "app=application-insights-istio-mixer-adapter"
@@ -113,7 +113,7 @@ Níže se řešení potíží tok při telemetrická data nezobrazí na portálu
    ```
    Ověřte, zda existuje kontejner s názvem *istio proxy* běžící na pod.
 
-5. Zobrazení *Application Insights pro Kubernetes* trasy adaptéru.
+5. Zobrazení trasování Application Insights adaptér.
 
    ```console
    kubectl get pods -n istio-system -l "app=application-insights-istio-mixer-adapter"

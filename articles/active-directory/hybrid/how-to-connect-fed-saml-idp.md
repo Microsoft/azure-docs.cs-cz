@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Použít zprostředkovatele Identity SAML 2.0 pro jednotné přihlašování na | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Použít zprostředkovatele Identity SAML 2.0 pro jednotné přihlašování – Azure'
 description: Tento dokument popisuje na vyhovující Idp SAML 2.0 pro jednotné přihlašování.
 services: active-directory
 author: billmath
@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350902"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138346"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele 2.0 Identity (IdP) SAML pro jednotné přihlašování na
 
@@ -71,8 +71,8 @@ Ve zprávě odpověď SAML uzel podpis obsahuje informace o digitální podpis p
 Vazby jsou parametry zpráv týkající se přenosu, které jsou požadovány. Následující požadavky platí pro vazby
 
 1. HTTPS je požadovaná přenosu.
-2.  Azure AD bude vyžadovat HTTP POST pro token odeslání během přihlášení
-3.  Azure AD použije HTTP POST pro požadavek na ověření pro zprostředkovatele identity a PŘESMĚROVÁNÍ pro zprávy odhlášení zprostředkovatele identity.
+2.  Azure AD bude vyžadovat HTTP POST pro token odeslání během přihlašování.
+3.  Azure AD použije HTTP POST pro žádosti o ověření poskytovatele identity a PŘESMĚROVÁNÍ odhlašovací zpráv do zprostředkovatele identity.
 
 ## <a name="required-attributes"></a>Vyžadované atributy
 Tato tabulka uvádí požadavky pro konkrétní atributy ve zprávě SAML 2.0.
@@ -258,7 +258,7 @@ Microsoft poskytuje nástroje, který můžete použít k otestování vašeho z
 2.  Začněte kliknutím na tlačítko nainstalovat stahování a instalace nástroje.
 3.  Vyberte "Nejde nastavit federace s Office 365, Azure nebo jiné služby, které používají Azure Active Directory".
 4.  Jakmile nástroj se stáhne a spuštěná, zobrazí se okno diagnostiku připojení. Nástroj vás postupně testování připojení federace.
-5.  Analyzátor připojení se otevře svého zprostředkovatele identity SAML 2.0 pro vás přihlásit, zadejte přihlašovací údaje, které testujete hlavní název uživatele: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Analyzátor připojení se otevře svého zprostředkovatele identity SAML 2.0 pro přihlášení, zadejte přihlašovací údaje instančního objektu, že které testujete uživatele: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Federace test přihlášení okna měli byste zadat název účtu a heslo pro tenanta Azure AD, který je konfigurován pro federované pomocí zprostředkovatele identity SAML 2.0. Nástroj se pokusí přihlásit pomocí těchto přihlašovacích údajů a poskytneme vám podrobné výsledky testů, které provádí během pokusu o přihlášení jako výstup.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Toto okno zobrazuje neúspěšných výsledků testů. Kliknutím na podrobné výsledky se zobrazí informace o výsledky pro každý test, který se provedla kontrola. Můžete také uložit výsledky na disk, aby bylo možné sdílet.
@@ -271,7 +271,7 @@ Ruční ověření poskytuje další kroky, které můžete provést k zajiště
 Pokud chcete ověřit, že tento jednotného přihlašování má správně nastavené, proveďte následující kroky:
 
 
-1. Na počítači připojeném k doméně přihlášení ke cloudové službě pomocí stejné přihlašovací jméno, který používáte pro své podnikové přihlašovací údaje.
+1. Na počítači připojeném k doméně přihlášení ke cloudové službě pomocí stejné přihlašovací název, který používáte pro své podnikové přihlašovací údaje.
 2.  Klikněte do pole heslo. Pokud jednotného přihlašování je nastaven, pole pro heslo bude označeno šedou barvou a zobrazí se následující zpráva: "Teď jsou nutné k přihlášení na &lt;vaší společnosti&gt;."
 3.  Klikněte na tlačítko přihlášení na &lt;vaší společnosti&gt; odkaz. Pokud budete moct přihlásit, pak jednotné přihlašování je nastavený.
 

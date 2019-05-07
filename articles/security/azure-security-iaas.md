@@ -12,31 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4b2506781df5572ddaff8dda34bf3edab8987be
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586509"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145209"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
+Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
+
+Osvědčené postupy jsou založené na konsenzus názorů a práci s aktuální možnosti platformy Azure a sady funkcí. Protože můžou časem změnit názory a technologií, tento článek bude aktualizován tak, aby odrážela tyto změny.
 
 Ve většině infrastruktura jako služba (IaaS) scénáře [Azure virtuální počítače (VM)](https://docs.microsoft.com/azure/virtual-machines/) jsou hlavní úlohy pro organizace, které používají cloud computing. Tato skutečnost je zřejmé ve [hybridních scénářů](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) kde chcete pomalu migrace úloh do cloudu organizace. V takových scénářích, postupujte [obecné otázky zabezpečení pro IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)a použijte osvědčené postupy zabezpečení pro všechny virtuální počítače.
 
+## <a name="shared-responsibility"></a>Sdílená odpovědnost
 Vaše odpovědnosti pro zabezpečení podle typu cloudovou službu. Následující diagram obsahuje souhrn zůstatek odpovědnost za Microsoftu a můžete:
 
 ![Oblasti zodpovědnosti](./media/azure-security-iaas/sec-cloudstack-new.png)
 
 Požadavky na zabezpečení se liší v závislosti na řadě faktorů včetně různé druhy úloh. Není jednou z těchto osvědčených postupů můžete samostatně zabezpečit vaše systémy. Jako nic jiného v zabezpečení budete muset vybrat odpovídající možnosti a naleznete v tématu Jak řešení můžete vzájemně doplňují vyplněním mezery.
 
-Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
-
-Osvědčené postupy jsou založené na konsenzus názorů a práci s aktuální možnosti platformy Azure a sady funkcí. Protože můžou časem změnit názory a technologií, tento článek bude aktualizován tak, aby odrážela tyto změny.
-
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>Ochrana virtuálních počítačů s využitím ověřování a řízení přístupu
 Prvním krokem při ochraně vašich virtuálních počítačů je, aby, který jen na autorizované uživatele můžete nastavit nové virtuální počítače a přístup k virtuálním počítačům.
+
+> [!NOTE]
+> Tím se zvyšuje zabezpečení virtuálních počítačů s Linuxem v Azure, můžete integrovat s ověřováním Azure AD. Při použití [ověřování Azure AD pro virtuální počítače s Linuxem](../virtual-machines/linux/login-using-aad.md), centrálně řídit a vynucovat zásady, které povolují nebo odepírají přístup k virtuálním počítačům.
+>
+>
 
 **Osvědčený postup**: Řízení přístupu k virtuálním počítačům.   
 **Podrobnosti o**: Použití [zásady Azure](../azure-policy/azure-policy-introduction.md) k zahájení vytváření názvů pro prostředky ve vaší organizaci a vytvářet vlastní zásady. Použít tyto zásady na prostředky, jako například [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Virtuální počítače, které patří do skupiny prostředků dědit její zásady.
@@ -102,6 +107,9 @@ Pokud používáte službu Windows Update, nechte nastavení automatické aktual
 **Osvědčený postup**: Pravidelně znovu nasadíte virtuální počítače k vynucení novou verzi operačního systému.   
 **Podrobnosti o**: Definovat svého virtuálního počítače pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) tak jej snadno znovu. Pomocí šablony vám virtuálního počítače s nainstalovanou a zabezpečené až ji budete potřebovat.
 
+**Osvědčený postup**: Rychlé použití aktualizací zabezpečení pro virtuální počítače.   
+**Podrobnosti o**: Využijte Azure Security Center (úrovně Free nebo úrovně Standard) k [identifikovat chybějící aktualizace zabezpečení a použít je](../security-center/security-center-apply-system-updates.md).
+
 **Osvědčený postup**: Nainstalujte nejnovější aktualizace zabezpečení.   
 **Podrobnosti o**: Některé z prvních úloh, které zákazníci přejít do Azure jsou cvičení a externích systémů. Pokud vaše virtuální počítače Azure ukládat aplikace nebo služby, které musí být přístupný na Internetu, se mimořádnou o opravy. Oprava rámec operačního systému. Spojená s neopravenými chybami v partnerských aplikací může také vést k problémům, které můžete se vyhnout, pokud je Správa dobré opravu na místě.
 
@@ -165,6 +173,18 @@ Při použití Azure Disk Encryption splňujete následující obchodní potřeb
 
 - Virtuální počítače IaaS jsou zabezpečená při nečinnosti pomocí standardní šifrovací technologie k vyřešení organizační požadavky na zabezpečení a dodržování předpisů.
 - Spuštění virtuálních počítačů IaaS pod správou zákazníka klíčů a zásad a je můžete auditovat jejich využití v trezoru klíčů.
+
+## <a name="restrict-direct-internet-connectivity"></a>Omezit přímé připojení k Internetu
+Monitorovat a omezit VM přímé připojení k Internetu. Útočníci neustále kontrolovat rozsahy IP adres veřejný cloud pro otevřené porty pro správu a pokusit "jednoduché" útoky, jako je společná hesla a známé spojená s neopravenými chybami. Následující tabulka uvádí doporučené postupy při ochraně před útoky na tyto:
+
+**Osvědčený postup**: Zabraňte neúmyslnému vystavení směrování a zabezpečení sítě.   
+**Podrobnosti o**: Použití RBAC a ujistěte se, že pouze centrální sítí skupiny mají oprávnění k síťové prostředky.
+
+**Osvědčený postup**: Identifikovat a opravit ohrožené virtuální počítače, které umožňují přístup z "libovolné" zdrojové IP adresy.   
+**Podrobnosti o**: Použití služby Azure Security Center. Security Center vám doporučí omezení přístupu prostřednictvím internetových koncových bodů, pokud některý z vašich skupin zabezpečení sítě má jeden nebo více příchozí pravidla, která umožňují přístup z "libovolné" zdrojové IP adresy. Security Center vám doporučí, abyste upravili tato příchozích pravidel pro [omezit přístup](../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) na zdrojové IP adresy, které skutečně potřebují mít přístup.
+
+**Osvědčený postup**: Omezte portům pro správu (protokol RDP, SSH).   
+**Podrobnosti o**: [Přístup k virtuálním počítačům just-in-time (JIT)](../security-center/security-center-just-in-time.md) je možné zamezit příchozímu provozu na virtuální počítače Azure, tím omezit vystavení útokům při poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby. Pokud je povoleno JIT, Security Center uzamkne příchozí provoz do virtuálních počítačů Azure tak, že vytvoříte pravidla skupiny zabezpečení sítě. Vyberete porty na virtuálním počítači, do které se uzamkne příchozí provoz dolů. Tyto porty se řídí řešení JIT.
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit [osvědčené postupy zabezpečení Azure a vzory](security-best-practices-and-patterns.md) pro další doporučené postupy zabezpečení, mají použít, když jste návrhu, nasazení a správa cloudových řešení pomocí služby Azure.

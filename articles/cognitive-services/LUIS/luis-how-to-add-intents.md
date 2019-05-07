@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097025"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148164"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení uživatelů záměr projevů
 
@@ -42,16 +42,25 @@ Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Před
 
     Služba LUIS převede všechny projevy na malá písmena a přidá mezery kolem tokenů, jako je například spojovníky.
 
-## <a name="intent-prediction-discrepancy-errors"></a>Chyby nesrovnalosti záměru predikcí 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-Utterance v záměru pravděpodobně záměru předpovědi relevanci vybrané záměr a skóre předpovědi. LUIS označuje této nesrovnalosti s červeným rámečkem okolo položky **označené záměr** na řádku utterance příklad. 
+## <a name="intent-prediction-errors"></a>Chyby záměru predikcí 
 
-![Stránce s podrobnostmi o snímek obrazovky záměrů, s chybami nesrovnalosti utterance predikcí](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+Příkladu utterance v záměru pravděpodobně chybu záměru předpovědi mezi záměr utterance příklad je aktuálně ve a predikcí záměr určit během cvičení. 
 
-V horním navigačním panelu vyberte **Train**. Predikce nesrovnalosti je nyní pryč.
+Chcete-li najít utterance předpovědi chyb a opravte je, použijte **filtr** volby **vyhodnocení** možnosti nesprávné a Unclear kombinovat s **zobrazení** možnost **Podrobného zobrazení**. 
 
-> [!Note]
-> Při červená čára slovo nebo frázi v utterance příklad [entity předpovědi chyb](luis-how-to-add-example-utterances.md#entity-status-predictions) došlo k chybě. Je třeba ho opravit. 
+![Pokud chcete najít utterance předpovědi chyb a opravte je, použijte možnost filtru.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+Pokud jsou použity filtry a zobrazení, a jsou projevy příklad s chybami, ukazuje příklad seznamu utterance projevy a případných problémech.
+
+![! [Pokud jsou použity filtry a zobrazení, a jsou projevy příklad s chybami, příklad utterance nastavení seznam zobrazuje projevy a problémy.] (. / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+Každý řádek zobrazuje aktuální školení předpovědi skóre pro příklad utterance, nejbližší rival skóre, což je rozdíl v těchto dvou skóre. 
+
+### <a name="fixing-intents"></a>Oprava záměrů
+
+Chcete-li další informace o opravách chyb záměru predikcí, použijte [řídicí panel souhrnu](luis-how-to-use-dashboard.md). Souhrnný řídicí panel poskytuje analýzu pro aktivní verze poslední školení a nabízí nejvyšší návrhy k vyřešení vašeho modelu.  
 
 ## <a name="add-a-custom-entity"></a>Přidání vlastní entity
 

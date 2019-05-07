@@ -1,21 +1,21 @@
 ---
-title: Používání úložiště queue (C++) | Dokumentace Microsoftu
+title: Používání úložiště Queue (C++) – služby Azure Storage
 description: Další informace o použití služby úložiště front v Azure. Ukázky jsou napsané v jazyce C++.
 services: storage
-author: cbrooksmsft
+author: mhopkins-msft
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: cbrooksmsft
+ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 08c865e5383e4095a22aa6c10c8b181f916d1d30
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 440033233bbd60421cc3245a04544cd04caec6f4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108994"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153120"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Používání úložiště Queue z jazyka C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

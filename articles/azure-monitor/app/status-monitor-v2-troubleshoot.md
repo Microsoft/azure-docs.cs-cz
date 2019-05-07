@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 26d677df81df6e10fae8d63362d49deee2cd0aca
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f8e057bf2e71d5a00c1e2a8ef72a5c9415a5a207
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870744"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145126"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Řešení potíží s stav monitorování v2
 
@@ -200,3 +200,9 @@ Pokud monitorování funguje, by měla být načtena alespoň 12 knihovny DLL.
 4. Došlo k pokusu o přechod do vaší aplikace.
 5. Po dokončení načítání aplikace, vraťte se do nástroje PerfView a klikněte na tlačítko "Stop kolekce"
 
+
+
+## <a name="next-steps"></a>Další postup
+
+- Kontrola naše [Reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) najít parametr nebyla provedena.
+- Pokud narazíte na problém tu nejsou uvedené, můžete nás požádat [tady](https://github.com/Microsoft/ApplicationInsights-Home/issues).

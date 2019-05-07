@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 392782310d8bc3b38a3dd1349cb1760ca287acd1
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875588"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147927"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení služby Security Center nabízí (2019 dne)
 
@@ -155,7 +155,7 @@ Tato funkce byla ve verzi preview a skončí.
 
 ### <a name="edit-security-configurations---new-experience"></a>Upravit konfigurace zabezpečení – nové prostředí
 
-Security Center bude podporovat [agenta v hostovi](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) v blízké budoucnosti umožňuje mnohem širší nabídku sad funkcí – včetně podpory pro další operační systémy a integraci s konfigurací typu Host pomocí zásad Azure (v hostovi zásady). To se také poskytují možnost řídit ve velkém měřítku a použít na nové prostředky automaticky.
+Security Center bude podporovat [konfigurace agenta hosta](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) v blízké budoucnosti umožňuje mnohem širší nabídku sad funkcí – včetně podpory pro další operační systémy a integraci s konfigurací hosta s Azure zásady () zásady v rámci hostů). To se také poskytují možnost řídit ve velkém měřítku a použít na nové prostředky automaticky.
 
 ## Zabezpečení a audit řídicího panelu (původně byl použit v portálu OMS) pro pracovní prostory Log Analytics<a name="menu_securityomsdashboard"></a>
 

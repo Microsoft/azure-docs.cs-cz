@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8b1036128755a5218afc35648dfd16f09f559908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6f85b0088fac97f4b9f2dd2835e3052cb598a987
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611766"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142761"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Machine Learning jako modulu IoT Edge (preview)
+
+Použití poznámkových bloků Azure k vývoji modul machine learning a nasazování k Linuxovému zařízení s Azure IoT Edge. 
 
 Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o službě Azure Machine Learning na hraničních zařízeních IoT najdete v tématu [dokumentace ke službě Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
 
@@ -50,52 +52,6 @@ Cloudové prostředky:
 * Pracovní prostor služby Azure Machine Learning. Postupujte podle pokynů v [Začínáme s Azure Machine Learning pomocí webu Azure portal](../machine-learning/service/quickstart-get-started.md) vytvořte si ho a zjistěte, jak ho použít.
    * Poznamenejte si název pracovního prostoru, skupinu prostředků a ID předplatného. Tyto hodnoty jsou všechny dostupné na pracovní prostor Přehled na webu Azure Portal. Tyto hodnoty použijete v pozdější části kurzu pro připojení k vašim prostředkům pracovního prostoru Azure poznámkového bloku. 
 
-
-### <a name="disable-process-identification"></a>Zakázání identifikace procesů
-
->[!NOTE]
->
-> Azure Machine Learning ve verzi Preview nepodporuje zabezpečovací funkci identifikace procesů, která je ve výchozím nastavení IoT Edge povolená.
-> Níže jsou uvedené kroky k jejímu zakázání. Pro použití v produkčním prostředí to ale není vhodné. Tyto kroky jsou pouze nezbytné na zařízeních s Linuxem. 
-
-Pokud chcete zakázat proces identifikace zařízení IoT Edge, budete muset zadat IP adresu a port pro **workload_uri** a **management_uri** v **připojení** část konfigurace démona IoT Edge.
-
-Nejdřív zjistěte IP adresu. Do příkazového řádku zadejte `ifconfig` a zkopírujte IP adresu rozhraní **docker0**.
-
-Upravte konfigurační soubor procesu démon IoT Edge:
-
-```cmd/sh
-sudo nano /etc/iotedge/config.yaml
-```
-
-Aktualizujte oddíl **connect** konfigurace svojí IP adresou. Příklad:
-```yaml
-connect:
-  management_uri: "http://172.17.0.1:15580"
-  workload_uri: "http://172.17.0.1:15581"
-```
-
-Stejné adresy zadejte do části konfigurace **listen**. Příklad:
-
-```yaml
-listen:
-  management_uri: "http://172.17.0.1:15580"
-  workload_uri: "http://172.17.0.1:15581"
-```
-
-Uložte a zavřete soubor konfigurace.
-
-Vytvořte proměnnou prostředí IOTEDGE_HOST s adresou management_uri (Chcete-li nastavit trvale, přidejte ho do `/etc/environment`). Příklad:
-
-```cmd/sh
-export IOTEDGE_HOST="http://172.17.0.1:15580"
-```
-
-Restartujte službu IoT Edge se změny projevily.
-
-```cmd/sh
-sudo systemctl restart iotedge
-```
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Vytvoření a nasazení modulu Azure Machine Learning
 
@@ -131,11 +87,11 @@ V této části převeďte trénovaného strojového učení soubory modelu a do
     >[!TIP]
     >Některé z buněk, kurz notebook detekce anomálií jsou volitelné, protože vytvářejí prostředky, které někteří uživatelé mohou nebo nemusí mít ještě, jako jsou služby IoT Hub. Když vložíte stávající informace o prostředku do první buňky, obdržíte chyb při spuštění buňky, které vytvářet nové prostředky, protože Azure nebude vytvářet duplicitní prostředky. To je v pořádku, a můžete ignorovat chyby nebo zcela Přeskočit tyto volitelné části. 
 
-Po dokončení všech kroků v poznámkovém bloku, které budou mít natrénovali model detekce anomálií, který je sestaven jako image kontejneru Dockeru a jste image Nasdíleli do služby Azure Container Registry. Potom Testovat model a nakonec ji nasadit do zařízení IoT Edge. 
+Po dokončení všech kroků v poznámkovém bloku, natrénovali model detekce anomálií, který je sestaven jako image kontejneru Dockeru a jste image Nasdíleli do služby Azure Container Registry. Potom Testovat model a nakonec ji nasadit do zařízení IoT Edge. 
 
 ## <a name="view-container-repository"></a>Zobrazit kontejner úložiště
 
-Zkontrolujte, že svou image kontejneru byla úspěšně vytvořeny a uloženy v Azure container registry, který je spojen s vaším prostředím machine learning. Poznámkový blok, který jste použili v předchozí části automaticky k dispozici image kontejneru a přihlašovacích údajů registru do zařízení IoT Edge, ale měli byste vědět, kde jsou uloženy, abyste našli informace sami později. 
+Zkontrolujte, že svou image kontejneru byla úspěšně vytvořeny a uloženy v registru kontejnerů Azure spojené s vaším prostředím machine learning. Poznámkový blok, který jste použili v předchozí části automaticky k dispozici image kontejneru a přihlašovacích údajů registru do zařízení IoT Edge, ale měli byste vědět, kde jsou uloženy, abyste našli informace sami později. 
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do pracovního prostoru služby Machine Learning. 
 
@@ -151,7 +107,7 @@ Zkontrolujte, že svou image kontejneru byla úspěšně vytvořeny a uloženy v
 
    Tyto přihlašovací údaje mohou být součástí manifestu nasazení umožňují IoT Edge zařízení přístup k přetáhnout Image kontejneru z registru. 
 
-Teď víte, kde je uložen image kontejneru Machine Learning. Následující části vás provede kroky, chcete-li zjistit, jaký je výkon jako modul nasazené na zařízení IoT Edge. 
+Teď víte, kde je uložen image kontejneru Machine Learning. Následující části vás provede kroky k zobrazení jako na modul kontejneru na vašem zařízení IoT Edge. 
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 

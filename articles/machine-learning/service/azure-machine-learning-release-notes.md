@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d22764cfb038bc2021b99d0743f3cbac17d91d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024930"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154290"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -25,22 +25,90 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
-## <a name="2019-05-02"></a>2019-05-02
+## <a name="2019-05-06"></a>2019-05-06
 
 ### <a name="azure-portal"></a>portál Azure
 
-+ Vytvořte automatizované experimentů v ML na portálu.
+Na webu Azure portal můžete nyní:
++ Vytváření a spouštění automatizovaných experimentů v ML 
++ Vytvoření virtuálního počítače pro vyzkoušení ukázkové poznámkové bloky Jupyter s Poznámkový blok nebo vlastní.
++ Zcela novou část vytváření obsahu (Preview) v pracovním prostoru služby Machine Learning, která zahrnuje automatizované Machine Learning, vizuální rozhraní a hostované virtuální počítače poznámkového bloku
+    + Automaticky vytvořit model používání funkce automatického machine learning 
+    + Použít přetáhněte a umístěte vizuální rozhraní, pokud chcete spouštět experimenty
+    + Vytvoření poznámkového bloku virtuálního počítače chcete zkoumat data, vytvářet modely a nasadit služby.
++ Živé grafu a metriku aktualizace v spouštět sestavy a stránky podrobností o spuštění
++ Aktualizovaný soubor prohlížeče protokolů, výstupy a snímky v stránkách s údaji o spuštění.
++ Vytvoření sestavy nové a vylepšené prostředí v kartě experimentů. 
++ Přidání možnosti ke stažení souboru config.json stránce Přehled na pracovní prostor služby Azure Machine Learning.
++ Podporuje vytváření pracovního prostoru služby Machine Learning z pracovního prostoru Azure Databricks 
+
+
+### <a name="notebook-virtual-machine"></a>Poznámkový blok virtuálního počítače 
+
+Pomocí poznámkového bloku virtuálního počítače jako zabezpečené a připravená pro podnikové prostředí hostování pro aplikace Jupyter notebook, ve kterých můžete program experimenty strojového učení, nasazení modelů jako koncových bodů webové a provádět jiné operace, které podporuje Azure Machine Learning SDK pomocí Pythonu. Poskytuje několik možností:
++ [Rychlé zprovoznění Poznámkový blok předem nakonfigurovaných virtuálních počítačů](quickstart-run-cloud-notebook.md) , který má nejnovější verzi sady SDK služby Azure Machine Learning a související balíčky.
++ Osvědčené technologie, jako je například HTTPS, ověřování Azure Active Directory a povolení zabezpečuje přístup.
++ Spolehlivé cloudové úložiště poznámkových bloků a kódu ve vašem účtu úložiště objektů blob pracovní prostor Azure Machine Learning. V poznámkovém bloku virtuálního počítače můžete bezpečně odstranit bez ztráty svou práci.
++ Předinstalované ukázkové poznámkové bloky můžete zkoumat a experimentovat s funkcemi služby Azure Machine Learning.
++ Možnosti úplné přizpůsobení virtuálních počítačů Azure, libovolný typ virtuálního počítače, všechny balíčky, všechny ovladače. 
+
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033-released"></a>Azure Machine Learning SDK pro Python v1.0.33 všeobecně dostupné.
+
++ Azure ML Hardware Accelerated modely na [FPGA](concept-accelerate-with-fpgas.md) je obecně dostupná.
+  + Teď můžete [použít balíček azureml. akcelerace modely](how-to-deploy-fpga-web-service.md) na:
+    + Trénování vah podporované hluboké neuronové sítě (modelem ResNet 50, modelem ResNet 152, DenseNet 121, VGG-16 a SSD VGG)
+    + Použít přenos učení podporované DNN
+    + Zaregistrujte model s služba Správa modelů a kontejnerizace modelu
+    + Nasazení modelu na Virtuálním počítači Azure pomocí FPGA v clusteru služby Azure Kubernetes Service (AKS)
+  + Nasazení kontejneru do [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) server zařízení
+  + Skóre svá data pomocí gRPC koncový bod s tímto [vzorku](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
+
+### <a name="automated-machine-learning"></a>Automatizované Machine Learning
+
++ Funkce cílit na konkrétní umožňující dynamicky přidává featurizers pro optimalizaci výkonu. Nové featurizers: pracovní vkládání, váha důkazy, cíl kódování, kódování textu cíl, vzdálenost clusteru
++ Inteligentní CV zpracování trénování/platný rozdělí uvnitř automatizované ML
++ Několik změn optimalizace paměti a zlepšení výkonu modulu runtime
++ Vylepšení výkonu v modelu vysvětlení
++ Převod modelu ONNX pro místní spuštění
++ Přidání podpory Subsampling
++ Inteligentní zastaví, když nedefinovala se žádná ukončit kritéria
++ Skládaný umožňující
+
++ Vytváření prognóz časových řad
+  + Nové předpovědět prognózy – funkce   
+  + Teď můžete použít se zajištěním provozu původu křížového ověření datech časových řad
+  + Nové funkce, přidá se nakonfigurovat čas zpožděním řady 
+  + Nové funkce přidaná kvůli podpoře postupného agregační funkce okna
+  + Nové zjišťování svátku a featurizer při směrové číslo země je definována v experimentovat nastavení
+
++ Azure Databricks
+  + Povolené prognózy časových řad a model explainabilty/interpretability funkce
+  + Nyní můžete zrušit a pokračovat (pokračovat) automatizované ML experimenty.
+  + Přidání podpory pro vícejádrovými zpracování
+
+### <a name="mlops"></a>MLOps
++ **Místní vývoj a ladění pro vyhodnocování kontejnery**<br/> Teď můžete nasadit místně modelu ML a rychle iterovat bodování souboru a závislosti a zajistí, že se že chovají podle očekávání.
+
++ **Zavedení InferenceConfig & Model.deploy()**<br/> Model nasazení teď podporuje zadávání zdrojové složky s skript vstupního, stejně jako RunConfig.  Kromě toho nasazení modelu zjednodušenou topologickou jediným příkazem.
+
++ **Referenční informace pro Git sledování**<br/> Zákazníci mají se požaduje základní možnosti integrace Gitu pro nějakou dobu, protože pomáhá udržovat záznam pro audit začátku do konce. Implementovali jsme sledování napříč hlavních entit v Azure ML pro metadata související s Git (úložiště, potvrzení, čistého stavu). Tyto informace se automaticky shromažďovat pomocí sady SDK a rozhraní příkazového řádku.
+
++ **Model služby profilace a ověřování**<br/> Zákazníci často stížnost potíže se pro nastavení správné velikosti výpočtů souvisejících s jejich odvození služby. Náš model profilování služby, Zákazník může poskytnout vzorových vstupů a jsme se profil napříč 16 jiný procesor / konfigurace paměti k určení optimální velikost pro nasazení.
+
++ **Používání vlastní základní image pro odvození**<br/> Další běžné předpisy se problémy se přesouvá z experimentování odvození OPĚTOVNÉ sdílení závislostí. S naší novou základní image funkce pro sdílení obsahu můžete teď znovu použít základní Image služby experimentování ve službě, závislosti a všechny pro odvození. To by měl urychlit nasazení a snížit mezery z vnitřního na vnější smyčky.
+
++ **Vylepšené prostředí pro generování schématu Swaggeru**<br/> Metoda byla chyba náchylné k chybám a nelze k automatizaci naše předchozí funkcí výstupu swagger. Přinášíme nový způsob vložené generování schémat swagger z jakékoli funkce Pythonu prostřednictvím dekorátory. Budeme mít open source tento kód a naše protokol generování schématu není s velkou provázaností, na platformu Azure ML.
+
++ **Azure ML CLI je všeobecně dostupná (GA)**<br/> Modely můžete nasadit pomocí jediného příkazu rozhraní příkazového řádku. Běžné zpětné vazby od zákazníků, které My nikdo nasadí modelu ML z poznámkového bloku Jupyter. [ **Referenční dokumentaci rozhraní příkazového řádku** ](https://aka.ms/azmlcli) byl aktualizován.
 
 
 ## <a name="2019-04-22"></a>2019-04-22
 
-### <a name="azure-machine-learning-sdk-for-python-v1030"></a>Azure Machine Learning sady SDK pro Python v1.0.30
-+ **Nové funkce**
-  + Datové sady
+Azure Machine Learning SDK pro Python v1.0.30 všeobecně dostupné.
 
-+ **Opravy chyb a vylepšení**
-  + Žádný
-
+[ `PipelineEndpoint` ](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py) Byl představí přidat novou verzi publikované kanálu při zachování stejný koncový bod.
 
 ## <a name="2019-04-17"></a>2019-04-17
 
@@ -69,12 +137,11 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure Portal
-+ **Nové funkce**
+### <a name="azure-portal"></a>portál Azure
   + Můžete teď znovu odeslat existující skript spustit v existujícím clusteru vzdálený výpočetní. 
   + Nyní můžete spustit publikované kanálu o nové parametry na kartě kanály. 
   + Podrobnosti o spuštění teď podporuje nový prohlížeč snímku souboru. Snímek adresáře můžete zobrazit při odeslání konkrétního spuštění. Můžete také stáhnout Poznámkový blok, který byl odeslán na spuštění testu.
-   + Nyní můžete zrušit spuštění nadřazené z webu Azure Portal.
+  + Nyní můžete zrušit spuštění nadřazené z portálu Azure portal.
 
 ## <a name="2019-04-08"></a>2019-04-08
 
@@ -134,7 +201,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 
  + **Změny**
    + Balíček azureml tensorboard nahradí azureml. contrib tensorboard.
-   + V této verzi můžete nastavit uživatelský účet na spravované výpočetního clusteru (amlcompute), při jejím vytváření. To můžete udělat jednoduše předáním tyto vlastnosti v konfiguraci zřizování. Můžete najít další podrobnosti najdete [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-).
+   + V této verzi můžete nastavit nastavení uživatelského účtu na spravované výpočetního clusteru (amlcompute), při jejím vytváření. To můžete udělat pomocí předání těchto vlastností v konfigurace zřizování. Můžete najít další podrobnosti najdete [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Sada SDK v1.0.17 pro přípravu dat Azure Machine Learning
 
@@ -189,7 +256,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Azure Machine Learning sady SDK pro Python v1.0.15
 
 + **Nové funkce**
-  + Azure Machine Learning kanály přidali AzureBatchStep ([Poznámkový blok](https://aka.ms/pl-azbatch)), HyperDriveStep ([Poznámkový blok](https://aka.ms/pl-hyperdrive)) a podle času, funkci plánování ([Poznámkový blok](https://aka.ms/pl-schedule)).
+  + Azure Machine Learning kanály přidali AzureBatchStep ([Poznámkový blok](https://aka.ms/pl-azbatch)), HyperDriveStep (Poznámkový blok) a podle času, funkci plánování ([Poznámkový blok](https://aka.ms/pl-schedule)).
   +  Aktualizovat DataTranferStep pro práci s Azure SQL Server a Azure database for PostgreSQL ([Poznámkový blok](https://aka.ms/pl-data-trans)).
 
 + **Změny**
@@ -202,7 +269,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
   + Teď podporuje čtení ze služby Azure SQL database s využitím úložiště dat pro přípravu dat.
  
 + **Změny**
-  + Výkon paměti určitých operací velkých objemů dat je výrazně vyšší.
+  + Vylepšení výkonu paměti určitých operací na velkých datech.
   + `read_pandas_dataframe()` nyní vyžaduje `temp_folder` zadání.
   + `name` Vlastnost `ColumnProfile` bylo zastaralé - použít `column_name` místo.
 
@@ -212,7 +279,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 
 + **Změny**: 
   + Azure ML SDK není k dispozici balíčky azure-cli jako závislost. Konkrétně závislosti core v rozhraní příkazového řádku azure a azure-cli profilu byly odebrány z azureml jádry. Jedná se o uživatele vliv na změny:
-    + Pokud provádění "az login" a pak pomocí Azure ml sdk, SDK provede prohlížeče nebo přihlášení zařízení kód ještě jednou. Jakýkoli stav přihlašovací údaje vytvořené "az login" jej nebude používat.
+    + Pokud provádění "az login" a pak pomocí Azure ml sdk, SDK provede protokol kódu prohlížeč nebo zařízení v ještě jednou. Jakýkoli stav přihlašovací údaje vytvořené "az login" jej nebude používat.
     + Ověřování příkazového řádku Azure, jako je třeba použití "az login", použijte _azureml.core.authentication.AzureCliAuthentication_ třídy. Ověřování příkazového řádku Azure, proveďte _pip nainstalovat rozhraní příkazového řádku azure_ v prostředí Pythonu, kterého jste nainstalovali azureml sdk.
     + Pokud provádíte "az login" pomocí hlavního názvu služby pro službu automation, doporučujeme použít _azureml.core.authentication.ServicePrincipalAuthentication_ třídy, jak Azure ml sdk nebude používat stavu přihlašovací údaje vytvořené pomocí azure CLI. 
 
@@ -221,7 +288,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Sada SDK v1.0.8 pro přípravu dat Azure Machine Learning
 
 + **Opravy chyb**
-  + Výrazně vylepšený výkon načítání dat profilů.
+  + Vylepšený výkon načítání dat profilů.
   + Oprava drobných chyb, které jsou spojené s vytvářením sestav chyb.
   
 ### <a name="azure-portal-new-features"></a>Azure portal: nové funkce

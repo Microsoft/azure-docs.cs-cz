@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d4374b329049e2e55966a28567c5232be77abda
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027065"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143027"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spouštění kontejnerů Rozlišovač formuláře
 Nástroj pro rozpoznávání formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře. Přiřadí hodnoty a položky tabulky k nim a potom vypíše strukturovanými daty, která obsahuje vztahy v původním souboru. Můžete zavolat vlastní formulář Rozlišovač modelu pomocí jednoduchých rozhraní REST API k zjednodušení a snadno ji integrovat v procesu pracovního postupu služby automation nebo jiné aplikace. Zobrazuje se jenom pět dokumentů (nebo prázdný formulář) jsou potřeba, abyste se mohli výsledky rychle, přesně a přizpůsobená pro váš konkrétní obsah, bez náročné ruční zásah nebo odbornými znalostmi o rozsáhlé datové vědy. Nevyžaduje se popisky dat nebo dat poznámky.
@@ -34,7 +34,7 @@ Před použitím kontejnerů formuláře pro rozpoznávání, musí splňovat n�
 |Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.|
 |Azure CLI| Je potřeba nainstalovat [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) na hostiteli.|
-|Prostředky počítače rozhraní API pro zpracování obrazu| Aby bylo možné zpracovat naskenované dokumenty a obrázky, **prostředků pro počítačové zpracování obrazu** je povinný. Můžete přistupovat **rozpoznat Text** funkcí jako buď prostředek Azure (rozhraní REST API nebo sady SDK) nebo `cognitive-services-recognize-text` kontejneru. Použít obvyklé fakturační poplatky. <br><br>Musíte předat jí klíč a fakturační koncový bod pro konkrétní prostředek pro počítačové zpracování obrazu (v cloudu Azure nebo kontejner služeb Cognitive Services). Použít tento klíč a fakturační koncový bod jako {COMPUTER_VISION_API_KEY} a {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Pokud používáte  **`cognitive-services-recognize-text` kontejneru**, ujistěte se, že:<br><br>* Klíče pro počítačové zpracování obrazu na kontejneru formuláře Rozlišovače je klíč zadaný v počítačové zpracování obrazu `docker run` příkazu `cognitive-services-recognize-text` kontejneru.<br>* Váš fakturační koncový bod je koncový bod kontejneru, jako například `https://localhost:5000`. Pokud používáte kontejnery pro počítačové zpracování obrazu i formuláře Rozlišovač společně na stejném hostiteli, nemohou i být spuštěny s výchozí port `5000`.  |  
+|Prostředky počítače rozhraní API pro zpracování obrazu| Aby bylo možné zpracovat naskenované dokumenty a obrázky, **prostředků pro počítačové zpracování obrazu** je povinný. Můžete přistupovat **rozpoznat Text** funkcí jako buď prostředek Azure (rozhraní REST API nebo sady SDK) nebo `cognitive-services-recognize-text` [kontejneru](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull). Použít obvyklé fakturační poplatky. <br><br>Musíte předat jí klíč a fakturační koncový bod pro konkrétní prostředek pro počítačové zpracování obrazu (v cloudu Azure nebo kontejner služeb Cognitive Services). Použít tento klíč a fakturační koncový bod jako {COMPUTER_VISION_API_KEY} a {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Pokud používáte  **`cognitive-services-recognize-text` kontejneru**, ujistěte se, že:<br><br>* Klíče pro počítačové zpracování obrazu na kontejneru formuláře Rozlišovače je klíč zadaný v počítačové zpracování obrazu `docker run` příkazu `cognitive-services-recognize-text` kontejneru.<br>* Váš fakturační koncový bod je koncový bod kontejneru, jako například `https://localhost:5000`. Pokud používáte kontejnery pro počítačové zpracování obrazu i formuláře Rozlišovač společně na stejném hostiteli, nemohou i být spuštěny s výchozí port `5000`.  |  
 |Prostředek formuláře rozpoznávání rukopisu |Chcete-li použít tyto kontejnery, musíte mít:<br><br>A _formuláře Rozlišovač_ prostředků Azure můžete získat přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na webu Azure portal **formuláře Rozlišovač** stránky přehled a klíče a jsou potřebná ke spuštění kontejneru.<br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
@@ -65,13 +65,19 @@ Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se použí
 > [!Note]
 > Minimální a doporučené hodnoty vycházejí z Dockeru omezení a *není* hostitelského počítače prostředky.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
+## <a name="get-the-container-image-with-docker-pull-command"></a>Získat image kontejneru pomocí příkazu docker o přijetí změn
 
 Image kontejneru pro nástroj pro rozpoznávání formuláře jsou k dispozici.
 
 | Kontejner | Úložiště |
 |-----------|------------|
 | cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+
+Pokud máte v úmyslu použít `cognitive-services-recognize-text` [kontejneru](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull), místo služby Rozlišovač formuláře, ujistěte se, že používáte `docker pull` příkaz s názvem správným kontejnerem: 
+
+```
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
+```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 

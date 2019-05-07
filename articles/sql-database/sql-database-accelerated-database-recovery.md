@@ -11,14 +11,14 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388713"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073467"
 ---
-# <a name="accelerated-database-recovery-preview"></a>Zrychlené obnovení databáze (preview)
+# <a name="accelerated-database-recovery"></a>Zrychlené databáze obnovení
 
 **Obnovení databáze (ADR) Accelerated** novou funkci modul databáze SQL, která výrazně zlepšuje dostupnost databáze, zejména za přítomnosti dlouho běží transakce, realizace proces obnovení modulu databáze SQL. Pravidla automatického nasazení je aktuálně dostupné pro izolované databáze a databáze ve fondu ve službě Azure SQL Database a databáze ve službě Azure SQL Data Warehouse. Hlavní výhody pravidla automatického nasazení jsou:
 
@@ -128,6 +128,3 @@ Následující typy zákazníci měli zvážit povolení pravidla automatického
 - Zákazníci, které jste viděli případy, kdy aktivních transakcí způsobují protokol transakce a výrazně zvýší.  
 - Zákazníci, kteří došlo delší období nedostupnosti databáze z důvodu dlouho trvající obnovení (například neočekávané systému SQL Server restartování nebo ruční odvolání transakce) systému SQL Server.
 
-## <a name="to-enable-adr-during-this-preview-period"></a>Povolit pravidla automatického nasazení během tohoto období preview
-
-Během období preview pro tuto funkci, odešlete e-mail na [ adr@microsoft.com ](mailto:adr@microsoft.com) chcete dozvědět víc a zkuste si Accelerated obnovení databáze (ADR). V e-mailu obsahují název vaší databáze SQL serveru (pro izolované databáze a databáze ve fondu ve službě SQL Database a databáze ve službě Azure Data Warehouse). Protože se jedná o funkci preview, váš testovací server by měl být mimo provozní server.
