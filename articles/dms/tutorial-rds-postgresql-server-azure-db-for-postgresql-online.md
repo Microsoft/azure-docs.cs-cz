@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/26/2019
-ms.openlocfilehash: 71610aa9916519338c564127616f4569aff70aaa
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 05/01/2019
+ms.openlocfilehash: 3f1ab5c2cb30dd4067c07833529e6a6a0c71e286
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925369"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136658"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace vzdálené plochy PostgreSQL do služby Azure Database for PostgreSQL online pomocí DMS
 
@@ -168,9 +168,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 6. Vyberte cenovou úroveň; pro tuto online migraci je nutné vybrat Premium: 4vCores cenovou úroveň.
 
-    Další informace o nákladech a cenových úrovních najdete na [stránce s cenami](https://aka.ms/dms-pricing). Pokud potřebujete pomoc s výběrem správné Azure Database Migration Service cenovou úroveň, podívejte se na doporučení účtování [tady](https://go.microsoft.com/fwlink/?linkid=861067).
-
-     ![Konfigurace nastavení instance služby Azure Database Migration Service](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings4.png)
+    ![Konfigurace nastavení instance služby Azure Database Migration Service](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings4.png)
 
 7. Vyberte **Vytvořit** a vytvořte službu.
 

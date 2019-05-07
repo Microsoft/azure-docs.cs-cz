@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e22f6b8b0ff6874004373eb4a292ad907db2418
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: 0d32b56b28d9ce7425e782fc10fa9ffb67047ce0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080923"
+ms.locfileid: "65139508"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Získávání a ukládání do mezipaměti tokenů s využitím MSAL
 [Přístupové tokeny](access-tokens.md) umožňují klientům bezpečně volat webové rozhraní API chráněné službou Azure. Existuje mnoho způsobů, jak získat token pomocí Microsoft Authentication Library (MSAL). Některé způsoby, vyžadují interakcí s uživateli prostřednictvím webového prohlížeče. Některé nevyžaduje žádné akce uživatele. Obecně platí je způsob, jak získat token závisí, pokud je aplikace veřejným klientem (desktopové nebo mobilní aplikace) nebo důvěrnému klientovi aplikace (aplikace webovou aplikaci, webové rozhraní API nebo proces démon jako služba Windows).
@@ -65,7 +65,7 @@ Kód aplikace by měl pokusit získat token tiše (z mezipaměti), nejprve.  Pok
 
 Nicméně existují dva toky před kterou je **by neměla** pokusí tiše získat token:
 
-- [tok pověření klienta](msal-authentication-flows.md#confidential-client), který nepoužívá mezipaměť tokenu uživatele, ale token mezipaměti aplikace. Tato metoda se postará o ověření tuto mezipaměť tokenu aplikace před odesláním požadavku na službu STS.
+- [tok pověření klienta](msal-authentication-flows.md#client-credentials), který nepoužívá mezipaměť tokenu uživatele, ale token mezipaměti aplikace. Tato metoda se postará o ověření tuto mezipaměť tokenu aplikace před odesláním požadavku na službu STS.
 - [tok autorizačního kódu](msal-authentication-flows.md#authorization-code) ve službě Web Apps, protože uplatňuje kód, který je teď aplikace tak, že uživatel přihlášení a s nimi souhlas pro další obory. Vzhledem k tomu, že kód je předán jako parametr, nikoli účet, metodu nejde Hledat v mezipaměti před uplatňuje kód, který vyžaduje, i přesto, volání služby.
 
 ### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Doporučeného vzoru volání ve službě Web Apps pomocí tok autorizačního kódu 
@@ -86,7 +86,7 @@ Pro aplikace veřejným klientem (desktopové nebo mobilní aplikace) můžete:
 
 ### <a name="confidential-client-applications"></a>Důvěrné klientské aplikace 
 Pro důvěrné klientské aplikace (webovou aplikaci, webové rozhraní API nebo proces démon aplikací jako služba Windows) můžete:
-- Získat tokeny **vlastní aplikace** a není pro uživatele, pomocí [údajů klienta, které tok](msal-authentication-flows.md#confidential-client). To je možné pro synchronizaci nástroje nebo nástroje, které zpracovávají uživatelé obecně a konkrétního uživatele. 
+- Získat tokeny **vlastní aplikace** a není pro uživatele, pomocí [údajů klienta, které tok](msal-authentication-flows.md#client-credentials). To je možné pro synchronizaci nástroje nebo nástroje, které zpracovávají uživatelé obecně a konkrétního uživatele. 
 - Použití [tok On-behalf-of](msal-authentication-flows.md#on-behalf-of) webového rozhraní API pro volání rozhraní API jménem uživatele. Aplikace je identifikován pomocí přihlašovacích údajů klienta k získání tokenu podle uživatele kontrolního výrazu (SAML například nebo JWT token). Tento tok používá aplikace, které potřebují přístup k prostředkům ve volání služba služba konkrétního uživatele.
 - Získat tokeny pomocí [tok autorizačního kódu](msal-authentication-flows.md#authorization-code) ve službě web apps, jakmile se uživatel přihlásí pomocí autorizace adresa URL požadavku. Aplikace s OpenID Connect se obvykle používají tento mechanismus, který umožňuje uživateli přihlášení pomocí Open ID connect a pak přístup k webovým rozhraním API jménem uživatele.
 

@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410344"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138359"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postup: Přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu
 
@@ -51,7 +51,9 @@ Pracovníci v těchto rolích aplikace jsou definovány v [webu Azure portal](ht
 1. Upravit manifest aplikace vyhledáním `appRoles` nastavení a přidání všechny aplikační role.
 
      > [!NOTE]
-     > Každá definice role v tomto manifestu musí mít jiný platný **Guid** pro vlastnost "Id". `"value"` Vlastnosti jednotlivých rolí by měl přesně odpovídat řetězců se používají v kódu v aplikaci.
+     > Každá definice role aplikace v tomto manifestu musí mít jiný platný identifikátor GUID pro `id` vlastnost. 
+     > 
+     > `value` Vlastnost každá definice role aplikace by měl přesně odpovídat řetězce, které se používají v kódu v aplikaci. `value` Vlastností nesmí obsahovat mezery. Pokud už existoval, obdržíte chybu při ukládání manifestu.
      
 1. Uložte manifest.
 

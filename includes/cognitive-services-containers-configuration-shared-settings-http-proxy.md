@@ -1,23 +1,26 @@
 ---
 author: diberry
-ms.author: v-junlch
+ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 04/01/2019
-ms.date: 04/23/2019
-ms.openlocfilehash: 2d3d7b37721ca1b19f5d73133352cabdbffe6d68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/07/2019
+ms.openlocfilehash: fe1b4699a300831294c26b103d322fb83ad87d3b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599359"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65151101"
 ---
 Pokud je potřeba nakonfigurovat proxy server HTTP pro provedení odchozích požadavků, použijte tyto dva argumenty:
 
 | Název | Typ dat | Popis |
 |--|--|--|
-|HTTP_PROXY|string|Tento proxy server používat, například `http://proxy:8888`|
+|HTTP_PROXY|string|Tento proxy server používat, například `http://proxy:8888`<br>< adresa url proxy serveru >|
 |HTTP_PROXY_CREDS|string|žádné přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské_jméno.|
+|`<proxy-user>`|string|Uživatel pro proxy server.|
+|`proxy-password`|string|Heslo přidružené k `<proxy-user>` pro proxy server.|
+||||
+
 
 ```bash
 docker run --rm -it -p 5000:5000 \
@@ -27,7 +30,6 @@ docker run --rm -it -p 5000:5000 \
 Eula=accept \
 Billing=<billing-endpoint> \
 ApiKey=<api-key> \
-HTTP_PROXY=http://190.169.1.6:3128 \
-HTTP_PROXY_CREDS=jerry:123456 \
+HTTP_PROXY=<proxy-url> \
+HTTP_PROXY_CREDS=<proxy-user>:<proxy-password> \
 ```
-

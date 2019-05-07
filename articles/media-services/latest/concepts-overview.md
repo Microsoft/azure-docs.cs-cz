@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: feba7d53f196f6675aca965218046df67bbef81d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 8a4ffdc09cb12f7a16173c86bd3d0e3aee78d46d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867067"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152653"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
 
@@ -134,7 +134,7 @@ Azure Media Player můžete použít k přehrávání mediálního obsahu, kter�
 
 - [Přehled Azure Media Playeru](use-azure-media-player.md)
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 

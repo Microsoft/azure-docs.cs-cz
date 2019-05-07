@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mayg
-ms.openlocfilehash: 0597f185df35a92696ed9287d23778180319b3de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 195c70cd887d75eebb23cb7632b5fa250f89661c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035788"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137766"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Azure Site Recovery Deployment Planner pro replikaci z VMware do Azure
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení VMware do Azure.
@@ -104,6 +104,9 @@ Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeplo
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi Plánovače nasazení
+
+Nejnovější aktualizace jsou shrnuté v Deployment Planneru [historie verzí](site-recovery-deployment-planner-history.md).
+
 Pokud máte předchozí verzi Plánovače nasazení, proveďte jednu z následujících akcí:
  * Pokud nejnovější verze neobsahuje opravu profilace a ve vaší stávající verzi Deployment Planneru již profilace probíhá, pokračujte v ní.
  * Pokud nejnovější verze obsahuje opravu profilace, doporučujeme zastavit profilaci ve stávající verzi a znovu ji spustit v nové verzi.

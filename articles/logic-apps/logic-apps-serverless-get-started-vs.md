@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.custom: vs-azure
 ms.topic: article
-ms.date: 04/02/2019
-ms.openlocfilehash: 39b44668a89ce0c77c09a7fa20dc4d95b2164bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/25/2019
+ms.openlocfilehash: 265ed220b023a9d81fc5af48920152d95d9cac08
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61321264"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136693"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Vytvořte svoji první aplikaci bez serveru s Azure Logic Apps a Azure Functions – Visual Studio
 
@@ -25,33 +25,33 @@ Můžete rychle vyvíjet a nasazení cloudových aplikací pomocí nástroje bez
 
 K sestavení aplikace bez serveru v sadě Visual Studio, budete potřebovat tyto položky:
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Pokud je ještě nemáte, stáhněte a nainstalujte tyto nástroje:
 
-  * <a href="https://aka.ms/download-visual-studio" target="_blank">Edice sady Visual Studio. 2019 2017 nebo 2015 – Community nebo vyšší</a>. 
+  * [Edice sady Visual Studio. 2019 2017 nebo 2015 – Community nebo vyšší](https://aka.ms/download-visual-studio). 
   V tomto kurzu se používá sada Visual Studio Community 2017, která je zdarma.
 
     > [!IMPORTANT]
     > Když instalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali **vývoj pro Azure** pracovního vytížení.
-    > Pro Visual Studio 2019 Průzkumníka cloudu můžete otevřít návrhář aplikace logiky na webu Azure Portal, ale dosud neotevřel vloženého návrháře aplikace logiky.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Microsoft Azure SDK pro .NET (2.9.1 nebo novější)</a>. Další informace o sadě <a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">Azure SDK pro .NET</a>.
+  * [Microsoft Azure SDK pro .NET (2.9.1 nebo novější)](https://azure.microsoft.com/downloads/). 
+  Další informace o sadě [Azure SDK pro .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet).
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
   * Azure Logic Apps Tools pro verzi sady Visual Studio, které chcete:
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
+    * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017" target="_blank">Visual Studio 2017</a>
+    * [Visual Studio 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015" target="_blank">Visual Studio 2015</a>
+    * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">jak toto rozšíření nainstalovat v rámci sady Visual Studio</a>. 
+    Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, [jak toto rozšíření nainstalovat v rámci sady Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Po dokončení instalace nezapomeňte sadu Visual Studio restartovat.
 
-  * <a href="https://www.npmjs.com/package/azure-functions-core-tools" target="_blank">Nástroje Azure Functions Core</a> pro místní ladění funkce
+  * [Nástroje Azure Functions Core](https://www.npmjs.com/package/azure-functions-core-tools) pro místní ladění funkce
 
 * Přístup k webu při používání vloženého Návrháře aplikace logiky
 

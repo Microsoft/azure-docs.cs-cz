@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4127226037bf28ba677a49f6444ca987118cb9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023896"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149829"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
@@ -25,11 +25,11 @@ Tento rychlý start ukazuje, jak vytvořit prostředek v cloudu ve vašem pracov
  
 V tomto rychlém startu jste pomocí následujících kroků:
 
-* Vytvoření nového poznámkového bloku založené na cloudu serveru ve vašem pracovním prostoru
-* Spuštění webového rozhraní Jupyter
+* Vytvoření nového poznámkového bloku založené na cloudu serveru ve vašem pracovním prostoru.
+* Spuštění webového rozhraní Jupyter.
 * Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.
 * Spuštění poznámkového bloku.
-* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.  Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru. Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
 
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
@@ -49,13 +49,15 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
      ![Vyberte nový virtuální počítač](./media/quickstart-run-cloud-notebook/add-workstation.png)
 
-1. Zadejte název pro váš virtuální počítač. Potom vyberte **Vytvořit**. 
+1. Zadejte název pro váš virtuální počítač. Potom vyberte **Vytvořit**.
+
+    > [!NOTE]
+    > Název vašeho virtuálního počítače poznámkového bloku musí být dlouhý 2 až 16 znaků. Platné znaky jsou písmena, číslice a znak /.  Název musí být také jedinečný ve vašem předplatném Azure.
 
     ![Vytvoření nového virtuálního počítače](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
-1. Počkejte přibližně 4 až 5 minut a pak vyberte **aktualizovat**.  Zkuste aktualizovat každých 30 sekund, nebo dokud je stav **systémem**.
+1. Počkejte přibližně 4 až 5 minut, dokud se stav změní na **systémem**.
 
-    ![Obnovení](media/quickstart-run-cloud-notebook/refresh.png)
 
 ## <a name="launch-jupyter-web-interface"></a>Spuštění webové rozhraní Jupyter
 
@@ -67,7 +69,11 @@ Po spuštění virtuálního počítače použijte **virtuálních počítačů 
 
     Odkaz spustí váš server poznámkového bloku a otevře se webová stránka poznámkového bloku Jupyter na nové kartě prohlížeče.  Tento odkaz bude fungovat jenom pro osobu, která vytvoří virtuální počítač.
 
-1. Na webové stránce poznámkového bloku Jupyter, vyberte **samples/quickstart** složky najdete v rychlém startu poznámkového bloku.
+1. Na webové stránce poznámkového bloku Jupyter hlavní název složky je vaše uživatelské jméno.  Vyberte tuto složku.
+
+1. Ukázky foldername zahrnuje číslo verze, například **ukázky 1.0.33.1**.  Vyberte složku ukázky.
+
+1. Vyberte **rychlý Start** poznámkového bloku.
 
 ## <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
@@ -75,15 +81,7 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 1. Vyberte **01.run experiment.ipynb** otevřete Poznámkový blok.
 
-1. Může se zobrazit zpráva, která nebyla nastavena jádra.  Vyberte **Python 3.6 – AzureML**a pak vyberte **nastavit jádra**.
-
-   ![Nastavte jádra](./media/quickstart-run-cloud-notebook/set-kernel.png)
-
-1. Oblasti stav zjistíte Počkejte, až jádro byla spuštěna. Zpráva zmizí, jakmile je jádro připraveno.
-
-    ![Vyčkat, než jádra spuštění](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
-
-1.  Klikněte do první buňky kódu a vyberte **spustit**.
+1. Klikněte do první buňky kódu a vyberte **spustit**.
 
     > [!NOTE]
     > Buňky kódu mají hranaté závorky před sebou. Pokud jsou prázdné hranaté závorky (__[] č.__), kód nebyl spuštěn. Když je kód spuštěn, se zobrazí hvězdičku (__[*]__). Po dokončení kódu, číslo **[1]** se zobrazí.  Číslo vám říká pořadí, ve kterém byl spuštěn buňky.
@@ -94,16 +92,15 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 1. Spuštění druhého buňky kódu. Pokud se zobrazí pokyny k ověření, zkopírujte kód a přejděte na odkaz pro přihlášení. Po přihlášení bude váš prohlížeč nezapomeňte toto nastavení.  
 
-    > [!TIP]
-    > Nezapomeňte zkopírovat místo za kód.  
-
     ![Ověření](media/quickstart-run-cloud-notebook/authenticate.png)
 
-1. Až budete hotovi, počet buněk __[2]__ se zobrazí.  Pokud jste měli k přihlášení, zobrazí se zpráva stav úspěšné ověření.   Pokud máte nepovedlo se přihlásit, nezobrazí žádný výstup pro tuto buňku, jenom číslo, zobrazí se úspěšně spustil buňku.
+1. Po dokončení počet buněk __[2]__ se zobrazí.  Pokud jste měli k přihlášení, zobrazí se zpráva stav úspěšné ověření.   Pokud máte nepovedlo se přihlásit, nezobrazí žádný výstup pro tuto buňku, jenom číslo, zobrazí se úspěšně spustil buňku.
 
     ![Zpráva o úspěchu](media/quickstart-run-cloud-notebook/success.png)
 
-1. Spusťte zbývající buňky kódu.  Protože každá buňka doběhnutí, zobrazí se jeho počet buněk se zobrazí. Zobrazuje pouze poslední buňku žádný výstup.  Největší buňku kódu vidíte `run.log` použít na více místech. Každý `run.log` přidá jeho hodnotu do pracovního prostoru.
+1. Spusťte zbývající buňky kódu.  Protože každá buňka doběhnutí, zobrazí se jeho počet buněk se zobrazí. Zobrazuje pouze poslední buňku žádný výstup.  
+
+    Největší buňku kódu vidíte `run.log` použít na více místech. Každý `run.log` přidá jeho hodnotu do pracovního prostoru.
 
 
 ## <a name="view-logged-values"></a>Zobrazení zaprotokolovaných hodnot
@@ -146,11 +143,13 @@ Můžete také zachovat skupinu prostředků, ale odstranění jednoho pracovní
 
 V tomto rychlém startu jste dokončili tyto úlohy:
 
-* Vytvoření poznámkového bloku virtuálního počítače
-* Spuštění aplikace Jupyter Notebook server na virtuální počítač v poznámkovém bloku
+* Vytvoření poznámkového bloku virtuálního počítače.
+* Spuštění webového rozhraní Jupyter.
 * Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.
 * Spuštění poznámkového bloku.
 * Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.  Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+
+Na webové stránce aplikace Jupyter Notebook projděte si další poznámkových bloků ve složce samples získat další informace o službě Azure Machine Learning.
 
 Podrobný pracovní postup prostředí postupujte podle kurzů strojového učení a trénování a nasadit model:  
 

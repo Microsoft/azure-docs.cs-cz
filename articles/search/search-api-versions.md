@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024395"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149785"
 ---
 # <a name="api-versions-in-azure-search"></a>Verze rozhraní API ve službě Azure Search
 Služba Azure Search zavádění aktualizací funkcí pravidelně. Někdy, ale ne vždy tyto aktualizace vyžadují novou verzi rozhraní API pro zachování zpětné kompatibility. Publikování nové verze umožňuje řídit, kdy a jak integrovat aktualizace služby vyhledávání v kódu.
@@ -32,8 +32,8 @@ Níže je snímek aktuální verze všech programování rozhraní do služby Az
 
 | Rozhraní | Nejnovější hlavní verzi | Status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně k dispozici, všeobecně dostupné. května 2019. Obsah se stále zpracovávají.  |
-| [.NET SDK ve verzi Preview](https://aka.ms/search-sdk-preview) |8.0.0-preview |Ve verzi Preview, vydáno dne 2019. Obsah se stále zpracovávají.|
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně dostupné vydané. května 2019. |
+| [.NET SDK ve verzi Preview](https://aka.ms/search-sdk-preview) |8.0.0-preview |Ve verzi Preview. 2019 dubna všeobecně dostupné |
 | [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Obecná dostupnost |
 | [Služba REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |Preview |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Obecná dostupnost |
@@ -57,6 +57,6 @@ Funkce ve verzi Preview jsou k dispozici pro testování a experimentování, s 
 
 Z těchto důvodů nedoporučujeme psaní kódu produkčního prostředí, který je závislá na verze preview. Pokud používáte starší verzi preview, doporučujeme migrovat na verzi všeobecně dostupná (GA).
 
-Pro sadu .NET SDK: Pokyny k migraci kódu lze nalézt v [Upgrade sady .NET SDK](search-dotnet-sdk-migration.md).
+Pro sadu .NET SDK: Pokyny k migraci kódu lze nalézt v [Upgrade sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
 Obecná dostupnost znamená, že Azure Search je teď v části smlouva o úrovni služeb (SLA). Smlouvy SLA najdete na [smlouvy o úrovni služeb Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

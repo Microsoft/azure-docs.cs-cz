@@ -12,38 +12,43 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 622a3ce0f80bd09bd09fa7ff097f68155318142d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351240"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138717"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurace deklarace skupiny pro aplikace pomocí Azure Active Directory (Public Preview)
 
 Informace o uživatelé skupiny členství v tokeny pro použití v rámci aplikací můžete poskytuje Azure Active Directory.  Podporovány jsou dva hlavní způsoby:
 
-- Skupiny identifikovaný jejich Azure Active Directory identifikátor objektu (OID) (obecně dostupná verze)
-- Skupiny identifikovaný SAMAccountName nebo GroupSID pro synchronizaci služby Active Directory (AD), skupiny a uživatele (Public Preview)
+- Skupiny identifikovány dle jejich identifikátoru objektu služby Azure Active Directory (OID) atributu (obecně dostupná verze)
+- Skupiny identifikovaný sAMAccountName nebo GroupSID atributy pro Active Directory (AD) synchronizovat skupiny a uživatele (Public Preview)
 
-> [!Note]
-> Podpora pro použití názvů a místní identifikátory zabezpečení (SID) je navržená k umožnění přesun stávajících aplikací ze služby AD FS.    Skupiny spravované ve službě Azure AD neobsahují atributy nezbytné pro generování tyto deklarace.
+> [!IMPORTANT]
+> Existuje několik upozornění Poznámka: Tato funkce ve verzi preview:
+>
+>- Podpora pro užívání identifikátor (SID) atributy sAMAccountName a zabezpečení synchronizované z místní je navržená k umožnění přesun stávajících aplikací ze služby AD FS a dalších poskytovatelů identit. Skupiny spravované ve službě Azure AD neobsahují atributy nezbytné pro generování tyto deklarace.
+>- Větší organizace nesmí překročit počet skupin, které je uživatel členem limit, který se přidá do tokenu Azure Active Directory. 150 skupiny pro SAML token a 200 pro token JWT. To může vést k nepředvídatelným výsledkům. Pokud se jedná o potenciální problém doporučujeme testování a v případě potřeby čekání, dokud se nám přidat rozšíření, aby bylo možné omezit deklarace identity do příslušné skupiny pro aplikaci.  
+>- Pro nový vývoj aplikací, nebo v případech, ve kterém je aplikace nakonfigurovat, a pokud není vyžadována podpora vnořené skupiny doporučujeme autorizace v aplikaci je podle rolí aplikace místo skupin.  Toto nastavení omezuje množství informací, které jsou potřeba do tokenu, je bezpečnější a odděluje přiřazení uživatelů z konfigurace aplikace.
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-idps"></a>Deklarace skupiny pro migrace ze služby AD FS a jiných zprostředkovatelů identity aplikace
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Deklarace skupiny pro migrace ze služby AD FS a dalších poskytovatelů identit aplikace
 
-Mnoho aplikací, které jsou nakonfigurovány pro ověřování pomocí služby AD FS spoléhá na informace o členství ve skupině ve formuláři Windows AD skupiny atributů.   Tyto atributy jsou skupiny SAMAccountName, který může být název kvalifikovaný podle domény nebo identifikátor SID skupiny Windows.  Když je aplikace federované se službou AD FS, AD FS používá funkci TokenGroups načíst členství ve skupině pro daného uživatele.
+Mnoho aplikací, které jsou nakonfigurovány pro ověřování pomocí služby AD FS spoléhá na informace o členství ve skupině ve formuláři Windows AD skupiny atributů.   Tyto atributy jsou sAMAccountName skupiny, který může být název kvalifikovaný podle domény nebo identifikátor zabezpečení skupiny (GroupSID) Windows.  Když je aplikace federované se službou AD FS, AD FS používá funkci TokenGroups načíst členství ve skupině pro daného uživatele.
 
-Tak, aby odpovídaly token, který bude aplikace přijímat ze služby AD FS, měl vyzařovaného deklarace skupiny a role obsahující doménu kvalifikovaný SAMAccountName, místo ID objektu skupiny Azure Active Directory.
+Tak, aby odpovídaly token, který bude aplikace přijímat ze služby AD FS, může generované deklarace skupiny a role obsahující sAMAccountName domény kvalifikovaný místo ID objektu skupiny Azure Active Directory.
 
 Podporované formáty pro deklarace skupiny jsou:
 
-- **Azure Active Directory GroupObjectId** (k dispozici pro všechny skupiny).
+- **ID objektu skupiny Azure Active Directory** (k dispozici pro všechny skupiny).
 - **SAMAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
-- **NetbiosDomain\samAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
-- **DNSDomainName\samAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
+- **NetbiosDomain\sAMAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
+- **DNSDomainName\sAMAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
+- **Na místní identifikátor zabezpečení skupiny** (k dispozici pro skupiny synchronizované z Active Directory).
 
 > [!NOTE]
-> Atributy SAMAccountName a OnPremisesGroupSID jsou dostupné jenom pro objekty skupiny synchronizované z Active Directory.   Nejsou k dispozici na skupiny vytvořené v Azure Active Directory nebo Office 365.   Aplikace, které jsou závislé na místní skupiny atributů je získat synchronizovaných jenom pro skupiny.
+> Na identifikátor SID skupiny místní atributy sAMAccountName a jsou dostupné jenom pro objekty skupiny synchronizované z Active Directory.   Nejsou k dispozici na skupiny vytvořené v Azure Active Directory nebo Office 365.   Aplikace, konfigurované v Azure Active Directory se získat atributy skupiny synchronizované s místními je získat synchronizovaných jenom pro skupiny.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Možnosti pro aplikace pro zpracování informací o skupině
 
@@ -51,17 +56,17 @@ Jedním ze způsobů pro aplikace k získání informací o skupině je volání
 
 Pokud již existující aplikace se očekává, že využívat informace o skupině prostřednictvím deklarací identity v tokenu, které že obdrží, Azure Active Directory můžete nakonfigurovat s různými možnostmi různé deklarace podle potřeb aplikace.  Zvažte následující možnosti:
 
-- Pokud používáte členství ve skupině pro účely autorizace aplikace (Určuje, zda členství ve skupině je získané z tokenu nebo graf), je vhodnější použít ID objektu skupiny, což je neměnná a jedinečný v Azure Active Directory a k dispozici pro všechny skupiny .
-- Pokud používáte skupiny SAMAccountName pro autorizaci, použijte názvy domén kvalifikovaný;  má menší riziko situací, byly konflikt názvů. SAMAccountName sama o sobě může být jedinečné v rámci domény služby Active Directory, ale pokud více než jedné domény služby Active Directory se synchronizuje s tenantem Azure Active Directory je možné pro více než jedna skupina mít stejný název.
+- Při použití členství ve skupině pro účely ověření v aplikaci je vhodnější použít ID objektu skupiny, které jsou neměnné a jedinečné ve službě Azure Active Directory a k dispozici pro všechny skupiny.
+- Při používání místního atributu sAMAccountName skupiny pro ověření, použijte názvy kvalifikované domény;  má menší riziko situací, byly konflikt názvů. SAMAccountName sama o sobě může být jedinečné v rámci domény služby Active Directory, ale pokud více než jedné domény služby Active Directory se synchronizuje s tenantem Azure Active Directory je možné pro více než jedna skupina mít stejný název.
 - Zvažte použití [aplikační role](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) zajistit určitou úroveň dereference mezi členství ve skupině a aplikací.   Aplikace pak provede interní autorizační rozhodnutí založené na clams role v tokenu.
 - Pokud je aplikace nakonfigurována k získání skupiny atributů, které jsou synchronizované z Active Directory a neobsahuje skupinu těchto atributů nebudou zahrnuty v deklaracích.
-- Skupinu deklarací identity v tokenech obsahovat vnořené skupiny.   Pokud je uživatel členem GroupB a GroupB je členem skupiny GroupA, bude obsahovat deklarace skupiny pro uživatele, GroupA a GroupB. Pro organizace s velkým využití vnořené skupiny a uživatele s velkým počtem členství ve skupinách můžete počet skupin, které jsou uvedené v tokenu zvětšit velikost tokenu.   Azure Active Directory omezuje počet skupin, které bude generovat token 150 pro kontrolní výrazy SAML a 200 pro token JWT.
+- Skupinu deklarací identity v tokenech obsahovat vnořené skupiny.   Pokud je uživatel členem GroupB a GroupB je členem skupiny GroupA, bude obsahovat deklarace skupiny pro uživatele, GroupA a GroupB. Pro organizace s velkým využití vnořené skupiny a uživatele s velkým počtem členství ve skupinách můžete počet skupin, které jsou uvedené v tokenu zvětšit velikost tokenu.   Azure Active Directory omezuje počet skupin, které bude generovat token 150 pro kontrolní výrazy SAML a 200 pro token JWT, aby se zabránilo tokeny začíná být moc velká.  Pokud je uživatel členem větší počet skupin, než je limit, jsou emitovány skupiny a odkaz na koncový bod grafu získat informace o skupině.
 
 > Předpoklady pro použití atributů skupiny synchronizované z Active Directory:   Skupiny musí být synchronizovány ze služby Active Directory pomocí služby Azure AD Connect.
 
 Existují dva kroky pro konfiguraci služby Azure Active Directory a vygenerovat názvy skupiny pro skupiny služby Active Directory.
 
-1. **Názvy skupin ze služby Active Directory synchronizovat** před Azure Active Directory můžete generovat názvy skupin nebo v místní skupině deklarace identifikátoru SID skupiny nebo role, povinné atributy musí být synchronizovány ze služby Active Directory.  Musíte používat Azure AD Connect verze 1.2.70 nebo novější.   Starší než verze 1.2.70 Azure AD Connect synchronizuje objekty th skupiny ze služby Active Directory, ale neobsahuje ve výchozím nastavení atributů názvu požadované skupiny.  Měli byste upgradovat na aktuální verzi.
+1. **Názvy skupin ze služby Active Directory synchronizovat** před Azure Active Directory můžete generovat názvy skupin nebo v místní skupině deklarace identifikátoru SID skupiny nebo role, povinné atributy musí být synchronizovány ze služby Active Directory.  Musíte používat Azure AD Connect verze 1.2.70 nebo novější.   Starší než verze 1.2.70 Azure AD Connect synchronizuje objekty skupiny ze služby Active Directory, ale neobsahuje ve výchozím nastavení atributů názvu požadované skupiny.  Měli byste upgradovat na aktuální verzi.
 
 2. **Konfigurace registrace aplikace v Azure Active Directory a zahrnují skupinu deklarací identity v tokenech** deklarace skupiny může být nakonfigurována buď v oddílu podnikové aplikace na portálu pro aplikaci Galerie nebo mimo Galerii SAML SSO, nebo v části registrace aplikací pomocí Manifest aplikace.  Konfigurace deklarace skupiny v manifestu naleznete v aplikaci "Konfigurace registrace Azure Active Directory aplikace pro skupinu atributů" níže.
 
@@ -81,22 +86,22 @@ Pomocí přepínačů vyberte skupiny, které by měl být součástí tokenu
 |----------|-------------|
 | **Všechny skupiny** | Vysílá skupin zabezpečení a distribuční seznamy.   Navíc způsobí, že role adresáře má uživatel přiřazenou emitování v deklaraci "wids" a všechny aplikační role, které má uživatel přiřazenou emitování v deklarace identity rolí. |
 | **Skupiny zabezpečení** | Vysílá skupiny zabezpečení, které uživatel je členem v deklaraci identity skupiny |
-| **Distribuční seznam** | Vysílá distribuční skupiny, jejichž je uživatel členem |
+| **Distribuční seznamy** | Vysílá distribuční skupiny, jejichž je uživatel členem |
 | **Role adresáře** | Pokud má uživatel přiřazené role adresáře jsou emitovány jako "wids deklarace identity (skupiny, které deklarace identity, nebude se emitovat) |
 
 Například ke generování všechny uživatel je členem skupiny zabezpečení, vyberte skupiny zabezpečení
 
 ![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
+Vygenerovat skupiny pomocí atributů služby Active Directory synchronizované z Active Directory místo Azure AD objectid vybrat požadovaný formát z rozevíracího seznamu.  Toto ID objektu v deklaracích nahradí řetězcové hodnoty obsahující názvy skupin.   Deklarace identity se zahrne jenom skupiny, které jsou synchronizované z Active Directory.
+
+![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+
 ### <a name="advanced-options"></a>Pokročilá nastavení
 
 Způsob, jakým jsou emitovány deklarace skupiny lze upravit pomocí nastavení v části Upřesnit možnosti
 
 Upravit název deklarace skupiny:  Pokud je zaškrtnuto, jiný typ deklarací dá nastavit pro deklarace skupiny.   Zadejte typ deklarace identity v poli Název a volitelný obor názvů pro deklarace identity v oboru názvů polí.
-
-![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
-
-Vygenerovat skupiny pomocí služby Active Directory atributech namísto v Azure AD objectid zaškrtněte políčko, které nevrací skupiny jako názvy místo ID"a z rozevíracího seznamu vyberte formát.  Toto ID objektu v deklaracích nahradí řetězcové hodnoty obsahující názvy skupin.   Deklarace identity se zahrne jenom skupiny, které jsou synchronizované z Active Directory.
 
 ![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
@@ -152,7 +157,7 @@ Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarac�
    }
    ```
 
-   | Schéma nepovinných deklarací identity | Value |
+   | Schéma nepovinných deklarací identity | Hodnota |
    |----------|-------------|
    | **Jméno:** | Musí být "groups" |
    | **Zdroj:** | Nepoužívá se. Vynechat nebo zadat hodnotu null |

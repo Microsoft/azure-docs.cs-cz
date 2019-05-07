@@ -1,44 +1,41 @@
 ---
-title: Kurz – Správa webového provozu – Azure CLI
+title: Správa webového provozu – Azure CLI
 description: Přečtěte si, jak s Azure CLI vytvořit aplikační bránu se škálovací sadou virtuálních počítačů, která slouží ke správě webového provozu.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.topic: article
+ms.date: 5/1/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 264e1050e74c64c003e08bc6a8ba1c115b83032c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d60c756fcf0b527731b8a1f31a8d93f108c91665
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749066"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146226"
 ---
-# <a name="tutorial-manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Kurz: Správa webového provozu s bránou application gateway pomocí Azure CLI
+# <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Správa webového provozu s bránou application gateway pomocí Azure CLI
 
-Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Azure CLI můžete použít k vytvoření [aplikační brány](overview.md), která ke správě webového provozu používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) s back-endovými servery. V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
+Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Rozhraní příkazového řádku Azure můžete použít k vytvoření [služba application gateway](overview.md) , která používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end serverů. V tomto příkladu škálovací sady obsahuje dvě instance virtuálních počítačů. Škálovací sada se přidá do výchozí fond back-endu služby application gateway.
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
 > * Vytvoření služby Application Gateway
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
+Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). 
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create).
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
@@ -90,7 +87,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto nové funkce:
+ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány, zobrazí se vám tyto nové funkce:
 
 - *appGatewayBackendPool* – aplikační brána musí mít aspoň jeden back-endový fond adres.
 - *appGatewayBackendHttpSettings* – určuje, že se ke komunikaci používá port 80 a protokol HTTP.
@@ -136,7 +133,7 @@ az vmss extension set \
 
 K získání veřejné IP adresy aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -156,12 +153,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření služby Application Gateway
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
-
-> [!div class="nextstepaction"]
-> [Omezení webového provozu Firewallem webových aplikací](./tutorial-restrict-web-traffic-cli.md)
+[Omezení webového provozu Firewallem webových aplikací](./tutorial-restrict-web-traffic-cli.md)

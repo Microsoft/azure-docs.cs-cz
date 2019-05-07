@@ -8,18 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511308"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150542"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
-
-> [!NOTE]
-> Tato funkce je v [ *ve verzi public preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pro scénáře, ve kterém logic apps a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je privátní a izolované prostředí, která používá vyhrazeného úložiště a další prostředky, které jsou udržovány odděleně od veřejné nebo "globální" služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Je vaše ISE *vložený* do ke službě Azure virtual network, která pak nasadí služba Logic Apps do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti.
 
@@ -101,13 +98,11 @@ K řízení provozu mezi podsítěmi virtuální sítě nasadíte kdekoli vašeh
 Pokud chcete vytvořit prostředí integrační služby (ISE), postupujte takto:
 
 1. V [webu Azure portal](https://portal.azure.com), v hlavní nabídce Azure zvolte **vytvořit prostředek**.
+Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    ![Vytvořit nový prostředek](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
-V seznamu výsledků vyberte **prostředí integrační služby (preview)** a klikněte na tlačítko **vytvořit**.
-
-   ![Vyberte "Prostředí integrační služby"](./media/connect-virtual-network-vnet-isolated-environment/select-integration-service-environment.png)
+1. V podokně vytvoření prostředí integrační služby, zvolte **vytvořit**.
 
    ![Zvolte možnost "Vytvořit"](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
@@ -121,8 +116,8 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve kterém chcete vytvořit prostředí |
    | **Název prostředí integrační služby** | Ano | <*environment-name*> | Název prostředí |
    | **Umístění** | Ano | <*Azure-datacenter-region*> | Oblast datového centra Azure, jak nasadíte prostředí |
-   | **Zvýšení kapacity** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE. Po vytvoření navyšovat kapacitu, najdete v článku [navyšovat kapacitu](#add-capacity). |
-   | **Virtuální síť** | Ano | <*Azure-virtual-network-name*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: Je možné *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste už nastavení řízení přístupu na základě rolí ve službě virtual network pro Azure Logic Apps. |
+   | **Zvýšení kapacity** | Ano | 0 až 10 | Počet jednotek další zpracování pro tento prostředek ISE. Po vytvoření navyšovat kapacitu, najdete v článku [ISE přidat kapacitu](#add-capacity). |
+   | **Virtuální síť** | Ano | <*Azure-virtual-network-name*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nemáte sítě, [nejprve vytvořte virtuální síť Azure](../virtual-network/quick-create-portal.md). <p>**Důležité**: Je možné *pouze* provádět tento vkládání při vytváření vašeho ISE. |
    | **Podsítě** | Ano | <*subnet-resource-list*> | ISE vyžaduje čtyři *prázdný* podsítě pro vytváření prostředků ve vašem prostředí. K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet).  |
    |||||
 
@@ -172,6 +167,9 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
    1. Tento postup opakujte pro tři další podsítě.
 
+      > [!NOTE]
+      > Pokud podsítě, můžete zkusit vytvořit nejsou platné, na webu Azure portal zobrazí zprávu, ale nebude bránit pokroku ve studiu.
+
 1. Když Azure úspěšně ověří vaše ISE informace, zvolte **vytvořit**, například:
 
    ![Po úspěšném ověření zvolte možnost "Vytvořit"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
@@ -185,34 +183,17 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
    ![Nasazení bylo úspěšné.](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
+   V opačném případě postupujte podle pokynů Azure portálu pro řešení potíží s nasazením.
+
    > [!NOTE]
-   > Pokud nasazení selže nebo je odstranit ISE, Azure *může* trvat až jednu hodinu před uvolněním podsítě. Ano budete muset počkat před opětovným použitím těchto podsítí v jiném prostředí ISE.
+   > Pokud nasazení selže nebo je odstranit ISE, Azure může trvat až jednu hodinu před uvolněním podsítě. Toto zpoždění znamená, že znamená, že budete muset počkat před opětovným použitím těchto podsítí v jiném prostředí ISE. 
+   >
+   > Pokud odstraníte virtuální síť, Azure obvykle trvá až dvě hodiny před uvolněním do podsítě, ale tato operace může trvat delší dobu. 
+   > Při odstraňování virtuální sítě, ujistěte se, že jsou stále připojeni žádné prostředky. Zobrazit [odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. Chcete-li zobrazit své prostředí, zvolte **přejít k prostředku** Pokud Azure nemá automaticky přejít do svého prostředí po dokončení nasazení.  
 
-<a name="add-capacity"></a>
-
-### <a name="add-capacity"></a>Přidat kapacitu
-
-Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete přidat více jednotek škálování. Je možné automaticky škálovat na základě metrik výkonu nebo na základě počtu jednotek zpracování. Pokud vyberete možnost automatického škálování na základě metrik, můžete vybrat z různých kritérií a zadání podmínek prahovou hodnotu pro splnění tohoto kritéria.
-
-1. Na webu Azure Portal najdete vaše ISE.
-
-1. Chcete-li zobrazit metriky výkonu pro vaše ISE v hlavní nabídce vašeho ISE, zvolte **přehled**.
-
-1. V části Nastavení automatického škálování, **nastavení**vyberte **horizontální navýšení kapacity**. Na **konfigurovat** kartě **povolit automatické škálování**.
-
-1. V **výchozí** zvolte buď **škálování podle metriky** nebo **škálovat na konkrétní počet instancí**.
-
-1. Pokud se rozhodnete založený na instancích, zadejte počet jednotek zpracování (včetně) od 0 do 3. Jinak pro na základě metrik, postupujte podle těchto kroků:
-
-   1. V **výchozí** zvolte **přidat pravidlo**.
-
-   1. Na **pravítko měřítka** podokně provést, když se pravidlo aktivuje nastavení kritéria a akce.
-
-   1. Jakmile budete hotovi, zvolte **přidat**.
-
-1. Jakmile budete hotovi, nezapomeňte si uložit změny.
+Další informace o vytváření podsítí najdete v tématu [přidat podsíť virtuální sítě](../virtual-network/virtual-network-manage-subnet.md).
 
 <a name="create-logic-apps-environment"></a>
 
@@ -248,10 +229,37 @@ Chcete-li vytvořit integrační účet, který používá ISE, postupujte podle
 
 ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
-## <a name="get-support"></a>Získat podporu
+<a name="add-capacity"></a>
 
-* Pokud máte dotazy, navštivte <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">fórum Azure Logic Apps</a>.
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte <a href="https://aka.ms/logicapps-wish" target="_blank">web zpětné vazby od uživatelů Logic Apps</a>.
+## <a name="add-ise-capacity"></a>Přidat kapacitu ISE
+
+Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete přidat více jednotek škálování. Je to možné automatického škálování na základě metrik výkonu nebo na základě počtu jednotek další zpracování. Pokud vyberete možnost automatického škálování na základě metrik, můžete vybrat z různých kritérií a zadání podmínek prahovou hodnotu pro splnění tohoto kritéria.
+
+1. Na webu Azure Portal najdete vaše ISE.
+
+1. Zkontrolujte metriky využití a výkonu pro vaše ISE v hlavní nabídce vašeho ISE, vyberte **přehled**.
+
+   ![Zobrazit využití ISE](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
+
+1. V části Nastavení automatického škálování, **nastavení**vyberte **horizontální navýšení kapacity**. Na **konfigurovat** kartě **povolit automatické škálování**.
+
+   ![Zapnout automatické škálování](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+
+1. Pro **název nastavení automatického škálování**, zadejte název pro nastavení.
+
+1. V **výchozí** zvolte buď **škálování podle metriky** nebo **škálovat na konkrétní počet instancí**.
+
+   * Pokud se rozhodnete založený na instancích, zadejte počet jednotek zpracování (včetně) mezi 0 a 10.
+
+   * Pokud se rozhodnete, na základě metrik, postupujte podle těchto kroků:
+
+     1. V **pravidla** zvolte **přidat pravidlo**.
+
+     1. Na **pravítko měřítka** podokně provést, když se pravidlo aktivuje nastavení kritéria a akce.
+
+     1. Jakmile budete hotovi, zvolte **přidat**.
+
+1. Jakmile budete hotovi s nastavením automatického škálování, uložte provedené změny.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c26bca66b0f82ea58d01d0eb8358f521168a799
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474698"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154138"
 ---
-# <a name="sql-data-warehouse-workload-importance-preview"></a>Důležitost úlohy SQL Data Warehouse (Preview)
+# <a name="sql-data-warehouse-workload-importance"></a>Důležitost úlohy SQL Data Warehouse
 
 Tento článek vysvětluje, jak důležité úlohy mohou mít vliv na pořadí provádění pro požadavky na SQL Data Warehouse.
-
-> [!Note]
-> Úloha klasifikace je dostupná ve verzi preview na SQL Data Warehouse Gen2. Klasifikace úlohy správy a význam ve verzi preview je pro sestavení s datem vydání verze z 9. dubna 2019 nebo novější.  Uživatelé byste neměli používat sestavení starší než toto datum pro testování úloh správy.  K určení, zda je sestavení umožňující správu úloh, spustit, vyberte @@version při připojení k vaší instanci SQL Data Warehouse.
 
 ## <a name="importance"></a>Důležitost
 
@@ -64,4 +61,4 @@ Vzhledem k tomu, že 5 je mediumrc, vyžaduje dva slotů souběžnosti.  5 musí
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o klasifikaci úlohy SQL Data Warehouse najdete v tématu [SQL Data Warehouse úloh klasifikace](sql-data-warehouse-workload-classification.md) a [vytvořit úlohu třídění](quickstart-create-a-workload-classifier-tsql.md). Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.
+Abyste mohli začít s vytvářením třídění, najdete v článku [vytvořit ÚLOHU třídění (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Další informace o klasifikaci úlohy SQL Data Warehouse najdete v tématu [SQL Data Warehouse úloh klasifikace](sql-data-warehouse-workload-classification.md).  Najdete v tomto rychlém startu o tom, jak vytvořit úlohu třídění [vytvořit úlohu třídění](quickstart-create-a-workload-classifier-tsql.md). Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.

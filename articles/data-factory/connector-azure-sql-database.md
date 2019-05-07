@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 543defc622942f4a0643aca275ad4ad2fa9e1ab2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 231f44612b5e87afdf84f31d86c80be644fb4484
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926530"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154329"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -228,7 +228,7 @@ Použití spravované identity ověřování, postupujte podle těchto kroků:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Database.
 
-Chcete-li kopírovat data z nebo do služby Azure SQL Database, nastavte **typ** vlastnosti datové sady na **AzureSqlTable**. Podporovány jsou následující vlastnosti:
+Pro kopírování dat z nebo do služby Azure SQL Database, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -247,6 +247,7 @@ Chcete-li kopírovat data z nebo do služby Azure SQL Database, nastavte **typ**
             "referenceName": "<Azure SQL Database linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -368,7 +369,7 @@ Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastn
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na **SqlSink**. | Ano |
-| writeBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**.<br/> Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
+| writeBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**.<br/> Je povolená hodnota **celé číslo** (počet řádků). Ve výchozím nastavení služby Data Factory dynamicky určí příslušné batch velikost podle velikosti řádku. | Ne |
 | writeBatchTimeout | Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace.<br/> Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Database. Pouze vyvolá se jednou za kopírování spustit. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
 | sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. Příkladem je upsertuje nebo transformovat pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se **za batch**. Pro operace, které pouze spustit jednou a nemají co dělat se zdrojovými daty, použijte `preCopyScript` vlastnost. Příklad operace jsou delete a zkrátit. | Ne |

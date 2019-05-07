@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/16/2018
-ms.openlocfilehash: f371376a7c801eecb6231d551546b13dbc68dd26
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 05/06/2019
+ms.openlocfilehash: 634f3948f9a5e28454e9b2b29f950c3fb00f6c19
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916818"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147731"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -48,20 +48,20 @@ Tady jsou limity pro definici aplikace logiky jeden:
 
 Tady jsou limity pro běh aplikace logiky jeden:
 
-| Název | Omezení | Poznámky |
-|------|-------|-------|
-| Doba trvání běhu | 90 dnů | Chcete-li tento limit změnit, přečtěte si téma [doba trvání běhu změnit](#change-duration). |
-| Interval minimální opakování | 1 sekunda | |
-| Maximální počet opakování interval | 500 dnů | |
-| Uchování úložiště | čas zahájení 90 dnů od spuštění | Chcete-li tento limit můžete změnit na hodnotu 7 dní až 90 dnů, přečtěte si téma [změnit uchování úložiště](#change-retention). |
-||||
+| Název | Omezení více tenantů | Limit prostředí integrační služby | Poznámky |
+|------|--------------------|---------------------------------------|-------|
+| Doba trvání běhu | 90 dnů | 365 dnů | Chcete-li změnit výchozí omezení, [doba trvání běhu změnit](#change-duration). |
+| Uchování úložiště | čas zahájení 90 dnů od spuštění | 365 dnů | Chcete-li změnit výchozí omezení, [změnit uchování úložiště](#change-retention). |
+| Interval minimální opakování | 1 sekunda | 1 sekunda ||
+| Maximální počet opakování interval | 500 dnů | 500 dnů ||
+|||||
 
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
 ### <a name="change-run-duration-and-storage-retention"></a>Změna spuštění uchovávání doba trvání a ukládání
 
-Chcete-li změnit výchozí limit 7 dní až 90 dnů, postupujte podle těchto kroků. Pokud budete muset přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+Chcete-li změnit výchozí limit pro úložiště uchování a doba trvání spuštění, postupujte podle těchto kroků. Pokud budete muset přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 1. Na webu Azure Portal, v nabídce aplikace logiky zvolte **nastavení pracovního postupu**.
 
@@ -91,7 +91,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 Tady jsou limity pro běh aplikace logiky jeden:
 
-### <a name="global-logic-apps-service"></a>Globální služba Logic Apps
+### <a name="multi-tenant-logic-apps-service"></a>Služba Logic Apps víceklientského
 
 | Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
@@ -107,9 +107,9 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky |
 |------|-------|-------|
-| Základní jednotka limit provádění. | 10 000 spuštění akcí za 5 minut <br>což je přibližně 80 milionů spuštění akcí za měsíc | |
-| Limit škálování jednotek spuštění | 5 000 akcí spuštění za 5 minut <br>což je přibližně 40 milionů spuštění akcí za měsíc | |
-| Maximální škálování jednotek, které můžete přidat | 3 | |
+| Základní jednotka limit provádění. | Systém omezené kapacity infrastruktury dosáhne 80 % | Poskytuje ~ 4000 provedení akcí za minutu, což je přibližně 160 miliony spuštění akcí za měsíc | |
+| Limit škálování jednotek spuštění | Systém omezené kapacity infrastruktury dosáhne 80 % | Každá jednotka škálování může poskytnout ~ 2000 provedení dalších akcí za minutu, což je přibližně 80 milionů spuštění více akcí za měsíc | |
+| Maximální škálování jednotek, které můžete přidat | 10 | |
 ||||
 
 Ambice tato omezení v normálním zpracování nebo spustit zátěžové testování, který může přejít nad tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
@@ -124,20 +124,20 @@ Tady jsou limity pro jednoho požadavku HTTP nebo volání synchronní konektoru
 
 Některé konektor operace asynchronního volání nebo naslouchání požadavkům webhooku, abyste časový limit pro tyto operace může být delší než tato omezení. Další informace najdete v tématu technické podrobnosti pro konkrétní konektor a také [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Název | Omezení | Poznámky |
-| ---- | ----- | ----- |
-| Odchozí žádosti | 120 sekund | Pro delší probíhajících operací, použijte [asynchronního dotazování vzor](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [smyčka until](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
-| Synchronní odpověď | 120 sekund | Pro původní požadavek na získání odpovědi musí dokončit všechny kroky v odpovědi v rámci limitu není-li volat jiné aplikace logiky jako vnořený pracovní postup. Další informace najdete v tématu [volání, aktivační události, nebo vnořené aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). |
-|||| 
+| Název | Omezení více tenantů | Limit prostředí integrační služby | Poznámky |
+|------|--------------------|---------------------------------------|-------|
+| Odchozí žádosti | 120 sekund | 240 sekund | Pro delší probíhajících operací, použijte [asynchronního dotazování vzor](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [smyčka until](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
+| Synchronní odpověď | 120 sekund | 240 sekund | Pro původní požadavek na získání odpovědi musí dokončit všechny kroky v odpovědi v rámci limitu není-li volat jiné aplikace logiky jako vnořený pracovní postup. Další informace najdete v tématu [volání, aktivační události, nebo vnořené aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). |
+|||||
 
 #### <a name="message-size"></a>Velikost zpráv
 
-| Název | Omezení | Poznámky |
-| ---- | ----- | ----- |
-| Velikost zpráv | 100 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. |
-| Velikost zprávy s dělením dat do bloků | 1 GB | Toto omezení se vztahuje na akce, které nativně podporují dat nebo umožňují povolit bloků v jejich konfigurace modulu runtime. Další informace najdete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). |
-| Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` Výrazů nemůže být delší než toto omezení. |
-||||
+| Název | Omezení více tenantů | Limit prostředí integrační služby | Poznámky |
+|------|--------------------|---------------------------------------|-------|
+| Velikost zpráv | 100 MB | 200 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. |
+| Velikost zprávy s dělením dat do bloků | 1 GB | 5 GB | Toto omezení se vztahuje na akce, které nativně podporují dat nebo umožňují povolit bloků v jejich konfigurace modulu runtime. <p>Prostředí integrační služby, aby modul Logic Apps podporuje tento limit, ale mají své vlastní bloků omezení až po limit modulu, například konektorů, naleznete v tématu [konektor Azure Blob Storage](/connectors/azureblob/). Další informace o dělením dat do bloků, naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). |
+| Omezení pro vyhodnocení výrazu | 131 072 znaků | 131 072 znaků | `@concat()`, `@base64()`, `@string()` Výrazů nemůže být delší než toto omezení. |
+|||||
 
 #### <a name="retry-policy"></a>Zásady opakování
 
@@ -154,10 +154,10 @@ Některé konektor operace asynchronního volání nebo naslouchání požadavk�
 
 Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových rozhraní API.
 
-| Název | Omezení |
-| ---- | ----- |
-| Počet vlastních konektorů | 1 000 na předplatné Azure |
-| Počet požadavků za minutu pro každé připojení vytvořené vlastním konektorem | 500 požadavků za připojení |
+| Název | Omezení více tenantů | Limit prostředí integrační služby | Poznámky |
+|------|--------------------|---------------------------------------|-------|
+| Počet vlastních konektorů | 1 000 na předplatné Azure | 1 000 na předplatné Azure ||
+| Počet žádostí za minutu pro vlastní konektor | 500 požadavků za minutu za připojení | 2 000 požadavků za minutu za *vlastního konektoru* ||
 |||
 
 <a name="managed-identity"></a>
@@ -216,13 +216,13 @@ Tady je omezený počet artefaktů pro každý účet integrace. Další informa
 
 ### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>Velikost zprávy B2B protocol (AS2, X12 EDIFACT)
 
-Tady jsou omezení, které platí pro B2B protokoly:
+Tady jsou omezení velikosti zpráv, které platí pro B2B protokoly:
 
-| Název | Omezení | Poznámky |
-| ---- | ----- | ----- |
-| AS2 | 50 MB | Použije kódování a dekódování |
-| X12 | 50 MB | Použije kódování a dekódování |
-| EDIFACT | 50 MB | Použije kódování a dekódování |
+| Název | Omezení více tenantů | Limit prostředí integrační služby | Poznámky |
+|------|--------------------|---------------------------------------|-------|
+| AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | Použije kódování a dekódování |
+| X12 | 50 MB | 50 MB | Použije kódování a dekódování |
+| EDIFACT | 50 MB | 50 MB | Použije kódování a dekódování |
 ||||
 
 <a name="disable-delete"></a>

@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bd57b3d41ad7c670b5423f10a9c93b55e87d757
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 448858efeaae4c3e2a41d41181e9ec74b03223f6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252227"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138258"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 
@@ -333,8 +333,10 @@ Teď budete muset zaregistrovat aplikaci v portálu pro registraci aplikace Micr
    - V **podporovaných typů účtu** vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft (třeba Skype, Xbox, Outlook.com)**.
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. V aplikaci **přehled** stránky, vyhledejte **ID aplikace (klient)** hodnotu a uložte ho pro pozdější. Vraťte se zpět do sady Visual Studio, otevřete **MainPage.xaml.cs**a nahraďte hodnoty ClientId ID aplikace, který jste právě zaregistrovali:
-1. V seznamu stránek pro aplikace, vyberte **ověřování**:
-   - V **identifikátory URI přesměrování** | **navrhované identifikátory URI přesměrování pro veřejné klienty (mobilní, desktopové verze)** oddílu, zkontrolujte **urn: ietf:wg:oauth:2.0:oob**
+1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
+   1. V **identifikátory URI přesměrování** části, v seznamu identifikátorů URI pro přesměrování:
+   1. V **typ** vybrat sloupec **veřejným klientem (mobilních a desktopových)**.
+   1. Zadejte `urn:ietf:wg:oauth:2.0:oob` v **identifikátor URI pro PŘESMĚROVÁNÍ** sloupce.
 1. Vyberte **Uložit**.
 1. V seznamu stránek pro aplikace, vyberte **oprávnění k rozhraní API**
    - Klikněte na tlačítko **přidat oprávnění** tlačítko a pak,

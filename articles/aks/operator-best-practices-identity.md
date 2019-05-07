@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c20e7796d152c9198786c491f9a61752d88ea6f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726621"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074163"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizace ve službě Azure Kubernetes Service (AKS)
 
@@ -88,7 +88,7 @@ Jak používat skupiny Azure AD k řízení přístupu k prostředkům Kubernete
 
 ## <a name="use-pod-identities"></a>Používat pod identity
 
-**Osvědčené postupy pro moduly** – nepoužívejte pevně nastavené přihlašovací údaje v rámci podů nebo imagí kontejnerů, protože se riziku ohrožení nebo zneužití. Místo toho použijte identity podů automaticky zajistí vyžádání přístupu pomocí centrální řešení identit Azure AD.
+**Osvědčené postupy pro moduly** – nepoužívejte pevně nastavené přihlašovací údaje v rámci podů nebo imagí kontejnerů, protože se riziku ohrožení nebo zneužití. Místo toho použijte identity podů automaticky zajistí vyžádání přístupu pomocí centrální řešení identit Azure AD. Pod identit je určena pro použití s Linuxem podů a jen pro Image kontejneru.
 
 Pokud podů potřebují mít přístup k jiným službám Azure, jako je například Cosmos DB, služby Key Vault nebo úložiště objektů Blob, pod potřebuje přihlašovací údaje pro přístup. Tyto přihlašovací údaje pro přístup může být definované s image kontejneru nebo vložený jako tajného kódu Kubernetes, ale je potřeba ručně vytvořit a přiřadit. Často přihlašovací údaje se využívají opakovaně v podů a nejsou pravidelně otočen.
 

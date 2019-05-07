@@ -2,19 +2,20 @@
 title: Šifrování na straně klienta pomocí Javy pro službu Microsoft Azure Storage | Dokumentace Microsoftu
 description: Klientská knihovna pro úložiště Azure pro Javu podporuje šifrování na straně klienta a integraci s Azure Key Vault z důvodu maximálního zabezpečení pro vaše aplikace Azure Storage.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 058dc97054aad310135ccc1f51d765f0af3f571b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992458"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147027"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault v Javě pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -118,7 +119,7 @@ Existují tři balíčky služby Key Vault:
 1. Vytvoření tajného klíče do offline režimu a nahrajte ho do služby Key Vault.  
 2. Základní identifikátor tajného klíče použijte jako parametr vyřešit aktuální verzi tajného klíče pro šifrování a ukládat do mezipaměti tyto informace v místně. Použít CachingKeyResolver pro ukládání do mezipaměti; Uživatelé se nepředpokládá implementaci vlastní logiky ukládání do mezipaměti.  
 3. Použití ukládání do mezipaměti překladač jako vstup při vytváření zásady šifrování.
-   Další informace týkající se používání služby Key Vault najdete v ukázkách kódu šifrování. <fix URL>  
+   Další informace týkající se používání služby Key Vault najdete v ukázkách kódu šifrování.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Podpora šifrování je dostupná jenom na klientskou knihovnu pro úložiště pro Javu.
@@ -142,7 +143,7 @@ Při vytváření objektu EncryptionPolicy, mohou uživatelé zadat pouze klíč
   * Překladač klíče je vyvolána, pokud zadaná k získání klíče. Pokud překladač je zadána, ale nemá žádné mapování pro identifikátor klíče, je vržena chyba.  
   * Pokud překladač není zadán, ale zadaný klíč, klíč se používá, pokud jeho identifikátor odpovídá požadovaný identifikátor klíče. Pokud se neshoduje identifikátor, je vržena chyba.  
     
-    [Šifrování ukázky](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) <fix URL>ukazují podrobnější scénář začátku do konce pro objekty BLOB, fronty a tabulky, spolu s integrací služby Key Vault.
+    [Šifrování ukázky](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) ukazují podrobnější scénář začátku do konce pro objekty BLOB, fronty a tabulky, spolu s integrací služby Key Vault.
 
 ### <a name="requireencryption-mode"></a>Režim RequireEncryption
 Uživatelé mohou volitelně povolit režim operace, kde musí být všechny nahrávání a stahování šifrovaná. V tomto režimu se nezdaří pokusy o nahrání dat bez zásady šifrování nebo stahování dat, které nejsou šifrovány ve službě na straně klienta. **RequireEncryption** příznak možnosti objektu požadavku určuje toto chování. Pokud vaše aplikace bude šifrování všech objektů uložených ve službě Azure Storage, pak můžete nastavit **requireEncryption** vlastnost na výchozí možnosti žádosti klienta objektu služby.   

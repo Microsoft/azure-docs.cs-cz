@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: d9583f232a7afd6ab64421d57bbf14a45299e374
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995655"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138195"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -63,6 +63,7 @@ Tady jsou některé věci, které vám pomůžou s protokolu činnosti:
 * Analýza v Power BI pomocí [ **balíček obsahu Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Uložit ho. tím **účtu úložiště** pro archivaci nebo ruční kontrolu](../../azure-monitor/platform/archive-activity-log.md). Můžete určit pomocí uchování (ve dnech) **profilu protokolu**.
 * Zjistit pomocí rutiny Powershellu, rozhraní příkazového řádku nebo rozhraní REST API.
+* Zobrazení [historii změn](#view-change-history) pro určité události
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Dotaz protokolu aktivit na webu Azure Portal
 
@@ -183,6 +184,20 @@ Kompletní dokumentaci k vytvoření profilu sledování pomocí rozhraní pří
 ```azurecli
 az monitor log-profiles delete --name <profile name>
 ```
+
+## <a name="view-change-history"></a>Zobrazení historie změn
+
+Při kontrole protokolu aktivit, může pomoct podívejte se změny během této doby události. Můžete zobrazit tyto informace se historii změn.
+
+Přejděte k protokolům aktivit pomocí nabídky na levé straně na portálu. Vyberte událost od protokolů aktivit, které chcete podívat hlouběji do. Vyberte **změnit historii (Preview)** kartu, chcete-li zobrazit všechny přidružené k události změny.
+
+![Seznam historie změn pro událost](./media/activity-logs-overview/change-history-event.png)
+
+Pokud jsou všechny související změny s událostí, zobrazí se vám seznam změn, které můžete vybrat. Otevře **změnit historii (Preview)** stránky. Na této stránce se zobrazí změny prostředku. Jak je vidět z následujícího příkladu máme nejen uvidíte, že virtuální počítač změně velikosti, ale předchozí velikost virtuálního počítače se před provedením změny a co bylo upraveno pro.
+
+![Změnit stránku historie zobrazující rozdíly](./media/activity-logs-overview/change-history-event-details.png)
+
+Další informace o historii změn, naleznete v tématu [získat změn prostředků](../../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>Další kroky
 

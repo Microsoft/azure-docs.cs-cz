@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: a36ca880387ee1a3c5f749dbd6b9d7dcb9e6d79d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 87620cb0c7aafb78b2c8fe610f42ad092313d305
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708977"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153485"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -144,7 +144,7 @@ Pokud jste publikovali **Live výstup**společnosti **Asset** pomocí **Lokátor
 
 Další informace najdete v tématu [pomocí cloudového DVR](live-event-cloud-dvr.md).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 

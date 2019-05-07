@@ -1,31 +1,30 @@
 ---
-title: Porovnání služeb Microsoft identity platform (verze 2.0) endpoint ke koncovému bodu Azure AD v1.0 | Dokumentace Microsoftu
-description: Znáte rozdíly mezi koncového bodu Microsoft identity platform (v2.0) a koncového bodu Azure Active Directory (Azure AD) verze 1.0.
+title: Proč aktualizace pro Microsoft identity platform (v2.0) | Azure
+description: Znát rozdíly mezi koncového bodu Microsoft identity platform (v2.0) a koncového bodu Azure Active Directory (Azure AD) verze 1.0 a přečtěte si o výhodách aktualizace pro verze 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
 manager: mtillman
 editor: ''
-ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 05/07/2019
 ms.author: celested
-ms.reviewer: hirsin, andret, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
+ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd443c95e8cf6dbddd66e5531b182469a118e4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dba74735b4c703123f9ff89b63a57d53faa84fde
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410641"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138788"
 ---
-# <a name="comparing-the-microsoft-identity-platform-endpoint-and-azure-ad-v10-endpoint"></a>Porovnání koncového bodu Microsoft identity platform a koncový bod Azure AD verze 1.0
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft identity platform (v2.0)?
 
 Při vývoji nových aplikací, je důležité znát rozdíly mezi platforma identit Microsoft (verze 2.0) a koncovým bodům Azure Active Directory (verze 1.0). Tento článek popisuje hlavní rozdíly mezi koncové body a některé stávající omezení pro Microsoft identity platform.
 
@@ -56,7 +55,7 @@ Jsou oprávnění nastavená pro registraci aplikace přímo **statické**. Zat�
 
 * Aplikace je potřeba vědět, všechny prostředky, ke kterým by nikdy přístup předem. Bylo to složité vytvářet aplikace, které by přístup k libovolného počtu prostředků.
 
-S Microsoft identity platform koncový bod můžete ignorovat statické oprávnění definované na informace o registraci aplikace v Azure portal a žádost o oprávnění postupně místo toho, což znamená, že s žádostí o úplné minimální sadu oprávnění předem a víc plynoucí postupně jako zákazník používá další funkce. Uděláte to tak, můžete určit obory, které vaše aplikace potřebuje kdykoli včetně nových oborů v `scope` parametr při žádání o přístupový token – aniž byste museli předem definovat je v informace o registraci aplikace. Pokud uživatel ještě nevyjádřil souhlas nové obory přidáno k žádosti, zobrazí se výzva k vyjádření souhlasu jenom pro nová oprávnění. Další informace najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md).
+S Microsoft identity platform koncový bod můžete ignorovat statické oprávnění definované na informace o registraci aplikace v Azure portal a žádost o oprávnění postupně místo toho, což znamená, že s žádostí o úplné minimální sadu oprávnění předem a stále se rozšiřující další časem jako zákazník používá další funkce. Uděláte to tak, můžete určit obory, které vaše aplikace potřebuje kdykoli včetně nových oborů v `scope` parametr při žádání o přístupový token – aniž byste museli předem definovat je v informace o registraci aplikace. Pokud uživatel ještě nevyjádřil souhlas nové obory přidáno k žádosti, zobrazí se výzva k vyjádření souhlasu jenom pro nová oprávnění. Další informace najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md).
 
 Umožňuje dynamicky prostřednictvím aplikace a požádat o oprávnění `scope` parametr poskytuje vývojářům plnou kontrolu nad vaše uživatelské prostředí. Můžete také přední zatížení vašeho svolení prostředí a požádat o všechna oprávnění v jedné žádosti počáteční autorizace. Pokud vaše aplikace vyžaduje velké množství oprávnění, můžete získat těmito oprávněními, od uživatele postupně se pokusí o použití určitých funkcí aplikace v čase.
 
@@ -69,7 +68,7 @@ Pro aplikace s využitím koncového bodu v1.0, aplikace se může chovat jako *
 * Identifikátor prostředku nebo `AppID URI`: `https://graph.windows.net/`
 * Obory, nebo `oAuth2Permissions`: `Directory.Read`, `Directory.Write`, a tak dále.
 
-Totéž platí pro koncový bod služby Microsoft identity platform. Aplikace se může i nadále chovat jako prostředek, definice oborů a identifikovaného identifikátorem URI. Klientské aplikace můžou stále žádat o přístup k tyto obory. Však byla změněna tak, že klient požádá o oprávnění.
+Totéž platí pro koncový bod služby Microsoft identity platform. Aplikace se může i nadále chovat jako prostředek, definice oborů a identifikovaného identifikátorem URI. Klientské aplikace můžou stále žádat o přístup k tyto obory. Změnily se ale tak, že klient požádá o oprávnění.
 
 Pro koncový bod verze 1.0, OAuth 2.0 autorizace může mít vypadal žádost do služby Azure AD:
 
@@ -91,7 +90,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Tady **oboru** parametr určuje, které prostředků a oprávnění aplikace požaduje autorizaci. Požadovaný prostředek se stále nachází v žádosti – je zahrnuta v každé hodnoty parametru oboru. Pomocí parametru oboru tímto způsobem umožňuje Microsoft identity platform koncový bod se více kompatibilní se specifikací OAuth 2.0 a lépe v souladu s běžné postupy. Také umožňuje aplikacím provádět [přírůstkové souhlasu](#incremental-and-dynamic-consent) – pouze pro požadování oprávnění, když aplikace vyžaduje nikoli ještě před zahájením.
+Tady **oboru** parametr určuje, které prostředků a oprávnění aplikace požaduje autorizaci. Požadovaný prostředek se stále nachází v žádosti – je zahrnuta v každé hodnoty parametru oboru. Pomocí parametru oboru tímto způsobem umožňuje Microsoft identity platform koncový bod se více kompatibilní se specifikací OAuth 2.0 a lépe v souladu s běžné postupy. Taky umožňuje aplikacích dělat [přírůstkové souhlasu](#incremental-and-dynamic-consent) – pouze pro požadování oprávnění, když aplikace vyžaduje nikoli ještě před zahájením.
 
 ## <a name="well-known-scopes"></a>Známé obory
 
@@ -109,8 +108,8 @@ V minulosti by nejzákladnější OpenID Connect přihlášení tok s platformou
 
 Informace, které `openid` oboru nabízí vaše aplikace je přístup k s omezeným přístupem. `openid` Oboru pouze vám umožní vaši aplikaci pro uživatele a získejte identifikátor specifický pro aplikace pro uživatele. Pokud chcete zjistit osobní údaje o uživateli ve vaší aplikaci, vaše aplikace potřebuje požádat o další oprávnění od uživatele. Dva nové obory `email` a `profile`, vám umožní získat další oprávnění.
 
-* `email` Oboru umožňuje vaší aplikaci přístup ke primární e-mailovou adresu uživatele prostřednictvím `email` deklarací identity v požadavku id_token, za předpokladu, že uživatel nemá adresovatelný e-mailovou adresu. 
-* `profile` Oboru umožňuje vaší aplikaci přístup do všech ostatních základní informace o uživateli, jako jsou jména upřednostňované uživatelské jméno, ID objektu, a tak dále v požadavku id_token.
+* `email` Oboru umožňuje vaší aplikaci přístup ke primární e-mailovou adresu uživatele prostřednictvím `email` deklarací identity v požadavku id_token, za předpokladu, že uživatel nemá adresovatelný e-mailovou adresu.
+* `profile` Oboru umožňuje vaší aplikaci přístup pro všechny ostatní základní informace o uživateli, jako jsou jména upřednostňované uživatelské jméno, ID a podobně, požadavku id_token objektů.
 
 Tyto obory umožňují kódu vaší aplikace v podobě minimální zpřístupnění tak požádáte uživatele, můžete pouze pro konkrétní sadu informací, které vaše aplikace potřebuje pro výkon své práce. Další informace o těchto oborů, naleznete v tématu [odkaz oboru Microsoft identity platform](v2-permissions-and-consent.md).
 
@@ -124,7 +123,7 @@ Existuje několik omezení bude vědět, když používáte Microsoft identity p
 
 Při sestavování aplikací, které se integrují s platformou identity Microsoft, musíte se rozhodnout, jestli Microsoft identity platform koncový bod a ověřovací protokoly vašim potřebám. Koncový bod verze 1.0 a platforma jsou stále plně podporovány a v některých ohledech se další bohaté funkce než platforma identit Microsoft. Ale platforma identit Microsoft [představuje významné výhody](azure-ad-endpoint-comparison.md) pro vývojáře.
 
-Tady je zjednodušené doporučení pro vývojáře v daném okamžiku:
+Tady je zjednodušené doporučení pro vývojáře nyní:
 
 * Pokud chcete nebo potřebujete podporu ve vaší aplikaci pro osobní účty Microsoft nebo psaní nové aplikace, použijte Microsoft identity platform. Ale předtím, než provedete, ujistěte se, že se že můžete seznámit s omezeními popisovaných v tomto článku.
 * Pokud se migrace nebo aktualizujete aplikaci, která se spoléhá na SAML, nemůžete použít platforma identit Microsoft. Místo toho odkazovat [Průvodce Azure AD v1.0](v1-overview.md).
@@ -133,7 +132,7 @@ Chcete-li odstranit omezení zde uvedeny, tak, aby vždy jen musíte použít ko
 
 ### <a name="restrictions-on-app-registrations"></a>Omezení registrace aplikací
 
-Pro každou aplikaci, kterou chcete integrovat s Microsoft identity platform endpoint, můžete vytvořit registrace aplikace v novém [ **registrace aplikací** prostředí](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) na webu Azure Portal. Existující aplikace účtu Microsoft nejsou kompatibilní s portálem ve verzi preview, ale jsou všechny aplikace Azure AD, bez ohledu na to, kde a kdy byly registrovány.
+Pro každou aplikaci, kterou chcete integrovat s Microsoft identity platform endpoint, můžete vytvořit registrace aplikace v novém [ **registrace aplikací** prostředí](https://aka.ms/appregistrations) na webu Azure Portal. Existující aplikace účtu Microsoft nejsou kompatibilní s portálem, ale jsou všechny aplikace Azure AD, bez ohledu na to, kde a kdy byly registrovány.
 
 Registrace aplikací, které podporují pracovní a školní účty a osobní účty mají následující upozornění:
 
@@ -168,9 +167,9 @@ Pokud chcete mít aplikaci, která má `login-east.contoso.com` a `login-west.co
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Druhé dvě můžete přidat, protože jsou subdoménami první adresy URL pro přesměrování, contoso.com. Toto omezení se odeberou v nadcházející verzi.
+Druhé dvě můžete přidat, protože jsou subdoménami první adresy URL pro přesměrování, contoso.com.
 
-Všimněte si také, může mít pouze 20 adresy URL odpovědi pro konkrétní aplikaci – tento limit vztahuje na všechny typy aplikací, podporuje registraci (jednostránková aplikace, nativní klient systému, webové aplikace a služby).  
+Může mít pouze 20 adresy URL odpovědi pro konkrétní aplikaci – tento limit vztahuje na všechny typy aplikací, podporuje registraci (jednostránkové aplikace (SPA), nativního klienta, webové aplikace a služby).  
 
 Zjistěte, jak zaregistrovat aplikaci pro použití s platformou Microsoft identity, najdete v článku [registrace aplikace pomocí nového prostředí registrace aplikací](quickstart-register-app.md).
 
@@ -178,9 +177,9 @@ Zjistěte, jak zaregistrovat aplikaci pro použití s platformou Microsoft ident
 
 Podpora knihovny pro koncový bod služby Microsoft identity platform je v současné době omezené. Pokud chcete použít koncový bod Microsoft identity platform v produkční aplikace, máte tyto možnosti:
 
-* Pokud vytváříte webovou aplikaci, bezpečně můžete middleware obecně dostupné na straně serveru k provedení ověřování přihlášení a token. Patří mezi ně middleware OWIN OpenID Connect pro ASP.NET a Node.js Passport modulu plug-in. Ukázky kódu, které používají Microsoft middleware, najdete v článku [platforma identit Microsoft Začínáme](v2-overview.md#getting-started) oddílu.
-* Pokud vytváříte desktopové nebo mobilní aplikace, můžete použít jednu z verze preview knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou ve verzi preview s podporou produkčního prostředí, takže je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](reference-v2-libraries.md).
-* Pro platformy není pokrytá knihoven Microsoftu můžete integrovat s koncovým bodem platforma identit Microsoft přímo, odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth [výslovně popsanými](active-directory-v2-protocols.md) můžete provádět tato integrační.
+* Pokud vytváříte webovou aplikaci, bezpečně můžete middleware obecně dostupné na straně serveru k přihlášení a ověření tokenu. Patří mezi ně middleware OWIN OpenID Connect pro ASP.NET a Node.js Passport modulu plug-in. Ukázky kódu, které používají Microsoft middleware, najdete v článku [platforma identit Microsoft Začínáme](v2-overview.md#getting-started) oddílu.
+* Pokud vytváříte desktopové nebo mobilní aplikace, můžete použít jednu z knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou obecně dostupné nebo ve verzi preview nepodporuje produkčního prostředí, proto je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](reference-v2-libraries.md).
+* Pro platformy není pokrytá knihoven Microsoftu můžete integrovat s koncovým bodem platforma identit Microsoft přímo, odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth [výslovně popsanými](active-directory-v2-protocols.md) pomoct vám tato integrační.
 * Nakonec můžete použít open source knihovny OpenID Connect a OAuth pro integraci s Microsoft identity platform endpoint. Koncový bod Microsoft identity platform by měl být kompatibilní s mnoha protokol open source knihoven beze změn. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [OpenID Connect](https://openid.net/connect/) a [OAuth 2.0](https://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [Microsoft identity platform a ověřování knihovny](reference-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány pomocí koncového bodu Microsoft identity platform.
 * Pro srovnání `.well-known` koncový bod pro společný koncový bod služby Microsoft identity platform je `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Nahraďte `common` za ID vašeho tenanta se získat konkrétní data do svého tenanta.  
 
@@ -196,4 +195,4 @@ Chcete-li lépe pochopit tak rozsah protokolu funkce podporované v Microsoft id
 
 #### <a name="saml-restrictions"></a>Omezení SAML
 
-Pokud jste použili Active Directory Authentication Library (ADAL) v aplikacích Windows, může být trvaly výhod integrovaného ověřování Windows, který používá kontrolní výraz udělení zabezpečení kontrolního výrazu SAML (Markup Language). S tomuto grantu federovaných uživatelů Azure AD můžete bezobslužně tenanti ověřují pomocí jejich místní instancí Active Directory bez zadávání přihlašovacích údajů. Udělení kontrolního výrazu SAML se nepodporuje u koncového bodu Microsoft identity platform.
+Pokud jste použili Active Directory Authentication Library (ADAL) v aplikacích Windows, může být trvaly výhod Windows integrované ověřování, který používá kontrolní výraz udělení zabezpečení kontrolního výrazu SAML (Markup Language). S tomuto grantu federovaných uživatelů Azure AD můžete bezobslužně tenanti ověřují pomocí jejich místní instancí Active Directory bez zadávání přihlašovacích údajů. Udělení kontrolního výrazu SAML se nepodporuje u koncového bodu Microsoft identity platform.

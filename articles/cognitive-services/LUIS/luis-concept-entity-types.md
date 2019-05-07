@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813201"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141039"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
@@ -97,7 +97,6 @@ Po extrahování entity entity data můžete vyjádřena jako jedna jednotka inf
 |Machine-learned|Označit|Kurz|Příklad:<br>Odpověď|Typ entity|Účel|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Složené**](#composite-entity)|Seskupení entit, bez ohledu na typ entity.|
-|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchické**](#hierarchical-entity)|Seskupení jednoduché entit.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Seznam**](#list-entity)|Seznam položek a jejich synonyma extrahuje text přesně shodovat.|
 |Smíšený||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entita, ve kterém je obtížné určit koncové entity.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Předem připravené**](#prebuilt-entity)|Extrahovat různé druhy dat je už vytrénovaný.|
@@ -112,7 +111,7 @@ Smíšené entity pomocí kombinace metod zjišťování entit.
 
 ## <a name="composite-entity"></a>Složený entity
 
-Složený entity je tvořena jinými entitami, jako je například předem připravených entit, jednoduché, regulární výraz, seznam a hierarchické entity. Samostatné entity tvoří celé entity. 
+Složený entity je tvořena jinými entitami, jako je například předem připravených entit, jednoduché, regulárního výrazu a seznam entit. Samostatné entity tvoří celé entity. 
 
 Tato entita je vhodná přizpůsobit, kdy data:
 
@@ -126,18 +125,6 @@ Tato entita je vhodná přizpůsobit, kdy data:
 
 [Kurz](luis-tutorial-composite-entity.md)<br>
 [Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#composite-entity-data)<br>
-
-## <a name="hierarchical-entity"></a>Hierarchická entita
-
-**Nakonec se přestanou hierarchické entity. Použití [entity role](luis-concept-roles.md) určit podtypy entity, namísto hierarchické entity.**
-
-Hierarchické entity je kategorie kontextově zjištěná jednoduché entity nazývané podřízené položky.
-
-![hierarchické entity](./media/luis-concept-entities/hierarchical-entity.png)
-
-### <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
-
-[Role](luis-concept-roles.md) řešení stejného problému jako hierarchické entity ale vztahují se na všechny typy entit.  
 
 ## <a name="list-entity"></a>Entita seznamu
 
@@ -171,10 +158,10 @@ Každý řádek v následující tabulce, má dvě verze utterance. Začátek ut
 
 |Promluva|
 |--|
-|The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky zapsal American tento rok?<br>Byl **The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky** zapsal American tento rok?|
-|Byl poloviční režimu spánku v žába Pajamas zapsal American tento rok?<br>Byl **poloviční režimu spánku v žába Pajamas** zapsal American tento rok?|
-|Byla konkrétní smutek Citronový koláč: Nové, zapisuje American tento rok?<br>Byl **konkrétní smutek Citronový koláč: Nové** zapsal American tento rok?|
-|Bylo, že v mé kapesního zařízení Wocket! zapisuje American tento rok?<br>Byl **je Moje Pocket Wocket!** zapisuje American tento rok?|
+|"Byl The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky zapsal American tento rok?<br>Byl **The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky** zapsal American tento rok?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
 
 ## <a name="prebuilt-entity"></a>Předem připravených entit
 

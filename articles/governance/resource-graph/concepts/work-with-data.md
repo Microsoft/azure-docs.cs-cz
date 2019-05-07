@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775893"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137859"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s datovými sadami velkých prostředků Azure
 
@@ -67,8 +67,18 @@ V případě potřeby rozdělit do menších sad záznamů pro zpracování sady
 
 Když **resultTruncated** je **true**, **$skipToken** je nastavena v odpovědi. Tato hodnota se používá se stejnými hodnotami dotazu a předplatného můžete získat další sady záznamů, které odpovídají dotazu.
 
+Následující příklady ukazují postupy **přeskočit** první 3000 záznamy a vraťte se **první** 1000 záznamů po těch přeskočeno pomocí rozhraní příkazového řádku Azure a Azure Powershellu:
+
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
 > [!IMPORTANT]
-> Dotaz musí **projektu** **id** pole v pořadí pro stránkování pro práci. Pokud je v dotazu nebyl nalezen, nebude obsahovat odpověď rozhraní REST API **$skipToken**.
+> Dotaz musí **projektu** **id** pole v pořadí pro stránkování pro práci. Pokud je v dotazu nebyl nalezen, nebude obsahovat odpovědi **$skipToken**.
 
 Příklad najdete v tématu [další stránky dotaz](/rest/api/azureresourcegraph/resources/resources#next_page_query) v dokumentaci rozhraní REST API.
 

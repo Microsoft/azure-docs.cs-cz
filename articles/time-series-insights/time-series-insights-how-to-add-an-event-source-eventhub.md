@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41d3e72d978a210c2d68365ade5d8cb42c24aad5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702638"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147608"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Time Series Insights
 
@@ -27,9 +27,9 @@ Tento článek popisuje postup přidání zdroje událostí, která čte data z 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vytvoření prostředí Time Series Insights. Další informace najdete v tématu [vytvořit prostředí Azure Time Series Insights](./time-series-insights-update-create-environment.md).
-- Vytvořte centrum událostí. Další informace o službě Event Hubs najdete v tématu [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md).
-- Centrum událostí, musíte mít aktivní zprávě události do něj odesílají. Další informace najdete v tématu [odesílání událostí do služby Azure Event Hubs pomocí rozhraní .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Vytvoření prostředí Time Series Insights, jak je popsáno v [vytvořit prostředí Azure Time Series Insights](./time-series-insights-update-create-environment.md).
+- Vytvořte centrum událostí. Zobrazit [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md).
+- Centrum událostí, musíte mít aktivní zprávě události do něj odesílají. Zjistěte, jak [odesílání událostí do služby Azure Event Hubs pomocí rozhraní .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Vytvořte vyhrazenou skupinu spotřebitelů v Centru událostí, které využívají z prostředí Time Series Insights. Každý zdroj událostí Time Series Insights musí mít svůj vlastní vyhrazenou skupinu spotřebitelů, který není sdílený s další příjemce. Pokud více čtenářům přijímat události z stejnou skupinu uživatelů, jsou pravděpodobně uvidíte selhání všechny nástroje pro čtení. Platí omezení 20 skupin uživatelů na Centrum událostí. Podrobnosti najdete v tématu [programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Přidat skupinu uživatelů do vašeho centra událostí
@@ -42,7 +42,7 @@ Chcete-li přidat novou skupinu uživatelů ve službě event hub:
 
 1. V části **entity**vyberte **skupiny příjemců**a pak vyberte **skupinu příjemců**.
 
-   ![Centrum událostí – přidat skupinu uživatelů](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+   [![Centrum událostí – přidat skupinu uživatelů](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
 
 1. Na **skupiny příjemců** stránky, zadejte novou jedinečnou hodnotu pro **název**.  Když vytvoříte nový zdroj událostí do prostředí Time Series Insights, použijte tento stejný název.
 
@@ -56,7 +56,7 @@ Chcete-li přidat novou skupinu uživatelů ve službě event hub:
 
 1. V části **topologie prostředí**vyberte **zdroje událostí**a pak vyberte **přidat**.
 
-   ![V části zdroje událostí vyberte tlačítko Přidat](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
+   [![V části zdroje událostí vyberte tlačítko Přidat](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
 
 1. Zadejte hodnotu pro **název zdroje událostí** , který je jedinečný pro toto prostředí Time Series Insights, jako například **datového proudu událostí**.
 
@@ -66,11 +66,11 @@ Chcete-li přidat novou skupinu uživatelů ve službě event hub:
    - Pokud máte existující centrum událostí v jednom z vašich předplatných, vyberte **použijte Centrum událostí z dostupných předplatných**. Tato možnost je nejjednodušší přístup.
    - Pokud centra událostí je externí ke svým předplatným, nebo pokud budete chtít Upřesnit možnosti, vyberte **nastavení zadejte centra událostí ručně**.
 
-   ![V podokně nový zdroj událostí zadejte hodnoty pro první tři parametry](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
+   [![V podokně nový zdroj událostí zadejte hodnoty pro první tři parametry](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
 1. V následující tabulce jsou popsány požadované vlastnosti pro **použijte Centrum událostí z dostupných předplatných** možnost:
 
-   ![Podrobnosti o Centru předplatného a události](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
+   [![Podrobnosti o Centru předplatného a události](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
    | Vlastnost | Popis |
    | --- | --- |
@@ -101,7 +101,7 @@ Chcete-li přidat novou skupinu uživatelů ve službě event hub:
 
 1. Vyberte **Vytvořit**.
 
-   ![Výběr možnosti Vytvořit](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   [![Výběr možnosti vytvořit](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
 
    Po vytvoření zdroje událostí Time Series Insights automaticky spustí, streamování dat do vašeho prostředí.
 

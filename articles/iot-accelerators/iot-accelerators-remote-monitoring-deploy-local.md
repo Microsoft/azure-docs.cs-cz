@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450592"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150954"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio
 
@@ -83,7 +83,7 @@ Každou webovou službu se otevře okno příkazového řádku a webové prohlí
 Postupujte podle těchto kroků spustíte úlohu Stream Analytics:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte **skupiny prostředků** vytvořen pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění **start.cmd** skript **.
+1. Přejděte **skupiny prostředků** vytvořen pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění **start.cmd** skriptu.
 1. Klikněte na tlačítko **úlohy Stream Analytics** v seznamu prostředků.
 1. V úloze Stream Analytics **přehled** stránky, klikněte na tlačítko **Start** tlačítko. Pak klikněte na tlačítko **Start** ihned spustíte úlohu.
 

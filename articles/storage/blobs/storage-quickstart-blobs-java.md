@@ -2,18 +2,19 @@
 title: Jak vytvořit objekt blob ve službě Azure Storage pomocí klientské knihovny pro Javu v7 | Dokumentace Microsoftu
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Potom použijte klientskou knihovnu pro úložiště Azure pro Javu v7 nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů BLOB v kontejneru.
 services: storage
-author: roygara
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.author: rogarana
-ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: f7cae5b3c7b0a7da6420674635ff9c3420a6436a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128906"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154420"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí klientské knihovny pro Javu v7
 

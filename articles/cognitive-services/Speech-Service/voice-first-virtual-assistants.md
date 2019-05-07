@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: f40e53c67f099fea739e45f6bdc6963ee1e235cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026101"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138171"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastní hlasové první virtuální Asistenti ve verzi preview
 
-Vlastní virtuálních asistentů pomocí hlasové služby Azure umožní vývojářům vytvářet konverzační rozhraní přirozené, podobnou té lidské pro jejich aplikace a prostředí. Kanál s přímým přístupem řeči řádku rozhraní Bot Framework rozšiřuje tyto možnosti tím, že poskytuje koordinované, iniciovat organizovaně, což vstupní bod do kompatibilní bot umožňující hlasové v hlasových si interakce s nízkou latencí a vysokou spolehlivostí. Tyto roboty můžete použít pro přirozeného jazyka zásahu od Microsoftu Language Understanding (LUIS). Přímé řeči řádku přístupu k zařízení pomocí řeči Services Software Development Kit (SDK).
+Vlastní virtuálních asistentů pomocí hlasové služby Azure umožní vývojářům vytvářet konverzační rozhraní přirozené, podobnou té lidské pro jejich aplikace a prostředí. Kanál s přímým přístupem řeči řádku rozhraní Bot Framework rozšiřuje tyto možnosti tím, že poskytuje koordinované, iniciovat organizovaně, což vstupní bod do kompatibilní bot umožňující hlasové v hlasových si interakce s nízkou latencí a vysokou spolehlivostí. Tyto roboty můžete použít pro přirozeného jazyka zásahu od Microsoftu Language Understanding (LUIS). Přímé řeči řádku přístupu k zařízení pomocí řeči Software Development Kit (SDK).
 
    ![Koncepční diagram přímou linku řeči Orchestrace služby flow](media/voice-first-virtual-assistants/overview.png "tok kanál řeči")
 
@@ -28,12 +28,12 @@ Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první
 
 ## <a name="core-features"></a>Základní funkce
 
-| Kategorie | Funkce |
+| Category | Funkce |
 |----------|----------|
 |[Vlastní probuzení word](speech-devices-sdk-create-kws.md) | Můžete povolit uživatelům začít konverzace s roboty pomocí vlastních klíčových slov, například "Hey Contoso." Provedení této úlohy se modul probuzení vlastní aplikace word v sadě SDK řeči, který se dá nakonfigurovat s vlastní probuzení slovo [, který může vytvořit tady](speech-devices-sdk-create-kws.md). Kanál s přímým přístupem řeči řádku zahrnuje straně služby probuzení slovo ověření, že zvyšují přesnost aktivace slovo probuzení versus zařízení samostatně.
 |[Převod řeči na text](speech-to-text.md) | Kanál s přímým přístupem řeči řádku obsahuje v reálném čase přepisu zvuku do textové rozpoznaných pomocí [Speech to text](speech-to-text.md) z hlasové služby Azure. Tento text je k dispozici pro vašeho robota a klientské aplikace, jako je přepisována.
-|[Převod textu na řeč](text-to-speech.md) | Textové odpovědí z vašeho robota se má syntetizovat pomocí [převod textu na řeč](text-to-speech.md) z hlasové služby Azure. Tohoto slučování pak budou dostupné do klientské aplikace jako zvukový datový proud. Společnost Microsoft nabízí možnost vytvářet vlastní [vlastní, vysoce kvalitní hlasové neuronových sítí převod textu na ŘEČ](https://aka.ms/customneuraltts) hlasový vstup, který poskytuje k vlastní značky.
-|[Direct Line řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md) | Jako kanál v rámci rozhraní Bot Framework s přímým přístupem řádku Speech umožňuje hladký a bezproblémový připojení mezi klientskou aplikaci, kompatibilní robotů a možnosti hlasové služby Azure. Další informace o konfiguraci vašeho robota použití kanálu Direct řeči řádku, naleznete v tématu [jeho stránky v dokumentaci k rozhraní Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+|[Převod textu na řeč](text-to-speech.md) | Textové odpovědí z vašeho robota se má syntetizovat pomocí [převod textu na řeč](text-to-speech.md) z hlasové služby Azure. Tohoto slučování pak budou dostupné do klientské aplikace jako zvukový datový proud. Společnost Microsoft nabízí možnost vytvářet vlastní vysoce kvalitní, vlastní hlasové neuronových sítí převod textu na ŘEČ, umožňující hlasový vstup do vaší značky, další informace [kontaktujte nás](mailto:mstts@microsoft.com).
+|[Direct Line řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Jako kanál v rámci rozhraní Bot Framework s přímým přístupem řádku Speech umožňuje hladký a bezproblémový připojení mezi klientskou aplikaci, kompatibilní robotů a možnosti hlasové služby Azure. Další informace o konfiguraci vašeho robota použití kanálu Direct řeči řádku, naleznete v tématu [jeho stránky v dokumentaci k rozhraní Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="sample-code"></a>Ukázka kódu
 

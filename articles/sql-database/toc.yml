@@ -120,6 +120,8 @@
           href: sql-database-service-tiers-vcore.md
         - name: Úrovně služby DTU
           href: sql-database-service-tiers-dtu.md
+        - name: Bezserverová výpočetní úroveň
+          href: sql-database-serverless.md
         - name: Předplacení záložní kapacity
           href: sql-database-reserved-capacity.md
         - name: Migrace z úrovně služby Premium RS

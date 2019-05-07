@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465359"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073759"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrola osvědčených postupů Kubernetes v clusteru
 
@@ -21,6 +21,8 @@ Existuje několik osvědčených postupů, které byste měli postupovat na vaš
 ## <a name="about-kube-advisor"></a>O kube advisor
 
 [Nástroj Poradce kube] [ kube-advisor-github] je navržený pro běh ve vašem clusteru jeden kontejner. Dotazy na serveru Kubernetes API informace o nasazení a vrátí sadu navržených vylepšení.
+
+Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru] [ k8s-node-selector] v konfiguraci pod.
 
 > [!NOTE]
 > Společnost Microsoft podporuje nástroj Poradce kube na základě best effort. Problémech a návrhy by měl být zaznamenaná na Githubu.
@@ -73,3 +75,4 @@ Pokud používáte nástroj proti clusteru, který není povolen RBAC, vyžaduje
 
 [kube-cpumem]: https://github.com/Azure/azure-quickstart-templates
 [kube-advisor-github]: https://github.com/azure/kube-advisor
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

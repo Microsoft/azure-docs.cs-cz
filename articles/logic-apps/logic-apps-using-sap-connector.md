@@ -8,29 +8,34 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 04/19/2019
 tags: connectors
-ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0ee8b164aa46c4fe2f66f27d9a41d0282c676907
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120151"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136735"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
 
-Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP ERP ústřední součást (ECC). Tento konektor funguje systémech ECC a s/4 HANA místně. Konektor SAP ECC podporuje integraci zpráv nebo dat do a z systémy SAP Netweaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
+Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP. Konektor prací s SAP klasického uvolní takové R/3 ECC systémy místní. Konektor také umožňuje integraci s systému SAP na novější HANA na základě systémů SAP vyhrazené například s/4 HANA, bez ohledu na to jsou hostované – v místním prostředí nebo v cloudu.
+Konektor SAP podporuje integraci zpráv nebo dat do a z systémy SAP Netweaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
 
-Konektor SAP ECC používá <a href="https://support.sap.com/en/product/connectors/msnet.html">knihovny .NET konektoru SAP (NCo)</a> a poskytuje tyto operace nebo akce:
+Konektor SAP používá <a href="https://support.sap.com/en/product/connectors/msnet.html">knihovny .NET konektoru SAP (NCo)</a> a poskytuje tyto operace nebo akce:
 
 - **Poslat SAP**: Odeslat IDoc nebo volat funkce BAPI přes tRFC v systémů SAP.
 - **Přijímat od SAPU**: Volání funkcí IDoc nebo BAPI přijímat přes tRFC ze systémů SAP.
 - **Vygenerovat schémata**: Vygenerujte schémata pro SAP artefakty pro IDoc nebo BAPI nebo RFC.
 
+Všechny výše uvedené operace konektor SAP podporuje základní ověřování pomocí uživatelského jména a hesla. Tento konektor podporuje také <a href="https://help.sap.com/doc/saphelp_nw70/7.0.31/en-US/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true"> zabezpečené komunikace sítě (SNC)</a>, které lze použít pro SAP Netweaver Single Sign-On nebo pro zvýšení zabezpečení poskytované o produkt poskytovaný jako externí zabezpečení. 
+
 Konektor SAP se integruje s místními systémy SAP prostřednictvím [na místní bránu dat](https://www.microsoft.com/download/details.aspx?id=53127). Ve scénářích odeslat, třeba při odesílání zprávy z aplikací logiky se systémem SAP brána dat funguje jako klient RFC a předává požadavky přijatými od Logic Apps s SAP.
 V případech Receive, brána dat funguje jako server RFC přijímá žádosti od SAPU a předává do aplikace logiky. 
 
 Tento článek ukazuje, jak vytvořit příklad aplikace logiky, která se integrují s řešením SAP při pokrývající dříve popsaná integrační scénáře.
+
+<a name="pre-reqs"></a>
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,6 +48,12 @@ Chcete-li postupovat podle tohoto článku, budete potřebovat tyto položky:
 * Vaše <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">aplikační Server SAP</a> nebo <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">Server zpráv SAP</a>
 
 * Stáhněte a nainstalujte nejnovější [na místní bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) v libovolném v místním počítači. Ujistěte se, že nastavíte bránu na webu Azure Portal, než budete pokračovat. Brána umožňuje bezpečný přístup k datům a prostředky jsou v místním prostředí. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
+
+* Pokud používáte SNC se jednotné přihlašování (SSO), ujistěte se, že je brána spuštěná jako uživatel, který je namapovaný proti uživatelům SAP. Chcete-li změnit výchozí účet, vyberte **změnit účet** a zadejte přihlašovací údaje.
+
+   ![Změna účtu brány](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Chcete-li povolit SNC se o produkt poskytovaný jako externí zabezpečení, zkopírujte knihovna SNC nebo soubory ve stejném počítači, kde je nainstalovaná brána. Některé příklady SNC produkty <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, Kerberos, NTLM, a tak dále.
 
 * Stáhněte a nainstalujte klientské knihovny nejnovější SAP, která je aktuálně <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">konektoru SAP (NCo) 3.0.21.0 pro rozhraní Microsoft .NET Framework 4.0 a Windows 64-bit (x64)</a>, ve stejném počítači jako místní brána dat. Instalace této verze nebo novější z těchto důvodů:
 
@@ -114,7 +125,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
       Pokud **typ přihlášení** je nastavena na **skupiny**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány: 
 
       ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
-
+      
    2. Jakmile budete hotoví, vyberte **Vytvořit**. 
    
       Logic Apps vytvoří a otestuje připojení, ujistěte se, že připojení funguje správně.
@@ -375,23 +386,45 @@ Volitelně můžete stáhnout nebo uložit vygenerovaný schémata do úložišt
 
 2. Po úspěšném spuštění, přejděte na účet pro integraci a zkontrolujte, že generované schémat generovaných existují.
 
+## <a name="enable-secure-network-communications-snc"></a>Povolení zabezpečené síťové komunikace (SNC)
+
+Než začnete, ujistěte se, že splnění výše uvedených [požadavky](#pre-reqs):
+
+* Místní brána dat je nainstalován na počítači, který je ve stejné síti jako systém SAP.
+
+* Pro jednotné přihlašování, brána běží jako uživatel, který je namapovaný na uživatel systému SAP.
+
+* Knihovna SNC, který poskytuje funkce pro zvýšení zabezpečení byl nainstalován na stejném počítači jako bránu data gateway. Mezi příklady těchto patří <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, Kerberos, NTLM, a tak dále.
+
+Chcete-li SNC pro vaše požadavky na nebo z systému SAP, vyberte **SNC použití** zaškrtávacího políčka v připojení k SAP a zadejte tyto vlastnosti:
+
+   ![Konfigurace SAP SNC v připojení](media/logic-apps-using-sap-connector/configure-sapsnc.png) 
+
+   | Vlastnost   | Popis |
+   |------------| ------------|
+   | **Knihovna SNC** | Název knihovny SNC nebo relativní umístění instalace NCo cestu nebo absolutní cesta. Jako příklad sapsnc.dll nebo.\security\sapsnc.dll nebo c:\security\sapsnc.dll  | 
+   | **SNC SSO** | Při připojování přes SNC SNC identity se obvykle používá pro ověřování volající. Další možností je přepsat tak, aby informace uživatele a hesla je možné za účelem ověřování totožnosti volajícímu, ale řádku je šifrovaný.|
+   | **SNC moje jméno** | Ve většině případů to lze vynechat. Nainstalované řešení SNC obvykle ví názvu SNC. Pouze pro řešení, podpora "více identit" budete muset určit identitu, která má být použit pro tento konkrétní cíl/server |
+   | **Název partnera SNC** | Název na back-end SNC |
+   | **SNC kvality ochrany** | Technologie QoS (Quality of Service), která se má použít pro komunikaci SNC tohoto konkrétního cíle nebo serveru Výchozí hodnota je definována v back-end systému. Maximální hodnota je definována zabezpečení produktu pro SNC |
+   |||
+
+   > [!NOTE]
+   > Proměnné prostředí SNC_LIB a SNC_LIB_64 neměla být nastavena na počítači, kde máte brány dat a knihovna SNC. Pokud nastavit, že by přednost knihovna SNC hodnoty předané prostřednictvím konektoru.
+   >
+
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
 Tady jsou aktuálně známé problémy a omezení pro konektor SAP:
+
+* Pouze jeden odeslat na SAP volání nebo zprávy funguje s tRFC. Vzor potvrzení obchodní aplikace programovací rozhraní (BAPI), jako je například volání více tRFC ve stejné relaci, se nepodporuje.
 
 * Aktivační událost SAP nepodporuje přijímání batch Idoc ze SAP. Tato akce může způsobit RFC selhání připojení mezi systému SAP a bránou data gateway.
 
 * Aktivační událost SAP nepodporuje data clusterů bran. V některých případech převzetí služeb při selhání uzel brány dat, který komunikuje se systémem SAP mohou lišit od aktivního uzlu, což vede k neočekávanému chování. Clustery bran s data odeslat scénáře jsou podporovány.
 
-* Ve scénářích Receive se nepodporuje vrácení odpovědi na jinou hodnotu než null. Aplikace logiky pomocí aktivační události a akce odpovědi za následek neočekávané chování. 
-
-* Pouze jeden odeslat na SAP volání nebo zprávy funguje s tRFC. Vzor potvrzení obchodní aplikace programovací rozhraní (BAPI), jako je například volání více tRFC ve stejné relaci, se nepodporuje.
-
-* Dokumenty RFC s přílohami nejsou podporovány pro odesílání SAP a vygenerovat schémata akce.
-
 * Konektor SAP v současné době nepodporuje řetězce směrovačů SAP. Místní brána dat, musí existovat ve stejné síti jako systém SAP, kterou chcete připojit.
 
-* Převod pro chybějící prázdný, minimální a maximální hodnoty (null), pro pole dat a TIMS SAP podléhají změnám v pozdější aktualizace pro místní bránu dat.
 
 ## <a name="get-support"></a>Získat podporu
 

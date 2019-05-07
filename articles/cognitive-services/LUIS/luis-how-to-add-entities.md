@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196095"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148730"
 ---
 # <a name="create-entities-without-utterances"></a>Vytvoření entity bez projevy
 
@@ -66,29 +66,6 @@ Regulární výraz entita se používá vyžádá si data z utterance podle regu
 
     Tento regulární výraz shoduje s literálními znaky `hrf-`, pak 6 číslic představující formuláře číslo pro formulář lidských zdrojů.
 
-## <a name="add-hierarchical-entities"></a>Přidání hierarchické entit
-
-Hierarchické entity je kategorie kontextově zkušenosti a související entity. V následujícím příkladu obsahuje původní a cílové umístění. 
-
-V utterance `Move John Smith from Seattle to Cairo`, Seattle, je původní umístění a Cairo je cílové umístění. Každé umístění je kontextově různých a zkušenosti z pořadí slov a požadované aplikace word v utterance.
-
-Přidání hierarchické entit, proveďte následující kroky: 
-
-1. Ve vaší aplikaci, vyberte **entity** v levém navigačním panelu a pak vyberte **vytvořit novou entitu**.
-
-1. V místním dialogovém okně zadejte `Location` v **název Entity** a potom vyberte **hierarchické** z **typ Entity** seznamu.
-
-    ![Přidání hierarchické entity](./media/add-entities/hier-location-entity-creation.png)
-
-1. Vyberte **přidat podřízenou položku**a pak zadejte `Origin` v **podřízené č. 1** pole. 
-
-1. Vyberte **přidat podřízenou položku**a pak zadejte `Destination` v **podřízené č. 2** pole. Vyberte **Done** (Hotovo).
-
-    >[!CAUTION]
-    >Podřízené entity názvy musí být jedinečný ve všech entit v jediné aplikaci. Dva různé hierarchické entity nemůže obsahovat podřízené entity se stejným názvem. 
-
-    Jakmile se vytvoří tuto entitu, přejděte na všechny příkazy, které mají příklad projevy, které obsahují entity. Výběr textu v příkladu utterance a označte text jako entity. 
-
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Přidat složené entity seskupit do vztahu nadřazený podřízený
@@ -137,9 +114,7 @@ V utterance `Where is Request relocation from employee new to the company on the
 
 Role je pojmenovaný podtyp na základě kontextu. Je dostupná ve všech entit, včetně předem připravené a není počítač zjistili entit. 
 
-Pokud použijeme stejný příklad jako hierarchické entity původu a cílových měst, rozdíl je, že je role s názvem původu místo hierarchické podřízené. 
-
-Syntaxe pro roli je **{Entityname:Rolename}** kde je název entity následovaný dvojtečkou a potom název role. Například, `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Syntaxe pro roli je **`{Entityname:Rolename}`** kde je název entity následovaný dvojtečkou a potom název role. Například, `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
 
 1. Z **sestavení** vyberte **entity** na levém panelu.
 

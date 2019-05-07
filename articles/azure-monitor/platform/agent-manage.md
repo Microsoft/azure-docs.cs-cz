@@ -1,6 +1,6 @@
 ---
 title: Správa agenta Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek popisuje úlohy řízení, které se obvykle provádí během životního cyklu aplikace Microsoft Monitoring Agent (MMA) nasadit na počítače s.
+description: Tento článek popisuje řízení úkoly, které se obvykle provádí během životního cyklu Log Analytics Windows nebo Linux agent nasazený na počítači.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 19530aa676e681f9a6ec50d2cacf77711dcb0110
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730286"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139248"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
-Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linux ve službě Azure Monitor budete muset změnit konfiguraci agenta, upgradovat nebo ji odeberte z počítače, pokud bylo dosaženo vyřazení z provozu fázi životního cyklu. Tyto úlohy běžné údržby můžete snadno spravovat ručně nebo pomocí automatizace, což snižuje provozní chyby a výdaje.
+Po počátečním nasazení nástroje Windows Log Analytics nebo agenta pro Linux ve službě Azure Monitor budete muset změnit konfiguraci agenta, upgradovat nebo odebrat z počítače, pokud se po dosažení vyřazení z provozu fázi životního cyklu. Tyto úlohy běžné údržby můžete snadno spravovat ručně nebo pomocí automatizace, což snižuje provozní chyby a výdaje.
 
 ## <a name="upgrading-agent"></a>Upgrade agenta
 
@@ -40,7 +40,7 @@ Aktualizace agenta na virtuálním počítači s Windows na nejnovější verzi 
 
 Pomocí následujícího postupu můžete stáhnout nejnovější verzi agenta Windows z pracovního prostoru Log Analytics.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **pracovních prostorů Log Analytics**.
 
@@ -91,6 +91,7 @@ Spusťte následující příkaz pro upgrade agenta.
 ## <a name="adding-or-removing-a-workspace"></a>Přidání nebo odebrání pracovního prostoru
 
 ### <a name="windows-agent"></a>Agenta Windows
+Kroky v této části jsou nezbytné, když budete chtít nejen změnit konfiguraci agenta Windows sestavu s jiným pracovním prostorem nebo odstranění pracovního prostoru z jeho konfiguraci, ale také když chcete provést konfiguraci agenta na generování sestav k (obvykle více než jednomu pracovnímu prostoru říká vícenásobné navádění). Konfigurace Windows agenta na generování sestav do několika pracovních prostorů lze provést pouze po dokončení počáteční instalace agenta a způsoby, jak je popsáno níže.    
 
 #### <a name="update-settings-from-control-panel"></a>Aktualizovat nastavení v Ovládacích panelech
 
@@ -140,7 +141,7 @@ $mma.ReloadConfiguration()
 >
 
 ### <a name="linux-agent"></a>Agenta pro Linux
-Následující kroky ukazují, jak změnit konfiguraci agenta pro Linux, pokud se rozhodnete ho zaregistrovat pomocí jiného pracovního prostoru nebo chcete odebrat pracovní prostor z jeho konfigurace.
+Následující kroky ukazují, jak změnit konfiguraci agenta pro Linux, pokud se rozhodnete ho zaregistrovat u jiného pracovního prostoru nebo odebrání pracovního prostoru z jeho konfigurace.
 
 1. Pokud chcete ověřit, že je zaregistrovaný do pracovního prostoru, spusťte následující příkaz:
 
@@ -160,7 +161,7 @@ Následující kroky ukazují, jak změnit konfiguraci agenta pro Linux, pokud s
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
     
-4. Pokud chcete ověřit, že vaše změny trvalo vliv, spusťte následující příkaz:
+4. Chcete-li ověřit změny vstoupily v platnost, spusťte následující příkaz:
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
@@ -231,7 +232,7 @@ Pokud vaše počítače s Linuxem potřebují komunikovat přes proxy server neb
     ```
 
 ## <a name="uninstall-agent"></a>Odinstalace agenta
-Pomocí jednoho z následujících postupů odinstalujte agenta Windows nebo Linux pomocí Průvodce příkazového řádku nebo instalační program.
+Pomocí jednoho z následujících postupů odinstalujte agenta pro Windows nebo Linux pomocí příkazového řádku nebo Průvodce instalací.
 
 ### <a name="windows-agent"></a>Agenta Windows
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466927"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074045"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Škálování možností pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -56,6 +56,8 @@ Reagovat na měnící se požadavky pod Kubernetes má clusteru automatického �
 ![Automatického škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
 Automatického škálování clusteru se obvykle používá podél vodorovné pod automatického škálování. V kombinaci, automatického škálování podů horizontální zvýšení nebo snížení počtu podů založené na požadavcích aplikace a automatického škálování clusteru přizpůsobí počet uzlů podle potřeby ke spuštění těchto dalších podů odpovídajícím způsobem.
+
+Automatického škálování clusteru by měl být testován pouze ve verzi preview v clusterech AKS s fondem jeden uzel.
 
 Začínáme s automatického škálování clusteru ve službě AKS najdete v článku [automatického škálování clusteru v AKS][aks-cluster-autoscaler].
 

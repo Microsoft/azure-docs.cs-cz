@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu pro role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak dokončení kontroly přístupu pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Dokončení kontroly přístupu z role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak dokončení kontroly přístupu z role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837be3ccdbd133f6bf372779dadff4d3c574a2e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a310770f26a1c40682791582a05a9bb4c47a42d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288215"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141023"
 ---
-# <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>Dokončení kontroly přístupu pro role prostředků Azure v PIM
+# <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>Dokončení kontroly přístupu z role prostředků Azure v PIM
 Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup po [se spustila kontrola přístupu](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) automaticky odesílá e-mail, který vyzve uživatele ke kontrole jejich přístupu. Pokud uživatel e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-resource-roles-perform-access-review.md).
 
 Po období kontroly přístupu, nebo po dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.

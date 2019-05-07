@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Další informace o dokončení kontroly přístupu pro role Azure AD v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky
+title: Dokončení kontroly přístupu Azure AD rolí v PIM – Azure Active Directory | Dokumentace Microsoftu
+description: Další informace o dokončení kontroly přístupu Azure AD rolí v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: decba8f46432891a44a2b231890da4214bd5b1bb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288288"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140997"
 ---
-# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>Dokončení kontroly přístupu pro role Azure AD v PIM
+# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Dokončení kontroly přístupu Azure AD rolí v PIM
 Správci privilegovaných rolí jednou zkontrolovat privilegovaný přístup [se spustila kontrola přístupu](pim-how-to-start-security-review.md). Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-how-to-perform-security-review.md).
 
 Po období kontroly přístupu je nad nebo dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.

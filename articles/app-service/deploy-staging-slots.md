@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266201"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137884"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -265,6 +265,8 @@ Chcete-li umožnit uživatelům přihlášení do aplikace pro beta, nastavit st
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
+
+Ve výchozím nastavení, jsou uvedeny nové sloty pravidlo směrování z `0%`, zobrazené šedě. Explicitním nastavením této hodnoty na `0%` (viz černý text), uživatelé mají přístup ke přípravný slot ručně pomocí `x-ms-routing-name` parametr dotazu, ale nebudou směrovány do přihrádky automaticky protože směrování procento je nastaven na hodnotu 0. Toto je pokročilý scénář, kde můžete "Skrýt" vaší přípravný slot před veřejností zároveň umožní interními týmy a otestujte změny ve slotu.
 
 <a name="Delete"></a>
 

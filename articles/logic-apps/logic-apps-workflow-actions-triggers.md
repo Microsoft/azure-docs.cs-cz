@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 06/22/2018
-ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691933"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136600"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro aktivační událost a akce typy v jazyka definice pracovního postupu pro Azure Logic Apps
 
@@ -804,6 +804,8 @@ Tady jsou některé běžně používané akce:
 
   * [**Odpověď** ](#response-action) pro reagování na žádosti
 
+  * [**Spuštění kódu jazyka JavaScript** ](#run-javascript-code) fragmenty kódu pro spouštění JavaScriptu
+
   * [**Funkce** ](#function-action) pro volání funkcí Azure
 
   * Akce s daty operace, jako [ **připojení**](#join-action), [ **Compose**](#compose-action), [ **tabulky** ](#table-action), [ **Vyberte**](#select-action)a dalšími lidmi, které vytvoří nebo transformovat data z různých vstupy
@@ -821,6 +823,7 @@ Tady jsou některé běžně používané akce:
 | Typ akce | Popis | 
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Vytvoří jeden výstup ze vstupů, což může mít různé typy. | 
+| [**Spuštění kódu jazyka JavaScript**](#run-javascript-code) | Spouštět fragmenty kódu jazyka JavaScript, které se vejdou do určitých kritérií. Požadavky na kód a další informace najdete v tématu [přidat a spuštění kódu pomocí vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**– funkce**](#function-action) | Volá funkci Azure. | 
 | [**HTTP**](#http-action) | Zavolá koncový bod HTTP. | 
 | [**Připojte se k**](#join-action) | Vytvoří řetězec ze všech položek v poli a tyto položky odděluje znak zadaného oddělovače. | 
@@ -1047,6 +1050,81 @@ Tato akce definice sloučí řetězcovou proměnnou, která obsahuje `abcdefg` a
 Zde je výstup, který vytváří tato akce:
 
 `"abcdefg1234"`
+
+<a name="run-javascript-code"></a>
+
+### <a name="execute-javascript-code-action"></a>Provést akci kódu jazyka JavaScript
+
+Tato akce spustí fragment kódu jazyka JavaScript a vrátí výsledky prostřednictvím `Result` token, který může odkazovat na pozdějších akcích.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "<JavaScript-code-snippet>",
+      "explicitDependencies": {
+         "actions": [ <previous-actions> ],
+         "includeTrigger": true
+      }
+   },
+   "runAfter": {}
+}
+```
+
+*Požadováno*
+
+| Hodnota | Type | Popis |
+|-------|------|-------------|
+| <*JavaScript-code-snippet*> | Různé | Kód jazyka JavaScript, který chcete spustit. Požadavky na kód a další informace najdete v tématu [přidat a spuštění kódu pomocí vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md). <p>V `code` atribut, fragment kódu můžete použít jen pro čtení `workflowContext` objektu jako vstup. Tento objekt nemá podvlastnosti, které umožňují váš kód přístup k výsledky z aktivační události a předchozí akce ve svém pracovním postupu. Další informace o `workflowContext` objektu, najdete v článku [odkazovat na aktivační událost a akce výsledky ve vašem kódu](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+||||
+
+*V některých případech vyžaduje*
+
+`explicitDependencies` Atribut určuje, že chcete explicitně zahrnout výsledky z triggeru, předchozí akce nebo jako závislosti pro fragment kódu. Další informace o přidání těchto závislostí, naleznete v tématu [přidat parametry pro vložený kód](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters). 
+
+Pro `includeTrigger` atribut, můžete zadat `true` nebo `false` hodnoty.
+
+| Hodnota | Type | Popis |
+|-------|------|-------------|
+| <*previous-actions*> | Pole řetězců | Pole s názvy zadanou akci. Pomocí názvu akce, které se zobrazují v definici pracovního postupu, kde názvy akcí pomocí podtržítka (_), nikoli mezery (""). |
+||||
+
+*Příklad 1*
+
+Tato akce spustí kód, který získá název aplikace logiky a text "Hello world z <-název aplikace logiky->" jako výsledek vrátí. V tomto příkladu odkazuje kód pracovního postupu název díky přístupu `workflowContext.workflow.name` vlastnosti prostřednictvím jen pro čtení `workflowContext` objektu. Další informace o používání `workflowContext` objektu, najdete v článku [odkazovat na aktivační událost a akce výsledky ve vašem kódu](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var text = \"Hello world from \" + workflowContext.workflow.name;\r\n\r\nreturn text;"
+   },
+   "runAfter": {}
+}
+```
+
+*Příklad 2*
+
+Tato akce spustí kód v aplikaci logiky, která se aktivuje při přijetí nového dorazí v rámci účtu Office 365 Outlook. Aplikace logiky používá také odeslat e-mailové akce schválení, která předá obsahu v přijatých e-mailu spolu s žádostí o schválení. 
+
+Kód extrahuje e-mailové adresy z triggeru `Body` vlastnost a vrátí tyto e-mailové adresy společně s `SelectedOption` hodnota vlastnosti z akce schválení. Akce explicitně obsahuje akce Odeslat schvalovací e-mail v závislosti na `explicitDependencies`  >  `actions` atribut.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var re = /(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))/g;\r\n\r\nvar email = workflowContext.trigger.outputs.body.Body;\r\n\r\nvar reply = workflowContext.actions.Send_approval_email_.outputs.body.SelectedOption;\r\n\r\nreturn email.match(re) + \" - \" + reply;\r\n;",
+      "explicitDependencies": {
+         "actions": [
+            "Send_approval_email_"
+         ]
+      }
+   },
+   "runAfter": {}
+}
+```
+
+
 
 <a name="function-action"></a>
 
@@ -2652,7 +2730,7 @@ V tomto příkladu definice akce HTTP `authentication` část určuje `ClientCer
 
 Pro [ověřování Azure AD OAuth](../active-directory/develop/authentication-scenarios.md), může obsahovat definice aktivační události nebo akce `authentication` objekt JSON, který má vlastnosti uvedené v následující tabulce. Chcete-li získat přístup k hodnoty parametrů za běhu, můžete použít `@parameters('parameterName')` výraz, který je poskytován [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs).
 
-| Vlastnost | Požaduje se | Hodnota | Popis |
+| Vlastnost | Požaduje se | Value | Popis |
 |----------|----------|-------|-------------|
 | **type** | Ano | `ActiveDirectoryOAuth` | Typ ověřování chcete používat, což je "ActiveDirectoryOAuth" pro Azure AD OAuth |
 | **Autorita** | Ne | <*URL-for-authority-token-issuer*> | Adresa URL autority, která poskytuje ověřovací token |

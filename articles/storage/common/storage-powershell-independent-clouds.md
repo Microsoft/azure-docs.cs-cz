@@ -2,18 +2,18 @@
 title: Správa úložiště v Azure nezávislé cloudů pomocí Azure Powershellu | Dokumentace Microsoftu
 description: Správa úložiště v Číně, cloudu pro státní správu a německého cloudu s využitím Azure Powershellu
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: rogarana
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6a3fe8c7235a0cf475f188a3379e372cd777ce8c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 69707eec0ea1f2260ee50a48ce1dcb82dc9ddd8f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477637"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145870"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v Azure nezávislé cloudů pomocí Powershellu
 
@@ -59,7 +59,7 @@ Get-AzLocation | select Location, DisplayName
 
 Následující tabulka uvádí umístění pro německý cloud.
 
-|Umístění | Zobrazovaný název |
+|Location | Zobrazovaný název |
 |----|----|
 | germanycentral | Německo – střed|
 | germanynortheast | Německo – severovýchod | 

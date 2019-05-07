@@ -2,18 +2,19 @@
 title: Rychlý start Azure – vytvoření fronty ve službě Azure Storage pomocí webu Azure portal | Dokumentace Microsoftu
 description: V tomto rychlém startu použijete Azure portal můžete vytvořit frontu. Pak použijete k přidání zprávy, zobrazit vlastnosti zprávy a odstranění z fronty zprávy na webu Azure portal.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 03/06/2019
-ms.author: tamram
-ms.openlocfilehash: 8a5dba5f949d5c20e0fbf752caac4125b8aecd52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mhopkins
+ms.reviewer: cbrooks
+ms.openlocfilehash: 3b355aa2f3fd5e381ca922ada1444dd281fe74ec
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460813"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138272"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý start: Vytvořit frontu a přidat zprávu pomocí webu Azure portal
 

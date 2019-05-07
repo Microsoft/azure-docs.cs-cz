@@ -2,18 +2,19 @@
 title: Protokolování služby Azure Storage Analytics
 description: Zjistěte, jak protokolovat podrobnosti o požadavky na služby Azure Storage.
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: fryu
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3daea17a491af8950b38f1e3183583fef63751e2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1e0e9cb899fb28257b864d0e31daa724fbd59e4c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926495"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153946"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage analytics protokolování
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/02/2018
+ms.date: 05/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381435"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137786"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -78,6 +78,47 @@ Nejjednodušší způsob, jak to provést, je použít SQL Server Management Stu
 
 Abychom si to nekomplikovali, doporučujeme vám, že uživatelé, kteří instalace služby Azure AD Connect se správci systému SQL. Však s nejnovější sestavení teď můžete pomocí delegovaného správce SQL, jak je popsáno v [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md).
 
+**Otázka: Jaké jsou některé osvědčené postupy z pole?**  
+
+Toto je informativní dokument, který uvádí některé z osvědčených postupů, které podporují engineering, a naši konzultanti vyvinuli v průběhu let.  To se zobrazí v seznamu odrážky, který může být odkazováno rychle.  Přestože tento seznam se snaží být vyčerpávající, může být další osvědčené postupy, které nemusí mít maximálně zjednodušili v seznamu ještě.
+
+- Pokud používáte úplné SQL, pak by měla zůstat místní a vzdálené
+    - Menší počet segmentů směrování
+    - Usnadňuje řešení potíží
+    - Menší složitost
+    - Třeba určit prostředky k SQL a umožňuje režijní náklady na Azure AD Connect a operačního systému
+- Pokud je to možné obejít proxy server, pokud se nemůžete používat proxy server, je nutné zajistit, aby hodnota časového limitu je větší než 5 minut.
+- Pokud proxy server je třeba přidat do souboru machine.config je vyžaduje proxy server
+- Mějte na paměti místní úlohy SQL a údržbu a jak se bude mít vliv Azure AD Connect – zejména přeindexování
+- Ujistěte se, než DNS lze vyřešit externě
+- Ujistěte se, že [specifikace serveru](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) se vztahují na doporučení, jestli používáte fyzické nebo virtuální servery
+- Ujistěte se, že pokud používáte vyhrazených prostředků, které vyžaduje virtuální server
+- Ujistěte se, že máte disku a konfiguraci disků, které splňují osvědčené postupy pro SQL Server
+- Instalace a konfigurace Azure AD Connect Health pro monitorování
+- Použijte prahovou hodnotu odstranění, která je integrována do služby Azure AD Connect.
+- Pečlivě zkontrolujte distribuovatelných oprav abyste byli připraveni na všechny změny a nové atributy, které mohou být přidány
+- Všechno, co zálohování
+    - Zálohování klíče
+    - Zálohování synchronizační pravidla
+    - Konfigurace zálohování serveru
+    - Zálohování SQL Database
+- Ujistěte se, že neexistují žádné 3. stran agenty služby backup, které jsou zálohování SQL bez zapisovače SQL VSS Writer (společné v virtuální servery s 3. stran snímky)
+- Maximální procento vlastní synchronizační pravidla, které se používají jako přidávají složitost
+- Považovat Azure AD připojení serverů jako úroveň serverů: 0
+- Být nedůvěřivý upravit pravidla synchronizace cloudu bez skvělé pochopení vlivu a správná obchodní ovladače
+- Ujistěte se, že jsou otevřené pro podporu služby Azure AD Connect a Azure AD Connect Health správnou adresu URL a porty brány Firewall
+- Atribut k odstranění potíží a zabránit fiktivní objekty filtrované využití cloudu
+- Pracovní Server zajistěte, že používáte dokumentace konfigurace připojení Azure AD pro zajištění konzistence mezi servery
+- Příprava serverů musí být v oddělená datová centra (fyzických umístění
+- Testovací servery nejsou určeny k řešení vysoké dostupnosti, ale může mít několik pracovních serverů
+- Úvod do testovací servery "Prodleva" může zmírnit potenciální výpadek v případě chyby
+- Testování a ověřování všechny upgrady na serveru pracovní nejprve
+- Vždy ověřovaly exporty než přepnete pracovní serverLeverage pracovní server pro úplné importy a úplná synchronizace snížit dopad na chod firmy
+- Udržovat co nejvíc verze konzistenci mezi servery služby Azure AD Connect 
+
+**Otázka: Můžete povolit Azure AD Connect k vytvoření účtu Azure AD Connector na počítači pracovní skupiny?**
+Ne.  Aby bylo možné povolit automatické vytvoření účtu Azure AD Connector služby Azure AD Connect, musí být na počítači připojeném k doméně.  
+
 ## <a name="network"></a>Síť
 **Otázka: Mám bránu firewall, síťové zařízení nebo něco jiného, který omezuje čas, který připojení můžou zůstat otevřené v síti. Co by měl Můj mezní hodnotu časového limitu na straně klienta se při použití služby Azure AD Connect?**  
 Veškerý software sítě, fyzické zařízení nebo cokoli jiného, který omezí maximální dobu, po připojení zůstat otevřené používejte prahovou hodnotu minimálně pět minut (300 sekund) pro připojení mezi serverem, kde je nainstalován klient služby Azure AD Connect a Azure Active Directory. Toto doporučení platí také pro všechny dřív vydaných nástroje synchronizace Microsoft Identity.
@@ -107,6 +148,9 @@ Použijte pokyny, který je popsaný v článku [prodloužit platnost certifiká
 ## <a name="environment"></a>Prostředí
 **Otázka: Se podporuje přejmenování serveru po instalaci služby Azure AD Connect?**  
 Ne. Změna názvu serveru vykreslí synchronizační modul nelze se připojit k instanci databáze SQL a službu nelze spustit.
+
+**Otázka: Na počítači s podporou standardu FIPS podporuje pravidla synchronizace další generace kryptografických (NGC)?**  
+Ne.  Nejsou podporovány.
 
 ## <a name="identity-data"></a>Data identit
 **Otázka: Proč neodpovídá atribut userPrincipalName (UPN) ve službě Azure AD s místními hlavní název uživatele?**  

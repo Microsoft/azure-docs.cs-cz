@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803767"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150358"
 ---
 Následující tabulka uvádí omezení spojená s různými úrovněmi služeb S1, S2, S3 a F1. Informace o nákladech jednotlivých *jednotky* v každé úrovni najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Prostředek | S1 Standard | S2 Standard | S3 Standard | F1 Free |
+| Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
 | Počet zpráv za den |400 000 |6 000 000 |300 000 000 |8 000 |
 | Maximální počet jednotek |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ Následující tabulka uvádí omezení spojená s různými úrovněmi služeb 
 
 Následující tabulka uvádí omezení, které se vztahují na prostředky služby IoT Hub.
 
-| Prostředek | Omezení |
+| Resource | Omezení |
 | --- | --- |
 | Maximální počet placených služeb IoT Hub na předplatné Azure |50 |
 | Maximální počet bezplatných služeb IoT Hub na předplatné Azure |1 |
@@ -40,9 +40,9 @@ Následující tabulka uvádí omezení, které se vztahují na prostředky slu�
 | Maximální počet doručení zpráv typu <br/> cloud-zařízení |100 |
 | Maximální počet doručení zpráv se zpětnou vazbou <br/> v reakci na zprávu typu cloud-zařízení |100 |
 | Maximální hodnota TTL pro zprávy se zpětnou vazbou <br/> v reakci na zprávu typu cloud-zařízení |2 dny |
-| Maximální velikost dvojčete zařízení <br/> (značky, ohlášené vlastnosti a požadované vlastnosti) | 8 kB |
+| [Maximální velikost dvojčete zařízení](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (značky, ohlášené vlastnosti a požadované vlastnosti) | 8 kB |
 | Maximální velikost řetězcové hodnoty dvojčete zařízení | 4 KB |
-| Maximální hloubka objektu ve dvojčeti zařízení | 5 |
+| [Maximální hloubka objektu ve dvojčeti zařízení](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
 | Maximální velikost datové části přímé metody | 128 KB |
 | Maximální doba uchování historie úlohy | 30 dní |
 | Maximální počet souběžných úloh | 10 (pro S3), 5 (pro S2), 1 (pro S1) |
@@ -51,10 +51,8 @@ Následující tabulka uvádí omezení, které se vztahují na prostředky slu�
 | Maximální počet současně připojených zařízení datových proudů | 50 (pro S1, S2, S3 a pouze F1) |
 | Přenos dat stream maximální zařízení | 300 MB za den (pro S1, S2, S3 a pouze F1) |
 
-
 > [!NOTE]
 > Pokud potřebujete více než 50 placených služeb IoT hub v rámci předplatného Azure, obraťte se na Microsoft Support.
-
 
 > [!NOTE]
 > Maximální počet zařízení, která se můžete připojit k jedno centrum IoT v současné době je 1 000 000. Pokud chcete tento limit zvýšit, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).

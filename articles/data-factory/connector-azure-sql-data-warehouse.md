@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 319ea3eaac2fcaa3c8e29680e125b7e29018ecc3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cf5713fecd354f1e1d2c0ce7d28439b5b8b785ec
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926606"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153419"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -229,7 +229,7 @@ Použití spravované identity ověřování, postupujte podle těchto kroků:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Data Warehouse.
 
-Chcete-li kopírovat data z nebo do služby Azure SQL Data Warehouse, nastavte **typ** vlastnosti datové sady na **AzureSqlDWTable**. Podporovány jsou následující vlastnosti:
+Pro kopírování dat z nebo do služby Azure SQL Data Warehouse, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -248,6 +248,7 @@ Chcete-li kopírovat data z nebo do služby Azure SQL Data Warehouse, nastavte *
             "referenceName": "<Azure SQL Data Warehouse linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -375,7 +376,7 @@ Ke zkopírování dat do Azure SQL Data Warehouse, nastavte typ jímky v aktivit
 | rejectType | Určuje, zda **rejectValue** možnost je hodnotu literálu nebo procenta.<br/><br/>Povolené hodnoty jsou **hodnotu** (výchozí) a **procento**. | Ne |
 | rejectSampleValue | Určuje počet řádků, načtěte před PolyBase přepočítá procento pozice zamítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2, atd. | Ano, pokud **rejectType** je **procento**. |
 | useTypeDefault | Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí). | Ne |
-| writeBatchSize | Vloží data do tabulky SQL, když dosáhne velikosti vyrovnávací paměti **writeBatchSize**. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
+| writeBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **celé číslo** (počet řádků). Ve výchozím nastavení služby Data Factory dynamicky určí příslušné batch velikost podle velikosti řádku. | Ne |
 | writeBatchTimeout | Čekací doba pro dávkové operace insert dokončit před uplynutím časového limitu. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Data Warehouse při každém spuštění. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
 
@@ -423,12 +424,13 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 
 2. **Formát zdrojových dat** je **Parquet**, **ORC**, nebo **oddělený text**, s následující konfigurací:
 
-   1. `folderPath` a `fileName` neobsahují filtr zástupných znaků.
-   2. `rowDelimiter` musí být **\n**.
-   3. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` ponechané jako výchozí nebo nastavený na hodnotu true.
-   4. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
-   5. `escapeChar`, `quoteChar` a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
-   6. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+   1. Cesta ke složce neobsahují filtr zástupných znaků.
+   2. Název souboru odkazuje na jeden soubor nebo `*` nebo `*.*`.
+   3. `rowDelimiter` musí být **\n**.
+   4. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` ponechané jako výchozí nebo nastavený na hodnotu true.
+   5. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
+   6. `quoteChar`, `escapeChar`, a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
+   7. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
 
 ```json
 "activities":[

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 215ae29c571e56b7e3af589149123083223023c7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889378"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153461"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Práce s databázemi, kontejnery a položkami
 
@@ -77,7 +77,7 @@ Kontejner služby Azure Cosmos obsahuje sadu vlastností definovaných systémem
 
 | **Vlastnost definovaná systémem** | **Systémem vygenerované nebo uživatelem konfigurovatelné** | **Účel** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|_rid | Vygenerované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
+|ID _ovládacího | Vygenerované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
 |_etag | Vygenerované systémem | Značka entity používá pro optimistického řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
 |_ts | Vygenerované systémem | Časové razítko poslední aktualizace kontejneru | Ano | Ne | Ne | Ne | Ne |
 |_self | Vygenerované systémem | Adresovatelný URI kontejneru | Ano | Ne | Ne | Ne | Ne |

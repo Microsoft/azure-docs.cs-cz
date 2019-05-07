@@ -2,18 +2,19 @@
 title: Jak monitorovat účet služby Azure Storage | Dokumentace Microsoftu
 description: Další informace o monitorování účtu úložiště v Azure pomocí webu Azure portal.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 07/31/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478116"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153631"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 

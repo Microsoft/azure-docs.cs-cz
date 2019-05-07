@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464008"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074148"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -47,7 +47,7 @@ Při použití sítě Azure CNI prostředek virtuální sítě je v samostatné 
 
 Další informace o delegování instančního objektu služby AKS najdete v tématu [delegovat přístup k dalším prostředkům Azure][sp-delegation].
 
-Jak každým uzlem a pod zobrazí jeho vlastní IP adresu, naplánujte si rozsahy adres podsítě AKS. Podsíť musí být dostatečně velký, k poskytování IP adres pro každý uzel, podů a síťové prostředky, které nasadíte. Každý cluster AKS, musí být umístěné ve vlastní podsíti. Povolení připojení k místní nebo partnerské sítě v Azure, nepoužívejte rozsahy IP adres, které se překrývají s existující síťové prostředky. Zde jsou nastavená výchozí omezení počtu podů, které se spouští každý uzel s kubenet i Azure CNI sítě. Pro zpracování vertikálního navýšení události nebo upgrady clusteru, musíte také dalších IP adres k dispozici pro použití v přiřazené podsítě.
+Jak každým uzlem a pod zobrazí jeho vlastní IP adresu, naplánujte si rozsahy adres podsítě AKS. Podsíť musí být dostatečně velký, k poskytování IP adres pro každý uzel, podů a síťové prostředky, které nasadíte. Každý cluster AKS, musí být umístěné ve vlastní podsíti. Povolení připojení k místní nebo partnerské sítě v Azure, nepoužívejte rozsahy IP adres, které se překrývají s existující síťové prostředky. Zde jsou nastavená výchozí omezení počtu podů, které se spouští každý uzel s kubenet i Azure CNI sítě. Pro zpracování vertikálního navýšení události nebo upgrady clusteru, musíte také dalších IP adres k dispozici pro použití v přiřazené podsítě. Tento další adresní prostor je obzvláště důležité, pokud používáte kontejnery Windows serveru (aktuálně ve verzi preview ve službě AKS), jak tyto fondy uzlů vyžadován upgrade na systém použít nejnovější opravami zabezpečení. Další informace o uzlech serveru systému Windows, naleznete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 
 Pro výpočet IP adresy potřeba, najdete v článku [Azure CNI konfigurace sítě ve službě AKS][advanced-networking].
 
@@ -101,6 +101,8 @@ spec:
 
 Řadič služby příchozího přenosu dat je proces démon, který běží na uzlu AKS a sleduje pro příchozí požadavky. Provoz je poté distribuován na základě pravidel definovaných v příchozího přenosu dat prostředku. Nejběžnější kontroler příchozího přenosu dat se odvíjí [NGINX]. AKS nebrání můžete k určitému kontroleru, abyste mohli používat ostatní řadiče, jako [rozvrh][contour], [HAProxy][haproxy], nebo [ Traefik][traefik].
 
+Příchozí přenos dat řadiče musí být naplánováno na uzlu Linux. Kontroler příchozího přenosu dat se nemůže spouštět uzly Windows serveru (aktuálně ve verzi preview ve službě AKS). Pomocí uzlu selektoru v manifestu YAML nebo nasazení grafu helmu k označení, že prostředek má běžet na uzlech založených na Linuxu. Další informace najdete v tématu [voliče uzlu na ovládací prvek používejte, kde jsou naplánovány podů ve službě AKS][concepts-node-selectors].
+
 Existuje mnoho scénářů pro příchozí přenos dat, včetně následujících návody:
 
 * [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
@@ -124,9 +126,9 @@ Nástroje pro vyrovnávání nebo příchozího přenosu dat prostředků zatí�
 
 **Osvědčené postupy pro moduly** – povolí nebo zakážou provoz na podů pomocí zásady sítě. Ve výchozím nastavení jsou povoleny všechny přenosy mezi pody v rámci clusteru. Pro lepší zabezpečení definujte pravidla, která omezení pod komunikace.
 
-Zásady sítě (aktuálně ve verzi preview ve službě AKS) je funkce, Kubernetes, která umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Použití zásad sítě poskytuje cloudově nativních způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít. Nepoužívejte skupiny zabezpečení sítě Azure k řízení provozu pod pod, použijte zásady sítě.
+Zásady sítě je funkce, Kubernetes, která umožňuje řídit tok přenosů mezi pody. Můžete povolit nebo zakázat provoz na základě nastavení, jako jsou přiřazená popisky, obor názvů nebo provoz portu. Použití zásad sítě poskytuje cloudově nativních způsob, jak řídit tok provozu. Při vytváření podů v clusteru AKS se dynamicky, požadovaná šířka zásady je automaticky použít. Nepoužívejte skupiny zabezpečení sítě Azure k řízení provozu pod pod, použijte zásady sítě.
 
-Pokud chcete použít zásady sítě, musí být povolena funkce, při vytváření clusteru AKS. Nelze povolit zásady sítě v existujícím clusteru AKS. Plánujte dopředu a ujistěte se, že povolíte zásady sítě v clusterech a můžete je podle potřeby.
+Pokud chcete použít zásady sítě, musí být povolena funkce, při vytváření clusteru AKS. Nelze povolit zásady sítě v existujícím clusteru AKS. Plánujte dopředu a ujistěte se, že povolíte zásady sítě v clusterech a můžete je podle potřeby. Zásady sítě by měla sloužit pouze pro uzly založené na Linuxu a podů ve službě AKS.
 
 Zásady sítě se vytvoří jako prostředek Kubernetes pomocí YAML manifestu. Zásady se použijí k definované podů a příchozí a odchozí pravidla definují, jak provoz může probíhat. Následující příklad nastavení uplatní zásady sítě podů s *aplikace: back-endu* popisek použitý k nim. Pravidla příchozího přenosu dat pak pouze umožní provoz z podů s *aplikace: front-endu* popisku:
 
@@ -186,3 +188,5 @@ Tento článek se zaměřuje na připojení k síti a zabezpečení. Další inf
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

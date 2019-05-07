@@ -4,6 +4,8 @@
   items:
     - name: Informace o Notification Hubs
       href: notification-hubs-push-notification-overview.md
+    - name: Integrace s App Service Mobile Apps
+      href: notification-hubs-app-service.md
 - name: Šablony Rychlý start
   items:
     - name: Vytvoření centra oznámení – Azure Portal

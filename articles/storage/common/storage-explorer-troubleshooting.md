@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 385eee6223487e9d7ca5cc3b213d180bb0f1da46
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6ada4a25f24a6dcbb1ebd54daad15b37127f7a21
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710865"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154195"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro Azure Storage Exploreru
 
@@ -235,7 +235,7 @@ Pokud jste omylem připojen pomocí neplatné adresy URL SAS a nelze odpojit, po
 
 Obecně tyto balíčky jsou potřeba ke spouštění Průzkumníka služby Storage v Linuxu:
 
-* [.NET Core 2.0 Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET core 2.0 Runtime](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) Poznámka: Průzkumník služby Storage verze 1.7.0 a dříve vyžadují rozhraní .NET Core 2.0. Pokud máte novější verzi .NET Core instalaci je potřeba opravit Průzkumníka služby Storage (viz níže). Pokud používáte Průzkumníka služby Storage 1.8.0 nebo větší potom byste měli moct využít .NET Core 2.2. Systémy novější než 2.2 nebyly ověřeny pro práci v tuto chvíli.
 * `libgnome-keyring-common` a `libgnome-keyring-dev`
 * `libgconf-2-4`
 

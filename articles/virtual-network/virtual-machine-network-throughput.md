@@ -3,8 +3,7 @@ title: Propustnost sítě virtuálních počítačů Azure | Dokumentace Microso
 description: Další informace o propustnosti sítě virtuálních počítačů Azure.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: steveesp
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: kumud
-ms.openlocfilehash: 182b3b7dad828e67d006391e00986406729c959d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 4/26/2019
+ms.author: kumud,steveesp, mareat
+ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689255"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153744"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálních počítačů
 
@@ -43,6 +42,30 @@ Omezení propustnosti platí pro virtuální počítač. Propustnost je tato akc
 - **Akcelerované síťové služby**: I když tato funkce může být užitečné při dosažení limitu publikované, nezmění limit.
 - **Určení provozu**: Všechny cíle počítají odchozí limit.
 - **Protokol**: Veškerý odchozí provoz přes všechny protokoly započítává limitu.
+
+## <a name="network-flow-limits"></a>Síťové omezení toku
+
+Kromě šířky pásma počet síťových připojení, které jsou k dispozici na virtuálním počítači v daném okamžiku může ovlivnit výkon sítě. Azure stack sítě udržuje svůj stav pro každý směr připojení TCP/UDP v datových struktur nazývá "toky". Typické připojení TCP nebo UDP bude mít 2 toky vytvořené, jeden pro příchozí a druhý pro odchozí směr. 
+
+Přenos dat mezi koncovými body vyžaduje vytvoření několika toků kromě těch, které provádějí přenos dat. Mezi příklady patří toky vytvořené pro překlad názvů DNS a toků vytvořených pro sondy stavu nástroje pro vyrovnávání zatížení. Všimněte si, že síťová virtuální zařízení (Nva), jako jsou brány, proxy servery, brány firewall, se také zobrazí toky vytváří pro připojení k ukončuje na zařízení a vytvoří se zařízení. 
+
+![Počet toku pro konverzace TCP přes zařízení předávání](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+
+## <a name="flow-limits-and-recommendations"></a>Tok omezení a doporučení
+
+V současné době podporuje Azure síťového zásobníku celé sítě 250 tis. toků s dobrého výkonu pro virtuální počítače s větší než 8 jader procesoru a 100 tisíc celkový počet toků s dobrého výkonu pro virtuální počítače s méně než 8 jader procesoru. Za toto omezení sítě výkon sníží, přetrénujte řádně pro další toky až vynucené omezení milionu celkový počet toků, 500 tisíc příchozí a 500 tisíc odchozí, po které další toky se zahodí.
+
+||Virtuální počítače s < procesor s 8 jádry|Virtuální počítače s 8 + jader procesoru|
+|---|---|---|
+|<b>Dobrý výkon</b>|100 tis. toků |250 tis. toků|
+|<b>Důvodem sníženého výkonu</b>|Nad 100 tisíc toky|Nad 250 tis. toků|
+|<b>Limit toku</b>|1 milion toků|1 milion toků|
+
+Metriky jsou k dispozici v [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) můžete sledovat počet síťovými toky a rychlost vytváření toku u virtuálního počítače nebo VMSS instancí.
+
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+
+Připojení zařízení a ukončení míra může také ovlivnit výkon sítě jako připojení zařízení a ukončení složek procesoru pomocí rutiny zpracování paketů. Doporučujeme vám, že jste srovnávací testy úlohy s využitím očekávaného provozu a horizontální navýšení kapacity úloh odpovídajícím způsobem tak, aby odpovídaly vašim požadavkům na výkon. 
 
 ## <a name="next-steps"></a>Další postup
 

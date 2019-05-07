@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fecefbbed39f4fc12db79c7466006409e3da7dd1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574472"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073361"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -111,20 +111,16 @@ Je možné zmenšit velikost vašeho zřízené sdílené složky pod používan
 
 Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti zřízené sdílené složky:
 
-(Velikosti udávají * jsou v omezené veřejné verzi preview)
-
 |Kapacita (GB) | Standardní hodnoty vstupně-výstupních operací | Vstupně-výstupních operací datové sekvence | Výchozí přenos dat (MiB/s) | Příchozí přenos dat (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
 |1,024       | 1,024   | Až 3,072   | 122   | 81   |
 |5,120       | 5,120   | Až 15,360  | 368   | 245   |
-|10,240 *     | 10,240  | 30 až 720  | 675 | 450   |
-|33,792 *     | 33,792  | Až 100 000 | 2,088 | 1,392   |
-|51,200 *     | 51,200  | Až 100 000 | 3,132 | 2,088   |
-|102,400 *    | 100 000 | Až 100 000 | 6,204 | 4,136   |
-
-V současné době velikosti sdílené složky souborů maximálně 5 TiB jsou ve verzi public preview, zatímco o velikosti až 100 TB v omezené veřejné verzi preview požádat o přístup k omezené veřejné verzi preview kompletní [tento průzkum.](https://aka.ms/azurefilesatscalesurvey)
+|10,240      | 10,240  | 30 až 720  | 675 | 450   |
+|33,792      | 33,792  | Až 100 000 | 2,088 | 1,392   |
+|51,200      | 51,200  | Až 100 000 | 3,132 | 2,088   |
+|102,400     | 100 000 | Až 100 000 | 6,204 | 4,136   |
 
 ### <a name="bursting"></a>Shlukování
 
@@ -184,7 +180,7 @@ Mějte tyto body při rozhodování o možnosti replikace, kterou chcete použí
 
 ## <a name="data-growth-pattern"></a>Vzorek nárůstu dat
 
-V současné době maximální velikost pro sdílené složky Azure je 5 TB (100 TB pro premium soubor sdílet omezené veřejné verzi preview). Z důvodu tímto aktuálním omezením bránit musíte zvážit očekávaný nárůst dat při nasazování sdílené složky Azure.
+V současné době maximální velikost pro sdílené složky Azure je 5 TB (100 TB pro premium sdílené složky, které jsou ve verzi public preview). Z důvodu tímto aktuálním omezením bránit musíte zvážit očekávaný nárůst dat při nasazování sdílené složky Azure.
 
 Je možné pro synchronizaci více sdílených složek Azure na jeden souborový server Windows pomocí služby Azure File Sync. To umožňuje zajistit, že starší, velké sdílené složky, že máte v místním může být přenesena do Azure File Sync. Další informace najdete v tématu [plánování nasazení služby Azure File Sync](storage-files-planning.md).
 

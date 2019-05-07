@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 04ed95317311b81af49f5d96addb203b7cfeb74a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f365fcd61944fbae131ab79a1c3660aaf02fa8d7
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725654"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073934"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,9 @@ Tento článek adresy časté otázky o Azure Kubernetes Service (AKS).
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS podporuje automatické škálování uzlů?
 
-Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes automatického] [ auto-scaler] od Kubernetes 1.10. Další informace o tom, jak nakonfigurovat a používat automatického škálování clusteru najdete v tématu [automatické škálování clusteru v AKS][aks-cluster-autoscale].
+Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes automatického] [ auto-scaler] od Kubernetes 1.10. Další informace o tom, jak ručně nakonfigurovat a používat automatického škálování clusteru najdete v tématu [automatické škálování clusteru v AKS][aks-cluster-autoscale].
+
+Můžete také použít automatického škálování clusteru integrované (aktuálně ve verzi preview ve službě AKS) spravovat škálování uzlů. Další informace najdete v tématu [automatické škálování clusteru, které splňují požadavky aplikace ve službě AKS][aks-cluster-autoscaler].
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Podporuje AKS Kubernetes řízení přístupu na základě role (RBAC)?
 
@@ -41,13 +43,17 @@ V tuto chvíli to není možné. Na serveru Kubernetes API je zveřejněné jako
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení použít pro uzly AKS agenta?
 
-Ano, Azure automaticky aplikuje opravy zabezpečení na uzly v clusteru na noční plánu. Ale, budete muset zajistit, že uzly se restartují podle potřeby. Máte několik možností, jak k provádění restartování uzlu:
+Azure automaticky aplikuje na uzly s Linuxem v clusteru na noční plán oprav zabezpečení. Ale budete muset zajistit, že tyto Linux uzly se restartují jako povinné. Máte několik možností, jak k provádění restartování uzlu:
 
 - Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
 - Díky upgradu clusteru AKS. Inovace clusteru automaticky [kordon a výpusť uzly][cordon-drain], následně vyvolejte místní každý uzel zpátky pomocí nejnovější image Ubuntu a nové verze opravy nebo dílčí verze Kubernetes. Další informace najdete v tématu [Upgrade clusteru AKS][aks-upgrade].
 - Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování operačního systému se spravují v clusteru pomocí stejných [kordon a výpusť procesu] [ cordon-drain] jako upgradu clusteru.
 
 Další informace o používání kured najdete v tématu [použití aktualizací zabezpečení a jádra pro uzly ve službě AKS][node-updates-kured].
+
+### <a name="windows-server-nodes"></a>Uzly Windows serveru
+
+Pro uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) Windows Update automaticky spustit a použijte nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání verzí Windows Update a procesu ověřování měli byste provést upgrade na fondy uzlů Windows Server ve vašem clusteru AKS. Pomocí tohoto procesu vytvoří uzly, na kterých běží nejnovější image Windows serveru a oprav a pak odstraní starší uzly. Další informace o tomto procesu najdete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené službou AKS?
 
@@ -102,7 +108,9 @@ AKS není aktuálně nativně integrovaná s Azure Key Vault. Ale [Azure Key Vau
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit kontejnery Windows serveru v AKS
 
-Pro spouštění kontejnerů Windows serveru, budete muset spustit uzly se systémem Windows Server. V tuto chvíli nejsou k dispozici ve službě AKS Windows serverových uzlů. Můžete však použít Virtual Kubelet můžete plánovat kontejnery Windows v Azure Container Instances a spravovat je jako součást clusteru AKS. Další informace najdete v tématu [Virtual Kubelet použití službou AKS][virtual-kubelet].
+Ano, kontejnery Windows serveru jsou dostupné ve verzi preview. Pro spouštění kontejnerů Windows serveru ve službě AKS, můžete vytvořit fond uzlů, na kterém běží Windows Server jako hostovaný operační systém. Kontejnery Windows serveru můžete použít pouze systému Windows Server 2019. Abyste mohli začít, [vytvoření clusteru AKS pomocí fond uzlů Windows Server][aks-windows-cli].
+
+Podpora fond uzlů serveru okno zahrnuje určitá omezení, které jsou součástí Windows serveru pro odesílání dat v projektu Kubernetes. Další informace o těchto omezeních najdete v tématu [kontejnery Windows serveru v AKS omezení][aks-windows-limitations].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
@@ -120,6 +128,10 @@ Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníko
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-cluster-autoscaler]: cluster-autoscaler.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[aks-windows-cli]: windows-container-cli.md
+[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bf2ded7a98d608780bc447c5944e7d1f4d9b698b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 95e4e3f3acc52c230405f0c0cc4a05b03b21a386
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926414"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153778"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Převzetí služeb při selhání a znovunastavení ochrany virtuálních počítačů Azure mezi oblastmi
 
@@ -27,8 +27,10 @@ Tento kurz popisuje, jak převzít služby při selhání virtuálním počíta�
 > [!NOTE]
 > Tento kurz obsahuje nejjednodušší cesta s výchozím nastavením a minimální přizpůsobení. Pro složitější scénáře použijte články v části "Jak na" pro virtuální počítače Azure.
 
+
 ## <a name="prerequisites"></a>Požadavky
 
+- Než začnete, projděte si [– nejčastější dotazy](site-recovery-faq.md#failover) o převzetí služeb při selhání.
 - Ujistěte se, že jste dokončením [postupu zotavení po havárii](azure-to-azure-tutorial-dr-drill.md) zkontrolovali, že vše funguje podle očekávání.
 - Před spuštěním testovacího převzetí služeb při selhání ověřte vlastnosti virtuálního počítače. Virtuální počítač musí splňovat [požadavky Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 

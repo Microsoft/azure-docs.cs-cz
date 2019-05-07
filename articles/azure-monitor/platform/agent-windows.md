@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/29/2019
 ms.author: magoedte
-ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777330"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138131"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows do Azure monitoru
 
@@ -31,16 +31,18 @@ Může být agent nainstalovaný pomocí jedné z následujících metod. Větš
 * Ruční instalace. Instalační program je v počítači pomocí Průvodce instalací, z příkazového řádku spustit ručně nebo nasadit pomocí stávajících nástroje pro distribuci softwaru.
 * Azure Automation Desired State Configuration (DSC). Používání DSC ve službě Azure Automation pomocí skriptu pro počítače Windows už nasazená ve vašem prostředí.  
 * Skript prostředí PowerShell.
-* Šablona Resource Manageru pro virtuální počítače s Windows v místním ve službě Azure Stack.  
+* Šablona Resource Manageru pro virtuální počítače s Windows v místním ve službě Azure Stack. 
 
 >[!NOTE]
 >Azure Security Center (ASC) závisí na Microsoft Monitoring Agent (také označované jako agenta Log Analytics Windows) a bude nainstalovat a nakonfigurovat, aby sestavy do pracovního prostoru Log Analytics jako součást nasazení. ASC zahrnuje možnost automatické zřizování, který umožňuje automatickou instalaci agenta Log Analytics Windows na všech virtuálních počítačů ve vašem předplatném a nakonfiguruje ho, aby zprávy do konkrétního pracovního prostoru. Další informace o této možnosti najdete v tématu [povolit automatické zřizování agenta Log Analytics](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
 >
 
+Pokud je potřeba nakonfigurovat agenta na generování sestav k více než jednomu pracovnímu prostoru, toto nelze provést během počáteční instalace pouze později a aktualizuje nastavení v Ovládacích panelech nebo prostředí PowerShell popsaný v [přidání nebo odebrání pracovního prostoru](agent-manage.md#adding-or-removing-a-workspace).  
+
 Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
-Před instalací agenta Log Analytics pro Windows, budete potřebovat ID pracovního prostoru a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace ke správné konfiguraci agenta a zajistěte, aby že mohla úspěšně komunikovat s Azure Monitor v komerční Azure a cloud pro státní správu USA.  
+Před instalací agenta Log Analytics pro Windows, budete potřebovat ID pracovního prostoru a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace ke správné konfiguraci agenta a zajistěte, aby že mohla úspěšně komunikovat s Azure Monitor v komerční Azure a cloud pro státní správu USA. 
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který chcete v konfiguraci agenta pro hlášení.

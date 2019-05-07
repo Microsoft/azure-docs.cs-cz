@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e000c034d10efc652f328fa8d1db8d1902fac693
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026114"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153051"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spouštění kontejnerů Speech Service
 
@@ -178,7 +178,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
 
-**Během fáze private preview**, fakturace nastavení musí být platné pro spuštění kontejneru, ale za využití se nic neúčtuje.
+**Během období preview**, fakturace nastavení musí být platné pro spuštění kontejneru, ale za využití se nic neúčtuje.
 
 | Zástupný symbol | Hodnota |
 |-------------|-------|
@@ -226,7 +226,7 @@ Tento příkaz:
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-Poskytuje kontejner dotazů založených na protokolu websocket koncový bod rozhraní API, které jsou přístupné prostřednictvím [dokumentace ke službě SDK services řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Poskytuje kontejner dotazů založených na protokolu websocket koncový bod rozhraní API, které jsou přístupné prostřednictvím [sadou SDK pro řeč](index.yml).
 
 Ve výchozím nastavení používá sadou SDK pro řeč online hlasové služby. Použití kontejneru, budete muset změnit metodu inicializace. Viz následující příklady.
 

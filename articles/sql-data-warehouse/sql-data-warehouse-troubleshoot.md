@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/04/2018
+ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474840"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154253"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 Tento článek uvádí běžné otázka Poradce při potížích.
@@ -57,8 +57,9 @@ Tento článek uvádí běžné otázka Poradce při potížích.
 ## <a name="polybase"></a>Polybase
 | Problém                                           | Řešení                                                   |
 | :---------------------------------------------- | :----------------------------------------------------------- |
-| Zatížení se nezdaří z důvodu velkých řádků                | Podpora velký řádek aktuálně není k dispozici pro Polybase.  To znamená, že pokud tabulka obsahuje VARCHAR(MAX) či NVARCHAR(MAX) nebo VARBINARY(MAX), externí tabulky nelze načíst data.  Načítání velkých řádků je aktuálně podporuje jenom prostřednictvím Azure Data Factory (data pomocí BCP), Azure Stream Analytics, služby SSIS, BCP nebo třídy .NET SQLBulkCopy. PolyBase podpora pro velké řádky bude přidána v budoucí verzi. |
-| selhání BCP zatížení tabulky s maximální datový typ | Existuje známý problém, který vyžaduje, VARCHAR(MAX), NVARCHAR(MAX) nebo VARBINARY(MAX) umístit na konci v tabulce v některých scénářích.  Zkuste maximální počet sloupců na konec tabulky. |
+| Exporty se nezdaří s typy TINYINT data a času             | Pro formáty souborů Parquet a ORC, data typu hodnoty musí být mezi 1970-01-01 00:00:01 UTC a 2038-01-19 03:14:07. Hodnoty pro typ TINYINT musí být mezi 0-127.    |
+| Problém s typem Parquet DECIMAL: psaní ze Spark zadejte DecimalType(18,4) a import do sloupce typu double nebo skutečné poskytuje "Chyba: java.base/java.lang.Long nelze přetypovat na java.base/java.lang.Float". | Musíte naimportovat do bigint a dělit 10000 nebo použití [Databricks] konektor SQL data Warehouse. |
+| Problém s Parquet datový typ: psaní z Spark typu data a importu do sloupce zadejte datum nebo datum a čas poskytuje "Chyba: java.base/java.lang.Integer nelze přetypovat na parquet.io.api.Binary". | Musíte použít jiný typ Spark (int) a výpočetní datum nebo použít [Databricks] konektor SQL data Warehouse. |
 
 ## <a name="differences-from-sql-database"></a>Rozdíl oproti SQL Database
 | Problém                                 | Řešení                                                   |
@@ -132,3 +133,4 @@ Pro další pomoc při hledání řešení problému tady jsou některé další
 [Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse

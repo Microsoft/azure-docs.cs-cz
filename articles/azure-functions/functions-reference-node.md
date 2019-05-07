@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 37d00abbbf726dc1b92bdcc5f39b16301de9b93d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2eea1a1d30558765a2f8320b0b23efdbe3368807
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697842"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140963"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -204,7 +204,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Vrátí objekt s názvem, který obsahuje všechny vstupní a výstupní data. Například následující definice vazby ve vaší function.json umožňují přístup k obsahu z fronty z `context.bindings.myInput` a přiřaďte výstupy do fronty pomocí `context.bindings.myOutput`.
+Vrátí objekt s názvem, který se používá ke čtení nebo přiřadit datové vazby. Trigger vytvoření vazby mezi daty a vstup je přístupný na čtení vlastností `context.bindings`. Výstupní vazby data je možné přiřadit tak, že přidáte data `context.bindings`
+
+Například následující definice vazby ve vaší function.json umožňují přístup k obsahu z fronty z `context.bindings.myInput` a přiřaďte výstupy do fronty pomocí `context.bindings.myOutput`.
 
 ```json
 {
@@ -290,7 +292,7 @@ Je možné [nakonfigurovat prahové hodnoty úroveň trasování pro protokolov�
 
 ## <a name="writing-trace-output-to-the-console"></a>Zápisu výstupu sledování do konzoly 
 
-Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V funkce v2.x výstup trasování pomocí `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a proto nejsou zobrazeny v protokolech určité funkce. , Však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly.
+Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V funkce v2.x výstup trasování pomocí `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a nejsou zobrazeny v protokolech určité funkce. , Však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly.
 
 Při volání `context.log()`, vaše zapíše se do konzoly na výchozí úrovni trasování, který je _informace_ úroveň trasování. Následující kód, zapíše do konzoly na úroveň trasování informace:
 
@@ -350,12 +352,12 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Objekt, který obsahuje text žádosti.               |
+| _Text_        | Objekt, který obsahuje text žádosti.               |
 | _headers_     | Objekt, který obsahuje hlavičky požadavku.                   |
-| _method_      | Metoda HTTP požadavku.                                |
-| _originalUrl_ | Adresa URL požadavku.                                        |
+| _– Metoda_      | Metoda HTTP požadavku.                                |
+| _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
 | _params_      | Objekt, který obsahuje směrování parametry požadavku. |
-| _query_       | Objekt, který obsahuje parametry dotazu.                  |
+| _Dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
@@ -365,7 +367,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Objekt, který obsahuje text odpovědi.         |
+| _Text_    | Objekt, který obsahuje text odpovědi.         |
 | _headers_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Označuje, že formátování se přeskočí pro odpověď.    |
 | _status_  | Stavový kód HTTP odpovědi.                     |

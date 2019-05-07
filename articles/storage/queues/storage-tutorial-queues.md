@@ -1,21 +1,22 @@
 ---
-title: Kurz – práce s frontami služby Azure storage
+title: Kurz – práce s frontami služby Azure storage – Azure Storage
 description: Kurz předvádějící způsoby použití služby front Azure k vytvoření fronty a vložení, zobrazovat a odstraňovat zprávy.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 5aa12c39b951ce65c4ef0a3f44de381c8961ed7f
-ms.sourcegitcommit: 1aab8b764d767d86fbf262bda34996189d00c7bb
+ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "64406165"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65151067"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>Kurz: Práce s frontami služby Azure storage
+# <a name="tutorial-work-with-azure-storage-queues"></a>Kurz: Práce s frontami Azure Storage
 
 Azure Queue storage implementuje založené na cloudu fronty k umožnění komunikace mezi součástmi distribuované aplikace. Každá fronta udržuje seznam zpráv, které lze přidávat komponenta odesílatele a zpracovány komponenty příjemce. S frontou můžete okamžitě škálovat aplikace podle potřeby. Tento článek popisuje základní kroky pro práci se do fronty Azure storage.
 

@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119125"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145147"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při registraci řešení
 
@@ -78,6 +78,36 @@ Pokud chcete úspěšně nasadit řešení, je potřeba zvážit změnu označen
   * Úprava sady prostředků této zásadě byl konfigurován k odepření.
 
 Zkontrolovat oznámení v pravém horním rohu webu Azure portal nebo přejděte do skupiny prostředků obsahující účet automation a vyberte **nasazení** pod **nastavení** zobrazíte neúspěšný nasazení. Další informace o službě Azure Policy najdete v tématu: [Přehled služby Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+
+### <a name="unlink"></a>Scénář: Chyby při pokusu o zrušení propojení pracovního prostoru
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o zrušení propojení pracovního prostoru se zobrazí následující chyba:
+
+```error
+The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba nastane, pokud máte řešení aktivní ve vašem pracovním prostoru Log Analytics, která závisí na pracovního prostoru účtu Automation a analýzy protokolu na které se odkazuje.
+
+### <a name="resolution"></a>Řešení
+
+Pokud chcete tento problém vyřešit, musíte odebrat následující řešení z pracovního prostoru, pokud je používáte:
+
+* Update Management
+* Sledování změn
+* Spuštění/zastavení virtuálních počítačů mimo špičku
+
+Po odebrání řešení můžete zrušit propojení pracovního prostoru. Je třeba odstranit všechny existující artefakty z těchto řešení z pracovního prostoru a účtu Automation i.  
+
+* Update Management
+  * Odebrat nasazení aktualizací (plány) ve svém účtu Automation
+* Spuštění/zastavení virtuálních počítačů mimo špičku
+  * Odebrání všech zámků na součásti řešení ve vašem účtu Automation v části **nastavení** > **zámky**.
+  * Pro další kroky k odebrání špičku spouštění/zastavování virtuálních počítačů najdete v článku, [odebrání spuštění/zastavení virtuálního počítače špičku](../automation-solution-vm-management.md##remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>Chyby rozšíření agenta MMA
 

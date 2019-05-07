@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8d509e9f3cabcd588d539d42b8cce022e17a1222
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917332"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139207"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
 
@@ -45,7 +45,7 @@ V téměř všechny toky OAuth 2.0 a OpenID Connect existují čtyři strany sou
 
 ## <a name="app-registration"></a>Registrace aplikace
 
-Každá aplikace, kterou chce, aby se tak, aby přijímal jak osobní i pracovní nebo školní účty musí být zaregistrované přes nové **registrace aplikací (Preview)** dojít [webu Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) předtím, než se tito uživatelé přihlásit pomocí OAuth 2.0 nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřadit aplikaci několik hodnot:
+Každá aplikace, kterou chce, aby se tak, aby přijímal jak osobní i pracovní nebo školní účty musí být registrovaný prostřednictvím metody **registrace aplikací** dojít [webu Azure portal](https://aka.ms/appregistrations) předtím, než mohl tyto uživatele ve službě pomocí OAuth 2.0 nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřadit aplikaci několik hodnot:
 
 * **ID aplikace** , který jednoznačně identifikuje vaši aplikaci
 * A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** , který lze použít k cílení odpovědí zpět do vaší aplikace

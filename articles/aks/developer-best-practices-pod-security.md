@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1c2c5cbee91ddaee5f1f6af8ec17c48326f68e84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9d49d143b31b0b9e73d8a147605935cd88d412b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466855"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073968"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod ve službě Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,9 @@ Můžete si také přečíst osvědčené postupy pro [clusteru zabezpečení] [
 
 **Osvědčené postupy pro moduly** – Chcete-li spustit jako jiné uživatele nebo skupinu a omezit přístup k základní uzel procesů a služeb, nastavení zabezpečení pod kontextu. Přiřadit nejmenší počet požadovaná oprávnění.
 
-Pro vaše aplikace správně spustit, by měl spustit podů jako definované uživatele nebo skupiny a ne jako *kořenové*. `securityContext` Pro pod nebo kontejnerů umožňuje definovat nastavení, jako *Spustit_jako_uživatel* nebo *fsGroup* předpokládat, že příslušná oprávnění. Pouze požadovaného uživatele nebo skupiny oprávnění a nepoužívejte kontextu zabezpečení jako způsob předpokládat, že další oprávnění. Při spuštění jako uživatel bez kořenového kontejnery nelze vytvořit vazbu na privilegované porty v části 1 024. V tomto scénáři je možné ke skrytí skutečnost, že je aplikace spuštěna na konkrétním portu služby Kubernetes.
+Pro vaše aplikace správně spustit, by měl spustit podů jako definované uživatele nebo skupiny a ne jako *kořenové*. `securityContext` Pro pod nebo kontejnerů umožňuje definovat nastavení, jako *Spustit_jako_uživatel* nebo *fsGroup* předpokládat, že příslušná oprávnění. Pouze požadovaného uživatele nebo skupiny oprávnění a nepoužívejte kontextu zabezpečení jako způsob předpokládat, že další oprávnění. *Spustit_jako_uživatel*, zvýšení úrovně oprávnění a další nastavení možností Linux jsou dostupné jenom pro uzly s Linuxem a tyto pody.
+
+Při spuštění jako uživatel bez kořenového kontejnery nelze vytvořit vazbu na privilegované porty v části 1 024. V tomto scénáři je možné ke skrytí skutečnost, že je aplikace spuštěna na konkrétním portu služby Kubernetes.
 
 Kontext zabezpečení pod můžete také definovat oprávnění pro přístup k procesů a služeb nebo další funkce. Můžete nastavit následující běžné definice kontext zabezpečení:
 
@@ -66,7 +68,7 @@ Operátor clusteru rozhodnout, jaká nastavení kontextu zabezpečení je nutné
 
 ## <a name="limit-credential-exposure"></a>Limit odhalení přihlašovacích údajů
 
-**Osvědčené postupy pro moduly** -nebudete definovat přihlašovací údaje v kódu aplikace. Pod žádost o přístup k dalším prostředkům pomocí spravované identity pro prostředky Azure. Digitální trezoru, jako je Azure Key Vault, by měla také sloužit k ukládání a načítání digitálních klíčů a přihlašovacích údajů.
+**Osvědčené postupy pro moduly** -nebudete definovat přihlašovací údaje v kódu aplikace. Pod žádost o přístup k dalším prostředkům pomocí spravované identity pro prostředky Azure. Digitální trezoru, jako je Azure Key Vault, by měla také sloužit k ukládání a načítání digitálních klíčů a přihlašovacích údajů. Pod spravovaných identit je určena pro použití s Linuxem podů a jen pro Image kontejneru.
 
 Pokud chcete omezit riziko vystavení v kódu aplikace přihlašovacích údajů, se vyhněte použití fixed nebo sdílené přihlašovací údaje. Přihlašovacím údajům nebo klíčům by neměla být obsažená přímo v kódu. Pokud tyto přihlašovací údaje jsou odhaleny, aplikace potřebuje aktualizovat a znovu nasadit. Lepším řešením je poskytnout podů vlastní identity a způsob, jak sami ověření, nebo automaticky načíst přihlašovací údaje z digitální trezoru.
 
@@ -96,6 +98,8 @@ Když aplikace potřebuje přihlašovací údaje, komunikují s digitální trez
 ![Zjednodušený pracovní postup pro načtení přihlašovacích údajů ze služby Key Vault pomocí pod spravované identity](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
 
 Se službou Key Vault ukládat a pravidelně otočit tajné kódy jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí FlexVolume. Ovladač FlexVolume umožňuje clusteru AKS nativně načíst přihlašovací údaje ze služby Key Vault a bezpečné poskytování přesných pouze na žádost o pod. Práce s operátorem váš cluster nasadit ovladač Key Vault FlexVol do uzlů AKS. Pod spravované identity můžete požádat o přístup do služby Key Vault a načíst přihlašovací údaje, které potřebujete prostřednictvím FlexVolume ovladače.
+
+Služba Azure Key Vault s FlexVol je určena pro použití s aplikacemi a službami, které běží na systému Linux podů a uzly.
 
 ## <a name="next-steps"></a>Další postup
 

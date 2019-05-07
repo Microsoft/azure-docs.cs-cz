@@ -2,18 +2,19 @@
 title: 'Kurz: Hostování statického webu ve službě Blob storage – Azure Storage'
 description: Zjistěte, jak nakonfigurovat účet úložiště pro hostování statického webu a statického webu nasadit do služby Azure Storage.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: tutorial
 ms.date: 12/31/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: eb472465c0d35150f2a13563058905751219411d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3f2dd74d00b36016549cd33d76b866de241d977
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61428542"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148485"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
