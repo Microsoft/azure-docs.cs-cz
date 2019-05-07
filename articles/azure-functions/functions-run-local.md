@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 380cd84cc5ec56fe54c12201b9c1db810ac457bf
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875927"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140942"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -186,7 +186,7 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
 
 | Nastavení      | Popis                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Pokud je nastavena na `true`, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je `false`. |
+| **`IsEncrypted`** | Pokud je nastavena na `true`, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je `true`. Když `true`, všechna nastavení, které jsou přidány pomocí `func settings add` jsou šifrované pomocí klíče místního počítače. To odráží, jak jsou uložená nastavení aplikace function app v nastavení aplikace v Azure. Šifrování lokální hodnoty poskytuje další ochranu cenná data, by měl local.settings.json možné veřejně zpřístupnit.  |
 | **`Values`** | Kolekce nastavení aplikace a připojovacích řetězců použité při místním spuštění. Tyto hodnoty odpovídají nastavení aplikace ve vaší aplikaci function app v Azure, jako například [ `AzureWebJobsStorage` ]. Řada triggerů a vazeb mají vlastnost, která odkazuje na nastavení aplikace řetězec připojení, jako například `Connection` pro [aktivační událost objektů Blob storage](functions-bindings-storage-blob.md#trigger---configuration). Pro tyto vlastnosti definované v nastavení aplikace potřebujete `Values` pole. <br/>[`AzureWebJobsStorage`] Požadovaná aplikace nastavení pro aktivační události než HTTP. <br/>Verze 2.x modul runtime služby Functions vyžaduje [ `FUNCTIONS_WORKER_RUNTIME` ] nastavení, který je generován základní nástroje pro váš projekt. <br/> Pokud máte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) nainstalovaný místně, můžete nastavit [ `AzureWebJobsStorage` ] k `UseDevelopmentStorage=true` a základní nástroje pomocí emulátoru. To je užitečné při vývoji, ale měli byste otestovat připojení k skutečného úložiště před nasazením. |
 | **`Host`** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. |
 | **`LocalHttpPort`** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |

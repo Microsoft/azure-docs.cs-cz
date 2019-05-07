@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2019
+ms.date: 06/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 688bcc02b14d101008afc76662fd6548446cb329
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870279"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205703"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace AWS nákladů a využití integrace sestavy
 
 Díky integraci Amazon Web Services nákladů a využití sestav můžete monitorovat a kontrolovat útraty AWS ve službě Azure Cost Management. Integrace umožňuje na jednom místě na webu Azure portal, kde můžete monitorovat a ovládací prvek výdaje za Azure a AWS. Tento článek vysvětluje, jak nastavení integrace a nakonfigurujte ho tak, aby analýza nákladů a zkontrolovat rozpočty použijete funkce Cost Management.
 
-Služba Cost Management přečte AWS nákladů a využití sestavy, které jsou uložené v sady S3 pomocí vašich přihlašovacích údajů AWS přístup k získání definice sestav a stáhnout sestavu, kterou souborů GZIP sdíleného svazku clusteru.
+Z hlediska nákladů procesů správy AWS nákladů a využití sestavy, které jsou uložené v sady S3 pomocí vašich přihlašovacích údajů AWS přístup k získání definice sestav a stáhnout sestavu, kterou souborů GZIP sdíleného svazku clusteru.
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Vytvoření sestavy nákladů a využití v AWS
 
@@ -45,13 +45,15 @@ Použití **sestavy** stránka konzoly správou nákladů a fakturací v AWS, ch
 14. Po zkontrolování nastavení sestavy, klikněte na tlačítko **zkontrolujte a dokončete**.
     Poznámka: **název sestavy**. Použijete ho v dalších krocích.
 
-Může trvat až 24 hodin AWS ke spuštění doručování sestavy do vašeho kontejneru Amazon S3. Po spuštění doručování AWS aktualizuje soubory sestav AWS nákladů a využití alespoň jednou za den.
+Může trvat až 24 hodin AWS ke spuštění doručování sestavy do vašeho kontejneru Amazon S3. Po spuštění doručování AWS aktualizuje soubory sestav AWS nákladů a využití alespoň jednou za den. Můžete pokračovat v konfiguraci vašeho prostředí AWS bez čekání na doručování na spuštění.
 
 ## <a name="create-a-role-and-policy-in-aws"></a>Vytvoření role a zásad AWS
 
 Azure Cost Management zajišťuje přístup ke kontejneru S3, kde nákladů a využití je sestava umístěna několikrát za den. Služba Cost Management potřebuje přístup k přihlašovacím údajům a kontrolují dostupnost nových dat. Vytvoření Role a zásad v AWS, pokud chcete povolit přístup služba Cost Management.
 
 Pokud chcete povolit přístup na základě rolí k účtu AWS ve službě Azure Cost Management, je role vytvořené v konzole AWS. Je potřeba mít _Role ARN_ a _externí ID_ v konzole AWS. Později je použijete v části Vytvoření konektoru stránku AWS ve službě Azure Cost Management.
+
+Pomocí Průvodce vytvořením nové role:
 
 1. Přihlaste se ke konzole AWS a vyberte **služby**.
 2. V seznamu služeb vyberte **IAM**.
@@ -64,30 +66,42 @@ Pokud chcete povolit přístup na základě rolí k účtu AWS ve službě Azure
 8. Klikněte na tlačítko **Další: Oprávnění**.
 9. Klikněte na tlačítko **vytvořit zásadu**. Na nové kartě prohlížeče se otevře, ve kterém vytvoříte novou zásadu.
 10. Klikněte na tlačítko **vybrat službu**.
-11. Typ **náklady a sestava využití**.
-12. Vyberte **úroveň přístupu**, **čtení** > **DescribeReportDefinitions**. Díky tomu, že náklady na správu, přečtěte si, co stejné zprávy jsou definovány a určit, pokud se shodují kontrolu požadovaných součástí definice sestavy.
-13. Klikněte na tlačítko **přidat další oprávnění**.
-14. Klikněte na tlačítko **vybrat službu**.
-15. Typ _S3_.
-16. Vyberte **úroveň přístupu**, **seznamu** > **ListBucket**. Tato akce načte seznam objektů v intervalu S3.
-17. Vyberte **úroveň přístupu**, **čtení** > **GetObject**. Tato akce umožňuje fakturace stahování souborů.
-18. Vyberte **prostředky**.
-19. Vyberte **kontejneru – přidání ARN**.
-20. V **název sektoru**, zadejte do kbelíku používá k ukládání souborů MĚNA.
-21. Vyberte **objekt – přidání ARN**.
-22. V **název sektoru**, zadejte do kbelíku používá k ukládání souborů MĚNA.
-23. V **název objektu**vyberte **jakékoli**.
-24. Klikněte na tlačítko **přidat další oprávnění**.
-25. Klikněte na tlačítko **vybrat službu**.
-26. Typ _nákladů Průzkumníka služby_.
-27. Vyberte **akce Explorer – všechny náklady na služby (ce:\*)**. Tato akce ověří správnost kolekce.
-28. Klikněte na tlačítko **přidat další oprávnění**.
-29. Typ **organizace**.
-30. Vyberte **úroveň přístupu, seznam** > **Vypisovat účty**. Tato akce získá názvy účtů.
-31. V **zásady revize**, zadejte název pro novou zásadu. Zkontrolujte, ujistěte se, že jste zadali správné informace a pak klikněte na tlačítko **vytvořit zásadu**.
-32. Přejděte zpět na předchozí kartu a aktualizujte webovou stránku v prohlížeči. Na panelu hledání vyhledejte novou zásadu.
-33. Vyberte **Další: Revize**.
-34. Zadejte název pro novou roli. Zkontrolujte, ujistěte se, že jste zadali správné informace a pak klikněte na tlačítko **vytvořit roli**.
+
+Konfigurace náklady a sestava využití oprávnění:
+
+1. Typ **náklady a sestava využití**.
+2. Vyberte **úroveň přístupu**, **čtení** > **DescribeReportDefinitions**. Díky tomu, že náklady na správu, přečtěte si, co stejné zprávy jsou definovány a určit, pokud se shodují kontrolu požadovaných součástí definice sestavy.
+3. Klikněte na tlačítko **přidat další oprávnění**.
+
+Konfigurace vaší S3 objekty a sady oprávnění:
+
+1. Klikněte na tlačítko **vybrat službu**.
+2. Typ _S3_.
+3. Vyberte **úroveň přístupu**, **seznamu** > **ListBucket**. Tato akce načte seznam objektů v intervalu S3.
+4. Vyberte **úroveň přístupu**, **čtení** > **GetObject**. Tato akce umožňuje fakturace stahování souborů.
+5. Vyberte **prostředky**.
+6. Vyberte **kontejneru – přidání ARN**.
+7. V **název sektoru**, zadejte do kbelíku používá k ukládání souborů MĚNA.
+8. Vyberte **objekt – přidání ARN**.
+9. V **název sektoru**, zadejte do kbelíku používá k ukládání souborů MĚNA.
+10. V **název objektu**vyberte **jakékoli**.
+11. Klikněte na tlačítko **přidat další oprávnění**.
+
+Konfigurace Průzkumníka náklady oprávnění:
+
+1. Klikněte na tlačítko **vybrat službu**.
+2. Typ _nákladů Průzkumníka služby_.
+3. Vyberte **akce Explorer – všechny náklady na služby (ce:\*)**. Tato akce ověří správnost kolekce.
+4. Klikněte na tlačítko **přidat další oprávnění**.
+
+Přidejte oprávnění organizace:
+
+1. Typ **organizace**.
+2. Vyberte **úroveň přístupu, seznam** > **Vypisovat účty**. Tato akce získá názvy účtů.
+3. V **zásady revize**, zadejte název pro novou zásadu. Zkontrolujte, ujistěte se, že jste zadali správné informace a pak klikněte na tlačítko **vytvořit zásadu**.
+4. Přejděte zpět na předchozí kartu a aktualizujte webovou stránku v prohlížeči. Na panelu hledání vyhledejte novou zásadu.
+5. Vyberte **Další: Revize**.
+6. Zadejte název pro novou roli. Zkontrolujte, ujistěte se, že jste zadali správné informace a pak klikněte na tlačítko **vytvořit roli**.
     Poznámka: **Role ARN** a **externí ID** v předchozích krocích jste použili při vytváření Role. Použijete je později při nastavování konektoru Azure Cost Management.
 
 Zásady JSON by měl vypadat podobně jako v následujícím příkladu. Nahraďte _bucketname_ s názvem vaší sady S3.

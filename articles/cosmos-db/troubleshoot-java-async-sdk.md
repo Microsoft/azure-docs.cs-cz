@@ -4,17 +4,17 @@ description: Použití funkcí, jako je protokolování na straně klienta a dal
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/28/2018
+ms.date: 04/30/2019
 ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0dc45f104e05fde083489604865aaae8282d6a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404662"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146210"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při použití sady Java SDK asynchronní s účty SQL API služby Azure Cosmos DB
 Tento článek popisuje běžné problémy, alternativní řešení, kroky pro diagnostiku a nástroje, při použití [sady Java SDK pro asynchronní](sql-api-sdk-async-java.md) s účty SQL API služby Azure Cosmos DB.
@@ -57,6 +57,16 @@ Pokud vaše aplikace je nasazená ve službě Azure Virtual Machines bez veřejn
 
     Když je povolený koncový bod služby, žádosti už odesílají z veřejnou IP adresu do služby Azure Cosmos DB. Místo toho jsou odeslány virtuální síť a podsíť identity. Tato změna může vést drops brány firewall, pokud pouze veřejné IP adresy jsou povoleny. Pokud používáte bránu firewall, při povolení koncového bodu služby, přidejte podsíť brány firewall pomocí [virtuální sítě ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
 * Přiřadíte veřejnou IP adresu svého virtuálního počítače Azure.
+
+##### <a name="cant-connect"></a>Nelze kontaktovat službu – brány firewall
+``ConnectTimeoutException`` Označuje, že sady SDK nelze kontaktovat službu.
+Při použití přímý režim, může získat selhání podobný následujícímu:
+```
+GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
+```
+
+Pokud máte bránu firewall, spuštěn v počítači aplikace, otevřete port rozsahu 10000 až 20 000 které používá přímý režim.
+Navíc dodržíte [limitu připojení na hostitelském počítači](#connection-limit-on-host).
 
 #### <a name="http-proxy"></a>HTTP proxy
 
