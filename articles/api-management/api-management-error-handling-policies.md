@@ -79,12 +79,12 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
   
 | Název     | Typ   | Popis                                                                                               | Požaduje se |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Zdroj   | string | Název elementu, kde došlo k chybě. Může být zásad nebo název kroku integrované kanálu.     | Ano      |
-| Důvod   | string | Kód chyby přívětivá počítač, který by se použil při zpracování chyb.                                       | Ne       |
-| Zpráva  | string | Popis chyby čitelné.                                                                         | Ano      |
-| Rozsah    | string | Název oboru, ve kterém chyba došlo k chybě a můžou mít jednu z "globální", "produkt", "rozhraní api" nebo "operace" | Ne       |
-| Sekce  | string | Název oddílu, ve kterém došlo k chybě. Možné hodnoty: "příchozí", "backend", "výstupní" nebo "na chybu".       | Ne       |
-| Cesta     | string | Určuje vnořené zásady, třeba "zvolte [3] / při [2]".                                                        | Ne       |
+| Source   | string | Název elementu, kde došlo k chybě. Může být zásad nebo název kroku integrované kanálu.     | Ano      |
+| Reason   | string | Kód chyby přívětivá počítač, který by se použil při zpracování chyb.                                       | Ne       |
+| Message  | string | Popis chyby čitelné.                                                                         | Ano      |
+| Scope    | string | Název oboru, ve kterém chyba došlo k chybě a můžou mít jednu z "globální", "produkt", "rozhraní api" nebo "operace" | Ne       |
+| Section  | string | Název oddílu, ve kterém došlo k chybě. Možné hodnoty: "příchozí", "backend", "výstupní" nebo "na chybu".       | Ne       |
+| `Path`     | string | Určuje vnořené zásady, třeba "zvolte [3] / při [2]".                                                        | Ne       |
 | `PolicyId` | string | Hodnota `id` atribut, pokud zadaný výhradně zákazník, a to na zásadách, kde došlo k chybě             | Ne       |
 
 > [!TIP]
@@ -96,7 +96,7 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
 ## <a name="predefined-errors-for-built-in-steps"></a>Předdefinované chyby pro vestavěné kroky  
  Tyto chyby jsou předdefinované pro chybové podmínky, které mohou nastat během vyhodnocení vestavěné kroky.  
   
-| Zdroj        | Podmínka                                 | Důvod                  | Zpráva                                                                                                                |
+| Source        | Podmínka                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | konfigurace | Identifikátor URI neodpovídá žádné operaci nebo rozhraní API | OperationNotFound       | Nelze spárovat příchozího požadavku pro operaci.                                                                      |
 | Autorizace | Není zadaný klíč předplatného             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíč předplatného. Ujistěte se, že při zasílání požadavků na toto rozhraní API obsahovat klíč předplatného. |
@@ -105,7 +105,7 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
 ## <a name="predefined-errors-for-policies"></a>Předdefinované chyby pro zásady  
  Tyto chyby jsou předdefinované pro chybové podmínky, které se můžou objevit během vyhodnocení zásad.  
   
-| Zdroj       | Podmínka                                                       | Důvod                    | Zpráva                                                                                                                              |
+| Source       | Podmínka                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | omezení četnosti   | Překročil se limit frekvence                                             | RateLimitExceeded         | Překročení limitu přenosové rychlosti                                                                                                               |
 | kvóta        | Překročení kvóty                                                  | QuotaExceeded             | Překročení kvóty volání. Kvótu se doplnit v xx:xx:xx. - nebo - šířku pásma kvóty. Kvótu se doplnit v xx:xx:xx. |
