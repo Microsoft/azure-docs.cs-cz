@@ -1,0 +1,67 @@
+- name: Služba Azure Blockchain (Preview)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Azure Blockchain
+      href: overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Vytvoření člena – portál
+      href: create-member.md
+    - name: Vytvoření člena – CLI
+      href: create-member-cli.md
+    - name: Připojení k transakčnímu uzlu
+      items:
+        - name: Využití rozšíření MetaMask
+          href: connect-metamask.md
+        - name: Využití rozšíření Geth
+          href: connect-geth.md
+        - name: Využití rozšíření Truffle
+          href: connect-truffle.md
+- name: Kurzy
+  items:
+    - name: Odesílání transakcí
+      href: send-transaction.md
+- name: Koncepty
+  items:
+    - name: Konsorcium
+      href: consortium.md
+    - name: Zabezpečení a přístup k datům
+      href: data-security.md
+    - name: Vývoj
+      href: develop.md
+    - name: Omezení
+      href: limits.md
+    - name: 'Opravy, aktualizace, správa verzí'
+      href: ledger-versions.md
+- name: Návody
+  items:
+    - name: Konfigurace přístupu Azure AD
+      href: configure-aad.md
+    - name: Konfigurace transakčních uzlů
+      href: configure-transaction-nodes.md
+    - name: Správa s využitím rozhraní příkazového řádku Azure
+      href: manage-cli.md
+    - name: Správa konsorcia s využitím Powershellu
+      href: manage-consortium-powershell.md
+- name: Zdroje a prostředky
+  items:
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Rozšíření služby Azure Blockchain editoru Visual Studio Code
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
+    - name: Ukázky kódů
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Komunita
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/forums/security/home?forum=AzureBlockchainService'
+    - name: Zpětná vazba k produktu
+      href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
+    - name: Dostupnost v oblastech
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

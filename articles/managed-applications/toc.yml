@@ -17,6 +17,8 @@
       href: publish-service-catalog-app.md
     - name: Publikování aplikace Marketplace
       href: publish-marketplace-app.md
+    - name: Vytvoření vlastního poskytovatele prostředků
+      href: create-custom-provider.md
 - name: Ukázky
   items:
     - name: Azure CLI
@@ -25,6 +27,10 @@
       href: powershell-samples.md
     - name: Řešení spravovaných aplikací
       href: sample-projects.md
+- name: Koncepty
+  items:
+    - name: Vlastní poskytovatelé
+      href: custom-providers-overview.md
 - name: Návody
   items:
     - name: Vydavatelé

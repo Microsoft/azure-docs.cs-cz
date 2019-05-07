@@ -118,7 +118,7 @@
           href: samples/enforce-data-lake-store-encryption.md
     - name: Konfigurace hosta
       items:
-        - name: Audit aplikací nainstalovaných v Linuxu
+        - name: 'Audit aplikací, které nejsou nainstalované v Linuxu'
           displayName: 'audit, vm'
           href: samples/guest-configuration-applications-installed-linux.md
     - name: Trezory klíčů

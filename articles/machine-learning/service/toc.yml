@@ -16,32 +16,68 @@
       href: setup-create-workspace.md
 - name: Šablony Rychlý start
   items:
-    - name: Experimentování s cloudovým poznámkovým blokem
-      displayName: workspace
-      href: quickstart-run-cloud-notebook.md
-    - name: Experimentování s místním poznámkovým blokem
-      displayName: 'workspace, install, sdk'
-      href: quickstart-run-local-notebook.md
+    - name: Python SDK
+      items:
+        - name: Spuštění experimentu v cloudu
+          displayName: workspace
+          href: quickstart-run-cloud-notebook.md
+        - name: Spuštění experimentu v místním prostředí
+          displayName: 'workspace, install, sdk'
+          href: quickstart-run-local-notebook.md
+    - name: Vizuální rozhraní
+      items:
+        - name: Příprava a vizualizace dat
+          displayName: experiment drag-and-drop
+          href: ui-quickstart-run-experiment.md
 - name: Kurzy
   items:
-    - name: Klasifikace obrázků (data MNIST)
+    - name: Python SDK
       items:
-        - name: 1. Učení modelu
-          displayName: build modeling
-          href: tutorial-train-models-with-aml.md
-        - name: 2. Nasazení modelu
-          href: tutorial-deploy-models-with-aml.md
-    - name: Regrese (data newyorské taxislužby)
+        - name: Klasifikace obrázků (data MNIST)
+          items:
+            - name: 1. Učení modelu
+              displayName: build modeling
+              href: tutorial-train-models-with-aml.md
+            - name: 2. Nasazení modelu
+              href: tutorial-deploy-models-with-aml.md
+        - name: Regrese (data newyorské taxislužby)
+          items:
+            - name: 1. Příprava dat pro modelování
+              displayName: data prep
+              href: tutorial-data-prep.md
+            - name: 2. Automatické trénování modelu ML
+              displayName: 'automl, automated, auto ml,'
+              href: tutorial-auto-train-models.md
+    - name: Vizuální rozhraní
       items:
-        - name: 1. Příprava dat pro modelování
-          displayName: data prep
-          href: tutorial-data-prep.md
-        - name: 2. Automatické trénování modelu ML
-          displayName: 'automl, automated, auto ml,'
-          href: tutorial-auto-train-models.md
+        - name: Trénování regresního modelu
+          displayName: experiment drag-and-drop visual interface Tutorial 1
+          href: ui-tutorial-automobile-price-train-score.md
+        - name: Nasazení regresního modelu
+          displayName: experiment drag-and-drop visual interface Tutorial 2
+          href: ui-tutorial-automobile-price-deploy.md
 - name: Ukázky
-  displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
-  href: samples-notebooks.md
+  items:
+    - name: Notebooks
+      displayName: 'example, examples, jupyter, azure notebooks, python, notebook, github'
+      href: samples-notebooks.md
+    - name: Experimenty s vizuálním rozhraním
+      items:
+        - name: Predikce ceny
+          displayName: 'Sample 1, training, regression'
+          href: ui-sample-regression-predict-automobile-price-basic.md
+        - name: Predikce ceny (pokročilá)
+          displayName: 'Sample 2, training, regression'
+          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
+        - name: Predikce úvěrového rizika
+          displayName: 'Sample 3, training, classification'
+          href: ui-sample-classification-predict-credit-risk-basic.md
+        - name: Predikce úvěrového rizika (pokročilá)
+          displayName: 'Sample 4, training, classification'
+          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
+        - name: Predikce četnosti změn
+          displayName: 'Sample 5, training, CRM, classification'
+          href: ui-sample-classification-predict-churn.md
 - name: Koncepty
   items:
     - name: Jak služba funguje
@@ -50,14 +86,16 @@
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Správa modelů
-      displayName: 'deploy, deployment'
+    - name: Správa modelů (MLOps)
+      displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
     - name: Interpretovatelnost modelů
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
     - name: Zrychlení pomocí FPGA
       href: concept-accelerate-with-fpgas.md
+    - name: Optimalizace s využitím ONNX a modulu runtime ONNX
+      href: concept-onnx.md
     - name: Kanály Machine Learningu
       href: concept-ml-pipelines.md
     - name: Zabezpečení
@@ -85,24 +123,40 @@
         - name: Konfigurace vývojových prostředí
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Použití rozšíření editoru Visual Studio Code
+        - name: Povolit protokolování
+          displayName: 'troubleshoot, log, files, tracing'
+          href: how-to-enable-logging.md
+        - name: Použití rozšíření VS Code
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
     - name: Práce s daty
-      displayName: 'data prep, ETL, ELT, data preparation'
       items:
-        - name: Procházení a příprava dat
-          displayName: 'data prep, ETL, ELT, data preparation'
+        - name: Přidání a registrace datových sad
+          displayName: 'data, dataset'
+          href: how-to-create-register-datasets.md
+        - name: Příprava s využitím azureml.dataprep
           items:
             - name: Načtení dat
+              displayName: 'data, etl, data prep, dataprep'
               href: how-to-load-data.md
             - name: Transformace dat
+              displayName: 'data, etl, dataprep, data prep'
               href: how-to-transform-data.md
             - name: Zápis dat
+              displayName: 'data, etl, data prep, dataprep'
               href: how-to-write-data.md
-    - name: Získání dat v úložišti dat
-      displayName: blob get fileshare access storage
-      href: how-to-access-data.md
+        - name: Příprava s využitím datových sad (Preview)
+          displayName: 'data, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
+          href: how-to-explore-prepare-data.md
+        - name: Verze a správa definic dat
+          displayName: 'data, etl, dataset, data preparation, dataprep, version'
+          href: how-to-manage-dataset-definitions.md
+        - name: Snímek vašich dat
+          displayName: 'snapshots, profile, summary statistics, data copy'
+          href: how-to-create-dataset-snapshots.md
+        - name: Získání dat z úložiště dat
+          displayName: blob get fileshare access storage
+          href: how-to-access-data.md
     - name: Trénování modelů
       items:
         - name: Nastavení prostředí trénování
@@ -130,21 +184,24 @@
         - name: Použití automatizovaného strojového učení (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
+        - name: Použití automatizovaného strojového učení (Azure Portal)
+          href: how-to-create-portal-experiments.md
         - name: Použití vzdálených cílových výpočetních prostředí
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: Automatické trénování modelu prognóz
           displayName: time series
           href: how-to-auto-train-forecast.md
-    - name: Modely ONNX
-      href: how-to-build-deploy-onnx.md
-    - name: Modely nasazení
+    - name: Nasazení a obsluha modelů
       items:
         - name: Kde a jak nasadit
           displayName: publish azure kubernetes azure container instances
           href: how-to-deploy-and-where.md
         - name: FPGA
           href: how-to-deploy-fpga-web-service.md
+        - name: IoT Edge
+          href: ../../iot-edge/tutorial-deploy-machine-learning.md
+          maintainContext: true
         - name: Řešení potíží
           href: how-to-troubleshoot-deployment.md
     - name: Využívání webových služeb
@@ -162,31 +219,118 @@
           href: how-to-enable-data-collection.md
         - name: Monitorování pomocí Application Insights
           href: how-to-enable-app-insights.md
-    - name: Vytvoření prvního kanálu
-      href: how-to-create-your-first-pipeline.md
-    - name: Povolit protokolování
-      displayName: logging
-      href: how-to-enable-logging.md
+    - name: Vytváření opakovaně použitelných pracovních postupů
+      displayName: pipelines
+      items:
+        - name: Vytvoření kanálu ML
+          href: how-to-create-your-first-pipeline.md
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md
-    - name: Použití CLI služby Machine Learning
-      displayName: cli extension command line command-line az ci/cd automate automated
-      href: reference-azure-machine-learning-cli.md
     - name: Export a odstranění dat
       displayName: GDPR
       href: how-to-export-delete-data.md
 - name: Referenční informace
   items:
     - name: Sada Machine Learning SDK
-      displayName: api core package python
+      displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
     - name: Sada SDK pro přípravu dat
-      displayName: api preparation package python
+      displayName: api core package python data prep
       href: 'https://aka.ms/data-prep-sdk'
     - name: Sada SDK pro monitorování
       displayName: api package python monitor
       href: 'https://aka.ms/aml-monitoring-sdk'
+    - name: Machine Learning CLI
+      displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
+      href: reference-azure-machine-learning-cli.md
+    - name: Moduly vizuálního rozhraní
+      displayName: module reference
+      items:
+        - name: Přehled referenčních informací k modulům
+          href: ../algorithm-module-reference/module-reference.md
+        - name: Převody formátů dat
+          items:
+            - name: Převod na C
+              href: ../algorithm-module-reference/convert-to-csv.md
+        - name: Vstup a výstup dat
+          items:
+            - name: Import dat
+              href: ../algorithm-module-reference/import-data.md
+            - name: Export dat
+              href: ../algorithm-module-reference/export-data.md
+            - name: Ruční zadávání dat
+              href: ../algorithm-module-reference/enter-data-manually.md
+        - name: Transformace dat
+          items:
+            - name: Výběr sloupců v datové sadě
+              href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: Úpravy metadat
+              href: ../algorithm-module-reference/edit-metadata.md
+            - name: Vyčištění chybějících dat
+              href: ../algorithm-module-reference/clean-missing-data.md
+            - name: Přidání sloupců
+              href: ../algorithm-module-reference/add-columns.md
+            - name: Přidání řádků
+              href: ../algorithm-module-reference/add-rows.md
+            - name: Odebrání duplicitních řádků
+              href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Rozdělení dat
+              href: ../algorithm-module-reference/split-data.md
+            - name: Normalizace dat
+              href: ../algorithm-module-reference/normalize-data.md
+            - name: Rozdělení a ukázky
+              href: ../algorithm-module-reference/partition-and-sample.md
+        - name: Strojové učení
+          items:
+            - name: Určení skóre modelu
+              href: ../algorithm-module-reference/score-model.md
+            - name: Přiřazení dat do clusterů
+              href: ../algorithm-module-reference/assign-data-to-clusters.md
+            - name: Trénování modelu
+              href: ../algorithm-module-reference/train-model.md
+            - name: Trénování modelu clusteringu
+              href: ../algorithm-module-reference/train-clustering-model.md
+            - name: Vyhodnocení modelu
+              href: ../algorithm-module-reference/evaluate-model.md
+            - name: Použití transformace
+              href: ../algorithm-module-reference/apply-transformation.md
+            - name: Lineární regrese
+              href: ../algorithm-module-reference/linear-regression.md
+            - name: Regrese neurální sítě
+              href: ../algorithm-module-reference/neural-network-regression.md
+            - name: Regrese rozhodovacího lesa
+              href: ../algorithm-module-reference/decision-forest-regression.md
+            - name: Posílená regrese rozhodovacího stromu
+              href: ../algorithm-module-reference/boosted-decision-tree-regression.md
+            - name: Posílený rozhodovací strom se dvěma třídami
+              href: ../algorithm-module-reference/two-class-boosted-decision-tree.md
+            - name: Logistická regrese se dvěma třídami
+              href: ../algorithm-module-reference/two-class-logistic-regression.md
+            - name: Logistická regrese s více třídami
+              href: ../algorithm-module-reference/multiclass-logistic-regression.md
+            - name: Neurální síť s více třídami
+              href: ../algorithm-module-reference/multiclass-neural-network.md
+            - name: Rozhodovací les s více třídami
+              href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: Zprůměrovaný perceptron se dvěma třídami
+              href: ../algorithm-module-reference/two-class-averaged-perceptron.md
+            - name: Rozhodovací les se dvěma třídami
+              href: ../algorithm-module-reference/two-class-decision-forest.md
+            - name: Neurální síť se dvěma třídami
+              href: ../algorithm-module-reference/two-class-neural-network.md
+            - name: Support Vector Machine (SVM) se dvěma třídami
+              href: ../algorithm-module-reference/two-class-support-vector-machine.md
+            - name: Clustering K-Means
+              href: ../algorithm-module-reference/k-means-clustering.md
+        - name: Jazykové moduly Pythonu
+          items:
+            - name: Spouštění skriptů Pythonu
+              href: ../algorithm-module-reference/execute-python-script.md
+            - name: Vytvoření modelu Pythonu
+              href: ../algorithm-module-reference/create-python-model.md
+        - name: Chybové zprávy a kódy
+          href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"

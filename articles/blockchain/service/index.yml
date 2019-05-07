@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure Blockchain
+metadata:
+  title: 'Dokumentace ke službě Azure Blockchain – kurzy, reference k rozhraní API'
+  description: 'Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využít službu Azure Blockchain k vytváření, vývoji a správě blockchainových aplikací v Azure.'
+  services: azure-blockchain
+  author: patricka
+  manager: femila
+  ms.service: azure-blockchain
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/13/2019
+  ms.author: patricka
+abstract:
+  description: 'Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využít službu Azure Blockchain k vytváření, vývoji a využití blockchainových aplikací v Azure.'
+sections:
+  - title: Zprovoznění během 5 minut
+    items:
+      - type: paragraph
+        text: Naučíte se vytvářet členy konsorcia v Azure a připojovat se k nim.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/deploy.svg
+            text: Vytvoření člena konsorcia
+            href: /azure/blockchain/service/create-member
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Připojení s využitím rozšíření MetaMask
+            href: /azure/blockchain/service/connect-metamask
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Připojení s využitím rozšíření geth
+            href: /azure/blockchain/service/connect-geth
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Připojení s využitím rozšíření Truffle
+            href: /azure/blockchain/service/connect-truffle
+  - title: Podrobné kurzy
+    items:
+      - type: paragraph
+        text: 'Naučíte se vytvářet, konfigurovat a vyvíjet blockchainové aplikace v Azure.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/blockchain/service/send-transaction">Vytvoření člena služby Azure Blockchain a odeslání transakce</a>

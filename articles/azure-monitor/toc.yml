@@ -555,6 +555,8 @@
                   href: app/usage-workbooks.md
             - name: Řešení analýzy webových aplikací
               href: insights/azure-web-apps-analytics.md
+            - name: Hostované aplikace Kubernetes
+              href: app/kubernetes.md
         - name: Monitorování kontejnerů
           items:
             - name: Azure Monitor pro kontejnery
@@ -563,13 +565,19 @@
                   href: insights/container-insights-overview.md
                 - name: Nejčastější dotazy
                   href: insights/container-insights-faq.md
-                - name: Onboarding
-                  href: insights/container-insights-onboard.md
+                - name: Povolení monitorování
+                  items:
+                    - name: Povolení přehledu monitorování
+                      href: insights/container-insights-onboard.md
+                    - name: Povolení pro nový cluster
+                      href: insights/container-insights-enable-new-cluster.md
+                    - name: Povolení pro stávající cluster
+                      href: insights/container-insights-enable-existing-clusters.md
                 - name: Analýza
                   href: insights/container-insights-analyze.md
                 - name: Zákaz monitorování
                   href: insights/container-insights-optout.md
-                - name: Zobrazení živých protokolů kontejneru
+                - name: Zobrazení živých protokolů
                   href: insights/container-insights-live-logs.md
                 - name: Analýza dat s využitím dotazů na protokoly
                   href: insights/container-insights-log-search.md
@@ -585,8 +593,6 @@
               href: insights/containers.md
             - name: Monitorování aplikací Dockeru
               href: app/docker.md
-            - name: Application Insights pro Kubernetes
-              href: app/kubernetes.md
         - name: Monitorování skupin prostředků
           href: insights/resource-group-insights.md
         - name: Monitorování databází

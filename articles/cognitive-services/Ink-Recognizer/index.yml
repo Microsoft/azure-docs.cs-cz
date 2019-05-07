@@ -1,0 +1,82 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Rozpoznávání rukopisu
+metadata:
+  title: 'Dokumentace ke službě Rozpoznávání rukopisu – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
+  description: Naučte se využívat Translator Text k překladu textů ve více jazycích.
+  services: cognitive-services
+  author: erhopf
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/02/2019
+  ms.author: erhopf
+abstract:
+  description: 'Termín digitální rukopis označuje technologie, které umožňují digitální reprezentaci výstupu, jako jsou rukopis a kresby. Zařízení stále víc podporují bohatá prostředí digitálních rukopisů a umělá inteligence a strojové učení umožňují rozpoznávání psaných tvarů a textu v libovolném kontextu. Rozhraní API služby Rozpoznávání rukopisu je cloudová služba, která umožňuje odesílat tahy rukopisu a získávat o nich podrobné informace.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/ink-recognizer/overview
+            html: <p>Další informace o službě Rozpoznávání rukopisu a její integraci do vašich produktů</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co je rozhraní API služby Rozpoznávání rukopisu?
+          - href: concepts/send-ink-data.md
+            html: <p>Další informace o doporučených vzorech volání při použití tohoto rozhraní API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Odesílání dat do rozhraní API služby Rozpoznávání rukopisu
+  - title: Zprovoznění během 5 minut
+    items:
+      - type: paragraph
+        text: 'Začínáme s využitím rozhraní API služby Rozpoznávání rukopisu:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo-csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo-java.svg
+            title: Java
+          - image:
+              src: media/index/logo-js.svg
+            title: JavaScript
+        rows:
+          - title: Rozpoznávání tahů digitálního rukopisu
+            values:
+              - href: quickstarts/csharp.md
+              - href: quickstarts/java.md
+              - href: quickstarts/javascript.md
+  - title: Ukázky
+    items:
+      - type: paragraph
+        text: 'Tyto ukázkové programy ukazují, jak se rozhraní API služby Rozpoznávání rukopisu dá integrovat do vašich aplikací:'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# a Univerzální platforma Windows (UPW)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# a Windows Presentation Foundation (WPF)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">Aplikace webového prohlížeče v Javascriptu</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Mobilní aplikace v Javě a Androidu</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Mobilní aplikace ve Swiftu a iOS</a>'
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907">Reference k rozhraní REST API</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Rozhraní příkazového řádku
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'

@@ -32,6 +32,8 @@
       href: tutorial-mongodb-cosmos-db.md
     - name: Online migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
       href: tutorial-mongodb-cosmos-db-online.md
+    - name: Online migrace Oracle do Azure Database for PostgreSQL
+      href: tutorial-oracle-azure-postgresql-online.md
 - name: Návody
   items:
     - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB

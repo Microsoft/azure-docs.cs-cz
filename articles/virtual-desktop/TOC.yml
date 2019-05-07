@@ -18,9 +18,9 @@
   items:
     - name: Připojení k prostředkům Windows Virtual Desktop
       items:
-        - name: Připojení k Windows 7 a Windows 10
+        - name: Připojení z Windows 10 nebo Windows 7
           href: connect-windows-7-and-10.md
-        - name: Připojení k webovému klientovi
+        - name: Připojení z webového prohlížeče
           href: connect-web.md
     - name: Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
       href: create-host-pools-arm-template.md
@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: Příprava a přizpůsobení hlavní image VHD
       href: set-up-customize-master-image.md
+    - name: Konfigurace GPU pro Windows Virtual Desktop
+      href: configure-vm-gpu.md
     - name: Automatické škálování hostitelů relace
       href: set-up-scaling-script.md
 - name: Koncepty

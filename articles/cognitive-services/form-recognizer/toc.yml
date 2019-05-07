@@ -1,0 +1,43 @@
+- name: Dokumentace ke službě Rozpoznávání formulářů
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je služba Rozpoznávání formulářů?
+      href: overview.md
+- name: Šablony Rychlý start
+  expaned: true
+  items:
+    - name: Trénování modelů a extrahování dat
+      items:
+        - name: S využitím REST API
+          items:
+            - name: cURL
+              href: quickstarts/curl-train-extract.md
+            - name: Python
+              href: quickstarts/python-train-extract.md
+- name: Návody
+  items:
+    - name: Použití kontejnerů
+      items:
+        - name: Instalace a spuštění kontejnerů
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: form-recognizer-container-howto.md
+        - name: Konfigurace kontejnerů
+          href: form-recognizer-container-configuration.md
+          displayName: 'docker, container, run, billing, apikey, logging'
+- name: Referenční informace
+  items:
+    - name: Rozhraní API služby Rozpoznávání formulářů
+      href: 'https://aka.ms/form-recognizer/api'
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny a omezení
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
+    - name: UserVoice
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
+    - name: Stack Overflow
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Regionální dostupnost
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'

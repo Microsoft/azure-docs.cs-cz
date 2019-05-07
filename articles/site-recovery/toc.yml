@@ -167,6 +167,8 @@
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: Povolení replikace z Azure do Azure pro virtuální počítače S2D
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+            - name: Povolení replikace pro přidaný disk
+              href: azure-to-azure-enable-replication-added-disk.md
             - name: Vyloučení disků
               href: azure-to-azure-exclude-disks.md
             - name: Znovunastavení ochrany virtuálních počítačů Azure po převzetí služeb při selhání

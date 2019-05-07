@@ -109,8 +109,14 @@
           href: how-to-install-iot-edge-linux-arm.md
         - name: Windows X64
           href: how-to-install-iot-edge-windows.md
+        - name: Linuxové kontejnery ve Windows X64
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Virtuální počítač s Windows Serverem
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Virtuální počítač s Ubuntu
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: Aktualizace verze modulu runtime
           href: how-to-update-iot-edge.md
     - name: Automatické zřizování s využitím DPS

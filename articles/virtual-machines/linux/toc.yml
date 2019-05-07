@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Disky OS s kratší platností
+          href: ephemeral-os-disks.md
     - name: Sítě
       href: network-overview.md
     - name: Automatické škálování aplikací
@@ -253,16 +255,32 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: Použití imagí
       items:
-        - name: Galerie sdílených imagí (Preview)
+        - name: Galerie sdílených imagí
           items:
             - name: Přehled
               href: shared-image-galleries.md
-            - name: Vytváření sdílených imagí s využitím CLI
+            - name: Rozhraní příkazového řádku
               href: shared-images.md
             - name: Portál
               href: shared-images-portal.md
+            - name: Sdílení imagí napříč tenanty
+              href: share-images-across-tenants.md
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
+        - name: Image Builder (Preview)
+          items:
+            - name: Přehled
+              href: image-builder-overview.md
+            - name: Použití CLI
+              href: image-builder.md
+            - name: Referenční informace k šablonám
+              href: image-builder-json.md
+            - name: Použití společně s galeriemi
+              href: image-builder-gallery.md
+            - name: Aktualizace verze image
+              href: image-builder-gallery-update-image-version.md
+            - name: Řešení potíží
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Vyhledání a použití imagí
           href: cli-ps-findimage.md
         - name: Vytvoření vlastní image

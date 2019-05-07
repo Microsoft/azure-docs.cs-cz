@@ -66,6 +66,10 @@
       items:
         - name: Ingestace ukázkových dat
           href: ingest-sample-data.md
+    - name: Nasazení
+      items:
+        - name: Úloha DevOps
+          href: devops.md
     - name: Dotazování dat
       items:
         - name: Zápis dotazů

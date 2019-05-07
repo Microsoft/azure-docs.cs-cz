@@ -129,6 +129,8 @@
         - name: Výkon Premium Storage
           href: ../virtual-machines/windows/premium-storage-performance.md
           maintainContext: true
+        - name: Disky OS s kratší platností
+          href: ephemeral-os-disks.md
         - name: Cíle škálovatelnosti pro disky
           href: ../virtual-machines/windows/disk-scalability-targets.md
           maintainContext: true
@@ -204,7 +206,7 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Použití Azure CLI
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
-            - name: Šifrování disků s nastavením pořadí rozšíření
+            - name: Nastavení pořadí rozšíření
               href: ../security/azure-security-disk-encryption-extension-sequencing.md
               maintainContext: true
         - name: Práce s velkými škálovacími sadami
@@ -221,13 +223,16 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Použití Azure Powershell
               href: virtual-machine-scale-sets-manage-powershell.md
-        - name: Galerie sdílených imagí (Preview)
-          href: shared-image-galleries.md
+        - name: Galerie sdílených imagí
           items:
+            - name: Přehled
+              href: shared-image-galleries.md
             - name: Rozhraní příkazového řádku
               href: shared-images-cli.md
             - name: PowerShell
               href: shared-images-powershell.md
+            - name: Sdílení imagí napříč tenanty
+              href: share-images-across-tenants.md
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
         - name: Vertikální škálování ve škálovací sadě

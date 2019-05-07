@@ -12,7 +12,7 @@ metadata:
   ms.date: 12/06/2018
   ms.custom: seodec18
 abstract:
-  description: 'Naučte se spouštět analýzy Internetu věcí (IoT) v cloudu pomocí služby Stream Analytics, plně spravovaného modulu pro zpracování událostí. Kurzy a další dokumentace ukazují, jak v reálném čase analyzovat data z aplikací, senzorů, zařízení, sociálních médií a dalších zdrojů.'
+  description: 'Stream Analytics je plně spravovaný bezserverový modul pro zpracování událostí, který umožňuje analyzovat datové proudy z aplikací a zařízení IoT v reálném čase. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.'
   aside:
     image:
       alt: null

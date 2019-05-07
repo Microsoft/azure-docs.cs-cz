@@ -26,8 +26,10 @@
     - name: Analýza videa – .NET
       displayName: 'job, transform'
       href: analyze-videos-tutorial-with-api.md
-    - name: Dynamické šifrování AES-128 – .NET
+    - name: Dynamické šifrování s využitím AES-128 – .NET
       href: protect-with-aes128.md
+    - name: Dynamické šifrování s využitím DRM – .NET
+      href: protect-with-drm.md
 - name: Ukázky
   items:
     - name: Ukázky kódu Azure
@@ -56,10 +58,9 @@
         - name: Adaptivní žebříček přenosových rychlostí Autogen
           href: autogen-bitrate-ladder.md
         - name: Kódování zohledňující obsah
-          displayName: 'content, aware, cae'
           href: cae-experimental.md
         - name: Kódy chyb úlohy
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
     - name: Analýzy mediálních služeb
       items:
         - name: Přehled
@@ -68,7 +69,7 @@
         - name: Transformace a úlohy
           href: transforms-jobs-concept.md
         - name: Kódy chyb úlohy
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
     - name: 'Balení, doručování, ochrana'
       items:
         - name: Balení
@@ -150,7 +151,7 @@
             - name: Původní kódy chyb
               href: origin-error-codes.md
             - name: Kódy chyb úlohy
-              href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+              href: job-error-codes.md
     - name: Pokyny k migraci z v2 na v3
       href: migrate-from-v2-to-v3.md
 - name: Návody
@@ -215,8 +216,6 @@
       items:
         - name: Získání zásad symetrických klíčů – .NET
           href: get-content-key-policy-dotnet-howto.md
-        - name: Dynamické šifrování DRM – .NET
-          href: protect-with-drm.md
         - name: FairPlay pro iOS v offline režimu
           href: offline-fairplay-for-ios.md
         - name: Widevine pro Android v offline režimu
@@ -258,7 +257,7 @@
         - name: Původní kódy chyb
           href: origin-error-codes.md
         - name: Kódy chyb úlohy
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
 - name: Zdroje a prostředky
   items:
     - name: Komunita Azure Media Services

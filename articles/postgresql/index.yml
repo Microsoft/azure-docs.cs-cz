@@ -9,9 +9,9 @@ metadata:
   ms.author: raagyema
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 02/25/2019
+  ms.date: 04/26/2019
 abstract:
-  description: 'Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem, zabezpečením, vysokou dostupností a možností dynamického škálování.  Vyvíjejte aplikace pomocí Azure Database for PostgreSQL s využitím open source nástrojů a platformy podle vašeho výběru.  Naučte se používat Azure Database for Azure Database for PostgreSQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
+  description: 'Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem, zabezpečením, vysokou dostupností a možností dynamického škálování. Je k dispozici ve dvou možnostech nasazení, Single Server a Hyperscale (Citus) (Preview). Možnost Hyperscale (Citus) horizontálně škáluje dotazy napříč několika počítači s využitím horizontálního dělení a obsluhuje aplikace, které vyžadují větší škálování a výkon. Naučte se používat Azure Database for Azure Database for PostgreSQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
 sections:
   - title: Zprovoznění během 5 minut
     items:
@@ -22,22 +22,33 @@ sections:
         items:
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
+            text: Single Server – Azure Portal
             href: /azure/postgresql/quickstart-create-server-database-portal
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Azure CLI
+            text: Single Server – Azure CLI
             href: /azure/postgresql/quickstart-create-server-database-azure-cli
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
+            text: Hyperscale (Citus) – Azure Portal
+            href: /azure/postgresql/quickstart-create-hyperscale-portal
   - title: Podrobné kurzy
     items:
       - type: paragraph
-        text: 'Naučte se:'
+        text: 'Pro Single Server:'
       - type: list
         style: ordered
         items:
           - html: 'Návrh databáze&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Web Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
           - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Vytvoření webové aplikace pomocí Pythonu a rozhraní příkazového řádku</a>
           - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Monitorování a vyladění služby</a>
+      - type: paragraph
+        text: 'Pro Hyperscale (Citus) (Preview):'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">Návrh víceklientské databáze</a>
+          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">Návrh databáze v reálném čase</a>
   - title: Získávání dovedností pomocí Microsoft Learn
     items:
       - type: list

@@ -1,7 +1,378 @@
 - name: Microsoft Identity Platform (Azure Active Directory pro vývojáře)
   href: index.yml
-- name: O platformě Microsoft Identity Platform
+- name: Rozvoj platformy Microsoft Identity Platform
   href: about-microsoft-identity-platform.md
+- name: v2.0
+  expanded: true
+  items:
+    - name: Přehled
+      href: v2-overview.md
+    - name: Šablony Rychlý start
+      items:
+        - name: Vytvoření a nastavení vývojového prostředí
+          href: quickstart-create-new-tenant.md
+        - name: Konfigurace aplikace
+          items:
+            - name: Registrace aplikace
+              href: quickstart-register-app.md
+            - name: Konfigurace aplikace pro přístup k webovým rozhraním API
+              href: quickstart-configure-app-access-web-apis.md
+            - name: Konfigurace aplikace pro zveřejnění webových rozhraní API
+              href: quickstart-configure-app-expose-web-apis.md
+            - name: Úprava účtů podporovaných aplikací
+              href: quickstart-modify-supported-accounts.md
+            - name: Odebrání aplikace
+              href: quickstart-remove-app.md
+        - name: Jednostránkové aplikace
+          items:
+            - name: JavaScript
+              href: quickstart-v2-javascript.md
+        - name: Webové aplikace
+          items:
+            - name: ASP .NET
+              href: quickstart-v2-aspnet-webapp.md
+            - name: ASP .NET Core
+              href: quickstart-v2-aspnet-core-webapp.md
+            - name: NodeJS
+              href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+        - name: Webová rozhraní API
+          items:
+            - name: ASP .NET
+              href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+            - name: ASP .NET Core
+              href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+        - name: Mobilní a desktopové aplikace
+          items:
+            - name: Android
+              href: quickstart-v2-android.md
+            - name: iOS
+              href: quickstart-v2-ios.md
+            - name: Univerzální platforma Windows
+              href: quickstart-v2-uwp.md
+            - name: Windows Desktop .NET
+              href: quickstart-v2-windows-desktop.md
+        - name: Aplikace démonů
+          items:
+            - name: Konzola .NET Core (proces démon)
+              href: quickstart-v2-netcore-daemon.md
+            - name: Webová aplikace démona ASP.NET
+              href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
+    - name: Kurzy
+      items:
+        - name: Jednostránkové aplikace
+          items:
+            - name: JavaScript
+              href: tutorial-v2-javascript-spa.md
+        - name: Webové aplikace
+          items:
+            - name: ASP .NET
+              href: tutorial-v2-asp-webapp.md
+        - name: Mobilní a desktopové aplikace
+          items:
+            - name: Android
+              href: tutorial-v2-android.md
+            - name: iOS
+              href: tutorial-v2-ios.md
+            - name: Univerzální platforma Windows
+              href: tutorial-v2-windows-uwp.md
+            - name: Windows Desktop .NET
+              href: tutorial-v2-windows-desktop.md
+    - name: Ukázky
+      href: sample-v2-code.md
+    - name: Koncepty
+      items:
+        - name: Typy aplikací
+          href: v2-app-types.md
+        - name: Scénáře aplikací
+          items:
+            - name: Cílová skupina přihlášení
+              href: v2-supported-account-types.md
+            - name: Jednostránková aplikace
+              items:
+                - name: Přehled
+                  href: scenario-spa-overview.md
+                - name: Registrace aplikací
+                  href: scenario-spa-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-spa-app-configuration.md
+                - name: Přihlášení a odhlášení
+                  href: scenario-spa-sign-in.md
+                - name: Získání tokenu pro rozhraní API
+                  href: scenario-spa-acquire-token.md
+                - name: Volání webového rozhraní API
+                  href: scenario-spa-call-api.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-spa-production.md
+            - name: 'Webová aplikace, která přihlašuje uživatele'
+              items:
+                - name: Přehled
+                  href: scenario-web-app-sign-user-overview.md
+                - name: Registrace aplikací
+                  href: scenario-web-app-sign-user-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-web-app-sign-user-app-configuration.md
+                - name: Přihlášení a odhlášení
+                  href: scenario-web-app-sign-user-sign-in.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-web-app-sign-user-production.md
+            - name: 'Webová aplikace, která volá webová rozhraní API'
+              items:
+                - name: Přehled
+                  href: scenario-web-app-call-api-overview.md
+                - name: Registrace aplikací
+                  href: scenario-web-app-call-api-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-web-app-call-api-app-configuration.md
+                - name: Přihlášení
+                  href: scenario-web-app-call-api-sign-in.md
+                - name: Získání tokenu pro aplikaci
+                  href: scenario-web-app-call-api-acquire-token.md
+                - name: Volání webového rozhraní API
+                  href: scenario-web-app-call-api-call-api.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-web-app-call-api-production.md
+            - name: Chráněné webové rozhraní API
+              items:
+                - name: Přehled
+                  href: scenario-protected-web-api-overview.md
+                - name: Registrace aplikací
+                  href: scenario-protected-web-api-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-protected-web-api-app-configuration.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-protected-web-api-production.md
+            - name: 'Webové rozhraní API, které volá webová rozhraní API'
+              items:
+                - name: Přehled
+                  href: scenario-web-api-call-api-overview.md
+                - name: Registrace aplikací
+                  href: scenario-web-api-call-api-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-web-api-call-api-app-configuration.md
+                - name: Získání tokenu
+                  href: scenario-web-api-call-api-acquire-token.md
+                - name: Volání webového rozhraní API
+                  href: scenario-web-api-call-api-call-api.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-web-api-call-api-production.md
+            - name: 'Desktopová aplikace, které volá webová rozhraní API'
+              items:
+                - name: Přehled
+                  href: scenario-desktop-overview.md
+                - name: Registrace aplikací
+                  href: scenario-desktop-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-desktop-app-configuration.md
+                - name: Získání tokenu
+                  href: scenario-desktop-acquire-token.md
+                - name: Volání webového rozhraní API
+                  href: scenario-desktop-call-api.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-desktop-production.md
+            - name: Aplikace démona
+              items:
+                - name: Přehled
+                  href: scenario-daemon-overview.md
+                - name: Registrace aplikací
+                  href: scenario-daemon-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-daemon-app-configuration.md
+                - name: Získání tokenu
+                  href: scenario-daemon-acquire-token.md
+                - name: Volání webového rozhraní API
+                  href: scenario-daemon-call-api.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-daemon-production.md
+            - name: 'Mobilní aplikace, která volá webová rozhraní API'
+              items:
+                - name: Přehled
+                  href: scenario-mobile-overview.md
+                - name: Registrace aplikací
+                  href: scenario-mobile-app-registration.md
+                - name: Získání tokenu pro aplikaci
+                  href: scenario-mobile-acquire-token.md
+                - name: Volání webového rozhraní API
+                  href: scenario-mobile-call-api.md
+                - name: Přechod k produkčnímu prostředí
+                  href: scenario-mobile-production.md
+            - name: Kontrolní seznam k integraci
+              href: identity-platform-integration-checklist.md
+        - name: Microsoft Authentication Library (MSAL)
+          items:
+            - name: Přehled
+              href: msal-overview.md
+            - name: Migrace
+              items:
+                - name: Migrace na MSAL.NET
+                  href: msal-net-migration.md
+                - name: Migrace na MSAL.js
+                  href: msal-compare-msal-js-and-adal-js.md
+            - name: Podporované toky ověřování
+              href: msal-authentication-flows.md
+            - name: Získání tokenů a jejich uložení v mezipaměti
+              items:
+                - name: Získání tokenů a jejich uložení v mezipaměti
+                  href: msal-acquire-cache-tokens.md
+                - name: Obory pro aplikace v1.0
+                  href: msal-v1-app-scopes.md
+                - name: Serializace mezipaměti tokenů (.NET)
+                  href: msal-net-token-cache-serialization.md
+            - name: Klientské aplikace
+              items:
+                - name: Klientské aplikace
+                  href: msal-client-applications.md
+                - name: Konfigurace aplikací
+                  href: msal-client-application-configuration.md
+                - name: Inicializace aplikací (.NET)
+                  href: msal-net-initializing-client-applications.md
+                - name: Inicializace aplikací (JS)
+                  href: msal-js-initializing-client-applications.md
+            - name: Zpracování chyb a výjimek
+              href: msal-handling-exceptions.md
+            - name: Protokolování
+              href: msal-logging.md
+            - name: Jednotné přihlašování (JS)
+              href: msal-js-sso.md
+            - name: Chování výzvy (JS)
+              href: msal-js-prompt-behavior.md
+            - name: Poskytnutí vlastního klienta HttpClient (.NET)
+              href: msal-net-provide-httpclient.md
+            - name: Aspekty pro konkrétní platformu (.NET)
+              items:
+                - name: Webové prohlížeče
+                  href: msal-net-web-browsers.md
+                - name: Xamarin Android
+                  href: msal-net-xamarin-android-considerations.md
+                - name: Systémový prohlížeč v Androidu
+                  href: msal-net-system-browser-android-considerations.md
+                - name: Xamarin iOS
+                  href: msal-net-xamarin-ios-considerations.md
+                - name: Univerzální platforma Windows
+                  href: msal-net-uwp-considerations.md
+                - name: Použití zásad AAD B2C
+                  href: msal-net-aad-b2c-considerations.md
+        - name: Authentication
+          items:
+            - name: Základy ověřování
+              href: authentication-scenarios.md
+            - name: Protokoly OAuth 2.0 a OpenID Connect
+              href: active-directory-v2-protocols.md
+            - name: OpenID Connect
+              href: v2-protocols-oidc.md
+            - name: Tok implicitního udělení OAuth 2.0
+              href: v2-oauth2-implicit-grant-flow.md
+            - name: Udělení autorizačního kódu OAuth 2.0
+              href: v2-oauth2-auth-code-flow.md
+            - name: Tok On-Behalf-Of OAuth 2.0
+              href: v2-oauth2-on-behalf-of-flow.md
+            - name: Udělení přihlašovacích údajů klienta OAuth 2.0
+              href: v2-oauth2-client-creds-grant-flow.md
+            - name: Tok kódu zařízení OAuth 2.0
+              href: v2-oauth2-device-code.md
+            - name: Udělení přihlašovacího hesla vlastníka prostředku OAuth 2.0
+              href: v2-oauth-ropc.md
+            - name: Výměna podpisových klíčů
+              href: active-directory-signing-key-rollover.md
+            - name: Tokeny ID
+              href: id-tokens.md
+            - name: Přístupové tokeny
+              href: access-tokens.md
+            - name: Přihlašovací údaje ve formě certifikátu
+              href: active-directory-certificate-credentials.md
+        - name: Konfigurace aplikací
+          items:
+            - name: Aplikace a instanční objekty
+              href: app-objects-and-service-principals.md
+            - name: Aplikace s jedním a více tenanty
+              href: single-and-multi-tenant-apps.md
+        - name: Oprávnění a souhlas
+          displayName: Scopes
+          items:
+            - name: Typy oprávnění a souhlas
+              href: v2-permissions-and-consent.md
+            - name: Rámec pro udělení souhlasu
+              href: consent-framework.md
+            - name: Prostředí udělení souhlasu pro aplikace
+              href: application-consent-experience.md
+        - name: Národní cloudy
+          items:
+            - name: Přehled
+              href: authentication-national-cloud.md
+            - name: Authentication
+              href: msal-national-cloud.md
+    - name: Návody
+      items:
+        - name: Authentication
+          items:
+            - name: Konfigurace deklarací identity rolí
+              href: active-directory-enterprise-app-role-management.md
+            - name: Přizpůsobení deklarací identity – Portal
+              href: active-directory-saml-claims-customization.md
+            - name: Přizpůsobení deklarací identity – PowerShell
+              href: active-directory-claims-mapping.md
+            - name: Konfigurace volitelných deklarací identity
+              href: active-directory-optional-claims.md
+            - name: Konfigurace životnosti tokenů
+              href: active-directory-configurable-token-lifetimes.md
+        - name: Konfigurace aplikací
+          items:
+            - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
+              href: howto-convert-app-to-be-multi-tenant.md
+            - name: Vytvoření instančního objektu
+              items:
+                - name: Použití Azure Powershell
+                  href: howto-authenticate-service-principal-powershell.md
+                - name: Pomocí webu Azure Portal
+                  href: howto-create-service-principal-portal.md
+            - name: Omezení aplikace na sadu uživatelů
+              href: howto-restrict-your-app-to-a-set-of-users.md
+            - name: Přidání rolí aplikace ve vaší aplikaci
+              href: howto-add-app-roles-in-azure-ad-apps.md
+            - name: Pokyny pro branding
+              href: howto-add-branding-in-azure-ad-apps.md
+            - name: Doména vydavatele
+              href: howto-configure-publisher-domain.md
+            - name: Podmínky služby a prohlášení o ochraně osobních údajů
+              href: howto-add-terms-of-service-privacy-statement.md
+        - name: Práce s knihovnou Microsoft Authentication Library
+          items:
+            - name: MSAL.NET
+              items:
+                - name: Získání tokenu z mezipaměti
+                  href: msal-net-acquire-token-silently.md
+                - name: Vytvoření instance veřejného klienta s využitím možností
+                  href: msal-net-instantiate-public-client-config-options.md
+                - name: Vytvoření instance důvěrného klienta s využitím možností
+                  href: msal-net-instantiate-confidential-client-config-options.md
+                - name: Získání souhlasu pro několik prostředků
+                  href: msal-net-user-gets-consent-for-multiple-resources.md
+        - name: Práce se sadou Visual Studio
+          items:
+            - name: Použití připojené služby Active Directory
+              href: vs-active-directory-add-connected-service.md
+            - name: Začínáme s projekty .NET MVC
+              href: vs-active-directory-dotnet-getting-started.md
+            - name: Co se stalo s mým projektem .NET MVC?
+              href: vs-active-directory-dotnet-what-happened.md
+            - name: Začínáme s projekty WebAPI
+              href: vs-active-directory-webapi-getting-started.md
+            - name: Co se stalo s mým projektem WebAPI?
+              href: vs-active-directory-webapi-what-happened.md
+            - name: Chyba během detekce ověřování
+              href: vs-active-directory-error.md
+    - name: Odkazy
+      items:
+        - name: Knihovny ověřování
+          displayName: MSAL
+          href: reference-v2-libraries.md
+        - name: Rozhraní API identity a přístupu v Microsoft Graphu
+          href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
+        - name: Manifest aplikace
+          href: reference-app-manifest.md
+        - name: Kódy chyb autorizace a ověřování
+          href: reference-aadsts-error-codes.md
+        - name: Změny způsobující chyby
+          href: reference-breaking-changes.md
 - name: v1.0
   expanded: true
   items:
@@ -61,6 +432,8 @@
       href: sample-v1-code.md
     - name: Koncepty
       items:
+        - name: Proč aktualizovat na v2.0
+          href: azure-ad-endpoint-comparison.md
         - name: Typy aplikací
           items:
             - name: Typy aplikací
@@ -115,6 +488,8 @@
               href: reference-saml-tokens.md
         - name: Konfigurace aplikací
           items:
+            - name: Průvodce školením registrace aplikací
+              href: app-registrations-training-guide.md
             - name: Aplikace a instanční objekty
               href: app-objects-and-service-principals.md
             - name: Jak a proč se aplikace přidávají do Azure AD
@@ -219,195 +594,6 @@
           href: active-directory-authentication-libraries.md
         - name: Azure AD Graph API
           href: active-directory-graph-api.md
-        - name: Manifest aplikace
-          href: reference-app-manifest.md
-        - name: Kódy chyb autorizace a ověřování
-          href: reference-aadsts-error-codes.md
-        - name: Změny způsobující chyby
-          href: reference-breaking-changes.md
-- name: v2.0
-  expanded: true
-  items:
-    - name: Přehled
-      href: v2-overview.md
-    - name: Šablony Rychlý start
-      items:
-        - name: Vytvoření a nastavení vývojového prostředí
-          href: quickstart-create-new-tenant.md
-        - name: Konfigurace aplikace
-          items:
-            - name: Registrace aplikace
-              href: quickstart-register-app.md
-            - name: Konfigurace aplikace pro přístup k webovým rozhraním API
-              href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurace aplikace pro zveřejnění webových rozhraní API
-              href: quickstart-configure-app-expose-web-apis.md
-            - name: Úprava účtů podporovaných aplikací
-              href: quickstart-modify-supported-accounts.md
-            - name: Odebrání aplikace
-              href: quickstart-remove-app.md
-        - name: Jednostránkové aplikace
-          items:
-            - name: JavaScript
-              href: quickstart-v2-javascript.md
-        - name: Webové aplikace
-          items:
-            - name: ASP .NET
-              href: quickstart-v2-aspnet-webapp.md
-            - name: ASP .NET Core
-              href: quickstart-v2-aspnet-core-webapp.md
-            - name: NodeJS
-              href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
-        - name: Webová rozhraní API
-          items:
-            - name: ASP .NET
-              href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
-            - name: ASP .NET Core
-              href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
-        - name: Mobilní a desktopové aplikace
-          items:
-            - name: Android
-              href: quickstart-v2-android.md
-            - name: iOS
-              href: quickstart-v2-ios.md
-            - name: Univerzální platforma Windows
-              href: quickstart-v2-uwp.md
-            - name: Windows Desktop .NET
-              href: quickstart-v2-windows-desktop.md
-        - name: Aplikace démonů
-          items:
-            - name: Konzola .NET Core (proces démon)
-              href: quickstart-v2-netcore-daemon.md
-            - name: Webová aplikace démona ASP.NET
-              href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
-    - name: Kurzy
-      items:
-        - name: Jednostránkové aplikace
-          items:
-            - name: JavaScript
-              href: tutorial-v2-javascript-spa.md
-        - name: Webové aplikace
-          items:
-            - name: ASP .NET
-              href: tutorial-v2-asp-webapp.md
-        - name: Mobilní a desktopové aplikace
-          items:
-            - name: Android
-              href: tutorial-v2-android.md
-            - name: iOS
-              href: tutorial-v2-ios.md
-            - name: Univerzální platforma Windows
-              href: tutorial-v2-windows-uwp.md
-            - name: Windows Desktop .NET
-              href: tutorial-v2-windows-desktop.md
-    - name: Ukázky
-      href: sample-v2-code.md
-    - name: Koncepty
-      items:
-        - name: Rozhodování mezi v1.0 a v2.0
-          href: azure-ad-endpoint-comparison.md
-        - name: Typy aplikací
-          href: v2-app-types.md
-        - name: Authentication
-          items:
-            - name: Základy ověřování
-              href: authentication-scenarios.md
-            - name: Protokoly OAuth 2.0 a OpenID Connect
-              href: active-directory-v2-protocols.md
-            - name: OpenID Connect
-              href: v2-protocols-oidc.md
-            - name: Tok implicitního udělení OAuth 2.0
-              href: v2-oauth2-implicit-grant-flow.md
-            - name: Udělení autorizačního kódu OAuth 2.0
-              href: v2-oauth2-auth-code-flow.md
-            - name: Tok On-Behalf-Of OAuth 2.0
-              href: v2-oauth2-on-behalf-of-flow.md
-            - name: Udělení přihlašovacích údajů klienta OAuth 2.0
-              href: v2-oauth2-client-creds-grant-flow.md
-            - name: Tok kódu zařízení OAuth 2.0
-              href: v2-oauth2-device-code.md
-            - name: Udělení přihlašovacího hesla vlastníka prostředku OAuth 2.0
-              href: v2-oauth-ropc.md
-            - name: Výměna podpisových klíčů
-              href: active-directory-signing-key-rollover.md
-            - name: Tokeny ID
-              href: id-tokens.md
-            - name: Přístupové tokeny
-              href: access-tokens.md
-            - name: Přihlašovací údaje ve formě certifikátu
-              href: active-directory-certificate-credentials.md
-        - name: Konfigurace aplikací
-          items:
-            - name: Průvodce školením registrace aplikací
-              href: app-registrations-training-guide.md
-            - name: Aplikace a instanční objekty
-              href: app-objects-and-service-principals.md
-            - name: Aplikace s jedním a více tenanty
-              href: single-and-multi-tenant-apps.md
-        - name: Oprávnění a souhlas
-          displayName: Scopes
-          items:
-            - name: Typy oprávnění a souhlas
-              href: v2-permissions-and-consent.md
-            - name: Rámec pro udělení souhlasu
-              href: consent-framework.md
-            - name: Prostředí udělení souhlasu pro aplikace
-              href: application-consent-experience.md
-        - name: Národní cloudy
-          href: authentication-national-cloud.md
-    - name: Návody
-      items:
-        - name: Authentication
-          items:
-            - name: Konfigurace deklarací identity rolí
-              href: active-directory-enterprise-app-role-management.md
-            - name: Přizpůsobení deklarací identity – PowerShell
-              href: active-directory-claims-mapping.md
-            - name: Konfigurace volitelných deklarací identity
-              href: active-directory-optional-claims.md
-            - name: Konfigurace životnosti tokenů
-              href: active-directory-configurable-token-lifetimes.md
-        - name: Konfigurace aplikací
-          items:
-            - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
-              href: howto-convert-app-to-be-multi-tenant.md
-            - name: Vytvoření instančního objektu
-              items:
-                - name: Použití Azure Powershell
-                  href: howto-authenticate-service-principal-powershell.md
-                - name: Pomocí webu Azure Portal
-                  href: howto-create-service-principal-portal.md
-            - name: Omezení aplikace na sadu uživatelů
-              href: howto-restrict-your-app-to-a-set-of-users.md
-            - name: Přidání rolí aplikace ve vaší aplikaci
-              href: howto-add-app-roles-in-azure-ad-apps.md
-            - name: Pokyny pro branding
-              href: howto-add-branding-in-azure-ad-apps.md
-            - name: Doména vydavatele
-              href: howto-configure-publisher-domain.md
-            - name: Podmínky služby a prohlášení o ochraně osobních údajů
-              href: howto-add-terms-of-service-privacy-statement.md
-        - name: Práce se sadou Visual Studio
-          items:
-            - name: Použití připojené služby Active Directory
-              href: vs-active-directory-add-connected-service.md
-            - name: Začínáme s projekty .NET MVC
-              href: vs-active-directory-dotnet-getting-started.md
-            - name: Co se stalo s mým projektem .NET MVC?
-              href: vs-active-directory-dotnet-what-happened.md
-            - name: Začínáme s projekty WebAPI
-              href: vs-active-directory-webapi-getting-started.md
-            - name: Co se stalo s mým projektem WebAPI?
-              href: vs-active-directory-webapi-what-happened.md
-            - name: Chyba během detekce ověřování
-              href: vs-active-directory-error.md
-    - name: Odkazy
-      items:
-        - name: Knihovny ověřování
-          displayName: MSAL
-          href: reference-v2-libraries.md
-        - name: Rozhraní API identity a přístupu v Microsoft Graphu
-          href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
         - name: Manifest aplikace
           href: reference-app-manifest.md
         - name: Kódy chyb autorizace a ověřování

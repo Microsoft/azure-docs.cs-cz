@@ -47,6 +47,8 @@
           href: howto-connect-raspberry-pi-csharp.md
         - name: Příprava a připojení zařízení Windows IoT Core
           href: howto-connect-windowsiotcore.md
+        - name: Příprava a připojení zařízení SensorTile.box
+          href: howto-connect-sensortile.md
         - name: Monitorování připojení zařízení pomocí příkazového řádku
           href: howto-use-iotc-explorer.md
     - name: Správa zařízení

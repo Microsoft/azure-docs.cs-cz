@@ -16,6 +16,8 @@
   items:
     - name: Umístění a partneři
       href: virtual-wan-locations-partners.md
+    - name: Globální architektura síťového přenosu
+      href: virtual-wan-global-transit-architecture.md
     - name: Rovina řízení Office 365 ve službě Virtual WAN
       href: virtual-wan-office365-overview.md
 - name: Návody

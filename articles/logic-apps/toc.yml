@@ -55,7 +55,9 @@
           href: logic-apps-create-variables-store-values.md
         - name: Provádění operací s daty
           href: logic-apps-perform-data-operations.md
-        - name: Přidání vlastního kódu s využitím Azure Functions
+        - name: Přidání a spuštění fragmentů kódu s využitím vloženého kódu
+          href: logic-apps-add-run-inline-code.md
+        - name: Přidání a spuštění kódu s využitím Azure Functions
           href: logic-apps-azure-functions.md
         - name: Volání aplikací logiky s využitím Azure Functions
           href: logic-apps-scenario-function-sb-trigger.md

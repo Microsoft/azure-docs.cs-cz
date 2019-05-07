@@ -1,0 +1,70 @@
+- name: Dokumentace ke službě Personalizace
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je služba Personalizace?
+      href: what-is-personalizer.md
+      displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření a použití smyčky zpětné vazby
+      href: csharp-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, c#'
+- name: Koncepty
+  items:
+    - name: Jak služba Personalizace funguje
+      href: how-personalizer-works.md
+      displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
+    - name: Kde se dá služba Personalizace využít?
+      href: where-can-you-use-personalizer.md
+      displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Etické a zodpovědné využití
+      href: ethics-responsible-use.md
+      displayName: 'best practice, design'
+    - name: Základní koncepce
+      items:
+        - name: 'Funkce: Akce a kontext'
+          href: concepts-features.md
+          displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: Zpětnovazební učení
+          href: concepts-reinforcement-learning.md
+          displayName: 'RL, contextual bandits, Vowpal Wabbit'
+    - name: Analýza
+      items:
+        - name: Offline vyhodnocení
+          href: concepts-offline-evaluation.md
+          displayName: 'learning policy, Counterfactual, features'
+- name: Návody
+  items:
+    - name: Konfigurace služby Personalizace
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy'
+    - name: Analýza
+      items:
+        - name: Offline vyhodnocení
+          href: how-to-offline-evaluation.md
+- name: Referenční informace
+  items:
+    - name: Ukázky
+      href: 'https://aka.ms/personalizer-samples'
+    - name: Reference k rozhraní REST API
+      href: 'https://aka.ms/personalizer-rest-api-docs'
+    - name: Sady SDK
+      items:
+        - name: Referenční informace k sadě .NET SDK
+          href: 'https://aka.ms/personalizer-dotnet-sdk-docs'
+        - name: Balíček NuGet
+          href: 'https://aka.ms/personalizer-nuget-sdk'
+- name: Zdroje a prostředky
+  items:
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://aka.ms/personalizer-roadmap'
+    - name: Ceny
+      href: 'https://aka.ms/personalizer-pricing'
+    - name: Stack Overflow
+      href: 'https://aka.ms/personalizer-stackoverflow'
+    - name: UserVoice
+      href: 'https://aka.ms/personalizer-uservoice'

@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/19/2019
+  ms.date: 02/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -55,8 +55,8 @@ sections:
         style: unordered
         items:
           - html: '<a href="https://aka.ms/aml-sdk">Hlavní sada Python SDK:</a>: Základní funkce, automatizované strojové učení, kanály a další'
-          - html: '<a href="https://aka.ms/data-prep-sdk">Sada Data Prep</a> Python SDK: Příprava a transformace dat'
           - html: '<a href="https://aka.ms/aml-monitoring-sdk">Sada Monitoring</a> Python SDK: Shromažďování dat z nasazených webových služeb'
+          - html: <a href="../algorithm-module-reference/module-reference.md">referenční informace k modulům a algoritmům</a> pro vizuální rozhraní
   - title: Další technologie Azure Machine Learning
     items:
       - type: list

@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Služba Azure Red Hat OpenShift
+metadata:
+  document_id: null
+  title: 'Dokumentace ke službě Azure Red Hat OpenShift – kurzy, reference k rozhraní API | Microsoft Docs'
+  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
+  services: container-service
+  author: tylermsft
+  manager: jeconnoc
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05-06-2019
+  ms.author: twhitney
+abstract:
+  description: 'Azure Red Hat OpenShift poskytuje vysoce dostupné clustery Kubernetes s jedním tenantem v Azure, a to s podporou Red Hatu a Microsoftu.'
+sections:
+  - title: Podrobné kurzy
+    items:
+      - type: paragraph
+        text: Naučte se vytvářet a spravovat clustery Azure Red Hat OpenShift.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Vytvoření clusteru Azure Red Hat OpenShift</a>
+          - html: <a href="/azure/openshift/tutorial-scale-cluster">Škálování clusteru Azure Red Hat OpenShift</a>
+          - html: <a href="/azure/openshift/tutorial-delete-cluster">Odstranění clusteru Azure Red Hat OpenShift</a>
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create">Azure CLI</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/en-us/rest/api/?view=Azure">REST API</a></p>'
+          - title: Dokumentace k Red Hatu
+            html: '<p><a href="https://access.redhat.com/documentation/openshift_dedicated/3/">Dokumentace ke službě Red Hat OpenShift</a></p>'
