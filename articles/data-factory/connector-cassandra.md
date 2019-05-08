@@ -55,10 +55,10 @@ Cassandra propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type |Vlastnost type musí být nastavená na: **Cassandra** |Ano |
-| hostitel |Jeden nebo více IP adres nebo názvů hostitele serveru Cassandra.<br/>Zadejte seznam IP adres nebo názvů hostitele pro připojení ke všem serverům současně. |Ano |
+| host |Jeden nebo více IP adres nebo názvů hostitele serveru Cassandra.<br/>Zadejte seznam IP adres nebo názvů hostitele pro připojení ke všem serverům současně. |Ano |
 | port |Port TCP, který Cassandra server používá k naslouchání pro připojení klientů. |Ne (výchozí hodnota je 9042) |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi Cassandra.<br/>Povolené hodnoty jsou: **Základní**, a **anonymní**. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
+| authenticationType | Typ ověřování používaný pro připojení k databázi Cassandra.<br/>Povolené hodnoty jsou: **Základní**, a **anonymní**. |Ano |
+| username |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
 | password |Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano, pokud typ ověřování je nastavena na Basic. |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -98,7 +98,7 @@ Pro kopírování dat z Cassandry, nastavte vlastnost typ datové sady na **Cass
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type datové sady, musí být nastavená na: **CassandraTable** | Ano |
-| prostor klíčů |Název prostor klíčů nebo schéma databáze Cassandra. |Ne (když je zadán "dotaz" na "CassandraSource") |
+| keySpace |Název prostor klíčů nebo schéma databáze Cassandra. |Ne (když je zadán "dotaz" na "CassandraSource") |
 | tableName |Název tabulky v databázi Cassandra. |Ne (když je zadán "dotaz" na "CassandraSource") |
 
 **Příklad:**
@@ -176,14 +176,14 @@ Při kopírování dat z Cassandry, se používají následující mapování z 
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| DATOVÝ TYP BOOLEAN |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
-| PLOVOUCÍ DESETINNOU ČÁRKOU |Single |
+| FLOAT |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| ČASOVÉ RAZÍTKO |DateTime |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
