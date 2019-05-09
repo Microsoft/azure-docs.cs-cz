@@ -64,8 +64,8 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | type | Vlastnost type musí být nastavená na **Dynamics**. | Ano |
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"Online"** Dynamics online. | Ano |
 | serviceUri | Adresa URL služby vaší Dynamics instance, například `https://adfdynamics.crm.dynamics.com`. | Ano |
-| authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Office 365"** Dynamics online. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
+| authenticationType | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Office 365"** Dynamics online. | Ano |
+| username | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku Pokud zdroj propojené služby nemá prostředí integration runtime |
 
@@ -108,9 +108,9 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"OnPremisesWithIfd"** pro Dynamics místně pomocí internetového nasazení.| Ano |
 | hostName | Název hostitele serveru Dynamics na místě. | Ano |
 | port | Port serveru Dynamics na místě. | Ne, výchozí je 443 |
-| Název organizace | Název organizace Dynamics instance. | Ano |
-| authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics on-premises s IFD. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
+| organizationName | Název organizace Dynamics instance. | Ano |
+| authenticationType | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics on-premises s IFD. | Ano |
+| username | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete zvolit toto pole označení SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit aktivity kopírování o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
