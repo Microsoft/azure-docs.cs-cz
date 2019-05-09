@@ -63,9 +63,9 @@ Pro DB2 propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Db2** | Ano |
 | server |Název serveru DB2. Můžete zadat číslo portu za název serveru oddělené dvojtečkou třeba `server:port`. |Ano |
-| databáze |Název databáze DB2. |Ano |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi DB2.<br/>Povolená hodnota je: **Základní**. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
+| database |Název databáze DB2. |Ano |
+| authenticationType |Typ ověřování používaný pro připojení k databázi DB2.<br/>Povolená hodnota je: **Základní**. |Ano |
+| username |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -174,26 +174,26 @@ Při kopírování dat z databáze DB2, se používají následující mapován�
 | Typ databáze DB2. | Data factory dočasné datový typ |
 |:--- |:--- |
 | BigInt |Int64 |
-| Binární hodnota |Byte[] |
-| Objekt blob |Byte[] |
-| char |String |
+| Binary |Byte[] |
+| Blob |Byte[] |
+| Char |String |
 | Clob |String |
-| Datum |DateTime |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Obrázek |String |
+| Graphic |String |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
 | Numeric |Decimal |
-| real |Single |
+| Real |Single |
 | SmallInt |Int16 |
-| Čas |TimeSpan |
+| Time |TimeSpan |
 | Timestamp |DateTime |
 | VarBinary |Byte[] |
 | VarChar |String |
