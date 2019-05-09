@@ -48,9 +48,9 @@ Concur propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Concur** | Ano |
-| ID klienta | Aplikace client_id poskytnutých Concur správy aplikací.  | Ano |
-| uživatelské jméno | Uživatelské jméno, který používáte pro přístup ke službě Concur.  | Ano |
-| heslo | Heslo odpovídající uživatelské jméno, které jste zadali do pole uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | Aplikace client_id poskytnutých Concur správy aplikací.  | Ano |
+| username | Uživatelské jméno, který používáte pro přístup ke službě Concur.  | Ano |
+| password | Heslo odpovídající uživatelské jméno, které jste zadali do pole uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
