@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: ba3529db07fcc3d92a8ca220dafbed9760a2b63a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
-ms.translationtype: HT
+ms.openlocfilehash: 0bb5fa25301fa86564c7f7aadb3285bdd5898a08
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465523"
+ms.locfileid: "65511163"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro rozhraní .NET Framework
 
-Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-dotnet-windows.md) a a [převod textu na řeč](quickstart-text-to-speech-dotnet-windows.md).
+Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-dotnet-windows.md) a [převod textu na řeč](quickstart-text-to-speech-dotnet-windows.md).
 
 V tomto rychlém startu vytvoříte jednoduchou aplikaci rozhraní .NET Framework, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na Windows 64-bit a využívá rozhraní [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
 

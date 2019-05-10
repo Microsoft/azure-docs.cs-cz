@@ -8,14 +8,14 @@ manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 01/14/2019
+ms.date: 05/10/2019
 ms.author: eamono
-ms.openlocfilehash: d0764131f0e7e321a87ed383636606b2124ef7d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562668"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521432"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace služby Azure Automation se službou Event Grid a Microsoft Teams
 
@@ -52,10 +52,13 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 
 4. Vyberte **Importovat** a pojmenujte ho **Watch-VMWrite**.
 
-5. Po importu vyberte **Upravit** a zobrazte zdroj runbooku. Vyberte tlačítko **Publikovat**.
+5. Po importu vyberte **Upravit** a zobrazte zdroj runbooku. 
+6. Aktualizujte řádek 74 v skript, který chcete použít `Tag` místo `Tags`.
 
-> [!NOTE]
-> Řádek 74 ve skriptu je potřeba upravit na `Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose`. Parametr `-Tags` je teď `-Tag`.
+    ```powershell
+    Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
+    ```
+7. Vyberte tlačítko **Publikovat**.
 
 ## <a name="create-an-optional-microsoft-teams-webhook"></a>Vytvoření volitelného webhooku Microsoft Teams
 
@@ -67,7 +70,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 
 3. Jako název zadejte **AzureAutomationIntegration** a vyberte **Vytvořit**.
 
-4. Zkopírujte webhook do schránky a uložte ho. Adresa URL webhooku se používá k odesílání informací do Microsoft Teams.
+4. Zkopírujte adresu URL webhooku do schránky a uložte ho. Adresa URL webhooku se používá k odesílání informací do Microsoft Teams.
 
 5. Vyberte **Hotovo** a uložte webhook.
 
@@ -96,14 +99,16 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 2. Klikněte na **+ Odběr události**.
 
 3. Nakonfigurujte odběr podle následujících informací:
+    1. Jako **Typ tématu** vyberte **Předplatná Azure**.
+    2. Zrušte zaškrtnutí políčka **Přihlásit se k odběru všech typů událostí**.
+    3. Jako název zadejte **AzureAutomation**.
+    4. V rozevíracím seznamu **Definované typy událostí** zrušte zaškrtnutí všech možností kromě možnosti **Úspěšný zápis prostředku**.
 
-   * Jako **Typ tématu** vyberte **Předplatná Azure**.
-   * Zrušte zaškrtnutí políčka **Přihlásit se k odběru všech typů událostí**.
-   * Jako název zadejte **AzureAutomation**.
-   * V rozevíracím seznamu **Definované typy událostí** zrušte zaškrtnutí všech možností kromě možnosti **Úspěšný zápis prostředku**.
-   * Jako **Typ koncového bodu** vyberte **Webhook**.
-   * Klikněte na **Vybrat koncový bod**. Na stránce **Vybrat webhook**, která se otevře, vložte adresu URL webhooku, který jste vytvořili pro runbook Watch-VMWrite.
-   * V části **FILTRY** zadejte předplatné a skupinu prostředků, kde chcete hledat nově vytvořené virtuální počítače. Mělo by to vypadat takto: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
+        > [!NOTE] 
+        > Azure Resource Manageru nerozlišují aktuálně mezi vytváření a aktualizace, aby implementace tohoto kurzu pro všechny události Microsoft.Resources.ResourceWriteSuccess ve vašem předplatném Azure může vést k velkému počtu volání.
+    1. Jako **Typ koncového bodu** vyberte **Webhook**.
+    2. Klikněte na **Vybrat koncový bod**. Na stránce **Vybrat webhook**, která se otevře, vložte adresu URL webhooku, který jste vytvořili pro runbook Watch-VMWrite.
+    3. V části **FILTRY** zadejte předplatné a skupinu prostředků, kde chcete hledat nově vytvořené virtuální počítače. Mělo by to vypadat takto: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
 
 4. Výběrem možnosti **Vytvořit** uložte odběr Event Gridu.
 

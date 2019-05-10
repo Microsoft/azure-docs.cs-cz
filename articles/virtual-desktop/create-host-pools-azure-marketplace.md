@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8e6991201b3cda5699849ac00cc92217c6b7bf72
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236781"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524016"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -68,7 +68,7 @@ Pro okno nastavení virtuálního počítače:
 
 Okno informace o tenantovi virtuální plochy Windows:
 
-1. Zadejte **název skupiny pro virtuální plochy Windows tenanta** pro tenanta skupiny, která obsahuje váš tenant. Pokud nemáte konkrétní tenanta plánované název skupiny, ponechte jako výchozí.
+1. Zadejte **název skupiny pro virtuální plochy Windows tenanta** pro tenanta skupiny, která obsahuje váš tenant. Ponechte jako výchozí, pokud byly poskytnuty konkrétní název skupiny pro tenanta.
 2. Zadejte **název tenanta virtuální plochy Windows** pro příslušného tenanta vytvoříte tento fond hostitele v.
 3. Určení typu přihlašovacích údajů, které chcete použít k ověření jako tenant Windows virtuálního klienta vzdálené plochy vlastníka. Pokud jste dokončili [vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell kurzu](./create-service-principal-role-powershell.md)vyberte **instanční objekt služby**. Teď budete muset zadat **ID tenanta Azure AD** , který obsahuje objekt služby Azure Active Directory.
 4. Zadejte buď přihlašovací údaje pro účet správce tenanta. Podporovány jsou pouze instanční objekty s přihlašovacími údaji heslo.
@@ -94,12 +94,6 @@ Spuštěním následující rutiny pro přihlášení k prostředí virtuálníh
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-Nastavte kontext do skupiny tenanta virtuální plochy Windows, které jste zadali v Tržišti Azure Marketplace nabízí pomocí následující rutiny. Pokud jste nechali tenanta virtuální plochy Windows hodnota skupiny jako výchozí hodnotu na webu Azure Marketplace nabízí, můžete tento krok přeskočit.
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
 ```
 
 Jakmile jste provedli tyto dvě věci, můžete přidat uživatele do skupiny aplikace klasické pracovní plochy s touto rutinou:

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a33734af34814772fdd8c391d0ee19a79b47d856
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925050"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508254"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
 
@@ -46,7 +46,7 @@ Můžete připojit k úložišti objektů Blob Data Box přes *http* nebo *https
 - *HTTPS* je zabezpečené a doporučený způsob, jak připojit k úložišti objektů Blob Data Box.
 - *Http* se používá při připojení přes důvěryhodné sítě.
 
-Kroky pro připojení se liší při připojování k úložišti objektů Blob Data Box přes *http* nebo *https*,.
+Kroky pro připojení se liší při připojování k úložišti objektů Blob Data Box přes *http* nebo *https*.
 
 ## <a name="connect-via-http"></a>Připojení přes protokol http
 
@@ -84,7 +84,7 @@ Stáhněte si certifikát pomocí webu Azure portal.
 
 1. Přihlaste se na webu Azure portal.
 2. Přejděte na svoji objednávku Data Box a přejděte do **Obecné > Podrobnosti o zařízení**.
-3. V části **přihlašovací údaje zařízení**, přejděte na stránku **přístup přes rozhraní API** do zařízení. Klikněte na **Stáhnout**. Touto akcí se stáhne  **\<název vaší objednávky > .cer** soubor certifikátu. **Uložit** tento soubor. Tento certifikát nainstaluje na klientský nebo hostitelský počítač, který budete používat pro připojení k zařízení.
+3. V části **přihlašovací údaje zařízení**, přejděte na stránku **přístup přes rozhraní API** do zařízení. Klikněte na tlačítko **Stáhnout**. Touto akcí se stáhne  **\<název vaší objednávky > .cer** soubor certifikátu. **Uložit** tento soubor. Tento certifikát nainstaluje na klientský nebo hostitelský počítač, který budete používat pro připojení k zařízení.
 
     ![Stáhněte si certifikát na webu Azure portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3c62ad66a29943e26d1cb2f15ca71631d2feabe3
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bba263b65344672808487ae6de4c3f475a871842
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467435"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523948"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí webu Azure portal
 
@@ -95,7 +95,7 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
     Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Pokud místo vytvoření nového účtu úložiště používáte už existující účet, vyberte účet úložiště, který má vybrané **Všechny sítě** (výchozí) v možnosti **Brány firewall a virtuální sítě** v **NASTAVENÍ** pro účet úložiště.
     
     > [!NOTE]
-    > I když Microsoft.Insight a Microsoft.Network poskytovatelé jsou aktuálně podporované pro službu Azure Storage, protokolů toku NSG je stále není plně připojili. Povolení protokolování toku NSG Flow **všechny sítě** musí být vybrán dokud tato funkce je plně připojili. 
+    > I když Microsoft.Insight a Microsoft.Network poskytovatelé jsou aktuálně podporované jako důvěryhodné Microsoft Services pro službu Azure Storage, protokolů toku NSG je stále není plně připojili. Povolení protokolování toku NSG Flow **všechny sítě** musí být vybrán dokud tato funkce je plně připojili. 
 4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 5. Pod **PROTOKOLY** vyberte **Protokoly toku NSG**, jak je vidět na tomto obrázku:
 

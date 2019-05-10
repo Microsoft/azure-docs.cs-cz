@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050973"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520496"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu branou
 
@@ -82,7 +82,6 @@ K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se
 
 > [!WARNING]
 > </br> - Služba Azure Front Door Service v současnosti podporuje jen účty Key Vault v rámci stejného předplatného, jako je konfigurace Front Dooru. Pokud vyberete účet v rámci jiného předplatného, dojde k chybě.
-> </br> - Služba Azure Front Door Service v současnosti podporuje jen certifikáty Key Vaultu uložené v části Tajné kódy. Pokud je certifikát uložený v části Certifikáty a nikoliv v části Tajné kódy, import se nezdaří.
 > </br> - Služba Azure Front Door Service v současnosti podporuje jen certifikáty nahrané s příponou PFX **bez** hesla.
 
 #### <a name="register-azure-front-door-service"></a>Registrace služby Azure Front Door Service
@@ -142,7 +141,7 @@ Při použití vlastního certifikátu se ověření domény nevyžaduje.
 
 Záznam CNAME by měl mít následující formát, kde *Název* je název vaší vlastní domény a *Hodnota* je výchozí název hostitele .azurefd.net vašeho Front Dooru:
 
-| Název            | Typ  | Hodnota                 |
+| Název            | Typ  | Value                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -166,9 +165,9 @@ Po povolení HTTPS pro vlastní doménu certifikační autorita DigiCert ověř�
 DigiCert odešle ověřovací e-mail také na další e-mailové adresy. Pokud jsou informace o žadateli o registraci v registru WHOIS privátní, ujistěte se, že můžete provést schválení přímo z některé z následujících adres:
 
 admin@&lt;název_vaší_domény.com&gt;  
-administrator@&lt;název_vaší_domény.com&gt;  
-webmaster@&lt;název_vaší_domény.com&gt;  
-hostmaster@&lt;název_vaší_domény.com&gt;  
+administrator@&lt;your-domain-name.com&gt;  
+webmaster@&lt;your-domain-name.com&gt;  
+hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;název_vaší_domény.com&gt;  
 
 Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr proti spamu, přidejte v něm adresu admin@digicert.com na seznam povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
@@ -198,7 +197,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při povolení
 | | Vaše vlastnictví domény se úspěšně ověřilo. |
 | | Platnost požadavku na ověření vlastnictví domény vypršela (zákazník pravděpodobně neodpověděl ve lhůtě 6 dní). HTTPS se pro vaši doménu nepovolí. * |
 | | Požadavek na ověření vlastnictví domény byl zamítnut zákazníkem. HTTPS se pro vaši doménu nepovolí. * |
-| 3. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS pro vaši doménu. |
+| 3. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS ve vaší doméně. |
 | | Certifikát byl vystaven a momentálně se nasazuje pro Front Door. Tento proces může trvat až jednu hodinu. |
 | | Certifikát se pro Front Door nasadil úspěšně. |
 | 4. Hotovo | Protokol HTTPS se ve vaší doméně úspěšně povolil. |
@@ -233,7 +232,7 @@ Po zákazu funkce HTTPS vlastní domény může trvat 6 až 8 hodin, než se zm�
 
 Následující tabulka ukazuje průběh operace, která proběhne při zákazu HTTPS. Po zákazu HTTPS se v dialogovém okně vlastní domény zobrazí tři kroky operace. Když se jednotlivé kroky aktivují, zobrazí se pod nimi další podrobnosti. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
 
-| Průběh operace | Podrobnosti o operaci | 
+| Průběh operace | Detaily operace | 
 | --- | --- |
 | 1. Odesílání žádosti | Odesílání vaší žádosti |
 | 2. Zrušení zřízení certifikátu | Odstraňování certifikátu |

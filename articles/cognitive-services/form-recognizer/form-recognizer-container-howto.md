@@ -1,7 +1,7 @@
 ---
 title: Nainstalujte a spusťte kontejner – nástroj pro rozpoznávání formuláře
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití kontejneru formuláře Rozlišovač analyzovat data formuláře a tabulek.
+description: Naučte se využívat kontejner Rozpoznávání formulářů k analýze dat formulářů a tabulek.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143027"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507815"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spouštění kontejnerů Rozlišovač formuláře
 Nástroj pro rozpoznávání formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře. Přiřadí hodnoty a položky tabulky k nim a potom vypíše strukturovanými daty, která obsahuje vztahy v původním souboru. Můžete zavolat vlastní formulář Rozlišovač modelu pomocí jednoduchých rozhraní REST API k zjednodušení a snadno ji integrovat v procesu pracovního postupu služby automation nebo jiné aplikace. Zobrazuje se jenom pět dokumentů (nebo prázdný formulář) jsou potřeba, abyste se mohli výsledky rychle, přesně a přizpůsobená pro váš konkrétní obsah, bez náročné ruční zásah nebo odbornými znalostmi o rozsáhlé datové vědy. Nevyžaduje se popisky dat nebo dat poznámky.
@@ -101,7 +101,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče modulu pro rozpoznávání formuláře webu Azure portal.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce s přehledem Rozlišovač formuláře webu Azure portal.|
@@ -261,7 +261,7 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 ### <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-Kontejner poskytuje koncový bod REST API, který se nachází [tady](https://docs.microsoft.com/azure/cognitive-services/formrecognizer-service/rest-apis#formrecognier-api) najdete ukázky [tady](https://azure.microsoft.com/resources/samples/cognitive-formrecognizer).
+Kontejner poskytuje koncový bod REST API, který se nachází [tady](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel).
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]

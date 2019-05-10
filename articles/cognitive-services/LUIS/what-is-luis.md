@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309439"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522003"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -53,7 +53,7 @@ Aplikace LUIS obsahuje model zpracování přirozeného jazyka specifický pro d
 * **Vlastní entity:** Služba LUIS nabízí několik způsobů, jak identifikovat vlastní záměry a entity, včetně strojově naučených entit, konkrétních entit nebo entit literálů a kombinace strojově naučených entit a entit literálů.
 
 ## <a name="build-the-luis-model"></a>Sestavení modelu LUIS
-Model můžete sestavit pomocí rozhraní API pro [vytváření](https://aka.ms/luis-authoring-apis) nebo portálu služby LUIS.
+Model můžete sestavit pomocí rozhraní API pro [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) nebo portálu služby LUIS.
 
 Model LUIS začíná kategoriemi záměrů uživatele, které se označují jako **[záměry](luis-concept-intent.md)**. Každý záměr potřebuje příklady **[promluv](luis-concept-utterance.md)** uživatele. Každá promluva může poskytovat různá data, která je potřeba extrahovat pomocí **[entit](luis-concept-entity-types.md)**. 
 
@@ -65,7 +65,7 @@ Model LUIS začíná kategoriemi záměrů uživatele, které se označují jako
 
 ## <a name="query-prediction-endpoint"></a>Koncový bod předpovědi dotazů
 
-Po sestavení a publikování modelu v koncovém bodu může klientská aplikace odesílat promluvy do publikovaného rozhraní API [koncového bodu](https://aka.ms/luis-endpoint-apis) předpovědi. Rozhraní API pomocí modelu analyzuje text. Rozhraní API odešle odpověď s výsledky předpovědi ve formátu JSON.  
+Po sestavení a publikování modelu v koncovém bodu může klientská aplikace odesílat promluvy do publikovaného rozhraní API [koncového bodu](https://go.microsoft.com/fwlink/?linkid=2092356) předpovědi. Rozhraní API pomocí modelu analyzuje text. Rozhraní API odešle odpověď s výsledky předpovědi ve formátu JSON.  
 
 Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. Může extrahovat také data, jako je následující entita **Contact Type** (Typ kontaktu). 
 
@@ -126,6 +126,6 @@ Vytvořte novou aplikaci LUIS s využitím [předem připravené](luis-get-start
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
-[authoring-apis]: https://aka.ms/luis-authoring-api
-[endpoint-apis]: https://aka.ms/luis-endpoint-apis
+[authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
+[endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

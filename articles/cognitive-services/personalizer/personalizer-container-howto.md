@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/09/2019
 ms.author: edjez
-ms.openlocfilehash: 2a62fd288f9118882e5cd9899ab572d4b247fc5a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a197531a7c78823271c0a5fa5413b76746f63a9a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158536"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507017"
 ---
 # <a name="install-and-run-personalizer-containers"></a>Nainstalujte a spusťte Personalizer kontejnery
 
@@ -99,7 +99,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče služby Personalizer webu Azure portal.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce Přehled služby Personalizer webu Azure portal.|
@@ -182,7 +182,7 @@ Kontejner, poskytuje kompletní dokumentaci pro koncové body a také `Try it no
 
 Odeslat kontejnery služby Personalizer fakturační údaje do Azure, pomocí _Personalizer služby_ prostředků v účtu Azure. 
 
-Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků společnosti Microsoft. 
+Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu.  
 
 `docker run` Příkaz používá následující argumenty pro účely fakturace:
 

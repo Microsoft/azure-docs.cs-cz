@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ac9a748742bda6b1e7a321a427090662542f1032
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f20cc1107476f8d65323d277a53086b8bd035a1b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60643077"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518913"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -56,7 +56,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
-3. Kliknutím na **Zálohovat** nakonfigurujte zálohování sdílené složky Azure do vašeho trezoru služby Recovery Services. 
+3. Kliknutím na **Zálohovat** nakonfigurujte zálohování sdílené složky Azure do vašeho trezoru služby Recovery Services.
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/set-backup-goal.png)
 
@@ -77,7 +77,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
     Po vytvoření zásady zálohování se v naplánovaném čase pořídí snímek sdílených složek a po zvolenou dobu se bude uchovávat bod obnovení.
 
 ## <a name="create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
-Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení mimo dobu naplánovanou v zásadě zálohování. Obvyklá doba pro vygenerování zálohy na vyžádání je ihned po konfiguraci zásady zálohování. V závislosti na plánu v zásadě zálohování může pořízení snímku trvat hodiny nebo dny. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvoření zálohy na vyžádání se často vyžaduje před provedením plánovaných změn sdílených složek.
+Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení mimo dobu naplánovanou v zásadě zálohování. Obvyklá doba pro vygenerování zálohy na vyžádání je ihned po konfiguraci zásady zálohování. V závislosti na plánu v zásadě zálohování může pořízení snímku trvat hodiny nebo dny. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvořit zálohu na vyžádání se často vyžaduje před provedením plánovaných změn sdílených složek.
 
 ### <a name="to-create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
 
@@ -123,10 +123,12 @@ Průběh všech úloh můžete sledovat na stránce **Úlohy zálohování**.
 Otevření stránky **Úlohy zálohování**:
 
 - Otevřete trezor služby Recovery Services, který chcete monitorovat, v nabídce trezoru služby Recovery Services klikněte na **Úlohy** a pak klikněte na **Úlohy zálohování**.
+
    ![Výběr úlohy, kterou chcete monitorovat](./media/backup-file-shares/open-backup-jobs.png)
 
     Zobrazí se seznam úloh zálohování a stav jednotlivých úloh.
-   ![Výběr úlohy, kterou chcete monitorovat](./media/backup-file-shares/backup-jobs-progress-list.png)
+
+    ![Výběr úlohy, kterou chcete monitorovat](./media/backup-file-shares/backup-jobs-progress-list.png)
 
 ### <a name="create-a-new-policy"></a>Vytvoření nové zásady
 

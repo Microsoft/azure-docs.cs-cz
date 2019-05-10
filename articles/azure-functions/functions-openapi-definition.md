@@ -11,12 +11,12 @@ ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 255a7c9d0b9da15176fca90c6934a84fa0f863ed
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: HT
+ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501860"
+ms.locfileid: "65510443"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Vytvoření definice OpenAPI pro funkci s Azure API Management
 
@@ -30,6 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření funkce v Azure
 > * Vygeneruje definici rozhraní OpenAPI pomocí služby Azure API Management
 > * Otestování definice zavoláním funkce
+> * Stažení definice OpenAPI
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
@@ -164,11 +165,11 @@ Nyní jste připraveni vygenerovat definici OpenAPI.
 
 Rozhraní API je vytvořený pro funkci.
 
-## <a name="test-the-openapi-definition"></a>Test definice OpenAPI
+## <a name="test-the-api"></a>Testovat rozhraní API
 
-Než použijete definice rozhraní API, měli byste ověřit, že funguje.
+Než použijete definici OpenAPI, byste měli ověřit, že rozhraní API funguje.
 
-1. Na **testovací** funkce, vyberte na kartě **příspěvek** operace
+1. Na **testovací** funkce, vyberte na kartě **příspěvek** operace.
 
 1. Zadejte hodnoty pro **hodin** a **kapacity**
 
@@ -183,9 +184,21 @@ Než použijete definice rozhraní API, měli byste ověřit, že funguje.
 
     ![Test rozhraní API – funkce](media/functions-openapi-definition/test-function-api-openapi.png)
 
+## <a name="download-the-openapi-definition"></a>Stažení definice OpenAPI
+
+Pokud vaše rozhraní API funguje podle očekávání, si můžete stáhnout definici OpenAPI.
+
+1. Vyberte **definice stáhnout OpenAPI** v horní části stránky.
+   
+   ![Stažení definice OpenAPI](media/functions-openapi-definition/download-definition.png)
+
+2. Otevřete stažený soubor JSON a zkontrolujte definici.
+
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Další postup
 
+Integrace rozhraní API Management mají použít ke generování definice OpenAPI funkcí. Teď můžete upravit definice ve službě API Management na portálu. Můžete také [Další informace o službě API Management](../api-management/api-management-key-concepts.md).
+
 > [!div class="nextstepaction"]
-> [Další informace o službě API Management](../api-management/api-management-key-concepts.md)
+> [Úprava definice OpenAPI ve službě API Management](../api-management/edit-api.md)

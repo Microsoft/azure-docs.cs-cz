@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 17acd4eebe53704699d3ec9a3f4f121eed79794d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195973"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519238"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -109,13 +109,17 @@ Na stránce **Cíl ochrany** vyberete následující hodnoty:
 
 |    |  |
 |---------|-----------|
-| Kde se vaše počítače nachází? |Vyberte možnost pro **místní řešení**.|
+| Kde jsou vaše počítače umístěné? |Vyberte možnost pro **místní řešení**.|
 | Kam chcete své počítače replikovat? |Vyberte možnost **připojení k Azure**.|
-| Jsou vaše počítače virtualizované? |Vyberte **Nevirtualizované nebo jiné**.|
+| Máte počítače ve virtuální podobě? |Vyberte **Nevirtualizované nebo jiné**.|
 
 Jakmile to budete mít, přejděte zvolením **OK** na další krok.
 
-### <a name="2-prepare-source"></a>2: Připravit zdroj
+### <a name="2-select-deployment-planning"></a>2: Výběr plánování nasazení
+
+Na stránce **Dokončili jste plánování nasazení?** vyberte **Udělám to později** a potom vyberte **OK**.
+
+### <a name="3-prepare-source"></a>3: Připravit zdroj
 
 Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
 
@@ -140,7 +144,7 @@ Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
 
 Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal a vyberte server, který jste vytvořili jako **Konfigurační server**. Vyberte **OK** přejdete na 3: Připravte cíl.
 
-### <a name="3-prepare-target"></a>3: Připravit cíl
+### <a name="4-prepare-target"></a>4: Připravit cíl
 
 V této části zadáte informace o prostředcích, které jste vytvořili v předchozích krocích tohoto kurzu v části [Příprava prostředků Azure](#prepare-azure-resources).
 
@@ -149,8 +153,7 @@ V této části zadáte informace o prostředcích, které jste vytvořili v př
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure. Mělo by se jednat o prostředky, které jste vytvořili v předchozích krocích tohoto kurzu v části [Příprava prostředků Azure](#prepare-azure-resources).
 4. Až to bude hotové, vyberte **OK**.
 
-
-### <a name="4-prepare-replication-settings"></a>4: Příprava nastavení replikace
+### <a name="5-prepare-replication-settings"></a>5: Příprava nastavení replikace
 
 Před povolením replikace musíte vytvořit zásady replikace.
 
@@ -158,12 +161,7 @@ Před povolením replikace musíte vytvořit zásady replikace.
 2. Do pole **Name** (Název) zadejte **myReplicationPolicy**.
 3. Ve zbývajících polích nechte výchozí nastavení a zvolením možnosti **OK** vytvořte zásady. Nová zásada se automaticky přidruží ke konfiguračnímu serveru.
 
-### <a name="5-select-deployment-planning"></a>5: Výběr plánování nasazení
-
-Na stránce **Dokončili jste plánování nasazení?** vyberte **Udělám to později** a potom vyberte **OK**.
-
 Po dokončení všech pěti kroků v části **Příprava infrastruktury** vyberte **OK**.
-
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -236,7 +234,7 @@ Spusťte na portálu test převzetí služeb při selhání:
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování. Zpracování se dokončí za 8 až 10 minut.
 
-## <a name="migrate-to-azure"></a>Migrace do Azure
+## <a name="migrate-to-azure"></a>Migrovat do Azure
 
 Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveďte jejich migraci na virtuální počítače Azure:
 
@@ -248,7 +246,7 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
    - Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů. 
 
-     ![Dokončení migrace](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Dokončit migraci](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nepřerušujte probíhající převzetí služeb při selhání*. Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud probíhající proces převzetí služeb při selhání přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  

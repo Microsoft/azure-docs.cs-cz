@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nastavení
+title: Konfigurovat nastavení
 titleSuffix: Azure Cognitive Services
 description: Konfigurace služby obsahuje jak služba zpracovává odměny, popisuje, jak často služby, jak často retrained modelu a jaká data se ukládají.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4aeb9f924ba9af55485dce8babfacdbb0d0110f4
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143247"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520279"
 ---
 # <a name="personalizer-settings"></a>Nastavení personalizer
 
@@ -25,7 +25,7 @@ Konfigurace služby obsahuje jak služba zpracovává odměny, popisuje, jak ča
 
 Vytvořte prostředek Personalizer pro každou smyčku zpětné vazby. 
 
-1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Předchozí odkaz přejdete na **vytvořit** stránku Personlizer služby. 
+1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Předchozí odkaz přejdete na **vytvořit** stránku Personalizer služby. 
 1. Zadejte název vaší služby, vyberte předplatné, umístění, cenová úroveň a skupinu prostředků.
 1. Vyberte potvrzení a pak vyberte **vytvořit**.
 
@@ -35,7 +35,7 @@ Vytvořte prostředek Personalizer pro každou smyčku zpětné vazby.
 1. Najdete Personalizer prostředku. 
 1. V **správy prostředků** vyberte **nastavení**.
 
-    Před byste museli opustit Azure portal, zkopírujte jeden z klíčů prostředků **klíče** stránky. Budete ho potřebovat k použití [Personalizer SDK](https://aka.ms/personalizer-dotnet-sdk-docs).
+    Před byste museli opustit Azure portal, zkopírujte jeden z klíčů prostředků **klíče** stránky. Budete ho potřebovat k použití [Personalizer SDK](https://go.microsoft.com/fwlink/?linkid=2092353).
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurace nastavení reward pro smyčku zpětné vazby, který je založený na případu použití
 

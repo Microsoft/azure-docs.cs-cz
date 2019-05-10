@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236941"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523320"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Kurz: Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
 
@@ -38,10 +38,9 @@ Než budete moct vytvořit instanční objekty a přiřazení rolí, bude potře
     Install-Module AzureAD
     ```
 
-2. Spusťte následující rutiny s hodnotami v uvozovkách nahrazen hodnotami, které jsou relevantní pro vaši relaci. Pokud jste právě vytvořili tenanta virtuální plochy Windows z [vytvořit tenanta v kurzu virtuální plochy Windows](./tenant-setup-azure-active-directory.md), pak použijte "skupiny Tenanta Výchozí" jako název skupiny tenanta.
+2. Spusťte následující rutiny s hodnotami v uvozovkách nahrazen hodnotami, které jsou relevantní pro vaši relaci.
 
     ```powershell
-    $myTenantGroupName = "<my-tenant-group-name>"
     $myTenantName = "<my-tenant-name>"
     ```
 
@@ -68,8 +67,7 @@ Spusťte následující rutiny Powershellu pro připojení k virtuálnímu klien
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsContext -TenantGroupName $myTenantGroupName
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantGroupName $myTenantGroupName -TenantName $myTenantName
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Přihlaste se pomocí instančního objektu služby

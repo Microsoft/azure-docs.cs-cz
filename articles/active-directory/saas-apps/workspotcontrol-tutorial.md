@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s řízením Workspot | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workspot ovládacího prvku.
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování pro služby Azure Active Directory a Workspot ovládacího prvku.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,176 +15,180 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 676a0da5f677bacc7451bf25584180d6e9e10a72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 92173e760cf8207a15c643ca75913145ed343b55
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920309"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Integrace Azure Active Directory s řízením Workspot
 
-V tomto kurzu se dozvíte, jak integrovat ovládací prvek Workspot se službou Azure Active Directory (Azure AD).
-Ovládací prvek Workspot integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat ovládací prvek Workspot se službou Azure Active Directory (Azure AD). Při řízení Workspot integraci s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Workspot ovládacího prvku.
-* Uživatelům se automaticky přihlášeni k řízení Workspot (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Pomocí Azure AD a určovat, kdo má přístup k Workspot ovládacího prvku.
+* Povolte uživatelům přihlásit se automaticky Workspot ovládací prvek (jednotné přihlašování [jednotné přihlašování]) pomocí svých účtů služby Azure AD.
+* Správa účtů v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [jednotné přihlašování k aplikacím ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ovládacím prvkem Workspot, potřebujete následující položky:
+Konfigurace integrace Azure AD s ovládacím prvkem Workspot, budete potřebovat následující věci:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Ovládací prvek Workspot jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+
+* Ovládací prvek Workspot jednotné přihlašování na povoleno předplatné.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Podporuje ovládací prvek Workspot **SP** a **IDP** jednotné přihlašování zahájené pomocí
+> [!Note]
+> Ovládací prvek Workspot podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování a zahájené pomocí IDP.
+
 
 ## <a name="adding-workspot-control-from-the-gallery"></a>Přidání ovládacího prvku Workspot z Galerie
 
-Pokud chcete nakonfigurovat integraci Workspot ovládacího prvku do služby Azure AD, budete muset přidat ovládací prvek Workspot z Galerie na váš seznam spravovaných aplikací SaaS.
+Konfigurace integrace Workspot ovládacího prvku do služby Azure AD, musíte přidat ovládací prvek Workspot z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Přidání ovládacího prvku Workspot z galerie, postupujte následovně:**
+**Přidání ovládacího prvku Workspot z galerie, postupujte podle těchto kroků:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V levém podokně [webu Azure portal](https://portal.azure.com)vyberte **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![V podokně podnikových aplikací](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Vyberte **novou aplikaci** v horní části okna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Workspot řízení**vyberte **Workspot řízení** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Workspot řízení**vyberte **Workspot řízení** z panel výsledků a pak vyberte **přidat**.
 
-     ![Workspot ovládací prvek v seznamu výsledků](common/search-new-app.png)
+     !["Přidat z Galerie" okna](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování s ovládacím prvkem Workspot podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatel v ovládacím prvku Workspot.
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s ovládacím prvkem Workspot pro testovacího uživatele Britta Simon.
+Pro jednotné přihlašování pro práci je potřeba vytvořit propojení mezi uživatele služby Azure AD a související uživatel v ovládacím prvku Workspot.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ovládacím prvkem Workspot, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ovládacím prvkem Workspot, je nutné provést následující úkoly:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Workspot ovládací prvek Single Sign-On](#configure-workspot-control-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření ovládacího prvku Workspot testovacího uživatele](#create-workspot-control-test-user)**  – Pokud chcete mít protějšek Britta Simon Workspot ovládací prvek, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) umožňující uživatelům použít funkci.
+2. [Konfigurovat ovládací prvek Workspot jednotného přihlašování](#configure-workspot-control-single-sign-on) ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotného přihlašování pro Britta Simon.
+4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
+5. [Vytvoření zkušebního uživatele ovládací prvek Workspot](#create-a-workspot-control-test-user) stanovit protějšek Britta Simon Workspot ovládacího prvku, který je propojený s Azure AD zastoupení uživatele.
+6. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s ovládacím prvkem Workspot, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s ovládacím prvkem Workspot, postupujte podle těchto kroků:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Workspot řízení** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na **Workspot řízení** stránky integrace aplikace v [webu Azure portal](https://portal.azure.com/)vyberte **jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** okna, vyberte **SAML** chcete povolit jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Vyberte okno jednotné přihlašování – vyberte – metoda](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** (tužka) pro přístup k **základní konfiguraci SAML**.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit ikonu zvýrazněno "Základní konfiguraci SAML"](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v režimu zahájené pomocí IDP, postupujte podle těchto kroků:
 
-    ![Workspot ovládací prvek domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Ovládací prvek Workspot domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<INSTANCENAME>-saml.workspot.com/saml/metadata`
+    1. V **identifikátor** textové pole, zadejte adresu URL v následujícímu vzoru:<br/>
+    ***https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/metadata***
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<INSTANCENAME>-saml.workspot.com/saml/assertion`
+    1. V **adresa URL pro odpověď** textové pole, zadejte adresu URL v následujícímu vzoru:<br/>
+    ***https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/assertion***
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **nastavit další adresy URL**.
 
-    ![Workspot ovládací prvek domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Ovládací prvek Workspot domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<INSTANCENAME>-saml.workspot.com/`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL v následujícímu vzoru:<br/>
+    ***https://<<i></i>INSTANCENAME>-saml.workspot.com/***
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory klienta řízení Workspot](mailto:support@workspot.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty nahraďte skutečné identifikátor, adresa URL pro odpověď a adresu URL přihlašování. Obraťte se [tým podpory klienta řízení Workspot](mailto:support@workspot.com) k získání těchto hodnot. Nebo můžete také odkazovat na tyto vzory se dají v **základní konfiguraci SAML** části webu Azure portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** Stáhnout **certifikát (Base64)** z dostupných možností podle vašich požadavků. Uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikát (Base64)](common/certificatebase64.png)
 
-7. Na **nastavit řízení Workspot** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V **nastavit řízení Workspot** tématu, zkopírujte příslušné adresy URL podle vašich požadavků:
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    - **Adresa URL pro přihlášení**
 
-    b. Identifikátor Azure AD
+    - **Azure AD Identifier**
 
-    c. Adresa URL – odhlášení
+    - **Odhlašovací adresa URL**
 
 ### <a name="configure-workspot-control-single-sign-on"></a>Konfigurovat ovládací prvek Workspot jednotného přihlašování
 
 1. V okně jiné webové prohlížeče Přihlaste se k řízení Workspot jako správce zabezpečení.
 
-2. Na panelu nástrojů v horní části stránky klikněte na tlačítko **nastavení**, přejděte na **SAML**.
+2. Na panelu nástrojů v horní části stránky vyberte **nastavení** a potom **SAML**.
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
+    ![Možnosti nastavení](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-3. Na **konfiguraci zabezpečení kontrolního výrazu značky jazyka** stránce, proveďte následující kroky:
+3. V **konfiguraci zabezpečení kontrolního výrazu značky jazyka** okno, postupujte podle těchto kroků:
  
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
+    ![Okno kontrolní výraz Markup Language konfigurace zabezpečení](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. V **Entity ID** textového pole vložte hodnotu **Azure Ad identifikátor** který jste zkopírovali z portálu Azure portal.   
+    1. V **Entity ID** pole, vložte **Azure Ad identifikátor** , který jste zkopírovali z portálu Azure portal.
 
-    b.In **adresa URL služby Sign-on** textového pole vložte hodnotu **přihlašovací adresa URL** který jste zkopírovali z portálu Azure portal.
+    1. V **adresa URL služby Sign-on** pole, vložte **přihlašovací adresa URL** , který jste zkopírovali z portálu Azure portal.
 
-    c. V **odhlašovací adresa URL služby** textového pole vložte hodnotu **odhlašovací adresa URL** který jste zkopírovali z portálu Azure portal. 
+    1. V **odhlašovací adresa URL služby** pole, vložte **odhlašovací adresa URL** , který jste zkopírovali z portálu Azure portal.
 
-    d. Klikněte na **soubor aktualizace** tlačítko Nahrát base-64 kódování certifikátu, který jste si stáhli z portálu Azure portal do certifikátu X.509.
+    1. Vyberte **soubor aktualizace** k odeslání do certifikátu X.509 base-64 kódování certifikátu, který jste si stáhli z webu Azure portal.
 
-    e. Klikněte na **Uložit**.
+    1. Vyberte **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně webu Azure portal vyberte **Azure Active Directory**, **uživatelé**a potom **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Vyberte **nového uživatele** v horní části okna.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    !["Nový uživatel" tlačítko](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech pro uživatele postupujte podle těchto kroků:
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![V okně Vlastnosti uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **brittasimon @* yourcompanydomain.extension***. Zadejte například  **BrittaSimon@contoso.<i> </i>com**.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište si hodnotu, která se zobrazí **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k ovládacímu prvku Workspot.
+V této části udělíte přístup Britta Simon Workspot ovládací prvek umožňuje ji používat Azure jednotného přihlašování.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ovládací prvek Workspot**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**, **všechny aplikace**a potom **ovládací prvek Workspot**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![V podokně podnikových aplikací](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte **ovládací prvek Workspot**.
 
@@ -194,55 +198,54 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** okna.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![V okně "Přidat přiřazení"](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** okně **Britta Simon** z **uživatelé** seznamu. Pak klikněte na **Vybrat**.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte, že všechny role hodnotu v kontrolní výraz SAML, vyberte vhodnou roli pro uživatele v seznamu **vybrat roli** okna. Pak klikněte na tlačítko **vyberte** v dolní části.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** okně **přiřadit**.
 
-### <a name="create-workspot-control-test-user"></a>Vytvoření ovládacího prvku Workspot testovacího uživatele
+### <a name="create-a-workspot-control-test-user"></a>Vytvoření zkušebního uživatele Workspot ovládacího prvku
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Workspot ovládací prvek, musí být zřízená do Workspot ovládacího prvku. V ovládacím prvku Workspot zřizování je ruční úloha.
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Workspot ovládací prvek, musí být zřízená do Workspot ovládacího prvku. Zřizování se ruční úlohy.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Poskytnutí uživatelského účtu, postupujte podle těchto kroků:**
 
 1. Přihlaste se k řízení Workspot jako správce zabezpečení.
 
-2. Na panelu nástrojů v horní části stránky klikněte na tlačítko **uživatelé**, přejděte na **přidat uživatele**.
+2. Na panelu nástrojů v horní části stránky vyberte **uživatelé** a potom **přidat uživatele**.
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
+    ![Možnosti "Users"](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
-3. Na **přidat nového uživatele** stránce, proveďte následující kroky:
+3. V **přidat nového uživatele** okno, postupujte podle těchto kroků:
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
+    ![Okno "Přidání nového uživatele."](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    a. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
+    1. V **křestní jméno** pole, zadejte jméno uživatele, jako například **Britta**.
 
-    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **simon**.
+    1. V **příjmení** textové pole, zadejte příjmení uživatele, jako například **Simon**.
 
-    c. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je Brittasimon@contoso.com.
+    1. V **e-mailu** okně zadejte e-mailovou adresu uživatele, jako například  **Brittasimon@contoso.<i> </i>com**.
 
-    d. Vyberte příslušné role uživatele z **Role** rozevíracího seznamu.
+    1. Vyberte příslušné role uživatele z **Role** rozevíracího seznamu.
 
-    e. Vyberte příslušné skupiny uživatelů z **skupiny** rozevíracího seznamu.
+    1. Vyberte příslušné skupiny uživatelů z **skupiny** rozevíracího seznamu.
 
-    f. Klikněte na tlačítko **přidat uživatele**.
+    1. Vyberte **přidat uživatele**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části jsme naše služby Azure AD jednotné přihlašování Konfigurace testu prostřednictvím *přístupového panelu*.
 
-Po kliknutí na dlaždici Workspot ovládacího prvku na přístupovém panelu, můžete by měl být automaticky přihlášeni do ovládacího prvku Workspot, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete **ovládací prvek Workspot** dlaždici přístupovém panelu, vám by měl být automaticky přihlášeni k Workspot ovládací prvek, u kterého nastavíte jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

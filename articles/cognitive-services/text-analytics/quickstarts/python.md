@@ -8,93 +8,90 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 05/09/2019
 ms.author: aahi
-ms.openlocfilehash: 69eb3789586233b824da1ef6a9c338b07281f324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d6dfb79d02df3eebe33e67743ceaf97fc0a2a77
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828101"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519358"
 ---
-# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Pythonu k volání Text Analytics služby Cognitive Services 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí rozhraní Python API REST k volání Text Analytics služby Cognitive Services 
 <a name="HOLTop"></a>
 
-V tomto návodu se dozvíte, jak [rozpoznat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis) a [extrahovat klíčové fráze](#KeyPhraseExtraction) pomocí [rozhraní API pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Pythonu.
+V tomto rychlém startu můžete začít analýzou jazyce s využitím REST API pro analýzu textu a Python. Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities).
 
 Můžete spustit tento příklad z příkazového řádku nebo jako poznámkového bloku Jupyter [MyBinder](https://mybinder.org) kliknutím na spustit vazače označení:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
-### <a name="command-line"></a>Příkazový řádek
-
-Je potřeba aktualizovat [IPython](https://ipython.org/install.html), jádra pro Jupyter:
-```bash
-pip install --upgrade IPython
-```
-
-Je potřeba aktualizovat [požadavky](http://docs.python-requests.org/en/master/) knihovny:
-```bash
-pip install requests
-```
-
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+* [Python 3.x](https://python.org)
 
 * [Koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během registrace.
 
-* Následující importy, klíč předplatného a `text_analytics_base_url` se používají pro všechny rychlé starty níže. Přidejte importy.
+* Požaduje knihovna Python
+    
+    Nainstalujte knihovny pomocí tohoto příkazu:
 
-    ```python
-    import requests
-    # pprint is pretty print (formats the JSON)
-    from pprint import pprint
-    from IPython.display import HTML
+    ```console
+    pip install --upgrade requests
     ```
+
+* Pokud používáte Poznámkový blok vazače místně, budete muset aktualizovat [IPython](https://ipython.org/install.html):
     
-    Přidejte tyto řádky a potom nahraďte `subscription_key` s platným předplatným klíčem, který jste získali dříve.
-    
-    ```python
-    subscription_key = '<ADD KEY HERE>'
-    assert subscription_key
+    ```console
+    pip install --upgrade IPython
     ```
+
+* [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+
+
+## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
+
+Vytvoření nové aplikace v Pythonu v oblíbeném editoru nebo prostředí IDE. Přidejte následující importy do souboru.
+
+```python
+import requests
+# pprint is used to format the JSON response
+from pprint import pprint
+from IPython.display import HTML
+```
+
+Vytvoření proměnné pro váš klíč předplatného a koncový bod pro REST API pro analýzu textu. Ověřte, jestli jste použili při registraci odpovídá oblasti koncový bod (například `westcentralus`). Pokud používáte bezplatné zkušební verze klíče, nemusíte nic měnit.
     
-    V dalším kroku přidejte následující řádek a ověřte, že v oblasti `text_analytics_base_url` odpovídá ten, který jste použili při nastavení služby. Pokud používáte bezplatné zkušební verze klíče, nemusíte nic měnit.
-    
-    ```python
-    text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
-    ```
+```python
+subscription_key = "<ADD YOUR KEY HERE>"
+text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
+```
+
+Následující části popisují, jak volat jednotlivé funkce rozhraní API.
 
 <a name="Detect"></a>
 
 ## <a name="detect-languages"></a>Rozpoznávání jazyků
 
-Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7). Koncový bod služby rozhraní API pro rozpoznávání jazyka pro vaši oblast je dostupný na následující adrese URL:
-
+Připojit `languages` do základního koncového bodu pro analýzu textu a vytvoří adresu URL detekce jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+    
 ```python
 language_api_url = text_analytics_base_url + "languages"
-print(language_api_url)
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages
-
-
-Datová část určená pro rozhraní API se skládá ze seznamu dokumentů (`documents`), z nichž každý zase obsahuje atributy `id` a `text`. Atribut `text` slouží k uložení textu, který se má analyzovat. 
-
-Slovník `documents` můžete nahradit jakýmkoli jiným textem, u kterého se má provést rozpoznávání jazyka.
+Datová část rozhraní API se skládá ze seznamu `documents`, které jsou řazené kolekce členů obsahující `id` a `text` atribut. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota. 
 
 ```python
-documents = { 'documents': [
-    { 'id': '1', 'text': 'This is a document written in English.' },
-    { 'id': '2', 'text': 'Este es un document escrito en Español.' },
-    { 'id': '3', 'text': '这是一个用中文写的文件' }
+documents = { "documents": [
+    { "id": "1", "text": "This is a document written in English." },
+    { "id": "2", "text": "Este es un document escrito en Español." },
+    { "id": "3", "text": "这是一个用中文写的文件" }
 ]}
 ```
 
-Dalších několik řádků kódu s využitím knihovny `requests` v Pythonu zavolá rozhraní API pro rozpoznávání jazyka, které určí jazyk v dokumentech.
+Použijte knihovnu požadavky odesílat dokumenty k rozhraní API. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a odeslat žádost s `requests.post()`. 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -103,208 +100,223 @@ languages = response.json()
 pprint(languages)
 ```
 
-Následující řádky kódu vykreslí data JSON jako tabulku HTML.
-
-```python
-table = []
-for document in languages["documents"]:
-    text  = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]
-    langs = ", ".join(["{0}({1})".format(lang["name"], lang["score"]) for lang in document["detectedLanguages"]])
-    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, langs))
-HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table>".format("\n".join(table)))
-```
-
-Úspěšná odpověď JSON:
+### <a name="output"></a>Výstup
 
 ```json
-    {'documents': [{'detectedLanguages': [{'iso6391Name': 'en',
-                                           'name': 'English',
-                                           'score': 1.0}],
-                    'id': '1'},
-                   {'detectedLanguages': [{'iso6391Name': 'es',
-                                           'name': 'Spanish',
-                                           'score': 1.0}],
-                    'id': '2'},
-                   {'detectedLanguages': [{'iso6391Name': 'zh_chs',
-                                           'name': 'Chinese_Simplified',
-                                           'score': 1.0}],
-                    'id': '3'}],
-     'errors': []}
+{
+"documents":[
+    {
+        "detectedLanguages":[
+        {
+            "iso6391Name":"en",
+            "name":"English",
+            "score":1.0
+        }
+        ],
+        "id":"1"
+    },
+    {
+        "detectedLanguages":[
+        {
+            "iso6391Name":"es",
+            "name":"Spanish",
+            "score":1.0
+        }
+        ],
+        "id":"2"
+    },
+    {
+        "detectedLanguages":[
+        {
+            "iso6391Name":"zh_chs",
+            "name":"Chinese_Simplified",
+            "score":1.0
+        }
+        ],
+        "id":"3"
+    }
+],
+"errors":[]
+}
 ```
 
 <a name="SentimentAnalysis"></a>
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API pro analýzu mínění rozpoznává mínění (rozsah mezi pozitivní nebo negativní) ze sady textových záznamů pomocí [mínění metoda](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
-
-Koncový bod služby pro analýzu mínění pro vaši oblast je dostupný na následující adrese URL:
-
+Chcete-li rozpoznávání mínění (který se pohybuje mezi pozitivní nebo negativní) sady dokumentů, přidejte `sentiment` do základního koncového bodu pro analýzu textu a vytvoří adresu URL detekce jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+    
 ```python
-sentiment_api_url = text_analytics_base_url + "sentiment"
-print(sentiment_api_url)
+sentiment_url = text_analytics_base_url + "sentiment"
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment
-
-Podobně jako v příkladu rozpoznávání jazyka je součástí služby i slovník s klíčem `documents`, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z hodnot `id`, `text` (text, který se má analyzovat) a `language` (jazyk textu). K vyplnění tohoto pole můžete použít rozhraní API pro rozpoznávání jazyka z předchozí části.
+Jako v příkladu detekce jazyka vytvořit slovník s `documents` klíč, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z hodnot `id`, `text` (text, který se má analyzovat) a `language` (jazyk textu). 
 
 ```python
-documents = {'documents' : [
-  {'id': '1', 'language': 'en', 'text': 'I had a wonderful experience! The rooms were wonderful and the staff was helpful.'},
-  {'id': '2', 'language': 'en', 'text': 'I had a terrible time at the hotel. The staff was rude and the food was awful.'},  
-  {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
-  {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
+documents = {"documents" : [
+  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
+  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
+  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
-Pomocí rozhraní API pro analýzu mínění teď můžete analyzovat mínění v dokumentech.
+Použijte knihovnu požadavky odesílat dokumenty k rozhraní API. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a odeslat žádost s `requests.post()`. 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(sentiment_api_url, headers=headers, json=documents)
+response  = requests.post(sentiment_url, headers=headers, json=documents)
 sentiments = response.json()
 pprint(sentiments)
 ```
 
-Úspěšná odpověď JSON:
-
-```json
-{'documents': [{'id': '1', 'score': 0.7673527002334595},
-                {'id': '2', 'score': 0.18574094772338867},
-                {'id': '3', 'score': 0.5}],
-    'errors': []}
-```
+### <a name="output"></a>Výstup
 
 Skóre mínění v dokumentu je mezi 0,0 a 1,0, s vyšší skóre označuje další pozitivní mínění.
 
-<a name="KeyPhraseExtraction"></a>
+```json
+{
+  "documents":[
+    {
+      "id":"1",
+      "score":0.9708490371704102
+    },
+    {
+      "id":"2",
+      "score":0.0019068121910095215
+    },
+    {
+      "id":"3",
+      "score":0.7456425428390503
+    },
+    {
+      "id":"4",
+      "score":0.334433376789093
+    }
+  ],
+  "errors":[
 
-## <a name="extract-key-phrases"></a>Extrakce klíčových frází
-
-Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). V této části návodu se extrahují klíčové fráze z anglického i španělského dokumentu.
-
-Koncový bod služby pro extrakci klíčových frází je dostupný na následující adrese URL:
-
-```python
-key_phrase_api_url = text_analytics_base_url + "keyPhrases"
-print(key_phrase_api_url)
+  ]
+}
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases
+<a name="KeyPhraseExtraction"></a>
 
-Kolekce dokumentů je stejná jako kolekce použitá k analýze mínění.
+## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
+ 
+Chcete-li extrahovat klíčové fráze ze sady dokumentů, přidejte `keyPhrases` do základního koncového bodu pro analýzu textu a vytvoří adresu URL detekce jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+    
+```python
+keyphrase_url = text_analytics_base_url + "keyPhrases"
+```
+
+Tato kolekce dokumentů je stejný slouží například analýza mínění.
 
 ```python
-documents = {'documents' : [
-  {'id': '1', 'language': 'en', 'text': 'I had a wonderful experience! The rooms were wonderful and the staff was helpful.'},
-  {'id': '2', 'language': 'en', 'text': 'I had a terrible time at the hotel. The staff was rude and the food was awful.'},  
-  {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
-  {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
+documents = {"documents" : [
+  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
+  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
+  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
-Objekt JSON lze vykreslit jako tabulku HTML pomocí následující řádky kódu:
+Použijte knihovnu požadavky odesílat dokumenty k rozhraní API. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a odeslat žádost s `requests.post()`. 
 
 ```python
-table = []
-for document in key_phrases["documents"]:
-    text    = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]    
-    phrases = ",".join(document["keyPhrases"])
-    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, phrases))
-HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
-```
-
-Dalších několik řádků kódu s využitím knihovny `requests` v Pythonu zavolá rozhraní API pro rozpoznávání jazyka, které určí jazyk v dokumentech.
-```python
-headers   = {'Ocp-Apim-Subscription-Key': subscription_key}
-response  = requests.post(key_phrase_api_url, headers=headers, json=documents)
+headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
+response  = requests.post(keyphrase_url, headers=headers, json=documents)
 key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-Úspěšná odpověď JSON:
+### <a name="output"></a>Výstup
+
 ```json
-{'documents': [
-    {'keyPhrases': ['wonderful experience', 'staff', 'rooms'], 'id': '1'},
-    {'keyPhrases': ['food', 'terrible time', 'hotel', 'staff'], 'id': '2'},
-    {'keyPhrases': ['Monte Rainier', 'caminos'], 'id': '3'},
-    {'keyPhrases': ['carretera', 'tráfico', 'día'], 'id': '4'}],
-    'errors': []
+{
+  "documents":[
+    {
+      "keyPhrases":[
+        "wonderful experience",
+        "staff",
+        "rooms"
+      ],
+      "id":"1"
+    },
+    {
+      "keyPhrases":[
+        "food",
+        "terrible time",
+        "hotel",
+        "staff"
+      ],
+      "id":"2"
+    },
+    {
+      "keyPhrases":[
+        "Monte Rainier",
+        "caminos"
+      ],
+      "id":"3"
+    },
+    {
+      "keyPhrases":[
+        "carretera",
+        "tráfico",
+        "día"
+      ],
+      "id":"4"
+    }
+  ],
+  "errors":[
+
+  ]
 }
 ```
 
+<a name="Entities"></a>
+
 ## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634). Následující příklad identifikuje entity pro anglické dokumenty.
-
-Koncový bod služby pro spojování entit je dostupný na následující adrese URL:
-
+Chcete-li identifikovat dobře známé entity (lidé, místa a věcí) v textové dokumenty, přidejte `keyPhrases` do základního koncového bodu pro analýzu textu a vytvoří adresu URL detekce jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+    
 ```python
-entity_linking_api_url = text_analytics_base_url + "entities"
-print(entity_linking_api_url)
+entities_url = text_analytics_base_url + "keyPhrases"
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities
-
-Kolekce dokumentů je níže:
+Vytvoření kolekce dokumentů, stejně jako v předchozích příkladech. 
 
 ```python
-documents = {'documents' : [
-  {'id': '1', 'text': 'Microsoft is an It company.'}
+documents = {"documents" : [
+  {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
 ]}
 ```
-Teď je možné tyto dokumenty odeslat do rozhraní API pro analýzu textu a přijmout odpověď.
+
+Použijte knihovnu požadavky odesílat dokumenty k rozhraní API. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a odeslat žádost s `requests.post()`.
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(entity_linking_api_url, headers=headers, json=documents)
+response  = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
 ```
 
-Úspěšná odpověď JSON:
+### <a name="output"></a>Výstup
+
 ```json
-{  
-   "documents":[  
-      {  
-         "id":"1",
-         "entities":[  
-            {  
-               "name":"Microsoft",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.20872054383103444,
-                     "entityTypeScore":0.99996185302734375,
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Microsoft",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
-               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type":"Organization"
-            },
-            {  
-               "name":"Technology company",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.82123868042800585,
-                     "text":"It company",
-                     "offset":16,
-                     "length":10
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Technology company",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
-               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
-            }
-         ]
-      }
-   ],
-    "errors":[]
+{
+  "documents":[
+    {
+      "id":"1",
+      "keyPhrases":[
+        "Bill Gates",
+        "Paul Allen",
+        "BASIC interpreters",
+        "Altair",
+        "Microsoft"
+      ]
+    }
+  ],
+  "errors":[]
 }
 ```
 

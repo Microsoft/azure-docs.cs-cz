@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: c59731b7121b18d6a8b257d6b7b7c05c421318c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: af1846f66996ded553a95188df958e9592ec68a2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572347"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523792"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak nastavit zásadu geografické filtrování WAF pro vaše branou
 V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door. Tato ukázka geografické filtrování zásada bude blokovat požadavky ze všech jiných zemích nebo oblastech s výjimkou Spojených států.
@@ -53,10 +53,10 @@ Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření p
 
 ## <a name="define-geo-filtering-match-condition"></a>Definování geografické filtrování odpovídají podmínce
 
-Vytvořit podmínku shody vzorku, který vybere není než dorazí požadavky od "USA" pomocí [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) na parametry při vytváření podmínku shody. Jsou k dispozici dva kódy zemí písmeno země mapování [tady](front-door-geo-filtering.md).
+Vytvořit podmínku shody vzorku, který vybere není než dorazí požadavky od "USA" pomocí [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) na parametry při vytváření podmínku shody. Jsou k dispozici dva kódy zemí písmeno země mapování [tady](front-door-geo-filtering.md).
 
 ```azurepowershell-interactive
-$nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
+$nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable RemoteAddr `
 -OperatorProperty GeoMatch `
 -NegateCondition $true `
@@ -65,7 +65,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Přidání podmínky shody geografického filtrování do pravidla s parametry Action a Priority
 
-Vytvořte objekt CustomRule `nonUSBlockRule` na základě podmínky shody, akci a prioritu pomocí [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorcustomruleobject).  Objekt CustomRule může mít více podmínek shody MatchCondition.  V tomto příkladu se parametr Action nastaví na Block a parametr Priority na 1, což je nejvyšší priorita.
+Vytvořte objekt CustomRule `nonUSBlockRule` na základě podmínky shody, akci a prioritu pomocí [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Objekt CustomRule může mít více podmínek shody MatchCondition.  V tomto příkladu se parametr Action nastaví na Block a parametr Priority na 1, což je nejvyšší priorita.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
@@ -77,12 +77,12 @@ $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>Přidání pravidel pro zásadu
-Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. Dále vytvořte `geoPolicy` zásady objekt obsahující `nonUSBlockRule` pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) v zadané skupině prostředků, který obsahuje profil branou. Musíte zadat jedinečný název pro zásadu geo. 
+Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. Dále vytvořte `geoPolicy` zásady objekt obsahující `nonUSBlockRule` pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, který obsahuje profil branou. Musíte zadat jedinečný název pro zásadu geo. 
 
 Následujícím příkladu používá název skupiny prostředků *myResourceGroupFD1* za předpokladu, že jste vytvořili branou profilována za použití podle pokynů [rychlý start: Vytvoření branou](quickstart-create-front-door.md) článku. V následujícím příkladu nahraďte název zásady *geoPolicyAllowUSOnly* s jedinečný název zásady.
 
 ```
-$geoPolicy = New-AzFrontDoorFireWallPolicy `
+$geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
 -resourceGroupName myResourceGroupFD1 `
 -Customrule $nonUSBlockRule  `

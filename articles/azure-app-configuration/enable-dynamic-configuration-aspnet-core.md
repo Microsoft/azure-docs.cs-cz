@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408817"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518991"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: Použít dynamické konfiguraci aplikace ASP.NET Core
 
@@ -63,6 +63,9 @@ V tomto kurzu provedete instalaci [.NET Core SDK](https://dotnet.microsoft.com/d
     ```
 
     Druhý parametr `.Watch` metoda je interval dotazování, kdy Klientská knihovna ASP.NET dotazuje konfigurace app storu. Klientská knihovna zkontroluje nastavení konkrétní konfiguraci zobrazíte, pokud došlo k chybě změny.
+    
+    > [!NOTE]
+    > Výchozí interval dotazování pro `Watch` – metoda rozšíření je 30 sekund, pokud není zadaný.
 
 2. Přidat *Settings.cs* souboru, který definuje a implementuje nový `Settings` třídy.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI ukázkový – kopírování spravovaných disků do účtu úložiště
-description: Azure CLI ukázkový – Export nebo kopírování spravovaných disků do účtu úložiště s.
+description: Azure CLI ukázkový – Export nebo kopírování spravovaných disků do účtu úložiště.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -13,19 +13,19 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2018
+ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 6252049c2258c391aa4483dd51ec0d9ee766bed0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5055860df007d0f009bd08c2b211ffeeaad711f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302445"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510878"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Export nebo kopírování spravovaného disku do účtu úložiště pomocí Azure CLI
 
-Tento skript exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště ve stejné nebo jiné oblasti. Nejprve vygeneruje identifikátor URI SAS spravovaného disku a pak pomocí něj zkopíruje virtuální pevný disk do účtu úložiště. Tento skript můžete použít ke kopírování spravovaných disků za účelem regionálního rozšíření. 
+Tento skript exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště ve stejné nebo jiné oblasti. Nejprve vygeneruje identifikátor URI SAS spravovaného disku a pak pomocí něj zkopíruje virtuální pevný disk do účtu úložiště. Tento skript můžete použít ke zkopírování spravovaných disků do jiné oblasti za účelem regionálního rozšíření. Pokud chcete soubor virtuálního pevného disku spravovaného disku publikovat na webu Azure Marketplace, můžete tento skript zkopírujte soubor virtuálního pevného disku do účtu úložiště a pak vygenerovat identifikátor URI SAS zkopírovaného virtuálního pevného disku pro publikování na webu Marketplace.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

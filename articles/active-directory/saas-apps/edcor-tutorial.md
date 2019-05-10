@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a527b928edacc202301f53dbf7852f8446b3aa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff1d9089f3fb2f3ebf3022b54c442e8338ab983b
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280153"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Kurz: Integrace Azure Active Directory s Edcor
 
@@ -124,7 +124,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Edcor, proveďte následuj�
 
 ### <a name="configure-edcor-single-sign-on"></a>Konfigurace Edcor jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Edcor** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Edcor](http://www.edcor.com/contact-us-2/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **Edcor** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Edcor](https://www.edcor.com/contact-us/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -179,9 +179,9 @@ V této části je povolit Britta Simon k udělení přístupu k Edcor použití
 
 ### <a name="create-edcor-test-user"></a>Vytvoření Edcor testovacího uživatele
 
-V této části vytvoříte uživatele v Edcor jako Britta Simon. Práce s [tým podpory Edcor](http://www.edcor.com/contact-us-2/) přidat uživatele na platformě Edcor. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Edcor jako Britta Simon. Práce s [tým podpory Edcor](https://www.edcor.com/contact-us/) přidat uživatele na platformě Edcor. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

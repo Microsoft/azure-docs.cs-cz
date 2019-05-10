@@ -10,15 +10,14 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 30f009f76c25d80281d748e1e484175380ca9743
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027170"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506892"
 ---
 # <a name="what-is-reinforcement-learning"></a>Co je Zpětnovazebnému učení?
-
 
 Zpětnovazebnému učení je přístup k sadě machine learning, která se učí chování získáním zpětnou vazbu od jeho použití.
  
@@ -64,7 +63,7 @@ Aktuálně používá personalizer [Vowpal Wabbit](https://github.com/VowpalWabb
 
 * [Kontextové rozhodování s nízkou technického dluhu](https://arxiv.org/abs/1606.03966)
 * [Snížení cen přístup ke korektní klasifikace](https://arxiv.org/abs/1803.02453)
-* [Efektivní kontextové Bandits ve světě – stojícího vozidla](https://arxiv.org/abs/1708.01799ds)
+* [Efektivní kontextové Bandits ve světě – stojícího vozidla](https://arxiv.org/abs/1708.01799)
 * [Predikcí zbývající ztráta: Posílení: učení s ne přírůstkové zpětné vazby](https://openreview.net/pdf?id=HJNMYceCW)
 * [Mapování pokyny a vizuální pozorování na akce s Zpětnovazebnému učení](https://arxiv.org/abs/1704.08795)
 * [Naučte se vyhledávání lepší výsledky než vaše vyučující](https://arxiv.org/abs/1502.02206)
