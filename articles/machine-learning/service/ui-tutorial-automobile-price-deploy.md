@@ -2,19 +2,19 @@
 title: 'Kurz: Nasadit model vizuální rozhraní strojového učení'
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak vytvořit řešení prediktivní analýzy v vizuální rozhraní služby Azure Machine Learning. Trénování, stanovení skóre a nasadit model strojového učení pomocí přetažení a vyřadit moduly. Tento kurz je druhou částí série dvojdílného na předpověď cen automobilů prostřednictvím lineární regrese.
-author: peterlu
-ms.author: peterlu
+author: peterclu
+ms.author: peterclu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e9ece81b1f663910fb3c051bd94c13c54ffa8470
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5f29e3820416686b42167fa278c4b7d0f9a58f1f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026862"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190924"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasadit model vizuální rozhraní strojového učení
 
@@ -61,7 +61,7 @@ Když vyberete **nastavení webové služby**, stane několik věcí:
 * Trénovaného modelu je převést na jediné **Trénovaného modelu** modulu. Uloží se paletě modulů nalevo od plátna experimentu. Najdete ho pod **Trénované modely**.
 * Moduly, které byly použity pro vzdělávání se odeberou; konkrétně:
   * Trénování modelu
-  * Rozdělení dat.
+  * Rozdělení dat
   * Vyhodnocení modelu
 * Uložené trénovaného modelu je přidána zpět do experimentu
 * **Webová služba vstup** a **webové služby výstup** moduly jsou přidány. Tyto moduly Identifikujte, kde se data uživatele zadejte modelu a kde se data vrací.

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 04/23/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8413c75a683ff135b3442da6c6a94787ed0866ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441058"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441444"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 
@@ -177,7 +177,7 @@ Pokud stále nemůžete provádět průběh, může vám pomůže podporu Micros
 
 ## <a name="other-scenarios"></a>Další scénáře
 
-- Proxy aplikací Azure vyžádá lístek protokolu Kerberos před odesláním jeho žádost do aplikace. Některé aplikace třetích stran, jako je Tableau Server nelíbí se vám tato metoda ověřování. Tyto aplikace můžete očekávat konvenčnější jednání uskutečnit. První požadavek je anonymní, což umožňuje, aby aplikace reagovat s typy ověřování, podporuje prostřednictvím zobrazuje chyba 401.
+- Proxy aplikací Azure vyžádá lístek protokolu Kerberos před odesláním jeho žádost do aplikace. Některé aplikace třetích stran nelíbí se vám tato metoda ověřování. Tyto aplikace můžete očekávat konvenčnější jednání uskutečnit. První požadavek je anonymní, což umožňuje, aby aplikace reagovat s typy ověřování, podporuje prostřednictvím zobrazuje chyba 401.
 
 - Ověřování s více segmenty směrování se běžně používá ve scénářích kde vrstvenou aplikaci s front-endu a back-endu kde vyžadují ověřování, jako je SQL Server Reporting Services. Pokud chcete nakonfigurovat s vícenásobným směrováním scénář, najdete v článku podpory [omezeného delegování může vyžadovat Přechod protokolu Kerberos ve scénářích s více segmenty směrování](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 

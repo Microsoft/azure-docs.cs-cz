@@ -12,14 +12,14 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 39367cbe6c001fc782fd899ee3a99b37ece70a77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699923"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408748"
 ---
-# <a name="key-value-store"></a>Ukládání hodnot klíče
+# <a name="keys-and-values"></a>Klíče a hodnoty
 
 Konfigurace aplikace pro Azure jsou uložena konfigurační data jako páry klíč hodnota. Páry klíč hodnota jsou jednoduché a přitom flexibilní způsob, jak reprezentují různé typy nastavení aplikace, která vývojářům znají.
 
@@ -86,7 +86,7 @@ Každá hodnota klíče je jednoznačně identifikují pomocí jeho klíče a po
 
 Můžete zahrnout také následující modely popisku:
 
-| Štítek | |
+| Popisek | |
 |---|---|
 | `label` je tento parametr vynechán nebo `label=*` | Odpovídá libovolný popisek, který obsahuje `null` |
 | `label=%00` | Odpovídá `null` popisek |
@@ -104,5 +104,5 @@ Konfigurační data uložená v úložišti konfigurace aplikace, která zahrnuj
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Snímek bodu v čase](./concept-point-time-snapshot.md)  
+* [Snímek bodu v čase](./concept-point-time-snapshot.md)  
+* [Funkce správy](./concept-feature-management.md)  

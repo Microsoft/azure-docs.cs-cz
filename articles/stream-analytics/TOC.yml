@@ -4,6 +4,8 @@
   items:
     - name: Co je služba Stream Analytics?
       href: stream-analytics-introduction.md
+    - name: Kompletní vzory řešení
+      href: stream-analytics-solution-patterns.md
 - name: Šablony Rychlý start
   items:
     - name: Vytvoření úlohy – Azure Portal
@@ -12,6 +14,8 @@
       href: stream-analytics-quick-create-powershell.md
     - name: Vytvoření úlohy – Visual Studio
       href: stream-analytics-quick-create-vs.md
+    - name: Vytvoření úlohy – Visual Studio Code
+      href: quick-create-vs-code.md
 - name: Kurzy
   items:
     - name: 1. Vytvoření a správa úlohy
@@ -143,7 +147,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: Použití rozhraní API pro úlohy IoT Edge
           href: stream-analytics-cicd-api.md
-    - name: Nástroje sady Visual Studio
+    - name: Visual Studio a VS Code
       items:
         - name: Instalace nástrojů
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -159,6 +163,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: Zápis UDF .NET pro Edge
           href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Prozkoumání služby Stream Analytics v editoru VS Code
+          href: vs-code-how-to.md
     - name: Řešení potíží
       items:
         - name: Vstup
@@ -435,6 +441,9 @@
               maintainContext: true
             - name: Přeskakující okno
               href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+              maintainContext: true
+            - name: Agregace funkcí pro práci s okny
+              href: /stream-analytics-query/windows-azure-stream-analytics
               maintainContext: true
     - name: Typy dat
       items:

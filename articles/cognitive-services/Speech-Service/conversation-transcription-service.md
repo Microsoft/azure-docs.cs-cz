@@ -1,41 +1,41 @@
 ---
-title: Konverzace služby určené k transkripci – hlasové služby
+title: Konverzace určené k transkripci – hlasové služby
 titleSuffix: Azure Cognitive Services
-description: Služby určené k transkripci konverzace je pokročilá funkce hlasových služeb, který kombinuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Služby určené k transkripci konverzace je ideální pro přepisování osobně schůzky, s možností rozlišení mluvčích, upozorní vás, ale nutné dodat, co a kdy, umožňuje účastníkům zaměřit na schůzku a rychle vyřídit další kroky. Tato funkce taky zlepšuje dostupnost. S přepis může aktivně zapojit účastníky s poškozením sluchu.
+description: Přepis konverzace je pokročilá funkce hlasových služeb, který kombinuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Přepis konverzace je ideální pro přepisování osobně schůzky, s možností rozlišení mluvčích, upozorní vás, ale nutné dodat, co a kdy, umožňuje účastníkům zaměřit na schůzku a rychle vyřídit další kroky. Tato funkce taky zlepšuje dostupnost. S přepis může aktivně zapojit účastníky s poškozením sluchu.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c3269a9e57c0392e152fedfb640b9fae91a4989
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025932"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190276"
 ---
-# <a name="what-is-the-conversation-transcription-service"></a>Co je služba určené k transkripci konverzace?
+# <a name="what-is-conversation-transcription"></a>Co je určené k transkripci konverzace?
 
-Služby určené k transkripci konverzace je pokročilá funkce hlasových služeb, který kombinuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Služby určené k transkripci konverzace je ideální pro přepisování osobně schůzky, s možností rozlišení mluvčích, upozorní vás, ale nutné dodat, co a kdy, umožňuje účastníkům zaměřit na schůzku a rychle vyřídit další kroky. Tato funkce taky zlepšuje dostupnost. S přepis může aktivně zapojit účastníky s poškozením sluchu.   
+Přepis konverzace je pokročilá funkce hlasových služeb, který kombinuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Přepis konverzace je ideální pro přepisování osobně schůzky, s možností rozlišení mluvčích, upozorní vás, ale nutné dodat, co a kdy, umožňuje účastníkům zaměřit na schůzku a rychle vyřídit další kroky. Tato funkce taky zlepšuje dostupnost. S přepis může aktivně zapojit účastníky s poškozením sluchu.   
 
-Konverzace služby určené k transkripci poskytuje přesné rozpoznávání s přizpůsobitelné modely řeči, které můžete přizpůsobit o oboru a specifické pro společnost slovník. Kromě toho můžete spárovat konverzace služby určené k transkripci se sadou SDK pro řeč zařízení k optimalizaci prostředí pro více mikrofon zařízení.
+Konverzace určené k transkripci poskytuje přesné rozpoznávání s přizpůsobitelné modely řeči, které můžete přizpůsobit o oboru a specifické pro společnost slovník. Kromě toho můžete spárovat konverzace přepisu se sadou SDK pro řeč zařízení k optimalizaci prostředí pro více mikrofon zařízení.
 
 >[!NOTE]
-> Konverzace služby určené k transkripci v současné době se doporučuje pro malé schůzky. Pokud chcete rozšířit služby určené k transkripci konverzace pro velké schůzky ve velkém měřítku, kontaktujte nás prosím.
+> V současné době určené k transkripci konverzace se doporučuje pro malé schůzky. Pokud chcete rozšířit konverzace přepis pro velké schůzky ve velkém měřítku, kontaktujte nás prosím.
 
-Tento diagram znázorňuje hardware, software a služby, které fungují společně se službou určené k transkripci konverzace.
+Tento diagram znázorňuje hardwaru, softwaru a služeb, které fungují společně s určené k transkripci konverzace.
 
-![Diagram služby určené k transkripci konverzace importu](media/scenarios/conversation-transcription-service.png)
+![Diagram určené k transkripci Import konverzace](media/scenarios/conversation-transcription-service.png)
 
 >[!IMPORTANT]
 > Vyžaduje se cyklické pole sedmi mikrofon s konkrétní geometrie konfigurací. Podrobnější informace o specifikaci a návrhu, naleznete v tématu [Microsoft řeči zařízení SDK mikrofon](https://aka.ms/cts/microphone). Další informace nebo zakoupit development kit, najdete v článku [získat Microsoft zařízení sadou SDK pro řeč](https://aka.ms/cts/getsdk).
 
 ## <a name="get-started-with-conversation-transcription"></a>Začínáme s určené k transkripci konverzace
 
-Existují tři kroky, které potřebujete, abyste mohli začít se službou určené k transkripci konverzace.
+Existují tři kroky, které potřebujete, abyste mohli začít s určené k transkripci konverzace.
 
 1. Hlasové ukázek shromážděte od uživatelů.
 2. Generovat profily uživatelů pomocí ukázky hlas uživatele
@@ -54,19 +54,19 @@ V dalším kroku budete muset odeslat zvukové záznamy jste shromažďují ve s
 Vytvoření uživatelského profilu, budete muset použít `GenerateVoiceSignature` rozhraní API. Specifikace podrobností a ukázky kódu jsou k dispozici:
 
 > [!NOTE]
-> Služba určené k transkripci konverzace je nyní dostupná v těchto oblastech: `centralus` a `eastasia`.
+> Přepis konverzace je aktuálně dostupné v "en US" a "zh-CN" v těchto oblastech: `centralus` a `eastasia`.
 
 * [Specifikace REST](https://aka.ms/cts/signaturegenservice)
-* [K používání služby určené k transkripci konverzace](https://aka.ms/cts/howto)
+* [Použití přepisu konverzace](https://aka.ms/cts/howto)
 
 ## <a name="transcribe-and-identify-speakers"></a>Přepisy a identifikaci mluvčích
 
-Jako vstupy pro generování přepisů a identifikaci mluvčích očekává služba určené k transkripci konverzace vícekanálový audiostreamy a uživatelských profilů. Zvuk a uživatelská data profilu jsou odesílány ke službě určené k transkripci konverzace pomocí sadou SDK pro řeč zařízení. Jak už jsme zmínili cyklické pole sedmi mikrofon a sadou SDK pro řeč zařízení je potřeba pomocí služby určené k transkripci konverzace.
+Konverzace určené k transkripci očekává, že vícekanálový audiostreamy a profily uživatelů jako vstupy pro generování přepisů a identifikaci mluvčích. Zvuk a uživatelská data profilu se odesílají do určené k transkripci konverzace služby pomocí sady SDK zařízení řeči. Jak už jsme zmínili cyklické pole sedmi mikrofon a sadou SDK pro řeč zařízení je potřeba použít určené k transkripci konverzace.
 
 >[!NOTE]
 > Podrobnější informace o specifikaci a návrhu, naleznete v tématu [Microsoft řeči zařízení SDK mikrofon](https://aka.ms/cts/microphone). Další informace nebo zakoupit development kit, najdete v článku [získat Microsoft zařízení sadou SDK pro řeč](https://aka.ms/cts/getsdk).
 
-Další informace o použití služby určené k transkripci konverzace se sadou SDK pro řeč zařízení, najdete v článku [k používání služby určené k transkripci konverzace](https://aka.ms/cts/howto).
+Další informace o použití přepisu konverzace se sadou SDK pro řeč zařízení, najdete v článku [použití přepisu konverzace](https://aka.ms/cts/howto).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7d2920e84e0e1e61627afe1fe029e047e13ed02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 819f7d12f0554145295a0ec4f1eff7cb404d552d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60259101"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Kurz: Integrace Azure Active Directory s LCVista
 
@@ -140,13 +140,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s LCVista, proveďte následu
 
     c. Otevřete soubor metadat XML, který jste si stáhli z webu Azure portal do poznámkového bloku, zkopírujte hodnotu **certifikátu x 509** a vložte ji **x509 certifikátu** oddílu.
 
-    d. V **křestní jméno atributu** textového pole vložte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. V **křestní jméno atributu** textového pole vložte hodnotu `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. V **poslední název atributu** textového pole vložte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. V **poslední název atributu** textového pole vložte hodnotu `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. V **atribut e-mailové** textového pole vložte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. V **atribut e-mailové** textového pole vložte hodnotu `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    g. V **atribut uživatelského jména** textového pole vložte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    g. V **atribut uživatelského jména** textového pole vložte hodnotu `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     e. Kliknutím na **Uložit** nastavení uložte.
 
@@ -205,7 +205,7 @@ V této části je povolit Britta Simon k udělení přístupu k LCVista použit
 
 V této části vytvoříte uživatele v LCVista jako Britta Simon. Práce s [tým podpory LCVista klienta](https://lcvista.com/contact) přidat uživatele na platformě LCVista. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

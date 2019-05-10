@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334716"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230038"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověřování.
 Dvoustupňové ověření je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout. Pokud čtete tento článek, pravděpodobně máte e-mailu ze svého pracovního nebo školního správce o ověřování službou Multi-Factor Authentication. Nebo možná jste zkoušeli přihlásit a zpráva s výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.
@@ -69,7 +69,7 @@ Pomocí této metody vyžaduje instalaci ověřovací aplikace na telefonu nebo 
    ![Pole pro zadání kódu PIN](./media/multi-factor-authentication-end-user-first-time/scan3.png)
 
 8. Po dokončení zadávání kódu PIN, vyberte **Zavřít**. V tomto okamžiku by měl být ověřování úspěšné.
-9. Doporučujeme vám, zadejte číslo svého mobilního telefonu v případě, že ztratíte přístup k mobilní aplikaci. Vyberte svou zemi z rozevíracího seznamu a zadejte své mobilní telefonní číslo do pole vedle názvu země. Vyberte **Další**.
+9. Doporučujeme vám, zadejte číslo svého mobilního telefonu v případě, že ztratíte přístup k mobilní aplikaci. Zadejte svou zemi z rozevíracího seznamu a zadejte své mobilní telefonní číslo do pole vedle názvu země/oblast. Vyberte **Další**.
 10. V tomto okamžiku budete vyzváni k nastavení hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší, nebo nativní e-mailové aplikace na zařízení Apple. Je to proto, že některé aplikace nepodporují dvoustupňové ověřování. Pokud tyto aplikace nepoužíváte, klikněte na tlačítko **Hotovo** a přeskočit zbývající kroky.
 11. Pokud tyto aplikace používáte, kopírovat heslo aplikace k dispozici a vložte ho do své aplikace namísto hesla regulární. Můžete použít stejné heslo aplikace pro více aplikací. Další informace [pomoct s hesly aplikací].
 12. Klikněte na **Done** (Hotovo).

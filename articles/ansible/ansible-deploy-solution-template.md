@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 2d2ab769c2d4c5a594cb57f2fa9dfed599578506
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692834"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230997"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Rychlý start: Nasazení šablony Ansible řešení pro Azure a CentOS
 
@@ -25,7 +25,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
 ## <a name="deploy-the-ansible-solution-template"></a>Nasazení šablony řešení Ansible
 
@@ -33,7 +33,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 1. Vyberte **získat teď**.
 
-1. Zobrazí se okno s podrobnostmi o podmínkách použití, zásady ochrany osobních údajů a podmínky použití z Azure Marketplace. Vyberte **Pokračovat**.
+1. Zobrazí se okno s podrobnostmi o podmínkách použití, zásady ochrany osobních údajů a podmínky použití z Azure Marketplace. Vyberte **pokračovat**.
 
 1. Na webu Azure portal se zobrazí a zobrazí stránku Ansible, který popisuje šablonu řešení. Vyberte **Vytvořit**.
 

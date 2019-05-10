@@ -6,16 +6,15 @@ author: mhopkins-msft
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 05/03/2019
 ms.author: mhopkins
-ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ae734215a7a8efe10f33cfbc338d09071d603232
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d241f1905244d3a8039372262f84ba0fd25220d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150003"
+ms.locfileid: "65209772"
 ---
 # <a name="azure-storage-samples-using-java"></a>Ukázky pro Azure Storage pomocí Javy
 
@@ -23,172 +22,172 @@ ms.locfileid: "65150003"
 
 Následující tabulka obsahuje přehled o našem úložišti ukázek a scénáře popsané v každém vzorku. Kliknutím na odkazy k zobrazení odpovídající vzorový kód na Githubu.
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody> 
-<tr> 
+<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody>
+<tr>
 <td rowspan="16"><b>Objekt blob</b></td>
-<td>Připojit objekt blob</td> 
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td> 
-</tr> 
-<tr> 
+<td>Připojit objekt blob</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
+</tr>
+<tr>
 <td>Objekt blob bloku</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Šifrování na straně klienta</td>
 <td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption">Začínáme s šifrování na straně klienta Azure v jazyce Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Zkopírování objektu Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Vytvoření kontejneru</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Odstranit objekt Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Odstranění kontejneru</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Objekt BLOB metadat/vlastnosti/Stats</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Seznam ACL/Metadata/vlastnosti kontejneru</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Získání rozsahů stránek</td>
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/CloudPageBlobTests.java">Objekt Blob stránky testuje vzorku</a></td>
-</tr> 
-<tr> 
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399">Začínáme se službou Azure Blob Service v Javě</a></td>
+</tr>
+<tr>
 <td>Zapůjčení objektu Blob nebo kontejneru</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Výpis objektu Blob nebo kontejneru</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Objekt blob stránky</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
 </tr>
-<tr> 
+<tr>
 <td>SAS</td>
 <td><a href="https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513">Ukázka testů SAS</a></td>
 </tr>   
-<tr> 
+<tr>
 <td>Vlastnosti služby</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr>           
-<tr> 
+</tr>
+<tr>
 <td>Vytvoření snímku objektu Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td rowspan="9"><b>File</b></td>
-<td>Vytvoření sdílené složky/adresářů a souborů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td> 
+<td>Vytvoření sdílené složky/adresářů a souborů</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td>
 </tr>
-<tr> 
-<td>Odstranění sdílené složky/adresářů a souborů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td> 
-</tr> 
-<tr> 
-<td>Adresář vlastností/metadat</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td> 
-</tr> 
-<tr> 
-<td>Stažení souborů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td> 
-</tr> 
-<tr> 
-<td>Soubor vlastností/metadat/metriky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td> 
-</tr> 
-<tr> 
-<td>File Service Properties</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td> 
-</tr> 
-<tr> 
-<td>Seznam adresářů a souborů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td> 
+<tr>
+<td>Odstranění sdílené složky/adresářů a souborů</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td>
 </tr>
-<tr> 
-<td>Zobrazit seznam sdílených složek</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td> 
+<tr>
+<td>Adresář vlastností/metadat</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td>
 </tr>
-<tr> 
-<td>Sdílení vlastností/metadat/Stats</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td> 
+<tr>
+<td>Stažení souborů</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td>
 </tr>
-<tr> 
+<tr>
+<td>Soubor vlastností/metadat/metriky</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td>
+</tr>
+<tr>
+<td>File Service Properties</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td>
+</tr>
+<tr>
+<td>Seznam adresářů a souborů</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td>
+</tr>
+<tr>
+<td>Zobrazit seznam sdílených složek</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Začínáme se službou Azure File v jazyce Java</a></td>
+</tr>
+<tr>
+<td>Sdílení vlastností/metadat/Stats</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Začínáme se službou Azure File v jazyce Java</a></td>
+</tr>
+<tr>
 <td rowspan="8"><b>fronty</b></td>
-<td>Přidat zprávu</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Ukázky knihovny klienta úložiště Java</a></td> 
-</tr> 
-<tr> 
-<td>Šifrování na straně klienta</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Ukázky knihovny klienta úložiště Java</a></td> 
-</tr> 
-<tr> 
-<td>Vytvoření fronty</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Odstranit zprávu či fronty</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Náhled zprávy</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Fronty ACL/Metadata/Stats</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Začínáme s Azure Queue Service v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Vlastnosti služby Queue</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Začínáme s Azure Queue Service v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Aktualizace zprávy</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td> 
-</tr> 
-<tr> 
+<td>Přidat zprávu</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
+<td>Šifrování na straně klienta</td>
+<td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java">Začínáme s šifrování na straně klienta Azure v jazyce Java</a></td>
+</tr>
+<tr>
+<td>Vytvoření fronty</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
+<td>Odstranit zprávu či fronty</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
+<td>Náhled zprávy</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
+<td>Fronty ACL/Metadata/Stats</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
+<td>Vlastnosti služby Queue</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
+<td>Aktualizace zprávy</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Začínáme s Azure Queue Service v Javě</a></td>
+</tr>
+<tr>
 <td rowspan="7"><b>Tabulka</b></td>
-<td>Vytvořit tabulku</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Odstranit entitu nebo tabulku</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Vložit/sloučení/nahrazení Entity</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Dotazování entit</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Tabulky dotazů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Seznam ACL/vlastnosti tabulky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-<tr> 
-<td>Aktualizace Entity</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
-</tr> 
-</tbody> 
+<td>Vytvořit tabulku</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+<tr>
+<td>Odstranit entitu nebo tabulku</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+<tr>
+<td>Vložit/sloučení/nahrazení Entity</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+<tr>
+<td>Dotazování entit</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+<tr>
+<td>Tabulky dotazů</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+<tr>
+<td>Seznam ACL/vlastnosti tabulky</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+<tr>
+<td>Aktualizace Entity</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
+</tr>
+</tbody>
 </table>
 <br/>
 

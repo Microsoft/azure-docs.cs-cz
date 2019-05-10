@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/24/2019
   ms.author: crtreasu
 abstract:
-  description: 'Spatial Anchors je vývojářská služba pro různé platformy, která umožňuje vytvářet prostředí smíšené reality s využitím objektů, které si v průběhu času zachovávají své umístění napříč zařízeními***.'
+  description: 'Spatial Anchors je vývojářská služba pro různé platformy, která umožňuje vytvářet prostředí smíšené reality s využitím objektů, které si v průběhu času zachovávají své umístění napříč zařízeními.'
 sections:
   - title: Zprovoznění během 5 minut
     items:

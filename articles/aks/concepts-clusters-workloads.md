@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467434"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230145"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -99,9 +99,11 @@ Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro 
 
 ### <a name="node-pools"></a>Fondy uzlů
 
-Uzlů se stejnou konfigurací jsou seskupeny do *fondy uzlů*. Kubernetes cluster obsahuje jeden nebo více fondy uzlů. Počáteční počet uzlů a velikosti jsou definována při vytvoření clusteru AKS, který vytvoří *výchozí fond uzlů*. Tento výchozí fond uzlů ve službě AKS obsahuje základní virtuální počítače, na kterých běží vaše agenta uzly.
+Uzlů se stejnou konfigurací jsou seskupeny do *fondy uzlů*. Kubernetes cluster obsahuje jeden nebo více fondy uzlů. Počáteční počet uzlů a velikosti jsou definována při vytvoření clusteru AKS, který vytvoří *výchozí fond uzlů*. Tento výchozí fond uzlů ve službě AKS obsahuje základní virtuální počítače, na kterých běží vaše agenta uzly. Podpora více uzlů fondu je aktuálně ve verzi preview ve službě AKS.
 
-Při škálování nebo upgrade clusteru AKS, akce se provádí na výchozí fond uzlů. Pro upgrade operace naplánováno spuštěné kontejnery na jiných uzlech ve fondu uzlů, dokud se úspěšně upgradoval na všech uzlech.
+Při škálování nebo upgrade clusteru AKS, akce se provádí na výchozí fond uzlů. Můžete také vertikálně nebo upgradovat fondu konkrétní uzel. Pro upgrade operace naplánováno spuštěné kontejnery na jiných uzlech ve fondu uzlů, dokud se úspěšně upgradoval na všech uzlech.
+
+Další informace o tom, jak používat více fondy uzlů ve službě AKS najdete v tématu [vytvořit a spravovat více fondy uzlů clusteru ve službě AKS][use-multiple-node-pools].
 
 ## <a name="pods"></a>Podů
 
@@ -200,7 +202,7 @@ Další informace najdete v tématu [Kubernetes DaemonSets][kubernetes-daemonset
 > [!NOTE]
 > Pokud se používá [virtuální uzly doplněk](virtual-nodes-cli.md#enable-virtual-nodes-addon), DaemonSets nevytvoří podů na virtuální uzel.
 
-## <a name="namespaces"></a>Obory názvů
+## <a name="namespaces"></a>Názvové prostory
 
 Prostředky Kubernetesu, jako je například podů a nasazení, jsou logicky rozdělena do *obor názvů*. Tato seskupení poskytují způsob, jak logicky rozdělte AKS cluster a omezit přístup k vytváření, zobrazení a správě prostředků. Můžete vytvořit samostatné obchodní skupiny, například obory názvů. Pouze mohou uživatelé komunikovat s prostředky v rámci jejich přiřazené obory názvů.
 
@@ -245,3 +247,4 @@ Tento článek popisuje některé základní součásti Kubernetes a jak se vzta
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

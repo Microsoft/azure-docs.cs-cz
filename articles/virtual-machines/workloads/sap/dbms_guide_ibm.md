@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cbecdb39a35339bd0b3f4d3d29d7893cdab0ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7d1de50e6b1b673a2613a893c19633bbd4bd43fd
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835358"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409266"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 
@@ -158,7 +158,7 @@ ms.locfileid: "60835358"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "60835358"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -319,7 +319,7 @@ Jsou různé články týkající se úloh SAP v Azure všeobecně dostupné.  D
 
 Následující poznámky SAP jsou související s řešením SAP v Azure týkající se oblasti zahrnuté v tomto dokumentu:
 
-| Poznámka: číslo | Název |
+| Poznámka: číslo | Titul |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: Požadavky pro podporu |
@@ -364,7 +364,7 @@ Pro disky obsahující cesty úložiště Db2 sapdata a saptmp adresářů je nu
 
 Pro virtuální počítače Azure řady M-Series lze snížit latenci zápisu do protokolů transakcí faktorů, které jsou ve srovnání s výkonem Azure Premium Storage, při použití akcelerátor zápisu Azure. Proto byste měli nasadit akcelerátor zápisu Azure pro virtuální pevné disky, který tvoří svazek pro protokoly transakcí Db2. Podrobnosti najdete v dokumentu [akcelerátorem zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
-### <a name="backuprestore"></a>Zálohování a obnovení
+### <a name="backuprestore"></a>Zálohování/obnovení
 Funkce zálohování a obnovení pro IBM Db2 pro LUW se podporuje stejně jako na standardní operační systémy Windows Server a Hyper-V.
 
 Musí se ujistěte, že máte strategie zálohování platnou databázi na místě. 
@@ -403,5 +403,5 @@ Pro disky obsahující cesty úložiště Db2 sapdata a saptmp adresářů je nu
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Další
 Všechny ostatní obecné oblasti jako je monitorování dostupnosti Azure a SAP použít, jak je popsáno v dokumentu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s databázi IBM .

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3940adfaa42de8ac9c3f32a9eadc8f6d643ce3ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c0bb8d7a5a1ea30b704b44c9337cd28043597ff7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149546"
+ms.locfileid: "65209530"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Rychlý start – využívání virtuálních počítačů VMware v Azure
 
@@ -74,7 +74,7 @@ Vytvoření virtuálního počítače v privátním cloudu ze serveru vCenter u�
     | Název | Zadejte název pro identifikaci disku.  | 
     | Velikost | Vyberte jednu z dostupných velikostí.  | 
     | Řadič SCSI | Vyberte řadič SCSI pro disk.  |
-    | Mode | Určuje, jak je disk součástí snímky. Vyberte jednu z těchto možností: <br> -Trvalé nezávislé: Všechna data zapsaná na disk je zapsána trvale.<br> -Nezávislé na dočasné: Při vypnutí nebo obnovit virtuální počítač se zahodí změny zapsaných na disk.  Nezávislé dočasné režim umožňuje vždy restartuje virtuální počítač ve stejném státě. Další informace najdete v tématu <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">dokumentaci k VMware</a>.
+    | Režim | Určuje, jak je disk součástí snímky. Vyberte jednu z těchto možností: <br> -Trvalé nezávislé: Všechna data zapsaná na disk je zapsána trvale.<br> -Nezávislé na dočasné: Při vypnutí nebo obnovit virtuální počítač se zahodí změny zapsaných na disk.  Nezávislé dočasné režim umožňuje vždy restartuje virtuální počítač ve stejném státě. Další informace najdete v tématu <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">dokumentaci k VMware</a>.
 
 7. Po dokončení ověření, zkontrolujte nastavení a klikněte na tlačítko **vytvořit**. Pokud chcete něco změnit, klikněte na karty v horní části nebo klikněte na tlačítko.
 
@@ -82,5 +82,5 @@ Vytvoření virtuálního počítače v privátním cloudu ze serveru vCenter u�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zobrazení seznamu CloudSimple virtuálních počítačů](https://docs.azure.cloudsimple.com/azure-manage-vm/)
-* [Správa CloudSimple virtuálního počítače z Azure](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [Zobrazení seznamu CloudSimple virtuálních počítačů](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [Správa CloudSimple virtuálního počítače z Azure](https://docs.azure.cloudsimple.com/azure-manage-vm/)

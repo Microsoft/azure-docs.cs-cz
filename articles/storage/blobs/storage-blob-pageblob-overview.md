@@ -2,18 +2,19 @@
 title: Přehled objektů BLOB stránky Azure | Dokumentace Microsoftu
 description: Přehled o objekty BLOB stránky Azure a jejich výhod, včetně případů použití se skripty.
 services: storage
-author: anasouma
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: wielriac
+ms.author: tamram
+ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0d5108ee235be74f6188bfc8b590069a4e790b5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61428348"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192648"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů BLOB stránky Azure
 
@@ -42,7 +43,7 @@ Následující diagram popisuje celkový vztahy mezi účtem, kontejnery a objek
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Vytvoření objektu blob prázdná stránka zadané velikosti
-Chcete-li vytvořit objekt blob stránky, nejdřív vytvoříme **CloudBlobClient** objekt s základní identifikátor URI pro přístup k úložišti objektů blob pro účet úložiště (*pbaccount* obrázek 1) spolu s  **StorageCredentialsAccountAndKey** objektu, jak je znázorněno v následujícím příkladu. Příklad poté ukazuje vytvoření odkazu na **CloudBlobContainer** objektu a následného vytvoření kontejneru (*testvhds*) Pokud ještě neexistuje. Pak pomocí **CloudBlobContainer** objektu, vytvořit odkaz na **CloudPageBlob** objektu tak, že zadáte název objektu blob stránky (os4.vhd) přístup. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) předávajícího maximální velikost pro tento objekt blob k vytvoření. *BlobSize* musí být násobkem 512 bajtů.
+Chcete-li vytvořit objekt blob stránky, nejdřív vytvoříme **CloudBlobClient** objekt s základní identifikátor URI pro přístup k úložišti objektů blob pro účet úložiště (*pbaccount* obrázek 1) spolu s  **StorageCredentialsAccountAndKey** objektu, jak je znázorněno v následujícím příkladu. Příklad poté ukazuje vytvoření odkazu na **CloudBlobContainer** objektu a následného vytvoření kontejneru (*testvhds*) Pokud ještě neexistuje. Pak pomocí **CloudBlobContainer** objektu, vytvořit odkaz na **CloudPageBlob** objektu tak, že zadáte název objektu blob stránky (os4.vhd) přístup. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) předávajícího maximální velikost pro tento objekt blob k vytvoření. *BlobSize* musí být násobkem 512 bajtů.
 
 ```csharp
 using Microsoft.WindowsAzure.StorageClient;
@@ -65,13 +66,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
 #### <a name="resizing-a-page-blob"></a>Změna velikosti objekt blob stránky
-Chcete-li po vytvoření změnit velikost objektů blob stránky, použijte [změnit velikost](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) rozhraní API. Požadovaná velikost by měla být násobkem 512 bajtů.
+Chcete-li po vytvoření změnit velikost objektů blob stránky, použijte [změnit velikost](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) rozhraní API. Požadovaná velikost by měla být násobkem 512 bajtů.
 ```csharp
 pageBlob.Resize(32 * OneGigabyteAsBytes); 
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Vytvoření stránek pro objekt blob stránky
-Chcete-li zapsat stránky, použijte [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metody.  To umožňuje zapisovat sekvenční sadu stránek až 4MBs. Posun do musí začínat na hranici 512 bajtů (startingOffset % 512 == 0) a ukončí se na hranici 512 - 1.  Následující příklad kódu ukazuje, jak volat **WritePages** pro objekt blob:
+Chcete-li zapsat stránky, použijte [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metody.  To umožňuje zapisovat sekvenční sadu stránek až 4MBs. Posun do musí začínat na hranici 512 bajtů (startingOffset % 512 == 0) a ukončí se na hranici 512 - 1.  Následující příklad kódu ukazuje, jak volat **WritePages** pro objekt blob:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -87,7 +88,7 @@ Následující diagram ukazuje 2 samostatné operace zápisu:
 2.  Operace zápisu začínající na posunu 4096 délky 1 024 
 
 #### <a name="reading-pages-from-a-page-blob"></a>Čtení stránek z objektů blob stránky
-Chcete-li číst stránky, použijte [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) metodu za účelem čtení rozsah bajtů z objektů blob stránky. To umožňuje stáhnout úplnou objektu blob nebo velikost v bajtech od posunu v objektu blob. Při čtení, není potřeba spustit na více 512 posun. Při čtení bajtů ze stránky NUL, služba vrátí nula bajtů.
+Chcete-li číst stránky, použijte [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) metodu za účelem čtení rozsah bajtů z objektů blob stránky. To umožňuje stáhnout úplnou objektu blob nebo velikost v bajtech od posunu v objektu blob. Při čtení, není potřeba spustit na více 512 posun. Při čtení bajtů ze stránky NUL, služba vrátí nula bajtů.
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
@@ -96,7 +97,7 @@ Následující obrázek znázorňuje operaci čtení s BlobOffSet 256 a rangeSiz
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-Pokud máte řídce naplněných objektů blob můžete stáhnout pouze oblasti platný stránky, abyste neplatili za egressing nula bajtů a snižuje latenci stahování.  Chcete-li zjistit, které stránky se zálohují na data, použijte [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet). Potom můžete vytvořit výčet vrácené rozsahy a stáhnout data v každé oblasti. 
+Pokud máte řídce naplněných objektů blob můžete stáhnout pouze oblasti platný stránky, abyste neplatili za egressing nula bajtů a snižuje latenci stahování.  Chcete-li zjistit, které stránky se zálohují na data, použijte [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet). Potom můžete vytvořit výčet vrácené rozsahy a stáhnout data v každé oblasti. 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
 

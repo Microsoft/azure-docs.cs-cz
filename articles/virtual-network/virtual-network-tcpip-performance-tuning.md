@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924787"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410046"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Pro virtuální počítače Azure pro optimalizaci výkonu protokolu TCP/IP
 
@@ -276,7 +276,7 @@ Pokud chcete používat akcelerované síťové služby, musíte ji explicitně 
 
 Zobrazí se na straně příjmu (RSS) je ovladač technologie sítě, která distribuuje přijímají síťový provoz efektivněji díky distribuci zpracování příjmu napříč více procesorů v systému s více procesory. RSS umožňuje jednoduše řečeno, může systém zpracovávat více přijaté přenosy, protože používá všechny dostupné procesory ne o jeden. Další technické informace o RSS, najdete v článku [Úvod do škálování na straně příjmu](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-Pokud chcete získat nejlepší výkon obrysů akcelerované síťové služby na virtuálním počítači, je potřeba povolit RSS. RSS může poskytnout také výhody na virtuálních počítačích, které nepoužívají akcelerovanými síťovými službami. Přehled o tom, jak určit, pokud je technologie RSS zapnutá a jak se dá povolit, najdete v části [optimalizace propustnosti sítě pro virtuální počítače Azure](http://aka.ms/FastVM).
+Pokud chcete získat nejlepší výkon obrysů akcelerované síťové služby na virtuálním počítači, je potřeba povolit RSS. RSS může poskytnout také výhody na virtuálních počítačích, které nepoužívají akcelerovanými síťovými službami. Přehled o tom, jak určit, pokud je technologie RSS zapnutá a jak se dá povolit, najdete v části [optimalizace propustnosti sítě pro virtuální počítače Azure](https://aka.ms/FastVM).
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT a TIME_WAIT assassination
 
@@ -316,7 +316,7 @@ Omezení propustnosti platí pro virtuální počítač. Propustnost nemá vliv 
 
 - **Protokol**: Veškerý odchozí provoz přes všechny protokoly započítává limitu.
 
-Další informace najdete v tématu [šířky pásma sítě virtuálních počítačů](http://aka.ms/AzureBandwidth).
+Další informace najdete v tématu [šířky pásma sítě virtuálních počítačů](https://aka.ms/AzureBandwidth).
 
 ### <a name="internet-performance-considerations"></a>Důležité informace o výkonu Internet
 

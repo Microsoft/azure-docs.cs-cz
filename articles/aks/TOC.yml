@@ -113,7 +113,7 @@
         - name: Odstranění clusteru AKS
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Vytváření virtuálních uzlů (Preview)
+        - name: Vytváření virtuálních uzlů
           items:
             - name: Azure CLI
               href: virtual-nodes-cli.md
@@ -123,9 +123,13 @@
           href: virtual-kubelet.md
         - name: Použití automatického škálování clusteru (Preview)
           href: cluster-autoscaler.md
+        - name: Použití fondů s více uzly (Preview)
+          href: use-multiple-node-pools.md
         - name: Nasazení AKS s Terraformem
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Použití řídicího panelu Kubernetes
+          href: kubernetes-dashboard.md
     - name: Konfigurace svazků s daty
       items:
         - name: Disky Azure – dynamické
@@ -173,12 +177,16 @@
           href: kubernetes-service-principal.md
         - name: Omezení přístupu ke konfiguračnímu souboru clusteru
           href: control-kubeconfig-access.md
-        - name: Zabezpečení přenosu podů s využitím síťových zásad (Preview)
+        - name: Zabezpečení provozu podů s využitím zásad sítě
           href: use-network-policies.md
         - name: Použití zásad zabezpečení podu (Preview)
           href: use-pod-security-policies.md
+        - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API (Preview)
+          href: api-server-authorized-ip-ranges.md
         - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
           href: update-credentials.md
+        - name: Omezení a řízení výchozí přenosu clusteru
+          href: limit-egress-traffic.md
         - name: Povolení integrace Azure Active Directory
           items:
             - name: Použití Azure CLI
@@ -285,10 +293,6 @@
         - name: Azure DevOps Project
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: Základy Kubernetes
-      items:
-        - name: Použití řídicího panelu Kubernetes
-          href: kubernetes-dashboard.md
     - name: Řešení potíží
       items:
         - name: Běžné problémy

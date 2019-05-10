@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390647"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209512"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurace protokolu BGP ve službě Azure VPN gateway pomocí rozhraní příkazového řádku
 
@@ -131,7 +131,7 @@ K navázání připojení mezi různými místy, je potřeba vytvořit bránu m�
 V tomto cvičení se nadále sestavení konfigurace znázorněné v diagramu. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci. Při práci s brány místní sítě, mějte na paměti následující věci:
 
 * Brána místní sítě může být ve stejném umístění a skupině prostředků jako brány sítě VPN, nebo může být v jiném umístění a skupině prostředků. Tento příklad ukazuje brány v různých skupinách prostředků v různých umístěních.
-* Minimální předponu, která je potřeba deklarovat pro bránu místní sítě je adresa hostitele IP adresy partnerského uzlu váš protokol BGP na vašem zařízení VPN. V tomto případě jde /32 předponu 10.52.255.254/32.
+* Minimální předponu, která je potřeba deklarovat pro bránu místní sítě je adresa hostitele IP adresy partnerského uzlu váš protokol BGP na vašem zařízení VPN. V tomto případě jde /32 předponu 10.51.255.254/32.
 * Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi místními sítěmi a Azure virtual network. Pokud se shodují, musíte změnit ASN virtuální sítě v případě, že vaše místní zařízení VPN už používáte k vytvoření partnerského vztahu s dalším sousedům BGP číslo ASN.
 
 Než budete pokračovat, ujistěte se, že jste dokončili [povolit protokol BGP pro bránu VPN](#enablebgp) části v tomto cvičení a že jste stále připojeni k předplatnému 1. Všimněte si, že v tomto příkladu vytvoříte novou skupinu prostředků. Všimněte si také, dva další parametry pro bránu místní sítě: `Asn` a `BgpPeerAddress`.
@@ -225,7 +225,7 @@ Je důležité, abyste měli jistotu, že se adresní prostor IP adres nové vir
 
 V tomto příkladu patří virtuální sítě do stejného předplatného. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet](vpn-gateway-howto-vnet-vnet-cli.md). Ujistěte se, že přidáte `-EnableBgp $True` při vytváření připojení se povolit protokol BGP.
 
-#### <a name="1-create-a-new-resource-group"></a>1. Vytvoření nové skupiny prostředků
+#### <a name="1-create-a-new-resource-group"></a>1. Vytvořit novou skupinu prostředků
 
 ```azurecli
 az group create -n TestBGPRG2 -l westus

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411304"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231343"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -73,9 +73,9 @@ Další informace o atributu NameIDPolicy najdete v tématu [protokol jednotné 
 
 Vyberte požadovaný zdroj `NameIdentifier` (nebo NameID) deklarace identity. Můžete vybrat jednu z následujících možností.
 
-| Name | Popis |
+| Název | Popis |
 |------|-------------|
-| Email | E-mailovou adresu uživatele |
+| E-mail | E-mailovou adresu uživatele |
 | userprincipalName | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, která je synchronizovaná z místní služby Azure AD |
 | ID objektu | ID objektu uživatele ve službě Azure AD |
@@ -116,7 +116,7 @@ Můžete také použít funkce transformace deklarací identity.
 | **ToUpper()** | Znaky v datech vybraného atributu převede na velká písmena. |
 | **Metoda contains()** | Atribut nebo – konstanta výstupy, pokud vstup odpovídá zadané hodnotě. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je e-mailovou adresu uživatele, pokud obsahuje doménu, například "@contoso.com", jinak chcete výstup hlavní název uživatele. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.email<br/>*Hodnota*: "@contoso.com"<br/>Parametr 2 (výstup): user.email<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.userprincipalname |
 | **EndWith()** | Atribut nebo – konstanta výstupy, pokud vstupní končí zadanou hodnotou. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je employeeid uživatele, pokud employeeid končí "000", jinak je třeba do výstupu atributu rozšíření. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.employeeid<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): user.employeeid<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.extensionattribute1 |
-| **StartWith()** | Atribut nebo – konstanta výstupy, pokud vstup začíná zadanou hodnotou. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je employeeid uživatele, pokud státu začíná "USA", jinak je třeba do výstupu atributu rozšíření. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.country<br/>*Hodnota*: "USA"<br/>Parametr 2 (výstup): user.employeeid<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.extensionattribute1 |
+| **StartWith()** | Atribut nebo – konstanta výstupy, pokud vstup začíná zadanou hodnotou. Pokud není nalezena žádná shoda, v opačném případě můžete zadat jiný výstupní.<br/>Pokud chcete generovat deklarace identity, kde hodnota je employeeid uživatele, pokud v zemi nebo oblasti začíná "USA", jinak je třeba do výstupu atributu rozšíření. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>*Parametr 1(input)*: user.country<br/>*Hodnota*: "USA"<br/>Parametr 2 (výstup): user.employeeid<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.extensionattribute1 |
 | **Extract() - po odpovídající** | Vrátí podřetězec po odpovídá zadané hodnotě.<br/>Například pokud vstupní hodnota je "Finance_BSimon", odpovídající hodnota je "Finance_", je výstupní deklarace identity "BSimon". |
 | **Extract() - před odpovídající** | Vrátí podřetězec, dokud nebude odpovídat zadanou hodnotu.<br/>Například pokud vstupní hodnota je "BSimon_US", odpovídající hodnota je "_US", je výstupní deklarace identity "BSimon". |
 | **Extract() - mezi odpovídajícími si** | Vrátí podřetězec, dokud nebude odpovídat zadanou hodnotu.<br/>Například pokud vstupní hodnota je "Finance_BSimon_US", "Finance_" je první odpovídající hodnotu, druhá odpovídající hodnota je "_US" a pak výstup deklarace identity je "BSimon". |

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466897"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205405"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Rychlý start: Streamování videosouborů – CLI
 
@@ -83,7 +83,7 @@ Můžete získat následujícím způsobem:
 
 ## <a name="start-the-streaming-endpoint"></a>Spuštění koncového bodu streamování
 
-Následující příkaz rozhraní příkazového řádku Azure spustí výchozí **koncový bod Sstreaming**.
+Následující příkaz rozhraní příkazového řádku Azure spustí výchozí **koncový bod streamování**.
 
 ```azurecli
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -356,4 +356,4 @@ Zobrazit [úlohy kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#
 
 ## <a name="next-steps"></a>Další postup
 
-> [Ukázky rozhraní příkazového řádku](cli-samples.md)
+[Přehled služby Media Services](media-services-overview.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ca3f537ed52da547f64aa1fb98eb82c4ea73d81d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5f3b0094834b1ca547ba5ddf9726068c9ea36079
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021427"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409093"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informace o zařízeních řeči SDK
 
@@ -32,7 +32,7 @@ Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md).
 
 Sadou SDK pro řeč zařízení můžete použít také k vytváření okolí zařízení, které mají vlastní [přizpůsobit probuzení slovo](speech-devices-sdk-create-kws.md) startovací, který iniciuje interakce s uživatelem je jedinečné pro vlastní značky.
 
-Sadou SDK pro řeč zařízení usnadňuje širokou škálu scénářů hlasové služby, jako například [vlastní hlasové první virtuálních asistentů](https://aka.ms/sdsdk-assistant), jednotky – do řazení systémy, [konverzace určené k transkripci](conversation-transcription-service.md)a inteligentní přednášející. Může reagovat na uživatele s textem, mluvit zpět na ně ve výchozí nebo [vlastní hlasové](how-to-customize-voice-font.md), poskytovat výsledky vyhledávání [přeložit](speech-translation.md) do jiných jazyků a další. Těšíme se zobrazuje, co je vytvořit!
+Sadou SDK pro řeč zařízení usnadňuje širokou škálu scénářů hlasové služby, jako například [vlastní hlasové první virtuálních asistentů](https://aka.ms/bots/speech/va), jednotky – do řazení systémy, [konverzace určené k transkripci](conversation-transcription-service.md)a inteligentní přednášející. Může reagovat na uživatele s textem, mluvit zpět na ně ve výchozí nebo [vlastní hlasové](how-to-customize-voice-font.md), poskytovat výsledky vyhledávání [přeložit](speech-translation.md) do jiných jazyků a další. Těšíme se zobrazuje, co je vytvořit!
 
 ## <a name="next-steps"></a>Další postup
 

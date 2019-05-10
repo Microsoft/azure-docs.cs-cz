@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187796"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410111"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
 
@@ -116,7 +116,7 @@ Můžete nastavit OpenFrame prostředí pomocí různých vzorů nasazení, ale 
 
 **Vytvoření virtuálního počítače**
 
-1. Přejděte na webu Azure portal na <http://portal.azure.com> a přihlaste se ke svému účtu.
+1. Přejděte na webu Azure portal na <https://portal.azure.com> a přihlaste se ke svému účtu.
 
 2. Klikněte na tlačítko **virtuálních počítačů**.
 
@@ -565,7 +565,7 @@ Základní aplikační server je nainstalována před jednotlivých služeb, kte
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
      ```
 
-    ![Základní](media/base-01.png)
+    ![Základ](media/base-01.png)
 
      > [!IMPORTANT]
      > Ujistěte se, že začnete Tibero před instalací.

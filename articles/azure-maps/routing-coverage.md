@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f9f5b24a52ebfb8b87f1abaa3b60091d7f4690ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870011"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230654"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps směrování pokrytí
 
@@ -27,9 +27,9 @@ Podívejte se na pokrytí [ **vykreslení**](render-coverage.md).
 
 | Symbol             | Význam                                |
 |--------------------|----------------------------------------|
-| ✓                  | Země, opatřeného podrobná data.   |
-| Ø                  | Země, opatřeného jednodušší. |
-| Chybí země | Data o zemích není k dispozici.          |
+| ✓                  | Země nebo oblast, opatřeného podrobná data.   |
+| Ø                  | Země/oblasti součástí jednodušší. |
+| Chybí země | Země/oblast dat není k dispozici.          |
 
 <br>  
 
@@ -39,7 +39,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 
 ## <a name="africa"></a>Afrika
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země nebo oblast                 | Směrování         | Směrování provozu | Truck směrování |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Alžírsko                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
@@ -83,7 +83,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 
 ## <a name="americas"></a>Amerika
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země nebo oblast                 | Směrování         | Směrování provozu | Truck směrování |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentina                      |        ✓       |         ✓            |     ✓       |
 | Antigua a Barbuda            |        ✓       |                      |             |
@@ -99,7 +99,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Dominika                       |        ✓       |                      |             |
 | Dominikánská republika             |        ✓       |                      |             |
 | Ekvádor                        |        ✓       |                      |             |
-| Salvador                    |        ✓       |                      |             |
+| El Salvador                    |        ✓       |                      |             |
 | Francouzská Guyana                  |        ✓       |                      |             |
 | Grenada                        |        ✓       |                      |             |
 | Guatemala                      |        ✓       |                      |             |
@@ -128,7 +128,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země nebo oblast                 | Směrování         | Směrování provozu | Truck směrování |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Austrálie                      |        ✓       |         ✓            |     ✓       |
 | + Vánoční ostrov              |        ✓       |                      |             |
@@ -154,7 +154,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 
 ## <a name="europe"></a>Evropa
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země nebo oblast                 | Směrování         | Směrování provozu | Truck směrování |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albánie                        |        ✓       |                      |             |
 | Andorra                        |        ✓       |         ✓            |             |
@@ -177,7 +177,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | + Svatý Bartoloměj                |        ✓       |                      |             |
 | +St. Martin                    |        ✓       |                      |             |
 | +St. Pierre & Miquelon         |        ✓       |                      |             |
-| Gruzie                        |        ✓       |                      |             |
+| Georgie                        |        ✓       |                      |             |
 | Německo                        |        ✓       |         ✓            |     ✓      | 
 | Řecko                         |        ✓       |         ✓            |     ✓      |  
 | Guernsey                       |        ✓       |                      |             |
@@ -199,14 +199,14 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | +Aruba                         |        ✓       |                      |             | 
 | + Nizozemsko Karibská oblast         |        ✓       |                      |             |
 | +Curaçao                       |        ✓       |                      |             |
-| + Svatý Martin                  |        ✓       |                      |             |
+| +Sint Maarten                  |        ✓       |                      |             |
 | Norsko                         |        ✓       |         ✓            |     ✓      | 
 | Polsko                         |        ✓       |         ✓            |     ✓      | 
 | Portugalsko                       |        ✓       |         ✓            |     ✓      |  
 | Rumunsko                        |        ✓       |         ✓            |     ✓      | 
 | Ruská federace             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| + Svatý Martin                  |        ✓       |                      |             |
+| +Sint Maarten                  |        ✓       |                      |             |
 | Srbsko                         |        ✓       |                      |     ✓      | 
 | Slovensko                       |        ✓       |         ✓            |     ✓      | 
 | Slovinsko                       |        ✓       |         ✓            |     ✓      |
@@ -220,18 +220,18 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | + Bermudy                       |        ✓       |                      |             |
 | + Britské Panenské ostrovy        |        ✓       |                      |             |
 | + Kajmanské ostrovy                |        ✓       |                      |             |
-| +Gibraltar                      |        ✓       |         ✓            |             | 
+| +Gibraltar                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
-| + Turks a Caicos ostrovy        |        ✓       |                      |             |
+| + Turks a Caicos      |        ✓       |                      |             |
 | Vatikán                   |        ✓       |         ✓            |             |
 | Ostrov Man                    |        ✓       |                      |             |
 
 
 ## <a name="middle-east"></a>Střední východ
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země nebo oblast                 | Směrování         | Směrování provozu | Truck směrování |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
-| Bahrajn                        |        ✓       |         ✓            |             |
+| Bahrain                        |        ✓       |         ✓            |             |
 | Irák                           |        ✓       |                      |             |
 | Izrael                         |        ✓       |         ✓            |             |
 | Jordánsko                         |        ✓       |                      |             |

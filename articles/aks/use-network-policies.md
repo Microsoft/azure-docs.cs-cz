@@ -5,47 +5,33 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61027964"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230008"
 ---
-# <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - zabezpečený přenos dat mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
+# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
 
 Když spustíte moderních aplikací založených na mikroslužbách v Kubernetes, často chcete řídit, které součásti mohou komunikovat mezi sebou. Jak můžete tok provozu mezi pody v clusteru služby Azure Kubernetes Service (AKS) bude použito principu nejnižších možných oprávnění. Řekněme, že pravděpodobně chcete blokovat provoz přímo na back endové aplikace. *Zásady sítě* funkce v Kubernetes umožňuje definovat pravidla pro příchozí a odchozí přenos dat mezi pody v clusteru.
 
-V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvářet zásady sítě Kubernetes pro řízení toku přenosů mezi pody ve službě AKS. Tato funkce je aktuálně ve verzi Preview.
-
-> [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
->
-> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
+V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvářet zásady sítě Kubernetes pro řízení toku přenosů mezi pody ve službě AKS. Zásady sítě by měla sloužit pouze pro uzly založené na Linuxu a podů ve službě AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
-K vytvoření clusteru AKS, můžete použít zásady sítě, nejprve povolte příznak funkce v rámci předplatného. K registraci *EnableNetworkPolicy* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
-
-```azurecli-interactive
-az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
-```
-
-Trvá několik minut, než se stav zobrazíte *registrované*. Můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableNetworkPolicy')].{Name:name,State:properties.state}"
-```
-
-Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register] [ az-provider-register] příkaz:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+> [!TIP]
+> Pokud jste použili funkci zásady sítě ve verzi preview, doporučujeme vám [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
+> 
+> Pokud chcete pokračovat v používání existujícího testovacích clusterů, které používají zásady sítě ve verzi preview, cluster upgradovat na nové verze Kubernetes pro nejnovější verze GA a pak nasaďte manifest následující YAML opravit havarujícímu metrik serveru a Kubernetes řídicí panel. Tato oprava je pouze požadovaná pro clustery, které používá modul Calico síťových zásad.
+>
+> Z hlediska zabezpečení je nejvhodnější [zkontrolovat obsah manifestu YAML] [ calico-aks-cleanup] pochopit, co se nasadí do clusteru AKS.
+>
+> `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
 ## <a name="overview-of-network-policy"></a>Přehled služby Síťové zásady
 
@@ -78,6 +64,7 @@ Zásady sítě funguje jenom s možností Azure CNI (rozšířené). Implementac
 | Kompatibilita se specifikací Kubernetes | Nepodporuje všechny typy zásad |  Nepodporuje všechny typy zásad |
 | Další funkce                      | Žádný                       | Rozšířené zásady modelu skládající se z globálních zásad sítě, nastavte globální sítě a hostitele koncového bodu. Další informace o používání `calicoctl` CLI ke správě těchto rozšířených funkcí, naleznete v tématu [reference k uživatelskému calicoctl][calicoctl]. |
 | Podpora                                  | Podporované podpory Azure a technického týmu | Podpora calico komunity. Další informace o dalších placená odborná pomoc najdete v tématu [možností podpory, které projekt Calico][calico-support]. |
+| Protokolování                                  | Pravidla přidat / odstranit IPTables přihlášeni na každém hostiteli v rámci */var/log/azure-npm.log* | Další informace najdete v tématu [Calico součást protokoluje události][calico-logs] |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolit zásady sítě
 
@@ -140,7 +127,6 @@ az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
-    --kubernetes-version 1.12.6 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -478,12 +464,13 @@ Další informace o zásadách najdete v tématu [zásady sítě, Kubernetes][ku
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
+[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

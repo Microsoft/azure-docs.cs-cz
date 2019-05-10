@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297622"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198948"
 ---
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
 
 Registrace vaší aplikace v jednom ze dvou způsobů.
 
@@ -43,7 +43,9 @@ Postup při registraci aplikace a přidání informací o registraci aplikace k 
    - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-1. V části **Identifikátory URI pro přesměrování** vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)** a vyberte **urn:ietf:wg:oauth:2.0:oob**.
+   1. V **identifikátory URI přesměrování** části, v seznamu identifikátorů URI pro přesměrování:
+   1. V **typ** vybrat sloupec **veřejným klientem (mobilních a desktopových)**.
+   1. Zadejte `urn:ietf:wg:oauth:2.0:oob` v **identifikátor URI pro PŘESMĚROVÁNÍ** sloupce.
 1. Vyberte **Uložit**.
 1. Přejděte do sady Visual Studio, otevřete *App.xaml.cs* souboru a potom nahraďte `Enter_the_Application_Id_here` s ID aplikace, které jste právě zaregistrovali a zkopírovat.
 

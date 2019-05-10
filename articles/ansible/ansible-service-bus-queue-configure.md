@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: a73519e2a51e0f8847e262e315f3c13057eb2ac9
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.date: 04/30/2019
+ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63767170"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230767"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Kurz: Konfigurace front v Azure Service Bus pomocí Ansible
 
@@ -33,8 +33,8 @@ ms.locfileid: "63767170"
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-the-service-bus-queue"></a>Vytvořit frontu služby Service Bus
 
@@ -252,4 +252,4 @@ ansible-playbook cleanup.yml
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
-> [Kurz: Konfigurace téma v Azure Service Bus pomocí Ansible](/azure/ansible/ansible-service-bus-create-topics)
+> [Kurz: Konfigurace téma v Azure Service Bus pomocí Ansible](ansible-service-bus-topic-configure.md)

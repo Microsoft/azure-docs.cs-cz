@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a9726b73226cd940a55e316ae434aeaad6ff4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353946"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190796"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridních připojení k Azure Active Directory pro spravované domény
 
@@ -52,7 +52,10 @@ V tomto kurzu se předpokládá znalost následujících témat:
 -  [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md)
 
 -  [Jak řídit How hybridní připojení Azure AD pro vaše zařízení](hybrid-azuread-join-control.md)
-  
+
+> [!NOTE]
+> Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
+
 
 Pokud chcete nakonfigurovat scénář v tomto článku, budete potřebovat:
 
@@ -94,7 +97,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect potř
 
 2. Na stránce **Další úlohy** vyberte **Konfigurovat možnosti zařízení** a pak klikněte na **Další**. 
 
-    ![Další úlohy](./media/hybrid-azuread-join-managed-domains/12.png)
+    ![Další úkoly](./media/hybrid-azuread-join-managed-domains/12.png)
 
 3. Na stránce **Přehled** klikněte na **Další**. 
 
@@ -102,7 +105,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect potř
 
 4. Na stránce **Připojit k Azure AD** zadejte přihlašovací údaje globálního správce vašeho tenanta Azure AD.  
 
-    ![Připojení k Azure AD](./media/hybrid-azuread-join-managed-domains/14.png)
+    ![Připojení ke službě Azure AD](./media/hybrid-azuread-join-managed-domains/14.png)
 
 5. Na stránce **Možnosti zařízení** vyberte **Konfigurovat hybridní připojení k Azure AD** a pak klikněte na **Další**. 
 
@@ -148,7 +151,7 @@ Pokud jsou některá z vašich zařízení připojených k doméně zařízení 
 - Řízení zařízení s Windows nižší úrovně 
 
 
-### <a name="update-device-settings"></a>Aktualizace nastavení zařízení 
+### <a name="update-device-settings"></a>Aktualizovat nastavení zařízení 
 
 Pokud chcete registrovat zařízení s Windows nižší úrovně, je potřeba zajistit nastavení zařízení, které uživatelům umožní registrovat zařízení v Azure AD. Na webu Azure Portal najdete toto nastavení v části:
 

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 614dabe842c7fe99da3ddb486c27003c79382ea1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147927"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231393"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení služby Security Center nabízí (2019 dne)
 
@@ -81,6 +81,7 @@ Klikněte na pracovním prostoru otevře "Identit a přístupu" log analytics ř
 ![Stránka identity – řídicí panel][8]
 
 Od této chvíle všechny tři obrazovky výše se vyřadí z provozu. Vaše data zůstanou k dispozici v řešení zabezpečení log analytics a nebude změnit ani je odebrat.
+Původní použitých k naplnění řídicí panel identita a přístup dotazy Log Analytics jsou k dispozici ve službě Security Center [úložiště GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ### <a name="classic-identity--access-preview---new-experience"></a>Klasickou identitu a přístup (Preview) – nové prostředí
 Zatímco řídicí panel Log analytics poskytuje přehledy v daném pracovním prostoru pouze, nativní funkce Security Center poskytuje přehled o všech předplatných a všechny pracovní prostory, které jsou spojené s nimi, v přehledném – použití zobrazení, která vám umožní zaměřit se na co společnosti důležité podle zabezpečené skóre recommendation(s) vaše identita a přístup.
@@ -103,6 +104,7 @@ Když vyberete pracovní prostor, chcete-li zobrazit jeho řídicí panel analý
 ![Mapování výstrah zabezpečení ve službě Log Analytics][12]
 
 Existující data zůstanou k dispozici v řešení zabezpečení log analytics a nebude být změnit ani odebrat.
+Původní dotazy Log Analytics používá k naplnění řídicí panel analýza hrozeb v Security Center jsou k dispozici [úložiště GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ### <a name="security-events-map---new-experience"></a>Mapy událostí zabezpečení – nové prostředí
 Doporučujeme, aby naše zákazníky, pomocí funkce mapy výstrahy, které jsou integrované do Security Center – "mapování výstrah zabezpečení (Preview)". To poskytuje optimalizované a funguje ve všech předplatných a přidružených pracovních prostorů, povolení makra zobrazení napříč vaším prostředím a ne zaměřit na jeden pracovní prostor.
@@ -112,7 +114,7 @@ Vlastní upozornění prostředí bude [vyřazeno](https://docs.microsoft.com/az
 
 Chcete-li zachovat existující výstrahy a migrací do Azure Sentinelu, Sentinelu Azure, spusťte. Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" automaticky migrovat vaše upozornění.
 
-![Vlastní výstrahy][13]
+![Vlastní upozornění][13]
 
 Nezajímá vás připojení ke službě Azure Sentinelu nepodnikovým zákazníkům znovu vytvořit s využitím upozornění log Azure Monitor výstrah. Pokyny najdete v tématu: [vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Návod, jak vytvořit upozornění protokolů najdete v tématu: [Upozornění protokolů ve službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
@@ -165,6 +167,8 @@ Security Center bude podporovat [konfigurace agenta hosta](https://docs.microsof
 
 ### <a name="security--audit-dashboard---new-experience"></a>Zabezpečení a audit řídicí panel – nové prostředí
 Našim zákazníkům doporučujeme používat Azure Security Center, která poskytuje stejné zabezpečení přehled napříč více předplatná a pracovní prostory, které jsou spojené s nimi, spolu s širší nabídku sad funkcí.
+
+Původní dotazy Log Analytics používá k naplnění zabezpečení a audit řídicího panelu jsou k dispozici ve službě Security Center [úložiště GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/)

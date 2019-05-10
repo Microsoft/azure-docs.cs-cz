@@ -7,12 +7,12 @@ ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 0de3e0add804290cdfe27e2e97d8b1a0f240e0a6
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63769298"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209406"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití se službou Azure podrobné plány
 
@@ -41,11 +41,11 @@ Vrátí že objekt vlastnosti vyplní této artefakty podrobného plánu výstup
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Objekt vlastnosti output. Výstupní vlastnosti jsou závislé na typu odkazovaného artefakt podrobného plánu. Všechny typy použijte formát:
+Objekt vlastnosti output. **Výstupy** vlastnosti jsou závislé na typu odkazovaného artefakt podrobného plánu. Všechny typy použijte formát:
 
 ```json
 {
-  "output": {collectionOfOutputProperties}
+  "outputs": {collectionOfOutputProperties}
 }
 ```
 
@@ -53,7 +53,7 @@ Objekt vlastnosti output. Výstupní vlastnosti jsou závislé na typu odkazovan
 
 ```json
 {
-    "output": {
+    "outputs": {
         "policyAssignmentId": "{resourceId-of-policy-assignment}",
         "policyAssignmentName": "{name-of-policy-assignment}",
         "policyDefinitionId": "{resourceId-of-policy-definition}",
@@ -63,13 +63,13 @@ Objekt vlastnosti output. Výstupní vlastnosti jsou závislé na typu odkazovan
 
 #### <a name="resource-manager-template-artifact"></a>Artefakt šablony Resource Manageru
 
-**Výstup** vlastnosti vráceného objektu jsou definovány v šabloně Resource Manageru a vrácené nasazení.
+**Výstupy** vlastnosti vráceného objektu jsou definovány v šabloně Resource Manageru a vrácené nasazení.
 
 #### <a name="role-assignment-artifact"></a>Artefaktu přiřazení role
 
 ```json
 {
-    "output": {
+    "outputs": {
         "roleAssignmentId": "{resourceId-of-role-assignment}",
         "roleDefinitionId": "{resourceId-of-role-definition}",
         "principalId": "{principalId-role-is-being-assigned-to}",
@@ -107,14 +107,14 @@ Artefaktem šablony Resource Manageru s ID _myTemplateArtifact_ vlastnost obsahu
 
 Některé příklady načítání dat z _myTemplateArtifact_ ukázky jsou:
 
-| Výraz | Type | Hodnota |
+| Výraz | Type | Value |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").output.myArray]` | Pole | \["first", "second"\] |
-|`[artifacts("myTemplateArtifact").output.myArray[0]]` | String | "first" |
-|`[artifacts("myTemplateArtifact").output.myString]` | String | "Moje řetězcovou hodnotu" |
-|`[artifacts("myTemplateArtifact").output.myObject]` | Object | {"myproperty": "Moje value", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").output.myObject.myProperty]` | String | "value" |
-|`[artifacts("myTemplateArtifact").output.myObject.anotherProperty]` | Bool | True |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["first", "second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Moje řetězcovou hodnotu" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moje value", "anotherProperty": true} |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
 

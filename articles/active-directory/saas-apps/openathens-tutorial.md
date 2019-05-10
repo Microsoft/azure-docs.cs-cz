@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3eca6fc3ab788ee7085c0df5f6c9770858af29ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cbb1bc64d923add0b1fd38749299714a9093633
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847344"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Kurz: Integrace Azure Active Directory s OpenAthens
 
@@ -143,11 +143,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s OpenAthens, proveďte násl
 
     a. V **zobrazovaný název mapování**vyberte **použít atribut**.
 
-    b. V **zobrazovaný název atributu** textové pole, zadejte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. V **zobrazovaný název atributu** textové pole, zadejte hodnotu `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
     
     c. V **mapování jedinečných uživatelů**vyberte **použít atribut**.
 
-    d. V **jedinečný uživatelský atribut** textové pole, zadejte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    d. V **jedinečný uživatelský atribut** textové pole, zadejte hodnotu `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     e. V **stav**, zaškrtněte všechna tři políčka.
 
@@ -214,7 +214,7 @@ V této části je povolit Britta Simon k udělení přístupu k OpenAthens pou�
 
 V této části se vytvoří uživateli Britta Simon v OpenAthens. Podporuje OpenAthens **zřizování uživatelů just-in-time**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi OpenAthens, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

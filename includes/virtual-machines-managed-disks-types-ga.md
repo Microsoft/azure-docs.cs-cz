@@ -2,25 +2,27 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: rockboyfor
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/13/2019
-ms.author: v-yeche
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a4110d68dc8aa921d647f90de654d2ebb4e17d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 885bc1c627626ee7ba4f391be31131b18fa1ab39
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618021"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65211942"
 ---
-## <a name="premium-ssd"></a>Premium SSD
+## <a name="premium-ssd"></a>SSD úrovně Premium
 
 Azure premium SSD poskytovat podporu vysoce výkonných a s nízkou latencí disků pro virtuální počítače (VM) s vstup/výstup (IO)-náročné úlohy. Pokud chcete využít výhod rychlost a výkon disků premium storage, můžete migrovat existující disky virtuálních počítačů na Premium SSD. SSD disky Premium jsou vhodné pro důležité produkční aplikace.
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
+
+Při zřizování disku úložiště úrovně premium, na rozdíl od úložiště úrovně standard, je zaručena kapacita, IOPS a propustnost tohoto disku. Například pokud vytvoříte P50 disku, Azure mu kapacitu 4 095 GB úložiště, 7500 IOPS a propustnost 250 MB/s pro tento disk. Aplikace můžete použít nebo její část kapacitu a výkon. SSD disky Premium jsou navržené pro zajištění cíle výkonu 99,9 % času.
 
 ## <a name="standard-ssd"></a>SSD úrovně Standard
 
@@ -29,7 +31,9 @@ SSD disky Azure standard je možnost a nákladově efektivní služba storage op
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-## <a name="standard-hdd"></a>Standard HDD
+Standardní disky SSD jsou navržené k poskytnutí latence v řádu milisekund pro většinu operací vstupně-výstupních operací a k poskytování IOPS a propustnost až do omezení je popsáno v předchozí tabulce 99 % času. Skutečné IOPS a propustnost může někdy lišit v závislosti na vzory přenosů. Standardní disky SSD zajistí konzistentnější výkon než HDD disky s nižší latencí.
+
+## <a name="standard-hdd"></a>Disk HDD úrovně Standard
 
 Azure standardní pevné disky poskytovat podporu spolehlivé, úsporné disků pro virtuální počítače běžící úlohu kterému latence nevadí. Také podporuje objekty BLOB, tabulky, fronty a soubory. Se standardním úložiště jsou data uložená na pevných disků (HDD). Při práci s virtuálními počítači, můžete použít standardní disky SSD a HDD, pro scénáře vývoje/testování a méně důležité úlohy. Storage úrovně Standard je k dispozici ve všech oblastech Azure.
 

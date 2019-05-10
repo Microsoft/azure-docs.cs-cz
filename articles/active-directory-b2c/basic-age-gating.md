@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 083ed7209efd88d3d221b55cfb53fe3998dd2987
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b594dc6eadce5093c58d693492f8e86eb92ae4e3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703285"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227999"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit věku v Azure Active Directory B2C
 
@@ -25,20 +25,20 @@ ms.locfileid: "64703285"
 
 Věku v Azure Active Directory (Azure AD) B2C umožňuje identifikovat nezletilé osoby, které chcete používat vaši aplikaci. Můžete blokovat menší přihlašování do aplikace. Uživatele můžete také přejít zpět do aplikace a identifikovat jejich kategorie age group a jejich stav svolení rodičů. Azure AD B2C můžete zablokovat nezletilým bez svolení rodičů. Azure AD B2C můžete také nastavit aby aplikace mohla rozhodnout, co dělat s nezletilé osoby.
 
-Po povolení věku ve vaší [tok uživatele](active-directory-b2c-reference-policies.md), uživatelé budou vyzvaní, když se narodili a jaké země žijí. Pokud se uživatel přihlásí, který nebyl dříve zadali informace, budete potřebovat k jeho zadání při příštím přihlášení. Pravidla se použijí pokaždé, když se uživatel přihlásí.
+Po povolení věku ve vaší [tok uživatele](active-directory-b2c-reference-policies.md), uživatelé budou vyzvaní, když se narodili a které zemi či oblasti žijí. Pokud se uživatel přihlásí, který nebyl dříve zadali informace, budete potřebovat k jeho zadání při příštím přihlášení. Pravidla se použijí pokaždé, když se uživatel přihlásí.
 
 Azure AD B2C používá informace, které uživatel zadá k určení, zda jsou za. **AgeGroup** pole se pak aktualizuje v jejich účtu. Hodnota může být `null`, `Undefined`, `Minor`, `Adult`, a `NotAdult`.  **AgeGroup** a **consentProvidedForMinor** pole se následně použijí k výpočtu hodnoty **legalAgeGroupClassification**.
 
 Věku zahrnuje dvě hodnoty stáří: věk, který už je někdo považuje za nezletilého a věk, ve kterém musí mít za svolení rodičů. Následující tabulka uvádí pravidla věku, které se používají k definování za a dílčí vyžadující souhlas.
 
-| Země | Jméno země | Stáří menší souhlas | Vedlejší věk |
-| ------- | ------------ | ----------------- | --------- |
+| Země nebo oblast | Název země/oblasti | Stáří menší souhlas | Vedlejší věk |
+| -------------- | ------------------- | ----------------- | --------- |
 | Výchozí | Žádný | Žádný | 18 |
 | AE | Spojené arabské emiráty | Žádný | 21 |
 | AT | Rakousko | 14 | 18 |
 | BE | Belgie | 14 | 18 |
 | BG | Bulharsko | 16 | 18 |
-| BH | Bahrajn | Žádný | 21 |
+| BH | Bahrain | Žádný | 21 |
 | CM | Kamerun | Žádný | 21 |
 | CY | Kypr | 16 | 18 |
 | CZ | Česká republika | 16 | 18 |
@@ -53,7 +53,7 @@ Věku zahrnuje dvě hodnoty stáří: věk, který už je někdo považuje za ne
 | HR | Chorvatsko | 16 | 18 |
 | HU | Maďarsko | 16 | 18 |
 | IE | Irsko | 13 | 18 |
-| IT | Itálie | 16 | 18 |
+| it | Itálie | 16 | 18 |
 | KR | Korejská republika | 14 | 18 |
 | LT | Litva | 16 | 18 |
 | LU | Lucembursko | 16 | 18 |

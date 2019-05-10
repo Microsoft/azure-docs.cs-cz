@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470051"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407869"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny verze 2 Azure Active Directory pro správu skupin
 
@@ -233,13 +233,13 @@ Přidat vlastníky ke skupině, použijte rutinu Add-AzureADGroupOwner:
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Parametr - ObjectId je ID objektu skupiny, do které budeme chtít přidat vlastníka a RefObjectId – je ID objektu uživatele, kterého chcete přidat jako vlastníka skupiny.
+Parametr - ObjectId je ID objektu skupiny, do které budeme chtít přidat vlastníka a RefObjectId – je ID objektu uživatele nebo instanční objekt že chceme přidat jako vlastníka skupiny.
 
 K načtení vlastníků skupiny, použijte rutinu Get-AzureADGroupOwner:
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
-Rutina vrátí seznam vlastníků pro zadanou skupinu:
+Rutina vrátí seznam vlastníků (uživatele a instančních objektů) pro zadanou skupinu:
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------
@@ -260,7 +260,7 @@ Když skupina se vytvoří, jisti, že koncové body povolí koncovému uživate
 * správce pošty 
 * kořen 
 * zabezpečení 
-* security 
+* zabezpečení 
 * Správce protokolu SSL 
 * správce webového serveru 
 

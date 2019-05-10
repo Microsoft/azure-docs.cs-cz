@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 04/26/2019
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cbd40f2ab91f854f46dc3e62bccbc8a3264f97f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdf19d2001f84fab6978bfc34ef14a361b89edea
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291275"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441420"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Přiřazení uživatelů a skupin k aplikaci v Azure Active Directory
 Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k aplikaci v Azure Active Directory (Azure AD). Uživatelé musí být přiřazen k aplikaci předtím, než správce můžete jim udělit přístup k následujícím:
@@ -31,6 +31,8 @@ Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k aplikaci v Azur
 -   V tématu aplikace se zobrazí na jejich [přístupového panelu aplikací](https://myapps.microsoft.com/) nebo mobilních aplikací.
 
 -   V tématu aplikace se zobrazí na jejich [Spouštěče aplikací Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
+
+Dostupnost na základě skupin přiřazení se určuje podle vaší licenční smlouvě. Přiřazení na základě skupin je podporováno jenom u skupin zabezpečení a vnořené členství ve skupinách se momentálně nepodporují.
 
 ## <a name="prerequisites"></a>Požadavky
 Než budete moci přiřadit uživatele a skupiny k aplikaci, musí vyžadují přiřazení uživatele. Vyžadování přiřazení uživatele:

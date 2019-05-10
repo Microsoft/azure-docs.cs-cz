@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 926629660c9593c59362bd1bc49c5115ac5e3187
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61071466"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441066"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled Azure Automation stavu konfigurace
 
@@ -81,6 +81,16 @@ Pokud uzly jsou umístěny v privátní síti, jsou požadovány pro stav konfig
 * Global URL: *.azure-automation.net
 * Global URL of US Gov Virginia: *.azure-automation.us
 * Služba agenta: https://\<ID pracovního prostoru\>.agentsvc.azure-automation.net
+
+#### <a name="proxy-support"></a>Podpora proxy
+
+Podpora proxy agenta DSC je dostupná ve Windows verze 1809 a novější.
+Pokud chcete nakonfigurovat tuto možnost, nastavte hodnotu pro **adresa URL proxy serveru** a **ProxyCredential** v [metaconfiguration skript](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) použili k registraci uzly.
+Proxy serveru není k dispozici v DSC pro předchozí verze systému Windows.
+
+Pro uzly s Linuxem agenta DSC podporuje proxy serveru a bude využívat proměnnou http_proxy určit adresu url.
+
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Stav Azure konfigurace síťové rozsahy a obor názvů
 
 Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
 

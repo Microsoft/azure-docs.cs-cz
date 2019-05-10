@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4389af86e27ddb04f5a3e5f53c5509eeede005
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075337"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407012"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – získání tokenu
 
@@ -502,7 +502,7 @@ static async Task GetATokenForGraph()
   catch (MsalClientException ex) when (ex.ErrorCode == "unknown_user")
   {
    // the username was probably empty
-   // ex.Message = "Could not identify the user logged into the OS. See http://aka.ms/msal-net-iwa for details."
+   // ex.Message = "Could not identify the user logged into the OS. See https://aka.ms/msal-net-iwa for details."
    throw new ArgumentException("U/P: Wrong username", ex);
   }
   catch (MsalClientException ex) when (ex.ErrorCode == "parsing_wstrust_response_failed")
@@ -529,7 +529,7 @@ Pokud píšete nástroj příkazového řádku (nemá webové ovládací prvky) 
 
 Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč (podrobnosti najdete v tématu [využití webových prohlížečů](https://aka.ms/msal-net-uses-web-browser)). Však k ověřování uživatelů na zařízení nebo operační systémy, které neposkytují webový prohlížeč, tok kódu při zařízení vám umožní používat jiné zařízení (například jiného počítače nebo mobilní telefon) pro přihlášení interaktivně. Pomocí toku kódu zařízení, aplikace získá tokeny krocích zvláště určené pro zařízení nebo operačního systému. Příkladem takové aplikace jsou aplikace běžící na iOT nebo nástroje příkazového řádku (CLI). Cílem je, že:
 
-1. Pokaždé, když se vyžaduje ověření uživatele, poskytuje kód a žádá uživatele, aby pomocí jiného zařízení (jako jsou připojené k Internetu smartphone) přejděte na adresu URL aplikace (například `http://microsoft.com/devicelogin`), ve kterém uživateli zobrazí výzva k zadání kódu. Že budete hotovi, webové stránky přejde uživatele prostřednictvím normální ověřování prostředí, a v případě potřeby včetně výzev k udělení souhlasu a ověřování službou Multi-Factor Authentication.
+1. Pokaždé, když se vyžaduje ověření uživatele, poskytuje kód a žádá uživatele, aby pomocí jiného zařízení (jako jsou připojené k Internetu smartphone) přejděte na adresu URL aplikace (například `https://microsoft.com/devicelogin`), ve kterém uživateli zobrazí výzva k zadání kódu. Že budete hotovi, webové stránky přejde uživatele prostřednictvím normální ověřování prostředí, a v případě potřeby včetně výzev k udělení souhlasu a ověřování službou Multi-Factor Authentication.
 
 2. Po úspěšném ověření aplikace příkazového řádku bude přijímat požadované tokeny prostřednictvím používající back channel a použije ho k provádění volání webové rozhraní API, které potřebuje.
 

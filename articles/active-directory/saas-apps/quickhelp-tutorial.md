@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 45ffcaa1d5bccb0746ce86ec0f98342ce5e9bcc9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 33fd6b8b7423f8640910e02383bba8397d2f8336
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270094"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Kurz: Integrace Azure Active Directory s QuickHelp
 
@@ -150,11 +150,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s QuickHelp, proveďte násle
    
     b. Nahrát soubor metadat stažené Azure, klikněte na tlačítko **Procházet**, přejděte k souboru, pak klikněte na tlačítko Ukončit **nahrát metadat**.
    
-    c. V **e-mailu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. V **e-mailu** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
    
-    d. V **křestní jméno** textového pole `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. V **křestní jméno** textového pole `type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
    
-    e. V **příjmení** textového pole `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. V **příjmení** textového pole `type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
    
     f. V **panel akcí**, klikněte na tlačítko **Uložit**.
 
@@ -212,7 +212,7 @@ V této části je povolit Britta Simon k udělení přístupu k QuickHelp použ
 
 V této části se vytvoří uživateli Britta Simon v QuickHelp. QuickHelp podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi QuickHelp, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -28,15 +28,15 @@ Každá instance služby API Management má vlastnosti kolekce párů klíč/hod
 | Atribut | Type | Popis |
 | --- | --- | --- |
 | Zobrazované jméno |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
-| Hodnota |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
-|Tajný kód|Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
-| Značky |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
+| Value |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
+|Secret|Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
+| Tags |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
 Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zásad](/azure/api-management/api-management-policy-expressions). Například hodnota `ExpressionProperty` je výraz zásad, která vrací řetězec obsahující aktuální datum a čas. Vlastnost `ContosoHeaderValue` je označen jako tajný klíč, takže jeho hodnota se nezobrazí.
 
-| Název | Hodnota | Tajný kód | Značky |
+| Název | Value | Secret | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |

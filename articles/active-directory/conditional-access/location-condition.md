@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b12f5c7736307f0b62b6f6c2b526eb0108569c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190186"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227918"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
 
@@ -32,7 +32,7 @@ Azure AD umožňuje jednotné přihlašování pro zařízení, aplikací a slu�
 - Vyžadování vícefaktorového ověřování pro uživatele, kteří používají službu, když jsou mimo firemní síť.
 - Blokuje přístup pro uživatele, kteří používají službu z určitých zemích nebo oblastech.
 
-Umístění je popisek pro umístění v síti, že buď představuje umístění s názvem nebo ověřování službou Multi-Factor Authentication důvěryhodné IP adresy.
+Umístění je popisek umístění v síti, že buď představuje umístění s názvem nebo ověřování službou Multi-Factor Authentication důvěryhodné IP adresy.
 
 ## <a name="named-locations"></a>Pojmenovaná umístění
 
@@ -54,7 +54,7 @@ Pojmenované umístění má následující komponenty:
 
 - **Označit jako důvěryhodné umístění** -příznak, který můžete nastavit pro pojmenované umístění pro důvěryhodného umístění. Důvěryhodná umístění jsou obvykle oblastem sítě, které jsou řízené vaším IT oddělením. Kromě podmíněného přístupu, důvěryhodné pojmenovaná umístění jsou také používány zprávy o zabezpečení Azure Identity Protection a Azure AD ke snížení [počet falešně pozitivních výsledků](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 - **Země nebo oblasti** – tato možnost umožňuje vybrat jeden nebo více zemi nebo oblast pro definování pojmenovaných umístění.
-- **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Toto nastavení použijte, když zásady pomocí pojmenovaných umístění by se měly používat pro neznámými umístěními.
+- **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi nebo oblast. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Toto nastavení použijte, když zásady pomocí pojmenovaných umístění by se měly používat pro neznámými umístěními.
 
 Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Organizace, můžete nakonfigurovat až 90 pojmenovaná umístění, konfigurace jednotlivých až 12000 rozsahy IP adres.
 
@@ -69,7 +69,7 @@ Pokud zásady je nakonfigurovaný na použití pro "Libovolné umístění", bud
 
 Můžete taky nakonfigurovat představující vaše organizace místní intranet v rozsahy IP adres [nastavení služby Multi-Factor authentication](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Tato funkce umožňuje konfigurovat až 50 rozsahy IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-Pokud mají důvěryhodné IP adresy nakonfigurované, zobrazí se jako **důvěryhodné IP adresy MFA** v seznamu umístění pro umístění podmínku.
+Pokud máte důvěryhodné IP adresy nakonfigurované, zobrazí se jako **důvěryhodné IP adresy MFA** v seznamu umístění pro umístění podmínku.
 
 ### <a name="skipping-multi-factor-authentication"></a>Přeskočení ověřování služby Multi-Factor Authentication
 

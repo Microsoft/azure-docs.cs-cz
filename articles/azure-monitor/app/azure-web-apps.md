@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ec5b3572cbf74bad9b82eb93a45d7a4664023b95
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922466"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408222"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
 
@@ -23,7 +23,7 @@ Povolení sledování v rozhraní .NET a .NET Core na základě webové aplikace
 > [!NOTE]
 > Ruční přidání rozšíření webu Application Insights prostřednictvím **nástroje pro vývoj** > **rozšíření** je zastaralý. Tato metoda instalace rozšíření závisel na ruční aktualizace pro každou novou verzi. Nejnovější stabilní verze tohoto rozšíření je teď [předinstalovaným](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image služby App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a aktualizují automaticky s každou stabilní verzi. Pokud budete postupovat podle pokynů na základě agenta monitorování povolit níže, automaticky odebere nepoužívané rozšíření za vás.
 
-## <a name="enable-application-insights"></a>Povolení Application Insights
+## <a name="enable-application-insights"></a>Povolit Application Insights
 
 Existují dva způsoby, jak povolit funkci application monitoring pro aplikace hostované služby Azure App Services:
 
@@ -138,7 +138,7 @@ Chcete-li povolit shromažďování telemetrie s Application Insights, třeba na
 
 ### <a name="application-settings-definitions"></a>Definice nastavení aplikace
 
-|Název nastavení aplikace |  Definice | Hodnota |
+|Název nastavení aplikace |  Definice | Value |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování modulu runtime. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Ve výchozím režimu pouze základní funkce jsou povolené s cílem zajistit optimální výkon. | `default` nebo `recommended`. |
@@ -274,7 +274,7 @@ Zde je příklad, nahraďte všechny výskyty `AppMonitoredSite` názvem vašeho
             "type": "string"
         }
     },
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0"
 }
 ```

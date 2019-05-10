@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 4d4bc69f00f86bc81c353ef0cc40f37f000ba6c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bce408215cef540604a72109bc5b29ebc3359e7
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472182"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413799"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -59,8 +59,30 @@ Service Fabric nabízí sadu rozhraní API k dosažení následující funkce vz
 * Certifikát X.509 pro šifrování tajných kódů, které jsou potřebné pro připojení do služby storage k ukládání záloh. Přečtěte si [článku](service-fabric-cluster-creation-via-arm.md) vědět, jak získat nebo vytvořit certifikát X.509.
 * Service Fabric Reliable stavové aplikace sestavené pomocí Service Fabric SDK verze 3.0 nebo vyšší. Pro aplikace cílené na .NET Core 2.0, by měly být sestaveny aplikací pomocí Service Fabric SDK verze 3.1 nebo novější.
 * Vytvoření účtu Azure Storage pro ukládání záloh aplikace.
+* Instalace modulu Microsoft.ServiceFabric.Powershell.Http [Preview] pro volání konfigurace.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Ujistěte se, že Cluster je připojený pomocí `Connect-SFCluster` příkaz před provedením jakékoli použití modulu Microsoft.ServiceFabric.Powershell.Http požadavek na konfiguraci.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>Povolení zálohování a obnovení služby
+
+### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
+
+Povolit `Include backup restore service` zaškrtávací políčko v oblasti `+ Show optional settings` v `Cluster Configuration` kartu.
+
+![Povolit službu Backup Restore pomocí portálu][1]
+
+
+### <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
 Nejdřív je potřeba povolit _zálohování a obnovení služby_ ve vašem clusteru. Získáte šablonu pro cluster, do které chcete nasadit. Můžete použít [ukázkových šablon](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) nebo vytvoření šablony Resource Manageru. Povolit _zálohování a obnovení služby_ pomocí následujících kroků:
 
 1. Zkontrolujte, že `apiversion` je nastavena na **`2018-02-01`** pro `Microsoft.ServiceFabric/clusters` prostředků a pokud ne, aktualizovat, ji jak je znázorněno v následujícím fragmentu kódu:
@@ -117,6 +139,18 @@ Prvním krokem je vytvoření zásady zálohování popisující plán zálohov�
 
 Pro úložiště záloh pomocí služby Azure Storage, který je účet vytvořený výše. Kontejner `backup-container` je nakonfigurovaná pro ukládání záloh. Vytvoření kontejneru s tímto názvem již neexistuje, při zálohování nahrávání. Naplnění `ConnectionString` platným připojovacím řetězcem pro účet služby Azure Storage, nahrazení `account-name` s názvem vašeho účtu úložiště a `account-key` vaším klíčem účtu úložiště.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+Spusťte následující rutiny Powershellu pro vytvoření nové zásady zálohování. Nahraďte `account-name` s názvem vašeho účtu úložiště a `account-key` vaším klíčem účtu úložiště.
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container' -Basic -RetentionDuration '10.00:00:00'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+
 Spusťte následující skript prostředí PowerShell pro vyvolání požadované rozhraní REST API k vytvoření nové zásady. Nahraďte `account-name` s názvem vašeho účtu úložiště a `account-key` vaším klíčem účtu úložiště.
 
 ```powershell
@@ -148,6 +182,7 @@ $body = (ConvertTo-Json $BackupPolicy)
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
+
 ```
 
 > [!IMPORTANT]
@@ -155,6 +190,15 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
 Po definování zásad zálohování pro splnění požadavků na ochranu dat aplikace, zásady zálohování by měly být přidružené aplikace. V závislosti na požadavku může být zásady zálohování přidružené aplikace, služby nebo oddíl.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+```powershell
+
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+
+```
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
 
 Spusťte následující skript prostředí PowerShell pro vyvolání požadované rozhraní REST API k přidružení zásady zálohování s názvem `BackupPolicy1` vytvořené v nad krok s aplikací `SampleApp`.
 
@@ -179,6 +223,15 @@ Po povolení zálohování na úrovni aplikace, všechny oddíly, které patří
 
 Zálohy přidružené všechny oddíly, které patří k Reliable Stateful services a Reliable Actors aplikace mohou být uvedené pomocí _GetBackups_ rozhraní API. Zálohy jsou uvedené pro aplikace, služby nebo oddíl.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+```powershell
+    
+Get-SFApplicationBackupList -ApplicationId WordCount
+```
+
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+
 Spusťte následující skript Powershellu pro vyvolání rozhraní HTTP API k vytvoření výčtu zálohy vytvořené pro všechny oddíly uvnitř `SampleApp` aplikace.
 
 ```powershell
@@ -189,6 +242,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get -CertificateThumbprint '1b7e
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 Ukázkový výstup pro výše uvedené spusťte:
 
 ```
@@ -230,15 +284,17 @@ FailureError            :
 ```
 
 ## <a name="limitation-caveats"></a>Omezení / upozornění
-- Rutiny prostředí PowerShell předdefinované bez Service Fabric.
+- Rutiny Powershellu pro Service Fabric se v režimu náhledu.
 - Žádná podpora pro Service Fabric clustery v Linuxu.
 
 ## <a name="known-issues"></a>Známé problémy
 - Nakonfigurujte doba uchovávání být kratší než 24 dní. 
+
 
 ## <a name="next-steps"></a>Další postup
 - [Principy pravidelné zálohování konfigurace](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Reference k rozhraní API REST obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
 

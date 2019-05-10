@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b9e1b98be55030c9936222aa66d204ab3abe3374
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ada93903113cedd68e23ec66a36dceef99ec1233
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920219"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Kurz: Integrace Azure Active Directory s XaitPorter
 
@@ -120,17 +120,25 @@ Ke konfiguraci Azure AD jednotné přihlašování s XaitPorter, proveďte násl
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Konfigurace XaitPorter jednotné přihlašování
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti XaitPorter jako správce.
+1. K automatizaci konfigurace v rámci XaitPorter, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
 
-2. Klikněte na **správce**.
+    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení XaitPorter** nasměruje na XaitPorter aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do XaitPorter. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 6.
+
+    ![Nastavení konfigurace](common/setup-sso.png)
+
+3. Pokud chcete nastavit XaitPorter ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti XaitPorter jako správce a proveďte následující kroky:
+
+4. Klikněte na **správce**.
 
     ![Konfigurace jednotného přihlašování](./media/xaitporter-tutorial/user1.png)
 
-3. Vyberte **spravovat Single Sign-On** z **nastavení systému** rozevíracího seznamu.
+5. Vyberte **spravovat Single Sign-On** z **nastavení systému** rozevíracího seznamu.
 
     ![Konfigurace jednotného přihlašování](./media/xaitporter-tutorial/user2.png)
 
-4. V **SPRAVOVAT jednotné přihlašování** části, proveďte následující kroky:
+6. V **SPRAVOVAT jednotné přihlašování** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/xaitporter-tutorial/user3.png)
 
@@ -196,7 +204,7 @@ V této části je povolit Britta Simon k udělení přístupu k XaitPorter pou�
 
 V této části vytvoříte uživatele v XaitPorter jako Britta Simon. Práce s [tým podpory XaitPorter klienta](https://www.xait.com/support/) přidat uživatele na platformě XaitPorter. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

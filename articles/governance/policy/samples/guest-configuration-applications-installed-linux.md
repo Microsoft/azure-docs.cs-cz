@@ -7,12 +7,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: c8ee73da16f4f3de2378e38d273051355c5c624c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142847"
+ms.locfileid: "65204018"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Ukázkový – Audit, pokud nejsou určené aplikace nainstalované uvnitř virtuálních počítačů s Linuxem
 
@@ -43,7 +43,7 @@ Iniciativy je vytvořený spojením **auditu** a **deployIfNotExists** definice 
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
-### <a name="initiative-parameters"></a>Parametry iniciativ
+### <a name="initiative-parameters"></a>Parametry iniciativy
 
 |Název |Typ |Popis |
 |---|---|---|
@@ -78,27 +78,27 @@ JSON definování pravidel **deployIfNotExists** definice zásady.
 
 **DeployIfNotExists** definice zásady definuje zásady byl ověřen v imagích Azure:
 
-|Vydavatel |Nabídka |Skladová jednotka (SKU) |
+|Vydavatel |Nabídka |Skladová jednotka |
 |-|-|-|
 |OpenLogic |CentOS\* |Všechny s výjimkou 6\* |
 |RedHat |RHEL |Všechny s výjimkou 6\* |
-|RedHat |osa | Vše |
+|RedHat |osa | Všechny |
 |credativ |Debian | Všechny s výjimkou 7\* |
 |SuSE |SLES\* |Všechny s výjimkou 11\* |
 |Canonical| UbuntuServer |Všechny s výjimkou 12\* |
-|microsoft-dsvm |linux-data-science-vm-ubuntu |Vše |
-|microsoft-dsvm |azureml |Vše |
+|microsoft-dsvm |linux-data-science-vm-ubuntu |Všechny |
+|microsoft-dsvm |azureml |Všechny |
 |cloudera |cloudera-centos-os |Všechny s výjimkou 6\* |
-|cloudera |cloudera-altus-centos-os |Vše |
-|microsoft-ads |linux\* |Vše |
-|microsoft-aks |Vše |Vše |
-|AzureDatabricks |Vše |Vše |
-|qubole-inc |Vše |Vše |
-|datastax |Vše |Vše |
-|Couchbase |Vše |Vše |
-|scalegrid |Vše |Vše |
-|Kontrolní bod |Vše |Vše |
-|paloaltonetworks |Vše |Vše |
+|cloudera |cloudera-altus-centos-os |Všechny |
+|microsoft-ads |linux\* |Všechny |
+|microsoft-aks |Všechny |Všechny |
+|AzureDatabricks |Všechny |Všechny |
+|qubole-inc |Všechny |Všechny |
+|datastax |Všechny |Všechny |
+|Couchbase |Všechny |Všechny |
+|scalegrid |Všechny |Všechny |
+|Kontrolní bod |Všechny |Všechny |
+|paloaltonetworks |Všechny |Všechny |
 
 **Nasazení** předá část pravidla _installedApplication_ parametr konfigurace hostovaného agenta na virtuálním počítači. Tato konfigurace umožňuje agenta k provedení ověření a sestavu dodržování předpisů zpět **auditu** definice zásady.
 
@@ -108,7 +108,7 @@ Po **auditu** a **deployIfNotExists** definice jsou vytvořené na portálu, dop
 
 ### <a name="create-copy-of-audit-definition"></a>Vytvořit kopii definici audit
 
-[![Nasazení ukázkové zásady Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Nasazení ukázkové zásady Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 [![nasazení ukázkové zásady pro Azure Government](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
 Pomocí těchto tlačítek pro nasazení přes portál vytvoří kopii **auditu** definice zásady.
@@ -116,7 +116,7 @@ Bez spárovaném **deployIfNotExists** definice zásady, konfigurace hostovanéh
 
 ### <a name="create-copy-of-deployifnotexists-definition"></a>Vytvoření kopie deployIfNotExists definice
 
-[![Nasazení ukázkové zásady Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Nasazení ukázkové zásady Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 [![nasazení ukázkové zásady pro Azure Government](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
 Pomocí těchto tlačítek pro nasazení přes portál vytvoří kopii **deployIfNotExists** definice zásady. Bez spárovaném **auditu** definice zásady, konfigurace hostovaného nebude fungovat správně.

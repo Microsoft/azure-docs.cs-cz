@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ada4323b0e61c6dc9fb87af133c40ec9c35e3834
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074977"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231112"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webové rozhraní API, která volá webové rozhraní API – získání tokenu pro aplikaci
 
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` je podobný jste viděli v článku [webového rozhraní API, která volá webové rozhraní API – konfigurace aplikace](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` vytvoří instanci `IConfidentialClientApplication` s mezipamětí, který obsahuje pouze informace pro jeden účet. Účet je poskytuje `GetAccountIdentifier` metody.
+`BuildConfidentialClient()` je podobný jste viděli v článku [webového rozhraní API, která volá webové rozhraní API – konfigurace aplikace](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` vytvoří instanci `IConfidentialClientApplication` s mezipamětí, který obsahuje pouze informace pro jeden účet. Účet poskytuje `GetAccountIdentifier` metody.
 
 `GetAccountIdentifier` Metoda používá deklarace identity, které souvisejí s identitou uživatele, pro kterou přijal webového rozhraní API tokenů JWT:
 

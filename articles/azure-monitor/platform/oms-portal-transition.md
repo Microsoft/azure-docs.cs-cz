@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 1496bf21ed1a81eedb44ca9cc9db777632e2a5cd
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: b4d67b64d8fc7c5063e96ed2a2502e9cbecd6065
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876012"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229881"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
 > [!NOTE]
 > Tento článek se týká veřejného cloudu Azure i v cloudu pro státní správu není uvedeno jinak.
 
-**Na portálu OMS pro veřejný cloud Azure je oficiálně vyřazený. Na portálu OMS pro Azure Azure US Government cloud se oficiálně dostupné jenom do 15. května 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback\@microsoft.com**. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
+**Na portálu OMS pro veřejný cloud Azure je oficiálně vyřazený. Na portálu OMS pro Azure US Government cloud se oficiálně dostupné jenom do 15. května 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback\@microsoft.com**. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
 
 Na webu Azure portal je Centrum pro všechny služby Azure a nabízí bohaté možnosti správy prostředí s funkcemi, jako jsou řídicí panely pro Připnutí prostředků, inteligentní vyhledávání, vyhledání prostředků a označí pro správu prostředků. Ke konsolidaci a zjednodušte pracovní postupy monitorování a správu, bodu jsme začali přidávat možnosti portálu OMS na web Azure Portal. Všechny funkce na portálu OMS jsou teď součástí na webu Azure portal. Ve skutečnosti některé nové funkce, jako je například analýza provozu jsou k dispozici pouze na webu Azure Portal. Budete moct provádět vše, co jste dělali v portálu OMS pomocí webu Azure portal a dalších. Pokud jste tak již neučinili, měli byste začít pomocí webu Azure portal ještě dnes!
 

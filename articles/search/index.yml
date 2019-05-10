@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2019
+  ms.date: 05/02/2019
   ms.author: heidist
 abstract:
-  description: 'Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který se dají vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a který podporuje širokou škálu scénářů. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Nová verze Preview kognitivního hledání</b></a> Předběžnou verzi REST API můžete využít k vytvoření vazby algoritmů s podporou AI na kanál indexování. Extrakce dat a vyvolání zpracování přirozeného jazyka obrázků umožňuje transformovat nezpracovaný a nestrukturovaný obsah na prohledávatelný obsah v indexu Azure Search. <p/>Prozkoumejte kognitivní vyhledávání s využitím <a href="/azure/search/cognitive-search-quickstart-blob">informačních materiálů a ukázkových dat</a> nebo si přečtěte víc v části <a href="/azure/search/cognitive-search-concept-intro">Koncepty</a>.'
+  description: 'Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který se dají vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a který podporuje širokou škálu scénářů. <p/>Funkce <a href="/azure/search/cognitive-search-concept-intro"><b>Kognitivní hledání</b></a> je teď obecně dostupná. Pro produkční scénáře se podporují rozšíření s využitím AI.<p/>Funkce <a href="/azure/search/knowledge-store-concept-intro"><b>Knowledge Store (Preview)</b></a> rozšiřuje funkci Kognitivní hledání. Využijte možnost ukládat rozšíření AI do úložiště, kde je můžete kromě služby Azure Search zobrazovat, upravovat a využívat i v dalších aplikacích. <a href="/azure/search/knowledge-store-howto"><b>Začněte</b></a> ještě dnes.'
   aside:
     image:
       alt: null
@@ -51,11 +51,11 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indexování s využitím AI (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">Použití Azure Search s technologií .NET</a>
+          - html: <a href="/azure/search/search-get-started-portal">Použití portálu pro indexování a testování dotazů</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">Použití .NET k napsání prvního řešení pro vyhledávání</a>
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Obohacení s využitím AI (Cognitive Services)</a>
           - html: <a href="/azure/search/search-indexer-tutorial">Indexování obsahu Azure SQL Database s využitím .NET</a>
           - html: <a href="/azure/search/search-semi-structured-data">Indexování částečně strukturovaných dat ve službě Azure Blob Storage s využitím REST</a>
-          - html: <a href="/azure/search/search-get-started-portal">Použití portálu pro indexování a testování dotazů</a>
   - title: Referenční informace
     items:
       - type: list

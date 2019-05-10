@@ -1,6 +1,6 @@
 ---
 title: Správa přístupu uživatelů v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zjistěte, jak identifikovat nezletilé osoby, shromažďovat data narození a zemi data a získat přijetí podmínek použití ve vaší aplikaci pomocí Azure AD B2C.
+description: Zjistěte, jak identifikovat nezletilé osoby, shromažďovat data narození a zemi/oblast dat a získat přijetí podmínek použití ve vaší aplikaci pomocí Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cddaf59a1202c9c19018427c06639686e905bb64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691089"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228016"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak spravovat přístup uživatelů k aplikacím pomoc�
 
 - Identifikace nezletilé osoby a řízení přístupu uživatelů k aplikaci.
 - Vyžaduje svolení rodičů pro nezletilým používají vaše aplikace.
-- Shromažďování dat od uživatelů narození a zemi.
+- Shromažďování dat od uživatelů narození a zemi/oblast.
 - Zachytávání smlouvy s podmínkami použití a přístup prostřednictvím brány.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -58,11 +58,11 @@ Následuje příklad pro shromažďování svolení rodičů tok uživatele:
 
 Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**, a **ageGroup**, naleznete v tématu [typ prostředku uživatele](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Další informace o uživatelských atributů, které najdete v tématu [použití vlastních atributů ke shromažďování informací o uživatelích](active-directory-b2c-reference-custom-attr.md). Při adresování rozšířené atributy s využitím Azure AD Graph API, musíte použít dlouhou verzi atribut, například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-country-data"></a>Získat datum narození a zemi dat.
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Shromážděte data narození a zemi/oblast dat.
 
-Aplikace může záviset na Azure AD B2C ke shromáždění datum narození (DOB) a země informace ze všech uživatelů během registrace. Pokud tyto informace již neexistuje, aplikace může si ji vyžádat od uživatele během další cesty ověřování (přihlášení). Uživatele nelze pokračovat bez zadání jejich DOB a informace o zemi. Azure AD B2C používá informace k určení, zda jednotlivých se považuje za menší podle zákonných norem této země. 
+Aplikace může záviset na Azure AD B2C ke shromáždění datum narození (DOB) a země/oblast informace ze všech uživatelů během registrace. Pokud tyto informace již neexistuje, aplikace může si ji vyžádat od uživatele během další cesty ověřování (přihlášení). Uživatele nelze pokračovat bez zadání informace o jejich DOB a země/oblast. Azure AD B2C používá informace k určení, zda jednotlivých se považuje za menší podle zákonných norem zemi/oblast. 
 
-Vlastní uživatelské toku může shromažďovat DOB a informace o zemi a používání Azure AD B2C transformace deklarací identity k určení **ageGroup** a zachovat výsledek (nebo DOB uchování a informace o zemi přímo) v adresáři.
+Vlastní uživatelské toku může shromažďovat DOB a informace o země/oblasti a používání Azure AD B2C transformace deklarací identity k určení **ageGroup** a zachovat výsledek (nebo přímo uchovávání informací DOB a zemi/oblast) v adresář.
 
 Následující kroky ukazují, logika, která se používá k výpočtu **ageGroup** z datum narození uživatele:
 
@@ -78,7 +78,7 @@ Následující kroky ukazují, logika, která se používá k výpočtu **ageGro
 
 4. Pokud ani výpočtu vrátí hodnotu true, vrátí výpočtu **dospělé**.
 
-Pokud má aplikace spolehlivě získaná DOB nebo data o zemích jinými metodami, může aplikace použít rozhraní Graph API k aktualizaci záznamu uživatele s těmito informacemi. Příklad:
+Pokud aplikace spolehlivě shromáždil data DOB nebo země/oblast jinými metodami, může aplikace použít rozhraní Graph API k aktualizaci záznamu uživatele s těmito informacemi. Příklad:
 
 - Pokud uživatel je znám jako Dospělý, aktualizujte atribut adresáře **ageGroup** s hodnotou **dospělé**.
 - Pokud uživatel je znám jako za, aktualizujte atribut directory **ageGroup** s hodnotou **menší** a nastavte **consentProvidedForMinor**podle potřeby.

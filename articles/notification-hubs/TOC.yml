@@ -16,16 +16,24 @@
   items:
     - name: Android
       items:
-        - name: Nabízená oznámení odesílaná pomocí služby Firebase Cloud Messaging
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Nabízená oznámení odesílaná pomocí služby Google Cloud Messaging
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: Nabízená oznámení odesílaná konkrétním zařízením
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: Nabízená oznámení odesílaná konkrétním uživatelům
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: Nabízená oznámení odesílaná aplikacím pro Xamarin Android
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Zasílání zpráv v cloudu Firebase
+          items:
+            - name: Nabízená oznámení pro všechny registrace
+              href: notification-hubs-android-push-notification-google-fcm-get-started.md
+            - name: Nabízená oznámení odesílaná konkrétním zařízením
+              href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
+            - name: Nabízená oznámení odesílaná konkrétním uživatelům
+              href: push-notifications-android-specific-users-firebase-cloud-messaging.md
+            - name: Nabízená oznámení odesílaná aplikacím pro Xamarin Android
+              href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Google Cloud Messaging (zastaralé)
+          items:
+            - name: Nabízená oznámení pro všechny registrace
+              href: notification-hubs-android-push-notification-google-gcm-get-started.md
+            - name: Nabízená oznámení odesílaná konkrétním zařízením
+              href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+            - name: Nabízená oznámení odesílaná konkrétním uživatelům
+              href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: Baidu
       items:
         - name: Nabízená oznámení odesílaná s využitím nabízených oznámení cloudu Baidu

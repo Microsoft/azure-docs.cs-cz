@@ -1,0 +1,39 @@
+- name: Dokumentace ke službě Azure Open Datasets
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je služba Azure Open Datasets?
+      displayName: open datasets overview introduction
+      href: overview-what-are-open-datasets.md
+- name: Kurz
+  items:
+    - name: Regrese s využitím automatizovaného strojového učení
+      href: tutorial-opendatasets-automl.md
+- name: Ukázky
+  displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
+  href: samples.md
+- name: Referenční informace
+  items:
+    - name: Python SDK
+      displayName: api open datasets reference sdk
+      href: 'https://aka.ms/open-datasets-api'
+    - name: Poznámkové bloky Jupyter
+      displayName: python notebooks
+      href: 'https://github.com/Azure/OpenDatasetsNotebooks'
+- name: Zdroje a prostředky
+  items:
+    - name: Katalog Azure Open Datasets
+      href: 'https://azure.microsoft.com/services/open-datasets/catalog/'
+    - name: Microsoft Research Open Data
+      href: 'https://msropendata.com/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Uživatelské fórum
+      href: 'https://aka.ms/open-datasets-forum'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

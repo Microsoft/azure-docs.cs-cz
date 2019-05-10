@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: f2019dd5a810a9e9099fd9f9e171fd5af21d1dc5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 985845197f8a1ece76fe0a620f05194109f51bd6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715059"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408665"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikace pro Azure?
 
-Konfigurace aplikace pro Azure poskytuje službu centrálně spravovat nastavení aplikace. Moderní programy, zejména programy spuštěny v cloudu, mají obvykle spousta komponent, které jsou ze své podstaty distribuovány. Rozšíření nastavení konfigurace pro tyto součásti může vést k chybám obtížné vyřešit během nasazení aplikace. Použijte konfiguraci aplikací k uložení všech nastavení pro vaše aplikace a zabezpečení jejich přístupy na jednom místě.
+Konfigurace aplikace pro Azure poskytuje službu Centrální správa nastavení aplikace a příznaků funkcí. Moderní programy, zejména programy spuštěny v cloudu, mají obvykle spousta komponent, které jsou ze své podstaty distribuovány. Rozšíření nastavení konfigurace pro tyto součásti může vést k chybám obtížné vyřešit během nasazení aplikace. Použijte konfiguraci aplikací k uložení všech nastavení pro vaše aplikace a zabezpečení jejich přístupy na jednom místě.
 
-Konfigurace aplikace je pro použití během období preview zdarma. Pokud chcete vyzkoušet, [zaregistrovat](https://aka.ms/azconfig/register) ve verzi Preview.
+Konfigurace aplikace je aktuálně ve verzi public preview. Je pro použití během období preview zdarma. Si můžete zaregistrovat ho [webu Azure portal](https://portal.azure.com).
 
 ## <a name="why-use-app-configuration"></a>Proč používat konfiguraci aplikací?
 
-Cloudové aplikace často spustit na několika virtuálních počítačích nebo kontejnery ve více oblastech a použít více externích služeb. Vytvoření distribuované aplikace, který je robustní a škálovatelné výzvou je i. 
+Cloudové aplikace často spustit na několika virtuálních počítačích nebo kontejnery ve více oblastech a použít více externích služeb. Vytvoření distribuované aplikace, který je robustní a škálovatelné výzvou je i.
 
 Různé programovací metody pomoci vývojářům při čelit rostoucím složitost vytváření aplikací. Například 12-factor app popisuje mnoho dobře otestovaný architektury a osvědčeným postupům pro použití s cloudovým aplikacím. Jedním z klíčových doporučení z této příručky je do samostatné konfigurace z kódu. Nastavení konfigurace aplikace v tomto případě by měla externí, omezit na její spustitelný soubor a načtených z jeho běhové prostředí nebo externího zdroje.
 
@@ -44,6 +44,7 @@ Konfigurace aplikací nabízí následující výhody:
 * Flexibilní reprezentace klíče a mapování
 * Označování pomocí popisků
 * Opakování bodu v čase nastavení
+* Vyhrazené uživatelské rozhraní pro správu příznak funkce
 * Porovnání dvou sad konfigurace na vlastní rozměry
 * Rozšířené zabezpečení prostřednictvím identity spravované v Azure
 * Úplná data šifrování, v klidovém stavu nebo při přenosu
@@ -51,9 +52,9 @@ Konfigurace aplikací nabízí následující výhody:
 
 Konfigurace aplikace doplňuje [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), který se používá k ukládání tajných klíčů aplikací. Konfigurace aplikace usnadňuje implementaci následující scénáře:
 
-* Centralizovaná správa a distribuce hierarchické konfigurační data pro různá prostředí a geografickými oblastmi
-* Změny konfigurace dynamické bez nutnosti znovu nasadit nebo restartování aplikace
-* Funkce správy
+* Centralizace správy a distribuční hierarchické konfigurační data pro různá prostředí a geografickými oblastmi
+* Dynamicky měnit nastavení aplikace bez nutnosti znovu nasadit nebo restartování aplikace
+* Dostupnost funkcí řízení v reálném čase
 
 ## <a name="use-app-configuration"></a>Používat konfiguraci aplikací
 
@@ -64,12 +65,13 @@ Nejjednodušší způsob, jak přidat, je obchod s aplikacemi konfigurace do va�
 | .NET core a ASP.NET Core | Poskytovatel konfigurace aplikace pro .NET Core |
 | .NET a ASP.NET | Tvůrce konfigurace aplikací pro .NET |
 | Java Spring | Konfigurace klienta aplikace pro Spring cloudem |
-| Ostatní | Konfigurace aplikace rozhraní REST API |
+| Jiné | Konfigurace aplikace rozhraní REST API |
 
 ## <a name="next-steps"></a>Další postup
 
 * [Rychlý start ASP.NET Core](./quickstart-aspnet-core-app.md)
 * [Rychlý start pro .NET core](./quickstart-dotnet-core-app.md)
 * [Rychlý start pro rozhraní .NET framework](./quickstart-dotnet-app.md)
-* [Rychlý start Java Spring](./quickstart-java-spring-app.md)
 * [Rychlý start Azure – funkce](./quickstart-azure-function-csharp.md)
+* [Rychlý start Java Spring](./quickstart-java-spring-app.md)
+* [Rychlý start příznak funkce ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)

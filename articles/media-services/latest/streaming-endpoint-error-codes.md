@@ -1,6 +1,6 @@
 ---
 title: Chyby balení a původu Azure Media Services | Dokumentace Microsoftu
-description: Toto téma popisuje chyby, které můžete dostávat z balíčku služby Azure Media Services.
+description: Toto téma popisuje chyby, které můžete dostávat ze služby Azure Media Services koncového bodu streamování (Orgin).
 author: Juliako
 manager: femila
 editor: ''
@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: e30c51ff3526bb5ed193b65b3f36a64c552024ff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204160"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411376"
 ---
-# <a name="media-services-packaging-errors"></a>Chyby balení Media Services 
+# <a name="streaming-endpoint-origin-errors"></a>Streamování chyby koncový bod (počátek) 
 
-Toto téma popisuje chyby, které můžete dostávat ze služby Azure Media Services [balení služby](streaming-endpoint-concept.md).
+Toto téma popisuje chyby, které můžete dostávat ze služby Azure Media Services [koncový bod streamování služby](streaming-endpoint-concept.md).
 
 ## <a name="400-bad-request"></a>400 – Chybný požadavek
 
@@ -48,7 +48,7 @@ Požadavek obsahuje neplatné informace a je odmítnuto pomocí těchto kódů c
 |MPE_ENC_ENCRYPTION_REQUIRED |0x8088021E |Šifrování se vyžaduje pro obsah, zásady pro doručení, je třeba formát výstupu. |
 |MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY |0x8088024D |Šifrování není nastavena v nastavení zásad doručování. |
 
-## <a name="404-not-found"></a>404 – Nenalezeno
+## <a name="404-not-found"></a>404 Nenalezeno
 
 Operace se pokouší tak, aby fungoval na prostředek, který již existuje. Například prostředek už byla odstraněna.
 
@@ -169,7 +169,7 @@ Filtr pokyny najdete v tématu:
 |---|---|---|
 |MPE_STORAGE_INVALID_RANGE|0x808900F1|Chyba operace úložiště vrátila chybu http 416, neplatný rozsah.|
 
-## <a name="500-internal-server-error"></a>500 – Interní chyba serveru
+## <a name="500-internal-server-error"></a>Chyba 500 interní Server
 
 Během zpracování požadavku, Media Services nalezne nějaké chybě, která zabrání v pokračování zpracování.  
 

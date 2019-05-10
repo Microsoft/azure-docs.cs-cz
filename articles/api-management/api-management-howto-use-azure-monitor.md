@@ -219,7 +219,7 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | scope | string | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | section | string | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | reason | string | Důvod chyby | 
-| zpráva | string | Chybová zpráva | 
+| message | string | Chybová zpráva | 
 
 ## <a name="next-steps"></a>Další postup
 

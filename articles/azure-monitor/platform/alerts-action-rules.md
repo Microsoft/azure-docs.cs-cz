@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137949"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227995"
 ---
 # <a name="action-rules-preview"></a>Akce pravidla (preview)
 
@@ -46,7 +46,7 @@ Teď byste měli vidět tok vytváření pravidla akci Otevřít. Konfigurujete 
 
 ![Nové akce pravidla vytváření toku](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Scope
 
 Nejprve zvolte obor, to znamená, cílový prostředek, skupinu prostředků nebo předplatného. Máte také možnost vícenásobný výběr kombinaci výše uvedených možností (v rámci jednoho předplatného). 
 
@@ -142,11 +142,11 @@ Z tohoto místa můžete zaškrtnutím políčka vedle sebe akce povolit, zakáz
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Upozornění vytvořené pomocí protokolů ["počet výsledků"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) možnost Generovat **jednu instanci výstrahy** pomocí výsledek celého vyhledávání (které by mohly být mezi několik počítačů třeba). V tomto scénáři Pokud pravidlo akce využívá filtr "Kontext výstrahy (payload)", bude fungovat na instanci výstrahy za předpokladu, pokud se zjistí shoda. Ve scénáři 2 jak je popsáno výše, pokud výsledky hledání pro výstrahy protokolu vygenerované obsahovat "Počítač-01" a "Počítač-02" celé oznámení je potlačeno (to znamená, že se neobjeví žádná oznámení vůbec vygenerovaný pro "Počítač-02").
+Upozornění vytvořené pomocí protokolů ["počet výsledků"](alerts-unified-log.md) možnost Generovat **jednu instanci výstrahy** pomocí výsledek celého vyhledávání (které by mohly být mezi několik počítačů třeba). V tomto scénáři Pokud pravidlo akce využívá filtr "Kontext výstrahy (payload)", bude fungovat na instanci výstrahy za předpokladu, pokud se zjistí shoda. Ve scénáři 2 jak je popsáno výše, pokud výsledky hledání pro výstrahy protokolu vygenerované obsahovat "Počítač-01" a "Počítač-02" celé oznámení je potlačeno (to znamená, že se neobjeví žádná oznámení vůbec vygenerovaný pro "Počítač-02").
 
 ![Akce pravidel a upozornění protokolů (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Na upozornění protokolu nejlepší využití s pravidly akci, doporučujeme vytvořit s využitím upozornění log ["metriky měření"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) možnost. Použití této možnosti samostatných instancí služby Výstrahy jsou generované na základě definované pole skupiny. Ve scénáři 2, pak samostatných instancí služby Výstrahy jsou generovány pro "Počítač-01" a "Počítač-02". S pravidlem akcí popsaných ve scénáři by pouze oznámení "Počítač-01" potlačit, zatímco oznámení "Počítač-02" by stále chcete-li vyvolat jako obvykle.
+Na upozornění protokolu nejlepší využití s pravidly akci, doporučujeme vytvořit s využitím upozornění log ["metriky měření"](alerts-unified-log.md) možnost. Použití této možnosti samostatných instancí služby Výstrahy jsou generované na základě definované pole skupiny. Ve scénáři 2, pak samostatných instancí služby Výstrahy jsou generovány pro "Počítač-01" a "Počítač-02". S pravidlem akcí popsaných ve scénáři by pouze oznámení "Počítač-01" potlačit, zatímco oznámení "Počítač-02" by stále chcete-li vyvolat jako obvykle.
 
 ![Akce pravidel a upozornění protokolů (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 

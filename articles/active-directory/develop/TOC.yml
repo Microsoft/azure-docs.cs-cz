@@ -237,6 +237,8 @@
               href: msal-js-prompt-behavior.md
             - name: Poskytnutí vlastního klienta HttpClient (.NET)
               href: msal-net-provide-httpclient.md
+            - name: Integrace s Azure AD B2C
+              href: msal-b2c-overview.md
             - name: Aspekty pro konkrétní platformu (.NET)
               items:
                 - name: Webové prohlížeče

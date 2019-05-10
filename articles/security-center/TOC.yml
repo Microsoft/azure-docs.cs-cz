@@ -58,6 +58,8 @@
       items:
         - name: Shromažďování dat
           href: security-center-enable-data-collection.md
+        - name: Pokročilé zabezpečení dat pro IaaS
+          href: security-center-iaas-advanced-data.md
         - name: Předdefinované zásady zabezpečení
           href: security-center-policy-definitions.md
         - name: E-mailová oznámení
@@ -168,6 +170,8 @@
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=security-center'
+    - name: Vyřazení funkcí a rozhraní API (červenec 2019)
+      href: security-center-features-retirement-july2019.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

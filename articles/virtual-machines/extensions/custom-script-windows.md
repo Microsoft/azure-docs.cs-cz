@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/15/2019
+ms.date: 05/02/2019
 ms.author: gwallace
-ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869856"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408274"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro Windows
 
@@ -133,7 +133,7 @@ Pomocí veřejného nastavení může být užitečné pro ladění, ale doporu�
 
 Nastavení veřejné odesílají ve formátu prostého textu do virtuálních počítačů, ve kterém se skript spustí.  Chráněné nastavení jsou šifrované pomocí klíče zná pouze Azure a virtuální počítač. Nastavení se ukládají do virtuálního počítače, protože byly odeslány, to znamená, pokud byly šifrované nastavení jsou uloženy zašifrované na virtuálním počítači. Certifikát používaný k dešifrování šifrovaných hodnot je uložená ve virtuálním počítači a použité k dešifrování nastavení (v případě potřeby) za běhu.
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, který je podrobněji popsán v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění pomocí rozšíření vlastních skriptů při nasazení. Následující ukázky ukazují, jak použít rozšíření vlastních skriptů:
 
@@ -206,6 +206,16 @@ Pokud chcete spustit více než jednou rozšíření vlastních skriptů, lze pr
 
 * Rozšíření **název** parametru je stejný jako předchozí nasazení rozšíření.
 * Aktualizace jinak konfigurace nebude znovu spustit příkaz. Můžete přidat v dynamických vlastností do příkazu, jako je časové razítko.
+
+Alternativně můžete nastavit [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) vlastnost **true**.
+
+### <a name="using-invoke-webrequest"></a>Pomocí Invoke-WebRequest
+
+Pokud používáte [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve skriptu, musíte zadat parametr `-UseBasicParsing` nebo jinak se zobrazí následující chybová zpráva při kontrole podrobný stav:
+
+```error
+The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
+```
 
 ## <a name="classic-vms"></a>Klasické virtuální počítače
 

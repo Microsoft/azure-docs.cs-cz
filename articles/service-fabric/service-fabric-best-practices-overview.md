@@ -12,18 +12,18 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/23/2019
+ms.date: 04/24/2019
 ms.author: pepogors
-ms.openlocfilehash: a0174a5442de7a10e45e9dc2a2f43f5f401d1a69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803167"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231383"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Osvědčené postupy Azure aplikace Service Fabric a clusteru
 
-Ke správě aplikace Azure Service Fabric a clustery úspěšně, jsou operace, které důrazně doporučujeme že provést k optimalizaci spolehlivosti provozním prostředí. provedení operace definované v tomto dokumentu a vyberte jednu z našich [Cluster Service Fabric pomocí Azure Ukázky šablon](https://github.com/Azure-Samples/service-fabric-cluster-templates) začít návrhu řešení pro výrobu nebo upravit stávající šablonu začlenit tyto postupy.
+Ke správě aplikace Azure Service Fabric a clustery úspěšně, jsou operace, které důrazně doporučujeme že provést k optimalizaci spolehlivosti provozním prostředí. prosím provádět operace definované v tomto dokumentu a vyberte jednu z našich [Cluster Service Fabric pomocí Azure Ukázky šablon](https://github.com/Azure-Samples/service-fabric-cluster-templates) začít návrhu řešení pro výrobu nebo upravit stávající šablonu začlenit tyto postupy.
 
 ## <a name="security"></a>Zabezpečení 
 
@@ -45,6 +45,10 @@ Ke správě aplikace Azure Service Fabric a clustery úspěšně, jsou operace, 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
 * [Osvědčené postupy pro monitorování clusteru a Diagnostika](service-fabric-best-practices-monitoring.md)
+
+## <a name="application-design"></a>Návrh aplikací
+
+* [Osvědčené postupy pro navrhování aplikací](service-fabric-best-practices-applications.md)
 
 ## <a name="checklist"></a>Kontrolní seznam
 

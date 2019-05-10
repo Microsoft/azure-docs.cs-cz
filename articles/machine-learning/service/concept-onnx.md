@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bda1af8095e7026c79b7d8ffe45b39f6cbb3508
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028692"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442417"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: Vytvoření a zrychlit modelů ML
 
@@ -30,7 +30,7 @@ Microsoft a komunitou partnerů vytvořili ONNX jako otevřený standard předst
 
 Modul Runtime ONNX se používá ve velkém měřítku službám Microsoftu jako jsou Bing, Office a služby Cognitive Services. Zvýšení výkonu jsou závislé na několika faktorech, ale viděli těchto služeb Microsoftu __průměrná 2 x zvýšení výkonu CPU__. Modul Runtime ONNX slouží také jako součást Windows ML na stovky milionů zařízení. Můžete použít modul runtime služby Azure Machine Learning. Pomocí modulu Runtime ONNX můžete využívat výhod optimalizací rozsáhlé úrovni produkce, testování a průběžnou vylepšení.
 
-[![ONNX vývojový diagram znázorňující nasazení, školení a převaděče](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![ONNX vývojový diagram znázorňující nasazení, školení a převaděče](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Získat modely ONNX
 

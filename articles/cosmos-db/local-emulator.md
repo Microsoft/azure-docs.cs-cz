@@ -3,15 +3,15 @@ title: Místní vývoj s využitím emulátor služby Azure Cosmos
 description: Emulátor služby Azure Cosmos můžete vyvíjet a testovat aplikace místně pro zdarma, bez vytváření předplatného Azure.
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: ac2510b97e083cbbcd6529feb6f02fa17455fcb8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 03/14/2019
+ms.openlocfilehash: c83cc8dce5978798d86d2fc2e314161765a2fb2d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925504"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205785"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Pro místní vývoj a testování používat emulátor služby Azure Cosmos
 
@@ -41,7 +41,7 @@ Protože emulátor služby Azure Cosmos nabízí prostředí emulované běžíc
 * Jak si kopii emulátor služby Azure Cosmos nemusí být vždy aktuální pomocí nejnovější změny ve službě Azure Cosmos DB, by měla odkazovat na [Plánovač kapacity služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner) pro přesný odhad produkční propustnost (ru) potřebám vaší aplikace.
 * Pokud používáte emulátor služby Azure Cosmos, ve výchozím nastavení, můžete vytvořit až 25 pevné velikosti kontejnerů (podporovány pouze při použití sady SDK služby Azure Cosmos DB) nebo 5 neomezené kontejnery pomocí emulátoru služby Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 Emulátor služby Azure Cosmos má následující požadavky na hardware a software:
 
@@ -241,8 +241,8 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 |[Žádné argumenty] | Spustí se emulátor služby Azure Cosmos pomocí výchozích nastavení. |CosmosDB.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|CosmosDB.Emulator.exe /? | |
 | GetStatus |Získá stav emulátor služby Azure Cosmos. Stav je indikován ukončovací kód: 1 = od, 2 = spuštěný, 3 = zastavena. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
-| Shutdown| Vypne emulátor služby Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
-|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<cesta k datům\> | \<DataPath\>: Přístupná cesta |
+| Vypnout| Vypne emulátor služby Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<DataPath\>: Přístupná cesta |
 |Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Jeden port číslo |
 | MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jeden port číslo|
 | CassandraPort | Udává číslo portu pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: Jeden port číslo |
@@ -265,7 +265,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 | NoUI | Nezobrazuje uživatelské rozhraní emulátoru. | CosmosDB.Emulator.exe /NoUI | |
 | NoExplorer | Nezobrazuje Průzkumníka dat při spuštění. |CosmosDB.Emulator.exe /NoExplorer | | 
 | PartitionCount | Určuje maximální počet oddílů kontejnerů. Zobrazit [změnit počet kontejnerů](#set-partitioncount) Další informace. | CosmosDB.Emulator.exe /PartitionCount=\<počet oddílů\> | \<partitioncount\>: Maximální počet povolených jednoho oddílu kontejnerů. Výchozí hodnota je 25. Maximální povolený počet je 250.|
-| DefaultPartitionCount| Určuje výchozí počet oddílů pro dělený kontejner. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<výchozí počet oddílů\> | \<defaultpartitioncount\> výchozí hodnota je 25.|
+| DefaultPartitionCount| Určuje výchozí počet oddílů pro dělený kontejner. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> výchozí hodnota je 25.|
 | AllowNetworkAccess | Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =\<řetězec_klíče\> nebo/KeyFile =\<název_souboru\>. | CosmosDB.Emulator.exe AllowNetworkAccess uveden =\<key_string\> nebo/keyfile /AllowNetworkAccess CosmosDB.Emulator.exe =\<název_souboru\>| |
 | NoFirewall | Neupravujte pravidla brány firewall, pokud není použita možnost /AllowNetworkAccess. |CosmosDB.Emulator.exe /NoFirewall | |
 | GenKeyFile | Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile. | CosmosDB.Emulator.exe /GenKeyFile =\<cestu k souboru klíče\> | |

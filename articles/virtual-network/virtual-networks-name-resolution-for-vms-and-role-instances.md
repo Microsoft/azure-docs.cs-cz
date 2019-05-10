@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925238"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411354"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -169,7 +169,7 @@ Pokud předávání dotazů do Azure není vyhovovala vašim potřebám, byste m
 * Zabezpečit proti přístupu z Internetu, a zmírnit hrozby vyplývající z externí agentů.
 
 > [!NOTE]
-> Pro zajištění nejlepšího výkonu při použití virtuálních počítačů Azure jako servery DNS protokolu IPv6 by mělo být zakázáno. A [veřejnou IP adresu](virtual-network-public-ip-address.md) by mělo být přiřazeno k jednotlivým serverům DNS virtuálního počítače. Další výkonnostní analýzy a optimalizace, pokud používáte Windows Server jako DNS server, najdete v tématu [název řešení výkonu rekurzivní Windows DNS Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
+> Pro zajištění nejlepšího výkonu při použití virtuálních počítačů Azure jako servery DNS protokolu IPv6 by mělo být zakázáno. A [veřejnou IP adresu](virtual-network-public-ip-address.md) by mělo být přiřazeno k jednotlivým serverům DNS virtuálního počítače. Další výkonnostní analýzy a optimalizace, pokud používáte Windows Server jako DNS server, najdete v tématu [název řešení výkonu rekurzivní Windows DNS Server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
 > 
 > 
 
