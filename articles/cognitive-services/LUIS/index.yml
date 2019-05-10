@@ -105,7 +105,7 @@ sections:
         className: cardsD
         items:
           - title: Rozhraní REST API v2
-            html: '<p><a href="https://aka.ms/luis-endpoint-apis">Rozhraní API pro koncové body</a></p><p><a href="https://aka.ms/luis-authoring-apis">Rozhraní API pro vytváření</a></p>'
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356">Rozhraní API pro koncové body</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087">Rozhraní API pro vytváření</a></p>'
           - title: Sady SDK
             html: '<p><a href="https://aka.ms/luis-endpoint-sdk">.NET Endpoint SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET Authoring SDK</a></p>'
           - title: PowerShell

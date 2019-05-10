@@ -9,7 +9,7 @@
     - name: Informace o službách App Service Environment
       href: environment/intro.md
     - name: Porovnání možností hostování
-      href: overview-compare.md
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: Šablony Rychlý start
   expanded: true
   items:
