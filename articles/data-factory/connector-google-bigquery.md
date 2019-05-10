@@ -46,10 +46,10 @@ Následující vlastnosti jsou podporovány pro Google BigQuery propojenou služ
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **GoogleBigQuery**. | Ano |
-| Projekt | ID projektu výchozí projekt BigQuery chcete dotazovat.  | Ano |
+| project | ID projektu výchozí projekt BigQuery chcete dotazovat.  | Ano |
 | additionalProjects | Čárkou oddělený seznam ID projektu veřejných BigQuery projekty se mají přístup.  | Ne |
 | requestGoogleDriveScope | Určuje, zda žádat o přístup k disku Google. Povolení přístupu k disku Google. umožňuje podporu pro federované tabulky, které kombinují BigQuery data s daty z disku Google. Výchozí hodnota je **false**.  | Ne |
-| authenticationType. | Mechanismus ověřování OAuth 2.0 pro ověřování. ServiceAuthentication lze použít pouze na modul Integration Runtime. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Naleznete v oddílech dál v této tabulce na další vlastnosti a ukázky JSON pro typy ověřování v uvedeném pořadí. | Ano |
+| authenticationType | Mechanismus ověřování OAuth 2.0 pro ověřování. ServiceAuthentication lze použít pouze na modul Integration Runtime. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Naleznete v oddílech dál v této tabulce na další vlastnosti a ukázky JSON pro typy ověřování v uvedeném pořadí. | Ano |
 
 ### <a name="using-user-authentication"></a>Pomocí ověřování uživatelů
 
@@ -57,8 +57,8 @@ Nastavte vlastnost "authenticationType" **UserAuthentication**a zadejte následu
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| ID klienta | ID aplikace použili k vygenerování tokenu obnovení. | Ne |
-| ClientSecret | Tajný klíč aplikace použili k vygenerování tokenu obnovení. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| clientId | ID aplikace použili k vygenerování tokenu obnovení. | Ne |
+| clientSecret | Tajný klíč aplikace použili k vygenerování tokenu obnovení. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | refreshToken | Obnovovací token získaný z Googlu pro autorizaci přístupu k BigQuery. Další informace o získání jednoho z [přístupových tokenů OAuth 2.0 získání](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) a [tento blog komunity](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 
 **Příklad:**
@@ -93,7 +93,7 @@ Nastavte vlastnost "authenticationType" **ServiceAuthentication**a zadejte násl
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| e-mail | ID účtu služby e-mailu, který se používá pro ServiceAuthentication. Je možné použít pouze na modul Integration Runtime.  | Ne |
+| email | ID účtu služby e-mailu, který se používá pro ServiceAuthentication. Je možné použít pouze na modul Integration Runtime.  | Ne |
 | keyFilePath | Úplná cesta k souboru s klíčem .p12, který se používá k ověření e-mailovou adresu účtu služby. | Ne |
 | trustedCertPath | Úplná cesta soubor .pem, který obsahuje certifikáty důvěryhodné certifikační Autority používaného k ověřování serveru, když se připojíte přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL na modul Integration Runtime. Výchozí hodnota je soubor cacerts.pem nainstalované s modulem runtime integrace.  | Ne |
 | useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze souboru zadaného .pem. Výchozí hodnota je **false**.  | Ne |
