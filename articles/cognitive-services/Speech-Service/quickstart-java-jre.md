@@ -10,15 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: 771168a13d7192581aae2ff4128e979b6924484a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 05475dbfb7dc1ee3f5de1a9b858eaf212b674eac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020681"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466378"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Javu
 
+Rychlí průvodci jsou také k dispozici pro [řeči pro zpracování řeči překlad](quickstart-translate-speech-java-jre.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-java-jre.md).
+
+V případě potřeby vyberte jiný programovací jazyk a/nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven řeči sady SDK a Java IDE Eclipse (v4.8) na Windows 64-bit, 64-bit Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9), nebo v systému macOS 10.13 nebo novější. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
@@ -58,7 +61,7 @@ Pokud používáte Windows (64-bit), ujistěte se, nainstalujete Microsoft Visua
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="add-sample-code"></a>Přidejte ukázkový kód.
 
 1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  >  **New** (Nový)  >  **Class** (Třída).
 

@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
+ms.date: 05/07/2019
 ms.author: genli
-ms.openlocfilehash: 7f0539e7c2f7e5ae8847b35b47d3708c6c5d6a09
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 78d2392e32465b3091c49032dc5df5f3a5b6061a
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107988"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416038"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Jaká je adresa IP adresy 168.63.129.16?
 
@@ -28,14 +28,17 @@ IP adresy 168.63.129.16 je virtuální veřejnou IP adresu, která slouží k us
 
 - Povolí agenta virtuálního počítače ke komunikaci s platformou Azure, který signalizuje, že je ve stavu "Připraveno".
 - Umožňuje komunikaci s virtuálním serverem DNS k překladu názvů filtrované do prostředky (například virtuální počítač), které nemají vlastní server DNS. Toto filtrování zajišťuje, že zákazníci lze vyřešit pouze názvy hostitelů prostředků.
-- Umožňuje sond stavu z nástroje pro vyrovnávání zatížení k určování stavu virtuálních počítačů v sadě s vyrovnáváním zatížení.
+- Umožňuje [sondy stavu ze služby Azure load balancer](../load-balancer/load-balancer-custom-probe-overview.md) k určování stavu virtuálních počítačů.
+- Umožňuje virtuálnímu počítači můžete získat dynamickou IP adresu ze služby DHCP v Azure.
 - Umožňuje zprávy prezenčního signálu agenta hosta pro PaaS role.
 
 ## <a name="scope-of-ip-address-1686312916"></a>Rozsah IP adresy 168.63.129.16
 
-Virtuální veřejné IP adresy 168.63.129.16 se používá ve všech oblastech a všech národních cloudech. Tato speciální veřejná IP adresa se nezmění. Je povoleno podle výchozího pravidla skupiny zabezpečení sítě. Doporučujeme povolit tuto IP adresu v rámci zásad žádné místní brány firewall. Komunikace mezi tento speciální IP adresu a prostředky je bezpečné, protože pouze interní platformy Azure mají možnost zprávy z této IP adresy. Pokud tato adresa je blokovaný, může dojít k neočekávanému chování v různých scénářích.
+Veřejné IP adresy 168.63.129.16 se používá ve všech oblastech a všech národních cloudech. Tato speciální veřejná IP adresa není ve vlastnictví společnosti Microsoft a nezmění. Je povoleno podle výchozího pravidla skupiny zabezpečení sítě. Doporučujeme povolit tuto IP adresu v rámci zásad žádné místní brány firewall. Komunikace mezi tento speciální IP adresu a prostředky je bezpečné, protože pouze interní platformy Azure mají možnost zprávy z této IP adresy. Pokud tato adresa je blokovaný, může dojít k neočekávanému chování v různých scénářích.
 
-Kromě toho můžete očekávat, že tento provoz tok z virtuální veřejné IP adresy 168.63.129.16 na koncový bod, který je nakonfigurovaný pro [sondy stavu nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Ve scénáři mimo virtuální síť sondy stavu pochází z privátní IP adresy. 
+[Sondy stavu služby Azure Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md) pochází z této IP adresy. Pokud zablokujete tato IP adresa, vaše testy se nezdaří.
+
+Ve scénáři mimo virtuální síť sondy stavu pochází z privátní IP adresy a adresy 168.63.129.16 nepoužívá.
 
 ## <a name="next-steps"></a>Další postup
 

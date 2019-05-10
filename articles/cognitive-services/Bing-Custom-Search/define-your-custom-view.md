@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 83ae5f923130ecb46b7b94cd8112ee45ae13e3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129635"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236257"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí pro vlastní vyhledávání Bingu
 
@@ -27,7 +27,7 @@ Při definování řezy z webu, použijte následující:
 
 | Název řezu | Popis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain (Doména)     | Řez domény zahrnuje veškerý obsah v rámci rozsahu internetové domény nebyl nalezen. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bingu také hledat subdomény doméně. Pokud zadáte například `microsoft.com`, Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com`. |
+| Domain (Doména)     | Řez domény zahrnuje veškerý obsah v rámci rozsahu internetové domény nebyl nalezen. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bingu také hledat subdomény doméně. Pokud zadáte například `microsoft.com`, Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com`. |
 | Podstránku    | Podstránku řez zahrnuje veškerý obsah v podstránku a cesty pod ní. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
 | Webová stránka    | Řez webová stránka může obsahovat pouze webové stránce Vlastní vyhledávání. Volitelně můžete zadat, jestli se má zahrnout podstránky.                                                                                                                                                                                  |
 
@@ -40,11 +40,11 @@ Při vytváření vaší instance vlastního hledání můžete určit řezy web
 
 Pokud víte, že řezy, které chcete zahrnout do vaší instance vlastního hledání, je přidat k vaší instanci **aktivní** seznamu. 
 
-Pokud si nejste jistí, řezy, které chcete zahrnout, můžete poslat dotazy vyhledávání Bingu ve **ve verzi Preview** podokně a vyberte řezy, které chcete. Použijte následující postup: 
+Pokud si nejste jistí, řezy, které chcete zahrnout, můžete poslat dotazy vyhledávání Bingu ve **ve verzi Preview** podokně a vyberte řezy, které chcete. To uděláte takto: 
 
 1. Vyberte z rozevíracího seznamu v podokně náhledu "Bingu" a zadejte vyhledávací dotaz
 
-2. Klikněte na tlačítko **přidat web** vedle výsledků, které chcete zahrnout. Pak klikněte na OK.
+2. Klikněte na tlačítko **přidat web** vedle výsledků, které chcete zahrnout. Klikněte na tlačítko OK.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
@@ -118,9 +118,9 @@ Na portálu také umožňuje Připnutí adresy URL do horní části výsledků 
 
 Webová stránka na začátek si můžete připnout dvěma způsoby:
 
-* V **Pinned** kartu, zadejte adresu URL webové stránky pro Připnutí na horní a jeho odpovídající dotaz.
+* V **Pinned** kartu, zadejte adresu URL webové stránky pro Připnutí na horní a jeho odpovídající dotaz.
 
-* V **ve verzi Preview** podokně, zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Webová stránka, kterou chcete připnout pro dotaz a klikněte na tlačítko Najít **PIN kód na začátek**. webové stránky a dotazů se přidají do **Pinned** seznamu.
+* V **ve verzi Preview** podokně, zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Webová stránka, kterou chcete připnout pro dotaz a klikněte na tlačítko Najít **PIN kód na začátek**. webové stránky a dotazů se přidají do **Pinned** seznamu.
 
 ### <a name="specify-the-pins-match-condition"></a>Zadejte podmínku shody PIN kód
 
@@ -129,11 +129,11 @@ Ve výchozím nastavení, se webové stránky pouze připnuté k hornímu okraji
 > [!NOTE]
 > Všechna porovnání mezi uživatele vyhledávací dotaz a vyhledávání kódu pin jsou malá a velká písmena.
 
-| Hodnota | Popis                                                                          |
+| Value | Popis                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | Začíná na | Kód pin je nalezena shoda, pokud řetězec dotazu začíná řetězec dotazu PIN kódu |
 | Končí na   | Kód pin je nalezena shoda, pokud řetězec dotazu končí řetězcem dotazu PIN kódu.  |
-| Contains    | Kód pin je nalezena shoda, pokud řetězec dotazu obsahuje řetězec dotazu PIN kódu.   |
+| Obsahuje    | Kód pin je nalezena shoda, pokud řetězec dotazu obsahuje řetězec dotazu PIN kódu.   |
 
 
 Podmínka shody PIN kód změnit, klikněte na ikonu úprav PIN kódu. V **podmínce shody dotazu** sloupce, klikněte na rozevírací seznam a vyberte nové podmínky použití. Potom klikněte na uložit ikonu a uložte změny.

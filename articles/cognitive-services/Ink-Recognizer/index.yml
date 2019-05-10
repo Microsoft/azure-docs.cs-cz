@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 'Tyto ukázkové programy ukazují, jak se rozhraní API služby Rozpoznávání rukopisu dá integrovat do vašich aplikací:'
       - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# a Univerzální platforma Windows (UPW)</a>'
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089503">C# a Univerzální platforma Windows (UPW)</a>'
       - type: paragraph
         text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# a Windows Presentation Foundation (WPF)</a>'
       - type: paragraph

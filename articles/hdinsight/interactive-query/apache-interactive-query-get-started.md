@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/22/2018
-ms.openlocfilehash: c7cee3dfd3b091d75f4dadcaa62513fddf0c0e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/07/2019
+ms.openlocfilehash: 9636157182e8b40914bde2515c5b295d0480255a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692135"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510996"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Pomocí HDInsight Interactive Query
 Interactive Query (také nazývané Apache Hive LLAP nebo [s nízkou latencí analytické zpracování](https://cwiki.apache.org/confluence/display/Hive/LLAP)) Azure HDInsight je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query podporuje ukládání do mezipaměti v paměti, takže se dotazy Apache Hive, rychlejší a mnohem vyšší interaktivitou.
@@ -34,10 +34,6 @@ Ke spouštění dotazů Hive, máte následující možnosti:
 * Použít Microsoft Power BI
 
     Zobrazit [vizualizace dat Interactive Query Apache Hive pomocí Power BI v Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) naleznete v tématu [vizualizovat velké objemy dat v Power BI v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
- 
-* Použití Apache Zeppelinu
-
-    Zobrazit [použití Apache Zeppelinu ke spouštění dotazů Apache Hive v Azure HDInsight](../hdinsight-connect-hive-zeppelin.md).
 
 * Použití Visual Studia
 
@@ -61,7 +57,7 @@ Ke spouštění dotazů Hive, máte následující možnosti:
 
 Chcete-li nalezen připojovací řetězec připojení k databázi Java (JDBC):
 
-1. Přihlaste se k Apache Ambari pomocí následující adresy URL: https://\<název clusteru\>. AzureHDInsight.net.
+1. Přihlaste se k Apache Ambari pomocí následující adresy URL: `https://<cluster name>.AzureHDInsight.net`.
 2. V nabídce vlevo vyberte **Hive**.
 3. Zkopírujte adresu URL, vyberte ikonu schránky:
    

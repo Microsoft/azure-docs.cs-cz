@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 30de4da43569abf4d7bd668fd0fa481ecac23f4d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4271d94f07125a870cc4aa859b01db819d583f40
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081098"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406449"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL – velkokapacitní (Citus) (preview) na webu Azure Portal
 
@@ -169,7 +169,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Zatím jste dotazy podílejí githubu\_události výhradně, ale jsme je v kombinaci s githubem\_uživatelů. Protože jsme horizontálně dělené uživatelů a události na stejný identifikátor (`user_id`), řádky obou tabulek s odpovídajícím identifikátorem ID uživatele bude [umístěny společně](http://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejném databázových uzlů a můžete snadno připojit.
+Zatím jste dotazy podílejí githubu\_události výhradně, ale jsme je v kombinaci s githubem\_uživatelů. Protože jsme horizontálně dělené uživatelů a události na stejný identifikátor (`user_id`), řádky obou tabulek s odpovídajícím identifikátorem ID uživatele bude [umístěny společně](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) na stejném databázových uzlů a můžete snadno připojit.
 
 Pokud se nám spojit `user_id`, hyperškálovatelný systém může doručit bez vyžádání provádění spojení do horizontálních oddílů pro spuštění paralelně na pracovních uzlech. Můžete například zjistit třeba, uživatelé, kteří si vytvořili největší počet úložišť:
 

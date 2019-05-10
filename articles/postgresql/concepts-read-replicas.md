@@ -6,16 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067437"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510982"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server
 
-Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL na serveru jen pro čtení. Můžete replikovat z hlavního serveru až pěti replikami v rámci stejné oblasti Azure. Repliky jsou aktualizované asynchronně technologie replikace nativní modul PostgreSQL.
+Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL na serveru jen pro čtení. Můžete replikovat z hlavního serveru až pěti replikami. Repliky jsou aktualizované asynchronně technologie replikace nativní modul PostgreSQL.
+
+> [!IMPORTANT]
+> Čtení repliky můžete vytvořit ve stejné oblasti jako váš hlavní server, nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi public preview.
 
 Repliky jsou nové servery, které spravujete podobně jako na běžnou – Azure Database for PostgreSQL servery. Pro každé čtení replik, bude se vám účtovat za zřízených výpočetních jádrech a úložiště v GB / měsíc.
 
@@ -29,6 +32,8 @@ Běžný scénář, kdy je, aby BI a analytických úloh pomocí repliky pro čt
 Vzhledem k tomu repliky jen pro čtení, není zkracují přímo zápisu kapacity zatížení hlavní server. Tato funkce není určenou pro úlohy náročné na zápis.
 
 Funkce repliky pro čtení používá asynchronní replikace PostgreSQL. Tato funkce není určena pro scénáře synchronní replikace. Bude docházet k prodlevám měřitelné mezi hlavního serveru a repliky. Data v replice nakonec bude konzistentní s daty na hlavní server. Pomocí této funkce pro úlohy, které můžou vyhovovat tomuto zpoždění dochází.
+
+Repliky pro čtení můžete vylepšit vašeho plánu zotavení po havárii. Nejprve musíte mít v jiné oblasti Azure z hlavního serveru repliky. Pokud nedojde k havárii oblasti, můžete zastavit replikaci touto replikou a přesměrovat úlohy na ni. Zastavuje se replikace umožňuje repliky začít přijímat zápisy, jakož i čtení. Další informace najdete v [zastavení replikace](#stop-replication) oddílu. 
 
 ## <a name="create-a-replica"></a>Vytvoření repliky
 Hlavní server musí mít `azure.replication_support` parametr nastaven na **REPLIKY**. Pokud tento parametr změníte, je nutné tato změna se projeví restartovat server. ( `azure.replication_support` Parametr platí pro obecné účely a optimalizovaný pro paměť úrovně pouze).
@@ -47,7 +52,7 @@ Při vytváření repliky nedědí pravidla brány firewall nebo koncový bod sl
 
 Replika dědí z hlavního serveru účet správce. Všechny uživatelské účty na hlavním serveru se replikují do repliky pro čtení. Pouze pro čtení repliky můžete připojit pomocí uživatelské účty, které jsou dostupné na hlavním serveru.
 
-Můžete připojit k replice pomocí jeho názvu hostitele a platný uživatelský účet, jako byste to zvládli pravidelné serveru Azure Database for PostgreSQL. Pro server s názvem **myreplica** s uživatelským jménem správce **myadmin**, můžete se připojíte k replice pomocí nástroje psql:
+Můžete připojit k replice pomocí jeho názvu hostitele a platný uživatelský účet, jako byste to zvládli pravidelné serveru Azure Database for PostgreSQL. Pro server s názvem **repliku** s uživatelským jménem správce **myadmin**, můžete se připojíte k replice pomocí nástroje psql:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -63,7 +68,7 @@ Azure Database for PostgreSQL poskytuje také **repliky prodleva** metriky ve sl
 Metrika se počítá od `pg_stat_wal_receiver` zobrazení:
 
 ```SQL
-EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp())
+EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
 Prodleva repliky metrika zobrazuje doba od poslední přehraná transakce. Pokud neexistují žádné transakce, ke kterým dochází na hlavní server, metriku odráží tento časový interval.
@@ -96,6 +101,8 @@ Můžete zastavit replikaci mezi hlavní a repliku. Akce zastavení způsobí, �
 > Samostatný server nelze je převést na repliku znovu.
 > Před zastavením replikace na čtení replik, zajistěte, aby že replika bude mít veškerá data, které požadujete.
 
+Při zastavení replikace replika ztratí všechny odkazy na jeho předchozí hlavní větev a ostatními replikami. Není k dispozici žádné automatické převzetí služeb při selhání mezi hlavní a repliky. 
+
 Zjistěte, jak [zastavit replikaci replik](howto-read-replicas-portal.md).
 
 
@@ -107,7 +114,7 @@ Tento oddíl shrnuje důležité informace o funkci repliky pro čtení.
 Než vytvoříte další repliky `azure.replication_support` parametr musí být nastaven na **REPLIKY** na hlavní server. Pokud tento parametr změníte, je nutné tato změna se projeví restartovat server. `azure.replication_support` Parametr platí pro obecné účely a optimalizovaný pro paměť úrovně pouze.
 
 ### <a name="new-replicas"></a>Nové repliky
-Čtení replika se vytváří jako nový server Azure Database for PostgreSQL. Existující server nelze nastavit do repliky. Číst repliku lze vytvořit pouze ve stejné oblasti Azure jako hlavní server. Nejde vytvořit replika jiné repliky pro čtení.
+Čtení replika se vytváří jako nový server Azure Database for PostgreSQL. Existující server nelze nastavit do repliky. Nejde vytvořit replika jiné repliky pro čtení.
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
 Replika je vytvořen pomocí stejné konfigurace serveru na hlavní server. Po vytvoření repliky několik nastavení lze změnit nezávisle z hlavního serveru: výpočetní generace, virtuální jádra, úložiště a období uchovávání záloh. Cenovou úroveň můžete změnit také nezávisle na sobě, s výjimkou do nebo z úrovně Basic.

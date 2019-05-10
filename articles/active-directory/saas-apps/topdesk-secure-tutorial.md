@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ca13bdd8e3677f559bac373efa078f3b951be
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920375"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Integrace Azure Active Directory s TOPdesk – zabezpečení
 
@@ -184,7 +184,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TOPdesk – zabezpečení, 
 
     d. Nahrát soubor loga jste získali v části z na tým podpory TOPdesk **ikona loga**, klikněte na tlačítko **Procházet**.
 
-    e. V **atribut uživatelského jména** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. V **atribut uživatelského jména** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     f. V **zobrazovaný název** textového pole zadejte název pro vaši konfiguraci.
 
@@ -271,7 +271,7 @@ V případě TOPdesk – zabezpečené, zřizování je ruční úloha.
 > [!NOTE]
 > Můžete použít jakékoli jiné TOPdesk – nástroje pro tvorbu zabezpečené uživatelského účtu nebo rozhraní API poskytovaných TOPdesk – zabezpečené ke zřízení účtů služby AAD uživatele.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

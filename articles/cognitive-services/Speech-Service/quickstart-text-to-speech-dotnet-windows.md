@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
-ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b7addd369d5e26554dd4300e65bee66b8a62768
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620438"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465564"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Syntetizace řeči se sadou SDK pro řeč pro rozhraní .NET Framework (Windows)
+
+Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-csharp-dotnet-windows.md) a [překlad řeči](quickstart-translate-speech-dotnetframework-windows.md).
 
 Použijte tuto příručku k vytvoření převod textu na řeč konzolové aplikace pro Windows a sadou SDK pro řeč pomocí rozhraní .NET framework. Až budete hotovi, můžete syntetizace řeč z textu a poslechněte si řeč na reproduktoru v reálném čase.
 

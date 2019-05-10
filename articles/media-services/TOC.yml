@@ -6,7 +6,7 @@
 - name: Video Indexer služby Azure Media Services
   href: video-indexer/
 - name: Přehrávač médií Azure
-  href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
+  href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

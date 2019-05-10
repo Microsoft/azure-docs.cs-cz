@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7020299bbd52f5e7ba22809847815cb04048cb6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2a491cd303cccd94cbb489654890d55c03912a63
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259401"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Kurz: Integrace Azure Active Directory s přenosem MOVEit – integrace služby Azure AD
 
@@ -174,7 +174,7 @@ K Azure AD nakonfigurovat jednotné přihlašování s přenosem MOVEit – inte
     
     b. Vyberte **jiných** jako **jméno a příjmení** a **název atributu** vložte hodnotu do textového pole: `http://schemas.microsoft.com/identity/claims/displayname`.
     
-    c. Vyberte **jiných** jako **e-mailu** a **název atributu** vložte hodnotu do textového pole: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Vyberte **jiných** jako **e-mailu** a **název atributu** vložte hodnotu do textového pole: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
     d. Vyberte **Ano** jako **automatické vytvoření účtu na Sign-on**.
     
@@ -238,7 +238,7 @@ Cílem této části je vytvořte uživatele Britta Simon v MOVEit přenosy – 
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [MOVEit přenosy – tým podpory integrace klienta služby Azure AD](https://community.ipswitch.com/s/support).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

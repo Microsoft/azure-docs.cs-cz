@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776862"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405699"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -36,6 +36,10 @@ Můžete také konfigurovat Komu musí odesílat výstrahy:
 Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../../azure-monitor/platform/action-groups.md).
 
 Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru](alerts-activity-log.md).
+
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Podívejte se na video o nastavení prvního upozornění služby Azure Service Health
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>Skupina akcí oznámení a nové pomocí webu Azure portal
 1. V [portál](https://portal.azure.com)vyberte **Service Health**.
@@ -195,6 +199,8 @@ Po vytvoření upozornění je zobrazeno v **výstrahy** část **monitorování
 * Zakázat nebo povolit, pokud chcete dočasně zastavit nebo obnovit příjem oznámení pro výstrahy.
 
 ## <a name="next-steps"></a>Další postup
+- Další informace o [osvědčené postupy pro nastavení oznámení služby Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Zjistěte, jak [nastavení pro mobilní nabízená oznámení pro Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro správu problémů](../../service-health/service-health-alert-webhook-guide.md).
 - Další informace o [služby oznámení o stavu](../../azure-monitor/platform/service-notifications.md).
 - Další informace o [rychlosti oznámení](../../azure-monitor/platform/alerts-rate-limiting.md).

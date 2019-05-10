@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2bcb7d93361ccf3d83947222ab6a3937a7eedc4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 2914d6b1f4a6c94d7e3d4456c8255c1563a71b3e
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935959"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406644"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlašování uživatelů a volání Microsoft Graphu z aplikace pro Android
 
@@ -56,13 +56,13 @@ Tato příručka používá následující knihovny pro ověřování:
 
 |Knihovna|Popis|
 |---|---|
-|[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Knihovna Microsoft Authentication Library (MSAL)|
+|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurzu místo toho [stáhnout kód](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 1. Otevřete Android Studio a vyberte buď **spusťte nový projekt Android Studio**.
     - Pokud je už otevřená Android Studio, vyberte **souboru** > **nový** > **nový projekt**.
@@ -70,7 +70,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 3. Pojmenujte svoji aplikaci, nastavte `Minimum API level` k **rozhraní API 19 nebo novější**, přístupů **Dokončit**.
 5. Ve vaší `app/build.gradle`, nastavte `targetedSdkVersion` 27. 
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
 
 Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.
 

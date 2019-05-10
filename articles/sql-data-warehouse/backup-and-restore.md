@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/01/2019
+ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679303"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236570"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 
@@ -83,7 +83,7 @@ Celkové náklady na primární datového skladu a sedm dní změny snímku se z
 
 Pokud používáte geografické redundantní úložiště, se zobrazí samostatný poplatek za úložiště. Geograficky redundantní úložiště se účtuje standardní sazbou jen pro čtení geograficky redundantní úložiště (RA-GRS).
 
-Další informace o SQL Data Warehouse – ceny najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) a [poplatky za výchozí přenos dat](https://azure.microsoft.com/pricing/details/bandwidth/) při obnovení mezi oblastmi.
+Další informace o SQL Data Warehouse – ceny najdete v tématu [SQL Data Warehouse – ceny]. Při obnovování napříč oblastmi, nebudou účtovat odchozí data.
 
 ## <a name="restoring-from-restore-points"></a>Obnovení z bodů obnovení
 

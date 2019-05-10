@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520047"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415900"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Začínáme s dotazy protokolů Azure Monitor
 
@@ -184,7 +184,7 @@ SecurityEvent
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated-8h
+| extend localtime = TimeGenerated -8h
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Shrnutí: agregační skupiny řádků
@@ -224,7 +224,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Vytvořit souhrn podle sloupce pro čas
 Seskupování výsledků můžete také založené na sloupec času nebo jinou hodnotu. Jednoduše sumarizace `by TimeGenerated` ale by vytvořit skupiny pro každou jeden milisekund v příslušném časovém rozsahu, protože to jsou jedinečné hodnoty. 
 
-Chcete-li vytvořit skupiny založené na průběžné hodnoty, je nejlepší přerušit jednotkami pomocí rozsahu **bin**. Následující dotaz analyzuje *výkonu* záznamy, které měří volná paměť (*počet MB k dispozici*) v určitém počítači. Vypočítá průměrnou hodnotu pro každé období, pokud 1 hodina, posledních 7 dnech:
+Chcete-li vytvořit skupiny založené na průběžné hodnoty, je nejlepší přerušit jednotkami pomocí rozsahu **bin**. Následující dotaz analyzuje *výkonu* záznamy, které měří volná paměť (*počet MB k dispozici*) v určitém počítači. Vypočítá průměrnou hodnotu každé období 1 hodinu za posledních 7 dní:
 
 ```Kusto
 Perf 

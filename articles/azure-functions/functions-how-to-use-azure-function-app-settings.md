@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143191"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511231"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
 
@@ -26,15 +26,23 @@ Pokud chcete začít, přejděte [webu Azure portal](https://portal.azure.com) a
 
 ![Přehled funkcí aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-## <a name="manage-app-service-settings"></a>Karta nastavení aplikace – funkce
+Můžete přejít na všechno, co potřebujete ke správě aplikace function app na stránce Přehled zejména **[nastavení aplikace](#settings)** a **[funkce:](#platform-features)**.
 
-![Přehled funkce aplikace na webu Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+## <a name="settings"></a>Nastavení aplikace
 
-**Nastavení** je karta, kde můžete aktualizovat verze modulu runtime Functions používá aplikace function App. Je také kde budete spravovat hostitele klíčů používá k omezení přístupu k protokolu HTTP k všech funkcí hostované aplikace function app.
+**Nastavení aplikace** kartu uchovává nastavení, které používají vaši aplikaci function app.
 
-Služba Functions podporuje hostování Consumption a plánů hostování služby App Service. Další informace najdete v tématu [zvolte správného plánu služby pro službu Azure Functions](functions-scale.md). Pro poskytují lépe předvídatelnou v plánu Consumption funkce vám umožní omezit využití platformy tak, že nastavíte denní kvótu využití v gigabajtech sekund. Jakmile se denní kvóta využití naplní, aplikace function app je zastavená. Aplikace function app zastavena v důsledku dosažení kvóty útraty může být ze stejné oblasti jako zřízení denní kvóta útraty znovu zapnout. Zobrazit [stránce s cenami za Azure Functions](https://azure.microsoft.com/pricing/details/functions/) podrobné informace o fakturaci.   
+![Nastavení aplikace Function app na webu Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-## <a name="platform-features-tab"></a>Kartě funkce platformy
+Tato nastavení jsou uloženy v zašifrované podobě a je nutné vybrat **zobrazí hodnoty** zobrazit hodnoty na portálu.
+
+Chcete-li přidat nastavení **nové nastavení aplikace** a přidejte nový pár klíč hodnota.
+
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+
+Když vyvíjíte aplikaci function app místně, tyto hodnoty se zachovají v souboru local.settings.json projektu.
+
+## <a name="platform-features"></a>Funkce platformy
 
 ![Funkce kartě funkce platformy aplikace.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
@@ -46,7 +54,6 @@ Aplikace Function App běží v a spravuje, platformu Azure App Service. Vaše a
 Zbývající část tohoto tématu, zaměřuje se na následující funkce služby App Service na webu Azure Portal, které jsou užitečné pro funkce:
 
 + [App Service editor](#editor)
-+ [Nastavení aplikace](#settings) 
 + [Console](#console)
 + [Rozšířené nástroje (Kudu)](#kudu)
 + [Možnosti nasazení](#deployment)
@@ -63,14 +70,6 @@ Další informace o tom, jak pracovat s nastavením služby App Service najdete 
 | ![App Service editoru aplikace Function app.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Editor služby App Service je pokročilé editor na portálu, který vám umožní upravit konfigurační soubory JSON a nabídne soubory kódu. Pokud vyberete tuto možnost, spustí se na samostatné kartě prohlížeče v základním editoru. To umožňuje integraci s úložištěm Git, spouštět a ladit kód a upravit nastavení aplikace function app. Tento editor poskytuje vylepšené vývojářské prostředí pro funkce ve srovnání s výchozím okně aplikace funkce.    |
 
 ![Editor služby App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
-
-### <a name="settings"></a>Nastavení aplikace
-
-| | |
-|-|-|
-| ![Nastavení aplikace Function app.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | App Service **nastavení aplikace** je okno, kde můžete nakonfigurovat a spravovat verze rozhraní framework, vzdálené ladění, nastavení aplikace a připojovacích řetězců. Pokud vaše aplikace function app se integrují s ostatními Azure a služby třetích stran, můžete upravit tato nastavení zde. Pokud chcete odstranit nastavení, posuňte doprava a vyberte **X** ikony na pravém konci řádku (není vidět na následujícím obrázku).
-
-![Konfigurace nastavení aplikace](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
 ### <a name="console"></a>Konzoly
 

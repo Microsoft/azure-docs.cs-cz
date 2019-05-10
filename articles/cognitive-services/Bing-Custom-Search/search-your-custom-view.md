@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: f00a8a02ac7f9468516506b6e6a376209d24c270
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed34b20073a150e38b5d5992ab4e4b8c80453fb2
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946779"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510257"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání vaší instance vlastního vyhledávání Bingu z portálu
 
@@ -26,7 +26,7 @@ Po dokončení konfigurace prostředí pro vlastní vyhledávání, takže ji m�
 
 Po přihlášení do vlastní vyhledávání Bingu [portál](https://customsearch.ai), vyberte instanci hledání a klikněte na tlačítko **produkční** kartu. V části **koncové body**, vyberte koncový bod rozhraní API (například webové rozhraní API). Předplatné Určuje, jaké koncové body jsou uvedeny.
 
-Chcete-li vytvořit vyhledávací dotaz, zadejte hodnoty parametrů pro koncový bod služby. Všimněte si, že parametry, zobrazí na portálu může měnit v závislosti na koncový bod, kterou zvolíte. Zobrazit[referenční dokumentace rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) Další informace. 
+Chcete-li vytvořit vyhledávací dotaz, zadejte hodnoty parametrů pro koncový bod služby. Všimněte si, že parametry, zobrazí na portálu může měnit v závislosti na koncový bod, kterou zvolíte. Zobrazit[referenční dokumentace rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) Další informace. Změnit předplatné, které používá vaše hledání instance, přidejte odpovídající předplatné klíč a upravte tyto parametry trhu a/nebo jazyk.
 
 Některé důležité parametry jsou následující:
 
@@ -44,7 +44,7 @@ Kliknutím na **další parametry** odhalí následující parametry:
 |---------|---------|
 |Safe Search     | Filtr, který se používá k filtrování webových stránek pro obsah pro dospělé. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.        |
 |Jazyk uživatelského rozhraní    | Jazyk používaný pro uživatelské rozhraní řetězce. Pokud povolíte obrázky a videa v uživatelském rozhraní hostovaná, například **Image** a **Video** karet použít zadaný jazyk.        |
-|Počet     | Počet výsledků hledání vrátit v odpovědi. K dispozici pouze pro koncové body Web, Image a videa.         |
+|Count     | Počet výsledků hledání vrátit v odpovědi. K dispozici pouze pro koncové body Web, Image a videa.         |
 |Offset    | Počet výsledků hledání pro přeskočení před vrácením výsledky. K dispozici pouze pro koncové body Web, Image a videa.        |
     
 Po zadání všechny nezbytné možnosti, klikněte na tlačítko **volání** zobrazíte odpověď JSON v pravém podokně. Pokud vyberete hostované uživatelského rozhraní koncového bodu, můžete otestovat vyhledávání v dolním podokně.

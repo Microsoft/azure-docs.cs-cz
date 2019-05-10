@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 8fd73b1e0fcde6bcd69c7ce76b888d1adda37de4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939548"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233990"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ Při použití přiřazení rolí pro RBAC je výkonný mechanismus pro řízen�
 Když objektu zabezpečení je oprávnění RBAC dat prostřednictvím [předdefinovaná role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues), nebo prostřednictvím vlastní roli, tato oprávnění jsou vyhodnoceny jako první při ověření požadavku. Pokud požadovaná operace je oprávnění RBAC přiřazení objektu zabezpečení autorizace se okamžitě vyřešit a další jsou provedeny kontroly seznamu ACL. Případně, pokud objekt zabezpečení nemá RBAC přiřazení nebo operace požadavku se neshoduje s přiřazená oprávnění, pak seznamu ACL se provádí kontroly určit, zda objekt zabezpečení autorizaci k provedení požadované operace.
 
 > [!NOTE]
-> Pokud byl přiřazen objektu zabezpečení [Data objektů Blob úložiště]() přiřazení předdefinované role vlastníka a objektu zabezpečení je považován za *superuživatele* a udělí se mu úplný přístup ke všem mutace operace, včetně nastavení vlastníka adresář nebo soubor, stejně jako seznamů ACL pro adresářů a souborů, u kterých nejsou vlastníka. Superuživatel přístup je jenom autorizované způsobem změnit vlastníka prostředku.
+> Pokud objekt zabezpečení má přiřazenou přiřazení předdefinované role vlastník dat úložiště objektů Blob, pak se považuje za objekt zabezpečení *superuživatele* a udělí se mu úplný přístup ke všem operacím mutující, včetně nastavení Vlastník adresář nebo soubor, stejně jako seznamů ACL pro adresářů a souborů, u kterých nejsou vlastníka. Superuživatel přístup je jenom autorizované způsobem změnit vlastníka prostředku.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Sdílený klíč a sdíleného přístupového podpisu (SAS)
 

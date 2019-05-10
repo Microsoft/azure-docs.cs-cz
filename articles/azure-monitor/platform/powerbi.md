@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 05/01/219
 ms.author: bwren
-ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453955"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234198"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat do Power BI data protokolů Azure Monitor
 
@@ -60,7 +60,9 @@ Power BI Desktop je desktopová aplikace, která umožňuje vytvoření datové 
 ## <a name="publish-to-power-bi"></a>Publikování do Power BI
 Při publikování do Power BI se vytvoří datovou sadu a sestavu.  Pokud vytvoříte sestavu v Power BI Desktopu, pak toto bude publikován s vašimi daty.  Pokud ne, pak se vytvoří prázdné sestavy.  Můžete upravit sestavu v Power BI nebo vytvořte novou u datové sady.
 
-1. Vytvoření sestavy založené na datech.  Použití [dokumentace ke službě Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-report-view) Pokud nejste obeznámeni s ním.  Až budete připravení odeslat do Power BI, klikněte na tlačítko **publikovat**.  Po zobrazení výzvy vyberte cílové umístění ve vašem účtu Power BI.  Pokud nemáte konkrétní cíl v paměti, použijte **Můj pracovní prostor**.
+1. Vytvoření sestavy založené na datech.  Použití [dokumentace ke službě Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-report-view) Pokud nejste obeznámeni s ním.  
+1. Až budete připravení odeslat do Power BI, klikněte na tlačítko **publikovat**.  
+1. Po zobrazení výzvy vyberte cílové umístění ve vašem účtu Power BI.  Pokud nemáte konkrétní cíl v paměti, použijte **Můj pracovní prostor**.
 
     ![Publikování Power BI Desktopu](media/powerbi/desktop-publish.png)
 
@@ -70,7 +72,10 @@ Při publikování do Power BI se vytvoří datovou sadu a sestavu.  Pokud vytvo
 ### <a name="configure-scheduled-refresh"></a>Konfigurace plánované aktualizace
 Datová sada v Power BI bude mít stejná data, která jste předtím viděli v Power BI Desktopu.  Bude nutné aktualizovat datové sady pravidelně na dotaz spustit znovu a jeho naplnění nejnovější data ze služby Azure Monitor.  
 
-1. Klikněte na pracovní prostor, kam jste odeslali sestavy a vyberte **datových sad** nabídky. Vyberte příslušnou kontextovou nabídku vedle nová datová sada a vyberte **nastavení**. V části **přihlašovací údaje ke zdroji dat** byste měli mít zprávu, že přihlašovací údaje jsou neplatné.  Je to proto, že jste nezadali pověření zatím pro datovou sadu pro použití při aktualizuje jeho data.  Klikněte na tlačítko **upravit přihlašovací údaje** a zadat přihlašovací údaje s přístupem k pracovnímu prostoru Log Analytics ve službě Azure Monitor.
+1. Klikněte na pracovní prostor, kam jste odeslali sestavy a vyberte **datových sad** nabídky. 
+1. Vyberte příslušnou kontextovou nabídku vedle nová datová sada a vyberte **nastavení**. 
+1. V části **přihlašovací údaje ke zdroji dat** byste měli mít zprávu, že přihlašovací údaje jsou neplatné.  Je to proto, že jste nezadali pověření zatím pro datovou sadu pro použití při aktualizuje jeho data.  
+1. Klikněte na tlačítko **upravit přihlašovací údaje** a zadat přihlašovací údaje s přístupem k pracovnímu prostoru Log Analytics ve službě Azure Monitor. Pokud budete potřebovat dvojúrovňové ověřování, vyberte **OAuth2** pro **metodu ověřování** výzva k přihlášení pomocí přihlašovacích údajů.
 
     ![Power BI plán](media/powerbi/powerbi-schedule.png)
 

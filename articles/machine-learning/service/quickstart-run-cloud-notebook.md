@@ -10,32 +10,34 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149829"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510616"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
 Vytvoření serveru založené na cloudu Poznámkový blok a pak ho použít.  V tomto rychlém startu spustíte kódu v Pythonu, který se přihlásí hodnoty [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md). Pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning. 
 
 Tento rychlý start ukazuje, jak vytvořit prostředek v cloudu ve vašem pracovním prostoru Azure Machine Learning nakonfigurovanou prostředí Pythonu potřebné ke spuštění Azure Machine Learning. Místo toho použít vlastní prostředí, najdete v článku [rychlý start: Začínáme s Azure Machine Learning pomocí serveru Poznámkový blok](quickstart-run-local-notebook.md).  
- 
+
 V tomto rychlém startu jste pomocí následujících kroků:
 
 * Vytvoření nového poznámkového bloku založené na cloudu serveru ve vašem pracovním prostoru.
 * Spuštění webového rozhraní Jupyter.
 * Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.
 * Spuštění poznámkového bloku.
-* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru. Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru. Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu.
 
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-- Pracovní prostor služby Azure Machine Learning.  [Vytvoření pracovního prostoru](setup-create-workspace.md#portal) nyní, pokud ho nemáte.
+Pokud máte pracovní prostor služby Azure Machine Learning service, pokračujte [další části](#create-a-cloud-based-notebook-server). V opačném případě vytvořte si ho teď.
+
+[!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="create-a-cloud-based-notebook-server"></a>Vytvoření serveru založené na cloudu poznámkového bloku
 
@@ -57,7 +59,6 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
     ![Vytvoření nového virtuálního počítače](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Počkejte přibližně 4 až 5 minut, dokud se stav změní na **systémem**.
-
 
 ## <a name="launch-jupyter-web-interface"></a>Spuštění webové rozhraní Jupyter
 
@@ -92,7 +93,7 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 1. Spuštění druhého buňky kódu. Pokud se zobrazí pokyny k ověření, zkopírujte kód a přejděte na odkaz pro přihlášení. Po přihlášení bude váš prohlížeč nezapomeňte toto nastavení.  
 
-    ![Ověření](media/quickstart-run-cloud-notebook/authenticate.png)
+    ![Ověřit](media/quickstart-run-cloud-notebook/authenticate.png)
 
 1. Po dokončení počet buněk __[2]__ se zobrazí.  Pokud jste měli k přihlášení, zobrazí se zpráva stav úspěšné ověření.   Pokud máte nepovedlo se přihlásit, nezobrazí žádný výstup pro tuto buňku, jenom číslo, zobrazí se úspěšně spustil buňku.
 
@@ -102,10 +103,9 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
     Největší buňku kódu vidíte `run.log` použít na více místech. Každý `run.log` přidá jeho hodnotu do pracovního prostoru.
 
-
 ## <a name="view-logged-values"></a>Zobrazení zaprotokolovaných hodnot
 
-1. Výstup `run` buňka obsahuje odkaz zpět na webu Azure portal pro zobrazení výsledků testu ve vašem pracovním prostoru. 
+1. Výstup `run` buňka obsahuje odkaz zpět na webu Azure portal pro zobrazení výsledků testu ve vašem pracovním prostoru.
 
     ![Zobrazení experimentů](./media/quickstart-run-cloud-notebook/view-exp.png)
 
@@ -117,7 +117,7 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 Protože kód přibližné PI použije náhodné hodnoty, se zobrazí vaše vykreslení různé hodnoty.  
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 ### <a name="stop-the-notebook-vm"></a>Zastavit virtuální počítač poznámkového bloku
 

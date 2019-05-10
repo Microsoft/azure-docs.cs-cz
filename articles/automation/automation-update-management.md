@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43ca5bbfd789c1c41826c9a13a0030b80c72d4bc
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919705"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510661"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -584,7 +584,7 @@ Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, čl
 * Předplatné
 * Skupiny prostředků
 * Umístění
-* Značky
+* Tags
 
 ![Výběr skupin](./media/automation-update-management/select-groups.png)
 
@@ -634,7 +634,7 @@ Update Management však stále hlásit tohoto počítače, jako je nedodržují 
 
 Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Správně nasazení aktualizací pro CentOS, vyberte všechny klasifikace k zajištění, že se mají aktualizace instalovat. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Toto chování se o omezení zypperu. V některých případech je může být nutné znovu spustit nasazení aktualizace. Pokud chcete ověřit, zkontrolujte protokol aktualizace.
 
-## <a name="remove-a-vm-for-update-management"></a>Odebrání virtuálního počítače pro správu aktualizací
+## <a name="remove-a-vm-from-update-management"></a>Odebrání virtuálního počítače ze správy aktualizací
 
 Odebrání virtuálního počítače ze správy aktualizací:
 

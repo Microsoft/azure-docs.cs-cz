@@ -2,18 +2,18 @@
 title: Azure Monitor – monitorování kubernetes hostované aplikace nulové instrumentace aplikací | Dokumentace Microsoftu
 description: Monitorování pro Kubernetes hostované aplikace nulové instrumentace aplikací je řešení pro monitorování, která umožňuje shromažďovat telemetrii Application Insights vztahující se na příchozí a odchozí požadavky do a z podů se spuštěnou v clusteru Kubernetes pomocí použití technologie sítě služby volat Istio.
 services: application-insights
-author: rishabjolly
+author: tokaplan
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: rijolly
-ms.openlocfilehash: 73f95ab75b49fb8ec5b61f6e30080f8f6d474c16
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.author: alkaplan
+ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149880"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408211"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Nulové instrumentace application monitoring pro aplikace pro systém Kubernetes hostované aplikace
 
@@ -34,7 +34,7 @@ Azure Monitor teď využívá technická sítě služby v clusteru Kubernetes po
 - [Prostředku Application Insights](create-new-resource.md)
 - Být mřížku služby. Pokud váš cluster nemá Istio nasazení, můžete se dozvědět jak [nainstalovat a používat ve službě Azure Kubernetes Service Istio](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Možnosti
+## <a name="capabilities"></a>Schopnosti
 
 Pomocí nulové instrumentace aplikace pro monitorování Kubernetes hostované aplikace bude moct používat:
 
@@ -134,7 +134,7 @@ Níže se řešení potíží tok při telemetrická data nezobrazí na portálu
 
 Nejnovější informace o průběhu na tento projekt, najdete [adaptér Application Insights pro GitHub project Istio Mixer](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Chcete-li odinstalovat produkt, pro *každý* soubor YAML nalezené pod *src/kubernetes/* spustit:
 

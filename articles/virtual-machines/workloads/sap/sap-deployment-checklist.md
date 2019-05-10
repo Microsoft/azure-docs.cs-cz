@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648784"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236888"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -140,9 +140,10 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
       2. Pokud se chcete vyhnout grafickým uživatelským rozhraním časové limity mezi místním jeden nasazené rozhraní grafického uživatelského rozhraní SAP a SAP vrstvy aplikace nasazené v Azure, zkontrolujte, zda tyto parametry jsou nastaveny v default.pfl nebo instance profilu:
          1.   rdisp/keepalive_timeout = 3600
          2.   rdisp/keepalive = 20
-      3. Pokud používáte konfiguraci clusteru převzetí služeb při selhání Windows, ujistěte se, že jsou správně nastavena času reagovat na jako nereagující uzly pro Azure. Článku znalostní báze Microsoft [ladění prahy sítě clusteru převzetí služeb při selhání](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) jsou uvedeny parametry a jak ty ovlivnit citlivost převzetí služeb při selhání. Tyto dva parametry uvedených parametrů by měl být nastaven s hodnotami:
-         1.   SameSubNetDelay = 2
+      3. Pokud používáte konfiguraci clusteru převzetí služeb při selhání Windows, ujistěte se, že jsou správně nastavena času reagovat na jako nereagující uzly pro Azure. Článku znalostní báze Microsoft [ladění prahy sítě clusteru převzetí služeb při selhání](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) jsou uvedeny parametry a jak ty ovlivnit citlivost převzetí služeb při selhání. Za předpokladu, že jsou uzly clusteru ve stejné podsíti, by měla být změněna následující parametry:
+         1.   SameSubNetDelay = 2000
          2.   SameSubNetThreshold = 15
+         3.   RoutingHistorylength = 30
 4. Testování vysokou dostupnost a obnovení procedury programu
    1. Situace převzetí služeb při selhání simulujte vypíná virtuální počítače (hostovaného operačního systému Windows) nebo uvedení operační systémy v režimu tísňový (hostovaného operačního systému Linux), aby bylo možné zjistit, jestli vaše konfigurace převzetí služeb při selhání fungovat tak, jak navrženo. 
    2. Změřte vaše dobu potřebnou ke spuštění převzetí služeb při selhání. Pokud dobu trvá příliš dlouho, vezměte v úvahu:

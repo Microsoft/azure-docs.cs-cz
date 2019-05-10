@@ -1,21 +1,24 @@
 ---
-title: Spravovat další repliky pro službu Azure Database for PostgreSQL z příkazového řádku Azure
-description: Další informace o správě – Azure Database for PostgreSQL čtení repliky z příkazového řádku Azure.
+title: Spravovat další repliky pro službu Azure Database for PostgreSQL – jeden Server z příkazového řádku Azure
+description: Další informace o správě repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server z příkazového řádku Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420236"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510238"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Vytvoření a správa repliky pro čtení z příkazového řádku Azure
 
 V tomto článku se dozvíte, jak vytvářet a spravovat repliky pro čtení ve službě Azure Database for PostgreSQL z příkazového řádku Azure. Další informace o čtení replik, najdete v článku [přehled](concepts-read-replicas.md).
+
+> [!NOTE]
+> Rozhraní příkazového řádku Azure zatím nepodporuje vytváření repliky v jiné oblasti než hlavní server. Chcete-li vytvořit repliku mezi různými oblastmi, použijte [webu Azure portal](howto-read-replicas-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 - [– Azure Database for PostgreSQL server](quickstart-create-server-up-azure-cli.md) na hlavní server.
@@ -49,7 +52,7 @@ Tyto kroky musí použije k přípravě na úrovni obecné účely nebo k pamě�
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Skupina prostředků, ve kterém se vytvoří serveru repliky.  |
-| jméno | mydemoserver-replica | Název nového serveru repliky, který je vytvořen. |
+| name | mydemoserver-replica | Název nového serveru repliky, který je vytvořen. |
 | source-server | mydemoserver | Název nebo prostředek ID existující hlavní server pro replikaci z. |
 
 ```azurecli-interactive

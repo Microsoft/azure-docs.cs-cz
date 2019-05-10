@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 04/18/2019
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 91297a02966000899ab79dfb86446890e9c4439a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148702"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414026"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
 
@@ -48,7 +48,8 @@ Ve službě Media Services můžete vytvářet různé pracovní postupy pro pr�
 
 Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
-Než začnete s vývojem, projděte si [základní koncepty](concepts-overview.md)<br/>
+> [!TIP]
+> Než začnete s vývojem, projděte si:<br/>* [Základní koncepty](concepts-overview.md) (incudes důležité koncepty: balení, kódování, ochrana, atd.)<br/>* [Vývoj s využitím rozhraní API služby Media Services v3](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraní API pro vytváření názvů atd.)
 
 ### <a name="quickstarts"></a>Šablony Rychlý start  
 
@@ -86,9 +87,5 @@ Podívejte se [komunita Azure Media Services](media-services-community.md) člá
 
 ## <a name="next-steps"></a>Další postup
 
-Jak začít s v3? 
-
-> [!div class="nextstepaction"]
-> [Další informace o základních konceptech](concepts-overview.md)<br/>
-> [Vývoj s využitím rozhraní API v3 Media Services pomocí sady SDK](developers-guide.md) 
+[Další informace o základních konceptech](concepts-overview.md)
 

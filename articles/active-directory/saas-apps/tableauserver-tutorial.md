@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 539a06398675dc7851017ec5d428e0942e54ce1f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 480e799e0fe307b39ce8a2f0b026a04f507a6beb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564760"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Kurz: Integrace Azure Active Directory s Tableau Server
 
@@ -122,7 +122,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Tableau Server, proveďte n
 
     | Název | Zdrojový atribut | Obor názvů |
     | ---------------| --------------- | ----------- |
-    | uživatelské jméno | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | username | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -248,7 +248,7 @@ Tímto uživatelským jménem uživatele by měl odpovídat hodnotě, které jst
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset kontaktovat správce Tableau serveru ve vaší organizaci.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

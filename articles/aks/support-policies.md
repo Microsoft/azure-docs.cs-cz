@@ -1,163 +1,164 @@
 ---
-title: Zásady podpory Azure Kubernetes Service (AKS)
-description: Další informace o zásady poskytování podpory Azure Kubernetes Service (AKS), sdílená odpovědnost, verze Preview/Alpha/beta verze funkce.
+title: Zásady podpory pro Azure Kubernetes Service (AKS)
+description: Další informace o zásady poskytování podpory Azure Kubernetes Service (AKS), sdílená odpovědnost a funkce, které jsou ve verzi preview (nebo alfa nebo beta verze).
 services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: f173fc7c794729eae8c60cceefa88d153800a816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9b779021eca11638e8ee52ec11d082e5b0e89cd4
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032465"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506683"
 ---
-# <a name="azure-kubernetes-service-aks-support-policies"></a>Zásady podpory Azure Kubernetes Service (AKS)
+# <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes Service
 
-Tento článek obsahuje podrobnosti o AKS technickou podporu zásad omezení, a podrobnosti, včetně správy uzlu pracovního procesu, spravované řízení roviny komponenty, open source komponenty třetích stran a zabezpečení / Správa oprav.
+Tento článek obsahuje podrobnosti o zásady poskytování technické podpory a omezení pro službu Azure Kubernetes Service (AKS). Článek podrobně popisuje také správu uzlů pracovního procesu, komponenty roviny spravovatelného ovládacího prvku, open source komponenty třetích stran a správy zabezpečení nebo opravy.
 
-## <a name="service-updates--releases"></a>Aktualizace služeb a vydané verze
+## <a name="service-updates-and-releases"></a>Aktualizace služeb a verzí
 
-* Informace o verzi, najdete v článku [poznámky k verzi AKS][1]
-* Funkce ve verzi public preview, najdete v části [funkce AKS ve verzi Preview a související projekty][2]
+* Informace o verzi, naleznete v tématu [poznámky k verzi AKS](https://github.com/Azure/AKS/releases).
+* Informace o funkcích ve verzi preview najdete v tématu [AKS ve verzi preview funkce a související projekty](https://github.com/Azure/AKS/blob/master/previews.md).
 
-## <a name="what-is-managed"></a>Co je "spravované"
+## <a name="managed-features-in-aks"></a>Spravované funkce ve službě AKS
 
-Na rozdíl od základní IaaS cloudové komponenty jako jsou výpočetní prostředky ani prostředky sítě, které zpřístupňují nízké úrovně ovládací prvky a možnosti vlastního nastavení pro uživatele využívají, poskytuje služby AKS nasazení Kubernetes klíč, který představuje společnou sadu konfigurací a funkce potřebné pro Kubernetes. Zákazníci, kteří používají tato služba mít omezený počet přizpůsobení, nasazení a další možnosti. To také znamená, že zákazníci nemusíte starat nebo přímé správě clusterů Kubernetes.
+Základní infrastruktura jako služba (IaaS) cloudové komponenty, jako jsou výpočetní prostředky ani prostředky síťových součástí, uživatelům přístup k nižší úrovně ovládací prvky a možnosti přizpůsobení. Naopak AKS poskytuje kompletní nasazení Kubernetes, který poskytuje zákazníkům společnou sadu konfigurace a možnosti, které potřebují. AKS zákazníci mají omezenou přizpůsobení, nasazení a další možnosti. Tito zákazníci nemusíte starat o nebo spravovat clustery Kubernetes přímo.
 
-Se službou AKS získá plně spravovaná zákazníkem **rovina řízení** – kde rovina řízení obsahuje všechny komponenty a služby nezbytné k provozu a koncovým uživatelům poskytovat clustery Kubernetes. Všechny součásti Kubernetes jsou udržované a provozované společností Microsoft.
+Se službou AKS získá plně spravovaná zákazníkem *rovina řízení*. Rovina řízení obsahuje všechny komponenty a služby, které zákazník potřebuje k provozu a koncovým uživatelům poskytovat clustery Kubernetes. Všechny součásti Kubernetes jsou udržované a provozované společností Microsoft.
 
-S managed **rovina řízení** následující součásti jsou spravovaná a sledování od Microsoftu:
+Microsoft spravuje a monitoruje následující součásti přes ovládací panel:
 
-* Kubelet / Server (servery) rozhraní Kubernetes API
-* Etcd nebo kompatibilní úložiště klíč/hodnota – včetně kvality služeb, škálovatelnost a modulu runtime
-* Služby DNS (například kube-dns / CoreDNS)
-* Kubernetes Proxy/sítě
+* Servery Kubelet nebo rozhraní API Kubernetes
+* Etcd nebo kompatibilní párů klíč hodnota, poskytování služby (QoS), škálovatelnost a modulu runtime
+* Služby DNS (například kube-dns nebo CoreDNS)
+* Kubernetes proxy nebo síťový protokol
 
-AKS není 100 % managed **clusteru** řešení. Některé součásti (například pracovní uzly) mají určité **sdílených odpovědností** případy, kdy akce pro zachování clusteru AKS vyžadovat zásah uživatele. Například pracovní uzel použití opravy zabezpečení operačního systému.
+AKS není plně spravovaný cluster řešení. Mají některé komponenty, jako je například pracovních uzlů, *sdílenou odpovědnost*, ve kterém musí uživatelé pomáhají udržovat clusteru AKS. Uživatelský vstup je potřeba, například použití opravy zabezpečení operačního systému (OS) uzlu pracovního procesu.
 
- **Spravované**, znamená, že Microsoftem a týmem AKS nasadí, funguje a je zodpovědný za dostupnost a funkce z těchto služeb. **Zákazníci nelze změnit tyto součásti**. Přizpůsobení je omezená na zajistit konzistentní a škálovatelné uživatelské prostředí. Plně přizpůsobitelná řešení, najdete v části [AKS-Engine](https://github.com/Azure/aks-engine).
+Služby jsou *spravované* v tom smyslu, že Microsoftem a týmem AKS nasadí, funguje a je zodpovědný za dostupnost služby a funkce. Zákazníci nelze změnit tyto spravované součásti. Microsoft omezuje přizpůsobení zajistit konzistentní a škálovatelné uživatelské prostředí. Plně přizpůsobitelná řešení, najdete v části [AKS modul](https://github.com/Azure/aks-engine).
 
 > [!NOTE]
-> Je důležité pochopit, pracovních uzlů Azure Kubernetes Service se zobrazí na webu Azure Portal jako běžné prostředky Azure IaaS, i když jsou tyto virtuální počítače nasazeny do vlastní skupiny prostředků Azure (s předponou MC\\*). Uživatel může změnit, SSH do nich stejně jako normální virtuální počítače (nelze však změnit základní image operačního systému, a nemusí změny zachovat prostřednictvím aktualizace nebo po restartování), a můžete k nim připojit dalších prostředků Azure nebo je jinak upravit. **Ale to z Vzdálená správa a přizpůsobení znamená, že samotný cluster AKS se může stát nepoužitelným. Pokud podle Microsoft Support se vyhněte změnou pracovního uzlu.**
+> Pracovní uzly AKS se zobrazí na webu Azure Portal jako běžné prostředky Azure IaaS. Ale tyto virtuální počítače se nasazují do vlastní skupinu prostředků Azure (s předponou MC\\*). Je možné změnit pracovních uzlů AKS. Například můžete použít Secure Shell (SSH) Chcete-li změnit pracovních uzlů AKS tak, jak změnit normální virtuální počítače (nelze však změnit základní image operačního systému, a nemusí změny zachovat prostřednictvím aktualizace nebo po restartování), a dalších prostředků Azure můžete připojit k AKS pracovní uzly. Když provedete změny, ale *Vzdálená správa a přizpůsobení,* clusteru AKS se může stát nepoužitelným. Neměňte pracovních uzlů, pokud Microsoft Support přesměruje vám provádět změny.
 
-## <a name="what-is-shared-responsibility"></a>Co je sdílená odpovědnost
+## <a name="shared-responsibility"></a>Sdílená odpovědnost
 
-Při vytváření clusteru AKS vytvoří počet pracovních uzlů Kubernetes definované zákazníkem. Tyto uzly, jak je uvedeno jsou, ve kterých se spouští úloh zákazníka. Zákazníci vlastníkem a můžete zobrazit nebo upravit tyto uzly pracovního procesu.
+Při vytvoření clusteru se zákazník definuje Kubernetes pracovních uzlů, které vytvoří AKS. Na tyto uzly jsou spouštěny úloh zákazníka. Zákazníci vlastníkem a můžete zobrazit nebo upravit pracovní uzly.
 
-Protože tyto uzly jsou provádění kódu a ukládat citlivá data, má podporu Microsoftu **omezený přístup** zákazníkovi všechny uzly clusteru. Odborné pomoci společnosti Microsoft nelze přihlásit, spusťte příkazy nebo zobrazit protokoly pro tyto uzly bez oprávnění express zákazníka a/nebo pomoc spustit příkazy ladění podle na tým podpory.
+Vzhledem k tomu, že uzly clusteru zákazníka spuštění kódu a ukládat citlivá data, Microsoft Support můžete k nim přistupovat pouze omezeným způsobem. Microsoft Support nelze přihlásit, spusťte příkazy v, nebo zobrazit protokoly pro tyto uzly bez oprávnění express zákazníků a pomoc.
 
-Z důvodu citlivosti těchto pracovních uzlů společnost Microsoft má velmi pečlivě omezit správy 'na pozadí' z těchto uzlů. I v případě, že Kubernetes hlavní uzly, etcd a další součásti selhání (spravovaný microsoftem) vašich úloh bude nadále spuštěna v mnoha případech. Pokud pracovní uzly se upraví bez péči, může způsobit ztrátu dat a/nebo úlohy a následek, že cluster nepoužitelným.
+Protože pracovní uzly jsou citlivé, společnost Microsoft má velmi pečlivě omezit jejich správu na pozadí. V mnoha případech vašich úloh bude nadále spuštěna i v případě, že Kubernetes hlavní uzly, etcd a Další selhání komponenty spravovaných společností Microsoft. Neuváženě upravenou pracovní uzly můžou způsobit ztrátám dat a úloh a může mít za následek clusteru nepoužitelným.
 
-## <a name="azure-kubernetes-service-support-coverage"></a>Azure Kubernetes Service podpora je poskytována
+## <a name="aks-support-coverage"></a>Rozsah podpory AKS
 
-**Společnost Microsoft poskytuje technickou podporu pro následující:**
+Společnost Microsoft poskytuje technickou podporu pro následující:
 
-* Připojení pro všechny komponenty Kubernetes poskytuje a podporuje Kubernetes service (jako je například API server)
-* Správa, dobu provozu, technologie QoS a provoz systému Kubernetes řídit rovinou služeb (Kubernetes hlavní uzly, rozhraní API serveru etcd, kube-dns pro příklad.
-* Podpora Etcd zahrnuje automatizované transparentní zálohování všech dat etcd každých 30 minut pro obnovení po havárii plánování a cluster stavu. Tyto zálohy nejsou k dispozici přímo pro zákazníky a uživatele a lze zajistit spolehlivost dat a konzistence
-* Žádné integraci okamžiky ovladač poskytovatele cloudu Azure pro Kubernetes, jako je integrace v rámci jiné službě Azure službami, jako je nástroje pro vyrovnávání zatížení, trvalé svazky sítě (Kubernetes a Azure CNI)
-* Dotazy nebo problémy kolem přizpůsobení ovládacího prvku roviny komponenty, například serveru Kubernetes API etcd a kube-dns.
-* Problémy s o tématům práce v síti, jako je například Azure CNI, Kubenet nebo jinou síť přístup a funkce problémy (DNS rozlišení, ztráta paketů, směrování a tak dále).
-  * Podporované síťové scénáře zahrnují Kubenet (Basic) a rozšířeného sítě (Azure CNI) v rámci clusteru a související součásti, připojení k dalším službám Azure a aplikace. Kromě toho řadiče příchozího přenosu dat a konfiguraci služby Vyrovnávání zatížení s/příchozího přenosu dat, výkon sítě a latence jsou podporovány společností Microsoft.
+* Připojení pro všechny součásti Kubernetes, které služba Kubernetes poskytuje a podporuje, jako je například API server.
+* Správa, dobu provozu, technologie QoS a provoz systému Kubernetes ovládat roviny služby (hlavní uzly Kubernetes, rozhraní API serveru, etcd a kube-dns, třeba).
+* Etcd. Podpora zahrnuje automatizované transparentní zálohování všech dat etcd každých 30 minut pro obnovení po havárii plánování a cluster stavu. Tyto zálohy nejsou přímo dostupné pro zákazníky a uživatele. Zajišťují spolehlivost dat a konzistence.
+* Integrační body se v ovladači poskytovatele cloudu Azure pro Kubernetes. Mezi ně patří integrace do jiných služeb Azure, například nástroje pro vyrovnávání zatížení, trvalé svazků nebo síťový protokol (Kubernetes a Azure CNI).
+* Dotazy nebo potíže o přizpůsobení ovládacího prvku roviny komponenty, například serveru Kubernetes API etcd a kube-dns.
+* Potíže s problémy se sítí, jako je Azure CNI, kubenet, nebo jiné přístup k síti a funkce. Problémy mohou zahrnovat DNS rozlišení, ztráta paketů, směrování a tak dále. Společnost Microsoft podporuje různé síťové scénáře:
+  * Kubenet (basic) a rozšířeného sítě (Azure CNI) v rámci clusteru a související součásti
+  * Připojení k dalším službám Azure a aplikace
+  * Kontrolery příchozího přenosu dat a konfigurace nástroje pro vyrovnávání příchozího přenosu dat nebo zatížení
+  * Výkon sítě a latence
 
-**Společnost Microsoft neposkytuje technickou podporu pro následující:**
+Společnost Microsoft neposkytuje technickou podporu pro následující:
 
-* Poradce / použijte "Postup" Kubernetes otázky, například jak vytvořit vlastní příchozího přenosu dat řadiče, dotazy úlohy aplikace, a balíčky třetích stran/OSS nebo nástroje jsou mimo rozsah.
-  * Poradní lístky pro AKS clusteru funkci, přizpůsobení, – například Kubernetes operací ladění problémů/postupy-tos jsou v rámci oboru.
-* Třetí strany open-source projektů není zadaný jako součást rozhraní Kubernetes rovina řízení nebo nasadit s využitím clusterů AKS, jako je například Istio, Helm, Envoy a dalších.
-  * Pro open source projekty třetích stran, jako jsou Helm a Kured, nejvhodnější podporou poskytuje příklady a aplikace, které jsou k dispozici v dokumentaci společnosti Microsoft a kde open source nástroje třetí strany se integruje s poskytovatelem cloudu Kubernetes Azure nebo jiné chyby specifické pro AKS.
-* Zavření source softwarem třetích stran – to může zahrnovat bezpečnostní kontrola nástroje, síťové zařízení nebo software.
-* Problémy "multicloudové" nebo více dodavatele sestavení nasazení se nepodporují, například spuštění dodavatele řešení veřejného cloudu s více federativní není podporováno.
-* Přizpůsobení konkrétní sítě, než ty, které zdokumentované v oficiálním [dokumentaci ke službě AKS][3].
+* Dotazy týkající se použití Kubernetes. Například neposkytuje Microsoft Support Rady o tom, jak vytvořit vlastní příchozího přenosu dat kontrolery, pomocí úloh aplikací nebo použít balíčky třetích stran nebo open source softwaru nebo nástroje.
   > [!NOTE]
-  > Problémy a chyby související skupiny zabezpečení sítě je podporována. Například můžete podporu odpovědi na otázky kolem selhání aktualizace skupiny zabezpečení sítě nebo neočekávané chování skupiny zabezpečení sítě nebo nástroje pro vyrovnávání zatížení.
+  > Microsoft Support můžete získat Rady o AKS fungování clusteru, úprav a ladění (pro příklad, problémů s operací Kubernetes a postupy).
+* Třetí strany open-source projektů, které nejsou k dispozici jako součást rozhraní Kubernetes rovina řízení nebo nasadit s využitím clusterů AKS. Tyto projekty může zahrnovat Istio, Helm, Envoy nebo ostatním uživatelům.
+  > [!NOTE]
+  > Microsoft může poskytovat podporu best effort pro open source projekty třetích stran, jako jsou Helm a Kured. Kde je open source nástroj třetí strany se integruje s poskytovateli cloudu Kubernetes Azure nebo jiné chyby specifické pro AKS, společnost Microsoft podporuje příklady a aplikacemi z dokumentace společnosti Microsoft.
+* Zavření source softwarem třetích stran. Tento software může obsahovat nástrojů pro vyhledávání zabezpečení a síťové zařízení nebo software.
+* Potíže s multicloud nebo kombinovaných sestavení činnostem. Microsoft nepodporuje například problémy související se spouštěním federované multipublic cloudové řešení pro dodavatele.
+* Přizpůsobení kromě oprávnění uvedených v seznamu v síti [dokumentaci ke službě AKS](https://docs.microsoft.com/azure/aks/).
+  > [!NOTE]
+  > Microsoft podporuje problémy a chyby související se skupinami zabezpečení sítě (Nsg). Například Microsoft Support můžete odpovídat na otázky týkající se selhání NSG k aktualizaci nebo neočekávané NSG nebo zatížení vyrovnávání chování.
 
-## <a name="azure-kubernetes-service-support-coverage-worker-nodes"></a>Azure Kubernetes Service podpora je poskytována (počet uzlů pracovního procesu)
+## <a name="aks-support-coverage-for-worker-nodes"></a>AKS rozsah podpory pro uzly pracovního procesu
 
-### <a name="microsoft-responsibilities-for-azure-kubernetes-service-worker-nodes"></a>Odpovědnosti Microsoftu pro služby Azure Kubernetes Service pracovní uzly
+### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>Odpovědnosti Microsoftu pro pracovníka uzlů AKS
 
-Jak je uvedeno v `shared responsibility` části Kubernetes pracovní uzly spadají do modelu společné odpovědnosti, kde:
+Microsoft a Zákazníci se podělí odpovědnost za pracovní uzly Kubernetes kde:
 
-* Nabízí základní image operačního systému požadované přidání (třeba monitorování a síťových agentů)
-* Automatické distribuce oprav operačního systému k pracovním uzlům
-* Automatické nápravy potíží s Kubernetes řídit roviny komponent spuštěných na pracovních uzlech, například:
-  * kube-proxy
+* Základní image operačního systému vyžaduje přidání (třeba monitorování a síťových agentů).
+* Pracovní uzly automaticky přijímat oprav operačního systému.
+* Problémy s Kubernetes řídit plochy, ve které jsou automaticky opravuje součásti, které běží na pracovních uzlech. Součásti zahrnují následující:
+  * Kube-proxy
   * hlavní součásti sítě tunelů, které poskytují komunikační cesty pro Kubernetes
   * kubelet
-  * Démon dockeru/moby
+  * Démon dockeru nebo Moby
 
 > [!NOTE]
-> Pokud komponenty rovina řízení je nefunkční na pracovním uzlu, AKS týmu muset restartovat uzel celého pracovního procesu k vyřešení daného problému. Toto je provedeno jménem uživatele a nelze provést, pokud není eskalací zákazníka (termín s přístupem k zákazníkům aktivní úlohy a data). Pokaždé, když bude možné pracovníky AKS práci, abyste provedli požadované restartování, vliv na jiné aplikace.
+> V pracovního uzlu Pokud není v provozu, komponenty rovina řízení AKS týmu může být nutné restartovat uzel celého pracovního procesu. Z důvodu jejich omezený přístup k active úloh zákazníka a data týmu AKS restartování pracovního uzlu jenom v případě, že zákazník, proto ho postoupí problém. Kdykoli je to možné, zabránit ovlivnění aplikace požadované restartování pracuje tým AKS.
 
-### <a name="customer-responsibilities-for-azure-kubernetes-service-worker-nodes"></a>Odpovědnosti zákazníka pro uzly pracovního procesu Azure Kubernetes Service
+### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Odpovědnosti zákazníka pro pracovníka uzlů AKS
 
-**Microsoft nepodporuje:**
+Microsoft nebude automaticky restartuje pracovní uzly určené k použití opravy na úrovni operačního systému. Přestože se dodávají oprav operačního systému k pracovním uzlům *zákazníka* zodpovídá za restartování pracovních uzlů, aby se změny projevily. Sdílené knihovny, procesy démon, jako jsou jednotky SSD hybridní (SSHD) a další komponenty na úrovni systému nebo operačního systému jsou automaticky opravit.
 
-- Automatické restartování pracovních uzlů pro operační systém úroveň opravy projevily **(v současné době najdete níže).**
-
-Opravy operačního systému jsou poskytována k pracovním uzlům, i když je **odpovědnosti zákazníka** restartování pracovních uzlů, aby se změny projevily. Tato automatickým opravám zahrnuje sdílené knihovny, procesy démon, jako je například SSHD a další úrovně komponenty systému/OS.
-
-Pro upgrade Kubernetes **zákazníci odpovídají za provedení upgradu** prostřednictvím Azure ovládacích panelech nebo rozhraní příkazového řádku Azure. To platí pro aktualizace obsahující zabezpečení nebo funkce vylepšení Kubernetes.
+Zákazníci odpovídají za provádění upgrade Kubernetes. Inovace prostřednictvím ovládacího panelu Azure nebo rozhraní příkazového řádku Azure, můžete spustit. To platí pro aktualizace, které obsahují zabezpečení nebo funkce vylepšení Kubernetes.
 
 > [!NOTE]
-> Jak je AKS `managed service` naše cíle ukončení služby zahrnují odebrání odpovědnost za opravy, aktualizace, shromažďování protokolů a informace k němu další služby plně spravované a bezobslužnou. Tyto položky (restartování uzlu, automatické opravy) může být odebrán v budoucích verzích rostoucím naše možnosti pro koncové správy.
+> Protože je AKS *spravovaná služba*, jeho end cíle zahrnují odebrání odpovědnost za opravy, aktualizace a protokolovat kolekci, aby rozhraní pro správu služeb víc kompletní a bezobslužnou. Jak se zvyšuje kapacitu služby pro správu začátku do konce budoucích verzích může vynechat některé funkce (například restartování uzlu a automatické opravy).
 
 ### <a name="security-issues-and-patching"></a>Problémy se zabezpečením a používání dílčích oprav
 
-V některých případech (například CVEs) Chyba zabezpečení najdete v jednom nebo více součástí služby AKS. V takových případech bude AKS opravy všechny ovlivněné clustery, jak tyto problémy zmírnit, pokud je to možné, nebo uživatelům poskytnout pokyny k upgradu.
+Pokud se najde chyba zabezpečení v jedné nebo více součástí AKS, tým AKS opraví všechny ovlivněné clustery, jak tyto problémy zmírnit. Alternativně tým bude uživatelům pokyny k upgradu.
 
-Pro pracovní uzly neměly vliv tyto bezpečnostní riziko Pokud je k dispozici nulovými výpadky opravy problému, tým AKS použít opravu a upozornit uživatele změny.
+Pro uzly pracovního procesu, je k dispozici zabezpečení chyba má vliv, pokud oprava nulovými výpadky tým AKS tuto opravu a upozornit uživatele změny.
 
-Pokud oprava zabezpečení vyžaduje restartování uzlu pracovního procesu, Microsoft upozorní zákazníky tento požadavek a zákazník zodpovídá provést restartování nebo aktualizace s cílem získat potřebné opravy pro jejich clusteru. Pokud uživatelé se nevztahují opravy podle pokynů AKS, jejich clusteru bude i nadále zranitelné vůči problém(y).
+Pokud oprava zabezpečení vyžaduje restartování uzlu pracovního procesu, Microsoft upozorní zákazníky tento požadavek. Zákazník zodpovídá za restartování nebo aktualizace až po získání opravy clusteru. Pokud uživatelé se nevztahují opravy podle pokynů AKS, jejich clusteru budou nadále zranitelné vůči potíže se zabezpečením.
 
 ### <a name="node-maintenance-and-access"></a>Uzel Údržba a přístup
 
-Protože pracovní uzly jsou sdílená odpovědnost a pod vlastnictví zákazníkům zákazníkům Přihlaste se do těchto pracovních procesů a provádět potenciálně škodlivé změny, např. aktualizace jádra odebrání balíčků a nainstalovat nové balíčky.
+Pracovní uzly jsou sdílená odpovědnost a vlastněných zákazníky. Z toho důvodu se zákazníci budou moct přihlásit k jejich pracovním uzlům a potenciálně škodlivých změny jako aktualizace jádra a instalace nebo odebrání balíčků.
 
-Pokud zákazníci provést destruktivní nebo akce, které aktivují součásti rovina řízení k přechodu do režimu offline nebo jinak budou funkční, službě AKS rozpozná tuto chybu a provádět automatickou nápravu obnovení uzlu pracovního procesu k předchozí pracovní stav.
+Pokud zákazníci měnit destruktivní nebo způsobit, že ovládací prvek komponenty roviny přejdou do režimu offline nebo bude funkční, AKS rozpozná tuto chybu a automaticky obnovit do předchozího stavu pracovního uzlu pracovního procesu.
 
-Přestože Zákazníci můžete přihlásit a alter pracovních uzlů, je *nedoporučuje* vzhledem k tomu, že váš cluster může být nepoužitelným.
+I když zákazníci můžete přihlásit a změnit pracovních uzlů, to se nedoporučují, protože změny můžete vytvořit cluster nepoužitelným.
 
-## <a name="network-ports-access-and-network-security-groups"></a>Síťové porty, přístup a skupiny zabezpečení sítě
+## <a name="network-ports-access-and-nsgs"></a>Síťové porty, přístupu a skupin zabezpečení sítě
 
-AKS jako spravovaná služba, má specifické požadavky na sítě a připojení. Tyto požadavky jsou méně flexibilní než normální komponenty IaaS. Na rozdíl od jiných komponent IaaS může vykreslit určité operace (například přizpůsobení pravidel skupin zabezpečení sítě, blokování konkrétní port, adresu URL na seznam povolených, a tak dále) nepoužitelným clusteru (např. pravidla brány firewall blokující odchozí port 443).
-
-> [!NOTE]
-> Zcela omezovat se jenom výchozí přenos dat (například explicitní domény/port na seznam povolených) z clusteru není podporovaný scénář AKS v tuto chvíli. Seznam adres URL a portů podléhají změnám bez upozornění a můžete poskytované prostřednictvím lístek podpory Azure. Jenom pro zákazníky, kteří jsou ochotni akceptovat, který je zadaný seznam *dostupnost clusteru může mít vliv na kdykoli.*
-
-## <a name="alphabeta-kubernetes-features-not-supported"></a>Systém Alpha/beta verze Kubernetes funkcí (nepodporuje se)
-
-AKS podporuje pouze stabilní funkce v rámci nadřazeného projektu Kubernetes. Systém Alpha/beta verze funkce dostupné v upstreamový Kubernetes nejsou podporovány, pokud jinak předávají a uvádí.
-
-Existují dva případy, kdy alfa nebo beta verze funkce může být vrácena před GA:
-
-* Zákazníci splnili s AKS produkt, podporu nebo technické týmy a jste byli požádáni explicitně vyzkoušet tyto nové funkce.
-* Tyto funkce byly [povolit prostřednictvím příznak funkce] [ 2] (explicitní vyjádřit výslovný souhlas)
-
-## <a name="preview-features--feature-flags"></a>Funkce ve verzi Preview / příznaků funkcí
-
-Pro funkce, které vyžadují delší testování, community a zpětné vazby uživatelů společnost Microsoft vydá nové funkce ve verzi preview nebo funkce, ovládané příznakem. Tyto funkce by měl být předběžné verze / Beta a jsou přístupné a poskytuje tak uživatelům příležitost vyzkoušet si tyto nové funkce.
-
-Ale tato verze preview / příznak funkce funkce nejsou určené k použití v produkčním prostředí – rozhraní API, změna chování, opravy chyb a další změny provádět, který může způsobit nestabilní clusterů a výpadků. Podpora pro účely těchto funkcí je omezena na hlášení chyb a problémů. Než povolíte tyto funkce na produkční systémy nebo předplatných.
+AKS jako spravovaná služba, má specifické požadavky na sítě a připojení. Tyto požadavky jsou méně flexibilní než požadavky pro běžné součásti IaaS. Ve službě AKS operace, jako jsou pravidla NSG blokuje konkrétní port (například pomocí pravidel brány firewall blokující odchozí port 443) přizpůsobení a přidávání na seznam povolených adres URL můžete vytvořit cluster nepoužitelným.
 
 > [!NOTE]
-> Povolení funkce ve verzi preview se projeví při Azure **předplatné** úroveň. Neinstalujte funkce ve verzi preview na produkční předplatného, jak ho můžete změnit výchozí chování rozhraní API vliv na běžný provoz.
+> V současné době AKS neumožňuje úplně zamezit odchozího přenosu dat z vašeho clusteru (například explicitní domény nebo přidávání na seznam povolených portů). Seznam adres URL a portů se mohou změnit bez předchozího upozornění. Aktualizovaný seznam můžete získat tak, že vytvoříte lístek podpory Azure. V seznamu je jenom pro zákazníky, kteří jsou ochotni akceptovat, že jejich dostupnost clusteru může mít vliv na *kdykoli.*
+
+## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nepodporované funkce alfa a beta verze Kubernetes
+
+AKS podporuje pouze stabilní funkce v rámci nadřazeného projektu Kubernetes. Pokud není uvedeno jinak, nepodporuje AKS alfa a beta verze funkce, které jsou k dispozici v nadřazený projekt Kubernetes.
+
+V obou případech alfa nebo beta verze funkce může být nasazeny v než budou všeobecně dostupné:
+
+* Zákazníci splnili s AKS produkt, podporu nebo technické týmy a jste byli požádáni o vyzkoušejte si tyto nové funkce.
+* Tyto funkce byly [umožněné příznak funkce](https://github.com/Azure/AKS/blob/master/previews.md). Zákazníci musí explicitně přihlášení k používání těchto funkcí.
+
+## <a name="preview-features-or-feature-flags"></a>Funkce ve verzi Preview nebo příznaky funkcí
+
+Funkce a funkce, které vyžadují delší testování a zpětná vazba uživatelů společnost Microsoft vydává nové funkce ve verzi preview nebo funkce, ovládané příznakem. Vezměte v úvahu tyto funkce jako zkušební nebo beta verze funkce.
+
+Funkce ve verzi Preview nebo funkce příznak funkce nejsou určené pro produkční prostředí. Probíhající změny v rozhraní API a chování, opravy chyb a další změny může způsobit nestabilní clusterů a výpadků.
+
+Funkce ve verzi public preview jsou fall v rámci podpory "co možná nejlepší" a tyto funkce jsou ve verzi preview a není určená pro produkční prostředí podporuje týmy AKS technickou podporu během pracovní doby pouze. Další informace najdete v tématu:
+
+* [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/en-us/support/faq/)
+
+> [!NOTE]
+> Funkce ve verzi Preview budou účinné od Azure *předplatné* úroveň. V produkčním předplatném neinstalujte funkce ve verzi preview. Na produkčním předplatném funkce ve verzi preview můžete změnit výchozí chování rozhraní API a mít vliv na běžný provoz.
 
 ## <a name="upstream-bugs-and-issues"></a>Nadřazený chyb a problémů
 
-Rychlost vývoje podle nadřazený projekt Kubernetes, jsou vždy chyby, které nejde opravit nebo pracoval kolem v rámci systému AKS a místo toho vyžadují větší opravy na nadřazený projekty (jako je Kubernetes, uzlu/Worker operační systémy a jader). Pro komponenty, které vlastníme, (například poskytovateli cloudu Azure) pracovníci AKS/Azure usilujeme o opravy problému upstream v komunitě.
+Rychlost vývoje podle nadřazený projekt Kubernetes, chyby vždy nastat. Některé z těchto chyb nelze opravit nebo pracoval kolem v rámci systému AKS. Místo toho opravy vyžadují větší opravy na nadřazený projekty (jako je Kubernetes, uzel nebo pracovní operačních systémů a jader). Pro komponenty, které vlastní společnost Microsoft (například poskytovateli cloudu Azure) AKS a Azure pracovníky usilujeme o řešení problémů upstream v komunitě.
 
-V případech, kde je problém technické podpory kořenové způsobila na jeden nebo více chyb nadřazený podporují AKS a engineering provede následující položky:
+Po problém technické podpory se kořenový způsobené nejmíň jeden nadřazený chyby budou týmy podpory a engineering AKS:
 
-* Identifikujte a propojení nadřazeného chyby s všechny podpůrné podrobnosti o tom, proč to má vliv na váš clusteru a/nebo úlohy. Zákazníci budou zobrazovat odkazy na požadované úložiště/problémy, podívejte se na problémy a podívejte se, když nové vydané verze Kubernetes/další zahrne fix(es)
-* Potenciální dokumentovat nebo zmírnění rizik: V některých případech může být problém – v takovém případě je to možné "[známý problém](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue)" bude zaznamenaná v úložišti AKS, který vysvětluje:
-  * Problém a odkaz na nadřazený chyby
-  * Alternativní řešení a podrobnosti o upgradu nebo jiné trvalost řešení
-  * Hrubý časové osy pro zahrnutí založené na nadřazený vydávání verzí
-
-[1]: https://github.com/Azure/AKS/releases
-[2]: https://github.com/Azure/AKS/blob/master/previews.md
-[3]: https://docs.microsoft.com/azure/aks/
+* Identifikujte a propojení nadřazeného chyby s všechny podpůrné podrobnosti k pomoci s vysvětlením, proč tento problém se týká úlohy nebo clusteru. Zákazníci získají odkazy na požadované úložiště, abyste mohli sledovat problémy a zobrazit, když nové verze nabídne opravy.
+* Zadejte možných alternativních řešení nebo zmírnění rizik. Pokud tento problém můžete zmírnit, [známý problém](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) budou uloženy v úložišti AKS. Vysvětluje, známý problém vyplňování:
+  * Problém, včetně odkazů na nadřazený chyby.
+  * Alternativní řešení a podrobné informace o upgradu nebo jiné trvalého řešení.
+  * Surové časové osy pro tento problém zařazení, založené na nadřazený vydávání verzí.

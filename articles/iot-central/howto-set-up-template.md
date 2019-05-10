@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097135"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466524"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
@@ -68,10 +68,9 @@ Chcete-li přidat novou míru telemetrická data, **a nové měření**, zvolte 
 
 > [!NOTE]
 > Názvy polí v šabloně zařízení musí odpovídat názvům vlastností v odpovídajícím kódu zařízení v pořadí pro měření telemetrická data zobrazit v aplikaci při připojení skutečné zařízení. Totéž při konfiguraci nastavení vlastnosti zařízení a příkazy i další definice šablony zařízení v následujících částech.
+ve formátu PNG například můžete přidat nové měření teploty telemetrická data:
 
-Například můžete přidat nové měření teploty telemetrická data:
-
-| Zobrazovaný název        | Název pole    |  Jednotky    | Minimum   |Maximum|
+| Zobrazované jméno        | Název pole    |  Jednotky    | Minimum   |Maximum|
 | --------------------| ------------- |-----------|-------|---|
 | Teplota         | temp          |  degC     |  0    |100|
 
@@ -92,7 +91,7 @@ Zadejte **zobrazovaný název**, **název pole**, a **závažnost** podrobnosti 
 
 Například můžete přidat nový **Motor chyba ventilátor** událostí.
 
-| Zobrazovaný název        | Název pole    |  Výchozí závažnost |
+| Zobrazované jméno        | Název pole    |  Výchozí závažnost |
 | --------------------| ------------- |-----------|
 | Chyba motoru ventilátoru     | fanmotorerror |  Chyba    |
 
@@ -115,7 +114,7 @@ Zadejte podrobnosti pro **zobrazovaný název**, **název pole**, a **hodnoty** 
 
 Například můžete přidat nový **ventilátor režimu** stavu, který má dva možné hodnoty, které zařízení může odesílat, **operační** a **Zastaveno**.
 
-| Zobrazovaný název | Název pole    |  Hodnota 1   | Zobrazovaný název | Hodnota 2    |Zobrazovaný název  | 
+| Zobrazované jméno | Název pole    |  Hodnota 1   | Zobrazované jméno | Hodnota 2    |Zobrazované jméno  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Režim ventilátoru     | fanmode       |  1         | Funguje    |     0      | Zastaveno      |
 
@@ -142,7 +141,7 @@ Nastavení může být v jednom ze tří stavů. Zařízení odesílá tyto stav
 
 Například můžete přidat nové nastavení rychlost ventilátor tak, že vyberete **nastavení** a zadáte na novém **číslo** nastavení:
 
-| Zobrazovaný název  | Název pole    |  Jednotky  | Desetinná místa |Počáteční|
+| Zobrazované jméno  | Název pole    |  Jednotky  | Desetinná místa |Počáteční|
 | --------------| ------------- |---------| ---------|---- |
 | Ventilátor rychlost     | fanSpeed      | OT. / MIN     | 2        | 0   |
 
@@ -150,7 +149,7 @@ Například můžete přidat nové nastavení rychlost ventilátor tak, že vybe
 
 Po výběru **Uložit**, **ventilátor rychlost** nastavení se zobrazí jako dlaždice. Operátor můžete použít ve **Device Explorer** stránky Změna rychlosti ventilátor zařízení.
 
-## <a name="properties"></a>Vlastnosti
+## <a name="properties"></a>Vlastnost
 
 Vlastnosti jsou metadata, která má přidružený k zařízení, jako je například umístění zařízení a sériové číslo. Přidat do šablony zařízení, která se zobrazí jako dlaždice na více vlastností **vlastnosti** kartu. Vlastnost může mít typ, jako je číslo, text, datum, přepínací tlačítko, vlastnosti zařízení, popisku nebo umístění. Operátor můžete zadat hodnoty vlastností při jejich vytvoření zařízení, a mohli upravit tyto hodnoty v každém okamžiku. Vlastnosti zařízení jsou jen pro čtení a odesílány ze zařízení do aplikace. Operátor nelze změnit vlastnosti zařízení. Po připojení skutečných zařízení, na dlaždici vlastnosti zařízení je aktualizace v aplikaci.
 
@@ -161,7 +160,7 @@ Vlastnosti se dělí do dvou kategorií:
 
 Například můžete přidat data poslední obsluhované zařízení jako nový **datum** vlastnosti (vlastnosti aplikace) **vlastnosti** kartu:
 
-| Zobrazovaný název  | Název pole | Počáteční hodnota   |
+| Zobrazované jméno  | Název pole | Počáteční hodnota   |
 | --------------| -----------|-----------------|
 | Last serviced (Poslední údržba)      | lastServiced        | 01/29/2019     |
 
@@ -190,7 +189,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost aplikace s využitím ma
 
 3. Konfigurace **zobrazovaný název**, **název pole**a (volitelně) **počáteční hodnota** pro umístění.
 
-    | Zobrazovaný název  | Název pole | Počáteční hodnota |
+    | Zobrazované jméno  | Název pole | Počáteční hodnota |
     | --------------| -----------|---------| 
     | Adresa instalace | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
@@ -212,7 +211,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost zařízení, která zař
 
 3. Nakonfigurujte zobrazovaný název a názvu pole a vyberte **umístění** jako datový typ:
 
-    | Zobrazovaný název  | Název pole | Typ dat |
+    | Zobrazované jméno  | Název pole | Typ dat |
     | --------------| -----------|-----------|
     | Device location (Umístění zařízení) | deviceLocation | location  |
 
@@ -235,11 +234,11 @@ Příkazy se používají ke vzdálené správě zařízení. Umožňují, oper�
 
 Například můžete přidat nový **Echo** příkaz tak, že vyberete **příkazy** kartu výběrem **+ nový příkaz**a zadat podrobnosti nového příkazu:
 
-| Zobrazovaný název  | Název pole | Výchozí časový limit | Typ dat |
+| Zobrazované jméno  | Název pole | Výchozí časový limit | Typ dat |
 | --------------| -----------|---------------- | --------- |
 | Příkaz pro zobrazení výsledků  | echo       |  30             | text      |
 
-!["Příkaz konfigurace" formulář s podrobnostmi o programu echo](./media/howto-set-up-template/commandsecho.png)
+!["Příkaz konfigurace" formulář s podrobnostmi o programu echo](./media/howto-set-up-template/commandsecho1.png)
 
 Po výběru **Uložit**, **Echo** příkazu se zobrazí jako dlaždice a je připravený k použití v **Device Explorer** když skutečné zařízení připojí. Názvy polí ve svých rukou musí odpovídat názvům vlastností v odpovídajícím kódu zařízení, aby příkazy úspěšně spustit.
 
@@ -255,7 +254,7 @@ Pravidla povolení operátory k monitorování zařízení téměř v reálném 
 
 Například můžete přidat **nastavením a vlastnostem** zobrazovat výběr aktuálních hodnot nastavení a vlastnosti tak, že vyberete dlaždici **řídicí panel** kartu a na dlaždici z knihovny:
 
-!["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+!["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
 Nyní když operátor zobrazení řídicího panelu **Device Explorer**, zobrazí se dlaždice.
 

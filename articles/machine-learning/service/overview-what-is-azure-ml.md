@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201ee251b195845e33ed3829be8540664811f2ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025277"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510434"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -38,7 +38,7 @@ Prozkoumat a přípravě dat, trénování a testování modely a nasadit je pom
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Co můžu se službou Azure Machine Learning dělat?
 
-Použití <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> open sourcové balíčky Pythonu nebo pomocí [vizuální rozhraní (preview)](ui-quickstart-run-experiment.md), můžete vytvářet a trénování s velmi přesnými strojového učení a obsáhlého learningu modely sami v rámci služby Azure Machine Learning pracovního prostoru.
+Použít <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> s open sourcové balíčky Pythonu, nebo použijte [vizuální rozhraní (preview)](ui-quickstart-run-experiment.md) k vytvoření a trénování s velmi přesnými strojového učení a modely obsáhlého learningu sami v rámci služby Azure Machine Learning pracovního prostoru.
 
 Můžete si vybrat z mnoha learning součásti počítače k dispozici v open sourcové balíčky Pythonu, například <a href="https://scikit-learn.org/stable/" target="_blank">Scikit poučení</a>, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>a <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -106,8 +106,6 @@ Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerp�
 - Postupujte podle najdete kurzy: 
   + [Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md) 
   + [Příprava dat a používat automatizované machine learningu automaticky – train regresní model](tutorial-data-prep.md)
-
-- Použití [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) připravit vaše data.
 
 - Seznamte se s [kanály strojového učení](/azure/machine-learning/service/concept-ml-pipelines), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.
 

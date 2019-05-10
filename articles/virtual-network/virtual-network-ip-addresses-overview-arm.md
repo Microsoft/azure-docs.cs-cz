@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 30186d0f8197a35db409684775e2ec78288b8818
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726649"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236357"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -50,7 +50,7 @@ Veřejné IP adresy umožňují internetovým prostředkům příchozí komunika
 
 Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. Veřejné IPv6 adresy je možné přiřadit pouze k internetovým nástrojům pro vyrovnávání zatížení.
 
-### <a name="sku"></a>Skladová jednotka (SKU)
+### <a name="sku"></a>Skladová jednotka
 
 Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 
@@ -105,11 +105,14 @@ Statické veřejné IP adresy se obvykle používají v následujících scéná
 >
 
 ### <a name="dns-hostname-resolution"></a>Překlad názvů hostitelů DNS
-Můžete zadat popisek názvu domény DNS pro veřejný IP prostředek. Na serverech DNS spravovaných Azure se vytvoří mapování *popisek_názvu_domény*.*umístění*.cloudapp.azure.com na veřejnou IP adresu. Pokud například vytvoříte prostředek s veřejnou IP adresou, který jako *popisek_názvu_domény* má **contoso** a jako *umístění* v Azure používá **Západní USA**, plně kvalifikovaný název domény (FQDN) **contoso.westus.cloudapp.azure.com** se přeloží na veřejnou IP adresu tohoto prostředku. Plně kvalifikovaný název domény můžete použít k vytvoření vlastního záznamu CNAME domény odkazujícího na veřejnou IP adresu v Azure. Místo (nebo kromě) použití popisku názvu DNS s výchozí příponou můžete pomocí služby Azure DNS nakonfigurovat název DNS s vlastní příponou, který se přeloží na veřejnou IP adresu. Další informace najdete v tématu věnovaném [použití Azure DNS s veřejnou IP adresou Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).
+Můžete zadat popisek názvu domény DNS pro veřejný IP prostředek. Na serverech DNS spravovaných Azure se vytvoří mapování *popisek_názvu_domény*.*umístění*.cloudapp.azure.com na veřejnou IP adresu. Pokud například vytvoříte prostředek s veřejnou IP adresou, který jako *popisek_názvu_domény* má **contoso** a jako *umístění* v Azure používá **Západní USA**, plně kvalifikovaný název domény (FQDN) **contoso.westus.cloudapp.azure.com** se přeloží na veřejnou IP adresu tohoto prostředku.
 
 > [!IMPORTANT]
 > Každý vytvořený popisek názvu domény musí být v rámci příslušného umístění Azure jedinečný.  
 >
+
+### <a name="dns-best-practices"></a>Osvědčené postupy pro službu DNS
+Pokud byste někdy potřebovali pro migraci do jiné oblasti, nemůžete migrovat plně kvalifikovaný název domény veřejné IP adresy. Jako osvědčený postup slouží k vytvoření záznamu CNAME vlastní domény odkazujícího na veřejnou IP adresu v Azure plně kvalifikovaný název domény. Pokud potřebujete přesunout na jinou veřejnou IP adresu, bude vyžadovat aktualizaci záznamu CNAME namísto toho, aby plně kvalifikovaný název domény ručně aktualizovat na novou adresu. Můžete použít [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) nebo externího poskytovatele DNS pro záznam DNS. 
 
 ### <a name="virtual-machines"></a>Virtuální počítače
 
@@ -119,7 +122,7 @@ Veřejnou IP adresu můžete k virtuálnímu počítači s [Windows](../virtual-
 
 Veřejnou IP adresu vytvořenou s kteroukoli [SKU](#sku) můžete přiřadit službě [Azure Load Balancer](../load-balancer/load-balancer-overview.md) tak, že ji přiřadíte konfiguraci **front-endu** tohoto nástroje pro vyrovnávání zatížení. Veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Front-endu nástroje pro vyrovnávání zatížení můžete přiřadit dynamickou nebo statickou veřejnou IP adresu. Front-endu nástroje pro vyrovnávání zatížení můžete také přiřadit několik veřejných IP adres, což umožňuje použití scénářů s [několika VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), jako je víceklientské prostředí s weby využívajícími SSL. Další informace o skladových položkách nástroje pro vyrovnávání zatížení Azure najdete v tématu věnovaném [standardní SKU nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="vpn-gateways"></a>VPN Gateway
+### <a name="vpn-gateways"></a>Brány VPN Gateway
 
 [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) připojuje virtuální síť Azure k dalším virtuálním sítím Azure nebo k místní síti. Aby služba VPN Gateway mohla komunikovat se vzdálenou sítí, přiřadí se jí veřejná IP adresa. Službě VPN Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
 
@@ -130,12 +133,12 @@ Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamické | Statická |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
-| VPN Gateway |Konfigurace protokolu IP brány |Ano |Ano |
-| Application Gateway |Konfigurace front-endu |Ano (pouze verze 1) |Ano (pouze verze 2) |
+| VPN Gateway |Konfigurace protokolu IP brány |Ano |Ne |
+| Aplikační brána |Konfigurace front-endu |Ano (pouze verze 1) |Ano (pouze verze 2) |
 
 ## <a name="private-ip-addresses"></a>Privátní IP adresy
 Privátní IP adresy umožňují prostředkům Azure komunikovat s ostatními prostředky ve [virtuální](virtual-networks-overview.md) nebo místní síti prostřednictvím brány sítě VPN nebo okruhu ExpressRoute, a to bez použití IP adresy dostupné na internetu.
@@ -182,7 +185,7 @@ Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
-| Application Gateway |Konfigurace front-endu |Ano |Ano |
+| Aplikační brána |Konfigurace front-endu |Ano |Ano |
 
 ## <a name="limits"></a>Limits
 Omezení IP adresování jsou uvedená v kompletní sadě [omezení sítě](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) v Azure. Omezení platí pro jednotlivé oblasti a jednotlivá předplatná. Pokud chcete v závislosti na svých obchodních potřebách zvýšit výchozí omezení na povolené maximum, [kontaktujte podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

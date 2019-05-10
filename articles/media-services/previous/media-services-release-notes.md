@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 427ba2b386810749810397afed8ef3f62dcf9217
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728033"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506627"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -36,7 +36,7 @@ Chceme slyšet od našich zákazníků, takže se můžeme zaměřit na opravu p
 | --- | --- |
 | Několik běžných hlaviček protokolu HTTP nejsou k dispozici v rozhraní REST API. |Pokud vyvíjíte aplikace služby Media Services pomocí rozhraní REST API, zjistíte, že některé společné pole hlavičky protokolu HTTP (včetně CLIENT-REQUEST-ID, REQUEST-ID a RETURN-CLIENT-REQUEST-ID) nejsou podporovány. Záhlaví bude přidána v budoucí aktualizaci. |
 | Procento kódování není povoleno. |Služba Media Services využívá hodnoty vlastnosti IAssetFile.Name při vytváření adres URL pro streamování obsahu (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tohoto důvodu není povoleno kódování procent. Hodnota vlastnosti Název nesmí obsahovat žádný z následujících [procent kódování – vyhrazené znaky](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Kromě toho může existovat pouze jeden "." pro příponu názvu souboru. |
-| Metoda ListBlobs, který je součástí Azure Storage SDK verze 3.x selže. |Služba Media Services generuje na základě adres URL SAS [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verze. Pokud chcete k použití sady SDK úložiště pro výpis objektů BLOB v kontejneru objektů blob, použijte [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) metodu, která je součástí úložiště sady SDK verze 2.x. |
+| Metoda ListBlobs, který je součástí Azure Storage SDK verze 3.x selže. |Služba Media Services generuje na základě adres URL SAS [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verze. Pokud chcete k použití sady SDK úložiště pro výpis objektů BLOB v kontejneru objektů blob, použijte [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) metodu, která je součástí úložiště sady SDK verze 2.x. |
 | Media Services omezování mechanismus omezí využití prostředků pro aplikace, které usnadňují nadměrné požadavky na službu. Služba může vrátit – služba není dostupná"503 stavový kód HTTP. |Další informace naleznete v popisu 503 stavového kódu protokolu HTTP v [kódy chyb služby Media Services](media-services-encoding-error-codes.md). |
 | Při dotazování entity stanovený limit 1 000 entity se vrátí najednou, protože ostatní veřejné verze 2 omezuje výsledky dotazu do 1 000 výsledky. |Použití přeskočit a převzít (.NET) a hlavních (REST), jak je popsáno v [v tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a [v tomto příkladu rozhraní REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Někteří klienti můžou pocházet napříč problém při opakovaném značky v manifestu technologie Smooth Streaming. |Další informace najdete v tématu [v této části](media-services-deliver-content-overview.md#known-issues). |
@@ -534,7 +534,7 @@ Následující funkce byla v listopadu verzi sady SDK:
   
     * Přidala se asynchronní podpora pro všechny metody.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

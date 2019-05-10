@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626838"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510722"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "60626838"
 |**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuální podporované architektury**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
 * Ve verzi Preview 1 [verze 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) sady .NET SDK pro verzi public preview.
@@ -47,6 +47,20 @@ ms.locfileid: "60626838"
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy. 
 * Podpora pro datové proudy. 
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Verze SDK System.Net.Http odpovídá definovaná v balíčku NuGet.
+* Zvětšili velikost počet desetinných míst pro LINQ dotazy.
+* Přidání nové třídy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType a PartitionKeyDefinitionVersion
+* Přidání TimeToLivePropertyPath k DocumentCollection
+* Přidání CompositeIndexes a SpatialIndexes k IndexPolicy
+* Přidání verze do PartitionKeyDefinition
+* Přidat žádný PartitionKey
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * Přidání IdleTcpConnectionTimeout OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection a MaxTcpConnectionsPerEndpoint k ConnectionPolicy.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -361,6 +375,8 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |05. května 2019 |--- |
+| [2.3.0](#2.3.0) |04. dubna 2019 |--- |
 | [2.2.3](#2.2.3) |11. února 2019 |--- |
 | [2.2.2](#2.2.2) |06. února 2019 |--- |
 | [2.2.1](#2.2.1) |Prosinec 24. května 2018 |--- |

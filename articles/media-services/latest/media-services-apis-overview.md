@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b80f11ef97a10728f07cebe1fe80b954e506da52
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147898"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406549"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 
@@ -25,7 +25,11 @@ Tento článek popisuje pravidla, které se vztahují k entitám a rozhraním AP
 
 ## <a name="accessing-the-azure-media-services-api"></a>Přístup k Azure Media Services rozhraní API
 
-Pro přístup k prostředkům Azure Media Services, můžete použít ověřování instančního objektu služby Azure Active Directory (AD).
+K autorizaci pro přístup k prostředkům služby Media Services a rozhraní API služby Media Services, musíte nejprve být ověřeni. Služba Media Services podporuje [Azure Active Directory (Azure AD) – na základě](../../active-directory/fundamentals/active-directory-whatis.md) ověřování. Jsou dvě běžné možnosti ověřování:
+ 
+* **Ověřování instančních objektů** – slouží k ověření služby (například: webové aplikace, aplikace function App, logic apps, rozhraní API a mikroslužeb). Aplikace, které se běžně používají tuto metodu ověřování jsou aplikace, na kterých běží služby démonů, střední vrstvy služby nebo podle plánu. Pro webové aplikace existuje by měl vždy být například střední vrstvy, která se připojuje ke službě Media Services pomocí instančního objektu.
+* **Ověřování uživatelů** – slouží k ověření osoba, která používá aplikace k interakci s prostředky služby Media Services. Interaktivní aplikace by měly nejprve vyzve uživatele k přihlašovacím údajům uživatele. Příkladem je aplikace konzoly správy Autorizovaní uživatelé používají ke sledování úloh kódování nebo živého streamování.
+
 Rozhraní API služby Media Services vyžaduje, že požádá uživatele nebo aplikace, což rozhraní REST API mít přístup k prostředku účtu Media Services a používat **Přispěvatel** nebo **vlastníka** role. Rozhraní API můžete přistupovat pomocí **čtečky** role, ale pouze **získat** nebo **seznamu**   operace bude k dispozici. Další informace najdete v tématu [řízení přístupu na základě rolí pro účty Media Services](rbac-overview.md).
 
 Místo vytvoření instančního objektu, zvažte použití spravované identity pro prostředky Azure pro přístup k rozhraní API služby Media Services prostřednictvím Azure Resource Manageru. Další informace o spravovaných identit pro prostředky Azure, najdete v článku [co je spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -52,6 +56,16 @@ Na následujícím obrázku představuje čísla tok žádostí v chronologické
 2. Přístupový token Azure AD se odešle do střední vrstvy.
 4. Střední vrstva odešle požadavek REST API služby Azure Media s tokenem Azure AD.
 5. Střední vrstva získá zpět data ze služby Media Services.
+
+### <a name="samples"></a>Ukázky kódu
+
+Viz následující ukázky, které ukazují, jak se připojit pomocí instančního objektu Azure AD:
+
+* [Spojte se s REST](media-rest-apis-with-postman.md)  
+* [Připojení s využitím Javy](configure-connect-java-howto.md)
+* [Připojení s využitím .NET](configure-connect-dotnet-howto.md)
+* [Připojení s využitím Node.js](configure-connect-nodejs-howto.md)
+* [Připojení s využitím Pythonu](configure-connect-python-howto.md)
 
 ## <a name="naming-conventions"></a>Zásady vytváření názvů
 

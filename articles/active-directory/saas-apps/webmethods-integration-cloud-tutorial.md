@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s prvkům webMethods cloudové integrace | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a prvkům webMethods cloudové integrace.
+title: 'Kurz: Integrace Azure Active Directory s prvkům webMethods integrační sada | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a prvkům webMethods integrační sada.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 11021562cd34f31564e6b4c22fcd64aac25d3469
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8dead16c60a26e2fc53953ed65337195c3b2aa67
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862059"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470789"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-cloud"></a>Kurz: Integrace Azure Active Directory s prvkům webMethods integrace cloudu
+# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Kurz: Integrace Azure Active Directory s prvkům webMethods integrační sada
 
-V tomto kurzu se dozvíte, jak integrovat prvkům webMethods cloudové integrace s Azure Active Directory (Azure AD).
-Integrace prvkům webMethods cloudové integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat prvkům webMethods integrační sada s Azure Active Directory (Azure AD).
+Integrace prvkům webMethods Suite integrace s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k prvkům webMethods cloudové integrace.
-* Uživatelům se automaticky přihlášeni k prvkům webMethods integrace cloudu (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete řídit ve službě Azure AD, který má přístup k prvkům webMethods integrační sada.
+* Uživatelům se automaticky přihlášeni k prvkům webMethods integrační sada (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,24 +35,24 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s prvkům webMethods integrace cloudu, potřebujete následující položky:
+Konfigurace integrace Azure AD s prvkům webMethods integrační sada, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* prvkům webMethods cloudové integrace jednotného přihlašování povolená předplatného
+* prvkům webMethods integrační sada jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* podporuje integraci cloudu prvkům webMethods **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* podporuje integrační sada prvkům webMethods **SP** a **IDP** jednotné přihlašování zahájené pomocí
 
-* podporuje integraci cloudu prvkům webMethods **just-in-time** zřizování uživatelů
+* podporuje integrační sada prvkům webMethods **just-in-time** zřizování uživatelů
 
-## <a name="adding-webmethods-integration-cloud-from-the-gallery"></a>Přidání prvkům webMethods integrace cloudu z Galerie
+## <a name="adding-webmethods-integration-suite-from-the-gallery"></a>Přidání prvkům webMethods integrační sada z Galerie
 
-Konfigurace integrace prvkům webMethods cloudové integrace do služby Azure AD, budete muset přidat prvkům webMethods cloudové integrace v galerii na váš seznam spravovaných aplikací SaaS.
+Konfigurace integrace prvkům webMethods integrační sada do služby Azure AD, budete muset přidat prvkům webMethods integrační sada z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat prvkům webMethods integrace cloudu z galerie, postupujte následovně:**
+**Chcete-li přidat prvkům webMethods integrační sada z galerie, postupujte následovně:**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -66,31 +66,31 @@ Konfigurace integrace prvkům webMethods cloudové integrace do služby Azure AD
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **prvkům webMethods cloudové integrace**vyberte **prvkům webMethods cloudové integrace** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **prvkům webMethods integrační sada**vyberte **prvkům webMethods integrační sada** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![prvkům webMethods cloudové integrace v seznamu výsledků](common/search-new-app.png)
+     ![prvkům webMethods integrační sada v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s názvem integrace cloudu podle testovacího uživatele prvkům webMethods **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v prvkům webMethods cloudové integrace.
+V této části, konfiguraci a testování Azure AD jednotné přihlašování s názvem integrační sada podle testovacího uživatele prvkům webMethods **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v prvkům webMethods integrační sada.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s prvkům webMethods integrace cloudu, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s prvkům webMethods integrační sada, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace prvkům webMethods integrace cloudu Single Sign-On](#configure-webmethods-integration-cloud-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace prvkům webMethods integrace sady Single Sign-On](#configure-webmethods-integration-suite-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření prvkům webMethods cloudové integrace testovacího uživatele](#create-webmethods-integration-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon v prvkům webMethods integrace cloudu, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvoření prvkům webMethods integrační sada testovacího uživatele](#create-webmethods-integration-suite-test-user)**  – Pokud chcete mít protějšek Britta Simon v prvkům webMethods integrační sada, která souvisí s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrace cloudu, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrační sada, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **prvkům webMethods cloudové integrace** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **prvkům webMethods integrační sada** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
@@ -102,9 +102,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. Ke konfiguraci **prvkům webMethods cloudové integrace**na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, provést Následující kroky:
 
-    ![informace o prvkům webMethods integrace cloudu domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
+    ![informace o prvkům webMethods integrační sada domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
 
     a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
 
@@ -122,12 +122,12 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
     | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse` |
     | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse` |
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+    c. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![informace o prvkům webMethods integrace cloudu domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
+    ![informace o prvkům webMethods integrační sada domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
-    
+    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
     | |
     |--|
     | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
@@ -135,13 +135,48 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
     | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest` |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory prvkům webMethods integrace cloudu klienta](https://empower.softwareag.com/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory prvkům webMethods integrace sady klienta](https://empower.softwareag.com/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+
+5. Ke konfiguraci **prvkům webMethods cloudové rozhraní API**na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **zprostředkovatele identity** iniciované režimu, proveďte Následující kroky:
+
+    ![informace o prvkům webMethods integrační sada domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
+
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
+    | |
+    |--|
+    | `<SUBDOMAIN>.webmethodscloud.com` |
+    | `<SUBDOMAIN>.webmethodscloud.eu` |
+    | `<SUBDOMAIN>.webmethodscloud.de` |
+
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
+    | |
+    |--|
+    | `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso` |
+    | `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso` |
+    | `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso` |
+
+    c. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+
+    ![informace o prvkům webMethods integrační sada domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
+
+    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
+    | |
+    |--|
+    | `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    | `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    | `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory prvkům webMethods integrace sady klienta](https://empower.softwareag.com/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-7. Na **nastavení prvkům webMethods cloudové integrace** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. Na **nastavení prvkům webMethods integrační sada** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -151,11 +186,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-webmethods-integration-cloud-single-sign-on"></a>Konfigurace prvkům webMethods integrace cloudu jednotného přihlašování
+### <a name="configure-webmethods-integration-suite-single-sign-on"></a>Konfigurace prvkům webMethods integrace sady Single Sign-On
 
-Ke konfiguraci jednotného přihlašování na **prvkům webMethods cloudové integrace** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [prvkům webMethods Tým podpory cloudové integrace](https://empower.softwareag.com/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **prvkům webMethods integrační sada** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [prvkům webMethods Tým podpory integrace sady](https://empower.softwareag.com/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -171,9 +206,9 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -182,15 +217,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k prvkům webMethods cloudové integrace.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k prvkům webMethods integrační sada.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **prvkům webMethods cloudové integrace**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **prvkům webMethods integrační sada**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **prvkům webMethods cloudové integrace**.
+2. V seznamu aplikací vyberte **prvkům webMethods integrační sada**.
 
-    ![Prvkům webMethods odkaz cloudové integrace v seznamu aplikací](common/all-applications.png)
+    ![Prvkům webMethods integrační sada odkaz v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
@@ -200,21 +235,21 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
 6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-webmethods-integration-cloud-test-user"></a>Vytvoření prvkům webMethods cloudové integrace testovacího uživatele
+### <a name="create-webmethods-integration-suite-test-user"></a>Vytvoření prvkům webMethods integrační sada testovacího uživatele
 
-V této části se vytvoří uživateli Britta Simon v prvkům webMethods cloudové integrace. prvkům webMethods cloudové integrace podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi prvkům webMethods integrace cloudu, vytvoří se nový po ověření.
+V této části se vytvoří uživateli Britta Simon v prvkům webMethods integrační sada. prvkům webMethods integrační sada podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi prvkům webMethods integrační sada, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na prvkům webMethods cloudové integrace dlaždice na přístupovém panelu, můžete by měl být automaticky přihlášeni k integraci cloudu prvkům webMethods u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na prvkům webMethods integrační sada dlaždici na přístupovém panelu, můžete by měl být automaticky přihlášeni k prvkům webMethods integrační sada, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

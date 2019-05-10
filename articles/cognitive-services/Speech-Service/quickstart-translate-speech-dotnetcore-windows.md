@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: b0b0c256db3cc93e515b38bf7daad72b082d2d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa516c5050bfd53add761bea56c74a58057263c7
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621074"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465687"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro .NET Core
+
+Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-dotnet-windows.md) a [převod textu na řeč](quickstart-text-to-speech-dotnet-windows.md).
 
 V tomto rychlém startu vytvoříte jednoduchou aplikaci .NET Core, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na Windows 64-bit a využívá rozhraní [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
 
@@ -35,7 +37,7 @@ K tomuto rychlému startu potřebujete:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="add-sample-code"></a>Přidejte ukázkový kód.
 
 1. Otevřete soubor `Program.cs` a veškerý kód nahraďte následujícím kódem.
 

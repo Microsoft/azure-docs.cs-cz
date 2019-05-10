@@ -1,5 +1,5 @@
 ---
-title: Jak nastavit výstrahy na události protokolu diagnostiky Azure VPN Gateway
+title: Nastavení výstrah u diagnostický protokol událostí ze služby Azure VPN Gateway
 description: Postup konfigurace výstrah pro VPN Gateway diagnostický protokol událostí
 services: vpn-gateway
 author: anzaman
@@ -7,62 +7,77 @@ ms.service: vpn-gateway
 ms.topic: conceptional
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 39a6d2e6201dd0635149159cb3727fd3c40f710a
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63769733"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510205"
 ---
-# <a name="setting-up-alerts-on-vpn-gateway-diagnostic-log-events"></a>Nastavení upozornění na události diagnostický protokol VPN Gateway
+# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Nastavení výstrah u diagnostický protokol událostí ze služby VPN Gateway
 
-Tento článek vám pomůže nastavit výstrahy na základě událostí diagnostický protokol VPN Gateway.
+Tento článek vám pomůže nastavit výstrahy na základě diagnostický protokol událostí ze služby Azure VPN Gateway.
 
+## <a name="setup"></a>Nastavení výstrah
 
-## <a name="setup"></a>Nastavení Azure Monitor výstrah na základě diagnostický protokol událostí pomocí portálu
-
-Následující příklad postup vytvoří výstrahu pro událost odpojení tunelového propojení sítě VPN typu site-to-site
-
+Následující příklady postupu vytvoří výstrahu pro událost odpojení, která zahrnuje tunelové připojení site-to-site VPN:
 
 
-1. Vyhledejte "Log Analytics" v části všechny služby a vyberte "Pracovní prostory Log Analytics" ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Create")
+1. Na webu Azure Portal vyhledejte **Log Analytics** pod **všechny služby** a vyberte **pracovních prostorů Log Analytics**.
 
-2. Klikněte na možnost "Vytvořit" na stránce Log Analytics.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Select")
+   ![Výběry pro přechod na pracovní prostory Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Create")
 
-3. Zkontrolujte "Vytvořit nový" pracovní prostor a vyplňte podrobnosti.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Select")
+2. Vyberte **vytvořit** na **Log Analytics** stránky.
 
-4. Vyhledejte bránu sítě VPN v části "Monitorování" > okno "Nastavení diagnostiky" ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "vyberte")
+   ![Log Analytics stránky pomocí tlačítka pro vytvoření](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "vyberte")
 
-5. Chcete-li zapnout diagnostiku, dvakrát klikněte na bránu a potom klikněte na "Zapnout diagnostiku" ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "vyberte")
+3. Vyberte **vytvořit nový** a vyplňte podrobnosti.
 
-6. Vyplňte podrobnosti a ověřte, že je zaškrtnuté políčko "Odeslání do Log Analytics" a "TunnelDiagnosticLog". Vyberte pracovní prostor Log Analytics, který byl vytvořen v kroku 3.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Select")
+   ![Podrobnosti o vytváření pracovního prostoru Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "vyberte")
 
-7. Přejít na Přehled prostředků brány virtuální sítě a na kartě monitorování vyberte "Oznámení" a vytvořit nové pravidlo upozornění nebo upravit stávající pravidla upozornění.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
+4. Najít vaši bránu VPN na **monitorování** > **nastavení diagnostiky** okno.
 
+   ![Výběry pro vyhledání brány sítě VPN v nastavení diagnostiky](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "vyberte")
+
+5. Chcete-li zapnout diagnostiku, dvakrát klikněte na bránu a pak vyberte **zapnout diagnostiku**.
+
+   ![Výběry pro zapínání diagnostik](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "vyberte")
+
+6. Vyplňte podrobnosti a ujistěte se, že **odesílat do Log Analytics** a **TunnelDiagnosticLog** jsou vybrány. Zvolte pracovní prostor Log Analytics, který jste vytvořili v kroku 3.
+
+   ![Zaškrtnuto zaškrtávací políčka](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "vyberte")
+
+7. Přejít na Přehled pro prostředek brány virtuální sítě a vyberte **výstrahy** z **monitorování** kartu. Pak vytvořte nové pravidlo upozornění nebo upravit stávající pravidla upozornění.
+
+   ![Vybrané možnosti pro vytvoření nové pravidlo upozornění](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "vyberte")
+
+   ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
 8. Vyberte pracovní prostor Log Analytics a prostředek.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Select")
 
-9. Vyberte možnost "vlastní prohledávání protokolů" jako logiku signálů v části "Přidat podmínku" ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "vyberte")
+   ![Výběr pracovního prostoru a prostředků](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "vyberte")
 
-10. Zadejte následující dotaz v textovém poli "Vyhledávání", nahraďte hodnoty v <> podle potřeby.
+9. Vyberte **prohledávání protokolů vlastní** jako logiku signálů pod **přidat podmínku**.
 
-    AzureDiagnostics | Pokud kategorie == "TunnelDiagnosticLog" a ResourceId == toupper ("<RESOURCEID OF GATEWAY>") a TimeGenerated > ago(5m) a remoteIP_s == "<REMOTE IP OF TUNNEL>" a status_s == "Odpojeno"
+   ![Výběry pro vlastní protokol hledání](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "vyberte")
 
-    Nastavte prahovou hodnotu na 0 a klikněte na "Hotovo"
+10. Do textového pole **Vyhledávací dotaz** zadejte následující dotaz. Nahraďte hodnoty v <> podle potřeby.
 
-    ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Select")
+     `AzureDiagnostics |
+     where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and
+     remoteIP_s == "<REMOTE IP OF TUNNEL>" and status_s == "Disconnected"`
 
-11. Na stránce "Vytvořit pravidlo" klikněte na možnost "Vytvořit nový" v části skupiny akcí. Vyplňte podrobnosti a klikněte na tlačítko OK
+    Nastavte prahovou hodnotu na 0 a vyberte **provádí**.
 
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Select")
+    ![Zadáním dotazu a výběrem prahové hodnoty](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "vyberte")
 
-12. Na stránce "Vytvořit pravidlo" Vyplňte podrobnosti pro "Přizpůsobit akce" a ujistěte se, že se zobrazí správný název skupiny akcí v části "Název skupiny akcí". Klikněte na tlačítko "Vytvoření pravidla upozornění" Vytvoření pravidla.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Select")
+11. Na **vytvořit pravidlo** stránce **vytvořit nový** pod **skupiny akcí** oddílu. Vyplňte podrobnosti a vyberte **OK**.
+
+    ![Podrobnosti o nová skupina akcí](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "vyberte")
+
+12. Na **vytvořit pravidlo** stránky, zadejte podrobnosti pro **přizpůsobit akce** a ujistěte se, že správný název se zobrazí v **název skupiny akcí** oddílu. Vyberte **vytvořit pravidlo upozornění** vytvoření pravidla.
+
+    ![Vybrané možnosti pro vytvoření pravidla](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "vyberte")
 
 ## <a name="next-steps"></a>Další postup
 
-Konfigurace upozornění na metriky tunelové propojení, najdete v článku [jak nastavit výstrahy na metriky brány VPN](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).
+Konfigurace upozornění na metriky tunelové propojení, najdete v článku [nastavení upozornění na metriky brány VPN](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).

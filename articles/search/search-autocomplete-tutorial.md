@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f3e7cc2ed71dda0eb34328432b26a4016b62be1c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025142"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466420"
 ---
-# <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Příklad: Přidat nějaké návrhy nebo automatické dokončování pro vaši aplikaci Azure Search
+# <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Přidat nějaké návrhy nebo automatické dokončování pro vaši aplikaci Azure Search
 
 V tomto článku najdete další informace o použití [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions) a [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vytvářet výkonné vyhledávací pole, která podporuje chování vyhledávání jako vám type.
 
@@ -107,7 +107,7 @@ Změňte následující řádek:
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-měli změnit na:
+K tomuto:
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=true&",
@@ -123,7 +123,7 @@ Zatím se na návrhy střed hledání kód uživatelského rozhraní. Další bl
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 http://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#example2").autocompleteInline({
         appendMethod: "replace",

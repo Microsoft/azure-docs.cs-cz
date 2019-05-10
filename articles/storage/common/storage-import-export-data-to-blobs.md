@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e60a58a8d2f1c69728a2d049fe1414ca1997893e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82672136d6f9af50a3d91da2044f6e0ced4b44a6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479299"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409361"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -114,7 +114,7 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 4. V **vrátí informace o expedici**:
 
    - Z rozevíracího seznamu vyberte operátorovi. Pokud chcete použít dopravce než FedEx/DHL, zvolte existující možnost z rozevíracího seznamu. Kontaktní Azure Data Box operace týmu na `adbops@microsoft.com` o informace týkající se operátorovi, plánujete použít.
-   - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. Pokud nemáte číslo účtu, vytvořte [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](http://www.dhl.com/) účtu dopravce.
+   - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. Pokud nemáte číslo účtu, vytvořte [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](https://www.dhl.com/) účtu dopravce.
    - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast. 
         
        > [!TIP] 

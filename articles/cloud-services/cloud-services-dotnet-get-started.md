@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68801f888df55924791188a3f4ff5b718798c9f3
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520899"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510576"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -36,7 +36,7 @@ Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí r
 Aplikace používá [způsob práce zaměřený na fronty](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternativní architektura: App Service a WebJobs
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [služby Azure App Service](/azure/app-service/) a použít [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkce pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlíp vyhovují vašemu scénáři najdete v tématu [srovnání Azure App Service, Cloud Services a virtual machines](../app-service/overview-compare.md).
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [služby Azure App Service](/azure/app-service/) a použít [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkce pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlíp vyhovují vašemu scénáři najdete v tématu [srovnání Azure App Service, Cloud Services a virtual machines](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.

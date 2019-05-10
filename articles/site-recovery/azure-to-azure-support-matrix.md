@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: 9b905d532dfe71fea7c4ec0377eb53b9e3073907
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1118d1de72ca7cd44844a0b526efd85eb419bc67
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926596"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412765"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiného
 
@@ -47,7 +47,7 @@ Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblas
 **Geografické clusteru** | **Oblasti Azure**
 -- | --
 Americké | Kanada – východ, Kanada – Jih, střed USA (střed), střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2, střed USA, USA (střed) – sever
-Evropa | Velká Británie – Západ, Velká Británie – Jih, Severní Evropa, západní Evropa, Francie – střed, Francie – jih
+Evropa | Velká Británie – Západ, Velká Británie – Jih, Severní Evropa, západní Evropa, Francie – střed, Francie – Jih, Jihoafrická republika – Západ, Jihoafrická republika – sever
 Asie | Indie – Jih, střed Indie, jihovýchodní Asie, jihovýchodní Asie, Japonsko – východ, Japonsko – Západ, Korea – střed, Korea – jih
 Austrálie   | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | Virginie USA (gov), US GOV Iowa, USA (gov) Arizona, US GOV Texas, US DOD – východ, US DOD – střed
@@ -156,6 +156,7 @@ Image Galerie Azure - publikované třetích stran | Podporováno | Podporováno
 Vlastní Image - publikované třetích stran | Podporováno | Podporováno, pokud virtuální počítač běží na podporovaném operačním systému.
 Migrovat virtuální počítače pomocí služby Site Recovery | Podporováno | Pokud virtuální počítač VMware nebo fyzický počítač byl migrován do Azure pomocí Site Recovery, musíte odinstalovat starší verze služby Mobility na počítači a restartujte ho před replikací do jiné oblasti Azure.
 Zásady RBAC | Nepodporuje se | Zásady řízení (RBAC) na virtuální počítače se nereplikují do převzetí služeb při selhání virtuálních počítačů v cílové oblasti přístup na základě rolí.
+Rozšíření | Nepodporuje se | Rozšíření se nereplikují do převzetí služeb při selhání virtuálních počítačů v cílové oblasti. Je potřeba nainstalovat ručně po převzetí služeb při selhání.
 
 ## <a name="replicated-machines---disk-actions"></a>Replikované počítače - disk akce
 

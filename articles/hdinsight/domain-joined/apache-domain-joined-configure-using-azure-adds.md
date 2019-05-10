@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: ed2611896f2c23a3cf1d2fec5d9e711f518a65c6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926354"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415463"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -22,7 +22,7 @@ Clustery Enterprise Security Package (ESP) poskytují přístup k více uživate
 V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí Azure Active Directory Domain Services (Azure AD DS).
 
 > [!NOTE]  
-> ESP je obecně dostupná ve službě Hdinsight 3.6 pro typy clusteru: Interaktivní, Apache Spark a Apache Hadoop. ESP pro typy clusterů Apache HBase a Apache Kafka je ve verzi preview.
+> ESP je obecně dostupná v HDInsight 3.6 a 4.0 pro typy clusteru: Apache Spark, Interactive, Apache Hadoop a HBase. ESP pro typ clusteru Apache Kafka je ve verzi preview.
 
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 

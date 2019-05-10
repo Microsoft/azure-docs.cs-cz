@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 90a39693778e01da76baf19765be8801f55813b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e53f0bd1af3940b4d2f653b5ef43170212c09a43
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683057"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408684"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace ASP.NET Core s konfigurací aplikace Azure
 
@@ -41,13 +41,13 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |---|---|
-    | TestApp:Settings:BackgroundColor | White |
+    | TestApp:Settings:BackgroundColor | Bílý |
     | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Black |
+    | TestApp:Settings:FontColor | Černá |
     | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
 
     Ponechte **popisek** a **typ obsahu** zatím prázdný.
@@ -66,7 +66,7 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core/security/app-secrets) do projektu. Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
-- Otevřete soubor *.csproj*. Přidat `UserSecretsId` elementu, jak je znázorněno zde a nahraďte její hodnotu s vlastním, což je obvykle identifikátor GUID. Uložte soubor.
+- Otevřít *.csproj* souboru. Přidat `UserSecretsId` elementu, jak je znázorněno zde a nahraďte její hodnotu s vlastním, což je obvykle identifikátor GUID. Uložte soubor.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -88,7 +88,7 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
 
 1. Přidejte odkaz na `Microsoft.Extensions.Configuration.AzureAppConfiguration` balíček NuGet spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Spusťte následující příkaz k obnovení balíčků pro váš projekt:
 
@@ -102,7 +102,7 @@ Přidat [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    Tajný klíč správce slouží pouze k otestování webové aplikace místně. Při nasazení aplikace, například na [služby Azure App Service](https://azure.microsoft.com/services/app-service/web), použijte aplikaci nastavení, například **připojovací řetězce** ve službě App Service. Toto nastavení použijte místo uložení připojovacího řetězce, pomocí tajného klíče správce.
+    Tajný klíč správce slouží pouze k otestování webové aplikace místně. Když je aplikace nasazená na [služby Azure App Service](https://azure.microsoft.com/services/app-service/web), například pomocí nastavení aplikace **připojovací řetězce** ve službě App Service místo pomocí Správce tajný kód k uložení připojovacího řetězce.
 
     Tento tajný kód je přistupováno pomocí rozhraní API konfigurace. Dvojtečka (:) funguje v názvu konfigurace s konfigurací rozhraní API na všech podporovaných platformách. Zobrazit [konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 

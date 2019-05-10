@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e87e95ec9e4e20ee4785c2b1f448a7ca5f442b8a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205703"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409198"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace AWS nákladů a využití integrace sestavy
 
@@ -38,7 +38,7 @@ Použití **sestavy** stránka konzoly správou nákladů a fakturací v AWS, ch
 7. Pro **povolit podporu pro**, není nutný žádný výběr.
 8. Pro **nastavení aktualizace dat**vyberte **automaticky aktualizovat vaše náklady &amp; využití sestav při zjištění poplatky za předchozí měsíce s uzavřeno faktury**.
 9. Klikněte na **Další**.
-10. Pro **sadu Amazon S3**, zadejte název sady Amazon S3, kam chcete předpovědí a klikněte na tlačítko **ověřte**. Kontejner musí mít příslušná oprávnění platná. Další informace o přidání oprávnění do kontejneru, naleznete v tématu [nastavení kontejneru a objektu přístupová oprávnění](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html).
+10. Pro **sadu Amazon S3**, zadejte název sady Amazon S3, kam chcete předpovědí a klikněte na tlačítko **ověřte**. Kontejner musí mít příslušná oprávnění platná. Další informace o přidání oprávnění do kontejneru, naleznete v tématu [nastavení kontejneru a objektu přístupová oprávnění](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html).
 11. Pro **předpona cesty sestavy**, zadejte předponu cesta sestavy, které chcete přidat k názvu sestavy.
 12. Pro **komprese**vyberte **GZIP**.
 13. Klikněte na **Další**.

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/23/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60690491"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510758"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sítě konsorcia Hyperledger Fabric
 
@@ -99,7 +99,7 @@ V **nastavení sítě**zadejte vstupy pro vytvoření nebo připojení existují
 |---|---|---|
 **Konfigurace sítě** |Můžete vytvořit novou síť nebo se připojit ke stávající. Pokud se rozhodnete *připojte se k existující*, budete muset zadat další hodnoty. |Nové sítě <br/> Připojte se k existující |
 **Heslo HLF certifikační Autority** |Heslo použité pro certifikáty generované infrastrukturou certifikačních autorit, které jsou vytvořeny jako součást svého nasazení. Heslo musí obsahovat kombinaci tří z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak.<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|1 - 25 znaků |
-**Nastavení organizace** |Můžete přizpůsobit název vaší organizace a certifikát nebo mají výchozí hodnoty, který se má použít.|Výchozí <br/> Upřesňující |
+**Nastavení organizace** |Můžete přizpůsobit název vaší organizace a certifikát nebo mají výchozí hodnoty, který se má použít.|Výchozí <br/> Upřesnit |
 **Nastavení sítě VPN** | Zřízení bránu tunelového propojení sítě VPN pro přístup k virtuálním počítačům | Ano <br/> Ne |
 
 Vyberte **OK**.
@@ -113,7 +113,7 @@ V **konfigurace infrastruktury**, odpovídající konfigurací výkonu a velikos
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
 **Typ škálování** |Typ nasazení jeden virtuální počítač s několika kontejnery nebo více virtuálních počítačů v modelu horizontální navýšení kapacity.|Jeden virtuální počítač nebo víc virtuálních počítačů |
-**Typ disku virtuálního počítače** |Typ úložiště, zálohování, každý z nasazených uzlů. <br/> Další informace o typech disků k dispozici, najdete v tématu [vyberte typ disku](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> Premium SSD |
+**Typ disku virtuálního počítače** |Typ úložiště, zálohování, každý z nasazených uzlů. <br/> Další informace o typech disků k dispozici, najdete v tématu [vyberte typ disku](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> SSD úrovně Premium |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Nasazení více virtuálních počítačů (Další nastavení)
 
@@ -135,7 +135,7 @@ Tato šablona umožňuje vybrat modul trvalost za partnerský uzel. Například 
 
 Vyberte **OK**.
 
-### <a name="deploy"></a>Nasazení
+### <a name="deploy"></a>Nasadit
 
 V **Souhrn**, zkontrolujte vstupy zadán a ke spuštění základních ověřovacích před nasazením.
 

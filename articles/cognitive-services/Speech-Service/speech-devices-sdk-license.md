@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 43f783617c36d30aa1fd65cce580bb5e666afed1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5973cfc955cfce0ec1b073ac96bd68f07f093087
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021481"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409113"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Rozpoznávání řeči Devices SDK licenční smlouvy
 
@@ -32,7 +32,7 @@ Tyto licenční podmínky představují smlouvu mezi vámi a společností Micro
 
     (a) obecná. Můžete instalovat a užívat libovolný počet kopií softwaru pro vývoj a testování vaší aplikace, výhradně pro účely uvedené výše a podobných činnostech pro interní účely.
 
-    (b) Software třetích stran. Software může obsahovat aplikace třetích stran, které jsou vám licencován na základě této smlouvy nebo podle jejich potřeb. Licenční podmínky, oznámení a potvrzení, pokud existuje, pro aplikace třetích stran mohou být dostupné online na http://aka.ms/thirdpartynotices nebo v doprovodném souboru se sděleními. I v případě, že takové aplikace vztahují jiné smlouvy, právní omezení, omezení a vynětí škod níže se vztahují také na rozsahu povoleném rozhodným právem.
+    (b) Software třetích stran. Software může obsahovat aplikace třetích stran, které jsou vám licencován na základě této smlouvy nebo podle jejich potřeb. Licenční podmínky, oznámení a potvrzení, pokud existuje, pro aplikace třetích stran mohou být dostupné online na https://aka.ms/thirdpartynotices nebo v doprovodném souboru se sděleními. I v případě, že takové aplikace vztahují jiné smlouvy, právní omezení, omezení a vynětí škod níže se vztahují také na rozsahu povoleném rozhodným právem.
 
     c) konkurenční srovnávací testy. Pokud jste s přímým přístupem konkurence, a přístupu nebo využití softwaru pro účely konkurenční srovnávací testy, analýzy nebo získávání informací, zruší protože Microsoft, její pobočky a jeho přidružených společností (zahrnující výhledově) jakékoli použití konkurenční, přístupu a srovnávací testy testovací omezení v podmínky pro software v rozsahu jsou vaše podmínky použití, nebo mají být více omezující než podmínky společnosti Microsoft. Pokud taková údajné omezení zrušíme není v podmínky pro software, k přístupu nebo využití tohoto softwaru nejsou povoleny a nebudou udělat.
 
@@ -74,13 +74,13 @@ Tyto licenční podmínky představují smlouvu mezi vámi a společností Micro
 
     (e) sdílení, publikování, distribuci, nebo poskytovat software (s výjimkou libovolného opětovně šiřitelného kódu v souladu s podmínkami výše), poskytování softwaru jako samostatné hostitelské řešení pro použití dalším uživatelům nebo převádět software nebo tuto smlouvu na třetí stranu.
 
-1. OMEZENÍ VÝVOZU Musíte dodržovat všechny příslušné místní i mezinárodní zákony a předpisy o vývozu vztahující se na software, které stanovují omezení míst určení, koncových uživatelů a koncového užívání. Další informace o vývozních omezeních naleznete http://aka.ms/exporting.
+1. OMEZENÍ VÝVOZU Musíte dodržovat všechny příslušné místní i mezinárodní zákony a předpisy o vývozu vztahující se na software, které stanovují omezení míst určení, koncových uživatelů a koncového užívání. Další informace o vývozních omezeních naleznete https://aka.ms/exporting.
 
 1. SLUŽBY PODPORY Společnost Microsoft není povinna podle této smlouvy k poskytování žádných služeb podpory pro software. Žádné podpora je poskytována "tak jak jsou", "se všemi chybami" a bez záruky jakéhokoli druhu.
 
 1. AKTUALIZACE. Software může pravidelně kontrolovat aktualizace a stáhněte a nainstalujte za vás. Aktualizace můžete získávat pouze od společnosti Microsoft nebo ověřených zdrojů. Microsoft může potřebovat aktualizaci vašeho systému, kde přinášejí aktualizace. Souhlasíte s přijímáním těchto automatických aktualizací bez dalších oznámení. Aktualizace nesmíte zahrnovat ani podporovat všechny existující funkce softwaru, služby nebo periferní zařízení.
 
-1. ZÁVAZNÉ USTANOVENÍ O ROZHODČÍM ŘÍZENÍ A ZŘEKNUTÍ SE HROMADNÉ ŽALOBY. Tato část se týká Pokud žijete (nebo firma, pokud je váš hlavní sídlo podnikání v) USA.  Pokud vám a společnosti Microsoft ke sporu, vám a společnosti Microsoft souhlas vyzkoušet po dobu 60 dnů vyřešit spor neformálně. Pokud vám a společnosti Microsoft nepodaří, vám a společnosti Microsoft souhlas s individuálním rozhodčím American Arbitration Association podle Federal Arbitration Act ("zákon FAA") a ne do souhlasíte soudcem nebo porotou. Místo toho se rozhodněte, neutrální rozhodce. Hromadné žaloby podávané, privátní Hromadná rozhodčí a jiné řízení, kde uživatel pracuje právním zástupcem nejsou povolené; ani kombinování jednotlivých řízení bez souhlasu všech stran. Kompletní smlouva o rozhodčím řízení obsahuje další podmínky a je na http://aka.ms/arb-agreement-1. Vy i společnost Microsoft souhlasíte s těmito podmínkami.
+1. ZÁVAZNÉ USTANOVENÍ O ROZHODČÍM ŘÍZENÍ A ZŘEKNUTÍ SE HROMADNÉ ŽALOBY. Tato část se týká Pokud žijete (nebo firma, pokud je váš hlavní sídlo podnikání v) USA.  Pokud vám a společnosti Microsoft ke sporu, vám a společnosti Microsoft souhlas vyzkoušet po dobu 60 dnů vyřešit spor neformálně. Pokud vám a společnosti Microsoft nepodaří, vám a společnosti Microsoft souhlas s individuálním rozhodčím American Arbitration Association podle Federal Arbitration Act ("zákon FAA") a ne do souhlasíte soudcem nebo porotou. Místo toho se rozhodněte, neutrální rozhodce. Hromadné žaloby podávané, privátní Hromadná rozhodčí a jiné řízení, kde uživatel pracuje právním zástupcem nejsou povolené; ani kombinování jednotlivých řízení bez souhlasu všech stran. Kompletní smlouva o rozhodčím řízení obsahuje další podmínky a je na https://aka.ms/arb-agreement-1. Vy i společnost Microsoft souhlasíte s těmito podmínkami.
 
 1. UKONČNENÍ SMLOUVY. Bez omezení dalších práv společnost Microsoft může tuto smlouvu ukončit pokud nedodržíte s některou z jeho podmínkám. V takovém případě musíte zničit všechny kopie softwaru a všechny jeho součásti.
 

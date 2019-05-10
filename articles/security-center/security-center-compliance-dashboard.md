@@ -3,7 +3,7 @@ title: Zlepšit dodržování legislativních dodržování předpisů pomocí s
 description: 'Kurz: Zjistěte, jak ke zlepšení vaší dodržování legislativních předpisů pomocí služby Azure Security Center.'
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2e73cbd1de4336a08e26a609dfe704da0a068860
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 4/30/2019
+ms.author: monhaber
+ms.openlocfilehash: 111a32983472d18c1435feaf2456e5b9416b5112
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705971"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442298"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Vylepšené dodržování legislativních předpisů
 ---
@@ -47,8 +47,7 @@ Zobrazení řídicího panelu pro dodržování předpisů pomáhají zaměřit 
 
 >[!NOTE]
 > Aktuálně se podporují zákonných norem jsou: Azure CIS, PCI DSS 3.2, ISO 27001 a SOC TSP. Další standardů se projeví v řídicím panelu se vyvíjí.
-
-1.  V zabezpečení Center hlavní nabídky v části **zásady a dodržování předpisů** vyberte **řídicího panelu pro dodržování legislativních předpisů**. <br>
+1.  V zabezpečení Center hlavní nabídky v části **zásady a dodržování předpisů** vyberte **dodržování legislativních předpisů**. <br>
 V horní části obrazovky uvidíte řídicí panel přehled o stavu dodržování předpisů pomocí podporovaných dodržování předpisů. Zobrazí se vaše celkové skóre dodržování předpisů a počtu předávání vs. selhání posouzení spojené s každou standard.
 
     ![počítač popis jistotou](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -58,12 +57,17 @@ V horní části obrazovky uvidíte řídicí panel přehled o stavu dodržován
 
     ![Karta dodržování předpisů](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3.  Vyberte **všechny** kartu k zobrazení všechna relevantní doporučení služby Security Center a jejich přidružené standardy. Tento náhled může být užitečné pro identifikaci různých standardů vliv na konkrétní doporučení. <br> Toto zobrazení potenciálně slouží k určení priority doporučení, které je třeba vyřešit. Například, pokud uvidíte, že doporučení **povolit MFA pro účty s oprávněními vlastníka předplatného** selhává na několika prostředcích a souvisí s více standardů vyřešením tohoto doporučení může mít vysoký dopad na vaše celkové skóre dodržování předpisů.
+3. Vyberte **všechny** kartu k zobrazení všechna relevantní doporučení služby Security Center a jejich přidružené standardy. Tento náhled může být užitečné pro identifikaci různých standardů vliv na konkrétní doporučení. <br> Toto zobrazení potenciálně slouží k určení priority doporučení, které je třeba vyřešit. Například, pokud uvidíte, že doporučení **povolit MFA pro účty s oprávněními vlastníka předplatného** selhává na několika prostředcích a souvisí s více standardů vyřešením tohoto doporučení může mít vysoký dopad na vaše celkové skóre dodržování předpisů.
 
     ![dopad skóre dodržování předpisů](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-## <a name="improve-your-compliance-posture"></a>Zlepšit tak stav dodržování předpisů
+1. K vygenerování a stažení sestavy ve formátu PDF sumarizace aktuální stav dodržování předpisů pro konkrétní úroveň standard, klikněte na tlačítko **stáhnout sestavu**.
 
+    Sestava obsahuje shrnutí stavu dodržování předpisů pro vybranou standardní podle dat hodnocení Security Center a je uspořádaný podle ovládací prvky tuto konkrétní úrovně Standard. Sestava je sdílet se zúčastněnými stranami relevantní a může sloužit k prokázání interními a externími auditory.
+
+    ![Stažení](./media/security-center-compliance-dashboard/download-report.png)
+
+## <a name="improve-your-compliance-posture"></a>Zlepšit tak stav dodržování předpisů
 
 Uvedené informace na řídicím panelu dodržování legislativních předpisů, můžete zlepšit tak stav dodržování předpisů pomocí řešení doporučení přímo z řídicího panelu.
 

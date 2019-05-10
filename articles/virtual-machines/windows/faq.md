@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 65d4326763ef9754159e94c9426f3aee69f80ffd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61f24b3c13a53b23538327cd1458a54756b7caa5
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095600"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466355"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Časté otázky o Windows Virtual Machines
-Tento článek se zabývá některými běžnými dotazy o virtuálních počítačích s Windows, které jsou vytvořené v Azure s využitím modelu nasazení Resource Manager. Linux verzi tohoto tématu naleznete v části [nejčastější dotazy o virtuálních počítačích s Linuxem](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Tento článek se zabývá některými běžnými dotazy o virtuálních počítačích s Windows, které jsou vytvořené v Azure s využitím modelu nasazení Resource Manager. Linux verzi tohoto tématu naleznete v části [nejčastější dotazy o virtuálních počítačích s Linuxem](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co můžu spouštět na virtuálním počítači Azure?
-Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Informace o zásadách podpory pro provozování softwaru Microsoftu serveru v Azure najdete v tématu [podpora serverového softwaru Microsoftu pro Azure Virtual Machines](https://support.microsoft.com/kb/2721672)
+Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Informace o zásadách podpory pro provozování softwaru Microsoftu serveru v Azure najdete v tématu [podpora serverového softwaru Microsoftu pro Azure Virtual Machines](https://support.microsoft.com/kb/2721672).
 
 Některé verze Windows 7, Windows 8.1 a Windows 10 jsou dostupné pro předplatitele MSDN Azure benefit a předplatitele MSDN pro účely vývoje a testování s průběžnými platbami, pro vývojová a testovací úlohy. Podrobnosti, včetně pokynů a omezení, najdete v tématu [Image klienta Windows pro předplatitele MSDN](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
 
@@ -38,7 +38,7 @@ Služba Azure Managed Disks se doporučené nabídky diskových úložišť pro 
 Účty úložiště Azure můžete také poskytují úložiště pro disk s operačním systémem a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžete přistupovat k virtuálnímu počítači?
-Vytvořit vzdálené připojení pomocí připojení vzdálené plochy (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlaste se na virtuálním počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podporují se maximálně dvě souběžná připojení, pokud je server nakonfigurovaný jako hostitel relace vzdálené plochy.  
+Vytvořit vzdálené připojení pomocí připojení vzdálené plochy (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlaste se k virtuálnímu počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podporují se maximálně dvě souběžná připojení, pokud je server nakonfigurovaný jako hostitel relace vzdálené plochy.  
 
 Pokud máte potíže s pomocí vzdálené plochy, přečtěte si téma [připojení řešení ke vzdálené ploše na základě Windows Azure virtuální počítač](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
@@ -85,36 +85,26 @@ Ano. Název skupiny prostředků může být maximálně 90 znaků. Zobrazit [ko
 
 Uživatelská jména, může být maximálně 20 znaků a nesmí končit tečkou ("."). 
 
-
 Nejsou povoleny následující uživatelská jména:
-<table>
-    <tr>
-        <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">adm</td><td style="text-align:center">admin</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>
-    </tr>   <tr>
-        <td style="text-align:center">správce</td><td style="text-align:center">aspnet</td><td style="text-align:center">zálohování</td><td style="text-align:center">konzola</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">David </td><td style="text-align:center">hosta</td><td style="text-align:center">Jan</td><td style="text-align:center">vlastník</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">kořen</td><td style="text-align:center">server</td><td style="text-align:center">SQL</td><td style="text-align:center">podpora</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">support_388945a0</td><td style="text-align:center">Sys</td><td style="text-align:center">test</td><td style="text-align:center">test1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2</td><td style="text-align:center">test3</td><td style="text-align:center">uživatel</td><td style="text-align:center">uživatele User1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">uživatel2</td><td style="text-align:center">UŽIVATEL3</td><td style="text-align:center">Uživatel4</td><td style="text-align:center">user5</td>
-    </tr>
-</table>
+
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
+
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na heslo při vytváření virtuálního počítače?
-Hesla musí mít délku 12 až 123 znaků a musí splňovat 3 ze 4 bezpečnostních požadavků následující:
+
+Existují různé heslo požadavky na délku, v závislosti na tom nástroje, které používáte:
+ - Portál - 12 až 72 znaků
+ - PowerShell – 8 až 123 znaků
+ - Rozhraní příkazového řádku – mezi 12 až 123
 
 * Mít nižší znaků
 * Horní znaky

@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729530"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508115"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -38,7 +38,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 ProPlus
+## <a name="office-365-proplus"></a>Office 365 ProPlus
 | Název atributu | Uživatel | Poznámka |
 | --- |:---:| --- |
 | accountEnabled |X |Definuje, jestli je účet povolený. |
@@ -48,8 +48,8 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | pwdLastSet |X |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
 |samAccountName|X| |
 | sourceAnchor |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
-| usageLocation |X |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
+| userPrincipalName |X |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 
 ## <a name="exchange-online"></a>Exchange Online
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
@@ -91,7 +91,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | manažer |X |X | | |
 | člen | | |X | |
 | Mobilní zařízení |X |X | | |
@@ -168,9 +168,9 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | thumbnailphoto nastavuje |X |X | | |
 | název |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
 | userCertificate |X |X | | |
-| userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 | userSMIMECertificates |X |X | | |
 | wWWHomePage |X |X | | |
 
@@ -214,7 +214,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | l |X |X | | |
 | mail |X |X |X | |
 | mailnickname |X |X |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | manažer |X |X | | |
 | člen | | |X | |
 | middleName |X |X | | |
@@ -251,8 +251,9 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | název |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele
+. Používá se pro přiřazení licence. |
+| userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 | wWWHomePage |X |X | | |
 
 ## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (následně označované jako Skype pro firmy)
@@ -273,7 +274,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | l |X |X | | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | manažer |X |X | | |
 | člen | | |X | |
 | Mobilní zařízení |X |X | | |
@@ -299,8 +300,8 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | telephoneNumber |X |X | | |
 | thumbnailphoto nastavuje |X |X | | |
 | název |X |X | | |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
+| userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
@@ -315,8 +316,8 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | proxyAddresses |X |X |X |mechanickým vlastnost. Azure AD používá. Obsahuje všechny sekundární e-mailové adresy uživatele. |
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X | | |Tento název UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
+| userPrincipalName |X | | |Tento název UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 
 ## <a name="intune"></a>Intune
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
@@ -333,8 +334,8 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
+| userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
@@ -350,7 +351,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | manažer |X |X | | |
 | člen | | |X | |
 | Mobilní zařízení |X |X | | |
@@ -365,8 +366,8 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | název |X |X | | |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
+| userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 
 ## <a name="3rd-party-applications"></a>3. stran aplikace
 Tato skupina je sadu atributů používat jako minimální atributy, které jsou potřebné pro obecné úlohy nebo aplikace. Můžete použít pro pracovní postup není uvedený v jiné části nebo aplikace jiných výrobců. Používá se explicitně pro následující:
@@ -381,9 +382,10 @@ Tato skupina je sada atributů, které lze použít, pokud se nepoužívá v adr
 | accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | CN |X | |X | |
 | displayName |X |X |X | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
 | mail |X | |X | |
-| managedBy | | |X | |
+| Spravované | | |X | |
 | mailNickName |X |X |X | |
 | člen | | |X | |
 | atributy objectSID |X | | |mechanickým vlastnost. Identifikátor uživatele AD používá k udržení synchronizace mezi Azure AD a AD. |
@@ -391,8 +393,8 @@ Tato skupina je sada atributů, které lze použít, pokud se nepoužívá v adr
 | pwdLastSet |X | | |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
 | sériové číslo |X |X | | |
 | sourceAnchor |X |X |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
-| usageLocation |X | | |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
-| userPrincipalName (Hlavní název uživatele) |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
+| usageLocation |X | | |mechanickým vlastnost. Země/oblast uživatele. Používá se pro přiřazení licence. |
+| userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 
 ## <a name="windows-10"></a>Windows 10
 Windows 10 připojených k doméně computer(device) synchronizuje některé atributy do služby Azure AD. Další informace o scénářích najdete v tématu [připojení zařízení připojených k doméně do Azure AD pro Windows 10 dojde](../active-directory-azureadjoin-devices-group-policy.md). Tyto atributy synchronizovat vždy a Windows 10 se nezobrazí jako aplikace, kterou můžete zrušit výběr. Počítače s Windows 10 připojených k doméně je identifikován s atributem userCertificate naplněna.
@@ -420,7 +422,7 @@ Tyto atributy pro **uživatele** jsou kromě jiných aplikací, které jste vybr
 ## <a name="exchange-hybrid-writeback"></a>Zpětný zápis hybridní Exchange
 Tyto atributy jsou zapsány zpět z Azure AD do místní služby Active Directory vyberete povolit **hybridní Exchange**. V závislosti na vaší verzi systému Exchange může být méně atributy synchronizovat.
 
-| Atribut názvu (připojit uživatelského rozhraní) |Atribut názvu (v místním AD) | Uživatel | Kontakt | Skupina | Poznámka |
+| Atribut názvu (v místním AD) | Atribut názvu (připojit uživatelského rozhraní) | Uživatel | Kontakt | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Odvozený od cloudAnchor ve službě Azure AD. Tento atribut je novinkou systému Exchange 2016 a Windows Server 2016 AD. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online archivu: Umožňuje zákazníkům archivovat e-mailu. |

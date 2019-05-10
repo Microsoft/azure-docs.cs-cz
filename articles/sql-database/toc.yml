@@ -462,6 +462,8 @@
           href: sql-database-managed-instance-create-vnet-subnet.md
         - name: Konfigurace stávající virtuální sítě a podsítě pro spravovanou instanci
           href: sql-database-managed-instance-configure-vnet-subnet.md
+        - name: Odstranění podsítě po odstranění spravované instance
+          href: sql-database-managed-instance-delete-virtual-cluster.md
         - name: Konfigurace vlastního systému DNS
           href: sql-database-managed-instance-custom-dns.md
         - name: Synchronizace konfigurace sítě

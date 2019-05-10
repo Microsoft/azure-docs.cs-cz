@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998987"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408870"
 ---
-# <a name="tutorial-integrate-with-azure-managed-identities"></a>Kurz: Integrace s Azure spravované identity
+# <a name="integrate-with-azure-managed-identities"></a>Integrace s Azure spravované identity
 
 Azure Active Directory [spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pomáhají zjednodušit správu tajných kódů pro cloudové aplikace. Spravovanou identitu můžete nastavit váš kód používat instanční objekt, který byl vytvořen pro službu Azure compute, na kterých se spouští. Použití spravované identity namísto samostatné přihlašovací údaje uložené v Azure Key Vault nebo řetězec připojení k místní. 
 
@@ -61,7 +61,7 @@ Nastavení spravovaných identit na portálu, nejprve vytvořte aplikaci jako za
 
 1. V [webu Azure portal](https://aka.ms/azconfig/portal)vyberte **všechny prostředky** a vybrat úložiště konfigurace aplikace, kterou jste vytvořili v tomto rychlém startu.
 
-2. Vyberte **Řízení přístupu (IAM)**.
+2. Vyberte **řízení přístupu (IAM)**.
 
 3. Na **zkontrolovat přístup** kartu, vyberte možnost **přidat** v **přidat přiřazení role** karty uživatelského rozhraní.
 

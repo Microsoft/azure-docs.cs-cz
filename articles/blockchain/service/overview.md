@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 4416c30f57b469ee125400c696e8b34311a94926
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028182"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406409"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je služba Azure Blockchain?
 
@@ -65,7 +65,7 @@ Akce správy Consortium, jako například přidávání a odebírání členů z
 
 ## <a name="develop-using-familiar-development-tools"></a>Vývoj pomocí známých nástrojů
 
-Podle kvora Etherea knihy open source, můžete vyvíjet aplikace pro službu Azure Blockchain stejným způsobem jako u stávajících aplikací Etherea. Práce s předních oborových partnerů, rozšíření Azure Blockchain vývoje sady Visual Studio Code umožňuje vývojářům využívat známé nástroje, například Truffle Suite vytváření kontraktů uzpůsobených pro. Pomocí rozšíření Azure Blockchain Development Kit, vývojáře můžou vytvořit nebo připojit k a existující consortium tak, že můžete vytvářet a nasazovat vaše smart smlouvy vše z jednoho integrovaného vývojového prostředí. Pomocí rozšíření Azure Blockchain Visual Studio Code, můžete vytvořit nebo připojit k existující consortium tak, že můžete vytvářet a nasazovat vašich chytrých kontraktů vše z jednoho integrovaného vývojového prostředí. Další informace najdete v tématu [Azure Blockchain Development Kit v nástroji VS Code marketplace](http://aka.ms/vscodebcextension) a [uživatelská příručka k Azure Blockchain Development Kit](http://aka.ms/vscodebcextensionwiki ).
+Podle kvora Etherea knihy open source, můžete vyvíjet aplikace pro službu Azure Blockchain stejným způsobem jako u stávajících aplikací Etherea. Práce s předních oborových partnerů, rozšíření Azure Blockchain vývoje sady Visual Studio Code umožňuje vývojářům využívat známé nástroje, například Truffle Suite vytváření kontraktů uzpůsobených pro. Pomocí rozšíření Azure Blockchain Development Kit, vývojáře můžou vytvořit nebo připojit k a existující consortium tak, že můžete vytvářet a nasazovat vaše smart smlouvy vše z jednoho integrovaného vývojového prostředí. Pomocí rozšíření Azure Blockchain Visual Studio Code, můžete vytvořit nebo připojit k existující consortium tak, že můžete vytvářet a nasazovat vašich chytrých kontraktů vše z jednoho integrovaného vývojového prostředí. Další informace najdete v tématu [Azure Blockchain Development Kit v nástroji VS Code marketplace](https://aka.ms/vscodebcextension) a [uživatelská příručka k Azure Blockchain Development Kit](https://aka.ms/vscodebcextensionwiki ).
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 

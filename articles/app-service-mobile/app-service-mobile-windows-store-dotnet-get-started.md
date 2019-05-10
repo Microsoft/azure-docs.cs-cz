@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 959c1ff8b199320105f650a7eb62a04bedb03b3b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127977"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412783"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Vytvoření aplikace pro Windows s back-endu Azure
 
@@ -38,8 +38,8 @@ Ve všech dalších kurzech Mobile App pro aplikace UPW se předpokládá dokon�
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Windows 10.
-* [Visual Studio Community 2017].
+* Windows 10.
+* [Visual Studio Community].
 * Znalost vývoj aplikací pro UPW. Přejděte [dokumentace k UPW](https://docs.microsoft.com/windows/uwp/) další postupy [nastavení](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) a vytvářet aplikace pro UPW.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Vytvoření nového back-endu mobilní aplikace Azure
@@ -70,7 +70,7 @@ Až nakonfigurujete svůj back-end mobilní aplikace, je možné buď vytvořit 
     Tím se odešle požadavek POST na nový back-end mobilní aplikace, jehož hostitelem je Azure.
 
 > [!TIP]
-> Pokud používáte back-end .NET, můžete projekt aplikace UPW přidat do stejného řešení, ve kterém se nachází serverový projekt. Ve stejném řešení sady Visual Studio bude snazší ladit a testovat jak aplikaci, tak back-end. Pokud chcete přidat projekt aplikace UPW do řešení back-endu, musíte použít sadu Visual Studio 2017.
+> Pokud používáte back-end .NET, můžete projekt aplikace UPW přidat do stejného řešení, ve kterém se nachází serverový projekt. Ve stejném řešení sady Visual Studio bude snazší ladit a testovat jak aplikaci, tak back-end. Chcete-li přidat projekt aplikace UPW do back-endu řešení, musíte používat Visual Studio 2017 nebo novější.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -86,4 +86,4 @@ Až nakonfigurujete svůj back-end mobilní aplikace, je možné buď vytvořit 
 <!-- URLs. -->
 [Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community]: https://go.microsoft.com/fwLink/p/?LinkID=534203

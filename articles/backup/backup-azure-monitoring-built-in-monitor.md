@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809057"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236434"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -49,7 +49,7 @@ Výstrahy jsou primárně scénáře, ve kterém se uživatelům oznamuje tak, a
 Následující scénáře jsou definovány službou jako výstražné scénáře.
 
   - Selhání zálohování a obnovení
-  - Zálohování bylo úspěšně dokončeno s upozorněními.
+  - Zálohování proběhla úspěšně s upozorněními pro agenta Azure Backup (MAB)
   - Zastavte ochranu při zachování dat a zastavení ochrany a odstraňte data
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Výjimky, pokud není vyvolána výstraha
@@ -92,7 +92,7 @@ Pokud je nakonfigurovaná oznámení, zobrazí se úvodní nebo úvodní e-mailu
 Pokud frekvence je nastavená na hodinový přehled a výstraha se vyvolá a vyřeší během hodiny, nebude součástí budoucích hodinový přehled.
 
 > [!NOTE]
-> 
+>
 > * Pokud destruktivní operace, jako **zastavení ochrany a odstraňte data** je provést, je vyvolána výstraha a odešle e-mail na vlastníky těchto předplatných, správci a spolusprávci i v případě, že oznámení nakonfigurovaná není pro obnovení služby trezor.
 > * Konfigurace oznámení pro úspěšné úlohy používají [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 

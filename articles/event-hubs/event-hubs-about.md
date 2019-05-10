@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60822630"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236240"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – streamovací platforma pro velký objem dat a služba ingestování událostí
 Azure Event Hubs je velké objemy dat, platformy a události služba pro ingestování datových proudů. Může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -23,7 +23,7 @@ Azure Event Hubs je velké objemy dat, platformy a události služba pro ingesto
 Některé scénáře, ve kterém můžete používat Event Hubs jsou následující scénáře:
 
 - Detekce anomálií (podvody/odlehlé hodnoty)
-- Protokolování aplikací
+- Protokolování aplikace
 - Analytické kanály, jako například navštívené stránky
 - Živé řídicí panely
 - Archivace dat
@@ -86,7 +86,8 @@ Abyste mohli začít používat Event Hubs, najdete v článku **odesílat a př
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (pouze pro odesílání)](event-hubs-c-getstarted-send.md)
-- [Apache Storm (pouze reecive)](event-hubs-storm-getstarted-receive.md)
+- [Apache Storm (pouze přijímání)](event-hubs-storm-getstarted-receive.md)
+
 
 Další informace o službě Event Hubs najdete v následujících článcích:
 

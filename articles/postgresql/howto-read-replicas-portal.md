@@ -1,21 +1,24 @@
 ---
-title: Spravovat další repliky pro službu Azure Database for PostgreSQL na webu Azure Portal
-description: Další informace o správě – Azure Database for PostgreSQL čtení replik na webu Azure Portal.
+title: Spravovat další repliky pro službu Azure Database for PostgreSQL – jeden Server z webu Azure portal
+description: Další informace o správě repliky pro čtení – Azure Database for PostgreSQL – jeden Server z webu Azure portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420665"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510402"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Vytvořit a spravovat repliky pro čtení z webu Azure portal
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytvoření a správa repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server z webu Azure portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení ve službě Azure Database for PostgreSQL na webu Azure Portal. Další informace o čtení replik, najdete v článku [přehled](concepts-read-replicas.md).
+
+> [!IMPORTANT]
+> Čtení repliky můžete vytvořit ve stejné oblasti jako váš hlavní server, nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi public preview.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -58,9 +61,15 @@ Vytvoření repliky pro čtení, postupujte podle těchto kroků:
 
    ![Přidejte repliku](./media/howto-read-replicas-portal/add-replica.png)
 
-4. Zadejte název repliky pro čtení. Vyberte **OK** pro potvrzení vytvoření repliky.
+4. Zadejte název repliky pro čtení. 
 
-   ![Název repliky](./media/howto-read-replicas-portal/name-replica.png) 
+    ![Název repliky](./media/howto-read-replicas-portal/name-replica.png)
+
+5. Vyberte umístění pro repliku. Repliku můžete vytvořit v libovolné oblasti Azure. Výchozí umístění je stejná jako hlavní server.
+
+    ![Vyberte umístění](./media/howto-read-replicas-portal/location-replica.png)
+
+6. Vyberte **OK** pro potvrzení vytvoření repliky.
 
 Replika je vytvořen pomocí stejné konfigurace serveru na hlavní server. Po vytvoření repliky několik nastavení lze změnit nezávisle z hlavního serveru: výpočetní generace, virtuální jádra, úložiště a dobu uchování zálohování. Cenovou úroveň můžete změnit také nezávisle na sobě, s výjimkou do nebo z úrovně Basic.
 

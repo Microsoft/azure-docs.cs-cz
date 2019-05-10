@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a7927868a9a4bebc80ec995baefbae4c45d747f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363008"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410478"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>Příklad 3: Vytvořit hraniční síť k ochraně sítě s bránou firewall, směrování definovaného uživatelem a skupin zabezpečení sítě
 
@@ -635,7 +635,7 @@ Uživatelem definované proměnné v souborech podle potřeby upravte. Spusťte 
 Po nastavení uživatelem definované proměnné, spuštěním tohoto skriptu:
 
 1. Připojení k předplatnému Azure
-1. Vytvoření nového účtu úložiště
+1. Vytvořit nový účet úložiště
 1. Vytvořit novou virtuální síť a tři podsítě, jak jsou definovány v souboru konfigurace sítě
 1. Sestavení pět virtuálních počítačů: Brána firewall a čtyři virtuální počítače Windows serveru
 1. Konfigurace směrování definovaného uživatelem:
@@ -989,7 +989,7 @@ Toto prostředí PowerShell spustit skript místně na Internetu připojený po�
 Uložte tento soubor XML s aktualizované umístění. Změnit `$NetworkConfigFile` proměnné v úplná skript výše odkaz na soubor konfigurace sítě uložený.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

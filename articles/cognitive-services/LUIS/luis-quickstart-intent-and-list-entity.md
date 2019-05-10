@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521267"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236423"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získat data přesně odpovídající text z utterance
 
@@ -90,11 +90,11 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
 |Název v kanonickém tvaru|Synonyma|
 |--|--|
-|Účetnictví|acct<br>accting<br>3456|
+|Účtárna|acct<br>accting<br>3456|
 |Vývoj pro operace|Vývoj a provoz<br>4949|
-|Inženýrství|"Eng"<br>nesmí<br>4567|
+|Strojírenství|"Eng"<br>nesmí<br>4567|
 |Finance|dokončení<br>2020|
-|Informační technologie|IT<br>2323|
+|Informační technologie|it<br>2323|
 |Uvnitř prodeje|isale<br>insale<br>1414|
 |Výzkum a vývoj|R&D<br>1234|
 
@@ -108,11 +108,7 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
 1. Na stránce entity oddělení zadejte `Accounting` jako novou hodnotu.
 
-    [![Snímek obrazovky se zadáním hodnoty](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "snímek obrazovky se zadáním hodnoty")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
-
 1. Synonyma přidejte synonyma z předchozí tabulky.
-
-    [![Snímek obrazovky zadání synonyma](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "snímek obrazovky zadání synonyma")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 1. Pokračujte v přidávání kanonické názvy a jejich synonyma. 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448450"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464874"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Přehled akcelerátorů řešení simulace zařízení
 
@@ -38,7 +38,7 @@ Simulace zařízení je zdarma. Simulace zařízení se ale nasadí do vašeho p
 
 Při nasazení simulace zařízení získáte některé ukázkové simulace a ukázková zařízení. Tyto ukázky můžete použít pro další informace o použití simulaci zařízení. Pokud chcete začít, spusťte [ukázkový simulace, která simuluje 10 trucks](quickstart-device-simulation-deploy.md). Můžete také [vytvořit vlastní simulaci pomocí jednoho z mnoha ukázková zařízení, které jsou k dispozici](iot-accelerators-device-simulation-create-simulation.md).
 
-![Konfigurace simulace](media/iot-accelerators-device-simulation-overview/SampleSimulation.png)
+![Konfigurace simulace](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>Vlastní simulovaných zařízení
 

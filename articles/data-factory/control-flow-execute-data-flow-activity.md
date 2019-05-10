@@ -1,23 +1,21 @@
 ---
 title: Spuštění aktivity toku dat ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Spuštění aktivit toku dat spouštět datové toky.
+description: Jak provádět datové toky z uvnitř kanál datové továrny.
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 856f4bd9c2b04ff10ed598c5e641955e1de99398
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557529"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236671"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Spuštění aktivity toku dat ve službě Azure Data Factory
 Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění kanálu aktivované pomocí aktivity toku dat spouštět.
@@ -59,15 +57,13 @@ Vyberte výpočetní prostředí pro toto spuštění toku data. Výchozí hodno
 
 ![Ladění tlačítko](media/data-flow/debugbutton.png "tlačítko ladit.")
 
-Použijte na datový tok ladění využívat topným zařízením clusteru pro interaktivní testování datové toky v kanálu ladění spustit. Použijte možnost Pipleine ladění k testování vašich toků dat v kanálu.
+Použijte na datový tok ladění využívat topným zařízením clusteru pro interaktivní testování datové toky v kanálu ladění spustit. Použijte možnost kanálu ladění k testování vašich toků dat v kanálu.
 
-### <a name="compute-type"></a>Typ výpočtu
+### <a name="run-on"></a>Spustit v
 
-Můžete zvolit obecné účely, – Compute optimalizované nebo paměťově optimalizované, v závislosti na požadavcích datový tok.
+Toto je povinné pole, která definuje, které prostředí IR pro váš tok dat provádění aktivity. Ve výchozím nastavení bude služba Data Factory používat výchozí prostředí Azure Integration runtime automaticky vyřešit. Můžete však vytvořit vlastní Azure prostředí Integration runtime, který definovat konkrétní oblasti, výpočetní typu, počty jader a hodnota TTL pro provádění aktivity toku vaše data.
 
-### <a name="core-count"></a>Počet jader
-
-Zvolte počet jader, kterou chcete přiřadit k úloze. Pro úlohy menší méně jádry fungují lépe.
+Výchozí nastavení pro spuštění toku dat je 8jádrový obecné výpočetní s hodnotou TTL 60 minut.
 
 ### <a name="staging-area"></a>Pracovní oblasti
 
@@ -82,6 +78,8 @@ Pokud použijete parametry datové sady, nezapomeňte nastavit hodnoty parametr�
 ### <a name="debugging-parameterized-data-flows"></a>Ladění s parametry datové toky
 
 Můžete ladit pouze datové toky s parametry datové sady z kanálu ladění spuštěn pomocí aktivity toku dat spouštět. V současné době interaktivní ladicích relací v toku dat ADF nefungují s parametry datové sady. Spuštění kanálu a spuštění ladění bude fungovat s parametry.
+
+Dobrým postupem je vytvoření toku dat pomocí statické datové sady, abyste měli k dispozici šíření sloupce – plná metadata v době návrhu. Potom nahraďte statické datové sady s datovou sadou dynamické parametry při zprovoznění vašeho kanálu toku dat
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 

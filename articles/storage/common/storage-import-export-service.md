@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478757"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413912"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
@@ -160,7 +160,7 @@ Jestliže doplníte jednotky do Azure, platíte přesouvání náklady dopravce.
 
 **Cena za transakce**
 
-Při importu dat do služby Azure Storage nejsou spojené žádné transakční náklady navíc náklady na transakce služby storage úrovně standard. Standardní spojeným se použít při exportu dat z úložiště objektů Blob. Další informace o náklady za transakce, naleznete v tématu [cenách přenosů dat.](https://azure.microsoft.com/pricing/details/data-transfers/)
+[Poplatek za transakce úložiště úrovně standard](https://azure.microsoft.com/pricing/details/storage/) během import a export dat použít. Poplatky za odchozí přenos standardní lze také použít spolu s poplatky za transakce úložiště při exportu dat ze služby Azure Storage. Další informace o náklady na odchozí přenosy, naleznete v tématu [cenách přenosů dat.](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 
 

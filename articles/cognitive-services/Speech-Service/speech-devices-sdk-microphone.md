@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: c8bc11b8f81fe034ceaa93c7bd8a49771d9407f9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025776"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237004"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pole zařízení SDK mikrofon řeči
 
@@ -29,9 +29,11 @@ Následující pole geometrie se doporučují pro použití se službou Microsof
 
 |          | Cyklické pole    |       |  Lineární pole              |                |
 |----------|-------------------|-------------------|----------------|----------------|
-|          |![7 cyklické pole mic](media/speech-devices-sdk/7-mic-c.png)|![4 cyklické pole mic](media/speech-devices-sdk/4-mic-c.png)|![4 lineární pole mic](media/speech-devices-sdk/4-mic-l.png)|![2 lineární pole mic](media/speech-devices-sdk/2-mic-l.png)|
+|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# Mikrofonu  | 7                 | 4                 | 4              | 2              |
 | Geometrie | 6 vnější, 1 centrum, protokolu Radius 42,5 mm, rovnoměrně rozmístěné.| 3 vnější, 1 centrum, protokolu Radius 42,5 mm, rovnoměrně rozmístěné. | Délka = 120 mm mezery = 40 mm | Mezery = 40 mm |
+
+Mikrofon kanály by měl být seřazeny podle toho, číslování použité v ukázkách pro každou nad pole, zvýšení od 0.  Zvukový zásobníku Microsoft bude vyžadovat další referenční posloupnost přehrávání zvuku provádět zrušení zpětné vazby.
 
 ## <a name="component-selection"></a>Výběr součásti
 
@@ -110,4 +112,4 @@ Vysokorychlostní USB zvuku 2.0 třída by měla podporovat v rámci žádné zv
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> Další informace o [sadou SDK pro řeč zařízení](speech-devices-sdk.md)
+> [Další informace o zařízení sadou SDK pro řeč](speech-devices-sdk.md)

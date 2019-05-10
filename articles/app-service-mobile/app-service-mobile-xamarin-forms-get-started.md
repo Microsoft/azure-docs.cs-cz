@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b99513cad34bba1b050a24795ecb21d0357d19c1
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128917"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416071"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Vytvoření aplikace na platformě Xamarin.Forms s využitím Azure
 
@@ -34,9 +34,9 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Další informace najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio Tools for Xamarin, v sadě Visual Studio 2017 nebo Visual Studio pro Mac. Pokyny najdete na [stránce věnované instalaci Xamarinu][Install Xamarin].
+* Visual Studio Tools for Xamarin, v sadě Visual Studio 2017 nebo později, nebo Visual Studio pro Mac. Pokyny najdete na [stránce věnované instalaci Xamarinu][Install Xamarin].
 
-* (Volitelné) K sestavení aplikace pro iOS se vyžaduje Mac s prostředím Xcode 9.0 nebo novějším. K vývoji aplikací pro iOS se dá použít Visual Studio pro Mac nebo Visual Studio 2017 (za předpokladu, že Mac je k dispozici v síti).
+* (Volitelné) K sestavení aplikace pro iOS se vyžaduje Mac s prostředím Xcode 9.0 nebo novějším. Visual Studio for Mac slouží k vývoji aplikací pro iOS nebo Visual Studio 2017 nebo je později použít (Pokud je Mac dostupný v síti).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Vytvoření nového back-endu Mobile Apps
 
@@ -64,7 +64,7 @@ K otevření řešení se vyžadují nástroje Visual Studio Tools for Xamarin, 
 
    Touto akcí se stáhne projekt, který obsahuje klientskou aplikaci připojenou k mobilní aplikaci. Uložte komprimovaný soubor projektu do místního počítače a poznamenejte si, kam jste jej uložili.
 
-3. Extrahujte projekt, který jste stáhli, a otevřete ho v sadě Visual Studio 2017.
+3. Extrahujte projekt, který jste stáhli a pak ho otevřete v sadě Visual Studio.
 
    ![Extrahovaný projekt v sadě Visual Studio][8]
 

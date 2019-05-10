@@ -13,19 +13,22 @@ ms.devlang: na
 ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880045"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466305"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru (privátní verze preview)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru (Public preview)
 
 Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud chcete použít nástroj Deployment Manager, je potřeba vytvořit dvě šablony:
 
 * **Šablona topologie:** popisuje prostředky Azure, ze kterých se skládá vaše aplikace, a kam se mají nasadit.
 * **Šablona uvedení:** popisuje kroky, které se mají provést při nasazování aplikací.
+
+> [!IMPORTANT]
+> Pokud vaše předplatné je označen pro testovací a otestujte nové funkce Azure, můžete nasadit do oblastí, testovací použít pouze Azure Deployment Manager. 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -278,7 +281,7 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
     * **azureResourceLocation**: V současné době je možné prostředky Azure Deployment Manageru vytvářet pouze v oblastech **USA – střed** nebo **USA – východ 2**.
     * **artifactSourceSASLocation**: Zadejte identifikátor URI SAS do kořenového adresáře (kontejner objektů Blob) ukládat soubory pro šablonu a parametry jednotek služby pro nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
     * **binaryArtifactRoot**: Pokud změníte strukturu složek artefakty, použijte **binaries/1.0.0.0** v tomto kurzu.
-    * **managedIdentityID**: Zadejte spravované uživatelsky přiřazené identity. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je:
+    * **managedIdentityID**: Zadejte spravované uživatelsky přiřazené identity. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je následující:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -432,4 +435,4 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili používat Azure Deployment Manager. Další informace najdete v [dokumentaci k Azure Resource Manageru](/azure/azure-resource-manager/).
+V tomto kurzu jste se naučili používat Azure Deployment Manager. K integraci, sledování stavu v Azure Deployment Manager, najdete v článku [kurzu: Použít kontrolu v nástroji Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
