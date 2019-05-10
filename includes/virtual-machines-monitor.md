@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473960"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65404921"
 ---
 Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -23,7 +23,7 @@ Můžete vytvořit a monitorovat kolekce [diagnostická data](https://docs.micro
 
     Při spouštění virtuálních počítačů, agent diagnostiky spouštění zaznamenává výstup spouštění a uloží jej v úložišti Azure. Tato data můžete použít k odstraňování problémů při spouštění virtuálních počítačů. Diagnostika spouštění nepovolí automaticky při vytvoření virtuálního počítače z nástroje příkazového řádku. Před povolením diagnostiky spouštění je třeba vytvořit účet úložiště pro ukládání protokolů spouštění. Pokud povolíte diagnostiku spouštění na webu Azure Portal, účet úložiště se automaticky vytvoří za vás.
 
-    Pokud jste nepovolili Diagnostika spouštění při vytvoření virtuálního počítače, můžete vždy povolit ho později pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics), nebo [šablony Azure Resource Manageru](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
+    Pokud jste nepovolili Diagnostika spouštění při vytvoření virtuálního počítače, můžete vždy povolit ho později pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic), nebo [šablony Azure Resource Manageru](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
 
 - **Povolte shromažďování dat diagnostiky hostovaného operačního systému.** Při vytváření virtuálního počítače, máte možnost v dialogovém okně nastavení Povolit diagnostiku hostovaného operačního systému. Pokud povolíte shromažďování dat diagnostiky [IaaSDiagnostics rozšíření pro Linux](../articles/virtual-machines/linux/diagnostic-extension.md) nebo [IaaSDiagnostics rozšíření pro Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) se přidá do virtuálního počítače, které umožňuje shromažďovat další datový disk, procesoru a paměti.
 

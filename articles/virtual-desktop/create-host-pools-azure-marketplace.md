@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: c4ab209d63a01d9e1089eec351eff64fc116f403
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924980"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236781"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -70,7 +70,7 @@ Okno informace o tenantovi virtuální plochy Windows:
 
 1. Zadejte **název skupiny pro virtuální plochy Windows tenanta** pro tenanta skupiny, která obsahuje váš tenant. Pokud nemáte konkrétní tenanta plánované název skupiny, ponechte jako výchozí.
 2. Zadejte **název tenanta virtuální plochy Windows** pro příslušného tenanta vytvoříte tento fond hostitele v.
-3. Určení typu přihlašovacích údajů, které chcete použít k ověření jako tenant Windows virtuálního klienta vzdálené plochy vlastníka. Pokud vyberete **instanční objekt služby**, je rovněž nutné poskytnout **ID tenanta Azure AD** přidružené k objektu služby.
+3. Určení typu přihlašovacích údajů, které chcete použít k ověření jako tenant Windows virtuálního klienta vzdálené plochy vlastníka. Pokud jste dokončili [vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell kurzu](./create-service-principal-role-powershell.md)vyberte **instanční objekt služby**. Teď budete muset zadat **ID tenanta Azure AD** , který obsahuje objekt služby Azure Active Directory.
 4. Zadejte buď přihlašovací údaje pro účet správce tenanta. Podporovány jsou pouze instanční objekty s přihlašovacími údaji heslo.
 5. Vyberte **OK**.
 

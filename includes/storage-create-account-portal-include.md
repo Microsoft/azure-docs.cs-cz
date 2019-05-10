@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/18/2018
+ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 3b770c3e51b17fa5d70abb03360e17e1073974d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842201ee20ef2e13c5179ccb5992a1ed98d36a3e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392194"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237864"
 ---
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
 
@@ -28,13 +28,13 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 1. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
 1. Tato pole nechte nastavená na výchozí hodnoty:
 
-   |Pole  |Hodnota  |
+   |Pole  |Value  |
    |---------|---------|
    |Model nasazení     |Resource Manager         |
    |Výkon     |Standard         |
    |Druh účtu     |StorageV2 (obecné účely v2)         |
-   |Replikace     |Místně redundantní úložiště (LRS)         |
-   |Vrstva přístupu     |Hot         |
+   |Replikace     |Geograficky redundantní úložiště jen pro čtení (LRS)         |
+   |Úroveň přístupu     |Hot         |
 
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
 1. Vyberte **Vytvořit**.

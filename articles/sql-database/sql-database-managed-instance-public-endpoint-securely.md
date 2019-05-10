@@ -6,49 +6,52 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: vanto, carlrab
-manager: digimobile
-origin.date: 04/16/2019
-ms.date: 04/29/2019
-ms.openlocfilehash: 9d5a3d18e8a7d3c5a6cb08e16e74dd4fbda9ca31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: craigg
+ms.date: 05/08/2019
+ms.openlocfilehash: f06677b66c8f6586fec8cc5dfe97b1515b741e9c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61315043"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470284"
 ---
-# <a name="using-azure-sql-database-managed-instance-securely-with-public-endpoint"></a>Využívající Azure SQL Database managed instance bezpečně s veřejným koncovým bodem
+# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Bezpečněji používat spravovanou instanci Azure SQL Database s veřejnými koncovými body
 
-Azure SQL Database, spravované instance můžete povolit a tím zajistit připojení uživatele přes [veřejný koncový bod](../virtual-network/virtual-network-service-endpoints-overview.md). Tento článek obsahuje pokyny, jak se tato konfigurace bezpečnější.
+Azure SQL Database, spravované instance můžete zadat možnosti připojení uživatelů nad [veřejné koncové body](../virtual-network/virtual-network-service-endpoints-overview.md). Tento článek vysvětluje, jak zabezpečit tuto konfiguraci.
 
 ## <a name="scenarios"></a>Scénáře
 
-Mi poskytuje privátního koncového bodu umožňující připojení v rámci příslušné virtuální síti. Výchozí možnost je k zajištění maximální izolace. Existují ale scénáře, kde je potřeba veřejný koncový bod připojení:
+Spravovaná instance SQL Database poskytuje privátního koncového bodu umožňující připojení k v rámci příslušné virtuální síti. Výchozí možnost je k zajištění maximální izolace. Existují ale scénáře, ve kterém budete muset zadat veřejný koncový bod připojení:
 
-- Integrace s více tenanty pouze nabídek PaaS.
-- Vyšší propustnost výměny dat než při použití sítě VPN.
+- Spravovaná instance musí integrovat s více-tenant jen nabídky platforma jako služba (PaaS).
+- Budete potřebovat větší propustnost dat serveru Exchange, než je možné, pokud používáte síť VPN.
 - Firemní zásady zakazují PaaS uvnitř podnikové sítě.
 
-## <a name="deploying-managed-instance-for-public-endpoint-access"></a>Nasazení spravované instance pro veřejný koncový bod přístupu
+## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Nasaďte managed instance pro přístup k veřejnému koncovému bodu
 
-I když není povinné, vytvořte instanci ve vyhrazené izolované virtuální sítě je společný model nasazení pro spravovanou instanci s přístupem k veřejnému koncovému bodu. V této konfiguraci virtuální sítě slouží jenom k izolaci virtuálních clusterů. Není relevantní, pokud se adresní prostor IP adres spravovaných instancí překrývá s prostoru IP adres podnikové sítě.
+I když není povinné, vytvořte instanci ve vyhrazené izolované virtuální sítě je společný model nasazení pro spravovanou instanci s přístupem k veřejnému koncovému bodu. V této konfiguraci virtuální sítě slouží pouze k izolaci virtuálních clusterů. Nebude vadit, když spravovanou instanci adresní prostor IP adres se překrývá s podnikovou síť adresní prostor IP adres.
 
-## <a name="securing-data-in-motion"></a>Zabezpečení dat v pohybu
+## <a name="secure-data-in-motion"></a>Zabezpečení dat v pohybu
 
-Přenos dat spravované instance se vždy šifrují, pokud ovladač klienta podporuje šifrování. Data mezi spravovanou instanci a jiné virtuální počítače Azure a služeb Azure nikdy neopustí páteřní síti Azure. Pokud je managed instance pro připojení k místní síti, doporučujeme použít Expressroute s využitím partnerského vztahu Microsoftu. Expressroute vám pomůže vyhnuli přenášení dat přes veřejný Internet (pro spravovanou instanci privátní připojení, pouze soukromého partnerského vztahu můžete použít).
+Přenos dat spravované instance se vždy šifrují, pokud ovladač klienta podporuje šifrování. Data odesílaná mezi spravovanou instanci a jiné virtuální počítače Azure nebo služeb Azure nikdy neopustí páteřní síti Azure. Pokud je připojení mezi spravovanou instanci a v místní síti, doporučujeme že použít Azure ExpressRoute se partnerský vztah Microsoftu. ExpressRoute pomáhá vám vyhnuli přenášení dat přes veřejný internet. Pro spravovanou instanci privátní připojení pouze soukromého partnerského vztahu můžete použít.
 
-## <a name="locking-down-inbound-and-outbound-connectivity"></a>Uzamčením příchozího a odchozího připojení
+## <a name="lock-down-inbound-and-outbound-connectivity"></a>Zamknout příchozí a odchozí připojení
 
-Následující diagram znázorňuje doporučené možnosti konfigurace.
+Následující diagram znázorňuje doporučené možnosti konfigurace:
 
-![managed-instance-vnet.png](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
+![Konfigurace zabezpečení pro uzamčení příchozí a odchozí připojení](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-Managed Instance má [vyhrazená adresa veřejného koncového bodu](sql-database-managed-instance-find-management-endpoint-ip-address.md). Tato IP adresa musí být nastaveno v odchozí brány firewall na straně klienta a pravidla skupiny zabezpečení sítě pro omezení odchozího připojení.
+Managed instance má [vyhrazená adresa veřejného koncového bodu](sql-database-managed-instance-find-management-endpoint-ip-address.md). V odchozí brány firewall na straně klienta a pravidla skupiny zabezpečení sítě nastavte tato IP adresa veřejného koncového bodu omezit odchozí připojení.
 
-K zajištění, že se provoz do spravované instance pochází z důvěryhodného zdroje, doporučuje se připojit z zdroje s dobře známé IP adresy. Omezit přístup k veřejnému koncovému bodu spravovanou instanci na portu 3342 pomocí skupiny zabezpečení sítě.
+Zajistěte, aby provoz do spravované instance pochází z důvěryhodného zdroje, doporučujeme připojení ze zdroje s dobře známé IP adresy. Pomocí skupiny zabezpečení sítě můžete omezit přístup k veřejnému koncovému bodu spravovanou instanci na portu 3342.
 
-Když klienti potřebovat k navázání připojení z místní sítě, zkontrolujte, zda že zdrojovou adresu se přeloží na dobře známé sady IP adres. Pokud, který není možné dosáhnout (třeba mobilní pracovní síly je typický scénář), doporučuje se použít [Point-to-site VPN připojení a privátního koncového bodu](sql-database-managed-instance-configure-p2s.md).
+Když klienti potřebovat k zahájení připojení z místní sítě, ujistěte se, že původní adresa je přeložen na sadu známých IP adres. Pokud to není možné tak (například mobilní pracovní síly je typický scénář), doporučujeme, abyste použili [připojení VPN typu point-to-site a privátního koncového bodu](sql-database-managed-instance-configure-p2s.md).
 
-Pokud připojení jsou spuštěny z Azure, doporučuje se, že provoz pochází z dobře známé přiřazené [virtuálních IP adres](../virtual-network/virtual-networks-reserved-public-ip.md) (například virtuální počítače). Pro usnadnění správy virtuální IP adresy, zákazníci zvážit použití [předponu veřejné IP adresy](../virtual-network/public-ip-address-prefix.md).
+Pokud připojení jsou spuštěny z Azure, doporučujeme vám, že provoz pochází známé přiřazené [virtuální IP adresu](../virtual-network/virtual-networks-reserved-public-ip.md) (například virtuální počítač). Aby Správa virtuálních IP (VIP) adres jednodušší, můžete chtít použít [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md).
+
+## <a name="next-steps"></a>Další postup
+
+- Zjistěte, jak nakonfigurovat veřejný koncový bod pro instance spravovat: [Konfigurace veřejného koncového bodu](sql-database-managed-instance-public-endpoint-configure.md)

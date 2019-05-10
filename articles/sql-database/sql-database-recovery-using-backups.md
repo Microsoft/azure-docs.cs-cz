@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: ca54ae11390b388c3158bd220ee5c7829172a5c3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/30/2019
+ms.openlocfilehash: 47bf59adb33f3685b31430c652b31880d383833e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620474"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232640"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -28,7 +28,7 @@ Ve výchozím nastavení zálohování SQL Database jsou uložené v geograficky
 - Vytvořte novou databázi na všechny databáze SQL serveru ve stejné oblasti obnovit do bodu poslední zálohy.
 - Vytvořte novou databázi na libovolném serveru SQL Database v kterékoli jiné oblasti obnovit do bodu nejnovější replikovaných záloh.
 
-Pokud jste nakonfigurovali [zálohovat dlouhodobě uchovávaných](sql-database-long-term-retention.md) můžete také vytvořit novou databázi ze zálohy jakékoli zleva doprava na libovolném serveru SQL Database v libovolné oblasti.
+Pokud jste nakonfigurovali [zálohovat dlouhodobě uchovávaných](sql-database-long-term-retention.md), můžete také vytvořit novou databázi z jakékoli LTR zálohy na libovolném serveru SQL Database.
 
 > [!IMPORTANT]
 > Během obnovení nelze přepsat stávající databázi.
@@ -38,7 +38,7 @@ Při použití úrovně služeb Standard nebo Premium, obnovené databáze s seb
 - Obnovení P11 – P15 a S4 až S12, P1 – P6, pokud je maximální velikost databáze větší než 500 GB.
 - Obnovení P1 – P6 pro S4 až S12, pokud je maximální velikost databáze větší než 250 GB.
 
-Nadbytečné je náklady, protože maximální velikost obnovené databáze je větší než velikost zahrnutého úložiště pro výpočetního prostředí a dodatečné úložiště zřízené nad rámec objemu zahrnutého v se navíc účtuje. Podrobnosti o cenách dodatečného úložiště, najdete v článku [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Pokud se skutečné množství využité je menší než velikost zahrnutého úložiště, pak toho dalších poplatků se lze vyvarovat snížením maximální velikost databáze na objemu zahrnutého v ceně.
+Dodatečné náklady jsou icurred, když maximální velikost obnovené databáze je větší než velikost úložiště, které jsou součástí cílové databáze služby vrstvu a úroveň výkonu. Dodatečné úložiště zřízené nad rámec objemu zahrnutého v se navíc účtuje. Podrobnosti o cenách dodatečného úložiště, najdete v článku [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Pokud skutečný objem využitého místa je menší než velikost zahrnutého úložiště, můžete se vyhnout to velmi náklady podle nastavení maximální velikosti na objemu zahrnutého v ceně.
 
 > [!NOTE]
 > [Automatizované zálohování databáze](sql-database-automated-backups.md) se používají při vytváření [kopírování databáze](sql-database-copy.md).
@@ -54,9 +54,9 @@ Nadbytečné je náklady, protože maximální velikost obnovené databáze je v
 - Šířka pásma sítě při obnovení do jiné oblasti
 - Počet souběžných obnovení požadavků na zpracování v cílové oblasti
 
-Pro velmi velké a aktivní databázi obnovení může trvat několik hodin. Pokud dlouhotrvající výpadku v oblasti, je možné, že existují velké množství geografické obnovení požadavků zpracovávaných jiných oblastech. Pokud existuje velký počet požadavků, může zvýšit dobu obnovení pro databáze v dané oblasti. Většina databázových obnoví dokončí méně než 12 hodin.
+Pro velké nebo velmi aktivní databázi obnovení může trvat několik hodin. Pokud dlouhotrvající výpadku v oblasti, je možné, že existují velké množství geografické obnovení požadavků zpracovávaných jiných oblastech. Pokud existuje velký počet požadavků, může zvýšit dobu obnovení pro databáze v dané oblasti. Většina databázových obnoví dokončí méně než 12 hodin.
 
-Pro jedno předplatné, existují určitá omezení pro počet souběžných obnovení požadavků (včetně bodu v čase obnovení, geografické obnovení a obnovení z dlouhodobého uchování zálohy), které se odešle a pokračovat:
+Pro jedno předplatné existují omezení počtu souběžných obnovení žádostí.  Tato omezení platí pro libovolnou kombinaci bodu v čase obnovení, geografické obnovení a obnovení z dlouhodobého uchování zálohy):
 
 | | **Maximální počet souběžných požadavků zpracovávaných** | **Maximální počet souběžných požadavků právě odesílá** |
 | :--- | --: | --: |
@@ -64,24 +64,24 @@ Pro jedno předplatné, existují určitá omezení pro počet souběžných obn
 |Elastický fond (na fond)|4|200|
 ||||
 
-Neexistuje žádná vestavěná funkce hromadné obnovení. [Azure SQL Database: Úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skript představuje příklad jednoho způsobu provádění této úlohy.
+Aktuálně není předdefinovanou metodu pro obnovit celý server. [Azure SQL Database: Úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skript je příklad, jak můžete tento úkol provést.
 
 > [!IMPORTANT]
 > Pokud chcete obnovit, pomocí automatizovaného zálohování, musí být členem role Přispěvatel SQL serveru v rámci předplatného nebo být vlastník předplatného – viz [RBAC: Předdefinované role](../role-based-access-control/built-in-roles.md). Obnovení můžete provést pomocí webu Azure Portal, prostředí PowerShell nebo rozhraní REST API. Nelze použít jazyk Transact-SQL.
 
 ## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-Dokáže obnovit samostatnou ve fondu, nebo instanci databáze k dřívějšímu bodu v čase jako novou databázi na stejném serveru pomocí webu Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases). Databázi můžete obnovit na všech úrovních služby nebo vypočítat velikost. Ujistěte se, že máte dostatek prostředků na serveru, na který provádíte obnovení databáze. Jakmile budete hotovi, obnovené databáze je normální, plně přístupné, online databáze. Obnovená databáze se účtuje za běžné sazby podle úrovně služeb a jeho velikost výpočetních. Není účtovat poplatky, dokud se nedokončí obnovení databáze.
+Dokáže obnovit samostatnou ve fondu, nebo instanci databáze k dřívějšímu bodu v čase pomocí webu Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases). Žádost můžete určit všechny úrovně služby nebo vypočítat velikost pro obnovenou databázi. Ujistěte se, že máte dostatek prostředků na serveru, na který provádíte obnovení databáze. Jakmile budete hotovi, vytvoří novou databázi na stejný server jako původní databáze. Obnovené databáze se účtuje za běžné sazby podle úrovně služeb a jeho velikost výpočetních. Není účtovat poplatky, dokud se nedokončí obnovení databáze.
 
-Obecně obnovení databáze k dřívějšímu bodu pro účely obnovení. Pokud tak učiníte, můžete považovat za náhradu za původní databázi obnovené databáze nebo ho použít k načtení dat z a pak aktualizujte původní databáze.
+Obecně obnovení databáze k dřívějšímu bodu pro účely obnovení. Můžete zpracovávat obnovené databáze jako náhrada za původní databáze nebo použít jako zdroj dat pro aktualizace původní databáze.
 
 - **Nahrazení databáze**
 
-  Pokud obnovené databáze je určena k nahrazení původní databáze, měli byste ověřit výpočetního prostředí a/nebo úrovně služby jsou vhodné a škálování databáze v případě potřeby. Můžete přejmenovat původní databáze a poté poskytnout obnovené databáze na původní název pomocí [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) v T-SQL.
+  Pokud obnovené databáze je určena k nahrazení původní databáze, měli byste určit velikost výpočetních orinal databáze a úrovně služeb. Potom můžete přejmenovat databázi a poskytnout obnovené databáze na původní název pomocí [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) v T-SQL.
 
 - **Obnovení dat**
 
-  Pokud budete chtít načíst data z obnovené databáze pro obnovení po chybě uživatele nebo aplikace, musíte pro zápis a spouštění skriptů obnovení potřebná data extrahovat data z obnovené databáze do původní databáze. I když operace obnovení může trvat dlouhou dobu pro dokončení, obnovení databáze je zobrazen v seznamu databází v průběhu procesu obnovení. Pokud během obnovení odstraníte databáze, operace obnovení byla zrušena a se vám neúčtují poplatky pro databáze, která nebyla dokončena, obnovení.
+  Pokud budete chtít načíst data z obnovené databáze pro obnovení po chybě uživatele nebo aplikace, musíte pro zápis a spouštění skriptu pro obnovení dat, extrahuje data z obnovené databáze, která se vztahuje na původní databáze. I když operace obnovení může trvat dlouhou dobu pro dokončení, obnovení databáze je zobrazen v seznamu databází v průběhu procesu obnovení. Když databázi odstraníte během obnovení, operaci obnovení budou zrušeny a vám nebude účtovat databáze, která nebyla dokončena, obnovení.
 
 Obnovení jedné, ve fondu, nebo instanci databáze do bodu v čase pomocí webu Azure portal, otevřete stránku pro vaši databázi a klikněte na tlačítko **obnovení** na panelu nástrojů.
 
@@ -92,7 +92,7 @@ Obnovení jedné, ve fondu, nebo instanci databáze do bodu v čase pomocí webu
 
 ## <a name="deleted-database-restore"></a>Obnovení odstraněné databáze
 
-Čas odstranění pro odstraněnou databázi na stejný server SQL Database pomocí webu Azure portal, můžete obnovit odstraněnou databázi [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), nebo [REST (createMode = obnovit)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Je možné [obnovení odstraněné databáze na Managed Instance pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). Můžete obnovit odstraněnou databázi k dřívějšímu bodu v době uchování pomocí [Powershellu](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
+Můžete obnovit odstraněnou databázi času odstranění nebo dřívějšímu bodu v čase na stejném serveru SQL Database pomocí webu Azure portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), nebo [REST (createMode = obnovit)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Je možné [obnovení odstraněné databáze na Managed Instance pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
 
 > [!TIP]
 > Ukázkový skript prostředí PowerShell ukazuje, jak obnovit odstraněnou databázi, naleznete v tématu [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
@@ -101,7 +101,7 @@ Obnovení jedné, ve fondu, nebo instanci databáze do bodu v čase pomocí webu
 
 ### <a name="deleted-database-restore-using-the-azure-portal"></a>Obnovení odstraněné databáze pomocí webu Azure portal
 
-Obnovení odstraněné databáze pomocí webu Azure portal během jeho [dobu uchování model založený na DTU](sql-database-service-tiers-dtu.md) nebo [dobu uchování model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) pomocí webu Azure portal otevřete stránku pro váš server a v Operace oblast, klikněte na tlačítko **odstranila databáze**.
+Pokud chcete obnovit odstraněnou databázi s použitím webu Azure portal, otevřete stránku pro váš server a v oblasti operace, klikněte na tlačítko **odstranila databáze**.
 
 ![deleted-database-restore-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
@@ -112,9 +112,9 @@ Obnovení odstraněné databáze pomocí webu Azure portal během jeho [dobu uch
 
 ## <a name="geo-restore"></a>Geografické obnovení
 
-Obnovení databáze SQL na libovolném serveru v libovolné oblasti Azure z poslední geograficky replikovaných záloh. Geografické obnovení pomocí geograficky redundantní zálohy jako zdroj a slouží k obnovení databáze, i když je nejsou dostupné kvůli výpadku databáze nebo datového centra.
+Obnovení databáze SQL na libovolném serveru v libovolné oblasti Azure z poslední geograficky replikovaných záloh. Geografické obnovení zálohy geograficky replikovaného používá jako zdroj. Může být požadována i v případě, že je nejsou dostupné kvůli výpadku databáze nebo datového centra.
 
-Geografické obnovení je výchozí možnost zotavení, pokud vaše databáze není k dispozici z důvodu incidentu v oblasti, kde se hostuje databázi. Pokud ve velkém měřítku incidentů v oblasti výsledky v nedostupnost databázovou aplikaci, můžete obnovit databázi z geograficky replikovaných záloh na server v jiné oblasti. Dochází ke zpoždění mezi pořizování zálohy a kdy je geograficky replikované do služby Azure blob do jiné oblasti. Toto zpoždění může být až hodinu, proto, pokud dojde k havárii, může trvat jednu hodinu ztrátu. Následující obrázek znázorňuje obnovit databázi z poslední dostupnou zálohou v jiné oblasti.
+Geografické obnovení je výchozí možnost, pokud vaše databáze není k dispozici z důvodu incidentu v oblasti hostování. Obnovení databáze na server v jiné oblasti. Dochází ke zpoždění mezi pořizování zálohy a kdy je geograficky replikované do služby Azure blob do jiné oblasti. V důsledku toho obnovené databáze může být až jednu hodinu za orignal databáze. Následující obrázek znázorňuje obnovit databázi z poslední dostupnou zálohou v jiné oblasti.
 
 ![geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -124,7 +124,7 @@ Geografické obnovení je výchozí možnost zotavení, pokud vaše databáze ne
 Obnovení bodu v čase na typu geo-secondary se momentálně nepodporuje. Obnovení k určitému bodu v čase lze provést pouze u primární databáze. Podrobné informace o použití geografické obnovení k zotavení z výpadku, naleznete v tématu [zotavení z výpadku](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Obnovení ze záloh je naprosto základní řešení zotavení po havárii, která je k dispozici ve službě SQL Database s cílem bodu nejdelší obnovení (RPO) a doba obnovení odhad (ERT). Pro řešení s využitím malou velikost databáze (například základní úrovně nebo malou velikost databází v elastických fondech tenantů) geografické obnovení je často rozumné řešení zotavení po Havárii pomocí ERT až 12 hodin (obvykle mnohem menší). Řešení pomocí velkých databází a vyžadovat obnovení kratší dobu, měli byste zvážit použití [aktivní geografickou replikaci](sql-database-active-geo-replication.md) nebo [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md). Aktivní geografická replikace nabízí mnohem nižší cíl bodu obnovení a vložit vyžaduje pouze zahájení převzetí služeb při selhání do průběžně replikovanou sekundární lokality. Automatické převzetí služeb při selhání skupiny umožňují automatické převzetí služeb při selhání pro skupinu databází. Další informace o volby obchodní kontinuity podnikových procesů najdete v tématu [přehled kontinuity](sql-database-business-continuity.md).
+> Geografické obnovení je naprosto základní řešení zotavení po havárii ve službě SQL Database k dispozici. Spoléhá na automaticky vytvoří geograficky replikovaných záloh s cílem bodu obnovení = 1 hodinu a odhadovaný čas obnovení až 12 hodin. Nezaručuje, že cílové oblasti, bude mít kapacitu obnovit vaše databáze po regionální ourage, protože bude pravděpodobně sharp zvýšení poptávky. Geografické obnovení jiných podnikových důležitých aplikací používajících relativně malé databáze, je řešení zotavení po havárii odpovídající. Pro busniess důležité aplikace, které využívají velké databáze a musí zajistit nepřetržitý chod podniků, byste měli použít [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md). Nabízí mnohem nižší RPO a RTO a kapacita je vždycky zaručená. Další informace o volby obchodní kontinuity podnikových procesů najdete v tématu [přehled kontinuity](sql-database-business-continuity.md).
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geografické obnovení prostřednictvím webu Azure portal
 

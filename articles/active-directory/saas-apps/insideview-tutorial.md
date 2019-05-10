@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 91e1780462021430913a1354b4add7c5f047ec15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76db7381985853a81843df812dffcd8ab2bd8f9a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271907"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Kurz: Integrace Azure Active Directory s InsideView
 
@@ -142,13 +142,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s InsideView, proveďte násl
 
     c. Otevřete váš kódovaného certifikátu Base64, který jste si stáhli z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **certifikátu STS** textového pole.
 
-    d. V **mapování Id uživatele Crm** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. V **mapování Id uživatele Crm** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    e. V **Crm e-mailu mapování** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. V **Crm e-mailu mapování** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    f. V **Crm křestní jméno mapování** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    f. V **Crm křestní jméno mapování** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    g. V **Crm lastName mapování** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.  
+    g. V **Crm lastName mapování** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.  
 
     h. Klikněte na **Uložit**.
 
@@ -211,7 +211,7 @@ Obraťte se na uživatele nebo kontaktů vytvořených v InsideView získáte [t
 > [!NOTE]
 > Můžete použít jakékoli jiné InsideView uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných InsideView zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5dc1852a57970c2994d9f36cbd7242a18b580a61
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 69cb48df4e765250247605fb5c4e1f421554fd20
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020994"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467019"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro Javu
+
+Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-java-jre.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-java-jre.md).
 
 V tomto rychlém startu vytvoříte jednoduchou aplikaci Java, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na 64-bit Windows 64-bit Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) nebo v systému macOS 10.13 nebo novější. Je vytvořen pomocí balíčku Maven řeči sady SDK a Eclipse Java IDE.
 
@@ -55,7 +57,7 @@ Pokud používáte systém Linux, ujistěte se, že jsou tyto závislosti nainst
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="add-sample-code"></a>Přidejte ukázkový kód.
 
 1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  >  **New** (Nový)  >  **Class** (Třída).
 

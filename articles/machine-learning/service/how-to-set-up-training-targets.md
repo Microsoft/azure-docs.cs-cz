@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819282"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236946"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -430,6 +430,7 @@ Tyto poznámkové bloky příklady trénování s využitím různých cílovýc
 ## <a name="next-steps"></a>Další postup
 
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md) používá cílové spravované výpočetní prostředí k natrénování modelu.
+* Zjistěte, jak [efektivně vyladit hyperparameters](how-to-tune-hyperparameters.md) sestavovat lepší modely.
 * Jakmile budete mít trénovaného modelu, přečtěte si [jak a kde nasadit modely](how-to-deploy-and-where.md).
 * Zobrazení [RunConfiguration třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) odkaz na sadu SDK.
 * [Použití služby Azure Machine Learning s Azure Virtual Network](how-to-enable-virtual-network.md)

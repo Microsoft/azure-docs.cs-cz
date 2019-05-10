@@ -24,18 +24,13 @@
     - name: Živé streamování – .NET
       href: stream-live-tutorial-with-api.md
     - name: Analýza videa – .NET
-      displayName: 'job, transform'
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
       href: analyze-videos-tutorial-with-api.md
     - name: Dynamické šifrování s využitím AES-128 – .NET
       href: protect-with-aes128.md
     - name: Dynamické šifrování s využitím DRM – .NET
+      displayName: 'PlayReady, Widevine'
       href: protect-with-drm.md
-- name: Ukázky
-  items:
-    - name: Ukázky kódu Azure
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
 - name: Koncepty
   href: concepts-overview.md
   items:
@@ -52,6 +47,7 @@
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: Transformace a úlohy
           href: transforms-jobs-concept.md
+          displayName: 'preset, schema'
         - name: Standardní formáty Media Encoderu
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
@@ -75,7 +71,7 @@
         - name: Balení
           items:
             - name: Dynamické balení
-              displayName: packager
+              displayName: 'origin, packager'
               href: dynamic-packaging-overview.md
             - name: Dynamické manifesty
               href: filters-dynamic-manifest-overview.md
@@ -84,7 +80,7 @@
         - name: Ochrana obsahu
           items:
             - name: Typy šifrování a protokoly streamování
-              displayName: Dynamic encryption
+              displayName: 'dynamic, encryption'
               href: content-protection-overview.md
             - name: Systém s více variantami DRM s řízením přístupu
               href: design-multi-drm-system-with-access-control.md
@@ -97,7 +93,7 @@
                 - name: Licenční požadavky FairPlay
                   href: fairplay-license-overview.md
         - name: Koncové body / zdroje streamování
-          displayName: 'origins, cdn'
+          displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
         - name: Lokátory streamování
           displayName: URLs
@@ -106,8 +102,8 @@
           href: streaming-policy-concept.md
         - name: Zásady symetrických klíčů
           href: content-key-policy-concept.md
-        - name: Původní kódy chyb
-          href: origin-error-codes.md
+        - name: Kódy chyb koncových bodů streamování
+          href: streaming-endpoint-error-codes.md
     - name: Živé streamování
       items:
         - name: Přehled
@@ -141,6 +137,7 @@
           href: use-azure-media-player.md
     - name: Vývoj s využitím rozhraní API v3
       href: media-services-apis-overview.md
+      displayName: 'access, naming, long-running'
       items:
         - name: 'Stránkování, filtrování, uspořádání entit'
           href: entities-overview.md
@@ -148,8 +145,8 @@
           href: rbac-overview.md
         - name: Kódy chyb
           items:
-            - name: Původní kódy chyb
-              href: origin-error-codes.md
+            - name: Kódy chyb koncových bodů streamování
+              href: streaming-endpoint-error-codes.md
             - name: Kódy chyb úlohy
               href: job-error-codes.md
     - name: Pokyny k migraci z v2 na v3
@@ -160,10 +157,14 @@
       items:
         - name: Vytvoření účtu – rozhraní příkazového řádku
           href: create-account-cli-how-to.md
+        - name: Resetování přihlašovacích údajů k účtu – CLI
+          href: cli-reset-account-credentials.md
         - name: Přístup k rozhraním API – rozhraní příkazového řádku
           href: access-api-cli-how-to.md
         - name: Škálování rezervovaných jednotek médií – CLI
           href: media-reserved-units-cli-how-to.md
+        - name: Vytvoření prostředku – CLI
+          href: cli-create-asset.md
         - name: Vývoj s využitím REST
           items:
             - name: Připojení s využitím Postmana
@@ -190,6 +191,14 @@
         - name: Z místního souboru – REST
           displayName: upload
           href: upload-files-rest-how-to.md
+        - name: Z místního souboru – CLI
+          href: cli-upload-file-asset.md
+    - name: Vytváření transformací a úloh
+      items:
+        - name: Vytváření transformací – CLI
+          href: cli-create-transform.md
+        - name: Vytváření úloh – CLI
+          href: cli-create-jobs.md
     - name: Kódování obsahu
       items:
         - name: HTTPS jako vstup úlohy – .NET
@@ -230,10 +239,15 @@
           href: filters-dynamic-manifest-rest-howto.md
         - name: S využitím rozhraní příkazového řádku
           href: filters-dynamic-manifest-cli-howto.md
+    - name: Doručování obsahu
+      items:
+        - name: Publikování prostředku – CLI
+          href: cli-publish-asset.md
 - name: Referenční informace
   items:
     - name: Specifikace OpenAPI (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'
+      displayName: schema
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Azure CLI
@@ -254,8 +268,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Kódy chyb
       items:
-        - name: Původní kódy chyb
-          href: origin-error-codes.md
+        - name: Kódy chyb koncových bodů streamování
+          href: streaming-endpoint-error-codes.md
         - name: Kódy chyb úlohy
           href: job-error-codes.md
 - name: Zdroje a prostředky
@@ -285,7 +299,7 @@
           href: 'https://aka.ms/ams-v3-nodejs-sdk'
         - name: Ruby
           href: 'https://aka.ms/ams-v3-ruby-sdk'
-    - name: AMSE
+    - name: Průzkumník Azure Media Services
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: "Poznámky k\_verzi"
       href: release-notes.md

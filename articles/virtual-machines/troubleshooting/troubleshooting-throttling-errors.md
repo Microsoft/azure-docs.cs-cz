@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: fa65b108f3aea79d4417e65d706d42f0bd819f54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445379"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233786"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
@@ -32,7 +32,7 @@ Když klienta aplikace Azure API získá omezení chybu, je stav protokolu HTTP 
 
 ## <a name="call-rate-informational-response-headers"></a>Hlavičky odpovědi informační frekvence volání 
 
-| Hlavička                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
+| Záhlaví                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Zbývající počet volání rozhraní API pro zásady omezování pokrývající kontejneru nebo operace skupinu prostředků včetně cíl této žádosti                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | Počet volání vrátí "účtovat" pro tento požadavek HTTP směrem k příslušné zásady omezení. Toto je nejčastěji 1. Požadavky služby batch, například škálování škálovací sady virtuálních počítačů může účtovat více počty. |
@@ -80,7 +80,7 @@ Jak je znázorněno výše, zahrnuje každé chybě omezení `Retry-After` hlavi
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>Rychlost a omezování Chyba analyzátoru volání rozhraní API
 Verze preview funkce Poradce při potížích je k dispozici pro rozhraní API poskytovatele výpočetních prostředků. Tyto rutiny prostředí PowerShell představují statistické údaje o frekvence požadavků rozhraní API za časový interval pro operace a porušení omezení na skupinu operace (zásady):
 -   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequests)
+-   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 Statistiky volání rozhraní API můžete poskytují skvělý přehled o chování naprogramovaná předplatného a povolte snadné identifikaci vzorů volání, které způsobují omezení šířky pásma.
 

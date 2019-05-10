@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd7044276a806c23785df4d15f86b8e03f32a767
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8c7a24c4c4e071271d16de036ef6896e9d172913
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575395"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406325"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -42,7 +42,7 @@ Však Azure Time Series Insights shromažďuje a ukládá každé nové událost
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Další informace o Azure Time Series Insights, analytické platformy IoT založené na cloudu.</br>
 
-> [!VIDEO https://youtube.com/embed/GaARrFfjoss]
+[![VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Primární scénáře
 
@@ -61,7 +61,7 @@ Však Azure Time Series Insights shromažďuje a ukládá každé nové událost
 - Vytvoření zákaznické aplikace využívající Time Series Insights 
   - Time Series Insights zveřejňuje rozhraní REST API pro dotazy, která umožňují vytvářet aplikace využívající data časových řad.
 
-## <a name="capabilities"></a>Možnosti
+## <a name="capabilities"></a>Schopnosti
 
 - **Začněte rychle:** Azure Time Series Insights nevyžaduje žádnou přípravu dat předem. Během několika minut se můžete připojit k milionům událostí ve službě Azure IoT Hub nebo v centru událostí. Po připojení můžete vizualizovat data snímačů, pracovat s nimi a rychle tak prověřit řešení IoT. S daty můžete pracovat bez psaní kódu.
 Nemusíte se učit žádný nový jazyk, protože Time Series Insights poskytuje plochu pro podrobné volnotextové dotazování pro pokročilé uživatele spolu s prozkoumáváním typu ukázat a kliknout.

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: dc6d3fd2239624e6fccecfbd565eb815b372ed3d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ed6a50ee68d39e6e0d01b405eb02edd6d4c93613
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920433"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407587"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace v jazyce PHP Linuxem pro Azure App Service
 
@@ -187,7 +187,7 @@ Vytvoření adresáře v `/home/site` volá `ini`, vytvořte *.ini* ve `/home/si
 > V předdefinované kontejnery Linuxu ve službě App Service */home* slouží jako trvalý sdílené úložiště. 
 >
 
-Například, chcete-li změnit hodnotu [expose_php](http://php.net/manual/ini.core.php#ini.expose-php) spuštěním následujících příkazů:
+Například, chcete-li změnit hodnotu [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) spuštěním následujících příkazů:
 
 ```bash
 cd /home/site

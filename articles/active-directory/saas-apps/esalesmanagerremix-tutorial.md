@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429014"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406955"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s prodejní manažer Remix E
 
@@ -158,7 +158,7 @@ Povolení služby Azure AD jednotného přihlašování na portálu Azure portal
     
     b. V **spolupráci položky** části, v rozevíracím seznamu vyberte **e-mailu**.
 
-    c. V **spolupráci položky** vložte hodnotu deklarace identity, který jste si zkopírovali z portálu Azure portal (to znamená **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. V **spolupráci položky** vložte hodnotu deklarace identity, který jste si zkopírovali z portálu Azure portal (to znamená **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
     d. V **vystavitele (entity ID)** vložte hodnotu identifikátoru, který jste si zkopírovali z **E Sales Manager Remix domény a adresy URL** části webu Azure portal.
 
@@ -262,7 +262,7 @@ V této části povolit uživatele Britta Simon k udělení přístupu k E Sales
 
 1. V **přidat přiřazení** okně **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

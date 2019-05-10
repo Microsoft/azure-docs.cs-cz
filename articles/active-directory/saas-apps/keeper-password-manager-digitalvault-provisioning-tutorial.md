@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: b7b096bd1ecf0a4df37ed4de0cf618216dccc2bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159462"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508562"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Kurz: Nakonfigurovat správce hesel držitel & digitální trezoru pro automatické zřizování uživatelů
 
@@ -84,7 +84,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro správce hesel držitel & digitální trezoru ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **správce hesel držitel & digitální Trezor**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
@@ -104,19 +104,19 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 6. Přihlaste se k vaší [konzoly pro správu držitel](https://keepersecurity.com/console/#login). Klikněte na **správce** a vyberte existující uzel nebo vytvořte novou. Přejděte **zřizování** kartě a vyberte **přidat metodu**.
 
-    ![Držitel konzoly pro správu](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Držitel konzoly pro správu](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
     Vyberte **SCIM (systém pro správu identit mezi doménami**.
 
-    ![Držitel přidat SCIM](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Držitel přidat SCIM](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
     Klikněte na tlačítko **vytvořit zřizování Token**.
 
-    ![Držitel vytvoření koncového bodu](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Držitel vytvoření koncového bodu](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
     Zkopírujte hodnoty **URL** a **Token** a vložte je do **adresy URL Tenanta** a **tajný klíč tokenu** ve službě Azure AD. Klikněte na tlačítko **Uložit** dokončení zřizování nastavení na držitelem.
 
-    ![Držitel vytvořit Token](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Držitel vytvořit Token](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
 7. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD připojovat k správce hesel držitel & digitální trezoru. Pokud se nepovede, ujistěte se, že váš držitel heslo správce & digitální trezor účet má oprávnění správce a zkuste to znovu.
 
@@ -130,19 +130,19 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 10. V části **mapování** vyberte **synchronizace Azure Active Directory Users správce hesel držitel & digitální trezor**.
 
-    ![Držitel mapování uživatelů](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Držitel mapování uživatelů](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
 11. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do správce hesel držitel & digitální trezoru **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v správce hesel držitel & digitální trezoru pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
 
-    ![Držitel atributy uživatele](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Držitel atributy uživatele](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
 12. V části **mapování** vyberte **synchronizaci skupinám Azure Active Directory pro správce hesel držitel & digitální trezor**.
 
-    ![Držitel skupiny mapování](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Držitel skupiny mapování](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
 13. Zkontrolujte skupiny atributů, které se synchronizují ze služby Azure AD do správce hesel držitel & digitální trezoru **mapování atributů** části. Atributy vybrané jako **odpovídající** vlastnosti se používají k vyhodnocení skupiny správce hesel držitel & digitální trezoru pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
 
-    ![Držitel skupiny atributů](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Držitel skupiny atributů](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
 14. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -176,7 +176,3 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 * [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

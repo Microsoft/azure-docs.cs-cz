@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025253"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506971"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
@@ -201,42 +201,9 @@ Tady je ukázka kódu C# vám pomůžou začít, [RestApiSample na Githubu](http
 1.  Klonovat nebo stáhnout úložiště. Otevřete řešení RestApiSample.
 2.  Vyhledejte řádek **klienta. Vlastnost BaseAddress =...** a poskytnout vaší [základní adresa URL](#base-url).
 
-Vzorový kód můžete použít se interaktivní přihlášení, uživatelského jména a hesla, nebo [instanční objekt služby](#service-principal).
+Vzorový kód používá [instanční objekt služby](#service-principal) ověřování.
 
-#### <a name="interactive-login-or-usernamepassword"></a>Interaktivní přihlášení nebo uživatelského jména a hesla
-
-Tato forma ověřování vyžaduje, vytvořit aplikaci Azure s potřebnými oprávněními rozhraní API, které jsou přiřazeny. 
-
-1.  Na webu Azure portal, klikněte na tlačítko **vytvořit prostředek** > **Azure Active Directory** > **registrace aplikací**  >   **Registrace nové aplikace**.
-
-    ![Registrace nové aplikace](./media/analysis-services-async-refresh/aas-async-app-reg.png)
-
-
-2.  V **vytvořit**, zadejte název, vyberte **nativní** typu aplikace. Pro **identifikátor URI pro přesměrování**, zadejte **urn: ietf:wg:oauth:2.0:oob**a potom klikněte na tlačítko **vytvořit**.
-
-    ![Nastavení](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
-
-3.  Vyberte vaši aplikaci a pak zkopírujte a uložte **ID aplikace**.
-
-    ![Zkopírujte ID aplikace](./media/analysis-services-async-refresh/aas-async-app-id.png)
-
-4.  V **nastavení**, klikněte na tlačítko **požadovaná oprávnění** > **přidat**.
-
-    ![Přidat přístup přes rozhraní API](./media/analysis-services-async-refresh/aas-async-add.png)
-
-5.  V **vyberte rozhraní API**, typ **Azure Analysis Services** do vyhledávacího pole a vyberte ji.
-
-    ![Vybrat rozhraní API](./media/analysis-services-async-refresh/aas-async-select-api.png)
-
-6.  Vyberte **číst a zapisovat všechny modely**a potom klikněte na tlačítko **vyberte**. Když obě jsou vybrané, klikněte na tlačítko **provádí** o přidání oprávnění. Může trvat několik minut na dokončení propagace.
-
-    ![Vyberte pro čtení a zápis všech modelů](./media/analysis-services-async-refresh/aas-async-select-read.png)
-
-7.  Ve vzorovém kódu najít **UpdateToken()** metody. Sledujte obsah této metody.
-8.  Najít **řetězec clientID =...** a pak zadejte **ID aplikace** jste zkopírovali v kroku 3.
-9.  Spusťte ukázku.
-
-#### <a name="service-principal"></a>Instanční objekt
+### <a name="service-principal"></a>Instanční objekt
 
 Zobrazit [vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) a [přidání hlavního názvu služby k roli správce serveru](analysis-services-addservprinc-admins.md) pro další informace o tom, jak nastavení hlavního názvu služby a přidělení potřebných oprávnění v Azure jako . Po dokončení kroků, proveďte následující kroky:
 

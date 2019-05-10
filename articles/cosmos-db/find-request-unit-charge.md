@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: 73eaef1c9c8a9359ab931dbbe50496dc41a6f337
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 730f0604d0c292764aaee6e0ffb8ef95d90be5f2
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148959"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410294"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najít zátěž jednotky žádostí ve službě Azure Cosmos DB
 
@@ -199,7 +199,7 @@ Další informace najdete v tématu [rychlý start: Vytvoření webové aplikace
 ### <a name="use-the-mongodb-java-driver"></a>Použít ovladači MongoDB Java
 
 
-Při použití [oficiální ovladači MongoDB Java](http://mongodb.github.io/mongo-java-driver/), můžete spustit příkazy voláním `runCommand` metodu na `MongoDatabase` objektu:
+Při použití [oficiální ovladači MongoDB Java](https://mongodb.github.io/mongo-java-driver/), můžete spustit příkazy voláním `runCommand` metodu na `MongoDatabase` objektu:
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));

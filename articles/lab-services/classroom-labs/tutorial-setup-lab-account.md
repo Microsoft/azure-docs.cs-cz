@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 704ad915616e4f860204783462269ec68a6e4e28
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0977c4537e409b59be7f9031c488b3317f9f2f0f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730642"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415798"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí pomocí Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 
@@ -50,8 +50,9 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
     4. V části **Umístění** vyberte umístění nebo oblast, ve které chcete účet testovacího prostředí vytvořit. 
     5. Vyberte existující **sdílené bitové kopie Galerie** nebo ji vytvořte. Šablonu virtuálního počítače můžete uložit v galerii sdílené bitové kopie pro ni znovu použije jinými uživateli. Podrobné informace o galeriích sdílené bitové kopie, naleznete v tématu [sdílené bitové kopie Galerie v Azure Lab Services](how-to-use-shared-image-gallery.md). 
     6. Pro **partnerská virtuální síť**, vyberte partnerská virtuální síť (VNet) pro síť testovacího prostředí. Testovací prostředí vytvořené v rámci tohoto účtu připojení k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. 
-    7. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** pole, zda má být creators testovacího prostředí bude moci vybrat umístění testovacího prostředí. Ve výchozím nastavení bude možnost zakázána. Pokud je zakázáno, Tvůrce prostředí nelze zadat umístění pro testovací prostředí, které se vytváří. Tato cvičení se vytvoří v nejbližší geografické umístění účtu testovacího prostředí. Pokud je povolena, Autor testovacího prostředí můžete vybrat umístění v době vytvoření testovacího prostředí. 
-    8. Vyberte **Vytvořit**. 
+    7. Zadejte **rozsah adres** pro virtuální počítače v testovacím prostředí. Rozsah adres by měl být v zápisu classless Inter-Domain routing (CIDR) (Příklad: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres. Další informace najdete v tématu [zadejte rozsah adres pro virtuální počítače v testovacím prostředí](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).
+    8. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** pole, zda má být creators testovacího prostředí bude moci vybrat umístění testovacího prostředí. Ve výchozím nastavení bude možnost zakázána. Pokud je zakázáno, Tvůrce prostředí nelze zadat umístění pro testovací prostředí, které se vytváří. Tato cvičení se vytvoří v nejbližší geografické umístění účtu testovacího prostředí. Pokud je povolena, Autor testovacího prostředí můžete vybrat umístění v době vytvoření testovacího prostředí. 
+    9. Vyberte **Vytvořit**. 
 
         ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Vyberte **ikonu zvonku** na panelu nástrojů (**oznámení**), potvrďte, že nasazení proběhlo úspěšně a pak vyberte **přejít k prostředku**. 

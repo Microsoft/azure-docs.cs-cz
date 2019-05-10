@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 3ddda89b19a04bdcd45f392f297ee5e930833538
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711594"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472767"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade a aktualizuje se cluster Azure Service Fabric
 
@@ -99,7 +99,7 @@ Můžete zadat vlastní bezpečnostní zásady, případně zkontrolujte aktuál
 Mnoho různých konfiguračních nastavení se dají přizpůsobit v clusteru, jako je například úroveň spolehlivosti clusteru a uzlů vlastností. Další informace najdete v článku [nastavení prostředků infrastruktury pro cluster Service Fabric](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Opravy operačního systému v uzlech clusteru
-Aplikace orchestraci oprav (POA) je aplikace Service Fabric, který automatizuje operačního systému, použití dílčích oprav v clusteru Service Fabric bez jakýchkoli prostojů. [Opravy Orchestrace aplikace pro Windows](service-fabric-patch-orchestration-application.md) nebo [aplikace orchestraci oprav pro Linux](service-fabric-patch-orchestration-application-linux.md) je možné nasadit v clusteru pro instalaci oprav iniciovat organizovaně, což způsobem při zachování služeb dostupné neustále. 
+Aplikace orchestraci oprav (POA) je aplikace Service Fabric, který automatizuje operačního systému, použití dílčích oprav v clusteru Service Fabric bez jakýchkoli prostojů. [Opravy Orchestrace aplikace pro Windows](service-fabric-patch-orchestration-application.md) je možné nasadit v clusteru pro instalaci oprav iniciovat organizovaně, což způsobem při zachování služby dostupné neustále.
 
 
 ## <a name="next-steps"></a>Další postup

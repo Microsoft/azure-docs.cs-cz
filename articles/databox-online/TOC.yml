@@ -81,24 +81,28 @@
           href: data-box-edge-technical-specifications-compliance.md
     - name: Postup
       items:
-        - name: Správa výpočetních služeb
-          href: data-box-edge-manage-compute.md
         - name: 'Vývoj modulu jazyka C#'
           href: data-box-edge-create-iot-edge-module.md
-        - name: Správa sdílených složek
-          href: data-box-edge-manage-shares.md
-        - name: Správa uživatelů
-          href: data-box-edge-manage-users.md
-        - name: Správa plánů šířky pásma
-          href: data-box-edge-manage-bandwidth-schedules.md
-        - name: 'Správa napájení, přístupu a připojení'
-          href: data-box-edge-manage-access-power-connectivity-mode.md
-        - name: Správa pomocí PowerShellu
-          href: data-box-edge-connect-powershell-interface.md
+        - name: Spravovat
+          items:
+            - name: Výpočetní funkce Edge
+              href: data-box-edge-manage-compute.md
+            - name: Sdílené složky
+              href: data-box-edge-manage-shares.md
+            - name: Uživatelé
+              href: data-box-edge-manage-users.md
+            - name: Plány služby Bandwidth
+              href: data-box-edge-manage-bandwidth-schedules.md
+            - name: 'Výkon, přístup, možnosti připojení'
+              href: data-box-edge-manage-access-power-connectivity-mode.md
+            - name: Přes PowerShell
+              href: data-box-edge-connect-powershell-interface.md
         - name: Řešení potíží
           href: data-box-edge-troubleshoot.md
         - name: Monitorování
           href: data-box-edge-monitor.md
+        - name: Vrácení zařízení
+          href: data-box-edge-return-device.md
     - name: "Poznámky k\_verzi"
       items:
         - name: Všeobecná dostupnost

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: fe1e56d2975c219a56d41102c728b7873f9f4f62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918254"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406377"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
@@ -380,7 +380,7 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-|Krok|Potenciální chyby|Čím se zpracují|
+|Fáze|Potenciální chyby|Čím se zpracují|
 |-|-|-|
 |Kompilace JavaScriptu vyžaduje objekt|Neplatná adresa URL|Blok `try`/`catch`|
 |Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
@@ -535,7 +535,7 @@ Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k 
 
 V dalším kroku změňte koncový bod vyhledávání na webu Bingu v souboru HTML na:
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
 
 Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 

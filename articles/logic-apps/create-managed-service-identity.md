@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60428069"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416124"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
 
@@ -132,7 +132,7 @@ Udělit přístup do jiného prostředku Azure pro svou aplikaci logiky, systém
 
 1. Na webu Azure Portal přejděte k prostředku Azure ve které chcete přiřadit přístup pro spravovanou identitu. 
 
-1. V nabídce prostředků vyberte **řízení přístupu (IAM)** a zvolte **přidat přiřazení role**. 
+1. V nabídce prostředků vyberte **řízení přístupu (IAM)**. Na panelu nástrojů zvolte **přidat** > **přidat přiřazení role**.
 
    ![Přidat přiřazení role](./media/create-managed-service-identity/add-permissions-logic-app.png)
 

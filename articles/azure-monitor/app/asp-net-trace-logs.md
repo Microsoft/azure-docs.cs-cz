@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74cb1b3ec4e0570aa4316e6f45e99719f36815d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150703"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472058"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Prozkoumejte základní.NET/.NET protokoly trasování v Application Insights
 
@@ -177,8 +177,8 @@ Je to možné, například:
 Použití [adaptéry protokolu Java](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Neexistuje žádná možnost Application Insights v místní nabídce projektu
-* Ujistěte se, že nainstalované nástroje služby Application Insights na vývojovém počítači. V sadě Visual Studio **nástroje** > **rozšíření a aktualizace**, vyhledejte **nástroje Application Insights**. Pokud se nejedná o **nainstalováno** otevřenou kartou **Online** kartu a nainstalujte ho.
-* To může být typ projektu, který nepodporuje nástroje Application Insights. Použití [ruční instalace](#manual-installation).
+* Ujistěte se, že Developer Analytics Tools je nainstalovaná na vývojovém počítači. V sadě Visual Studio **nástroje** > **rozšíření a aktualizace**, vyhledejte **Developer Analytics Tools**. Pokud se nejedná o **nainstalováno** otevřenou kartou **Online** kartu a nainstalujte ho.
+* To může být typ projektu, který nepodporuje Devloper analytických nástrojů. Použití [ruční instalace](#manual-installation).
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Neexistuje žádná možnost adaptér protokolu v nástroji pro konfiguraci
 * Nejprve nainstalujte rozhraní protokolování.

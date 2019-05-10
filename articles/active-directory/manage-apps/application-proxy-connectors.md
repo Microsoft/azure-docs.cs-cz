@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb2a2aa8204ef442bbe3a0e6ff9018cd3f153910
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292991"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406491"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -29,7 +29,7 @@ Konektory jsou zjednodušené agentů nacházejí v místním usnadnění odchoz
 
 ## <a name="requirements-and-deployment"></a>Požadavky a nasazení
 
-Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Konektor nainstalujte na Windows Server 2012 R2 nebo 2016 počítače. Konektor potřebuje ke komunikaci s Proxy aplikace služby a místních aplikací, které publikujete. 
+Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Nainstalujte connector v počítači se systémem Windows Server 2012 R2 nebo novější. Konektor potřebuje ke komunikaci s Proxy aplikace služby a místních aplikací, které publikujete. 
 
 ### <a name="windows-server"></a>Windows server
 Potřebujete server s Windows serverem 2012 R2 nebo novější na kterých je nainstalován konektor Proxy aplikací. Server potřebuje pro připojení k Proxy aplikace služby v Azure a místních aplikací, které publikujete.
@@ -85,7 +85,7 @@ Skupiny konektorů usnadňují správu velkého nasazení. Také pomáhají zvý
 
 Další informace o skupinách konektoru najdete v tématu [publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů](application-proxy-connector-groups.md).
 
-## <a name="capacity-planning"></a>Plánování kapacit 
+## <a name="capacity-planning"></a>Plánování kapacity 
 
 Je důležité, abyste měli jistotu, že jste naplánovali dostatečnou kapacitu mezi konektorů pro zpracování očekávaného provozu. V obecné, tím víc uživatelů, které máte, tím větší počítače s budete potřebovat. Níže je, že dokáže zpracovat tabulka poskytuje přehled svazku různých počítačích. Všimněte si je všechny založené na očekávaný transakce za druhé (TPS) místo uživatelem od použití vzorů se liší a nelze jej použít pro předpověď zatížení. Bude také některé rozdíly, na základě velikosti odpovědi a doba odezvy aplikace back-end – větší velikosti odpovědi a pomalejší doby odezvy bude účtovat nižší TPS Max. Doporučujeme, abyste s další počítače tak, aby náklad napříč počítači o 50 %. Kapacita navíc zajistí, abyste měli vysokou dostupnost a odolnost proti chybám.
 
@@ -103,7 +103,7 @@ Je důležité, abyste měli jistotu, že jste naplánovali dostatečnou kapacit
 
 ## <a name="security-and-networking"></a>Zabezpečení a sítě
 
-Konektory lze nainstalovat kdekoli v síti, která umožňuje jejich k odesílání požadavků na službu Proxy aplikací. Důležité je, že má počítač spuštěným konektorem také přístup k vašim aplikacím. Konektory můžete nainstalovat uvnitř vaší podnikové síti nebo na virtuálním počítači, na kterém běží v cloudu. Konektory lze spustit v rámci demilitarizovaná zóna (DMZ), ale není nutné, protože je výstupní veškerý provoz, proto síti zůstane v bezpečí.
+Konektory lze nainstalovat kdekoli v síti, která umožňuje jejich k odesílání požadavků na službu Proxy aplikací. Důležité je, že má počítač spuštěným konektorem také přístup k vašim aplikacím. Konektory můžete nainstalovat uvnitř vaší podnikové síti nebo na virtuálním počítači, na kterém běží v cloudu. Konektory lze spustit v hraniční síti, označované také jako demilitarizovaná zóny (DMZ), ale není nutné, protože je výstupní veškerý provoz, proto síti zůstane v bezpečí.
 
 Konektory odeslat pouze odchozích požadavků. Odeslání odchozího provozu pro službu Proxy aplikací a k publikovaným aplikacím. Není nutné otevřít příchozí porty, protože proudí obou směrech po vytvoření relace. Také není nutné konfigurovat příchozí přístup přes brány firewall. 
 

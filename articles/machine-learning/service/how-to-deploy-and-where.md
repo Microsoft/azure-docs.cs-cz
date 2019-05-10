@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 113c894122fe2b0673dfb47f8a9c0cbecf4c6290
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205066"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507008"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -42,7 +42,7 @@ Další informace o konceptech pracovního postupu nasazení, najdete v části 
 
 ## <a name="prerequisites-for-deployment"></a>Požadavky na nasazení
 
-- Model. Pokud nemáte trénovaného modelu, můžete použít model a soubory závislostí podle [v tomto kurzu](http://aka.ms/azml-deploy-cloud).
+- Model. Pokud nemáte trénovaného modelu, můžete použít model a soubory závislostí podle [v tomto kurzu](https://aka.ms/azml-deploy-cloud).
 
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), nebo [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk).
 
@@ -458,7 +458,7 @@ Azure Machine Learning Compute cíle vytvoření a správa pomocí služby Azure
 Návod k odvození služby batch pomocí Azure Machine Learning Compute, najdete v článku [způsob spouštění Predikcí služby Batch](how-to-run-batch-predictions.md) článku.
 
 ## <a id="iotedge"></a> Odvození na hraničních zařízeních IoT
-Podpora pro nasazení do hraničních zařízení je ve verzi preview. Další informace najdete v tématu [nasadit aplikaci Azure Machine Learning jako modulu IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning) článku.
+Podpora pro nasazení do hraničních zařízení je ve verzi preview. Další informace najdete v tématu [nasadit aplikaci Azure Machine Learning jako modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning) článku.
 
 ## <a name="next-steps"></a>Další postup
 * [Řešení potíží s nasazení](how-to-troubleshoot-deployment.md)

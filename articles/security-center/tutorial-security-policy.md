@@ -3,7 +3,7 @@ title: Práce se zásadami zabezpečení | Dokumentace Microsoftu
 description: Tento článek popisuje, jak pracovat se zásadami zabezpečení ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 5/05/2019
 ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111506"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236302"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -110,6 +110,9 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
    ![Správa zásad](./media/tutorial-security-policy/policy-management.png)
 
 2. Klikněte předplatné nebo skupinu pro správu pro kterou chcete zakázat toto doporučení.
+
+   > [!Note]
+   > Mějte na paměti, platí skupinu pro správu zásad pro její odběry. Proto pokud zásada předplatného a předplatné patří do skupiny pro správu, která stále používá stejné zásady, pak je bude dál dostávat doporučení týkající se zásad. Zásada se použije v úrovni pro správu a doporučení budou i nadále vygenerována.
 
 1. Klikněte na přiřazené zásady.
 
@@ -233,11 +236,11 @@ Tento příklad ukazuje, jak odebrat přiřazení:
 |Adaptivní řízení aplikací |Monitorování seznamu přípustných povolených aplikací ve službě Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
 |Skupiny zabezpečení sítě |Monitorování benevolentního přístupu k síti ve službě Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému ve službě Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Ochrana koncových bodů |Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center |endpointProtectionMonitoringEffect |
+|Ochrana koncového bodu |Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center |endpointProtectionMonitoringEffect |
 |Šifrování disku |Monitorování nešifrovaných disků virtuálních počítačů ve službě Azure Security Center |diskEncryptionMonitoringEffect|
 |Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
-|Brána firewall webových aplikací |Monitorovat nechráněné webové aplikace ve službě Azure Security Center |webApplicationFirewallMonitoringEffect |
-|Brána firewall příští generace |Monitorování nechráněných koncových bodů sítě ve službě Azure Security Center| |
+|Firewall webových aplikací |Monitorovat nechráněné webové aplikace ve službě Azure Security Center |webApplicationFirewallMonitoringEffect |
+|Firewall nové generace |Monitorování nechráněných koncových bodů sítě ve službě Azure Security Center| |
 
 
 ### <a name="who-can-edit-security-policies"></a>Kdo může upravit zásady zabezpečení?

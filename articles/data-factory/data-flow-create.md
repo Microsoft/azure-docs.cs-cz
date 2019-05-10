@@ -1,19 +1,17 @@
 ---
 title: Vytvoření služby Azure Data Factory mapování toku dat
-description: Vytvoření služby Azure Data Factory mapování toku dat
-author: WenJason
-ms.author: v-jay
-ms.reviewer: douglasl
+description: Vytvoření Azure Data Factory mapování toku dat
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-origin.date: 02/12/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/12/2019
+ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883706"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235664"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Vytvoření toku dat Azure Data Factory
 
@@ -23,7 +21,7 @@ Mapování toků dat ve službě ADF poskytují způsob, jak transformovat data 
 
 Začněte tím, že první vytvoříte novou službu Data Factory V2 na webu Azure Portal. Jakmile vytvoříte nový objekt factory, klikněte na dlaždici "Vytvořit a monitorovat" na uživatelské rozhraní služby Data Factory.
 
-![Možnosti toku dat](media/data-flow/v2dataflowportal.png "vytvoření toku dat")
+![Možnosti toku dat](media/data-flow/v2portal.png "vytvoření toku dat")
 
 Až se v Uživatelském rozhraní služby Data Factory, můžete použít ukázkové datové toky. Ukázky jsou k dispozici z Galerie šablon ADF. Ve službě ADF vytvoření "Kanálu z šablony" a vyberte kategorii toku dat z Galerie šablon.
 
@@ -37,7 +35,7 @@ Se výzva k zadání informací o vašem účtu úložiště objektů Blob v Azu
 
 ## <a name="create-new-data-flow"></a>Vytvoření nového toku dat
 
-Použijte tlačítko vytvořit prostředek "znaménko plus" v Uživatelském rozhraní ADF na vytváření toků dat.
+Použití v Uživatelském rozhraní ADF na vytváření toků dat tlačítko vytvořit prostředek "znaménko plus".
 
 ![Možnosti toku dat](media/data-flow/newresource.png "nový prostředek")
 

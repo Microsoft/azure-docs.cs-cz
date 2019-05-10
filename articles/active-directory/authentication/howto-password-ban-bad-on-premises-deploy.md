@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414817"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506878"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -39,6 +39,9 @@ Za běhu funkci v režimu auditování přiměřené dobu, můžete přepnout ko
 * Všechny řadiče domény, které získávají agenta pro řadič domény služby pro ochranu heslem služby Azure AD nainstalovaný musí běžet Windows Server 2012 nebo novější. Tento požadavek neznamená, že služby Active Directory domény nebo doménové struktury musí být také ve Windows serveru 2012 doména nebo doménová struktura úroveň funkčnosti. Jak je uvedeno v [Principy návrhu](concept-password-ban-bad-on-premises.md#design-principles), neexistuje žádný minimální funkčnosti domény nebo FFL vyžaduje buď řadič domény agenta nebo proxy serveru ke spuštění softwaru.
 * Všechny počítače, které je nainstalovaná Služba agenta řadiče domény musí mít nainstalované rozhraní .NET 4.5.
 * Všechny počítače, které získávají proxy server služby pro ochranu heslem služby Azure AD nainstalovaný musí běžet Windows Server 2012 R2 nebo novější.
+   > [!NOTE]
+   > Nasazení služby proxy serveru je nezbytnou podmínkou pro nasazení služby Azure AD hesla protection i v případě, že řadič domény může mít odchozí přímé připojení k Internetu. 
+   >
 * Všechny počítače s nainstalovanou službu Proxy ochrana hesel Azure AD musí mít nainstalovaný .NET 4.7.
   .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Všechny počítače, včetně řadičů domény, které byly nainstalovány součásti ochrany hesla Azure AD musíte mít Universal C Runtime nainstalovaný. Modul runtime můžete získat tak, že všechny aktualizace ze služby Windows Update. Nebo můžete ho získat balíček aktualizací specifické pro operační systém. Další informace najdete v tématu [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).

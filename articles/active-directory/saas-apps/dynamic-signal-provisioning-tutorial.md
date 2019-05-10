@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: fec6a7e3433eb5d657deac8c1b2ceb327f8d32e4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159402"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470552"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Kurz: Nakonfigurovat dynamické signál pro automatické zřizování uživatelů
 
@@ -84,7 +84,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 ### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro dynamické signálu ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **dynamické signál**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
@@ -104,11 +104,11 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 6. Přejděte v konzole pro správu dynamického signál **správce > Upřesnit > rozhraní API**.
 
-    ![Dynamické signál zřizování](./media/dynamicsignal-provisioning-tutorial/secret-token-1.png)
+    ![Dynamické signál zřizování](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
     Kopírovat **adresy URL rozhraní API SCIM** k **Tenant URL**. Klikněte na **vygenerovat nový Token** ke generování **nosného tokenu** a zkopírujte hodnotu do **tajný klíč tokenu**.
 
-    ![Dynamické signál zřizování](./media/dynamicsignal-provisioning-tutorial/secret-token-2.png)
+    ![Dynamické signál zřizování](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
 7. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k dynamické signálu. Pokud se nepovede, ujistěte se, že váš účet dynamické signál má oprávnění správce a zkuste to znovu.
 
@@ -122,11 +122,11 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 10. V části **mapování** vyberte **synchronizace Azure Active Directory Users dynamické signál**.
 
-    ![Mapování uživatelů na dynamické signálu](media/dynamicsignal-provisioning-tutorial/user-mappings.png)
+    ![Mapování uživatelů na dynamické signálu](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
 11. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD pro dynamické signálu v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v dynamické signál pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
 
-    ![Držitel atributy uživatele](media/dynamicsignal-provisioning-tutorial/user-mapping-attributes.png)
+    ![Dynamické signál atributy uživatele](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
 12. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -160,7 +160,3 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 * [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

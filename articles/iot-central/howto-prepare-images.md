@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a20662c2fc9b416fefce89a6ebe706307ee71bb7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519221"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236478"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
@@ -74,7 +74,7 @@ Nahrát obrázek pro použití na **Moje aplikace** stránce, přejděte na **na
 
 ![Nahrání image aplikací](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Výběrem dané dlaždice aplikace Image nahrajete svou image připravená (268 x 160 px) z místního počítače.
+Vyberte **Image aplikace** dlaždice k nahrání obrázku (268 x 160 px) z místního počítače.
 
 ### <a name="application-dashboard"></a>Řídicí panel aplikací
 
@@ -82,7 +82,7 @@ K nahrání obrázku na řídicí panel aplikací, přejděte **řídicí panel*
 
 ![Nahrajte obrázek řídicího panelu](media/howto-prepare-images/uploadhomepage.png)
 
-V části Konfigurace Image vyberte dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
+V části **konfigurace Image**, vyberte **Image** dlaždice k nahrání obrázku z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
 **Uložit** nahraný obrázek. Změnit velikost je v režimu úprav. Vyberte **provádí** po dokončení.
 
@@ -92,7 +92,7 @@ K nahrání obrázku do šablony zařízení, přejděte na **šablon** a výbě
 
 ![Nahrání image šablony zařízení](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Vyberte dlaždici s obrázkem do nahrajete svou image připravená (64 × 64 pixelů) z místního počítače.
+Vyberte dlaždici s obrázkem k nahrání obrázku (64 × 64 pixelů) z místního počítače.
 
 ### <a name="device-dashboard"></a>Řídicí panel zařízení
 
@@ -100,7 +100,7 @@ K nahrání obrázku na řídicí panel zařízení, přejděte na **šablon** a
 
 ![Nahrajte obrázek řídicího panelu zařízení](media/howto-prepare-images/uploaddevicedashboard.png)
 
-V části Konfigurace Image vyberte dlaždici s obrázkem a pak zvolte soubor k odeslání z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
+V části **konfigurace Image**, vyberte **Image** dlaždici a vyberte soubor k odeslání z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
 **Uložit** nahraný obrázek. Můžete změnit velikost a umístění v režimu úprav. Vyberte **provádí** po dokončení.
 
@@ -110,13 +110,14 @@ K nahrání obrázku na řídicí panel sady zařízení, přejděte na **sady z
 
 ![Nahrajte obrázek řídicího panelu nastavení zařízení](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-V části Konfigurace Image vyberte dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
+V části **konfigurace Image**, vyberte **Image** dlaždice k nahrání obrázku z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
 **Uložit** nahraný obrázek. Můžete změnit velikost a umístění v režimu úprav. Vyberte **provádí** po dokončení.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak připravit a nahrávání imagí do aplikace Azure IoT Central, tady je navrhované další krok:
+Teď, když jste se naučili, jak připravit a nahrávání imagí do aplikace Azure IoT Central, tady jsou další navrhované kroky:
 
-> [!div class="nextstepaction"]
-> [Správa zařízení v aplikaci Azure IoT Central](howto-manage-devices.md)
+* [Přizpůsobení uživatelského rozhraní Azure IoT Central](./howto-customize-ui.md)
+* [Konfigurace řídicí panel aplikací](./howto-configure-homepage.md)
+* [Správa zařízení v aplikaci Azure IoT Central](howto-manage-devices.md)

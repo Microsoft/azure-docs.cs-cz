@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191002"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406659"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -126,7 +126,7 @@ Pomocí toku kódu zařízení, aplikace získá tokeny krocích zvláště urč
 
 ![Tok kódu zařízení](media/msal-authentication-flows/device-code.png)
 
-1. Pokaždé, když se vyžaduje ověření uživatele, poskytuje kód a žádá uživatele, aby pomocí jiného zařízení (jako jsou připojené k Internetu smartphone) přejděte na adresu URL aplikace (například http://microsoft.com/devicelogin), ve kterém uživateli zobrazí výzva k zadání kódu. Že budete hotovi, webové stránky přejde uživatele prostřednictvím normální ověřování prostředí, a v případě potřeby včetně výzev k udělení souhlasu a ověřování službou Multi-Factor Authentication.
+1. Pokaždé, když se vyžaduje ověření uživatele, poskytuje kód a žádá uživatele, aby pomocí jiného zařízení (jako jsou připojené k Internetu smartphone) přejděte na adresu URL aplikace (například https://microsoft.com/devicelogin), ve kterém uživateli zobrazí výzva k zadání kódu. Že budete hotovi, webové stránky přejde uživatele prostřednictvím normální ověřování prostředí, a v případě potřeby včetně výzev k udělení souhlasu a ověřování službou Multi-Factor Authentication.
 
 2. Po úspěšném ověření aplikace příkazového řádku bude přijímat požadované tokeny prostřednictvím používající back channel a použije ho k provádění volání webové rozhraní API, které potřebuje.
 

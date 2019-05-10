@@ -9,12 +9,12 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: daa3bd49fcb9970a4a4a026f764cc195423e83d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4245c44ceaf907512187d7db4a9d6f087a855f70
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154362"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507889"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Ověření přístupu k objektům BLOB a fronty s Azure Active Directory a spravovaným identitám pro prostředky Azure
 
@@ -48,7 +48,7 @@ K autorizaci požadavků na úložiště objektů Blob a fronty pomocí spravova
 
 Klientská knihovna ověřování aplikace automaticky spravuje ověřování. Knihovny používá přihlašovací údaje pro vývojáře k ověřování během místního vývoje. Pomocí přihlašovacích údajů pro vývojáře při místním vývojovém je bezpečnější, protože není potřeba vytvořit přihlašovací údaje služby Azure AD nebo sdílet přihlašovacích údajů mezi vývojáři. Při řešení je později nasadit do Azure, knihovně, automaticky se přepne do pomocí přihlašovacích údajů pro aplikace.
 
-Pokud chcete použít knihovnu ověřování aplikace v aplikaci Azure Storage, nainstalujete nejnovější balíček ve verzi preview z [Nuget]((https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)), a také nejnovější verzi [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Přidejte následující **pomocí** příkazy kódu:
+Pokud chcete použít knihovnu ověřování aplikace v aplikaci Azure Storage, nainstalujete nejnovější balíček ve verzi preview z [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), a také nejnovější verzi [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Přidejte následující **pomocí** příkazy kódu:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 797d0cdb8d164955991de321d8df22e43f5c6a40
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c3b2134fae86b988fb21e993cd01b77a90bd2896
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024329"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467068"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Dotazování se provádí nad indexem definovaným uživatelem.
@@ -44,7 +44,7 @@ Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/res
 | AI&nbsp;rozšíření&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
 |-------------------|----------|
 |AI rozšiřují dokumenty | [**Kognitivní vyhledávání** ](cognitive-search-concept-intro.md) pro analýzu obrázků a textu můžou uplatnit na kanál indexování extrahujte textové informace z nezpracované obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |
-| Obohacení uložené pro analýzu a využití| [**Znalostní báze Store** ](knowledge-store-concept-intro.md) je rozšířením založené na umělé Inteligenci indexování. Díky službě Azure storage jako back-endu můžete uložit obohacení vytvořené během indexování. Tyto artefakty umožňuje vám pomůžou Navrhnout lepší dovednosti, nebo vytvořit tvar a struktura využít data beztvará nebo není jednoznačná. Projekce tyto struktury můžete vytvořit tento cíl konkrétní úlohy nebo uživatelů. Můžete také přímo analyzovat extrahovaných dat nebo načíst do jiných aplikací.<br/><br/> |
+| Obohacení uložené pro analýzu a využití| [**Znalostní báze Store (preview)** ](knowledge-store-concept-intro.md) je rozšířením založené na umělé Inteligenci indexování. Díky službě Azure storage jako back-endu můžete uložit obohacení vytvořené během indexování. Tyto artefakty umožňuje vám pomůžou Navrhnout lepší dovednosti, nebo vytvořit tvar a struktura využít data beztvará nebo není jednoznačná. Projekce tyto struktury můžete vytvořit tento cíl konkrétní úlohy nebo uživatelů. Můžete také přímo analyzovat extrahovaných dat nebo načíst do jiných aplikací.<br/><br/> |
 
 | Data&nbsp;indexování/import | Funkce |
 |----------------------------------|----------|
@@ -57,7 +57,7 @@ Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/res
 |-------------------|----------|
 | Nástroje pro vytváření prototypů a kontrolu | Na portálu můžete pomocí [**Průvodce importem dat**](search-import-data-portal.md) nakonfigurovat indexery, návrháře indexů, aby sestavil index, a [**Průzkumníka služby Search**](search-explorer.md), abyste mohli testovat dotazy a upřesňovat profily vyhodnocování. Můžete také otevřít index a zobrazit jeho schéma. |
 | Monitorování a diagnostika | [**Povolení funkce monitorování** ](search-monitor-usage.md) se dostat nad rámec metriky v přehled, které jsou vždy viditelné na portálu. Metriky pro dotazy za sekundu, latenci a omezování se zachycují a uvádějí na stránkách portálu bez další nezbytné konfigurace. <br/><br/>[**Analýza provozu vyhledávání** ](search-traffic-analytics.md) je další možnost monitorování na straně serveru a dat na straně klienta je shromažďovat a analyzovat za účelem odhalit nové poznatky o co uživatelé zadávají do vyhledávacího pole. |
-| Šifrování na straně serveru | [**Spravovaná Microsoftem šifrování neaktivních** ](search-security-overview.md#encrypted-transmission-and-storage) je integrovaná do interní úložné vrstvy a je nezvratná. Volitelně můžete doplnit výchozí šifrování s [ **klíče spravované zákazníkem šifrování**](search-security-manage-encryption-keys.md). Klíče, které můžete vytvořit a spravovat ve službě Azure Key Vault slouží k šifrování indexy a mapy synonym ve službě Azure Search. |
+| Šifrování na straně serveru | [**Spravovaná Microsoftem šifrování neaktivních** ](search-security-overview.md#encrypted-transmission-and-storage) je integrovaná do interní úložné vrstvy a je nezvratná. Volitelně můžete doplnit výchozí šifrování s [ **klíče spravované zákazníkem šifrování (preview)**](search-security-manage-encryption-keys.md). Klíče, které můžete vytvořit a spravovat ve službě Azure Key Vault slouží k šifrování indexy a mapy synonym ve službě Azure Search. |
 | Infrastruktura | Díky **vysoce dostupné platformě** je prostředí vyhledávací služby nadmíru spolehlivé. Při správném nastavení kapacity [Azure Search nabízí SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Azure Search představuje **plně spravované a škálovatelné** řešení typu klient-server a nevyžaduje vůbec žádnou správu infrastruktury. Služba se dá přizpůsobit na míru vašim potřebám pomocí nastavení kapacity ve dvou dimenzích, aby mohla pracovat s větším úložištěm dokumentů, vyšším objemem dotazů nebo obojím.<br/><br/>|
 
 ## <a name="how-to-use-azure-search"></a>Použití Azure Search
@@ -74,14 +74,14 @@ Předtím, než budete moct nahrát prohledávatelný obsah, je nutné definovat
 
 Schéma se dá vytvořit na portálu Azure nebo programově pomocí [.NET SDK](search-howto-dotnet-sdk.md) nebo [REST API](/rest/api/searchservice/).
 
-### <a name="step-3-load-data"></a>Krok 3: Načtení dat
+### <a name="step-3-load-data"></a>Krok 3: Načíst data
 Po definování indexu jste připravení nahrát obsah. Můžete použít model nabízení nebo vyžádání.
 
 Model vyžádání načítá data z externích zdrojů dat. Podporují ho *indexery*, které zjednodušují a automatizují aspekty příjmu dat, jako je například připojení k datům a jejich čtení a serializace. [Indexery](/rest/api/searchservice/Indexer-operations) jsou k dispozici pro Azure Cosmos DB, Azure SQL Database, Azure Blob Storage a SQL Server hostované ve virtuálním počítači Azure. V indexeru můžete nakonfigurovat aktualizaci dat na vyžádání nebo podle plánu.
 
 Model nabízení se zajišťuje prostřednictvím sady SDK nebo rozhraní REST API, která slouží k posílání aktualizovaných dokumentů do indexu. Data můžete nabízet prakticky z libovolné datové sady ve formátu JSON. Pokyny k načítání dat najdete v článcích [Přidávání, aktualizace a odstraňování dokumentů](/rest/api/searchservice/addupdate-or-delete-documents) nebo [Jak používat sadu .NET SDK](search-howto-dotnet-sdk.md).
 
-### <a name="step-4-search"></a>Krok 4: Search
+### <a name="step-4-search"></a>Krok 4: Vyhledávání
 Po naplnění indexu můžete [vydávat vyhledávací dotazy](/rest/api/searchservice/Search-Documents) do vašeho koncového bodu služby pomocí jednoduchých žádostí HTTP přes rozhraní REST API nebo .NET SDK.
 
 ## <a name="how-it-compares"></a>Srovnání s ostatními řešeními

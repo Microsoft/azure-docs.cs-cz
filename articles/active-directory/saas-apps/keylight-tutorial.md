@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9757588b7adb4032600113d2ac948097e8df6c2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a03bb2626525bf022b109105a7c6bc0dee23aea
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717458"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Kurz: Integrace Azure Active Directory s LockPath Keylight
 
@@ -172,11 +172,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s LockPath Keylight, proveďt
 
     j. Nastavte **konfigurace zabezpečení automatické zřizování**vyberte **standardní konfigurace uživatele**.
 
-    k. V **atribut e-mailové** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    k. V **atribut e-mailové** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    l. V **křestní jméno atributu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    l. V **křestní jméno atributu** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    m. V **poslední název atributu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    m. V **poslední název atributu** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
     n. Klikněte na **Uložit**.
 
@@ -234,7 +234,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se vytvoří uživateli Britta Simon v LockPath Keylight. LockPath Keylight podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi LockPath Keylight, vytvoří se nový po ověření. Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory LockPath Keylight klienta](https://www.lockpath.com/contact/).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/17/2019
+ms.date: 5/02/2019
 ms.author: monhaber
-ms.openlocfilehash: b5eafd15344156965d0a191688f602ffe1b5a498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e334af353e1d9556641914056ab0a3071ca361e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703570"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233601"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -78,13 +78,13 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 |Integrace ochrany ATP v programu Windows Defender|✔ (o podporovaných verzích)|✔|X|X|
 |Chybějící opravy|✔|✔|✔|✔|
 |Konfigurace zabezpečení|✔|✔|✔|✔|
-|Ochrana koncových bodů|✔|✔|X|X|
+|Ochrana koncového bodu|✔|✔|X|X|
 |Přístup k virtuálnímu počítači podle potřeby|✔|X|✔|X|
-|Adaptivní řízení aplikací|✔|X|X|X|
+|Adaptivní řízení aplikací|✔|✔|✔|✔|
 |FIM|✔|✔|✔|✔|
 |Šifrování disku|✔|X|✔|X|
 |Nasazení třetích stran|✔|X|✔|X|
-|Skupiny NSG|✔|X|✔|X|
+|skupin NSG|✔|X|✔|X|
 |Detekce hrozeb fileless|✔|✔|X|X|
 |Mapování sítě|✔|X|✔|X|
 |Ovládací prvky pro adaptivní síť|✔|X|✔|X|
@@ -96,7 +96,7 @@ Následující tabulka obsahuje matici:
  - Určuje, zda můžete použít Azure Security Center k instalaci jednotlivá řešení za vás.
  - Můžete zjistit, které endpoint protection řešení Security Center. Pokud je jedno z těchto řešení endpoint protection zjistí, nebude Security Center doporučit instalace.
 
-| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
+| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
@@ -114,18 +114,18 @@ Následující tabulka obsahuje matici:
 ## <a name="supported-paas-features"></a>Podporované funkce PaaS 
 
 
-|Služba|Doporučení|Detekce hrozeb|
+|Služba|Doporučení|Detekce hrozby|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
 |Azure Blob storage účty *|✔| ✔|
-|Aplikační služby|✔| ✔|
-|Cloud Services|✔| X|
+|App Services|✔| ✔|
+|Cloudové služby|✔| X|
 |Virtuální sítě|✔| Není k dispozici|
 |Podsítě|✔| Není k dispozici|
 |Síťové karty|✔| ✔|
-|Skupiny NSG|✔| Není k dispozici|
+|skupin NSG|✔| Není k dispozici|
 |Předplatné|✔| ✔|
 
 \* Tyto funkce jsou aktuálně podporované ve verzi public preview. 

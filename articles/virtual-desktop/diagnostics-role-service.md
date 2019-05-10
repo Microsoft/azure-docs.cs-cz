@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870485"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234028"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů pomocí diagnostické funkce
 
@@ -118,7 +118,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 
 Chyba scénáře jsou rozdělené do interní ke službě a externí virtuální plochy Windows.
 
-* Vnitřní problém: Určuje scénáře, které není možné řešit správcem tenanta a musí být vyřešeny automatickým problém podpory. Kdy lístku zadejte ID aktivity, název klienta a přibližné časový rámec problém došlo k chybě.
+* Vnitřní problém: Určuje scénáře, které není možné řešit správcem tenanta a musí být vyřešeny automatickým problém podpory. Při poskytování zpětné vazby prostřednictvím [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), patří ID aktivity a jak časový rámec kdy došlo k problému.
 * Externí problém: se vztahují na scénáře, které se dají zmírnit na správce systému. Toto jsou externí vzhledem k virtuálnímu klientovi Windows.
 
 V následující tabulce najdete běžné chyby, které vaši správci tyto problémy.

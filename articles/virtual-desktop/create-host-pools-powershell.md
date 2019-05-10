@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/05/2019
+ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: e550111e04ea77e35a4554bcc6e3bffaf4d543d2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 165980da2b78e7514ea1938bdbeb6fda82dd123d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924962"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236657"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -100,17 +100,6 @@ K registraci agentů virtuálního klienta Windows, proveďte postup na každý 
    - Stáhněte si [spouštěcí zavaděč virtuální plochy agenta Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**vyberte **Odblokovat**a pak vyberte **OK**. To vám umožní váš systém důvěřovat Instalační služby.
    - Spusťte instalační program.
-4. Nainstalujte nebo aktivovat zásobníku vedle sebe virtuální plochy Windows. Postup se bude lišit v závislosti na tom, jaké verze operačního systému virtuálního počítače používá.
-   - Je-li operační systém virtuálního počítače Windows serveru 2016:
-     - Stáhněte si [virtuální plochy Windows vedle sebe zásobníku](https://go.microsoft.com/fwlink/?linkid=2084270).
-     - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**vyberte **Odblokovat**a pak vyberte **OK**. To vám umožní váš systém důvěřovat Instalační služby.
-     - Spusťte instalační program.
-   - Pokud je operační systém virtuálního počítače Windows 10 1809 nebo novější a Windows Server 2019 nebo novější:
-     - Stáhněte si [skript](https://go.microsoft.com/fwlink/?linkid=2084268) aktivovat zásobníku vedle sebe.
-     - Klikněte pravým tlačítkem na staženého skriptu, vyberte **vlastnosti**vyberte **Odblokovat**a pak vyberte **OK**. To vám umožní váš systém důvěřovat skriptu.
-     - Z **Start** nabídky, vyhledejte Windows PowerShell ISE, pravým tlačítkem myši a potom vyberte **spustit jako správce**.
-     - Vyberte **souboru**, pak **otevřít...** a potom vyhledejte Powershellový skript z stažené soubory a otevřete ho.
-     - Vyberte tlačítko Přehrát zelená pro spuštění skriptu.
 
 >[!IMPORTANT]
 >Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ce7eb546c342ffd20557a95d5293d83b39ec3afb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922931"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507197"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -66,7 +66,7 @@ Můžete vložit více než jedna funkce v projektu. Vyhněte se vložení vaši
 
  Služba Azure functions se vyvolá triggerem, například požadavek HTTP, časovač nebo aktualizaci dat. Funkce je potřeba zpracovat tuto aktivační událost a všechny ostatní vstupy pro vytvoření jednoho nebo více výstupů.
 
-Použití anotací Java součástí [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) balíček, který chcete svázat vaše metody vstup a výstup. Další informace najdete v části [referenční dokumentace jazyka Java](/java/api/com.microsoft.azure.functions.annotation).
+Použití anotací Java součástí [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) balíček, který chcete svázat vaše metody vstup a výstup. Další informace najdete v tématu [referenční dokumentace jazyka Java](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
 > Musíte nakonfigurovat účet služby Azure Storage ve vašich [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) pro místní spuštění aktivační události Azure Storage Blob, fronty nebo tabulky.
@@ -112,6 +112,37 @@ Tady je vygenerovaný odpovídající `function.json` podle [azure-functions-mav
 Stáhnout a použít [Azul Zulu Enterprise pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK 8 z [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. Služba Azure Functions využívá modul runtime Azul Java 8 JDK při nasazení vaší aplikace function App do cloudu.
 
 [Podpora Azure](https://azure.microsoft.com/support/) pro problémy s JDK a funkce je k dispozici s aplikací [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+
+## <a name="customize-jvm"></a>Přizpůsobení JVM
+
+Funkce umožňuje přizpůsobit virtuální počítač Java (JVM) používaný k provedení funkcí v Javě. [Těchto možností JVM](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) se používají ve výchozím nastavení:
+
+* `-XX:+TieredCompilation`
+* `-XX:TieredStopAtLevel=1`
+* `-noverify` 
+* `-Djava.net.preferIPv4Stack=true`
+* `-jar`
+
+Můžete zadat další argumenty v aplikaci nastavení s názvem `JAVA_OPTS`. Nastavení aplikace můžete přidat do aplikace function app nasadit do Azure v jednom z těchto způsobů:
+
+### <a name="azure-portal"></a>portál Azure
+
+V [webu Azure portal](https://portal.azure.com), použijte [kartu Nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) přidáte `JAVA_OPTS` nastavení.
+
+### <a name="azure-cli"></a>Azure CLI
+
+[Az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) příkaz můžete použít k nastavení `JAVA_OPTS`, jako v následujícím příkladu:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <APP_NAME> \
+    --resource-group <RESOURCE_GROUP> \
+    --settings "JAVA_OPTS=-Djava.awt.headless=true"
+    ```
+Tento příklad povolí bezobslužného režimu. Nahraďte `<APP_NAME>` s názvem aplikace function App a `<RESOURCE_GROUP> ` s vybranou skupinou prostředků.
+
+> [!WARNING]  
+> Při spuštění v [plánu Consumption](functions-scale.md#consumption-plan), je nutné přidat `WEBSITE_USE_PLACEHOLDER` nastavení s hodnotou `0`.  
+Toto nastavení zvýšit dobu úplné spuštění funkcí v Javě.
 
 ## <a name="third-party-libraries"></a>Knihovny třetích stran 
 
@@ -189,7 +220,7 @@ Tato funkce se vyvolala s požadavek HTTP.
 - Datová část požadavku HTTP je předán jako `String` argumentu `inputReq`
 - Jedna položka je načten z Azure Table Storage a je předán jako `TestInputData` na argument `inputData`.
 
-Pro příjem batch vstupů, lze svázat `String[]`, `POJO[]`, `List<String>` nebo `List<POJO>`.
+Pro příjem batch vstupů, lze svázat `String[]`, `POJO[]`, `List<String>`, nebo `List<POJO>`.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -263,7 +294,7 @@ Chcete-li odeslat více výstupní hodnoty, použijte `OutputBinding<T>` definov
     }
 ```
 
-Výše uvedené funkce, které se vyvolá u HttpRequest a zapíše více hodnot do fronty Azure
+Tato funkce se vyvolá u HttpRequest a zapíše více hodnot do fronty Azure.
 
 ## <a name="httprequestmessage-and-httpresponsemessage"></a>Hodnota HttpRequestMessage a používá HttpResponseMessage
 
@@ -363,7 +394,7 @@ Stáhnete soubory protokolů jako jednoho souboru ZIP pomocí Azure CLI, otevře
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-Musí mít povolené systému souborů přihlášení na webu Azure Portal nebo rozhraní příkazového řádku Azure před spuštěním tohoto příkazu.
+Musí mít povolené systému souborů přihlášení na webu Azure portal nebo rozhraní příkazového řádku Azure před spuštěním tohoto příkazu.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 

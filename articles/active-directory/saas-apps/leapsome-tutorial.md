@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 47778576099d8fab1692f9dd733311dcb44babdb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 602e3145a003a0413287b08151abf472ecf4ade0
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917532"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Kurz: Integrace Azure Active Directory s Leapsome
 
@@ -126,10 +126,10 @@ Ke konfiguraci Azure AD jednotné přihlašování s Leapsome, proveďte násled
 
     | Název | Zdrojový atribut | Obor názvů |
     | ---------------| --------------- | --------- |  
-    | jméno | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Příjmení | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | název | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Obrázek | Adresa URL obrázku zaměstnance. | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | jméno | user.givenname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Příjmení | user.surname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | název | user.jobtitle | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Obrázek | Adresa URL obrázku zaměstnance. | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     > [!Note]
@@ -246,7 +246,7 @@ V této části je povolit Britta Simon k udělení přístupu k Leapsome použi
 
 V této části vytvoříte uživatele v Leapsome jako Britta Simon. Práce s [tým podpory Leapsome klienta](mailto:support@leapsome.com) k přidání uživatele nebo domény, který je třeba přidat na seznam povolených Leapsome platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Leapsome platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

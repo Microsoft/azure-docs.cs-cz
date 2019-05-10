@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 4bf7d43b682a2a42d9909f9cd33aa9542a1a9330
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: ce99b537dd5958c2bec43759c58a9c182dd05142
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711636"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237016"
 ---
 # <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Rychlý start: Konfigurace virtuálních počítačů s Linuxem v Azure pomocí Ansible
 
@@ -21,8 +21,8 @@ Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, ko
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -115,7 +115,7 @@ Následující části sekce playbook Ansible ukázka vytvoří virtuální sí�
     security_group: myNetworkSecurityGroup
 ```
 
-## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 Posledním krokem je vytvoření virtuálního počítače, který používá všechny prostředky, které jste vytvořili v předchozích částech tohoto článku. 
 

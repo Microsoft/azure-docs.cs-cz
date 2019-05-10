@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 183c6aea5aaf84c9d0ed635cac55074a5256851e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 93a83545699e3536eb0045d538225d01cd1a96a2
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872546"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235641"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporovaných službou Azure Data Factory
 Tento článek popisuje systémové proměnné podporovaných službou Azure Data Factory. Tyto proměnné můžete použít ve výrazech, při definování entit služby Data Factory.
@@ -45,6 +45,7 @@ Tyto proměnné systému může být odkazováno kdekoli v triggeru JSON-li akti
 
 ## <a name="tumbling-window-trigger-scope"></a>Aktivační událost pro přeskakující okno oboru
 Tyto proměnné systému může být odkazováno kdekoli v triggeru JSON-li aktivační událost není typu: "TumblingWindowTrigger."
+(Poznámka: Časové razítko je ve výchozím nastavení ve formátu ISO 8601)
 
 | Název proměnné | Popis |
 | --- | --- |

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 414200462d3575aa576b5ef2268a3ac0b01063ba
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 73d97b45217da4bbf4b8c0e857b817911484f29c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190760"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231090"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Přehled Microsoft identity platform (v2.0)
 
@@ -43,7 +43,7 @@ S platformou identity Microsoft můžete napsat kód jednou a oslovení uživate
 
 ## <a name="getting-started"></a>Začínáme
 
-Práce s identitou nemusí být obtížné. Zvolte scénář, který se vás týká – každá cesta scénář má rychlý start a na stránce Přehled, které vám pomůžou rychle zprovoznit během několika minut:
+Práce s identitou nemusí být těžká. Zvolte scénář, který se vás týká – každá cesta scénář má rychlý start a na stránce Přehled, které vám pomůžou rychle zprovoznit během několika minut:
 
 - [Sestavení jednostránkové aplikace](scenario-spa-overview.md)
 - [Vytvoření webové aplikace, který se přihlásí uživatelé](scenario-web-app-sign-user-overview.md)
@@ -56,7 +56,7 @@ Práce s identitou nemusí být obtížné. Zvolte scénář, který se vás tý
 
 Následující diagram popisuje běžné scénáře ověřování aplikace – použijte jako referenci při integraci platforma identit Microsoft s vaší aplikací.
 
-[![Scénáře aplikací v Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.png#lightbox)
+[![Scénáře aplikací v Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

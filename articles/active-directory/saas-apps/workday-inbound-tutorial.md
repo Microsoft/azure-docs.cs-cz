@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 267b6afd7cd3131dcd138dfb631335f58cec833a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60385325"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407932"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
 
@@ -310,9 +310,9 @@ V tomto kroku budete "zabezpečení domény" udělit oprávnění zásad pro pra
    | ---------- | ---------- |
    | Operace GET a Put | Data pracovních procesů: Veřejný pracovní sestavy |
    | Operace GET a Put | Data osob: Kontaktní informace o práci |
-   | Získat | Data pracovních procesů: Všechny pozice |
-   | Získat | Data pracovních procesů: Aktuální personální informace |
-   | Získat | Data pracovních procesů: Název firmy na pracovní profil |
+   | Získat  | Data pracovních procesů: Všechny pozice |
+   | Získat  | Data pracovních procesů: Aktuální personální informace |
+   | Získat  | Data pracovních procesů: Název firmy na pracovní profil |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurace oprávnění zásad zabezpečení obchodního procesu
 
@@ -368,7 +368,7 @@ Ke zřízení do místní služby Active Directory, musí se nainstaluje agent n
 
 Po nasazení .NET 4.7.1+ si můžete stáhnout **[zde agentem zřizování v místním](https://go.microsoft.com/fwlink/?linkid=847801)** a postupujte podle kroků uvedených níže a dokončete tak konfiguraci agenta.
 
-1. Připojte se k Windows serveru, kam chcete nainstalovat nového agenta.
+1. Přihlaste se k Windows serveru, kam chcete nainstalovat nového agenta.
 2. Spusťte instalační program agenta zřizování, souhlas s podmínkami a kliknutím na **nainstalovat** tlačítko.
 
    ![Nainstalujte obrazovky](./media/workday-inbound-tutorial/pa_install_screen_1.png "nainstalovat obrazovky")
@@ -524,7 +524,7 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ano** | Zapisovat pouze při vytváření |
 | **PreferredNameData**    |  CN    |   |   Zapisovat pouze při vytváření |
-| **SelectUniqueValue (připojit k ("\@", připojte se k (".", \[FirstName\], \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 1 (), \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapisovat pouze při vytváření 
+| **SelectUniqueValue (připojit k ("\@", připojte se k (".", \[FirstName\], \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 1 (), \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Zapisovat pouze při vytváření 
 | **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze při vytváření |
 | **Přepínač (\[aktivní\],, "0", "PRAVDA", "1", "Nepravda")** |  accountDisabled      |     | Vytváření a aktualizace |
 | **Jméno**   | givenName       |     |    Vytváření a aktualizace |
@@ -867,8 +867,8 @@ Ano, jeden zřizování Agent může být nakonfigurován pro zpracování více
 #### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>Jak můžu rušit registraci domény přidružené k Moje zřizování agenta?
 
 * Z portálu Azure portal získejte *ID tenanta* vašeho tenanta Azure AD.
-* Připojte se k Windows serveru se spuštěným agentem zřizování.
-* Otevřete powershell jako správce Windows.
+* Přihlaste se k Windows serveru se spuštěným agentem zřizování.
+* Otevřete PowerShell jako správce Windows.
 * Přejděte do adresáře, který obsahuje skripty registrace a spuštěním následujících příkazů nahraďte \[ID tenanta\] parametr s hodnotou ID tenanta.
 
   ```powershell
@@ -878,7 +878,7 @@ Ano, jeden zřizování Agent může být nakonfigurován pro zpracování více
   ```
 
 * Ze seznamu agentů, které se zobrazují – kopírování hodnoty "id" pole z tohoto prostředku jehož *resourceName* rovná se na název domény AD.
-* Vložte id do tento příkaz a spusťte v Powershellu.
+* Vložte hodnotu ID do tento příkaz a spusťte příkaz v Powershellu.
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
@@ -946,9 +946,9 @@ Zaškrtněte políčko "Úpravy" pro pouze operace aktualizace toku z Workday do
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Jak formátovat zobrazovaná jména ve službě AD na základě atributů oddělení, země nebo město a regionální odchylky popisovač uživatele?
 
-Je běžné požadavky na konfiguraci *displayName* atributu ve službě AD tak, aby také poskytuje informace o oddělení a země daného uživatele. Pro třeba pokud Jan Macek pracuje v oddělení marketingu v USA, můžete jeho *displayName* zobrazí jako *Macek Jan (Marketing-US)*.
+Je běžné požadavky na konfiguraci *displayName* atributu ve službě AD, takže poskytuje také informace o oddělení a zemi/oblast uživatele. Pro třeba pokud Jan Macek pracuje v oddělení marketingu v USA, můžete jeho *displayName* zobrazí jako *Macek Jan (Marketing-US)*.
 
-Zde je, jak můžete zpracovávat takové požadavky pro vytváření *CN* nebo *displayName* k patřit atributy jako společnosti, organizační jednotky, město nebo zemi.
+Zde je, jak můžete zpracovávat takové požadavky pro vytváření *CN* nebo *displayName* k patřit atributy jako společnosti, organizační jednotky, město nebo země/oblast.
 
 * Každý atribut Workday jsou načítány s použitím základní rozhraní API jazyka XPATH výraz, který je možné konfigurovat **mapování atributů -> Upřesnit části -> Upravit seznam atributů pro Workday**. Tady je výchozí výraz XPATH rozhraní API pro Workday *PreferredFirstName*, *PreferredLastName*, *společnosti* a *SupervisoryOrganization* atributy.
 
@@ -976,7 +976,7 @@ Zde je, jak můžete zpracovávat takové požadavky pro vytváření *CN* nebo 
 
   Se svým týmem Workday potvrďte, že výše uvedené rozhraní API výrazy jsou platné pro konfiguraci klienta Workday. Pokud třeba, můžete je upravit podle popisu v části [přizpůsobení seznamu atributů uživatelů Workday](#customizing-the-list-of-workday-user-attributes).
 
-* Chcete-li sestavit výraz atribut správné mapování, určete, které Workday atribut "vynuceně" představuje uživatelské jméno, poslední název, země a oddělení. Řekněme, že jsou atributy *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* a *SupervisoryOrganization* v uvedeném pořadí. Může být využit k sestavení výrazu pro AD *displayName* atribut následujícím způsobem můžete zobrazit zobrazovaný název, jako je *Macek Jan (Marketing-US)*.
+* Chcete-li sestavit výraz atribut správné mapování, určete, které Workday atribut "vynuceně" představuje uživatele křestní jméno, název, země/oblast a poslední oddělení. Řekněme, že jsou atributy *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* a *SupervisoryOrganization* v uvedeném pořadí. Může být využit k sestavení výrazu pro AD *displayName* atribut následujícím způsobem můžete zobrazit zobrazovaný název, jako je *Macek Jan (Marketing-US)*.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1038,7 +1038,7 @@ Tato část zahrnuje následující aspekty řešení potíží:
 
 ### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>Nastavení prohlížeče událostí Windows pro řešení potíží s agentem
 
-* Připojte se k počítači systému Windows Server, které se nasadí Agent zřizování
+* Přihlaste se na které se nasadí Agent zřizování počítačů s Windows serverem
 * Otevřít **Prohlížeč událostí systému Windows Server** aplikace klasické pracovní plochy.
 * Vyberte **protokoly Windows > aplikace**.
 * Použití **filtrovat aktuální protokol...** možnost zobrazit všechny události zapsané podle zdroje **AAD. Connect.ProvisioningAgent** a vyloučit události s ID události "5", zadáním filtru-"5", jak je znázorněno níže.
@@ -1087,7 +1087,7 @@ Když kliknete na některý z záznamů protokolu auditu **podrobnosti o aktivit
 
   Najít odpovídající této operaci importu AD záznamy protokolu zřizování agenta, otevřete protokoly Prohlížeče událostí Windows a používat **najít...** možnost nabídky k vyhledání položky protokolu obsahující hodnotu atributu odpovídající vlastnost ID nebo připojení (v tomto případě *21023*).
 
-  ![Vyhledávání](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Najít](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Vyhledejte položku s *ID události = 9*, který bude poskytovat LDAP vyhledávací filtr používaný agentem pro načtení účet AD. Můžete ověřit, zda se jedná o správné vyhledávací filtr pro načtení jedinečného uživatele položky.
 
@@ -1236,7 +1236,7 @@ Chcete-li provést tuto změnu, je nutné použít [Workday Studio](https://comm
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">
@@ -1349,7 +1349,7 @@ V aplikaci Microsoft Graph Explorer, spuštěním následujícího dotazu GET na
 
 Odpověď se zobrazí, jak je znázorněno níže. Zkopírujte atribut"id" k dispozici v odpovědi. Tato hodnota je **ProvisioningJobId** a bude použit pro načtení základní metadata schématu.
 
-   [![Zřízení Id úlohy](./media/workday-inbound-tutorial/wd_export_03.png)](./media/workday-inbound-tutorial/wd_export_03.png#lightbox)
+   [![Zřízení ID úlohy](./media/workday-inbound-tutorial/wd_export_03.png)](./media/workday-inbound-tutorial/wd_export_03.png#lightbox)
 
 #### <a name="step-4-download-the-provisioning-schema"></a>Krok 4: Stáhněte si zřizování schématu
 

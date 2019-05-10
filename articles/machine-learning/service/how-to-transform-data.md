@@ -12,19 +12,19 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023791"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471837"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
-V tomto článku se naučíte různými způsoby transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep. Sada SDK nabízí funkce, které se dají jednoduše přidat sloupce odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty. Referenční dokumentace pro SDK najdete v tématu [přehled](https://aka.ms/data-prep-sdk).
+V tomto článku se dozvíte, transformuje data pomocí různých metod `azureml-dataprep` balíčku. Balíček nabízí funkce, které se dají jednoduše přidat sloupce odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty. Zobrazit úplnou referenční dokumentaci pro [azureml přípravy balíčku](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
+> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI. Pokud používáte `azureml-dataprep` balíček pro vytváření toku dat s namísto použití transformace `azureml-datasets` balíček k vytvoření datové sady, nebudete moct později použít snímky nebo systémovou správou verzí datové sady.
 
 Tento návod ukazuje příklady pro následující úlohy:
 
@@ -196,7 +196,7 @@ Nyní, předejte počet řádků, které chcete `skip` z horní části zobrazte
 builder.preview(skip=30, count=5)
 ```
 
-||DATE (Datum)|date_timerange|
+||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|1. ledna 2015 22: 00 - 00: 00|
 |1|1/1/2015 23:54|1. ledna 2015 22: 00 - 00: 00|
@@ -211,7 +211,7 @@ builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2
 builder.preview(skip=30, count=5)
 ```
 
-||DATE (Datum)|date_timerange|
+||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|1. ledna 2015 22: 00 - 00: 00|
 |1|1/1/2015 23:54|1. ledna 2015 22: 00 - 00: 00|
@@ -226,7 +226,7 @@ builder.preview(skip=75, count=5)
 ```
 
 
-||DATE (Datum)|date_timerange|
+||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|3. ledna 2015 6: 00 - 8: 00|
 |1|1/3/2015 7:54|3. ledna 2015 6: 00 - 8: 00|
@@ -239,7 +239,7 @@ builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-
 builder.preview(skip=75, count=5)
 ```
 
-||DATE (Datum)|date_timerange|
+||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|3. ledna 2015 6: 00 - 8: 00|
 |1|1/3/2015 7:54|3. ledna 2015 6: 00 - 8: 00|
@@ -253,7 +253,7 @@ builder.preview(skip=75, count=5)
 examples = builder.list_examples()
 ```
 
-| |DATE (Datum)|Příklad|example_id|
+| |DATE|Příklad|example_id|
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|1. ledna 2015 12 AM - 2 AM|-1|
 |1|1/2/2015 0:54|2. ledna 2015 12 AM - 2 AM|-2|
@@ -500,5 +500,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Další postup
 
-* Sada SDK [přehled](https://aka.ms/data-prep-sdk) vzory návrhu a příklady použití
 * Zobrazit sadu SDK pro Azure Machine Learning Data Prep [kurzu](tutorial-data-prep.md) příklad řešení konkrétní scénář

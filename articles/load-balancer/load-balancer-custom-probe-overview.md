@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 05/07/2019
 ms.author: kumud
-ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884754"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415715"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -30,7 +30,7 @@ Sondy stavu služby podporují víc protokolů. Dostupnost určitého typu sondu
 | | Standardní SKU | Základní SKU |
 | --- | --- | --- |
 | [Typy testu](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Dolů chování pro zjišťování](#probedown) | Všechny testy, všechny toky TCP pokračovat. | Všechny testy dolů ukončit všechny toky TCP. | 
+| [Dolů chování pro zjišťování](#probedown) | Všechny testy, všechny toky TCP pokračovat. | Všechny testy dolů, všechny toky TCP vypršení platnosti. | 
 
 > [!IMPORTANT]
 > Load Balancer pocházejí z IP adresy 168.63.129.16 sondy stavu a nesmí být blokovány pro testy označit navyšte kapacitu instance.  Kontrola [Zdrojová IP adresa pro zjišťování](#probesource) podrobnosti.
@@ -178,7 +178,7 @@ Nástroj pro vyrovnávání zatížení používá distribuované zjišťování
 
 Služby značka AzureLoadBalancer označuje tuto IP adresu zdroje v vaše [skupiny zabezpečení sítě](../virtual-network/security-overview.md) a povolí provoz sondy stavu ve výchozím nastavení.
 
-Tuto IP adresu kromě sondy stavu nástroje pro vyrovnávání zatížení, použijte následující operace:
+Kromě sondy stavu nástroje pro vyrovnávání zatížení [tuto IP adresu použijte následující operace](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
 - Povolí agenta virtuálního počítače pro komunikaci s platformou, který signalizuje, že je ve stavu "Připraveno"
 - Umožňuje komunikaci s virtuálním serverem DNS k překladu názvů filtrovaná pro zákazníky, kteří nemá definován vlastní servery DNS.  Toto filtrování se zajistí, že zákazníci můžou jenom překládat názvy hostitelů jejich nasazení.

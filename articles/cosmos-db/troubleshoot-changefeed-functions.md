@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8f0b9c8bf1bfb846f13306f58bcb1721ed6b422
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404686"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510532"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostika a řešení problémů při používání aktivační událost Azure Cosmos DB ve službě Azure Functions
 
@@ -27,17 +27,19 @@ Azure Cosmos DB aktivační události a vazby závisí na balíčky rozšířen�
 
 Tento článek vždy vrátíme se k Azure Functions V2 pokaždé, když modul runtime je již bylo zmíněno, pokud není explicitně zadán.
 
-## <a name="consuming-the-cosmos-db-sdk-separately-from-the-trigger-and-bindings"></a>Použití sady SDK Cosmos DB odděleně od aktivační událost a vazby
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Nezávisle na sobě využívat Azure Cosmos DB SDK
 
 Klíčové funkce balíček rozšíření je k poskytování podpory pro aktivační událost Azure Cosmos DB a vazby. Zahrnuje také [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet-core.md), což je užitečné, pokud budete chtít pracovat s Azure Cosmos DB prostřednictvím kódu programu bez použití aktivační události a vazby.
 
-Pokud chcete používat Azure Cosmos DB SDK, ujistěte se, že nepřidáte do svého projektu odkaz na jiný balíček NuGet. Místo toho **nechat přeložit pomocí balíček rozšíření Azure Functions odkazu sady SDK**.
+Pokud chcete používat Azure Cosmos DB SDK, ujistěte se, že nepřidáte do svého projektu odkaz na jiný balíček NuGet. Místo toho **nechat přeložit pomocí balíček rozšíření Azure Functions odkazu sady SDK**. Využívání Azure Cosmos DB SDK odděleně od aktivační událost a vazby
 
 Kromě toho pokud ručně vytvoříte svoji vlastní instanci služby [klienta služby Azure Cosmos DB SDK](./sql-api-sdk-dotnet-core.md), měli byste postupovat podle vzor pouze jedna instance klienta s [použitím Singleton vzor přístupu](../azure-functions/manage-connections.md#documentclient-code-example-c) . Tento proces se vyhnuli případným potížím soketu ve vašich operací.
 
-## <a name="common-known-scenarios-and-workarounds"></a>Známé běžné scénáře a řešení
+## <a name="common-scenarios-and-workarounds"></a>Běžné scénáře a řešení
 
-### <a name="azure-function-fails-with-error-message-either-the-source-collection-collection-name-in-database-database-name-or-the-lease-collection-collection2-name-in-database-database2-name-does-not-exist-both-collections-must-exist-before-the-listener-starts-to-automatically-create-the-lease-collection-set-createleasecollectionifnotexists-to-true"></a>Funkce Azure Functions se nezdaří s chybovou zprávou "buď zdrojové kolekce"kolekce name"(v databázi"database-name") nebo kolekci zapůjčení"kolekce 2 name"(v databázi"databáze 2 name") neexistuje. Obě kolekce musí existovat před spuštěním naslouchacího procesu. Chcete-li automaticky vytvořit kolekci zapůjčení, nastavte 'CreateLeaseCollectionIfNotExists' na 'true' "
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Funkce Azure selže a zobrazí se chybová zpráva kolekce neexistuje.
+
+Funkce Azure Functions se nezdaří s chybovou zprávou "buď zdrojové kolekce"kolekce name"(v databázi"database-name") nebo kolekci zapůjčení"kolekce 2 name"(v databázi"databáze 2 name") neexistuje. Obě kolekce musí existovat před spuštěním naslouchacího procesu. Chcete-li automaticky vytvořit kolekci zapůjčení, nastavte 'CreateLeaseCollectionIfNotExists' na 'true' "
 
 To znamená, že jedno nebo obě kontejnerů Azure Cosmos, vyžaduje se pro aktivační událost pro práci neexistují nebo nejsou dostupné pro funkce Azure functions. **Vlastní chyba vám dá vědět, kterou databázi Azure Cosmos a kontejnerů, je trigger hledáte** na základě vaší konfigurace.
 
@@ -78,7 +80,8 @@ Pokud v cíli chybí některé změny, to může znamenat, že je některé chyb
 
 V tomto scénáři je nejlepší postup přidání `try/catch blocks` ve vašem kódu a uvnitř smyčky, které může zpracovávat změny, zjistit jakékoli neúspěchy pro konkrétní podmnožině položek a odpovídajícím způsobem jejich zpracování (odeslat je do jiného úložiště pro další analýzy nebo opakování). 
 
-> **Aktivační událost Azure Cosmos DB ve výchozím nastavení, nebude akci opakovat dávce změn, pokud došlo k neošetřené výjimce** během provádění kódu. To znamená, že z důvodu, že změny nepřišla v cílovém umístění je tím, že se nedaří zpracovat.
+> [!NOTE]
+> Aktivační událost Azure Cosmos DB ve výchozím nastavení, nebude akci opakovat dávce změn, pokud došlo k neošetřené výjimce během provádění kódu. To znamená, že z důvodu, že změny nepřišla v cílovém umístění je tím, že se nedaří zpracovat.
 
 Pokud zjistíte, že některé změny nebyly přijaty ve všech vašich aktivační procedura, nejběžnější scénář, který je **je spuštěna jiná funkce Azure Functions**. Může to být jiné funkce Azure, které jsou nasazené v Azure nebo funkce Azure s místně na počítači pro vývojáře, na které má **přesně stejnou konfiguraci** (stejné monitorovat a zapůjčení kontejnerů), a tato funkce Azure Functions je krádež podmnožina změny, které by uživatel očekával vaši funkci Azure Functions pro zpracování.
 

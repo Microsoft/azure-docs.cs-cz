@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 209a91453875531e81ddbcead8c1ed2fb309a0a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 996111fbe23000182dab774ba3bbad0cc6435824
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147450"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412727"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně - IntelliJ
 
@@ -100,9 +100,9 @@ Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorov�
     * WebService (services\iothub-manager)
     * WebService (services\storage-adapter)
 
-Jako příklad na následujícím obrázku zobrazuje přidává se konfigurace služby:
+Například následující obrázek znázorňuje přidává se konfigurace služby:
 
-[![Přidat konfiguraci](./media/deploy-locally-intelliJ/run-configurations.png)](./media/deploy-locally-intelliJ/run-configurations.png#lightbox)
+[![Přidat konfiguraci](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 
 #### <a name="create-compound-configuration"></a>Vytvoření složeného konfigurace
@@ -111,14 +111,11 @@ Jako příklad na následujícím obrázku zobrazuje přidává se konfigurace s
 1. Zadejte **název** a **přidat sbt úlohy**
 1. Klikněte na tlačítko **použít > Ok** uložit vaše volby.
 
-Jako příklad na následujícím obrázku ukazuje přidání všech úloh sbt jediné konfiguraci:
+Například následující obrázek ukazuje, přidává všechny úkoly sbt jediné konfiguraci:
 
+[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intelliJ/all-services.png)](./media/deploy-locally-intelliJ/all-services.png#lightbox)
-
-
-
-1. Klikněte na tlačítko **spustit** sestavení a spuštění webové služby na místním počítači.
+Klikněte na tlačítko **spustit** sestavení a spuštění webové služby na místním počítači.
 
 Každou webovou službu se otevře okno příkazového řádku a webové prohlížeče. Na příkazovém řádku se zobrazí výstup ze spuštěné služby a okna prohlížeče vám umožní monitorovat stav. Nezavírejte příkazové řádky nebo webové stránky, tato akce zastaví webové služby.
 

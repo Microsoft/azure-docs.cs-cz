@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2068283414ef2fabb44e9876f6727cc0fe3530b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487502"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233519"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -37,11 +37,11 @@ Azure SQL Database Managed Instance je možné nasadit na generování dvě hard
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, vCore = 1 LP (hyper vlákno) |
-| Compute | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
+| Virtuální jádra | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
 | Memory (Paměť) | 7 GB na vCore | 5.1 GB na vCore |
-| Paměti OLTP v paměti | 3 GB na vCore | 2.6 GB na vCore |
-| Maximální velikost úložiště (Obecné) |  8 TB | 8 TB |
-| Maximální velikost úložiště (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
+| OLTP v paměti maximální paměti | 3 GB na vCore | 2.6 GB na vCore |
+| Maximální místo v úložišti instancí (Obecné) |  8 TB | 8 TB |
+| Maximální velikost úložiště instance (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
@@ -50,12 +50,12 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Paměť) | Gen4: 56 GB - 168 GB<br/>Gen5: 40.8 GB - 408 GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56 GB - 168 GB <br/> Gen5: 40.8 GB - 408 GB<br/>\*Proporční na počet virtuálních jader |
-| Maximální velikost úložiště | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
+| Memory (Paměť) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) |
+| Maximální velikost úložiště instancí | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
-| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 110 tis. (1,375 za vCore) |
+| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 110 tis. (1375/vCore) |
 | Propustnost protokolu | 22 MB/s na instanci | 3 MB/s na vCore<br/>Maximální počet 48 MB/s na instanci|
 | Propustnost dat (přibližné) | 100 – 250 MB/s na souboru<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s na vCore |
 | Vstupně-výstupní latence (přibližné) | 5-10 ms | 1-2 ms |

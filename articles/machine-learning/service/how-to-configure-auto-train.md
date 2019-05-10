@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72e43ac295fcb007dd58b2b7792a16c639ee9c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 64ba7096f181371a378708e024f46bce17449e98
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023693"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510593"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaného experimentů v ML v Pythonu
 
-V této příručce, zjistěte, jak definovat různá nastavení konfigurace z vašeho automatizované se strojovým učením s [Azure Machine Learning SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatizované machine learning za vás vybere algoritmus a hyperparameters a generuje modelu připravené na nasazení. Existuje několik možností, které můžete použít ke konfiguraci automatické se strojovým učením.
+V této příručce, zjistěte, jak definovat různá nastavení konfigurace z vašeho automatizované se strojovým učením s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatizované machine learning za vás vybere algoritmus a hyperparameters a generuje modelu připravené na nasazení. Existuje několik možností, které můžete použít ke konfiguraci automatické se strojovým učením.
 
 Chcete-li zobrazit příklady automatizované experimentů machine learningu, naleznete v tématu [kurzu: Trénování modelu klasifikace automatizované machine Learning](tutorial-auto-train-models.md) nebo [trénování modelů pomocí automatizovaných strojového učení v cloudu](how-to-auto-train-remote.md).
 

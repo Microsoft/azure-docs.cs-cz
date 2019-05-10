@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025096"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470270"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
-V tomto kurzu se dozvíte, jak připravit data pro modelování s využitím regrese [aplikaci Azure Machine Learning Data Prep SDK pro Python](https://aka.ms/data-prep-sdk). Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
+V tomto kurzu se dozvíte, jak připravit data pro modelování s využitím regrese [balíčku pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk). Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
 
 Tento kurz je **první částí z dvoudílné série kurzů**. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
 
@@ -94,7 +94,7 @@ import azureml.dataprep as dprep
 > [!IMPORTANT]
 > Ujistěte se, že instalujete nejnovější verzi. V tomto kurzu nebude fungovat s číslem verze nižší než 1.1.0
 
-## <a name="load-data"></a>Načtení dat
+## <a name="load-data"></a>Načíst data
 
 Stáhněte si dvě různé sady dat taxislužby NYC do toku dat objektů. Datové sady mají mírně odlišné pole. `auto_read_file()` Metoda automaticky rozpozná typ vstupního souboru.
 

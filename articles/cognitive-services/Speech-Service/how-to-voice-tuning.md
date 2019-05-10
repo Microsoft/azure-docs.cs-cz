@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147994"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508394"
 ---
-# <a name="fine-tune-text-to-speech-output"></a>Vyladění převod textu na řeč výstupu
+# <a name="fine-tune-text-to-speech-output"></a>Vyladění výstupu převodu textu na řeč
 
 Hlasové služby Azure umožňují nastavit rychlost, výslovnost, svazek, výšku a rozvrh převod textu na řeč výstupních použití [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md). SSML je jazyk založený na formátu XML kód, který používá značky k informovat službu, o jaké funkce vyžaduje optimalizace. Zpráva SSML odeslaný v těle každý požadavek na převod textu na řeč služby. Pro zjednodušení procesu přizpůsobení, hlasové služby teď nabízí [hlasové ladění](https://aka.ms/voicetuning) vypíše nástroj, který vám umožní vizuálně kontrolovat a vyladění převod textu na řeč v reálném čase.
 
@@ -28,9 +28,9 @@ Nástroj optimalizace hlasové podporuje od Microsoftu [standardní](language-su
 Před zahájením dolaďování převod textu na řeč výstup pomocí nástroje pro ladění hlasové, budete potřebovat k dokončení těchto kroků:
 
 1. Vytvoření [bezplatný účet Microsoft](https://account.microsoft.com/account) pokud ho ještě nemáte.
-2. Vytvoření [bezplatný účet Azure](https://azure.microsoft.com/en-us/free/) pokud ho ještě nemáte. Klikněte na tlačítko **začít zdarma**a vytvořit nový účet Azure pomocí účtu Microsoft.
+2. Vytvoření [bezplatný účet Azure](https://azure.microsoft.com/free/) pokud ho ještě nemáte. Klikněte na tlačítko **začít zdarma**a vytvořit nový účet Azure pomocí účtu Microsoft.
 
-3. Vytvoření odběru hlasové služby na webu Azure Portal. Podrobné pokyny pro [tom, jak vytvořit prostředek řeči](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) jsou k dispozici.
+3. Vytvoření odběru hlasové služby na webu Azure Portal. Podrobné pokyny pro [tom, jak vytvořit prostředek řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) jsou k dispozici.
    >[!NOTE]
    >Informace o Azure umístění při vytváření prostředku řeči na webu Azure Portal, musí odpovídat s oblastí hlasové převod textu na ŘEČ. Neurální hlasové převod textu na ŘEČ podporuje dílčí sadu umístění Azure. Úplný seznam podpory najdete v tématu [oblastech](regions.md#text-to-speech).
 
@@ -70,6 +70,6 @@ Neurální ladění hlasu se trochu liší od ladění pro standardní a vlastn�
 > Nástroj pro ladění hlasové poskytuje kontextové informace o funkcích a ladění.
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvořit prostředek řeči v Azure](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
+* [Vytvořit prostředek řeči v Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
 * [Zahájit vyladění hlasu](https://speech.microsoft.com/app.html#/VoiceTuning)
 * [Jazyk využívající značky syntézu řeči (SSML)](speech-synthesis-markup.md)

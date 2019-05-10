@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838424"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412812"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikace ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -42,7 +42,7 @@ Tento kurz pracuje s vývojové prostředí, webový projekt a aplikace služby 
 
 Ukázky kódu, které jsou uvedené v tomto kurzu jsou pro webovou aplikaci C# MVC, ale řešení problémů s postupy jsou stejné pro aplikace Visual Basic a webových formulářů.
 
-Kurz předpokládá, že používáte Visual Studio 2017. 
+Kurz předpokládá, že používáte Visual Studio 2019. 
 
 Datový proud protokolů funkce funguje pouze u aplikací určených pro rozhraní .NET Framework 4 nebo novější.
 
@@ -144,7 +144,7 @@ public ActionResult About()
 
     ![Publikování v režimu ladění](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. Klikněte na **Publikovat**. Po nasazení dokončí a prohlížeči se otevře adresu URL Azure z vaší aplikace, ukončete prohlížeč.
+1. Klikněte na tlačítko **publikovat**. Po nasazení dokončí a prohlížeči se otevře adresu URL Azure z vaší aplikace, ukončete prohlížeč.
 
 1. V **Průzkumníka serveru**, klikněte pravým tlačítkem na aplikaci a pak klikněte na tlačítko **připojit ladicí program**.
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fc945a00360e4eea4a5cf1e3962da2390d3bfeb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331876"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506851"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 
@@ -99,7 +99,7 @@ Transakcí elastické databáze SQL Database také podporují koordinace distrib
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Instalace rozhraní .NET pro Azure Cloud Services
 
-Azure poskytuje několik nabídek k hostování aplikací .NET. Porovnání různých nabídky je k dispozici v [srovnání Azure App Service, Cloud Services a Virtual Machines](../app-service/overview-compare.md). Pokud hostovaný operační systém nabídky je menší než .NET 4.6.1 vyžaduje pro elastické transakce, budete muset upgradovat hostovaný operační systém na 4.6.1. 
+Azure poskytuje několik nabídek k hostování aplikací .NET. Porovnání různých nabídky je k dispozici v [srovnání Azure App Service, Cloud Services a Virtual Machines](/azure/architecture/guide/technology-choices/compute-decision-tree). Pokud hostovaný operační systém nabídky je menší než .NET 4.6.1 vyžaduje pro elastické transakce, budete muset upgradovat hostovaný operační systém na 4.6.1. 
 
 Pro službu Azure App Services se momentálně nepodporuje upgrade na hostovaném operačním systému. Pro virtuální počítače Azure, jednoduše se přihlaste k virtuálnímu počítači a spusťte instalační program pro nejnovější rozhraní .NET framework. Pro Azure Cloud Services je potřeba se jednat o instalaci na novější verzi rozhraní .NET do úlohy po spuštění vašeho nasazení. Koncepty a kroky jsou popsané v [instalaci .NET v roli cloudové služby](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 

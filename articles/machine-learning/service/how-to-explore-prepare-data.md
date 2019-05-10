@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204973"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409829"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Prozkoumejte a příprava dat pomocí třídy datové sady (Preview)
 
@@ -35,7 +35,7 @@ K prozkoumání a připravit data, budete potřebovat:
 
 * Sady SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější). Pro instalaci nebo aktualizaci na nejnovější verzi sady SDK, naleznete v tématu [nainstalovat nebo aktualizovat sadu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Azure Machine Learning přípravy dat sady SDK. Pro instalaci nebo aktualizaci na nejnovější verzi, najdete v článku [instalace nebo aktualizace sadu SDK pro Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
+* Azure Machine Learning přípravy dat sady SDK. Pro instalaci nebo aktualizaci na nejnovější verzi, najdete v článku [nainstalovat nebo aktualizovat sadu SDK pro Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
 
 * Stažení ukázkových souborů chcete postupovat podle příkladů: [crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) a [city.json](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 
@@ -127,8 +127,8 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 Primární typ|FieldType.STRING|PODVODNÝ POSTUPEM|KRÁDEŽ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Popis|FieldType.STRING|NEPLATNÉ KONTROLY|NAD 500 USD|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Popis umístění|FieldType.STRING||ŠKOLA, VEŘEJNÁ, VYTVÁŘENÍ|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
-Zadržení|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Domácí|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Zadržení|FieldType.BOOLEAN|False (Nepravda)|False (Nepravda)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Domácí|FieldType.BOOLEAN|False (Nepravda)|False (Nepravda)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Signál|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
 Okres|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
 Dál|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
@@ -164,9 +164,9 @@ ds_def.head(3)
 
 ||ID|Zadržení| Zeměpisná šířka|Zeměpisná délka|
 -|---------|-----|---------|----------|
-|0|10498554|False|41.692834|-87.604319|
-|1|10516598|False| 41.744107 |-87.664494|
-|2|10519196|False| NaN|NaN|
+|0|10498554|False (Nepravda)|41.692834|-87.604319|
+|1|10516598|False (Nepravda)| 41.744107 |-87.664494|
+|2|10519196|False (Nepravda)| NaN|NaN|
 
 Dále zkontrolujte `MEAN` hodnotu pomocí zeměpisné šířky sloupce [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) funkce. Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` funkce, která určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
 
@@ -181,7 +181,7 @@ lat_mean.head(1)
 
 ||Zadržení|Latitude_MEAN|
 --|-----|--------|
-|0|False|41.780049|
+|0|False (Nepravda)|41.780049|
 
 Jakmile ověříme hodnoty tak, aby dává, použijte [ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) další pevné výraz, který uplatňuje sloupce s buď výpočtová `MIN`, `MAX`, `MEAN` hodnotu, nebo `CUSTOM` hodnotu. Když `group_by_columns` není zadána, chybějící hodnoty budou uložené ve skupině s `MIN`, `MAX`, a `MEAN` počítá na skupinu.
 
@@ -217,9 +217,9 @@ Jak je znázorněno v následující tabulce výstup, chybějící šířky byl 
 
 ||ID|Zadržení|Zeměpisná šířka|Zeměpisná délka
 -|---------|-----|---------|----------
-0|10498554|False|41.692834|-87.604319
-1|10516598|False|41.744107|-87.664494
-2|10519196|False|41.780049|-87.000000
+0|10498554|False (Nepravda)|41.692834|-87.604319
+1|10516598|False (Nepravda)|41.744107|-87.664494
+2|10519196|False (Nepravda)|41.780049|-87.000000
 
 Aktualizovat definici datové sady, [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) zachovat kroky prováděné transformace.
 
@@ -230,9 +230,9 @@ dataset.head(3)
 
 ||ID|Zadržení|Zeměpisná šířka|Zeměpisná délka
 -|---------|-----|---------|----------
-0|10498554|False|41.692834|-87.604319
-1|10516598|False|41.744107|-87.664494
-2|10519196|False|41.780049|-87.000000
+0|10498554|False (Nepravda)|41.692834|-87.604319
+1|10516598|False (Nepravda)|41.744107|-87.664494
+2|10519196|False (Nepravda)|41.780049|-87.000000
 
 ## <a name="create-assertion-rules"></a>Vytvořit kontrolní výraz pravidla
 
@@ -259,7 +259,7 @@ ds_def.get_profile()
 ||Type|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
-Zadržení|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Zadržení|FieldType.BOOLEAN|False (Nepravda)|False (Nepravda)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Zeměpisná šířka|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1,05
 Zeměpisná délka|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|NaN|NaN
 

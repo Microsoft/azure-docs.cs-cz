@@ -8,16 +8,21 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/08/2019
 ms.author: raynew
-ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61278902"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413930"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
-Tento článek shrnuje nejčastější dotazy týkající se Azure Site Recovery. 
+Tento článek shrnuje nejčastější dotazy týkající se Azure Site Recovery.</br>
+Konkrétní dotazy na různých ASR scénáře najdete v tématu věnovaném scénář konkrétní nejčastější dotazy.<br>
 
+- [Zotavení po havárii virtuálního počítače Azure do Azure](azure-to-azure-common-questions.md)
+- [Zotavení po havárii virtuálních počítačů VMware do Azure](vmware-azure-common-questions.md)
+- [Zotavení po havárii virtuálních počítačů Hyper-V do Azure](hyper-v-azure-common-questions.md)
+ 
 ## <a name="general"></a>Obecné
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?

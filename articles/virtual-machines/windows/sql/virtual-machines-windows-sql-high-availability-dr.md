@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 8a9d4699ba625f575cdcba2a85af900a7c04843e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 379d3076559643b1445412074ed689e2e94a5ab2
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924464"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408813"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines
 
@@ -59,7 +59,7 @@ Můžete mít řešení zotavení po havárii pro databáze SQL serveru v Azure 
 | Technologie | Příklady architektur |
 | --- | --- |
 | **Skupiny dostupnosti** |Dostupnost replik spuštěných v různých datacentrech ve virtuálních počítačích Azure pro zotavení po havárii. Toto řešení mezi různými oblastmi chrání před výpadkem kompletní lokality. <br/> ![Skupiny dostupnosti](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>V rámci oblasti musí být všechny repliky v rámci stejné cloudové službě a stejné virtuální síti. Vzhledem k tomu, že každou oblast, bude mít samostatnou virtuální síť, tato řešení vyžadovat virtuální sítě pro připojení k virtuální síti. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Podrobné pokyny najdete v tématu [konfigurace skupiny dostupnosti SQL Server na virtuálních počítačích Azure v různých oblastech](virtual-machines-windows-portal-sql-availability-group-dr.md).|
-| **Zrcadlení databáze** |Instanční objekt a zrcadlové a servery spuštěné v různých datových center pro zotavení po havárii. Je nutné nasadit pomocí certifikátů serveru. <br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
+| **Zrcadlení databáze** |Instanční objekt a zrcadlové a servery spuštěné v různých datových center pro zotavení po havárii. Je nutné nasadit pomocí certifikátů serveru. Zrcadlení databáze systému SQL Server není podporována pro SQL Server 2008 a SQL Server 2008 R2 na Virtuálním počítači Azure. <br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **Zálohování a obnovení pomocí služby Azure Blob Storage** |Produkční databáze zálohovat přímo do úložiště objektů blob v jiném datovém centru pro zotavení po havárii.<br/>![Zálohování a obnovení](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikace a převzetí služeb při selhání SQL serveru do Azure pomocí Azure Site Recovery** |Provozní Server SQL z jednoho datového centra Azure replikované přímo do služby Azure Storage jiné datové centrum Azure pro zotavení po havárii.<br/>![Replikovat pomocí Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>Další informace najdete v tématu [ochraně SQL serveru pomocí zotavení po havárii pro SQL Server a Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
 
@@ -70,7 +70,7 @@ Můžete mít řešení zotavení po havárii pro databáze SQL serveru v hybrid
 | Technologie | Příklady architektur |
 | --- | --- |
 | **Skupiny dostupnosti** |Některé repliky dostupnosti používané virtuálními počítači Azure a ostatními replikami, místní zotavení po havárii mezi weby. Produkční lokality může být buď místně nebo v datovém centru Azure.<br/>![Skupiny dostupnosti](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Protože všechny repliky dostupnosti musí být ve stejném clusteru převzetí služeb při selhání, clusteru musí zahrnovat model obě sítě (cluster převzetí služeb při selhání více podsítí). Tato konfigurace vyžaduje propojení VPN mezi Azure a v místní síti.<br/><br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii.<br/><br/>Je možné použít Průvodce přidáním repliky v aplikaci SSMS přidání Azure repliky existující skupiny dostupnosti Always On. Další informace najdete v kurzu: Rozšíření skupiny dostupnosti Always On do Azure. |
-| **Zrcadlení databáze** |Jeden partnerovi běžet ve Virtuálním počítači Azure a další spuštění on-premises pro zotavení po havárii webů pomocí certifikátů serveru. Partneři nemusí být ve stejné doméně služby Active Directory a bez připojení k síti VPN je povinný.<br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Jiné databáze zrcadlení scénář zahrnuje jeden partnerovi běžet ve Virtuálním počítači Azure a dalších spuštěné místně ve stejné doméně služby Active Directory pro zotavení po havárii mezi weby. A [připojení VPN mezi virtuální sítí Azure a v místní síti](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) je povinný.<br/><br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii. |
+| **Zrcadlení databáze** |Jeden partnerovi běžet ve Virtuálním počítači Azure a další spuštění on-premises pro zotavení po havárii webů pomocí certifikátů serveru. Partneři nemusí být ve stejné doméně služby Active Directory a bez připojení k síti VPN je povinný.<br/>![Zrcadlení databáze](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Jiné databáze zrcadlení scénář zahrnuje jeden partnerovi běžet ve Virtuálním počítači Azure a dalších spuštěné místně ve stejné doméně služby Active Directory pro zotavení po havárii mezi weby. A [připojení VPN mezi virtuální sítí Azure a v místní síti](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) je povinný.<br/><br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii. Zrcadlení databáze systému SQL Server není podporována pro SQL Server 2008 a SQL Server 2008 R2 na Virtuálním počítači Azure. |
 | **Přesouvání protokolu** |Jeden server spuštěný ve Virtuálním počítači Azure a další spuštění on-premises pro zotavení po havárii mezi weby. Přesouvání protokolu, závisí na sdílení souborů Windows, takže je nutné připojení VPN mezi virtuální sítí Azure a v místní síti.<br/>![Přesouvání protokolu](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>Pro zotavení po havárii úspěšné vašich databází nainstalujete také repliky řadiče domény v lokalitě zotavení po havárii. |
 | **Zálohování a obnovení pomocí služby Azure Blob Storage** |Místní provozních databází zálohují přímo na úložiště objektů blob v Azure pro zotavení po havárii.<br/>![Zálohování a obnovení](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikace a převzetí služeb při selhání SQL serveru do Azure pomocí Azure Site Recovery** |V místním produkčním replikované přímo do úložiště Azure pro zotavení po havárii serveru SQL Server.<br/>![Replikovat pomocí Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_standalone_sqlserver-asr.png)<br/>Další informace najdete v tématu [ochraně SQL serveru pomocí zotavení po havárii pro SQL Server a Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
@@ -137,7 +137,7 @@ Pokud chcete získat nejlepší výkon ze serveru SQL Server běžící na Virtu
 
 Další témata související s SQL serverem na virtuálních počítačích Azure, najdete v části [systému SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-server-iaas-overview.md).
 
-### <a name="other-resources"></a>Další prostředky
+### <a name="other-resources"></a>Jiné prostředky
 * [Instalace nové doménové struktury služby Active Directory v Azure](../../../active-directory/active-directory-new-forest-virtual-machine.md)
 * [Vytvoření clusteru převzetí služeb při selhání skupiny dostupnosti ve virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 

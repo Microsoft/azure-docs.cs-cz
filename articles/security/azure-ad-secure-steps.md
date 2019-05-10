@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587827"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236764"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
@@ -59,12 +59,12 @@ S ohledem na frekvenci se hádání hesel phished vám ho někdo ukradne s malwa
 
 Řada organizací používá tradiční složitost (která vyžaduje speciální znaky, číslice, velká a malá písmena) a pravidla pro vypršení platnosti hesla. [Výzkum Microsoftu](https://aka.ms/passwordguidance) ukázal, tyto zásady způsobit, že uživatelé zvolili hesla, které se snadněji odhadnout.
 
-Azure AD [dynamické zakázaných hesel](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords) funkce používá aktuální chování útočníkovi zabránit uživatelům v nastavení hesla, které lze snadno uhádnout. Tato funkce je vždycky aktivní, když uživatelé vytvářejí v cloudu, ale je nyní dostupná také pro hybridní organizace v případě, že nasazujete [ochrany hesla Azure AD pro Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises). Ochrana hesel Azure AD uživatelům výběr těchto společná hesla a ostatní porty blokuje je možné rozšířit na blokování heslo obsahující vlastní klíčová slova, které zadáte. Například můžete uživatelům zabránit ve výběru hesla obsahující názvy produktů vaší společnosti nebo místní sportovní tým.
+Azure AD [dynamické zakázaných hesel](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) funkce používá aktuální chování útočníkovi zabránit uživatelům v nastavení hesla, které lze snadno uhádnout. Tato funkce je vždycky aktivní, když uživatelé vytvářejí v cloudu, ale je nyní dostupná také pro hybridní organizace v případě, že nasazujete [ochrany hesla Azure AD pro Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises). Ochrana hesel Azure AD uživatelům výběr těchto společná hesla a ostatní porty blokuje je možné rozšířit na blokování heslo obsahující vlastní klíčová slova, které zadáte. Například můžete uživatelům zabránit ve výběru hesla obsahující názvy produktů vaší společnosti nebo místní sportovní tým.
 
 Microsoft doporučuje přijetí tyto zásady moderní heslo na základě [pokynů NIST](https://pages.nist.gov/800-63-3/sp800-63b.html):
 
 1. Vyžadovat, že se hesla mají alespoň 8 znaků. Už není nutně lepší, protože mohou způsobit uživatele, aby si vybírali hesla předvídatelné, ukládat hesla v souborech nebo napište.
-2. Zákaz pravidel vypršení platnosti, které se dají snadno uhádnout hesla, jako uživatele přimět, **Summer2018!**
+2. Zákaz pravidel vypršení platnosti, které se dají snadno uhádnout hesla, jako uživatele přimět, **Spring2019!**
 3. Zakázat znak složení požadavky a zabránit uživatelům ve výběru běžně napadené hesla, protože mohou způsobit uživatelům si vybrat předvídatelné znak nahrazení hesla.
 
 Můžete použít [prostředí PowerShell, jak zabránit vypršení platnosti hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) pro uživatele, pokud vytvoříte identit ve službě Azure AD přímo. Hybridní organizace by měly implementovat tyto zásady, které používají [nastavení zásad skupiny domény](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) nebo [prostředí Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
@@ -166,7 +166,7 @@ Azure AD Identity Protection poskytuje dvě důležité sestavy, že měli byste
 
 ### <a name="audit-apps-and-consented-permissions"></a>Audit aplikace a odsouhlasené oprávnění
 
-Uživatelé můžou být nalákaní, aby přejdete na ohrožené webové stránky nebo aplikace, které získají přístup k jejich profil informace a uživatelská data, jako jsou e-mailu. Škodlivý objekt actor pomocí odsouhlasené oprávnění obdržel šifrovat obsah poštovní schránky a vyžadují ransom budete moct znovu data poštovní schránky. [Správci byste měli zkontrolovat a auditovat](https://blogs.technet.microsoft.com/office365security/defending-against-illicit-consent-grants/) oprávnění udělená uživateli.
+Uživatelé můžou být nalákaní, aby přejdete na ohrožené webové stránky nebo aplikace, které získají přístup k jejich profil informace a uživatelská data, jako jsou e-mailu. Škodlivý objekt actor pomocí odsouhlasené oprávnění obdržel šifrovat obsah poštovní schránky a vyžadují ransom budete moct znovu data poštovní schránky. [Správci byste měli zkontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli.
 
 ## <a name="step-5---enable-end-user-self-help"></a>Krok 5: povolení koncových uživatelů samoobslužné podpory
 

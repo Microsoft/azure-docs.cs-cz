@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327135"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506821"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
@@ -52,7 +52,7 @@ Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brán
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0, zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatele dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0, zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatele dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
-| Oracle |Zprostředkovatel Microsoft OLE DB pro Oracle, poskytovatel dat Oracle pro .NET |Poskytovatel dat Oracle pro .NET |
+| Oracle | Zprostředkovatel OLE DB pro Oracle, poskytovatel dat Oracle pro .NET |Poskytovatel dat Oracle pro .NET |
 | Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Data Provider for .NET |Poskytovatel Teradata dat pro .NET |
 | | | |
 

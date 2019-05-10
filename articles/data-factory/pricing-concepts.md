@@ -9,16 +9,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 454899cd7cc592b87f96233d73ca8c4ed6ac333f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935726"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233919"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Vysvětlení, příklady ceny služby Data Factory
 
 Tento článek popisuje a předvádí cenový model s podrobné příklady služby Azure Data Factory.
+
+> [!NOTE]
+> V těchto příkladech níže uvedené ceny jsou hypotetické a nejsou určeny k implikují skutečné ceny.
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Kopírování dat z AWS S3 do úložiště objektů Blob v Azure každou hodinu
 
@@ -122,13 +125,13 @@ K provedení scénáře, budete muset vytvořit kanál s následujícími polož
   - Kanál aktivit = 0.00003 (průběžné 1 minutu doby provádění. 0,002 USD/hod. v prostředí Azure Integration Runtime)
   - Externí aktivity kanálu = 0.000041 (průběžné po dobu 10 minut doby provádění. $0.00025 za hodinu v prostředí Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Použití mapování ladění toku dat pro běžné pracovní doby
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Použití mapování ladění toku dat pro běžné pracovní doby (ceny verze Preview)
 
 Jako datových inženýrů zodpovídáte za navrhování, sestavování a testování mapování toků dat každý den. Přihlaste se do uživatelského rozhraní ADF ráno a povolit režim ladění pro Data proudí. Výchozí hodnota TTL pro relace ladění je 60 minut. Pracujete v průběhu dne 10 hodin, takže nikdy vyprší platnost vaší relace ladění. Proto bude váš poplatek za den:
 
 **10 (hodiny) x 8 (jádra) x 0.112 $ $8.96 =**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformujte data v úložišti objektů blob s mapováním datové toky
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Transformujte data v úložišti objektů blob s mapováním datové toky (ceny verze Preview)
 
 V tomto scénáři budete chtít transformace dat v Blob Store vizuálně v ADF mapování dat toky na hodinový plán.
 

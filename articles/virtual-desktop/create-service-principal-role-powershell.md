@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146144"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236941"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Kurz: Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
 
@@ -21,7 +21,7 @@ Instanční objekty jsou identit, které vytvoříte v Azure Active Directory a 
 - Automatizace úloh správy konkrétní virtuální plochy Windows
 - Použijte jako přihlašovací údaje místo vyžaduje vícefaktorové ověřování uživatelů při spuštění libovolné šabloně Windows virtuální plochy Azure Resource Manageru
 
-V tomto kurzu získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Vytvoření instančního objektu v Azure Active Directory
@@ -38,7 +38,7 @@ Než budete moct vytvořit instanční objekty a přiřazení rolí, bude potře
     Install-Module AzureAD
     ```
 
-2. Spusťte následující rutiny s hodnotami v uvozovkách nahrazen hodnotami, které jsou relevantní pro vaši relaci.
+2. Spusťte následující rutiny s hodnotami v uvozovkách nahrazen hodnotami, které jsou relevantní pro vaši relaci. Pokud jste právě vytvořili tenanta virtuální plochy Windows z [vytvořit tenanta v kurzu virtuální plochy Windows](./tenant-setup-azure-active-directory.md), pak použijte "skupiny Tenanta Výchozí" jako název skupiny tenanta.
 
     ```powershell
     $myTenantGroupName = "<my-tenant-group-name>"
@@ -109,7 +109,7 @@ Tady jsou tři přihlašovací údaje, které si musí zapsat a rutiny, které p
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak vytvořit instanční objekt a přihlaste se k virtuálnímu klientovi Windows s ním. Další informace o tom, jak se přihlásit k virtuálnímu klientovi Windows, i nadále připojit k virtuální ploše postupy Windows.
+Jakmile máte vytvořený instanční objekt služby a přiřazenou roli ve vašem tenantovi virtuální plochy Windows, můžete k vytvoření fondu hostitele. Další informace o fondech hostitele, pokračujte ke kurzu pro vytváření hostitele fondu ve virtuální plochy Windows.
 
-- [Připojení z Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
-- [Připojte se z webového prohlížeče](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Kurz fondu hostitele virtuálního klienta Windows](./create-host-pools-azure-marketplace.md)

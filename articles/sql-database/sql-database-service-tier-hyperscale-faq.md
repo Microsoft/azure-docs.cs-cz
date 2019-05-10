@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/06/2019
+ms.openlocfilehash: 4f0691dcc8a0c4b0ebbfe26a49b75b86fa50f597
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067812"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236010"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -44,19 +44,19 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 - Úroveň služby Hyperškálovatelného je optimalizována pro úlohy velmi rozsáhlé databáze.
 - Úroveň pro důležité obchodní informace služby jsou vhodné pro firemní úlohy kde vstupně-výstupní latence je prioritou.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
+| | Typ prostředku | Obecné použití |  Hyperškálování | Obchodně klíčové |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Vše|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
+| **Nejlepší pro** |Všechny|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
 |  **Typ prostředku** ||Izolované databáze nebo elastického fondu / spravované instance | Izolovaná databáze | Izolované databáze nebo elastického fondu / spravované instance |
 | **Vypočítat velikost**|Izolovanou databázi nebo elastický fond * | 1 až 80 virtuálních jader | 1 až 80 virtuálních jader * | 1 až 80 virtuálních jader |
 | |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuálních jader | neuvedeno | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
-| **Typ úložiště** | Vše |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
+| **Typ úložiště** | Všechny |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
 | **Velikost úložiště** | Izolované databáze nebo elastického fondu | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
 | **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Zatím neznámý | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
 | | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovanou instanci: Závisí na velikosti souboru|
-|**Dostupnost**|Vše|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
-|**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
+|**Dostupnost**|Všechny|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
+|**Zálohování**|Všechny|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
 
 \* Elastické fondy nejsou podporovány v rámci úrovně služeb hyperškálovatelný systém
 
@@ -73,11 +73,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jaké oblasti v současné době podporují Hyperškálováním
 
-Azure SQL Database Hyperškálovatelného úroveň je momentálně dostupná v těchto oblastech:
-
-Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Kanada – střed, střed USA, východní Asie, východní USA, Východ USA 2, Francie – střed, Japonsko – východ, Japonsko – Západ, severní centrální USA, Severní Evropa, Jižní Afrika – sever, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, Velká Británie – Západ, západní Evropa , USA – Západ, USA – západ 2
-
-Zobrazit [Hyperškálovatelného Přehled služby Azure SQL Database](sql-database-service-tier-hyperscale-faq.md) pro proceduru, pokud potřebujete přístup v jiné oblasti.
+Azure SQL Database Hyperškálovatelného úroveň je momentálně dostupná v oblastech uvedených v části [Přehled služby Azure SQL Database Hyperškálovatelného](sql-database-service-tier-hyperscale.md#regions).
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Můžete vytvořit více databází Hyperškálovatelného v rámci logického serveru
 

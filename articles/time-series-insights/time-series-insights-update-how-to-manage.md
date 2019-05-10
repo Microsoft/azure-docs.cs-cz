@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73be313daa3b45cabc2adb07bb3d2592c7d307e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ce24fb8c62432e50fe04de23d2abbee1ec120c6c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725454"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471629"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Zřízení a správě Azure čas Series Insights ve verzi Preview
 
@@ -33,7 +33,7 @@ Při zřizování prostředí Azure čas Series Insights ve verzi Preview, vytvo
 Přečtěte si [postup plánování vašeho prostředí](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> Ve verzi Preview, ujistěte se, že používáte Azure Storage pro obecné účely v1 (GPv1) účet.  V blízké budoucnosti bude přidána podpora pro účty GPv2 a novější.  
+> Ve verzi Preview, ujistěte se, že používáte Azure Storage pro obecné účely v1 (GPv1) účet.
 
 Můžete případně přidružit zdroje událostí každé prostředí Azure čas Series Insights ve verzi Preview. Další informace najdete v článku [přidání zdroje událostí centra](./time-series-insights-how-to-add-an-event-source-eventhub.md) a [přidání zdroje IoT hub](./time-series-insights-how-to-add-an-event-source-iothub.md). Zadejte vlastnost ID časového razítka a Skupina jedinečných uživatelů během tohoto kroku. Tím se zajistí, že prostředí má přístup k příslušné události.
 
@@ -45,7 +45,7 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
 
 1. Vyberte **PAYG** tlačítko **SKU** nabídky. Zadat název prostředí a zvolte možnost, která skupina předplatné a skupina prostředků. Vyberte prostředí, které budou hostované v podporovaném umístění.
 
-   ![Vytvoření instance Azure Time Series Insights.][1]
+   [![Vytvoření instance Azure Time Series Insights.](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
 
 1. Zadejte časové řady ID.
 
@@ -56,7 +56,7 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
 
 1. Vytvoření účtu služby Azure storage, že vyberete název účtu úložiště a určování výběru replikace. To proto automaticky vytvoří účet služby Azure Storage pro obecné účely v1. Vytvoří se ve stejné oblasti jako, který jste dříve vybrali prostředí Azure čas Series Insights ve verzi Preview.
 
-    ![Vytvoření účtu služby Azure storage pro vaši instanci][5]
+    [![Vytvoření účtu služby Azure storage pro vaši instanci](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
 
 1. Volitelně můžete přidat zdroje událostí.
 
@@ -67,11 +67,11 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
      > [!TIP]
      > Čas zařazení do fronty zpráv nemusí být nejvhodnější nakonfigurované nastavení používané k události služby batch nebo historická data nahrávání scénáře. Ujistěte se, že k ověření rozhodnout a použít nebo není v takových případech vlastnost časového razítka.
 
-     ![Karta Zdroj události][2]
+     [![Karta Zdroj události](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
 
 1. Potvrďte, že vaše prostředí byly zajišťovaný pomocí požadovaného nastavení.
 
-    ![Zkontrolovat a vytvořit kartu][3]
+    [![Zkontrolovat a vytvořit kartu](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
 
 ## <a name="manage-the-environment"></a>Správa prostředí
 
@@ -88,7 +88,7 @@ Prostředí Azure čas Series Insights ve verzi Preview můžete spravovat pomoc
 
 * Azure portal **odkazují na data** okno byly odebrané v Azure čas Series Insights ve verzi Preview, protože referenčních dat není součástí prostředí průběžné platby.
 
-![Prostředí Time Series Insights ve verzi Preview na webu Azure Portal][4]
+[![Prostředí Time Series Insights ve verzi Preview na webu Azure Portal](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -97,10 +97,3 @@ Prostředí Azure čas Series Insights ve verzi Preview můžete spravovat pomoc
 - Zjistěte, jak [přidání zdroje událostí centra](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
 - Konfigurace [zdroj IoT hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
-
-<!-- Images -->
-[1]: media/v2-update-manage/manage_one.PNG
-[2]: media/v2-update-manage/manage_two.PNG
-[3]: media/v2-update-manage/manage_three.PNG
-[4]: media/v2-update-manage/manage_four.PNG
-[5]: media/v2-update-manage/manage_five.PNG

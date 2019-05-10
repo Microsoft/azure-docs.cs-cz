@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ccdd337d5c01a0ac0253fe1d1e131fa4e6d51a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782986"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405657"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manageru
 
@@ -75,11 +75,11 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | False (Nepravda) |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | False (Nepravda) |
 
 ## <a name="bool"></a>bool
 
@@ -128,12 +128,12 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
-| falseString | Bool | False |
+| falseString | Bool | False (Nepravda) |
 | trueInt | Bool | True |
-| falseInt | Bool | False |
+| falseInt | Bool | False (Nepravda) |
 
 ## <a name="if"></a>if
 
@@ -186,7 +186,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | yesOutput | String | ano |
 | noOutput | String | ne |
@@ -196,7 +196,7 @@ Následující [Ukázková šablona](https://github.com/krnese/AzureDeploy/blob/
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -284,11 +284,11 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | False (Nepravda) |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | False (Nepravda) |
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
 
@@ -308,7 +308,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -358,11 +358,11 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
+| andExampleOutput | Bool | False (Nepravda) |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| notExampleOutput | Bool | False (Nepravda) |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ee8891eae108256875660cc3f2256b65703a1aa
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440815"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406792"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Postup zastavení virtuálního počítače pomocí spravované identity rozšíření a začít používat službu Azure Instance Metadata
 
@@ -35,7 +35,7 @@ Z důvodu několik omezení uvedených v následující části se už nepouží
 
 ### <a name="provision-the-extension"></a>Zřizování rozšíření 
 
-Při konfiguraci virtuálního počítače nebo virtuálního počítače škálovací sady má spravovanou identitu se může volitelné rozhodnout, může volitelně ke zřízení spravovaných identit pro prostředky Azure, virtuálního počítače pomocí rozšíření `-Type` parametru u [ Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) rutiny. Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux`, v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
+Při konfiguraci virtuálního počítače nebo virtuálního počítače škálovací sady má spravovanou identitu, Volitelně můžete ke zřízení spravovaných identit pro prostředky Azure, virtuálního počítače pomocí rozšíření `-Type` parametru u [ Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) rutiny. Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux`, v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -95,7 +95,7 @@ Ke zřízení virtuálního počítače škálovací nastavit rozšíření se �
 
 Zřizování rozšíření virtuálního počítače může selhat z důvodu chyby vyhledávání DNS. Pokud k tomu dojde, restartujte virtuální počítač a zkuste to znovu. 
 
-### <a name="remove-the-extension"></a>Odebrání rozšíření 
+### <a name="remove-the-extension"></a>Odebrat rozšíření 
 Chcete-li odebrat rozšíření, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/), nebo [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) pro škálování virtuálních počítačů Nastaví pomocí Azure CLI nebo `Remove-AzVMExtension` pro prostředí Powershell:
 
 ```azurecli-interactive

@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: b9b2461d888f37b7ae72a3e097d77856255d7e2e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160002"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416273"
 ---
 Image standardizované virtuálních počítačů (VM) umožňují organizacím migrace do cloudu a zajistit konzistenci v nasazení. Image obvykle zahrnují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení pro vytváření bitových kopií kanálu vyžaduje čas, infrastruktury a nastavení, ale pomocí Tvůrce Image virtuálního počítače Azure, stačí zadat jednoduchou konfiguraci a popis bitové kopie, odeslat ho do služby a bitové kopie vytvořené a distribuovat.
  
@@ -20,7 +20,7 @@ Image Builder pro virtuální počítač Azure (Azure Image Builder) umožňuje 
 > Image Builder pro Azure je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkce verze Preview
+## <a name="preview-features"></a>Funkce ve verzi Preview
 
 Pro verzi preview se podporují tyto funkce:
 
@@ -88,14 +88,14 @@ az role assignment create \
 Pokud účet služby se nenašel, může to znamená, že předplatné, ve kterém chcete přidat přiřazení role nebyl ještě zaregistrované u poskytovatele prostředků.
 
 
-## <a name="costs"></a>Náklady
+## <a name="costs"></a>Poplatky
 Vám budou účtovat nějaké compute, sítě a náklady na úložiště při vytváření, sestavování a ukládání imagí s Image Builder pro Azure. Tyto náklady jsou podobné náklady na ruční vytvoření vlastních imagí. Za prostředky vám bude účtovat sazby Azure. 
 
 Během procesu vytváření image, stáhnou se soubory a uložená v `IT_<DestinationResourceGroup>_<TemplateName>` skupinu prostředků, která budou účtovat poplatky za malé úložiště. f nechcete zachovat, odstranit šablonu Image po sestavení image.
  
 Image Builder vytvoří virtuální počítač pomocí velikost virtuálního počítače. D1v2 a úložiště a sítě potřebná pro virtuální počítač. Tyto prostředky se naposledy po dobu trvání procesu sestavení a odstraní po dokončení vytváření bitové kopie Image Builder. 
  
-Image Builder pro Azure bude distribuovat bitovou kopii do vybrané oblasti, kterému můžou být účtovány poplatky za výchozí přenos dat sítě.
+Image Builder pro Azure bude distribuovat bitovou kopii do zvolené oblastí, které můžou být účtovány poplatky za výchozí přenos dat sítě.
  
 ## <a name="next-steps"></a>Další postup 
  

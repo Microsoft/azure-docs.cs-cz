@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/25/2019
-ms.openlocfilehash: d47c073eb6bfc3012d42d6add8a15029271120f4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/07/2019
+ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136497"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467405"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
@@ -36,8 +36,7 @@ Přestože je možné vytvořit, upravit, spravovat a nasazovat aplikace logiky 
   V tomto kurzu se používá sada Visual Studio Community 2017, která je zdarma.
 
     > [!IMPORTANT]
-    > Když instalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali **vývoj pro Azure** pracovního vytížení.
-    > Další informace najdete v tématu [spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    > Když instalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali **vývoj pro Azure** pracovního vytížení. Pro Visual Studio 2019 Průzkumníka cloudu můžete otevřít návrhář aplikace logiky na webu Azure Portal, ale dosud neotevřel vloženého návrháře aplikace logiky. Další informace najdete v tématu [spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
     Instalace Průzkumníka cloudu sady Visual Studio 2015, [stáhněte si Průzkumníka cloudu z webu Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
     Další informace najdete v tématu [spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu Visual Studio (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
@@ -68,7 +67,7 @@ Přestože je možné vytvořit, upravit, spravovat a nasazovat aplikace logiky 
 
 V sadě Visual Studio můžete najít všechny aplikace logiky, které jsou přidružené k vašemu předplatnému Azure a jsou nasazené na webu Azure Portal pomocí Průzkumníka cloudu.
 
-1. Otevřete sadu Visual Studio. Na **zobrazení** nabídce vyberte možnost **Průzkumníka cloudu**.
+1. Otevřít Visual Studio. Na **zobrazení** nabídce vyberte možnost **Průzkumníka cloudu**.
 
 1. V Průzkumníku cloudu, zvolte **správu účtů**. Vyberte předplatné Azure spojené s logic apps a pak zvolte **použít**. Příklad:
 
@@ -105,6 +104,9 @@ V sadě Visual Studio můžete otevřít logic apps dříve vytvořili a nasadil
 Aplikace logiky můžete od si můžete stáhnout [webu Azure portal](https://portal.azure.com) a uložit je jako [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) šablony. Můžete pak místně upravte šablony pomocí sady Visual Studio a přizpůsobení aplikací logiky pro různá prostředí nasazení. Automatické stahování aplikací logiky *parametrizuje* jejich definice uvnitř [šablon Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment), který také pomocí notace JSON (JavaScript Object).
 
 1. V sadě Visual Studio, otevřete Průzkumníka cloudu, pak vyhledejte a vyberte aplikaci logiky, kterou chcete stáhnout z Azure.
+
+   > [!NOTE]
+   > Pro Visual Studio 2019 Průzkumníka cloudu můžete otevřít návrhář aplikace logiky na webu Azure Portal, ale dosud neotevřel vloženého návrháře aplikace logiky pro stažení aplikace logiky.
 
 2. V místní nabídce vaší aplikace, vyberte **otevřít pomocí editoru aplikace logiky**.
 

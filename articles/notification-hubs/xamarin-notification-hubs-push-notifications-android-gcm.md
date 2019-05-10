@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 05/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00e62226ee7e2b912a909cfa32a25e4562b99e83
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423187"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203748"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace Xamarin.Android pomocí Azure Notification Hubs
 
@@ -73,10 +73,10 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     4. Vyberte **umístění** pro projekt. 
     5. Vyberte **OK**. 
 
-        ![Dialogové okno Nový projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)        
+        ![Dialogové okno nového projektu](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)        
 2. Na **novou aplikaci Android** dialogu **prázdnou aplikaci**a vyberte **OK**. 
 
-    ![Dialogové okno Nový projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![Dialogové okno nového projektu](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 1. V okně **Průzkumník řešení** rozbalte **Vlastnosti** a klikněte na **AndroidManifest.xml**. Aktualizujte název balíčku, aby odpovídal názvu balíčku, který jste v konzole Google Firebase Console zadali, když jste do projektu přidávali službu Firebase Cloud Messaging.
 
     ![Název balíčku v GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
@@ -214,7 +214,6 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 9. Přidejte následující příkazy using do `MyFirebaseIIDService.cs`:
 
     ```csharp
-    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -256,10 +255,8 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 13. Přidejte následující příkazy using do `MyFirebaseMessagingService.cs`.
 
     ```csharp
-    using Android.App;
     using Android.Util;
     using Firebase.Messaging;
-    using Android.OS;
     using Android.Support.V4.App;
     using Build = Android.OS.Build;
     ```

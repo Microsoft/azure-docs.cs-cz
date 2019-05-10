@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 05/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 52226d07595120395909dd5f47d5d896f5cdaa75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2eaf819870e2b70cc6238af6d1e9fa1dcb5caab8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483638"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236750"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
-Účet úložiště Azure obsahuje všechny datových objektů Azure Storage: objekty BLOB, soubory, fronty, tabulky a disky. Data ve vašem účtu úložiště Azure je odolné a vysoce dostupných a zabezpečené, rozsáhle škálovatelné a přístupný z kdekoli na světě prostřednictvím protokolu HTTP nebo HTTPS.
+Účet úložiště Azure obsahuje všechny datových objektů Azure Storage: objekty BLOB, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro vaše data služby Azure Storage, která je přístupná odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. Data ve vašem účtu úložiště Azure je odolné a vysoce dostupné, zabezpečené a široce škálovatelné.
 
 Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvořit účet úložiště](storage-quickstart-create-account.md).
 

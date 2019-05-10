@@ -8,12 +8,12 @@
   items:
     - name: 1. Vytvoření klienta ve Windows Virtual Desktop
       href: tenant-setup-azure-active-directory.md
-    - name: 2. Vytvoření fondu hostitelů pomocí Azure Marketplace
-      href: create-host-pools-azure-marketplace.md
-    - name: 3. Správa skupin aplikací
-      href: manage-app-groups.md
-    - name: 4. Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
+    - name: 2. Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
       href: create-service-principal-role-powershell.md
+    - name: 3. Vytvoření fondu hostitelů pomocí Azure Marketplace
+      href: create-host-pools-azure-marketplace.md
+    - name: 4. Správa skupin aplikací
+      href: manage-app-groups.md
 - name: Postupy
   items:
     - name: Připojení k prostředkům Windows Virtual Desktop

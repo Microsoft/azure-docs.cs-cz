@@ -224,6 +224,9 @@
       items:
         - name: Vytvoření kanálu ML
           href: how-to-create-your-first-pipeline.md
+        - name: Trénování a nasazování modelů ML s využitím Azure Pipelines
+          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          mainContext: true
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md

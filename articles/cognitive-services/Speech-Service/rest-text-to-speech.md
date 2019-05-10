@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9cbd924f87ff2f5b38f67a1bf7db34c36e9c264b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020433"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237102"
 ---
 # <a name="text-to-speech-rest-api"></a>Převod textu na řeč REST API
 
@@ -44,35 +44,35 @@ Před použitím tohoto rozhraní API, porozumět:
 
 | Oblast | Koncový bod |
 |--------|----------|
-| Austrálie – východ | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Brazílie – jih | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Kanada – střed | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA – střed | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Východní Asie | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Východní USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Francie – střed | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Indie – střed | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Japonsko – východ | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Korea – střed | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Středoseverní USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Severní Evropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Středojižní USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Velká Británie – jih | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Západní Evropa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Západní USA | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Západní USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Kanada – střed | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – východ | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Východní USA 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Středoseverní USA | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Jihovýchodní Asie | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Velká Británie – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Západní Evropa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Západní USA | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
 Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod textu na řeč.
 
-| Hlavička | Popis | Povinné / volitelné |
+| Záhlaví | Popis | Povinné / volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Není vyžadováno pro tělo `GET` požadavky do tohoto koncového bodu.
 
@@ -159,7 +159,7 @@ Tyto oblasti jsou podporovány pro převod textu na řeč pomocí rozhraní REST
 
 Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod textu na řeč.
 
-| Hlavička | Popis | Povinné / volitelné |
+| Záhlaví | Popis | Povinné / volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
 | `Content-Type` | Určuje typ obsahu pro zadaný text. Přijata hodnota: `application/ssml+xml`. | Požaduje se |
@@ -183,7 +183,7 @@ Toto je seznam podporovaných formátů zvuku, které se odesílají v každé �
 > [!NOTE]
 > Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Ale 24khz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` formáty výstupu.
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Text jednotlivých `POST` žádosti se odešle jako [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md). SSML můžete rozhodnout voice a jazyk řečového vrácené službou převod textu na řeč. Úplný seznam podporovaných hlasů, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
 

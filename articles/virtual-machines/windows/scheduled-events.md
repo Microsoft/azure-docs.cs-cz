@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 1a82b9256405e2cac12f4c5611ee3bdad459162b
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: e6a376803d8617e01ee279e40a33f6c1c3b748fd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64992942"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508195"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Windows
 
@@ -36,7 +36,7 @@ Informace o službě Scheduled Events v Linuxu najdete v tématu [Scheduled Even
 Mnoho aplikací můžete těžit z času na přípravu pro údržbu virtuálního počítače. Čas je možné provádět konkrétní úlohy aplikace, které zlepšují dostupnost, spolehlivost a použitelnost včetně: 
 
 - Kontrolní bod a obnovení
-- Vyprázdnění připojení
+- Vyprazdňování připojení
 - Převzetí služeb při selhání primární repliky 
 - Odebrání z fondu nástroje pro vyrovnávání zatížení
 - Protokolování událostí
@@ -45,7 +45,7 @@ Mnoho aplikací můžete těžit z času na přípravu pro údržbu virtuálníh
 Pomocí naplánovaných událostí aplikace můžete zjistit, kdy bude údržby dojít k a spouštění úloh a omezit jejich dopad. Povolení naplánované události poskytuje minimální množství času, před provedením aktivity údržby virtuální počítač. V části plánování událostí pod podrobnosti.
 
 Naplánované události poskytuje události v následujících případech použití:
-- [Platforma iniciované údržby](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/maintenance-and-updates) (například virtuální počítač restartovat počítač, migrace za provozu nebo paměti zachování aktualizace hostitele)
+- [Platforma iniciované údržby](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (například virtuální počítač restartovat počítač, migrace za provozu nebo paměti zachování aktualizace hostitele)
 - Degradované hardwaru
 - Údržba (například uživatel restartuje nebo znovu nasadí virtuální počítač), kterou inicioval uživatel
 - [Vyřazení virtuálního počítače s nízkou prioritou](https://azure.microsoft.com/blog/low-priority-scale-sets) škále nastaví
@@ -66,9 +66,9 @@ Služba naplánované události se systémovou správou verzí. Verze jsou povin
 
 | Version | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - |
-| 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
-| 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Hlavičku metadat požadavek vynucovat pro všechny požadavky | 
-| 2017-03-01 | Preview | Vše |<li>Původní vydaná verze
+| 2017-11-01 | Všeobecná dostupnost | Všechny | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
+| 2017-08-01 | Všeobecná dostupnost | Všechny | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Hlavičku metadat požadavek vynucovat pro všechny požadavky | 
+| 2017-03-01 | Náhled | Všechny |<li>Původní vydaná verze
 
 > [!NOTE] 
 > Předchozí verze preview naplánované události, které jsou podporované jako verze api-version {nejnovější}. Tento formát se už nepodporuje a v budoucnu budou zastaralé.
@@ -85,13 +85,13 @@ Restartuje se virtuální počítač naplánuje událost s typem `Reboot`. Znovu
 
 ## <a name="using-the-api"></a>Pomocí rozhraní API
 
-### <a name="headers"></a>Hlavičky
+### <a name="headers"></a>Záhlaví
 Když odešlete dotaz na Metadata Service, je nutné zadat hlavičku `Metadata:true` zajistit požadavek nebyl přesměrován náhodně. `Metadata:true` Hlavičky je povinná pro všechny požadavky naplánovaných událostí. Chybná žádost odpověď ze služby Metadata způsobí selhání zahrnout hlavičku požadavku.
 
 ### <a name="query-for-events"></a>Dotaz pro události
 Můžete zadat dotaz na Scheduled Events jednoduše tak, že následující volání:
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Prostředí PowerShell
 ```
 curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
@@ -121,7 +121,7 @@ DocumentIncarnation je značka ETag a poskytuje snadný způsob, jak zkontrolova
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit na několik sekund. Využití procesoru a připojení k síti může být pozastavený, ale neexistuje žádný vliv na paměť nebo otevřené soubory. <li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
-| Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. To je zaručeno, obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Prostředky| Seznam prostředků, které má vliv na tuto událost. To je zaručeno, obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stav události | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici; událost již nevrátí se po dokončení události.
 | neplatí před| Doba, po jejímž uplynutí může začínat v této události. <br><br> Příklad: <br><ul><li> Pondělí, 19. září 2016 18:29:47 GMT  |
 
@@ -132,7 +132,7 @@ Každé události je naplánovaný minimální množství čas v budoucnosti pod
 | - | - |
 | zablokování| 15 minut |
 | Restartování | 15 minut |
-| Opětovné nasazení | 10 minut |
+| Nasaďte | 10 minut |
 | Vyřizuje | 30 sekund |
 
 ### <a name="event-scope"></a>Události oboru     
@@ -159,7 +159,7 @@ Tady je ve formátu json v očekává `POST` text žádosti. Požadavek by měl 
 }
 ```
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Prostředí PowerShell
 ```
 curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```

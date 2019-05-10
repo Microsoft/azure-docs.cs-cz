@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716766"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506692"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -46,7 +46,7 @@ Například následující kód JSON ukazuje zásadu, která omezí, ve které j
                     "strongType": "location",
                     "displayName": "Allowed locations"
                 },
-                "defaultValue": "westus2"
+                "defaultValue": [ "westus2" ]
             }
         },
         "displayName": "Allowed locations",
@@ -70,7 +70,7 @@ Všechny ukázky zásady Azure jsou v [ukázek Azure Policy](../samples/index.md
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>Režim
 
 **Režimu** Určuje, jaké typy prostředků, se vyhodnotí zásady. Jsou podporované režimy:
 
@@ -114,7 +114,7 @@ Například můžete definovat definici zásady možné omezit místa, kde můž
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2",
+        "defaultValue": [ "westus2" ],
         "allowedValues": [
             "eastus2",
             "westus2",
@@ -229,6 +229,10 @@ Podmínka vyhodnocena jako, jestli **pole** nebo **hodnotu** přistupující obj
 - `"notIn": ["value1","value2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
+- `"less": "value"`
+- `"lessOrEquals": "value"`
+- `"greater": "value"`
+- `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
 Při použití **jako** a **notLike** podmínky, zadat zástupný znak `*` v hodnotě.
@@ -289,7 +293,7 @@ V následujícím příkladu `concat` slouží k vytváření vyhledávacího po
 }
 ```
 
-### <a name="value"></a>Hodnota
+### <a name="value"></a>Value
 
 Podmínky lze vybrat také pomocí **hodnota**. **Hodnota** zkontroluje podmínky proti [parametry](#parameters), [podporované šablony funkce](#policy-functions), nebo literály.
 **Hodnota** je spárovaná s žádným nepodporuje [podmínku](#conditions).
@@ -416,15 +420,25 @@ Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a p
 
 ### <a name="policy-functions"></a>Funkce zásad
 
-Všechny [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci zásad pravidla, s výjimkou následujících funkcí:
+Všechny [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci zásad pravidla, s výjimkou následujících funkcí a uživatelem definované funkce:
 
 - copyIndex()
 - deployment()
 - seznam *
+- newGuid()
+- pickZones()
 - Providers()
 - reference()
 - resourceId()
 - variables()
+
+Následující funkce jsou k dispozici pro použití v pravidlu zásad, ale liší se od použití v šabloně Azure Resource Manageru:
+
+- Přidat_dny (datum a čas, numberOfDaysToAdd)
+  - **Datum a čas**: [povinné] řetězec - řetězec ve formátu univerzální DateTime ISO 8601 ' rrrr-MM-ddTHH:mm:ss.fffffffZ.
+  - **numberOfDaysToAdd**: integer [povinné] – počet dní, chcete-li přidat
+- utcNow() – na rozdíl od správce prostředků šablony, dá se použít mimo defaultValue.
+  - Vrátí řetězec, který je nastavena na aktuální datum a čas ve formátu univerzální DateTime ISO 8601 ' rrrr-MM-ddTHH:mm:ss.fffffffZ.
 
 Kromě toho `field` funkce je k dispozici pro pravidla zásad. `field` se používá především s **AuditIfNotExists** a **DeployIfNotExists** na odkaz na pole v prostředku, které jsou právě vyhodnocována. Příklad použití si můžete prohlédnout ve [DeployIfNotExists příklad](effects.md#deployifnotexists-example).
 

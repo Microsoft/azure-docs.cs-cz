@@ -1,32 +1,30 @@
 ---
-title: Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight (Preview)
+title: Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight
 description: Tento článek popisuje, jak použít vlastní klíč ze služby Azure Key Vault k šifrování dat uložených v Apache Kafka v Azure HDInsight.
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ce9df58e9640cab2e6ba50fce772f1e30739dc5a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 6108bfd9e39b37507ec7e113bf2c489e890f0ca0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714850"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233566"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight
 
-Azure HDInsight zahrnuje podporu přineste si vlastní klíč (BYOK) pro platformu Apache Kafka. Tato funkce umožňuje sami vlastnili a spravovali klíče používané k šifrování dat v klidovém stavu. 
+Azure HDInsight zahrnuje podporu přineste si vlastní klíč (BYOK) pro platformu Apache Kafka. Tato funkce umožňuje sami vlastnili a spravovali klíče používané k šifrování dat v klidovém stavu.
 
-Všechny spravované disky v HDInsight jsou chráněny s Azure Storage Service Encryption (SSE). Ve výchozím nastavení zašifrovaná data na těchto discích, pomocí klíčů spravovaných microsoftem. Pokud povolíte BYOK, zadejte šifrovací klíč pro službu HDInsight využívat a spravovat ho pomocí služby Azure Key Vault. 
+Všechny spravované disky v HDInsight jsou chráněny s Azure Storage Service Encryption (SSE). Ve výchozím nastavení zašifrovaná data na těchto discích, pomocí klíčů spravovaných microsoftem. Pokud povolíte BYOK, zadejte šifrovací klíč pro službu HDInsight využívat a spravovat ho pomocí služby Azure Key Vault.
 
 BYOK šifrování je jednoduchý proces, při vytváření clusteru bez dalších poplatků. Všechno, co je potřeba je zaregistrovat HDInsight jako spravovanou identitu pomocí Azure Key Vault a přidat šifrovacího klíče při vytváření clusteru.
 
 Všechny zprávy do clusteru Kafka (včetně replik spravuje Kafka) jsou šifrována pomocí symetrický datový šifrovací klíč (DEK). Klíč DEK je chráněn pomocí klíče šifrování klíčů (KEK) z trezoru klíčů. Procesy šifrování a dešifrování dat provádí zcela služba Azure HDInsight. 
 
 Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpečně obměna klíčů v trezoru klíčů. Když otočí klíče clusteru HDInsight Kafka spustí během několika minut pomocí nového klíče. Povolení ochrany klíčů funkcí "Obnovitelné odstranění" pro ochranu před ransomwarem scénáře a nechtěnému odstranění. Trezory klíčů bez této funkce ochrany nejsou podporovány.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>Začínáme s BYOK
 K vytvoření clusteru Kafka povolená BYOK, provedeme následující kroky:
@@ -121,9 +119,9 @@ K vytvoření clusteru Kafka povolená BYOK, provedeme následující kroky:
    No, all managed disks in the cluster are encrypted by the same key.
 
 **What happens if the cluster loses access to the key vault or the key?**
-   If the cluster loses access to the key, warnings will be shown in the Ambari portal. In this state, the **Change Key** operation will fail. Once key access is restored, ambari warnings will go away and operations such as key rotation can be successfully performed.
+   If the cluster loses access to the key, warnings will be shown in the Apache Ambari portal. In this state, the **Change Key** operation will fail. Once key access is restored, Ambari warnings will go away and operations such as key rotation can be successfully performed.
 
-   ![Kafka key access ambari alert](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Kafka key access Ambari alert](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **How can I recover the cluster if the keys are deleted?**
 

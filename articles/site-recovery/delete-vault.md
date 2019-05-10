@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: b5d035308c50525449edf47131c4a6a8c62b750b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 981b78345a0d9ea589e9c39ddaa2e253f1dd343f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784756"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412840"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Odstranění trezoru služby Site Recovery
 
@@ -22,6 +22,10 @@ Odstranění trezoru služby Azure Site Recovery můžete zabránit závislosti.
 
 ## <a name="delete-a-site-recovery-vault"></a>Odstranit trezor Site Recovery 
 Pokud chcete trezor odstranit, postupujte podle doporučené kroky pro váš scénář.
+### <a name="azure-vms-to-azure"></a>Virtuální počítače Azure do Azure
+
+1. Odstraňte všechny chráněné virtuální počítače pomocí následujících kroků v [zakažte ochranu pro VMware](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-azure-vm-azure-to-azure).
+2. Odstranění trezoru.
 
 ### <a name="vmware-vms-to-azure"></a>Virtuální počítače VMware do Azure
 

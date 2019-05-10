@@ -6,15 +6,15 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 05/09/2019
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0b7a7ac7b8a71f33871247a1117c16609bbbcd88
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2728ac93abd18f929dc6e82cfb471ce33fe8866f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191054"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508030"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí .NET
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se naučíte používat klientskou knihovnu Azure Storag
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Dále stáhněte a nainstalujte .NET Core 2.0 pro váš operační systém. Pokud používáte Windows, můžete nainstalovat sadu Visual Studio a použít .NET Framework, pokud chcete. Můžete také nainstalovat editor pro použití ve vašem operačním systému.
+Dále stáhněte a nainstalujte .NET Core 2.1 pro váš operační systém. Pokud používáte Windows, můžete nainstalovat sadu Visual Studio a použít .NET Framework, pokud chcete. Můžete také nainstalovat editor pro použití ve vašem operačním systému.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -288,8 +288,8 @@ Prohlédněte si tyto další zdroje informací o vývoji v .NET s využitím ú
 
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 
-- Stáhněte si balíček NuGet s nejnovější verzí [klientské knihovny pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) pro službu Azure Storage.
-- Prohlédněte si [zdrojový kód klientské knihovny pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
+- Stáhněte si balíček NuGet na nejnovější verzi [klientské knihovny .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) pro úložiště objektů Blob v Azure.
+- Zobrazení [Microsoft Azure Storage Blob SDK for .NET zdrojový kód](https://github.com/Azure/azure-storage-net/tree/master/Blob) na Githubu.
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
 
@@ -300,10 +300,10 @@ Prohlédněte si tyto další zdroje informací o vývoji v .NET s využitím ú
 
 V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty blob pomocí .NET.
 
-Pokud chcete zjistit, jak vytvořit webovou aplikaci, která odešle obrázek do úložiště objektů blob, pokračujte k tématu [Odeslání dat obrázků do cloudu v Azure Storage](storage-upload-process-images.md).
+Chcete-li zjistěte, jak vytvořit webovou aplikaci, která odešle obrázek do úložiště objektů Blob, pokračujte na:
 
 > [!div class="nextstepaction"]
-> [Operace s úložištěm objektů blob – postupy](storage-dotnet-how-to-use-blobs.md)
+> [Nahrání a zpracování obrazu](storage-upload-process-images.md)
 
 - Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).
 - Pokud chcete prozkoumat ukázkovou aplikaci, kterou můžete nasadit ze sady Visual Studio pro Windows, prohlédněte si [ukázku webové aplikace fotogalerie v .NET s využitím služby Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/).

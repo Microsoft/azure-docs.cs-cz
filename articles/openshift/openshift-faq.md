@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 77e0e11582808901b10877d0d9284637145aa6f2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/08/2019
+ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65078667"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466204"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – nejčastější dotazy
 
@@ -25,7 +25,7 @@ Zobrazit [podporovaných prostředků](supported-resources.md#azure-regions) sez
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Můžete nasadit cluster do existující virtuální sítě?
 
-Ano. Při vytváření clusteru, můžete nasadit cluster Azure Red Hat OpenShift do existující virtuální sítě. Zobrazit [připojení virtuální sítě clusteru pro existující virtuální síť ](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) podrobnosti.
+Ne. Ale cluster Azure Red Hat OpenShift se můžete připojit k existující virtuální síť přes partnerský vztah. Zobrazit [připojení virtuální sítě clusteru pro existující virtuální síť ](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) podrobnosti.
 
 ## <a name="what-cluster-operations-are-available"></a>Jaké operace clusteru jsou k dispozici?
 

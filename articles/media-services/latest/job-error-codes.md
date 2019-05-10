@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: f10883ca89c048d384eff9bddaf7642e22941109
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9443a50d130e6542672eb143bcb56d04d63959a4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160587"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235703"
 ---
 # <a name="media-services-job-error-codes"></a>Kódy chyb pro úlohy Media Services
 
@@ -34,7 +34,7 @@ Podívejte se [komunita Azure Media Services](media-services-community.md) člá
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Kódy chyb původu](origin-error-codes.md)
+- [Kódy chyb koncový bod streamování](streaming-endpoint-error-codes.md)
 - [Koncepty služby Azure Media Services](concepts-overview.md)
 - [Kvóty a omezení](limits-quotas-constraints.md)
 

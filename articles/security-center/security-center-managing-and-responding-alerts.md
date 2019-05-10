@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: 28a9b90e23d0d182197450e6449b8d3296fe99d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111385"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235759"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Správa a zpracování výstrah zabezpečení v Azure Security Center
 Tento dokument vám pomůže používat Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
@@ -67,16 +67,16 @@ V dolní části této stránky jsou uvedené podrobnosti pro každou výstrahu.
 
 ### <a name="alert-severity"></a>Závažnost upozornění
 
-> [!NOTE]
-> Závažnost výstrahy je jinak zobrazí na portálu a rozhraní REST API, rozdíly jsou popsány v níže uvedeném seznamu.
-
 -   **Vysoká**: Existuje vysoká pravděpodobnost, že dojde k ohrožení vašich prostředků. Byste se podívat do něj okamžitě. Security Center má vysokou spolehlivostí škodlivým činnostem závěry používají k vydávání výstrahu. Například výstrahy, které se zjistí spuštění známé škodlivé nástroje, jako je nástroj Mimikatz, běžné nástroj používaný pro krádež přihlašovacích údajů. 
--   **Střední (nízké nároky na rozhraní REST API)**: To je pravděpodobně podezřelou aktivitu, která může znamenat, že dojde k ohrožení prostředku.
+-   **Střední**: To je pravděpodobně podezřelou aktivitu, která může znamenat, že dojde k ohrožení prostředku.
 Security Center důvěru v analytické nebo hledání se střední a spolehlivosti škodlivým činnostem je střední na vysokou. Ty by obvykle neměl machine learning nebo detekce anomálií, na základě. Například znak při pokusu o z neobvyklého umístění.
--   **Nízká (informace v rozhraní REST API)**: Může to být neškodné pozitivní nebo zablokování útoku. 
+-   **Nízká**: Může to být neškodné pozitivní nebo zablokování útoku. 
     - Security Center není dostatečně přesvědčeni, že je cílem škodlivý a aktivity mohou být zcela nevinné. Vymazat protokol je například akci, která může dojít v případě, že útočník pokusí skrýt svoje stopy, ale v mnoha případech je běžné operace prováděné správci.
     - Security Center nebude zjistit obvykle při se zablokoval útoky, pokud je zajímavé případ, který doporučujeme, abyste že si prohlédnout. 
--   **Informativní (tichý režim v rozhraní REST API)**: Zobrazí, jenom informační výstrahy při podrobné analýze do jednoho incidentu zabezpečení, nebo pokud používáte rozhraní REST API s konkrétním ID výstrahy. Incident je obvykle obsahují celou řadu výstrah, z nichž některé mohou zobrazit na svoje vlastní, které bude jenom informativní, ale v kontextu jiných oznámení může být albertových podívat podrobněji. 
+-   **Informační**: Zobrazí, jenom informační výstrahy při podrobné analýze do jednoho incidentu zabezpečení, nebo pokud používáte rozhraní REST API s konkrétním ID výstrahy. Incident je obvykle obsahují celou řadu výstrah, z nichž některé mohou zobrazit na svoje vlastní, které bude jenom informativní, ale v kontextu jiných oznámení může být albertových podívat podrobněji.  
+
+> [!NOTE]
+> Pokud používáte **2015-06-01-preview** verze rozhraní API, existují rozdíly v které alarmů závažnost typy jsou použity na jaké scénáře z jaký je uveden výše.  
 
 ### <a name="filtering-alerts"></a>Filtrování výstrah
 Výstrahy můžete filtrovat podle data, stavu nebo závažnosti. Filtrování výstrah může být užitečné v případech, kdy potřebujete zúžit obor zobrazených výstrah zabezpečení. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.

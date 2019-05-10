@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0c1b877a9468ce9c3b851bce62cb87c64c04260
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363508"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472740"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv z cloudu do zařízení z IoT Hubu
 
@@ -71,10 +71,11 @@ Běžný způsob, jak využít výhod vypršení platnosti zpráv a vyhnout se o
 
 ## <a name="message-feedback"></a>Zprávy zpětné vazby
 
-Při odesílání zpráv typu cloud zařízení služby můžou požádat o doručení zpětnou vazbu za zprávy týkající se koncový stav této zprávy.
+Při odesílání zpráv typu cloud zařízení služby můžou požádat o doručení zpětnou vazbu za zprávy týkající se koncový stav této zprávy. To se provádí tak, že nastavíte `iothub-ack` vlastnost aplikace ve zprávě C2D odesílané do některé z následujících hodnot:
 
-| Vlastnosti objektu ACK. | Chování |
+| Hodnota vlastnosti objektu ACK. | Chování |
 | ------------ | -------- |
+| **None**     | IoT Hub negeneruje zprávu zpětnou vazbu (výchozí chování). |
 | **positive** | Pokud dosáhne zprávy typu cloud zařízení **dokončeno** stavu služby IoT Hub vygeneruje zprávu zpětnou vazbu. |
 | **negative** | Pokud dosáhne zprávy typu cloud zařízení **Dead lettered** stavu služby IoT Hub vygeneruje zprávu zpětnou vazbu. |
 | **Úplné**     | IoT Hub vygeneruje zprávu zpětnou vazbu v obou případech. |

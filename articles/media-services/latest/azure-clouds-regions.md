@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8851248c395a1f03c46490c8eb5e71221dd133
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733296"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409286"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve které Azure Media Services v3 existuje
 
@@ -26,19 +26,16 @@ Azure Media Services v3 je k dispozici prostřednictvím Azure Resource Manageru
 
 | Funkce|Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [StandardEncoderPreset](encoding-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| [LiveEvents](live-streaming-overview.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| [Koncové body streamování](streaming-endpoint-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není dostupné | Není dostupné | Není dostupné |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není dostupné | Není dostupné | Není dostupné |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není dostupné | Není dostupné | Není dostupné |
+| [StandardEncoderPreset](encoding-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
+| [LiveEvents](live-streaming-overview.md) | K dispozici | K dispozici | K dispozici | K dispozici |
+| [Koncové body streamování](streaming-endpoint-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
 
 ## <a name="regionsgeographieslocations"></a>Oblastí nebo geografické oblasti/umístění
 
-* [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Podle oblasti produktu](https://azure.microsoft.com/global-infrastructure/services/)
-* [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
-* [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
+[Oblasti, ve které nasazení služby Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>Název oblasti kódu 
 
@@ -98,6 +95,12 @@ Následující koncové body jsou důležité vědět, při připojení k účt�
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Authentication | `https://login.chinacloudapi.cn/` |
 | Cílové skupiny tokenu |  `https://management.core.chinacloudapi.cn/` |
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+* [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b979609374afbd11bde0e15ce540e8930315482f
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024586"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472487"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
@@ -60,7 +60,7 @@ Pouze bude vám účtována dovednosti, které volají rozhraní API služeb Cog
 
    ![Vytvoření prostředku služeb Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "vytvoření prostředku služeb Cognitive Services")
 
-1. V umístění zvolte stejné oblasti jako Azure Search se vyhnout poplatkům za odchozí šířka pásma mezi oblastmi.
+1. V umístění zvolte stejné oblasti jako Azure Search. To je potřeba kvůli výkonu, ale také anuluje poplatky za odchozí šířku pásma mezi oblastmi.
 
 1. V cenová úroveň vyberte **S0** získat kolekci All-in-one funkcí služeb Cognitive Services, včetně funkcí pro zpracování obrazu a jazyk, které zálohují předdefinované dovednosti, které používá služba Azure Search. 
 

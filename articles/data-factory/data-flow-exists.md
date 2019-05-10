@@ -1,26 +1,25 @@
 ---
-title: Azure Data Factory mapování toku dat existuje transformace
-description: Azure Data Factory mapování toku dat existuje transformace
+title: Azure Data Factory mapování toku existují Data transformace
+description: Návod k ověření pro existující řádky pomocí data factory mapovacích dat, toky se transformace Exists
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b98b7afb21f2f50d44ba93ed793b6efb20f75164
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730973"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235991"
 ---
-# <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Azure Data Factory mapování toku dat existuje transformace
+# <a name="mapping-data-flow-exists-transformation"></a>Mapování toku dat existuje transformace
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Transformace Exists je řádek transformace, která zastaví nebo povolí řádků ve vašich datech a procházet skrz filtrování. Existuje transformace je podobný ```SQL WHERE EXISTS``` a ```SQL WHERE NOT EXISTS```. Po transformaci filtru, bude obsahovat výsledný řádky z datového proudu buď všechny řádky, pokud existují hodnoty sloupce ze zdroje 1 ve zdroji 2 nebo neexistují ve zdroji 2.
+Transformace Exists je řádek transformace, která zastaví nebo povolí řádků ve vašich datech a procházet skrz filtrování. Existuje transformace je podobný ```SQL WHERE EXISTS``` a ```SQL WHERE NOT EXISTS```. Po transformaci existuje buď výsledných řádků z datového proudu zahrne všechny řádky, pokud existují hodnoty sloupce ze zdroje 1 ve zdroji 2 nebo neexistují ve zdroji 2.
 
-![Existuje nastavení](media/data-flow/exsits.png "existuje 1")
+![Existuje nastavení](media/data-flow/exists.png "existuje 1")
 
 Zvolte druhý zdroj pro vaše Exists tak, aby tok dat můžete porovnat hodnoty z Stream 1 na Stream 2.
 
@@ -28,7 +27,14 @@ Vyberte sloupec, ze zdroje 1 a 2 zdroj jehož hodnoty, které chcete kontrolovat
 
 ## <a name="multiple-exists-conditions"></a>Existuje více podmínek
 
-Vedle každého řádku, které ve svých podmínkách sloupec pro Exsits, najdete + přihlašování k dispozici při najetí myší na dosažení řádek. To vám umožní přidat více řádků Exists podmínky.
+Vedle každý řádek ve svých podmínkách sloupec pro Exists zjistíte + přihlašování k dispozici při najetí myší na dosažení řádek. To vám umožní přidat více řádků Exists podmínky. Všechny další podmínky, je "A".
+
+## <a name="custom-expression"></a>Vlastní výraz
+
+![Neexistuje vlastní nastavení](media/data-flow/exists1.png "existuje vlastní")
+
+Můžete kliknout na "Vlastní výraz" můžete místo toho vytvořit výraz volného tvaru jako vaše neexistuje nebo není existuje podmínka. Zaškrtnutím tohoto políčka vám umožní zadat vlastní výraz jako podmínku.
 
 ## <a name="next-steps"></a>Další postup
 
+Jsou podobné transformaci [vyhledávání](data-flow-lookup.md) a [připojit](data-flow-join.md).

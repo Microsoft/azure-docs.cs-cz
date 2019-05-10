@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.author: rayne
-ms.openlocfilehash: 926e5b685369f8660daf6221f818734f6f12d2b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0383226853ed86943b73d2b8740825967f3124c9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928404"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411529"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesového serveru
 
@@ -49,16 +49,16 @@ Prvním krokem při řešení potíží je kontrolovat stav a stav procesového 
 
 Procesový server generuje počet výstrah stavu služby. Tyto výstrahy a doporučené akce, jsou shrnuty v následující tabulce.
 
-**Typ výstrahy** | **Chyba** | **Řešení problémů**
+**Typ výstrahy** | **Chyba** | **Řešení potíží**
 --- | --- | --- 
 ![V pořádku][green] | Žádný  | Procesový server je v pořádku a připojené.
 ![Upozornění][yellow] | Nejsou zadané služby spuštěné. | 1. Zkontrolujte, jestli jsou spuštěné služby.<br/> 2. Pokud služby synchronizace jsou spuštěné podle očekávání, postupujte podle pokynů níže [řešení potíží s připojením a replikace](#check-connectivity-and-replication).
 ![Upozornění][yellow]  | Využití procesoru > 80 % po dobu posledních 15 minut. | 1. Nepřidávejte nové počítače.<br/>2. Zkontrolujte, že počet virtuálních počítačů pomocí procesového serveru odpovídá [definované mezní hodnoty](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte zřízení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).
-![Kritická][red] |  Využití procesoru > 95 % po dobu posledních 15 minut. | 1. Nepřidávejte nové počítače.<br/>2. Zkontrolujte, že počet virtuálních počítačů pomocí procesového serveru odpovídá [definované mezní hodnoty](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte zřízení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).<br/> 4. Pokud se problém nevyřeší, spusťte [Deployment Planner](http://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzické prostředky serveru.
+![Kritická][red] |  Využití procesoru > 95 % po dobu posledních 15 minut. | 1. Nepřidávejte nové počítače.<br/>2. Zkontrolujte, že počet virtuálních počítačů pomocí procesového serveru odpovídá [definované mezní hodnoty](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte zřízení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).<br/> 4. Pokud se problém nevyřeší, spusťte [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzické prostředky serveru.
 ![Upozornění][yellow] | Využití paměti > 80 % po dobu posledních 15 minut. |  1. Nepřidávejte nové počítače.<br/>2. Zkontrolujte, že počet virtuálních počítačů pomocí procesového serveru odpovídá [definované mezní hodnoty](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte zřízení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/>3. Postupujte podle pokynů spojené s upozorněním.<br/> 4. Pokud se problém opakuje, postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).
-![Kritická][red] | Využití paměti > 95 % po dobu posledních 15 minut. | 1. Nepřidávejte nových počítačů a vzhledem k tomu, nastavení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/> 2. Postupujte podle pokynů spojené s upozorněním.<br/> 3. 4. Pokud problém přetrvává, postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).<br/> 4. Pokud se problém nevyřeší, spusťte [Deployment Planner](http://aka.ms/asr-v2a-deployment-planner) pro potíže s replikací VMware/fyzické prostředky serveru.
+![Kritická][red] | Využití paměti > 95 % po dobu posledních 15 minut. | 1. Nepřidávejte nových počítačů a vzhledem k tomu, nastavení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/> 2. Postupujte podle pokynů spojené s upozorněním.<br/> 3. 4. Pokud problém přetrvává, postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).<br/> 4. Pokud se problém nevyřeší, spusťte [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) pro potíže s replikací VMware/fyzické prostředky serveru.
 ![Upozornění][yellow] | Mezipaměť složky volné místo < 30 % po dobu posledních 15 minut. | 1. Nemáte přidávání nových počítačů a zvažte zřízení [další procesový server](vmware-azure-set-up-process-server-scale.md).<br/>2. Zkontrolujte, že počet virtuálních počítačů pomocí procesového serveru odpovídá [pokyny](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).
-![Kritická][red] |  < 25 % volného místa pro posledních 15 minut | 1. Postupujte podle pokynů, které jsou přidružené k upozornění pro tento problém.<br/> 2. 3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).<br/> 3. Pokud se problém nevyřeší, spusťte [Deployment Planner](http://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzické prostředky serveru.
+![Kritická][red] |  < 25 % volného místa pro posledních 15 minut | 1. Postupujte podle pokynů, které jsou přidružené k upozornění pro tento problém.<br/> 2. 3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).<br/> 3. Pokud se problém nevyřeší, spusťte [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzické prostředky serveru.
 ![Kritická][red] | Žádný prezenční signál z procesového serveru pro 15 minut nebo déle. Služba tmansvs nekomunikuje s konfiguračním serverem. | (1) zkontrolujte, že procesový server je zprovozněný.<br/> 2. Zkontrolujte, že na procesovém serveru běží tmassvc.<br/> 3. Postupujte podle pokynů níže a [řešení potíží s připojením a replikace](#check-connectivity-and-replication).
 
 

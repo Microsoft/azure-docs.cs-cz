@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e78a837588ef177182f0c13db49e480845f772
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6943ad460bb5d852220e704492f892961992a59f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918752"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413607"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft
 
@@ -30,15 +30,11 @@ Podnikoví vývojáři a poskytovatelé softwaru jako služby (SaaS) můžou vyv
 
 V tomto rychlém startu se dozvíte, jak přidat a registraci aplikace s využitím **registrace aplikací** prostředí na webu Azure Portal tak, aby vaše aplikace je možné integrovat s platformou identity Microsoft. Další informace o nové funkce a vylepšení v novém prostředí registrace aplikací, najdete v článku [tento příspěvek na blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
-## <a name="prerequisite"></a>Požadavek
-
-Abyste mohli začít, musíte se na webu Azure Portal přihlásit k prostředí pro registrace aplikací ve verzi Preview. Kroky v tomto rychlém startu odpovídají novému uživatelskému rozhraní a fungují pouze v případě, že jste se přihlásili k prostředí ve verzi Preview.
-
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Registrace nové aplikace pomocí portálu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak **Registrace aplikací (Preview) > Nová registrace**.
+1. V levém navigačním podokně, vyberte **Azure Active Directory** služby a pak vyberte **registrace aplikací > Nový registrační**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 
    - **Název** – Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace.

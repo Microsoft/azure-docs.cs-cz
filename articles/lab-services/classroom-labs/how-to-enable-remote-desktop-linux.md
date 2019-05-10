@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ad6f82d7b9bd7c4957df1dd37d0f2ddf7462e9e
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60695404"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410952"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Povolení a používání vzdálené plochy pro virtuální počítače s Linuxem v testovacím prostředí v Azure Lab Services
 Tento článek ukazuje, jak provádět následující úlohy:
@@ -64,7 +64,7 @@ Vlastník testovacího prostředí (učitelů/profesor) se můžete připojit k 
 ## <a name="students-connecting-to-the-student-vm"></a>Studenti propojíte student virtuálního počítače
 Student může protokol RDP v jejich virtuálních počítačů s Linuxem po vlastník testovacího prostředí (učitelů/profesor) **publikuje** šablony virtuálního počítače pomocí protokolu RDP a grafickým uživatelským rozhraním balíčky nainstalované na počítači. Postup je následující: 
 
-1. Když student přihlásí k portálu testovacích prostředí přímo (`http://labs.azure.com`) nebo pomocí odkazu registrace (`http://labs.azure.com/register/<registrationCode>`), se zobrazí dlaždice pro každého studenta testovacího prostředí má přístup k. 
+1. Když student přihlásí k portálu testovacích prostředí přímo (`https://labs.azure.com`) nebo pomocí odkazu registrace (`https://labs.azure.com/register/<registrationCode>`), se zobrazí dlaždice pro každého studenta testovacího prostředí má přístup k. 
 2. Na dlaždici, vyberte **Start** Pokud virtuální počítač je zastavený. 
 3. Vyberte **Connect** (Připojit). Tato akce stáhne soubor RDP do vašeho počítače. Uložte ho a otevřete pro připojení k počítači s Linuxem pomocí protokolu RDP. 
 
