@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: a82004fdd6bbb4eda0842670f210f846f9446384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310872"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413717"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovení zálohy v Azure Service Fabric
 
@@ -37,6 +37,20 @@ Například můžete nakonfigurovat službu zálohovat svá data chránit před 
 - K aktivaci obnovení _služba FAS (Fault Analysis)_ musí být povolené pro cluster.
 - _Zálohy obnovit služby (BRS)_ vytvoření zálohy.
 - Obnovení je třeba spustit pouze v oddílu.
+- Instalace modulu Microsoft.ServiceFabric.Powershell.Http [Preview] pro volání konfigurace.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+- Ujistěte se, že Cluster je připojený pomocí `Connect-SFCluster` příkaz před provedením jakékoli použití modulu Microsoft.ServiceFabric.Powershell.Http požadavek na konfiguraci.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
+
 
 ## <a name="triggered-restore"></a>Aktivované obnovení
 
@@ -50,6 +64,15 @@ Obnovení se dá spouštět pro některý z následujících scénářů:
 Pokud dojde ke ztrátě celý cluster Service Fabric, můžete obnovit data pro oddíly spolehlivé stavové služby a Reliable Actors. Požadovaný zálohování lze vybrat ze seznamu, při použití [GetBackupAPI údaji ze záložního úložiště](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). Zálohování výčet může být pro aplikace, služby nebo oddíl.
 
 Následující příklad předpokládá, že ke ztrátě clusteru je stejný cluster, který je uvedený v [povolení pravidelné zálohování služby Reliable Stateful a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). V takovém případě `SampleApp` se nasazuje se povolí, zásady zálohování a zálohování jsou nakonfigurovány pro Azure Storage.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+```powershell
+Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
 
 Spusťte skript prostředí PowerShell pomocí rozhraní REST API vrátí seznam zálohy vytvořené pro všechny oddíly uvnitř `SampleApp` aplikace. Rozhraní API vyžaduje informace o zálohování úložiště do seznamu dostupných záloh.
 
@@ -142,12 +165,30 @@ Pokud je ID oddílu na alternativní clusteru `1c42c47f-439e-4e09-98b9-88b8f6080
 
 Pro _s názvem dělení_, hodnota názvu se porovnává se identifikovat cílový oddíl v alternativní clusteru.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+```powershell
+
+Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+
 Žádost o obnovení před oddílu zálohování clusteru pomocí následujících [obnovení API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition):
 
 ```powershell
+
+$StorageInfo = @{
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
+    ContainerName = 'backup-container'
+    StorageKind = 'AzureBlobStore'
+}
+
 $RestorePartitionReference = @{
     BackupId = 'b0035075-b327-41a5-a58f-3ea94b68faa4'
     BackupLocation = 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
+    BackupStorage  = $StorageInfo
 }
 
 $body = (ConvertTo-Json $RestorePartitionReference) 
@@ -184,6 +225,16 @@ FailureError            :
 
 Rozhraní API pro obnovení, zadejte _BackupId_ a _BackupLocation_ podrobnosti. Cluster má povoleným zálohováním proto Service Fabric _zálohy obnovit služby (BRS)_ polohu správné úložiště z přidružené zásady zálohování.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+```powershell
+Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+
 ```powershell
 $RestorePartitionReference = @{
     BackupId = 'b0035075-b327-41a5-a58f-3ea94b68faa4',
@@ -201,6 +252,14 @@ Obnovení můžete sledovat pomocí TrackRestoreProgress.
 ## <a name="track-restore-progress"></a>Sledovat průběh obnovení
 
 Oddíl spolehlivé stavové služby nebo Reliable Actors přijímá pouze jeden požadavek na obnovení v čase. Po dokončení aktuální žádost o obnovení, oddíl přijímá pouze jiná žádost. Obnovení vícenásobných se dá spouštět na různých oddílů ve stejnou dobu.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+
+```powershell
+    Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+```
+
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetRestoreProgress?api-version=6.4"
@@ -229,7 +288,7 @@ Průběh žádosti o obnovení v následujícím pořadí:
     ```
     
 3. **Úspěch**, **selhání**, nebo **vypršení časového limitu**: V některém z následujících stavů je možné dokončit požadovanou obnovení. Každý stav má následující údaje význam a odpovědi:
-    - **Success**: A _úspěch_ obnovit stav určuje stav znovu získali oddílu. Oddíl sestavy _RestoredEpoch_ a _RestoredLSN_ stavy spolu s čas ve standardu UTC.
+    - **Úspěch**: A _úspěch_ obnovit stav určuje stav znovu získali oddílu. Oddíl sestavy _RestoredEpoch_ a _RestoredLSN_ stavy spolu s čas ve standardu UTC.
 
         ```
         RestoreState  : Success

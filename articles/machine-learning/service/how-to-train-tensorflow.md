@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8865c851f394d73b5446ac159b5a7799c0c9ed2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192355"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442345"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trénování TensorFlow a Keras modelů pomocí služby Azure Machine Learning
 
@@ -24,11 +24,11 @@ Můžete snadno spouštět úlohy trénování TensorFlow na výpočetní prost�
 
 `TensorFlow` Estimator také poskytuje abstrakční vrstvu nad spouštěním, což znamená, že můžete snadno nakonfigurovat parametry spuštění s různými výpočetními cíli beze změny trénovací skripty.
 
-## <a name="getting-started"></a>Začínáme
+## <a name="get-started"></a>Začínáme
 
-Odeslání úlohy se `TensorFlow` odhad je podobný používání základní [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py). Proto doporučujeme, začněte tím, že čtení [Estimator postupy báze Microsoft Knowledge base](how-to-train-ml-models.md) koncepce zastřešujícího nejprve.
+Protože `TensorFlow` estimator třída je podobně jako na základní třídě [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py), doporučujeme první čtení [Estimator postupy báze Microsoft Knowledge base](how-to-train-ml-models.md) zastřešujícího koncepce.
 
-Pokud chcete začít pracovat se službou Azure Machine Learning, [dokončení tohoto rychlého startu](quickstart-run-cloud-notebook.md). Budete mít pracovního prostředí se všemi načíst naše [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml).
+Abyste mohli začít se službou Azure Machine Learning, [dokončení tohoto rychlého startu](quickstart-run-cloud-notebook.md). Jakmile budete hotovi, budete mít [pracovního prostoru Azure Machine Learning](concept-azure-machine-learning-architecture.md#workspace) a všechny naše [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml) včetně těch, které pro dopředné trénování TensorFlow a Keras.
 
 ## <a name="single-node-training"></a>Trénování jedním uzlem
 

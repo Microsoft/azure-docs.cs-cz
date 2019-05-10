@@ -16,16 +16,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 6e82ec9563832c7569fa1cff735a46dad50a8b3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462159"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232736"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+> [!WARNING]
+> Od 10. dubna 2018 se nepoužívá Google Google Cloud Messaging (GCM). Na serveru GCM a klientských rozhraní API jsou zastaralé a odeberou se co nejdříve 29. května 2019. Další informace najdete v tématu [GCM a FCM – nejčastější dotazy](https://developers.google.com/cloud-messaging/faq).
 
 ## <a name="overview"></a>Přehled
 
@@ -46,7 +49,7 @@ V tomto kurzu provedete následující akce:
 > * Vytvoříte projekt, který podporuje službu Google Cloud Messaging.
 > * Vytvoříte centrum oznámení.
 > * Připojte aplikaci k centru oznámení
-> * Otestování aplikace
+> * Testování aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 

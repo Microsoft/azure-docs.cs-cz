@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386716"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209707"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace pro samostatný cluster Windows
 Tento článek popisuje konfiguraci nastavení samostatného clusteru Azure Service Fabric, který je možné nastavit v *ClusterConfig.json* souboru. Tento soubor použije k zadání informací o uzlech clusteru, konfigurace zabezpečení, jakož i síťové topologie z hlediska chybových nebo upgradovacích doménách.  Po změně nebo přidání nastavení konfigurace, můžete je buď [vytvoření samostatného clusteru](service-fabric-cluster-creation-for-windows-server.md) nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -122,7 +122,7 @@ V části zabezpečení je nezbytné pro zabezpečení samostatného clusteru Se
 }
 ```
 
-Metadata je popis svému zabezpečenému clusteru a lze nastavit podle vašeho nastavení. ClusterCredentialType a ServerCredentialType určit typ zabezpečení, které cluster a uzly implementovat. To můžete udělat buď *X509* pro zabezpečení na základě certifikátů nebo *Windows* pro zabezpečení na základě Azure Active Directory. Zbytek části zabezpečení je založena na typu zabezpečení. Informace o tom, jak vyplnit zbývající části zabezpečení najdete v tématu [zabezpečení na základě certifikátů v samostatného clusteru](service-fabric-windows-cluster-x509-security.md) nebo [Windows zabezpečení samostatného clusteru](service-fabric-windows-cluster-windows-security.md).
+Metadata je popis svému zabezpečenému clusteru a lze nastavit podle vašeho nastavení. ClusterCredentialType a ServerCredentialType určit typ zabezpečení, které cluster a uzly implementovat. To můžete udělat buď *X509* pro zabezpečení na základě certifikátů nebo *Windows* pro zabezpečení na základě služby Active Directory. Zbytek části zabezpečení je založena na typu zabezpečení. Informace o tom, jak vyplnit zbývající části zabezpečení najdete v tématu [zabezpečení na základě certifikátů v samostatného clusteru](service-fabric-windows-cluster-x509-security.md) nebo [Windows zabezpečení samostatného clusteru](service-fabric-windows-cluster-windows-security.md).
 
 ### <a name="node-types"></a>Typy uzlů
 Oddíle nodeTypes popisuje typ uzly, které má váš cluster. Je nutné zadat typ nejméně jeden uzel clusteru, jak je znázorněno v následujícím fragmentu kódu: 

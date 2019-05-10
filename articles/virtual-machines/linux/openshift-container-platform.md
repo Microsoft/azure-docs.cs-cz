@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718257"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411568"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Nasazení OpenShift Container Platform v Azure
 
@@ -66,7 +66,7 @@ Následující příklad ukazuje soubor parametrů s názvem azuredeploy.paramet
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -287,7 +287,7 @@ Dvě různé verze může mít různé parametry, proto ověřte potřebné para
 | `masterClusterDns` | Vlastní název DNS používat pro přístup k webové konzole OpenShift, pokud jste vybrali vlastní pro `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Pokud nastavena na "nipio" `routingSubDomain` použije nip.io.  Použijte 'custom', pokud máte vlastní doménu, kterou chcete použít pro směrování | nipio <br> vlastní | nipio |
 | `routingSubDomain` | Zástupný název DNS, který chcete použít pro směrování, pokud jste vybrali vlastní pro `routingSubDomainType` |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Vyberte, jestli chcete použít existující virtuální síť nebo vytvořit novou virtuální síť | existující <br> novinka | novinka |
+| `virtualNetworkNewOrExisting` | Vyberte, jestli chcete použít existující virtuální síť nebo vytvořit novou virtuální síť | existující <br> nový | nový |
 | `virtualNetworkResourceGroupName` | Název skupiny prostředků pro nové virtuální sítě, pokud jste vybrali pro "new. `virtualNetworkNewOrExisting` |  | resourceGroup().name |
 | `virtualNetworkName` | Název nové virtuální sítě vytvořit, pokud jste vybrali pro "new. `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Předpony adres nové virtuální sítě |  | 10.0.0.0/14 |

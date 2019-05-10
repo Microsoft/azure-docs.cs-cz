@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d99169fc38f3976b35a0ebbdd6605450fbd3e2e9
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359020"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412863"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -110,24 +110,51 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 1. Připojení k prostředí Windows PowerShell s použitím uživatele správce nebo pověření správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
-   * Pokud chcete zobrazit, pokud jeden uživatel heslo se nastavilo na nekonečnou platnost, spusťte následující rutinu pomocí hlavního názvu uživatele (například *aprilr\@contoso.onmicrosoft.com*) nebo ID uživatele, kterého chcete zkontrolovat: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
-   * Pokud chcete zobrazit **platnost hesla nikdy nevyprší** nastavení pro všechny uživatele, spusťte následující rutinu: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Pokud chcete zobrazit, pokud jeden uživatel heslo se nastavilo na nekonečnou platnost, spusťte následující rutinu pomocí hlavního názvu uživatele (například *aprilr\@contoso.onmicrosoft.com*) nebo ID uživatele, kterého chcete zkontrolovat:
+
+   ```powershell
+   Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+   ```
+
+   * Pokud chcete zobrazit **platnost hesla nikdy nevyprší** nastavení pro všechny uživatele, spusťte následující rutinu:
+
+   ```powershell
+   Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+   ```
 
 ### <a name="set-a-password-to-expire"></a>Nastavení vypršení platnosti hesla
 
 1. Připojení k prostředí Windows PowerShell s použitím uživatele správce nebo pověření správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
-   * Chcete-li nastavit heslo s jedním uživatelem, tak, aby platnost hesla vyprší, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
-   * Pokud chcete nastavit hesel všech uživatelů v organizaci tak, aby platnost souhlasu vyprší, použijte následující rutinu: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
+   * Chcete-li nastavit heslo s jedním uživatelem, tak, aby platnost hesla vyprší, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele:
+
+   ```powershell
+   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
+   ```
+
+   * Pokud chcete nastavit hesel všech uživatelů v organizaci tak, aby platnost souhlasu vyprší, použijte následující rutinu:
+
+   ```powershell
+   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
+   ```
 
 ### <a name="set-a-password-to-never-expire"></a>Nastavení hesla nikdy nevyprší
 
 1. Připojení k prostředí Windows PowerShell s použitím uživatele správce nebo pověření správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
-   * Pokud chcete nastavit heslo jednoho uživatele bez vypršení platnosti, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
-   * Chcete-li nastavit hesel všech uživatelů v organizaci bez vypršení platnosti, spusťte následující rutinu: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`
+   * Pokud chcete nastavit heslo jednoho uživatele bez vypršení platnosti, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele:
+
+   ```powershell
+   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
+   ```
+
+   * Chcete-li nastavit hesel všech uživatelů v organizaci bez vypršení platnosti, spusťte následující rutinu:
+
+   ```powershell
+   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
+   ```
 
    > [!WARNING]
    > Hesla nastavit na `-PasswordPolicies DisablePasswordExpiration` stále stáří na základě `pwdLastSet` atribut. Pokud nastavujete uživatelských hesel bez vypršení platnosti a pak přejít 90 dnů, platnost hesla. Na základě `pwdLastSet` atribut, pokud změníte vypršení platnosti na `-PasswordPolicies None`, všechna hesla, které mají `pwdLastSet` starší než 90 dny vyžadovat, aby je změnit při dalším přihlášení. Tato změna může ovlivnit velký počet uživatelů. 

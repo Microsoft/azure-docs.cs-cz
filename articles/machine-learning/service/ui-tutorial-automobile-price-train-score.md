@@ -2,19 +2,19 @@
 title: 'Kurz: Předvídání cen automobilů vizuální rozhraní'
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak pro trénování, skóre a nasadit model strojového učení pomocí přetažení vizuální rozhraní. V tomto kurzu je první částí série dvojdílného na předpověď cen automobilů prostřednictvím lineární regrese.
-author: peterlu
-ms.author: peterlu
+author: peterclu
+ms.author: peterclu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 1dc905b2ac89667dcb5800b0f539cb3e9f3acdcd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 352f695f186b656ad0f6471d8ede905d53ad5274
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026869"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234088"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Kurz: Předvídání cen automobilů vizuální rozhraní
 
@@ -35,7 +35,7 @@ V [druhá část](ui-tutorial-automobile-price-deploy.md) této série kurzů, d
 > Úplnou verzi tohoto kurzu je k dispozici jako ukázkový experiment.
 > Na stránce experimenty, přejděte na **přidat nový** > **ukázka 1 - regrese: Prediction(Basic) automobilů cena**
 
-> [!VIDEO https://www.youtube.com/embed/VDKpDNX96aA]
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Build-zero-code-machine-learning-models-with-Azure-Machine-Learning-service/player]
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru

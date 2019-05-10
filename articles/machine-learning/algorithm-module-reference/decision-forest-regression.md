@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67016582149824c8deb83b54102190a57bd19383
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028797"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442358"
 ---
 # <a name="decision-forest-regression-module"></a>Rozhodovací les regrese modulu
 
@@ -39,7 +39,7 @@ Rozhodovací stromy mají tyto výhody:
 
 Tento regresní model se skládá z kompletu stromů rozhodnutí. Každý stromu v doménové struktuře regrese rozhodovacího výstupy Gaussovské distribuce jako predikcí. Agregace se provádí přes skupiny stromů stromů najít nejbližší kombinované rozdělení pro všechny stromy Gaussovské distribuce v modelu.
 
-Další informace o teoretické rámec pro tento algoritmus a jeho implementaci najdete v článku: [Doménové struktury rozhodnutí: Jednotné rozhraní pro klasifikace, regrese, hustota odhad potrubí učení a částečně učení ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Další informace o teoretické rámec pro tento algoritmus a jeho implementaci najdete v článku: [Doménové struktury rozhodnutí: Jednotné rozhraní pro klasifikace, regrese, hustota odhad potrubí učení a částečně učení](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat rozhodnutí doménové struktury regresní Model
 
@@ -53,7 +53,7 @@ Další informace o teoretické rámec pro tento algoritmus a jeho implementaci 
 
     - **Replikovat**: Při replikaci každý stromu trénovaných na přesně stejné vstupní data. Určení, které rozdělení predikát použije se pro každý uzel stromu zůstane náhodné a stromy budou mít různé.
 
-         Další informace o procesu trénování s **replikovat** možnosti najdete v tématu [rozhodnutí doménové struktury pro počítačové zpracování obrazu a lékařské analýzu obrázku. Criminisi a J. Shotton. Springer 2013. ](http://research.microsoft.com/projects/decisionforests/).
+         Další informace o procesu trénování s **replikovat** možnosti najdete v tématu [rozhodnutí doménové struktury pro počítačové zpracování obrazu a lékařské analýzu obrázku. Criminisi a J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
 
 3. Určení způsobu modelu zaškolení, tak, že nastavíte **režimu vytváření trainer** možnost.
 

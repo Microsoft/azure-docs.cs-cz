@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0eeae1451e77d9000c87b1aff7ad73323e74f7ee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: be876b370cd476bee2af7d90a9f0433fd80de3b4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154126"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233692"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z prostředí PowerShell
 
@@ -75,7 +75,7 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination
 
 Ve výchozím nastavení používá šifrování služby Azure Storage klíčů spravovaných microsoftem. V tomto kroku nakonfigurujte svůj účet úložiště Azure používat klíče spravované zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Volání [Set-AzStorageAccount](/powershell/module/az.keyvault/set-azstorageaccount) aktualizace nastavení šifrování účtu úložiště. Mějte na paměti a zástupné hodnoty v závorkách nahraďte vlastními hodnotami pomocí proměnné definované v předchozích příkladech.
+Volání [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizace nastavení šifrování účtu úložiště. Mějte na paměti a zástupné hodnoty v závorkách nahraďte vlastními hodnotami pomocí proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -88,7 +88,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytvoříte novou verzi klíče, musíte aktualizovat účet úložiště na použití nové verze. Nejprve volat [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) získat nejnovější verzi klíče. Poté zavolejte [Set-AzStorageAccount](/powershell/module/az.keyvault/set-azstorageaccount) aktualizace nastavení šifrování účtu úložiště používat novou verzi klíče, jak je znázorněno v předchozí části.
+Když vytvoříte novou verzi klíče, musíte aktualizovat účet úložiště na použití nové verze. Nejprve volat [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) získat nejnovější verzi klíče. Poté zavolejte [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizace nastavení šifrování účtu úložiště používat novou verzi klíče, jak je znázorněno v předchozí části.
 
 ## <a name="next-steps"></a>Další postup
 

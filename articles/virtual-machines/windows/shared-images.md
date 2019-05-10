@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: a3c035715de736b816027b08a1e242e6a65d1f13
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0a44f7d9c18e406850e2dbfb091088be0b8c2113
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148738"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235895"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Vytvořením Galerie sdílené bitové kopie pomocí Azure Powershellu 
 
@@ -44,7 +44,9 @@ Galerie obrázků sdílené funkce má více typů prostředků. Můžeme se pom
 
 ## <a name="before-you-begin"></a>Než začnete
 
-K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure Powershellu](tutorial-custom-images.md) ji vytvořit v případě potřeby. Při nahrazení projdete tohoto článku, skupinu prostředků a virtuální počítač příslušných místech názvy.
+K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure Powershellu](tutorial-custom-images.md) ji vytvořit v případě potřeby. Pokud spravované image obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+
+Při nahrazení projdete tohoto článku, skupinu prostředků a virtuální počítač příslušných místech názvy.
 
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
  
@@ -72,6 +74,7 @@ New-AzVm `
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>Další postup
+[Image Builder pro Azure (preview)](image-builder-overview.md) můžou usnadnit automatizaci vytvoření verze image, můžete ho použít i aktualizovat a [vytvořit novou verzi image z existující verze image](image-builder-gallery-update-image-version.md). 
 
 Můžete také vytvořit Galerie obrázků sdílených prostředků pomocí šablon. Nejsou k dispozici několik šablon rychlý start Azure: 
 

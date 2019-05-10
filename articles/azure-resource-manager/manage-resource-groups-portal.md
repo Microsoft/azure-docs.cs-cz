@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551216"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507230"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa skupin prostředků Azure Resource Manageru pomocí webu Azure portal
 
@@ -31,7 +31,7 @@ Další články o správě skupin prostředků:
 
 ## <a name="what-is-a-resource-group"></a>Co je skupina prostředků
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, takže můžete snadno nasadit, aktualizovat a odstranit jako skupina.
+Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, takže můžete snadno nasadit, aktualizovat a odstranit jako skupina.
 
 Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
@@ -108,64 +108,7 @@ Můžete provést značky u prostředků a skupin prostředků logicky tak uspo�
 
 ## <a name="export-resource-groups-to-templates"></a>Export skupiny prostředků do šablon
 
-Po úspěšném nastavení vaší skupiny prostředků, můžete zobrazit šablony Resource Manageru pro skupinu prostředků. Export šablony nabízí dvě výhody:
-
-- Budoucí nasazení řešení automatizace, protože šablona obsahuje kompletní infrastrukturu.
-- Přečtěte si syntaxi šablony pohledem na zápisu JSON (JavaScript Object), který představuje vaše řešení.
-
-Existují dva způsoby, jak exportovat šablonu:
-
-- Je možné exportovat skutečnou šablonu použitou k nasazení. Exportovaná šablona zahrnuje všechny parametry a proměnné přesně tak, jak jsou uvedeny v původní šabloně. Tento přístup je užitečný, pokud jste nasadili prostředky prostřednictvím portálu a chcete vidět šablonu, která tyto prostředky vytvoří. Tato šablona je ihned použitelná. 
-- Můžete exportovat generované šablonu, která představuje aktuální stav skupiny prostředků. Exportovaná šablona není založena na žádné šabloně, kterou jste použili k nasazení. Místo toho vytvoří šablony, která je "snímek" nebo "zálohování" skupiny prostředků. Exportovaná šablona má řadu pevně definovaných hodnot a pravděpodobně méně parametrů, než byste obvykle definovali. Tuto možnost použijte, chcete-li znovu nasadit prostředky do stejné skupiny prostředků. Tuto šablonu použít pro jiné skupiny prostředků, budete muset podstatně změnit.
-
-### <a name="export-templates-from-deployment-history"></a>Export šablony z historie nasazení
-
-Tato metoda exportuje šablony pro určité nasazení. Pokud jste změnili prostředky z portálu nebo přidání nebo odebrání prostředků ve více nasazeních, přečtěte si téma [Export šablony ze skupiny prostředků](#export-templates-from-resource-groups).
-
-1. Otevřete skupinu prostředků, kterou chcete exportovat.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
-2. V levém podokně vyberte **nasazení**, nebo vyberte propojení v rámci **nasazení**.  Na následujícím snímku obrazovky ukazuje **4 úspěšné** protože neexistovaly čtyř oddělených nasazení s čtyři názvy jiného nasazení. Může se zobrazit **1 úspěšné**.
-
-    ![export šablony skupin prostředků Azure](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
-
-3. Ze seznamu vyberte jedno z nasazení.
-4. V levém podokně vyberte **šablony**. Resource Manager pro vás načte následujících šest souborů:
-
-   - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
-   - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
-   - **Rozhraní příkazového řádku** -soubor skriptu Azure CLI, který můžete použít k nasazení šablony.
-   - **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
-   - **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
-   - **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
-
-     Ve výchozím nastavení zobrazí na portálu šablonu.
-
-5. Vyberte **Stáhnout** vyexportujte šablonu do místního počítače.
-
-    ![export šablony skupin prostředků Azure](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history-download.png)
-
-<a name="export-templates-from-resource-groups"></a>
-### <a name="export-templates-from-resource-groups"></a>Export šablony ze skupiny prostředků
-
-Pokud jste změnili prostředky z portálu, nebo přidat nebo odebrat prostředky ve více nasazeních, získání šablony z historie nasazení nebude odrážet aktuální stav skupiny prostředků. V této části se dozvíte, jak exportovat šablonu, která odráží aktuální stav skupiny prostředků. Je určena jako snímek skupiny prostředků, který můžete použít k opětovnému nasazení do stejné skupiny prostředků. Použití vyexportované šablony pro ostatní řešení, je třeba ho upravit výrazně.
-
-1. Otevřete skupinu prostředků, kterou chcete exportovat.  Zobrazit [skupiny prostředků otevřete](#open-resource-groups).
-2. V levém podokně vyberte **exportovat šablonu**. Resource Manager pro vás načte následujících šest souborů:
-
-   - **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
-   - **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
-   - **Rozhraní příkazového řádku** -soubor skriptu Azure CLI, který můžete použít k nasazení šablony.
-   - **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
-   - **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
-   - **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
-
-     Ve výchozím nastavení zobrazí na portálu šablonu.
-3. Vyberte **Stáhnout** vyexportujte šablonu do místního počítače.
-
-Některé exportované šablony potřebujete některé úpravy před jejich použitím. Zjistěte, jak vyvíjet šablony, najdete v článku [podrobné kurzy](/azure/azure-resource-manager/).
-
-### <a name="export-template-before-deploying"></a>Exportovat šablonu před nasazením
-
-Na portálu můžete použít k definování zdroje.  Před nasazením prostředek, můžete zobrazit a exportovat šablonu. Pokyny najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md).
+Informace o exportování šablony najdete v tématu [export jednoho a víc prostředků šablony - Portal](export-template-portal.md).
 
 ### <a name="fix-export-issues"></a>Oprava problémů s exportem
 

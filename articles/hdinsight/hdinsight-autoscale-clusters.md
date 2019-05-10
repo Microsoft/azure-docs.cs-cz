@@ -8,18 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92f4616a415c4ddebd0d9b2e466536b2f30c486f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146387"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413704"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (preview)
 
 Funkce automatického škálování clusteru Azure HDInsight se automaticky škáluje, počet pracovních uzlů v clusteru nahoru a dolů. Momentálně nelze škálovat jiné typy uzlů v clusteru.  Při vytváření nového clusteru HDInsight můžete nastavit minimální a maximální počet pracovních uzlů. Automatické škálování pak monitoruje analytics zatížení požadavků na prostředky a počet uzlů pracovního procesu se škáluje směrem nahoru nebo dolů. Neexistuje žádné další poplatky za tuto funkci.
 
 ## <a name="cluster-compatibility"></a>Kompatibilita clusteru
+
+> [!Important]
+> Funkce automatického škálování funguje jenom pro clustery vytvořené po zveřejnění funkce v května 2019. Nebude fungovat pro už existující clustery.
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
@@ -199,7 +202,7 @@ Všechny stavové zprávy na clusteru, které se můžou objevit jsou popsány v
 
 | Stav clusteru | Vysvětlení |
 |---|---|
-| Spuštěno | Cluster se normálně. Všechny předchozí aktivity automatického škálování, byly úspěšně dokončeny. |
+| Běží | Cluster se normálně. Všechny předchozí aktivity automatického škálování, byly úspěšně dokončeny. |
 | Aktualizuje se  | Konfigurace automatického škálování clusteru se aktualizuje.  |
 | Konfigurace HdInsight  | Vertikální navýšení kapacity clusteru nebo vertikální snížení kapacity operace právě probíhá.  |
 | Chyba aktualizace  | HDInsight nastaly problémy při aktualizaci konfigurace automatického škálování. Zákazníci můžou zvolit zopakujte aktualizaci nebo zakázat automatické škálování.  |

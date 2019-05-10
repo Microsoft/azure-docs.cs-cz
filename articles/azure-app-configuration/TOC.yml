@@ -4,23 +4,35 @@
   items:
     - name: Služba Azure App Configuration
       href: overview.md
+    - name: Nejčastější dotazy
+      href: faq.md
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření aplikace v ASP.NET Core
-      href: quickstart-aspnet-core-app.md
-    - name: Vytvoření aplikace v .NET Core
-      href: quickstart-dotnet-core-app.md
-    - name: Vytvoření aplikace v .NET Frameworku
-      href: quickstart-dotnet-app.md
-    - name: Vytvořit funkci Azure
-      href: quickstart-azure-function-csharp.md
-    - name: Vytvoření aplikace v Java Springu
-      href: quickstart-java-spring-app.md
+    - name: Konfigurace
+      items:
+        - name: Jádro ASP.NET
+          href: quickstart-aspnet-core-app.md
+        - name: .NET Core
+          href: quickstart-dotnet-core-app.md
+        - name: .NET Framework
+          href: quickstart-dotnet-app.md
+        - name: Azure Functions v .NET Core
+          href: quickstart-azure-function-csharp.md
+        - name: Java Spring
+          href: quickstart-java-spring-app.md
+    - name: Správa funkcí
+      items:
+        - name: Jádro ASP.NET
+          href: quickstart-feature-flag-aspnet-core.md
 - name: Kurzy
   items:
     - name: Povolení dynamické konfigurace v ASP.NET Core
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: Použití příznaků funkcí v aplikaci .NET Core
+      href: use-feature-flags-dotnet-core.md
+    - name: Správa příznaků funkcí
+      href: manage-feature-flags.md
     - name: Integrace s kanálem CI/CD
       href: integrate-ci-cd-pipeline.md
 - name: Ukázky
@@ -33,24 +45,36 @@
       href: concept-key-value.md
     - name: Snímek k určitému časovému okamžiku
       href: concept-point-time-snapshot.md
+    - name: Správa funkcí
+      href: concept-feature-management.md
 - name: Návody
   items:
     - name: Integrace s identitou spravované služby Azure
       href: howto-integrate-azure-managed-service-identity.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md
+    - name: Osvědčené postupy
+      href: howto-best-practices.md
 - name: Referenční informace
   items:
-    - name: Zprostředkovatel konfigurace .NET Core
-      href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
-    - name: Tvůrce konfigurace .NET Framework
-      href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-    - name: Zprostředkovatel konfigurace Java Spring
-      href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
-    - name: .NET Azure SDK
-      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
-    - name: REST
-      href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
+    - name: Konfigurace
+      items:
+        - name: Zprostředkovatel konfigurace .NET Core
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+        - name: Tvůrce konfigurace .NET Framework
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
+        - name: Zprostředkovatel konfigurace Java Spring
+          href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
+        - name: .NET Azure SDK
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
+        - name: REST
+          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
+    - name: Správa funkcí
+      items:
+        - name: Knihovna .NET Core
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+        - name: Knihovna ASP.NET Core
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091410'
 - name: Zdroje a prostředky
   items:
     - name: Videa Začínáme

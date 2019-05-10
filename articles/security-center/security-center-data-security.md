@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60911540"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234086"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -46,12 +46,18 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 
 **Vaše pracovní prostory**: Pracovní prostor je určen pro následující Geografie a data shromážděná z vašich virtuálních počítačů Azure, včetně výpisy stavu systému a některé typy dat výstrah, se ukládají v nejbližším pracovním prostoru.
 
-| Geografie virtuálního počítače                        | Geografie pracovního prostoru |
-|-------------------------------|---------------|
-| Spojené státy, Brazílie, Kanada | Spojené státy |
-| Evropa, Spojené království        | Evropa        |
-| Asie a Tichomoří, Japonsko, Indie    | Asie a Tichomoří  |
-| Austrálie                     | Austrálie     |
+| Geografie virtuálního počítače                              | Geografie pracovního prostoru |
+|-------------------------------------|---------------|
+| Spojené státy, Brazílie, Jižní Afrika | Spojené státy |
+| Kanada                              | Kanada        |
+| Evropa (s výjimkou Spojené království)   | Evropa        |
+| Spojené království                      | Spojené království |
+| Asie (s výjimkou Indie, Japonsko, Koreji, Čína)   | Asie a Tichomoří  |
+| Jižní Korea                              | Asie a Tichomoří  |
+| Indie                               | Indie         |
+| Japonsko                               | Japonsko         |
+| Čína                               | Čína         |
+| Austrálie                           | Austrálie     |
 
 
 Snímky disků virtuálních počítačů se ukládají ve stejném účtu úložiště jako disk virtuálního počítače.

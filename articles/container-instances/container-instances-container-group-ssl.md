@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 10c015a9aee4ed8be54805f7adaae5bb4b5c422f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870384"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411389"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Povolení koncového bodu protokolu SSL ve skupině kontejnerů
 
@@ -66,7 +66,7 @@ V `location`, nezapomeňte nastavit `proxy_pass` s správný port pro aplikaci. 
 
 ```console
 # nginx Configuration File
-# http://wiki.nginx.org/Configuration
+# https://wiki.nginx.org/Configuration
 
 # Run as a less privileged user for security reasons.
 user nginx;
@@ -128,7 +128,7 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>Kódování Base64 tajné kódy a konfigurační soubor
 
-Zakódovat do formátu Base64 konfigurační soubor Nginx, certifikát SSL a klíče SSL. Obsah kódovaný použijete ke konfiguraci kontejneru Nginx.
+Zakódovat do formátu Base64 konfigurační soubor Nginx, certifikát SSL a klíče SSL. V další části zadejte obsah kódovaný soubor YAML, použít k nasazení skupiny kontejnerů.
 
 ```console
 cat nginx.conf | base64 -w 0 > base64-nginx.conf
@@ -148,7 +148,7 @@ Zkopírujte následující kód YAML do nového souboru s názvem `deploy-aci.ya
 code deploy-aci.yaml
 ```
 
-Zadejte obsah kódovaný ve formátu base64 soubory označené v rámci `secret`. Během nasazování, tyto soubory jsou přidány do [tajný svazek](container-instances-volume-secret.md) ve skupině kontejnerů. V tomto příkladu je tajný svazek připojený ke kontejneru Nginx.
+Zadejte obsah kódovaný ve formátu base64 soubory označené v rámci `secret`. Například `cat` všech souborů s kódováním base64 zobrazíte jeho obsah. Během nasazování, tyto soubory jsou přidány do [tajný svazek](container-instances-volume-secret.md) ve skupině kontejnerů. V tomto příkladu je tajný svazek připojený ke kontejneru Nginx.
 
 ```YAML
 api-version: 2018-10-01
@@ -181,9 +181,9 @@ properties:
           memoryInGB: 1.5
   volumes:
   - secret:
-      ssl.crt: <base64-ssl.crt>
-      ssl.key: <base64-ssl.key>
-      nginx.conf: <base64-nginx.conf>
+      ssl.crt: <Enter contents of base64-ssl.crt here>
+      ssl.key: <Enter contents of base64-ssl.key here>
+      nginx.conf: <Enter contents of base64-nginx.conf here>
     name: nginx-config
   ipAddress:
     ports:
@@ -232,7 +232,7 @@ Pokud chcete zobrazit spuštěnou aplikaci, přejděte na jeho IP adresu v prohl
 ![Snímek obrazovky prohlížeče ukazující aplikaci spuštěnou v instanci kontejneru Azure](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Vzhledem k tomu tento příklad používá certifikát podepsaný svým držitelem a není jednou z certifikační autority, prohlížeč zobrazí upozornění zabezpečení při připojování k webu přes protokol HTTPS. Jde o očekávané chování.
+> Vzhledem k tomu tento příklad používá certifikát podepsaný svým držitelem a není jednou z certifikační autority, prohlížeč zobrazí upozornění zabezpečení při připojování k webu přes protokol HTTPS. Toto chování je očekávané.
 >
 
 ## <a name="next-steps"></a>Další postup

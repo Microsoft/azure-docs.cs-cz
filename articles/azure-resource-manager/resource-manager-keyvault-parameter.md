@@ -1,33 +1,68 @@
 ---
 title: Tajný kód trezoru klíčů pomocí šablony Azure Resource Manageru | Dokumentace Microsoftu
 description: Ukazuje, jak předat tajného klíče ze služby key vault jako parametr během nasazení.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-editor: tysonn
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2019
+ms.date: 05/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93b92a8a3b8aacd1f665725643314858fe92ad3c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e47a087e27b6a8ade947e36ded762ce2e518ca25
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233764"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507992"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení
 
-Namísto vložení hodnoty zabezpečenou hodnotu (jako jsou hesla) přímo v souboru parametrů, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md) během nasazení. Načtení hodnoty pomocí odkazu na trezor klíčů a tajný klíč v souboru parametrů. Hodnota se nikdy vystavena, protože pouze odkazujete na jeho ID služby key vault. Trezor klíčů může existovat v jiném předplatném než skupina prostředků, které nasazujete.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Namísto vložení hodnoty zabezpečenou hodnotu (jako jsou hesla) přímo v souboru šablony nebo parametr, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md) během nasazení. Načtení hodnoty pomocí odkazu na trezor klíčů a tajný klíč v souboru parametrů. Hodnota se nikdy vystavena, protože pouze odkazujete na jeho ID služby key vault. Trezor klíčů může existovat v jiném předplatném než které nasazení provádíte do skupiny prostředků.
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Nasazení trezorů klíčů a tajných kódů
 
-Můžete vytvářet trezory klíčů a tajných kódů přidat, naleznete v tématu:
+Chcete-li získat přístup k trezoru klíčů během nasazování šablony, nastavte `enabledForTemplateDeployment` v trezoru klíčů, aby `true`.
+
+Následující ukázky rozhraní příkazového řádku Azure a Azure Powershellu ukazují, jak vytvořit trezor klíčů a přidat tajný klíč.
+
+```azurecli
+az group create --name $resourceGroupName --location $location
+az keyvault create \
+  --name $keyVaultName \
+  --resource-group $resourceGroupName \
+  --location $location \
+  --enabled-for-template-deployment true
+az keyvault secret set --vault-name $keyVaultName --name "ExamplePassword" --value "hVFkk965BuUv"
+```
+
+```azurepowershell
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzKeyVault `
+  -VaultName $keyVaultName `
+  -resourceGroupName $resourceGroupName `
+  -Location $location `
+  -EnabledForTemplateDeployment
+$secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
+$secret = Set-AzKeyVaultSecret -VaultName $keyVaultName -Name 'ExamplePassword' -SecretValue $secretvalue
+```
+
+Jako vlastníka trezoru klíčů budete mít automaticky přístup k vytváření tajných kódů. Není-li uživatel práci s tajnými kódy vlastníka trezoru klíčů, udělte přístup pomocí:
+
+```azurecli
+az keyvault set-policy \
+  --upn $userPrincipalName \
+  --name $keyVaultName \
+  --secret-permissions set delete get list
+```
+
+```azurepowershell
+$userPrincipalName = "<Email Address of the deployment operator>"
+
+Set-AzKeyVaultAccessPolicy `
+  -VaultName $keyVaultName `
+  -UserPrincipalName $userPrincipalName `
+  -PermissionsToSecrets set,delete,get,list
+```
+
+Další informace o vytváření trezorů klíčů a přidávání tajných kódů naleznete v tématu:
 
 - [Nastavení a načtení tajného kódu s použitím rozhraní příkazového řádku](../key-vault/quick-create-cli.md)
 - [Nastavení a načtení tajného kódu s použitím prostředí Powershell](../key-vault/quick-create-powershell.md)
@@ -35,35 +70,9 @@ Můžete vytvářet trezory klíčů a tajných kódů přidat, naleznete v tém
 - [Nastavení a načtení tajného kódu s použitím rozhraní .NET](../key-vault/quick-create-net.md)
 - [Nastavení a načtení tajného kódu s použitím prostředí Node.js](../key-vault/quick-create-node.md)
 
-Při integraci služby Key Vault s nasazení šablony Resource Manageru existují některé další aspekty a požadavky:
-
-- `enabledForTemplateDeployment` je vlastností služby key vault. K nasazení podle modelu Resource Manager, přístup k tajným klíčům v této službě Key Vault `enabledForTemplateDeployment` musí být `true`. 
-- Pokud si nejste vlastník služby key vault, vlastník musíte aktualizovat nastavení zásad zabezpečení trezoru klíčů můžete přidat tajných kódů.
-
-Následující ukázky rozhraní příkazového řádku Azure a Azure Powershellu ukazují, jak se to dělá:
-
-```azurecli
-# Create a Key Vault
-az keyvault create \
-  --name $keyVaultName \
-  --resource-group $resourceGroupName \
-  --location $location \
-  --enabled-for-template-deployment true
-az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
-```
-
-```azurepowershell
-New-AzKeyVault `
-  -VaultName $keyVaultName `
-  -resourceGroupName $resourceGroupName `
-  -Location $location `
-  -EnabledForTemplateDeployment
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
-```
-
 ## <a name="grant-access-to-the-secrets"></a>Udělení přístupu k tajné klíče
 
-Uživatel, který nasadí šabloně musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro obor, který obsahuje Key Vault, včetně skupiny prostředků a Key Vault. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) obě role udělit přístup. Pokud vytvoříte trezor klíčů, jste vlastníkem, abyste měli oprávnění. Pokud služby Key Vault je pod správou jiného předplatného, musí vlastník služby Key Vault grand přístup.
+Uživatel, který nasadí šabloně musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění oboru skupiny prostředků a trezor klíčů. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) obě role udělit přístup. Pokud jste vytvořili trezor klíčů, jste vlastníkem, abyste měli oprávnění.
 
 Následující postup ukazuje, jak vytvořit roli s minimální oprávnění a přiřazení uživatele
 
@@ -89,14 +98,23 @@ Následující postup ukazuje, jak vytvořit roli s minimální oprávnění a p
 
 2. Vytvoření nové role pomocí souboru JSON:
 
-    ```azurepowershell
-    $resourceGroupName= "<Resource Group Name>" # the resource group which contains the Key Vault
-    $userPrincipalName = "<Email Address of the deployment operator>"
-    New-AzRoleDefinition -InputFile "<PathToTheJSONFile>" 
-    New-AzRoleAssignment -ResourceGroupName $resourceGroupName -RoleDefinitionName "Key Vault resource manager template deployment operator" -SignInName $userPrincipalName
+    ```azurecli
+    az role definition create --role-definition "<PathToRoleFile>"
+    az role assignment create \
+      --role "Key Vault resource manager template deployment operator" \
+      --assignee $userPrincipalName \
+      --resource-group $resourceGroupName
     ```
 
-    `New-AzRoleAssignment` Vzorovým kódem se přiřadí vlastní role pro uživatele na úrovni skupiny prostředků.  
+    ```azurepowershell
+    New-AzRoleDefinition -InputFile "<PathToRoleFile>" 
+    New-AzRoleAssignment `
+      -ResourceGroupName $resourceGroupName `
+      -RoleDefinitionName "Key Vault resource manager template deployment operator" `
+      -SignInName $userPrincipalName
+    ```
+
+    Ukázky přiřadit vlastní roli uživatele na úrovni skupiny prostředků.  
 
 Při použití služby Key Vault se šablonou pro [spravované aplikace](../managed-applications/overview.md), je nutné udělit přístup k **poskytovatele prostředků zařízení** instančního objektu. Další informace najdete v tématu [tajného kódu trezoru klíčů přístup při nasazování služby Azure Managed Applications](../managed-applications/key-vault-access.md).
 
@@ -106,18 +124,75 @@ S tímto přístupem můžete odkazovat na službě key vault v souboru parametr
 
 ![Diagram statické ID integrace trezoru klíčů Resource Manageru](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[Kurz: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md) používá tuto metodu. Kurz nasazení virtuální počítače co zahrnuje hesla správce. Parametr hesla je nastaven na zabezpečený řetězec:
+[Kurz: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md) používá tuto metodu.
 
-![Trezor klíčů integrace statické ID souboru šablony Resource Manageru](./media/resource-manager-keyvault-parameter/resource-manager-key-vault-static-id-template-file.png)
+Následující šablona nasadí serveru SQL server, který obsahuje heslo správce. Parametr hesla je nastaven na zabezpečený řetězec. Ale šablona neurčuje, kde tato hodnota pochází.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminLogin": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "securestring"
+    },
+    "sqlServerName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('sqlServerName')]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "administratorLogin": "[parameters('adminLogin')]",
+        "administratorLoginPassword": "[parameters('adminPassword')]",
+        "version": "12.0"
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
+```
 
 Teď vytvořte soubor parametrů pro předchozí šablonu postupem. V souboru parametrů zadejte parametr, který odpovídá názvu parametru v šabloně. Pro hodnotu parametru odkazujte tajný kód trezoru klíčů. Tajný kód odkazujete předáním identifikátor prostředku trezoru klíčů a název tajného kódu:
 
-![Trezor klíčů integrace statické ID souboru parametrů Resource Manageru](./media/resource-manager-keyvault-parameter/resource-manager-key-vault-static-id-parameter-file.png)
+V následujícím souboru parametru tajný kód trezoru klíčů už musí existovat a zadejte statickou hodnotu pro jeho ID prostředku.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminLogin": {
+            "value": "exampleadmin"
+        },
+        "adminPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<vault-name>"
+              },
+              "secretName": "ExamplePassword"
+            }
+        },
+        "sqlServerName": {
+            "value": "<your-server-name>"
+        }
+    }
+}
+```
 
 Pokud je potřeba použít verzi tajného kódu, než je aktuální verzi, použijte `secretVersion` vlastnost.
 
 ```json
-"secretName": "examplesecret",
+"secretName": "ExamplePassword",
 "secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
 ```
 

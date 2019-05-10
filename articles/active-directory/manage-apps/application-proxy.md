@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292588"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506646"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím přes Azure Active Directory Application Proxy 
 
@@ -43,6 +43,8 @@ Proxy aplikací funguje s:
 * Bohaté klientských aplikací, které jsou integrovány s Active Directory Authentication Library (ADAL)
 
 Proxy aplikací podporuje jednotné přihlašování. Další informace o podporovaných metod najdete v tématu [volba jedinou metodu přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+
+Proxy aplikací se doporučuje pro poskytne externí vzdáleným uživatelům přístup k interním prostředkům. Proxy aplikace nahrazuje potřebu síť VPN nebo reverzní proxy server. Není určena pro interní uživatele v podnikové síti.  Interní uživatelé, kteří zbytečně pomocí Proxy aplikace může způsobovat problémy s výkonem neočekávané a nežádoucí.
 
 ## <a name="how-application-proxy-works"></a>Jak funguje Proxy aplikací
 

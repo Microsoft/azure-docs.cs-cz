@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025236"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65502081"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -32,9 +32,7 @@ Informace o pracovním postupu počítače následující obecně toto pořadí:
 1. **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Při školení, může číst nebo zapisovat do skriptů **datastore**. A záznamy o spuštění se uloží jako **spustí** v **pracovní prostor** seskupené pod **experimenty**.
 1. **Dotazování experiment** pro metrikách zaznamenaných do protokolu běhů aktuálního i staršího. Pokud metriky neindikují požadovaného výsledku, smyčka zpátky ke kroku 1 a iterovat své skripty.
 1. Po uspokojivé spustit je najít, zaregistrujte model trvalého v **modelu registru**.
-1. Vyvíjejte hodnoticí skript.
-1. **Vytvoření image** a zaregistrujte ho **registru imagí**.
-1. **Nasazení bitové kopie** jako **webová služba** v Azure.
+1. Vývoj hodnoticí skript, který používá model a **model nasadit** jako **webovou službu** v Azure nebo do **zařízení IoT Edge**.
 
 
 > [!NOTE]
@@ -46,7 +44,7 @@ Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine 
 
 Pracovním prostoru udržuje seznam cílových výpočetních prostředí, které použijete k natrénování modelu. Také udržuje historii tréninkových spuštění, včetně protokolů, metrik, výstupu a snímek vašich skriptů. Tyto informace použít k určení, které školení vznikly nejlepší model.
 
-Zaregistrujte modely s pracovním prostorem. Použijete k vytvoření image registrovanému modelu a vyhodnocení skriptů. Pak můžete nasadit image do služby Azure Container Instances, Azure Kubernetes Service, nebo pole programmable gate array (FPGA) jako koncový bod HTTP založené na protokolu REST. Můžete taky nasadit bitovou kopii pro zařízení Azure IoT Edge jako modul.
+Zaregistrujte modely s pracovním prostorem. Použijete registrovanému modelu a hodnoticí skripty k nasazení modelu do služby Azure Container Instances, Azure Kubernetes Service, nebo pole programmable gate array (FPGA) jako koncový bod HTTP založené na protokolu REST. Můžete taky nasadit bitovou kopii pro zařízení Azure IoT Edge jako modul. Interně se vytvoří image dockeru k hostování do nasazené bitové kopie. V případě potřeby můžete zadat vlastní image.
 
 Můžete vytvořit víc pracovních prostorů a každý pracovní prostor může být sdílen více lidí. Když sdílíte s pracovním prostorem, můžete řídit přístup k němu prostřednictvím přiřazování uživatelů do následujících rolí:
 
@@ -94,7 +92,7 @@ Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete mo
 
 Při registraci modelu můžete zadat další metadata značky a pak použít značky při hledání modely.
 
-Nelze odstranit modely, které se používají v obrázku.
+Nelze odstranit modely, které jsou používány aktivní nasazení.
 
 Příklad registrace modelu, naleznete v tématu [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
 
@@ -159,7 +157,7 @@ Pro trénování modelu, určíte adresář, který obsahuje skript školení a 
 
 Příklad najdete v tématu [kurzu: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-## <a name="run"></a>Spusťte
+## <a name="run"></a>Spustit
 
 Spuštění je záznam, který obsahuje následující informace:
 
@@ -208,11 +206,11 @@ Bitové kopie, které jsou vytvořeny z vašich modelů uchovává informace o r
 
 ## <a name="deployment"></a>Nasazení
 
-Nasazení je instance svou image do obou webovou službu, která je možné hostovat v cloudu nebo modul pro nasazení integrovaných zařízení služby IoT.
+Nasazení je instance modelu do buď webové služby, který je možné hostovat v cloudu nebo modul pro nasazení integrovaných zařízení služby IoT.
 
 ### <a name="web-service"></a>Webová služba
 
-Azure Container Instances, Azure Kubernetes Service nebo FPGA, můžete použít nasazenou webovou službu. Vytvoříte službu z obrázku, který zapouzdřuje modelu, skripty a přidružené soubory. Bitová kopie je vyrovnáváním zatížení, koncový bod HTTP, která přijímá vyhodnocování požadavků, které se odesílají do webové služby.
+Azure Container Instances, Azure Kubernetes Service nebo FPGA, můžete použít nasazenou webovou službu. Vytvoříte službu z modelu, skripty a přidružené soubory. Tyto jsou zapouzdřeny v obrázku, který poskytuje běhu prostředí pro webovou službu. Bitová kopie je vyrovnáváním zatížení, koncový bod HTTP, která přijímá vyhodnocování požadavků, které se odesílají do webové služby.
 
 Azure pomáhá monitorovat nasazení vaší webové služby pomocí shromažďování telemetrie Application Insights nebo telemetrická data modelu, pokud jste se rozhodli tuto funkci povolil. Telemetrická data jsou přístupná pouze pro vás a je uložena v Application Insights a instance účtu úložiště.
 

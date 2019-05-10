@@ -12,14 +12,22 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a8b77cea34344062c981d8f452094cffabe1e568
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 26bd49af7245d6e6dde3162a2e1d95c54f13e35b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572495"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415954"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
+
+Tento článek popisuje různé způsoby použití dat z konfigurace aplikace pro Azure v průběžné integrace a průběžného nasazování systému.
+
+## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Používat konfiguraci aplikací v Azure kanálu DevOps
+
+Pokud máte kanál DevOps Azure, můžete načíst hodnoty klíče z konfigurace aplikace a nastavit je jako proměnné úkolů. [Rozšíření Azure DevOps konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2091063) je modul doplněk, který tuto funkci poskytuje. Jednoduše postupujte podle jeho pokynů použití rozšíření v sestavení nebo vydání pořadí úkolů.
+
+## <a name="deploy-app-configuration-data-with-your-application"></a>Nasazení aplikace konfiguračních dat s vaší aplikací
 
 Vaše aplikace nemusí podařit spustit, pokud závisí na konfiguraci aplikace Azure a nemá přístup. Můžete zvýšit odolnost vaší aplikace pracovala s takovou událost, ale pravděpodobně je provést. Uděláte to tak, balíček aktuální konfiguračních dat do souboru, který je nasazen s aplikací a načíst místně při jeho spuštění. Tento postup zaručuje, že vaše aplikace má alespoň výchozí hodnoty nastavení. Až bude k dispozici jsou tyto hodnoty přepíše všechny novější změny v obchodě s aplikacemi konfigurace.
 
@@ -29,13 +37,13 @@ Následující příklad ukazuje, jak zahrnout konfigurace aplikace data jako se
 
 Provést kroky v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
 
-## <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadavky
 
 Pokud vytvoříte místně, stáhněte a nainstalujte [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pokud jste tak již neučinili.
 
 Provedete sestavení do cloudu s Azure DevOps například, ujistěte se, že [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalovaný v systému sestavení.
 
-## <a name="export-an-app-configuration-store"></a>Exportovat konfiguraci app storu
+### <a name="export-an-app-configuration-store"></a>Exportovat konfiguraci app storu
 
 1. Otevřete váš *.csproj* soubor a přidejte následující skript:
 
@@ -64,7 +72,7 @@ Provedete sestavení do cloudu s Azure DevOps například, ujistěte se, že [ro
             .UseStartup<Startup>();
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Sestavte a spusťte aplikaci místně
+### <a name="build-and-run-the-app-locally"></a>Sestavte a spusťte aplikaci místně
 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ho na přístupový klíč k úložišti konfigurace aplikace. Pokud používáte Windows příkazového řádku, spusťte následující příkaz a restartujte příkazového řádku umožňující změna se projeví:
 

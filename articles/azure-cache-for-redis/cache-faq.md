@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552033"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230110"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -105,10 +105,10 @@ Každá mezipaměť Azure nabídku Redis poskytuje různé úrovně **velikost**
 Následují faktory pro výběr variant mezipaměti.
 
 * **Paměť**: Úrovně Basic a Standard nabízejí 250 MB – 53 GB. Úroveň Premium nabízí až 530 GB. Další informace najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
-* **Výkon sítě**: Pokud máte úlohu, která vyžaduje vysokou propustnost, na úrovni Premium nabízí větší šířku pásma v porovnání s Standard nebo Basic. Také v každé úrovni mít větší velikost mezipaměti větší šířku pásma z důvodu základní virtuální počítač, který je hostitelem mezipaměti. Zobrazit [následující tabulky](#cache-performance) Další informace.
+* **Výkon sítě**: Pokud máte úlohu, která vyžaduje vysokou propustnost, na úrovni Premium nabízí větší šířku pásma v porovnání s Standard nebo Basic. Také v každé úrovni mít větší velikost mezipaměti větší šířku pásma z důvodu základní virtuální počítač, který je hostitelem mezipaměti. Další informace najdete v tématu [následující tabulky](#cache-performance).
 * **Propustnost**: Úroveň Premium nabízí maximální propustnost k dispozici. Pokud klienta nebo serveru mezipaměti dosáhne omezení šířky pásma, můžete obdržet vypršení časového limitu na straně klienta. Další informace najdete v tématu v následující tabulce.
 * **Vysoká dostupnost/SLA**: Mezipaměti Redis Azure zaručuje, že mezipaměť Standard nebo Premium je k dispozici alespoň 99,9 % času. Další informace o smlouvě SLA najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Součástí smlouvy SLA není ochrana proti ztrátě dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat.
-* **Trvalost dat redis**: Úroveň Premium umožňuje zachovat data v mezipaměti v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. Pokud jsou základní problémy infrastrukturu může být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti trvalosti Redis. Další informace najdete v tématu [konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md).
+* **Trvalost dat redis**: Úroveň Premium umožňuje zachovat data v mezipaměti v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. Základní problémů s infrastrukturou může způsobit ztrátu dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti trvalosti Redis. Další informace najdete v tématu [konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md).
 * **Redis Cluster**: Vytvoření mezipaměti větší než 53 GB, nebo sdílení dat mezi více uzlů Redis, můžete Redis clustering, která je dostupná na úrovni Premium. Každý uzel se skládá z dvojice primární/replika mezipaměti pro zajištění vysoké dostupnosti. Další informace najdete v tématu [postup konfigurace clusterů pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-clustering.md).
 * **Rozšířené zabezpečení a síťové izolace**: Nasazení Azure Virtual Network (VNET) nabízí vyšší míru zabezpečení a izolaci pro mezipaměť Azure Redis, stejně jako podsítě, zásady řízení přístupu a jiné funkce pro další omezení přístupu. Další informace najdete v tématu [konfigurace podpory služby Virtual Network pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-vnet.md).
 * **Konfigurace Redis**: Ve vrstvách Standard a Premium můžete nakonfigurovat pro oznámení Keyspace Redis.
@@ -129,25 +129,26 @@ Následující tabulka uvádí maximální šířka pásma hodnotami zjištěný
 
 Z této tabulky jsme lze nakreslit následující závěry:
 
-* Propustnost pro mezipaměti, které mají stejnou velikost je vyšší ve vrstvě Premium, než na úrovni Standard. Například s 6 GB mezipaměti je propustnost P1 180 000 RPS než 100 000 pro C3.
+* Propustnost pro mezipaměti, které mají stejnou velikost je vyšší ve vrstvě Premium, než na úrovni Standard. Například s 6 GB mezipaměti je propustnost P1 180 000 požadavků za sekundu (předávajících stran) než 100 000 RPS pro C3.
 * S clusteringem Redis propustnost zvyšuje lineárně zvýšit počet horizontálních oddílů (uzlů) v clusteru. Například pokud vytvoříte cluster P4 10 horizontálními oddíly, pak k dispozici propustnost je 400 000 * 10 = 4 miliony RPS.
 * Propustnost pro větší velikosti klíče je vyšší ve vrstvě Premium, než na úrovni Standard.
 
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | Velikost hodnoty 1 KB | Velikost hodnoty 1 KB |
 | --- | --- | --- | --- | --- | --- |
 | **Velikosti Standard mezipaměti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (předávajících stran)** |**Požadavky na druhý protokol SSL (předávajících stran)** |
-| C0 |250 MB |Shared |100 / 12.5 |15 000 |7 500 |
-| C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
-| C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
-| C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
-| C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
-| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
-| C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
+| C0 | 250 MB | Sdílené | 100 / 12.5  |  15 000 |   7,500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38,000 |  20,720 |
+| C2 | 2,5 GB | 2      | 500 / 62.5  |  41,000 |  37,000 |
+| C3 |   6 GB | 4      | 1000 / 125  | 100 000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55,000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102,000 |  93,000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126,000 | 120,000 |
 | **Velikosti mezipaměti úrovně Premium** | |**Počet jader procesoru na horizontálních oddílů** | **Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý (předávajících stran) bez SSL, za horizontální oddíl** |**Požadavky na druhý protokol SSL (předávajících stran), za horizontální oddíl** |
-| P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
-| P2 |13 GB |4 |3,000 / 375 |350,000 |341,000 |
-| P3 |26 GB |4 |3,000 / 375 |350,000 |341,000 |
-| P4 |53 GB |8 |6,000 / 750 |400 000 |373,000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172,000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373,000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400 000 | 373,000 |
 
 Pokyny k nastavení stunnelu nebo stáhli Redis tools jako `redis-benchmark.exe`, najdete v článku [jak mohu spustit příkazy Redis?](#cache-commands) oddílu.
 
@@ -162,22 +163,22 @@ Pro zajištění nejlepšího výkonu a nejnižší latenci vyhledejte mezipamě
 Mezipaměť Azure Redis ceny je [tady](https://azure.microsoft.com/pricing/details/cache/). Stránce s cenami uvádí ceny jako hodinové sazby. Mezipaměť se fakturuje po minutách od okamžiku vytvoření mezipaměti až do mezipaměti se odstraní. Neexistuje žádná možnost pro zastavení nebo pozastavení fakturace do mezipaměti.
 
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Můžete použít Azure Cache pro Redis pomocí cloudu Azure Government, Azure China Cloud nebo Microsoft Azure Germany?
-Ano, mezipaměti Redis Azure je dostupná v cloudu Azure Government Azure China Cloud a Microsoft Azure Germany. Adresy URL pro přístup a Správa mezipaměti Azure Redis jsou jiné v tyto cloudy ve srovnání s veřejným cloudem Azure. 
+Ano, mezipaměti Redis Azure je dostupná v cloudu Azure Government, Azure China 21Vianet cloudu a Microsoft Azure Germany. Adresy URL pro přístup a Správa mezipaměti Azure Redis jsou jiné v tyto cloudy ve srovnání s veřejným cloudem Azure.
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Public  | *.redis.cache.windows.net       |
-| Vláda USA  | *.redis.cache.usgovcloudapi.net |
+| Veřejné  | *.redis.cache.windows.net       |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | Německo | *.redis.cache.cloudapi.de       |
 | Čína   | *.redis.cache.chinacloudapi.cn  |
 
 Další informace o informace týkající se použití mezipaměti Azure pro Redis s jinými cloudy najdete v následujících tématech.
 
 - [Azure Government databáze – Azure mezipaměti Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Cloud Azure China - Azure mezipaměti Redis](https://www.azure.cn/home/features/redis-cache/)
+- [Cloud Azure China 21Vianet – Azure mezipaměti Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-Informace o používání Azure Cache pro Redis pomocí Powershellu v cloudu Azure Government Azure China Cloud a Microsoft Azure Germany najdete v tématu [jak se připojit k jiné cloudy - mezipaměti Azure redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+Informace o používání Azure Cache pro Redis pomocí Powershellu v cloudu Azure Government, Azure China 21Vianet cloudu a Microsoft Azure Germany najdete v tématu [jak se připojit k jiné cloudy - mezipaměti Azure redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
@@ -257,7 +258,7 @@ Můžete použít některý z příkazů uvedený na [příkazy Redis](https://r
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Proč Azure mezipaměti Redis nemá MSDN knihovny tříd jako některé z dalších služeb Azure?
-Microsoft Azure Cache Redis je založená na oblíbené open source mezipaměti Azure pro Redis a je možný přes celou řadu [klienti Redis](https://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, která provede volání do mezipaměti Azure Redis pomocí instance [příkazy Redis](https://redis.io/commands).
+Microsoft Azure Cache pro Redis je založená na oblíbené opensourcové mezipaměti Azure pro Redis. Je přístupný širokou škálu [klienti Redis](https://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, která provede volání do mezipaměti Azure Redis pomocí instance [příkazy Redis](https://redis.io/commands).
 
 Protože každá klient se liší, není jednu centrální třída reference na webu MSDN a každý klient udržuje svůj vlastní referenční dokumentaci. Kromě referenční dokumentaci jsou k dispozici několik kurzů ukazuje, jak začít pracovat s mezipamětí Azure pro Redis používající různé jazyky a ukládat do mezipaměti klientů. Pro přístup k tyto kurzy, naleznete v tématu [použití mezipaměti Azure pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a je na stejné úrovni články v tabulce obsahu.
 
@@ -309,7 +310,7 @@ Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit př�
 * Znovu použít ConnectionMultiplexer – nevytvářejte nový pro každý požadavek. `Lazy<ConnectionMultiplexer>` Vzor [je vidět tady](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) se doporučuje.
 * Redis funguje nejlépe s menší hodnoty, proto zvažte dělení větší data do více klíčů. V [této diskuse Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb se považují za velké. Čtení [v tomto článku](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) pro problém s příklad, který může být způsobeno velké hodnoty.
 * Konfigurace vašeho [nastavení fondu vláken](#important-details-about-threadpool-growth) aby se zabránilo vypršení časového limitu.
-* Použijte alespoň connectTimeout výchozí hodnoty 5 sekund. Tento interval pohrál StackExchange.Redis dostatek času pro opětovné vytvoření připojení v případě blip sítě.
+* Použijte alespoň connectTimeout výchozí hodnoty 5 sekund. Tento interval poskytuje dostatečnou dobu StackExchange.Redis pro opětovné vytvoření připojení v případě blip sítě.
 * Mějte na náklady výkonu související s různé operace, které jsou spuštěné. Například `KEYS` příkaz O(n) operace a mělo by se vyhnout. [Redis.io lokality](https://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
 
 #### <a name="configuration-and-concepts"></a>Konfigurace a koncepty
@@ -328,9 +329,9 @@ Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit př�
 <a name="cache-redis-commands"></a>
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jaké jsou některé aspekty při používání běžné příkazy Redis?
-* Byste neměli spouštět některé příkazy Redis, což trvat dlouhou dobu pro dokončení bez informací o dopadu těchto příkazů.
-  * Například, nespouštějte [klíče](https://redis.io/commands/keys) příkaz v produkčním prostředí, protože to může trvat dlouhou dobu vrátit v závislosti na počtu klíčů. Redis je server s jedním vláknem a zpracovává příkazy jeden po druhém. Pokud máte další příkazy vydané po klíče, nebudou zpracovány dokud Redis zpracuje příkaz klíče. [Redis.io lokality](https://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
-* Velikostí klíče - použít klíč/hodnota malé nebo velké klíč/hodnota? Obecně platí závisí na scénáři. Pokud vaše situace vyžaduje větší klíče, můžete upravit hodnota ConnectionTimeout a opakujte hodnot a upravit svoji logiku opakování. Z pohledu serveru Redis jsou dodržovány menší hodnoty mít lepší výkon.
+
+* Vyhněte se použití určité příkazy Redis, které trvat dlouhou dobu pro dokončení, není-li plně vysvětlit dopady těchto příkazů. Například, nespouštějte [klíče](https://redis.io/commands/keys) příkaz v produkčním prostředí. V závislosti na počtu klíčů může trvat dlouhou dobu vrátit. Redis je server s jedním vláknem a zpracovává příkazy jeden po druhém. Pokud máte další příkazy vydané po klíče, nebudou zpracovány dokud Redis zpracuje příkaz klíče. [Redis.io lokality](https://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
+* Velikostí klíče - použít klíč/hodnota malé nebo velké klíč/hodnota? To závisí na scénáři. Pokud vaše situace vyžaduje větší klíče, můžete upravit ConnectionTimeout, pak opakujte hodnot a upravit svoji logiku opakování. Menší hodnoty z pohledu serveru Redis, poskytují lepší výkon.
 * Tyto aspekty neznamenají, že nemůžete uložit vyšší hodnoty v Redis; musíte být vědomi následující aspekty. Bude vyšší latencí. Pokud máte jednu sadu dat, která je větší a ten, který je menší, můžete použít několik instancí ConnectionMultiplexer, každý nakonfigurován s jinou sadou hodnot časového limitu a zkuste to znovu, jak je popsáno v předchozí [co dělat StackExchange.Redis Možnosti konfigurace proveďte](#cache-configuration) oddílu.
 
 <a name="cache-benchmarking"></a>
@@ -356,19 +357,19 @@ Následující příkazy jsou příkladem použití redis benchmark.exe. Pro př
 <a name="threadpool"></a>
 
 ### <a name="important-details-about-threadpool-growth"></a>Důležité podrobnosti o růstu fondu vláken
-Fondu vláken CLR má dva typy vláken – "Pracovní" a "Portu dokončení I/O%N" (neboli portu IOCP) vlákna.
+Fondu vláken CLR má dva typy vláken – "Pracovní" a "Portu dokončení I/O%N" (portu IOCP) vlákna.
 
 * Pracovní vlákna se používají pro takové věci, jako je zpracování `Task.Run(…)`, nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tato vlákna používají různé součásti v CLR také, když pracovní musí dojít na vlákně na pozadí.
-* Portu IOCP vlákna se používají, když asynchronní vstupně-výstupní operace se stane (třeba čtení ze sítě).
+* Portu IOCP vlákna se používají, když se stane asynchronní vstupně-výstupní operace, třeba při čtení ze sítě.
 
 Fondu vláken poskytuje nové pracovní vlákna nebo vlákna dokončení vstupně-výstupních operací na vyžádání (bez žádné omezení) dokud nedosáhne nastavení "Minimální" pro každý typ vlákna. Ve výchozím nastavení je nastavit minimální počet vláken na počet procesorů v systému.
 
-Jakmile narazí na počet vláken existující (zaneprázdněn) "minimální" počet vláken, fondu vláken se omezení rychlost, jakou ji vkládá nová vlákna na jedno vlákno na jeden 500 milisekund. Obvykle Pokud váš systém získá zřízeno práce potřebují portu IOCP vlákna, zpracuje, které pracují velmi rychle. Ale pokud burst práce je větší než nakonfigurované nastavení "Minimální", bude určité zpoždění zpracování určitou část práce fondu vláken čeká na jednu ze dvou kroků, které se provedou.
+Jakmile narazí na počet vláken existující (zaneprázdněn) "minimální" počet vláken, fondu vláken se omezení rychlost, jakou ji vkládá nová vlákna na jedno vlákno na jeden 500 milisekund. Obvykle Pokud váš systém získá zřízeno práce potřebují portu IOCP vlákna, zpracuje, které pracují rychle. Ale pokud burst práce je větší než nakonfigurované nastavení "Minimální", bude určité zpoždění zpracování určitou část práce fondu vláken čeká na jednu ze dvou kroků, které se provedou.
 
 1. Existující vlákno neuvolní zpracovat práce.
-2. Žádné existující vlákno nebude zdarma po dobu 500ms, takže se vytvoří nové vlákno.
+2. Žádné existující vlákno nebude zdarma po dobu 500 ms, takže vytvořit nové vlákno.
 
-V podstatě znamená, že když počet zaneprázdněných vláken je větší než minimální vláken, pravděpodobně platíte 500ms zpoždění před zpracováním síťového provozu aplikací. Je také důležité si uvědomit, že když existující vlákno zůstává nečinné po dobu delší než 15 sekund (podle pamatuji si), se vyčistí a tento cyklus růstu a snižování můžete opakovat.
+V podstatě znamená, že když počet zaneprázdněných vláken je větší než minimální vláken, pravděpodobně platíte zpoždění 500 ms před zpracováním síťového provozu aplikací. Je také důležité si uvědomit, že když existující vlákno zůstává nečinné po dobu delší než 15 sekund (podle pamatuji si), se vyčistí a tento cyklus růstu a snižování můžete opakovat.
 
 Pokud se podíváme na příklad chybová zpráva z StackExchange.Redis (sestavení 1.0.450 nebo novější), zobrazí se, že nyní vypíše statistiky fondu vláken (viz pracovního procesu a portu IOCP podrobnosti níže).
 
@@ -377,25 +378,38 @@ Pokud se podíváme na příklad chybová zpráva z StackExchange.Redis (sestave
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
-V předchozím příkladu můžete uvidíte, že pro vlákno portu IOCP jsou 6 zaneprázdněná vlákna a systém je nakonfigurován tak, že umožňují 4 minimální počet vláken. V tomto případě klient by pravděpodobně viděli dvě zpoždění 500 ms protože 6 > 4.
+V předchozím příkladu uvidíte, že pro vlákno portu IOCP existuje šest zaneprázdněná vlákna a systém je nakonfigurován tak, že umožňují čtyři minimální počet vláken. V tomto případě klient by pravděpodobně viděli dvě zpoždění 500 ms, protože 6 > 4.
 
 Všimněte si, že StackExchange.Redis mohli dostat vypršení časového limitu, když získá omezený růstu portu IOCP nebo pracovní vlákna.
 
 ### <a name="recommendation"></a>Doporučení
-Tyto informace zadané, důrazně doporučujeme, že zákazníci nastavit hodnotu minimální konfiguraci portu IOCP a pracovních vláken na něco větší než je výchozí hodnota. Poskytujeme nelze univerzální doprovodné materiály k co tato hodnota by měla být správné hodnoty pro jednu aplikaci proto bude příliš vysoká nebo Nízká pro jinou aplikaci. Tato nastavení mohou ovlivnit výkon dalších částí složitých aplikací, takže každý zákazník potřebuje pro vyladění toto nastavení pro jejich konkrétní potřeby. Dobrý výchozí bod je 200 a 300, otestujte a upravit podle potřeby.
+
+Tyto informace zadané, důrazně doporučujeme, že zákazníci nastavit hodnotu minimální konfiguraci portu IOCP a pracovních vláken na něco větší než je výchozí hodnota. Poskytujeme nelze univerzální doprovodné materiály k co tato hodnota by měla být protože správné hodnoty pro jednu aplikaci budou pravděpodobně příliš vysokou nebo nízkou pro jiná aplikace. Tato nastavení mohou ovlivnit výkon dalších částí složitých aplikací, takže každý zákazník potřebuje pro vyladění toto nastavení pro jejich konkrétní potřeby. Dobrý výchozí bod je 200 a 300, otestujte a upravit podle potřeby.
 
 Jak nakonfigurovat toto nastavení:
 
-* V technologii ASP.NET, použijte ["minIoThreads" nebo "minWorkerThreads" nastavení konfigurace] [ "minIoThreads" configuration setting] pod `<processModel>` konfiguračního prvku v souboru web.config. Pokud používáte v rámci Azure WebSites, toto nastavení není dostupná možnosti konfigurace. Ale měli stále budete moci nakonfigurovat tato nastavení programově (viz níže) z vaší metody Application_Start v global.asax.cs.
+* Doporučujeme změnit tato nastavení programově pomocí [ThreadPool.SetMinThreads (...) ](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metoda ve `global.asax.cs`. Příklad:
 
-  > [!NOTE] 
-  > Hodnota zadaná v tento prvek konfigurace je *na jádro* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads být 200 za běhu, použijete `<processModel minIoThreads="50"/>`.
-  >
-
-* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) API.
+```cs
+private readonly int minThreads = 200;
+void Application_Start(object sender, EventArgs e)
+{
+    // Code that runs on application startup
+    AreaRegistration.RegisterAllAreas();
+    RouteConfig.RegisterRoutes(RouteTable.Routes);
+    BundleConfig.RegisterBundles(BundleTable.Bundles);
+    ThreadPool.SetMinThreads(minThreads, minThreads);
+}
+```
 
   > [!NOTE]
-  > Hodnotu zadanou pomocí tohoto rozhraní API je globální nastavení, by to ovlivnilo celé doméně AppDomain. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads až 50 jeden procesor a jsou za běhu, můžete využít ThreadPool.SetMinThreads (200, 200).
+  > Hodnotu zadanou pomocí této metody je globální nastavení, by to ovlivnilo celé doméně AppDomain. Například, pokud máte 4jádrový počítač a chcete nastavit *minWorkerThreads* a *minIoThreads* až 50 jeden procesor a jsou za běhu, můžete využít **ThreadPool.SetMinThreads (200, 200)**.
+
+* Je také možné zadat pomocí nastavení minimální počet vláken [ *minIoThreads* nebo *minWorkerThreads* nastavení konfigurace](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) pod `<processModel>` element konfigurace v `Machine.config`obvykle umístěné v `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **Nastavování počet minimální počet vláken tímto způsobem se obecně nedoporučuje, protože se jedná systémové nastavení.**
+
+  > [!NOTE]
+  > Hodnota zadaná v tento prvek konfigurace je *na jádro* nastavení. Například, pokud máte 4jádrový počítač a chcete vaše *minIoThreads* nastavení 200 za běhu, můžete využít `<processModel minIoThreads="50"/>`.
+  >
 
 <a name="server-gc"></a>
 
@@ -460,9 +474,9 @@ Mezipaměť Azure pro Redis je obecně dostupné ve velikosti až 53 GB a má sm
 
 Mezipaměti Redis Azure umožňuje zákazníkům používat zabezpečené, vyhrazené mezipaměti Azure pro Redis, spravovanou microsoftem. Díky této nabídce přístup k bohaté sadě funkcí a ekosystému Redis a spolehlivé hostování a sledování od Microsoftu.
 
-Na rozdíl od tradičních mezipamětí, které se zabývají pouze páry klíč hodnota je pro jeho vysoce výkonné datové typy Redis. Redis také podporuje spouštění atomické operace na tyto typy, jako je připojení k řetězec; zvyšování hodnoty do hodnoty hash; doručením (push) do seznamu. výpočetní průnik, sjednocení a rozdíl; nebo získání člena s nejvyšším pořadím v seřazené sady. Další funkce zahrnují podporu pro transakce, publikování a odběr, Lua skriptování, klíče s omezenou time-to-live a nastavení konfigurace více zaškrtávacímu tradiční mezipaměti Redis, aby.
+Na rozdíl od tradičních mezipamětí, které pracují jenom s páry klíč hodnota je pro jeho vysoce výkonné datové typy Redis. Redis také podporuje spouštění atomické operace na tyto typy, jako je připojení k řetězec; zvyšování hodnoty do hodnoty hash; doručením (push) do seznamu. výpočetní průnik, sjednocení a rozdíl; nebo získání člena s nejvyšším pořadím v seřazené sady. Další funkce zahrnují podporu pro transakce, publikování a odběr, Lua skriptování, klíče s omezenou time-to-live a nastavení konfigurace více zaškrtávacímu tradiční mezipaměti Redis, aby.
 
-Dalším aspektem klíče na úspěšné provedení Redis je otevřít zdroj v pořádku, živý ekosystém postavené na to. Toto je zohledněno v různorodou sadu klientů Redis k dispozici v různých jazycích. Tento ekosystém a širokou škálu klientů povolit mezipaměť Azure Redis použít prakticky pro každou úlohu, kterou jste by v rámci služby Azure.
+Dalším aspektem klíče na úspěšné provedení Redis je v pořádku, živoucí ekosystém open source postavené na to. Toto je zohledněno v různorodou sadu klientů Redis k dispozici v různých jazycích. Tento ekosystém a širokou škálu klientů povolit mezipaměť Azure Redis použít prakticky pro každou úlohu, kterou jste by v rámci služby Azure.
 
 Další informace o zahájení práce s mezipamětí Azure pro Redis najdete v tématu [postupy použití mezipaměti Azure Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a [mezipaměti Azure Redis dokumentaci](index.md).
 

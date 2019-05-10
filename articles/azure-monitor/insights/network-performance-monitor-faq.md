@@ -1,6 +1,6 @@
 ---
 title: Nejčastější dotazy – řešení Network Performance monitoru v Azure | Dokumentace Microsoftu
-description: Tento článek zaznamená nejčastější dotazy o NPM v Azure. Network Performance Monitor (NPM) vám pomůže s monitorováním výkonu vaší sítě, téměř v reálném čase, ke zjišťování a vyhledejte síťové výkonnostní kritické body.
+description: Tento článek zaznamená nejčastější dotazy o sledování výkonu sítě v Azure. Network Performance Monitor (NPM) pomáhá sledovat výkon vaší sítě téměř v reálném čase a odhalování a vyhledejte síťové výkonnostní kritické body.
 services: log-analytics
 documentationcenter: ''
 author: vinynigam
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401442"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232673"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -36,24 +36,24 @@ Další informace o různých možnostech nepodporuje [Network Performance Monit
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jaké jsou požadavky na platformu pro uzly, které má být použit pro monitorování pomocí NPM?
 Tady jsou požadavky na platformu pro NPM, a různé možnosti:
 
-- Sledování výkonu a možnosti monitorování připojení služby NPM, a podporují i Windows server (2008 SP1 nebo novější) a Windows stolních počítačů nebo klientské operační systémy (Windows 10, Windows 8.1, Windows 8 a Windows 7). 
+- Sledování výkonu a možnosti monitorování připojení služby NPM, a podporují Windows server a Windows stolních počítačů nebo klientské operační systémy. Jsou podporované verze operačního systému serveru Windows 2008 SP1 nebo novější. Podporované verze stolní počítače nebo klienta Windows jsou Windows 10, Windows 8.1, Windows 8 a Windows 7. 
 - Funkce monitorování ExpressRoute NPM, a podporuje pouze Windows server (2008 SP1 nebo novější) operačního systému.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Můžete použít počítače s Linuxem jako sledování uzlů v NPM?
-Možnosti monitorování sítí pomocí uzlů založených na Linuxu je aktuálně ve verzi preview. Obraťte na vašeho Account manažera pro další informace. Po zadání ID pracovního prostoru, budeme pokračovat a povolit funkci. Agenti systému Linux poskytují možnost monitorování pouze pro NPM, a možnost sledování výkonu a nejsou k dispozici pro možnosti sledování ExpressRoute a připojení k monitorování služby
+Možnosti monitorování sítí pomocí uzlů založených na Linuxu je aktuálně ve verzi preview. Obraťte na vašeho Account manažera pro další informace. Agenti systému Linux poskytují možnost monitorování pouze pro NPM, a možnost sledování výkonu a nejsou k dispozici pro možnosti sledování ExpressRoute a připojení k monitorování služby
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jaké jsou požadavky na velikost uzlů se použije pro monitorování, tak NPM?
-Pro spuštění na uzlech virtuálních počítačů určených k monitorování sítě řešení NPM, uzly by měl mít aspoň 500 MB paměti a jedno jádro. Není potřeba používat samostatné uzly pro spouštění NPM. Řešení můžete spustit na uzly, které mají jiné úlohy v něm spuštěný. Má řešení 5 % využití procesoru umožňuje ukončit proces monitorování v případě, že využívá více než.
+Pro spuštění na uzlech virtuálních počítačů určených k monitorování sítě řešení NPM, uzly by měl mít aspoň 500 MB paměti a jedno jádro. Není nutné použít samostatné uzly pro spouštění NPM. Řešení můžete spustit na uzly, které mají jiné úlohy v něm spuštěný. Využití procesoru 5 % schopnost zastavte sledovací proces monitorování, pokud se používá víc než má řešení.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Pokud chcete použít NPM, připojovat své uzly jako přímý agent nebo pomocí System Center Operations Manager?
-Sledování výkonu a možnosti monitorování připojení služby podporují uzlů [připojený jako přímí agenti](../../azure-monitor/platform/agent-windows.md) stejně jako [připojený prostřednictvím Operations managera](../../azure-monitor/platform/om-agents.md).
+Sledování výkonu a možnosti monitorování připojení služby podporují uzlů [připojený jako přímí agenti](../../azure-monitor/platform/agent-windows.md) a [připojený prostřednictvím Operations managera](../../azure-monitor/platform/om-agents.md).
 
-Pro funkce monitorování ExpressRoute, které musí být připojené uzlů Azure jako přímí agenti pouze. Azure uzly, které jsou propojené prostřednictvím nástroje Operations Manager se nepodporují. Pro uzly v místním uzly připojené jako přímí agenti, stejně jako prostřednictvím nástroje Operations Manager jsou podporovány pro monitorování okruhu ExpressRoute.
+Pro funkce monitorování ExpressRoute, které musí být připojené uzlů Azure jako přímí agenti pouze. Azure uzly, které jsou propojené prostřednictvím nástroje Operations Manager se nepodporují. Pro uzly v místním uzly připojené jako přímí agenti a prostřednictvím nástroje Operations Manager jsou podporovány pro monitorování okruhu ExpressRoute.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Protokol TCP a ICMP, který je třeba zvolit pro monitorování?
-Pokud monitorujete svoji síť pomocí služeb Windows na serveru uzly, doporučujeme že použít TCP jako protokol monitorování, protože nabízí vyšší přesnost. 
+Pokud monitorujete svoji síť pomocí serverových uzlů Windows, doporučujeme že použít TCP jako protokol monitorování, protože nabízí vyšší přesnost. 
 
-ICMP se doporučuje pro Windows stolní počítače nebo klienta na základě operačního systému uzlů. Tato platforma neumožňuje TCP data odesílaná nezpracovaná soketů, které NPM používá ke zjišťování síťové topologie.
+ICMP se doporučuje pro Windows stolní počítače nebo klienta na základě operačního systému uzlů. Tato platforma does'nt povolí vložení dat TCP odesílaná nezpracovaná soketů, které NPM používá ke zjišťování síťové topologie.
 
 Další podrobnosti získáte na relativní výhody každý protokol [tady](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
@@ -71,8 +71,8 @@ Skript nakonfiguruje pouze Windows Firewall místně. Pokud máte síťová brá
 ### <a name="how-many-agents-should-i-use"></a>Kolik agentů mám použít?
 Měli byste použít alespoň jednoho agenta pro každou podsíť, která chcete monitorovat.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, lze použít nebo se zobrazuje chyba "... jste dosáhli svého limitu konfigurací"?
-NPM omezuje počet IP adres na 5000 IP adresy za jednotlivé pracovní prostory. Pokud uzel nemá adresy IPv4 a IPv6, to bude počítat jako 2 IP adresy pro tento uzel. Tento limit 5000 IP adresy by proto rozhodnout horní limit počtu agentů. Aktivní agenty můžete odstranit z karty uzly v NPM >> Konfigurovat. NPM také udržuje historii všechny IP adresy, které byly někdy přiřadí virtuálnímu počítači hostujícím agenta i ty také počítají jako samostatné IP adresy přispívat do tohoto horního limitu 5000 IP adresy. K uvolnit IP adresy pro váš pracovní prostor, můžete stránku uzly odstranit IP adresy, které nejsou používány.
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, které lze použít nebo se zobrazuje chyba "... Dosáhli jste svého limitu konfigurací"?
+NPM omezuje počet IP adres na 5000 IP adresy za jednotlivé pracovní prostory. Pokud uzel nemá adresy IPv4 a IPv6, to bude počítat jako 2 IP adresy pro tento uzel. Tento limit 5000 IP adresy by proto rozhodnout horní limit počtu agentů. Aktivní agenty můžete odstranit z karty uzly v NPM >> Konfigurovat. NPM také udržuje historii všech IP adres, které byly někdy přiřadí virtuálnímu počítači hostujícím agenta i každý se počítá jako samostatný IP přispívat do tohoto horního limitu 5000 IP adresy. K uvolnit IP adresy pro váš pracovní prostor, můžete stránku uzly odstranit IP adresy, které nejsou používány.
 
 ## <a name="monitoring"></a>Monitorování
 
@@ -139,13 +139,23 @@ NPM můžete monitorovat okruhů ExpressRoute, který je umístěný v libovoln�
 ## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Proč nejsou některé segmenty směrování označená jako neznámá v zobrazení topologie sítě?
-NPM používá upravenou verzi traceroute ke zjišťování topologie z agenta zdroje do cíle. Neidentifikovaný segment směrování představuje, že směrování sítě nereagovala na žádost traceroute zdrojového agenta. Pokud agenta traceroute Neodpovídat 3 po sobě jdoucích segmentů směrování, řešení označí reagovat segmentů směrování, jako jsou neidentifikované a nepokusí se zjistit další směrování.
+NPM používá upravenou verzi traceroute ke zjišťování topologie z agenta zdroje do cíle. Neidentifikovaný segment směrování představuje, že směrování sítě nereagovala na žádost traceroute zdrojového agenta. Pokud agenta traceroute Neodpovídat tří po sobě jdoucích segmentů směrování, řešení označí reagovat segmentů směrování, jako jsou neidentifikované a nepokusí se zjistit další směrování.
 
 Směrování nemusí odpovídat traceroute v jedné nebo více následující scénáře:
 
 * Směrovače nastavené nezpřístupňovat svoji identitu.
 * Síťová zařízení nejsou povolení ICMP_TTL_EXCEEDED provozu.
 * Brána firewall blokuje ICMP_TTL_EXCEEDED odpovědi ze síťového zařízení.
+
+### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>Proč moje zobrazit odkaz není v pořádku, ale topologie nepodporuje 
+NPM monitoruje ztráty začátku do konce, latence a topologie v různých intervalech. Ztrát a latence se měří každých 5 sekund a agregovat (pro sledování výkonu a monitorování Express Route) každé 3 minuty, zatímco topologie se počítá pomocí traceroute každých 10 minut. Například mezi 3:44 a 4:04 topologie může být aktualizován třikrát po sobě (3:44, 3:54, 4:04), ale ztrát a latence se aktualizují přibližně sedminásobně (3:44, 3:47 3:50, 3:53, 3:56 3:59, 4:02). Topologie generovány v 3:54 bude vykreslen pro ztrát a latence, který získá vypočítány za 3:56 3:59 a 4:02. Předpokládejme, že se zobrazí výstraha, že se váš okruh ER není v pořádku na 3:59. Přihlaste se k NPM a pokusu o nastavení topologie čas 3:59. Topologie generovány v 3:54 bude vykreslení NPM. Informace o tom poslední známé topologii vaší sítě, porovnávat pole TimeProcessed (čas na které ztrát a latence byla vypočtena) a TracerouteCompletedTime (čas na kterou topologii se vypočítala). 
+
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Jaký je rozdíl mezi pole E2EMedianLatency a AvgHopLatencyList v tabulce NetworkMonitoring
+E2EMedianLatency je aktualizován každé 3 minuty, až se agregace výsledků testů ping tcp, vzhledem k tomu je AvgHopLatencyList aktualizují každých 10 minut podle traceroute latence. Informace o tom přesný čas, kdy se vypočítala E2EMedianLatency, použijte pole TimeProcessed. Informace o tom přesný čas na dokončení které traceroute a aktualizované AvgHopLatencyList, použijte pole TracerouteCompletedTime
+
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Proč čísla hop-by-hop latence liší od HopLatencyValues 
+HopLatencyValues jsou zdroje do koncového bodu.
+Příklad: Směrování – A, B, C. AvgHopLatency - 10,15,20. To znamená, že zdroj latenci = 10 zdroje na latenci B = 15 a zdroj na latenci C je 20. Vypočítá latenci A-B směrování jako 5 v topologii uživatelského rozhraní
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Toto řešení ukazuje 100 % dojít ke ztrátě, ale jsou dostupné možnosti připojení mezi zdrojem a cílem
 K tomu může dojít, pokud zprostředkující brány (síťová brána firewall nebo Azure NSG) nebo bránu firewall hostitele blokuje komunikaci mezi agentem zdroj a cíl přes port monitorování nástroj NPM (ve výchozím nastavení port je 8084, není-li Zákazník byl změněn to).

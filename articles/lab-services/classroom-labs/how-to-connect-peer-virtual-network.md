@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 465352af52cbc84773e52782233065b3000921e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60695363"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411007"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Připojit síť testovacího prostředí s partnerská virtuální síť v Azure Lab Services 
 Tento článek obsahuje informace o partnerských vztazích labs sítě s jinou sítí. 
@@ -33,7 +33,6 @@ Budete muset připojit síť testovacího prostředí s partnerská virtuální 
 
 Určité místní sítě jsou buď připojené k virtuální síti Azure přes [ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [brány virtuální sítě](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto služby musíte nastavit mimo Azure Lab Services. Další informace o připojení místní sítě k Azure pomocí ExpressRoute, najdete v článku [přehled ExpressRoute]) (.. /expressroute/expressroute-Introduction.MD). Pro místní připojení pomocí virtuální síťová brána, brány, zadaná virtuální síť a účet testovacího prostředí musí být ve stejné oblasti.
 
-
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytvoření účtu služby testovacího prostředí
 Při vytvoření nového účtu testovacího prostředí, můžete si vybrat existující virtuální síť, která zobrazuje **partnerská virtuální síť** rozevíracího seznamu. Vybrané virtuální síti je connected(peered) k testovacím prostředím vytvořené v rámci účtu testovacího prostředí. Všechny virtuální počítače v testovacích prostředí, které jsou vytvořeny po k provedení této změny bude obsahovat přístup k prostředkům v partnerské virtuální síti. 
 
@@ -44,15 +43,14 @@ Při vytvoření nového účtu testovacího prostředí, můžete si vybrat exi
 
 
 ## <a name="configure-after-the-lab-is-created"></a>Nakonfigurovat po vytvoření testovacího prostředí
-Stejnou vlastnost můžete povolit z **Labs konfigurace** karty **účet testovacího prostředí** stránky, pokud jste nenastavili sítě peer v době vytvoření účtu služby testovacího prostředí. Změny provedené v toto nastavení platí jenom pro testovací prostředí, které jsou vytvořeny po provedení změny.
+Stejnou vlastnost můžete povolit z **Labs konfigurace** karty **účet testovacího prostředí** stránky, pokud jste nenastavili sítě peer v době vytvoření účtu služby testovacího prostředí. Změny provedené v toto nastavení platí jenom pro testovací prostředí, které jsou vytvořeny po provedení změny. Jak je vidět na obrázku, můžete povolit nebo zakázat **partnerská virtuální síť** pro laboratorní cvičení v účtu testovacího prostředí. 
 
 ![Povolení nebo zakázání VNet peering po vytvoření testovacího prostředí](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
 
-Jak je vidět na obrázku, můžete povolit nebo zakázat **partnerská virtuální síť** pro laboratorní cvičení v účtu testovacího prostředí. 
+Když vyberete virtuální síť pro **partnerská virtuální síť** pole, **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** možnost je zakázaná. Je to proto, že testovací prostředí v rámci účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí můžou připojit k prostředkům v partnerské virtuální sítě. 
 
 > [!IMPORTANT]
 > Tato změna nastavení platí jenom pro testovací prostředí, které jsou vytvořeny po provedení změny, ne na existující testovací prostředí. 
-
 
 
 ## <a name="next-steps"></a>Další postup

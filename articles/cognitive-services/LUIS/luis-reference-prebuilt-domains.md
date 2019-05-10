@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6c0ecf70935d4504472156f6bda726d94f130dbb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148182"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233893"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Informace o předem připravených domény pro aplikace LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -56,13 +56,12 @@ The table below summarizes the currently supported domains. Support for English 
 |--|--|
 |Kalendář|Kalendáře, se něco o osobní schůzky a události, _není_ veřejné události (například světa ve fotbale plány, kalendářů událostí Seattle nebo obecný kalendáře (například určitý den je dnes, co fall začít, pokud je Labor Day).|
 |Komunikace|Požadavky pro volání, odesílat texty nebo rychlých zpráv, najděte a přidejte kontakty a různé další komunikaci žádosti týkající se (obecně odchozí). Jméno kontaktní osoby pouze dotazy nepatří do domény komunikace.|
-|Email|E-mailu je subdoména domény, komunikace. Obsahuje především požadavky na odesílání a příjem zpráv prostřednictvím e-mailů.|
+|E-mail|E-mailu je subdoména domény, komunikace. Obsahuje především požadavky na odesílání a příjem zpráv prostřednictvím e-mailů.|
 |HomeAutomation|Doména HomeAutomation poskytuje záměry a entity související řízení domácí chytrými zařízeními. Především podporuje příkaz Ovládací prvek související s indikátory a klimatizace, ale má některé schopnosti generalizace pro ostatní electric zařízení.|
 |Poznámky|Poznámka: doména poskytuje záměry a entity pro vytváření poznámek a zápis dolů položky pro uživatele.|
 |Místa|Místa vložení firmám, instituce, restaurace, veřejné mezer a adresy. Doména podporuje místo hledání a zeptat se na informace na veřejném místě, jako je například umístění, pracovní hodiny a vzdálenost.|
 |RestaurantReservation|Restaurace rezervace doména podporuje příkazy pro zpracování rezervace restaurace.|
 |ToDo|Doména ToDo poskytuje typy seznamů úkolů pro uživatele k přidání, označení a odstranění jejich položky seznamu úkolů.|
-|ToDo_IPA|Založené na doméně ToDo, ToDo_IPA je upravená verze rozšíření entit v seznamu úkolů. Verze IPA poskytuje záměry a entity na podporu rozpoznání typu seznamu todo. Model definuje tři druhy seznamy úkolů: seznam na nákup, nákupní seznam a seznam úkolů pokrývající ostatních případech.|
 |Veřejné služby|Nástroje doména je obecné domény mezi všechny LUIS předem připravené modely, které obsahuje běžné příkazy a projevy ve scénářích rozdíl.|
 |Počasí|Počasí domény se zaměřuje na kontrolu stavu počasí a poradci pro umístění a čas nebo kontrola čas počasí.|
 |Web|Doména webové poskytuje záměr a entity pro vyhledávání na webu.|

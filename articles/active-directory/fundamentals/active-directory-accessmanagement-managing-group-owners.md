@@ -12,20 +12,20 @@ ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2541a1d76b56f92b250fb422951769db7877213e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd684e1bd48f877a74280b33b4df65d7baaa0fe7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249841"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507179"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidání nebo odebrání vlastníků skupin v Azure Active Directory
-Skupiny Azure Active Directory (Azure AD) je vlastněna a řízena vlastníky skupiny. Vlastníci skupiny jsou přiřazeny ke správě skupiny a její členy podle vlastníka prostředku (správce). Vlastníci skupiny nemusejí být členy skupiny. Po přiřazení vlastníka skupiny jenom vlastník prostředku můžete přidat nebo odebrat vlastníky.
+Skupiny Azure Active Directory (Azure AD) je vlastněna a řízena vlastníky skupiny. Vlastníci skupiny můžou mít uživatele nebo instanční objekty a jsou možnost Spravovat skupiny, včetně členství. Jen skupiny onwers můžete přiřadit stávající vlastníci skupiny nebo Správa skupiny administrators. Vlastníci skupiny nemusejí být členy skupiny.
 
-V některých případech se jako správce může rozhodnete přiřadit jako vlastníka skupiny. V tomto případě stát vlastníkem skupiny. Vlastníci kromě toho můžete přiřadit další vlastníky do skupiny, pokud jste to omezuje v nastavení skupiny.
+Když skupina nemá vlastníka, budou mít pořád povolený ke správě skupiny správy skupiny administrators.
 
 ## <a name="add-an-owner-to-a-group"></a>Přidání vlastníka do skupiny
-Přidáte vlastníky skupiny. Další skupiny pomocí služby Azure AD.
+Níže jsou pokyny pro přidání uživatele jako vlastníka do skupiny pomocí portálu Azure AD. Přidání instančního objektu jako vlastníka skupiny, postupujte podle pokynů k tomu pomocí [Powershellu](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0).
 
 ### <a name="to-add-a-group-owner"></a>Chcete-li přidat vlastníka skupiny.
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.

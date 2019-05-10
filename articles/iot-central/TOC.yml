@@ -99,6 +99,10 @@
           href: howto-administer.md
         - name: Příprava a nahrávání image
           href: howto-prepare-images.md
+        - name: Konfigurace řídicího panelu aplikací
+          href: howto-configure-homepage.md
+        - name: Přizpůsobení uživatelského rozhraní aplikací
+          href: howto-customize-ui.md
         - name: Správa z webu Azure Portal
           href: howto-manage-iot-central-from-portal.md
         - name: Správa z Azure CLI
@@ -106,9 +110,7 @@
         - name: Správa z Azure PowerShellu
           href: howto-manage-iot-central-from-powershell.md
         - name: Vytvoření a správa aplikace jako odběratel CSP
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: Konfigurace řídicího panelu aplikací
-          href: howto-configure-homepage.md
+          href: howto-create-and-manage-applications-csp.md
     - name: Personalizace
       items:
         - name: Vytvoření osobního řídicího panelu

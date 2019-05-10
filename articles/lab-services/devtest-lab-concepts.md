@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 1e35513d5a5a799b1f5e45cf9a5aa97c083e2087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201813"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508389"
 ---
 # <a name="devtest-labs-concepts"></a>Koncepce DevTest Labs
 ## <a name="overview"></a>Přehled
 Následující seznam obsahuje klíčové koncepce DevTest Labs a definice:
 
-## <a name="labs"></a>Testovací prostředí
+## <a name="labs"></a>Cvičení
 Testovací prostředí je infrastrukturu, která zahrnuje skupinu prostředků, třeba Virtual Machines (VM), která vám umožní lépe spravovat tyto prostředky zadáním omezení a kvóty.
 
 ## <a name="virtual-machine"></a>Virtuální počítač
-Virtuální počítač Azure je jedním z několika typů [výpočetních prostředků na vyžádání, škálovatelné](https://docs.microsoft.com/azure/app-service/overview-compare) , které Azure nabízí. Virtuální počítače Azure poskytují flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém běží, i když je stále potřeba údržbě virtuálního počítače pomocí provádí některé úkoly, jako jsou konfigurace, opravy a instalaci softwaru, který běží na ho.
+Virtuální počítač Azure je jedním z několika typů [výpočetních prostředků na vyžádání, škálovatelné](/azure/architecture/guide/technology-choices/compute-decision-tree) , které Azure nabízí. Virtuální počítače Azure poskytují flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém běží, i když je stále potřeba údržbě virtuálního počítače pomocí provádí některé úkoly, jako jsou konfigurace, opravy a instalaci softwaru, který běží na ho.
 
 [Přehled virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) poskytuje informace o co byste měli zvážit před vytvoření virtuálního počítače, jak vytvořit a jak ho spravovat.
 

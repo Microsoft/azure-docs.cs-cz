@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: ea9f6a65ae804d4d2e5004ff4e2c61a2a85b976d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e311a328c1c3d78fa8e5ba7065dcc6484006eaaf
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748981"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235875"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -33,8 +33,8 @@ Technologie Hyper-V bez Virtual Machine Manager | Můžete provést zotavení po
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Technologie Hyper-V (bez Virtual Machine Manager spuštěna) | Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali systému Windows Server 2012 R2 s / nebo SCVMM 2012 R2 s Azure Site Recovery a chcete upgradovat operační systém, postupujte podle pokynů [dokumentaci.](upgrade-2012R2-to-2016.md) 
-Technologie Hyper-V (spuštěné s Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, by měl spravovat hostitele Windows serveru 2016 ve Virtual Machine Manager 2016.<br/><br/>
+Technologie Hyper-V (bez Virtual Machine Manager spuštěna) |  2019 serveru systému Windows, Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali systému Windows Server 2012 R2 s / nebo SCVMM 2012 R2 s Azure Site Recovery a chcete upgradovat operační systém, postupujte podle pokynů [dokumentaci.](upgrade-2012R2-to-2016.md) 
+Technologie Hyper-V (spuštěné s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, by měl v 2019 Virtual Machine Manager spravovat hostitele 2019 systému Windows Server. Podobně by měl spravovat hostitele Windows serveru 2016 ve Virtual Machine Manager 2016.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replikované virtuální počítače

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 2ab8f272fc264f153144803be772d381c1780512
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7f850f309034d128efef89ea842db41d35b8491e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143269"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235737"
 ---
 # <a name="sql-database-serverless-preview"></a>Bez serveru SQL Database (preview)
 
@@ -52,7 +52,7 @@ Následující tabulka porovnává úroveň výpočetní prostředí s zřízen�
 |---|---|---|
 |**Typické použití**|Databáze s využitím vzorcům, nepředvídatelné proložená neaktivní období|Databáze nebo elastické fondy s více pravidelné používání|
 |**Úsilí vynaložené na správu výkonu**|Nižší|Vyšší|
-|**COMPUTE škálování**|Automaticky|Manual|
+|**COMPUTE škálování**|Automaticky|Ručně|
 |**COMPUTE rychlost odezvy**|Nižší za neaktivní období|Okamžitý|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 |
@@ -102,7 +102,7 @@ Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje 
 |Funkce|Autoresume triggeru|
 |---|---|
 |Ověřování a autorizace|Přihlásit|
-|Detekce hrozeb|Povolit nebo zakázat nastavení detekce hrozeb na úrovni databáze nebo serveru<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru|
+|Detekce hrozby|Povolit nebo zakázat nastavení detekce hrozeb na úrovni databáze nebo serveru<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru|
 |Zjišťování a klasifikace dat|Přidání, úprava, odstranění nebo zobrazení popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Aktualizace nebo aktualizace zobrazení zásady auditu|
 |Maskování dat|Přidání, úprava, odstranění nebo zobrazení pravidla maskování dat|
@@ -114,7 +114,7 @@ Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje 
 |Úprava určitá metadata databáze|Přidání nové značky databáze<br>Změna maximální počet virtuálních jader, za minutu virtuálních jader, autopause zpoždění|
 |SQL Server Management Studio (SSMS)|Pomocí aplikace SSMS verze 18 a otevřete nové okno dotazu pro libovolnou databázi na serveru bude pokračovat, všechny databáze automaticky pozastaví na stejném serveru. K tomuto chování nedojde, pokud pomocí aplikace SSMS verze 17.9.1 s podporou technologie IntelliSense-vypnut.|
 
-### <a name="connectivity"></a>Připojení
+### <a name="connectivity"></a>Možnosti připojení
 
 Když bez serveru databáze je pozastavená, bude při prvním přihlášení databázi obnovit a vrátí chybu s informacemi o tom, že databáze je k dispozici. Po obnovení databáze přihlášení je nutné zopakovat k navázání připojení. Databáze klientů se logika opakovaných pokusů připojení by neměl muset upravit.
 
@@ -137,7 +137,7 @@ Vytváří se nová databáze nebo přesunutí že existující databáze do vrs
 
 1. Zadejte název cíle služby. V následující tabulce jsou uvedeny vrstvy služby k dispozici a velikostí výpočetních aktuálně k dispozici ve verzi public preview.
 
-   |Úroveň služeb|Vypočítat velikost|
+   |Úroveň služby|Vypočítat velikost|
    |---|---|
    |Obecné použití|GP_S_Gen5_1|
    |Obecné použití|GP_S_Gen5_2|

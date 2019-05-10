@@ -97,6 +97,8 @@
       href: service-fabric-best-practices-infrastructure-as-code.md
     - name: Monitorování a diagnostika
       href: service-fabric-best-practices-monitoring.md
+    - name: Návrh aplikací
+      href: service-fabric-best-practices-applications.md
     - name: Kontrolní seznam připravenosti k produkci
       href: service-fabric-production-readiness-checklist.md
 - name: Ukázky
@@ -609,6 +611,8 @@
                   href: service-fabric-cluster-azure-deployment-preparation.md
                 - name: Vytvoření na webu Azure Portal
                   href: service-fabric-cluster-creation-via-portal.md
+                - name: Nasazení clusteru služby Azure Service Fabric napříč zónami dostupnosti
+                  href: service-fabric-cross-availability-zones.md
                 - name: Nastavení ověřování pomocí Azure Active Directory
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Vytvoření vlastní šablony clusteru

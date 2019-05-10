@@ -13,9 +13,6 @@
           href: storage-blobs-introduction.md
     - name: Šablony Rychlý start
       items:
-        - name: vytvořit účet úložiště
-          displayName: 'resource manager, resource manager template, template, ARM'
-          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Správa objektů blob bez kódu
           items:
             - name: portál Azure
@@ -280,8 +277,11 @@
           href: storage-blob-pageblob-overview.md
     - name: Postup
       items:
-        - name: Správa účtů úložiště
+        - name: Vytvoření a správa účtů úložiště
           items:
+            - name: Vytvoření účtu úložiště pro obecné účely
+              displayName: 'resource manager, resource manager template, template, ARM'
+              href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Vytvoření účtu úložiště objektů blob bloku
               href: storage-blob-create-account-block-blob.md
             - name: Správa účtu úložiště
@@ -413,7 +413,7 @@
             - name: 'Objekty blob, tabulky, fronty a soubory'
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
             - name: Přesuny dat
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
             - name: Resource Manager
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
         - name: Java
@@ -488,7 +488,7 @@
                 - name: 'Objekty blob, tabulky, fronty a soubory'
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
                 - name: Přesuny dat
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
                 - name: Resource Manager
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
             - name: Java
@@ -563,6 +563,8 @@
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Řízení přístupu
               href: data-lake-storage-access-control.md
+        - name: Zpracování událostí
+          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Postup
       items:
         - name: Ingestace dat

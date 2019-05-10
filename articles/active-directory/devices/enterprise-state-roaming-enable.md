@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353830"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230927"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -46,9 +46,9 @@ Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](
 
 Země/oblast hodnoty | má konání svá data
 ---------------------|-------------------------
-EMEA země, třeba (Francie) nebo Zambie | Jeden nebo více oblastí Azure v Evropě 
-Severní Ameriky země, jako jsou USA nebo Kanadě | jeden nebo více oblastí Azure v rámci USA
-APAC země, třeba Austrálie a Nového Zélandu | jeden nebo více oblastí Azure v rámci Asie
+EMEA země nebo oblast jako je například (Francie) nebo Zambie | Jeden nebo více oblastí Azure v Evropě 
+Severní Ameriky země nebo oblast jako jsou USA nebo Kanadě | jeden nebo více oblastí Azure v rámci USA
+APAC země nebo oblast jako je například Austrálie a Nového Zélandu | jeden nebo více oblastí Azure v rámci Asie
 Jižní Ameriky a Antarktida oblastí | jeden nebo více oblastí Azure v rámci USA
 
 Země/oblast hodnota je nastavena jako součást procesu vytvoření adresáře Azure AD a následně nelze upravit. Pokud potřebujete další podrobnosti na vaše umístění úložiště dat, vytvořte lístek [podpory Azure](https://azure.microsoft.com/support/options/).
@@ -96,4 +96,4 @@ Zásady uchovávání dat se nedá konfigurovat. Jakmile se data se trvale odstr
 * [Nastavení a datovému roamingu – nejčastější dotazy](enterprise-state-roaming-faqs.md)
 * [Nastavení zásad a MDM pro synchronizaci nastavení skupiny](enterprise-state-roaming-group-policy-settings.md)
 * [Informace o cestovní nastavení Windows 10](enterprise-state-roaming-windows-settings-reference.md)
-* [Řešení potíží](enterprise-state-roaming-troubleshooting.md)
+* [Odstraňování potíží](enterprise-state-roaming-troubleshooting.md)

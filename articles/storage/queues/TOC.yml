@@ -7,9 +7,6 @@
       href: storage-queues-introduction.md
 - name: Šablony Rychlý start
   items:
-    - name: vytvořit účet úložiště
-      displayName: 'resource manager, resource manager template, template, ARM'
-      href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Správa front bez kódu
       items:
         - name: portál Azure
@@ -94,8 +91,11 @@
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Postup
   items:
-    - name: Správa účtů úložiště
+    - name: Vytvoření a správa účtů úložiště
       items:
+        - name: vytvořit účet úložiště
+          displayName: 'resource manager, resource manager template, template, ARM'
+          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Správa účtu úložiště
           href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Upgrade účtu úložiště
@@ -195,7 +195,7 @@
         - name: 'Objekty blob, tabulky, fronty a soubory'
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: Přesuny dat
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
         - name: Resource Manager
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java

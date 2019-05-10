@@ -14,25 +14,25 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbef13d2e64a5d1b177d8232c5b6ef1e64a1da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bea0a870a6ef0685f4f4bce5ad3b0d1ff1f616a
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250905"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414010"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání služby Azure Active Directory pomocí připojené služby v sadě Visual Studio
 
 Pomocí Azure Active Directory (Azure AD), může podporovat jednotné přihlašování (SSO) pro webové aplikace ASP.NET MVC nebo ověřování Active Directory služby webového rozhraní API. Ověřování Azure AD uživatelé pomocí svých účtů ze služby Azure Active Directory pro připojení k webovým aplikacím. Výhody ověřování Azure AD s webovým rozhraním API například dokonalejší zabezpečení dat při zpřístupňování rozhraní API z webové aplikace. S Azure AD není nutné spravovat oddělený ověřovací systém s vlastní správou účtů a uživatelů.
 
-V tomto článku a jeho doprovodné články poskytují podrobné informace o použití funkce připojené služby sady Visual Studio pro službu Active Directory. Možnost je k dispozici v sadě Visual Studio 2017 a Visual Studio 2015.
+V tomto článku a jeho doprovodné články poskytují podrobné informace o použití funkce připojené služby sady Visual Studio pro službu Active Directory. Možnost je k dispozici v sadě Visual Studio 2015 a novější.
 
 V současné době nepodporuje službu Active Directory, které jsou připojené aplikace ASP.NET Core.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud nemáte účet Azure, můžete si [zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-- **Visual Studio 2015** nebo novější. [Stáhněte si Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- **Visual Studio 2015** nebo novější. [Stáhněte si Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Připojení k Azure Active Directory pomocí dialogového okna připojené služby
 

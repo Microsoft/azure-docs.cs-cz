@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61277157"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415482"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -150,6 +150,12 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 
 > [!NOTE]
 > V obou možností, které služba mobility neodinstaluje z chráněných serverů musíte odinstalovat ručně. Pokud budete chránit server znovu pomocí stejný konfigurační server, můžete přeskočit odinstalace služby mobility.
+
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Zakažte ochranu pro virtuální počítač Azure (Azure do Azure)
+
+-  V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
+> [!NOTE]
+> Služba mobility neodinstaluje z chráněných serverů, je potřeba odinstalovat ručně. Pokud budete chránit server znovu, můžete přeskočit odinstalace služby mobility.
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Zakažte ochranu pro virtuální počítač Hyper-V (Hyper-V do Azure)
 

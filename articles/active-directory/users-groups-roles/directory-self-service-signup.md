@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7aee10780512e284faccadface0dc928ef8270e
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472247"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501895"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je Samoobslužná registrace do služby Azure Active Directory?
 
@@ -52,7 +52,7 @@ Správce můžete nakonfigurovat tyto funkce pomocí následujících parametrů
 AllowEmailVerifiedUsers a AllowAdHocSubscriptions jsou directory nastavení, které mohou být použity spravovaného a nespravovaného adresáře. Tady je příklad kde:
 
 * Spravovat adresář s ověřenou doménu, třeba contoso.com
-* Spolupráce B2B z jiného adresáře můžete pozvat uživatele, který již neexistuje (userdoesnotexist@contoso.com) v domovském adresáři constoso.com
+* Spolupráce B2B z jiného adresáře můžete pozvat uživatele, který již neexistuje (userdoesnotexist@contoso.com) v domovském adresáři contoso.com
 * Domovský adresář má AllowEmailVerifiedUsers zapnuta
 
 Pokud výše uvedené podmínky jsou splněny, pak je uživatel členem vytvořen v domovském adresáři a uživatele typu Host B2B se vytvoří v adresáři pozvání.

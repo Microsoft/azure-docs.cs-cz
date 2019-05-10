@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151067"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233876"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Kurz: Práce s frontami Azure Storage
 
@@ -206,7 +206,7 @@ Přidáte připojovací řetězec do aplikace, aby měl přístup k účtu úlo�
 
 ## <a name="insert-messages-into-the-queue"></a>Vložení zprávy do fronty
 
-Vytvoření nové metody pro odeslání zprávy do fronty. Přidejte následující metodu do vaší **Program** třídy. Tato metoda získá odkaz na frontu, pak vytvoří novou frontu, pokud ještě neexistuje voláním [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Poté jej přidá zprávu do fronty voláním [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
+Vytvoření nové metody pro odeslání zprávy do fronty. Přidejte následující metodu do vaší **Program** třídy. Tato metoda získá odkaz na frontu, pak vytvoří novou frontu, pokud ještě neexistuje voláním [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Poté jej přidá zprávu do fronty voláním [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
 
 1. Přidejte následující **SendMessageAsync** metodu pro vaše **Program** třídy.
 
@@ -229,7 +229,7 @@ Vytvoření nové metody pro odeslání zprávy do fronty. Přidejte následují
 
 ## <a name="dequeue-messages"></a>Odstranění z fronty zpráv
 
-Vytvořit novou metodu s názvem **ReceiveMessageAsync**. Tato metoda přijímá zprávy z fronty pomocí volání [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Jakmile úspěšně doručení zprávy, je potřeba odstranit z fronty, takže se zpracuje více než jednou. Po přijetí zprávy odstraní ji z fronty pomocí volání [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
+Vytvořit novou metodu s názvem **ReceiveMessageAsync**. Tato metoda přijímá zprávy z fronty pomocí volání [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Jakmile úspěšně doručení zprávy, je potřeba odstranit z fronty, takže se zpracuje více než jednou. Po přijetí zprávy odstraní ji z fronty pomocí volání [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
 
 1. Přidejte následující **ReceiveMessageAsync** metodu pro vaše **Program** třídy.
 

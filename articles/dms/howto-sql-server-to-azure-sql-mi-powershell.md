@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/29/2019
-ms.openlocfilehash: 96ee3f5e1b3cfe67cb75e50c6247e41f0d901393
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: d83410efd26f8c2078d3abdb01d061db0b83d33d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867924"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233737"
 ---
 # <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrace místního SQL serveru do spravované instance Azure SQL Database pomocí prostředí Azure PowerShell
 V tomto článku, migrujete **Adventureworks2016** databázi obnovit do místní instance systému SQL Server 2005 nebo nad ke službě Azure SQL Database managed instance pomocí prostředí Azure PowerShell. Můžete migrovat databáze z místní instance SQL serveru do spravované instance Azure SQL Database s použitím `Az.DataMigration` modulu v prostředí Azure PowerShell.
@@ -86,7 +86,7 @@ Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostř
 > Následující fragment kódu je pro offline migrace, která nevyžaduje instanci služby Azure Database Migration Service podle SKU úrovně Premium. Online migrace musí obsahovat hodnotu parametru - Sku SKU úrovně Premium.
 
 ```powershell
- $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
+$vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
 
 $vSubNet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
 

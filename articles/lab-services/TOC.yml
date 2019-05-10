@@ -64,26 +64,34 @@
   items:
     - name: Testovací prostředí v učebnách
       items:
-        - name: Správa účtů testovacího prostředí
-          href: classroom-labs/how-to-manage-lab-accounts.md
-        - name: Správa testovacích prostředí v učebnách
-          href: classroom-labs/how-to-manage-classroom-labs.md
-        - name: Nastavení a publikování šablon
-          href: classroom-labs/how-to-create-manage-template.md
-        - name: Konfigurace a řízení využití
-          href: classroom-labs/how-to-configure-student-usage.md
-        - name: Přístup k testovacím prostředím v učebnách
-          href: classroom-labs/how-to-use-classroom-lab.md
-        - name: Vytvoření a správa plánů
-          href: classroom-labs/how-to-create-schedules.md
-        - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
-          href: classroom-labs/how-to-enable-multi-vm-environment.md
-        - name: Připojení vašich testovacích prostředí k partnerské virtuální síti
-          href: classroom-labs/how-to-connect-peer-virtual-network.md
-        - name: Připojení a využití sdílené galerie imagí
-          href: classroom-labs/how-to-use-shared-image-gallery.md
-        - name: Povolení připojení ke vzdálené ploše pro Linux
-          href: classroom-labs/how-to-enable-remote-desktop-linux.md
+        - name: Vytvoření a konfigurace účtů testovacího prostředí
+          items:
+            - name: Vytvoření a správa účtů testovacího prostředí
+              href: classroom-labs/how-to-manage-lab-accounts.md
+            - name: Konfigurace účtů testovacího prostředí
+              href: classroom-labs/how-to-configure-lab-accounts.md
+            - name: Připojení vašich testovacích prostředí k partnerské virtuální síti
+              href: classroom-labs/how-to-connect-peer-virtual-network.md
+            - name: Připojení nebo odpojení sdílené galerie imagí
+              href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+        - name: 'Vytváření, konfigurace a využití testovacích prostředí v učebnách'
+          items:
+            - name: Vytváření a správa testovacích prostředí v učebnách
+              href: classroom-labs/how-to-manage-classroom-labs.md
+            - name: Nastavení a publikování šablon
+              href: classroom-labs/how-to-create-manage-template.md
+            - name: Konfigurace a řízení využití
+              href: classroom-labs/how-to-configure-student-usage.md
+            - name: Přístup k testovacím prostředím v učebnách
+              href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Vytvoření a správa plánů
+              href: classroom-labs/how-to-create-schedules.md
+            - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
+            - name: Využití galerie sdílených imagí
+              href: classroom-labs/how-to-use-shared-image-gallery.md
+            - name: Povolení připojení ke vzdálené ploše pro Linux
+              href: classroom-labs/how-to-enable-remote-desktop-linux.md
     - name: DevTest Labs
       items:
         - name: Určení skupiny prostředků pro virtuální počítače testovacího prostředí
@@ -166,12 +174,16 @@
               href: connect-environment-lab-virtual-network.md
             - name: Integrace prostředí do kanálu CI/CD Azure DevOps
               href: integrate-environments-devops-pipeline.md
+            - name: Použití služeb PaaS (Platform-as-a-Service)
+              href: use-paas-services.md
         - name: Zabezpečený přístup k testovacím prostředím
           items:
             - name: Přidání uživatelů a vlastníků testovacího prostředí
               href: devtest-lab-add-devtest-user.md
             - name: Přizpůsobení oprávnění s vlastními rolemi
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+            - name: Automatizace přidání uživatele testovacího prostředí
+              href: automate-add-lab-user.md
         - name: Konfigurace testovacího prostředí
           items:
             - name: Nastavení zásad a plánů

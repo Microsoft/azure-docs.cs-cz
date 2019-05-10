@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615877"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232474"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scénáře automatizace pro správu nákladů a fakturace
 
@@ -52,7 +52,7 @@ Můžete použít fakturace a rozhraní API pro správu v několika situacích o
 | Doporučení pro rezervace |                           |                  |           X          |                  |                    |           |
 | Podrobnosti rezervace         |                           |                  |           X          |         X        |                    |           |
 | Přehledy rezervace       |                           |                  |           X          |         X        |                    |           |
-| Podrobnosti využití               |             X             |         X        |           X          |         X        |          X         |     X     |
+| Využití: podrobnosti               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Fakturační období             |             X             |         X        |           X          |         X        |                    |           |
 | Faktury                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
@@ -63,7 +63,7 @@ Můžete použít fakturace a rozhraní API pro správu v několika situacích o
 
 ## <a name="api-summaries"></a>Souhrny rozhraní API
 
-### <a name="consumption"></a>Využití
+### <a name="consumption"></a>Spotřeba
 Všechny následující rozhraní API, pokud není uvedeno jinak můžete použít web Direct a podnikovými zákazníky:
 
 -   [Rozhraní API rozpočty](https://docs.microsoft.com/rest/api/consumption/budgets) (*podnikoví zákazníci pouze*): Vytvoření rozpočty nákladech nebo využití pro prostředky, skupiny prostředků nebo měřiče. Pokud jste vytvořili rozpočty, můžete nakonfigurovat upozornění byli informováni vždy, když jste překročili definované prahové hodnoty. Můžete také nakonfigurovat akce dojít, když jste dosáhli rozpočet.
@@ -85,9 +85,9 @@ Všechny následující rozhraní API, pokud není uvedeno jinak můžete použ�
 -   [Využití rozhraní API bez hodnocení](/previous-versions/azure/reference/mt219003(v=azure.100)): Získáte informace o použití nezpracovaných před všechny měření/účtování Azure.
 
 ### <a name="billing"></a>Fakturace
--   [Fakturační období API](https://docs.microsoft.com/rest/api/billing/billingperiods): Určení fakturačního období pro analýzu, spolu s identifikátory faktury za toto období. Faktury ID můžete použít s rozhraním API faktury.
+-   [Fakturační období API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Určení fakturačního období pro analýzu, spolu s identifikátory faktury za toto období. Faktury ID můžete použít s rozhraním API faktury.
 
--   [Zasílání faktur API](https://docs.microsoft.com/rest/api/billing/invoices): Získáte adresu URL pro stažení faktury pro fakturační období ve formátu PDF.
+-   [Zasílání faktur API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Získáte adresu URL pro stažení faktury pro fakturační období ve formátu PDF.
 
 ### <a name="enterprise-consumption"></a>Podnikové využití
 Následující rozhraní API jsou k dispozici pouze pro podniky:
@@ -126,7 +126,7 @@ Tato rozhraní API nabízejí fundamentálně odlišný způsob dat:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Jaký je rozdíl mezi faktury rozhraní API a rozhraní API podrobnosti o využití?
 Tato rozhraní API poskytují různé zobrazení stejná data:
 
-- [Faktury API](https://docs.microsoft.com/rest/api/billing/invoices) je Web Direct jenom pro zákazníky. Poskytuje souhrn měsíční faktuře v závislosti na agregované poplatky za každý typ měření. 
+- [Faktury API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) je Web Direct jenom pro zákazníky. Poskytuje souhrn měsíční faktuře v závislosti na agregované poplatky za každý typ měření. 
 
 - [Podrobnosti o použití rozhraní API](https://docs.microsoft.com/rest/api/consumption/usagedetails) poskytuje podrobné zobrazení záznamů využití a náklady za každý den. Zákazníky s Enterprise nebo Web Direct můžete ho použít.
 

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: cba01b5ad5c2cfea32f1faa6cb67c5ce7ee98fcd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 136141f5b598fd080edf3254fd01200f2742c763
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024907"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235831"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -90,7 +90,7 @@ Pomocí služby Azure Machine Learning slouží k sestavení modelu Python a jeh
 ## <a name="automated-ml-across-microsoft"></a>Automatizované ML rámci společnosti Microsoft
 
 Automatizované ML je také dostupná v dalších řešení Microsoftu, jako:
-+ V aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/what-is-mldotnet)
++ V aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)
 + [V HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md), kde horizontální navýšení kapacity automatizované ML trénovací úlohy ve Sparku v clusterech HDInsight paralelně. 
 + [V Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)
 

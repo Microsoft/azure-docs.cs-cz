@@ -131,6 +131,8 @@
           href: platform/alerts-common-schema.md
         - name: Pravidla akcí
           href: platform/alerts-action-rules.md
+        - name: Analýza změn
+          href: app/change-analysis.md
     - name: Vizualizace dat
       href: visualizations.md
     - name: Integrace partnerů

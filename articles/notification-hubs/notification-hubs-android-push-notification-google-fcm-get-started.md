@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: 2fe448f3ed91f2c6dd242c24aa378c3541eceecc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a344e4a068ac6791403f686fa728530b3c4f17e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60876627"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65209358"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging
 
@@ -111,7 +111,8 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
 1. V `Build.Gradle` souboru **aplikace**, přidejte následující řádky v **závislosti** části, pokud ještě neexistuje. 
 
     ```gradle
-    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
     ```
 
 2. Pokud ještě neexistuje, přidejte následující modul plug-in na konci souboru. 
@@ -119,22 +120,11 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
+3. Vyberte **synchronizovat nyní** na panelu nástrojů.
 
 ### <a name="updating-the-androidmanifestxml"></a>Aktualizace souboru AndroidManifest.xml
 
-1. Abyste zajistili podporu FCM, musíte do vašeho kódu implementovat službu naslouchání ID instance, která se používá k [získání registračních tokenů](https://firebase.google.com/docs/cloud-messaging/android/client#sample-register) pomocí [rozhraní FirebaseInstanceId API společnosti Google](https://firebase.google.com/docs/reference/android/com/google/firebase/iid/FirebaseInstanceId). V tomto kurzu je název třídy `MyInstanceIDService`.
-
-    Přidejte následující definice služby do souboru AndroidManifest.xml uvnitř značky `<application>`.
-
-    ```xml
-    <service android:name=".MyInstanceIDService">
-        <intent-filter>
-            <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-        </intent-filter>
-    </service>
-    ```
-
-2. Jakmile získáte z rozhraní API instance Firebase registrační token FCM, použijte ho k [registraci do služby Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). K podpoře registrace na pozadí slouží `IntentService` s názvem `RegistrationIntentService`. Tato služba také zodpovídá za aktualizaci registračního tokenu FCM.
+1. Po obdržení registračního tokenu FCM, použijete ho k [registraci do centra oznámení Azure](notification-hubs-push-notification-registration-management.md). K podpoře registrace na pozadí slouží `IntentService` s názvem `RegistrationIntentService`. Tato služba také zodpovídá za aktualizaci registračního tokenu FCM.
 
     Přidejte následující definice služby do souboru AndroidManifest.xml uvnitř značky `<application>`.
 
@@ -145,7 +135,7 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
     </service>
     ```
 
-3. Musíte také definovat příjemce pro příjem oznámení. Přidejte následující definice příjemce do souboru AndroidManifest.xml uvnitř značky `<application>`. 
+2. Musíte také definovat příjemce pro příjem oznámení. Přidejte následující definice příjemce do souboru AndroidManifest.xml uvnitř značky `<application>`. 
 
     ```xml
     <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
@@ -159,8 +149,7 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
 
     > [!IMPORTANT]
     > Nahraďte zástupný symbol `<your package NAME>` skutečným názvem vašeho balíčku zobrazeného v horní části souboru `AndroidManifest.xml`.
-4. Vyberte **synchronizovat nyní** na panelu nástrojů.
-5. Přidejte následující nezbytná oprávnění související s FCM **níže** `</application>` značky.
+3. Přidejte následující nezbytná oprávnění související s FCM **níže** `</application>` značky.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -188,29 +177,6 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
 
      > [!IMPORTANT]
      > Zadejte **název** a **DefaultListenSharedAccessSignature** vašeho centra oznámení před emitentových Další. 
-2. Přidejte další třídu s názvem `MyInstanceIDService`. Tato třída představuje vaši implementaci naslouchací služby ID instance.
-
-    Kód pro tuto třídu volá vaši službu `IntentService`, aby na pozadí [obnovila token FCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
-
-    ```java
-    import android.content.Intent;
-    import android.util.Log;
-    import com.google.firebase.iid.FirebaseInstanceIdService;
-
-    public class MyInstanceIDService extends FirebaseInstanceIdService {
-
-        private static final String TAG = "MyInstanceIDService";
-
-        @Override
-        public void onTokenRefresh() {
-
-            Log.d(TAG, "Refreshing FCM Registration Token");
-
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
-    };
-    ```
 
 3. Přidejte další novou třídu do projektu s názvem, `RegistrationIntentService`. Tato třída implementuje rozhraní `IntentService` a provádí [obnovení tokenu FCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a [registraci v centru oznámení](notification-hubs-push-notification-registration-management.md).
 
@@ -222,12 +188,16 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
     import android.content.SharedPreferences;
     import android.preference.PreferenceManager;
     import android.util.Log;
+    import com.google.android.gms.tasks.OnSuccessListener;
     import com.google.firebase.iid.FirebaseInstanceId;
+    import com.google.firebase.iid.InstanceIdResult;
     import com.microsoft.windowsazure.messaging.NotificationHub;
+    import java.util.concurrent.TimeUnit;
 
     public class RegistrationIntentService extends IntentService {
 
         private static final String TAG = "RegIntentService";
+        String FCM_token = null;
 
         private NotificationHub hub;
 
@@ -244,8 +214,14 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
             String storedToken = null;
 
             try {
-                String FCM_token = FirebaseInstanceId.getInstance().getToken();
-                Log.d(TAG, "FCM Registration Token: " + FCM_token);
+                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() { 
+                    @Override 
+                    public void onSuccess(InstanceIdResult instanceIdResult) { 
+                        FCM_token = instanceIdResult.getToken(); 
+                        Log.d(TAG, "FCM Registration Token: " + FCM_token); 
+                    } 
+                }); 
+                TimeUnit.SECONDS.sleep(1);
 
                 // Storing the registration ID that indicates whether the generated token has been
                 // sent to your server. If it is not stored, send the token to your server,
@@ -541,13 +517,13 @@ Když chcete z webu [Azure Portal] odeslat nabízená oznámení, proveďte nás
 ### <a name="run-the-mobile-app-on-emulator"></a>Spustit mobilní aplikaci v emulátoru
 Pokud chcete testovat nabízená oznámení uvnitř emulátoru, ověřte, zda bitová kopie emulátoru podporuje úroveň rozhraní Google API, kterou jste zvolili pro vaši aplikaci. Pokud vaše image nepodporuje nativní rozhraní Google API, se může zobrazit **služby\_není\_dostupné** výjimky.
 
-Také se ujistěte, že jste svůj účet Google přidali do spuštěného emulátoru v části **Nastavení** > **Účty**. V opačném případě mohou vaše pokusy o registraci s GCM mít za následek výjimku **OVĚŘOVÁNÍ\_SE NEZDAŘILO**.
+Také se ujistěte, že jste svůj účet Google přidali do spuštěného emulátoru v části **Nastavení** > **Účty**. V opačném případě může způsobit vaše pokusy o registraci s FCM **ověřování\_NEÚSPĚŠNÉ** výjimky.
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste použili službu Firebase Cloud Messaging k odeslání nabízených oznámení zařízením s Androidem. Pokud se chcete naučit posílat nabízená oznámení službou Google Cloud Messaging, pokračujte následujícím kurzem:
+V tomto kurzu použijete k vysílání oznámení pro všechna zařízení s Androidem zaregistrované ve službě Firebase Cloud Messaging. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení zařízením s Androidem službou Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md)
+>[Kurz: Nabízená oznámení odesílaná konkrétním zařízením s Androidem](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- Images. -->
 
@@ -556,6 +532,4 @@ V tomto kurzu jste použili službu Firebase Cloud Messaging k odeslání nabíz
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com

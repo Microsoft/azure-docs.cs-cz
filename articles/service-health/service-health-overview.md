@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5385777134b911aa08b751978c44597f79acbc7
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620728"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442399"
 ---
 # <a name="service-health"></a>Service Health
 Service Health vám poskytne přizpůsobitelný řídicí panel, který sleduje stav služby Azure v oblastech, kde je používáte. V tomto řídicím panelu můžete sledovat aktivní události, jako jsou problémy s probíhající služby, nadcházející plánované údržbě nebo poradci pro stav relevantní. Když nenechávali události, získejte vystavili v historii stavu po dobu 90 dnů. A konečně mohou pomocí řídicího panelu stavu služby k vytváření a správě výstrah stavu služby, které proaktivně upozorňují na problémy se službou ovlivňují.
@@ -60,5 +60,7 @@ Filtrovat Service Health a zobrazit důležité obchodní informace předplatná
 ## <a name="configure-service-health-alerts"></a>Konfigurace výstrah stavu služby
 Service Health se integruje se službou Azure Monitor k upozornění prostřednictvím e-mailů, textových zpráv a oznámení webhooků, když vašich důležitých prostředků zajišťuje. Nastavení upozornění protokolu aktivit pro událost příslušné službě stavu. Toto upozornění směrujte na příslušné osoby ve vaší organizaci pomocí skupin akcí. Další informace najdete v tématu [konfigurace výstrah pro službu Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
-# <a name="next-steps"></a>Další kroky
-Nastavení výstrah, takže se zobrazí oznámení problémů se stavem. Další informace najdete v tématu [konfigurace výstrah pro službu Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
+
+## <a name="next-steps"></a>Další postup
+Nastavení výstrah, takže se zobrazí oznámení problémů se stavem. Další informace najdete v tématu [osvědčené postupy pro nastavení upozornění na stav služby Azure](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

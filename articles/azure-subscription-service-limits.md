@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: 8d7fa7bbb501675ee38ccc9183e981ce7bb714cf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150341"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233704"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další služby.
@@ -127,9 +127,9 @@ Následující omezení platí při použití Azure Resource Manageru a skupin p
 #### <a name="shared-image-gallery-limits"></a>Sdílené omezení Galerie obrázků
 
 Existují omezení na jedno předplatné, pro nasazení prostředků pomocí Galerie sdílené bitové kopie:
-- 10 sdílených image Galerie na předplatné a oblast
-- 200 definice bitové kopie, na předplatné a oblast
-- verze image 2000, na předplatné a oblast
+- 100 Galerie sdílené bitové kopie na předplatné a oblast
+- 1 000 obrázků definice na předplatné a oblast
+- 10 000 obrázků verze na předplatné a oblast
 
 ### <a name="virtual-machine-scale-sets-limits"></a>Virtual machine scale sets s limity
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]

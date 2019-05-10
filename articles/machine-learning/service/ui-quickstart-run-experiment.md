@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 985ad59a1ffa5bd68f97824f7f50af604174b543
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026974"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440950"
 ---
-# <a name="quickstart-prepare-and-visualize-data-without-writing-code"></a>Rychlý start: Příprava a vizualizace dat bez psaní kódu
+# <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Rychlý start: Příprava a vizualizace dat, aniž byste museli psát kód ve službě Azure Machine Learning
 
-Příprava a vizualizovat data pomocí přetahování myší uživatelské rozhraní. Data, která budete používat obsahuje záznamy různých automobilů, včetně informací o značce, modelu, technických specifikací a cena.  
+Příprava a vizualizace dat v rozhraní visual drag drop (preview) pro Azure Machine Learning. Data, která budete používat obsahuje záznamy různých automobilů, včetně informací o značce, modelu, technických specifikací a cena.  
 
 V tomto rychlém startu jste prozkoumáme a připravit data:
 
@@ -64,7 +64,7 @@ Nástroj vizuální rozhraní poskytuje interaktivní, visual místo, kde může
 
     ![Přejmenování experimentu](./media/ui-quickstart-run-experiment/rename.png)
 
-## <a name="add-data"></a>Přidání dat
+## <a name="add-data"></a>Přidat data
 
 První věc, kterou potřebujete pro machine learning se data. Existuje několik ukázkových datových sad v tomto rozhraní, které můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadou **Automobile price data (Raw)**. 
 

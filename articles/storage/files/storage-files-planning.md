@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073361"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232775"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -94,7 +94,7 @@ Premium sdílené složky (preview) se zřizují podle pevný poměr GiB/IOPS a 
 
 Na jak kapacita systému dovolí můžete převést všechny sdílené složky až tři vstupně-výstupních operací za GiB zřízeném úložišti po dobu 60 minut nebo i delší dobu v závislosti na velikosti sdílené složky. Nových sdílených složek začněte s kreditem úplné burst na základě zřízené kapacity.
 
-Sdílené složky musí být zřízený v přírůstcích po 1 GB. Minimální velikost je 100 GB, nejbližší velikost 101 GIB a tak dále.
+Sdílené složky musí být zřízený v přírůstcích po 1 GB. Minimální velikost je 100 GB, nejbližší velikost 101 GiB a tak dále.
 
 > [!TIP]
 > Standardní hodnoty vstupně-výstupních operací = 1 * zřízené GiB. (Až max. 100 000 IOPS).

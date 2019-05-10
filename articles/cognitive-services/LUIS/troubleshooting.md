@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 132ba922fa73c73d0e001e84659b5a24996d406b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072783"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235793"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -294,7 +294,7 @@ Následující funkce byly vydány na konferenci Build. 2019:
 
 * [Ve verzi Preview rozhraní API V3 Průvodce migrací](luis-migration-api-v3.md)
 * [Řídicí panel vylepšených analýz](luis-how-to-use-dashboard.md)
-* [Vylepšené, předem připravených domén](luis-reference-prebuilt-domains.md) pracovní verze 2 a rozhraní API V3
+* [Vylepšené, předem připravených domén](luis-reference-prebuilt-domains.md) 
 
 ## <a name="next-steps"></a>Další postup
 
