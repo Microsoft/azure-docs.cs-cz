@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193624"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523501"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Glosář Principy jazyka common slovník a koncepty
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.
@@ -26,7 +26,7 @@ Aktivní LUIS verze je verze, která bude přijímat všechny změny modelu. V [
 
 ## <a name="authoring"></a>Pro tvorbu
 
-Vytváření obsahu je schopnost vytvářet, spravovat a nasazovat [aplikace LUIS](#luis-app), buď pomocí [LUIS](luis-reference-regions.md) webu nebo [rozhraní API pro vytváření](https://aka.ms/luis-authoring-api).
+Vytváření obsahu je schopnost vytvářet, spravovat a nasazovat [aplikace LUIS](#luis-app), buď pomocí [LUIS](luis-reference-regions.md) webu nebo [rozhraní API pro vytváření](https://go.microsoft.com/fwlink/?linkid=2092087).
 
 ## <a name="authoring-key"></a>Klíč pro tvorbu
 
@@ -74,7 +74,7 @@ V rámci služby LUIS **domény** je oblast znalostní báze. Vaše doména je s
 
 ## <a name="endpoint"></a>Koncový bod
 
-[Koncový bod služby LUIS](https://aka.ms/luis-endpoint-apis) je adresa URL, kde odesílání dotazů LUIS po [aplikace LUIS](#luis-app) je vytvořili a publikovali. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na **[klíče a koncových bodů](luis-how-to-azure-subscription.md)** stránka aplikace, nebo můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
+[Koncový bod služby LUIS](https://go.microsoft.com/fwlink/?linkid=2092356) je adresa URL, kde odesílání dotazů LUIS po [aplikace LUIS](#luis-app) je vytvořili a publikovali. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na **[klíče a koncových bodů](luis-how-to-azure-subscription.md)** stránka aplikace, nebo můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
 
 Příkladem koncového bodu vypadá takto:
 

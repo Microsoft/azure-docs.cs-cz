@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1344de526564ab623a51eb903951b6a2e866048d
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138171"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523476"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastní hlasové první virtuální Asistenti ve verzi preview
 
@@ -24,7 +24,7 @@ Vlastní virtuálních asistentů pomocí hlasové služby Azure umožní vývoj
 
    ![Koncepční diagram přímou linku řeči Orchestrace služby flow](media/voice-first-virtual-assistants/overview.png "tok kanál řeči")
 
-Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první virtuální Asistenti jsou ideální doplněk k [virtuální pomocníka řešení](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) a [šablony organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). I když s přímým přístupem řeči řádek můžete pracovat s robotovi kompatibilní, tyto zdroje poskytují opakovaně použitelné základní konverzační prostředí vysoce kvalitní a běžné podpůrné dovednosti a modely pro rychlé seznámení.
+Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první virtuální Asistenti jsou ideální doplněk k [virtuální pomocníka řešení](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) a [šablony organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction). I když s přímým přístupem řeči řádek můžete pracovat s robotovi kompatibilní, tyto zdroje poskytují opakovaně použitelné základní konverzační prostředí vysoce kvalitní a běžné podpůrné dovednosti a modely pro rychlé seznámení.
 
 ## <a name="core-features"></a>Základní funkce
 
@@ -35,7 +35,7 @@ Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první
 |[Převod textu na řeč](text-to-speech.md) | Textové odpovědí z vašeho robota se má syntetizovat pomocí [převod textu na řeč](text-to-speech.md) z hlasové služby Azure. Tohoto slučování pak budou dostupné do klientské aplikace jako zvukový datový proud. Společnost Microsoft nabízí možnost vytvářet vlastní vysoce kvalitní, vlastní hlasové neuronových sítí převod textu na ŘEČ, umožňující hlasový vstup do vaší značky, další informace [kontaktujte nás](mailto:mstts@microsoft.com).
 |[Direct Line řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Jako kanál v rámci rozhraní Bot Framework s přímým přístupem řádku Speech umožňuje hladký a bezproblémový připojení mezi klientskou aplikaci, kompatibilní robotů a možnosti hlasové služby Azure. Další informace o konfiguraci vašeho robota použití kanálu Direct řeči řádku, naleznete v tématu [jeho stránky v dokumentaci k rozhraní Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-## <a name="sample-code"></a>Ukázka kódu
+## <a name="sample-code"></a>Ukázkový kód
 
 Ukázkový kód pro vytváření virtuálních asistentů první hlasu je k dispozici na Githubu. Tyto ukázky zahrnují klientská aplikace pro připojení k svého robota v různých oblíbených programovacích jazyků.
 

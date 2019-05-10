@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3395283e6228d7203b2e835961914e2f167fa451
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812797"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522400"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Příkaz ALTER utterance dat před nebo během predikcí
 Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Patří mezi ně opravuje pravopis a opravit problémy časové pásmo pro události prebuild datetimeV2. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Psaní opravovat pravopisné chyby v utterance
-Služba LUIS používá [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://aka.ms/luis-endpoint-apis). 
+Služba LUIS používá [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 Můžete také opravte pravopisné chyby v **testovací** panelu podle [zadávání klíče](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se ukládají jako proměnné relace v prohlížeči pro panelu Test. Přidáte klíč do panelu testů v každé relaci prohlížeče má kontrolu pravopisu opravit. 
 
@@ -56,14 +56,14 @@ Rozhraní API používané LUIS nepodporuje prázdný seznam slova, která chcet
 Pokud aplikace LUIS používá datetimeV2 předem připravených entit, hodnotu data a času mohou být vráceny v předpověď odpovědi. Časové pásmo požadavku se používá k určení správné datum a čas k vrácení. Pokud požadavek pochází z robota nebo jiné centralizované aplikace před získáním LUIS, opravte časové pásmo, které používá služba LUIS. 
 
 ### <a name="endpoint-querystring-parameter"></a>Parametr řetězce dotazu koncového bodu
-Časové pásmo je opravit tak, že přidáte uživatele časové pásmo pro [koncový bod](https://aka.ms/luis-endpoint-apis) pomocí `timezoneOffset` param. Hodnota `timezoneOffset` během několika minut, chcete-li změnit čas by měl být kladné nebo záporné číslo.  
+Časové pásmo je opravit tak, že přidáte uživatele časové pásmo pro [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) pomocí `timezoneOffset` param. Hodnota `timezoneOffset` během několika minut, chcete-li změnit čas by měl být kladné nebo záporné číslo.  
 
 |Param|Hodnota|
 |--|--|
 |`timezoneOffset`|kladné nebo záporné číslo, během několika minut|
 
 ### <a name="daylight-savings-example"></a>Příklad úspory letního času
-Pokud potřebujete vrácené předem připravených datetimeV2 upravit pro letní čas, měli byste použít `timezoneOffset` parametr řetězce dotazu s +/-hodnotu v minutách pro [koncový bod](https://aka.ms/luis-endpoint-apis) dotazu.
+Pokud potřebujete vrácené předem připravených datetimeV2 upravit pro letní čas, měli byste použít `timezoneOffset` parametr řetězce dotazu s +/-hodnotu v minutách pro [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) dotazu.
 
 Přidáte 60 minut: 
 

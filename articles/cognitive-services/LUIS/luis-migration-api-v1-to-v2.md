@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196027"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522366"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Rozhraní API v1 na v2 Průvodce migrací pro aplikace LUIS
-Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
+Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
 
 ## <a name="new-azure-regions"></a>Nové oblasti Azure
 Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API LUIS k dispozici. Služba LUIS poskytuje jiný portál pro skupiny oblasti. Aplikace musí být vytvořen ve stejné oblasti, které očekáváte, že k dotazování. Aplikace se nemigrují automaticky oblastech. Exportujte aplikace z jedné oblasti a importovat do jiného být k dispozici v nové oblasti.
@@ -169,6 +169,6 @@ Zobrazit [kódů odpovědí rozhraní LUIS API](luis-reference-response-codes.md
 
 ## <a name="next-steps"></a>Další postup
 
-Použijte dokumentaci k rozhraní API v2 k aktualizaci existující REST volání LUIS [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
+Použijte dokumentaci k rozhraní API v2 k aktualizaci existující REST volání LUIS [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

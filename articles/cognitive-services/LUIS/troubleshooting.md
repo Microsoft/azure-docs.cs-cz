@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 132ba922fa73c73d0e001e84659b5a24996d406b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: fc05f285b286bd0f036c583c154a40cf64e144d4
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235793"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522030"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -46,7 +46,7 @@ Ano, je vhodné pro trénování vaše **žádný** záměru s více projevy př
 Zobrazit [API V7 kontrola pravopisu Bingu](luis-tutorial-bing-spellcheck.md) kurzu. Služba LUIS vynucuje omezení, která API V7 kontrola pravopisu Bingu.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Jak mohu programově upravit aplikaci LUIS?
-Chcete-li upravit aplikace LUIS prostřednictvím kódu programu, použijte [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis). Zobrazit [LUIS volání rozhraní API pro vytváření](./luis-quickstart-node-add-utterance.md) a [sestavení aplikace LUIS programově pomocí Node.js](./luis-tutorial-node-import-utterances-csv.md) příklady toho, jak volat rozhraní API pro vytváření. Rozhraní API pro vytváření vyžaduje použití [vytváření klíč](luis-concept-keys.md#authoring-key) místo klíče rozhraní koncového bodu. Programové vytváření umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíče pomocí služby LUIS, naleznete v tématu [spravovat klíče](./luis-concept-keys.md).
+Chcete-li upravit aplikace LUIS prostřednictvím kódu programu, použijte [rozhraní API pro vytváření](https://go.microsoft.com/fwlink/?linkid=2092087). Zobrazit [LUIS volání rozhraní API pro vytváření](./luis-quickstart-node-add-utterance.md) a [sestavení aplikace LUIS programově pomocí Node.js](./luis-tutorial-node-import-utterances-csv.md) příklady toho, jak volat rozhraní API pro vytváření. Rozhraní API pro vytváření vyžaduje použití [vytváření klíč](luis-concept-keys.md#authoring-key) místo klíče rozhraní koncového bodu. Programové vytváření umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíče pomocí služby LUIS, naleznete v tématu [spravovat klíče](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Pokud je odpovídající vzor funkci, která poskytuje regulární výraz?
 Předchozí **funkce** je momentálně zastaralý, nahrazuje  **[vzory](luis-concept-patterns.md)**.
