@@ -1,21 +1,21 @@
 ---
 title: Přepisy více účastníka konverzace se sadou SDK pro řeč – hlasové služby
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití služby určené k transkripci konverzace se sadou SDK pro řeč. K dispozici pro C++, C#a Java.
+description: Další informace o použití přepisu konverzace se sadou SDK pro řeč. K dispozici pro C++, C#a Java.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: jhakulin
-ms.openlocfilehash: 73ab4cfa92a1efc49dea16ba2941cf16b7a1cf3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9de4faf18c54f7c7582ef5a8ab0648629d4f48e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025789"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190156"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Přepisy více účastníka konverzace se sadou SDK pro řeč
 
@@ -24,7 +24,7 @@ Sada SDK řeči **ConversationTranscriber** API umožňuje přepisy schůzky/kon
 ## <a name="limitations"></a>Omezení
 
 * Aplikace transcriber konverzace je podporováno pro C++, C#a Java na Windows, Linuxu a Android.
-* ROOBO DevKit je podporovaný hardware prostředí pro vytváření konverzací jako, který obsahuje cyklický více mikrofon pole, které můžete používat efektivně službou konverzace přepis pro identifikaci mluvčího. [Další informace najdete v tématu sadou SDK pro řeč zařízení](speech-devices-sdk.md). 
+* ROOBO DevKit je podporovaný hardware prostředí pro vytváření konverzací jako, který obsahuje cyklický více mikrofon pole, které můžete používat efektivně službou konverzace přepis pro identifikaci mluvčího. [Další informace najdete v tématu sadou SDK pro řeč zařízení](speech-devices-sdk.md).
 * Podpora SDK řeči je omezena na využívání zvuku o přijetí změn a push režim datové proudy s osmi kanály PCM zvuku.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -78,7 +78,7 @@ class Program
 
 Přepisy konverzace s více účastníky, vytvořte `ConversationTranscriber` objekt, který je přidružený `AudioConfig` objekt vytvořený pro relaci konverzace a zvuku pomocí datového proudu `PullAudioInputStream` nebo `PushAudioInputStream`.
 
-Předpokládejme, že máte ConversationTranscriber třídu s názvem `MyConversationTranscriber`. Váš kód může vypadat takto: 
+Předpokládejme, že máte ConversationTranscriber třídu s názvem `MyConversationTranscriber`. Váš kód může vypadat takto:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -97,7 +97,7 @@ public class MyConversationTranscriber
         var stopTranscription = new TaskCompletionSource<int>();
 
         // Create an audio stream from a wav file.
-        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback 
+        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
         using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
         {
             // Creates a conversation transcriber using audio stream input.

@@ -4,7 +4,7 @@ description: Sentinel rychlý start Azure – Začínáme s Azure Sentinelu
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07839c6372e0048048b62fbfedd58bfa9b9942f5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60805871"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65207519"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Rychlý start: Začínáme s Azure Sentinelu ve verzi Preview
 

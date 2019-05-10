@@ -2,18 +2,19 @@
 title: Monitorování, Diagnostika a řešení problémů s Azure Storage | Dokumentace Microsoftu
 description: Pomocí funkcí, jako jsou analýzy úložiště, protokolování na straně klienta a další nástroje třetích stran k identifikaci, diagnostikovat a řešit problémy související s Azure Storage.
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: fhryo-msft
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103839"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192170"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -425,7 +426,7 @@ Pokud **PercentThrottlingError** metrika způsobit nárůst Procento požadavků
 Zvýšení **PercentThrottlingError** často dochází ve stejnou dobu jako nárůst počtu požadavků na úložiště, nebo když jste původně zátěžové testování vaší aplikace. To může také projevit v klientovi jako "503 Server zaneprázdněn" nebo "časový limit 500 operace" HTTP stavové zprávy z operace úložiště.
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>Přechodné zvýšení u PercentThrottlingError
-Pokud se vám zobrazují špičky v hodnotě **PercentThrottlingError** , který se shoduje s období vysoké aktivity pro aplikaci, implementujte exponenciální (nikoli lineární) regresní strategii opakování v klientovi. Regresní opakovaných pokusů snižovat zatížení okamžité oddílu a Nápověda aplikace vyhlazení špiček v provozu. Další informace o tom, jak implementovat zásady opakování s využitím klientské knihovny pro úložiště najdete v tématu [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx).
+Pokud se vám zobrazují špičky v hodnotě **PercentThrottlingError** , který se shoduje s období vysoké aktivity pro aplikaci, implementujte exponenciální (nikoli lineární) regresní strategii opakování v klientovi. Regresní opakovaných pokusů snižovat zatížení okamžité oddílu a Nápověda aplikace vyhlazení špiček v provozu. Další informace o tom, jak implementovat zásady opakování s využitím klientské knihovny pro úložiště najdete v tématu [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy).
 
 > [!NOTE]
 > Může se zobrazit také špičky v hodnotě **PercentThrottlingError** , který není časově shodovala se zastávkami období vysoké aktivity pro aplikaci: nejpravděpodobnější příčinou je služba úložiště, přesun oddílů, aby zlepšil Vyrovnávání zatížení.
@@ -466,7 +467,7 @@ Nejčastější příčinou této chyby je klient odpojení před vypršení ča
 ### <a name="the-client-is-receiving-403-messages"></a>Klient dostává zprávy HTTP 403 (zakázáno)
 Pokud vaše klientská aplikace způsobuje chyby HTTP 403 (Zakázáno), pravděpodobnou příčinou je, že klient používá při odesílání žádosti na úložiště prošlý sdílený přístupový podpis (SAS) (i když další možné příčiny zahrnují nesoulad hodin, neplatné klíče a prázdné záhlaví). Pokud je příčinou vypršení platnosti klíče SAS, neuvidíte žádné záznamy v protokolu úložiště na straně serveru. V následující tabulce jsou uvedeny ukázky z protokolu na straně klienta generovaný klientskou knihovnu pro úložiště, který ukazuje tento problém vyskytující se:
 
-| Zdroj | Podrobnosti | Podrobnosti | ID požadavku klienta | Operace text |
+| Zdroj | Podrobnosti | Podrobnosti | ID žádosti klienta | Operace text |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab-… |Spouští se operace s umístěním primární umístění režim PrimaryOnly podle. |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Synchronní požadavek na spuštění <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
@@ -571,7 +572,7 @@ V následující tabulce jsou uvedeny ukázkovou zprávu protokolu na straně se
 | Adresa URL požadavku        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Záhlaví ID žádosti  | a1f348d5-8032-4912-93ef-b393e5252a3b |
-| ID požadavku klienta  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
+| ID žádosti klienta  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
 
 Zjistěte, proč se klientská aplikace pokouší o provedení operace, pro které mu nebylo uděleno oprávnění.
@@ -625,7 +626,7 @@ Pokud k tomuto problému dochází často, byste měli prozkoumat, proč klient 
 ### <a name="the-client-is-receiving-409-messages"></a>Klient dostává zprávy HTTP 409 (konflikt)
 V následující tabulce jsou uvedeny extrakci z protokolu na straně serveru pro dva klientské operace: **DeleteIfExists** a potom hned za **CreateIfNotExists** pomocí stejného názvu kontejneru objektů blob. Výsledkem každého klienta operace dva požadavky odeslané na server, nejprve **GetContainerProperties** požadavek na zkontrolovat, zda kontejner existuje, za nímž následuje **DeleteContainer** nebo  **CreateContainer** požadavku.
 
-| Timestamp | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
+| Timestamp | Operace | Výsledek | Název kontejneru | ID žádosti klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

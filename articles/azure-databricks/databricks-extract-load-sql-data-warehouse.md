@@ -7,18 +7,17 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 02/15/2019
-ms.openlocfilehash: e306245da2c76560ad447358fa1a57e491c370ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/07/2019
+ms.openlocfilehash: e2110378d16ff5826b8ded4620276b784ef1d68e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239352"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203355"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
-V tomto kurzu provedete ETL (extrakce, transformace a načítání dat) operace s využitím Azure Databricks. Extrahovat data z Azure Data Lake Storage Gen2 do Azure Databricks, spouštět transformace dat v Azure Databricks a pak načítat Transformovaná data do Azure SQL Data Warehouse.
+V tomto kurzu provedete ETL (extrakce, transformace a načítání dat) operace s využitím Azure Databricks. Extrahovat data z Azure Data Lake Storage Gen2 do Azure Databricks, spouštět transformace dat v Azure Databricks a načítat Transformovaná data do Azure SQL Data Warehouse.
 
 Postup, který je popsaný v tomto kurzu, používá k přenosu dat do Azure Databricks konektor SQL Data Warehouse pro Azure Databricks. Tento konektor zase používá Azure Blob Storage jako dočasné úložiště dat přenášených mezi clusterem Azure Databricks a službou Azure SQL Data Warehouse.
 
@@ -48,13 +47,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Než zahájíte tento kurz, proveďte tyto úlohy:
 
-* Vytvoření služby Azure SQL data warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojení k serveru jako správce serveru. Zobrazit [rychlý start: Vytvoření služby Azure SQL data warehouse](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Vytvoření služby Azure SQL data warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojení k serveru jako správce serveru. Zobrazit [rychlý start: Vytvořit a dotazovat službu Azure SQL data warehouse na webu Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
 * Vytvořte hlavní klíč databáze pro službu Azure SQL data warehouse. Zobrazit [vytvořte hlavní klíč databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Zobrazit [rychlý start: Vytvoření účtu služby Azure Blob storage](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Zobrazit [rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí webu Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Vytvoření účtu úložiště Azure Data Lake Storage Gen2. Zobrazit [vytvoření účtu služby Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Vytvoření účtu úložiště Azure Data Lake Storage Gen2. Zobrazit [rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 *  Vytvoření instančního objektu. Zobrazit [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -355,6 +354,11 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá Azure Blo
        .mode("overwrite")
        .save()
    ```
+
+   > [!NOTE]
+   > Tento příklad používá `forward_spark_azure_storage_credentials` příznak, který způsobí, že SQL Data Warehouse pro přístup k datům ze služby blob storage pomocí přístupové klávesy. Toto je jediná podporovaná metoda ověřování.
+   >
+   > Pokud Azure Blob Storage je omezený na vybrané virtuální sítě, SQL Data Warehouse vyžaduje [identita spravované služby se namísto přístupové klíče](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). To způsobí, že chyba "Tento požadavek není autorizovaný k provedení této operace."
 
 6. Připojení k SQL database a ověřte, jestli se databáze s názvem **SampleTable**.
 

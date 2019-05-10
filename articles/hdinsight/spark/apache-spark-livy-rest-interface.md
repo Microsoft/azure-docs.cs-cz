@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c1497589153f1dc5a79cc1d3414966deaf11f21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570495"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228100"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
@@ -153,13 +153,7 @@ Proveďte následující kroky:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualizace konfigurace Livy od verze 3.5 pro HDInsight
 
-HDInsight 3.5 clusterů a výše, ve výchozím nastavení, zakázat použití místní cesty souborů přístup ukázkových datových souborů nebo souborů JAR. Doporučujeme vám použít `wasb://` cesta místo pro přístup k kromě souborů JAR nebo ukázková data souborů z clusteru. Pokud chcete použít místní cestu, je nutné aktualizovat konfiguraci Ambari odpovídajícím způsobem. Postupujte následovně:
-
-1. Přejděte na portál Ambari clusteru. Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na https://**CLUSTERNAME**. azurehdidnsight.net, kde CLUSTERNAME představuje název vašeho clusteru.
-
-2. V levém navigačním panelu klikněte na **Livy**a potom klikněte na tlačítko **Configs**.
-
-3. V části **livy výchozí** přidejte název vlastnosti `livy.file.local-dir-whitelist` a nastavte její hodnotu na **"/"** Pokud budete chtít povolit úplný přístup k systému souborů. Pokud chcete povolit přístup jenom pro konkrétní adresář, zadejte cestu k tomuto adresáři jako hodnotu.
+HDInsight 3.5 clusterů a výše, ve výchozím nastavení, zakázat použití místní cesty souborů přístup ukázkových datových souborů nebo souborů JAR. Doporučujeme vám použít `wasb://` cesta místo pro přístup k kromě souborů JAR nebo ukázková data souborů z clusteru. 
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Odesílání úloh Livy pro cluster v rámci virtuální sítě Azure
 

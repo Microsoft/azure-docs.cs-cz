@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61317052"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228399"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Spravované identity pro prostředky Azure pomocí služby Service Bus 
 
@@ -29,7 +29,7 @@ Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runti
 
 ## <a name="service-bus-roles-and-permissions"></a>Role služby Service Bus a oprávnění
 
-Spravovaná identita lze přidat pouze do role "Vlastník" nebo "Přispěvatel" oboru názvů služby Service Bus. Zajišťuje úplné řízení identit na všechny entity v oboru názvů. Ale správy, které operace, které změní topologie obor názvů jsou zpočátku podporované pouze když Azure Resource Manageru. Není nativní správu rozhraní REST pro Service Bus. Tato podpora také znamená, že nelze použít klienta rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt v rámci spravovanou identitu.
+Spravovaná identita lze přidat pouze do role "Vlastník" nebo "Přispěvatel" oboru názvů služby Service Bus. Zajišťuje úplné řízení identit na všechny entity v oboru názvů. Ale správy, které operace, které změní topologie obor názvů jsou zpočátku podporované pouze když Azure Resource Manageru. Není nativní správu rozhraní REST pro Service Bus. Tato podpora také znamená, že nelze použít klienta rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo .NET Standard klienta [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) objektů v rámci spravovanou identitu.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Service Bus pomocí spravované identity pro prostředky Azure
 

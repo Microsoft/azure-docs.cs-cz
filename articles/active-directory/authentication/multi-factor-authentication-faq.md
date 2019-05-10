@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbebbeaad681618e8420ad842ec370ce62bc9eba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570830"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228180"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -146,11 +146,11 @@ Pokud vaše organizace nemá starší verze klientů, by neměla uživatelům po
 
 **Otázka: Moji uživatelé prohlašují, že někdy nedostávají textovou zprávu nebo se odpovědět na obousměrné textové zprávy, ale ověření vyprší časový limit.**
 
-Doručování textových zpráv a příjem odpovědí v obousměrné služby SMS není zaručena. protože neovladatelném faktorů, které by mohly ovlivnit spolehlivost služby. Tyto faktory zahrnují určení země, poskytovatelé mobilních služeb a sílu signálu.
+Doručování textových zpráv a příjem odpovědí v obousměrné služby SMS není zaručena. protože neovladatelném faktorů, které by mohly ovlivnit spolehlivost služby. Tyto faktory zahrnují cílové země/oblasti, poskytovatelé mobilních služeb a sílu signálu.
 
 Pokud mají vaši uživatelé často potíže se spolehlivým příjmem textových zpráv, řekněte jim, aby místo toho použijte metodu mobilní aplikace nebo telefonní hovor. Mobilní aplikace může přijímat oznámení i přes mobilní síť a připojení Wi-Fi. Mobilní aplikace navíc můžete generovat ověřovací kódy, i v případě, že zařízení nemá žádné signál vůbec. Aplikace Microsoft Authenticator je dostupná pro [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073), a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
-Pokud je nutné použít textové zprávy, doporučujeme používat jednosměrná zpráva SMS, spíše než obousměrné služby SMS, pokud je to možné. Jednosměrné služby SMS je spolehlivější a zabraňuje uživatelům v poplatků globální služby SMS v odpovědi na textovou zprávu, která byla odeslána z jiné země.
+Pokud je nutné použít textové zprávy, doporučujeme používat jednosměrná zpráva SMS, spíše než obousměrné služby SMS, pokud je to možné. Jednosměrné služby SMS je spolehlivější a zabraňuje uživatelům v poplatků globální služby SMS v odpovědi na textovou zprávu, která byla odeslána z jiné země/oblasti.
 
 **Otázka: Můžete změnit dobu Moji uživatelé muset před systému vypršením časového limitu zadejte ověřovací kód z textové zprávy?**
 

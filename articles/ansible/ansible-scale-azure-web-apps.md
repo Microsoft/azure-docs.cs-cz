@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 213c4e086db8b40fdec26ce9fb3e0be5ad055cbc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729427"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230946"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Kurz: Škálování aplikací ve službě Azure App Service pomocí Ansible
 
@@ -30,8 +30,8 @@ ms.locfileid: "64729427"
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 - **Aplikace Azure App Service** – Pokud nemáte aplikaci služby Azure App Service [aplikaci nakonfigurovat ve službě Azure App Service pomocí Ansible](ansible-create-configure-azure-web-apps.md).
 
 ## <a name="scale-up-an-app"></a>Vertikální navýšení kapacity aplikace

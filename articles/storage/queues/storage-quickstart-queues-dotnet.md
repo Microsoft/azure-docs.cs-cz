@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: c7edc64e6bacfc1ea9c2184e57a384152e02190a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b80ff38e2afb5e9da6227537ea9c483566d03e4d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142494"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232594"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Rychlý start: Vytvoření fronty ve službě Azure Storage pomocí .NET
 
@@ -145,7 +145,7 @@ Dále prozkoumejte vzorový kód, abyste pochopili, jak funguje.
 
 ### <a name="try-parsing-the-connection-string"></a>Zkouška parsování připojovacího řetězce
 
-Ukázka nejprve zkontroluje, že proměnná prostředí obsahuje připojovací řetězec, který může být analyzován k vytvoření [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) odkazuje na účet úložiště. Pokud chcete zkontrolovat, že připojovací řetězec je platný, ukázka používá [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) metody. Pokud se metoda **TryParse** úspěšně provede, inicializuje proměnnou *storageAccount* a vrátí hodnotu **true**.
+Ukázka nejprve zkontroluje, že proměnná prostředí obsahuje připojovací řetězec, který může být analyzován k vytvoření [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) odkazuje na účet úložiště. Pokud chcete zkontrolovat, že připojovací řetězec je platný, ukázka používá [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) metody. Pokud se metoda **TryParse** úspěšně provede, inicializuje proměnnou *storageAccount* a vrátí hodnotu **true**.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored

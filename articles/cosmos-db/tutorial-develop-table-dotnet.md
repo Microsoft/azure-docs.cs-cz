@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: f2f207b62522ceef9fe72d47026f4c2f8ed02e3b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0a329722b65e407f011016a1f55e86ef17b47d70
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130421"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192407"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB Table API a Azure Table storage pomocí .NET SDK
 
@@ -135,7 +135,7 @@ Pokud chcete získat balíček NuGet, postupujte takto:
 
 ## <a name="create-a-table"></a>Vytvoření tabulky 
 
-Třída [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) vám umožňuje načíst tabulky a entity, které jsou uložené ve službě Table Storage. Protože nemáme žádné tabulky v účtu Cosmos DB Table API, přidáme `CreateTableAsync` metodu **Common.cs** třídy za účelem vytvoření tabulky:
+Třída [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) vám umožňuje načíst tabulky a entity, které jsou uložené ve službě Table Storage. Protože nemáme žádné tabulky v účtu Cosmos DB Table API, přidáme `CreateTableAsync` metodu **Common.cs** třídy za účelem vytvoření tabulky:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -168,7 +168,7 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 
 ## <a name="define-the-entity"></a>Definování entity 
 
-Entity se mapují na C# objekty pomocí vlastní třídy odvozené z [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx). Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity.
+Entity se mapují na C# objekty pomocí vlastní třídy odvozené z [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity). Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity.
 
 Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **přidat**, **novou složku** a pojmenujte ji jako **modelu**. Ve složce modelu přidejte třídu pojmenovanou **CustomerEntity.cs** a přidejte do ní následující kód.
 
@@ -194,11 +194,11 @@ namespace CosmosTableSamples.Model
 }
 ```
 
-Tento kód definuje třídu entity, která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. V tabulce ji pak jednoznačně identifikuje kombinace klíče oddílu a řádku entity. Entity se stejným klíčem oddílu můžete dotazovat rychleji než entity mají různé klíče oddílů, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Entity, které se ukládají do tabulek musí být podporovaného typu, například odvozené ze [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet) třídy. Vlastnosti entity, které chcete uložit do tabulky, musí být veřejné vlastnosti typu a musí podporovat získávání i nastavování hodnot. Typ entity navíc musí vystavit konstruktor bez parametrů.
+Tento kód definuje třídu entity, která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. V tabulce ji pak jednoznačně identifikuje kombinace klíče oddílu a řádku entity. Entity se stejným klíčem oddílu můžete dotazovat rychleji než entity mají různé klíče oddílů, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Entity, které se ukládají do tabulek musí být podporovaného typu, například odvozené ze [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) třídy. Vlastnosti entity, které chcete uložit do tabulky, musí být veřejné vlastnosti typu a musí podporovat získávání i nastavování hodnot. Typ entity navíc musí vystavit konstruktor bez parametrů.
 
 ## <a name="insert-or-merge-an-entity"></a>Vložit nebo sloučit entity
 
-Následující příklad kódu vytvoří objekt entity a přidá ji do tabulky. Metoda InsertOrMerge v rámci [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) třída slouží k vložení nebo sloučit entity. [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) metoda je volána k provedení operace. 
+Následující příklad kódu vytvoří objekt entity a přidá ji do tabulky. Metoda InsertOrMerge v rámci [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) třída slouží k vložení nebo sloučit entity. [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) metoda je volána k provedení operace. 
 
 Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **přidat**, **nová položka** a přidejte třídu pojmenovanou **SamplesUtils.cs**. Tato třída uchovává všechny je kód potřebný k provádění operací CRUD u entity. 
 
@@ -237,7 +237,7 @@ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable tab
 
 ### <a name="get-an-entity-from-a-partition"></a>Načtení entity z oddílu
 
-Entity můžete získat z oddílu pomocí metody načtení [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) třídy. Následující příklad kódu získá klíč řádku klíče oddílu, e-mailu a telefonní číslo entity zákazník. Tento příklad také vytiskne jednotky žádostí spotřebované dotaz pro entitu. Chcete-li dotaz pro entitu, přidejte následující kód, který **SamplesUtils.cs** souboru: 
+Entity můžete získat z oddílu pomocí metody načtení [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) třídy. Následující příklad kódu získá klíč řádku klíče oddílu, e-mailu a telefonní číslo entity zákazník. Tento příklad také vytiskne jednotky žádostí spotřebované dotaz pro entitu. Chcete-li dotaz pro entitu, přidejte následující kód, který **SamplesUtils.cs** souboru: 
 
 ```csharp
 public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)

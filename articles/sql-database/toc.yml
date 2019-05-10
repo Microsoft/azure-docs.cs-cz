@@ -284,6 +284,8 @@
               href: transparent-data-encryption-azure-sql.md
             - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
               href: transparent-data-encryption-byok-azure-sql.md
+        - name: Atributy zabezpečení
+          href: sql-database-security-attributes.md
     - name: Škálovatelnost
       items:
         - name: Přehled škálovatelnosti
