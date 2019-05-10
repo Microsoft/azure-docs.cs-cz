@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626821"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510641"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -50,6 +50,20 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 * Podpora pro datové proudy.
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
 
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Verze SDK System.Net.Http odpovídá definovaná v balíčku NuGet.
+* Zvětšili velikost počet desetinných míst pro LINQ dotazy.
+* Přidání nové třídy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType a PartitionKeyDefinitionVersion
+* Přidání TimeToLivePropertyPath k DocumentCollection
+* Přidání CompositeIndexes a SpatialIndexes k IndexPolicy
+* Přidání verze do PartitionKeyDefinition
+* Přidat žádný PartitionKey
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * Přidání IdleTcpConnectionTimeout OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection a MaxTcpConnectionsPerEndpoint k ConnectionPolicy.
+ 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
 * Vylepšení diagnostiky
@@ -237,6 +251,8 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |05. května 2019 |--- |
+| [2.3.0](#2.3.0) |04. dubna 2019 |--- |
 | [2.2.3](#2.2.3) |11. března 2019 |--- |
 | [2.2.2](#2.2.2) |06. února 2019 |--- |
 | [2.2.1](#2.2.1) |Prosinec 24. května 2018 |--- |

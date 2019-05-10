@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 2dd3b9f0d1d8d61b2311977774c8b0f7267caa9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330992"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65206652"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události ve službě SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -52,7 +52,7 @@ Předchozí vystavení následujících položek je užitečný, pokud zvolíte 
 - PowerShell
     - [Pomocí Azure Powershellu s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje podrobné informace o prostředí PowerShell a službu Azure Storage.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Související témata obsahují dvě ukázky kódu:
 
@@ -170,7 +170,7 @@ Musíte mít **ovládací prvek** v databázi oprávnění k vydávání **vytvo
 
 SAS token můžete vygenerovat pro váš kontejner Azure Storage, musíte zadat **rwl** oprávnění. **Rwl** hodnota poskytuje následující oprávnění:
 
-- Čtení
+- Číst
 - Zápis
 - Seznam
 
@@ -197,7 +197,7 @@ Pokud se zobrazí chybová zpráva s upozorněním, že maximální paměti bylo
 - [Použití Blob storage pomocí technologie .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
-- [Jonathan Kehayias příspěvky o rozšířené události v systému Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
+- [Jonathan Kehayias příspěvky o rozšířené události v systému Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Azure *aktualizace služeb* webovou stránku, zúžit parametrem ke službě Azure SQL Database:

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: b609a0ace0b428e1af81634c6a25485e3a5e89bb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916662"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508440"
 ---
-# <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
+# <a name="traffic-manager-endpoints"></a>Koncové body služby Traffic Manager
 Microsoft Azure Traffic Manager umožňuje řídit, jak je zatížení sítě distribuováno do nasazení aplikace spuštěné v různých datových centrech. Konfigurace nasazení každé aplikace jako "koncový bod' v Traffic Manageru. Když Traffic Manager obdrží žádost o DNS, vybere dostupný koncový bod vrátit v odpovědi DNS. Volba Traffic Manageru založen na aktuální stav koncového bodu a metodu směrování provozu. Další informace najdete v tématu [jak funguje Traffic Manager](traffic-manager-how-it-works.md).
 
 Existují tři typy koncových bodů, které Traffic Manager podporuje:
 * **Koncové body Azure** jsou používané pro služby hostované v Azure.
-* **Externí koncové body** se používají pro adresy IPv4/IPv6, nebo pro služby hostované mimo Azure, která může být buď místní nebo pomocí jiného poskytovatele hostitelských služeb.
+* **Externí koncové body** se používají pro IPv4/IPv6 adres, plně kvalifikovaných názvů domén, nebo pro služby hostované mimo Azure, která může být buď místní nebo pomocí jiného poskytovatele hostitelských služeb.
 * **Vnořené koncové body** umožňují kombinovat profily Traffic Manageru k vytvoření více flexibilní schémata směrování provozu pro podporu potřeb větší a složitější nasazení.
 
 Neexistuje žádné omezení jak jsou koncové body různých typů kombinovat v jednom profilu Traffic Manageru. Jednotlivé profily mohou obsahovat libovolné kombinaci různých typů koncový bod.
@@ -46,7 +46,7 @@ Při používání koncových bodů Azure Traffic Manager rozpozná virtuálníc
 
 ## <a name="external-endpoints"></a>Externí koncové body
 
-Externí koncové body se používají pro buď adresy IPv4/IPv6, nebo jako služby mimo Azure. Využívání koncovými body adresy IPv4/IPv6 umožňuje přenos správce ke kontrole stavu koncových bodů bez nutnosti názvu DNS pro ně. V důsledku toho Traffic Manager může reagovat na dotazy se záznamy A nebo AAAA při vrácení tohoto koncového bodu v odpovědi. Služby mimo Azure může obsahovat služby hostované v místním nebo pomocí jiného poskytovatele. Externí koncové body můžete použít jednotlivě nebo společně s koncovými body Azure v jednom profilu Traffic Manageru s výjimkou koncové body určené jako IPv4 nebo IPv6 adresy, které může obsahovat jenom externí koncové body. Kombinování koncové body s externími koncovými body Azure umožňuje různé scénáře:
+Externí koncové body se používají pro buď IPv4/IPv6 adres, plně kvalifikovaných názvů domén, nebo pro služby mimo Azure. Využívání koncovými body adresy IPv4/IPv6 umožňuje přenos správce ke kontrole stavu koncových bodů bez nutnosti názvu DNS pro ně. V důsledku toho Traffic Manager může reagovat na dotazy se záznamy A nebo AAAA při vrácení tohoto koncového bodu v odpovědi. Služby mimo Azure může obsahovat služby hostované v místním nebo pomocí jiného poskytovatele. Externí koncové body můžete použít jednotlivě nebo společně s koncovými body Azure v jednom profilu Traffic Manageru s výjimkou koncové body určené jako IPv4 nebo IPv6 adresy, které může obsahovat jenom externí koncové body. Kombinování koncové body s externími koncovými body Azure umožňuje různé scénáře:
 
 * Zadejte zvýšit redundanci pro stávající místní aplikace v jednom modelu aktivní aktivní nebo aktivní pasivní převzetí služeb při selhání pomocí Azure. 
 * Směrování provozu do koncových bodů, které nemají název DNS k nim má přiřazené. Kromě toho snížit celkové latence vyhledávání DNS odstraňují potřebu ke spuštění druhého dotazu DNS k získání IP adresy vrátil názvu DNS. 

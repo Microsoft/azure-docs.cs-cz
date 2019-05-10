@@ -67,7 +67,7 @@ Clustery HDInsight Spark konektoru Spark Phoenix nepodporují.
 
 **Omezení rizik:**
 
-Místo toho je nutné použít konektor Spark HBase. Pokyny najdete v tématu [použití konektoru Spark HBase](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+Místo toho je nutné použít konektor Spark HBase. Pokyny najdete v tématu [použití konektoru Spark HBase](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Problémy související s poznámkovými bloky Jupyter
 Toto jsou některé známé problémy související s poznámkovými bloky Jupyter.

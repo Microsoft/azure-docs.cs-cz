@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60692913"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509962"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -68,7 +68,7 @@ Chcete-li vyřešit problémy s výkonem, vyberte **vyšetřování výkonu**.
 
 ### <a name="go-to-details"></a>Přejít na podrobnosti
 
-Vyberte **přejděte na podrobnosti** prozkoumat prostředí začátku do konce transakce, které může nabídnout zobrazení provést na úrovni zásobníku volání.
+Vyberte **přejděte na podrobnosti** prozkoumat prostředí začátku do konce transakce, které může nabídnout zobrazení až na úroveň zásobníku volání.
 
 ![Snímek obrazovky tlačítko Přejít na podrobnosti](media/app-map/go-to-details.png)
 

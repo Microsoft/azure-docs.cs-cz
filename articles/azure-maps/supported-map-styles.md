@@ -3,25 +3,25 @@ title: Podporován styly mapy ve službě Azure Maps | Dokumentace Microsoftu
 description: Podporuje Azure Maps styly mapy
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767165"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230829"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporován styly mapy
 Azure Maps podporuje několik různých předdefinovaných Mapovat styly, jak je popsáno níže.
 
-## <a name="road"></a>Silniční
+## <a name="road"></a>silniční
 A **silniční** mapa je standardní mapy, která zobrazuje silnicích zakázána, přirozené a umělý funkce spolu s popisky pro tyto funkce.
 
-![Silniční](./media/supported-map-styles/road.png)
+![silniční](./media/supported-map-styles/road.png)
 
 **Použít rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -56,6 +56,17 @@ Tento styl mapy je v hybridní kombinaci cest a popisky překrývající nad sat
 **Použít rozhraní API:**
 * Mapový ovládací prvek JS 
 * Android mapový ovládací prvek
+
+
+## <a name="grayscalelight"></a>grayscale_light
+**světle ve stupních šedi** je jednodušší verzi styl silniční mapu.
+
+![světle ve stupních šedi](./media/supported-map-styles/grayscale_light.png)
+
+**Použít rozhraní API:**
+* Mapový ovládací prvek JS
+* Android mapový ovládací prvek
+
 
 ## <a name="night"></a>noční
 **noční** je verze Tmavý styl silniční mapu s barevné cest a symboly.

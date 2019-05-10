@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202910"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510817"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatické škálování a zónově redundantní služba Application Gateway 
 
@@ -62,7 +62,7 @@ Výpočetní jednotka pokyny:
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[Stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) bude aktualizován tak, aby odrážela ceny na 14. května 2019. Fakturace je naplánováno spuštění na 1. června 2019.
+[Stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/) bude aktualizován tak, aby odrážela ceny na 14. května 2019. Fakturace je naplánováno spuštění na 1. června 2019.
 
 **Příklad 1**
 
@@ -93,7 +93,7 @@ Cena za jednotku kapacity = 744(hours) * Max (výpočetní jednotky Max(25/50 fo
 
 Celková cena = 267.84 $ + $85.71 = $353.55
 
-[Stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) bude aktualizován tak, aby odrážela ceny na 14. května 2019. Fakturace je naplánováno spuštění na 1. června 2019.
+[Stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/) bude aktualizován tak, aby odrážela ceny na 14. května 2019. Fakturace je naplánováno spuštění na 1. června 2019.
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Škálování Application Gateway a WAF v2
 
@@ -124,7 +124,7 @@ Následující tabulka porovnává funkce, které jsou dostupné v jednotlivých
 | Vlastní chybové stránky                                | &#x2713; | &#x2713; |
 | Podpora protokolu WebSocket                                 | &#x2713; | &#x2713; |
 | Podpora HTTP/2                                    | &#x2713; | &#x2713; |
-| Vyprázdnění připojení                               | &#x2713; | &#x2713; |
+| Vyprazdňování připojení                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > Automatické škálování v2 teď podporuje SKU [sondy stavu výchozí](application-gateway-probe-overview.md#default-health-probe) automaticky monitorování stavu všech prostředků v jeho back endovém fondu a zvýraznit těchto členů back-end, které jsou považovány za není v pořádku. Výchozí kontroly stavu je automaticky konfigurována pro back-endů, které nemají žádnou konfiguraci vlastní test paměti. Další informace najdete v tématu [sondy stavu ve službě application gateway](application-gateway-probe-overview.md).

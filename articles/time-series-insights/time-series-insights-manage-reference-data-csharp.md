@@ -10,35 +10,40 @@ ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9d0743e30c4ae32c052a9f27c9fa22b1036aead
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681735"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510034"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat pro prostředí Azure Time Series Insights pomocí jazyka C#
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro prostředí Azure Time Series Insights pomocíC#
 
 Tento článek popisuje příklad jazyka C# projekt kompilujete na Správa referenčních dat pro prostředí Azure Time Series Insights.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Před kompilace a spuštění vzorového kódu, proveďte následující kroky:
+
 1. [Vytvoření referenční sady dat](time-series-insights-add-reference-data-set.md).
 
-2. Konfigurovat autorizační token přístupu pro aplikaci. Ujistěte se, že token, který je získali prostřednictvím rozhraní API Azure Active Directory. Je třeba předat tento token `Authorization` záhlaví každého požadavku rozhraní API dotazu. 
- 
+1. Konfigurovat autorizační token přístupu pro aplikaci. Ujistěte se, že token, který je získali prostřednictvím rozhraní API Azure Active Directory. Je třeba předat tento token `Authorization` záhlaví každého požadavku rozhraní API dotazu.
+
    Informace o tom, jak nastavit jako neinteraktivní aplikace najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 
-3. Upravte ukázkový kód pro nahrazení konstanty příkladu, při **DUMMY #**, poblíž začátku kód. 
+1. Upravte ukázkový kód pro nahrazení konstanty příkladu, při **DUMMY #**, poblíž začátku kód.
 
-Tento příklad kódu je také k dispozici na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+> [!NOTE]
+> Zobrazit GA vzorových kódů najdete [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).
 
-## <a name="project-references"></a>Odkazy na projekt
-Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` pro účely tohoto příkladu. 
+## <a name="project-dependencies"></a>Závislosti projektu
 
-## <a name="c-sample-code"></a>Vzorový kód jazyka C# 
+Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` pro účely tohoto příkladu.
+
+## <a name="c-sample-code"></a>Vzorový kód jazyka C#
+
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -134,7 +139,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
     ""deleteproperties"": [{
         ""key"": {
             ""DeviceId"": ""Fan1""
-        },
+    },
         ""properties"": [""BladeCount""]
     }]
 }";

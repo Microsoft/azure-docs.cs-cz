@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 8cb1489a0663556f9dd9e6026a036df2468d656d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 854e29b67b6e24c583a98b5851bf17551cfcbf61
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928329"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441346"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Průzkumník Azure datový konektor pro Apache Spark (Preview)
 
@@ -109,7 +109,7 @@ Konektor Spark Průzkumník dat Azure umožňuje ověřovat pomocí Azure Active
 
 Většina jednoduché a běžné ověřování. Tato metoda se doporučuje pro použití konektoru Spark Průzkumník dat Azure.
 
-|Vlastnosti  |Popis  |
+|Vlastnost  |Popis  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   Identifikátor aplikace (klient) Azure AD.      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Autorita ověřování Azure AD. ID Azure AD Directory (tenant).        |
@@ -200,7 +200,7 @@ Další informace o rolích instančních Průzkumník dat Azure najdete v téma
     display(df)
     ```
 
-1. Při čtení velkých objemů dat, musí být zadaný přechodný objekt blob úložiště. Zadejte klíč SAS pro kontejner úložiště, nebo název účtu úložiště, klíč účtu a název kontejneru. 
+1. Při čtení velkých objemů dat, musí být zadaný přechodný objekt blob úložiště. Zadejte klíč SAS pro kontejner úložiště, nebo název účtu úložiště, klíč účtu a název kontejneru. Tento krok je pouze požadované pro aktuální verzi preview konektoru Spark.
 
     ```scala
     // Use either container/account-key/account name, or container SaS

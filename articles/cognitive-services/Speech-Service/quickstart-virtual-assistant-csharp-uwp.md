@@ -11,14 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074112"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465632"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, UPW
+
+Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-uwp.md) a [překlad řeči](quickstart-translate-speech-uwp.md).
 
 V tomto článku budete vyvíjet C# aplikace univerzální platformy Windows (UPW) s použitím [sadou SDK pro řeč](speech-sdk.md). Program se připojí k dříve vytvořený a nakonfigurovaný bot umožňující hlasové první virtuálních asistentů prostředí z klientské aplikace. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
@@ -47,7 +49,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="add-sample-code"></a>Přidejte ukázkový kód.
 
 1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení návrháři XAML, nahraďte celý obsah s níže.
 
@@ -80,16 +82,16 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
             <MediaElement x:Name="mediaElement"/>
         </Grid>
     </Page>
-        ```
+    ```
 
-1. Open the code-behind source file `MainPage.xaml.cs`. You'll find it grouped under `MainPage.xaml`. Replace the contents with the code below. Here's what this sample covers: 
+1. Otevřít zdrojový soubor kódu na pozadí `MainPage.xaml.cs`. Najdete ji seskupené pod nadpisem `MainPage.xaml`. Nahraďte obsah následujícím kódem. Zde je, co tato ukázka obsahuje: 
 
-    * Using statements for the Speech and Speech.Dialog namespaces
-    * A simple implementation to ensure microphone access, wired to a button handler
-    * Basic UI helpers to present messages and errors in the application
-    * A landing point for the initialization code path that will be populated later
-    * A helper to play back text-to-speech (without streaming support)
-    * An empty button handler to start listening that will be populated later
+    * Pomocí příkazů pro zpracování řeči a Speech.Dialog obory názvů
+    * Jednoduchá implementace zajistit přístup k mikrofonu, připojené k rutině tlačítka
+    * Základní pomocné rutiny uživatelského rozhraní k zobrazení zprávy a chyby v aplikaci
+    * Bod cílová cesta inicializace kódu, který naplní se později
+    * Pomocné rutiny k přehrání zpět převod textu na řeč (bez podpora streamování)
+    * Obslužné rutiny prázdný tlačítko zahájit naslouchání, která naplní později
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,7 +241,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
             }
         }
     }
-     ```
+    ```
 
 1. V dalším kroku vytvoříte `SpeechBotConnector` informace o vašem předplatném. Do těla metody přidejte následující `InitializeBotConnector`, stačí nahradit řetězce `YourChannelSecret`, `YourSpeechSubscriptionKey`, a `YourServiceRegion` vlastními hodnotami pro svého robota, předplatné řeči a [oblasti](regions.md).
 
