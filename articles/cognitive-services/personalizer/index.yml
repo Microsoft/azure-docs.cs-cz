@@ -55,7 +55,7 @@ sections:
         className: cardsD
         items:
           - title: Rozhraní REST API
-            html: '<p><a href="https://aka.ms/personalizer-rest-api-docs">Rozhraní API služby Personalizace</a></p>'
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092082">Rozhraní API služby Personalizace</a></p>'
           - title: PowerShell
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: Rozhraní příkazového řádku

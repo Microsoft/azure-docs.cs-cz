@@ -67,7 +67,7 @@
     - name: Fakturace a předplatná
       href: 'https://docs.microsoft.com/azure/billing/billing-getting-started'
     - name: Porovnání hostingů
-      href: 'https://docs.microsoft.com/azure/app-service/overview-compare'
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
     - name: Co je App Service?
       href: 'https://docs.microsoft.com/azure/app-service/overview'
     - name: Virtuální počítače

@@ -124,6 +124,8 @@
         - name: Průběžná integrace s využitím Azure DevOps Services
           href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
           maintainContext: true
+    - name: Export šablony
+      href: export-template-portal.md
     - name: Spravovat
       items:
         - name: Správa skupin prostředků
