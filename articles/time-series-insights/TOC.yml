@@ -52,7 +52,7 @@
           href: time-series-insights-update-tsm.md
         - name: Dotazování dat
           href: time-series-insights-update-tsq.md
-        - name: Aktualizace vizualizace dat v průzkumníku
+        - name: Vizualizace dat v průzkumníku (Preview)
           href: time-series-insights-update-explorer.md
     - name: Vývoj
       items:

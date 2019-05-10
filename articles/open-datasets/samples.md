@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: c1b86199f13454f4785a6737b25e489d45dd53f8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026841"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442330"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Poznámkové bloky Jupyter příklad ukazují, jak rozšířit data s datovými sadami otevřít 
 Poznámkové bloky Jupyter příklad pro datové sady otevře Azure ukazují, jak načíst otevřít datové sady a využít k obohacení ukázková data. Mezi dostupné techniky patří použití Apache Spark a Pandas zpracovat data.
@@ -29,7 +29,7 @@ Poznámkové bloky Jupyter příklad pro datové sady otevře Azure ukazují, ja
 ## <a name="join-demo-data-with-noaa-isd-data"></a>Připojte se k ukázková data s daty investičních NOAA službách 
 |Poznámkový blok        | Popis                                    |
 |----------------|------------------------------------------------|
-|[Připojte se k ukázková data s daty o počasí - Pandas ](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Připojte se k 1 měsíc ukázkové datové sady senzor umístění se údaje o počasí v Pandas dataframe.  |
+|[Připojte se k ukázková data s daty o počasí - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Připojte se k 1 měsíc ukázkové datové sady senzor umístění se údaje o počasí v Pandas dataframe.  |
 |[Připojte se k ukázková data s daty o počasí – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | Připojte se k ukázkové datové sady senzor umístění se údaje o počasí v Spark dataframe. |
 
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>Připojte se k NYC data taxislužby města s daty investičních NOAA službách 

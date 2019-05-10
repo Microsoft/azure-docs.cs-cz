@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d80f58215b1a8f1b93db158cd2f47186ba6354a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5b87e452b0c79ae9cdc1d7f9f391a611dceda2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443341"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231520"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekty topologie sítě při použití Azure Active Directory Application Proxy
 
@@ -39,7 +39,7 @@ Při publikování aplikace prostřednictvím Proxy aplikací Azure AD se proch�
 
 ## <a name="tenant-location-and-application-proxy-service"></a>Umístění tenanta a Proxy aplikace služby
 
-Při registraci tenanta Azure AD, oblast vašeho tenanta se určuje podle země, kterou zadáte. Když povolíte Proxy aplikací, jsou instance služby Proxy aplikace vašeho tenanta zvolili nebo vytvoří ve stejné oblasti jako váš tenant Azure AD, nebo k němu nejbližší oblasti.
+Při registraci tenanta Azure AD, oblast vašeho tenanta se určuje podle země nebo oblast, kterou zadáte. Když povolíte Proxy aplikací, jsou instance služby Proxy aplikace vašeho tenanta zvolili nebo vytvoří ve stejné oblasti jako váš tenant Azure AD, nebo k němu nejbližší oblasti.
 
 Pokud zemi nebo oblast vašeho tenanta Azure AD je Spojené království, všechny konektory Proxy aplikací pomocí instance služby v EU datových centrech. Pokud vaši uživatelé přístup k publikovaným aplikací, jejich přenos prochází instance služby Proxy aplikace v tomto umístění.
 
@@ -78,7 +78,7 @@ Pokud máte vyhrazené sítě VPN nebo ExpressRoute propojení mezi Azure a vaš
 
 ## <a name="focus-your-optimization-strategy"></a>Zaměřte svou strategii optimalizace
 
-Je trochu, které vám pomohou řídit připojení mezi uživateli a službu Proxy aplikací. Uživatelé mohou přístup k vašim aplikacím z domácí sítě, kavárny nebo jiné zemi. Místo toho můžete optimalizovat připojení ze služby Proxy aplikace pro konektory Proxy aplikací k aplikacím. Zvažte využití následujících vzorů ve vašem prostředí.
+Je trochu, které vám pomohou řídit připojení mezi uživateli a službu Proxy aplikací. Uživatelé mohou přístup k vašim aplikacím z domácí sítě, kavárny nebo jiné země/oblasti. Místo toho můžete optimalizovat připojení ze služby Proxy aplikace pro konektory Proxy aplikací k aplikacím. Zvažte využití následujících vzorů ve vašem prostředí.
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Způsob 1: Umístění konektoru blízko aplikace
 

@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870145"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233900"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows Virtual Desktop Preview
 
 Výchozí skupina aplikace vytvořené pro nový fond hostitele Windows virtuální plochy, ve verzi Preview, publikuje také úplný desktop. Kromě toho můžete vytvořit jeden nebo více skupin aplikací RemoteApp pro fond hostitele. V tomto kurzu vytvořte skupinu aplikací RemoteApp a publikování aplikací pro jednotlivé nabídky Start.
 
-V tomto kurzu získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Vytvoření skupiny Vzdálená aplikace RemoteApp.
@@ -73,7 +73,7 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
 
 ## <a name="next-steps"></a>Další postup
 
-Po vytvoření skupiny vaší aplikace, vytvoření instančních objektů a přiřazovat role uživatelům. Zjistěte, jak to provést, najdete v kurzu pro vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell.
+V tomto kurzu jste zjistili, jak vytvořit skupiny aplikací, přidejte do ní aplikace RemoteApp a přiřadit uživatele do skupiny aplikací. Další informace o tom, jak se přihlásit k virtuálnímu klientovi Windows, i nadále připojit k virtuální ploše postupy Windows.
 
-> [!div class="nextstepaction"]
-> [Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu](create-service-principal-role-powershell.md)
+- [Připojte se ke klientovi vzdálené plochy na Windows 7 a Windows 10](connect-windows-7-and-10.md)
+- [Připojte se k Windows Virtual Desktop Preview webového klienta](connect-web.md)

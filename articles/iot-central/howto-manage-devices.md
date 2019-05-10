@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364114"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464281"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -66,7 +66,7 @@ K hromadné registraci zařízení ve vaší aplikaci:
 
 1. Vyberte **Import**.
 
-    ![Akce importu](./media/howto-manage-devices/BulkImport1.png)
+    ![Akce importu](./media/howto-manage-devices/bulkimport1a.png)
 
 1. Vyberte soubor CSV obsahující seznam ID zařízení k importu.
 
@@ -74,7 +74,7 @@ K hromadné registraci zařízení ve vaší aplikaci:
 
 1. Po dokončení importu zprávu o úspěšném dokončení se zobrazí v mřížce zařízení.
 
-    ![Importovat úspěch](./media/howto-manage-devices/BulkImport3.png)
+    ![Importovat úspěch](./media/howto-manage-devices/bulkimport3a.png)
 
 Pokud zařízení import operace se nezdaří, zobrazí chybová zpráva na zařízení mřížky. Je vygenerován soubor protokolu zachycení všech chyb, že si můžete stáhnout.
 
@@ -86,13 +86,13 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 
 1. Na levém panelu, vyberte **zrušeno přiřazení zařízení**:
 
-    ![Nepřidružená zařízení](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![Nepřidružená zařízení](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. Vyberte zařízení, které chcete přidružit šablonu:
 
 1. Vyberte **přidružit**:
 
-    ![Přidružit zařízení](./media/howto-manage-devices/UnassociatedDevices2.png)
+    ![Přidružit zařízení](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. Vyberte šablonu ze seznamu dostupných šablon a vybrat **přidružit**.
 
@@ -113,7 +113,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 1. Vyberte zařízení, která chcete exportovat a pak vyberte **exportovat** akce.
 
-    ![Export](./media/howto-manage-devices/Export1.png)
+    ![Export](./media/howto-manage-devices/export1a.png)
 
 1. Spustí se proces exportu. Můžete sledovat stav v horní části stránky mřížky.
 
@@ -121,7 +121,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 1. Vyberte **zpráva o úspěchu** stáhněte soubor do místní složky na disku.
 
-    ![Export úspěch](./media/howto-manage-devices/Export2.png)
+    ![Export úspěch](./media/howto-manage-devices/export2a.png)
 
 1. Vyexportovaný soubor CSV obsahuje následující sloupce: ID zařízení, název zařízení, zařízení klíče a X509 kryptografické otisky certifikátů:
 

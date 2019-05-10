@@ -11,21 +11,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63b707f72b6966615d09ef0b86ce3d056a39249
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623064"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465556"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
 
+## <a name="april-2019-guest-os"></a>2019 dubna hostovaného operačního systému
+
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 19-04 | [4493509] | Windows 10 Security | 6.6 | 9. dubna 2019 |
+| Rel 19-04 | [4493470] | Windows 10 Security | 5.30 | 9. dubna 2019 |
+| Rel 19-04 | [4493467] | Zabezpečení Windows | 4.65 | 9. dubna 2019 |
+| Rel 19-04 | [4493450] | Zabezpečení Windows | 3.72 | 9. dubna 2019 |
+| Rel 19-04 | [4493448] | Zabezpečení Windows | 2.85 | 9. dubna 2019 |
+| Rel 19-04 | [4493478] | Animace Flash | 3.72, 4.65, 5.30, 6.6 | 9. dubna 2019 |
+| Rel 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 9. dubna 2019 |
+| Rel 19-04 | [KB4490628] | Servisní aktualizace zásobníku | 2.85 | 12. března 2019 |
+| Rel 19-04 | [KB4474419] | Podpora SHA2 | 2.85 | 12. března 2019 |
+| Rel 19-04 | [KB4489878] | Březen kumulativní nesouvisí se zabezpečením | 2.85 | 12. března 2019 |
+| Rel 19-04 | [KB4489891] | Březen kumulativní nesouvisí se zabezpečením | 3.72 | 12. března 2019 |
+| Rel 19-04 | [KB4489881] | Březen kumulativní nesouvisí se zabezpečením | 4.65 | 12. března 2019 |
+
+[4493509]: https://support.microsoft.com/kb/4493509
+[4493470]: https://support.microsoft.com/kb/4493470
+[4493467]: https://support.microsoft.com/kb/4493467
+[4493450]: https://support.microsoft.com/kb/4493450
+[4493448]: https://support.microsoft.com/kb/4493448
+[4493478]: https://support.microsoft.com/kb/4493478
+[4493435]: https://support.microsoft.com/kb/4493435
+[KB4490628]: https://support.microsoft.com/kb/KB4490628
+[KB4474419]: https://support.microsoft.com/kb/KB4474419
+[KB4489878]: https://support.microsoft.com/kb/KB4489878
+[KB4489891]: https://support.microsoft.com/kb/KB4489891
+[KB4489881]: https://support.microsoft.com/kb/KB4489881
+
 ## <a name="march-2019-guest-os"></a>Březen 2019 hostovaného operačního systému
 
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 19-03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 12. března 2019 |
 | Rel 19-03 | [4489907] | Animace Flash | 3.71, 4.64, 5.29, 6.5 | 12. března 2019 |
@@ -67,7 +97,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 ## <a name="february-2019-guest-os"></a>. Února 2019 hostovaného operačního systému
 
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 19-02 | [4486474] | Internet Explorer | 2.83, 3.70, 4.63 | 12. února 2019 |
 | Rel 19-02 | [4487038] | Animace Flash | 3.70, 4.63, 5.28, 6.4 | 12. února 2019 |
@@ -119,7 +149,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 ## <a name="january-2019-guest-os"></a>2019 ledna hostovaného operačního systému
 
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 19-01 | [4480116] | Windows 10 Security | 6.3 | 8. ledna 2019 |
 | Rel 19-01 | [4480961] | Windows 10 Security | 5.27 | 8. ledna 2019 |
@@ -171,7 +201,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 ## <a name="december-2018-guest-os"></a>Prosince 2018 hostovaného operačního systému
 
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-12 | [4471321] | Windows 10 Security | 5.26 | 11. prosince 2018 |
 | Rel 18-12 | [4471328] | Zabezpečení Windows   | 2.81 | 11. prosince 2018 |
@@ -209,7 +239,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 ## <a name="november-2018-guest-os"></a>Hostovaný operační systém. listopadu 2018
 
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-11 | [4466536] | Internet Explorer | 2.80, 3.67, 4.60 | 13. listopadu 2018 |
 | Rel 18-11 | [4467694] | Animace Flash | 3.67, 4.60, 5.25 | 13. listopadu 2018 |
@@ -241,7 +271,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 ## <a name="october-2018-guest-os"></a>Hostovaný operační systém. října 2018
 
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-10 | [4462917] | Windows 10 Security | 5.24 | 9. října 2018 |
 | Rel 18-10 | [4462915] | Zabezpečení Windows | 2.79 | 9. října 2018 |
@@ -278,7 +308,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>Hostovaný operační systém. září 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-09 | [4457131] | Windows 10 Security | 5.23 | 11. září 2018 |
 | Rel 18-09 | [4457145] | Pouze zabezpečení Windows | 2.78 | 11. září 2018 |
@@ -300,7 +330,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4344147] | X rollup srpna zabezpečením .NET 4 | 4.58 | 14. srpna 2018 |
 
 ## <a name="august-2018-guest-os"></a>Hostovaný operační systém. srpna 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10 Security | 5.22 | 14. srpna 2018 |
 | Rel 18-08 | [4343899] | Pouze zabezpečení Windows | 2.77 | 14. srpna 2018 |
@@ -323,7 +353,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4338415] |X rollup dne zabezpečením .NET 4 |3.64 | 10. července 2018 |
 
 ## <a name="july-2018-guest-os"></a>Hostovaný operační systém. července 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-07 | [4338814] |Windows 10 Security |5.21 |10. července 2018 |
 | Rel 18-07 | [4338823] |Pouze zabezpečení Windows |2.76 |10. července 2018 |
@@ -343,7 +373,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4284815] |Souhrn bez zabezpečení dne |4.56 |12. června 2018 |
 
 ## <a name="june-2018-guest-os"></a>Hostovaný operační systém. června 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-06 | [4284880] |Windows 10 Security |5.20 |12. června 2018 |
 | Rel 18-06 | [4284867] |Pouze zabezpečení Windows |2.75 |12. června 2018 |
@@ -368,7 +398,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4132216] |Může SSU |5.20 |8. května 2018 |
 
 ## <a name="may-2018-guest-os"></a>Hostovaný operační systém. května 2018.
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-05 | [4103721], [4103727], [4103723] |Windows 10 Security |5.19 |8. května 2018 |
 | Rel 18-05 | [4103712] |Pouze zabezpečení Windows |2.74 |8. května 2018 |
@@ -388,7 +418,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 
 ## <a name="april-2018-guest-os"></a>Hostovaný operační systém. dubna 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-04 | [4093119] |Windows 10 Security |5.18 |10. dubna 2018 |
 | Rel 18-04 | [4093108] |Pouze zabezpečení Windows |2.73 |10. dubna 2018 |
@@ -402,7 +432,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4088876] |Březen kumulativní nesouvisí se zabezpečením |4.53 |13. března 2018 |
 
 ## <a name="march-2018-guest-os"></a>Hostovaný operační systém. března 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-03 | [4088787], [4088776] |Windows 10 Security |5.17 |13. března 2018 |
 | Rel 18-03 | [4088878], [4088880], [4088879] |Pouze zabezpečení Windows |2.72, 3.59, 4.52 |13. března 2018 |
@@ -415,7 +445,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 
 ## <a name="february-2018-guest-os"></a>Hostovaný operační systém. února 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-02 | [4074590], [4074588] |Windows 10 Security |5.16 |13. února 2018 |
 | Rel 18-02 | [4074587], [4074589], [4074597] |Pouze zabezpečení Windows |2.71, 3.58, 4.51 |13. února 2018 |
@@ -429,7 +459,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4054177], [4054170] |Souhrn ledna .NET |4.51 |4. ledna 2018 |
 
 ## <a name="january-2018-guest-os"></a>Hostovaný operační systém. ledna 2018
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Pouze zabezpečení Windows |2.70, 3.57, 4.50 |3. ledna 2018 |
 | Rel 18-01 | [4056890], [4056892] |Pouze zabezpečení Windows |5.15 |3. ledna 2018 |
@@ -441,7 +471,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 
 ## <a name="december-2017-guest-os"></a>Hostovaný operační systém. prosince 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17. až 12. | [4053579], [4054517] |Aktualizace zabezpečení Windows 10 |4.49, 5.14 |12. prosince 2017 |
 | Rel 17. až 12. | [4054521], [4054522], [4054523] |Pouze zabezpečení Windows |2.69, 3.56, 4.49 |12. prosince 2017 |
@@ -453,7 +483,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4049068] |Aktualizace z prosince časové pásmo |2.69, 3.56, 4.49 |12. prosince 2017 |
 
 ## <a name="november-2017-guest-os"></a>Hostovaný operační systém. listopadu 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 – 11 | [4048953] |Windows 10 updates |5.13 |14. listopadu 2017 |
 | Rel 17 – 11 | [4048960], [4048962], [4048961] |Pouze zabezpečení Windows |2.68, 3.55, 4.48 |14. listopadu 2017 |
@@ -467,7 +497,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [3191564] |Aktualizace pro Windows Management Framework 5.1  |4.48 |14. listopadu 2017 |
 
 ## <a name="october-2017-guest-os"></a>Hostovaný operační systém. října 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4041691] |Windows 10 updates |5.12 |10. října 2017 |
 | Rel 17-10 | [4041678], [4041679], [4041687] |Pouze zabezpečení Windows |2.67, 3.54, 4.47 |10. října 2017 |
@@ -481,7 +511,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4040981] |Souhrn bez zabezpečení září .NET |4.47 |12. září 2017 |
 
 ## <a name="september-2017-guest-os"></a>Hostovaný operační systém. září 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Windows 10 updates |5.11 |12. září 2017 |
 | Rel 17-09 | [4038779], [4038786], [4038793] |Pouze zabezpečení Windows |2.66, 3.53, 4.46 |12. září 2017 |
@@ -493,7 +523,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4034681] |Souhrn nesouvisí se zabezpečením. srpna |4.46 |8. srpna 2017 |
 
 ## <a name="august-2017-guest-os"></a>Hostovaný operační systém. srpna 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Windows 10 updates |5.10 |8. srpna 2017 |
 | Rel 17-07 | [4034679] |Pouze zabezpečení Windows |2.65 |8. srpna 2017 |
@@ -507,7 +537,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 17-07 | [4025336] |Souhrn bez zabezpečení dne |4.45 |11. července 2017 |
 
 ## <a name="july-2017-guest-os"></a>Hostovaný operační systém. července 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Windows 10 updates |5.9 |11. července 2017 |
 | Rel 17-07 | [4025337] |Pouze zabezpečení Windows |2.64 |11. července 2017 |
@@ -521,7 +551,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4022726] |Souhrn bez zabezpečení dne |4.44 |13. června 2017 |
 
 ## <a name="june-2017-guest-os"></a>Hostovaný operační systém. června 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 06 | [4019472] |Vylepšení kvality OS WS 2016 |5.8 |9. května 2017 |
 | Rel 17 06 | [4022722] |Pouze zabezpečení Windows |2.63 |13. června 2017 |
@@ -549,7 +579,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4014512] |Může souhrn bez zabezpečení rozhraní .NET |4.43 |9. května 2017 |
 
 ## <a name="may-2017-guest-os"></a>Hostovaný operační systém. května 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-05 | [4019472] |Vylepšení kvality OS WS 2016 |5.7 | 9. května 2017 |
 | Rel 17-05 | [4019263] |Pouze zabezpečení Windows |2.62 | 9. května 2017 |
@@ -577,7 +607,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4013418] |Servisní aktualizace zásobníku |5.7 | 14. března 2017 |
 
 ## <a name="april-2017-guest-os"></a>Hostovaný operační systém. dubna 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-04 |  [4015217]  |Vylepšení kvality OS WS 2016 | 5.6 | 11. dubna 2017 |
 | Rel 17-04 |  [4015546]  |Pouze zabezpečení Windows |2.61 | 11. dubna 2017 |
@@ -597,7 +627,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 17-04 |  [4012216]  |Březen 2017 měsíční kvality souhrn zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4.41 | 11. dubna 2017 |
 
 ## <a name="march-2017-guest-os"></a>Hostovaný operační systém. března 2017
-| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| Produktová kategorie | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-03 |  [4013429] |Vylepšení a oprav | 5.5 | 14. března 2017 |
 | Rel 17-03 |  [4012212] |Březen 2017 pouze kvality zabezpečení aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.60 |14. března 2017 |

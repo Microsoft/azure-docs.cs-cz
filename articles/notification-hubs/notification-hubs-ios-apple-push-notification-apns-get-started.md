@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 520d01327b5809d453bb777165899770ea4c130b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2793f64528baa2b9a84c671fc73bbe399e2387ea
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884605"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411613"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace pro iOS pomocí Azure Notification Hubs
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Odešlete nabízená oznámení
 > * Ověříte, že aplikace přijímá oznámení
 
-Dokončený kód v tomto kurzu lze najít v části [Github](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
+Dokončený kód v tomto kurzu lze najít v části [Github](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples). 
 
 ## <a name="prerequisites"></a>Požadavky
 

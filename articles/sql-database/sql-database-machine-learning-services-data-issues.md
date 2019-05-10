@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60702516"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232612"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Práce s daty R a SQL v Azure SQL Database Machine Learning Services (preview)
 
@@ -171,7 +171,7 @@ Pod pokličkou sloupci ze tří hodnot převést na jednosloupcovou matice. Prot
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
-|1200|1300|1400|1 500|
+|1200|1300|1400|1500|
 
 Uvědomte si však, co se stane, když změníte velikost pole `y`.
 
@@ -300,4 +300,4 @@ I tyto příklady krátký uvidíte potřeba zkontrolovat efekty převodu dat p�
 - Při přípravě vaší vstupní data pro předcházení překvapením, proveďte explicitní přetypování podle potřeby.
 - Vyhněte se předávání sloupce dat (například identifikátory GUID nebo rowguids), které způsobí chyby a nejsou vhodné pro modelování.
 
-Další informace o podporované a nepodporované typy dat R najdete v tématu [R knihovny a datové typy](/sql/advanced-analytics/r/r-libraries-and-data-types.md).
+Další informace o podporované a nepodporované typy dat R najdete v tématu [R knihovny a datové typy](/sql/advanced-analytics/r/r-libraries-and-data-types).

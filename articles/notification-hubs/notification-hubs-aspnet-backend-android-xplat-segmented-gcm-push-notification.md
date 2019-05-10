@@ -15,14 +15,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 1c777f705d9b2d3df713642349fe4dbd413e48e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af08d3ca6eaa95663b0bb669f6dc82a13df5ab39
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560648"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233106"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>Kurz: Nabízená oznámení odesílaná konkrétním zařízením s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Nabízená oznámení odesílaná konkrétním zařízením s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
+
+> [!WARNING]
+> Od 10. dubna 2018 se nepoužívá Google Google Cloud Messaging (GCM). Na serveru GCM a klientských rozhraní API jsou zastaralé a odeberou se co nejdříve 29. května 2019. Další informace najdete v tématu [GCM a FCM – nejčastější dotazy](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -38,7 +41,7 @@ V tomto kurzu provedete následující akce:
 > * Přidáte do mobilní aplikace výběr kategorií.
 > * Registrovaný pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
-> * Otestování aplikace
+> * Testování aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -308,7 +311,7 @@ Hotová aplikace teď do místního úložiště v zařízení uloží sadu kate
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Otestování aplikace
+## <a name="test-the-app"></a>Testování aplikace
 
 1. V Android Studiu spusťte aplikaci buď na zařízení s Androidem, nebo v emulátoru. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat odebírané kategorie.
 2. Zapněte jeden nebo více přepínačů kategorií a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Zaregistrované kategorie se vrátí a zobrazí se v informační zprávě.

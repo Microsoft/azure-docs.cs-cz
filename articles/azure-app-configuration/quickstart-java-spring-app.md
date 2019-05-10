@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: d023c6ec9c3d24400fd2b7b9fcce9568aa851214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202226"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408567"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Rychlý start: Vytvoření aplikace Java Spring pomocí konfigurace aplikace
 
@@ -37,11 +37,11 @@ V tomto rychlém startu provedete instalaci podporované [Java Development Kit (
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
     | Klíč | Value |
     |---|---|
-    | /Application/config.Message | Dobrý den, |
+    | /Application/config.Message | Vítejte |
 
     Ponechte **popisek** a **typ obsahu** zatím prázdný.
 
@@ -49,7 +49,7 @@ V tomto rychlém startu provedete instalaci podporované [Java Development Kit (
 
 Můžete použít [Spring Initializr](https://start.spring.io/) k vytvoření nového projektu Spring Boot.
 
-1. Přejděte na <https://start.spring.io/>.
+1. Přejděte do <https://start.spring.io/>.
 
 2. Určete následující možnosti:
 

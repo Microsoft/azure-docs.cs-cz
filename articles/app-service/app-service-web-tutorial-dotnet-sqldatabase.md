@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f010e7564f097f28269070d85e2895e73f454054
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853897"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415582"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-Nainstalujte sadu <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> se sadou funkcí **Vývoj pro ASP.NET a web**.
+Nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s **vývoj pro ASP.NET a web** pracovního vytížení.
 
 Pokud jste už sadu Visual Studio nainstalovali, přidejte do ní sady funkcí kliknutím na **Nástroje** > **Získat nástroje a funkce**.
 
@@ -63,7 +63,7 @@ Zadáním `Ctrl+F5` spusťte aplikaci bez zapnutého ladění. Aplikace se zobra
 
 ![Dialogové okno Nový projekt ASP.NET](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-Otestujte odkazy **Upravit**, **Podrobnosti** a **Odstranit**.
+Test **upravit**, **podrobnosti**, a **odstranit** odkazy.
 
 Aplikace pro připojení k databázi používá kontext databáze. V této ukázce kontext databáze používá připojovací řetězec `MyDbConnection`. Připojovací řetězec je nastavený v souboru *Web.config* a odkazuje se na něj v souboru *Models/MyDatabaseContext.cs*. Název připojovacího řetězce se používá v pozdější části kurzu připojit aplikace Azure ke službě Azure SQL Database. 
 
@@ -116,7 +116,7 @@ V dialogovém okně **Konfigurace plánu služby App Service** nastavte nový pl
 
 ![Vytvoření plánu služby App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Nastavení  | Navrhovaná hodnota | Další informace |
+| Nastavení  | Navrhovaná hodnota | Další informace získáte |
 | ----------------- | ------------ | ----|
 |**Plán služby App Service**| myAppServicePlan | [Plány služby App Service](../app-service/overview-hosting-plans.md) |
 |**Umístění**| Západní Evropa | [Oblasti Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |

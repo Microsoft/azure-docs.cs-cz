@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120853"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413645"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -35,6 +35,9 @@ Když se povolí zjišťování duplicit pomáhá udržovat přehled o řízené
 Pro obchodní proces, ve kterém jsou odesílány více zpráv v průběhu zpracování některých kontext aplikace *MessageId* může být složené identifikátor kontextu úrovni aplikace, jako je například čísla nákupních objednávek a předmět zprávy, například **12345.2017/platební**.
 
 *MessageId* může vždy být některé identifikátor GUID, ale ukotvení identifikátor obchodního procesu poskytuje předvídatelný opakovatelnosti, který je požadován pro efektivní využití funkce vyhledávání duplicit.
+
+> [!NOTE]
+> Pokud je povolená detekce duplicit a nejsou nastavené sesion ID nebo oddíl klíč, ID zprávy slouží jako klíč oddílu. Pokud také není nastavené ID zprávy, knihovny .NET a AMQP automaticky generovat zprávu ID zprávy. Další informace najdete v tématu [použití klíčů vytvoření oddílu](service-bus-partitioning.md#use-of-partition-keys).
 
 ## <a name="enable-duplicate-detection"></a>Povolit vyhledávání duplicit
 

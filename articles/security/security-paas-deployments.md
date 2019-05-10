@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení nasazení PaaS | Dokumentace Microsoftu
-description: " Vysvětlení zabezpečení výhody PaaS a další modely služeb v cloudu a přečtěte si doporučené postupy pro zabezpečení vašeho nasazení Azure PaaS. "
+title: Osvědčené postupy pro zabezpečení nasazení PaaS – Microsoft Azure
+description: Přečtěte si osvědčené postupy pro navrhování, sestavování a správu zabezpečené cloudové aplikace v Azure a pochopit výhody zabezpečení PaaS srovnání s jinými modely cloudové služby.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107434"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231114"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -29,6 +29,8 @@ Tento článek obsahuje informace, které vám pomůžou:
 - Vyhodnocení výhody zabezpečení platforma jako služba (PaaS) a další modely cloudové služby
 - Změnit váš výběr zabezpečení z zaměřené na síť na hraniční zaměřená na identitu zabezpečení přístupu
 - Implementace obecné PaaS osvědčené postupy doporučení pro zabezpečení
+
+[Vývoj zabezpečených aplikací v Azure](abstract-develop-secure-apps.md) je obecné informace k ovládacím prvkům, měli byste zvážit v jednotlivých fázích životního cyklu vývoje softwaru při vývoji aplikací pro cloud a bezpečnostní otázky.
 
 ## <a name="cloud-security-advantages"></a>Výhody zabezpečení cloudu
 Existují výhody zabezpečení v cloudu. V místním prostředí, organizace pravděpodobně mají dosud nevyřešených zodpovědnosti a omezené prostředky, které jsou k dispozici investice do zabezpečení, který vytvoří prostředí, kde se útočníci zneužít slabá místa na všech úrovních.
@@ -155,6 +157,10 @@ Použití [Azure Application Insights](https://azure.microsoft.com/documentation
 
 Application Insights obsahuje řadu nástrojů pro interakci se shromažďovanými daty. Application Insights ukládá svoje data do běžného úložiště. To můžete využít výhod sdílenou funkci, jako je například výstrahy, řídicí panely a hloubková analýza s využitím jazyka dotaz Kusto.
 
+## <a name="perform-security-penetration-testing"></a>Provádět testování průniku zabezpečení
+Ověřování ochrana zabezpečení je důležité jako další funkce testování. Ujistěte se, [testování průniku](azure-security-pen-testing.md) standardní součástí procesu sestavení a nasazení. Plánování testů pravidelných bezpečnostních a zjišťování u nasazených aplikací, jejichž ohrožení zabezpečení a monitorování pro otevření portů, koncových bodů a útoky.
+
+Testování argumentu neurčité představuje metodu pro vyhledání chyby programu (kód chyby) zadáním poškozený vstupní data a rozhraní programu (vstupní body), které analyzovat a tato data využívat. [Zjišťování ohrožení zabezpečení Microsoft](https://www.microsoft.com/en-us/security-risk-detection/) je založené na cloudu nástroj, který vám pomůže hledat chyby a další chyby zabezpečení v softwaru před nasazením do Azure. Nástroj je určen k zachytávání chyb zabezpečení před nasazením softwaru, takže není nutné opravit chybu, zacházet s chybovými ukončeními nebo reakce na útok po vydání tohoto softwaru.
 
 
 ## <a name="next-steps"></a>Další postup
@@ -166,6 +172,8 @@ V tomto článku jsme se zaměřili na výhody zabezpečení nasazení služby A
 - Azure Cache for Redis
 - Azure Service Bus
 - Brány firewall webových aplikací
+
+Zobrazit [vývoj zabezpečených aplikací v Azure](abstract-develop-secure-apps.md) bezpečnostní otázky a ovládacích prvků, měli byste zvážit v jednotlivých fázích životního cyklu vývoje softwaru při vývoji aplikací pro cloud.
 
 Zobrazit [osvědčené postupy zabezpečení Azure a vzory](security-best-practices-and-patterns.md) pro další doporučené postupy zabezpečení, mají použít, když jste návrhu, nasazení a správa cloudových řešení pomocí služby Azure.
 

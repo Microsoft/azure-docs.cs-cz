@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f88643000b85965b2f275cc6e7494f427d0fe43e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191027"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231147"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -38,7 +38,7 @@ Na konci tohoto rychlého startu přijmete přihlášení pracovního a školní
 
 Abyste mohli začít, musíte splnit tyto předpoklady:
 
-* Nainstalována aplikace Visual Studio 2015 Update 3 nebo Visual Studio 2019. Nemáte ji? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/)
+* Máte Visual Studio 2015 Update 3 nebo novější. Nemáte ji? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Scénář: Přihlášení uživatele z pracovním a školním účtům v aplikaci ASP.NET
 
@@ -70,9 +70,10 @@ Pokud si místo toho chcete stáhnout projekt sady Visual Studio této ukázky, 
 ## <a name="step-2-create-your-aspnet-project"></a>Krok 2: Vytvoření projektu ASP.NET
 
 1. V sadě Visual Studio přejděte na **Soubor > Nový > Projekt**.
-2. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)**.
-3. Pojmenujte aplikaci a vyberte **OK**.
-4. Vyberte **Prázdné** a zaškrtnutím políčka přidejte reference **MVC**.
+2. Pro **typ projektu**vyberte **webové**a pak vyberte **webová aplikace ASP.NET (.NET Framework)**.
+3. Pojmenujte svoji aplikaci a vyberte **vytvořit**.
+4. Vyberte **prázdný** a pak vyberte **MVC** pod **přidat složky a základní odkazy** přidat odkazy na MVC.
+5. Vyberte **Vytvořit**.
 
 ## <a name="step-3-add-authentication-components"></a>Krok 3: Přidání součástí ověřování
 
@@ -125,7 +126,7 @@ Postup vytvoření *počáteční třídy* middlewaru OWIN:
 Vytvořte nový kontroler, který zpřístupní metody přihlášení a odhlášení.
 
 1.  Pravým tlačítkem myši klikněte na složku **Kontrolery** a vyberte **Přidat > Kontroler**.
-2.  Vyberte **Kontroler MVC (verze .NET) – prázdný**.
+2.  Vyberte **Kontroler MVC {version} – prázdný**.
 3.  Vyberte **Přidat**.
 4.  Pojmenujte ho `HomeController` a vyberte **Přidat**.
 5.  Přidejte obory názvů **OWIN** do této třídy:
@@ -288,7 +289,7 @@ Výběrem odkazu zobrazíte deklarace identity uživatele. Tato akce vás převe
 
  Měli byste vidět tabulku obsahující základní vlastnosti přihlášeného uživatele:
 
-| Vlastnost | Hodnota | Popis |
+| Vlastnost | Value | Popis |
 |---|---|---|
 | Název | {User Full Name} | Jméno a příjmení uživatele |
 | Uživatelské jméno | <span>user@domain.com</span> | Uživatelské jméno identifikující přihlášeného uživatele |

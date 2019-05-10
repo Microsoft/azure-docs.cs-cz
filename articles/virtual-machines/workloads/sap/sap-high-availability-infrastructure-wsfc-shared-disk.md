@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b729327187a52f36d50f8a754f5521527bb07ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717409"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408777"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Připravit infrastrukturu Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro SAP ASCS/SCS
 
@@ -33,7 +33,7 @@ ms.locfileid: "60717409"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
-[tuning-failover-cluster-network-thresholds]:https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
@@ -555,7 +555,7 @@ Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SC
 | --- | --- |
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Hodnota |120000 |
+| Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **Tabulka 3:** Změnit první parametr protokolu TCP/IP
@@ -566,7 +566,7 @@ Pak přidejte tato položka registru Windows na oba uzly clusteru Windows pro SA
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Hodnota |120000 |
+| Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **Tabulka 4:** Změňte druhý parametr protokolu TCP/IP
@@ -739,8 +739,9 @@ Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
 Po úspěšné instalaci clusteru převzetí služeb při selhání Windows, budete muset změnit některé prahové hodnoty tak, aby se přizpůsobit převzetí služeb při selhání detekce podmínky v Azure. Změnit parametry jsou dokumentovány v článku [ladění prahové hodnoty sítě clusteru převzetí služeb při selhání][tuning-failover-cluster-network-thresholds]. Za předpokladu, že dva virtuální počítače, které tvoří konfiguraci clusteru Windows pro ASCS/SCS jsou ve stejné podsíti, změňte následující parametry na tyto hodnoty:
 
-- SameSubNetDelay = 2
+- SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
 
 Tato nastavení se testují se zákazníky a nabízejí dobrý ohrožení zabezpečení. Jsou dostatečně odolné, ale také poskytují převzetí služeb při selhání, který je dostatečně rychle, aby se ve skutečné chybové podmínky softwaru SAP nebo v uzlu nebo selhání virtuálního počítače.
 

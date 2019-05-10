@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 654528ed6137ee62ea22d552d36fda5ac5331adc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688656"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233439"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -32,7 +32,6 @@ Jako _operátor_ můžete pomocí uživatelského rozhraní Azure IoT Central sp
 - Konfigurovat zařízení
 - Řešit potíže a odstraňovat problémy se zařízeními
 - Zřizovat nová zařízení.
-
 
 ## <a name="use-the-left-navigation-menu"></a>Použití levé navigační nabídky
 
@@ -57,6 +56,9 @@ Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
 ![Volba motivu uživatelského rozhraní](media/overview-iot-central-tour/themes.png)
 
+> [!NOTE]
+> Možnost si vybrat mezi světlé a tmavé motivy není k dispozici, pokud váš správce nakonfiguroval vlastní motiv pro aplikaci.
+
 ## <a name="dashboard"></a>Řídicí panel
 
 ![Řídicí panel](media/overview-iot-central-tour/homepage.png)
@@ -78,7 +80,7 @@ Zobrazí se stránka Průzkumník _zařízení_ v aplikaci Azure IoT Central, se
 
 Stránka _Device Sets_ (Sady zařízení) obsahuje sady zařízení vytvořené tvůrcem. Sada zařízení je kolekce souvisejících zařízení. Tvůrce definuje dotaz, který určí zařízení obsažená v určité sadě zařízení. Sady zařízení se používají při přizpůsobování analýz ve vaší aplikaci. Další informace najdete v článku [Použití sad zařízení v aplikaci Azure IoT Central](howto-use-device-sets.md).
 
-## <a name="analytics"></a>Analýzy
+## <a name="analytics"></a>Analýza
 
 ![Stránka Analytics (Analýzy)](media/overview-iot-central-tour/analytics.png)
 
@@ -104,7 +106,7 @@ Stránka souvislá datová export je, kde správce definuje, jak exportovat data
 
 ## <a name="administration"></a>Správa
 
-![Stránka Administration (Správa)](media/overview-iot-central-tour/administration.png)
+![Stránka Správa](media/overview-iot-central-tour/administration.png)
 
 Stránka správy obsahuje odkazy na nástroje používané správcem, třeba k definování uživatelů a rolí v aplikaci. Další informace najdete v článku [Správa aplikace Azure IoT Central](howto-administer.md).
 

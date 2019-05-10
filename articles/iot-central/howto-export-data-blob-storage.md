@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: f81ca34931e2ee4bce35fa06195fb64c47ef9a7b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682038"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464630"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportovat data do úložiště objektů Blob v Azure
 
@@ -57,14 +57,14 @@ Teď, když máte exportovat data do cílového úložiště, nastavit nepřetr�
     > [!Note]
     > Pokud nevidíte průběžný Export dat v nabídce vlevo, nejste správcem ve vaší aplikaci. Obraťte se na správce nastavit export dat.
 
-    ![Vytvořit nový cde centra událostí](media/howto-export-data/export_menu.PNG)
+    ![Vytvořit nový cde centra událostí](media/howto-export-data/export_menu1.png)
 
 3. Vyberte **+ nová** tlačítko v pravém horním rohu. Zvolte **Azure Blob Storage** jako cíl pro export. 
 
     > [!NOTE] 
     > Maximální počet exportů na aplikaci je pět. 
 
-    ![Vytvořit nový nepřetržitý export dat](media/howto-export-data/export_new.PNG)
+    ![Vytvořit nový nepřetržitý export dat](media/howto-export-data/export_new1.png)
 
 4. V rozevíracím seznamu vyberte vaše **obor názvů účtu úložiště**. V seznamu, který je můžete také vybrat jako poslední možnost **zadejte připojovací řetězec**. 
 
@@ -87,7 +87,7 @@ Teď, když máte exportovat data do cílového úložiště, nastavit nepřetr�
 
 6. Nepřetržitý export dat zapnout, ujistěte se, že **export dat** je **na**. Vyberte **Uložit**.
 
-  ![Nepřetržitý export dat konfigurace](media/howto-export-data/export-list-blob.png)
+   ![Nepřetržitý export dat konfigurace](media/howto-export-data/export-list-blob.png)
 
 7. Po několika minutách by se vaše data zobrazí v zvolený cíl.
 

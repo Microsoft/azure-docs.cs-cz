@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 2358cb2ea411a0077f34798183da30bd32ae067b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925129"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233494"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Strojové učení funkce v Průzkumníku dat Azure
 
@@ -59,7 +59,7 @@ demo_clustering1
 | count
 ```
 
-|Počet |
+|Count |
 |---------|
 |972    |
 
@@ -96,7 +96,7 @@ demo_clustering1
 | 2016-08-23 15:00:58.2222707 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 10007007   | 8215dcf6-2de0-42bd-9c90-181c70486c9c |
 | 2016-08-23 15:00:59.9382620 | scus   | su3       | 90d3d2fc7ecc430c9621ece335651a01 | 10007006   | 451e3c4c-0808-4566-a64d-84d85cf30978 |
 
-### <a name="use-autocluster-for-single-record-set-clustering"></a>Použití `autocluster()` pro jeden záznam, nastavte clustering
+### <a name="use-autocluster-for-single-record-set-clustering"></a>Použít autocluster() pro jeden záznam, nastavte clustering
 
 Přestože jsou nějaké výjimky menší než tisíc, je stále obtížné najít běžné segmenty, protože existuje více hodnot v jednotlivých sloupcích. Můžete použít [ `autocluster()` ](/azure/kusto/query/autoclusterplugin) modul plug-in, který okamžitě extrahovat malé seznam běžných segmentů a najít zajímavé clustery během dvou minut zásobníku, jak je znázorněno v následující dotaz:
 
@@ -108,7 +108,7 @@ demo_clustering1
 | evaluate autocluster()
 ```
 
-| SegmentId | Počet | Procento | Oblast | ScaleUnit | DeploymentId | ServiceHost |
+| SegmentId | Count | Procenta | Oblast | ScaleUnit | DeploymentId | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
@@ -120,7 +120,7 @@ Se zobrazí ve výsledcích výše uvedené, že nejdominantnějšími segment o
 
 Autocluster používá vlastního algoritmu pro více dimenzí dolování a extrahování zajímavé segmenty. "Zajímavé" znamená, že každý segment má významné pokrytí sady záznamů a sadu funkcí. Segmenty jsou také se rozcházela, což znamená, že každý z nich se značně liší od ostatních. Nejméně jednu z těchto segmentů můžou být relevantní pro proces RCA. Chcete-li minimalizovat, analýzu segmentů a hodnocení, extrahuje autocluster pouze malý úsek seznamu.
 
-### <a name="use-basket-for-single-record-set-clustering"></a>Použití `basket()` pro jeden záznam, nastavte clustering
+### <a name="use-basket-for-single-record-set-clustering"></a>Použít basket() pro jeden záznam, nastavte clustering
 
 Můžete také použít [ `basket()` ](/azure/kusto/query/basketplugin) modul plug-in, jak je znázorněno v následující dotaz:
 
@@ -132,7 +132,7 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| SegmentId | Počet | Procento | Oblast | ScaleUnit | DeploymentId | Zarážka s trasováním | ServiceHost |
+| SegmentId | Count | Procenta | Oblast | ScaleUnit | DeploymentId | Zarážka s trasováním | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 642 | 66.0493827160494 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |

@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 05/07/2019
 ms.author: abnarain
-ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61261974"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232424"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
 
+- **Tok dat**: Spuštění [toku dat](concepts-data-flow-overview.md) ve spravovaném výpočetním prostředí Azure.  
 - **Přesun dat**: Kopírování dat mezi úložišti dat ve veřejné síti a úložišti dat v privátní síti (místní nebo virtuální privátní síť). Poskytuje podporu vestavěných konektorů, převodu formátu, mapování sloupců a výkonného a škálovatelného přenosu dat.
-- **Odesílání aktivit**:  Odesílání a monitorování aktivit transformace spuštěných v různých výpočetních službách, jako je například Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
+- **Odesílání aktivit**:  Odesílání a monitorování aktivit transformace spuštěných v různých výpočetních službách, jako je Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
 - **Spouštění balíčků služby SSIS**: Nativní spouštění balíčků SQL Server Integration Services (SSIS) v prostředí spravované výpočetní prostředky Azure.
 
-Aktivita ve službě Data Factory určuje akci, která se má provést. Propojená služba určuje cílové úložiště dat nebo výpočetní službu. Prostředí Integration Runtime představuje spojení mezi aktivitou a propojenými službami.  Na toto prostředí se odkazuje z propojené služby. Poskytuje výpočetní prostředí, ve kterém se příslušná aktivita buď spustí, nebo se z něj odešle.  Tímto způsobem se dá aktivita co nejefektivněji provést v oblasti, která je nejblíž cílovému úložišti dat nebo výpočetní službě, a zároveň vyhovět potřebám zabezpečení a dodržování předpisů.
+Aktivita ve službě Data Factory určuje akci, která se má provést. Propojená služba určuje cílové úložiště dat nebo výpočetní službu. Prostředí Integration Runtime představuje spojení mezi aktivitou a propojenými službami.  Odkazuje na propojenou službu nebo aktivitu a poskytuje výpočetní prostředí, kde aktivita běží na nebo se z něj odešle. Tímto způsobem se dá aktivita co nejefektivněji provést v oblasti, která je nejblíž cílovému úložišti dat nebo výpočetní službě, a zároveň vyhovět potřebám zabezpečení a dodržování předpisů.
 
 ## <a name="integration-runtime-types"></a>Typy prostředí Integration Runtime
 Služba Data Factory nabízí tři typy prostředí Integration Runtime. Z nich si můžete vybrat ten, který nejlépe vyhovuje hledaným funkcím integrace dat a potřebám síťového prostředí.  Jedná se o tyto tři typy:
@@ -39,8 +40,8 @@ Následující tabulka obsahuje informace o podpoře funkcí a sítí pro každ�
 
 Typ prostředí IR | Veřejná síť | Privátní síť
 ------- | -------------- | ---------------
-Azure | Přesuny dat<br/>Odesílání aktivit | &nbsp;
-V místním prostředí | Přesuny dat<br/>Odesílání aktivit | Přesuny dat<br/>Odesílání aktivit
+Azure | Tok dat<br/>Přesun dat<br/>Odesílání aktivit | &nbsp;
+V místním prostředí | Přesun dat<br/>Odesílání aktivit | Přesun dat<br/>Odesílání aktivit
 Azure-SSIS | Spouštění balíčků služby SSIS | Spouštění balíčků služby SSIS
 
 Následující diagram znázorňuje, jak se dají různá prostředí Integration Runtime používat v kombinaci, aby nabízela bohaté funkce integrace dat a podporu sítí:
@@ -50,20 +51,24 @@ Následující diagram znázorňuje, jak se dají různá prostředí Integratio
 ## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
 Prostředí Azure Integration Runtime nabízí tyto funkce:
 
+- Spouštění toků dat v Azure 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu.
-- Odesílání následujících aktivit transformace ve veřejné síti: Aktivita HDInsight Hive, aktivita Pig s HDInsight, aktivita MapReduce s HDInsight, aktivita HDInsight Spark, aktivita streamování HDInsight, aktivita provedení dávky služby Machine Learning, aktivity aktualizace prostředku služby Machine Learning, aktivity uložené procedury Aktivita data Lake Analytics U-SQL, vlastní aktivita .NET, webová aktivita, aktivita vyhledávání a aktivita načtení metadat.
+- Odesílání následujících aktivit transformace ve veřejné síti: Poznámkového bloku Databricks / Jar / Python aktivity, aktivitu HDInsight Hive, aktivita Pig s HDInsight, aktivita MapReduce s HDInsight, aktivita HDInsight Spark, aktivita streamování HDInsight, aktivita provedení dávky služby Machine Learning, Machine Learning aktualizace prostředku aktivity, aktivita uložené procedury, aktivita Data Lake Analytics U-SQL, vlastní aktivita .NET, webová aktivita, aktivita vyhledávání a aktivita načtení metadat.
 
 ### <a name="azure-ir-network-environment"></a>Síťové prostředí Azure IR
-Prostředí Azure Integration Runtime podporuje připojení k úložištím dat a výpočetním službám ve veřejné síti s veřejně přístupnými koncovými body. Pro prostředí Azure Virtual Network používejte prostředí Integration Runtime v místním prostředí.
+Prostředí Azure Integration Runtime podporuje připojení k úložištím dat a výpočetní služby s veřejně přístupnými koncovými body. Pro prostředí Azure Virtual Network používejte prostředí Integration Runtime v místním prostředí.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Výpočetní prostředky a škálování prostředí Azure IR
 Prostředí Azure Integration Runtime poskytuje v rámci Azure plně spravované výpočetní prostředí bez serveru.  Nemusíte si dělat starosti se zřizováním infrastruktury, instalací softwaru, opravami ani škálováním kapacity.  Kromě toho platíte jenom po dobu, kdy prostředí opravdu používáte.
 
-Prostředí Azure Integration Runtime poskytuje nativní výpočetní prostředí pro zabezpečené, spolehlivé a vysoce výkonné přesuny dat mezi cloudovými úložišti dat.  Můžete nastavit počet jednotek integrace dat, který se má použít v aktivitě kopírování, a velikost výpočetních prostředků Azure IR se elasticky vertikálně navýší, aniž byste museli velikost prostředí Azure Integration Runtime explicitně upravovat.
+Prostředí Azure Integration Runtime poskytuje nativní výpočetní prostředí pro zabezpečené, spolehlivé a vysoce výkonné přesuny dat mezi cloudovými úložišti dat.  Můžete nastavit počet jednotek integrace dat, který se má použít v aktivitě kopírování, a velikost výpočetních prostředků Azure IR se elasticky vertikálně navýší, aniž byste museli velikost prostředí Azure Integration Runtime explicitně upravovat. 
 
 Odesílání aktivit je nenáročná operace, která zajišťuje směrování aktivity do cílové výpočetní služby, takže pro tento scénář není nutné vertikálně navyšovat velikost výpočetních prostředků.
 
 Informace o vytváření a konfiguraci prostředí najdete v návodu k vytvoření a konfiguraci prostředí Azure IR mezi příručkami s postupy. 
+
+> [!NOTE] 
+> Prostředí Azure Integration runtime obsahuje vlastnosti související s runtime toku dat, která definuje základní výpočetní infrastruktura, která se použije ke spuštění toků dat na. 
 
 ## <a name="self-hosted-integration-runtime"></a>Prostředí Integration Runtime v místním prostředí
 Prostředí IR v místním prostředí nabízí tyto funkce:
@@ -112,7 +117,13 @@ Pro prostředí Azure IR můžete nastavit určité umístění a v tom případ
 Pokud se rozhodnete použít automatický překlad umístění prostředí Azure IR, což je výchozí nastavení: 
 
 - V případě aktivity kopírování se služba ADF pokusí automaticky zjistit vaše úložiště dat jímky a zdrojové úložiště dat a zvolí nejlepší umístění buď ve stejné oblasti, pokud je dostupné nebo nejbližší na stejném území, nebo pokud nejsou zjistitelné, použije jako alternativu oblast datové továrny.
+
 - V případě provádění aktivity Lookup a GetMetadata a odesílání aktivity transformace služba ADF použije prostředí IR v oblasti datové továrny.
+
+- Tok dat ADF používat prostředí IR v oblast datové továrny. 
+
+  > [!TIP] 
+  > Ujistěte se, že spuštění toku dat ve stejné oblasti jako váš odpovídající úložiště dat (Pokud je to možné) by bylo vhodné. Můžete toho dosáhnout reakcí na Incidenty automaticky vyřešit Azure (Pokud je stejné jako umístění datové továrny umístění úložiště dat), nebo tak, že vytvoříte novou instanci prostředí Azure IR ve stejné oblasti jako svá úložiště dat a následné provádění toku dat v něm. 
 
 V zobrazení monitorování aktivit kanálu v uživatelském rozhraní nebo datové části monitorování aktivit můžete monitorovat, které umístění prostředí IR se při provádění aktivit použije.
 
@@ -137,7 +148,7 @@ Následující diagram znázorňuje nastavení umístění služby Data Factory 
 
 ## <a name="determining-which-ir-to-use"></a>Určení toho, které prostředí IR používat
 
-### <a name="copy-activity"></a>Aktivita kopírování
+### <a name="copy-activity"></a>Zkopírovat aktivitu
 
 V případě aktivity kopírování jsou zapotřebí služby propojené se zdrojem a jímkou, které určují směr toku dat. Pomocí následující logiky se dá určit, která instance prostředí Integration Runtime se ke kopírování používá: 
 
@@ -153,8 +164,13 @@ Aktivity Lookup a GetMetadata se provádí v prostředí Integration Runtime př
 
 Každá aktivita transformace má cílovou výpočetní propojenou službu, která odkazuje na určité prostředí Integration Runtime. Z této instance prostředí Integration Runtime se aktivita transformace odesílá.
 
+### <a name="data-flow-activity"></a>Aktivitu toku dat
+
+Aktivitu toku dat je provést v prostředí integration runtime, který je přiřazen. 
+
 ## <a name="next-steps"></a>Další postup
 Viz následující články:
 
+- [Vytvoření prostředí Azure integration runtime](create-azure-integration-runtime.md)
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)
 - [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md). Tento článek dál navazuje na tento kurz a obsahuje pokyny k používání Azure SQL Database Managed Instance a připojení IR k virtuální síti. 

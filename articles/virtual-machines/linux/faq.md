@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 8d421adfae335a976485ed463a69484a74be5b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729524"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463585"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Časté otázky o virtuálních počítačích s Linuxem
 Tento článek se zabývá některými běžnými dotazy o virtuálních počítačích s Linuxem, které jsou vytvořené v Azure s využitím modelu nasazení Resource Manager. Windows verzi tohoto tématu naleznete v části [nejčastější dotazy o Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -64,36 +64,26 @@ Uživatelská jména by měl být dlouhý 1 až 32 znaků.
 
 Nejsou povoleny následující uživatelská jména:
 
-<table>
-    <tr>
-        <td style="text-align:center">správce </td><td style="text-align:center"> admin </td><td style="text-align:center"> uživatel </td><td style="text-align:center"> uživatele User1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test </td><td style="text-align:center"> uživatel2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŽIVATEL3</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">zálohování </td><td style="text-align:center"> konzola </td><td style="text-align:center"> David </td><td style="text-align:center"> hosta</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">Jan </td><td style="text-align:center"> vlastník </td><td style="text-align:center"> kořen </td><td style="text-align:center"> server</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">SQL </td><td style="text-align:center"> podpora </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> Sys</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> Uživatel4 </td><td style="text-align:center"> user5</td>
-    </tr>
-</table>
-
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na heslo při vytváření virtuálního počítače?
-Hesla musí mít délku 6 až 72 znaků a musí splňovat 3 ze 4 bezpečnostních požadavků následující:
+
+Existují různé heslo požadavky na délku, v závislosti na tom nástroje, které používáte:
+ - Portál - 12 až 72 znaků
+ - PowerShell – 8 až 123 znaků
+ - Rozhraní příkazového řádku – mezi 12 až 123
+ 
+
+Hesla také musí splňovat 3 ze 4 bezpečnostních požadavků následující:
 
 * Mít nižší znaků
 * Horní znaky

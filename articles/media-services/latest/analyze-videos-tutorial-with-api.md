@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: cf1ea32e9b023db2e1a066c2baa6adf46ab51066
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ead6fdc0ade4a24d162603b9dc3749726c0d8002
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152751"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415644"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Kurz: Analýza videa pomocí Media Services v3 pomocí .NET
 
@@ -100,7 +100,7 @@ Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvyk
 
 #### <a name="transform"></a>Transformace
 
-Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má vytvořit jako výstup. Jak je vidět ve výše uvedeném kódu, povinným parametrem je objekt **TransformOutput**. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa a/nebo audia, které se používají ke generování požadovaného objektu **TransformOutput**. V tomto příkladu se používá předvolba **VideoAnalyzerPreset** a jazyk („en-US“) se předává jejímu konstruktoru. Tato předvolba vám umožňuje z videa extrahovat několik audio a video přehledů. Pokud potřebujete z videa extrahovat pouze několik audio přehledů, můžete použít předvolbu **AudioAnalyzerPreset**. 
+Při vytváření nového [transformace](https://docs.microsoft.com/rest/api/media/transforms) instanci, musíte určit, co chcete, aby vytvoří jako výstup, **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa a/nebo audia, které se používají ke generování požadovaného objektu **TransformOutput**. V tomto příkladu **VideoAnalyzerPreset** přednastavený kontext se používá a jazyka ("en US") je předán konstruktoru (`new VideoAnalyzerPreset("en-US")`). Tato předvolba vám umožňuje z videa extrahovat několik audio a video přehledů. Pokud potřebujete z videa extrahovat pouze několik audio přehledů, můžete použít předvolbu **AudioAnalyzerPreset**. 
 
 Než začnete vytvářet **transformaci**, ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže).  Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 

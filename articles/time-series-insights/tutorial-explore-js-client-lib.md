@@ -6,15 +6,15 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 05/06/2019
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: a91afdbeaa2ced37b237b4f2b80a8dbbe2c4a05c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cb1d06872f7eae04bac934220da9d58982d0f4b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717218"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233740"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -32,6 +32,7 @@ Konkrétně se dozvíte o:
 > [!NOTE]
 > * V tomto kurzu použijete bezplatnou, hostovaný [ukázkové webové služby Time Series Insights](https://insights.timeseries.azure.com/clientsample).
 > * Time Series Insights ukázkové aplikace zdrojové soubory jsou k dispozici v [ukázkového úložiště Githubu](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+> * Přečtěte si [TSI klienta referenční dokumentaci](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
 ## <a name="video"></a>Video
 
@@ -60,8 +61,6 @@ V celém tomto kurzu se používá bezplatná, hostovaný Time Series Insights u
    [![Hlavní stránka ukázkové TSI klienta po přihlášení](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>Zdrojový kód a struktura stránky
-
-<div id="page-source-and-structure"></div>
 
 První, Podívejme se [HTML a JavaScript zdrojový kód](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) vykreslené webu stránkovaného fondu:
 
@@ -119,6 +118,9 @@ Díky těmto zjednodušení můžou vývojáři vytvářet komponenty uživatels
 
    [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
+> [!TIP]
+> Další informace o podporovaných Microsoft knihovny ADAL najdete v tématu [ADAL referenční dokumentaci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
+
 ### <a name="control-identification"></a>Identifikace ovládacího prvku
 
 V tomto příkladu zadaná `<div>` prvky jsou uspořádány v nadřazeném prvku `<body>` element poskytují rozumné rozložení pro všechny ovládací prvky grafu vykreslen na stránce.
@@ -163,7 +165,7 @@ Sestavování a vykreslení ovládacích prvků grafu Následuje obecný vzor. T
    | `splitByObject`   | Řetězcová vlastnost, podle které chcete provést rozdělení (volitelné – může být null) | `{property: 'Station', type: 'String'}` |
    | `color`         | Barva objektů, které chcete vykreslit | `'pink'` |
    | `alias`           | Popisný název agregačního výrazu. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné). | Další informace najdete v části [rozbalovací kontextové nabídky](#contextMenu) |
+   | `contextMenuActions` | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné). | Další informace najdete v části [rozbalovací kontextové nabídky](#pop-up-context-menus) |
 
 1. Vyžádejte agregovaná data zavoláním dotazu na TSI pomocí rozhraní API `TsiClient.Server`.
 
@@ -255,8 +257,6 @@ K vizuálnímu vyznačení incidentů se používají kosočtvercové značky a 
 
 ### <a name="pop-up-context-menus"></a>Automaticky otevírané místní nabídky
 
-<div id="contextMenu"></div>
-
 Další pokročilé funkce je možnost vytvářet vlastní místní nabídky (klikněte pravým tlačítkem na místní nabídky). Vlastní místní nabídky jsou užitečné pro umožnění akcí a logických dalších kroků v rámci aplikace.
 
 Vyhledejte kód `// Example 13/14/15` komentář. Tento kód vykreslení spojnicový graf pod nadpisem `"Line Chart with Context Menu to Create Pie/Bar Chart"` a graf je vázán na `<div>` element s HTML `id` hodnota `chart13`.
@@ -321,3 +321,8 @@ Nebo zobrazení souborů zdrojového TSI ukázkové aplikace:
 
 > [!div class="nextstepaction"]
 > [TSI úložiště ukázkové aplikace](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+
+Přečtěte si referenční dokumentaci rozhraní API klienta TSI:
+
+> [!div class="nextstepaction"]
+> [Referenční dokumentace rozhraní API služby TSI](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)

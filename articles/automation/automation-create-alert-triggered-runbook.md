@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 892906089ae3538b3427d97165173fd82621f58a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5d8e7bba6d43ba1daa3173ce5d7e043e2310a482
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920010"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229975"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Pomocí upozornění můžete aktivovat runbooku Azure Automation
 
@@ -33,7 +33,7 @@ Runbooky automation můžete používat čtyři typy výstrah:
 
 Pokud upozornění volá runbook, je vlastní volání požadavek HTTP POST webhooku. Text požadavku POST obsahuje nesprávný formát JSON objektu, který má užitečným vlastnostem, které se vztahují na upozornění. V následující tabulce jsou uvedeny odkazy na schéma datové části pro každý typ výstrahy:
 
-|Výstrahy  |Popis|Datová část schématu  |
+|Upozornění  |Popis|Datová část schématu  |
 |---------|---------|---------|
 |[Běžné upozornění](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Běžné výstrah schématu, který standardizuje možnosti spotřeby oznámení výstrah v Azure ještě dnes.|[Společné schéma datová část oznámení](../azure-monitor/platform/alerts-common-schema-definitions.md?toc=%2fazure%2fautomation%2ftoc.json#sample-alert-payload)|
 |[Upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Odešle oznámení, když žádné nové události v protokolu aktivit Azure odpovídá konkrétní podmínky. Například, když `Delete VM` probíhá operace **myProductionResourceGroup** nebo při vytvoření nové události služby Azure Service Health s **aktivní** stav se zobrazí.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -60,6 +60,14 @@ Použijte tento příklad k vytvoření sady runbook volá **Stop-AzureVmInRespo
 5. Zkopírujte následující příklad Powershellu do **upravit** stránky.
 
     ```powershell-interactive
+    [OutputType("PSAzureOperationResponse")]
+    param
+    (
+        [Parameter (Mandatory=$false)]
+        [object] $WebhookData
+    )
+    $ErrorActionPreference = "stop"
+
     if ($WebhookData)
     {
         # Get the data object from WebhookData

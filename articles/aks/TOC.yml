@@ -140,6 +140,8 @@
           href: azure-files-dynamic-pv.md
         - name: Soubory Azure – statické
           href: azure-files-volume.md
+        - name: Server systému souborů NFS – statické
+          href: azure-nfs-volume.md
     - name: Konfigurace sítí
       items:
         - name: Vytvoření nebo použití existující virtuální sítě

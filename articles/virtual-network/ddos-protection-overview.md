@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
-ms.openlocfilehash: c639bc1edceba9c9da08ee6bcc54c860f857cd33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41e9d88df49d153089e6dc7a12c5873ccc167279
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696022"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209456"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection Standard
 
@@ -29,7 +29,7 @@ Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozb�
 Azure DDoS protection v kombinaci s aplikací osvědčené postupy pro navrhování, poskytují ochranu před útoky DDoS. Azure DDoS protection nabízí následující úrovně služeb:
 
 - **Základní**: Automaticky povolené v rámci platformy Azure. Monitorování neustále v provozu a v reálném čase ke zmírnění běžných útoků na úrovni sítě, poskytují stejné obranu využívaných online služeb Microsoftu. Celé škále globální sítě Azure slouží k distribuci a zmírnit útok provoz napříč oblastmi. Poskytuje ochranu pro protokoly IPv4 a IPv6 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
-- **Standard**: Poskytuje funkce pro další zmírnění útoků úroveň služeb Basic, který je vyladěný speciálně pro prostředky Azure Virtual Network. DDoS Protection Standard je snadno zajistit a nevyžaduje žádné změny aplikace. Zásady ochrany je vyladěná prostřednictvím monitorování vyhrazené provozu a algoritmů strojového učení. Zásady se použijí k veřejné IP adresy přidružené k prostředkům, které jsou nasazené ve virtuálních sítích, jako je například nástroj pro vyrovnávání zatížení Azure, Azure Application Gateway a Azure Service Fabric instance, ale tato ochrana se nevztahuje na služby App Service Environment. Telemetrická data v reálném čase je k dispozici prostřednictvím Azure Monitor zobrazení během útoku a historie. Bohaté útoku zmírnění analytics jsou k dispozici přes nastavení diagnostiky. Ochrana vrstvy aplikace je možné přidat prostřednictvím [Firewall webových aplikací služby Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo po instalací 3. stran firewall z Azure Marketplace. Poskytuje ochranu pro IPv4 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
+- **Standard**: Poskytuje funkce pro další zmírnění útoků úroveň služeb Basic, který je vyladěný speciálně pro prostředky Azure Virtual Network. DDoS Protection Standard je snadno zajistit a nevyžaduje žádné změny aplikace. Zásady ochrany je vyladěná prostřednictvím monitorování vyhrazené provozu a algoritmů strojového učení. Zásady se použijí k veřejné IP adresy přidružené k prostředkům, které jsou nasazené ve virtuálních sítích, jako je například nástroj pro vyrovnávání zatížení Azure, Azure Application Gateway a Azure Service Fabric instance, ale tato ochrana se nevztahuje na služby App Service Environment. Telemetrická data v reálném čase je k dispozici prostřednictvím Azure Monitor zobrazení během útoku a historie. Bohaté útoku zmírnění analytics jsou k dispozici přes nastavení diagnostiky. Ochrana vrstvy aplikace je možné přidat prostřednictvím [Firewall webových aplikací služby Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo po instalací 3. stran firewall z Azure Marketplace. Poskytuje ochranu pro protokoly IPv4 a IPv6 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
 
 ![Azure DDoS Protection základní vs. Standard](./media/ddos-protection-overview/ddoscomparison.png)
 
@@ -64,7 +64,7 @@ DDoS Protection standardní funkce patří:
 
 DDoS Protection standardní monitoruje využití skutečný provoz a neustále porovná je s prahové hodnoty definované v zásadě před útoky DDoS. Pokud je překročena mezní hodnota provoz, omezení rizik útoků DDoS automaticky inicializován. Po návratu provoz pod prahovou hodnotou, odeberou se omezení rizik.
 
-![Omezení rizik](./media/ddos-protection-overview/mitigation.png)
+![Zmírnění](./media/ddos-protection-overview/mitigation.png)
 
 Během omezení rizik přesměruje provoz odeslaný na chráněný prostředek službou DDoS protection a jsou prováděny několik kontrol, jako je například následující kontroly:
 

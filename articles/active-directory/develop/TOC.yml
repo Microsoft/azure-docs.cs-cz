@@ -342,6 +342,8 @@
               items:
                 - name: Získání tokenu z mezipaměti
                   href: msal-net-acquire-token-silently.md
+                - name: Vymazání mezipaměti tokenů
+                  href: msal-net-clear-token-cache.md
                 - name: Vytvoření instance veřejného klienta s využitím možností
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Vytvoření instance důvěrného klienta s využitím možností

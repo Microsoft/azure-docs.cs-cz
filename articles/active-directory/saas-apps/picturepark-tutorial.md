@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a4db08a342bc4004d4957e26353ef810ebae4d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 617c75024b45dab7ff2466b99bfb71c18cdd778a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689591"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Integrace Azure Active Directory s Picturepark
 
@@ -250,7 +250,7 @@ Chcete-li povolit Azure AD uživatelům přihlašovat se do Picturepark, musí b
    
     e. V **společnosti** textové pole, typ **název společnosti** uživatele. 
    
-    f. V **země** textové pole, vyberte **země** uživatele.
+    f. V **země** textové pole, vyberte **země/oblast** uživatele.
   
     g. V **ZIP** textové pole, typ **PSČ** města.
    
@@ -264,7 +264,7 @@ Chcete-li povolit Azure AD uživatelům přihlašovat se do Picturepark, musí b
 >Můžete použít jakékoli jiné Picturepark uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Picturepark zřízení uživatelských účtů služby Azure AD.
 >
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

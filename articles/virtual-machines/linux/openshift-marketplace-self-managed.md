@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 1228c770799de37c85b8a48b1dc923ac8294eeca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773465"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233097"
 ---
 # <a name="configure-prerequisites"></a>Konfigurovat požadavky související s
 
@@ -39,8 +39,8 @@ Tato možnost je nejjednodušší, ale je také má omezené možnosti přizpůs
 - **Typ disku**: Spravované disky se používají.
 - **Sítě**: Podpora pro nové nebo stávající sítě a vlastní rozsah CIDR.
 - **CNS**: Propojené sítě je možné povolit.
-- **Metriky**: Metriky je možné povolit.
-- **Protokolování**: Je možné povolit protokolování.
+- **Metriky**: Je možné povolit hawkular metriky.
+- **Protokolování**: Je možné povolit EFK protokolování.
 - **Azure Cloud Provider**: Ve výchozím nastavení povolená, je možné zakázat.
 
 V levém horním rohu webu Azure portal klikněte na tlačítko **vytvořit prostředek**, do vyhledávacího pole zadejte "openshift container platform" a stiskněte Enter.
@@ -81,7 +81,7 @@ Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Předpona názvu clusteru OCP | Správce má být vytvořena na všechny instance virtuálních počítačů |
+| Předpona názvu clusteru OCP | Předpona použitá ke konfiguraci názvy hostitelů pro všechny uzly clusteru. Od 1 do 20 znaků |
 | Velikost hlavního uzlu | Přijměte výchozí velikost virtuálního počítače nebo klikněte na tlačítko **změnit velikost** vybrat jinou velikost virtuálního počítače.  Vyberte odpovídající velikost virtuálního počítače pro pracovní zátěže |
 | Velikost uzlu infrastruktury | Přijměte výchozí velikost virtuálního počítače nebo klikněte na tlačítko **změnit velikost** vybrat jinou velikost virtuálního počítače.  Vyberte odpovídající velikost virtuálního počítače pro pracovní zátěže |
 | Počet uzlů aplikace | Přijměte výchozí velikost virtuálního počítače nebo klikněte na tlačítko **změnit velikost** vybrat jinou velikost virtuálního počítače.  Vyberte odpovídající velikost virtuálního počítače pro pracovní zátěže |
@@ -173,7 +173,7 @@ Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**
    ![Nabízí další cns instalace](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
-**Souhrn**
+**Shrnutí**
 
 V této fázi chcete zkontrolovat, že se kvóta pro jádra je dostačující k nasazení celkový počet virtuálních počítačů vybraných pro cluster dojde k ověření.  Zkontrolujte všechny parametry, které jste zadali.  Pokud vstupy jsou přijatelné, klikněte na tlačítko **OK** pokračujte.
 

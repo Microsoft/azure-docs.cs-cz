@@ -15,14 +15,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d125e0c0818efbc6ec8f317122859411a37a0d20
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880134"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232745"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Kurz: Nabízení oznámení uživatelům konkrétní aplikace pro Android pomocí Azure Notification Hubs
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Nabízení oznámení uživatelům konkrétní aplikace pro Android pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
+
+> [!WARNING]
+> Od 10. dubna 2018 se nepoužívá Google Google Cloud Messaging (GCM). Na serveru GCM a klientských rozhraní API jsou zastaralé a odeberou se co nejdříve 29. května 2019. Další informace najdete v tématu [GCM a FCM – nejčastější dotazy](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -33,7 +36,7 @@ V tomto kurzu provedete následující kroky:
 > [!div class="checklist"]
 > * Vytvoření projektu back-endového webového rozhraní API pro ověřování uživatelů  
 > * Aktualizace aplikace pro Android
-> * Otestování aplikace
+> * Testování aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -141,7 +144,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     ```xml
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
-    <string name="loginButton">1. Log in</string>
+    <string name="loginButton">1. Sign in</string>
     <string name="send_button">2. Send Notification</string>
     <string name="notification_message_hint">Notification message</string>
     <string name="notification_message_tag_hint">Recipient username</string>
@@ -257,7 +260,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     }
     ```
 
-    Tato komponenta implementuje potřebná volání REST ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Po kliknutí na tlačítko **Log in** (Přihlásit se) použije autorizační token uložený v místním úložišti.
+    Tato komponenta implementuje potřebná volání REST ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Používá autorizační token uložené v místním úložišti, když kliknete **přihlášení** tlačítko.
 4. Ve vaší třídě odeberte nebo okomentujte privátní pole pro `NotificationHub` a přidejte pole pro třídu `RegisterClient` a řetězec pro koncový bod vašeho back-endu ASP.NET. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
 
     ```java
@@ -319,7 +322,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Pak přidejte následující metody pro zpracování události kliknutí na tlačítko **Log in** (Přihlásit se) a odesílání nabízených oznámení.
+9. Potom přidejte následující metody pro zpracování **přihlášení** událostí a odesílání nabízených oznámení, klikněte na tlačítko.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -401,7 +404,7 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     }
     ```
 
-    Obslužná rutina `login` pro tlačítko **Log in** (Přihlásit se) na základě zadaného uživatelského jména a hesla vygeneruje základní autorizační token (reprezentuje jakýkoli token, který používá vaše schéma autorizace), a pak pomocí `RegisterClient` zavolá back-end za účelem registrace.
+    `login` Obslužné rutiny pro **přihlášení** tlačítko vytvoří základní ověřování tokenu použitím vstupních uživatelské jméno a heslo (představuje žádný token používá schéma ověřování) a pak ho pomocí `RegisterClient` volat back-endu pro registraci.
 
     Metoda `sendPush` zavolá back-end za účelem aktivace zabezpečeného oznámení pro uživatele na základě značky uživatele. Systém oznámení platformy, na který metoda `sendPush` cílí, závisí na předaném řetězci `pns`.
 
@@ -463,11 +466,11 @@ Dalším krokem je aktualizace vytvořené v aplikaci pro Android [kurzu: Nabíz
     ```
 13. Sestavte projekt.
 
-## <a name="test-the-app"></a>Otestování aplikace
+## <a name="test-the-app"></a>Testování aplikace
 
 1. Pomocí Android Studia spusťte aplikaci na zařízení nebo v emulátoru.
 2. V aplikaci pro Android zadejte uživatelské jméno a heslo. Oba řetězce musí mít stejnou hodnotu a nesmí obsahovat mezery ani speciální znaky.
-3. V aplikaci pro Android klikněte na **Log in** (Přihlásit se). Počkejte na zprávu s oznámením **Logged in and registered** (Přihlášeno a zaregistrováno). Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
+3. V aplikaci pro Android, klikněte na tlačítko **přihlášení**. Počkejte na zprávu s oznámením **Logged in and registered** (Přihlášeno a zaregistrováno). Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
 
     ![][A2]
 4. Kliknutím na přepínací tlačítko povolte všechny platformy, na kterých jste aplikaci spustili a zaregistrovali uživatele.

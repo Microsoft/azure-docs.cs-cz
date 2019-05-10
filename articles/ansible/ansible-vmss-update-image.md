@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 8ef0c9c86562519fc3d41a72c022bf2531aa9451
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.date: 04/30/2019
+ms.openlocfilehash: d3eedc5b83190af46669b9b5df8643f3c80e9bb1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63767240"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230849"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Kurz: Nastaví aktualizace vlastní image škálování virtuálních počítačů Azure pomocí Ansible
 
@@ -34,8 +34,8 @@ Po nasazení virtuálního počítače nakonfigurujete virtuální počítač se
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="configure-two-vms"></a>Konfigurovat dva virtuální počítače
 

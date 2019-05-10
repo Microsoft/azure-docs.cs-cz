@@ -4,7 +4,7 @@ description: Tento článek popisuje, jak použít ke sledování dat typu zálo
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9a7ceeab6d2ad761752f778038692256bd87624b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1a438b9645dbb37d852eb0092355850d816872d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596900"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65207490"
 ---
 # <a name="keep-track-of-data-during-hunting"></a>Mějte přehled o dat během myslivost
 
@@ -74,7 +74,7 @@ Můžete také vizualizovat data označenou záložkou a doplňujte kliknutím *
 
 Zobrazení označenou záložkou a doplňujte dat v Log Analytics několika způsoby. 
 
-Nejjednodušší způsob, jak zobrazit označenou záložkou a doplňujte dotazy, výsledky nebo z historie je tak, že vyberete požadovanou Záložka ve **záložky** tabulky a pomocí odkazů uvedených v podokně podrobností. Mezi možnosti patří: 
+Nejjednodušší způsob, jak zobrazit označenou záložkou a doplňujte dotazy, výsledky nebo z historie je tak, že vyberete požadovanou Záložka ve **záložky** tabulky a pomocí odkazů uvedených v podokně podrobností. Vaše možnosti jsou: 
 - Klikněte na **zobrazit dotaz** Chcete-li zobrazit dotaz na zdroj v Log Analytics.  
 - Klikněte na **zobrazit historii záložku** zobrazíte vše (záložky) včetně metadata: kdo provedl aktualizace, aktualizovanými hodnotami a čas aktualizace došlo k chybě. 
 

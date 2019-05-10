@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 934dfd3334b6f433c7acdf9816a3fb5e24f0430f
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: f40350129a12c7865051bcae80b74b6f9c069179
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872009"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233538"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Detekce anomálií a prognózování v Průzkumníku dat Azure
 
@@ -119,7 +119,7 @@ demo_make_series2
 
 ## <a name="summary"></a>Souhrn
 
-Tento dokument podrobně popisuje nativní funkce Průzkumníka služby Azure Data pro čas detekce anomálií řady a předpovědi, což významně zvyšuje základní rozložené modelu, na které je založená. Rozložit každý původní časové řady, zjištění anomálií a Prognózování provést. Čas řady anomálií zjišťování a Prognózování funkce se používají pro téměř v reálném čase scénáře monitorování, jako je například zjišťování chyb, prediktivní údržbu a vyžádání a načíst Prognózování.
+Tento dokument podrobně popisuje nativní funkce Průzkumníka služby Azure Data pro čas detekce anomálií řady a předpovědi. Každá Časová řada původní je rozložit na sezónní, trend a zbývající součásti pro zjišťování anomálií a/nebo Prognózování. Tyto funkce lze použít pro téměř v reálném čase scénáře monitorování, jako je například zjišťování chyb, prediktivní údržbu a vyžádání a načíst Prognózování.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -2,10 +2,8 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Azure Search
+    - name: Co je Azure Search?
       href: search-what-is-azure-search.md
-    - name: Co je kognitivní hledání?
-      href: cognitive-search-concept-intro.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -15,7 +13,7 @@
       items:
         - name: Načtení a dotazování indexu
           href: search-get-started-portal.md
-        - name: Obohacení s využitím umělé Inteligence (kognitivní vyhledávání)
+        - name: Rozšíření s využitím AI (kognitivní hledání)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       items:
@@ -35,8 +33,12 @@
       href: search-indexer-tutorial.md
     - name: Indexování objektů blob Azure JSON
       href: search-semi-structured-data.md
-    - name: Indexování s využitím AI (Cognitive Services)
-      href: cognitive-search-tutorial-blob.md
+    - name: Rozšíření s využitím AI (kognitivní hledání)
+      items:
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: 'C#'
+          href: cognitive-search-tutorial-blob-dotnet.md
 - name: Ukázky
   items:
     - name: Ukázky kódu Azure
@@ -53,11 +55,15 @@
   items:
     - name: Fulltextové vyhledávání
       href: search-lucene-query-architecture.md
-    - name: Způsoby návrhu pro víceklientskou architekturu
-      href: search-modeling-multitenant-saas-applications.md
+    - name: Kognitivní hledání
+      href: cognitive-search-concept-intro.md
+    - name: Knowledge Store
+      href: knowledge-store-concept-intro.md
+    - name: Projekce
+      href: knowledge-store-projection-overview.md
 - name: Návody
   items:
-    - name: Plánování kapacity
+    - name: Plánování
       items:
         - name: Volba úrovně
           href: search-sku-tier.md
@@ -67,6 +73,8 @@
           href: search-capacity-planning.md
         - name: Doporučené postupy a strategie nasazení
           href: search-performance-optimization.md
+        - name: Víceklientská architektura
+          href: search-modeling-multitenant-saas-applications.md
     - name: Zabezpečení
       items:
         - name: Přehled zabezpečení
@@ -79,6 +87,8 @@
           href: search-security-trimming-for-azure-search.md
         - name: Filtry na identity AAD
           href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Správa šifrovacích klíčů (Preview)
+          href: search-security-manage-encryption-keys.md
     - name: Vývoj
       items:
         - name: Verze rozhraní API
@@ -169,26 +179,36 @@
           href: search-indexer-field-mappings.md
         - name: Řešení běžných potíží
           href: search-indexer-troubleshooting.md
-    - name: Indexování AI (kognitivní vyhledávání)
+    - name: Rozšíření s využitím AI
       items:
         - name: Připojení prostředku služeb Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
-        - name: Definování dovedností
-          href: cognitive-search-defining-skillset.md
-        - name: Odkaz na poznámku
-          href: cognitive-search-concept-annotations-syntax.md
-        - name: Mapování na pole indexu
-          href: cognitive-search-output-field-mapping.md
-        - name: Zpracování a extrahování informací z obrázků
-          href: cognitive-search-concept-image-scenarios.md
-        - name: Integrace vlastních dovedností
-          href: cognitive-search-custom-skill-interface.md
-        - name: Příklad – vlastní dovednosti
-          href: cognitive-search-create-custom-skill-example.md
+        - name: Sady dovedností
+          items:
+            - name: Definování dovedností
+              href: cognitive-search-defining-skillset.md
+            - name: Odkaz na poznámku
+              href: cognitive-search-concept-annotations-syntax.md
+            - name: Mapování na pole indexu
+              href: cognitive-search-output-field-mapping.md
+            - name: Zpracování a extrahování informací z obrázků
+              href: cognitive-search-concept-image-scenarios.md
+        - name: Vlastní dovednosti
+          items:
+            - name: Integrace vlastních dovedností
+              href: cognitive-search-custom-skill-interface.md
+            - name: Příklad – Azure Functions
+              href: cognitive-search-create-custom-skill-example.md
+            - name: Příklad – kontejnery
+              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Rady pro řešení potíží
           href: cognitive-search-concept-troubleshooting.md
         - name: Odkazy na dokumentaci
           href: cognitive-search-resources-documentation.md
+    - name: Knowledge Store (Preview)
+      items:
+        - name: Jak začít
+          href: knowledge-store-howto.md
     - name: Dotazování dat
       items:
         - name: Vytvoření základního dotazu
@@ -203,6 +223,8 @@
           href: search-query-simple-examples.md
         - name: Příklady (úplná syntaxe Lucene)
           href: search-query-lucene-examples.md
+        - name: moreLikeThis (Preview)
+          href: search-more-like-this.md
     - name: Filtrování a řazení dat
       items:
         - name: Přehled filtrů
@@ -276,9 +298,11 @@
           href: cognitive-search-skill-ocr.md
         - name: Shaper
           href: cognitive-search-skill-shaper.md
+        - name: Podmíněné
+          href: cognitive-search-skill-conditional.md
         - name: Zastaralé dovednosti
           href: cognitive-search-skill-deprecated.md
-    - name: Vlastní dovednosti (Preview)
+    - name: Vlastní dovednosti
       items:
         - name: Vlastní webové rozhraní API
           href: cognitive-search-custom-skill-web-api.md

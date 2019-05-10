@@ -205,6 +205,8 @@
           href: restore-sql-database-azure-vm.md
         - name: Správa zálohovaných databází SQL Serveru
           href: manage-monitor-sql-database-backup.md
+    - name: Zálohování databází SAP HANA na virtuálních počítačích Azure
+      href: backup-azure-sap-hana-database.md
     - name: Windows Server
       items:
         - name: Zálohování souborů a složek Windows Serveru

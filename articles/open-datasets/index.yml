@@ -1,0 +1,30 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Open Datasets (Preview)
+metadata:
+  title: 'Dokumentace ke službě Azure Open Datasets (Preview) – kurzy, reference k rozhraní API | Microsoft Docs'
+  description: 'Naučte se využívat Azure Open Datasets, kurátorovaná a vyčištěná data, která můžete využívat s minimální přípravou. Otevřené datové sady jsou veřejná data, jako jsou údaje o počasí, sčítání lidu a svátcích, které mohou rozšiřovat modely strojového učení. Kurzy, ukázky a referenční dokumentace k rozhraním API vám ukážou vhodný postup.'
+  ms.service: open-datasets
+  ms.topic: landing-page
+  author: cjgronlund
+  ms.author: cgronlun
+  ms.date: 05/02/2019
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+abstract:
+  description: 'Naučte se využívat Azure Open Datasets, kurátorovaná a vyčištěná data, která můžete využívat s minimální přípravou. Otevřené datové sady zahrnují veřejná data, jako jsou údaje o počasí, sčítání lidu a svátcích, které mohou rozšiřovat modely strojového učení. Kurzy, ukázky a referenční dokumentace k rozhraním API vám ukážou vhodný postup.'
+sections:
+  - title: Podrobný kurz
+    items:
+      - type: paragraph
+        text: <a href="tutorial-opendatasets-automl">Sestavení regresního modelu s využitím automatizovaného strojového učení</a>
+  - title: Ukázky
+    items:
+      - type: paragraph
+        text: <a href="samples">Poznámkové bloky pro obohacení datových sad</a>
+  - title: Referenční informace
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/open-datasets-api">Referenční materiály k rozhraní API</a>'

@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020342"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465606"
 ---
-# <a name="release-notes"></a>Poznámky k verzi
+# <a name="release-notes"></a>Poznámky k verzi
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0: Května 2019 vydání
 
 **Nové funkce**
 
-* Hledání funkcí (KWS) – klíčové slovo je k dispozici pro Windows a Linux. Funkce KWS může fungovat s jakýmkoli typem mikrofon, oficiální KWS podporu, ale aktuálně je omezená na mikrofon pole najdete v Azure Kinect DK hardwaru nebo sadou SDK pro řeč zařízení.
+* Funkce probuzení Wordu (klíčové slovo zjišťování/KWS) je teď dostupná pro Windows a Linux. Funkce KWS může fungovat s jakýmkoli typem mikrofon, oficiální KWS podporu, ale aktuálně je omezená na mikrofon pole najdete v Azure Kinect DK hardwaru nebo sadou SDK pro řeč zařízení.
 * Fráze pomocný parametr funkce je dostupná prostřednictvím sady SDK. Další informace najdete v tématu [tady](how-to-phrase-lists.md).
 * Funkce určené k transkripci konverzace je k dispozici prostřednictvím sady SDK. Zobrazit [tady](conversation-transcription-service.md).
 * Přidání podpory pro hlasové první virtuální Asistenti pomocí kanálu s přímým přístupem řádku řeči.
@@ -58,7 +58,7 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 **Nové funkce** 
 
 * Sada SDK teď podporuje převod textu na řeč služby jako beta verze. Podporováno od Windows a Linuxem plochy z C++ a C#. Další informace najdete [převod textu na řeč přehled](text-to-speech.md#get-started-with-text-to-speech).
-* Sada SDK teď podporuje zvukové soubory MP3 a díle/Ogg jako datový proud vstupních souborů. Tato funkce je dostupná jenom v Linuxu z jazyka C++ a C# a je aktuálně ve verzi beta (Další podrobnosti [tady](how-to-use-compressed-audio-input-streams.md)).
+* Sada SDK teď podporuje zvukové soubory MP3 a díle/OGG jako datový proud vstupních souborů. Tato funkce je dostupná jenom v Linuxu z jazyka C++ a C# a je aktuálně ve verzi beta (Další podrobnosti [tady](how-to-use-codec-compressed-audio-input-streams.md)).
 * Sadou SDK pro řeč pro Javu, .NET core, C++ a Objective-C získali podporu pro macOS. Podpora jazyka Objective-C pro macOS je aktuálně ve verzi beta.
 * iOS: Sadou SDK pro řeč pro iOS (Objective-C) nyní jsme publikovali také CocoaPod.
 * JavaScript: Podpora pro jiné než výchozí mikrofon jako vstupní zařízení.

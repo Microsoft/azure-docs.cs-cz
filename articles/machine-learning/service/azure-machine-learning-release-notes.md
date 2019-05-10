@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154290"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464811"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -42,6 +42,15 @@ Na webu Azure portal můžete nyní:
 + Přidání možnosti ke stažení souboru config.json stránce Přehled na pracovní prostor služby Azure Machine Learning.
 + Podporuje vytváření pracovního prostoru služby Machine Learning z pracovního prostoru Azure Databricks 
 
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Azure Machine Learning sady SDK pro Python v1.0.33
++ **Nové funkce**
+  + _Workspace.create_ metoda nyní přijímá výchozí konfigurace clusterů pro clustery CPU a GPU.
+  + Pokud se nezdaří vytváření pracovního prostoru, jsou závislé prostředky vyčistit.
+  + Výchozí skladovou Položku registru kontejneru Azure se přepnulo na basic.
+  + Služba Azure Container Registry se vytvoří laxně, v případě potřeby pro vytváření spuštění nebo image.
+  + Podpora pro prostředí tréninková spuštění.
 
 ### <a name="notebook-virtual-machine"></a>Poznámkový blok virtuálního počítače 
 

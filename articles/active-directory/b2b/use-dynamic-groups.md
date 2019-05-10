@@ -11,17 +11,17 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066c3cc0a722ea96ff98aba613b493e2be77df0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 17f701eb9ad3c083712ddf9e774e6ddbefbe91fd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412463"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227951"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamické skupiny a spolupráce Azure Active Directory s B2B
 
 ## <a name="what-are-dynamic-groups"></a>Co jsou dynamické skupiny?
-Dynamická konfigurace členství ve skupině zabezpečení Azure Active Directory (Azure AD) je k dispozici v [na webu Azure portal](https://portal.azure.com). Správci můžou nastavit pravidla pro naplnění skupin, které jsou vytvořeny ve službě Azure AD podle uživatelských atributů (jako je například userType, oddělení nebo země). Členy můžete přidat do automaticky nebo odebral ze skupiny zabezpečení na základě jejich atributů. Tyto skupiny můžete poskytovat přístup k aplikacím nebo cloudovým prostředkům (Sharepointové weby, dokumenty) a k přiřazení licencí ke členům. Další informace o dynamické skupiny v [vyhrazené skupiny v Azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
+Dynamická konfigurace členství ve skupině zabezpečení Azure Active Directory (Azure AD) je k dispozici v [na webu Azure portal](https://portal.azure.com). Správci můžou nastavit pravidla pro naplnění skupin, které jsou vytvořeny ve službě Azure AD podle uživatelských atributů (jako je například userType, oddělení nebo zemi nebo oblast). Členy můžete přidat do automaticky nebo odebral ze skupiny zabezpečení na základě jejich atributů. Tyto skupiny můžete poskytovat přístup k aplikacím nebo cloudovým prostředkům (Sharepointové weby, dokumenty) a k přiřazení licencí ke členům. Další informace o dynamické skupiny v [vyhrazené skupiny v Azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
 
 Odpovídající [licence Azure AD Premium P1 nebo P2](https://azure.microsoft.com/pricing/details/active-directory/) je nutná k vytváření a používání dynamických skupin. Další informace najdete v článku [vytváření pravidel založených na atributech pro členství v dynamické skupině v Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
 

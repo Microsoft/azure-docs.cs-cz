@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247783"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441636"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
@@ -70,7 +70,7 @@ Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do
 
         - **Barva pozadí přihlašovací stránky.** Určení barvy v šestnáctkovém formátu (bílé je třeba #FFFFFF), který se zobrazí místo image na pozadí v situacích, připojení s malou šířkou pásma. Doporučujeme použít primární barvu vaše banner s logem nebo barvy vaší organizace.
 
-        - **Obrázek čtvercového loga.** Vyberte ve formátu PNG (preferované) nebo JPG obrázek loga vaší organizace se zobrazí uživatelům během procesu instalace pro nové zařízení s Windows 10 Enterprise. Tato image se používá jenom pro ověřování Windows a zobrazí se pouze na klienty, kteří používají [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) pro nasazení nebo pro zadávání hesel stránky v jiných Windows 10 dojde.
+        - **Obrázek čtvercového loga.** Vyberte ve formátu PNG (preferované) nebo JPG obrázek loga vaší organizace se zobrazí uživatelům během procesu instalace pro nové zařízení s Windows 10 Enterprise. Tato image se používá jenom pro ověřování Windows a zobrazí se pouze na klienty, kteří používají [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) pro nasazení nebo pro zadávání hesel stránky v jiných Windows 10 dojde. V některých případech může také zobrazí v dialogovém okně souhlasu.
         
             Na obrázku nemůže být větší než velikost 240 × 240 pixelů a musí mít velikost souboru menší než 10 kB. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
     

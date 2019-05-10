@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: e526908f5ba9feea53b1c1abebbbfc1bd9a51c54
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5d567074a0038915cc43a585b34c9c71ccf3eb1b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147965"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464998"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování vrstvy SSL (Secure Sockets) a ověřování pro Apache Kafka v Azure HDInsight
 
@@ -57,9 +57,6 @@ Použijte následující podrobné pokyny k dokončení instalace zprostředkova
     # Create a new directory 'ssl' and change into it
     mkdir ssl
     cd ssl
-
-    # Export
-    export SRVPASS=MyServerPassword123
     ```
 
 1. Proveďte stejné počáteční nastavení na všech zprostředkovatelů (pracovní uzly 0, 1 a 2).
@@ -68,9 +65,6 @@ Použijte následující podrobné pokyny k dokončení instalace zprostředkova
     # Create a new directory 'ssl' and change into it
     mkdir ssl
     cd ssl
-
-    # Export
-    export MyServerPassword123=MyServerPassword123
     ```
 
 1. Na každém uzlu pracovního procesu proveďte následující kroky pomocí následující fragment kódu.
@@ -142,10 +136,10 @@ K dokončení změny konfigurace, proveďte následující kroky:
     sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
     echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=<server_password>" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=<server_password>" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=<server_password>" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
 1. Chcete-li ověřit, že předchozí změny byly provedeny správně, můžete volitelně zkontrolujte, že jsou v Kafka následující řádky `server.properties` souboru.
@@ -153,13 +147,14 @@ K dokončení změny konfigurace, proveďte následující kroky:
     ```bash
     advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
-    ssl.keystore.password=<server_password>
-    ssl.key.password=<server_password>
+    ssl.keystore.password=MyServerPassword123
+    ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
-    ssl.truststore.password=<server_password>
+    ssl.truststore.password=MyServerPassword123
     ```
 
 1. Restartujte všechny zprostředkovatelům systému Kafka.
+1. Spusťte správce klienta s producenta a konzumenta parametry a ověřte, zda jsou na portu 9093 funkční producenty a spotřebiteli.
 
 ## <a name="client-setup-with-authentication"></a>Instalace klienta (s ověřováním)
 
@@ -169,39 +164,37 @@ K dokončení změny konfigurace, proveďte následující kroky:
 Proveďte následující kroky k dokončení instalace klienta:
 
 1. Přihlaste se do klientského počítače (hn1).
-1. Exportujte heslo klienta. Nahraďte `<client_password>` heslem skutečné správce v klientském počítači Kafka.
 1. Vytvoření java keystore musí být a získat certifikát podepsaný držitelem pro zprostředkovatele. Potom zkopírujte certifikát do virtuálního počítače se spuštěným systémem certifikační Autority.
 1. Přepnout na počítači certifikační Autority (hn0) k podepsání certifikátu klienta.
 1. Přejděte do klientského počítače (hn1) a přejděte `~/ssl` složky. Zkopírujte certifikátu podepsaného držitelem na klientském počítači.
 
 ```bash
-export CLIPASS=<client_password>
 cd ssl
 
 # Create a java keystore and get a signed certificate for the broker. Then copy the certificate to the VM where the CA is running.
 
-keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass $CLIPASS -keypass $CLIPASS -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
+keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
 
-keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS
+keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123"
 
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
 # Switch to the CA machine (hn0) to sign the client certificate.
 cd ssl
-openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:<server_password>
+openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
 # Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 
 # Import CA cert to key store
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 
 # Import signed client (cert client-cert-signed1) to keystore
-keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
 A konečně, zobrazení souboru `client-ssl-auth.properties` příkazem `cat client-ssl-auth.properties`. Měl by mít následující řádky:
@@ -209,10 +202,10 @@ A konečně, zobrazení souboru `client-ssl-auth.properties` příkazem `cat cli
 ```bash
 security.protocol=SSL
 ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=<client_password>
+ssl.truststore.password=MyClientPassword123
 ssl.keystore.location=/home/sshuser/ssl/kafka.client.keystore.jks
-ssl.keystore.password=<client_password>
-ssl.key.password=<client_password>
+ssl.keystore.password=MyClientPassword123
+ssl.key.password=MyClientPassword123
 ```
 
 ## <a name="client-setup-without-authentication"></a>Instalace klienta (bez ověřování)
@@ -220,7 +213,6 @@ ssl.key.password=<client_password>
 Pokud nepotřebujete ověřování, se kroky k nastavení pouze šifrování SSL:
 
 1. Přihlaste se do klientského počítače (hn1) a přejděte `~/ssl` složky
-1. Exportujte heslo klienta. Nahraďte `<client_password>` heslem skutečné správce v klientském počítači Kafka.
 1. Zkopírujte certifikátu podepsaného držitelem do klientského počítače z počítače certifikační Autority (wn0).
 1. Importovat certifikát certifikační Autority truststore
 1. Importovat certifikát certifikační Autority ke keystore.
@@ -228,17 +220,16 @@ Pokud nepotřebujete ověřování, se kroky k nastavení pouze šifrování SSL
 Tyto kroky jsou uvedeny v následující fragment kódu.
 
 ```bash
-export CLIPASS=<client_password>
 cd ssl
 
 # Copy signed cert to client machine
 scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert .
 
 # Import CA cert to truststore
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 
 # Import CA cert to keystore
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
 A konečně, zobrazení souboru `client-ssl-auth.properties` příkazem `cat client-ssl-auth.properties`. Měl by mít následující řádky:
@@ -246,7 +237,7 @@ A konečně, zobrazení souboru `client-ssl-auth.properties` příkazem `cat cli
 ```bash
 security.protocol=SSL
 ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=<client_password>
+ssl.truststore.password=MyClientPassword123
 ```
 
 ## <a name="next-steps"></a>Další postup

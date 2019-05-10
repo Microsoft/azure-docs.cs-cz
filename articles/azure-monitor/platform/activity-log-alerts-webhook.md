@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8605e614574b7ebd45e9f18c4e5685a9c5450e64
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688350"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409921"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 Jako součást definice skupiny akcí můžete nakonfigurovat webhooku koncových bodů pro příjem oznámení výstrah protokolu aktivit. Pomocí webhooků můžete směrovat tato oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Tento článek popisuje, jak vypadá datová část požadavku HTTP POST do webhooku.
@@ -32,7 +32,7 @@ Webhook můžete volitelně použít ověřování založené na tokenech pro ov
 ## <a name="payload-schema"></a>Datová část schématu
 Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti na poli data.context.activityLog.eventSource datové části.
 
-### <a name="common"></a>Společné
+### <a name="common"></a>Obecné
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -59,7 +59,7 @@ Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti n
     }
 }
 ```
-### <a name="administrative"></a>Správa
+### <a name="administrative"></a>Administrativní
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -156,7 +156,7 @@ Datová část JSON, které jsou obsaženy v operaci POST liší v závislosti n
                 "resourceGroupName": "<resource group>",
                 "resourceProviderName": "Microsoft.Resourcehealth/healthevent/action",
                 "status": "Active",
-                "subscriptionId": "<subscription Id",
+                "subscriptionId": "<subscription Id>",
                 "submissionTimestamp": "2018-09-04T23:11:06.1607287+00:00",
                 "resourceType": "Microsoft.Compute/virtualMachines"
             }
@@ -171,11 +171,11 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 
 | Název elementu | Popis |
 | --- | --- |
-| status |Používá se pro upozornění na metriku. Vždy nastaven na "aktivované" pro upozornění protokolu aktivit. |
+| stav |Používá se pro upozornění na metriku. Vždy nastaven na "aktivované" pro upozornění protokolu aktivit. |
 | Kontext |Kontext události. |
 | resourceProviderName |Poskytovatel prostředků ovlivněných prostředků. |
 | conditionType |Vždy "událost". |
-| jméno |Název pravidla výstrahy. |
+| name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy. |
 | description |Popis výstrahy nastavit, pokud je výstraha vytvořena. |
 | subscriptionId |ID předplatného Azure. |
@@ -196,7 +196,7 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 | operationId |Obvykle GUID sdílen události odpovídá jedné operace. |
 | operationName |Název operace |
 | properties |Vlastnosti události. |
-| status |řetězec. Stav operace. Mezi běžné hodnoty patří spuštěno, v průběhu, úspěšné, neúspěšné, aktivní a vyřešeno. |
+| stav |řetězec. Stav operace. Mezi běžné hodnoty patří spuštěno, v průběhu, úspěšné, neúspěšné, aktivní a vyřešeno. |
 | Podřízený stav |Obvykle zahrnuje stavový kód HTTP odpovídající volání REST. Může taky obsahovat další řetězce, které popisují substatus. Běžné hodnoty substatus zahrnují OK (stavový kód HTTP: 200), vytvořit (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybná žádost (kód stavu HTTP: 400), nebyl nalezen (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), se interní chyba serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504). |
 
 ## <a name="next-steps"></a>Další postup

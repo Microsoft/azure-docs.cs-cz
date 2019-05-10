@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: yinhew
-ms.openlocfilehash: 211394186fe8fc0fd1514a5ce1dbc1e0efc10b7e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b5db21d40f1e270fb6771ba47af28a9e90228ea4
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020599"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465591"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Syntetizace řeči v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
+
+Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-cpp-linux.md).
 
 V tomto článku vytvoříte C++ konzolové aplikace pro Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). Použití služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md) syntetizace řeč z textu v reálném čase a přehrát řeč na váš počítač mluvčího. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
 

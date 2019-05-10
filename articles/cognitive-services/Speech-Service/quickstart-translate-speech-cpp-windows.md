@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 9187863234dd62757efecf6f0817ff00da48064a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bf07e6a2daac7889e11df2cb5d689daef44266f9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685545"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465655"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro C++
+
+Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-cpp-windows.md) a [převod textu na řeč](quickstart-text-to-speech-cpp-windows.md).
 
 V tomto rychlém startu vytvoříte jednoduchou aplikaci C++, který zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na Windows 64-bit a využívá rozhraní [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
 
@@ -34,7 +36,7 @@ K tomuto rychlému startu potřebujete:
 
 [!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="add-sample-code"></a>Přidejte ukázkový kód.
 
 1. Otevřete zdrojový soubor *helloworld.cpp*. Nahraďte všechen kód pod úvodním příkazem include (`#include "stdafx.h"` nebo `#include "pch.h"`) následujícím kódem:
 

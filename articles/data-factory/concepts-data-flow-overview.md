@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5064f47444b4ca6d9194ed66144938e6e3d51a4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 051886f98d6d35594336291bbb2defb2a4acdfc5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61261812"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233061"
 ---
-# <a name="what-are-mapping-data-flows-in-azure-data-factory"></a>Co jsou mapování toků dat ve službě Azure Data Factory?
+# <a name="what-are-mapping-data-flows"></a>Co jsou mapování toků dat?
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Data proudí mapování povolit datoví architekti k vývoji logiku transformace grafické dat bez psaní kódu. Výsledné datové toky jsou spouštěny jako aktivity v rámci kanály datové továrny Azure pomocí Azure Databricks clusterů horizontálním navýšením kapacity.
+Data proudí mapování jsou transformace vizuálně navrhovat dat ve službě Azure Data Factory. Datové toky umožňují datoví architekti k vývoji logiku transformace grafické dat bez psaní kódu. Výsledné datové toky jsou spouštěny jako aktivity v rámci kanály datové továrny Azure pomocí Azure Databricks clusterů horizontálním navýšením kapacity.
 
 Záměr toku dat objekt pro vytváření dat Azure je poskytnout plně vzhled nevyžadují žádné kódování. Data proudí se spustí na spuštění clusteru pro zpracování dat horizontálním navýšením kapacity. Azure Data Factory zajišťuje všechny překladu kódu, cesta k optimalizaci a spuštění úlohy toku dat.
 

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918410"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463628"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
@@ -64,8 +64,8 @@ Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba
 
     Adresář se změní pro předplatné a se zobrazí zpráva o úspěchu.
 
-    ![Zpráva o úspěchu, o změně pro adresář](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
-4. Použití **přepínače adresářů** přejdete do nového adresáře. Správné zobrazení všech komponent může trvat až 10 minut.
+    ![Zpráva o úspěchu, o změně pro adresář](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+4. Použití **přepínače adresářů** přejdete do nového adresáře. Může trvat několik hodin za všechno, co se zobrazí správně. Pokud se zdá být trvá příliš dlouho, ujistěte se, že zkontrolujete **globální filtr předplatných** pro přesunutý předplatné, abyste měli jistotu je skrytý není jednoduše.
 
     ![Stránka přepínání adresáře, s ukázkovými informacemi o](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

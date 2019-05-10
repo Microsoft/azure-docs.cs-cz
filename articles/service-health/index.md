@@ -7,12 +7,12 @@ ms.service: service-health
 ms.topic: landing-page
 ms.date: 03/4/2019
 ms.author: stbaron
-ms.openlocfilehash: cf7084b569e2c90337e475beb9f49563214941d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa00d4b08725eaf4b667fc7b53b225198db95a02
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506892"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441659"
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentace ke službě Azure Service Health
 
@@ -25,6 +25,11 @@ Možná už znáte **[stavovou stránku Azure](https://status.azure.com)**, glob
 **[Azure Resource Health](resource-health-overview.md)** poskytuje informace o stavu jednotlivých cloudových prostředků, jako je třeba konkrétní instance virtuálního počítače. Pomocí Azure Monitoru můžete také nastavit výstrahy, které vás upozorní na změny dostupnosti vašich cloudových prostředků. Azure Resource Health vám společně s oznámeními Azure Monitoru pomůže zajistit lepší informovanost o okamžité dostupnosti vašich prostředků a rychle vyhodnotit, jestli případné potíže jsou způsobené problémy na vaší straně, nebo jestli souvisejí s událostí platformy Azure.
 
 Společně poskytují kompletní přehled o stavu Azure, a to s takovou úrovní podrobností, která je pro vás nejrelevantnější.
+
+### <a name="watch-an-overview-of-the-azure-status-page-azure-service-health-and-azure-resource-health"></a>Podívejte se na přehled stránky stavu Azure a služeb Azure Service Health a Azure Resource Health
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
+
 
 <ul class="panelContent cardsFTitle">
     <li>

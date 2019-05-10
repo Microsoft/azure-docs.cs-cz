@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d0b5537f31edf330b54b91ddf7268338df0c0a6b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148260"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233544"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Verze Preview: Migrovat na verzi rozhraní API pro aplikace LUIS 3.x
 
@@ -43,10 +43,6 @@ Spadají následující funkce služby LUIS **nepodporuje** v rozhraní API V3:
 * V7 kontrolu pravopisu Bingu
 
 [Referenční dokumentace](https://aka.ms/luis-api-v3) je k dispozici pro V3.
-
-## <a name="prebuilt-domains-with-new-models-and-language-coverage"></a>Předem připravených domén s nové modely a pokrytí jazyky
-
-Zkontrolujte [rozhraní API V3 seznam předem připravených domén](luis-reference-prebuilt-domains.md). Úplnější, jak v modelu a pokrytí jazyky jsou tyto domény. 
 
 ## <a name="prebuilt-entities-with-new-json"></a>Předem připravených entit pomocí nového kódu JSON
 

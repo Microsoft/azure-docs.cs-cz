@@ -4,7 +4,7 @@ description: Informace o připojení k Azure Sentinelu Windows firewall data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9388e267c52ef53b59aacad844e964d3cfeb13d7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714587"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233808"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 

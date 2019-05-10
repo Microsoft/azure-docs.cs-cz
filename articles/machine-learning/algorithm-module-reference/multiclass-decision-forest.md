@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5ff1809886198f7f1e4f4b9c36f877ce61d512e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029427"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411449"
 ---
 # <a name="multiclass-decision-forest-module"></a>Rozhodovací les se multiclass modulu
 
@@ -36,7 +36,7 @@ Rozhodovací stromy mají celou řadu výhod:
 + Provádějí výběr integrované funkce a klasifikace.
 + Jsou odolné za přítomnosti hlučného funkce.
 
-Třídění rozhodnutí doménové struktury ve službě Azure Machine Learning se skládá z kompletu stromů rozhodnutí. Modely komplet obecně poskytují lepší pokrytí a přesnost než jeden rozhodovacích stromů. Další informace najdete v tématu [Decision trees](http://go.microsoft.com/fwlink/?LinkId=403677).
+Třídění rozhodnutí doménové struktury ve službě Azure Machine Learning se skládá z kompletu stromů rozhodnutí. Modely komplet obecně poskytují lepší pokrytí a přesnost než jeden rozhodovacích stromů. Další informace najdete v tématu [Decision trees](https://go.microsoft.com/fwlink/?LinkId=403677).
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Jak nakonfigurovat Multiclass rozhodovací les
 

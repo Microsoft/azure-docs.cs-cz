@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829714"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231419"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics
 
@@ -41,7 +41,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 
 | Type  | SubType | Příklad: |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
+| Osoba        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
 | Location      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | NENÍ K DISPOZICI\*         | "Microsoft".   |
 | Množství      | Číslo        | "6", "six"     | 
@@ -54,16 +54,16 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 | Množství      | Teplota   | "32 stupňů"    |
 | DateTime      | NENÍ K DISPOZICI\*         | "6:30 odp. 4. února 2012"      | 
 | DateTime      | Datum          | ". Května 2. 2017", "05/02/2017"   | 
-| DateTime      | Čas          | "8: 00", "8:00"  | 
+| DateTime      | Time          | "8: 00", "8:00"  | 
 | DateTime      | DateRange     | "Května 2. na 5. května"    | 
 | DateTime      | timeRange     | "18: 00 do 19: 00"     | 
-| DateTime      | Doba trvání      | "1 minutu a 45 sekundách"   | 
-| DateTime      | Nastavit           | "čtvrtek"     | 
+| DateTime      | Trvání      | "1 minutu a 45 sekundách"   | 
+| DateTime      | Sada           | "čtvrtek"     | 
 | DateTime      | Časové pásmo      |    | 
 | zprostředkovatele identity           | NENÍ K DISPOZICI\*         | "https:\//www.bing.com"    |
-| Email         | NENÍ K DISPOZICI\*         | support@contoso.com |
+| E-mail         | NENÍ K DISPOZICI\*         | "support@contoso.com" |
 
-\* V závislosti na vstupním a extrahované entit, může vynechat některé entity `SubType`.
+\* V závislosti na vstupním a extrahované entit, může vynechat některé entity `SubType`.  Všechny typy podporovaných entit uvedené jsou k dispozici pouze pro angličtina, zjednodušená čínština, francouzština, němčina a španělština jazyky.
 
 
 
@@ -109,7 +109,7 @@ Analýza se provede po přijetí žádosti. Služba přijímá až 100 požadavk
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 
-## <a name="step-3-view-results"></a>Krok 3: Zobrazení výsledků
+## <a name="step-3-view-results"></a>Krok 3: Zobrazit výsledky
 
 Všechny žádosti POST vrací odpověď ve formátu JSON s ID a zjištěnými vlastnostmi.
 

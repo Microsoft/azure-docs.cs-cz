@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1c1317726cf29f23e4729c67a5a5794fa459220b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129756"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410871"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem 2017 na webu Azure Portal
 
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek**. 
 
-1. Do vyhledávacího pole zadejte `SQL Server 2017 Developer on Windows Server 2016`, a stiskněte klávesu ENTER.
+1. Do vyhledávacího pole zadejte `SQL Server 2017 Developer on Windows Server 2016`, a stiskněte klávesu ENTER. SQL Server 2017 na Windows serveru 2016 možnost $expand 
 
 1. Vyberte **bezplatná licence SQL serveru: SQL Server 2017 Developer ve Windows serveru 2016** bitové kopie. V tomto kurzu se používá edice Developer, protože je to plná verze SQL Serveru, která je zdarma pro účely testování vývoje. Platíte jenom náklady na provozování virtuálního počítače. Kompletní informace o cenách najdete v [doprovodných materiálech k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
 
@@ -76,7 +76,7 @@ Na **Základy** kartu, zadejte následující informace:
 
 1. V části **příchozí pravidla portů**, zvolte **povolit vybrané porty** a pak vyberte **protokolu RDP (3389)** z rozevíracího seznamu. 
 
-   ![Pravidla portů pro příchozí provoz](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
+   ![Pravidla portů pro příchozí spojení](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 ## <a name="sql-server-settings"></a>Nastavení SQL Serveru
 

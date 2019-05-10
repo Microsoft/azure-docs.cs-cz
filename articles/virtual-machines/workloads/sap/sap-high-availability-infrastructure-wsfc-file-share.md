@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637717"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409600"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Příprava infrastruktury Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS
 
@@ -36,6 +36,7 @@ ms.locfileid: "60637717"
 [arm-sofs-s2d-managed-disks]:https://github.com/robotechredmond/301-storage-spaces-direct-md
 [arm-sofs-s2d-non-managed-disks]:https://github.com/Azure/azure-quickstart-templates/tree/master/301-storage-spaces-direct
 [deploy-cloud-witness]:https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -341,6 +342,16 @@ V šabloně postupujte takto:
 _**Obrázek 2**: Obrazovky uživatelského rozhraní pro šablonu Scale-Out File Server Azure Resource Manageru bez spravovaných disků_
 
 V **typ účtu úložiště** vyberte **Premium Storage**. Všechna ostatní nastavení se neshoduje s nastavením pro spravované disky.
+
+## <a name="adjust-cluster-timeout-settings"></a>Upravit nastavení časového limitu clusteru
+
+Po úspěšné instalaci clusteru souborových serverů se Škálováním Windows, upravit prahové hodnoty časového limitu pro převzetí služeb při selhání detekce podmínky v Azure. Změnit parametry jsou dokumentovány v článku [ladění prahové hodnoty sítě clusteru převzetí služeb při selhání][tuning-failover-cluster-network-thresholds]. Za předpokladu, že Clusterované virtuální počítače jsou ve stejné podsíti, změňte tyto hodnoty následujících parametrů:
+
+- SameSubNetDelay = 2000
+- SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
+
+Tato nastavení se testují se zákazníky a nabízejí dobrý ohrožení zabezpečení. Jsou dostatečně odolné, ale také poskytnout rychlé dostatek převzetí služeb při selhání ve skutečné chybové stavy nebo selhání virtuálního počítače.
 
 ## <a name="next-steps"></a>Další postup
 

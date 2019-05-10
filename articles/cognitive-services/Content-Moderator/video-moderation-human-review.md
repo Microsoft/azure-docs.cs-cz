@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098197"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228129"
 ---
 # <a name="video-moderation-with-human-review"></a>Moderování videa s recenze prováděné lidmi
 
@@ -28,52 +28,53 @@ S podporou počítače videa klasifikace se buď dosahuje prostřednictvím imag
 ## <a name="shot-detection"></a>Detekce snímku
 
 Při výstupu podrobnosti klasifikace, další videa inteligentní funkce pomáhají s větší flexibilitou videí analýzy. Místo výstupu pouze snímky, poskytuje služba moderování videa příliš informace na úrovni snímku. Teď máte možnost analyzovat vaše videa na úrovni snímek a snímek.
- 
+
 ## <a name="key-frame-detection"></a>Detekce klíčových snímků
 
 Služba moderování videa místo výstupu rámce v pravidelných intervalech, identifikuje a vypíše pouze potenciálně kompletní snímky (dobré). Tato funkce umožňuje generování efektivní rámce pro analýzu pro dospělé nebo pikantního úrovni rámce.
 
 Následující výpis ukazuje částečné odpovědi s potenciálním snímky, klíčových snímků a pro dospělé nebo pikantního skóre:
 
-    "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
+```json
+"fragments":[  
+  {  
+    "start":0,
+    "duration":18000
+  },
+  {  
+    "start":18000,
+    "duration":3600,
+    "interval":3600,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":false,
+          "adultScore":0.00001,
+          "racyScore":0.03077,
+          "index":5,
+          "timestamp":18000,
+          "shotIndex":0
+        }
       ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
+    ]
+  },
+  {  
+    "start":18386372,
+    "duration":119149,
+    "interval":119149,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":true,
+          "adultScore":0.00000,
+          "racyScore":0.91902,
+          "index":5085,
+          "timestamp":18386372,
+          "shotIndex":62
+        }
       ]
-
+    ]
+```
 
 ## <a name="visualization-for-human-reviews"></a>Vizualizace pro recenze prováděné lidmi
 
@@ -101,10 +102,7 @@ Videa obvykle mají hlasové, které potřebuje moderování i pro urážlivé �
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme s [moderování videa quickstart](video-moderation-api.md). 
-
-Zjistěte, jak generovat [video kontroly](video-reviews-quickstart-dotnet.md) pro vaše recenzenty lidí z moderované výstupu.
-
-Přidat [přepis videa kontroly](video-transcript-reviews-quickstart-dotnet.md) na video kontroly.
-
-Podívejte se na podrobný kurz o tom, jak vyvíjet [dokončení moderování videa řešení](video-transcript-moderation-review-tutorial-dotnet.md). 
+- Začínáme s [moderování videa quickstart](video-moderation-api.md).
+- Zjistěte, jak generovat [video kontroly](video-reviews-quickstart-dotnet.md) pro vaše recenzenty lidí z moderované výstupu.
+- Přidat [přepis videa kontroly](video-transcript-reviews-quickstart-dotnet.md) na video kontroly.
+- Podívejte se na podrobný kurz o tom, jak vyvíjet [dokončení moderování videa řešení](video-transcript-moderation-review-tutorial-dotnet.md).
