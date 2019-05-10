@@ -13,17 +13,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/03/2018
+ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 3a7ac2e7a86a135f20f46b03be2c38af330a5367
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0ec2616d8bdcf3cfd6d649f12e9bfceea33690a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543087"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467746"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak vytvořit Linuxové Image virtuálních počítačů v Azure pomocí Packeru
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Linuxovou distribuci a verzi operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější distribuce a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
+
+> [!NOTE]
+> Azure teď má službu, Image Builder pro Azure (preview) pro definování a vytvoření vlastní Image. Image Builder pro Azure je postavený na Packeru, takže se dá dokonce využít vaše stávající skripty prostředí zajištění webu Packeru s ním. Začínáme s Azure Image Builder, najdete v článku [vytvoření virtuálního počítače s Linuxem pomocí Azure Image Builder](image-builder.md).
 
 
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
@@ -232,6 +235,4 @@ Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `htt
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto příkladu používá Packeru pro vytvoření image virtuálního počítače se serverem NGINX už nainstalovaná. Tato image virtuálního počítače společně s existující pracovní postupy nasazení, například můžete použít k nasazení vaší aplikace na virtuální počítače vytvořené z této Image pomocí Ansible, Chef nebo Puppet.
-
-Další příklad šablony Packeru pro jiné distribuce Linuxu, naleznete v tématu [úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Můžete také použít existující skripty zajištění webu Packeru s [Azure Image Builder](image-builder.md).

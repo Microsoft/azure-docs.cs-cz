@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: df94290c5e62b898b6490c78ef0ae1ee79437240
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1c8886cada80c02e99782159099aa626da35fc50
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716949"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466694"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelování dat v Azure čas Series Insights ve verzi Preview
 
@@ -29,12 +29,12 @@ Další informace o tom, jak používat tuto aktualizaci, [Průzkumníka Azure �
 
 1. Přejděte na panel selektor čas řady modely a vyberte **typy** z nabídky. Sbalte panel a zaměřte se na typy modelů řady čas.
 
-    ![Portal_one][1]
+    [![Vytvoření jednoho typu](media/v2-update-how-to-tsm/portal_one.png)](media/v2-update-how-to-tsm/portal_one.png#lightbox)
 
 1. Vyberte **Přidat**.
 1. Zadejte všechny podrobnosti, které se týkají typů a vyberte **vytvořit**. Tato akce vytvoří typy v prostředí.
 
-    ![Portal_two][2]
+    [![Přidání typu](media/v2-update-how-to-tsm/portal_two.png)](media/v2-update-how-to-tsm/portal_two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>Hromadné nahrání jednoho nebo více typů
 
@@ -42,19 +42,21 @@ Další informace o tom, jak používat tuto aktualizaci, [Průzkumníka Azure �
 1. Vyberte soubor, který obsahuje typ datové části.
 1. Vyberte **Nahrát**.
 
-    ![Portal_three][3]
+    [![Nahrát JSON](media/v2-update-how-to-tsm/portal_three.png)](media/v2-update-how-to-tsm/portal_three.png#lightbox)
 
 ### <a name="edit-a-single-type"></a>Úprava jednoho typu
 
-Vyberte typ a vyberte **upravit**. Proveďte požadované změny a vyberte **Uložit**.
+1. Vyberte typ a vyberte **upravit**. 
+1. Proveďte požadované změny a vyberte **Uložit**.
 
-![Portal_four][4]
+    [![Upravit typ](media/v2-update-how-to-tsm/portal_four.png)](media/v2-update-how-to-tsm/portal_four.png#lightbox)
 
 ### <a name="delete-a-type"></a>Odstranit typ
 
-Vyberte typ a vyberte **odstranit**. Pokud nejsou žádné instance související s typy, je odstranit.
+1. Vyberte typ a vyberte **odstranit**.
+1. Pokud nejsou žádné instance související s typy, je odstranit.
 
-![Portal_five][5]
+    [![Odstranit typ](media/v2-update-how-to-tsm/portal_five.png)](media/v2-update-how-to-tsm/portal_five.png#lightbox)
 
 ## <a name="hierarchies"></a>Hierarchie
 
@@ -62,19 +64,19 @@ Vyberte typ a vyberte **odstranit**. Pokud nejsou žádné instance souvisejíc�
 
 1. Přejděte na panel selektor čas řady modely a vyberte **hierarchie** z nabídky. Sbalte panel a zaměřte se na modely řady čas hierarchie.
 
-    ![Portal_six][6]
+    [![Vyberte hierarchie](media/v2-update-how-to-tsm/portal_six.png)](media/v2-update-how-to-tsm/portal_six.png#lightbox)
 
 1. Vyberte **Přidat**.
 
-    ![Portal_seven][7]
+    [![Přidat hierarchie](media/v2-update-how-to-tsm/portal_seven.png)](media/v2-update-how-to-tsm/portal_seven.png#lightbox)
 
 1. Vyberte **přidat úroveň** v pravém podokně.
 
-    ![Portal_eight][8]
+    [![Přidat úroveň](media/v2-update-how-to-tsm/portal_eight.png)](media/v2-update-how-to-tsm/portal_eight.png#lightbox)
 
 1. Zadejte podrobnosti o hierarchii a vyberte **vytvořit**.
 
-    ![Portal_nine][9]
+    [![Vytvořit úroveň](media/v2-update-how-to-tsm/portal_nine.png)](media/v2-update-how-to-tsm/portal_nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Hromadné nahrání jednoho nebo více hierarchií
 
@@ -82,19 +84,21 @@ Vyberte typ a vyberte **odstranit**. Pokud nejsou žádné instance souvisejíc�
 1. Vyberte soubor, který obsahuje datové části hierarchie.
 1. Vyberte **Nahrát**.
 
-    ![Portal_ten][10]
+    [![Hromadné nahrávání hierarchie](media/v2-update-how-to-tsm/portal_ten.png)](media/v2-update-how-to-tsm/portal_ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>Upravit jedné hierarchie
 
-Vybrat hierarchii a vyberte **upravit**. Proveďte požadované změny a vyberte **Uložit**.
+1. Vybrat hierarchii a vyberte **upravit**.
+1. Proveďte požadované změny a vyberte **Uložit**.
 
-![Portal_eleven][11]
+    [![Upravit jedné hierarchie](media/v2-update-how-to-tsm/portal_eleven.png)](media/v2-update-how-to-tsm/portal_eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>Odstranit hierarchii
 
-Vybrat hierarchii a vyberte **odstranit**. Pokud nejsou žádné instance související s hierarchií, se odstraní.
+1. Vybrat hierarchii a vyberte **odstranit**. 
+1. Pokud nejsou žádné instance související s hierarchií, se odstraní.
 
-![Portal_twelve][12]
+    [![Odstranit hierarchii](media/v2-update-how-to-tsm/portal_twelve.png)](media/v2-update-how-to-tsm/portal_twelve.png#lightbox)
 
 ## <a name="instances"></a>Instance
 
@@ -102,11 +106,11 @@ Vybrat hierarchii a vyberte **odstranit**. Pokud nejsou žádné instance souvis
 
 1. Přejděte na panel selektor čas řady modely a vyberte **instance** z nabídky. Sbalte panel a zaměřte se na modely čas řady instancí.
 
-    ![Portal_thirteen][13]
+    [![Vytvořte jednu instanci](media/v2-update-how-to-tsm/portal_thirteen.png)](media/v2-update-how-to-tsm/portal_thirteen.png#lightbox)
 
 1. Vyberte **Přidat**.
 
-    ![Portal_fourteen][14]
+    [![Přidat instanci](media/v2-update-how-to-tsm/portal_fourteen.png)](media/v2-update-how-to-tsm/portal_fourteen.png#lightbox)
 
 1. Zadejte podrobnosti instance, vyberte přidružení typu a hierarchie a zvolte **vytvořit**.
 
@@ -115,19 +119,16 @@ Vybrat hierarchii a vyberte **odstranit**. Pokud nejsou žádné instance souvis
 1. Vyberte **nahrát JSON**.
 1. Vyberte soubor, který obsahuje datovou část instancí.
 
-    ![Portal_fifteen][15]
+    [![Hromadné nahrání jednu nebo víc instancí](media/v2-update-how-to-tsm/portal_fifteen.png)](media/v2-update-how-to-tsm/portal_fifteen.png#lightbox)
 
 1. Vyberte **Nahrát**.
 
 ### <a name="edit-a-single-instance"></a>Upravit jednu instanci
 
-Vyberte instanci a vyberte **upravit**. Proveďte požadované změny a vyberte **Uložit**.
+1. Vyberte instanci a vyberte **upravit**. 
+1. Proveďte požadované změny a vyberte **Uložit**.
 
-![Portal_sixteen][16]
-
-### <a name="delete-an-instance"></a>Odstranění instance
-
-Vyberte instanci a vyberte **odstranit**. Pokud nejsou žádné události související s instancí, je odstranit.
+    [![Upravit jednu instanci](media/v2-update-how-to-tsm/portal_sixteen.png)](media/v2-update-how-to-tsm/portal_sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -136,21 +137,3 @@ Vyberte instanci a vyberte **odstranit**. Pokud nejsou žádné události souvis
 - Další informace o verzi preview, přečtěte si [vizualizace dat v Průzkumníku Azure čas Series Insights ve verzi Preview](./time-series-insights-update-explorer.md).
 
 - Další informace o podporované tvary JSON najdete v článku [podporované tvary JSON](./time-series-insights-send-events.md#json).
-
-<!-- Images -->
-[1]: media/v2-update-how-to-tsm/portal_one.png
-[2]: media/v2-update-how-to-tsm/portal_two.png
-[3]: media/v2-update-how-to-tsm/portal_three.png
-[4]: media/v2-update-how-to-tsm/portal_four.png
-[5]: media/v2-update-how-to-tsm/portal_five.png
-[6]: media/v2-update-how-to-tsm/portal_six.png
-[7]: media/v2-update-how-to-tsm/portal_seven.png
-[8]: media/v2-update-how-to-tsm/portal_eight.png
-[9]: media/v2-update-how-to-tsm/portal_nine.png
-[10]: media/v2-update-how-to-tsm/portal_ten.png
-[11]: media/v2-update-how-to-tsm/portal_eleven.png
-[12]: media/v2-update-how-to-tsm/portal_twelve.png
-[13]: media/v2-update-how-to-tsm/portal_thirteen.png
-[14]: media/v2-update-how-to-tsm/portal_fourteen.png
-[15]: media/v2-update-how-to-tsm/portal_fifteen.png
-[16]: media/v2-update-how-to-tsm/portal_sixteen.png

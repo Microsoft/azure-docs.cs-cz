@@ -10,12 +10,12 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: 21fe1d654b802cb2bcb1a1fd3d5ffc4d04112334
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: 24640c9013f7a5b81cd5b1b6f45de49c5baad0e6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530465"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473275"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>Vytvoření první funkce prostředí PowerShell v Azure (preview)
 
@@ -50,24 +50,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
-
-## <a name="enable-powershell-in-the-extension"></a>Povolit prostředí PowerShell v rozšíření
-
-Povolit prostředí PowerShell ve službě Azure Functions Extension, postupujte následovně:
-
-1. Ve Visual Studio Code vyberte jednu z následujících příkazů nabídky:
-
-    * Ve Windows nebo Linuxu, zvolte **souboru** > **Předvolby** > **nastavení**.
-    * V systému macOS, zvolte **kód** > **Předvolby** > **nastavení**.
-
-1. V nastavení pole hledání zadejte `powershell`.
-
-1. V **uživatelská nastavení** kartu, rozbalte **rozšíření** > **Azure Functions**, pak **povolení podpory ve verzi preview pro prostředí PowerShell**.
-
-    ![Kód služby Azure Functions v projektu sady Visual Studio](./media/functions-create-first-function-powershell/enable-powershell-support-vs-code.png)
-
-Zavřete nastavení. Teď je povolené prostředí PowerShell.  
+[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)] 
 
 ## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
@@ -120,6 +103,9 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 > [!NOTE]
 > Nezapomeňte odebrat všechna volání do `Wait-Debugger` před publikováním vašich funkcí do Azure. 
+
+> [!NOTE]
+> Vytvoření aplikace Function App v Azure vyzve názvem aplikace Function App. AzureFunctions.advancedCreation nastavena na true, pokud chcete být vyzváni k zadání všech ostatních hodnot.
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

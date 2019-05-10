@@ -14,25 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ef2b1bd9cfe9aed1e82335d62bb09b5ffcbe1016
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773362"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471768"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
-
-> [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
-> * [Linux](service-fabric-patch-orchestration-application-linux.md)
->
->
-
 
 > 
 > [!IMPORTANT]
 > Aplikace verze 1.2. * odcházející z podpora skončí 30. dubna 2019. Upgradujte prosím na nejnovější verzi.
+
+> 
+> [!IMPORTANT]
+> Orchestraci oprav aplikace v linuxu je zastaralá. Navštivte prosím [Azure škálovací sady virtuálních počítačů automatické upgrady operačního systému image](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) představuje pro orchestraci aktualizací v linuxu.
 
 
 [Azure škálovací sady virtuálních počítačů automatické upgrady operačního systému image](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) je nejvhodnějším postupem pro zachování opravit operačních systémů v Azure a aplikace orchestraci oprav (POA) představuje obálku kolem služby Service Fabric RepairManager systémy která umožňuje konfiguraci na základě plánování opravy operačního systému pro hostované clustery mimo Azure. POA není vyžadován pro hostované clustery mimo Azure, ale plánování opravu instalace upgradu domény, je potřeba opravovat hostitele clusterů Service Fabric bez jakýchkoli prostojů.
@@ -158,9 +155,9 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 
 |**Parametr**        |**Typ**                          | **Podrobnosti**|
 |:-|-|-|
-|MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků Windows Update, které by měly být uložené v mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzel a měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> – Výsledky po dobu posledních tří měsíců by měla být uložena. |
+|MaxResultsToCache    |Dlouhý                              | Maximální počet výsledků Windows Update, které by měly být uložené v mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzel a měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> – Výsledky po dobu posledních tří měsíců by měla být uložena. |
 |TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
-|LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
+|LogsDiskQuotaInMB   |Dlouhý  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
 | WUQuery               | string<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Boolean <br> (výchozí: false)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90)                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |

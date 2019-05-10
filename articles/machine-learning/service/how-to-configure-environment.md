@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024955"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471615"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -283,7 +283,7 @@ Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-data
 
 Pomocí těchto nastavení:
 
-| Nastavení |Platí pro| Hodnota |
+| Nastavení |Platí pro| Value |
 |----|---|---|
 | Název clusteru |vždy| yourclustername |
 | Modul runtime Databricks |vždy| Any non ML runtime (non ML 4.x, 5.x) |
@@ -299,7 +299,7 @@ Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/u
 
 1. Zvolte **pouze jeden** možnost (žádné další instalace sady SDK jsou podporovány)
 
-   |Sada SDK&nbsp;balíčku&nbsp;funkce|Zdroj|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |Sada SDK&nbsp;balíčku&nbsp;funkce|Source|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Pro Databricks| Nahrát Python Egg nebo PyPI | azureml-sdk[databricks]|
    |Pro Databricks - with-<br> automatizované funkce ML| Nahrát Python Egg nebo PyPI | azureml-sdk[automl_databricks]|
@@ -396,5 +396,5 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
 
 - [Trénování modelu](tutorial-train-models-with-aml.md) v Azure Machine Learning s datovou sadou mnist ručně
 - Zobrazení [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) odkaz
-- Další informace o [sady SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)
+- Další informace o [balíčku pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk)
 - 

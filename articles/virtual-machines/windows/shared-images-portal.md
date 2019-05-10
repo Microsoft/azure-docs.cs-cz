@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/29/2019
+ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 50714f3fe6d30b4b93a0b42383b6f4634c86eafa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148052"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236593"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvořením Galerie sdílené bitové kopie pomocí webu Azure portal
 
@@ -43,7 +43,9 @@ Galerie obrázků sdílené funkce má více typů prostředků. Můžeme se pom
 
 ## <a name="before-you-begin"></a>Než začnete
 
-K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure Powershellu](tutorial-custom-images.md) ji vytvořit v případě potřeby. Při nahrazení projdete tohoto článku, skupinu prostředků a virtuální počítač příslušných místech názvy.
+K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure Powershellu](tutorial-custom-images.md) ji vytvořit v případě potřeby. Pokud spravované image obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+
+Při nahrazení projdete tohoto článku, skupinu prostředků a virtuální počítač příslušných místech názvy.
 
 
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]

@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3e813b8a1709675d0d870d64df83428ab82e25b3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b9e0dfb88c979618ce4cc5ed56e372cb0f65608
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024300"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472717"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -43,7 +43,7 @@ V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-ca
 
 V následující tabulce jsou uvedeny dostupné úrovně. Zahrnout další zdroje informací úroveň [stránce s cenami](https://azure.microsoft.com/pricing/details/search/), [limity služby a data](search-limits-quotas-capacity.md)a stránka portálu při zřizování služby.
 
-|Úroveň | Kapacita |
+|Vrstva | Kapacita |
 |-----|-------------|
 |Free | Sdílenou s jinými odběrateli. Neškálovatelná, omezená na 3 indexy a přes 50 MB úložiště. |
 |Basic | Vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku. Jeden oddíl 2 GB a až tři repliky. |
@@ -89,7 +89,7 @@ Poplatky za odchozí data Pokud služby jsou v různých oblastech. Tyto poplatk
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI obohacené indexování s využitím služeb Cognitive Services
 
-Pro [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md), měli byste počítat s připojení služeb Cognitive Services fakturovatelné prostředek na S0 cenovou úroveň pro zpracování s průběžnými platbami. Neexistuje žádná "hradit fixní částku" přidružené k připojení služeb Cognitive Services. Platíte jenom za zpracování, které potřebujete.
+Pro [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md), měli byste počítat s připojení účtovaných prostředku služeb Cognitive Services ve stejné oblasti jako Azure Search na cenovou úroveň S0 s průběžnými platbami zpracování. Neexistuje žádná "hradit fixní částku" přidružené k připojení služeb Cognitive Services. Platíte jenom za zpracování, které potřebujete.
 
 Extrakce Image během hádání dokumentu je poplatek za Azure Search, fakturuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma. 
 

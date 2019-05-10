@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c97b1da094b759ccf85f310ceec4c7abfd91b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318976"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472295"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Smyčka restartování Windows na Virtuálním počítači Azure
 Tento článek popisuje restartovací smyčce, může se stát na Windows virtuální počítač (VM) v Microsoft Azure.
@@ -102,6 +102,8 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
 Obnovení virtuálního počítače k poslední známé platné konfigurace, postupujte podle kroků v [spuštění virtuálního počítače Windows Azure s poslední známá funkční konfigurace](https://support.microsoft.com/help/4016731/).
 
 ### <a name="solution-for-cause-3"></a>Řešení pro příčina 3
+>[!NOTE]
+>Následující postup by měla sloužit pouze jako poslední prostředek. Při obnovení z regback může obnovit přístup k počítači, operační systém není považovat za stabilní vzhledem k tomu, že se data ztratí v registru mezi časové razítko hive a aktuální den. Potřebujete k vytvoření nového virtuálního počítače a jejich migrovat data.
 
 1. Jakmile disk je připojený k řešení potíží virtuální počítač, ujistěte se, že disk je označený jako **Online** v konzole Správa disků.
 
@@ -113,5 +115,4 @@ Obnovení virtuálního počítače k poslední známé platné konfigurace, pos
 
 5. [Vytvoření nového virtuálního počítače z disku s operačním systémem](../windows/create-vm-specialized.md).
 
->[!NOTE]
->Následující postup by měla sloužit pouze jako poslední prostředek. Při obnovení z regback může obnovit přístup k počítači, operační systém není považovat za stabilní vzhledem k tomu, že se data ztratí v registru mezi časové razítko hive a aktuální den. Potřebujete k vytvoření nového virtuálního počítače a jejich migrovat data.
+

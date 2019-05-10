@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaaaa5c2fe87b419bf38d6e6522ef745476ac1ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204945"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409974"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -470,7 +470,7 @@ Tyto články zahrnovat nasazení SAP v Azure:
 
 Tyto poznámky SAP se vztahují k tématu SAP v Azure:
 
-| Poznámka: číslo | Název |
+| Poznámka: číslo | Titul |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: Podporované produkty a změna velikosti |
 | [2015553] |SAP v Microsoft Azure: Požadavky pro podporu |
@@ -1047,7 +1047,7 @@ Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SC
 | --- | --- |
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Hodnota |120000 |
+| Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**Tabulka 3:** Změnit první parametr protokolu TCP/IP_
@@ -1058,7 +1058,7 @@ Pak přidejte této položky registru Windows na oba uzly clusteru Windows pro S
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Hodnota |120000 |
+| Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Tabulka 4:** Změňte druhý parametr protokolu TCP/IP_
@@ -1229,9 +1229,10 @@ Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
    _**Obrázek 38:** Potvrzení, že jste změnili konfiguraci clusteru_
 
-Po instalaci clusteru převzetí služeb při selhání Windows úspěšně, třeba změny provedené některé prahové hodnoty pro přizpůsobení převzetí služeb při selhání detekce podmínky v Azure. Změnit parametry jsou popsané v tomto blogu: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Za předpokladu, že dva virtuální počítače, které sestavení konfigurace clusteru Windows pro ASCS/SCS jsou ve stejné podsíti, je potřeba změnit tak, aby tyto hodnoty následujících parametrů:
-- SameSubNetDelay = 2
-- SameSubNetThreshold = 15
+Po instalaci clusteru převzetí služeb při selhání Windows úspěšně, třeba změny provedené některé prahové hodnoty pro přizpůsobení převzetí služeb při selhání detekce podmínky v Azure. Změnit parametry jsou popsané v tomto blogu: [ https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834 ](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834). Za předpokladu, že dva virtuální počítače, které sestavení konfigurace clusteru Windows pro ASCS/SCS jsou ve stejné podsíti, je potřeba změnit tak, aby tyto hodnoty následujících parametrů:  
+- SameSubNetDelay = 2000  
+- SameSubNetThreshold = 15  
+- RoutingHistoryLength = 30  
 
 Tato nastavení byly testovány se zákazníky a k dispozici dobré ohrožení odolné proti chybám dostatečně na jedné straně. Na druhé straně se tato nastavení rychle poskytuje dostatek převzetí služeb při selhání ve skutečné chybové stavy při selhání uzlu nebo virtuální počítač nebo softwaru SAP. 
 

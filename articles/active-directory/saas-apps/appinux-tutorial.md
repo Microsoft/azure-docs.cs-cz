@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e40890459315bacf88fa6a12bc5eed7c0708b1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7d3e53224b5de32003cef29433a257ddfc99d88
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284350"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appinux"></a>Kurz: Integrace Azure Active Directory s Appinux
 
@@ -121,16 +121,16 @@ Ke konfiguraci Azure AD jednotné přihlašování s Appinux, proveďte následu
 
     | **Název** | **Namespace** | **Zdrojový atribut**|
     | ---------|---------------| --------- |
-    | `givenname` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.givenname` |
-    | `surname` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.surname` |
-    | `emailaddress` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.mail` |
-    | `name` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.userprincipalname` |
+    | `givenname` | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.givenname` |
+    | `surname` | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.surname` |
+    | `emailaddress` | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.mail` |
+    | `name` | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.userprincipalname` |
     | `UserType` | `http://bcv.appinux.com/claims` | `Provide the value as per your organization` |
     | `Tag` | `http://appinux.com/Tag` | `Provide the value as per your organization` |
     | `Role` | `http://schemas.microsoft.com/ws/2008/06/identity/claims/role` | `user.assignedroles` |
-    | `email` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/email` | `user.mail` |
+    | `email` | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/email` | `user.mail` |
     | `wanshort` | `http://appinux.com/windowsaccountname2` | `extractmailprefix([userprincipalname])` |
-    | `nameidentifier` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.employeeid` |
+    | `nameidentifier` | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.employeeid` |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -226,7 +226,7 @@ V této části se vytvoří uživateli Britta Simon v Appinux. Appinux podporuj
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Appinux](https://support.appinux.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

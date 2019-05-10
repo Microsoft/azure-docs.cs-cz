@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: be3cedc4b496f4f64a52217099f64092dfb49228
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 35e57dfcc7b1fd6f8de265ab75de29dedd8fdfc2
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149852"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501667"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Použití rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning
 
@@ -36,7 +36,11 @@ Rozhraní příkazového řádku, není to náhrada pro sadu SDK Azure Machine L
 
 * [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
-## <a name="install-the-extension"></a>Instalace rozšíření
+## <a name="full-reference-docs"></a>Úplný přehled dokumentace
+
+Najít [úplné referenční dokumenty pro azure-cli-ml rozšíření Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
+
+## <a name="install-the-extension"></a>Nainstalovat rozšíření
 
 Pokud chcete nainstalovat rozšíření Machine Learning CLI, použijte následující příkaz:
 
@@ -45,7 +49,7 @@ az extension add -n azure-cli-ml
 ```
 
 > [!TIP]
-> Příklad soubory můžete použít pomocí níže uvedených příkazů lze nalézt [tady](http://aka.ms/azml-deploy-cloud).
+> Příklad soubory můžete použít pomocí níže uvedených příkazů lze nalézt [tady](https://aka.ms/azml-deploy-cloud).
 
 Po zobrazení výzvy vyberte `y` nainstalovat rozšíření.
 
@@ -55,7 +59,7 @@ Pokud chcete ověřit, jestli je nainstalovaná rozšíření, použijte násled
 az ml -h
 ```
 
-## <a name="remove-the-extension"></a>Odebrání rozšíření
+## <a name="remove-the-extension"></a>Odebrat rozšíření
 
 Chcete-li odebrat rozšíření rozhraní příkazového řádku, použijte následující příkaz:
 
@@ -82,9 +86,12 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     Další informace najdete v tématu [vytvořit pracovní prostor služby ml az](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
 + Konfigurace pracovního prostoru se připojte k složku, do které umožňují kontextové povědomí o rozhraní příkazového řádku.
+
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
+
+    Tento příkaz vytvoří `.azureml` podadresář, který obsahuje soubory příklad runconfig a conda prostředí. Obsahuje taky `config.json` soubor, který se používá ke komunikaci s pracovního prostoru Azure Machine Learning.
 
     Další informace najdete v tématu [az ml složky připojit](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -121,6 +128,13 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
+    > [!TIP]
+    > `az ml folder attach` Příkaz vytvoří `.azureml` podadresář, který obsahuje dva soubory runconfig příklad. 
+    >
+    > Pokud máte skript v jazyce Python, která vytvoří objekt konfigurace spuštění prostřednictvím kódu programu, můžete použít [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) ji uložit jako soubor runconfig.
+    >
+    > Další příklad runconfig soubory, naleznete v tématu [ https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml ](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
+
     Další informace najdete v tématu [az ml spuštění odeslat skript](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
 * Zobrazení seznamu experimentů:
@@ -156,9 +170,26 @@ Následující příkazy ukazují, jak registrace trénovaného modelu a pak ho 
     az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
     ```
 
+    Tady je příklad `inferenceconfig.json` dokumentu:
+
+    ```json
+    {
+    "entryScript": "score.py",
+    "runtime": "python",
+    "condaFile": "myenv.yml",
+    "extraDockerfileSteps": null,
+    "sourceDirectory": null,
+    "enableGpu": false,
+    "baseImage": null,
+    "baseImageRegistry": null
+    }
+    ```
+
     Další informace najdete v tématu [nasazení modelu ml az](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy).
 
 
 ## <a name="next-steps"></a>Další postup
 
 * [Příkaz referenční informace k rozšíření Machine Learning CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest).
+
+* [Trénování a nasazovat modely machine learningu pomocí kanálů Azure](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)

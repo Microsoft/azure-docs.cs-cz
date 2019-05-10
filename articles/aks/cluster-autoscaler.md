@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: d8e095303161002d10914ca7c3213ac0c6894e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a287a8da884290e94e9ac1c864abe28e47d53d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467119"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508146"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Ve verzi Preview – automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
 
 Jak držet krok s požadavky na aplikace ve službě Azure Kubernetes Service (AKS), budete muset upravit počet uzlů, na kterých běží vaše úlohy. Součást automatického škálování clusteru můžete sledovat podů v clusteru, který se kvůli omezení prostředků se nedá naplánovat. Když se zjistí problémy, se zvýší počet uzlů pro splnění požadavků aplikace. Uzly jsou také pravidelně kontroluje nedostatku s podů, počet uzlů, pak sníží podle potřeby. Tato schopnost automaticky vertikálně navyšovat nebo snižovat počet uzlů v clusteru AKS vám umožní spustit cluster efektivní a cenově výhodný.
 
-V tomto článku se dozvíte, jak povolit a spravovat automatického škálování clusteru v clusteru AKS.
+V tomto článku se dozvíte, jak povolit a spravovat automatického škálování clusteru v clusteru AKS. Automatického škálování clusteru by měl být testován pouze ve verzi preview v clusterech AKS s fondem jeden uzel.
 
 > [!IMPORTANT]
 > Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
@@ -59,6 +59,12 @@ Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskyto
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+
+## <a name="limitations"></a>Omezení
+
+Při vytváření a správě AKS clustery, které používají škálovací sady virtuálních počítačů se vztahují následující omezení:
+
+* Doplněk směrování aplikace HTTP nelze použít.
 
 ## <a name="about-the-cluster-autoscaler"></a>O automatického škálování clusteru
 
@@ -101,7 +107,6 @@ az group create --name myResourceGroup --location canadaeast
 az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
-  --kubernetes-version 1.12.6 \
   --node-count 1 \
   --enable-vmss \
   --enable-cluster-autoscaler \

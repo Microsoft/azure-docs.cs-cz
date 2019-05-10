@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c62ad66a29943e26d1cb2f15ca71631d2feabe3
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705947"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467435"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí webu Azure portal
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 2. Vyberte **Compute**a pak vyberte **systému Windows Server 2016 Datacenter** nebo verzi **Ubuntu Server**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |---|---|
     |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
@@ -86,17 +86,20 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**.
 
-    | Nastavení        | Hodnota                                                        |
+    | Nastavení        | Value                                                        |
     | ---            | ---   |
     | Název           | Délka 3–24 znaků, může obsahovat jenom malá písmena a čísla a musí být jedinečný v rámci všech účtů Azure Storage.                                                               |
     | Location       | Vyberte **USA – východ**.                                           |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
 
     Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Pokud místo vytvoření nového účtu úložiště používáte už existující účet, vyberte účet úložiště, který má vybrané **Všechny sítě** (výchozí) v možnosti **Brány firewall a virtuální sítě** v **NASTAVENÍ** pro účet úložiště.
+    
+    > [!NOTE]
+    > I když Microsoft.Insight a Microsoft.Network poskytovatelé jsou aktuálně podporované pro službu Azure Storage, protokolů toku NSG je stále není plně připojili. Povolení protokolování toku NSG Flow **všechny sítě** musí být vybrán dokud tato funkce je plně připojili. 
 4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 5. Pod **PROTOKOLY** vyberte **Protokoly toku NSG**, jak je vidět na tomto obrázku:
 
-    ![Skupiny NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![skupin NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. V seznamu NSG vyberte NSG s názvem **myVm-nsg**.
 7. V **Nastavení protokolů toku** vyberte **Zapnuto**.
@@ -204,7 +207,7 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 | 13.67.143.118     | Cílová IP adresa | Cílová IP adresa, kam tok mířil.                                                                                  |
 | 44931        | Zdrojový port            | Zdrojový port, ze které tok pocházel.                                           |
 | 443         | Cílový port       | Cílový port, do kterého tok mířil. Protože se provoz směřující na port 443, pravidlo s názvem **UserRule_default-allow-rdp**, v protokolu souborů zpracování toku.                                                |
-| T            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
+| út            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
 | O            | Direction              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
 | A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).  
 | C            | Stav toku **pouze verze 2** | Zaznamenat stav toku. Možné stavy **B**: Proces, při vytváření toku. Nejsou zadány Statistika. **C**: Pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **E**: Ukončit, pokud tok je ukončen. Statistiky jsou k dispozici. |

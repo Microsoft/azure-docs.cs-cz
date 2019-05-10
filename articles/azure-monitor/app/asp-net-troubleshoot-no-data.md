@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691199"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471857"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -42,7 +42,7 @@ ms.locfileid: "60691199"
 * Nástroje podporují všechny typy projektu .NET. Web a WCF projekty jsou podporovány. Pro ostatní typy projektů jako jsou třeba aplikace klasické pracovní plochy nebo služby, můžete ji [ručně přidejte sadu Application Insights SDK do projektu](../../azure-monitor/app/windows-desktop.md).
 * Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Obsahuje předem nainstalovaných pomocí nástroje Developer Analytics, které poskytují Application Insights SDK.
 * Vyberte **nástroje**, **rozšíření a aktualizace** a zkontrolujte, že **Developer Analytics Tools** je nainstalován a povolen. Pokud ano, klikněte na tlačítko **aktualizace** zobrazíte, pokud je k dispozici aktualizace.
-* Otevřete dialogové okno Nový projekt a zvolte webovou aplikaci ASP.NET. Pokud se zobrazí možnost Application Insights, pak tyto nástroje jsou nainstalovány. Pokud tomu tak není, zkuste odinstalovat a opětovné instalaci nástroje Application Insights.
+* Otevřete dialogové okno Nový projekt a zvolte webovou aplikaci ASP.NET. Pokud se zobrazí možnost Application Insights, pak tyto nástroje jsou nainstalovány. Pokud tomu tak není, zkuste odinstalovat a znovu nainstalovat Developer Analytics Tools.
 
 ## <a name="q02"></a>Nepovedlo se přidat Application Insights
 *Při přidání Application Insights do existujícího projektu zobrazí chybová zpráva.*
@@ -85,7 +85,7 @@ Oprava:
 * Vyberte **nástroje**, **rozšíření a aktualizace** a zkontrolujte, že **nástroje Developer Analytics tools** je nainstalován a povolen. Pokud ano, klikněte na tlačítko **aktualizace** zobrazíte, pokud je k dispozici aktualizace.
 * Klikněte pravým tlačítkem na projekt v Průzkumníku řešení. Pokud se zobrazí příkaz **Application Insights > Konfigurovat Application Insights**, používat ho pro připojování vašeho projektu na prostředek ve službě Application Insights.
 
-V opačném případě typ projektu nepodporuje přímo nástrojů služby Application Insights. Pokud chcete zobrazit telemetrii, přihlaste se k [webu Azure portal](https://portal.azure.com), zvolte Application Insights na levém navigačním panelu a vyberte svou aplikaci.
+V opačném případě typ projektu nepodporuje přímo Developer Analytics tools. Pokud chcete zobrazit telemetrii, přihlaste se k [webu Azure portal](https://portal.azure.com), zvolte Application Insights na levém navigačním panelu a vyberte svou aplikaci.
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>"Přístup zakázán" při otevření služby Application Insights v sadě Visual Studio
 *Příkaz nabídky "Otevřít Application Insights" budu přesměrován na webu Azure portal, ale se zobrazí chyba "přístup byl odepřen".*

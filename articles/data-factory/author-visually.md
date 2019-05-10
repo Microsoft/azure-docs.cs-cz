@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32e4abebdfb93312c60a25ca8b483f071e5e73c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60592909"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507821"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -58,9 +58,9 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vy
 
 V podokně se zobrazí následující kód úložišť Azure nastavení úložiště:
 
-| Nastavení | Popis | Hodnota |
+| Nastavení | Popis | Value |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/>**Poznámka:** GitHub se momentálně nepodporuje. | Azure úložišť Git |
+| **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/> | Azure úložišť Git |
 | **Azure Active Directory** | Název tenanta Azure AD. | `<your tenant name>` |
 | **Organizace úložiště Azure** | Název organizace vašich úložišť Azure. Můžete vyhledat název organizace vašich úložišť Azure na `https://{organization name}.visualstudio.com`. Je možné [Přihlaste se k vaší organizaci Azure úložišť](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | `<your organization name>` |
 | **ProjectName** | Název projektu úložiště Azure. Můžete vyhledat název projektu úložiště Azure na `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
@@ -203,7 +203,7 @@ V podokně se zobrazí následující kód úložišť Azure nastavení úloži�
 
 | **Nastavení**                                              | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Hodnota**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Typ úložiště**                                      | Typ úložiště kódu úložiště Azure.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
+| **Typ úložiště**                                      | Typ úložiště kódu úložiště Azure.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Účet GitHub**                                       | Název účtu GitHub. Tento název najdete v protokolu https:\//github.com/{account název} / {název úložiště}. Přejdete na tuto stránku vyzve k zadání přihlašovacích údajů Githubu OAuth ke svému účtu GitHub.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | Název úložiště GitHub kódu. Účtů GitHub obsahovat úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem účtu.                                                                                                                                                                                                                              |                    |
 | **Spolupráce větve**                                 | Větvi Githubu spolupráci, které slouží k publikování. Ve výchozím nastavení je hlavní. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve.                                                                                                                                                                                                                                                               |                    |
@@ -235,7 +235,7 @@ V podokně se zobrazí následující kód úložišť Azure nastavení úloži�
 
 | **Nastavení**                                              | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Hodnota**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Typ úložiště**                                      | Typ úložiště kódu úložiště Azure.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
+| **Typ úložiště**                                      | Typ úložiště kódu úložiště Azure.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **Používání Githubu Enterprise**                                | Pokud chcete vybrat Githubu Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **Adresa URL Githubu Enterprise**                                | Adresa URL kořenového Githubu Enterprise. Příklad: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
 | **Účet GitHub**                                       | Název účtu GitHub. Tento název najdete v protokolu https:\//github.com/{account název} / {název úložiště}. Přejdete na tuto stránku vyzve k zadání přihlašovacích údajů Githubu OAuth ke svému účtu GitHub.                                                                                                                                                                                                                                               |                    |
@@ -266,10 +266,10 @@ Informace o podporovaných výrazů naleznete v tématu [výrazům a funkcím ve
 
 ![Přidat dynamický obsah](media/author-visually/dynamic-content-2.png)
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 Vyberte **zpětnou vazbu** komentovat funkcí nebo oznámení o problémech s nástrojem Microsoft:
 
-![Váš názor](media/author-visually/provide-feedback.png)
+![Zpětná vazba](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o monitorování a Správa kanálů najdete v tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md).

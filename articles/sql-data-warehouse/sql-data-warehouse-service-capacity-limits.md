@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad285d71c2bb90f4b5a59eba25c6cc6a6d8588d6
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204898"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501853"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -54,7 +54,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 ## <a name="loads"></a>Načtení
 | Category | Popis | Maximum |
 |:--- |:--- |:--- |
-| Načítání Polybase |MB na řádek |1<br/><br/>Polybase načte řádky, které jsou menší než 1 MB.<br/><br/> |
+| Načítání Polybase |MB na řádek |1<br/><br/>Polybase načte řádky, které jsou menší než 1 MB. Načítání typů dat LOB do tabulky s indexem Clusterované Columnstore (CCI) se nepodporuje.<br/><br/> |
 
 ## <a name="queries"></a>Dotazy
 | Category | Popis | Maximum |
@@ -63,7 +63,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | Dotaz |Souběžné dotazy na systémová zobrazení. |100 |
 | Dotaz |Ve frontě dotazů na systémová zobrazení |1000 |
 | Dotaz |Maximální parametry |2098 |
-| Batch |Maximální velikost |65,536*4096 |
+| Balík |Maximální velikost |65,536*4096 |
 | Vyberte výsledky |Sloupce na každém řádku |4 096<br/><br/>Ve výsledcích vyberte nikdy nemůžete mít více než 4096 sloupců na řádek. Neexistuje žádná záruka, že budete mít vždy 4096. Pokud plán dotazu vyžaduje dočasné tabulky, sloupce 1024 jednu tabulku maximální použít. |
 | SELECT |Vnořené poddotazů |32<br/><br/>V příkazu SELECT nikdy nemůžete mít více než 32 vnořené poddotazy. Neexistuje žádná záruka, že budete mít vždy 32. Například spojení, můžou představovat poddotaz na plán dotazu. Počet poddotazy může také omezit dostupnou pamětí. |
 | SELECT |Sloupce na spojení |1024 sloupců<br/><br/>Nikdy nemůžete mít více než 1024 sloupců ve spojení. Neexistuje žádná záruka, že budete mít vždy 1024. Pokud plán spojení vyžaduje dočasnou tabulku s více sloupců než výsledek spojení, platí limit 1 024 do dočasné tabulky. |
@@ -75,14 +75,14 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 ## <a name="metadata"></a>Metadata
 | Systémové zobrazení | Maximální počet řádků |
 |:--- |:--- |
-| sys.dm_pdw_component_health_alerts |10 000 |
+| sys.dm_pdw_component_health_alerts |10,000 |
 | sys.dm_pdw_dms_cores |100 |
 | sys.dm_pdw_dms_workers |Celkový počet pracovních procesů DMS pro nejnovější 1000 požadavků SQL. |
-| sys.dm_pdw_errors |10 000 |
-| sys.dm_pdw_exec_requests |10 000 |
-| sys.dm_pdw_exec_sessions |10 000 |
+| sys.dm_pdw_errors |10,000 |
+| sys.dm_pdw_exec_requests |10,000 |
+| sys.dm_pdw_exec_sessions |10,000 |
 | sys.dm_pdw_request_steps |Celkový počet kroků pro nejnovější 1000 SQL žádosti, které jsou uloženy v sys.dm_pdw_exec_requests. |
-| sys.dm_pdw_os_event_logs |10 000 |
+| sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |Posledních 1000 SQL požadavků, do které jsou uloženy v sys.dm_pdw_exec_requests. |
 
 ## <a name="next-steps"></a>Další postup

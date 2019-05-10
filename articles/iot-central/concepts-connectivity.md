@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887454"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467815"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -107,7 +107,7 @@ Klíčovým scénářem, IoT Central umožňuje, je pro výrobce OEM pro výrobu
 
 Následující diagram popisuje tento tok:
 
-![Nastavení připojení](media/concepts-connectivity/device-connection-flow.png)
+![Nastavení připojení](media/concepts-connectivity/device-connection-flow1.png)
 
 Následující kroky popisují postup podrobněji. Kroky se mírně liší v závislosti na tom, jestli používáte SAS nebo X.509 certifikáty pro ověřování zařízení:
 

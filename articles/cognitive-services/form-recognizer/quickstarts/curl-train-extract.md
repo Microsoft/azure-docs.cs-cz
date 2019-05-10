@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 1afe9239dcc3f5a24d2e950ec7b563bf53d1f04c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 36f98a8dea2a732a7f8504b160da895637366fc8
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143235"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471910"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahování dat formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -40,7 +40,7 @@ K natrénování modelu formuláře Rozlišovač použití dokumentů v kontejne
 * Místo `<subscription key>` použijte váš klíč předplatného.
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<SAS URL>\"}"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
 Zobrazí se `200 (Success)` odpověď se následující výstup JSON:
@@ -97,7 +97,7 @@ V dalším kroku se analýza dokumentu a z něj extrahovat páry klíč hodnota 
 * Nahraďte `<file type>` s typem souboru – podporované typy pdf, image/jpeg, image/png.
 
 ```bash
-cURL cmd: curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@<path to your form>;type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi

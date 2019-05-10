@@ -643,8 +643,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Oprava uzlů clusteru (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: Oprava uzlů clusteru (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: Povolení šifrování disků (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Povolení šifrování disků (Linux)

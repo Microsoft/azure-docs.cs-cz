@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/08/2019
+ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080755"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466177"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -28,14 +28,14 @@ V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * Vytvoření clusteru Azure Red Hat OpenShift
 > * [Škálování clusteru Azure Red Hat OpenShift](tutorial-scale-cluster.md)
-> * [Odstranění clusteru služby Azure Red Hat OpenShift](tutorial-delete-cluster.md)
+> * [Odstranění clusteru Azure Red Hat OpenShift](tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
 Ujistěte se, že jste [nastavení vývojového prostředí](howto-setup-environment.md), což zahrnuje:
-- Instalace nejnovější rozhraní příkazového řádku
+- Instalace nejnovější rozhraní příkazového řádku (verze 2.0.64 nebo novější)
 - Vytvoření klienta
 - Vytvoření objektu aplikace Azure
 - Vytvoření uživatele služby Active Directory používat k přihlašování k aplikacím běžícím v clusteru.
@@ -101,7 +101,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Volitelné: Propojení virtuální sítě clusteru pro existující virtuální sítě
 
-Pokud nepotřebujete připojení virtuální sítě (VNET) clusteru, které vytvoříte na existující virtuální síť, tento krok přeskočte.
+Pokud nepotřebujete připojení clusteru, které vytvoříte na existující virtuální síť přes partnerský vztah virtuální sítě (VNET), tento krok přeskočte.
 
 Nejprve získejte identifikátor existující virtuální síť. Identifikátor bude ve tvaru: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 
@@ -132,7 +132,7 @@ Po několika minutách `az openshift create` bude dokončena úspěšně a vrát
 
 ## <a name="step-3-sign-in-to-the-openshift-console"></a>Krok 3: Přihlaste se ke konzole Openshiftu
 
-Teď jste připraveni k přihlášení ke konzole OpenShift nového clusteru. [OpenShift Webová konzola](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html) vám umožní vizualizovat, procházet a spravovat obsah vašich projektů OpenShift.
+Nyní jste připraveni přihlášení ke konzole OpenShift nového clusteru. [OpenShift Webová konzola](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) vám umožní vizualizovat, procházet a spravovat obsah vašich projektů OpenShift.
 
 Přihlásíme jako [nového uživatele Azure AD](howto-aad-app-configuration.md#create-a-new-active-directory-user) vytvořily pro testování. K tomuto účelu bude nutné instance čerstvé prohlížeče, který nemá v mezipaměti uložené identity, které standardně používáte k přihlášení k webu Azure portal.
 
@@ -147,13 +147,13 @@ Přihlaste se pomocí uživatele a heslo, které jste vytvořili v [vytvořte no
 
 Nyní jste se přihlásili do konzoly clusteru.
 
-[Snímek obrazovky konzoly cluster Openshiftu](./media/aro-console.png)
+![Snímek obrazovky konzoly cluster Openshiftu](./media/aro-console.png)
 
- Další informace o [pomocí konzoly nástroje OpenShift](https://docs.openshift.com/dedicated/getting_started/developers_console.html) k vytvoření a součástí bitové kopie [Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) dokumentaci.
+ Další informace o [pomocí konzoly nástroje OpenShift](https://docs.openshift.com/aro/getting_started/developers_console.html) k vytvoření a součástí bitové kopie [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) dokumentaci.
 
 ## <a name="step-4-install-the-openshift-cli"></a>Krok 4: Instalace rozhraní příkazového řádku Openshiftu
 
-[OpenShift CLI](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html) (nebo *OS nástroje*) poskytují příkazy pro správu aplikací a nižší úrovně nástroje pro práci s různými komponentami OpenShift clusteru.
+[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (nebo *OS nástroje*) poskytují příkazy pro správu aplikací a nižší úrovně nástroje pro práci s různými komponentami OpenShift clusteru.
 
 V konzole nástroje OpenShift přihlašovacího jména kliknutím na tlačítko Nápověda v pravém horním rohu a vyberte **nástroje příkazového řádku**.  Postupujte podle **nejnovější vydaná verze** odkaz ke stažení a instalaci podporovaný OS rozhraní příkazového řádku pro Windows, MacOS nebo Linuxem.
 

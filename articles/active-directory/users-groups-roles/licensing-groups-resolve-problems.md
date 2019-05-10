@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470215"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466287"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licencí pro skupinu v Azure Active Directory
 
@@ -107,9 +107,15 @@ Pokud používáte Exchange Online, někteří uživatelé ve vašem tenantovi m
 > ```
 > Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Další informace o tomto problému najdete v tématu ["adresa proxy serveru se už používá" chybová zpráva v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Tento článek obsahuje také informace o [jak se připojit ke službě Exchange Online pomocí vzdáleného prostředí PowerShell](https://technet.microsoft.com/library/jj984289.aspx). Tento článek pro další informace naleznete v tématu [na způsob naplnění atributu proxyAddresses v Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+> Další informace o tomto problému najdete v tématu ["adresa proxy serveru se už používá" chybová zpráva v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Tento článek obsahuje také informace o [jak se připojit ke službě Exchange Online pomocí vzdáleného prostředí PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
 
 Až vyřešíte všechny problémy adresu proxy serveru pro ovlivnění uživatelé, ujistěte se, že chcete vynutit zpracování licencí skupiny, abyste měli jistotu, že licence se teď může používat.
+
+## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Změna atributu ProxyAddresses a Azure AD Mail
+
+**Problém:** Při aktualizaci přiřazení licence na uživatele nebo skupiny, může se zobrazit, že se změní e-mailu Azure AD a ProxyAddresses atribut někteří uživatelé.
+
+Aktualizují se přiřazení licence na uživatele příčiny výpočtu aktivovat adresa proxy serveru, který můžete změnit atributy uživatele. K pochopení přesnou příčinu změnu a problém vyřešit, najdete v tomto článku [jak naplnění atributu proxyAddresses v Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Co se stane, když je ve skupině více než jednu licenci na produkt?
 

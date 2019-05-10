@@ -14,19 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: f768582e8ef32bc654a2f797c5c7a481a26fb643
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 012f4e479a5b8ea2e3ddea1bfde70ab10ee4e834
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734179"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467052"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak vytvořit Image virtuálních počítačů s Windows v Azure pomocí Packeru
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Windows distribuce a verze operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější operační systém a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
 
 Tento článek byl testován poslední o 2/21/2019 používání [modulu Powershellu pro Az](https://docs.microsoft.com/powershell/azure/install-az-ps) verze 1.3.0 a [Packeru](https://www.packer.io/docs/install/index.html) verze 1.3.4.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+> [!NOTE]
+> Azure teď má službu, Image Builder pro Azure (preview) pro definování a vytvoření vlastní Image. Image Builder pro Azure je postavený na Packeru, takže se dá dokonce využít vaše stávající skripty prostředí zajištění webu Packeru s ním. Začínáme s Azure Image Builder, najdete v článku [vytvoření virtuálního počítače s Windows pomocí Azure Image Builder](image-builder.md).
 
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
 Během procesu sestavování vytvoří Packeru dočasné prostředky Azure jako sestavení zdrojového virtuálního počítače. K zachycení této zdrojový virtuální počítač pro použití jako image, je nutné definovat skupinu prostředků. V této skupině prostředků se ukládá výstup z procesu sestavení Packeru.
@@ -248,6 +249,4 @@ Pro virtuální počítač, který zahrnuje instalaci služby IIS z zajištění
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto příkladu používá Packeru pro vytvoření image virtuálního počítače s již nainstalovanou službu IIS. Tato image virtuálního počítače společně s existující pracovní postupy nasazení, například můžete použít k nasazení vaší aplikace na virtuální počítače vytvořené z této Image pomocí služby Azure DevOps, Ansible, Chef nebo Puppet.
-
-Další příklad šablony Packeru pro jiné distribuce Windows, naleznete v tématu [úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Můžete také použít existující skripty zajištění webu Packeru s [Azure Image Builder](image-builder.md).

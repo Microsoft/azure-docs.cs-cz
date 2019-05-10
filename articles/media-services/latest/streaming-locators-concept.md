@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: 51aa33e4ff387a1030dac42bce8d12cf72343b35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466727"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465036"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -34,7 +34,7 @@ Pokud chcete zadat možnosti šifrování na datový proud, vytvořte [zásad kl
 
 ## <a name="associate-filters-with-streaming-locators"></a>Lokátory streamování přidružit filtry
 
-Můžete zadat seznam [asset nebo účet filtrů](filters-concept.md), které bude platit pro vaše [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamické packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dyanamic manifestu](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
+Můžete zadat seznam [asset nebo účet filtrů](filters-concept.md), které bude platit pro vaše [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamické packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické manifestu](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filtr, pořadí, stránka Lokátor streamování entity
 
@@ -43,4 +43,4 @@ Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities
 ## <a name="next-steps"></a>Další postup
 
 * [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
-* [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
+* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)

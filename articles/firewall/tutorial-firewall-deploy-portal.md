@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194216"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405684"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -108,7 +108,7 @@ Teď vytvoříte virtuální počítače pro jump server a server úloh a umíst
    |Název virtuálního počítače     |**SRV Jump**|
    |Oblast     |Stejné jako předchozí|
    |Uživatelské jméno správce     |**azureuser**|
-   |Heslo     |**Azure123456!** –|
+   |Heslo     |**Azure123456!**|
 
 4. V části **příchozí pravidla portů**, pro **veřejné příchozí porty**vyberte **povolit vybrané porty**.
 5. Pro **vyberte příchozí porty**vyberte **protokolu RDP (3389)**.
@@ -142,9 +142,9 @@ Nasaďte do virtuální sítě bránu firewall.
    |---------|---------|
    |Předplatné     |\<Vaše předplatné\>|
    |Skupina prostředků     |**Test-FW-RG** |
-   |Name     |**Test-FW01**|
+   |Název     |**Test-FW01**|
    |Location     |Vyberte dříve použité umístění.|
-   |Volba virtuální sítě     |**Použít existující**: **Test-FW-VN**|
+   |Zvolit virtuální síť     |**Použít existující**: **Test-FW-VN**|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
 5. Vyberte **Zkontrolovat a vytvořit**.
@@ -236,12 +236,12 @@ Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
 1. Zkontrolujte na webu Azure Portal síťová nastavení virtuálního počítače **Srv-Work** a poznamenejte si privátní IP adresu.
 2. Připojení k vzdálené plochy **Srv Jump** virtuálního počítače a přihlášení. Odtud otevření připojení ke vzdálené ploše **Srv pracovní** privátní IP adresu.
 
-3. Otevřete prohlížeč Internet Explorer a přejděte na adresu http://www.google.com.
+3. Otevřete prohlížeč Internet Explorer a přejděte na adresu https://www.google.com.
 4. Vyberte **OK** > **Zavřít** na výstrahy zabezpečení aplikace Internet Explorer.
 
    Zobrazí se domovská stránka služby Google.
 
-5. Přejděte na http://www.microsoft.com.
+5. Přejděte do https://www.microsoft.com.
 
    Brána firewall by vás měla zablokovat.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
-ms.openlocfilehash: 366dec6c687c0b9f40d61e0debb7c15910b9fa99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61036107"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65468350"
 ---
 Koncepce sady Azure Compute jednotek (ACU) poskytuje způsob porovnání výkonu (CPU) jednotlivých SKU v Azure. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon.  Jednotka ACU je aktuálně stanovená tak, že malý virtuální počítač (Standard_A1) má 100 ACU a ostatní jednotky SKU jsou pak ohodnoceny podle relativního výsledku standardního srovnávacího testu. 
 
@@ -46,6 +46,8 @@ Koncepce sady Azure Compute jednotek (ACU) poskytuje způsob porovnání výkonu
 | [G1 - G5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 - 240* | 1:1 |
 | [GS1 - GS5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 - 240* | 1:1 |
 | [H](../articles/virtual-machines/windows/sizes-hpc.md) |290 - 300* | 1:1 |
+| [HB](../articles/virtual-machines/windows/sizes-hpc.md) |199 - 216** | 1:1 |
+| [HC](../articles/virtual-machines/windows/sizes-hpc.md) |297 - 315* | 1:1 |
 | [L4s - L32s](../articles/virtual-machines/windows/sizes-storage.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](../articles/virtual-machines/windows/sizes-storage.md) |150 - 175** | 2:1 |
 | [M](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) | 160 - 180 | 2:1\*\*\* |

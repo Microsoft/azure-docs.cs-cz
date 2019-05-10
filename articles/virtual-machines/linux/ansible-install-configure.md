@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: e7a664be48d1e26e09faf4f330fd1267ec003315
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 60cefe24feab9de4262e81eb1bc313aeadc7eb05
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685603"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409242"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Rychlý start: Ansible nainstalovat na virtuální počítače s Linuxem v Azure
 
@@ -21,8 +21,8 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
 - **Přístup k Linuxu nebo virtuálnímu počítači s Linuxem** – Pokud nemáte počítač s Linuxem, vytvořte si [virtuální počítač s Linuxem](/azure/virtual-network/quick-create-cli).
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Instalace Ansible na virtuálním počítači Azure s Linuxem
@@ -155,7 +155,7 @@ V této části exportujete hodnoty instančního objektu služby tak, aby nakon
     export AZURE_TENANT=<security-principal-tenant>
     ```
 
-## <a name="verify-the-configuration"></a>Ověření konfigurace
+## <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
 
 Pokud chcete ověřit úspěšné konfiguraci, použijte Ansible k vytvoření skupiny prostředků Azure.
 

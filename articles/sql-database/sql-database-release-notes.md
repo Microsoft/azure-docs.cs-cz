@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/07/2019
 ms.author: carlrab
-ms.openlocfilehash: e6d702c7a3194f07f9d04139acbc9b6101b296ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717424"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406587"
 ---
 # <a name="sql-database-release-notes"></a>Zpráva k vydání verze SQL Database
 
@@ -25,7 +25,8 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Funkce | Podrobnosti |
 | ---| --- |
-| Úlohy elastické databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md) |
+| Bezserverová výpočetní úroveň | Informace najdete v tématu [bez serveru SQL Database (preview)](sql-database-serverless.md).|
+| Elastické úlohy databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md) |
 | Elastické transakce | [Distribuované transakce v cloudových databázích](sql-database-elastic-transactions-overview.md) |
 | Elastické dotazy | Informace najdete v tématu [přehled elastického dotazu](sql-database-elastic-query-overview.md) |
 | Replikace se spravované instance |Informace najdete v tématu [konfigurace replikace databáze spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md)|
@@ -45,6 +46,16 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 |SQL Analytics|Informace najdete v tématu [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
 | Podpora časové pásmo pro spravované instance|Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md)|
 |||
+
+## <a name="may-2019"></a>. Května 2019.
+
+### <a name="service-improvements"></a>Vylepšení služby
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+|Hyperškálování úrovně služby| Další informace najdete v tématu [Hyperškálovatelného vrstvy služby pro až 100 TB](sql-database-service-tier-hyperscale.md).|
+|Bezserverová výpočetní úroveň| Další informace najdete v tématu [bez serveru SQL Database (preview)](sql-database-serverless.md).|
+
 
 ## <a name="april-2019"></a>2019. dubna
 

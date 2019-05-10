@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe6848caad7cdac98d6717b7cea4860e7ce2db8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725741"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405721"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datové úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview
 
@@ -51,7 +51,7 @@ Time Series Insights zvolili Parquet, protože poskytuje efektivní datové komp
 
 Pro lepší přehled formát souborů Parquet, naleznete v tématu [Parquet dokumentaci](https://parquet.apache.org/documentation/latest/).
 
-## <a name="event-structure-in-parquet"></a>Struktura události v Parquet
+### <a name="event-structure-in-parquet"></a>Struktura události v Parquet
 
 Time Series Insights vytvoří a uloží kopie objektů BLOB v následujících dvou formátů:
 
@@ -79,18 +79,18 @@ Time Series Insights vytvoří a uloží kopie objektů BLOB v následujících 
 
 ## <a name="partitions"></a>Oddíly
 
-Každý čas Series Insights ve verzi Preview prostředí musí mít vlastnost ID řady čas a vlastnost časového razítka, která ji pak jednoznačně identifikuje. Vaše ID řady čas funguje jako logický oddíl pro vaše data a poskytuje prostředí čas Series Insights ve verzi Preview přirozené hranice pro distribuci dat napříč fyzickými oddíly. Čas Series Insights ve verzi Preview v účtu služby Azure storage spravuje fyzický oddíl správy.
+Musí mít každý čas Series Insights ve verzi Preview prostředí **ID řady času** vlastnost a **časové razítko** vlastnost, která ji pak jednoznačně identifikuje. Vaše ID řady čas funguje jako logický oddíl pro vaše data a poskytuje prostředí čas Series Insights ve verzi Preview přirozené hranice pro distribuci dat napříč fyzickými oddíly. Čas Series Insights ve verzi Preview v účtu služby Azure storage spravuje fyzický oddíl správy.
 
 Time Series Insights používá dynamické dělení na oddíly pro optimalizaci úložiště a výkonu dotazování umožňujícímu vyřadit a znovu vytvořte oddíly. Čas Series Insights ve verzi Preview dynamického dělení algoritmu pokusí jeden fyzický oddíl zabránili data pro několik různých logické oddíly. Jinými slovy dělení algoritmus uchovává všechna data konkrétní jeden čas řady ID výhradně součástí soubory Parquet bez se proloženy jiné ID řady čas. Algoritmus dynamického dělení se rovněž snaží zachovat původní pořadí událostí v rámci jedné řady čas ID.
 
 Na začátku během příchozího přenosu dat, data jsou rozdělená podle časového razítka tak, aby v daném časovém rozsahu jednoho logického oddílu je možné rozdělit do více fyzických oddílů. Jeden fyzický oddíl může obsahovat také mnoho nebo všechny logické oddíly. Kvůli omezení velikosti objektu blob, i s optimální dělení jednoho logického oddílu může zabírat více fyzických oddílů.
 
 > [!NOTE]
-> Výchozí hodnota časového razítka je zpráva *čas zařazení do fronty* ve zdroji nakonfigurovanou událost. 
+> Výchozí hodnota časového razítka je zpráva *čas zařazení do fronty* ve zdroji nakonfigurovanou událost.
 
 Pokud jste nahrávání historická data nebo zprávy dávkových, přiřadíte hodnotu, kterou chcete uložit se svými daty a vlastnost časového razítka, která se mapuje na příslušnou časové razítko. Vlastnost časového razítka je velká a malá písmena. Další informace najdete v tématu [modelu časové řady](./time-series-insights-update-tsm.md).
 
-## <a name="physical-partitions"></a>Fyzické oddíly
+### <a name="physical-partitions"></a>Fyzické oddíly
 
 Fyzický oddíl je objekt blob bloku, který je uložen ve vašem účtu úložiště. Skutečná velikost objektů blob se může lišit, protože závisí na frekvenci nabízených oznámení. Předpokládáme, přes bloby až po mít velikost přibližně 20 MB až 50 MB. Tento očekávání vedla tým Time Series Insights, aby jako velikost k optimalizaci výkonu dotazů vyberte 20 MB. Tato velikost může v průběhu času, v závislosti na velikosti souboru a rychlost příchozího přenosu dat měnit.
 
@@ -99,7 +99,7 @@ Fyzický oddíl je objekt blob bloku, který je uložen ve vašem účtu úloži
 > * Objekty BLOB Azure se příležitostně rozdělovat pro lepší výkon díky vyřadit a znovu vytvořit.
 > * Stejná data služby Time Series Insights také může být k dispozici ve dvou nebo více objektů BLOB.
 
-## <a name="logical-partitions"></a>Logické oddíly
+### <a name="logical-partitions"></a>Logické oddíly
 
 Logický oddíl je oddíl v rámci fyzický oddíl, který ukládá všechna data přidružená k jednu hodnotu klíče oddílu. Čas Series Insights ve verzi Preview logicky oddíly každý objekt blob na základě dvou vlastností:
 
@@ -110,9 +110,9 @@ Logický oddíl je oddíl v rámci fyzický oddíl, který ukládá všechna dat
 
 Je důležité vybrat příslušné ID řady času, protože je neměnné vlastnosti. Další informace najdete v tématu [zvolte čas řady ID](./time-series-insights-update-how-to-id.md).
 
-## <a name="your-azure-storage-account"></a>Váš účet úložiště Azure
+## <a name="azure-storage"></a>Úložiště Azure
 
-### <a name="storage"></a>Úložiště
+### <a name="your-storage-account"></a>Váš účet úložiště
 
 Když vytvoříte s průběžnými platbami prostředí Time Series Insights, můžete vytvořit dva prostředky: prostředí Time Series Insights a účet služby Azure Storage pro obecné účely V1 ukládat data. Rozhodli jsme se provést výchozí prostředek služby Azure Storage pro obecné účely V1 z důvodu jeho vzájemná funkční spolupráce, ceny a výkonu. 
 
@@ -132,37 +132,25 @@ Můžete chtít přístup k datům uloženým v Průzkumníku čas Series Insigh
 
 Přistupovat k datům v tři hlavní způsoby:
 
-* Z Průzkumníka čas Series Insights ve verzi Preview.
-* Na rozhraní API čas Series Insights ve verzi Preview.
-* Přímo z účtu služby Azure storage.
-
-#### <a name="from-the-time-series-insights-preview-explorer"></a>Z Průzkumníka čas Series Insights ve verzi Preview
-
-Data můžete exportovat jako soubor CSV z Průzkumníka čas Series Insights ve verzi Preview. Další informace najdete v tématu [čas Series Insights ve verzi Preview explorer](./time-series-insights-update-explorer.md).
-
-#### <a name="from-the-time-series-insights-preview-apis"></a>Na rozhraní API čas Series Insights ve verzi Preview
-
-Koncový bod rozhraní API se dá kontaktovat na `/getRecorded`. Další informace o tomto rozhraní API najdete v tématu [čas řady dotazů](./time-series-insights-update-tsq.md).
+* Z Průzkumníka čas Series Insights ve verzi Preview: data můžete exportovat jako soubor CSV z Průzkumníka čas Series Insights ve verzi Preview. Další informace najdete v tématu [čas Series Insights ve verzi Preview explorer](./time-series-insights-update-explorer.md).
+* Z Time Series Insights ve verzi Preview rozhraní API: koncový bod rozhraní API se dá kontaktovat na `/getRecorded`. Další informace o tomto rozhraní API najdete v tématu [čas řady dotazů](./time-series-insights-update-tsq.md).
+* Přímo z účtu služby Azure storage (níže).
 
 #### <a name="from-an-azure-storage-account"></a>Z účtu služby Azure storage
 
 * Potřebujete přístup pro čtení k jakýkoli účet, který používáte pro přístup k datům služby Time Series Insights. Další informace najdete v tématu [spravovat přístup k vašim prostředkům účtu úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources).
-
 * Další informace o přímé způsoby, jak přečíst data z úložiště objektů Blob v Azure najdete v tématu [přesun dat do a z vašeho účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
 * Exportovat data z účtu služby Azure storage:
-
     * Nejprve se ujistěte, že váš účet splňuje nezbytné požadavky pro export dat. Další informace najdete v tématu [úložiště import a export požadavky](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
-
     * Další informace o dalších způsobech na export dat z účtu služby Azure storage, najdete v článku [Import a export dat z objektů blob](https://docs.microsoft.com/azure/storage/common/storage-import-export-data-from-blobs).
 
 ### <a name="data-deletion"></a>Odstranění dat
 
 Neodstraňovat objekty BLOB, protože čas Series Insights ve verzi Preview uchovává metadata o objektech BLOB v něm.
 
-## <a name="ingress"></a>Příchozí přenos dat
+## <a name="time-series-insights-data-ingress"></a>Čas příchozího přenosu dat Series Insights
 
-### <a name="time-series-insights-ingress-policies"></a>Čas Series Insights příchozího přenosu dat zásad
+### <a name="ingress-policies"></a>Zásady příchozího přenosu dat
 
 Čas Series Insights ve verzi Preview podporuje stejné zdroje událostí a typy souborů, které v současné době podporuje Time Series Insights.
 
@@ -184,10 +172,10 @@ Podporované typy souborů patří:
 
 > [!IMPORTANT]
 > * Time Series Insights verzi všeobecné dostupnosti (GA) se data zpřístupnit v rámci dosažení zdroje událostí 60 sekund. 
-> * Ve verzi preview můžete očekávejte delší období před opakovaným dat je k dispozici. 
+> * Ve verzi preview můžete očekávejte delší období před opakovaným dat je k dispozici.
 > * Pokud dochází k žádné významné latenci, ujistěte se, že jste nás kontaktovat.
 
-### <a name="scale"></a>Měřítko
+### <a name="scale"></a>Škálovat
 
 Čas Series Insights ve verzi Preview podporuje škálování počáteční příchozího přenosu dat z až 6 Mega bajtů za sekundu (MB/s) pro každé prostředí. Probíhá škálování rozšířenou podporu. Plánujeme aktualizovat tak, aby odrážely těchto vylepšení naši dokumentaci
 

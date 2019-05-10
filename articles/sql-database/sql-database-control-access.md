@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 8cb044397cf439e97f3630b5c1c3f53fbf3f356d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/08/2019
+ms.openlocfilehash: 783a8f0bc25717f1c2bf78a9c0d40b209a07939b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468393"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473348"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Řízení přístupu k Azure SQL Database a SQL Data Warehouse
 
@@ -43,7 +43,7 @@ SQL Database podporuje dva typy ověřování:
   Tuto metodu ověřování pomocí uživatelského jména a hesla. Při vytváření serveru SQL Database pro vaši databázi, zadat přihlašovací údaje "server admin" pomocí uživatelského jména a hesla. Tyto přihlašovací údaje můžete použít k ověření a přihlášení k libovolné databázi na daném serveru jako vlastník databáze neboli „dbo“. 
 - **Ověřování pomocí Azure Active Directory**:
 
-  Tato metoda ověřování používá identity spravované v Azure Active Directory a je podporované u spravovaných a integrovaných domén. [Kdykoliv to půjde](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), použijte ověřování pomocí Active Directory (integrované zabezpečení). Pokud chcete k ověřování použít Azure Active Directory, musíte vytvořit jiného správce serveru, který se jmenuje „Azure AD admin“ a který smí spravovat uživatele a skupiny služby Azure AD. Tento správce také smí provádět všechny operace jako běžný správce serveru. Postup vytvoření účtu správce služby Azure AD, který umožňuje ověřování Azure Active Directory, najdete v tématu [Připojení ke službě SQL Database s ověřením přes Azure Active Directory](sql-database-aad-authentication.md).
+  Tato metoda ověřování používá identity spravované v Azure Active Directory a je podporované u spravovaných a integrovaných domén. Pokud chcete k ověřování použít Azure Active Directory, musíte vytvořit jiného správce serveru, který se jmenuje „Azure AD admin“ a který smí spravovat uživatele a skupiny služby Azure AD. Tento správce také smí provádět všechny operace jako běžný správce serveru. Postup vytvoření účtu správce služby Azure AD, který umožňuje ověřování Azure Active Directory, najdete v tématu [Připojení ke službě SQL Database s ověřením přes Azure Active Directory](sql-database-aad-authentication.md).
 
 Databázový stroj zavře připojení, které jsou neaktivní déle než 30 minut. Připojení se musí znovu přihlásit, aby bylo možné ho použít. Trvale aktivní připojení ke službě SQL Database vyžadují opakovanou autorizaci (prováděnou databázovým strojem) nejméně každých 10 hodin. Databázový stroj se pokusí při opakované autorizaci použít původně zadané heslo, aby nebyl nutný zásah uživatele. Z důvodů výkonu při resetování hesla ve službě SQL Database, připojení se znovu neověřuje, i v případě, je důvodem resetování sdružování připojení. Toto chování se liší od místního SQL Serveru. Pokud se heslo od původního ověření připojení změnilo, musí se připojení ukončit a vytvořit nové připojení pomocí nového hesla. Uživatel s oprávněním `KILL DATABASE CONNECTION` může připojení ke službě SQL Database výslovně ukončit příkazem [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql).
 

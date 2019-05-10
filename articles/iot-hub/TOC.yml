@@ -149,6 +149,8 @@
           href: iot-hub-devguide-sdks.md
         - name: Podpora MQTT
           href: iot-hub-mqtt-support.md
+        - name: Podpora AMQP
+          href: iot-hub-amqp-support.md
         - name: Glosář
           href: iot-hub-devguide-glossary.md
     - name: Zabezpečení

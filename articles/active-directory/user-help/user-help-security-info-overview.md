@@ -1,6 +1,6 @@
 ---
 title: Přehled bezpečnostních údajů (Preview) – Azure Active Directory | Microsoft Docs
-description: Základní přehled o oblasti informace o zabezpečení, včetně odkazů na další články o funkci.
+description: Seznam odkazů na články o stránku s informacemi o zabezpečení a funkce.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,34 +9,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/11/2019
+ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e471f447b0c50c9c65923d7135b2b48789728df
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473222"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470697"
 ---
 # <a name="security-info-preview-overview"></a>Přehled bezpečnostních údajů (Preview)
-Můžete nastavit dvoustupňové ověřování a resetování hesla na své bezpečnostní údaje **bezpečnostní údaje** stránky. Můžete také upravit své bezpečnostní údaje a změnit výchozí metodu z této stránky
+
+**Bezpečnostní údaje** stránka umožňuje nastavit vaše dvoustupňové ověření metody a informace o resetování hesla. Pomáhá také aktualizovat informace o zabezpečení pro osobní a vaše výchozí metoda ověření.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-## <a name="in-this-section"></a>V tomto oddílu
-Můžete najít další informace o přidání, aktualizace a odstraňování bezpečnostních údajů, založené na metodě, kterou chcete použít v následujících článcích.
+## <a name="security-info-articles"></a>Články informace o zabezpečení
+
+Podrobné informace a pokyny k přidání aktualizaci a odstraňování bezpečnostních údajů, najdete v těchto článcích (založené na metodě, kterou chcete použít):
 
 |Článek |Popis |
 |------|------------|
-|[Nastavte informace o zabezpečení při přihlašování](security-info-setup-signin.md)|Popisuje, jak nastavit své bezpečnostní údaje, pokud se zobrazí výzva k přihlašovací stránce.|
-|[Nastavte si bezpečnostní údaje pro ověřovací aplikaci](security-info-setup-auth-app.md)|Popisuje, jak nastavit své bezpečnostní údaje chcete použít aplikaci Microsoft Authenticator jako metodu.|
-|[Nastavte si bezpečnostní údaje pro zasílání textových zpráv](security-info-setup-text-msg.md)|Popisuje, jak nastavit své bezpečnostní údaje používat textové zprávy jako metodu.|
-|[Nastavení bezpečnostních údajů pro používání telefonních hovorů](security-info-setup-phone-number.md)| Popisuje, jak jako metodu nastavit telefonní číslo.|
-|[Nastavení bezpečnostních údajů pro používání e-mailu](security-info-setup-email.md)|Popisuje, jak nastavit e-mailovou adresu, která vám pomůže resetovat vaše heslo.|
-|[Nastavení bezpečnostních údajů pro používání předdefinovaných bezpečnostních otázek](security-info-setup-questions.md)|Popisuje, jak používat bezpečnostní otázky, které vám pomůžou resetovat vaše heslo.|
-|[Správa hesel aplikací](security-info-app-passwords.md)|Popisuje, jak nastavit hesla aplikací s využitím bezpečnostních údajů.|
-|[Jak se přihlásit](user-help-sign-in.md)|Popisuje, jak se přihlásit pomocí určené metody.|
+|[Přidat metodu zabezpečení na příkazovém řádku na vaší přihlašovací stránce](security-info-setup-signin.md)| Pokyny ohledně toho, jak nastavit své bezpečnostní údaje po zobrazení výzvy na přihlašovací stránce. Tato výzva zobrazí jenom Pokud jste ještě nenastavili bezpečnostní údaje, které vaše organizace vyžaduje. Pokud se nezobrazí výzvu, můžete stále změnit a přidejte metody ověření pomocí v dalších článcích v této tabulce.|
+|[Přidání aplikace Microsoft Authenticator jako metodu ověřování](security-info-setup-auth-app.md)| Pokyny ohledně toho, jak nastavit aplikaci Microsoft Authenticator jako metodu ověřování.|
+|[Přidejte textové zprávy jako metodu ověřování](security-info-setup-text-msg.md)| Pokyny ohledně toho, jak nastavit textové zprávy jako metodu ověřování.|
+|[Přidat telefonní hovory jako metodu ověřování](security-info-setup-phone-number.md)| Pokyny ohledně toho, jak nastavit své telefonní číslo jako metodu ověřování.|
+|[Přidat e-mailovou adresu k resetování vlastního hesla](security-info-setup-email.md)| Pokyny ohledně toho, jak přidat e-mailovou adresu, abyste mohli resetovat vlastní heslo.|
+|[Přidat bezpečnostní otázky k resetování vlastního hesla](security-info-setup-questions.md)| Pokyny ohledně toho, jak přidat předdefinované bezpečnostní otázky, abyste mohli resetovat vlastní heslo.|
+|[Správa hesel aplikací pro aplikace, ve kterých se dvoustupňové ověřování.](security-info-app-passwords.md)| Pokyny ohledně toho, jak vytvořit hesla aplikací pro aplikace, které nepodporují dvoustupňové ověřování v organizaci, který používá dvoustupňové ověřování.|
+|[Jak se přihlásit](user-help-sign-in.md)|Popisuje, jak se přihlásit pomocí určené metody ověřování.|

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60246853"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472493"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -27,7 +27,7 @@ Tento článek vysvětluje postup obnovení zálohy stavu systému Windows Serve
 
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>Obnovení stavu systému souborů na stejný server
-Následující kroky popisují, jak vrátit zpět konfiguraci Windows serveru do předchozího stavu. Konfigurace serveru vrácení zpět do stavu známé a stabilní, může být velmi důležité. Následující postup obnovení stavu systému serveru z trezoru služby Recovery Services. 
+Následující kroky popisují, jak vrátit zpět konfiguraci Windows serveru do předchozího stavu. Konfigurace serveru vrácení zpět do stavu známé a stabilní, může být velmi důležité. Následující postup obnovení stavu systému serveru z trezoru služby Recovery Services.
 
 1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde nainstalovaný modul snap-in, vyhledávat počítač nebo server pro **Microsoft Azure Backup**.
 
@@ -45,7 +45,7 @@ Následující kroky popisují, jak vrátit zpět konfiguraci Windows serveru do
 
     ![Procházet soubory](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-5. V kalendáři v **vybrat svazek a datum** podokně, vyberte obnovení bodu. 
+5. V kalendáři v **vybrat svazek a datum** podokně, vyberte obnovení bodu.
 
     Z libovolného bodu obnovení můžete obnovit v čase. Data zobrazená **tučné** označení dostupnosti alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z **čas** rozevírací nabídky.
 
@@ -91,11 +91,11 @@ Zahrnuje terminologii používané v těchto krocích:
 5. Zadejte soubor přihlašovacích údajů trezoru, který odpovídá *ukázka trezor*. Pokud soubor s přihlašovacími údaji trezoru je neplatný (nebo jejichž platnost vypršela), stáhněte si nový soubor přihlašovacích údajů trezoru z *ukázka trezor* na webu Azure Portal. Když soubor s přihlašovacími údaji trezoru je k dispozici, zobrazí se trezor služby Recovery Services přidružený soubor s přihlašovacími údaji trezoru.
 
 6. V podokně vyberte Server Backup, vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
-7. V podokně Vybrat režim obnovení, zvolte **stavu systému** a klikněte na tlačítko **Další**. 
+7. V podokně Vybrat režim obnovení, zvolte **stavu systému** a klikněte na tlačítko **Další**.
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Vyhledávání](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. V kalendáři v **vybrat svazek a datum** podokně, vyberte obnovení bodu. Z libovolného bodu obnovení můžete obnovit v čase. Data zobrazená **tučné** označení dostupnosti alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z **čas** rozevírací nabídky. 
+8. V kalendáři v **vybrat svazek a datum** podokně, vyberte obnovení bodu. Z libovolného bodu obnovení můžete obnovit v čase. Data zobrazená **tučné** označení dostupnosti alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z **čas** rozevírací nabídky.
 
     ![Hledat položky](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -107,13 +107,13 @@ Zahrnuje terminologii používané v těchto krocích:
 
     Možnost **vytvořit kopie tak, aby obě verze**, vytváří kopie jednotlivých souborů v archivu existující soubor stavu systému místo vytvoření kopie celý archiv stavu systému.
 
-11. Ověřte podrobnosti o obnovení v podokně potvrzení a klikněte na tlačítko **obnovit**. 
+11. Ověřte podrobnosti o obnovení v podokně potvrzení a klikněte na tlačítko **obnovit**.
 
     ![Klikněte na tlačítko Obnovit potvrďte proces obnovení](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Kopírovat *WindowsImageBackup* adresáře pro méně náročné svazku serveru (například D:\). Svazek s operačním systémem Windows je obvykle nepostradatelného svazku.
 
-13. Chcete-li dokončit proces obnovy, použijte následující část, která [obnovené soubory se stavem systému na Windows serveru použít](backup-azure-restore-system-state.md#apply-restored-system-state-on-a-windows-server).
+13. Chcete-li dokončit proces obnovy, použijte následující část, která [obnovené soubory se stavem systému na Windows serveru použít](#apply-restored-system-state-on-a-windows-server).
 
 
 
@@ -143,7 +143,7 @@ Jednou zotavily stavu systému jako soubory pomocí agenta Azure Recovery Servic
 
    ![Vyberte k obnovení na jiný server](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
-6. Při určování typu umístění, vyberte **Vzdálená sdílená složka** Pokud zálohování stavu systému byl obnoven na jiný server. Pokud stavu systému byl obnoven místně, můžete vybrat **místní jednotky**. 
+6. Při určování typu umístění, vyberte **Vzdálená sdílená složka** Pokud zálohování stavu systému byl obnoven na jiný server. Pokud stavu systému byl obnoven místně, můžete vybrat **místní jednotky**.
 
     ![Vyberte, zda se má obnovení z místního serveru nebo jiné](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
@@ -171,7 +171,7 @@ Zálohování stavu systému obsahuje data služby Active Directory. Následují
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Řešení potíží se nezdařilo obnovení stavu systému
 
-Pokud předchozí proces použití stavu systému nepodaří úspěšně vyřídit, použijte prostředí Windows Recovery Environment (Windows RE) k obnovení systému Windows Server. Následující postup vysvětluje, jak provést obnovení pomocí prostředí Windows RE. Tuto možnost použijte jenom v případě systému Windows Server nespustil normálně po obnovení stavu systému. Následující proces vymaže nesystémové dat, buďte opatrní. 
+Pokud předchozí proces použití stavu systému nepodaří úspěšně vyřídit, použijte prostředí Windows Recovery Environment (Windows RE) k obnovení systému Windows Server. Následující postup vysvětluje, jak provést obnovení pomocí prostředí Windows RE. Tuto možnost použijte jenom v případě systému Windows Server nespustil normálně po obnovení stavu systému. Následující proces vymaže nesystémové dat, buďte opatrní.
 
 1. Spouštění systému Windows Server do prostředí Windows Recovery Environment (Windows RE).
 

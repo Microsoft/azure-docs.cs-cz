@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61445585"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466953"
 ---
 # <a name="add-an-email-action"></a>Přidání akce e-mailu
 
@@ -102,11 +102,11 @@ Následující kroky ukazují, jak nastavit a ruční ověření e-mailových ak
 
 1. Klikněte na tlačítko **konektor pro Office 365**:
 
-    ![Připojení API](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector.png)
+    ![Připojení API](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. Kliknutím na banner zahájíte proces autorizace:
 
-    ![autorizace](./media/iot-accelerators-remote-monitoring-email-actions/connector.png)
+    ![autorizace](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
 1. Klikněte na tlačítko **Autorizovat**. Budete vyzváni k přihlášení. Účet, který používáte k přihlášení by měl být že e-mailová adresa, kterou aplikace používá k odesílání e-mailová oznámení:
 
@@ -116,7 +116,7 @@ Následující kroky ukazují, jak nastavit a ruční ověření e-mailových ak
 
 1. Chcete-li změnit e-mailovou adresu, ze kterého jsou od odeslání oznámení, klikněte na tlačítko **připojení API. upravte**.
 
-    ![Změna e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/editemail.png)
+    ![Změna e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
 ### <a name="owner-role-outlook-setup"></a>Nastavení aplikace Outlook role vlastníka
 
@@ -142,7 +142,7 @@ Následující kroky umožňují přihlášení a nastavení e-mailových akcí:
 
 Out-of-the-box, akcelerátor řešení vzdálené monitorování poskytuje základní šablonu HTML pro akci e-mailů. Šablona e-mailu používá hodnoty z akce nastavení e-mailu. Tady je příklad e-mailu:
 
-![Příklad e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
+![Příklad e-mailu](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
 Následující kroky ukazují, jak upravit šablonu e-mailu ve formátu HTML. Například můžete zahrnout další informace nebo přidat vlastní Image:
 

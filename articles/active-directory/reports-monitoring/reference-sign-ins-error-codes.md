@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/25/2019
+ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdf28418e7e1335dcb1f664964fa6ef03174aa1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709207"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463499"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavě aktivit přihlašování 
 
@@ -177,6 +177,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |90051| Delegování neplatný Token. Je zadáno neplatné ID národního cloudu ({cloudId}).|
 |90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlášení a přihlaste se znovu pomocí jiné služby Azure AD účtu.|
 |90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta k poskytnutí souhlasu pro tuto aplikaci.|
+|500021|Klientů se omezuje podle společnosti proxy. Odepření přístupu k prostředkům.|
 |500121| Ověření se nezdařilo během žádosti o silné ověřování.|
 |500133| Výraz se nenachází v jeho platný časový rozsah. Ujistěte se, že jej před použitím pro uživatele kontrolní výraz nevyprší platnost přístupového tokenu nebo požádat o nový token.|
 |530021|Aplikace nesplňuje požadavky podmíněného přístupu, které jsou schválené aplikace.|

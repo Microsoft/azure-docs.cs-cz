@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 981198063b8e0951d4a4a4c4627d4b7966f34154
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c85ee31a54cdbbb09686a2d20200f65fdcd8994a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148984"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235909"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>Zvolte mezi úrovněmi služeb vCore a migrovat z jednotek DTU úrovně služeb
 
@@ -40,13 +40,13 @@ Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 
 ||**Obecné účely**|**Pro důležité obchodní informace**|**Velkokapacitní**|
 |---|---|---|---|
-|Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
+|Nejlepší pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
 |Compute|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 2 až 80<br/>**Výpočetní prostředí**<br/>Gen5: 0,5 – 4 vCore|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 2 až 80|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 2 až 80|
 |Memory (Paměť)|**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore<br/>**Výpočetní prostředí**<br/>Gen5: 3 GB na vCore|**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore |**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore|
 |Úložiště|Používá vzdálené úložiště:<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Výpočetní prostředí izolované databáze**:<br/>5 GB - 1 TB<br/>**Spravovaná Instance**: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Spravovaná Instance**:<br/>32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
-|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |Gen5: 5.1 GB na jádro|
+|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro|
 |Úložiště|Používá vzdálené úložiště:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
-|Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200 000 maximální IOPS|Bude doplněno|
+|Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200 000 maximální IOPS|TBD|
 |Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|repliky pro čtení a zápis 1 plus 0-4 [repliky škálování pro čtení](sql-database-read-scale-out.md)|
 |Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a nejsou velikost operace dat (s ohledem minut, nikoli hodin nebo dnů).|
 |V paměti|Nepodporuje se|Podporováno|Nepodporuje se|
@@ -108,13 +108,13 @@ Následující tabulka uvádí pokyny k migraci konkrétních scénářů:
 |Aktuální úroveň služby|Cílové úrovni služeb|Typ migrace|Akce uživatele|
 |---|---|---|---|
 |Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
-|Premium|Pro důležité obchodní informace|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
-|Standard|Pro důležité obchodní informace|Upgrade|Musíte migrovat nejprve sekundární|
-|Pro důležité obchodní informace|Standard|Downgrade|Musíte migrovat nejdříve primární|
-|Premium|Obecné účely|Downgrade|Musíte migrovat nejdříve primární|
+|Premium|Obchodně klíčové|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
+|Standard|Obchodně klíčové|Upgrade|Musíte migrovat nejprve sekundární|
+|Obchodně klíčové|Standard|Downgradovat|Musíte migrovat nejdříve primární|
+|Premium|Obecné účely|Downgradovat|Musíte migrovat nejdříve primární|
 |Obecné účely|Premium|Upgrade|Musíte migrovat nejprve sekundární|
-|Pro důležité obchodní informace|Obecné účely|Downgrade|Musíte migrovat nejdříve primární|
-|Obecné účely|Pro důležité obchodní informace|Upgrade|Musíte migrovat nejprve sekundární|
+|Obchodně klíčové|Obecné účely|Downgradovat|Musíte migrovat nejdříve primární|
+|Obecné účely|Obchodně klíčové|Upgrade|Musíte migrovat nejprve sekundární|
 ||||
 
 \* Každý 100 DTU ve standardní úrovni vyžaduje alespoň 1 virtuální jádro a každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro

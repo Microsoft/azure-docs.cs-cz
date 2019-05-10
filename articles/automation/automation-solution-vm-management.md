@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/24/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146043"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501958"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -55,7 +55,7 @@ Existují určitá oprávnění, které uživatel musí mít k nasazení spušt�
 
 Nasazení do účtu Automation a Log Analytics uživatele nasazení řešení vyžaduje následující oprávnění na spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení **skupiny prostředků**. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 
-| Oprávnění | Rozsah|
+| Oprávnění | Scope|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Skupina prostředků |
 | Microsoft.Automation/automationAccounts/variables/write | Skupina prostředků |
@@ -75,14 +75,14 @@ Nasazení do účtu Automation a Log Analytics uživatele nasazení řešení vy
 | Microsoft.Resources/subscriptions/resourceGroups/read | Skupina prostředků |
 | Microsoft.Resources/deployments/* | Skupina prostředků |
 
-### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nový účet Automation a nový pracovní prostor Log Analytics
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nový účet Automation a nový pracovní prostor Log Analytics
 
 Spouštění/zastavování virtuálních počítačů během mimo špičku nasazení řešení do nového účtu Automation a Log Analytics pracovního prostoru uživatele nasazení řešení potřebuje oprávnění definované v předchozí části, jakož i následující oprávnění:
 
 - Spolusprávce pro předplatné – to je potřeba k vytvoření klasického účtu spustit jako
 - Součástí **vývojář aplikace** role. Další podrobnosti o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
 
-| Oprávnění |Rozsah|
+| Oprávnění |Scope|
 | --- | --- |
 | Microsoft.Authorization/roleAssignments/read | Předplatné |
 | Microsoft.Authorization/roleAssignments/write | Předplatné |
@@ -90,6 +90,30 @@ Spouštění/zastavování virtuálních počítačů během mimo špičku nasaz
 | Microsoft.Automation/automationAccounts/certificates/read | Skupina prostředků |
 | Microsoft.Automation/automationAccounts/write | Skupina prostředků |
 | Microsoft.OperationalInsights/workspaces/write | Skupina prostředků |
+
+### <a name="region-mappings"></a>Mapování oblasti
+
+Při povolování spouštění/zastavování virtuálních počítačů špičku, pro propojení pracovního prostoru Log Analytics a účet Automation se podporují pouze v určitých oblastech.
+
+V následující tabulce jsou uvedeny podporované mapování:
+
+|**Oblasti pracovního prostoru log Analytics**|**Oblasti služby Azure Automation**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
+
+<sup>2</sup> z důvodu omezení kapacity oblast není k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostory účty Automation a Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -101,6 +125,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
 
    > [!NOTE]
    > Můžete ji vytvořit také z libovolného místa na webu Azure Portal, klikněte na **vytvořit prostředek**. Na stránce Marketplace zadejte klíčové slovo **Start** nebo **operací Spustit/Zastavit**. Seznam se průběžně filtruje podle zadávaného textu. Alternativně můžete zadejte jeden nebo více klíčových slov z celý název řešení a stiskněte klávesu Enter. Vyberte **spuštění/zastavení virtuálních počítačů mimo špičku** ve výsledcích hledání.
+
 2. V **spuštění/zastavení virtuálních počítačů mimo špičku** stránky pro vybrané řešení zkontrolujte souhrnné informace a klikněte na **vytvořit**.
 
    ![portál Azure](media/automation-solution-vm-management/azure-portal-01.png)
@@ -236,7 +261,7 @@ V následující tabulce jsou uvedeny runbooky nasazení do vašeho účtu Autom
 
 Zahrnout všechny nadřazené sady runbook _WhatIf_ parametru. Pokud je nastavena na **True**, _WhatIf_ podporuje s podrobnostmi o stejné chování sada runbook provede při spuštění bez _WhatIf_ parametr a ověří správnou virtuální počítače se Služba je určená. Sada runbook provádí pouze jeho definované akce při _WhatIf_ parametr je nastaven na **False**.
 
-|Runbook | Parametry | Popis|
+|Sada Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se, nezávisle na nadřízeném runbooku. Tato sada runbook vytvoří výstrahy na základě jednotlivých zdrojích pro scénář AutoStop.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla upozornění na virtuálních počítačích v cílových skupinách předplatné nebo prostředek. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|

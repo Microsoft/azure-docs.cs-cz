@@ -10,15 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d297addbeffcc530ba676e4132f9f0ebdceac3c9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461493"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466999"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro rozhraní .NET Framework (Windows)
 
+Rychlí průvodci jsou také k dispozici pro [převod textu na řeč](quickstart-text-to-speech-dotnet-windows.md) a [překlad řeči](quickstart-translate-speech-dotnetframework-windows.md).
+
+V případě potřeby vyberte jiný programovací jazyk a/nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Pomocí této příručky vytvoříte konzolovou aplikaci pro převod řeči na text s využitím rozhraní .NET Framework pro Windows a sady Speech SDK. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.

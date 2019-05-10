@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
-ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 011ce61f9ac0656db8804c203000f54a7146afe0
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596291"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408201"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -32,7 +32,7 @@ Azure automaticky vytvoří systémové trasy a přiřadí je ke každé podsít
 Každá trasa obsahuje předponu adresy a typ dalšího segmentu směrování. Při odeslání odchozího provozu z podsítě na IP adresu v rozsahu předpony adresy nějaké trasy použije Azure trasu obsahující danou předponu. Zjistěte, [jak Azure vybírá trasu](#how-azure-selects-a-route) v případě, že několik tras obsahuje stejné předpony nebo překrývající se předpony. Kdykoli se vytvoří virtuální síť, Azure pro všechny podsítě v rámci této virtuální sítě automaticky vytvoří následující výchozí systémové trasy:
 
 
-|Zdroj |Předpony adres                                        |Typ dalšího segmentu  |
+|Source |Předpony adres                                        |Typ dalšího přesměrování  |
 |-------|---------                                               |---------      |
 |Výchozí|Jedinečné pro virtuální síť                           |Virtuální síť|
 |Výchozí|0.0.0.0/0                                               |Internet       |
@@ -57,11 +57,11 @@ Typy dalších segmentů směrování uvedené v předchozí tabulce představuj
 
 Azure přidá další výchozí systémové trasy pro různé možnosti Azure. Provede to však jenom v případě, že tyto možnosti povolíte. V závislosti na možnosti přidá Azure volitelné výchozí trasy buď do konkrétních podsítí v rámci virtuální sítě, nebo do všech podsítí v rámci virtuální sítě. Azure může po povolení různých možností přidat následující dodatečné systémové trasy a typy dalších segmentů směrování:
 
-|Zdroj                 |Předpony adres                       |Typ dalšího segmentu|Podsíť v rámci virtuální sítě, ke které je trasa přidaná|
+|Source                 |Předpony adres                       |Typ dalšího přesměrování|Podsíť v rámci virtuální sítě, ke které je trasa přidaná|
 |-----                  |----                                   |---------                    |--------|
-|Výchozí                |Jedinečné pro virtuální síť, například: 10.1.0.0/16|Partnerské vztahy virtuálních sítí                 |Vše|
-|Brána virtuální sítě|Předpony inzerované z místního prostředí přes protokol BGP nebo nakonfigurované v místní síťové bráně     |Brána virtuální sítě      |Vše|
-|Výchozí                |Několik                               |VirtualNetworkServiceEndpoint|Pouze podsíť, pro kterou je povolený koncový bod služby.|
+|Výchozí                |Jedinečné pro virtuální síť, například: 10.1.0.0/16|VNET Peering                 |Všechny|
+|Brána virtuální sítě|Předpony inzerované z místního prostředí přes protokol BGP nebo nakonfigurované v místní síťové bráně     |Brána virtuální sítě      |Všechny|
+|Výchozí                |Vícenásobný                               |VirtualNetworkServiceEndpoint|Pouze podsíť, pro kterou je povolený koncový bod služby.|
 
 - **Partnerské vztahy virtuálních sítí (VNet)**: Když vytvoříte virtuální síť vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi, se přidá trasu pro každý rozsah adres v rámci adresního prostoru obou virtuálních sítích, které pro partnerský vztah se vytvoří. Další informace o [partnerském vztahu virtuálních sítí](virtual-network-peering-overview.md).  
 - **Brána virtuální sítě**: Jeden nebo více tras s *Brána virtuální sítě* uvedeným typem dalšího segmentu směrování se přidají při přidání brány virtuální sítě k virtuální síti. Zdrojem je také *brána virtuální sítě*, protože brána přidá trasy do podsítě. Pokud si vaše místní síťová brána vyměňuje trasy protokolu [BGP](#border-gateway-protocol) (Border Gateway Protocol) s bránou virtuální sítě Azure, přidá se trasa pro každou trasu rozšířenou z místní síťové brány. Doporučuje se shrnout místní trasy do největších možných rozsahů adres, aby se do brány virtuální sítě Azure šířilo co nejméně tras. Počet tras, které můžete rozšířit do brány virtuální sítě Azure, je omezený. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
@@ -102,14 +102,14 @@ V trasách definovaných uživatelem nemůžete jako typ dalšího segmentu smě
 
 Zobrazené a odkazované názvy typů dalších segmentů směrování se liší na webu Azure Portal a v nástrojích příkazového řádku a v modelech nasazení Azure Resource Manager a Classic. Následující tabulka uvádí názvy používané k odkazování na jednotlivé typy dalších segmentů směrování v různých nástrojích a [modelech nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
-|Typ dalšího segmentu                   |Azure CLI a PowerShell (Resource Manager) |Azure Classic CLI a PowerShell (Classic)|
+|Typ dalšího přesměrování                   |Azure CLI a PowerShell (Resource Manager) |Azure Classic CLI a PowerShell (Classic)|
 |-------------                   |---------                                       |-----|
 |Brána virtuální sítě         |VirtualNetworkGateway                           |VPNGateway|
 |Virtuální síť                 |VNetLocal                                       |VNETLocal (není dostupné v Classic CLI v režimu asm)|
 |Internet                        |Internet                                        |Internet (není dostupné v Classic CLI v režimu asm)|
 |Virtuální zařízení               |VirtualAppliance                                |VirtualAppliance|
 |Žádný                            |Žádný                                            |Null (není dostupné v Classic CLI v režimu asm)|
-|Partnerské vztahy virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Neuvedeno|
+|Partnerské vztahy virtuálních sítí         |VNET Peering                                    |Neuvedeno|
 |Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Neuvedeno|
 
 ### <a name="border-gateway-protocol"></a>Protokol BGP (Border Gateway Protocol)
@@ -139,7 +139,7 @@ Pokud několik tras obsahuje stejnou předponu adresy, Azure vybere typ trasy na
 Směrovací tabulka obsahuje například následující trasy:
 
 
-|Zdroj   |Předpony adres  |Typ dalšího segmentu           |
+|Source   |Předpony adres  |Typ dalšího přesměrování           |
 |---------|---------         |-------                 |
 |Výchozí  | 0.0.0.0/0        |Internet                |
 |Uživatel     | 0.0.0.0/0        |Brána virtuální sítě |
@@ -205,19 +205,19 @@ Následující obrázek ukazuje implementaci prostřednictvím modelu nasazení 
 
 Směrovací tabulka pro podsíť *Subnet1* na obrázku obsahuje následující trasy:
 
-|ID  |Zdroj |Stav  |Předpony adres    |Typ dalšího segmentu          |IP adresa dalšího segmentu směrování|Název trasy definované uživatelem| 
+|ID  |Source |Stav  |Předpony adres    |Typ dalšího přesměrování          |IP adresa dalšího směrování|Název trasy definované uživatelem| 
 |----|-------|-------|------              |-------                |--------           |--------      |
-|1   |Výchozí|Neplatný|10.0.0.0/16         |Virtuální síť        |                   |              |
+|1   |Výchozí|Neplatné|10.0.0.0/16         |Virtuální síť        |                   |              |
 |2   |Uživatel   |Aktivní |10.0.0.0/16         |Virtuální zařízení      |10.0.100.4         |Within-VNet1  |
 |3   |Uživatel   |Aktivní |10.0.0.0/24         |Virtuální síť        |                   |Within-Subnet1|
-|4   |Výchozí|Neplatný|10.1.0.0/16         |Partnerské vztahy virtuálních sítí           |                   |              |
-|5   |Výchozí|Neplatný|10.2.0.0/16         |Partnerské vztahy virtuálních sítí           |                   |              |
+|4   |Výchozí|Neplatné|10.1.0.0/16         |VNET Peering           |                   |              |
+|5   |Výchozí|Neplatné|10.2.0.0/16         |VNET Peering           |                   |              |
 |6   |Uživatel   |Aktivní |10.1.0.0/16         |Žádný                   |                   |ToVNet2-1-Drop|
 |7   |Uživatel   |Aktivní |10.2.0.0/16         |Žádný                   |                   |ToVNet2-2-Drop|
-|8   |Výchozí|Neplatný|10.10.0.0/16        |Brána virtuální sítě|[X.X.X.X]          |              |
+|8   |Výchozí|Neplatné|10.10.0.0/16        |Brána virtuální sítě|[X.X.X.X]          |              |
 |9   |Uživatel   |Aktivní |10.10.0.0/16        |Virtuální zařízení      |10.0.100.4         |To-On-Prem    |
 |10  |Výchozí|Aktivní |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
-|11  |Výchozí|Neplatný|0.0.0.0/0           |Internet               |                   |              |
+|11  |Výchozí|Neplatné|0.0.0.0/0           |Internet               |                   |              |
 |12  |Uživatel   |Aktivní |0.0.0.0/0           |Virtuální zařízení      |10.0.100.4         |Default-NVA   |
 
 Následuje vysvětlení jednotlivých ID tras:
@@ -225,7 +225,7 @@ Následuje vysvětlení jednotlivých ID tras:
 1. Platforma Azure tuto trasu automaticky přidala pro všechny podsítě v rámci virtuální sítě *Virtual-network-1*, protože 10.0.0.0/16 je jediný rozsah adres definovaný v adresním prostoru pro tuto virtuální síť. Kdyby nebyla vytvořená trasa definovaná uživatelem s ID 2, provoz odeslaný na jakoukoli adresu v rozsahu 10.0.0.1 až 10.0.255.254 by se směroval v rámci virtuální sítě, protože předpona je delší než 0.0.0.0/0 a není v rozsahu předpon adres žádné jiné trasy. Platforma Azure automaticky změnila stav z *Aktivní* na *Neplatný* při přidání trasy definované uživatelem s ID 2, protože má stejnou předponu jako výchozí trasa a trasy definované uživatelem přepisují výchozí trasy. Stav této trasy je stále *Aktivní* pro podsíť *Subnet2*, protože směrovací tabulka, ve které je trasa definovaná uživatelem s ID 2, není přidružená k podsíti *Subnet2*.
 2. Platforma Azure tuto trasu přidala při přidružení trasy definované uživatelem pro předponu adresy 10.0.0.0/16 k podsíti *Subnet1* ve virtuální síti *Virtual-network-1*. Trasa definovaná uživatelem určuje 10.0.100.4 jako IP adresu virtuálního zařízení, protože tato adresa je privátní IP adresa přidružená k virtuálnímu počítači virtuálního zařízení. Směrovací tabulka, ve které tato trasa existuje, není přidružená k podsíti *Subnet2*, takže se trasa nezobrazí ve směrovací tabulce pro podsíť *Subnet2*. Tato trasa přepisuje výchozí trasu pro předponu 10.0.0.0/16 (ID 1), která automaticky směrovala provoz určený pro adresy 10.0.0.1 a 10.0.255.254 v rámci virtuální sítě přes typ dalšího segmentu směrování této virtuální sítě. Tato trasa existuje kvůli splnění [požadavku](#requirements) 3 na vynucení průchodu veškerého odchozího provozu přes virtuální zařízení.
 3. Platforma Azure tuto trasu přidala při přidružení trasy definované uživatelem pro předponu adresy 10.0.0.0/24 k podsíti *Subnet1*. Provoz určený pro adresy v rozsahu 10.0.0.1 až 10.0.0.254 zůstává v rámci podsítě, a nesměruje se do virtuálního zařízení určeného v předchozím pravidle (ID 2), protože má delší předponu než trasa s ID 2. Tato trasa nebyla přidružená k podsíti *Subnet2*, takže se nezobrazí ve směrovací tabulce pro podsíť *Subnet2*. Tato trasa ve výsledku přepíše trasu s ID 2 pro provoz v rámci podsítě *Subnet1*. Tato trasa existuje kvůli splnění [požadavku](#requirements) 3.
-4. Platforma Azure automaticky přidala trasy s ID 4 a 5 pro všechny podsítě v rámci virtuální sítě *Virtual-network-1* při vytvoření partnerského vztahu této virtuální sítě s virtuální sítí *Virtual-network-2*. *Virtual-network-2* má ve svém adresním prostoru dva rozsahy adres: 10.1.0.0/16 a 10.2.0.0/16, takže Platforma Azure přidala trasu pro oba rozsahy. Kdyby nebyly vytvořené trasy definované uživatelem s ID 6 a 7, provoz odeslaný na jakoukoli adresu v rozsahu 10.1.0.1 až 10.1.255.254 a 10.2.0.1 až 10.2.255.254 by se směroval do partnerské virtuální sítě, protože předpona je delší než 0.0.0.0/0 a není v rozsahu předpon adres žádné jiné trasy. Platforma Azure automaticky změnila stav z *Aktivní* na *Neplatný* při přidání tras s ID 6 a 7, protože mají stejné předpony jako trasy s ID 4 a 5 a trasy definované uživatelem přepisují výchozí trasy. Stav tras s ID 4 a 5 je stále *Aktivní* pro podsíť *Subnet2*, protože směrovací tabulka, ve které jsou trasy definované uživatelem s ID 4 a 5, není přidružená k podsíti *Subnet2*. Partnerský vztah virtuálních sítí byl vytvořený kvůli splnění [požadavku](#requirements) 1.
+4. Platforma Azure automaticky přidala trasy s ID 4 a 5 pro všechny podsítě v rámci virtuální sítě *Virtual-network-1* při vytvoření partnerského vztahu této virtuální sítě s virtuální sítí *Virtual-network-2*. *Virtual-network-2* má ve svém adresním prostoru dva rozsahy adres: 10.1.0.0/16 a 10.2.0.0/16, takže Platforma Azure přidala trasu pro oba rozsahy. Kdyby nebyly vytvořené trasy definované uživatelem s ID 6 a 7, provoz odeslaný na jakoukoli adresu v rozsahu 10.1.0.1 až 10.1.255.254 a 10.2.0.1 až 10.2.255.254 by se směroval do partnerské virtuální sítě, protože předpona je delší než 0.0.0.0/0 a není v rozsahu předpon adres žádné jiné trasy. Platforma Azure automaticky změnila stav z *Aktivní* na *Neplatný* při přidání tras s ID 6 a 7, protože mají stejné předpony jako trasy s ID 4 a 5 a trasy definované uživatelem přepisují výchozí trasy. Stav tras s ID 4 a 5 jsou stále *aktivní* pro *Subnet2*, protože směrovací tabulky, které jsou trasy definované uživatelem s ID 6 a 7, není přidružená k *Subnet2*. Partnerský vztah virtuálních sítí byl vytvořený kvůli splnění [požadavku](#requirements) 1.
 5. Stejné vysvětlení jako u ID 4.
 6. Platforma Azure přidala tuto trasu a trasu s ID 7 při přiřazení tras definovaných uživatelem pro předpony adres 10.1.0.0/16 a 10.2.0.0/16 k podsíti *Subnet1*. Provoz určený pro adresy v rozsahu 10.1.0.1 až 10.1.255.254 a 10.2.0.1 až 10.2.255.254 Azure zahodí, a nesměruje ho do partnerské virtuální sítě, protože trasy definované uživatelem přepisují výchozí trasy. Trasy nejsou přidružené k podsíti *Subnet2*, takže se nezobrazí ve směrovací tabulce pro podsíť *Subnet2*. Trasy přepisují trasy s ID 4 a 5 pro odchozí provoz z podsítě *Subnet1*. Trasy s ID 6 a 7 existují kvůli splnění [požadavku](#requirements) 3 na zahození provozu směřujícího do druhé virtuální sítě.
 7. Stejné vysvětlení jako u ID 6.
@@ -239,11 +239,11 @@ Následuje vysvětlení jednotlivých ID tras:
 
 Směrovací tabulka pro podsíť *Subnet2* na obrázku obsahuje následující trasy:
 
-|Zdroj  |Stav  |Předpony adres    |Typ dalšího segmentu             |IP adresa dalšího segmentu směrování|
+|Source  |Stav  |Předpony adres    |Typ dalšího přesměrování             |IP adresa dalšího směrování|
 |------- |-------|------              |-------                   |--------           
 |Výchozí |Aktivní |10.0.0.0/16         |Virtuální síť           |                   |
-|Výchozí |Aktivní |10.1.0.0/16         |Partnerské vztahy virtuálních sítí              |                   |
-|Výchozí |Aktivní |10.2.0.0/16         |Partnerské vztahy virtuálních sítí              |                   |
+|Výchozí |Aktivní |10.1.0.0/16         |VNET Peering              |                   |
+|Výchozí |Aktivní |10.2.0.0/16         |VNET Peering              |                   |
 |Výchozí |Aktivní |10.10.0.0/16        |Brána virtuální sítě   |[X.X.X.X]          |
 |Výchozí |Aktivní |0.0.0.0/0           |Internet                  |                   |
 |Výchozí |Aktivní |10.0.0.0/8          |Žádný                      |                   |

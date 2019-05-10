@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: bf36de1965a8c819af0ef5af98a2393d4cefa1b3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205718"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508422"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -67,7 +67,9 @@ Ano. Další informace o veřejné rozsahy IP adres najdete v tématu [vytvořen
 Ano. Zobrazit [omezeních Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) podrobnosti. Adresní prostory podsítě navzájem překrývají.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Existují nějaká omezení pomocí IP adresy v rámci těchto podsítí?
-Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. První a poslední IP adresy každé podsíti jsou vyhrazené pro udržování souladu s protokoly, spolu s x.x.x.1 x.x.x.3 adres každé podsítě, které se používají pro služby Azure.
+Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. Toto jsou x.x.x.0 x.x.x.3 a poslední adresa v podsíti.    
+- x.x.x.0 a poslední adresa v podsíti je rezervovaná pro udržování souladu s protokoly.
+- x.x.x.1 x.x.x.3 je vyhrazená v každé podsíti pro služby Azure.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Způsob, jakým malé a jak velká může být virtuální sítě a podsítě?
 Nejmenší podporované podsítě je minimální velikostí/29 a největší /8 (pomocí definice podsítě CIDR).
@@ -225,7 +227,7 @@ Ano. Další informace o používání:
 - Prostředí PowerShell ke správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/powershell/module/az.network) a [classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modely nasazení.
 - Rozhraní příkazového řádku Azure (CLI) k nasazení a správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/cli/azure/network/vnet) a [classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modely nasazení.  
 
-## <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
+## <a name="vnet-peering"></a>VNET Peering
 
 ### <a name="what-is-vnet-peering"></a>Co je partnerský vztah virtuální sítě?
 Partnerský vztah virtuální sítě (nebo partnerský vztah virtuální sítě) můžete použít k propojení virtuálních sítí. Připojení partnerského vztahu virtuální sítě mezi virtuálními sítěmi umožňuje směrovat přenosy mezi nimi soukromě prostřednictvím adresy IPv4. Virtuální počítače v partnerských virtuálních sítích komunikovat mezi sebou, jako kdyby byly ve stejné síti. Tyto virtuální sítě může být ve stejné oblasti nebo v různých oblastech (označované také jako globální VNet Peering). Partnerské vztahy virtuálních sítí můžete také vytvořit napříč předplatnými Azure.
@@ -242,7 +244,7 @@ Základní služby Vyrovnávání zatížení, což znamená, že nemůže komun
 - Služba Application Gateway (v1) skladové položky
 - Service Fabric
 - SQL MI
-- Rozhraní API správy
+- API management
 - Active Directory Domain Services (AD DS)
 - Logic Apps
 - HD Insight
@@ -281,6 +283,9 @@ Ne. Tranzitivní partnerský vztah se nepodporuje. Virtuální síť a sítí VN
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Existují nějaká omezení šířky pásma pro partnerské vztahy virtuálních sítí?
 Ne. VNet peering, ať už místní nebo globální, nepředstavuje nějaká omezení šířky pásma. Šířky pásma je omezená jenom virtuální počítač nebo výpočetních prostředků.
+
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Jak řešit potíže se partnerský vztah virtuální sítě?
+Tady je [Průvodce při potížích s] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) můžete vyzkoušet.
 
 ## <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 

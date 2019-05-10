@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 55c5a61be8dadd538b73bd6378c030b98d837341
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140942"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508232"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -193,13 +193,7 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
 | **`CORS`** | Určuje původ, odkud můžou pro [prostředků mezi zdroji (CORS) pro sdílení obsahu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje jsou dodávány jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporován, umožňující žádosti z původu. |
 | **`ConnectionStrings`** | Nepoužívejte připojovací řetězce, používá funkce vazby této kolekce. Tato kolekce používá pouze rozhraní, které obvykle získat připojovací řetězce z `ConnectionStrings` část konfigurační soubor, třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci nejsou publikovány do Azure s jinými nastaveními aplikace. Musíte explicitně přidat tyto hodnoty `Connection strings` kolekce vaše nastavení aplikace function app. Pokud vytváříte [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** na portálu u vašich připojení. |
 
-Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v sekci proměnných prostředí z těchto témat reference specifická pro jazyk:
-
-* [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
-* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
-* [F#skript (.fsx)](functions-reference-fsharp.md#environment-variables)
-* [Java](functions-reference-java.md#environment-variables)
-* [JavaScript](functions-reference-node.md#environment-variables)
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Pokud se žádný platný připojovací řetězec úložiště jsou nastavené pro [ `AzureWebJobsStorage` ] a se nepoužívá emulátor, se zobrazí následující chybová zpráva:
 

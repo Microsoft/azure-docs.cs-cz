@@ -12,15 +12,15 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7c330846cd907f35bb23ae5e453383d7c35222e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024001"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471883"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Načtení a čtení dat pomocí sady SDK pro Azure Machine Learning Data Prep
-V tomto článku se naučíte různými způsoby načítání dat pomocí sady SDK pro Azure Machine Learning Data Prep. Referenční dokumentace pro SDK najdete v tématu [přehled](https://aka.ms/data-prep-sdk). Sada SDK podporuje různé funkce příjem dat, včetně:
+V tomto článku se naučíte různými způsoby načítání dat pomocí sady SDK pro Azure Machine Learning Data Prep.  Sada SDK podporuje různé funkce příjem dat, včetně:
 
 * Načtení z mnoha typů souborů s analýzy odvozování parametrů (kódování, oddělovač, hlavičky)
 * Převod typu pomocí odvození během načítání souboru
@@ -28,12 +28,13 @@ V tomto článku se naučíte různými způsoby načítání dat pomocí sady S
 
 > [!Important]
 > Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) pro zkoumání dat a přípravy. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
+> Pokud používáte `azureml-dataprep` balíček pro vytváření toku dat s namísto použití transformace `azureml-datasets` balíček k vytvoření datové sady, nebudete moct později použít snímky nebo systémovou správou verzí datové sady.
 
 V následující tabulce jsou uvedeny výběru sady funkcí pro načítání dat z běžných typů souborů.
 
 | Typ souboru | Funkce | Referenční odkaz |
 |-------|-------|-------|
-|Všechny|`auto_read_file()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Vše|`auto_read_file()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |Text|`read_lines()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-lines-path--filepath--header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-none--0---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |CSV|`read_csv()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-csv-path--filepath--separator--str--------header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---quoting--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--archive-options--azureml-dataprep-api--archiveoption-archiveoptions---none-----azureml-dataprep-api-dataflow-dataflow)|
 |Excel|`read_excel()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-excel-path--filepath--sheet-name--str---none--use-column-headers--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
@@ -315,5 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>Další postup
 
-* Sada SDK [přehled](https://aka.ms/data-prep-sdk) vzory návrhu a příklady použití
 * Zobrazit sadu SDK pro Azure Machine Learning Data Prep [kurzu](tutorial-data-prep.md) příklad řešení konkrétní scénář

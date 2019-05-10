@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: bf5126360140580282ebc1cb2bf73e1afa4d8829
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 565bcfa6c2f8a3da2ac16df0016b5adc54e27380
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920527"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407598"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -158,8 +158,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
-|od|Hledaný řetězec.|Ano|neuvedeno|
-|na|Náhradní řetězec. Zadejte řetězec nulové délky nahrazení odebrat hledaný řetězec.|Ano|neuvedeno|
+|from|Hledaný řetězec.|Ano|neuvedeno|
+|do|Náhradní řetězec. Zadejte řetězec nulové délky nahrazení odebrat hledaný řetězec.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -375,7 +375,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 #### <a name="convert-json-to-soap-using-a-liquid-template"></a>Převést JSON na SOAP pomocí šablony Liquid.
 ```xml
 <set-body template="liquid">
-    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/">
         <soap:Body>
             <GetOpenOrders>
                 <cust>{{body.getOpenOrders.cust}}</cust>
@@ -401,7 +401,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 |----------|-----------------|--------------|
 |set-body|Kořenový element. Obsahuje základní text nebo výrazy, které vrací text.|Ano|
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnost
 
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
@@ -509,12 +509,12 @@ OriginalUrl.
 |set-header|Kořenový element.|Ano|
 |value|Určuje hodnotu hlavičky, která se má nastavit. Pro více záhlaví s názvem přidejte další `value` elementy.|Ano|
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnost
 
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |existuje akce|Určuje, jaká akce se má provést, když je už zadaná hlavičce. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override - nahradí hodnotu existujícího hlavičky.<br />-skip - nenahrazuje existující hodnota hlavičky.<br />-Přidat – přidá hodnotu do existující hodnota hlavičky.<br />-delete - odstraní hlavičku ze žádosti.<br /><br /> Pokud je nastavena na `override` uvedení několik záznamů se stejným názvem výsledků v hlavičce nastavena podle všechny položky (které bude uveden více než jednou), nastaví se pouze uvedené hodnoty ve výsledku.|Ne|přepsání|
-|jméno|Určuje název hlavičky, která se má nastavit.|Ano|neuvedeno|
+|name|Určuje název hlavičky, která se má nastavit.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -569,12 +569,12 @@ OriginalUrl.
 |nastavení parametru dotazu|Kořenový element.|Ano|
 |value|Určuje hodnotu parametru dotazu, která se má nastavit. Pro více parametrů dotazu se stejným názvem, přidejte další `value` elementy.|Ano|
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnost
 
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |existuje akce|Určuje, jaká akce se má provést, když je již zadán parametr dotazu. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override - nahradí hodnotu parametru existující.<br />-skip - nenahrazuje existující hodnota parametru dotazu.<br />-Přidat – přidá hodnotu do existující hodnota parametru dotazu.<br />-delete - Odstraní z požadavku parametr dotazu.<br /><br /> Pokud je nastavena na `override` uvedení několik záznamů se stejným názvem v parametru dotazu nastavena podle všechny položky (které bude uveden více než jednou) výsledky, nastaví se pouze uvedené hodnoty ve výsledku.|Ne|přepsání|
-|jméno|Určuje název parametru dotazu, která se má nastavit.|Ano|neuvedeno|
+|name|Určuje název parametru dotazu, která se má nastavit.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -727,7 +727,7 @@ OriginalUrl.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v následujících tématech:
+Další informace naleznete v následujících tématech:
 
 + [Zásady ve službě API Management](api-management-howto-policies.md)
 + [Referenční příručce o zásadách](api-management-policy-reference.md) úplný seznam zásad příkazy a jejich nastavení

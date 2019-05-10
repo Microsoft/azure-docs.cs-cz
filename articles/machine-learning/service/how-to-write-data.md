@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023722"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472009"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Zápis a konfigurace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
@@ -25,6 +25,7 @@ V tomto článku najdete informace k zápisu dat pomocí různých metod [Azure 
 
 > [!Important]
 > Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
+> Pokud používáte `azureml-dataprep` balíček pro vytváření toku dat s namísto použití transformace `azureml-datasets` balíček k vytvoření datové sady, nebudete moct později použít snímky nebo systémovou správou verzí datové sady.
 
 Vzhledem k tomu, že neexistují žádná omezení, kolik zapsat kroky jsou v kanálu, můžete snadno přidat další zápis kroky k získání průběžné výsledky při odstraňování problémů nebo jiných kanálů.
 

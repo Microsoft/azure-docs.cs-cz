@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023654"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470634"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -68,7 +68,7 @@ Začněte trénování modelů a sledování historie spuštění pomocí novéh
 
 Existující soubory přípravy dat nejsou přenosné na nejnovější verzi, protože už nemáme Machine Learning Workbench. Ale stále můžete připravit všechny velikost datové sady pro modelování.   
 
-S datovými sadami libovolné velikosti, můžete použít [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) k rychlé přípravě vaše data před modelování napsáním kódu v Pythonu. 
+S datovými sadami libovolné velikosti, můžete použít [balíčku pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk) k rychlé přípravě vaše data před modelování napsáním kódu v Pythonu. 
 
 Můžete postupovat podle [v tomto kurzu](tutorial-data-prep.md) Další informace o tom, jak pomocí Azure Machine Learning Data Prep SDK.
 

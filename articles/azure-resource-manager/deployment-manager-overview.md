@@ -12,14 +12,14 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550877"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466555"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (privátní verze Preview)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (Public preview)
 
 K nasazení vaší služby napříč mnoha oblastmi a ujistěte se, že funguje podle očekávání v každé oblasti, můžete použít Azure Deployment Manager pro koordinaci postupné zavedení služby. Stejně jako pro nasazení v Azure, můžete definovat prostředky pro vaši službu v [šablon Resource Manageru](resource-group-authoring-templates.md). Po vytvoření šablony, pomocí Správce nasazení popisující topologii pro vaši službu a jak mají být zahrnuty navýšení kapacity.
 
@@ -200,7 +200,9 @@ V šabloně zavedení vytvoříte zdroj artefaktu pro binární soubory, které 
 
 ### <a name="steps"></a>Kroky
 
-Můžete definovat krok provést před nebo po operaci nasazení. V současné době pouze `wait` krokem je k dispozici. Krok čekání pozastaví nasazení, než budete pokračovat. Umožňuje ověřit, že vaše služba je spuštěná podle očekávání před nasazením další jednotku služby. Následující příklad ukazuje obecný formát krok čekání.
+Můžete definovat krok provést před nebo po operaci nasazení. V současné době pouze `wait` krok a v kroku "healthCheck" jsou k dispozici. 
+
+Krok čekání pozastaví nasazení, než budete pokračovat. Umožňuje ověřit, že vaše služba je spuštěná podle očekávání před nasazením další jednotku služby. Následující příklad ukazuje obecný formát krok čekání.
 
 ```json
 {
@@ -219,7 +221,7 @@ Můžete definovat krok provést před nebo po operaci nasazení. V současné d
 
 Vlastnost duration používá [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Předchozí příklad určuje minutu trvající čekání.
 
-Další informace najdete v tématu [kroky referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/steps).
+Další informace o kroku kontroly stavu, najdete v části [ ]() a [ ]() Další informace najdete v tématu [kroky referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Uvedení
 

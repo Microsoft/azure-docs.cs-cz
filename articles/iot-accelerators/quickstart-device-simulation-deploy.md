@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 0fcd688c9e5164522a482a4375c524a97a48d400
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105680"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467827"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasadit a spustit simulaci zařízení IoT v Azure
 
@@ -36,7 +36,7 @@ Klikněte na dlaždici **Simulace zařízení**:
 
 Na stránce popisu Simulace zařízení klikněte na **Vyzkoušet**:
 
-![Kliknutí na Vyzkoušet](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+![Kliknutí na Vyzkoušet](./media/quickstart-device-simulation-deploy/devicesimulationpdp1.png)
 
 Na stránce **Vytvoření řešení Simulace zařízení** zadejte jedinečný **Název řešení**.
 
@@ -58,13 +58,13 @@ Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohl�
 
 Při prvním otevření se zobrazí řídicí panel Simulace zařízení s příručkou **Začínáme**. Kliknutím na první dlaždici otevřete ukázkovou simulaci. Pokud zavřete příručku **Začínáme**, můžete **jednoduchou ukázkovou simulaci** otevřít kliknutím na příslušnou dlaždici na řídicím panelu:
 
-![Řídicí panel řešení](./media/quickstart-device-simulation-deploy/GettingStarted.png)
+![Řídicí panel řešení](./media/quickstart-device-simulation-deploy/gettingstarted1.png)
 
 ## <a name="sample-simulation"></a>Ukázková simulace
 
 Protože se jedná o ukázkovou simulaci, není možné ji upravit. Pro simulaci jsou nakonfigurovaná následující nastavení:
 
-| Nastavení             | Hodnota                       |
+| Nastavení             | Value                       |
 | ------------------- | --------------------------- |
 | Cílová služba IoT Hub      | Použít předem zřízenou službu IoT Hub |
 | Model zařízení        | Nákladní vůz                       |
@@ -72,7 +72,7 @@ Protože se jedná o ukázkovou simulaci, není možné ji upravit. Pro simulaci
 | Frekvence telemetrie | 10 sekund                  |
 | Doba trvání simulace | Spustit po neomezenou dobu            |
 
-![Konfigurace simulace](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
+![Konfigurace simulace](./media/quickstart-device-simulation-deploy/samplesimulation1.png)
 
 ## <a name="run-the-simulation"></a>Spuštění simulace
 

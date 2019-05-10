@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4bf8df2374d373ad36eada8a7de08be76396a76
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190806"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508049"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -51,6 +51,9 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 * Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows serveru Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server standard nebo vyšší.
 * Instalace služby Azure AD Connect na řadiči domény se nedoporučuje kvůli postupy zabezpečení a víc omezující nastavení, které mohou zabránit v instalaci správně Azure AD Connect
 * Server Azure AD Connect musí mít úplným grafickým uživatelským rozhraním nainstalované. Je **nepodporuje** instalace jádra serveru.
+>[!IMPORTANT]
+>Instalace služby Azure AD Connect small business server, server essentials nebo server core není podporována.
+
 * Azure AD Connect musí být nainstalována v systému Windows Server 2008 R2 nebo novější. Tento server musí být připojené k doméně a může být řadič domény nebo členském serveru.
 * Pokud Azure AD Connect instalujete na Windows Server 2008 R2, pak nezapomeňte použít nejnovější opravy hotfix z webu Windows Update. Instalace není možné spustit pomocí bez opravy zabezpečení serveru.
 * Pokud plánujete použít funkci **synchronizace hesel**, server Azure AD Connect musí být v systému Windows Server 2008 R2 SP1 nebo novějším.
@@ -87,7 +90,7 @@ Další informace naleznete v tématu:
 * Je-li použít Expresní nastavení nebo upgradu z nástroje DirSync, musíte mít účet správce podnikové sítě pro vaši místní službu Active Directory.
 * [Účty ve službě Active Directory](reference-connect-accounts-permissions.md) Pokud použijete vlastní nastavení Instalační cesta nebo účet správce podnikové sítě pro vaši místní službu Active Directory.
 
-### <a name="connectivity"></a>Připojení
+### <a name="connectivity"></a>Možnosti připojení
 * Server Azure AD Connect musí překlad názvů DNS pro intranetu i Internetu. DNS server musí být schopné překládat názvy do koncových bodů služby Azure AD a místní Active Directory.
 * Pokud máte brány firewall na vašem intranetu a je potřeba otevřít porty mezi servery služby Azure AD Connect a řadiče domény a pak naleznete v tématu [Azure AD Connect porty](reference-connect-ports.md) Další informace.
 * Pokud proxy server nebo brána firewall omezit adresy URL, které jsou přístupné, pak uvedené adresy URL v [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) musí být otevřeny.
@@ -127,7 +130,7 @@ Další informace naleznete v tématu:
 Další informace najdete v tématu MSDN [výchozí proxy server Element](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Další informace najdete v případě, že máte problémy s připojením, [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Další
 * Volitelné: Testovací uživatelský účet k ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Požadavky na komponenty
@@ -135,7 +138,7 @@ Další informace najdete v případě, že máte problémy s připojením, [ře
 Azure AD Connect, závisí na Microsoft PowerShell a rozhraní .NET Framework 4.5.1. Je nutné tuto verzi nebo novější verze na serveru nainstalovaný. V závislosti na vaší verzi Windows serveru postupujte takto:
 
 * Windows Server 2012R2
-  * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Nevyžaduje se žádná akce.
+  * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Není vyžadována žádná akce.
   * Rozhraní .NET framework 4.5.1 a novějších verzí se nabízejí prostřednictvím služby Windows Update. Ujistěte se, že máte nainstalované nejnovější aktualizace na Windows Server v Ovládacích panelech.
 * Windows Server 2008 R2 a Windows Server 2012
   * Je k dispozici v nejnovější verzi Powershellu Microsoft **Windows Management Framework 4.0**, která je dostupná na [Microsoft Download Center](https://www.microsoft.com/downloads).

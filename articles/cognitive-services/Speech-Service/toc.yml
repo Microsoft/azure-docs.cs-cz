@@ -139,8 +139,8 @@
       displayName: 'recognize speech, speech recognition, speech-to-text, stt'
     - name: Využívání datových proudů zvukového vstupu (SDK)
       href: how-to-use-audio-input-streams.md
-    - name: Využívání komprimovaných datových proudů zvukového vstupu (SDK)
-      href: how-to-use-compressed-audio-input-streams.md
+    - name: Využívání datových proudů zvukového vstupu komprimovaných pomocí kodeku (SDK)
+      href: how-to-use-codec-compressed-audio-input-streams.md
       displayName: 'mp3, opus, ogg, flac'
     - name: Výběr vstupního zvukového zařízení (SDK)
       href: how-to-select-audio-input-devices.md
@@ -184,7 +184,7 @@
               href: record-custom-voice-samples.md
             - name: Vyladění výstupu převodu textu na řeč
               href: how-to-voice-tuning.md
-        - name: Vytvoření vlastního aktivačního slova (Devices SDK)
+        - name: Vytvoření vlastního aktivačního slova (zjišťování klíčových slov)
           href: speech-devices-sdk-create-kws.md
           displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
     - name: Migrace
@@ -195,9 +195,9 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: Z rozhraní Translator Speech API
           href: how-to-migrate-from-translator-speech-api.md
-    - name: Použití kontejnerů
+    - name: Využití místních kontejnerů
       items:
-        - name: Instalace a spuštění kontejnerů
+        - name: Instalace a provoz místních kontejnerů
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
           href: speech-container-howto.md
         - name: Konfigurace kontejnerů
@@ -220,6 +220,8 @@
         - name: Přehled
           href: speech-sdk.md
           displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
+        - name: Dostupnost scénáře
+          href: scenario-availability.md
         - name: "Poznámky k\_verzi"
           href: releasenotes.md
         - name: C++
@@ -255,6 +257,9 @@
         - name: Dávkový přepis a vlastní nastavení
           href: 'https://westus.cris.ai/swagger/ui/index'
           displayName: 'Batch transcription, transcription, custom models, customization, model management'
+        - name: Přepis konverzace
+          href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+          displayName: 'Conversation transcription, signature generation'
         - name: Webhooky
           href: webhooks.md
           displayName: Webhooks

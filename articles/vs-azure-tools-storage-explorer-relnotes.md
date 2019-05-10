@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: c6416e36d7d2723577ca0d2009fb7bbad24f3b6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 18c52a47c291181547a9005c273dc1a329b8c207
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154699"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510952"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -44,7 +44,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 * Pro nahrávání AzCopy je nyní povolen příznak pro výpočet a nastavte hodnotu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Preview – funkce
+### <a name="preview-features"></a>Funkce Preview
 
 * Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
 * Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
@@ -82,7 +82,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
+* Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
 
 ## <a name="previous-releases"></a>Předchozí verze
 
@@ -135,7 +135,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 * Nyní můžete změnit vlastníka a vlastnící skupinu při správě přístupu pro kontejner ADLS Gen2, soubor nebo složku.
 * Na Windows aktualizace Průzkumníka služby Storage z v rámci produktu je nyní přírůstkové instalace. Výsledkem by měl být rychlejší prostředí aktualizace. Pokud dáváte přednost čistou instalaci, pak si můžete stáhnout [instalační program](https://azure.microsoft.com/features/storage-explorer/) sami a pak nainstalujte ručně. #1089
 
-### <a name="preview-features"></a>Preview – funkce
+### <a name="preview-features"></a>Funkce Preview
 
 * Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení. #938
 * Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.

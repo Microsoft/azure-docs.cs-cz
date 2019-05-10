@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691559"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472046"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -29,7 +29,7 @@ Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalovat sadu [Visual Studio 2017 pro Windows](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
-    - Vývoj pro ASP.NET a web
+    - Vývoj pro ASP.NET a web (Ne zrušte zaškrtnutí políčka volitelné komponenty)
     - Vývoj pro Azure
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -101,7 +101,7 @@ Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje
 
 [Další informace o používání Application Insights na portálu Azure Portal](../../azure-monitor/app/app-insights-dashboards.md).
 
-## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
+## <a name="step-4-publish-your-app"></a>Krok 4: Publikovat aplikaci
 Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
 
 Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](../../azure-monitor/app/app-insights-dashboards.md). Můžete také použít výkonný [Kusto dotazovací jazyk](/azure/kusto/query/) k analýze využití a výkonu nebo k hledání konkrétních událostí.

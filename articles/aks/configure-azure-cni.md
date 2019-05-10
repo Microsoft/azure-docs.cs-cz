@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 39e0547421c446c1ee48b93b30487ccb9358de02
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192077"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508003"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI s ve službě Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,16 @@ Maximální počet podů na jeden uzel v clusteru AKS je 110. *Výchozí* maxim�
 
 ### <a name="configure-maximum---new-clusters"></a>Nakonfigurujte maximální - nových clusterů
 
-Budete moct nakonfigurovat maximální počet podů na uzel *pouze v době nasazení clusteru*. Pokud provádíte nasazení pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Resource Manageru, můžete nastavit maximální podů každý uzel hodnotu až 250.
+Budete moct nakonfigurovat maximální počet podů na uzel *pouze v době nasazení clusteru*. Pokud nasadíte pomocí Azure CLI nebo pomocí šablony Resource Manageru, můžete nastavit maximální podů každý uzel hodnotu podle potřeby v rámci následující `maxPods` pokyny:
+
+| Sítě | Minimální | Maximum |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+> [!NOTE]
+> Minimální hodnota v tabulce výše se vynucuje striktně službou AKS.
+Nelze nastavit hodnotu maxPods nižší než minimální jako to uděláte tak můžete zabránit clusteru spuštění.
 
 * **Azure CLI**: Zadejte `--max-pods` argument při nasazování clusteru s [az aks vytvořit] [ az-aks-create] příkazu. Maximální hodnota je 250.
 * **Šablony Resource Manageru**: Zadejte `maxPods` vlastnost [ManagedClusterAgentPoolProfile] objektu při nasazování clusteru pomocí šablony Resource Manageru. Maximální hodnota je 250.

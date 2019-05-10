@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d94b527f1ad84d2b34a1708fd31eed273f8c363a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 24158d5949c0a31e5444c609cbfced970bdeca07
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074456"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471938"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Pomocí zpracování pokynů můžete vytvořit více zapne konverzaci
 
@@ -116,7 +116,7 @@ Znalostní báze knowledge base, při pár otázku a odpověď je propojený s n
 
 ## <a name="test-the-qna-set-to-get-all-the-follow-up-prompts"></a>Vyzve test, který QnA nastavit zobrazíte všechny následné akce
 
-Při testování dotazu s následnou akci výzvy v **Test** podokně odpovědi obsahuje zpracování pokynů.
+Při testování dotazu s následnou akci výzvy v **testovací** vyberte **povolit více zapnout**a zadejte svůj dotaz. Odpověď obsahuje zpracování pokynů.
 
 ![Při testování v testovací podokno dotaz, odpověď obsahuje zpracování pokynů.](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 

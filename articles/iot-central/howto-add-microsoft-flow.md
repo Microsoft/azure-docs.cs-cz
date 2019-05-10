@@ -8,19 +8,19 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693600"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467988"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 
 *Toto téma platí pro tvůrce a správce.*
 
 Pomocí Microsoft Flow můžete automatizovat pracovní postupy mezi mnoha aplikacemi a služeb, které využívají firemní uživatelé. Pracovní postupy můžete aktivovat pomocí IoT Central konektoru v Microsoft Flow, když se pravidlo aktivuje v IoT Central. V pracovním postupu aktivovaného IoT Central nebo jakékoli jiné aplikace můžete použít akce v spojnici IoT Central:
-- Vytvoření zařízení
+- Vytvořit zařízení
 - Získejte informace o zařízení
 - Aktualizovat vlastnosti a nastavení zařízení
 - Spuštění příkazu na zařízení
@@ -43,7 +43,7 @@ V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplika
 
 1. Zobrazí se seznam pracovních postupů tha mají přístup k a jsou připojené k tomuto pravidlu IoT Central. Klikněte na tlačítko **zkoumání šablon** nebo **nový > vytvořit ze šablony** a můžete si vybrat z kterékoli z dostupných šablon. 
 
-    ![Dostupné šablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates.png)
+    ![Dostupné šablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 
 1. Jste vyzváni k přihlášení ke konektorům v šabloně, kterou jste zvolili. Po přihlášení konektorů budete přesměrováni do návrháře k vytvoření pracovního postupu. Pracovní postup obsahuje aktivační událost IoT Central, která má svoji aplikaci a pravidlo už vytvořilo.
 
@@ -52,7 +52,7 @@ V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplika
     > [!NOTE]
     > Vyberte **zobrazit další** textu v okně dynamického obsahu se získat měření a hodnoty vlastností, které aktivuje pravidlo.
 
-    ![Tok akce s otevřeným podoknem dynamické úpravy](./media/howto-add-microsoft-flow/flowdynamicpane.png)
+    ![Tok akce s otevřeným podoknem dynamické úpravy](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
 1. Po dokončení úprav akci, vyberte **Uložit**. Budete přesměrováni na stránku přehled vašeho pracovního postupu. Zde můžete zobrazit historii spuštění a sdílet ho s dalšími kolegy.
 
@@ -79,7 +79,7 @@ V této části se dozvíte, jak vytvořit nové zařízení v IoT Central při 
 
 1. Vyberte pole název zařízení. V podokně dynamického obsahu vyberte **název zařízení**. Tato hodnota se předá ze vstupu uživatele zadá přes mobilní aplikaci a je název nové zařízení na IoT Central. Jediné povinné pole v tomto příkladu je název zařízení označená červenou hvězdičkou. Jiné šablony zařízení může mít více povinná pole, které je potřeba vyplnit pro vytvoření nového zařízení.
 
-    ![Tok vytvořit dynamické podokna akcí zařízení](./media/howto-add-microsoft-flow/flowcreatedevice.png)
+    ![Tok vytvořit dynamické podokna akcí zařízení](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
 1. (Volitelné) Vyplňte další pole, která je vhodná pro vytváření nových zařízení.
 
@@ -110,7 +110,7 @@ V této části se dozvíte, jak aktualizovat nastavení zařízení a vlastnost
 
 1. Je-li aktualizovat název zařízení. Pokud chcete aktualizovat všechny vlastnosti a nastavení zařízení, je třeba vybrat šablonu zařízení zařízení, které chcete aktualizovat v **šablona zařízení** rozevíracího seznamu. Akce dlaždic se rozbalí a zobrazí všechny vlastnosti a nastaveních, pomocí kterých můžete aktualizovat.
 
-    ![Tok pracovní postup aktualizace zařízení](./media/howto-add-microsoft-flow/flowupdatedevice.png)
+    ![Tok pracovní postup aktualizace zařízení](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
 1. Vyberte jednotlivé vlastnosti a nastavení, které chcete aktualizovat. V podokně dynamického obsahu zvolte odpovídající vstup z triggeru. V tomto příkladu hodnotu umístění rozšíří se dolů do umožňuje aktualizovat vlastnost umístění zařízení.
 
@@ -126,7 +126,7 @@ Můžete získat informace o zařízení s použitím jeho ID **získat zaříze
 
 Můžete získat informace, jako je název zařízení, název šablony zařízení, hodnoty vlastnosti a hodnoty nastavení k předání do pozdějších akcích v pracovním postupu. Tady je příklad pracovního postupu, který se předá jméno zákazníka hodnotu vlastnosti ze zařízení do Microsoft Teams.
 
-   ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowgetdevice.png)
+   ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowgetdevice1.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>Spuštění příkazu na zařízení v pracovním postupu
@@ -137,7 +137,7 @@ Spustíte příkaz na zařízení, zadat jeho pomocí ID **Azure IoT Central –
     
 Můžete si vybrat příkaz pro spuštění a předání v parametrech příkaz v rámci této akce. Tady je příklad pracovního postupu, který spouští příkaz restartování zařízení pomocí tlačítka v mobilní aplikaci Microsoft Flow.
 
-   ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowrunacommand.png)
+   ![Tok pracovní postup get zařízení](./media/howto-add-microsoft-flow/flowrunacommand1.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>Odstranit zařízení v pracovním postupu
 

@@ -67,27 +67,29 @@
                 - name: Šifrování disků s nastavením pořadí rozšíření VMSS
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: Dodatek k šifrování disků
-              href: azure-security-disk-encryption-appendix.md
-            - name: Šifrování disků – nejčastější dotazy
-              href: azure-security-disk-encryption-faq.md
-            - name: Řešení potíží
-              href: azure-security-disk-encryption-tsg.md
-            - name: Azure Disk Encryption s využitím aplikace Azure AD (předchozí vydaná verze)
-              displayName: active directory
-              items:
-                - name: Šifrování disků s využitím aplikace Azure AD – požadavky
+                  href: azure-security-disk-encryption-appendix.md
+                - name: Šifrování disků – nejčastější dotazy
+                  href: azure-security-disk-encryption-faq.md
+                - name: Řešení potíží
+                  href: azure-security-disk-encryption-tsg.md
+                - name: Azure Disk Encryption s využitím aplikace Azure AD (předchozí vydaná verze)
                   displayName: active directory
-                  href: azure-security-disk-encryption-prerequisites-aad.md
-                - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Windows
-                  displayName: active directory
-                  href: azure-security-disk-encryption-windows-aad.md
-                - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Linuxem
-                  displayName: active directory
-                  href: azure-security-disk-encryption-linux-aad.md
+                  items:
+                    - name: Šifrování disků s využitím aplikace Azure AD – požadavky
+                      displayName: active directory
+                      href: azure-security-disk-encryption-prerequisites-aad.md
+                    - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Windows
+                      displayName: active directory
+                      href: azure-security-disk-encryption-windows-aad.md
+                    - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Linuxem
+                      displayName: active directory
+                      href: azure-security-disk-encryption-linux-aad.md
     - name: Zabezpečení služby Azure Storage
       href: security-storage-overview.md
     - name: Příručka zabezpečení úložiště
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Customer Lockbox
+      href: azure-customer-lockbox-overview.md
 - name: Platforma a infrastruktura
   items:
     - name: Zabezpečení infrastruktury

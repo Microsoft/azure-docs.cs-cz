@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: febc6e72ed40541a230c606a3ec96a8bffef5036
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 651474fd538123e760022ac59efbbaf0b9b83d70
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026374"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519677"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Rychlý start: Rozpoznat digitálního inkoustu pomocí rozhraní REST API pro rozpoznávání rukopisu a JavaScript
 
@@ -26,12 +26,12 @@ Obvykle by volání rozhraní API z aplikace pro digitální rukopisu. V tomto r
 
 ![Obrázek rukou psaný text](../media/handwriting-sample.jpg)
 
-Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft.com/fwlink/?linkid=2089502).
+Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft.com/fwlink/?linkid=2089905).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Webový prohlížeč
-- Příklad inkoustu stroke data pro účely tohoto rychlého najdete na [Githubu](https://go.microsoft.com/fwlink/?linkid=2089502).
+- Příklad inkoustu stroke data pro účely tohoto rychlého najdete na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
@@ -157,7 +157,7 @@ Zdrojový kód v tomto rychlém startu najdete na [Githubu](https://go.microsoft
 
 ## Run the application and view the response
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502):
+This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
 ## Next steps
 

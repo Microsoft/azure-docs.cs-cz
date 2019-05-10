@@ -10,23 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714131"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472789"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak škálovat vaše prostředí Time Series Insights
 
-Tento článek popisuje, jak změnit kapacitu prostředí pro vaše prostředí Time Series Insights pomocí webu Azure portal. Kapacita je multiplikátor na rychlost příchozího přenosu dat, kapacitu a náklady spojené s vybraná skladová položka. 
+Tento článek popisuje, jak změnit kapacitu prostředí pro vaše prostředí Time Series Insights pomocí webu Azure portal. Kapacita je multiplikátor na rychlost příchozího přenosu dat, kapacitu a náklady spojené s vybraná skladová položka.
 
-Pro zvýšení nebo snížení kapacity v rámci dané skladové položky cen, můžete použít na webu Azure portal. 
+Pro zvýšení nebo snížení kapacity v rámci dané skladové položky cen, můžete použít na webu Azure portal.
 
-Však změnit cenovou úroveň nepovoluje SKU. Například v prostředí s S1, ceny SKU nelze převést na S2 nebo naopak. 
-
+Však změnit cenovou úroveň nepovoluje SKU. Například v prostředí s S1, ceny SKU nelze převést na S2 nebo naopak.
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>Sazby za příchozí přenos dat skladovou Položku S1 a kapacity
 
@@ -45,19 +44,20 @@ Však změnit cenovou úroveň nepovoluje SKU. Například v prostředí s S1, c
 Kapacity se škálují lineárně, takže S1 SKU s kapacitou 2 podporuje událostí (2 miliony) 2 GB za den rychlost příchozího přenosu dat a 60 GB (60 milionů událostí) za měsíc.
 
 ## <a name="change-the-capacity-of-your-environment"></a>Změnit kapacitu vašeho prostředí
-1. Na webu Azure Portal vyhledejte a vyberte vaše prostředí Time Series Insights. 
 
-2. V nabídce pro vaše prostředí Time Series Insights, vyberte **konfigurovat**.
+1. Na webu Azure Portal vyhledejte a vyberte vaše prostředí Time Series Insights.
 
-   ![Configure.PNG](media/scale-your-environment/configure.png)
+1. V nabídce pro vaše prostředí Time Series Insights, vyberte **konfigurovat**.
 
-3. Upravit **kapacity** posuvníku vyberte kapacity, který splňuje požadavky pro vaše sazby za příchozí přenos dat a úložiště. Všimněte si, že **rychlost příchozího přenosu dat**, **kapacitu úložiště**, a **odhadované náklady** aktualizace dynamicky zobrazíte závažnosti dopadu změn. 
+   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-   ![Posuvník](media/scale-your-environment/slider.png)
+1. Upravit **kapacity** posuvníku vyberte kapacity, který splňuje požadavky pro vaše sazby za příchozí přenos dat a úložiště. Všimněte si, že **rychlost příchozího přenosu dat**, **kapacitu úložiště**, a **odhadované náklady** aktualizace dynamicky zobrazíte závažnosti dopadu změn.
 
-   Alternativně můžete zadat počet multiplikátor kapacity do textového pole vpravo od jezdce. 
+   [![Posuvník](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
-4. Vyberte **Uložit** škálování prostředí. Indikátor průběhu se nezobrazí, dokud se změna se potvrdí, okamžité. 
+   Alternativně můžete zadat počet multiplikátor kapacity do textového pole vpravo od jezdce.
+
+1. Vyberte **Uložit** škálování prostředí. Indikátor průběhu se nezobrazí, dokud se změna se potvrdí, okamžité.
 
 ## <a name="next-steps"></a>Další postup
 

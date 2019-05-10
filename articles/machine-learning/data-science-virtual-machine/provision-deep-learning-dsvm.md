@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943920"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410436"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřízení pro hloubkové učení na virtuálním počítači Azure 
 
@@ -68,7 +68,7 @@ Po vytvoření virtuálního počítače můžete do něj pomocí přihlašovac�
 
 ### <a name="linux-edition"></a>Edice pro Linux
 
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v [ **Základy** ](#basics) část krok 3 pro rozhraní text prostředí. Další informace o připojení SSH k virtuálním počítačům Azure najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure](/azure/virtual-machines/linux/use-remote-desktop). V klientovi Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go. 
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v [ **Základy** ](#basics) část krok 3 pro rozhraní text prostředí. Další informace o připojení SSH k virtuálním počítačům Azure najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure](/azure/virtual-machines/linux/use-remote-desktop). V klientovi Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](https://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go. 
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v našich testech. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.

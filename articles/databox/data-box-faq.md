@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/25/2019
+ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: c9cef479c1d4af55ae58c61a07ff1d5348ed7183
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868264"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473268"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -24,8 +24,8 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 - O službě
 - Objednání zařízení
 - Konfigurace a připojení 
-- Sledování stavu
-- Kopírování dat 
+- Stav sledování
+- Kopírovat data 
 - Dodání zařízení
 - Ověření a nahrání dat 
 - Podpora řetězce opatrovnictví
@@ -36,12 +36,12 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 A.  Služba Azure Data Box je určená pro příjem dat offline. Tato služba spravuje celou řadu produktů s různou kapacitou úložiště, které všechny slouží k přenosu dat. 
 
 ### <a name="q-what-is-azure-data-box"></a>Otázka: Co je Azure Data Box?
-A. Azure Data Box umožňuje rychlý, levný a bezpečný přenos terabajtů dat do nebo z Azure. Zařízení Data Box si můžete objednat na webu Azure Portal. Microsoft se dodává úložné zařízení z 80 TB využitelné kapacity prostřednictvím místní operátora. 
+A. Azure Data Box umožňuje rychlé, cenově dostupné a zabezpečený přenos terabajtů dat do Azure. Zařízení Data Box si můžete objednat na webu Azure Portal. Microsoft se dodává úložné zařízení z 80 TB využitelné kapacity prostřednictvím místní operátora. 
 
 Jakmile vám zařízení přijde, můžete ho rychle nastavit v místním webovém uživatelském rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>Otázka: Kdy mám použít Data Box?
-A. Data Box pro vás bude výhodný, pokud máte 40–500 TB dat, která chcete přenést do Azure. Pokud máte méně než 40 TB dat, použijte Data Box Disk. Pokud máte více než 500 TB dat, zaregistrujte se do služby Data Box Heavy.
+A. Data Box pro vás bude výhodný, pokud máte 40–500 TB dat, která chcete přenést do Azure. Pro data velikosti < 40 TB, použijte Data Box Disk a pro data o velikosti > 500 TB, zaregistrujte si [Data Box náročné](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Otázka: Jaká je cena zařízení Data Box?
 A. Zařízení Data Box je k dispozici na 10 dnů za stanovený poplatek. Když při vytváření objednávky na webu Azure Portal vyberete model produktu, zobrazí se poplatek za zařízení. Také dodání je zdarma, ale platí se za úložiště Azure. Další informace nejdete v článku o [cenách služeb Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -124,7 +124,7 @@ A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Otázka: Konfigurace portu kanál vyslané zařízení Data Box? A co funkce MPIO?
 A. Nepodporujeme konfigurace kanál portu, konfigurace funkce Multipath vstupně-výstupních operací (MPIO) nebo konfiguraci sítě vLAN na zařízení Data Box.
 
-## <a name="track-status"></a>Sledování stavu
+## <a name="track-status"></a>Stav sledování
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Otázka: Jak můžu sledovat Data Box od okamžiku vystavení objednávky až do zpětného odeslání zařízení? 
 A.  Stav objednávky Data Boxu můžete sledovat na webu Azure Portal. Při vytváření objednávky se zobrazuje také výzva k zadání e-mailové adresy pro oznámení. Pokud jste tuto adresu zadali, budete prostřednictvím e-mailu dostávat oznámení o všech změnách stavu dané objednávky. Další informace o [konfiguraci e-mailových adres pro oznámení](data-box-portal-ui-admin.md#edit-notification-details).
@@ -135,7 +135,7 @@ A.  Microsoft zobrazuje expediční štítek na displeji s elektronickým inkous
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Otázka: Přišlo mi e-mailem oznámení, že zařízení dorazilo do datacentra Azure. Jak zjistím, jestli probíhá nahrávání dat?
 A. Na webu Azure Portal přejděte k objednávce Data Boxu a pak přejděte na **Přehled**. Pokud se data začala nahrávat do Azure, zobrazí se v pravém podokně průběh kopírování. 
 
-## <a name="migrate-data"></a>Migrace dat
+## <a name="migrate-data"></a>Migrovat data
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>Otázka: Kolik dat se vejde do zařízení Data Box?  
 A.  Data Box má využitelné úložiště o kapacitě 80 TB. Jedno zařízení Data Box můžete použít pro data o velikosti 40–80 TB. Pro větší množství dat o velikosti až 500 TB, můžete si objednat více zařízení Data Box. Pokud data přesahují 500 TB, zaregistrujte se do služby Data Box Heavy.  

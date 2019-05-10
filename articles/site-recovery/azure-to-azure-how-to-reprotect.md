@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791210"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472159"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Operace opětovného zapnutí ochrany převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti
 
@@ -42,7 +42,7 @@ Pokud jste [převzetí služeb při selhání](site-recovery-failover.md) virtu�
 
 Můžete přizpůsobit následující vlastnosti cíle VMe během opětovného nastavování ochrany.
 
-![Přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![Přizpůsobit](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Vlastnost |Poznámky  |
 |---------|---------|
@@ -68,7 +68,7 @@ Když spustíte úlohu znovunastavení ochrany a cílový virtuální počítač
 1. Straně cíle, které virtuální počítač je zapnutý vypnuto, pokud běží.
 2. Pokud virtuální počítač používá spravované disky, kopii původní disky se vytvoří s "-ASRReplica" příponu. Původní disky se odstraní. "-ASRReplica" kopie se používají pro replikaci.
 3. Pokud virtuální počítač používá nespravované disky, datové disky cílového virtuálního počítače jsou odpojená, používanou k replikaci. Kopii disku s operačním systémem se vytvoří a připojí na virtuálním počítači. Původní disk s operačním systémem je odpojená a použít pro replikaci.
-4. Jsou synchronizovány pouze změny mezi zdrojový disk a cílový disk. Rozdíly jsou vypočítané porovnáním obou discích tak a pak přeneseny. Bude to trvat několik hodin.
+4. Jsou synchronizovány pouze změny mezi zdrojový disk a cílový disk. Rozdíly jsou vypočítané porovnáním obou discích tak a pak přeneseny. Odhadovaný čas Zkontrolujte níže se nenašel.
 5. Po dokončení synchronizace začíná rozdílové replikace a vytvoří bod obnovení podle zásady replikace.
 
 Když aktivujte úlohu znovunastavení ochrany a cílový virtuální počítač a disky neexistuje, dojde k následující položky:
@@ -76,6 +76,21 @@ Když aktivujte úlohu znovunastavení ochrany a cílový virtuální počítač
 2. Pokud virtuální počítač používá nespravované disky, repliky disků jsou vytvořeny v cílovém účtu úložiště.
 3. Celý disky jsou zkopírovány z se v oblasti, aby se nové cílové oblasti.
 4. Po dokončení synchronizace začíná rozdílové replikace a vytvoří bod obnovení podle zásady replikace.
+
+#### <a name="estimated-time--to-do-the-reprotection"></a>Odhadovaný čas opětovného nastavování ochrany 
+
+Ve většině případů není Azure Site Recovery replikuje kompletní data do zdrojové oblasti. V následující tabulce jsou podmínky, které určuje, kolik dat bude replikovat:
+
+1.  Pokud je zdroj dat virtuálního počítače odstraněné, poškozená nebo není přístupný z nějakého důvodu jako skupina prostředků měnit/odstraňovat pak během opětovného nastavování ochrany dokončení IR k tomu dochází, protože není k dispozici žádná data ve zdrojové oblasti, kterou chcete použít.
+2.  Pokud zdroj dat virtuálního počítače je přístupná pouze rozdíly jsou vypočítané porovnáním obou discích tak a pak přeneseny. Zkontrolujte, níže uvedená tabulka získat odhadovaný čas 
+
+|** Příklad situace ** | ** Čas potřebný k znovunastavení ochrany ** |
+|--- | --- |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB standard Disk<br/>-Pouze 127 GB dat se používá a zbytek na disku je prázdný<br/>– Typ disku je standard s využitím 60 propustnost MiB/S<br/>– Po převzetí služeb při selhání změnit žádná data| Jak dlouho 45 minut – 1,5 hodiny<br/> -Během opětovného nastavování ochrany Site Recovery se vyplní celé data, která bude trvat 127 GB kontrolní součet / 45 MB přibližně 45 minut<br/>-Režie chvíli je vyžadován pro Site Recovery za účelem automatické škálování, která je 20 – 30 minut<br/>-Žádné poplatky za výchozí přenos dat |
+|Zdrojová oblast má 1 virtuální počítač s 1 TB standard Disk<br/>-Pouze 127 GB dat se používá a zbytek na disku je prázdný<br/>– Typ disku je standard s využitím 60 propustnost MiB/S<br/>-45 GB změny dat po převzetí služeb při selhání| Přibližný čas 1 hodiny – 2 hodiny<br/>-Během opětovného nastavování ochrany Site Recovery se vyplní celé data, která bude trvat 127 GB kontrolní součet / 45 MB přibližně 45 minut<br/>-Přenos doba použití změny 45 GB, což je 45 GB / 45 MB/s ~ 17 minut<br/>-Poplatky za výchozí přenos dat budou platit jenom pro 45 GB dat není pro kontrolní součet|
+ 
+
+
 
 ## <a name="next-steps"></a>Další postup
 

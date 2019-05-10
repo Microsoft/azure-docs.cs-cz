@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49d06c05af085624a0d495a65e139d3857a13fc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712617"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470233"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -334,7 +334,6 @@ Pokud chcete odebrat sady Service Fabric SDK, spusťte následující příkazy.
 * [Příprava linuxového vývojového prostředí ve Windows](service-fabric-local-linux-cluster-windows.md)
 * [Správa aplikací pomocí rozhraní příkazového řádku Service Fabric](service-fabric-application-lifecycle-sfctl.md)
 * [Rozdíly Service Fabric pro Windows a Linux](service-fabric-linux-windows-differences.md)
-* [Automatizace oprav operačního systému v clusteru s Linuxem](service-fabric-patch-orchestration-application-linux.md)
 * [Začínáme s rozhraním příkazového řádku Service Fabric](service-fabric-cli.md)
 
 <!-- Links -->

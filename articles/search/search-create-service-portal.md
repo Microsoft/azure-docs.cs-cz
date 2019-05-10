@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9de8fa297c2b3f89f74b17e0dac3eab007367b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817504"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471607"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -54,11 +54,11 @@ Požadavky na název služby:
 * Nepoužívejte pomlčku („-“) v prvních 2 znacích nebo jako poslední znak.
 * Nikde nepoužívejte po sobě jdoucí pomlčky („--“).
 
-## <a name="select-a-subscription"></a>Výběr předplatného
+## <a name="select-a-subscription"></a>Vyberte předplatné
 
 Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou také služby úložiště dat nebo souborů. Služba Azure Search můžete zjišťovat Azure Table Storage a Blob storage, SQL Database a Azure Cosmos DB pro indexování prostřednictvím [ *indexery*](search-indexer-overview.md), ale pouze pro služby ve stejném předplatném.
 
-## <a name="select-a-resource-group"></a>Výběr skupiny prostředků
+## <a name="select-a-resource-group"></a>Vybrat skupinu prostředků
 
 Skupina prostředků je kolekce společně používaných služeb a prostředků Azure. Pokud například používáte Azure Search k indexování databáze SQL, pak by obě služby měly být součástí stejné skupiny prostředků.
 
@@ -67,11 +67,13 @@ Pokud prostředky nejsou sloučením do jedné skupiny, nebo existující skupin
 > [!TIP]
 > Odstraněním skupiny prostředků se odstraní také služby v této skupině. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
 
-## <a name="select-a-hosting-location"></a>Výběr umístění pro hostování
+## <a name="select-a-location"></a>Vyberte umístění
 
 Protože se jedná o službu Azure, je Azure Search možné hostovat v datových centrech po celém světě. [Ceny mohou lišit](https://azure.microsoft.com/pricing/details/search/) podle zeměpisné oblasti.
 
-Pokud se indexování obsahu umístěnému v Azure service (Azure storage, Azure Cosmos DB, Azure SQL Database), vytvořte službu Azure Search ve stejné oblasti jako vaše data, aby se zabránilo poplatky za šířku pásma. Když jsou ve stejné oblasti služby nejsou žádné poplatky za odchozí data.
+Pokud se indexování dat poskytuje další Azure service (Azure storage, Azure Cosmos DB, Azure SQL Database), vytvořte službu Azure Search ve stejné oblasti, aby se zabránilo poplatky za šířku pásma. Když jsou ve stejné oblasti služby nejsou žádné poplatky za odchozí data.
+
+Pokud používáte obohacení AI kognitivního vyhledávání, vytvoření služby ve stejné oblasti jako váš prostředek služeb Cognitive Services. Společné umístění služeb představuje požadavek pro rozšiřování AI.
 
 ## <a name="select-a-pricing-tier-sku"></a>Výběr cenové úrovně (SKU)
 

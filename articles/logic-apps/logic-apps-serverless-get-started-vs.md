@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 04/25/2019
-ms.openlocfilehash: 265ed220b023a9d81fc5af48920152d95d9cac08
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fb071ac056355a056e5333284808417a258515de
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136693"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467451"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Vytvořte svoji první aplikaci bez serveru s Azure Logic Apps a Azure Functions – Visual Studio
 
@@ -34,6 +34,7 @@ K sestavení aplikace bez serveru v sadě Visual Studio, budete potřebovat tyto
 
     > [!IMPORTANT]
     > Když instalujete Visual Studio 2019 nebo 2017, ujistěte se, že jste vybrali **vývoj pro Azure** pracovního vytížení.
+    > Pro Visual Studio 2019 Průzkumníka cloudu můžete otevřít návrhář aplikace logiky na webu Azure Portal, ale dosud neotevřel vloženého návrháře aplikace logiky.
 
   * [Microsoft Azure SDK pro .NET (2.9.1 nebo novější)](https://azure.microsoft.com/downloads/). 
   Další informace o sadě [Azure SDK pro .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet).

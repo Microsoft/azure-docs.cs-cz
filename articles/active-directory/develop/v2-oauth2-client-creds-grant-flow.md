@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: df75d692bc61d155b35f5ce4e2bf08da6e4cbcc3
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190836"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507104"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma identit Microsoft a tok přihlašovacích údajů klienta OAuth 2.0
 
@@ -251,7 +251,7 @@ Chybová odpověď vypadá takto:
 | `correlation_id` | Jedinečný identifikátor pro žádost o pomoct s diagnostikou komponentami. |
 
 > [!NOTE]
-> Aby se vaše aplikace bude moct přijímat v2 token můžete aktualizovat soubor manifestu aplikace z webu azure portal. Můžete přidat atribut `accessTokenAcceptedVersion` a nastavte hodnotu na 2 jako `"accessTokenAcceptedVersion": 2`. Zkontrolujte článek [manifest aplikace](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference) bližší informace o stejné. Ve výchozím nastavení aplikace aktuálně recieves v1 token. Pokud to není definován v manifestu aplikace/webové rozhraní API, je výchozí hodnota pro tento atribut v manifestu je 1, a proto bude aplikace přijímat po v1 token.  
+> Aby se vaše aplikace bude moct přijímat v2 token můžete aktualizovat soubor manifestu aplikace z webu azure portal. Můžete přidat atribut `accessTokenAcceptedVersion` a nastavte hodnotu na 2 jako `"accessTokenAcceptedVersion": 2`. Zkontrolujte článek [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) bližší informace o stejné. Ve výchozím nastavení aplikace aktuálně recieves v1 token. Pokud to není definován v manifestu aplikace/webové rozhraní API, je výchozí hodnota pro tento atribut v manifestu je 1, a proto bude aplikace přijímat po v1 token.  
 
 
 ## <a name="use-a-token"></a>Použít token

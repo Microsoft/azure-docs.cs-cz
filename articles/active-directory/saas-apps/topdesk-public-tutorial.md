@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d5ecfcd249dd07dc94b3b17ea0a7a7de3559c681
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192562"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Integrace Azure Active Directory s TOPdesk – veřejné
 
@@ -193,7 +193,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TOPdesk – veřejné, prov
 
     c. Nahrát soubor loga jste získali v části z na tým podpory TOPdesk **ikona loga**, klikněte na tlačítko **Procházet**.
 
-    d. V **atribut uživatelského jména** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. V **atribut uživatelského jména** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     e. V **zobrazovaný název** textového pole zadejte název pro vaši konfiguraci.
 
@@ -276,7 +276,7 @@ Chcete-li povolit Azure AD uživatelům přihlašovat se do TOPdesk - veřejný,
 > [!NOTE]
 > Můžete použít jakékoli jiné TOPdesk – zadáním hodnoty nástrojů pro vytváření veřejné uživatelského účtu nebo rozhraní API poskytovaných TOPdesk - Public zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

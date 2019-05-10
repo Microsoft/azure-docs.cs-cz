@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ba3de32f4ec3b9f6faf1d5a51da9c1c91e4a2e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e1c031643fc3ce75d99ad619ce46b38c9cba82c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60732429"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472697"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
 
@@ -38,7 +38,8 @@ Toto téma ukazuje, jak konfigurovat filtr pro prostředek videa na vyžádání
 
 Následující příklad definuje podmínky výběr sledování, které jsou přidány do konečné manifestu. Tento filtr obsahuje všechny zvukové stopy, které jsou ES-3 a jakékoli video sledují, které mají s přenosovou rychlostí v 0 – 1 000 000 rozsahu.
 
-Filtry definované v klidu, obsahovat objekt JSON "Properties" obálky.  
+> [!TIP]
+> Pokud budete chtít definovat **filtry** REST, Všimněte si, že je potřeba zahrnout objekt JSON obálky "Properties".  
 
 ```json
 [
@@ -94,6 +95,33 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 ```
 
 Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter).
+
+
+## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
+
+Můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokátor streamování. [Dynamické packager (koncový bod streamování)](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické manifestu](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
+
+Rozhraní příkazového řádku následující kód ukazuje, jak vytvořit lokátor streamování a určit `filters`. Toto je volitelná vlastnost, která přebírá místo oddělený seznam filtru názvy datových zdrojů a/nebo názvy účtů filtru.
+
+```azurecli
+az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
+                                --asset-name assetName \                               
+                                --streaming-policy-name policyName \
+                                --filters filterName1 filterName2
+                                
+```
+
+## <a name="stream-using-filters"></a>Stream pomocí filtrů
+
+Jakmile definujete filtry, klienty je použít v adrese URL streamování. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming.
+
+V následující tabulce jsou uvedeny příklady adresy URL s filtry:
+
+|Protocol (Protokol)|Příklad:|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="next-step"></a>Další krok
 

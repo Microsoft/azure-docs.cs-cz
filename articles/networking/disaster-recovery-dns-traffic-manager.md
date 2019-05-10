@@ -4,7 +4,7 @@ description: Přehled řešení zotavení po havárii pomocí Azure DNS a Traffi
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507651"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501700"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
 
@@ -141,7 +141,8 @@ Kroky, chcete-li nakonfigurovat převzetí služeb při selhání pomocí Azure 
 Vytvoření nového profilu Azure Traffic Manageru s contoso123 název a vyberte metodu směrování jako prioritní. Pokud máte existující skupinu prostředků, kterou chcete přidružit, pak můžete vybrat existující skupinu prostředků, v opačném případě vytvořte novou skupinu prostředků.
 
 ![Vytvořit profil služby Traffic Manager](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
-*obrázek – vytvoření profilu Traffic Manageru*
+
+*Obrázek – vytvoření profilu Traffic Manageru*
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Krok 2: Vytváření koncových bodů v rámci profilu Traffic Manageru
 

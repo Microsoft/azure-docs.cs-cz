@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 949b5b1aaab60e5b1d160963ac3f024dbbfbe552
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fc4d96b900090cd217b4b49b1af2f09762c0da84
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834951"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Kurz: Integrace Azure Active Directory s Cezanne HR softwaru
 
@@ -156,7 +156,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cezanne HR softwaru, prove�
 
     d. V **koncový bod služby tokenu zabezpečení** textového pole vložte hodnotu **přihlašovací adresa URL** který jste zkopírovali z portálu Azure portal.
 
-    e. Do textového pole Název atributu ID uživatele, zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. Do textového pole Název atributu ID uživatele, zadejte `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     f. Klikněte na tlačítko **nahrát** ikonu a nahrát na server certifikát stažený z webu Azure portal.
 
@@ -265,7 +265,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Cezanne HR softwaru, m
 
     ![Uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "uživatele")
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

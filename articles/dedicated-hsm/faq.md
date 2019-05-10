@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 5/8/2019
 ms.author: barclayn
-ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118974"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467726"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -233,7 +233,7 @@ Microsoft nemá schopnost připojení do modulů HSM přidělené pro zákazník
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Otázka: Co když budu potřebovat restartovat Můj HSM?
 
- Modul hardwarového zabezpečení má možnost restartování příkazového řádku a je třeba poznamenat, že možnost "restart" musí být použita. Pokud to z nějakého důvodu selže, žádost o podporu u Microsoftu a máme zařízení fyzicky restartovat. 
+Modul hardwarového zabezpečení má možnost restartování příkazového řádku, ale jsme občas dochází k problémům s zablokování restartování a z tohoto důvodu se doporučuje pro nejbezpečnější restartování zvýšíte žádost o podporu u Microsoftu do zařízení fyzicky restartovat. 
 
 ## <a name="cryptography-and-standards"></a>Šifrování a norem
 

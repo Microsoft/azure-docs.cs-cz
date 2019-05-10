@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 04/09/2018
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ad739041ebd20f9940e305efb19807df4c73cb8e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7be2652355e3b9830d4a5198ba71c0f4a78858dd
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725800"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471683"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights
 
@@ -24,11 +24,11 @@ Tento článek popisuje některé problémy, které můžete narazit ve vašem p
 
 ## <a name="video"></a>Video
 
-### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>V tomto videu se budeme zabývat běžné problémy zákazníků služby Time Series Insights a způsoby zmírnění rizik:</br>
+### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Další informace o problémy zákazníků obvyklá doba Series Insights a způsoby zmírnění rizik.</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-one-no-data-is-shown"></a>Problém, jeden: žádná data se zobrazí.
+## <a name="problem-no-data-is-shown"></a>Problém: žádná data se zobrazí.
 
 Žádná data v [Průzkumníka služby Azure Time Series Insights](https://insights.timeseries.azure.com) může dojít k několika běžných důvodů:
 
@@ -40,17 +40,17 @@ Azure Time Series Insights podporuje jenom JSON data. Ukázky JSON najdete v té
 
 * Pro službu IoT hub ve službě Azure IoT Hub, je nutné zadat klíč, který má **služba připojit** oprávnění. Buď z **iothubowner** nebo **služby** zásad bude fungovat, protože obě mají **připojení služby** oprávnění.
 
-   ![Oprávnění k připojení služby Azure IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
+   [![Oprávnění k připojení služby Azure IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * Pro Centrum událostí ve službě Azure Event Hubs, je nutné zadat klíč, který má **naslouchání** oprávnění. Některé z **čtení** nebo **spravovat** zásad bude fungovat, protože obě mají **naslouchání** oprávnění.
 
-   ![Oprávnění naslouchat centra událostí](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
+   [![Oprávnění naslouchat centra událostí](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Příčina C: se skupina uživatelů, které jsou k dispozici není výhradně pro Time Series Insights
 
 Při registraci služby IoT hub nebo centra událostí, je třeba nastavit skupinu příjemců, který chcete použít k načtení dat. Tuto skupinu příjemců *nemohou být sdíleny*. Pokud se skupina uživatelů se sdílí, základní služby IoT hub nebo event hub automaticky a náhodně Odpojí jeden čtecích zařízení. Zadejte skupinu příjemců jedinečný pro čtení ze služby Time Series Insights.
 
-## <a name="problem-two-some-data-is-shown-but-data-is-missing"></a>Problém dvou: některá data se zobrazí, ale chybí data
+## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Problém: některá data se zobrazí, ale chybí data
 
 Když se zobrazí data jenom částečně a data jsou pravděpodobně se vzhledem, měli byste zvážit několik možností.
 
@@ -69,13 +69,13 @@ Limit omezení se vynucuje na základě typ SKU prostředí a kapacity. Všechny
 
 Následující obrázek znázorňuje prostředí Time Series Insights, který má skladovou Položku S1 a kapacitou 3. Může 3 miliony událostí příchozího přenosu dat za den.
 
-![Aktuální kapacita skladové položky prostředí](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)
+![Aktuální kapacita skladové položky prostředí](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Jako příklad předpokládejme, že toto prostředí přijímá zprávy z centra událostí. Následující obrázek znázorňuje rychlost příchozího přenosu dat:
 
-![Příklad rychlost příchozího přenosu dat pro Centrum událostí](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)
+[![Příklad rychlost příchozího přenosu dat pro Centrum událostí](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)](media/diagnose-and-solve-problems/eventhub-ingress-rate.png#lightbox)
 
-Denní rychlost příchozího přenosu dat se ~ 67,000 zprávy. Tato sazba se přeloží na přibližně 46 zprávy každou minutu. Pokud každá zpráva centra událostí se sloučí do jedné události Time Series Insights, omezování nedojde. Pokud každá zpráva centra událostí se sloučí do 100 událostí Time Series Insights, by měl třeba 4,600 události přijímat každou minutu. S1 SKU prostředí, které má kapacitu 3 můžete pouze 2100 událostí příchozího přenosu dat každou minutu (1 milion událostí za den = 700 událostí za minutu za tři jednotky = 2100 událostí za minutu). Pro toto nastavení se zobrazí s menší prodlevou kvůli omezování. 
+Denní rychlost příchozího přenosu dat se ~ 67,000 zprávy. Tato sazba se přeloží na přibližně 46 zprávy každou minutu. Pokud každá zpráva centra událostí se sloučí do jedné události Time Series Insights, omezování nedojde. Pokud každá zpráva centra událostí se sloučí do 100 událostí Time Series Insights, by měl třeba 4,600 události přijímat každou minutu. S1 SKU prostředí, které má kapacitu 3 můžete pouze 2100 událostí příchozího přenosu dat každou minutu (1 milion událostí za den = 700 událostí za minutu za tři jednotky = 2100 událostí za minutu). Pro toto nastavení se zobrazí s menší prodlevou kvůli omezování.
 
 Přehled, jak sloučení logiky funguje, najdete v části [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
@@ -85,24 +85,24 @@ K vyřešení je zpoždění, zvýšit kapacitu skladové položky vašeho prost
 
 ### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Příčina B: počáteční ingestování historických dat zpomaluje příchozího přenosu dat
 
-Pokud se připojíte existujícímu zdroji událostí, je pravděpodobné, že službě IoT hub nebo event hub již obsahuje data. Prostředí spustí načítání dat ze začátku období uchování zpráv zdroje událostí. Toto je výchozí zpracování a nedají se přepsat. Můžete zapojit, omezení šířky pásma. Omezení využití sítě může chvíli trvat dohnat ingestuje historická data.
+Pokud se připojíte existujícímu zdroji událostí, je pravděpodobné, že službě IoT hub nebo event hub již obsahuje data. Prostředí spustí načítání dat ze začátku období uchování zpráv zdroje událostí. Nelze přepsat toto výchozí zpracování. Můžete zapojit, omezení šířky pásma. Omezení využití sítě může chvíli trvat dohnat ingestuje historická data.
 
 #### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Doporučené řešení pro velké počáteční příjmu
 
 Chcete-li vyřešit je zpoždění:
 
-1. Zvýšit kapacitu skladové položky na maximální povolenou hodnotu (v tomto případě 10). Jakmile zvýšíte kapacitu, spustí se proces příchozího přenosu dat mnohem rychleji dohnat. Bude vám účtována zvýšené kapacity. K vizualizaci, jak rychle jste zachycování, až se zobrazí na graf dostupnosti v [Průzkumníka služby Time Series Insights](https://insights.timeseries.azure.com). 
+1. Zvýšit kapacitu skladové položky na maximální povolenou hodnotu (v tomto případě 10). Jakmile zvýšíte kapacitu, spustí se proces příchozího přenosu dat mnohem rychleji dohnat. Bude vám účtována zvýšené kapacity. K vizualizaci, jak rychle jste zachycování, až se zobrazí na graf dostupnosti v [Průzkumníka služby Time Series Insights](https://insights.timeseries.azure.com).
 
 2. Pokud je zpoždění je zachycena, snížit kapacita skladové položky na vaše rychlost příchozího přenosu normální dat.
 
-## <a name="problem-three-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problém tři: nastavení názvu vlastnosti časového razítka zdroj události nefunguje
+## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problém: nastavení názvu vlastnosti časového razítka zdroj událostí nebude fungovat.
 
 Ujistěte se, že název vlastnosti časového razítka a hodnotu v souladu s těmito pravidly:
 
 * Název vlastnosti časového razítka je velká a malá písmena.
 * Hodnota vlastnosti časového razítka, která se dodává ze zdroje událostí jako řetězec formátu JSON by měl mít formát _rrrr-MM-ddTHH. FFFFFFFK_. Příkladem je **2008-04-12T12:53Z**.
 
-Nejjednodušší způsob, jak zajistit, že váš název vlastnosti časového razítka se zaznamenávají a funguje správně, je použít Průzkumníka služby Time Series Insights. V Průzkumníku Time Series Insights pomocí grafu vyberte určité době po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a potom vyberte **zkoumat události** možnost. 
+Nejjednodušší způsob, jak zajistit, že váš název vlastnosti časového razítka se zaznamenávají a funguje správně, je použít Průzkumníka služby Time Series Insights. V Průzkumníku Time Series Insights pomocí grafu vyberte určité době po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a potom vyberte **zkoumat události** možnost.
 
 První záhlaví sloupce by měl být název vlastnosti časového razítka. Vedle slovo **časové razítko**, měli byste vidět **($ts)**.
 

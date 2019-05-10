@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204baac37254592c0dc808af413fd8b3c6c79864
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3dedef2d22df9c8c81410296bdb0c4814bd98b80
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074782"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507118"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Webové rozhraní API, že volání webových rozhraní API – konfigurace kódu
 
@@ -140,7 +140,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Další informace o protokolu on-behalf-of, naleznete v tématu [platforma identit Microsoft a tok OAuth 2.0 On-Behalf-Of](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
+Další informace o protokolu on-behalf-of, naleznete v tématu [platforma identit Microsoft a tok OAuth 2.0 On-Behalf-Of](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
 
 ## <a name="next-steps"></a>Další postup
 

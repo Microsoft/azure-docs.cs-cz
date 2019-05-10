@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993152"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507931"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Linuxem
 
@@ -46,7 +46,7 @@ Pomocí naplánovaných událostí vaše aplikace můžete zjistit, kdy bude úd
 
 Naplánované události poskytuje události v následujících případech použití:
 
-- [Platforma iniciované údržby](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (například virtuální počítač restartovat počítač, migrace za provozu nebo paměti zachování aktualizace hostitele)
+- [Platforma iniciované údržby](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (například virtuální počítač restartovat počítač, migrace za provozu nebo paměti zachování aktualizace hostitele)
 - Degradované hardwaru
 - Údržba zahájená uživatelem (například uživatele restartuje nebo znovu nasadí virtuální počítač)
 - [Vyřazení virtuálního počítače s nízkou prioritou](https://azure.microsoft.com/blog/low-priority-scale-sets) škále nastaví
@@ -55,7 +55,7 @@ Naplánované události poskytuje události v následujících případech použ
 
   Metadata služby zveřejňuje informace o spouštění virtuálních počítačů s využitím koncového bodu REST, který je přístupný ve virtuálním počítači. Informace jsou dostupné prostřednictvím nepoužívající IP tak, aby se nevystaví mimo virtuální počítač.
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Scope
 Naplánované události se doručují na:
 
 - Samostatné virtuální počítače.
@@ -77,9 +77,9 @@ Služba Scheduled Events se systémovou správou verzí. Verze jsou povinné; ak
 
 | Version | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - | 
-| 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
-| 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Požadavek na metadata záhlaví vynucovat pro všechny požadavky | 
-| 2017-03-01 | Preview | Vše | <li>Původní vydaná verze
+| 2017-11-01 | Všeobecná dostupnost | Všechny | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
+| 2017-08-01 | Všeobecná dostupnost | Všechny | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Požadavek na metadata záhlaví vynucovat pro všechny požadavky | 
+| 2017-03-01 | Náhled | Všechny | <li>Původní vydaná verze
 
 
 > [!NOTE] 
@@ -97,7 +97,7 @@ Pokud restartování virtuálního počítače, událost s typem `Reboot` naplá
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-### <a name="headers"></a>Hlavičky
+### <a name="headers"></a>Záhlaví
 Když odešlete dotaz na Metadata Service, je nutné zadat hlavičku `Metadata:true` zajistit požadavek nebyl přesměrován náhodně. `Metadata:true` Hlavičky je povinná pro všechny požadavky naplánovaných událostí. Nepodařilo se zahrnout hlavičku požadavku za následek "Chybný požadavek" odpověď z metadat služby.
 
 ### <a name="query-for-events"></a>Dotaz pro události
@@ -132,7 +132,7 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit na několik sekund. Využití procesoru a připojení k síti může být pozastavený, ale neexistuje žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: Virtuální počítač je naplánovaná restartování (dojde ke ztrátě dočasné paměti). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu (dočasné disky jsou ztraceny). <li>`Preempt`: Odstraňuje se virtuální počítač s nízkou prioritou (dočasné disky jsou ztraceny).|
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
-| Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. V seznamu je zaručeno, že obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Prostředky| Seznam prostředků, které má vliv na tuto událost. V seznamu je zaručeno, že obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici. Vrátí události se už po dokončení události.
 | neplatí před| Doba, po jejímž uplynutí může spustit tuto událost. <br><br> Příklad: <br><ul><li> Pondělí, 19. září 2016 18:29:47 GMT  |
 
@@ -143,7 +143,7 @@ Každé události je naplánovaný minimální množství čas v budoucnosti pod
 | - | - |
 | zablokování| 15 minut |
 | Restartování | 15 minut |
-| Opětovné nasazení | 10 minut |
+| Nasaďte | 10 minut |
 | Vyřizuje | 30 sekund |
 
 ### <a name="start-an-event"></a>Spustit událost 

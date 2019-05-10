@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: 3c3687ceff10baec028435d1e6c513e72ca5da86
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e64e980d42086603c9eb8ce39a96a9766a78afcb
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149088"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472459"
 ---
 # <a name="transforms-and-jobs"></a>Transformace a úlohy
 
@@ -53,19 +53,21 @@ A **transformace** vám pomůže vytvořit jednou předpisu (krok 1) a odeslán�
 
 ## <a name="transforms"></a>Transformace
 
+Použití **transformuje** konfigurace běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. Jeden transformace můžete použít více než jedno pravidlo. Transformace může například určit, že každé video zakódovat do souboru MP4 v daném s přenosovou rychlostí a že obrázek miniatury budou generovat z prvního rámce videa. Měli byste přidat jednu položku TransformOutput pro každé pravidlo, které chcete zahrnout do vaší transformace. Použít přednastavení transformace zjistit, jak by se měly zpracovat vstupními multimediálními soubory.
+
+V Media Services v3 přednastavení jsou silného typu entity v samotné rozhraní API. Můžete najít definice "schéma" pro tyto objekty v [specifikace Openapi (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Můžete také zobrazit výchozí definice (například **StandardEncoderPreset**) v [rozhraní REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (nebo jiné služby Media Services v3 SDK referenční dokumentaci).
+
+Můžete vytvořit transformace pomocí rozhraní REST, rozhraní příkazového řádku, nebo použít některý z publikované sady SDK. Media Services v3, které vychází rozhraní API pomocí Azure Resource Manageru, šablon Resource Manageru můžete také použít k vytvoření a nasazení se transformuje na svém účtu Media Services. Řízení přístupu na základě role je možné zamezit přístup k transformací.
+
+Pokud je potřeba aktualizovat vaše [transformace](https://docs.microsoft.com/rest/api/media/transforms), použijte **aktualizovat** operace. Je určený pro provádění změn popis nebo priority základní TransformOutputs. Doporučujeme provádět tyto aktualizace po dokončení všech úloh v průběhu. Pokud chcete přepsat receptem, musíte vytvořit nová transformace.
+
+### <a name="transform-object-diagram"></a>Transformace objektu diagramu
+
 Následující obrázek ukazuje **transformace** a objekty, odkazuje na, včetně odvození vztahů. Šedé šipky zobrazují typu, odkazy na úlohy a zelené šipky ukazují vztahy odvození třídy.<br/>Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
 <a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a> 
 
-Použití **transformuje** konfigurace běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. Jeden transformace můžete použít více než jedno pravidlo. Transformace může například určit, že každé video zakódovat do souboru MP4 v daném s přenosovou rychlostí a že obrázek miniatury budou generovat z prvního rámce videa. Měli byste přidat jednu položku TransformOutput pro každé pravidlo, které chcete zahrnout do vaší transformace. Vytvoření transformací v účtu Media Services pomocí rozhraní API služby Media Services v3 nebo některou z publikované sady SDK. Media Services v3, které vychází rozhraní API pomocí Azure Resource Manageru, šablon Resource Manageru můžete také použít k vytvoření a nasazení se transformuje na svém účtu Media Services. Řízení přístupu na základě role je možné zamezit přístup k transformací.
-
-Operace aktualizace na [transformace](https://docs.microsoft.com/rest/api/media/transforms) entity je určená pro provádění změn popis nebo priority základní TransformOutputs. Doporučujeme provádět tyto aktualizace po dokončení všech úloh v průběhu. Pokud chcete přepsat receptem, musíte vytvořit nová transformace.
-
 ## <a name="jobs"></a>Úlohy
-
-Následující obrázek ukazuje **úlohy** a objekty, odkazuje na, včetně odvození vztahů.<br/>Kliknutím na obrázek zobrazíte jeho plnou velikost.  
-
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
 
 A **úlohy** je skutečnou žádost do služby Azure Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. Po vytvoření transformace, můžete odeslat úlohy pomocí rozhraní API služby Media Services nebo libovolného z publikované sady SDK. **Úlohy** Určuje informace, jako jsou umístění vstupním videu a umístění pro výstup. Můžete zadat umístění váš vstup videa pomocí: Adresy URL HTTPS, adresy URL SAS, nebo [prostředky](https://docs.microsoft.com/rest/api/media/assets).  
 
@@ -76,6 +78,12 @@ Použití [Asset jako vstup úlohy](job-input-from-local-file-how-to.md) Pokud v
 Monitorování událostí pomocí služby Event Grid je možné získat průběh a stav úloh. Další informace najdete v tématu [sledovat události pomocí EventGrid](job-state-events-cli-how-to.md).
 
 Operace aktualizace na [úlohy](https://docs.microsoft.com/rest/api/media/jobs) entity lze použít k úpravě *popis*a *priority* vlastnosti po odeslání úlohy. Ke změně *priority* vlastnost je platná pouze v případě, že úloha je stále ve stavu zařazení do fronty. Pokud úloha zahájil zpracování nebo dokončení, změna priority nemá žádný vliv.
+
+### <a name="job-object-diagram"></a>Objekt diagramu úloh
+
+Následující obrázek ukazuje **úlohy** a objekty, odkazuje na, včetně odvození vztahů.<br/>Kliknutím na obrázek zobrazíte jeho plnou velikost.  
+
+<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
 
 ## <a name="configure-media-reserved-units"></a>Konfigurovat rezervované jednotky médií
 
@@ -94,5 +102,8 @@ Podívejte se [komunita Azure Media Services](media-services-community.md) člá
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
-- [Kurz: Analýza videa pomocí Media Services v3 pomocí .NET](analyze-videos-tutorial-with-api.md)
+- Než začnete s vývojem, projděte si [vývoj s využitím rozhraní API služby Media Services v3](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraní API pro vytváření názvů atd.)
+- Projděte si tyto kurzy:
+
+    - [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
+    - [Kurz: Analýza videa pomocí Media Services v3 pomocí .NET](analyze-videos-tutorial-with-api.md)

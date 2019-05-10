@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/27/2017
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685152"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471726"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezování snížit latenci v Azure Time Series Insights
 
@@ -34,21 +34,21 @@ Které bývají nejčastějším docházet k latenci a omezování, když jste:
 
 ## <a name="video"></a>Video
 
-### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>V tomto videu se budeme zabývat chování příchozího přenosu dat Time Series Insights a jak ji plánovat.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Další informace o chování příchozího přenosu dat Time Series Insights a jak ji plánovat.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorování latenci a omezování s výstrahami
 
-Výstrahy můžete pomoci diagnostikovat a zmírnit problémy s latencí způsobené vašeho prostředí. 
+Výstrahy můžete pomoci diagnostikovat a zmírnit problémy s latencí způsobené vašeho prostředí.
 
-1. Na webu Azure Portal, klikněte na tlačítko **metriky**. 
+1. Na webu Azure Portal, klikněte na tlačítko **metriky**.
 
-   ![Metriky](media/environment-mitigate-latency/add-metrics.png)
+   [![Metriky](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-2. Klikněte na tlačítko **přidat upozornění metriky**.  
+1. Klikněte na tlačítko **přidat upozornění metriky**.  
 
-    ![Přidat upozornění metriky](media/environment-mitigate-latency/add-metric-alert.png)
+   [![Přidat upozornění metriky](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 
 Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 
@@ -64,19 +64,19 @@ Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 
 ![Latence](media/environment-mitigate-latency/latency.png)
 
-Pokud jste se omezují, zobrazí se hodnota pro *příchozího přenosu dat přijatých zpráv časová prodleva*, vás informuje o tom, kolik sekund za TSI pochází z skutečný čas zprávy narazí na zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Prodleva počet zpráv přijatých příchozího přenosu dat* by měl také obsahovat hodnotu, umožňuje určit, kolik zpráv za vás.  Nejjednodušší způsob, jak získat zachycena je zvýšení kapacity pro vaše prostředí na hodnotu, která vám umožní vám pomohou překonat rozdíl.  
+* Pokud jste se omezují, zobrazí se hodnota pro *příchozího přenosu dat přijatých zpráv časová prodleva*, vás informuje o tom, kolik sekund za vaše TSI pochází z skutečný čas zprávy narazí na zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Prodleva počet zpráv přijatých příchozího přenosu dat* by měl také obsahovat hodnotu, umožňuje určit, kolik zpráv za vás.  Nejjednodušší způsob, jak získat zachycena je zvýšení kapacity pro vaše prostředí na hodnotu, která vám umožní vám pomohou překonat rozdíl.  
 
-Například pokud máte jednu jednotku S1 prostředí a podívejte se, že je prodleva pět milionů zpráv, může zvýšit velikost prostředí šest jednotky pro kolem denně k získání zachycena.  Vám může zlepšit i dál catch nahoru rychleji.  Můžete projít období je společného výskytu při počátečním zřizování prostředí, zejména při připojení ke zdroji událostí, který již v sobě obsahuje události nebo když hromadné nahrání spoustu historická data.
+  Například pokud máte jednu jednotku S1 prostředí a podívejte se, že je prodleva 5 000 000 zpráv, může zvýšit velikost prostředí šest jednotky pro kolem denně k získání zachycena.  Vám může zlepšit i dál catch nahoru rychleji. Můžete projít období je společného výskytu při počátečním zřizování prostředí, zejména při připojení ke zdroji událostí, který již v sobě obsahuje události nebo když hromadné nahrání spoustu historická data.
 
-Další technikou je nastavit **uložených událostí příchozího přenosu dat** výstrahu > = prahovou hodnotu mírně pod vaší kapacity celkové prostředí po dobu 2 hodin.  Toto upozornění můžete zjistit, jestli je neustále plně využívá kapacitu, který označuje vysokou pravděpodobnost latence.  
+* Další technikou je nastavit **uložených událostí příchozího přenosu dat** výstrahu > = prahovou hodnotu mírně pod vaší kapacity celkové prostředí po dobu 2 hodin.  Toto upozornění můžete zjistit, jestli je neustále plně využívá kapacitu, který označuje vysokou pravděpodobnost latence. 
 
-Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za kapacitu minuta příchozího přenosu dat), můžete nastavit **uložených událostí příchozího přenosu dat** výstrah pro > = 1900 události po dobu 2 hodin. Pokud jsou neustále překročení této mezní hodnoty a proto se aktivuje upozornění, je pro vás pravděpodobně v rámci zřízený.  
+  Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za kapacitu minuta příchozího přenosu dat), můžete nastavit **uložených událostí příchozího přenosu dat** výstrah pro > = 1900 události po dobu 2 hodin. Pokud jsou neustále překročení této mezní hodnoty a proto se aktivuje upozornění, je pro vás pravděpodobně v rámci zřízený.  
 
-Také, pokud máte podezření, se omezují, můžete porovnat vaše **příchozího přenosu dat přijatých zpráv** pomocí události uživatele egressed zdroj zprávy.  Pokud příchozí přenos dat do vašeho centra událostí je větší než vaše **příchozího přenosu dat přijatých zpráv**, služby Time Series Insights jsou pravděpodobně omezené.
+* Pokud máte podezření, se omezují, můžete porovnat vaše **příchozího přenosu dat přijatých zpráv** pomocí události uživatele egressed zdroj zprávy.  Pokud příchozí přenos dat do vašeho centra událostí je větší než vaše **příchozího přenosu dat přijatých zpráv**, služby Time Series Insights jsou pravděpodobně omezené.
 
 ## <a name="improving-performance"></a>Zvýšení výkonu
 
-Ke snížení omezení šířky pásma a latence, je nejlepší způsob, jak ho opravit zvýšit kapacitu vašeho prostředí. 
+Ke snížení omezení šířky pásma a latence, je nejlepší způsob, jak ho opravit zvýšit kapacitu vašeho prostředí.
 
 Můžete vyhnout latenci a omezování tím, že správně nakonfigurujete prostředí objem dat, který chcete analyzovat. Další informace o tom, jak přidat kapacitu do svého prostředí najdete v tématu [škálování prostředí](time-series-insights-how-to-scale-your-environment.md).
 

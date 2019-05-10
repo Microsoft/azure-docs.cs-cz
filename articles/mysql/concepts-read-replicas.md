@@ -5,27 +5,81 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/30/2019
+ms.openlocfilehash: be592cb6bb7c041fab0a2f96a338f4f4bb0ff00a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093212"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510927"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
-Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for MySQL server (správce) až k pěti jen pro čtení serverům (repliky) v rámci stejné oblasti Azure. Repliky jen pro čtení se aktualizují asynchronně pomocí technologie replikace na základě pozice souboru nativní binární protokol (binlog) stroje MySQL. Další informace o binlog replikace, najdete v článku [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for MySQL na serveru jen pro čtení. Můžete replikovat z hlavního serveru až pěti replikami. Repliky se aktualizují asynchronně pomocí technologie replikace na základě pozice souboru nativní binární protokol (binlog) stroje MySQL. Další informace o binlog replikace, najdete v článku [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Repliky vytvořené v Azure Database for MySQL služby jsou nové servery, které je možné spravovat stejným způsobem jako normální nebo samostatné servery MySQL. Za každou repliku pro čtení se vám účtuje zřízený výpočetní výkon ve virtuálních jádrech a zřízené úložiště v GB za měsíc.
+> [!IMPORTANT]
+> Čtení repliky můžete vytvořit ve stejné oblasti jako váš hlavní server, nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi public preview.
+
+Repliky jsou nové servery, které spravujete podobně jako na běžnou – Azure Database for MySQL servery. Pro každé čtení replik, bude se vám účtovat za zřízených výpočetních jádrech a úložiště v GB / měsíc.
 
 Další informace o funkcích replikace MySQL a problémů, najdete v tématu [MySQL replikace dokumentaci](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
-## <a name="when-to-use-read-replicas"></a>Kdy použít repliky pro čtení
+## <a name="when-to-use-a-read-replica"></a>Kdy použít repliky pro čtení
 
-Aplikace a úlohy náročné na čtení můžou být obsluhovány repliky jen pro čtení. Čtení replik zvýšit množství čtení dostupné kapacity ve srovnání s, pokud byste chtěli stačí použít jeden server pro čtení a zápis. Další úlohy můžou být izolované do replik, při zápisu úlohy mohou být přesměrováni na hlavní server.
+Funkce repliky pro čtení pomáhá zlepšit výkon a škálování úlohy náročné na čtení. Úlohy pro čtení můžou být izolované do replik, při zápisu úlohy mohou být přesměrováni na hlavní server.
 
 Běžný scénář, kdy je, aby BI a analytických úloh pomocí repliky pro čtení jako zdroj dat pro generování sestav.
+
+Vzhledem k tomu repliky jen pro čtení, není zkracují přímo zápisu kapacity zatížení hlavní server. Tato funkce není určenou pro úlohy náročné na zápis.
+
+Funkce repliky pro čtení používá asynchronní replikace MySQL. Tato funkce není určena pro scénáře synchronní replikace. Bude docházet k prodlevám měřitelné mezi hlavního serveru a repliky. Data v replice nakonec bude konzistentní s daty na hlavní server. Pomocí této funkce pro úlohy, které můžou vyhovovat tomuto zpoždění dochází.
+
+Repliky pro čtení můžete vylepšit vašeho plánu zotavení po havárii. Je-li regionálního a hlavní server není k dispozici, můžete nasměrovat vaši úlohu do repliky v jiné oblasti. Provedete to tak, nejdřív umožní repliky přijímat zápisy pomocí funkce zastavení replikace. Aplikace můžete přesměrovat pak stačí aktualizovat připojovací řetězec. Další informace najdete v [zastavení replikace](#stop-replication) oddílu.
+
+## <a name="create-a-replica"></a>Vytvoření repliky
+
+Pokud hlavní server nemá žádné existující servery repliky, hlavní restartuje nejprve připraví pro replikaci.
+
+Při spuštění pracovního postupu vytvoření repliky se vytvoří prázdnou serveru Azure Database for MySQL. Nový server je vyplněna data, která byla na hlavní server. Čas vytvoření závisí na množství dat na hlavní server a doba od poslední týdenní úplnou zálohu. Čas musí být v rozsahu několika minut i několik hodin.
+
+> [!NOTE]
+> Pokud nemáte sadu výstrah úložiště na serverech, doporučujeme vám to. Upozornění vás informuje, když na serveru se blíží limitu úložiště, který bude mít vliv na replikaci.
+
+Zjistěte, jak [vytvoření repliky pro čtení na webu Azure Portal](howto-read-replicas-portal.md).
+
+## <a name="connect-to-a-replica"></a>Připojení na repliku
+
+Při vytváření repliky nedědí pravidla brány firewall nebo koncový bod služby virtuální sítě hlavního serveru. Tato pravidla musí být nezávisle nastavené pro repliku.
+
+Replika dědí z hlavního serveru účet správce. Všechny uživatelské účty na hlavním serveru se replikují do repliky pro čtení. Pouze pro čtení repliky můžete připojit pomocí uživatelské účty, které jsou dostupné na hlavním serveru.
+
+Můžete připojit k replice pomocí jeho názvu hostitele a platný uživatelský účet, jako byste to zvládli pravidelné serveru Azure Database for MySQL. Pro server s názvem **myreplica** s uživatelským jménem správce **myadmin**, můžete se připojíte k replice s použitím rozhraní příkazového řádku mysql:
+
+```bash
+mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
+```
+
+Do příkazového řádku zadejte heslo pro uživatelský účet.
+
+## <a name="monitor-replication"></a>Monitorování replikace
+
+Azure Database for MySQL poskytuje **zpoždění replikace během několika sekund** metriky ve službě Azure Monitor. Tato metrika je k dispozici pro pouze repliky.
+
+Tato metrika se počítá pomocí `seconds_behind_master` metriky, které jsou k dispozici v MySQL `SHOW SLAVE STATUS` příkazu.
+
+Nastavení upozornění pro informování, když je zpoždění replikace dosáhne hodnotu, která se nedají použít u svých úloh.
+
+## <a name="stop-replication"></a>Zastavit replikaci
+
+Můžete zastavit replikaci mezi hlavní a repliku. Po zastavení replikace mezi hlavní server a repliky pro čtení, se stane replika samostatný server. Data v samostatném serveru jsou data, která byla k dispozici na replice v době, kdy byl spuštěn příkaz stop replikace. Samostatný server nebude dohnat s hlavním serverem.
+
+Pokud budete chtít zastavit replikaci na repliku, ztratí všechny odkazy na jeho předchozí hlavní větev a ostatními replikami. Není k dispozici žádné automatické převzetí služeb při selhání mezi hlavní a její repliky.
+
+> [!IMPORTANT]
+> Samostatný server nelze je převést na repliku znovu.
+> Před zastavením replikace na čtení replik, zajistěte, aby že replika bude mít veškerá data, které požadujete.
+
+Zjistěte, jak [zastavit replikaci replik](howto-read-replicas-portal.md).
 
 ## <a name="considerations-and-limitations"></a>Požadavky a omezení
 
@@ -37,38 +91,22 @@ Repliky pro čtení jsou aktuálně dostupné jenom v cenové úrovně pro obecn
 
 Při vytváření repliky pro hlavní server, který nemá žádnou existující repliku hlavní restartuje nejprve připraví pro replikaci. Vzít v úvahu a provádění těchto operací během období mimo špičku.
 
-### <a name="stopping-replication"></a>Zastavení replikace
+### <a name="new-replicas"></a>Nové repliky
 
-Můžete se na zastavení replikace mezi hlavní a serverem repliky. Zastavení replikace, odebere se vztah replikace mezi serverem pro hlavní a repliky.
+Čtení replika se vytváří jako nový server Azure Database for MySQL. Existující server nelze nastavit do repliky. Nejde vytvořit replika jiné repliky pro čtení.
 
-Po zastavení replikace serveru repliky stane samostatný server. Data v samostatném serveru jsou data, která byla k dispozici na replice v době, kdy byl spuštěn příkaz "zastavení replikace". Samostatný server nebude zachytávat s hlavním serverem. Tento server nelze je převést na repliku znovu.
+### <a name="replica-configuration"></a>Konfigurace repliky
 
-### <a name="replicas-are-new-servers"></a>Repliky jsou nové servery
+Replika je vytvořen pomocí stejné konfigurace serveru na hlavní server. Po vytvoření repliky několik nastavení lze změnit nezávisle z hlavního serveru: compute generace virtuálních jader, úložiště, období uchování zálohy a verze stroje MySQL. Cenovou úroveň můžete změnit také nezávisle na sobě, s výjimkou do nebo z úrovně Basic.
 
-Repliky jsou vytvořeny jako nové – Azure Database for MySQL servery. Nelze je převést existující servery repliky.
+> [!IMPORTANT]
+> Před hlavním serverem služby konfigurace se aktualizuje na nové hodnoty, aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika je dokáže dodat se změnami provedenými na hlavní server.
 
-### <a name="replica-server-configuration"></a>Konfigurace serveru repliky
+### <a name="stopped-replicas"></a>Zastavené repliky
 
-Servery repliky jsou vytvořené pomocí stejné konfigurace serveru na hlavní server, který obsahuje následující konfigurace:
+Chcete-li zrušit replikace mezi serverem a hlavním serverem repliky pro čtení, zastavené replika přestane být samostatný server, který přijímá operace čtení i zápisu. Samostatný server nelze je převést na repliku znovu.
 
-- Cenová úroveň
-- Generace výpočetních funkcí
-- Virtuální jádra
-- Úložiště
-- Období uchování zálohy
-- Možnosti redundance zálohy
-- Verze stroje MySQL
-- Pravidla brány firewall
-
-Po vytvoření repliky, můžete změnit cenovou úroveň (s výjimkou do a z Basic), výpočetní generaci, virtuální jádra, úložiště a uchovávání záloh odděleně od hlavního serveru.
-
-### <a name="master-server-configuration"></a>Konfigurace hlavního serveru
-
-Pokud hlavní konfigurační server (např.) virtuálních jader a úložiště) je aktualizovaná, konfigurace repliky také je potřeba aktualizovat na stejné nebo vyšší hodnoty. Server repliky bez toho nemusí být schopné udržovat tempo se změnami provedenými na hlavní server a může dojít k chybě v důsledku.
-
-Nová pravidla brány firewall přidat do hlavního serveru po vytvoření serveru repliky se nereplikují do repliky. Toto nové pravidlo brány firewall a je třeba aktualizovat repliku.
-
-### <a name="deleting-the-master-server"></a>Odstraňuje se hlavní server
+### <a name="deleted-master-and-standalone-servers"></a>Odstraněné hlavní větev a samostatné servery
 
 Při odstranění je hlavní server, se zastaví replikace na všechny repliky pro čtení. Tyto repliky se stanou samostatné servery. Hlavní server sám se odstraní.
 
@@ -76,15 +114,23 @@ Při odstranění je hlavní server, se zastaví replikace na všechny repliky p
 
 Uživatelé na hlavním serveru se replikují do repliky pro čtení. Můžete připojit jenom pro čtení replikou s použitím uživatelské účty, které jsou dostupné na hlavním serveru.
 
-### <a name="other"></a>Ostatní
+### <a name="server-parameters"></a>Parametry serveru
+
+Chcete-li chránit data před stále synchronizované a vyhnuli potenciální ztráty nebo poškození dat, některé parametry serveru jsou zamknuté aktualizovány, pokud pomocí repliky pro čtení.
+
+Následující parametry serveru, jsou uzamčené na hlavní server i repliky serveru:
+- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
+- [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
+
+[ `event_scheduler` ](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametr je uzamčen na serverech repliky. 
+
+### <a name="other"></a>Další
 
 - Identifikátory globální transakce (GTID) nejsou podporovány.
 - Vytváří se replika repliky se nepodporuje.
 - Tabulky v paměti může způsobit, že repliky přestane být synchronní. Jedná se omezení technologie replikace MySQL. Další informace najdete v [MySQL referenční dokumentaci](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) Další informace.
-- Ladění [ `innodb_file_per_table` ](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) parametr na hlavním serveru po vytváření serveru repliky může způsobit, že repliky přestane být synchronní. Server repliky není přehled o různých tabulkové prostory.
 - Ujistěte se, že se hlavní server tabulky primární klíče mají. Latence replikace mezi hlavním virtuálním počítači repliky a může znamenat chybějící primární klíče.
 - Úplný seznam omezení replikace MySQL [dokumentace ke službě MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
-
 
 ## <a name="next-steps"></a>Další postup
 

@@ -6,14 +6,14 @@ author: rboucher
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/08/2019
 ms.author: robb
-ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395046"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471786"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží diagnostiky Azure
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -29,7 +29,7 @@ Tento článek popisuje informace o odstraňování potíží, které se týkaj�
 Následující části jsou cesty pro některé důležité protokoly a artefakty. Označujeme k těmto informacím v celé zbývající části dokumentu.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
-| Artefakt | Cesta |
+| Artefakt | `Path` |
 | --- | --- |
 | **Azure diagnostického konfiguračního souboru** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -40,7 +40,7 @@ Následující části jsou cesty pro některé důležité protokoly a artefakt
 | **Soubor protokolu MonAgentHost** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Virtuální počítače
-| Artefakt | Cesta |
+| Artefakt | `Path` |
 | --- | --- |
 | **Azure diagnostického konfiguračního souboru** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Soubory protokolu** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -48,7 +48,7 @@ Následující části jsou cesty pro některé důležité protokoly a artefakt
 | **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **Stav souboru** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
 | **Balíček rozšíření Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
-| **Cesta nástroje protokolu kolekce** | C:\WindowsAzure\Packages |
+| **Cesta nástroje protokolu kolekce** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metriky se už nebude na webu Azure portal
@@ -232,7 +232,7 @@ Modul plug-in vrátí následující kódy ukončení:
 
 | Ukončovací kód | Popis |
 | --- | --- |
-| 0 |Úspěch |
+| 0 |Úspěšné |
 | -1 |Obecná chyba. |
 | -2 |Nepovedlo se načíst soubor rcf.<p>Tato interní chyba by měla pouze dojít, pokud spuštění modulu plug-in agenta hosta je vyvolána ručně nesprávně na virtuálním počítači. |
 | -3 |Nelze načíst konfigurační soubor diagnostiky.<p><p>Řešení: Způsobené konfigurační soubor není předávání ověřování schématu. Řešením je poskytnout konfigurační soubor, který odpovídá schématu. |

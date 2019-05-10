@@ -5,19 +5,18 @@ services: functions
 keywords: OpenAPI, Swagger, cloud apps, cloud services,
 author: ggailey777
 manager: jeconnoc
-ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3ad304bc8f038d4009352dae72d70079828c26ba
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 255a7c9d0b9da15176fca90c6934a84fa0f863ed
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141593"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501860"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Vytvoření definice OpenAPI pro funkci s Azure API Management
 
@@ -133,13 +132,9 @@ Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. V da
 
 Nyní jste připraveni vygenerovat definici OpenAPI.
 
-1. Vyberte aplikaci function app a potom vyberte **funkce platformy**, **všechna nastavení**
+1. Pak vyberte aplikaci funkcí v **funkce platformy**, zvolte **API Management** a vyberte **vytvořit nový** pod **API Management**.
 
-    ![Test funkce na webu Azure Portal](media/functions-openapi-definition/select-all-settings-openapi.png)
-
-1. Posuňte se dolů a pak zvolte **API Management** > **vytvořit nový** k vytvoření nové instance API managementu.
-
-    ![Odkaz – funkce](media/functions-openapi-definition/link-apim-openapi.png)
+    ![Zvolte rozhraní API Management v funkce platformy](media/functions-openapi-definition/select-all-settings-openapi.png)
 
 1. Pomocí API Management nastavení uvedená v tabulce pod obrázkem.
 
@@ -150,11 +145,10 @@ Nyní jste připraveni vygenerovat definici OpenAPI.
     | **Název** | Globálně jedinečný název | Název je generován a základě název vaší aplikace function App. |
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém tento nový prostředek vytvoří. |  
     | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Stejného prostředku jako aplikace function app, který by měl získat nastavení za vás. |
-    | **Umístění** | Západní USA | Zvolte umístění USA – západ |
+    | **Umístění** | Západní USA | Zvolte umístění západní USA. |
     | **Název organizace** | Contoso | Název organizace používá na portálu pro vývojáře a e-mailových oznámení. |
     | **E-mail správce** | e-mailu | E-mailu, který přijal systémová oznámení ze služby API Management. |
-    | **Cenová úroveň** | Využití (Preview) | Úplné podrobnosti o cenách, najdete v článku [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) |
-    | **Application Insights** | Vaše instance | Použijte stejné služby Application Insights, který se používá aplikace function App. |
+    | **Cenová úroveň** | Využití (Preview) | Úroveň využití je ve verzi preview a není k dispozici ve všech oblastech. Úplné podrobnosti o cenách, najdete v článku [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) |
 
 1. Zvolte **vytvořit** k vytvoření instance API Management, což může trvat několik minut.
 
@@ -178,27 +172,20 @@ Než použijete definice rozhraní API, měli byste ověřit, že funguje.
 
 1. Zadejte hodnoty pro **hodin** a **kapacity**
 
-```json
-{
-"hours": "6",
-"capacity": "2500"
-}
-```
+    ```json
+    {
+    "hours": "6",
+    "capacity": "2500"
+    }
+    ```
 
 1. Klikněte na tlačítko **odeslat**, následně zobrazit odpověď HTTP.
 
     ![Test rozhraní API – funkce](media/functions-openapi-definition/test-function-api-openapi.png)
 
+[!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
+
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvoření funkce v Azure
-> * Vygeneruje definici rozhraní OpenAPI pomocí služby Azure API Management
-> * Otestování definice zavoláním funkce
-
-Přejděte k dalšímu tématu, další informace o službě API Management.
-
 > [!div class="nextstepaction"]
-> [API Management](../api-management/api-management-key-concepts.md)
+> [Další informace o službě API Management](../api-management/api-management-key-concepts.md)
