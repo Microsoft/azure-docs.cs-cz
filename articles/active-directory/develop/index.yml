@@ -6,7 +6,7 @@ metadata:
   description: 'Zjistěte, jak lze pomocí platformy Microsoft Identity Platform vytvářet aplikace, které bezpečně přihlašují uživatele ve všech identitách od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři.'
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na

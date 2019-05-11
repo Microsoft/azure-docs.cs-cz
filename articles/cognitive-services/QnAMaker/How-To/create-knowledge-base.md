@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b64315d8639cf8a7204ee809598567ec76fd188
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61373499"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541806"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Rychlý start: Vytvoření znalostní báze na portálu služby API nástroje QnA Maker
 
@@ -50,7 +50,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Nahrání souborů pro data, která chcete, aby byl extrahován. Zobrazit [informace o cenách](https://aka.ms/qnamaker-pricing) chcete zobrazit, kolik dokumenty, které můžete přidat.
     - Pokud chcete ručně přidat maximálně, můžete přeskočit **kroku 4** je vidět na předchozím obrázku.
 
-1. Přidat **Chit chat** do znalostní BÁZÍ. Zvolte Přidat podporu chit chat pro svého robota výběrem jedné z 3 osobnosti. 
+1. Přidat **Chit chat** do znalostní BÁZÍ. Zvolte Přidat podporu chit chat pro svého robota výběrem jedné osobnosti. 
 
     ![Přidat chit chat KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 

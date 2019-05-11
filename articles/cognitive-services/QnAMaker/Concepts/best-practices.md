@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78c445e70fcf972be81ef6dfd5d675f8e4843621
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61379192"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541513"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Doporučené postupy nástroje QnA Maker znalostní báze
 [Životního cyklu vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás o tom, jak spravovat znalostní BÁZÍ od začátku do konce. Použijte tyto osvědčené postupy pro zlepšení znalostní báze a application/chatovací robot koncovým uživatelům poskytovat lepší výsledky.
@@ -39,18 +39,20 @@ Přidejte tolik alternativní otázky, jako třeba ale zjednodušení změny. P�
 Nejlepší odpovědi jsou jednoduché odpovědi, ale ne příliš jednoduché, jako je například Ano a žádné odpovědi. Pokud vaše odpověď by měla propojit s dalšími zdroji nebo poskytují bohaté uživatelské prostředí s médii a odkazy, použijte [označování](../how-to/metadata-generateanswer-usage.md) pro rozlišení typu odpovědí, který očekáváte, pak odeslat tuto značku s dotaz pro získání verze správné odpovědi.
 
 ## <a name="chit-chat"></a>Chit chatu
-Přidat do svého robota, aby váš robot konverzační a zajímavější, chit chat s nízké úsilí. Můžete snadno přidat chit chat datových sad pro 3 předem definovaných osobnosti při vytváření znalostní BÁZÍ a kdykoli změnit. Zjistěte, jak [přidat chit chat znalostní BÁZÍ](../How-To/chit-chat-knowledge-base.md). 
+Přidat do svého robota, aby váš robot konverzační a zajímavější, chit chat s nízké úsilí. Můžete snadno přidat chit chat datových sad z předem definovaných osobnosti při vytváření znalostní BÁZÍ a kdykoli změnit. Zjistěte, jak [přidat chit chat znalostní BÁZÍ](../How-To/chit-chat-knowledge-base.md). 
 
 ### <a name="choosing-a-personality"></a>Výběr posouzení vašich osobnostních
-Chit konverzace je podporována pro 3 předdefinované osobnosti: 
+Chit konverzace je podporována pro několik předdefinovaných osobnosti: 
 
-|Osobnosti|
-|--|
-|Profesionály|
-|Spřátelené|
-|Comic|
+|Posouzení vašich osobnostních |Soubor datové sady QnA Maker |
+|---------|-----|
+|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Popisný |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Witty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Caring |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Velmi se zajímám |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-Rozsah odpovědi z formální neformální a zlehčující. Měli byste vybrat charakteru, který je nejblíž v souladu s tón, které chcete pro svého robota. Můžete zobrazit datové sady a vyberte ten, který slouží jako základ pro vašeho robota a potom přizpůsobte odpovědi. 
+Rozsah odpovědi z formální neformální a zlehčující. Měli byste vybrat charakteru, který je nejblíž v souladu s tón, které chcete pro svého robota. Můžete zobrazit [datových sad](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)a vyberte ten, který slouží jako základ pro vašeho robota a upravte odpovědi. 
 
 ### <a name="edit-bot-specific-questions"></a>Upravit otázky týkající se robota
 Existují některé otázky týkající se robota, které jsou součástí sady dat chit chatu a bylo vyplněno pomocí obecné odpovědi. Změňte tyto odpovědi, aby odrážely nejlépe vašeho robota podrobnosti. 

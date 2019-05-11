@@ -5,24 +5,26 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893006"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544989"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Pokud jste se zavázali zdrojový kód. automatizace sestavování imagí kontejneru v cloudu
 
-Kromě [rychlé úlohy](container-registry-tutorial-quick-task.md) podporuje ACR Tasks automatizované sestavení image kontejneru Dockeru pomocí *úlohy sestavení*. V tomto kurzu použijete Azure CLI k vytvoření úlohy, která automaticky aktivuje sestavení image v cloudu, když potvrdíte zdrojový kód do úložiště Git.
+Kromě [rychlých úloh](container-registry-tutorial-quick-task.md), úlohy ACR podporuje automatické Dockeru, sestavení image kontejneru v cloudu, když jste se zavázali zdrojový kód do úložiště Git.
 
-V této druhé části série kurzů se naučíte:
+Úloha služby ACR v tomto kurzu se vytvoří a předá image kontejneru pro jeden zadaný v souboru Dockerfile, když jste se zavázali zdrojový kód do úložiště Git. Chcete-li vytvořit [vícekrokových úkolů](container-registry-tasks-multi-step.md) soubor YAML, který používá k definování kroky sestavení, nasdílet a volitelně test více kontejnerů na potvrzení kódu, naleznete v tématu [kurzu: Spuštění pracovního postupu vícekrokového kontejneru v cloudu, když jste se zavázali zdrojový kód](container-registry-tutorial-multistep-task.md). Přehled služby ACR úkoly, naleznete v tématu [automatizovat operačního systému a rozhraní framework opravy chyb s úlohami služby ACR](container-registry-tasks-overview.md)
+
+V tomto kurzu:
 
 > [!div class="checklist"]
-> * Vytvoření úkolu
+> * Vytvořit úkol
 > * Test úlohy
 > * Zobrazení stavu úkolů
 > * Aktivace úlohy potvrzením kódu
@@ -33,51 +35,13 @@ Tento kurz předpokládá, že jste už dokončili kroky z [předchozího kurzu]
 
 Pokud chcete Azure CLI používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější a přihlásit se pomocí příkazu [az login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-### <a name="get-sample-code"></a>Získání vzorového kódu
-
-Tento kurz předpokládá, že jste už dokončili kroky v [předchozím kurzu](container-registry-tutorial-quick-task.md) a že jste vytvořili fork ukázkového úložiště a naklonovali ho. Pokud jste to ještě neudělali, dokončete před pokračováním kroky v části [Požadavky](container-registry-tutorial-quick-task.md#prerequisites) předchozího kurzu.
-
-### <a name="container-registry"></a>Registr kontejneru
-
-Abyste mohli dokončit tento kurz, musíte mít ve svém předplatném registr kontejneru Azure. Pokud potřebujete registr, najdete v článku [předchozí kurz o službě](container-registry-tutorial-quick-task.md), nebo [rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
-
-## <a name="overview-of-acr-tasks"></a>Přehled služby ACR Tasks
-
-Úloha definuje vlastnosti automatizovaného sestavení, včetně umístění zdrojového kódu image kontejneru a události, která sestavení aktivuje. Když dojde k události definované v úloze, například k potvrzení do úložiště Git, služba ACR Tasks zahájí sestavení image kontejneru v cloudu. Ve výchozím nastavení pak zapíše úspěšně sestavenou image do registru kontejneru Azure určeného v úloze.
-
-ACR Tasks v současné době podporuje následující triggery:
-
-* Vložení do úložiště Git
-* Aktualizace základní image
-
-Úloha služby ACR v tomto kurzu se vytvoří a předá jedním kontejnerem image zadanou v souboru Dockerfile. Můžete také spouštět úlohy služby ACR [vícekrokových úkolů](container-registry-tasks-multi-step.md), definujte postup pro sestavení pomocí souboru YAML, push a volitelně test několik kontejnerů.
-
-## <a name="create-a-build-task"></a>Vytvoření úlohy sestavení
-
-V této části nejprve vytvoříte token PAT GitHubu pro použití se službou ACR Tasks. Potom vytvoříte úlohu, která aktivuje sestavení, když dojde k potvrzení kódu do forku úložiště.
-
-### <a name="create-a-github-personal-access-token"></a>Vytvoření tokenu PAT GitHubu
-
-Pokud chcete aktivovat sestavení při potvrzení do úložiště Git, bude služba ACR Tasks potřebovat token PAT, aby mohla k úložišti přistupovat. Token PAT v GitHubu vygenerujete pomocí tohoto postupu:
-
-1. Přejděte na stránku vytvoření tokenu PAT na GitHubu na adrese https://github.com/settings/tokens/new.
-1. Zadejte krátký **popis** tokenu, například „Ukázka služby ACR Tasks“.
-1. V části **repo** (úložiště) povolte **repo:status** (úložiště:stav) a **public_repo** (veřejné_úložiště).
-
-   ![Snímek obrazovky se stránkou generování tokenu PAT na GitHubu][build-task-01-new-token]
-
-1. Vyberte tlačítko **Generate token** (Vygenerovat token). (Můžete být vyzváni k potvrzení hesla.)
-1. Vygenerovaný token zkopírujte a uložte na **bezpečné místo** (tento token použijete při definici úlohy v následující části).
-
-   ![Snímek obrazovky s vygenerovaným tokenem PAT na GitHubu][build-task-02-generated-token]
-
-### <a name="create-the-build-task"></a>Vytvoření úlohy sestavení
+## <a name="create-the-build-task"></a>Vytvoření úlohy sestavení
 
 Dokončili jste kroky potřebné k tomu, abyste službě ACR Tasks povolili číst stav potvrzení a vytvářet webhooky v úložišti. Teď můžete vytvořit úlohu, která aktivuje sestavení image kontejneru při potvrzení do úložiště.
 
-Nejdřív vyplňte tyto proměnné prostředí hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí nevyplníte, musíte jednotlivé hodnoty ručně nahradit všude tam, kde se v ukázkových příkazech vyskytují.
+Nejdřív vyplňte tyto proměnné prostředí hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud není naplněn tyto proměnné prostředí, je nutné ručně nahradit jednotlivé hodnoty bez ohledu na to se zobrazí v příklady příkazů.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -85,7 +49,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Teď spuštěním následujícího příkazu [az acr task create][az-acr-task-create] teď vytvořte úlohu:
+Teď vytvořte úlohu spuštěním následujícího [az acr úloha vytvoření] [ az-acr-task-create] příkaz:
 
 ```azurecli-interactive
 az acr task create \
@@ -106,14 +70,6 @@ Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného 
 Výstup úspěšného příkazu [az acr task create][az-acr-task-create] je podobný následujícímu:
 
 ```console
-$ az acr task create \
->     --registry $ACR_NAME \
->     --name taskhelloworld \
->     --image helloworld:{{.Run.ID}} \
->     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
->     --branch master \
->     --file Dockerfile \
->     --git-access-token $GIT_PAT
 {
   "agentConfiguration": {
     "cpu": 2
@@ -326,12 +282,11 @@ V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr
-[az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr
-[az-acr-task-list-runs]: /cli/azure/acr
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
 [az-login]: /cli/azure/reference-index#az-login
 
-<!-- IMAGES -->
-[build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
-[build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
+
+

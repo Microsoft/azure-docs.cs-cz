@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202006"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541525"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Můžete generovat metadata obrázků ve službě Azure Storage pro počítačové zpracování obrazu
 
@@ -40,17 +40,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-computer-vision-resource"></a>Vytvoření prostředku pro počítačové zpracování obrazu
 
-Budete muset vytvořit prostředek pro počítačové zpracování obrazu k vašemu účtu Azure; Tento prostředek řídí přístup ke službě Azure pro počítačové zpracování obrazu.
+Budete muset vytvořit prostředek pro počítačové zpracování obrazu k vašemu účtu Azure; Tento prostředek řídí přístup ke službě Azure pro počítačové zpracování obrazu. 
 
-1. Přihlaste se k [webu Azure portal](https://ms.portal.azure.com) a klikněte na tlačítko **vytvořit prostředek**následovaný **AI a strojové učení** a **pro počítačové zpracování obrazu**.
+1. Postupujte podle pokynů v [vytvoří prostředek služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) vytvoření prostředku pro počítačové zpracování obrazu.
 
-    ![Vytváří se nový odběr rozhraní API pro počítačové zpracování obrazu](../Images/new-vision-api.png)
-
-1. V dialogovém okně zadejte "pro zpracování obrazu api-key" **název** pole a vyberte **F0** jako **cenová úroveň**. Vyberte stejné **umístění** , kterou jste vybrali při nastavování účtu Azure Storage. V části **skupiny prostředků**vyberte **použít existující** a vyberte také stejnou skupinu prostředků. Zkontrolujte **potvrzuji, že** pole a potom klikněte na tlačítko **vytvořit**.
-
-    ![Předplatit Computer Vision API](../Images/create-vision-api.png)
-
-1. Vraťte se do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, který jste právě vytvořili. Zkopírujte adresu URL v části **koncový bod** k někde měli snadno k dispozici to za chvíli. Pak klikněte na tlačítko **zobrazení přístupových klíčů**.
+1. Pak přejděte do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, který jste právě vytvořili. Zkopírujte adresu URL v části **koncový bod** k někde měli snadno k dispozici to za chvíli. Pak klikněte na tlačítko **zobrazení přístupových klíčů**.
 
     ![Stránky Azure portal se koncový bod adresy URL a přístup klíče odkazu uvedeno](../Images/copy-vision-endpoint.png)
 
@@ -128,7 +122,7 @@ V dalším kroku přidáte kód, který ve skutečnosti využívá službu pro p
     }
     ```
 
-## <a name="test-the-app"></a>Otestování aplikace
+## <a name="test-the-app"></a>Testování aplikace
 
 Uložte změny v sadě Visual Studio a stiskněte klávesu **Ctrl + F5** ke spuštění aplikace v prohlížeči. Můžete nahrát několik obrázků ve složce "fotografie" v prostředky testovacího prostředí nebo z vlastní složky aplikace. Pokud můžete najet myší na některou k imagí v zobrazení, by měla okno popisku se zobrazí a zobrazit počítačem generované titulek pro bitovou kopii.
 
