@@ -45,11 +45,11 @@ Následující vlastnosti jsou podporovány pro aplikaci Impala propojenou služ
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **Impala**. | Ano |
-| hostitel | IP adresu nebo název hostitele serveru Impala (192.168.222.160).  | Ano |
+| host | IP adresu nebo název hostitele serveru Impala (192.168.222.160).  | Ano |
 | port | Port TCP, který Impala server používá k naslouchání pro připojení klientů. Výchozí hodnota je 21050.  | Ne |
-| authenticationType. | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou **anonymní**, **SASLUsername**, a **UsernameAndPassword**. | Ano |
-| uživatelské jméno | Uživatelské jméno pro přístup k serveru Impala. Výchozí hodnota je anonymní, když použijete SASLUsername.  | Ne |
-| heslo | Heslo, které odpovídá uživatelskému jménu, při použití UsernameAndPassword. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou **anonymní**, **SASLUsername**, a **UsernameAndPassword**. | Ano |
+| username | Uživatelské jméno pro přístup k serveru Impala. Výchozí hodnota je anonymní, když použijete SASLUsername.  | Ne |
+| password | Heslo, které odpovídá uživatelskému jménu, při použití UsernameAndPassword. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | enableSsl | Určuje, zda jsou šifrovaná připojení k serveru pomocí SSL. Výchozí hodnota je **false**.  | Ne |
 | trustedCertPath | Úplná cesta soubor .pem, který obsahuje certifikáty důvěryhodné certifikační Autority používaného k ověřování serveru, když se připojíte přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL na modul Integration Runtime. Výchozí hodnota je soubor cacerts.pem nainstalované s modulem runtime integrace.  | Ne |
 | useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze zadaného souboru PEM. Výchozí hodnota je **false**.  | Ne |
