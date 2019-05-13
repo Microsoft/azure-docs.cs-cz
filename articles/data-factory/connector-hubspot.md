@@ -45,8 +45,8 @@ HubSpot propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Hubspot** | Ano |
-| ID klienta | ID klienta přidružené k aplikaci Hubspot.  | Ano |
-| ClientSecret | Tajný kód klienta přidruženého k aplikaci Hubspot. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | ID klienta přidružené k aplikaci Hubspot.  | Ano |
+| clientSecret | Tajný kód klienta přidruženého k aplikaci Hubspot. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | accessToken | Přístupový token získané při počátečním ověřování integraci vašich OAuth. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | refreshToken | Obnovovací token získané při počátečním ověřování integraci vašich OAuth. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
