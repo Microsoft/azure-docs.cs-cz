@@ -51,8 +51,8 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
 | serviceDiscoveryMode | Hodnota TRUE označuje pomocí služby ZooKeeper false není.  | Ne |
 | zooKeeperNameSpace | Obor názvů na pod které Hive Server 2 jsou přidány uzly ZooKeeper.  | Ne |
 | useNativeQuery | Určuje, jestli používá nativní dotazy HiveQL ovladače, nebo převede na ekvivalentní formulář v nástrojích pro HiveQL.  | Ne |
-| uživatelské jméno | Uživatelské jméno, který používáte pro přístup k serveru Hive.  | Ne |
-| heslo | Heslo, odpovídající uživatel. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| username | Uživatelské jméno, který používáte pro přístup k serveru Hive.  | Ne |
+| password | Heslo, odpovídající uživatel. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | httpPath | Částečné adresa URL odpovídající serveru Hive.  | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
 | trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |
