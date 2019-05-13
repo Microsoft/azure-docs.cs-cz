@@ -58,8 +58,8 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 | server |IP adresa nebo název hostitele serveru MongoDB. |Ano |
 | port |Port TCP, který MongoDB server používá k naslouchání pro připojení klientů. |Ne (výchozí hodnota je 27017) |
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Základní**, a **anonymní**. |Ano |
-| uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
+| authenticationType | Typ ověřování používaný pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Základní**, a **anonymní**. |Ano |
+| username |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | password |Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Ne. Pro základní ověřování výchozí hodnota je používat účet správce a databáze určená vlastnost databaseName. |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
@@ -176,14 +176,14 @@ Při kopírování dat z MongoDB, se používají následující mapování z Mo
 
 | Datový typ MongoDB | Data factory dočasné datový typ |
 |:--- |:--- |
-| Binární hodnota |Byte[] |
+| Binary |Byte[] |
 | Boolean |Boolean |
-| Datum |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Řetězec |String |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
