@@ -46,8 +46,8 @@ Oracle Eloqua propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Eloqua** | Ano |
 | endpoint | Koncový bod serveru Eloqua. Eloqua podporuje více datových center, chcete-li zjistit koncový bod služby, přihlaste se k https://login.eloqua.com s vašimi přihlašovacími údaji, zkopírujte **základní adresa URL** část z přesměrovaných adresy URL s vzor `xxx.xxx.eloqua.com`. | Ano |
-| uživatelské jméno | Název lokality a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` třeba `Eloqua\Alice`.  | Ano |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| username | Název lokality a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` třeba `Eloqua\Alice`.  | Ano |
+| password | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
