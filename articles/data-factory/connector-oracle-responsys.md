@@ -46,8 +46,8 @@ Pro Oracle Responsys propojené služby jsou podporovány následující vlastno
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Responsys** | Ano |
 | endpoint | Koncový bod serveru Respopnsys  | Ano |
-| ID klienta | ID klienta přidružené k aplikaci Responsys.  | Ano |
-| ClientSecret | Tajný kód klienta přidruženou k aplikaci Responsys. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | ID klienta přidružené k aplikaci Responsys.  | Ano |
+| clientSecret | Tajný kód klienta přidruženou k aplikaci Responsys. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
