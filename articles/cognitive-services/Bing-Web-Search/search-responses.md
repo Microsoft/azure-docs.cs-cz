@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85087ce5a4fa3dd733f47a35bc18d76f1f4bc652
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642800"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606687"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury a odpověď odezvy API vyhledávání na webu Bingu  
 
@@ -330,7 +330,7 @@ Pokud uživatel zadá dotaz času nebo data, odpověď může obsahovat [časov�
 
 `timeZone` Odpověď obsahuje název umístění, aktuální datum a čas UTC v zadaném umístění a posun čas UTC. Pokud je hraniční umístění v rámci více časových pásem, obsahuje odpověď aktuální datum a čas UTC všech časových pásem v rámci hranice. Například protože Florida stavu spadá do dvou časových pásem, odpověď obsahuje místní data a času z obou časových pásem.  
 
-Pokud dotaz požádá o době státě nebo zemi, Bingu určuje primární města v rámci hranice zeměpisné umístění a vrátí jej v `primaryCityTime` pole. Pokud na hranici obsahuje víc časových pásem, zbývající časových pásem jsou vráceny v `otherCityTimes` pole.
+Pokud dotaz požaduje čas stát nebo země/oblast, Bingu určuje primární města v rámci hranice zeměpisné umístění a vrátí ho `primaryCityTime` pole. Pokud na hranici obsahuje víc časových pásem, zbývající časových pásem jsou vráceny v `otherCityTimes` pole.
 
 Následující příklad ukazuje dotazů, který vrací `timeZone` odpovědí.
 

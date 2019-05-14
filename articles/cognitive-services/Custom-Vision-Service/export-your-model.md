@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bf8217f5076c0a95d4db6c1c7cbea7bc93b91f3
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605382"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550544"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Export modelu pro použití s mobilními zařízeními
 
@@ -69,10 +69,10 @@ Pokud chcete exportovat po přetrénování modelu, postupujte následovně:
 
 ## <a name="next-steps"></a>Další postup
 
-Exportované model začlenit do aplikace. Několik ukázkových aplikací jsou k dispozici:
+Integrace modelu exportované do aplikace si vyzkoušejte jednu z následujících článků nebo ukázky:
 
-* Ukázka pro [použití exportované CoreML modelu v aplikaci iOS](https://go.microsoft.com/fwlink/?linkid=857726) pro klasifikaci obrázků v reálném čase s Swift
-* Ukázková aplikace pro iOS [pomocí exportovaného CoreML model s využitím kódu Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) pro klasifikaci obrázků v reálném čase 
-* Ukázky pro [pomocí exportovaného Tensorflow modelu v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) pro klasifikaci obrázků v reálném čase 
-* [Použití modelu Tensorflow s Windows](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
-* Ukázky pro [exportované modelu ONNX pomocí Windows Machine Learning](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)
+* [Použití modelu Tensorflow s Pythonem](export-model-python.md)
+* [Použití modelu ONNX s Windows Machine Learning](custom-vision-onnx-windows-ml.md)
+* Najdete v ukázce pro [CoreML modelu v aplikaci iOS](https://go.microsoft.com/fwlink/?linkid=857726) pro klasifikaci obrázků v reálném čase s Swift.
+* Najdete v ukázce pro [Tensorflow modelu v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) pro klasifikaci obrázků v reálném čase na Androidu.
+* Najdete v ukázce pro [CoreML model s využitím kódu Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) pro klasifikaci obrázků v reálném čase v aplikaci Xamarin iOS.

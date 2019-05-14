@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory při plánování sortiment Predictix | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Predictix sortiment plánování.
+description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Predictix sortiment plánování.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,201 +15,199 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c5d2002393165eb734b80e0fbc3677915809ba8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c14362a220cc60b0b8956ca41950faecd0563b3e
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335313"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Kurz: Integrace Azure Active Directory při plánování sortiment Predictix
 
-V tomto kurzu se dozvíte, jak integrovat Predictix sortiment plánování služby Azure Active Directory (Azure AD).
-Integrace Predictix sortiment plánování s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Predictix sortiment plánování s Azure Active Directory (Azure AD).
+Tato integrace poskytuje tyto výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k plánování sortiment Predictix.
-* Uživatelům se automaticky přihlášeni k Predictix sortiment plánování (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit, kdo má přístup k plánování sortiment Predictix Azure AD.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k Predictix sortiment plánování (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Predictix sortiment plánování, potřebujete následující položky:
+Konfigurace integrace Azure AD s Predictix sortiment plánování, musíte mít:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
-* Plánování sortiment Predictix jednotného přihlašování povolená předplatného
+* Plánování sortiment Predictix předplatné, které má single sign-on povoleno.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
 
-* Plánování sortiment Predictix podporuje **SP** jednotné přihlašování zahájené pomocí
+* Plánování sortiment Predictix podporuje jednotné iniciovaného Zprostředkovatelem přihlašování.
 
-## <a name="adding-predictix-assortment-planning-from-the-gallery"></a>Přidání Predictix sortiment plánování z Galerie
+## <a name="add-predictix-assortment-planning-from-the-gallery"></a>Přidání Predictix sortiment plánování z Galerie
 
-Konfigurace integrace Predictix sortiment plánování do služby Azure AD, musíte doplnit Predictix sortiment plánování z Galerie váš seznam spravovaných aplikací SaaS.
+Postup nastavení integrace Predictix sortiment plánování do služby Azure AD, musíte doplnit Predictix sortiment plánování z Galerie váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Predictix sortiment plánování z galerie, postupujte následovně:**
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+    ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** > **všechny aplikace**:
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Vyberte novou aplikaci](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Predictix sortiment plánování**vyberte **Predictix sortiment plánování** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Predictix sortiment plánování**. Vyberte **Predictix sortiment plánování** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Predictix sortiment plánování v seznamu výsledků](common/search-new-app.png)
+     ![Výsledky vyhledávání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Predictix sortiment plánování podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské Predictix sortiment plánování.
+V této části budete konfigurovat a otestovat Azure AD jednotné přihlašování s plánováním sortiment Predictix pomocí testovacího uživatele s názvem Britta Simon.
+Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v Predictix sortiment plánování.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Predictix sortiment plánování, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s plánováním sortiment Predictix, budete muset provést tyto kroky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Predictix sortiment plánování Single Sign-On](#configure-predictix-assortment-planning-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Predictix sortiment plánování](#create-predictix-assortment-planning-test-user)**  – Pokud chcete mít protějšek Britta Simon Predictix sortiment plánování řešení, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
+2. **[Konfigurace plánování sortiment Predictix jednotného přihlašování](#configure-predictix-assortment-planning-single-sign-on)**  na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
+5. **[Vytvoření zkušebního uživatele Predictix sortiment plánování](#create-a-predictix-assortment-planning-test-user)**  připojený k Azure AD zastoupení uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s plánováním sortiment Predictix, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s plánováním sortiment Predictix, proveďte tyto kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Predictix sortiment plánování** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Predictix sortiment plánování** integrace stránce aplikace vyberte **jednotného přihlašování**:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Vyberte jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit ikonu](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V **základní konfiguraci SAML** dialogové okno pole, proveďte následující kroky.
 
-    ![Predictix sortiment plánování domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![Dialogové okno základní konfigurace SAML](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    1. V **přihlašovací adresa URL** pole, zadejte adresu URL v tomto vzoru:
 
-    | |
-    |--|
-    | `https://<sub-domain>.ap.predictix.com/sso/request`|
-    | `https://<sub-domain>.dev.ap.predictix.com/`|
-    | |
+       | |
+        |--|
+        | `https://<sub-domain>.ap.predictix.com/sso/request`|
+        | `https://<sub-domain>.dev.ap.predictix.com/`|
+        | |
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    1. V **identifikátor (Entity ID)** pole, zadejte adresu URL v tomto vzoru:
 
-    | |
-    |--|
-    | `https://<sub-domain>.ap.predictix.com`|
-    | `https://<sub-domain>.dev.ap.predictix.com`|
-    | |
+        | |
+        |--|
+        | `https://<sub-domain>.ap.predictix.com`|
+        | `https://<sub-domain>.dev.ap.predictix.com`|
+        | |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Predictix sortiment plánování klienta](https://www.infor.com/support) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty jsou zástupné symboly. Budete muset použít skutečné přihlašovací adresu URL a identifikátor. Obraťte se [Predictix sortiment plánování tým podpory](https://www.infor.com/support) k získání hodnoty. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** dialogové okno na webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** odkaz **certifikát (Base64)** , podle požadavků vaší a uložte certifikát v počítači:
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. Na **plánování sortiment Predictix nastavit** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V **plánování sortiment Predictix nastavit** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků:
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    1. **Adresa URL pro přihlášení**.
 
-    b. Identifikátor Azure AD
+    1. **Identifikátor služby Azure AD**.
 
-    c. Adresa URL – odhlášení
+    1. **Odhlašovací adresa URL**.
 
-### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Konfigurace Predictix sortiment plánování jednotného přihlašování
+### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Konfigurace plánování sortiment Predictix jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Predictix sortiment plánování** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [Predictix Tým podpory plánování sortiment](https://www.infor.com/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně Predictix sortiment plánování, budete muset odeslat certifikát, který jste stáhli a adresy URL, které jste zkopírovali z portálu Azure portal k [Predictix sortiment plánování tým podpory](https://www.infor.com/support). Tento tým zajistí, že je správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Vyberte možnost Všichni uživatelé](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Vyberte **nového uživatele** v horní části obrazovky:
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Vyberte nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. V **uživatele** dialogové okno pole, proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno uživatelského](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >**. (Například BrittaSimon@contoso.com.)
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k plánování sortiment Predictix.
+V této části se budou moci používat Azure AD jednotného přihlašování tak, že udělíte přístup k plánování sortiment Predictix Britta Simon.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Predictix sortiment plánování**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte **Predictix sortiment plánování**.
 
-    ![Plánování sortiment Predictix odkaz v seznamu aplikací](common/all-applications.png)
+    ![Seznam aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V levém podokně vyberte **uživatelů a skupin**:
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogu **přiřadit**.
 
-### <a name="create-predictix-assortment-planning-test-user"></a>Vytvoření Predictix sortiment plánování testovacího uživatele
+### <a name="create-a-predictix-assortment-planning-test-user"></a>Vytvoření zkušebního uživatele Predictix sortiment plánování
 
-V této části vytvořte uživatele Britta Simon Predictix sortiment plánování. Práce s [Predictix sortiment plánování tým podpory](https://www.infor.com/support) přidat uživatele na platformě Predictix sortiment plánování. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Dále je třeba vytvořit uživatele s názvem Britta Simon Predictix sortiment plánování. Práce s [Predictix sortiment plánování tým podpory](https://www.infor.com/support) přidat uživatele. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 > [!NOTE]
-> Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
+> Držitel účtu Azure AD obdrží e-mailu a vybere odkaz pro potvrzení účtu, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Predictix sortiment plánování na přístupovém panelu, vám by měl být automaticky přihlášeni Predictix sortiment plánování, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice Predictix sortiment plánování na přístupovém panelu můžete by měl být automaticky přihlášeni k plánování sortiment Predictix instance, u kterého nastavíte jednotné přihlašování. Další informace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

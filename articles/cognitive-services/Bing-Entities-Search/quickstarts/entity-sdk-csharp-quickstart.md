@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0390ef5b9364aaa54c4d46abf3164728b3a4126a
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708406"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595823"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Odeslat požadavek s SDK vyhledávání entit Bingu pro vyhledáváníC#
 
@@ -24,7 +24,7 @@ Můžete začít u entit s SDK vyhledávání entit Bingu pro vyhledávání v t
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 * [Balíček NuGet sady SDK pro vyhledávání zpráv Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Instaluje se tento balíček nainstaluje taky následující:
@@ -32,7 +32,7 @@ Můžete začít u entit s SDK vyhledávání entit Bingu pro vyhledávání v t
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-Chcete-li přidat do projektu sady Visual Studio SDK vyhledávání entit Bingu, použijte `Manage NuGet Packages` z Průzkumníka řešení a přidejte `Microsoft.Azure.CognitiveServices.Search.EntitySearch` balíčku.
+Chcete-li přidat do projektu sady Visual Studio SDK vyhledávání entit Bingu, použijte **spravovat balíčky NuGet** možnost **Průzkumníku řešení**a přidejte `Microsoft.Azure.CognitiveServices.Search.EntitySearch` balíčku.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]

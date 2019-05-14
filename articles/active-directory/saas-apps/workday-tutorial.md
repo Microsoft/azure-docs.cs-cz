@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 26a9aa4c32cff17dd157d65dce062309e73eb41f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 36773fce18abe5e91f393e2e82e0fb5eb44bb3b4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407895"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Kurz: Integrace Azure Active Directory s aplikací Workday
 
@@ -116,7 +116,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s aplikací Workday, proveďt
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít například subdomény: www wd2, wd3, wd3 impl, wd5, wd5 impl).
-    > Pomocí příkazu podobného tomuto `http://www.myworkday.com` funguje, ale `https://myworkday.com` tak není. Kontakt [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Pomocí příkazu podobného tomuto `https://www.myworkday.com` funguje, ale `https://myworkday.com` tak není. Kontakt [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 6. Vaše aplikace Workday očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Pracovní aplikace očekává **nameidentifier** namapovat s **user.mail**, **UPN** atd, takže budete muset upravit mapování atributů kliknutím na **upravit**  ikonu a změnit mapování atributů.
 

@@ -314,8 +314,9 @@
                 - name: Monitorování stavu
                   href: app/monitor-performance-live-website-now.md
                 - name: Monitorování stavu v2
-                  href: app/status-monitor-v2-overview.md
                   items:
+                    - name: Přehled
+                      href: app/status-monitor-v2-overview.md
                     - name: Začínáme
                       href: app/status-monitor-v2-get-started.md
                     - name: Podrobné pokyny
@@ -557,7 +558,7 @@
                   href: app/usage-workbooks.md
             - name: Řešení analýzy webových aplikací
               href: insights/azure-web-apps-analytics.md
-            - name: Hostované aplikace Kubernetes
+            - name: Monitorování aplikací Kubernetes
               href: app/kubernetes.md
         - name: Monitorování kontejnerů
           items:
@@ -631,8 +632,18 @@
                   href: insights/vminsights-known-issues.md
                 - name: Nejčastější dotazy
                   href: insights/vminsights-faq.md
-                - name: Onboarding
-                  href: insights/vminsights-onboard.md
+                - name: Povolení monitorování
+                  items:
+                    - name: Povolení přehledu monitorování
+                      href: insights/vminsights-enable-overview.md
+                    - name: Povolení pro jeden virtuální počítač Azure
+                      href: insights/vminsights-enable-single-vm.md
+                    - name: Povolení s využitím Azure Policy
+                      href: insights/vminsights-enable-at-scale-policy.md
+                    - name: Povolení s využitím Azure Powershellu
+                      href: insights/vminsights-enable-at-scale-powershell.md
+                    - name: Povolení pro hybridní prostředí
+                      href: insights/vminsights-enable-hybrid-cloud.md
                 - name: Monitorování stavu
                   href: insights/vminsights-health.md
                 - name: Závislosti map

@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922521"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595838"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API detekce anomálií aC# 
 
@@ -29,13 +29,15 @@ V tomto rychlém startu můžete začít používat rozhraní API detekce anomá
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Chcete-li nainstalovat Newtonsoft.Json jako balíček NuGet v sadě Visual studio:
-        1. Klikněte pravým tlačítkem na **správci řešení**
-        2. Klikněte na tlačítko **spravovat balíčky NuGet...**
-        3. Vyhledejte `Newtonsoft.Json` a instalace balíčku
-- Pokud používáte Linux nebo MacOS, můžete tuto aplikaci spustili pomocí [Mono](https://www.mono-project.com/).
+- Libovolná edice [sady Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/),
+
+- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. Chcete-li nainstalovat Newtonsoft.Json jako balíček NuGet v sadě Visual Studio:
+    
+    1. Klikněte pravým tlačítkem na projekt v **Průzkumníka řešení**.
+    2. Vyberte **spravovat balíčky NuGet**.
+    3. Vyhledejte *Newtonsoft.Json* a instalaci balíčku.
+
+- Pokud používáte Linux nebo MacOS, tuto aplikaci můžete spustit pomocí [Mono](https://www.mono-project.com/).
 
 - Odkazuje JSON soubor obsahující data časových řad. Ukázková data pro účely tohoto rychlého startu můžete najít na [Githubu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 

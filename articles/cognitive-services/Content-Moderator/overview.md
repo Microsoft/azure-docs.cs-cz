@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129430"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551323"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
-Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kontroluje potenciálně urážlivý, rizikový nebo jinak nežádoucí materiál v textu, obrázcích a videích. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele. Další informace o tom, co značí různé příznaky obsahu, najdete v části [Rozhraní API Content Moderatoru](#content-moderator-apis).
+Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kontroluje potenciálně urážlivý, rizikový nebo jinak nežádoucí materiál v textu, obrázcích a videích. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele. Zobrazit [rozhraní API pro moderování](#moderation-apis) označení naleznete další informace o co příznaky jiný obsah.
 
 ## <a name="where-it-is-used"></a>Kde se používá
 
@@ -35,11 +35,13 @@ Následuje několik scénářů, ve kterých by vývojář nebo tým vývojář�
 
 Služba Content Moderator se skládá z několika rozhraní API webových služeb, která jsou k dispozici prostřednictvím volání REST i sady .NET SDK. Zahrnuje také nástroj pro kontrolu prováděnou lidmi, který lidským kontrolorům umožňuje ve službě vylepšovat nebo ladit funkci moderování.
 
-![Blokový diagram pro Content Moderator znázorňující rozhraní API pro moderování, rozhraní API pro kontrolu a nástroj pro kontrolu prováděnou lidmi](images/content-moderator-block-diagram.png)
+## <a name="moderation-apis"></a>Rozhraní API pro moderování
 
-### <a name="content-moderator-apis"></a>Rozhraní API Content Moderatoru
+Služba Content Moderator zahrnuje rozhraní API pro moderování, který zkontrolujte obsah pro materiál, který je potenciálně nevhodný nebo nežádoucí.
 
-Služba Content Moderator zahrnuje rozhraní API pro následující scénáře.
+![Blokový diagram pro rozhraní API pro moderování Content Moderatoru](images/content-moderator-mod-api.png)
+
+Následující tabulka popisuje různé typy rozhraní API pro moderování.
 
 | Skupina rozhraní API | Popis |
 | ------ | ----------- |
@@ -48,9 +50,17 @@ Služba Content Moderator zahrnuje rozhraní API pro následující scénáře.
 |[**Moderování obrázků**](image-moderation-api.md)| Vyhledává na obrázcích obsah pro dospělé nebo nevhodný obsah, rozpoznává text na obrázcích pomocí funkce optického rozpoznávání znaků (OCR) a rozpoznává tváře.|
 |[**Seznamy vlastních obrázků**](try-image-list-api.md)| Vyhledává na obrázcích obrázky z vlastního seznamu. Pomocí seznamů vlastních obrázků můžete vyfiltrovat instance běžně se opakujícího obsahu, který nechcete znovu klasifikovat.|
 |[**Moderování videa**](video-moderation-api.md)| Vyhledává ve videích nevhodný obsah nebo obsah pro dospělé a vrací pro uvedený obsah časové značky.|
-|[**Projděte si rozhraní API**](try-review-api-job.md)| Pomocí operací [úloh](try-review-api-job.md), [kontrol](try-review-api-review.md) a [pracovních postupů](try-review-api-workflow.md) můžete v nástroji pro kontrolu prováděnou lidmi vytvořit a automatizovat pracovní postupy prováděné lidmi. Rozhraní API pro pracovní postup ještě není k dispozici v sadě .NET SDK.|
 
-### <a name="review-tool"></a>Nástroj pro revize
+## <a name="review-apis"></a>Recenze rozhraní API
+
+Revize rozhraní API umožňují integrovat svůj kanál moderování lidské revidující. Použití [úlohy](review-api.md#jobs), [revize](review-api.md#reviews), a [pracovního postupu](review-api.md#workflows) operace vytvoření a automatizovat pracovní postupy lidských v the smyčky [nástroj pro recenze](#the-review-tool) () níže).
+
+> [!NOTE]
+> Rozhraní API pro pracovní postup ještě není k dispozici v sadě .NET SDK, ale je možné ke koncovému bodu REST.
+
+![Blokový diagram pro Content Moderator, projděte si rozhraní API](images/content-moderator-rev-api.png)
+
+## <a name="the-review-tool"></a>Nástroj pro recenze
 
 Služba Content Moderator zahrnuje i webová [nástroj pro recenze](Review-Tool-User-Guide/human-in-the-loop.md), který je hostitelem obsahu kontroly pro lidské moderátory ke zpracování. Lidský přínos neslouží k trénování služby, ale kombinace práce služby a lidského posuzovacího týmu umožní vývojářům dosáhnout správné rovnováhy mezi efektivitou a přesností. Nástroj pro recenze také poskytuje uživatelsky přívětivé front-endu pro širokou škálu prostředků Content Moderatoru.
 

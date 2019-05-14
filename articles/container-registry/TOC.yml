@@ -23,8 +23,10 @@
       items:
         - name: 1. Sestavení imagí v Azure
           href: container-registry-tutorial-quick-task.md
-        - name: 2. Automatizace sestavování imagí
+        - name: 2a. Automatické sestavení s potvrzením kódu
           href: container-registry-tutorial-build-task.md
+        - name: 2b. Úloha s více kroky s potvrzením kódu
+          href: container-registry-tutorial-multistep-task.md
         - name: 3. Sestavení aktualizací základních imagí
           href: container-registry-tutorial-base-image-update.md
     - name: Geografická replikace registru
@@ -84,7 +86,7 @@
               href: container-registry-auth-aci.md
             - name: Ověřování ze služby Azure Kubernetes Service (AKS)
               href: container-registry-auth-aks.md
-        - name: Důvěryhodnost obsahu (Preview)
+        - name: Důvěryhodnost obsahu
           href: container-registry-content-trust.md
     - name: Sestavení a opravy
       items:

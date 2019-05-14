@@ -11,16 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: 38a95593d01fdac091504a6decf30b3dd55f9327
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 161056aa2cfe43375d5e555197b57f85685ca219
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194646"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594099"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Rychlý start: Get záměr pomocí Node.js
-
-V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 

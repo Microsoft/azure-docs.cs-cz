@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/10/2019
 abstract:
-  description: 'Naučte se používat Azure NetApp Files k vytváření a správě účtů NetApp, fondů kapacity a svazků, konfiguraci zásad exportu, připojení svazku pro virtuální počítač a správě snímků. <p>Použití služby Azure NetApp Files vyžaduje, abyste se zapojilo do programu Public Preview. Musíte být také uvedení na seznamu povolených pro přístup k poskytovateli prostředků Azure Microsoft.NetApp. Pokud chcete požádat o zařazení do programu Public Preview, přečtěte si téma věnované <a href="azure-netapp-files-register">registraci pro Azure NetApp Files</a>.</p>'
+  description: 'Naučte se používat Azure NetApp Files k vytváření a správě účtů NetApp, fondů kapacity a svazků, konfiguraci zásad exportu, připojení svazku pro virtuální počítač a správě snímků. <p>Pokud chcete využívat Azure NetApp Files, musíte mít k této službě přístup. Pokud si chcete vyžádat přístup, projděte si téma věnované <a href="azure-netapp-files-register#waitlist">odeslání žádosti do pořadníku</a>.</p>'
 sections:
   - title: Zprovoznění během 5 minut
     items:

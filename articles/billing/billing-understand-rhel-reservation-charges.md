@@ -88,7 +88,7 @@ Název na portálu Azure marketplace:
 |1 – 4 virtuální procesory licence virtuálního počítače |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |víc než 5 virtuálních procesorů licence virtuálního počítače|6dfb482b-23ea-487f-810c-e66360f025de|2.333333333|D8s_v3|
 
-### <a name="red-hat-enterprise-linux-with-ha"></a>Red Hat Enterprise Linux s využitím HA
+### <a name="red-hat-enterprise-linux-with-ha"></a>Red Hat Enterprise Linux s HA
 
 Azure portal marketplace názvy:
 

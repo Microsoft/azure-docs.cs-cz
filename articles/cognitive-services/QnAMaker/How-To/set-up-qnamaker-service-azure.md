@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 05/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 90e7abf229e0ee1ca396150fee0c1f0970d257aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 239633950e4672693e3684345749f9c46f01c037
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61372193"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605651"
 ---
 # <a name="create-a-qna-maker-service"></a>Vytvoření služby QnA Maker
 
@@ -26,11 +26,7 @@ Než budete moct vytvořit žádné nástroje QnA Maker znalostních bází, nej
 
 Tento postup nasadí několik prostředků Azure. Společně tyto prostředky spravovat obsah znalostní báze knowledge base a poskytují možnosti odpovídání na otázku, i když koncový bod.
 
-1. Přihlaste se k webu [Azure Portal](<https://portal.azure.com>).
-
-1. Vyberte **přidat nový prostředek**a do vyhledávacího pole zadejte "qna maker" a vyberte prostředek QnA Maker
-
-    ![Vytvořit novou službu QnA Maker – přidat nový prostředek](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+1. Přihlaste se k webu Azure portal a [vytvořit QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) prostředků.
 
 1. Vyberte **vytvořit** po přečtení podmínek a ujednání.
 
@@ -42,8 +38,9 @@ Tento postup nasadí několik prostředků Azure. Společně tyto prostředky sp
 
     * Zadejte **název** s jedinečný název pro identifikaci této služby QnA Maker. Tento název také identifikuje koncový bod QnA Maker, do kterého mají být asociována znalostních bází.
     * Zvolte **předplatné** ve kterém bude nasazen nástroj QnA Maker prostředků.
-    * Vyberte **cenovou úroveň účtu správy** QnA Maker management Services (portál a rozhraní API pro správu). Zobrazit [tady](https://aka.ms/qnamaker-pricing) podrobnosti o cenách za skladové jednotky.
+    * Vyberte **cenová úroveň** QnA Maker management Services (portál a rozhraní API pro správu). Zobrazit [tady](https://aka.ms/qnamaker-pricing) podrobnosti o cenách za skladové jednotky.
     * Vytvořte nový **skupiny prostředků** (doporučeno) nebo použijte již existující, ve které chcete nasadit tento prostředek QnA Maker. Nástroj QnA Maker vytvoří několik prostředků Azure; Při vytváření skupiny prostředků pro uložení těchto prostředků, můžete snadno vyhledat, spravovat a odstranit tyto prostředky podle názvu skupiny prostředků.
+    * Vyberte **umístění skupiny prostředků**.
     * Zvolte **cenová úroveň hledání** služby Azure Search. Pokud se zobrazí možnost úrovně Free šedě, znamená to, že už máte bezplatnou Azure Search úrovni nasazené ve vašem předplatném. V takovém případě je potřeba spustit s úrovní Basic Azure Search. Zobrazit podrobnosti o cenách Azure search [tady](https://azure.microsoft.com/pricing/details/search/).
     * Zvolte **poloha při hledání** kde chcete data Azure Search k nasazení. Omezení kde musí být zákaznická data uložena informuje umístění, které jste vybrali pro Azure Search.
     * Zadejte název služby App service v **název aplikace**.

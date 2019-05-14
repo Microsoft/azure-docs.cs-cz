@@ -1,6 +1,6 @@
 ---
 title: Stream video soubory pomocí Azure Media Services - Node.js | Dokumentace Microsoftu
-description: Pomocí kroků v tomto rychlém startu můžete vytvořit nový účet služby Azure Media Services, zakódovat soubor a streamovat ho do Azure Media Playeru.
+description: Postupujte podle kroků v tomto kurzu k vytvoření nového účtu Azure Media Services, kódování souboru a Streamovat do Azure Media Playeru.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,24 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e4172cd149726e28e0c7dff435ec1f7a59ee169
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61233150"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550175"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>Rychlý start: Streamování videosouborů – Node.js
+# <a name="tutorial-stream-video-files---nodejs"></a>Kurz: Streamování videosouborů – Node.js
 
-Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
-Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
+V tomto kurzu se dozvíte, jak snadné je spustit streamování videa na širokou škálu prohlížečů a zařízení pomocí služby Azure Media Services a kódování. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 
-Na konci rychlého startu budete schopni streamovat video.  
+Ukázka v tomto článku kóduje obsah, který můžete zpřístupnit přes adresu URL HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
+
+Na konci tohoto kurzu budete Streamovat videa.  
 
 ![Přehrávání videa](./media/stream-files-nodejs-quickstart/final-video.png)
 
@@ -71,7 +72,7 @@ Tato ukázka provede následující akce:
 
 Po dokončení spuštěná, zobrazí se podobný výstup:
 
-![Spusťte](./media/stream-files-nodejs-quickstart/run.png)
+![Spustit](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Testování s Azure Media Playerem
 
@@ -90,7 +91,7 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtů úložiště, které jste vytvořili v rámci tohoto rychlého startu, odstraňte tuto skupinu prostředků.
+Pokud už nepotřebujete žádné prostředky ve vaší skupině prostředků, včetně Media Services a účty úložiště, který jste vytvořili pro účely tohoto kurzu, odstraňte skupinu prostředků.
 
 Spusťte následující příkaz rozhraní příkazového řádku:
 

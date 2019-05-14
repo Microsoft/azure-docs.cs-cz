@@ -21,6 +21,10 @@
       href: azure-netapp-files-metrics.md
     - name: Srovnávací testy výkonu pro Azure NetApp Files
       href: azure-netapp-files-performance-benchmarks.md
+    - name: Model nákladů pro Azure NetApp Files
+      href: azure-netapp-files-cost-model.md
+    - name: Pokyny pro plánování sítě Azure NetApp Files
+      href: azure-netapp-files-network-topologies.md
 - name: Návody
   items:
     - name: Registrace pro Azure NetApp Files

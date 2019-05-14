@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92a37133d84833c43fff5b1a6c31e003ef53f7de
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829697"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619750"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Kurz: Vytvoření blockchainové aplikace v Azure Blockchain Workbench
 
@@ -271,7 +271,7 @@ Přidejte do vaší smlouvy v proměnné stavu vašich `HelloBlockchain.sol` int
 
 ### <a name="constructor"></a>Konstruktor
 
-Konstruktor definuje vstupní parametry pro novou inteligentní smlouvy instanci pracovního postupu. Konstruktor je deklarovaný jako funkce se stejným názvem jako kontrakt. Požadované parametry pro konstruktor se definují jako parametry konstruktoru v konfiguračním souboru. Počet, pořadí a typ parametrů musí odpovídat na oba soubory.
+Konstruktor definuje vstupní parametry pro novou inteligentní smlouvy instanci pracovního postupu. Požadované parametry pro konstruktor se definují jako parametry konstruktoru v konfiguračním souboru. Počet, pořadí a typ parametrů musí odpovídat na oba soubory.
 
 Napište veškeré obchodní logiky v funkce konstruktoru, že který chcete provést před vytvořením smlouvy. Například inicializujte proměnné stavu s počáteční hodnoty.
 
@@ -287,7 +287,7 @@ Přidání funkce konstruktoru do vaší smlouvy v vaše `HelloBlockchain.sol` i
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 Funkce jsou jednotky spustitelného souboru obchodní logiky v rámci smlouvy. Požadované parametry pro funkci jsou definovány jako parametry funkce v konfiguračním souboru. Počet, pořadí a typ parametrů musí odpovídat na oba soubory. Funkce jsou přidružené k přechodů v pracovním postupu Blockchain Workbench v konfiguračním souboru. Přechod je akce provést, přejděte do další fáze aplikace pracovního postupu, jak určuje smlouva.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b9c9500423392ec07482f049697d9b49dc060bf
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769963"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603184"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
@@ -95,7 +95,7 @@ Po dokončení nasazení pokračujte k dalšímu kroku.
 
 ### <a name="create-a-record"></a>Vytvoření záznamu
 
-Otevřete prohlížeč a přejděte na adresu `https://<your_app_name>.azurewebsites.net/`. Blahopřejeme, úspěšně jste nasadili aplikace v jazyce Java EE do služby Azure App Service!
+Otevřete prohlížeč a přejděte do `https://<your_app_name>.azurewebsites.net/`. Blahopřejeme, úspěšně jste nasadili aplikace v jazyce Java EE do služby Azure App Service!
 
 Aplikace je v tuto chvíli používá H2 databázi v paměti. Klikněte na tlačítko "admin" na navigačním panelu a vytvořit novou kategorii. Záznam v databázi v paměti, budou ztraceny, pokud restartování vaší instance služby App Service. V následujících krocích se tento problém vyřešit zřizování Postgres databáze v Azure a konfigurace WildFly jeho použití.
 
@@ -158,7 +158,7 @@ Dále musíme upravit konfiguraci naše Java transakcí API (JPA) tak, aby naše
 
 ## <a name="configure-the-wildfly-application-server"></a>Konfigurace serveru WildFly aplikací
 
-Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Další informace o konfiguraci najdete v [server nakonfigurovat WildFly](configure-language-java.md#configure-wildfly-server).
+Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Další informace o konfiguraci najdete v [server nakonfigurovat WildFly](configure-language-java.md#configure-java-ee-wildfly).
 
 Konfigurace serveru, potřebujeme čtyři soubory v `wildfly_config/` adresáře:
 

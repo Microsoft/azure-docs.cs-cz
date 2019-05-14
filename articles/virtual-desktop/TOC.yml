@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: Příprava a přizpůsobení hlavní image VHD
       href: set-up-customize-master-image.md
+    - name: Instalace sady Office do hlavní image virtuálního pevného disku
+      href: install-office-on-wvd-master-image.md
     - name: Konfigurace GPU pro Windows Virtual Desktop
       href: configure-vm-gpu.md
     - name: Automatické škálování hostitelů relace

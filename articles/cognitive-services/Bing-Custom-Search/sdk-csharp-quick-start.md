@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 100f1d4ed96f04f8208fd544d410f227561343e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e13edce77819d5ef8cfc3b6becff9fb82224a83
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60955548"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595959"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání Bingu C# SDK 
 
@@ -25,10 +25,10 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání z vaš
 
 - Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Any edition of [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 - Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
-    - V Průzkumníku řešení v sadě Visual Studio klikněte pravým tlačítkem na projekt a v nabídce vyberte `Manage NuGet Packages`. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
+    - Z **Průzkumníka řešení** v sadě Visual Studio, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet** z nabídky. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json

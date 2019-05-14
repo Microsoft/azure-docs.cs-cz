@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7bd97d6ab197a061a33620b590e41acb486d934
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480309"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606837"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analýza dat telefonních hovorů pomocí Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI
 
@@ -118,7 +118,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
    |**Záznam**  |**Definice**  |
    |---------|---------|
    |CallrecTime    |  Časové razítko pro počáteční čas volání.       |
-   |SwitchNum     |  Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou ústředny řetězce, které představují zemi původu (USA, Čína, VB, Německo nebo Austrálie).       |
+   |SwitchNum     |  Telefonní ústředna použitá pro spojení volání. V tomto příkladu přepínače jsou řetězce, které představují zemi původu (USA, Čína, Velká Británie, Německo nebo Austrálie).       |
    |CallingNum     |  Telefonní číslo volajícího.       |
    |CallingIMSI     |  IMSI (International Mobile Subscriber Identity). Jedinečný identifikátor volajícího.       |
    |CalledNum     |   Telefonní číslo příjemce volání.      |
@@ -212,7 +212,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Potom můžete hledat záznamy volání, kde hodnota `CallingIMSI` (číslo volajícího) je stejná, ale hodnota `SwitchNum` (země původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics).
+   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak vyhledejte volání záznamy, jejichž `CallingIMSI` hodnota (číslo volajícího) je stejná, ale `SwitchNum` hodnota (země původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics).
 
    Tento dotaz je jako normální spojení SQL, kromě funkce **DATEDIFF**. Funkce **DATEDIFF** použitá v tomto dotazu je specifická pro Stream Analytics a musí se nacházet v rámci klauzule `ON...BETWEEN`.
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 22e55379c79678a2792f439137e8d58d03cd8377
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 32d8bd528da2823907e4f992f977eef91e55b9b0
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415082"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605484"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Kurz: Migrace SQL serveru do izolované databáze nebo databázi ve fondu ve službě Azure SQL Database pomocí DMS do offline režimu
 
@@ -24,6 +24,7 @@ Pomocí služby Azure Database Migration Service můžete migrovat databáze z m
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
+>
 > - Posouzení místní databáze pomocí nástroje Data Migration Assistant
 > - Migrace ukázkového schématu pomocí nástroje Data Migration Assistant
 > - Vytvoření instance služby Azure Database Migration Service
@@ -63,7 +64,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 - Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru, který ve výchozím nastavení probíhá přes port TCP 1433.
 - Pokud provozujete několik pojmenovaných instancí SQL Serveru s využitím dynamických portů, možná budete chtít povolit službu SQL Browser a přístup k portu UDP 1434 přes vaše brány firewall, aby se služba Azure Database Migration Service mohla připojit k pojmenované instanci na vašem zdrojovém serveru.
 - Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
-- Vytvoření IP adresy úrovni serveru [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pro server Azure SQL Database umožňuje Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítí virtuální sítě použité pro službu Azure Database Migration Service.
+- Vytvoření IP adresy úrovni serveru [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pro server Azure SQL Database umožňuje Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě pro službu Azure Database Migration Service.
 - Ujistěte se, že přihlašovací údaje použité pro připojení ke zdrojové instanci SQL Serveru mají oprávnění [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql).
 - Ujistěte se, že přihlašovací údaje použité pro připojení k cílové instanci služby Azure SQL Database mají oprávnění CONTROL DATABASE k cílovým databázím Azure SQL.
 
@@ -79,7 +80,7 @@ Než zahájíte migraci dat z místní instance systému SQL Server pro izolovan
    - Kontrola kompatibility databáze
    - Kontrola parity funkcí
 
-     Ve výchozím nastavení jsou vybrané oba typy sestavy.
+    Ve výchozím nastavení jsou vybrané oba typy sestavy.
 
 3. V nástroji Data Migration Assistant na obrazovce **Možnosti** vyberte **Další**.
 4. Na obrazovce **Vybrat zdroje** v dialogovém okně **Připojit k serveru** zadejte podrobnosti o připojení k vašemu SQL Serveru a pak vyberte **Připojit**.

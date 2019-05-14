@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686394"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596087"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Vytvoření konzolové aplikace .NET pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -40,7 +40,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Vytvoření dokumentů JSON
 > - Dotaz na kolekci
 > - Aktualizace dokumentu JSON
-> - Odstranění dokumentu
+> - Odstranit dokument
 > - Odstranění databáze
 
 ## <a name="prerequisites"></a>Požadavky
@@ -68,7 +68,7 @@ Ke spuštění staženého kompletní řešení:
 1. V *App.config* soubor, aktualizovat `EndpointUrl` a `PrimaryKey` hodnoty, jak je popsáno v [připojte se k účtu Azure Cosmos DB](#Connect) oddílu.
 1. Vyberte **ladění** > **spustit bez ladění** nebo stiskněte klávesu **Ctrl**+**F5** sestavíte a spustíte aplikaci.
 
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet Azure Cosmos DB
 
 Postupujte podle těchto pokynů a vytvořte účet služby Azure Cosmos DB na webu Azure Portal. Pokud již máte účet služby Azure Cosmos DB používat, přeskočte k části [nastavení řešení v sadě Visual Studio](#SetupVS). 
 
@@ -145,6 +145,20 @@ Nyní začněte psát nějaký kód. Kompletní *Project.cs* soubor pro tento ku
       {
         client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
       }
+   ```
+
+   Pokud používáte objekt proxy pro připojení ke službě Azure Cosmos DB, místo toho používejte následující blok kódu k vytvoření objektu DocumentClient. Ukázka v tomto dokumentu nepoužívá objekt proxy tak následující příklad je pouze pro referenci:
+
+   ```csharp
+   HttpClientHandler handler = new HttpClientHandler()
+   {
+     Proxy = proxyObject
+     UseProxy = true,
+   };
+
+   //Pass handler to the constructor of DocumentClient.
+   DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey, handler);
+   
    ```
    
 1. Přidejte následující kód, který `Main` způsob spuštění `GetStartedDemo` úloh. `Main` Metoda zachytí výjimky a zapisuje je do konzole.

@@ -148,10 +148,6 @@
               href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
         - name: Ekosystém VMware
           items:
-            - name: Řešení zotavení po havárii
-              href: 'https://docs.azure.cloudsimple.com/zerto-solutionguide/'
-            - name: Zotavení po havárii s využitím VMware SRM
-              href: 'https://docs.azure.cloudsimple.com/disaster-recovery-srm/'
             - name: Zálohování virtuálních počítačů úloh
               href: 'https://docs.azure.cloudsimple.com/veeam/'
             - name: Průvodce řešením VMware Horizon

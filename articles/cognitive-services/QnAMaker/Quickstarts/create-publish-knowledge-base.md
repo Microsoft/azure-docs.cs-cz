@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/10/2019
 ms.author: diberry
-ms.openlocfilehash: cf6b0cd99254d5b034687598c588ce5ef13dbd53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1411576d078115921cb04b41347264bccdc390f4
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60912790"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593975"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Vytvoření, trénování a publikování znalostní báze služby QnA Maker
 
@@ -66,7 +66,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 1. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). V okně testu se používá k testování změny ve znalostní bázi předtím, než se publikují.
 
-    ![Panel Test](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![Panel Test](../media/qnamaker-quickstart-kb/inspect.png)
 
 1. Znovu vyberte **Test** (Otestovat) a zavřete automaticky otevírané okno **Test**.
 
@@ -80,7 +80,7 @@ Při publikování znalostní bázi otázek a odpovědí obsah znalostní báze 
 
 1. Služba QnA Maker je teď úspěšně publikovaná. Koncový bod můžete použít v kódu aplikace nebo chatbota.
 
-    ![Publikování](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Publikovat](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="create-a-bot"></a>Vytváření robotů
 

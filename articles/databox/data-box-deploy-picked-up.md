@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 659dfbec1f73ca713cf03a2945361b794b8aaea6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924944"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606224"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrátí zařízení Azure Data Box a ověřte nahrání dat do Azure
 
@@ -23,7 +23,7 @@ V tomto kurzu se seznámíte například s následujícími tématy:
 
 > [!div class="checklist"]
 > * Požadavky
-> * Příprava k odeslání
+> * Připravit k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu
@@ -35,7 +35,7 @@ Než začnete, ujistěte se, že:
 - Když jste dokončili [kurzu: Kopírování dat do služby Azure Data Box a ověřte](data-box-deploy-copy-data.md). 
 - Kopírování úloh se dokončí. Příprava k odeslání nelze spustit, pokud probíhají úlohy kopírování.
 
-## <a name="prepare-to-ship"></a>Příprava k odeslání
+## <a name="prepare-to-ship"></a>Připravit k odeslání
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
@@ -45,7 +45,7 @@ Než začnete, ujistěte se, že:
 2. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud popisek poškození nebo ztráty nebo se nezobrazuje na displeji E-ink, obraťte se na Microsoft Support. Pokud podpora navrhuje, pak můžete přejít na **přehled > stáhnout Expediční štítek** na webu Azure Portal. Stáhnout Expediční štítek a opatří na zařízení. 
 3. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Chcete-li vyzvednutí naplánovat:
 
-    - Volání místní UPS (specifické pro zemi bezplatné číslo).
+    - Volání místní UPS (specifické pro zemi/oblast bezplatné číslo).
     - Ve volání nabídka zpětné dodávky sledovací číslo, jak je znázorněno v E-ink zobrazení nebo Tisk popisku.
     - Pokud není uveden v uvozovkách sledovacího čísla, bude vyžadovat UPS vám umožní platit poplatek za další využití během vyzvednutí.
 
@@ -91,7 +91,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 
 > [!div class="checklist"]
 > * Požadavky
-> * Příprava k odeslání
+> * Připravit k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu

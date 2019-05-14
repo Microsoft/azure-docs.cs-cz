@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 74cd73cd7f9d5be9da552fb22ef2a2750ddc8321
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed82c214e2fbb2a1efc5917eb74ffe9b29abb115
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029852"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560325"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -83,7 +83,7 @@ git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-Aby bylo možné použít modul automatického škálování, pody musí mít definovaná omezení a požadavky na procesor. V `azure-vote-front` nasazení, kontejner front-endu již 0,25 CPU s limitem 0,5 CPU. Těchto omezení a požadavky na zdroje jsou definovány, jak je znázorněno v následujícím příklad fragmentu kódu:
+Použití automatického škálování, všechny kontejnery v pody a vaše pody musí mít definovaná omezení a požadavky na procesor. V `azure-vote-front` nasazení, kontejner front-endu již 0,25 CPU s limitem 0,5 CPU. Těchto omezení a požadavky na zdroje jsou definovány, jak je znázorněno v následujícím příklad fragmentu kódu:
 
 ```yaml
 resources:

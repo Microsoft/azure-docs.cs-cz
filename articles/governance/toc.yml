@@ -22,25 +22,12 @@
       href: policy/overview.md
     - name: Blueprint
       href: blueprints/overview.md
-- name: Implementace
-  expanded: true
+- name: Architektura přechodu na cloud
   items:
-    - name: Přechod na podnikový cloud
-      items:
-        - name: Co jsou zásady správného řízení cloudových prostředků?
-          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-        - name: Zásady správného řízení přístupu k prostředkům v Azure
-          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-        - name: Návrh zásad správného řízení pro jeden tým
-          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-        - name: Návrh zásad správného řízení pro několik týmů
-          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-    - name: Vygenerované podnikové uživatelské prostředí v Azure
-      items:
-        - name: Zásady správného řízení pro předplatná
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-        - name: Implementace vygenerovaného podnikového uživatelského prostředí v Azure
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+    - name: Přehled
+      href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+    - name: Přehled zásad správného řízení
+      href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 87599817ba7b50b941612c13c07842644f979fb7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147570"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619706"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -57,7 +57,7 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 |[Rozpoznávání tváře](Face/face-how-to-install-containers.md) |F0, S0|**Rozpoznávání tváře** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Žádost o přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Nástroj pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Nástroj pro rozpoznávání formuláře** |Principy formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře.<br>[Žádost o přístup](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**Služba LUIS** ([image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Načte trénovaného nebo publikované Language Understanding modelu, označované také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět a [LUIS portál](https://www.luis.ai) zvyšte přesnost předpovědi aplikace.|
-|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer je Cloudová služba rozhraní API, který umožňuje zvolit nejvhodnější zobrazíte na uživatele, učit se z jejich chování v reálném čase.|
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.|
 |[Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Převod řeči na text** |Přepisuje plynulou řeč v reálném čase do textové podoby.<br>[Žádost o přístup](https://aka.ms/speechcontainerspreview/)|
 |[Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Převod textu na řeč** |Převádí text do přirozeně znějící řeči.<br>[Žádost o přístup](https://aka.ms/speechcontainerspreview/)|
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Extrakce frází klíč** ([image](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
@@ -66,7 +66,7 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 
 Kromě toho jsou podporovány některé kontejnery ve službě Cognitive Services [ **All-in-One nabídky** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) klíče prostředku. Můžete vytvořit jeden jeden prostředek služeb Cognitive Services All-in-One a použít stejný klíč fakturační podporovaných služeb pro následující služby:
 
-* Computer Vision
+* Počítačové zpracování obrazu
 * Tvář
 * LUIS
 * Analýza textu
@@ -76,7 +76,12 @@ Kromě toho jsou podporovány některé kontejnery ve službě Cognitive Service
 Kontejnery služby Azure Cognitive Services jsou veřejně dostupné prostřednictvím předplatného Azure a imagí kontejnerů Dockeru můžete načíst z Microsoft Container Registry nebo Docker Hubu. Můžete použít [operace docker pull](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z registru odpovídající.
 
 > [!IMPORTANT]
-> V současné době musíte dokončit proces registrace pro přístup k [pro rozpoznávání tváře](Face/face-how-to-install-containers.md) a [rozpoznat Text](Computer-vision/computer-vision-how-to-install-containers.md) kontejnery, ve kterých vyplňují a odesílají dotazník otázek o vás, vaše společnost a případ použití pro které chcete implementovat kontejnery. Když jste udělili přístup a zadat přihlašovací údaje, můžete pak načítání imagí kontejneru pro rozpoznávání tváře a rozpoznat Text kontejnerů v privátním registru kontejneru hostovaná služba Azure Container Registry.
+> V současné době musíte dokončit proces registrace pro přístup k následujícím kontejnery, ve kterých vyplňují a odesílají dotazník otázek o vás, vaše společnost a případ použití, pro který chcete implementovat kontejnery. Když jste udělili přístup a zadat přihlašovací údaje, můžete pak načítání imagí kontejneru pro rozpoznávání tváře a rozpoznat Text kontejnerů v privátním registru kontejneru hostovaná služba Azure Container Registry.
+> * [Dectector anomálií](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> * [Rozpoznávání tváře](Face/face-how-to-install-containers.md)
+> * [Nástroj pro rozpoznávání formuláře](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
+> * [Rozpoznání textu](Computer-vision/computer-vision-how-to-install-containers.md)
+> * [Převod řeči na text a převod textu na řeč](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -92,7 +97,7 @@ Základy Dockeru a kontejnerech základní informace o najdete v článku [přeh
 
 Jednotlivých kontejnerů může mít vlastní požadavky, včetně serveru a požadavky na přidělení paměti.
 
-## <a name="developer-samples"></a>Ukázky pro vývojáře
+## <a name="developer-samples"></a>Příklady pro vývojáře
 
 Ukázky pro vývojáře najdete na adrese naše [úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-containers-samples).
 

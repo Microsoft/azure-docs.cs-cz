@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/08/2019
-ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 05/13/2019
+ms.openlocfilehash: dda5df0e5b9b9509482cb6dcdcda242b4daa230f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466177"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596343"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -32,13 +32,17 @@ V této sérii kurzů se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
+> [!IMPORTANT]
+> Tento kurz vyžaduje 2.0.65 verzi rozhraní příkazového řádku Azure
+
 Než začnete s tímto kurzem:
 
 Ujistěte se, že jste [nastavení vývojového prostředí](howto-setup-environment.md), což zahrnuje:
-- Instalace nejnovější rozhraní příkazového řádku (verze 2.0.64 nebo novější)
-- Vytvoření klienta
-- Vytvoření objektu aplikace Azure
-- Vytvoření uživatele služby Active Directory používat k přihlašování k aplikacím běžícím v clusteru.
+- Instalace nejnovější rozhraní příkazového řádku (verze 2.0.65 nebo novější)
+- Vytvoření klienta, pokud ho ještě nemáte
+- Vytvoření objektu aplikace Azure, pokud ho ještě nemáte
+- Vytvoření skupiny zabezpečení
+- Vytvoření uživatele služby Active Directory pro přihlášení ke clusteru.
 
 ## <a name="step-1-sign-in-to-azure"></a>Krok 1: Přihlásit se k Azure
 
@@ -55,33 +59,31 @@ az login
 V příkazovém okně prostředí Bash nastavte následující proměnné:
 
 > [!IMPORTANT]
-> Název clusteru musí být malými písmeny nebo vytvoření clusteru se nezdaří.
+> Zvolte název jste cluster, který je jedinečný a všechna malá nebo clusteru vytváření se nezdaří.
 
 ```bash
 CLUSTER_NAME=<cluster name in lowercase>
 ```
 
- Použijte stejný název pro cluster, který jste zvolili v kroku 6 postupu [vytvořit registrace nové aplikace](howto-aad-app-configuration.md#create-a-new-app-registration).
+Zvolte umístění pro vytvoření clusteru. Seznam oblastí azure, která podporuje OpenShift v Azure najdete v tématu [podporované oblasti](supported-resources.md#azure-regions). Například: `LOCATION=eastus`.
 
 ```bash
 LOCATION=<location>
 ```
 
-Zvolte umístění pro vytvoření clusteru. Seznam oblastí azure, která podporuje OpenShift v Azure najdete v tématu [podporované oblasti](supported-resources.md#azure-regions). Například: `LOCATION=eastus`.
-
-Nastavte `FQDN` plně kvalifikovaný název vašeho clusteru. Tento název se skládá z názvu clusteru do umístění, a `.cloudapp.azure.com` příponou. Toto je stejná jako přihlašovací adresu URL jste vytvořili v kroku 6 postupu [vytvořit registrace nové aplikace](howto-aad-app-configuration.md#create-a-new-app-registration). Příklad:  
-
-```bash
-FQDN=$CLUSTER_NAME.$LOCATION.cloudapp.azure.com
-```
-
-Nastavte `APPID` hodnotě jste si uložili v kroku 9 informace o [vytvořit registrace nové aplikace](howto-aad-app-configuration.md#create-a-new-app-registration).  
+Nastavte `APPID` hodnotě jste si uložili v kroku 5 části [registraci aplikace Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
 
 ```bash
 APPID=<app ID value>
 ```
 
-Nastavte `SECRET` hodnotě jste si uložili v kroku 6 [vytvořit tajný kód klienta](howto-aad-app-configuration.md#create-a-client-secret).  
+Nastavit 'GROUPID' na hodnotu jste si uložili v kroku 10 [vytvoření skupiny zabezpečení služby Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-security-group).
+
+```bash
+GROUPID=<group ID value>
+```
+
+Nastavte `SECRET` hodnotě jste si uložili v kroku 8 [vytvořit tajný kód klienta](howto-aad-app-configuration.md#create-a-client-secret).  
 
 ```bash
 SECRET=<secret value>
@@ -93,7 +95,7 @@ Nastavte `TENANT` hodnotu ID tenanta, jste si uložili v kroku 7 [vytvořit nov�
 TENANT=<tenant ID>
 ```
 
-Vytvořte skupinu prostředků clusteru. Spusťte následující příkaz z prostředí Bash, které jste podnikli k definování proměnné výše:
+Vytvořte skupinu prostředků clusteru. Ze stejného prostředí Bash, které jste podnikli k definování proměnné výše, spusťte následující příkaz:
 
 ```bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -117,33 +119,59 @@ Příklad: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGrou
 
 ### <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Nyní jste připraveni vytvořit cluster.
+Nyní jste připraveni vytvořit cluster. Následující se vytvoření clusteru v zadané služby Azure AD tenanta, zadejte objekt Azure AD aplikace a tajný klíč, který se použije jako objekt zabezpečení a skupiny zabezpečení, která obsahuje členy, kteří mají přístup správce ke clusteru.
 
- Pokud virtuální síť clusteru nejsou připojení k existující virtuální síť, vynechejte koncové `--vnet-peer-id $VNET_ID` parametr v následujícím příkladu.
+Pokud jste **není** partnerský vztah clusteru do virtuální sítě, použijte následující příkaz:
 
 ```bash
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --fqdn $FQDN --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --vnet-peer-id $VNET_ID
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
-Po několika minutách `az openshift create` bude dokončena úspěšně a vrátí odpověď ve formátu JSON obsahující podrobnosti o vašem clusteru.
+Pokud jste **jsou** partnerský vztah clusteru do virtuální sítě, použijte následující příkaz, který přidá `--vnet-peer` příznak:
+ 
+```bash
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
+```
 
 > [!NOTE]
-> Pokud dojde k chybě, název hostitele není k dispozici, může být vzhledem k tomu, že váš název clusteru není jedinečný. Zkuste odstranit původní registrace aplikace a znovu provedení kroků v [vytvoření registrace nové aplikace] (howto-aad-app-configuration.md#create-a-new-app-registration) (vynechání posledním krokem vytvoření nového uživatele, od doby, kdy už nějakou vytvořili) s jiný název clusteru.
+> Pokud dojde k chybě, název hostitele není k dispozici, může být vzhledem k tomu, že váš název clusteru není jedinečný. Zkuste odstranit původní registrace aplikace a opakování kroků s jiný název clusteru v [vytvoření registrace nové aplikace] (howto-aad-app-configuration.md#create-a-new-app-registration), vynechá krok vytváří se nová skupina uživatelů a zabezpečení.
 
-## <a name="step-3-sign-in-to-the-openshift-console"></a>Krok 3: Přihlaste se ke konzole Openshiftu
+Po několika minutách `az openshift create` dokončí.
+
+### <a name="get-the-sign-in-url-for-your-cluster"></a>Získat přihlašovací adresa URL pro váš cluster
+
+Získáte adresu URL pro přihlášení ke clusteru pomocí následujícího příkazu:
+
+```bash
+az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
+```
+
+Hledat `publicHostName` ve výstupu, například: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
+
+Přihlašovací adresa URL pro váš cluster bude `https://` následovaný `publicHostName` hodnotu.  Například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Tento identifikátor URI v dalším kroku použije jako součást identifikátoru URI přesměrování registrace aplikací.
+
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>Krok 3: Aktualizovat vaše aplikace registrace identifikátor URI pro přesměrování
+
+Teď, když máte přihlašovací adresa URL pro cluster, nastavte přesměrování registrace aplikace uživatelského rozhraní:
+
+1. Otevřít [okně registrace aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
+2. Klikněte na objekt registrace vaší aplikace.
+3. Klikněte na **přidejte identifikátor URI pro přesměrování**.
+4. Ujistěte se, že **typ** je **webové** a nastavit **identifikátor URI pro PŘESMĚROVÁNÍ** pomocí následujícímu vzoru: `https://<public host name>/oauth2callback/Azure%20AD`. Příklad: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+5. Klikněte na **Uložit**.
+
+## <a name="step-4-sign-in-to-the-openshift-console"></a>Krok 4: Přihlaste se ke konzole Openshiftu
 
 Nyní jste připraveni přihlášení ke konzole OpenShift nového clusteru. [OpenShift Webová konzola](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) vám umožní vizualizovat, procházet a spravovat obsah vašich projektů OpenShift.
 
-Přihlásíme jako [nového uživatele Azure AD](howto-aad-app-configuration.md#create-a-new-active-directory-user) vytvořily pro testování. K tomuto účelu bude nutné instance čerstvé prohlížeče, který nemá v mezipaměti uložené identity, které standardně používáte k přihlášení k webu Azure portal.
+Budete potřebovat instance čerstvé prohlížeče, který nemá v mezipaměti uložené identity, které standardně používáte k přihlášení k webu Azure portal.
 
 1. Otevřít *incognito* okno (Chrome) nebo *InPrivate* okno (Microsoft Edge).
-2. Přejděte na adresu URL přihlašování, který jste vytvořili v kroku 6 postupu [vytvořit registrace nové aplikace](howto-aad-app-configuration.md#create-a-new-app-registration). Například https://constoso.eastus.cloudapp.azure.com.
+2. Přejděte na adresu URL přihlašování, který jste získali výše, například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
 
-> [!NOTE]
-> OpenShift konzoly používá certifikát podepsaný svým držitelem.
-> Po zobrazení výzvy v prohlížeči, obejít upozornění a "nedůvěryhodné" potvrzení.
+Přihlaste se pomocí uživatelského jména, kterou jste vytvořili v kroku 3 postupu [vytvořte nového uživatele Azure Active Directory](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user).
 
-Přihlaste se pomocí uživatele a heslo, které jste vytvořili v [vytvořte nového uživatele služby Active Directory](howto-aad-app-configuration.md#create-a-new-active-directory-user) při **oprávnění požadovaná** se zobrazí dialogové okno, vyberte **souhlas jménem svojí organizace**  a potom **přijmout**.
+A **oprávnění požadovaná** zobrazí se dialogové okno. Klikněte na tlačítko **souhlas jménem svojí organizace** a potom klikněte na tlačítko **přijmout**.
 
 Nyní jste se přihlásili do konzoly clusteru.
 
@@ -151,7 +179,7 @@ Nyní jste se přihlásili do konzoly clusteru.
 
  Další informace o [pomocí konzoly nástroje OpenShift](https://docs.openshift.com/aro/getting_started/developers_console.html) k vytvoření a součástí bitové kopie [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) dokumentaci.
 
-## <a name="step-4-install-the-openshift-cli"></a>Krok 4: Instalace rozhraní příkazového řádku Openshiftu
+## <a name="step-5-install-the-openshift-cli"></a>Krok 5: Instalace rozhraní příkazového řádku Openshiftu
 
 [OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (nebo *OS nástroje*) poskytují příkazy pro správu aplikací a nižší úrovně nástroje pro práci s různými komponentami OpenShift clusteru.
 

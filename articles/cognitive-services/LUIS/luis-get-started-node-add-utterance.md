@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: e2a8bed2b07934bf178ea338e074ec8e239ee646
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ee3ecc37cfb21630b671e70260b44f1532de2b6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196364"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594126"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Rychlý start: Změna modelu pomocí Node.js
 
-[!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

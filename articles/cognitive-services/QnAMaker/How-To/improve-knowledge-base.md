@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f80e6a765cc165033a548ba6a5ee7bead0de872e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144972"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594073"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktivní studium slouží ke zlepšení znalostní báze
 
@@ -60,7 +60,7 @@ Algoritmů a určit blízkých výrazů není jednoduchý výpočet. Oblasti v p
 
 Aktivní učení je vypnuto ve výchozím nastavení. Zapněte navrhované dotazy. 
 
-1. Vyberte **publikovat** publikovat znalostní báze. Aktivní učení dotazy jsou shromážděná z GenerateAnswer předpovědi koncový bod rozhraní API pouze. Dotazy na testovací podokno portálu Qna Maker nemají vliv na aktivní učení.
+1. Vyberte **publikovat** publikovat znalostní báze. Aktivní učení dotazy jsou shromážděná z GenerateAnswer předpovědi koncový bod rozhraní API pouze. Dotazy na testovací podokno portálu QnA Maker nemají vliv na aktivní učení.
 
 1. Chcete-li aktivní učení na platformě, klikněte na vaše **název**, přejděte na stránku [ **nastavení služby** ](https://www.qnamaker.ai/UserSettings) portálu QnA Maker v pravém horním rohu.  
 
@@ -173,8 +173,8 @@ Content-Type: application/json
 |--|--|--|--|
 |Parametr trasa adresy URL|ID znalostní báze|string|Identifikátor GUID pro znalostní báze.|
 |Host subdomain|Název prostředku QnA maker|string|Název hostitele pro váš nástroj QnA Maker ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
-|Hlavička|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: `application/json`|
-|Hlavička|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Záhlaví|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: `application/json`|
+|Záhlaví|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo POST|JSON – objekt|JSON|Zpětná vazba školení|
 
 Text JSON má několik nastavení:
@@ -208,7 +208,7 @@ Příklad text JSON vypadá takto:
 
 Když se vaše aplikace může aktivně učit povolené a exportovat do aplikace `SuggestedQuestions` sloupec v souboru tsv uchovává data aktivně učit. 
 
-`SuggestedQuestions` Sloupec je objekt JSON informací o implicitní (`autosuggested`) a explicitní (`usersuggested`) zpětnou vazbu. Příkladem tohoto objektu JSON pro jeden uživatel odeslal otázku `help` je:
+`SuggestedQuestions` Sloupec je objekt JSON informací o implicitní, `autosuggested`a explicitní, `usersuggested` zpětnou vazbu. Příkladem tohoto objektu JSON pro jeden uživatel odeslal otázku `help` je:
 
 ```JSON
 [

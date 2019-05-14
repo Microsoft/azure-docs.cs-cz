@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149945"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594160"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Kurz: Nástroj QnA Maker portal vytvořte znalostní báze
 
@@ -68,7 +68,7 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
     |--|--|--|
     |zprostředkovatele identity|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Obsah nejčastějších dotazů na této adrese URL je formátovaný jako otázka, za níž následuje odpověď. Služba QnA Maker může tento formát interpretovat a extrahovat otázky a přidružené odpovědi.|
     |File |_v tomto kurzu se nepoužívá_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
-    |Chit-chat personality (Charakter konverzace)|Popisný|Díky tomuto nastavení budou časté otázky a odpovědi popisné a neformální. Tyto otázky a odpovědi můžete později upravit. |
+    |Chit-chat personality (Charakter konverzace)|Popisný|Díky tomu popisný a příležitostné [posouzení vašich osobnostních](../Concepts/best-practices.md#chit-chat) na běžné otázky a odpovědi. Tyto otázky a odpovědi můžete později upravit. |
 
     ![Proces vytváření znalostní báze – krok 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 

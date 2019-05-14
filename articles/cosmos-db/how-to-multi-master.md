@@ -1,25 +1,25 @@
 ---
 title: Jak nakonfigurovat více hlavních databází ve službě Azure Cosmos DB
-description: Zjistěte, jak konfigurovat více hlavních databází ve vašich aplikacích ve službě Azure Cosmos DB
+description: Zjistěte, jak konfigurovat více hlavních databází ve vašich aplikacích ve službě Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/15/2019
 ms.author: rimman
-ms.openlocfilehash: b862c59002369662d37b6d6a9de28370b0000497
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86f5d64391dd5312d8c51a5b639b790e62b6710d
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054588"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560262"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Jak nakonfigurovat více hlavních databází ve svých aplikacích, které používají službu Azure Cosmos DB
+# <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurovat více hlavních databází ve vašich aplikacích, které používají službu Azure Cosmos DB
 
-Použití několika hlavními databázemi funkce ve vaší aplikaci, budete muset povolit zápisů ve více oblastech a nakonfigurovat vícenásobné navádění schopností ve službě Azure Cosmos DB. Vícenásobné navádění je nakonfigurovaný tak, že nastavíte oblast, ve kterém je aplikace nasazená.
+Použití několika hlavními databázemi funkce ve vaší aplikaci, musíte povolit zápisů ve více oblastech a nakonfigurovat vícenásobné navádění schopností ve službě Azure Cosmos DB. Pokud chcete nakonfigurovat vícenásobné navádění, nastavte oblast, ve kterém je aplikace nasazená.
 
 ## <a id="netv2"></a>Sady .NET SDK v2
 
-Povolit více hlavních databází ve vaší sadě aplikací `UseMultipleWriteLocations` na hodnotu true a nakonfigurovat `SetCurrentLocation` do oblasti, ve kterém se nasazuje aplikace a služby Azure Cosmos DB se replikuje.
+Chcete-li povolit více hlavních databází ve vaší aplikaci, nastavte `UseMultipleWriteLocations` k `true`. Navíc nastavte `SetCurrentLocation` do oblasti, ve kterém je aplikace nasazená, a kde se replikuje služby Azure Cosmos DB:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -33,7 +33,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a id="netv3"></a>Sady .NET SDK v3 (preview)
 
-Chcete-li povolit nakonfigurovat více hlavních databází ve svých aplikacích `UseCurrentRegion` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
+Chcete-li povolit více hlavních databází ve vaší aplikaci, nastavte `UseCurrentRegion` do oblasti, ve kterém je aplikace nasazená, a kde se replikuje Cosmos DB:
 
 ```csharp
 CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
@@ -43,7 +43,7 @@ CosmosClient client = new CosmosClient(config);
 
 ## <a id="java"></a>Java Async SDK
 
-Povolit více hlavních databází ve vaší sadě aplikací `policy.setUsingMultipleWriteLocations(true)` a nakonfigurujte `policy.setPreferredLocations` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
+Chcete-li povolit více hlavních databází ve vaší aplikaci, nastavte `policy.setUsingMultipleWriteLocations(true)` a nastavte `policy.setPreferredLocations` do oblasti, ve kterém je aplikace nasazená, a kde se replikuje Cosmos DB:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -58,9 +58,9 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a id="javascript"></a>Node.js, JavaScript, TypeScript SDK
+## <a id="javascript"></a>Node.js, JavaScript a TypeScript SDK
 
-Povolit více hlavních databází ve vaší sadě aplikací `connectionPolicy.UseMultipleWriteLocations` na hodnotu true a nakonfigurovat `connectionPolicy.PreferredLocations` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
+Chcete-li povolit více hlavních databází ve vaší aplikaci, nastavte `connectionPolicy.UseMultipleWriteLocations` k `true`. Navíc nastavte `connectionPolicy.PreferredLocations` do oblasti, ve kterém je aplikace nasazená, a kde se replikuje Cosmos DB:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -77,7 +77,7 @@ const client = new CosmosClient({
 
 ## <a id="python"></a>Python SDK
 
-Povolit více hlavních databází ve vaší sadě aplikací `connection_policy.UseMultipleWriteLocations` na hodnotu true a nakonfigurovat `connection_policy.PreferredLocations` do oblasti, ve kterém se nasazuje aplikace a služby Cosmos DB se replikuje.
+Chcete-li povolit více hlavních databází ve vaší aplikaci, nastavte `connection_policy.UseMultipleWriteLocations` k `true`. Navíc nastavte `connection_policy.PreferredLocations` do oblasti, ve kterém je aplikace nasazená, a kde se replikuje Cosmos DB.
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -89,14 +89,14 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="next-steps"></a>Další postup
 
-Dále si můžete přečíst následující články:
+V následujících článcích:
 
-* [Využívat relace tokeny pro správu konzistence ve službě Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
+* [Použití tokenů relace ke správě konzistence ve službě Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
 * [Zásady řešení ve službě Azure Cosmos DB a typy konfliktů](conflict-resolution-policies.md)
 * [Vysoká dostupnost ve službě Azure Cosmos DB](high-availability.md)
 * [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
-* [Volba úrovně konzistence správné ve službě Azure Cosmos DB](consistency-levels-choosing.md)
+* [Vyberte úroveň správné konzistence ve službě Azure Cosmos DB](consistency-levels-choosing.md)
 * [Kompromisy konzistencí, dostupností a výkonem ve službě Azure Cosmos DB](consistency-levels-tradeoffs.md)
 * [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 * [Globální škálování zřízená propustnost](scaling-throughput.md)
-* [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
+* [Globální distribuce: Pod pokličkou](global-dist-under-the-hood.md)

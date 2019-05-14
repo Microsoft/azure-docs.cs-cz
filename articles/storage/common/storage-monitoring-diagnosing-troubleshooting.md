@@ -481,8 +481,8 @@ Pokud vaše klientská aplikace způsobuje chyby HTTP 403 (Zakázáno), pravděp
 
 V tomto scénáři které byste měli prozkoumat, proč je SAS token vyprší před klient odešle token do serveru:
 
-* Obvykle byste neměli nastavit čas zahájení, když vytváříte SAS pro okamžité použití. Pokud existují malý časový rozdíl mezi hostitelem generujícím SAS s použitím aktuálního času a mezi službou úložiště, je možné, že služba úložiště přijme SAS, který ještě není platný.
-* Nenastavujte ani velmi krátkou dobu vypršení platnosti SAS. Opět, malý časový rozdíl mezi hostitelem generujícím SAS a službou úložiště může vést k předčasnému zdánlivému vypršení platnosti SAS.
+* Obvykle byste neměli nastavit čas zahájení, když vytváříte SAS pro okamžité použití. Pokud existují malé časové rozdíly mezi hostitelem generujícím SAS s použitím aktuálního času a mezi službou úložiště, je možné, že služba úložiště přijme SAS, který ještě není platný.
+* Nenastavujte ani velmi krátkou dobu vypršení platnosti SAS. Opět, malé časové rozdíly mezi hostitelem generujícím SAS a službou úložiště můžou vést k předčasnému zdánlivému vypršení platnosti SAS.
 * Nemá parametr verze v klíči SAS (například **sv = 2015-04-05**) odpovídat verzi klientskou knihovnu pro úložiště používáte? Doporučujeme vždy používat nejnovější verzi [Klientská knihovna pro úložiště](https://www.nuget.org/packages/WindowsAzure.Storage/).
 * Když znovu vygenerujete přístupové klíče k úložišti, může to zneplatnit stávající tokeny SAS. Tento problém může nastat, když vygenerujete tokeny SAS s dlouhou dobou vypršení platnosti pro uložení v mezipaměti u klientů.
 

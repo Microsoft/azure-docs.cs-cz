@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 7eae71411a1a3772dbdbaa289a32cbc69fca0e5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f906ab5db35ce8b239eceac9cdc8244f230f5a77
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364883"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596022"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -30,9 +30,9 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace a pomáhá
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-- Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
@@ -63,7 +63,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 
 5.  Na první pohled vidíte, na celkovou dobu trvání transakce má největší vliv volání tabulky Azure Fabrikamaccount. Také vidíte, že výjimka způsobila jeho selhání. Kliknutím na libovolnou položku v seznamu můžete na pravé straně zobrazit její podrobnosti. [Další informace o prostředí pro diagnostiku transakcí](../../azure-monitor/app/transaction-diagnostics.md)
 
-    ![Podrobnosti o operaci](media/tutorial-performance/operation-details.png)
+    ![Detaily operace](media/tutorial-performance/operation-details.png)
     
 
 6.  **Profiler** pomáhá s podrobnější diagnostikou na úrovni kódu díky zobrazení skutečného kódu spuštěného pro příslušnou operaci a času, který zabraly jednotlivé kroky. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
@@ -87,7 +87,7 @@ Application Insights Analytics poskytuje bohatý dotazovací jazyk umožňujíc�
 
 2. Na panelu se otevře Application Insights Analytics s dotazem pro každé zobrazení.  Tyto dotazy můžete spustit tak, jak jsou, nebo je upravit podle vlastních potřeb.  První dotaz zobrazí dobu trvání této operace v průběhu času.
 
-    ![Analýzy](media/tutorial-performance/server-analytics.png)
+    ![Analýza](media/tutorial-performance/server-analytics.png)
 
 
 ## <a name="identify-slow-client-operations"></a>Identifikace pomalých operací klienta
@@ -115,7 +115,7 @@ Propojením shromážděných dat o výkonu serveru zpřístupňuje Application 
 
 2. Na panelu se otevře Application Insights Analytics s dotazem pro každé zobrazení. První dotaz zobrazí dobu trvání různých zobrazení stránek v průběhu času.
 
-    ![Analýzy](media/tutorial-performance/client-analytics.png)
+    ![Analýza](media/tutorial-performance/client-analytics.png)
 
 3.  Inteligentní diagnostika je funkce Application Insights Analytics, která v datech identifikuje jedinečné vzory.  Když kliknete na tečku inteligentní diagnostiky ve spojnicovém grafu, spustí se stejný dotaz bez záznamů, které anomálii způsobily.  Podrobnosti o těchto záznamech se zobrazí v části dotazu s komentáři, takže můžete identifikovat vlastnosti zobrazení stránek, které způsobují nadměrnou dobu trvání.
 

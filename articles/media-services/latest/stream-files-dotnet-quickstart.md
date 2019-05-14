@@ -1,6 +1,6 @@
 ---
 title: Streamování videosouborů pomocí služby Azure Media Services – .NET | Microsoft Docs
-description: Pomocí kroků v tomto rychlém startu můžete vytvořit nový účet služby Azure Media Services, zakódovat soubor a streamovat ho do Azure Media Playeru.
+description: Postupujte podle kroků v tomto kurzu k vytvoření nového účtu Azure Media Services, kódování souboru a Streamovat do Azure Media Playeru.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,23 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3a50d78645630e499b11f012da122b12b026ae6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3834b4f07f6450f498831accfa6640f55bc5855a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466837"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550177"
 ---
-# <a name="quickstart-stream-video-files---net"></a>Rychlý start: Streamování videosouborů – .NET
+# <a name="tutorial-stream-video-files---net"></a>Kurz: Streamování videosouborů – .NET
 
-Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
+V tomto kurzu se dozvíte, jak snadné je spustit streamování videa na širokou škálu prohlížečů a zařízení pomocí služby Azure Media Services a kódování. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
 
-Na konci rychlého startu budete schopni streamovat video.  
+Na konci tohoto kurzu budete Streamovat videa.  
 
 ![Přehrávání videa](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -89,7 +89,7 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtů úložiště, které jste vytvořili v rámci tohoto rychlého startu, odstraňte tuto skupinu prostředků.
+Pokud už nepotřebujete žádné prostředky ve vaší skupině prostředků, včetně Media Services a účty úložiště, který jste vytvořili pro účely tohoto kurzu, odstraňte skupinu prostředků.
 
 Spusťte následující příkaz rozhraní příkazového řádku:
 

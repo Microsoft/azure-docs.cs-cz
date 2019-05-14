@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150753"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603083"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
 
@@ -56,7 +56,7 @@ Proveďte následující kroky, pokud vrací zařízení v USA a Kanadě.
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
 3. Vyzvednutí s UPS naplánujte. Chcete-li vyzvednutí naplánovat:
 
-    - Volání místní UPS (specifické pro zemi bezplatné číslo).
+    - Volání místní UPS (specifické pro zemi/oblast bezplatné číslo).
     - Ve volání nabídka zpětné dodávky sledovací číslo, jak je znázorněno v tištěné popisek.
     - Pokud není uveden v uvozovkách sledovacího čísla, bude vyžadovat UPS vám umožní platit poplatek za další využití během vyzvednutí.
     - Namísto plánování vyzvednutí, můžete také odkládací disku Data Box na nejbližší umístění pro odložení.
@@ -78,7 +78,7 @@ Pokud vrácení zařízení v Evropě, proveďte následující kroky.
 
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
 3. Pokud zařízení vracíte v Evropě prostřednictvím DHL, vyžádejte si vyzvednutí tak, že navštívíte web DHL a zadáte číslo přepravního lístku.
-4. Přejděte na web DHL Express a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**.
+4. Přejít na web DHL Express země/oblast a tlačítko **rezervuje kolekci Kurýrní > eReturn dodávky**.
 
     ![Zpáteční zásilku DHL](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     

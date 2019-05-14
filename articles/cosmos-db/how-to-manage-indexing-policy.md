@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0b47ffd77ee23f997bb7de2ea41f83c2854cba72
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068677"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550891"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Spravovat zásady indexování ve službě Azure Cosmos DB
 
@@ -22,6 +22,9 @@ Ve službě Azure Cosmos DB, data zaindexují následující [zásadám indexov�
 - pomocí jedné ze sad SDK
 
 [Indexování aktualizace zásad](index-policy.md#modifying-the-indexing-policy) aktivuje transformaci indexu. Průběh této transformace lze sledovat také ze sady SDK.
+
+> [!NOTE]
+> Jako součást upgradu sady SDK a portál vyvíjíme zásad index souladu s novým rozložením index, který jste zavedli jsme do nových kontejnerů. Pomocí této nové rozložení jsou všechny primitivní datové typy index rozsahu s úplnou přesností (-1). Proto typy index a přesnost nezveřejňují uživateli zobrazovat. V budoucnu uživatelé budou potřebovat jednoduše přidat do části includedPaths cesty a ignorování indexKinds a přesnosti. Tato změna nemá žádný vliv na výkon a můžete pokračovat v aktualizaci zásady indexování pomocí stejné syntaxe. Můžete nadále používat všechny ukázky ve stávající dokumentaci se aktualizovat zásady index.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 

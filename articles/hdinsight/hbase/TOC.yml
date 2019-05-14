@@ -1,8 +1,8 @@
 - name: Dokumentace ke službě HDInsight
   href: /azure/hdinsight
-- name: Apache HBase ve službě HDInsight
+- name: Přehled
   items:
-    - name: Přehled
+    - name: Apache HBase v HDInsightu
       href: apache-hbase-overview.md
     - name: Součásti systému Apache Hadoop ve službě HDInsight
       href: ../hdinsight-component-versioning.md
@@ -10,6 +10,10 @@
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
       maintainContext: true
+- name: Šablony Rychlý start
+  items:
+    - name: Dotazování na Apache HBase – HBase Shell
+      href: ./query-hbase-with-hbase-shell.md
 - name: Začínáme
   items:
     - name: Začínáme s Apache HBase a NoSQL

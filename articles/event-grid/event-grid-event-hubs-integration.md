@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176612"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603438"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: Streamování velkých objemů dat do datového skladu
 Azure [služby Event Grid](overview.md) je služba inteligentního směrování událostí, která umožňuje reagovat na upozornění (události) z aplikací a služeb. Může například aktivovat funkci Azure Functions pro zpracování dat služby Event Hubs, která byla zachycena do služby Azure Blob storage nebo Azure Data Lake Storage a migraci dat do jiných úložišť dat. To [ukázka integrace Event Hubs a služby Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak pomocí služby Event Hubs s využitím služby Event Grid můžou hladce migrovat zachycená data Event Hubs ze služby blob storage do SQL Data Warehouse.
@@ -45,7 +45,7 @@ V tomto článku proveďte následující kroky:
 K dokončení tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Visual studio 2017 verze 15.3.2 nebo vyšší](https://www.visualstudio.com/vs/) se sadami funkcí pro vývoj desktopových aplikací pomocí .NET, vývoj pro Azure, vývoj pro ASP.NET a web, vývoj aplikací Node.js a pro vývoj v jazyce Python.
+* [Visual studio. 2019](https://www.visualstudio.com/vs/) s úlohami pro: vývoj desktopových aplikací .NET, vývoj pro Azure, vývoj pro ASP.NET a web, vývoj v Node.js a vývoj v jazyce Python.
 * Stáhněte si [EventHubsCaptureEventGridDemo ukázkový projekt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) k vašemu počítači.
 
 ## <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
@@ -196,7 +196,7 @@ Vytvoření tabulky v datovém skladu spuštěním [CreateDataWarehouseTable.sql
 
 ## <a name="publish-the-azure-functions-app"></a>Publikování aplikace Azure Functions
 
-1. Spusťte Visual Studio 2017. 
+1. Spusťte sadu Visual Studio.
 2. Otevřít **EventHubsCaptureEventGridDemo.sln** řešení, které jste stáhli ze služby [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) jako součást požadavků.
 3. V průzkumníku řešení klikněte pravým tlačítkem na **FunctionEGDWDumper** a vyberte **Publikovat**.
 

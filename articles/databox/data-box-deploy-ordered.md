@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 05d522550b96813c6b8326d83f09d7028466c835
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926219"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604086"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednávky zařízení Azure Data Box
 
@@ -65,8 +65,8 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Předplatné     | Vyberte předplatné EA, CSP nebo Azure sponsorship pro službu Data Box. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
-    |Typ přenosu     | Vyberte **Importovat do Azure**.        |
-    |Zdrojová země     |   Vyberte zemi, ve které jsou data aktuálně umístěna.         |
+    |Typ převodu     | Vyberte **Importovat do Azure**.        |
+    |Zdrojová země     |   Vyberte zemi nebo oblast, kde se aktuálně nachází vaše data.         |
     |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést.        |
 
 5. Vyberte **Data Box**. Maximální využitelné kapacity na jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.

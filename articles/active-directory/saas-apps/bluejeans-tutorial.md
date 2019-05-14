@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463540"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Kurz: Integrace Azure Active Directory s BlueJeans
 
@@ -108,7 +108,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
     ![BlueJeans domény a adresy URL jednotného přihlašování – informace](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-   - V **identifikátor** textové pole, zadejte následující příkaz: `https://samlsp.bluejeans.com`
+   - V **identifikátor** textové pole, zadejte následující příkaz: `http://samlsp.bluejeans.com`
     
    - V **přihlašovací adresa URL** textového pole zadejte URL cílové stránky, které jste získali od BlueJeans (k získání této hodnoty, můžete kontaktovat [tým podpory BlueJeans klienta](https://support.bluejeans.com/contact)): `https://<companyname>.bluejeans.com`
     
@@ -160,9 +160,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte násle
 
     ![Uložit změny](./media/bluejeans-tutorial/ic785874.png "uložit změny")
 
-    a. V **Id uživatele** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. V **Id uživatele** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    b. V **e-mailu** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. V **e-mailu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     c. Klikněte na tlačítko **ULOŽTE změny**.
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa009ed99b2067b5a3cbde910a7265f42ea478f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 395172fc77ff0c2e07658386ba827022af1ad26c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60917575"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595479"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Rychlý start: Pro Image s SDK vyhledávání obrázků Bingu pro vyhledáváníC#
 
@@ -25,10 +25,10 @@ Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání ob
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) s dalším zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Požadavky
-* Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/).
+* Libovolná edice [sady Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/vs/whatsnew/).
 * [Balíček NuGet Cognitive Image Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0)
 
-K instalaci sady SDK Vyhledávání obrázků Bingu do sady Visual Studio použijte možnost `Manage NuGet Packages` v Průzkumníku řešení sady Visual Studio.
+K instalaci sady SDK vyhledávání obrázků Bingu v sadě Visual Studio můžete použít **spravovat balíčky NuGet** možnost **Průzkumníka řešení**.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

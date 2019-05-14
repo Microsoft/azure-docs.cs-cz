@@ -66,6 +66,8 @@
     - name: Velikosti a typy virtuálních počítačů
       href: sizes.md
       items:
+        - name: Virtuální počítače 2. generace
+          href: generation-2.md
         - name: Obecné účely
           href: sizes-general.md
           items:

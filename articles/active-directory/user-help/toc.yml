@@ -28,9 +28,10 @@
       href: user-help-auth-app-overview.md
     - name: Stažení a instalace aplikace
       href: user-help-auth-app-download-install.md
-    - name: Přidání přehledu účtů
-      href: user-help-auth-app-add-account-overview.md
+    - name: Přidání účtů
       items:
+        - name: Přehled
+          href: user-help-auth-app-add-account-overview.md
         - name: Přidání pracovního nebo školního účtu
           href: user-help-auth-app-add-work-school-account.md
         - name: Přidání osobního účtu Microsoft
@@ -63,9 +64,10 @@
       href: user-help-security-info-overview.md
     - name: Přidání bezpečnostních údajů během přihlašování
       href: security-info-setup-signin.md
-    - name: Přehled metod přidání nebo aktualizace bezpečnostních údajů
-      href: security-info-add-update-methods-overview.md
+    - name: Metody přidání nebo aktualizace bezpečnostních údajů
       items:
+        - name: Přehled
+          href: security-info-add-update-methods-overview.md
         - name: Nastavení ověřovací aplikace
           href: security-info-setup-auth-app.md
         - name: Nastavení zasílání textových zpráv

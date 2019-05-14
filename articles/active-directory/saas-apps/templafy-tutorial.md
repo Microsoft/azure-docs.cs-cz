@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea2ead29ba1945213871ab76a65e33a4d7b27cc
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 843a4ef36d633b8b72453ba5eb2b969af4649531
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441500"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-templafy"></a>Kurz: Integrace Azure Active Directory s Templafy
 
@@ -120,20 +120,20 @@ Ke konfiguraci Azure AD jednotné přihlašování s Templafy, proveďte násled
 
     | Název | Zdrojový atribut| Obor názvů  |
     | ---------------| --------------- | --------- |
-    | givenName | user.givenname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | Příjmení | user.surname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | emailaddress | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`
-    | streetaddress | user.streetaddress | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | city | user.city | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | PSČ | user.postalcode | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | StátNeboKraj | user.state | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Země | user.country | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | pracovní funkce | user.jobtitle | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Oddělení | user.department | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Telefonní číslo | user.telephonenumber | `https://schemas.templafy.com/2016/06/identity/claims` |
-    | facsimilenumber | User.facsimiletelephonenumber | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | upn | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | NameIdentifier | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | givenName | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | Příjmení | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | emailaddress | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`
+    | streetaddress | user.streetaddress | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | city | user.city | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | PSČ | user.postalcode | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | StátNeboKraj | user.state | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Země | user.country | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | pracovní funkce | user.jobtitle | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Oddělení | user.department | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Telefonní číslo | user.telephonenumber | `http://schemas.templafy.com/2016/06/identity/claims` |
+    | facsimilenumber | User.facsimiletelephonenumber | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | upn | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | NameIdentifier | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.

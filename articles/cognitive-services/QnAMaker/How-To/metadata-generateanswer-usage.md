@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/10/2019
 ms.author: tulasim
-ms.openlocfilehash: b634467381dc97e4a733e862e86632a089bf5f67
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 278040cb487df6731df1ad3e18435f6e12ca9d50
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727315"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594050"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědí znalostní báze s rozhraním GenerateAnswer API a metadat
 
@@ -71,8 +71,8 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 |--|--|--|--|
 |Parametr trasa adresy URL|ID znalostní báze|string|Identifikátor GUID pro znalostní báze.|
 |Parametr trasa adresy URL|Hostitel koncového bodu QnA maker|string|Název hostitele koncového bodu nasazené ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
-|Hlavička|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
-|Hlavička|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Záhlaví|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
+|Záhlaví|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo POST|JSON – objekt|JSON|Dotaz s nastavením|
 
 
@@ -148,7 +148,7 @@ Příklad text JSON vypadá takto:
 
 ## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>Používání metadat vám umožní filtrovat odpovědi ve vlastní metadatové značky
 
-Přidání metadat umožňuje filtrovat podle značky těchto metadat odpovědi. Vezměte v úvahu následující nejčastější dotazy týkající se data. Kliknutím na ikonu metadata přidáte metadata do znalostní báze.
+Přidání metadat umožňuje filtrovat podle značky těchto metadat odpovědi. Přidat sloupec metadat z **možnosti zobrazení** nabídky. Přidat metadata do znalostní báze po kliknutí na metadata **+** ikona pro přidání páru metadat. Tento pár se skládá z jednoho klíče a jedna hodnota.
 
 ![Přidání metadat](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 

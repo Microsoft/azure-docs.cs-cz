@@ -9,12 +9,12 @@ ms.date: 02/02/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2a050f8bc5d2437c7cdbadcf3296c2ef6d4659dc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 270059537fc8d06648c86088b22aef5b78ff00ec
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728635"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606294"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kurz: Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
 
@@ -80,7 +80,7 @@ Všimněte si, že je nastavené [datum vypršení platnosti](concepts.md#event-
 
 Potřebujete aplikaci, která dokáže načítat události z hybridního připojení. Tuto operaci provádí [ukázka příjemce hybridního připojení Microsoft Azure Event Grid pro jazyk C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination). Už jste dokončili požadované kroky.
 
-1. Ujistěte se, že máte sadu Visual Studio 2017 verze 15.5 nebo novější.
+1. Ujistěte se, že máte Visual Studio 2019 nebo novější.
 
 1. Naklonujte si úložiště na místní počítač.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 1344de526564ab623a51eb903951b6a2e866048d
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 1c5712fa8bbdb158992127f8f48d810a0a9b6f79
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523476"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603476"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastní hlasové první virtuální Asistenti ve verzi preview
 
@@ -24,7 +24,9 @@ Vlastní virtuálních asistentů pomocí hlasové služby Azure umožní vývoj
 
    ![Koncepční diagram přímou linku řeči Orchestrace služby flow](media/voice-first-virtual-assistants/overview.png "tok kanál řeči")
 
-Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první virtuální Asistenti jsou ideální doplněk k [virtuální pomocníka řešení](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) a [šablony organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction). I když s přímým přístupem řeči řádek můžete pracovat s robotovi kompatibilní, tyto zdroje poskytují opakovaně použitelné základní konverzační prostředí vysoce kvalitní a běžné podpůrné dovednosti a modely pro rychlé seznámení.
+
+Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první virtuální Asistenti jsou ideální doplněk k [virtuální pomocníka řešení a šablony organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). I když s přímým přístupem řeči řádek můžete pracovat s robotovi kompatibilní, tyto zdroje poskytují opakovaně použitelné základní konverzační prostředí vysoce kvalitní a běžné podpůrné dovednosti a modely pro rychlé seznámení.
+
 
 ## <a name="core-features"></a>Základní funkce
 

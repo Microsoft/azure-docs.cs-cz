@@ -15,7 +15,7 @@ ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
 ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2019
 ms.locfileid: "64702520"
@@ -114,7 +114,7 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 |IndicatorThreadType |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
 |Popis |Popis zjištěných hrozeb. |
 |TLPLevel |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
-|Spolehlivost |Hodnoty jsou *0 – 100*. |
+|Confidence |Hodnoty jsou *0 – 100*. |
 |Severity |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
 |FirstReportedDateTime |První zprostředkovatel ohlásil indikátoru. |
 |LastReportedDateTime |Čas posledního ukazatele viděla Interflow. |
@@ -137,7 +137,7 @@ Každý záznam v VMBoundPort je identifikován následující pole:
 | Vlastnost | Popis |
 |:--|:--|
 |Proces | Identita procesu (nebo skupiny procesů) se kterými port, který je přidružen.|
-|IP adresa | Port IP adresa (může být zástupný znak IP *0.0.0.0*) |
+|Ip | Port IP adresa (může být zástupný znak IP *0.0.0.0*) |
 |Port |Číslo portu |
 |Protocol (Protokol) | Protokol.  Například *tcp* nebo *udp* (pouze *tcp* momentálně se podporuje).|
  

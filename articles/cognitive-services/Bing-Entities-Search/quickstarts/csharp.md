@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: d31be245d906ba0405a44d4482272051982c943c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 211f33d5b217714b26dc39ad63f9d1427950589a
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473378"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595775"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý start: Odeslat žádost o vyhledávání pomocí API REST pro vyhledávání entit BinguC#
 
@@ -26,14 +26,15 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-* Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
-    * Chcete-li nainstalovat balíček NuGet v sadě Visual studio:
-        1. Klikněte pravým tlačítkem myši v Průzkumníku řešení
-        2. Klikněte na tlačítko **spravovat balíčky NuGet...**
-        3. Vyhledejte **newtonsoft.json** a instalace balíčku
+- Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 
-* Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
+- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. Chcete-li nainstalovat balíček NuGet v sadě Visual Studio:
+
+   1. Klikněte pravým tlačítkem na projekt v **Průzkumníka řešení**.
+   2. Vyberte **spravovat balíčky NuGet**.
+   3. Vyhledejte *Newtonsoft.Json* a instalaci balíčku.
+
+- Pokud používáte Linux nebo MacOS, tuto aplikaci můžete spustit pomocí [Mono](https://www.mono-project.com/).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]

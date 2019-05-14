@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory se systémy Pega | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Pega systémy.
+description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Pega systémy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,231 +15,234 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 34fe5d85829d909989513214406ba96ea5be0aa8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 195e7bf21fe1f6017705883f2ec692c182f15375
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271097"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Kurz: Integrace Azure Active Directory s Pega systémy
 
-V tomto kurzu se dozvíte, jak integrovat systémy Pega se službou Azure Active Directory (Azure AD).
-Integrace Pega systémy s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat systémy Pega s Azure Active Directory (Azure AD).
 
-* Můžete řídit ve službě Azure AD, který má přístup k systémům Pega.
-* Uživatelům se automaticky přihlášeni k systémům Pega (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+Tato integrace poskytuje tyto výhody:
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Můžete řídit, kdo má přístup k systémům Pega Azure AD.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k systémům Pega (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
+
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Pega systémy, potřebujete následující položky:
+Konfigurace integrace Azure AD s Pega systémy, musíte mít:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Systémy Pega jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete si zaregistrovat [zkušební verze na jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné Pega systémy, které má single sign-on povoleno.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
 
-* Podporuje systémy Pega **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* Systémy Pega podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování a zahájené pomocí IdP.
 
-## <a name="adding-pega-systems-from-the-gallery"></a>Přidání Pega systémů z Galerie
+## <a name="add-pega-systems-from-the-gallery"></a>Přidat Pega systémů z Galerie
 
-Pokud chcete nakonfigurovat integraci systémů Pega do služby Azure AD, budete muset přidat Pega systémů z Galerie na váš seznam spravovaných aplikací SaaS.
+Postup nastavení integrace systémů Pega do služby Azure AD, budete muset přidat Pega systémů z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Přidat Pega systémů z galerie, postupujte následovně:**
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+    ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+2. Přejděte na **podnikové aplikace** > **všechny aplikace**.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![Vyberte novou aplikaci](common/add-new-app.png)
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+4. Do vyhledávacího pole zadejte **Pega systémy**. Vyberte **Pega systémy** ve výsledcích hledání a pak vyberte **přidat**.
 
-4. Do vyhledávacího pole zadejte **Pega systémy**vyberte **Pega systémy** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![Systémy Pega v seznamu výsledků](common/search-new-app.png)
+     ![Výsledky vyhledávání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Pega systémy založené na test uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v systémech Pega.
+V této části budete konfigurovat a otestovat Azure AD jednotné přihlašování s Pega systémy pomocí testovacího uživatele s názvem Britta Simon.
+Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v systémech Pega.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Pega systémy, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Pega systémy, které potřebujete k dokončení těchto kroků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Pega systémy Single Sign-On](#configure-pega-systems-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Pega systémy](#create-pega-systems-test-user)**  – Pokud chcete mít protějšek Britta Simon Pega systémů, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
+2. **[Konfigurace Pega systémy jednotného přihlašování](#configure-pega-systems-single-sign-on)**  na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
+5. **[Vytvoření zkušebního uživatele Pega systémy](#create-a-pega-systems-test-user)**  připojený k Azure AD zastoupení uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Pega systémy, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s Pega systémy, proveďte tyto kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Pega systémy** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Pega systémy** integrace stránce aplikace vyberte **jednotného přihlašování**:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Vyberte jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit ikonu](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V **základní konfiguraci SAML** dialogové okno, pokud chcete nakonfigurovat aplikace v režimu zahájené pomocí IdP, proveďte následující kroky.
 
-    ![Pega systémy domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Dialogové okno základní konfigurace SAML](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
+    1. V **identifikátor** pole, zadejte adresu URL v tomto vzoru:
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
+       `https://<customername>.pegacloud.io:443/prweb/sp/<instanceID>`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+    1. V **adresy URL odpovědi** pole, zadejte adresu URL v tomto vzoru:
+
+       `https://<customername>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
+
+5. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **nastavit další adresy URL** a proveďte následující kroky.
 
     ![Pega systémy domény a adresy URL jednotného přihlašování – informace](common/both-advanced-urls.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte znaménko na hodnotu adresy URL.
+    1. V **přihlašovací adresa URL** zadejte znaménko na hodnotu adresy URL.
 
-    b. V **stav přenosu** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
-
-    > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací identifikátor, adresa URL odpovědi na adresu URL a adresy URL stavu. Můžete najít hodnoty identifikátor a adresa URL odpovědi z aplikace Pega, což je vysvětleno dále v tomto kurzu. Stav přenosu, kontaktujte [tým podpory klientské systémy Pega](https://www.pega.com/contact-us) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
-
-6. Systémy Pega aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
-
-    ![image](common/edit-attribute.png)
-
-7. Kromě toho výše systémy Pega aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
-
-    | Název | Zdrojový atribut|
-    | ------------------- | -------------------- |
-    | uid | *********** |
-    | CN  | *********** |
-    | mail | *********** |
-    | accessgroup | *********** |
-    | organizace | *********** |
-    | orgdivision | *********** |
-    | orgunit | *********** |
-    | workgroup | *********** |
-    | Telefon | *********** |
+    1. V **stav přenosu** pole, zadejte adresu URL v tomto vzoru: `https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
-    > Toto jsou konkrétní hodnoty zákazníka. Zadejte odpovídající hodnoty.
+    > Hodnoty za předpokladu, že tady jsou zástupné symboly. Budete muset použít skutečné identifikátor, adresa URL pro odpověď, přihlaste se na adresu URL a adresy URL relay stavu. Můžete mít identifikátor a odpovědět hodnoty adresy URL z Pega aplikace, jak je popsáno dále v tomto kurzu. K získání hodnoty stavu relay, obraťte se [tým podpory Pega systémy](https://www.pega.com/contact-us). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+6. Systémy Pega aplikace potřebuje kontrolní výrazy SAML v určitém formátu. Aby je ve správném formátu, budete muset přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje výchozí atributy. Vyberte **upravit** ikony otevřete **atributy uživatele** dialogové okno:
 
-    ![image](common/new-save-attribute.png)
+    ![Atributy uživatele](common/edit-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+7. Kromě atributů, které je znázorněno na předchozím snímku obrazovky systémy Pega aplikace vyžaduje několik další atributy se mají předat zpět jako odpověď SAML. V **deklarace identity uživatelů** část **atributy uživatele** dialogové okno pak dokončete následující kroky a přidejte tyto atributy tokenu SAML:
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    
+   - `uid`
+   - `cn`
+   - `mail`
+   - `accessgroup`  
+   - `organization`  
+   - `orgdivision`
+   - `orgunit`
+   - `workgroup`  
+   - `Phone`
 
-    c. Nechte **Namespace** prázdné.
+    > [!NOTE]
+    > Tyto hodnoty jsou specifické pro vaši organizaci. Zadejte odpovídající hodnoty.
 
-    d. Vyberte zdroj jako **atribut**.
+    1. Vyberte **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogové okno:
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    ![Vyberte Přidat novou deklaraci](common/new-save-attribute.png)
 
-    f. Klikněte na tlačítko **Ok**
+    ![Správa dialogové okno deklarace identity uživatele](common/new-attribute-details.png)
 
-    g. Klikněte na **Uložit**.
+    1. V **název** zadejte název atributu, který je zobrazený pro tento řádek.
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+    1. Nechte **Namespace** prázdné.
+
+    1. Pro **zdroj**vyberte **atribut**.
+
+    1. V **zdrojový atribut** vyberte hodnotu atributu zobrazený pro tento řádek.
+
+    1. Vyberte **OK**.
+
+    1. Vyberte **Uložit**.
+
+8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** odkaz **kód XML metadat federace** , podle požadavků vaší a uložte certifikát v počítači:
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-9. Na **nastavení Pega systémy** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+9. V **nastavení Pega systémy** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    1. **Adresa URL pro přihlášení**.
 
-    b. Identifikátor Azure AD
+    1. **Identifikátor služby Azure AD**.
 
-    c. Adresa URL – odhlášení
+    1. **Odhlašovací adresa URL**.
 
 ### <a name="configure-pega-systems-single-sign-on"></a>Konfigurace Pega systémy jednotného přihlašování
 
-1. Ke konfiguraci jednotného přihlašování na **Pega systémy** straně, otevřete **Pega portál** pomocí účtu správce v jiném okně prohlížeče.
+1. Ke konfiguraci jednotného přihlašování na **Pega systémy** straně, přihlaste se k portálu Pega pomocí účtu správce v jiném okně prohlížeče.
 
-2. Vyberte **vytvořit** -> **SysAdmin** -> **ověřovací službu**.
+2. Vyberte **vytvořit** > **SysAdmin** > **ověřovací službu**:
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
+    ![Vyberte službu ověřování](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
-3. Proveďte následující kroky na **vytvořit ověřovací službu** obrazovky:
+3. Proveďte následující kroky na **vytvořit ověřovací službu** obrazovky.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
+    ![Vytvoření obrazovky pro ověřovací službu](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
-    a. Vyberte **SAML 2.0** z typu
+    1. V **typ** seznamu vyberte **SAML 2.0**.
 
-    b. V **název** textového pole zadejte libovolný název například jednotného přihlašování k Azure AD
+    1. V **název** zadejte libovolný název (například **jednotného přihlašování k Azure AD**).
 
-    c. V **krátký popis** textového pole zadejte popis, žádné  
+    1. V **krátký popis** zadejte popis.  
 
-    d. Klikněte na **vytvořit a otevřít** 
+    1. Vyberte **vytvořit a otevřít**.
     
-4. V **zprostředkovatele Identity (IdP) informace** části, klikněte na **metadat zprostředkovatele identity Import** a vyhledejte soubor metadat, který jste si stáhli z portálu Azure portal. Klikněte na tlačítko **odeslat** načtení metadat.
+4. V **zprostředkovatele Identity (IdP) informace** vyberte **metadat zprostředkovatele identity Import** a přejděte k souboru metadat, který jste si stáhli z webu Azure portal. Klikněte na tlačítko **odeslat** načtení metadat:
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/pegasystems-tutorial/tutorial_pegasystems_admin2.png)
+    ![Oddíl informací identity zprostředkovatele (IdP)](./media/pegasystems-tutorial/tutorial_pegasystems_admin2.png)
     
-5. To bude naplnění dat zprostředkovatele identity, jak je znázorněno níže.
+    Import se načítají data zprostředkovatele identity, jak je znázorněno zde:
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/pegasystems-tutorial/tutorial_pegasystems_admin3.png)
+    ![Importovaná data zprostředkovatele identity](./media/pegasystems-tutorial/tutorial_pegasystems_admin3.png)
     
-6. Proveďte následující kroky na **nastavení poskytovatele služeb (SP)** části:
+6. Dokončete následující kroků v **nastavení poskytovatele služeb (SP)** oddílu.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
+    ![Nastavení poskytovatele služeb](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
 
-    a. Kopírovat **identifikace entit** hodnotu a vložte ji do **identifikátor** textového pole v **základní konfiguraci SAML** na webu Azure Portal.
+    1. Kopírovat **identifikace entit** hodnotu a vložte ho do **identifikátor** pole **základní konfiguraci SAML** části webu Azure Portal.
 
-    b. Kopírovat **Assertion Consumer Service (ACS) umístění** hodnotu a vložte ji do **adresy URL odpovědi** textového pole v **základní konfiguraci SAML** na webu Azure Portal.
+    1. Kopírovat **Assertion Consumer Service (ACS) umístění** hodnotu a vložte ho do **adresy URL odpovědi** pole **základní konfiguraci SAML** části webu Azure Portal.
 
-    c. Vyberte **zakázat žádost o podepsání**.
+    1. Vyberte **zakázat žádost o podepsání**.
 
-7. Klikněte na **Uložit**.
+7. Vyberte **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Vyberte možnost Všichni uživatelé](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Vyberte **nového uživatele** v horní části obrazovky:
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Vyberte nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. V **uživatele** dialogové okno pole, proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno uživatelského](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** zadejte **brittasimon @\<doména_společnosti >.\< Rozšíření >**. (Například BrittaSimon@contoso.com.)
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k systémům Pega.
+V této části se budou moci používat jednotné přihlašování Azure tím, že udělíte přístup k systémům Pega Britta Simon.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Pega systémy**.
 
@@ -247,35 +250,35 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 2. V seznamu aplikací vyberte **Pega systémy**.
 
-    ![Odkaz Pega systémy v seznamu aplikací](common/all-applications.png)
+    ![Seznam aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V levém podokně vyberte **uživatelů a skupin**:
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogu **přiřadit**.
 
-### <a name="create-pega-systems-test-user"></a>Vytvoření Pega systémy testovacího uživatele
+### <a name="create-a-pega-systems-test-user"></a>Vytvoření zkušebního uživatele Pega systémy
 
-Cílem této části je vytvořte uživatele Britta Simon v systémech Pega. Práce s [tým podpory klientské systémy Pega](https://www.pega.com/contact-us) vytvořit uživatele v Pega systémy.
+Dále je třeba vytvořit uživatele s názvem Britta Simon v systémech Pega. Práce s [tým podpory Pega systémy](https://www.pega.com/contact-us) pro vytváření uživatelů.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Pega systémy na přístupovém panelu, vám by měl být automaticky přihlášeni ke Pega systémy, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice Pega systémy na přístupovém panelu, můžete by měl být automaticky přihlášeni k instanci Pega systémy, u kterého nastavíte jednotné přihlašování. Další informace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

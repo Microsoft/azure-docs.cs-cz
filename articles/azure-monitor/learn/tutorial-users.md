@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: e46dae199f4d45c325e41fa5432e98cba9a2f4ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61367160"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601554"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -33,9 +33,9 @@ Azure Application Insights shromažďuje informace o využití a pomáhá pochop
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-- Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+- Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
@@ -59,11 +59,11 @@ Panel **Uživatelé** umožňuje různými způsoby porozumět důležitým podr
 
     ![Změna časového rozsahu](media/tutorial-users/TimeRange.png)
 
-4. Klikněte na rozevírací nabídku **Rozdělit podle** a přidejte do grafu rozpis podle jednotlivých vlastností uživatele.  Vyberte **Země nebo oblast**.  Graf obsahuje stejná data, ale umožňuje zobrazit rozpis počtu uživatelů v jednotlivých zemích.
+4. Klikněte na rozevírací nabídku **Rozdělit podle** a přidejte do grafu rozpis podle jednotlivých vlastností uživatele.  Vyberte **Země nebo oblast**.  Graf obsahuje stejná data, ale umožňuje zobrazit rozpis počtu uživatelů pro každou zemi/oblast.
 
     ![Graf Země nebo oblast](media/tutorial-users/CountryorRegion.png)
 
-5. Umístěte kurzor nad různé pruhy v grafu a všimněte si, že počty pro jednotlivé země odrážejí pouze časový interval, který daný pruh představuje.
+5. Umístěte kurzor na různé řádky v grafu a Všimněte si, že počet pro každou zemi/oblast odráží pouze časové okno reprezentována tento panel.
 6. Podívejte se na sloupec **Přehledy** na pravé straně, který provádí analýzu dat o vašich uživatelích.  Najdete zde informace, jako je počet jedinečných relací v daném časovém období a záznamy se společnými vlastnostmi, které tvoří významnou část dat o uživatelích. 
 
     ![Sloupec Přehledy](media/tutorial-users/insights.png)

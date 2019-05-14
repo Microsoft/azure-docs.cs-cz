@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077560"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595750"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k službě IoT hub
 
@@ -39,7 +39,7 @@ Skripty rozhraní příkazového řádku spouštěné v tomto kurzu využívají
 az extension add --name azure-cli-iot-ext
 ```
 
-Aplikace simulátoru zařízení, kterou budete v tomto kurzu spouštět, je napsána v jazyce Node.js. Na počítači používaném pro vývoj potřebujete mít Node.js v4.x.x nebo novější.
+Aplikace simulátoru zařízení, kterou budete v tomto kurzu spouštět, je napsána v jazyce Node.js. Potřebujete Node.js v10.x.x, nebo později na vývojovém počítači.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 

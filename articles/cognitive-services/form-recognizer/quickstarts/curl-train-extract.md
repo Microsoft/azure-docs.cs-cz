@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Trénování modelu a extrahovat data formuláře pomocí příkazu cURL – nástroj pro rozpoznávání formuláře'
+title: 'Rychlý start: Trénování modelu a extrahovat data formuláře pomocí cURL – nástroj pro rozpoznávání formuláře'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formuláře pomocí cURL k natrénování modelu a extrahovat data z formuláře.
 author: PatrickFarley
@@ -9,35 +9,35 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: f5c87457f5d19b107f5722bc8c6a95174555332a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4a030e1bf35f38b6aba859eb538eb7d7580d255d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546346"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603123"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahování dat formuláře pomocí rozhraní REST API pomocí cURL
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
-V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formuláře pomocí cURL k trénování a stanovíte jeho skóre formulářů k extrakci páry klíč hodnota a tabulky.
+V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formulář Azure pomocí cURL k trénování a stanovíte jeho skóre formulářů k extrakci páry klíč hodnota a tabulky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-
-- Jste získali přístup k verzi preview pro formulář rozpoznávání omezený přístup. Pokud chcete získat přístup k verzi preview, prosím vyplňte a odešlete [Cognitive Services pro rozpoznávání formulář žádosti o přístup](https://aka.ms/FormRecognizerRequestAccess) formuláře.
-- Musíte mít [cURL](https://curl.haxx.se/windows/).
-- Klíč předplatného musí mít pro formulář Rozlišovače. Postupujte podle pokynů jednoúčelovou předplatné [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) předplatit Rozlišovač formuláře a získejte klíč. Nepoužívejte víc služeb předplatného, jak to nebude zahrnovat službu rozpoznávání formuláře.
-- Musí mít minimální sadu pěti formy stejného typu. Můžete použít [ukázkovou datovou sadou](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start.
+Abyste mohli absolvovat tento rychlý start, musíte mít:
+- Přístup k rozpoznávání formuláře omezený přístup ve verzi Preview. Pokud chcete získat přístup k verzi preview, vyplňte a odešlete [žádost o přístup formulář Rozlišovač](https://aka.ms/FormRecognizerRequestAccess) formuláře.
+- [cURL](https://curl.haxx.se/windows/) nainstalované.
+- Klíč předplatného pro formulář Rozlišovače. Postupujte podle pokynů jednoúčelovou předplatné [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) předplatit Rozlišovač formuláře a získejte klíč. Nepoužívejte víc služeb předplatného, protože nezahrnuje službu rozpoznávání formuláře.
+- Sada aspoň pět formy stejného typu. Můžete použít [ukázkovou datovou sadou](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start.
 
 ## <a name="train-a-form-recognizer-model"></a>Trénování modelu Rozlišovač formuláře
 
-Nejprve je třeba sadu trénovací data. Můžete použít data v Azure Blob nebo vlastní místní trénovací data. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Alternativně můžete použít jeden prázdný formulář; Název formuláře souboru obsahuje slovo "prázdný".
+Nejprve budete potřebovat sadu trénovací data. Můžete použít data z objektu blob Azure nebo vlastní místní trénovací data. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář. Název souboru formuláře musí obsahovat slovo "prázdný".
 
-K natrénování modelu formuláře Rozlišovač použití dokumentů v kontejnerech objektů Blob v Azure, zavolejte **trénování** rozhraní API pomocí provádí následující příkaz cURL. Před spuštěním příkazu, proveďte následující změny:
+K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí příkazu cURL, který následuje. Před spuštěním příkazu, proveďte následující změny:
 
-* Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Najdete ho na kartě Přehled prostředků vaší Rozlišovač formuláře.
-* Nahraďte `<SAS URL>` kontejneru Azure Blob Storage sdílet přístup k podpisu (SAS) adresy URL, kde se nachází trénovací data.  
-* Místo `<subscription key>` použijte váš klíč předplatného.
+1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
+1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data.  
+1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
@@ -84,17 +84,18 @@ Zobrazí se `200 (Success)` odpověď se následující výstup JSON:
 }
 ```
 
-Poznamenejte si `"modelId"` hodnota; je budete potřebovat následující postup.
+Poznámka: `"modelId"` hodnotu. Je třeba v následujících krocích.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Extrahování páry klíč hodnota a tabulek z formulářů
 
-V dalším kroku se analýza dokumentu a z něj extrahovat páry klíč hodnota a tabulky. Volání **Model – analýza** rozhraní API pomocí provádí následující příkaz cURL. Před spuštěním příkazu, proveďte následující změny:
+V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodnota a tabulky. Volání **Model – analýza** rozhraní API pomocí příkazu cURL, který následuje. Před spuštěním příkazu, proveďte následující změny:
 
-* Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Najdete ho ve svém prostředku formuláře Rozlišovač **přehled** kartu.
-* Nahraďte `<modelID>` s ID modelu, který jste získali v předchozím kroku tohoto cvičení modelu.
-* Nahraďte `<path to your form>` s cestou k souboru do formuláře.
-* Místo `<subscription key>` použijte váš klíč předplatného.
-* Nahraďte `<file type>` s typem souboru – podporované typy pdf, image/jpeg, image/png.
+1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
+1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
+1. Nahraďte `<path to your form>` s cestou k souboru formuláře.
+1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
+1. Místo `<subscription key>` použijte váš klíč předplatného.
+
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
@@ -102,7 +103,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<mode
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON a představuje extrahované páry klíč hodnota a tabulky z formuláře.
+Úspěšná odpověď se vrátí ve formátu JSON. Představuje páry klíč hodnota a tabulky extrahovat z formuláře:
 
 ```bash
 {
@@ -427,7 +428,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<mode
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto průvodci použijete rozhraní REST API pro rozpoznávání formuláře pomocí cURL k natrénování modelu a spustíte ji v případě ukázka. V dalším kroku naleznete v referenční dokumentaci rozhraní API pro rozpoznávání formuláře podrobněji prozkoumat.
+V tomto rychlém startu jste použili rozhraní REST API pro rozpoznávání formuláře pomocí cURL k natrénování modelu a spustit ho v ukázkovém scénáři. V dalším kroku naleznete v referenční dokumentaci rozhraní API pro rozpoznávání formuláře podrobněji prozkoumat.
 
 > [!div class="nextstepaction"]
 > [Dokumentace k rozhraní REST API](https://aka.ms/form-recognizer/api)

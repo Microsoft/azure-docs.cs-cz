@@ -118,8 +118,8 @@
       href: functions-networking-options.md
     - name: IP adresy
       href: ip-addresses.md
-    - name: Místní funkce
-      href: functions-runtime-overview.md
+    - name: Funkce na platformě Kubernetes
+      href: functions-kubernetes-keda.md
 - name: Návody
   items:
     - name: Vývoj
@@ -142,6 +142,8 @@
           href: create-function-app-linux-app-service-plan.md
         - name: Ladění místních funkcí PowerShellu
           href: functions-debug-powershell-local.md
+        - name: Injektáž závislosti
+          href: functions-dotnet-dependency-injection.md
         - name: Správa připojení
           href: manage-connections.md
         - name: Zpracování chyb
@@ -173,6 +175,7 @@
       items:
         - name: Správa aplikace funkcí
           href: functions-how-to-use-azure-function-app-settings.md
+          displayName: 'app setting, application setting'
         - name: Nastavení verze modulu runtime
           href: set-runtime-version.md
         - name: Ruční registrace rozšíření
