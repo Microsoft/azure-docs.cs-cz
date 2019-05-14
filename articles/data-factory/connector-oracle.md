@@ -282,22 +282,22 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(podporováno pouze pro Oracle 10g a vyšší) |
 | CHAR |String |
-| DATOVÝ TYP CLOB |String |
-| DATE (Datum) |DateTime |
-| PLOVOUCÍ DESETINNOU ČÁRKOU |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| CELÉ ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| CLOB |String |
+| DATE |DateTime |
+| FLOAT |Decimal, String (if precision > 28) |
+| INTEGER |Decimal, String (if precision > 28) |
 | LONG |String |
-| DLOUHO NEZPRACOVANÉ |Byte[] |
+| LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| NUMBER |Decimal, String (if precision > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
-| ID ŘÁDKU |String |
-| ČASOVÉ RAZÍTKO |DateTime |
-| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |String |
-| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |String |
-| CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |
+| ROWID |String |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
+| TIMESTAMP WITH TIME ZONE |String |
+| UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
 | XML |String |
 
