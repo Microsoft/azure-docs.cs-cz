@@ -53,10 +53,10 @@ Pro rozhraní ODBC propojené služby jsou podporovány následující vlastnost
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Odbc** | Ano |
 | connectionString | Připojovací řetězec, s výjimkou části přihlašovací údaje. Můžete zadat připojovací řetězec se vzorem jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo použít systém DSN (název zdroje dat) nastavíte na počítači modul Runtime integrace s `"DSN=<name of the DSN on IR machine>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem).<br>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).| Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC.<br/>Povolené hodnoty jsou: **Základní** a **anonymní**. | Ano |
+| authenticationType | Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC.<br/>Povolené hodnoty jsou: **Základní** a **anonymní**. | Ano |
 | userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| pověření | Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `"RefreshToken=<secret refresh token>;"`. Toto pole můžete označte jako SecureString. | Ne |
+| credential | Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `"RefreshToken=<secret refresh token>;"`. Toto pole můžete označte jako SecureString. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad 1: použití základního ověřování**
