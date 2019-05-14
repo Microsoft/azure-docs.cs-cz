@@ -280,7 +280,7 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 | Oracle datového typu | Data Factory dočasné datový typ |
 |:--- |:--- |
 | BFILE |Byte[] |
-| BLOB |Byte[]<br/>(only supported on Oracle 10g and higher) |
+| BLOB |Byte[]<br/>(podporováno pouze pro Oracle 10g a vyšší) |
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
