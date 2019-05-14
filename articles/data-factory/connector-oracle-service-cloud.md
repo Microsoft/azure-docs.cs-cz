@@ -45,9 +45,9 @@ Pro cloudové služby Oracle propojené služby jsou podporovány následující
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **OracleServiceCloud** | Ano |
-| hostitel | Adresa URL instance cloudové služby Oracle.  | Ano |
-| uživatelské jméno | Uživatelské jméno, který používáte pro přístup k serveru Oracle cloudové služby.  | Ano |
-| heslo | Heslo odpovídající uživatelské jméno, které jste zadali v klíči uživatelské jméno. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
+| host | Adresa URL instance cloudové služby Oracle.  | Ano |
+| username | Uživatelské jméno, který používáte pro přístup k serveru Oracle cloudové služby.  | Ano |
+| password | Heslo odpovídající uživatelské jméno, které jste zadali v klíči uživatelské jméno. Můžete označit pole jako SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit ADF kopírování aktivity o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
