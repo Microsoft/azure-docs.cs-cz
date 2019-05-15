@@ -45,9 +45,9 @@ PayPal propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **PayPal** | Ano |
-| hostitel | Adresa URL PayPal instance. (to znamená api.sandbox.paypal.com)  | Ano |
-| ID klienta | ID klienta přidružené k aplikaci PayPal.  | Ano |
-| ClientSecret | Tajný kód klienta přidruženého k aplikaci PayPal. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| host | Adresa URL PayPal instance. (to znamená api.sandbox.paypal.com)  | Ano |
+| clientId | ID klienta přidružené k aplikaci PayPal.  | Ano |
+| clientSecret | Tajný kód klienta přidruženého k aplikaci PayPal. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
