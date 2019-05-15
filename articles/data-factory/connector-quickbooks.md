@@ -48,7 +48,7 @@ QuickBooks propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **QuickBooks** | Ano |
 | endpoint | Koncový bod serveru QuickBooks Online. (to znamená quickbooks.api.intuit.com)  | Ano |
-| % companyId | ID společnosti QuickBooks společnosti k autorizaci. Informace o tom, jak najít ID společnosti, naleznete v tématu [jak najít ID společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
+| companyId | ID společnosti QuickBooks společnosti k autorizaci. Informace o tom, jak najít ID společnosti, naleznete v tématu [jak najít ID společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
 | consumerKey | Uživatelský klíč pro ověřování OAuth 1.0. | Ano |
 | consumerSecret | Uživatelský tajný klíč pro ověřování OAuth 1.0. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | accessToken | Přístupový token k ověření OAuth 1.0. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
