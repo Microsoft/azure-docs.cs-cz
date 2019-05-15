@@ -165,7 +165,7 @@
           href: grant-access-to-create-subscription.md
         - name: Ověřování mezi tenanty
           href: authenticate-multi-tenant.md
-    - name: Auditování nasazení
+    - name: Auditování změn
       items:
         - name: Zobrazení protokolů aktivit
           href: resource-group-audit.md

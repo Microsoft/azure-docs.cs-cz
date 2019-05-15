@@ -44,5 +44,7 @@
       href: work-with-project-data-files.md
     - name: Přístup k datovým prostředkům
       href: access-data-resources-jupyter-notebooks.md
+    - name: Použití virtuálních počítačů pro vědecké zpracování dat
+      href: use-data-science-virtual-machine.md
     - name: Použití služeb Azure Machine Learning Services
       href: use-machine-learning-services-jupyter-notebooks.md

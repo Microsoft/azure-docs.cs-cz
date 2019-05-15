@@ -512,6 +512,8 @@
           href: data-explorer.md
         - name: Správa zásad indexování
           href: how-to-manage-indexing-policy.md
+        - name: Definování jedinečných klíčů
+          href: how-to-define-unique-keys.md
         - name: Příklady poddotazů jazyka SQL
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md

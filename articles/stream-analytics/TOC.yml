@@ -175,6 +175,8 @@
           href: stream-analytics-troubleshoot-query.md
         - name: Protokoly aktivit a diagnostické protokoly
           href: stream-analytics-job-diagnostic-logs.md
+        - name: Chyby dat
+          href: data-errors.md
     - name: Integrace se strojovým učením
       items:
         - name: Analýza subjektivního hodnocení s využitím modelů ML
