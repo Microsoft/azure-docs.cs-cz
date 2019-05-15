@@ -42,12 +42,12 @@ Phoenix propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Phoenix** | Ano |
-| hostitel | IP adresu nebo název hostitele serveru Phoenix. (to znamená 192.168.222.160)  | Ano |
+| host | IP adresu nebo název hostitele serveru Phoenix. (to znamená 192.168.222.160)  | Ano |
 | port | Port TCP, který Phoenix server používá k naslouchání pro připojení klientů. Výchozí hodnota je 8765. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ne |
 | httpPath | Částečné adresa URL odpovídající Phoenix serveru. (to znamená /gateway/sandbox/phoenix/version). Zadejte `/hbasephoenix0` při použití HDInsights clusteru.  | Ne |
-| authenticationType. | Mechanismus ověřování používaný pro připojení k serveru Phoenix. <br/>Povolené hodnoty jsou: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
-| uživatelské jméno | Uživatelské jméno pro připojení k serveru Phoenix.  | Ne |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| authenticationType | Mechanismus ověřování používaný pro připojení k serveru Phoenix. <br/>Povolené hodnoty jsou: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| username | Uživatelské jméno pro připojení k serveru Phoenix.  | Ne |
+| password | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
 | trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |
 | useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze zadaného souboru PEM. Výchozí hodnota je false.  | Ne |
