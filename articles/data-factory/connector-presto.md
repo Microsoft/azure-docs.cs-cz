@@ -45,19 +45,19 @@ Presto propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Presto** | Ano |
-| hostitel | IP adresu nebo název hostitele serveru, Presto. (to znamená 192.168.222.160)  | Ano |
-| endVerze | Verze Presto serveru. (to znamená 0.148-t)  | Ano |
-| Katalog | Kontext pro všechny žádosti na serveru, který katalogu.  | Ano |
+| host | IP adresu nebo název hostitele serveru, Presto. (to znamená 192.168.222.160)  | Ano |
+| serverVersion | Verze Presto serveru. (to znamená 0.148-t)  | Ano |
+| catalog | Kontext pro všechny žádosti na serveru, který katalogu.  | Ano |
 | port | Port TCP, Presto server používá pro naslouchání pro připojení klientů. Výchozí hodnota je 8080.  | Ne |
 | authenticationType. | Mechanismus ověřování používaný pro připojení k Presto serveru. <br/>Povolené hodnoty jsou: **Anonymní**, **LDAP** | Ano |
-| uživatelské jméno | Uživatelské jméno pro připojení k serveru Presto.  | Ne |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| username | Uživatelské jméno pro připojení k serveru Presto.  | Ne |
+| password | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
 | trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |
 | useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze zadaného souboru PEM. Výchozí hodnota je false.  | Ne |
 | allowHostNameCNMismatch | Určuje, jestli se vyžaduje název certifikátu SSL vydaný certifikační Autority tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je false.  | Ne |
 | allowSelfSignedServerCert | Určuje, jestli se má povolit certifikáty podepsané svým držitelem ze serveru. Výchozí hodnota je false.  | Ne |
-| ID časové zóny | Místní časové pásmo používaný pro připojení. Platné hodnoty pro tuto možnost, jsou určené v databázi IANA časové pásmo. Výchozí hodnota je časové pásmo systému.  | Ne |
+| timeZoneID | Místní časové pásmo používaný pro připojení. Platné hodnoty pro tuto možnost, jsou určené v databázi IANA časové pásmo. Výchozí hodnota je časové pásmo systému.  | Ne |
 
 **Příklad:**
 
