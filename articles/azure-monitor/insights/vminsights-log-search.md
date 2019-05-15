@@ -43,26 +43,26 @@ VMConnection a VMBoundPort platí následující pole a konvence:
 
 - Počítač: Plně kvalifikovaný název domény počítače generování sestav 
 - ID agenta: Jedinečný identifikátor pro počítač pomocí agenta Log Analytics  
-- Počítač: Název prostředku Azure Resource Manageru pro počítač vystavené ServiceMap. Je ve formátu *m-{GUID}*, kde *GUID* je stejný identifikátor GUID jako ID agenta  
+- Machine: Název prostředku Azure Resource Manageru pro počítač vystavené ServiceMap. Je ve formátu *m-{GUID}*, kde *GUID* je stejný identifikátor GUID jako ID agenta  
 - Proces: Název prostředku Azure Resource Manageru pro proces vystavené ServiceMap. Je ve formátu *p-{hexadecimální řetězec}*. Proces je jedinečný v rámci oboru počítače a ke generování ID procesu jedinečný mezi počítači, kombinovat pole počítače a procesu. 
 - Název procesu: Název spustitelného souboru procesu vytváření sestav.
 - Všechny IP adresy jsou řetězce v kanonickém formátu IPv4, například *13.107.3.160* 
 
 Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení, který je pak v příslušné tabulce.  Význam, zaznamená *VMConnection* tabulce představují logické seskupení a nikoli jednotlivé fyzické připojení, která jsou sledována. Fyzické připojení sdílejí stejnou hodnotu pro následující atributy během danému intervalu jedné minuty se agregují do jednoho logického záznamu v *VMConnection*. 
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 |Direction |Směr připojení, je hodnota *příchozí* nebo *odchozí* |
-|Počítač |Plně kvalifikovaný název domény počítače |
+|Machine |Plně kvalifikovaný název domény počítače |
 |Proces |Identita procesu nebo skupin procesů, inicializace a přijímá připojení |
 |SourceIp |IP adresa zdroje |
 |DestinationIp |Cílové IP adresy |
 |DestinationPort |Číslo portu cíle |
-|Protocol (Protokol) |Protokol použitý pro připojení.  Hodnoty *tcp*. |
+|Protocol |Protokol použitý pro připojení.  Hodnoty *tcp*. |
 
 Aby se zohlednily dopadu seskupení, informace o počtu seskupených fyzických připojení najdete v následující vlastnosti záznamu:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 |LinksEstablished |Počet fyzických síťových připojení, které se vytvořily časovém období vytváření sestav |
 |LinksTerminated |Počet fyzických síťových připojení, která byla ukončena časovém období vytváření sestav |
@@ -73,7 +73,7 @@ Aby se zohlednily dopadu seskupení, informace o počtu seskupených fyzických 
 
 Kromě metrik počet připojení informace o objemu dat odeslaných a přijatých na dané logické propojení nebo síťový port jsou také uvedené v následující vlastnosti záznamu:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 |BytesSent |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
 |BytesReceived |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
@@ -99,7 +99,7 @@ Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součást�
 #### <a name="geolocation"></a>Zeměpisná poloha
 *VMConnection* obsahuje také informace o zeměpisné poloze informace o vzdáleným koncem záznamech připojení ve vlastnostech následující záznam: 
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 |RemoteCountry |Název země hostování RemoteIp.  Například *USA* |
 |RemoteLatitude |Zeměpisná poloha, zeměpisná šířka. Například *47.68* |
@@ -108,11 +108,11 @@ Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součást�
 #### <a name="malicious-ip"></a>Škodlivá IP adresa
 Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP adres pomocí známých škodlivých aktivit. Pokud se zjistí, RemoteIp jako škodlivý naplní se následující vlastnosti (jsou prázdné, pokud IP adresa se považuje za škodlivou) v záznamu následující vlastnosti:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 |MaliciousIp |Vzdálená adresa IP adres |
 |IndicatorThreadType |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
-|Popis |Popis zjištěných hrozeb. |
+|Description |Popis zjištěných hrozeb. |
 |TLPLevel |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
 |Confidence |Hodnoty jsou *0 – 100*. |
 |Severity |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
@@ -134,12 +134,12 @@ Porty na počítači, které aktivně přijímat příchozí provoz nebo potenci
 
 Každý záznam v VMBoundPort je identifikován následující pole: 
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 |Proces | Identita procesu (nebo skupiny procesů) se kterými port, který je přidružen.|
 |Ip | Port IP adresa (může být zástupný znak IP *0.0.0.0*) |
 |Port |Číslo portu |
-|Protocol (Protokol) | Protokol.  Například *tcp* nebo *udp* (pouze *tcp* momentálně se podporuje).|
+|Protocol | Protokol.  Například *tcp* nebo *udp* (pouze *tcp* momentálně se podporuje).|
  
 Identita port je odvozen z výše uvedených pěti oblastech a je uložená ve vlastnosti identifikátor PortId. Tato vlastnost umožňuje rychle vyhledat záznamy specifického portu v čase. 
 
@@ -160,7 +160,7 @@ Tady jsou některé důležité body ke zvážení:
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenta závislostí. Tyto záznamy mají vlastnosti v následující tabulce:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 | Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
@@ -185,7 +185,7 @@ Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenta
 ### <a name="servicemapprocesscl-type-records"></a>Typ ServiceMapProcess_CL záznamů
 Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojené protokolem TCP na serverech s agenta závislostí. Tyto záznamy mají vlastnosti v následující tabulce:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--|:--|
 | Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
