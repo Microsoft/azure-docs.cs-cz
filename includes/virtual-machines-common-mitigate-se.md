@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/14/2018
+ms.date: 05/14/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: cbd86571cbdcd600ef3acdea3833568a34657931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be8c3d3be4410d15ba132a24a417e7a7b0418352
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337931"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620264"
 ---
-**Poslední aktualizace dokumentů**: 14. srpna 2018 10:00 RÁNO PST.
+**Poslední aktualizace dokumentů**: 14 května 2019 10:00 RÁNO PST.
 
 Zveřejnění [nová třída zabezpečení CPU](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativního spouštění útoků na straně kanálu má za následek dotazy z zákazníky, kteří potřebují další nejasnostem.  
 
@@ -28,11 +28,17 @@ Další informace o tom, jak zabezpečení je integrované do všech oblastí Az
 > [!NOTE] 
 > Vzhledem k tomu, že nejprve publikování tohoto dokumentu, několik variant této třídy ohrožení zabezpečení se poskytly. Microsoft nadále být výrazně investovali do ochrany našich zákazníků a poskytuje doprovodné materiály. Na této stránce se aktualizují, jak budeme dál uvolnit další opravy. 
 > 
-> 14. srpna 2018, odvětví zveřejněn nové spekulativního spouštění na straně kanálu chyby zabezpečení označované jako [L1 terminálu selhání](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018) (L1TF) který byl přiřazen více CVEs ([CVE-2018-3615, CVE-2018-3620 a CVE-2018-3646](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00161.html)). Toto ohrožení zabezpečení ovlivňuje procesorů Intel Core® a procesorů Intel® Xeon®. Microsoft je nasazena způsoby zmírnění rizik napříč naše cloudové služby, které posílit izolace mezi zákazníky. Přečtěte si níže další doprovodné materiály k ochraně proti L1TF a předchozí ohrožení zabezpečení ([chyby zabezpečení Spectre Variant 2 CVE-2017-5715 a Meltdown Variant 3 CVE-2017-5754](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)).
->  
-
-
-
+> 14. května 2019 [Intel zveřejněn](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) novou sadu spekulativního spouštění na straně kanálu chyby zabezpečení označované jako mikroarchitektury vzorkování dat (MDS naleznete pokyny Microsoftu ohledně zabezpečení [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), který více CVEs bylo přiřazeno: 
+> - CVE-2018-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
+> - CVE-2018-12126 - Store mikroarchitektury vyrovnávací paměti pro Data vzorkování (MSBDS) 
+> - CVE-2018-12127 - mikroarchitektury zatížení Port dat vzorkování (MLPDS)
+> - CVE-2018-12130 - mikroarchitektury výplně vyrovnávací paměti pro Data vzorkování (MFBDS)
+>
+> Toto ohrožení zabezpečení ovlivňuje procesorů Intel Core® a procesorů Intel® Xeon®.  Microsoft Azure vydala aktualizací operačního systému a nasazení nové mikrokód, protože je k dispozici společností Intel, v rámci naší vozového parku ochrana našich zákazníků tyto nové zranitelná.   Azure úzce spolupracuje s technologií Intel k testování a validaci nové mikrokód před jejich oficiálním vydáním na platformě. 
+>
+> **Zákazníci, kteří spuštění nedůvěryhodného kódu v rámci svých virtuálních počítačů** potřeba provést akci na ochranu proti těmto ohrožením zabezpečení, přečtěte si téma níže pro další Rady týkající se všechna spekulativního spouštění na straně kanálu ohrožení zabezpečení (ADV poradci Microsoftu [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), [180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018), a [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)).
+>
+> Ostatní zákazníci by měla vyhodnotit tyto slabých míst z Defense v hloubce perspektivy a zvážit důsledky zabezpečení a výkonu svých zvolené konfigurace.
 
 
 
@@ -64,56 +70,115 @@ Zákazníci, kteří neimplementují scénáře zahrnující nedůvěryhodný k�
 
 ## <a name="enabling-additional-security"></a>Umožňuje zvýšit zabezpečení 
 
-Můžete povolit další funkce zabezpečení uvnitř virtuálního počítače nebo cloudové služby.
+Pokud používáte nedůvěryhodný kód, můžete povolit další funkce zabezpečení uvnitř virtuálního počítače nebo cloudové služby. Paralelně Ujistěte se, že je váš operační systém aktuální. k povolení funkcí zabezpečení uvnitř virtuálního počítače nebo cloudové služby
 
 ### <a name="windows"></a>Windows 
 
 Cílového operačního systému musí být aktuální tyto další bezpečnostní funkce. Zatímco řada spekulativního spouštění na straně kanálu způsoby zmírnění rizik jsou ve výchozím nastavení povolené, další funkce popsané v tomto poli musí být povoleno ručně a může způsobit, že dopad na výkon. 
 
-**Krok 1**: [Obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače. 
 
-**Krok 2**: Povolte podporu jádra virtuální adresu stínový provoz (KVAS) a vkládání cílové větve (BTI) operačního systému. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `Session Manager` klíče registru. Je vyžadován restart. 
+**Krok 1: Zakázat hyperthreadingem na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na s vysokým počtem podprocesů, virtuální počítač bude nutné zakázat hyperthreadingem nebo přesunout na velikost virtuálního počítače – do s vysokým počtem podprocesů. Zkontrolujte, jestli váš virtuální počítač má povoleným hyperthreadingem, najdete níže uvedený skript příkazového řádku Windows z v rámci virtuálního počítače.
 
-**Krok 3**: Pro nasazení, která používají [vnořená virtualizace](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 a E3 pouze): Tyto pokyny platí ve virtuálním počítači, který používáte jako hostitele Hyper-V. 
+Typ `wmic` zadat interaktivní rozhraní. Zadejte níže zobrazíte velikost fyzických a logických procesorů na virtuálním počítači.
 
-1. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `MinVmVersionForCpuBasedMitigations` klíče registru.  
- 
-1. Nastavte typ hypervisoru Plánovač **Core** podle následujících pokynů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types). 
+```console
+CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
+```
 
-**Krok 4**: Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ověření ochrany jsou povolené pomocí [SpeculationControl](https://aka.ms/SpeculationControlPS) modul prostředí PowerShell. 
+Pokud je počet logických procesorů větší než fyzických procesorů (jader), je povolen hyperthreading.  Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) zobrazíte hyperthreadingem zakázán.  Jakmile hyperthreadingem je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**. 
+
+
+**Krok 2**: Paralelní ke kroku 1, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ověření ochrany jsou povolené pomocí [SpeculationControl](https://aka.ms/SpeculationControlPS) modul prostředí PowerShell.
 
 > [!NOTE]
 > Pokud si už tento modul, je potřeba nainstalovat nejnovější verzi.
 >
 
-Všechny virtuální počítače by se zobrazit:
+
+Výstup skriptu prostředí PowerShell by měly mít následujících hodnot pro ověření povolené nabízí další ochranu před těmito chybami:
 
 ```
-branch target injection mitigation is enabled: True
-
-kernel VA shadow is enabled: True  
-
-L1TFWindowsSupportEnabled: True
+Windows OS support for branch target injection mitigation is enabled: True
+Windows OS support for kernel VA shadow is enabled: True
+Windows OS support for speculative store bypass disable is enabled system-wide: False
+Windows OS support for L1 terminal fault mitigation is enabled: True
+Windows OS support for MDS mitigation is enabled: True
 ```
+
+Pokud se zobrazí výstup `MDS mitigation is enabled: False`, prosím [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) možnosti k dispozici omezení rizik.
+
+
+
+**Krok 3**: Pokud chcete povolit jádra virtuální adresu stínový provoz (KVAS) a podporu vkládání cílové větve (BTI) operačního systému, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu pomocí `Session Manager` klíče registru. Je vyžadován restart.
+
+
+**Krok 4**: Pro nasazení, která používají [vnořená virtualizace](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 a E3 pouze): Tyto pokyny platí ve virtuálním počítači, který používáte jako hostitele Hyper-V.
+
+1.  Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu pomocí `MinVmVersionForCpuBasedMitigations` klíče registru.
+2.  Nastavte typ hypervisoru Plánovač `Core` podle následujících pokynů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
 
 
 ### <a name="linux"></a>Linux
 
 <a name="linux"></a>Povolení sadu další funkce zabezpečení uvnitř vyžaduje, aby cílový operační systém plně aktuální. Ve výchozím nastavení se povolí některá zmírnění rizik. Následující část popisuje funkce, které jsou vypnuté ve výchozím nastavení a/nebo závislé na hardwarovou podporu (mikrokód). Povolení těchto funkcí může způsobit, že dopad na výkon. Referenční dokumentaci poskytovatele operačního systému o další pokyny
- 
-**Krok 1**: [Obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače.
- 
-**Krok 2**: Povolte podporu vkládání cílové větve (BTI) operačního systému pro zmírnění CVE-2017-5715 (chyby zabezpečení Spectre Variant 2) pomocí následujících dokumentaci poskytovatele operačního systému. 
- 
-**Krok 3**: Povolte jádra stránky tabulky izolace (KPTI) ke zmírnění CVE-2017-5754 (Meltdown Variant 3) pomocí následujících dokumentaci poskytovatele operačního systému. 
- 
-Další informace jsou k dispozici od poskytovatele operačního systému:  
- 
-- [RedHat a CentOS](https://access.redhat.com/security/vulnerabilities/speculativeexecution) 
-- [SuSE](https://www.suse.com/support/kb/doc/?id=7022512) 
-- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) 
 
+
+**Krok 1: Zakázat hyperthreadingem na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na s vysokým počtem podprocesů, virtuální počítač bude nutné zakázat hyperthreadingem nebo přesunout do virtuálního počítače – do s vysokým počtem podprocesů.  Chcete-li zkontrolovat, zda jsou spuštěny s vysokým počtem podprocesů virtuálního počítače, spusťte `lspcu` v virtuálního počítače s Linuxem. 
+
+Pokud `Thread(s) per core = 2`, pak je povolen hyperthreading. 
+
+Pokud `Thread(s) per core = 1`, pak hyperthreadingem byla zakázána. 
+
+ 
+Ukázka výstupu pro virtuální počítač s povoleným hyperthreadingem: 
+
+```console
+CPU Architecture:      x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                8
+On-line CPU(s) list:   0,2,4,6
+Off-line CPU(s) list:  1,3,5,7
+Thread(s) per core:    2
+Core(s) per socket:    4
+Socket(s):             1
+NUMA node(s):          1
+
+```
+
+Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) zobrazíte hyperthreadingem zakázán.  Poznámka: Jakmile hyperthreadingem je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**.
+
+
+**Krok 2**: Cílem je zmírnit nebezpečí některý níže ohrožení zabezpečení na straně kanálu spekulativního spouštění, najdete v dokumentaci poskytovatele operačního systému:   
+ 
+- [RedHat a CentOS](https://access.redhat.com/security/vulnerabilities) 
+- [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
+- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v tématu [ochrana zákazníků Azure před chybou zabezpečení CPU](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).
+Tento článek obsahuje pokyny, které pod spekulativního spouštění na straně kanálu útoků, které ovlivňují mnoho moderní procesorů:
+
+[Chyby zabezpečení Spectre Meltdown](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180002):
+- CVE-2017-5715 - vkládání cílové větve (BTI)  
+- CVE-2017-5754 – izolace tabulky stránky jádra (KPTI)
+- CVE-2018-3639 – nepoužívat spekulativního Store (KPTI) 
+ 
+[L1 Chyby terminálu (L1TF)](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180018):
+- CVE-2018-3615 – rozšíření Guard Software Intel (Intel SGX)
+- CVE-2018-3620 – operační systémy (OS) a systém správy režimu (SMM)
+- CVE-2018-3646 – ovlivňuje Virtual Machine Manager (VMM)
+
+[Vzorkování dat mikroarchitektury](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV190013): 
+- CVE-2018-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
+- CVE-2018-12126 - Store mikroarchitektury vyrovnávací paměti pro Data vzorkování (MSBDS)
+- CVE-2018-12127 - mikroarchitektury zatížení Port dat vzorkování (MLPDS)
+- CVE-2018-12130 - mikroarchitektury výplně vyrovnávací paměti pro Data vzorkování (MFBDS)
+
+
+
+
+
+
+
+

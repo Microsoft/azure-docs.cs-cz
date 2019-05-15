@@ -249,8 +249,6 @@
               href: platform/data-sources-json.md
             - name: Shromážděná data o výkonu
               href: platform/data-sources-collectd.md
-            - name: Upozornění Nagiosu a Zabbixu
-              href: platform/data-sources-alerts-nagios-zabbix.md
             - name: Syslog
               href: platform/data-sources-syslog.md
             - name: Čítače výkonu
