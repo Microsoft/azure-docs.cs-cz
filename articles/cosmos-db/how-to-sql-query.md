@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148948"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796148"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -139,7 +139,7 @@ Výsledky dotazu jsou:
     }]
 ```
 
-Následující dotaz vrátí křestní jména všech dětí v rodině jehož `id` odpovídá `WakefieldFamily`, seřazený podle města, kde bydlíte.
+Následující dotaz vrátí křestní jména všech dětí v rodině jehož `id` odpovídá `WakefieldFamily`, seřazený podle města.
 
 ```sql
     SELECT c.givenName
@@ -869,6 +869,13 @@ Výsledky jsou:
     ]
 ```
 
+Následující dotaz SQL je další příklad použití pole v rámci v poddotazy. Tento dotaz získá všechny různé křestní jména všech dětí v arrary.
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
+```
+
 
 ## <a id="Iteration"></a>Iterace
 
@@ -1384,7 +1391,7 @@ Výsledkem je:
     [true]
 ```
 
-### <a name="string-functions"></a>Funkce řetězců
+### <a name="string-functions"></a>Řetězcové funkce
 
 Následující skalární funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu. Tady je tabulka funkcí integrovaných řetězec:
 

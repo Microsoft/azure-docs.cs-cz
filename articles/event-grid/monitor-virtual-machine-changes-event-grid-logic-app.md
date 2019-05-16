@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 791e38f3d15801166f07234648909e03d800f5c0
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.openlocfilehash: 33634773b436114f4a5f2942028710ae50e0e703
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604913"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65737130"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálních počítačů pomocí Azure Event Gridu a Logic Apps
 
@@ -101,9 +101,9 @@ Nyní přidáte trigger služby Event Grid, která monitoruje skupiny prostředk
    | Vlastnost | Požaduje se | Value | Popis |
    | -------- | -------- | ----- | ----------- |
    | **Předplatné** | Ano | <*event-publisher-Azure-subscription-name*> | Vyberte název pro předplatné Azure spojené s zdroj události. Pro účely tohoto kurzu vyberte název předplatného Azure pro váš virtuální počítač. |
-   | **Typ prostředku** | Ano | <*event-publisher-Azure-resource-type*> | Vyberte typ prostředku pro zdroj události. Pro účely tohoto kurzu vyberte tuto hodnotu tak, aby vaše aplikace logiky monitoruje pouze skupiny prostředků: <p><p>**Microsoft.Resources.resourceGroups** |
-   | **Název prostředku** |  Ano | <*event-publisher-Azure-resource-name*> | Vyberte název prostředku Azure, které jsou přidružené k zdroj události. Tento prostředek může být například téma Event gridu. Pro účely tohoto kurzu vyberte název skupiny prostředků Azure, které jsou přidružené k virtuálnímu počítači. |
-   | **Typ položky události** |  Ne | <*typy událostí*> | Vyberte jeden nebo více konkrétních typů událostí, které chcete monitorovat. Pro účely tohoto kurzu tuto vlastnost nechte prázdnou. |
+   | **Typ prostředku** | Ano | <*event-publisher-Azure-resource-type*> | Vyberte typ prostředku Azure pro zdroj události. Pro účely tohoto kurzu vyberte tuto hodnotu k monitorování skupin prostředků Azure: <p><p>**Microsoft.Resources.ResourceGroups** |
+   | **Název prostředku** |  Ano | <*event-publisher-Azure-resource-name*> | Vyberte název prostředku Azure pro zdroj události. Tento seznam se liší v závislosti na typu prostředku, který jste vybrali. Pro účely tohoto kurzu vyberte název skupiny prostředků Azure pro váš virtuální počítač. |
+   | **Typ položky události** |  Ne | <*typy událostí*> | Vyberte jeden nebo více konkrétních typů událostí k filtrování a odeslat do služby event grid. Například můžete volitelně přidat tyto typy událostí ke zjištění při změně nebo odstranění prostředků: <p><p>- **Microsoft.Resources.ResourceActionSuccess** <br>- **Microsoft.Resources.ResourceDeleteSuccess** <br>- **Microsoft.Resources.ResourceWriteSuccess** <p>Další informace najdete v těchto tématech: <p><p>- [Vysvětlení filtrování událostí](../event-grid/event-filtering.md) <br>- [Filtr událostí služby Event Grid](../event-grid/how-to-filter-events.md) <br>- [Schéma událostí Azure Event Grid pro skupiny prostředků](../event-grid/event-schema-resource-groups.md) |
    | **Název předplatného** | Ne | <*Název odběru události*> | Zadejte jedinečný název odběru události. |
    | Volitelná nastavení, zvolte **přidat nový parametr**. | Ne | {popisech} | * **Filtr předpon**: Pro účely tohoto kurzu tuto vlastnost nechte prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec předpony, třeba cestu k určitému prostředku a jeho parametr. <p>* **Filtr přípony**: Pro účely tohoto kurzu tuto vlastnost nechte prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec přípony, třeba příponu názvu souboru, pokud chcete jenom určité typy souborů. |
    |||
@@ -164,6 +164,10 @@ Pokud chcete, aby se pracovní postup aplikace logiky spustil, jen když dojde k
 
    ![Dokončená podmínka](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
+   Pokud přejdete z návrhového zobrazení a zobrazení a zpět do návrhového zobrazení kódu, výraz, který jste zadali v podmínka přeloží na **data.operationName** token:
+
+   ![Vyřešit podmínku](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
+
 1. Uložte svou aplikaci logiky.
 
 ## <a name="send-email-notifications"></a>Odeslání e-mailových oznámení
@@ -189,7 +193,7 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
 1. Pokud nemáte připojení k poskytovateli e-mailu, přihlaste se po zobrazení výzvy ke svému e-mailovém účtu.
 
-1. Přejmenujte název e-mailu odesílání na tento název: `Send email when virtual machine updated`. 
+1. Přejmenujte název e-mailu odesílání na tento název: `Send email when virtual machine updated`
 
 1. Zadejte podrobnosti o e-mailu podle následující tabulky:
 
@@ -202,10 +206,10 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
    | -------- | -------- | ----- | ----------- |
    | **Komu** | Ano | <*příjemce\@domény*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    | **Předmět** | Ano | Aktualizuje prostředek: **Předmět** | Zadejte obsah předmětu e-mailu. Pro účely tohoto kurzu zadejte zadaný text a vyberte události **subjektu** pole. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). |
-   | **Text** | Ano | Skupina zdrojů: **Téma** <p>Typ události: **Typ události**<p>ID události: **ID**<p>Čas: **Čas události** | Zadejte obsah e-mailu. Pro účely tohoto kurzu zadejte zadaný text a vyberte události **tématu**, **typ události**, **ID**, a **čas události** pole tak, aby vaše e-mailu zahrnuje název skupiny prostředků, typ události, časové razítko události a ID události pro aktualizaci. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
+   | **Text** | Ano | Prostředek: **Téma** <p>Typ události: **Typ události**<p>ID události: **ID**<p>Čas: **Čas události** | Zadejte obsah e-mailu. Pro účely tohoto kurzu zadejte zadaný text a vyberte události **tématu**, **typ události**, **ID**, a **čas události** pole tak, aby vaše e-mailu obsahuje prostředků, která vyvolala událost, typ události, časové razítko události a ID události pro aktualizaci. Pro účely tohoto kurzu je prostředek skupiny prostředků Azure, který je vybraný v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
    ||||
 
-   > [!NOTE] 
+   > [!NOTE]
    > Pokud vyberete pole, které představuje pole položek, přidá návrhář automaticky kolem akce, která na toto pole odkazuje, smyčku **For each**. Aplikace logiky tak provede příslušnou akci pro každou položku pole.
 
    Teď vypadá akce e-mailu podobně jako v tomto příkladu:

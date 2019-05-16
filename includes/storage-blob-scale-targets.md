@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 4/20/2019
 ms.author: tamram
-ms.openlocfilehash: d96f400332b7953b34a157b3b52cf00bb20db76e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012492"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787603"
 ---
-| Prostředek | Cíl        |
+| Resource | Cíl        |
 |----------|---------------|
 | Maximální velikost kontejneru jeden objekt blob | Stejná jako maximální účet kapacita úložiště |
 | Maximální počet objektů blob bloků v bloku nebo doplňovacího objektu blob | 50 000 bloků |
@@ -23,4 +23,4 @@ ms.locfileid: "60012492"
 | Maximální počet uložené zásady přístupu na kontejner objektů blob | 5 |
 |Nastavte propustnost pro jeden objekt blob |Až do omezení příchozí a odchozí přenos účtu úložiště<sup>1</sup> |
 
-<sup>1</sup> jeden objekt propustnost závisí na několika různými faktory, včetně, ale nikoli výhradně: souběžnosti, velikost požadavku, úroveň výkonu, rychlost zdroje pro nahrávání a cílové soubory ke stažení. Abyste mohli využívat [objektů blob bloku vysoce propustné](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) vylepšení výkonu, použijte velikost > 4 MiB (> 256 MiB pro úložiště objektů blob bloku výkon úrovně premium nebo pro Data Lake Storage Gen2) požadavku Put Blob nebo Vložit blok.
+<sup>1</sup> jeden objekt propustnost závisí na několika různými faktory, včetně, ale nikoli výhradně: souběžnosti, velikost požadavku, úroveň výkonu, rychlost zdroje pro nahrávání a cílové soubory ke stažení. Abyste mohli využívat [objektů blob bloku vysoce propustné](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) vylepšení výkonu, použijte velikost > 4 MiB (> 256 KiB pro úložiště objektů blob bloku výkon úrovně premium nebo pro Data Lake Storage Gen2) požadavku Put Blob nebo Vložit blok.

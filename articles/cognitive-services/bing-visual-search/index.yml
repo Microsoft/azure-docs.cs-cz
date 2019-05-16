@@ -7,7 +7,7 @@ metadata:
   description: Naučte se používat rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku.
   services: cognitive-services
   author: swhite-msft
-  manager: rosh
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
   ms.tgt_pltfrm: na

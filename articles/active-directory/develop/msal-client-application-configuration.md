@@ -4,7 +4,7 @@ description: Další informace o možnostech konfigurace pro veřejné klienty a
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a48eea9fedd2d82f44693d58b31ee0d5c8c288d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4d731a8153dc6a70382c0d87cc20d8c961d9fe24
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138539"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546014"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -124,7 +124,7 @@ Identifikátor URI pro přesměrování (nebo v identifikátor URI odpovědi) je
 
 Pro aplikace démonů není nutné určit identifikátor URI přesměrování.
 
-## <a name="client-secret"></a>Tajný klíč klienta
+## <a name="client-secret"></a>Tajný kód klienta
 Tajný kód klienta pro aplikaci důvěrnému klientovi. Tento tajný kód (heslo aplikace) je poskytuje portál pro registraci aplikací nebo součástí do služby Azure AD během registrace aplikace Azure AD PowerShell, AzureRM Powershellu nebo rozhraní příkazového řádku Azure.
 
 ## <a name="logging"></a>Protokolování

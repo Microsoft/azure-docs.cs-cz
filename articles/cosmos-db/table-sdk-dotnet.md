@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 506f623fe928cf122a16630844996c981cc20e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330342"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606247"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 
@@ -33,10 +33,12 @@ ms.locfileid: "60330342"
 |**Aktuální podporované architektury**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
+> .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) je ve stavu údržby režimu a bude brzy přestanou používat. Upgradujte prosím do nové knihovny .NET Standard [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) pokračujte získáte nejnovější funkce, které jsou podporovány v rozhraní API tabulky.
+
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
 >
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
@@ -75,22 +77,22 @@ ms.locfileid: "60330342"
 
 Společnost Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) balíček ve verzi preview má zastaralé a nahrazují [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) balíčku. Sady SDK WindowsAzure.Storage-PremiumTable skončí 15. listopadu 2018, na dobu žádosti pro staré SDK nedovolí. `Microsoft.Azure.CosmosDB.Table` Knihovny je aktuálně dostupné pro .NET Standard pouze, ještě není k dispozici pro .NET Core.
+`Microsoft.Azure.CosmosDB.Table` Knihovny je aktuálně k dispozici pro rozhraní .NET Framework pouze, je v režimu údržby a bude brzy přestanou používat. Nové funkce a funkce a optimalizace jsou přidány pouze na knihovny .NET Standard [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), jak takové, se doporučuje upgradovat [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
-Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto se doporučuje, vždy upgradovat na nejnovější SDK verzi co možná nejdříve. 
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) balíček ve verzi preview se už nepoužívá. Sady SDK WindowsAzure.Storage-PremiumTable skončí 15. listopadu 2018, na dobu žádosti pro staré SDK nedovolí. 
 
 Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno sady SDK.
 <br/>
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |22. ledna 2019|--- |
-| [2.0.0](#2.0.0) |26. září 2018|--- |
-| [1.1.3](#1.1.3) |17. července 2018|--- |
-| [1.1.1](#1.1.1) |26. března 2018|--- |
-| [1.1.0](#1.1.0) |21. února 2018|--- |
-| [1.0.0](#1.0.0) |15. listopadu 2017|--- |
-| 0.9.0-Preview |11. listopadu 2017 |--- |
+| [2.1.0](#2.1.0) |22. ledna 2019|01 dubna 2020 |
+| [2.0.0](#2.0.0) |26. září 2018|01 března 2020 |
+| [1.1.3](#1.1.3) |17. července 2018|01. prosince 2019 |
+| [1.1.1](#1.1.1) |26. března 2018|01. prosince 2019 |
+| [1.1.0](#1.1.0) |21. února 2018|01. prosince 2019 |
+| [1.0.0](#1.0.0) |15. listopadu 2017|15. listopadu 2019 |
+| 0.9.0-Preview |11. listopadu 2017 |11. listopadu 2019 |
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

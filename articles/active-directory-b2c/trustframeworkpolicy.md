@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 30cb6e49782b97d28b0d999f585d630477e8572f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1a3382e560287502ae8afccae556bc5f56245904
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684151"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812948"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase nebo B2C_1A_TrustFrameworkExtensionPolicy:
 
 Cesty uživatele definuje, co uživatel prochází obchodní logiky. Každé cesty uživatele je sada kroků Orchestrace, který provádí řadu akcí, v pořadí z hlediska informace o ověřování a kolekce. 
 
-**SocialAndLocalAccounts** soubor zásad v [starter pack](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) obsahuje SignUpOrSignIn, ProfileEdit, jízdy PasswordReset uživatele. Můžete přidat další uživatele cesty pro jiné scénáře, jako je například změna e-mailovou adresu, propojení a zrušit propojení účtu na sociální síti nebo resetování hesla. 
+**SocialAndLocalAccounts** soubor zásad v [starter pack](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) obsahuje SignUpOrSignIn, ProfileEdit, jízdy PasswordReset uživatele. Můžete přidat další uživatele cesty pro jiné scénáře, jako je například změna e-mailovou adresu nebo propojení a rušení propojení účtu na sociální síti. 
 
 Kroků Orchestrace může volat [technický profil](technicalprofiles.md). Technický profil poskytuje architekturu s předdefinovaný mechanismus pro komunikaci s různými typy stran. Technický profil můžete například provádět tyto akce mimo jiné:
 
@@ -157,4 +157,3 @@ Kroků Orchestrace může volat [technický profil](technicalprofiles.md). Techn
 - [ClaimsProviders](claimsproviders.md)
 - [Userjourney](userjourneys.md)
 - [RelyingParty](relyingparty.md)
-

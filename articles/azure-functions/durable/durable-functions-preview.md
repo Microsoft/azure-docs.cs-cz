@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3b49049ea1ed36a08fad9619183017b0f07d99
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077737"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596079"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Náhled odolné Functions 2.0 (Azure Functions)
 
@@ -36,7 +36,7 @@ Podpora pro rozhraní .NET Framework (a tedy funkce 1.0) byla vyřazena pro trva
 
 ### <a name="hostjson-schema"></a>Schéma Host.JSON
 
-Následující fragment kódu ukazuje nové schéma pro host.json. Hlavní změny je potřeba vědět nám nové `"storageProvider"` části a `"azureStorage"` části pod ním. Tato změna byla provedena pro podporu [alternativní poskytovatelé úložiště](durable-functions-preview.md#alternate-storage-providers).
+Následující fragment kódu ukazuje nové schéma pro host.json. Hlavní změny mít na paměti, je nový `"storageProvider"` části a `"azureStorage"` části pod ním. Tato změna byla provedena pro podporu [alternativní poskytovatelé úložiště](durable-functions-preview.md#alternate-storage-providers).
 
 ```json
 {
@@ -93,11 +93,12 @@ V případě, kde jsou obsaženy abstraktní základní třídy virtuální meto
 
 Funkce entity definování operací pro čtení a aktualizaci malých kousků stav, označuje jako *trvalý entity*. Podobně jako funkce nástroje orchestrator, funkce entity jsou funkce s typem speciální aktivační událost *entity trigger*. Na rozdíl od funkce nástroje orchestrator a funkce entity nemají omezeními konkrétního kódu. Funkce entity také spravovat stav explicitně místo implicitně představující stav prostřednictvím toku řízení.
 
-Následující kód je příklad funkce jednoduchou entitu, která definuje *čítač* entity. Funkce definuje tří operací, `add`, `remove`, a `reset`, které aktualizace celočíselnou hodnotu, `currentValue`.
+Následující kód je příklad funkce jednoduchou entitu, která definuje *čítač* entity. Funkce definuje tří operací, `add`, `subtract`, a `reset`, které aktualizace celočíselnou hodnotu, `currentValue`.
 
 ```csharp
+[FunctionName("Counter")]
 public static async Task Counter(
-    [EntityTrigger(EntityName = "Counter")] IDurableEntityContext ctx)
+    [EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
     int operand = ctx.GetInput<int>();
@@ -200,21 +201,25 @@ Kritická sekce skončí a všech zámků jsou uvolněny, při ukončení orches
 Například vezměte v úvahu Orchestrace, kterou je potřeba otestovat, jestli jsou k dispozici dva hráči a následně je přiřadit k hru. Tato úloha je možné implementovat pomocí kritický oddíl následujícím způsobem:
 
 ```csharp
-
-EntityId player1 = /* ... */;
-EntityId player2 = /* ... */;
-
-using (await ctx.LockAsync(player1, player2))
+[FunctionName("Orchestrator")]
+public static async Task RunOrchestrator(
+    [OrchestrationTrigger] IDurableOrchestrationContext ctx)
 {
-    bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
-    bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
+    EntityId player1 = /* ... */;
+    EntityId player2 = /* ... */;
 
-    if (available1 && available2)
+    using (await ctx.LockAsync(player1, player2))
     {
-        Guid gameId = ctx.NewGuid();
+        bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
+        bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
 
-        await ctx.CallEntityAsync(player1, "assign-game", gameId);
-        await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        if (available1 && available2)
+        {
+            Guid gameId = ctx.NewGuid();
+
+            await ctx.CallEntityAsync(player1, "assign-game", gameId);
+            await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        }
     }
 }
 ```

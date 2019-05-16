@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 03/18/2019
+ms.date: 05/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0573448c753c763e818d641216033dbeacb9e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471459"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606185"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Rychlý start: Nastavení skupiny Office 365 do vypršení platnosti ve službě Azure Active Directory
 
@@ -35,11 +35,11 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisite"></a>Požadavek
 
-Musíte být globální správce nebo Správce uživatelů v organizaci nastavit vypršení platnosti skupiny.
+ Role nejnižší úrovní oprávnění k nastavení vypršení platnosti skupin je Správce uživatelů v organizaci.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Zapnutí vytváření uživatelů pro skupiny
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu, který je globální správce nebo Správce uživatelů v organizaci.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí uživatelského účtu správce.
 
 2. Vyberte **Skupiny** a pak vyberte **Obecné**.
   
@@ -80,7 +80,7 @@ A to je vše! V tomto rychlém startu jste úspěšně nastavili zásadu vyprše
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o vypršení platnosti, včetně technických omezení, přidání seznamu vlastních blokovaných slov a prostředí pro koncové uživatele napříč aplikacemi Office 365 najdete v následujícím článku obsahujícím tyto podrobnosti o zásadách vypršení platnosti:
+Další informace o vypršení platnosti, včetně pokyny k Powershellu a technická omezení najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Všechny podrobnosti o zásadách vypršení platnosti](groups-lifecycle.md)
+> [Zásady vypršení platnosti prostředí PowerShell](groups-lifecycle.md)

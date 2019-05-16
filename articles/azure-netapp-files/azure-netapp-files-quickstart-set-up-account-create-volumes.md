@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: f0f3dea1c30790bb109d7cb7af07abd8fbb1ace4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702880"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523026"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý start: Nastavení souborů NetApp Azure a vytvoření svazku systému souborů NFS 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý start: Nastavení služby Azure NetApp Files a vytvoření svazku NFS 
 
 Tento článek ukazuje, jak rychle nastavit NetApp soubory Azure a vytvořte svazek. 
 
@@ -36,7 +36,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="before-you-begin"></a>Než začnete 
 
-Musíte být součástí programu ve verzi Public Preview a pro přístup k poskytovateli prostředků Microsoft.NetApp na seznamu povolených. Podrobnosti o zapojení do programu verze Public Preview najdete na [registrační stránce Azure NetApp Files Public Preview](https://aka.ms/nfspublicpreview). 
+> [!IMPORTANT] 
+> Budete muset být udělen přístup ke službě soubory Azure NetApp.  Požádat o přístup ke službě, najdete v článku [stránku pro odesílání souborů NetApp Azure waitlist](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  Před pokračováním je nutné počkat oficiální potvrzení e-mailu od týmu služby soubory Azure NetApp. 
 
 ## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Zaregistrujte se soubory Azure NetApp a poskytovatele prostředků NetApp
 
@@ -155,13 +156,13 @@ Jakmile budete hotovi a chcete, můžete odstranit skupinu prostředků. Akce od
 
 3. Na stránce skupiny prostředků, klikněte na **odstranit skupinu prostředků**.
 
-    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Odstranit skupinu prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Otevře se okno s upozorněním týkajícím se prostředků, které budou odstraněny s vybranou skupinou prostředků.
 
 4. Zadejte název skupiny prostředků (myRG1) pro potvrzení, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní a potom klikněte na tlačítko **odstranit**.
 
-    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Odstranit skupinu prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 ## <a name="next-steps"></a>Další postup  
 

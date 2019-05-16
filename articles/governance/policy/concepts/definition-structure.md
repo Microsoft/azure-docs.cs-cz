@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b9fe723ca13cbee0e31b14e60a6bd740d2a282df
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506692"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779291"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -238,7 +238,7 @@ Podmínka vyhodnocena jako, jestli **pole** nebo **hodnotu** přistupující obj
 Při použití **jako** a **notLike** podmínky, zadat zástupný znak `*` v hodnotě.
 Hodnota by neměla mít více než jeden zástupný znak `*`.
 
-Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` tak, aby odpovídaly číslici, `?` pro písmeno, `.` tak, aby odpovídaly všechny znaky a jakýkoli jiný znak tak, aby odpovídaly skutečné znaku.
+Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` tak, aby odpovídaly číslici, `?` pro písmeno, `.` odpovídá jakémukoli znaku a jakýkoli jiný znak tak, aby odpovídaly skutečné znaku.
 **odpovídá** a **notMatch** jsou malá a velká písmena. Malá a velká písmena alternativy jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**. Příklady najdete v tématu [povolit několik vzory názvů](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Fields (Pole)
@@ -293,7 +293,7 @@ V následujícím příkladu `concat` slouží k vytváření vyhledávacího po
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>Hodnota
 
 Podmínky lze vybrat také pomocí **hodnota**. **Hodnota** zkontroluje podmínky proti [parametry](#parameters), [podporované šablony funkce](#policy-functions), nebo literály.
 **Hodnota** je spárovaná s žádným nepodporuje [podmínku](#conditions).

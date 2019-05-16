@@ -182,7 +182,6 @@
             - name: Připojení s využitím Postmana
               href: media-rest-apis-with-postman.md
         - name: Vývoj s využitím sad SDK
-          href: developers-guide.md
           items:
             - name: Připojení s využitím Javy
               href: configure-connect-java-howto.md
@@ -222,10 +221,13 @@
         - name: Kódování s využitím vlastní transformace
           items:
             - name: S využitím .NET
+              displayName: 'encode, encoding, custom, transform'
               href: customize-encoder-presets-how-to.md
             - name: S využitím rozhraní příkazového řádku
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: S využitím REST
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
     - name: Použití služby Event Grid
       items:

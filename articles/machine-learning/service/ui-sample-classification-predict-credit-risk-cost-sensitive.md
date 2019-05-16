@@ -1,7 +1,7 @@
 ---
 title: 'Klasifikace: Předpovědět úvěrové riziko (náklady na citlivé)'
 titleSuffix: Azure Machine Learning service
-description: Tento ukázkový experiment vizuální rozhraní ukazuje, jak použít vlastní skript Pythonu provádět binární klasifikace citlivé. To bude předpovídat úvěrové riziko podle informací uvedených v úvěr.
+description: Tento článek ukazuje, jak vytvářet komplexní experimentu služby machine learning pomocí vizuální rozhraní. Se dozvíte, jak implementovat vlastní skripty Python a porovnávání několik modelů zvolit nejlepší možnost.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,26 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440954"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787814"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpovědět úvěrové riziko (náklady na citlivé)
 
-Tento ukázkový experiment vizuální rozhraní ukazuje, jak použít vlastní skript Pythonu provádět binární klasifikace citlivé. Náklady na misclassifying pozitivní vzorky stojí pětkrát misclassifying negativních vzorků.
+Tento článek ukazuje, jak vytvářet komplexní experimentu služby machine learning pomocí vizuální rozhraní. Se dozvíte, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnávání několik modelů zvolit nejlepší možnost.
 
-Tato ukázka předpověď úvěrového rizika na základě informací uvedených v úvěr s ohledem na náklady chybnou.
+Tato ukázka trénovat klasifikátor předpovědět úvěrové riziko pomocí informací o aplikaci kredit jako je historie kreditu, věk a počet kreditní karty. Můžete však použít konceptů v tomto článku řešit vlastní strojového učení problémy.
 
-V tento experiment nám porovnat dva různé přístupy k vytváření modelů pro vyřešení tohoto problému:
+Pokud právě začínáte s machine learningem, může trvat podívat [ukázka základní třídění](ui-sample-classification-predict-credit-risk-basic.md) první.
 
-- Školení s původní datové sady.
-- Školení s replikované datové sady.
+Tady je dokončené grafu pro tento experiment:
 
-S oba přístupy jsme vyhodnocení modelů s použitím testovací datové sady s replikací zajistit, že výsledky jsou v souladu s náklady na funkci. Testujeme dvěma Klasifikátory pomocí obou metod: **Two-Class Support Vector Machine** a **Two-Class posíleného rozhodovacího stromu**.
+[![Graf experimentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,15 +37,18 @@ S oba přístupy jsme vyhodnocení modelů s použitím testovací datové sady 
 
     ![Otevřete experiment](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="related-sample"></a>Související ukázkové
-
-Zobrazit [ukázkový 3 – klasifikace: Predikce úvěrového rizika (Basic)](ui-sample-classification-predict-churn.md) pro základní experiment, který byl odstraněn stejnému problému jako u tohoto experimentu bez nastavení chybnou náklady.
-
 ## <a name="data"></a>Data
 
 Z úložiště UC Irvine používáme datovou sadu němčina platební karty. Tato datová sada obsahuje 1 000 vzorků s 20 funkcí a 1 popisek. Každá ukázka představuje osobu. 20 funkcí jsou zařazené do kategorií a číselné funkce. Najdete v článku [UCI webu](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) Další informace o datové sadě. Poslední sloupec je popisek, který označuje úvěrové riziko a má jenom dvě možné hodnoty: vysoké úvěrové riziko = 2 a nízké úvěrové riziko = 1.
 
 ## <a name="experiment-summary"></a>Souhrn testu
+
+V tento experiment nám porovnat dva různé přístupy k vytváření modelů pro vyřešení tohoto problému:
+
+- Školení s původní datové sady.
+- Školení s replikované datové sady.
+
+S oba přístupy jsme vyhodnocení modelů s použitím testovací datové sady s replikací zajistit, že výsledky jsou v souladu s náklady na funkci. Testujeme dvěma Klasifikátory pomocí obou metod: **Two-Class Support Vector Machine** a **Two-Class posíleného rozhodovacího stromu**.
 
 Misclassifying příklad s nízkým rizikem jako vysoké náklady na je 1 a 5 je misclassifying s vysokým rizikem příkladu jako nízké náklady. Používáme **Execute Python Script** modulu pro tento chybnou nákladů.
 
@@ -71,7 +73,7 @@ Tak, aby odrážela tuto funkci náklady, se vygeneruje nová datová sada. V no
 
 K replikaci dat s vysokou rizikovostí, máme tento kód Pythonu do **Execute Python Script** modul:
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -104,12 +106,11 @@ Můžeme použít standardní experimentální pracovního postupu pro vytváře
 
 1. Inicializovat learning algoritmy, pomocí **Two-Class Support Vector Machine** a **Two-Class Boosted Decision Tree**.
 1. Použití **Train Model** použít algoritmus k datům a vytvoření skutečné modelu.
-3. Použití **Score Model** k vytvoření skóre, které se pomocí příkladů testu.
+1. Použití **Score Model** k vytvoření skóre, které se pomocí příkladů testu.
 
 Následující diagram ukazuje část tento experiment, ve kterém jsou použity původní a replikované školicí sady pro trénování dva různé modely SVM. **Trénování modelu** je připojené k sadě školení a **Score Model** je připojené k testovací sadě.
 
 ![Grafem experimentu](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
-
 
 Ve fázi hodnocení experimentu jsme výpočetní přesnost každého ze čtyř modelů. Pro tento experiment používáme **Evaluate Model** k porovnání příklady, které mají stejné chybnou nákladů.
 
@@ -121,7 +122,7 @@ Všimněte si, že replikované test datová sada použije jako vstup pro **Scor
 
 **Evaluate Model** modul vytvoří tabulku s jeden řádek, který obsahuje různé metriky. Chcete-li vytvořit jednu sadu přesnost výsledků, nejprve používáme **přidat řádky** sloučit výsledky do jedné tabulky. Použijeme následující skript jazyka Python v **Execute Python Script** modul a přidejte název modelu a školení přístup pro každý řádek v tabulce výsledků:
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -138,7 +139,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     result = pd.concat([new_cols, dataframe1], axis=1)
     return result,
 ```
-
 
 ## <a name="results"></a>Výsledky
 

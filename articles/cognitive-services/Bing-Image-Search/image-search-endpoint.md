@@ -3,19 +3,19 @@ title: Koncové body pro vyhledávání obrázků Bingu, rozhraní API
 titleSuffix: Azure Cognitive Services
 description: Seznam dostupných koncových bodů pro rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: v-gedod
-ms.openlocfilehash: fcae25ea0ef3f48beac6c221a11ca8a91443f7ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: 9b3edd10d2928a512b94e9273000439f80cb8f33
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60917552"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777087"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Koncové body pro vyhledávání obrázků Bingu, rozhraní API
 

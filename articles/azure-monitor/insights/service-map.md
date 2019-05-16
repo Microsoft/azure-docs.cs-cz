@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404192"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606503"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
@@ -91,7 +91,7 @@ Uživatelé vybrat, které servery patří do skupiny k sobě a zvolte název pr
 ### <a name="creating-a-machine-group"></a>Vytvořit skupinu počítačů
 Pokud chcete vytvořit skupinu, vyberte počítače nebo počítače chcete, aby na počítačích seznamu a klikněte na tlačítko **přidat do skupiny**.
 
-![Vytvoření skupiny](media/service-map/machine-groups-create.png)
+![Vytvořit skupinu](media/service-map/machine-groups-create.png)
 
 Tam si můžete zvolit **vytvořit nový** a zadejte název skupiny.
 
@@ -348,7 +348,7 @@ Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součást�
 
 | Vlastnost | Popis |
 |:--|:--|
-| `RemoteCountry` |Název země hostování RemoteIp.  Například *USA* |
+| `RemoteCountry` |Název země/oblasti, který je hostitelem RemoteIp.  Například *USA* |
 | `RemoteLatitude` |Zeměpisná poloha, zeměpisná šířka.  Například *47.68* |
 | `RemoteLongitude` |Informace o zeměpisné poloze délky.  Například *-122.12* |
 
@@ -510,5 +510,5 @@ Další informace o [prohledávání protokolů](../../azure-monitor/log-query/l
 Zobrazit [řešení potíží s konfigurací řešení Service Map dokumentu v části]( service-map-configure.md#troubleshooting).
 
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Zpětná vazba
 Máte jakoukoli zpětnou vazbu pro nás o mapy služeb nebo v této dokumentaci?  Navštivte naše [User Voice stránky](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhnout funkce nebo hlasovat do existujících návrhů.

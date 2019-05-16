@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/13/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466555"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595781"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (Public preview)
 
@@ -38,15 +38,11 @@ Nasazení šablony topologie před nasazením šablony nasazení.
 
 Referenční dokumentace rozhraní REST API služby Azure Deployment Manager můžete najít [tady](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
-## <a name="supported-locations"></a>Podporovaná umístění
-
-Ve verzi Preview Deployment Manager prostředky jsou podporovány ve středu USA a východní USA 2. Při definování prostředků v šablonách topologie a uvedení do provozu, jako jsou jednotky služby, zdroje artefaktů a uvedení popsaných v tomto článku musíte zadat jednu z těchto oblastí pro umístění. Prostředky, které nasazujete, vytvoření služby, jako jsou virtuální počítače, účty storage a web apps, jsou však podporovány ve všech svých [standardní umístění](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
-
 ## <a name="identity-and-access"></a>Identita a přístup
 
 Pomocí nástroje Deployment Manager [uživatelsky přiřazené identity spravované](../active-directory/managed-identities-azure-resources/overview.md) provede akce nasazení. Tuto identitu můžete vytvořit před spuštěním nasazení. Musí mít přístup k předplatnému, které nasazujete službu do a dostatečná oprávnění k dokončení nasazení. Informace o akcích udělit prostřednictvím rolí najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
 
-Identita se musí nacházet v jednom z podporovaných umístění Deployment Manager a musí se nacházet ve stejném umístění jako uvedení.
+Identita se musí nacházet ve stejném umístění jako uvedení.
 
 ## <a name="topology-template"></a>Topologie šablony
 
@@ -221,7 +217,9 @@ Krok čekání pozastaví nasazení, než budete pokračovat. Umožňuje ověři
 
 Vlastnost duration používá [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Předchozí příklad určuje minutu trvající čekání.
 
-Další informace o kroku kontroly stavu, najdete v části [ ]() a [ ]() Další informace najdete v tématu [kroky referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/steps).
+Další informace o kroku kontroly stavu, najdete v části [zavést stavu zavedení integrace pro Azure Deployment Manager](./deployment-manager-health-check.md) a [kurzu: Použít kontrolu v nástroji Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+
+Další informace najdete v tématu [kroky referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Uvedení
 

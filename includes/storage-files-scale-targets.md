@@ -2,26 +2,26 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 05/06/2019
 ms.author: tamram
-ms.openlocfilehash: 99314538f90404d7c2b72da0dd2da2d8ac60a08a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 213ecee34df46c0a408e7034a07ab864c96b340b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803742"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65751549"
 ---
-| Prostředek | Standardní sdílené složky | Premium sdílené složky (preview) |
+| Resource | Standardní sdílené složky | Premium sdílené složky (preview) |
 |----------|---------------|------------------------------------------|
 | Minimální velikost sdílené složky | Žádné minimální; průběžné platby | 100 GB; zřízené |
-| Maximální velikost sdílené složky | 5 TiB | 5 TiB (public preview), 100 TB (omezené veřejné verzi preview) |
+| Maximální velikost sdílené složky | 5 TiB | 100 TiB |
 | Maximální velikost souboru ve sdílené složce | 1 TiB | 1 TiB |
 | Maximální počet souborů ve sdílené složce | Bez omezení | Bez omezení |
-| Maximální IOPS na sdílenou složku | 1 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ | 5 120 základní vstupně-výstupních operací s limitem 15,360 burst (public preview), 100 000 IOPS (omezené veřejné verzi preview)|
+| Maximální IOPS na sdílenou složku | 1 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ | 100 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
 | Maximální počet uložené zásady přístupu na soubor sdílet | 5 | 5 |
 | Nastavte propustnost s jedním sdílené složky | Až 60 MiB za sekundu | Zobrazit hodnoty premium soubor sdílenou složku příchozí a odchozí|
-| Maximální výchozí přenos dat u jedné sdílené složky | Zobrazit standardní soubor propustnost cílové sdílené složky | Až 368 MiB/s (public preview), až 6,204 MiB/s (omezené veřejné verzi preview) |
-| Maximální příchozí přenos dat pro sdílení souborů | Zobrazit standardní soubor propustnost cílové sdílené složky | Až 245 MiB/s (public preview), až 4,136 MiB/s (omezené veřejné verzi preview) |
+| Maximální výchozí přenos dat u jedné sdílené složky | Zobrazit standardní soubor propustnost cílové sdílené složky | Až 6,204 MiB/s |
+| Maximální příchozí přenos dat pro sdílení souborů | Zobrazit standardní soubor propustnost cílové sdílené složky | Až 4,136 MiB/s |
 | Maximální otevřené popisovače směrem na soubor | 2 000 otevřených popisovačů | 2 000 otevřených popisovačů |
 | Maximální počet snímků sdílené složky | snímky sdílené složky 200 | snímky sdílené složky 200 |
 | Délka názvu maximální objektu (adresářů a souborů) | 2 048 znaků | 2 048 znaků |

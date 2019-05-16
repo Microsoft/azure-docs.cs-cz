@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412745"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768373"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
 
@@ -53,7 +53,7 @@ Pokud ještě jste nenastavili profilový obrázek, zobrazí se ikona s iniciál
 
   ![Snímek obrazovky s e-mailové pozvánce s odesílatel pozvánky iniciály zobrazí](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>Tělo
+### <a name="body"></a>Text zprávy
 Text obsahuje zprávu, že odesílatel pozvánky kontextovému při [pozvání uživatelů typu Host do adresáře, skupiny nebo aplikace](add-users-administrator.md) nebo [pomocí e-mailové pozvánce API](customize-invitation-api.md). Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
 
   ![Snímek obrazovky zobrazující tělo e-mailová pozvánka](media/invitation-email-elements/invitation-email-body.png)

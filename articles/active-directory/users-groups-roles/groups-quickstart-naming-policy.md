@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 04/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4105fa17041c7cefd1387d1ee50c177b8c55fc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471208"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605639"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Pojmenování zásady pro skupiny ve službě Azure Active Directory
 
@@ -31,121 +31,43 @@ V tomto rychlém startu nastavíte ve svém tenantovi Azure Active Directory (Az
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="install-powershell-cmdlets"></a>Instalace rutin PowerShellu
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí webu Azure portal (preview)
 
-Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShell pro Graph pro Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – Verze Public Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137). 
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu správce.
+1. Vyberte **skupiny**a pak vyberte **zásad pojmenování** otevřete stránku zásad pojmenování.
 
-1. Otevřete aplikaci Windows PowerShell jako správce.
-2. Odinstalujte všechny předchozí verze AzureADPreview.
-  
+    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy-preview.png)
 
-   ```powershell
-   Uninstall-Module AzureADPreview
-   ```
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Umožňuje zobrazit nebo upravit zásady vytváření názvů předponu příponu
 
-3. Nainstalujte nejnovější verzi AzureADPreview.
-  
+1. Na **zásad pojmenování** stránce **pojmenování zásady skupiny**.
+1. Můžete zobrazit nebo upravit aktuální předpona nebo přípona jednotlivě pojmenování zásady tak, že vyberete atributy nebo řetězce, které chcete vynutit jako součást zásady pojmenování.
+1. Prefix nebo sufix odebrat ze seznamu, vyberte, jakou předponu nebo příponu a potom vyberte **odstranit**. Více položek lze odstranit ve stejnou dobu.
+1. Vyberte **Uložit** změny zásad projeví.
 
-   ```powershell
-   Install-Module AzureADPreview
-   ```
+### <a name="view-or-edit-the-custom-blocked-words"></a>Umožňuje zobrazit nebo upravit vlastní blokované slova
 
-   Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišti, zadejte **Y**. Instalace nového modulu může trvat několik minut.
+1. Na **zásad pojmenování** stránce **blokované slova**.
 
-## <a name="set-up-naming-policy"></a>Nastavení zásad pojmenování
+    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords-preview.png)
 
-### <a name="step-1-sign-in-using-powershell-cmdlets"></a>Krok 1: Přihlaste se pomocí rutin prostředí PowerShell
+1. Umožňuje zobrazit nebo upravit tak, že vyberete aktuální seznam blokovaných zadejte vlastní slova **Stáhnout**.
+1. Nahrajte nový seznam blokovaných zadejte vlastní slova tak, že vyberete ikonu souboru.
+1. Vyberte **Uložit** změny zásad projeví.
 
-1. Otevřete aplikaci Windows PowerShell. Nepotřebujete zvýšená oprávnění.
-
-2. Spuštěním následujících příkazů se připravte na spouštění rutin.
-  
-
-   ```powershell
-   Import-Module AzureADPreview
-   Connect-AzureAD
-   ```
-
-   Na obrazovce **Přihlášení k účtu**, která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
-
-3. Podle pokynů v tématu [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) vytvořte nastavení skupiny pro tohoto tenanta.
-
-### <a name="step-2-view-the-current-settings"></a>Krok 2: Zobrazit aktuální nastavení
-
-1. Zobrazte aktuální nastavení zásad pojmenování.
-  
-
-   ```powershell
-   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id
-   ```
-
-  
-2. Zobrazte aktuální nastavení skupiny.
-  
-
-   ```powershell
-   $Setting.Values
-   ```
-
-  
-
-### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>Krok 3: Nastavte zásady pojmenování a jakékoli vlastní blokované slova
-
-1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Pro funkci tak, aby fungovala správně [GroupName] musí být součástí nastavení.
-  
-
-   ```powershell
-   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-   ```
-
-  
-2. Nastavte vlastní blokovaná slova, která chcete zakázat. Následující příklad ukazuje, jak můžete přidat vlastní slova.
-  
-
-   ```powershell
-   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-   ```
-
-  
-3. Uložte nastavení, aby nová zásada vstoupila v platnost, jak je znázorněno v následujícím příkladu.
-  
-
-   ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
-
-  
 A to je vše. Nastavili jste zásady pojmenování a přidali jste vlastní blokovaná slova.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Prázdná skupina název předpon a přípon v Azure AD PowerShell.
-  
+### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Odebrat zásady pojmenování pomocí webu Azure portal (preview)
 
-   ```powershell
-   $Setting["PrefixSuffixNamingRequirement"] =""
-   ```
-
-  
-2. Prázdný vlastní blokované slova.
-  
-
-   ```powershell
-   $Setting["CustomBlockedWordsList"]=""
-   ```
-
-  
-3. Uložte nastavení.
-  
-
-   ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
+1. Na **zásad pojmenování** stránce **odstranit zásadu**.
+1. Jakmile potvrdíte odstranění, zásady pojmenování Odebereme, včetně všech předpon přípon pojmenování zásady a jakékoli vlastní blokované slova.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak pomocí rutin PowerShellu nastavit zásady pojmenování pro tenanta Azure AD.
+V tomto rychlém startu jste zjistili, jak nastavit zásady pojmenování pro vaši organizaci Azure AD na webu Azure portal.
 
-Další informace o technických omezeních, přidání seznamu vlastních blokovaných slov nebo prostředích pro koncové uživatele v různých aplikacích Office 365 najdete v dalším článku, který obsahuje další podrobnosti o zásadách pojmenování.
+Přejděte k dalšímu článku pro další informace, včetně rutin Powershellu pro pojmenování zásady, technická omezení, přidání seznamu blokovaných zadejte vlastní slova, a prostředí koncového uživatele v aplikacích Office 365.
 > [!div class="nextstepaction"]
-> [Všechny podrobnosti o zásadách pojmenování](groups-naming-policy.md)
+> [Pojmenování zásady prostředí PowerShell](groups-naming-policy.md)

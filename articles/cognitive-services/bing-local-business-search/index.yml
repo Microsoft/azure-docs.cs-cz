@@ -6,8 +6,8 @@ metadata:
   title: Dokumentace k rozhraní API Bingu pro místní obchodní vyhledávání
   description: 'Rozhraní API Bingu pro místní obchodní vyhledávání je služba RESTful, která vašim aplikacím umožňuje vyhledávat místní podniky, a to na základě vyhledávacích dotazů.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.subservice: bing-local-business
   ms.tgt_pltfrm: na
   ms.devlang: na

@@ -4,16 +4,15 @@ description: Tento článek obsahuje informace o omezení velikosti pro požadav
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.workload: infrastructure-services
-ms.date: 1/29/2019
+ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791755"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620276"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti pro požadavek webové aplikace brány firewall a seznamy vyloučení
 
@@ -25,7 +24,7 @@ Firewall webových aplikací (WAF) Azure Application Gateway chrání webové ap
 
 Firewall webových aplikací umožňuje konfigurovat omezení velikosti požadavku v rámci dolní a horní hranice. K dispozici jsou následující dvě velikost omezení konfigurace:
 
-- Pole velikost textu maximální požadavek určen ve znalostní báze a ovládací prvky, které celkový limit velikosti žádosti o vyloučení všechny soubory nahraje. Toto pole musí být v rozsahu 1 KB minimální do maximální hodnota 128 KB. Výchozí hodnota pro velikost textu požadavku je 128 KB.
+- Pole velikost textu maximální požadavku je zadán v kilobajtech a ovládací prvky, které celkový limit velikosti žádosti o vyloučení všechny soubory nahraje. Toto pole musí být v rozsahu 1 KB minimální do maximální hodnota 128 KB. Výchozí hodnota pro velikost textu požadavku je 128 KB.
 - Limit pole pro uložení souborů se uvádí v MB a řídí maximální velikost povolenou nahrávání. Toto pole může mít minimální hodnotu 1 MB a maximálně 500 MB pro velké SKU instance SKU médium obsahuje maximálně 100 MB. Výchozí hodnota pro limitu pro nahrávání souborů je 100 MB.
 
 WAF také nabízí Konfigurovatelný ovladače k zapnutí nebo vypnutí kontroly těla požadavku. Ve výchozím nastavení povolení kontroly těla požadavku. Pokud kontrola tělo žádosti je vypnutý, WAF nevyhodnocuje obsah zprávy HTTP. V takových případech WAF nadále vynucovat pravidla firewallu webových aplikací na záhlaví, soubory cookie a identifikátor URI. Pokud kontrola tělo žádosti je vypnutý, maximální žádost subjektu velikost pole nelze použít a nelze nastavit. Vypnutí kontroly tělo požadavku umožňuje zprávy větší než 128 KB k odeslání do WAF, ale tělo zprávy není zkontroloval ohrožení zabezpečení.
@@ -40,11 +39,12 @@ Následující atributy mohou být přidány do seznamu vyloučení:
 
 * Hlavičky žádosti
 * Soubory cookie požadavků
-* Text žádosti
+* Název atributu požadavku (argumenty)
 
    * Vícedílný dat formuláře
    * XML
    * JSON
+   * Adresa URL dotazu argumentů
 
 Můžete určit přesné požadavek záhlaví, textu, soubor cookie nebo atributu shodu řetězce dotazu.  Nebo můžete volitelně zadat částečné shody. Vyloučení je vždycky aktivní pole hlavičky, nikdy ne na jeho hodnotu. Pravidla vyloučení jsou globální v oboru a platí pro všechny stránky a všechna pravidla.
 
@@ -62,37 +62,36 @@ Ve všech případech vyhledávání nejsou rozlišována velká a malá písmen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující fragment kódu prostředí Azure PowerShell ukazuje použití vyloučení:
+Následující příklady ukazují použití vyloučení.
+
+### <a name="example-1"></a>Příklad 1
+
+V tomto příkladu budete chtít vyloučit záhlaví user-agent. Hlavičky uživatelského agenta žádosti obsahuje charakteristické řetězec, který umožňuje síť partnerské uzly protokolu k identifikaci typu aplikace, operační systém, výrobce softwaru nebo verze softwaru agenta uživatele žádost o software. Další informace najdete v tématu [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+
+Může existovat libovolný počet důvodů, proč zakázat vyhodnocení této hlavičky. Je možné řetězec, který WAF se zobrazí a předpokládá, že se zlými úmysly. Například klasické útoku SQL "x = x" v řetězci. V některých případech to může být legitimní provoz. Proto budete muset vyloučit tuto hlavičku ze zkušební verze WAF.
+
+Následující rutiny Azure Powershellu vyloučí záhlaví user-agent ze zkušební verze:
 
 ```azurepowershell
-// exclusion 1: exclude request head start with xyz
-// exclusion 2: exclude request args equals a
-
-$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "StartsWith" -Selector "xyz"
-
-$exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestArgNames" -SelectorMatchOperator "Equals" -Selector "a"
-
-// add exclusion lists to the firewall config
-
-$firewallConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusions $exclusion1,$exclusion2
+$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
+   -MatchVariable "RequestHeaderNames" `
+   -SelectorMatchOperator "Equals" `
+   -Selector "User-Agent"
 ```
 
-Následující fragment kódu json ukazuje použití vyloučení:
+### <a name="example-2"></a>Příklad 2
 
-```json
-"webApplicationFirewallConfiguration": {
-          "enabled": "[parameters('wafEnabled')]",
-          "firewallMode": "[parameters('wafMode')]",
-          "ruleSetType": "[parameters('wafRuleSetType')]",
-          "ruleSetVersion": "[parameters('wafRuleSetVersion')]",
-          "disabledRuleGroups": [],
-          "exclusions": [
-            {
-                "matchVariable": "RequestArgNames",
-                "selectorMatchOperator": "StartsWith",
-                "selector": "a^bc"
-            }
+Tento příklad vylučuje hodnoty v *uživatele* parametr, který je předán v požadavku prostřednictvím adresy URL. Řekněme například, že je běžné v prostředí pro uživatele pole obsahuje řetězec, který WAF zobrazení jako škodlivý obsah, tak se zablokuje.  Tento parametr můžete v tomto případě vyloučit tak, aby WAF nevyhodnocuje cokoli, co je v poli.
+
+Následující rutiny Azure Powershellu nezahrnuje tento parametr se ze zkušební verze:
+
+```azurepowershell
+$exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
+   -MatchVariable "RequestArgNames" `
+   -SelectorMatchOperator "Equals" `
+   -Selector "user"
 ```
+Takže když adresa URL **http://www.contoso.com/?user=fdafdasfda** je předán do WAF, nevyhodnotí řetězec **fdafdasfda**.
 
 ## <a name="next-steps"></a>Další postup
 

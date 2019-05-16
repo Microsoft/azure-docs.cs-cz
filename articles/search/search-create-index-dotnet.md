@@ -9,19 +9,20 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/08/2019
-ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/16/2019
+ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516561"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65758458"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Rychlý start: 1 – Vytvoření indexu Azure Search vC#
 > [!div class="op_single_selector"]
 > * [C#](search-create-index-dotnet.md)
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Python](search-get-started-python.md)
 > * [Postman](search-fiddler.md)
 >*
 
@@ -36,11 +37,11 @@ Tento článek vás provede procesem vytvoření [indexu Azure Search](search-wh
 
 Následující služby, nástroje a data se používají v tomto rychlém startu. 
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start.
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start.
 
-[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
++ [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
 
-[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) poskytuje ukázkové řešení .NET Core konzolové aplikace napsané C#, který je umístěn v úložišti Githubu ukázky v Azure. Stažení a extrakci řešení. Ve výchozím nastavení řešení jsou jen pro čtení. Klikněte pravým tlačítkem na řešení a vymažte atribut jen pro čtení tak, že můžete upravovat soubory. Data je součástí řešení.
++ [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) poskytuje ukázkové řešení .NET Core konzolové aplikace napsané C#, který je umístěn v úložišti Githubu ukázky v Azure. Stažení a extrakci řešení. Ve výchozím nastavení řešení jsou jen pro čtení. Klikněte pravým tlačítkem na řešení a vymažte atribut jen pro čtení tak, že můžete upravovat soubory. Data je součástí řešení.
 
 ## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 

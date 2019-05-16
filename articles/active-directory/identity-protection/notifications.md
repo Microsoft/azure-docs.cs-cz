@@ -18,12 +18,12 @@ ms.date: 12/07/2017
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 482b69752cc889ff99c3d9082d3bc20a7caa6d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294462"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784345"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení služby Azure Active Directory Identity Protection
 
@@ -39,6 +39,8 @@ Tento článek poskytuje přehled o obou oznámení e-mailů.
 
 V reakci na účet zjištěná ohrožení, Azure AD Identity Protection generuje upozornění e-mailu s **uživatelé na zjištěné riziko** jako předmět. E-mailu obsahuje odkaz **[uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** sestavy. Jako osvědčený postup byste měli prozkoumat okamžitě ohrožení uživatelé.
 
+Konfigurace pro toto upozornění můžete zadat, na jaké úroveň rizika uživatele má vygenerování výstrahy. E-mailu se vygeneruje, když úroveň rizika uživatele dosáhne jste zadali; ale neobdržíte žádné nové uživatele na zjištěné riziko e-mailové výstrahy pro tohoto uživatele po přecházejí na tuto úroveň rizika uživatele. Například pokud nastavíte zásady tak, aby upozornění na střední uživatelského rizika a John přesune na střední riziko uživatelů, zobrazí se uživateli v e-mailu zjištěné riziko pro Jan. Druhý uživatelé na zjištěné riziko upozornění ale neobdržíte Pokud John pak přesune do vysoce rizikových nebo má další rizikové události.
+
 ![Ohrožení uživatelé zjistil e-mailu](./media/notifications/01.png)
 
 
@@ -46,7 +48,7 @@ V reakci na účet zjištěná ohrožení, Azure AD Identity Protection generuje
 
 Jako správce můžete nastavit:
 
-- **Úroveň rizika, která aktivuje generování tohoto e-mailu** – ve výchozím nastavení, je k riziku "Vysoká" nastavit úroveň rizika.
+- **Úroveň rizika pro uživatele, která aktivuje generování tohoto e-mailu** – ve výchozím nastavení, je k riziku "Vysoká" nastavit úroveň rizika.
 - **Příjemci tohoto e-mailu** – ve výchozím nastavení, příjemci zahrnují všichni globální správci. Globální správci můžete také přidat další globální správci, správci zabezpečení, čtenáři zabezpečení jako příjemce.  
 
 

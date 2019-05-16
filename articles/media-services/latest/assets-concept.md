@@ -9,30 +9,27 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0fc44bfdb98b81bf218cb2f1824f0f1bb14de4fa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235676"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551757"
 ---
 # <a name="assets"></a>Prostředky
 
-Ve službě Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) obsahuje digitální soubory (včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory s titulky) a metadata o těchto souborech. Jakmile jsou digitální soubory nahrát do Assetu, můžete použít ve službě Media Services encoding, streamování, analýze obsahu pracovních postupů. Další informace najdete v tématu [digitální soubory nahrát do prostředků](#upload-digital-files-into-assets) níže v části.
+Ve službě Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) obsahuje informace o digitální soubory uložené ve službě Azure Storage (včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory s titulky). 
 
 Prostředek je namapována na kontejner objektů blob ve službě [účtu služby Azure Storage](storage-account-concept.md) a soubory v prostředku se ukládají jako objekty BLOB bloku v tomto kontejneru. Služba Media Services podporuje úrovně objektu Blob, pokud používá účet pro obecné účely v2 (GPv2) úložiště. S účty GPv2, můžete přesunout soubory do [studené nebo archivní úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archiv** úložiště je vhodný pro archivaci zdrojové soubory, pokud už nepotřebujete (například po jejich jsou kódovány).
 
 **Archivu** vrstva úložiště se doporučuje jen pro velmi velké zdrojové soubory, které již byly zakódovány a kódování výstupu úlohy byl umístěn do kontejneru objektů blob výstup. Objekty BLOB ve výstupním kontejneru, který chcete přidružit k Asset a použít ke streamování a analyzovat obsah, musí existovat v **Hot** nebo **Cool** vrstvy úložiště.
 
-> [!NOTE]
-> Vlastnosti prostředku typu datum a čas jsou vždy ve formátu UTC.
-
 ## <a name="upload-digital-files-into-assets"></a>Digitální soubory nahrát do prostředků
 
-Jedním z běžných pracovních Media Services je nahrávání, kódování a streamování do souboru. Tato část popisuje obecné kroky.
+Po digitální soubory nahrát do služby storage a přidružené k prostředku, můžete použít ve službě Media Services encoding, streamování, analýze obsahu pracovních postupů. Jedním z běžných pracovních Media Services je nahrávání, kódování a streamování do souboru. Tato část popisuje obecné kroky.
 
 > [!TIP]
 > Než začnete s vývojem, projděte si [vývoj s využitím rozhraní API služby Media Services v3](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraní API pro vytváření názvů atd.)
@@ -54,6 +51,9 @@ Jedním z běžných pracovních Media Services je nahrávání, kódování a s
 Úplný příklad .NET, který ukazuje, jak: vytvořit Asset, získání zapisovatelné adresy URL SAS prostředku kontejneru v úložišti, nahrajte soubor do kontejneru v úložišti pomocí adresy URL SAS, naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md).
 
 ### <a name="create-a-new-asset"></a>Vytvoření nového prostředku
+
+> [!NOTE]
+> Vlastnosti prostředku typu datum a čas jsou vždy ve formátu UTC.
 
 #### <a name="rest"></a>REST
 

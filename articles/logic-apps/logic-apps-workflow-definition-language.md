@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 04/30/2018
-ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845732"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596761"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenční dokumentace schématu pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
-Když vytvoříte aplikaci logiky v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), aplikace logiky má základní definice pracovního postupu, který popisuje skutečné logiku, která ve vaší aplikaci logiky. Tuto definici pracovního postupu používá [JSON](https://www.json.org/) a řídí strukturu, která se ověří pomocí schématu rozhraní jazyka definice pracovního postupu. Tento odkaz obsahuje přehled o tuto strukturu a jak definuje schéma elementů v definici pracovního postupu.
+Když vytvoříte aplikaci logiky v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), aplikace logiky má základní definice pracovního postupu, který popisuje skutečné logiku, která ve vaší aplikaci logiky. Tuto definici pracovního postupu používá [JSON](https://www.json.org/) a řídí strukturu, která se ověří pomocí schématu rozhraní jazyka definice pracovního postupu. Tento odkaz obsahuje přehled o tuto strukturu a jak schéma definuje atributy v definici pracovního postupu.
 
 ## <a name="workflow-definition-structure"></a>Struktura definice pracovního postupu
 
@@ -29,24 +29,63 @@ Tady je základní strukturu pro definici pracovního postupu:
 ```json
 "definition": {
   "$schema": "<workflow-definition-language-schema-version>",
-  "contentVersion": "<workflow-definition-version-number>",
-  "parameters": { "<workflow-parameter-definitions>" },
-  "triggers": { "<workflow-trigger-definitions>" },
   "actions": { "<workflow-action-definitions>" },
-  "outputs": { "<workflow-output-definitions>" }
+  "contentVersion": "<workflow-definition-version-number>",
+  "outputs": { "<workflow-output-definitions>" },
+  "parameters": { "<workflow-parameter-definitions>" },
+  "staticResults": { "<static-results-definitions>" },
+  "triggers": { "<workflow-trigger-definitions>" }
 }
 ```
 
-| Element | Požaduje se | Popis |
-|---------|----------|-------------|
-| Definice | Ano | Počáteční element definice pracovního postupu |
-| $schema | Pouze v případě, že externě odkazující na definici pracovního postupu | Umístění pro soubor schématu JSON, který popisuje verzi jazyka definice pracovního postupu, který najdete tady: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| contentVersion | Ne | Číslo verze definice pracovního postupu, který je ikona "1.0.0.0" ve výchozím nastavení. K identifikaci a ověřte správnou definici při nasazení pracovního postupu, zadejte hodnotu používat. |
-| parameters | Ne | Definice pro minimálně jeden parametr, který vkládá data do vašich pracovních postupů <p><p>Maximální parametry: 50 |
-| triggery | Ne | Definice pro jeden nebo více aktivačních událostí, které instanci pracovního postupu. Můžete definovat více než jeden trigger, ale pouze pomocí jazyka definice pracovního postupu, ne vizuálně pomocí návrháře pro Logic Apps. <p><p>Maximální aktivační události: 10 |
-| Akce | Ne | Definice pro jednu nebo více akcí pro spuštění v modulu runtime pracovního postupu <p><p>Maximální akce: 250 |
-| výstupy | Ne | Definice pro výstupy, které vracejí z běhu pracovního postupu <p><p>Maximální výstupy: 10 |
+| Atribut | Požadováno | Popis |
+|-----------|----------|-------------|
+| `definition` | Ano | Počáteční element definice pracovního postupu |
+| `$schema` | Pouze v případě, že externě odkazující na definici pracovního postupu | Umístění pro soubor schématu JSON, který popisuje verzi jazyka definice pracovního postupu, který najdete tady: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | Ne | Definice pro jednu nebo více akcí pro spuštění v modulu runtime pracovního postupu. Další informace najdete v tématu [aktivační události a akce](#triggers-actions). <p><p>Maximální akce: 250 |
+| `contentVersion` | Ne | Číslo verze definice pracovního postupu, který je ikona "1.0.0.0" ve výchozím nastavení. K identifikaci a ověřte správnou definici při nasazení pracovního postupu, zadejte hodnotu používat. |
+| `outputs` | Ne | Definice pro výstupy, které vracejí z běhu pracovního postupu. Další informace najdete v tématu [výstupy](#outputs). <p><p>Maximální výstupy: 10 |
+| `parameters` | Ne | Definice pro minimálně jeden parametr, který vkládá data do vašich pracovních postupů. Další informace najdete v tématu [parametry](#parameters). <p><p>Maximální parametry: 50 |
+| `staticResults` | Ne | Definice pro jeden nebo více statických výsledky vrácené akcemi jako mock výstupy při statické výsledky jsou povolené na těchto akcí. V každé definici akce `runtimeConfiguration.staticResult.name` atribut odkazuje odpovídající definici uvnitř `staticResults`. Další informace najdete v tématu [statické výsledky](#static-results). |
+| `triggers` | Ne | Definice pro jeden nebo více aktivačních událostí, které instanci pracovního postupu. Můžete definovat více než jeden trigger, ale pouze pomocí jazyka definice pracovního postupu, ne vizuálně pomocí návrháře pro Logic Apps. Další informace najdete v tématu [aktivační události a akce](#triggers-actions). <p><p>Maximální aktivační události: 10 |
 ||||
+
+<a name="triggers-actions"></a>
+
+## <a name="triggers-and-actions"></a>Aktivační události a akce
+
+V definici pracovního postupu `triggers` a `actions` oddíly definovat volání, ke kterým dochází při provádění pracovního postupu. Syntaxe a další informace o těchto částech najdete v tématu [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
+
+<a name="outputs"></a>
+
+## <a name="outputs"></a>Výstupy
+
+V `outputs` části, definují data, která vrací pracovního postupu po dokončení spuštění. Například můžete sledovat konkrétní stav nebo hodnota z každé spuštění, zadejte, že výstup pracovního postupu, vrátí tato data.
+
+> [!NOTE]
+> Když reagovat na příchozí požadavky z rozhraní REST API služby, nepoužívejte `outputs`. Místo toho použijte `Response` typ akce. Další informace najdete v tématu [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
+
+Tady je obecnou strukturu pro definici výstupu:
+
+```json
+"outputs": {
+  "<key-name>": {
+    "type": "<key-type>",
+    "value": "<key-value>"
+  }
+}
+```
+
+| Atribut | Požaduje se | Typ | Popis |
+|-----------|----------|------|-------------|
+| <*key-name*> | Ano | String | Název klíče pro výstup návratová hodnota |
+| <*key-type*> | Ano | int, float, string, securestring, bool, pole, objekt JSON | Typ výstupu vracené hodnoty |
+| <*key-value*> | Ano | Stejné jako <*typ klíče*> | Návratová hodnota výstupu |
+|||||
+
+K získání výstup z běhu pracovního postupu, zkontrolujte historii spuštění aplikace logiky a podrobnosti na webu Azure Portal nebo pomocí [rozhraní REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externích systémů, například Power BI tak, že můžete vytvořit řídicí panely.
+
+<a name="parameters"></a>
 
 ## <a name="parameters"></a>Parametry
 
@@ -69,44 +108,94 @@ Tady je obecnou strukturu pro definici parametru:
 },
 ```
 
-| Element | Požaduje se | Typ | Popis |
-|---------|----------|------|-------------|
-| type | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
-| Výchozí hodnota | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
-| allowedValues | Ne | Stejné jako `type` | Pole s hodnotami, které přijímají parametr |
-| zprostředkovatele identity | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo toku nebo dat doby návrhu použít Visual Studio nebo jinými nástroji |
+| Atribut | Požaduje se | Typ | Popis |
+|-----------|----------|------|-------------|
+| <*Typ parametru*> | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| <*výchozí hodnoty parametrů*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
+| <*array-with-permitted-parameter-values*> | Ne | Pole | Pole s hodnotami, které přijímají parametr |
+| `metadata` | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo toku nebo dat doby návrhu použít Visual Studio nebo jinými nástroji |
 ||||
 
-## <a name="triggers-and-actions"></a>Aktivační události a akce
+<a name="static-results"></a>
 
-V definici pracovního postupu `triggers` a `actions` oddíly definovat volání, ke kterým dochází při provádění pracovního postupu. Syntaxe a další informace o těchto částech najdete v tématu [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
+## <a name="static-results"></a>Statické výsledky
 
-## <a name="outputs"></a>Výstupy
-
-V `outputs` části, definují data, která vrací pracovního postupu po dokončení spuštění. Například můžete sledovat konkrétní stav nebo hodnota z každé spuštění, zadejte, že výstup pracovního postupu, vrátí tato data.
-
-> [!NOTE]
-> Když reagovat na příchozí požadavky z rozhraní REST API služby, nepoužívejte `outputs`. Místo toho použijte `Response` typ akce. Další informace najdete v tématu [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
-
-Tady je obecnou strukturu pro definici výstupu:
+V `staticResults` atribut, definujte akce cvičné `outputs` a `status` , která vrací akce, pokud je zapnuté nastavení statické výsledek akce. V definici akce `runtimeConfiguration.staticResult.name` atribut odkazuje na název pro definici statické výsledek uvnitř `staticResults`. Přečtěte si, jak [testování aplikací logiky s využitím mock data nastavením statické výsledky](../logic-apps/test-logic-apps-mock-data-static-results.md).
 
 ```json
-"outputs": {
-  "<key-name>": {
-    "type": "<key-type>",
-    "value": "<key-value>"
-  }
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "<static-result-definition-name>": {
+         "outputs": {
+            <output-attributes-and-values-returned>,
+            "headers": { <header-values> },
+            "statusCode": "<status-code-returned>"
+         },
+         "status": "<action-status>"
+      }
+   },
+   "triggers": { "<...>" }
 }
 ```
 
-| Element | Požaduje se | Typ | Popis |
-|---------|----------|------|-------------|
-| <*key-name*> | Ano | String | Název klíče pro výstup návratová hodnota |
-| type | Ano | int, float, string, securestring, bool, pole, objekt JSON | Typ výstupu vracené hodnoty |
-| value | Ano | Stejné jako `type` | Návratová hodnota výstupu |
+| Atribut | Požaduje se | Typ | Popis |
+|-----------|----------|------|-------------|
+| <*statické výsledek definice názvu*> | Ano | String | Název pro definici statické výsledek, který může odkazovat na definici akce prostřednictvím `runtimeConfiguration.staticResult` objektu. Další informace najdete v tématu [nastavení konfigurace modulu Runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se připojí tento jedinečný název s číslem, které se zvyšuje podle potřeby. |
+| <*output-attributes-and-values-returned*> | Ano | Různé | Požadavky pro tyto atributy se liší v závislosti na různých podmínek. Například, když `status` je `Succeeded`, `outputs` atribut obsahuje atributy a hodnoty vrácené jako mock výstupy akce. Pokud `status` je `Failed`, `outputs` obsahuje atribut `errors` atribut, který je pole obsahující jeden nebo více chyb `message` objekty, které mají informace o chybě. |
+| <*hodnoty hlavičky*> | Ne | JSON | Hodnoty hlavičky vrácené akce |
+| <*status-code-returned*> | Ano | String | Stavový kód vrácený akce |
+| <*action-status*> | Ano | String | Stav akce, například `Succeeded` nebo `Failed` |
 |||||
 
-K získání výstup z běhu pracovního postupu, zkontrolujte historii spuštění aplikace logiky a podrobnosti na webu Azure Portal nebo pomocí [rozhraní REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externích systémů, například Power BI tak, že můžete vytvořit řídicí panely.
+Například v této definici akce HTTP `runtimeConfiguration.staticResult.name` atribut odkazy `HTTP0` uvnitř `staticResults` atribut, ve kterém jsou definovány mock výstupy této akce. `runtimeConfiguration.staticResult.staticResultOptions` Atribut určuje, zda nastavení statické výsledek `Enabled` na akci HTTP.
+
+```json
+"actions": {
+   "HTTP": {
+      "inputs": {
+         "method": "GET",
+         "uri": "https://www.microsoft.com"
+      },
+      "runAfter": {},
+      "runtimeConfiguration": {
+         "staticResult": {
+            "name": "HTTP0",
+            "staticResultOptions": "Enabled"
+         }
+      },
+      "type": "Http"
+   }
+},
+```
+
+Akce HTTP vrátí výstupy v `HTTP0` definice uvnitř `staticResults`. V tomto příkladu, pro kód stavu je mock výstup `OK`. Pro hodnoty hlavičky mock výstup je `"Content-Type": "application/JSON"`. Stav akce mock výstup je `Succeeded`.
+
+```json
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "HTTP0": {
+         "outputs": {
+            "headers": {
+               "Content-Type": "application/JSON"
+            },
+            "statusCode": "OK"
+         },
+         "status": "Succeeded"
+      }
+   },
+   "triggers": { "<...>" }
+},
+```
 
 <a name="expressions"></a>
 
@@ -213,7 +302,7 @@ V [výrazy](#expressions) a [funkce](#functions), operátory provádět konkrét
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Některé výrazy jejich hodnoty získat z akce modulu runtime, které nemusí ještě neexistuje, když se spustí vaše definice pracovního postupu. Odkaz nebo pracovat s těmito hodnotami ve výrazech, můžete použít [ *funkce* ](../logic-apps/workflow-definition-language-functions-reference.md) poskytující jazyka definice pracovního postupu.
 

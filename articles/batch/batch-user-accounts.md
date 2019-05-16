@@ -15,13 +15,22 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 000495ab84990f15885c254b472be7863c75da58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549848"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595376"
 ---
+> [!NOTE] 
+> Uživatelské účty popisovaných v tomto článku se liší od uživatelů účty používané pro protokol RDP (Remote Desktop) nebo Secure Shell (SSH), z bezpečnostních důvodů. 
+>
+> Připojení k uzlu se systémem Linux konfigurace virtuálního počítače přes SSH najdete v tématu [použití vzdálené plochy k virtuálnímu počítači s Linuxem v Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Připojení k uzlů se systémem Windows pomocí protokolu RDP najdete v tématu [připojit k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Připojení k uzlu prostřednictvím protokolu RDP s konfigurací cloudové služby najdete v tématu [povolit připojení ke vzdálené ploše pro roli v cloudových službách Azure](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
+>
+>
+
+
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve službě Batch
 
 Úlohu ve službě Azure Batch vždy běží pod účtem uživatele. Ve výchozím nastavení se úkoly spustí v rámci standardní uživatelské účty bez oprávnění správce. Tato výchozí nastavení účtu uživatele je obvykle dostatečné. Pro určité scénáře je však užitečné mít možnost při konfiguraci uživatelského účtu, pod kterou se má úloha spustit. Tento článek popisuje typy uživatelských účtů a způsob jejich konfigurace pro váš scénář.
@@ -36,14 +45,6 @@ Azure Batch poskytuje dva typy uživatelských účtů pro spouštění úloh:
 
 > [!IMPORTANT] 
 > Verze služby Batch 2017-01-01.4.0 zavádí narušující změně je nutné aktualizovat váš kód volat tuto verzi. Pokud se migrace kódu ze starší verze služby Batch, Všimněte si, že **runElevated** vlastnost je již nejsou podporovány v klientské knihovny rozhraní REST API nebo služby Batch. Pomocí nové **userIdentity** vlastnosti úlohy k určení úrovně zvýšení oprávnění. V části s názvem [aktualizujte svůj kód do nejnovější verze klientské knihovny Batch](#update-your-code-to-the-latest-batch-client-library) pro rychlé pokyny pro aktualizaci kódu Batch, pokud použijete jednu z knihoven klienta.
->
->
-
-> [!NOTE] 
-> Uživatelské účty popisovaných v tomto článku nepodporují protokol RDP (Remote Desktop) nebo Secure Shell (SSH), z bezpečnostních důvodů. 
->
-> Připojení k uzlu se systémem Linux konfigurace virtuálního počítače přes SSH najdete v tématu [použití vzdálené plochy k virtuálnímu počítači s Linuxem v Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Připojení k uzlů se systémem Windows pomocí protokolu RDP najdete v tématu [připojit k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
-> Připojení k uzlu prostřednictvím protokolu RDP s konfigurací cloudové služby najdete v tématu [povolit připojení ke vzdálené ploše pro roli v cloudových službách Azure](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 >
 >
 

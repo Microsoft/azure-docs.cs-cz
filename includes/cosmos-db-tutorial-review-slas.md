@@ -2,23 +2,24 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: e07a59ba0484910d87329be94f0fcc58b1011b95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b940d7308648a3a55ed031d7d57542f3b31e9f27
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571964"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546737"
 ---
-Propustnost, úložiště, dostupnost, latence a konzistence prostředků ve vašem účtu se monitorují na webu Azure Portal. Pojďme se na tyto metriky v rychlosti podívat. 
+Na webu Azure portal monitoruje propustnosti pro účet služby Cosmos DB, storage, dostupnosti, latence a konzistence. Grafy pro metriky, které jsou přidružené [Azure Cosmos DB Service smlouva o úrovni (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zobrazit hodnota SLA ve srovnání s skutečný výkon. Tato sada metriky díky monitorování vaší smlouvy o úrovni služeb transparentní.
 
-1. V navigační nabídce klikněte na **Metriky**.
+Zkontrolujte metriky a smlouvy o úrovni služeb: 
 
-   ![Metriky na webu Azure Portal](./media/cosmos-db-tutorial-review-slas/metrics.png)
-
-2. Klikněte postupně na všechny karty, abyste zjistili, jaké metriky služba Azure Cosmos DB nabízí. 
-
-    Každý graf přidružený ke [smlouvám SLA pro Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/) obsahuje řádek, který ukazuje, jestli nedošlo k porušení některé ze smluv SLA. Azure Cosmos DB prostřednictvím této sady metrik zajišťuje transparentní monitorování vašich smluv SLA. 
-
+1. Vyberte **metriky** v navigační nabídce účtu služby Cosmos DB.
+   
+2. Vyberte kartu, jako je například **latence**a vyberte časové rozmezí na pravé straně. Porovnání **skutečný** a **SLA** řádky v grafu.
+   
    ![Sada metrik Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   
+3. Zkontrolujte metriky na ostatních kartách. 
+

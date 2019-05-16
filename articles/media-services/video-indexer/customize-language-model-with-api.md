@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: ca1e66d20b19c1a5b85a4f4ff1c433331116bee7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553738"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799596"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Upravit jazykový model s rozhraními API pro Video Indexer
 
@@ -57,9 +58,9 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 |modelName|string|Ano|Název jazykový model|
-|language|string|Ano|Jazyk jazykový model. <br/>**Jazyk** parametru se musí předávat jazyka ve formátu BCP-47 "jazyk oblasti značky" (např.: "en US"). Podporované jazyky jsou angličtina (en US), němčina (de-DE), španělština (es-SP), arabština (ar – třeba), francouzština (fr-FR), hindština (hi-Dobrý den), italština (it-IT), japonština (ja-JP), portugalština (pt-BR), ruština (ru-RU) a čínština (zh-CN).  |
+|jazyk|string|Ano|Jazyk jazykový model. <br/>**Jazyk** parametru se musí předávat jazyka ve formátu BCP-47 "jazyk oblasti značky" (např.: "en US"). Podporované jazyky jsou angličtina (en US), němčina (de-DE), španělština (es-SP), arabština (ar – třeba), francouzština (fr-FR), hindština (hi-Dobrý den), italština (it-IT), japonština (ja-JP), portugalština (pt-BR), ruština (ru-RU) a čínština (zh-CN).  |
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Pokud chcete nahrát soubory mají být přidány do jazykový model, musíte nahrát soubory v textu pomocí dat formuláře kromě zadání hodnot požadovaných parametrů výše. Chcete-li to provést dvěma způsoby: 
 
@@ -129,7 +130,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -194,7 +195,7 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 |modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -238,7 +239,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |modelName|string|Ne|Nový název, který přiřadíte k modelu|
 |povolit|Boolean|Ne|Zvolte, zda jsou všechny soubory v rámci tohoto modelu (pravda) zapnutá nebo vypnutá (NEPRAVDA).|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Pokud chcete nahrát soubory mají být přidány do jazykový model, musíte nahrát soubory v textu pomocí dat formuláře kromě zadání hodnot požadovaných parametrů výše. Chcete-li to provést dvěma způsoby: 
 
@@ -308,7 +309,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |fileName|string|Ne|Název aktualizace názvu souboru|
 |povolit|Boolean|Ne|Aktualizace, jestli je tento soubor (true) zapnutá nebo vypnutá (NEPRAVDA) v jazykový model|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -355,7 +356,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -419,7 +420,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |accountID|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -492,7 +493,7 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 |fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -529,7 +530,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -578,7 +579,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku 
+### <a name="request-body"></a>Tělo požadavku 
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 

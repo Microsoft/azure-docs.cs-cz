@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737180"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521399"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
 
@@ -35,7 +35,6 @@ Některá nastavení host.json se použijí jenom při spuštění místně v [l
 ## <a name="sample-hostjson-file"></a>Ukázkový soubor host.json
 
 Následující ukázka *host.json* soubory mají všechny zadané možnosti.
-
 
 ```json
 {
@@ -82,7 +81,10 @@ Následující ukázka *host.json* soubory mají všechny zadané možnosti.
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -194,6 +196,9 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
       "Function.MyFunction": "Information",
       "default": "None"
     },
+    "console": {
+        ...
+    },
     "applicationInsights": {
         ...
     }
@@ -274,6 +279,18 @@ Sada [sdílených adresářů kód](functions-reference-csharp.md#watched-direct
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+Spravované závislosti je funkce ve verzi preview, která je aktuálně podporují jenom prostřednictvím Powershellu na základě funkcí. Umožňuje závislosti automaticky spravuje služba. Pokud je vlastnost povoleno nastavena na hodnotu true, [requirements.psd1](functions-reference-powershell.md#dependency-management) soubor se zpracuje. Po vydání všechny dílčí verze závislosti aktualizuje.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

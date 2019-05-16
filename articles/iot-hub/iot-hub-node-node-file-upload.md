@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61443845"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596622"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 
@@ -29,7 +29,7 @@ V tomto kurzu vychází z kódu v [odesílat zprávy typu Cloud-zařízení pomo
 [Začínáme se službou IoT Hub](quickstart-send-telemetry-node.md) kurz ukazuje základní funkce zasílání zpráv typu zařízení cloud ze služby IoT Hub. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
 
 *  Velké soubory, které obsahují obrázky
-*  Videa
+*  Video
 *  Data pronikavost odebírána data v vysoká frekvence
 *  Určitou formu předem zpracovaná data.
 
@@ -46,7 +46,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Node.js:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Node.js verze 4.0.x nebo novější.
+* Verze Node.js 10.0.x nebo novější.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 

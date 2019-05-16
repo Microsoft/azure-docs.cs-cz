@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2019
 ms.author: magoedte
-ms.openlocfilehash: f2a0d64da5a88e82c0ae1fd893af52f2070268f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402061"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522195"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
@@ -28,7 +28,7 @@ Zobrazení celkového stavu virtuálního počítače Azure a základního opera
 
 Tento článek vám pomůže pochopit, jak rychle posoudit, prozkoumat a vyřešit problémy se stavem zjištěna.
 
-Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-onboard.md).
+Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="monitoring-configuration-details"></a>Podrobnosti o konfiguraci monitorování
 
@@ -65,7 +65,7 @@ Tato část popisuje výchozí stav kritéria definovat za účelem monitorován
 - Stav služby Windows Firewall
 - Stav služby Vzdálená správa Windows
 
-### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+### <a name="linux-vms"></a>Linuxové virtuální počítače
 - Disk – monitorování střední Doba disku/přenos 
 - Disk – monitorování střední Doba disku/čtení 
 - Disk – monitorování střední Doby disku/zápis 
@@ -251,7 +251,7 @@ Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídek v
 
 |Sloupec |Popis | 
 |-------|------------| 
-|Předplatné |Vyberte předplatné služby Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. | 
+|Předplatné |Vyberte předplatné Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. | 
 |Skupina prostředků |Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. | 
 |Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení pouze výstrahy cíle **virtuálních počítačů** nebude vybrána a zahrnuté v tomto zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. | 
 |Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. | 

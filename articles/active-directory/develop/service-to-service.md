@@ -3,8 +3,8 @@ title: Služba služba aplikace ve službě Azure Active Directory
 description: Popisuje, jaké aplikace service to service a základní informace na protokol toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252042"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540298"
 ---
 # <a name="service-to-service-apps"></a>Služba služba aplikace
 
@@ -57,7 +57,7 @@ Viz následující popis toku předpokládá, že uživatel byl ověřen na jino
 1. Azure AD ověří, jestli webové rozhraní API první úrovně má oprávnění pro přístup k druhé úrovně webového rozhraní API a ověří žádost vrácení přístupový token JWT, token JWT obnovovací token do první úrovně webového rozhraní API.
 1. První úrovně webového rozhraní API přes protokol HTTPS, pak zavolá druhé úrovně webového rozhraní API přidáním řetězec tokenu v autorizační hlavičky v požadavku. První úrovně webového rozhraní API můžete nadále volají druhé úrovně webového rozhraní API jako přístupový token a obnovovací tokeny jsou platné.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Zobrazit ukázky kódu pro proces démon nebo serverové aplikace na scénáře webového rozhraní API. A vrácení zpět často, jak často jsou přidávány nové ukázky. [Server nebo proces démon aplikace webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75f91c037a2f05c999d388ce7bb16ad2d0c9cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f5164130c5850b37d1e1323d172f9f9c46b4b30
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412645"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768302"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Opustit organizaci jako uživatele typu Host
 
@@ -46,7 +46,7 @@ Pokud chcete opustit organizaci, postupujte takto.
 
 Když uživatel odejde z organizace, odstranění uživatelského účtu"soft" v adresáři. Ve výchozím nastavení, objekt uživatele přesune **odstraněných uživatelů** oblasti ve službě Azure AD ale není trvale odstraněny po dobu 30 dnů. Obnovitelné odstranění umožňuje správci obnovit uživatelský účet (včetně skupin a oprávnění), pokud uživatel odešle žádost o obnovení účtu v rámci 30denní období.
 
-V případě potřeby správce tenanta můžete trvale odstranit účet kdykoli během 30 dnů. Použijte následující postup:
+V případě potřeby správce tenanta můžete trvale odstranit účet kdykoli během 30 dnů. To uděláte takto:
 
 1. V [webu Azure portal](https://portal.azure.com)vyberte **Azure Active Directory**.
 2. V části **Spravovat** vyberte **Uživatele**.

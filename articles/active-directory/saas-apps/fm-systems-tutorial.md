@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 77e58ea830de1e8ab7e3643ee5694a5e3f609c53
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: dda1447a049071a0871079f2cabd046ed7c479d6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564913"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65770157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Kurz: Integrace Azure Active Directory s FM:Systems
 
@@ -107,7 +107,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s FM:Systems, proveďte násl
     V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
     
     > [!NOTE]
-    > Tato hodnota není skutečný. Aktualizujte tuto hodnotu Skutečná adresa URL odpovědi. Kontakt [tým podpory FM:Systems klienta](https://fmsystems.com/ask-us/) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tato hodnota není skutečný. Aktualizujte tuto hodnotu Skutečná adresa URL odpovědi. Kontakt [tým podpory FM:Systems klienta](https://fmsystems.com/support-services/) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -125,7 +125,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s FM:Systems, proveďte násl
 
 ### <a name="configure-fmsystems-single-sign-on"></a>Konfigurace FM:Systems jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **FM:Systems** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory FM:Systems](https://fmsystems.com/ask-us/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **FM:Systems** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory FM:Systems](https://fmsystems.com/support-services/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -197,7 +197,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
    
     b. Klikněte na **Další**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233876"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65759211"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Kurz: Práce s frontami Azure Storage
 
@@ -129,18 +129,19 @@ Protože aplikace využívá cloudových prostředků, kód se spustí asynchron
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-1. Nainstalujte **Windows Azure. Úložiště** balíčku do projektu s `dotnet add package` příkazu. Ze složky projektu v okně konzoly spusťte následující příkaz dotnet.
+1. Nainstalujte **Microsoft.Azure.Storage.Common** a **Microsoft.Azure.Storage.Queue** balíčky do projektu s `dotnet add package` příkazu. Ze složky projektu v okně konzoly spusťte následující příkazy dotnet.
 
    ```console
-   dotnet add package WindowsAzure.Storage
+   dotnet add package Microsoft.Azure.Storage.Common
+   dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
 2. V horní části **Program.cs** přidejte následující obory názvů hned po `using System;` příkazu. Tato aplikace používá pro připojení ke službě Azure Storage a práci s frontami typy z těchto oborů názvů.
 
    ```csharp
    using System.Threading.Tasks;
-   using Microsoft.WindowsAzure.Storage;
-   using Microsoft.WindowsAzure.Storage.Queue;
+   using Microsoft.Azure.Storage;
+   using Microsoft.Azure.Storage.Queue;
    ```
 
 3. Uložit **Program.cs** souboru.
@@ -206,7 +207,7 @@ Přidáte připojovací řetězec do aplikace, aby měl přístup k účtu úlo�
 
 ## <a name="insert-messages-into-the-queue"></a>Vložení zprávy do fronty
 
-Vytvoření nové metody pro odeslání zprávy do fronty. Přidejte následující metodu do vaší **Program** třídy. Tato metoda získá odkaz na frontu, pak vytvoří novou frontu, pokud ještě neexistuje voláním [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Poté jej přidá zprávu do fronty voláním [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
+Vytvoření nové metody pro odeslání zprávy do fronty. Přidejte následující metodu do vaší **Program** třídy. Tato metoda získá odkaz na frontu, pak vytvoří novou frontu, pokud ještě neexistuje voláním [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync). Poté jej přidá zprávu do fronty voláním [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
 
 1. Přidejte následující **SendMessageAsync** metodu pro vaše **Program** třídy.
 
@@ -229,7 +230,7 @@ Vytvoření nové metody pro odeslání zprávy do fronty. Přidejte následují
 
 ## <a name="dequeue-messages"></a>Odstranění z fronty zpráv
 
-Vytvořit novou metodu s názvem **ReceiveMessageAsync**. Tato metoda přijímá zprávy z fronty pomocí volání [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Jakmile úspěšně doručení zprávy, je potřeba odstranit z fronty, takže se zpracuje více než jednou. Po přijetí zprávy odstraní ji z fronty pomocí volání [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
+Vytvořit novou metodu s názvem **ReceiveMessageAsync**. Tato metoda přijímá zprávy z fronty pomocí volání [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync). Jakmile úspěšně doručení zprávy, je potřeba odstranit z fronty, takže se zpracuje více než jednou. Po přijetí zprávy odstraní ji z fronty pomocí volání [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync).
 
 1. Přidejte následující **ReceiveMessageAsync** metodu pro vaše **Program** třídy.
 
@@ -343,8 +344,8 @@ Tady je úplný výpis pro tento projekt kódu.
    ```csharp
    using System;
    using System.Threading.Tasks;
-   using Microsoft.WindowsAzure.Storage;
-   using Microsoft.WindowsAzure.Storage.Queue;
+   using Microsoft.Azure.Storage;
+   using Microsoft.Azure.Storage.Queue;
 
    namespace QueueApp
    {

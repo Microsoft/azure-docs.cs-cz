@@ -6,19 +6,20 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c4ccc189c0f8ed3de868c9965d7068ad9670cbcb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 516ecd8842e7b673201cc640b283c081a02d2b2f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535406"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799557"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Upravit jazykový model s Video Indexer
 
-Video Indexer podporuje automatické rozpoznávání díky integraci se sadou Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Upravte jazykový model tak, že nahrajete přizpůsobení textu, konkrétně text z domény, jejichž slovník byste chtěli modul přizpůsobit. Jakmile tréninku modelu, nová slova v úpravě bude rozpoznán, za předpokladu, že výchozí výslovnost a jazykový model se dozvíte o novou posloupnost slov. Vlastní jazykové modely podporují angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština, portugalština (Brazílie), hindština a korejštině. 
+Video Indexer podporuje automatické rozpoznávání díky integraci se sadou Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Upravte jazykový model tak, že nahrajete přizpůsobení textu, konkrétně text z domény, jejichž slovník byste chtěli modul přizpůsobit. Jakmile tréninku modelu, nová slova v úpravě bude rozpoznán, za předpokladu, že výchozí výslovnost a jazykový model se dozvíte o novou posloupnost slov. Vlastní jazykové modely podporují angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština, brazilská portugalština, hindština a korejštině. 
 
 Pojďme se na to, které jsou vysoce specifické, jako je "Kubernetes" (v kontextu služby Kubernetes v Azure), třeba slovo. Protože slovo je nová možnost do nástroje Video Indexer, je rozpoznán jako činnosti "komunit". Potřebujete pro trénování modelu, který má rozpoznat jako "Kubernetes". V ostatních případech slova existovat, ale jazykový model se zobrazí v určitém kontextu není očekáván. Například "container service" není posloupnost 2 slova, která jazykového modelu základě nespecializované rozpozná jako konkrétní sadu slov.
 

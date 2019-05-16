@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993071"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792099"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 
@@ -128,11 +128,11 @@ Musí také obsahovat žádosti `Metadata: true` hlavičky k zajištění, že s
 
 Pokud je datový prvek nebyl nalezen nebo chybně vytvořený požadavek, vrátí služba Instance Metadata standardní chyby protokolu HTTP. Příklad:
 
-Kód stavu HTTP | Důvod
+Kód stavu HTTP | Reason
 ----------------|-------
 200 OK |
 400 – Chybný požadavek | Chybí `Metadata: true` záhlaví nebo chybějící formát při dotazování na uzel typu list
-404 – Nenalezeno | Požadovaný element neexistuje
+404 Nenalezeno | Požadovaný element neexistuje
 405 Metoda není povolena | Pouze `GET` a `POST` jsou podporovány požadavky
 429 příliš mnoho požadavků | Rozhraní API v současné době podporuje maximálně 5 dotazů za sekundu
 Chyba 500 služby     | Zkuste to znovu za nějakou dobu
@@ -358,11 +358,11 @@ Data | Popis | Verze zavedena
 azEnvironment | Kde je virtuální počítač spuštěný v prostředí Azure | 2018-10-01
 customData | Zobrazit [vlastních dat](#custom-data) | 2019-02-01
 location | Oblasti Azure virtuální počítač běží v | 2017-04-02
-jméno | Název virtuálního počítače | 2017-04-02
-nabídka | Nabízí informace pro image virtuálního počítače. Tato hodnota platí jenom pro Image nasazují z Galerie imagí Azure. | 2017-04-02
+name | Název virtuálního počítače | 2017-04-02
+nabídka | Nabízí informace pro image virtuálního počítače a je nasazený pouze k dispozici pro Image z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupiny umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) sady škálování vašeho virtuálního počítače | 2017-08-01
-plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) pro virtuální počítač v jeho Azure Marketplace Image obsahuje název, produktu a vydavatel | 2018-04-02
+plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název produktu a vydavatele pro virtuální počítač, pokud jeho Azure Marketplace Image | 2018-04-02
 platformUpdateDomain |  [Aktualizační doména](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
 zprostředkovatel | Zprostředkovatel virtuálního počítače | 2018-10-01
@@ -371,7 +371,7 @@ vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro váš virtuální počítač | 2017-08-01
 SKU | Konkrétní SKU pro image virtuálního počítače | 2017-04-02
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-tags | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro váš virtuální počítač  | 2017-08-01
+značky | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro váš virtuální počítač  | 2017-08-01
 version | Verzi image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
 vmScaleSetName | [Název škálovací sady virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) sady škálování vašeho virtuálního počítače | 2017-12-01
@@ -688,9 +688,17 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>Vlastní data
-Služba instance Metadata poskytuje možnost pro virtuální počítač přístup k jeho vlastní data. Binární data musí být menší než 64 KB a je k dispozici k virtuálnímu počítači v podobě kódování base64. Podrobnosti o tom, jak vytvořit virtuální počítač s vlastními daty, najdete v článku [nasazení virtuálního počítače s CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Služba instance Metadata poskytuje možnost pro virtuální počítač přístup k jeho vlastní data. Binární data musí být menší než 64 KB a je k dispozici k virtuálnímu počítači v podobě kódování base64.
+
+Vlastní data Azure může být vložen do virtuálního počítače pomocí rozhraní REST API, rutin prostředí PowerShell, rozhraní příkazového řádku Azure (CLI) nebo šablonu ARM.
+
+Příklad rozhraní příkazového řádku Azure najdete v tématu [vlastní Data a Cloud-Init v Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+
+Příklad šablony ARM naleznete v tématu [nasazení virtuálního počítače s CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
 
 Vlastní data jsou k dispozici pro všechny procesy spuštěné na virtuálním počítači. Doporučuje se, že zákazníci nevkládejte tajné informace do vlastní data.
+
+V současné době vlastních dat je zaručeno, že bude k dispozici při spuštění virtuálního počítače. Pokud se k virtuálnímu počítači, jako je například přidávání disků jsou provedeny aktualizace nebo změna velikosti virtuálního počítače, nebude služba Instance Metadata poskytují vlastní data. Poskytuje vlastní data trvale prostřednictvím služba Instance Metadata právě probíhá.
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>Načítání vlastních dat na virtuálním počítači
 Služba instance Metadata poskytuje vlastních dat k virtuálnímu počítači v podobě kódování base64. Následující příklad Dekóduje řetězec kódování base64.

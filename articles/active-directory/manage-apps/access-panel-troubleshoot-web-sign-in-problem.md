@@ -3,8 +3,8 @@ title: Potížím při přihlašování k webu přístupového panelu | Dokument
 description: Pokyny k odstraňování problémů, na které můžete narazit při pokusu o přihlášení k použití na přístupovém panelu
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294000"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784311"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potížím při přihlašování k webu přístupového panelu
 

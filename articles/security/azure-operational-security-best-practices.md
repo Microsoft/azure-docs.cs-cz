@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4a4677b5db730001df75d201d8e6d3149cb928e6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0418d325f3b3719549181a48fc0432a677f695d5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409850"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795904"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy Azure provozní zabezpečení
 Tento článek obsahuje sadu aplikovatelné nejlepší postupy pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -153,7 +153,7 @@ Můžete použít [Azure Resource Manageru](https://azure.microsoft.com/document
 **Podrobnosti o**: [Kanály Azure](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) je řešení pro automatizaci nasazení více fázi procesu vydávání verzí. Vytvoření spravovaných postupů plynulého nasazování kanálů k uvolnění rychlé, snadné a časté. Kanály Azure můžete automatizovat proces vydávání verzí a může mít předdefinované schvalovacích pracovních postupů. Nasazení v místním prostředí a do cloudu, rozšíření a přizpůsobení podle potřeby.
 
 **Osvědčený postup**: Kontrola výkonu vaší aplikace předtím, než ji spustit nebo nasadit aktualizace do produkčního prostředí.  
-**Podrobnosti o**: Spuštění založené na cloudu [zátěžové testy](https://docs.microsoft.com/azure/devops/test/load-test/overview.md?view=azure-devops#alternatives) na:
+**Podrobnosti o**: Spuštění založené na cloudu [zátěžové testy](/azure/devops/test/load-test/overview#alternatives) na:
 
 - Zjišťování problémů s výkonem ve vaší aplikaci.
 - Zlepšení kvality nasazení.

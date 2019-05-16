@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703269"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791502"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nové DBA v cloudu – správu vašich databází ve fondu a jeden ve službě Azure SQL Database
 
@@ -32,7 +32,7 @@ Tento článek popisuje některé ze základních vlastností služby Azure SQL 
 - Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR)
 - Zabezpečení a dodržování předpisů
 - Inteligentní databázi sledování a údržbu
-- Přesuny dat
+- Přesun dat
 
 > [!NOTE]
 > Tento článek se týká následujících možností nasazení ve službě Azure SQL Database: jedna databáze a elastické fondy. Nevztahuje se na spravované instanci možnost nasazení ve službě SQL Database.
@@ -45,7 +45,7 @@ Možnosti obnovení obchodní kontinuity podnikových procesů a po havárii umo
 
 Nevytvářejte záloh ve službě Azure SQL DB a důvodem je, že není nutné. SQL Database automaticky zálohuje databáze za vás, tak už se musí starat o plánování, provádění a správa záloh. Platformu trvá úplné zálohování každý týden, rozdílové že zálohování každých pár hodin a do protokolu zálohování každých 5 minut, ujistěte se, že je efektivní zotavení po havárii a ztrátě dat, minimální. Co nejdříve po vytvoření databáze se stane první úplná záloha. Tyto zálohy jsou k dispozici po určitou dobu nazývá "Doba uchování" a se liší podle úrovně služby, kterou zvolíte. SQL Database poskytuje možnost obnovit do libovolného bodu v čase během období uchovávání dat pomocí [bodu v čase obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Úroveň služeb|Doba uchování ve dnech|
+|Úroveň služby|Doba uchování ve dnech|
 |---|:---:|
 |Basic|7|
 |Standard|35|
@@ -127,7 +127,7 @@ Další možností je zřízení [vyhrazené IP adresy](../virtual-network/virtu
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Jaké portu se mohu připojit k SQL Database na
 
-Port 1433. SQL Database komunikuje přes tento port. Chcete-li připojit z podnikové sítě, budete muset přidat odchozí pravidlo v nastavení brány firewall vaší organizace. Jako vodítko Vyhněte se zveřejňování portu 1433 mimo hranice Azure. Můžete spustit v Azure pomocí SSMS [Vzdálená aplikace RemoteApp Azure](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps). To není nutné otevřít odchozí připojení k portu 1433, IP adresa je statická, tak, aby databáze může být otevřený, aby pouze vzdálené aplikace RemoteApp a podporuje Multi Factor Authentication (MFA).
+Port 1433. SQL Database komunikuje přes tento port. Chcete-li připojit z podnikové sítě, budete muset přidat odchozí pravidlo v nastavení brány firewall vaší organizace. Jako vodítko Vyhněte se zveřejňování portu 1433 mimo hranice Azure.
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Jak můžu monitorovat a regulovat aktivitu na tento server a databáze ve službě SQL Database
 
@@ -135,7 +135,7 @@ Port 1433. SQL Database komunikuje přes tento port. Chcete-li připojit z podni
 
 SQL Database můžete zapnout auditování sledovat události databáze. [Auditování služby SQL Database](sql-database-auditing.md) zaznamenává události databáze a zapisuje je do souboru protokolu auditování v účtu úložiště Azure. Auditování je obzvláště užitečné, pokud chcete získat přehled o případné porušení zabezpečení a zásad, zajistit dodržování předpisů atd. Umožňuje definovat a nakonfigurovat určité kategorie událostí, které se domníváte, že potřebujete auditování a na základě, získejte předem nakonfigurované sestavy a řídicí panel pro spoluprodej základní informace o události, ke kterým dochází ve vaší databázi. Můžete použít tyto zásady auditování na úrovni databáze, nebo na úrovni serveru. Příručka o tom, jak zapnout auditování serveru/databáze, naleznete v tématu: [Povolení SQL Database auditování](sql-database-security-tutorial.md#enable-security-features).
 
-#### <a name="threat-detection"></a>Detekce hrozeb
+#### <a name="threat-detection"></a>Detekce hrozby
 
 S [detekce hrozeb](sql-database-threat-detection.md), získáte možnost tak, aby fungoval na porušení zabezpečení nebo zásady auditování velmi snadno zjistit. Nemusíte být zabezpečení odborné vyřešit potenciální hrozby nebo narušení ve vašem systému. Detekce hrozeb má také některé integrované funkce, jako je detekce útoku prostřednictvím injektáže SQL. Útok prostřednictvím injektáže SQL při pokusu o alter nebo ohrozit zabezpečení dat a poměrně běžný způsob obecně napadení databázové aplikace. Detekce hrozeb se spustí více sad algoritmů, které detekovat potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, jakož i databáze neobvyklé vzory přístupu k (jako je například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Vedoucí pracovníci pověření ochranou zabezpečení nebo jiné určené správci přijímání oznámení, pokud se zjistí ohrožení databáze. Každé upozornění obsahuje podrobnosti o podezřelé aktivitě a doporučení k dále zkoumat a zmírnit hrozby. Zjistěte, jak zapnout detekce hrozeb, najdete v tématech: [Povolit detekci hrozeb](sql-database-security-tutorial.md#enable-security-features).
 

@@ -3,8 +3,8 @@ title: Pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování u
 description: Jak řešit běžné problémy s kompatibilitou protokol čelí při přidávání aplikace mimo galerii, která podporuje SCIM 2.0 do služby Azure AD
 services: active-directory
 documentationcenter: ''
-author: asmalser
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: asmalser
+ms.author: mimart
+ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 952853b32b5fadb980e9e96a7c56c05ac63d9931
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293736"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784592"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD
 

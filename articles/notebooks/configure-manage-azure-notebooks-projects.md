@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234867"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596739"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
@@ -37,38 +37,7 @@ Poznámkových bloků Azure spustí základní virtuální počítač se při ka
 
 ## <a name="compute-tier"></a>Úroveň výpočetních prostředků
 
-**Spustit** rozevíracího seznamu na řídicím panelu Projekt slouží k výběru výpočetní úroveň, na kterém běží projektu. Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití:
-
-![COMPUTE úrovně rozevíracího seznamu na řídicím panelu Projekt](media/project-compute-tier-list.png)
-
-Tato omezení můžete obejít a použít jiný virtuální počítač, který zřídíte v předplatném Azure. Musíte nainstalovat a spustit JupyterHub na tomto virtuálním počítači. Image virtuálního počítače pro datové vědy (libovolný operační systém) jsou vhodná rozhodnutí, protože patří mezi ně JupyterHub ve výchozím nastavení.
-
-Až budete mít vhodně nakonfigurovaného virtuálního počítače Azure, vyberte **přímé Compute** možnost v rozevíracím seznamu, který vás vyzve k zadání jména (Chcete-li zobrazit v seznamu), IP adresa a port (obvykle 8000, výchozí port, ke kterému Virtuálního počítače JupyterHub naslouchá) a přihlašovací údaje virtuálního počítače:
-
-![Výzva ke shromažďování informací serveru pro možnost přímého Compute](media/project-compute-tier-direct.png)
-
-Pokud jsou splněny následující podmínky, rozevírací seznam také zobrazuje [dat virtuálního počítače VĚDY](/azure/machine-learning/data-science-virtual-machine) instancí. (Pokud nejsou splněny některé z těchto podmínek, můžete se připojit k datové VĚDY použít možnost Compute s přímým přístupem a zadat hodnoty získané z portálu Azure portal.)
-
-- Jste se přihlásili do poznámkových bloků Azure pomocí účtu, který používá Azure Active Directory (AAD), jako je například účet společnosti.
-- Váš účet připojený k předplatnému Azure.
-- Máte jeden nebo více virtuálních počítačů v tomto předplatném s alespoň čtečky přístup, použijte virtuální počítač pro datové vědy pro Linux (Ubuntu) bitovou kopii.)
-
-![Instance data Science virtuálních počítačů v rozevíracím seznamu v řídicím panelu Projekt](media/project-compute-tier-dsvm.png)
-
-Při výběru DSVM instance poznámkových bloků Azure může výzvu pro konkrétní počítač pověření použitá při vytváření virtuálního počítače.
-
-Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvoření virtuálního počítače s Ubuntu Data Science](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Použití **virtuální počítač pro datové vědy pro Linux (Ubuntu)** obrázku, pokud chcete zobrazit v rozevíracím seznamu v poznámkových bloků Azure datové VĚDY.  Pokud z jiných důvodů budete muset použít obraz Windows nebo CentOS, můžete použít **přímé Compute** možnost ručně připojit k datové VĚDY.
-
-> [!IMPORTANT]
-> Při použití virtuálních počítačů s přímým přístupem Compute nebo vědecké zpracování dat, poznámkové bloky, které běží na těchto musí být zcela samostatné. V současné době poznámkových bloků Azure zkopíruje pouze *.ipynb* souboru k virtuálnímu počítači, ale nebude zkopírujte všechny soubory v projektu. V důsledku toho poznámkových bloků, které běží na ostatních virtuálních počítačů se nepovedlo se najít jiné soubory projektu.
->
-> Můžete obejít toto chování dvěma způsoby:
->
-> 1. Ručně kopírovat soubory projektu k virtuálnímu počítači.
->
-> 2. Vložení souborů v rámci instalační program Poznámkový blok, abyste spustili před primární poznámkového bloku. V poznámkovém bloku instalační program vytvořte buňku kódu pro každý soubor, kde buňka obsahuje obsah souboru. V horní části každé buňce, vložte příkaz `%%writefile <filename>`, kde `<filename>` je název souboru pro příjem obsahu. Při spuštění poznámkového bloku vytvoří všechny tyto soubory na virtuálním počítači. Příklad najdete v tématu [setup.ipynb soubor v ukázce Microsoft domácí mazlíček detektor](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
->
->     ![Použití %% writefile příkaz na začátku buňku kódu](media/setup-notebook-writefile-command.png)
+Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití. Můžete obejít tato omezení a zvýšit výkon pomocí jiný virtuální počítač, který zřídíte v předplatném Azure. Další informace najdete v tématu [jak používat virtuální počítače pro datové vědy](use-data-science-virtual-machine.md).
 
 ## <a name="edit-project-metadata"></a>Úprava metadat projektu
 
@@ -100,7 +69,7 @@ Na řídicím panelu Projekt, vyberte **nastavení projektu**a pak **informace**
 | **Prázdný soubor** | Soubor, do kterého můžete ukládat jakýkoli obsah, jako je text, data atd. | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název souboru. |
 | **Markdown** | Soubor Markdown. | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název souboru. |
 
-### <a name="upload-files"></a>Nahrání souborů
+### <a name="upload-files"></a>Nahrát soubory
 
 **Nahrát** příkaz poskytuje dvě možnosti, jak importovat data z jiných míst: **Z adresy URL** a **z počítače**. Další informace najdete v tématu [práce s datovými soubory v projektech poznámkového bloku Azure](work-with-project-data-files.md).
 

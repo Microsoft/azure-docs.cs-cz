@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: 074b701422f32f4cd18fd2eb05e3453e139e17ae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205600"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595558"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Když dojde k výjimce, můžete automaticky shromažďovat snímky ladění z vaší živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnné v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (preview) v [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje telemetrie výjimek z vaší webové aplikace. Shromažďuje snímky na vaše horní vyvolání výjimky, abyste měli informace, které potřebujete k diagnostice problémů v produkčním prostředí. Zahrnout [balíček NuGet Snapshot collector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ve vaší aplikaci a volitelně nakonfigurovat kolekci parametrů v [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
 
-Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat více výkonné možnosti ladění se zdrojovým kódem, otevřete snímky pomocí sady Visual Studio 2017 Enterprise. V sadě Visual Studio, můžete také [nastavit snímkovací body interaktivně pořizovat snímky](https://aka.ms/snappoint) bez čekání na výjimku.
+Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat více výkonné možnosti ladění se zdrojovým kódem, otevřete snímky s Visual Studio Enterprise. 2019. V sadě Visual Studio, můžete také [nastavit snímkovací body interaktivně pořizovat snímky](https://aka.ms/snappoint) bez čekání na výjimku.
 
 Ladění snímky se ukládají po dobu sedmi dní. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
 
@@ -44,7 +44,7 @@ Podporují se následující prostředí:
 
 Pokud jste povolili ladicí program snímků, ale nezobrazují snímky, zkontrolujte naše [Průvodce odstraňováním potíží](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
-## <a name="grant-permissions"></a>Udělení oprávnění
+## <a name="grant-permissions"></a>Udělit oprávnění
 
 Přístup k snímků je chráněn řízení přístupu na základě role (RBAC). Ke kontrole snímku, je musíte nejprve přidat do potřebné role vlastník předplatného.
 
@@ -81,9 +81,9 @@ V zobrazení ladění snímku uvidíte zásobník volání a podokno proměnnýc
 Snímky mohou obsahovat citlivé informace a ve výchozím nastavení nejsou možné zobrazit. Chcete-li zobrazit snímky, musíte mít `Application Insights Snapshot Debugger` role, které jsou vám přiřazeny.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Zobrazit snímky v sadě Visual Studio Enterprise 2017 nebo novější
-1. Klikněte na tlačítko **Stáhnout snímek** tlačítko a stáhněte si `.diagsession` soubor, který lze otevřít v sadě Visual Studio 2017 Enterprise.
+1. Klikněte na tlačítko **Stáhnout snímek** tlačítko a stáhněte si `.diagsession` soubor, který lze otevřít v sadě Visual Studio Enterprise.
 
-2. Chcete-li otevřít `.diagsession` souboru, musíte mít nainstalována součást VS ladicí program snímků. Komponenty ladicího programu snímků je požadovaná součást sady funkcí technologie ASP.net v sadě Visual Studio a můžete vybrat ze seznamu jednotlivých komponent v instalačním programu sady VS. Pokud používáte verzi sady Visual Studio 2017 před 15.5 musíte nainstalovat rozšíření z [VS marketplace](https://aka.ms/snapshotdebugger).
+2. Chcete-li otevřít `.diagsession` souboru, musíte mít nainstalována součást snímku ladicího programu Visual Studio. Komponenty ladicího programu snímků je požadovaná součást sady funkcí technologie ASP.net v sadě Visual Studio a můžete vybrat ze seznamu jednotlivých komponent v instalačním programu sady Visual Studio. Pokud používáte verzi sady Visual Studio před Visual Studio 2017 verze 15.5, budete muset nainstalovat rozšíření z [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
 
 3. Po otevření souboru snímku, zobrazí se stránka s minimálním výpisem ladění v sadě Visual Studio. Klikněte na tlačítko **ladění spravovaného kódu** pro spuštění ladění snímku. Snímek se otevře na řádek kódu, kde byla vyvolána výjimka, takže můžete ladit aktuální stav procesu.
 

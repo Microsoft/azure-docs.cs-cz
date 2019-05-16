@@ -3,8 +3,8 @@ title: Začínáme se službou Azure AD Xamarin | Dokumentace Microsoftu
 description: Vytváření aplikací v Xamarinu, které se integrují s Azure AD pro přihlášení do Azure AD chráněné rozhraní API volat pomocí metody OAuth.
 services: active-directory
 documentationcenter: xamarin
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdb3de88fde2fbc7ec2aaffdb7d82433845db34b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298848"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545949"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Rychlý start: Vytvořte aplikaci typu Xamarin, která se integruje přihlašování společnosti Microsoft
 
@@ -178,7 +178,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
 ```
 
-### <a name="windows-universal"></a>Univerzální pro Windows
+### <a name="windows-universal"></a>Windows Universal
 Ve Windows Universal otevřete MainPage.xaml.cs a pak implementovat `Search` metody. Tato metoda používá pomocnou metodu ve sdíleném projektu k aktualizaci uživatelského rozhraní podle potřeby.
 
 ```csharp

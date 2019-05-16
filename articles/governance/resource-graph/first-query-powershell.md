@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a94fe86cd9c2a6e775be1ec4b3d14798e4cac693
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b9215cac6fe4e4ec8bac3fac773c919c6e13cf05
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795863"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752644"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý start: Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
 
 Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je nainstalovaný modul pro Azure PowerShell. Tento rychlý start vás provede procesem přidání modulu do instalace Azure PowerShell.
 
@@ -90,7 +90,7 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
 
 Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
-## <a name="cleanup"></a>Vyčištění
+## <a name="cleanup-resources"></a>Vyčištění prostředků
 
 Pokud chcete odebrat modul Resource Graph z prostředí Azure PowerShell, můžete tak provést pomocí následujícího příkazu:
 

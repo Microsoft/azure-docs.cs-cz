@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
+ms.date: 05/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572407"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784327"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -42,6 +42,17 @@ Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink
 >Vydání nové verze služby Azure AD Connect je proces, který vyžaduje několik řízení kvality krok, abyste zajistili funkčnost operace služby, a při procházení tohoto procesu bude aktualizovat číslo verze nové vydané verze, jakož i stavu vydaných verzí tak, aby odrážely nejnovější stav.
 Když přejdeme na tomto procesu, číslo verze vydání se nezobrazí s "X" počet umístění podverzi, stejně jako v "1.3.X.0" – to znamená, že zpráva k vydání verze v tomto dokumentu jsou platné pro všechny verze počínaje "1.3.". Poté, co jsme udrželi procesu vydávání verzí číslo vydané verze se aktualizují na nedávno vydané verze a verze stav se zaktualizuje na "Vydáno pro stahování a automatický upgrade".
 Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upgrade. Stav verze označí, zda verze je k dispozici pro automatický upgrade nebo si můžete stáhnout pouze. Pokud byl povolen automatický upgrade na serveru služby Azure AD Connect pak tento server se automaticky upgradovat na nejnovější verzi služby Azure AD Connect, která je vydána pro automatický upgrade. Všimněte si, že všechny konfigurace služby Azure AD Connect jsou způsobilé pro upgradování automaticky. Postupujte podle tohoto odkazu Další informace o tom [automatický upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="13210"></a>1.3.21.0
+
+### <a name="release-status"></a>Stav verze 
+
+05/14/2019: TBD
+
+
+### <a name="fixed-issues"></a>Oprava potíží 
+
+- Opravili jsme zvýšení úrovně oprávnění, která existuje v Microsoft Azure Active Directory Connect sestavení 1.3.20.0.  Toto ohrožení zabezpečení, za určitých podmínek může útočníkovi umožnit spustit dvě rutiny powershellu v kontextu privilegovaného účtu a provedení privilegovaných akcí.  Tato aktualizace zabezpečení řeší tento problém tím, že zakážete tyto rutiny. Další informace najdete v části [aktualizace zabezpečení](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -279,7 +290,7 @@ Stav 4/12/2018: Vydáno pouze ke stažení
 >[!NOTE]
 >Tato verze je oprava hotfix pro Azure AD Connect
 
-### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
+### <a name="azure-ad-connect-sync"></a>Synchronizace Azure AD Connect
 #### <a name="fixed-issues"></a>Oprava potíží
 Opraven problém, byly zjišťování automatické instance Azure pro čas od času došlo k selhání Čína tenantů.  
 
@@ -730,7 +741,7 @@ CBool(
     |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Vyberte|
+    |CertVersion|CertSignatureAlgorithmOid|Vybrat|
     |CertKeyAlgorithmParams|CertHashString|Kde|
     |||S|
 
@@ -781,7 +792,7 @@ Vydáno: Květen 2017
 
 **Opravené problémy:**
 
-Synchronizace služby Azure AD Connect
+Synchronizace Azure AD Connect
 
 * Opravili jsme problém, který způsobí, že dojde k serveru Azure AD Connect i v případě zákazníků se vypne funkce pomocí rutiny Set-ADSyncAutoUpgrade automatický Upgrade. S touto opravou proces automatický Upgrade na serveru stále kontroluje pro upgrade pravidelně, ale na stažený instalační program respektuje konfiguraci automatického upgradu.
 * Při upgradu nástroje DirSync na místě Azure AD Connect vytvoří účet služby Azure AD konektoru služby Azure AD používané pro synchronizaci s Azure AD. Po vytvoření účtu služby Azure AD Connect ověří se pomocí účtu služby Azure AD. V některých případech ověřování selže kvůli přechodným problémům, které způsobí, že místní upgrade nástroje DirSync se nezdaří s chybou *"došlo k chybě provádění úlohy konfigurace AAD Sync: AADSTS50034: Pro přihlášení do této aplikace, musí tento účet být přidaný do adresáře xxx.onmicrosoft.com."* Pokud chcete zlepšit odolnost upgrade nástroje DirSync, Azure AD Connect nyní zopakuje pokus o krok ověřování.
@@ -798,7 +809,7 @@ Synchronizace služby Azure AD Connect
 
 **Nové funkce a vylepšení:**
 
-Synchronizace služby Azure AD Connect
+Synchronizace Azure AD Connect
 * Byly implementovány změny pravidel synchronizace – následující změny pravidel synchronizace:
   * Aktualizované výchozí synchronizační pravidlo nastavené na neexportuje atributy **userCertificate** a **userSMIMECertificate** máte víc než 15 hodnot atributů.
   * Atributy AD **employeeID** a **msExchBypassModerationLink** jsou nyní součástí výchozí sadu pravidel synchronizace.
@@ -838,7 +849,7 @@ Vydáno: Duben 2017
 
 **Opravené problémy:**
 
-Synchronizace služby Azure AD Connect
+Synchronizace Azure AD Connect
 * Opravili jsme problém, kde Plánovač synchronizace přeskočí krok celý synchronizace, pokud jeden nebo více konektorů chybí profil spuštění pro daný krok synchronizace. Například byste přidali ručně konektor bez vytvoření rozdílový Import spuštění profilu pomocí Synchronization Service Manager. Tato oprava zajistí, že Plánovač synchronizace pořád spustit rozdílový Import pro jiné konektory.
 * Opravili jsme problém, synchronizační služba kde okamžitě zastaví, zpracování profil spuštění, když se nachází zaznamená problém s jedním z kroků spuštění. Tato oprava zajistí, že synchronizační služba, která spustí krok přeskočí a pokračuje ve zpracování zbytek. Například můžete mít rozdílový Import spustit profil pro váš konektor AD s více kroky spuštění (jeden pro každý místní domény služby AD). Synchronizační služba spustí rozdílový Import z jiných domén AD i v případě, že jeden z nich má problémy se síťovým připojením.
 * Opravili jsme problém, který způsobí, že konektor služby Azure AD aktualizace přeskočit během automatického upgradu.
@@ -854,7 +865,7 @@ Jednotného přihlašování
 
 **Nové funkce a vylepšení:**
 
-Synchronizace služby Azure AD Connect
+Synchronizace Azure AD Connect
 * Azure AD Connect Sync nyní podporuje použití účet virtuální služby, účet spravované služby a skupinový účet spravované služby jako účet služby. To platí pro nové instalace služby Azure AD Connect pouze. Při instalaci Azure AD Connect:
     * Průvodce Azure AD Connect ve výchozím nastavení, vytvoří účet virtuální služby a použije je jako jeho účet služby.
     * Pokud nainstalujete na řadič domény, Azure AD Connect spadne zpět na předchozí chování, kde se vytvoří účet uživatele domény a použije je jako jeho účet služby.
@@ -880,7 +891,7 @@ Vydáno: Březen 2017
 
 **Opravené problémy:**
 
-Synchronizace služby Azure AD Connect
+Synchronizace Azure AD Connect
 * Opravili jsme chybu, která způsobí, že průvodce Azure AD Connect selhat, pokud zobrazovaný název konektor služby Azure AD neobsahuje počáteční doméně onmicrosoft.com přiřazené k tenantovi Azure AD.
 * Opravili jsme chybu, která způsobí, že průvodce Azure AD Connect k selhání při navazování připojení ke službě SQL database, pokud heslo účtu synchronizační služby obsahuje speciální znaky, třeba apostrof, dvojtečku a místo.
 * Opravili jsme problém, který způsobuje chybu "bitová kopie je kotva, která se liší od obrázku" na serveru služby Azure AD Connect v pracovním režimu, poté, co jste dočasně vyloučili místní AD objektu synchronizaci a pak ho znovu zahrnuté pro synchronizaci.
@@ -899,7 +910,7 @@ Resetování hesla
 
 **Nové funkce a vylepšení:**
 
-Synchronizace služby Azure AD Connect
+Synchronizace Azure AD Connect
 * Rutina Get-ADSyncScheduler nyní vrátí novou logickou vlastnost s názvem SyncCycleInProgress. Pokud vrácená hodnota je true, znamená to, že dochází k zacyklení plánované synchronizace probíhá.
 * Cílovou složku pro ukládání instalace služby Azure AD Connect a protokoly instalace se změnila z %localappdata%\AADConnect k %programdata%\AADConnect zlepšení přístupnosti do souborů protokolu.
 

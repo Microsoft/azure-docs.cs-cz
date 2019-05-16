@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273154"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755772"
 ---
-# <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rychlý start: Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
 Seznamte se s principy vytváření a přiřazování podrobných plánů, abyste mohli definovat běžné vzory a vyvíjet opakovaně použitelné a rychle nasaditelné konfigurace založené na šablonách Resource Manageru, zásadách, zabezpečení a dalších. V tomto kurzu se naučíte používat podrobné plány Azure Blueprint k provádění nejčastějších úloh spojených s vytvářením, publikováním a přiřazením podrobného plánu v organizaci, jako je například:
 
@@ -28,7 +28,6 @@ Seznamte se s principy vytváření a přiřazování podrobných plánů, abyst
 > - Odebrání podrobného plánu přiřazeného k předplatnému
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
-
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

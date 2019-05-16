@@ -4,7 +4,7 @@ description: Zjistěte, jak zpracování chyb a výjimek, podmíněného příst
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f1972a870ac15e1ca8dde963eef6cf7f1caf3039
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138975"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544191"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Zpracování výjimek a chyb s použitím MSAL
 Výjimky v Microsoft Authentication Library (MSAL) jsou určené pro vývojáře aplikací pro řešení potíží a ne pro zobrazení koncovým uživatelům. Zprávy o výjimkách nejsou lokalizovány.
@@ -38,7 +38,7 @@ Pokud [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceex
 ### <a name="common-exceptions"></a>Běžné výjimky
 Tady jsou běžné výjimky, které by mohla být vyvolána a některé možné způsoby zmírnění rizik.
 
-| Výjimka | Kód chyby | Omezení rizik|
+| Výjimka | Kód chyby | Zmírnění|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID {appId} s názvem {appName}. Odeslat žádost o interaktivní autorizaci pro tohoto uživatele a prostředek.| Potřebujete získat souhlas uživatele jako první. Pokud nepoužíváte .NET Core (která nemá žádné webové uživatelské rozhraní), volání (pouze jednou) `AcquireTokeninteractive`. Pokud používáte .NET core nebo to dělat nechcete `AcquireTokenInteractive`, uživatel přejít na adresu URL k udělení souhlasu doplňku: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read . Chcete-li volat `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Uživatel je potřeba pomocí služby Multi-Factor authentication.| Neexistuje žádné zmírňující opatření – pokud MFA je nakonfigurovaný pro vašeho tenanta a AAD se rozhodne je vynutit, budete muset nouzového řešení ověření pomocí interaktivního toku, jako `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode`.|

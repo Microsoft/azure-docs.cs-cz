@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d5b08a22aa3896fb7158ef3535b115e3e0189142
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728827"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596981"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -236,7 +236,7 @@ Aktualizace `launch.json` soubor `.vscode` podadresář složky projektu. Změni
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Název typu nebo oboru názvů 'Moje knihovna' nebyl nalezen
 
-### <a name="reason"></a>Důvod 
+### <a name="reason"></a>Reason 
 Kontext sestavení na úrovni projektu nebo služby ve výchozím nastavení se proto projekt knihovny, které používáte nebyl nalezen.
 
 ### <a name="try"></a>Zkuste:
@@ -251,7 +251,7 @@ Můžete najít na příklad https://github.com/sgreenmsft/buildcontextsample
 Potřebujete *vlastníka* nebo *Přispěvatel* přístup ve vašem předplatném Azure ke správě Azure Dev mezery. Tato chyba může zobrazit, pokud se snažíte Správa vývoje prostorů a není nutné *vlastníka* nebo *Přispěvatel* přístup k přidruženému předplatnému Azure.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
-### <a name="reason"></a>Důvod
+### <a name="reason"></a>Reason
 Vybrané předplatné Azure nebyla zaregistrována `Microsoft.DevSpaces` oboru názvů.
 
 ### <a name="try"></a>Zkuste:
@@ -263,7 +263,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Vývoj prostory vyprší časový limit na *čekání na sestavení image kontejneru...*  krok s virtuálních uzlů AKS
 
-### <a name="reason"></a>Důvod
+### <a name="reason"></a>Reason
 Tento časový limit nastane, pokud se pokusíte použít Dev prostory ke spuštění služby, který je konfigurován pro běh [virtuálního uzlu AKS](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Vývoj prostory aktuálně nepodporuje sestavování nebo ladění služeb na virtuální uzly.
 
 Pokud spustíte `azds up` s `--verbose` přepínač nebo povolit podrobné protokolování v sadě Visual Studio se zobrazí další podrobnosti:
@@ -295,7 +295,7 @@ Obvykle restartování agentské uzly v clusteru vyřeší tento problém.
 
 ## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Chyba: verze azds -\<identifikátor\>-\<spacename\>-\<servicename\> se nezdařilo: služeb\<servicename\>' již existuje "nebo" o přijetí změn přístup byl odepřen pro \<servicename\>, úložiště neexistuje, nebo můžou vyžadovat "docker login."
 
-### <a name="reason"></a>Důvod
+### <a name="reason"></a>Reason
 K těmto chybám může dojít, pokud je kombinovat s přímým přístupem příkazů Helm (, jako `helm install`, `helm upgrade`, nebo `helm delete`) pomocí příkazů Dev mezery (například `azds up` a `azds down`) uvnitř stejné místo vývoj. K nim dojde, protože prostory vývoj má svoji vlastní instanci Tiller, který je v konfliktu s vlastní instanci Tiller spuštěné ve stejném dev prostoru.
 
 ### <a name="try"></a>Zkuste:
@@ -329,7 +329,7 @@ configurations:
 
 ## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyby "vnitřní watch se nezdařilo: Podívejte se na ENOSPC" při připojování ladění aplikace v Node.js
 
-### <a name="reason"></a>Důvod
+### <a name="reason"></a>Reason
 
 Byla překročena uzlu spuštěn pod aplikaci Node.js se pokoušíte připojit se ladicí program *fs.inotify.max_user_watches* hodnotu. V některých případech [na výchozí hodnotu *fs.inotify.max_user_watches* pravděpodobně příliš malá pro zpracování, ladicí program se připojuje přímo k pod](https://github.com/Azure/AKS/issues/772).
 
@@ -338,7 +338,7 @@ Dočasným řešením tohoto problému je zvýšení hodnoty *fs.inotify.max_use
 
 ## <a name="new-pods-are-not-starting"></a>Nejsou od nových podů
 
-### <a name="reason"></a>Důvod
+### <a name="reason"></a>Reason
 
 Inicializátor Kubernetes nelze použít PodSpec pro nových podů z důvodu změny oprávnění RBAC *Správce clusteru* role v clusteru. Nová pod mohou mít i neplatný PodSpec, například účet služby přidružené k pod už neexistuje. Zobrazíte podů, které jsou v *čekající* stavu z důvodu problému inicializátor, použijte `kubectl get pods` příkaz:
 
@@ -370,7 +370,7 @@ Po přeinstalaci řadiče znovu nasaďte pody.
 
 ## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění RBAC pro volání Dev prostory kontroleru a rozhraní API
 
-### <a name="reason"></a>Důvod
+### <a name="reason"></a>Reason
 Uživatele, kteří používají Azure Dev prostory kontroleru musí mít přístup ke čtení správce *kubeconfig* v clusteru AKS. Například je k dispozici v toto oprávnění [předdefinovaná Azure Kubernetes Service clusteru správce Role](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Musí také mít uživatele, kteří používají Azure Dev prostory kontroleru *Přispěvatel* nebo *vlastníka* role RBAC pro kontroler.
 
 ### <a name="try"></a>Vyzkoušení
@@ -389,3 +389,18 @@ Aktualizace uživatelské role RBAC pro kontroler:
     * Pro *přiřadit přístup k* vyberte *uživatele, skupinu nebo instanční objekt služby Azure AD*.
     * Pro *vyberte* vyhledejte uživatele, kterému chcete udělit oprávnění.
 1. Klikněte na *Uložit*.
+
+## <a name="controller-create-failing-due-to-controller-name-length"></a>Vytvoření kontroleru nedaří zálohovat z důvodu délka názvu kontroleru
+
+### <a name="reason"></a>Reason
+Řadič služby Azure Dev prostory název nemůže být delší než 31 znaků. Pokud název vašeho kontroleru překročí 31 znaků při povolení Dev mezery v clusteru AKS nebo vytvoříte řadič, zobrazí se chyba typu:
+
+*Nepovedlo se vytvořit řadič Dev prostory pro cluster "a-controller-name-that-is-way-too-long-aks-east-us": Název Azure Dev prostory Kontroleru 'a-controller-name-that-is-way-too-long-aks-east-us' je neplatný. Došlo k porušení omezení: Azure Dev prostory názvy lze pouze nejvýše 31 znaků.*
+
+### <a name="try"></a>Vyzkoušení
+
+Vytvoření kontroleru s alternativním názvem:
+
+```cmd
+azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
+```

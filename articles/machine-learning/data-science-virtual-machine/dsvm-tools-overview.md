@@ -14,20 +14,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: f1a791e7a063c2bf2ae75cb3ca8d4fbdd35ddd90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1defaea3743ebb8ddb688cef28efb7eee8ecb07c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598532"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597097"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Seznamte se váš virtuální počítač pro datové vědy
 
 Na Data virtuálního počítače VĚDY obsahuje rozsáhlý seznam oblíbených datové vědy, počítače nástroje učení/umělou Inteligenci a datové platformy. Nástroj konfigurace jsou pečlivě otestovat odborníci přes data a vývojáři ve společnosti Microsoft a širší komunity odborníků přes data zajistit stabilitu a obecné životnost.
 
 Datové VĚDY také obsahuje několik ukázek kódu a názorné postupy ve formě poznámkové bloky Jupyter, může být spuštěn místně. Je také dokumentaci pro tyto ukázky na podporu pochopení. 
+
+> [!NOTE]
+> Můžete použít [poznámkových bloků Azure](/azure/notebooks/azure-notebooks-overview.md) k vytvoření, spuštění a sdílení poznámkové bloky Jupyter v cloudu. Je možné [připojit virtuální počítač pro datové vědy poznámkových bloků Azure](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) rozšíření k dispozici výpočetní výkon.
 
 Nástroje, platformy, nástroje a ukázky, které jsou součástí virtuální počítač pro datové vědy jsou uspořádány do následujících částí:
 

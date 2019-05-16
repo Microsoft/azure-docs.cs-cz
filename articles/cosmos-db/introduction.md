@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: rimman
-ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc14f654af80cf599a797b8f16b0e98fe4b3a209
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61042957"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551004"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Navrhované daným transparentní horizontální dělení a multimasterovou repl
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Garance nízké latence na 99. percentilu po celém světě
 
-Pomocí služby Cosmos DB, můžete vytvořit s velmi rychlou odezvou, aplikace v globálním měřítku. S jeho protokol nové multimasterovou replikací a blokátory a [databázový stroj optimalizovaný pro zápis](index-policy.md), Cosmos DB garantuje latenci kratší než 10 ms pro obě, čtení a zápisy na 99. percentilu po celém světě (indexované) . Tato možnost umožňuje trvalý příjem dat a mimořádně rychlé dotazy pro aplikace s velmi rychlou odezvou.
+Pomocí služby Cosmos DB, můžete vytvořit s velmi rychlou odezvou, aplikace v globálním měřítku. S jeho protokol nové multimasterovou replikací a blokátory a [databázový stroj optimalizovaný pro zápis](index-policy.md), Cosmos DB garantuje latenci kratší než 10 ms pro obě, přečte (indexované) a pro zápis na 99. percentilu po celém světě . Tato možnost umožňuje trvalý příjem dat a mimořádně rychlé dotazy pro aplikace s velmi rychlou odezvou.
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Přesně vymezit, více možností konzistence
 

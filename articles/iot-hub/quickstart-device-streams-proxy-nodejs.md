@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: a459473e04f9cbf3b11b75f3b9dbea2732455084
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 8c323475bd5d1633feee45191a16d5af438ebc82
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005432"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595225"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>Rychlý start: SSH nebo RDP over datové proudy zařízení služby IoT Hub pomocí Node.js proxy aplikace (preview)
 
@@ -38,7 +38,7 @@ Ve verzi preview streamovaných zařízení je momentálně podporována pouze p
   - **USA (střed)**
   - **Střed USA – EUAP**
 
-Ke spuštění aplikace místní služby v rámci tohoto rychlého startu budete potřebovat Node.js verze 4.x.x nebo novější na vývojovém počítači.
+Ke spuštění aplikace místní služby v rámci tohoto rychlého startu budete potřebovat Node.js v10.x.x nebo novějším na vývojovém počítači.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 

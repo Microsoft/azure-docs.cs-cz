@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553704"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799475"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Přizpůsobení modelu osoba s rozhraním API pro Video Indexer
 
@@ -58,10 +59,10 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 |---|---|---|---|
 |location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
-|jméno|string|Ano|Název pro model osoby|
+|name|string|Ano|Název pro model osoby|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -106,7 +107,7 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 |id|string|Ano|Id modelu osoby (vygeneruje, když se vytvoří model osoba)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -142,7 +143,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -198,11 +199,11 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 |videoId|string|Ano|ID videa, ve kterém se zobrazí plošku, kterou chcete aktualizovat. Tím se vytvoří při video je nahraný a indexovat.|
 |funkci faceId|integer|Ano|ID pro rozpoznávání tváře, která bude aktualizována. Můžete získat funkci faceId rejstřík videí|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-|jméno|string|Ano|Nový název se aktualizovat typ písma s.|
+|name|string|Ano|Nový název se aktualizovat typ písma s.|
 
 Názvy musí být jedinečné pro osobu modely, tak Pokud dáte dva různé tváří na stejné osobě model stejné **název** hodnotu parametru, Video Indexer zobrazení plochy jako stejné osobě a sladila je po přeindexování vaše video. 
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 

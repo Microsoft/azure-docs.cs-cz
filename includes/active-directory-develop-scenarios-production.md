@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6d4db402142441ed9b2bf62da48caa637195ad37
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 08d1f69294c4e330db79a1b5fecdb259dffe33cb
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074527"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550392"
 ---
 Zajištění skvělé aplikace:
 
-- Povolit [protokolování](../articles/active-directory/develop/msal-logging.md) ve vaší aplikaci.
-- Povolte telemetrii v aplikaci.
+- Povolit [protokolování](../articles/active-directory/develop/msal-logging.md).
+- Povolte telemetrii.
 - Povolit [proxy servery a vlastní nastavení klientů protokolu HTTP](../articles/active-directory/develop/msal-net-provide-httpclient.md).
 
 Otestujte integraci vašich:
 
-- Postupujte podle [kontrolní seznam k Microsoft identity platform integrace](../articles/active-directory/develop/identity-platform-integration-checklist.md).
+- Použití [kontrolní seznam k Microsoft identity platform integrace](../articles/active-directory/develop/identity-platform-integration-checklist.md).

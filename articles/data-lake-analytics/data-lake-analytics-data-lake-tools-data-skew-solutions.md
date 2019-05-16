@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61399873"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606709"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Vyřešit problémy – Nerovnoměrná distribuce dat pomocí Azure Data Lake Tools pro Visual Studio
 
@@ -36,7 +36,7 @@ Pokud to nemá vliv na obchodní logiku, můžete filtrovat hodnoty vyšší fre
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Option 2: Vybrat jiný klíč oddílu nebo distribuce
 
-V předchozím příkladu Pokud chcete jenom zkontrolovat daně auditu zatížení po zemi, můžete zlepšit rozdělení dat tak, že vyberete identifikační číslo jako svůj klíč. Vybrat jiný oddíl nebo klíč rozdělení může někdy rovnoměrnější distribuci dat, ale potřebujete, abyste měli jistotu, že tato volba nemá vliv na obchodní logiku. Například k výpočtu daně součtu pro každý stav, můžete chtít určit _stavu_ jako klíč oddílu. Pokud budete pokračovat k tomuto problému dochází, zkuste použít možnost 3.
+V předchozím příkladu Pokud chcete jenom zkontrolovat daně auditu zatížení po země/oblasti, můžete zlepšit distribuci dat tak, že vyberete identifikační číslo jako klíč. Vybrat jiný oddíl nebo klíč rozdělení může někdy rovnoměrnější distribuci dat, ale potřebujete, abyste měli jistotu, že tato volba nemá vliv na obchodní logiku. Například k výpočtu daně součtu pro každý stav, můžete chtít určit _stavu_ jako klíč oddílu. Pokud budete pokračovat k tomuto problému dochází, zkuste použít možnost 3.
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>Možnost 3: Přidat další klíče oddílů nebo distribuce
 

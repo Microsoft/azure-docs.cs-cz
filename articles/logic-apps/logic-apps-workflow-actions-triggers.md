@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/06/2019
-ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/13/2019
+ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136600"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596944"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro aktivační událost a akce typy v jazyka definice pracovního postupu pro Azure Logic Apps
 
@@ -1014,7 +1014,7 @@ Pak můžete výstup akce v dalších akcí.
 
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
-| <*inputs-to-compose*> | Všechny | Vstupy pro vytvoření jediného výstupu | 
+| <*inputs-to-compose*> | Vše | Vstupy pro vytvoření jediného výstupu | 
 |||| 
 
 *Příklad 1*
@@ -1645,7 +1645,7 @@ Chcete-li zadat nebo upravit záhlaví sloupců a hodnot, použijte `columns` po
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*název sloupce*> | String | Název záhlaví sloupce | 
-| <*Hodnota sloupce*> | Všechny | Hodnota ve sloupci | 
+| <*Hodnota sloupce*> | Vše | Hodnota ve sloupci | 
 |||| 
 
 *Příklad 1*
@@ -2380,6 +2380,7 @@ Můžete změnit výchozí chování modulu runtime pro aktivační události a 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Změnit [ *výchozí limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na počet instancí pracovních postupů, které mohou čekat na spuštění při pracovního postupu je již spuštěn maximální počet souběžných instancí. Limit souběžnosti v můžete změnit `concurrency.runs` vlastnost. <p>Chcete-li změnit výchozí omezení, [omezit spuštění čekajících změn](#change-waiting-runs). | Všechny aktivační události | 
 | `runtimeConfiguration.concurrency.repetitions` | Integer | Změnit [ *výchozí limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) "pro každý" počet iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p>Nastavení `repetitions` vlastnost `1` funguje stejným způsobem jako nastavení `operationOptions` vlastnost `SingleInstance`. Můžete nastavit buď vlastnost, ale ne obojí. <p>Chcete-li změnit výchozí omezení, [změnit "for each" souběžnosti](#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](#sequential-for-each). | Akce: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Pro konkrétní akce, které podporují a mají povoleno stránkování, tato hodnota určuje, *minimální* počet výsledků pro načtení. <p>Chcete-li na stránkování, naleznete v tématu [získat hromadných dat, položek nebo výsledků pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akce: Různé |
+| `runtimeConfiguration.staticResult` | JSON – objekt | Pro akce, které podporují a [statické výsledek](../logic-apps/test-logic-apps-mock-data-static-results.md) nastavení zapnuté, `staticResult` objekt má tyto atributy: <p>- `name`, které se odkazuje na aktuální akce statické výsledek definice název, který se zobrazí uvnitř `staticResults` atribut pracovního postupu aplikace logiky `definition` atribut. Další informace najdete v tématu [statické výsledky – referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, která určuje, zda jsou výsledky statické `Enabled` nebo není pro aktuální akci. <p>Chcete-li na statické výsledky, naleznete v tématu [testování aplikací logiky s využitím mock data nastavením statické výsledky](../logic-apps/test-logic-apps-mock-data-static-results.md) | Akce: Různé |
 ||||| 
 
 <a name="operation-options"></a>

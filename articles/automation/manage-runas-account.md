@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/26/2019
+ms.date: 05/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a104c9e41ef1843c377b0406b499ffae504db97
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61301089"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595665"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -37,6 +37,9 @@ Existují dva typy účtů spustit jako:
   
   > [!NOTE]
   > Předplatná Azure Cloud Solution Provider (CSP pro Azure) podporují pouze model Azure Resource Manageru, services – Azure Resource Manageru nejsou k dispozici v programu. Při použití předplatném CSP získat Azure Classic účtu spustit jako nebyl vytvořen. Stále se vytvoří účtu Azure spustit jako. Další informace o předplatných CSP najdete v tématu [dostupných služeb v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+
+  > [!NOTE]
+  > Instanční objekt služby pro účet Spustit jako nemá oprávnění ke čtení služby Azure Active Directory ve výchozím nastavení. Pokud chcete přidat oprávnění ke čtení nebo Správa služby Azure Active directory, budete muset udělit oprávnění na instanční objekt v rámci **oprávnění k rozhraní API**. Další informace najdete v tématu [přidat oprávnění pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 ## <a name="permissions"></a>Oprávnění ke konfiguraci účtů spustit jako
 

@@ -14,18 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 18c52a47c291181547a9005c273dc1a329b8c207
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510952"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620488"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
-Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně jako zpráva k vydání verze pro předchozí verze.
+Tento článek obsahuje poznámky k vydání verze 1.8.1 Průzkumníka služby Azure Storage, stejně jako zpráva k vydání verze pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu.
+
+## <a name="version-181"></a>Verze 1.8.1
+5/13/2019
+
+### <a name="download-azure-storage-explorer-181"></a>Stáhněte si Průzkumníka služby Azure Storage 1.8.1
+- [Průzkumník služby Azure Storage 1.8.1 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Průzkumník služby Azure Storage 1.8.1 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Průzkumník služby Azure Storage 1.8.1 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>Opravy hotfix
+* V některých případech se kliknutím na "Zatížení více" na úrovni prostředků by vrátit na další stránku prostředky. Tato chyba byla opravena. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* Na Windows soubory ke stažení AzCopy selže, pokud při stahování jednoho souboru nebo složky a název souboru nebo složky měl znakem, který byl neplatný pro cestu Windows. Tato chyba byla opravena. [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* Ve velmi výjimečných případech při provádění přejmenování sdílené složky nebo přejmenování ve sdílené složce, pokud se nezdařilo kopie pro přejmenování nebo pokud prozkoumejte úložiště nebyl schopen potvrzení úspěšného kopie s Azure, se potenciál pro Průzkumníka služby Storage o odstranění soubory achovat předtím, než bylo dokončeno kopírování. Tato chyba byla opravena.
+
+### <a name="new"></a>Nová
+
+* Integrované AzCopy verze byla aktualizována na verzi 10.1.0.
+* CTRL / Cmd + R je teď možné aktualizovat editoru aktuálně nastavený fokus. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Verze rozhraní API služby Azure Stack úložiště se změnil na 2017-04-17.
+* Dialogové okno přístup spravovat ADLS Gen2 bude nyní synchronizujte maska způsobem podobně jako jiné nástroje oprávnění POSIX. Uživatelské rozhraní vydá varování také tehdy, že pokud dojde ke změně, která způsobí, že oprávnění uživatele nebo skupiny překročí hranice masky. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* Pro nahrávání AzCopy je nyní povolen příznak pro výpočet a nastavte hodnotu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>Funkce Preview
+
+* Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
+* Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
+
+### <a name="fixes"></a>Opravy
+
+* Dialogové okno zásad přístupu již nastaví datum vypršení platnosti na zásady přístupu úložiště, které nemají vypršení platnosti. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* Byly provedeny některé změny do dialogového okna generovat SAS zajistit, aby že uložené zásady přístupu jsou správně použity při generování SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* Při pokusu o nahrání bez – 512 bajtů zarovnána soubor do objektu Blob stránky, zpřístupní Průzkumníka služby Storage teď relevantnější chyby. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* Kopírování objektů Blob v kontejneru, který používá zobrazované jméno selže. Teď se používá skutečný název kontejneru objektů Blob. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* Pokus o provedení určité akce na složku ADLS Gen2, která má ve svém názvu znaky znakové sady unicode selže. Všechny akce by měla nyní pracovat. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>Známé problémy
+
+* Při stažení nástroje AzCopy Blob není ověření MD5 pro velké soubory. Toto je kvůli chybě v sadě SDK úložiště. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Při použití RBAC, Průzkumníka služby Storage vyžaduje některé vrstvy oprávnění pro správu za účelem přístupu k prostředkům úložiště. Zobrazit [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) pro další informace.
+* Pokus o přístup k objektům BLOB Gen2 ADLS při za proxy serverem může selhat.
+* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, komentářů k tomuto problému.
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
+* Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Toto je vzhledem k tomu, že se používá Storno filtr alternativní popsáno zde.
+* Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
+* Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
+   * Sdílené složky
+   * Úrovně přístupu
+   * Obnovitelné odstranění
+   * ADLS Gen2
+* Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
+
+## <a name="previous-releases"></a>Předchozí verze
+
+* [Verze 1.8.0](#version-180)
+* [Verze 1.7.0](#version-170)
+* [Verze 1.6.2.](#version-162)
+* [Verze 1.6.1](#version-161)
+* [Verze 1.6.0](#version-160)
+* [Verze 1.5.0](#version-150)
+* [Verze 1.4.4](#version-144)
+* [Verze 1.4.3](#version-143)
+* [Verze 1.4.2](#version-142)
+* [Verze 1.4.1](#version-141)
+* [Verze 1.3.0](#version-130)
+* [Verzi 1.2.0](#version-120)
+* [Verze 1.1.0](#version-110)
+* [Verze 1.0.0](#version-100)
+* [Verze 0.9.6](#version-096)
+* [Verze 0.9.5](#version-095)
+* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
+* [Verze 0.9.2](#version-092)
+* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
+* [Verze 0.8.16](#version-0816)
+* [Verze 0.8.14](#version-0814)
+* [Verze 0.8.13](#version-0813)
+* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
+* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
+* [Verze 0.8.7](#version-087)
+* [Verze 0.8.6](#version-086)
+* [Verze 0.8.5](#version-085)
+* [Verze 0.8.4](#version-084)
+* [Verze 0.8.3](#version-083)
+* [Verze 0.8.2](#version-082)
+* [Verze 0.8.0](#version-080)
+* [Verze 0.7.20160509.0](#version-07201605090)
+* [Verze 0.7.20160325.0](#version-07201603250)
+* [Verze 0.7.20160129.1](#version-07201601291)
+* [Verze 0.7.20160105.0](#version-07201601050)
+* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-180"></a>Verze 1.8.0
 5/1/2019
@@ -83,44 +184,6 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
     ```
 
 * Spuštění Průzkumníka služby Storage na platformě Linux vyžaduje určité závislosti, chcete-li být napřed nainstalované. Zkontrolujte, Průzkumníka služby Storage [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) Další informace.
-
-## <a name="previous-releases"></a>Předchozí verze
-
-* [Verze 1.7.0](#version-170)
-* [Verze 1.6.2.](#version-162)
-* [Verze 1.6.1](#version-161)
-* [Verze 1.6.0](#version-160)
-* [Verze 1.5.0](#version-150)
-* [Verze 1.4.4](#version-144)
-* [Verze 1.4.3](#version-143)
-* [Verze 1.4.2](#version-142)
-* [Verze 1.4.1](#version-141)
-* [Verze 1.3.0](#version-130)
-* [Verzi 1.2.0](#version-120)
-* [Verze 1.1.0](#version-110)
-* [Verze 1.0.0](#version-100)
-* [Verze 0.9.6](#version-096)
-* [Verze 0.9.5](#version-095)
-* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
-* [Verze 0.9.2](#version-092)
-* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
-* [Verze 0.8.16](#version-0816)
-* [Verze 0.8.14](#version-0814)
-* [Verze 0.8.13](#version-0813)
-* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
-* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
-* [Verze 0.8.7](#version-087)
-* [Verze 0.8.6](#version-086)
-* [Verze 0.8.5](#version-085)
-* [Verze 0.8.4](#version-084)
-* [Verze 0.8.3](#version-083)
-* [Verze 0.8.2](#version-082)
-* [Verze 0.8.0](#version-080)
-* [Verze 0.7.20160509.0](#version-07201605090)
-* [Verze 0.7.20160325.0](#version-07201603250)
-* [Verze 0.7.20160129.1](#version-07201601291)
-* [Verze 0.7.20160105.0](#version-07201601050)
-* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-170"></a>Verze 1.7.0
 3/5/2019

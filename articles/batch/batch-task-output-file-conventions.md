@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96f1cb60dbb7cf08224e8566852cf47fe5f0fa1c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d4e16ca40e8026861d492f950396d6aa39d4c445
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203560"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791558"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Uchování úloh a dat do služby Azure Storage pomocí knihovny File Conventions služby Batch pro .NET
 
@@ -208,7 +208,7 @@ Chcete-li zobrazit výstupní soubory úloh a protokolů na webu Azure Portal, p
 
 [PersistOutputs] [ github_persistoutputs] ukázkový projekt je jedním z [ukázky kódu Azure Batch] [ github_samples] na Githubu. Toto řešení sady Visual Studio ukazuje, jak pomocí knihovny Azure Batch File Conventions trvalý výstup úloh do trvalého úložiště. Ke spuštění ukázky, postupujte podle těchto kroků:
 
-1. Otevřete projekt v **Visual Studio 2017**.
+1. Otevřete projekt v **Visual Studio 2019**.
 2. Přidání služby Batch a Storage **přihlašovací údaje účtu** k **AccountSettings.settings** Microsoft.Azure.Batch.Samples.Common projektu.
 3. **Sestavení** (ale nespouštějte) řešení. Obnovení všech balíčků NuGet, pokud se zobrazí výzva.
 4. Pomocí webu Azure portal k odeslání [balíčku aplikace](batch-application-packages.md) pro **PersistOutputsTask**. Zahrnout `PersistOutputsTask.exe` a jeho závislých sestavení v balíčku .zip, nastavte na "PersistOutputsTask" ID aplikace a verze balíčku aplikace má "1.0".

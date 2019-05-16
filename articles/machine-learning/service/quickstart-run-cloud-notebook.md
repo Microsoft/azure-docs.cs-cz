@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.openlocfilehash: 4c15b9aa0bde704ad3665375d1c1a5bb8a1d32cf
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510616"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604127"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
@@ -131,7 +131,7 @@ Zastavte virtuální počítač Poznámkový blok, když ji nepoužíváte ke sn
 
 1. Vyberte **Zastavit**.
 
-1. Jakmile budete připraveni na uživatele na serveru znovu, vyberte **Start**.
+1. Až budete chtít zase použít server, vyberte **Start**.
 
 ### <a name="delete-everything"></a>Odstranit vše
 

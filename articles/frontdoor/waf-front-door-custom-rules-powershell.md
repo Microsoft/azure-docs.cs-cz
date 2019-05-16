@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 7d024dd958e6b29b52f095a9a55a67154bf6cde6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 414869833b894e2688505a91fed8fafe0c912b73
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459789"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523740"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurace zásad brány firewall webových aplikací pomocí Azure Powershellu
 Zásady brány firewall (WAF) Azure webové aplikace definuje kontroly požadováno, když dorazí požadavek na branou.
@@ -52,19 +52,19 @@ Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření p
 
 ## <a name="custom-rule-based-on-http-parameters"></a>Vlastní pravidlo na základě parametrů http
 
-Následující příklad ukazuje, jak nakonfigurovat dvě podmínky shody pomocí vlastního pravidla [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject). Požadavky jsou z určené lokality dle odkazující server a řetězec dotazu neobsahuje "password". 
+Následující příklad ukazuje, jak nakonfigurovat dvě podmínky shody pomocí vlastního pravidla [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject). Požadavky jsou z určené lokality dle odkazující server a řetězec dotazu neobsahuje "password". 
 
 ```powershell-interactive
-$referer = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
-$password = New-AzFrontDoorMatchConditionObject -MatchVariable QueryString -OperatorProperty Contains -MatchValue "password"
+$referer = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
+$password = New-AzFrontDoorWafMatchConditionObject -MatchVariable QueryString -OperatorProperty Contains -MatchValue "password"
 $AllowFromTrustedSites = New-AzFrontDoorCustomRuleObject -Name "AllowFromTrustedSites" -RuleType MatchRule -MatchCondition $referer,$password -Action Allow -Priority 1
 ```
 
 ## <a name="custom-rule-based-on-http-request-method"></a>Vlastní pravidlo podle metody požadavku http
-Vytvořit pravidlo blokuje "Vložit" pomocí metody [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject) následujícím způsobem:
+Vytvořit pravidlo blokuje "Vložit" pomocí metody [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) následujícím způsobem:
 
 ```powershell-interactive
-$put = New-AzFrontDoorMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
+$put = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
 $BlockPUT = New-AzFrontDoorCustomRuleObject -Name "BlockPUT" -RuleType MatchRule -MatchCondition $put -Action Block -Priority 2
 ```
 
@@ -72,7 +72,7 @@ $BlockPUT = New-AzFrontDoorCustomRuleObject -Name "BlockPUT" -RuleType MatchRule
 
 Následující příklad vytvoří pravidlo blokovat požadavky s adresou Url, která je delší než 100 znaků pomocí Azure Powershellu:
 ```powershell-interactive
-$url = New-AzFrontDoorMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
+$url = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
 $URLOver100 = New-AzFrontDoorCustomRuleObject -Name "URLOver100" -RuleType MatchRule -MatchCondition $url -Action Block -Priority 3
 ```
 ## <a name="add-managed-default-rule-set"></a>Přidat spravovaný výchozí sadu pravidel
@@ -83,10 +83,10 @@ $managedRules = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "
 ```
 ## <a name="configure-a-security-policy"></a>Konfigurace zásad zabezpečení
 
-Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. V dalším kroku nakonfigurujte zásadu zabezpečení pravidlům vytvořený v předchozích krocích pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) v zadané skupině prostředků, který obsahuje profil branou.
+Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. V dalším kroku nakonfigurujte zásadu zabezpečení pravidlům vytvořený v předchozích krocích pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, který obsahuje profil branou.
 
 ```powershell-interactive
-$myWAFPolicy=New-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
+$myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
 ```
 
 ## <a name="link-policy-to-a-front-door-front-end-host"></a>Odkaz zásad na hostitele front-endu branou

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 286d8bbc01b5916e842c196aed5a49ef1c76bc3c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025204"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540695"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Upgradujte na nejnovější verzi rozhraní REST API služby Azure Search
 Pokud používáte předchozí verzi [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/), tento článek vám pomůže při upgradu aplikace použít nejnovější dostupná verze rozhraní API, 2019-05-06.
@@ -72,7 +72,9 @@ Pokud se na vás vztahovat jeden z těchto situací, budete muset změnit váš 
 
 Pokud provádíte upgrade z verze preview rozhraní API, výše uvedené platí také, ale také musí být vědomi, že některé funkce ve verzi preview nejsou k dispozici ve verzi 2019-05-06:
 
-* ["Informace, jako je to" dotazy](search-more-like-this.md) i nadále součástí pouze ve verzi preview.
+* ["Informace následujícím způsobem" dotazy](search-more-like-this.md)
+* [Indexování objektů blob CSV](search-howto-index-csv-blobs.md)
+* [Podpora rozhraní API MongoDB pro indexery Cosmos DB](search-howto-index-cosmosdb.md)
 
 Pokud váš kód používá tyto funkce, nebude možné upgradovat na verzi 2019-05-06 rozhraní API bez nutnosti odebírání využití z nich.
 

@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ffebdd5b88603113dd7624e97dcf7353ab5d1ba
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371106"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605564"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného Azure na jiný účet
 
@@ -64,7 +64,7 @@ Převod vašeho předplatného na jiného uživatele v centru účtů můžete z
    ![První předplatné přenos webové stránky](./media/billing-subscription-transfer/image4.png)
 
    ![Druhý předplatné přenos webové stránky](./media/billing-subscription-transfer/image5.png)
-1. Výborně! Nyní převodu předplatného.
+1. Úspěch! Nyní převodu předplatného.
 
 <a id="EA"></a>
 
@@ -119,7 +119,7 @@ Všechny prostředky, jako jsou virtuální počítače, disky a websites přeno
 
 ### <a id="no-button"></a> Proč nevidíte tlačítko "Převod předplatného"?
 
-Bohužel není k dispozici pro vaše nabídky nebo zemi přenos samoobslužné předplatné. Na převod vašeho předplatného [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Převod předplatného samoobslužné bohužel není k dispozici pro vaše nabídky nebo země/oblast. Na převod vašeho předplatného [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Převod předplatného za následek způsobilo výpadek služeb?
 
@@ -156,9 +156,9 @@ Odesílatel je zodpovědná za platby za jakékoliv využití hlášené až do 
 
 Nabídka musí zůstat stejná. Chcete-li změnit vaší nabídky, [přepnout vašeho předplatného Azure na jinou nabídku](billing-how-to-switch-azure-offer.md).
 
-### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>Je možné převést předplatné pro účet uživatele v jiné zemi?
+### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-countryregion"></a>Je možné převést předplatné pro účet uživatele v jiné zemi nebo oblasti?
 
-Ne, není podporován převod předplatného uživatelský účet v jiné zemi. Příjemce uživatelský účet musí být ve stejné zemi.
+Ne, se nepodporuje přenos předplatného na uživatelský účet v jiné zemi/oblast. Příjemce uživatelský účet musí být ve stejné zemi/oblasti.
 
 ### <a name="can-the-recipient-use-a-different-payment-method"></a>Příjemce, můžete použít jiný způsob platby?
 

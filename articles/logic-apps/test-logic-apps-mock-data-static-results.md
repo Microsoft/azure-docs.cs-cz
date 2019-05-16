@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/18/2019
-ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511934"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597207"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím mock data nastavením statické výsledky
 
@@ -50,7 +50,7 @@ Pokud jste nastavili statickou výsledky pro Outlooku 365 odeslat akci e-mailu, 
       |----------|-------------|
       | **Stav** | Stav akce vrátit |
       | **Stavový kód** | Konkrétní stavový kód, který má vrátit |
-      | **Hlavičky** | Obsah hlavičky pro vrácení |
+      | **Záhlaví** | Obsah hlavičky pro vrácení |
       |||
 
       ![Vyberte možnost "Povolit statickou výsledek"](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
@@ -137,11 +137,9 @@ Vypnutí statické výsledky nebude zbavovat hodnoty z poslední instalace. Tak�
 
    ![Zakázat statické výsledky](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="get-support"></a>Získat podporu
+## <a name="reference"></a>Referenční informace
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
+Další informace o tomto nastavení ve vaší základní definice pracovního postupu najdete v tématu [statické výsledky – referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#static-results) a [runtimeConfiguration.staticResult – modul Runtime nastavení konfigurace](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
 ## <a name="next-steps"></a>Další postup
 

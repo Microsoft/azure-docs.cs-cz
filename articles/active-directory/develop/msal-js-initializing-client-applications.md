@@ -4,7 +4,7 @@ description: Další informace o inicializaci klientských aplikací pomocí Mic
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7990566ca9cd93e79b8356cfd15fda03a7469695
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cd26f36356affbc8c272bd093757a8482773baf2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138305"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544027"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientské aplikace s využitím MSAL.js
 Tento článek popisuje inicializaci knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) s instancí aplikace uživatelského agenta. Aplikace uživatele – agenta je forma veřejné klientské aplikace 00Z klientský kód spouští v uživatelský agent jako je webový prohlížeč. Tito klienti nebudou ukládat tajné klíče, protože kontext prohlížeče je otevřeně dostupné. Další informace o typy klientských aplikací a možnosti konfigurace aplikace, [přehled](msal-client-applications.md).

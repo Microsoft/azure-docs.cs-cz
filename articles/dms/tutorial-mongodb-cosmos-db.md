@@ -10,19 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: ad0d990554d9ff49bed3e9da7097c87c06c7152f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: MT
+ms.date: 05/16/2019
+ms.openlocfilehash: 3260ffaba2ab91ee561a0430310883bda8f65269
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415551"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65740401"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB offline pomocí DMS
+
 Azure Database Migration Service můžete použít k provedení offline migrace (jednorázová) databází z místní nebo cloudové instance MongoDB API služby Azure Cosmos DB pro MongoDB.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
+>
 > * Vytvoření instance služby Azure Database Migration Service
 > * Vytvoření projektu migrace pomocí služby Azure Database Migration Service
 > * Spuštění migrace
@@ -40,7 +42,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
     > [!NOTE]
     > Při nastavení virtuální sítě, pokud používáte ExpressRoute se síť vytvoření partnerského vztahu Microsoftu, přidejte následující službu [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) k podsíti, ve kterém se zřídí služby:
-
+    >
     > * Koncový bod databázového cíl (například koncový bod SQL, koncového bodu služby Cosmos DB a tak dále)
     > * Koncový bod úložiště
     > * Koncový bod služby Service bus
@@ -115,10 +117,22 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 1. Na **zdrojové podrobnosti** obrazovky, zadat podrobnosti připojení pro zdrojový server MongoDB.
 
-   Můžete také použít režim připojovacího řetězce a zadejte umístění pro kontejner objektů blob úložiště souboru, ve kterém jste zálohované dat kolekce, kterou chcete migrovat.
+    Existují tři režimy připojení ke zdroji:
+   * **Standardní režim**, která přijímá použitím plně kvalifikovaného názvu domény nebo IP adresu a číslo portu přihlašovací údaje pro připojení.
+   * **Režim připojovacího řetězce**, která přijímá řetězec připojení MongoDB, jak je popsáno v článku [formát připojovacího řetězce identifikátoru URI](https://docs.mongodb.com/manual/reference/connection-string/).
+   * **Data ze služby Azure storage**, která přijímá adresy URL SAS kontejneru objektů blob. Vyberte **objekt Blob obsahuje BSON výpisy** Pokud kontejner objektů blob se výpisy BSON vytvářených MongoDB [bsondump nástroj](https://docs.mongodb.com/manual/reference/program/bsondump/)a vyberte ho zrušit, pokud kontejner obsahuje soubory JSON.
 
-   > [!NOTE]
-   > Azure Database Migration Service můžete také migrovat bson dokumentů nebo dokumentů json do rozhraní API služby Azure Cosmos DB pro MongoDB kolekce.
+    Pokud vyberete tuto možnost, ujistěte se, že připojovací řetězec účtu úložiště se zobrazí ve formátu:
+
+     ```
+     https://blobnameurl/container?SASKEY
+     ```
+
+     Na základě typu výpis informací ve službě Azure storage, mějte také následující podrobnosti.
+
+     * BSON výpisy dat v rámci kontejneru objektů blob musí být ve formátu bsondump tak, že datové soubory jsou umístěny do složky s názvem po obsahující databází ve formátu collection.bson. Soubory metadat (pokud existuje) by měly být pojmenovány ve formátu *kolekce*. metadata.json.
+
+     * Pro výpisy JSON musí být umístěna souborů v kontejneru objektů blob do složky s názvem po obsahující databáze. V rámci každé složky databáze datové soubory musí být umístěn v podsložce s názvem "data" a s názvem ve formátu *kolekce*.json. Soubory metadat (pokud existuje) musí být umístěny v podsložce s názvem "metadat" a s názvem ve stejném formátu *kolekce*.json. Soubory metadat musí být ve stejném formátu jako vytvořený nástrojem bsondump MongoDB.
 
    V situacích, kdy není možný překlad názvů DNS, můžete použít také IP adresu.
 

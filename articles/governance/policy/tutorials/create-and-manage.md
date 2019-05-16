@@ -7,14 +7,14 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1641a88a95d4c056cdd1be8d855482c80b1430cc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 1a00d237ef94f73ebf59070d8160a7e5144b0ac8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113734"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65736494"
 ---
-# <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: Vytváření a správa zásad pro vynucování dodržování předpisů
 
 Pochopení způsobu, jakým se v Azure vytvářejí a spravují zásady, je důležité pro zajištění souladu s firemními standardy a smlouvami o úrovni služeb. V tomto kurzu se dozvíte, jak pomocí služby Azure Policy provádět některé běžné úlohy související s vytvářením, přiřazováním a správou zásad v rámci celé organizace, jako například:
 
@@ -375,7 +375,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Vyplňte **zajištění zabezpečení: Přiřadit iniciativu** stránky zadáním následujících ukázkových údajů. Můžete použít vlastní údaje.
 
-   - Rozsah: Skupiny pro správu nebo předplatného, které jste si uložili iniciativa zaměřená na stane výchozí.  Obor můžete změnit a přiřadit tak iniciativu k předplatnému nebo ke skupině prostředků v rámci umístění pro uložení.
+   - Obor: Skupiny pro správu nebo předplatného, které jste si uložili iniciativa zaměřená na stane výchozí.  Obor můžete změnit a přiřadit tak iniciativu k předplatnému nebo ke skupině prostředků v rámci umístění pro uložení.
    - Vyloučení: Konfigurujte všechny prostředky v rámci oboru, aby se zabránilo přiřazení iniciativy se použily k nim.
    - Definice iniciativy a název úlohy: Získáte zabezpečené (předem vyplní názvem přiřazení iniciativy).
    - Popis: Toto přiřazení iniciativy je přizpůsobené k vynucování této skupiny definic zásad.

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598468"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544557"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -25,7 +25,7 @@ ms.locfileid: "60598468"
 
 ## <a name="consumption-pricing-model"></a>Cenový model spotřeby
 
-Pro nové aplikace logiky, které běží ve službě Azure Logic Apps veřejné nebo "globální" platíte jenom za využité. Tyto aplikace logiky použít plán založený na spotřebě a cenový model. V definici aplikace logiky je každý krok akce. Například akce zahrnují: 
+Pro nové aplikace logiky, které běží ve službě Azure Logic Apps veřejné nebo "globální" platíte jenom za využité. Tyto aplikace logiky použít plán založený na spotřebě a cenový model. V definici aplikace logiky je každý krok akce. Například akce zahrnují:
 
 * Aktivační události, které jsou zvláštní akce. Všechny aplikace logiky vyžaduje aktivační událost jako první krok.
 * "Integrované" nebo nativní akce, třeba HTTP, volání funkce Azure API Management a tak dále
@@ -38,12 +38,16 @@ Služba Azure Logic Apps měření všechny akce, které běží ve vaší aplik
 
 ## <a name="fixed-pricing-model"></a>Oprava cenový model
 
-[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zajišťuje privátní, izolované a vyhrazené pro vytvoření a spuštění aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. Pro nové aplikace logiky, na kterých běží uvnitř ISE platíte za integrované akce a konektory úrovně Standard pevnou měsíční cenu. Vaše ISE také zahrnuje jeden konektor free Enterprise, který zahrnuje tolika připojení. Využití dalších podnikových konektorů se účtuje podle cena spotřeby Enterprise. 
+[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zajišťuje privátní, izolované a vyhrazené pro vytvoření a spuštění aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. Pro nové aplikace logiky, na kterých běží uvnitř ISE platíte pevnou měsíční cenu pro integrované akce a triggery a také pro konektory úrovně Standard.
 
-Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete [přidávat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), buď při vytváření nebo později.
+Vaše ISE také zahrnuje jeden konektor free Enterprise, který zahrnuje tolika připojení. Využití dalších podnikových konektorů se účtuje podle cena spotřeby Enterprise.
 
 > [!NOTE]
-> Probíhá ISE [ *ve verzi public preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
+> V rámci ISE, integrované aktivační události a akce zobrazení **Core** označovat popisky a spouštění v prostředí ISE stejné jako aplikace logiky. Standard a podnikové konektory, které zobrazují **ISE** popisek spouštění v prostředí ISE stejné jako aplikace logiky. Konektory, které nechcete zobrazit popisek ISE spustit v globální službě Logic Apps.
+
+Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete [přidávat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), buď při vytváření nebo později. 
+
+Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="connectors"></a>
 

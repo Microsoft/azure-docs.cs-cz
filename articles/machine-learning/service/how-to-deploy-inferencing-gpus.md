@@ -1,5 +1,5 @@
 ---
-title: Nasazení modelu obsáhlého learningu pro odvozování s GPU
+title: Nasazení modelu pro odvozování s GPU
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak obsáhlý learning se model nasadíme jako webovou službu, která používá GPU pro odvozování. V tomto článku Tensorflow modelu se nasadí do clusteru Azure Kubernetes Service. Cluster používá virtuální počítač s podporou grafického procesoru hostitele webové služby a odvozování skóre žádosti.
 services: machine-learning
@@ -10,33 +10,30 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 5cc0fe0526937245d3ca913afc477f0259e2afd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7796e8dc07889c9816e4227f3b38904d91a24da3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515171"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595676"
 ---
-# <a name="how-to-do-gpu-inferencing"></a>Jak provádět odvozování GPU
+# <a name="deploy-a-deep-learning-model-for-inferencing-with-gpu"></a>Nasazení modelu obsáhlého learningu pro odvozování s GPU
 
 Další informace o použití odvozování GPU pro machine learning model nasadit jako webovou službu. V tomto článku se dozvíte, jak pomocí služby Azure Machine Learning nasadit příklad Tensorflow hloubkového učení modelu. Model se nasadí do clusteru Azure Kubernetes Service (AKS), který se používá k hostování služby virtuálního počítače s podporou grafického procesoru. Při žádosti se odesílají do služby, modelu využívá GPU provádět odvozování.
 
 Grafické procesory nabízí výhody výkonu přes procesory na vysoce paralelizovat výpočtu. Trénování a odvozování hloubkového učení modely (zejména u velkých dávky požadavků) představují vynikající využití pro GPU.  
 
-V tomto příkladu se ukazují, jak nasadit TensorFlow uložit model Azure Machine Learning. 
+V tomto příkladu se ukazují, jak nasadit TensorFlow uložit model Azure Machine Learning pomocí:
+* Vytvoření clusteru s podporou grafického procesoru AKS
+* Nasazení modelu s Tensorflow GPU
 
-## <a name="goals-and-prerequisites"></a>Cíle a požadavky
+## <a name="prerequisites"></a>Požadavky
 
-Postupujte podle pokynů:
-* Vytvoření s podporou grafického procesoru clusteru AKS
-* Nasadit model s využitím Tensorflow GPU
-
-Požadavky:
 * Pracovní prostor služby Azure Machine Learning
 * Python
 * Tensorflow SavedModel zaregistrovaný. Další informace o registraci najdete v článku modely [modely nasazení](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#registermodel)
 
-Tento článek je založen na [modely Tensorflow nasazení do AKS](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow, uložit, který používá modely a nasadí do clusteru AKS. Pomocí malé změny souboru bodování a soubor prostředí je pro jakoukoli architekturu learningu počítače, které podporují GPU.  
+Tento článek je založen na Poznámkový blok Jupyter [modely Tensorflow nasazení do AKS](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow, uložit, který používá modely a nasadí do clusteru AKS. Pomocí malé změny souboru bodování a soubor prostředí je pro jakoukoli architekturu learningu počítače, které podporují GPU.  
 
 ## <a name="provision-aks-cluster-with-gpus"></a>Zřízení clusteru AKS s grafickými procesory
 Azure nabízí mnoho různých možností GPU, které lze použít k odvozování. Zobrazit [seznam řady N](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) pro úplné rozpis funkcí a náklady. 

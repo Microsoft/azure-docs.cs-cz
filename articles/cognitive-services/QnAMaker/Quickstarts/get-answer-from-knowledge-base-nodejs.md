@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: a1caec1cd0c05fbc306b1a19c88fbe469be7fa6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 389d6ed369de513125a2bcd0d0de881f524dcd82
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913823"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791530"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze s využitím Node.js
 
@@ -85,4 +85,4 @@ Další informace o [požadavek](../how-to/metadata-generateanswer-usage.md#gene
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

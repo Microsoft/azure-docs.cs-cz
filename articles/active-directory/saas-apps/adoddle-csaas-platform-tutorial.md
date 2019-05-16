@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 828de7e3e91a0ccdc123dc893dce158d644c5d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284678"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813226"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Kurz: Integrace Azure Active Directory s Adoddle cSaas platformy
 
@@ -180,7 +180,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se vytvoří uživateli Britta Simon v Adoddle cSaas platformy. Adoddle cSaas platforma podporuje **just-in-time zřizování**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Adoddle cSaas platformy, se vytvoří nový při pokusu o přístup k Adoddle cSaas platformy.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

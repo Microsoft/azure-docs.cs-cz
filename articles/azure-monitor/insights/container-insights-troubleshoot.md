@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 5f9fc128af4e89788e648fcfc238da300ff91724
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2e3e39ef24d82393d981c0ce276b3338419e0b2d
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068754"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521771"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží s Azure Monitor pro kontejnery
 
@@ -80,7 +80,7 @@ Pokud monitorování Azure pro kontejnery se úspěšně povolena a konfigurová
 
 4. V protokolech agenta. Když se nasadí kontejnerizovanou agenta, spustí rychlou kontrolu spuštěním příkazů (OMI) a zobrazí verzi agenta a poskytovatele. 
 
-5. Pokud chcete ověřit, že agent byl úspěšně připojit, spusťte příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
+5. Ověření úspěšného nasazení agenta, spusťte příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Stav by měl vypadat podobně jako v následujícím příkladu:
 
@@ -113,7 +113,7 @@ Následující tabulka shrnuje známých chyb, které můžete narazit při pou�
 | ---- | --- |  
 | Chybová zpráva `No data for selected filters`  | Může trvat nějakou dobu vytvoření monitorování toku dat pro nově vytvořený clustery. Povolit alespoň 10 až 15 minut, než se data zobrazí pro váš cluster. |   
 | Chybová zpráva `Error retrieving data` | Když je cluster Azure Kubenetes Service nastavení pro monitorování stavu a výkonu, se vytvoří připojení mezi clusterem a pracovního prostoru Azure Log Analytics. Pracovní prostor Log Analytics se používá k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, pokud byla odstraněna nebo ztráty pracovního prostoru Log Analytics. Zkontrolujte, zda je váš pracovní prostor dostupných kontrolou [spravovat přístup](../platform/manage-access.md#view-workspace-details). Pokud pracovní prostor chybí, je potřeba znovu povolte sledování vašeho clusteru pomocí Azure monitoru pro kontejnery. Pokud chcete znovu povolit, je potřeba [zakázat](container-insights-optout.md) monitorování pro cluster a [povolit](container-insights-enable-new-cluster.md) monitorování Azure pro kontejnery znovu. |  
-| `Error retrieving data` Po přidání monitorování Azure pro kontejnery pomocí rozhraní cli az aks | Při povolení monitorování pomocí `az aks cli`, monitorování Azure pro kontejnery nemusí být správně připojili. Zkontrolujte, zda je řešení připojili. Chcete-li to provést, přejděte do pracovního prostoru Log Analytics a jestli řešení jsou dostupné tak, že vyberete **řešení** z podokna na levé straně. Chcete-li vyřešit tento problém, budete muset znovu nasadit řešení podle pokynů v [jak nasadit Azure Monitor pro kontejnery](container-insights-onboard.md) |  
+| `Error retrieving data` Po přidání monitorování Azure pro kontejnery pomocí rozhraní cli az aks | Při povolení monitorování pomocí `az aks cli`, monitorování Azure pro kontejnery nemusí být správně nasazena. Zkontrolujte, zda se řešení nasadí. Chcete-li to provést, přejděte do pracovního prostoru Log Analytics a jestli řešení jsou dostupné tak, že vyberete **řešení** z podokna na levé straně. Chcete-li vyřešit tento problém, budete muset znovu nasadit řešení podle pokynů v [jak nasadit Azure Monitor pro kontejnery](container-insights-onboard.md) |  
 
 Abychom mohli problém diagnostikovat, poskytujeme vám řešení potíží k dispozici skript [tady](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).  
 

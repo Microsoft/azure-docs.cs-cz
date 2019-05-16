@@ -3,19 +3,19 @@ title: Najít podobné obrázky z předchozí vyhledávání pomocí ImageInsigh
 titleSuffix: Azure Cognitive Services
 description: Pomocí sady SDK vizuální vyhledávání Bingu k získání adres URL obrázků určené ImageInsightsToken.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: rosh
-ms.openlocfilehash: 39a95e877c766eb8f491c166edeb9d96f21db7dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f28e540aeb1604c5df885fd54d243211beb40b6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829510"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796349"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Podobně jako Image z předchozího vyhledávání pomocí ImageInsightsToken najdete
 

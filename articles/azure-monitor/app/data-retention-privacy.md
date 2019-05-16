@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 05/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204887"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518848"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -86,6 +86,9 @@ To může být zápisem je to možné [modulu plug-in procesoru telemetrie](../.
 Nezpracované datové body (to znamená, položky, které se můžete dotazovat v Analytics a kontrolovat v hledání) uchovávají po dobu 90 dnů. Pokud je potřeba uchovávat data déle než, můžete použít [průběžný export](../../azure-monitor/app/export-telemetry.md) a zkopírujte ho do účtu úložiště.
 
 Agregovaná data (to znamená, počty, průměr a jiných statistická data, která se zobrazí v Průzkumníku metrik) jsou zachovány za interval 1 minuta po dobu 90 dnů.
+
+> [!NOTE]
+> Proměnné uchovávání dat pro službu Application Insights je teď ve verzi Preview. Další informace najdete [tady](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031). 
 
 [Ladění snímků](../../azure-monitor/app/snapshot-debugger.md) ukládají po dobu patnácti dnů. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
 
@@ -237,9 +240,9 @@ Sady SDK se liší mezi platformami a je několik komponent, které můžete nai
 
 | Vaše akce | Shromážděná data třídy (viz následující tabulka) |
 | --- | --- |
-| [Přidejte Application Insights SDK do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
+| [Přidejte Application Insights SDK do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelů |
 | [Nainstalujte monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
-| [Přidat sadu Application Insights SDK do webové aplikace v Javě][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
+| [Přidat sadu Application Insights SDK do webové aplikace v Javě][java] |ServerContext<br/>Odvodit<br/>Požadavek<br/>Relace<br/>uživatelů |
 | [Přidání sady SDK JavaScript do webové stránky][client] |ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** na všechny standardní a vlastní události |
 | [Volání TrackMetric][api] |Číselné hodnoty<br/>**Vlastnosti** |

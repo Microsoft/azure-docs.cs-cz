@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c5a67e22c301a2afc73a46a6def9a514426c497f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928044"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522942"
 ---
-# <a name="remote-desktop-client-connections"></a>Klient služby Vzdálená plocha připojení
+# <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
 
 Pomocí tohoto článku řešení potíží s připojeními klientů virtuální plochy Windows.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 
 Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview. Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy.
 
@@ -108,22 +108,21 @@ Postupujte podle těchto obecné pokyny pro řešení potíží pro kódy chyb p
 1. Zkontrolujte uživatelské jméno a čas, kdy došlo k problému.
 2. Otevřít **Powershellu** a navázat připojení k tenantovi virtuální plochy Windows, kde problém byl nahlášen.
 3. Ověřte připojení ke správné tenanta s **Get RdsTenant.**
-4. V případě potřeby nastavte tenanta kontext skupiny s **Set-RdsContext – TenantGroupt\<TenantGroup\>**.
-5. Pomocí **Get-RdsHostPool** a **Get-RdsSessionHost** rutiny, potvrďte, že Poradce při potížích se provádí na správného hostitele fondu.
-6. Spusťte následující příkaz k získání seznamu všech neúspěšných aktivit typu připojení pro zadané časové okno:
+4. Pomocí **Get-RdsHostPool** a **Get-RdsSessionHost** rutiny, potvrďte, že Poradce při potížích se provádí na správného hostitele fondu.
+5. Spusťte následující příkaz k získání seznamu všech neúspěšných aktivit typu připojení pro zadané časové okno:
 
     ```cmd
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-7. Použití **ActivityId** z výstupu předchozí rutiny, spusťte následující příkaz:
+6. Použití **ActivityId** z výstupu předchozí rutiny, spusťte následující příkaz:
 
     ```
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-8. Tento příkaz vytváří výstup podobný výstup najdete níž. Použití **ErrorCodeSymbolic** a **ErrorMessage** řešení potíží s původní příčinu.
+7. Tento příkaz vytváří výstup podobný výstup najdete níž. Použití **ErrorCodeSymbolic** a **ErrorMessage** řešení potíží s původní příčinu.
 
     ```
     ErrorSource       : <Source>

@@ -5,15 +5,15 @@ metadata:
   title: 'Dokumentace k rozhraní API Bingu pro vyhledávání videí – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs'
   description: Naučte se využívat rozhraní API Bingu pro vyhledávání videí pro hledání videí na webu.
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/31/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: Rozhraní API Bingu pro vyhledávání videí umožňuje využívat kognitivní možnosti Bingu pro vyhledávání videí ve vaší aplikaci. Odesíláním vyhledávacích dotazů tomuto rozhraní API můžete získávat a zobrazovat relevantní a vysoce kvalitní videa podobně jako na bing.com/images.
 sections:

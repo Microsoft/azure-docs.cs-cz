@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8a85319a12f04a11e3914716d9ff84cdb6de8d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392394"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787863"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Nastavení a načtení vlastností a metadat
 
-Objekty ve vlastnostech systému podpory služby Azure Storage a metadata definovaná uživatelem, kromě dat, které obsahují. Tento článek popisuje správu systémové vlastnosti a metadata definovaná uživatelem s [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/).
+Objekty ve vlastnostech systému podpory služby Azure Storage a metadata definovaná uživatelem, kromě dat, které obsahují. Tento článek popisuje správu systémové vlastnosti a metadata definovaná uživatelem s [Klientská knihovna Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).
 
 * **Vlastnosti systému**: Vlastnosti systému existují u jednotlivých prostředků úložiště. Některé z nich může být čtena nebo nastavena, zatímco jiné jsou jen pro čtení. Pod pokličkou některé vlastnosti systému odpovídají určitým standardními záhlavími HTTP. Klientské knihovny pro Azure Storage spravovat za vás tyto vlastnosti.
 
@@ -99,5 +99,8 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Klientská knihovna Azure Storage pro .NET – referenční informace](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
-* [Klientská knihovna Azure Storage pro balíček NuGet pro rozhraní .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Klientská knihovna Azure Storage pro .NET – referenční informace](/dotnet/api/?term=Microsoft.Azure.Storage)
+* [Azure Klientská knihovna pro úložiště objektů Blob pro balíček rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [Azure Queue storage Klientská knihovna pro balíček rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [Azure Klientská knihovna pro úložiště souborů pro balíček rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+

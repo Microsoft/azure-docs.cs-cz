@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
-ms.openlocfilehash: 1006cc902cf4b6f763d86165a039a1fec5dc97a1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467091"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796257"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Zavést stavu zavedení integrace pro Azure Deployment Manager (Public preview)
 
@@ -32,7 +32,7 @@ Aby integrace stavu co nejjednodušší, Microsoft má pracovali s některými m
 
 ## <a name="how-service-health-is-determined"></a>Jak určit stav služby
 
-[Stav monitorování poskytovatelů](#health-monitoring-providers) nabízí několik mechanismů pro sledování služeb a upozorní vás žádné problémy se stavem služby. [Azure Monitor](/services/monitor/) je příkladem jednoho nabídkou. Azure Monitor umožňuje vytvářet upozornění při překročení určité hranice. Například paměť a využití procesoru dosahuje mimo očekávané úrovně při nasazení nové aktualizace ke službě. Upozornění, můžete provést opravné akce.
+[Stav monitorování poskytovatelů](#health-monitoring-providers) nabízí několik mechanismů pro sledování služeb a upozorní vás žádné problémy se stavem služby. [Azure Monitor](../azure-monitor/overview.md) je příkladem jednoho nabídkou. Azure Monitor umožňuje vytvářet upozornění při překročení určité hranice. Například paměť a využití procesoru dosahuje mimo očekávané úrovně při nasazení nové aktualizace ke službě. Upozornění, můžete provést opravné akce.
 
 Tito poskytovatelé zdravotní běžně nabízí rozhraní REST API, tak, aby stav monitorování vaší služby se dají prozkoumat prostřednictvím kódu programu. Rozhraní REST API, můžete buď vrátit s jednoduchou v pořádku a není v pořádku signál (podle kódu odpovědi HTTP) a/nebo s podrobnými informacemi o signály, že přijímá.
 

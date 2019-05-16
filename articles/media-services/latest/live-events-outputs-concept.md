@@ -11,18 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 87620cb0c7aafb78b2c8fe610f42ad092313d305
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153485"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550966"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
-Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. Pokud chcete nakonfigurovat živě streamovaných událostí v Media Services v3, budete muset pochopit principy probírané v tomto článku. <br/>Seznam části je uveden na pravé straně stránky.
+Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. Pokud chcete nakonfigurovat živě streamovaných událostí v Media Services v3, budete muset pochopit principy probírané v tomto článku.
+
+> [!TIP]
+> Pro zákazníky, kteří migrace z rozhraní API služby Media Services v2 **živá událost** nahradí entitu **kanál** ve v2 a **Live výstup** nahradí **Program**.
+
 
 ## <a name="live-events"></a>Živé události
 
@@ -99,7 +103,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 `rtmps://<random 128bit hex string>.channel.media.azure.net:2935/<access token>`
 `rtmps://<random 128bit hex string>.channel.media.azure.net:2936/<access token>`
 
-##### <a name="smooth-streaming"></a>Technologie Smooth Streaming
+##### <a name="smooth-streaming"></a>Smooth Streaming
 
 `http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
 `https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
@@ -113,7 +117,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 `rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/<access token>`
 `rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/<access token>`
 
-##### <a name="smooth-streaming"></a>Technologie Smooth Streaming
+##### <a name="smooth-streaming"></a>Smooth Streaming
 
 `http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
 `https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`

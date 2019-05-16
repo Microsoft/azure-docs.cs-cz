@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2dca71023cbed34ef3661ca980cf1eac4ca620c1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508115"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784301"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -256,7 +256,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | userPrincipalName |X | | |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (následně označované jako Skype pro firmy)
+## <a name="teams-and-skype-for-business-online"></a>Týmy a Online Skype pro firmy
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definuje, jestli je účet povolený. |

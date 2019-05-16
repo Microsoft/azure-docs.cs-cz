@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553576"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799521"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa připojení k Azure účet služby Video Indexer
 
@@ -61,7 +62,7 @@ Automatické škálování nejsou adekvátní pod 1 RU nebo nad výchozí omezen
 
 Pokud váš účet potřebuje některé změny, se zobrazí relevantní chyby a upozornění o konfiguraci vašeho účtu na **nastavení** stránky. Zprávy obsahují odkazy na přesné místa na webu Azure portal, kde je potřeba provést změny. Tato část poskytuje další podrobnosti o chybě a upozornění.
 
-* Event Grid
+* Mřížka událostí
 
     Je nutné provést registraci poskytovatele prostředků EventGrid pomocí webu Azure portal. V [webu Azure portal](https://portal.azure.com/), přejděte na stránku **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není v **registrované** stavu, klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
 

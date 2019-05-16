@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: d4d9e988f54abc52eedf0dfc26c78a2d16f72032
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277713"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empactis"></a>Kurz: Integrace Azure Active Directory s Empactis
 
@@ -178,7 +178,7 @@ V této části je povolit Britta Simon k udělení přístupu k Empactis použi
 
 V této části vytvoříte uživatele v Empactis jako Britta Simon. Práce s [tým podpory Empactis](mailto:support@empactis.com) přidat uživatele na platformě Empactis. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 92173e760cf8207a15c643ca75913145ed343b55
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 41d8d05cf5f900c7fcd5640f8896c715640ebcab
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517756"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65772802"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Integrace Azure Active Directory s řízením Workspot
 
@@ -240,12 +240,12 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Workspot ovlá
 
 V této části jsme naše služby Azure AD jednotné přihlašování Konfigurace testu prostřednictvím *přístupového panelu*.
 
-Když kliknete **ovládací prvek Workspot** dlaždici přístupovém panelu, vám by měl být automaticky přihlášeni k Workspot ovládací prvek, u kterého nastavíte jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Když kliknete **ovládací prvek Workspot** dlaždici přístupovém panelu, vám by měl být automaticky přihlášeni k Workspot ovládací prvek, u kterého nastavíte jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
-- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

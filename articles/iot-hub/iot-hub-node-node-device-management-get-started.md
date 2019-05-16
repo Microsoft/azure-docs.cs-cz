@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.openlocfilehash: 15166d3943bc72a2eeff3580cefdd264ecaba61d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bc34110b85119c7b8b303774b585d03ce9d3a0f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346132"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596642"
 ---
 # <a name="get-started-with-device-management-node"></a>Začínáme se správou zařízení (Node)
 
@@ -35,7 +35,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace Node.js:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Node.js verze 4.0.x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje postup instalace Node.js pro účely tohoto kurzu ve Windows nebo Linuxu.
+* Verze Node.js 10.0.x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje postup instalace Node.js pro účely tohoto kurzu ve Windows nebo Linuxu.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 

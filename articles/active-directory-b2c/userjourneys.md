@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e09435b09811ef31057f4dc257fc55fa72909d83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5e56d4953eecdb488d5dadd4497b1c42b932f35
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714921"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812567"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -23,7 +23,7 @@ ms.locfileid: "64714921"
 
 Cesty uživatele zadejte explicitní cesty, pomocí kterých zásadu umožňuje aplikaci předávající strany k získání požadovaných deklarací identity pro uživatele. Uživatel je přesunete přes tyto cesty na načítají deklarace identity, které se budou zobrazovat předávající straně. Jinými slovy uživatel jízdy definovat obchodní logiku z jaké koncový uživatel prochází jako procesy architekturu rozhraní identit Azure AD B2C požadavku.
 
-Tyto cesty uživatele lze považovat jako šablony, které jsou k dispozici splňovat základní potřebám různých odpovídajících stran, komunity, které vás zajímají. Uživatel jízdy usnadnění definice předávající strana část zásady. Zásady můžete definovat více cest uživatele. Každé cesty uživatele je posloupnost kroků Orchestrace.
+Tyto cesty uživatele lze považovat jako šablony, které jsou k dispozici pro splnění požadavku core různých předávajících stran, komunity, které vás zajímají. Uživatel jízdy usnadnění definice předávající strana část zásady. Zásady můžete definovat více cest uživatele. Každé cesty uživatele je posloupnost kroků Orchestrace.
 
 K definování cest uživatele podporovaného zásadami, **Userjourney** prvek přidán pod prvek nejvyšší úrovně soubor zásad. 
 
@@ -49,7 +49,7 @@ K definování cest uživatele podporovaného zásadami, **Userjourney** prvek p
 
 Cesty uživatele představuje orchestraci pořadí, který musí být následován úspěšná transakce. Pokud kterýkoli krok selže, transakce se nezdaří. V souboru zásad povoleny poskytovatele deklarací identity a kroků Orchestrace odkazovat na stavební bloky. Libovolný krok Orchestrace, která odpovídá zobrazení nebo vykreslení uživatelské prostředí také obsahuje odkaz na odpovídající identifikátor definici obsahu.
 
-Kroků Orchestrace může podmíněně spustí, na základě předběžné podmínky definované v elementu krok Orchestrace. Můžete například zkontrolovat provést krok Orchestrace pouze v případě, že konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu. 
+Orchestrace kroky je možné provést podmíněně podle předběžné podmínky definované v elementu krok Orchestrace. Můžete například zkontrolovat provést krok Orchestrace pouze v případě, že konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu. 
 
 Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** prvek se přidá jako součást této zásady. Tento element je povinný.
 
@@ -65,7 +65,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 | --------- | -------- | ----------- |
 | `Order` | Ano | Pořadí kroků Orchestrace. | 
 | `Type` | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
-| ContentDefinitionReferenceId | Ne | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k tento krok Orchestrace. Obvykle identifikátor obsahu definice odkazu je definován v s vlastním potvrzením technický profil. Ale existují případy, když Azure AD B2C potřebuje rychle zobrazit něco bez technického profilu. Existují dva příklady, pokud je typ kroku Orchestrace jednu z následujících akcí: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`. Azure AD B2C musí zobrazit výběru zprostředkovatele identity bez nutnosti technický profil. | 
+| ContentDefinitionReferenceId | Ne | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k tento krok Orchestrace. Obvykle identifikátor obsahu definice odkazu je definován v s vlastním potvrzením technický profil. Ale existují případy, když Azure AD B2C potřebuje rychle zobrazit něco bez technického profilu. Existují dva příklady – Pokud je typ kroku Orchestrace jednu z následujících akcí: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`, Azure AD B2C potřebuje ke zobrazení výběru zprostředkovatele identity bez nutnosti technický profil. | 
 | CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku Orchestrace je `SendClaims`. Tato vlastnost definuje technický profil identifikátor zprostředkovatele deklarací identity, který vydá token pro předávající stranu.  Pokud chybí, je vytvořen žádný předávající strany token. |
 
 
@@ -88,7 +88,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 #### <a name="precondition"></a>Předběžné podmínky
 
-**Předběžné podmínky** prvek obsahuje následující atribut:
+**Předběžné podmínky** prvek obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
@@ -121,7 +121,7 @@ Tyto předběžné požadavky kontroluje, jestli ID objektu uživatele existuje.
 </OrchestrationStep>
 ```
 
-Tyto předběžné požadavky kontroluje, zda uživatel přihlášený pomocí účtu na sociální síti. Je proveden pokus o vyhledání uživatelský účet v adresáři. Pokud se uživatel přihlásí nebo zaregistruje s místním účtem přeskočte, tento krok Orchestrace.
+Tyto předběžné požadavky kontroluje, zda uživatel přihlášený pomocí účtu na sociální síti. Je proveden pokus o vyhledání uživatelský účet v adresáři. Pokud se uživatel přihlásí nebo zaregistruje místní účet, přeskočte tento krok Orchestrace.
 
 ```XML
 <OrchestrationStep Order="3" Type="ClaimsExchange">

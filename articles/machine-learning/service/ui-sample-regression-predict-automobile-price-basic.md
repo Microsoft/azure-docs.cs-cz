@@ -1,7 +1,7 @@
 ---
-title: 'Regrese: Předpovědět cenu'
+title: 'Regrese: Predikce ceny'
 titleSuffix: Azure Machine Learning service
-description: Tento ukázkový experiment vizuální rozhraní ukazuje, jak sestavit regresní model pro předpověď ceny automobilu představuje jeden. Proces zahrnuje trénování, testování a vyhodnocení modelů na datové sadě Automobile price data (Raw).
+description: Zjistěte, jak sestavit služby machine learning model pro předpověď ceny automobilu představuje jeden aniž byste museli napsat jediný řádek kódu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,30 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: fa9b9179cda767d69d08dcd357a03123bde901cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028887"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787845"
 ---
-# <a name="sample-1---regression-predict-price"></a>Ukázka 1 - regrese: Předpovědět cenu
+# <a name="sample-1---regression-predict-price"></a>Ukázka 1 - regrese: Predikce ceny
 
-Tento ukázkový experiment vizuální rozhraní ukazuje, jak sestavit regresní model pro předpověď ceny automobilu představuje jeden. Proces zahrnuje trénování, testování a vyhodnocení modelu s použitím **Automobile price data (Raw)** datové sady.
+Zjistěte, jak sestavit model strojového učení regrese aniž byste museli napsat jediný řádek kódu pomocí vizuální rozhraní.
+
+Tento experiment železniční **rozhodnutí regresor doménové struktury** předpovědět automobilu je cena závisí na technických prvků, modelu, výkon a velikost. Protože ale My se snažíme odpověď na otázku "Kolik?" tomu se říká regresní problém. Můžete však použít stejný základní postup v tomto experimentu libovolného typu machine learning problém řešit, ať to regrese, klasifikace, clustering a tak dále.
+
+Jsou základní kroky školení model strojového učení:
+
+1. Získání dat
+1. Předběžně zpracovat data
+1. Trénování modelu
+1. Vyhodnocení modelu
+
+Tady je graf konečné, dokončení experimentu, který budeme pracovat na. Poskytujeme důvody pro všechny moduly, abyste měli podobné rozhodnutí, která sami.
+
+![Graf experimentu](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,23 +41,6 @@ Tento ukázkový experiment vizuální rozhraní ukazuje, jak sestavit regresní
 4. Vyberte **otevřít** tlačítko pro experiment Příklad 1:
 
     ![Otevřete experiment](media/ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
-
-## <a name="related-sample"></a>Související ukázkové
-
-[Ukázka 2 - regrese: Predikce ceny automobilů (porovnání algoritmy)](ui-sample-regression-predict-automobile-price-compare-algorithms.md) poskytuje mnohem komplikovanější ukázkový experiment, který byl problém vyřešen stejné jako tento experiment s využitím dvou různých regresních modelů. Ukazuje, jak rychle porovnat různé algoritmy. Pokud hledáte pokročilejší ukázku, projděte si ho.
-
-## <a name="experiment-summary"></a>Souhrn testu
-
-Tyto kroky použijte k sestavení testu:
-
-1. Získáte data.
-1. Předběžně zpracovat data.
-1. Trénování modelu.
-1. Testování, vyhodnocení a porovnávání vzorů.
-
-Tady je úplný graf testu:
-
-![Graf experimentu](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="get-the-data"></a>Získání dat
 
@@ -59,6 +55,7 @@ Používáme **výběr sloupců v datové sadě** modulu, který chcete vylouči
 ![Předběžné zpracování dat](./media/ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>Trénování modelu
+
 Machine learning problémy se liší. Běžné úkoly strojového učení zahrnují klasifikaci, clustering, regresi a doporučené systémů, z nichž každá může vyžadovat jiný algoritmus. Zvolený algoritmus často závisí na požadavcích případu použití. Jakmile vyberete algoritmus, budete muset vyladění jeho parametrů tak moct trénovat přesnější modelu. Pak budete muset vyhodnotit všechny modely na základě metrik, jako je přesnost, srozumitelnost a efektivitu.
 
 Protože cílem tohoto experimentu je k předvídání cen automobilů a popisek sloupce (cena) obsahuje reálná čísla, regresní model je dobrou volbou. Vzhledem k tomu, že mnoho funkcí je poměrně málo početnému (méně než 100) a nejsou tyto funkce řídký, bude pravděpodobně nelineárních hranici rozhodnutí. Takže použijeme **rozhodnutí doménové struktury regrese** pro tento experiment.

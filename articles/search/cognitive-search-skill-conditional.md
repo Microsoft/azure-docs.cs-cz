@@ -1,6 +1,6 @@
 ---
 title: Podmíněné kognitivního vyhledávání dovedností (Azure Search) | Dokumentace Microsoftu
-description: Podmíněné dovednosti, která umožňuje filtrování, vytváření výchozích hodnot a slučování hodnoty.
+description: Podmíněné dovednosti umožňuje filtrování, vytváření výchozích hodnot a slučování hodnoty.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,18 +10,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 6a203a38437ccb6a9c325e6594289744e0148c84
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 149b701d4a1700787656448e2bdd0d92d2a93844
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028422"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791520"
 ---
 #   <a name="conditional-skill"></a>Podmíněné dovedností
 
-**Podmíněné dovednosti** umožňuje širokou škálu scénářů, které vyžadují logická operace rozhodnout data, která by měla být přiřazena výstup. Mezi tyto scénáře patří: filtrování, přiřazení výchozí hodnoty a slučování dat na základě podmínky.
+*Podmíněné dovednosti* umožňuje používat scénáře s Azure Search, které vyžadují logické operaci. k určení dat k přiřazení do výstupu. Mezi tyto scénáře patří filtrování, přiřazení výchozí hodnoty a slučování dat na základě podmínky.
 
-Následujícím pseudokódu vysvětluje, co provede podmíněné dovedností:
+Následujícím pseudokódu ukazuje, co provede podmíněné dovedností:
 
 ```
 if (condition) 
@@ -31,7 +31,7 @@ else
 ```
 
 > [!NOTE]
-> Tato dovednosti není vázán na API služeb Cognitive Services a se vám neúčtují poplatky k jeho používání. Měli stále [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), ale k přepsání **Free** resource – možnost, která omezuje vám malý počet denních obohacení za den.
+> Tato dovednosti není vázán na rozhraní API Azure Cognitive Services a se vám neúčtují poplatky k jeho používání. Ale měli stále [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) přepsání možnost "Free" prostředek, který omezuje vám malý počet obohacení za den.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill
@@ -41,9 +41,10 @@ Microsoft.Skills.Util.ConditionalSkill
 
 Tato dovednosti je speciální, protože jeho vstupů Vyhodnocená pole.
 
-Následují platné hodnoty výrazu:
+Následující položky jsou platné hodnoty výrazu:
 
--   Cesty poznámky (musí být odděleny cesty ve výrazech "$(" and ")") <br/>
+-   Cesty poznámky (musí být odděleny cesty ve výrazech "$(" and ")")
+ <br/>
     Příklady:
     ```
         "= $(/document)"
@@ -53,13 +54,13 @@ Následují platné hodnoty výrazu:
 -  Literály (řetězců, čísel, true, false, null) <br/>
     Příklady:
     ```
-       "= 'this is a string'"   // string, note the single quotes
+       "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
-       "= true"                 // boolean
+       "= true"                 // Boolean
        "= null"                 // null value
     ```
 
--  Výrazy, které používají operátor porovnání (==,! =, > =, >, < =, <) <br/>
+-  Výrazy s operátory porovnání (==,! =, > =, >, < =, <) <br/>
     Příklady:
     ```
         "= $(/document/language) == 'en'"
@@ -73,7 +74,7 @@ Následují platné hodnoty výrazu:
         "= !true"
     ```
 
--   Výrazy, které používají číselné – operátor (+, -, \*, /, %) <br/>
+-   Výrazy, které používají číselné operátory (+, -, \*, /, %) <br/>
     Příklady: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -81,25 +82,25 @@ Následují platné hodnoty výrazu:
         "= $(/document/lengthInMeters) / 0.3049" // division
     ```
 
-Z důvodu vyhodnocení nepodporuje podmíněné dovednosti slouží pro menší transformace scénáře. Najdete v ukázce [dovednosti definice 4](#transformation-examples) příklad.
+Protože podmíněné dovednosti podporuje vyhodnocení, můžete ho ve scénářích menší transformace. Viz například [dovednosti definice 4](#transformation-example).
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 Vstupy jsou malá a velká písmena.
 
-| Vstupy      | Popis |
+| Vstup   | Popis |
 |-------------|-------------|
-| condition   | Tento vstup je [vyhodnotí pole](#evaluated-fields) , která představuje podmínku, která má vyhodnotit. Tato podmínka by se měl vyhodnotit logická hodnota (true nebo false).   <br/>  Příklady: <br/> "= true" <br/> "= $(/document/language) =="fr"" <br/> "= $(/ / stránkydokumentů/\*/language) == $(/ dokument/expectedLanguage)" <br/> |
-| whenTrue    | Tento vstup je [vyhodnotí pole](#evaluated-fields). Hodnota, která má vrátit, pokud je podmínka vyhodnocena na hodnotu true. Konstanty řetězců by měla být vrácena v ' ' uvozovky. <br/>Ukázkové hodnoty: <br/> "="smlouva""<br/>"= $(/ dokument/contractType)" <br/> "= $(/ / entitydokumentu/\*)" <br/> |
-| whenFalse   | Tento vstup je [vyhodnotí pole](#evaluated-fields). Hodnota k vrácení, pokud je podmínka vyhodnocena jako false.  <br/>Ukázkové hodnoty: <br/> "="smlouva""<br/>"= $(/ dokument/contractType)" <br/> "= $(/ / entitydokumentu/\*)" <br/>
+| condition   | Tento vstup je [vyhodnotí pole](#evaluated-fields) , která představuje podmínku, která má vyhodnotit. Tato podmínka by se měl vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $(/document/language) =="fr"" <br/> "= $(/ / stránkydokumentů/\*/language) == $(/ dokument/expectedLanguage)" <br/> |
+| whenTrue    | Tento vstup je [vyhodnotí pole](#evaluated-fields) , který představuje hodnotu vrátit, pokud je podmínka vyhodnocena *true*. Konstanty řetězců by měla být vrácena v jednoduchých uvozovkách ("a"). <br/>Ukázkové hodnoty: <br/> "="smlouva""<br/>"= $(/ dokument/contractType)" <br/> "= $(/ / entitydokumentu/\*)" <br/> |
+| whenFalse   | Tento vstup je [vyhodnotí pole](#evaluated-fields) , který představuje hodnotu vrátit, pokud je podmínka vyhodnocena *false*. <br/>Ukázkové hodnoty: <br/> "="smlouva""<br/>"= $(/ dokument/contractType)" <br/> "= $(/ / entitydokumentu/\*)" <br/>
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
-Existuje jeden výstup nazvaný "výstupní". Vrátí hodnotu whenFalse Pokud podmínka není splněna nebo whenTrue Pokud je podmínka pravdivá.
+Existuje jeden výstup, který se nazývá "výstupní". Vrátí hodnotu *whenFalse* Pokud podmínka není splněna nebo *whenTrue* Pokud je podmínka pravdivá.
 
 ## <a name="examples"></a>Příklady
 
-### <a name="sample-skill-definition-1-filtering-documents-to-return-only-french-documents"></a>Ukázková definice dovednosti 1: Filtrování dokumenty, které se vrátí jenom "Francouzské" dokumenty
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Ukázková definice dovednosti 1: Filtrovat dokumenty, které se vrátí jenom francouzské dokumenty
 
-Vrátí následující výstup pole vět ("/ dokument/frenchSentences"), pokud je jazyk dokumentu francouzština. Pokud jazyk není francouzské, tato hodnota se nastaví na hodnotu null.
+Následující výstup vrátí pole vět ("/ dokument/frenchSentences"), pokud z jazyka dokumentu je francouzština. Pokud jazyk není francouzština, hodnota nastavená na *null*.
 
 ```json
 {
@@ -113,12 +114,12 @@ Vrátí následující výstup pole vět ("/ dokument/frenchSentences"), pokud j
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-Pokud "/ dokument/frenchSentences" slouží jako *kontextu* Další dovednosti, dovednosti, se spustí jenom v případě "/ dokument/frenchSentences" není nastaven na hodnotu null
+Pokud "/ dokument/frenchSentences" slouží jako *kontextu* Další dovednosti, dovednosti, spustí jenom v případě "/ dokument/frenchSentences" není nastavená na *null*.
 
 
-### <a name="sample-skill-definition-2-setting-a-default-value-when-it-does-not-exist"></a>Ukázková definice dovednosti 2: Nastavení výchozí hodnoty, pokud neexistuje.
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Ukázková definice dovednosti 2: Nastavení výchozí hodnoty na hodnotu, která neexistuje.
 
-Poznámka ("/ dokument/languageWithDefault"), který je nastaven jazyk dokumentu nebo "es" Pokud jazyk není nastaven se vytvoří následující výstup.
+Vytvoří následující výstup poznámku ("/ dokument/languageWithDefault"), který je nastaven na jazykovou verzi dokumentu nebo "es", pokud jazyk není nastaven.
 
 ```json
 {
@@ -133,9 +134,9 @@ Poznámka ("/ dokument/languageWithDefault"), který je nastaven jazyk dokumentu
 }
 ```
 
-### <a name="sample-skill-definition-3-merging-values-from-two-different-fields-into-a-single-field"></a>Ukázková definice dovednosti 3: Slučování hodnoty ze dvou různých polí do jednoho pole
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Ukázková definice dovednosti 3: Hodnoty ze dvou polí sloučit do větve
 
-V tomto příkladu jste některé věty *frenchSentiment* vlastnost. Pokaždé, když *frenchSentiment* vlastnost má hodnotu null, rádi bychom se použít *englishSentiment* hodnotu. Člen s názvem jednoduše jsme přiřadit výstup *mínění* ("/ dokumentu/mínění / * / mínění").
+V tomto příkladu jste některé věty *frenchSentiment* vlastnost. Pokaždé, když *frenchSentiment* vlastnost má hodnotu null, chceme použít *englishSentiment* hodnotu. Jsme přiřaďte výstup k člena, který se nazývá *mínění* ("/ dokumentu/mínění / * / mínění").
 
 ```json
 {
@@ -150,12 +151,12 @@ V tomto příkladu jste některé věty *frenchSentiment* vlastnost. Pokaždé, 
 }
 ```
 
-## <a name="transformation-examples"></a>Příklady transformace
-### <a name="sample-skill-definition-4-performing-data-transformations-on-a-single-field"></a>Ukázková definice dovednosti 4: Provedení transformace dat na jednom poli
+## <a name="transformation-example"></a>Příklad transformace
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Ukázková definice dovednosti 4: Transformace dat na jednom poli
 
-V tomto příkladu státem mínění 0 až 1 a rádi bychom se transformovat tak, aby se mezi -1 a 1. Toto je malý matematické transformace, že můžeme udělat pomocí podmíněného dovedností.
+V tomto příkladu, státem *mínění* , která je od 0 do 1. Chcete transformovat být v rozmezí od -1 a 1. Můžeme použít podmíněný dovednosti provádět tento dílčí transformaci.
 
-V tomto konkrétním příkladu jsme nikdy nepoužívejte podmíněné aspekt dovednosti jako podmínka má vždycky hodnotu true. 
+V tomto příkladu nebudeme používat podmíněný aspekt dovednosti podmínka má vždycky *true*.
 
 ```json
 {
@@ -170,9 +171,8 @@ V tomto konkrétním příkladu jsme nikdy nepoužívejte podmíněné aspekt do
 }
 ```
 
-
 ## <a name="special-considerations"></a>Zvláštní upozornění
-Proto budete muset pečlivě zejména následující vzor dokument, mějte na paměti, že některé parametry jsou vyhodnocovány. Výrazy musí začínat znakem se rovná znak "=" a cesty musí být odděleny "$(" and ")". Ujistěte se, že do vašeho řetězce v 'jednoduché uvozovky' jako chyba při vyhodnocování rozlišovat mezi řetězci a operátory a skutečné cesty, která vám pomůže. Také, ujistěte se, že vložit mezery kolem operátorů (například * v cestě obsahuje jiný význam než operátor násobení).
+Některé parametry jsou vyhodnocovány, proto musíte pečlivě zejména zdokumentovaných tvar. Výrazy musí začínat symbolem rovná. Cesta musí být odděleny "$(" and ")". Ujistěte se, že do řetězce v jednoduchých uvozovkách. To pomáhá Chyba při vyhodnocování rozlišovat mezi řetězci a operátory a skutečné cesty. Také, ujistěte se, že vložit mezery kolem operátorů (například "*" v cestě znamená něco jiného než multiply).
 
 
 ## <a name="next-steps"></a>Další postup

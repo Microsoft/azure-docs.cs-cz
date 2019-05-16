@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2be8455a3fb0a60cea056e9bda1f41b076dfec9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d1a8afdbad1878f4ce134edeeb95dad79e98a1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350751"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784817"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 
@@ -45,7 +45,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Odchozí připojení ke koncovým bodům služby Azure
 
- Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud odchozího připojení je blokováno pomocí bran firewall, ujistěte se, že ve výchozím nastavení nejsou blokované následující adresy URL. Nezakazujte monitorování zabezpečení nebo kontrola z těchto adres URL, ale mohly, stejně jako ostatní internetový provoz. Umožňují komunikaci s koncovými body služby Azure AD Connect Health. Další informace o [kontrole odchozího připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud odchozího připojení je blokováno pomocí bran firewall, ujistěte se, že ve výchozím nastavení nejsou blokované následující adresy URL. Nezakazujte monitorování zabezpečení nebo kontrola z těchto adres URL, ale mohly, stejně jako ostatní internetový provoz. Umožňují komunikaci s koncovými body služby Azure AD Connect Health. Zjistěte, jak [kontrole odchozího připojení s Test-AzureADConnectHealthConnectivity](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
 
 | Doménové prostředí | Požadované koncové body služby Azure |
 | --- | --- |

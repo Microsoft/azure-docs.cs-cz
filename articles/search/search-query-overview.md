@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 7ed675e4c6988cf4c1340613323440de55a36843
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024472"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595980"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
@@ -122,7 +122,7 @@ Služba Azure Search podporuje širokou škálu typů dotazů.
 | Filtrované vyhledávání | [Výraz filtru OData](query-odata-filter-orderby-syntax.md) a buď analyzátoru | Filtrování vyhodnotí logický výraz napříč všemi *filterable* polí v indexu. Na rozdíl od vyhledávání odpovídá filtru dotazu přesný obsah pole, včetně rozlišování na pole řetězců. Další rozdíl je, že filtrovací dotazy jsou vyjádřeny syntaxe OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
 | Geografické vyhledávání | [Typu Edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) na pole, výraz filtru a buď analyzátoru | Souřadnice, které jsou uloženy v poli s Edm.GeographyPoint se používá pro "najít poblíž" nebo mapovou hledat ovládací prvky. <br/>[Příklad geografické vyhledávání](search-query-simple-examples.md#example-5-geo-search)|
 | Oblast hledání | výraz filtru a jednoduchý analyzátor | Ve službě Azure Search se vytvářejí dotazy na rozsah, pomocí parametru filtru. <br/>[Příklad filtr rozsahu](search-query-simple-examples.md#example-4-range-filters) | 
-| [Uvnitř pole filtrování](query-lucene-syntax.md#bkmk_fields) | Parametr hledání a úplné analyzátoru | Sestavte výraz složeného dotazu cílí na jedno pole. <br/>[Příklad uvnitř pole filtrování](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [Fielded vyhledávání](query-lucene-syntax.md#bkmk_fields) | Parametr hledání a úplné analyzátoru | Sestavte výraz složeného dotazu cílí na jedno pole. <br/>[Příklad fielded prohledávání](search-query-lucene-examples.md#example-2-fielded-search) |
 | [vyhledávání přibližných shod](query-lucene-syntax.md#bkmk_fuzzy) | Parametr hledání a úplné analyzátoru | Odpovídá na podmínky mají podobné konstrukce nebo pravopis. <br/>[Příklad vyhledávání přibližných shod](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [vyhledávání blízkých výrazů](query-lucene-syntax.md#bkmk_proximity) | Parametr hledání a úplné analyzátoru | Najde podmínky, které jsou blízko sebe v dokumentu. <br/>[Příklad vyhledávání blízkých výrazů](search-query-lucene-examples.md#example-4-proximity-search) |
 | [zvýšení skóre termínu](query-lucene-syntax.md#bkmk_termboost) | Parametr hledání a úplné analyzátoru | Určuje pořadí vyšší dokumentu obsahuje Posílený termín relativně k ostatním, které ji nemají. <br/>[Příklad zvýšení skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |

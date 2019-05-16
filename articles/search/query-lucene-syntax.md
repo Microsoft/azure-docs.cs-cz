@@ -4,7 +4,7 @@ description: Referenční informace pro úplnou syntaxi Lucene, jako používá 
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/13/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024227"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596578"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Syntaxe dotazů Lucene ve službě Azure Search
 Můžete psát dotazy ve službě Azure Search založený na získáte bohaté [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) syntaxe pro formuláře specializovaném dotazovacím: zástupný znak, vyhledávání přibližných shod, vyhledávání blízkých výrazů regulární výrazy je pár příkladů. Velká část syntaxe analyzátor dotazů Lucene [Internet implementované ve službě Azure Search](search-lucene-query-architecture.md), s výjimkou produktů *rozsahu vyhledávání* které jsou vytvořeny ve službě Azure Search prostřednictvím `$filter` výrazy. 
@@ -121,16 +121,19 @@ Pomocí `searchMode=all` zvýší přesnost dotazy zahrnutím méně výsledků 
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> Vyhodnocování dotazy se zástupnými znaky a regulární výraz
  Služba Azure Search používá na základě frekvence vyhodnocování ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) pro text dotazy. Zástupný znak a regulární výraz dotazů, kde obor podmínek může být potenciálně široké, je však faktor frekvence zabránit pořadí z usměrnění údajů vůči shody od vzácnějších podmínek ignorován. Ve shodách se zachází stejně pro zástupný znak a regulární výraz hledání.
 
-##  <a name="bkmk_fields"></a> Dotazy v rámci pole  
- Můžete zadat `fieldname:searchterm` konstrukce k definování operace fielded dotazu, kde je pole jednoho slova, a hledaný termín je také jedno slovo nebo slovní spojení, volitelně s logickými operátory. Mezi příklady patří následující:  
+##  <a name="bkmk_fields"></a> Fielded vyhledávání  
+Můžete definovat fielded vyhledávací operace s `fieldName:searchExpression` syntaxi, kde hledaný výraz může být jedno slovo nebo frázi nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:  
 
 - rozšířením podle tematických: jazz není historie  
 
 - vašim animátorům: ("mil Davis" "Jan Coltrane")
 
-  Je potřeba umístit více řetězce v uvozovkách, pokud chcete obou řetězců má být vyhodnocen jako jedna entita v tomto případě hledání dvě odlišné umělci v `artists` pole.  
+Je potřeba umístit více řetězce v uvozovkách, pokud chcete obou řetězců má být vyhodnocen jako jedna entita v tomto případě hledání dvě odlišné umělci v `artists` pole.  
 
-  V zadané pole `fieldname:searchterm` musí být `searchable` pole.  Zobrazit [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.  
+V zadané pole `fieldName:searchExpression` musí být `searchable` pole.  Zobrazit [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.  
+
+> [!NOTE]
+> Při použití fielded hledaných výrazů, není potřeba použít `searchFields` parametr, protože každý fielded hledaný výraz má název pole explicitně zadán. Ale můžete pořád použít `searchFields` parametr, pokud chcete spustit dotaz, kde některé části oborem pro určité pole a ostatní můžou použít pro několik polí. Například dotaz `search=genre:jazz NOT history&searchFields=description` odpovídají `jazz` pouze `genre` pole, přestože by měl odpovídat `NOT history` s `description` pole. Název pole, které jsou součástí `fieldName:searchExpression` vždy má přednost před `searchFields` parametr, což je důvod, proč se v tomto příkladu jsme není nutné zahrnout `genre` v `searchFields` parametru.
 
 ##  <a name="bkmk_fuzzy"></a> vyhledávání přibližných shod  
  Přibližné vyhledávání vyhledá odpovídající položky v podmínkách, které mají podobné konstrukce. Za [Lucene dokumentaci](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), vyhledávání přibližných shod, které jsou založeny na [Damerau Levenshtein vzdálenost](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Přibližné vyhledávání můžete rozšířit na dobu maximálně 50 podmínky, které splňují kritéria vzdálenost. 

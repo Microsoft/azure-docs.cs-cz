@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d508ce217e3a97b3399435cb63295eb28965359a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093960"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605601"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Čas příjem dat protokolu ve službě Azure Monitor
 Azure Monitor je služba vysokou škálovatelností dat, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data protokolu k dispozici po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
@@ -104,7 +104,7 @@ Heartbeat
 | render timechart  
 ```
  
-Chcete-li zobrazit čas ingestování počítače podle země, že se nacházejí ve které je na základě jejich IP adresy použijte tento dotaz: 
+Chcete-li zobrazit čas ingestování počítače podle země nebo oblasti, že se nacházejí ve které je na základě jejich IP adresy použijte tento dotaz: 
 
 ``` Kusto
 Heartbeat 

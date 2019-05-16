@@ -90,4 +90,4 @@ sections:
         className: cardsD
         items:
           - title: Rozhraní API
-            html: '<p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">Rozhraní API služby QnA Maker</a></p>'
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092179">Rozhraní API služby QnA Maker</a></p>'

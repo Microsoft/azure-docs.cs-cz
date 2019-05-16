@@ -5,15 +5,15 @@ metadata:
   title: 'Dokumentace k rozhraní API Bingu pro vyhledávání entit – kurzy, šablony rychlá zprovoznění, reference k rozhraní API | Microsoft Docs'
   description: 'Naučte se používat rozhraní API Bingu pro vyhledávání entit k získání informací o lidech, místech nebo dalších definovaných subjektech. Kurzy vysvětlují, jak vytvářet aplikace, které tuto službu používají.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/01/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: 'Rozhraní API Bingu pro vyhledávání entit umožňuje vašim aplikacím získávat informace o entitách detekovaných ve vyhledávacích dotazech. Entitami mohou být lidé, místa, mediální tituly atd.'
 sections:

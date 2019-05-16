@@ -16,11 +16,11 @@ ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0fbc4dd9ea596f32c0cd38ba04ccba5619207fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280375"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Kurz: Integrace Azure Active Directory s Factiva Jones dolů
 
@@ -178,7 +178,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v Factiva Jones dolů. Práce s [tým podpory Přesu Jones Factiva](https://www.dowjones.com/contact/) přidat uživatele na platformě Factiva Jones dolů. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

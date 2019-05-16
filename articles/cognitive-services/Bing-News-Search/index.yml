@@ -6,15 +6,15 @@ metadata:
   title: 'Dokumentace k rozhraní API Bingu pro vyhledávání zpráv – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs'
   description: 'Projděte si, jak použít rozhraní API pro vyhledávání zpráv Bingu k vyhledávání zpráv na webu.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: Rozhraní API Bingu pro vyhledávání zpráv umožňuje využívat kognitivní možnosti vyhledávání zpráv Bingu ve vaší aplikaci. Odesíláním vyhledávacích dotazů uživatelů s využitím těchto rozhraní API můžete získávat relevantní novinové články z více kategorií a zdrojů jako na bing.com/news.
 sections:

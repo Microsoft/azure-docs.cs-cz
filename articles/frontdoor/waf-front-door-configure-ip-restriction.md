@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 514c034c23eed3a87111331724f3a33104651a43
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: b129579916330a34a2a78d98f2c7653f129d3319
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514901"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523698"
 ---
 # <a name="configure-an-ip-restriction-rule-with-web-application-firewall-for-azure-front-door-preview"></a>Konfigurace pravidla omezení IP s firewallem webových aplikací pro Azure branou (Preview)
  Tento článek ukazuje, jak nakonfigurovat IP omezení pravidel firewallu webových aplikací (WAF) pro branou pomocí rozhraní příkazového řádku Azure, Azure Powershellu nebo Azure Resource Manageru šablony.
@@ -137,24 +137,24 @@ Install-Module -Name Az.FrontDoor
 Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření profilu branou](quickstart-create-front-door.md)
 
 ### <a name="define-ip-match-condition"></a>Definujte podmínku shody IP
-Použití [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) příkaz, který definuje podmínku shody IP. V následujícím příkladu nahraďte *ip adresa rozsahu 1*, *ip adresa rozsahu 2* s vlastní rozsah.
+Použití [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) příkaz, který definuje podmínku shody IP. V následujícím příkladu nahraďte *ip adresa rozsahu 1*, *ip adresa rozsahu 2* s vlastní rozsah.
 
 ```powershell
-  $IPMatchCondition = New-AzFrontDoorMatchConditionObject `
+  $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
     -MatchVariable  RemoteAddr `
     -OperatorProperty IPMatch `
     -MatchValue ["ip-address-range-1", "ip-address-range-2"]
 ```
 Vytvoření porovnání IP všechny podmínky pravidla
 ```powershell
-  $IPMatchALlCondition = New-AzFrontDoorMatchConditionObject `
+  $IPMatchALlCondition = New-AzFrontDoorWafMatchConditionObject `
     -MatchVariable  RemoteAddr `
     -OperatorProperty Any
     
 ```
 
 ### <a name="create-a-custom-ip-allow-rule"></a>Vytvořit vlastní pravidlo povolit IP
-   Použití [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject) příkaz Definovat akce a nastavit prioritu. V následujícím příkladu bude možné požadavky od klienta IP adresy, které se shodují se seznamem. 
+   Použití [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) příkaz Definovat akce a nastavit prioritu. V následujícím příkladu bude možné požadavky od klienta IP adresy, které se shodují se seznamem. 
 
 ```powershell
   $IPAllowRule = New-AzFrontDoorCustomRuleObject `
@@ -175,10 +175,10 @@ S nižší prioritou než předchozí IP pravidlo povolit vytvoří blok všechn
    ```
 
 ### <a name="configure-waf-policy"></a>Konfigurace zásad WAF
-Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. V dalším kroku nakonfigurujte zásady WAF s pravidlem bloku IP pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/Az.FrontDoor/New-AzFrontDoorFireWallPolicy).
+Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzResourceGroup`. V dalším kroku nakonfigurujte zásady WAF s pravidlem bloku IP pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell
-  $IPAllowPolicyExamplePS = New-AzFrontDoorFireWallPolicy `
+  $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `
     -Name "IPRestrictionExamplePS" `
     -resourceGroupName <resource-group-name> `
     -Customrule $IPAllowRule $IPBlockAll `

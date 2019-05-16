@@ -2,20 +2,20 @@
 title: Zpráva k vydání verze Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o nové funkce a vylepšení ve službě Azure SQL Database a v dokumentaci k Azure SQL Database
 services: sql-database
-author: CarlRabeler
+author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.author: carlrab
-ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 05/15/2019
+ms.author: sstein
+ms.openlocfilehash: d527c4fed9c43e62d815078c049d4d8e6f8a46b7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406587"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787721"
 ---
 # <a name="sql-database-release-notes"></a>Zpráva k vydání verze SQL Database
 
@@ -25,27 +25,26 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Funkce | Podrobnosti |
 | ---| --- |
+| Obnovení databáze akcelerovanými pomocí izolovaných databází a elastických fondů | Informace najdete v tématu [zapnuto zrychlené obnovení databáze](sql-database-accelerated-database-recovery.md).|
+|Přibližný počet jedinečných|Informace najdete v tématu [přibližné Count Distinct](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
+|Režim služby batch na Rowstore (pod úroveň kompatibility 150)|Informace najdete v tématu [režimu služby Batch na Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
+| Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a SQL Data Warehouse zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md).|
+| Elastické úlohy databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md). |
+| Elastické dotazy | Informace najdete v tématu [elastický dotaz přehled](sql-database-elastic-query-overview.md). |
+| Elastické transakce | [Distribuované transakce v cloudových databázích](sql-database-elastic-transactions-overview.md). |
+| Kolací instance s spravované instance |Informace najdete v tématu [vytvoření spravované instance Azure SQL Database pomocí Powershellu pomocí šablony Azure Resource Manageru](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
+|Paměť zpětnou vazbu přidělení (řádek v režimu) (pod úroveň kompatibility 150)|Informace najdete v tématu [zpětnou vazbu přidělení paměti (řádek v režimu)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
+| Editor dotazů na webu Azure Portal |Informace najdete v tématu [připojení a dotazování dat pomocí editoru dotazů SQL webu Azure portal](sql-database-connect-query-portal.md).|
+| R services / machine learning s izolovaných databází a elastických fondů |Informace najdete v tématu [služby Machine Learning v Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
+| Znovu vytvořte vynechaných databází s spravované instance |Informace najdete v tématu [znovu vytvořit vyřadit databází ve spravované instanci SQL Azure](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266).|
+| Replikace se spravované instance |Informace najdete v tématu [konfigurace replikace databáze spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md).|
 | Bezserverová výpočetní úroveň | Informace najdete v tématu [bez serveru SQL Database (preview)](sql-database-serverless.md).|
-| Elastické úlohy databáze | Informace najdete v tématu [vytvoření, konfigurace a správa elastických úloh](elastic-jobs-overview.md) |
-| Elastické transakce | [Distribuované transakce v cloudových databázích](sql-database-elastic-transactions-overview.md) |
-| Elastické dotazy | Informace najdete v tématu [přehled elastického dotazu](sql-database-elastic-query-overview.md) |
-| Replikace se spravované instance |Informace najdete v tématu [konfigurace replikace databáze spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md)|
-| Kolací instance s spravované instance |Informace najdete v tématu [pomocí šablony Azure Resource Manageru k vytvoření spravované instance Azure SQL Database pomocí Powershellu](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
-| R services / machine learning s izolovaných databází a elastických fondů |Informace najdete v tématu [služby Machine Learning v Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)|
-| Obnovení databáze akcelerovanými pomocí izolovaných databází a elastických fondů | Informace najdete v tématu [zapnuto zrychlené obnovení databáze](sql-database-accelerated-database-recovery.md)|
-| Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a SQL Data Warehouse zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md)|
-| Transparentní šifrování dat (TDE) s přenést Your Own Key (BYOK) pomocí spravované instance |Informace najdete v tématu [Azure SQL transparentního šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault: Your Own Key podpoře](transparent-data-encryption-byok-azure-sql.md)|
-| Znovu vytvořte vynechaných databází s spravované instance |Informace najdete v tématu [znovu vytvořit vyřadit databází ve spravované instanci SQL Azure](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)|
-| Detekce hrozeb spravované instance |Informace najdete v tématu [konfigurovat detekce hrozeb ve službě Azure SQL Database managed instance](sql-database-managed-instance-threat-detection.md)|
-| Úrovně služeb Hyperškálovatelného u izolovaných databází |Informace najdete v tématu [Hyperškálovatelného vrstvy služby pro až 100 TB](sql-database-service-tier-hyperscale.md)|
-| Editor dotazů na webu Azure Portal |Informace najdete v tématu [připojení a dotazování dat pomocí editoru dotazů SQL webu Azure portal](sql-database-connect-query-portal.md)|
-|Přibližný počet jedinečných|Informace najdete v tématu [přibližné Count Distinct](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)|
-|Režim služby batch na Rowstore (pod úroveň kompatibility 150)|Informace najdete v tématu [režimu služby Batch na Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
-|Paměť zpětnou vazbu přidělení (řádek v režimu) (pod úroveň kompatibility 150)|Informace najdete v tématu [zpětnou vazbu přidělení paměti (řádek režim)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
-|Tabulka proměnných odložené kompilace (pod úroveň kompatibility 150)|Informace najdete v tématu [kompilace odložené proměnné tabulky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
-|SQL Analytics|Informace najdete v tématu [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
-| Podpora časové pásmo pro spravované instance|Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md)|
-|||
+|SQL Analytics|Informace najdete v tématu [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
+|Tabulka proměnných odložené kompilace (pod úroveň kompatibility 150)|Informace najdete v tématu [kompilace odložené proměnné tabulky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
+| Detekce hrozeb spravované instance |Informace najdete v tématu [konfigurovat detekce hrozeb ve službě Azure SQL Database managed instance](sql-database-managed-instance-threat-detection.md).|
+| Podpora časové pásmo pro spravované instance|Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md).|
+| Transparentní šifrování dat (TDE) s přenést Your Own Key (BYOK) pomocí spravované instance |Informace najdete v tématu [Azure SQL transparentního šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault: Your Own Key podpoře](transparent-data-encryption-byok-azure-sql.md).|
+| &nbsp; |
 
 ## <a name="may-2019"></a>. Května 2019.
 
@@ -53,9 +52,18 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|Hyperškálování úrovně služby| Další informace najdete v tématu [Hyperškálovatelného vrstvy služby pro až 100 TB](sql-database-service-tier-hyperscale.md).|
-|Bezserverová výpočetní úroveň| Další informace najdete v tématu [bez serveru SQL Database (preview)](sql-database-serverless.md).|
+|Úroveň služby Hyperškálovatelného dočkalo všeobecné dostupnosti| Další informace najdete v tématu [Hyperškálovatelného vrstvy služby pro až 100 TB](sql-database-service-tier-hyperscale.md) a [získejte výkonné škálování úloh Azure database s Hyperškálováním](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/).|
+|Úroveň výpočetní prostředí vydané ve veřejné verzi preview | Další informace najdete v tématu [bez serveru SQL Database (preview)](sql-database-serverless.md).|
+| Pro databáze pomocí nákupní model založený na virtuálních jádrech zvýšit rychlost protokol transakcí a cíl vstupně-výstupních operací| Další informace najdete v tématu [prostředků omezuje pro izolované databáze pomocí nákupní model založený na virtuálních jádrech](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) a [prostředků omezuje pro izolované databáze pomocí nákupní model založený na DTU](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases).
+| &nbsp; |
 
+### <a name="documentation-improvements"></a>Dokumentace k vylepšení
+
+| Dokumentace k vylepšení | Podrobnosti |
+| --- | --- |
+| Velkokapacitní služby úrovně dokumentace aktualizované verze GA| Další informace najdete v tématu [Hyperškálovatelného vrstvy služby pro až 100 TB](sql-database-service-tier-hyperscale.md).|
+|Dokumentace úroveň výpočetní prostředí vydané s verzí public preview| Další informace najdete v tématu [bez serveru SQL Database (preview)](sql-database-serverless.md).|
+| &nbsp; |
 
 ## <a name="april-2019"></a>2019. dubna
 
@@ -63,15 +71,18 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| Veřejné koncové body pro spravovanou instanci | Další informace najdete v tématu [pomocí Azure SQL Database managed instance bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md)
-| Podpora časové pásmo pro spravovanou instanci | Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance (Preview)](sql-database-managed-instance-timezone.md)
+| Veřejné koncové body pro spravovanou instanci ve verzi public preview| Další informace najdete v tématu [pomocí Azure SQL Database managed instance bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md).|
+| Podpora časové pásmo pro managed instance ve verzi public preview| Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md).|
+| Zabezpečení databází Azure SQL Database pomocí spravované identity ve veřejné verzi preview druhé vydání| Zobrazit [zabezpečení databází Azure SQL Database pomocí spravované identity zjednodušila](https://azure.microsoft.com/blog/securing-azure-sql-databases-with-managed-identities-just-got-easier/).|
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
-| Veřejné koncové body pro spravovanou instanci | Další informace najdete v tématu [pomocí Azure SQL Database managed instance bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md)
-| Podpora časové pásmo pro spravovanou instanci | Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance (Preview)](sql-database-managed-instance-timezone.md)
+| Veřejné koncové body pro spravovanou instanci ve verzi public preview| Další informace najdete v tématu [pomocí Azure SQL Database managed instance bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md).|
+| Podpora časové pásmo pro managed instance ve verzi public preview| Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md). |
+| Zásady správného řízení prostředků ve službě Azure SQL Database | Další informace najdete v tématu [zásady správného řízení prostředků ve službě Azure SQL Database](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/). || &nbsp; |
 
 ## <a name="march-2019"></a>2019. března
 
@@ -79,14 +90,13 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| Všeobecná dostupnost: Podpora škálování čtení pro Azure SQL Database | Další informace najdete v tématu [horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md)|
+| Podpora škálování pro čtení pro službu Azure SQL Database se dočkalo všeobecné dostupnosti | Další informace najdete v tématu [horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md).|
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
-| Podpora časové pásmo pro spravované instance|Další informace najdete v tématu [časové pásmo v Azure SQL Database Managed Instance](sql-database-managed-instance-timezone.md)|
 | Přidání protokolu limity pro izolované databáze|Další informace najdete v tématu [jedno omezení prostředků vCore databáze](sql-database-vcore-resource-limits-single-databases.md).|
 | Přidání protokolu limity pro elastické fondy a databáze ve fondu|Další informace najdete v tématu [vCore prostředků omezení Elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).|
 | Přidání transakce protokolu míra zásad správného řízení| Přidat nový obsah pro [transakční protokol míra zásad správného řízení](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|
@@ -102,7 +112,7 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 |Vytváření obnovitelného indexu online je teď obecně dostupná| Další informace najdete v tématu [Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql).|
 |Spravovaná instance podporu pro směrovací tabulky vylepšené| Další informace najdete v tématu [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
 |Přejmenování databáze nepodporuje spravované instance | Další podrobnosti najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) a [proceduru sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) syntaxe.|
-|Databáze SQL jako zdroje referenčních dat pro Stream Analytics. | Další informace najdete v tématu [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
+|Databáze SQL jako zdroje referenčních dat pro Stream Analytics. | Další informace najdete v tématu [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) a [Azure Stream Analytics teď podporuje Azure SQL Database jako referenčního datového vstupu](https://azure.microsoft.com/blog/azure-stream-analytics-now-supports-azure-sql-database-as-reference-data-input/).|
 |Data Migration Assistant přidává podporu pro spravovanou instanci. |Další informace najdete v tématu [co je nového v DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew).|
 |SQL Server Pomocníka s migrací přidává podporu pro vyhodnocení připravenosti na cíl pro spravovanou instanci. | Další informace najdete v tématu [SQL Server Pomocníka s migrací](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
 |Služby dat migrace podporuje migraci z Amazon vzdálené plochy do spravované instance | Další informace najdete v tématu [kurzu: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
@@ -116,7 +126,6 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 |Aktualizace databáze tempdb velikosti nákupní model založený na DTU | Další informace najdete v tématu [databáze Tempdb ve službě SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 |Aktualizované import a export souboru bacpac pro podporu spravované instance| Další informace najdete v tématu [importovat ze souboru BACPAC](sql-database-import.md) a [exportovat do souboru BACPAC](sql-database-export.md). |
 | &nbsp; |
-
 
 ## <a name="january-2019"></a>2019. ledna
 
@@ -133,12 +142,12 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
-| Spravované instance a transakční replikace | Přidání článku o používání [transakční replikace s spravované instance](replication-with-sql-database-managed-instance.md) |
+| Spravované instance a transakční replikace | Přidání článku o používání [transakční replikace s spravované instance](replication-with-sql-database-managed-instance.md). |
 | Přidání služby Azure AD s kurzem spravované instance | To [Azure AD s spravovanou instanci](sql-database-managed-instance-aad-security-tutorial.md) kurzu se dozvíte budete muset nakonfigurovat a otestovat managed instance zabezpečení pomocí přihlášení Azure AD. |
-| Aktualizovaný obsah pro automatizaci úloh pomocí skriptů příkazů jazyka Transact-SQL | Aktualizovat a vyjasnění obsah pro používání [úlohy automatizace s použitím příkazů jazyka Transact-SQL skriptů](sql-database-job-automation-overview.md) pro izolované databáze, elastické fondy a spravované instance |
-| Zabezpečení obsahu pro aktualizaci spravované instance | Aktualizovat a vyjasnění obsah [model zabezpečení pro spravované instance](sql-database-security-overview.md)a kontrastní pomocí model zabezpečení pro izolované databáze a elastické fondy |
-| Aktualizovat všechny rychlých startů a kurzů | Všechny rychlých startů a kurzů v [dokumentaci](https://docs.microsoft.com/azure/sql-database) byly aktualizovány a jsme aktualizovali tak, že se shodují se změnami na webu Azure Portal |
-| Přehled příručky přidání rychlý start | Přidání úvodní Přehled příručky pro [izolované databáze](sql-database-quickstart-guide.md) a [spravované instance](sql-database-managed-instance-quickstart-guide.md) |
+| Aktualizovaný obsah pro automatizaci úloh pomocí skriptů příkazů jazyka Transact-SQL | Aktualizovat a vyjasnění obsah pro používání [úlohy automatizace s použitím příkazů jazyka Transact-SQL skriptů](sql-database-job-automation-overview.md) pro izolované databáze, elastické fondy a spravované instance. |
+| Zabezpečení obsahu pro aktualizaci spravované instance | Aktualizovat a vyjasnění obsah [model zabezpečení pro spravované instance](sql-database-security-overview.md)a kontrastní pomocí model zabezpečení pro izolované databáze a elastické fondy. |
+| Aktualizovat všechny rychlých startů a kurzů | Všechny rychlých startů a kurzů v [dokumentaci](https://docs.microsoft.com/azure/sql-database) byly aktualizovány a jsme aktualizovali tak, že se shodují se změnami na webu Azure Portal. |
+| Přehled příručky přidání rychlý start | Přidání úvodní Přehled příručky pro [izolované databáze](sql-database-quickstart-guide.md) a [spravované instance](sql-database-managed-instance-quickstart-guide.md). |
 | Přidání databáze SQL Glosář termínů | To [termíny glosáře](sql-database-glossary-terms.md) článek obsahuje konečný seznam podmínek SQL Database a odkazy na primární konceptuální stránky, která vysvětluje výraz v kontextu. |
 | &nbsp; |
 

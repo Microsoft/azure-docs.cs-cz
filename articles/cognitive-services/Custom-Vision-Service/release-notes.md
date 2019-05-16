@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816383"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787952"
 ---
 # <a name="custom-vision-service-release-notes"></a>Zpráva k vydání verze služby Custom Vision
+
+## <a name="may-2-2019-and-may-10-2019"></a>2. května 2019 a 10. května 2019
+
+- Vylepšení opravy chyb a back-endu
+
+## <a name="may-23-2019"></a>23. května 2019
+
+- Vylepšené prostředí uživatelského rozhraní portálu související s předplatnými Azure, což usnadňuje výběr adresářům Azure.
+
+## <a name="april-18-2019"></a>18. dubna 2019 
+
+- Přidání objektu zjišťování export pro Dev Kit AI pro zpracování obrazu.
+- Vylepšení uživatelského rozhraní, včetně vyhledávání projektu.
+
+## <a name="april-3-2019"></a>3. dubna 2019
+
+- Zvýšení limitu počtu ohraničující polí na bitovou kopii do 200. 
+- Opravy chyb, včetně aktualizace značného výkonu pro modely exportovat do TensorFlow. 
 
 ## <a name="march-26-2019"></a>26. března 2019
 

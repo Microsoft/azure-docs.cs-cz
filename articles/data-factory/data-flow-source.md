@@ -1,103 +1,115 @@
 ---
-title: Azure Data Factory mapování transformace toku zdroje dat.
-description: Azure Data Factory mapování transformace toku zdroje dat.
+title: Nastavit zdroj transformace ve funkci mapování toku dat služby Azure Data Factory
+description: Zjistěte, jak nastavit zdroj transformace v mapování se předávají Data.
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: dc0a6e008c7a1f4fb414f6d8adad3a94abc7a6b2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369161"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792340"
 ---
-# <a name="mapping-data-flow-source-transformation"></a>Mapování datového toku zdroj transformace
+# <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Transformace zdrojového nakonfiguruje zdroje dat, který chcete použít k vložení dat do datového toku. V jedné toku dat může mít více než jedna transformace zdroje. Vždy začínají návrh vašich dat toky se transformace zdroje.
+Transformace zdrojového nakonfiguruje zdroje dat pro datový tok. Tok dat může obsahovat více než jeden zdroj transformace. Při návrhu datové toky, vždy začínají znakem transformace zdroje.
+
+Každý tok dat vyžaduje alespoň jeden zdroj transformace. Podle potřeby k dokončení transformace dat, přidejte libovolný počet zdrojů. Můžete připojit k těmto zdrojům společně s připojení k transformaci nebo union transformace.
 
 > [!NOTE]
-> Každý tok dat vyžaduje alespoň jeden zdroj transformace. Přidejte tolik další zdroje, potřebujete k dokončení transformace data. Můžete připojit k těmto zdrojům společně s spojení nebo Union transformace. Při ladění váš tok dat v ladicích relací budou číst data ze zdroje pomocí nastavení vzorkování nebo omezení ladění zdroje. Žádná data se však zapíšou do jímky, dokud neprovedete váš tok dat z aktivity toku dat kanálu. 
+> Při ladění váš tok dat je pro čtení data ze zdroje pomocí nastavení vzorkování nebo omezení ladění zdroje. Zapsat data do jímky, je nutné spustit váš tok dat z kanálu toku dat aktivit. 
 
-![Možnosti transformace zdroje](media/data-flow/source.png "zdroje")
+![Možnosti transformace na kartě Nastavení zdroje zdroje](media/data-flow/source.png "zdroje")
 
-Každá transformace toku dat zdroje musí být přidružená přesně jednu datovou sadu služby Data Factory. Datová sada definuje tvar a umístění dat k zápisu nebo čtení z. Můžete použít zástupné znaky a soubor seznamů ve zdroji pro práci s více než jeden soubor současně při použití souboru zdroje.
+Váš tok dat transformace zdroje přidružte přesně jednu datovou sadu služby Data Factory. Datová sada definuje tvar a umístění dat, které chcete zapisovat nebo číst z. Zástupné znaky a soubor seznamy můžete použít ve zdroji pro práci s více než jeden soubor současně.
 
-## <a name="data-flow-staging-areas"></a>Tok dat pracovní oblasti
+## <a name="data-flow-staging-areas"></a>Data toku pracovní oblasti
 
-Tok dat funguje s "staging" datových sad, které jsou v Azure. Tyto datové sady datového toku se používají pro pracovní postup transformace dat data. Data Factory má přístup k téměř 80 různé nativní konektory. Zahrnout data z těchto zdrojů do vašeho toku dat, nejprve připravte tato data do jednoho z těchto oblastí pracovní datové sady se předávají Data pomocí aktivity kopírování.
+Tok dat funguje s *pracovní* datových sad, které jsou v Azure. Pro přípravu, když jste transformace vašich dat použijte tyto datové sady. 
+
+Data Factory má přístup k téměř 80 nativní konektory. Pokud chcete zahrnout data z těchto zdrojů ve svém toku dat, připravit data v jednom z pracovní oblasti datového toku datovou sadu pomocí nástroje aktivitu kopírování.
 
 ## <a name="options"></a>Možnosti
 
+Výběr možností schématu a vzorkování pro vaše data.
+
 ### <a name="allow-schema-drift"></a>Povolit schématu odchylek
-Pokud zdrojové sloupce se změní často, vyberte Povolit odchylek schématu. Toto nastavení povolí všechna příchozí pole ze zdroje do toku prostřednictvím transformací pro jímku.
+Vyberte **povolit schématu odchylek** Pokud zdrojové sloupce se změní často. Toto nastavení povolí všechna příchozí zdrojového pole tok prostřednictvím transformací pro jímku.
 
 ### <a name="validate-schema"></a>Ověření schématu
 
-![Veřejný zdroj](media/data-flow/source1.png "veřejný zdroj 1")
+Pokud příchozí verze zdroje dat neodpovídá definované schéma, tok dat se nepodaří spustit.
 
-Pokud příchozí verze zdroje dat se neshoduje s definované schéma, se nezdaří spuštění toku dat.
+![Nastavení veřejného zdroje, zobrazující možnosti pro ověřením schématu, povolit schématu odchylek a vzorkování](media/data-flow/source1.png "veřejný zdroj 1")
 
-### <a name="sampling"></a>Vzorkování
-Pomocí vzorkování můžete omezit počet řádků ze zdroje.  To se hodí při testování nebo vzorkování dat ze zdroje pro účely ladění.
+### <a name="sample-the-data"></a>Ukázková data
+Povolit **vzorkování** omezit počet řádků ze zdroje. Toto nastavení použijte při testování nebo ukázková data ze zdroje pro účely ladění.
 
 ## <a name="define-schema"></a>Definovat schéma
 
-![Zdroj transformace](media/data-flow/source2.png "zdroje 2")
+Pokud zdrojové soubory nejsou silného typu (pro příklad, plochých souborů a nikoli soubory Parquet), definování typů dat pro každé pole tady v transformaci zdroje.  
 
-Pro typy zdrojových souborů, které nejsou silného typu (to znamená plochých souborů na rozdíl od soubory Parquet) byste měli definovat typy dat pro jednotlivá pole tady v transformaci zdroje. Následně můžete změnit názvy sloupců v vyberte transformaci a datové typy v transformaci odvozené sloupce. 
+![Transformace nastavení na kartě definovat schéma zdroje](media/data-flow/source2.png "zdroje 2")
 
-![Zdroj transformace](media/data-flow/source003.png "datové typy")
+Později můžete změnit názvy sloupců v vyberte transformaci. Ke změně datové typy, které použijte odvozené sloupce transformace. Pro silného typu zdroje můžete upravit datových typů v později vyberte transformace. 
 
-Pro silného typu zdroje můžete upravit datových typů v následných vyberte transformace. 
+![Datové typy v vyberte transformaci](media/data-flow/source003.png "datové typy")
 
-### <a name="optimize"></a>Optimalizace
+### <a name="optimize-the-source-transformation"></a>Optimalizace transformace zdroje
 
-![Zdrojové oddíly](media/data-flow/sourcepart.png "dělení")
+Na **optimalizace** kartu pro transformaci zdroj, může se zobrazit **zdroj** oddílu typu. Tato možnost je dostupná jenom v případě zdroje je Azure SQL Database. Je to proto, že Data Factory se pokusí navázat připojení paralelní spouštění velkých dotazů na databázi SQL zdroje.
 
-Na kartě optimalizovat pro transformaci zdroje se zobrazí další dělení typ nazývá "Zdroj". To bude pouze světla – až po dokončení výběru databáze Azure SQL jako zdroj. Je to proto ADF bude chtít paralelizovat připojení ke spuštění velkého dotazy na zdroje služby Azure SQL DB.
+![Nastavení oddílu zdroje](media/data-flow/sourcepart2.png "dělení")
 
-Dělení dat v databázi SQL zdroje je volitelný, ale je vhodné pro velké dotazy. Máte dvě možnosti:
+Nemáte k dělení dat v databázi SQL zdroje, ale jsou užitečné pro dotazy na velkých oddílů. Oddíl můžete založit na sloupec nebo dotazu.
 
-### <a name="column"></a>Sloupec
+### <a name="use-a-column-to-partition-data"></a>Použít sloupec k dělení dat
 
-Vyberte sloupec do oddílu na ze zdrojové tabulky. Musíte také nastavit maximální počet připojení.
+Ze zdrojové tabulky vyberte na sloupec, který oddíl. Také nastavte maximální počet připojení.
 
-### <a name="query-condition"></a>Podmínka dotazu
+### <a name="use-a-query-to-partition-data"></a>Použijte dotaz k dělení dat
 
-Volitelně můžete při vytváření oddílů připojení na základě dotazu. Pro tuto možnost stačí vložte obsah predikát WHERE. I.e. year > 1980
+Můžete při vytváření oddílů připojení na základě dotazu. Stačí zadáte obsah predikát WHERE. Zadejte například roku > 1980.
 
 ## <a name="source-file-management"></a>Správa zdrojového souboru
+
+Při volbě nastavení pro správu souborů ve zdroji. 
+
 ![Nová nastavení zdroje](media/data-flow/source2.png "nové nastavení")
 
-* Cesta se zástupným znakem vybrat řadu soubory ze zdrojové složky, které odpovídají vzoru. Tím se přepíše všech souborů, které jste nastavili v definici datové sady.
-* Seznam souborů. Stejné jako sady souborů. Přejděte do textového souboru, který vytvoříte seznam soubory relativní cestu ke zpracování.
-* Sloupce pro uložení názvu souboru uloží název souboru ze zdroje ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
-* Po dokončení (můžete zvolit Neprovádět žádnou akci se zdrojovým souborem po spuštění toku dat, zdrojový soubor odstranit nebo přesunout zdrojové soubory. Cesty pro přesunutí jsou relativní cesty.
+* **Cesta se zástupným znakem**: Ze zdrojové složky zvolte řadu soubory, které odpovídají vzoru. Toto nastavení potlačí všechny soubory v definici datové sady.
+* **Seznam souborů**: Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam souborů relativní cestu ke zpracování. Přejděte na tento textový soubor.
+* **Sloupce pro uložení názvu souboru**: Název zdrojového souboru Store ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
+* **Po dokončení**: Zvolte po data spouštění toků, odstranění souboru se zdrojovým nebo přesunutí zdrojového souboru se zdrojovým souborem neprovede žádnou akci. Jsou relativní cesty pro přesunutí.
 
 ### <a name="sql-datasets"></a>Datové sady SQL
 
-Pokud používáte Azure SQL Database nebo Azure SQL data Warehouse jako zdroj, budou mít další možnosti.
+Pokud je zdrojem v SQL Database nebo SQL Data Warehouse, máte další možnosti pro správu zdrojového souboru.
 
-* Dotaz: Zadejte dotaz SQL pro zdroj. Nastavení dotazu se přepíšou všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že se tady nepodporují klauzule Order By. Však můžete tady nastavíte, úplný příkaz SELECT FROM.
-
-* Velikost dávky: Zadejte velikost dávky k bloku dat velkých objemů dat do služby batch velikost čtení.
+* **Dotaz:** Zadejte dotaz SQL pro zdroj. Toto nastavení potlačí všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že **klauzule Order By** klauzule zde nejsou podporovány. Ale může tady nastavíte, úplný příkaz SELECT FROM.
+* **Velikost dávky**: Zadejte velikost dávky k bloku dat velkých objemů dat do operace čtení.
 
 > [!NOTE]
-> Operace nastavení soubor se spustí, jenom Pokud tok dat je spuštěn ze spuštění kanálu (ladění kanálu nebo spustit provádění) pomocí aktivity spustit tok dat v rámci kanálu. Operace se soubory se neprovedou v toku dat režimu ladění.
+> Operace se soubory spustit pouze v případě, že spuštění toku dat z kanálu (ladění kanálu nebo spustit provádění), která používá aktivitu spuštění toku dat v rámci kanálu. Operace se soubory *nejsou* spuštění v režimu ladění se předávají Data.
 
 ### <a name="projection"></a>Projekce
 
-![Projekce](media/data-flow/source3.png "projekce")
+Jako jsou schémata v datových sadách projekce ve zdroji definuje sloupce dat, typy a formáty ze zdrojových dat. 
 
-Podobně jako na schémata v datových sadách, projekce ve zdroji definuje sloupce dat, datové typy a formáty dat ze zdrojových dat. Pokud máte textový soubor s definované schéma, klikněte na tlačítko "Rozpoznat datový typ" požádat ADF pokusí ukázkový a odvodit datové typy. Můžete nastavit výchozí data formátů pro automatické rozpoznání pomocí tlačítka "Definovat výchozí formát". Můžete upravit datové typy sloupce v následné transformace odvozené sloupce. Názvy sloupců může být upraveno pomocí vyberte transformace.
+![Nastavení na kartě projekce](media/data-flow/source3.png "projekce")
 
-![Výchozí formáty](media/data-flow/source2.png "výchozí formáty")
+Pokud textový soubor nemá definované schéma, vyberte **rozpoznat datový typ** tak, aby se Data Factory ukázkový a odvodit datové typy. Vyberte **definovat výchozí formát** rozpozná výchozí data formátů. 
+
+Datové typy sloupce v odvozených sloupců transformaci dále můžete upravit. Vyberte transformace použijte k úpravě názvů sloupců.
+
+![Nastavení pro výchozí datových formátů](media/data-flow/source2.png "výchozí formáty")
 
 ## <a name="next-steps"></a>Další postup
 
-Začít sestavovat vaši jak transformovat data pomocí [odvozené sloupce](data-flow-derived-column.md) a [vyberte](data-flow-select.md).
+Zahájení sestavování [odvozené sloupce transformace](data-flow-derived-column.md) a [vyberte transformace](data-flow-select.md).

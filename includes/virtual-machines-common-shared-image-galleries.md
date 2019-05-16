@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192370"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546719"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Zadejte sdílený Galerie obrázků:
 
@@ -266,4 +266,4 @@ Pokud chcete nastavit společné počet replik v rozhraní příkazového řádk
 
 **Otázka:** Jaké verze rozhraní API použijte k vytvoření Galerie obrázků sdílené, definici Image, Image verze a VM/VMSS mimo verzi Image?
 
- A. Pro nasazení virtuálního počítače a Škálovací sady virtuálních počítačů používá verzi image, doporučujeme, abyste použili verzi 2018-04-01 rozhraní API nebo vyšší. Pro práci s galerií sdílené bitové kopie, definice image a image verze, doporučujeme že použít rozhraní API verze 2018-06-01. 
+ A. Pro nasazení virtuálního počítače a Škálovací sady virtuálních počítačů používá verzi image, doporučujeme, abyste použili verzi 2018-04-01 rozhraní API nebo vyšší. Pro práci s galerií sdílené bitové kopie, definice image a image verze, doporučujeme že použít rozhraní API verze 2018-06-01. Zónově redundantní úložiště (ZRS) vyžaduje verzi 2019-03-01 nebo novější.

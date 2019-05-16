@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/15/2019
 ms.author: celested
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75aa0f4755fe3d124094ace3c3e6b8e6ea3b65e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12c68a268b901f3525c2af9cd381dc277d6d8167
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441482"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65770896"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 
@@ -45,7 +45,7 @@ Následující tabulka shrnuje metody přihlašování a odkazy na další podro
 | [OpenID Connect a OAuth](#openid-connect-and-oauth) | Jen v cloudu | Při vývoji nových aplikací pomocí OpenID Connect a OAuth. Tento protokol zjednodušuje konfiguraci aplikací, má snadno použitelné sady SDK a umožňuje vaší aplikaci použít MS Graphu.
 | [SAML](#saml-sso) | cloudové a místní | Zvolte SAML, kdykoli je to možné pro existující aplikace, které nepoužívají OpenID Connect nebo OAuth. SAML funguje pro aplikace, které se ověřují pomocí jednoho z protokolů SAML.|
 | [Založené na heslech](#password-based-sso) | cloudové a místní | Zvolte založené na heslech, když se aplikace ověřuje pomocí uživatelského jména a hesla. Založené na heslech jednotné přihlašování umožňuje zabezpečené uložení hesel aplikace a jejich přehrání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Tato metoda používá existující přihlašovací proces poskytovaný aplikací, ale umožňuje správcům spravovat hesla. |
-| [Propojené](#linked-sso) | cloudové a místní | Zvolte propojené jednotného přihlašování, pokud je aplikace nakonfigurována pro jednotné přihlašování v jiné službě zprostředkovatele identity. Tato možnost nepřidá jednotné přihlašování k aplikaci. Aplikace může být však již jednotného přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services.|
+| [Propojené](#linked-sign-on) | cloudové a místní | Zvolte propojené přihlašování, pokud je aplikace nakonfigurována pro jednotné přihlašování v jiné službě zprostředkovatele identity. Tato možnost nepřidá jednotné přihlašování k aplikaci. Aplikace může být však již jednotného přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services.|
 | [Disabled](#disabled-sso) (Zakázáno) | cloudové a místní | Zvolte zakázané jednotného přihlašování, pokud aplikace není připraveno ke konfiguraci jednotného přihlašování. Uživatelé potřebují k zadání uživatelského jména a hesla při každém spuštění této aplikace.|
 | [Ověření integrované Windows (IWA)](#integrated-windows-authentication-iwa-sso) | jen místně | Zvolte IWA jednotného přihlašování pro aplikace, které používají [integrované ověřování Windows (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication), nebo s deklaracemi identity aplikace. Pro IWA konektory Proxy aplikací pomocí protokolu Kerberos omezené delegování (KCD) k ověřování uživatelů k aplikaci. | 
 | [Založené na hlavičkách](#header-based-sso) | jen místně | Použijte založeným na hlavičkách jednotného přihlašování, pokud aplikace používá hlavičky pro ověřování. Založené na hlavičkách jednotného přihlašování vyžaduje PingAccess pro Azure AD. Proxy aplikace ověřuje uživatele pomocí služby Azure AD a potom předává provoz přes službu konektoru.  | 
@@ -59,7 +59,7 @@ Další informace naleznete v tématu:
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Příručka pro Azure Active Directory vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>SAML SSO
+## <a name="saml-sso"></a>JEDNOTNÉ PŘIHLAŠOVÁNÍ SAML
 S **SAML jednotného přihlašování**, Azure AD ověří k aplikaci pomocí účtu uživatele Azure AD. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. S založené na SAML jednotného přihlašování můžete mapování uživatelů na konkrétní aplikační role na základě pravidel, které definujete váš SAML deklaracemi identity.
 
 Zvolte založené na SAML jednotného přihlašování, pokud aplikace podporuje.
@@ -122,12 +122,12 @@ Když koncový uživatel spravuje přihlašovací údaje:
 - Správci budou mít pořád povolený nastavit nové přihlašovací údaje pro aplikaci.
 
 
-## <a name="linked-sso"></a>Propojené jednotného přihlašování
+## <a name="linked-sign-on"></a>Propojené přihlašování
 Propojené přihlašování umožňuje Azure AD za účelem poskytování jednotného přihlašování k aplikaci, která už je nakonfigurovaný pro jednotné přihlašování v jiné službě. Propojené aplikace může zobrazit koncovým uživatelům na portálu Office 365 nebo portálu Azure AD MyApps. Uživatele můžete například spustit aplikaci, která je nakonfigurovaná pro jednotné přihlašování v Active Directory Federation Services 2.0 (AD FS) z portálu Office 365. Další vytváření sestav je také k dispozici pro propojené aplikace, které jsou spouštěny z portálu Office 365 nebo portálu Azure AD MyApps. 
 
-### <a name="linked-sso-for-application-migration"></a>Propojené jednotné přihlašování pro migraci aplikací
+### <a name="linked-sign-on-for-application-migration"></a>Propojené přihlašování pro migraci aplikací
 
-Propojené jednotného přihlašování může poskytovat konzistentní uživatelské prostředí při migraci aplikací po určitou dobu. Pokud se migrace aplikací do Azure Active Directory, můžete použít propojené jednotného přihlašování můžete rychle publikovat odkazy na všechny aplikace, kterou chcete migrovat.  Uživatelé mohou najít všechny odkazy [portálu MyApps](../user-help/active-directory-saas-access-panel-introduction.md) nebo [Spouštěče aplikací Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou vědět, že přistupuje propojené aplikace nebo migrované aplikace.  
+Propojené přihlašování umožňuje konzistentní uživatelské prostředí při migraci aplikací po určitou dobu. Pokud se migrace aplikací do Azure Active Directory, můžete použít propojené přihlašování můžete rychle publikovat odkazy na všechny aplikace, kterou chcete migrovat.  Uživatelé mohou najít všechny odkazy [portálu MyApps](../user-help/active-directory-saas-access-panel-introduction.md) nebo [Spouštěče aplikací Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou vědět, že přistupuje propojené aplikace nebo migrované aplikace.  
 
 Jakmile uživatel byl ověřen s propojených aplikací, je potřeba vytvořit předtím, než se koncovému uživateli poskytuje přístup pomocí jednotného přihlašování záznam účtu. Zřizování tento záznam účtu můžete buď automaticky provedou, nebo to může nastat, ručně správcem.
 

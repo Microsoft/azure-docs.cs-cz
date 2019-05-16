@@ -1,39 +1,32 @@
 ---
-title: 'Rychlý start: Zkoumání rozhraní REST API v nástroji Postman – Azure Search'
-description: Jak používat Postman k vydávání požadavků HTTP a rozhraní REST API volá do služby Azure Search.
+title: 'Rychlý start: Postman a rozhraní REST API – Azure Search'
+description: Zjistěte, jak volat rozhraní API REST Azure Search pomocí nástroje Postman a ukázková data a definice.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7db3292bc5f377d9728e42994dd3a437cb59958e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024815"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65758530"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Rychlý start: Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman
 > [!div class="op_single_selector"]
 > * [Postman](search-fiddler.md)
 > * [C#](search-create-index-dotnet.md)
+> * [Python](search-get-started-python.md)
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Jeden z nejjednodušších způsobů zkoumání [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) využívá Postman nebo jiný webový nástroj pro testování k formulování požadavků HTTP a zkontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
-
-> [!div class="checklist"]
-> * Stažení webového nástroje pro testování rozhraní API
-> * Získejte klíč a adresa URL pro vaši vyhledávací službu
-> * Připojení ke službě Azure Search
-> * Vytvoření indexu
-> * Načtení indexu
-> * Prohledání indexu
+Jeden z nejjednodušších způsobů zkoumání [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice) využívá Postman nebo jiný webový nástroj pro testování k formulování požadavků HTTP a zkontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete, a pak si [zaregistrujte službu Azure Search](search-create-service-portal.md).
 
@@ -41,9 +34,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tyto služby a nástroje se používají v tomto rychlém startu. 
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
 
-[Desktopová aplikace postman](https://www.getpostman.com/) nebo [Telerik Fiddler](https://www.telerik.com/fiddler) slouží k odesílání žádostí do služby Azure Search.
++ [Desktopová aplikace postman](https://www.getpostman.com/) nebo [Telerik Fiddler](https://www.telerik.com/fiddler) slouží k odesílání žádostí do služby Azure Search.
 
 ## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
@@ -61,15 +54,15 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
 
 V této části použijte nástroj web podle výběru nastavení připojení do služby Azure Search. Každý nástroj uchovává informace o této relaci, což znamená, že budete muset zadat klíč api-key a Content-Type jednou hlavičce žádosti.
 
-Pro kteréhokoli z těchto nástrojů můžete potřebovat zvolte příkazu (GET, POST, PUT a tak dále), zadejte koncový bod adresy URL a některé úlohy, poskytují JSON v textu požadavku. Úplná adresa URL vypadá nějak takto:
+Pro kteréhokoli z těchto nástrojů můžete potřebovat zvolte příkazu (GET, POST, PUT a tak dále), zadejte koncový bod adresy URL a některé úlohy, poskytují JSON v textu požadavku. Nahraďte název vyhledávací služby (YOUR-SEARCH-SERVICE-NAME) s platnou hodnotou. 
 
-    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06
 
 Všimněte si, že předpona HTTPS, název služby, název objektu (v tomto případě kolekci indexů) a [verze api-version](search-api-versions.md). Verze api-version je povinný, malá písmena řetězec zadán jako `?api-version=2019-05-06` pro aktuální verzi. Verze rozhraní API jsou pravidelně aktualizovány. Zahrnutím verze api-version v každé žádosti získáte úplnou kontrolu nad tím, která se použije.  
 
-Složení záhlaví požadavku obsahuje dva prvky, typu obsahu a klíč rozhraní api používá k ověření do služby Azure Search:
+Složení záhlaví požadavku obsahuje dva prvky, typu obsahu a klíč rozhraní api používá k ověření do služby Azure Search. Nahraďte platnou hodnotu klíče rozhraní API pro správu (YOUR-ADMIN-API-KEY). 
 
-    api-key: <placeholder-api-key-for-your-service>
+    api-key: <YOUR-ADMIN-API-KEY>
     Content-Type: application/json
 
 V nástroji Postman by zformulujte podobnou žádost, která vypadá jako na následujícím snímku obrazovky. Zvolte **získat** jako příkaz, zadejte adresu URL a klikněte na tlačítko **odeslat**. Tento příkaz se připojí k Azure Search, načte kolekci indexů a vrátí stavový kód HTTP 200 úspěšném připojení. Pokud vaše služba již má indexy, odpověď bude také obsahovat definice indexu.
@@ -78,16 +71,19 @@ V nástroji Postman by zformulujte podobnou žádost, která vypadá jako na ná
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Ve službě Azure Search obvykle vytvořit index před načtením s daty. [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) slouží rozhraní REST API pro tuto úlohu. 
+Ve službě Azure Search obvykle vytvořit index před načtením s daty. [Vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index) se používá pro tuto úlohu. 
 
 Adresa URL je rozšířit `hotel` název indexu.
 
 Chcete-li to provést v nástroji Postman:
 
-1. Změňte operaci na **PUT**
-2. Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`
-3. Zadejte definici indexu (viz dole) v textu požadavku
-4. Klikněte na tlačítko **odeslat**
+1. Změňte operaci na **UMÍSTIT**.
+
+2. Kopírují se tato adresa URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`.
+
+3. Zadejte definici indexu (viz dole) v textu požadavku.
+
+4. Klikněte na tlačítko **odeslat**.
 
 ![Text žádosti Postman][8]
 
@@ -122,16 +118,19 @@ Po odeslání této žádosti byste měli získat odpověď HTTP 201, která zna
 
 ## <a name="2---load-documents"></a>2 – nahrání dokumentů
 
-Vytvoření indexu a jeho naplnění jsou samostatné kroky. Ve službě Azure Search obsahuje index veškerá prohledávatelná data, která můžete zadat jako dokumenty JSON. [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) slouží rozhraní REST API pro tuto úlohu. 
+Vytvoření indexu a jeho naplnění jsou samostatné kroky. Ve službě Azure Search obsahuje index veškerá prohledávatelná data, která můžete zadat jako dokumenty JSON. [Přidání, aktualizace nebo odstranění dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) se používá pro tuto úlohu. 
 
 Adresa URL je rozšířit `docs` kolekce a `index` operace.
 
 Chcete-li to provést v nástroji Postman:
 
-1. Změňte operaci na **příspěvku**
-2. Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`
-3. Zadejte dokumentů JSON (viz dole) v textu požadavku
-4. Klikněte na tlačítko **odeslat**
+1. Změňte operaci na **POST**.
+
+2. Kopírují se tato adresa URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`.
+
+3. Zadejte dokumentů JSON (viz dole) v textu požadavku.
+
+4. Klikněte na tlačítko **odeslat**.
 
 ![Datová část žádosti Postman][10]
 
@@ -212,15 +211,17 @@ Pokud se zobrazí kód 207, nejméně jeden dokument nešel nahrát. Pokud se zo
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-Teď, když se načtou index a dokumenty, můžete posílat dotazy proti nim pomocí [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) rozhraní REST API.
+Teď, když se načtou index a dokumenty, můžete posílat dotazy proti nim pomocí [REST API služby Search dokumenty](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 Adresa URL je rozšířen o řetězec dotazu zadaný pomocí operátoru vyhledávání.
 
 Chcete-li to provést v nástroji Postman:
 
-+ Změňte operaci na **získat**
-+ Kopírovat tuto adresu URL `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`
-+ Klikněte na tlačítko **odeslat**
+1. Změňte operaci na **získat**.
+
+2. Kopírují se tato adresa URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`.
+
+3. Klikněte na tlačítko **odeslat**.
 
 Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí počet dokumentů. Žádost a odpověď by měl vypadat podobně jako na následujícím snímku obrazovky pro nástroj Postman po kliknutí na **odeslat**. Stavový kód by měl být 200.
 
@@ -228,7 +229,7 @@ Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí poč
 
 
 ## <a name="get-index-properties"></a>Získání vlastností indexu
-Můžete také zadat dotazy na informace o systému a získat počet dokumentů a spotřebu úložiště: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
+Můžete také zadat dotazy na informace o systému a získat počet dokumentů a spotřebu úložiště: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
 
 V nástroji Postman by vaše žádost měla vypadat podobně jako v následujícím příkladu a odpověď by měla obsahovat počet dokumentů a využité místo v bajtech.
 
@@ -236,7 +237,7 @@ V nástroji Postman by vaše žádost měla vypadat podobně jako v následujíc
 
 Všimněte si, že syntaxe api-version se liší. Pro tuto žádost použijte k připojení verze api-version znak `?`. `?` Odděluje cestu URL a z řetězce dotazu, zatímco znak & odděluje každý ' název = hodnota "pár v řetězci dotazu. V tomto dotazu je api-version první a také jedinou položkou v řetězci dotazu.
 
-Další informace o tomto rozhraní API najdete v tématu [Získání statistik indexu (REST)](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics).
+Další informace o tomto rozhraní API najdete v tématu [získat Index statistiky REST API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics).
 
 
 ## <a name="use-fiddler"></a>Použití aplikace Fiddler
@@ -247,7 +248,7 @@ Tato část je ekvivalentní předchozí části, pouze pomocí Fiddleru snímky
 
 Zformulujte podobnou žádost, která vypadá jako na následujícím snímku obrazovky. Zvolte **získat** jako příkaz. Fiddler přidá `User-Agent=Fiddler`. Pod tím můžete na nové řádky vložit dvě další hlavičky žádosti. Pomocí přístupového klíče správce vaší služby zahrňte typ obsahu a klíč api-key pro vaši službu.
 
-Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06`
+Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06`
 
 ![Hlavička žádosti Fiddleru][1]
 
@@ -256,7 +257,7 @@ Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<placeholder-fo
 
 ### <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Změňte operaci na **UMÍSTIT**. Kopírují se upravenou verzi tuto adresu URL: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Zkopírujte definici indexu do textu žádosti uvedené výše. Vaše stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Klikněte na tlačítko **Execute** nahoře vpravo odešlete dokončenou žádost.
+Změňte operaci na **UMÍSTIT**. Kopírují se upravenou verzi tuto adresu URL: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Zkopírujte definici indexu do textu žádosti uvedené výše. Vaše stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Klikněte na tlačítko **Execute** nahoře vpravo odešlete dokončenou žádost.
 
 ![Text žádosti Fiddleru][7]
 
@@ -268,7 +269,7 @@ Změňte operaci na **POST**. Změňte adresu URL tak, aby zahrnovala `/docs/ind
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Tipy pro spouštění ukázkových dotazů ve Fiddleru
 
-Následující příklad dotazu je převzatý z článku [Operace prohledání indexu (rozhraní API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Mnoho příkladů dotazů v tomto článku obsahuje mezery, které nejsou ve Fiddleru povolené. Před vložením nahraďte v řetězci dotazu každou mezeru znakem +, abyste mohli dotaz zkusit v aplikaci Fiddler.
+Následující příklad dotazu je převzatý z [REST API služby Search dokumenty](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) článku. Mnoho příkladů dotazů v tomto článku obsahuje mezery, které nejsou ve Fiddleru povolené. Před vložením nahraďte v řetězci dotazu každou mezeru znakem +, abyste mohli dotaz zkusit v aplikaci Fiddler.
 
 **Před nahrazením mezer (v části lastRenovationDate desc):**
 

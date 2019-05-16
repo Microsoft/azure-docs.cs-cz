@@ -2,21 +2,21 @@
 title: Přidání aplikace do tenanta Azure Active Directory | Microsoft Docs
 description: V tomto rychlém startu se pomocí webu Azure Portal přidá aplikace z galerie do tenanta Azure Active Directory (Azure AD).
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/09/2019
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15842d7157e8e5a691f37f846dd424bf308eae3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d3e79b00545f76dff9442a11864701d6d61f057
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294079"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784574"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do svého tenanta Azure Active Directory
 
@@ -58,7 +58,7 @@ Přidání aplikace z galerie do tenanta Azure AD:
 
 1. K vyhledání aplikace, v části **přidat z Galerie**, zadejte název aplikace, které chcete přidat. Vyberte aplikaci z výsledků a vyberte **přidat**. Následující příklad ukazuje **přidat aplikaci** formulář, který se zobrazí po hledání webu github.com.
 
-    ![Přidání aplikace](media/add-application-portal/add-an-application.png)
+    ![Přidat aplikaci](media/add-application-portal/add-an-application.png)
 
 1. Ve formuláři pro konkrétní aplikaci můžete změnit informace o vlastnostech. Například můžete upravit název aplikace, aby odpovídal potřebám vaší organizace. V tomto příkladu se používá název **GitHub-test**.
 

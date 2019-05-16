@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: cf414f9dd0f3a7ab638dc72e50aa8f3997308cc7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279733"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65744174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Kurz: Integrace Azure Active Directory s Vibe HCM
 
@@ -176,7 +176,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v Vibe HCM jako Britta Simon. Práce s [tým podpory Vibe HCM](mailto:support@vibehcm.com) přidat uživatele na platformě Vibe HCM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

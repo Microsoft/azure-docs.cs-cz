@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: d1f4996bd389a1c792f8dd7966dde6ccdfddbcc1
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
-ms.translationtype: MT
+ms.openlocfilehash: 0b3343a9635fe4120f03e56c41797591d2f25815
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872992"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755092"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -66,7 +66,7 @@ Verze součástí ekosystému Hadoop spojené s verzemi clusterů HDInsight mů�
 > [!IMPORTANT]    
 > Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [vyřazení Windows na HDInsight](#hdinsight-windows-retirement).
 
-### <a name="release-notes"></a>Poznámky k verzi
+### <a name="release-notes"></a>Poznámky k verzi
 
 Zobrazit [zpráva k vydání verze HDInsight](hdinsight-release-notes.md) další poznámky k verzi v nejnovějších verzích HDInsight.
 
@@ -83,7 +83,6 @@ Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu 
 | HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24. září 2018 | | |Ano |Ano |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. dubna 2017 | | |Ano |Ano |
 
-*&ast; Podpora HDInsight 3.5 se rozšířilo pouze pro typy clusterů Spark*
 
 > [!NOTE]  
 > Za podporu pro verzi vypršela platnost, nemusí být k dispozici prostřednictvím portálu Microsoft Azure. Ale i nadále být k dispozici pomocí verze clusteru `Version` parametr v prostředí Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) příkazu a sady SDK .NET až do verze vyřazením.
@@ -140,7 +139,7 @@ V současné době pouze následující typy clusteru podporují Enterprise Secu
 
 - Hadoop (pouze HDInsight 3.6)
 - Spark
-- Interaktivní dotaz
+- Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Podpora pro Azure Data Lake Storage
 
@@ -244,7 +243,7 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
 * Všechny podporované oblastech kromě Brazílie – jih a Japonsko – západ:
 
-|Typ clusteru|Hadoop|HBase|Interaktivní dotaz|Storm|Spark|ML Server|Kafka|
+|Typ clusteru|Hadoop|HBase|Interactive Query|Storm|Spark|ML Server|Kafka|
 |---|---|---|---|---|---|---|---|
 |Hlavní: výchozí velikosti virtuálního počítače|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
 |Hlavní: doporučené velikosti virtuálních počítačů|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
@@ -276,7 +275,7 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
 
-  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služby ML |
+  | Typ clusteru | Hadoop | HBase | Interactive Query |Storm | Spark | ML Services |
   | --- | --- | --- | --- | --- | --- | --- |
   | Hlavní: výchozí velikosti virtuálního počítače |D12 |D12  | D13 |A3 |D12 |D12 |
   | Hlavní: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |

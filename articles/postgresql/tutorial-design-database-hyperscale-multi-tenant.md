@@ -8,13 +8,13 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: b135baf73e21cd524b6e8fad35452362f36cf0c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.date: 05/14/2019
+ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080804"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65757616"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Kurz: návrh víceklientskou databázi s využitím Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
 
@@ -31,72 +31,7 @@ V tomto kurzu použijete Azure Database for PostgreSQL – velkokapacitní (Citu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-
-## <a name="create-an-azure-database-for-postgresql"></a>Vytvoření Azure Database for PostgreSQL
-
-Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
-1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-2. Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **Azure Database for PostgreSQL**.
-3. Možnost nasazení, klikněte na tlačítko **vytvořit** tlačítko **skupinu serverů Hyperškálovatelného (Citus) – ve verzi PREVIEW.**
-4. Do formuláře podrobností o novém serveru zadejte následující informace:
-   - Skupina prostředků: klikněte na tlačítko **vytvořit nový** odkaz pod textové pole pro toto pole. Zadejte název, například **myresourcegroup**.
-   - Název skupiny pro server: Zadejte jedinečný název pro novou skupinu serverů, který bude použit také pro subdoménu serveru.
-   - Uživatelské jméno správce: Zadejte jedinečné uživatelské jméno, to se později použijí pro připojení k databázi.
-   - Heslo: musí být alespoň osm znaků a musí obsahovat znaky ze tří z těchto kategorií – velká písmena anglické, anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % atd.)
-   - Umístění: použijte umístění co nejblíže vašim uživatelům jim zajistili nejrychlejší přístup k datům.
-
-   > [!IMPORTANT]
-   > Zde zadané přihlašovací jméno a heslo správce serveru se vyžadují pro přihlášení k serveru a jeho databázím dále v tomto kurzu. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
-
-5. Klikněte na tlačítko **konfigurovat skupinu serverů**. Ponechejte nastavení v této části beze změny a klikněte na tlačítko **Uložit**.
-6. Klikněte na tlačítko **revize + vytvořit** a potom **vytvořit** ke zřízení serveru. Zřizování trvá několik minut.
-7. Monitorování nasazení přesměruje na stránku. Změny za provozu stavu z **nasazení probíhá** k **vaše nasazení je kompletní**, klikněte na tlačítko **výstupy** položky nabídky na levé straně stránky.
-8. Stránka výstupy bude obsahovat název hostitele koordinátor s tlačítkem vedle něj zkopírovat hodnotu do schránky. Poznamenejte si tyto údaje pro pozdější použití.
-
-## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru
-
-Služba Azure Database for PostgreSQL využívá bránu firewall na úrovni serveru. Ve výchozím nastavení brána firewall brání všem externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru. Přidáme pravidlo k otevření brány firewall pro konkrétní rozsah IP adres.
-
-1. Z **výstupy** části, kde jste dříve zkopírovali název hostitele koordinační uzel, klikněte na tlačítko zpět do **přehled** položky nabídky.
-
-2. Najít skupinu škálování pro nasazení v seznamu prostředků a klikněte na něj. (Její název bude obsahovat předponu "sg-".)
-
-3. Klikněte na tlačítko **brány Firewall** pod **zabezpečení** v levé nabídce.
-
-4. Klikněte na odkaz **+ přidat pravidlo brány firewall pro aktuální IP adresa klienta**. Nakonec klikněte na tlačítko **Uložit** tlačítko.
-
-5. Klikněte na **Uložit**.
-
-   > [!NOTE]
-   > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 5432.
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Připojení k databázi pomocí nástroje psql ve službě Cloud Shell
-
-Teď se pomocí nástroje příkazového řádku [psql](https://www.postgresql.org/docs/current/app-psql.html) připojíme k serveru Azure Database for PostgreSQL.
-1. Pomocí ikony terminálu v horním navigačním podokně spusťte službu Azure Cloud Shell.
-
-   ![Azure Database for PostgreSQL – ikona terminálu Azure Cloud Shell](./media/tutorial-design-database-hyperscale-multi-tenant/psql-cloud-shell.png)
-
-2. Služba Azure Cloud Shell se otevře v prohlížeči a umožní vám zadat příkazy Bash.
-
-   ![Azure Database for PostgreSQL – příkazový řádek Bash služby Azure Shell](./media/tutorial-design-database-hyperscale-multi-tenant/psql-bash.png)
-
-3. V příkazovém řádku služby Cloud Shell se pomocí příkazů psql připojte k serveru Azure Database for PostgreSQL. Následující formát se používá pro připojení k serveru Azure Database for PostgreSQL s nástrojem [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html):
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   Například následující příkaz se připojí k výchozí databázi s názvem **citus** na váš server PostgreSQL **mydemoserver.postgres.database.azure.com** pomocí přihlašovacích údajů pro přístup. Po zobrazení výzvy zadejte heslo správce serveru.
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Vytvořte schéma pomocí nástroje psql
 
@@ -250,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 Až doteď všechny tabulky distributor `company_id`, ale některá data "nepatří přirozeně" do žádného tenanta zejména a je možné sdílet. Všechny společností ve službě ad platformy příklad například může být vhodné získat geografickými informacemi pro jejich cílové skupiny na základě IP adres.
 
-Vytvoření tabulky k uložení sdíleného zeměpisné údaje. Spusťte tento nástroj psql:
+Vytvoření tabulky k uložení sdíleného zeměpisné údaje. Spuštěním následujících příkazů v psql:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -268,7 +203,7 @@ Dále zkontrolujte `geo_ips` "referenční tabulku" pro uložení kopie v tabulc
 SELECT create_reference_table('geo_ips');
 ```
 
-Načtete do ní ukázková data. Nezapomeňte spustit v psql z do adresáře kterého jste stáhli datové sady.
+Načtete do ní ukázková data. Mějte na paměti ke spuštění tohoto příkazu v psql z do adresáře, kam jste stáhli datové sady.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv

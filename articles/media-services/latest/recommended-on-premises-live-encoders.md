@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405354"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550043"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
 
@@ -59,6 +59,9 @@ Služba Media Services se doporučuje používat jednu z následující kodéry,
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
+
+> [!TIP]
+>  Pokud jsou streamování živých událostí v různých jazycích (například anglické jedna zvuková stopa a španělština jedna zvuková stopa), můžete to udělat pomocí živých kodéru Media Excel nakonfigurovaný tak, aby posílala průchozí živá událost živého kanálu.
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace místní kodér služby live Encoding nastavení
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec6caecde3e90f7113f60286e95cdaeb996003f7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437715"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784043"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -59,13 +59,14 @@ Pomocí rozšíření prohlížeče MyApps všechny interní adresy URL, které 
 
 Uživatel musí na tuto funkci použít, stáhněte si rozšíření a být přihlášení. Není pro správci a uživatelé nepotřebují žádnou další konfiguraci. 
 
- 
+Další informace, včetně postupu konfigurace této možnosti najdete v tématu [rozšíření prohlížeče MyApps](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentaci.
 
 ### <a name="option-3-link-translation-setting"></a>Možnost 3: Nastavení překladu odkaz 
 
-Při překladu odkazu je povoleno, Proxy aplikací služby pomocí HTML a CSS hledá publikované vnitřní propojení a převede je tak, aby uživatelé získají prostředí bez přerušení. 
+Při překladu odkazu je povoleno, Proxy aplikací služby pomocí HTML a CSS hledá publikované vnitřní propojení a převede je tak, aby uživatelé získají prostředí bez přerušení. Použití rozšíření prohlížeče MyApps je upřednostňována před nastavení překladu odkaz, protože poskytuje další výkonné prostředí pro uživatele.
 
-
+> [!NOTE]
+> Pokud použijete možnost 2 nebo 3, pouze jeden z nich musí být aktivována v čase.
 
 ## <a name="how-link-translation-works"></a>Jak propojit funguje překlad
 
@@ -99,7 +100,7 @@ Existují dva běžné typy interní odkazů v místním aplikacím:
 * odkaz
 * položku nabídky
 * meta
-* objekt
+* Objekt
 * script
 * source
 * Sledování

@@ -5,27 +5,48 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/10/2019
+ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 4c5279d1ddf3153493ebc01dc010114ff7e6b5e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917227"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792418"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
 Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). V článku jsou uvedeny také důležité aktualizace obsahu, které nejsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizací služby](https://azure.microsoft.com/updates).
 
+## <a name="check-your-azure-sql-data-warehouse-version"></a>Zkontrolujte verzi Azure SQL Data Warehouse
+
+Připojte se ke svému datovému skladu přes SQL Server Management Studio (SSMS) a spusťte následující syntaxi vrátí aktuální verzi služby SQL Data Warehouse.
+
+```sql
+SELECT @@VERSION AS 'SQL Data Warehouse';
+```
+
+Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
+
+Použití data identifikovat pro potvrzení, který uvolní se nastavily pro Azure SQL Data Warehouse.
+
+## <a name="may-2019"></a>. Května 2019.
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+|**(Preview) maskování dynamických dat**|Dynamické maskování dat (DDM) tak, že maskuje ho na průběžné ve výsledcích dotazu na základě vámi definovaných pravidel maskování brání neoprávněnému přístupu k citlivým datům ve vašem datovém skladu. Další informace najdete v tématu [maskování dynamických dat SQL Database](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**Důležitost úlohy nyní obecně dostupná**|Klasifikace úlohy správy a význam poskytují možnost k ovlivnění pořadí spuštění dotazů. Další informace o důležitosti pracovního vytížení, najdete v článku [klasifikace](sql-data-warehouse-workload-classification.md) a [význam](sql-data-warehouse-workload-importance.md) přehledové články v dokumentaci. Podívejte se [vytvořit ÚLOHU třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc také.<br/><br/>Zobrazit úlohy význam v akci v následující videa:<br/> -[Koncepty správy úloh](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**Další podpora T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro: </br> - [NA ČASOVÉ PÁSMO](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**Funkce JSON**|Obchodní analytici teď můžete použít dobře známého jazyka T-SQL k dotazování a manipulaci s dokumenty, které jsou formátovány jako data JSON pomocí následující nové funkce JSON ve službě Azure Data Warehouse:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
+|**Sady výsledků dotazu do mezipaměti (Preview)**|Ukládání do mezipaměti sady výsledků umožňuje rychlé pomalejší doby odezvy při snížení čas strávený při vytváření přehledů pro specialisty na obchodní analýzu a generování sestav uživatelů. Další informace naleznete v tématu:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Příkaz ALTER DATABASE nastavit možnosti (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Sada výsledků dotazu nastavení ukládání do mezipaměti (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+
 ## <a name="march-2019"></a>2019. března
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|**Důležitost úlohy nyní dostupná ve verzi preview Gen2**|Důležitost úloh umožňuje datoví architekti používat význam ke klasifikaci žádosti. Požadavky s vyšší důležitostí zaručeno rychlejší přístup k prostředkům, které pomáhá plnit smlouvy o úrovni služeb.  Důležitost úloh umožňuje vysoký obchodní hodnotu práce podle smlouvy SLA ve sdíleném prostředí s méně prostředků.<br/><br/>Klasifikace úlohy správy a význam ve verzi preview je pro sestavení s datem vydání verze z 9. dubna 2019 nebo novější. Uživatelé byste neměli používat sestavení starší než toto datum pro testování úloh správy. Chcete-li zjistit, zda je sestavení umožňující správu úloh, spusťte `select @@version` při připojení k vaší instanci SQL Data Warehouse.</br></br>Další informace o důležitosti pracovního vytížení, najdete v článku [klasifikace](sql-data-warehouse-workload-classification.md) a [význam](sql-data-warehouse-workload-importance.md) přehledové články v dokumentaci. Podívejte se [vytvořit ÚLOHU třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc také.<br/><br/>Zobrazit úlohy význam v akci v následující videa:<br/>[Koncepty správy úloh](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**Zjišťování a klasifikace dat**|Zjišťování a klasifikace dat je teď pro Azure SQL Data Warehouse k dispozici ve verzi Public Preview. Je důležité chránit citlivá data a soukromí vašich zákazníků. Růstem vaší firmy a zákazníků datové assety stane nezvladatelné zjistit, klasifikovat a chránit vaše data. Data zjišťování a klasifikace funkci, která s využitím Azure SQL Data Warehouse Zavádíme nativně zvýšit ochranu dat lépe zvládnutelné. Celkové výhody této funkce:<br/>&bull; &nbsp; Standardy ochrany osobních údajů schůzky dat a požadavky na dodržování legislativních předpisů.<br/>&bull; &nbsp; Omezení přístupu k a posílení zabezpečení data warehouses obsahující vysoce citlivá data.<br/>&bull; &nbsp; Monitorování a výstrahy na neobvyklé přístup k citlivým datům.<br/>&bull; &nbsp; Vizualizace citlivých dat na centrálním řídicím panelu na webu Azure portal. </br></br>Zjišťování a klasifikace dat je k dispozici pro službu Azure SQL Data Warehouse ve všech oblastech Azure, to je součástí rozšířené zabezpečení dat včetně posouzení ohrožení zabezpečení a detekce hrozeb. Další informace o zjišťování a klasifikace dat, najdete v článku [blogový příspěvek](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/) a online v našem [dokumentaci](/azure/sql-database/sql-database-data-discovery-and-classification).|
 |**SESKUPIT PODLE SOUHRN**|Souhrn je teď podporovaná Group možnost ve službě Azure Data Warehouse.   Souhrn skupiny se vytvoří skupina pro každou kombinaci výrazy sloupce. GROUP BY také "shrnuje" výsledky do mezisoučty a celkové součty. Zprava doleva, snižuje počet výrazy sloupce, po které vytvoří skupiny a aggregation(s) zpracovává funkce GROUP BY.  Pořadí sloupců má vliv výstup KUMULATIVNÍ a může mít vliv na počet řádků v sadě výsledků.<br/><br/>Další informace o souhrn skupiny, najdete v části [Group (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**Pro zpřesnění DWU použít a portálu metriky využití procesoru**|SQL Data Warehouse významně zvyšuje metriky přesnosti na webu Azure Portal.  Tato verze obsahuje opravu pro definice metriky využití procesoru a použít DWU správně podle vašich úloh napříč všech výpočetních uzlech. Před touto opravou byly ještě undereported hodnoty metrik. Očekávat, prodloužením DWU použít a metriky využití procesoru na webu Azure Portal. |

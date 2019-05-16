@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2b615bbe7ffdf2f709cd7d7b0add4f956bec6a84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728325"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779466"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -40,7 +40,7 @@ Služba soubory Azure poskytuje dva přístupy ke klientským aplikacím: Server
 Rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Potřebuje číst/zapisovat soubory prostřednictvím SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | Kódování vstupně-výstupních operací pro Soubory Azure přes SMB je obvykle stejné jako kódování vstupně-výstupních operací u libovolné síťové sdílené složky nebo místního úložné zařízení. Úvod k celé řadě funkcí v .NET, včetně vstupně-výstupních operací se soubory, najdete v [tomto kurzu](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter).
-[WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | Vaše aplikace: <ul><li>Nemá přístup ke službě Soubory Azure přes SMB na portu 445 kvůli bráně firewall nebo omezením poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `WindowsAzure.Storage` pro vstupně-výstupní operace se soubory s využitím REST (místo SMB) a správy sdílené složky.
+[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Vaše aplikace: <ul><li>Nemá přístup ke službě Soubory Azure přes SMB na portu 445 kvůli bráně firewall nebo omezením poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory s využitím REST (místo SMB) a správy sdílené složky.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Vytvoření konzolové aplikace a získání sestavení
 V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v sadě Visual Studio 2017, ale kroky v jiných verzích sady Visual Studio se podobají.
@@ -53,13 +53,14 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 
 Všechny příklady kódu v tomto kurzu můžete přidat do metody `Main()` v souboru `Program.cs` vaší konzolové aplikace.
 
-Můžete použít knihovnu klienta služby Azure Storage z libovolného typu aplikace .NET, včetně webové aplikace nebo cloudové služby Azure, desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
+Můžete použít klientskou knihovnu služby Azure Storage z libovolného typu aplikace .NET, včetně Azure cloud service nebo do webové aplikace a desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
 Abyste mohli tento kurz dokončit, potřebujete ze svého projektu odkazovat na dva balíčky:
 
-* [Klientská knihovna pro úložiště Microsoft Azure pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Tento balíček poskytuje programový přístup k datovým prostředkům ve vašem účtu úložiště.
-* [Microsoft Azure Configuration Manager library for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
+* [Společná knihovna Microsoft Azure Storage pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k běžným prostředkům ve vašem účtu úložiště.
+* [Knihovna Microsoft Azure Storage Blob pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Tento balíček poskytuje programový přístup k prostředkům Blob ve vašem účtu úložiště.
+* [Microsoft Azure Configuration Manager library for .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
 K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
 
@@ -90,9 +91,9 @@ V Průzkumníku řešení otevřete soubor `Program.cs` a na začátek souboru p
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
-using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
-using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Azure Blobs
-using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure Files
+using Microsoft.Azure.Storage; // Namespace for Storage Client Library
+using Microsoft.Azure.Storage.Blob; // Namespace for Azure Blobs
+using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 ```
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
@@ -157,7 +158,7 @@ if (share.Exists())
 {
     // Check current usage stats for the share.
     // Note that the ShareStats object is part of the protocol layer for the File service.
-    Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
+    Microsoft.Azure.Storage.File.Protocol.ShareStats stats = share.GetStats();
     Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
 
     // Specify the maximum size of the share, in GB.
@@ -220,7 +221,7 @@ if (share.Exists())
 }
 ```
 
-Další informace o vytváření a používání sdílených přístupových podpisů najdete v tématech [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a [Vytvoření a použití SAS s objekty blob Azure](../blobs/storage-dotnet-shared-access-signature-part-2.md).
+Další informace o vytváření a používání sdílených přístupových podpisů najdete v tématu [použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="copy-files"></a>Kopírování souborů
 Klientská knihovna pro úložiště Azure od verze 5.x umožňuje kopírovat soubor do jiného souboru, soubor do objektu nebo objekt blob do souboru. V dalších kapitolách ukážeme, jak se operace kopírovaní dají provést programově.
@@ -401,18 +402,18 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 ## <a name="troubleshooting-azure-files-using-metrics"></a>Řešení potíží se Soubory Azure pomocí metrik
 Analýza úložiště Azure teď podporuje metriky pro Soubory Azure. S údaji z metriky můžete sledovat žádosti a diagnostikovat potíže.
 
-Metriky pro Soubory Azure můžete povolit na webu [Azure Portal](https://portal.azure.com). Metriky můžete povolit také programově zavoláním operace Set File Service Properties přes rozhraní REST API nebo některou z podobných operací v Klientské knihovně pro úložiště.
+Metriky můžete povolit pro soubory Azure od [webu Azure portal](https://portal.azure.com). Metriky můžete povolit také programově zavoláním operace Set File Service Properties přes rozhraní REST API nebo některou z podobných operací v Klientské knihovně pro úložiště.
 
 Následující příklad kódu ukazuje, jak můžete použít Klientskou knihovnu pro úložiště pro .NET k zapnutí metrik pro Soubory Azure.
 
 Nejdříve do souboru `Program.cs` mimo těch, které jste přidali výše, přidejte následující direktivy `using`:
 
 ```csharp
-using Microsoft.WindowsAzure.Storage.File.Protocol;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage.File.Protocol;
+using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Pamatujte, že zatímco objekty blob Azure, Tabulky Azure a Fronty Azure používají sdílený typ `ServiceProperties` v oboru názvů `Microsoft.WindowsAzure.Storage.Shared.Protocol`, služba Soubory Azure používá vlastní typ `FileServiceProperties` v oboru názvů `Microsoft.WindowsAzure.Storage.File.Protocol`. Aby se ale následující kód mohl zkompilovat, musí se z vašeho kódu odkazovat oba obory názvů.
+Pamatujte, že zatímco objekty blob Azure, Tabulky Azure a Fronty Azure používají sdílený typ `ServiceProperties` v oboru názvů `Microsoft.Azure.Storage.Shared.Protocol`, služba Soubory Azure používá vlastní typ `FileServiceProperties` v oboru názvů `Microsoft.Azure.Storage.File.Protocol`. Aby se ale následující kód mohl zkompilovat, musí se z vašeho kódu odkazovat oba obory názvů.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -423,7 +424,7 @@ CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Set metrics properties for File service.
 // Note that the File service currently uses its own service properties type,
-// available in the Microsoft.WindowsAzure.Storage.File.Protocol namespace.
+// available in the Microsoft.Azure.Storage.File.Protocol namespace.
 fileClient.SetServiceProperties(new FileServiceProperties()
 {
     // Set hour metrics

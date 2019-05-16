@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 7665050dfc9a561f42fec00c40d0a40dfa5cc183
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941575"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606430"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Testovací verze Azure Resource Manageru
+# <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
 
 Tento článek je určený pro vydavatele, kteří mají jejich nabídek zveřejněných na webu Azure Marketplace nebo kteří jsou v AppSource, ale má být sestaveno jejich testovací verze s pouze prostředky Azure.
 
@@ -382,7 +382,7 @@ V opačném případě vytvořte nového Tenanta v Azure Active Directory.
 
 ![Přehled služby Azure Active Directory klienty](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Zadejte organizaci, domény a země pro tenanta Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Definování organizace, domény a zemi/oblast pro tenanta Azure AD](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![Potvrďte výběr](./media/azure-resource-manager-test-drive/subdetails6.png)
 

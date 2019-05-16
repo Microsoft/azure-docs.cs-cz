@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/1/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abe9cba604100a42a4cd29ccd5af47e8898ea409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358059"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812934"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit kombinovat zabezpečení informace o registraci (preview)
 
@@ -51,6 +51,37 @@ Pokud jste nakonfigurovali web k zóně Assignment List v Internet Exploreru, mu
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
+## <a name="conditional-access-policies-for-combined-registration"></a>Zásady podmíněného přístupu pro kombinované registrace
+
+Zabezpečení a způsob registrace uživatele pro ověřování Azure Multi-Factor Authentication a samoobslužné resetování hesla je nyní možné s akcemi uživatelů v zásadách podmíněného přístupu. Tato funkce ve verzi preview je dostupné pro organizace, kteří mají povolené [kombinovat registraci ve verzi preview](../authentication/concept-registration-mfa-sspr-combined.md). Tato funkce může být povoleno v organizacích, kde chtějí uživatelé zaregistrovali k ověřování Azure Multi-Factor Authentication a samoobslužné resetování HESLA z centrálního umístění, jako je například umístění důvěryhodné sítě během připojování HR. Další informace o vytváření důvěryhodných umístění v podmíněný přístup, najdete v článku [co je podmínka umístění podmíněného přístupu Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Vytvořit zásadu, která vyžaduje registrace z důvěryhodného umístění
+
+Tyto zásady platí pro všechny vybrané uživatele, kteří se pokusí zaregistrovat pomocí prostředí kombinovaná registrace a blokuje přístup, pokud se připojujete z místa označen jako důvěryhodné síti.
+
+![Vytvoření zásad podmíněného přístupu pro řízení zabezpečení informací o registraci](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+
+1. V **webu Azure portal**, přejděte do **Azure Active Directory** > **podmíněného přístupu**
+1. Vyberte **Nová zásada**.
+1. Do pole Název zadejte název pro tuto zásadu. Například **kombinovat registrační informace o zabezpečení v důvěryhodných sítích**
+1. V části **přiřazení**, klikněte na tlačítko **uživatelů a skupin**a vyberte uživatele a skupiny, které chcete tuto zásadu použít
+
+   > [!WARNING]
+   > Uživatelé musí být povolené pro [kombinovat registraci ve verzi preview](../authentication/howto-registration-mfa-sspr-combined.md).
+
+1. V části **cloudové aplikace nebo akce**vyberte **akcí uživatele**, zkontrolujte **zaregistrovat informace o zabezpečení (preview)**
+1. V části **podmínky** > **umístění**
+   1. Konfigurace **Ano**
+   1. Zahrnout **libovolného umístění**
+   1. Vyloučit **všechna důvěryhodná umístění**
+   1. Klikněte na tlačítko **provádí** v okně umístění
+   1. Klikněte na tlačítko **provádí** v okně podmínky
+1. V části **ovládací prvky přístupu** > **udělení**
+   1. Klikněte na tlačítko **blokovat přístup**
+   1. Pak klikněte na tlačítko **vyberte**
+1. Nastavte **povolit zásady** k **na**
+1. Pak klikněte na tlačítko **Create**
+
 ## <a name="next-steps"></a>Další postup
 
 [Dostupné metody pro Vícefaktorové ověřování a samoobslužné resetování HESLA](concept-authentication-methods.md)
@@ -60,3 +91,5 @@ Pokud jste nakonfigurovali web k zóně Assignment List v Internet Exploreru, mu
 [Konfigurovat ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
 [Řešení potíží s kombinovat registrační informace o zabezpečení](howto-registration-mfa-sspr-combined-troubleshoot.md)
+
+[Co je podmínka umístění podmíněného přístupu Azure Active Directory?](../conditional-access/location-condition.md)

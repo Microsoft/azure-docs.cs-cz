@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023725"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540828"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper kognitivních dovedností
 
@@ -29,7 +29,7 @@ Verze rozhraní API zjistí, že je hloubka tvarování můžete dosáhnout.
 | 2019-05-06-preview verzi rozhraní API REST (sadu .NET SDK se nepodporuje.) | Komplexní objekty, několik úrovní hluboko, v jednom **Shaper** definice dovedností. |
 | 2019-05-06 ** (všeobecně dostupné) 2017-11-11-Preview| Složité objekty jednu úroveň. Obrazec na více vyžaduje několik kroků shaper zřetězení.|
 
-Náhled **Shaper** dovedností v [scénář 3](#nested-complex-types), přidá nový volitelný *sourceContext* vlastnost na vstup. *Zdroj* a *sourceContext* vlastnosti se vzájemně vylučují. Pokud je vstup v kontextu dovednosti, jednoduše použijte *zdroj*. Pokud je vstup na *různých* kontextu než kontextu dovednosti, použijte *sourceContext*. *SourceContext* vyžaduje, abyste definovat vnořené vstup s konkrétní elementu zabýváme jako zdroj. 
+Podle `api-version=2019-05-06-Preview`, **Shaper** dovednosti znázorněný v [scénář 3](#nested-complex-types) přidá nový volitelný *sourceContext* vlastnost na vstup. *Zdroj* a *sourceContext* vlastnosti se vzájemně vylučují. Pokud je vstup v kontextu dovednosti, jednoduše použijte *zdroj*. Pokud je vstup na *různých* kontextu než kontextu dovednosti, použijte *sourceContext*. *SourceContext* vyžaduje, abyste definovat vnořené vstup s konkrétní elementu zabýváme jako zdroj. 
 
 V odpovědi pro všechny verze rozhraní API výstupní název je vždy "výstupní". Kanál interně, můžete namapovat jiný název, jako je například "analyzedText", jak je znázorněno níže, ale **Shaper** dovednosti, samotný vrátí "výstupní" v odpovědi. To může být důležité Pokud ladíte bohatších možností dokumenty a Všimněte si názvů nesrovnalosti, nebo pokud při vývoji vlastních dovedností a jsou strukturování odpovědi, sami.
 
@@ -196,7 +196,7 @@ V takovém případě **Shaper** sloučí všechny názvy kapitol vytvořte jedn
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scénář 3: vstupní konsolidace z vnořené kontextů
 
 > [!NOTE]
-> Vnořené struktury podporované ve verzi api-version = 2019-05-06-Preview je možné v [znalostní báze úložiště](knowledge-store-concept-intro.md) nebo v indexu Azure Search.
+> Vnořené struktury v podporovány [rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) lze použít v [znalostní báze úložiště](knowledge-store-concept-intro.md) nebo v indexu Azure Search.
 
 Představte si mít název, kapitol a obsah knihy a spustili entity rozpoznávání a klíč frází na obsah a teď potřeba agregovat výsledky z jiné dovednosti do jediného obrazce s názvem kapitoly, entit a klíčové fráze.
 
@@ -265,4 +265,4 @@ V takovém případě **Shaper** vytvoří komplexního typu. Tato struktura exi
 + [Definování dovedností](cognitive-search-defining-skillset.md)
 + [Jak používat komplexní typy](search-howto-complex-data-types.md)
 + [Přehled úložiště znalostní báze](knowledge-store-concept-intro.md)
-+ [Jak začít pracovat s Store znalostní báze](knowledge-store-howto.md)
++ [Jak začít pracovat s úložištěm znalostní báze](knowledge-store-howto.md)

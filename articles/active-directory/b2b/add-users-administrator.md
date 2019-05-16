@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/11/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66b3e68ff2199c6a8bf4da9e02caaf93ee69342b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414450"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812832"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal
 
@@ -27,11 +27,15 @@ Po přidání uživatele typu Host do adresáře, můžete buď poslat uživatel
 > [!IMPORTANT]
 > Postupujte podle kroků v [s návody: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement) přidejte adresu URL prohlášení o ochraně osobních údajů vaší organizace. Jako součást procesu uplatnění pozvání první čas musí pozvaný uživatel vyjádřit souhlas. na vaše zásady ochrany osobních údajů, abyste mohli pokračovat. 
 
+## <a name="before-you-begin"></a>Než začnete
+
+Ujistěte se, že nastavení externí spolupráce vaší organizace jsou nakonfigurovány tak, že budete moct zvát hosty. Ve výchozím nastavení budou všichni uživatelé a správci můžou zvát hosty. Ale zabránit určité typy uživatelé nebo správci pozval hostů můžou být nakonfigurované zásady externí spolupráce vaší organizace. Postup zobrazení a nastavovat tyto zásady, najdete v tématu [povolit externí spolupráce B2B a spravovat, kdo může zvát hosty](delegate-invitations.md).
+
 ## <a name="add-guest-users-to-the-directory"></a>Přidat uživatele typu Host do adresáře
 
 Chcete-li přidat uživatele spolupráce B2B do adresáře, postupujte podle těchto kroků:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako uživatel, který je přiřazen, některý správce s omezením role adresáře.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako uživatel, který má přiřazenou roli adresáře správce s omezením nebo roli odesílatel pozvánky hostů.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat** vyberte **Uživatele**.
 4. Vyberte **Nový uživatel typu host**.
@@ -56,7 +60,7 @@ Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá d
 ![Zobrazí uživatele B2B uživatele typu Host](./media/add-users-administrator/GuestUserType.png)  
 
 ## <a name="add-guest-users-to-a-group"></a>Přidat uživatele typu Host do skupiny
-Pokud je potřeba ručně přidat uživatele spolupráce B2B do skupiny jako správce Azure AD, postupujte podle těchto kroků:
+Pokud je potřeba ručně přidat uživatele spolupráce B2B do skupiny, postupujte podle těchto kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V navigačním podokně vyberte **Azure Active Directory**.
@@ -73,7 +77,7 @@ Můžete také použít dynamické skupiny se spoluprací Azure AD B2B. Další 
 
 ## <a name="add-guest-users-to-an-application"></a>Přidat uživatele typu Host do aplikace
 
-Chcete-li přidat uživatele spolupráce B2B do aplikace jako správce Azure AD, postupujte podle těchto kroků:
+Chcete-li přidat uživatele spolupráce B2B do aplikace, postupujte podle těchto kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V navigačním podokně vyberte **Azure Active Directory**.

@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81877ad23728ad76cb5d4dc5084990511257c6df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f538831ee9410eaf1a2d272f01fd30a9236e6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695080"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519438"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID řady času
 
@@ -29,6 +29,7 @@ Volba ID řady času je třeba zvolit klíč oddílu pro databázi. Je důležit
 > ID řady čas je velká a malá písmena a neměnné (ho nelze změnit po nastavení).
 
 To na paměti výběrem příslušné ID řady čas je velmi důležité. Když vyberete ID řady času, vezměte v úvahu následující tyto osvědčené postupy:
+
 * Vyberte název vlastnosti, která má široký rozsah hodnot a má i vzorce přístupu. Je osvědčeným postupem je mít klíč oddílu s mnoha jedinečných hodnot (například stovky nebo tisíce). Pro mnoho zákazníků to bude něco jako ID zařízení nebo SensorID v JSON.
 * ID řady čas musí být jedinečný na úrovni uzel typu list vaše [modelu časové řady](./time-series-insights-update-tsm.md).
 * Řetězec znaků ID řady času vlastnost název může mít maximálně 128 znaků a hodnot vlastností řady ID času může mít maximálně 1024 znaků.
@@ -41,13 +42,13 @@ Kromě toho můžete vybrat až *tři* (3) klíčové vlastnosti jako ID řady �
 
 Následující scénáře popisují výběr více než jednu klíčovou vlastnost jako vaše ID řady čas:  
 
-### <a name="scenario-1"></a>Scénář 1
+### <a name="scenario-one"></a>Scénář č. 1
 
-* Máte starší verzi flotily nebo prostředků, každá má jedinečný klíč. 
-* Například jeden fleet jednoznačně identifikují podle vlastnosti *deviceId* a jiný jedinečný vlastností je *objectId*. Ani fleet obsahuje jiné flotily jedinečné vlastnosti. V tomto příkladu by dva klíče, ID zařízení a ID objektu, vyberte jako jedinečné klíče. 
+* Máte starší verzi flotily nebo prostředků, každá má jedinečný klíč.
+* Například jeden fleet jednoznačně identifikují podle vlastnosti *deviceId* a jiný jedinečný vlastností je *objectId*. Ani fleet obsahuje jiné flotily jedinečné vlastnosti. V tomto příkladu by dva klíče, ID zařízení a ID objektu, vyberte jako jedinečné klíče.
 * Můžeme přijmout hodnoty null a chybějící vlastnosti přítomnost v datové části události se započítává `null` hodnotu. Toto je také vhodný způsob pro odesílání dat do dvou zdrojů různých událostí, kde data v jednotlivých zdroj události má jedinečné ID řady čas zpracování
 
-### <a name="scenario-2"></a>Scénář 2
+### <a name="scenario-two"></a>Scénář č. 2
 
 * Budete potřebovat více vlastností být jedinečný v rámci stejného počtu prostředků. 
 * Například Řekněme, že jste výrobce inteligentní vytváření a nasazení senzorů v každé místnosti. V každé místnosti, obvykle mají stejné hodnoty *sensorId*, jako například *sensor1*, *sensor2*, a *sensor3*.

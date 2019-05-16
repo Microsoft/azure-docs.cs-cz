@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 68190ad15ed70ac831c21582d60bc54da5d3c14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48c83dd77e12df86ebb68f183ad694bf8439d365
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913476"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606367"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Table API
 
@@ -25,6 +25,9 @@ ms.locfileid: "60913476"
 * [Automatické sekundární indexování](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
 Pomocí rozhraní API tabulky je možné migrovat aplikace napsané pro Azure Table Storage beze změn kódu na službu Azure Cosmos DB a využít tak prémiové funkce. Rozhraní API tabulky má klientské sady SDK dostupné pro .NET, Java, Python a Node.js.
+
+> [!IMPORTANT]
+> .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) je ve stavu údržby režimu a bude brzy přestanou používat. Upgradujte prosím do nové knihovny .NET Standard [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) pokračujte získáte nejnovější funkce, které jsou podporovány v rozhraní API tabulky.
 
 ## <a name="table-offerings"></a>Nabídky Table
 Pokud aktuálně používáte službu Azure Table Storage, získáte přechodem na rozhraní API tabulky Azure Cosmos DB následující výhody:

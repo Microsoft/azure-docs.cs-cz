@@ -3,8 +3,8 @@ title: Nativní aplikace v Azure Active Directory
 description: Popisuje, co jsou nativní aplikace a základní informace na protokol toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e37e40cd0dbba7961cbde75b5dde44f2666dc21
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918616"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545846"
 ---
 # <a name="native-apps"></a>Nativní aplikace
 
@@ -46,7 +46,7 @@ Pokud používáte knihoven ověřování služby AD, většinu níže popsanýc
 > [!NOTE]
 > Aktualizace tokenu vydaného službou Azure AD umožňuje přístup k více prostředkům. Například pokud máte klientské aplikace, který má oprávnění k volání dvě webové rozhraní API, obnovovací token slouží k získání přístupového tokenu pro jiné webové rozhraní API také.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Pro nativní aplikace pro scénáře webového rozhraní API najdete v ukázkách kódu. A vraťte se často – často přidáváme nové ukázky. [Nativní aplikace pro webové rozhraní API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 

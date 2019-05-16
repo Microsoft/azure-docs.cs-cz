@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/06/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 892b9bc63f9f2d9abc7108587a7bf929473e4648
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464811"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779433"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -24,6 +24,12 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2019-05-14"></a>2019-05-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning sady SDK pro Python v1.0.39
++ **Změny**
+  + Možnost konfigurace spuštění auto_prepare_environment je zastaralé, s automatickým připravit se stávají výchozí.
 
 ## <a name="2019-05-06"></a>2019-05-06
 

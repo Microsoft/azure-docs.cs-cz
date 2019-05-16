@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61386440"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522121"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Zakázání monitorování virtuálních počítačů pomocí Azure monitoru pro virtuální počítače (preview)
 
@@ -56,7 +56,7 @@ Následující kroky popisují, jak úplně odebrat monitorování Azure pro vir
 5. V seznamu řešení, vyberte **InfrastructureInsights (název pracovního prostoru)** a pak na **přehled** stránce řešení, klikněte na tlačítko **odstranit**.  Po zobrazení výzvy k potvrzení klikněte na tlačítko **Ano**.  
 6. Seznam řešení, vyberte **ServiceMap (název pracovního prostoru)** a pak na **přehled** stránce řešení, klikněte na tlačítko **odstranit**.  Po zobrazení výzvy k potvrzení klikněte na tlačítko **Ano**.  
 
-Pokud před zprovoznění Azure Monitor pro virtuální počítače, které nebyly [shromažďování čítačů výkonu povolena](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled) pro Windows nebo linuxem virtuálních počítačů ve vašem pracovním prostoru, budete muset zakázat tato pravidla pomocí následujících kroků popsaných [tady](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters) pro Windows a Linux.
+Pokud před zprovoznění Azure Monitor pro virtuální počítače, které nebyly [shromažďování čítačů výkonu povolena](vminsights-enable-overview.md#performance-counters-enabled) pro Windows nebo linuxem virtuálních počítačů ve vašem pracovním prostoru, budete muset zakázat tato pravidla pomocí následujících kroků popsaných [tady](../platform/data-sources-performance-counters.md#configuring-performance-counters) pro Windows a Linux.
 
 ## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>Vypnout monitorování pro virtuální počítač Azure a uchování pracovního prostoru  
 

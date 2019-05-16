@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: a9d6396cab560a201b98497e787af4b6c7c2dabb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560818"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518142"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Vytváření projektů pomocí editoru Video Indexer
 
@@ -50,7 +51,7 @@ Tento článek popisuje, jak vytvořit projekt od začátku a také jak vytvoři
     
     Například na následujícím obrázku Těšíme se na videa, která zmiňovat "Githubu".
     
-    ![GitHubu](./media/video-indexer-view-edit/github.png)
+    ![GitHub](./media/video-indexer-view-edit/github.png)
 
     Výsledky můžete dále filtrovat tak, že vyberete **filtrování výsledků**. Můžete filtrovat, chcete-li zobrazit videa, které mají určité osoby v nich nebo k určení, že chcete pouze vidět videa výsledky, které jsou v určitém jazyce, nebo mají konkrétní vlastníka. <br/> Můžete také zadat rozsah vašeho dotazu. Například, pokud chcete vyhledávat "Githubu" OCR, vyberte **Visual Text**.
 
@@ -76,7 +77,7 @@ Pokud kliknete na šipku dolů na pravé straně každého videa, se otevře ins
 1. Pokud chcete vytvořit dotazy na konkrétní klipy, použijte vyhledávací pole s textem "Hledat v přepisu, visual text, lidé a popisky".
 1. Přidejte filtry, které dále určit podrobnosti, jaké scén hledáte tak, že vyberete **možnosti filtru**.
 
-    ![Možnosti filtru](./media/video-indexer-view-edit/filter-options.png)
+    ![Nastavení filtru](./media/video-indexer-view-edit/filter-options.png)
 
     Můžete například zobrazit klipy, ve kterém je uvedený Githubu Donovan Brown je na obrazovce. V takovém případě budete muset přidat filtr "zahrnutí", který má "Osob" jako typ insight. Pak je třeba zadat v "Donovan Brown" do vyhledávacího pole filtru.
     
@@ -95,7 +96,7 @@ Pokud kliknete na šipku dolů na pravé straně každého videa, se otevře ins
 > [!TIP]
 > Jako jsou výběr a pořadí klipů, můžete zobrazit náhled videa v přehrávači na pravé straně stránky. 
 
-![Preview](./media/video-indexer-view-edit/preview.png)
+![Náhled](./media/video-indexer-view-edit/preview.png)
 
 Nezapomeňte uložit projekt, pokud provedete změny tak, že vyberete **uložit projekt**. 
 

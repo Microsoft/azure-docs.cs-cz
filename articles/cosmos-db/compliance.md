@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128817"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606283"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Dodržování předpisů ve službě Azure Cosmos DB 
 
@@ -28,7 +28,7 @@ Azure Cosmos DB je k dispozici ve všech oblastech Azure. Společnost Microsoft 
 
 * **Azure Government pro oddělení nuclear Information,** je k dispozici ve dvou oblastech v USA ministerstva obrany USA.
 
-Aby mohli zákazníci splnění závazků dodržování předpisů napříč regulované odvětví a trzích na celém světě, Azure udržuje největším kompatibilním portfoliem v tomto odvětví (celkový počet nabídek) šířka a hloubka (počet určených pro zákazníky služby v oboru posouzení).  Nabídky dodržování předpisů Azure jsou seskupené do čtyř segmentů – globálně použitelné, pro státní správu USA, odvětví konkrétní a oblasti nebo konkrétní země.  Nabídky dodržování předpisů jsou založené na různých typech záruky včetně dosažené certifikace, osvědčení, ověření, autorizace a hodnocení vytvářených nezávislé auditování podniky třetích stran, stejně jako smluvní změny, vlastní posouzení a pokyny k dokumentům od společnosti Microsoft.
+Aby mohli zákazníci splnění závazků dodržování předpisů napříč regulované odvětví a trzích na celém světě, Azure udržuje největším kompatibilním portfoliem v tomto odvětví (celkový počet nabídek) šířka a hloubka (počet určených pro zákazníky služby v oboru posouzení).  Nabídky dodržování předpisů Azure jsou seskupené do čtyř segmentů – globálně použitelné, pro státní správu USA, odvětví konkrétní a oblasti nebo konkrétní zemi nebo oblast.  Nabídky dodržování předpisů jsou založené na různých typech záruky včetně dosažené certifikace, osvědčení, ověření, autorizace a hodnocení vytvářených nezávislé auditování podniky třetích stran, stejně jako smluvní změny, vlastní posouzení a pokyny k dokumentům od společnosti Microsoft.
 
 ## <a name="azure-cosmos-db-certifications"></a>Certifikáty Azure Cosmos DB  
 

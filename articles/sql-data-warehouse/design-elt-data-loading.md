@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/12/2019
+ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db397ae43d1c134823abfc7004f1f3490addeb06
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731766"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550610"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Navrhování dat pomocí PolyBase načítání strategie pro Azure SQL Data Warehouse
 
@@ -49,8 +49,32 @@ Získání dat ze zdrojového systému závisí na umístění úložiště.  C�
 
 ### <a name="polybase-external-file-formats"></a>PolyBase formáty externích souborů.
 
-PolyBase načte data z kódování UTF-8 a UTF-16 textových souborů s oddělovači. Kromě textových souborů s oddělovači načte z RC souboru ORC a Parquet formáty souborů Hadoop. Technologie PolyBase také může načítat data z Gzip a Snappy komprimované soubory. PolyBase aktuálně nepodporuje rozšířené ASCII, formátu s pevnou šířkou a vnořené formáty, jako je například WinZip, JSON a XML. Pokud exportujete z SQL serveru, můžete použít [nástroj příkazového řádku bcp](/sql/tools/bcp-utility) exportovat data do textových souborů s oddělovači.
+PolyBase načte data z kódování UTF-8 a UTF-16 textových souborů s oddělovači. Kromě textových souborů s oddělovači načte z RC souboru ORC a Parquet formáty souborů Hadoop. Technologie PolyBase také může načítat data z Gzip a Snappy komprimované soubory. PolyBase aktuálně nepodporuje rozšířené ASCII, formátu s pevnou šířkou a vnořené formáty, jako je například WinZip, JSON a XML. Pokud exportujete z SQL serveru, můžete použít [nástroj příkazového řádku bcp](/sql/tools/bcp-utility) exportovat data do textových souborů s oddělovači. Parquet k mapování datového typu SQL data Warehouse je následující:
 
+| **Datový typ parquet** |                      **Datový typ SQL.**                       |
+| :-------------------: | :----------------------------------------------------------: |
+|        tinyint        |                           tinyint                            |
+|       smallint        |                           smallint                           |
+|          int          |                             int                              |
+|        bigint         |                            bigint                            |
+|        Boolean        |                             bit                              |
+|        double         |                            float                             |
+|         float         |                             real                             |
+|        double         |                            money                             |
+|        double         |                          smallmoney                          |
+|        string         |                            nchar                             |
+|        string         |                           nvarchar                           |
+|        string         |                             char                             |
+|        string         |                           varchar                            |
+|        binary         |                            binary                            |
+|        binary         |                          varbinary                           |
+|       časové razítko       |                             date                             |
+|       časové razítko       |                        smalldatetime                         |
+|       časové razítko       |                          datetime2                           |
+|       časové razítko       |                           datetime                           |
+|       časové razítko       |                             time                             |
+|       date        | ((1) zatížení jako int a přetypování na data </br> (2) [použít konektor datového skladu SQL Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) s </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**aktualizovat, už brzy**) |
+|        decimal        | [Použití konektoru SQL datový Sklad Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) s </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**aktualizovat, už brzy**) |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Dostat data do Azure Blob storage nebo Azure Data Lake Store
 

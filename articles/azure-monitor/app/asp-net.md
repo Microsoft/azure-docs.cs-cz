@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472046"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595549"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -28,7 +28,7 @@ Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost
 ## <a name="prerequisites"></a>Požadavky
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
-- Nainstalovat sadu [Visual Studio 2017 pro Windows](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+- Nainstalujte [2019 Visual Studio pro Windows](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
     - Vývoj pro ASP.NET a web (Ne zrušte zaškrtnutí políčka volitelné komponenty)
     - Vývoj pro Azure
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="ide"></a> Krok 1: Přidání Application Insights SDK
 
 > [!IMPORTANT]
-> Snímky obrazovky v tomto příkladu jsou založeny na Visual Studio 2017 verze 15.9.9. Prostředí pro přidání Application Insights se liší mezi verzemi sady Visual Studio 2017, a také podle typu šablony ASP.NET. Starší verze může mít alternativní text, například "Konfigurovat Application Insights".
+> Snímky obrazovky v tomto příkladu jsou založené na Visual Studio 2017 verze 15.9.9 a novější. Prostředí pro přidání Application Insights se liší mezi verzemi sady Visual Studio, a také podle typu šablony ASP.NET. Starší verze může mít alternativní text, například "Konfigurovat Application Insights".
 
 Klikněte pravým tlačítkem na název vaší webové aplikace v Průzkumníku řešení a zvolte **přidat** > **Telemetrie Application Insights**
 

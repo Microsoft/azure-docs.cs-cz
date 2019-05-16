@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 0d606a489a069c4265088d8e07301693dc2f1c83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3192d848e77c59d0ff6950e647d1faf172484b5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694275"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606405"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -90,10 +90,10 @@ Virtuální plochy Windows se skládá z plochy Windows a aplikací, které posk
 Pro optimální výkon Ujistěte se, že vaše síť splňuje následující požadavky:
 
 * Latence zpátečního převodu (požadavku) ze sítě klienta do oblasti Azure, kde byly nasazeny fondy hostitele by měl být kratší než 150 ms.
-* Síťový provoz může tok mimo hranice země, připojíte ke službě správy virtuálních počítačů, které hostování desktopů a aplikací.
+* Síťový provoz může tok ohraničení mimo zemi nebo oblast, připojíte ke službě správy virtuálních počítačů, které hostování desktopů a aplikací.
 * Pokud chcete optimalizovat výkon sítě, doporučujeme, že jsou seřazena relace hostování virtuálních počítačů ve stejné oblasti Azure jako službu pro správu.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 
 Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy. Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview.
 

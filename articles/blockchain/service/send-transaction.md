@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: d3ad4cdfe33948c04c278ed3dfef7aa6fda637ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026806"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777323"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Kurz: Odeslání transakce pomocí služby Azure Blockchain
 
@@ -68,7 +68,7 @@ Zatímco probíhá zřizování uzly, můžete pokračovat v kurzu. Po dokončen
 ## <a name="open-truffle-project"></a>Otevřete projekt Truffle
 
 1. Otevřete terminál prostředí Bash.
-1. Změnit cesty k adresáři projektu Truffle z požadovaného softwaru [rychlý start: Slouží k připojení do sítě konsorcia Truffle](connect-truffle.md). Například:
+1. Změnit cesty k adresáři projektu Truffle z požadovaného softwaru [rychlý start: Slouží k připojení do sítě konsorcia Truffle](connect-truffle.md). Například
 
     ```bash
     cd truffledemo
@@ -82,7 +82,7 @@ Zatímco probíhá zřizování uzly, můžete pokračovat v kurzu. Po dokončen
 
     Truffle vytvoří blockchain místním vývojovém a nabízí interaktivní konzolu.
 
-## <a name="connect-to-transaction-node"></a>Připojení k uzlu transakce
+## <a name="connect-to-transaction-node"></a>Připojení k transakčnímu uzlu
 
 Web3 použijte pro připojení k výchozí uzel transakcí a vytvoření účtu služby. Web3 připojovací řetězec můžete získat z webu Azure portal.
 
@@ -128,7 +128,7 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
 ### <a name="transaction-node-endpoint-addresses"></a>Adresy koncových bodů uzel transakce
 
 1. Na webu Azure Portal, přejděte k jednotlivým uzlům transakce a vyberte **transakce uzly > připojovací řetězce**.
-1. Zkopírujte a uložte adresu URL koncového bodu z ** HTTPS (přístupový klíč 1) pro každý uzel transakce. Adresy koncových bodů pro konfigurační soubor inteligentní smlouvy potřebovat později v tomto kurzu.
+1. Zkopírujte a uložte adresu URL koncového bodu z **HTTPS (přístupový klíč 1)** pro každý uzel transakce. Adresy koncových bodů pro konfigurační soubor inteligentní smlouvy potřebovat později v tomto kurzu.
 
     ![Adresa koncového bodu transakce](./media/send-transaction/endpoint.png)
 

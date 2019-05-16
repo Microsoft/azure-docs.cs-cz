@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit problémy s Update managementem
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2019
+ms.date: 05/07/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597621"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787693"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -160,6 +160,38 @@ Funkce Hybrid Runbook Worker nebyl schopen generovat certifikát podepsaný svý
 
 Ověřte systémový účet má oprávnění ke čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
 
+### <a name="failed-to-start"></a>Scénář: Ukazuje, na počítači se nepodařilo spustit v nasazení aktualizací
+
+#### <a name="issue"></a>Problém
+
+Počítač má stav **se nepodařilo spustit** pro počítač. Když zobrazujete podrobnosti pro počítač se zobrazí následující chyba:
+
+```error
+Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě může dojít kvůli jednomu z následujících důvodů:
+
+* Tento počítač už neexistuje.
+* Na počítači je zapnutá, dojde k odsouhlasení a nedostupný.
+* Tento počítač má problém síťového připojení a hybridní pracovní proces na tento počítač nedostupný.
+* Došlo aktualizaci Microsoft Monitoring Agent, která se změnila SourceComputerId
+* Si hromadnou postupnou aktualizaci může mít omezení, pokud dosáhnete limitu 2 000 souběžných úloh v účtu Automation. Každé nasazení se považuje za úlohu a každý počítač v počtu nasazení aktualizaci jako úloha. Jakékoli jiné automatizace úloh nebo aktualizace nasazení aktuálně spuštěné v účtu Automation spočítat směrem k limit souběžných úloh.
+
+#### <a name="resolution"></a>Řešení
+
+Při použití příslušných [dynamické skupiny](../automation-update-management.md#using-dynamic-groups) pro vaše nasazení aktualizace.
+
+* Ověření počítače stále existuje a je dostupný. Pokud neexistuje, upravte nasazení a odeberte počítač.
+* Naleznete v části [plánování sítě](../automation-update-management.md#ports) seznam portů a adres, které jsou požadovány pro správu aktualizací a ověřte váš počítač splňuje tyto požadavky.
+* Spuštěním následujícího dotazu v Log Analytics k vyhledání počítačů ve vašem prostředí jehož `SourceComputerId` změnit. Vyhledejte počítače, které mají stejné `Computer` hodnotu, ale odlišným `SourceComputerId` hodnotu. Jakmile najdete v příslušných počítačích je nutné pomocí úpravy nasazení aktualizací, které cílí na tyto počítače a odeberte a znovu přidejte počítače proto `SourceComputerId` odráží správnou hodnotu.
+
+   ```loganalytics
+   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
+   ```
+
 ### <a name="hresult"></a>Scénář: Počítač zobrazuje jako nevyhodnoceno a ukazuje výjimku HResult
 
 #### <a name="issue"></a>Problém
@@ -177,7 +209,9 @@ Poklikáním na výjimku zobrazí červeně naleznete ve zprávě celý. Projdě
 |Výjimka  |Řešení nebo akce  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | Vyhledávání kódu relevantní chyby v [Windows aktualizujte seznam chyb kódu](https://support.microsoft.com/help/938205/windows-update-error-code-list) zobrazíte další podrobnosti příčina výjimky.        |
-|`0x8024402C` nebo `0x8024401C`     | Tyto chyby jsou problémy se síťovým připojením. Ujistěte se, že váš počítač má správné síťové připojení ke správě aktualizací. Naleznete v části [plánování sítě](../automation-update-management.md#ports) seznam portů a adres, které jsou požadovány.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Tyto chyby jsou problémy se síťovým připojením. Ujistěte se, že váš počítač má správné síťové připojení ke správě aktualizací. Naleznete v části [plánování sítě](../automation-update-management.md#ports) seznam portů a adres, které jsou požadovány.        |
+|`0x8024001E`| Operace aktualizace nebyla dokončena, protože byl vypínání služby nebo systému.|
+|`0x8024002E`| Služba Windows Update je zakázaná.|
 |`0x8024402C`     | Pokud používáte WSUS server, ujistěte se, že hodnoty registru `WUServer` a `WUStatusServer` v klíči registru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` mít správný server služby WSUS.        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Ujistěte se, že službu Windows Update (wuauserv) je spuštěná a není zakázáno.        |
 |Další obecné výjimky     | Hledáním na Internetu možná řešení a pracovat s místním podpory IT.         |

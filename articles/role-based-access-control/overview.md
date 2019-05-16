@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fd5c47bb3c7bc3dfc9c0e140531ff832e7e6ef56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6510099f9fb145951cbce1ea168b36dba5f76e07
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344905"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540922"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure?
 
@@ -76,7 +76,7 @@ Zbývající předdefinované role umožňují správu konkrétních prostředk�
 
 Azure zavádí datové operace (momentálně ve verzi Preview), které vám umožní udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [pochopení definic rolí pro prostředky Azure](role-definitions.md).
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Scope
 
 *Obor* je sadu prostředků, které se vztahuje na přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
 
@@ -138,4 +138,4 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 - [Rychlé zprovoznění: Obsahuje zobrazení přístupu uživatelů k prostředkům Azure pomocí webu Azure portal](check-access.md)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
-- [Přechodu na podnikový Cloud: Správa přístupu k prostředkům v Azure](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)
+- [Přechodu na podnikový Cloud: Správa přístupu k prostředkům v Azure](/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)

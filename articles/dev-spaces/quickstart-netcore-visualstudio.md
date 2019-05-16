@@ -13,12 +13,12 @@ keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery,
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 74bf83626ffcbf1625ab24cd9a4b8151b1cce8b0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707167"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597018"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Rychlý start: Vývoj s využitím .NET Core v Kubernetes se službou Azure Dev mezery (Visual Studio 2017)
 
@@ -55,8 +55,8 @@ Přejděte ke svému clusteru AKS na portálu Azure portal a klikněte na tlač�
 
 ## <a name="create-a-new-aspnet-web-app"></a>Vytvořit novou webovou aplikaci ASP.NET
 
-1. Otevřete sadu Visual Studio 2017.
-1. Vytvoření nového projektu
+1. Otevřete Visual Studio 2017.
+1. Vytvoří nový projekt.
 1. Zvolte *webové aplikace ASP.NET Core* a pojmenujte svůj projekt *webfrontend*.
 1. Klikněte na *OK*.
 1. Po zobrazení výzvy zvolte *webové aplikace (Model-View-Controller)* šablony.
@@ -97,6 +97,8 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 V předchozím příkladu je veřejnou adresu URL http://webfrontend.1234567890abcdef1234.eus.azds.io/. Přejděte na veřejnou adresu URL vaší služby a interakci se službou spuštění v prostoru vývoj.
 
+Tento proces může zakázaná veřejný přístup ke službě. K povolení veřejného přístupu, můžete aktualizovat [hodnotu příchozího přenosu dat ve *values.yaml*][ingress-update].
+
 ## <a name="update-code"></a>Aktualizace kódu
 
 Pokud Visual Studio 2017 je pořád připojený prostorem dev, kliknutím na tlačítko Zastavit. Změňte řádek 20 v `Controllers/HomeController.cs` na:
@@ -131,3 +133,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [Práce s více kontejnery a týmový vývoj](multi-service-netcore-visualstudio.md)
+
+[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured

@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 188733266c15bf214c0177762b9d10aecd05223b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d51eaf71e449301415195e409bec9e944d16e0b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773957"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752479"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rychlý start: Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
 Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je nainstalované rozšíření pro [ Azure CLI ](/cli/azure/). Tento rychlý start vás provede procesem přidání rozšíření k instalaci rozhraní příkazového řádku Azure CLI. Rozšíření můžete použít pomocí Azure CLI nainstalované místně nebo prostřednictvím [Azure Cloud Shell](https://shell.azure.com).
 
@@ -81,7 +81,7 @@ Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, mů�
 
 Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
-## <a name="cleanup"></a>Vyčištění
+## <a name="cleanup-resources"></a>Vyčištění prostředků
 
 Pokud chcete odebrat rozšíření prostředků grafu z prostředí příkazového řádku Azure CLI, můžete tak provést pomocí následujícího příkazu:
 

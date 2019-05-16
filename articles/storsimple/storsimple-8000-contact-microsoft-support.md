@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362567"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606863"
 ---
 # <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
 
@@ -31,7 +31,7 @@ Správce zařízení StorSimple poskytuje schopnost **protokolu novou žádost o
 
 Zkontrolujte [StorSimple 8000 Series podpora smlouvy o úrovni služeb a informace o](https://msdn.microsoft.com/library/mt433077.aspx) předtím, než vytvoříte žádost o podporu.
 
-## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
+## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
 
 V závislosti na vaší [plán podpory](https://azure.microsoft.com/support/plans/), nemůžete vytvářet lístky žádostí o podporu pro problém na zařízení StorSimple přímo v okně s přehledem služby Správce zařízení StorSimple. Proveďte následující kroky a vytvoříte žádost o podporu:
 
@@ -64,7 +64,7 @@ V závislosti na vaší [plán podpory](https://azure.microsoft.com/support/plan
 4. V **nová žádost o podporu** okna, klikněte na tlačítko **kroku 3 kontaktní údaje**. V **kontaktní informace** okno, proveďte následující kroky:
 
    1. V **obraťte se na možnosti**, poskytují upřednostňovaný způsob kontaktu (telefonu nebo e-mailu) a jazyk. Doba odezvy je automaticky vybrána na základě vašeho plánu předplatného.
-   2. Kontaktní údaje zadejte jméno, e-mailu, volitelné kontakt, zemi. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
+   2. Kontaktní údaje zadejte jméno, e-mailu, volitelné kontakt, země/oblast. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
    3. Klikněte na možnost **Vytvořit**.
    
        ![MS kontakt podpory prostřednictvím nového portálu](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
