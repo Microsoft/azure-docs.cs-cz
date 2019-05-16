@@ -3,8 +3,8 @@ title: Možnosti podporu a nápovědu pro vývojáře aplikací Azure AD | Dokum
 description: Už víte, jak získat nápovědu a podporu pro dotazy související s vývojem a problémů při vytváření aplikace, která lze integrovat s Microsoft identity (účet služby Azure Active Directory a Microsoft)
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c4882e991045b4a79c0ea0a19ad8fedc2fb8892
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299732"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540368"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře
 
@@ -36,7 +36,7 @@ Pokud začínáte, můžete integrovat s Azure Active Directory (Azure AD), Micr
 > * Pokud narazíte na problém s jedním z našich knihoven ověřování, zvýšit *Githubu* problém
 > * Nakonec pokud potřebujete mluvit někomu, můžete chtít otevřít žádost o podporu
 
-## <a name="search"></a>Search
+## <a name="search"></a>Vyhledávání
 
 Pokud máte dotazy související s vývojem, může být schopna najít odpovědi v dokumentaci, [Githubu ukázky](https://github.com/azure-samples), nebo odpovědi na [Stack Overflow](https://www.stackoverflow.com) dotazy.
 
@@ -63,7 +63,7 @@ Přetečení zásobníku je upřednostňovaný kanál pro dotazy související s
 
 Pokud nemůžete najít odpověď na svou otázku prostřednictvím vyhledávání, odešlete nový dotaz na Stack Overflow. Při kladení otázek pomůže komunity identifikovat a odpověď na vaši otázku rychleji, použijte jednu z následujících značek:
 
-|Komponenta nebo oblast  | Značky |
+|Komponenta nebo oblast  | Tags |
 |---------|---------|
 | Knihovna ADAL | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | Knihovna MSAL     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e23297d8cd6cab5abeedc1a12fa1a37c93e94283
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943618"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606905"
 ---
 <a name="seller-insights-definitions"></a>Definice Insights prodejce
 =======================
@@ -37,7 +37,7 @@ Následující tabulka obsahuje definice pro celou řadu termíny používané v
 | **Město zákazníka**  | Název města zákazníka k dispozici. Může to být jiný než města v rámci předplatného Azure zákazníka.  |
 | **Jazyk odběratele komunikace**        | Jazyk upřednostňuje zákazníka pro komunikaci.                                  |
 | **Název společnosti zákazníka**                  | Název společnosti poskytované zákazníka. Může to být jiný než města v rámci předplatného Azure zákazníka.                                  |
-| **Zemi zákazníka**                       | Název země poskytované zákazníka.  Může to být jiný než země v rámci předplatného Azure zákazníka.                               |
+| **Zemi zákazníka**                       | Název země/oblasti k dispozici zákazník.  Může to být jiný než zemi/oblast v rámci předplatného Azure zákazníka.                               |
 | **Zákazník měny (kopie)**                 | Měna preferované zákazníkem pro ceny a fakturace.                            |
 | **Zákaznických e-mailů**                         | E-mailovou adresu poskytované koncového zákazníka.  To může být jiná než e-mailovou adresu v rámci předplatného Azure zákazníka.                   |
 | **Křestní jméno odběratele**                              | Křestní jméno zákazníka k dispozici.  Může to být jiný než název zadaný v rámci předplatného Azure zákazníka.                    |

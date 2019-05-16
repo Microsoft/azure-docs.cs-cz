@@ -7,17 +7,17 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f540bc304920073bcd823adcf6c9dd47cb2cf93b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a59deed4ac0cec669ddc5e0335f7274586c702e8
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159747"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541770"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
+# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
 
 Pokud používáte verzi 7.0 preview nebo starší aplikace [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace pro používání verze 9.
 
@@ -70,7 +70,7 @@ Existuje několik rozbíjející změny ve verzi 9, které mohou vyžadovat změ
 > [!NOTE]
 > Seznam změn níže není vyčerpávající. Některé změny pravděpodobně nebudou vést k chybám sestavení, ale jsou technicky zásadní, protože jejich porušit binární kompatibilitu s sestavení, které jsou závislé na dřívější verze sestavení .NET SDK služby Azure Search. Tyto změny nejsou uvedené níže. Při upgradu na verzi 9, abyste předešli problémům s žádné binární kompatibilitu sestavte aplikaci.
 
-### <a name="making-properties-immutable"></a>Provádění neměnné vlastnosti
+### <a name="immutable-properties"></a>Neměnné vlastnosti.
 
 Veřejné vlastnosti několik tříd modelu jsou nyní neměnné. Pokud je potřeba vytvořit vlastní instance těchto tříd pro testování, můžete použít nový konstruktor s parametry:
 
@@ -103,7 +103,7 @@ Důvodem je, že tyto vlastnosti musí být nyní `null` v případě složitýc
 
 Konstruktor bez parametrů z `Field` provedl `internal`. Od této chvíle každý `Field` vyžaduje explicitní název a datový typ v době konstrukce.
 
-### <a name="simplification-of-batch-and-results-types"></a>Zjednodušení typů služby batch a výsledky
+### <a name="simplified-batch-and-results-types"></a>Zjednodušené typy služby batch a výsledky
 
 Ve verzi 7.0 preview a starší byly strukturované třídách, které provádí zapouzdření skupiny dokumentů do hierarchií paralelní třídy:
 
@@ -118,7 +118,7 @@ Odvozené typy bez parametru obecného typu se by se použít ve scénářích "
 
 Od verze 8.0-preview, základní třídy a odvozené třídy neobecnou všechny byly odebrány. Pro dynamicky typované scénáře, můžete použít `IndexBatch<Document>`, `DocumentSearchResult<Document>`, a tak dále.
  
-### <a name="removal-of-extensibleenum"></a>Odebrání ExtensibleEnum
+### <a name="removed-extensibleenum"></a>Odebrané ExtensibleEnum
 
 `ExtensibleEnum` Základní třída odebrala. Všechny třídy, které z něj odvozenou jsou nyní struktury, jako je například `AnalyzerName`, `DataType`, a `DataSourceType` třeba. Jejich `Create` metody také byly odebrány. Můžete pouze odebrat volání `Create` vzhledem k tomu, že tyto typy jsou implicitně převést z řetězce. Pokud, která má za následek chyby kompilátoru, můžete vyvolat explicitní operátor převodu prostřednictvím přetypování k rozlišení typů. Například můžete změnit kód následujícím způsobem:
 
@@ -134,7 +134,7 @@ var index = new Index()
 }
 ```
 
-měli změnit na:
+K tomuto:
 
 ```csharp
 var index = new Index()
@@ -150,7 +150,7 @@ var index = new Index()
 
 Vlastnosti, které se nachází volitelné hodnoty těchto typů jsou nyní explicitně typu s možnou hodnotou Null, budou pokračovat v práci na nepovinný.
 
-### <a name="removal-of-facetresults-and-hithighlights"></a>Odebrání FacetResults a HitHighlights
+### <a name="removed-facetresults-and-hithighlights"></a>Odebrané FacetResults a HitHighlights
 
 `FacetResults` a `HitHighlights` třídy byly odebrány. Omezující vlastnost výsledky jsou nyní zadán jako `IDictionary<string, IList<FacetResult>>` a stiskněte klávesu zvýrazní jako `IDictionary<string, IList<string>>`. Rychlý způsob, jak vyřešit chyby sestavení zavedených v této změny je přidání `using` aliasy v horní části každého souboru, který používá odebrané typy. Příklad:
 

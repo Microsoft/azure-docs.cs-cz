@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 634f3948f9a5e28454e9b2b29f950c3fb00f6c19
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/10/2019
+ms.openlocfilehash: a320f584ff82f2b8a2b3d784e1995aa043004587
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147731"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597487"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -257,7 +257,7 @@ Logic Apps nepodporuje přímého připojení k účtům úložiště Azure pře
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>Příchozí IP adresy – pouze služba Logic Apps
 
-| Oblast | IP adresa |
+| Oblast | IP |
 |--------|----|
 | Austrálie – východ | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | Austrálie – jihovýchod | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |

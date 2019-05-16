@@ -4,7 +4,7 @@ description: Další informace o konkrétní aspekty při používání Xamarin 
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b4c4cd4dbab10a9d4796a8393cc7f479b90cc4
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 4f7f91e6ab1fb12132068b839e66fafd3ab1bc73
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406764"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65543959"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Pomocí webových prohlížečů v MSAL.NET
 Webové prohlížeče jsou požadovány pro interaktivní ověřování. Ve výchozím nastavení podporuje MSAL.NET [systému webový prohlížeč](#system-web-browser-on-xamarinios-and-xamarinandroid) na Xamarin.iOS a [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser). Ale [můžete povolit také integrovaného webového prohlížeče](#enable-embedded-webviews) v závislosti na vašich požadavcích (uživatelského prostředí, třeba pro jednotné přihlašování (SSO), zabezpečení) v [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) a [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) aplikace. A můžete dokonce [zvolte dynamicky](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) používat webový prohlížeč na základě přítomnosti Chrome nebo prohlížeč podporuje vlastní karty Chrome v Androidu.

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 04/09/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 99be0cee9c939ed200bd74c94e88c3fcd989e25b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 15885137b9559bf34fb2b985398401af09caa629
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722890"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602982"
 ---
 # <a name="configure-the-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Windows v hybridním prostředí
 [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů s Windows do jednoho úložiště pro účely podrobných analýz a korelace. Log Analytics může shromažďovat data z datové centrum nebo jiné cloudové prostředí. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data.  Informace o virtuálních počítačích Windows Azure naleznete v tématu [shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
@@ -107,8 +107,8 @@ Log Analytics může shromažďovat události, které zadáte z protokolu událo
 ## <a name="view-collected-data"></a>Zobrazit shromážděná data
 Teď, když jste povolili shromažďování dat, můžeme spustit prohledávání protokolů jednoduché a zobrazit nějaká data z cílového počítače.  
 
-1. Na portálu Azure, ve vybraném pracovním prostoru, vyberte **prohledávání protokolů** dlaždici.  
-2. Na **prohledávání protokolů** podokně, v dialogovém okně dotazu zadejte **výkonu** a pak stiskněte Enter nebo vyberte tlačítko Vyhledat napravo od pole dotazu:
+1. Na portálu Azure, ve vybraném pracovním prostoru, vyberte **protokoly** dlaždici.  
+2. Na **prohledávání protokolů** podokně, v dialogovém okně dotazu zadejte **výkonu** a klikněte na tlačítko **spustit** horní části pole dotazu:
  
     ![Prohledávání protokolu log Analytics](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 

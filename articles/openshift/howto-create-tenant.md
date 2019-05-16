@@ -6,13 +6,13 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 3c7f0b263cc775b7f9fec62e4d5388250e5124fb
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/13/2019
+ms.openlocfilehash: 04d710f4d60b776f8059d87ea4d009bed6f7f8ba
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079117"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551721"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 
@@ -34,11 +34,11 @@ Pokud chcete vytvořit tenanta:
 
     ![Snímek obrazovky zobrazující název tenanta v pravém horním rohu portálu][tenantcallout]  
 
-8. Poznamenejte si *ID tenanta* tak můžete dále určit, kde chcete vytvořit cluster Azure Red Hat OpenShift. Na portálu měli byste vidět okno přehledu služby Azure Active Directory pro vašeho nového tenanta. Vyberte **vlastnosti** a zkopírujte hodnotu pro vaše **ID adresáře**. Společnost Microsoft bude odkazovat na tuto hodnotu jako `tenant id` v [vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) kurzu.
+8. Poznamenejte si *ID tenanta* tak můžete dále určit, kde chcete vytvořit cluster Azure Red Hat OpenShift. Na portálu měli byste vidět okno přehledu služby Azure Active Directory pro vašeho nového tenanta. Vyberte **vlastnosti** a zkopírujte hodnotu pro vaše **ID adresáře**. Společnost Microsoft bude odkazovat na tuto hodnotu jako `TENANT` v [vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) kurzu.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 Podívejte se na [dokumentace ke službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) Další informace o [tenantů Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
 

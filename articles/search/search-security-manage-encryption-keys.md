@@ -1,5 +1,5 @@
 ---
-title: Šifrování neaktivních pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault – Azure Search
+title: Šifrování neaktivních pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault (preview) – Azure Search
 description: Šifrování na straně serveru příplatek nad indexy a mapy synonym ve službě Azure Search pomocí klíčů, které můžete vytvořit a spravovat ve službě Azure Key Vault.
 author: NatiNimni
 manager: jlembicz
@@ -9,14 +9,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 987b56a9571fd50f605dbe6fb4112ef857021530
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029172"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523097"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
+
+> [!Note]
+> Šifrování pomocí klíčů spravovaných zákazníkem je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Můžete také použít .NET SDK verze 8.0-preview.
+>
+> Tato funkce není k dispozici pro bezplatné služby. Je nutné použít fakturovatelné vyhledávací služba vytvoří nebo později 2019-01-01. Neexistuje žádná podpora portálu v tuto chvíli.
 
 Ve výchozím nastavení, Azure Search šifruje obsah uživatelů v klidovém stavu pomocí [klíče spravované službou](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit vrstvou další šifrování pomocí klíče, které můžete vytvořit a spravovat ve službě Azure Key Vault. Tento článek vás provede jednotlivými kroky.
 
@@ -26,20 +31,17 @@ Ve výchozím nastavení, Azure Search šifruje obsah uživatelů v klidovém st
 
 Můžete použít různé klíče z různých trezory klíčů. To znamená, že jeden vyhledávací služba může hostovat více šifrované indexes\synonym map, každý šifrována potenciálně různé klíče spravovaného zákazníkem, společně s indexes\synonym mapy, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
 
->[!Note]
-> **Dostupnost funkcí**: Šifrování pomocí klíčů spravovaných zákazníkem je funkce ve verzi preview, která není k dispozici pro bezplatné služby. K placení za služby, je dostupná jenom pro vyhledávacích služeb vytvořených na nebo za 2019-01-01, pomocí nejnovější verze preview rozhraní api-version (verze api-version = 2019-05-06-Preview). Aktuálně se nepodporuje portál pro tuto funkci.
-
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto příkladu se používají tyto služby. 
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
 
-[Vytvoří prostředek služby Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo najít existující trezor v rámci vašeho předplatného.
++ [Vytvoří prostředek služby Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo najít existující trezor v rámci vašeho předplatného.
 
-[Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) se používá pro úlohy konfigurace.
++ [Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) se používá pro úlohy konfigurace.
 
-[Postman](search-fiddler.md), [prostředí Azure PowerShell](search-create-index-rest-api.md) a [SDK služby Azure Search](https://aka.ms/search-sdk-preview) je možné volat rozhraní REST API ve verzi preview. Neexistuje žádný portál nebo sadu .NET SDK: podpora pro spravované zákazníkem šifrování v tuto chvíli.
++ [Postman](search-fiddler.md), [prostředí Azure PowerShell](search-create-index-rest-api.md) a [SDK služby Azure Search](https://aka.ms/search-sdk-preview) je možné volat rozhraní REST API ve verzi preview. Neexistuje žádný portál nebo sadu .NET SDK: podpora pro spravované zákazníkem šifrování v tuto chvíli.
 
 ## <a name="1---enable-key-recovery"></a>1 - povolit obnovení klíče
 

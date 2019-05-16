@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 16491ccc8a9cdc24b82c4c4e27705fa30da61088
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 750393e6dba17ab8ba024f9f1fbb2f9127dd81ab
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800228"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521705"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Azure monitoru závislostí pro Linux
 
@@ -30,7 +30,7 @@ Azure Monitor pro funkci mapování virtuálních počítačů získává data o
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta závislosti virtuálních počítačů Azure pro Linux lze spustit na podporovaných operačních systémů uvedených v [podporované operační systémy](../../azure-monitor/insights/vminsights-onboard.md#supported-operating-systems) části Azure Monitor pro článek nasazení virtuálních počítačů.
+Rozšíření agenta závislosti virtuálních počítačů Azure pro Linux lze spustit na podporovaných operačních systémů uvedených v [podporované operační systémy](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) části Azure Monitor pro článek nasazení virtuálních počítačů.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -81,7 +81,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta závislosti vi
 | type | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění rozšíření agenta závislostí virtuálního počítače Azure při nasazení šablony Azure Resource Manageru. 
 

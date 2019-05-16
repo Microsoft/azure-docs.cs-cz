@@ -7,14 +7,14 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b885a90728df8cb15c75141b7bce81aec3968359
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874525"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779573"
 ---
-# <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Ochrana nové prostředky podle zámky prostředků Azure podrobné plány
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: Ochrana nové prostředky podle zámky prostředků Azure podrobné plány
 
 Plány Azure [zámky prostředků](../concepts/resource-locking.md) umožňují zabránit změnám, dokonce i pomocí účtu s nově nasazené prostředky _vlastníka_ role. Tato ochrana je přidat do prostředky vytvořené v rámci artefaktem šablony Resource Manageru v definici podrobného plánu.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: e67e41d5e423e07371fbce06066076ab809f60df
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545327"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518890"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
 
@@ -45,23 +45,21 @@ Získejte další informace o práci se správou přístupu:
 Akce skriptu je Bash skript, který používá na uzlech v clusteru HDInsight. Vlastnosti a funkce akce skriptu jsou následující:
 
 * Musí být uložené na identifikátor URI, který je přístupný z clusteru HDInsight. Toto jsou možné úložišť:
+    
+    * Pro pravidelné clustery:
+    
+      * ADLS Gen1: Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Storage musí mít oprávnění ke čtení pro skript. Formát identifikátoru URI pro skripty uložené v Data Lake Storage Gen1 je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+      
+      * Objekt blob v účtu služby Azure Storage, který je buď primární a dodatečné úložiště účtu pro HDInsight cluster. HDInsight je udělen přístup k oběma typy účtů úložiště při vytváření clusteru.
 
-    * Účet úložiště Azure Data Lake, který je přístupný pro HDInsight cluster. Informace o používání služby Azure Data Lake Storage s HDInsight naleznete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
-
-        Formát identifikátoru URI pro skripty uložené v Data Lake Storage Gen1 je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
-
-        > [!NOTE]  
-        > Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Storage musí mít oprávnění ke čtení pro skript.
-
-    * Objekt blob v účtu služby Azure Storage, který je buď primární a dodatečné úložiště účtu pro HDInsight cluster. HDInsight je udělen přístup k oběma typy účtů úložiště při vytváření clusteru.
-
-    * Veřejné služby Sdílení souborů. Příklady jsou objektů Blob v Azure, Githubu, OneDrive nebo Dropbox.
+      * Veřejné sdílení souborů služby přístupné prostřednictvím cesty http://. Mezi příklady patří objektů Blob v Azure, Githubu a OneDrive.
 
         Například identifikátory URI, najdete v článku [příklady skriptů pro skript akce](#example-script-action-scripts).
 
-        > [!WARNING]  
-        > HDInsight podporuje pouze objektů Blob v účtech Azure Storage s úrovní výkonu. 
-
+     * U clusterů s ESP:
+         
+         * Wasb [s] :// nebo http [s] :// identifikátory URI jsou podporovány.
+            
 * Může být omezen na spouštět pouze určité typy uzlů. Příklady jsou hlavní uzly nebo pracovních uzlů.
 
 * Může být trvalé nebo ad hoc.
@@ -148,7 +146,7 @@ HDInsight poskytuje skriptů v clusterech HDInsight nainstalovat následující 
 | Název | Skript |
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobrazit [přidání dalších účtů úložiště pro HDInsight](hdinsight-hadoop-add-storage.md). |
-| Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobrazit [instalace a použití rozhraní Hue v HDInsight Hadoop clusterů](hdinsight-hadoop-hue-linux.md). |
+| Nainstalovat Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobrazit [instalace a použití rozhraní Hue v HDInsight Hadoop clusterů](hdinsight-hadoop-hue-linux.md). |
 | Nainstalovat Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobrazit [instalace a použití Presta na technologii hadoop HDInsight clustery](hdinsight-hadoop-install-presto.md). |
 | Nainstalovat Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobrazit [nainstalovat Giraph Apache na platformě HDInsight Hadoop clusterů](hdinsight-hadoop-giraph-install-linux.md). |
 | Předběžné načtení knihoven Hivu |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobrazit [přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight](hdinsight-hadoop-add-hive-libraries.md). |

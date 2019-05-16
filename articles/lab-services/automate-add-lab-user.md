@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0eed874d405fcf99241a702292f8ceadae6c5a07
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502036"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522950"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatické přidání uživatele testovacího prostředí do testovacího prostředí ve službě Azure DevTest Labs
 Azure DevTest Labs umožňuje rychle vytvořit samoobslužné vývojových / testovacích prostředí pomocí webu Azure portal. Nicméně pokud máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření ušetřit čas. [Šablony Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) vám umožňují vytvářet testovací prostředí, testovací prostředí virtuálních počítačů, vlastní Image, vzorce a přidání uživatelů automatizovaně. Tento článek se zaměřuje konkrétně na přidání uživatelů do instance DevTest Labs.
@@ -85,7 +85,7 @@ Následující ukázka šablony Resource Manageru určuje uživateli přidat do 
 
 ```
 
-Pokud přiřazujete roli v stejnou šablonu, která je vytvoření testovacího prostředí, nezapomeňte přidat závislost mezi prostředek přiřazení role a testovací prostředí. Další informace najdete v tématu [definování závislostí v šablonách Azure Resource Manageru](/azure-resource-manager/resource-group-define-dependencies.md) článku.
+Pokud přiřazujete roli v stejnou šablonu, která je vytvoření testovacího prostředí, nezapomeňte přidat závislost mezi prostředek přiřazení role a testovací prostředí. Další informace najdete v tématu [definování závislostí v šablonách Azure Resource Manageru](../azure-resource-manager/resource-group-define-dependencies.md) článku.
 
 ### <a name="role-assignment-resource-information"></a>Informace o prostředku přiřazení role
 Prostředek přiřazení role musí určovat typ a název.

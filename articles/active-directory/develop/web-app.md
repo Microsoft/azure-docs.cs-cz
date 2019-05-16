@@ -3,8 +3,8 @@ title: Web apps v Azure Active Directory
 description: Popisuje, co jsou webové aplikace a základní informace v protokolu toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3e1b951a683d7ee1def09024e531e94dd905b4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918530"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544727"
 ---
 # <a name="web-apps"></a>Webové aplikace
 
@@ -39,7 +39,7 @@ Webové aplikace jsou aplikace, které ověřit uživatele ve webovém prohlíž
 1. Pokud je ověření úspěšné, Azure AD vytvoří ověřovacího tokenu a vrátí odpověď přihlašovací adresa URL odpovědi aplikace, který byl nakonfigurován na webu Azure Portal. Pro produkční aplikace tato adresa URL odpovědi by mělo být HTTPS. Vrácený token obsahuje deklarace identity o uživateli a Azure AD, které jsou vyžadované aplikací k ověření tokenu.
 1. Aplikace ověří daný token pomocí veřejného podpisového klíče a vydavatele informace, které jsou k dispozici v dokumentu federačních metadat pro službu Azure AD. Když aplikace ověří token, spustí novou relaci s uživatelem. Tato relace povolí uživateli přístup k aplikaci do vypršení jeho platnosti.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Zobrazit ukázky kódu pro webový prohlížeč na web scénářích aplikací. A vrácení zpět často, jak často jsou přidávány nové ukázky.
 

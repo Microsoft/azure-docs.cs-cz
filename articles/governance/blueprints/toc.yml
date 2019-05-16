@@ -1,7 +1,6 @@
 - name: Dokumentace ke službě Azure Blueprint
   href: index.yml
 - name: Přehled
-  expanded: true
   items:
     - name: Přehled Azure Blueprints
       displayName: 'templates, policy, definition, assignment, rbac'
@@ -16,7 +15,6 @@
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
 - name: Kurzy
-  expanded: true
   items:
     - name: Vytvoření z ukázky podrobného plánu
       displayName: 'template, resource group, rbac, role assignment'
@@ -25,7 +23,6 @@
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
 - name: Ukázky
-  expanded: true
   items:
     - name: Index
       displayName: 'list, examples'
@@ -53,7 +50,6 @@
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
 - name: Koncepty
-  expanded: true
   items:
     - name: Životní cyklus podrobného plánu
       displayName: 'publish, edit, delete, assignments'
@@ -71,7 +67,6 @@
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: Návody
-  expanded: true
   items:
     - name: Správa přiřazení s využitím PowerShellu
       displayName: 'create, update, remove'
@@ -85,7 +80,6 @@
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: Odkazy
-  expanded: true
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

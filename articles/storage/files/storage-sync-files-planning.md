@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f29625ed8ddd6eabf8b75380d84d7a7b64396d7a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696520"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597074"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -256,10 +256,18 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
 | Spojené království – západ | Cardiff |
+| US Gov Arizona (preview) | Arizona |
+| US Gov Texas (preview) | Texas |
+| US Gov Virginie (preview) | Virginie |
 | Západní Evropa | Nizozemsko |
+| Západní střed USA | Wyoming |
 | Západní USA | Kalifornie |
+| Západní USA 2 | Washington |
 
 Azure File Sync podporuje synchronizaci pouze u sdílené složky Azure, který je ve stejné oblasti jako služba synchronizace úložiště.
+
+> [!Note]  
+> Azure File Sync je momentálně dostupný jenom ve verzi private preview pro oblasti státní správy. Najdete v našich [poznámky k verzi](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020) pokyny pro registraci v programu preview.
 
 ### <a name="azure-disaster-recovery"></a>Zotavení po havárii Azure
 Pokud chcete chránit před ztrátou oblasti Azure, Azure File Sync se integruje s [redundance geograficky redundantní úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) možnost (GRS). Úložiště GRS funguje s použitím bloku asynchronní replikaci mezi úložiště v primární oblasti, pomocí kterého budete obvykle pracovat, a úložiště ve spárovaném sekundární oblasti. V případě havárie, což způsobí, že určitá oblast Azure pro go dočasně nebo trvale offline společnost Microsoft bude úložiště převzetí služeb při selhání pro spárované oblasti. 
@@ -271,8 +279,9 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 
 | Primární oblast      | Spárovaná oblast      |
 |---------------------|--------------------|
-| Austrálie – východ      | Austrálie – jihovýchod |
+| Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
+| Brazílie – jih        | Středojižní USA   |
 | Kanada – střed      | Kanada – východ        |
 | Kanada – východ         | Kanada – střed     |
 | Střed Indie       | Indie – jih        |
@@ -280,16 +289,24 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Východní Asie           | Jihovýchodní Asie     |
 | USA – východ             | Západní USA            |
 | Východ USA 2           | USA – střed         |
+| Japonsko – východ          | Japonsko – západ         |
+| Japonsko – západ          | Japonsko – východ         |
 | Korea – střed       | Jižní Korea – jih        |
 | Jižní Korea – jih         | Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
 | Středoseverní USA    | Středojižní USA   |
+| Středojižní USA    | Středoseverní USA   |
 | Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |
 | Spojené království – západ             | Velká Británie – jih           |
+| USA (Gov) – Arizona      | USA (Gov) – Texas       |
+| US Gov – Iowa         | USA (Gov) – Virginia    |
+| Virgini USA (gov)      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
+| Západní střed USA     | Západní USA 2          |
 | Západní USA             | USA – východ            |
+| Západní USA 2           | Západní střed USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

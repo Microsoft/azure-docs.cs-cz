@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 5f29e3820416686b42167fa278c4b7d0f9a58f1f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190924"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787836"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasadit model vizuální rozhraní strojového učení
 
@@ -158,4 +158,4 @@ Modely a nasazením webových služeb, které vytvoříte ve vizuální rozhran�
 V tomto kurzu jste zjistili, že klíč kroky vytváření, nasazování a používání strojového učení modelu ve vizuální rozhraní. Další informace o použití vizuální rozhraní pro jiné druhy problémů vyřešit, projděte si ukázkové experimenty.
 
 > [!div class="nextstepaction"]
-> [Ukázka klasifikaci rizik kredit](ui-sample-classification-predict-credit-risk-basic.md)
+> [Ukázka klasifikaci rizik kredit](ui-sample-classification-predict-credit-risk-cost-sensitive.md)

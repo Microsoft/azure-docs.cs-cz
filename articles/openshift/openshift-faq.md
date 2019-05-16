@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466204"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551727"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – nejčastější dotazy
 
@@ -66,3 +66,7 @@ Ne. Všechny uzly v clusteru služby Azure Red Hat OpenShift musí pocházet ze 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Hlavní server a infrastruktury uzly abstrahují hned jak se s Azure Kubernetes Service (AKS)?
 
 Ne. Všechny prostředky, včetně předlohy clusteru spustit ve vašem předplatném zákazníka. Tyto typy prostředků jsou umístěny ve skupině prostředků jen pro čtení.
+
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>Je zprostředkovatele Open Service Broker for Azure (OSBA) podporované?
+
+Ano. Můžete použít osba, POUŽIJTE s Azure Red Hat OpenShift. Zobrazit [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) Další informace.

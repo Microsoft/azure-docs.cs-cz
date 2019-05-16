@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Vývoj v týmu Kubernetes s kontejnery a mikroslužby na platformě Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 1414cc56809263a90a4bfea16db332e2f6a5e0bc
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
-ms.translationtype: MT
+ms.openlocfilehash: 437c6284c563f85e25d2c5b81734ea3bc0507701
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514079"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596996"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v týmu na použití Azure Dev prostorů Kubernetes
 
@@ -25,7 +25,7 @@ V tomto průvodci se naučíte:
 - Nasazení rozsáhlé aplikace s různými mikroslužbami do prostoru na vývoj.
 - Otestujte jednotné mikroslužeb v prostoru izolované vývoj v rámci celé aplikace.
 
-![Azure sdílení kol prostory Dev ukázkové aplikace](media/quickstart-team-development/bikeshare.png)
+![Vývoj v týmu Azure Dev mezery](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -125,7 +125,9 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Přejděte *bikesharingweb* service tak, že otevřete veřejnou adresu URL z `azds list-uris` příkazu. V příkladu výše, veřejnou adresu URL pro *bikesharingweb* služba *http://dev.bikesharingweb.fedcab0987.eus.azds.io/*. Vyberte *Aurelia Briggse (zákazníka)* jako uživatel. Ověření se zobrazí text *Hi Aurelia Briggse | Odhlásit* v horní části.
+Přejděte *bikesharingweb* service tak, že otevřete veřejnou adresu URL z `azds list-uris` příkazu. V příkladu výše, veřejnou adresu URL pro *bikesharingweb* služba `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Vyberte *Aurelia Briggse (zákazníka)* jako uživatel. Ověření se zobrazí text *Hi Aurelia Briggse | Odhlásit* v horní části.
+
+![Azure sdílení kol prostory Dev ukázkové aplikace](media/quickstart-team-development/bikeshare.png)
 
 ## <a name="create-child-dev-spaces"></a>Vytváření podřízených dev mezery
 
@@ -162,7 +164,7 @@ http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 
 Ověřte, že adresy URL zobrazen ve `azds list-uris` příkaz mít *azureuser2.s.dev* předponu. Tato předpona potvrdí, že je aktuální místo vybrané *azureuser2*, který je podřízeným prvkem *dev*.
 
-Přejděte *bikesharingweb* služby *dev/azureuser2* dev místo tak, že otevřete veřejnou adresu URL z `azds list-uris` příkaz. V příkladu výše, veřejnou adresu URL pro *bikesharingweb* služba *http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/*. Vyberte *Aurelia Briggse (zákazníka)* jako uživatel. Ověření se zobrazí text *Hi Aurelia Briggse | Odhlásit se* v horní části.
+Přejděte *bikesharingweb* služby *dev/azureuser2* dev místo tak, že otevřete veřejnou adresu URL z `azds list-uris` příkaz. V příkladu výše, veřejnou adresu URL pro *bikesharingweb* služba `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Vyberte *Aurelia Briggse (zákazníka)* jako uživatel. Ověření se zobrazí text *Hi Aurelia Briggse | Odhlásit se* v horní části.
 
 ## <a name="update-code"></a>Aktualizace kódu
 

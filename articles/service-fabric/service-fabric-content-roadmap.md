@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394374"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540706"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -30,7 +30,7 @@ Azure Service Fabric je platforma distribuovaných systémů usnadňující bale
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Návrhu: typ aplikace, typ služby, balíček aplikace a manifest, balíček služby a manifest
 Typ aplikace je název/verze, která je přiřazena ke kolekci typů služeb. Toto je definováno v *ApplicationManifest.xml* soubor, který je vložený v adresáři balíčku aplikace. Balíček aplikace se pak zkopíruje do úložiště imagí clusteru Service Fabric. Pojmenované aplikace si můžete vytvořit z tohoto typu aplikace, které pak spustí v rámci clusteru. 
 
-Typ služby je název/verze přiřadit balíčky kódu, data balíčky a balíčky pro konfiguraci služby. Toto je definováno v souboru ServiceManifest.xml, která je integrována do adresáře balíčku služby. Adresář balíčku service se pak odkazuje balíčku aplikace *ApplicationManifest.xml* souboru. V rámci clusteru po vytvoření aplikace s názvem, můžete vytvořit pojmenovanou službu z jednoho z typů služeb typu aplikace. Typ služby je popsán v jeho *ServiceManifest.xml* souboru. Typ služby se skládá z nastavení konfigurace služby spustitelného kódu, které jsou načteny v době běhu, a statická data, která je využívána služba.
+Typ služby je název/verze přiřadit balíčky kódu, data balíčky a balíčky pro konfiguraci služby. Toto je definováno v souboru ServiceManifest.xml, která je integrována do adresáře balíčku služby. Adresář balíčku service se pak odkazuje balíčku aplikace *ApplicationManifest.xml* souboru. V rámci clusteru po vytvoření aplikace s názvem, můžete vytvořit pojmenovanou službu z jednoho z typů služeb typu aplikace. Typ služby je popsán v jeho *ServiceManifest.xml* souboru. Typ služby se skládá z spustitelného kódu a konfigurace nastavení služby, které jsou načteny v době běhu, a statická data, která je využívána služba.
 
 ![Typy aplikací Service Fabric a typy služeb][cluster-imagestore-apptypes]
 
@@ -84,7 +84,7 @@ Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy.
 ### <a name="reliable-actors"></a>Reliable Actors
 Postavené na Reliable Services [Reliable Actors](service-fabric-reliable-actors-introduction.md) framework je aplikační rozhraní, která implementuje vzoru virtuálního objektu Actor, podle návrhu vzor objektu actor. Reliable Actors rozhraní framework používá nezávislých jednotek výpočetního výkonu a stavu s názvem actors spuštění s jedním vláknem. Reliable Actors, které poskytuje rozhraní framework integrovaným komunikace pro objekty actor a předem nastavení trvalosti a horizontální navýšení kapacity konfigurací stavu.
 
-### <a name="aspnet-core"></a>Jádro ASP.NET
+### <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) jako první třídy programovací model pro vytváření webových a aplikacích API.  ASP.NET Core lze použít v Service Fabric dvěma různými způsoby:
 
 - Hostovaný jako spustitelný soubor typu Host. To se používá především k provozování existujících aplikací ASP.NET Core v Service Fabric s žádnými změnami kódu.

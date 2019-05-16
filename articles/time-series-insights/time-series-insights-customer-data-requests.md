@@ -4,17 +4,17 @@ description: Souhrn funkcí žádosti o data zákazníků Azure Time Series Insi
 author: ashannon7
 ms.author: anshan
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880704"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546396"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
@@ -65,3 +65,11 @@ Další informace najdete v tématu [Průzkumníka služby Azure Time Series Ins
 V současné době Time Series Insights detailní odstranění dat nepodporuje. Ale Time Series Insights poskytuje možnost odebrat zákaznická data uložená v Time Series Insights tím, že nakonfigurujete zásady uchovávání informací. Můžete upravit dobu uchovávání celé prostředí Time Series Insights do libovolného počtu dnů pro podporu vašich požadavků na odstranění.
 
 Další informace najdete v tématu [konfigurace uchovávání naleznete v Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o [udělení přístupu k datům pro vaše prostředí TSI](./time-series-insights-data-access.md).
+
+* Zobrazení [Průzkumníka služby Azure Time Series Insights](time-series-insights-explorer.md).
+
+* Další informace o [konfigurace uchovávání naleznete v Time Series Insights](time-series-insights-how-to-configure-retention.md).

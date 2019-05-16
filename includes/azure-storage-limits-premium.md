@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528488"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65751527"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Úložiště objektů blob bloku výkon úrovně Premium
 
@@ -25,10 +25,10 @@ Soubory typu Premium, použijte účet jedinečný úložiště s názvem **úlo
 
 |Oblast  |Cíl  |
 |---------|---------|
-|Maximální počet zřízení velikost     |5 TiB (public preview), 100 TB (omezené veřejné verzi preview)     |
-|Sdílené složky   |Unlimited  |
-|IOPS     |100 000 (omezené veřejné verzi preview)    |
-|Příchozí přenos dat|4,136 MiB/s     |
+|Maximální počet zřízení velikost     |100 TiB     |
+|Sdílené položky   |Neomezené  |
+|IOPS     |100 000    |
+|Příchozí přenos|4,136 MiB/s     |
 |Výchozí přenos|6,204 MiB/s |
 
  Premium soubor sdílet měřítko cíle, najdete v článku [soubory typu Premium škálování cíle](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) oddílu.

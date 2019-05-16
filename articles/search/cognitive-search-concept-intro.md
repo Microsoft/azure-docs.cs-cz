@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8201b4089759fb55fae12820f7495664c502837e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023633"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540902"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -61,7 +61,7 @@ Interně kanálu vytvoří kolekce dokumentů, bohatších možností. Můžete 
 
 [Hledání služby REST api-version = 2019-05-06](search-api-preview.md) rozšiřuje dovednosti, které poskytuje připojení k Azure storage a projekce, které popisují, jak jsou uloženy obohacení knowledgeStore definici. 
 
-Přidání znalostní báze úložiště dovedností poskytuje schopnost projektu reprezentace vašeho obohacení pro scénáře než fulltextové vyhledávání. Další informace najdete v tématu [co je znalostní báze Store](knowledge-store-concept-intro.md).
+Přidání znalostní báze úložiště dovedností poskytuje schopnost projektu reprezentace vašeho obohacení pro scénáře než fulltextové vyhledávání. Další informace najdete v tématu [co je úložiště znalostní báze](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: Index vyhledávání a přístupu na základě dotazu
 
@@ -145,5 +145,5 @@ Další informace o konkrétní dotazy nebo problémy, najdete v části [tipy p
 + [Dokumentace ke kognitivnímu vyhledávání](cognitive-search-resources-documentation.md)
 + [Rychlé zprovoznění: Vyzkoušení kognitivního vyhledávání v portálu návodu](cognitive-search-quickstart-blob.md)
 + [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)
-+ [Přehled Store znalostní báze](knowledge-store-concept-intro.md)
-+ [Návod Store znalostní báze](knowledge-store-howto.md)
++ [Přehled úložiště znalostní báze](knowledge-store-concept-intro.md)
++ [Návod úložiště znalostní báze](knowledge-store-howto.md)

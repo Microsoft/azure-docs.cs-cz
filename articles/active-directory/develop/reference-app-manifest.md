@@ -3,8 +3,8 @@ title: Vysvětlení manifestu aplikace Azure Active Directory | Dokumentace Micr
 description: Podrobné pokrytí manifestu aplikace Azure Active Directory, který představuje konfigurace identity aplikace v tenantovi Azure AD a používá se pro usnadnění OAuth autorizace, prostředí pro vyjádření souhlasu a další.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 4804f3d4-0ff1-4280-b663-f8f10d54d184
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18ff5c4c54cdfe03eca572e2aa42f2330597c94d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1d02642b0c069124ddcfbef1ea655438c906739a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918761"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545657"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -87,7 +87,7 @@ Konfigurace manifestu aplikace:
 | `signInAudience` | String | Určuje účty Microsoft, které jsou podporovány pro aktuální aplikaci. Podporované hodnoty jsou:<ul><li>**AzureADMyOrg** -uživatelé s Microsoft pracovní nebo školní účet v tenantovi Azure AD své organizace (tj. jeden tenant)</li><li>**AzureADMultipleOrgs** -uživatelé s Microsoft pracovní nebo školní účet v libovolné organizaci tenanta Azure AD (například s více tenanty)</li> <li>**AzureADandPersonalMicrosoftAccount** -uživatelů pomocí osobního účtu Microsoft nebo pracovní nebo školní účet v libovolné organizaci tenanta Azure AD</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | String Array | Vlastní řetězce, které slouží ke kategorizaci a identifikaci aplikace. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
 
-## <a name="common-issues"></a>Běžné problémy
+## <a name="common-issues"></a>Běžné potíže
 
 ### <a name="manifest-limits"></a>Manifest omezení
 

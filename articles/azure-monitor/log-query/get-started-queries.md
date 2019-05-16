@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: HT
+ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415900"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519018"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Začínáme s dotazy protokolů Azure Monitor
 
@@ -179,12 +179,12 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**rozšíření** uchovává všechny původní sloupce sady výsledků dotazu a definuje další značky. Následující dotaz používá **rozšířit** přidáte *localtime* sloupec, který obsahuje lokalizované hodnoty TimeGenerated.
+**rozšíření** uchovává všechny původní sloupce sady výsledků dotazu a definuje další značky. Následující dotaz používá **rozšířit** přidáte *EventCode* sloupce. Všimněte si, že v tomto sloupci nemusí být zobrazeny na konci tabulka výsledků v takovém případě je třeba Rozbalit podrobnosti záznam k jeho zobrazení.
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated -8h
+| extend EventCode=substring(Activity, 0, 4)
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Shrnutí: agregační skupiny řádků

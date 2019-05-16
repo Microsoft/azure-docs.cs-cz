@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 5/10/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919094"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544484"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -26,8 +26,8 @@ V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí na webu Az
 Každá akce se skládá z následujících vlastností:
 
 * **Název**: Jedinečný identifikátor v rámci skupiny akcí.  
-* **Typ akce**: Provést akci. Mezi příklady patří odesílání hlasový hovor, SMS, e-mailů; nebo aktivace různé automatizované akce. Zobrazit typy dále v tomto článku. 
-* **Podrobnosti o**: Související podrobnosti, které se liší podle *typ akce*. 
+* **Typ akce**: Provést akci. Mezi příklady patří odesílání hlasový hovor, SMS, e-mailů; nebo aktivace různé automatizované akce. Zobrazit typy dále v tomto článku.
+* **Podrobnosti o**: Související podrobnosti, které se liší podle *typ akce*.
 
 Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru skupiny akcí](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
@@ -69,7 +69,7 @@ Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitor
 > [!NOTE]
 > Zobrazit [limity předplatného služby pro monitorování](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) pro číselné limity na každé z níže uvedených položek.  
 
-**Aplikace Azure nabízené** – může mít omezený počet akcí Azure aplikace do skupiny akcí. V současné době podporuje pouze akce aplikace Azure ServiceHealth výstrahy. Další typ výstrahy se budou ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+**Aplikace Azure nabízené** – může mít omezený počet akcí Azure aplikace do skupiny akcí.
 
 **E-mailu** – E-maily se budou odesílat z těchto e-mailových adres. Ujistěte se, že filtrování e-mailu je správně nakonfigurována
 - azure-noreply@microsoft.com
@@ -101,6 +101,7 @@ Zdrojové rozsahy IP adres
  - 13.106.38.148
  - 13.106.57.196
  - 52.244.68.117
+ - 52.244.65.137
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

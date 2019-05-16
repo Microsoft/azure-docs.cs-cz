@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024288"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523901"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Služba Azure Search REST api-version. 2019-05-06-Preview
 Tento článek popisuje `api-version=2019-05-06-Preview` verze služby Azure Search REST API, nabízí seznámit s experimentálními funkcemi, které ještě není obecně k dispozici.
@@ -37,6 +37,8 @@ Tento článek popisuje `api-version=2019-05-06-Preview` verze služby Azure Sea
 Funkce, které jsme oznámili v dřívějších verzích Preview jsou stále ve verzi public preview. Pokud voláte rozhraní API z předchozích verzí preview rozhraní api –, můžete nadále používat tuto verzi nebo přepněte na `2019-05-06-Preview` beze změn očekávané chování.
 
 + [parametr dotazu moreLikeThis](search-more-like-this.md) Vyhledá dokumenty, které souvisí s určitým dokumentem. Tato funkce byla v dřívějších verzích Preview. 
+* [Indexování objektů blob CSV](search-howto-index-csv-blobs.md) vytvoří jeden dokument na řádek, na rozdíl od jednoho dokumentu na textový objekt blob.
+* [Podpora rozhraní API MongoDB pro Cosmos DB indexery](search-howto-index-cosmosdb.md) je ve verzi preview.
 
 
 ## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní API ve verzi preview

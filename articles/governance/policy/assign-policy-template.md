@@ -7,14 +7,14 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 03d15d30deabbc2bd34fbb4fba108be382f94fa1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60500165"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65756510"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí šablony Resource Manageru
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
@@ -41,7 +41,7 @@ Tady je kopie šablony:
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Name | Value |
+   | Název | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte název a potom vyberte **OK**. Na snímku obrazovky je název skupiny prostředků *mypolicyquickstart\<datum v MMDD > rg*. |

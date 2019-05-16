@@ -4,7 +4,7 @@ description: Přečtěte si o rozdílech mezi knihovna Microsoft Authentication 
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576121bfc945b90ce8ec0260ea30ec110e14dd8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 028c7f5d42587a6b2129bba07831b0e799d607f4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138832"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544217"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -128,8 +128,8 @@ Tady jsou uděluje podporovaných ADAL.NET a MSAL.NET pro webové aplikace, webo
 Typ aplikace | Udělení | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Webové aplikace, webové rozhraní API, démona | Přihlašovací údaje klienta | [Toky přihlašovacích údajů klienta v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Pověření klienta toků MSAL.NET](msal-authentication-flows.md#client-credentials))
-Web API | Jménem: | [Komunikace mezi službami volá jménem uživatele s ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem aplikace v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
-Webová aplikace | Ověřování kódu | [Získávání tokenů s autorizační kódy ve službě web apps s ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získávání tokenů s autorizační kódy ve službě web apps pomocí A MSAL.NET](msal-authentication-flows.md#authorization-code)
+Webové rozhraní API | Jménem: | [Komunikace mezi službami volá jménem uživatele s ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem aplikace v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
+Webové aplikace | Ověřování kódu | [Získávání tokenů s autorizační kódy ve službě web apps s ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získávání tokenů s autorizační kódy ve službě web apps pomocí A MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Zachování v mezipaměti
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
+ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548628"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791908"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -64,7 +64,7 @@ Můžete nastavit databází Azure SQL a instance databáze shromažďovat násl
 
 | Monitorování telemetrických dat pro databáze | Izolovaná databáze a podpora databáze ve fondu | Podpora databáze instance |
 | :------------------- | ----- | ----- |
-| [Všechny metriky](#all-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
+| [Základní metriky](#basic-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Obsahuje informace o dotazu běhové statistiky, jako je například využití procesoru a statistiky doba trvání dotazu. | Ano | Ano |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): Obsahuje informace o statistiky čekání dotazu (co vaše dotazy čekalo se), jsou procesor, LOG a UZAMČENÍ. | Ano | Ano |
 | [Chyby](#errors-dataset): Obsahuje informace o chybách SQL na databázi. | Ano | Ano |
@@ -93,7 +93,7 @@ Můžete nastavit prostředek elastického fondu pro shromažďování následuj
 
 | Prostředek | Monitorování telemetrických dat |
 | :------------------- | ------------------- |
-| **Elastický fond** | [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics) obsahuje procento eDTU a využití procesoru, limit eDTU/procesoru, fyzických čtení dat procento, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště a XTP úložiště. |
+| **Elastický fond** | [Základní metriky](sql-database-metrics-diag-logging.md#basic-metrics) obsahuje procento eDTU a využití procesoru, limit eDTU/procesoru, fyzických čtení dat procento, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště a XTP úložiště. |
 
 Pokud chcete nakonfigurovat, vysílání datového proudu telemetrická data diagnostiky pro elastických fondů a databází v elastických fondech, budete muset nakonfigurovat samostatně **obě** z následujících akcí:
 
@@ -113,7 +113,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 1. Zadejte název nastavení pro vlastní referenci.
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 1. Ke službě log analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo vyberte existující pracovní prostor.
-1. Zaškrtněte políčko pro elastický fond diagnostickou telemetrii: **AllMetrics**.
+1. Zaškrtněte políčko pro elastický fond diagnostickou telemetrii: **Základní** metriky.
    ![Konfigurovat diagnostiku pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. Vyberte **Uložit**.
 1. Kromě toho konfigurace vysílání datového proudu telemetrická data diagnostiky pro každou databázi v rámci elastického fondu, který chcete monitorovat pomocí kroků popsaných v další části.
@@ -137,7 +137,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro jeden, neb
 1. Zadejte název nastavení pro vlastní referenci.
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 1. Standard, založený na událostech monitorování prostředí vyberte následující políčka pro databáze telemetrii protokolů diagnostiky: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **chyby** , **DatabaseWaitStatistics**, **vypršení časových limitů**, **bloky**, a **zablokování**.
-1. Monitorování prostředí Upřesnit, na základě jednu minutu, zaškrtněte políčko pro **AllMetrics**.
+1. Monitorování prostředí Upřesnit, na základě jednu minutu, zaškrtněte políčko pro **základní** metriky.
    ![Konfigurovat diagnostiku pro jeden, ve fondu nebo instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. Vyberte **Uložit**.
 1. Tento postup opakujte pro každou databázi, kterou chcete monitorovat.
@@ -385,7 +385,7 @@ Nebo jednoduše:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Například může být název objektu blob pro všechny metriky:
+Například může být název objektu blob pro základní metriky:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -411,23 +411,26 @@ Pokud používáte Azure SQL Analytics, můžete monitorovat spotřebu příjem 
 
 Monitorování telemetrických dat, které jsou k dispozici pro službu Azure SQL Database, elastických fondů a spravovaná instance je uvedeno níže. Shromážděné monitorování telemetrických dat do SQL Analytics je možné pro své vlastní analýzy a vývoj aplikace s využitím [dotazů na protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) jazyka.
 
-## <a name="all-metrics"></a>Všechny metriky
+## <a name="basic-metrics"></a>Základní metriky
 
-Najdete v následujících tabulkách podrobnosti o všech metrik podle prostředků.
+Najdete v následujících tabulkách podrobné informace o základní metriky podle prostředků.
 
-### <a name="all-metrics-for-elastic-pools"></a>Všechny metriky pro elastické fondy
+> [!NOTE]
+> Možnost Základní metriky bylo dříve označované jako všechny metriky. Provedení změny provedené pojmenování pouze a že do sledované metriky žádná změna nenastala. Tato změna se iniciovala umožňující zavedení další metriky kategorie v budoucnu.
+
+### <a name="basic-metrics-for-elastic-pools"></a>Základní metriky pro elastické fondy
 
 |**Prostředek**|**Metriky**|
 |---|---|
 |Elastický fond|Procento eDTU eDTU používá, omezení eDTU, procentuální využití procesoru, procentuální čtení fyzické, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště, XTP procento úložiště |
 
-### <a name="all-metrics-for-azure-sql-databases"></a>Všechny metriky pro Azure SQL Database.
+### <a name="basic-metrics-for-azure-sql-databases"></a>Základní metriky pro Azure SQL Database.
 
 |**Prostředek**|**Metriky**|
 |---|---|
 |Databáze Azure SQL|Procento DTU DTU použít, omezení jednotek DTU, procentuální využití procesoru, procento fyzických datových čtení, zápisu protokolu procento, úspěšné nebo neúspěšné/zablokovaný připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště, procento XTP úložiště, a zablokování |
 
-## <a name="all-logs"></a>Všechny protokoly
+## <a name="basic-logs"></a>Základní protokoly
 
 Podrobnosti o telemetrických dat, které jsou k dispozici pro všechny protokoly jsou popsány v následujících tabulkách. Podrobnosti najdete na [nepodporuje protokolování diagnostiky](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) pochopit, které protokoly jsou podporovány pro konkrétní databázi flavor – jeden, Azure SQL ve fondu, nebo instanci databáze.
 

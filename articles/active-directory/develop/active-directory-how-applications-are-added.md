@@ -3,8 +3,8 @@ title: Jak a proč se aplikace přidávají do služby Azure Active Directory
 description: Co znamená pro aplikaci přidat do služby Azure AD a jak se toho, že?
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/18/2018
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300502"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544616"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
 
@@ -34,7 +34,7 @@ Existují dva reprezentace aplikace ve službě Azure AD:
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Co jsou objekty aplikací a odkud jsou pocházejí z?
 Můžete spravovat [objekty aplikací](app-objects-and-service-principals.md#application-object) na webu Azure Portal prostřednictvím [registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) prostředí. Objekty aplikací popisují aplikace do služby Azure AD a lze považovat za definici aplikace, povolení služby vědět, jak pro vydávání tokenů na aplikaci na základě nastavení. Objekt aplikace bude existovat pouze v jeho domovského adresáře, i když je aplikace s více tenanty podpora instanční objekty v jiných adresářích. Objekt aplikace může zahrnovat následující (jako dalšími informace, které zde nejsou uvedeny):
 * Název, loga a vydavatel
-* Adresy URL odpovědí
+* Adresy URL pro odpověď
 * Tajné kódy (symetrický a/nebo asymetrické klíče používané k ověření aplikace)
 * Rozhraní API závislosti (OAuth)
 * Publikované rozhraní API/zdroje/obory (OAuth)

@@ -4,7 +4,7 @@ description: Microsoft Authentication Library (MSAL) vývojářům aplikací umo
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87bd8834f840c2246bf3adc1d1f9cd9b8f635915
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6af78a593fb8fadb836d2dc4c02115d95a7f2712
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191024"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546036"
 ---
 # <a name="integrate-microsoft-authentication-library-msal-with-azure-active-directory-b2c"></a>Integrace Microsoft Authentication Library (MSAL) s Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Pokud jste ještě nevytvořili vlastní [Tenanta Azure AD B2C](https://docs.mic
 
 Následující postup ukazuje, jak může jednostránková aplikace pomocí Azure AD B2C registrovat a přihlášení uživatele a volat chráněné webové rozhraní API.
 
-### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 
 Chcete-li implementovat ověřování, je třeba nejprve registrace vaší aplikace. Chcete-li zaregistrovat aplikaci, postupujte podle [registrace vaší aplikace](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) podrobné pokyny.
 

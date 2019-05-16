@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29ab7b908184533885929040ca8eccf56cda92d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06112361434a8217df6714a70d0059c175e98ac8
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464422"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521720"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy k Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -210,4 +210,4 @@ Další informace najdete v tématu [Automatizace zřizování uživatelů a jeh
 - - -
 **Otázka:  Můžete nastavit zabezpečené připojení LDAP se službou Azure AD?**
 
-**Odpověď:**  Ne. Azure AD nepodporuje protokol Lightweight Directory Access Protocol (LDAP). Nicméně je možné použít Azure AD Domain Services (Azure AD DS) k dosažení připojení LDAP se skupinami zabezpečení sítě správně nakonfigurovaná prostřednictvím síťových služeb Azure. Další informace naleznete v tématu https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**Odpověď:**  Ne. Azure AD nepodporuje protokol Lightweight Directory Access Protocol (LDAP) nebo protokolu Secure LDAP přímo. Je však možné povolit instanci Azure AD Domain Services (Azure AD DS) ve svém tenantovi Azure AD s použitím skupin zabezpečení správně nakonfigurovaná síť prostřednictvím sítě Azure k dosažení připojení LDAP. Další informace naleznete v tématu https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.

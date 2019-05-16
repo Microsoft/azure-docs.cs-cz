@@ -1,5 +1,5 @@
 ---
-title: Práce s projekce v úložišti znalostní báze – Azure Search
+title: Práce s projekce v úložišti znalostní báze (preview) – Azure Search
 description: Uložit a obrazce bohatších možností data z kanál indexování AI pro použití ve scénářích než vyhledávání
 manager: eladz
 author: vkurpad
@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.custom: seomay2019
-ms.openlocfilehash: 3ab5ffafd1b20eb0e3e453d3e730840baf9233e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028362"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540805"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Práce s projekce ve znalostní bázi úložiště ve službě Azure Search
 
+> [!Note]
+> Znalostní báze úložiště je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+>
+
 Služba Azure Search umožňuje rozšíření obsahu prostřednictvím kognitivních dovedností AI a indexování v rámci vlastních dovedností. Obohacení strukturovat vaše dokumenty a zefektivněte hledání. V mnoha případech jsou užitečné pro scénáře než vyhledávání, například dolování znalostní báze bohatších možností dokumenty.
 
-Projekce, součást [znalostní báze store (preview)](knowledge-store-concept-intro.md), jsou zobrazení bohatších možností dokumenty, které lze uložit do fyzického úložiště pro účely dolování znalostní báze. Projekce umožňuje "projekt" data do tvaru, který odpovídá vašim potřebám, zachování relace tak, aby nástrojů, jako je Power BI může číst data s žádné další úsilí. 
+Projekce, součást [znalostní báze úložiště](knowledge-store-concept-intro.md), jsou zobrazení bohatších možností dokumenty, které lze uložit do fyzického úložiště pro účely dolování znalostní báze. Projekce umožňuje "projekt" data do tvaru, který odpovídá vašim potřebám, zachování relace tak, aby nástrojů, jako je Power BI může číst data s žádné další úsilí. 
 
 Projekce může být tabulkový, s daty uloženými v řádků a sloupců ve službě Azure Table storage nebo objekty JSON uložené v úložišti objektů Blob v Azure. Více projekce vašich dat můžete definovat, jak se rozšiřují. To je užitečné, pokud chcete ve tvaru odlišně pro individuální použití případů stejná data. 
 

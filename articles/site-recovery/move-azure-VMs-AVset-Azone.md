@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: b6107211f49978bbacd1a827a9adc37ccef60a5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196159"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65759329"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesuňte virtuální počítače Azure do zóny dostupnosti
 Zóny dostupnosti v Azure pomáhají chránit vaše aplikace a data před selháními datových center. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99 % provozuschopnost virtuálních počítačů (VM). Ve vybraných oblastech se podporují zóny dostupnosti, jak je uvedeno v [co jsou zóny dostupnosti v Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).
@@ -50,7 +50,7 @@ Ve scénáři, kde jsou vaše virtuální počítače nasazené jako *jednu inst
 4. Virtuální počítače s Linuxem postupujte podle pokynů, které jste dostali od distributora Linuxu pro získání nejnovějších důvěryhodných kořenových certifikátů a seznamu odvolaných certifikátů na virtuálním počítači.
 5. Ujistěte se, že ověřovací proxy server nepoužíváte k řízení síťového připojení pro virtuální počítače, které chcete přesunout.
 
-6. Pokud se pokoušíte přesunout virtuální počítač nemá přístup k Internetu a používá proxy server brány firewall k řízení odchozího přístupu, zkontrolujte požadavky na [ konfigurace odchozího síťového připojení](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+6. Pokud se pokoušíte přesunout virtuální počítač nemá přístup k Internetu a používá proxy server brány firewall k řízení odchozího přístupu, zkontrolujte požadavky na [konfigurace odchozího síťového připojení](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 
 7. Určete rozložení síťové zdroje a prostředky, které aktuálně používáte službu pro ověření, včetně nástroje pro vyrovnávání zatížení, skupin zabezpečení sítě a veřejné IP adresy.
 

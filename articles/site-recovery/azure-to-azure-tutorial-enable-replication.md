@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 13c86a38e0d894feed0d9c24dd802a09ff1d1d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 588fe452473ddc2434d92f90afbf8a0e1bc8c275
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773290"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65751032"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 > [!div class="checklist"]
 > * Vytvoření trezoru Služeb zotavení
 > * Ověření nastavení cílových prostředků
-> * Nastavení odchozího přístupu pro virtuální počítače
+> * Nastavení odchozího síťového připojení pro virtuální počítače
 > * Povolit replikaci virtuálního počítače
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](concepts-azure-to-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-azure-to-azure.md) před zahájením.
 
-## <a name="create-a-vault"></a>Vytvoření trezoru
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
 
@@ -52,12 +52,12 @@ V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
 
    Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny prostředky** a na hlavní stránku **Trezory Recovery Services**.
 
-## <a name="verify-target-resources"></a>Ověření cílových prostředků
+## <a name="verify-target-resource-settings"></a>Ověření nastavení cílových prostředků
 
 1. Ověřte, že vaše předplatné Azure umožňuje vytvářet virtuální počítače v cílové oblasti. O povolení požadované kvóty požádejte podporu.
 2. Ujistěte se, že vaše předplatné má dostatek prostředků pro podporu velikosti virtuálních počítačů, které odpovídají velikostem zdrojových virtuálních počítačů. Služba Site Recovery vybere stejnou velikost nebo nejbližší možnou velikost pro cílový virtuální počítač.
 
-## <a name="configure-outbound-network-connectivity"></a>Konfigurace odchozího síťového připojení
+## <a name="set-up-outbound-network-connectivity-for-vms"></a>Nastavení odchozího síťového připojení pro virtuální počítače
 
 Site Recovery k fungovat podle očekávání budete muset upravit odchozího síťového připojení z virtuálních počítačů, které chcete replikovat.
 
@@ -107,7 +107,7 @@ Azure Site Recovery poskytuje pro řízení operací správy Site Recovery tři 
 
 Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-## <a name="enable-replication"></a>Povolení replikace
+## <a name="enable-replication-for-a-vm"></a>Povolit replikaci virtuálního počítače
 
 ### <a name="select-the-source"></a>Výběr zdroje
 
@@ -133,7 +133,7 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 1. Kliknutím na **Nastavení** zobrazte nastavení cíle a replikace.
 2. Chcete-li přepsat výchozí nastavení cíle, klikněte na tlačítko **vlastní** vedle **skupinu prostředků, síť, úložiště a dostupnosti**.
 
-   ![Konfigurace nastavení](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+   ![Konfigurovat nastavení](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
 3. Přizpůsobte cílová nastavení popsané v tabulce.
@@ -146,7 +146,7 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
     **Cílová virtuální síť** | Síť v cílové oblasti, že jsou virtuální počítače umístěné po převzetí služeb při selhání.<br/><br/> Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou virtuální síť (a podsítě) s příponou asr.
     **Účty úložiště mezipaměti** | Site Recovery využívá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.<br/><br/> Pokud používáte účet úložiště mezipaměti povolena brána firewall, ujistěte se, že povolíte **Povolit důvěryhodné služby Microsoftu**. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
     **Cílové účty úložiště (zdrojový virtuální počítač používá nespravované disky)** | Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti zrcadlící účet úložiště virtuálního počítače zdrojového nový účet úložiště.<br/><br/> Povolit **Povolit důvěryhodné služby Microsoftu** Pokud používáte účet úložiště mezipaměti povolena brána firewall.
-    **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)** | Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk repliky spravovaných disků.
+    **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)** | Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk repliky spravovaných disků. Můžete upravit pouze typ disku 
     **Cílové skupiny dostupnosti** | Ve výchozím nastavení Azure Site Recovery vytvoří nové dostupnosti v cílové oblasti s názvem, který má příponu "Azure Site Recovery" pro virtuální počítače součástí skupiny dostupnosti ve zdrojové oblasti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
     **Cílové zóny dostupnosti** | Ve výchozím nastavení Site Recovery přiřadí číslo zóny jako zdrojové oblasti v cílové oblasti, v případě, že cílové oblasti podporují zóny dostupnosti.<br/><br/> Pokud cílová oblast nepodporuje zóny dostupnosti, jsou cílové virtuální počítače ve výchozím nastavení nakonfigurované jako jedné instance.<br/><br/> Klikněte na tlačítko **vlastní** ke konfiguraci virtuálních počítačů v rámci skupiny dostupnosti v cílové oblasti.<br/><br/> Typ dostupnost (jednu instanci, set nebo dostupnost zóně dostupnosti) nelze změnit po povolení replikace. Budete muset zakázat a povolit replikaci, chcete-li změnit typ dostupnosti.
 

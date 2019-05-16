@@ -1,5 +1,5 @@
 ---
-title: Jak začít pracovat s znalostní báze Store (preview) – Azure Search
+title: Jak začít pracovat s úložištěm znalostní báze (preview) – Azure Search
 description: Přečtěte si postup pro odeslání bohatších možností dokumentů vytvořil AI indexování kanály ve službě Azure Search do znalostní báze úložiště v účtu úložiště Azure. Odtud můžete zobrazit, upravovat a využívat bohatších možností dokumentů ve službě Azure Search i v jiných aplikacích.
 manager: cgronlun
 author: HeidiSteen
@@ -8,16 +8,20 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: e7be2dfc811caa087726339846a1de2516f1e2b2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471741"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540729"
 ---
-# <a name="how-to-get-started-with-knowledge-store"></a>Jak začít pracovat s Store znalostní báze
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak začít pracovat s úložištěm znalostní báze ve službě Azure Search
 
-[Znalostní báze Store](knowledge-store-concept-intro.md) je nová funkce ve verzi preview ve službě Azure Search, která ukládá obohacení AI vytvořené v kanál indexování pro dolování znalostní báze v jiných aplikacích. Uložené obohacení můžete také použít k pochopení a zpřesnit kanál indexování Azure Search.
+> [!Note]
+> Znalostní báze úložiště je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+>
+
+[Znalostní báze úložiště](knowledge-store-concept-intro.md) uloží obohacení AI vytvořené při indexování do účtu úložiště Azure pro příjem dat znalostní báze dolování v jiných aplikacích. Uložené obohacení můžete také použít k pochopení a zpřesnit kanál indexování Azure Search.
 
 Znalostní báze úložiště je definována dovedností. Pro scénáře fulltextové vyhledávání regulárního Azure Search účel dovedností poskytuje obohacení AI, aby obsah více možností prohledávání. Pro scénáře dolování znalostní báze role dovedností je vytváření, sestavování a uložení několika datových struktur pro analýzu nebo modelování v jiných aplikací a procesů.
 

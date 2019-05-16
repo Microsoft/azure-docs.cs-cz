@@ -1,7 +1,7 @@
 ---
 title: Automatizované cíle vzdálený výpočetní ML
 titleSuffix: Azure Machine Learning service
-description: Naučte se sestavovat modely využití automatizovaných strojového učení na Data Science virtuální cílové výpočetní prostředí vzdáleného počítače (DSVM) pomocí služby Azure Machine Learning
+description: Další informace o vytváření modelů pomocí automatizovaných machine learningu v Azure Machine Learning cíli vzdálený Výpočetní službě Azure Machine Learning
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,26 +12,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a18bdf3a2a1ccd60ff20d21ebd99f4f6e15e38f
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820387"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551342"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
 Ve službě Azure Machine Learning vyzkoušejte svůj model pro různé typy výpočetní prostředky, které spravujete. Cílové výpočetní prostředí může být místní počítač nebo počítač v cloudu.
 
-Můžete snadno vertikálně navýšit kapacitu nebo horizontální navýšení kapacity experimentu s Machine learningem tak, že přidáte další výpočetní cíle. Výpočetní target – možnosti zahrnují založeného na Ubuntu dat virtuálního počítače VĚDY nebo Azure Machine Learning Compute. Datové VĚDY je přizpůsobená image virtuálního počítače v cloudu Azure Microsoftu vytvořená speciálně pro datových věd. Obsahuje mnoho oblíbených datové vědy a dalších nástrojů, funkcí a je předem nakonfigurované.  
+Můžete snadno vertikálně navýšit kapacitu nebo horizontální navýšení kapacity experimentu s Machine learningem tak, že přidáte další výpočetní cíle, jako je Azure Machine Learning Compute (AmlCompute). AmlCompute je spravované výpočetní infrastruktura, která vám umožní snadno vytvořit jeden nebo více uzly výpočetní.
 
-V tomto článku se naučíte sestavit model využívající automatizované ML na datové VĚDY.
+V tomto článku se naučíte sestavit model využívající automatizované ML s AmlCompute.
 
 ## <a name="how-does-remote-differ-from-local"></a>Jak se liší vzdálené a místní?
 
-Tento kurz "[Vyškolíme model klasifikace pomocí automatizovaných strojového učení](tutorial-auto-train-models.md)" vás naučí, jak použijete k natrénování modelu pomocí automatizovaných ML místního počítače.  Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. K trénování vzdáleně, je nejprve vytvořit cílové vzdálené výpočetní prostředí jako je například DSVM Azure.  Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
+Tento kurz "[Vyškolíme model klasifikace pomocí automatizovaných strojového učení](tutorial-auto-train-models.md)" vás naučí, jak použijete k natrénování modelu pomocí automatizovaných ML místního počítače.  Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. K trénování vzdáleně, je nejprve vytvořit cílové vzdálené výpočetní prostředí jako je například AmlCompute. Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
 
-Tento článek popisuje další kroky potřebné ke spuštění na vzdáleném DSVM automatizované experimentu ML.  Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
+Tento článek popisuje další kroky potřebné ke spuštění automatizovaných experimentu ML na vzdálené cílové AmlCompute. Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
 
 ```python
 ws = Workspace.from_config()
@@ -39,67 +39,32 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Vytvořit prostředek
 
-Vytvoření datové VĚDY v pracovním prostoru (`ws`) Pokud ještě neexistuje. Pokud byla dříve vytvořena datové VĚDY, tento kód přeskočí v procesu vytváření a načte existující podrobnosti prostředku do `dsvm_compute` objektu.  
+Vytvořte cílovou službu AmlCompute ve vašem pracovním prostoru (`ws`) Pokud ještě neexistuje.  
 
-**Časový odhad**: Vytvoření virtuálního počítače trvá přibližně 5 minut.
-
-```python
-from azureml.core.compute import DsvmCompute
-
-dsvm_name = 'mydsvm' #Name your DSVM
-try:
-    dsvm_compute = DsvmCompute(ws, dsvm_name)
-    print('found existing dsvm.')
-except:
-    print('creating new dsvm.')
-    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
-    dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-    dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
-    dsvm_compute.wait_for_completion(show_output = True)
-```
-
-Teď můžete použít `dsvm_compute` jako vzdálený výpočetní cílový objekt.
-
-Omezení přístupu názvem DSVM patří:
-+ Musí být kratší než 64 znaků.  
-+ Nesmí obsahovat žádný z následujících znaků: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
-
->[!Warning]
->Pokud se vytvoření nezdaří a zobrazí se zpráva o způsobilosti nákupní Marketplace:
->    1. Přejděte na web [Azure Portal](https://portal.azure.com).
->    1. Začněte vytvářet DSVM 
->    1. Vyberte "Chcete vytvořit prostřednictvím kódu programu" Povolit programové vytváření
->    1. Ukončíte bez vytvoření virtuálního počítače
->    1. Znovu spustit kód pro vytváření.
-
-Tento kód nevytváří uživatelské jméno nebo heslo pro datové VĚDY, pro kterého je zřízené. Pokud se chcete připojit přímo k virtuálnímu počítači, přejděte [webu Azure portal](https://portal.azure.com) Vytvořte přihlašovací údaje.  
-
-### <a name="attach-existing-linux-dsvm"></a>Připojit existující DSVM Linux
-
-Můžete také připojit existující DSVM Linux jako cílové výpočetní prostředí. Tento příklad využívá existující DSVM, ale nevytvoří nový prostředek.
-
-> [!NOTE]
->
-> Následující kód používá [RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py) cílové třídy připojit existující virtuální počítač jako vaše cílové výpočetní prostředí.
-> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py) třídy se přestanou používat v budoucích vydaných verzích a místo toho použití tohoto vzoru návrhu.
-
-Spusťte následující kód k vytvoření cílové výpočetní prostředí z již existujících DSVM Linux.
+**Časový odhad**: Vytvoření cíle AmlCompute trvá přibližně 5 minut.
 
 ```python
-from azureml.core.compute import ComputeTarget, RemoteCompute 
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
 
-attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_address_or_fqdn>',
-                                                   ssh_port=22,
-                                                   private_key_file='./.ssh/id_rsa')
-compute_target = ComputeTarget.attach(workspace=ws,
-                                      name='attached-vm',
-                                      attach_configuration=attach_config)
+amlcompute_cluster_name = "automlcl" #Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", 
+                                                            # for GPU, use "STANDARD_NC6"
+                                                            #vm_priority = 'lowpriority', # optional
+                                                            max_nodes = 6)
 
-compute_target.wait_for_completion(show_output=True)
+compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+    
+# Can poll for a minimum number of nodes and for a specific timeout.
+# If no min_node_count is provided, it will use the scale settings for the cluster.
+compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
 ```
 
 Teď můžete použít `compute_target` jako vzdálený výpočetní cílový objekt.
+
+Omezení názvu clusteru, patří:
++ Musí být kratší než 64 znaků.  
++ Nesmí obsahovat žádný z následujících znaků: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
 
 ## <a name="access-data-using-getdata-file"></a>Přístup k datům pomocí souboru get_data
 
@@ -161,7 +126,7 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                             )
@@ -175,7 +140,7 @@ Nastavit volitelný `model_explainability` parametr `AutoMLConfig` konstruktoru.
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
@@ -250,12 +215,12 @@ Najít protokoly na datové VĚDY v rámci `/tmp/azureml_run/{iterationid}/azure
 
 Načítání modelu vysvětlení dat umožňuje zobrazit podrobné informace o modelech pro zvýšení transparentnosti do co běží na back endu. V tomto příkladu spustíte modelu vysvětlení pouze pro nejlepší přizpůsobení modelu. Při spuštění pro všechny modely v kanálu, způsobí spoustu času spuštění. Obsahuje informace o modelu vysvětlení:
 
-* shap_values: Vysvětlení informací generovaných okno lib
+* shap_values: Vysvětlení informace generované okno lib.
 * expected_values: Očekávaná hodnota použitý k nastavení X_train dat modelu.
-* overall_summary: Hodnoty význam úroveň funkce modelu seřazeny v sestupném pořadí
-* overall: Názvy funkcí seřazeny ve stejném pořadí jako overall_summary
-* per_class_summary: Na úrovni funkce význam hodnoty třídy seřazeny v sestupném pořadí. K dispozici jenom pro případ klasifikace
-* per_class_imp: Názvy funkcí seřazeny ve stejném pořadí jako per_class_summary. K dispozici jenom pro případ klasifikace
+* overall_summary: Na úrovni funkce význam hodnoty modelu seřazeny v sestupném pořadí.
+* overall: Názvy funkcí seřazeny ve stejném pořadí jako overall_summary.
+* per_class_summary: Na úrovni funkce význam hodnoty třídy seřazeny v sestupném pořadí. Dostupné jenom pro případ klasifikace.
+* per_class_imp: Názvy funkcí seřazeny ve stejném pořadí jako per_class_summary. Dostupné jenom pro případ klasifikace.
 
 Chcete-li vybrat nejlepší kanál ze své iterace použijte následující kód. `get_output` Metoda vrátí nejlepší spuštění a vybavené model pro poslední přizpůsobit vyvolání.
 
@@ -291,7 +256,7 @@ Funkce význam prostřednictvím widgetu uživatelského rozhraní, jakož i ve 
 
 ## <a name="example"></a>Příklad:
 
-[How-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb) Poznámkový blok ukazuje koncepty v tomto článku. 
+[How-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) Poznámkový blok ukazuje koncepty v tomto článku. 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

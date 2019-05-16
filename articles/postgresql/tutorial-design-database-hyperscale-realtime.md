@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 9f3473d83678ffea888dad736a9620006b2961f7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: MT
+ms.date: 05/14/2019
+ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406397"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65757554"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Kurz: Návrh řídicí panel analýzy v reálném čase s využitím Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
 
@@ -30,72 +30,7 @@ V tomto kurzu použijete Azure Database for PostgreSQL – velkokapacitní (Citu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-
-## <a name="create-an-azure-database-for-postgresql"></a>Vytvoření Azure Database for PostgreSQL
-
-Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
-1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-2. Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **Azure Database for PostgreSQL**.
-3. Možnost nasazení, klikněte na tlačítko **vytvořit** tlačítko **skupinu serverů Hyperškálovatelného (Citus) – ve verzi PREVIEW.**
-4. Do formuláře podrobností o novém serveru zadejte následující informace:
-   - Skupina prostředků: klikněte na tlačítko **vytvořit nový** odkaz pod textové pole pro toto pole. Zadejte název, například **myresourcegroup**.
-   - Název skupiny serverů: **mydemoserver** (název serveru, který se mapuje na název DNS a je nutné být globálně jedinečný).
-   - Uživatelské jméno správce: **myadmin** (to se později použijí pro připojení k databázi).
-   - Heslo: musí být alespoň osm znaků a musí obsahovat znaky ze tří z těchto kategorií – velká písmena anglické, anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % atd.)
-   - Umístění: použijte umístění co nejblíže vašim uživatelům jim zajistili nejrychlejší přístup k datům.
-
-   > [!IMPORTANT]
-   > Zde zadané přihlašovací jméno a heslo správce serveru se vyžadují pro přihlášení k serveru a jeho databázím dále v tomto kurzu. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
-
-5. Klikněte na tlačítko **konfigurovat skupinu serverů**. Ponechejte nastavení v této části beze změny a klikněte na tlačítko **Uložit**.
-6. Klikněte na tlačítko **revize + vytvořit** a potom **vytvořit** ke zřízení serveru. Zřizování trvá několik minut.
-7. Monitorování nasazení přesměruje na stránku. Změny za provozu stavu z **nasazení probíhá** k **vaše nasazení je kompletní**, klikněte na tlačítko **výstupy** položky nabídky na levé straně stránky.
-8. Stránka výstupy bude obsahovat název hostitele koordinátor s tlačítkem vedle něj zkopírovat hodnotu do schránky. Poznamenejte si tyto údaje pro pozdější použití.
-
-## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru
-
-Služba Azure Database for PostgreSQL využívá bránu firewall na úrovni serveru. Ve výchozím nastavení brána firewall brání všem externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru. Přidáme pravidlo k otevření brány firewall pro konkrétní rozsah IP adres.
-
-1. Z **výstupy** části, kde jste dříve zkopírovali název hostitele koordinační uzel, klikněte na tlačítko zpět do **přehled** položky nabídky.
-
-2. Najít skupinu škálování pro nasazení v seznamu prostředků a klikněte na něj. (Její název bude obsahovat předponu "sg-".)
-
-3. Klikněte na tlačítko **brány Firewall** pod **zabezpečení** v levé nabídce.
-
-4. Klikněte na odkaz **+ přidat pravidlo brány firewall pro aktuální IP adresa klienta**. Nakonec klikněte na tlačítko **Uložit** tlačítko.
-
-5. Klikněte na **Uložit**.
-
-   > [!NOTE]
-   > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 5432.
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Připojení k databázi pomocí nástroje psql ve službě Cloud Shell
-
-Teď se pomocí nástroje příkazového řádku [psql](https://www.postgresql.org/docs/current/app-psql.html) připojíme k serveru Azure Database for PostgreSQL.
-1. Pomocí ikony terminálu v horním navigačním podokně spusťte službu Azure Cloud Shell.
-
-   ![Azure Database for PostgreSQL – ikona terminálu Azure Cloud Shell](./media/tutorial-design-database-hyperscale-realtime/psql-cloud-shell.png)
-
-2. Služba Azure Cloud Shell se otevře v prohlížeči a umožní vám zadat příkazy Bash.
-
-   ![Azure Database for PostgreSQL – příkazový řádek Bash služby Azure Shell](./media/tutorial-design-database-hyperscale-realtime/psql-bash.png)
-
-3. V příkazovém řádku služby Cloud Shell se pomocí příkazů psql připojte k serveru Azure Database for PostgreSQL. Následující formát se používá pro připojení k serveru Azure Database for PostgreSQL s nástrojem [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html):
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   Například následující příkaz se připojí k výchozí databázi s názvem **citus** na váš server PostgreSQL **mydemoserver.postgres.database.azure.com** pomocí přihlašovacích údajů pro přístup. Po zobrazení výzvy zadejte heslo správce serveru.
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Vytvořte schéma pomocí nástroje psql
 
@@ -117,7 +52,7 @@ CREATE TABLE http_request (
 );
 ```
 
-Budeme také vytvořit tabulku, která bude obsahovat naše agregace po minutách a tabulku, která udržuje pozice naší poslední kumulativní. Spuštěním následujícího příkazu v také psql:
+Budeme také vytvořit tabulku, která bude obsahovat naše agregace po minutách a tabulku, která udržuje pozice naší poslední kumulativní. Spuštěním následujících příkazů v také psql:
 
 ```sql
 CREATE TABLE http_request_1min (
@@ -170,7 +105,7 @@ DO $$
       ip_address, status_code, response_time_msec
     ) VALUES (
       trunc(random()*32), clock_timestamp(),
-      concat('https://example.com/', md5(random()::text)),
+      concat('http://example.com/', md5(random()::text)),
       ('{China,India,USA,Indonesia}'::text[])[ceil(random()*4)],
       concat(
         trunc(random()*250 + 2), '.',
@@ -181,12 +116,13 @@ DO $$
       ('{200,404}'::int[])[ceil(random()*2)],
       5+trunc(random()*150)
     );
+    COMMIT;
     PERFORM pg_sleep(random() * 0.25);
   END LOOP;
 END $$;
 ```
 
-Dotaz přidá řádek druhé přibližně každé čtvrtletí. Řádky se ukládají na jinou pracovní uzly podle sloupec distribuce `site_id`.
+Dotaz vloží přibližně osm řádků za sekundu. Řádky se ukládají na jinou pracovní uzly podle sloupec distribuce `site_id`.
 
    > [!NOTE]
    > Nechte generování dotazu na data spuštění a otevřít druhé připojení psql pro zbývající příkazy v tomto kurzu.
@@ -213,13 +149,13 @@ GROUP BY site_id, minute
 ORDER BY minute ASC;
 ```
 
-## <a name="performing-rollups"></a>Provádění kumulativních
+## <a name="rolling-up-data"></a>Shrnutí dat
 
-Výše uvedeném dotazu funguje v počátečních fázích, ale jako vaše škálování dat se sníží výkon. I přes distribuované zpracování, je rychlejší než přepočítat opakovaně předem compute tato data.
+Předchozí dotaz funguje v počátečních fázích, ale jeho výkon sníží, přetrénujte jako škálování vašich dat. I přes distribuované zpracování, je rychlejší předem compute dat než přepočítat ho opakovaně.
 
-Jsme zajistit náš řídicí panel zůstane rychlé zahrnutím pravidelně nezpracovaná data do agregační tabulky. V tomto případě jsme budou zahrnuty do naší tabulce agregace jednu minutu, ale může také obsahovat agregace 5 minut, 15 minut, hodinu a tak dále.
+Jsme zajistit náš řídicí panel zůstane rychlé zahrnutím pravidelně nezpracovaná data do agregační tabulky. Můžete experimentovat s dobou trvání agregace. Jsme použili tabulce agregace za minutu, ale data může rozdělit na 5, 15 nebo 60 minut místo.
 
-Protože jsme neustále se spustí toto shrnutí chceme vytvořit funkci, kterou chcete provést. Spusťte následující příkazy psql vytvořit `rollup_http_request` funkce.
+Ke spuštění této souhrnné snadněji, My budeme umístíte do plpgsql funkce. Spusťte následující příkazy psql vytvořit `rollup_http_request` funkce.
 
 ```sql
 -- initialize to a time long ago
@@ -260,7 +196,7 @@ Pomocí naší funkce v místě spusťte ji chcete-li vrátit data:
 SELECT rollup_http_request();
 ```
 
-A pomocí našich dat ve formě předem agregovat jsme můžete dotazovat v tabulce kumulativní získat stejné sestavy jako předtím. Spusťte následující příkazy:
+A pomocí našich dat ve formě předem agregovat jsme můžete dotazovat v tabulce kumulativní získat stejné sestavy jako předtím. Spuštěním následujícího dotazu:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -271,7 +207,7 @@ SELECT site_id, ingest_time as minute, request_count,
 
 ## <a name="expiring-old-data"></a>U nichž vyprší platnost starých dat
 
-Souhrny urychlit dotazů, ale musíme vyprší původní dat. vyhnete se tak náklady na úložiště bez vazby. Jednoduše rozhodněte, jak dlouho chcete uchovávat data pro každý členitosti a odstraňte data s prošlou platností pomocí standardní dotazy. V následujícím příkladu jsme se rozhodli zachovat nezpracovaná data za jeden den a po minutách, agregací pro jeden měsíc:
+Souhrny urychlit dotazů, ale musíme vyprší původní dat. vyhnete se tak náklady na úložiště bez vazby. Rozhodněte, jak dlouho chcete uchovávat data pro každý členitosti a odstraňte data s prošlou platností pomocí standardní dotazy. V následujícím příkladu jsme se rozhodli zachovat nezpracovaná data za jeden den a po minutách, agregací pro jeden měsíc:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';

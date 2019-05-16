@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564756"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620430"
 ---
 # <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
 
@@ -37,7 +37,7 @@ Network Performance Monitor (NPM) je sada funkcí, z nichž každý je zaměřen
 
 Sledování výkonu, monitorování ExpressRoute a připojení k monitorování služby monitorování funkcí v rámci NPM a jsou popsané níže.
 
-## <a name="performance-monitor"></a>Monitorování výkonu
+## <a name="performance-monitor"></a>Monitor výkonu
 
 Sledování výkonu je součástí NPM a je monitorování sítě pro cloud, hybridní a v místních prostředích. Můžete monitorovat připojení k síti napříč vzdálenými pobočkami a dočasnými kancelářemi, skladovými lokalitami, datovými centry a cloudy. Předtím, než si vaši zákazníci začnou stěžovat můžete detekovat problémy se sítí. Jsou klíčové výhody:
 
@@ -53,7 +53,9 @@ Další informace naleznete v následujících článcích:
 
 * [Konfigurace Network Performance Monitor Solution v protokoly Azure monitoru](../azure-monitor/insights/network-performance-monitor.md) 
 * [Případy použití](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
-*  Aktualizace produktu: [Únor 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [. srpna 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+* Aktualizace produktu:
+  * [Únor 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [Ze srpna 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 

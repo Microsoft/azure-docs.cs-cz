@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b78671cc61a4fe755b908ed9f71052cbd0a70b38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61041271"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550514"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení ve službě Azure Database pro MariaDB
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby.
@@ -82,6 +82,9 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 
 ### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
 - Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
+
+### <a name="storage-size"></a>Velikost úložiště
+- Najdete [cenové úrovně](concepts-pricing-tiers.md) pro omezení velikosti úložiště na cenovou úroveň.
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
 - Instance serveru MariaDB zobrazuje nesprávná verze po navázání připojení. Chcete-li získat správný server verze modulu instance, použijte `select version();` příkazu.

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 02cff1be85f4489a9529383d90694581f2599cba
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: ba198cbe0c362055f36cb4bdecf34a0dbad477a8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939179"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65745163"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 
@@ -110,6 +110,32 @@ V této části Vytvoření služby Azure Databricks s využitím webu Azure por
 
     * Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
+## <a name="ingest-data"></a>Ingestace dat
+
+### <a name="copy-source-data-into-the-storage-account"></a>Zkopírování zdrojových dat do účtu úložiště
+
+Pomocí AzCopy můžete kopírovat data z vašeho *CSV* souborů do účtu Data Lake Storage Gen2.
+
+1. Otevřete okno příkazového řádku a zadejte následující příkaz k přihlášení do účtu úložiště.
+
+   ```bash
+   azcopy login
+   ```
+
+   Postupujte podle pokynů, které se zobrazí v okně příkazového řádku k ověření uživatelského účtu.
+
+2. Pro kopírování dat z *CSV* account, zadejte následující příkaz.
+
+   ```bash
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   ```
+
+   * Nahradit `<csv-folder-path>` zástupnou hodnotu s cestou *CSV* souboru.
+
+   * Nahradit `<storage-account-name>` zástupnou hodnotu s názvem účtu úložiště.
+
+   * Nahradit `<file-system-name>` zástupný symbol libovolný název, který chcete udělit systému souborů.
+
 ## <a name="create-a-file-system-and-mount-it"></a>Vytvořit systém souborů a připojte ji zadáním
 
 V této části vytvoříte systém souborů a složky v účtu úložiště.
@@ -129,9 +155,9 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-           "fs.azure.account.oauth2.client.id": "<application-id>",
-           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
-           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.account.oauth2.client.id": "<appId>",
+           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
@@ -140,13 +166,17 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
     extra_configs = configs)
     ```
 
-18. V tomto bloku kódu, nahraďte `application-id`, `authentication-id`, `tenant-id`, a `storage-account-name` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahraďte `file-system-name` hodnotu zástupného symbolu pomocí cokoli, co název chcete umožnit systému souborů.
+18. V tomto bloku kódu, nahraďte `appId`, `password`, `tenant`, a `storage-account-name` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahradit `file-system-name` zástupnou hodnotu s názvem, který jste zadali do systému souborů služby ADLS v předchozím kroku.
 
-   * `application-id`, A `authentication-id` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
+Tyto hodnoty použijte k zástupné symboly uvedené.
+
+   * `appId`, A `password` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
 
    * `tenant-id` Je ze svého předplatného.
 
    * `storage-account-name` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+
+   * Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
 
    > [!NOTE]
    > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
@@ -154,32 +184,6 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
 19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
    Tento poznámkový blok nechte otevřené, protože příkazy se do ní přidat později.
-
-## <a name="ingest-data"></a>Ingestace dat
-
-### <a name="copy-source-data-into-the-storage-account"></a>Zkopírování zdrojových dat do účtu úložiště
-
-Pomocí AzCopy můžete kopírovat data z vašeho *CSV* souborů do účtu Data Lake Storage Gen2.
-
-1. Otevřete okno příkazového řádku a zadejte následující příkaz k přihlášení do účtu úložiště.
-
-   ```bash
-   azcopy login
-   ```
-
-   Postupujte podle pokynů jsou zobrazeny v okně příkazového řádku k ověření uživatelského účtu.
-
-2. Pro kopírování dat z *CSV* account, zadejte následující příkaz.
-
-   ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
-   ```
-
-   * Nahradit `<csv-folder-path>` zástupnou hodnotu s cestou *CSV* souboru.
-
-   * Nahradit `storage-account-name` zástupnou hodnotu s názvem účtu úložiště.
-
-   * Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Použití poznámkového bloku Databricks k převodu CSV na formát Parquet
 

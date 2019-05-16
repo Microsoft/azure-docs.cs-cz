@@ -1,19 +1,18 @@
 ---
 title: Použijte jedinečné klíče ve službě Azure Cosmos DB
 description: Další informace o použití jedinečné klíče v databázi Azure Cosmos
-author: rockboyfor
-ms.author: v-yeche
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 04/08/2019
-ms.date: 04/15/2019
+ms.date: 04/08/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3c5e8a2c85898175772dc353258e77fc8e0a74f2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c3524f27cc14050647c457fdb5e87b2b83dbdfc0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115719"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595877"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečných klíčů ve službě Azure Cosmos DB
 
@@ -27,14 +26,14 @@ Vytvoření položek pomocí stejné e-mailové adresy, ale není stejné křest
 
 Například kontejner může obsahovat položky s použitím následujících hodnot, kde každá položka respektuje omezení unique key.
 
-| % CompanyID | Jméno | Příjmení |   E-mailová adresa    |
-|-----------|------------|-----------|--------------------|
-|  Contoso  |    Gaby    |  Duperre  |  gaby@contoso.com  |
-|  Contoso  |    Gaby    |  Duperre  | gaby@fabrikam.com  |
-| Společnost Fabrikam  |    Gaby    |  Duperre  | gaby@fabrikam.com  |
-| Společnost Fabrikam  |    Ivan    |  Duperre  | gaby@fabrikam.com  |
-|  Fabrkam  |            |  Duperre  | gaby@fabraikam.com |
-|  Fabrkam  |            |           | gaby@fabraikam.com |
+|% CompanyID|Jméno|Příjmení|E-mailová adresa|
+|---|---|---|---|
+|Contoso|Gaby|Duperre|gaby@contoso.com |
+|Contoso|Gaby|Duperre|gaby@fabrikam.com|
+|Společnost Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
+|Společnost Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
+|Fabrkam|   |Duperre|gaby@fabraikam.com|
+|Fabrkam|   |   |gaby@fabraikam.com|
 
 Pokud se pokusíte vložit jiná položka s kombinací uvedené v předchozí tabulce, zobrazí se chybová zpráva. Chyba udává, že omezení unique key nebyla splněna. Zobrazí se jedna `Resource with specified ID or name already exists` nebo `Resource with specified ID, name, or unique index already exists` jako návratovou zprávu. 
 
@@ -56,6 +55,5 @@ Jedinečné klíče můžete definovat pouze v případě, že vytvoříte konte
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [logické oddíly](partition-data.md).
-
-<!-- Update_Description: update meta propreties, wording update -->
+* Další informace o [logickými oddíly](partition-data.md)
+* Prozkoumejte [definování jedinečné klíče](how-to-define-unique-keys.md) při vytváření kontejneru

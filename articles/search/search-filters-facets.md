@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ec87bdadc0e7f77cdeebb16403758026fd956c30
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8dffc5b87aefe23953d3a74f1d96b5ee03e0315d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939858"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597385"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak vytvořit filtr omezující vlastnosti ve službě Azure Search 
 
@@ -37,50 +37,48 @@ Teprve se fasetová navigace a chcete další podrobnosti? Zobrazit [jak ve slu�
 
 Omezující vlastnosti můžete počítat z polí s jednou hodnotou, stejně jako kolekce. Pole, která nejlépe fungovat ve Fasetové navigace mají nízké Kardinalita: malý počet jedinečných hodnot, které se opakují v celém dokumenty ve vaší ve vyhledávacím korpusu služby (například seznam barev, země/oblasti nebo názvy). 
 
-"Faceting" je povolený na základě pole pomocí pole při vytváření indexu, tak, že nastavíte na hodnotu TRUE následující atributy: `filterable`, `facetable`. Kategorizovat je možné pouze filtrovatelná pole.
+"Faceting" je povolený na základě pole pomocí pole při vytváření indexu tak, že nastavíte `facetable` atribut `true`. Měli byste obecně také nastavit `filterable` atribut `true` pro takové pole tak, aby vaše vyhledávací aplikace můžete filtrovat podle těchto polí podle charakteristiky, které koncový uživatel vybere. 
 
-Žádné [typ pole](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , který se může pravděpodobně použije v Fasetové navigace je označena jako "facetable":
+Při vytváření indexu pomocí rozhraní REST API, všechny [typ pole](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , který se může pravděpodobně použije v Fasetové navigace je označen jako `facetable` ve výchozím nastavení:
 
-+ Edm.String
-+ Edm.DateTimeOffset
-+ Edm.Boolean
-+ Edm.Collections
-+ Číselné pole typů: Edm.Int32, Edm.Int64, Edm.Double
++ `Edm.String`
++ `Edm.DateTimeOffset`
++ `Edm.Boolean`
++ Číselné pole typů: `Edm.Int32`, `Edm.Int64`, `Edm.Double`
++ Kolekce z výše uvedených typů (například `Collection(Edm.String)` nebo `Collection(Edm.Double)`)
 
-Edm.GeographyPoint nelze použít v Fasetové navigace. Omezující vlastnosti se vytvářejí na základě lidské čitelný text nebo čísla. V důsledku toho omezující vlastnosti nejsou podporovány pro geografické souřadnice. Je třeba pole Město nebo oblasti pro omezující vlastnosti podle umístění.
+Nemůžete použít `Edm.GeographyPoint` nebo `Collection(Edm.GeographyPoint)` polí v Fasetové navigace. Omezující vlastnosti fungují nejlépe na pole s nízkou kardinality. Z důvodu rozlišení geografické souřadnice není obvyklé, že jakékoli dvě sady souřadnice bude rovnat v dané datové sadě. V důsledku toho omezující vlastnosti nejsou podporovány pro geografické souřadnice. Je třeba pole Město nebo oblasti pro omezující vlastnosti podle umístění.
 
 ## <a name="set-attributes"></a>Nastavení atributů
 
-Atributy indexu, které řídí, jak se pole používá jsou přidány do definice jednotlivá pole v indexu. V následujícím příkladu, obsahovat pole s nízkou kardinalitu, užitečné pro používání faset,: kategorie (hotelu, motel, hostel), zařízení a hodnocení. 
-
-V rozhraní .NET API filtrování atributů musí být explicitně nastaveny. V rozhraní REST API "faceting" a filtrování povolená ve výchozím nastavení, což znamená, že potřebujete explicitně nastavit atributy, pokud chcete vypnout. I když to není technicky potřeba, vám ukážeme, Poděkování v následujícím příkladu REST pro vzdělávací účely. 
+Atributy indexu, které řídí, jak se pole používá jsou přidány do definice jednotlivá pole v indexu. V následujícím příkladu, obsahovat pole s nízkou kardinalitu, užitečné pro používání faset,: `category` (hotelu, motel hostel), `tags`, a `rating`. Tato pole mají `filterable` a `facetable` atributy pro ilustraci sady explicitně v následujícím příkladu. 
 
 > [!Tip]
-> Jako osvědčený postup pro výkon a optimalizace úložiště vypněte "faceting" pro pole, která byste nikdy neměli používat jako omezující vlastnost. Pole řetězců pro hodnoty typu singleton, jako je například název ID nebo produktu, zejména, musí být nastavená na "Facetable": false, pokud chcete zabránit jejich nechtěné (a neefektivní) používat v Fasetové navigace.
+> Jako osvědčený postup pro výkon a optimalizace úložiště vypněte "faceting" pro pole, která byste nikdy neměli používat jako omezující vlastnost. Pole řetězců pro jedinečné hodnoty, jako je například název ID nebo produktu, zejména, musí být nastavená na `"facetable": false` zabránit jejich použití náhodného (a neefektivní) v Fasetové navigace.
 
 
-```http
+```json
 {
-    "name": "hotels",  
-    "fields": [
-        {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "baseRate", "type": "Edm.Double"},
-        {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-        {"name": "hotelName", "type": "Edm.String", "facetable": false},
-        {"name": "category", "type": "Edm.String", "filterable": true, "facetable": true},
-        {"name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true},
-        {"name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false},
-        {"name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false},
-        {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-        {"name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true},
-        {"name": "location", "type": "Edm.GeographyPoint"}
-    ]
+  "name": "hotels",  
+  "fields": [
+    { "name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false },
+    { "name": "baseRate", "type": "Edm.Double" },
+    { "name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false },
+    { "name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene" },
+    { "name": "hotelName", "type": "Edm.String", "facetable": false },
+    { "name": "category", "type": "Edm.String", "filterable": true, "facetable": true },
+    { "name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true },
+    { "name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false },
+    { "name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false },
+    { "name": "lastRenovationDate", "type": "Edm.DateTimeOffset" },
+    { "name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true },
+    { "name": "location", "type": "Edm.GeographyPoint" }
+  ]
 }
 ```
 
 > [!Note]
-> Tato definice indexu je zkopírován z [vytvoření indexu Azure Search pomocí rozhraní REST API](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Je shodná s výjimkou povrchové rozdíly v definicích polí. Filterable a facetable atributy jsou explicitně přidány na kategorii, značky, parkingIncluded, smokingAllowed a hodnocení pole. V praxi získáte filterable a facetable pro zdarma na Edm.String, typem Edm.Boolean a typem Edm.Int32 typy polí. 
+> Tato definice indexu je zkopírován z [vytvoření indexu Azure Search pomocí rozhraní REST API](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Je shodná s výjimkou povrchové rozdíly v definicích polí. `filterable` a `facetable` atributy jsou explicitně přidány na `category`, `tags`, `parkingIncluded`, `smokingAllowed`, a `rating` pole. V praxi `filterable` a `facetable` by být povoleno ve výchozím nastavení tato pole při použití rozhraní REST API. Při použití sady .NET SDK, musí tyto atributy explicitně povolená.
 
 ## <a name="build-and-load-an-index"></a>Vytvoření a načtení indexu
 
@@ -91,25 +89,26 @@ Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit 
 V kódu aplikace sestavte dotaz, který určuje všechny části platného dotazu včetně vyhledávacích výrazech, omezující vlastnosti, filtry, bodovací profily – všechno umožňuje zformulujte podobnou žádost. Následující příklad vytvoří požadavek, který vytvoří omezující vlastnost navigace na základě typu ubytování, hodnocení a jiných zařízení.
 
 ```csharp
-SearchParameters sp = new SearchParameters()
+var sp = new SearchParameters()
 {
-  ...
-  // Add facets
-  Facets = new List<String>() { "category", "rating", "parkingIncluded", "smokingAllowed" },
+    ...
+    // Add facets
+    Facets = new[] { "category", "rating", "parkingIncluded", "smokingAllowed" }.ToList()
 };
 ```
 
 ### <a name="return-filtered-results-on-click-events"></a>Vrácení filtrovaných výsledků na události kliknutí
 
-Výraz filtru zpracovává událost click na hodnota omezující vlastnosti. Zadaný omezující vlastnost kategorie, kliknutím na kategorii "motel" se implementuje pomocí `$filter` výraz, který vybere ubytováním daného typu. Když uživatel klikne na tlačítko "motely" k označení, že mají být zobrazeny pouze motely, zahrnuje další aplikace odesílá dotaz $filter = kategorie eq 'motely".
+Když koncový uživatel klikne na hodnotě omezující vlastnosti, obslužnou rutinu pro událost click by měl používat výraz filtru pro realizaci záměru uživatele. Zadaný `category` omezující vlastnost, kliknutím na kategorii "motel" je implementováno s `$filter` výraz, který vybere ubytováním daného typu. Když uživatel klikne na tlačítko "motel" k označení, že mají být zobrazeny pouze motely, zahrnuje další dotaz aplikace odesílá `$filter=category eq 'motel'`.
 
 Následující fragment kódu přidá kategorie filtru, pokud uživatel vybere z kategorie omezující vlastnost hodnotu.
 
 ```csharp
-if (categoryFacet != "")
-  filter = "category eq '" + categoryFacet + "'";
+if (!String.IsNullOrEmpty(categoryFacet))
+    filter = $"category eq '{categoryFacet}'";
 ```
-Pomocí rozhraní REST API, žádost by být kloubové jako `$filter=category eq 'c1'`. Chcete-li kategorie pole s více hodnotami, použijte následující syntaxi: `$filter=category/any(c: c eq 'c1')`
+
+Pokud uživatel klikne na hodnotě omezující vlastnosti pro kolekci pole `tags`, například hodnota "fond", aby aplikace používala tuto syntaxi filtru: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tipy a alternativní řešení
 

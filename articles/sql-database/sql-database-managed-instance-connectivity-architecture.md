@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686294"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522322"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci Azure SQL Database
 
@@ -86,7 +86,7 @@ Při připojení spustit uvnitř spravované instance (stejně jako u zálohy a 
 
 Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Podsíť musí mít tyto charakteristiky:
 
-- **Vyhrazenou podsíť:** Podsíť spravované instance nesmí obsahovat kteroukoli cloudovou službu, která k němu má přidružené, a nemůže být podsíť brány. Podsítě nesmí obsahovat všechny prostředky, ale spravované instance a nemůžete později přidat prostředky v podsíti.
+- **Vyhrazenou podsíť:** Podsíť spravované instance nesmí obsahovat kteroukoli cloudovou službu, která k němu má přidružené, a nemůže být podsíť brány. Podsítě nesmí obsahovat všechny prostředky, ale spravované instance a dalších typů prostředků nelze přidat později v podsíti.
 - **Skupina zabezpečení sítě (NSG):** Skupina zabezpečení sítě, který je spojen s virtuální sítí musí definovat [příchozí pravidla zabezpečení](#mandatory-inbound-security-rules) a [odchozí pravidla zabezpečení](#mandatory-outbound-security-rules) před všechna pravidla. Skupina zabezpečení sítě můžete použít k řízení přístupu ke koncovému bodu data spravované instance pomocí filtrování provozu na portu 1433 a porty 11000 11999 Pokud spravované instance je nakonfigurovaná pro přesměrování připojení.
 - **Uživatelská tabulka definovanou trasou (UDR):** Tabulka směrování definovaného uživatelem, který je spojen s virtuální sítí musí obsahovat konkrétní [položky](#user-defined-routes).
 - **Žádné koncové body služby:** Žádný koncový bod služby by měly být přidruženy s podsítí spravované instance. Ujistěte se, že při vytváření virtuální sítě je zakázána možnost koncových bodů služby.
@@ -97,18 +97,18 @@ Nasazení spravované instance ve vyhrazené podsíti ve virtuální síti. Pods
 
 ### <a name="mandatory-inbound-security-rules"></a>Pravidla povinné zabezpečení příchozích dat
 
-| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Název       |Port                        |Protocol|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|Správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |MI SUBNET  |Povolit |
-|mi_subnet   |Všechny                         |Všechny     |MI SUBNET        |MI SUBNET  |Povolit |
-|health_probe|Všechny                         |Všechny     |AzureLoadBalancer|MI SUBNET  |Povolit |
+|Správa  |9000, 9003, 1438, 1440, 1452|TCP     |Vše              |MI SUBNET  |Povolit |
+|mi_subnet   |Vše                         |Vše     |MI SUBNET        |MI SUBNET  |Povolit |
+|health_probe|Vše                         |Vše     |AzureLoadBalancer|MI SUBNET  |Povolit |
 
 ### <a name="mandatory-outbound-security-rules"></a>Povinné odchozí pravidla zabezpečení
 
-| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Název       |Port          |Protocol|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |Správa  |80, 443, 12000|TCP     |MI SUBNET        |AzureCloud |Povolit |
-|mi_subnet   |Všechny           |Všechny     |MI SUBNET        |MI SUBNET  |Povolit |
+|mi_subnet   |Vše           |Vše     |MI SUBNET        |MI SUBNET  |Povolit |
 
 > [!IMPORTANT]
 > Zajistěte existovala jenom jedno příchozí pravidlo pro porty 9000 9003, 1438, 1440, 1452 a jeden odchozí pravidlo pro port 80, 443, 12000. Managed Instance zřizování prostřednictvím nasazení se nezdaří, pokud jsou pravidla pro příchozí a odchozí nakonfigurovat jednotlivě pro každý z portů programem Azure Resource Manageru. Pokud jsou tyto porty v pravidlech samostatné, nasazení selže s kódem chyby `VnetSubnetConflictWithIntendedPolicy`

@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024454"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595911"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Příklady dotazů pomocí syntaxe vyhledávání "úplné" Lucene (pokročilé dotazy ve službě Azure Search)
 
@@ -81,11 +81,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 Zadejte všechny příklady v tomto článku **queryType = full** parametr určující, zda analyzátor dotazů Lucene zpracovává úplnou syntaxi vyhledávání. 
 
-## <a name="example-1-field-scoped-query"></a>Příklad 1: S rozsahem pole dotazu
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Příklad 1: Dotaz s rozsahem seznam polí
 
-Tento první příklad není Lucene konkrétní, ale jsme s ním vést k zavedení prvního pojem základních dotazů: členství ve skupině. V tomto příkladu obory, provádění dotazu a odpovědi na pár konkrétních polí. Znalost, jak strukturovat, čitelné odpověď JSON je důležité, pokud je nástroj Postman nebo vyhledávání explorer. 
+Tento první příklad není Lucene konkrétní, ale jsme s ním vést k zavedení prvního pojem základních dotazů: pole oboru. V tomto příkladu obory celý dotaz a odpovědi na pár konkrétních polí. Znalost, jak strukturovat, čitelné odpověď JSON je důležité, pokud je nástroj Postman nebo vyhledávání explorer. 
 
-Pro zkrácení, zaměřuje dotazu pouze *business_title* pole a určuje pouze názvy business jsou vráceny. Syntaxe je **searchFields** omezit spuštění dotazu pouze na pole business_title a **vyberte** k určení, která pole jsou zahrnuty v odpovědi.
+Pro zkrácení, zaměřuje dotazu pouze *business_title* pole a určuje pouze názvy business jsou vráceny. **SearchFields** omezuje parametr spuštění dotazu pouze na pole business_title a **vyberte** určuje pole, která jsou zahrnuty v odpovědi.
 
 ### <a name="partial-query-string"></a>Řetězec dotazu částečné
 
@@ -99,6 +99,11 @@ Zde je stejný dotaz obsahuje několik polí v seznamu odděleného čárkami.
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
+Tyto mezery za čárkou jsou volitelné.
+
+> [!Tip]
+> Při použití rozhraní REST API z kódu aplikace, nezapomeňte kódování URL parametry jako `$select` a `searchFields`.
+
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```http
@@ -109,41 +114,44 @@ Odpověď pro tento dotaz by měl vypadat podobně jako na následujícím sním
 
   ![Ukázková odpověď postman](media/search-query-lucene-examples/postman-sample-results.png)
 
-Možná jste si všimli skóre vyhledávání v odpovědi. Jednotné skóre 1 dojít, pokud neexistuje žádné pořadí buď protože vyhledávání nebylo fulltextové vyhledávání, nebo protože byla použita žádná kritéria. Pro hodnotu null vyhledávání se žádná kritéria vraťte řádků v pořadí. Pokud zahrnete skutečné kritéria, zobrazí se hledání, které skóre, které se změní na smysluplné hodnoty.
+Možná jste si všimli skóre vyhledávání v odpovědi. Jednotné skóre 1 dojít, pokud neexistuje žádné pořadí buď protože vyhledávání nebylo fulltextové vyhledávání, nebo protože byla použita žádná kritéria. Pro hodnotu null vyhledávání se žádná kritéria vraťte řádků v pořadí. Pokud zahrnete skutečné vyhledávací kritéria, zobrazí se hledání, které skóre, které se změní na smysluplné hodnoty.
 
-## <a name="example-2-intra-field-filtering"></a>Příklad 2: Uvnitř pole filtrování
+## <a name="example-2-fielded-search"></a>Příklad 2: Fielded vyhledávání
 
-Úplná syntaxe Lucene podporuje výrazy v rámci pole. Tento příklad vyhledá názvy firmy s vedoucí termín v nich, ale ne méně.
+Úplná syntaxe Lucene podporuje oboru jednotlivých vyhledávacích výrazech na konkrétní pole. Tento příklad vyhledá názvy firmy s vedoucí termín v nich, ale ne méně.
 
 ### <a name="partial-query-string"></a>Řetězec dotazu částečné
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+$select=business_title&search=business_title:(senior NOT junior)
 ```
 
 Zde je stejný dotaz s více polí.
 
 ```http
-searchFields=business_title, posting_type&$select=business_title, posting_type&search=business_title:senior+NOT+junior AND posting_type:external
+$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
 ```
 
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Ukázková odpověď postman](media/search-query-lucene-examples/intrafieldfilter.png)
 
-Zadáním **fieldname:searchterm** konstrukce, můžete definovat operace fielded dotazu, kde je pole jednoho slova, a hledaný termín je také jedno slovo nebo slovní spojení, volitelně s logickými operátory. Mezi příklady patří následující:
+Můžete definovat fielded vyhledávací operace s **fieldName:searchExpression** syntaxi, kde hledaný výraz může být jedno slovo nebo frázi nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:
 
-* business_title:(senior NOT junior)
-* Stav: ("New York" a "Nové Jersey")
-* business_title:(senior NOT junior) posting_type:external a
+- `business_title:(senior NOT junior)`
+- `state:("New York" OR "New Jersey")`
+- `business_title:(senior NOT junior) AND posting_type:external`
 
-Nezapomeňte vložit více řetězce v uvozovkách, pokud chcete, aby oba řetězce, který se má vyhodnotit jako jedna entita, stejně jako v tomto případě vyhledávání různých měst v poli umístění. Také se ujistěte, operátor, který je velkými písmeny, jak vidíte s NOT a AND.
+Nezapomeňte vložit více řetězce v uvozovkách, pokud chcete, který se má vyhodnotit jako jedna entita, jako v tomto případě hledání dvou různých umístěních v obou řetězců `state` pole. Také se ujistěte, operátor, který je velkými písmeny, jak vidíte s NOT a AND.
 
-V zadané pole **fieldname:searchterm** musí být prohledávatelné pole. Zobrazit [vytvoření indexu (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.
+V zadané pole **fieldName:searchExpression** musí být prohledávatelné pole. Zobrazit [vytvoření indexu (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.
+
+> [!NOTE]
+> V předchozím příkladu jsme není nutné používat `searchFields` parametr protože každá část dotazu má název pole explicitně zadán. Ale můžete pořád použít `searchFields` parametr, pokud chcete spustit dotaz, kde některé části oborem pro určité pole a ostatní můžou použít pro několik polí. Například dotaz `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` odpovídají `senior NOT junior` pouze `business_title` pole, když bude odpovídat "externí" s `posting_type` pole. Název pole, které jsou součástí **fieldName:searchExpression** vždy má přednost před `searchFields` parametr, což je důvod, proč se v tomto příkladu jsme není nutné zahrnout `business_title` v `searchFields` parametru.
 
 ## <a name="example-3-fuzzy-search"></a>Příklad 3: vyhledávání přibližných shod
 

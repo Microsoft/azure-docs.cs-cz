@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d067f1af3d5479aef28ddf2290cebe3fe45726b0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c025c431d826d3a2951a9eb5c09308695e172887
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733782"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551242"
 ---
-| Prostředek | Výchozí/maximální limit |
+| Resource | Výchozí/maximální limit |
 | --- | --- |
 | Okruhy ExpressRoute podle předplatného |10 |
 | Okruhy ExpressRoute na oblast a předplatné, pomocí Azure Resource Manageru |10 |
 | Maximální počet tras pro soukromý partnerský vztah Azure pomocí ExpressRoute Standard |4,000 |
-| Maximální počet tras pro soukromý partnerský vztah Azure s doplňkem ExpressRoute Premium |10 000 |
+| Maximální počet tras pro soukromý partnerský vztah Azure s doplňkem ExpressRoute Premium |10,000 |
 | Maximální počet tras pro soukromý partnerský vztah Azure z adresního prostoru virtuální sítě pro připojení k ExpressRoute |200 | 
 | Maximální počet směrování pro partnerský vztah Microsoft Azure pomocí ExpressRoute Standard |200 |
 | Maximální počet směrování pro partnerský vztah Microsoft Azure s doplňkem ExpressRoute Premium |200 |
 | Maximální počet okruhů ExpressRoute propojené ke stejné virtuální síti ve stejném umístění partnerského vztahu |4 |
-| Maximální počet okruhů ExpressRoute, které jsou propojeny do stejné virtuální sítě v různých umístění partnerského vztahu |> 4, závisí na velikosti podsítě brány|
+| Maximální počet okruhů ExpressRoute, které jsou propojeny do stejné virtuální sítě v různých umístění partnerského vztahu |4 |
 | Počet propojení virtuální sítě povolené jeden okruh ExpressRoute |V následující tabulce. |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Počet virtuálních sítí na jeden okruh ExpressRoute
@@ -39,4 +39,7 @@ ms.locfileid: "64733782"
 | 2 Gb/s |10 |60 |
 | 5 Gb/s |10 |75 |
 | 10 Gb/s |10 |100 |
+| 40 Gbps* |10 |100 |
+| 100 Gbps* |10 |100 |
 
+* Pouze přímé ExpressRoute

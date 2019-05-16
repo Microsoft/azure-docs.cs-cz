@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/27/2017
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578432"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596549"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -45,6 +45,10 @@ Podnikoví školitelé a lektoři, kteří přednášejí vědecké zpracování
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Přizpůsobivá kapacita na vyžádání pro velké projekty
 Hackathony nebo soutěže v oblasti datových věd nebo rozsáhlé modelování či průzkum dat vyžadují – obvykle na krátkou dobu – horizontální navýšení kapacity hardwaru. Virtuální počítač pro datové vědy umožňuje rychle replikovat prostředí pro vědecké zpracování dat na vyžádání na serverech s horizontálně navýšenou kapacitou, které umožňují spouštět experimenty vyžadující výpočetní prostředky s vysokým výkonem.
+
+### <a name="custom-compute-power-for-azure-notebooks"></a>Vlastní výpočetní výkon pro poznámkové bloky Azure
+
+[Azure Notebooks](/azure/notebooks/azure-notebooks-overview.md) je bezplatná služba hostovaná vyvíjet, spouštět a nasdílet poznámkové bloky Jupyter v cloudu bez instalace. Úroveň free služby je však omezená na 4GB paměti a 1GB dat. Uvolnit všechna omezení, můžete pak připojit projekt poznámkových bloků virtuální počítač pro datové vědy nebo jakýkoli jiný virtuální počítač serverem Jupyter. Pokud poznámkových bloků Azure přihlásíte pomocí účtu služby pomocí Azure Active Directory (například účet organizace) a poznámkové bloky automaticky zobrazí Data Science virtuálních počítačů v žádné předplatné spojené s tímto účtem. Další informace najdete v tématu [spravovat a konfigurovat projekty – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krátkodobé experimenty a vyhodnocování
 S minimálním úsilím věnovaným nastavení je možné virtuální počítač pro datovou vědu využít k vyhodnocení nebo výuce nástrojů, jako jsou Microsoft ML Server, SQL Server, nástroje sady Visual Studio, Jupyter, sady nástrojů pro hloubkové nebo strojové učení a nové nástroje oblíbené v komunitě. Díky rychlému nastavení můžete virtuální počítač pro datovou vědu využít i v dalších scénářích krátkodobého použití, jako jsou replikace publikovaných experimentů, prezentace ukázek, procházení postupů v online relacích nebo konferenčních kurzech.

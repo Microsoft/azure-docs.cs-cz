@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 12/04/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: f9734a5d8f34536558fbf0c861889f3c7d6719da
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765881"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523985"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
 
@@ -52,9 +52,9 @@ Podrobnější a aktuální seznam kvóty, najdete v článku kvóta Azure celou
 Pro Azure Machine Learning Compute je výchozí limit kvóty na počtu jader a počet jednu oblast v rámci předplatného jedinečný výpočetní prostředky. Tato kvóta je oddělené od výše uvedených kvótu jader virtuálních počítačů a základní omezení nejsou aktuálně sdílen mezi typy dvou prostředků.
 
 K dispozici prostředky:
-+ Počet vyhrazených jader na oblasti mají výchozí limit 10 až 24.  Je možné zvýšit počet vyhrazených jader na jedno předplatné. Požádejte podporu Azure o zvýšení možnosti.
++ Počet vyhrazených jader na oblasti mají výchozí omezení 24-300 v závislosti na vašeho typu nabídky předplatného.  Je možné zvýšit počet vyhrazených jader na jedno předplatné. Požádejte podporu Azure o zvýšení možnosti.
 
-+ Počet jader s nízkou prioritou na oblasti mají výchozí limit 10 až 24.  Je možné zvýšit počet jader s nízkou prioritou na jedno předplatné. Požádejte podporu Azure o zvýšení možnosti.
++ Počet jader s nízkou prioritou na oblasti mají výchozí omezení 24-300 podle vašeho typu nabídky předplatného.  Je možné zvýšit počet jader s nízkou prioritou na jedno předplatné. Požádejte podporu Azure o zvýšení možnosti.
 
 + Clustery v jedné oblasti mají výchozí limit 100 a maximálního počtu 200. Pokud chcete nad tento limit zvýšit, kontaktujte podporu Azure.
 
@@ -66,10 +66,12 @@ K dispozici prostředky:
 | Maximální počet uzlů v jediném prostředku Azure Machine Learning Compute (AmlCompute) | 100 uzlů |
 | Maximální GPU MPI zpracovává jeden uzel | 1 – 4 |
 | Maximální pracovních procesů GPU na uzlu | 1 – 4 |
-| Maximální doba života | 7 dní<sup>1</sup> |
+| Maximální doba života | 90 dnů<sup>1</sup> |
+| Maximální doba platnosti na uzlu s nízkou prioritou | 1 den<sup>2</sup> |
 | Servery parametr maximálního počtu uzlů | 1 |
 
 <sup>1</sup> maximální doba života odkazuje na čas zahájení spuštění a po dokončení. Dokončené běhy zachovávají po neomezenou dobu; data pro spuštění se nedokončí v rámci maximální doby života není přístupný.
+<sup>2</sup> úloh na uzlu s nízkou prioritou může být pre-empted kdykoli existuje omezení kapacity. Je doporučeno implementovat vytváření kontrolních bodů ve vaší úloze.
 
 ### <a name="container-instances"></a>Instance kontejnerů
 
@@ -80,20 +82,20 @@ Platí omezení na počet instancí kontejneru, který můžete aktivovat v dan�
 Podrobnější a aktuální seznam kvóty, najdete v článku kvóta Azure celou [tady](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Storage
-Platí omezení na počet účtů úložiště na oblast i v rámci daného předplatného. Výchozí limit je 200 a zahrnuje účty úložiště úrovně Premium i Standard. Pokud požadujete víc než 200 účtů úložiště v dané oblasti, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage bude váš obchodní případ podívá a může schválit až 250 účtů úložiště pro příslušnou oblast.
+Platí omezení na počet účtů úložiště na oblast i v rámci daného předplatného. Výchozí limit je 200 a zahrnuje účty úložiště úrovně Premium i Standard. Pokud požadujete víc než 200 účtů úložiště v dané oblasti, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage bude váš obchodní případ podívá a může schválit až 250 účtů úložiště pro příslušnou oblast.
 
 
 ## <a name="find-your-quotas"></a>Najít svoje kvóty
 
 Zobrazení vaší kvóty pro různé prostředky, jako jsou virtuální počítače, úložiště, sítě, je snadné prostřednictvím webu Azure portal.
 
-1. V levém podokně vyberte **všechny služby** a pak vyberte **předplatná** v obecné kategorii.
+1. V levém podokně vyberte **všechny služby** a pak vyberte **předplatná** v obecné kategorii.
 
 1. Seznam předplatných vyberte předplatné, jehož kvóty, které hledáte.
 
    **Je výstrahou**, konkrétně pro Azure Machine Learning Compute kvóta pro zobrazení. Jak je uvedeno výše, tato kvóta je oddělené od kvóta výpočetních prostředků v rámci předplatného.
 
-1. V levém podokně vyberte **služby Machine Learning** a pak v zobrazeném seznamu vyberte libovolného pracovního prostoru
+1. V levém podokně vyberte **služby Machine Learning** a pak v zobrazeném seznamu vyberte libovolného pracovního prostoru
 
 1. V dalším okně v části **podpora a řešení potíží části** vyberte **využití a kvóty** zobrazíte aktuální kvóty a využití.
 
@@ -102,7 +104,7 @@ Zobrazení vaší kvóty pro různé prostředky, jako jsou virtuální počíta
 
 ## <a name="request-quota-increases"></a>Požádat o zvýšení kvóty
 
-Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení [otevřete žádost o online zákaznickou podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) bez poplatků.
+Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení [otevřete žádost o online zákaznickou podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) bez poplatků.
 
 Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v tabulkách. Pokud neexistuje žádné omezení maximální, prostředek nemá nastavitelná omezení. [To](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) článek se týká procesu zvýšení kvóty podrobněji.
 

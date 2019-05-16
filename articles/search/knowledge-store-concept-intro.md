@@ -1,5 +1,5 @@
 ---
-title: Znalostní báze Store představení a přehled – Azure Search
+title: Znalostní báze úložiště představení a přehled (preview) – Azure Search
 description: Odeslat bohatších možností dokumenty do úložiště Azure, kde můžete zobrazit, upravovat a využívat bohatších možností dokumentů ve službě Azure Search i v jiných aplikacích.
 manager: cgronlun
 author: HeidiSteen
@@ -9,32 +9,36 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 3000016de934aaa3faab96821f9747ea4b571ef7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4a27e4d8f2fbaafe6d27a3e3cabd31aa715b9d80
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026995"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540739"
 ---
-# <a name="what-is-knowledge-store-in-azure-search"></a>Co je znalostní báze Store ve službě Azure Search?
+# <a name="what-is-knowledge-store-in-azure-search"></a>Co je znalostní báze úložiště ve službě Azure Search?
 
-Znalostní báze Store je volitelná funkce služby Azure Search aktuálně ve verzi public preview, která uloží bohatších možností dokumenty a metadata vytvořený kanál indexování založené na umělé Inteligenci [(kognitivního vyhledávání)](cognitive-search-concept-intro.md). Znalostní báze Store je zajištěná účtu služby Azure storage, který nakonfigurujete jako součást kanálu. Pokud povolená, vyhledávací služba používá tento účet úložiště pro ukládání do mezipaměti reprezentace každý dokument bohatších možností. 
+> [!Note]
+> Znalostní báze úložiště je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+>
+
+Znalostní báze úložiště je volitelná funkce služby Azure Search, která ukládá bohatších možností dokumenty a metadata vytvořený kanál indexování založené na umělé Inteligenci [(kognitivního vyhledávání)](cognitive-search-concept-intro.md). Znalostní báze úložiště je zajištěná účtu služby Azure storage, který nakonfigurujete jako součást kanálu. Pokud povolená, vyhledávací služba používá tento účet úložiště pro ukládání do mezipaměti reprezentace každý dokument bohatších možností. 
 
 Pokud jste použili v minulosti kognitivního vyhledávání, již víte, že dovednosti je možné přesunout dokument pomocí sekvence obohacení. Výsledkem může být indexu Azure Search nebo (nově ve verzi preview) projekce v úložišti znalostní báze.
 
 Projekce jsou váš mechanismus pro strukturování dat. pro použití v aplikaci pro příjem. Můžete použít [Průzkumníka služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) vytvořené pro Azure storage nebo jakékoli aplikaci, která se připojuje k Azure storage, který otevírá nové možnosti pro využívání rozšiřují dokumenty. Mezi příklady patří datové vědy kanály a vlastní analýzy.
 
-![Znalostní báze Store v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Store znalostní báze v diagramu kanálu")
+![Znalostní báze úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "úložiště znalostní báze v diagramu kanálu")
 
-Chcete-li použít Store znalostní báze, přidejte `knowledgeStore` element, který definuje podle jednotlivých kroků operace v kanálu služby indexování dovedností. Během provádění Azure Search vytvoří prostor v účtu služby Azure storage a vyplní definice a obsah vytvořený kanál.
+Chcete-li použít znalostní báze úložiště, přidejte `knowledgeStore` element, který definuje podle jednotlivých kroků operace v kanálu služby indexování dovedností. Během provádění Azure Search vytvoří prostor v účtu služby Azure storage a vyplní definice a obsah vytvořený kanál.
 
-## <a name="benefits-of-knowledge-store"></a>Výhody Store znalostní báze
+## <a name="benefits-of-knowledge-store"></a>Výhody úložiště znalostní báze
 
 Znalostní báze úložiště poskytuje je struktura, kontextu a skutečný obsah – úsporách získaných nestrukturovaných a částečně strukturovaná data soubory jako objekty BLOB, soubory obrázků, které prošly analysis, nebo dokonce strukturovaná data, která je tvar do nového formuláře. V [podrobného návodu](knowledge-store-howto.md) napsané pro tuto verzi preview, zobrazí se první ruky jak hustému dokumentu JSON je rozdělený do používání dílčích struktur rekonstituován do nových struktur a jinak k dispozici pro směru server-klient procesy, jako jsou machine learning a datové vědy úlohy.
 
-I když je užitečné, pokud chcete zobrazit, co může vytvořit kanál indexování založené na umělé Inteligenci, skutečná síla znalostní báze Store je schopnost upravovat data. Mohou začínat základní dovednosti a potom iterovat přes něj přidejte zvýšení úrovně struktury, který potom můžete nakombinovat do nových struktur, použitelné v jiných aplikacích kromě Azure Search.
+I když je užitečné, pokud chcete zobrazit, co může vytvořit kanál indexování založené na umělé Inteligenci, skutečná síla znalostní báze úložiště je schopnost upravovat data. Mohou začínat základní dovednosti a potom iterovat přes něj přidejte zvýšení úrovně struktury, který potom můžete nakombinovat do nových struktur, použitelné v jiných aplikacích kromě Azure Search.
 
-Ve výčtu, výhody znalostní báze Store patří následující:
+Ve výčtu, výhody znalostní báze úložiště patří následující:
 
 + Využívat bohatších možností dokumenty v [analýzy a generování sestav nástroje](#tools-and-apps) než vyhledávání. Power BI pomocí Power Query je atraktivní výběru, ale libovolného nástroje nebo aplikace, která se může připojit k úložišti Azure můžete vyžádat z úložiště znalostní báze, který vytvoříte.
 
@@ -235,11 +239,11 @@ Pokud používáte víc služeb, vytvořte všechny služby ve stejné oblasti p
 
 **Krok 4: [Začínáme s portálem](cognitive-search-quickstart-blob.md) - nebo - [začít pracovat s ukázkovými daty pomocí rozhraní REST a Postman](knowledge-store-howto.md)** 
 
-Můžete použít REST `api-version=2019-05-06-Preview` k vytvoření kanálu založené na AI, zahrnující Store znalostní báze. V nejnovější verzi preview rozhraní API, obsahuje objekt dovednosti `knowledgeStore` definice.
+Můžete použít REST `api-version=2019-05-06-Preview` k vytvoření kanálu založené na AI, obsahující úložiště znalostní báze. V nejnovější verzi preview rozhraní API, obsahuje objekt dovednosti `knowledgeStore` definice.
 
 ## <a name="takeaways"></a>Shrnutí
 
-Znalostní báze Store nabízí celou řadu výhod, včetně, ale mimo jiné povoluje použití bohatších možností dokumenty ve scénářích než vyhledávání, ovládacích prvků nákladů a správa odchylek v procesu rozšíření. Tyto funkce jsou všechny k dispozici pro použití jednoduše tak, že přidává se účet úložiště pro vaše dovednosti a pomocí jazyka aktualizované výrazu, jak je popsáno v [jak začít pracovat s znalostní báze Store](knowledge-store-howto.md). 
+Znalostní báze úložiště nabízí celou řadu výhod, včetně, ale mimo jiné povoluje použití bohatších možností dokumenty ve scénářích než vyhledávání, ovládacích prvků nákladů a správa odchylek v procesu rozšíření. Tyto funkce jsou všechny k dispozici pro použití jednoduše tak, že přidává se účet úložiště pro vaše dovednosti a pomocí jazyka aktualizované výrazu, jak je popsáno v [jak začít pracovat s úložištěm znalostní báze](knowledge-store-howto.md). 
 
 ## <a name="next-steps"></a>Další postup
 

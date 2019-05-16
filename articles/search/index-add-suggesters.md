@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021866"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521886"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Přidat moduly pro návrhy na index pro typeahead ve službě Azure Search
 
@@ -119,11 +119,11 @@ Jak již bylo uvedeno výše můžete modulu pro návrhy pro navrhované dotazy 
 
 Modulu pro návrhy se odkazuje na žádost spolu s operaci. Například při volání GET REST, zadejte buď `suggest` nebo `autocomplete` v kolekci dokumentů. REST, po vytvoření modulu pro návrhy použijte [návrhy API](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [rozhraní API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) v logice dotazu.
 
-Pro platformu .NET, použijte [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) nebo [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
+Pro platformu .NET, použijte [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) nebo [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
 
 Příklad demonstrace obou požadavků, najdete v části [příklad pro přidání automatické dokončování a návrhy ve službě Azure Search](search-autocomplete-tutorial.md).
 
-## <a name="sample-code"></a>Ukázka kódu
+## <a name="sample-code"></a>Ukázkový kód
 
 [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) obsahuje ukázkové C# a kód v Javě a ukazuje vytváření modulu pro návrhy, navrhované dotazy, automatické dokončování a omezující vlastnost navigace. 
 

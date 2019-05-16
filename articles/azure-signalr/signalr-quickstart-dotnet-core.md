@@ -7,33 +7,30 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dc893ea10e47e867110f674a458498a6bd24a4f
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60690280"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560690"
 ---
-# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s služby SignalR
+# <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s použitím služby SignalR
 
 
 Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba je založená na knihovně [SignalR pro ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction).
 
-V tomto článku se dozvíte, jak začít se službou Azure SignalR. V tomto rychlém startu vytvoříte chatovací aplikaci s využitím webové aplikace ASP.NET Core MVC. Tato aplikace naváže připojení k vašemu prostředku služby Azure SignalR a umožní tak aktualizace obsahu v reálném čase. Webovou aplikaci budete hostovat místně a propojíte ji s několika klienty v prohlížeči. Každý klient bude moct nabízet aktualizace obsahu do všech ostatních klientů. 
+V tomto článku se dozvíte, jak začít se službou Azure SignalR. V tomto rychlém startu vytvoříte chatovací aplikaci s použitím webovou aplikaci ASP.NET Core MVC. Tato aplikace naváže připojení k vašemu prostředku služby Azure SignalR a umožní tak aktualizace obsahu v reálném čase. Budete hostovat webové aplikace v místním prostředí a spojte se s více klienty prohlížeče. Každý klient bude moct nabízet aktualizace obsahu do všech ostatních klientů. 
 
+K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor kódu. Jednou z možností je [Visual Studio Code](https://code.visualstudio.com/), která je k dispozici ve Windows, macOS a Linux platformy.
 
-K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor kódu. Skvělou volbou je však editor [Visual Studio Code](https://code.visualstudio.com/), který je dostupný pro platformy Windows, macOS a Linux.
-
-Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSignalR-samples](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom).  K vytvoření prostředků Azure použitých v tomto rychlém startu můžete použít také [Skript pro vytvoření služby SignalR](scripts/signalr-cli-create-service.md).
-
-![Dokončený rychlý start v místním prostředí](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
+Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSignalR-samples](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom). Můžete také vytvořit prostředky Azure používané v tomto rychlém startu pomocí následujícího [vytvořit skript služby SignalR](scripts/signalr-cli-create-service.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte sadu [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Stáhněte nebo naklonujte [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) úložiště GitHub. 
 
 ## <a name="create-an-azure-signalr-resource"></a>Vytvořené prostředku služby Azure SignalR
@@ -42,22 +39,20 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
-V této části pomocí [rozhraní příkazového řádku .NET Core](https://docs.microsoft.com/dotnet/core/tools/) vytvoříte nový projekt webové aplikace ASP.NET Core MVC. Výhodou použití rozhraní .NET Core CLI místo sady Visual Studio je jeho dostupnost na platformách Windows, Linux i macOS. 
+V této části použijete [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) k vytvoření projektu webové aplikace ASP.NET Core MVC. Výhodou použití rozhraní příkazového řádku .NET Core v sadě Visual Studio je, že je k dispozici ve Windows, macOS a Linux platformy. 
 
-1. Vytvořte novou složku pro váš projekt. V tomto rychlém startu se používá složka *E:\Testing\chattest*.
+1. Vytvořte složku pro váš projekt. Tento rychlý start využívá *E:\Testing\chattest* složky.
 
-2. V nové složce spuštěním následujícího příkazu vytvořte nový projekt webové aplikace ASP.NET Core MVC:
+2. V nové složce spusťte následující příkaz pro vytvoření projektu:
 
         dotnet new mvc
 
 
 ## <a name="add-secret-manager-to-the-project"></a>Přidání nástroje Secret Manager do projektu
 
-V této části do svého projektu přidáte [nástroj Secret Manager](https://docs.microsoft.com/aspnet/core/security/app-secrets). Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
+V této části přidáte [nástroj tajný klíč správce](https://docs.microsoft.com/aspnet/core/security/app-secrets) do projektu. Tajný klíč správce nástroj ukládá citlivá data při vývojových pracích vně vašeho projektu stromu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
-1. Otevřete soubor *.csproj*. Přidejte element `DotNetCliToolReference` zahrnující *Microsoft.Extensions.SecretManager.Tools*. Přidejte také element `UserSecretsId`, jak je znázorněno níže, a uložte soubor.
-
-    *chattest.csproj:*
+1. Otevřete soubor *.csproj*. Přidejte element `DotNetCliToolReference` zahrnující *Microsoft.Extensions.SecretManager.Tools*. Také přidat `UserSecretsId` jak je znázorněno v následujícím kódu pro element *chattest.csproj*a soubor uložte.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,27 +72,27 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Přidání služby Azure SignalR do webové aplikace
 
-1. Přidejte odkaz na balíček `Microsoft.Azure.SignalR` spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Azure.SignalR` balíček NuGet spuštěním následujícího příkazu:
 
         dotnet add package Microsoft.Azure.SignalR
 
-2. Spuštěním následujícího příkazu obnovte balíčky pro váš projekt.
+2. Spusťte následující příkaz k obnovení balíčků pro váš projekt:
 
         dotnet restore
 
 3. Do nástroje Secret Manager přidejte tajný kód *Azure:SignalR:ConnectionString*. 
 
-    Tento tajný kód bude obsahovat připojovací řetězec pro přístup k vašemu prostředku služby SignalR. *Azure:SignalR:ConnectionString* je výchozí konfigurační klíč, který služba SignalR hledá za účelem navázání připojení. Nahraďte hodnotu v následujícím příkazu připojovacím řetězcem pro váš prostředek služby SignalR.
+    Tento tajný kód bude obsahovat připojovací řetězec pro přístup k vašemu prostředku služby SignalR. *Azure: SignalR:ConnectionString* je výchozí konfigurační klíč, který hledá SignalR k navázání připojení. Hodnota v následujícím příkazu nahraďte připojovací řetězec pro váš prostředek služby SignalR.
 
-    Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
+    Tento příkaz musíte spustit ve stejném adresáři jako *.csproj* souboru.
 
     ```
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
-    Nástroj Secret Manager se použije pouze k testování webové aplikace, zatímco je hostovaná v místním prostředí. V některém dalším kurzu nasadíte webovou chatovací aplikaci do Azure. Po nasazení webové aplikace do Azure použijete místo nástroje Secret Manager k uložení připojovacího řetězce nastavení aplikace.
+    Tajný klíč správce se použije pouze pro testování webové aplikace, zatímco je hostovaný místně. V pozdějších kurzech nasadíte chat webové aplikace do Azure. Po nasazení webové aplikace do Azure pomocí nastavení aplikace místo uložení připojovacího řetězce, pomocí tajného klíče správce.
 
-    Tento tajný kód je přistupováno pomocí rozhraní API konfigurace. Dvojtečka (:) v názvu konfigurace funguje s konfiguračním rozhraním API na všech podporovaných platformách, viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
+    Tento tajný kód je přistupováno pomocí rozhraní API pro konfiguraci. Dvojtečka (:) lze použít v názvu konfigurace pomocí rozhraní API pro konfiguraci na všech podporovaných platformách. Zobrazit [konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
 
 
 4. Otevřete soubor *Startup.cs* a aktualizujte metodu `ConfigureServices` tak, aby používala službu Azure SignalR, a to zavoláním metody `services.AddSignalR().AddAzureSignalR()`:
@@ -110,7 +105,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
     }
     ```
 
-    Vzhledem k tomu, že do metody `AddAzureSignalR()` nepředáváte žádný parametr, použije tento kód jako připojovací řetězec prostředku služby SignalR výchozí konfigurační klíč *Azure:SignalR:ConnectionString*.
+    Tím, že není předáte parametr `AddAzureSignalR()`, tento kód používá výchozí konfigurace klíče pro připojovací řetězec prostředku služby SignalR. Je výchozí konfigurace klíče *Azure: SignalR:ConnectionString*.
 
 5. V souboru *Startup.cs* aktualizujte také metodu `Configure` nahrazením volání metody `app.UseStaticFiles()` následujícím kódem a uložte soubor.
 
@@ -124,16 +119,16 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
 ### <a name="add-a-hub-class"></a>Přidání třídy centra
 
-Ve službě SignalR představuje centrum základní komponentu, která zveřejňuje sadu metod, které je možné volat z klienta. V této části nadefinujete třídu centra se dvěma metodami: 
+Rozbočovač signalr, je základní součástí, která zveřejňuje sadu metod, které lze volat z klienta. V této části nadefinujete třídu centra se dvěma metodami: 
 
 * `Broadcast`: Tato metoda vysílá zprávy na všechny klienty.
 * `Echo`: Tato metoda odešle zprávu zpět volajícímu.
 
-Obě metody používají rozhraní `Clients`, které poskytuje sada SDK služby SignalR pro ASP.NET Core. Toto rozhraní poskytuje přístup ke všem připojeným klientům a umožňuje nabízení obsahu do vašich klientů.
+Obě metody používají `Clients` rozhraní, které poskytuje sady SDK technologie ASP.NET Core SignalR. Toto rozhraní poskytuje přístup k všichni připojení klienti, takže obsah můžete nabízet svým klientům.
 
 1. Do adresáře vašeho projektu přidejte novou složku *Hub*. Do nové složky přidejte nový soubor s kódem centra *Chat.cs*.
 
-2. Do souboru *Chat.cs* přidejte následující kód, který definuje třídu centra, a uložte soubor. 
+2. Přidejte následující kód, který *Chat.cs* definovat třídu centra a soubor uložte. 
 
     Pokud jste použili jiný název projektu než *chattest*, aktualizujte obor názvů pro tuto třídu.
 
@@ -158,13 +153,13 @@ Obě metody používají rozhraní `Clients`, které poskytuje sada SDK služby 
     }
     ```
 
-### <a name="add-the-web-app-client-interface"></a>Přidání klientského rozhraní webové aplikace
+### <a name="add-the-client-interface-for-the-web-app"></a>Přidat rozhraní klienta pro webovou aplikaci
 
-Uživatelské rozhraní pro klienty této aplikace chatovací místnosti se bude skládat z kódu HTML a JavaScriptu v souboru *index.html* v adresáři *wwwroot*.
+Uživatelské rozhraní klienta pro tuto aplikaci chatovací místnosti se skládají z kódu HTML a JavaScriptu do souboru s názvem *index.html* v *wwwroot* adresáře.
 
-Zkopírujte soubor *index.html* a složky *css* a *scripts* ze složky *wwwroot* v [úložišti ukázek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) do složky *wwwroot* vašeho projektu.
+Kopírování *index.html* souboru *šablon stylů css* složky a *skripty* složku z *wwwroot* složky [ukázky úložiště](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot). Vložte je do svého projektu *wwwroot* složky.
 
-Hlavní kód souboru *index.html*: 
+Tady je hlavní kód *index.html*: 
 
 ```javascript
 var connection = new signalR.HubConnectionBuilder()
@@ -180,19 +175,19 @@ connection.start()
     });
 ```    
 
-Kód v souboru *index.html* zavoláním metody `HubConnectionBuilder.build()` vytvoří připojení HTTP k prostředku služby Azure SignalR.
+Kód v *index.html* volání `HubConnectionBuilder.build()` aby připojení HTTP k prostředku Azure SignalR.
 
 Pokud je připojení úspěšné, předá se do metody `bindConnectionMessage`, která přidá obslužné rutiny událostí pro příchozí nabídky obsahu do klienta. 
 
-`HubConnection.start()` naváže komunikaci s centrem. Po navázání komunikace `onConnected()` přidá obslužné rutiny událostí tlačítek. Tyto obslužné rutiny prostřednictvím připojení umožní tomuto klientovi nabízet aktualizace obsahu do všech připojených klientů.
+`HubConnection.start()` naváže komunikaci s centrem. Potom `onConnected()` přidá tlačítko obslužné rutiny událostí. Tyto obslužné rutiny prostřednictvím připojení umožní tomuto klientovi nabízet aktualizace obsahu do všech připojených klientů.
 
 ## <a name="add-a-development-runtime-profile"></a>Přidání profilu vývojového modulu runtime
 
-V této části přidáte vývojové běhové prostředí pro ASP.NET Core. Další informace o běhovém prostředí pro ASP.NET Core najdete v tématu [Práce s několika prostředími v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+V této části přidáte prostředí modulu runtime pro vývoj pro ASP.NET Core. Další informace najdete v tématu [práce v různých prostředích v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
 
-1. Vytvořte v projektu novou složku *Properties*.
+1. Vytvořte složku s názvem *vlastnosti* ve vašem projektu.
 
-2. Přidejte do složky nový soubor *launchSettings.json* s následujícím obsahem a uložte ho.
+2. Přidejte nový soubor s názvem *launchSettings.json* ke složce s následujícím obsahem a uložte soubor.
 
     ```json
     {
@@ -213,17 +208,17 @@ V této části přidáte vývojové běhové prostředí pro ASP.NET Core. Dal�
     ```
 
 
-## <a name="build-and-run-the-app-locally"></a>Sestavení a místní spuštění aplikace
+## <a name="build-and-run-the-app-locally"></a>Sestavte a spusťte aplikaci místně
 
-1. Pokud chcete aplikaci sestavit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
+1. Pokud chcete vytvořit aplikaci pomocí rozhraní příkazového řádku .NET Core, spusťte následující příkaz v příkazovém prostředí:
 
         dotnet build
 
-2. Po úspěšném dokončení sestavení spuštěním následujícího příkazu místně spusťte webovou aplikaci:
+2. Po sestavení úspěšně dokončí, spusťte následující příkaz pro místní spuštění webové aplikace:
 
         dotnet run
 
-    Aplikace bude hostovaná místně na portu 5000, jak je nakonfigurováno ve vašem profilu vývojového modulu runtime:
+    Aplikace se dají hostovat místně na portu 5000 gurovaný náš vývojový profil modulu runtime:
 
         E:\Testing\chattest>dotnet run
         Hosting environment: Development
@@ -231,40 +226,40 @@ V této části přidáte vývojové běhové prostředí pro ASP.NET Core. Dal�
         Now listening on: http://localhost:5000
         Application started. Press Ctrl+C to shut down.    
 
-3. Otevřete dvě okna prohlížeče a v obou přejděte na adresu `http://localhost:5000`. Zobrazí se výzva k zadání vašeho jména. Zadejte jména obou klientů a otestujte nabízení obsahu zpráv mezi oběma klienty pomocí tlačítka **Send** (Odeslat).
+3. Otevře dvě okna prohlížeče. V každé prohlížeč, přejděte na `http://localhost:5000`. Budete vyzváni k zadání vašeho názvu. Zadejte název klienta pro klienty a doručením (push) obsah zprávy mezi oběma klienty pomocí testu **odeslat** tlačítko.
 
-    ![Dokončený rychlý start v místním prostředí](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
+    ![Příklad konverzace skupiny Azure SignalR](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete pokračovat k dalšímu kurzu, můžete prostředky vytvořené v tomto rychlém startu zachovat pro pozdější použití.
+Pokud budete pokračovat k dalšímu kurzu, můžete zachovat prostředky vytvořené v rámci tohoto rychlého startu a je znovu použít.
 
-V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém startu skončili, můžete prostředky Azure vytvořené v tomto rychlém startu odstranit, abyste se vyhnuli poplatkům. 
+Pokud budete hotovi s ukázkovou aplikaci rychlý start, můžete odstranit prostředky Azure vytvořené v tomto rychlém startu se vyhnout poplatkům za. 
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
+> Odstranění skupiny prostředků je nevratné a zahrnuje odstranění všech prostředků v této skupině. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete odstranit jednotlivé prostředky jednotlivě z příslušné okno místo odstraněním skupiny prostředků.
 > 
 > 
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+V **filtrovat podle názvu** textové pole, zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve vaší skupině prostředků. v seznamu výsledků vyberte tři tečky (**...** ) > **Odstranit skupinu prostředků**.
 
    
-![Odstranění](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
+![Výběry pro odstranění skupiny prostředků](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 
-Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
+Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků a potvrdit, vyberte **odstranit**.
    
-Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje, odstraní.
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili nový prostředek služby Azure SignalR a společně s webovou aplikací ASP.NET Core jste ho použili k nabízení aktualizací obsahu v reálném čase do několika připojených klientů. Další informace o použití služby Azure SignalR najdete v následujícím kurzu, který demonstruje ověřování.
+V tomto rychlém startu jste vytvořili nový prostředek služby Azure SignalR. Můžete pak použít ho s webovou aplikaci ASP.NET Core aktualizace obsahu v reálném čase více připojeným klientům. Další informace o používání služby Azure SignalR, pokračujte kurzem, který předvádí ověření.
 
 > [!div class="nextstepaction"]
 > [Ověřování pomocí služby Azure SignalR](./signalr-concept-authenticate-oauth.md)

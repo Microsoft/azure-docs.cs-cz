@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-ms.openlocfilehash: f8068524a33c6d29056af456a26b8bd87fc3e3d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68a9523dcc9c4dd84399c68fc7e31a692c011487
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742698"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523255"
 ---
 # <a name="virtual-network--business-continuity"></a>Virtuální sítě – kontinuita podnikových procesů
 
 ## <a name="overview"></a>Přehled
 Virtuální síť (VNet) je logické znázornění vaší vlastní sítě v cloudu. Umožňuje definovat vlastní privátní adresní prostor IP a sítě segmentovat do podsítí. Virtuální sítě slouží jako hranice vztahů důvěryhodnosti pro hostování vašeho výpočetní prostředky, jako jsou Azure Virtual Machines nebo Cloud Services (webové nebo pracovní role). Virtuální síť umožňuje přímou komunikaci privátních IP mezi prostředky v ní. Propojení virtuální sítě k místní síti prostřednictvím brány sítě VPN nebo ExpressRoute.
 
-Virtuální sítě se vytvoří v rámci oboru oblast. Můžete vytvořit virtuální sítě pomocí stejného adresního prostoru ve dvou různých oblastech (například USA – východ a USA – západ), ale nelze je vzájemně propojit. 
+Virtuální sítě se vytvoří v rámci oboru oblast. Je možné *vytvořit* virtuálních sítí se stejným adresní prostor ve dvou různých oblastech (například USA – východ a USA – západ), ale protože mají stejný adresní prostor, nemůžete se připojit je společně. 
 
 ## <a name="business-continuity"></a>Kontinuita podnikových procesů
 

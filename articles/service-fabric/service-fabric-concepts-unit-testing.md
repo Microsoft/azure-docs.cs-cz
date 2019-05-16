@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881449"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595495"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Testování jednotek stavové služby v Service Fabric
 
@@ -36,7 +36,7 @@ Testování stavové služby může pomoct odhalit další některých běžnýc
 
 ## <a name="common-practices"></a>Běžné postupy
 
-Následující části doporučí v nejběžnějších postupů pro stavové služby testování částí. Také výzva, co by měl mít napodobování vrstvy úzce zarovnání na Service Fabric Orchestrace a správa stavů. Napodobování knihovny existovat knihoven, které poskytují tuto funkci. [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) od 3.3.0 nebo novější je jeden takový knihovny, který poskytuje funkci napodobování doporučené a dodržovat postupy uvedené níže.
+Následující části doporučí v nejběžnějších postupů pro stavové služby testování částí. Také výzva, co by měl mít napodobování vrstvy úzce zarovnání na Service Fabric Orchestrace a správa stavů. [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) od 3.3.0 nebo novější je jeden takový knihovny, který poskytuje funkci napodobování doporučené a dodržovat postupy uvedené níže.
 
 ### <a name="arrangement"></a>Uspořádání
 

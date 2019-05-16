@@ -11,22 +11,21 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/07/2019
-ms.openlocfilehash: 7f850f309034d128efef89ea842db41d35b8491e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 05/11/2019
+ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235737"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620151"
 ---
 # <a name="sql-database-serverless-preview"></a>Bez serveru SQL Database (preview)
 
 ## <a name="what-is-the-serverless-compute-tier"></a>Co je výpočetní prostředí úroveň
 
-Bez serveru SQL Database (preview) je výpočetní úroveň, která kusovník pro částku compute používané izolované databáze na základě za sekundu. Bez serveru je cena – výkon – optimalizované pro izolované databáze s vzorcům používání vzory, které si může dovolit některých zpoždění při zahřívání výpočetní po období nečinnosti využití.
-Naopak veřejně dostupným nabídkám v SQL Database pro částku z informací o dnešku vyúčtování výpočetní zřízené po hodinách. Tato zřízené výpočetní úroveň je cena – výkon – optimalizovaný pro izolované databáze nebo elastické fondy s vyšší průměrné využití, které nemůžete dovolit případné zpoždění při zahřívání výpočetní prostředky.
+Bez serveru SQL Database (preview) je výpočetní úroveň, která kusovník pro částku compute používané izolované databáze na základě za sekundu. Bez serveru je optimalizováno pro izolované databáze s přerušovaným, nepředvídatelné využití vzorky, které si může dovolit některých zpoždění při zahřívání výpočetní po období nečinnosti využití cena – výkon.
 
-Databáze ve vrstvě počítače bez serveru je ve výpočetní oblasti, kterou můžete použít a prodlevu autopause parametrizované.
+Databáze na úrovni výpočetní prostředí je ve výpočetní oblasti, kterou můžete použít a prodlevu autopause parametrizované.
 
 ![bez serveru fakturace](./media/sql-database-serverless/serverless-billing.png)
 
@@ -44,22 +43,11 @@ Fakturace za výpočetní prostředky podle množství používá virtuálních 
 
 ## <a name="scenarios"></a>Scénáře
 
-Bez serveru je optimalizováno pro izolované databáze s vzorcům používání vzory, které si může dovolit některých zpoždění při zahřívání výpočetní po období nečinnosti využití cena – výkon. Zřízené výpočetní úroveň je optimalizovaná pro jeden, nebo součástí fondu databází s vyšší průměrné využití, které nemůžete dovolit případné zpoždění při zahřívání výpočetní cena – výkon.
-
-Následující tabulka porovnává úroveň výpočetní prostředí s zřízených výpočetních úrovní:
-
-||Bezserverové výpočetní prostředí|Zřízené výpočetní prostředky|
-|---|---|---|
-|**Typické použití**|Databáze s využitím vzorcům, nepředvídatelné proložená neaktivní období|Databáze nebo elastické fondy s více pravidelné používání|
-|**Úsilí vynaložené na správu výkonu**|Nižší|Vyšší|
-|**COMPUTE škálování**|Automaticky|Ručně|
-|**COMPUTE rychlost odezvy**|Nižší za neaktivní období|Okamžitý|
-|**Členitost fakturace**|Za sekundu|Za hodinu|
-|
+Bez serveru je optimalizováno pro izolované databáze s přerušovaným, nepředvídatelné využití vzorky, které si může dovolit některých zpoždění při zahřívání výpočetní po období nečinnosti využití cena – výkon. Naproti tomu zřízené výpočetní úroveň je optimalizovaná pro jeden, nebo součástí fondu databází s vyšší průměrné využití, které nemůžete dovolit případné zpoždění při zahřívání výpočetní cena – výkon.
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Scénáře, které jsou vhodné pro výpočetní prostředí
 
-- Izolované databáze s vzory vzorcům používání spolu s obdobími nečinnosti může přinést cena úspory se počítají pro fakturaci za sekundu množství využitých výpočtů.
+- Izolované databáze s přerušovaným, nepředvídatelné využití vzorů promíchaný s obdobími nečinnosti může přinést cena úspory se počítají pro fakturaci za sekundu množství využitých výpočtů.
 - Izolované databáze s požadavky na prostředky, které je těžké předpovědět a Zákazníci, kteří dávají přednost delegovat velikosti výpočetní prostředky ve službě.
 - Izolované databáze na úrovni zřízených výpočetních, které často měnit úrovně výkonu.
 
@@ -67,8 +55,19 @@ Následující tabulka porovnává úroveň výpočetní prostředí s zřízen�
 
 - Izolované databáze s více běžných a další podstatné výpočetní využití v čase.
 - Databáze, které nemůžou tolerovat výkonu kompromis vyplývající z více časté paměti ořezávání nebo zpozdit autoresuming z pozastaveného stavu.
-- Více databázím s vzorcům používání vzory, které může být konsolidovány do jednoho serveru a použít na lepší optimalizaci ceny elastických fondů.
+- Více databázím s využití krátkodobých, nepředvídatelné vzorce, může být konsolidovány do jednoho serveru, které používají elastické fondy na lepší optimalizaci cen.
 
+## <a name="comparison-with-provisioned-compute-tier"></a>Porovnání s zřízených výpočetních úrovní
+
+Následující tabulka shrnuje rozdíly mezi výpočetní prostředí a na úrovni zřízených výpočetních:
+
+| | **Výpočetní prostředí** | **Zřízených výpočetních** |
+|:---|:---|:---|
+|**Typické použití**| Databáze s využitím přerušované, nepředvídatelné proložená neaktivní období. | Databáze nebo elastické fondy s více pravidelné používání.|
+| **Úsilí vynaložené na správu výkonu** |Nižší|Vyšší|
+|**COMPUTE škálování**|Automaticky|Ručně|
+|**COMPUTE rychlost odezvy**|Nižší za neaktivní období|Okamžitý|
+|**Členitost fakturace**|Za sekundu|Za hodinu|
 
 ## <a name="purchasing-model-and-service-tier"></a>Zakoupení modelů a úrovni služeb
 
@@ -116,7 +115,7 @@ Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje 
 
 ### <a name="connectivity"></a>Možnosti připojení
 
-Když bez serveru databáze je pozastavená, bude při prvním přihlášení databázi obnovit a vrátí chybu s informacemi o tom, že databáze je k dispozici. Po obnovení databáze přihlášení je nutné zopakovat k navázání připojení. Databáze klientů se logika opakovaných pokusů připojení by neměl muset upravit.
+Když bez serveru databáze je pozastavená, bude při prvním přihlášení databázi obnovit a vrátí chybu s informacemi o tom, že databáze je k dispozici s kódem chyby 40613. Po obnovení databáze přihlášení je nutné zopakovat k navázání připojení. Databáze klientů se logika opakovaných pokusů připojení by neměl muset upravit.
 
 ### <a name="latency"></a>Latence
 
@@ -135,13 +134,13 @@ Tyto funkce nepodporují autopausing a autoresuming. To znamená pokud jsou pou�
 
 Vytváří se nová databáze nebo přesunutí že existující databáze do vrstvy výpočetní prostředí používá stejný vzor jako vytváření s novou databází ve zřízené výpočetní vrstvě a zahrnuje následující kroky:
 
-1. Zadejte název cíle služby. V následující tabulce jsou uvedeny vrstvy služby k dispozici a velikostí výpočetních aktuálně k dispozici ve verzi public preview.
+1. Zadejte název cíle služby. Cíl služby předepisuje úrovně, generace hardwaru a maximální virtuálních jader. V následující tabulce jsou uvedeny možnosti cíle služby:
 
-   |Úroveň služby|Vypočítat velikost|
-   |---|---|
-   |Obecné použití|GP_S_Gen5_1|
-   |Obecné použití|GP_S_Gen5_2|
-   |Obecné použití|GP_S_Gen5_4|
+   |Název cíle služby|Úroveň služby|Generace hardwaru|Maximální počet virtuální jader|
+   |---|---|---|---|
+   |GP_S_Gen5_1|Obecné použití|Gen5|1|
+   |GP_S_Gen5_2|Obecné použití|Gen5|2|
+   |GP_S_Gen5_4|Obecné použití|Gen5|4|
 
 2. Volitelně můžete Určete minimální virtuálních jader a autopause zpoždění, chcete-li změnit výchozí hodnoty. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 
@@ -178,7 +177,7 @@ New-AzSqlDatabase `
 
 ### <a name="move-existing-database-into-the-serverless-compute-tier"></a>Přesunout existující databázi do vrstvy výpočetní prostředí
 
-Následující příklad přesune existující jedné databáze z úrovně zřízených výpočetních do vrstvy výpočetní prostředí. Tento příklad používá výchozí hodnoty pro virtuální jádra minimální, maximální počet virtuálních jader a autopause zpoždění.
+Následující příklad přesune existující jedné databáze z úrovně zřízených výpočetních do vrstvy výpočetní prostředí. Tento příklad explicitně určuje virtuálních jader pro minimální, maximální počet virtuálních jader a autopause zpoždění.
 
 ```powershell
 Set-AzSqlDatabase
@@ -205,11 +204,11 @@ Změna maximální virtuálních jader je prováděno pomocí [Set-AzSqlDatabase
 
 ### <a name="minimum-vcores"></a>Minimální počet virtuálních jader
 
-Změna maximální virtuálních jader je prováděno pomocí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `MinVcore` argument.
+Úprava minimální virtuálních jader pomocí provádí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `MinVcore` argument.
 
 ### <a name="autopause-delay"></a>Autopause zpoždění
 
-Změna maximální virtuálních jader je prováděno pomocí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `AutoPauseDelay` argument.
+Úprava zpoždění autopause pomocí provádí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `AutoPauseDelay` argument.
 
 ## <a name="monitor-serverless-database"></a>Monitorování databáze bez serveru
 
@@ -230,7 +229,7 @@ Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředk�
 |Entita|Metrika|Popis|Jednotky|
 |---|---|---|---|
 |Balíček aplikace|app_cpu_percent|Procentuální podíl virtuálních jader, používat aplikace vzhledem k maximální počet virtuálních jader pro povolené aplikace.|Procento|
-|Balíček aplikace|app_cpu_billed|Objem výpočtů účtovat aplikace během období vytváření sestav. Placené během této doby je produkt tuto metriku a je cena ze jednotku vCore.<br>Hodnoty tato metrika se určují na základě agregace v čase používá maximální využití procesoru a paměti používá každou sekundu.<br>Využitý počet je menší než minimální velikost Zřizuje se jako sada min virtuálních jader a paměti min, se účtuje minimální velikost zřízené.  Aby bylo možné porovnat procesoru s pamětí pro účely fakturace, je paměť ve změny měřítka množství paměti v Gigabajtech o 3 GB za vCore normalizován do jednotek virtuálních jader.|vCore sekund|
+|Balíček aplikace|app_cpu_billed|Objem výpočtů účtovat aplikace během období vytváření sestav. Placené během této doby je produkt tuto metriku a je cena ze jednotku vCore. <br><br>Hodnoty tato metrika se určují na základě agregace v čase používá maximální využití procesoru a paměti používá každou sekundu. Využitý počet je menší než minimální velikost Zřizuje se jako sada min virtuálních jader a paměti min, se účtuje minimální velikost zřízené. Aby bylo možné porovnat procesoru s pamětí pro účely fakturace, je paměť ve změny měřítka množství paměti v Gigabajtech o 3 GB za vCore normalizován do jednotek virtuálních jader.|vCore sekund|
 |Balíček aplikace|app_memory_percent|Procento paměti používá aplikace vzhledem k maximální povolenou paměť pro aplikaci.|Procento|
 |Uživatel fondu|cpu_percent|Procentuální podíl virtuálních jader, které používá uživatelské zatížení vzhledem k maximální počet virtuálních jader pro povolené pro uživatelské zatížení.|Procento|
 |Uživatel fondu|data_IO_percent|Procento dat vstupně-výstupních operací používají uživatelské zatížení souvisejícího s daty maximální IOPS povolené pro uživatelské zatížení.|Procento|
@@ -262,20 +261,21 @@ Omezení prostředků najdete v tématu [úroveň výpočetní prostředí](sql-
 
 ## <a name="billing"></a>Fakturace
 
-Objem výpočtů fakturovat každou sekundu je maximální využití procesoru a paměti používá každou sekundu. Pokud procento využití procesoru a použité paměti je menší než minimální velikost pro všechny zřízené, se účtuje zřízená velikost. Aby bylo možné porovnat procesoru s pamětí pro účely fakturace, je paměť ve změny měřítka množství paměti v Gigabajtech o 3 GB za vCore normalizován do jednotek virtuálních jader.
+Objem výpočtů, účtuje se maximální využití procesoru a paměti používá každou sekundu. Pokud procento využití procesoru a použité paměti je menší než minimální velikost pro všechny zřízené, se účtuje zřízená velikost. Aby bylo možné porovnat procesoru s pamětí pro účely fakturace, je paměť ve změny měřítka množství paměti v Gigabajtech o 3 GB za vCore normalizován do jednotek virtuálních jader.
 
 - **Prostředek účtuje**: Procesor a paměť
 - **Fakturována částka ($)**: cena za jednotku – VCORE úrovně * max (min virtuálních jader, používá virtuální jádra, minimální paměť GB * 1/3 paměti využité GB * 1/3) 
 - **Četnost fakturace**: Za sekundu
 
+Jednotková cena vcore v náklady na vcore za sekundu. Odkazovat [stránce s cenami za Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) pro konkrétní jednotkové ceny v dané oblasti.
+
 Objem výpočtů účtuje je zveřejněný prostřednictvím následující metriky:
 
 - **Metrika**: app_cpu_billed (vCore v sekundách)
-- **Definice**: maximální počet (minutu virtuálních jader, používá virtuální jádra, minimální paměť GB * 1/3 paměti využité GB * 1/3) *
+- **Definice**: maximální počet (minutu virtuálních jader, používá virtuální jádra, minimální paměť GB * 1/3 paměti využité GB * 1/3)
 - **Četnost hlášení**: Za minutu
 
-> [!NOTE]
-> \* Toto množství se počítá každou sekundu a agregovat více než 1 minuta.
+Toto množství se počítá každou sekundu a agregovat více než 1 minuta.
 
 **Příklad**: Vezměte v úvahu databázi GP_S_Gen5_4 pomocí následujícího využití po dobu jedné hodiny:
 
@@ -289,7 +289,7 @@ Objem výpočtů účtuje je zveřejněný prostřednictvím následující metr
 |0:06 - 1:00|1255|
 ||Celkem: 1631|
 
-Předpokládejme, že je cena ze jednotku výpočetních je $0.2609/vCore/hour. Pak výpočetní účtuje za toto období hodinu se určuje pomocí následujícího vzorce: **$0.2609/vCore/hour * 1631 vCore sekund * 1 hodinu a 3 600 sekund = $0.1232**
+Předpokládejme, že je cena ze jednotku výpočetních je $0.000073/vCore/second. Pak výpočetní účtuje za toto období hodinu se určuje pomocí následujícího vzorce: **$0.000073/vCore/second * $0.1191 = 1631 vCore sekund**
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
@@ -297,4 +297,5 @@ Bez serveru výpočetní úroveň je dostupná ve všech oblastech kromě násle
 
 ## <a name="next-steps"></a>Další postup
 
-Omezení prostředků najdete v tématu [bez serveru – compute úrovně omezení prostředků](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier).
+- Abyste mohli začít, najdete v článku [rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal](sql-database-single-database-get-started.md).
+- Omezení prostředků najdete v tématu [bez serveru – compute úrovně omezení prostředků](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier).

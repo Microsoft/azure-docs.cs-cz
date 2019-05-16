@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2019
+ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61385917"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522092"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače obsahuje sadu grafy výkonu, které se zaměřují provádění několika klíčových ukazatelů výkonu (KPI), které vám pomohou určit, jak dobře virtuálního počítače. Grafy zobrazit využití prostředků za časové období, abyste mohli identifikovat kritické body, anomálie, nebo přepněte do pohledu výpis každý počítač, chcete-li zobrazit využití prostředků na základě metriky vybrané. I když existují mnoho prvků vzít v úvahu při práci s výkonem, související s Azure Monitor pro monitorování virtuálních počítačů, klíče operačního systému ukazatele výkonu procesoru, paměti, síťového adaptéru a využití disku. Výkon doplňuje funkci monitorování stavu a pomáhá vystavit problémy, které označují selhání součásti systému je to možné, podpora ladění a optimalizace pro dosažení efektivity nebo podporují plánování kapacity.  
@@ -105,6 +105,21 @@ Jsou k dispozici následující grafy využití kapacity:
 Kliknutím na ikonu připínáčku v pravém horním rohu některý z kódů PIN grafy vybraný graf na poslední řídicí panel Azure jste zobrazili. Z řídicího panelu můžete změnit velikost a umístění grafu. Výběrem grafu na řídicím panelu vás přesměruje do Azure monitoru pro virtuální počítače a načte podrobné zobrazení výkonu pro virtuální počítač.  
 
 ![Virtuální počítač insights přímo výkonu z virtuálního počítače zobrazení](./media/vminsights-performance/vminsights-performance-directvm-01.png)
+
+## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Výkon zobrazení přímo z škálovací sady virtuálních počítačů Azure
+Pro přístup k přímo z škálovací sady virtuálních počítačů Azure, proveďte následující kroky.
+
+1. Na webu Azure Portal, vyberte **škálovací sady virtuálních počítačů**.
+2. Ze seznamu, vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)** zobrazíte **výkonu** kartu.
+
+Tato stránka načte zobrazení výkonu monitorování Azure, omezená na vybrané škálovací sady. To vám umožní sady monitorovaných metrik najdete v článku Top N instancí ve škálovací sadě, zobrazit agregovaný výkon ve škálovací sadě a zobrazit trendy pro vybrané metriky napříč n jednotlivých instancí škálovací nastavit. Výběr instance ze zobrazení seznamu umožňuje načíst mapu jeho nebo přejděte do zobrazení podrobné výkonu pro tuto instanci.
+
+Kliknutím na ikonu připínáčku v pravém horním rohu některý z kódů PIN grafy vybraný graf na poslední řídicí panel Azure jste zobrazili. Z řídicího panelu můžete změnit velikost a umístění grafu. Výběrem grafu na řídicím panelu vás přesměruje do Azure monitoru pro virtuální počítače a načte podrobné zobrazení výkonu pro virtuální počítač.  
+
+![Virtuální počítač insights výkon přímo z virtuálního počítače škálovací nastavení zobrazení](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
+
+>[!NOTE]
+>Zobrazení podrobné výkonu pro konkrétní instanci se můžete dostat taky z zobrazení instance škálovací sady pro. Přejděte do **instance** pod **nastavení** části a klikněte na tlačítko **Insights (preview)**.
 
 ## <a name="alerts"></a>Výstrahy  
 Metriky výkonu, které jsou povolené v rámci služby Azure Monitor pro virtuální počítače neobsahují předem nakonfigurovaná pravidla upozornění. Existují [výstrahy týkající se stavu](vminsights-health.md#alerts) odpovídající problémy s výkonem, které jsou zjištěny na vašem virtuálním počítači Azure, jako je například vysoké využití procesoru, velikost místa na disku k dispozici, nízká nedostatku paměti atd.  Ale tyto výstrahy týkající se stavu platí jenom pro všechny virtuální počítače, které jsou povolené pro monitorování Azure pro virtuální počítače. 

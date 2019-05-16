@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/03/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 093f749ac29dc2bd341712d87b404de769d0b7bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61427196"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752218"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -65,7 +65,7 @@ Další informace o různých typech objektů BLOB najdete v tématu [vysvětlen
 Počet řešení existují pro migraci existujících dat do úložiště objektů Blob:
 
 - **AzCopy** je nástroj příkazového řádku snadno použitelné pro Windows a Linux, který kopíruje data do a z úložiště objektů Blob, napříč kontejnery nebo mezi různými účty úložiště. Další informace o AzCopy najdete v tématu [přenos dat pomocí AzCopy v10 (Preview)](../common/storage-use-azcopy-v10.md). 
-- **Knihovna pro přesun dat úložiště Azure** je knihovna .NET pro přesun dat mezi službami Azure Storage. Knihovna pro přesun dat je sestavován nástroj AzCopy. Další informace najdete v tématu [referenční dokumentaci](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement) pro přesun dat knihovny. 
+- **Knihovna pro přesun dat úložiště Azure** je knihovna .NET pro přesun dat mezi službami Azure Storage. Knihovna pro přesun dat je sestavován nástroj AzCopy. Další informace najdete v tématu [referenční dokumentaci](/dotnet/api/microsoft.azure.storage.datamovement) pro přesun dat knihovny. 
 - **Azure Data Factory** podporuje kopírování dat do a z úložiště objektů Blob s použitím klíče účtu, sdílený přístupový podpis službu objektu zabezpečení nebo spravovaných identit pro ověřování prostředků Azure. Další informace najdete v tématu [kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 - **Blobfuse** je virtuálním souborovém systému ovladače pro úložiště objektů Blob v Azure. Blobfuse můžete použít pro přístup k existující data objektů blob bloku v účtu úložiště v systému Linux. Další informace najdete v tématu [postup připojení služby Blob storage jako systém souborů s blobfuse](storage-how-to-mount-container-linux.md).
 - **Azure Data Box Disk** je služba pro přenos místních dat do úložiště objektů Blob při velkých datových sad nebo síťovým omezením nahrávání dat při přenosu nereálný. Můžete využít [Azure Data Box Disk](../../databox/data-box-disk-overview.md) a vyžádat si od Microsoftu jednotky SSD (solid-state drive). Potom můžete data zkopírovat na tyto disky a odeslat je do Microsoftu, aby se nahrála do služby Blob Storage.

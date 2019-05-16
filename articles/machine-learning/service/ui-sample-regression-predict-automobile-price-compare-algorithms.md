@@ -1,7 +1,7 @@
 ---
 title: 'Regrese: Předpovědět cenu a porovnat algoritmy'
 titleSuffix: Azure Machine Learning service
-description: Tento ukázkový experiment vizuální rozhraní ukazuje, jak porovnat výkon jednotlivých dva regresní modely, které předpovídat cenu automobilu představuje jeden. Proces zahrnuje trénování, testování a vyhodnocení modelů na datové sadě Automobile price data (Raw).
+description: V tomto článku se dozvíte, jak vytvořit experiment složité strojové učení, aniž byste museli napsat jediný řádek kódu pomocí rozhraní visual. Zjistěte, jak trénovat a porovnávání několik modelů regrese předpovídat cenu automobilu podle technické funkce
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a4a9e74fa7f56b67f0f4a64f6619db1c5c69a2c
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: c8c813a2304797e71499a916e29c18f8bec2b389
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442121"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787800"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 - regrese: Předpovědět cenu a porovnat algoritmy
 
-Tento ukázkový experiment vizuální rozhraní ukazuje, jak porovnat výkon jednotlivých dva regresní modely, které předpovídat cenu automobilu představuje jeden. Proces zahrnuje trénování, testování a vyhodnocení modelu s použitím **Automobile price data (Raw)** datové sady.
+Zjistěte, jak vytvořit experiment složité strojové učení, aniž byste museli napsat jediný řádek kódu pomocí rozhraní visual. Tato ukázka trénovat a porovnává několik regresních modelů předpovídat cenu automobilu podle jeho technické funkce. Poskytujeme důvody pro volby provedené v tento experiment tak může vypořádat vlastní strojového učení problémy.
+
+Pokud právě začínáte s machine learningem, může trvat podívat [základní verze](ui-sample-regression-predict-automobile-price-basic.md) tohoto experimentu zobrazíte základní regrese experimentovat.
+
+Tady je dokončené grafu pro tento experiment:
+
+[![Graf experimentu](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,10 +35,6 @@ Tento ukázkový experiment vizuální rozhraní ukazuje, jak porovnat výkon je
 
     ![Otevřete experiment](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="related-sample"></a>Související ukázkové
-
-[Ukázka 1 - regrese: Předpověď cen automobilů (Basic)](ui-sample-regression-predict-automobile-price-basic.md) nabízí jednodušší experiment, který byl odstraněn stejnému problému jako u tohoto experimentu ale, který se používá pouze jeden regresní model. Na něj odkazovat, pokud potřebujete základní příklad regrese.
-
 ## <a name="experiment-summary"></a>Souhrn testu
 
 Tyto kroky použijte k sestavení testu:
@@ -41,11 +43,6 @@ Tyto kroky použijte k sestavení testu:
 1. Předběžně zpracovat data.
 1. Trénování modelu.
 1. Testování, vyhodnocení a porovnávání vzorů.
-
-Tady je úplný graf testu:
-
-[![Graf experimentu](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
-
 
 ## <a name="get-the-data"></a>Získání dat
 

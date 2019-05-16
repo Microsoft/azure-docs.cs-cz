@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631885"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606936"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technické specifikace a dodržování předpisů pro zařízení StorSimple
 
@@ -104,7 +104,7 @@ V následující tabulce jsou uvedeny dimenze skříň v milimetrech a palců.
 
 V závislosti na konfiguraci úplným načtením primární skříně můžete naváží od 21 33 kg a vyžaduje dvě osoby, aby to zvládnul.
 
-| Skříň | Hmotnost |
+| Skříň | Váha |
 | --- | --- |
 | Maximální tloušťka (závisí na konfiguraci) |30 kg – 33 kg |
 | Prázdný (instalováno žádné jednotky) |21 – kg 23 |
@@ -173,7 +173,7 @@ Bude zařízení v souladu s EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>Dodržování předpisů kabel power AC.
 
-Moduly a kabel sestavení dokončeno power musí splňovat standardy, které jsou vhodné pro zemi, ve kterém je používán zařízení a musí mít bezpečný přístup z více schválení, které jsou přípustné v dané zemi. Následující tabulky uvádějí standardy pro USA a Evropě.
+Moduly a kabel sestavení dokončeno power musí splňovat standardy, které jsou vhodné pro zemi nebo oblast, ve kterém je používán zařízení a musí mít bezpečný přístup z více schválení, které jsou přípustné v zemi/oblast. Následující tabulky uvádějí standardy pro USA a Evropě.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Napájecích kabelů AC – USA (musí být uvedeny NRTL)
 

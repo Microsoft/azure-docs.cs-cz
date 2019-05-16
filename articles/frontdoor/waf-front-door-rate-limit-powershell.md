@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: e0ad1e85a4cd47de823bc4f224b5a8834b1068b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459313"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523643"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace webové aplikace pravidlo brány firewall míra limit pomocí Azure Powershellu
 Azure web application firewall (WAF) frekvence limit pravidlo pro Azure branou určuje počet požadavků umožněných z IP adresy konkrétního klienta po dobu jedné minuty.
@@ -55,17 +55,17 @@ Install-Module -Name Az.FrontDoor
 Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření profilu branou](quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>Definovat podmínky shody adresy url
-Definujte podmínku shody adresy URL (adresa URL obsahuje /promo) pomocí [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject).
+Definujte podmínku shody adresy URL (adresa URL obsahuje /promo) pomocí [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
 Následující příklad porovnává */promo* jako hodnotu *RequestUri* proměnné:
 
 ```powershell-interactive
-   $promoMatchCondition = New-AzFrontDoorMatchConditionObject `
+   $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
      -MatchVariable RequestUri `
      -OperatorProperty Contains `
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>Vytvořit pravidlo limit vlastní míry
-Nastavit limit frekvence pomocí [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject). V následujícím příkladu je omezení nastaveno na hodnotu 1000. Požadavky z libovolného klienta na stránce propagační vyšší než 1 000 během jedné minuty jsou blokovány, dokud nezačne další minutu.
+Nastavit limit frekvence pomocí [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). V následujícím příkladu je omezení nastaveno na hodnotu 1000. Požadavky z libovolného klienta na stránce propagační vyšší než 1 000 během jedné minuty jsou blokovány, dokud nezačne další minutu.
 
 ```powershell-interactive
    $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
@@ -79,14 +79,14 @@ Nastavit limit frekvence pomocí [New-AzFrontDoorCustomRuleObject](/powershell/m
 
 ## <a name="configure-a-security-policy"></a>Konfigurace zásad zabezpečení
 
-Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzureRmResourceGroup`. V dalším kroku nakonfigurujte zásady zabezpečení s pravidlo limit vlastní míry pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) v zadané skupině prostředků, který obsahuje profil branou.
+Najít název skupiny prostředků, která obsahuje pomocí profilu branou `Get-AzureRmResourceGroup`. V dalším kroku nakonfigurujte zásady zabezpečení s pravidlo limit vlastní míry pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, který obsahuje profil branou.
 
 Následujícím příkladu používá název skupiny prostředků *myResourceGroupFD1* za předpokladu, že jste vytvořili branou profilována za použití podle pokynů [rychlý start: Vytvoření branou](quickstart-create-front-door.md) článku.
 
- pomocí [New-AzFrontDoorFireWallPolicy](/powershell/module/Az.FrontDoor/New-AzFrontDoorFireWallPolicy).
+ pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
-   $ratePolicy = New-AzFrontDoorFireWallPolicy `
+   $ratePolicy = New-AzFrontDoorWafPolicy `
      -Name "RateLimitPolicyExamplePS" `
      -resourceGroupName myResourceGroupFD1 `
      -Customrule $promoRateLimitRule `

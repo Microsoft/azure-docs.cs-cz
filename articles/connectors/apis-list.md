@@ -8,26 +8,33 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
-ms.date: 08/23/2018
-ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/08/2019
+ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722986"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551867"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
 Konektory poskytují rychlý přístup z Azure Logic Apps na události, data a akcí napříč jiné aplikace, služby, systémy, protokoly a platformy. Pomocí konektorů ve svých aplikacích logiky rozšířili schopnosti pro vaše cloudové a místní aplikace provádět úlohy s daty, které vytvoříte a už máte.
 
-Zatímco Logic Apps nabízí [~ více než 200 konektorů](https://docs.microsoft.com/connectors), tento článek popisuje Oblíbené a běžně používané konektory, které jsou úspěšně používat tisíce aplikací a miliony spuštění pro zpracování dat a informací. Úplný seznam konektorů a každý konektor referenční informace, jako jsou triggery, akce a omezení, najdete v tématu Referenční stránky konektoru v rámci [přehled konektorů](https://docs.microsoft.com/connectors). Také se dozvíte více o [aktivační události a akce](#triggers-actions).
+Zatímco Logic Apps nabízí [~ více než 200 konektorů](https://docs.microsoft.com/connectors), tento článek popisuje Oblíbené a běžně používané konektory, které jsou úspěšně používat tisíce aplikací a miliony spuštění pro zpracování dat a informací. Úplný seznam konektorů a každý konektor referenční informace, jako jsou triggery, akce a omezení, najdete v tématu Referenční stránky konektoru v rámci [přehled konektorů](https://docs.microsoft.com/connectors). Také se dozvíte více o [aktivační události a akce](#triggers-actions), [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md), a [podrobnosti o cenách Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 > [!NOTE]
 > Integrovat službu nebo rozhraní API, které nemá konektor, můžete přímo volat službu prostřednictvím protokolu, jako je například HTTP, nebo vytvořte [vlastního konektoru](#custom).
 
 Konektory jsou dostupné buď jako integrované aktivační události a akce, nebo jako spravované konektory:
 
-* [**Předdefinované**](#built-ins): Tyto integrované akce a triggery jsou "nativní" pro Azure Logic Apps a pomáhají vytvářet aplikace logiky, které spouštět na vlastní plány, komunikují s další koncové body, přijímat a reagovat na požadavky a volání funkce Azure, aplikace API Azure (webové aplikace), vaše vlastní rozhraní API spravovaná a publikovány pomocí Azure API Management a vnořené logic apps, které můžou přijímat požadavky. Můžete také použít integrované akce, které vám pomohou organizovat a řídit pracovní postup aplikace logiky a také pracovat s daty.
+* [**Předdefinované**](#built-ins): Tyto předdefinované aktivační události a akce jsou "nativní" pro Azure Logic Apps a pomáhají vytvářet aplikace logiky, které spouštět na vlastní plány, komunikují s další koncové body, přijímat a reagovat na požadavky a volání funkce Azure, aplikace API Azure (webové aplikace), vaše vlastní rozhraní API spravovaná a publikovány pomocí Azure API Management a vnořené logic apps, které můžou přijímat požadavky. Můžete také použít integrované akce, které vám pomohou organizovat a řídit pracovní postup aplikace logiky a také pracovat s daty.
+
+  > [!NOTE]
+  > Logic apps v rámci [prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) přímý přístup k prostředkům ve virtuální síti Azure.
+  > Při použití ISE, integrované aktivační události a akce, která zobrazí **Core** popisek spouštění v prostředí ISE stejné jako aplikace logiky. Logic apps, integrované aktivační události a integrované akce, které běží ve vaší ISE cenový plán liší od založenou na skutečné spotřebě cenového plánu.
+  >
+  > Další informace o vytváření ISEs najdete v tématu [připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
+  > Další informace o cenách najdete v tématu [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md).
 
 * **Spravované konektory**: Nasazen a spravován společností Microsoft, tyto konektory poskytují triggery a akce pro přístup k cloud services, s místními systémy nebo obojí, včetně Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint a dalších. Některé konektory specificky podporují scénáře komunikace business-to-business (B2B) a vyžadovat [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) připojený k vaší aplikaci logiky. Před použitím některých konektorů, budete muset nejprve vytvořit připojení, které jsou spravovány službou Azure Logic Apps. 
 
@@ -36,7 +43,7 @@ Konektory jsou dostupné buď jako integrované aktivační události a akce, ne
 
   Konektory jsou klasifikovány jako Standard nebo Enterprise. 
   [Podnikové konektory](#enterprise-connectors) poskytují přístup k podnikovým systémům, jako je například SAP, IBM MQ a IBM 3270 za poplatek. Pokud chcete zjistit, zda je konektor Standard nebo Enterprise, naleznete technické podrobnosti na stránce odkaz každý konektor v části [přehled konektorů](https://docs.microsoft.com/connectors). 
-  
+
   Konektory můžete také poznat podle pomocí těchto kategorií, i když některé konektory můžete napříč více kategorií. 
   Například SAP je konektor služby Enterprise a místní konektor:
 
@@ -47,8 +54,15 @@ Konektory jsou dostupné buď jako integrované aktivační události a akce, ne
   | [**Konektory účtu pro integraci**](#integration-account-connectors) | K dispozici při vytváření a platit za účtu pro integraci, tyto konektory transformace a ověřit XML, kódovat a dekódovat ploché soubory a zpracovat business-to-business (B2B) zprávy AS2, EDIFACT a X12 protokoly. |
   |||
 
-> [!NOTE]
-> Úplný seznam konektorů a každý konektor referenční informace, jako je například žádné triggery a akce, které jsou definovány pomocí rozhraní OpenAPI (dříve Swagger) popis a žádná omezení, najdete úplný seznam v části [přehled konektorů ](/connectors/). Informace o cenách najdete v tématu [podrobnosti o cenách Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) a [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md). 
+  > [!NOTE]
+  > Logic apps v rámci [prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) přímý přístup k prostředkům ve virtuální síti Azure. Při použití ISE, standardních a podnikových konektorů, které zobrazení **ISE** popisek spouštění v prostředí ISE stejné jako aplikace logiky. Konektory, které nechcete zobrazit popisek ISE spustit v globální službě Logic Apps.
+  >
+  > Pro místní systémy, které jsou připojené ke službě Azure virtual network, vaše ISE vložit do této sítě tak, aby aplikace logiky můžete přímo přístup těchto systémů s použitím buď konektor, který má **ISE** popisek, akce HTTP nebo [vlastního konektoru](#custom). Logic apps a konektorů, které běží ve vaší ISE cenovou plánování liší od založenou na skutečné spotřebě cenového plánu. 
+  >
+  > Další informace o vytváření ISEs najdete v tématu [připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+  > Další informace o cenách najdete v tématu [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md).
+
+  Úplný seznam konektorů a každý konektor referenční informace, jako je například žádné triggery a akce, které jsou definovány pomocí rozhraní OpenAPI (dříve Swagger) popis a žádná omezení, najdete úplný seznam v části [přehled konektorů ](/connectors/). Informace o cenách najdete v tématu [cenový model Logic Apps](../logic-apps/logic-apps-pricing.md), a [podrobnosti o cenách Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 <a name="built-ins"></a>
 
@@ -66,7 +80,7 @@ Logic Apps poskytuje integrované triggery a akce, můžete vytvořit pracovní 
 
 ### <a name="control-workflow"></a>Řízení pracovního postupu
 
-Tady jsou integrované akce pro strukturování a řídit akce v pracovním postupu vaší aplikace logiky:
+Logic Apps poskytuje integrované akce pro strukturování a řídit akce v pracovním postupu vaší aplikace logiky:
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -77,7 +91,7 @@ Tady jsou integrované akce pro strukturování a řídit akce v pracovním post
 
 ### <a name="manage-or-manipulate-data"></a>Správě nebo pracovat s daty
 
-Tady jsou integrované akce pro práci s výstupů dat a jejich formáty:  
+Služba Logic Apps poskytuje integrované akce pro práci s výstupů dat a jejich formáty:  
 
 |   |   | 
 |---|---| 
@@ -90,7 +104,7 @@ Tady jsou integrované akce pro práci s výstupů dat a jejich formáty:
 
 ## <a name="managed-api-connectors"></a>Spravované konektory rozhraní API
 
-Tady jsou další oblíbené konektory pro automatizaci úloh, procesů a pracovních postupů s těmito službami nebo systémy:
+Služba Logic Apps poskytuje tyto Oblíbené konektory úrovně Standard pro automatizaci úloh, procesů a pracovních postupů s těmito službami nebo systémy.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -100,25 +114,25 @@ Tady jsou další oblíbené konektory pro automatizaci úloh, procesů a pracov
 | [![Ikona rozhraní API][dynamics-365-icon]<br/>**Dynamics 365<br/>CRM Online**][dynamics-365-doc] | Připojte se ke svému účtu Dynamics 365, můžete vytvářet a spravovat záznamy, položky a další. | [![Ikona rozhraní API][ftp-icon]<br/>**FTP**][ftp-doc] | Připojení k serverům FTP, který se dá dostat z Internetu, abyste mohli pracovat se soubory a složkami. | 
 | [![Ikona rozhraní API][salesforce-icon]<br/>**Salesforce**][salesforce-doc] | Připojte se ke svému účtu Salesforce, můžete vytvářet a spravovat položky jako záznamy, úlohy, objektů a další. | [![Ikona rozhraní API][twitter-icon]<br/>**na Twitteru**][twitter-doc] | Připojte se k svému účtu na Twitteru, můžete spravovat tweety, sledující, časové osy a další. Uložte svoje tweety do SQL, Excel nebo SharePoint. | 
 | [![Ikona rozhraní API][azure-event-hubs-icon]<br/>**Azure Event Hubs**][azure-event-hubs-doc] | Zpracovávejte a publikujte události prostřednictvím centra událostí. Třeba získat výstup vaší aplikace logiky se službou Event Hubs a potom odešlete, jehož výstupem poskytovatele analýz v reálném čase. | [![Ikona rozhraní API][azure-event-grid-icon]<br/>**událostí Azure**</br>**mřížky**][azure-event-grid-doc] | Sledování událostí publikoval(a) Event Grid, například při změně prostředků Azure nebo prostředky třetích stran. | 
-||||| 
+|||||
 
 <a name="on-premises-connectors"></a>
 
 ## <a name="on-premises-connectors"></a>Místní konektory 
 
-Tady jsou některé běžně používané konektory, které poskytují přístup k datům a prostředkům v místních systémech. Než vytvoříte připojení k místnímu systému, je nutné nejprve [stažení, instalace a nastavení místní brány dat][gateway-doc]. Tato brána poskytuje zabezpečený komunikační kanál, aniž by bylo potřeba nastavovat nezbytné síťové infrastruktury. 
+Tady jsou některé běžně používané standardní konektory, které Logic Apps poskytuje pro přístup k datům a prostředkům v místních systémech. Než vytvoříte připojení k místnímu systému, je nutné nejprve [stažení, instalace a nastavení místní brány dat][gateway-doc]. Tato brána poskytuje zabezpečený komunikační kanál, aniž by bylo potřeba nastavovat nezbytné síťové infrastruktury. 
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
 | ![Ikona rozhraní API][biztalk-server-icon]<br/>**BizTalk**</br> **Server** | [![Ikona rozhraní API][file-system-icon]<br/>**souboru</br> systému**][file-system-doc] | [![API icon][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![Ikona rozhraní API][ibm-informix-icon]<br/>**IBM** </br> **Informix**][ibm-informix-doc] | ![Ikona rozhraní API][mysql-icon]<br/>**MySQL** | 
 | [![Ikona rozhraní API][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![Ikona rozhraní API][postgre-sql-icon]<br/>**PostgreSQL** | [![Ikona rozhraní API][sharepoint-server-icon]<br/>**SharePoint</br> serveru**][sharepoint-server-doc] | [![Ikona rozhraní API][sql-server-icon]<br/>**SQL</br> serveru**][sql-server-doc] | ![Ikona rozhraní API][teradata-icon]<br/>**Teradata** | 
-||||| 
+|||||
 
 <a name="integration-account-connectors"></a>
 
-## <a name="integration-account-connectors"></a>Konektory účtu pro integraci 
+## <a name="integration-account-connectors"></a>Konektory účtu pro integraci
 
-Tady jsou konektorů pro sestavování řešení business-to-business (B2B) s logic apps, když vytvoříte a Plaťte za to, [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), která je k dispozici prostřednictvím Enterprise Integration Pack (EIP) v Azure. S tímto účtem můžete vytvořit a ukládání artefaktů B2B, jako je například obchodní partnery, smlouvy, map, schémata, certifikáty a tak dále. Pokud chcete použít tyto artefakty, přidružte aplikace logiky účtu pro integraci. Pokud aktuálně používáte službu BizTalk Server, tyto konektory zdát, že známých již.
+Služba Logic Apps poskytuje standardní konektory pro sestavování řešení business-to-business (B2B) s logic apps, když vytvoříte a Plaťte za to, [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), která je k dispozici prostřednictvím Enterprise Integration Pack (EIP) v Azure. S tímto účtem můžete vytvořit a ukládání artefaktů B2B, jako je například obchodní partnery, smlouvy, map, schémata, certifikáty a tak dále. Pokud chcete použít tyto artefakty, přidružte aplikace logiky účtu pro integraci. Pokud aktuálně používáte službu BizTalk Server, tyto konektory zdát, že známých již.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -131,7 +145,7 @@ Tady jsou konektorů pro sestavování řešení business-to-business (B2B) s lo
 
 ## <a name="enterprise-connectors"></a>Podnikové konektory
 
-Aplikace logiky můžete získat přístup k podnikovým systémům, jako je SAP a IBM MQ:
+Logic Apps poskytuje tyto podnikové konektory pro přístup k podnikovým systémům, jako je SAP a IBM MQ:
 
 |   |   |   | 
 |---|---|---| 
@@ -172,11 +186,13 @@ Připojení můžete za předpokladu, že služby nebo systému umožňuje pří
 Pro volání rozhraní API, která spouští vlastní kód nebo nejsou k dispozici jako konektory, můžete rozšířit platformu Logic Apps [vytvoření vlastní funkce API Apps](../logic-apps/logic-apps-create-api-app.md). Můžete také [vytváření vlastních konektorů](../logic-apps/custom-connector-overview.md) pro *jakékoli* REST nebo založený na protokolu SOAP rozhraní API, která zpřístupnění těchto rozhraní API pro všechny aplikace logiky ve vašem předplatném Azure.
 Chcete-li zveřejnit vlastní aplikace API nebo konektory pro každého, kdo pro použití v Azure, můžete [odeslání konektoru Microsoftu k certifikaci](../logic-apps/custom-connector-submit-certification.md).
 
-## <a name="get-support"></a>Získat podporu
-
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Odeslání návrhu nebo hlasování o nápadech pro Azure Logic Apps a konektorů, najdete v tématu [webu zpětné vazby uživatelů Logic Apps](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> Logic apps v rámci [prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) přímý přístup k prostředkům ve virtuální síti Azure.
+> Pokud máte vlastní konektory, které vyžadují místní brány dat a vytvoříte tyto konektory mimo ISE, aplikace logiky do ISE můžete také použít tyto konektory.
+>
+> Vlastních konektorů vytvořených v rámci ISE nefungují s místní bránou dat Ale tyto konektory můžete přímý přístup k místním zdrojům dat, které jsou připojené ke službě Azure virtual network hostování ISE. Tak aplikace logiky do ISE pravděpodobně nepotřebujete bránu dat při komunikaci s těmito prostředky.
+>
+> Další informace o vytváření ISEs najdete v tématu [připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
 
 ## <a name="next-steps"></a>Další postup
 

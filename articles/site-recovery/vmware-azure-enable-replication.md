@@ -3,15 +3,15 @@ title: Povolení replikace virtuálních počítačů VMware pro zotavení po ha
 description: Tento článek popisuje, jak povolit virtuálních počítačů VMware pro replikaci do Azure pro zotavení po havárii pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 4/18/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60922707"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540765"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -43,16 +43,17 @@ Než budete postupovat podle kroků v této části, mějte na paměti následuj
 * Replikace do účtů úložiště pro nový virtuální počítač je pouze k dispozici prostřednictvím REST Representational State Transfer () rozhraní API a Powershellu. Použijte rozhraní Azure REST API verze 2016-08-10 nebo 2018-01-10 se replikuje do účtů úložiště.
 
 1. Přejděte na **krok 2: Replikovat aplikaci** > **zdroj**. Po povolení replikace pro první vyberte **+ replikovat** v trezoru povolíte replikaci pro další virtuální počítače.
-1. V **zdroj** stránky > **zdroj**, vyberte konfigurační server.
-1. Pro **typ počítače**vyberte **virtuálních počítačů** nebo **fyzické počítače**.
-1. V části **vCenter/vSphere Hypervisor** vyberte vCenter Server, který spravuje hostitele vSphere, nebo vyberte samotného hostitele. Toto nastavení není relevantní, pokud replikujete fyzické počítače.
-1. Vyberte procesový server, které bude konfigurační server, pokud jste ještě nevytvořili žádné dalších procesových serverů. Pak vyberte **OK**.
+2. V **zdroj** stránky > **zdroj**, vyberte konfigurační server.
+3. Pro **typ počítače**vyberte **virtuálních počítačů** nebo **fyzické počítače**.
+4. V části **vCenter/vSphere Hypervisor** vyberte vCenter Server, který spravuje hostitele vSphere, nebo vyberte samotného hostitele. Toto nastavení není relevantní, pokud replikujete fyzické počítače.
+5. Vyberte procesový server. Pokud nejsou žádné další procesy servery vytvořit, nebudou k dispozici v rozevírací nabídce integrované procesový server konfiguračního serveru. Stav každého procesový server je označeno podle doporučené omezení a další parametry. Zvolte v dobrém stavu procesového serveru. A [kritické](vmware-physical-azure-monitor-process-server.md#process-server-alerts) nelze vybrat procesový server. Můžete buď [odstraňovat potíže a řešit](vmware-physical-azure-troubleshoot-process-server.md) chyby **nebo** nastavit [horizontální navýšení kapacity procesového serveru](vmware-azure-set-up-process-server-scale.md).
+    ![Povolení replikace zdrojového okna](media/vmware-azure-enable-replication/ps-selection.png)
 
-    ![Povolení replikace zdrojového okna](./media/vmware-azure-enable-replication/enable-replication2.png)
+> [!NOTE]
+> Z [9.24 verze](service-updates-how-to.md#links-to-currently-supported-update-rollups), další výstrahy vydávají k vylepšení výstrahy týkající se stavu procesového serveru. Upgrade součásti Site Recovery na 9.24 verze nebo novější pro všechny výstrahy chcete vygenerovat.
 
-1. Pro **cílové**, vyberte předplatné a skupinu prostředků ve kterém chcete vytvořit převzetím služeb při selhání virtuálních počítačů. Vyberte model nasazení, který chcete použít v Azure pro virtuální počítače s převzetím služeb při selhání.
-
-1. Vyberte síť Azure a podsíť, která virtuální počítače Azure připojí po převzetí služeb při selhání. Síť musí být ve stejné oblasti jako trezor služby Site Recovery.
+6. Pro **cílové**, vyberte předplatné a skupinu prostředků ve kterém chcete vytvořit převzetím služeb při selhání virtuálních počítačů. Vyberte model nasazení, který chcete použít v Azure pro virtuální počítače s převzetím služeb při selhání.
+2. Vyberte síť Azure a podsíť, která virtuální počítače Azure připojí po převzetí služeb při selhání. Síť musí být ve stejné oblasti jako trezor služby Site Recovery.
 
    Vyberte **nakonfigurovat pro vybrané počítače** použijte nastavení sítě pro všechny virtuální počítače, které jste vybrali pro ochranu. Vyberte **nakonfigurovat později** vyberte síť Azure pro konkrétní virtuální počítač. Pokud nejste připojeni k síti, musíte ho vytvořit. Pokud chcete vytvořit síť pomocí Azure Resource Manageru, vyberte **vytvořit nový**. Vyberte podsíť, pokud je k dispozici a pak vyberte **OK**.
    

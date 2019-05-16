@@ -5,19 +5,19 @@ services: search
 author: HeidiSteen
 ms.service: search
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 30c6fc189ebcd497a214828f65213a55cefdf03f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464472"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65211945"
 ---
 Storage je omezená místem na disku nebo vynuceným omezením na *maximální počet* indexy, dokumentu nebo jiným prostředkům vysoké úrovně, podle toho, co nastane dřív. Následující tabulka popisuje omezení úložiště. Maximální omezení na indexy, dokumenty a dalších objektů najdete v tématu [omezení prostředkem](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
-| Prostředek | Free | Základní<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
+| Resource | Free | Základní<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Smlouva o úrovni (SLA) služeb<sup>3</sup>  |Ne |Ano |Ano |Ano |Ano |Ano |Ano |Ano |
 | Úložiště na oddíl |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |

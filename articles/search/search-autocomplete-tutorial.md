@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f3e7cc2ed71dda0eb34328432b26a4016b62be1c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9385ed5127b8cc1aaf84c887b652fd8970883ba6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466420"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524029"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Přidat nějaké návrhy nebo automatické dokončování pro vaši aplikaci Azure Search
 
@@ -164,7 +164,7 @@ Otevřít **HomeController.cs** soubor v adresáři řadiče.
 
 První věc, kterou jste si všimnout, je metoda v horní části třídy, nazvané `InitSearch`. Tato metoda vytvoří ověřeného klienta indexu HTTP pro službu Azure Search. Další informace najdete v tématu [použití Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
-Na řádku 41 Všimněte si, že funkce Navrhnout. Je založen na [DocumentsOperationsExtensions.Suggest metoda](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview).
+Na řádku 41 Všimněte si, že funkce Navrhnout. Je založen na [DocumentsOperationsExtensions.Suggest metoda](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -198,7 +198,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet zvýrazněné shody nebo jestli se má kromě vstupního hledaného výrazu použít i přibližná shoda. Metoda vytvoří [SuggestParameters objekt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), který je pak předán návrh rozhraní API. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
 
-Na řádek 69 Všimněte si, že funkce automatického dokončování. Je založen na [DocumentsOperationsExtensions.Autocomplete metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet-preview).
+Na řádek 69 Všimněte si, že funkce automatického dokončování. Je založen na [DocumentsOperationsExtensions.Autocomplete metoda](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet).
 
 ```csharp
 public ActionResult AutoComplete(string term)

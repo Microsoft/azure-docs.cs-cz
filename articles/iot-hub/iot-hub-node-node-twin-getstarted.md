@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: f93abac563d47f6505f42d29e882698ef31174bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 20b804f3d15543d0cf415d00dc81a6f55a348260
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444772"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597417"
 ---
 # <a name="get-started-with-device-twins-node"></a>Začínáme s dvojčaty zařízení (Node)
 
@@ -31,7 +31,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace Node.js:
 
 K dokončení tohoto kurzu budete potřebovat následující:
 
-* Node.js verze 4.0.x nebo novější.
+* Verze Node.js 10.0.x nebo novější.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 

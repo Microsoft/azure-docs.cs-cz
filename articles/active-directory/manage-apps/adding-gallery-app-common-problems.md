@@ -3,8 +3,8 @@ title: Potíže při přidávání aplikace Galerie Azure AD | Dokumentace Micro
 description: Vysvětlení běžných tváří lidí problémy při přidávání aplikace Galerie Azure AD a co můžete dělat k jejich řešení
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60438791"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784427"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Potíže při přidávání aplikace Galerie Azure AD
 
@@ -40,7 +40,7 @@ Pokud narazíte na chybu při kliknutí **přidat** tlačítko, zobrazí se vám
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nevím, jak nastavit Moje aplikace až po jeho přidání
 
-Pokud potřebujete pomoc, další informace o aplikacích [seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) článku je dobrým začátkem.
+Pokud potřebujete pomoc s informací o aplikacích [seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) článku je dobrým začátkem.
 
 Kromě toho [knihovny dokumentů aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) vám umožní získat další informace o jednotné přihlašování s Azure AD a jak to funguje.
 
@@ -48,7 +48,7 @@ Kromě toho [knihovny dokumentů aplikace služby Azure AD](https://docs.microso
 
 Můžete zobrazit podrobnosti o oznámení portálu podle následujících kroků:
 
-1.  Vyberte **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure Portal
+1.  Vyberte **oznámení** ikonu (zvonek) v pravém horním rohu webu Azure portal
 
 2.  Vyberte všechna oznámení v **chyba** stavu (ty s červenou (!) vedle sebe).
 

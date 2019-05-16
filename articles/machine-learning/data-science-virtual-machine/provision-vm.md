@@ -13,14 +13,14 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712433"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596501"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 
@@ -106,6 +106,8 @@ Chcete-li vytvořit instanci DSVM:
 
 Po vytvoření a zřízení virtuálního počítače je možné vzdálené plochy do něj pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v předchozím **Základy** oddílu. Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnoho nástrojů je přístupný prostřednictvím dlaždic nabídky start a ikony na ploše.
 
+Virtuální počítač pro datové vědy můžete také připojit k poznámkových bloků Azure možnost spouštět poznámkové bloky Jupyter ve virtuálním počítači a obejít omezení úroveň free služby. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Nástroje nainstalované na Microsoft virtuální počítač pro datové vědy
 
 Další informace o nástrojích, které jsou nainstalované na datové VĚDY:
@@ -157,7 +159,7 @@ K dispozici je také modul plug-in volá **Azure Machine Learning pro Visual Stu
 > [!NOTE]
 > Může se zobrazit zpráva, že vypršela platnost vašeho zkušebního období. Zadejte svoje přihlašovací údaje účtu Microsoft. Nebo vytvořte nový bezplatný účet, abyste získali přístup k Visual Studio Community.
 
-### <a name="sql-server-2017-developer-edition"></a>Edice SQL Server 2017 Developer
+### <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer edition
 
 Datové VĚDY se dodává s verzí SQL serveru 2017 pomocí služby Machine Learning pro vývojáře. Tato edice systému SQL Server je k dispozici ve R nebo Python a spouštět analýzy v databázi. Služby Machine Learning poskytuje platformu pro vývoj a nasazování inteligentních aplikací. Tyto jazyky a mnoho balíčků od komunity slouží k vytváření modelů a generovat předpovědi pro data systému SQL Server. Analytics blízko data můžete zachovat, protože služby Machine Learning, v databázi, integruje jazyky R i Python v rámci SQL serveru. Tato integrace se eliminují náklady a bezpečnostní rizika spojená s přesuny dat.
 

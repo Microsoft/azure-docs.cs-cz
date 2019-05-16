@@ -10,14 +10,19 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 193ed7099293fb1ee4c056abcc5c2f34d78627b7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024715"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522891"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB CSV pomocí indexeru Azure Search blob
+
+> [!Note]
+> režim parsování delimitedText je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+>
+
 Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azure-blob-storage.md) analyzuje oddělený text objektů BLOB jako jediný neodkazovaný blok textu. Nicméně s objekty BLOB, který obsahuje data ve formátu CSV, často chcete zpracovávat každý řádek v objektu blob jako samostatný dokument. Například směru následující text s oddělovači, můžete k analýze do dva dokumenty a každý obsahuje pole "tags", "datePublished" a "id": 
 
     id, datePublished, tags
@@ -26,21 +31,17 @@ Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azur
 
 V tomto článku se dozvíte, jak analyzovat objektů BLOB CSV pomocí Azure Search blob indexerby nastavení `delimitedText` režim parsování. 
 
-`delimitedText` Režim parsování je aktuálně ve verzi public preview a nedoporučuje se pro produkční úlohy.
-
 > [!NOTE]
 > Postupujte podle doporučení konfigurace indexeru v [jeden mnoho indexování](search-howto-index-one-to-many-blobs.md) výstup více dokumentů vyhledávání z jednoho objektu blob Azure.
 
 ## <a name="setting-up-csv-indexing"></a>Nastavení indexování sdíleného svazku clusteru
-Indexování objektů BLOB CSV, vytvořit nebo aktualizovat definici rozhraní indexeru se `delimitedText` analýze režimu:  
+Indexování objektů BLOB CSV, vytvořit nebo aktualizovat definici rozhraní indexeru se `delimitedText` režim parsování na [vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) žádosti:
 
     {
       "name" : "my-csv-indexer",
       ... other indexer properties
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
-
-Podrobné informace o rozhraní API pro vytvoření indexeru, projděte si [vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 `firstLineContainsHeaders` Označuje, že první řádek (Neprázdné) každý objekt blob obsahuje záhlaví.
 Pokud objekty BLOB není obsahovat řádek záhlaví počáteční, záhlaví musí být zadán v konfigurace indexeru: 

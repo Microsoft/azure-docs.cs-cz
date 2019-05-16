@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61272405"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619716"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
-Domény služby App Service (preview) jsou domény nejvyšší úrovně, které se spravují přímo v Azure. Jejich usnadňují spravování vlastních domén pro [služby Azure App Service](overview.md). V tomto kurzu se dozvíte, jak koupit doménu služby App Service a přiřadit názvy DNS do služby Azure App Service.
+Domény služby App Service jsou domény nejvyšší úrovně, které se spravují přímo v Azure. Jejich usnadňují spravování vlastních domén pro [služby Azure App Service](overview.md). V tomto kurzu se dozvíte, jak koupit doménu služby App Service a přiřadit názvy DNS do služby Azure App Service.
 
 Pro virtuální počítač Azure nebo Azure Storage, najdete v článku [doména přiřadit služby App Service na virtuálním počítači Azure nebo Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services, najdete v části [konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
@@ -80,7 +80,7 @@ Až se zobrazí následující oznámení, operace škálování je dokončená.
 ## <a name="buy-the-domain"></a>Koupit domény
 
 ### <a name="pricing-information"></a>Informace o cenách
-Informace o cenách na domény služby Azure App Service, najdete [stránku App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/windows/) a posuňte se dolů doména App Service.
+Informace o cenách na domény služby Azure App Service, přejděte [stránku App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/windows/) a posuňte se dolů doména App Service.
 
 ### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se pomocí svého účtu Azure.
@@ -118,7 +118,7 @@ Potom vyberte požadované možnosti pro vaši doménu. V následující tabulce
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
-|Ochrana osobních údajů | Povolení | Vyjádřit výslovný souhlas pro "Ochrany osobních údajů", který je součástí ceny nákupu _zdarma_. Některé domény nejvyšší úrovně se spravují přes registrátorů, které nepodporují ochranu osobních údajů a jsou uvedeny na **ochranu osobních údajů** stránky. |
+|Ochrana osobních údajů | Zapnout | Vyjádřit výslovný souhlas pro "Ochrany osobních údajů", který je součástí ceny nákupu _zdarma_. Některé domény nejvyšší úrovně se spravují přes registrátorů, které nepodporují ochranu osobních údajů a jsou uvedeny na **ochranu osobních údajů** stránky. |
 | Přiřadit výchozí hostitelské názvy | **WWW** a **\@** | Vyberte požadovaný název hostitele vazeb v případě potřeby. Po dokončení operace nákupu domény vaší aplikace je přístupný na vybrané názvy hostitelů. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože nemá podporu záznamy O Traffic Manageru. Můžete provedete změny přiřazení názvu hostitele po dokončení nákupu domény. |
 
 ### <a name="accept-terms-and-purchase"></a>Přijměte podmínky a nákup
@@ -150,7 +150,7 @@ Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů 
 
 ## <a name="assign-hostnames-to-app"></a>Názvy hostitelů přiřadit aplikace
 
-Pokud se rozhodnete přiřadit výchozí hostitelské názvy do vaší aplikace během procesu nákupu nebo pokud je potřeba přiřadit název hostitele není uvedený, můžete kdykoli přiřadit název hostitele na.
+Pokud se rozhodnete přiřadit výchozí hostitelské názvy do vaší aplikace během procesu nákupu nebo pokud je potřeba přiřadit název hostitele není uvedený, můžete kdykoli přiřadit název hostitele.
 
 Názvy hostitelů v doména App Service můžete také přiřadit jakoukoli jinou aplikaci. Postup závisí na tom, jestli se doména App Service a aplikaci patřily do stejného předplatného.
 
@@ -278,7 +278,3 @@ Po dokončení operace se doména je z vašeho předplatného vydané a dostupn�
 ## <a name="direct-default-url-to-a-custom-directory"></a>Směrování výchozí adresy URL do vlastního adresáře
 
 Ve výchozím nastavení služba App Service směruje webové požadavky do kořenového adresáře kódu vaší aplikace. Pro přesměrování je na podadresáře, například `public`, naleznete v tématu [směrování výchozí adresy URL do vlastního adresáře](app-service-web-tutorial-custom-domain.md#virtualdir).
-
-## <a name="more-resources"></a>Další zdroje informací
-
-[NEJČASTĚJŠÍ DOTAZY: Doména App Service (preview) a vlastní domény](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

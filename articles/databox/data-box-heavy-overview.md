@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 780a50d9d470e8904e066459f97aa00d34ba1d3c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306185"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603498"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Co je Azure Data Box Heavy? (Preview)
 
@@ -109,7 +109,7 @@ Během tohoto procesu budete e-mailem dostávat oznámení o všech změnách st
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Data Box Heavy může přenést data na základě oblasti, ve které se služba nasazuje, země do které se zařízení odesílá a cíle účtu Azure Storage, do kterého data přenášíte. 
+Data Box náročné se můžou přenášet data podle oblasti, ve kterém je služba nasazená, země/oblast, ke kterému zařízení se posílá a cílovým účtem úložiště Azure, ve kterém můžete přenést data. 
 
 - **Dostupnost služby** – u této vydané verze je služba Data Box Heavy dostupná v následujících oblastech:
     - Všechny oblasti veřejného cloudu ve Spojených státech amerických – USA – středozápad, Západní USA 2, Západní USA, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
@@ -136,7 +136,7 @@ Služba Data Box Heavy je ve verzi Preview a musíte se k ní zaregistrovat. Dat
 
    <!--![The Data Box Heavy sign up 3]()-->
 
-5. Odpovězte na otázky týkající země trvalého umístění dat, časového rámce, cílové služby Azure pro přenos dat, šířky pásma sítě a frekvence přenosu dat. Projděte si ochranu osobních údajů a podmínky a zaškrtněte políčko, že Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval.
+5. Odpovězte na otázky týkající se dat frekvence přenosu pobytu zemi/oblast, časový rámec, cílové služby Azure pro přenos dat, šířky pásma sítě a data. Projděte si ochranu osobních údajů a podmínky a zaškrtněte políčko, že Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval.
 
     <!--![The Data Box Heavy sign up 4]()-->
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 636993879422edaf08051be61b9d4770effdcae0
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
-ms.translationtype: MT
+ms.openlocfilehash: 0d446be664d695af946d46abc48389d4f7be92cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556076"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65751112"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -56,7 +56,7 @@ V tomto kurzu provedete následující:
     - U virtuálních počítačů s Windows zajistíte přítomnost všech důvěryhodných kořenových certifikátů tím, že na ně nainstalujete všechny nejnovější aktualizace Windows. V odpojeném prostředí dodržujte při aktualizaci Windows a certifikátů standardní postupy uplatňované ve vaší organizaci.
     - Virtuální počítače s Linuxem postupujte podle pokynů, které jste dostali od distributora Linuxu pro získání nejnovějších důvěryhodných kořenových certifikátů a seznamu odvolaných certifikátů na virtuálním počítači.
 1. Ujistěte se, že nepoužíváte k řízení síťového připojení ověřovací proxy server pro virtuální počítače, které chcete přesunout.
-1. Pokud virtuální počítač, který se pokoušíte přesunout nemá přístup k Internetu, nebo proxy server brány firewall používá k řízení odchozího přístupu [Zkontrolujte požadavky na](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+1. Pokud virtuální počítač, který se pokoušíte přesunout nemá přístup k Internetu, nebo proxy server brány firewall používá k řízení odchozího přístupu [Zkontrolujte požadavky na](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 1. Identifikujte zdroj sítě rozložení a všechny prostředky, které aktuálně používáte. To zahrnuje, avšak není omezeno na nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě (Nsg) a veřejné IP adresy.
 
 ## <a name="prepare-the-target-region"></a>Připravte cílové oblasti

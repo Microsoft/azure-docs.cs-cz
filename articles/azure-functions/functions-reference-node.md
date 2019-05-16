@@ -352,12 +352,12 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _Text_        | Objekt, který obsahuje text žádosti.               |
+| _body_        | Objekt, který obsahuje text žádosti.               |
 | _headers_     | Objekt, který obsahuje hlavičky požadavku.                   |
-| _– Metoda_      | Metoda HTTP požadavku.                                |
-| _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
+| _method_      | Metoda HTTP požadavku.                                |
+| _originalUrl_ | Adresa URL požadavku.                                        |
 | _params_      | Objekt, který obsahuje směrování parametry požadavku. |
-| _Dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
+| _query_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
@@ -367,7 +367,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _Text_    | Objekt, který obsahuje text odpovědi.         |
+| _body_    | Objekt, který obsahuje text odpovědi.         |
 | _headers_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Označuje, že formátování se přeskočí pro odpověď.    |
 | _status_  | Stavový kód HTTP odpovědi.                     |

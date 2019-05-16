@@ -4,7 +4,7 @@ description: Další informace o veřejných klienta a důvěrnému klientovi ap
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21aa62bae7599cf586ccf6f885ad9f58c148d1f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9e0300ec0ef4ee67b06acb85514ae898bbd0a830
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077137"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544300"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Veřejné klienta a důvěrné klientské aplikace
 Microsoft Authentication Library (MSAL) definuje dva typy klientů: veřejní klienti a důvěrní klienti. Dva klientské typy rozlišují podle jejich schopnost bezpečně ověřovat pomocí autorizačního serveru a zachovat utajení svých přihlašovacích údajů klienta.  Azure AD Authentication Library (ADAL) je naproti tomu koncept kontext ověřování (což je připojení ke službě Azure AD).

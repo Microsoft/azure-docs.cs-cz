@@ -10,19 +10,19 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e370916d420a7bc4cd16d021c69a2f8609093d30
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406409"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544707"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je služba Azure Blockchain?
 
 Služba Azure Blockchain je registr s plně spravovanou službu, která umožňuje uživatelům možnost zvětšení a provozují blockchain sítě ve velkém měřítku v Azure. Tím, že poskytuje jednotný ovládací prvek pro správu infrastruktury i blockchain síťových zásad správného řízení, poskytuje služba Blockchain v Azure:
 
 * Jednoduchá síť nasazení a provoz
-* Integrované consortium správy
+* Integrovaná správa konsorcií
 * Vývoj chytrých kontraktů pomocí známých nástrojů
 
 Služba Azure Blockchain je navržen pro podporu více protokolů účetní knihy. V současné době poskytuje podporu pro ethereum během [kvora](https://www.jpmorgan.com/Quorum) pomocí účetní knihy [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) mechanismus shody.
@@ -55,7 +55,7 @@ Kromě toho Azure Blockchain Service poskytuje bohaté metriky prostřednictvím
 
 Díky službě Azure Log Analytics uživatelé mohou zobrazit protokoly týkající se kvora knihy nebo další důležité informace, jako například pokus o připojení k uzlům transakce.
 
-## <a name="built-in-consortium-management"></a>Integrované consortium správy
+## <a name="built-in-consortium-management"></a>Integrovaná správa konsorcií
 
 Při nasazení vaší první člen blockchain, můžete buď připojení, nebo vytvořte novou consortium.  Konsorcium je logická skupina používají ke správě zásad správného řízení a připojení mezi blockchain členy, kteří transact více stran procesu.  Služba Azure Blockchain nabízí ovládací prvky předdefinované zásady správného řízení prostřednictvím předem definovaných chytrých kontraktů, které určují, co můžete provést akce členy v konsorcia.  Tyto ovládací prvky zásad správného řízení je možné přizpůsobit podle potřeby správcem konsorcia. Při vytváření nového consortium svůj blockchain člen je výchozího správce consortium, povolení umožňuje zvát jiné strany připojit vaše consortium.  Konsorcium můžete připojit pouze v případě, že jste dříve pozvánku.  Při připojování konsorcium, podléhá svůj blockchain člen zavedený správcem konsorcia ovládací prvky zásad správného řízení.
 
@@ -77,7 +77,7 @@ Potřebujete pomoc nebo máte zpětnou vazbu?
 ## <a name="next-steps"></a>Další postup
 
 Abyste mohli začít, vyzkoušejte si rychlé zprovoznění nebo zjistěte další podrobnosti o těchto prostředků.
-* [Vytvoření blockchainové členu pomocí webu Azure portal](create-member.md) nebo [vytvoření blockchain členu pomocí rozhraní příkazového řádku Azure]()
+* [Vytvoření blockchainové členu pomocí webu Azure portal](create-member.md) nebo [vytvoření blockchain členu pomocí rozhraní příkazového řádku Azure](create-member-cli.md)
 * Porovnání nákladů a kalkulačky, najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/blockchain-service).
 * Sestavit vaši první aplikaci s použitím [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit)
 * Rozšíření Azure Blockchain VSCode [uživatelská příručka](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

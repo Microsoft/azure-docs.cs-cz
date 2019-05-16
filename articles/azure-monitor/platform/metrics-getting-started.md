@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254076"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595448"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -24,7 +24,7 @@ Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azur
 
 1. Zkuste [použití filtrů dimenzí a rozdělování](#apply-dimension-filters-and-splitting). Filtry a rozdělování umožňují analyzovat, které segmenty metriky přispívat na hodnotu celkové metriky a identifikovat odlehlé hodnoty je to možné.
 
-1. Použití [upřesňující nastavení](#advanced-chart-settings-and-next-steps) přizpůsobení grafu před připnutím na řídicí panely. [Konfigurace výstrah](alerts-metric-overview.md) pro příjem oznámení, když hodnota metriky překročí nebo klesne pod prahovou hodnotou.
+1. Použití [upřesňující nastavení](#advanced-chart-settings) přizpůsobení grafu před připnutím na řídicí panely. [Konfigurace výstrah](alerts-metric-overview.md) pro příjem oznámení, když hodnota metriky překročí nebo klesne pod prahovou hodnotou.
 
 ## <a name="create-your-first-metric-chart"></a>Vytvoření prvního grafu metriky
 
@@ -61,12 +61,13 @@ Tento graf zobrazuje ve výchozím nastavení, posledních 24 hodin data metrik.
 
 Zobrazit [příklady grafy](metric-chart-samples.md) , filtrování a rozdělování použily. Tento článek ukazuje, že postup se používá ke konfiguraci grafy.
 
-## <a name="advanced-chart-settings-and-next-steps"></a>Nastavení pokročilých grafu a další kroky
+## <a name="advanced-chart-settings"></a>Nastavení pokročilých grafu
 
 Můžete přizpůsobit styl grafu, title a upravit nastavení pokročilé grafu. Až budete hotovi s přizpůsobováním, můžete ji připnete na řídicí panel a práci uložte. Můžete také nastavit upozornění metriky. Postupujte podle [dokumentaci k produktu](metrics-charts.md) Další informace o těchto a dalších pokročilých funkcí Průzkumník metrik Azure monitoru.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Podívejte se do seznamu dostupných metrik pro služby Azure](metrics-supported.md)
 * [Další informace o pokročilých funkcích sady Průzkumník metrik](metrics-charts.md)
+* [Řešení potíží s Průzkumníkem metrik](metrics-troubleshoot.md)
+* [Podívejte se do seznamu dostupných metrik pro služby Azure](metrics-supported.md)
 * [Podívejte se na příklady nakonfigurované grafů](metric-chart-samples.md)

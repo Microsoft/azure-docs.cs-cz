@@ -4,7 +4,7 @@ description: Další informace o inicializaci veřejným klientem a důvěrné k
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6197d472bdfaf03c9f99baa7691354e735cc91e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2f22ff41e380a16af2aa45df9a61eefbf293ff83
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075802"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544322"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicializace klientské aplikace pomocí MSAL.NET
 Tento článek popisuje inicializace veřejným klientem a důvěrné klientské aplikace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).  Další informace o typy klientských aplikací a možnosti konfigurace aplikace, [přehled](msal-client-applications.md).

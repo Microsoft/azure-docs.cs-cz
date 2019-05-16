@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 530730dcf303a54803816e6f2af8787298c1c658
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926099"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65753741"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -39,7 +39,7 @@ Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protec
 
 ## <a name="dnssec"></a>DNSSEC
 
-Azure DNS v současné době nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost DNSSEC konzistentně pomocí protokolu HTTPS/TLS ve vašich aplikacích. Pokud DNSSEC je důležité požadavky pro vaše zóny DNS, které můžete hostovat tyto zóny s poskytovateli hostingu DNS třetích stran.
+Azure DNS v současné době nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost DNSSEC konzistentně pomocí protokolu HTTPS/TLS ve svých aplikacích. Pokud DNSSEC je důležité požadavky pro vaše zóny DNS, které můžete hostovat tyto zóny s poskytovateli hostingu DNS třetích stran.
 
 ## <a name="ease-of-use"></a>Snadné používání
 

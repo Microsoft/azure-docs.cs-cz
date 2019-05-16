@@ -8,25 +8,28 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227995"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619994"
 ---
 # <a name="action-rules-preview"></a>Akce pravidla (preview)
 
-Tento článek popisuje, jaké akce pravidla jsou a jak konfigurovat a spravovat je.
-
-## <a name="what-are-action-rules"></a>Co jsou pravidla akce?
-
 Akce pravidla umožňují definovat akce (nebo potlačení akce) v jakékoli Resource Manageru oboru (předplatné, skupinu prostředků, nebo prostředek). Mají celou řadu filtry, které umožňují omezit na konkrétní podmnožinu instancí upozornění, které chcete zpracovat. 
 
-Pomocí akce pravidla je možné:
+## <a name="why-and-when-should-you-use-action-rules"></a>Proč a kdy byste měli použít akce pravidla?
 
-* Potlačit akce a oznámení, pokud jste naplánovali údržbu nebo pro víkendové/svátky, namísto nutnosti úplného vypnutí každé pravidlo výstrah jednotlivě.
-* Definujte akce a oznámení ve velkém měřítku: Namísto toho definujte skupinu akcí jednotlivě pro každé pravidlo výstrahy, je možnost definovat skupiny akcí pro aktivaci výstrah generovaných v oboru. Můžu třeba zvolit, aby aktivační událost akce skupiny "ContosoActionGroup" pro všechny výstrahy vygenerované v rámci předplatného.
+### <a name="suppression-of-alerts"></a>Potlačení výstrah
+
+Často existuje mnoho scénářů, ve kterém by bylo vhodné potlačit oznámení vygenerované výstrahy, které by mohly být v rozsahu od potlačení během naplánovaného časového období údržby k potlačení během pracovní doby. Například chce tým odpovědný za 'ContosoVM' potlačit oznámení o výstrahách pro nadcházející víkendu, protože 'ContosoVM' Probíhá plánovaná údržba. Když to jde zakázat každého upozornění ručně nakonfigurované na 'ContosoVM' pravidlo (a znovu povolte odeslání údržby), není jednoduché prostředí. Akce pravidla umožňují definovat potlačení výstrahy ve velkém měřítku umožňuje flexibilně konfigurace období potlačení. Po návratu do předchozího příkladu, může tým nyní definovat jedno pravidlo akce na 'ContosoVM", který potlačí všechna oznámení o výstrahách pro víkendu.
+
+
+### <a name="actions-at-scale"></a>Akce ve velkém měřítku
+
+I když pravidla upozornění umožňují definovat skupiny akcí, která se aktivuje, když výstraha se vygeneruje, zákazníci často mají tendenci uchovávat běžné akce skupiny v oboru jejich operací. Například tým odpovědný za skupině prostředků 'ContosoRG' bude pravděpodobně definovat stejnou skupinu akcí pro všechna pravidla výstrah, které jsou definované v rámci "ContosoRG". Akce pravidla umožňují tento proces zjednodušit tím, že je pro definování akcí ve velkém měřítku, takže se dá spouštět skupiny akcí pro všechny výstrahy vygenerované na konfigurovaném oboru. Po návratu do předchozího příkladu, může tým nyní definovat jedno pravidlo akce na 'ContosoRG", který spustí stejnou skupinu akcí pro všechny výstrahy generované v něm.
+
 
 ## <a name="configuring-an-action-rule"></a>Konfigurace pravidlo akce
 

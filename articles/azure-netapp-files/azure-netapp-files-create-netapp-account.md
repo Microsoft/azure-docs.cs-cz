@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61086113"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522814"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
 
 ## <a name="before-you-begin"></a>Než začnete
-Musí mít zaregistrovaný předplatné poskytovatele prostředků NetApp a funkce verze public preview.
+Musí mít dostanete e-mailu od týmu Azure NetApp Files potvrzení, že vám byl udělen přístup ke službě. Zobrazit [odeslat waitlist žádost o přístup k službě](azure-netapp-files-register.md#waitlist).
 
-[Registrace pro soubory Azure NetApp](azure-netapp-files-register.md)
+Musíte také jste se zaregistrovali předplatné poskytovatele prostředků NetApp. Zobrazit [zaregistrujte poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Kroky 
 
@@ -56,6 +56,11 @@ Musí mít zaregistrovaný předplatné poskytovatele prostředků NetApp a funk
 
 5. Klikněte na možnost **Vytvořit**.     
    Vytvořený účet NetApp se teď zobrazí v okně Azure NetApp Files. 
+
+> [!NOTE] 
+> Pokud nebyl udělen přístup ke službě soubory Azure NetApp, obdržíte při pokusu o vytvoření první účet NetApp následující chybu:  
+>
+> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 ## <a name="next-steps"></a>Další postup  
 

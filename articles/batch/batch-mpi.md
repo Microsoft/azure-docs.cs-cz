@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a4184fa361ba863cdaf916ef4853eda8b6e8188
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775314"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595942"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve službě Batch
 
@@ -281,7 +281,7 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 ### <a name="execution"></a>Spouštěcí
 1. Stáhněte si [azure-batch-samples] [ github_samples_zip] z Githubu.
-2. Otevřete MultiInstanceTasks **řešení** v sadě Visual Studio 2017. `MultiInstanceTasks.sln` Řešení soubor se nachází v:
+2. Otevřete MultiInstanceTasks **řešení** v aplikaci Visual Studio 2019. `MultiInstanceTasks.sln` Řešení soubor se nachází v:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Zadejte přihlašovací údaje účtu Batch a Storage v `AccountSettings.settings` v **Microsoft.Azure.Batch.Samples.Common** projektu.

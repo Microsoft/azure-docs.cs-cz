@@ -1,81 +1,135 @@
 ---
-title: Použití Apache Phoenixu a SQLLine s HBase v Azure HDInsight
+title: 'Rychlý start: Dotaz Apache HBase v Azure HDInsight – Apache Phoenix'
 description: Další informace o použití Apache Phoenixu v HDInsight. Také zjistěte, jak nainstalovat a nastavit SQLLine ve vašem počítači pro připojení ke clusteru služby HBase v HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/03/2018
+ms.topic: quickstart
+ms.date: 05/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0bef586540635ee1bada3475f6316c84dea4308c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 46606a991ce878a3335c2c605a4040c9520d5128
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722687"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596200"
 ---
-# <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight
-Další informace o použití [Apache Phoenix](https://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Apache Phoenix za 15 minut nebo i rychleji](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Rychlý start: Dotaz Apache HBase v Azure HDInsight s Apache Phoenix
 
-> [!NOTE]  
-> Phoenix verze informace o HDInsight najdete v tématu [co je nového ve verzích clusterů systému Apache Hadoop poskytovaných službou HDInsight](../hdinsight-component-versioning.md).
->
->
+V tomto rychlém startu se dozvíte, jak používat Apache Phoenix ke spouštění dotazů HBase v Azure HDInsight. Apache Phoenix je modul dotazů SQL pro Apache HBase. Je přístupný jako ovladač JDBC a umožňuje dotazování a správu tabulek HBase pomocí SQL. [SQLLine](http://sqlline.sourceforge.net/) je nástroj příkazového řádku ke spuštění SQL.
 
-## <a name="use-sqlline"></a>Use SQLLine
-[SQLLine](http://sqlline.sourceforge.net/) je nástroj příkazového řádku ke spuštění SQL.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-### <a name="prerequisites"></a>Požadavky
-Než budete moct použít SQLLine, musíte mít následující položky:
+## <a name="prerequisites"></a>Požadavky
 
-* **Clustery Apache HBase v HDInsight**. Pokud chcete jeden vytvořit, přečtěte si téma [Začínáme s Apache HBase v HDInsight](./apache-hbase-tutorial-get-started-linux.md).
+* Clustery Apache HBase. Zobrazit [vytvořit cluster](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) k vytvoření clusteru HDInsight.  Zajistěte si vybrat **HBase** typ clusteru.
 
-Když se připojíte ke clusteru služby HBase, budete muset připojit k jednomu z [Apache ZooKeeper](https://zookeeper.apache.org/) virtuálních počítačů. Každý cluster HDInsight má tři virtuální počítače ZooKeeper.
+* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-**Chcete-li získat název hostitele ZooKeeper**
+## <a name="identify-a-zookeeper-node"></a>Identifikaci uzlu ZooKeeper
 
-1. Otevřít [Apache Ambari](https://ambari.apache.org/) procházením **https://\<název clusteru\>. azurehdinsight.net**.
-2. Pro přihlášení, zadejte protokol HTTP (clusteru) uživatelského jména a hesla.
-3. V nabídce vlevo vyberte **ZooKeeper**. Tři **ZooKeeper Server** instance patří.
-4. Vyberte jednu z **ZooKeeper Server** instancí. Na **Souhrn** podokně vyhledejte **název hostitele**. It looks similar to *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
+Když se připojíte ke clusteru služby HBase, musíte připojit k jednomu z uzlů Apache ZooKeeper. Každý cluster HDInsight má tři uzly ZooKeeper. Curl je možné rychle identifikovat uzlu ZooKeeper. Upravte následující příkaz curl nahrazením `PASSWORD` a `CLUSTERNAME` příslušnými hodnotami a pak v příkazovém řádku zadejte příkaz:
 
-**Chcete-li použít SQLLine**
+```cmd
+curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
+```
 
-1. Připojení ke clusteru pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Část výstup bude vypadat podobně jako:
 
-2. V SSH použijte následující příkazy ke spuštění SQLLine:
+```output
+    {
+      "href" : "http://hn1-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net:8080/api/v1/clusters/myCluster/hosts/zk0-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net/host_components/ZOOKEEPER_SERVER",
+      "HostRoles" : {
+        "cluster_name" : "myCluster",
+        "component_name" : "ZOOKEEPER_SERVER",
+        "host_name" : "zk0-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net"
+      }
+```
 
-        cd /usr/hdp/current/phoenix-client/bin
-        ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
-3. K vytvoření tabulky HBase a vložit nějaká data, spusťte následující příkazy:
+Poznamenejte si hodnoty pro `host_name` pro pozdější použití.
 
-        CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
+## <a name="create-a-table-and-manipulate-data"></a>Vytvoření tabulky a pracovat s daty
 
-        !tables
+Můžete použít SSH pro připojení ke clusterům HBase a pak pomocí Apache Phoenix vytváření tabulek HBase, vkládání dat a dotazování na data.
 
-        UPSERT INTO Company VALUES(1, 'Microsoft');
+1. Použití `ssh` příkazu se připojte ke svému clusteru HBase. Upravte následující příkaz tak, že nahradíte `CLUSTERNAME` s názvem vašeho clusteru a potom zadejte příkaz:
 
-        SELECT * FROM Company;
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-        !quit
+2. Změňte adresář na Phoenix klienta. Zadejte následující příkaz:
 
-Další informace najdete v tématu [SQLLine ruční](http://sqlline.sourceforge.net/#manual) a [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
+    ```bash
+    cd /usr/hdp/current/phoenix-client/bin
+    ```
+
+3. Spuštění [SQLLine](http://sqlline.sourceforge.net/). Upravte následující příkaz tak, že nahradíte `ZOOKEEPER` uzlu ZooKeeper, dřív identifikovali, zadejte příkaz:
+
+    ```bash
+    ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
+    ```
+
+4. Vytvoření tabulky HBase. Zadejte následující příkaz:
+
+    ```sql
+    CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
+    ```
+
+5. Použít SQLLine `!tables` příkazu zobrazte výpis všech tabulek v HBase. Zadejte následující příkaz:
+
+    ```sqlline
+    !tables
+    ```
+
+6. Vložení hodnoty v tabulce. Zadejte následující příkaz:
+
+    ```sql
+    UPSERT INTO Company VALUES(1, 'Microsoft');
+    UPSERT INTO Company VALUES(2, 'Apache');
+    ```
+
+7. Dotaz tabulku. Zadejte následující příkaz:
+
+    ```sql
+    SELECT * FROM Company;
+    ```
+
+8. Odstranění záznamu. Zadejte následující příkaz:
+
+    ```sql
+    DELETE FROM Company WHERE COMPANY_ID=1;
+    ```
+
+9. Odstranit tabulku. Zadejte následující příkaz:
+
+    ```hbase
+    DROP TABLE Company;
+    ```
+
+10. Použít SQLLine `!quit` příkaz pro ukončení SQLLine. Zadejte následující příkaz:
+
+    ```sqlline
+    !quit
+    ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Po dokončení tohoto rychlého startu, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+
+Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat Apache Phoenix v HDInsight. Další informace najdete v těchto článcích:
 
-* [Přehled HDInsight HBase][hdinsight-hbase-overview].
-  Apache HBase je databáze NoSQL open source Apache postavená na Apache Hadoopu, která umožňuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat.
-* [Apache HBase zřizování clusterů na Azure Virtual Network][hdinsight-hbase-provision-vnet].
-  Integrace virtuální sítě je možné nasadit clustery Apache HBase ke stejné virtuální síti jako vaše aplikace, takže aplikace můžou komunikovat přímo s HBase.
-* [Konfigurace replikace Apache HBase v HDInsight](apache-hbase-replication.md). Zjistěte, jak nastavit replikaci Apache HBase ve dvou datacentrech Azure.
+V tomto rychlém startu jste zjistili, jak používat Apache Phoenix ke spouštění dotazů HBase v Azure HDInsight. Další informace o Apache Phoenix, další článek poskytuje podrobnější zkoumání.
 
+> [!div class="nextstepaction"]
+> [Apache Phoenix v HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 
-[azure-portal]: https://portal.azure.com
-[vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
+## <a name="see-also"></a>Viz také
 
-[hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
-[hdinsight-hbase-overview]:apache-hbase-overview.md
-
-
+* [Ruční SQLLine](http://sqlline.sourceforge.net/#manual).
+* [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
+* [Apache Phoenix za 15 minut nebo i rychleji](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)
+* [Přehled HDInsight HBase](./apache-hbase-overview.md)

@@ -11,19 +11,19 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 792c2bd02b666cd656f1df368a7a60db44ccf8c4
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115770"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522180"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pro virtuální počítače (preview) mapy pochopit součásti aplikace pomocí Azure monitoru
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
 
-Tento článek vám pomůže pochopit prostředí mezi dvěma perspektivy a jak používat funkci Mapa. Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-onboard.md).
+Tento článek vám pomůže pochopit prostředí mezi dvěma perspektivy a jak používat funkci Mapa. Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -97,6 +97,21 @@ Mapa vizualizuje závislosti virtuálních počítačů, ve kterých běží sku
 
 ![Přímé mapování Přehled virtuálních počítačů](./media/vminsights-maps/map-direct-vm-01.png)
 
+## <a name="view-map-directly-from-a-virtual-machine-scale-set"></a>Zobrazit mapu přímo od virtuálního počítače škálovací sady
+
+Pokud chcete získat přístup k Azure Monitor pro virtuální počítače přímo ze škálovací sady virtuálních počítačů, postupujte takto.
+
+1. Na webu Azure Portal, vyberte **škálovací sady virtuálních počítačů**.
+2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)**.  
+3. Vyberte **mapy** kartu.
+
+Mapa vizualizuje všechny instance ve škálovací sadě jako uzel skupiny spolu s skupiny závislosti. Rozbalený uzel obsahuje seznam instancí ve škálovací sadě, která můžete procházet deset najednou. Chcete-li načíst mapu pro konkrétní instanci, vyberte, že instance na mapě a potom klikněte na tři tečky na ni je nejvhodnější a zvolte **načíst serverovou mapu**. Tím se načtou mapování pro tuto instanci, což vám umožní podívat skupin procesů a procesy s aktivními síťovými připojeními za zadané časové období. Ve výchozím nastavení zobrazí na mapě posledních 30 minut. Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).  
+
+![Přímé mapování Přehled virtuálních počítačů](./media/vminsights-maps/map-direct-vmss-01.png)
+
+>[!NOTE]
+>Mapování pro konkrétní instanci ze zobrazení instancí lze rovněž použít pro škálovací sadu virtuálních počítačů. Přejděte do **instance** pod **nastavení** části a klikněte na tlačítko **Insights (preview)**.
+
 ## <a name="view-map-from-azure-monitor"></a>Zobrazení mapování ze služby Azure Monitor
 Funkci Mapa ze služby Azure Monitor poskytuje globální přehled o vašich virtuálních počítačů a jejich závislosti.  Pokud chcete získat přístup k funkci Mapa ze služby Azure Monitor, postupujte takto. 
 
@@ -106,7 +121,7 @@ Funkci Mapa ze služby Azure Monitor poskytuje globální přehled o vašich vir
 
 ![Mapa Přehled služby Azure Monitor více virtuálních počítačů](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **pracovní prostor** selektoru v horní části stránky, pokud máte více než jednomu pracovnímu prostoru Log Analytics vyberte pracovní prostor, který je povolená s řešením a má virtuální počítače, které mu podává zprávy. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../../azure-monitor/platform/computer-groups.md)a VM scale sets počítačů související s vybraný pracovní prostor. Výběr pouze se vztahuje na funkce mapování a není přenesou na výkon nebo mapy.
+Z **pracovní prostor** selektoru v horní části stránky, pokud máte více než jednomu pracovnímu prostoru Log Analytics vyberte pracovní prostor, který je povolená s řešením a má virtuální počítače, které mu podává zprávy. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../../azure-monitor/platform/computer-groups.md)a škálovací sady virtuálních počítačů z počítače související s vybraný pracovní prostor. Výběr pouze se vztahuje na funkce mapování a není přenesou na výkon nebo mapy.
 
 Ve výchozím nastavení zobrazí na mapě posledních 30 minut. Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).   
 

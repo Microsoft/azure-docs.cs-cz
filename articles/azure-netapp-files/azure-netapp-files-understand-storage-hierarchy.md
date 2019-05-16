@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/16/2019
 ms.author: b-juche
-ms.openlocfilehash: fec9e22b15eca3f95be606776066cf573046b5fd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687480"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522873"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Co je hierarchii úložiště souborů NetApp Azure
 
@@ -40,14 +40,16 @@ Před vytvořením svazku ve službě Azure NetApp Files musíte zakoupit a nast
 - Každá kapacita fondu může patřit do pouze jeden účet NetApp. Však může mít několik fondů kapacity v rámci účtu NetApp.  
 - Fond kapacity se nedá mezi účty NetApp přesouvat.   
   Například v následujícím [konceptuálním diagramu hierarchie úložiště](#conceptual_diagram_of_storage_hierarchy) nejde přesunout fond kapacity 1 z účtu NetApp oblasti USA – východ do účtu NetApp oblasti USA – západ 2.  
+- Kapacita fondu nejde odstranit, dokud se odstranily všechny svazky v rámci kapacity fondu.
 
 ## <a name="volumes"></a>Svazky
 
 - Svazek se měří podle spotřeby kapacity logické a je škálovatelný. 
 - Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu.
 - Každý svazek patří jenom do jednoho fondu, ale fond může obsahovat několik svazků. 
-- V rámci stejného účtu NetApp můžete přesunout svazek mezi fondy.    
-  Například v následujícím [konceptuálním diagramu hierarchie úložiště](#conceptual_diagram_of_storage_hierarchy) můžete přesunout svazky z fondu kapacity 1 do fondu kapacity 2.
+- Svazek se nedají přesouvat mezi fondy kapacity. <!--Within the same NetApp account, you can move a volume across pools.  -->   
+  Například v [koncepční diagram hierarchie úložiště](#conceptual_diagram_of_storage_hierarchy) níže, nelze přesunout svazky z kapacity fondu 1 na 2 kapacity fondu.
+- Svazek nejde odstranit, dokud její snímky se odstranily.
 
 ## <a name="conceptual_diagram_of_storage_hierarchy"></a>Konceptuální diagram hierarchie úložiště 
 Následující příklad znázorňuje vztahy předplatného Azure, účtů NetApp, fondů kapacity a svazků.   

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 287cab034079c54c027e0dc7b84564458d31fc31
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9f1cbff0dd79d6c2932428708eb1d097b6d9d63
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696164"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601484"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Javy a Mavenu
 
@@ -29,7 +29,7 @@ Tento článek vás provede pomocí nástroje příkazového řádku Maven k ses
 
 K vývoji funkcí pomocí Javy, musíte mít nainstalované tyto položky:
 
-- [Java Developer Kit](https://www.azul.com/downloads/zulu/), verze 8
+- [Java Developer Kit](https://aka.ms/azure-jdks), verze 8
 - [Nástroje Apache Maven](https://maven.apache.org), verze 3.0 nebo vyšší
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 - [Nástroje Azure Functions Core](./functions-run-local.md#v2) verze 2.6.666 nebo novější
@@ -202,7 +202,7 @@ Na následující:
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Změny uložte a stejně jako předtím proveďte opětovné nasazení spuštěním příkazu `azure-functions:deploy`. Aplikace funkcí se aktualizuje a tento požadavek:
+Uložte změny. Spuštění mvn vyčištění balíčků a opětovné nasazení spuštěním `azure-functions:deploy` z terminálu stejně jako předtím. Aplikace funkcí se aktualizuje a tento požadavek:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java

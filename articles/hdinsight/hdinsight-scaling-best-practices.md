@@ -1,19 +1,18 @@
 ---
 title: Škálování clusteru velikosti – Azure HDInsight
-description: Škálování clusteru HDInsight vaší úloze.
+description: Škálování clusteru Azure HDInsight Elasticky tak, aby odpovídaly vaší úlohy.
 author: ashishthaps
+ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: ashish
-ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/13/2019
+ms.openlocfilehash: 59b9c2bf6e17dadc0d084d3e3f257f8ad91073ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698248"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595865"
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
@@ -21,6 +20,7 @@ HDInsight poskytuje pružnost tím, že možnost vertikálně navýšit a sníž
 
 Například pokud máte nějaké zpracování služby batch, který se stane jednou denně nebo jednou za měsíc, clusteru HDInsight se dá škálovat pár minut před této naplánované události, bude mít dostatečnou paměť a výpočetní výkon procesoru.  Později po dokončení zpracování a využití ocitne mimo provoz znovu, můžete vertikálně snížit kapacitu clusteru HDInsight na míň pracovních uzlů.
 
+Škálování clusteru ručně pomocí jedné z metod popsaných níže, nebo použijte [automatického škálování](hdinsight-autoscale-clusters.md) možnosti, jak systém automaticky škálovat nahoru a dolů v reakci na procesoru, paměti a další metriky.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,8 +32,8 @@ Společnost Microsoft poskytuje následující nástroje, které škálování c
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) - ClusterName \<název clusteru > - TargetInstanceCount \<NewSize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[Změna velikosti az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --& gt; resource-group \<skupinu prostředků > – název \<název clusteru > – cílový počet instancí \<NewSize >|
-|[Klasické rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count>|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [Změna velikosti az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --& gt; resource-group \<skupinu prostředků > – název \<název clusteru > – cílový počet instancí \<NewSize >|
+|[Klasické rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count> |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno váš cluster HDInsight, vyberte **velikost clusteru** v nabídce vlevo a pak v podokně velikost clusteru, zadejte počet pracovních uzlů a vyberte Uložit.|  
 
 ![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
@@ -326,6 +326,6 @@ Posledním způsobem je moct vzácných případech mohou oprávnění, ve kter�
     
 ## <a name="next-steps"></a>Další postup
 
+* [Automatické škálování clusterů Azure HDInsight](hdinsight-autoscale-clusters.md)
 * [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)

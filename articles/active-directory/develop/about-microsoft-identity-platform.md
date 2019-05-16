@@ -3,8 +3,8 @@ title: Vývoj platforma identit Microsoft - Azure
 description: Další informace o Microsoft identity platform vývojem představ o platformu služby a pro vývojáře Azure Active Directory (Azure AD) identity.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,18 +13,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b912b6f3fe42c724468347f9b3a7f0b4efa054
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 03a4702ac0f70e3fc280501cd9524ccbfb528678
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067957"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546252"
 ---
-# <a name="evolution-of-microsoft-identity-platform"></a>Vývoj platforma identit Microsoft
+# <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
 Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašování uživatelů, získat tokeny pro volání rozhraní API, jako je například Microsoft Graphu nebo rozhraní API, která jste vytvořili vývojáři. Skládá se z ověřovací služba, open source knihoven, registrace aplikace a konfigurace (prostřednictvím portálu pro vývojáře a aplikace API), dokumentaci pro vývojáře, ukázky rychlý start, ukázky, kurzy, Průvodce postupy, a Další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 

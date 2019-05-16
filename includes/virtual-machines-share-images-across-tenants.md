@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cb7cf932433927d4ead853952ff74d55c55b9cf7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160017"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546751"
 ---
 Sdílené Galerie obrázků vám umožní sdílení obrázků s využitím RBAC. RBAC můžete použít ke sdílení imagí v rámci vašeho tenanta a dokonce i jednotlivci mimo vašeho tenanta. Ale pokud ho chcete sdílet imagí mimo vašeho tenanta Azure ve velkém měřítku, měli byste vytvořit registrace aplikace k usnadnění sdílení.  Registrace aplikace s využitím můžete povolit složitější scénáře sdílení, jako jsou: 
 
@@ -44,7 +44,9 @@ Udělit oprávnění registrace aplikací k použití Galerie sdílené bitové 
 1. V části **vyberte**, typ *myGalleryApp* a vyberte ji, když se zobrazí v seznamu. Jakmile budete hotovi, vyberte **Uložit**.
 
 
-Vytvoření instančního objektu pro Tenanta 2 má použít pro přístup k aplikaci pomocí žádosti přihlášení v prohlížeči. Nahraďte *<Tenant2 ID>* s ID tenanta pro tenanta, který chcete sdílet vaše Galerie imagí s. Nahraďte *< ID aplikace (klient) >* s ID aplikace pro registraci aplikace, které jste vytvořili. Až budete hotovi, provedení nahrazení, vložte adresu URL do prohlížeče a postupujte podle pokynů přihlášení pro přihlášení do Tenanta 2.
+## <a name="give-tenant-2-access"></a>Poskytnout přístup Tenanta 2
+
+Poskytnout 2 Tenanta přístup k aplikaci pomocí žádosti přihlášení v prohlížeči. Nahraďte *<Tenant2 ID>* s ID tenanta pro tenanta, který chcete sdílet vaše Galerie imagí s. Nahraďte *< ID aplikace (klient) >* s ID aplikace pro registraci aplikace, které jste vytvořili. Až budete hotovi, provedení nahrazení, vložte adresu URL do prohlížeče a postupujte podle pokynů přihlášení pro přihlášení do Tenanta 2.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/22/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 558b67b5b0e1ce4f452ce2ca2e97dd7e785c80b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728695"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541674"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu službě Azure App Service #
 
@@ -32,7 +32,7 @@ Po odeslání žádosti do své aplikace adresa odesílatele je porovnán pravid
 
 Možnost omezení přístupu je implementované v role front-endu služby App Service, které jsou upstream hostitelů pracovního procesu, ve kterém běží váš kód. Omezení přístupu se proto prakticky seznamy ACL sítě.
 
-Možnost omezení přístupu k vaší webové aplikace ze služby Azure Virtual Network (VNet) je volána [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup k víceklientské služby z vybrané podsítě. Musí být povolená na straně sítě i služba, která je právě povoleno pomocí. 
+Možnost omezení přístupu k vaší webové aplikace ze služby Azure Virtual Network (VNet) je volána [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup k víceklientské služby z vybrané podsítě. Musí být povolená na straně sítě i služba, která je právě povoleno pomocí. Nefunguje se k omezení provozu na aplikace, které jsou hostované ve službě App Service Environment.  Pokud jste ve službě App Service Environment, můžete řídit přístup k vaší aplikaci pomocí pravidla IP adres.
 
 ![Postup pro omezení přístupu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -59,6 +59,8 @@ Chcete-li nastavit IP adresu na základě pravidel, vyberte typ protokolu IPv4 n
 ![Přidat omezovací pravidlo přístupu virtuální sítě](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
 K omezení přístupu k vybrané podsítě, vyberte typ virtuální sítě. Nižší, než budete moct vybrat předplatné, virtuální síť a podsíť, ve které chcete povolit nebo odepřít přístup s. Pokud koncové body služby nejsou ještě povolené s Microsoft.Web pro podsíť, kterou jste vybrali, bude automaticky povoleno pro vás Pokud zaškrtněte políčko s dotazem, není to udělat. Situace, kde byste měli povolit na aplikaci, ale ne podsítě je do značné míry související s Pokud máte oprávnění k povolení koncových bodů služby v podsíti, nebo ne. Pokud potřebujete získat někdo jiný se povolit koncové body služby v podsíti, můžete zaškrtnout políčko a jste aplikaci nakonfigurovali pro koncové body služby čekat na případná neodebraly později v podsíti. 
+
+Koncové body služby nelze použít k omezení přístupu k aplikacím, které běží ve službě App Service Environment. Pokud je vaše aplikace ve službě App Service Environment, můžete řídit přístup k vaší aplikaci pomocí pravidel přístupu IP. 
 
 Kliknutím na libovolný řádek, který chcete upravit stávající pravidlo omezení přístupu. Úpravy platí, okamžitě včetně změn v pořadí priority.
 

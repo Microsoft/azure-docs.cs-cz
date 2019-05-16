@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 6dcec5b72be8868a83a5760ef95117d3e751bcc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9100a764ba3922e0254b7fa5cd03b18e204925f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399393"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596014"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
 
@@ -57,7 +57,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Maven 3.  <br/> [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) najdete popis postupu instalace [Maven](https://maven.apache.org/what-is-maven.html) pro účely tohoto kurzu ve Windows nebo Linuxu.
 
-* [Verze Node.js 0.10.0 nebo vyšší](https://nodejs.org).
+* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 

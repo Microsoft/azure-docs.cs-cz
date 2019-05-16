@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe86c758dbf05f91d53cb918b7794c12ab3f39bc
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596746"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518762"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -52,13 +52,13 @@ Podle počtu virtuálních počítačů, které chcete zjišťovat, můžete vyt
 V případě jednorázového zjišťování (teď zastaralé), zjišťování funguje v spustit a zapomenout modelu, po dokončení zjišťování, můžete použít stejné kolekce shromažďovat data z různých vCenter serveru nebo odeslání do projektu různé migrace.
 
 > [!NOTE]
-> Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure. Doporučuje se přesunout do tohoto jednorázového zjišťování zařízení.
+> Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure. Doporučuje se přesunout do průběžná zjišťování zařízení.
 
 Plán zjišťování a posouzení podle následující omezení:
 
 | **Entity** | **Limit pro počítače** |
 | ---------- | ----------------- |
-| Project    | 1,500             |
+| Projekt    | 1,500             |
 | Zjišťování  | 1,500             |
 | Posouzení | 1,500             |
 
@@ -102,7 +102,7 @@ Pokud máte prostředí, které se sdílejí napříč tenanty a nechcete ke zji
 
 Jakmile budete připraveni s plánem, potom můžete spustit zjišťování místních virtuálních počítačů:
 
-### <a name="create-a-project"></a>Vytvoření projektu
+### <a name="create-a-project"></a>Vytvořit projekt
 
 Vytvořte projekt Azure Migrate v souladu s vaší požadavky:
 

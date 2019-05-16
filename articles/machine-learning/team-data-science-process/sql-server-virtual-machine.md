@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b3b4e0886f561cc66e2c02e4ea354c86b34453c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61044467"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606468"
 ---
 # <a name="heading"></a>Zpracování dat v SQL serveru na virtuálním počítači Azure
 Tento dokument popisuje, jak zkoumat data a vygenerovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure. To můžete udělat tahání dat pomocí SQL nebo pomocí programovacího jazyka, jako je Python.
@@ -87,7 +87,7 @@ Tady je stručný úvod do data o poloze zeměpisnou šířkou/délkou (zdroje z
 * Znaménko manažerech, jestli se sever nebo – Jih, východní nebo – západ na celém světě.
 * Nenulový stovky číslice nám říká, že používáme zeměpisná délka a šířka není!
 * Desítkami číslic poskytuje schopen přibližně 1 000 kilometrů. Dává nám užitečné informace o jaké kontinentu nebo se na oceánských.
-* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). To můžete nám říct, zhruba jaké velké státě nebo zemi, kterými se v.
+* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). To můžete nám říct, zhruba jaké velké stát nebo země/oblasti, které jsme v.
 * Na jedno desetinné místo stojí až 11.1 km: ho odlišili pozice jedno město velké ze sousedních město velké.
 * Druhé desetinné stojí až 1.1 km: ho jeden vesnice nezávislá na další.
 * Můžete identifikovat velké zemědělská pole nebo institucionální campus které stojí za to, až 110 m: je třetí desetinné čárky.

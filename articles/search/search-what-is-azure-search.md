@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c3b2134fae86b988fb21e993cd01b77a90bd2896
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 23754a1184f89d1fb563b2d73109f3a10c48920c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467068"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539324"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Dotazování se provádí nad indexem definovaným uživatelem.
@@ -44,7 +44,7 @@ Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/res
 | AI&nbsp;rozšíření&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
 |-------------------|----------|
 |AI rozšiřují dokumenty | [**Kognitivní vyhledávání** ](cognitive-search-concept-intro.md) pro analýzu obrázků a textu můžou uplatnit na kanál indexování extrahujte textové informace z nezpracované obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |
-| Obohacení uložené pro analýzu a využití| [**Znalostní báze Store (preview)** ](knowledge-store-concept-intro.md) je rozšířením založené na umělé Inteligenci indexování. Díky službě Azure storage jako back-endu můžete uložit obohacení vytvořené během indexování. Tyto artefakty umožňuje vám pomůžou Navrhnout lepší dovednosti, nebo vytvořit tvar a struktura využít data beztvará nebo není jednoznačná. Projekce tyto struktury můžete vytvořit tento cíl konkrétní úlohy nebo uživatelů. Můžete také přímo analyzovat extrahovaných dat nebo načíst do jiných aplikací.<br/><br/> |
+| Obohacení uložené pro analýzu a využití| [**Znalostní báze store (preview)** ](knowledge-store-concept-intro.md) je rozšířením založené na umělé Inteligenci indexování. Díky službě Azure storage jako back-endu můžete uložit obohacení vytvořené během indexování. Tyto artefakty umožňuje vám pomůžou Navrhnout lepší dovednosti, nebo vytvořit tvar a struktura využít data beztvará nebo není jednoznačná. Projekce tyto struktury můžete vytvořit tento cíl konkrétní úlohy nebo uživatelů. Můžete také přímo analyzovat extrahovaných dat nebo načíst do jiných aplikací.<br/><br/> |
 
 | Data&nbsp;indexování/import | Funkce |
 |----------------------------------|----------|

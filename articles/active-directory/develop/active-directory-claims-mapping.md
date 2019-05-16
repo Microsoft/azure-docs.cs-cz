@@ -2,23 +2,23 @@
 title: Přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi Azure AD (Public Preview), protože ho
 description: Tato stránka popisuje mapování deklarací služby Azure Active Directory.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300474"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546206"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 
@@ -97,7 +97,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| e-mail |
+| email |
 | endpoint |
 | enfpolids |
 | exp |
@@ -105,7 +105,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | grant_type |
 | graf |
 | group_sids |
-| skupiny |
+| skupin |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -159,7 +159,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | prostředek |
 | role |
 | role |
-| scope |
+| obor |
 | scp |
 | identifikátor SID |
 | podpis |
@@ -177,7 +177,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| uživatelské jméno |
+| username |
 | uti |
 | verze |
 | verified_primary_email |
@@ -287,11 +287,11 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 | Zdroj | ID | Popis |
 |-----|-----|-----|
 | Uživatel | Příjmení | Název rodiny |
-| Uživatel | givenName | jméno |
-| Uživatel | DisplayName | Zobrazovaný název |
+| Uživatel | givenName | Křestní jméno |
+| Uživatel | DisplayName | Zobrazované jméno |
 | Uživatel | ID objektu | ObjectID |
 | Uživatel | mail | E-mailová adresa |
-| Uživatel | userprincipalname | Hlavní název uživatele |
+| Uživatel | userprincipalname | Hlavní název uživatele (UPN) |
 | Uživatel | Oddělení|Oddělení|
 | Uživatel | onpremisessamaccountname | Místní název účtu SAM |
 | Uživatel | netbiosname| Název rozhraní NetBios |
@@ -321,13 +321,13 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 | Uživatel | othermail | Další e-mailu |
 | Uživatel | Země | Země |
 | Uživatel | city | Město |
-| Uživatel | state | Stav |
+| Uživatel | stav | Stav |
 | Uživatel | pracovní funkce | Funkce |
 | Uživatel | EmployeeID | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Faxem telefonní číslo |
-| aplikace, prostředků, cílovou skupinu | DisplayName | Zobrazovaný název |
+| aplikace, prostředků, cílovou skupinu | DisplayName | Zobrazované jméno |
 | aplikace, prostředků, cílovou skupinu | námitky | ObjectID |
-| aplikace, prostředků, cílovou skupinu | tags | Značka objektu služby |
+| aplikace, prostředků, cílovou skupinu | značky | Značka objektu služby |
 | Společnost | tenantcountry | Zemi tenanta |
 
 **TransformationID:** TransformationID element musí být zadaná jenom v případě, že Source element nastavená na "transformace".
@@ -360,7 +360,7 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojení vstupních řetězců s použitím oddělovače mezi. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaném prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
+|Připojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojení vstupních řetězců s použitím oddělovače mezi. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaném prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
 |ExtractMailPrefix|mail|outputClaim|Extrahuje místní části e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne \@ přihlašování je k dispozici, pak původního vstupního řetězce je vrácen, jako je.|
 
 **InputClaims:** Použijte InputClaims element předat data z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
@@ -387,7 +387,7 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 |Zdroj|ID|Popis|
 |-----|-----|-----|
 | Uživatel | mail|E-mailová adresa|
-| Uživatel | userprincipalname|Hlavní název uživatele|
+| Uživatel | userprincipalname|Hlavní název uživatele (UPN)|
 | Uživatel | onpremisessamaccountname|Na místní název účtu Sam|
 | Uživatel | EmployeeID|ID zaměstnance|
 | Uživatel | extensionattribute1 | Atributů rozšíření 1 |
@@ -411,7 +411,7 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 | TransformationMethod | Omezení |
 | ----- | ----- |
 | ExtractMailPrefix | Žádný |
-| Spojit | Přípona je připojen musí být ověřené domény prostředků tenanta. |
+| Připojit | Přípona je připojen musí být ověřené domény prostředků tenanta. |
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 

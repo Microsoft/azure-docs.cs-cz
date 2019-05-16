@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 58471dc539f72c49b041638e928dda751f4bf5a2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: 9df4be5534a1cbe6aa4ffb9c60bb180fd4587d32
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410598"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551023"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
-Tento článek vám sdělí postup přípravy bitové kopie hlavního virtuálního pevného disku (VHD) pro odeslání do Azure, jak vytvořit virtuální počítače (VM) a instalace a konfigurace softwaru na ně. Tyto pokyny se týkají konfigurace specifické pro virtuální plochy Windows ve verzi Preview, který lze použít s existujícími procesy vaší organizace.
+Tento článek vysvětluje postup přípravy bitové kopie hlavního virtuálního pevného disku (VHD) pro odeslání do Azure, včetně vytvoření virtuálního počítače (VM) a instalovat software na ně. Tyto pokyny se týkají konfigurace specifické pro virtuální plochy Windows ve verzi Preview, který lze použít s existujícími procesy vaší organizace.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -24,11 +24,11 @@ Windows 10 Enterprise více relací je k dispozici v galerii Imagí Azure. Exist
 
 Prvním způsobem je ke zřízení virtuálních počítačů (VM) v Azure podle pokynů v [vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)a pak pokračujte [přípravy softwaru a instalace](set-up-customize-master-image.md#software-preparation-and-installation).
 
-Druhou možností je vytvoření bitové kopie místně stažením image, zřizování virtuálních počítačů Hyper-V a přizpůsobení tak, aby odpovídala vašim potřebám, což si probereme v následující části.
+Druhou možností je vytvoření bitové kopie místně stažením image, zřizování virtuálních počítačů Hyper-V a přizpůsobení tak, aby odpovídala vašim potřebám, které probereme v následující části.
 
 ### <a name="local-image-creation"></a>Vytvoření místní image
 
-Po stažení image do místního umístění otevřete **Správce technologie Hyper-V** vytvoření virtuálního počítače pomocí virtuálního pevného disku právě zkopírovali. Tady je jednoduchá verze, ale můžete najít další podrobné pokyny v [vytvoření virtuálního počítače Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Po stažení image do místního umístění otevřete **Správce technologie Hyper-V** vytvoření virtuálního počítače pomocí virtuálního pevného disku jste zkopírovali. Následující pokyny jsou jednoduchá verze, ale můžete najít další podrobné pokyny v [vytvoření virtuálního počítače Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
 
 Chcete-li vytvořit virtuální počítač pomocí zkopírovaného virtuálního pevného disku:
 
@@ -62,101 +62,11 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Příprava softwaru a instalace
 
-Tato část popisuje, jak připravit a nainstalujte Office 365 ProPlus, OneDrive, FSLogix, program Windows Defender a dalších běžných aplikací. Pokud budou uživatelé potřebovat přístup k určité obchodní aplikace, doporučujeme že nainstalovat po dokončení této části pokyny.
+Tato část popisuje, jak připravit a nainstalovat FSLogix, program Windows Defender a další běžné aplikace. 
 
-Této části se předpokládá, že na virtuálním počítači, musí mít zvýšená přístup, jestli je zřízený v Azure nebo správce technologie Hyper-V.
+Pokud instalujete Office 365 ProPlus a OneDrive na vašem virtuálním počítači, přečtěte si téma [instalaci Office na hlavní imagi virtuálního pevného disku](install-office-on-wvd-master-image.md). Pomocí následujícího odkazu v další kroky v tomto článku se vraťte k tomuto článku a dokončit proces hlavní virtuálního pevného disku.
 
-### <a name="install-office-in-shared-computer-activation-mode"></a>Instalace Office v režimu aktivace sdíleného počítače
-
-Použití [nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117) instalace Office. Windows 10 Enterprise více relace podporuje pouze Office 365 ProPlus, ne Perpetual 2019 Office.
-
-Nástroj pro nasazení Office vyžaduje soubor XML konfigurace. Následující ukázka přizpůsobit, přečtěte si článek [možnosti konfigurace pro nástroj pro nasazení Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
-
-Tahle vzorová konfigurace XML, poskytujeme bude provádět následující akce:
-
-- Instalace Office z kanálu Insider a doručení aktualizací z kanálu Insider, když se zpracovává.
-- Použití x64 architektury.
-- Zakážete automatické aktualizace.
-- Instalace aplikace Visio a Project.
-- Odeberte všechny existující instalace sady Office a migraci jejich nastavení.
-- Povolte sdílené počítače licencování pro operace v prostředí terminálového serveru.
-
-Zde je, co tahle vzorová konfigurace XML není:
-
-- Instalaci Skypu pro firmy
-- Instalace Onedrivu v režimu na uživatele. Další informace najdete v tématu [nainstalovat Onedrivu v režimu na počítač](#install-onedrive-in-per-machine-mode).
-
->[!NOTE]
->Sdílené počítačové licence lze nastavit pomocí nastavení registru nebo objekty zásad skupiny (GPO). Objekt zásad skupiny se nachází na **konfigurace počítače\\zásady\\šablony pro správu\\Microsoft Office 2016 (počítač)\\nastavení licencování**
-
-Nástroj pro nasazení Office obsahuje setup.exe. K instalaci sady Office, spusťte následující příkaz v příkazovém řádku:
-
-```batch
-Setup.exe /configure configuration.xml
-```
-
-#### <a name="sample-configurationxml"></a>Ukázka configuration.xml
-
-Následující ukázka XML nainstaluje verzi Insider, označované také jako Insiders rychlé nebo programu Insider hlavní.
-
-```xml
-<Configuration>
-    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
-        <Product ID="O365ProPlusRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Groove" />
-            <ExcludeApp ID="Lync" />
-            <ExcludeApp ID="OneDrive" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-        <Product ID="VisioProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" /> 
-        </Product>
-        <Product ID="ProjectProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-    </Add>
-    <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
-    <Display Level="None" AcceptEULA="TRUE" />
-    <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
-    <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
-    <Property Value="1" Name="SharedComputerLicensing"/>
-    <Property Value="TRUE" Name="PinIconsToTaskbar"/>
-</Configuration>
-```
-
->[!NOTE]
->Týmu služby Office doporučuje používat instalaci 64-bit **OfficeClientEdition** parametru.
-
-Po instalaci sady Office, můžete aktualizovat výchozí chování sady Office. Spusťte následující příkazy, samostatně nebo v dávkovém souboru aktualizovat chování.
-
-```batch
-rem Mount the default user registry hive
-reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
-rem Must be executed with default registry hive mounted.
-reg add HKU\TempDefault\SOFTWARE\Policies\Microsoft\office\16.0\common /v InsiderSlabBehavior /t REG_DWORD /d 2 /f
-rem Set Outlook's Cached Exchange Mode behavior
-rem Must be executed with default registry hive mounted.
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v enable /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v syncwindowsetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSettingMonths  /t REG_DWORD /d 1 /f
-rem Unmount the default user registry hive
-reg unload HKU\TempDefault
-
-rem Set the Office Update UI behavior.
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideupdatenotifications /t REG_DWORD /d 1 /f
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
-```
+Pokud budou uživatelé potřebovat přístup k určité obchodní aplikace, doporučujeme že nainstalovat po dokončení této části pokyny.
 
 ### <a name="disable-automatic-updates"></a>Zakázat automatické aktualizace
 
@@ -179,63 +89,13 @@ Spuštěním tohoto příkazu zadejte počáteční rozložení pro počítače 
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
-### <a name="install-onedrive-in-per-machine-mode"></a>Instalace Onedrivu v režimu na počítač
-
-OneDrive je obvykle nainstalována pro jednotlivé uživatele. V tomto prostředí by měl být nainstalována na počítač.
-
-Tady je postup instalace Onedrivu v režimu na počítač:
-
-1. Nejprve vytvořte umístění, kam chcete připravit Onedrivu Instalační služby. Do složky místního disku nebo [\\\\unc] umístění (file://unc) je v pořádku.
-
-2. Stáhněte si OneDriveSetup.exe dvoufázové instalace umístění s tímto odkazem: <https://aka.ms/OneDriveWVD-Installer>
-
-3. Pokud jste nainstalovali office s Onedrivem vynecháním  **\<ExcludeApp ID = "Onedrivu" /\>**, odinstalovat všechny existující instalace OneDrive na uživatele z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz:
-    
-    ```batch
-    "[staged location]\OneDriveSetup.exe" /uninstall
-    ```
-
-4. Spusťte tento příkaz z příkazového řádku se zvýšenými oprávněními k nastavení **AllUsersInstall** hodnoty registru:
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
-    ```
-
-5. Spuštěním následujícího příkazu nainstalujte Onedrivu v režimu na počítač:
-
-    ```batch
-    Run "[staged location]\OneDriveSetup.exe" /allusers
-    ```
-
-6. Spuštěním tohoto příkazu ke konfiguraci služby OneDrive pro spuštění při přihlášení pro všechny uživatele:
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
-    ```
-
-7. Povolit **tiše konfigurace uživatelského účtu** spuštěním následujícího příkazu.
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
-    ```
-
-8. Přesměrování a přesunout známé složky na OneDrive spuštěním následujícího příkazu Windows.
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
-    ```
-
-### <a name="teams-and-skype"></a>Týmy a Skype
-
-Virtuální Desktop Windows oficiálně nepodporuje Skype pro firmy a týmy.
-
 ### <a name="set-up-user-profile-container-fslogix"></a>Nastavit kontejner profilu uživatele (FSLogix)
 
 Chcete-li zahrnout jako součást image kontejneru FSLogix, postupujte podle pokynů v [nastavení sdílené složky profilu uživatele pro hostitele fond](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Můžete otestovat funkci FSLogix kontejner s [v tomto rychlém startu](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
 
 ### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
 
-Pokud program Windows Defender je nakonfigurovaný na virtuálním počítači, ujistěte se, že se má nakonfigurovat pro není kontroly celý obsah souborů VHD a VHDX během stejné připojení.
+Pokud program Windows Defender je nakonfigurovaný na virtuálním počítači, ujistěte se, že se má nakonfigurovat pro prohledávání není celý obsah souborů VHD a VHDX během přílohy.
 
 Tato konfigurace pouze odebere prohledávání souborů VHD a VHDX během přílohu, ale neovlivní v reálném čase.
 
@@ -308,7 +168,7 @@ Tento článek nepopisuje, jak nakonfigurovat jazyk a místní podpory. Další 
 Tato část zahrnuje aplikace a konfigurace operačního systému. Všechny konfigurace v této části se provádí prostřednictvím položky registru, které mohou být provedeny pomocí příkazového řádku a nástroje regedit.
 
 >[!NOTE]
->Osvědčené postupy můžete implementovat v konfiguraci se objekty zásad obecné (GPO) nebo registru importy. Správce můžete zvolit jednu z možností na základě požadavků organizace.
+>Osvědčené postupy můžete implementovat v konfiguraci se objekty zásad skupiny (GPO) nebo registru importy. Správce můžete zvolit jednu z možností na základě požadavků organizace.
 
 Pro zpětnou vazbu centra shromažďování telemetrických dat na Windows 10 Enterprise více relací spusťte tento příkaz:
 

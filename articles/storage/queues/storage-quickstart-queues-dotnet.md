@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: b80ff38e2afb5e9da6227537ea9c483566d03e4d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: 7b80394fbad403be93413069b8f88be6041743d4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232594"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65758875"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Rychlý start: Vytvoření fronty ve službě Azure Storage pomocí .NET
 
@@ -257,7 +257,9 @@ Zobrazit tyto další zdroje informací pro vývoj na platformě .NET pomocí fr
 
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 
-- Stáhněte si balíček NuGet s nejnovější verzí [klientské knihovny pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) pro službu Azure Storage. 
+- Stáhněte si balíčky NuGet pro nejnovější verzi [Klientská knihovna Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client)
+    - [Běžné](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+    - [fronty](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queues/)
 - Prohlédněte si [zdrojový kód klientské knihovny pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky

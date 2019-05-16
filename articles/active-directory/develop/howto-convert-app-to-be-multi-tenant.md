@@ -3,8 +3,8 @@ title: Jak vytvořit aplikaci, která může přihlášení jakéhokoli uživate
 description: Ukazuje, jak vytvářet aplikace s více tenanty, která dokáže přihlásit uživatele z žádného tenanta Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2054a873d73bce7048ef9e48adabf3fb5279df9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68973d3a88791bcfffc8183f5e3a16975fe15742
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410481"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540452"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -150,7 +150,7 @@ To je patrné vícevrstvé nativního klienta volání v ukázkové webové rozh
 
 Podobně jako případ se stane, když různé vrstvy aplikace jsou zaregistrované v různých tenantech. Představte si třeba v případě vytváření nativní klientskou aplikaci, která volá Online rozhraní API pro Office 365 Exchange. Pro vývoj nativních aplikací a dále nativní aplikaci, aby běžela v tenantovi zákazníka, musí být instanční objekt Exchange Online. V takovém případě se pro vývojáře a zákazník musíte koupit Exchange Online pro služby, které byly vytvořeny v svým klientům.
 
-Pokud se jedná o rozhraní API vytvořené organizací, než je Microsoft, musí vývojář rozhraní API umožňují zákazníkům souhlas aplikaci do klientů svým zákazníkům. Doporučený návrh je pro vývojáře třetích stran k vytvoření rozhraní API tak, že můžete také fungovat jako webový klient k provedení registrace. Použijte následující postup:
+Pokud se jedná o rozhraní API vytvořené organizací, než je Microsoft, musí vývojář rozhraní API umožňují zákazníkům souhlas aplikaci do klientů svým zákazníkům. Doporučený návrh je pro vývojáře třetích stran k vytvoření rozhraní API tak, že můžete také fungovat jako webový klient k provedení registrace. To uděláte takto:
 
 1. Postupujte podle předchozích částech k zajištění, že rozhraní API implementuje požadavky na registraci nebo kódu aplikace s více tenanty.
 2. Kromě zpřístupnění rozhraní API obory nebo role, ujistěte se, že obsahuje registraci "přihlášení a čtení profilu uživatele" oprávnění (k dispozici ve výchozím nastavení).

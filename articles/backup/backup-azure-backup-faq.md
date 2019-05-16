@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646734"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551371"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
 
-## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
+## <a name="recovery-services-vault"></a>Trezor Recovery Services
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Je v rámci předplatného Azure nějak omezený počet trezorů, které lze vytvořit?
 Ano. Můžete vytvořit až 500 trezorů služby Recovery Services, každou podporovanou oblast služby Azure Backup na jedno předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
@@ -133,7 +133,7 @@ Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdroj
 Svazek |Množství dat, která zazálohovali z jednoho svazku zálohovaného virtuálního počítače.
 Databáze systému SQL Server |Velikost zálohovaných jeden velikosti databáze SQL.
 SharePoint | Součet databází obsahu a konfigurace v rámci zálohované farmy služby SharePoint.
-Výměna |Součet všech databází systému Exchange v zálohování serveru Exchange server.
+Exchange |Součet všech databází systému Exchange v zálohování serveru Exchange server.
 BMR/stav systému |Každá jednotlivá kopie BMR nebo stav systému zálohovaného počítače.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Existuje nějaké omezení množství dat zálohovaných pomocí trezoru služby Recovery Services?
@@ -174,8 +174,8 @@ Ne. Čas obnovení nejstaršího nebo nejnovější bod je stejný. Každý bod 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
 Typické produkty s dlouhodobými body uchování ukládají zálohovaná data jako úplné body. 
 
-    - Úplné body jsou *neefektivní* z hlediska úložiště, ale jejich obnovení je snadnější a rychlejší.
-    - Přírůstkové kopie jsou úložiště *efektivní* ale vyžadují obnovení řetězu dat, což ovlivňuje dobu obnovení
+- Úplné body jsou *neefektivní* z hlediska úložiště, ale jejich obnovení je snadnější a rychlejší.
+- Přírůstkové kopie jsou úložiště *efektivní* ale vyžadují obnovení řetězu dat, což ovlivňuje dobu obnovení
 
 Architektura úložiště Azure Backup nabízí to nejlepší z obou světů – optimální ukládání dat pro rychlé obnovení a nízké poplatky za úložiště. Tím se zajistí, že je efektivní využití příchozí i odchozí šířky pásma. Velikost úložiště dat a čas potřebný k obnovení dat, jsou omezeny na minimum. Další informace o [přírůstkové zálohování](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
 

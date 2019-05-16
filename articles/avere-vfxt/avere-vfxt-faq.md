@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409940"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595413"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
 
@@ -204,7 +204,7 @@ Ne, Avere vFXT smyslem je provozována v síťovém prostředí zabezpečené pr
 
 Obecně platí podle potřeby můžete nakonfigurovat další zabezpečení ve virtuální síti, ale určitá omezení může narušovat provoz clusteru.
 
-Například omezení odchozí internetový přístup z vaší virtuální sítě způsobí, že problémy pro cluster Pokud také přidat pravidla, která explicitně povolit přístup k AzureConnectors a AzureCloud. Tato situace je popsána v [dodatečné dokumentaci na Githubu](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+Například omezení odchozí internetový přístup z vaší virtuální sítě způsobí, že problémy pro cluster Pokud přidáte pravidlo, které explicitně povoluje přístup k AzureCloud. Tato situace je popsána v [dodatečné dokumentaci na Githubu](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
 
 Nápovědu k zabezpečení, kontaktujte podporu podle pokynů v [získat nápovědu k systému](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
 

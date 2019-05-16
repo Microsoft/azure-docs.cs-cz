@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198922"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65607063"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -365,7 +365,7 @@ Můžete buď zastavit a spustit virtuální počítač připojený k disku, neb
 
 **Jaké oblasti se spravovaný disk velikosti 8 TB, 16 TB a 32 TiB podporují v?**
 
-8 TB, 16 TiB a 32 TiB disku SKU jsou podporovány ve všech oblastech v rámci globální Azure. Podpora pro Microsoft Azure Government a Azure China 21Vianet ještě není k dispozici.
+8 TB, 16 TiB a 32 TiB disku SKU jsou podporovány ve všech oblastech v rámci globální Azure, Microsoft Azure Government a Azure China 21Vianet.
 
 **Podporujeme povolení ukládání do mezipaměti hostitele na všech velikostí disku?**
 

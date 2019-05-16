@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683332"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755941"
 ---
-# <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definujte a přiřaďte podrobný plán na portálu
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý start: Definujte a přiřaďte podrobný plán na portálu
 
 Když se dozvíte, jak vytvořit a přiřadit plány, můžete definovat běžných vzorů pro vývoj konfigurací opakovaně použitelných a rychle nasaditelné založené na Azure Resource Manageru šablony, zásady, zabezpečení a další. V tomto kurzu zjistíte, jak pomocí Azure plány provádět některé běžné úlohy související s vytváření, publikování a přiřazení podrobného plánu v rámci vaší organizace. Mezi tyto úlohy patří:
 
@@ -29,7 +29,7 @@ Když se dozvíte, jak vytvořit a přiřadit plány, můžete definovat běžn�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
+## <a name="create-a-blueprint"></a>Vytvořit podrobný plán
 
 Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. V tomto příkladu, vytvořte nový plán s názvem **MyBlueprint** ke konfiguraci přiřazení rolí a zásad pro předplatné. A přidejte novou skupinu prostředků a vytvořit přiřazení šablony a role správce prostředků na novou skupinu prostředků.
 

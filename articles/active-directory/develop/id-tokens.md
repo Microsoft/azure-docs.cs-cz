@@ -3,8 +3,8 @@ title: Microsoft identity platform token referenční informace o ID | Dokumenta
 description: Další informace o použití id_tokens, protože ho vygeneroval v1.0 Azure AD a Microsoft identity platform (v2.0) koncových bodů.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c296f14fd9fdc3a7555412555ea1a851f9a7b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2c99caa46522f9b1e5d6334da8f10a0f4039899
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410038"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540315"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft identity platform ID tokenů
 
@@ -55,7 +55,7 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 
 ### <a name="header-claims"></a>Deklarace identity záhlaví
 
-|Deklarovat | Formát | Popis |
+|Deklarace identity | Formát | Popis |
 |-----|--------|-------------|
 |`typ` | String – vždy tokenů JWT"" | Označuje, že token je token JWT.|
 |`alg` | String | Určuje algoritmus, který se použil k podepsání token. Příklad: "RS256" |
@@ -66,7 +66,7 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 
 Tento seznam obsahuje deklarace, které jsou ve většině id_tokens ve výchozím nastavení (Pokud není uvedeno jinak).  Vaše aplikace však může využívat [nepovinných deklarací identity](active-directory-optional-claims.md) požádat o další deklarace identity v požadavku id_token.  Toto musí být v rozsahu `groups` deklaraci identity pro informace o jeho jméno.
 
-|Deklarovat | Formát | Popis |
+|Deklarace identity | Formát | Popis |
 |-----|--------|-------------|
 |`aud` |  Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V `id_tokens`, cílová skupina je ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
 |`iss` |  Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`.  Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |

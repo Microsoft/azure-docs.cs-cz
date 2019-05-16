@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304065"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546264"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -36,7 +36,7 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
 
 * Instalace brány není již přidružený prostředek brány v Azure. Instalace brány můžete propojit pouze jeden prostředek brány, který se stane, když vytvoříte prostředek brány a vyberete instalaci brány. Toto propojení díky instalaci brány není k dispozici pro jiné prostředky.
 
-* Přihlaste se k webu Azure portal a vytvoříte prostředek brány, ujistěte se, že používáte stejný přihlašovací účet, který byl dříve použitých k [instalace místní brány dat](../logic-apps/logic-apps-gateway-install.md#requirements) spolu s stejné [předplatného Azure ](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) , která byla použita k instalaci brány. Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
+* Přihlaste se k webu Azure portal a vytvoříte prostředek brány, ujistěte se, že používáte stejný přihlašovací účet, který byl dříve použitých k [instalace místní brány dat](../logic-apps/logic-apps-gateway-install.md#requirements) spolu s stejné [předplatného Azure ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access) , která byla použita k instalaci brány. Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
 
 * K vytváření a údržbě prostředku brány na webu Azure Portal, vaše [účet služby Windows](../logic-apps/logic-apps-gateway-install.md#windows-service-account) potřebuje aspoň **Přispěvatel** oprávnění. Místní brána dat běží jako služba Windows a nastaven na použití `NT SERVICE\PBIEgwService` pro Windows service přihlašovací údaje. 
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: e64e980d42086603c9eb8ce39a96a9766a78afcb
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 01b386c820a09af0e616698aabc58a886c30bb09
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472459"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550934"
 ---
 # <a name="transforms-and-jobs"></a>Transformace a úlohy
 
@@ -55,9 +55,15 @@ A **transformace** vám pomůže vytvořit jednou předpisu (krok 1) a odeslán�
 
 Použití **transformuje** konfigurace běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. Jeden transformace můžete použít více než jedno pravidlo. Transformace může například určit, že každé video zakódovat do souboru MP4 v daném s přenosovou rychlostí a že obrázek miniatury budou generovat z prvního rámce videa. Měli byste přidat jednu položku TransformOutput pro každé pravidlo, které chcete zahrnout do vaší transformace. Použít přednastavení transformace zjistit, jak by se měly zpracovat vstupními multimediálními soubory.
 
+### <a name="viewing-schema"></a>Zobrazení schématu
+
 V Media Services v3 přednastavení jsou silného typu entity v samotné rozhraní API. Můžete najít definice "schéma" pro tyto objekty v [specifikace Openapi (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Můžete také zobrazit výchozí definice (například **StandardEncoderPreset**) v [rozhraní REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (nebo jiné služby Media Services v3 SDK referenční dokumentaci).
 
+### <a name="creating-transforms"></a>Vytvoření transformace
+
 Můžete vytvořit transformace pomocí rozhraní REST, rozhraní příkazového řádku, nebo použít některý z publikované sady SDK. Media Services v3, které vychází rozhraní API pomocí Azure Resource Manageru, šablon Resource Manageru můžete také použít k vytvoření a nasazení se transformuje na svém účtu Media Services. Řízení přístupu na základě role je možné zamezit přístup k transformací.
+
+### <a name="updating-transforms"></a>Aktualizuje se transformace
 
 Pokud je potřeba aktualizovat vaše [transformace](https://docs.microsoft.com/rest/api/media/transforms), použijte **aktualizovat** operace. Je určený pro provádění změn popis nebo priority základní TransformOutputs. Doporučujeme provádět tyto aktualizace po dokončení všech úloh v průběhu. Pokud chcete přepsat receptem, musíte vytvořit nová transformace.
 
@@ -71,11 +77,19 @@ Následující obrázek ukazuje **transformace** a objekty, odkazuje na, včetn�
 
 A **úlohy** je skutečnou žádost do služby Azure Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. Po vytvoření transformace, můžete odeslat úlohy pomocí rozhraní API služby Media Services nebo libovolného z publikované sady SDK. **Úlohy** Určuje informace, jako jsou umístění vstupním videu a umístění pro výstup. Můžete zadat umístění váš vstup videa pomocí: Adresy URL HTTPS, adresy URL SAS, nebo [prostředky](https://docs.microsoft.com/rest/api/media/assets).  
 
+### <a name="job-input-from-https"></a>Vstup úlohy z protokolu HTTPS
+
 Použití [úlohy vstup z HTTPS](job-input-from-http-how-to.md) Pokud váš obsah je dostupný prostřednictvím adresy URL a není nutné uložit zdrojový soubor v Azure (například importovat z S3). Tato metoda je také vhodná, pokud se požadovaný obsah nachází ve službě Azure Blob storage, ale nepotřebujete ho v prostředku. Tato metoda v současné době podporuje pouze jeden soubor pro vstup.
- 
+
+### <a name="asset-as-job-input"></a>Asset jako vstup úlohy
+
 Použití [Asset jako vstup úlohy](job-input-from-local-file-how-to.md) Pokud vstupní obsah je již v prostředku nebo obsah uložený v místním souboru. Je také vhodné Pokud hodláte publikovat vstupní asset pro streamování nebo stažení (Dejme tomu, že chcete publikovat mp4 ke stažení, ale také chcete provést převod řeči na text nebo pro rozpoznávání tváře detekce). Tato metoda podporuje více souborové prostředky (třeba streamování sad, které byly místně zakódovány MBR).
- 
+
+### <a name="checking-job-progress"></a>Kontrola průběhu úlohy
+
 Monitorování událostí pomocí služby Event Grid je možné získat průběh a stav úloh. Další informace najdete v tématu [sledovat události pomocí EventGrid](job-state-events-cli-how-to.md).
+
+### <a name="updating-jobs"></a>Aktualizace úlohy
 
 Operace aktualizace na [úlohy](https://docs.microsoft.com/rest/api/media/jobs) entity lze použít k úpravě *popis*a *priority* vlastnosti po odeslání úlohy. Ke změně *priority* vlastnost je platná pouze v případě, že úloha je stále ve stavu zařazení do fronty. Pokud úloha zahájil zpracování nebo dokončení, změna priority nemá žádný vliv.
 

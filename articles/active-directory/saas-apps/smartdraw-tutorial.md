@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 7d811cd69185e77f50749fc48974dee684fb7cfa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65744707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>Kurz: Integrace Azure Active Directory s SmartDraw
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SmartDraw, proveďte násle
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.mail |
+    | E-mail | user.mail |
     | Skupiny | user.groups |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -240,7 +240,7 @@ V této části je povolit Britta Simon k udělení přístupu k SmartDraw použ
 
 V této části se vytvoří uživateli Britta Simon v SmartDraw. SmartDraw podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi SmartDraw, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

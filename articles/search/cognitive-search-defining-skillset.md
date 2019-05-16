@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9eedf0be6089764c8111ae81d558f7e65af0a66d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 010880304c5011bd5a767650aa0ae6b6103bdde2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021785"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540864"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Vytvoření dovedností v kanálu služby rozšíření
 
@@ -249,7 +249,7 @@ Až doteď bylo tuto strukturu pouze interní jen paměti a používá jenom v i
 
 ## <a name="add-a-knowledge-store"></a>Přidání znalostní báze úložiště
 
-[Znalostní báze Store](knowledge-store-concept-intro.md) je funkce ve verzi preview ve službě Azure Search pro uložení dokumentu bohatších možností. Znalostní báze úložiště, které vytvoříte, se opírá o účtu služby Azure storage je úložiště, kde jsou data bohatších možností. 
+[Znalostní báze úložiště](knowledge-store-concept-intro.md) je funkce ve verzi preview ve službě Azure Search pro uložení dokumentu bohatších možností. Znalostní báze úložiště, které vytvoříte, se opírá o účtu služby Azure storage je úložiště, kde jsou data bohatších možností. 
 
 Definice úložiště znalostní báze se přidá do dovedností. Postup celý proces, najdete v části [jak začít pracovat s úložištěm znalostní báze](knowledge-store-howto.md).
 

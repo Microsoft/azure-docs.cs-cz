@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 96c3a3eb5e4c07ad9cad8ea5060a27c0c33eec5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466812"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550148"
 ---
 # <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
 
@@ -51,6 +51,17 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 |[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta nabízené službou Azure storage, klíče spravované zákazníkem ve službě Key Vault|Nepodporuje se|
 
 <sup>1</sup> v Media Services v3 šifrování úložiště (šifrování AES-256) je pouze podporována pro zpětné kompatibility při vaše prostředky se vytvořily pomocí Media Services v2. To znamená v3 spolupracuje s existující úložiště šifrované prostředky, ale nebude umožňovat vytváření nových.
+
+## <a name="storage-account-errors"></a>Chyby účtu úložiště
+
+Stav "Odpojeno" pro účtu Azure Media Services znamená, že účet už má přístup na jeden nebo více účtů úložiště z důvodu změn v přístupových klíčů k úložišti. Přístupové klíče k úložišti aktuální nevyžadovala provádět mnoho úloh v účtu Media Services.
+
+Níže jsou uvedeny základní scénáře, které by v účtu Azure Media Services nemají přístup k účtům úložiště. 
+
+|Problém|Řešení|
+|---|---|
+|K oddělení předplatných se migrovaly účtu Media Services nebo účty připojené úložiště. |Migrace na účty úložiště nebo účtu Azure Media Services tak, aby byly všechny ve stejném předplatném. |
+|Účet Media Services je pomocí účtu služby storage připojené v jiném předplatném, jako byl dřívější účtu Media Services, kde to bylo podporováno. Všechny počáteční účtů Media Services se převedly moderní účtům na základě Azure prostředky Manageru (ARM) a bude mít odpojeném stavu. |Migrace účtu úložiště nebo účtu Azure Media Services tak, aby byly všechny ve stejném předplatném.|
 
 ## <a name="next-steps"></a>Další postup
 

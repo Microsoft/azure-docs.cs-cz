@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8308190e0e68365343fb50ca33f9bea75c3e4e66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61098468"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519131"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nové a změněné soubory, které jsou založené na LastModifiedDate pomocí nástroje pro kopírování dat
 
 V tomto kurzu použijete Azure portal k vytvoření datové továrny. Pak použijete nástroj pro kopírování dat vytvoříte kanál, který přírůstkově kopíruje nové a změněné soubory, na základě jejich **LastModifiedDate** z úložiště objektů Blob Azure do Azure Blob storage.
+
+Díky tomu bude ADF kontrolovat všechny soubory ze zdrojového úložiště, použijte filtr soubor podle jejich LastModifiedDate a zkopírovat soubor nových a aktualizovaných pouze od posledního do cílového úložiště.  Mějte prosím na paměti, že pokud nechat ADF kontroly obrovské množství souborů, ale pouze několik souborů zkopírovat do cíle, by stále očekáváte, že je dlouhá doba trvání kvůli skenování souboru časově náročné i.   
 
 > [!NOTE]
 > Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).

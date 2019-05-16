@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard formáty a kodeky – Azure
-description: Toto téma obsahuje přehled kodéru Media Encoder Standard formáty a kodeky ve službě.
+title: Standardní kodér formáty a kodeky – Azure
+description: Toto téma obsahuje přehled kodér úrovně Standard formáty a kodeky ve službě.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff68e70999307417eea276761d56f4a44046a
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322263"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520013"
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a formáty Media Encoderu Standard
+# <a name="standard-encoder-formats-and-codecs"></a>Kodeky a standardní formáty kodéru
 
 Tento článek obsahuje seznam nejběžnějších import a export formátů souborů, které můžete použít s [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Informace o tom, jak vytvořit vlastní předvolby pomocí **StandardEncoderPreset**, naleznete v tématu [vytvoření transformace s vlastní předvolba](customize-encoder-presets-how-to.md).
 
@@ -41,12 +41,12 @@ Tento článek obsahuje seznam nejběžnějších import a export formátů soub
 | QuickTime (QuickTime) |Ano |
 
 > [!NOTE]
-> Výše uvedený seznam běžnější přípony. Media Encoder Standard podporuje řadu dalších (například: .m2ts, .mpeg2video, .qt). Pokud se pokusíte kódování souboru a získat chybovou zprávu o formát není podporován, poskytněte zpětnou vazbu [tady](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
 > 
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>Formáty zvuku ve vstupních kontejnerech
-Media Encoder Standard podporuje následující formáty zvuku ve vstupních kontejnerech:
+
+Kodér úrovně standard podporuje následující formáty zvuku ve vstupních kontejnerech:
 
 * Soubory MXF, GXF a QuickTime, které mají zvukové stopy s prokládané stereo nebo 5.1 ukázky
 
