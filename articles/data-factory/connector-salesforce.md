@@ -64,9 +64,9 @@ Následující vlastnosti jsou podporovány pro Salesforce, propojené služby.
 |:--- |:--- |:--- |
 | type |Vlastnost type musí být nastavená na **Salesforce**. |Ano |
 | environmentUrl | Zadejte adresu URL Salesforce instance. <br> – Výchozí hodnota je `"https://login.salesforce.com"`. <br> – Chcete-li kopírovat data z karantény, zadejte `"https://test.salesforce.com"`. <br> -Ke zkopírování dat z vlastní domény, zadejte, například `"https://[domain].my.salesforce.com"`. |Ne |
-| uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano |
+| username |Zadejte uživatelské jméno uživatelského účtu. |Ano |
 | password |Zadejte heslo pro uživatelský účet.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| Token securityToken |Zadejte token zabezpečení pro uživatelský účet. Pokyny o tom, jak obnovit a získat token zabezpečení najdete v tématu [získat token zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Obecné informace o tokeny zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| securityToken |Zadejte token zabezpečení pro uživatelský účet. Pokyny o tom, jak obnovit a získat token zabezpečení najdete v tématu [získat token zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Obecné informace o tokeny zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku pokud propojený zdroj služba nemá modul runtime integrace |
 
 >[!IMPORTANT]
@@ -315,25 +315,25 @@ Při kopírování dat ze služby Salesforce se používají následující mapo
 
 | Datový typ Salesforce | Data Factory dočasné datový typ |
 |:--- |:--- |
-| Automatické číslo |String |
-| Zaškrtávací políčko |Boolean |
-| Měna |Decimal |
-| Datum |DateTime |
-| Datum a čas |DateTime |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
+| Date |DateTime |
+| Date/Time |DateTime |
 | Email |String |
-| ID |String |
-| Relaci vyhledávání |String |
-| Vyberte rozevírací seznam |String |
-| Číslo |Decimal |
-| Procento |Decimal |
-| Telefon |String |
-| Rozevírací seznam |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
+| Number |Decimal |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
 | Text |String |
-| Textové pole |String |
-| Textová oblast (dlouhý) |String |
-| Textové pole (RTF) |String |
-| Text (zašifrovaný) |String |
-| zprostředkovatele identity |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
