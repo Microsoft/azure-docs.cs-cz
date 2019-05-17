@@ -3,8 +3,8 @@ title: Typy aplikací pro Microsoft identity platform | Azure
 description: Typy aplikací a scénáře podporované koncovým bodem Microsoft identity platform (verze 2.0).
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b45f30bf057feba38a716e040ab2efc15da90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ec10359c6f684b1d7fb008946b7ceca2ed626ba
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297087"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545351"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro Microsoft identity platform
 

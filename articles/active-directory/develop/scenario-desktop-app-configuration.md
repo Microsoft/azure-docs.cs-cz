@@ -15,12 +15,12 @@ ms.date: 05/o7/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52f6fc66187d961dc93089a9f81f6de4d67fe41
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: eadcae393128d9721f2c988f713af07913c5fd1d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075937"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545510"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikace klasické pracovní plochy, že volání webových rozhraní API – konfigurace kódu
 
@@ -98,8 +98,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Další informace o tom, jak nakonfigurovat aplikaci klasické pracovní plochy MSAL.NET:
 
-- Seznam všech parametrů k dispozici na `PublicClientApplicationBuilder`, naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.publicclientapplicationbuilder?view=azure-dotnet-preview#methods)
-- Popis všech možností v `PublicClientApplicationOptions` naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.publicclientapplicationoptions?view=azure-dotnet-preview), v referenční dokumentaci
+- Seznam všech parametrů k dispozici na `PublicClientApplicationBuilder`, naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
+- Popis všech možností v `PublicClientApplicationOptions` naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), v referenční dokumentaci
 
 ## <a name="complete-example-with-configuration-options"></a>Kompletní příklad s možností konfigurace
 
