@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.devlang: php
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 4a53d733b30c06cb48fe2a57f7be232d914dc79c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1ecd298afb7b4e955ec1633fc19162917ee8726
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61408867"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792162"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Rychlý start: Použití PHP k dotazování databáze Azure SQL
 
@@ -33,9 +33,9 @@ K dokončení této ukázce, ujistěte se, že jsou splněné následující po�
   | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  | Nakonfigurovat | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
   |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načtení dat|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Načíst data|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [Githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -103,7 +103,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 ## <a name="next-steps"></a>Další postup
 
-- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
+- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
 
 - [Ovladače Microsoft PHP pro SQL Server](https://github.com/Microsoft/msphpsql/)
 
