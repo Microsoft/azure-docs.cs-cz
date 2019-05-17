@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6e1681e4eca923e8e4ce541570b4ed4b3ba9d567
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126439"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834435"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
 
@@ -30,7 +30,7 @@ V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke sl
 
 Než budete pokračovat, nezapomeňte nakonfigurovat své zařízení a *modul hardwarového zabezpečení*, jak je popsáno v kurzu [Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 
-* Visual Studio 2015 nebo Visual Studio 2017
+* Visual Studio
 
 > [!NOTE]
 > Sada Visual Studio se nevyžaduje. Stačí nainstalovat [.NET](https://www.microsoft.com/net) a vývojáři můžou používat svůj upřednostňovaný editor ve Windows nebo v Linuxu.  

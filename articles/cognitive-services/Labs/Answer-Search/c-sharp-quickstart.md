@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 2fc2a4267c3a10a7837012dc65f0ce1a0f826a11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60312589"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823262"
 ---
 # <a name="quickstart-project-answer-search-query-in-c"></a>Rychlý start: Hledání odpovědí dotazu projektu v jazyce C#
 
@@ -23,7 +23,7 @@ Následující příklad kódu v C# vytvoří a odešle dotaz na informace o tř
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
+Budete potřebovat [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
 
 Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 

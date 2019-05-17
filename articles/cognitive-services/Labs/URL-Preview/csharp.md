@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 0e2d4b783068cfd14385eb1712ea246c94dc9500
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61335450"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827151"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>Rychlý start: Náhled adresy URL dotazu vC#
 
@@ -23,7 +23,7 @@ Následující příklady v jazyce C# vytvoří náhled adresy URL pro web Swift
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
+Budete potřebovat [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
 
 Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 

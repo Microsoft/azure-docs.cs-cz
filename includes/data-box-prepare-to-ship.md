@@ -2,21 +2,21 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a8070d25e2606d8ad72ac231a0a208072c612c5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1d52117440028c75b249f469f2b3576c2ab1c5c5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463000"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815517"
 ---
 Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všechny sdílené složky zařízení převedou do režimu offline. Sdílené složky není přístupná po spuštění tohoto procesu.
 
 > [!IMPORTANT]
 > Příprava k odeslání není nutné, protože příznaky data, která není v souladu s Azure zásady vytváření názvů. Přeskočení tohoto kroku může vést dat. nahrát chyby způsobené nonkonformní data.
 
-1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Kontrolní součty se standardně počítají na řádku během přípravě k odeslání. Výpočet kontrolního součtu může trvat hodiny dnů v závislosti na velikosti vaše data. 
+1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Ve výchozím nastavení se zpracovávají kontrolní součty, při kopírování dat. Příprava k odeslání dokončí výpočet kontrolního součtu a vytvoří seznam souborů ( *- BOM soubory*). Výpočet kontrolního součtu může trvat hodiny dnů v závislosti na velikosti vaše data. 
    
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -36,7 +36,7 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
 
     Pokud v tomto kroku nejsou chyby, je potřeba stáhnout v protokolu chyb a případné chyby opravte. Po vyřešení chyby spusťte **přípravu k odeslání**.
 
-4. Po Příprava k odeslání se úspěšně dokončí (s bez chyb), stáhněte si seznam soubory (označované také jako manifest) zkopírovány v tomto procesu. Později můžete tento seznam použít k ověření nahrání souborů do Azure.
+4. Po Příprava k odeslání se úspěšně dokončí (s bez chyb), stáhněte si seznam soubory (označované také jako manifest) zkopírovány v tomto procesu. Později můžete tento seznam použít k ověření nahrání souborů do Azure. Další informace najdete v tématu [BOM kontrolovat soubory během Příprava k odeslání](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 

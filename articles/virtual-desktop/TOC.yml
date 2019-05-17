@@ -32,8 +32,6 @@
       href: create-host-pools-user-profile.md
     - name: Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
       href: configure-host-pool-load-balancing.md
-    - name: Identifikace problémů pomocí diagnostické funkce
-      href: diagnostics-role-service.md
     - name: Příprava a přizpůsobení hlavní image VHD
       href: set-up-customize-master-image.md
     - name: Instalace sady Office do hlavní image virtuálního pevného disku
@@ -54,6 +52,8 @@
   items:
     - name: 'Přehled řešení potíží, zpětná vazba a podpora'
       href: troubleshoot-set-up-overview.md
+    - name: Identifikace problémů pomocí diagnostické funkce
+      href: diagnostics-role-service.md
     - name: Vytvoření tenanta a fondu hostitelů
       href: troubleshoot-set-up-issues.md
     - name: Konfigurace virtuálního počítače hostitele relace

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 04/04/2019
 ms.author: sngun
-ms.openlocfilehash: cb132c8e36797e4ae089420e48d75271cddb5c04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a54c7493dd40d26151311a4211a791a99b0a265e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685845"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833555"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]
@@ -34,8 +34,8 @@ Ukázky kódu .NET SDK verze 3.0 (Preview) najdete v tématu nejnovější ukáz
 
 ## <a name="prerequisites"></a>Požadavky
 
-Visual Studio 2017 s pracovním postupem vývoj pro Azure, nainstalované
-- Můžete stáhnout a použít **bezplatné** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**. 
+Visual Studio 2019 s pracovním postupem vývoj pro Azure, nainstalované
+- Můžete stáhnout a použít **bezplatné** [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**. 
 
 [Balíček Microsoft.Azure.DocumentDB NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 
 
@@ -88,7 +88,7 @@ Předplatného Azure nebo Bezplatný zkušební účet Cosmos DB
 | [Nahrazení dokumentu pomocí podmíněné kontroly ETag](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L398-L440) |[DocumentClient.AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition)<br>[Documents.Client.AccessConditionType](/dotnet/api/microsoft.azure.documents.client.accessconditiontype) |
 | [Čtení dokumentu jenom v případě, že došlo k jeho změně](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L442-L470) |[DocumentClient.AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition)<br>[Documents.Client.AccessConditionType](/dotnet/api/microsoft.azure.documents.client.accessconditiontype) |
 
-## <a name="indexing-examples"></a>Příklady pro indexování
+## <a name="indexing-examples"></a>Příklady indexování
 [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metoda vzorku *IndexManagement* projektu ukazuje, jak provádět následující úlohy. Další informace o indexování ve službě Azure Cosmos DB, před spuštěním následujících ukázkách najdete v tématu [indexu zásady](index-policy.md), [indexovat typy](index-types.md), a [indexu cesty](index-paths.md). 
 
 | Úkol | API – referenční informace |

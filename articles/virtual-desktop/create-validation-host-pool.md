@@ -7,20 +7,20 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: b654c177accb92d5b9a861f14874e795f4525a43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 91dd716a595dd56c14b3be0bf11a7b69eeb470d6
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793826"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834125"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitele pro ověření aktualizace služeb
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služeb
 
 Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Před nasazením hostitele fondy do produkčního prostředí, důrazně doporučujeme že vytvořit fond ověřování hostitele. Aktualizace se použijí nejprve pro ověření hostitele fondy, umožňuje monitorování služby aktualizací před jejich zavádět do produkčního prostředí. Bez ověřování hostitele fondu nemusí zjišťovat změny, které představují chyby, které by mohly vést k výpadku pro uživatele v produkčním prostředí.
 
 Aby vaše aplikace pracují s nejnovějšími aktualizacemi, by měl být podobný fondy hostitele v produkčním prostředí nejvíce fondu ověřování hostitele. Uživatelé by tak často, připojit k fondu ověření hostitele, stejně jako do fondu produkční hostitele. Pokud automatizované testování ve vašem fondu hostitele by měl obsahovat, automatizovaného testování ve fondu ověřování hostitele.
 
-Můžete ladit problémy ve fondu hostitele ověření pomocí diagnostiky služby nebo [článků o řešení potíží virtuální plochy Windows](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
+Můžete ladit problémy ve fondu ověření hostitele s oběma [funkce Diagnostika](diagnostics-role-service.md) nebo [článků o řešení potíží virtuální plochy Windows](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
 
 >[!NOTE]
 > Doporučujeme ponechat fondu ověření hostitele v místo, kde můžete testovat všechny budoucí aktualizace.

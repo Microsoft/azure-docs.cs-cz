@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 64183ea09203ea965bb889fe4741fdaf4dbd1e02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42b7b6fac8f99d78e4a7460ad8753f48b0a3c0ba
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709933"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823439"
 ---
 # <a name="tutorial-anomaly-detection-with-c-application"></a>Kurz: Detekce anomálií pomocí služby C# aplikace
 
@@ -27,7 +27,7 @@ Prozkoumejte základní aplikaci Windows, která používá rozhraní API pro de
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-Tento příklad jsme vyvinuli pro .NET Framework pomocí sady [Visual Studio 2017, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
+V příkladu jsme vyvinuli pro rozhraní .NET Framework pomocí [Visual Studio 2019, edice Community](https://www.visualstudio.com/products/visual-studio-community-vs). 
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Předplaťte si službu detekce anomálií a získejte klíč předplatného 
 

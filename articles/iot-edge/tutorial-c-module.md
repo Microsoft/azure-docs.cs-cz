@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f5f6b6473a3cbe078ae2357e1f908788e54af25d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 63169423e757f3e1e73a95a1523d74c8fc59b2b2
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573422"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835126"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj modulu jazyka C IoT Edge pro zařízení s Linuxem
 
@@ -38,10 +38,10 @@ Tento kurz ukazuje postupy při vývoji modulu v **C** pomocí **Visual Studio C
 
 V následující tabulce použijte k pochopení možností pro vývoj a nasazení modulů jazyka C pro Linux: 
 
-| C | Visual Studio Code | Visual Studio 2017 | 
-| - | ------------------ | ------------------ |
-| **Linux AMD64** | ![Použití VS Code pro moduly C v Linuxu AMD64](./media/tutorial-c-module/green-check.png) | ![Použití sady VS 2017 pro moduly C v Linuxu AMD64](./media/tutorial-c-module/green-check.png) |
-| **Linux ARM32** | ![Použití VS Code pro moduly C v Linuxu ARM32](./media/tutorial-c-module/green-check.png) | ![Použití sady VS 2017 pro moduly C v Linuxu ARM32](./media/tutorial-c-module/green-check.png) |
+| C | Visual Studio Code | Visual Studio | 
+| - | ------------------ | ------------- |
+| **Linux AMD64** | ![Použití VS Code pro moduly C v Linuxu AMD64](./media/tutorial-c-module/green-check.png) | ![Použití VS pro C moduly na Linuxu AMD64](./media/tutorial-c-module/green-check.png) |
+| **Linux ARM32** | ![Použití VS Code pro moduly C v Linuxu ARM32](./media/tutorial-c-module/green-check.png) | ![Použití VS pro C moduly na Linux ARM32](./media/tutorial-c-module/green-check.png) |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ K vývoji modul IoT Edge v jazyce C, nainstalujte na svém vývojovém počíta�
 
 Následující kroky vytvořit projekt modul IoT Edge pro jazyk C pomocí Visual Studio Code a rozšíření nástroje Azure IoT. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastního kódu.
 

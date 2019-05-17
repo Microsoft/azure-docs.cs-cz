@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea74dbd6cffa34e4462433cdfc51e7d5abac9a41
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 43e35e8074922f45493bc635455d1d176078ce51
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796671"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833536"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -26,9 +26,12 @@ Podpora kontejnerů ve službě Azure Cognitive Services umožňuje vývojářů
 * [Rozpoznávání tváře](Face/Overview.md)
 * [Nástroj pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Language Understanding](LUIS/luis-container-howto.md) (LUIS)
-* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 * [Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Analýza textu](text-analytics/overview.md)
+
+<!--
+* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+-->
 
 Kontejnerizace je přístup k distribuci softwaru, ve kterém k aplikaci nebo službě, včetně konfigurace a jeho závislostí je oprav jako image kontejneru. S téměř nebo vůbec žádné změny je možné nasadit image kontejneru na hostiteli. Kontejnery jsou izolované od sebe navzájem a základní operační systém s menší nároky na místo než virtuální počítač. Kontejnery můžete vytvořené z imagí kontejneru pro krátkodobé úlohy a odebrat, pokud už je nepotřebujete.
 
@@ -57,12 +60,15 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 |[Rozpoznávání tváře](Face/face-how-to-install-containers.md) |F0, S0|**Rozpoznávání tváře** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Žádost o přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Nástroj pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Nástroj pro rozpoznávání formuláře** |Principy formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře.<br>[Žádost o přístup](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**Služba LUIS** ([image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Načte trénovaného nebo publikované Language Understanding modelu, označované také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět a [LUIS portál](https://www.luis.ai) zvyšte přesnost předpovědi aplikace.|
-|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.|
 |[Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Převod řeči na text** |Přepisuje plynulou řeč v reálném čase do textové podoby.<br>[Žádost o přístup](https://aka.ms/speechcontainerspreview/)|
 |[Rozhraní API služby Speech](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Převod textu na řeč** |Převádí text do přirozeně znějící řeči.<br>[Žádost o přístup](https://aka.ms/speechcontainerspreview/)|
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Extrakce frází klíč** ([image](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0, S|**Rozpoznávání jazyka** ([image](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |Až 120 jazyků zjišťuje, jaké vstupní text je napsaný v jazyce a sestavy jeden jazyk kódu pro každý dokument podání žádosti. Kód jazyka spárovaný se skóre označuje sílu skóre. |
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0, S|**Analýza subjektivního hodnocení** ([image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Analyzuje nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení. Modely analýzu jsou předem trénuje pomocí rozsáhlé tělo technologií text a přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](./text-analytics/language-support.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. |
+
+<!--
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
+-->
 
 Kromě toho jsou podporovány některé kontejnery ve službě Cognitive Services [ **All-in-One nabídky** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) klíče prostředku. Můžete vytvořit jeden jeden prostředek služeb Cognitive Services All-in-One a použít stejný klíč fakturační podporovaných služeb pro následující služby:
 
@@ -117,6 +123,8 @@ Instalace a prozkoumejte funkce poskytované službou kontejnerů ve službě Az
 * [Kontejnery pro rozpoznávání tváře](Face/face-how-to-install-containers.md)
 * [Kontejner modulu pro rozpoznávání formuláře](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Kontejnery Language Understanding (LUIS)](LUIS/luis-container-howto.md)
-* [Personalizer kontejnery](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 * [Speech API služby kontejnerů](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Text Analytics kontejnery](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+
+<!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
+-->

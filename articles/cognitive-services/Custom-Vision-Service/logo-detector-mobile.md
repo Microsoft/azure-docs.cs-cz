@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60606652"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827657"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznat loga služeb Azure v fotoaparátu
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Úlohy Xamarinu pro Visual Studio (viz [instalaci Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
 - Se systémem iOS nebo emulátoru Androidu pro Visual Studio
 - [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)

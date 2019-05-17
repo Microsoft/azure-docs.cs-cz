@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 148f94410f6acb421d352b68b6f1ecb305a6b16a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 24d9a5fa1e9c2f44ef32ac1fc05ad09f8a550f12
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235945"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827752"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Připojení k rozhraní API pro počítačové zpracování obrazu s využitím připojených služeb v sadě Visual Studio
 
@@ -24,8 +24,8 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- **Visual Studio 2017 verze 15.7** s nainstalovanou sadou funkcí **Vývoj pro web**. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
+- Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
+- Visual Studio 2017 verze 15.7 nebo novější s **vývoj pro Web** nainstalovaná úloha. [Stáhnout](https://visualstudio.microsoft.com/downloads/)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 

@@ -2,22 +2,22 @@
 title: Konfigurace jednotného přihlašování – Azure Active Directory | Microsoft Docs
 description: Tento kurz využívá Azure Portal ke konfiguraci jednotného přihlašování založeného na SAML pro aplikaci s využitím Azure Active Directory (Azure AD).
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 04/08/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d96799e69e2fdef3a4ffd1a436727e6a58da79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa18bc637ec31a1f83b5cab090e008715c5e0c2a
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442190"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825018"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Kurz: Konfigurace založené na SAML jednotného přihlašování pro aplikaci pomocí Azure Active Directory
 
@@ -75,10 +75,10 @@ Konfigurace domény a adres URL:
     | Nastavení konfigurace | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
     |:--|:--|:--|:--|
     | Identifikátor (ID entity) | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Jednoznačně identifikuje aplikaci, pro kterou se konfiguruje jednotné přihlašování. Azure AD odešle identifikátor aplikace jako parametr cílové skupiny tokenu SAML. Abyste ověřili, že se očekává aplikace. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací.|
-    | Adresa URL odpovědi | Nepovinné | Požaduje se | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). |
+    | Adresa URL odpovědi | Volitelná | Požaduje se | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). |
     | Přihlašovací adresa URL | Požaduje se | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Office 365 nebo Azure AD přístupového panelu. Když je pole prázdné, Azure AD spoléhá na zprostředkovatele identity spusťte jednotného přihlašování, když uživatel spustí aplikaci.|
-    | Stav přenosu | Nepovinné | Nepovinné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle hodnota není platná adresa URL pro aplikaci. Nicméně některé aplikace používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
-    | Adresa URL – odhlášení | Nepovinné | Nepovinné | Používá k odeslání odpovědi odhlašování SAML zpět do aplikace.
+    | Stav přenosu | Volitelná | Volitelná | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle hodnota není platná adresa URL pro aplikaci. Nicméně některé aplikace používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
+    | Adresa URL – odhlášení | Volitelná | Volitelná | Používá k odeslání odpovědi odhlašování SAML zpět do aplikace.
 
 
 2. Chcete-li upravit základní možnosti konfigurace SAML, vyberte **upravit** ikonu (tužky) v pravém horním rohu **základní konfiguraci SAML** oddílu.
@@ -142,7 +142,7 @@ Už jste téměř hotovi.  V posledním kroku budete muset nastavit aplikaci pro
 2. Zkopírujte hodnotu z každého řádku v této části. Pak vložte odpovídající řádek v každé hodnotě **základní konfiguraci SAML** oddílu. Například zkopírovat **přihlašovací adresa URL** hodnotu z **nastavení testu Githubu** části a vložte ho do **přihlašovací adresa URL** pole **základní konfiguraci SAML**  oddílu a tak dále.
 3. Když všechny hodnoty jste vložili do příslušných polí, vyberte **Uložit**.
 
-## <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Jste připraveni vaše nastavení testu.  
 
@@ -155,7 +155,7 @@ Pokud dojde k chybě, zobrazí se chybová zpráva. Proveďte následující kro
 
 1. Zkopírujte podrobnosti a vložte je do pole **Jak chyba vypadá?**.
 
-    ![Získání postupu řešení](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Získat postup řešení](media/configure-single-sign-on-portal/error-guidance.png)
 
 2. Vyberte **pomoc rozlišení**. Zobrazit kořenové příčiny a řešení doprovodné materiály.  V tomto příkladu se uživateli přiřadí k aplikaci.
 

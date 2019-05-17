@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cec146382f0b64a38bf2d954b81051ba109b27
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: d98fd0c3417d54321c492b1e47679ec63f8c1603
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876043"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835170"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj C# modul IoT Edge pro zařízení s Linuxem
 
@@ -38,8 +38,8 @@ Tento kurz ukazuje postupy při vývoji modulu v **C#** pomocí **Visual Studio 
 
 V následující tabulce použijte k pochopení možností pro vývoj a nasazení modulů jazyka C pro Linux: 
 
-| C# | Visual Studio Code | Visual Studio 2017 | 
-| -- | ------------------ | ------------------ |
+| C# | Visual Studio Code | Visual Studio | 
+| -- | ------------------ | ------------- |
 | **Linux AMD64** | ![C#moduly pro LinuxAMD64 ve VS Code](./media/tutorial-c-module/green-check.png) | ![C#moduly pro LinuxAMD64 v sadě Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![C#moduly pro LinuxARM32 ve VS Code](./media/tutorial-c-module/green-check.png) | ![C#moduly pro LinuxARM64 v sadě Visual Studio](./media/tutorial-c-module/green-check.png) |
 
@@ -62,7 +62,7 @@ K dokončení těchto kurzů, připravte následující další požadavky na v�
 
 Následujícím postupem se vytvoří projekt modul IoT Edge pro C# pomocí Visual Studio Code a rozšíření nástroje Azure IoT. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí vlastního kódu. 
 

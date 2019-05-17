@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 8e6991201b3cda5699849ac00cc92217c6b7bf72
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: e19523834c0ddb517fa9d15853411c1b58024b43
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524016"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833994"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -58,6 +58,9 @@ Pro okno Konfigurace virtual machines:
 ### <a name="virtual-machine-settings"></a>Nastavení virtuálního počítače
 
 Pro okno nastavení virtuálního počítače:
+
+>[!NOTE]
+> Pokud jste se zapojili vaše virtuální počítače do prostředí Azure AD Domain Services, ujistěte se, že vaše doména uživatel připojit také členem skupiny [skupiny Správci AAD DC](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
 
 1. Vyberte **zdroj obrázku** a zadejte příslušné informace pro vás bude a uložte ho. Pokud se rozhodnete použít spravované disky, vyberte účet úložiště obsahující soubor .vhd.
 2. Zadejte hlavní název uživatele a heslo pro účet domény, ke které se připojí virtuální počítače k doméně služby Active Directory. Toto uživatelské jméno a heslo bude vytvořena na virtuálních počítačích jako místní účet. Tyto místní účty můžete později obnovit.

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: cf2188bd308ccaa9c3d3661d00f721d92a075e22
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 614d7c0b58ee318461cf3c97e934a77c84221ef7
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794842"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827591"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze sC#
 
@@ -36,7 +36,7 @@ Kód v tomto rychlém startu se [ https://github.com/Azure-Samples/cognitive-ser
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
-1. Otevřete sadu Visual Studio 2017 Community Edition.
+1. Open Visual Studio 2019 Community edition.
 1. Vytvoření nového projektu aplikace konzoly (.NET Core) a název projektu QnaMakerQuickstart. U zbývajících nastavení přijměte výchozí hodnoty.
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí

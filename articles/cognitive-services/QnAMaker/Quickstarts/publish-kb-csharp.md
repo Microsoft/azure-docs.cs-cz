@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: b832b8e07bb81d670539423dd6ab6cf5d28df837
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3460424a8d80baef92eb8b29a3be4de5686027c6
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790839"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827575"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze v pomocí nástroje QnA MakerC#
 
@@ -40,7 +40,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
 ## <a name="create-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
-1. Otevřete sadu Visual Studio 2017 Community Edition.
+1. Open Visual Studio 2019 Community edition.
 1. Vytvořte nový **Konzolová aplikace (.NET Core)** projektu a projekt pojmenujte `QnaMakerQuickstart`. U zbývajících nastavení přijměte výchozí hodnoty.
 
 ## <a name="add-required-dependencies"></a>Přidání požadovaných závislostí

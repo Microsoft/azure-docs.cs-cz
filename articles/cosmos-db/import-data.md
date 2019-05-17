@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 366a5512179136987a8fc984136c3c039a5b079d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61057974"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827279"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrace dat do služby Azure Cosmos DB pomocí nástroje pro migraci dat
 
@@ -63,7 +63,7 @@ Zdrojový kód nástroje pro migraci je k dispozici na GitHubu v [tomto úloži�
 * **Dtui.exe**: Verze nástroje grafického rozhraní
 * **Dt.exe**: Verze nástroje příkazového řádku
 
-## <a name="select-data-source"></a>Výběr zdroje dat
+## <a name="select-data-source"></a>Vyberte zdroj dat
 
 Po instalaci nástroje je čas importovat data. Jaký druh dat chcete importovat?
 
@@ -85,6 +85,19 @@ Po instalaci nástroje je čas importovat data. Jaký druh dat chcete importovat
 Možnost programu pro import zdrojového souboru JSON umožňuje importovat jeden nebo víc souborů JSON jednoho dokumentu nebo soubory JSON, mají celou řadu dokumentů JSON. Při přidávání složek, které mají soubory JSON pro import, máte možnost vyhledávat soubory v podsložkách rekurzivně.
 
 ![Snímek obrazovky s možnostmi zdrojového souboru JSON – nástroje pro migraci databází](./media/import-data/jsonsource.png)
+
+Připojovací řetězec je v následujícím formátu:
+
+`AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
+
+* `<CosmosDB Endpoint>` Je identifikátor URI koncového bodu. Tuto hodnotu lze získat z webu Azure portal. Přejděte do svého účtu Azure Cosmos. Otevřít **přehled** podokně a zkopírujte **identifikátor URI** hodnotu.
+* `<AccountKey>` Je "Password" nebo **primární klíč**. Tuto hodnotu lze získat z webu Azure portal. Přejděte do svého účtu Azure Cosmos. Otevřít **připojovací řetězce** nebo **klíče** podokně a zkopírujte "Password" nebo **primární klíč** hodnotu.
+* `<CosmosDB Database>` Je název databáze cosmos DB.
+
+Příklad: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
+
+> [!NOTE]
+> Ujistěte se, že účet služby Cosmos DB zadaný v poli připojovací řetězec je přístupná pomocí příkazu ověřit.
 
 Tady je několik ukázek příkazového řádku pro import souborů JSON:
 

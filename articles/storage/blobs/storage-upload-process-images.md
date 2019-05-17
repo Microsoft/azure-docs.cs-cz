@@ -10,12 +10,12 @@ ms.date: 11/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: mvc
-ms.openlocfilehash: 26b92db330c882aaf258b6e24560cbf2f7930a5f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e5be86f9f7fbaedeb8fbb10b89926644dcf8aac2
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237129"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835139"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 
@@ -131,7 +131,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 Služba App Service podporuje několik způsobů nasazení obsahu do webové aplikace. V tomto kurzu nasadíte webovou aplikaci z [veřejného úložiště ukázek GitHubu](https://github.com/Azure-Samples/storage-blob-upload-from-webapp). Nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
-Ukázkový projekt obsahuje [ASP.NET MVC](https://www.asp.net/mvc) aplikace. Aplikace přijme obrázek, uloží ho do účtu úložiště a zobrazí obrázky z kontejneru miniatur. Tato webová aplikace používá [Microsoft.WindowsAzure.Storage](/dotnet/api/overview/azure/storage), [Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob)a Microsoft.WindowsAzure.Storage.Auth oborů názvů z klientské knihovny Azure storage k pracovat s Azure storage.
+Ukázkový projekt obsahuje [ASP.NET MVC](https://www.asp.net/mvc) aplikace. Aplikace přijme obrázek, uloží ho do účtu úložiště a zobrazí obrázky z kontejneru miniatur. Tato webová aplikace používá [Microsoft.Azure.Storage](/dotnet/api/overview/azure/storage), [Microsoft.Azure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob)a Microsoft.Azure.Storage.Auth oborů názvů z klientské knihovně Azure Storage k interakci s Azure úložiště.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -163,7 +163,7 @@ az webapp deployment source config --name $webapp \
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](/dotnet/api/overview/azure/storage?view=azure-dotnet). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
+Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](/dotnet/api/overview/azure/storage). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -213,7 +213,7 @@ Vyberte **mohl odesílat fotky** oblasti vybrat a nahrát soubor nebo soubor př
 
 ![Aplikace ImageResizer](media/storage-upload-process-images/figure1.png)
 
-Ve vzorovém kódu `UploadFiletoStorage` úlohy v *Storagehelper.cs* soubor slouží k nahrání obrázku do *image* kontejneru v účtu úložiště pomocí [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) metody. Úlohu `UploadFiletoStorage` obsahuje následující vzorek kódu.
+Ve vzorovém kódu `UploadFiletoStorage` úlohy v *Storagehelper.cs* soubor slouží k nahrání obrázku do *image* kontejneru v účtu úložiště pomocí [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metody. Úlohu `UploadFiletoStorage` obsahuje následující vzorek kódu.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName, AzureStorageConfig _storageConfig)
