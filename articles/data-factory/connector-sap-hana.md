@@ -60,9 +60,9 @@ Pro SAP HANA propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **SapHana** | Ano |
 | server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi SAP HANA.<br/>Povolené hodnoty jsou: **Základní**, a **Windows** | Ano |
-| uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| authenticationType | Typ ověřování používaný pro připojení k databázi SAP HANA.<br/>Povolené hodnoty jsou: **Základní**, a **Windows** | Ano |
+| userName jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| password | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**
@@ -165,9 +165,9 @@ Kopírování dat ze SAP HANA, se používají následující mapování z typů
 | ALPHANUM | String |
 | BIGINT | Int64 |
 | BLOB | Byte[] |
-| DATOVÝ TYP BOOLEAN | Byte |
-| DATOVÝ TYP CLOB | Byte[] |
-| DATE (Datum) | DateTime |
+| BOOLEAN | Byte |
+| CLOB | Byte[] |
+| DATE | DateTime |
 | DECIMAL | Decimal |
 | DOUBLE | Single |
 | INT | Int32 |
@@ -175,8 +175,8 @@ Kopírování dat ze SAP HANA, se používají následující mapování z typů
 | REAL | Single |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| ČAS | TimeSpan |
-| ČASOVÉ RAZÍTKO | DateTime |
+| TIME | TimeSpan |
+| TIMESTAMP | DateTime |
 | TINYINT | Byte |
 | VARCHAR | String |
 
