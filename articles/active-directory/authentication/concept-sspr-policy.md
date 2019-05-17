@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 05/16/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728d961961250aad1d06067e0264c6b90aca4915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: HT
+ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593830"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823395"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -81,8 +81,8 @@ Následující tabulka popisuje nastavení zásad hesel použitý pro uživatels
 
 | Vlastnost | Požadavky |
 | --- | --- |
-| Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> prázdné místo |
-| Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Nesmí obsahovat znak tečky "." bezprostředně předcházející "\@ \" symbol".</li></ul> |
+| Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>prázdné místo</li></ul> |
+| Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li> Nesmí obsahovat znak tečky "." bezprostředně předcházející "\@ \" symbol".</li></ul> |
 | Omezení pro heslo |<ul><li>Minimálně 8 znaků a maximálně 256 znaků.</li><li>Vyžaduje tři ze čtyř z následujících akcí:<ul><li>Malá písmena.</li><li>Velká písmena.</li><li>Číslice (0 – 9).</li><li>Symboly (viz předchozí omezení pro heslo).</li></ul></li></ul> |
 | Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů.</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny z Active Directory modulu Azure pro Windows PowerShell.</li></ul> |
 | Oznámení o vypršení platnosti hesla |<ul><li>Výchozí hodnota: **14** (před vypršením platnosti hesla).</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny.</li></ul> |
@@ -99,7 +99,6 @@ Tento návod se vztahuje na jiných poskytovatelů, jako je Intune a Office 365,
 
 > [!NOTE]
 > Jenom hesla pro uživatelské účty, které nejsou synchronizovány prostřednictvím synchronizace adresářů je možné nakonfigurovat na nevyprší platnost. Další informace o synchronizaci adresářů, naleznete v tématu [AD se službou Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Nastavte nebo zkontrolujte zásady pro hesla pomocí prostředí PowerShell
 
@@ -157,7 +156,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
    ```
 
    > [!WARNING]
-   > Hesla nastavit na `-PasswordPolicies DisablePasswordExpiration` stále stáří na základě `pwdLastSet` atribut. Pokud nastavujete uživatelských hesel bez vypršení platnosti a pak přejít 90 dnů, platnost hesla. Na základě `pwdLastSet` atribut, pokud změníte vypršení platnosti na `-PasswordPolicies None`, všechna hesla, které mají `pwdLastSet` starší než 90 dny vyžadovat, aby je změnit při dalším přihlášení. Tato změna může ovlivnit velký počet uživatelů. 
+   > Hesla nastavit na `-PasswordPolicies DisablePasswordExpiration` stále stáří na základě `pwdLastSet` atribut. Pokud nastavujete uživatelských hesel bez vypršení platnosti a pak přejít 90 dnů, platnost hesla. Na základě `pwdLastSet` atribut, pokud změníte vypršení platnosti na `-PasswordPolicies None`, všechna hesla, které mají `pwdLastSet` starší než 90 dny vyžadovat, aby je změnit při dalším přihlášení. Tato změna může ovlivnit velký počet uživatelů.
 
 ## <a name="next-steps"></a>Další postup
 

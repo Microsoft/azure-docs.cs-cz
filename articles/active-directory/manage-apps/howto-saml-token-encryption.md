@@ -3,8 +3,8 @@ title: Šifrování tokenu SAML v Azure Active Directory
 description: Zjistěte, jak nakonfigurovat šifrování tokenu Azure Active Directory SAML.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7de6705ad38133b8321caabb7b0f4093284af503
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75f8b785b8eadd21f1f94cf82fe137d6f747e738
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291470"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824754"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Postup: Konfigurace šifrování tokenu Azure AD SAML (Preview)
 

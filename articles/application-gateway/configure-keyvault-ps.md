@@ -1,34 +1,34 @@
 ---
 title: Konfiguraci ukončení protokolu SSL s využitím certifikátů služby Key Vault pomocí Azure Powershellu
-description: Zjistěte, jak integrace Azure application gateway se službou Key Vault pro certifikáty serveru, které jsou připojeny k naslouchací procesy HTTPS povolené.
+description: Zjistěte, jak integrovat Azure Application Gateway s využitím služby Key Vault pro certifikáty serveru, které jsou připojeny k naslouchacích procesů s povolenou komunikací HTTPS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: 06930171552843a5620d9a2bfb379a60e91a3915
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e011caa8c7a0c7383d16c81f4bff29d3c1c99f99
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946743"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827614"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfiguraci ukončení protokolu SSL s využitím certifikátů služby Key Vault pomocí Azure Powershellu
+# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfiguraci ukončení protokolu SSL s využitím certifikátů služby Key Vault pomocí Azure Powershellu
 
-[Služba Azure Key Vault](../key-vault/key-vault-whatis.md) je spravovaná platforma tajných kódů úložiště můžete použít k ochraně tajných klíčů, klíče a certifikáty SSL. Služba Application Gateway podporuje integraci se službou Key Vault (ve verzi public preview) pro server certifikáty, které jsou připojeny k naslouchací procesy HTTPS povolena. Tato podpora je omezena na v2 SKU služby Application Gateway.
+[Služba Azure Key Vault](../key-vault/key-vault-whatis.md) je spravované platformy tajného klíče úložiště, můžete použít k ochraně tajných klíčů, klíče a certifikáty SSL. Azure Application Gateway podporuje integraci se službou Key Vault (ve verzi public preview) pro certifikáty serveru, které jsou připojeny k naslouchacích procesů s povolenou komunikací HTTPS. Tato podpora je omezena na v2 SKU služby Application Gateway.
 
 Další informace najdete v tématu [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md).
 
-Tento článek popisuje skript Azure Powershellu pro integraci služby Key Vault pomocí služby Application Gateway pro certifikáty ukončení protokolu SSL.
+Tento článek ukazuje, jak pomocí skriptu prostředí Azure PowerShell můžete integrovat váš trezor klíčů s vaše brána application gateway pro certifikáty ukončení protokolu SSL.
+
+Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto článku, budete potřebovat vytvořit připojení k Azure spuštěním `Connect-AzAccount`.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto článku, budete také muset spustit `Connect-AzAccount` vytvořit připojení k Azure.
-
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít ManagedServiceIdentity modul nainstalován předtím, než začnete.
+Než začnete, musíte mít nainstalovaný modul ManagedServiceIdentity:
 
 ```azurepowershell
 Install-Module -Name Az.ManagedServiceIdentity
@@ -47,7 +47,7 @@ $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
 ```
 
-### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Vytvořte skupinu prostředků a identity spravované uživatelem
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Vytvořte skupinu prostředků a identitou spravovaného uživatele
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -55,7 +55,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-key-vault-policy-and-certificate-to-be-used-by-application-gateway"></a>Vytvoření služby Key Vault, zásad a certifikátů pro Application Gateway
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Vytvoření trezoru klíčů, zásady a certifikát pro použití službou application gateway
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -69,7 +69,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 
-### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
+### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -78,14 +78,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-static-public-vip"></a>Vytvoření statické veřejné virtuální IP adresy
+### <a name="create-a-static-public-virtual-ip-vip-address"></a>Vytvoření statické veřejné virtuální IP (VIP) adresy
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-ports"></a>Vytvoření fondu a front-endové porty
+### <a name="create-pool-and-front-end-ports"></a>Vytvoření fondu adres a portů front-endu
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -98,7 +98,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-ssl-certificate-to-key-vault"></a>Certifikát ssl bod k trezoru klíčů
+### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Certifikát protokolu SSL přejděte na váš trezor klíčů
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -121,7 +121,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-user-managed-identity-to-the-application-gateway"></a>Přiřaďte identitu spravované uživatele ke službě application gateway
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>Přiřaďte identitu spravované uživatele ke službě application gateway
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Další postup
 
-[Další informace o ukončení protokolu SSL](ssl-overview.md).
+[Další informace o ukončení protokolu SSL](ssl-overview.md)

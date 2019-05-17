@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
-ms.openlocfilehash: d55e11ace4ca306c3d3ec8c0094a751966289db6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523051"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826374"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -36,6 +36,7 @@ Následující tabulka popisuje omezení prostředků pro soubory Azure NetApp:
 |  Počet svazků na kapacitu fondu     |    500   |    Ano     |
 |  Počet snímků na jeden svazek       |    255     |    Ne        |
 |  Počet podsítí delegovat do Azure NetApp souborů (Microsoft.NetApp/volumes) na Azure Virtual Network    |   1   |    Ne    |
+|  Maximální počet virtuálních počítačů (včetně partnerských virtuálních sítích), který může připojit ke svazku     |    1000   |    Ne   |
 |  Minimální velikost fondu jednoho kapacity   |  4 TiB     |    Ne  |
 |  Maximální velikost fondu jednoho kapacity    |  500 TiB   |   Ne   |
 |  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |

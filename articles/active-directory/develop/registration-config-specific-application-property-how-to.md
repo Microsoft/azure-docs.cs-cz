@@ -3,8 +3,8 @@ title: Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci | Dokumentac
 description: Pokyny o tom, jak vyplnit konkrétní pole při registraci vlastní vyvinuté aplikaci s využitím Azure AD
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e4362e45ff8eee13b9203b9103266c60b4833a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299052"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545489"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci
 
@@ -41,7 +41,7 @@ Tento článek obsahuje stručný popis všechna dostupná pole ve formuláři p
 
 | Pole            | Popis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | Název aplikace. Musí mít minimálně 4 znaky.                |
+| Název             | Název aplikace. Musí mít minimálně 4 znaky.                |
 | Typ aplikace | **Webovou aplikaci/webové rozhraní API**: Aplikace, která představuje webovou aplikaci, webové rozhraní API nebo obojí 
 | |**Nativní**: Aplikace, která se dá nainstalovat na počítač nebo zařízení uživatele           |
 | Přihlašovací adresa URL      | Adresa URL, kde se uživatel může přihlásit k používání aplikace                                  |
@@ -56,7 +56,7 @@ Po vyplnění polí výše, aplikace je zaregistrovaný na webu Azure Portal a b
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná při registraci aplikace.                                                                                                                                                                                                                                              |
 | Adresa URL – odhlášení      | Tuto adresu URL jednotného odhlašování odhlašování. Azure AD odešle žádost o odhlášení na tuto adresu URL Pokud uživatel vymaže jejich relace s Azure AD pomocí jiných registrované aplikaci.                                                                                                                                       |
 | Více tenantů  | Tento přepínač určuje, jestli aplikace můžou využívat více tenantů. Obvykle to znamená, že externími organizacemi moci používat vaši aplikaci prostřednictvím registrace v rámci jejich tenanta a udělení přístupu k datům organizace.                                                                   |
-| Adresy URL odpovědí      | Odpověď adresy URL jsou koncové body, kam Azure AD vrací všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
+| Adresy URL pro odpověď      | Odpověď adresy URL jsou koncové body, kam Azure AD vrací všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
 | Identifikátory URI pro přesměrování   | Pro nativní aplikace to je, kde je uživatel přesměrován po úspěšném ověření. Kontrola Azure AD, poskytující identifikátor URI aplikace pro přesměrování v požadavku OAuth 2.0 odpovídá jednomu z registrovaných hodnoty na portálu.                                                            |
 | Klíče            | Vytvořit klíče k programově přístup k webovému rozhraní API zabezpečené pomocí Azure AD bez nutnosti zásahu uživatele. Z \* \*klíče\* \* stránky, zadejte popis klíče a datum vypršení platnosti a uložit ke generování klíče. Ujistěte se, uložte ho někam zabezpečené, nebudou mít přístup k později.             |
 

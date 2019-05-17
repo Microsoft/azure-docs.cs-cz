@@ -12,12 +12,12 @@ ms.date: 05/09/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb3a3d85c9cac85b6658167806cea59b6d5163de
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c2ecc458183006872d5a4c6712cdf00a97993dbc
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782853"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825544"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím přes Azure Active Directory Application Proxy 
 
@@ -44,7 +44,7 @@ Proxy aplikací funguje s:
 
 Proxy aplikací podporuje jednotné přihlašování. Další informace o podporovaných metod najdete v tématu [volba jedinou metodu přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 
-Proxy aplikací se doporučuje pro poskytne externí vzdáleným uživatelům přístup k interním prostředkům. Proxy aplikace nahrazuje potřebu síť VPN nebo reverzní proxy server. Není určena pro interní uživatele v podnikové síti.  Interní uživatelé, kteří zbytečně pomocí Proxy aplikace může způsobovat problémy s výkonem neočekávané a nežádoucí.
+Proxy aplikací se doporučuje že vzdáleným uživatelům udělíte přístup k interním prostředkům. Proxy aplikace nahrazuje potřebu síť VPN nebo reverzní proxy server. Není určena pro interní uživatele v podnikové síti.  Tito uživatelé, kteří zbytečně pomocí Proxy aplikace může způsobovat problémy s výkonem neočekávané a nežádoucí.
 
 ## <a name="how-application-proxy-works"></a>Jak funguje Proxy aplikací
 

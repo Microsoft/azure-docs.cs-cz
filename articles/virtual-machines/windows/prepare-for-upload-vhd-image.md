@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/13/2018
+ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460049"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561337"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
-Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+
+Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje 1. generace a virtuální počítače generace 2 ve formátu souboru virtuálního pevného disku a mají pevnou velikost disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) a [virtuální počítače generace 2 v Azure](generation-2.md).
 
 Další informace o zásadách podpory pro virtuální počítač Azure najdete v tématu [podpora serverového softwaru Microsoftu pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -198,7 +199,7 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
 
 9. Pokud virtuální počítač součástí domény, zkontrolujte všechny následující nastavení, abyste měli jistotu, že se nevrátí původní nastavení. Zásady, které musí být zaškrtnuto, jsou následující:
     
-    | Cíl                                     | Zásada                                                                                                                                                       | Value                                                                                    |
+    | Cíl                                     | Zásada                                                                                                                                                       | Hodnota                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Je povolen protokol RDP                           | Počítače\Zásady\Nastavení Settings\Administrative Templates\Components\Remote plocha\Hostitel relace vzdálené plochy\Připojení         | Umožní uživatelům vzdáleně připojit pomocí vzdálené plochy                                  |
     | Zásady skupiny NLA                         | Settings\Administrative Templates\Components\Remote plocha\Hostitel relace plochy plochy\Zabezpečení                                                    | Vyžadovat ověření uživatele pro vzdálená připojení pomocí ověření úrovně sítě. |
@@ -232,7 +233,7 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
    ``` 
 5. Pokud virtuální počítač součástí domény, zkontrolujte následující nastavení a ujistěte se, že se nevrátí původní nastavení. Zásady AD, které musí být zaškrtnuto, jsou následující:
 
-    | Cíl                                 | Zásada                                                                                                                                                  | Value                                   |
+    | Cíl                                 | Zásada                                                                                                                                                  | Hodnota                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Povolení profilů brány Windows Firewall | Počítač počítače\Zásady\Nastavení Settings\Administrative správu\Síť\Síťová Connection\Windows Firewall\Domain Profile\Windows brány Firewall   | Chránit všechna síťová připojení         |
     | Povolení protokolu RDP                           | Počítač počítače\Zásady\Nastavení Settings\Administrative správu\Síť\Síťová Connection\Windows Firewall\Domain Profile\Windows brány Firewall   | Povolit výjimky příchozí vzdálené plochy |
@@ -338,7 +339,7 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
 ### <a name="install-windows-updates"></a>Instalace aktualizací Windows
 Je ideální konfiguraci **počítače na nejnovější úroveň opravy**. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:
 
-| Komponenta               | Binární hodnota         | Windows 7 SP1,Windows Server 2008 R2  SP1 | Windows 8,Windows Server 2012               | Windows 8.1,Windows Server 2012 R2 | Windows 10 verze 1607 systému Windows Server 2016 verze 1607 | Windows 10 verze 1703    | Windows 10 1709 Windows serveru 2016 verze 1709 | Windows 10 1803 Windows serveru 2016 verzi 1803 |
+| Komponenta               | Binary         | Windows 7 SP1,Windows Server 2008 R2  SP1 | Windows 8,Windows Server 2012               | Windows 8.1,Windows Server 2012 R2 | Windows 10 verze 1607 systému Windows Server 2016 verze 1607 | Windows 10 verze 1703    | Windows 10 1709 Windows serveru 2016 verze 1709 | Windows 10 1803 Windows serveru 2016 verzi 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Úložiště                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |

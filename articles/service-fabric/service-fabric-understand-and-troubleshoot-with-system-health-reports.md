@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716264"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561381"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric vám na všechny entity v clusteru předem připravené sestav stravu systému. [Health store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity, které jsou založeny na sestavách systému. Je také uspořádány v hierarchii, který explicitně zaznamenává interakce entity.
@@ -57,7 +57,7 @@ Sestava udává časový limit globální zapůjčení jako time to live (TTL). 
 * **Vlastnost**: Začíná **detekovaná sousední** a obsahuje informace o uzlu.
 * **Další kroky**: Zjistěte, proč je ztraceno okolí. Například zkontrolujte komunikaci mezi uzly clusteru.
 
-### <a name="rebuild"></a>Opětovné sestavení
+### <a name="rebuild"></a>Znovu sestavit
 
 Služba Správce převzetí služeb při selhání (FM) spravuje informace o uzlech clusteru. Při převzetí služeb při selhání ztratí svoje data a přejde do ztrátu dat, nezaručuje, že na něm uvedeny nejaktuálnější informace o uzlech clusteru. V tomto případě systém prochází opětovné sestavení a System.FM – shromažďuje data ze všech uzlů v clusteru, aby bylo možné znovu sestavte svůj stav. V některých případech z důvodu sítě nebo problémů uzlu, opětovné sestavení můžete získat zablokuje nebo zastaven a proces. Stejné může dojít ke službě Master Správce převzetí služeb při selhání (FMM). FMM je Bezstavová systémová služba, která sleduje kde jsou všechny FMs v clusteru. Uzel s ID nejblíže 0 je vždy FMM primární. Získá ztracené tento uzel se aktivuje opětovné sestavení.
 Pokud jeden z předchozích podmínek dojde, **System.FM –** nebo **System.FMM** příznaky prostřednictvím zprávu o chybách. Opětovné sestavení se mohly zaseknout v jednom ze dvou fází:
@@ -632,7 +632,7 @@ Vlastnost a text označují, které rozhraní API je teď zablokované. Další 
 
 - **IStatefulServiceReplica.Close** a **IStatefulServiceReplica.Abort**: Nejběžnější případ je služba není dodržením token rušení, který byl poskytnut `RunAsync`. Může být také, která `ICommunicationListener.CloseAsync`, nebo pokud přepsána, `OnCloseAsync` se zablokovala.
 
-- **IStatefulServiceReplica.ChangeRole (S)** a **IStatefulServiceReplica.ChangeRole(N)**: Nejběžnější případ je služba není dodržením token rušení, který byl poskytnut `RunAsync`.
+- **IStatefulServiceReplica.ChangeRole (S)** a **IStatefulServiceReplica.ChangeRole(N)**: Nejběžnější případ je služba není dodržením token rušení, který byl poskytnut `RunAsync`. V tomto scénáři nejlepším řešením je restartovat repliky.
 
 - **IStatefulServiceReplica.ChangeRole(P)**: Nejběžnější případ je, že nebyla služba vrátila úlohu z `RunAsync`.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 2afd5f0a574fd15c4327b141901d2651dbe2b9e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524232"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826461"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -42,7 +42,7 @@ Následující funkce nejsou aktuálně podporovány pro soubory Azure NetApp:
 
 Platí následující omezení sítě do služby soubory Azure NetApp:
 
-* Číslo z IP adresy z virtuální sítě (včetně partnerských virtuálních sítích) připojení svazku ve virtuální síti nemůže být delší než 1000.
+* Počet virtuálních počítačů, se můžou připojit svazek (pomocí virtuální sítě nebo mezi partnerskými virtuálními sítěmi) nemůže být delší než 1000.
 * V každé Azure Virtual Network (VNet) je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.
 
 

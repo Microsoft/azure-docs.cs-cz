@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190734"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823301"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -42,9 +42,8 @@ Zpětný zápis hesla nabízí:
 * **Když správce obnoví je na webu Azure Portal podporuje zpětný zápis hesla**: Vždy, když správce obnoví heslo uživatele [webu Azure portal](https://portal.azure.com), pokud daného uživatele je Federovaná nebo synchronizaci hodnoty hash hesla, heslo se zapíšou zpátky do místního. Tato funkce není aktuálně podporována v portálu pro správu Office.
 * **Nevyžaduje se žádná pravidla brány firewall pro příchozí**: Zpětný zápis hesla předávání přes Azure Service Bus používá jako základní komunikační kanál. Veškerá komunikace je odchozí port 443.
 
-> [!Note]
+> [!NOTE]
 > Uživatelské účty, které existují v rámci chráněné skupiny v místní službě Active Directory nelze použít se zpětným zápisem hesla. Správce účtů, které existují v rámci chráněné skupiny v místní AD lze použít se zpětným zápisem hesla. Další informace o chráněné skupiny, najdete v části [chráněné účty a skupiny ve službě Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
->
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
 
@@ -63,7 +62,6 @@ Pokud chcete použít zpětný zápis hesla, musí mít jeden z přiřazené ve 
 
 > [!WARNING]
 > Office 365 samostatné licenční plány *nepodporují "Samoobslužné heslo resetování/změna/odemknutí přes místní zpětný zápis"* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.
->
 
 ## <a name="how-password-writeback-works"></a>Jak funguje zpětný zápis hesla
 
@@ -90,7 +88,6 @@ Při synchronizaci hodnoty hash hesla nebo federované pokusy uživatelů o rese
 1. Pokud je operace nastavení hesla úspěšné, uživatel je řekli, že se že změnilo heslo.
    > [!NOTE]
    > Pokud hodnoty hash hesla uživatele synchronizována do služby Azure AD prostřednictvím synchronizace hodnot hash hesel, může se stát, že v místních zásadách hesel je nižší než zásady hesel cloudu. V takovém případě se vynucuje místní zásady. Tato zásada zajistí, že vaše místní je tato zásada vynucená v cloudu, bez ohledu na to používáte synchronizaci hodnot hash hesel nebo federace k poskytování jednotného přihlašování.
-   >
 
 1. Pokud se operace nezdaří nastavit heslo, chybu zobrazí výzvu k akci opakujte. Operace může selhat, protože:
     * Služba se dolů.
@@ -155,6 +152,7 @@ Hesel, zapíšou se zpět v následujících situacích:
    * Jakékoli správce samoobslužné platnost změnit heslo operace, třeba vypršení platnosti hesla
    * Jakékoli správce samoobslužného resetování hesla, které mohou být [portál pro resetování hesel](https://passwordreset.microsoftonline.com)
    * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [webu Azure portal](https://portal.azure.com)
+   * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [centra pro správu služeb Microsoft 365](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>Operace zpětného zápisu nepodporované
 
@@ -163,11 +161,10 @@ Hesla jsou *není* zpětný zápis v některém z následujících situací:
 * **Operace nepodporované koncového uživatele**
    * Všichni koncoví uživatelé resetovat vlastní hesla s použitím prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
 * **Nepodporovaný správce operací**
-   * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [portálu pro správu Office](https://portal.office.com)
    * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
 
 > [!WARNING]
-> Použití zaškrtávacího políčka "uživatel musí změnit heslo při příštím přihlášení" nástroje pro správu služby Active Directory on-premises jako jsou uživatelé služby Active Directory a počítače nebo Centrum správy služby Active Directory není podporováno. Při změně hesla místních nekontrolují tuto možnost. 
+> Použití zaškrtávacího políčka "uživatel musí změnit heslo při příštím přihlášení" nástroje pro správu služby Active Directory on-premises jako jsou uživatelé služby Active Directory a počítače nebo Centrum správy služby Active Directory není podporováno. Při změně hesla místních nekontrolují tuto možnost.
 
 ## <a name="next-steps"></a>Další postup
 

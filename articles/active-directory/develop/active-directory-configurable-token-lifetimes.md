@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2019
+ms.date: 05/15/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cc81f0a5c75d9aeee39f0633521d692c8d30c474
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545393"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823475"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životností tokenů ve službě Azure Active Directory (Preview)
 
@@ -65,11 +65,11 @@ Veřejní klienti nemohou bezpečně uložit heslo klienta (tajný klíč). Apli
 ID tokeny jsou předány do webů a nativní klienty. Tokeny typu ID obsahovat profil informací o uživateli. ID tokenu je vázán na konkrétní kombinaci klienta a uživatele. Tokeny typu ID považovány za platný až do vypršení jejich platnosti. Obvykle, webové aplikace odpovídá uživatele pro uživatele vydané životnost relace v aplikaci na životnost tokenu ID. Můžete nastavit životnost tokenu ID řídit, jak často webové aplikace vyprší platnost relace aplikace a jak často vyžaduje uživatelům ověřit pomocí služby Azure AD (tiše nebo interaktivní).
 
 ### <a name="single-sign-on-session-tokens"></a>Tokeny relace přihlášení
-Při ověření uživatele službou Azure AD, je navázat relaci přihlašování (SSO) s prohlížeči a Azure AD daného uživatele. Token jednotného přihlašování, ve formě souboru cookie, představuje tuto relaci. Všimněte si, že token relace jednotného přihlašování není vázán na konkrétní prostředek/klientské aplikace. Možné odvolat tokeny relace jednotného přihlašování a jejich platnost proběhne pokaždé, když se používají.
+Při ověření uživatele službou Azure AD, je navázat relaci přihlašování (SSO) s prohlížeči a Azure AD daného uživatele. Token jednotného přihlašování, ve formě souboru cookie, představuje tuto relaci. Token relace jednotného přihlašování není vázán na konkrétní prostředek/klientské aplikace. Možné odvolat tokeny relace jednotného přihlašování a jejich platnost proběhne pokaždé, když se používají.
 
 Používá dva typy tokenů relace jednotného přihlašování Azure AD: nonpersistent a trvalé. Trvalé relace tokeny jsou uloženy jako trvalé soubory cookie v prohlížeči. Tokeny nonpersistent relace jsou uloženy jako soubory cookie relace. (Souborů cookie relací jsou zničeny při zavření prohlížeče.) Obvykle je uložena token nonpersistent relace. Ale když uživatel vybere **zůstat přihlášeni** uložené zaškrtávací políčko při ověřování tokenu relace.
 
-Zajišťováno relace tokeny mají životnost 24 hodin. Trvalé tokeny mají životnost 180 dnů. Pokaždé, když se používá token relace jednotného přihlašování v období své platnosti doby platnosti je rozšířeno jiného 24 hodin nebo 180 dní, v závislosti na typ tokenu. Pokud není v období své platnosti tokenu relace jednotného přihlašování, bude považován za vypršela platnost a již přijali.
+Zajišťováno relace tokeny mají životnost 24 hodin. Trvalé tokeny mají životnost 180 dnů. Kdykoli tokenu relace jednotného přihlašování se používá v rozsahu období platnosti, platnosti prodloužit, jiné 24 hodin nebo 180 dní, v závislosti na typ tokenu. Pokud není v období své platnosti tokenu relace jednotného přihlašování, bude považován za vypršela platnost a již přijali.
 
 Zásady můžete nastavit dobu, po prvním tokenu relace byl vydán nad rámec, který je token relace už přijat. (K tomu použijte vlastnost maximální stáří tokenu relace.) Můžete upravit životnost tokenu relace řídit, kdy a jak často je potřeba znovu zadat přihlašovací údaje místo tiše ověřovaného, při použití webovou aplikaci uživatele.
 
@@ -109,7 +109,7 @@ Další informace o vztahu mezi objekty aplikací a instančních objektů najde
 
 V době, kdy se používá token, který je vyhodnocen token platnosti. Zásada s nejvyšší prioritou v aplikaci, která se právě využívají se projeví.
 
-Všechny časových rozpětí tady použít se formátují podle jazyka C# [TimeSpan](https://msdn.microsoft.com/library/system.timespan) objekt - D.HH:MM:SS.  Takže 80 dnů a 30 minut bude `80.00:30:00`.  Nejlepší D můžete vyřadit, pokud je nula, proto 90 minut by se `00:90:00`.  
+Všechny časových rozpětí tady použít se formátují podle jazyka C# [TimeSpan](/dotnet/api/system.timespan) objekt - D.HH:MM:SS.  Takže 80 dnů a 30 minut bude `80.00:30:00`.  Nejlepší D můžete vyřadit, pokud je nula, proto 90 minut by se `00:90:00`.  
 
 > [!NOTE]
 > Tady je příklad scénáře.
@@ -220,11 +220,11 @@ Abyste mohli začít, proveďte následující kroky:
     ```
 
 ### <a name="example-manage-an-organizations-default-policy"></a>Příklad: Spravovat zásady vaší organizace
-V tomto příkladu vytvoříte zásadu, která umožňuje uživatelům přihlásit se méně často napříč celou organizací. K tomuto účelu vytvořte zásadu životnost tokenu Jednofaktorovému aktualizovat tokeny, které používá ve vaší organizaci. Zásady platí pro každou aplikaci ve vaší organizaci a každý instanční objekt, který ještě nemá zásady nastavené.
+V tomto příkladu vytvoříte zásadu, která umožňuje přihlašování vašich uživatelů méně často napříč celou organizací. K tomuto účelu vytvořte zásadu životnost tokenu Jednofaktorovému aktualizovat tokeny, které používá ve vaší organizaci. Zásady platí pro každou aplikaci ve vaší organizaci a každý instanční objekt, který ještě nemá zásady nastavené.
 
 1. Vytvoření zásady životnosti tokenu.
 
-    1.  Sada Jednofaktorovému obnovovací Token na "do odvolán." Token platnost pasu nevyprší, dokud přístup odvolat. Vytvořte následující definice zásad:
+    1. Sada Jednofaktorovému obnovovací Token na "do odvolán." Token platnost pasu nevyprší, dokud přístup odvolat. Vytvořte následující definice zásad:
 
         ```powershell
         @('{
@@ -236,16 +236,16 @@ V tomto příkladu vytvoříte zásadu, která umožňuje uživatelům přihlás
         }')
         ```
 
-    2.  Chcete-li vytvořit zásadu, spusťte následující příkaz:
+    2. Chcete-li vytvořit zásadu, spusťte následující příkaz:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3.  Chcete zobrazit nové zásady a získání zásady **ObjectId**, spusťte následující příkaz:
+    3. Chcete zobrazit nové zásady a získání zásady **ObjectId**, spusťte následující příkaz:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
 2. Aktualizujte zásady.
@@ -253,7 +253,7 @@ V tomto příkladu vytvoříte zásadu, která umožňuje uživatelům přihlás
     Můžete se rozhodnout, že první zásady, kterou jste nastavili v tomto příkladu není strict, jak je vaše služba vyžaduje. Chcete-li nastavit vaše Jednofaktorovému aktualizaci tokenu vyprší za dva dny, spusťte následující příkaz:
 
     ```powershell
-    Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
+    Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
 ### <a name="example-create-a-policy-for-web-sign-in"></a>Příklad: Vytvořit zásadu pro webové přihlášení
@@ -264,88 +264,98 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověř
 
     Tato zásada pro webové přihlášení, nastaví přístup/ID, životnosti tokenu a tokenu stáří maximální relace jednofaktorovému až dvou hodin.
 
-    1.  Chcete-li vytvořit zásadu, spusťte tento příkaz:
+    1. Chcete-li vytvořit zásadu, spusťte tento příkaz:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  Chcete zobrazit nové zásady a získání zásady **ObjectId**, spusťte následující příkaz:
+    2. Chcete zobrazit nové zásady a získání zásady **ObjectId**, spusťte následující příkaz:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
-2.  Přiřaďte zásady instančního objektu služby. Je také potřeba získat **ObjectId** instančního objektu vaší služby. 
+2. Přiřaďte zásady instančního objektu služby. Je také potřeba získat **ObjectId** instančního objektu vaší služby.
 
-    1.  Pokud chcete zobrazit všechna firemní instanční objekty, můžete dát dotaz na buď [Microsoft Graphu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Také, můžete ho otestovat v [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)a [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer) pomocí svého účtu Azure AD.
-
-    2.  Pokud máte **ObjectId** z instančního objektu služby, spusťte následující příkaz:
-
+    1. Použití [rutinu Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) rutiny zobrazíte instanční objekty všechny vaší organizace nebo instančního objektu jeden.
         ```powershell
-        Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
+    2. Až budete mít instanční objekt služby, spusťte následující příkaz:
+        ```powershell
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
 
 ### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Příklad: Vytvořit zásadu pro nativní aplikaci, která volá webové rozhraní API
 V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověření méně často. Zásada také prodlouží dobu, kterou uživatel může být neaktivní, než uživatel musí donutit. Zásady se použijí pro webové rozhraní API. Když nativní aplikace požádá o webové rozhraní API jako prostředek, je tato zásada použitá.
 
 1. Vytvoření zásady životnosti tokenu.
 
-    1.  Chcete-li vytvořit přísné zásady pro webové rozhraní API, spusťte následující příkaz:
+    1. Chcete-li vytvořit přísné zásady pro webové rozhraní API, spusťte následující příkaz:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  Chcete zobrazit nové zásady a získání zásady **ObjectId**, spusťte následující příkaz:
+    2. Pokud chcete zobrazit nové zásady, spusťte následující příkaz:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Přiřaďte zásady pro vaše webové rozhraní API. Je také potřeba získat **ObjectId** vaší aplikace. Nejlepší způsob, jak najít vaši aplikaci **ObjectId** , je použít [webu Azure portal](https://portal.azure.com/).
+2. Přiřaďte zásady pro vaše webové rozhraní API. Je také potřeba získat **ObjectId** vaší aplikace. Použít [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) rutiny k vyhledání aplikace **ObjectId**, nebo použijte [webu Azure portal](https://portal.azure.com/).
 
-   Pokud máte **ObjectId** vaší aplikace, spusťte následující příkaz:
+    Získejte **ObjectId** přiřazení zásady a aplikace:
 
-        ```powershell
-        Add-AzureADApplicationPolicy -Id <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
-        ```
+    ```powershell
+    # Get the application
+    $app = Get-AzureADApplication -Filter "DisplayName eq 'Fourth Coffee Web API'"
 
+    # Assign the policy to your web API.
+    Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
+    ```
 
 ### <a name="example-manage-an-advanced-policy"></a>Příklad: Spravovat pokročilé zásady
-V tomto příkladu vytvoříte několik zásad, k seznámení s fungováním systému priority. Také můžete zjistíte, jak spravovat více zásad, které se použijí u několika objektů.
+V tomto příkladu vytvoříte několik zásad pro seznámení s fungováním systému priority. Také se dozvíte, jak spravovat více zásad, které se použijí u několika objektů.
 
 1. Vytvoření zásady životnosti tokenu.
 
-    1.  Vytvoření výchozí zásady organizace, které nastaví Jednofaktorovému aktualizovat Token doby života na 30 dnů, spusťte následující příkaz:
+    1. Vytvoření výchozí zásady organizace, které nastaví Jednofaktorovému aktualizovat Token doby života na 30 dnů, spusťte následující příkaz:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2.  Chcete zobrazit nové zásady a získání zásady **ObjectId**, spusťte následující příkaz:
+    2. Pokud chcete zobrazit nové zásady, spusťte následující příkaz:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
 2. Přiřaďte zásady instančnímu objektu služby.
 
     Teď máte zásadu, která platí pro celou organizaci. Můžete chtít zachovat toto 30denní zásady pro konkrétní objekt služby, ale změňte výchozí zásady organizace na horní limit počtu "až do odvolaný."
 
-    1.  Pokud chcete zobrazit všechna firemní instanční objekty, můžete dát dotaz na buď [Microsoft Graphu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Také, můžete ho otestovat v [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)a [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer) pomocí svého účtu Azure AD.
+    1. Pokud chcete zobrazit všechna firemní instanční objekty, použijete [rutinu Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) rutiny.
 
-    2.  Pokud máte **ObjectId** z instančního objektu služby, spusťte následující příkaz:
+    2. Až budete mít instanční objekt služby, spusťte následující příkaz:
 
-            ```powershell
-            Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
-            ```
-        
+        ```powershell
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
+
 3. Nastavte `IsOrganizationDefault` příznak na hodnotu false:
 
     ```powershell
-    Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
+    Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
 4. Vytvořte novou organizaci výchozí zásadu:
@@ -389,7 +399,7 @@ Get-AzureADPolicy
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> [Volitelné] |**ID objektu (Id)** z zásady, které chcete. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [Volitelné] |**ID objektu (ID)** z zásady, které chcete. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -402,7 +412,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** z zásady, které chcete. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** z zásady, které chcete. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -415,7 +425,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** z zásady, které chcete. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** z zásady, které chcete. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Řetězec název zásady. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;Definition</code> [Volitelné] |Pole JSON převedený na řetězec, který obsahuje všechny zásady pravidla. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;IsOrganizationDefault</code> [Volitelné] |Při hodnotě true se nastaví jako výchozí zásady organizace zásady. Pokud má hodnotu false, nemá žádný účinek. |`-IsOrganizationDefault $true` |
@@ -433,7 +443,7 @@ Odstraní zadanou zásadu.
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** z zásady, které chcete. | `-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** z zásady, které chcete. | `-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -449,7 +459,7 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** aplikace. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** aplikace. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**ID objektu** zásad. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
@@ -463,7 +473,7 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** aplikace. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** aplikace. | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -476,7 +486,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** aplikace. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** aplikace. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ID objektu** zásad. | `-PolicyId <ObjectId of Policy>` |
 
 </br></br>
@@ -493,7 +503,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** aplikace. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** aplikace. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**ID objektu** zásad. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
@@ -507,7 +517,7 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** aplikace. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** aplikace. | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -520,5 +530,5 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 | Parametry | Popis | Příklad: |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ID objektu (Id)** aplikace. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**ID objektu (ID)** aplikace. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ID objektu** zásad. | `-PolicyId <ObjectId of Policy>` |

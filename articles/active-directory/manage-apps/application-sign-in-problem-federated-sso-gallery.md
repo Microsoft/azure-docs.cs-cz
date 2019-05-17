@@ -3,8 +3,8 @@ title: Potíže při přihlašování k aplikaci galerii konfigurované pro fede
 description: Pokyny pro konkrétní chyby při přihlašování do aplikace, kterou jste nakonfigurovali pro založené na SAML federované jednotné přihlašování s Azure AD
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1985b7bbcfdaab2aa303f67a9b1d090c85eedd5d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292210"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825193"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
 
@@ -57,7 +57,7 @@ Ujistěte se, `Issuer` atribut v požadavku SAML odpovídá hodnotu Identifier n
 
 1.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
 
-1.  Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřte, jestli hodnota v textovém poli Identifikátor odpovídá hodnotě pro hodnotu identifier zobrazují v chybě.
+1.  Po načtení aplikace otevřete **základní konfiguraci SAML**. Ověřte, jestli hodnota v textovém poli Identifikátor odpovídá hodnotě pro hodnotu identifier zobrazují v chybě.
 
 
 
@@ -87,7 +87,7 @@ Ujistěte se, `AssertionConsumerServiceURL` hodnota v požadavku SAML shoduje s 
 
 1.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
 
-1.  Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřit nebo aktualizujte hodnotu v textovém poli Adresa URL odpovědi tak, aby odpovídaly `AssertionConsumerServiceURL` hodnota v požadavku SAML.    
+1.  Po načtení aplikace otevřete **základní konfiguraci SAML**. Ověřit nebo aktualizujte hodnotu v textovém poli Adresa URL odpovědi tak, aby odpovídaly `AssertionConsumerServiceURL` hodnota v požadavku SAML.    
     
 Poté, co jste aktualizovali hodnotu adresy URL odpovědi ve službě Azure AD a odpovídá hodnotě, kterou aplikace odeslala, v požadavku SAML, by měl být schopni se přihlásit k aplikaci.
 
@@ -123,7 +123,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, použijte následuj�
 
 1.  Vyberte **uživatelů a skupin** pro výběr **přidat přiřazení** podokně.
 
-1. V **hledat podle jména nebo e-mailové adresy** pole vyhledávání zadejte úplný název nebo e-mailová adresa uživatele, který chcete přidat.
+1. Do vyhledávacího pole **Hledat podle jména nebo e-mailové adresy** zadejte jméno a příjmení nebo e-mailovou adresu uživatele, kterého chcete přidat.
 
 1. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele, aby **vybrané** seznamu.
 
@@ -152,7 +152,7 @@ Azure AD nepodporuje požadavek SAML, kterou aplikace odeslala, pro jednotné p�
 
 1. Zaznamenejte požadavek SAML. postupujte podle kurzu [ladění založené na SAML jednotného přihlašování k aplikacím ve službě Azure AD](../develop/howto-v1-debug-saml-sso-issues.md) informace o zaznamenání požadavku SAML.
 
-1. Obraťte se na dodavatele aplikace a sdílet tyto údaje:
+1. Obraťte se na dodavatele aplikace a podělte se s ním o následující informace:
 
    -   Požadavek SAML
 
@@ -186,7 +186,7 @@ Ujistěte se, `Issuer` atribut v požadavku SAML odpovídá hodnotu Identifier n
 
 1.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
 
-1.  Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřte, jestli hodnota v textovém poli Identifikátor odpovídá hodnotě pro hodnotu identifier zobrazují v chybě.
+1.  Po načtení aplikace otevřete **základní konfiguraci SAML**. Ověřte, jestli hodnota v textovém poli Identifikátor odpovídá hodnotě pro hodnotu identifier zobrazují v chybě.
 
 
 ## <a name="certificate-or-key-not-configured"></a>Certifikát nebo klíč není nakonfigurováno
@@ -221,7 +221,7 @@ Pokud chcete odstranit a vytvořit nový certifikát, postupujte podle následuj
 
 1. Vyberte datum vypršení platnosti a pak klikněte na tlačítko **Uložit**.
 
-1. Zkontrolujte **nastavit nový certifikát jako aktivní** přepsat aktivní certifikát. Potom klikněte na **Uložit** v horní části podokna a přijměte aktivaci certifikátu výměny.
+1. Zkontrolujte **nastavit nový certifikát jako aktivní** přepsat aktivní certifikát. Pak v horní části podokna klikněte na **Uložit** a přijměte aktivaci certifikátu výměny.
 
 1. V části **podpisový certifikát SAML** klikněte na tlačítko **odebrat** odebrat **nepoužitý** certifikátu.
 
@@ -235,7 +235,7 @@ Azure AD nebyl schopen identifikovat si požadavek SAML v rámci parametrů adre
 
 **Řešení**
 
-Aplikace potřebuje k odeslání požadavku SAML překóduje se na hlavičku location, pomocí protokolu HTTP přesměrovat vazby. Další informace o tom, jak implementovat, najdete v části přesměrování vazby protokolu HTTP v [dokument specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+Aplikace potřebuje k odeslání požadavku SAML překóduje se na hlavičku location, pomocí protokolu HTTP přesměrovat vazby. Další informace o způsobu implementace najdete v části věnované vazbě HTTP Redirect v [dokumentu specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
 ## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure AD odesílá do nesprávné koncový bod tokenu
 
@@ -263,7 +263,7 @@ Odstraňte nepoužívané odpovědních adres URL nakonfigurované pro aplikaci.
 
 6.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
 
-7.  Po načtení aplikace, otevřete **konfigurace základní SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)**, odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)**, odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problém při přizpůsobování deklarací identity SAML, odesílá se do aplikace
 

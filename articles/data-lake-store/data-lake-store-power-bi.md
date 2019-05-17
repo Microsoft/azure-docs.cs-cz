@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195483"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603213"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Pomocí Power BI analyzovat data v Azure Data Lake Storage Gen1
 V tomto článku se dozvíte, jak analyzovat a vizualizovat data uložená v Azure Data Lake Storage Gen1 pomocí Power BI Desktopu.
@@ -74,23 +74,23 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 14. Po aktualizaci dotazu **pole** kartě se zobrazí nová pole, které jsou k dispozici pro vizualizaci.
     
     ![Aktualizovat pole](./media/data-lake-store-power-bi/updated-query-fields.png "aktualizovat pole")
-15. Dejte nám prosím vytvořte výsečový graf představující ovladače v každé město pro danou zemi. Uděláte to tak, proveďte následující výběr.
+15. Dejte nám prosím vytvořte výsečový graf představující ovladače v každé město pro danou zemi nebo oblast. Uděláte to tak, proveďte následující výběr.
     
     1. Na kartě vizualizace klikněte na symbol ve výsečovém grafu.
        
         ![Vytvořte výsečový graf](./media/data-lake-store-power-bi/create-pie-chart.png "vytvořte výsečový graf")
-    2. Sloupce, které budeme používat **4 sloupci** (název města) a **7 sloupci** (název země). Přetáhněte tyto sloupce z **pole** záložku **vizualizace** kartu, jak je znázorněno níže.
+    2. Sloupce, které budeme používat **4 sloupci** (název města) a **7 sloupci** (název země nebo oblast). Přetáhněte tyto sloupce z **pole** záložku **vizualizace** kartu, jak je znázorněno níže.
        
         ![Vytvoření vizualizace](./media/data-lake-store-power-bi/create-visualizations.png "vytvářet vizualizace")
     3. Výsečový graf by měl nyní vypadat podobně jako následující.
        
         ![Výsečový graf](./media/data-lake-store-power-bi/pie-chart.png "vytvářet vizualizace")
-16. Tak, že vyberete určitou zemi filtry na úrovni stránek, můžete nyní zobrazit počet ovladačů v každé město vybrané zemi. Například pod položkou **vizualizace** ve skupině **filtry na úrovni stránek**vyberte **Brazílie**.
+16. Tak, že vyberete konkrétní země nebo oblasti filtrů na úrovni stránek, můžete nyní zobrazit počet ovladačů v každé město vybrané země nebo oblasti. Například pod položkou **vizualizace** ve skupině **filtry na úrovni stránek**vyberte **Brazílie**.
     
-    ![Vyberte zemi](./media/data-lake-store-power-bi/select-country.png "vyberte zemi.")
+    ![Vyberte zemi](./media/data-lake-store-power-bi/select-country.png "vyberte zemi nebo oblast")
 17. Výsečový graf se automaticky aktualizuje a zobrazí ve městech Brazílie ovladače.
     
-    ![Ovladače v určité zemi](./media/data-lake-store-power-bi/driver-per-country.png "ovladače podle země")
+    ![Ovladače v určité zemi](./media/data-lake-store-power-bi/driver-per-country.png "ovladače podle země/oblasti")
 18. Z **souboru** nabídky, klikněte na tlačítko **Uložit** vizualizaci uložit jako soubor Power BI Desktopu.
 
 ## <a name="publish-report-to-power-bi-service"></a>Publikování sestavy do služby Power BI

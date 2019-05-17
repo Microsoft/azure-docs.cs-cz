@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 84446090da2feaee3005b4ef90ace77b468a3f1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792584"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827786"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Vytvoření IoT hubu pomocí šablony Azure Resource Manageru (.NET)
 
@@ -29,7 +29,7 @@ Azure Resource Manageru můžete použít k vytváření a správě služby Azur
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Visual Studio 2015 nebo Visual Studio 2017.
+* Visual Studio.
 * Aktivní účet Azure. <br/>Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
 * [Účtu služby Azure Storage] [ lnk-storage-account] kam můžete ukládat soubory šablony Azure Resource Manageru.
 * [Azure PowerShell 1.0] [ lnk-powershell-install] nebo novější.

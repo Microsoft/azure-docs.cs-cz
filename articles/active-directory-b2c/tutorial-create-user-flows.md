@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e12b3cbcb8f7a433b37c450c84bd34745f68a22d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9c08b5b5278045341ed86d987557d03cb46754e6
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711521"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601597"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: Vytvořit toky uživatelů v Azure Active Directory B2C
 
@@ -76,7 +76,7 @@ Tok uživatele. Zaregistrujte se a přihlaste se zpracovává prostředí jak re
 4. Zadejte platnou e-mailovou adresu, klikněte na tlačítko **poslat ověřovací kód**a pak zadejte ověřovací kód, který se zobrazí.
 5. Zadejte nové heslo a potvrzení hesla.
 6. Zadejte název, který chcete zobrazit, vyberte svou zemi a oblast, zadejte poštovní směrovací číslo a potom klikněte na tlačítko **vytvořit**. Token, který je vrácen do `https://jwt.ms` a má být zobrazena na vás.
-7. Nyní můžete spustit tok uživatele znovu a by měl být schopní se přihlásit pomocí účtu, který jste vytvořili. Vrácený token obsahuje deklarace, které jste vybrali název země, PSČ.
+7. Nyní můžete spustit tok uživatele znovu a by měl být schopní se přihlásit pomocí účtu, který jste vytvořili. Vrácený token obsahuje deklarace, které jste vybrali název, země/oblasti a PSČ.
 
 ## <a name="create-a-profile-editing-user-flow"></a>Vytvořit tok uživatele upravování profilu
 

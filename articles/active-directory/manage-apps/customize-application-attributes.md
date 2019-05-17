@@ -3,8 +3,8 @@ title: Přizpůsobení mapování atributů Azure AD | Dokumentace Microsoftu
 description: Zjistěte, jaké mapování atributů pro aplikace SaaS ve službě Azure Active Directory se, jak můžete upravit, tak, aby řeší obchodní potřeby.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9db6babff3ae0c91f730e6ec2e6e2a41d55b0bf
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: bc3aea059b6ac4244ea440d26717562e83fdbd09
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191519"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824911"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
 Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, G Suite a dalších. Pokud povolíte zřizování uživatelů pro aplikaci SaaS třetí strany, řídí na webu Azure portal jeho hodnoty atributů pomocí mapování atributů.

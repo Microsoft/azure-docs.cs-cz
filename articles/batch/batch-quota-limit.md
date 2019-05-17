@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776364"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595338"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -34,8 +34,6 @@ Pokud máte v plánu pro spouštění úloh v produkčním prostředí ve služb
 
 > [!NOTE]
 > Kvóta je kreditního limitu záruku kapacity. Pokud máte velkou kapacitu, kontaktujte prosím podporu Azure.
-> 
-> 
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
@@ -68,7 +66,7 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 | Balíčky aplikací na fond | 10 |
 | Úloha maximální doba života | 180 dnů<sup>1</sup> |
 
-<sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po dokončení je 180 dnů. Dokončené úkoly se zachovávají po dobu 7 dní; data pro úkoly, které se nedokončí v rámci maximální doby života není přístupný.
+<sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po dokončení je 180 dnů. Dokončené úkoly se zachovávají po dobu sedmi dní; data pro úkoly, které se nedokončí v rámci maximální doby života není přístupný.
 
 ## <a name="view-batch-quotas"></a>Zobrazit kvóty služby Batch
 
@@ -84,45 +82,57 @@ Zobrazit vaše kvóty účtu Batch na [webu Azure portal][portal].
 
 Postupujte podle těchto kroků žádost o kvótu zvýšit pro váš účet Batch nebo předplatnému pomocí [webu Azure portal][portal]. Typ zvýšení kvóty, závisí na režimu přidělování fondů pro váš účet Batch. Požádat o zvýšení kvóty, je nutné uvést chcete zvýšit kvótu pro virtuální počítače řady. Při použití zvýšení kvóty, platí pro všechny řady virtuálních počítačů.
 
-### <a name="increase-a-batch-cores-quota"></a>Zvýšit kvótu pro jádra služby Batch 
+### <a name="increase-cores-quota-in-batch"></a>Navyšte kvótu jader ve službě Batch 
 
 1. Vyberte **Nápověda a podpora** dlaždici na řídicím panelu portálu nebo otazník (**?**) v pravém horním rohu portálu.
 1. Vyberte **nová žádost o podporu** > **Základy**.
 1. V **Základy**:
    
-    a. **Typ problému** > **kvóty**
+    a. **Typ problému** > **limity služby a předplatného (kvóty)**
    
     b. Vyberte své předplatné.
    
     c. **Typ kvóty** > **služby Batch**
-   
-    d. **Plán podpory** > **kvóty podpora – zahrnuto**
-   
-    Klikněte na **Další**.
-1. V **problém**:
-   
-    a. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
-   
-    b. V **podrobnosti**, zadejte každá kvóta, kterou chcete změnit název účtu Batch a nový limit.
-   
-    Klikněte na **Další**.
+      
+    Vyberte **Další**.
+    
+1. V **podrobnosti**:
+      
+    a. V **zadání podrobností o**, zadejte umístění, typ kvóty a účet Batch.
+    
+    ![Zvýšení kvóty služby batch][quota_increase]
+
+    Typy kvót patří:
+
+    * **Jeden účet Batch**  
+        Hodnoty určené k jedné dávkové účtu včetně s nízkou prioritou a vyhrazených jader a počet úloh a fondů.
+        
+    * **Na oblast**  
+        Hodnoty, které platí pro všechny účty služby Batch v oblasti a zahrnuje počet účtů služby Batch na oblast a předplatné.
+
+    Kvóta s nízkou prioritou je jedinou hodnotu mezi všechny řady virtuálních počítačů. Pokud potřebujete omezené skladové položky, je nutné vybrat **jader s nízkou prioritou** a zahrnují rodiny virtuálních počítačů k požadavku.
+
+    b. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
+
+    Vyberte **Další**.
+
 1. V **kontaktní informace**:
    
     a. Vyberte **upřednostňovaný způsob kontaktování**.
    
     b. Zkontrolujte a zadejte požadované podrobnosti kontaktu.
    
-    Kliknutím na **Vytvořit** odešlete žádost o podporu.
+    Vyberte **vytvořit** k odeslání žádosti o podporu.
 
-Jakmile jste odeslali žádost o podporu, bude vás kontaktovat podporu Azure. Všimněte si, že dokončení žádosti může trvat až 2 pracovních dnů.
+Jakmile jste odeslali žádost o podporu, bude vás kontaktovat podporu Azure. Kvótu požadavků může dokončit během několika minut nebo až do dvou pracovních dnů.
 
 ## <a name="related-quotas-for-vm-pools"></a>Související kvóty pro fondy virtuálních počítačů
 
 Fondy služby batch v konfiguraci virtuálního počítače nasazené ve službě Azure virtual network automaticky přidělit další prostředky Azure sítě. V následujících zdrojích informací jsou potřeba pro každý uzly 50 fondu ve virtuální síti:
 
-* 1 [skupina zabezpečení sítě](../virtual-network/security-overview.md#network-security-groups)
-* 1 [veřejnou IP adresu](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
-* 1 [nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
+* Jeden [skupina zabezpečení sítě](../virtual-network/security-overview.md#network-security-groups)
+* Jeden [veřejnou IP adresu](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* Jeden [nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
 
 Tyto prostředky se přidělují v předplatném, která obsahuje virtuální síť zadali při vytváření fondu služby Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-subscription-service-limits.md) předplatného. Pokud máte v plánu nasazení velkého fondu ve virtuální síti, zkontrolujte předplatného kvóty pro tyto prostředky. V případě potřeby požádat o zvýšení na webu Azure Portal tak, že vyberete **Nápověda a podpora**.
 
@@ -137,3 +147,4 @@ Tyto prostředky se přidělují v předplatném, která obsahuje virtuální s�
 [support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png
+[quota_increase]: ./media/batch-quota-limit/quota-increase.png

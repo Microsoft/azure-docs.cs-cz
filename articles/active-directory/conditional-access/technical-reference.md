@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764728"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823552"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -48,7 +48,6 @@ Zásady podmíněného přístupu můžete přiřadit následující cloudové a
 - Microsoft Application Insights Analytics
 - Microsoft Azure Information Protection – [Další informace](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Microsoft Azure Management – [Další informace](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
-- Microsoft Azure RemoteApp
 - Správa předplatného Microsoft Azure
 - Microsoft Cloud App Security
 - Nástroje Microsoft Commerce Portal řízení přístupu
@@ -167,7 +166,6 @@ Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplik
 
 | Klientské aplikace | Cílová služba | Platforma |
 | --- | --- | --- |
-| Vzdálené aplikace Azure | Služba vzdálené aplikace Azure | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
 | Aplikace Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS a Android |
 | E-mailu nebo kalendáře/lidí aplikace Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
 | Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány.| Všechny služby app service pro Moje aplikace| Android a iOS |

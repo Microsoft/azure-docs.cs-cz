@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: HT
+ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540173"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823349"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Kontrolní seznam integrace Microsoft identity platform
 
@@ -31,13 +31,13 @@ Pokud jste právě začínáte, podívejte se [dokumentaci](index.yml) Další i
 
 ## <a name="testing-your-integration"></a>Testování integraci vašich
 
-Pomocí následujícího kontrolního seznamu ujistěte se, že aplikace účinně integrován [platforma identit Microsoft](https://docs.microsoft.com/legal/mdsa).
+Pomocí následujícího kontrolního seznamu ujistěte se, že aplikace účinně integrován [platforma identit Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
 
 ### <a name="basics"></a>Základy
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Přečtěte si [zásady platformy Microsoftu](https://docs.microsoft.com/legal/mdsa). Ujistěte se, že aplikace splňuje podmínky uvedené jako jsou navržená k ochraně uživatelů a platformu. |
+| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Přečtěte si [zásady platformy Microsoftu](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Ujistěte se, že aplikace splňuje podmínky uvedené jako jsou navržená k ochraně uživatelů a platformu. |
 
 ### <a name="ownership"></a>Vlastnictví
 

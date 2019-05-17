@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/03/2019
+ms.date: 05/15/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8659ecab649216650403f3a992cc6e356e5de5d0
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60356807"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823586"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -383,6 +383,9 @@ Odpověď: Je možné [kontrola dříve přijali podmínky použití](#how-users
 
 **Otázka: Co se stane, pokud také používám Intune podmínky a ujednání?**<br />
 Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+
+**Otázka: Jaké koncové body podmínek použití služby používat pro ověřování?**<br />
+Odpověď: Podmínky použití využívá následující koncové body pro ověřování: https://tokenprovider.termsofuse.identitygovernance.azure.com a https://account.activedirectory.windowsazure.com. Pokud vaše organizace má seznam povolených adres URL pro registraci, je potřeba přidat tyto koncové body do seznamu povolených, spolu s koncovým bodům služby Azure AD pro přihlášení.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 5/16/2019
 ms.author: victorh
-ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510817"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827422"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatické škálování a zónově redundantní služba Application Gateway 
 
@@ -62,7 +62,7 @@ Výpočetní jednotka pokyny:
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[Stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/) bude aktualizován tak, aby odrážela ceny na 14. května 2019. Fakturace je naplánováno spuštění na 1. června 2019.
+Informace o cenách najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/). Fakturace je naplánováno spuštění na 1. července 2019.
 
 **Příklad 1**
 
@@ -100,7 +100,7 @@ Celková cena = 267.84 $ + $85.71 = $353.55
 Waf služby Application Gateway a dá se škálovat ve dvou režimech:
 
 - **Automatické škálování** – povolení automatického škálování Application Gateway a WAF v2 SKU vertikálně navyšovat nebo snižovat podle požadavků na provoz aplikace. Tento režim nabízí lepší pružnost do vaší aplikace a eliminuje nutnost odhadnout počet velikost nebo instance brány aplikací. Tento režim vám také umožní snížit náklady tím, které nevyžadují spuštění brány v ve špičce zřízené kapacity pro očekávané maximální zatížení. Zákazníkům musíte zadat minimální a volitelně maximálním počtem instancí. Minimální kapacitu zajistí, že služba Application Gateway a WAF v2 neklesne pod minimální počet instancí zadali, dokonce i v případě neexistence provoz. Bude se účtovat tuto minimální kapacitu i v případě neexistence veškerý provoz. Také v případě potřeby můžete zadat maximální počet instancí, které zajišťuje, že službu Application Gateway nemá škálování za zadaný počet instancí. Bude nadále účtovat množství přenos poskytovaný službou Gateway. Počet instancí musí být v rozsahu 0 až 125. Výchozí hodnota pro maximální počet instancí je 20, pokud není zadaný.
-- **Ruční** -také další možnost – Ruční režim, ve kterém je brána nebude automatického škálování. V tomto režimu dojde větší provoz, než je schopná zpracovat, které služba Application Gateway nebo WAF, může to vést ke ztrátě provoz. S ruční režim určující počet instancí je povinný. Počet instancí se může lišit od 1 do 125 instancí.
+- **Ruční** -také další možnost – Ruční režim, ve kterém je brána nebude automatického škálování. V tomto režimu dojde větší provoz, než co Application Gateway nebo WAF může zpracovat, může to vést ke ztrátě provoz. S ruční režim určující počet instancí je povinný. Počet instancí se může lišit od 1 do 125 instancí.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porovnání funkcí mezi v1 SKU a v2 SKU
 

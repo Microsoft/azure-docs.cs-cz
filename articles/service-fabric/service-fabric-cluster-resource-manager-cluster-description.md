@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ff291bda87ca4b2b4055e36989b035cf410b3b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 082abd89cd84fc34180f333b54664d7dddfa0ccf
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744234"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561220"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Popis clusteru service fabric
 Service Fabric Cluster Resource Manager poskytuje několik mechanismů pro popis clusteru. Cluster Resource Manageru za běhu, používá tyto informace k zajištění vysoké dostupnosti služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizaci spotřeby prostředků v rámci clusteru.
@@ -33,7 +33,7 @@ Cluster Resource Manager podporuje několik funkcí, které popisují clusteru:
 * Uzel kapacity
 
 ## <a name="fault-domains"></a>Domény selhání
-Doména selhání je všechny plochy koordinované selhání. Jeden počítač se doména selhání (vzhledem k tomu může selhat na své vlastní pro z různých důvodů se před výpadky napájení dodavatelského vůči selháním disku chybné firmwaru NIC). Počítače připojené ke stejnému přepínači sítě Ethernet jsou ve stejné doméně selhání, jako jsou počítače sdílení jednoho zdroje napájení nebo na jednom místě. Protože je přirozené pro hardwarových chyb překrytí, jsou ze své podstaty hierarchická domén selhání a jsou reprezentovány jako identifikátory URI v Service Fabric.
+Doména selhání je všechny plochy koordinované selhání. Jeden počítač se doména selhání (vzhledem k tomu může selhat na své vlastní pro z různých důvodů se před výpadky napájení dodavatelského vůči selháním disku chybné firmwaru NIC). Počítače připojené ke stejnému přepínači sítě Ethernet jsou ve stejné doméně selhání, jako jsou počítače sdílení jednoho zdroje napájení nebo na jednom místě. Protože přirozené pro hardwarových chyb můžete překrývat, jsou ze své podstaty hierarchické domén selhání a jsou reprezentovány jako identifikátory URI v Service Fabric.
 
 Je důležité, že domén selhání jsou správně nastavené protože Service Fabric pomocí těchto informací k bezpečné umístění služby. Service Fabric nechce k umístění služby tak, aby ke ztrátě doména selhání (způsobila selhání některé komponenty) způsobí, že služba přejdete. Prostředí Service Fabric v Azure používá doména selhání na základě informací poskytnutých prostředí správnou konfiguraci uzlů v clusteru vaším jménem. Pro samostatnou službu Service Fabric jsou definovány domén selhání v době, která je nastavená clusteru 
 
@@ -95,13 +95,17 @@ Neexistuje žádný skutečný omezení celkový počet selhání nebo upgradu d
 ![Selhání a upgradovací doména rozložení][Image4]
 </center>
 
-Neexistuje že žádný nejlepší odpověď jaké rozložení byste měli zvolit, každá má některé výhody a nevýhody. Například 1FD:1UD modelu je snadné nastavení. 1 upgradovat doménu za uzel model je nejvhodnější jako osoby, které se používají k. Během upgradu se aktualizuje každý uzel nezávisle na sobě. To se podobá jak malý byly sady počítačů upgradovány ručně v minulosti. 
+Neexistuje že žádný nejlepší odpověď jaké rozložení byste měli zvolit, každá má některé výhody a nevýhody. Například 1FD:1UD modelu je snadné nastavení. 1 upgradovat doménu za uzel model je nejvhodnější jako osoby, které se používají k. Během upgradu se aktualizuje každý uzel nezávisle na sobě. To se podobá jak malý byly sady počítačů upgradovány ručně v minulosti.
 
 Matice FD/ud stejný, kde tabulku tvoří doménami selhání a aktualizačními doménami a uzly jsou umístěny spuštění po diagonální je nejběžnější model. Jedná se o model používá ve výchozím nastavení na clusterech Service Fabric v Azure. U clusterů s mnoha uzly všechno, co končí vypadá jako výše hustému matice modelu.
 
+> [!NOTE]
+> Clustery Service Fabric hostované v Azure nepodporují mění výchozí strategie. Pouze samostatné clustery nabízí tohoto vlastního nastavení.
+>
+
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Omezení chyb a doména upgradu a výsledné chování
 ### <a name="default-approach"></a>*Výchozí přístup*
-Ve výchozím nastavení Cluster Resource Manageru udržuje služby vyvažují mezi selhání a upgradu domény. To je modelovaná jako [omezení](service-fabric-cluster-resource-manager-management-integration.md). Stavy omezení chyb a doména upgradu: "Pro oddíl dané služby by nikdy existovat rozdíl větší než jedna v počet objektů služeb (Bezstavová služba instancí nebo replik pro stavové služby) mezi dvěma doménami na stejné úrovni hierarchie". Řekněme, že toto omezení poskytuje záruku "maximální rozdíl". Omezení chyb a upgradu domény brání určitých operací přesunutí nebo ujednání, které porušují pravidlo bylo uvedeno výše. 
+Ve výchozím nastavení Cluster Resource Manageru udržuje služby vyvažují mezi selhání a upgradu domény. To je modelovaná jako [omezení](service-fabric-cluster-resource-manager-management-integration.md). Stavy omezení chyb a doména upgradu: "Pro oddíl dané služby by nikdy existovat rozdíl větší než jedna v počet objektů služeb (Bezstavová služba instancí nebo replik pro stavové služby) mezi dvěma doménami na stejné úrovni hierarchie". Řekněme, že toto omezení poskytuje záruku "maximální rozdíl". Omezení chyb a upgradu domény brání určitých operací přesunutí nebo ujednání, které porušují pravidlo bylo uvedeno výše.
 
 Podívejme se na příklad. Řekněme, že máme cluster s uzly šesti, nakonfigurovaný s pěti doménami selhání a pěti doménami upgradovat.
 

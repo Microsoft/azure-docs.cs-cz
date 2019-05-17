@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 05/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: ea3ee00e60ae5eaff5c7220e9502da11358c8793
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1d45e1a5e4053ead4330967c5e250c0797c19fe7
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786728"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827458"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Přechod na certifikát veřejné brány CA pro P2S
 
@@ -29,19 +29,7 @@ Certifikát podepsaný svým držitelem pro bránu (vydané na pozadí Azure) d�
 Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát brány převedou, zobrazí se komunikace nebo informační zprávy na webu Azure Portal. Můžete zkontrolovat, pokud vaše brána je ovlivněno pomocí kroků v tomto článku.
 
 > [!IMPORTANT]
-> **Tento převod se dokončila na 12. května 2019.**
->
-> Tento přechod je naplánováno 12 března. května 2019 od 18:00 UTC. Pokud dáváte přednost jiný časový interval, můžete vytvořit lístek podpory. Ujistěte se a dokončit váš požadavek předem nejméně 24 hodin.  Požádat o jednu z následujících oken:
->
-> * 06:00 UTC na 25. února
-> * 18:00 UTC na 25. února
-> * 06:00 UTC 1. března
-> * 18:00 UTC 1. března
->
-> Všechny zbývající brány přejde na 12 března. května 2019 od 18:00 UTC.
->
-> Zákazníci obdrží e-mailu při jejich brány dokončí proces přechodu.
-> 
+> Přechod na veřejné certifikáty certifikační Autority se dokončila na 12. května 2019. **Tento dokument se odeberou 31. května 2019.**
 
 ## <a name="1-verify-your-certificate"></a>1. Ověřte váš certifikát
 

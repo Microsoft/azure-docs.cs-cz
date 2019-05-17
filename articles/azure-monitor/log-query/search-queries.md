@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 2df4cf994e118fef9048504daf40fabc1625c375
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425907"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560830"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Vyhledávací dotazy protokolů Azure Monitor
 
@@ -64,7 +64,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Pokud používáte `==` místo `:`, výsledky bude zahrnovat záznamy, ve kterém *zdroj* sloupec má přesná hodnota "Chyba" a v tomto případě přesné. Pomocí ":" nebude obsahovat záznamy kde *zdroj* obsahuje hodnoty, jako je například "kód chyby 404" nebo "Chyba".
+> Pokud používáte `==` místo `:`, výsledky bude zahrnovat záznamy, ve kterém *zdroj* sloupec má přesná hodnota "Chyba" a v tomto případě přesné. Pomocí ":" bude obsahovat záznamy kde *zdroj* obsahuje hodnoty, jako je například "kód chyby 404" nebo "Chyba".
 
 ## <a name="case-sensitivity"></a>Rozlišování
 Ve výchozím nastavení je velká a malá písmena, termín vyhledávání, takže vyhledávání dns."může vést k výsledkům, například"DNS","dns"nebo"Dns". Chcete-li do hledání velká a malá písmena, použijte `kind` možnost:

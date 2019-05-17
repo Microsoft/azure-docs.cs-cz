@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 961ce4427c509142077c95a6569ad2c444ec0a52
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205947"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603237"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
 
@@ -27,7 +27,7 @@ ms.locfileid: "65205947"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Příklad problému
-Pro zbývající část tohoto článku prozkoumáme data o zobrazeních stránek ve službě Application Insights. V tomto scénáři hypotetické chceme korelovat zeměpisné údaje shromážděné ve výchozím nastavení Application Insights SDK na vlastní data obsahují počet obyvatel každé zemi na světě, s cílem identifikovat, kde jsme by měl být útraty na maximum marketingové dolarech. 
+Pro zbývající část tohoto článku prozkoumáme data o zobrazeních stránek ve službě Application Insights. V tomto scénáři hypotetické chceme korelovat zeměpisné údaje shromážděné ve výchozím nastavení Application Insights SDK na vlastní data obsahují počet obyvatel každé země/oblasti na světě, s cílem identifikovat, kde jsme měli útraty Většina marketingové dolarech. 
 
 Použijeme veřejný zdroj dat, jako [zrušení World naplnění potenciální zákazníky](https://esa.un.org/unpd/wpp/) pro tento účel. Data budou mít tyto jednoduché schéma:
 

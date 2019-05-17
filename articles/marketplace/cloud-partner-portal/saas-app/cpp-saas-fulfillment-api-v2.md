@@ -1,23 +1,22 @@
 ---
 title: SaaS splnění rozhraní API V2 | Azure Marketplace
-description: Vysvětluje, jak vytvořit nabídky SaaS na Azure Marketplace pomocí plnění přidružené rozhraní API V2.
+description: Vysvětluje, jak vytvořit nabídky SaaS na AppSource a webu Azure Marketplace pomocí plnění přidružené rozhraní API V2.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 551f3be2ca23bc18224d28faeea6a6df80eba1db
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762266"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823534"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS splnění rozhraní API verze 2 
 
-Tento článek podrobně popisuje rozhraní API, která umožňuje nezávislí výrobci softwaru (ISV) můžete integrovat své aplikace SaaS pomocí Azure Marketplace. Toto rozhraní API umožňuje aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Toto rozhraní API je požadavek na výpis transactable SaaS nabídky na webu Azure Marketplace.
-
+Tento článek podrobně popisuje rozhraní API, která umožňuje nezávislí výrobci softwaru (ISV), pokud chcete prodávat své aplikace SaaS v Azure Marketplace a AppSource. Toto rozhraní API je požadavek na výpis SaaS nabídky na webu Azure Marketplace a AppSource.
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Správa životního cyklu předplatného SaaS
 

@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924748"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827772"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -110,10 +110,11 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 10. Pokud chcete přizpůsobit auditované události, můžete udělat prostřednictvím [rutin prostředí PowerShell](#subheading-7) nebo [rozhraní REST API](#subheading-9).
 11. Po dokončení konfigurace nastavení auditu, můžete zapnout nové funkce detekce hrozeb a konfigurovat také e-maily přijímat výstrahy zabezpečení. Při použití detekce hrozeb dostávat proaktivní výstrahy na neobvyklé databázové aktivity, které můžete značí potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](sql-database-threat-detection-get-started.md).
 
-
 > [!IMPORTANT]
->Povolení auditování služby Azure SQL Data Warehouse, nebo na serveru, který má službu Azure SQL Data Warehouse, **povede k datovému skladu obnovuje**, i v případě, kde bylo dříve pozastaveno. **Zkontrolujte prosím, že se pozastavit datový sklad znovu po povolení auditování**. "
+> Povolení auditování pro pozastavené Azure SQL Data Warehouse není možné. Ho Pokud chcete povolit, zrušení pozastavení datového skladu.
 
+> [!WARNING]
+> Povolení auditování pro server, který má službu Azure SQL Data Warehouse na něm **způsobí datového skladu se obnovil a znovu pozastaví znovu** které případně utrpíte v účtování poplatků.
 
 ## <a id="subheading-3"></a>Analýza protokolů auditu a sestavy
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: banders
-ms.openlocfilehash: 8dc5918ac539abde2586e29a1608e9dc496a5e37
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7caa7df3817c51d63dfa2838e4223d3fba88e529
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794794"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827370"
 ---
 # <a name="pay-azure-subscription-by-invoice"></a>Platbu předplatného Azure na základě faktury
 
@@ -65,14 +65,14 @@ Pokud přejdete na platbu na fakturu, znamená to, že platíte vyúčtování d
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-- **Název společnosti** a **společnosti adresu** by měl odpovídat s informacemi, které jste zadali pro účet Azure.  Pokud chcete zobrazit nebo aktualizovat informace o, naleznete v tématu [změnit informace z vašeho profilu účtu Azure](billing-how-to-change-azure-account-profile.md).
-- Předtím, než může být schválena kreditního limitu, je nutné přidat váš fakturační kontakt na webu Azure portal. Kontaktní údaje by měl mít relace k závazky nebo finanční oddělení vaší společnosti. Chcete-li aktualizovat fakturační kontaktu, přejděte na [centra účtů Azure](https://account.azure.com/Profile).
+    - **Název společnosti** a **společnosti adresu** by měl odpovídat s informacemi, které jste zadali pro účet Azure.  Pokud chcete zobrazit nebo aktualizovat informace o, naleznete v tématu [změnit informace z vašeho profilu účtu Azure](billing-how-to-change-azure-account-profile.md).
+    - Předtím, než může být schválena kreditního limitu, je nutné přidat váš fakturační kontakt na webu Azure portal. Kontaktní údaje by měl mít relace k závazky nebo finanční oddělení vaší společnosti. Chcete-li aktualizovat fakturační kontaktu, přejděte na [centra účtů Azure](https://account.azure.com/Profile).
 
 5. Zkontrolujte své kontaktní informace a upřednostňovaný způsob kontaktování a pak klikněte na **Vytvořit**.
 
 Pokud bychom někdy potřebovali provést ověřování kredibility kvůli množství kreditu, který potřebujete, pošleme vám kredit ověření.
 
-## <a name="switch-your-azure-subscription-to-invoice-payment"></a>Přepnutí předplatného Azure k faktuře platby
+## <a name="switch-to-invoice-pay"></a>Přepnout na faktuře platby
 
 Po schválení o platby fakturami vašeho předplatného Azure můžete přepnout na platbu pomocí faktur v [webu Azure portal](https://portal.azure.com).
 

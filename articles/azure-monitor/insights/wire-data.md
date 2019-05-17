@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61387347"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601569"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) ve službě Azure Monitor
 
@@ -400,7 +400,7 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 | Direction | Příchozí nebo odchozí |
 | MaliciousIP | IP adresa známého škodlivého zdroje |
 | Severity | Závažnost podezřelého malwaru |
-| RemoteIPCountry | Země vzdálené IP adresy |
+| RemoteIPCountry | Země nebo oblast, Vzdálená IP adresa |
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager |
 | SourceSystem | Zdroj, kde byla data shromážděna |
 | SessionStartTime | Čas zahájení relace |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413912"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603110"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
@@ -74,9 +74,9 @@ Služba Import/Export Azure umožňuje přenos dat do objektů BLOB Azure a slu�
 8. Jednotky se dodávají pomocí svého účtu dopravce na návratovou adresu součástí úlohy importu.
 
 > [!NOTE]
-> Pro místní (v rámci datového centra země) dodávky Podělte se prosím účet přepravce domácí 
+> Pro místní (v rámci země/oblast) dodávky Podělte se prosím účet přepravce domácí 
 >
-> Pro (mimo zemi data center) v zahraničí dodávky sdělte nám prosím účet mezinárodní poskytovatel služeb
+> Pro (mimo zemi/oblast) v zahraničí dodávky sdělte nám prosím účet mezinárodní poskytovatel služeb
 
  ![Obrázek toku 1:Import úlohy](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Na vysoké úrovni úlohy exportu zahrnuje následující kroky:
 10. Jednotky se dodávají pomocí svého účtu dopravce na návratovou adresu součástí úlohy importu.
 
 > [!NOTE]
-> Pro místní (v rámci datového centra země) dodávky Podělte se prosím účet přepravce domácí 
+> Pro místní (v rámci země/oblast) dodávky Podělte se prosím účet přepravce domácí 
 >
-> Pro (mimo zemi data center) v zahraničí dodávky sdělte nám prosím účet mezinárodní poskytovatel služeb
+> Pro (mimo zemi/oblast) v zahraničí dodávky sdělte nám prosím účet mezinárodní poskytovatel služeb
   
  ![Obrázek toku 2:Export úlohy](./media/storage-import-export-service/exportjob.png)
 
@@ -119,7 +119,7 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 ### <a name="supported-shipping-locations"></a>Nepodporuje přesouvání umístění
 
 
-|Země  |Země  |Země  |Země  |
+|Země nebo oblast  |Země nebo oblast  |Země nebo oblast  |Země nebo oblast  |
 |---------|---------|---------|---------|
 |USA – východ    | Severní Evropa        | Střed Indie        |US Gov – Iowa         |
 |Západní USA     |Západní Evropa         | Indie – jih        | US DoD – východ        |

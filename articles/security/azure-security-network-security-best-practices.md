@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 78402d3e388f08eae6652859a71c93ff408a5b0d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f36658d57fb514ff279c39e9cb1644cf56341ec4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152980"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761829"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy pro zabezpečení sítě Azure
 Tento článek popisuje kolekci osvědčené postupy Azure pro zvýšení zabezpečení sítě. Tyto osvědčené postupy, které jsou odvozeny z našich zkušenostech s Azure networking a prostředí zákazníků, jako je sami.
@@ -129,7 +129,7 @@ Mnoho organizací zvolili hybridní IT trasy. S hybridní IT některé informace
 
 V hybridním scénáři IT je obvykle nějaký typ připojení mezi místními sítěmi. Připojení mezi místními sítěmi umožňuje společnosti připojení svých místních sítí k virtuálním sítím Azure. K dispozici jsou dvě řešení pro připojení mezi různými místy:
 
-* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Je důvěryhodné, spolehlivé a navážete technologie, ale připojení probíhá přes internet. Šířka pásma je omezen na maximálně o 200 MB/s. Site-to-site VPN je žádoucí možností v některých scénářích.
+* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Je důvěryhodné, spolehlivé a navážete technologie, ale připojení probíhá přes internet. Šířka pásma je omezen na maximálně o 1,25 GB/s. Site-to-site VPN je žádoucí možností v některých scénářích.
 * **Azure ExpressRoute**. Doporučujeme, abyste použili [ExpressRoute](../expressroute/expressroute-introduction.md) pro vaše připojení mezi místními sítěmi. ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je Azure, Office 365 a Dynamics 365. ExpressRoute je vyhrazené sítě WAN propojení mezi místním umístěním nebo poskytovatele hostitelských služeb Microsoft Exchange. Vzhledem k tomu, že telco připojení vašich dat nebude přenosu přes internet, tak se nevystaví na potenciální rizika internetové komunikace.
 
 Umístění připojení ExpressRoute může ovlivnit kapacitu brány firewall, škálovatelnost, spolehlivost a přehled o provozu sítě. Budete muset určit, kam chcete ukončit ExpressRoute v existující sítě (v místním prostředí). Můžete:

@@ -3,8 +3,8 @@ title: Ověřování v Microsoft identity platform | Azure
 description: Další informace o ověřování v Microsoft identity platform aplikace modelu rozhraní API, zřizování, a nejběžnější scénáře ověřování tohoto platforma identit Microsoft podporuje.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299865"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540163"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -109,23 +109,23 @@ Deklarace identity přítomné v jakémkoli tokenu zabezpečení jsou závislé 
 
 Stručný popis každého typu deklarace identity, protože ho vygeneroval platforma identit Microsoft najdete v následující tabulce. Podrobnější informace najdete v článku [přístupové tokeny](access-tokens.md) a [tokeny typu ID](id-tokens.md) vydané platforma identit Microsoft.
 
-| Deklarovat | Popis |
+| Deklarace identity | Popis |
 | --- | --- |
 | ID aplikace | Identifikuje aplikaci, která token používá. |
 | Cílová skupina | Identifikuje přijímající prostředek, pro který je token určený. |
 | Reference třídy kontextu ověřování aplikace | Určuje, jak byl klient ověřen (veřejný klient nebo důvěrný klient). |
 | Okamžik ověření | Zaznamenává datum a čas, kdy k ověření došlo. |
-| Metoda ověřování | Určuje, jak byl subjekt tokenu ověřen (heslo, certifikát atd.). |
+| Metoda ověření | Určuje, jak byl subjekt tokenu ověřen (heslo, certifikát atd.). |
 | Jméno | Poskytuje křestní jméno uživatele, jak je nastavené v Azure AD. |
 | Skupiny | Obsahuje ID objektů skupin Azure AD, kterých je uživatel členem. |
 | Zprostředkovatel identity | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. |
 | Vystaveno | Zaznamená čas, kdy byl token vystaven, což se často používá pro aktuálnost tokenu. |
 | Vystavitel | Identifikuje službu tokenů zabezpečení, která token vygenerovala, a také tenanta Azure AD. |
 | Příjmení | Poskytuje příjmení uživatele, jak je nastavené v Azure AD. |
-| Name | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. |
+| Název | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. |
 | ID objektu | Obsahuje neměnný a jedinečný identifikátor subjektu v Azure AD. |
 | Role | Obsahuje popisné názvy aplikačních rolí Azure AD, které byly uživateli uděleny. |
-| Rozsah | Určuje oprávnění udělená klientské aplikaci. |
+| Scope | Určuje oprávnění udělená klientské aplikaci. |
 | Subjekt | Určuje objekt zabezpečení, o kterém token prosazuje informace. |
 | ID tenanta | Obsahuje neměnný a jedinečný identifikátor tenanta adresáře, který token vydal. |
 | Živostnost tokenu | Definuje časový interval, ve kterém je token platný. |

@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8af34207eddb613f7a59bd3e3d300555e10f985
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60547529"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560733"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s Azure Data Factory
 
 Azure Data Lake Storage Gen2 je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, integrované do [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md). Umožňuje uživateli rozhraní s vašimi daty použitím obou paradigmat souboru systému a objektu úložiště.
 
-Azure Data Factory je služba pro integraci plně spravovaný cloudový datový. Služby můžete použít k naplnění lake s daty z široké místních a cloudových dat ukládá a ušetřit čas při vytváření vlastních analytických řešení. Podrobný seznam podporovaných konektorů, najdete v tabulce [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Data Factory (ADF) je plně spravovaný cloudový datový služba pro integraci. Služby můžete použít k naplnění lake s daty z široké místních a cloudových dat ukládá a ušetřit čas při vytváření vlastních analytických řešení. Podrobný seznam podporovaných konektorů, najdete v tabulce [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Azure Data Factory nabízí řešení pro přesun dat horizontální navýšení kapacity, kterou spravuje. Vzhledem k architektuře horizontální navýšení kapacity služby ADF se schopností ingestovat data při vysoké propustnosti. Podrobnosti najdete v tématu [výkonu aktivity kopírování](copy-activity-performance.md).
 
@@ -130,13 +130,6 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
     ![Podrobnosti o spuštění aktivit monitorování](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
 
 16. Ověřte, že se data kopírují do svého účtu Data Lake Storage Gen2.
-
-## <a name="best-practices"></a>Osvědčené postupy
-
-Při kopírování velké objemy dat z úložiště dat založeného na souboru, jsou navrženy pro:
-
-- Rozdělení souborů do 10TB na 30TB použití.
-- Nespouštějí příliš mnoho souběžných kopírování používá pro vyhnout omezení šířky pásma z úložišť dat zdrojem nebo jímkou. Můžete začít s jedné kopie spuštění a monitorování propustnost a pak postupně přidat další podle potřeby.
 
 ## <a name="next-steps"></a>Další postup
 

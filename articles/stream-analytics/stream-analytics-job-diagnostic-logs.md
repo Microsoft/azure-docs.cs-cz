@@ -7,18 +7,17 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480154"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826576"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 
-V některých případech úlohy Azure Stream Analytics neočekávaně zastaví zpracování. Je důležité mít možnost tento druh události vyřešit. Selhání můžou být způsobená neočekávaným výsledkem dotazu, připojením k zařízením nebo neočekávaným výpadkem služby. Protokoly diagnostiky ve službě Stream Analytics může pomoct identifikovat příčiny problémů, pokud dojde k a zkrácení času obnovení.
+V některých případech úlohy Azure Stream Analytics neočekávaně zastaví zpracování. Je důležité mít možnost vyřešit tento typ události. Selhání můžou být způsobená neočekávaným výsledkem dotazu, připojením k zařízením nebo neočekávaným výpadkem služby. Protokoly diagnostiky ve službě Stream Analytics může pomoct identifikovat příčiny problémů, pokud dojde k a zkrácení času obnovení.
 
 ## <a name="log-types"></a>Typy protokolů
 
@@ -83,7 +82,7 @@ Důrazně doporučujeme zapnout diagnostické protokoly a jejich odesílání do
 
 ## <a name="diagnostics-log-categories"></a>Kategorie protokolu diagnostiky
 
-V současné době zachycení jsme dvě kategorie protokoly diagnostiky:
+Azure Stream Analytics zaznamená dvě kategorie protokoly diagnostiky:
 
 * **Vytváření**: Shromažďuje události protokolu, které se vztahují k úloze vytváření operace, jako je vytvoření úlohy, přidávání a odstraňování vstupy a výstupy, přidávání a aktualizaci dotazu a spouštění nebo zastavování úlohy.
 
@@ -104,13 +103,13 @@ time | Časové razítko (ve standardu UTC) v protokolu.
 resourceId | ID prostředku, že operace konal úplně, velkými písmeny. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategorie, buď protokolu **provádění** nebo **Authoring**.
 operationName | Název operace, která je zaznamenána. Například **odesílat události: Chyba zápisu výstupu SQL do mysqloutput**.
-status | Stav operace. Například **neúspěšné** nebo **Succeeded**.
+stav | Stav operace. Například **neúspěšné** nebo **Succeeded**.
 úroveň | Úroveň protokolu. Například **chyba**, **upozornění**, nebo **informativní**.
 properties | Podrobnosti konkrétní položky protokolu serializován jako řetězec formátu JSON. Další informace najdete v následující části v tomto článku.
 
 ### <a name="execution-log-properties-schema"></a>Schéma vlastnosti protokolu spuštění
 
-Protokoly spuštění obsahují informace o události, ke kterým došlo během provádění úlohy Stream Analytics. Schéma vlastnosti se liší v závislosti na typu události. V současné době máme následující typy protokoly spuštění:
+Protokoly spuštění obsahují informace o události, ke kterým došlo během provádění úlohy Stream Analytics. Schéma vlastnosti se liší v závislosti na tom, zda je událost chybě dat nebo Obecná událost.
 
 ### <a name="data-errors"></a>Chyby dat
 
@@ -124,10 +123,14 @@ Typ | Typ chyby. Například **DataConversionError**, **CsvParserError**, nebo *
 Data | Obsahuje data, která slouží k vytvoření přesně najít zdroje chyby. Pro zkrácení, v závislosti na velikosti na základě práv subjektů.
 
 V závislosti na tom **operationName** hodnota, data chyby mají následující schéma:
-* **Serializace událostí**. Serializace událostí, ke kterým došlo během operace čtení událostí. K nim dojde, když data na vstupu nevyhovuje schématu dotaz pro některého z těchto důvodů:
-    * *Neshoda typů při události (de) serializovat*: Určuje pole, která je příčinou chyby.
-    * *Nelze přečíst událost, neplatná Serializační*: Obsahuje informace o umístění vstupních dat, kde došlo k chybě. Obsahuje název objektu blob pro vstupní objekt blob, posun a ukázková data.
-* **Odesílání událostí**. Odesílání událostí, ke kterým došlo během operace zápisu. Identifikují streamování událostí, která způsobila chybu.
+
+* **Serializace událostí** dojít během události při operacích čtení. K nim dojde, když data na vstupu nevyhovuje schématu dotaz pro některého z těchto důvodů:
+
+   * *Neshoda typů při události (de) serializovat*: Určuje pole, která je příčinou chyby.
+
+   * *Nelze přečíst událost, neplatná Serializační*: Obsahuje informace o umístění vstupních dat, kde došlo k chybě. Obsahuje název objektu blob pro vstupní objekt blob, posun a ukázková data.
+
+* **Odesílání událostí** dojít během operace zápisu. Identifikují streamování událostí, která způsobila chybu.
 
 ### <a name="generic-events"></a>Obecné události
 
@@ -136,7 +139,7 @@ Obecné události pokrývají všechno ostatní.
 Název | Popis
 -------- | --------
 Chyba | (volitelné) Informace o chybě. Obvykle to je informace o výjimce, pokud je k dispozici.
-Zpráva| Zpráva protokolu.
+Message| Zpráva protokolu.
 Typ | Typ zprávy. Mapuje na interní kategorizace chyb. Například **JobValidationError** nebo **BlobOutputAdapterInitializationFailure**.
 ID korelace | [Identifikátor GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , který jednoznačně identifikuje provádění úlohy. Zahájení úlohy všechny položky protokolu spuštění od okamžiku, dokud je úloha pozastavena mají stejné **ID korelace** hodnotu.
 

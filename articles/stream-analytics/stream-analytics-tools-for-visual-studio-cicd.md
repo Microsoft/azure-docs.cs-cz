@@ -1,26 +1,26 @@
 ---
-title: Průběžnou integraci a vývoj s použitím Stream Analytics tools
-description: Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení pomocí Visual Studio tools pro Azure Stream Analytics.
+title: Průběžnou integraci a vývoj s použitím balíčku NuGet CI/CD pro Azure Stream Analytics
+description: Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení pomocí balíčku NuGet CI/CD pro Azure Stream Analytics.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761501"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827312"
 ---
-# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Průběžnou integraci a vývoj s použitím Stream Analytics tools
-Tento článek popisuje, jak můžete nastavit průběžnou integraci a nasazování procesu pomocí nástroje Azure Stream Analytics pro Visual Studio.
+# <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>Průběžnou integraci a vývoj s použitím balíčku NuGet CI/CD pro Azure Stream Analytics
+Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení pomocí balíčku NuGet CI/CD pro Azure Stream Analytics.
 
 Použijte verzi 2.3.0000.0 nebo novější z [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) jak získat podporu pro MSBuild.
 
-Balíček NuGet je k dispozici: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Poskytuje nástroj MSBuild, místní spuštění a nástroje pro nasazení, které podporují kontinuální integraci a proces nasazení projektů Stream Analytics v sadě Visual Studio. 
+Balíček NuGet je k dispozici: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Poskytuje nástroj MSBuild, místní spuštění a nástroje pro nasazení, které podporují průběžnou integraci a nasazování proces [projektů sady Visual Studio pro Stream Analytics](stream-analytics-vs-tools.md). 
 > [!NOTE]
 > Balíček NuGet lze použít pouze 2.3.0000.0 nebo vyšší než verze nástrojů pro Stream Analytics pro Visual Studio. Pokud máte projekty vytvořené v předchozích verzích sady Visual Studio tools, stačí je otevřít 2.3.0000.0 nebo vyšší než verze a uložit. Nové funkce jsou povoleny. 
 
@@ -46,7 +46,7 @@ Když projekt sady Visual Studio pro Stream Analytics sestavena úspěšně, gen
 Výchozí parametry v souboru parameters.JSON tímto se z nastavení projektu sady Visual Studio. Pokud chcete nasadit do jiného prostředí, nahraďte parametry odpovídajícím způsobem.
 
 > [!NOTE]
-> Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu null. Jste *požadované* nastavit hodnoty před nasazením do cloudu.
+> Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu null. Jste **požadované** nastavit hodnoty před nasazením do cloudu.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -90,3 +90,9 @@ Příklad:
 ```
 
 
+
+## <a name="next-steps"></a>Další postup
+
+* [Rychlé zprovoznění: Vytvořit úlohu Azure Stream Analytics cloudu v sadě Visual Studio](stream-analytics-quick-create-vs.md)
+* [Testování dotazů Stream Analytics místně pomocí sady Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Prozkoumejte úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)

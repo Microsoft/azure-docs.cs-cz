@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/11/2019
-ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620151"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823321"
 ---
 # <a name="sql-database-serverless-preview"></a>Bez serveru SQL Database (preview)
 
@@ -277,19 +277,21 @@ Objem výpočtů účtuje je zveřejněný prostřednictvím následující metr
 
 Toto množství se počítá každou sekundu a agregovat více než 1 minuta.
 
-**Příklad**: Vezměte v úvahu databázi GP_S_Gen5_4 pomocí následujícího využití po dobu jedné hodiny:
+Vezměte v úvahu bez serveru databáze nakonfigurované s 1 min vcore a 4 maximální počet virtuálních jader.  To odpovídá přibližně 3 GB paměti min a max 12 GB paměti.  Předpokládejme, že automatického pozastavení zpoždění je nastavená na 6 hodin a databázové úlohy je aktivní během prvních 2 hodin období 24 hodin a jinak neaktivní.    
 
-|Čas (hodiny: minuty)|app_cpu_billed (vCore v sekundách)|
-|---|---|
-|0:01|63|
-|0:02|123|
-|0:03|95|
-|0:04|54|
-|0:05|41|
-|0:06 - 1:00|1255|
-||Celkem: 1631|
+V takovém případě databáze se účtuje za výpočetní prostředky a úložiště během prvních 8 hodin.  I když je databáze od neaktivní po 2 hodiny, se pořád účtuje za výpočetní výkon v dalších 6 hodin, které jsou založené na minimální výpočetní prostředky, které jsou zřízené databáze je online.  Pouze úložiště se účtuje zbytek období 24 hodin, zatímco databáze je pozastavená.
 
-Předpokládejme, že je cena ze jednotku výpočetních je $0.000073/vCore/second. Pak výpočetní účtuje za toto období hodinu se určuje pomocí následujícího vzorce: **$0.000073/vCore/second * $0.1191 = 1631 vCore sekund**
+Přesněji řečeno výpočetní faktury v tomto příkladu se vypočítává takto:
+
+|Časový interval|použít každou sekundu virtuálních jader|Každou sekundu využité GB|Dimenze účtuje COMPUTE|vCore sekund účtuje za časový interval|
+|---|---|---|---|---|
+|0:00-1:00|4|9|použít virtuální jádra|4 virtuální jádra * 3600 sekund = 14400 vCore sekund|
+|1:00-2:00|1|12|Využité paměti|12 Gb * 1/3 * 3 600 sekund = 14400 vCore sekund|
+|2:00-8:00|0|0|Paměť min, zřízené|3 Gb * 1/3 * 21600 sekundy = 21600 vCore sekund|
+|8:00-24:00|0|0|Žádné výpočty účtují pozastaveno|0 vCore sekund|
+|VCore celkový počet sekund účtovat po dobu 24 hodin||||50400 vCore sekund|
+
+Předpokládejme, že je cena ze jednotku výpočetních je $0.000073/vCore/second.  Výpočetní účtuje za toto období 24 hodin se produkt výpočetní jednotky ceny a vcore sekundy účtuje: $0.000073/vCore/second * $3.68 = 50400 vCore sekund
 
 ## <a name="available-regions"></a>Dostupné oblasti
 

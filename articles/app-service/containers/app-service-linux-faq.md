@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919977"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594277"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -39,15 +39,17 @@ Všechny soubory Docker můžete najít na [Githubu](https://github.com/azure-ap
 
 **Jaké jsou očekávané hodnoty pro oddíl spouštěcí soubor, pro které nakonfiguruji zásobník modulu runtime?**
 
-| Zásobník     | Očekávaná hodnota                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | příkaz ke spuštění vaší `.jar` aplikace                                    |
-| Tomcat    | umístění skriptu, který spustí všechny konfigurace pro vaši aplikaci          |
-| Node.js   | konfiguračního souboru PM2 nebo souboru skriptu                                |
-| .Net Core | Název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
-| Ruby      | skript Ruby, který chcete inicializovat aplikace s využitím                     |
+| Zásobník           | Očekávaná hodnota                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | příkaz pro spuštění vaší aplikace JAR (například `java -jar my-app.jar --server.port=80`) |
+| Tomcat, Wildfly | umístění skriptu provádět žádné nezbytné konfigurace (například `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | konfiguračního souboru PM2 nebo souboru skriptu                                |
+| .Net Core       | Název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
+| Ruby            | skript Ruby, který chcete inicializovat aplikace s využitím                     |
 
-## <a name="management"></a>Správa
+Po spuštění integrované kontejneru Dockeru, ale ještě před aplikací je kód spuštěn, jsou spuštěny tyto příkazy nebo skripty.
+
+## <a name="management"></a>Vedení
 
 **Co se stane při stisknutí tlačítka restartování na webu Azure Portal?**
 
@@ -65,7 +67,7 @@ Ano, můžete to udělat prostřednictvím management (SCM) ovládací prvek zdr
 
 Byste měli nastavit **vyhrazené** pole app service a *true*.
 
-## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
+## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
 
 **Moje webová aplikace stále používá starý image kontejneru Dockeru po aktualizovali jsme image v Docker Hubu. Podporujete průběžnou integraci a nasazování vlastních kontejnerů?**
 

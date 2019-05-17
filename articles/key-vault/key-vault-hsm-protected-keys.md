@@ -9,18 +9,18 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: a013e0091e1a955672c1f16a4ac6300281d277b3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573006"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556206"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pro jistotu při použití Azure Key Vault, můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice modulu hardwarového zabezpečení. Tento scénář se často označuje jako *přineste si vlastní klíč*, nebo BYOK. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Služba Azure Key Vault využívá moduly hardwarového zabezpečení Thales nShield řady chrání vaše klíče.
+Pro jistotu při použití Azure Key Vault, můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice modulu hardwarového zabezpečení. Tento scénář se často označuje jako *přineste si vlastní klíč*, nebo BYOK. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Azure Key Vault chrání vaše klíče pomocí nCipher nShield řadu modulů hardwarového zabezpečení.
 
 Pomocí informací v tomto tématu vám pomohou plánovat, generovat a potom přeneste svůj vlastní klíče chráněné HSM pro použití s Azure Key Vault.
 
@@ -34,16 +34,16 @@ Další informace o generování a přenos klíče chráněného HSM přes Inter
 
 * Vygenerování klíče z offline pracovní stanice, což snižuje možný útok.
 * Že je klíč zašifrovaný pomocí na klíč výměny klíčů (KEK), který zůstává zašifrovaný, dokud se přenese do modulů HSM služby Azure Key Vault. Opustí jenom zašifrovaná verze vašeho klíče původní pracovní stanici.
-* Sada nástrojů nastaví vlastnosti pro váš klíč tenanta, který váže svůj klíč do architektury security world služby Azure Key Vault. Proto po modulů HSM služby Azure Key Vault přijmou a dešifrují váš klíč, pouze tyto moduly hardwarového zabezpečení můžete použít. Váš klíč nedá exportovat. Tuto vazbu vynucují moduly HSM společnosti Thales.
-* Klíč výměny klíčů (KEK), který slouží k šifrování tohoto klíče se generuje uvnitř modulů HSM služby Azure Key Vault a není exportovatelné. Moduly hardwarového zabezpečení vynutit, aby může existovat žádná čitelná verze klíče kek mimo tyto moduly Hsm. Kromě toho sada nástrojů obsahuje záruku od společnosti Thales, že se klíč KEK nedá exportovat a byl vygenerovaný v originálním modulu HSM vyrobeným společností Thales.
-* Sada nástrojů obsahuje záruku od společnosti Thales, že architektury security world služby Azure Key Vault byla vygenerovaná na originálním modulu HSM vyrobeném společností Thales. Toto potvrzení vám poskytuje důkaz, že Microsoft používá originální hardware.
+* Sada nástrojů nastaví vlastnosti pro váš klíč tenanta, který váže svůj klíč do architektury security world služby Azure Key Vault. Proto po modulů HSM služby Azure Key Vault přijmou a dešifrují váš klíč, pouze tyto moduly hardwarového zabezpečení můžete použít. Váš klíč nedá exportovat. Tuto vazbu vynucují moduly nCipher moduly hardwarového zabezpečení.
+* Klíč výměny klíčů (KEK), který slouží k šifrování tohoto klíče se generuje uvnitř modulů HSM služby Azure Key Vault a není exportovatelné. Moduly hardwarového zabezpečení vynutit, aby může existovat žádná čitelná verze klíče kek mimo tyto moduly Hsm. Kromě toho sada nástrojů obsahuje záruku od nCipher, že se klíč KEK nedá exportovat a byl vygenerovaný v originálním modulu HSM vyrobeným společností nCipher.
+* Sada nástrojů obsahuje záruku od nCipher, architektury security world služby Azure Key Vault byla vygenerovaná na originálním modulu HSM vyrobeném společností nCipher. Toto potvrzení vám poskytuje důkaz, že Microsoft používá originální hardware.
 * Společnost Microsoft používá Kek a samostatné sféry zabezpečení v každé geografické oblasti. Toto oddělení zajišťuje, že klíč je možné jen v datových centrech v oblasti, ve kterém jste ho zašifrovali. Například klíč od Evropského zákazníka nelze použít v datových centrech v Severní Americe nebo Asii.
 
-## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Další informace o modulech HSM Thales a služeb Microsoftu
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Další informace o nCipher moduly hardwarového zabezpečení a služby společnosti Microsoft
 
-Thales e-Security je přední globální poskytovatel šifrování dat a řešení kybernetického zabezpečení z oboru finančních služeb, špičkových technologií, výroby, government a dalších technologických oborech. S 40 let osvědčily chrání firemní i vládní informace řešení společnosti Thales používají čtyři z pěti největších společností energie a leteckém průmyslu. Jejich řešení jsou také používány 22 NATO země/oblasti a zabezpečit více než 80 procent po celém světě platebních transakcí.
+nCipher Security je přední globální poskytovatel šifrování dat a řešení kybernetického zabezpečení z oboru finančních služeb, špičkových technologií, výroby, government a dalších technologických oborech. S 40 let osvědčily chrání firemní i vládní informace nCipher zabezpečení kryptografických řešení používají čtyři z pěti největších společností energie a leteckém průmyslu. Jejich řešení jsou také používány 22 NATO země/oblasti a zabezpečit více než 80 procent po celém světě platebních transakcí.
 
-Microsoft spolupracoval se společností Thales HSM špičkovou. Těmto vylepšením získáte typické výhody hostovaných služeb, aniž byste se museli vzdát kontroly nad svými klíči. Konkrétně tato vylepšení umožňují Microsoftu spravovat moduly HSM, takže není nutné k. Jako cloudová služba Azure Key Vault škálování ve vaší organizaci nárazovým zvýšením požadavků. Ve stejnou dobu je uvnitř modulů HSM Microsoftu chráněný klíč: Je zachovat kontrolu nad životním cyklem klíče, protože generování klíče a přenést ho do modulů HSM Microsoftu.
+Microsoft spolupracoval se nCipher zabezpečení ke zvýšení špičkovou pro moduly hardwarového zabezpečení. Těmto vylepšením získáte typické výhody hostovaných služeb, aniž byste se museli vzdát kontroly nad svými klíči. Konkrétně tato vylepšení umožňují Microsoftu spravovat moduly HSM, takže není nutné k. Jako cloudová služba Azure Key Vault škálování ve vaší organizaci nárazovým zvýšením požadavků. Ve stejnou dobu je uvnitř modulů HSM Microsoftu chráněný klíč: Je zachovat kontrolu nad životním cyklem klíče, protože generování klíče a přenést ho do modulů HSM Microsoftu.
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementace funkce přineste si vlastní klíč (BYOK) pro Azure Key Vault
 
@@ -57,8 +57,8 @@ Najdete v následující tabulce najdete seznam požadavků pro funkce přineste
 | --- | --- |
 | Předplatné Azure |K vytvoření služby Azure Key Vault, budete potřebovat předplatné Azure: [Zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) |
 | Úroveň služby Azure Key Vault Premium k podpoře klíčů chráněných pomocí HSM |Další informace o úrovních služeb a možnostech pro Azure Key Vault najdete v tématu [cenách služby Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) webu. |
-| Modulu HSM společnosti Thales, čipové karty a podpůrný software |Musíte mít přístup k modulu hardwarového zabezpečení Thales a základní provozní znalosti o modulech HSM Thales. Zobrazit [modulu hardwarového zabezpečení Thales](https://www.thales-esecurity.com/msrms/buy) seznam kompatibilních modelů nebo pokud chcete zakoupit modulu hardwarového zabezpečení, pokud nemáte jednu. |
-| Níže uvedený hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales nShield software, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je nutné [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimální verzi 1.1.0** nainstalované.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Nicméně toto doporučení nevynucujeme prostřednictvím kódu programu.<br/><br/>V následujících pokynech pracovní stanice označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici, která pokud chcete stáhnout sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít stejný pracovní stanice jako první z nich.<br/><br/>V následujících pokynech druhá pracovní stanice označuje jako pracovní stanici připojené k Internetu.</p></blockquote><br/> |
+| nCipher nShield moduly hardwarového zabezpečení, čipové karty a podpůrný software |Musíte mít přístup k nCipher modulu hardwarového zabezpečení a základní provozní znalosti o nCipher nShield moduly hardwarového zabezpečení. Zobrazit [nCipher nShield modulu hardwarového zabezpečení](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) seznam kompatibilních modelů nebo pokud chcete zakoupit modulu hardwarového zabezpečení, pokud nemáte jednu. |
+| Níže uvedený hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a nCipher software nShield, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je nutné [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimální verzi 1.1.0** nainstalované.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Nicméně toto doporučení nevynucujeme prostřednictvím kódu programu.<br/><br/>V následujících pokynech pracovní stanice označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici, která pokud chcete stáhnout sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít stejný pracovní stanice jako první z nich.<br/><br/>V následujících pokynech druhá pracovní stanice označuje jako pracovní stanici připojené k Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Vygenerování a přenos klíče do služby Azure Key Vault HSM
 
@@ -74,7 +74,7 @@ Následujících pět kroků budete používat pro vygenerování a přenos klí
 
 Pro tento první krok proveďte následující postupy na pracovní stanici připojené k Internetu.
 
-### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalace prostředí Azure PowerShell
+### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalovat Azure PowerShell
 
 Z pracovní stanice připojené k Internetu stáhněte a nainstalujte modul Azure PowerShell, který obsahuje rutiny pro správu služby Azure Key Vault. Pokyny k instalaci, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
@@ -232,17 +232,17 @@ Zkopírujte balíček na USB Flash disku nebo jiného přenosného úložiště.
 
 Tento druhý krok proveďte následující postupy na pracovní stanici, která není připojený k síti (Internetu nebo interní sítě).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>Krok 2.1: Příprava odpojené pracovní stanice pomocí modulu hardwarového zabezpečení Thales
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>Krok 2.1: Příprava odpojené pracovní stanice s nCipher nShield HSM
 
-Nainstalujte do počítače Windows podpůrný software nCipher (Thales) a připojte k tomuto počítači modul Thales HSM.
+Nainstalujte do počítače Windows podpůrný software nCipher a připojte k tomuto počítači nCipher nShield modulu hardwarového zabezpečení.
 
-Zajistěte, aby byly nástroje Thales ve své cestě (**%nfast_home%\bin**). Například zadejte následující příkaz:
+Zajistěte, aby byly nCipher nástroje ve své cestě (**%nfast_home%\bin**). Například zadejte následující příkaz:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-Další informace najdete v uživatelské příručce dodané s modulem HSM Thales.
+Další informace najdete v uživatelské příručce dodané s nShield modulu hardwarového zabezpečení.
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2: Instalace sady nástrojů funkce BYOK na odpojenou pracovní stanici
 
@@ -258,11 +258,11 @@ Tento třetí krok proveďte následující postupy na odpojené pracovní stani
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1: Změnit režim HSM na "I"
 
-Pokud používáte Thales nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka Režim zvýrazněte požadovaný režim. 2. Během několika sekund stiskněte a podržte tlačítko Vymazat pár sekund. Pokud se změní režim nový režim Indikátor blikat zastaví a zůstane po. Indikátor stavu může flash nepravidelně na několik sekund a pak bliká pravidelně, když zařízení je připravené. V opačném případě lit zařízení zůstává v aktuálním režimu s odpovídající Indikátor režimu.
+Pokud používáte nCipher nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka Režim zvýrazněte požadovaný režim. 2. Během několika sekund stiskněte a podržte tlačítko Vymazat pár sekund. Pokud se změní režim nový režim Indikátor blikat zastaví a zůstane po. Indikátor stavu může flash nepravidelně na několik sekund a pak bliká pravidelně, když zařízení je připravené. V opačném případě lit zařízení zůstává v aktuálním režimu s odpovídající Indikátor režimu.
 
 ### <a name="step-32-create-a-security-world"></a>Krok 3.2: Vytvoření architektury security world
 
-Spusťte příkazový řádek a spusťte nový svět program společnosti Thales.
+Spusťte příkazový řádek a spusťte program nCipher nový svět.
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
@@ -279,14 +279,14 @@ Potom udělejte následující:
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>Krok 3.3: Změnit režim modulu hardwarového zabezpečení ' jednoznakový
 
-Pokud používáte Thales nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka Režim zvýrazněte požadovaný režim. 2. Během několika sekund stiskněte a podržte tlačítko Vymazat pár sekund. Pokud se změní režim nový režim Indikátor blikat zastaví a zůstane po. Indikátor stavu může flash nepravidelně na několik sekund a pak bliká pravidelně, když zařízení je připravené. V opačném případě lit zařízení zůstává v aktuálním režimu s odpovídající Indikátor režimu.
+Pokud používáte nCipher nShield Edge, chcete-li změnit režim: 1. Pomocí tlačítka Režim zvýrazněte požadovaný režim. 2. Během několika sekund stiskněte a podržte tlačítko Vymazat pár sekund. Pokud se změní režim nový režim Indikátor blikat zastaví a zůstane po. Indikátor stavu může flash nepravidelně na několik sekund a pak bliká pravidelně, když zařízení je připravené. V opačném případě lit zařízení zůstává v aktuálním režimu s odpovídající Indikátor režimu.
 
 ### <a name="step-34-validate-the-downloaded-package"></a>Krok 3.4: Ověření staženého balíčku
 
 Tento krok je volitelný, ale doporučuje se, aby mohli ověřit tyto:
 
-* Klíč pro výměnu klíčů, který je součástí sady nástrojů, byl vygenerovaný na originálním modulu HSM společnosti Thales.
-* Hodnota hash architektury Security World, který je součástí sady nástrojů, byla vygenerovaná na originálním modulu HSM společnosti Thales.
+* Klíč pro výměnu klíčů, který je součástí sady nástrojů, byl vygenerovaný nShield nCipher originálním modulu HSM.
+* Hodnota hash architektury Security World, který je součástí sady nástrojů, byla vygenerovaná nShield nCipher originálním modulu HSM.
 * Klíč pro výměnu klíčů je není možné exportovat.
 
 > [!NOTE]
@@ -346,18 +346,18 @@ Ověření staženého balíčku:
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
 
      > [!TIP]
-     > Software společnosti Thales obsahuje python v %NFAST_HOME%\python\bin
+     > NCipher nShield software zahrnuje python v %NFAST_HOME%\python\bin
      >
      >
 2. Zkontrolujte, jestli vidíte následující text, který znamená úspěšné ověření: **Výsledek: ÚSPĚCH**
 
-Tento skript ověřuje řetězec podepisujících až ke kořenovému klíči Thales. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a jeho hodnota by měla být **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete potvrdit samostatně přechodem [webu společnosti Thales](http://www.thalesesec.com/).
+Tento skript ověřuje řetězec podepisujících až nShield kořenový klíč. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a jeho hodnota by měla být **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete potvrdit samostatně přechodem [nCipher webu](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
 
 Nyní jste připraveni vytvořit nový klíč.
 
 ### <a name="step-35-create-a-new-key"></a>Krok 3.5: Vytvořit nový klíč
 
-Vygenerujte klíč pomocí společnosti Thales **generatekey** programu.
+Vygenerujte klíč pomocí nCipher nShield **generatekey** programu.
 
 Spusťte následující příkaz k vygenerování klíče:
 
@@ -367,14 +367,14 @@ Při spuštění tohoto příkazu použijte tyto pokyny:
 
 * Parametr *chránit* musí být nastavena na hodnotu **modulu**, jak je znázorněno. Tím se vytvoří klíč chráněný modulem. Sada nástrojů pro BYOK nepodporuje klíče chráněné OCS.
 * Nahraďte hodnotu *contosokey* pro **ident** a **plainname** s libovolnou hodnotou řetězce. Chcete-li minimalizovat správní režie a snížilo riziko chyby, doporučujeme použít stejnou hodnotu pro oba. **Ident** hodnota musí obsahovat pouze číslice, pomlčky a malá písmena.
-* Parametr pubexp je prázdný (výchozí nastavení) v tomto příkladu, ale můžete zadat konkrétní hodnoty. Další informace najdete v dokumentaci společnosti Thales.
+* Parametr pubexp je prázdný (výchozí nastavení) v tomto příkladu, ale můžete zadat konkrétní hodnoty. Další informace najdete v tématu [nCipher dokumentaci.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
 Tento příkaz vytvoří soubor Tokenizovaného klíče ve složce %NFAST_KMDATA%\local s názvem začínajícím textem **key_simple_** následovaný **ident** zadaný v příkazu. Příklad: **key_simple_contosokey**. Tento soubor obsahuje šifrovaný klíč.
 
 Proveďte zálohu tohoto souboru Tokenizovaného klíče na bezpečném místě.
 
 > [!IMPORTANT]
-> Když budete chtít klíč později přenést do služby Azure Key Vault, Microsoft nelze exportovat tento klíč vrátit k tomu tak je velmi důležité, abyste klíče a soubor security world bezpečně zálohovali. Pokyny a osvědčené postupy pro zálohování klíčů získáte od společnosti Thales.
+> Když budete chtít klíč později přenést do služby Azure Key Vault, Microsoft nelze exportovat tento klíč vrátit k tomu tak je velmi důležité, abyste klíče a soubor security world bezpečně zálohovali. Kontakt [nCipher](https://www.ncipher.com/about-us/contact-us) pokyny a osvědčené postupy pro zálohování klíčů.
 >
 
 
@@ -443,7 +443,7 @@ Zobrazí se výzva k připojení karet správce security world.
 
 Jakmile se příkaz dokončí, uvidíte **výsledek: Úspěch** a kopie vašeho klíče se sníženými oprávněními jsou v souboru s názvem key_xferacId_\<contosokey >.
 
-Může zkontroluje seznamy řízení přístupu pomocí následujících příkazů pomocí nástrojů Thales:
+Může zkontroluje seznamy řízení přístupu pomocí následujících příkazů pomocí nástroje nShield nCipher:
 
 * aclprint.py:
 

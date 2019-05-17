@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285181"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594018"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav Azure Active Directory.
 
@@ -41,10 +41,10 @@ V následující tabulce jsou uvedeny informace o latenci pro sestavy aktivit.
 > **Latence (95. percentil)** odkazuje na čas, podle kterého se ohlásí 95 % protokolů, a **latenci (99. percentilu)** odkazuje na čas, podle kterého se ohlásí 99 % protokoly. 
 >
 
-| Sestava | Latence (95. percentil) |Latenci (99. percentilu)|Časový rozsah, ve kterém se ohlásí protokoly|
-| :-- | --- | --- | --- |
-| Protokoly auditu | 2 minuty  | 5 minut  | 2 až 60 minut |
-| Přihlášení | 2 minuty  | 5 minut | 2 – 120 minut. |
+| Nahlásit | Latence (95. percentil) |Latenci (99. percentilu)|
+| :-- | --- | --- |
+| Protokoly auditu | 2 minuty  | 5 minut  |
+| Přihlášení | 2 minuty  | 5 minut |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak rychle můžete zobrazit data aktivity po získání licence premium?
 
@@ -59,7 +59,7 @@ Existují dva typy sestav zabezpečení:
 
 V následující tabulce jsou uvedeny informace o latenci pro zprávy o zabezpečení.
 
-| Sestava | Minimální | Průměr | Maximum |
+| Nahlásit | Minimální | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Ohrožení uživatelé          | 5 minut   | 15 minut  | 2 hodiny  |
 | Riziková přihlášení         | 5 minut   | 15 minut  | 2 hodiny  |
@@ -70,7 +70,7 @@ Azure AD používá adaptivní algoritmy strojového učení a heuristik ke zji�
 
 V následující tabulce jsou uvedeny informace o latenci pro rizikové události.
 
-| Sestava | Minimální | Průměr | Maximum |
+| Nahlásit | Minimální | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Přihlášení z anonymních IP adres |5 minut |15 minut |2 hodiny |
 | Přihlášení z neznámých míst |5 minut |15 minut |2 hodiny |

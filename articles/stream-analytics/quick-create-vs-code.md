@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071842"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825378"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Rychlý start: Vytvořit úlohu Azure Stream Analytics cloudu ve Visual Studio Code (Preview)
 
@@ -89,7 +89,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
 
 2. V **vytvořit účet úložiště** podokně zadejte skupinu název, umístění a prostředek účtu úložiště. Zvolte stejné umístění a skupině prostředků jako centra IoT, které jste vytvořili. Pak klikněte na tlačítko **revize + vytvořit** k vytvoření účtu.
 
-   ![Vytvoření účtu úložiště](./media/quick-create-vs-code/create-storage-account.png)
+   ![Vytvořit účet úložiště](./media/quick-create-vs-code/create-storage-account.png)
 
 3. Po vytvoření účtu úložiště, vyberte **objekty BLOB** na dlaždici **přehled** podokně.
 
@@ -103,7 +103,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
 
 1. Ve Visual Studio Code, stiskněte klávesu **Ctrl + Shift + P** otevřete paletu příkazů. Zadejte **ASA** a vyberte **Azure Stream Analytics: Vytvoření nového projektu**.
 
-   ![Vytvoření nového projektu](./media/quick-create-vs-code/create-new-project.png)
+   ![Vytvořit nový projekt](./media/quick-create-vs-code/create-new-project.png)
 
 2. Zadejte název projektu, jako je třeba **myASAproj** a vyberte složku pro váš projekt.
 
@@ -164,7 +164,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
    |Název|Výstup| Zadejte název pro identifikaci výstupu úlohy.|
    |Účet úložiště|asaquickstartstorage|Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.|
    |Kontejner|container1|Vyberte existující kontejner, který jste vytvořili v účtu úložiště.|
-   |Vzor cesty|output|Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.|
+   |Vzor cesty|výstup|Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.|
 
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
@@ -229,7 +229,7 @@ Existují dva způsoby, jak aktivovat kompilace skriptu:
 
 2. Klikněte pravým tlačítkem na název úlohy. Vyberte **Start** v místní nabídce.
 
-![Spuštění úlohy Stream Analytics ve VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![Spuštění úlohy Stream Analytics ve VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. Zvolte **nyní** v automaticky otevíraném okně spustíte úlohu.
 

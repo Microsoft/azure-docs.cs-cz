@@ -3,8 +3,8 @@ title: Potíže při přihlašování k aplikaci Microsoftu | Dokumentace Micros
 description: S řešením běžných problémů, kterým čelí při přihlašování k používání služby Azure AD (jako je Office 365) Applications Microsoft první strany
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292193"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825215"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -435,7 +435,7 @@ Zkontrolujte nebo ověřit zásady podmíněného přístupu jeden:
 
 6. Klikněte na zásadu, která vás zajímají kontrola.
 
-7. Zkontrolujte, že neexistují žádné zvláštní podmínky, přiřazení nebo jiné nastavení, která může blokovat přístup uživatelů.
+7. Zkontrolujte, že neexistují žádné zvláštní podmínky, přiřazení nebo další nastavení, která může blokovat přístup uživatelů.
 
    >[!NOTE]
    >Možná budete chtít dočasně zakázat tuto zásadu zajistit není by to ovlivnilo přihlášení. Chcete-li to provést, nastavte **povolit zásady** přepnutím **ne** a klikněte na tlačítko **Uložit** tlačítko.
@@ -456,7 +456,7 @@ Zkontrolujte nebo ověřit jednu aplikaci aktuálně nakonfigurované zásady po
 
 5.  Klikněte na tlačítko **všechny aplikace**.
 
-6.  Vyhledejte aplikaci, která vás zajímají, nebo uživatel se pokouší přihlásit k pomocí zobrazovaný název aplikace nebo id aplikace.
+6.  Hledat aplikace, které vás zajímají, nebo uživatel se pokouší o přihlášení k aplikaci zobrazit ID jména nebo aplikace.
 
      >[!NOTE]
      >Pokud nevidíte aplikaci, které hledáte, klikněte na tlačítko **filtr** tlačítko a rozbalte obor seznamu **všechny aplikace**. Pokud chcete zobrazit další sloupce, klikněte na tlačítko **sloupce** tlačítko pro přidání další podrobnosti pro vaše aplikace.

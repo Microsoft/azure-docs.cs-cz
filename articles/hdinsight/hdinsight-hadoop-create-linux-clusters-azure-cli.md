@@ -1,123 +1,173 @@
 ---
-title: Vytvořte clustery systému Apache Hadoop pomocí Azure CLI classic – Azure HDInsight
-description: Zjistěte, jak vytvářet clustery HDInsight pomocí multiplatformní rozhraní CLI Azure classic.
+title: Vytvořte clustery systému Apache Hadoop pomocí rozhraní příkazového řádku Azure – Azure HDInsight
+description: Zjistěte, jak vytvářet clustery HDInsight pomocí Azure CLI pro různé platformy.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: 21985b009694dc5a21c65d4c9dc9536cf6c01a0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a278cd98b0dd6c6d8f0fe9bfee81e5bafd4f543
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727078"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597670"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure Classic
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroky v tomto názorném postupu dokumentu, vytvoření clusteru HDInsight 3.5 pomocí rozhraní příkazového řádku Azure Classic.
-
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-
-## <a name="prerequisites"></a>Požadavky
+Kroky v tomto názorném postupu dokumentu, vytvoření clusteru HDInsight 3.6 pomocí Azure CLI.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* **Azure Classic CLI**. Kroky v tomto dokumentu poslední byly testovány s klasické rozhraní příkazového řádku Azure verze 0.10.14.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
+Azure CLI. Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) kroky.
 
-Postupujte podle kroků popsaných v [připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli) a připojte se k předplatnému pomocí **přihlášení** metody.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Následující kroky je třeba provést z příkazového řádku, jako je PowerShell nebo Bash.
+1. Přihlaste se ke svému předplatnému Azure. Pokud plánujete použít Azure Cloud Shell, pak stačí vybrat **vyzkoušet** v pravém horním rohu bloku kódu. Jinak zadejte následující příkaz:
 
-1. K ověření ke svému předplatnému Azure, použijte následující příkaz:
+    ```azurecli-interactive
+    az login
 
-        azure login
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
-    Zobrazí se výzva k zadání jména a hesla. Pokud máte více předplatných Azure, použijte `azure account set <subscriptionname>` nastavit předplatné, které pomocí příkazů rozhraní příkazového řádku classic.
+2. Nastavení proměnných prostředí. Použití proměnných v tomto článku je založená na prostředí Bash. Malé odchylky bude potřebovat další prostředí. Zobrazit [az hdinsight vytvořit](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) úplný seznam možných parametrů pro vytvoření clusteru.
 
-2. Přepněte do režimu Azure Resource Manager pomocí následujícího příkazu:
+    |Parametr | Popis |
+    |---|---|
+    |`--size`| Počet pracovních uzlů v clusteru. Tento článek používá proměnnou `clusterSizeInNodes` jako hodnotu předanou `--size`. |
+    |`--version`| Verze clusteru HDInsight. Tento článek používá proměnnou `clusterVersion` jako hodnotu předanou `--version`. Viz také: [Podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Jako typ clusteru HDInsight: hadoop, interactivehive, hbase, kafka, storm, spark, r server, mlservices.  Tento článek používá proměnnou `clusterType` jako hodnotu předanou `--type`. Viz také: [Typy a konfiguraci clusteru](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--component-version`|Verze různých komponent systému Hadoop v oddělených mezerami verze v "součást verze =" formátu. Tento článek používá proměnnou `componentVersion` jako hodnotu předanou `--component-version`. Viz také: [Součásti platformy Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-        azure config mode arm
+    Nahraďte `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`, a `PASSWORD` s požadované hodnoty. Změňte hodnoty pro proměnné podle potřeby. Zadejte příkazů rozhraní příkazového řádku.
 
-3. Vytvořte skupinu prostředků. Tato skupina prostředků obsahuje HDInsight cluster a související účtu úložiště.
+    ```azurecli-interactive
+    export resourceGroupName=RESOURCEGROUPNAME
+    export location=LOCATION
+    export clusterName=CLUSTERNAME
+    export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
+    export httpCredential='PASSWORD'
+    export sshCredentials='PASSWORD'
+    
+    export AZURE_STORAGE_CONTAINER=$clusterName
+    export clusterSizeInNodes=1
+    export clusterVersion=3.6
+    export clusterType=hadoop
+    export componentVersion=Hadoop=2.7
+    ```
 
-        azure group create groupname location
+3. [Vytvořte skupinu prostředků](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) tak, že zadáte následující příkaz:
 
-    * Nahraďte `groupname` s jedinečným názvem skupiny.
+    ```azurecli-interactive
+    az group create \
+        --location $location \
+        --name $resourceGroupName
+    ```
 
-    * Nahraďte `location` s geografickou oblast, kterou chcete vytvořit skupinu v.
+    Seznam platných umístění, použijte `az account list-locations` příkaz a pak použijte jednu z umístění, ze `name` hodnotu.
 
-       Seznam platných umístění, použijte `azure location list` příkaz a pak použijte jednu z umístění, ze `Name` sloupce.
+4. [Vytvoření účtu služby Azure storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) tak, že zadáte následující příkaz:
 
-4. Vytvoření účtu úložiště Tento účet úložiště se používá jako výchozí úložiště pro HDInsight cluster.
+    ```azurecli-interactive
+    # Note: kind BlobStorage is not available as the default storage account.
+    az storage account create \
+        --name $AZURE_STORAGE_ACCOUNT \
+        --resource-group $resourceGroupName \
+        --https-only true \
+        --kind StorageV2 \
+        --location $location \
+        --sku Standard_LRS
+    ```
 
-        azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
+5. [Extrahovat primární klíč z účtu úložiště Azure](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) a uložte ji do proměnné tak, že zadáte následující příkaz:
 
-    * Nahraďte `groupname` s názvem skupiny vytvořené v předchozím kroku.
+    ```azurecli-interactive
+    export AZURE_STORAGE_KEY=$(az storage account keys list \
+        --account-name $AZURE_STORAGE_ACCOUNT \
+        --resource-group $resourceGroupName \
+        --query [0].value -o tsv)
+    ```
 
-    * Nahraďte `location` pomocí stejné umístění použité v předchozím kroku.
+6. [Vytvoření kontejneru služby Azure storage](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) tak, že zadáte následující příkaz:
 
-    * Nahraďte `storagename` s jedinečným názvem účtu úložiště.
+    ```azurecli-interactive
+    az storage container create \
+        --name $AZURE_STORAGE_CONTAINER \
+        --account-key $AZURE_STORAGE_KEY \
+        --account-name $AZURE_STORAGE_ACCOUNT
+    ```
 
-        > [!NOTE]  
-        > Další informace o parametrech použité v tomto příkazu použít `azure storage account create -h` Chcete-li zobrazit nápovědu pro tento příkaz.
+7. [Vytvoření clusteru HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) tak, že zadáte následující příkaz:
 
-5. Načtení klíče pro přístup k účtu úložiště.
+    ```azurecli-interactive
+    az hdinsight create \
+        --name $clusterName \
+        --resource-group $resourceGroupName \
+        --type $clusterType \
+        --component-version $componentVersion \
+        --http-password $httpCredential \
+        --http-user admin \
+        --location $location \
+        --size $clusterSizeInNodes \
+        --ssh-password $sshCredentials \
+        --ssh-user sshuser \
+        --storage-account $AZURE_STORAGE_ACCOUNT \
+        --storage-account-key $AZURE_STORAGE_KEY \
+        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --version $clusterVersion
+    ```
 
-        azure storage account keys list -g groupname storagename
+    > [!IMPORTANT]  
+    > HDInsight clustery se dělí na různé typy, které odpovídají úlohy nebo technologie, která clusteru je vyladěný pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je Storm a HBase na jednom clusteru.
 
-    * Nahraďte `groupname` s názvem skupiny prostředků.
-    * Nahraďte `storagename` s názvem účtu úložiště.
+    Může trvat několik minut na dokončení procesu vytváření clusteru. Obvykle přibližně 15.
 
-      V datech, která je vrácena, uložte `key` hodnota `key1`.
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-6. Vytvoření clusteru HDInsight.
+Jakmile budete s článkem hotovi, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
+Zadejte všechny nebo některé z následujících příkazů odebrat prostředky:
 
-    * Nahraďte `groupname` s názvem skupiny prostředků.
+```azurecli-interactive
+# Remove cluster
+az hdinsight delete \
+    --name $clusterName \
+    --resource-group $resourceGroupName
 
-    * Nahraďte `Hadoop` s typem clusteru, který chcete vytvořit. Například `Hadoop`, `HBase`, `Kafka`, `Spark`, nebo `Storm`.
+# Remove storage container
+az storage container delete \
+    --account-name $AZURE_STORAGE_ACCOUNT \
+    --name $AZURE_STORAGE_CONTAINER
 
-      > [!IMPORTANT]  
-      > HDInsight clustery se dělí na různé typy, které odpovídají úlohy nebo technologie, která clusteru je vyladěný pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je Storm a HBase na jednom clusteru.
+# Remove storage account
+az storage account delete \
+    --name $AZURE_STORAGE_ACCOUNT \
+    --resource-group $resourceGroupName
 
-    * Nahraďte `location` pomocí stejné umístění, které jsou používané v předchozích krocích.
-
-    * Nahraďte `storagename` názvem účtu úložiště.
-
-    * Nahraďte `storagekey` s klíčem, kterou jste získali v předchozím kroku.
-
-    * Pro `--defaultStorageContainer` parametrů, použijte stejný název, který používáte pro cluster.
-
-    * Nahraďte `admin` a `httppassword` pomocí jména a hesla, které chcete použít při přístupu ke clusteru prostřednictvím protokolu HTTPS.
-
-    * Nahraďte `sshuser` a `sshuserpassword` pomocí uživatelského jména a hesla, které chcete použít při přístupu ke clusteru pomocí SSH
-
-      > [!IMPORTANT]  
-      > Tento příklad vytvoří cluster se dvěma uzly pracovního procesu. Po vytvoření clusteru můžete také změnit počet uzlů pracovního procesu pomocí provádí operace škálování. Pokud máte v úmyslu používat více než 32 uzlů pracovního procesu, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM. Velikost hlavního uzlu můžete nastavit pomocí `--headNodeSize` parametru během vytváření clusteru.
-      >
-      > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
-      
-      Může trvat několik minut na dokončení procesu vytváření clusteru. Obvykle přibližně 15.
+# Remove resource group
+az group delete \
+    --name $resourceGroupName
+```
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když úspěšně vytvoříte clusteru služby HDInsight pomocí rozhraní příkazového řádku classic, použijte následující postup, jak pracovat s vaším clusterem:
+Teď, když úspěšně vytvoříte clusteru služby HDInsight pomocí Azure CLI, použijte následující postup, jak pracovat s vaším clusterem:
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop clusterů
 

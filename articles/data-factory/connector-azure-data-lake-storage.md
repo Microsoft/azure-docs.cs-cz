@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fcedc74cde9e26ea53d2475f0e9805788787f2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 355f61d6282c822e18cf4752044c1e1a5cbbc6a0
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228612"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560791"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -516,6 +516,66 @@ Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivn
 | false (nepravda) |preserveHierarchy | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | cílové složky složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
 | false (nepravda) |flattenHierarchy | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | cílové složky složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
 | false (nepravda) |mergeFiles | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cílové složky složku1 se vytvoří s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky vygenerovaný soubor. automaticky generovaným názvem File1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+
+## <a name="preserve-acls-from-data-lake-storage-gen1"></a>Zachovat seznamy ACL v Data Lake Storage Gen1
+
+>[!TIP]
+>Pro kopírování dat z Azure Data Lake Storage Gen1 na Gen2 naleznete v tématu [kopírování dat z Azure Data Lake Storage Gen1 na Gen2 s Azure Data Factory](load-azure-data-lake-storage-gen2-from-gen1.md) s postupy a osvědčené postupy.
+
+Při kopírování souborů z Azure Data Lake Storage (ADLS) Gen1 na Gen2, můžete zachovat rámci specifikace POSIX seznamy řízení přístupu (ACL) spolu s daty. Řízení přístupu najdete v podrobnostech, najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) a [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+
+Následující typy seznamů ACL je možné zachovat pomocí aktivit kopírování objekt pro vytváření dat Azure, můžete vybrat jeden nebo více typů:
+
+- **ACL**: Zkopírujte a zachovat **seznamy řízení přístupu POSIX** souborů a adresářů. Tím zkopírujete úplné existující seznamy ACL ze zdroje do jímky. 
+- **Vlastník**: Zkopírujte a zachovat **vlastnícího uživatele** souborů a adresářů. Superuživatel přístup do jímky ADLS Gen2 je vyžadován.
+- **Skupiny**: Zkopírujte a zachovat **vlastnící skupina** souborů a adresářů. Je vyžadován přístup superuživatele do jímky ADLS Gen2 nebo vlastnícím uživatelem (Pokud je vlastnící uživatel je také členem cílové skupiny).
+
+Pokud zadáte kopírování ze složky, replikuje Data Factory se seznamy ACL pro tento dané složky a soubory a adresáře v něm (Pokud `recursive` je nastavena na hodnotu true). Pokud zadáte kopírovat z jednoho souboru, seznamy ACL na tento soubor je zkopírován.
+
+>[!IMPORTANT]
+>Pokud budete chtít zachovat seznamy ACL, ujistěte se, že udělíte vyšší dostatečná oprávnění pro ADF provozovat proti účtu ADLS Gen2 pro jímku. Například účet ověřování pomocí klíče, nebo jim přiřadit roli vlastník dat objektů Blob úložiště spravovaného objektu zabezpečení identity služby.
+
+Při konfiguraci zdroje jako ADLS Gen1 s možností/binární formát binární kopie a jímky jako ADLS Gen2 s binární kopie možnost/binární formát, můžete najít **zachovat** možnost **stránky nastavení nástroj pro kopírování dat** nebo v **aktivity kopírování -> Nastavení** kartu pro vytváření aktivit.
+
+![Seznam ACL zachovat Gen1 ADLS na Gen2](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+
+Tady je příklad konfigurace JSON (viz `preserve`): 
+
+```json
+"activities":[
+    {
+        "name": "CopyFromGen1ToGen2",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "AzureDataLakeStoreSource",
+                "recursive": true
+            },
+            "sink": {
+                "type": "AzureBlobFSSink",
+                "copyBehavior": "PreserveHierarchy"
+            },
+            "preserve": [
+                "ACL",
+                "Owner",
+                "Group"
+            ]
+        },
+        "inputs": [
+            {
+                "referenceName": "<Azure Data Lake Storage Gen1 input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Azure Data Lake Storage Gen2 output dataset name>",
+                "type": "DatasetReference"
+            }
+        ]
+    }
+]
+```
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 

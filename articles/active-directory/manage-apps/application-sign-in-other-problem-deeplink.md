@@ -3,8 +3,8 @@ title: Potíže při přihlašování k aplikaci pomocí odkazu deeplink | Dokum
 description: Jak řešit problémy s přístupem k aplikaci z adresy URL odkazu deeplink systému pomocí služby Azure AD
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ad6eeba09c81de33b92722992c6762a4b4327c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44825f32a13db0a221252c042dc9f23ec43a9c8f
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443245"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825415"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Potíže při přihlašování k aplikaci pomocí odkazu deeplink
 

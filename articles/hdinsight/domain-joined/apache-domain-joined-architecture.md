@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f81aa1e493014f192dc11ca698e9793075ac26ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 069b3fe89183d7897cea39e2a8a1fe1bbed80bb0
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725610"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556334"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -66,7 +66,7 @@ Pokud federace se právě používá a jsou správnou synchronizaci hodnot hash 
 1. Instalace modulu Azure AD PowerShell.
 
    ```
-   Install-Module AzureAD
+   Install-Module AzureADPreview
    ```
 
 2. Zadejte `Connect-AzureAD` s použitím přihlašovacích údajů globálního správce (správce klienta).

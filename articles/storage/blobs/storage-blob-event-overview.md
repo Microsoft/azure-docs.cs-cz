@@ -9,18 +9,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: b03d7d98fe43eacab63f45ccacd7d8dea9598c8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142166"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826514"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
 Události služby Azure Storage umožňují aplikacím reagovat na vytváření a odstraňování objektů BLOB pomocí moderní architektury bez serveru. Dělá to bez nutnosti složité kódu nebo nákladné a neefektivní cyklického dotazování služby.  Místo toho události se nasdílejí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro předplatitele, jako [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), nebo dokonce vlastní naslouchací proces protokolu http vlastní a pouze Plaťte za to co používáte.
 
-Události služby BLOB storage se spolehlivě odesílají službě mřížky událost, která nabízí spolehlivé doručování aplikací prostřednictvím zásad opakování bohaté a doručování onta nedoručených zpráv.
+Události služby BLOB storage se spolehlivě odesílají službě mřížky událost, která nabízí spolehlivé doručování aplikací prostřednictvím zásad opakování bohaté a doručování onta nedoručených zpráv. Další informace najdete v tématu [doručování zpráv služby Event Grid a zkuste to znovu](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
 Běžné scénáře události úložiště objektů Blob obsahovat obrázek nebo video zpracování, indexování nebo jakýkoli pracovní postup souboru objektově orientovaný.  Nahrávání souborů asynchronní se skvěle hodí k události.  Pokud jsou málo časté změny, ale vaše situace vyžaduje okamžitou odezvu, může být zvláště efektivní architektury založené na události.
 
@@ -51,7 +51,7 @@ Události služby BLOB storage obsahovat všechny informace, které je potřeba 
 > |ID|string|Jedinečný identifikátor, pokud se tato událost|
 > |dataVersion|string|Verze schématu datového objektu|
 > |metadataVersion|string|Verze schématu vlastnosti nejvyšší úrovně.|
-> |data|objekt|Kolekce dat událostí specifické pro úložiště objektů blob|
+> |data|Objekt|Kolekce dat událostí specifické pro úložiště objektů blob|
 > |data.contentType|string|Typ obsahu objektu blob, protože by být vrácená v hlavičce Content-Type z objektu blob|
 > |data.contentLength|číslo|Velikost objektu blob jako celé číslo představující počet bajtů, protože by být vrácená v hlavičce Content-Length z objektu blob.  Odeslané s BlobCreated událostí, ale ne s BlobDeleted.|
 > |data.url|string|Adresa url objektu, který je předmětem události|
@@ -60,7 +60,7 @@ Události služby BLOB storage obsahovat všechny informace, které je potřeba 
 > |data.sequencer|string|Hodnota typu neprůhledný řetězec představující logickou posloupnost událostí pro jakýkoli název konkrétního objektu blob.  Uživatele můžete použít standardní porovnání řetězců k pochopení relativního pořadí dvou událostí na stejný název objektu blob.|
 > |data.requestId|string|Id generovaných službou požadavku pro operaci úložiště rozhraní API. Můžete použít ke korelaci do služby Azure Storage diagnostické protokoly pomocí pole "hlavička požadavku id" v protokolech a vrátí se v inicializaci volání rozhraní API v hlavičce "x-ms-request-id". Zobrazit [formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
 > |data.clientRequestId|string|Id žádosti klienta – Pokud pro ukládání operace rozhraní API. Je možné korelovat diagnostické protokoly služby Azure Storage pomocí pole "client-request-id" v protokolech a lze zadat pomocí "x-ms klienta request-id" záhlaví žádosti klientů. Zobrazit [formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-> |data.storageDiagnostics|objekt|Diagnostická data v některých součástí služby Azure Storage. Pokud je k dispozici, by měl být ignorován příjemci událostí.|
+> |data.storageDiagnostics|Objekt|Diagnostická data v některých součástí služby Azure Storage. Pokud je k dispozici, by měl být ignorován příjemci událostí.|
 |data.blobType|string|Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob".| 
 
 Tady je příklad BlobCreated události:

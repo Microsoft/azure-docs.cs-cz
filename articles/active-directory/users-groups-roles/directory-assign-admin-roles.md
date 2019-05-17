@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920501"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823566"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -163,10 +163,15 @@ K dispozici jsou následující role správce:
   * Správci v dalších službách mimo Azure AD, jako jsou systémy Exchange Online, Office zabezpečení a dodržování předpisů System Center a lidské zdroje.
   * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
 
+
+  > [!NOTE]
+  > Delegování oprávnění pro správu přes podmnožiny uživatelů a přiřazení zásad pro podmnožinu uživatelů je možné s [jednotky pro správu (preview)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units).
+
+
   > [!NOTE]
   > Tato role se dříve nazývala "heslo správce" [webu Azure portal](https://portal.azure.com/). Měníme její název na "Správce technické podpory" tak, aby odpovídala jeho název v Azure AD PowerShell, Azure AD Graph API a rozhraní Microsoft Graph API. Na krátkou dobu jsme se změní název "Správce technické podpory (heslo)" na webu Azure portal před změnou v "Správce technické podpory".
-  >
-  
+
+
 * **[Správce služby Power BI](#power-bi-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud se služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Power BI". Je "správce Power BI" v [webu Azure portal](https://portal.azure.com).
@@ -189,7 +194,7 @@ K dispozici jsou následující role správce:
   Centrum Identity Protection | Všechna oprávnění role Čtenář zabezpečení<br>Kromě toho možnost provádět všechny operace Centrum Identity Protection kromě resetování hesel
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Všechna oprávnění role Čtenář zabezpečení<br>**Nelze** Spravovat přiřazení rolí Azure AD nebo nastavení
   [Office 365 zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad zabezpečení<br>Zobrazení, prozkoumání a reakce na hrozby zabezpečení<br>Zobrazení sestav
-  Rozšířená ochrana před internetovými útoky Azure | Monitorování a reakce na bezpečnostní podezřelé aktivity
+  Azure Advanced Threat Protection | Monitorování a reakce na bezpečnostní podezřelé aktivity
   Windows Defender ATP a EDR | Přiřazení rolí<br>Spravovat skupiny počítačů<br>Konfigurace koncového bodu zjišťování hrozeb a automatizovanou nápravu<br>Zobrazení, prozkoumání a reakce na výstrahy
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazení uživatele, zařízení, registraci, konfiguraci a informace o aplikaci<br>Nelze provádět změny v Intune
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Přidat správce, přidejte zásady a nastavení, nahrávat protokoly a provádět akce zásad správného řízení
@@ -252,7 +257,7 @@ K dispozici jsou následující role správce:
   | --- | --- |
   |Obecné oprávnění|<p>Vytvoření uživatelů a skupin</p><p>Vytvořit a spravovat zobrazení uživatelů</p><p>Spravovat lístky podpory Office<p>Aktualizovat zásady vypršení platnosti hesla|
   |<p>Pro všechny uživatele včetně všechny správce</p>|<p>Správa licencí</p><p>Spravovat všechny vlastnosti uživatele s výjimkou hlavní název uživatele</p>
-  |Pouze na uživatele, kteří bez oprávnění správce, nebo v některém z následujících omezené role správce:<ul><li>Uživatelé s oprávněním ke čtení adresářů<li>Odesílatel pozvánek hostů<li>Správce technické podpory<li>Čtenář Centra zpráv<li>Čtenář sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázání a povolení</p><p>Zneplatnit obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavní název uživatele</p><p>Resetování hesla</p><p>Aktualizovat klíče zařízení (FIDO)</p>
+  |Pouze na uživatele, kteří bez oprávnění správce, nebo v některém z následujících omezené role správce:<ul><li>Uživatelé s oprávněním ke čtení adresářů<li>Odesílatel pozvánek hostů<li>Správce technické podpory<li>Čtenář Centra zpráv<li>Čtenář sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázání a povolení</p><p>Zneplatnit obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavní název uživatele</p><p>Vytvořit nové heslo</p><p>Aktualizovat klíče zařízení (FIDO)</p>
   
   <b>Důležité</b>: Uživatelé s touto rolí můžou měnit hesla pro uživatele, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace uvnitř i mimo Azure Active Directory. Změna hesla pro uživatele, může to znamenat schopnost předpokládat identit a oprávnění daného uživatele. Příklad:
   * Registrace aplikace a podniková aplikace vlastníky, kteří můžou spravovat aplikace, které vlastní přihlašovací údaje. Tyto aplikace mohou mít Privilegovaná oprávnění ve službě Azure AD a jinde nebyla udělena pro uživatele správce. Pomocí této cesty, Správce uživatelů může být schopen převzít identitu vlastníka aplikace a pak dále převzít identitu privilegovaného aplikace stačí aktualizovat přihlašovací údaje pro aplikaci.
@@ -772,7 +777,7 @@ Může spravovat všechny aspekty produktu Azure Information Protection.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 
-### <a name="intune-service-administrator"></a>Správce služby Intune
+### <a name="intune-service-administrator"></a>Správce služeb Intune
 Může spravovat všechny aspekty produktu Intune.
 
   > [!NOTE]
@@ -1198,7 +1203,7 @@ Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3
 Odesílatel pozvánek hostů | Odesílatel pozvánek hostů | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce technické podpory | Správce hesel | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce služby Information Protection | Správce služby Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
-Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Správce služeb Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Správce licencí | Správce licencí | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Správce služeb Lyncu | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Čtenář Centra zpráv | Čtenář Centra zpráv | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b

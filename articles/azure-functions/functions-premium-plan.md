@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031161"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544774"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plán služby Azure Functions Premium (preview)
 
@@ -44,7 +44,7 @@ Pokud žádné události resp. dojde k ještě dnes v plánu Consumption, může
 
 V plánu Premium můžete mít aplikace předem zahřívají na zadaný počet instancí, až velikost vašeho plánu minimální.  Předem topným zařízením instance také umožňují předem škálovat aplikace před nadměrným zatížením. Jak aplikace horizontálně navýší kapacitu, nejprve se škáluje do předem topným zařízením instancí. Další instancí se dál do vyrovnávací paměti navýšení kapacity a teplé okamžitě v rámci přípravy na další operaci škálování. Tím, že vyrovnávací paměť předem topným zařízením instancí, můžete efektivně vyhnout latenci studený start.  Předem topným zařízením instance funkce je součástí plánu Premium a je potřeba nechat alespoň jednu instanci spuštěné a dostupné za všech okolností plán není aktivní.
 
-Počet instancí předem topným zařízením na portálu Azure portal můžete nakonfigurovat tak, že vyberete **horizontální navýšení kapacity** v **funkce platformy** kartu.
+Počet instancí předem topným zařízením, které můžete nakonfigurovat ve službě Azure portal podle vybrané vaše **aplikace Function App**, ukládaných na **funkce platformy** kartu a vyberete **horizontální navýšení kapacity**možnosti. V okně Upravit aplikaci funkce předem topným zařízením instance je specifické pro tuto aplikaci, ale minimální a maximální instance se vztahují na celý plán.
 
 ![Nastavení elastické škálování](./media/functions-premium-plan/scale-out.png)
 
@@ -93,7 +93,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření naše škálování plánu, můžete mezi tři velikosti instance.  Bude se vám účtovat celkový počet jader a paměti spotřebované za sekundu.  Vaše aplikace může automaticky škálovat na více instancí podle potřeby.  
 
-|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Úložiště|
+|Skladová jednotka|Jádra|Memory (Paměť)|Úložiště|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -114,6 +114,7 @@ V následující tabulce jsou aktuálně podporované oblasti pro verzi public p
 |Francie – střed|
 |Japonsko – západ|
 |Korea – střed|
+|Středoseverní USA|
 |Severní Evropa|
 |Středojižní USA|
 |Indie – jih|

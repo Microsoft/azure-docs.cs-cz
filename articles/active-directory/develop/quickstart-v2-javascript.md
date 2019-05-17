@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23003186aa413e313578c57616ae03c435f140e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9deaf610696f676610f589168426ac24be692c99
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785400"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823520"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z jednostránkové aplikace (SPA) jazyka JavaScript
 
@@ -183,7 +183,7 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |`cacheLocation`  | (Volitelné) Tím se nastaví úložiště prohlížeče pro ověření stavu. Výchozí hodnota je sessionStorage.   |
 > |`storeAuthStateInCookie`  | (Volitelné) Knihovny uloží stav žádosti o ověření požadované pro ověření toků ověřování v prohlížeči soubory cookie. Tato hodnota je nastavena pro aplikace Internet Explorer a hraničními zařízeními prohlížeče pro zmírnění některých [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
 
- Zobrazit [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options) podrobné informace o konfigurovatelných možností, které jsou k dispozici.
+ Další podrobnosti o konfigurovatelných možností, které jsou k dispozici, najdete v článku [inicializovat klientské aplikace](msal-js-initializing-client-applications.md).
 
 ### <a name="sign-in-users"></a>Přihlašování uživatelů
 
@@ -256,6 +256,7 @@ myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
     console.log(error);
 });
 ```
+
 > [!NOTE]
 > Tento rychlý start využívá `loginRedirect` a `acquireTokenRedirect` metody, když se používá prohlížeč je aplikace Internet Explorer z důvodu [známý problém](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) souvisejících s zpracování zobrazována místní okna v prohlížeči Internet Explorer.
 

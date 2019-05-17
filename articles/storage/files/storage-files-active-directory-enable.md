@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: rogarana
-ms.openlocfilehash: 974a4341bd140da60c5e229a644657fe7ab02535
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d5e2f9dba3afee953d296316e990b58c536cbdae
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721613"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602024"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -103,12 +103,6 @@ New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -SkuName Standard_LRS `
     -Kind StorageV2 `
     -EnableAzureFilesAadIntegrationForSMB $true
-
-# Update an existing storage account
-# Supported for storage accounts created after September 24, 2018 only
-Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
-    -Name "<storage-account-name>" `
-    -EnableAzureFilesAadIntegrationForSMB $true```
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -124,10 +118,6 @@ Dále vytvořte nové úložiště účtu a potom voláním [aktualizace účtu 
 ```azurecli-interactive
 # Create a new storage account
 az storage account create -n <storage-account-name> -g <resource-group-name> --file-aad true
-
-# Update an existing storage account
-# Supported for storage accounts created after September 24, 2018 only
-az storage account update -n <storage-account-name> -g <resource-group-name> --file-aad true
 ```
 
 ## <a name="assign-access-permissions-to-an-identity"></a>Přiřadit přístupová oprávnění identitě 
@@ -203,7 +193,7 @@ Následující příkaz Powershellu vytvoří vlastní roli na základě jedné 
 New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
 ```
 
-#### <a name="cli"></a>Rozhraní příkazového řádku 
+#### <a name="cli"></a>CLI 
 
 Následující příkaz Azure CLI vytvoří vlastní roli na základě jedné z ukázkových šablon.
 
@@ -231,7 +221,7 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>Rozhraní příkazového řádku
+#### <a name="cli"></a>CLI
   
 Následující příkaz rozhraní příkazového řádku 2.0 ukazuje, jak seznamu k dispozici vlastní role a potom přiřadit vlastní roli identity Azure AD, na základě názvu přihlášení. Další informace o přiřazení role RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [správě přístupu pomocí RBAC a rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
 
