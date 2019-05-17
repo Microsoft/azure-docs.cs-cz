@@ -44,7 +44,7 @@ Pro SAP cloudem pro zákaznické propojené služby jsou podporovány následuj�
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **SapCloudForCustomer**. | Ano |
 | url | Adresa URL služby SAP C4C OData. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k SAP C4C. | Ano |
+| username | Zadejte uživatelské jméno pro připojení k SAP C4C. | Ano |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
