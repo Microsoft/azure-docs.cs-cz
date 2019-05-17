@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/26/2019
 ms.openlocfilehash: 0b3343a9635fe4120f03e56c41797591d2f25815
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65755092"
+ms.locfileid: "65793687"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 

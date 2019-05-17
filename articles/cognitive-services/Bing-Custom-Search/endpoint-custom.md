@@ -3,19 +3,19 @@ title: Koncový bod Vlastního vyhledávání Bingu
 titlesuffix: Azure Cognitive Services
 description: Přehled rozhraní API pro vyhledávání Bingu vlastní koncový bod.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: v-gedod
-ms.openlocfilehash: d01f863f0c42754e2dcc36f6cab1bed1f3dc3b6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: d8c2c69a81597c2702d608ccac8dceed1e832aff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60592263"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790231"
 ---
 # <a name="custom-search"></a>Vlastní vyhledávání
 Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet výsledky hledání s irelevantním obsahem.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1783890ba1b304ab658e827bfd24091e208fda4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7c1167a6170cdc0b897c57a51c417a9312b6f41a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699255"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794158"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Linuxem z nespravovaných disků na managed disks
 
@@ -98,5 +98,18 @@ Všechny virtuální počítače ve skupině dostupnosti musí být napřed zru�
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
+## <a name="convert-using-the-azure-portal"></a>Převod pomocí webu Azure portal
+
+Můžete také převést nespravovaných disků na managed disks, webu Azure portal.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
+3. V okně pro virtuální počítač, vyberte **disky** z nabídky.
+4. V horní části **disky** okně vyberte **migrace na spravované disky**.
+5. Pokud se váš virtuální počítač je ve skupině dostupnosti, bude se upozornění na **migrace na spravované disky** okno, které je potřeba převést první skupinu dostupnosti. Upozornění by měl mít odkaz kliknete na převést skupinu dostupnosti. Jakmile se převést skupinu dostupnosti nebo pokud váš virtuální počítač není ve skupině dostupnosti, klikněte na **migrace** zahájíte proces migrace disků na managed disks.
+
+Virtuální počítač se zastaví a restartuje po dokončení migrace.
+
 ## <a name="next-steps"></a>Další postup
+
 Další informace o možnostech úložiště najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).

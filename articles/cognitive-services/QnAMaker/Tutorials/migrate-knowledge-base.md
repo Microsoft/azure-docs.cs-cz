@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ff3c497372a761bd8a02ae81bc897c8ee297bd0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431212"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794870"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu importu
 
@@ -56,7 +56,7 @@ Migrace znalostní báze vyžaduje export z jednoho znalostní báze knowledge b
     V tomto okamžiku všechny znalostní báze obsah – otázky a odpovědi metadat, společně s názvy zdrojových souborů a adresy URL, importují do nové znalostní báze. 
 
 ## <a name="chat-logs-and-alterations"></a>Protokoly chatu a změn
-Malá a velká písmena změny (synonym) nejsou importovány automaticky. Použití [rozhraní API V2](https://aka.ms/qnamaker-v2-apis) export změny ze staré znalostní báze a [V4 API](https://aka.ms/qnamaker-v4-apis) přesunout změny v nové znalostní báze.
+Malá a velká písmena změny (synonym) nejsou importovány automaticky. Použití [V4 API](https://go.microsoft.com/fwlink/?linkid=2092179) přesunout změny v nové znalostní báze.
 
 Neexistuje žádný způsob, jak migrovat chatu, protože nový znalostní báze pomocí Application Insights pro ukládání protokolů chatu. 
 

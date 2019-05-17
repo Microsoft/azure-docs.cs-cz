@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.openlocfilehash: d50794557de00a50790cd4cc661cb9859b231214
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65753695"
+ms.locfileid: "65794205"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB online pomocí DMS
 

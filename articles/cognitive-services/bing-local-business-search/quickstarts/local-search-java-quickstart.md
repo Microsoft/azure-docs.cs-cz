@@ -3,18 +3,18 @@ title: Rychlý start – zaslání dotazu místní firmy API pro vyhledávání 
 titleSuffix: Azure Cognitive Services
 description: Pokud chcete začít používat API Bingu pro místní obchodní vyhledávání v Javě pomocí tohoto článku.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ed98d40987645fdadff8cc628cfd08feca41d01f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b87fea5120ae09848eef9fcb29ef0912bf17fa0f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336027"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796925"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý start: Odešle dotaz do API Bingu pro místní obchodní vyhledávání pomocí Javy
 

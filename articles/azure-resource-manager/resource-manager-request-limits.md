@@ -1,24 +1,18 @@
 ---
 title: Omezení počtu požadavků a omezení – Azure Resource Manageru
 description: Popisuje způsob použití omezení požadavků Azure Resource Manageru a pokud bylo dosaženo omezení předplatného.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389725"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791362"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
@@ -32,7 +26,7 @@ Pokud vaše aplikace nebo skript dosáhne těchto limitů, budete muset omezení
 
 Pokud limit překročíte, obdržíte kód stavu HTTP **429 příliš mnoho požadavků**.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Graph prostředků omezuje počet požadavků na jeho operace. Kroky v tomto článku k určení zbývajících požadavků a jak reagovat při dosažení limitu neplatí pro prostředek grafu. Prostředek grafu však nastaví vlastní míry omezení a resetování. Další informace najdete v tématu [omezení v Azure prostředek grafu](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Zbývajících požadavků
 Počet zbývajících požadavků, které můžete určit tím, že kontroluje hlavičky odpovědi. Žádosti o čtení vracet hodnotu v záhlaví po dobu zbývajících požadavků na čtení. Zapsat požadavky zahrnout hodnotu pro počet zbývajících požadavků na zápis. Následující tabulka popisuje hlavičky odpovědi, které můžete zkontrolovat pro tyto hodnoty:

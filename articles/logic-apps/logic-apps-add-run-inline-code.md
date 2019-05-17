@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 9ef11eb2099ff617fb4da4b9a924dc3f0550f226
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/14/2019
+ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160542"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602118"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidání a spuštění kódu pomocí vloženého kódu v Azure Logic Apps
 
@@ -23,7 +23,10 @@ Pokud chcete spustit kód ve svých aplikacích logiky, můžete přidat předde
 * Spuštění v jazyce JavaScript. Připravujeme další jazyky.
 * Dokončení běží na pět sekund nebo méně.
 * Zpracovává data velikost až 50 MB.
-* Node.js verze 8.11.1 používá. Další informace najdete v tématu [standardní předdefinované objekty](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
+* Node.js verze 8.11.1 používá. Další informace najdete v tématu [standardní předdefinované objekty](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+  > [!NOTE]
+  > Nepodporuje funkci require() **vloženého kódu** akce pro spouštění JavaScriptu.
 
 Tato akce spustí fragment kódu a vrátí její výstup z tohoto fragmentu jako token s názvem **výsledek**, který můžete použít v následných akcí ve vaší aplikaci logiky. Pro další scénáře, ve kterém chcete vytvořit funkci pro váš kód, zkuste [vytvořením a voláním funkce Azure](../logic-apps/logic-apps-azure-functions.md) ve vaší aplikaci logiky.
 
@@ -201,7 +204,7 @@ V příkladu v tomto tématu `workflowContext` objekt má tyto vlastnosti, kter�
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Přidání parametrů
+## <a name="add-parameters"></a>Přidat parametry
 
 V některých případech bude pravděpodobně nutné explicitně vyžadují, aby **vloženého kódu** akce obsahuje výsledky z aktivační události nebo konkrétní akce, které odkazuje kód jako závislosti tak, že přidáte **aktivační událost** nebo **Akce** parametry. Tato možnost je užitečná v případech, kde nejsou nalezeny odkazované výsledky v době běhu.
 
@@ -212,7 +215,7 @@ Předpokládejme například, že máte kód, který odkazuje **SelectedOption**
 
 Chcete-li přidat tyto parametry, otevřete **přidat nový parametr** seznam a vyberte parametry chcete:
 
-   ![Přidání parametrů](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Přidat parametry](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametr | Popis |
    |-----------|-------------|

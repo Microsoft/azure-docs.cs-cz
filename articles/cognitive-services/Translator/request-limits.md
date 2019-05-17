@@ -10,36 +10,47 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605222"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796897"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
 
 Tento článek obsahuje omezení pro rozhraní Translator Text API. Služby zahrnují překladu, přepis, detekce délka věty, detekce jazyka a alternativní překlady.
 
-## <a name="character-limits-per-request"></a>Znak omezení požadavku
+## <a name="character-and-array-limits-per-request"></a>Omezení znaků a pole každý požadavek
 
-Každý požadavek je omezený na 5 000 znaků. Vám budou účtovány na znak, nikoli podle počtu požadavků. Doporučujeme odesílat požadavky na kratší a mají některé požadavky zbývajících v daném okamžiku.
+Každý požadavek přeložit je omezen na 5 000 znaků. Vám budou účtovány na znak, nikoli podle počtu požadavků. Doporučuje k odesílání požadavků kratší.
 
-Neexistuje žádné omezení počtu nevyřízených požadavků na Translator Text API.
+Následující tabulky zobrazí pole elementu a znak omezení pro každou operaci rozhraní Translator Text API.
+
+| Operace | Maximální velikost prvku pole |   Maximální počet elementů pole |  Maximální velikost žádostí (ve znacích) |
+|:----|:----|:----|:----|
+| Translate | 5 000 | 100   | 5 000 |
+| Transliterace | 5 000 | 10    | 5 000 |
+| Detect | 10,000 | 100 |   50,000 |
+| BreakSentence | 10,000    | 100 | 5,0000 |
+| Slovníkové vyhledávání| 100 |  10  | 1 000 |
+| Příklady slovníku | 100 pro text a 100 pro překlad (celkový počet 200)| 10|   2 000 |
 
 ## <a name="character-limits-per-hour"></a>Omezení znak za hodinu
 
-Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Pokud přístup nebo tato omezení překročí, pravděpodobně dostanete out kvóty odpovědi:
+Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi. 
 
-| Úroveň | Limit počtu znaků |
+| Vrstva | Limit počtu znaků |
 |------|-----------------|
 | F0 | 2 miliony znaků za hodinu |
 | S1 | 40 milionů znaků za hodinu |
-| S2 | 40 milionů znaků za hodinu |
-| S3 | 120 milionů znaků za hodinu |
-| S4 | 200 milionů znaků za hodinu |
+| S2 / C2 | 40 milionů znaků za hodinu |
+| S3 / C3 | 120 milionů znaků za hodinu |
+| S4 / C4 | 200 milionů znaků za hodinu |
 
-Tato omezení jsou omezeny na obecná systémy od Microsoftu. Vlastní překladových systémů, které používají centra společnosti Microsoft Translator jsou omezené na 1 800 znak za sekundu.
+Omezení [víc služeb předplatná](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako pro úroveň S1.
+
+Tato omezení jsou omezeny na standardní překladové modely od Microsoftu. Vlastní překladové modely, které používají vlastní Translator jsou omezené na 1 800 znak za sekundu.
 
 ## <a name="latency"></a>Latence
 

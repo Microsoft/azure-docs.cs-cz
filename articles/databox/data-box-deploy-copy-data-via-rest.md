@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508254"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800542"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
 
@@ -152,6 +152,7 @@ Po připojení k úložišti objektů Blob Data Box, dalším krokem je zkopíro
 - Pokud se data, která se nahrává Data Box, odešle současně jiné aplikace mimo zařízení Data Box, to může způsobit poškození odeslání úlohy selhání a data.
 
 V tomto kurzu AzCopy slouží ke kopírování dat do úložiště objektů Blob Data Box. Ke zkopírování dat můžete také použít Průzkumníka služby Azure Storage (Pokud dáváte přednost nástroj založeným na GUI) nebo partnerský software.
+
 Postup kopírování obsahuje následující kroky:
 
 - Vytvoření kontejneru
@@ -215,6 +216,8 @@ Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+
+Pokud nejsou žádné chyby během operace připojit nebo kopírování, zobrazit [řešení potíží s poli datový objekt Blob úložiště](data-box-troubleshoot-rest.md).
 
 Dalším krokem je k přípravě na odeslání vašeho zařízení.
 

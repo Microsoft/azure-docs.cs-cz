@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd7fee34f020f16d1511bc57b4ad86dbd5eb168d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605077"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796962"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterace
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>*Povinný parametr*.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>language</td>
+    <td>jazyk</td>
     <td>*Povinný parametr*.<br/>Určuje jazyk textu pro převod z jednoho skriptu do jiného. Je to možné jazyky jsou uvedené v `transliteration` oboru získala při dotazování na službu pro jeho [podporované jazyky](./v3-0-languages.md).</td>
   </tr>
   <tr>
@@ -57,7 +57,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 Hlavičky žádosti patří:
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky</td>
@@ -77,7 +77,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Text požadavku
+## <a name="request-body"></a>Tělo požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje řetězec k převedení.
 
@@ -114,7 +114,7 @@ Je například odpověď JSON:
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
     <td>X-RequestId</td>
@@ -131,7 +131,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěch</td>
+    <td>Úspěšné</td>
   </tr>
   <tr>
     <td>400</td>
@@ -147,7 +147,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>429</td>
-    <td>Volající odesílá příliš mnoho požadavků.</td>
+    <td>Server odmítl požadavek, protože klient překročil omezení požadavků.</td>
   </tr>
   <tr>
     <td>500</td>

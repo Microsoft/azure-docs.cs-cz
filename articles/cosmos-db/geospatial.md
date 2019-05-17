@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26eb43060a0a2b564a7274bb1579151e66b2bfee
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888665"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604215"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Pokud není k dispozici informace o zeměpisné šířce a délce, ale název umístění jako město nebo okres nebo fyzické adresy, můžete vyhledat skutečné souřadnice pomocí geokódování službě, jako je REST služby Bing Maps. Další informace o geografické kódování služby mapy Bing [tady](https://msdn.microsoft.com/library/ff701713.aspx).
+Pokud není k dispozici informace o zeměpisné šířce a délce, ale mají fyzických adres nebo název umístění jako město nebo země/oblast, můžete vyhledat skutečné souřadnice pomocí geokódování službě, jako je REST služby Bing Maps. Další informace o geografické kódování služby mapy Bing [tady](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="querying-spatial-types"></a>Prostorové typy dotazování
 Teď, když jsme měli podívat, jak vložit Geoprostorová data, Pojďme se podívat, jak zadávat dotazy na tato data pomocí služby Azure Cosmos DB pomocí jazyka SQL a LINQ.

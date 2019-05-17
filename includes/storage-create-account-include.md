@@ -9,11 +9,11 @@ ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 6d22f83ff9bcec685962934e415676bf8d948db0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52973064"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65757942"
 ---
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 

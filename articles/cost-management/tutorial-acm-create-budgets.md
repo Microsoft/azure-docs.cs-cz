@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/09/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 704aefd68f35ca20f72a2a0c46bf11912c139e65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eab45948b5f931377396d93d93e8955ba0f3e767
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61024709"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792842"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -26,6 +26,9 @@ Měsíční rozpočty vyhodnocují útraty každé čtyři hodiny. Data a oznám
 Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnu. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
 
 Příklady v tomto kurzu vás provede procesem vytvoření a úprava rozpočet pro předplatné Azure Enterprise Agreement (EA).
+
+Podívejte [vytvoření rozpočtu monitorování vaší útraty pomocí služby Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) videu se dozvíte, jak můžete vytvořit rozpočty v Azure a monitorováním výdajů.
+
 
 V tomto kurzu se naučíte:
 

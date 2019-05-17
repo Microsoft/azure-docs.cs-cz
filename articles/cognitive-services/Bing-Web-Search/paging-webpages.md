@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 68b99e7f0763f46c705a1ff2ba3a0e90216429c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648852"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797809"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Jak stránkovat výsledky z rozhraní API webové vyhledávání Bingu
 
@@ -24,7 +24,7 @@ Při volání rozhraní API pro webové vyhledávání Bingu vrátí seznam výs
 
 Následující příklad ukazuje `totalEstimatedMatches` pole, které obsahuje webovou odpověď.  
 
-```
+```json
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -65,3 +65,7 @@ Pokud zadáte `responseFilter` parametr dotazu a nezahrnují webové stránky v 
 
 > [!NOTE]
 > `TotalEstimatedAnswers` Pole je odhad celkový počet výsledků hledání můžete načíst aktuálního dotazu.  Pokud nastavíte `count` a `offset` parametry, `TotalEstimatedAnswers` číslo může změnit. 
+
+## <a name="next-steps"></a>Další postup
+
+* [Co je rozhraní API Bingu pro vyhledávání webu](overview.md)?

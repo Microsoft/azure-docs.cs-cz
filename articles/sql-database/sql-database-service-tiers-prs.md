@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e12b89d0469587d7d7326bbee30f6467ada06bd5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574086"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790413"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Úroveň služby Azure SQL Database úrovně Premium RS (preview) se vyřazuje – možnosti pro migraci
 
@@ -27,7 +27,7 @@ Následují migrace cíle a cenové možnosti, které může být vhodný pro ú
 
 - vCore úrovně služeb
 
-  **Obecné** a **pro důležité obchodní informace** v úrovních služeb [model nákupu založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Tyto dvě úrovně jsou obecně dostupné. Nákupní model založený na virtuálních jádrech také nabízí **Hyperškálovatelného** úroveň služby (ve verzi public preview), která se přizpůsobí na vyžádání podle potřeb vašich úloh s automatickým Škálováním až 100 TB na databázi. Úroveň služby Hyperškálovatelného poskytuje srovnatelné služby na úrovni Premium ve vstupně-výstupním výkonem [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) za cenu blíže na úroveň Premium RS služby.
+  **Obecné** a **pro důležité obchodní informace** v úrovních služeb [model nákupu založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Tyto dvě úrovně jsou obecně dostupné. Nákupní model založený na virtuálních jádrech také nabízí **Hyperškálovatelného** vrstvu služby, která se přizpůsobí na vyžádání podle potřeb vašich úloh s automatickým Škálováním až 100 TB na databázi. Úroveň služby Hyperškálovatelného poskytuje srovnatelné služby na úrovni Premium ve vstupně-výstupním výkonem [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) za cenu blíže na úroveň Premium RS služby.
 - Ceny pro vývoj/testování
 
   [Ceny pro vývoj/testování](https://azure.microsoft.com/pricing/dev-test/) nabízí úspory až 55 % oproti ceně licenci, jsou míry s vaším předplatným sady Visual Studio.
@@ -70,10 +70,10 @@ Doporučujeme migrovat vaše izolované databáze náročné na vstupně-výstup
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|
-|Premium RS 1|(Preview) VCore Hyperškálovatelného 1 (Gen4) nebo – 1 kritické obchodní vCore (Gen4)|Premium 1|
-|Premium RS 2|(Preview) Velkokapacitní 2 virtuální jádra (Gen4) nebo kritické obchodní 2 virtuální jádra (Gen4|Premium 2|
-|Premium RS 4|(Preview) Velkokapacitní 4 virtuální jádra (Gen4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
-|Premium RS 6|(Preview) Velkokapacitní 6 virtuální jádra (Gen4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
+|Premium RS 1| VCore Hyperškálovatelného 1 (Gen4) nebo – 1 kritické obchodní vCore (Gen4)|Premium 1|
+|Premium RS 2| Velkokapacitní 2 virtuální jádra (Gen4) nebo kritické obchodní 2 virtuální jádra (Gen4|Premium 2|
+|Premium RS 4| Velkokapacitní 4 virtuální jádra (Gen4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
+|Premium RS 6| Velkokapacitní 6 virtuální jádra (Gen4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
 
 |**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
 |---|---|---|

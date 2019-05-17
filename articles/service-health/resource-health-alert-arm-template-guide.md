@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700145"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788455"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace výstrahy týkající se stavu prostředků pomocí šablon Resource Manageru
 
@@ -31,7 +31,7 @@ Postupujte podle pokynů na této stránce, budete muset předem zařídit pár 
 1. Je potřeba nainstalovat [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Je potřeba [vytvořit nebo znovu použít skupiny akcí](../azure-monitor/platform/action-groups.md) nakonfigurovaný tak, aby upozornění
 
-## <a name="instructions"></a>Pokyny
+## <a name="instructions"></a>Instrukce
 1. Pomocí Powershellu, připojte se k Azure pomocí svého účtu a vyberte předplatné, které chcete pracovat s
 
         Login-AzAccount
@@ -43,7 +43,7 @@ Postupujte podle pokynů na této stránce, budete muset předem zařídit pár 
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Vytvoříte a uložíte šablonu Resource Manageru pro výstrahy týkající se stavu prostředků jako `resourcehealthalert.json` ([viz podrobnosti níže](#resource-manager-template-for-resource-health-alerts))
+3. Vytvoříte a uložíte šablonu Resource Manageru pro výstrahy týkající se stavu prostředků jako `resourcehealthalert.json` ([viz podrobnosti níže](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Vytvořte nové nasazení Azure Resource Manageru pomocí této šablony.
 
@@ -76,7 +76,7 @@ Postupujte podle pokynů na této stránce, budete muset předem zařídit pár 
 
 Všimněte si, že pokud plánujete plné automatizaci tohoto procesu, stačí jednoduše upravte šablonu Resource Manageru pro výzvu pro hodnoty v kroku 5.
 
-## <a name="resource-manager-template-for-resource-health-alerts"></a>Šablona Resource Manageru pro výstrahy týkající se stavu prostředků
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Možnosti šablony Resource Manageru pro výstrahy týkající se stavu prostředků
 
 Tuto základní šablonu můžete použít jako výchozí bod pro vytvoření výstrahy týkající se stavu prostředků. Tato šablona bude fungovat, jak je uvedená, bude registraci a přihlašování budete chcete obdržet výstrahy pro všechny události stavu prostředků nově aktivovaného všech prostředků v předplatném.
 
@@ -284,7 +284,9 @@ Ale pokud prostředek ohlásí "Neznámá", je pravděpodobné, že jeho stav ne
 },
 ```
 
-V tomto příkladu jsme jsou se pouze oznámení o událostech, kde aktuální a předchozí stav nemá "Neznámý". Tato změna může být záležitostí užitečné, pokud vaše výstrahy se odesílají přímo na váš mobilní telefon nebo e-mailu.
+V tomto příkladu jsme jsou se pouze oznámení o událostech, kde aktuální a předchozí stav nemá "Neznámý". Tato změna může být záležitostí užitečné, pokud vaše výstrahy se odesílají přímo na váš mobilní telefon nebo e-mailu. 
+
+Všimněte si, že je možné pro vlastnosti currentHealthStatus a previousHealthStatus mít hodnotu null v některé události. Například když aktualizované dojde k události je pravděpodobné, že stav prostředku nebyl změněn od posledního hlášení těchto informací další události je k dispozici jen (třeba vyvolat). Proto pomocí klauzule výše může vést k některé výstrahy není spuštěna, protože properties.currentHealthStatus a properties.previousHealthStatus hodnoty budou nastaveny na hodnotu null.
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Úprava výstrahu, kterou chcete vyhnout, kterou inicioval uživatel události
 
@@ -304,12 +306,12 @@ Je snadno konfigurovatelné upozornění můžete filtrovat pouze tyto typy udá
     ]
 }
 ```
+Všimněte si, že je možné pro pole příčina mít hodnotu null v některé události. To znamená přechod stavu Probíhá (například k dispozici do nedostupný) a událost se protokoluje při okamžitě zabránit oznámení zpoždění. Proto pomocí klauzule výše může vést k upozornění není spuštěné, protože hodnota vlastnosti properties.clause bude nastavena na hodnotu null.
 
-## <a name="recommended-resource-health-alert-template"></a>Doporučené výstrahy šablonu Resource Health
+## <a name="complete-resource-health-alert-template"></a>Kompletní šablonu oznámení Resource Health
 
-Pomocí různých nastavení popsané v předchozí části, můžeme vytvořit komplexní šablonu oznámení, který je nakonfigurován pro maximalizaci signál od šumu.
+Pomocí různých nastavení popsané v předchozí části, tady je ukázka šablony, který je nakonfigurovaný pro maximalizaci signál od šumu. Berte v úvahu upozornění, jak je uvedeno nahoře kde currentHealthStatus, previousHealthStatus a hodnoty vlastností příčina může mít hodnotu null v některé události.
 
-Zde je, co, doporučujeme použít:
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

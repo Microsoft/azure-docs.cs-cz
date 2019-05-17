@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13a855c5770281e2578523bfc1813b2e03df6651
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337289"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539234"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services pomocí Powershellu
 Můžete shromažďovat diagnostická data, jako jsou protokoly aplikací, čítače výkonu z cloudové služby pomocí rozšíření Azure Diagnostics atd. Tento článek popisuje, jak povolit rozšíření diagnostiky Azure pro cloudové služby pomocí prostředí PowerShell.  Zobrazit [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) pro součásti potřebné pro účely tohoto článku.
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Tento přístup se vztahuje na typ kontinuální integrace scénářů, kde lze povolit rozšíření diagnostiky jako součást nasazení cloudové služby. Při vytváření nového nasazení cloudové služby můžete povolit rozšíření diagnostiky předáním *ExtensionConfiguration* parametr [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) rutiny. *ExtensionConfiguration* parametr přijímá pole Konfigurace diagnostiky, které je možné vytvořit [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) rutiny.
+Tento přístup se vztahuje na typ kontinuální integrace scénářů, kde lze povolit rozšíření diagnostiky jako součást nasazení cloudové služby. Při vytváření nového nasazení cloudové služby, můžete povolit rozšíření diagnostiky předáním *ExtensionConfiguration* parametr [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) rutiny. *ExtensionConfiguration* parametr přijímá pole Konfigurace diagnostiky, které je možné vytvořit [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) rutiny.
 
 Následující příklad ukazuje, jak můžete povolit diagnostiku pro cloudovou službu s WebRole a WorkerRole nichž každý má konfiguraci různých diagnostiky.
 
@@ -85,7 +85,7 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online používá podobný přístup pro automatizovaná nasazení cloudových služeb s diagnostickým rozšířením. Zobrazit [publikovat AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) kompletní příklad.
+Visual Studio Online používá podobný přístup pro automatizovaná nasazení cloudových služeb s diagnostickým rozšířením. Zobrazit [publikovat AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) kompletní příklad.
 
 Pokud ne `StorageAccount` byl zadaný v konfiguraci diagnostiky, je nutné předat *StorageAccountName* do rutiny parametr. Pokud *StorageAccountName* zadaný parametr, bude rutina bude vždy používat účet úložiště, který je zadaný v parametru a není ten, který je zadaný v konfigurační soubor diagnostiky.
 
@@ -126,7 +126,7 @@ Chcete-li vypnout diagnostiky v cloudové službě, můžete použít [odebrat A
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Pokud jste povolili rozšíření diagnostiky pomocí *Set-AzureServiceDiagnosticsExtension* nebo *New-AzureServiceDiagnosticsExtensionConfig* bez *Role*parametr, pak je můžete rozšíření odebrat pomocí *odebrat AzureServiceDiagnosticsExtension* bez *Role* parametru. Pokud *Role* byl použit parametr při povolování rozšíření pak musí být rovněž použita při odebírání rozšíření.
+Pokud jste povolili rozšíření diagnostiky pomocí *Set-AzureServiceDiagnosticsExtension* nebo *New-AzureServiceDiagnosticsExtensionConfig* bez *Role*parametr a pak můžete rozšíření odebrat pomocí *odebrat AzureServiceDiagnosticsExtension* bez *Role* parametru. Pokud *Role* byl použit parametr při povolování rozšíření, pak musí také být použit při odebírání rozšíření.
 
 Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
 

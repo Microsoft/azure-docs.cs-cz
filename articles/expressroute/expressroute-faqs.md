@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 17f596abda4febbd6e532adcb44d544cd4d104df
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924667"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794752"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -79,7 +79,7 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Power BI
+* Power BI – k dispozici prostřednictvím Azure regionální komunity, naleznete v tématu [tady](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) jak zjistit, oblast vašeho tenanta Power BI. 
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunity Azure ke službám Global Services)
 * Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>**Tyto služby nejsou podporovány**:
@@ -152,7 +152,7 @@ Pokud váš poskytovatel služeb nabízí ExpressRoute v obou lokalitách, můž
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Může mít víc okruhů ExpressRoute ve stejné metro? Můžete propojit je ke stejné virtuální síti?
 
-Ano. Máte víc okruhů ExpressRoute s poskytovateli stejných nebo různých služeb. Pokud metro má více umístění partnerského vztahu ExpressRoute a obvody se vytvářejí na jiné umístění partnerského vztahu, můžete je propojit do stejné virtuální síti. Pokud jsou okruhy vytvořené ve stejném umístění partnerského vztahu, můžete je propojit stále do stejné virtuální síti, ale až 4 okruhy ExpressRoute jenom v každém umístění partnerského vztahu. Můžete například vybrat umístění partnerského vztahu "Singapur" a "Singapur2" a připojit okruhů z každého ke stejné virtuální síti. 
+Ano. Máte víc okruhů ExpressRoute s poskytovateli stejných nebo různých služeb. Pokud metro má více umístění partnerského vztahu ExpressRoute a obvody se vytvářejí na jiné umístění partnerského vztahu, můžete je propojit do stejné virtuální síti. Pokud jsou okruhy vytvořené ve stejném umístění partnerského vztahu, můžete propojit s až 4 okruhy stejné virtuální síti.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak připojit své virtuální sítě k okruhu ExpressRoute
 
@@ -190,7 +190,7 @@ Ne. Všechny virtuální sítě propojené ke stejnému okruhu ExpressRoute z hl
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Může mít jednu virtuální sítě připojené k více než jeden okruh ExpressRoute?
 
-Ano. Můžete propojit jedna virtuální síť s až čtyři okruhy ExpressRoute. Musejí být seřazeny až čtyři různé [umístění ExpressRoute](expressroute-locations.md).
+Ano. Můžete propojit s až čtyři okruhů ExpressRoute v buď stejném nebo jiném umístění partnerského vztahu jedné virtuální sítě. 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Z mé virtuální sítě připojené k okruhy ExpressRoute, přístup k Internetu?
 

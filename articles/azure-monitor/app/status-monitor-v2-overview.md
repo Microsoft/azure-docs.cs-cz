@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 77c2cd9e0eac6717d91a73a6fc033dcaa2390444
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 976545f588895421e7c2be7e18b844d7994bc1ff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145031"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779997"
 ---
 # <a name="status-monitor-v2"></a>Monitorování stavu v2
 
@@ -34,7 +34,7 @@ Telemetrická data se odešlou na portál Azure Portal kde pak můžete [monitor
 https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 
 
-## <a name="instructions"></a>Pokyny
+## <a name="instructions"></a>Instrukce
 - Kontrola naše [pokyny Začínáme](status-monitor-v2-get-started.md) jak hned začít s ukázkami kódu stručné.
 - Kontrola naše [podrobné pokyny](status-monitor-v2-detailed-instructions.md) podrobné informace o tom, jak začít pracovat.
 
@@ -48,7 +48,7 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
 
 ## <a name="troubleshooting"></a>Řešení potíží
-- [Řešení potíží](status-monitor-v2-troubleshoot.md)
+- [Odstraňování potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
 
@@ -61,6 +61,11 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - Ověření povolení byla úspěšná?
 
    Pokud chcete ověřit že úspěšné této funkce pro kontrolu nemáme rutinu. Doporučujeme používat [Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) rychle sledovat, pokud vaše aplikace je odeslání telemetrie.
+
+   Můžete také použít [Analytics](../log-query/get-started-portal.md) vypsat všechny role v cloudových procesech právě odesílá telemetrická data.
+   ```Kusto
+   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+   ```
 
 ## <a name="next-steps"></a>Další postup
 

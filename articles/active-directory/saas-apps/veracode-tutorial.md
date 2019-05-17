@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 11f75f53adc9e8ce1dbf78ef7a7d58742b6bc839
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920395"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Kurz: Integrace Azure Active Directory s Veracode
 
@@ -117,7 +117,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Veracode, proveďte násled
     | ---------------| --------------- |
     | jméno |User.givenName |
     | Příjmení |User.Surname |
-    | e-mail |User.mail |
+    | email |User.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -248,7 +248,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Veracode, musí být p
 > [!NOTE]
 > Můžete použít jakékoli jiné Veracode uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Veracode zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

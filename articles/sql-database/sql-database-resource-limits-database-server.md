@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06e61d30f0d4e598c48f190572b8b4343f351043
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61482036"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762793"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -28,7 +28,7 @@ Tento článek obsahuje přehled služby SQL Database omezení prostředků pro 
 
 ## <a name="maximum-resource-limits"></a>Omezení maximální prostředků
 
-| Prostředek | Omezení |
+| Resource | Omezení |
 | :--- | :--- |
 | Databází na serveru | 5000 |
 | Výchozí počet serverů na předplatné v libovolné oblasti | 20 |

@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605241"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796865"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Novinky
 
 Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené na JSON. Zvyšuje použitelnost a výkon, když sloučení stávajících funkcí do menšího počtu operací a nabízí nové funkce.
 
@@ -55,7 +55,7 @@ Přihlaste se k rozhraní Translator Text API odběru nebo [více služeb Cognit
 
 Existují tři hlavičky, které můžete použít k ověření vašeho předplatného. Tato tabulka poskytuje, popisuje, jak každý používat:
 
-|Hlavičky|Popis|
+|Záhlaví|Popis|
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Použít s předplatným služeb Cognitive Services, Pokud předáváte tajný klíč*.<br/>Hodnota je Azure tajný klíč pro vaše předplatné Translator Text API.|
 |Autorizace|*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota je nosný token: `Bearer <token>`.|
@@ -161,7 +161,7 @@ Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavo
 | 405000| Metoda žádosti se nepodporuje pro požadovaný prostředek.|
 | 408001| Vlastní překladový systém požadovaný ještě není k dispozici. Zkuste to prosím znovu za pár minut.|
 | 415000| Hlavička Content-Type je chybějící nebo neplatný.|
-| 429000, 429001, 429002| Server odmítl požadavek, protože klient zasílá příliš mnoho požadavků. Snižte frekvenci požadavků vyhnout omezení šířky pásma.|
+| 429000, 429001, 429002| Server odmítl požadavek, protože klient překročil omezení požadavků.|
 | 500000| Došlo k neočekávané chybě. Pokud chyba přetrvává, nahlaste to datum/čas chyby, požádejte o identifikátor odpovědi hlavičku X-RequestId a identifikátor klienta z hlavičky X-ClientTraceId.|
 | 503000| Služba je dočasně nedostupná. Zkuste to prosím znovu. Pokud chyba přetrvává, nahlaste to datum/čas chyby, požádejte o identifikátor odpovědi hlavičku X-RequestId a identifikátor klienta z hlavičky X-ClientTraceId.|
 

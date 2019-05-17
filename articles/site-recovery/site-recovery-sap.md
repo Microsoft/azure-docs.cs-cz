@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471561"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793677"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení vícevrstvé aplikace SAP NetWeaver
 
@@ -166,5 +166,5 @@ Další informace najdete v tématu [testovací převzetí služeb při selhán�
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery najdete v tématu ke stažení dokument white paper [SAP NetWeaver: Sestavování řešení zotavení po havárii pomocí Azure Site Recovery](https://aka.ms/asr-sap). Dokument white paper popisuje doporučení pro různé architektury SAP, seznam podporovaných aplikací a typy virtuálních počítačů pro SAP v Azure a popisuje možnosti testovací plán pro vaše řešení zotavení po havárii.
+* Další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery najdete v tématu ke stažení dokument white paper [SAP NetWeaver: Sestavování řešení zotavení po havárii pomocí Azure Site Recovery](https://aka.ms/asr_sap). Dokument white paper popisuje doporučení pro různé architektury SAP, seznam podporovaných aplikací a typy virtuálních počítačů pro SAP v Azure a popisuje možnosti testovací plán pro vaše řešení zotavení po havárii.
 * Další informace o [replikaci jiných úloh](site-recovery-workload.md) pomocí Site Recovery.

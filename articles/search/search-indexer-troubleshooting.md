@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 81987115ba0406e704f2198061c6ee3cae8a72df
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024702"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539285"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Řešení běžných potíží indexeru ve službě Azure Search
 
@@ -27,7 +27,7 @@ Indexery můžete spustit do celé řady důvodů, názvy při indexování dat 
 
 ## <a name="data-source-connection-errors"></a>Chyby připojení zdroje dat
 
-### <a name="blob-storage"></a>Blob Storage
+### <a name="blob-storage"></a>Úložiště objektů blob
 
 #### <a name="storage-account-firewall"></a>Brány firewall na účet úložiště
 
@@ -42,7 +42,7 @@ Můžete ověřit, že brána firewall je povolena v [portál](https://docs.micr
 
 `nslookup <service name>.search.windows.net`
 
-Výjimky nefungují pro [Kognitivního vyhledávání](cognitive-search-concept-intro.md). Jediným alternativním řešením je zakázat bránu firewall.
+Výjimky nefungují pro [kognitivního vyhledávání](cognitive-search-concept-intro.md). Jediným alternativním řešením je zakázat bránu firewall.
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
@@ -71,7 +71,7 @@ api-key: [admin key]
 
 Indexování objektů blob [vyhledává a extrahuje text z objektů BLOB v kontejneru](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Některé problémy se extrahují text patří:
 
-* Dokument obsahuje pouze naskenované bitových kopií. Objekty BLOB PDF, které mají netextový obsah, jako jsou obrázky prohledaná formátu JPG (využívá), nemusíte vytvářet výsledky v kanál indexování objektů blob standardní. Pokud máte obsahu bitové kopie s elementy textu, můžete použít [Kognitivního vyhledávání](cognitive-search-concept-image-scenarios.md) vyhledat a extrahovat text.
+* Dokument obsahuje pouze naskenované bitových kopií. Objekty BLOB PDF, které mají netextový obsah, jako jsou obrázky prohledaná formátu JPG (využívá), nemusíte vytvářet výsledky v kanál indexování objektů blob standardní. Pokud máte obsahu bitové kopie s elementy textu, můžete použít [kognitivního vyhledávání](cognitive-search-concept-image-scenarios.md) vyhledat a extrahovat text.
 * Indexování objektů blob je nakonfigurován na pouze metadata indexu. Extrahovat obsah, musí být nakonfigurován indexeru blob pro [extrahovat obsah a metadata](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
@@ -94,5 +94,5 @@ Indexery najít dokumenty [zdroj dat](https://docs.microsoft.com/rest/api/search
 * Dokument nebyl indexovat. Podívejte se na portál pro spuštění úspěšné indexeru.
 * Dokument byl aktualizován po spuštění indexeru. Pokud je vaše indexer na [plán](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), bude nakonec spusťte znovu a získaly dokumentu.
 * [Dotazu](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) zadané v datech zdrojové vyloučí dokumentu. Indexery nemůže indexovat dokumenty, které nejsou součástí datového zdroje.
-* [Mapování polí](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) nebo [Kognitivního vyhledávání](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) změnily dokumentu a vypadá jinak, než byste očekávali.
+* [Mapování polí](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) nebo [kognitivního vyhledávání](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) změnily dokumentu a vypadá jinak, než byste očekávali.
 * Použití [vyhledávání dokumentů API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) najít dokumentu.

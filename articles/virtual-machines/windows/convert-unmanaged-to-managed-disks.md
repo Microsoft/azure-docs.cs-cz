@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 21505da414b29f2ae9eeea7f9fcad9db2e57c4fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702815"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796583"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na managed disks
 
@@ -99,7 +99,6 @@ Pokud virtuální počítače, které chcete převést na spravované disky jsou
 Pokud dojde k chybě při převodu nebo pokud virtuální počítač je v chybovém stavu kvůli problémům v předchozí převodu, spusťte `ConvertTo-AzVMManagedDisk` rutinu znovu. Jednoduché opakování obvykle odblokuje situace.
 Před převodem, ujistěte se, že všechna rozšíření virtuálního počítače jsou ve stavu "Zřizování bylo úspěšné" nebo převod selže s kódem chyby 409.
 
-
 ## <a name="convert-using-the-azure-portal"></a>Převod pomocí webu Azure portal
 
 Můžete také převést nespravovaných disků na managed disks, webu Azure portal.
@@ -108,7 +107,7 @@ Můžete také převést nespravovaných disků na managed disks, webu Azure por
 2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
 3. V okně pro virtuální počítač, vyberte **disky** z nabídky.
 4. V horní části **disky** okně vyberte **migrace na spravované disky**.
-5. Pokud se váš virtuální počítač je ve skupině dostupnosti, bude se upozornění na **migrace na spravované disky** okno, které je potřeba převést první skupinu dostupnosti. Upozornění by měl mít odkaz kliknete na převést skupinu dostupnosti. Jakmile se převést skupinu dostupnosti nebo pokud váš virtuální počítač není ve skupině dostupnosti, klikněte na **migrace** zahájíte proces migrace disků na managed disks. 
+5. Pokud se váš virtuální počítač je ve skupině dostupnosti, bude se upozornění na **migrace na spravované disky** okno, které je potřeba převést první skupinu dostupnosti. Upozornění by měl mít odkaz kliknete na převést skupinu dostupnosti. Jakmile se převést skupinu dostupnosti nebo pokud váš virtuální počítač není ve skupině dostupnosti, klikněte na **migrace** zahájíte proces migrace disků na managed disks.
 
 Virtuální počítač se zastaví a restartuje po dokončení migrace.
 

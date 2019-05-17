@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752266"
+ms.locfileid: "65794351"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure
 

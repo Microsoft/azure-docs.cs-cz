@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bf78cd9b70aa4a82ef96fdd529d3ee5b1641038c
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035354"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797385"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorování prostředků spotřeby a dotaz aktivity ve službě Azure Search
 
@@ -58,7 +58,7 @@ Služba Azure Search neukládá data nad rámec objekty, které spravuje, což z
 
 Následující tabulka porovnává možnosti pro ukládání protokolů a přidání podrobné monitorování operací služby a úlohy dotazů pomocí Application Insights.
 
-| Prostředek | Použití |
+| Resource | Použití |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Protokolované události a metriky dotazu, podle schémat níže, korelují s událostí uživatele ve vaší aplikaci. Toto je jediné řešení, která zohledňuje signály nebo akce uživatelů, událostí mapování z uživatelem iniciované hledání, na rozdíl od filtrovat žádosti odeslané kódem aplikace. Pokud chcete použít tento přístup, kopírování a vkládání kód instrumentace do zdrojových souborů pro informace o postupu žádosti do služby Application Insights. Další informace najdete v tématu [Analýza provozu vyhledávání](search-traffic-analytics.md). |
 | [Protokoly Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány k pracovnímu prostoru Log Analytics. Spusťte dotazy na pracovní prostor ke vrací podrobné informace z protokolu. Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
@@ -77,13 +77,15 @@ V této části se dozvíte, jak používat úložiště objektů Blob k uklád�
 
 1. [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pokud ho ještě nemáte. Je možné je umístit ve stejné skupině prostředků jako Azure Search pro zjednodušení vyčistit později, pokud chcete odstranit všechny prostředky používané v tomto cvičení.
 
+   Váš účet úložiště musí existovat ve stejné oblasti jako Azure Search.
+
 2. Otevřete stránku přehled vaší vyhledávací služby. V levém navigačním podokně přejděte dolů k položce **monitorování** a klikněte na tlačítko **povolit monitorování**.
 
    ![Povolit monitorování](./media/search-monitor-usage/enable-monitoring.png "povolit monitorování")
 
 3. Vyberte data, která chcete exportovat: Protokoly, metriky nebo obojí. Můžete zkopírovat do účtu úložiště, odesílat do centra událostí nebo ho exportovat protokoly Azure monitoru.
 
-   Pro archivaci do úložiště objektů Blob, musí existovat jenom účet úložiště. Kontejnery a objekty BLOB se vytvoří při exportu dat protokolu.
+   Pro archivaci do úložiště objektů Blob, musí existovat jenom účet úložiště. Kontejnery a objekty BLOB se vytvoří podle potřeby při exportu dat protokolu.
 
    ![Archivní úložiště objektů blob konfigurace](./media/search-monitor-usage/configure-blob-storage-archive.png "konfigurace objektu blob úložiště archivu")
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: HT
+ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702520"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602090"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje výkonu a metrik připojení, počítače a zpracování dat inventáře a informace o stavu a předá ji do pracovního prostoru Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [dotazu](../../azure-monitor/log-query/log-query-overview.md) ve službě Azure Monitor. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -77,7 +77,7 @@ Kromě metrik počet připojení informace o objemu dat odeslaných a přijatýc
 |:--|:--|
 |BytesSent |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
 |BytesReceived |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
-|Odezvy |Počet odpovědí zjištěnými časovém období vytváření sestav. 
+|Odpovědi |Počet odpovědí zjištěnými časovém období vytváření sestav. 
 |ResponseTimeMax |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
 |ResponseTimeMin |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
 |ResponseTimeSum |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
@@ -101,7 +101,7 @@ Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součást�
 
 | Vlastnost | Description |
 |:--|:--|
-|RemoteCountry |Název země hostování RemoteIp.  Například *USA* |
+|RemoteCountry |Název země/oblasti, který je hostitelem RemoteIp.  Například *USA* |
 |RemoteLatitude |Zeměpisná poloha, zeměpisná šířka. Například *47.68* |
 |RemoteLongitude |Informace o zeměpisné poloze délky. Například *-122.12* |
 
@@ -130,7 +130,7 @@ Porty na počítači, které aktivně přijímat příchozí provoz nebo potenci
 >- USA – východ  
 >- Západní Evropa
 >
-> Shromažďování těchto dat je povolená v jiném [podporované oblasti](vminsights-onboard.md#log-analytics) pro monitorování Azure pro virtuální počítače. 
+> Shromažďování těchto dat je povolená v jiném [podporované oblasti](vminsights-enable-overview.md#log-analytics) pro monitorování Azure pro virtuální počítače. 
 
 Každý záznam v VMBoundPort je identifikován následující pole: 
 

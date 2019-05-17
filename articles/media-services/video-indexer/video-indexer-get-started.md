@@ -12,10 +12,10 @@ ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: fca8dc31a0f909a1602819a2830d9bebbbda0c88
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65757166"
+ms.locfileid: "65799321"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý start: Jak se zaregistrovat a nahrání prvního videa
 

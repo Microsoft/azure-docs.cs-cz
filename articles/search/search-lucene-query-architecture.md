@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cb8e42400847ba9fb13568d05dffac86d9cec85f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024622"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797480"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak funguje fulltextové vyhledávání ve službě Azure Search
 
@@ -253,7 +253,7 @@ Je běžné, ale nejsou vyžadovány, používat stejné analyzátory pro hledá
 
 Vrací pro náš příklad pro **název** pole, index obrácenou vypadá například takto:
 
-| Označení | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | atman | 1 |
 | Beach | 2 |
@@ -267,7 +267,7 @@ V poli s názvem pouze *hotelu* zobrazí dva dokumenty: 1, 3.
 
 Pro **popis** pole indexu je následujícím způsobem:
 
-| Označení | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | AIR | 3
 | a | 4
@@ -288,8 +288,8 @@ Pro **popis** pole indexu je následujícím způsobem:
 | pobřeží | 2
 | Velké | 1
 | Na | 1, 2
-| na | 1
-| zobrazit | 1, 2, 3
+| do | 1
+| zobrazení | 1, 2, 3
 | procházení | 1
 | s | 3
 
@@ -392,8 +392,6 @@ Tento článek prozkoumali fulltextové vyhledávání v rámci služby Azure Se
 + Zjistěte, jak použít [specifické pro jazyk lexikální analyzátory](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Konfigurace vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo speciální zpracování na konkrétních polí.
-
-+ [Porovnat standardní a angličtině analyzátory](https://alice.unearth.ai/)) vedle sebe na tomto webu ukázku. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

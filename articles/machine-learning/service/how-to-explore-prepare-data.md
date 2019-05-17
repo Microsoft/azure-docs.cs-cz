@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409829"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603152"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Prozkoumejte a příprava dat pomocí třídy datové sady (Preview)
 
 Zjistěte, jak zkoumat a příprava dat pomocí [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). [Datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) třídy (preview) umožňuje prozkoumat a připravit data tím, že poskytuje funkce jako například: vzorkování, souhrnné statistiky a inteligentní transformace. Kroky transformace jsou uloženy v [definicích datových sad](how-to-manage-dataset-definitions.md) s vysoce škálovatelnou způsobem zpracovávat několik velkých souborů, různých schémat.
 
 > [!Important]
-> Některé třídy datové sady (preview) se závislostmi na sadu SDK Data Prep (GA). Při transformaci funkcí lze provést přímo s GA'ed [funkce sady SDK pro Data Prep](how-to-transform-data.md), doporučujeme obálky balíček datové sady jsou popsané v tomto článku, pokud vytváříte nové řešení. Sady Azure Machine Learning dat (preview) umožňuje nejen transformace dat, ale také [dat snímků](how-to-create-dataset-snapshots.md) a ukládat [definice verzí datové sady](how-to-manage-dataset-definitions.md). Datové sady je další verze sady SDK přípravy dat nabídky Rozšířené funkce pro správu datových sad v řešení AI.
+> Některé třídy datové sady (preview) mají závislosti [azureml přípravy](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) balíčku (GA). Při transformaci funkcí lze provést přímo s GA'ed [Data Prep funkce](how-to-transform-data.md), doporučujeme obálky balíček datové sady jsou popsané v tomto článku, pokud vytváříte nové řešení. Sady Azure Machine Learning dat (preview) umožňuje nejen transformace dat, ale také [dat snímků](how-to-create-dataset-snapshots.md) a ukládat [definice verzí datové sady](how-to-manage-dataset-definitions.md). Datové sady je další verze sady SDK přípravy dat nabídky Rozšířené funkce pro správu datových sad v řešení AI.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -121,7 +121,7 @@ dataset.get_profile()
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Číslo případu|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Datum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Zablokovat|FieldType.STRING|004XX LOŽIT KILBOURN|113XX LOŽIT PSOUNŮ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 Primární typ|FieldType.STRING|PODVODNÝ POSTUPEM|KRÁDEŽ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -310,7 +310,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 V následující tabulce Všimněte si, že nový sloupec, Date_Time_Range obsahuje záznamy ve formátu určeném.
 
-||ID|Datum|Date_Time_Range
+||ID|Date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10 PM-12 AM
 1|10516598|2016-04-15 17:00:00|2016-04-15, 16: 00 – 18: 00

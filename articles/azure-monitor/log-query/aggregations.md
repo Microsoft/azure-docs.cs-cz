@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589637"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602725"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregace v dotazů na protokoly Azure monitoru
 
@@ -31,7 +31,7 @@ Tento článek popisuje funkce agregace v dotazů na protokoly Azure monitoru, k
 
 ## <a name="counts"></a>Počty
 
-### <a name="count"></a>count
+### <a name="count"></a>počet
 Počet řádků v sadě výsledků po jsou použity nějaké filtry. Následující příklad vrátí celkový počet řádků v _výkonu_ tabulku z posledních 30 minut. Výsledek se vrátí v sloupec s názvem *count_* není-li přiřadit konkrétní název:
 
 
@@ -79,7 +79,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Vyhodnocení podskupiny
-Chcete-li provést počet nebo jiných agregací na podskupiny ve vašich datech, použijte `by` – klíčové slovo. Třeba ke zjištění počtu jedinečných počítačů se systémem Linux, které odeslaly prezenční signály v každé zemi:
+Chcete-li provést počet nebo jiných agregací na podskupiny ve vašich datech, použijte `by` – klíčové slovo. Třeba ke zjištění počtu jedinečných počítačů se systémem Linux, které odeslaly prezenční signály v každé zemi/oblast:
 
 ```Kusto
 Heartbeat 
@@ -96,7 +96,7 @@ Heartbeat
 |Nizozemsko      | 2                   |
 
 
-K analýze i menší podskupiny vašich dat, přidat další sloupce na `by` oddílu. Můžete například chtít počet jedinečných počítačů z každé země za OSType:
+K analýze i menší podskupiny vašich dat, přidat další sloupce na `by` oddílu. Můžete například chtít počet jedinečných počítačů z každé země/oblast a OSType:
 
 ```Kusto
 Heartbeat 

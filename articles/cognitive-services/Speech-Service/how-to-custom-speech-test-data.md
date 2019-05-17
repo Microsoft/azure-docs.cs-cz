@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 1e689d7ce65fda43e5657383ed44890c90c095cd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025880"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785776"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -142,7 +142,7 @@ To zahrnuje příklady mluvené slovo utterance a vlastní výslovnosti pro kaž
 |--------------|--------------------------|
 | o tři c p | 3CPO |  
 | k c n t | CNTK |
-| i ztrojnásobit e | IEE |
+| i ztrojnásobit e | IEEE |
 
 Mluvené slovo formuláře je zapsané ve fonetické sekvence států. To může být tvořen písmeno, slova, slabik nebo s použitím kombinace všech tří.
 

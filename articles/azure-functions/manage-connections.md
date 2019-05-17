@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e15d6ad445c3fdde0632c3ad468eee7da836a394
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020481"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785964"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -21,7 +21,7 @@ Funkce v aplikaci function app sdílení prostředků. Mezi tyto sdílené prost
 
 ## <a name="connection-limit"></a>Limit připojení
 
-Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení (aktuálně v 600 aktivní připojení a 1 200 celkový počet připojení)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) jednu instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
+Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je limit počtu připojení (aktuálně v 600 aktivní připojení a 1 200 celkový počet připojení) na instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
 
 Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-and-premium-plans-work) pro zpracování více požadavků, každá instance má limit nezávislé připojení. To znamená neomezený globální připojení, a máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
 

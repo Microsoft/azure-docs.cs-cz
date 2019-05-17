@@ -9,18 +9,18 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 48ebbabca8d38db3a7c1344981f79991de29df80
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d5bfa2426d58fa5a09d2203272536eec7fa9c55
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154401"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789960"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
 Azure Storage nabízí komplexní sadu možností zabezpečení, které společně umožňují vývojářům vytvářet zabezpečené aplikace:
 
-- Všechna data zapsaná do služby Azure Storage budou automaticky šifrována pomocí [šifrování služby Storage (SSE)](storage-service-encryption.md). Další informace najdete v tématu [oznamujeme výchozí šifrování objektů BLOB Azure, soubory, tabulky a fronty úložiště](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- (Včetně metadat) všechna data zapsaná do služby Azure Storage budou automaticky šifrována pomocí [šifrování služby Storage (SSE)](storage-service-encryption.md). Další informace najdete v tématu [oznamujeme výchozí šifrování objektů BLOB Azure, soubory, tabulky a fronty úložiště](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Azure Active Directory (Azure AD) a řízení přístupu na základě Role (RBAC) jsou podporovány pro službu Azure Storage pro operace správy zdrojů a operace s daty, následujícím způsobem:   
     - Můžete přiřadit role RBAC omezená na účet úložiště pro objekty zabezpečení a pomocí služby Azure AD povolit operace správy zdrojů, například správu klíčů.
     - Integrace se službou Azure AD je podporována pro operace s daty objektů blob a fronty. Můžete přiřadit role RBAC obor na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty k objektu zabezpečení nebo spravovanou identitu pro prostředky Azure. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).   
@@ -86,7 +86,7 @@ Tady jsou hlavní body, které je potřeba vědět o použití RBAC pro přístu
 * Předtím, než k nim můžete přiřadit roli, musí uživatel nastavil v Azure Active Directory.
 * Můžete vytvořit sestavu kdo udělit nebo odvolat jaký typ přístupu do nebo z kterého a na jaké oboru pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 * [Řízení přístupu na základě role v Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
@@ -146,7 +146,7 @@ Další výhodou používání služby Azure Key Vault je, že můžete také ř
 > [!NOTE]
 > Microsoft doporučuje používat pouze jeden z klíčů ve všech vašich aplikací ve stejnou dobu. Pokud používáte klíč 1 na některých místech a klíč 2 v jiných, nebude možné obměna klíčů bez některé aplikace došlo ke ztrátě přístupu.
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 
 * [Spravovat nastavení účtu úložiště na webu Azure Portal](storage-account-manage.md)
 * [Referenční informace o rozhraní REST API pro poskytovatele prostředků Azure Storage](https://msdn.microsoft.com/library/mt163683.aspx)
@@ -228,7 +228,7 @@ Pokud používáte SAS odvozené ze zásad přístupu uložené, může přístu
 
 Protože pomocí SAS odvozené ze zásad přístupu uložené poskytuje možnost neprodleně odvolat tento SAS, je doporučených osvědčených postupů a vždy uložené zásady přístupu použít pokud je to možné.
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 Podrobnější informace o použití sdílené přístupové podpisy a uložené zásady přístupu, včetně příkladů najdete v následujících článcích:
 
 * Jedná se o odkaz na články.
@@ -238,10 +238,9 @@ Podrobnější informace o použití sdílené přístupové podpisy a uložené
     Tento článek obsahuje příklady použití SAS úrovni služby s objekty BLOB, fronty zpráv, rozsahy tabulky a soubory.
   * [Vytváření SAS služby](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Vytváření SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx)
-* Jedná se o kurzy zaměřené na používání klientské knihovny .NET pro vytvoření sdílené přístupové podpisy a uložené zásady přístupu.
 
+* Tento kurz k vytvoření sdílené přístupové podpisy a uložené zásady přístupu pomocí klientské knihovny .NET je.
   * [Použití sdílených přístupových podpisů (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS pomocí služby Blob Service](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     Tento článek obsahuje vysvětlení modelu SAS, příklady sdílené přístupové podpisy a doporučení k osvědčeným postupem pomocí SAS. Odvolání oprávnění udělené popsány také je.
 
@@ -294,7 +293,7 @@ Příkladem, kdy tuto funkci můžete použít se, pokud máte webovou aplikaci,
 
 Pro šifrování, sama můžete vygenerovat a spravovat vlastní šifrovací klíče. Můžete použít také klíče generovaný klientskou knihovnu pro úložiště Azure, nebo můžete mít generování klíčů služby Azure Key Vault. Můžete uložit šifrovací klíče ve službě storage klíčů v místním nebo uložit je do služby Azure Key Vault. Služba Azure Key Vault můžete udělit přístup k tajným kódům ve službě Azure Key Vault na konkrétní uživatele pomocí služby Azure Active Directory. To znamená, ne jenom kdokoli si služby Azure Key Vault a načtení klíčů, které používáte pro šifrování na straně klienta.
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 * [Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   Tento článek ukazuje, jak pomocí šifrování na straně klienta se službou Azure Key Vault, včetně vytvoření klíče KEK a uložit v trezoru pomocí Powershellu.
@@ -335,7 +334,7 @@ Toto řešení nepodporuje následující scénáře, funkce a technologie ve vy
 
 Tato funkce zajišťuje, že všechna data na disky virtuálního počítače se šifrují při nečinnosti ve službě Azure Storage.
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 * [Azure Disk Encryption pro Windows a virtuální počítače s Linuxem v režimu IaaS](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Porovnání Azure Disk Encryption, SSE a šifrování na straně klienta
@@ -416,7 +415,7 @@ Máme tři případy, které nás zajímají.
 
 Microsoft Message Analyzer můžete použít k zobrazení a tyto protokoly analyzovat. Zahrnuje funkce, vyhledávání a filtrování. Například můžete chtít vyhledat výskyty GetBlob zobrazíte při využití, které jste očekávali, to znamená, aby se zajistilo někdo není přístup k účtu úložiště nesprávně.
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 * [Storage Analytics](../storage-analytics.md)
 
   Tento článek představuje přehled analýzy úložiště a jak je chcete povolit.
@@ -471,7 +470,7 @@ Zde je, co každý řádek znamená, že:
 * **ExposedHeaders** říká, které hlavičky odpovědi by se měly zobrazit v prohlížeči pro vystavitele žádosti. V tomto příkladu libovolné záhlaví počínaje "x-ms - meta-" se zveřejní.
 * **MaxAgeInSeconds** Toto je maximální množství času, že prohlížeč bude ukládat do mezipaměti předběžné požadavky OPTIONS. (Další informace o předběžný požadavek, zkontrolujte na první článek dole.)
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 Další informace o mechanismů jako CORS a jak se dá povolit projděte si tyto prostředky.
 
 * [Prostředků mezi zdroji (CORS) podporu pro služby Azure Storage na Azure.com pro sdílení obsahu](../storage-cors-support.md)
@@ -498,7 +497,7 @@ Další informace o mechanismů jako CORS a jak se dá povolit projděte si tyto
 
    Microsoft, zůstane až do každého zákazníka můžete rozhodnout, jestli chcete povolit režim FIPS. Věříme, že neexistuje žádný závažný důvod pro zákazníky, kteří nejsou podléhající vládním předpisům, pokud chcete povolit režim FIPS ve výchozím nastavení.
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Prostředky
 * [Proč jsme už není doporučující "Režimu FIPS" už](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   Tento blogový článek s přehledem podle standardu FIPS a vysvětluje, proč není umožňují režimu FIPS ve výchozím nastavení.

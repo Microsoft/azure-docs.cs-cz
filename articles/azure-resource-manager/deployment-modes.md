@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4d3a9c5e985949d813b638806f60bc86f5a163a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550576"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789273"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 
@@ -46,7 +46,9 @@ Pokud skupina prostředků je [uzamčen](resource-group-lock-resources.md), úpl
 
 ## <a name="incremental-mode"></a>Přírůstkový režim
 
-V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Pokud opětovného nasazení prostředků v přírůstkovém režimu, zadejte všechny hodnoty vlastností pro prostředek, nejen ty, které chcete aktualizovat. Pokud nezadáte určité vlastnosti, interpretuje Resource Manageru aktualizace jako přepsání těchto hodnot.
+V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
+
+Pokud však opětovného nasazení existující prostředek v přírůstkovém režimu, výsledek je jiný. Zadejte všechny vlastnosti prostředku, nejen ty, které chcete aktualizovat. Je běžné neporozumění myslíte, že jsou vlastnosti, které nejsou zadány vlevo beze změny. Pokud nezadáte určité vlastnosti, interpretuje Resource Manageru aktualizace jako přepsání těchto hodnot.
 
 ## <a name="example-result"></a>Příklad výsledku
 

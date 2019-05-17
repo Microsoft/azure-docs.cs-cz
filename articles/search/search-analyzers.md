@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61316825"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795801"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
@@ -40,7 +40,7 @@ Automaticky se používá na každé prohledávatelná pole. Můžete přepsat v
 
 Následující seznam popisuje, jaké analyzátory jsou k dispozici ve službě Azure Search.
 
-| Kategorie | Popis |
+| Category | Popis |
 |----------|-------------|
 | [Standardní analyzátor Lucene](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Výchozí). Vyžaduje se žádné specifikace nebo konfigurace. Tento analyzátor pro obecné účely provádí dobře pro většinu scénářů a jazyky.|
 | Předdefinované analyzátory | Nabízí jak finální produkt je určen pro použití jako-je. <br/>Existují dva typy: specializované a jazyk. Co je kvůli tomu je "předdefinovaný" můžete odkazovat pomocí názvu, bez konfigurace nebo přizpůsobení. <br/><br/>[Specializované (jazykově nezávislé) analyzátory](index-add-custom-analyzers.md#AnalyzerTable) se používají při textovými vstupy vyžadují speciální zpracování a minimální zpracování. Zahrnout předdefinované non jazykové analyzátory **Asciifolding**, **– klíčové slovo**, **vzor**, **jednoduché**, **Zastavit**, **Prázdné znaky**.<br/><br/>[Analyzátory jazyka](index-add-language-analyzers.md) se používají, když budete potřebovat bohatou jazykovou podporu pro jednotlivé jazyky. Služba Azure Search podporuje 35 Lucene jazykové analyzátory a 50 analyzátory zpracování přirozeného jazyka Microsoft. |
@@ -92,10 +92,6 @@ Přepsání standardního analyzátor vyžaduje opětovné sestavení indexu. Ro
 ### <a name="inspect-tokenized-terms"></a>Kontrola tokenizovaná podmínky
 
 Pokud se hledání nezdaří vrátit očekávané výsledky, je nejpravděpodobnější scénář token nesrovnalosti mezi termín vstupů v dotazu a tokenizovaná podmínky v indexu. Pokud tokeny nejsou stejné, odpovídá nepodaří sloučit. Chcete-li prověřit tokenizátor výstup, doporučujeme použít [analyzovat rozhraní API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) jako nástroj pro zkoumání. Odpověď se skládá z tokenů, generovaná konkrétní Analyzer.
-
-### <a name="compare-english-analyzers"></a>Porovnání anglické analyzátory
-
-[Ukázka analyzátoru hledání](https://alice.unearth.ai/) je třetí strany ukázkovou aplikaci ukazující srovnání vedle sebe standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Index je pevná; obsahuje text z oblíbených scénáře. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken, získáte tak představu o způsob, jak každý analyzátor zpracuje do jednoho řetězce. 
 
 <a name="examples"></a>
 
@@ -348,8 +344,6 @@ Vytvoření [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azu
 + Zjistěte, jak použít [specifické pro jazyk lexikální analyzátory](index-add-language-analyzers.md).
 
 + [Konfigurace vlastní analyzátory](index-add-custom-analyzers.md) pro minimální zpracování nebo speciální zpracování pro jednotlivá pole.
-
-+ [Porovnat standardní a angličtině analyzátory](https://alice.unearth.ai/) v sousední podokna na tomto webu ukázku. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

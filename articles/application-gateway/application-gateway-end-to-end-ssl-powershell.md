@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: a4ce1ad347742886e7d89a32bbeb60c2e0281409
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8c715cb84dff6e2e739de59aba33041ec1b8db52
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198565"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786283"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
 
@@ -231,6 +231,69 @@ Pomocí všech předchozích kroků vytvořte službu application gateway. Vytvo
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Použití nového certifikátu, pokud vypršela platnost certifikátu back-end
+
+Pomocí tohoto postupu použít nový certifikát, pokud vypršela platnost certifikátu back-end.
+
+1. Získat application gateway se aktualizovat.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. Přidat nový prostředek certifikátu ze souboru .cer, který obsahuje veřejný klíč certifikátu a může být také stejný certifikát přidat k naslouchacímu procesu pro ukončení protokolu SSL ve službě application gateway.
+
+   ```powershell
+   Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
+   ```
+    
+3. Získejte nový certifikát objekt ověřování do proměnné (název typu: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+
+   ```powershell
+   $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
+   ```
+ 
+ 4. Přiřadit nový certifikát do **BackendHttp** nastavení a odkazovat pomocí proměnné $AuthCert. (Zadejte název nastavení protokolu HTTP, který chcete změnit.)
+ 
+   ```powershell
+   $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
+   ```
+    
+ 5. Potvrdit změnu do aplikační brány a předat novou konfiguraci do proměnné $out obsažené.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw  
+   ```
+
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Odebrat nepoužité certifikát s prošlou platností z nastavení HTTP
+
+Tímto postupem můžete odebrat nepoužívané certifikát s prošlou platností z nastavení protokolu HTTP.
+
+1. Získat application gateway se aktualizovat.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. Uveďte název ověřovací certifikát, který chcete odebrat.
+
+   ```powershell
+   Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
+   ```
+    
+3. Ověřovací certifikát odeberte ze služby application gateway.
+
+   ```powershell
+   $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
+   ```
+ 
+ 4. Potvrďte změnu.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw
+   ```
+
+   
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Omezení verze protokolu SSL v existující aplikační bráně
 
 V předchozích krocích trvalo vás provedou vytvořením aplikace s protokolem SSL začátku do konce a zakázání určitých verzí protokolu SSL. Následující příklad zakazuje určitých zásad protokolu SSL v existující aplikační bráně.

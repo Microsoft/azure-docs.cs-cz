@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 584f30cc12aee722aed1079d5cefaee06d403cba
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867666"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790161"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -125,17 +125,11 @@ V Azure všechny nově vytvořené databáze SQL se šifrují ve výchozím nast
 
 [S funkcí Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) je funkce, navržená k ochraně citlivých dat uložené ve sloupcích konkrétní databázi z aplikace access (třeba čísla kreditních karet, národní identifikační čísla nebo data na _znát_ základ). To zahrnuje správce databáze nebo další privilegovaní uživatelé, kteří mají oprávnění pro přístup k databázi provádět úlohy správy, ale žádné nutně potřebují přístup k datům konkrétního v šifrované sloupce. Data jsou vždy šifrována, což znamená, že šifrovaná data se dešifrují jenom pro zpracování u klientských aplikací s přístupem k šifrovacímu klíči.  Šifrovací klíč se nikdy vystavena SQL a může být uložená buď v [Windows Store certifikát](sql-database-always-encrypted.md) nebo v [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
 
-### <a name="masking"></a>Maskování
+### <a name="dynamic-data-masking"></a>Dynamické maskování dat
 
 ![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-#### <a name="dynamic-data-masking"></a>Dynamické maskování dat
-
 Maskování dynamických dat SQL Database omezuje riziko ohrožení citlivých dat pomocí jejich maskování pro neoprávněné uživatele. Automaticky maskování dynamických dat zjišťuje potenciálně citlivá data ve službě Azure SQL Database a poskytuje užitečná doporučení pro maskování těchto polí s minimálním dopadem na aplikační vrstvu. Funguje tak, že maskuje citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. Další informace najdete v tématu [Začínáme s SQL Database dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md).
-
-#### <a name="static-data-masking"></a>Statická data maskování
-
-[Statické maskování dat](/sql/relational-databases/security/static-data-masking) je nástroj na straně klienta k dispozici v [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 18,0 ve verzi preview 5 a vyšší.  Statické maskování dat umožňuje uživatelům vytvoření kopie databáze, ve kterém byl trvale maskované data ve vybraných sloupcích. K dispozici funkce maskování patří NULL maskování, maskování jednu hodnotu, náhodně a maskování shuffle skupiny a řetězec složené maskování. Maskované kopii databáze budou moct oddělení produkční a testovací prostředí sdílením maskované kopírování organizace. Dostatečně ochranu citlivých dat a všechny ostatní vlastnosti databáze pravděpodobně nebyla zachována. Maskování databáze se doporučuje, ve kterém jsou vyžadována třetích stran přístup k databázím.
 
 ## <a name="security-management"></a>Správa zabezpečení
 
@@ -153,7 +147,7 @@ Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozší
 
 Další informace najdete v tématu [začít pracovat s zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md).
 
-### <a name="compliance"></a>Dodržování předpisů
+### <a name="compliance"></a>Kompatibilita
 
 Kromě výše uvedených funkcí a funkci, která může pomoci vaší aplikace vyhovět různým nárokům na zabezpečení, Azure SQL Database také účastní pravidelných auditů a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
 

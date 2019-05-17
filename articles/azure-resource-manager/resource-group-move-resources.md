@@ -1,23 +1,17 @@
 ---
 title: Přesunout prostředky Azure pro nové předplatné nebo skupinu prostředků | Dokumentace Microsoftu
 description: Použití Azure Resource Manageru k přesunutí prostředků do nové skupiny prostředků nebo předplatného.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 076d120d9c02b15837e92b71bc2a015377f54594
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698493"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792702"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -25,7 +19,7 @@ Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatné
 
 Během operace přesunu jsou zamknuté skupiny zdrojové i cílové skupině. Zápis a odstranění operace jsou blokovány o skupinách prostředků, až do dokončení přechodu. Tento Zámek znamená, že nelze přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků, ale neznamená, že prostředky jsou zmražená. Například při přesunutí serveru SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která používá databázi prostředí bez výpadků. Můžete nadále číst a zapisovat do databáze.
 
-Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředků. Operace přesunu nemůže změnit umístění prostředku. Nová skupina prostředků může mít jiné umístění, ale to se nemění umístění prostředku.
+Přesunutí prostředku pouze přesune do nové skupiny prostředků. Operace přesunu nemůže změnit umístění prostředku. Nová skupina prostředků může mít jiné umístění, ale to se nemění umístění prostředku.
 
 > [!NOTE]
 > Tento článek popisuje, jak přesouvání prostředků mezi existující předplatná Azure. Pokud chcete skutečně upgradovat vaše předplatné Azure (např. přechod z bezplatné na průběžné platby), musíte převést vaše předplatné.
@@ -74,7 +68,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * CDN
 * Cloudové služby - viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry
+* Registr kontejnerů
 * Content Moderator
 * Cost Management
 * Customer Insights
@@ -97,7 +91,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#monitor-limits)
-* Notification Hubs
+* Centra oznámení
 * Operational Insights
 * Správa operací
 * Portálu řídicích panelů
@@ -105,7 +99,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Veřejná IP adresa – základní veřejnou IP adresu SKU je možné přesunout. Standardní veřejné IP adresy skladové položky nelze přesunout.
 * Služby Recovery Services vault – zaregistrujte se do [ve verzi preview](#recovery-services-limitations).
 * SAP HANA v Azure
-* Scheduler
+* Plánovač
 * Search – několik hledání prostředky nejde přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
 * Service Bus
 * Service Fabric
@@ -113,6 +107,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Služba SignalR
 * Úložiště – účty úložiště v různých oblastech se nedají přesouvat v rámci jedné operace. Místo toho použijte samostatné operace pro každou oblast.
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
+* Služba synchronizace úložiště
 * Stream Analytics – Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
 * Server služby SQL Database – databáze a serveru musí být ve stejné skupině prostředků. Přesunete-li SQL server, přesunou také všechny jeho databáze. Toto chování platí pro databáze Azure SQL Database a Azure SQL Data Warehouse.
 * Time Series Insights
@@ -138,14 +133,14 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Azure NetApp Files
 * Certifikáty – certifikáty App Service je možné přesunout, ale mají odeslané certifikáty [omezení](#app-service-limitations).
 * Klasické aplikace
-* Container Instances
+* Instance kontejnerů
 * Container Service
 * Data Box
 * Vývoj mezery
 * Dynamics LCS
 * ExpressRoute
 * Služby testovacího prostředí – testovacím prostředím v Učebnách nelze přesunout do nové skupiny prostředků nebo předplatného. DevTest Labs můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
-* Managed Applications
+* Spravované aplikace
 * Microsoft Genomics
 * Zabezpečení
 * Site Recovery
@@ -472,7 +467,7 @@ Během operace je stále spuštěna, můžete nadále přijímat 202 stavový k�
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
 ```
 
-## <a name="move-resources"></a>Přesunutí prostředků
+## <a name="move-resources"></a>Přesunout prostředky
 
 ### <a name="a-nameuse-portal-by-using-azure-portal"></a><a name="use-portal" />Pomocí webu Azure portal
 

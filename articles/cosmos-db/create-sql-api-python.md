@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 91a5bf71983511f58fc13a0edf4a1109c3829602
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 297f71cef41f91a2e9595a0ccca08e2803bd6201
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410682"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787312"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Sestavení aplikace v Pythonu pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -60,14 +60,19 @@ Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
-    ```bash
-    md "C:\git-samples"
+    ```cmd
+    md "git-samples"
     ```
+   Pokud používáte příkazový řádek bash, by měl místo toho použijte následující příkaz:
+
+   ```bash
+   mkdir "git-samples"
+   ```
 
 2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
 
     ```bash
-    cd "C:\git-samples"
+    cd "git-samples"
     ```
 
 3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace. 
@@ -84,7 +89,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
-2. Otevřete v aplikaci Visual Studio Code soubor `CosmosGetStarted.py`, který se nachází ve složce C:\git-samples\azure-cosmos-db-python-getting-started.
+2. Otevřít `CosmosGetStarted.py` souboru v \git-samples\azure-cosmos-db-python-getting-started ve Visual Studio Code.
 
 3. Z portálu zkopírujte hodnotu identifikátoru **URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče **endpoint** v souboru ``CosmosGetStarted.py``. 
 
@@ -180,7 +185,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted
 4. V okně integrovaného terminálu zkontrolujte, že jste ve složce azure-cosmos-db-python-getting-started. Pokud ne, spusťte následující příkaz, abyste do složky ukázky přešli. 
 
     ```
-    cd "C:\git-samples\azure-cosmos-db-python-getting-started"`
+    cd "\git-samples\azure-cosmos-db-python-getting-started"`
     ```
 
 5. Spuštěním následujícího příkazu nainstalujte balíček azure-cosmos. 

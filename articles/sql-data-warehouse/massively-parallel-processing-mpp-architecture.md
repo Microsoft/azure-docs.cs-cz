@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse – architektura MPP | Dokumentace Microsoftu
 description: Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti.
 services: sql-data-warehouse
-author: ronortloff
+author: happynicolle
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: nicw
 ms.reviewer: igorstan
-ms.openlocfilehash: 0c2ad7e5a707c20db2773324e8047eedaad1a48b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3cdd464dffc810e76cf101ac70c2a14bbc4f9ff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61076952"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790722"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
 Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
@@ -39,9 +39,9 @@ Díky oddělenému úložišti a výpočetním prostředkům může SQL Data War
 ### <a name="azure-storage"></a>Úložiště Azure
 SQL Data Warehouse využívá úložiště Azure k bezpečnost vašich dat uživatele.  Vzhledem k tomu, že se vaše data ukládají a spravovaných službou Azure storage, SQL Data Warehouse samostatně poplatky za spotřebu úložiště. Vlastní data se horizontálně dělené do **distribuce** za účelem optimalizace výkonu v systému. Můžete zvolit, které model horizontálního dělení na slouží k distribuci dat při definování tabulky. SQL Data Warehouse podporuje tyto vzory horizontálního dělení:
 
-* Hodnota hash
-* Kruhové dotazování.
-* Replikace
+* Hash
+* Kruhové dotazování
+* Replikovat
 
 ### <a name="control-node"></a>Řídicí uzel
 

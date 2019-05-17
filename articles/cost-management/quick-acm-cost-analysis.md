@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 881abf48a1dda3b008e5946096cdcadb1f157d25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b4302713188237b97ffbe8473f6a37edd6741b36
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682628"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793096"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Zkoumání a analýzy náklady pomocí Cost analysis
 
@@ -69,7 +69,7 @@ Počáteční zobrazení analýzy nákladů zahrnuje tyto oblasti:
 
 ## <a name="customize-cost-views"></a>Přizpůsobení zobrazení nákladů
 
-Analýza nákladů obsahuje čtyři integrované zobrazení, optimalizovaný pro nejčastěji používané cíle: 
+Analýza nákladů obsahuje čtyři integrované zobrazení, optimalizovaný pro nejčastěji používané cíle:
 
 Zobrazení | Odpovězte na otázky jako...
 --- | ---
@@ -96,7 +96,7 @@ Obecně můžete očekávat zobrazíte data nebo oznámení o spotřebovaných p
 
 **Seskupit podle** společné vlastnosti rozdělit náklady a identifikovat hlavní přispěvatelé. Seskupit podle značek prostředků, jako instanci vyberte klíč značky, které chcete seskupit. Náklady jsou rozdělené podle každá hodnota značky, další segment pro prostředky, které nemají dané klíčové slovo použít.
 
-Většina [prostředky Azure podporují označování](../azure-resource-manager/tag-support.md), ale některé značky nejsou k dispozici ve službě Cost Management a fakturace. Kromě toho skupiny značky prostředku se nepodporují. Služba Cost Management podporuje pouze značky prostředků ode dne, kdy jsou značky použít přímo na prostředek.
+Většina [prostředky Azure podporují označování](../azure-resource-manager/tag-support.md), ale některé značky nejsou k dispozici ve službě Cost Management a fakturace. Kromě toho skupiny značky prostředku se nepodporují. Služba Cost Management podporuje pouze značky prostředků ode dne, kdy jsou značky použít přímo na prostředek. Podívejte [kontrola zásady pro značky ve službě Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) videa Další informace o použití zásad Azure značky – kvůli zlepšení viditelnosti náklady na data.
 
 Tady je zobrazení nákladů na služby Azure pro zobrazení minulého měsíce.
 

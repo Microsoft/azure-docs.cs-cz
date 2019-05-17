@@ -16,18 +16,22 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 95acda60935e82b226a1a0e860b5fa8effb8e47e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e5a7bfc243fc8c797ffc66b2130756567ddc0fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325693"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795782"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrovat databázi SQL Serveru na SQL Server na virtuálním počítači Azure
 
 Existuje několik metod migrovat databázi uživatele v místním SQL serveru na SQL Server na Virtuálním počítači Azure. Tento článek stručně popisují různé metody a doporučuje nejlepší metody pro různé scénáře.
 
+
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+
+  > [!NOTE]
+  > SQL Server 2008 a SQL Server 2008 R2 se začali přibližovat [konci svého životního cyklu podpory](https://www.microsoft.com/sql-server/sql-server-2008) pro své místní instance. K rozšíření podpory, můžete migrovat na instanci systému SQL Server na Virtuálním počítači Azure nebo zakoupit rozšířené aktualizace zabezpečení, aby byl v místním. Další informace najdete v tématu [rozšíření podpory pro SQL Server 2008 a 2008 R2 s Azure](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
 
 ## <a name="what-are-the-primary-migration-methods"></a>Co jsou metody migrace?
 Primární migrací metody jsou následující:
@@ -96,7 +100,7 @@ Tuto metodu použijte k migraci všech systémových a uživatelských databáz�
 ## <a name="ship-hard-drive"></a>Dodávejte pevného disku
 Použití [metodu služby Import/Export Windows](../../../storage/common/storage-import-export-service.md) přenášet velké objemy souborových dat do úložiště objektů Blob v Azure v situacích, kdy nahrávání přes síť nepřekonatelně drahé nebo není vhodná. K této službě odesílat jeden nebo více pevné disky obsahující data do datového centra Azure, ve kterém se nahraje vaše data do účtu úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o spuštění SQL serveru na virtuálních počítačích Azure najdete v tématu [systému SQL Server na Azure Virtual Machines – přehled](virtual-machines-windows-sql-server-iaas-overview.md).
 
 > [!TIP]

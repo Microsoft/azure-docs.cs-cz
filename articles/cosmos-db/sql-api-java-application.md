@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: a915792ad5cd1352c666f8224345c54e278ab899
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e276980235494f7f808510889bda91761cb76544
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870069"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794604"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Sestavení webové aplikace Java využívající službu Azure Cosmos DB a rozhraní SQL API
 
@@ -50,9 +50,9 @@ Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Web Azure se zapnutou platformou Java Runtime Environment (např. Tomcat nebo Jetty)](../app-service/app-service-web-get-started-java.md)
 
-Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje návod, jak proces instalace v části rychlý Start jejich [kurzu: Instalace TomCat7 a jeho použití s Eclipse](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) článku.
+Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje návod, jak proces instalace v části rychlý Start jejich [kurzu: Instalace TomCat7 a jeho použití s Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) článku.
 
-## <a id="CreateDB"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
+## <a id="CreateDB"></a>Krok 1: Vytvořit účet Azure Cosmos DB
 Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [krok 2: Vytvoření aplikace Java JSP](#CreateJSP).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]

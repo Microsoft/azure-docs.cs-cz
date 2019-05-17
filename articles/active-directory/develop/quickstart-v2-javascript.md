@@ -16,16 +16,14 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 605206682cb70d430773cdbf9ff746eabf594103
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 23003186aa413e313578c57616ae03c435f140e1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190847"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785400"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z jednostránkové aplikace (SPA) jazyka JavaScript
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který ukazuje, jak JavaScript jednostránková aplikace (SPA) můžou osobní účty, pracovní a školní účty a získání přístupového tokenu pro volání rozhraní Microsoft Graph API nebo libovolné webové rozhraní API.
 
@@ -55,7 +53,7 @@ Pro účely tohoto rychlého startu budete potřebovat následující nastavení
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.

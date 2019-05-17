@@ -3,8 +3,8 @@ title: Pochopení toku kódu ověřování OpenID Connect ve službě Azure AD |
 description: Tento článek popisuje, jak používat zprávy HTTP k autorizaci přístupu k webovým aplikacím a webovým rozhraním API ve vašem tenantovi pomocí služby Azure Active Directory a OpenID Connect.
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/4/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 051d3faf5cea24e33f1e6560abc2d039c1059c91
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251677"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784967"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a službou Azure Active Directory
 
@@ -95,11 +95,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |povinné |`{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou identifikátory klientů, třeba `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` tokeny nezávislé na tenanta |
 | client_id |povinné |ID aplikace přiřazené vaší aplikaci, když je zaregistrován ve službě Azure AD. To můžete najít na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, zvolte aplikaci a vyhledejte číslo ID aplikace na stránce aplikace. |
 | response_type |povinné |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může také zahrnovat další response_types, jako například `code` nebo `token`. |
-| scope | Doporučené | Specifikace OpenID Connect vyžaduje obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. Tato a další obory OIDC se ignorují v koncových bodech v1.0, ale stále je to osvědčený postup pro klienty vyhovuje standardům. |
+| obor | Doporučené | Specifikace OpenID Connect vyžaduje obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. Tato a další obory OIDC se ignorují v koncových bodech v1.0, ale stále je to osvědčený postup pro klienty vyhovuje standardům. |
 | Hodnota Nonce |povinné |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je zahrnutá ve výsledné `id_token` jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec nebo identifikátor GUID, který slouží k určení původu žádosti. |
 | redirect_uri | Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pokud chybí, pošle uživatelského agenta zpět na přesměrování, na které registrovaný kód URIs pro aplikace, náhodně. Maximální délka je 255 bajtů |
 | response_mode |nepovinné |Určuje metodu, která se má použít k odeslání výsledný authorization_code zpět do aplikace. Podporované hodnoty jsou `form_post` pro *HTTP post formuláře* a `fragment` pro *fragment adresy URL*. Pro webové aplikace, doporučujeme používat `response_mode=form_post` k zajištění nejvyšší zabezpečení přenosu tokeny do vaší aplikace. Ve výchozím nastavení všech toků, včetně tokentu id_token `fragment`.|
-| state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
+| stav |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | řádek |nepovinné |Určuje typ interakce s uživatelem, který je požadován. V současné době pouze platné hodnoty jsou "přihlášení", "žádný" a "souhlas". `prompt=login` donutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování. `prompt=none` je opakem – zajišťuje, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod vrátí chybu. `prompt=consent` aktivační události OAuth souhlas dialogové okno po přihlášení uživatele, s výzvou uživateli udělit oprávnění k aplikaci. |
 | login_hint |nepovinné |Umožňuje předem vyplnit pole uživatelské jméno nebo e-mailová adresa stránky přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem. Tento parametr použijte, často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 
@@ -107,7 +107,7 @@ V tomto okamžiku je uživatel vyzván k zadání přihlašovacích údajů a by
 
 ### <a name="sample-response"></a>Ukázková odpověď
 
-Ukázkové odpovědi, až uživatel byl ověřen, může vypadat například takto:
+Ukázkové odpovědi, odesílat `redirect_uri` zadaná v žádosti o přihlášení po uživatel byl ověřen, může vypadat například takto:
 
 ```
 POST / HTTP/1.1
@@ -120,7 +120,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Parametr | Popis |
 | --- | --- |
 | id_token |`id_token` Požadovanou aplikaci. Můžete použít `id_token` ověřit identitu uživatele a zahájit relaci s uživatelem. |
-| state |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
+| stav |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 
 ### <a name="error-response"></a>Odpověď na chybu
 
@@ -136,7 +136,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
+| chyba |Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
 | error_description |Určité chybové zprávě, který vám pomůže vývojář zjistit původní příčinu chyby ověřování. |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Kódy chyb pro chyby koncový bod autorizace
@@ -216,7 +216,7 @@ Včetně obory oprávnění v požadavku a použitím `response_type=code+id_tok
 
 ### <a name="successful-response"></a>Úspěšné odpovědi
 
-Úspěšné odpovědi pomocí `response_mode=form_post` vypadá jako:
+Úspěšná odpověď zaslána `redirect_uri` pomocí `response_mode=form_post`, vypadá podobně jako:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -230,7 +230,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | --- | --- |
 | id_token |`id_token` Požadovanou aplikaci. Můžete použít `id_token` ověřit identitu uživatele a zahájit relaci s uživatelem. |
 | kód |Authorization_code požadovanou aplikaci. Aplikace může používat autorizační kód k vyžádání tokenu pro cílový prostředek. Authorization_codes jsou krátké žít a obvykle vyprší po přibližně 10 minut. |
-| state |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
+| stav |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 ### <a name="error-response"></a>Odpověď na chybu
 
@@ -246,7 +246,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
+| chyba |Řetězec kódu chyby, která slouží ke klasifikaci typy chyb, ke kterým dochází a je možné reagovat na chyby. |
 | error_description |Určité chybové zprávě, který vám pomůže vývojář zjistit původní příčinu chyby ověřování. |
 
 Popis kódů chyb a jejich akci doporučenou klientskou najdete v tématu [kódy chyb pro chyby koncový bod autorizace](#error-codes-for-authorization-endpoint-errors).

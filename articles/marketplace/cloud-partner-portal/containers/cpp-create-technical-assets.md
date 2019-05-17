@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 32002f8b88a2fbeba29f15b3b9289ecf3d7560d0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942734"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794346"
 ---
 # <a name="prepare-your-container-technical-assets"></a>Příprava kontejneru technické prostředky
 
@@ -53,9 +53,10 @@ Doporučujeme také kontrola nástroje dostupné v [Azure Developer Tools](https
 
 ## <a name="create-the-container-image"></a>Vytvořte image kontejneru
 
-- Vytvoření a konfigurace virtuálního pevného disku (VHD) pro váš kontejner virtuální počítač (VM). Tento virtuální pevný disk obsahuje operační systém (Windows, Linux a Ubuntu) pro kontejner. Další datové disky se může vyžadovat.
-- Konfigurace operačního systému virtuálního počítače, velikost virtuálních počítačů, portech a jakýchkoliv připojených datových disků.
-- Instalace aplikace a další software, který je nezbytný pro vaši nabídku. Příklad: databázový software, software třetích stran nebo vlastních aplikací.
+Si přečtěte následující informace:
+
+* [Kurz: Vytvoření image kontejneru pro nasazení do služby Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [Kurz: Sestavování a nasazování imagí kontejnerů v cloudu pomocí služby Azure Container Registry úlohy](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>Další postup
 

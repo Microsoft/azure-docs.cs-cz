@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373313"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604278"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -81,7 +81,7 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
   * Microsoft.ApplicationInsights.Platform
 * Vložení položky do:
 
-  * Soubor web.config
+  * Web.config
   * packages.config
 * (Nové projekty pouze – pokud jste [přidat službu Application Insights do existujícího projektu][start], budete muset provést ručně.) Vloží fragmenty do kódu klienta a serveru inicializace s ID prostředku Application Insights. V aplikaci MVC, například kód je vložen do stránky předlohy Views/Shared/_Layout.cshtml
 
@@ -132,7 +132,7 @@ Ano, na serveru můžete psát:
 
 Další informace pro [ASP.NET](api-filtering-sampling.md) nebo [Java](java-filter-telemetry.md).
 
-## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Jak se počítají města, země a další geografické umístění dat?
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Jak se počítají města, země/oblast a další geografické umístění dat?
 
 Podíváme se IP adresa (IPv4 nebo IPv6) webového klienta pomocí [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 

@@ -9,12 +9,12 @@ ms.date: 01/18/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 515081ca14d1c477f20d86e84ce302b5358bfaae
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7006e19616be51d79dc3e1319064d19024400bcc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150058"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789982"
 ---
 # <a name="azure-storage-redundancy"></a>Azure redundance úložiště
 
@@ -52,7 +52,7 @@ Informace o službě Azure Storage záruky dostupnosti a odolnosti najdete v čl
 > Premium Storage podporuje jen místně redundantní úložiště (LRS).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
-Strategie replikace účtu úložiště můžete změnit pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden z [klient služby Azure knihovny](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
+Strategie replikace účtu úložiště můžete změnit pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden z [klient služby Azure knihovny](https://docs.microsoft.com/azure/index#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
 
    > [!NOTE]
    > V současné době nelze použít na portálu nebo rozhraní API pro převod účtu na ZRS. Pokud chcete převést svůj účet replikaci ZRS, přečtěte si téma [zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md) podrobnosti.
