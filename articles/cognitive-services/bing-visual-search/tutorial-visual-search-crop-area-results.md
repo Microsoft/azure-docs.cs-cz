@@ -3,19 +3,19 @@ title: 'Kurz: Oříznutí obrázku se sadou SDK vizuální vyhledávání Bingu'
 description: Pomocí sady SDK vizuální vyhledávání Bingu získáte přehledné informace od konkrétní arech na bitovou kopii.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: rosh
-ms.openlocfilehash: a6a98d9ddf76e86feb35c6d3d71f7777b0edd51d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7c3fc67dbeac71530d9c5ddedc609296023fe901
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109974"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796523"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Kurz: Oříznutí obrázku s SDK vizuální vyhledávání Bingu proC#
 

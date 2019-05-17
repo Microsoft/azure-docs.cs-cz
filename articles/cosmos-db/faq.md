@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e4ae9b7c96677ce494bea31a49b8db83d6bcb3c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890539"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793788"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -222,7 +222,7 @@ Azure Cosmos DB Vynutí striktní bezpečnostní požadavky a standardy. Účty 
 
 Další informace najdete v tématu [připojit k databázi Cosmos s rozhraním API služby Azure Cosmos DB pro MongoDB](connect-mongodb-account.md).
 
-Existují další chybové kódy, které je potřeba zabývat při používání služby Azure Cosmos DB přes rozhraní API pro MongoDB?
+### <a name="are-there-additional-error-codes-that-i-need-to-deal-with-while-using-azure-cosmos-dbs-api-for-mongodb"></a>Existují další chybové kódy, které je potřeba zabývat při používání služby Azure Cosmos DB přes rozhraní API pro MongoDB?
 
 Spolu s běžné kódy chyb MongoDB API Azure Cosmos DB pro MongoDB má svůj vlastní konkrétních kódech chyb:
 

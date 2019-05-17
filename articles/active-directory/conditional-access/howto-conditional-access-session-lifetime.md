@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190224"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65766875"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace ověřování relace správy s podmíněným přístupem
 
@@ -80,7 +80,7 @@ Pokud jste nakonfigurovali jinou frekvencí přihlášení pro jiné webové apl
 1. Vyberte všechny požadované podmínky.
 
    > [!NOTE]
-   > Mějte prosím na paměti, že tento ovládací prvek požaduje zvolit "Všechny cloudové aplikace" jako podmínku
+   > Mějte prosím na paměti, že tento ovládací prvek požaduje zvolit "Všechny cloudové aplikace" jako podmínku. Trvalost relace prohlížeče se řídí ověřování tokenu relace. Všechny karty v relaci prohlížeče sdílet jednu relaci token a proto všechny musí sdílet trvalého stavu.
 
 1. Přejděte na **ovládacích prvků přístupu** > **relace** a klikněte na tlačítko **trvalé prohlížeče relace**
 1. Vyberte hodnotu z rozevíracího seznamu
@@ -91,7 +91,7 @@ Pokud jste nakonfigurovali jinou frekvencí přihlášení pro jiné webové apl
 > [!NOTE]
 > Trvalé konfigurace relace prohlížeče v podmíněného přístupu Azure AD se přepíšou "zůstat přihlášení?" nastavení firemního brandingu podokně webu Azure Portal pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
 
-## <a name="validation"></a>Ověření
+## <a name="validation"></a>Ověřování
 
 Použijte nástroj What If pro simulaci přihlášení od uživatele pro cílovou aplikaci a jiných podmínek založených na tom, jak jste nakonfigurovali zásady. Ovládací prvky ověřování relací správu se zobrazí ve výsledku tohoto nástroje.
 

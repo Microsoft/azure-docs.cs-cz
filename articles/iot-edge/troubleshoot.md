@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142864"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797614"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -351,7 +351,7 @@ Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomoc�
 
 I když IoT Edge poskytuje rozšířené konfigurace pro zabezpečení modulu runtime Azure IoT Edge a nasadit moduly, je stále závislá na základní konfiguraci počítače a sítě. Proto je nezbytné k zajištění řádné síťové a pravidla brány firewall jsou nastavené pro zabezpečené hraničními zařízeními a cloudovým komunikace. V následující tabulce slouží jako vodítko při konfiguraci brány firewall pravidla pro základní servery je hostitelem modulu runtime Azure IoT Edge:
 
-|Protocol (Protokol)|Port|příchozí|Odchozí|Doprovodné materiály|
+|Protocol|Port|příchozí|Odchozí|Doprovodné materiály|
 |--|--|--|--|--|
 |MQTT|8883|BLOKOVANÉ (výchozí)|BLOKOVANÉ (výchozí)|<ul> <li>Nakonfigurujte odchozí (odchozí) být otevřít, když jako protokol pro komunikaci pomocí protokolu MQTT.<li>IoT Edge není podporován. 1883 pro MQTT. <li>Příchozí připojení (příchozí) by se zablokovat.</ul>|
 |AMQP|5671|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Výchozí komunikační protokol pro IoT Edge. <li> Musí být nakonfigurován Open Azure IoT Edge není nakonfigurovaný pro jiné podporované protokoly nebo je požadovaný komunikační protokol AMQP.<li>5672 pro AMQP nepodporuje IoT Edge.<li>Blokovat tento port při použití Azure IoT Edge různé IoT Hub podporovaný protokol.<li>Příchozí připojení (příchozí) by se zablokovat.</ul></ul>|
@@ -383,7 +383,7 @@ Místo `daemon.json` na správném místě pro vaši platformu:
 | Platforma | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| Hostitel Windows s kontejnery Windows | `C:\ProgramData\iotedge-moby-data\config` |
+| Hostitel Windows s kontejnery Windows | `C:\ProgramData\iotedge-moby\config` |
 
 Pokud umístění již obsahuje `daemon.json` přidejte **dns** klíče k němu a soubor uložte.
 

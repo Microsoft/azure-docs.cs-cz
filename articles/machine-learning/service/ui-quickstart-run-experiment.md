@@ -9,12 +9,12 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440950"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545040"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Rychlý start: Příprava a vizualizace dat, aniž byste museli psát kód ve službě Azure Machine Learning
 
@@ -99,13 +99,13 @@ Vyberte sloupce, které dat pro práci s.  Začněte tím konfigurace modulu k z
    
 1. Vyberte **výběr sloupců v datové sadě** modulu.
 
-1. V **vlastnosti** podokně napravo od plátna vyberte **spustit selektor sloupců**.
+1. V **vlastnosti** podokně napravo od plátna vyberte **upravit sloupce**.
 
     V **vyberte sloupce, které** dialogového okna, vyberte **všechny sloupce** a zahrnují **všechny funkce**. Dialogové okno by měl vypadat nějak takto:
 
      ![selektor sloupců](./media/ui-quickstart-run-experiment/select-all.png)
 
-1. V dolní pravé vyberte tlačítko zaškrtnutí (OK) zavřete selektor sloupců.
+1. Vpravo dole vyberte **OK** zavřete selektor sloupců.
 
 ## <a name="run-the-experiment"></a>Spusťte experiment.
 
@@ -146,13 +146,13 @@ Nejdřív odeberte **normalized-losses** sloupec úplně.
 
 1. Vyberte **výběr sloupců v datové sadě** modulu.
 
-1. V **vlastnosti** podokně napravo od plátna vyberte **spustit selektor sloupců**.
+1. V **vlastnosti** podokně napravo od plátna vyberte **upravit sloupce**.
 
     * Ponechte **s pravidly** a **všechny sloupce** vybrané.
 
     * V rozevíracích seznamech vyberte **Vyloučit** a **názvy sloupců** a klikněte do textového pole. Typ **normalized-losses**.
 
-    * V dolní pravé vyberte tlačítko zaškrtnutí (OK) zavřete selektor sloupců.
+    * Vpravo dole vyberte **OK** zavřete selektor sloupců.
 
     ![Vyloučení sloupce](./media/ui-quickstart-run-experiment/exclude-column.png)
         

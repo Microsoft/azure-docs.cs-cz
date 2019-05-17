@@ -3,19 +3,19 @@ title: 'Rychlý start: Hledat pomocí sady SDK pro vyhledávání Bingu videa pr
 titleSuffix: Azure Cognitive Services
 description: Použít tento rychlý start k odesílání požadavků pro vyhledávání videí pomocí Bingu videa hledání sady SDK pro C#.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: e10d9088f6de3b7a3a638cdbe18f51425d206b7b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473276"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798183"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Rychlý start: Provést hledání videí pomocí Bingu videa hledání sady SDK proC#
 
@@ -23,10 +23,10 @@ V tomto rychlém startu můžete zahájit hledání zpráv pomocí sady SDK pro 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
+* Libovolná edice [sady Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
 * Rozhraní Json.NET, k dispozici [jako balíček NuGet](https://www.nuget.org/packages/Newtonsoft.Json/).
 
-Přidat sadu SDK vyhledávání Bingu videa do projektu, přejděte `Manage NuGet Packages` možnost z Průzkumníku řešení v sadě Visual Studio.  Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.VideoSearch`.
+Chcete-li přidat do projektu sady SDK Video vyhledávání Bingu, **spravovat balíčky NuGet** z **Průzkumníka řešení** v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.VideoSearch`.
 
 Instalace [[balíčku NuGet Video Search SDK]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) nainstaluje taky následující závislosti:
 

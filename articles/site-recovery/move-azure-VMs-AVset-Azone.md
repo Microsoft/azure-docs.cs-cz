@@ -10,10 +10,10 @@ ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65759329"
+ms.locfileid: "65793745"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesuňte virtuální počítače Azure do zóny dostupnosti
 Zóny dostupnosti v Azure pomáhají chránit vaše aplikace a data před selháními datových center. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99 % provozuschopnost virtuálních počítačů (VM). Ve vybraných oblastech se podporují zóny dostupnosti, jak je uvedeno v [co jsou zóny dostupnosti v Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).

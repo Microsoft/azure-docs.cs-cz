@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023957"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793629"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
 
- ![Ukázka portálu úlohy Azure Search][1]
+ ![Služba Azure Search úlohy portálu ukázka](media/search-faceted-navigation/azure-search-faceting-example.png "portálu ukázkové úlohy Azure Search")
 
 Fasetová navigace je alternativní vstupní bod pro hledání. Nabízí vhodnou alternativu ručně psát složité hledaných výrazů. Omezující vlastnosti můžete najít, co hledáte, přitom zajistit, že nebudete mít nula výsledků. Jako vývojář omezující vlastnosti vám umožní vystavit nejužitečnější kritérií vyhledávání pro procházení indexu vyhledávání. V aplikacích pro online maloobchodní prodej Fasetové navigace často integrované značky, oddělení (dětský obuv), velikost, ceny, oblíbenosti a hodnocení. 
 
@@ -308,7 +308,7 @@ Všimněte si rozdílu mezi omezující vlastnost výsledky a výsledky hledán�
   V prezentaci kódu měli byste vidět počet parametrů na omezující vlastnosti, které slouží k zobrazení počtu výsledků omezující vlastnost. Ve výsledcích omezující vlastnost počet označuje počet dokumentů, které odpovídají na omezující vlastnost termín nebo rozsah.
 * `&facet=City,count:12`<br/>
   Omezující vlastnost dotazu můžete nastavit počet na hodnotu.  Výchozí hodnota je 10, ale můžete jako adresu nastavit vyšší nebo nižší. Nastavení `count:12` získá horní 12 odpovídá ve výsledcích omezující vlastnost s počet dokumentů.
-* `@odata.count`<br/>
+* "`@odata.count`"<br/>
   V odpovědi na dotaz tato hodnota označuje počet odpovídajících položek ve výsledcích hledání. V průměru je větší než součet všech výsledků omezující vlastnost kombinovat z důvodu přítomnosti položky, které odpovídají hledanému výrazu, ale žádné shody hodnota omezující vlastnosti.
 
 **Získat počty ve výsledcích omezující vlastnost**
@@ -341,7 +341,7 @@ Nastavení cen omezující vlastnosti v přírůstcích po 10 USD, zadali byste:
 **Způsob 2: Použijte seznam hodnot**  
 Pro číselná data můžete použít seznam hodnot.  Vezměte v úvahu rozsah omezující vlastnosti `listPrice` pole, vykreslí následujícím způsobem:
 
-  ![Seznam ukázkových hodnot][5]
+  ![Seznam ukázkových hodnot](media/search-faceted-navigation/Facet-5-Prices.PNG "ukázkové hodnoty seznamu")
 
 Můžete určit rozsah omezující vlastnost jako na předchozím snímku obrazovky, použijte seznam hodnot:
 
@@ -352,7 +352,7 @@ Každý rozsah je sestavena pomocí 0 jako výchozí bod, hodnota v seznamu jako
 ### <a name="build-a-filter-for-a-range"></a>Vytvořit filtr pro rozsah
 Chcete-li filtrovat dokumenty na základě rozsahu vyberete, můžete použít `"ge"` a `"lt"` filtrovat operátory ve dvou částí výrazu, který definuje koncové body rozsahu. Například pokud zvolíte rozsah 10 až 25 `listPrice` pole Filtr by `$filter=listPrice ge 10 and listPrice lt 25`. Ve vzorovém kódu používá výraz filtru **priceFrom** a **priceTo** parametrů pro nastavení koncových bodů. 
 
-  ![Dotaz na rozsah hodnot][6]
+  ![Dotaz na rozsah hodnot](media/search-faceted-navigation/Facet-6-buildfilter.PNG "dotazu na rozsah hodnot")
 
 <a name="geofacets"></a> 
 
@@ -385,11 +385,11 @@ Při práci s výsledky hledání, podívejte se na adresu URL pro změny v kons
    
    Ve výsledcích vyhledávání je také vrácen fasetovou strukturu navigace. Na stránce výsledků hledání fasetová navigační struktura zahrnuje počty pro každého výsledku omezující vlastnost. Vyberou se žádné omezující vlastnosti, proto se vrátí všechny odpovídající výsledky.
    
-   ![Výsledky hledání před výběrem omezující vlastnosti][11]
+   ![Výsledky hledání před výběrem omezující vlastnosti](media/search-faceted-navigation/faceted-search-before-facets.png "výsledky hledání před výběrem omezující vlastnosti")
 
 4. Klikněte na název firmy, umístění nebo minimální Salary. Hodnota null na počáteční vyhledávání omezujících vlastností, ale přijmou na hodnotách, výsledky hledání jsou oříznut položek, které už neodpovídá.
    
-   ![Výsledky hledání po výběru omezující vlastnosti][12]
+   ![Výsledky hledání po výběru omezující vlastnosti](media/search-faceted-navigation/faceted-search-after-facets.png "výsledky hledání po výběru omezující vlastnosti")
 
 5. Fasetová dotaz vymažete, takže můžete zkusit chování jiný dotaz, klikněte na tlačítko `[X]` po vybrané omezující vlastnosti vymazání omezující vlastnosti.
    
@@ -400,42 +400,6 @@ Sledování [podrobné informace o Azure Search](https://channel9.msdn.com/Event
 
 Další přehledy o Principy návrhu pro fasetovou navigaci doporučujeme na následujících odkazech:
 
-* [Návrh a Fasetové vyhledávání](http://www.uie.com/articles/faceted_search/)
 * [Vzory návrhu: Fasetová navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
-
-
-<!--Anchors-->
-[How to build it]: #howtobuildit
-[Build the presentation layer]: #presentationlayer
-[Build the index]: #buildindex
-[Check for data quality]: #checkdata
-[Build the query]: #buildquery
-[Tips on how to control faceted navigation]: #tips
-[Faceted navigation based on range values]: #rangefacets
-[Faceted navigation based on GeoPoints]: #geofacets
-[Try it out]: #tryitout
-
-<!--Image references-->
-[1]: ./media/search-faceted-navigation/azure-search-faceting-example.PNG
-[2]: ./media/search-faceted-navigation/Facet-2-CSHTML.PNG
-[3]: ./media/search-faceted-navigation/Facet-3-schema.PNG
-[4]: ./media/search-faceted-navigation/Facet-4-SearchMethod.PNG
-[5]: ./media/search-faceted-navigation/Facet-5-Prices.PNG
-[6]: ./media/search-faceted-navigation/Facet-6-buildfilter.PNG
-[7]: ./media/search-faceted-navigation/Facet-7-appstart.png
-[8]: ./media/search-faceted-navigation/Facet-8-appbike.png
-[9]: ./media/search-faceted-navigation/Facet-9-appbikefaceted.png
-[10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
-[11]: ./media/search-faceted-navigation/faceted-search-before-facets.png
-[12]: ./media/search-faceted-navigation/faceted-search-after-facets.png
-
-<!--Link references-->
-[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
-[Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
+* [Front-endu aspekty při implementaci Fasetové vyhledávání – část 1 ](https://articles.uie.com/faceted_search2/)
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: 553f50897afaaf9c677e84f9cfffbff7d2c1e607
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa0d01bfbebd5279b5268bae9d161492f30b81de
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484900"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546283"
 ---
 # <a name="hdinsight-40-overview"></a>Přehled HDInsight 4.0
 
@@ -90,7 +90,7 @@ Neexistuje žádný způsob upgradu z předchozích verzí aplikace HDInsight do
 
 ## <a name="limitations"></a>Omezení
 
-* HDInsight 4.0 nepodporuje MapReduce. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
+* HDInsight 4.0 nepodporuje MapReduce pro Apache Hive. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
 * HDInsight 4.0 nepodporuje Apache Storm. 
 * Zobrazení Hive už nejsou k dispozici v HDInsight 4.0. 
 * Překladač prostředí v Apache Zeppelin není podporovaný v clusterech Spark a Interactive Query.

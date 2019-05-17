@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Vývoj v týmu Kubernetes s kontejnery a mikroslužby na platformě Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 437c6284c563f85e25d2c5b81734ea3bc0507701
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: HT
+ms.openlocfilehash: 94083639ca769d12b04c4dc316a9f9867e4209b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596996"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65765243"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v týmu na použití Azure Dev prostorů Kubernetes
 

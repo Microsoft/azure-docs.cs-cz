@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: efeab014c7d92a6c19d516a121fbc4436925be75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82e8936a888cbc99088ab18423e55dd57a3c2e77
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850984"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604135"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace Windows aplikace v Javě pro Azure App Service
 
@@ -27,7 +27,7 @@ Azure App Service umožňuje vývojářům rychle sestavit, nasadit a škálovat
 Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě pomocí ve službě App Service. Pokud jste nikdy použili službu Azure App Service, byste si měli přečíst [Java quickstart](app-service-web-get-started-java.md) první. Obecné dotazy ohledně používání služby App Service, které nejsou specifické pro Java development v odpovědi [nejčastější dotazy týkající se App Service Windows](faq-configuration-and-management.md).
 
 > [!NOTE]
-> Nemůžete najít, co hledáte? Podrobnosti najdete [nejčastější dotazy k Windows OSS](faq-configuration-and-management.md) nebo [Průvodce konfigurací Java Linux](containers/app-service-linux-java.md) informace o nasazení a zabezpečení vaší aplikace v Javě.
+> Nemůžete najít, co hledáte? Podrobnosti najdete [nejčastější dotazy k Windows OSS](faq-configuration-and-management.md) nebo [Průvodce konfigurací Java Linux](containers/configure-language-java.md) informace o nasazení a zabezpečení vaší aplikace v Javě.
 
 ## <a name="configuring-tomcat"></a>Konfigurace Tomcat
 

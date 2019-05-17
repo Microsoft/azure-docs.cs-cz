@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2893960c3351b1f8a5caf0c69ca961851528007d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510837"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555951"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešit problémy se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -300,6 +300,17 @@ Relace synchronizace mohou selhat z různých důvodů, včetně server se resta
 | **Požadována náprava** | Ne |
 
 Nemusíte nic dělat; server to zkusí znovu. Pokud tento problém potrvá déle než několik hodin, vytvořte žádost o podporu.
+
+<a id="-2134364043"></a>**Blokuje synchronizaci, dokud se nedokončí obnovení příspěvek detekce změn**  
+
+| | |
+|-|-|
+| **HODNOTA HRESULT** | 0x80c83075 |
+| **HRESULT (decimální)** | -2134364043 |
+| **Text chyby** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **Požadována náprava** | Ne |
+
+Není vyžadována žádná akce. Pokud soubor nebo soubor sdílet (koncový bod v cloudu) je obnovit pomocí služby Azure Backup, blokuje synchronizaci, dokud se nedokončí detekce změn na sdílenou složku Azure. Detekce změn spustí ihned po dokončení obnovení a dobu trvání je založena na počtu souborů ve sdílené složce.
 
 <a id="-2134364065"></a>**Synchronizaci nelze přistoupit, sdílené složky Azure zadaný koncový bod cloudu.**  
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 9006590583f0ef52bbce716529534f8bce6f47c5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508003"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780366"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI s ve službě Azure Kubernetes Service (AKS)
 
@@ -58,7 +58,7 @@ Plán IP adres pro AKS cluster se skládá z virtuální sítě, alespoň jednu 
 
 ## <a name="maximum-pods-per-node"></a>Maximální podů na jeden uzel
 
-Maximální počet podů na jeden uzel v clusteru AKS je 110. *Výchozí* maximální počet podů na uzel se pohybuje mezi *kubenet* a *Azure CNI* sítě a metody nasazení clusteru.
+Maximální počet podů na jeden uzel v clusteru AKS je 250. *Výchozí* maximální počet podů na uzel se pohybuje mezi *kubenet* a *Azure CNI* sítě a metody nasazení clusteru.
 
 | Metoda nasazení | Výchozí Kubenet | Azure CNI výchozí | Možnost konfigurace během nasazení |
 | -- | :--: | :--: | -- |

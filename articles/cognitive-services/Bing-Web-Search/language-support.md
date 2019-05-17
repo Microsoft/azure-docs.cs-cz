@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430911"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798248"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyka a oblasti pro rozhraní API webové vyhledávání Bingu
 
@@ -43,14 +43,14 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
-|Itálie|IT|
+|Itálie|it|
 |Japonsko|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
 |Nový Zéland|NZ|
-|Norsko|NO|
+|Norsko|NE|
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
@@ -79,7 +79,7 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|es-CL|
-|Dánsko|dánština|da-DK|
+|Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
@@ -93,20 +93,24 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
 |Nový Zéland|Angličtina|cs NZ|
-|Norsko|norština|no-NO|
+|Norsko|Norština|no-NO|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
 |Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|arabština|ar-SA|
+|Saúdská Arábie|Arabština|ar-SA|
 |Jižní Afrika|Angličtina|en-ZA|
 |Španělsko|Španělština|es-ES|
-|Švédsko|švédština|sv-SE|
+|Švédsko|Švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
 |Tchaj-wan|Tradiční čínština|zh-TW|
-|Turecko|turečtina|tr-TR|
+|Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|en-US|
 |Spojené státy|Španělština|es-US|
+
+## <a name="next-steps"></a>Další postup
+
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

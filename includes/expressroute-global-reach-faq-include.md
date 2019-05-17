@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305325"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "65753963"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co je globální dosah ExpressRoute?
 
@@ -29,19 +29,19 @@ Pokud vaše okruhy ExpressRoute jsou ve stejné geopolitické oblasti, není nut
 
 ### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>Jak se mi účtovat globální dosah ExpressRoute?
 
-ExpressRoute umožňuje připojení z vaší místní sítě ke cloudovým službám Microsoftu. Globální dosah ExpressRoute umožňuje propojení mezi vlastní místní sítě prostřednictvím stávajících okruhů ExpressRoute, využívá globální síti Microsoftu. Globální dosah ExpressRoute se fakturovat nezávisle na existující službu ExpressRoute. Existuje nějaký poplatek doplněk pro povolení této funkce na každý okruh ExpressRoute. Provoz mezi vaší místní sítě, zajišťuje globální dosah ExpressRoute se vám účtovat objemem odchozího přenosu dat ve zdroji a rychlost příchozího přenosu dat v cílovém umístění. Sazby jsou založeny na zóně, ve kterém obvody nacházejí. V tématu <pricing page>
+ExpressRoute umožňuje připojení z vaší místní sítě ke cloudovým službám Microsoftu. Globální dosah ExpressRoute umožňuje propojení mezi vlastní místní sítě prostřednictvím stávajících okruhů ExpressRoute, využívá globální síti Microsoftu. Globální dosah ExpressRoute se fakturovat nezávisle na existující službu ExpressRoute. Existuje nějaký poplatek doplněk pro povolení této funkce na každý okruh ExpressRoute. Provoz mezi vaší místní sítě, zajišťuje globální dosah ExpressRoute se vám účtovat objemem odchozího přenosu dat ve zdroji a rychlost příchozího přenosu dat v cílovém umístění. Sazby jsou založeny na zóně, ve kterém obvody nacházejí.
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>Kde se globální dosah ExpressRoute podporuje?
 
-Globální dosah ExpressRoute se podporuje v [vyberte zemí nebo míst](../articles/expressroute/expressroute-global-reach.md). Okruhy ExpressRoute, musí být vytvořená v umístění partnerského vztahu v těchto zemích nebo místa.
+Globální dosah ExpressRoute se podporuje v [vybrat země nebo oblasti nebo míst](../articles/expressroute/expressroute-global-reach.md). Okruhy ExpressRoute, musí být vytvořená v umístění partnerského vztahu v těchto zemích nebo oblastech nebo v místech.
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Mám více než dvěma místními sítěmi, každý připojený k okruhu ExpressRoute. Můžete povolit globální dosah ExpressRoute je možné propojit všechny moje sítích na pracovišti?
 
-Ano, je to možné, dokud obvody nacházejí v podporované země. Je potřeba současně připojit dva okruhy ExpressRoute. Vytvoření plně hustá sítě, budete muset vytvořit výčet všech dvojice okruhů a konfiguraci opakujte. 
+Ano, je to možné, dokud obvody nacházejí v podporované země/oblasti. Je potřeba současně připojit dva okruhy ExpressRoute. Vytvoření plně hustá sítě, budete muset vytvořit výčet všech dvojice okruhů a konfiguraci opakujte. 
 
 ### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Můžete povolit globální dosah ExpressRoute mezi dva okruhy ExpressRoute ve stejném umístění partnerského vztahu?
 
-Ne. Dva okruhy musí pocházet z různých umístění partnerského vztahu. Pokud metro v podporované země má více než jeden umístění partnerského vztahu ExpressRoute, můžete se připojit společně okruhy ExpressRoute vytvořené v různých umístění partnerského vztahu v tomto metro. 
+Ne. Dva okruhy musí pocházet z různých umístění partnerského vztahu. Pokud metro v podporované země/oblast má více než jeden umístění partnerského vztahu ExpressRoute, můžete se připojit společně okruhy ExpressRoute vytvořené v různých umístění partnerského vztahu v tomto metro. 
 
 ### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Pokud globální dosah ExpressRoute je povolené mezi okruh X a Y okruh a mezi okruh Y a Z okruhu, bude Moje sítích na pracovišti připojené k okruhu X a okruh Z komunikovat přes síť Microsoftu?
 

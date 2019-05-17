@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e7ab2eba54aafda6bb00696939bf9bc32bb627ca
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722438"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797007"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -41,11 +41,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td><em>Povinný parametr</em>.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být <code>3.0</code>.</td>
   </tr>
   <tr>
-    <td>od</td>
+    <td>from</td>
     <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním <a href="./v3-0-languages.md">podporované jazyky</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
   </tr>
   <tr>
-    <td>na</td>
+    <td>do</td>
     <td><em>Povinný parametr</em>.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z <a href="./v3-0-languages.md">podporované jazyky</a> součástí <code>translation</code> oboru. Například použít <code>to=de</code> pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít <code>to=de&to=it</code> pro převod a němčina, italština.</td>
   </tr>
   <tr>
@@ -94,7 +94,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 Hlavičky žádosti patří:
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky</td>
@@ -114,7 +114,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Text požadavku
+## <a name="request-body"></a>Tělo požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje řetězec, který má přeložit.
 
@@ -172,7 +172,7 @@ Jsou k dispozici v příkladu odpověďmi ve formátu JSON [příklady](#example
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
     <tr>
     <td>X-RequestId</td>
@@ -193,7 +193,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěch</td>
+    <td>Úspěšné</td>
   </tr>
   <tr>
     <td>400</td>
@@ -213,7 +213,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>429</td>
-    <td>Volající odesílá příliš mnoho požadavků.</td>
+    <td>Server odmítl požadavek, protože klient překročil omezení požadavků.</td>
   </tr>
   <tr>
     <td>500</td>

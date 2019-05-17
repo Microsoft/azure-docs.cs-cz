@@ -3,8 +3,8 @@ title: Podmínky služby a o ochraně osobních údajů pro aplikace | Azure
 description: Zjistěte, jak nakonfigurovat podmínky služby a o ochraně osobních údajů pro aplikace zaregistrované k používání služby Azure AD.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2242c6fc46f5556de0b0dd63659670e9c3f998d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410549"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540186"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postup: Konfigurace podmínky služby a o ochraně osobních údajů pro aplikaci
 
@@ -47,7 +47,7 @@ Předtím, než přidáte odkazy na vaší aplikace podmínky služby a o ochran
 | Pokyn     | Popis                           |
 |---------------|---------------------------------------|
 | Formát        | Platná adresa URL.                             |
-| Platná schémata | Protokoly HTTP a HTTPS<br/>Doporučujeme, abyste HTTPS |
+| Platná schémata | HTTP a HTTPS<br/>Doporučujeme, abyste HTTPS |
 | Maximální délka    | 2 048 znaků                       |
 
 Příklady: `https://myapp.com/terms-of-service` a `https://myapp.com/privacy-statement`

@@ -4,14 +4,14 @@ description: Seznam typů prostředků Azure, které lze přesunout do nové sku
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 03/22/2019
+ms.date: 5/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d662607eaaabb8ccfad89f625165c542af81b0fa
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729286"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794520"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 Tento článek uvádí, zda typ prostředku Azure podporuje operace přesunu. I když typ prostředku podporuje operace přesunutí, může být podmínky, které brání přesunutí prostředku. Podrobnosti o podmínkách, které mají vliv operací přesunu najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
@@ -28,6 +28,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ---------- |
 | Tenanti | Ne | Ne |
 
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| actionrules | Ano | Ano |
+
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
@@ -37,6 +42,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | service | Ano | Ano |
+
+## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| configurationstores | Ano | Ano |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -98,7 +108,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| blockchainmembers | Ne | Ne |
+| blockchainmembers | Ano | Ano |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -157,6 +167,8 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | galleries | Ne | Ne |
 | galleries/images | Ne | Ne |
 | galleries/images/versions | Ne | Ne |
+| hostgroups | Ne | Ne |
+| hostgroups/hosts | Ne | Ne |
 | images | Ano | Ano |
 | proximityplacementgroups | Ne | Ne |
 | restorepointcollections | Ne | Ne |
@@ -182,7 +194,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ---------- |
 | registries | Ano | Ano |
 | registries/buildtasks | Ano | Ano |
-| registries/replications | Ne | Ne |
+| registries/replications | Ano | Ano |
 | registries/tasks | Ano | Ano |
 | registries/webhooks | Ano | Ano |
 
@@ -232,6 +244,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | catalogs | Ano | Ano |
+| datacatalogs | Ne | Ne |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -287,16 +300,17 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ---------- |
 | servergroups | Ne | Ne |
 | servers | Ano | Ano |
+| serversv2 | Ano | Ano |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| artifactsources | Ne | Ne |
-| rollouts | Ne | Ne |
-| servicetopologies | Ne | Ne |
-| servicetopologies/services | Ne | Ne |
-| servicetopologies/services/serviceunits | Ne | Ne |
-| kroky | Ne | Ne |
+| artifactsources | Ano | Ano |
+| rollouts | Ano | Ano |
+| servicetopologies | Ano | Ano |
+| servicetopologies/services | Ano | Ano |
+| servicetopologies/services/serviceunits | Ano | Ano |
+| kroky | Ano | Ano |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -316,9 +330,10 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ---------- |
 | labcenters | Ne | Ne |
 | labs | Ano | Ne |
+| praktická cvičení nebo prostředími | Ano | Ano |
 | labs/servicerunners | Ano | Ano |
 | labs/virtualmachines | Ano | Ne |
-| schedules | Ne | Ne |
+| schedules | Ano | Ano |
 
 ## <a name="microsoftdns"></a>microsoft.dns
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -342,6 +357,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | domains | Ano | Ano |
+
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| services | Ano | Ano |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -369,6 +389,16 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | clusters | Ano | Ano |
+
+## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| services | Ano | Ano |
+
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| počítače | Ne | Ne |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -422,7 +452,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| labaccounts | Ne | Ne |
+| labaccounts | Ano | Ano |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -432,7 +462,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
+| accounts | Ne | Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -458,12 +488,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| accounts | Ano | Ano |
-| accounts/workspaces | Ano | Ano |
-| accounts/workspaces/projects | Ano | Ano |
-| teamaccounts | Ano | Ano |
-| teamaccounts/workspaces | Ano | Ano |
-| teamaccounts/workspaces/projects | Ano | Ano |
+| accounts | Ne | Ne |
+| accounts/workspaces | Ne | Ne |
+| accounts/workspaces/projects | Ne | Ne |
+| teamaccounts | Ne | Ne |
+| teamaccounts/workspaces | Ne | Ne |
+| teamaccounts/workspaces/projects | Ne | Ne |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -483,7 +513,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| userassignedidentities | Ano | Ano |
+| userassignedidentities | Ne | Ne |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -522,6 +552,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | applicationgateways | Ne | Ne |
+| applicationgatewaywebapplicationfirewallpolicies | Ne | Ne |
 | applicationsecuritygroups | Ano | Ano |
 | azurefirewalls | Ano | Ano |
 | bastionhosts | Ne | Ne |
@@ -535,7 +566,6 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | expressrouteports | Ne | Ne |
 | frontdoory | Ano | Ano |
 | frontdoorwebapplicationfirewallpolicies | Ano | Ano |
-| interfaceendpoints | Ne | Ne |
 | loadbalancers | Ano | Ano |
 | localnetworkgateways | Ano | Ano |
 | natgateways | Ano | Ano |
@@ -548,12 +578,15 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | networkwatchers/přehledů | Ano | Ano |
 | networkwatchers/pingmeshes | Ano | Ano |
 | p2svpngateways | Ne | Ne |
+| privatednszones | Ano | Ano |
+| privatednszones/virtualnetworklinks | Ano | Ano |
+| privateendpoints | Ne | Ne |
 | privatelinkservices | Ne | Ne |
 | publicipaddresses | Ano | Ano |
 | publicipprefixes | Ano | Ano |
 | routefilters | Ne | Ne |
 | routetables | Ano | Ano |
-| securegateways | Ne | Ne |
+| securegateways | Ano | Ano |
 | serviceendpointpolicies | Ano | Ano |
 | trafficmanagerprofiles | Ano | Ano |
 | virtualhubs | Ne | Ne |
@@ -562,7 +595,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | virtualnetworktaps | Ne | Ne |
 | virtualwans | Ne | Ne |
 | vpngateways | Ne | Ne |
-| vpnsites | Ano | Ano |
+| vpnsites | Ne | Ne |
 | webapplicationfirewallpolicies | Ano | Ano |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
@@ -582,6 +615,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | managementconfigurations | Ano | Ano |
 | solutions | Ano | Ano |
 | views | Ano | Ano |
+
+## <a name="microsoftpeering"></a>Microsoft.Peering
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| peeringy | Ne | Ne |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -634,11 +672,16 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ---------- |
 | searchservices | Ano | Ano |
 
+## <a name="microsoftsecurity"></a>Microsoft.Security
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| iotsecuritysolutions | Ano | Ano |
+
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | gateways | Ne | Ne |
-| uzlů | Ne | Ne |
+| uzly | Ne | Ne |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -689,13 +732,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
+| instancepools | Ano | Ano |
 | managedinstances | Ano | Ano |
 | managedinstances/databáze | Ano | Ano |
 | servers | Ano | Ano |
 | servers/databases | Ano | Ano |
 | servers/elasticpools | Ano | Ano |
-| servery pro/jobaccounts | Ne | Ne |
-| servery pro/jobagents | Ne | Ne |
 | virtualclusters | Ano | Ano |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
@@ -713,6 +755,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | storageaccounts | Ano | Ano |
+
+## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| Mezipaměti | Ne | Ne |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -761,6 +808,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | environments/eventsources | Ano | Ano |
 | environments/referencedatasets | Ano | Ano |
 
+## <a name="microsofttoken"></a>Microsoft.Token
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| úložiště | Ne | Ne |
+
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
@@ -772,6 +824,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | account | Ano | Ano |
 | account/extension | Ano | Ano |
 | account/project | Ano | Ano |
+
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| dedicatedcloudnodes | Ano | Ano |
+| dedicatedcloudservices | Ano | Ano |
+| virtualmachines | Ano | Ano |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -790,6 +849,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | deviceservices | Ano | Ano |
+
+## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | ----------- | ---------- |
+| applicationgroups | Ne | Ne |
+| hostpools | Ne | Ne |
+| workspaces | Ne | Ne |
 
 ## <a name="third-party-services"></a>Třeba služby třetích stran
 

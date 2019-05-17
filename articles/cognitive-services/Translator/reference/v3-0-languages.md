@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605117"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797299"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Jazyky
 
@@ -40,7 +40,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
     <td><em>Povinný parametr</em>.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>scope</td>
+    <td>obor</td>
     <td>*Volitelný parametr*.<br/>Čárkou oddělený seznam názvů definování skupin jazyků k vrácení. Povolené jsou názvy skupin: `translation`, `transliteration` a `dictionary`. Pokud je zadaný žádný obor, pak jsou vráceny všechny skupiny, což je ekvivalentní k předávání `scope=translation,transliteration,dictionary`. Při rozhodování, která sada podporovaných jazyků je vhodné pro váš scénář, viz popis [objektu odpovědi](#response-body).</td>
   </tr>
 </table> 
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 Hlavičky žádosti jsou:
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
     <td>Přijměte jazyka</td>
@@ -229,7 +229,7 @@ Seznam podporovaných jazyků se často mění. Pokud chcete šetřit šířku p
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
     <td>ETag</td>
@@ -251,7 +251,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěch</td>
+    <td>Úspěšné</td>
   </tr>
   <tr>
     <td>304</td>
@@ -263,7 +263,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>429</td>
-    <td>Volající odesílá příliš mnoho požadavků.</td>
+    <td>Server odmítl požadavek, protože klient překročil omezení požadavků.</td>
   </tr>
   <tr>
     <td>500</td>

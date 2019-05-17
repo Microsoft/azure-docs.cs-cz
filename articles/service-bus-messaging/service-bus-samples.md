@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: aschhab
-ms.openlocfilehash: 2da6e46ad4866ad624ff6bc8aa61a96e41568ca2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5ca41f1d9b1fb5b2dd8b9066af85543f1fddd23
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472161"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786766"
 ---
 # <a name="service-bus-messaging-samples"></a>Ukázky pro zasílání zpráv Service Bus
 Zasílání zpráv služby Service Bus ukázky ukazují klíčové funkce v [zasílání zpráv Service Bus](https://azure.microsoft.com/services/service-bus/). V současné době můžete najít ukázky na následujících místech:
@@ -28,7 +28,7 @@ Zasílání zpráv služby Service Bus ukázky ukazují klíčové funkce v [zas
 | -------------------- | ----------------------- |
 | .NET, Java a správu | https://github.com/Azure/azure-service-bus/ |
 | Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
-| Python | https://github.com/Azure/azure-sdk-for-python/tree/master/azure-servicebus |
+| Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
 
 ## <a name="service-bus-explorer"></a>Service Bus Explorer
 

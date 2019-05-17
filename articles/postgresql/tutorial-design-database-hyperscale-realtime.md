@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65757554"
+ms.locfileid: "65791309"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Kurz: Návrh řídicí panel analýzy v reálném čase s využitím Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
 

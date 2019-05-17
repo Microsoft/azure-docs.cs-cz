@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/09/2019
-ms.openlocfilehash: 7b470c20397aac456d34d5e3b877c7d4126d8279
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 05/14/2019
+ms.openlocfilehash: dc8ba315d08f3a130ff0adf91afc90f545baf4e4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465117"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604437"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů služby Azure Database Migration Service a chyb
 
@@ -24,7 +24,7 @@ Tento článek popisuje některé běžné problémy a chyby, které uživatelé
 
 ## <a name="migration-activity-in-queued-state"></a>Aktivita migrace ve stavu zařazení do fronty
 
-Při vytváření nových aktivit na projektu Azure Database Migration Service aktivity zůstanou ve stavu zařazení do fronty.
+Když vytvoříte nové aktivity v projektu Azure Database Migration Service, aktivity zůstanou ve stavu zařazení do fronty.
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
@@ -44,13 +44,13 @@ Při vytvoření aktivity pro projekt migrace databáze pro přesun do Azure SQL
 
 Při migraci z databáze MySQL do služby Azure Database for MySQL pomocí Azure Database Migration Service, aktivita migrace selže s následující chybou:
 
-* **Chyba:** Chyba: Chyba migrace databáze - úkolu "TaskID" bylo pozastaveno z důvodu chyby při obnovení po sobě jdoucích [n].
+* **Chyba:** Chyba migrace databáze - úkolu "TaskID" bylo pozastaveno z důvodu chyby při obnovení po sobě jdoucích [n].
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| K této chybě může dojít, když uživatel provádějící migraci neobsahuje roli ReplicationAdmin a/nebo oprávnění REPLICATION CLIENT, REPLICATION REPLICA a SUPER (verze starší než MySQL 5.6.6).<br> <br><br><br> <br> <br> <br> <br> <br> <br> | Ujistěte se, [požadovaného oprávnění](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) pro uživatele se přesně nakonfigurovaný účet v instanci Azure MySQL. Například následující postup platí pro vytvoření uživatele s názvem "migrateuser' požadovaná oprávnění:<br>1. Vytvořit uživatele migrateuser@'% "IDENTIFIKOVAT podle"secret"; <br>2. udělte všechna oprávnění k db_name.* k migrateuser'@'% identifikovaný "secret"; Opakujte tento krok pro udělení přístupu pro další databáze <br>3. podřízený server replikace udělte na *.* k migrateuser'@'% identifikovaný "secret";<br>4. udělte replikace klienta na *.* k migrateuser'@'% identifikovaný "secret";<br>5. vyprázdnění oprávnění; |
+| K této chybě může dojít, když uživatel provádějící migraci neobsahuje roli ReplicationAdmin a/nebo oprávnění REPLICATION CLIENT, REPLICATION REPLICA a SUPER (verze starší než MySQL 5.6.6).<br> <br><br><br> <br> <br> <br> <br> <br> <br> | Ujistěte se, [požadovaného oprávnění](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) pro uživatele se přesně nakonfigurovaný účet v Azure Database for MySQL – instance. Například následující postup platí pro vytvoření uživatele s názvem "migrateuser' požadovaná oprávnění:<br>1. Vytvořit uživatele migrateuser@'% "IDENTIFIKOVAT podle"secret"; <br>2. Udělení oprávnění všem na db_name.* k migrateuser'@'% identifikovaný "secret"; Opakujte tento krok pro udělení přístupu pro další databáze <br>3. Podřízený server udělení replikace na *.* k migrateuser'@'% identifikovaný "secret";<br>4. Udělení klientských replikace na *.* k migrateuser'@'% identifikovaný "secret";<br>5. Vyprázdnění oprávnění; |
 
-## <a name="error-when-attempting-to-stop-the-azure-database-migration-service-instance"></a>Chyba při pokusu o zastavení instance služby Azure Database Migration Service
+## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Chyba při pokusu o zastavení služby Azure Database Migration Service
 
 Zobrazí se následující chyba při zastavování instancí služby Azure Database Migration Service:
 
@@ -60,7 +60,7 @@ Zobrazí se následující chyba při zastavování instancí služby Azure Data
 | ------------- | ------------- |
 | Tato chyba zobrazí, když instance služby, které vám při pokusu o zastavení obsahuje aktivity, které jsou pořád spuštěné nebo k dispozici v projektech pro migraci. <br><br><br><br><br><br> | Ujistěte se, že neexistují žádné aktivity spuštěné v instanci služby Azure Database Migration Service se snažíte zastavit. Můžete také odstranit aktivity nebo projekty před pokusem o zastavení služby. Následující kroky ukazují, jak odebrat projekty k vyčištění instance služby migrace tak, že odstraníte všechny spuštěné úlohy:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription - SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
 
-## <a name="error-restoring-database-while-migrating-from-sql-server-to-an-azure-sql-database-managed-instance"></a>Chyba při obnovování databáze při migraci z SQL serveru do Azure SQL Database managed instance
+## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Chyba při obnovování databáze během migrace SQL ke službě Azure SQL DB mi
 
 Když provádíte online migrace z SQL serveru do spravované instance Azure SQL Database, a jeho sdělení ostatním selže s následující chybou:
 
@@ -88,11 +88,11 @@ Při pokusu o připojení ke zdroji v Průvodci projekt Azure Database Migration
 | ------------- | ------------- |
 | Při použití [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [vyžaduje](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) tři koncových bodů služby v podsíti virtuální sítě, které jsou přidružená ke službě zřizování:<br> --Koncový bod služby Service Bus<br> --Koncový bod služby storage<br> --Cílit na koncový bod databázového (např. koncový bod SQL, koncového bodu služby Cosmos DB)<br><br><br><br> | [Povolit](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) koncové body služby vyžaduje pro připojení ExpressRoute mezi zdrojem a služba Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-database-for-mysql"></a>Chyba časového limitu při migraci databáze MySQL do služby Azure Database for MySQL
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Chyba časového limitu při migraci databáze MySQL do Azure MySQL
 
 Při migraci databáze MySQL do Azure Database for MySQL instanci prostřednictvím služby Azure Database Migration Service se migrace nezdaří s následující chybou vypršení časového limitu:
 
-    * **Chyba:** Chyba: Chyba migrace databáze - Nepodařilo se načíst soubor - nepodařilo se spustit proces načítání souboru n RetCode: SQL_ERROR SqlState: HY000 NativeError: Zpráva 1205: [MySQL] [ovladač ODBC] [mysqld] zámek čekání vypršel časový limit; Zkuste restartovat transakce
+* **Chyba:** Chyba migrace databáze - Nepodařilo se načíst soubor - nepodařilo se spustit proces načítání souboru n RetCode: SQL_ERROR SqlState: HY000 NativeError: Zpráva 1205: [MySQL] [ovladač ODBC] [mysqld] zámek čekání vypršel časový limit; Zkuste restartovat transakce
 
 | Příčina         | Řešení    |
 | ------------- | ------------- |
@@ -100,13 +100,13 @@ Při migraci databáze MySQL do Azure Database for MySQL instanci prostřednictv
 
 ## <a name="additional-known-issues"></a>Další známé problémy
 
-* [Známé problémy / omezení migrace s online migrací do databáze Azure SQL](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Známé problémy a migrace omezení online migrace do Azure DB for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Známé problémy a migrace omezení online migrace do Azure DB for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Známé problémy a migrace omezení online migraci do Azure SQL Database](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
+* [Známé problémy a migrace omezení online migrace do služby Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
+* [Známé problémy a migrace omezení online migrace do služby Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="next-steps"></a>Další postup
 
-* [Azure Database Migration Service Powershellu](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)
-* [Postup konfigurace parametrů serveru ve službě Azure Database for MySQL pomocí webu Azure portal](https://docs.microsoft.com/azure/mysql/howto-server-parameters)
-* [Přehled požadavků na používání Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)
-* [Nejčastější dotazy týkající se použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/faq)
+* Zobrazit článek [prostředí PowerShell Azure Database Migration Service](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* Zobrazit článek [postupy konfigurace parametrů serveru ve službě Azure Database for MySQL pomocí webu Azure portal](https://docs.microsoft.com/azure/mysql/howto-server-parameters).
+* Zobrazit článek [přehled požadavků na používání Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs).
+* Zobrazit [– nejčastější dotazy o použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/faq).

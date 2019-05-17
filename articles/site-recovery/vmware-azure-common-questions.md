@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/26/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 767f087910136ce558d71602a1c4c632090168cd
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925519"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540627"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -251,13 +251,13 @@ V trezoru služby Recovery Services klikněte na tlačítko **konfigurační ser
 
 ## <a name="process-server"></a>Procesový server
 
-### <a name="unable-to-select-process-server-during-enable-replication"></a>Nelze vybrat procesový server při povolení replikace
+### <a name="why-am-i-unable-to-select-process-server-during-enable-replication"></a>Proč mi nejde vybrat procesový server při jsem povolit replikaci?
 
-Z 9.24 verzi se provedly poskytují vylepšení [zpracovávat výstrahy serveru](vmware-physical-azure-monitor-process-server.md#process-server-alerts) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. Toto je chcete zabránit omezování procesu serveru a vyhněte se použití není v pořádku procesový server.
+Z 9.24 verzi se provedly zobrazit vylepšení [stavu procesový server při povolení replikace](vmware-azure-enable-replication.md#enable-replication). Toto je chcete zabránit omezování procesu serveru a minimalizaci využití není v pořádku procesových serverů.
 
-### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Co mám dělat získat přesné stav procesového serveru?
+### <a name="what-is-meant-by-upgrading-process-server-to-924-or-higher-versions-for-accurate-health"></a>Co znamená pojem upgrade procesového serveru na 9.24 nebo vyšší verze přesné Health?
 
-Upgrade součásti Site Recovery na [nejnovější verze](service-updates-how-to.md#links-to-currently-supported-update-rollups) (nejméně 9.24 nebo vyšší).
+Z [9.24 verze](service-updates-how-to.md#links-to-currently-supported-update-rollups), další výstrahy vydávají k vylepšení výstrahy týkající se stavu procesového serveru. Upgrade součásti Site Recovery na 9.24 verze nebo novější pro všechny výstrahy chcete vygenerovat.
 
 ## <a name="failover-and-failback"></a>Převzetí služeb při selhání a navrácení služeb po obnovení
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Můžu použít procesový server na místní navrácení služeb po obnovení?

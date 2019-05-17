@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 4406789e3f9a10ff814aca0c2fd114de8a2abb69
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572665"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794391"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je izolované databáze ve službě Azure SQL Database
 
@@ -30,7 +30,7 @@ Možnost nasazení izolovaná databáze vytvoří databázi ve službě Azure SQ
 
 ## <a name="dynamic-scalability"></a>Dynamická škálovatelnost
 
-Můžete sestavit svoji první aplikaci malou izolovanou databází s nízkými náklady za měsíc cena/výkon s nízkou úrovní služeb a pak [změnit úroveň služby](sql-database-single-database-scale.md) ručně nebo prostřednictvím kódu programu kdykoli thehigher ceny a výkonu služby úroveň podle potřeb vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
+Vytvoření první aplikace na malou izolovanou databází s nízkými náklady ve vrstvě výpočty bez serveru (preview) nebo velikost malých výpočetních zřízených výpočetních úrovni. Můžete změnit [výpočetní prostředky ani prostředky služby úrovně](sql-database-single-database-scale.md) ručně nebo prostřednictvím kódu programu kdykoli podle potřeb vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
 ## <a name="single-databases-and-elastic-pools"></a>Izolované databáze a elastických fondů
 

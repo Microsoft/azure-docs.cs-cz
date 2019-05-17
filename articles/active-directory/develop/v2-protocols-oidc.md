@@ -3,8 +3,8 @@ title: Platforma identit Microsoft a protokolu OpenID Connect | Azure
 description: Vytvoření webové aplikace pomocí Microsoft identity platform implementaci ověřovacího protokolu OpenID Connect.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfac577d7582caa5b538f05273a02e4c3baf71ff
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918459"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544809"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma identit Microsoft a protokolu OpenID Connect
 
@@ -34,11 +34,11 @@ Ověřovací protokol OAuth 2.0, který vám umožní bezpečně přihlásit už
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol se má použít jako *ověřování* protokol, tak, aby vám pomůžou jednotné přihlašování pomocí OAuth. OpenID Connect zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele. ID token také získá profil základní informace o uživateli. Protože OpenID Connect rozšiřuje OAuth 2.0, aplikace můžete bezpečně získat *přístupové tokeny*, které lze použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-v2-protocols.md#the-basics). Koncový bod Microsoft identity platform také umožňuje aplikacím třetích stran, které jsou registrované v Azure AD a vystavovat tokeny přístupu k zabezpečeným prostředkům, jako je například webová rozhraní API. Další informace o tom, jak nastavit aplikaci pro vydávání tokenů přístupu najdete v části [postup registrace aplikace pomocí Microsoft identity platform endpoint](quickstart-register-app.md). Doporučujeme vám, že používáte OpenID Connect, pokud vytváříte [webovou aplikaci](v2-app-types.md#web-apps) , který je hostovaný na serveru a získat přístup z prohlížeče.
 
-## <a name="protocol-diagram-sign-in"></a>Diagram protokolu: přihlášení
+## <a name="protocol-diagram-sign-in"></a>Diagram protokolu: Přihlášení
 
 Základní tok přihlášení má kroků je vidět na dalším obrázku. Každý krok je podrobně popsány v tomto článku.
 
-![Protokol OpenID Connect: přihlášení](./media/v2-protocols-oidc/convergence-scenarios-webapp.svg)
+![Protokol OpenID Connect: Přihlášení](./media/v2-protocols-oidc/convergence-scenarios-webapp.svg)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Načíst metadata dokumentů OpenID Connect
 
@@ -57,7 +57,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `common` |Uživatele pomocí osobního účtu Microsoft a pracovní nebo školní účet ze služby Azure AD můžete přihlásit k aplikaci. |
 | `organizations` |Pouze uživatelé s pracovní nebo školní účty z Azure AD můžete přihlásit k aplikaci. |
 | `consumers` |Jenom uživatelé s osobním účtem Microsoft můžete přihlásit k aplikaci. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` | Jenom uživatelé s pracovní či školní účty z konkrétní služby Azure AD tenanta můžete přihlásit k aplikaci. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. Můžete také použít tenanta příjemce `9188040d-6c67-4c5b-b112-36a304b66dad`, místo `consumers` tenanta.  |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` Nebo `contoso.onmicrosoft.com` | Jenom uživatelé s pracovní či školní účty z konkrétní služby Azure AD tenanta můžete přihlásit k aplikaci. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. Můžete také použít tenanta příjemce `9188040d-6c67-4c5b-b112-36a304b66dad`, místo `consumers` tenanta.  |
 
 Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédněte si následující fragment kódu pro příklad. Jsou podrobně popsány v tomto fragmentu kódu obsah [OpenID Connect specifikace](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
 
@@ -120,9 +120,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Požaduje se | Hodnota zahrnutý v požadavku, vygenerované aplikaci, ve kterém se zahrnou výsledná hodnota id_token jako deklarace identity. Aplikace můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
 | `response_mode` | Doporučené | Určuje metodu, která se má použít k odeslání výsledný autorizační kód zpět do aplikace. Může být `form_post` nebo `fragment`. Pro webové aplikace, doporučujeme používat `response_mode=form_post`, aby bylo zajištěno nejbezpečnější přenos tokeny do vaší aplikace. |
 | `state` | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Náhodně generované jedinečná hodnota se obvykle používá k [útokům padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které uživatel byl v. |
-| `prompt` | Nepovinné | Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`. `prompt=login` Deklarace identity donutí uživatele k zadání přihlašovacích údajů tohoto požadavku, které negují jednotného přihlašování. `prompt=none` Deklarace identity je opak. Tento požadavek zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu v. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod Microsoft identity platform vrátí chybu. `prompt=consent` Deklarace identity se aktivuje dialogové okno souhlasu OAuth po přihlášení uživatele. Dialogové okno požádá uživatele a udělit oprávnění k aplikaci. |
-| `login_hint` | Nepovinné | Tento parametr můžete předběžně vyplnit pole uživatelské jméno a e-mailová adresa stránky přihlášení pro uživatele, pokud víte, uživatelské jméno předem. Aplikace často, použijte tento parametr během opětovné ověření po již extrahování uživatelské jméno ze starší přihlášení s použitím `preferred_username` deklarací identity. |
-| `domain_hint` | Nepovinné | Sféra uživatele v adresáři federované.  To přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránku, o něco jednodušší uživatelské prostředí. U klientů, které jsou federované pomocí v místním adresáři, jako je služba AD FS často výsledkem bezproblémové přihlašování z důvodu existující relaci přihlášení. |
+| `prompt` | Volitelná | Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`. `prompt=login` Deklarace identity donutí uživatele k zadání přihlašovacích údajů tohoto požadavku, které negují jednotného přihlašování. `prompt=none` Deklarace identity je opak. Tento požadavek zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu v. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod Microsoft identity platform vrátí chybu. `prompt=consent` Deklarace identity se aktivuje dialogové okno souhlasu OAuth po přihlášení uživatele. Dialogové okno požádá uživatele a udělit oprávnění k aplikaci. |
+| `login_hint` | Volitelná | Tento parametr můžete předběžně vyplnit pole uživatelské jméno a e-mailová adresa stránky přihlášení pro uživatele, pokud víte, uživatelské jméno předem. Aplikace často, použijte tento parametr během opětovné ověření po již extrahování uživatelské jméno ze starší přihlášení s použitím `preferred_username` deklarací identity. |
+| `domain_hint` | Volitelná | Sféra uživatele v adresáři federované.  To přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránku, o něco jednodušší uživatelské prostředí. U klientů, které jsou federované pomocí v místním adresáři, jako je služba AD FS často výsledkem bezproblémové přihlašování z důvodu existující relaci přihlášení. |
 
 V tomto okamžiku bude uživatel vyzván k zadání přihlašovacích údajů a bylo možné ověření dokončit. Koncový bod platforma identit Microsoft ověřuje, že uživatel vyjádřil souhlas se oprávnění uvedená v `scope` parametr dotazu. Pokud uživatele. nevyjádřil souhlas některý z těchto oprávnění, koncový bod Microsoft identity platform zobrazí výzvu k požadovaná oprávnění vyjádřit souhlas. Další informace o [aplikace s více tenanty, oprávnění a souhlas](v2-permissions-and-consent.md).
 

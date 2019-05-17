@@ -3,8 +3,8 @@ title: Opětovná aktivace deaktivovaných oborů názvů Azure Access Control S
 description: Zjistěte, jak najít a povolit obory názvů Azure Access Control Service (ACS) a požádali o prodloužení Novoroční povolená až do 4. února 2019.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fe1517cce8a1f9b1024085340ffb927b282f0fb
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299695"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540288"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postup: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
 
@@ -93,7 +93,7 @@ Další rozšíření se už být automaticky schvalovat. Pokud budete potřebov
 1. Připojte se k webu Azure portal a vytvoření [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
 1. Vyplňte formulář nové žádosti o podporu, jak je znázorněno v následujícím příkladu.
 
-    | Pole žádosti o podporu | Value |
+    | Pole žádosti o podporu | Hodnota |
     |-----------------------|--------------------|
     | **Typ problému** | `Technical` |
     | **Předplatné** | Nastavte na předplatné |

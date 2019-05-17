@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor – monitorování kubernetes hostované aplikace nulové instrumentace aplikací | Dokumentace Microsoftu
-description: Monitorování pro Kubernetes hostované aplikace nulové instrumentace aplikací je řešení pro monitorování, která umožňuje shromažďovat telemetrii Application Insights vztahující se na příchozí a odchozí požadavky do a z podů se spuštěnou v clusteru Kubernetes pomocí použití technologie sítě služby volat Istio.
+title: Pomocí služby Application Insights pro monitorování Azure Kubernetes Service (AKS) nebo jiné Kubernetes hostované aplikace – Azure Monitor | Dokumentace Microsoftu
+description: Azure Monitor používá technologii služby sítě, Istio, v clusteru Kubernetes poskytnout application monitoring pro aplikace pro všechny aplikace hostované Kubernetes. To umožňuje shromažďovat telemetrii Application Insights vztahující se na příchozí a odchozí požadavky do a z podů se spuštěnou v clusteru.
 services: application-insights
 author: tokaplan
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
-ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408211"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555839"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Nulové instrumentace application monitoring pro aplikace pro systém Kubernetes hostované aplikace
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulové instrumentace application monitoring pro aplikace pro systém Kubernetes hostované aplikace
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi public preview.

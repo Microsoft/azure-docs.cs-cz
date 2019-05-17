@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 74c24e05d974c4b3bb15a242185b645231f74580
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872047"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792782"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
 
@@ -34,7 +34,7 @@ Tento článek obsahuje přehled funkcí zabezpečení služby Azure, které mů
 
 Podrobnější přehled zabezpečení ve službě Azure Storage, najdete v článku [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md). Tato příručka obsahuje podrobné informace o funkcích zabezpečení služby Azure Storage. Tyto funkce patří klíče účtu úložiště, šifrování dat během přenosu a neaktivních uložených dat a analýza úložiště.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
 Můžete pomoct zabezpečit svůj účet úložiště pomocí řízení přístupu na základě rolí. Omezení přístupu na základě [znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší možná oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou uděluje přiřazením příslušné role RBAC pro skupiny nebo aplikace v určitém rozsahu. Můžete použít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtů úložiště, přiřadit oprávnění pro uživatele.
 
@@ -51,7 +51,7 @@ PODPIS je identifikátor URI, který zahrnuje všechny informace potřebné pro 
 Další informace:
 
 * [Vysvětlení modelu SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
-* [Vytvoření a použití SAS s úložištěm objektů Blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [Vytvoření a použití SAS s úložištěm objektů Blob](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 ## <a name="encryption-in-transit"></a>Šifrování během přenosu
 

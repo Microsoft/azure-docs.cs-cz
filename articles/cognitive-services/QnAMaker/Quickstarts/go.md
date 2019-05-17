@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76be371547bcb9daf0e10b62df62df5065cd6465
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913544"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791463"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Jak používat rozhraní REST API nástroje QnA Maker s využitím Go 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.micr
 
 ## <a name="create-knowledge-base"></a>Vytvoření znalostní báze
 
-Následující kód vytvoří novou znalostní bázi pomocí metody [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff).
+Následující kód vytvoří novou znalostní bázi pomocí metody [Create](https://go.microsoft.com/fwlink/?linkid=2092179).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -128,7 +128,7 @@ var req string = `{
   "qnaList": [
     {
       "id": 0,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://go.microsoft.com/fwlink/?linkid=2092179",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -226,7 +226,7 @@ func main() {
 
 ## <a name="update-knowledge-base"></a>Aktualizace znalostní báze
 
-Následující kód aktualizuje existující znalostní báze pomocí metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+Následující kód aktualizuje existující znalostní báze pomocí metody [Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -309,7 +309,7 @@ var req string = `{
     'qnaList': [
       {
         'id': 1,
-        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle',
+        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/azure-bot-service/templates/qnamaker/#navtitle',
         'source': 'Custom Editorial',
         'questions': [
           'How can I change the default message from QnA Maker?'
@@ -402,7 +402,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Stav žádosti Get
 
-Metodu [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) můžete volat za účelem kontroly stavu žádosti o vytvoření nebo aktualizaci znalostní báze. Pokud chcete zjistit, jak se tato metoda používá, podívejte se na vzorový kód pro metodu [Create](#Create) nebo [Update](#Update).
+Metodu [Operation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails) můžete volat za účelem kontroly stavu žádosti o vytvoření nebo aktualizaci znalostní báze. Pokud chcete zjistit, jak se tato metoda používá, podívejte se na vzorový kód pro metodu [Create](#Create) nebo [Update](#Update).
 
 [Zpět na začátek](#HOLTop)
 
@@ -410,7 +410,7 @@ Metodu [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93
 
 ## <a name="publish-knowledge-base"></a>Publikování znalostní báze
 
-Následující kód publikuje existující znalostní bázi pomocí metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+Následující kód publikuje existující znalostní bázi pomocí metody [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -500,7 +500,7 @@ func main() {
 
 ## <a name="replace-knowledge-base"></a>Nahrazení znalostní báze
 
-Následující kód nahrazuje obsah zadané znalostní báze pomocí metody [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish).
+Následující kód nahrazuje obsah zadané znalostní báze pomocí metody [Replace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -565,7 +565,7 @@ var req string = `{
   'qnaList': [
     {
       'id': 0,
-      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600',
+      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update',
       'source': 'Custom Editorial',
       'questions': [
         'How do I programmatically update my Knowledge Base?'
@@ -608,7 +608,7 @@ func main() {
 
 ## <a name="download-the-contents-of-a-knowledge-base"></a>Stažení obsahu znalostní báze
 
-Následující kód stáhne obsah zadané znalostní báze pomocí metody [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download).
+Následující kód stáhne obsah zadané znalostní báze pomocí metody [Download knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -685,7 +685,7 @@ func main() {
   "qnaDocuments": [
     {
       "id": 1,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -818,7 +818,7 @@ func main() {
 
 ## <a name="get-information-about-a-knowledge-base"></a>Získání informací o znalostní bázi
 
-Následující kód získá informace o zadané znalostní bázi pomocí metody [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails).
+Následující kód získá informace o zadané znalostní bázi pomocí metody [Get knowledge base details](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -910,7 +910,7 @@ func main() {
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>Získání všech znalostních bází uživatele
 
-Následující kód získá informace o všech znalostních bázích zadaného uživatele pomocí metody [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser).
+Následující kód získá informace o všech znalostních bázích zadaného uživatele pomocí metody [Get knowledge bases for user](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/listall).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -1015,7 +1015,7 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>Odstranění znalostní báze
 
-Následující kód odstraní zadanou znalostní bázi pomocí metody [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete).
+Následující kód odstraní zadanou znalostní bázi pomocí metody [Delete knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -1101,7 +1101,7 @@ func main() {
 
 ## <a name="get-endpoint-keys"></a>Získání klíčů koncového bodu
 
-Následující kód získá klíče aktuálního koncového bodu pomocí metody [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys).
+Následující kód získá klíče aktuálního koncového bodu pomocí metody [Get endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -1179,7 +1179,7 @@ func main() {
 
 ## <a name="refresh-endpoint-keys"></a>Aktualizace klíčů koncového bodu
 
-Následující kód znovu vygeneruje klíče aktuálního koncového bodu pomocí metody [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys).
+Následující kód znovu vygeneruje klíče aktuálního koncového bodu pomocí metody [Refresh endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/refreshkeys).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -1265,7 +1265,7 @@ func main() {
 
 ## <a name="get-word-alterations"></a>Získání změn slov
 
-Následující kód získá aktuální změny slov pomocí metody [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc).
+Následující kód získá aktuální změny slov pomocí metody [Download alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/get).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -1349,7 +1349,7 @@ func main() {
 
 ## <a name="replace-word-alterations"></a>Nahrazení změn slov
 
-Následující kód nahradí aktuální změny slov pomocí metody [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd).
+Následující kód nahradí aktuální změny slov pomocí metody [Replace alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -1445,7 +1445,7 @@ func main() {
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 

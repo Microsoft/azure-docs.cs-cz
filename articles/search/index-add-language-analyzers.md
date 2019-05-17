@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121788"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790899"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat do indexu Azure Search analyzátory jazyka
 
@@ -46,9 +46,6 @@ Výchozí Analyzátor je standardní Lucene, což funguje dobře pro angličtinu
 
 + Analyzátor anglické společnosti Microsoft provádí lemmatizátor místo slovního rozboru. To znamená, že dokáže zpracovat tvary slov tvary a nestandardní co mnohem lépe výsledkem relevantnější výsledky hledání 
 
-  > [!Tip]
-  > [Ukázka analyzátoru hledání](https://alice.unearth.ai/) poskytuje vedle sebe porovnání výsledků vytvářené standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken.
-
 ## <a name="configuring-analyzers"></a>Konfigurace analyzátory
 
 Jazykové Analyzátory se používají jako-je. Pro každé pole v definici indexu můžete nastavit **analyzátor** vlastnost na název analyzátor, který určuje jazyk a lingvistiky zásobníku (společnosti Microsoft nebo Lucene). Stejné Analyzátor se použijí při indexování a vyhledávání pro toto pole. Například můžete mít samostatnými poli pro angličtinu, francouzštinu a španělština hotelu popisy, které existovat vedle sebe ve stejném indexu. Alternativně namísto z **analyzátor**, můžete použít **indexAnalyzer** a **searchAnalyzer** mít různé analýzy pravidla při indexování čas a čas dotazování. 
@@ -64,7 +61,7 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 
 |Jazyk|Název analyzátoru Microsoft|Název analyzátor Lucene|  
 |--------------|-----------------------------|--------------------------|  
-|arabština|ar.microsoft|ar.lucene|  
+|Arabština|ar.microsoft|ar.lucene|  
 |Arménština||hy.lucene|  
 |Bengálština|bn.microsoft||  
 |Baskičtina||EU.lucene|  
@@ -74,7 +71,7 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 |Tradiční čínština|zh-Hant.microsoft|zh-Hant.lucene|  
 |Chorvatština|hr.microsoft||  
 |Čeština|cs.microsoft|cs.lucene|  
-|dánština|da.microsoft|da.lucene|  
+|Dánština|da.microsoft|da.lucene|  
 |Holandština|nl.microsoft|NL.lucene|  
 |Angličtina|en.microsoft|en.lucene|  
 |Estonština|et.microsoft||  
@@ -99,7 +96,7 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 |Malajálamština|ml.microsoft||  
 |Malajština (latinka)|ms.microsoft||  
 |Maráthština|mr.microsoft||  
-|norština|nb.microsoft|No.lucene|  
+|Norština|nb.microsoft|No.lucene|  
 |Perština||fa.lucene|  
 |polština|pl.microsoft|PL.lucene|  
 |Portugalština (Brazílie)|pt-Br.microsoft|PT Br.lucene|  
@@ -112,11 +109,11 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 |Slovenština|sk.microsoft||  
 |Slovinština|sl.microsoft||  
 |Španělština|es.microsoft|ES.lucene|  
-|švédština|sv.microsoft|Sv.lucene|  
+|Švédština|sv.microsoft|Sv.lucene|  
 |Tamilština|ta.microsoft||  
 |Telugština|te.microsoft||  
 |Thajština|th.microsoft|TH.lucene|  
-|turečtina|tr.microsoft|TR.lucene|  
+|Turečtina|tr.microsoft|TR.lucene|  
 |Ukrajinština|uk.microsoft||  
 |Urdština|ur.microsoft||  
 |Vietnamština|vi.microsoft||  

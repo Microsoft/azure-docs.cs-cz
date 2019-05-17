@@ -1,6 +1,6 @@
 ---
 title: Zaregistrujte se soubory Azure NetApp | Dokumentace Microsoftu
-description: Popisuje, jak odeslat žádost o registraci ve službě soubory Azure NetApp.
+description: Popisuje, jak se zaregistrovat k použití souborů NetApp Azure.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,25 +12,39 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2018
+ms.date: 05/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 86c016a5dbcc0d78378e59bc6b3606ddf2c54f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbe0b82008d7b15332c4e2cd62c49c611f20fe89
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452759"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794700"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
-Než začnete používat soubory Azure NetApp, musíte odeslat žádost o registraci ve službě soubory Azure NetApp.  Po registraci je potom zaregistrovat k používání služby.
 
-## <a name="request-to-enroll-in-the-service"></a>Požadavek na registraci ve službě
-Musíte být součástí programu ve verzi Public Preview a pro přístup k poskytovateli prostředků Microsoft.NetApp na seznamu povolených. Podrobnosti o zapojení do programu verze Public Preview najdete na [registrační stránce Azure NetApp Files Public Preview](https://aka.ms/nfspublicpreview). 
+> [!IMPORTANT] 
+> Před registrací zprostředkovatele prostředků Azure NetApp Files, jste od týmu Azure NetApp Files potvrzení, že vám byl udělen přístup ke službě dostali e-mailu. 
 
+V tomto článku najdete informace o postupu registrace pro Azure NetApp Files tak, aby mohli začít používat službu.
 
-## <a name="register-the-netapp-resource-provider"></a>Registrace poskytovatele prostředků NetApp
+## <a name="waitlist"></a>Odeslat žádost o waitlist pro přístupu ke službě
 
-K používání služby, zaregistrujte poskytovatele prostředků Azure pro Azure NetApp Files. 
+1. Odeslat žádost o waitlist pro přístup k službě soubory Azure NetApp přes [stránku pro odesílání souborů NetApp Azure waitlist](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+
+    Registrace Waitlist nezaručuje service okamžitý přístup. 
+
+2. Počkejte oficiální potvrzení e-mailu od týmu služby soubory Azure NetApp, než budete pokračovat s ostatními úkoly. 
+
+## <a name="resource-provider"></a>Registrace poskytovatele prostředků NetApp
+
+K používání služby, zaregistrujte poskytovatele prostředků Azure pro Azure NetApp Files.
+
+> [!NOTE] 
+> Budete moci úspěšně zaregistrovat poskytovatele prostředků NetApp i bez udělení přístupu pro službu. Ale bez povolení přístupu k jakékoli webu Azure portal nebo rozhraní API požadavek na vytvoření účtu NetApp nebo jiný prostředek Azure NetApp soubory budou odmítnuty došlo k následující chybě:  
+>
+> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
+
 
 1. Na webu Azure Portal klikněte na ikonu Azure Cloud Shell v pravém horním rohu:
 
@@ -50,6 +64,8 @@ K používání služby, zaregistrujte poskytovatele prostředků Azure pro Azur
        "name": "Microsoft.NetApp/publicPreviewADC" 
        
    `<SubID>` je vaše ID předplatného.
+
+    Pokud se nezobrazí název funkce `Microsoft.NetApp/publicPreviewADC`, nemáte přístup ke službě. Zastavte v tomto kroku. Postupujte podle pokynů v [odeslat waitlist žádost o přístup k službě](#waitlist) na žádost o přístup k službě než budete pokračovat. 
 
 4. V konzole Azure Cloud Shell zadejte následující příkaz pro registraci poskytovatele prostředků Azure: 
     
@@ -78,6 +94,6 @@ K používání služby, zaregistrujte poskytovatele prostředků Azure pro Azur
       ![Registered Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další postup
 
 [Vytvoření účtu NetApp](azure-netapp-files-create-netapp-account.md)

@@ -3,18 +3,18 @@ title: Odkaz v7 rozhraní API pro vyhledávání na Bingu místní pracovní | D
 description: Popisuje programovací prvky místní firmy API pro vyhledávání Bingu.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866365"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796751"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 
@@ -46,10 +46,10 @@ Požadavek musí používat protokol HTTPS.
 > Maximální délka adresy URL je 2 048 znaků. Aby bylo zajištěno, že vaše délka adresy URL nepřekračuje limit, maximální délka parametry dotazu musí být menší než 1 500 znaků. Pokud adresa URL je delší než 2 048 znaků, server vrátí 404 Nenalezeno.  
   
   
-## <a name="headers"></a>Hlavičky  
+## <a name="headers"></a>Záhlaví  
 Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.  
   
-|Hlavička|Popis|  
+|Záhlaví|Popis|  
 |------------|-----------------|  
 |Přijmout|Nepovinná hlavička požadavku.<br /><br /> Výchozí typ média je application/json. Určující, že odpověď [JSON-LD](https://json-ld.org/), nastavit hlavičku Accept application/ld + json.|  
 |<a name="acceptlanguage" />Accept-Language|Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud nastavíte tuto hlavičku, musíte zadat také parametr dotazu kopie. K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Pokud chcete zjistit, který trh Bing použil, podívejte se do hlavičky BingAPIs-Market.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|  
@@ -119,11 +119,11 @@ Definuje licence, pod kterým mohou být použity text nebo fotografie.
   
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|jméno|Název licence.|String|  
+|name|Název licence.|String|  
 |url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|String|  
 
 
-### <a name="link"></a>Odkaz  
+### <a name="link"></a>Vytvořit propojení  
 Definuje komponenty hypertextový odkaz.  
   
 |Název|Hodnota|Type|  
@@ -142,7 +142,7 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
   
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|jméno|Název vydavatele.|String|  
+|name|Název vydavatele.|String|  
 |url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|String|  
   
   
@@ -155,7 +155,7 @@ Definuje informace o místní firmy, jako je například restaurace nebo hotelu.
 |_type|Zadejte pokyn, který může být nastaven na jednu z následujících akcí:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurace</ul><li>|String|  
 |adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
 |entityPresentationInfo|Další informace o entitě, jako je například pomocné parametry, které můžete použít k určení typu entity. Například zda je restaurace nebo hotelu. `entityScenario` Je nastaveno na ListItem.|EntityPresentationInfo|  
-|jméno|Název entity.|String|  
+|name|Název entity.|String|  
 |Telefon|Entity telefonní číslo.|String|  
 |url|Adresa URL webu entity.<br /><br /> Pomocí této adresy URL spolu s názvem subjektu k vytvoření hypertextového odkazu, který po kliknutí uživatele na web entity.|String|  
 |webSearchUrl|Adresa URL na výsledky hledání na Bingu pro toto umístění.|String| 
@@ -183,7 +183,7 @@ Definuje skupinu výsledky, jako například mainline.
 
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
-|položek|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
+|items|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
@@ -222,7 +222,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|200|Úspěch|  
+|200|Úspěšné|  
 |400|Jeden z parametrů dotazu je chybí nebo není platný.|  
 |401|Klíč předplatného chybí nebo není platný.|  
 |403|Ověření uživatele (například používají klíče platným předplatným), ale nemají oprávnění k požadovanému prostředku.<br /><br /> Bing může také vracet tento stav překročení volající jejich dotazů za měsíc kvóty.|  

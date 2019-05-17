@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: fc95ce4aad4e8597b02b9c862be33bfcf6185541
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 12565d2b8004a5119add25473e5b088c9162035f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073805"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780502"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Nainstalovat a používat Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Kroky popsané v tomto článku předpokládají, že jste vytvořili AKS cluster (Kubernetes `1.11` a vyšších povolena pomocí RBAC) a navázali `kubectl` připojení ke clusteru. Pokud potřebujete pomoc s libovolnou z těchto položek, přejděte na téma [AKS quickstart][aks-quickstart].
 
-Budete potřebovat [Helm] [ helm] postupujte podle těchto pokynů a nainstalujte Istio. Doporučuje se, že máte verzi `2.12.2` nebo později správně nainstalován a nakonfigurován v clusteru. Pokud potřebujete pomoc s instalací Helm, přejděte na téma [pokyny instalaci AKS Helm][helm-install]. Všechny Istio pody musí také naplánovány ke spuštění na uzly s Linuxem.
+Budete potřebovat [Helm] [ helm] postupujte podle těchto pokynů a nainstalujte Istio. Doporučuje se, že máte verzi `2.12.2` nebo později správně nainstalován a nakonfigurován v clusteru. Pokud potřebujete pomoc s instalací Helm, přejděte na téma [pokyny instalaci AKS Helm][helm-install].
 
 Tento článek odděluje Istio pokyny instalaci do několika diskrétní kroky. Konečný výsledek je stejný jako oficiální instalační Istio struktury [pokyny][istio-install-helm].
 
@@ -195,7 +195,7 @@ Bash
 kubectl get crds | grep 'istio.io' | wc -l
 ```
 
-PowerShell
+Prostředí PowerShell
 
 ```powershell
 (kubectl get crds | Select-String -Pattern 'istio.io').Count
@@ -324,7 +324,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
   --set kiali.enabled=true
 ```
 
-PowerShell
+Prostředí PowerShell
 
 ```powershell
 helm install install/kubernetes/helm/istio --name istio --namespace istio-system `
@@ -336,9 +336,6 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 ```
 
 `istio` Grafu helmu nasazuje velký počet objektů. Zobrazí se seznam z výstupu vaše `helm install` příkazu výše. Nasazení součásti Istio může trvat 4 až 5 minut v závislosti na prostředí vašeho clusteru.
-
-> [!NOTE]
-> Všechny Istio pody musí být naplánovány ke spuštění na uzly s Linuxem. Pokud máte fondy uzlů Windows Server kromě fondy Linux uzlů v clusteru, ověřte, že všechny podů Istio bylo naplánováno ke spuštění na uzlech systému Linux.
 
 V tomto okamžiku jste nasadili Istio ke svému clusteru AKS. Aby bylo zajištěno, že máme úspěšné nasazení Istio, přejdeme k další části a [ověření instalace Istio](#validate-the-istio-installation).
 
@@ -517,7 +514,7 @@ Bash
 kubectl get crds -o name | grep 'istio.io' | xargs -n1 kubectl delete
 ```
 
-PowerShell
+Prostředí PowerShell
 ```powershell
 kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
 ```
@@ -535,6 +532,9 @@ Prozkoumat další možnosti instalace a konfigurace pro Istio, naleznete v nás
 - [Istio – možnosti instalace Helm][istio-install-helm-options]
 
 Můžete také postupovat podle dalších scénářů použití [Istio Bookinfo aplikace – příklad][istio-bookinfo-example].
+
+Další informace o monitorování AKS aplikace pomocí Application Insights a Istio, najdete v následující dokumentaci Azure Monitor:
+- [Nulové instrumentace application monitoring pro aplikace pro systém Kubernetes hostované aplikace][app-insights]
 
 <!-- LINKS - external -->
 [istio]: https://istio.io
@@ -561,6 +561,8 @@ Můžete také postupovat podle dalších scénářů použití [Istio Bookinfo 
 [prometheus]: https://prometheus.io/
 [jaeger]: https://www.jaegertracing.io/
 [kiali]: https://www.kiali.io/
+
+[app-insights]: https://docs.microsoft.com/azure/azure-monitor/app/kubernetes
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

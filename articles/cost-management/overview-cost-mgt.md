@@ -5,21 +5,25 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 69f91949347eadcffb3c0d3ff833a40b5e483e24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035718"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792816"
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
 Služba Cost management je proces efektivně plánování a řízení nákladů, které jsou zahrnuté ve vašem podniku. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Azure Cost Management pomáhá organizacím při plánování nákladů v úvahu. Pomáhá také efektivně analyzovat náklady a provedete akce vedoucí k optimalizaci cloudových výdajů. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](cost-mgt-best-practices.md).
+
+Podívejte [video s přehledem Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) a získejte rychlý přehled o tom, jak Azure Cost Management vám pomohou ušetřit peníze v Azure.
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Přestože spolu souvisejí, fakturace se od správy nákladů liší. Fakturace je proces, při kterém vystavujete faktury za zboží a služby zákazníkům a spravujete komerční vztahy.  O fakturační úlohy se obvykle starají zásobovací a finanční týmy.
 
@@ -42,6 +46,10 @@ Pokud pro přístup k datům správy nákladů nebo jejich kontrole používáte
 ## <a name="consider-cloudyn"></a>Zvážení využití služby Cloudyn
 
 [Cloudyn](overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. V současné době náklady na správu nepodporuje účty Microsoft Cloud Service Provider (CSP), ale nemá Cloudyn. Pokud máte účty CSP nebo pokud chcete použít metody showback a chargeback, můžete ke správě nákladů Cloudyn.
+
+Podívejte [videa Azure Cost Management a Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) zobrazíte doporučení, kdy byste měli použít Azure Cost Management nebo Cloudyn, podle potřeb svého podniku.
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="additional-azure-tools"></a>Další nástroje Azure
 

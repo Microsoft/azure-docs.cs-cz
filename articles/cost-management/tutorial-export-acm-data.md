@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 6975bb872e67650b8b5729a4ac66f0825fb9a80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 521a5f2543b9a4a84d50f8f0e53a6ae5108f760b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021419"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792874"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
 Pokud jste si prošli kurz Analýza nákladů, pak jste obeznámeni s ručním stahováním dat ze služby Cost Management. Můžete však vytvořit opakované úlohy, která automaticky vyexportuje Cost Management data do služby Azure storage na základě denně, týdně nebo měsíčně. Exportovaná data jsou ve formátu CSV a obsahují všechny informace, které služba Cost Management shromažďuje. Exportovaná data v úložišti Azure pak můžete používat s externími systémy a kombinovat je se svými vlastními daty. Exportovaná data můžete používat v externím systému, jako je třeba řídicí panel nebo jiný finanční systém.
+
+Podívejte [naplánování exportuje do úložiště ve službě Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) videa o vytvoření naplánované export Azure informací o nákladech na Azure Storage.
 
 Příklady v tomto kurzu vás provedou exportem dat služby Cost Management a následným ověřením, že se daná data úspěšně exportovala.
 
@@ -49,8 +51,8 @@ Vytvářeli a prohlíželi exportování dat nebo naplánovat export, otevřete 
 
 > [!NOTE]
 > Kromě předplatných můžete vytvořit exporty na skupiny prostředků, účty, oddělení a registrací. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
-> 
-> 
+>
+>
 
 
 Klikněte na tlačítko **přidat**, zadejte název pro export a pak vyberte **denní export náklady za měsíc k datu** možnost. Klikněte na **Další**.
@@ -87,7 +89,7 @@ Pokud máte předplatné s průběžnými platbami, MSDN nebo Visual Studio, nem
 
 ![Nový export – základní informace o kartě zobrazen vlastní týdenní výběr týden k datu](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
-## <a name="verify-that-data-is-collected"></a>Ověřit shromáždění dat
+## <a name="verify-that-data-is-collected"></a>Ověření shromáždění dat
 
 Pomocí Průzkumníka služby Azure Storage můžete snadno ověřit, že se data služby Cost Management shromažďují, a zobrazit exportovaný soubor CSV.
 

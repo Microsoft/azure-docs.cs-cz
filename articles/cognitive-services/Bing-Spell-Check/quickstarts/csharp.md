@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a80f0feec6985129f78ee0b034746aa77f2e271
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 102fd27c25052f4f5b3c3c469447b8488171f644
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876620"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798483"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST aC#
 
@@ -23,9 +23,9 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Chcete-li nainstalovat `Newtonsoft.Json` jako balíček NuGet v sadě Visual studio:
-    1. V Průzkumníku řešení klikněte pravým tlačítkem na soubor řešení.
+    1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na soubor řešení.
     1. Vyberte **spravovat balíčky NuGet pro řešení**.
     1. Vyhledejte `Newtonsoft.Json` a instalaci balíčku.
 * Pokud používáte Linux nebo MacOS, bude možné spustit tuto aplikaci pomocí [Mono](https://www.mono-project.com/).

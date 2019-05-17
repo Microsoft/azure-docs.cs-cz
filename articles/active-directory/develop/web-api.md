@@ -3,8 +3,8 @@ title: Webové rozhraní API apps v Azure Active Directory
 description: Popisuje, co jsou aplikace webového rozhraní API a základní informace v protokolu toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f344a4f928030c07f59c2f7aba201d153da123f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918713"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545213"
 ---
-# <a name="web-api"></a>Web API
+# <a name="web-api"></a>Webové rozhraní API
 
 Webové rozhraní API apps jsou webové aplikace, které potřebujete k získání zdroje z webového rozhraní API. V tomto scénáři existují dva typy identit, které webové aplikace můžete použít k ověření a zavolání webového rozhraní API:
 
@@ -63,7 +63,7 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsány v níže t
 1. Autorizační kód a informace o webové aplikace a webového rozhraní API jsou ověření pomocí Azure AD. Po úspěšném ověření Azure AD vrací dva tokeny: přístupový token JWT a aktualizační token JWT.
 1. Přes protokol HTTPS webová aplikace používá vrácené přístupový token JWT přidat token JWT řetězec s označením "Nosiče" v hlavičce autorizace požadavku do webového rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaný prostředek.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Zobrazit ukázky kódu pro webovou aplikaci do scénáře webového rozhraní API. A, vraťte se často – jsou přidávány nové ukázky. Web [aplikace webového rozhraní API](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 

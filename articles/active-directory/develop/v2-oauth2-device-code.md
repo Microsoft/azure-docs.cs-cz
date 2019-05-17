@@ -3,8 +3,8 @@ title: Platforma identit Microsoft používá k přihlášení uživatelů na za
 description: Vytváření toků vložené a prohlížeče bez ověřování pomocí udělení kódu zařízení.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703416788d123798774802613d71b30e8fbdaa9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86e875108e0349c0ab08a7217074e2afe23bcacc
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299403"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544926"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma identit Microsoft a tok OAuth 2.0 zařízení kódu
 

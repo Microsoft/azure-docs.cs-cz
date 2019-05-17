@@ -3,8 +3,8 @@ title: Konfigurovatelné životností tokenů ve službě Azure Active Directory
 description: Zjistěte, jak nastavit dobu života pro tokeny vystavené službou Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: celested
-ms.custom: aaddev
+ms.date: 04/13/2019
+ms.author: ryanwi
+ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b0242a8e3745a0014e5c2a1289ca2bc8c85c75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411364"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545393"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životností tokenů ve službě Azure Active Directory (Preview)
 
 Můžete určit dobu životnosti tokenu vydaného službou Azure Active Directory (Azure AD). Můžete nastavit Životnost tokenů pro všechny aplikace ve vaší organizaci, aplikaci s více tenanty (více organizace) nebo konkrétní objekt služby ve vaší organizaci.
 
 > [!IMPORTANT]
-> Po sluchu od zákazníků ve verzi preview, plánujeme tato funkce nahraďte novou funkci v Azure Active Directory podmíněného přístupu.  Po dokončení nové funkce se tato funkce nakonec přestanou po určité době oznámení.  Pokud používáte zásady konfigurovat doba platnosti tokenu, buďte připraveni přepnout na novou funkci podmíněný přístup, až bude k dispozici. 
+> Po sluchu od zákazníků ve verzi preview jsme jste nahrazuje funkci konfigurovatelné životností tokenů s [možnosti správy relace ověřování](https://go.microsoft.com/fwlink/?linkid=2083106) v podmíněného přístupu Azure AD. Tato funkce se přestanou používat 1. listopadu 2019. Pokud používáte zásady konfigurovat doba platnosti tokenu, přepněte na nové funkce podmíněného přístupu. 
 
 Objekt zásad ve službě Azure AD, představuje sadu pravidel, která vynucují u jednotlivých aplikací, nebo na všechny aplikace v organizaci. Každý typ zásad obsahuje strukturu jedinečnou sadu vlastností, které se použijí pro objekty, které jsou přiřazeny.
 

@@ -16,231 +16,224 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6945476811ac8e97576bc707e6bb9ad96af82c17
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: fc142bf02a44ea85861f4cc648fd7ee8602c7520
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011659"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mondaycom"></a>Kurz: Integrace Azure Active Directory s monday.com
 
 V tomto kurzu se dozvíte, jak integrovat monday.com s Azure Active Directory (Azure AD).
+
 Monday.com integraci se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k monday.com.
-* Můžete povolit uživatelům být automaticky přihlášeni k monday.com (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit, kdo má přístup k monday.com Azure AD.
+* Uživatelům můžete automaticky přihlášeni k monday.com pomocí jejich účtů služby Azure AD (jednotné přihlašování).
+* Můžete spravovat své účty v jednom centrálním místě na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s monday.com, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Monday.com jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure AD, vytvořte [bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
+* Předplatné monday.com pomocí jednotného přihlašování povolená.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování a monday.com integrace s Azure AD.
 
-* podporuje Monday.com **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
-* podporuje Monday.com **JIT** zřizování uživatelů
+Monday.com podporuje následující funkce:
 
-## <a name="adding-mondaycom-from-the-gallery"></a>Přidání monday.com z Galerie
+* **Iniciovaného Zprostředkovatelem přihlašování jednotného přihlašování**
+* **Zahájené pomocí IDP jednotného přihlašování**
+* **Zřizování uživatelů just-in-time**
 
-Konfigurace integrace monday.com do služby Azure AD, budete muset přidat monday.com z Galerie na váš seznam spravovaných aplikací SaaS.
+## <a name="add-mondaycom-in-the-azure-portal"></a>Přidat monday.com na webu Azure Portal
 
-**Chcete-li přidat monday.com z galerie, postupujte následovně:**
+Monday.com integrovat Azure AD, je nutné přidat monday.com na váš seznam spravovaných aplikací SaaS.
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+1. V nabídce vlevo vyberte **Azure Active Directory**.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    ![Možnost Azure Active Directory](common/select-azuread.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. Vyberte **podnikové aplikace** > **všechny aplikace**.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V podokně podnikových aplikací](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+1. Chcete-li přidat aplikaci, vyberte **novou aplikaci**.
 
-4. Do vyhledávacího pole zadejte **monday.com**vyberte **monday.com** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+    ![Nová možnost aplikace](common/add-new-app.png)
+
+1. Do vyhledávacího pole zadejte **monday.com**. Ve výsledcích hledání vyberte **monday.com**a pak vyberte **přidat**.
 
     ![Monday.com v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí monday.com podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v monday.com.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s monday.com podle testovacího uživatele s názvem **Britta Simon**. Pro jednotné přihlašování pro práci je potřeba vytvořit v monday.com propojené vztah mezi uživatele služby Azure AD a související uživatel.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s monday.com, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s monday.com, je nutné dokončit následující stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurovat Single Sign-On monday.com](#configure-mondaycom-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele monday.com](#create-mondaycom-test-user)**  – Pokud chcete mít protějšek Britta Simon v monday.com, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+| Úkol | Popis |
+| --- | --- |
+| **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)** | Umožňuje uživatelům tuto funkci používat. |
+| **[Konfigurace monday.com jednotného přihlašování](#configure-mondaycom-single-sign-on)** | Konfiguruje nastavení jednotného přihlašování v aplikaci. |
+| **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** | Zkoušky Azure AD jednotného přihlašování pro uživatele s názvem Britta Simon. |
+| **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)** | Umožňuje Britta Simon používat Azure AD jednotného přihlašování. |
+| **[Vytvoření zkušebního uživatele monday.com](#create-a-mondaycom-test-user)** | Vytvoří protějšek Britta Simon monday.com, který je propojený s Azure AD zastoupení uživatele. |
+| **[Otestovat jednotné přihlašování](#test-single-sign-on)** | Ověřuje, že konfigurace funguje. |
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části můžete nakonfigurovat služby Azure AD jednotného přihlašování monday.com na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s monday.com, proveďte následující kroky:
+1. V [webu Azure portal](https://portal.azure.com/)v **monday.com** podokno integrace aplikací, vyberte **jednotného přihlašování**.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **monday.com** integrace stránce aplikace vyberte **jednotného přihlašování**.
+    ![Nakonfigurujte možnost přihlašování](common/select-sso.png)
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+1. V **vybrat jedinou metodu přihlašování** podokně, vyberte **SAML** nebo **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
     ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+1. V **nastavte si jednotné přihlašování pomocí SAML** vyberte **upravit** (ikonu tužky) Chcete-li otevřít **základní konfiguraci SAML** podokně.
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb** a chcete nakonfigurovat v **IDP** iniciované režimu proveďte následující kroky:
+1. V **základní konfiguraci SAML** podokně, pokud máte soubor zprostředkovatele metadat služby a chcete provést konfiguraci *zahájené pomocí IDP režimu*, proveďte následující kroky:
 
-    a. Klikněte na tlačítko **nahrát soubor metadat**.
+    1. Vyberte **nahrát soubor metadat**.
 
-    ![Nahrát soubor metadat](common/upload-metadata.png)
+       ![Možnosti nahrání metadat souboru](common/upload-metadata.png)
 
-    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
+    1. Pokud chcete vybrat soubor metadat, vyberte ikonu složky a pak vyberte **nahrát**.
 
-    ![Zvolte soubor metadat](common/browse-upload-metadata.png)
+       ![Vyberte soubor metadat a pak vyberte tlačítko Nahrát](common/browse-upload-metadata.png)
 
-    c. Po úspěšném odeslání souboru metadat **identifikátor** a **adresy URL odpovědi** hodnoty získat automaticky vyplní v části základní konfiguraci SAML.
+    1. Po úspěšném odeslání souboru metadat **identifikátor** a **adresy URL odpovědi** hodnoty se automaticky vyplní v **základní konfiguraci SAML** podokna:
 
-    ![image](common/idp-intiated.png)
+       ![Hodnoty zprostředkovatele identity v podokně základní konfiguraci SAML](common/idp-intiated.png)
 
-    > [!Note]
-    > Pokud **identifikátor** a **adresy URL odpovědi** hodnoty nechcete získat polulated automaticky, a potom zadejte hodnoty ručně podle vašich požadavků.
+       > [!Note]
+       > Pokud **identifikátor** a **adresy URL odpovědi** nejsou automaticky vyplněné hodnoty, zadejte hodnoty ručně.
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Konfigurace aplikace v *iniciovaného Zprostředkovatelem přihlašování režimu*:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    1. Vyberte **nastavit další adresy URL**.
+    
+    1. V **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: https:\//\<Vaše_Doména >. monday.com. Obraťte se [tým podpory klienta monday.com](mailto:support@monday.com) získat adresu URL přihlašování.
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<YOUR_DOMAIN>.monday.com`
+        ![Další adresy URL možnost Set](common/metadata-upload-additional-signon.png)
 
-    > [!NOTE]
-    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta monday.com](mailto:support@monday.com) tuto výhodu získáte. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+1. Aplikace monday.com očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Ke správě těchto atributů v **nastavte si jednotné přihlašování pomocí SAML** vyberte **upravit** otevřít **atributy uživatele** podokně.
 
-6. Monday.com aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+    ![Podokno atributy uživatele](common/edit-attribute.png)
 
-    ![image](common/edit-attribute.png)
+1. V části **deklarace identity uživatelů**vyberte **upravit** k úpravě deklarace identity. Chcete-li přidat deklaraci identity, **přidat novou deklaraci**a potom nakonfigurujte atribut tokenu SAML, jak je znázorněno na předchozím obrázku. Potom proveďte následující kroky: 
 
-7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
+    1. Vyberte **přidat novou deklaraci**.
 
-    | Name | Zdrojový atribut|
-    | -------| ---------|
-    | Email | user.mail |
-    | FirstName | user.givenname |
-    | LastName | user.surname |
+        ![Přidat novou deklaraci identity v podokně deklarace identity uživatele](common/new-save-attribute.png)
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    1. V **spravovat deklarace identity uživatelů** podokno, nastavte následující hodnoty:
+        
+       1. V **název** zadejte název atributu pro řádek deklarace identity uživatele.
 
-    ![image](common/new-save-attribute.png)
+       1. Ponechte **Namespace** prázdné.
 
-    ![image](common/new-attribute-details.png)
+       1. Pro **zdroj**vyberte **atribut**.
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+       1. V **zdrojový atribut** vyberte hodnotu atributu pro řádek deklarace identity uživatele.
 
-    c. Nechte **Namespace** prázdné.
+       1. Vyberte **OK**a pak vyberte **Uložit**.
 
-    d. Vyberte zdroj jako **atribut**.
+       ![Deklarace identity uživatelů spravovat](common/new-attribute-details.png)
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+1. V **nastavte si jednotné přihlašování pomocí SAML** podokně v části **podpisový certifikát SAML**vyberte **Stáhnout** vedle **certifikát (Base64)**. Možnost stažení na základě vašich požadavků. Uložte si certifikát ve vašem počítači.
 
-    f. Klikněte na tlačítko **Ok**
+    ![Možnost stažení certifikát (Base64)](common/certificatebase64.png)
 
-    g. Klikněte na **Uložit**.
+1. V **nastavení monday.com** tématu, zkopírujte následující adresy URL na základě vašich požadavků:
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
-
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
-
-9. Na **nastavení monday.com** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+    * Přihlašovací adresa URL
+    * Identifikátor Azure AD
+    * Adresa URL – odhlášení
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Adresa URL – odhlášení
-
 ### <a name="configure-mondaycom-single-sign-on"></a>Konfigurace monday.com jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **monday.com** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory monday.com](mailto:support@monday.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně monday.com, odeslat stažený soubor certifikátu (Base64) a příslušné adresy URL, které jste zkopírovali z portálu Azure portal k [tým podpory monday.com](mailto:support@monday.com). Tým podpory monday.com používá informace, které pošlete je zajistit, že SAML jednotné přihlašování – nastavení připojení správně na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal, vyberte **Azure Active Directory** > **uživatelé** > **všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Uživatelé a všechny možnosti uživatele](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+1. Vyberte **nového uživatele**.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Nová možnost uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+1. V **uživatele** podokno, proveďte následující kroky:
 
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >**. Například **brittasimon\@contoso.com**.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište hodnotu, která se zobrazí **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
+
+    ![V podokně uživatele](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k monday.com.
+V této části udělíte přístup Britta Simon k monday.com, které můžete použít Azure jednotného přihlašování.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **monday.com**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **monday.com**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![V podokně podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **monday.com**.
+1. V seznamu aplikací vyberte **monday.com**.
 
-    ![Odkaz monday.com v seznamu aplikací](common/all-applications.png)
+    ![Monday.com v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V nabídce vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Možnost uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **přidat uživatele**. Potom v **přidat přiřazení** vyberte **uživatelů a skupin**.
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. V **uživatelů a skupin** vyberte **Britta Simon** v seznamu uživatelů. Zvolte **Vybrat**.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. Pokud se očekává hodnotu kontrolního výrazu SAML, do role v **vybrat roli** podokně, vyberte odpovídající roli pro uživatele ze seznamu. Zvolte **Vybrat**.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+1. V **přidat přiřazení** vyberte **přiřadit**.
 
-### <a name="create-mondaycom-test-user"></a>Vytvoření monday.com testovacího uživatele
+### <a name="create-a-mondaycom-test-user"></a>Vytvoření zkušebního uživatele monday.com
 
-V této části se vytvoří uživateli Britta Simon v monday.com. Monday.com podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi monday.com, vytvoří se nový po ověření.
+V této části se vytvoří uživatele s názvem Britta Simon monday.com aplikace. Monday.com podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi monday.com, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 
-Po kliknutí na dlaždici monday.com na přístupovém panelu, můžete by měl být automaticky přihlášeni k monday.com, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Jakmile nastavíte jednotné přihlašování, když vyberete **monday.com** na portálu Moje aplikace, budete automaticky přihlášeni k monday.com. Další informace o portálu Moje aplikace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="next-steps"></a>Další postup
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+Další informace, projděte si tyto články:
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
+- [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
