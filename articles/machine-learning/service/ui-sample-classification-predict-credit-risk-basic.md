@@ -1,7 +1,7 @@
 ---
-title: 'Klasifikace: Předvídání úvěrového rizika'
+title: 'Klasifikace: Predikce úvěrového rizika'
 titleSuffix: Azure Machine Learning service
-description: Tento ukázkový experiment vizuální rozhraní ukazuje, jak provádět binární klasifikace předpovědět úvěrové riziko podle informací uvedených v úvěr.
+description: Zjistěte, jak sestavit služby machine learning třídění, aniž byste museli napsat jediný řádek kódu pomocí vizuální rozhraní.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d4ec3c71aaed6bddb012fb17ee5bb96da00cd76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028527"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789406"
 ---
-# <a name="sample-3---classification-predict-credit-risk"></a>Ukázka 3 – klasifikace: Předvídání úvěrového rizika
+# <a name="sample-3---classification-predict-credit-risk"></a>Ukázka 3 – klasifikace: Predikce úvěrového rizika
 
-Tento ukázkový experiment vizuální rozhraní ukazuje, jak provádět binární klasifikace předpovědět úvěrové riziko podle informací uvedených v úvěr. Předvádí, jak můžete provádět základní klasifikace, včetně operací zpracování dat, datové sady rozdělit učení a testovací sady, trénování modelu, skóre testovací datové a vyhodnotit předpovědi.
+Zjistěte, jak sestavit služby machine learning třídění, aniž byste museli napsat jediný řádek kódu pomocí vizuální rozhraní. Tato ukázka trénovat **dvěma třídami posíleného rozhodovacího stromu** předpovědět úvěrové riziko (vysoká nebo nízká) podle informací o aplikaci kredit jako je historie kreditu, věk a počet kreditní karty.
+
+Protože ale My se snažíme odpověď na otázku "Které z nich?" tomu se říká klasifikace problému. Můžete však použít stejný základní postup libovolného typu machine learning problém řešit, ať to regrese, klasifikace, clustering a tak dále.
+
+Tady je dokončené grafu pro tento experiment:
+
+![Graf experimentu](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +46,6 @@ Datová sada obsahuje 1 000 vzorků s 20 funkcí a 1 popisek. Každá ukázka p�
 
 ## <a name="experiment-summary"></a>Souhrn testu
 
-
 Budeme postupovat podle těchto kroků a vytvořte experiment:
 
 1. Přetáhněte modul UCI údajů o kreditních kartách němčina datovou sadu na plátno experimentu.
@@ -50,11 +55,10 @@ Budeme postupovat podle těchto kroků a vytvořte experiment:
 1. Přidat **Train Model** modulu. Připojit třídění z předchozího kroku levý vstupní port **Train Model**. Přidat sadu školení (vlevo výstupní port modulu **rozdělení dat**) na pravý vstupní port **Train Model**. **Trénování modelu** bude trénování třídění.
 1. Přidat **určení skóre modelu** modulu a připojení **trénování modelu** modulu do ní. Pak přidat sadu testů (pravý port **rozdělení dat**) k **určení skóre modelu**. **Score Model** způsobí, že jsou předpovědi. Můžete vybrat jeho výstupní port předpovědí a pravděpodobnosti pozitivní třídy.
 1. Přidat **Evaluate Model** modulu a připojte se k jeho s levým vstupním portem Vyhodnocená datové sady. Pokud chcete zobrazit výsledky hodnocení, vyberte na výstupní port modulu **Evaluate Model** modul a vyberte **vizualizovat**.
-    
+
 Tady je úplný experiment grafu:
 
 ![Graf experimentu](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
-
 
 ## <a name="results"></a>Výsledky
 
