@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 22db43413b5c752decf6785a75dff22ff4a68039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057ec69db300c3ec95cbc63bd5056a78c24d5660
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596675"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601662"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Osvědčené postupy pro zabezpečení databáze PaaS v Azure
 
@@ -78,7 +78,7 @@ Azure SQL pro transparentní šifrování dat spravuje klíče související pro
 
 Azure SQL, zajišťuje šifrování pro sloupce prostřednictvím [s funkcí Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). To umožňuje jenom autorizované aplikace přístup k citlivým sloupce. Pomocí tohoto typu šifrování omezuje dotazy SQL pro šifrované sloupce na základě rovnosti hodnot.
 
-Šifrování na úrovni aplikace by měla sloužit i pro vybrané údaje. Aspekty suverenita dat někdy dají zmírnit tím, že šifruje data pomocí klíče, který je uložen ve správné zemi. Přenos dat i náhodnému zabrání způsobí chybu, protože jde o neuskutečnitelnou k dešifrování dat bez klíče, za předpokladu, že se používá silný algoritmus (například AES 256).
+Šifrování na úrovni aplikace by měla sloužit i pro vybrané údaje. Aspekty suverenita dat někdy dají zmírnit tím, že šifruje data pomocí klíče, který je uložen v správnou zemi či oblast. Přenos dat i náhodnému zabrání způsobí chybu, protože jde o neuskutečnitelnou k dešifrování dat bez klíče, za předpokladu, že se používá silný algoritmus (například AES 256).
 
 Další bezpečnostní opatření slouží k zabezpečení databáze, jako jsou návrh zabezpečení systému, šifrovat důvěrné prostředky a vytváření brány firewall kolem databázové servery.
 

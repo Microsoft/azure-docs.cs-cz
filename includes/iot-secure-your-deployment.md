@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 6179086c6a2cf187c976ff23bf24180257023d28
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289168"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815519"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>Zabezpečení nasazení Internet of Things (IoT)
 
@@ -21,11 +21,11 @@ Tento článek poskytuje další úroveň podrobností pro zabezpečení infrast
 
 Zabezpečení nasazení Azure IoT je možné rozdělit do těchto tří zabezpečení oblastí:
 
-* **Zabezpečení zařízení**: zabezpečení zařízení IoT, když je nasazena v reálném světě.
+* **Zabezpečení zařízení**: Zařízení IoT zabezpečení při nasazení v reálném světě.
 
-* **Zabezpečení připojení**: zajištění všechna data přenášená mezi zařízení IoT a centrem IoT je důvěrný a odolný proti manipulaci.
+* **Zabezpečení připojení**: Zajištění všechna data přenášená mezi zařízení IoT a centrem IoT je důvěrný a odolný proti manipulaci.
 
-* **Cloud Security**: poskytnout způsob jejich zabezpečení dat prochází přes, a je uložen v cloudu.
+* **Cloud Security**: Poskytnout způsob jejich zabezpečení dat prochází přes, a je uložen v cloudu.
 
 ![Tři oblasti zabezpečení](./media/iot-secure-your-deployment/overview.png)
 
@@ -35,7 +35,7 @@ Akcelerátory řešení IoT zabezpečit zařízení IoT pomocí těchto dvou met
 
 * Zadáním klíče jedinečné identity (tokeny zabezpečení) pro každé zařízení, která umožňuje zařízením komunikovat s centrem IoT.
 
-* Na zařízení pomocí [certifikát X.509](http://www.itu.int/rec/T-REC-X.509-201210-I/en) a privátního klíče jako prostředek k ověření zařízení do služby IoT Hub. Tato metoda ověřování zajišťuje, že privátní klíč v zařízení není znám mimo zařízení v okamžiku, poskytuje vyšší úroveň zabezpečení.
+* Na zařízení pomocí [certifikát X.509](https://www.itu.int/rec/T-REC-X.509-201210-S) a privátního klíče jako prostředek k ověření zařízení do služby IoT Hub. Tato metoda ověřování zajišťuje, že privátní klíč v zařízení není znám mimo zařízení v okamžiku, poskytuje vyšší úroveň zabezpečení.
 
 Případě metody token zabezpečení poskytuje ověřování pro každé volání prováděných zařízení do služby IoT Hub tím, že přidružíte ke každému volání symetrický klíč. Ověřování založené na X.509 umožňuje ověřování zařízení IoT ve fyzické vrstvě jako součást navazování připojení protokolu TLS. Metodu založenou na bezpečnostní token, je možné bez ověřování X.509, což je méně bezpečné vzor. Volba mezi těmito dvěma metodami je primárně určený zabezpečené zařízení ověřování musí být a dostupnost služby Zabezpečené úložiště v zařízení (bezpečně uložit privátní klíč).
 
@@ -53,9 +53,9 @@ Každé centrum IoT má [registr identit](../articles/iot-hub/iot-hub-devguide-i
 
 [IoT Hub podporuje protokoly, například MQTT, AMQP a HTTP](../articles//iot-hub/iot-hub-devguide-security.md). Každá z těchto protokolů jinak používá tokeny zabezpečení IoT zařízení do služby IoT Hub:
 
-* AMQP: SASL prostý a založené na deklaracích AMQP zabezpečení (`{policyName}@sas.root.{iothubName}` s IoT hub úrovně tokeny; `{deviceId}` s rozsahem zařízení tokeny).
+* AMQP: Zabezpečení založené na deklaracích AMQP a SASL prostý (`{policyName}@sas.root.{iothubName}` s IoT hub úrovně tokeny; `{deviceId}` s rozsahem zařízení tokeny).
 
-* MQTT: Připojení používá paketů `{deviceId}` jako `{ClientId}`, `{IoThubhostname}/{deviceId}` v **uživatelské jméno** pole a SAS token v **heslo** pole.
+* MQTT: PŘIPOJIT paketů používá `{deviceId}` jako `{ClientId}`, `{IoThubhostname}/{deviceId}` v **uživatelské jméno** pole a SAS token v **heslo** pole.
 
 * HTTP: Je platný token v hlavičce autorizace požadavku.
 
@@ -101,15 +101,15 @@ Azure IoT Hub a dalším službám, které mohou být součástí řešení povo
 
 Dat přijatý službou Azure IoT Hub můžete využívat širokou škálu služeb, jako je Azure Stream Analytics a Azure blob storage. Tyto služby umožňují přístup ke správě. Další informace o těchto služeb a dostupných možností:
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): škálovatelná, plně indexované databázovou službu pro částečně strukturovaná data, která spravuje metadat pro zařízení si zřídíte, jako jsou atributy, konfigurace a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysoce propustné zpracování, schématu nezávislé indexování dat a také bohaté rozhraní příkazů jazyka SQL.
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Škálovatelná, plně indexované databázovou službu pro částečně strukturovaná data, která spravuje metadata pro zařízení, který zřídíte, jako jsou atributy, konfigurace a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysoce propustné zpracování, schématu nezávislé indexování dat a také bohaté rozhraní příkazů jazyka SQL.
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): v reálném čase v cloudu, která umožňuje rychlý vývoj a nasazení nízkonákladového analytického řešení pro odhalení informací v reálném čase ze zařízení, senzorů, infrastruktury a aplikací pro zpracování datových proudů. Data z této plně spravované služby můžete škálovat pro jakýkoli svazek, zatímco stále dosahuje vysoké propustnosti, nízké latence a odolnost proti chybám.
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): V reálném čase v cloudu, která umožňuje rychlý vývoj a nasazení nízkonákladového analytického řešení pro odhalení informací v reálném čase ze zařízení, senzorů, infrastruktury a aplikací pro zpracování datových proudů. Data z této plně spravované služby můžete škálovat pro jakýkoli svazek, zatímco stále dosahuje vysoké propustnosti, nízké latence a odolnost proti chybám.
 
-* [Služba Azure App Services](https://azure.microsoft.com/services/app-service/): cloudovou platformou můžete tvořit výkonné webové a mobilní aplikace, které se připojují k datům bez ohledu na; v cloudu nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s out-of-the-box připojení k desítkám cloudových služeb a podnikových aplikací. Kódování v oblíbeném jazyce a integrovaném vývojovém prostředí (.NET, Node.js, PHP, Python nebo Java) k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): Cloudovou platformou můžete tvořit výkonné webové a mobilní aplikace, které se připojují k datům bez ohledu na; v cloudu nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s out-of-the-box připojení k desítkám cloudových služeb a podnikových aplikací. Kódování v oblíbeném jazyce a integrovaném vývojovém prostředí (.NET, Node.js, PHP, Python nebo Java) k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
 
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): funkci Logic Apps služby Azure App Service pomáhá vašemu řešení IoT umožní vaše stávající systémy z podnikové integrace a automatizace pracovních postupů. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají spouštěčem událostí a provádějí sérii kroků, pravidla a akce, které používají výkonné konektory pro integraci s obchodními procesy. Logic Apps nabízí out-of-the-box připojení k rozsáhlému ekosystému aplikací SaaS, cloudové a místní aplikace.
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Funkce Logic Apps služby Azure App Service pomáhá vašemu řešení IoT umožní vaše stávající systémy z podnikové integrace a automatizace pracovních postupů. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají spouštěčem událostí a provádějí sérii kroků, pravidla a akce, které používají výkonné konektory pro integraci s obchodními procesy. Logic Apps nabízí out-of-the-box připojení k rozsáhlému ekosystému aplikací SaaS, cloudové a místní aplikace.
 
-* [Azure Blob storage](https://azure.microsoft.com/services/storage/): spolehlivé, úsporné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.
+* [Azure Blob storage](https://azure.microsoft.com/services/storage/): Spolehlivé, úsporné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.
 
 ## <a name="conclusion"></a>Závěr
 

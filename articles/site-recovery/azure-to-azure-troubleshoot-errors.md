@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699079"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796431"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -232,10 +232,10 @@ Buď můžete k ochraně disky nebo ignorovat upozornění opět stav replikace 
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. Chcete-li zrušit upozornění. Přejděte na replikované položky > virtuální počítač > klikněte na Zavřít výstrahu v části Přehled.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Virtuální počítač Azure pro výběr v "povolit replikaci" se nezobrazuje
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Virtuálním počítači Azure nebo skupinu prostředků pro výběr v "povolit replikaci" se nezobrazuje
 
  **1. příčina:  Skupinu prostředků a zdrojový virtuální počítač jsou v různém umístění** <br>
-Azure Site Recovery aktuálně přidělených, že zdrojová skupina prostředků oblasti a virtuální počítače by měl být ve stejném umístění. Pokud to není případ pak jste nemohli najít virtuální počítač v době ochrany.
+Azure Site Recovery aktuálně pověření, které zdrojové oblasti, skupiny prostředků a virtuální počítače by měl být ve stejném umístění. Pokud to není případ pak jste nemohli najít virtuální počítač v době ochrany. Jako alternativní řešení můžete povolit replikaci z virtuálního počítače namísto trezor služby Recovery services. Přejděte k virtuálnímu počítači Sourece > Vlastnosti > zotavení po havárii a povolení replikace.
 
 **2. příčina: Skupina prostředků není součástí vybrané předplatné** <br>
 Není možné najít skupinu prostředků v době provedení ochrany, pokud není součástí dané předplatné. Ujistěte se, že skupina prostředků patří do předplatného, který se používá.
@@ -252,7 +252,7 @@ Pokud chcete povolit replikaci virtuálního počítače, to může být z důvo
 >
 >Ujistěte se, že modul "" azurerm.resources zavedla"" aktualizace před použitím níže uvedený skript.
 
-Můžete použít [odebrat zastaralé skript pro konfiguraci Azure Site Recovery](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) a odebrat zastaralou konfiguraci Site Recovery na virtuálním počítači Azure. Byste měli vidět tento virtuální počítač po odebrání zastaralou konfiguraci.
+Můžete použít [odebrat zastaralé skript pro konfiguraci Azure Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) a odebrat zastaralou konfiguraci Site Recovery na virtuálním počítači Azure. Byste měli vidět tento virtuální počítač po odebrání zastaralou konfiguraci.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Nelze vybrat pro ochranu virtuálního počítače
  **1. příčina:  Virtuální počítač má některá rozšíření nainstalované ve stavu selhání nebo nereaguje** <br>

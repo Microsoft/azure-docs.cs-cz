@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301212"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764728"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -33,7 +33,7 @@ Pokud to není informace, které hledáte, uveďte ji v poznámce na konci tohot
 
 ## <a name="cloud-apps-assignments"></a>Přiřazení aplikací cloudu
 
-Díky zásadám podmíněného přístupu můžete řídit, jak vaši uživatelé přístup k vaší [cloudové aplikace](conditions.md#cloud-apps). Při konfiguraci zásad podmíněného přístupu musíte vybrat aspoň jednu aplikaci v cloudu. 
+Díky zásadám podmíněného přístupu můžete řídit, jak vaši uživatelé přístup k vaší [cloudové aplikace](conditions.md#cloud-apps-and-actions). Při konfiguraci zásad podmíněného přístupu musíte vybrat aspoň jednu aplikaci v cloudu. 
 
 ![Vyberte cloudové aplikace zásady](./media/technical-reference/09.png)
 
@@ -57,7 +57,7 @@ Zásady podmíněného přístupu můžete přiřadit následující cloudové a
 - Microsoft Forms
 - Microsoft Intune
 - Registrace v Microsoft Intune
-- Microsoft Planner
+- Aplikace Microsoft Planner
 - Microsoft Power BI
 - Microsoft PowerApps
 - Vyhledávání v Bingu
@@ -92,7 +92,7 @@ V zásadách podmíněného přístupu můžete nakonfigurovat podmínku platfor
 
 - Android
 - iOS
-- telefon se systémem Windows
+- Windows Phone
 - Windows
 - macOS
 
@@ -122,7 +122,7 @@ Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro z
 | Windows 7              | Internet Explorer, Chrome                     |
 | iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
 | Android                | Chrome, Microsoft Edge, Intune Managed Browser |
-| telefon se systémem Windows          | Internet Explorer, Microsoft Edge             |
+| Windows Phone          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
 | Windows Server 2012 R2 | Internet Explorer, Chrome                     |
@@ -141,8 +141,8 @@ Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte ná
 
 |    |    |
 | --- | --- |
-| Cesta | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
+| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Název | 1 |
 | Type | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -150,8 +150,8 @@ Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 
 |    |    |
 | --- | --- |
-| Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
+| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Název | 1 |
 | Type | REG_SZ (String) |
 | Data | {"vzor": "https://device.login.microsoftonline.comfiltr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
 
@@ -203,17 +203,18 @@ Ve své zásady podmíněného přístupu můžete vyžadovat, že přístup pok
 Toto nastavení platí pro následující klientské aplikace:
 
 - Microsoft Azure Information Protection
+- Microsoft Bookings
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
-- Microsoft Invoicing
+- Microsoft fakturace
 - Microsoft Kaizala
-- Microsoft Launcher
+- Spouštěcí program společnosti Microsoft
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- Microsoft Planner
+- Aplikace Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Power BI
 - Microsoft PowerPoint

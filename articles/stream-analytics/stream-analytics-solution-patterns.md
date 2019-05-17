@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4f4f22628d2c2a6beb7974aa9b776a2148a3fee0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65238059"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761977"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Způsoby řešení Azure Stream Analytics
 
@@ -58,7 +58,7 @@ Můžete vytvořit vlastní vizualizace v reálném čase, jako je například �
 
 Většina webových služeb a webových aplikací ještě dnes používají vzor požadavku nebo odpovědi k obsluze prezentační vrstvy. Vzor požadavku nebo odpovědi je jednoduché sestavit a je možné snadno škálovat s nízkou odezvu pomocí bezstavové front-end a škálovatelné úložiště, jako jsou služby Cosmos DB.
 
-Objem dat vysoké často vytvoří problémových míst výkonu v systému založených na přístupu CRUD. [Modelu event sourcing řešení vzor](/azure/architecture/patterns/event-sourcing.md) umožňuje řešit výkonnostní kritické body. Dočasné vzorců a přehledů jsou také složitý a neefektivní extrahovat z tradiční úložiště. Moderní velkého objemu dat databázových aplikací často přijmout architektura založená na toku dat. Azure Stream Analytics jako výpočetní modul přenášených dat je základní pilíř v této architektuře.
+Objem dat vysoké často vytvoří problémových míst výkonu v systému založených na přístupu CRUD. [Modelu event sourcing řešení vzor](/azure/architecture/patterns/event-sourcing) umožňuje řešit výkonnostní kritické body. Dočasné vzorců a přehledů jsou také složitý a neefektivní extrahovat z tradiční úložiště. Moderní velkého objemu dat databázových aplikací často přijmout architektura založená na toku dat. Azure Stream Analytics jako výpočetní modul přenášených dat je základní pilíř v této architektuře.
 
 ![Azure Stream Analytics event sourcing aplikace](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 

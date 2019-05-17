@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74afb98387172f6c58398673862274c7b1880d86
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6280068303e66ca9a930f94d9a754afe1f88f4f2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922958"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604264"
 ---
 # <a name="change-your-azure-account-profile-information"></a>Změnit informace z vašeho profilu účtu Azure
 
@@ -51,9 +51,9 @@ Aktualizuje se profil e-mailovou adresu neaktualizuje přihlašovací e-mailovou
 
 Zjistěte, jak aktualizovat vaše fakturační údaje, najdete v článku [změně platební karty použité k úhradě předplatného Azure](billing-how-to-change-credit-card.md).
 
-### <a name="you-cant-update-your-country"></a>Nelze aktualizovat svou zemi
+### <a name="you-cant-update-your-countryregion"></a>Nelze aktualizovat svou zemi/oblast
 
-Z důvodu technická omezení nemůžeme změnit zemi pro existující účet. Můžete však vytvořit účet v požadovanou zemi a obraťte se na podporu Azure o migraci vašich služeb k tomuto účtu.
+Z důvodu technická omezení nemůžeme změnit zemi/oblast pro existující účet. Můžete však vytvořit účet v požadovanou zemi/oblast a obraťte se na podporu Azure o migraci vašich služeb k tomuto účtu.
 
 ## <a name="service-and-marketing-emails"></a>Služby a uvádění na trh e-mailů
 
@@ -61,7 +61,7 @@ Tým Microsoft Azure odesílá e-maily týkající se služeb vás informuje o k
 
 Zobrazí se výzva v [webu Azure portal](https://portal.azure.com) ověření nebo aktualizovat svou e-mailovou adresu každých 90 dní. Účelem oznámení je Ujistěte se, že společnost Microsoft aktualizovala kontaktní údaje v případě jakékoli urgentní oznámení týkající se služeb. Microsoft pošle e-mailů vaší e-mailovou adresu profil s Azure informace o účtu pro:
 
-- Oznámení služby
+- Oznámení služeb
 - Výstrahy zabezpečení
 - Fakturační účely
 - Podpora

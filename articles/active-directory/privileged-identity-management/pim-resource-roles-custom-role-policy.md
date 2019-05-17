@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13aef9b180a671a9b42bbc6319c487be36652093
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e814cde49374b52266f725b4d57657a507874ab
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437352"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602055"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-pim"></a>Použití vlastních rolí pro prostředky Azure v PIM
 
@@ -42,7 +42,7 @@ Když vytvoříte vlastní roli, obsahují popisný název, takže si snadno zap
 
 Po vytvoření role ve vašem tenantovi, na webu Azure Portal, přejděte **Privileged Identity Management – prostředky Azure** podokně. Vyberte prostředek, který odpovídá roli.
 
-!["Privileged Identity Management – prostředky Azure" podokno](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+!["Privileged Identity Management – prostředky Azure" podokno](media/pim-resource-roles-custom-role-policy/aadpim-manage-azure-resource-some-there.png)
 
 [Konfigurace nastavení role PIM](pim-resource-roles-configure-role-settings.md) těmto členům role, která by se měly používat.
 

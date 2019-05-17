@@ -4,7 +4,7 @@ description: Zjistěte, jak přidat aplikace role v aplikaci registrovanou v Azu
 services: active-directory
 documentationcenter: ''
 author: kkrishna
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fd78e98c37bea0fed1787e1e07a026fa35597f47
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138359"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593925"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postup: Přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu
 
@@ -62,7 +62,7 @@ Pracovníci v těchto rolích aplikace jsou definovány v [webu Azure portal](ht
 Následující příklad ukazuje `appRoles` , které můžete přiřadit `users`.
 
 > [!NOTE]
->  `id` Musí být jedinečný identifikátor GUID.
+>`id` Musí být jedinečný identifikátor GUID.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -80,6 +80,9 @@ Následující příklad ukazuje `appRoles` , které můžete přiřadit `users`
   ],
 "availableToOtherTenants": false,
 ```
+
+> [!NOTE]
+>`displayName` Nesmí obsahovat mezery.
 
 Můžete definovat role aplikace k cíli `users`, `applications`, nebo obojí. Pokud je k dispozici na `applications`, role aplikace se zobrazí jako oprávnění aplikace v **požadovaná oprávnění** okno. Následující příklad ukazuje roli aplikace zaměřené na `Application`.
 
@@ -99,6 +102,8 @@ Můžete definovat role aplikace k cíli `users`, `applications`, nebo obojí. P
   ],
 "availableToOtherTenants": false,
 ```
+
+Počet rolí definované má vliv omezení, která se má manifest aplikace. Jejich byla popsány podrobně na [manifest omezení](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) stránky.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Přiřazení uživatelů a skupin k rolím
 

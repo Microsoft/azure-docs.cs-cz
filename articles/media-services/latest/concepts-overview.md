@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8a4ffdc09cb12f7a16173c86bd3d0e3aee78d46d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152653"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762313"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
 
@@ -26,7 +26,7 @@ Toto téma nabízí stručný přehled Azure Media Services terminologie a konce
 Základní koncepty popsané v těchto témat byste měli zkontrolovat před spuštěním vývoje.
 
 > [!NOTE]
-> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="terminology"></a>Terminologie
 
@@ -62,7 +62,7 @@ Ke kódování pomocí Media Services v3, je potřeba vytvořit **transformuje**
 - [Transformace a úlohy](transforms-jobs-concept.md)
 - [Kódování pomocí Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Analýzy mediálních služeb
+## <a name="media-analytics"></a>Media Analytics
 
 K analýze videí a zvukových souborů, je také potřeba vytvořit **transformuje** a **úlohy**.
 
@@ -76,7 +76,7 @@ Při vytváření **Lokátor streamování**, kromě název assetu, musíte zada
 
 Dynamické balení se používá, zda streamování vašeho obsahu, živě nebo na vyžádání. Následující diagram znázorňuje streamování na vyžádání s dynamickým vytvářením paketů pracovního postupu.
 
-![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 Pomocí služby Media Services můžete doručovat na vyžádání a živého obsahu šifrován dynamicky Advanced Encryption Standard (AES-128) nebo / a systémů tři hlavní digitálních práv management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
 
@@ -114,7 +114,7 @@ Následující obrázek ukazuje pracovní postup předávací typu:
 
 ## <a name="monitoring"></a>Monitorování
 
-### <a name="event-grid"></a>Event Grid
+### <a name="event-grid"></a>Mřížka událostí
 
 Chcete-li zobrazit průběh úlohy, měli byste použít **služby Event Grid**. Služba Media Services také vysílá typy živé události. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. 
 

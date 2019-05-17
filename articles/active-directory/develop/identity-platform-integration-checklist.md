@@ -3,8 +3,8 @@ title: Integrace s platformou identity Microsoft | Azure
 description: Další informace o osvědčených postupech a běžné opominutí při integraci s platformou identity Microsoft (verze 2.0).
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 1f5a6d7501fd387548b111fcb0888515c8f8db25
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076402"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540173"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Kontrolní seznam integrace Microsoft identity platform
 
@@ -52,7 +52,7 @@ Pomocí následujícího kontrolního seznamu ujistěte se, že aplikace účinn
 | ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Dodržovat [pokyny pro aplikace pro Branding](howto-add-branding-in-azure-ad-apps.md). |
 | ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Zadejte smysluplný název a logo pro vaši aplikaci. Tyto informace se zobrazí na výzva k povolení spuštění vaší aplikace. Ujistěte se, že vaše jméno a logo se zástupcem společnosti/produkt tak, aby uživatelé mohli kvalifikovaně rozhodnout. Ujistěte se, že nejsou porušení žádné ochranné známky. |
 
-### <a name="privacy"></a>Ochrana osobních údajů
+### <a name="privacy"></a>Soukromí
 
 |   |   |
 |---|---|

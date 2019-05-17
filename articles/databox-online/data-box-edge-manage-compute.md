@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 05/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 58c4f42859f735a81a3e3edc801daff5d26194a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a90475cfd1d166b8fae1c2b872cbbb9d48b50392
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60757882"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785811"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Správa výpočetních služeb v Azure Data Box hranici
 
 Tento článek popisuje, jak spravovat výpočetní prostředí na hranici vaší Azure Data Box. Můžete spravovat tak výpočetní prostředky prostřednictvím portálu Azure portal nebo přes místní webové uživatelské rozhraní. Pomocí webu Azure portal ke správě modulů, aktivační události a výpočetní konfigurace a místního webového uživatelského rozhraní ke správě nastavení výpočetní prostředky.
-
-> [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -80,7 +76,7 @@ Pomocí následujících kroků na webu Azure Portal k odstranění aktivační 
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-    ![Potvrzení odstranění](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Potvrdit odstranění](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 Seznam se aktualizuje tak, aby odrážely odstranění aktivační události.
 

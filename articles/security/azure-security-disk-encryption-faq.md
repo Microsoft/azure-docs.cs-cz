@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926280"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761924"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -59,12 +59,7 @@ Server distribucí systému Linux, které nejsou schválené pro Azure nepodporu
 | CentOS | 7.4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
 | CentOS | 7.2N | Disk operačního systému a dat |
-| CentOS | 6.8 | Disk operačního systému a dat |
-| CentOS | 7.1 | Datový disk |
-| CentOS | 7.0 | Datový disk |
-| CentOS | 6.7 | Datový disk |
-| CentOS | 6.6 | Datový disk |
-| CentOS | 6.5 | Datový disk |
+| CentOS | 6.8 | Datový disk |
 | openSUSE | 42.3 | Datový disk |
 | SLES | 12-SP4 | Datový disk |
 | SLES | 12-SP3 | Datový disk |
@@ -158,7 +153,7 @@ Na Windows, ADE používá metodu šifrování nástrojem BitLocker AES256 (AES2
 Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
 
 ## <a name="is-xfs-filesystem-supported"></a>Je podporováno XFS systému souborů?
-XFS svazky jsou podporovány pro datový disk encryption pouze pomocí EncryptFormalAll. To se naformátovat, mazání všechna data již existuje. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
+XFS svazky jsou podporovány pro datový disk encryption pouze pomocí encryptformatall šifrovaně. To se naformátovat, mazání všechna data již existuje. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžete zálohovat a obnovit šifrovaný virtuální počítač? 
 

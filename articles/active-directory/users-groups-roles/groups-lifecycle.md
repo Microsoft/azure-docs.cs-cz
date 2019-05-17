@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be88f0938a16302be4cf2308ba463900c067104
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1de17429dfe89506445b2d47999b102f3becb15b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920156"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604398"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
-Teď můžete spravovat životní cyklus skupiny Office 365 tak, že pro ně nastavíte zásady vypršení platnosti. Můžete nastavit zásady vypršení platnosti pro pouze skupiny Office 365 ve službě Azure Active Directory (Azure AD). 
+Teď můžete spravovat životní cyklus skupiny Office 365 tak, že pro ně nastavíte zásady vypršení platnosti. Můžete nastavit zásady vypršení platnosti pro pouze skupiny Office 365 ve službě Azure Active Directory (Azure AD).
 
 Jakmile jednou nastavíte skupinu do vypršení platnosti:
 
@@ -66,8 +66,8 @@ Další informace o oprávnění k obnovení odstraněné skupiny, najdete v č�
   * Až to uděláte tak, že vyberete uložit nastavení **Uložit**.
 
 > [!NOTE]
-> * Při prvním nastavování vypršení platnosti všech skupin, které jsou starší než interval vypršení platnosti jsou nastavené na 30 dní do vypršení platnosti. První e-mail s oznámením obnovení bude odeslaná starší než jeden den. Například skupiny A vytvořil 400 dnů a vypršení platnosti interval je nastavená na 180 dnů. Při použití nastavení vypršení platnosti skupiny A má 30 dní, než je odstraníme, pokud jej obnoví vlastníka.
-> * Když dojde k odstranění a následnému obnovení dynamické skupiny, považuje se za novou skupinu a naplní se na základě pravidla. Tento proces může trvat až 24 hodin.
+> Při prvním nastavování vypršení platnosti všech skupin, které jsou starší než interval vypršení platnosti jsou nastavené na 30 dní do vypršení platnosti. První e-mail s oznámením obnovení bude odeslaná starší než jeden den. Například skupiny A vytvořil 400 dnů a vypršení platnosti interval je nastavená na 180 dnů. Při použití zásad vypršení platnosti skupiny A má 30 dní, než je odstraníme, pokud jej obnoví vlastníka.
+> Když dynamická skupina se odstraní a obnovit, má zobrazit jako novou skupinu a znovu vyplní podle pravidla. Tento proces může trvat až 24 hodin.
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04163d1fa2a46a2de877702d479f439a5e8711d7
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589079"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603132"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana dat zákazníků Azure   
 Ve výchozím nastavení je odepřen přístup k zákaznickým datům tak, že Microsoft operations a pracovníky podpory. Když jsou udělena přístup k zákaznickým datům, vyžaduje se schválení vedení a poté přístup pečlivě spravované a protokoluje. Požadavky na řízení přístupu jsou určeny následující zásady zabezpečení Azure:
@@ -48,8 +48,8 @@ Azure poskytuje zákazníkům silné dat zabezpečení, ve výchozím nastavení
 
 **Redundanci dat**: Microsoft zajišťuje, že data jsou chráněna, pokud je cyberattack nebo fyzickému poškození do datového centra. Zákazníci mohou zvolit:
 
-- Úložiště ve své zemi požadavky na dodržování předpisů nebo latence.
-- Mimo zemi úložiště pro účely zabezpečení nebo po havárii pro obnovení.
+- Požadavky na dodržování předpisů nebo latence v v zemi úložiště.
+- Out z out z zemi úložiště pro účely zabezpečení nebo po havárii pro obnovení.
 
 Data je možné replikovat v rámci vybrané zeměpisné oblasti za účelem zajištění redundance, ale nemůže být přenesen mimo něj. Zákazníci, mají několik možností pro replikaci dat, včetně počtu kopií a počet a umístění datacentra replikace.
 

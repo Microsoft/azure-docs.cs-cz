@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462323"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604443"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Vytvořit lístek podpory Azure Data Box 
 
@@ -22,7 +22,7 @@ Tento článek se týká k Azure Data Box a disku Azure Data Box, které jsou sp
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádost o podporu z v rámci portálu.
 
-## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
+## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
 
 Proveďte následující kroky a vytvoříte žádost o podporu:
 
@@ -56,10 +56,10 @@ Proveďte následující kroky a vytvoříte žádost o podporu:
 4. V **nová žádost o podporu**, klikněte na tlačítko **kroku 3 kontaktní údaje**. V **kontaktní informace**, proveďte následující kroky:
 
    1. V **obraťte se na možnosti**, poskytují upřednostňovaný způsob kontaktu (telefonu nebo e-mailu) a jazyk. Doba odezvy je automaticky vybrána na základě vašeho plánu předplatného.
-   2. V **kontaktní informace**, zadejte jméno, e-mailu, volitelné kontakt, zemi. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu**.
+   2. V **kontaktní informace**, zadejte jméno, e-mailu, volitelné kontakt, země/oblast. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu**.
    3. Klikněte na možnost **Vytvořit**.
    
-       ![Kontaktní informace](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
+       ![Kontaktní údaje](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
       Microsoft Support používá tyto informace se obrátit na můžete pro další informace, diagnostiku a řešení.
       Po odeslání vaší žádosti pracovníkem technické podpory bude vás kontaktovat co nejdříve a pokračovat při zpracování požadavku.

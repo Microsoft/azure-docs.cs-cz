@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 91db42a003bdbb7614faba2122c30826b62ee20f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: df4acf72a1a6ea134e1192512fda1d8cf1e92f0a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698660"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65767997"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Musíte se uloží váš certifikát ve vašem tenantovi Azure AD B2C.
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce s přehledem, vyberte **architekturu rozhraní identit - PREVIEW**.
+4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
 5. Vyberte **klíče zásad** a pak vyberte **přidat**.
 6. Pro **možnosti**, zvolte `Upload`.
 7. Zadejte **název** klíče zásad. Například, `SamlCert`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
@@ -169,11 +169,11 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 
     | Atribut LDAP | Typ odchozí deklarace |
     | -------------- | ------------------- |
-    | User-Principal-Name | userPrincipalName (Hlavní název uživatele) |
-    | příjmení | family_name |
+    | User-Principal-Name | userPrincipalName |
+    | Příjmení | family_name |
     | Zadaný název | given_name |
-    | E-Mail-Address | e-mail |
-    | Zobrazovaný název | jméno |
+    | E-Mail-Address | email |
+    | Zobrazovaný název | name |
     
 12.  Podle typu certifikátu, budete muset nastavit HASHOVACÍHO algoritmu. Předávající strany vztahu důvěryhodnosti (ukázka B2C) okna vlastnosti, vyberte **Upřesnit** kartu a změnit **Secure hash algorithm** k `SHA-256`a klikněte na tlačítko **Ok**.  
 13. Ve Správci serveru vyberte **nástroje**a pak vyberte **správu služby AD FS**.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: e0271c9212b093bd803518ebeaa4b7d9682cc773
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1c64945aaa0bc4cd83cc769dab1c2a755896c01
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60868317"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603425"
 ---
 # <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>Příklad 2: Vytvořit hraniční síť k ochraně aplikací s bránou firewall a skupin zabezpečení sítě
 [Vraťte se do Microsoft cloud services a stránka zabezpečení sítě][HOME]
@@ -64,7 +64,7 @@ Po úspěšném spuštění skriptu můžete provést tyto kroky:
 
 V další části vysvětluje většinu příkazů skriptu, které se týkají skupin zabezpečení sítě.
 
-## <a name="nsgs"></a>Skupiny NSG
+## <a name="nsgs"></a>skupin NSG
 V tomto příkladu je skupinu NSG vytvořené a pak načíst šest pravidlům.
 
 > [!TIP]
@@ -242,7 +242,7 @@ Uživateli definované proměnných změňte podle potřeby. Spusťte skript a p
 Tento skript na základě proměnných definovaný uživatelem, bude proveďte následující kroky:
 
 1. Připojení k předplatnému Azure.
-2. Vytvoření účtu úložiště
+2. Vytvoření účtu úložiště.
 3. Vytvoření virtuální sítě a dvě podsítě, jak jsou definovány v konfiguračním souboru sítě.
 4. Vytvořte čtyři virtuální počítače Windows serveru.
 5. Nakonfigurujte skupiny zabezpečení sítě. Dokončení konfigurace těchto kroků:
@@ -550,7 +550,7 @@ Tento skript Powershellu byste měli spustit místně na serveru nebo počítač
 Uložte tento soubor XML s aktualizovanou umístění a pak přidat odkaz na tento soubor do proměnné $NetworkConfigFile v předchozím skriptu.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

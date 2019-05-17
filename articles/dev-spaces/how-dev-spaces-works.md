@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687143"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605411"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -29,7 +29,7 @@ Tento článek popisuje procesy, které tento power Azure Dev mezery a konfigura
 
 * [Java pomocí rozhraní příkazového řádku a Visual Studio Code](quickstart-java.md)
 * [.NET core pomocí rozhraní příkazového řádku a Visual Studio Code](quickstart-netcore.md)
-* [.NET Core with Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core pomocí sady Visual Studio](quickstart-netcore-visualstudio.md)
 * [Node.js pomocí rozhraní příkazového řádku a Visual Studio Code](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Jak funguje Azure Dev mezery
@@ -66,7 +66,7 @@ Když aplikace běží, klientské nástroje také:
 Můžete použít straně klienta z příkazového řádku nástroje jako součást `azds` příkazu. Můžete použít také nástroje s straně klienta:
 
 * Pomocí Visual Studio Code [rozšíření Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio 2017 s [Visual Studio Tools pro systém Kubernetes](https://aka.ms/get-vsk8stools).
+* Visual Studio s [Visual Studio Tools pro systém Kubernetes](https://aka.ms/get-vsk8stools).
 
 Tady je základní postup pro nastavení a používání Azure Dev mezery:
 1. Příprava Azure Dev prostory clusteru AKS
@@ -337,7 +337,7 @@ Použití *install.values* vlastností, můžete vytvořit seznam jednoho nebo v
 
 Ve výše uvedeném příkladu *install.set.replicaCount* vlastnost říká kontroleru kolik instancí aplikace na spouštění v prostoru vývoj. V závislosti na vašem scénáři můžete tuto hodnotu zvýšit, ale bude mít vliv na připojení ladicího programu k pod vaší aplikace. Další informace najdete v tématu [článek pro řešení potíží](troubleshooting.md).
 
-V generované grafu helmu image kontejneru je nastavený na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}*. `azds.yaml` Soubor definuje *install.set.image.tag* vlastnost jako *$(tag)* ve výchozím nastavení, která se používá jako hodnota *{{. VALUES.Image.tag}}*. Tím, že nastavíte *install.set.image.tag* vlastnost tímto způsobem umožňuje image kontejneru pro vaši aplikaci zařazen odlišné způsobem při spuštění Azure Dev mezery. V tomto konkrétním případě je označí image  *<value from image.repository>: $(tag)*. Je nutné použít *$(tag)* jako hodnotu proměnné *install.set.image.tag* v pořadí pro vývoj prostory rozpoznat a najděte kontejner v clusteru AKS.
+V generované grafu helmu image kontejneru je nastavený na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}*. `azds.yaml` Soubor definuje *install.set.image.tag* vlastnost jako *$(tag)* ve výchozím nastavení, která se používá jako hodnota *{{. VALUES.Image.tag}}*. Tím, že nastavíte *install.set.image.tag* vlastnost tímto způsobem umožňuje image kontejneru pro vaši aplikaci zařazen odlišné způsobem při spuštění Azure Dev mezery. V tomto konkrétním případě je označí image  *\<hodnotu z image.repository >: $(tag)*. Je nutné použít *$(tag)* jako hodnotu proměnné *install.set.image.tag* v pořadí pro vývoj prostory rozpoznat a najděte kontejner v clusteru AKS.
 
 Ve výše uvedeném příkladu `azds.yaml` definuje *install.set.ingress.hosts*. *Install.set.ingress.hosts* vlastnost definuje formát názvu hostitele pro veřejné koncové body. Tato vlastnost se používá také *$(spacePrefix)*, *$(rootSpacePrefix)*, a *$(hostSuffix)*, které jsou hodnoty podle kontroleru. 
 
@@ -404,11 +404,11 @@ ingress:
 
 ## <a name="debug-your-code"></a>Ladění kódu
 
-Pro aplikace Java, .NET a Node.js můžete ladit vaši aplikaci běžící přímo v prostoru vývoj pomocí Visual Studio Code nebo Visual Studio 2017. Visual Studio Code a Visual Studio 2017 poskytuje nástroje pro připojení k prostoru dev, spustí vaši aplikaci a připojit ladicí program. Po spuštění `azds prep`, váš projekt lze otevřít v aplikaci Visual Studio Code nebo Visual Studio 2017. Visual Studio Code nebo Visual Studio 2017 bude generovat vlastní konfigurační soubory pro připojení, které jsou oddělené od spuštění `azds prep`. Z v rámci Visual Studio Code nebo Visual Studio 2017, můžete nastavit zarážky a spuštění aplikace prostorem vývoj.
+Pro aplikace Java, .NET a Node.js můžete ladit vaši aplikaci běžící přímo v prostoru vývoj pomocí Visual Studio Code nebo Visual Studio. Visual Studio Code a Visual Studio poskytuje nástroje pro připojení k prostoru dev, spustí vaši aplikaci a připojit ladicí program. Po spuštění `azds prep`, váš projekt lze otevřít v aplikaci Visual Studio Code nebo Visual Studio. Visual Studio Code nebo Visual Studio vygeneruje vlastní konfigurační soubory pro připojení, které jsou oddělené od spuštění `azds prep`. Z v rámci Visual Studio Code nebo Visual Studio, můžete nastavit zarážky a spuštění aplikace prostorem vývoj.
 
 ![Ladění kódu](media/get-started-node/debug-configuration-nodejs2.png)
 
-Při spuštění aplikace pomocí Visual Studio Code nebo Visual Studio 2017 pro ladění, které zpracovávají spuštění a připojení prostorem dev stejným způsobem jako spuštění `azds up`. Klientské nástroje Visual Studio Code a Visual Studio 2017 také poskytují další parametr najdete specifické informace pro ladění. Parametr obsahuje název image ladicího programu, umístění ladicího programu v rámci obrázku ladicího programu a cílové umístění v rámci aplikace kontejneru připojit ladicí program složky. 
+Při spuštění aplikace pomocí Visual Studio Code nebo Visual Studio pro ladění, které zpracovávají spuštění a připojení prostorem dev stejným způsobem jako spuštění `azds up`. Klientské nástroje Visual Studio Code a Visual Studio také poskytují další parametr najdete specifické informace pro ladění. Parametr obsahuje název image ladicího programu, umístění ladicího programu v rámci obrázku ladicího programu a cílové umístění v rámci aplikace kontejneru připojit ladicí program složky. 
 
 Obrázek ladicí program je automaticky určeno nástrojů na straně klienta. Pomocí metody podobné identifikátoru použitému při soubor Dockerfile a grafu helmu generovat při spuštění `azds prep`. Po připojení ladicího programu v bitové kopii aplikace se spustí pomocí `azds exec`.
 
@@ -433,12 +433,12 @@ Abyste mohli začít používat Azure Dev mezery, najdete v následujících úv
 
 * [Java pomocí rozhraní příkazového řádku a Visual Studio Code](quickstart-java.md)
 * [.NET core pomocí rozhraní příkazového řádku a Visual Studio Code](quickstart-netcore.md)
-* [.NET Core with Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core pomocí sady Visual Studio](quickstart-netcore-visualstudio.md)
 * [Node.js pomocí rozhraní příkazového řádku a Visual Studio Code](quickstart-nodejs.md)
 
 Abyste mohli začít s vývojem pro tým, naleznete v tématu některého z těchto článků:
 
 * [Vývoj v týmu – Java pomocí rozhraní příkazového řádku a Visual Studio Code](team-development-java.md)
 * [Vývoj v týmu – .NET Core pomocí rozhraní příkazového řádku a Visual Studio Code](team-development-netcore.md)
-* [Vývoj v týmu – .NET Core pomocí sady Visual Studio 2017](team-development-netcore-visualstudio.md)
+* [Vývoj v týmu – .NET Core pomocí sady Visual Studio](team-development-netcore-visualstudio.md)
 * [Vývoj v týmu - Node.js pomocí rozhraní příkazového řádku a Visual Studio Code](team-development-nodejs.md)

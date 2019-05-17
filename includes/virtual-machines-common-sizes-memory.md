@@ -5,19 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 05/13/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 39c64b9fe4e03bb0b7216a8d1ba607bec10b4708
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744010"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561255"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
-* Řada M-Series nabízí nejvyšší počet virtuálních procesorů (až 128 virtuálních procesorů) a největší paměť (až do 3,8 TiB) ze všech virtuálních počítačů v cloudu.  Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
+* Mv2-Series nabízí nejvyšší počet virtuálních procesorů (až 208 virtuálních procesorů) a největší paměť (až 5.7 TiB) ze všech virtuálních počítačů v cloudu. Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
+ 
+* Řada M-Series nabízí počet vysokou virtuálních procesorů (až 128 virtuálních procesorů) a velké množství paměti (až do 3,8 TiB). Je taky ideální pro extrémně velké databáze nebo jinými aplikacemi, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
 
 * Řady Dv2-series, G-series a jejich protějšky DSv2 a GS jsou ideální pro aplikace, které vyžadují rychlejší virtuální procesory, vyšší výkon dočasného úložiště nebo mají vysoké nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
 
@@ -86,6 +88,24 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 <sup>2</sup> core dostupné velikosti omezen.
 
 <sup>3</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
+
+
+## <a name="mv2-series"></a>Řada Mv2
+
+Premium Storage: Podporováno
+
+Premium Storage ukládání do mezipaměti: Podporováno
+
+Akcelerátor zápisu: [Podporuje se](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+|Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+|-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
+| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4 096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4 096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+
+Funkce technologie Intel® Hyper-Threading Mv2-series Virtuálních počítačů  
+
+<sup>1</sup> tyto velkých virtuálních procesorů se vyžaduje jednu z těchto podporovaných hostovaných operačních systémů: Windows Server 2016, Windows Server. 2019, SLES 12 SP4, SLES 15 a RHEL 7.6
 
 
 ## <a name="m-series"></a>M-Series 

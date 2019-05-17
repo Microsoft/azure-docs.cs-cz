@@ -3,8 +3,8 @@ title: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnik
 description: Informace o přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace ve službě Azure AD.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231343"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764653"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -121,7 +121,7 @@ Můžete také použít funkce transformace deklarací identity.
 | **Extract() - před odpovídající** | Vrátí podřetězec, dokud nebude odpovídat zadanou hodnotu.<br/>Například pokud vstupní hodnota je "BSimon_US", odpovídající hodnota je "_US", je výstupní deklarace identity "BSimon". |
 | **Extract() - mezi odpovídajícími si** | Vrátí podřetězec, dokud nebude odpovídat zadanou hodnotu.<br/>Například pokud vstupní hodnota je "Finance_BSimon_US", "Finance_" je první odpovídající hodnotu, druhá odpovídající hodnota je "_US" a pak výstup deklarace identity je "BSimon". |
 | **ExtractAlpha() - Prefix** | Vrátí část reprezentující abecedním předpona řetězce.<br/>Například pokud vstupní hodnota je "BSimon_123", pak vrátí "BSimon". |
-| **ExtractAlpha() - Suffix** | Vrátí část reprezentující abecedním přípona řetězce.<br/>Například pokud vstupní hodnota je "123_Simon", pak vrátí "BSimon". |
+| **ExtractAlpha() - Suffix** | Vrátí část reprezentující abecedním přípona řetězce.<br/>Například pokud vstupní hodnota je "123_Simon", pak vrátí "Simon". |
 | **ExtractNumeric() - Prefix** | Vrátí část reprezentující číselné předpona řetězce.<br/>Například pokud vstupní hodnota je "123_BSimon", pak vrátí "123". |
 | **ExtractNumeric() - Suffix** | Vrátí část reprezentující číselná přípona řetězce.<br/>Například pokud vstupní hodnota je "BSimon_123", pak vrátí "123". |
 | **IfEmpty()** | Atribut nebo konstanta výstupy, pokud vstup má hodnotu null nebo prázdný.<br/>Například, pokud chcete výstup atribut uložené v extensionattribute Pokud employeeid pro daného uživatele je prázdný. K tomuto účelu by nakonfigurujte následující hodnoty:<br/>Parametr 1(input): user.employeeid<br/>Parametr 2 (výstup): user.extensionattribute1<br/>Parametr 3 (Pokud není nalezena žádná shoda výstup): user.employeeid |

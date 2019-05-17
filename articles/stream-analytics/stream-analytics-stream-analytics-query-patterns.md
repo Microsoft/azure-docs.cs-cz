@@ -7,42 +7,42 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/08/2017
-ms.openlocfilehash: ef302ecaa6defc6ac0dc1dd58d4f8acc0f2fd263
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/16/2019
+ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711451"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761972"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
 
-## <a name="introduction"></a>Úvod
-Dotazy ve službě Azure Stream Analytics jsou vyjádřeny v jazyce podobném SQL dotazu. Jazykové konstrukce jsou dokumentovány v článku [Stream Analytics query referenční informace k jazyku](https://msdn.microsoft.com/library/azure/dn834998.aspx) průvodce. 
+Dotazy ve službě Azure Stream Analytics jsou vyjádřeny v jazyce podobném SQL dotazu. Jazykové konstrukce jsou dokumentovány v článku [Stream Analytics query referenční informace k jazyku](/stream-analytics-query/stream-analytics-query-language-reference) průvodce. 
 
-Návrh dotazu můžete vyjádřit jednoduché průchozí logiku pro přesun dat události z jednoho vstupního datového proudu do jiného úložiště dat výstup. Nebo můžete provést bohaté vzor odpovídající a dočasné analýzy pro výpočet agregace v různých časových oken viz ukázka TollApp. Spojením dat z více vstupů můžete kombinovat streamované události a hledáním ve statických referenčních datech rozšiřovat hodnoty událostí. Také můžete zapisovat data do více výstupů.
+Návrh dotazu můžete vyjádřit jednoduché průchozí logiku pro přesun dat události z jednoho vstupního datového proudu do výstupu úložiště dat nebo bohaté vzor odpovídající a dočasné analýzy pro výpočet agregace v různých časových oken, stejně jako v lze provádět [sestavení IoT řešení s použitím Stream Analytics](stream-analytics-build-an-iot-solution-using-stream-analytics.md) průvodce. Můžete připojit data z více vstupů zkombinovat streamování událostí a můžete provést vyhledávání proti statická referenční data rozšiřuje hodnoty událostí. Také můžete zapisovat data do více výstupů.
 
-Tento článek popisuje, jak řešení několik běžné vzory dotazů založené na scénářích ze skutečného světa. Je ve vývoji a nadále se nová schémata průběžně aktualizovat.
+Tento článek popisuje, jak řešení několik běžné vzory dotazů založené na scénářích ze skutečného světa.
 
-## <a name="work-with-complex-data-types-in-json-and-avro"></a>Práce s komplexními datovými typy ve formátu JSON a AVRO 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>Práce s komplexními datovými typy ve formátu JSON a AVRO
+
 Azure Stream Analytics podporuje zpracování událostí v CSV, JSON a Avro datových formátů.
-Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahovat JSON a Avro. Chcete-li pracovat s těmito komplexní datové typy, najdete [Parsování formátu JSON a AVRO data](stream-analytics-parsing-json.md) článku.
 
+Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahovat JSON a Avro. Další informace o práci s těmito komplexní datové typy najdete [Parsování formátu JSON a AVRO data](stream-analytics-parsing-json.md) článku.
 
 ## <a name="query-example-convert-data-types"></a>Příklad dotazu: Převést datové typy
-**Popis**: Definování typů vlastností vstupního datového proudu.
-Například váha Auto se chystá vstupního datového proudu jako řetězce a musí být převeden na **INT** provádět **součet** jej.
+
+**Popis**: Definování typů vlastností vstupního datového proudu. Například váha Auto se chystá vstupního datového proudu jako řetězce a musí být převeden na **INT** provádět **součet**.
 
 **Vstup**:
 
-| Vytvoření | Čas | Hmotnost |
+| Vytvoření | Time | Váha |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Výstup**:
 
-| Vytvoření | Hmotnost |
+| Vytvoření | Váha |
 | --- | --- |
 | Honda |3000 |
 
@@ -59,15 +59,16 @@ Například váha Auto se chystá vstupního datového proudu jako řetězce a m
         TumblingWindow(second, 10)
 ```
 
-**Vysvětlení**: Použití **PŘETYPOVÁNÍ** příkaz v **váha** pro zadání jeho datového typu pole. Seznam podporované datové typy v [datové typy (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+**Vysvětlení**: Použití **PŘETYPOVÁNÍ** příkaz v **váha** pro zadání jeho datového typu pole. Seznam podporované datové typy v [datové typy (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Příklad dotazu: Použití Like/Not chtěli vzorovou shodu
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Příklad dotazu: Použití LIKE/NOT jako na vzorovou shodu
+
 **Popis**: Zkontrolujte, jestli hodnota pole na událost odpovídá vzoru pro určité.
 Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají na A a na konci 9.
 
 **Vstup**:
 
-| Vytvoření | LicensePlate | Čas |
+| Vytvoření | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -75,7 +76,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Výstup**:
 
-| Vytvoření | LicensePlate | Čas |
+| Vytvoření | LicensePlate | Time |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -91,15 +92,15 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
         LicensePlate LIKE 'A%9'
 ```
 
-**Vysvětlení**: Použití **jako** příkaz **LicensePlate** hodnota pole. By měl začínat obsahujícím A potom mít libovolný řetězec nula nebo více znaků a potom končit 9. 
+**Vysvětlení**: Použití **jako** příkaz **LicensePlate** hodnota pole. Musí začínat písmenem A potom mít libovolný řetězec nula nebo více znaků a pak končit číslicí 9. 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Příklad dotazu: Zadejte logiku pro různé případy/hodnoty (příkazy CASE)
-**Popis**: Zadejte jiný výpočtu pro pole, na základě konkrétní kritéria.
-Například poskytují řetězec popis Ujistěte se, kolik auta stejného proběhl úspěšně, s zvláštní případ 1.
+
+**Popis**: Zadejte jiný výpočtu pro pole, na základě konkrétní kritéria. Například poskytují řetězec popis Ujistěte se, kolik auta stejného proběhl úspěšně, s zvláštní případ 1.
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -107,7 +108,7 @@ Například poskytují řetězec popis Ujistěte se, kolik auta stejného probě
 
 **Výstup**:
 
-| CarsPassed | Čas |
+| CarsPassed | Time |
 | --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
@@ -120,7 +121,7 @@ Například poskytují řetězec popis Ujistěte se, kolik auta stejného probě
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
             ELSE CONCAT(CAST(COUNT(*) AS NVARCHAR(MAX)), ' ', Make, 's')
         END AS CarsPassed,
-        System.TimeStamp AS Time
+        System.TimeStamp() AS Time
     FROM
         Input TIMESTAMP BY Time
     GROUP BY
@@ -128,15 +129,15 @@ Například poskytují řetězec popis Ujistěte se, kolik auta stejného probě
         TumblingWindow(second, 10)
 ```
 
-**Vysvětlení**: **Případ** výraz porovnává sadu jednoduché výrazy k určení výsledků výrazu. V tomto příkladu je vozidla s počtem 1 vrátil popis jiný text než vozidla díky s počtem než 1. 
+**Vysvětlení**: **Případ** výraz porovnává sadu jednoduché výrazy k určení výsledků výrazu. V tomto příkladu je vozidla s počtem 1 vrátil popis jiný text než vozidla díky s počtem než 1.
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Příklad dotazu: Odesílání dat do více výstupů
-**Popis**: Odesílání dat do více cílů výstup z jedné úlohy.
-Například analyzovat data výstrahy založené na prahových hodnotách a archivovat všechny události do úložiště objektů blob.
+
+**Popis**: Odesílání dat do více cílů výstup z jedné úlohy. Například analyzovat data výstrahy založené na prahových hodnotách a archivovat všechny události do úložiště objektů blob.
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -146,7 +147,7 @@ Například analyzovat data výstrahy založené na prahových hodnotách a arch
 
 **Output1**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -156,7 +157,7 @@ Například analyzovat data výstrahy založené na prahových hodnotách a arch
 
 **Output2**:
 
-| Vytvoření | Čas | Počet |
+| Vytvoření | Time | Count |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -172,7 +173,7 @@ Například analyzovat data výstrahy založené na prahových hodnotách a arch
 
     SELECT
         Make,
-        System.TimeStamp AS Time,
+        System.TimeStamp() AS Time,
         COUNT(*) AS [Count]
     INTO
         AlertOutput
@@ -185,11 +186,10 @@ Například analyzovat data výstrahy založené na prahových hodnotách a arch
         [Count] >= 3
 ```
 
-**Vysvětlení**: **INTO** klauzule říká Stream Analytics který výstupy zapsat data do tohoto příkazu.
-První dotazu je průchozí dotaz, data přijatá do výstupu, který s názvem **ArchiveOutput**.
-Druhý dotaz provádí některé jednoduché agregace a filtrování a to odešle výsledky na příjem dat systému výstrah.
+**Vysvětlení**: **INTO** klauzule říká Stream Analytics který výstupy zapsat data do tohoto příkazu. První dotazu je průchozí dotaz, data přijatá do výstupu s názvem **ArchiveOutput**. Druhý dotaz provádí některé jednoduché agregace a filtrování a to odešle výsledky na systém pro příjem dat výstrah, **AlertOutput**.
 
 Všimněte si, že můžete také znovu použít výsledky běžné tabulkové výrazy (Cte) (například **WITH** příkazy) ve více příkazech výstup. Tuto možnost má výhodu v podobě otevírání méně čtenářům vstupního zdroje.
+
 Příklad: 
 
 ```SQL
@@ -206,12 +206,12 @@ Příklad:
 ```
 
 ## <a name="query-example-count-unique-values"></a>Příklad dotazu: Počet jedinečných hodnot
-**Popis**: Počet jedinečných hodnot pole, které se zobrazují v datovém proudu v rámci časové okno.
-Například kolik jedinečný díky automobilů předává linka z mýtných bran v okně 2sekundové?
+
+**Popis**: Počet jedinečných hodnot pole, které se zobrazují v datovém proudu v rámci časové okno. Například kolik jedinečný díky automobilů předává linka z mýtných bran v okně 2sekundové?
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -221,7 +221,7 @@ Například kolik jedinečný díky automobilů předává linka z mýtných bra
 
 **Výstup:**
 
-| CountMake | Čas |
+| CountMake | Time |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
@@ -231,7 +231,7 @@ Například kolik jedinečný díky automobilů předává linka z mýtných bra
 ```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
-     System.TIMESTAMP AS TIME
+     System.TIMESTAMP() AS TIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
@@ -242,19 +242,19 @@ GROUP BY
 **COUNT (DISTINCT zkontrolujte)** vrátí počet jedinečných hodnot v **zkontrolujte** sloupce v rámci časové okno.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Příklad dotazu: Určit, pokud byla hodnota změněna
-**Popis**: Podívejte se na předchozí hodnotu k určení, zda je jiná než aktuální hodnota.
-Předchozí automobilu na cestách linka je například stejné značky jako aktuální car?
+
+**Popis**: Podívejte se na předchozí hodnotu k určení, zda je jiná než aktuální hodnota. Předchozí automobilu na cestách linka je například stejné značky jako aktuální car?
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Výstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -273,11 +273,12 @@ Předchozí automobilu na cestách linka je například stejné značky jako akt
 **Vysvětlení**: Použití **PRODLEVA** náhled do jedné události vstupního datového proudu zpět a získat **zkontrolujte** hodnotu. Pak porovnat s **zkontrolujte** hodnoty na aktuální událost tak za výstupní události, pokud se liší.
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>Příklad dotazu: V okně Najít první událost
+
 **Popis**: Vyhledá první auto v každé každých 10 minut.
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -289,7 +290,7 @@ Předchozí automobilu na cestách linka je například stejné značky jako akt
 
 **Výstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -309,7 +310,7 @@ Předchozí automobilu na cestách linka je například stejné značky jako akt
 
 Teď můžeme změnit problém a najít první auto konkrétní značku v každé každých 10 minut.
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -331,11 +332,12 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 ```
 
 ## <a name="query-example-find-the-last-event-in-a-window"></a>Příklad dotazu: V okně Najít poslední události
+
 **Popis**: Vyhledá poslední car v každých 10 minut.
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -347,7 +349,7 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 
 **Výstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -378,12 +380,13 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 **Vysvětlení**: Existují dva kroky v dotazu. První z nich najde poslední časové razítko v systému windows 10 minut. V druhém kroku spojí výsledky prvního dotazu s původního datového proudu událostí, které odpovídají poslední časová razítka v každé okno Najít. 
 
 ## <a name="query-example-detect-the-absence-of-events"></a>Příklad dotazu: Zjištění neexistence událostí
+
 **Popis**: Zkontrolujte, že datový proud nemá žádnou hodnotu, která odpovídá určité kritérium.
 Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka během posledních 90 sekund?
 
 **Vstup**:
 
-| Vytvoření | LicensePlate | Čas |
+| Vytvoření | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -392,7 +395,7 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Výstup**:
 
-| Vytvoření | Čas | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Vytvoření | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -414,18 +417,19 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 **Vysvětlení**: Použití **PRODLEVA** náhled do jedné události vstupního datového proudu zpět a získat **zkontrolujte** hodnotu. Porovnat **provést** hodnotu aktuální události a události ve výstupu, pokud jsou stejné. Můžete také použít **PRODLEVA** k získání dat o předchozí automobilu.
 
 ## <a name="query-example-detect-the-duration-between-events"></a>Příklad dotazu: Zjistit dobu trvání mezi událostmi
+
 **Popis**: Najdete doba trvání dané události. Například s ohledem navštívených webových stránkách, určete čas strávený na funkce.
 
 **Vstup**:  
 
-| Uživatel | Funkce | Událost | Čas |
+| Uživatel | Funkce | Událost | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |Konec |2015-01-01T00:00:08.0000000Z |
 
 **Výstup**:  
 
-| Uživatel | Funkce | Doba trvání |
+| Uživatel | Funkce | Trvání |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -447,7 +451,7 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 
 **Vstup**:
 
-| Vytvoření | Čas | Hmotnost |
+| Vytvoření | Time | Váha |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -488,8 +492,8 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 **Vysvětlení**: Použití **PRODLEVA** zobrazení vstupního datového proudu po dobu 24 hodin a hledat instance where **StartFault** a **StopFault** jsou předané váha < 20000.
 
 ## <a name="query-example-fill-missing-values"></a>Příklad dotazu: Vyplnit chybějící hodnoty
-**Popis**: Datový proud událostí, které chybí některé hodnoty a vytvořit datový proud událostí s pravidelných intervalech.
-Například vygenerují událost každých 5 sekund, který bude hlásit nedávno zobrazené datového bodu.
+
+**Popis**: Datový proud událostí, které chybí některé hodnoty a vytvořit datový proud událostí s pravidelných intervalech. Například vygenerují událost každých 5 sekund, který bude hlásit nedávno zobrazené datového bodu.
 
 **Vstup**:
 
@@ -521,19 +525,19 @@ Například vygenerují událost každých 5 sekund, který bude hlásit nedávn
 
 ```SQL
     SELECT
-        System.Timestamp AS windowEnd,
+        System.Timestamp() AS windowEnd,
         TopOne() OVER (ORDER BY t DESC) AS lastEvent
     FROM
         input TIMESTAMP BY t
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 ```
 
-**Vysvětlení**: Tento dotaz generuje události každých 5 sekund a vypíše poslední událost, která dříve byla přijata. [Hopping okno](https://msdn.microsoft.com/library/dn835041.aspx "Hopping okno – Azure Stream Analytics") doba určuje, jak daleko back dotaz vyhledá najít nejnovější události (v tomto příkladu je 300 sekund).
+**Vysvětlení**: Tento dotaz generuje události každých 5 sekund a vypíše poslední událost, která dříve byla přijata. [Hopping okno](/stream-analytics-query/hopping-window-azure-stream-analytics) doba určuje, jak daleko back dotaz vyhledá najít nejnovější události (v tomto příkladu je 300 sekund).
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Příklad dotazu: Porovnat dva typy událostí v rámci stejného datového proudu
-**Popis**: Někdy výstrahy musí vytvořit na základě více typů událostí, ke kterým došlo v určitý čas rozsah.
-Například ve scénáři IoT pro domácí trouby musí být vygenerována výstraha při teploty ventilátor je menší než 40 a maximální výkon během posledních 3 minut je menší než 10.
+
+**Popis**: Někdy výstrahy musí vytvořit na základě více typů událostí, ke kterým došlo v určitý čas rozsah. Například ve scénáři IoT pro domácí trouby musí být vygenerována výstraha při teploty ventilátor je menší než 40 a maximální výkon během posledních 3 minut je menší než 10.
 
 **Vstup**:
 
@@ -569,7 +573,7 @@ Například ve scénáři IoT pro domácí trouby musí být vygenerována výst
 ```SQL
 WITH max_power_during_last_3_mins AS (
     SELECT 
-        System.TimeStamp AS windowTime,
+        System.TimeStamp() AS windowTime,
         deviceId,
         max(value) as maxPower
     FROM
@@ -602,15 +606,15 @@ WHERE
     AND t2.maxPower > 10
 ```
 
-**Vysvětlení**: První dotaz `max_power_during_last_3_mins`, používá [posuvné okno](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) k nalezení maximální hodnoty pro každé zařízení, snímače power během posledních 3 minut. Druhý dotaz je připojen k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A potom, pokud jsou splněny podmínky, vygeneruje se výstraha pro zařízení.
+**Vysvětlení**: První dotaz `max_power_during_last_3_mins`, používá [posuvné okno](/stream-analytics-query/sliding-window-azure-stream-analytics) k nalezení maximální hodnoty pro každé zařízení, snímače power během posledních 3 minut. Druhý dotaz je připojen k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A potom, pokud jsou splněny podmínky, vygeneruje se výstraha pro zařízení.
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Příklad dotazu: Zpracování událostí, které jsou nezávislé na zařízení hodin zkreslit (substreams)
-**Popis**: Události můžete dorazí pozdě nebo mimo pořadí kvůli časovým nepřesnostem mezi producentů událostí, zkosí hodin mezi oddíly nebo latence sítě. V následujícím příkladu je pět sekund za TollID 1 hodiny zařízení TollID 2 a zařízení účtovat poplatky za TollID 3 je deset sekund za TollID 1. 
 
+**Popis**: Události můžete dorazí pozdě nebo mimo pořadí kvůli časovým nepřesnostem mezi producentů událostí, zkosí hodin mezi oddíly nebo latence sítě. V následujícím příkladu je pět sekund za TollID 1 hodiny zařízení TollID 2 a zařízení účtovat poplatky za TollID 3 je deset sekund za TollID 1. 
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Čas | TollID |
+| LicensePlate | Vytvoření | Time | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
 | YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
@@ -623,7 +627,7 @@ WHERE
 
 **Výstup**:
 
-| TollID | Počet |
+| TollID | Count |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -643,14 +647,15 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-**Vysvětlení**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzule vypadá na každé zařízení časová osa samostatně pomocí substreams. Výstupní události pro každý TollID jsou generovány, jak se zpracovávají, což znamená, že tyto události jsou v pořadí s ohledem na každý TollID místo se přeuspořádány, jako kdyby byla všechna zařízení ve stejném formátu.
+**Vysvětlení**: [TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzule vypadá na každé zařízení časová osa samostatně pomocí substreams. Výstupní události pro každý TollID jsou generovány, jak se zpracovávají, což znamená, že tyto události jsou v pořadí s ohledem na každý TollID místo se přeuspořádány, jako kdyby byla všechna zařízení ve stejném formátu.
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>Příklad dotazu: Odebrat duplicitní události v okně
-**Popis**: Po provedení operace, jako je výpočet průměrné hodnoty za události v rámci daného časového intervalu, se mají filtrovat události duplicitní.
+
+**Popis**: Po provedení operace, jako je výpočet průměrné hodnoty za události v rámci daného časového intervalu, se mají filtrovat události duplicitní. V následujícím příkladu druhá událost je duplicitní prvního.
 
 **Vstup**:  
 
-| DeviceId | Čas | Atribut | Hodnota |
+| DeviceId | Time | Atribut | Hodnota |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
@@ -679,7 +684,7 @@ With Temp AS (
     GROUP BY
         Value,
         DeviceId,
-        SYSTEM.TIMESTAMP
+        SYSTEM.TIMESTAMP()
 )
 
 SELECT
@@ -689,9 +694,10 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**Vysvětlení**: [COUNT (DISTINCT času)](https://docs.microsoft.com/stream-analytics-query/count-azure-stream-analytics) vrátí počet jedinečných hodnot ve sloupci čas v rámci časové okno. Pak můžete výstup tohoto kroku k výpočtu průměru za zařízení vypuštěním duplicitní položky.
+**Vysvětlení**: [COUNT (DISTINCT času)](/stream-analytics-query/count-azure-stream-analytics) vrátí počet jedinečných hodnot ve sloupci čas v rámci časové okno. Pak můžete výstup tohoto kroku k výpočtu průměru za zařízení vypuštěním duplicitní položky.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
+
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup

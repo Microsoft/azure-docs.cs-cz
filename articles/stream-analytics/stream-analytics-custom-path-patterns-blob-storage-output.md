@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771770"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789425"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics, vlastní blob výstup dělení
 
@@ -26,7 +26,7 @@ Vlastní pole nebo vstupní atributy zlepšit směru server-klient zpracování 
 
 ### <a name="partition-key-options"></a>Klíč oddílu, možnosti
 
-Klíč oddílu, nebo název sloupce, umožňují rozdělit vstupní data mohou obsahovat alfanumerické znaky, pomlčky, podtržítka a mezery. Není možné používat vnořená pole jako klíč oddílu, není-li použít ve spojení s aliasy.
+Klíč oddílu, nebo název sloupce, umožňují rozdělit vstupní data mohou obsahovat alfanumerické znaky, pomlčky, podtržítka a mezery. Není možné používat vnořená pole jako klíč oddílu, není-li použít ve spojení s aliasy. Klíč oddílu musí být NVARCHAR(MAX).
 
 ### <a name="example"></a>Příklad:
 
@@ -58,11 +58,11 @@ Všimněte si, že má každý záznam v objektu blob **client_id** název sloup
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData}  
-
+   * cluster1/{date}/{time}/{aFieldInMyData} 
+   
 2. Klíče oddílů jsou malá a velká písmena, takže klíče oddílů, jako je "John" a "john" jsou ekvivalentní. Výrazy navíc nelze použít jako klíče oddílu. Například **{columnA + columnB}** nefunguje.  
 
-3. Pokud vstupní datový proud se skládá ze záznamů s kardinalitou klíče oddílu v části 8000, záznamy se připojí k existující objekty BLOB a vytvářet jenom nové objekty BLOB, pokud je to nezbytné. Pokud je Kardinalita přes 8000 neexistuje žádná záruka existující objekty BLOB se zapíšou do a nové objekty BLOB se nevytvoří pro libovolný počet záznamů se stejným klíčem oddílu.  
+3. Pokud vstupní datový proud se skládá ze záznamů s kardinalitou klíče oddílu v části 8000, záznamy se připojí k existující objekty BLOB a vytvářet jenom nové objekty BLOB, pokud je to nezbytné. Pokud je Kardinalita přes 8000 neexistuje žádná záruka existující objekty BLOB se zapíšou do a nové objekty BLOB se nevytvoří pro libovolný počet záznamů se stejným klíčem oddílu.
 
 ## <a name="custom-datetime-path-patterns"></a>Vlastní data a času vzorů cest
 

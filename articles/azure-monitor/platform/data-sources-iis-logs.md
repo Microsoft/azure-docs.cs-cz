@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614504"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604355"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďování protokolů IIS ve službě Azure Monitor
 Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Azure Monitor a uložená jako [můžete vytvářet protokoly dat](data-platform.md).
@@ -51,7 +51,7 @@ Záznamy protokolu IIS mají typ **W3CIISLog** a mít vlastnosti v následujíc�
 | csUriStem |Cíl požadavku, například na webové stránce. |
 | csUriQuery |Dotaz, pokud existuje, že se klient pokoušel vykonat. |
 | ManagementGroupName |Název skupiny pro správu pro agenty nástroje Operations Manager.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
-| RemoteIPCountry |Země IP adresu klienta. |
+| RemoteIPCountry |Zemi nebo oblast, IP adresu klienta. |
 | RemoteIPLatitude |Zeměpisná šířka IP adresu klienta. |
 | RemoteIPLongitude |Zeměpisná délka IP adresu klienta. |
 | scStatus |Stavový kód HTTP. |

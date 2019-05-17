@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: e1715c2cb66398ff7ca55c0ccdbfe50685fae76e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941977"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762266"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS splnění rozhraní API verze 2 
 
@@ -36,7 +36,7 @@ Když zákazník iniciuje nákup, ISV obdrží tyto informace v ověřovací kó
 
 ![Volání rozhraní API pro zřizování služby SaaS.](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>Zřízené
+#### <a name="provisioned"></a>Zajištěno
 
 Tento stav se stálé zřízené služby.
 
@@ -67,7 +67,7 @@ Tento stav označuje, že nebyl přijat platby zákazníků. Pomocí zásad bude
 Předplatná dosažení tohoto stavu v odpovědi na požadavek explicitní zákazníka nebo jako reakci na neuhrazení poplatků. Očekávání z ISV je, že zákaznická data se uchovávají po dobu obnovení v požadavku po dobu minimálně X dní a pak odstraní. 
 
 
-## <a name="api-reference"></a>API – referenční informace
+## <a name="api-reference"></a>Referenční informace k rozhraní API
 
 Tato část popisuje SaaS *rozhraní Subscription API* a *operace rozhraní API*.  Hodnota `api-version` parametr pro verzi 2 rozhraní API je `2018-08-31`.  
 
@@ -176,7 +176,7 @@ Zobrazí všechny odběry SaaS pro vydavatele.
 
 *Kódy odpovědí:*
 
-Kód: 200<br>
+Kód: 200 <br/>
 Podle ověřovací token, získejte vydavatele a odpovídajících předplatných pro všechny vydavatele, nabídky.<br> Vrácená data:<br>
 
 ```json
@@ -208,11 +208,10 @@ Podle ověřovací token, získejte vydavatele a odpovídajících předplatnýc
 
 Token pro pokračování bude pouze k dispozici, pokud existují další výraz "stránky" plánů pro načtení. 
 
-
 Kód: 403 <br>
 Neautorizováno. Neposkytl se ověřovací token, je neplatný, nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele. 
 
-Kód: 500 – Interní chyba serveru
+Kód: Chyba 500 interní Server
 
 ```json
 {
@@ -374,7 +373,7 @@ Vnitřní chyba serveru<br>
 
 *Kódy odpovědí:*
 
-Kód: 202<br>
+Kód: 200<br>
 Aktivuje předplatné.<br>
 
 Kód: 404<br>
@@ -554,7 +553,7 @@ Odhlásit a odstranit zadaný odběr.
 
 *Kódy odpovědí:*
 
-Kód: 200<br>
+Kód: 202<br>
 Nezávislý výrobce softwaru iniciované volání k označení zrušit odběr v rámci předplatného SaaS.<br>
 
 Kód: 404<br>
@@ -786,25 +785,29 @@ Vydavatel musí implementovat webhooku v této službě SaaS k proaktivně upozo
     "action": "Subscribe",
     "timeStamp": "2018-12-01T00:00:00"
 }
-
-Where action can be one of these: 
-       Subscribe, (When the resource has been activated)
-       Unsubscribe, (When the resource has been deleted)
-       ChangePlan, (When the change plan operation has completed)
-       ChangeQuantity, (When the change quantity operation has completed),
-       Suspend, (When resource has been suspended)
-       Reinstate, (When resource has been reinstated after suspension)
 ```
+
+Kde akce může být jedna z následujících: 
+- `Subscribe`  (Když prostředek se aktivovala.)
+- `Unsubscribe` (Pokud prostředek se odstranil)
+- `ChangePlan` (Po operaci změnit plán dokončení)
+- `ChangeQuantity` (Pokud změna množství dokončení operace)
+- `Suspend` (Pokud prostředek je pozastavená)
+- `Reinstate` (Když prostředků má byly obnoveny po pozastavení se vaše)
 
 
 ## <a name="mock-api"></a>Napodobení rozhraní API
 
 Vám pomůže naše mock rozhraní API vám pomůžou začít s vývojem, zejména při vytváření prototypů a testování projektů. 
 
-Hostitel koncového bodu: `https://marketplaceapi.microsoft.com/api` Verze rozhraní API: `2018-09-15` Ukázkový identifikátor Uri není nutné žádné ověření: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
+Hostitel koncového bodu: `https://marketplaceapi.microsoft.com/api` <br/>
+Verze rozhraní API: `2018-09-15` <br/>
+Ověření není vyžadováno <br/>
+Ukázkový identifikátor Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-Některé z volání rozhraní API v tomto článku provádět mock hostitele koncového bodu. Můžete očekávat při získávání mock dat zpět jako odpověď.
+Cesty koncový bod rozhraní API jsou stejné ve skutečných rozhraní API a model, ale verze rozhraní API se liší. Verze je 2018-09-15 pro model a 2018-08-31 pro produkční verzi. 
 
+Některé z volání rozhraní API v tomto článku provádět mock hostitele koncového bodu. Můžete očekávat při získávání mock dat zpět jako odpověď. Obecně můžete očekávat při získávání mock dat zpět jako odpověď. Volání metody předplatného aktualizace pomocí mock rozhraní API vrací vždy 500. 
 
 ## <a name="next-steps"></a>Další postup
 

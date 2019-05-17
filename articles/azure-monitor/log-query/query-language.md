@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425958"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560856"
 ---
 # <a name="azure-monitor-log-queries"></a>Dotazů na protokoly Azure monitoru
 Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a použít verzi jazyka stejný dotaz Kusto dotazů na protokoly Azure monitoru. [Dokumentace k jazyku dotaz Kusto](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro psaní dotazů na protokoly Azure monitoru. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a rozdíly mezi Azure Monitor implementace jazyka.
@@ -61,7 +61,7 @@ Protokoly služby Azure Monitor jsou postavené na Průzkumník dat Azure a pou�
 ## <a name="cheatsheets"></a>Přehledy
 
 -  [SQL k dotazování protokolu Azure Monitor](sql-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již obeznámeni s SQL.
--  [Splunk dotazu protokolu Azure Monitor](sql-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již znáte Splunk.
+-  [Splunk dotazu protokolu Azure Monitor](splunk-cheatsheet.md) pomáhá zajistit uživatelům, kteří jsou již znáte Splunk.
  
 ## <a name="next-steps"></a>Další postup
 

@@ -8,16 +8,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 3/11/2019
+ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 58bdc0e698fc28929c2080b1737770275b1164ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848724"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593795"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
@@ -60,7 +60,7 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou zásadu pom
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Přidáte spravovanou identitu pro vaši ADF do skupiny. Můžete postupovat podle článku [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID objektu zabezpečení IDENTITY služby (třeba 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale není pro tento účel použít ID aplikace IDENTITY služby).
+3.  Přidáte spravovanou identitu pro vaši ADF do skupiny. Můžete postupovat podle článku [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID objektu zabezpečení spravované Identity objektu (například 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nepoužívejte spravované ID aplikace Identity pro tento účel).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -170,12 +170,12 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
 
 4.  Klikněte pravým tlačítkem na **hlavní** databáze a vyberte **nový dotaz**.
 
-5.  Získejte spravovanou identitu pro vaši ADF. Můžete postupovat podle článku [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID aplikace IDENTITY objektu zabezpečení služby (ale nepoužívejte ID IDENTITY služby k tomuto účelu).
+5.  Získejte spravovanou identitu pro vaši ADF. Můžete postupovat podle článku [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID objektu zabezpečení spravované Identity aplikace (ale nepoužívejte spravované Identity ID objektu pro tento účel).
 
 6.  V okně dotazu spusťte následující skript T-SQL k převodu spravovanou identitu pro vaši ADF na binární typ:
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = '{your SERVICE IDENTITY APPLICATION ID}'
+    DECLARE @applicationId uniqueidentifier = '{your Managed Identity Application ID}'
     select CAST(@applicationId AS varbinary)
     ```
     
@@ -184,7 +184,7 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
 7.  Vymazat okno dotazu a spusťte následující skript T-SQL pro přidání spravovanou identitu pro vaši ADF jako uživatel
 
     ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
+    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your Managed Identity Application ID as binary}, TYPE = E
     ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
     ```

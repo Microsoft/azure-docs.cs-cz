@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: be8c3d3be4410d15ba132a24a417e7a7b0418352
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: ba41f6cce5233491020a0b42f4fd40dac060be57
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620264"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815472"
 ---
 **Poslední aktualizace dokumentů**: 14 května 2019 10:00 RÁNO PST.
 
@@ -29,7 +29,7 @@ Další informace o tom, jak zabezpečení je integrované do všech oblastí Az
 > Vzhledem k tomu, že nejprve publikování tohoto dokumentu, několik variant této třídy ohrožení zabezpečení se poskytly. Microsoft nadále být výrazně investovali do ochrany našich zákazníků a poskytuje doprovodné materiály. Na této stránce se aktualizují, jak budeme dál uvolnit další opravy. 
 > 
 > 14. května 2019 [Intel zveřejněn](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) novou sadu spekulativního spouštění na straně kanálu chyby zabezpečení označované jako mikroarchitektury vzorkování dat (MDS naleznete pokyny Microsoftu ohledně zabezpečení [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), který více CVEs bylo přiřazeno: 
-> - CVE-2018-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
+> - CVE-2019-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
 > - CVE-2018-12126 - Store mikroarchitektury vyrovnávací paměti pro Data vzorkování (MSBDS) 
 > - CVE-2018-12127 - mikroarchitektury zatížení Port dat vzorkování (MLPDS)
 > - CVE-2018-12130 - mikroarchitektury výplně vyrovnávací paměti pro Data vzorkování (MFBDS)
@@ -123,7 +123,7 @@ Pokud se zobrazí výstup `MDS mitigation is enabled: False`, prosím [obraťte 
 <a name="linux"></a>Povolení sadu další funkce zabezpečení uvnitř vyžaduje, aby cílový operační systém plně aktuální. Ve výchozím nastavení se povolí některá zmírnění rizik. Následující část popisuje funkce, které jsou vypnuté ve výchozím nastavení a/nebo závislé na hardwarovou podporu (mikrokód). Povolení těchto funkcí může způsobit, že dopad na výkon. Referenční dokumentaci poskytovatele operačního systému o další pokyny
 
 
-**Krok 1: Zakázat hyperthreadingem na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na s vysokým počtem podprocesů, virtuální počítač bude nutné zakázat hyperthreadingem nebo přesunout do virtuálního počítače – do s vysokým počtem podprocesů.  Chcete-li zkontrolovat, zda jsou spuštěny s vysokým počtem podprocesů virtuálního počítače, spusťte `lspcu` v virtuálního počítače s Linuxem. 
+**Krok 1: Zakázat hyperthreadingem na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na s vysokým počtem podprocesů, virtuální počítač bude nutné zakázat hyperthreadingem nebo přesunout do virtuálního počítače – do s vysokým počtem podprocesů.  Chcete-li zkontrolovat, zda jsou spuštěny s vysokým počtem podprocesů virtuálního počítače, spusťte `lscpu` v virtuálního počítače s Linuxem. 
 
 Pokud `Thread(s) per core = 2`, pak je povolen hyperthreading. 
 
@@ -146,7 +146,7 @@ NUMA node(s):          1
 
 ```
 
-Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) zobrazíte hyperthreadingem zakázán.  Poznámka: Jakmile hyperthreadingem je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**.
+Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) zobrazíte hyperthreadingem zakázán.  Jakmile hyperthreadingem je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**.
 
 
 **Krok 2**: Cílem je zmírnit nebezpečí některý níže ohrožení zabezpečení na straně kanálu spekulativního spouštění, najdete v dokumentaci poskytovatele operačního systému:   
@@ -159,18 +159,18 @@ Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obra
 
 Tento článek obsahuje pokyny, které pod spekulativního spouštění na straně kanálu útoků, které ovlivňují mnoho moderní procesorů:
 
-[Chyby zabezpečení Spectre Meltdown](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180002):
+[Chyby zabezpečení Spectre Meltdown](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002):
 - CVE-2017-5715 - vkládání cílové větve (BTI)  
 - CVE-2017-5754 – izolace tabulky stránky jádra (KPTI)
 - CVE-2018-3639 – nepoužívat spekulativního Store (KPTI) 
  
-[L1 Chyby terminálu (L1TF)](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180018):
+[L1 Chyby terminálu (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
 - CVE-2018-3615 – rozšíření Guard Software Intel (Intel SGX)
 - CVE-2018-3620 – operační systémy (OS) a systém správy režimu (SMM)
 - CVE-2018-3646 – ovlivňuje Virtual Machine Manager (VMM)
 
-[Vzorkování dat mikroarchitektury](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV190013): 
-- CVE-2018-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
+[Vzorkování dat mikroarchitektury](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190013): 
+- CVE-2019-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
 - CVE-2018-12126 - Store mikroarchitektury vyrovnávací paměti pro Data vzorkování (MSBDS)
 - CVE-2018-12127 - mikroarchitektury zatížení Port dat vzorkování (MLPDS)
 - CVE-2018-12130 - mikroarchitektury výplně vyrovnávací paměti pro Data vzorkování (MFBDS)

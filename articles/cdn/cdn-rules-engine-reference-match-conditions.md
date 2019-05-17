@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f87667516d6c76bc1c21ba5e175b3b2a7ebc3f39
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869513"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556326"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN stroj pravidel splňují podmínky 
 Tento článek obsahuje podrobný popis dostupných odpovídají podmínkám pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -101,8 +101,11 @@ Název | Účel
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>Referenční informace pro podmínky shody stroje pravidel
+
 <a name="main"></a>
+
 ---
+
 ### <a name="always"></a>Vždy
 
 Podmínka shody vždy platí výchozí sadu funkcí pro všechny požadavky.
@@ -758,7 +761,7 @@ Hodnota                   | Relativní vzhledem k    | Výsledek
 /80ABCD/origin/text/*   | Hlavní stránka           | Tento model je nalezena shoda, pokud požadovaný prostředek splňuje následující kritéria: <br />– Musí být umístěny na zákazníka původu názvem "origin". <br />– Relativní cesta musí začínat znakem složku s názvem "text". To znamená, že požadovaný prostředek se může nacházet ve složce "text" nebo jeden z jejích podsložek rekurzivní.
 */css/* */js/*          | Kořenový adresář nebo původu | Tento vzor odpovídá všem CDN nebo Microsoft edge CNAME adresy URL, které obsahují složky šablony stylů css a js.
 *.jpg *.gif *.png       | Kořenový adresář nebo původu | Tento vzor odpovídá všem CDN nebo Microsoft edge CNAME adresy URL končící JPG, GIF nebo PNG. Alternativní způsob určení tento model je [rozšíření cesty adresy URL odpovídají podmínce](#url-path-extension).
-/ imagí / * / media / *      | Zdroj         | Tento vzor odpovídá CDN nebo Microsoft edge CNAME adresy URL, jehož relativní cesta začínající znakem "Image" nebo "média" složky. <br />– CDN adresa URL: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/images/sales/event1.png<br />-Ukázkový edge CNAME adresy URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/ imagí / * / media / *      | Počátek         | Tento vzor odpovídá CDN nebo Microsoft edge CNAME adresy URL, jehož relativní cesta začínající znakem "Image" nebo "média" složky. <br />– CDN adresa URL: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/images/sales/event1.png<br />-Ukázkový edge CNAME adresy URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Zpět na začátek](#main)
 
@@ -784,7 +787,7 @@ Informace o klíči:
 
    Znak | Kódování URL
    ----------|---------
-   Kosmické aktivity     | %20
+   Mezera     | %20
    &         | %25
 
 - Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato podmínka shody není kompatibilní s následujícími funkcemi:
@@ -820,7 +823,7 @@ Informace o klíči:
 
        Znak | Kódování URL
        ----------|---------
-       Kosmické aktivity     | %20
+       Mezera     | %20
        &         | %25
 
 - Zadejte více hodnot parametrů řetězce dotazu podle omezující každé z nich mezerou. Pokud požadavek obsahuje jeden z kombinace zadaný název/hodnota, je splněna podmínka tuto shodu.
@@ -872,7 +875,7 @@ Název  | Hodnota |  Výsledek
 ------|-------|--------
 Uživatel  | Joe   | Tento model je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatel = joe."
 Uživatel  | *     | Tento model je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
-Email | Joe\* | Tento model je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr e-mailu, která začíná textem "Jan".
+E-mail | Joe\* | Tento model je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr e-mailu, která začíná textem "Jan".
 
 [Zpět na začátek](#main)
 
@@ -897,7 +900,7 @@ Informace o klíči:
 
    Znak | Kódování URL | Hodnota
    ----------|--------------|------
-   Kosmické aktivity     | %20          | \%20
+   Mezera     | %20          | \%20
    &         | %25          | \%25
 
    Všimněte si, že musí být uvozena procento symboly.
@@ -939,7 +942,7 @@ Informace o klíči:
 
      Znak | Kódování URL
      ----------|---------
-     Kosmické aktivity     | %20
+     Mezera     | %20
      &         | %25
 
 - Zadejte více hodnot ve omezující každé z nich mezerou.

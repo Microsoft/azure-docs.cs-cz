@@ -13,36 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477174"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787518"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server na virtuálním počítači Azure zpráva k vydání verze
 
 Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systému SQL Server. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). V článku jsou uvedeny také důležité aktualizace obsahu, které jsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
 
-## <a name="march-2019"></a>2019. března
+## <a name="april-2019"></a>2019. dubna
 
 ### <a name="service-improvements"></a>Vylepšení služby
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže.  | 
-| **Možnosti podpory pojmenovaná instance** | Teď můžete využít [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) pomocí pojmenované instance, pokud výchozí instanci správně odinstaloval. | 
-| **Rozšíření portálu** | Azure portal ještě neznáte pro nasazení virtuálního počítače s SQL serverem má bylo přepracované použitelnosti. Další informace najdete v tématu zadání [rychlý Start](quickstart-sql-vm-create-portal.md) a důkladnější [postupy](virtual-machines-windows-portal-sql-server-provision.md) příručka k nasazení virtuálního počítače s SQL serverem. |
+| **Rozšíření podpory pro SQL Server 2008 a 2008 R2** | [Rozšíření podpory](virtual-machines-windows-sql-server-2008-eos-extend-support.md) pro SQL Server 2008 a SQL Server 2008 R2 a migrujte *jako-je* na Virtuálním počítači Azure. | 
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 
 Žádný
 
+## <a name="march-2019"></a>2019. března
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže.  | 
+| **Možnosti podpory pojmenovaná instance** | Teď můžete využít [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) pomocí pojmenované instance, pokud výchozí instanci správně odinstaloval. | 
+| **Rozšíření portálu** | Azure portal ještě neznáte pro nasazení virtuálního počítače s SQL serverem má bylo přepracované použitelnosti. Další informace najdete v tématu zadání [rychlý Start](quickstart-sql-vm-create-portal.md) a důkladnější [postupy](virtual-machines-windows-portal-sql-server-provision.md) příručka k nasazení virtuálního počítače s SQL serverem.|
+| &nbsp; | &nbsp; |
+
 
 ## <a name="february-2019"></a>. Února 2019
-
-### <a name="service-improvements"></a>Vylepšení služby
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |

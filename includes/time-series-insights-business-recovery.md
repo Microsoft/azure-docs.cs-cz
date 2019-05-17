@@ -8,12 +8,12 @@ ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
 ms.date: 04/29/2019
-ms.openlocfilehash: cf07d19966c08a63b9aa50475622aa0a1e5e1600
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e87a82e985ed1d1794f9da00546f167ef01e1779
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236509"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815598"
 ---
 ## <a name="business-disaster-recovery"></a>Zotavení po havárii firmy
 
@@ -48,10 +48,10 @@ Integrování tyto služby Time Series Insights poskytuje možnosti obnovení Da
 
 Zachováte vaše data služby Time Series Insights, aplikací a služeb spuštěných i v případě, že přerušit několika způsoby. Lze také určit, že je vyžadována, duplicitní, kompletní záložní kopie vašeho prostředí Azure Time Series:
 
-1. TSI doménově specifická **převzetí služeb při selhání instance** k přesměrování dat a provoz do.
+1. Time Series Insights – specifická **převzetí služeb při selhání instance** k přesměrování dat a provoz do.
 1. Pro účely auditu a data a zachovávání s rozlišením.
 
-Obecně platí je nejlepší způsob, jak duplikovat TSI prostředí vytvořit druhý TSI prostředí ve službě backup oblasti Azure. Události jsou také odesílány do tohoto sekundárního prostředí ze zdroje událostí primární. Ujistěte se, že chcete používat skupiny konzumentů druhou, vyhrazené a postupovat podle tohoto zdroje firmy po havárii obnovení pokynů (výše).
+Obecně platí nejlepší způsob, jak duplikovat prostředí Time Series Insights je vytvoření druhého prostředí Time Series Insights ve službě backup oblasti Azure. Události jsou také odesílány do tohoto sekundárního prostředí ze zdroje událostí primární. Ujistěte se, že chcete používat skupiny konzumentů druhou, vyhrazené a postupovat podle tohoto zdroje firmy po havárii obnovení pokynů (výše).
 
 Konkrétně k vytvoření duplicitní prostředí:
 
@@ -63,7 +63,7 @@ Konkrétně k vytvoření duplicitní prostředí:
 Nakonec:
 
 * Pokud primární oblast je ovlivněné incidentem po havárii, přesměrování operací zálohování prostředí Time Series Insights.
-* Umožní zálohovat a obnovovat všechna TSI telemetrických dat a dotazování dat pomocí druhé oblasti.
+* Zálohujte a Obnovujte všechny telemetrických dat a dotazování dat Time Series Insights pomocí druhé oblasti.
 
 > [!IMPORTANT]
 > * Všimněte si, že ke zpoždění může setkat v případě selhání.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1289ba615fea6e6c43b256da6978534d9edc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23c88857c877440be724ddea0bdb239768621c8c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354561"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764791"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co je podmíněný přístup v Azure Active Directory?
 
@@ -64,7 +64,7 @@ Zásada podmíněného přístupu představuje definici scénáře přístupu po
 
 - **[Uživatelé](conditions.md#users-and-groups)**: Uživatelé, provádí se pokus o přístup (**kdo**).
 
-- **[Cloudové aplikace](conditions.md#cloud-apps)**: Cíle pokus o přístup (**co**).
+- **[Cloudové aplikace](conditions.md#cloud-apps-and-actions)**: Cíle pokus o přístup (**co**).
 
 Tyto dvě podmínky musí obsahovat každá zásada podmíněného přístupu. Kromě těchto dvou povinných podmínek můžete použít také další podmínky, které popisují způsob provedení pokusu o získání přístupu. Mezi běžné příklady patří použití mobilních zařízení nebo oblastí mimo vaši podnikovou síť. Další informace najdete v tématu [Podmínky v rámci podmíněného přístupu služby Azure Active Directory](conditions.md).
 

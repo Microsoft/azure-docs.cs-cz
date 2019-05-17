@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 3cd22b89852706ed129373fd24ca9a9d9a27d25b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153377"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556229"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -33,7 +33,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 Tento článek obsahuje přehled a pokyny k živé streamování pomocí služby Media Services a odkazy na další související články.
 
 > [!NOTE]
-> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](developers-guide.md).
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -67,9 +67,9 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 
 Živé streamování pracovního postupu v Media Services v3 informace o tom, je nutné nejdříve si přečtěte a koncepce následující: 
 
-- [Koncové body streamování](streaming-endpoint-concept.md)
-- [Živé události a výstupy](live-events-outputs-concept.md)
-- [Lokátory streamování](streaming-locators-concept.md)
+- [Koncové body streamování rozhraní API](streaming-endpoint-concept.md)
+- [Živé události a rozhraní API za provozu výstupy](live-events-outputs-concept.md)
+- [Rozhraní API pro streamování lokátory](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Obecné kroky
 

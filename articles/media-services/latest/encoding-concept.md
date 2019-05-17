@@ -9,31 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472440"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761893"
 ---
 # <a name="encoding-with-media-services"></a>Kódování pomocí Media Services
 
-Azure Media Services umožňuje má kódovat do souborů MP4 vysoké kvality digitální mediální soubory, tak svůj obsah můžete přehrát na širokou škálu prohlížečů a zařízení. Úspěšné úlohy kódování Media Services vytvoří výstupní Asset se sadou s adaptivní přenosovou rychlostí soubory MP4 rychlostmi a streamování konfigurační soubory. Konfigurační soubory zahrnují .ism, .ismc, .mpi a další soubory, které byste neměli měnit. Po dokončení úlohy kódování můžete využít výhod [dynamické balení](dynamic-packaging-overview.md) a spustit streamování.
+Termín kódování v Media Services se vztahuje na proces převodu soubory, které obsahují digitální video nebo zvuk z jednoho standardního formátu do druhého, aby (a) zmenšení velikosti souborů nebo (b) vytváření formátu, který je kompatibilní s široké škále zařízení a aplikací. Tento proces se označuje také jako komprese videa, rozlišení nebo překódování. Najdete v článku [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [novinky kódování a překódování?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) Další informace o koncepty.
 
-Chcete-li videa ve výstupu prostředek k dispozici pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování** a vytvoření adresy URL pro streamování. Potom podle formátu určeného v manifestu, vaši klienti datový proud obdrželi v protokolu, které jste vybrali.
+Videa jsou obvykle doručit do zařízení a aplikací pomocí [progresivní stahování](https://en.wikipedia.org/wiki/Progressive_download) nebo prostřednictvím [streamování s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
 
-Následující diagram znázorňuje streamování na vyžádání s dynamickým vytvářením paketů pracovního postupu.
+* K doručování pomocí progresivního stahování, můžete použít Azure Media Services k převodu digitální mediální soubor (soubor mezzanine) do [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) soubor, který bude obsahovat video, které má zakódovány [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodeku, a zvuk, který má zakódovány [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) kodek. Tento soubor MP4 se zapíše do prostředku ve vašem účtu úložiště. Můžete použít rozhraní API služby Azure Storage nebo sady SDK (například [REST API pro Storage](../../storage/common/storage-rest-api-auth.md), [sady JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), nebo [sady .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) a stáhněte soubor přímo. Pokud jste vytvořili výstupní Asset s názvem konkrétní kontejner v úložišti, použijte toto umístění. V opačném případě můžete použít k Media Services [seznam adres URL kontejneru asset](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Pokud chcete připravit obsah pro doručování streamování s adaptivní přenosovou rychlostí, soubor mezzanine musí kódováním v několika přenosových rychlostí (nejvyšších po nejnižší). K zajištění řádné přechodu kvality, jak snížit přenosové rychlosti, takže je rozlišení videa. Výsledkem je takzvané kódování žebříku – tabulku rozlišení a přenosových rychlostí (viz [automaticky generované adaptivní žebříček přenosových rychlostí](autogen-bitrate-ladder.md)). Media Services můžete použít ke kódování mezzanine soubory na více přenosových rychlostí – přitom, získáte sadu souborů MP4 a přidružených datových proudů konfigurační soubory zapsány do prostředku ve vašem účtu úložiště. Pak můžete použít [dynamické balení](dynamic-packaging-overview.md) schopností ve službě Media Services k doručování videa prostřednictvím streamování protokolů, jako jsou [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To je potřeba vytvořit [Lokátor streamování](streaming-locators-concept.md) a vytvořit odpovídající podporovaných protokolů, které je pak možné předat zařízení a aplikací založených na jejich schopnosti adresy URL pro streamování.
 
-![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+Následující diagram znázorňuje pracovní postup pro kódování na vyžádání s dynamickým vytvářením paketů.
+
+![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 Toto téma poskytuje pokyny o tom, jak zakódovat svůj obsah pomocí služby Media Services v3.
 
 ## <a name="transforms-and-jobs"></a>Transformace a úlohy
 
-Ke kódování pomocí Media Services v3, je potřeba vytvořit [transformace](https://docs.microsoft.com/rest/api/media/transforms) a [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Transformace definuje předpisu pro kódování nastavení a výstupů a úloha je instance předpisu. Další informace najdete v tématu [transformuje a úlohy](transforms-jobs-concept.md)
+Ke kódování pomocí Media Services v3, je potřeba vytvořit [transformace](https://docs.microsoft.com/rest/api/media/transforms) a [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Transformací, která definuje nebudou tím správným kódování nastavení a výstupy; Úloha je instance předpisu. Další informace najdete v tématu [transformuje a úlohy](transforms-jobs-concept.md)
 
 Kódování pomocí Media Services, použijete přednastavení kodér zjistit, jak by se měly zpracovat vstupními multimediálními soubory. Můžete například zadat rozlišení a/nebo počet zvukové kanály, které chcete v kódovaném obsahu. 
 

@@ -3,8 +3,8 @@ title: Jednostránkové aplikace v Azure Active Directory
 description: Popisuje, jaké jednostránkové aplikace (SPA) jsou a základní informace o protokolu toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6704c00734d18b9918378db6e056696407421014
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297798"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545298"
 ---
 # <a name="single-page-applications"></a>Jednostránkové aplikace
 
@@ -45,7 +45,7 @@ V tomto scénáři, když se uživatel přihlásí, JavaScript front-end využí
 1. Kód jazyka JavaScript klienta, spouštění v prohlížeči extrahuje token z odpovědi používané k zabezpečení volání aplikace webového že rozhraní API zpět ukončit.
 1. Prohlížeč volání aplikace webového rozhraní API zpět končit ID tokenu v autorizační hlavičce. Ověřování služby Azure AD vydá token ID, který může sloužit jako nosný token, pokud prostředek je stejné jako ID klienta (v tomto případě to platí je webové rozhraní API back-endu vaší aplikace vlastní).
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Zobrazit [ukázky kódu pro scénáře jednostránková aplikace](sample-v1-code.md#single-page-applications). Nezapomeňte se podívat zpět často, jak často jsou přidávány nové ukázky.
 

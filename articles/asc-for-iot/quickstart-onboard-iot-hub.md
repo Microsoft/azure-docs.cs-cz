@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ef3891ac2b0423688f49ae034331935b1b0cd6c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192490"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786163"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
 
@@ -30,7 +30,7 @@ ms.locfileid: "65192490"
 Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pro službu IoT ve verzi preview ve službě IoT Hub.  
 
 > [!NOTE]
-> Azure Security Center pro IoT aktuálně podporuje pouze úroveň standard a vyšší centra IoT hub.
+> Azure Security Center pro IoT aktuálně podporuje pouze IoT hub úrovně standard.
 > Azure Security Center pro IoT je řešení jednoho rozbočovače. Pokud budete potřebovat více Center, se vyžadují více řešení. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Požadavky pro povolení služby
@@ -38,8 +38,12 @@ Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pr
 - Pracovní prostor Log Analytics
   - Dva druhy informace jsou uloženy ve výchozím nastavení v pracovním prostoru Log Analytics služba ASC pro IoT; **výstrahy zabezpečení** a **doporučení**. 
   - Můžete také přidat další informace o typu, úložiště **nezpracovaných událostí**. Všimněte si, že ukládání **nezpracovaných událostí** v Log Analytics představuje náklady na další úložiště. 
-- IoT Hub (úrovně standard nebo vyšší)
-- Splňovat všechna [služby prerequities](service-prerequisites.md) 
+- IoT Hub (úrovně standard)
+- Splňovat všechna [požadované součásti služby](service-prerequisites.md) 
+- Oblasti podporované služby
+  - USA – střed
+  - Severní Evropa
+  - Jihovýchodní Asie
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Povolit ASC pro IoT ve službě IoT Hub 
 

@@ -1,6 +1,6 @@
 ---
-title: Jednotné přihlašování – aplikace mimo Galerii – Azure Active Directory | Dokumentace Microsoftu
-description: Nakonfigurovat jednotné přihlašování (SSO) tak, aby aplikace mimo galerii v Azure Active Directory (Azure AD)
+title: Jednotné přihlašování – aplikace mimo Galerii – platforma identit Microsoft | Dokumentace Microsoftu
+description: Nakonfigurovat jednotné přihlašování (SSO) tak, aby aplikace mimo galerii v Microsoft identity platform (Azure AD)
 services: active-directory
 author: CelesteDG
 manager: mtillman
@@ -12,46 +12,58 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8459f9704a15614f2c3edaff5758fa534f78cbd9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291983"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781109"
 ---
-# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v Azure Active Directory
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v platforma identit Microsoft
 
-Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím není k dispozici v galerii aplikací Azure Active Directory *bez psaní kódu*. Pokud místo toho hledáte informace pro vývojáře o tom, jak integrace vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro službu Azure AD](../develop/authentication-scenarios.md).
+Tento článek se týká funkce, která správcům umožňuje nakonfigurovat jednotné přihlašování pro aplikace není k dispozici v galerii aplikací Microsoft identity platform *bez psaní kódu*.
 
-Galerie aplikací Azure Active Directory poskytuje seznam aplikací, které jsou známé pro podporu formou jednotné přihlašování s Azure Active Directory, jak je popsáno v [v tomto článku](what-is-single-sign-on.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) najdete aplikace, kterou chcete připojit, můžete začít podle podrobných pokynů uvedené na webu Azure Portal můžete povolit jednotné přihlašování.
+Pokud místo toho hledáte informace pro vývojáře o tom, jak integrace vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro službu Azure AD](../develop/authentication-scenarios.md).
 
-Tyto možnosti jsou dostupné, podle vaší licenční smlouvě. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/). 
+Poskytuje seznam aplikací, které jsou známé pro podporu formou jednotné přihlašování s platformou identity Microsoft, jak je popsáno v galerii aplikací Microsoft identity platform [v tomto článku](what-is-single-sign-on.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) najdete aplikace, kterou chcete připojit, můžete začít podle podrobných pokynů uvedené na webu Azure Portal můžete povolit jednotné přihlašování.
 
+Tyto možnosti jsou dostupné, podle vaší licenční smlouvě. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
+
+- Samoobslužná integrace aplikace, která používají moderní protokol jako [OpenId Connect a OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) k ověření uživatelů a získání tokenů pro [Microsoft Graphu](https://graph.microsoft.com).
 - Samoobslužná integrace každou aplikaci, která podporuje zprostředkovatelů identity SAML 2.0 (iniciovaného Zprostředkovatelem přihlašování nebo zahájené pomocí IdP)
 - Samoobslužná integrace webové aplikace, který je založený na jazyce HTML přihlašovací stránky pomocí [jednotného přihlašování pomocí hesla](what-is-single-sign-on.md#password-based-sso)
 - Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([je zde popsáno,](use-scim-to-provision-users-and-groups.md))
-- Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#linked-sso)
+- Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#linked-sign-on)
 
 To může zahrnovat jenom aplikace SaaS, které můžete použít, ale nebyly dosud byl zprovozněná v galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené na servery, které sami kontrolujete, buď v cloudu nebo místně.
 
-Tyto funkce, označované také jako *šablony pro integraci aplikací*zadejte založené na standardech spojovací body pro aplikace, které podporují ověřování pomocí formulářů, SAML nebo SCIM a flexibilní možnosti a nastavení pro Kompatibilita s širokou řadu aplikací. 
+Tyto funkce, označované také jako *šablony pro integraci aplikací*zadejte založené na standardech spojovací body pro aplikace, které podporují ověřování pomocí formulářů, SAML nebo SCIM a flexibilní možnosti a nastavení pro Kompatibilita s širokou řadu aplikací.
 
 ## <a name="adding-an-unlisted-application"></a>Přidání neuvedené aplikace
-K připojení aplikace pomocí šablony integrace aplikace, přihlaste se k webu Azure portal pomocí účtu správce Azure Active Directory. Přejděte **služby Active Directory > podnikové aplikace > nové aplikace > aplikace mimo galerii** vyberte **přidat**a potom **přidat aplikaci z Galerie** .
 
-  ![Přidání aplikace](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+Platforma Microsoft Identity poskytuje dva mechanismy pro registraci aplikace.
 
-V galerii aplikací můžete přidat neuvedené aplikace tak, že vyberete **aplikace mimo galerii** dlaždici, která je zobrazena ve výsledcích hledání, pokud požadované aplikace se nenašla. Jakmile zadáte název vaší aplikace, můžete nakonfigurovat, volby jednotného přihlašování a chování. 
+Aplikace, která používá moderní protokol například [OpenId Connect a OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) k ověření uživatelů je registrována pomocí [registrace aplikace portál](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-register-an-app).
 
-**Rychlý tip**:  Jako osvědčený postup můžete zkontrolovat, jestli aplikace již existuje v galerii aplikací pomocí funkce vyhledávání. Pokud je nalezen aplikace a její popis uvádí jednotného přihlašování, pak aplikaci již podporují pro federované jednotné přihlašování.
+Registrace aplikace využívající všechny ostatní typy [podporované mechanismy ověřování](what-is-single-sign-on.md) stejně jako [SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol) protokolu použití **podnikové aplikace** okna napojení na samotných platforma identit Microsoft.
 
-  ![Search](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
+K připojení aplikace pomocí šablony integrace aplikace, přihlaste se k webu Azure portal pomocí účtu Microsoft identity platform správce. Přejděte **služby Active Directory > podnikové aplikace > nové aplikace > aplikace mimo galerii** vyberte **přidat**a potom **přidat aplikaci z Galerie** .
+
+![Přidat aplikaci](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+
+V galerii aplikací můžete přidat neuvedené aplikace tak, že vyberete **aplikace mimo galerii** dlaždici, která je zobrazena ve výsledcích hledání, pokud požadované aplikace se nenašla. Jakmile zadáte název vaší aplikace, můžete nakonfigurovat, volby jednotného přihlašování a chování.
+
+> [!TIP]
+> Jako osvědčený postup můžete zkontrolovat, jestli aplikace již existuje v galerii aplikací pomocí funkce vyhledávání. Pokud je nalezen aplikace a její popis uvádí jednotného přihlašování, pak aplikaci již podporují pro federované jednotné přihlašování.
+
+![Vyhledávání](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
 Přidání aplikace tímto způsobem poskytuje podobné možnosti jako na jeden k dispozici pro předběžně integrované aplikace. Pokud chcete začít, vyberte **konfigurovat Single Sign-On** nebo klikněte na **jednotného přihlašování** levé navigační nabídce aplikace. Na další obrazovce zobrazí možnosti pro konfiguraci jednotného přihlašování. Tyto možnosti jsou popsány v následujících částech tohoto článku.
   
 ![Možnosti konfigurace](./media/configure-single-sign-on-non-gallery-applications/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>Jednotné přihlašování pomocí SAML
+
 Tuto možnost použijte ke konfiguraci ověřování na základě SAML pro aplikaci. To vyžaduje, aby podporoval aplikace SAML 2.0. Mají shromažďovat informace o tom, jak používat funkce SAML aplikace, než budete pokračovat. Dokončování následujících částí nakonfigurovat jednotné přihlašování mezi aplikací a službou Azure AD.
 
 ### <a name="enter-basic-saml-configuration"></a>Zadejte základní konfiguraci SAML
@@ -60,12 +72,12 @@ Nastavení Azure AD, zadejte základní konfiguraci SAML. Můžete ručně zadat
 
   ![Společnost litware domény a adresy URL](./media/configure-single-sign-on-non-gallery-applications/customapp4.png)
 
-- **Přihlašovací adresa URL (iniciovaného Zprostředkovatelem přihlašování pouze)** – Pokud uživatel přejde za účelem přihlášení k této aplikaci. Pokud aplikace je nakonfigurovaná k provedení služby zahájené poskytovatelem jednotného přihlašování, když uživatel přejde na tuto adresu URL, poskytovatele služeb provede nezbytné přesměrování do služby Azure AD k ověření a přihlášení uživatele. Pokud toto pole se vyplní, budou služby Azure AD používat tuto adresu URL ke spuštění aplikace z Office 365 a Azure AD přístupového panelu. Pokud toto pole je tento parametr vynechán, pak Azure AD se místo toho provést zprostředkovatele identity – zahájeno přihlašování při spuštění aplikace z Office 365, Azure AD přístupovém panelu, nebo z Azure AD jednotné přihlašování – adresy URL (je možné zkopírovat z karty řídicí panel).
+- **Přihlašovací adresa URL (iniciovaného Zprostředkovatelem přihlašování pouze)** – Pokud uživatel přejde za účelem přihlášení k této aplikaci. Pokud aplikace je nakonfigurovaná k provedení služby zahájené poskytovatelem jednotného přihlašování, když uživatel přejde na tuto adresu URL, poskytovatele služeb se provést nezbytné přesměrování do služby Azure AD k ověření a přihlášení uživatele. Pokud toto pole se vyplní, budou služby Azure AD používat tuto adresu URL ke spuštění aplikace z Office 365 a Azure AD přístupového panelu. Pokud toto pole je tento parametr vynechán, pak Azure AD se místo toho provést zprostředkovatele identity – zahájeno přihlašování při spuštění aplikace z Office 365, Azure AD přístupovém panelu, nebo z Azure AD jednotné přihlašování – adresy URL (je možné zkopírovat z karty řídicí panel).
 - **Identifikátor** – aplikace, pro kterou jednotného přihlašování je konfigurován jedinečně identifikoval. Tuto hodnotu jako element Issuer v AuthRequest (požadavku SAML), kterou aplikace odeslala, lze najít. Tato hodnota se rovněž zobrazuje jako **Entity ID** v veškerá metadata SAML poskytovaný aplikací. Naleznete v dokumentaci aplikace SAML podrobnosti o tom, co je jeho hodnota Entity ID nebo cílová skupina. 
 
     Následuje příklad toho, jak se v odeslané aplikací do služby Azure AD pomocí požadavku SAML zobrazuje identifikátor nebo vystavitele:
 
-    ```
+    ```XML
     <samlp:AuthnRequest
     xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
     ID="id6c1c178c166d486687be4aaf5e482730"
@@ -86,7 +98,7 @@ Nastavení Azure AD, zadejte základní konfiguraci SAML. Můžete ručně zadat
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-Další informace najdete v tématu [žádosti o ověření SAML 2.0 a odpovědi, které podporuje Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
+Další informace najdete v tématu [žádosti o ověření SAML 2.0 a odpovědi, které podporuje Microsoft identity platform (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Zkontrolovat nebo přizpůsobit deklarací identity vystavených v tokenu SAML
@@ -100,11 +112,9 @@ Při prohlížení nebo úpravách deklarace identity odesílají v tokenu SAML 
 Existují dva důvody, proč může být potřeba upravit deklarací identity vystavených v tokenu SAML:
 
 - Aplikace se zapsala do vyžadují jinou sadu deklarací identity identifikátory URI nebo hodnoty deklarací identity.
-- Vaše aplikace nasazená způsobem, který vyžaduje deklarace identity NameIdentifier na něco jiného než uživatelské jméno (také označované LLAP hlavní uživatelské jméno) uložená v Azure Active Directory. 
+- Vaše aplikace nasazená způsobem, který vyžaduje deklarace identity NameIdentifier na něco jiného než uživatelské jméno (to znamená, že hlavní název uživatele) uložených v Microsoft identity platform.
 
 Další informace najdete v tématu [přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace](./../develop/../develop/active-directory-saml-claims-customization.md). 
-
-
 
 ### <a name="review-certificate-expiration-data-status-and-email-notification"></a>Zkontrolujte data vypršení platnosti certifikátu, stav a e-mailové oznámení
 
@@ -120,7 +130,7 @@ Ověřte, zda je certifikát:
 - Stav aktivní. Pokud je ve stavu neaktivní, změňte stav na aktivní. Chcete-li změnit stav, zkontrolujte **aktivní** a pak konfiguraci uložte. 
 - Správné oznámení e-mailu. Pokud aktivní certifikát blíží datum vypršení platnosti, Azure AD bude odesílat oznámení e-mailovou adresu nakonfigurované v tomto poli.  
 
-Další informace najdete v tématu [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](manage-certificates-for-federated-single-sign-on.md).
+Další informace najdete v tématu [Správa certifikátů pro federované jednotné přihlašování v Microsoft identity platform](manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="set-up-target-application"></a>Nastavení cílové aplikace
 
@@ -145,7 +155,7 @@ Přiřazení uživatele vám umožní vystavit token pro uživatele Azure AD. Na
 
 ### <a name="test-the-saml-application"></a>Testování aplikace SAML
 
-Před testováním aplikace SAML, musíte mít nastavení aplikace s Azure AD a přiřadit uživatele nebo skupiny k aplikaci. K otestování aplikace SAML, naleznete v tématu [ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
+Před testováním aplikace SAML, musíte mít nastavení aplikace s Azure AD a přiřadit uživatele nebo skupiny k aplikaci. K otestování aplikace SAML, naleznete v tématu [ladění založené na SAML jednotného přihlašování k aplikacím v Microsoft identity platform](../develop/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="password-single-sign-on"></a>Heslo jednotného přihlašování
 
@@ -169,6 +179,7 @@ Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace propo
 >
 
 ## <a name="related-articles"></a>Související články
+
 - [Přizpůsobení deklarací identity vystavených v tokenu SAML pro předběžně integrované aplikace](../develop/active-directory-saml-claims-customization.md)
 - [Řešení potíží s založené na SAML jednotného přihlašování](../develop/howto-v1-debug-saml-sso-issues.md)
-
+- [Platforma identit Microsoft (Azure Active Directory pro vývojáře](https://aka.ms/aaddev)

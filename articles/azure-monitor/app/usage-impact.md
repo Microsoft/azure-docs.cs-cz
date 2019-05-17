@@ -13,12 +13,12 @@ ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 8efab173f464b67c0c88c87ee28ea7fa19980501
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1ff700bece2d64451294e72ebdf3c771ee644f8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373176"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604194"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analýza dopadu pomocí Application Insights
 
@@ -63,7 +63,7 @@ Dopad podporuje standardní a vlastní vlastnosti a měření. Použijte cokoli,
 2. Vyberte "Země nebo oblast" v **analyzovat jak jeho** rozevíracího seznamu
 3. Pro **ovlivní využití tohoto** rozevírací seznam, vyberte vlastní událost, která odpovídá prvku uživatelského rozhraní pro zobrazení stránky jste zvolili v kroku 1.
 
-V tomto případě výsledky se už nevejdou do modelu spojitou osou x stejně jako v prvním příkladu. Místo toho se zobrazí vizualizaci podobný segmentovaným trychtýřového grafu. Seřadit podle **využití** zobrazíte variace převod na vaše vlastní událost na základě země.
+V tomto případě výsledky se už nevejdou do modelu spojitou osou x stejně jako v prvním příkladu. Místo toho se zobrazí vizualizaci podobný segmentovaným trychtýřového grafu. Seřadit podle **využití** zobrazíte variace převod na vaše vlastní událost podle země/oblast.
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Jak nástroj dopad vypočítat tyto míry úspěšnosti?

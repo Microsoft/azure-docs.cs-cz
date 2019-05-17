@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/06/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4f3f43ba063ed25389860183576c4dbd94e2bfcd
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466331"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790127"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Kontrola stavu používání v Azure Deployment Manager (Public preview)
 
@@ -59,7 +59,7 @@ V produkčním prostředí obvykle použijete jeden nebo více monitorování po
 Následující dva soubory se používají k nasazení funkce Azure functions. Není nutné stáhnout tyto soubory do absolvovat kurz.
 
 * Šablony Resource Manageru se nachází v [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Nasazení této šablony můžete vytvořit funkci Azure.  
-* Soubor zip se zdrojový kód funkce Azure Functions, [ https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](https://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). Tato zip, volá se, je volána pomocí šablony Resource Manageru.
+* Soubor zip se zdrojový kód funkce Azure Functions, [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). Tato zip, volá se, je volána pomocí šablony Resource Manageru.
 
 Pokud chcete nasadit funkci Azure, vyberte **vyzkoušet** otevřete Azure Cloud shell a vložte následující skript do okna prostředí.  Vložte kód, pravým tlačítkem myši na okno prostředí a potom vyberte **vložte**. 
 

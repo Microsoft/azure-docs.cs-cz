@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6e09ec1f070f9ee0f4162524e4bd80d1f81adc3
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546140"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560644"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 na Gen2 s Azure Data Factory
 
@@ -132,12 +132,47 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Při kopírování velké objemy dat z úložiště dat založeného na souboru, jsou navrženy pro:
+Upgrade z Azure Data Lake Storage (ADLS) Gen1 na Gen2 obecně vyhodnocení, určení najdete v tématu [Upgrade vlastních analytických řešení pro velké objemy dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md). V dalších částech zavést osvědčené postupy použití ADF pro upgrade dat z Gen1 na Gen2.
 
-- Rozdělení souborů do 10TB na 30TB použití.
-- Nespouštějí příliš mnoho souběžných kopírování používá pro vyhnout omezení šířky pásma z úložišť dat zdrojem nebo jímkou. Můžete začít s jedné kopie spuštění a monitorování propustnost a pak postupně přidat další podle potřeby.
+### <a name="data-partition-for-historical-data-copy"></a>Oddíl dat pro kopírování historických dat.
+
+- Pokud je vaše celková velikost dat v ADLS Gen1 menší než **30TB** a počet souborů, které je menší než **1 milion**, můžete zkopírovat všechna data v jedné spuštění aktivity kopírování.
+- Pokud máte větší objem dat pro kopírování nebo požadujete flexibilitu pro správu migrace dat v dávkách a ujistěte se, každý z nich dokončen v rámci konkrétního načasování windows, jsou navrženy pro rozdělení dat., v takovém případě může také omezit riziko žádné neočekávané jednotky ISS – překročené hodnota.
+
+Aby bylo možné ověřit ucelené řešení a testování propustnosti kopie ve vašem prostředí důrazně doporučujeme PoC (testování konceptu). Provádění PoC hlavní kroky: 
+
+1. Vytvoření jeden ADF kanál s aktivitou kopírování jeden bude kopírováno několik TB dat ADLS Gen1 na Gen2 ADLS, chcete-li získat základní úrovně výkonu kopírování, počínaje [jednotky integrace dat (DIUs)](copy-activity-performance.md#data-integration-units) jako 128. 
+2. Odhadovaný čas potřebný k migraci celé datové na základě kopie propustnosti, který jste získali v kroku #1, výpočtu. 
+3. (Volitelné) Vytvoření ovládacího prvku tabulky a zadejte filtr souborů při vytváření oddílů soubory, které chcete migrovat. Způsob rozdělení souborů jako tady: 
+
+    - Dělené podle názvu složky nebo název složky s filtrem zástupný znak (doporučeno) 
+    - Rozdělit pomocí čas poslední změny souboru 
+
+### <a name="network-bandwidth-and-storage-io"></a>Šířku pásma a úložiště v / v sítě 
+
+Souběžnost úloh ADF kopie, které číst data z ADLS Gen1 a zapisovat data na ADLS Gen2 můžete řídit tak, aby bylo možné při migraci negativní vliv na běžné obchodní práci na ADLS Gen1 mohli spravovat využití na vstupy/výstupy úložiště.
+
+### <a name="permissions"></a>Oprávnění 
+
+Ve službě Data Factory [ADLS Gen1 konektor](connector-azure-data-lake-store.md) podporuje instanční objekt služby a spravovat Identity pro ověřování prostředků Azure; [ADLS Gen2 konektor](connector-azure-data-lake-storage.md) podporuje účet klíče, instanční objekt služby a spravovat Identity pro ověřování prostředků Azure. K vytvoření datové továrny schopní vyznat se a kopírování všech souborů a seznamy ACL, je potřeba, ujistěte se, že udělíte vyšší dostatečná oprávnění pro účet poskytovat přístup/čtení a zápis všech souborů a pokud budete chtít nastavit seznamy ACL. Navrhněte, aby aplikaci udělil roli uživatele super, vlastník během období migrace. 
+
+### <a name="preserve-acls-from-data-lake-storage-gen1"></a>Zachovat seznamy ACL v Data Lake Storage Gen1
+
+Pokud chcete replikovat seznamy ACL spolu s datovými soubory při upgradu z Data Lake Storage Gen1 na Gen2, podívejte se na [zachovat seznamy ACL v Data Lake Storage Gen1](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1). 
+
+### <a name="incremental-copy"></a>Přírůstkové kopírování 
+
+K načtení jenom nových nebo aktualizovaných souborů z ADLS Gen1 lze použít několik přístupů:
+
+- Načtení nových nebo aktualizovaných souborů podle času dělené název složky nebo souboru, například/2019/05/13 / *;
+- Načtení nových nebo aktualizovaných souborů pomocí LastModifiedDate;
+- Identifikaci nových nebo aktualizovaných souborů řešením 3. stran nástroj/a potom předejte název souboru nebo složky do kanálu ADF prostřednictvím parametru nebo tabulky/soubor.  
+
+Správné frekvence provádět přírůstkové načítání závisí na celkový počet souborů do ADLS Gen1 a objemu nových nebo aktualizovaných souborů, které mají být načteny pokaždé, když.  
 
 ## <a name="next-steps"></a>Další postup
 
-* [Přehled aktivit kopírování](copy-activity-overview.md)
-* [Konektor služby Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+> [!div class="nextstepaction"]
+> [Přehled aktivit kopírování](copy-activity-overview.md)
+> [konektor Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+> [konektor Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)

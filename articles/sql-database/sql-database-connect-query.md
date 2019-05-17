@@ -14,10 +14,10 @@ manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a8513344c35c14ebf06f3693da618ed20047d07b
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752698"
+ms.locfileid: "65792055"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Šablony rychlý start: Azure SQL Database připojení a dotazování
 

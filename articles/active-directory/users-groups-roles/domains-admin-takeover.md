@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472456"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780522"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
 
@@ -37,7 +37,7 @@ Během procesu převzetí správce můžete vlastnictví prokázat způsobem pop
 
 Některé produkty, které obsahují služby SharePoint a OneDrive, jako je Office 365, nepodporují externí převzetí. Pokud je to váš scénář, nebo pokud jste správce a chcete převzít kontrolu nad nespravované "stínové" tenanta s vytvořením uživatele, kteří používají samoobslužnou registraci, musíte se interní správce převzetí.
 
-1. Vytvořte uživatelský kontext v nespravovaného tenanta, až se přihlásíte jako je Power BI. Ke zvýšení pohodlí. Příklad tento postup předpokládá, že cesta.
+1. Vytvořte uživatelský kontext v nespravovaného tenanta prostřednictvím registrace ke službě Power BI. Ke zvýšení pohodlí. Příklad tento postup předpokládá, že cesta.
 
 2. Otevřít [web Power BI](https://powerbi.com) a vyberte **začít zdarma**. Zadejte uživatelský účet, který používá název domény pro organizaci; například `admin@fourthcoffee.xyz`. Když zadáte ověřovací kód, zkontrolujte e-mailu pro potvrzovací kód.
 
@@ -82,7 +82,7 @@ Pokud už spravujete tenanta služby Azure nebo Office 365, nelze přidat vlastn
 Při ověření vlastnictví názvu domény, odebere název domény z nespravovaného tenanta Azure AD a přesouvá ji do vašeho existujícího tenanta. Externí správu převzetí nespravovaného adresáře vyžaduje stejný proces ověření DNS TXT jako interní správce převzetí. Rozdíl je, že následující se přesouvají s názvem domény:
 
 - Uživatelé
-- Předplatná
+- Subscriptions
 - Přiřazení licencí
 
 ### <a name="support-for-external-admin-takeover"></a>Podpora pro převzetí externí správce
