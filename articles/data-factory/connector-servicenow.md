@@ -43,11 +43,11 @@ Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **ServiceNow** | Ano |
 | endpoint | Koncový bod serveru ServiceNow (`http://<instance>.service-now.com`).  | Ano |
-| authenticationType. | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Ano |
-| uživatelské jméno | Uživatelské jméno pro připojení k ServiceNow server pro ověřování Basic a OAuth2.  | Ano |
-| heslo | Uživatelské jméno pro ověřování OAuth2 pomocí Basic a odpovídající heslo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| ID klienta | ID klienta pro ověřování OAuth2.  | Ne |
-| ClientSecret | Tajný kód klienta pro ověřování OAuth2. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Ano |
+| username | Uživatelské jméno pro připojení k ServiceNow server pro ověřování Basic a OAuth2.  | Ano |
+| password | Uživatelské jméno pro ověřování OAuth2 pomocí Basic a odpovídající heslo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | ID klienta pro ověřování OAuth2.  | Ne |
+| clientSecret | Tajný kód klienta pro ověřování OAuth2. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
