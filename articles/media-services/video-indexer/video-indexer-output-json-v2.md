@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/07/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d55e246e6fc3a5eeb182a49d1e159887f66d6872
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 205dc7d9e69788ea29a48ff342844a4b74e143bd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560010"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799086"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Prozkoumání výstupu funkce Video Indexer API vytvořené metodou
 
@@ -36,12 +37,12 @@ Tento článek zkoumá vrácený obsah JSON **získat Index Video** rozhraní AP
 |---|---|
 |accountId|ID účtu VI seznamu stop|
 |id|ID seznamu stop.|
-|jméno|Název seznamu stop.|
+|name|Název seznamu stop.|
 |description|Popis seznamu stop.|
 |userName|Jméno uživatele, který vytvořil seznam stop.|
 |vytvořené|Čas vytvoření seznamu stop.|
 |privacyMode|Režim ochrany osobních údajů seznamu stop (Private/Public).|
-|state|Seznamu testů (nahrané, zpracování, zpracování, selhalo, umístěné do karantény).|
+|stav|Seznamu testů (nahrané, zpracování, zpracování, selhalo, umístěné do karantény).|
 |isOwned|Označuje, zda byl vytvořen seznam stop aktuálním uživatelem.|
 |iseditable –|Určuje, zda je aktuální uživatel oprávnění k úpravě seznamu stop.|
 |isBase|Označuje, zda seznam testů je základní stop (video) nebo seznam skladeb tvořeny další videa (derived).|
@@ -74,7 +75,7 @@ Tato část uvádí přehled informací.
 
 |Atribut | Popis|
 |---|---|
-|jméno|Název videa. Například Azure Monitor.|
+|name|Název videa. Například Azure Monitor.|
 |id|ID videa. Například 63c6d532ff.|
 |privacyMode|Vaše rozpis může mít jednu z těchto režimů: **Privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
 |doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
@@ -96,8 +97,8 @@ Tato část uvádí přehled informací.
 |---|---|
 |accountId|ID účtu VI videa|
 |id|ID videa.|
-|jméno|Název videa.
-|state|Stav videa (nahrané, zpracování, zpracování, selhalo, umístěné do karantény).|
+|name|Název videa.
+|stav|Stav videa (nahrané, zpracování, zpracování, selhalo, umístěné do karantény).|
 |processingProgress|Průběh zpracování během zpracování (například 20 %).|
 |failureCode|Kód chyby, pokud se proces (například "UnsupportedFileType").|
 |failureMessage|Zpráva selhání, pokud se nepodařilo zpracovat.|
@@ -111,7 +112,7 @@ Tato část uvádí přehled informací.
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
 |viewToken|Krátkodobý zobrazení token pro streamování videa.|
 |sourceLanguage|Zdrojový jazyk videa.|
-|language|Aktuální jazyk videa (překlad).|
+|jazyk|Aktuální jazyk videa (překlad).|
 |indexingPreset|Přednastavení, použít k indexování videa.|
 |streamingPreset|Přednastavení k publikování videa.|
 |linguisticModelId|Model CRIS používaný k přepisy videa.|
@@ -151,7 +152,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |Version|Kód verze|
 |---|---|
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že jeden hlavní jazyk). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
-|language|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
+|jazyk|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
 |přepis|[Přepisu](#transcript) dimenze.|
 |optické rozpoznávání znaků|[OCR](#ocr) dimenze.|
 |klíčová slova|[Klíčová slova](#keywords) dimenze.|
@@ -201,7 +202,7 @@ instance|Seznam časových rozsahů tento blok.|
 |---|---|
 |id|ID řádku.|
 |text|Přepis samotný.|
-|language|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
+|jazyk|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se tento řádek. Pokud je instance přepisu, bude mít jenom 1 instance.|
 
 Příklad:
@@ -240,7 +241,7 @@ Příklad:
 |id|ID OCR řádku.|
 |text|OCR textu.|
 |spolehlivosti|Rozpoznávání spolehlivosti.|
-|language|OCR jazyk.|
+|jazyk|OCR jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
 |Výška|Výška rámečku optické rozpoznávání znaků|
 |nahoru|Začátek umístění v px|
@@ -275,7 +276,7 @@ Příklad:
 |id|ID – klíčové slovo.|
 |text|Text – klíčové slovo.|
 |spolehlivosti|Klíčové slovo rozpoznávání spolehlivosti.|
-|language|Jazyk – klíčové slovo (při překladu).|
+|jazyk|Jazyk – klíčové slovo (při překladu).|
 |instance|Seznam časových rozsahů, ve kterém se nacházela toto klíčové slovo (klíčové slovo může objevit více než jednou).|
 
 ```json
@@ -304,7 +305,7 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|ID tváře.|
-|jméno|Název typ písma. Může být "Neznámý #0, identifikovaný celebrit nebo trénovaného osoby zákazníka.|
+|name|Název typ písma. Může být "Neznámý #0, identifikovaný celebrit nebo trénovaného osoby zákazníka.|
 |spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
 |description|Popis celebrity. |
 |thumbnailId|ID miniatury této pro rozpoznávání tváře.|
@@ -349,8 +350,8 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|ID popisku.|
-|jméno|Název popisku (například "Computer", "TV").|
-|language|Popisek názvu jazyka (při překladu). BCP-47|
+|name|Název popisku (například "Computer", "TV").|
+|jazyk|Popisek názvu jazyka (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
 
 
@@ -491,11 +492,11 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 |Název|Popis|
 |---|---|
 |id|ID značky.|
-|jméno|Název značky.|
+|name|Název značky.|
 |referenceId | Přípona adresy url wikipedie značky. Například "Target_Corporation" je přípona [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Značka uživatele adresu url Wikipedie, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Popis značky.|
-|tags|Seznam předdefinovaných značky, které byly přidruženy k této značky.|
+|značky|Seznam předdefinovaných značky, které byly přidruženy k této značky.|
 |spolehlivosti|Hodnota spolehlivosti detektoru Video Indexer značky (0-1).|
 |instance|Seznam časových rozsahů tuto značku. Každá instance má brandType, který označuje, zda tato značka se objevil přepisu nebo optické rozpoznávání znaků.|
 
@@ -764,10 +765,10 @@ Video Indexer umožňuje odvození hlavní témata z záznamy o studiu. Pokud je
 |Název|Popis|
 |---|---|
 |id|ID tématu.|
-|jméno|Název tématu, například: "Pharmaceuticals".|
+|name|Název tématu, například: "Pharmaceuticals".|
 |referenceId|Odráží hierarchii témata s popisem cesty. Příklad: "Stavu a wellbeing / lékařství a zdravotní péče / Pharmaceuticals".|
 |spolehlivosti|Skóre spolehlivosti v rozsahu [0,1]. Vyšší je větší jistotu.|
-|language|Jazyk použitý v tomto tématu.|
+|jazyk|Jazyk použitý v tomto tématu.|
 |iptcName|IPTC média kódu název, pokud se zjistí.|
 |instance |V současné době Video Indexer neindexujte tématu se časové intervaly, takže celý video se používá jako interval.|
 

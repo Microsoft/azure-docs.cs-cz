@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35dad420aa004e27ec974c494dc66e9b8e13c733
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414274"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65811940"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -72,7 +72,7 @@ Pokud chcete povolit uživatelům umožní přihlásit se pomocí svého účtu 
 
 Po uživatelů typu Host nebo člen mít nastavení v aplikaci Dropbox, dostanou samostatnou pozvánku z Dropboxu. Pokud chcete používat Dropbox jednotného přihlašování, musí budou pozvaní uživatelé přijetí pozvánky klepnutím na odkaz v ní.
 
-## <a name="box"></a>Box
+## <a name="box"></a>Pole
 Můžete povolit uživatele bude možné ověřit uživatele typu Host pole ke svému účtu Azure AD s použitím federace, která je založená na protokolu SAML. V tomto postupu nahrajte metadat na Box.com.
 
 1. Přidáte aplikaci Box z podnikových aplikací.

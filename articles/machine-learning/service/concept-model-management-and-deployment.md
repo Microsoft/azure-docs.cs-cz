@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18a80af8422e30ce3e87395449fca7b5f6a73762
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d02318db4deae6f0a6acdae9382ce47116c95110
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025009"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800856"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
@@ -34,11 +34,14 @@ Každý krok lze provést, samostatně nebo jako součást jediného příkazu. 
 
 [!["Služba azure Machine Learning průběžné integrace a nasazování (CI/CD) cyklu.](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
-> [!VIDEO https://www.youtube.com/embed/0MaHb070H_8]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
 
 ## <a name="step-1-register-model"></a>Krok 1: Registrace modelu
 
 Registrace modelu umožňuje ukládat a verzí vašich modelů v cloudu Azure, ve vašem pracovním prostoru. Model registru usnadňuje uspořádat a sledovat, trénované modely.
+
+> [!TIP]
+> Budete taky moct registrovat modelů trénovaných mimo službu Azure Machine Learning.
  
 Registrované modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Služba Azure Machine Learning podporuje všechny modely, které lze načíst s použitím Python verze 3.5.2 nebo vyšší.
 
@@ -73,7 +76,7 @@ Modely můžete použít se zařízeními IoT prostřednictvím **modulů Azure 
 
 Další informace najdete v tématu [nasazovat modely](how-to-deploy-and-where.md).
 
-### <a name="analytics"></a>Analýzy
+### <a name="analytics"></a>Analýza
 
 Microsoft Power BI podporuje použití modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
@@ -92,5 +95,7 @@ Nasazení musí být explicitně aktualizovat. Další informace najdete v téma
 ## <a name="next-steps"></a>Další postup
 
 Další informace o [jak a kde můžete nasadit modely](how-to-deploy-and-where.md) ve službě Azure Machine Learning. Příklad nasazení najdete v tématu [kurzu: Nasadit model klasifikace obrázků ve službě Azure Container Instances](tutorial-deploy-models-with-aml.md).
+
+Zjistěte, jak vytvořit [průběžnou integraci a nasazování modelů ML se Azure kanály](/azure/devops/pipelines/targets/azure-machine-learning). 
 
 Další informace o vytváření klientských aplikací a služeb, které [využívat model nasadit jako webovou službu](how-to-consume-web-service.md).

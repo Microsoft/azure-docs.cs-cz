@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64732673"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65535887"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Zálohování a zotavení po havárii pro disky Azure IaaS
 
@@ -148,7 +148,7 @@ Pomocí následujících kroků k povolení zálohování vašich virtuálních 
 
     b. Na **trezory služby Recovery Services** nabídky, klikněte na tlačítko **přidat** a postupujte podle kroků pro vytvoření nového trezoru ve stejné oblasti jako virtuální počítač. Například pokud váš virtuální počítač je v oblasti západní USA, vyberte pro trezor USA – západ.
 
-1.  Ověření úložiště replikace pro nově vytvořeného trezoru. Přístup k trezoru v části **trezory služby Recovery Services** a přejděte na **nastavení** > **konfigurace zálohování**. Zkontrolujte, **geograficky redundantní úložiště** ve výchozím nastavení je vybraná možnost. Tato možnost zajišťuje, že váš trezor budou automaticky replikovat do sekundárního datacentra. Například trezoru v oblasti západní USA budou automaticky replikovaná do USA – východ.
+1.  Ověření úložiště replikace pro nově vytvořeného trezoru. Přístup k trezoru v části **trezory služby Recovery Services** a přejděte na **vlastnosti** > **konfigurace zálohování** > **aktualizace** . Zkontrolujte, **geograficky redundantní úložiště** ve výchozím nastavení je vybraná možnost. Tato možnost zajišťuje, že váš trezor budou automaticky replikovat do sekundárního datacentra. Například trezoru v oblasti západní USA budou automaticky replikovaná do USA – východ.
 
 1.  Nakonfigurujte zásady zálohování a vyberte virtuální počítač ze stejné uživatelské rozhraní.
 

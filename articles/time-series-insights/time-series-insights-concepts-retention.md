@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec62639988dca4b216087e8235be6053140644ee
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406362"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790429"
 ---
-# <a name="understand-data-retention-in-time-series-insights"></a>Vysvětlení uchovávání dat v Time Series Insights
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>Vysvětlení uchovávání dat v Azure Time Series Insights
 
-Tento článek popisuje dvě nastavení, které ovlivňují uchovávání dat ve vašem prostředí Time Series Insights (TSI).
+Tento článek popisuje dvě nastavení, které ovlivňují uchovávání dat ve vašem prostředí Azure Time Series Insights.
 
 ## <a name="video"></a>Video
 
@@ -36,7 +36,7 @@ Kromě toho má prostředí Azure Time Series **překročil limit úložiště c
 - **Pozastavit příchozího přenosu dat**
 
 > [!NOTE]
-> Ve výchozím nastavení se při vytváření nového prostředí uchovávání umožňují **vymazat stará data**. Toto nastavení můžou být v případě potřeby po pomocí webu Azure portal, v okamžiku vytvoření **konfigurovat** stránky prostředí TSI.
+> Ve výchozím nastavení se při vytváření nového prostředí uchovávání umožňují **vymazat stará data**. Toto nastavení můžou být v případě potřeby po pomocí webu Azure portal, v okamžiku vytvoření **konfigurovat** stránky prostředí Time Series Insights.
 
 Informace o přepínání chování uchovávání dat najdete v tématu [konfigurace uchovávání naleznete v Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
@@ -44,8 +44,8 @@ Porovnejte chování uchovávání dat:
 
 ## <a name="purge-old-data"></a>Vyprázdnit stará data
 
-- Toto chování je výchozí chování pro prostředí TSI a dodatků stejné prostředí TSI chování vystavoval od spuštěna ve verzi public preview.  
-- Toto chování se upřednostňuje v případě uživatelů chcete vždy zobrazit jejich *nejnovější data* ve svém prostředí TSI. 
+- Toto chování je výchozí chování pro prostředí Time Series Insights.  
+- Toto chování se upřednostňuje v případě uživatelů chcete vždy zobrazit jejich *nejnovější data* ve svém prostředí Time Series Insights.
 - Toto chování *vymaže* dat jednou prostředí je dosaženo omezení (doba uchovávání, velikost nebo count, podle toho, co nastane dřív). Ve výchozím nastavení do 30 dnů uchovávání informací.
 - Nejstarší přijatých dat se vyprazdňují první (FIFO přístup).
 
@@ -75,7 +75,7 @@ Pokaždé, když se toto prostředí denní rychlost příchozího přenosu dat 
 
 ### <a name="example-three"></a>Příklad tří
 
-Vezměte v úvahu prostředí díky uchování chování nakonfigurovat tak, aby **pozastavit příchozího přenosu dat**. V tomto příkladu **období uchovávání dat** nastaven na 60 dnů. **Kapacita** nastavená na 3 jednotky S1. Předpokládejme, že toto prostředí má 2GB dat denně. V tomto prostředí se pozastaví příchozího přenosu dat po dosažení maximální kapacity.
+Vezměte v úvahu prostředí díky uchování chování nakonfigurovat tak, aby **pozastavit příchozího přenosu dat**. V tomto příkladu **období uchovávání dat** nastaven na 60 dnů. **Kapacita** je nastavena na tři (3) jednotky S1. Předpokládejme, že toto prostředí má 2GB dat denně. V tomto prostředí se pozastaví příchozího přenosu dat po dosažení maximální kapacity.
 
 V tu chvíli prostředí zobrazuje stejné datové sady až do obnoví příchozího přenosu dat nebo do **pokračovat příchozího přenosu dat** je povolená (což by vymazat starších dat, aby uvolnil prostor pro nová data).
 
@@ -91,7 +91,7 @@ Ovlivněné služby Event Hubs, zvažte možnost Upravit **uchovávání zpráv*
 
 [![Uchovávání zpráv centra událostí.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Pokud žádné vlastnosti, které jsou nakonfigurované u zdroje události (`timeStampPropertyName`), výchozí hodnota je TSI časové razítko přijetí v Centru událostí jako osu x. Pokud `timeStampPropertyName` je nakonfigurovaný, aby byl něco jiného, vyhledá prostředí pro nakonfigurované `timeStampPropertyName` v datový paket, když jsou analyzovány události.
+Pokud žádné vlastnosti, které jsou nakonfigurované u zdroje události (`timeStampPropertyName`), výchozí hodnota Time Series Insights je časové razítko přijetí v Centru událostí jako osu x. Pokud `timeStampPropertyName` je nakonfigurovaný, aby byl něco jiného, vyhledá prostředí pro nakonfigurované `timeStampPropertyName` v datový paket, když jsou analyzovány události.
 
 Pokud je potřeba škálovat vaše prostředí a přizpůsobit další kapacitu nebo chcete zvýšit dobu uchování, přečtěte si téma [jak škálovat vaše prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md) Další informace.  
 

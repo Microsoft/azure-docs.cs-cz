@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627009"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793003"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET change Feed procesoru SDK: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -37,9 +37,14 @@ ms.locfileid: "60627009"
 |**Začínáme**|[Začínáme se sadou změn kanálu procesoru .NET SDK](change-feed.md)|
 |**Aktuální podporované architektury**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* Vylepšené zátěže strategie pro scénář při získávání všech zapůjčení trvá déle než interval vypršení platnosti zapůjčení, třeba kvůli problémům se sítí:
+  * V tomto scénáři algoritmus Vyrovnávání zatížení používá falešně zvážit zapůjčení, protože vypršela platnost, způsobí zcizování zapůjčení z aktivní vlastníky. To může být zbytečné opětovné vyrovnávání spoustu zapůjčení.
+  * Tento problém je vyřešen v této verzi opakování v konfliktu se vyhnout při získávání vypršela platnost zapůjčení, které vlastníka se nezměnil a získávání posponing vypršení platnosti zapůjčení na další iteraci pro vyrovnávání zatížení.
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * Vylepšené zpracování výjimek pozorovatele.
@@ -163,6 +168,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |14. května 2019 |--- |
 | [2.2.6](#2.2.6) |29. ledna 2019 |--- |
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |

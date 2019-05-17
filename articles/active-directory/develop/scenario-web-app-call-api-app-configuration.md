@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95a5e1ed89b6330a0b6a49cb20d8bf0ef3587d48
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074737"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784944"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webové aplikace, že volání webových rozhraní API – konfigurace kódu
 
@@ -184,7 +184,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>MSAL.NET Token mezipaměti pro aplikace technologie ASP.NET (jader)
 
-Webové aplikace (nebo webové rozhraní API jak fakt), mezipaměť tokenu implementaci se liší od implementace mezipaměť tokenu aplikací klasické pracovní plochy (které jsou často [souborovému](scenario-desktop-acquire-token.md#file-based-token-cache). Může použít relaci ASP.NET/ASP.NET Core nebo mezipaměti redis cache, nebo databáze nebo dokonce úložištěm objektů BLOB Azure. V kódu je fragment kódu nad touto objekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` volání metody, která vytvoří vazbu služby cache service. Podrobnosti o co se stane, zde je mimo rámec této příručky scénář, ale odkazy jsou uvedeny níže.
+Webové aplikace (nebo webové rozhraní API jak fakt), mezipaměť tokenu implementaci se liší od implementace mezipaměť tokenu aplikací klasické pracovní plochy (které jsou často [souborovému](scenario-desktop-acquire-token.md#file-based-token-cache). Může použít ASP.NET/ASP.NET základní relace nebo mezipaměti redis cache, nebo databáze nebo dokonce i úložiště objektů Blob v Azure. V kódu je fragment kódu nad touto objekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` volání metody, která vytvoří vazbu služby cache service. Podrobnosti o co se stane, zde je mimo rámec této příručky scénář, ale odkazy jsou uvedeny níže.
 
 > [!IMPORTANT]
 > Velmi důležité si uvědomit, je, že pro webové aplikace a webová rozhraní API, měla by existovat jeden token mezipaměti na uživatele (v rámci účtu). Potřebujete k serializaci mezipamětí tokenů pro jednotlivé účty.

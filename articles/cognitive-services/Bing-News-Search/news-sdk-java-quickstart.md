@@ -3,20 +3,20 @@ title: 'Rychlý start: Hledání zpráv - SDK vyhledávání zpráv Bingu pro ja
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu slouží k vyhledání zpráv pomocí sady SDK vyhledávání zpráv Bingu pro Javu a zpracovat odpověď.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 01/10/2019
-ms.author: v-gedod
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 648e1701154c725a0645bd520045238030a71ea9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b128f43637649f4faf104a81940f2937c2354bc6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323242"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799733"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Rychlý start: Hledání zpráv sadou SDK vyhledávání zpráv Bingu pro Javu
 

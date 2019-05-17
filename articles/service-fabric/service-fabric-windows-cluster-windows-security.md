@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 394ba3b3b8189bbe96137e920745f7b8cdd1cd95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863959"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761929"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení Windows
 Chcete-li zabránit neoprávněnému přístupu ke clusteru Service Fabric, třeba zabezpečení clusteru. Zabezpečení je obzvláště důležité, když v clusteru běží úlohy v produkčním prostředí. Tento článek popisuje postup konfigurace zabezpečení mezi uzly a uzel klienta s použitím Windows zabezpečení v *ClusterConfig.JSON* souboru.  Proces odpovídá kroku konfigurovat zabezpečení [vytvoření samostatného clusteru se systémem Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení Windows, naleznete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
@@ -61,7 +61,7 @@ Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JSON* konfigurační soubor st�
 | IsAdmin |Nastavte na hodnotu true. Chcete-li určit, jestli má uživatel domény přístup správce klienta, nebo hodnotu NEPRAVDA pro klientský přístup uživatele. |
 
 > [!NOTE]
-> Hodnota ClustergMSAIdentity nemůže obsahovat název domény a může být pouze název skupinového účtu spravované služby. I.E. "mysfgmsa" je správný a obě "mojedoména / / mysfgmsa" nebo "mysfgmsa@mydomain" jsou neplatné; protože domény je zahrnuto v hostitelském počítači.
+> Hodnota ClustergMSAIdentity být ve formátu "mysfgmsa@mydomain".
 
 [Uzel zabezpečení uzlu](service-fabric-cluster-security.md#node-to-node-security) je nakonfigurovaný tak, že nastavíte **ClustergMSAIdentity** když service fabric potřebuje ke spuštění v rámci gMSA. K vytvoření vztahů důvěryhodnosti mezi uzly, se musí být informován o sobě navzájem. Můžete to provést dvěma způsoby: Určuje skupinový účet spravované služby, který zahrnuje všechny uzly v clusteru nebo doménovou skupinu počítačů, která obsahuje všechny uzly v clusteru. Důrazně doporučujeme používat [skupinový účet spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) přístup, zejména pro větší clustery (více než 10 uzlů) nebo pro clustery, které jsou pravděpodobně zvětšit nebo zmenšit.  
 Tento postup nevyžaduje, aby vytváření skupiny domény, na kterém byla udělena Správce clusterů přístupová práva k přidávání a odebírání členů. Tyto účty jsou také užitečné pro automatickou správu hesel. Další informace najdete v tématu [Začínáme se službou skupinových účtů spravované služby](https://technet.microsoft.com/library/jj128431.aspx).  

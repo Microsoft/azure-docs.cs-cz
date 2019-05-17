@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dedef2d22df9c8c81410296bdb0c4814bd98b80
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507118"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785058"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Webové rozhraní API, že volání webových rozhraní API – konfigurace kódu
 
 Po zaregistrování webového rozhraní API, můžete nakonfigurovat kód aplikace.
 
-Kód ke konfiguraci vašeho webového rozhraní API tak, že volá podřízené webové rozhraní API postavená na kód používaný k projektu webového rozhraní API. Další informace najdete v tématu [chráněné webové rozhraní API – konfigurace aplikace](scenario-protected-web-api-app-configuration.md).
+Kód ke konfiguraci vašeho webového rozhraní API tak, že volá podřízené webové rozhraní API postavená na kód používaný k ochraně webového rozhraní API. Další informace najdete v tématu [chráněné webové rozhraní API – konfigurace aplikace](scenario-protected-web-api-app-configuration.md).
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Kód k OnTokenValidated odběru
 
@@ -74,7 +74,7 @@ Metoda AddAccountToCacheFromJwt() musí:
 
 ### <a name="instantiate-a-confidential-client-application"></a>Vytvoření instance důvěrné klientské aplikace
 
-Tento tok je k dispozici ve službě flow důvěrnému klientovi pouze tak chráněné webové rozhraní API poskytuje přihlašovací údaje pro klienta (tajný kód klienta nebo certifikát) [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.confidentialclientapplicationbuilder?view=azure-dotnet-preview) prostřednictvím `WithClientSecret` nebo `WithCertificate`metody, v uvedeném pořadí.
+Tento tok je k dispozici ve službě flow důvěrnému klientovi pouze tak chráněné webové rozhraní API poskytuje přihlašovací údaje pro klienta (tajný kód klienta nebo certifikát) [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) prostřednictvím `WithClientSecret` nebo `WithCertificate`metody, v uvedeném pořadí.
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -96,7 +96,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ### <a name="how-to-call-on-behalf-of"></a>Jak volat on-behalf-of
 
-Volání (OBO) on-behalf-of se provádí pomocí volání [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenonbehalfofparameterbuilder?view=azure-dotnet-preview) metodu `IConfidentialClientApplication` rozhraní.
+Volání (OBO) on-behalf-of se provádí pomocí volání [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metodu `IConfidentialClientApplication` rozhraní.
 
 `ClientAssertion` Je vytvořená z tokenu nosiče přijatých webového rozhraní API od svých vlastních klientů. Existují [dva konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), ten, který přebírá tokenu nosiče JWT a jednu, která přijímá libovolný typ kontrolního výrazu uživatele (jiný druh tokenu zabezpečení, který typ je poté zadané v další parametr s názvem `assertionType`).
 
@@ -138,7 +138,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 }
 ```
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 Další informace o protokolu on-behalf-of, naleznete v tématu [platforma identit Microsoft a tok OAuth 2.0 On-Behalf-Of](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
 

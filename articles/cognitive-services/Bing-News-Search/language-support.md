@@ -3,19 +3,19 @@ title: Podpora jazyků – rozhraní API pro vyhledávání zpráv Bingu
 titleSuffix: Azure Cognitive Services
 description: Seznam přirozeného jazyka, země a oblasti, které podporují rozhraní API pro vyhledávání zpráv Bingu.
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201410"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799334"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vyhledávání zpráv Bingu
 
@@ -33,7 +33,7 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 
 |Země/oblast|Jazyk|Kód na trhu|  
 |---------------------|--------------|-----------------|
-|Dánsko|dánština|da-DK|
+|Dánsko|Dánština|da-DK|
 |Rakousko|Němčina|de-AT|
 |Švýcarsko|Němčina|de-CH|
 |Německo|Němčina|de-DE|
@@ -72,8 +72,8 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 |Čínská lidová republika|Čínština|zh-CN|  
 |Brazílie|Portugalština|pt-BR|
 |Rusko|ruština|ru-RU|  
-|Švédsko|švédština|sv-SE|  
-|Turecko|turečtina|tr-TR|  
+|Švédsko|Švédština|sv-SE|  
+|Turecko|Turečtina|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>Podporované trhy pro koncový bod příspěvků
 Pro `/news` koncový bod, následující tabulka uvádí hodnoty kódu na trhu, které můžete použít k určení `mkt` parametr dotazu. Bing vrátí obsah pouze těchto trzích. V seznamu se můžou změnit.  
@@ -82,7 +82,7 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 
 |Země/oblast|Jazyk|Kód na trhu|  
 |---------------------|--------------|-----------------|
-|Dánsko|dánština|da-DK|
+|Dánsko|Dánština|da-DK|
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|cs AU|
 |Spojené království|Angličtina|en-GB|
@@ -138,14 +138,14 @@ Následují kódů země/oblasti, které můžete zadat v `cc` parametr dotazu. 
 |Hongkong – zvláštní správní oblast|HK|  
 |Indie|IN|  
 |Indonésie|ID|  
-|Itálie|IT|  
+|Itálie|it|  
 |Japonsko|JP|  
 |Jižní Korea|KR|  
 |Malajsie|MY|  
 |Mexiko|MX|  
 |Nizozemsko|NL|  
 |Nový Zéland|NZ|  
-|Norsko|NO|  
+|Norsko|NE|  
 |Čínská lidová republika|CN|  
 |Polsko|PL|  
 |Portugalsko|PT|  

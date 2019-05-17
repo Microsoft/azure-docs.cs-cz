@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: a1fe8929b5ae39c82850aa08899c7b3e6bb98c7e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725305"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786395"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -23,6 +23,8 @@ Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše 
 ## <a name="before-you-begin"></a>Než začnete
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
+
+Pokud používáte hlavního názvu služby z jiné služby Azure AD tenanta, existují další důležité informace týkající oprávnění k dispozici při nasazování clusteru. Nemáte příslušná oprávnění ke čtení a zápisu informací adresáře. Další informace najdete v tématu [co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?][azure-ad-permissions]
 
 Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -89,7 +91,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 Následující části popisují běžné delegování, které musíte provést.
 
-### <a name="azure-container-registry"></a>Azure Container Registry
+### <a name="azure-container-registry"></a>Registr kontejneru Azure
 
 Pokud používáte jako vaše úložiště imagí kontejnerů Azure Container Registry (ACR), budete muset udělit oprávnění pro váš cluster AKS ke čtení a stažení imagí. Instanční objekt clusteru AKS je potřeba delegovat *čtečky* role v registru. Podrobné pokyny najdete v článku [AKS udělit přístup do služby ACR][aks-to-acr].
 
@@ -158,3 +160,4 @@ Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [akt
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
 [update-credentials]: update-credentials.md
+[azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

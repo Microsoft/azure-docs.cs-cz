@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 05/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e95adbd1a564fb34d3f0506ac1cc25bc5a63c62
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153088"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790055"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -51,6 +51,9 @@ Zjistěte, jak používat klíče spravované zákazníkem služby Azure Storage
 - [Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
 - [Konfigurovat klíče spravované zákazníkem pro šifrování Azure Storage z prostředí PowerShell](storage-encryption-keys-powershell.md)
 - [Používat klíče spravované zákazníkem pomocí šifrování úložiště Azure z příkazového řádku Azure](storage-encryption-keys-cli.md)
+
+> [!IMPORTANT]
+> Klíče spravované zákazníkem závisí na spravovaných identit pro prostředky Azure, která je součástí Azure Active Directory (Azure AD). Při přenosu předplatného z jednoho adresáře služby Azure AD na jiný, spravované identity nejsou aktualizovány a klíče spravované zákazníkem už nemusí fungovat. Další informace najdete v tématu **převodu předplatného mezi adresáři Azure AD** v [nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).  
 
 > [!NOTE]  
 > Klíče spravované zákazníkem nejsou podporovány pro [Azure managed disks](../../virtual-machines/windows/managed-disks-overview.md).

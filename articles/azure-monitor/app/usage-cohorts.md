@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785064"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604100"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -123,13 +123,13 @@ Předchozí dva kohorty byly definovány pomocí rozevíracího seznamu polí. A
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Vyberte **spuštění dotazu**. Pokud nevidíte ID uživatele uvedené v tabulce, změňte zemi, kde má vaše aplikace uživatelům.
+3. Vyberte **spuštění dotazu**. Pokud nevidíte ID uživatele uvedené v tabulce, změňte zemi/oblast, kde má vaše aplikace uživatelům.
 
 4. Uložte a pojmenujte kohorty.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-_Můžu jste definovali kohorta uživatelů v určité zemi. Můžu porovnat tato kohorta nástroji pro uživatele na pouhé nastavení filtru na země, zobrazuje různé výsledky. Proč?_
+_Můžu jste definovali kohorta uživatelů v určité zemi nebo oblast. Můžu porovnat tato kohorta nástroji pro uživatele na pouhé nastavení filtru na zemi/oblast, zobrazuje různé výsledky. Proč?_
 
 Kohorta a filtry se liší. Předpokládejme, že máte kohorta uživatelů z Spojené království (definované jako v předchozím příkladu), a porovnat výsledky nastavení filtru "země nebo oblast = Spojeném království."
 

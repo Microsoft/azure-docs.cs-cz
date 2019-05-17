@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc26c0357dcb071c4c75e8684fe47144a04177e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880236"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786191"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Proměnných assetů ve službě Azure Automation
 
@@ -58,11 +58,11 @@ Pro AzureRM rutiny v následující tabulce se používají k vytváření a spr
 |[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Odebere existující proměnnou.|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Nastaví hodnotu existující proměnné.|
 
-## <a name="activities"></a>Aktivity
+## <a name="activities"></a>Činnosti
 
 Aktivity v následující tabulce se používají pro přístup k přihlašovacím údajům v runbooku a konfiguracích DSC.
 
-| Aktivity | Popis |
+| Činnosti | Popis |
 |:---|:---|
 |Get-AutomationVariable|Načte hodnotu existující proměnné.|
 |Set-AutomationVariable|Nastaví hodnotu existující proměnné.|
@@ -135,45 +135,6 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
-```
-
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>Nastavení nebo načtení komplexní objekt v proměnné
-
-Následující ukázkový kód ukazuje, jak aktualizovat proměnnou s komplexní hodnoty v textové sady runbook. V této ukázce se virtuální počítač Azure získáte pomocí **Get-AzureVM** a uloží do existující proměnná služby Automation.  Jak je vysvětleno v [tyto typy proměnných](#variable-types), to se ukládá jako objekt PSCustomObject.
-
-```powershell
-$vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
-Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
-```
-
-V následujícím kódu je hodnota načíst z proměnné a používá ke spuštění virtuálního počítače.
-
-```powershell
-$vmObject = Get-AutomationVariable -Name "MyComplexVariable"
-if ($vmObject.PowerState -eq 'Stopped') {
-    Start-AzureVM -ServiceName $vmObject.ServiceName -Name $vmObject.Name
-}
-```
-
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>Nastavení nebo načtení kolekce do proměnné
-
-Následující ukázkový kód ukazuje, jak použít proměnné s kolekcí komplexních hodnot v textové sady runbook. V této ukázce se načítají několika virtuálních počítačů Azure s **Get-AzureVM** a uloží do existující proměnná služby Automation. Jak je vysvětleno v [tyto typy proměnných](#variable-types), to se ukládá jako kolekce PSCustomObjects.
-
-```powershell
-$vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}
-Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
-```
-
-V následujícím kódu je kolekce načíst z proměnné a používá ke spuštění každého virtuálního počítače.
-
-```powershell
-$vmValues = Get-AutomationVariable -Name "MyComplexVariable"
-ForEach ($vmValue in $vmValues)
-{
-    if ($vmValue.PowerState -eq 'Stopped') {
-        Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
-    }
-}
 ```
 
 #### <a name="setting-and-retrieving-a-variable-in-python2"></a>Nastavení nebo načtení proměnnou v Python2

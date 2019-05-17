@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/24/2019
-ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b39279e560cb1738ff9b33ec587562efd2ed4e8d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707013"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800948"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
 
@@ -29,8 +29,8 @@ Tento článek se zabývá následujícími tématy:
 
 Jednou z výhod Hive je možnost exportu metadat k externí databázi (označované jako Hive Metastore). **Hive Metastore** zodpovídá za ukládání statistiky tabulky, včetně umístění úložiště tabulky, názvy sloupců a informace o tabulce indexu. Schéma databáze pro metastore se liší mezi verzemi Hive. Následujícím postupem upgradujte Metastore Hive HDInsight 3.6, aby byl kompatibilní s HDInsight 4.0.
 
-1. Vytvořte novou kopii externí metaúložiště. HDInsight 3.6 a HDInsight 4.0 vyžadují různé metastore schémata a nemůžete sdílet jeden metastore.
-1. Připojte k a) existujícího clusteru HDInsight 4.0 nebo (b) do clusteru, který vytváříte první novou kopii metastore. Zobrazit [použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md) Další informace o připojení ke clusteru služby HDInsight externí metaúložiště. Po připojení Metastore bude automaticky převést na 4.0 kompatibilní metastore.
+1. Vytvořte novou kopii externí metaúložiště. HDInsight 3.6 a HDInsight 4.0 vyžadují různé metastore schémata a nemůžete sdílet jeden metastore. Zobrazit [použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md) Další informace o připojení ke clusteru služby HDInsight externí metaúložiště. 
+2. Spusťte akci skriptu pro váš cluster HDI 3.6, s "Hlavní uzly" jako typ uzlu pro provádění. Vložte následující identifikátor URI do textového pole označená "URI skriptu Bash": https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. Do textového pole označená "Argumenty", zadejte servername, databáze, uživatelské jméno a heslo **zkopírovat** Hive metastore, oddělené mezerami. Nezahrnují ". database.windows.net" při zadávání servername.
 
 > [!Warning]
 > Upgrade, který převede metadata schématu HDInsight 3.6 na schéma HDInsight 4.0, je nevratná.

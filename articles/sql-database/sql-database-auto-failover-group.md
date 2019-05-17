@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 595d1b84aab55a77f21a9840c5bae9ee996424be
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415948"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522858"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -42,7 +42,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Skupiny převzetí služeb při selhání (MLHOVÉ)**
 
-  Skupina převzetí služeb při selhání je skupina databází spravovaných jediný server SQL Database nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti. Pokud si ho pro spravované instance, převzetí služeb při selhání skupina obsahuje všechny uživatele databáze v instanci a proto lze konfigurovat pouze jeden převzetí služeb při selhání skupiny pro instanci.
+  Skupina převzetí služeb při selhání je skupina databází spravovaných jediný server SQL Database nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti. Při vytvoření spravované instance skupiny převzetí služeb při selhání obsahuje všechny uživatele databáze v instanci a proto lze konfigurovat pouze jednu skupinu převzetí služeb při selhání pro instanci.
 
 - **Servery SQL Database**
 

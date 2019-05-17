@@ -17,16 +17,14 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c45cd1627eb1eb98b2fc19f6663d5635b001ce0c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067794"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784925"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerzální platformy Windows (UPW) může přihlásit uživatele pomocí osobních účtů nebo pracovní a školní účty, získat přístupový token a volání rozhraní Microsoft Graph API.
 
@@ -47,7 +45,7 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > Pokud chcete zaregistrovat aplikaci a přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
@@ -92,7 +90,7 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
 > > [!TIP]
 > > Najít hodnotu *ID aplikace*, přejděte **přehled** části portálu
 
-#### <a name="step-4-run-your-application"></a>Krok 4: Spusťte aplikaci
+#### <a name="step-4-run-your-application"></a>Krok 4: Spustit aplikaci
 
 Pokud chcete vyzkoušet tento rychlý start na svém počítači s Windows:
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a6a63748ef36bbbceb00bc815616f2cb12692a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693218"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799794"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorování výkonu clusteru
 
@@ -30,7 +30,7 @@ Pokud chcete získat podrobný pohled na uzlech clusteru a jejich načítání, 
 | Barva | Popis |
 | --- | --- |
 | Červená | Alespoň jeden hlavní komponenty na hostiteli je mimo provoz. Najeďte myší zobrazíte popis tlačítka, seznamy vliv na komponenty. |
-| Orange | Komponenta alespoň jeden podřízený server na hostiteli je mimo provoz. Najeďte myší zobrazíte popis tlačítka, seznamy vliv na komponenty. |
+| Oranžová | Nejméně jedna sekundární komponenty na hostiteli je mimo provoz. Najeďte myší zobrazíte popis tlačítka, seznamy vliv na komponenty. |
 | Žlutá | Ambari Server neobdržel prezenční signál z hostitele pro více než tři minuty. |
 | Zelená | Normální spuštění stavu. |
 

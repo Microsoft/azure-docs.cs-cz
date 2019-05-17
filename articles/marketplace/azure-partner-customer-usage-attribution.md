@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: cfe9b469cfac848c9e57f1fc10193208722be109
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935705"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800979"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Přisuzování využití ze strany zákazníků partnerům Azure
 
@@ -245,9 +245,9 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>Sestava
+## <a name="report"></a>Nahlásit
 
-Sestavy pro zákazníka attribution využití najdete na řídicím panelu Partner Center analyzovat. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)).
+Sestavy pro zákazníka attribution využití najdete na řídicím panelu Partner Center analyzovat. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Chcete-li zobrazit sestavu, budete muset k přihlášení použijte přihlašovací údaje partnerského centra. Pokud dojde k potížím s sestavy nebo přihlášení, vytvořte žádost o podporu podle pokynů v části Podpora Get.
 
 Výběr šablony sledovány v rozevíracím seznamu Typ přidružení partnera zobrazíte sestavu.
 
@@ -267,6 +267,10 @@ Při nasazení \<partnera > software Microsoft je schopen identifikovat instalac
 
 ## <a name="get-support"></a>Získat podporu
 
+Pokud narazíte na problémy s sestavy nebo se přihlaste do partnerského centra, vytvořte žádost o podporu s tým podpory partnerského centra tady: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+
+![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+
 Pokud potřebujete pomoc pro Marketplace Onboarding a/nebo attribution využití zákazníka, postupujte podle těchto kroků.
 
 1. Přejděte [stránku podpory](https://go.microsoft.com/fwlink/?linkid=844975).
@@ -282,7 +286,7 @@ Pokud potřebujete pomoc pro Marketplace Onboarding a/nebo attribution využití
 
 1. Vyberte **požadavek na spuštění**.
 
-1. Na další stránce zadejte požadované hodnoty. Vyberte **Pokračovat**.
+1. Na další stránce zadejte požadované hodnoty. Vyberte **pokračovat**.
 
 1. Na další stránce zadejte požadované hodnoty.
 

@@ -3,19 +3,19 @@ title: 'Rychlý start: Hledání videí pomocí Bingu Video Search SDK pro Javu'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu používáme k odeslání žádosti pro vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Javu.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: c4f9464c6fe4e414419f08c72549cb3d4f20b44e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473293"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798293"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Rychlý start: Vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Javu
 

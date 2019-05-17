@@ -27,6 +27,8 @@
       href: search-fiddler.md
     - name: PowerShell
       href: search-create-index-rest-api.md
+    - name: Python
+      href: search-get-started-python.md
 - name: Kurzy
   items:
     - name: Indexování Azure SQL Database
@@ -322,8 +324,6 @@
           href: 'https://aka.ms/jfkfiles'
         - name: Ukázka úloh NYC
           href: 'https://aka.ms/azjobsdemo'
-        - name: Ukázka analyzátoru hledání
-          href: 'https://alice.unearth.ai/'
         - name: Případy použití hledání
           href: 'https://searchsamples.azurewebsites.net/'
     - name: Nejčastější dotazy

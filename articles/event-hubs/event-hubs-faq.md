@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: acc756ac04e5127d07760746bd0178f0f6cb1d6f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690274"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789246"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -23,6 +23,15 @@ ms.locfileid: "64690274"
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Co je obor názvů služby Event Hubs?
 Obor názvů je kontejner oboru pro témata Event Hub a Kafka. Poskytuje jedinečný [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Obor názvů slouží jako kontejner aplikace, která může zastřešovat i více témata Event Hub a Kafka. 
+
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Kdy vytvořit nový obor názvů oproti použití existujícího oboru názvů?
+Přidělení kapacity ([jednotek propustnosti (jednotek propustnosti, které)](#throughput-units)) se účtuje na úrovni oboru názvů. Obor názvů je také přidružené k oblasti.
+
+Můžete chtít vytvořit nový obor názvů namísto použití existující v jednom z následujících scénářů: 
+
+- Je třeba v Centru událostí související s novou oblast.
+- Je třeba Centrum událostí přidružené k jiné předplatné.
+- Je třeba v Centru událostí s přidělení jedinečných kapacity (to znamená, je potřebná kapacita pro obor názvů s centrem událostí přidání překročí prahovou hodnotu 40 jednotek Propustnosti, a nechcete, aby vyhrazeném clusteru)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaký je rozdíl mezi Event Hubs úrovně Basic a Standard?
 
@@ -60,7 +69,7 @@ Následující protokoly s Azure Service Bus můžete použít k odesílání a 
 
 V následující tabulce pro odchozí porty, které je potřeba otevřít na použití těchto protokolů ke komunikaci s Azure Event Hubs. 
 
-| Protocol (Protokol) | Porty | Podrobnosti | 
+| Protocol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Zobrazit [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |

@@ -7,31 +7,21 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/15/2019
+ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076102"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788701"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Prostředky Azure Red Hat OpenShift
 
 Toto téma obsahuje seznam oblastí Azure a velikosti virtuálních počítačů, které jsou podporované službou Microsoft Azure Red Hat OpenShift.
 
-## <a name="azure-regions"></a>Oblast Azure
+## <a name="azure-regions"></a>Oblasti Azure
 
-Do následujících oblastí Azure po celém světě můžete nasadit clustery Azure Red Hat OpenShift:
-
-|Oblast|Rozhraní příkazového řádku kódu|
-|-|-|
-|🇦🇺 Austrálie – východ|`australiaeast`|
-|🇨🇦 Kanada – střed|`canadacentral`|
-|🇨🇦 Kanada – východ|`canadaeast`|
-|🇺🇸 USA – východ|`eastus`|
-|🇺🇸 USA – západ|`westus`|
-|Západní Evropa 🇪🇺|`westeurope`|
-|Severní Evropa 🇪🇺|`northeurope`|
+Zobrazit [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) aktuální seznam oblastí, kde můžete nasadit Azure Red Hat OpenShift clusterů.
 
 ## <a name="virtual-machine-sizes"></a>Velikosti virtuálních počítačů
 

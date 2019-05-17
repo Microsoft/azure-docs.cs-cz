@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371384"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604034"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Vysvětlení podmínek na faktuře smlouvy zákazníka se společností Microsoft
 
@@ -41,7 +41,7 @@ V následujících částech jsou důležité termíny, které se zobrazují na 
 
 ![Oddíl Souhrn faktury](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
-| Označení | Popis |
+| Termín | Popis |
 | --- | --- |
 | Kupující |Adresa vaše právní entitu, v účtování vlastnosti účtu|
 | Příjemce faktury |Fakturační adresa fakturační profil příjem faktury, v účtování vlastnosti profilu|
@@ -57,13 +57,13 @@ V následujících částech jsou důležité termíny, které se zobrazují na 
 
 ![Oddíl souhrn fakturace](./media/billing-understand-your-invoice-mca/billingsummary.png)
 
-| Označení | Popis |
+| Termín | Popis |
 | --- | --- |
 | Poplatky|Celkový počet Microsoft poplatky za tento fakturační profil od poslední fakturačního období |
 | Závěrečné titulky |Kredity, které jste dostali od vrátí |
 | Kredity Azure použít | Kredity Azure, která se automaticky použijí Azure účtuje každého fakturačního období |
 | Mezisoučet |Dlužná částka před zdaněním |
-| Daň |Typ a velikost daň, která platíte, v závislosti na zemi fakturace profilu. Pokud nemusíte zaplatit daň, neuvidíte daně na vaší faktuře. |
+| Daň |Typ a velikost daň, která platíte, v závislosti na zemi nebo oblast, váš fakturační profil. Pokud nemusíte zaplatit daň, neuvidíte daně na vaší faktuře. |
 | Odhadované celkové úspory |Odhadované celkové množství, které jste si uložili z efektivní slevy. Pokud je k dispozici, efektivní zvýhodněné sazby jsou uvedeny pod položky řádku nákupní podrobnosti faktury z oddílu. |
 
 ### <a name="invoice-sections"></a>Oddíly faktury
@@ -82,15 +82,15 @@ Celková dlužná částka pro každou řadu service se vypočte tak, že *kredi
 
 ![Podrobnosti faktury z oddílu](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
-| Označení |Popis |
+| Termín |Popis |
 | --- | --- |
 | Jednotková cena | Efektivní Jednotková cena služby (v cenách měny), která se používá pro míru využití. Toto je jedinečné pro produkt, řady služeb, měření a nabídky. |
 | Množství | Množství zakoupených nebo spotřebované během fakturačního období |
 | Poplatky za/kredity | NET výše poplatků po použití kredity/vrácení peněz |
 | Azure Credit | Množství použít na poplatky za/kredity kredity Azure|
-| Sazba daně | Daň za procenta podle země |
+| Sazba daně | Daň za procenta podle země/oblasti |
 | Částka daně | Částka daně použít k nákupu podle sazba daně |
-| Celkem | Celková dlužná částka za nákup |
+| celkem | Celková dlužná částka za nákup |
 
 ### <a name="how-to-pay"></a>Způsoby platby
 

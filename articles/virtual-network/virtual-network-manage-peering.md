@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 18d913339556c0d4b0a06bd62f4495da6a4d4223
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ee7ffba182cdbc2a77df5edf112e29c49cd610ad
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925935"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519659"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -146,7 +146,7 @@ Pokud váš účet nemá přiřazenou k jednomu z předchozích rolí, musíte b
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Potřebný k vytvoření partnerského vztahu virtuální sítě A virtuální sítí b virtuální síti A musí být virtuální síť (Resource Manager)          |
 | Microsoft.Network/virtualNetworks/peer/action                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (Resource Manager) k virtuální síti A                                                       |
-| Microsoft.ClassicNetwork/virtualNetworks/peer                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (classic) k virtuální síti A                                                                |
+| Microsoft.ClassicNetwork/virtualNetworks/peer/action                   | Potřebný k vytvoření partnerského vztahu virtuální síť B (classic) k virtuální síti A                                                                |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | Přečtěte si partnerského vztahu virtuálních sítí   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Odstranění partnerského vztahu virtuálních sítí |
 

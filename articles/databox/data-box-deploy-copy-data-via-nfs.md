@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 05/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 55c880d0e795873a759ba121b6de0c98c5249061
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2b4825770d8220e24c0d981af19313f265806d84
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924484"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800444"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím systému souborů NFS
 
@@ -130,7 +130,9 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 > [!IMPORTANT]
 > Nejsou podporovány následující typy souborů Linux: symbolické odkazy, soubory, bloku souborů, soketů a kanálů. Tyto typy souborů bude mít za následek selhání během **přípravu k odeslání** kroku.
 
-- Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
+Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do zařízení Data Box](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Podrobný seznam chyb při kopírování dat, naleznete v tématu [problémy řešit zařízení Data Box](data-box-troubleshoot.md).
+
+Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
     
    ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 

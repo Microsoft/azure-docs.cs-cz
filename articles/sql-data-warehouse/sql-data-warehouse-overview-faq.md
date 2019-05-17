@@ -2,20 +2,20 @@
 title: Nejčastější dotazy k Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Tento článek uvádí si nejčastější dotazy ohledně Azure SQL Data Warehouse od zákazníků a vývojářů
 services: sql-data-warehouse
-author: acomet
+author: happynicolle
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: acomet
+ms.author: nicw
 ms.reviewer: igorstan
-ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c16d95ea15fc358cb81b17b42570cb35f2e8c52d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747604"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795554"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse nejčastější dotazy
 
@@ -76,7 +76,7 @@ Otázka: SQL Data Warehouse podporuje rozhraní REST API?
 A. Ano. Co nejvíce funkcí REST, který lze použít s SQL Database je také dostupná v SQL Data Warehouse. Můžete najít informace o rozhraní API v rámci stránky dokumentace k REST nebo [MSDN].
 
 
-## <a name="loading"></a>Načítá se
+## <a name="loading"></a>Načítání
 
 Otázka: Jaké ovladače klienta podporujete?
 

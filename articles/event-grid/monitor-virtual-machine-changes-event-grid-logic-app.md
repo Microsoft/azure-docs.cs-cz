@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 33634773b436114f4a5f2942028710ae50e0e703
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65737130"
+ms.locfileid: "65801087"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálních počítačů pomocí Azure Event Gridu a Logic Apps
 

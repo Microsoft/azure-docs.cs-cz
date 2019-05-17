@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6fb95d43bff79ca91988549114daa91e5d41f358
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60649594"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789607"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup serveru
 
@@ -39,7 +39,7 @@ Ve výchozím nastavení Azure Backup serveru komunikuje se servery VMware prost
 
 ### <a name="before-you-start"></a>Než začnete
 
-- Pokud už nechcete používat HTTPS můžete [zakázat výchozí nastavení](backup-azure-backup-server-vmware.md).
+- Pokud už nechcete používat HTTPS můžete [zakázat ověřování certifikátu HTTPS pro všechny servery VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Obvykle připojíte z prohlížeče na počítači Azure Backup serveru k serveru vCenter/ESXi pomocí webovém klientovi vSphere. Při prvním uděláte připojení není zabezpečený a zobrazí následující.
 - Je důležité pochopit, jak Azure Backup Server zpracovává zálohy.
     - Jako první krok serveru Azure Backup zálohuje data do úložiště na místním disku. Azure Backup Server používá fond úložiště, sada disků a svazků, na kterých Azure Backup Server ukládá disku body obnovení pro chráněná data. Fond úložiště může být přímo připojeným úložištěm (DAS), Fibre channel SAN nebo iSCSI úložné zařízení nebo SAN. Je důležité zajistit, že máte dostatečné úložiště pro místní back up dat virtuálního počítače VMware.
@@ -101,7 +101,7 @@ Zabezpečený kanál nastavte následujícím způsobem:
 
 
 
-### <a name="disable-default-https"></a>Zakázat výchozí HTTPS
+### <a name="disable-https-certificate-validation"></a>Zakázat ověřování certifikátu HTTPS
 
 Pokud máte zabezpečené hranice ve vaší organizaci a nechcete používat protokol HTTPS mezi servery VMware a Azure Backup serveru počítače, zakažte HTTPS následujícím způsobem: u
 1. Zkopírujte a vložte následující text do souboru .txt.

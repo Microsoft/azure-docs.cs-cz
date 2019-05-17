@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618020"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538416"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 
@@ -23,7 +23,7 @@ Spravované disky Azure nyní nabízí čtyři typy disků, tři, z nichž jsou 
 
 Následující tabulka obsahuje porovnání ultra solid-stát disky (SSD) (preview), premium SSD, SSD na úrovni standard a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou při rozhodování, co se má použít.
 
-|   | Ultra SSD (preview)   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
+|   | Ultra SSD (preview)   | SSD úrovně Premium   | SSD úrovně Standard   | Disk HDD úrovně Standard   |
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na vstupně-výstupních operací, jako jsou SAP HANA, databáze na nejvyšší úrovni (třeba SQL, Oracle) a dalších transakcí náročná na výkon úloh.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování   |Zálohování méně náročné úlohy s řídkým přístupem   |
@@ -44,6 +44,7 @@ Jsou některé klíčové funkce Ultra SSD:
 - Kapacita disku: Ultra rozsahy kapacity SSD z 4 GiB až 64 TB.
 - Vstupně-výstupních operací disku: Ultra SSD podporu vstupně-výstupních operací omezení 300 IOPS/GiB maximálně 160 kB IOPS na disk. K dosažení vstupně-výstupních operací, kterou jste zřídili, ujistěte se, že jsou vybrané vstupně-výstupních operací disku menší než počet IOPS virtuálních počítačů. Minimální vstupně-výstupních operací disku jsou 100 vstupně-výstupních operací.
 - Propustnost disku: S ultra SSD, propustnost limit jednoho disku je 256 KiB/s pro každý zřízené IOPS, až do maximálního počtu 2000 MB/s disku (kde MB/s = 10 ^ 6 bajtů za sekundu). Propustnost disku minimální je 1 MiB.
+- Ultra SSD disky podporují nastavení vlastnosti výkonu disku (IOPS a propustnost) za běhu bez odpojení disku od virtuálního počítače. Jakmile se operace změny velikosti disku výkonu se vystavil na disku, může trvat až hodinu, tato změna se skutečně projeví.
 
 ### <a name="disk-size"></a>Velikost disku
 
@@ -58,6 +59,10 @@ Jsou některé klíčové funkce Ultra SSD:
 |256     |76,800         |2 000         |
 |512     |80,000         |2 000         |
 |1 024 65 536 (velikosti v tomto rozsahu, zvyšovat v přírůstcích po 1 TB)     |160,000         |2 000         |
+
+### <a name="transactions"></a>Transakce
+
+Ultra disků SSD každý vstupně-výstupní operace menší než nebo rovna až 256 KiB propustnosti se nepovažuje za jeden vstupně-výstupní operace. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více vstupně-výstupních operací, o velikosti 256 KiB.
 
 ### <a name="preview-scope-and-limitations"></a>Rozsah ve verzi Preview a omezení
 

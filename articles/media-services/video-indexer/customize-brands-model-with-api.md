@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: df77a745ef6508b15b5a8bcde5eede0e06eb1afc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583719"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799644"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značky s rozhraním API pro Video Indexer
 
@@ -44,7 +45,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Kromě těchto parametrů je nutné zadat objektu JSON těla požadavku, který poskytuje informace o novou značku ve formátu v příkladu níže.
 
@@ -107,7 +108,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |id|integer|Ano|Id značky (generovány, pokud byl vytvořen značka)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -136,7 +137,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |id|integer|Ano|ID značky (generovány, pokud byl vytvořen značka)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -186,7 +187,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |id|integer|Ano|ID značky (generovány, pokud byl vytvořen značka)|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Kromě těchto parametrů je nutné zadat, že objektu JSON těla požadavku, která poskytuje aktualizované informace na značku, kterou chcete aktualizovat následující formát v příkladu níže.
 
@@ -248,7 +249,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -308,7 +309,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
 
@@ -345,7 +346,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Kromě těchto parametrů je nutné zadat objektu JSON těla požadavku, který poskytuje informace o novou značku ve formátu v příkladu níže.
 

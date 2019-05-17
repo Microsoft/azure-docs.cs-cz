@@ -9,20 +9,32 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: 55c5a61be8dadd538b73bd6378c030b98d837341
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.custom: 80e4ff38-5174-43
+ms.openlocfilehash: 7c6e7d8bb407b0ffeb320ebfe9e2639feb303800
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508232"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603408"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
 Nástroje Azure Functions Core můžete vyvíjet a testovat funkce v místním počítači z příkazového řádku nebo terminálu. Lokální funkce se můžete připojit k za provozu služeb Azure a vaší funkce můžete ladit v místním počítači pomocí úplné modul runtime služby Functions. Aplikace function app můžete nasadit i do vašeho předplatného Azure.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
+
+Vývoje služby functions na místním počítači a jejich publikování do Azure s využitím nástrojů Core zahrnuje následující základní kroky:
+
+> [!div class="checklist"]
+> * [Nainstalujte základní nástroje a závislosti.](#v2)
+> * [Vytvoření projektu aplikace funkcí ze specifické pro jazyk šablony.](#create-a-local-functions-project)
+> * [Registrace rozšíření aktivační události a vazby.](#register-extensions)
+> * [Definování úložiště a další připojení.](#local-settings-file)
+> * [Vytvoření funkce z aktivační události a specifické pro jazyk šablony.](#create-func)
+> * [Místní spuštění funkce](#start)
+> * [Publikování projektu do Azure](#publish)
 
 ## <a name="core-tools-versions"></a>Základní verze nástroje
 
@@ -41,9 +53,6 @@ Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x.
 ### <a name="v2"></a>Verze 2.x
 
 Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Je třeba nejprve nainstalovat rozhraní .NET Core 2.x SDK.
-
-> [!IMPORTANT]
-> Když povolíte rozšíření sady v souboru projektu host.json, není potřeba nainstalovat sadu .NET Core 2.x SDK. Další informace najdete v tématu [místní vývoj s Azure Functions Core Tools a rozšíření sady ](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Rozšíření sady vyžaduje verzi 2.6.1071 základní nástroje nebo vyšší verze.
 
 #### <a name="windows-npm"></a>Windows
 
@@ -186,14 +195,20 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
 
 | Nastavení      | Popis                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Pokud je nastavena na `true`, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je `true`. Když `true`, všechna nastavení, které jsou přidány pomocí `func settings add` jsou šifrované pomocí klíče místního počítače. To odráží, jak jsou uložená nastavení aplikace function app v nastavení aplikace v Azure. Šifrování lokální hodnoty poskytuje další ochranu cenná data, by měl local.settings.json možné veřejně zpřístupnit.  |
+| **`IsEncrypted`** | Pokud je nastavena na `true`, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je `false`. |
 | **`Values`** | Kolekce nastavení aplikace a připojovacích řetězců použité při místním spuštění. Tyto hodnoty odpovídají nastavení aplikace ve vaší aplikaci function app v Azure, jako například [ `AzureWebJobsStorage` ]. Řada triggerů a vazeb mají vlastnost, která odkazuje na nastavení aplikace řetězec připojení, jako například `Connection` pro [aktivační událost objektů Blob storage](functions-bindings-storage-blob.md#trigger---configuration). Pro tyto vlastnosti definované v nastavení aplikace potřebujete `Values` pole. <br/>[`AzureWebJobsStorage`] Požadovaná aplikace nastavení pro aktivační události než HTTP. <br/>Verze 2.x modul runtime služby Functions vyžaduje [ `FUNCTIONS_WORKER_RUNTIME` ] nastavení, který je generován základní nástroje pro váš projekt. <br/> Pokud máte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) nainstalovaný místně, můžete nastavit [ `AzureWebJobsStorage` ] k `UseDevelopmentStorage=true` a základní nástroje pomocí emulátoru. To je užitečné při vývoji, ale měli byste otestovat připojení k skutečného úložiště před nasazením. |
 | **`Host`** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. |
 | **`LocalHttpPort`** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |
 | **`CORS`** | Určuje původ, odkud můžou pro [prostředků mezi zdroji (CORS) pro sdílení obsahu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje jsou dodávány jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporován, umožňující žádosti z původu. |
 | **`ConnectionStrings`** | Nepoužívejte připojovací řetězce, používá funkce vazby této kolekce. Tato kolekce používá pouze rozhraní, které obvykle získat připojovací řetězce z `ConnectionStrings` část konfigurační soubor, třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci nejsou publikovány do Azure s jinými nastaveními aplikace. Musíte explicitně přidat tyto hodnoty `Connection strings` kolekce vaše nastavení aplikace function app. Pokud vytváříte [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** na portálu u vašich připojení. |
 
-[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v sekci proměnných prostředí z těchto témat reference specifická pro jazyk:
+
+* [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
+* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
+* [F#skript (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [Java](functions-reference-java.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
 Pokud se žádný platný připojovací řetězec úložiště jsou nastavené pro [ `AzureWebJobsStorage` ] a se nepoužívá emulátor, se zobrazí následující chybová zpráva:
 
@@ -307,7 +322,6 @@ func host start
 | **`--script-root --prefix`** | Slouží k zadání cesty do kořenového adresáře aplikace function app, který se má spustit nebo nasadit. Používá se pro kompilované projekty, které Generovat soubory projektu do podsložky. Například při vytváření knihovny tříd jazyka C# projekt, host.json, local.settings.json a function.json soubory jsou generovány *kořenové* , jako je podsložka s cestou `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. To je kořenový adresář aplikace function app, při spuštění v Azure. |
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí: 20 sekund.|
 | **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
-| **`--enableAuth`** | Povolte úplnou ověřování zpracování kanálu.|
 
 C# projekt knihovny tříd (.csproj), je třeba zahrnout `--build` možnost k vygenerování knihovny DLL.
 
@@ -474,7 +488,6 @@ Povolení Application Insights pro aplikaci funkcí:
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
-
 ## <a name="next-steps"></a>Další postup
 
 Nástroje Azure Functions Core je [open source a hostovaná na Githubu](https://github.com/azure/azure-functions-cli).  

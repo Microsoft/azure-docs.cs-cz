@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154488"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799108"
 ---
 # <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
 
@@ -55,7 +55,7 @@ Statické veřejné IP adresy můžete přiřadit následující prostředky z p
 ## <a name="constraints"></a>Omezení
 
 - Nelze zadat IP adresy pro předponu. Platforma Azure přiřadí IP adresy pro předponu, v závislosti na velikosti, který zadáte.
-- Výchozí velikost předpony je/28 nebo 16 veřejné IP adresy.
+- Můžete vytvořit předponu až 16 IP adres nebo o velikosti/28. Další informace najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Rozsah, nelze změnit po vytvoření předponu.
 - Rozsah určený jenom adresy IPv4. Rozsah IPv6 adres neobsahuje.
 - Z rozsahu předpona, která lze přiřadit pouze statické veřejné IP adresy vytvořené pomocí standardního SKU. Další informace o veřejné IP adresy skladové položky, naleznete v tématu [veřejnou IP adresu](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).

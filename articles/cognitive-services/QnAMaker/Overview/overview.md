@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 963769315302ba4e7d1600253b617c7cb0f02bc5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736908"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794246"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 
@@ -57,7 +57,7 @@ QnA Maker pro vaše data zajišťuje dvě klíčové služby:
 
 Architektura služby QnA Maker se skládá z následujících dvou komponent:
 
-1. **Služby pro správu nástroje QnA Maker**: Rozhraní pro správu prostředí pro nástroje QnA Maker znalostní báze, který obsahuje úvodní vytvoření, aktualizace, trénování a publikování. Tyto aktivity je možné provádět přes [portál](https://qnamaker.ai) nebo [rozhraní API pro správu](https://aka.ms/qnamaker-v4-apis). 
+1. **Služby pro správu nástroje QnA Maker**: Rozhraní pro správu prostředí pro nástroje QnA Maker znalostní báze, který obsahuje úvodní vytvoření, aktualizace, trénování a publikování. Tyto aktivity je možné provádět přes [portál](https://qnamaker.ai) nebo [rozhraní API pro správu](https://go.microsoft.com/fwlink/?linkid=2092179). 
 
 2. **Nástroj QnA Maker dat a modulu runtime**: Nasadí se v rámci vašeho předplatného Azure v zadané oblasti. Obsah vaší znalostní báze se ukládá ve službě [Azure Search](https://azure.microsoft.com/services/search/) a koncový bod se nasazuje jako [App Service](https://azure.microsoft.com/services/app-service/). Můžete nasadit také prostředek [Application Insights](https://azure.microsoft.com/services/application-insights/) pro účely analýz.
 

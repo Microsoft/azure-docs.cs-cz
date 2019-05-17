@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: e70eb7ae73e88b37e649d519d0d0428554dd4ab3
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3ddde600c2ac15c56b59051fbcd6bb0e8fbae1f6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467523"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787530"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -86,11 +86,11 @@ Přijmout hodnoty odpovídají Průzkumníka služby Time Series Insights **krá
 | `multiChartStack=false` | `true` ve výchozím nastavení zapnutá umístit `false` do zásobníku. |
 | `multiChartStack=false&multiChartSameScale=true` | Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  Má `false` ve výchozím nastavení, takže předání 'true' tuto funkci povolí. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednotky = dny, hodiny, minuty, sekundy a milisekundy.  Pro jednotku použijte vždy velká písmena. </br> Počet jednotek se definuje předáním požadované celočíselné hodnoty parametru timeBucketSize.  Plynulost je možné nastavit až na 7 dnů.  |
-| `timezoneOffset=-<integer>` | Celočíselná hodnota je vždy v milisekundách. </br> Tato funkce se trochu liší od možností povolených v průzkumníku TSI, kde můžete vybrat místní čas prohlížeče nebo čas UTC. |
+| `timezoneOffset=-<integer>` | Celočíselná hodnota je vždy v milisekundách. </br> Tato funkce se poněkud liší od možností povolených v Průzkumníku Time Series Insights, kde můžete vybrat místní (čas prohlížeče) nebo čas UTC povolíme. |
 
 ### <a name="examples"></a>Příklady
 
-Chcete-li přidat definice časových řad TSI prostředí jako parametr adresy URL, přidejte:
+Chcete-li do prostředí Time Series Insights jako parametr adresy URL přidat definice časových řad, přidejte:
 
 ```plaintext
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -112,7 +112,7 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 > [!TIP]
 > Zobrazit v Průzkumníku live [pomocí adresy URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]).
 
-Adresa URL výše popisuje a vytvoří zobrazení Průzkumník TSI v:
+Adresa URL výše popisuje a vytvoří zobrazení Průzkumník Time Series Insights:
 
 [![Podmínky v Průzkumníku čas Series Insights](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 

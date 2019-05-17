@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791061"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521756"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
 
@@ -58,7 +58,7 @@ Podsítě, kterou vyberete virtuální počítač s cílem vycházet z názvu po
 
 - Pokud podsíť se stejným názvem jako zdrojová podsíť virtuálních počítačů je k dispozici v cílové síti, nastaví se pro cílový virtuální počítač této podsíti.
 - Pokud podsíť s tímto názvem neexistuje v cílové síti, první podsíti v abecedním pořadí je nastavena jako cílovou podsíť.
-- Můžete upravit v **výpočty a síť** nastavení pro virtuální počítač.
+- Můžete změnit cílovou podsíť v **výpočty a síť** nastavení pro virtuální počítač.
 
     ![Výpočty a síť výpočetní vlastnosti okna](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 

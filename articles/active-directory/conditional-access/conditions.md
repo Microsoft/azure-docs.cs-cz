@@ -18,12 +18,12 @@ ms.date: 12/14/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355647"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785380"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
 
@@ -57,29 +57,23 @@ Pokud jste **výběr uživatelů a skupin**, můžete nastavit následující mo
 
 * **Uživatelé a skupiny** cílí na konkrétní skupiny uživatelů. Například můžete vybrat skupinu, která obsahuje všichni členové oddělení lidských zdrojů, pokud je vybrána HR aplikace jako cloudové aplikace. Skupina může být libovolný typ skupiny ve službě Azure AD, včetně dynamické nebo přiřazené zabezpečení a distribučních skupin.
 
-Konkrétní uživatelé nebo skupiny můžete také vyloučit ze zásad. Jeden běžným případem použití je účty služeb, pokud vaše zásada vynucuje vícefaktorové ověřování (MFA). 
+Konkrétní uživatelé nebo skupiny můžete také vyloučit ze zásad. Jeden běžným případem použití je účty služeb, pokud vaše zásada vynucuje vícefaktorové ověřování (MFA).
 
-Cílení na konkrétní skupiny uživatelů slouží k nasazení nových zásad. V nové zásady by měl cílíte pouze počáteční sadu uživatelů k ověření zásad chování. 
+Cílení na konkrétní skupiny uživatelů slouží k nasazení nových zásad. V nové zásady by měl cílíte pouze počáteční sadu uživatelů k ověření zásad chování.
 
+## <a name="cloud-apps-and-actions"></a>Cloudové aplikace a akce
 
+Cloudové aplikace je web, služba nebo koncový bod chráněné službou Azure AD Application Proxy. Podrobný popis podporovaných cloudových aplikací, najdete v části [přiřazení aplikací v cloudu](technical-reference.md#cloud-apps-assignments). **Cloudové aplikace nebo akce** podmínka je povinný v zásadách podmíněného přístupu. V zásadách můžete buď vybrat **všechny cloudové aplikace** nebo zadejte aplikací s využitím **vyberte aplikace**.
 
-## <a name="cloud-apps"></a>Cloudové aplikace 
+Organizace, můžete vybrat z následujících možností:
 
-Cloudové aplikace je webu nebo služby. Weby, které jsou chráněné službou Azure AD Application Proxy jsou také cloudových aplikací. Podrobný popis podporovaných cloudových aplikací, najdete v části [přiřazení aplikací v cloudu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
+* **Všechny cloudové aplikace** při použití zásady směrného plánu se mají použít pro celou organizaci. Tento výběr použijte pro zásady, které vyžadují ověřování službou Multi-Factor Authentication při zjištění rizika přihlašování všech cloudových aplikací. Použít na všechny cloudové aplikace zásady platí pro přístup ke všem webům a službám. Toto nastavení se neomezuje na cloudové aplikace, které se zobrazí v seznamu vyberte aplikace.
+* **Vyberte aplikace** ke konkrétním službám cíl ve vašich zásadách. Například můžete vyžadovat, aby uživatelé mají odpovídající zařízení pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams.
 
-**Cloudové aplikace** podmínka je povinný v zásadách podmíněného přístupu. V zásadách můžete buď vybrat **všechny cloudové aplikace** nebo vybrat konkrétní aplikace.
+> [!NOTE]
+> Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup.
 
-![Zahrnout cloudových aplikací](./media/conditions/03.png)
-
-Vyberte:
-
-- **Všechny cloudové aplikace** do směrného plánu zásad platí pro celou organizaci. Tento výběr použijte pro zásady, které vyžadují vícefaktorové ověřování při zjištění rizika přihlašování všech cloudových aplikací. Použít zásady **všechny cloudové aplikace** platí pro přístup ke všem webům a službám. Toto nastavení se neomezuje na cloudové aplikace, které se zobrazují na **vyberte aplikace** seznamu. 
-
-- **Vyberte aplikace** ke konkrétním službám cíl ve vašich zásadách. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
-
-Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup. 
-
-
+**Akce uživatelů** jsou úkoly provedené uživatelem. Aktuálně se podporují pouze akce je **zaregistrovat informace o zabezpečení (preview)**, umožňuje zásady podmíněného přístupu vynucovat, když se uživatel zaregistruje informace o jejich zabezpečení.
 
 ## <a name="sign-in-risk"></a>Riziko přihlášení
 

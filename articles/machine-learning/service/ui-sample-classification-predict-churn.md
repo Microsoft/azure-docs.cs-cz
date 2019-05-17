@@ -9,17 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 1cb533348236905b7c4e9b58968041745af0e71b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028437"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785823"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Ukázka 5 – klasifikace: Předpověď změn, appetency a prodej nahoru 
 
-Tento ukázkový experiment vizuální rozhraní zobrazuje binární klasifikátor předpověď výpovědi, appetency a nahoru – prodej, běžné úlohy pro řízení vztahů se zákazníky (CRM).
+Zjistěte, jak vytvořit experiment složité strojové učení, aniž byste museli napsat jediný řádek kódu pomocí rozhraní visual.
+
+Tento experiment trénovat tři, **dvěma třídami posíleného rozhodovacího stromu** třídění k předpovědi Časté úlohy pro systémy pro správu (CRM) vztah zákazníků: četnost změn, appetency a prodej nahoru. Hodnoty data a popisky se rozdělit mezi několik zdrojů dat a zamíchal anonymizace informace o zákaznících, však může stále používáme rozhraní visual kombinovat datových sad a trénování modelu pomocí hodnot utajená.
+
+Protože ale My se snažíme odpověď na otázku "Které z nich?" tomu se říká klasifikace problému. Můžete však použít stejný postup v tomto experimentu libovolného typu machine learning problém řešit, ať to regrese, klasifikace, clustering a tak dále.
+
+Tady je dokončené grafu pro tento experiment:
+
+![Grafem experimentu](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,13 +39,11 @@ Tento ukázkový experiment vizuální rozhraní zobrazuje binární klasifikát
 
 ## <a name="data"></a>Data
 
-Data pro tento experiment jsou z konference KDD Cup 2009. Objekt dataset obsahuje více než 50 000 řádků a sloupců 230 funkce. Úloha je k předvídání změny appetency a navýšení prodeje pro zákazníky, kteří používají tyto funkce. Najdete v článku [KDD webu](https://www.kdd.org/kdd-cup/view/kdd-cup-2009) podrobné informace o datech a úlohy.
+Data pro tento experiment jsou z konference KDD Cup 2009. Objekt dataset obsahuje více než 50 000 řádků a sloupců 230 funkce. Úloha je k předvídání změny appetency a navýšení prodeje pro zákazníky, kteří používají tyto funkce. Další informace o datech a úlohy, najdete v článku [KDD webu](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
 ## <a name="experiment-summary"></a>Souhrn testu
 
-Tady je úplný experiment grafu:
-
-![Grafem experimentu](./media/ui-sample-classification-predict-churn/experiment-graph.png)
+Tento ukázkový experiment vizuální rozhraní zobrazuje binární klasifikátor předpověď změn, appetency a nahoru – prodej, běžné úlohy pro řízení vztahů se zákazníky (CRM).
 
 Nejdřív jsme některé jednoduché zpracování dat.
 
@@ -46,11 +52,10 @@ Nejdřív jsme některé jednoduché zpracování dat.
     ![Vyčistit datové sady](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
 
 - Funkce a odpovídající změny, appetency, a až prodej popisky jsou v různých objektech datasets. Používáme **přidat sloupce** modulu pro připojení k funkci sloupce sloupce popisek. První sloupec **Sloupec1**, je popisek sloupce. Zbývající sloupce, **Var1**, **Var2**, a tak dále sloupců funkce.
- 
+
     ![Přidat sloupec datové sady](./media/ui-sample-classification-predict-churn/added-column1.png)
 
 - Používáme **rozdělení dat** modulu rozdělit datovou sadu na trénování a testování sad.
-
 
     Potom jsme pomocí binární klasifikátor Boosted Decision Tree s výchozími parametry můžete vytvářet prediktivní modely. Při sestavování jednoho modelu na jeden úkol, to znamená, že jeden model/každý předpovědět prodej nahoru, appetency a změny.
 

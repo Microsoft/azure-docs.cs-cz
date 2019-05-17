@@ -16,10 +16,10 @@ ms.date: 05/14/2019
 ms.author: spelluru
 ms.openlocfilehash: b29798bb87b7c5c677e7d80e552e45e8d1290541
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65754742"
+ms.locfileid: "65786821"
 ---
 # <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Reakce na události služby Azure Service Bus obdržené prostřednictvím služby Azure Event Grid s využitím Azure Functions a Azure Logic Apps
 V tomto kurzu se dozvíte, jak reagovat na události služby Azure Service Bus, které dostávají prostřednictvím služby Azure Event Grid pomocí Azure Functions a Azure Logic Apps. Budete proveďte následující kroky:

@@ -12,10 +12,10 @@ keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery
 manager: yuvalm
 ms.openlocfilehash: a5afd093e0f961d048681465850419c5e8712557
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752128"
+ms.locfileid: "65800391"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Vývoj pro víc služeb prostory Azure Dev
 

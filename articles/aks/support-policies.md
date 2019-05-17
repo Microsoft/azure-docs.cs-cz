@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 9b779021eca11638e8ee52ec11d082e5b0e89cd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506683"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786460"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes Service
 
@@ -146,7 +146,7 @@ Funkce ve verzi Preview nebo funkce příznak funkce nejsou určené pro produk�
 
 Funkce ve verzi public preview jsou fall v rámci podpory "co možná nejlepší" a tyto funkce jsou ve verzi preview a není určená pro produkční prostředí podporuje týmy AKS technickou podporu během pracovní doby pouze. Další informace najdete v tématu:
 
-* [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/en-us/support/faq/)
+* [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
 > Funkce ve verzi Preview budou účinné od Azure *předplatné* úroveň. V produkčním předplatném neinstalujte funkce ve verzi preview. Na produkčním předplatném funkce ve verzi preview můžete změnit výchozí chování rozhraní API a mít vliv na běžný provoz.

@@ -138,18 +138,16 @@
               href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
             - name: Azure Application Gateway s virtuálními počítači VMware
               href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
-            - name: Veřejný nástroj pro vyrovnávání zatížení Azure s virtuálními počítači VMware
-              href: 'https://docs.azure.cloudsimple.com/load-balancers/'
             - name: Konfigurace serveru vCenter privátního cloudu jako koncového bodu automatizace vRealize
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Zajištění vysoké dostupnosti aplikace ve VMware v Azure
-              href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
+              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
         - name: Ekosystém VMware
           items:
             - name: Zálohování virtuálních počítačů úloh
-              href: 'https://docs.azure.cloudsimple.com/veeam/'
+              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
             - name: Průvodce řešením VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurace šifrování vSAN pro váš privátní cloud
@@ -161,6 +159,6 @@
             - name: Zdroj identity Azure AD v serveru vCenter privátního cloudu
               href: 'https://docs.azure.cloudsimple.com/azure-ad/'
             - name: Místní síťové připojení s využitím ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: Připojení virtuální sítě Azure s využitím ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'

@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025517"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786118"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy je určená pro obchodní specialisty k vytváření aplikací bez kódu pro tradiční aplikace. Profesionální vývojáři mohou pomocí Azure Functions rozšířit možnosti PowerApps, při stínění tvůrci aplikace PowerApps z technické podrobnosti.
@@ -39,8 +39,7 @@ V tomto tématu se dozvíte, jak:
 > * Přidání ovládacích prvků pro volání funkce a zobrazovat data.
 > * Spuštění aplikace k určení, zda na opravy je nákladově efektivní.
 
-> [!IMPORTANT]
-> OpenAPI funkce je aktuálně ve verzi preview a je dostupná jenom pro verzi 1.x modulu runtime Azure Functions.
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -101,13 +100,13 @@ Nyní jste připraveni vytvořit aplikaci v PowerApps a přidat vlastní rozhran
 
     1. Na **Data** panelu, klikněte na tlačítko **přidat do aplikace statická data**.
 
-        ![Přidání zdroje dat](media/functions-powerapps-scenario/add-static-data.png)
+        ![Přidat zdroj dat](media/functions-powerapps-scenario/add-static-data.png)
 
         Obvykle by číst a zapisovat data z externího zdroje, ale přidáte data aplikace Excel jako statická data vzhledem k tomu, že toto je vzorový.
 
     1. Přejděte k souboru aplikace Excel můžete uložit, vyberte **turbíny** tabulky a klikněte na tlačítko **připojit**.
 
-        ![Přidání zdroje dat](media/functions-powerapps-scenario/choose-table.png)
+        ![Přidat zdroj dat](media/functions-powerapps-scenario/choose-table.png)
 
 
 1. Jako zdroj dat přidáte vlastní rozhraní API.
@@ -137,7 +136,7 @@ Teď, když zdroje dat jsou k dispozici v aplikaci, přidáte obrazovku do vaš�
 
 1. V **Data** panelu, vyberte **turbíny** ze seznamu.
 
-    ![Výběr zdroje dat](media/functions-powerapps-scenario/select-data-source.png)
+    ![Vyberte zdroj dat](media/functions-powerapps-scenario/select-data-source.png)
 
     Datová sada neobsahuje bitové kopie, takže teď že můžete změnit rozložení, aby lépe vyhovovaly data. 
 

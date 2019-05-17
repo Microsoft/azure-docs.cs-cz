@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de2f7cb90e004673c59282a8023d55df364220a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d4b154b8ce55c381f1398c696bc439067dccfab
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140859"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Integrace Azure Active Directory s Cloudovou službou Alibaba (jednotné přihlašování založené na roli)
 
@@ -135,8 +135,8 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cloudovou službou Alibaba 
 
     | Název | Obor názvů | Zdrojový atribut|
     | ---------------| ------------| --------------- |
-    | Role | https://www.aliyun.com/SAML-Role/Attribute | user.assignedroles |
-    | RoleSessionName | https://www.aliyun.com/SAML-Role/Attribute | user.userprincipalname |
+    | Role | https:\//www.aliyun.com/SAML-Role/Attribute | user.assignedroles |
+    | RoleSessionName | https:\//www.aliyun.com/SAML-Role/Attribute | user.userprincipalname |
 
     > [!NOTE]
     > Po klepnutí na [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) vědět, jak nakonfigurovat **Role** ve službě Azure AD
@@ -313,7 +313,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v cloudové službě Alibaba (jednotné přihlašování založené na roli). Práce s [Alibaba cloudové služby (jednotné přihlašování založené na roli) tým podpory](https://www.aliyun.com/service/) přidat uživatele na platformě Alibaba Cloudovou službu (jednotné přihlašování založené na roli). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 Po dokončení předchozí konfigurace testů Alibaba Cloudovou službu (jednotné přihlašování založené na roli) pomocí následujících kroků:
 

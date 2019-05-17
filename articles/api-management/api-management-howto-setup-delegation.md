@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4db99f23019b34e7361e3ead4096939b9499320d
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657740"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518090"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak udělit oprávnění registrace a produktu předplatné uživatele
 
@@ -130,7 +130,7 @@ Dále ujistěte se, že koncového bodu delegace provádí následující akce:
      > 
    * Porovnání nad vypočítat hodnotu hash na hodnotu **sig** parametr dotazu. Pokud se tyto dvě hodnoty hash shodují, přejít k dalšímu kroku, jinak zamítnutí žádosti.
 3. Zpracování odběrem na základě typu operaci v **operace** – například fakturace, další otázky, atd.
-4. Na úspěšně přihlášení k odběru produktu na vaší straně uživatele, předplatné pro uživatele do produktu API Management [volání rozhraní REST API pro předplatné produktu].
+4. Na úspěšně přihlášení k odběru produktu na vaší straně uživatele, předplatné pro uživatele do produktu API Management [volání rozhraní REST API pro předplatná].
 
 ## <a name="delegate-example-code"> </a> Příklad kódu
 
@@ -186,7 +186,7 @@ Další informace o delegování najdete v následujícím videu:
 [Delegating product subscription]: #delegate-product-subscription
 [požádat o token jednotného přihlašování (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Vytvoření uživatele]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[volání rozhraní REST API pro předplatné produktu]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[volání rozhraní REST API pro předplatná]: https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate
 [Next steps]: #next-steps
 [ukázkového kódu uvedeného níže]: #delegate-example-code
 

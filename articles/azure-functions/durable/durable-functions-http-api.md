@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730703"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787288"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -104,7 +104,7 @@ Několik částí zahrnují konkrétní rozhraní API HTTP nepodporuje rozšíř
 
 Získá stav instance zadaného Orchestrace.
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -228,7 +228,7 @@ Můžete také zjistit stav všech instancí tak, že odeberete `instanceId` z p
 Je jedna věc, mějte na paměti, že `connection` a `code` jsou volitelné. Pokud máte anonymní ověřování na funkci kódu není povinné.
 Pokud nechcete použít jiné než definované v nastavení aplikace, které AzureWebJobsStorage jiného úložiště připojovací řetězec, můžete bezpečně ignorovat připojení parametru řetězce dotazu.
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -336,7 +336,7 @@ Pokud nastavíte hodnotu token pokračování v dalším záhlaví požadavku, m
 
 Vymaže historii a související artefakty pro instanci zadaného Orchestrace.
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -387,7 +387,7 @@ Tady je datovou část odpovědi příklad (ve formátu pro lepší čitelnost):
 
 Můžete také odstranit historii a související artefakty pro víc instancí v rámci centra úloh tak, že odeberete `{instanceId}` z požadavku "Vyprázdnit historii jediné instance". Selektivní vymazání historie instance, použijte stejné filtry, které je popsáno v žádosti "Získat všechny stav instance".
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -417,11 +417,9 @@ Požádat o výchozí sadu a také následující unikátní parametry již bylo
 
 | Pole                 | Typ parametru  | Popis |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Řetězec dotazu    | Volitelný parametr. -Li zadána, vyfiltruje seznam instancí vymazány, které byly vytvořeny na nebo za dané časové razítko ISO8601.|
+| **`createdTimeFrom`** | Řetězec dotazu    | Vyfiltruje seznam instancí vymazány, které byly vytvořeny na nebo za dané časové razítko ISO8601.|
 | **`createdTimeTo`**   | Řetězec dotazu    | Volitelný parametr. -Li zadána, vyfiltruje seznam instancí vymazány, které byly vytvořeny pozici nebo před daným časovým razítkem ISO8601.|
 | **`runtimeStatus`**   | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtry seznam vymazány instancí na základě jejich stav modulu runtime. Pokud chcete zobrazit seznam hodnot stavu modulu runtime je to možné, naleznete v tématu [dotazování instance](durable-functions-instance-management.md) tématu. |
-
-Pokud nejsou zadány žádné parametry, bude možné vymazat všechny instance v centru úloh.
 
 > [!NOTE]
 > Tato operace může být velmi náročné z hlediska vstupně-výstupních operací Azure Storage, pokud existuje hodně řádků v instancí a/nebo historie tabulky. Další informace o těchto tabulkách najdete v [výkon a škálování v Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table) dokumentaci.
@@ -451,7 +449,7 @@ Tady je datovou část odpovědi příklad (ve formátu pro lepší čitelnost):
 
 Odešle zprávu oznámení události ke spuštěné instanci Orchestrace.
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -504,7 +502,7 @@ Odpovědi pro toto rozhraní API neobsahuje žádný obsah.
 
 Ukončí běžící instanci Orchestrace.
 
-#### <a name="request"></a>Žádost
+#### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -553,7 +551,7 @@ Odpovědi pro toto rozhraní API neobsahuje žádný obsah.
 
 Obnoví instanci neúspěšné Orchestrace do spuštěného stavu přehráním nejnovější neúspěšné operace.
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Požadavek
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 

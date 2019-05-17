@@ -3,19 +3,19 @@ title: Podpora jazyků – API pro vlastní vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
 description: Seznam podporovaných jazyků a oblastí pro rozhraní API pro vlastní vyhledávání Bingu.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1f53dc60a74f0b558525897bef97bf2500442b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: aahi
+ms.openlocfilehash: 56870a63f42c10b48cc2d8f0ae2995862be46d8f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867832"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790244"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vlastní vyhledávání Bingu
 
@@ -45,14 +45,14 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Hongkong – zvláštní správní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
-|Itálie|IT|
+|Itálie|it|
 |Japonsko|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
 |Nový Zéland|NZ|
-|Norsko|NO|
+|Norsko|NE|
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
@@ -82,7 +82,7 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|es-CL|
-|Dánsko|dánština|da-DK|
+|Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
@@ -96,20 +96,20 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
 |Nový Zéland|Angličtina|cs NZ|
-|Norsko|norština|no-NO|
+|Norsko|Norština|no-NO|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
 |Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|arabština|ar-SA|
+|Saúdská Arábie|Arabština|ar-SA|
 |Jižní Afrika|Angličtina|en-ZA|
 |Španělsko|Španělština|es-ES|
-|Švédsko|švédština|sv-SE|
+|Švédsko|Švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
 |Tchaj-wan|Tradiční čínština|zh-TW|
-|Turecko|turečtina|tr-TR|
+|Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|en-US|
 |Spojené státy|Španělština|es-US|

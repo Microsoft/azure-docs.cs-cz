@@ -3,17 +3,17 @@ title: Vysvětlení dotazovací jazyk
 description: Popisuje dostupné Kusto operátory a funkce, které jsou použitelné s grafem prostředků Azure.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/11/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276673"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800514"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
 
@@ -52,6 +52,38 @@ Tady je seznam podporovaných funkcí v grafu prostředků:
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [tostring()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
+
+## <a name="escape-characters"></a>Řídicí znaky
+
+Některé názvy vlastností, jako jsou ty, které zahrnují `.` nebo `$`, musí být zabalené nebo uvozeny řídicími znaky v dotazu nebo vlastnost name je nesprávně interpretován a neposkytuje očekávané výsledky.
+
+- `.` -Zabalte jako takový název vlastnosti: `['propertyname.withaperiod']`
+  
+  Příklad dotazu, který obtéká vlastnost _odata.type_:
+
+  ```kusto
+  where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
+  ```
+
+- `$` -Řídicí znak v názvu vlastnosti. Řídicí znak, který slouží závisí na prostředí spuštění z prostředků grafu.
+
+  - **Bash** - `\`
+
+    Příklad dotazu, aby řídící vlastnost  _\$typ_ v prostředí bash:
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
+    ```
+
+  - **cmd** -není escape `$` znak.
+
+  - **PowerShell** - ``` ` ```
+
+    Příklad dotazu, aby řídící vlastnost  _\$typ_ v prostředí PowerShell:
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
+    ```
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60600046"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602066"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -67,7 +67,7 @@ Ponechat soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit do jednotky D
 
 1.  Vyberte **Angličtina** jako váš preferovaný jazyk a pak vyberte **Enter**.
     
-    ![Výběr jazyka](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Vybrat jazyk](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Vyberte **instalace serveru Ubuntu**a pak vyberte **Enter**.
 
     ![Vyberte možnost instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -262,7 +262,7 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
     
     Vyberte **vložit** zahájíte úpravou souboru. Vytvořit novou čáru a vložte následující text. Upravte více cest ID disku na základě Identifikátoru zvýrazněné více cest z předchozího příkazu.
 
-     **/dev/Mapovač/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
+    **/dev/Mapovač/\<uchování disky více cest id >/mnt/uchování ext4 rw 0 0**
 
     Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončete) zavřete okno editoru.
 
@@ -343,7 +343,7 @@ Spusťte instalační program. Automaticky zjišťuje, zda je agent nainstalovan
 
 Uvidíte, že **verze** pole obsahuje číslo verze na hlavním cíli.
 
-## <a name="common-issues"></a>Běžné problémy
+## <a name="common-issues"></a>Běžné potíže
 
 * Zajistěte, aby že nezapínejte úložiště vMotion na jakékoli komponentami pro správu jako je hlavní cíl. Pokud se hlavní cíl přesune po úspěšné opětovné zapnutí ochrany, nelze odpojit disky virtuálního počítače (Vmdk). V takovém případě navrácení služeb po obnovení selže.
 

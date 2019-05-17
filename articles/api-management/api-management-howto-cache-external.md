@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 05/15/2019
 ms.author: apimpm
-ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2362d06fa0ef795122a2d47a7a621b66fdd9470
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60527811"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780360"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Účely externí mezipamětí Azure Redis ve službě Azure API Management
 
@@ -40,11 +40,6 @@ Naučíte se:
 
 > [!div class="checklist"]
 > * Přidat externí mezipamětí ve službě API Management
-
-## <a name="availability"></a>Dostupnost
-
-> [!NOTE]
-> Tato funkce je momentálně dostupná jenom **spotřeby** úroveň služby Azure API Management.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -94,6 +89,7 @@ Postupujte podle následujících kroků a přidejte externí mezipamětí Azure
 Jakmile externí mezipaměť je nakonfigurovaná ve službě Azure API Management, můžete použít prostřednictvím zásad ukládání do mezipaměti. Zobrazit [ukládání do mezipaměti ke zlepšení výkonu ve službě Azure API Management přidat](api-management-howto-cache.md) podrobné pokyny.
 
 ## <a name="next-steps"></a>Další kroky
+
 * Další informace o zásadách ukládání do mezipaměti najdete v části [Zásady ukládání do mezipaměti][Caching policies] v článku [Zásady API managementu][API Management policy reference].
 * Informace o ukládání položek do mezipaměti podle klíče pomocí výrazů zásad najdete v článku [Vlastní ukládání do mezipaměti ve službě Azure API Management](api-management-sample-cache-by-key.md).
 

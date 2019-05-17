@@ -7,19 +7,19 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507845"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790384"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
+# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na virtuálních jádrech
 
 Tento článek obsahuje podrobné prostředků limity pro izolované databáze Azure SQL Database pomocí nákupní model založený na virtuálních jádrech.
 
@@ -129,7 +129,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 
 ### <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
-[Bez serveru výpočetní vrstva](sql-database-serverless.md) je ve verzi public preview a je pouze pro izolované databáze pomocí vCore zakoupení model.
+[Bez serveru výpočetní vrstva](sql-database-serverless.md) je ve verzi preview a je pouze pro izolované databáze pomocí vCore zakoupení model.
 
 #### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
 

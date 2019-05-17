@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 135b5719422d1b28a82ac2eda06f76d6dd746800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60339237"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Kurz: Integrace Azure Active Directory s TINFOIL SECURITY
 
@@ -111,7 +111,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TINFOIL SECURITY, proveďte
 
 6. Kromě toho výše aplikace TINFOIL SECURITY očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ------------------- | -------------|
     | ID účtu | UXXXXXXXXXXXXX |
 
@@ -243,7 +243,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit k TINFOIL SECURITY,
 > Další nástroje pro tvorbu účtu TINFOIL SECURITY uživatele nebo rozhraní API poskytovaných TINFOIL SECURITY můžete použít ke zřízení uživatelských účtů služby Azure AD.
 > 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

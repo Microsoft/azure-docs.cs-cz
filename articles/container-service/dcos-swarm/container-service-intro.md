@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 957725d40c66ffe9d8d7ce1362279c2bb4d4fded
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512467"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788741"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(NEPOUŽÍVANÉ) Úvod do řešení pomocí služby Azure Container Service pro hostování kontejnerů Docker 
 
@@ -45,7 +45,7 @@ DC/OS je distribuovaný operační systém založený na jádru distribuovaných
 Systém DC/OS a Apache Mesos zahrnují rozsáhlou nabídku funkcí:
 
 * Ověřená škálovatelnost
-* Replikované nadřízené a podřízené servery odolné proti chybám s použitím Apache ZooKeeper
+* Odolné proti chybám replikované primární a sekundární databáze pomocí Apache ZooKeeper
 * Podpora kontejnerů ve formátu Dockeru
 * Nativní izolace mezi úkoly s kontejnery Linuxu
 * Plánování s více prostředky (paměť, procesor, disk a porty)

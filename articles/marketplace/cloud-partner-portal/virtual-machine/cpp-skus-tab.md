@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e8148e3a26a236039736dede5a7fbc79075731ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938125"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799947"
 ---
 # <a name="virtual-machine-skus-tab"></a>Karta skladové položky virtuálních počítačů
 
@@ -55,7 +55,7 @@ Následující tabulka popisuje účel, obsah a formátování z těchto polí. 
 | **Řada operačních systémů\*** | Označuje, jestli řešení virtuálních počítačů založené na Windows nebo Linuxu. |
 | **Vyberte typ operačního systému** | Konkrétní dodavatele nebo verzi zadaný operační systém. |
 | **Popisný název OS\*** | Název operačního systému, který se má zobrazit pro zákazníky.  |
-| **Doporučené velikosti virtuálních počítačů\*** | Umožňuje výběr až šest doporučené velikosti virtuálních počítačů ze seznamu standardizované.  Přestože tato doporučení jsou viditelném umístění pro potenciální zákazníky, jsou zadat jakoukoli velikost virtuálního počítače, který je kompatibilní s touto imagí řešení. | 
+| **Doporučené velikosti virtuálních počítačů\*** | Umožňuje výběr až šest doporučené velikosti virtuálních počítačů ze seznamu standardizované.  Tento seznam se předají na webu Azure portal a tržišť s řešeními Microsoftu.  První velikost virtuálního počítače v tomto seznamu, který je platný (u tohoto předplatného zákazníka, oblasti, zóny atd.) je nastavena jako výchozí pro tohoto potenciálního zákazníka.  Uživatel může změnit velikost na libovolné kompatibilní s touto imagí řešení. | 
 | **Otevření portů**| Porty otevřete a protokol pro podporu pro danou skladovou jednotku.  Tyto konfigurace se musí shodovat virtuální sítě, které jste nakonfigurovali pro síť virtuálních počítačů řešení. Tato nastavení vstoupí během nasazení virtuálního počítače. Však nastavení portu můžete změnit po publikování SKU. Další informace najdete v tématu [postup otevření portů k virtuálnímu počítači pomocí webu Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Následující výchozí mapování sítě se přidají ke všem virtuálním počítačům. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP; &emsp; Linux: 22 -> 22, TCP (SSH). |
 | **Disková verze**  | Související řešení virtuálních počítačů, určené číslo verze disku a adresa URL disku. Verze disku musí být v [sémantickou verzi](https://semver.org/) formátu: `<major>.<minor>.<patch>`.  Adresa URL je sdílený přístupový podpis, který vytvořit identifikátor URI pro operační systém virtuálního pevného disku.  I když můžete přidat až 8 diskových verzí na SKU, pouze nejvyšší verze číslo disku SKU se zobrazí na webu Azure Marketplace. Jiné verze budou zobrazeny pouze prostřednictvím rozhraní API.  <!--TD: Add more specific link to API --> <br/> **Nový datový disk** ovládacího prvku accordion oddíl umožňuje vám připojit až 15 datových disků k virtuálnímu počítači.  Jakmile publikujete SKU s danou verzí virtuálních počítačů a přidružených datových disků, tuto konfiguraci nelze upravit.  Pokud pro danou skladovou jednotku nechejte se přidat další verze virtuálního počítače, musí taky podporovat stejný počet datových disků. <br/> Pokud jste ještě nevytvořili vaší Image virtuálního počítače založené na Azure, můžete přidat později aktualizovat toto pole.  Informace o vytváření přidružený prostředek virtuálního počítače najdete v části [technických prostředků vytvořit virtuální počítač](./cpp-create-technical-assets.md).  
 |  |  |

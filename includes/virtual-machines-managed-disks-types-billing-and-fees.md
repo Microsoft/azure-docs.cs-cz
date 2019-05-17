@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 42ab8be45d4086589f0793531003700e7552a440
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 268467796e67caf2d20fedb44d83fd455a09b83e
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744013"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538408"
 ---
 **Přenosy odchozích dat**: [Přenosy odchozích dat](https://azure.microsoft.com/pricing/details/bandwidth/) (data odcházející z Datacenter Azure) jsou zpoplatněné využití šířky pásma.
 
-**Transakce**: Počet transakcí, které provedete na standardní spravovaný disk vám budeme fakturovat. Pro standardní jednotky SSD velikost jednotky vstupně-výstupních operací 256 KiB slouží pro účetní oddělení počtu transakcí. Větší velikosti vstupně-výstupní operace se počítají jako více vstupně-výstupních operací, o velikosti 256 KiB. Standardní pevné disky se nepovažuje za každé vstupně-výstupní operace, jako jedna transakce, bez ohledu na velikost vstupně-výstupních operací.
+**Transakce**: Počet transakcí, které provedete na standardní spravovaný disk vám budeme fakturovat. Pro standardní jednotky SSD každý vstupně-výstupní operace menší než nebo rovna až 256 KiB propustnosti se považuje za jednu vstupně-výstupní operace. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více vstupně-výstupních operací, o velikosti 256 KiB. Standardní pevné disky se nepovažuje za každé vstupně-výstupní operace, jako jedna transakce, bez ohledu na velikost vstupně-výstupních operací.
 
 Podrobné informace o cenách pro službu Managed Disks, včetně náklady za transakce, naleznete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: a103526ef63c02913862510c01e9fde6570d89c0
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2392d0ef9d6257b93b76f13a5354eeba57d78ddd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515441"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800279"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>Migrace aplikací Java enterprise edition (EE) do Azure
 Tento článek vás provede procesem migraci stávajících úloh na platformě Java EE určený k Azure:
@@ -67,7 +67,7 @@ Ukázkové aplikace WildFly/JBoss provedeme migraci do Azure. Tyto aplikace pou�
 Po dokončení migrace je potřeba spustit aplikace pomocí Azure Service Bus.
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud chcete nasadit webové aplikace v Javě do Azure, potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet Azure]((https://azure.microsoft.com/pricing/free-trial/)).
+Pokud chcete nasadit webové aplikace v Javě do Azure, potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/en-us/free/).
 
 Kromě toho budete potřebovat následující:
 
@@ -936,7 +936,7 @@ Picked up _JAVA_OPTIONS: -Djava.net.preferIPv4Stack=true
 
 Další informace najdete: 
  
- - [Nasazení adaptéru RA obecný JMS v JBoss/WildFly](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+ - [Nasazení adaptéru RA obecný JMS v JBoss/WildFly](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
  - [Průvodce JBoss/WildFly rozhraní příkazového řádku](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
  - [Otevřete relaci SSH z vývojového počítače do App Service pro Linux](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)
 

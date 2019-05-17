@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 028c7f5d42587a6b2129bba07831b0e799d607f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: HT
+ms.openlocfilehash: f9be13ac22e6eda32668d635032ebcccf417b6c7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544217"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785208"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -192,7 +192,7 @@ Důvodem je, že rozhraní API Resource Manageru v jeho deklarace identity cílo
 Logikou používanou službou Azure AD je následující:
 - Pro koncový bod ADAL (verze 1.0) verze 1.0 přístupového tokenu (jediné možné), aud = prostředků
 - Pro požadující přístupového tokenu prostředku přijímat tokeny v2.0, aud MSAL (koncový bod verze 2.0) = prostředků. ID aplikace
-- Azure AD pro MSAL (koncový bod verze 2.0) s dotazem přístupového tokenu pro určitý prostředek, který přijímá token přístupu verze 1.0 (což se v případě výše), analyzuje požadovanou cílovou skupinu z požadovaného oboru převzetím všechno dřív než poslední lomítko a používat jej jako identifikátor prostředku. Proto pokud https://database.windows.net očekává, že cílovou skupinou "https://database.windows.net/", budete muset požádat o oboru https://database.windows.net//.default. Viz také vystavovat #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Adresa url prostředku koncového lomítka vynecháte, která způsobila chybu při ověřování sql #747
+- Azure AD pro MSAL (koncový bod verze 2.0) s dotazem přístupového tokenu pro určitý prostředek, který přijímá token přístupu verze 1.0 (což se v případě výše), analyzuje požadovanou cílovou skupinu z požadovaného oboru převzetím všechno dřív než poslední lomítko a používat jej jako identifikátor prostředku. Proto pokud https:\//database.windows.net očekává, že cílovou skupinou "https://database.windows.net/", budete muset požádat o rozsah protokolu HTTPS:\//database.windows.net//.default. Viz také vystavovat #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Adresa url prostředku koncového lomítka vynecháte, která způsobila chybu při ověřování sql #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Obory požádáte o přístup k všechna oprávnění aplikace v1.0

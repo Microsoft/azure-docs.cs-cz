@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 1ea645ee53f91a62bd49fb1da0d44e2962708b88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402764"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800262"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota TTL)
 
@@ -35,6 +35,11 @@ Zatímco zprávy je pod správou zámku, aplikace může být ve vlastnictví zp
 ## <a name="entity-level-expiration"></a>Vypršení platnosti úrovni entity
 
 Všechny zprávy odeslané do fronty nebo tématu se vztahují výchozí vypršení platnosti, který je nastaven na entitu úroveň díky [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) vlastnost a která lze také nastavit na portálu během vytváření a upravit později. Výchozí vypršení platnosti se používá pro všechny zprávy odeslané do entity kde [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) není explicitně nastavena. Vypršení platnosti výchozí slouží taky jako horní mez pro **TimeToLive** hodnotu. Zprávy, které mají delší **TimeToLive** vypršení platnosti, než je výchozí hodnota tiše upraveny tak, aby **defaultMessageTimeToLive** hodnotu před zařazených do fronty.
+
+> [!NOTE]
+> Výchozí hodnota [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) hodnota zprostředkované zprávy není [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) Pokud není uvedeno jinak.
+>
+> Pro zasílání zpráv entit (fronty a témata), je výchozí doba vypršení platnosti také [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) pro Service Bus úrovně standard a premium.  Pro úroveň basic je výchozí doba vypršení platnosti 14 dní.
 
 Zprávy s vypršenou platností můžete volitelně můžete přesunout do [fronty nedoručených zpráv](service-bus-dead-letter-queues.md) nastavením [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) vlastnost nebo zaškrtnutím příslušného políčka na portálu. Pokud je možnost zakázáno, se zahodí zprávy s vypršenou platností. Zprávy s vypršenou platností přesunout do fronty nedoručených zpráv dají rozlišovat od jiných dead lettered zpráv podle hodnocení [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) vlastnost, která ukládá zprostředkovatele v části Vlastnosti uživatele; hodnota je [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) v tomto případě.
 
@@ -69,7 +74,7 @@ Tady je co považována za nečinnost přechodu entit (fronty, témata a odběry
     - Žádné odešle  
     - Žádné aktualizace do tématu  
     - Žádné plánované zprávy 
-- Předplatná
+- Subscriptions
     - Ne obdrží  
     - Žádné aktualizace k předplatnému  
     - Žádná nová pravidla k předplatnému  

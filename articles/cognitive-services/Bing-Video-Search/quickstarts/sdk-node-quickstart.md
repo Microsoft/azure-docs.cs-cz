@@ -3,19 +3,19 @@ title: 'Rychlý start: Hledání videí pomocí Bingu Video Search SDK pro Node.
 titleSuffix: Azure Cognitive Services
 description: Použít tento rychlý start k odesílání požadavků pro vyhledávání videí pomocí Bingu videa hledání SDK pro Node.js
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: ffd03a900ec304a930dfc64e7860e28e0374da55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: f00f4c90d529e95aa495f68802f4da9a097d3b2b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824333"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798008"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Rychlý start: Vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Node.js
 

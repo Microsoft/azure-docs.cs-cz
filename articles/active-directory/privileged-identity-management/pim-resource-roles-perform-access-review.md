@@ -16,12 +16,12 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e49f0077444f86eabeed22cc7cecf5e0ac7f8b5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ede412292caf682c3078002d23e1956bd68d1378
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141191"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602186"
 ---
 # <a name="review-access-to-azure-resource-roles-in-pim"></a>Kontrola přístupu pro role prostředků Azure v PIM
 Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) zjednodušuje, jak podniky správy privilegovaného přístupu k prostředkům v Azure. 
@@ -45,12 +45,12 @@ Postupujte podle těchto kroků můžete najít a dokončení kontroly přístup
 1. Přejděte do aplikace Azure AD PIM.
 2. Vyberte **kontrolovat přístup** okno.
 
-   ![PIM – snímek obrazovky aplikace s vybrané okna kontroly přístupu](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+   ![PIM – snímek obrazovky aplikace s vybrané okna kontroly přístupu](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 3. Vyberte revizi, kterou chcete provést. 
 4. Zvolte buď **schválit** nebo **Odepřít**. V **poskytují pole důvod**, možná budete muset zahrnout důvod svého rozhodnutí.
 
-   ![Přezkoumání snímku obrazovky podrobností stránky](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![Přezkoumání snímku obrazovky podrobností stránky](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>Další postup
 
