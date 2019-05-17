@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 55fb08be6570271d5a4ad76d47bedf3e2917fc2e
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
-ms.translationtype: HT
+ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65552028"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827322"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
@@ -153,7 +153,7 @@ Tady je postup instalace Onedrivu v režimu na počítač:
 6. Spuštěním tohoto příkazu ke konfiguraci služby OneDrive pro spuštění při přihlášení pro všechny uživatele:
 
     ```batch
-    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
+    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. Povolit **tiše konfigurace uživatelského účtu** spuštěním následujícího příkazu.
