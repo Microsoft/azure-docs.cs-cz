@@ -89,6 +89,8 @@
               href: howto-export-data-event-hubs-service-bus.md
             - name: Export do Blob Storage
               href: howto-export-data-blob-storage.md
+        - name: Vytvoření vlastních rolí
+          href: howto-create-custom-rules.md
         - name: Vizualizace dat v Power BI
           href: howto-connect-powerbi.md
         - name: Připojení dalších cloudů IoT

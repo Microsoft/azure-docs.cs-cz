@@ -463,3 +463,25 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Získání podpory
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: Portál pro komerční marketplace v partnerském centru
+  items:
+    - name: Přehled
+      items:
+        - name: Co je komerční marketplace?
+          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Správa účtů
+      items:
+        - name: Vytvoření nového účtu v partnerském centru
+          href: ./partner-center-portal/create-account.md
+        - name: Správa účtu v partnerském centru
+          href: ./partner-center-portal/manage-account.md
+        - name: Vyhledání nebo vytvoření pracovního účtu společnosti
+          href: ./partner-center-portal/company-work-accounts.md
+    - name: Vytvoření nové nabídky
+      items:
+        - name: Vytvoření nabídky SaaS
+          href: ./partner-center-portal/create-new-saas-offer.md
+    - name: Stav publikování
+      href: ./partner-center-portal/publishing-status.md
+    - name: Aktualizace stávajících nabídek
+      href: ./partner-center-portal/update-existing-offer.md

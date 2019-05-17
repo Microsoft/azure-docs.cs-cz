@@ -187,6 +187,8 @@
               href: delete-vault.md
     - name: Zotavení po havárii VMware do Azure
       items:
+        - name: Nastavení zotavení po havárii ve velkém měřítku
+          href: vmware-physical-large-deployment.md
         - name: Nastavení síťových služeb
           items:
             - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure
@@ -269,6 +271,8 @@
               href: delete-vault.md
     - name: Zotavení po havárii fyzických prostředků do Azure
       items:
+        - name: Nastavení zotavení po havárii ve velkém měřítku
+          href: vmware-physical-large-deployment.md
         - name: Nastavení síťových služeb
           items:
             - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure

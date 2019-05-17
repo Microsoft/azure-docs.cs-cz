@@ -167,6 +167,8 @@
           href: application-provisioning-config-problem.md
         - name: Potíže při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů – aplikace v galerii
           href: application-provisioning-config-problem-storage-limit.md
+        - name: Synchronizace atributu pro mapování – aplikace v galerii
+          href: user-provisioning-sync-attributes-for-mapping.md
         - name: Uživatelé nejsou zřízení – aplikace v galerii
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: Zřízení nesprávných uživatelů – aplikace v galerii

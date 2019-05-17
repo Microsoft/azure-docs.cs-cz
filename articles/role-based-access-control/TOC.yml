@@ -17,6 +17,9 @@
       href: quickstart-assign-role-user-portal.md
     - name: Udělení přístupu pro uživatele – PowerShell
       href: tutorial-role-assignments-user-powershell.md
+    - name: Udělení přístupu pro uživatele – šablona Resource Manageru
+      displayName: 'ARM, resource manager template'
+      href: tutorial-role-assignments-user-template.md
     - name: Udělení přístupu pro skupinu – PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: Vytvoření vlastní role – PowerShell
@@ -88,6 +91,7 @@
     - name: REST API
       href: /rest/api/authorization/
     - name: Šablony Resource Manageru
+      displayName: ARM
       items:
         - name: Přiřazení rolí
           href: /azure/templates/microsoft.authorization/roleassignments

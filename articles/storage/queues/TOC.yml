@@ -195,7 +195,7 @@
         - name: 'Objekty blob, tabulky, fronty a soubory'
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: Přesuny dat
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
+          href: /dotnet/api/microsoft.azure.storage.datamovement
         - name: Resource Manager
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java
@@ -257,21 +257,21 @@
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Balíčky NuGet
       items:
-        - name: Klientská knihovna pro úložiště Azure pro .NET
-          href: 'https://www.nuget.org/packages/WindowsAzure.Storage/'
-        - name: Knihovna pro přesun dat v Azure Storage
+        - name: Společná klientská knihovna Azure Storage
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+        - name: Klientská knihovna Azure Queue Storage
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/'
+        - name: Klientská knihovna Azure Storage pro přesun dat
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
         - name: Azure Configuration Manager
-          href: 'https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/'
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
     - name: Zdrojový kód
       items:
         - name: .NET
           items:
-            - name: 'Objekty blob, fronty, tabulky a soubory'
+            - name: 'Objekty blob, fronty a soubory'
               href: 'https://github.com/Azure/azure-storage-net'
-            - name: Přesuny dat
-              href: 'https://github.com/Azure/azure-storage-net-data-movement'
-            - name: Poskytovatel prostředků
+            - name: Poskytovatel prostředků úložiště
               href: 'https://github.com/Azure/azure-sdk-for-net'
         - name: Node.js
           href: 'https://azure.github.io/azure-storage-node/'

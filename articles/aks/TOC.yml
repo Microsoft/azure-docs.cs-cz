@@ -187,7 +187,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
           href: update-credentials.md
-        - name: Omezení a řízení výchozí přenosu clusteru
+        - name: Omezení a řízení výchozího přenosu clusteru (Preview)
           href: limit-egress-traffic.md
         - name: Povolení integrace Azure Active Directory
           items:

@@ -25,6 +25,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Pokyny pro plánování sítě Azure NetApp Files
       href: azure-netapp-files-network-topologies.md
+    - name: Nejčastější dotazy k Azure NetApp Files
+      href: azure-netapp-files-faqs.md
 - name: Návody
   items:
     - name: Registrace pro Azure NetApp Files

@@ -67,8 +67,10 @@
           href: data-box-edge-deploy-connect-setup-activate.md
         - name: 4. Přidání a připojení
           href: data-box-edge-deploy-add-shares.md
-        - name: 5. Konfigurace výpočetních funkcí
+        - name: 5A. Konfigurace výpočetních funkcí (jednoduchá)
           href: data-box-edge-deploy-configure-compute.md
+        - name: 5B. Konfigurace výpočetních funkcí (pokročilá)
+          href: data-box-edge-deploy-configure-compute-advanced.md
     - name: Koncepty
       items:
         - name: Kontrola požadavků

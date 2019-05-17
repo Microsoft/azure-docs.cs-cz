@@ -368,7 +368,7 @@
   items:
     - name: Přehled
       href: sql-database-howto.md
-    - name: Izolovaná databáze
+    - name: Izolované databáze a elastické fondy
       items:
         - name: Přehled
           href: sql-database-howto-single-database.md
@@ -448,7 +448,7 @@
               href: elastic-jobs-tsql.md
             - name: Migrace (z původních elastických úloh)
               href: elastic-jobs-migrate.md
-    - name: Spravovaná instance
+    - name: Spravované instance
       items:
         - name: Přehled
           href: sql-database-howto-managed-instance.md
@@ -720,6 +720,10 @@
       href: sql-database-glossary-terms.md
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-sql-database
+    - name: Blog o SQL Serveru
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Blog o Microsoft Azure
+      href: 'https://azure.microsoft.com/blog/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Veřejné datové sady

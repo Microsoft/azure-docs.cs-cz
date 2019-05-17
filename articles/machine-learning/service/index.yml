@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 05/06/2019
+  ms.date: 05/14/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -36,6 +36,7 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
           - html: <a href="quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
+          - html: <a href="ui-quickstart-run-experiment">Příprava a vizualizace dat bez psaní kódu</a> ve vizuálním rozhraní
   - title: Podrobné kurzy
     items:
       - type: paragraph
@@ -45,6 +46,7 @@ sections:
         items:
           - html: <a href="tutorial-train-models-with-aml">Trénování</a> a <a href="tutorial-deploy-models-with-aml">nasazování</a> modelů klasifikace obrázků (<b>dvoudílná série</b>)
           - html: <a href="tutorial-data-prep">Příprava dat</a> a <a href="tutorial-auto-train-models">použití automatizovaného strojového učení</a> k trénování a vyladění regresních modelů (<b>dvoudílná série</b>)
+          - html: <a href="ui-tutorial-automobile-price-train-score">Predikce cen automobilů</a> s využitím vizuálního rozhraní a <a href="ui-tutorial-automobile-price-deploy">nasazení</a> regresního modelu
   - title: Ukázky
     items:
       - type: paragraph

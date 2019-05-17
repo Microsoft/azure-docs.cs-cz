@@ -7,7 +7,7 @@ metadata:
   description: 'Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.'
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 12/04/2018
+  ms.date: 5/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na
@@ -34,20 +34,28 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
           - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
+          - html: <a href="service/ui-quickstart-run-experiment">Spuštění experimentu ve vizuálním prostředí</a> (bez kódu)
         style: unordered
         type: list
-      - text: '<b>Kurz klasifikace dat s využitím dat MNIST:</b>'
+      - text: '<b>Kurz: Klasifikace obrázků dat MNIST s využitím SDK:</b>'
         type: paragraph
       - items:
           - html: 'Část 1: <a href="service/tutorial-train-models-with-aml">Trénování vlastního modelu</a>'
           - html: 'Část 2: <a href="service/tutorial-deploy-models-with-aml">Nasazení tohoto modelu</a>'
         style: unordered
         type: list
-      - text: '<b>Kurz modelování regrese s využitím dat newyorské taxislužby:</b>'
+      - text: '<b>Kurz: Predikce ceny jízdy taxíkem s využitím SDK:</b>'
         type: paragraph
       - items:
           - html: 'Část 1: <a href="service/tutorial-data-prep">Příprava dat pro modelování</a>'
           - html: 'Část 2: <a href="service/tutorial-auto-train-models">Automatické trénování modelů ML</a>'
+        style: unordered
+        type: list
+      - text: '<b>Kurz: Predikce ceny automobilu s využitím vizuálního rozhraní:</b>'
+        type: paragraph
+      - items:
+          - html: 'Část 1: <a href="service/ui-tutorial-automobile-price-train-score">Predikce ceny automobilů</a>'
+          - html: 'Část 2: <a href="service/ui-tutorial-automobile-price-deploy">Nasazení regresního modelu</a>'
         style: unordered
         type: list
       - text: '<b>Využívání vašich modelů:</b>'

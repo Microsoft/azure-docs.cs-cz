@@ -14,6 +14,8 @@
       href: create-host-pools-azure-marketplace.md
     - name: 4. Správa skupin aplikací
       href: manage-app-groups.md
+    - name: 5. Vytvoření fondu hostitelů pro ověření aktualizací služeb
+      href: create-validation-host-pool.md
 - name: Postupy
   items:
     - name: Připojení k prostředkům Windows Virtual Desktop

@@ -50,6 +50,8 @@
       href: app-protection-based-conditional-access.md
     - name: Vyžadování spravovaných zařízení
       href: require-managed-devices.md
+    - name: Vyžadování důvěryhodných sítí pro registraci MFA
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí
       href: untrusted-networks.md
     - name: Vyžadování podmínek použití
