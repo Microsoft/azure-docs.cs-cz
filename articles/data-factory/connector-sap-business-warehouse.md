@@ -63,9 +63,9 @@ Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následují
 | type | Vlastnost type musí být nastavená na: **SapBw** | Ano |
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému systému SAP BW.<br/>Povolené hodnoty: dvě číslice desetinné číslo reprezentované jako řetězec. | Ano |
-| ID klienta | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: tři číslice desetinné číslo reprezentované jako řetězec. | Ano |
-| uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: tři číslice desetinné číslo reprezentované jako řetězec. | Ano |
+| userName jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| password | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**
@@ -184,8 +184,8 @@ Kopírování dat ze SAP BW, se používají následující mapování z datový
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| JEDNOTKA | String |
-| DAT | String |
+| UNIT | String |
+| DATS | String |
 | NUMC | String |
 | TIMS | String |
 
