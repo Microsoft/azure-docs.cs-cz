@@ -56,7 +56,7 @@ Pro SAP ECC propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **SapEcc** | Ano |
 | url | Adresa url služby SAP ECC OData. | Ano |
-| uživatelské jméno | Uživatelské jméno pro připojení k SAP ECC. | Ne |
+| username | Uživatelské jméno pro připojení k SAP ECC. | Ne |
 | password | Heslo jako prostý text pro připojení k SAP ECC. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
