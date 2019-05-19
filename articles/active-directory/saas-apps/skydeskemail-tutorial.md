@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e0c2dc6c370e697f896e24e7d56c6eb8900601a9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Kurz: Integrace Azure Active Directory s SkyDesk e-mailu
 
@@ -231,7 +231,7 @@ Klikněte na **přístup uživatelů** z levé strany panelu SkyDesk e-mailem a 
 > [!NOTE]
 > Pokud je potřeba vytvořit uživatele hromadné, budete muset požádat [tým podpory SkyDesk e-mailovém klientovi](https://www.skydesk.jp/apps/support/).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 83a5d4c1d9c0475609a506fbfe6ae23bd9e236fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262648"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Kurz: Integrace Azure Active Directory s Versal odkazů
 
@@ -188,7 +188,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v Versal odkazů. Postupujte podle [vytváření SAML testovací uživatele](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) podpora průvodce pro vytvoření uživatele Britta Simon v rámci vaší organizace. Uživatelé musí vytvořit a aktivovat v Versal odkazů, než použití jednotného přihlašování. 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí verzál kurzu vložené na vašem webu.
 Podrobnosti najdete [vkládání organizační kurzy](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML jednotného přihlašování** podpora příručka pokyny o tom, jak díky podpoře pro Azure AD pro vložení verzál kurzu jednotného přihlašování. 

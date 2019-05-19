@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 0879f9026276eb7149ae44906377a7b369e05116
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267068"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Kurz: Integrace Azure Active Directory s Vodeclic
 
@@ -193,7 +193,7 @@ V této části vytvoříte uživatele v Vodeclic jako Britta Simon. Práce s [
 > [!NOTE]
 > Podle požadavků aplikací můžete potřebovat získat seznam povolených adres vašeho počítače. Pro, které se provedou, budete chtít sdílet svou veřejnou IP adresu s [tým podpory Vodeclic](mailto:hotline@vodeclic.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

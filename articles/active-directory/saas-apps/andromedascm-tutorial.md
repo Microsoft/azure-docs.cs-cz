@@ -17,11 +17,11 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d60ecfff4e634d6a92eaf1022761c2f23167918
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Kurz: Integrace Azure Active Directory s Andromeda
 
@@ -129,7 +129,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Andromeda, proveďte násle
 
 7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------ | -----------|
     | role        | Konkrétní role aplikace |
     | type        | Typ aplikace |
@@ -260,7 +260,7 @@ V této části je povolit Britta Simon k udělení přístupu k Andromeda použ
 
 V této části se vytvoří uživateli Britta Simon v Andromeda. Andromeda podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Andromeda, vytvoří se nový po ověření. Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Andromeda klienta](https://www.ngcsoftware.com/support/).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

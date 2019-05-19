@@ -16,11 +16,11 @@ ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c19dae4af1007d8444097db06bded51d714e74ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>Kurz: Integrace Azure Active Directory s Schoox
 
@@ -189,7 +189,7 @@ V této části je povolit Britta Simon k udělení přístupu k Schoox použit�
 
 V této části vytvoříte uživatele v Schoox jako Britta Simon. Práce s [tým podpory Schoox](https://www.schoox.com/help/) přidat uživatele na platformě Schoox. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

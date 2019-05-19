@@ -289,7 +289,7 @@
             - name: Použití Azure Powershell
               href: ../hdinsight-administer-use-powershell.md
               maintainContext: true
-            - name: Použití Azure Classic CLI
+            - name: Použití Azure CLI
               href: ../hdinsight-administer-use-command-line.md
               maintainContext: true
         - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari

@@ -16,11 +16,11 @@ ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852540"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65868111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Kurz: Integrace Azure Active Directory s využitím cloudové platformy SAP
 
@@ -215,7 +215,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s využitím cloudové platfo
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |jméno |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |Příjmení |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |email |
    
      >[!NOTE]
      >Konfigurace atributů závisí na tom, jak tyto aplikace na spojovací bod služby jsou vyvíjeny, to znamená, atributy, které očekávají odpověď SAML a v rámci které název (atribut instanční objekt) přistupují tento atribut v kódu.
@@ -308,7 +308,7 @@ Chcete-li povolit Azure AD uživatelům přihlášení do cloudové platformy SA
 
     e. Klikněte na **Uložit**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

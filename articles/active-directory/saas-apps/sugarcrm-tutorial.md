@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dea1dcd2f6ecef580d65a95d1227380901213eb
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565493"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>Kurz: Integrace Azure Active Directory s Sugar CRM
 
@@ -247,7 +247,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit k Sugar CRM, musí 
 > [!NOTE]
 > Můžete použít jakékoli jiné Sugar CRM uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Sugar CRM uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

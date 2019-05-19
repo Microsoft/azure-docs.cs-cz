@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 6f742def0441b5ae18ad9da3a8ac9d280de8f824
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Kurz: Integrace Azure Active Directory s SignalFx
 
@@ -246,7 +246,7 @@ Když se uživatel přihlásí SignalFx ze SAML SSO poprvé, [tým podpory Signa
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [SignalFx tým podpory](mailto:kmazzola@signalfx.com)
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

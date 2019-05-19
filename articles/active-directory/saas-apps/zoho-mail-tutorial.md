@@ -16,11 +16,11 @@ ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Kurz: Integrace Azure Active Directory s Zoho
 
@@ -237,7 +237,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do e-mailu Zoho, musí b�
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail s odkazem pro potvrzení účtu, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

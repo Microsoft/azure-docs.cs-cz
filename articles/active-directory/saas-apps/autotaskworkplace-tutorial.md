@@ -16,11 +16,11 @@ ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00e838dd3df417bd0b26167d5f316225520e7263
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889586"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Kurz: Integrace Azure Active Directory s Autotask pracoviště
 
@@ -215,7 +215,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v síti na pracovišti Autotask jako Britta Simon. Prosím práci s [tým podpory Autotask pracoviště](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) k přidání uživatelů v síti na pracovišti Autotask platformy.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

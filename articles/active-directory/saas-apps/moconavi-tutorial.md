@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2a96364d486ed6c0db2762256798ac56afa69a78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65871589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Kurz: Integrace Azure Active Directory s moconavi
 
@@ -186,7 +186,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v moconavi jako Britta Simon. Práce s [tým podpory moconavi](mailto:support@recomot.co.jp) přidat uživatele na platformě moconavi. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 1. Nainstalujte moconavi z Microsoft storu.
 

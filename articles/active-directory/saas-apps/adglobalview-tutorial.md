@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d0bb43f1dad775594e3c3229bc5d69528f055144
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877543"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Kurz: Integrace Azure Active Directory s ADP Globalview
 
@@ -125,8 +125,8 @@ Ke konfiguraci Azure AD jednotné přihlašování s ADP Globalview, proveďte n
     | Název  |  Zdrojový atribut|
     | ---------------| --------- |
     | personalimmutableid | user.extensionattribute2 |
-    | e-mail               | user.mail |
-    | ID uživatele              | user.userprincipalname|
+    | email               | user.mail |
+    | userid              | user.userprincipalname|
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -223,7 +223,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v ADP Globalview jako Britta Simon. Práce s [tým podpory ADP Globalview](https://www.adp.com/contact-us/overview.aspx) přidat uživatele na platformě ADP Globalview. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

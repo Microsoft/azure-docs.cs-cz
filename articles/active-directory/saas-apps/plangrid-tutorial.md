@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: b922e048b2787eedfc0bfc40e553e79f433277dc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>Kurz: Integrace Azure Active Directory s PlanGrid
 
@@ -186,7 +186,7 @@ V této části je povolit Britta Simon k udělení přístupu k PlanGrid použi
 
 V této části vytvoříte uživatele v PlanGrid jako Britta Simon. Práce s [tým podpory PlanGrid](mailto:help@plangrid.com) přidat uživatele na platformě PlanGrid. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

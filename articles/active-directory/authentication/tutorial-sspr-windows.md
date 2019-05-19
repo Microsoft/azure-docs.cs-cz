@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357417"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861535"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
-V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obrazovky Windows 10. V nové aktualizaci Windows 10 z dubna 2018 se uživatelům se zařízeními **připojenými k Azure AD** nebo **k hybridní službě Azure AD** zobrazí na přihlašovací obrazovce odkaz pro resetování hesla. Když uživatelé na tento odkaz kliknou, přesměruje je to do stejného prostředí pro samoobslužné resetování hesla, které už znají.
+V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obrazovky Windows 10. V nové aktualizaci Windows 10 z dubna 2018 se uživatelům se zařízeními **připojenými k Azure AD** nebo **k hybridní službě Azure AD** zobrazí na přihlašovací obrazovce odkaz pro resetování hesla. Když uživatelé na tento odkaz kliknou, přesměruje je to do stejného prostředí pro samoobslužné resetování hesla, které už znají. Pokud je uživatel uzamčen tohoto procesu není odemknout účty v místní službě Active Directory.
 
 > [!div class="checklist"]
 > * Konfigurace odkazu na resetování hesla pomocí Intune
@@ -60,7 +60,7 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
       * Jako **Hodnota** nastavte **1**.
       * Klikněte na tlačítko **OK**.
    * Klikněte na tlačítko **OK**.
-4. Klikněte na **Vytvořit**
+4. Klikněte na **Vytvořit**.
 
 ### <a name="assign-a-device-configuration-policy-in-intune"></a>Přiřazení zásad konfigurace zařízení v Intune
 
@@ -71,7 +71,7 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
 3. Zadejte název skupiny a v části **Typ členství** zvolte **Přiřazený**.
    * V části **Členové** zvolte zařízení s Windows 10 připojená k Azure AD, pro která chcete zásady použít.
    * Klikněte na **Vybrat**.
-4. Klikněte na **Vytvořit**
+4. Klikněte na **Vytvořit**.
 
 Další informace o vytváření skupin najdete v článku [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md).
 

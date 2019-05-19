@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 11d0a0a67d1ce5049166cab3d9ca3e4903b6b460
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Kurz: Integrace Azure Active Directory s Teamphoria
 
@@ -229,7 +229,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit k Teamphoria, musí
 
     d. Klikněte na tlačítko **pozvání 1 uživatel**. Uživatel musí přijmout pozvánku pro vytvořené v systému.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

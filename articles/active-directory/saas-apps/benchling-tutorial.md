@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 9b3725f217ef261df7bc8d9821edf972bfe58806
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272377"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benchling"></a>Kurz: Integrace Azure Active Directory s Benchling
 
@@ -130,7 +130,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Benchling, proveďte násle
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.mail |
+    | E-mail | user.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -212,7 +212,7 @@ V této části je povolit Britta Simon k udělení přístupu k Benchling použ
 
 V této části se vytvoří uživateli Britta Simon v Benchling. Benchling podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Benchling, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

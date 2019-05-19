@@ -16,11 +16,11 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b35deab4c4fb20c58e135c0de01a0aa05b1c33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904605"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Kurz: Integrace Azure Active Directory s věrností NetBenefits
 
@@ -197,7 +197,7 @@ V této části vytvořte uživatele Britta Simon v NetBenefits přesnosti. Při
 
 Pro dynamické federace uživatelé se vytvoří JIT zřizování uživatelů. Pomocí JIT na základě zřizování zákazníků muset přidat některé další deklarace identity v Azure AD, jako jsou datum narození uživatele atd. Tyto informace jsou poskytovány vaše přiřazené **portálu Service Manager věrnost klienta** a mají k povolení této dynamické federace pro vaši instanci.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

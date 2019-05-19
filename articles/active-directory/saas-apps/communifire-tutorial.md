@@ -16,11 +16,11 @@ ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb82c3112634163328e08b330083f5b4942798ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880945"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Kurz: Integrace Azure Active Directory s Communifire
 
@@ -206,7 +206,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Communifire. Podporu
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Communifire](mailto:support@axerosolutions.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

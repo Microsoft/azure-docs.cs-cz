@@ -16,11 +16,11 @@ ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ac14168f9f56a727517232e201e581f913d67c90
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862756"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Kurz: Integrace Azure Active Directory s Elium
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Elium, proveďte následuj�
 
     | Název | Zdrojový atribut|
     | ---------------| ----------------|
-    | e-mail   |user.mail |
+    | email   |user.mail |
     | křestní_jméno| user.givenname |
     | Příjmení| user.surname|
     | job_title| user.jobtitle|
@@ -266,7 +266,7 @@ V této části se vytvoří uživateli Britta Simon v Elium. Podporuje Elium **
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Elium](mailto:support@elium.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

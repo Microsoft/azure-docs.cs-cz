@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258942"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Kurz: Integrace Azure Active Directory s systém SD Elements
 
@@ -120,7 +120,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s systém SD Elements, prove�
 
     | Název |  Zdrojový atribut|
     | --- | --- |
-    | e-mail |user.mail |
+    | email |user.mail |
     | jméno |user.givenname |
     | Příjmení |user.surname |
 
@@ -259,7 +259,7 @@ Cílem této části je vytvořte uživatele Britta Simon v systém SD Elements.
 
     e. Klikněte na tlačítko **vytvořit uživatele**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

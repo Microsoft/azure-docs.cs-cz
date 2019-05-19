@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e2bc30a5b856cba5f1fcca254603c35dfd3764d
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Kurz: Integrace Azure Active Directory s Bpm'online
 
@@ -181,7 +181,7 @@ V této části je povolit Britta Simon k udělení přístupu k Bpm'online pou�
 
 V této části vytvoříte uživatele v Bpm'online jako Britta Simon. Práce s [tým podpory Bpm'online](mailto:support@bpmonline.com) přidat uživatele na platformě Bpm'online. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

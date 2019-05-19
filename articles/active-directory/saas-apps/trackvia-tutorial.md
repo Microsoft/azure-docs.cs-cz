@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: a04622d0c35a93d954dcca38859ea3a48a8d5416
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Kurz: Integrace Azure Active Directory s TrackVia
 
@@ -202,7 +202,7 @@ V této části se vytvoří uživateli Britta Simon v TrackVia. TrackVia podpor
 
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory TrackVia](mailto:support@trackvia.com).
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

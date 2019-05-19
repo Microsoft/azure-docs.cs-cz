@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830819"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873039"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření žebříčkové s doplňováním mezipaměti technologie ASP.NET
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * V tomto kurzu bude pokračovat tam, kde jste přestali v [ASP.NET quickstart pro Azure Cache pro Redis](cache-web-app-howto.md). Pokud jste to ještě neudělali, absolvujte nejprve tento rychlý start.
-* Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
     * Vývoj pro ASP.NET a web
     * Vývoj pro Azure
     * Vývoj pro desktopové aplikace .NET pomocí SQL Server Express LocalDB nebo [edice SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express)
@@ -152,11 +152,11 @@ Další informace o tomto balíčku najdete na stránce NuGet pro [EntityFramewo
 
 1. V **Průzkumníku řešení** dvakrát klikněte na soubor **Web.config** a otevřete ho.
 
-    ![Soubor web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
+    ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
 1. Přidejte následující sekci `connectionStrings` do sekce `configuration`. Název připojovacího řetězce se musí shodovat s názvem třídy kontextu databáze v sadě Entity Framework, což je `TeamContext`.
 
-    Tento připojovací řetězec předpokládá, že jste splnili [požadavky](#prerequisites) a nainstalovali jste databázi SQL Server Express LocalDB, která je součástí sady funkcí pro *vývoj desktopových aplikací .NET* instalované spolu se sadou Visual Studio 2017.
+    Tento připojovací řetězec předpokládá, že splňujete [požadavky](#prerequisites) a nainstalovat SQL Server Express LocalDB, který je součástí sady *vývoj desktopových aplikací .NET* úlohy, které jsou nainstalované s Visual Studio 2019.
 
     ```xml
     <connectionStrings>
@@ -584,7 +584,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
 
 1. V **Průzkumníku řešení** rozbalte složku **Zobrazení**, poté složku **Týmy**, a dvakrát klikněte na soubor **Index.cshtml**.
 
-    ![Soubor Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
+    ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
 1. V horní části souboru vyhledejte následující element odstavce:
 
@@ -630,7 +630,7 @@ Kód generování uživatelského rozhraní vygenerovaný jako součást této u
     ```
     Tento řádek zobrazuje hodnotu `ViewBag.Msg` obsahující zprávu o stavu aktuální operace. Hodnota `ViewBag.Msg` se nastaví po kliknutí na některý z odkazů na akce z předchozího kroku.
 
-    ![Zpráva o stavu](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
+    ![Stavová zpráva](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
 
 1. Projekt sestavíte stisknutím klávesy **F6**.
 
@@ -699,7 +699,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
 1. V sadě Visual Studio klikněte pravým tlačítkem na projekt **ContosoTeamStats** a vyberte **Publikovat**.
 
-    ![Publikování](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Publikovat](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. Klikněte na **Publikovat**, aby se použil stejný profil publikování, který jste vytvořili v rychlém startu.
 
@@ -735,7 +735,7 @@ Po dokončení ukázkové aplikace můžete odstranit použité prostředky Azur
 2. Zadejte název vaší skupiny prostředků do textového pole **Filtrování položek...**.
 3. Klikněte na **...** napravo od skupiny prostředků a klikněte na **Odstranit skupinu prostředků**.
 
-    ![Odstranění](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Odstranit](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 

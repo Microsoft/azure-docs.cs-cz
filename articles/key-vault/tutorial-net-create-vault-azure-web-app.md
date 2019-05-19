@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 9a59255097c6cb2a6728a14c3dbe19dbcbb0932a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: c0513733f2bce97d7b45b325df013fb123d6bb78
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236806"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872317"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 
@@ -191,7 +191,7 @@ Můžete se také podívat na toto video:
 
 ## <a name="run-the-web-app"></a>Spuštění webové aplikace
 
-1. V hlavní nabídce sady Visual Studio 2017, vyberte **ladění** > **Start**, s nebo bez ladění. 
+1. V hlavní nabídce Visual Studio 2019, vyberte **ladění** > **Start**, s nebo bez ladění. 
 1. V prohlížeči přejděte **o** stránky.  
     Zobrazí se hodnota tajného klíče **AppSecret**.
 

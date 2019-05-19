@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea17794a5ca57ae0d38d9a90857706cf380cab36
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>Kurz: Integrace Azure Active Directory s Deskradar
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
     | ---------------| --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.userprincipalname |
+    | E-mail | user.userprincipalname |
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -240,7 +240,7 @@ V této části je povolit Britta Simon k udělení přístupu k Deskradar použ
 
 V této části vytvoříte uživatele v Deskradar jako Britta Simon. Práce s [tým podpory Deskradar klienta](mailto:support@deskradar.com) přidat uživatele na platformě Deskradar. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

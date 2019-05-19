@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68457367987305b6926f8f885a226cfcedd23873
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537006"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860320"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Translator Speech aplikace vC#
 
@@ -34,7 +34,7 @@ Soubor řešení sady Visual Studio pro tuto aplikaci je [dostupný na GitHubu](
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro účely tohoto kurzu potřebujete libovolnou edici sady Visual Studio 2017 včetně Community Edition.
+Pro účely tohoto kurzu potřebujete libovolná edice Visual Studio 2019, včetně Community Edition.
 
 Toto řešení sady Visual Studio také vytvoří instalační program pro aplikaci. Kvůli podpoře této funkce potřebujete [WiX Toolset](http://wixtoolset.org/) a rozšíření [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 

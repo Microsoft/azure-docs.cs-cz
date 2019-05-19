@@ -16,11 +16,11 @@ ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec8ffebbbe339e00431f510978f1d3155f1bc4c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885211"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65868562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Kurz: Integrace Azure Active Directory s RedBrick stavu
 
@@ -228,7 +228,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v RedBrick stavu. Práce s [tým podpory RedBrick stavu](https://home.redbrickhealth.com/contact/) přidat uživatele na platformě RedBrick stavu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

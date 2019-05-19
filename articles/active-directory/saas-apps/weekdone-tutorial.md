@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: d067d36ea41f80648fcb06fe3b0e51e4f5b3a1a6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273443"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Kurz: Integrace Azure Active Directory s Weekdone
 
@@ -198,7 +198,7 @@ V této části se vytvoří uživateli Britta Simon v Weekdone. Weekdone podpor
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Weekdone klienta](mailto:hello@weekdone.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79741d9ec71dd7735ef94ef8172921965a9e9df1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863781"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Kurz: Integrace Azure Active Directory s Ceridian Dayforce HCM
 
@@ -137,7 +137,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Ceridian Dayforce HCM, prov
     
     | Název | Zdrojový atribut|
     | ---------| --------- |
-    | jméno  | user.extensionattribute2 |
+    | name  | user.extensionattribute2 |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -230,7 +230,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v Ceridian Dayforce HCM jako Britta Simon. Práce s [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/support) přidat uživatele na platformě Ceridian Dayforce HCM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

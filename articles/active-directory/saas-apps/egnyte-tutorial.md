@@ -16,11 +16,11 @@ ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ff1718211fa298e4daee694795a0b2438033fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65861915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Kurz: Integrace Azure Active Directory s Egnyte
 
@@ -245,7 +245,7 @@ Přihlaste se k Egnyte Azure AD uživatelům umožnit, musí být poskytnuty do 
 >Můžete použít jakékoli jiné Egnyte uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Egnyte uživatelským účtům, zřídit AAD.
 >
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

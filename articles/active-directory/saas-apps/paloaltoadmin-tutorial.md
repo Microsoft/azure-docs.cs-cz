@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f45b0779693433f1b1fad3c5bfd4323eacb9a63b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Kurz: Integrace Azure Active Directory s Palo Alto Networks – uživatelské rozhraní správce
 
@@ -127,7 +127,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Palo Alto Networks - uživa
 
     | Název |  Zdrojový atribut|
     | --- | --- |
-    | uživatelské jméno | user.userprincipalname |
+    | username | user.userprincipalname |
     | adminrole | customadmin |
     | | |
 
@@ -308,7 +308,7 @@ V této části je povolit Britta Simon udělení přístupu k Palo Alto Network
 
 Palo Alto Networks – uživatelské rozhraní správce podporuje zřizování uživatelů just-in-time. Pokud uživatel ještě neexistuje, automaticky vytvoří se v systému po úspěšném ověření. Nemusíte nic dělat z k vytvoření uživatele.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

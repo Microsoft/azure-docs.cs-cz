@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 05/07/2019
-ms.openlocfilehash: e87c5defaa26830d0962527b65affbae734aff55
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
-ms.translationtype: HT
+ms.date: 05/17/2019
+ms.openlocfilehash: 7c60b2ae3d403584822e694daf3357b86cba34d7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849904"
+ms.locfileid: "65864752"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
@@ -55,14 +55,13 @@ Než zahájíte tento kurz, proveďte tyto úlohy:
 
 * Vytvoření účtu úložiště Azure Data Lake Storage Gen2. Zobrazit [rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-*  Vytvoření instančního objektu. Zobrazit [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Vytvoření instančního objektu. Zobrazit [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
    Existuje několik určité akce, které budete muset udělat při provádění kroků v tomto článku.
 
-   * Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, ujistěte se, že k přiřazení **Přispěvatel dat objektu Blob úložiště** roli instančnímu objektu služby.
+   * Při provádění kroků v [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části tohoto článku, ujistěte se, že k přiřazení **Přispěvatel dat objektu Blob úložiště** roli instančnímu objektu služby v rámci Data Lake Účet úložiště Gen2. Pokud tuto roli přiřadíte do nadřazené skupiny prostředků nebo předplatného, dostanete chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
 
-     > [!IMPORTANT]
-     > Ujistěte se, že přiřazení role v rámci účtu úložiště Data Lake Storage Gen2. Roli můžete přiřadit do nadřazené skupiny prostředků nebo předplatného, ale se zobrazí chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
+      Pokud byste radši chtěli použít seznam řízení přístupu (ACL) k přidružení objektu služby s konkrétní soubor nebo adresář, odkaz [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
    * Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
 
@@ -148,7 +147,9 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
 
 4. Vyberte **Vytvořit**.
 
-5. Zkopírujte a vložte následující blok kódu do první buňky.
+5. Následující blok kódu nastaví výchozí pověření instančního objektu pro všechny účty ADLS 2. generace přistupovat v relace Spark. Název účtu druhý blok kódu připojí k nastavení a zadejte přihlašovací údaje pro konkrétní účet ADLS 2. generace.  Zkopírujte a vložte buď blok kódu do první buňky v poznámkovém bloku Azure Databricks.
+
+   **Konfigurace relace**
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -156,6 +157,19 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.account.oauth2.client.id", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret", "<authentication-key>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
+   ```
+
+   **Konfigurace účtu**
+
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")

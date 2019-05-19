@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9dcc353d634d66d4bb972ed5ac7607a5cc823b8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894338"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>Kurz: Integrace Azure Active Directory s Pexip
 
@@ -180,7 +180,7 @@ V této části je povolit Britta Simon k udělení přístupu k Pexip použití
 
 V této části vytvoříte uživatele v Pexip jako Britta Simon. Práce s [tým podpory Pexip](https://support.videxio.com) přidat uživatele na platformě Pexip. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

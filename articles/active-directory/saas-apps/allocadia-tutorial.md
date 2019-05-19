@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab731bf7526521f6c091d2cd7d7d296636f76f67
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855984"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Kurz: Integrace Azure Active Directory s Allocadia
 
@@ -131,7 +131,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Allocadia, proveďte násle
     | ------------------- | -------------------- |
     | jméno | user.givenname |
     | Příjmení | user.surname |
-    | e-mail | user.mail |
+    | email | user.mail |
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -225,7 +225,7 @@ V této části je povolit Britta Simon k udělení přístupu k Allocadia použ
 
 V této části se vytvoří uživateli Britta Simon v Allocadia. Allocadia podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Allocadia, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

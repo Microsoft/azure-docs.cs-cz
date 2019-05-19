@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: d5f2f31f87bc3732b7b3a5593217ebde4ee213c9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870904"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>Kurz: Integrace Azure Active Directory s Nexonia
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon k udělení přístupu k Nexonia použit
 
 V této části vytvoříte uživatele v Nexonia jako Britta Simon. Práce s [tým podpory Nexonia](https://nexonia.zendesk.com/hc/requests/new) přidat uživatele na platformě Nexonia. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

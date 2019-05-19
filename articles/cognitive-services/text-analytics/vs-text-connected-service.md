@@ -10,23 +10,23 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4e1c03085d6b1d0099ac66dd3d1dadd981a561aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829237"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860477"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Text Analytics pomocí připojené služby v sadě Visual Studio
 
 Pomocí služby analýzy textu se dá extrahovat velké množství dat, které je možné využít ke kategorizaci a zpracování vizuálních dat a také k usnadnění správy služeb díky moderování obrázků s podporou počítače.
 
-Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio pro službu Analýza textu. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
+Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio pro službu Analýza textu. Možnost je dostupná v obou 2019 Visual Studio nebo novější, s nainstalované rozšíření služeb Cognitive Services.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- Sada Visual Studio 2017 verze 15.7 s nainstalovanou sadou funkcí Vývoj pro web. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
+- Visual Studio. 2019, s nainstalovaná úloha vývoj pro Web. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 

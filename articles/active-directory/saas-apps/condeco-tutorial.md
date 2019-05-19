@@ -16,11 +16,11 @@ ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea67efd1ea062e145026cf9369a14a7d32147055
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57869774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>Kurz: Integrace Azure Active Directory s Condeco
 
@@ -190,7 +190,7 @@ Neexistuje žádná položka akce pro vás v této části. Nový uživatel se v
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Condeco](mailTo:supportna@condecosoftware.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6d434295a6a46ee5b7089608cbf788ff91589fb7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281671"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Kurz: Integrace Azure Active Directory s Citrix Netscaler
 
@@ -375,7 +375,7 @@ V této části se vytvoří uživateli Britta Simon v Citrix Netscaler. Citrix 
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Citrix Netscaler klienta](https://www.citrix.com/contact/technical-support.html).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

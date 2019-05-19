@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8092724a8ebf04342e00d054cc78fe26b48d2f82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842698"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Kurz: Integrace Azure Active Directory s Boomi
 
@@ -258,7 +258,7 @@ Chcete-li povolit uživatele Azure AD se přihlaste k Boomi, musí být poskytnu
     > [!NOTE]
     > Uživatel nebude dostávat oznámení uvítací e-mail obsahující heslo, které lze použít pro přihlášení k účtu AtomSphere, protože své heslo je spravována prostřednictvím zprostředkovatele identity. Můžete použít jakékoli jiné Boomi uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Boomi uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

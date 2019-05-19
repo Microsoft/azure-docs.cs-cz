@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0319cef9048d3013325285b0b8ca3d4c8de5e841
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-abintegro"></a>Kurz: Integrace Azure Active Directory s Abintegro
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon k udělení přístupu k Abintegro použ
 
 V této části se vytvoří uživateli Britta Simon v Abintegro. Abintegro podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Abintegro, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 23830d6ae2ba020a77402d3e2b7acc2f50f75733
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268753"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Kurz: Integrace Azure Active Directory s Panopto
 
@@ -215,7 +215,7 @@ V této části se vytvoří uživateli Britta Simon v Panopto. Panopto podporuj
 >Můžete použít jakékoli jiné Panopto uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Panopto zřízení uživatelských účtů služby Azure AD.
 >
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

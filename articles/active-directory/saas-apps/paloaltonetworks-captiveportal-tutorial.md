@@ -16,11 +16,11 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vnitropodnikové Palo Alto sítě
 
@@ -197,7 +197,7 @@ V dalším kroku vytvoření uživatele s názvem *Britta Simon* Palo Alto sít�
 > [!NOTE]
 > Pokud chcete ručně vytvořit uživatele, obraťte se [tým podpory Palo Alto sítě vnitropodnikové portál klienta](https://support.paloaltonetworks.com/support).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 Za branou firewall na virtuálním počítači s Windows je nainstalován portál vnitropodnikové Palo Alto sítě. Pokud chcete otestovat jednotné přihlašování na portálu vnitropodnikové Palo Alto sítě, přihlaste se k virtuálnímu počítači Windows pomocí protokolu RDP (Remote Desktop). V této relaci RDP otevřete prohlížeč a přejděte na libovolném webu. Otevře adresu URL jednotného přihlašování a zobrazí se výzva k ověření. Po dokončení ověření můžete přístup k webům.
 

@@ -16,11 +16,11 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 93990a11860e8b8181bee0ba67351b095d940878
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Kurz: Integrace Azure Active Directory s UltiPro
 
@@ -205,7 +205,7 @@ V této části je povolit Britta Simon k udělení přístupu k UltiPro použit
 
 V této části vytvoříte uživatele v UltiPro jako Britta Simon. Práce s [tým podpory UltiPro](https://www.ultimatesoftware.com/ContactUs) přidat uživatele na platformě UltiPro. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

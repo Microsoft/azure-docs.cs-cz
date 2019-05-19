@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: d1b2d80a1960abb37262ef7429ee5b99665986b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Kurz: Integrace Azure Active Directory s SmarterU
 
@@ -223,7 +223,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k SmarterU, mus�
 > [!NOTE]
 > Můžete použít jakékoli jiné SmarterU uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných SmarterU uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

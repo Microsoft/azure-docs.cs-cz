@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba63f8295fb5bebffdc8480f763c852521e331b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880904"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859204"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Kurz: Integrace Azure Active Directory s ADP
 
@@ -296,7 +296,7 @@ V této části je povolit Britta Simon k udělení přístupu k ADP použití A
 
 Cílem této části je vytvořte uživatele Britta Simon v ADP. Práce s [tým podpory ADP](https://www.adp.com/contact-us/overview.aspx) k přidání uživatelů v účtu ADP. 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

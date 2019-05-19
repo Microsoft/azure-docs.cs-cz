@@ -17,11 +17,11 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680124"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vrcholu
 
@@ -220,7 +220,7 @@ V této části se vytvoří uživateli Britta Simon portálu vrcholu. Vrcholu p
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory vrcholu portál](mailto:support@apexanalytix.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

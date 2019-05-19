@@ -16,11 +16,11 @@ ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7914bc3775631f3cc5d6ae68fed10c6d5fecb853
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838047"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>Kurz: Integrace Azure Active Directory s AlertOps
 
@@ -239,7 +239,7 @@ V této části je povolit Britta Simon k udělení přístupu k AlertOps použi
 
     g. Vyberte **Přidat**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

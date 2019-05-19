@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e6916cc96f9d9778cc829e39f82ef7204e137bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>Kurz: Integrace Azure Active Directory s Synergi
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon k udělení přístupu k Synergi použit
 
 V této části vytvoříte uživatele v Synergi jako Britta Simon. Práce s [tým podpory Synergi](https://www.irmsecurity.com/contact/) přidat uživatele na platformě Synergi. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

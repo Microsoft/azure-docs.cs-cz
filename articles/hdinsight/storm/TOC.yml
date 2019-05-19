@@ -107,7 +107,7 @@
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: Použití Azure Powershell
               href: ../hdinsight-administer-use-powershell.md
-            - name: Použití Azure Classic CLI
+            - name: Použití Azure CLI
               href: ../hdinsight-administer-use-command-line.md
         - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
           href: ../hdinsight-hadoop-manage-ambari.md

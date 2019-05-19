@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Integrace Azure Active Directory s vxMaintain
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v vxMaintain jako Britta Simon. Práce s [tým podpory vxMaintain](https://www.hubspot.com/company/contact) přidat uživatele na platformě vxMaintain. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

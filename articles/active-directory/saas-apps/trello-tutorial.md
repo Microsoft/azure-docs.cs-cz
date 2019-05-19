@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578420"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65865789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Kurz: Integrace Azure Active Directory s Trello
 
@@ -231,7 +231,7 @@ V této části vytvořte uživatele Britta Simon v Trellu. Trello podporuje pou
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [tým podpory Trello](mailto:support@trello.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu MyApps.
 
