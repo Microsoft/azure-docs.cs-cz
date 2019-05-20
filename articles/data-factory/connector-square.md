@@ -46,8 +46,8 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Čtverec** | Ano |
 | hostitel | Adresa URL instance čtvereček. (to znamená mystore.mysquare.com)  | Ano |
-| ID klienta | ID klienta přidružené k aplikaci čtvereček.  | Ano |
-| ClientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | ID klienta přidružené k aplikaci čtvereček.  | Ano |
+| clientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | redirectUri | Adresa URL pro přesměrování přiřazené na řídicím panelu Čtvereček aplikace. (tj. http:\//localhost:2500)  | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
