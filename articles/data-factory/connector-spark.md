@@ -42,13 +42,13 @@ Pro Spark, propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Spark** | Ano |
-| hostitel | IP adresa nebo název hostitele serveru Spark  | Ano |
+| host | IP adresa nebo název hostitele serveru Spark  | Ano |
 | port | Port TCP, Spark server se používá k naslouchání pro připojení klientů. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ano |
 | serverType | Typ serveru Spark. <br/>Povolené hodnoty jsou: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Ne |
 | thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **HTTP** | Ne |
-| authenticationType. | Metodu ověřování pro přístup k serveru Spark. <br/>Povolené hodnoty jsou: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
-| uživatelské jméno | Uživatelské jméno, který používáte pro přístup k serveru Spark.  | Ne |
-| heslo | Heslo, odpovídající uživatel. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| authenticationType | Metodu ověřování pro přístup k serveru Spark. <br/>Povolené hodnoty jsou: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| username | Uživatelské jméno, který používáte pro přístup k serveru Spark.  | Ne |
+| password | Heslo, odpovídající uživatel. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | httpPath | Částečné adresa URL odpovídající serveru Spark.  | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
 | trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |
