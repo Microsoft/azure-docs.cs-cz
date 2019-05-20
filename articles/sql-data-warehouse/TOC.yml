@@ -253,7 +253,7 @@
           href: sql-data-warehouse-query-visual-studio.md
         - name: Instalace sady Visual Studio
           href: sql-data-warehouse-install-visual-studio.md
-    - name: Spravovaná úloha
+    - name: Správa úloh
       items:
         - name: Analýza úloh
           href: analyze-your-workload.md

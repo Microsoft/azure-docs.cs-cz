@@ -15,7 +15,7 @@ metadata:
   ms.date: 05/07/2019
   ms.author: celested
 abstract:
-  description: 'Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři. Je to plnohodnotná platforma, kterou tvoří ověřovací služba kompatibilní se standardy OAuth 2.0 a OpenID Connect, opensourcové knihovny, registrace a konfigurace aplikací, robustní koncepční a referenční dokumentace, ukázky rychlých zprovoznění, ukázky kódu, kurzy a praktičtí průvodci.'
+  description: 'Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři. Je to plnohodnotná platforma, kterou tvoří ověřovací služba kompatibilní se standardy OAuth 2.0 a OpenID Connect, opensourcové knihovny, registrace a konfigurace aplikací, robustní koncepční a referenční dokumentace, ukázky rychlých zprovoznění, ukázky kódu, kurzy a praktičtí průvodci.'
   aside:
     image:
       alt: null

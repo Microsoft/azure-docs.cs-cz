@@ -7,14 +7,14 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e808bd18e2b23c211f1c5257881fc8a8b72271fc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9dc6e98e184e6eeeca3a56ff4a28739369a3d24
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705917"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800485"
 ---
-# <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
+# <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásad
 
 Vlastní definice zásady umožňuje zákazníkům definovat vlastní pravidla pro používání Azure. Často tato pravidla vynucují:
 
@@ -117,7 +117,7 @@ Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
 ...
 ```
 
-V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts.**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
+V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
 
 #### <a name="create-a-resource-in-the-portal"></a>Vytvořit prostředek na portálu
 
@@ -446,7 +446,7 @@ S všechny tři části zásady definované tady je naše definice dokončení:
 
 Dokončené definice slouží k vytvoření nové zásady. Portál a jednotlivých sadách SDK (rozhraní příkazového řádku Azure, Azure Powershellu a rozhraní REST API) přijměte definici různými způsoby, proto zkontrolujte příkazy pro každý z nich mohl ověřit správné použití. Pak přiřaďte, pomocí parametrizovaných efekt příslušných prostředků ke správě zabezpečení vašich účtů úložiště.
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Zkontrolovat
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 

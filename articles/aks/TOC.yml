@@ -63,8 +63,9 @@
     - name: Měřítko
       href: concepts-scale.md
     - name: Osvědčené postupy
-      href: best-practices.md
       items:
+        - name: Přehled
+          href: best-practices.md
         - name: Pro operátory clusteru
           items:
             - name: Víceklientská architektura a izolace clusteru
@@ -115,9 +116,9 @@
           maintainContext: true
         - name: Vytváření virtuálních uzlů
           items:
-            - name: Azure CLI
+            - name: Použití Azure CLI
               href: virtual-nodes-cli.md
-            - name: portál Azure
+            - name: Použití webu Azure Portal
               href: virtual-nodes-portal.md
         - name: Použití Virtual Kubeletu
           href: virtual-kubelet.md
@@ -152,7 +153,7 @@
               href: configure-azure-cni.md
         - name: Vytvořte interní nástroj pro vyrovnávání zatížení.
           href: internal-lb.md
-        - name: Použití statických IP adres
+        - name: Použití statické IP adresy
           href: static-ip.md
         - name: Příchozí přenos dat
           items:
@@ -165,8 +166,9 @@
             - name: Použití TLS a vlastních certifikátů
               href: ingress-own-tls.md
             - name: Použití TLS a Let's Encrypt
-              href: ingress-tls.md
               items:
+                - name: Použití dynamické veřejné IP adresy
+                  href: ingress-tls.md
                 - name: Použití statické veřejné IP adresy
                   href: ingress-static-ip.md
         - name: Výchozí přenos
@@ -212,6 +214,20 @@
         - name: Zobrazení protokolů kontejneru v reálném čase (preview)
           href: ../azure-monitor/insights/container-insights-live-logs.md
           maintainContext: true
+    - name: Použití kontejnerů Windows Serveru (Preview)
+      items:
+        - name: Vytvoření clusteru AKS
+          href: windows-container-cli.md
+        - name: Vzdálené připojení
+          href: rdp.md
+        - name: Známá omezení
+          href: windows-node-limitations.md
+        - name: Použití řídicího panelu Kubernetes
+          href: kubernetes-dashboard.md
+        - name: Vytvoření kontejnerů Dockerfile pro Windows Server
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+        - name: Optimalizace kontejnerů Dockerfile pro Windows Server
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Vývoj a spouštění aplikací
       items:
         - name: Vývoj s využitím Dev Spaces

@@ -176,6 +176,8 @@
               href: integrate-environments-devops-pipeline.md
             - name: Použití služeb PaaS (Platform-as-a-Service)
               href: use-paas-services.md
+            - name: Nasazení vnořených šablon
+              href: deploy-nested-template-environments.md
         - name: Zabezpečený přístup k testovacím prostředím
           items:
             - name: Přidání uživatelů a vlastníků testovacího prostředí
@@ -188,6 +190,8 @@
           items:
             - name: Nastavení zásad a plánů
               href: devtest-lab-set-lab-policy.md
+            - name: Odesílání oznámení automatického vypínání
+              href: devtest-lab-auto-shutdown.md
             - name: Konfigurace správy nákladů
               href: devtest-lab-configure-cost-management.md
             - name: Konfigurace imagí na Azure Marketplace

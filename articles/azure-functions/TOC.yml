@@ -53,6 +53,8 @@
       href: functions-create-serverless-api.md
     - name: Vytvoření definice OpenAPI
       href: functions-openapi-definition.md
+    - name: Připojení k virtuální síti
+      href: functions-create-vnet.md
     - name: Změna velikosti obrázků s využitím služby Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Vytvoření webové aplikace bez serveru
@@ -213,7 +215,7 @@
         - name: Připojení ke službě SQL Database
           href: functions-scenario-database-table-cleanup.md
         - name: Připojení k virtuální síti
-          href: functions-create-vnet.md
+          href: functions-create-vnet-old.md
         - name: Vytvoření definice OpenAPI 2.0
           href: functions-api-definition-getting-started.md
         - name: Export do PowerApps a Microsoft Flow
@@ -297,6 +299,8 @@
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Informace o kvótách
+      href: 'functions-scale.md#service-limits'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Videa

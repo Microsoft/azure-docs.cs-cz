@@ -46,6 +46,8 @@
           href: security-overview.md
         - name: Prozkoumávání rizikových uživatelů a přihlášení
           href: howto-investigate-risky-users-signins.md
+        - name: Poskytnutí zpětné vazby k rizikovým událostem
+          href: howto-provide-risk-event-feedback.md
         - name: Konfigurace zásady rizik
           href: howto-configure-risk-policies.md
         - name: Vylepšení přesnosti rozpoznávání
