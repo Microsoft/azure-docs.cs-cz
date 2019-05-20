@@ -45,7 +45,7 @@ Shopify propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Shopify** | Ano |
-| hostitel | Koncový bod serveru Shopify. (to znamená mystore.myshopify.com)  | Ano |
+| host | Koncový bod serveru Shopify. (to znamená mystore.myshopify.com)  | Ano |
 | accessToken | Přístupový token rozhraní API, který slouží pro přístup k datům společnosti Shopify. Pokud je v režimu offline režimu, nemá prošlou platnost tokenu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
