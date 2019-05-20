@@ -56,9 +56,9 @@ Pro Sybase propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Sybase** | Ano |
 | server | Název serveru Sybase. |Ano |
-| databáze | Název databáze Sybase. |Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Základní**, a **Windows**. |Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Sybase. |Ano |
+| database | Název databáze Sybase. |Ano |
+| authenticationType | Typ ověřování používaný pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Základní**, a **Windows**. |Ano |
+| username | Zadejte uživatelské jméno pro připojení k databázi Sybase. |Ano |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
