@@ -2,20 +2,19 @@
 title: Nastavení zařízení pro službu Azure IoT Hub Device Provisioning
 description: Nastavení zařízení pro zřízení prostřednictvím služby IoT Hub Device Provisioning během procesu výroby zařízení
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61249029"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911692"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning
 
@@ -28,7 +27,7 @@ V předchozím kurzu jste zjistili, jak ve službě Azure IoT Hub Device Provisi
 
 Tento kurz předpokládá, že jste si už vytvořili instanci služby Device Provisioning a IoT Hub podle pokynů v předchozím kurzu [Nastavení cloudových prostředků](tutorial-set-up-cloud.md).
 
-V tomto kurzu se používá [úložiště sad SDK a knihoven Azure IoT pro C](https://github.com/Azure/azure-iot-sdk-c), které obsahuje klientskou sadu SDK služby Device Provisioning pro C. Tato sada SDK aktuálně poskytuje podporu TPM a X.509 pro zařízení využívající implementace Windows nebo Linuxu. Tento kurz je založený na použití vývojového klienta pro Windows, který také předpokládá základní znalost sady Visual Studio 2017. 
+V tomto kurzu se používá [úložiště sad SDK a knihoven Azure IoT pro C](https://github.com/Azure/azure-iot-sdk-c), které obsahuje klientskou sadu SDK služby Device Provisioning pro C. Tato sada SDK aktuálně poskytuje podporu TPM a X.509 pro zařízení využívající implementace Windows nebo Linuxu. Tento kurz je založený na použití klient vývoj pro Windows, který také předpokládá základní znalost sady Visual Studio. 
 
 Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o [konceptech automatického zřizování](concepts-auto-provisioning.md), než budete pokračovat. 
 
@@ -37,14 +36,14 @@ Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio 2015 nebo [Visual Studio 2017](https://www.visualstudio.com/vs/) s povolenou sadou funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s ["vývoj desktopových aplikací pomocí C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Sestavení specifické verze sady SDK pro platformu
 
-Klientská sada SDK služby Device Provisioning pomáhá implementovat software pro registraci zařízení. Před jejím použitím však musíte sestavit specifickou verzi sady SDK pro platformu vašeho vývojového klienta a váš mechanismus ověřování. V tomto kurzu sestavíte sadu SDK využívající sadu Visual Studio 2017 na vývojové platformě Windows pro podporovaný typ ověřování:
+Klientská sada SDK služby Device Provisioning pomáhá implementovat software pro registraci zařízení. Před jejím použitím však musíte sestavit specifickou verzi sady SDK pro platformu vašeho vývojového klienta a váš mechanismus ověřování. V tomto kurzu sestavíte sadu SDK, kterou používá Visual Studio na vývojářské platformy Windows pro podporovaný typ ověřování:
 
 1. Stáhněte si [sestavovací systém CMake](https://cmake.org/download/).
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: d02c3fbb762e83584a9ea277ef8d5cc15b391f37
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792575"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954965"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidejte zabezpečenou zdroje dat Sharepoint do znalostní báze
 
@@ -53,7 +53,7 @@ Požadavku začíná automaticky otevírané okno pro ověření účtu služby 
 
 ![Ověřit uživatelský účet](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-Jakmile správce nástroje QnA Maker vybere tento účet, Správce služby Active Directory obdrží oznámení o tom, že potřebné k povolení nástroje QnA Maker aplikace (ne správce nástroje QnA Maker) přístup k prostředku služby Sharepoint. Správce služby Active Directory, bude nutné provést pro každý prostředek na Sharepointu, ale ne každý dokument v prostředku. 
+Jakmile správce nástroje QnA Maker vybere tento účet, Správce služby Active Directory obdrží oznámení o tom, že musí povolit nástroj QnA Maker aplikace (ne správce nástroje QnA Maker) přístup k prostředku služby Sharepoint. Správce služby Active Directory, bude nutné provést pro každý prostředek na Sharepointu, ale ne každý dokument v prostředku. 
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Správce služby Active directory: udělení oprávnění ke čtení souboru pro nástroj QnA Maker
 

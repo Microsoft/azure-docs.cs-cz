@@ -1,7 +1,7 @@
 ---
-title: Instalace a spouštění kontejnerů
+title: Instalace a spuštění kontejnerů
 titlesuffix: Face - Azure Cognitive Services
-description: Jak si stáhnout, nainstalovat a spouštění kontejnerů v tomto kurzu návod pro rozpoznávání tváře.
+description: Stažení, instalaci a spouštění kontejnerů v tomto kurzu návod pro rozpoznávání tváře.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,28 +11,28 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3087718a3eece1e19f05757ace64ba00aa0dc58
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9bc18157a6f60555ea18901796199a3fe9dc4c22
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682671"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891248"
 ---
 # <a name="install-and-run-face-containers"></a>Instalace a spouštění kontejnerů pro rozpoznávání tváře
 
-Rozpoznávání tváře poskytuje standardizované kontejneru Linuxu pro Docker, s názvem pro rozpoznávání tváře, detekuje lidské tváře v obrázcích, který určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.
+Azure Cognitive Services Face poskytuje standardizované kontejneru Linuxu pro Docker, který zjistí lidských tváří na obrázcích. Také určuje atributy, které zahrnují orientačních bodů pro rozpoznávání tváře například ústa a oči, pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image, jsou stejné pomocí skóre spolehlivosti. Rozpoznávání tváře můžete také porovnat tváří na databázi, pokud podobně vypadajících nebo stejné jako tváře již existuje. Je také můžete uspořádat podobných tváří do skupin pomocí vlastnosti sdílené visual.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před použitím kontejnerů API pro rozpoznávání tváře, musí splňovat následující požadavky:
+Před použitím kontejnerů API pro rozpoznávání tváře, musí splňovat následující požadavky.
 
 |Požaduje se|Účel|
 |--|--|
-|Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
-|Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Azure `Cognitive Services` prostředků |Chcete-li použít kontejner, musíte mít:<br><br>A _služeb Cognitive Services_ prostředků Azure a související účtování klíč fakturační identifikátor URI koncového bodu. Obě hodnoty na stránce Přehled a klíče pro prostředek jsou k dispozici a jsou vyžadovány pro spuštění kontejneru. Je třeba přidat `face/v1.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+|Modul docker| Musí být nainstalovaný modul Docker na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> Na Windows Docker také musí být nakonfigurované pro podporu kontejnerů Linuxu.<br><br>|
+|Znalost Dockeru | Potřebujete základní znalosti konceptů Dockeru, jako je například registrů, úložiště, kontejnerů a imagí kontejneru. Potřebujete znalost basic `docker` příkazy.| 
+|Azure `Cognitive Services` prostředků |Použití kontejneru, musíte mít:<br><br>Prostředek Azure Cognitive Services a přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na **přehled** a **klíče** stránky pro prostředek. Musí se spustit kontejner. Přidat `face/v1.0` směrování na koncový bod identifikátoru URI, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI: <br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : je například identifikátor URI koncového bodu `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
@@ -47,16 +47,16 @@ Před použitím kontejnerů API pro rozpoznávání tváře, musí splňovat n�
 
 Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro každý kontejner API pro rozpoznávání tváře.
 
-| Kontejner | Minimální | Doporučené | TPS<br>(Minimum, Maximum)|
+| Kontejner | Minimální | Doporučené | Transakce za sekundu<br>(Minimální, maximální)|
 |-----------|---------|-------------|--|
 |Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
 
-* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
-* TPS – transakcí za sekundu
+* Každé jádro, musí být aspoň 2,6 GHz nebo rychlejší.
+* Transakcí za sekundu (TPS).
 
 Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s docker o přijetí změn
 
 Image kontejneru pro rozhraní API pro rozpoznávání tváře jsou k dispozici. 
 
@@ -72,25 +72,25 @@ Image kontejneru pro rozhraní API pro rozpoznávání tváře jsou k dispozici.
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 ```
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejneru
+## <a name="use-the-container"></a>Použití kontejneru
 
-Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Poté, co je kontejner na [hostitelský počítač](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spuštění kontejneru](#run-the-container-with-docker-run), s požadovanými fakturace nastavení. Další [příklady](./face-resource-container-config.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
+1. [Spuštění kontejneru](#run-the-container-with-docker-run) s požadovanými fakturace nastavení. Další [příklady](./face-resource-container-config.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
 1. [Dotazování koncový bod kontejneru předpovědi](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner pomocí dockeru spustit
 
-Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
+Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry.
 
 | Zástupný symbol | Hodnota |
 |-------------|-------|
-|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na Azure `Cognitive Services` stránka klíče.  |
-|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na Azure `Cognitive Services` stránka s přehledem. Příkladem je: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na Azure `Cognitive Services` **klíče** stránky. |
+|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na Azure `Cognitive Services` **přehled** stránky. Příklad: `https://westus.api.cognitive.microsoft.com/face/v1.0`.|
 
-Je třeba přidat `face/v1.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v předchozím příkladu BILLING_ENDPOINT_URI. 
+Přidat `face/v1.0` směrování na koncový bod identifikátoru URI, jak je znázorněno v předchozím příkladu BILLING_ENDPOINT_URI. 
 
-Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
+Tyto parametry nahraďte vlastními hodnotami v následujícím `docker run` příklad příkazu:
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -102,15 +102,15 @@ ApiKey={BILLING_KEY}
 
 Tento příkaz:
 
-* Spustí kontejner pro rozpoznávání tváře z image kontejneru
-* Přidělí jedno Procesorové jádro a 4 gigabajty (GB) paměti
-* Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
+* Spustí kontejner pro rozpoznávání tváře z image kontejneru.
+* Přidělí jedno Procesorové jádro a 4 GB paměti.
+* Zpřístupňuje TCP port 5000 a přiděluje pseudo TTY pro kontejner.
 * Po ukončení automaticky odstraní kontejner. Image kontejneru je stále k dispozici na hostitelském počítači. 
 
 Další [příklady](./face-resource-container-config.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
+> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru nebo kontejneru se nespustí. Další informace najdete v tématu [fakturace](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -132,12 +132,12 @@ Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud spouštíte kontejner s výstupem [připojit](./face-resource-container-config.md#mount-settings) a povolení protokolování kontejneru vygeneruje soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
+Pokud spouštíte kontejner s výstupem [připojit](./face-resource-container-config.md#mount-settings) a je povoleno protokolování, kontejner vytváří soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
 
 
 ## <a name="billing"></a>Fakturace
 
-Odeslat kontejnery API pro rozpoznávání tváře fakturační údaje do Azure, pomocí _API pro rozpoznávání tváře_ prostředků v účtu Azure. 
+API pro rozpoznávání tváře kontejnery odesílat informace o fakturaci do Azure pomocí rozhraní API pro rozpoznávání tváře prostředků v účtu Azure. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -145,20 +145,20 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání rozhraní API pro rozpoznávání tváře kontejnery. Souhrn:
+V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalace a spouštění kontejnerů API pro rozpoznávání tváře. Souhrn:
 
-* Rozhraní API pro rozpoznávání tváře nabízí tři kontejnery Linuxu pro Docker, zapouzdření extrakce klíčových frází, rozpoznávání jazyka a analýzy subjektivního hodnocení.
-* Image kontejneru se stáhnou z kontejneru registru Microsoft (MCR) v Azure.
+* Rozhraní API pro rozpoznávání tváře poskytuje tři kontejnery Linuxu pro Docker, které poskytují extrakce klíčových frází, rozpoznávání jazyka a analýzy subjektivního hodnocení.
+* Image kontejneru se stahují ze služby Azure Container Registry.
 * Spuštění imagí kontejnerů v Dockeru.
 * Rozhraní REST API nebo sady SDK můžete použít k volání operací v rozhraní API pro rozpoznávání tváře kontejnery tak, že zadáte identifikátor URI kontejneru hostitele.
 * Při vytváření instance kontejneru, je nutné zadat fakturační informace.
 
 > [!IMPORTANT]
-> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
+> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníkům musíte povolit kontejnery pro komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery služby cognitive Services není zákaznická data, jako je image nebo text, který se právě analyzuje, odeslat společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další postup
 
-* Kontrola [konfigurace kontejnery](face-resource-container-config.md) nastavení konfigurace
-* Kontrola [přehled pro rozpoznávání tváře](Overview.md) získat další informace o zjištění a identifikaci tváře  
-* Odkazovat [API pro rozpoznávání tváře](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) podrobné informace o metodách podporuje kontejneru.
-* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)
+* Nastavení konfigurace, najdete v části [konfigurace kontejnery](face-resource-container-config.md).
+* Další informace o tom, jak detekovat a identifikovat tváří, naleznete v tématu [přehled pro rozpoznávání tváře](Overview.md).
+* Informace o metodách podporuje kontejneru najdete v tématu [API pro rozpoznávání tváře](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+* Použití víc kontejnerů služby Cognitive Services naleznete v části [služeb Cognitive Services kontejnery](../cognitive-services-container-support.md).

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: dbd7189b1761a9ea88ce32dae3d7b45a88301ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60338686"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Kurz: Integrace Azure Active Directory s UserVoice
 
@@ -239,7 +239,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k službě UserV
 > [!NOTE]
 > Můžete použít jakékoli jiné UserVoice uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných UserVoice uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

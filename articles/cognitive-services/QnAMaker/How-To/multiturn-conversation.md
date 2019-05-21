@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/14/2019
 ms.author: diberry
-ms.openlocfilehash: 24158d5949c0a31e5444c609cbfced970bdeca07
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f12b55e9b00e933e13f84832b8cc36267a1da05f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471938"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954858"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Pomocí zpracování pokynů můžete vytvořit více zapne konverzaci
 
@@ -52,7 +52,7 @@ Při importu dokumentu PDF, určuje QnA Maker zpracování pokynů ze struktury 
 
 ![! [Při importu dokumentu PDF, nástroj QnA Maker určuje zpracování pokynů ze struktury k vytvoření konverzační toku. ](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-## <a name="filter-questions-and-answers-by-context"></a>Filtrovat podle kontextu otázek a odpovědí
+## <a name="show-questions-and-answers-with-context"></a>Zobrazit dotazy a odpovědi s kontextem
 
 1. Snižte páry otázek a odpovědí zobrazí jenom na ty s kontextové konverzace. Vyberte **zobrazit možnosti**a pak vyberte **zobrazit kontext (PREVIEW)**. V seznamu bude prázdný, dokud nepřidáte první pár otázek a odpovědí s výzvou zpracování. 
 
@@ -64,22 +64,36 @@ Při importu dokumentu PDF, určuje QnA Maker zpracování pokynů ze struktury 
 1. Zadejte nový text otázky `Give feedback.` s odpovědí z `What kind of feedback do you have?`.
 
 1. V **odpovědí** sloupce pro tento dotaz, vyberte **přidat zpracování řádku**. 
-1. **Řádku následné akce** vyskakovací dialogové okno umožňuje vyhledat existující dotaz nebo zadejte novou otázku. V tomto postupu, zadejte text `Feedback on an QnA Maker service`, pro **zobrazení textu**. 
-1. Zkontrolujte **jen kontextu**. **Jen kontextu** možnost označuje, že tento uživatel text bude interpretovat _pouze_ Pokud tento parametr zadaný v reakci na předchozí otázce. V tomto scénáři text výzvy nemá žádné smysl jako samostatné otázku, pouze má smysl v kontextu předchozí otázce.
-1. V **odkaz k zodpovězení** text odpovědi, zadejte `How would you rate QnA Maker?`.
-1. Vyberte **vytvořit nový** vyberte **Uložit**. 
+1. **Pokračování řádku (PREVIEW)** automaticky otevírané okno umožňuje vyhledat existující dotaz nebo zadejte novou otázku. Vytvořte nový řádek tak, že zadáte následující hodnoty: 
+
+    |Textové pole|Hodnota|
+    |--|--|
+    |**Zobrazení textu**|`Feedback on an QnA Maker service`|
+    |**Odkaz na**|`How would you rate QnA Maker??`|
+    |||
 
     ![Vytvořit nové výzvy QnA](../media/conversational-context/create-child-prompt-from-parent.png)
 
-    To vytvoří nový pár otázku a odpověď a propojené vybrané otázky zpracování příkazovém řádku. **Kontextu** sloupec pro oba dotazy označení vztahu zpracování příkazový řádek. 
+1. Zkontrolujte **jen kontextu**. **Jen kontextu** možnost označuje, že tento uživatel text bude interpretovat _pouze_ Pokud tento parametr zadaný v reakci na předchozí otázce. V tomto scénáři text výzvy nemá žádné smysl jako samostatné otázku, pouze má smysl v kontextu předchozí otázce.
+1. Vyberte **vytvořit nový** vyberte **Uložit**. 
+
+    To vytvoří nový pár otázku a odpověď a propojené vybrané otázky zpracování příkazovém řádku. **Kontextu** sloupec pro oba dotazy označuje zpracování výzvy vztah. 
 
     ![! [Sloupci kontext pro oba dotazy označuje vztah zpracování příkazový řádek.] (.. / media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Vyberte **přidat zpracování řádku** pro `Give feedback` dotaz a přidat další zpracování řádku. 
-1. Vytvořit nový dotaz tak, že zadáte `Feedback on an existing feature`, s odpovědí `Which feature would you like to give feedback on?`.  
+1. Vyberte **přidat zpracování řádku** pro `Give feedback` dotaz a přidat další zpracování řádku. Tím se otevře **pokračování řádku (PREVIEW)** automaticky otevírané okno.
 
-1.  Zkontrolujte **jen kontextu**. **Jen kontextu** možnost označuje, že tento uživatel text bude interpretovat _pouze_ Pokud tento parametr zadaný v reakci na předchozí otázce. V tomto scénáři text výzvy nemá žádné smysl jako samostatné otázku, pouze má smysl v kontextu předchozí otázce.
-1.  Vyberte **Uložit**. 
+1. Vytvořte nový řádek tak, že zadáte následující hodnoty:
+
+    |Textové pole|Hodnota|
+    |--|--|
+    |**Zobrazení textu**|`Feedback on an existing feature`|
+    |**Odkaz na**|`Which feature would you like to give feedback on?`|
+    |||
+
+1. Zkontrolujte **jen kontextu**. **Jen kontextu** možnost označuje, že tento uživatel text bude interpretovat _pouze_ Pokud tento parametr zadaný v reakci na předchozí otázce. V tomto scénáři text výzvy nemá žádné smysl jako samostatné otázku, pouze má smysl v kontextu předchozí otázce.
+
+1. Vyberte **Uložit**. 
 
     To vytvoří novou otázku a propojí dotaz jako zpracování Otázka výzvy k `Give feedback` otázku.
     
@@ -93,26 +107,34 @@ Při importu dokumentu PDF, určuje QnA Maker zpracování pokynů ze struktury 
 
 1. Pokud chcete propojit existující dvojice QnA zpracování příkazovém řádku, vyberte řádek pro pár otázek a odpovědí.
 1. Vyberte **přidat zpracování řádku** v daném řádku.
-1. V místním dialogovém okně zadejte do vyhledávacího pole text otázky. Jsou vráceny všechny shody. Vyberte otázku, jako zpracování a zkontrolujte **jen kontextu**a pak vyberte **Uložit**. 
+1. V **pokračování řádku (PREVIEW)** automaticky otevírané okno, do vyhledávacího pole zadejte text odpovědi. Jsou vráceny všechny shody. Vyberte odpověď jako sledování a zkontrolujte **jen kontextu**a pak vyberte **Uložit**. 
 
-    Jakmile organizační jednotky přidané zpracování řádku, nezapomeňte vybrat **uložit a jejich trénování**.
+    ![Hledejte řádku následné akce odkaz do dialogového okna odpovědí pro existující odpověď, pomocí textu odpovědi.](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+
+    Po přidání řádku následné, nezapomeňte vybrat **uložit a jejich trénování**.
   
-## <a name="add-metadata-to-follow-up-prompts"></a>Přidání metadat pro zpracování pokynů 
+<!--
 
-Znalostní báze knowledge base, při pár otázku a odpověď je propojený s následnou akci dotáže, metadata jsou použity poprvé a pak zpracování jsou vráceny.
+## To find best prompt answer, add metadata to follow-up prompts 
 
-1. Pro dvě zpracování QnA dvojice přidáte metadata do každé z nich:
+If you have several follow-up prompts for a given QnA pair, but you know as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base, then send the metadata from the client application as part of the GenerateAnswer request.
 
-    |Otázka|Přidání metadat|
+In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, then the follow-ups are returned.
+
+1. For the two follow-up QnA pairs, add metadata to each one:
+
+    |Question|Add metadata|
     |--|--|
-    |`Feedback on an QnA Maker service`|"Funkce": "vše"|
-    |`Feedback on an existing feature`|"Funkce": "jedna"|
+    |`Feedback on an QnA Maker service`|"Feature":"all"|
+    |`Feedback on an existing feature`|"Feature":"one"|
     
-    ![Přidat metadata do zpracování řádku, dají se filtrovat v konverzaci odpověď od služby](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
+    ![Add metadata to follow-up prompt so it can be filtered in conversation response from service](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
 
-1. Uložit a jejich trénování. 
+1. Save and train. 
 
-    Když odešlete dotaz `Give feedback` s filtrem metadat `Feature` s hodnotou `all`, vrátí se jenom pár QnA se tato metadata. Obě dvojice QnA nebudou zobrazeny, protože oba filtru neodpovídají. 
+    When you send the question `Give feedback` with the metadata filter `Feature` with a value of `all`, only the QnA pair with that metadata will be returned. Both QnA pairs are not returned because they both do not match the filter. 
+
+-->
 
 ## <a name="test-the-qna-set-to-get-all-the-follow-up-prompts"></a>Vyzve test, který QnA nastavit zobrazíte všechny následné akce
 
@@ -145,7 +167,7 @@ V předchozí části Požadovaná odpověď a všechny následné pokynů `Acco
             "questions": [
                 "Accounts and signing in"
             ],
-            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way he or she likes. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
+            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way they like. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
             "score": 86.96,
             "id": 37,
             "source": "surface-pro-4-user-guide-EN .pdf",
@@ -269,15 +291,11 @@ Nástroj QnA Maker _GenerateAnswer_ odpověď JSON obsahuje zpracování pokynů
 
 ## <a name="displaying-prompts-and-sending-context-in-the-client-application"></a>Zobrazení výzvy a odesílání kontextu v klientské aplikaci 
 
-Klientská aplikace zobrazí všechny dotazy s možností pro uživatele a zobrazte pokynů doporučené akce nebo tlačítka.
-Klientská aplikace pak uloží aktuální dotaz párování a uživatel QnA jako kontext má být předána s další uživatelský dotaz. 
+Pokud jste přidali výzvy ve znalostní bázi a otestovali tok v testovací podokno, pokynů automaticky spouštět nebude zobrazovat v klientských aplikacích. Můžete zobrazit pokynů jako doporučené akce nebo tlačítka jako součást odpověď na dotaz uživatele v klientovi aplikace včetně to [Bot Framework ukázka](https://aka.ms/qnamakermultiturnsample) ve vašem kódu. Klientská aplikace uložit aktuální ID QnA a uživatelský dotaz a předat je do [objekt kontextu API GenerateAnswer](#json-request-to-return-non-initial-answer-and-follow-up-prompts) pro další uživatele dotaz.
 
-Použijte tento [Bot Framework ukázka](https://aka.ms/qnamakermultiturnsample) zobrazíte dialogové okno více zapnout pracovní end až do konce v robota QnA Maker.
+## <a name="display-order-supported-in-api"></a>Pořadí zobrazení, které jsou podporovány v rozhraní API
 
-
-## <a name="prompt-order-supported-in-api"></a>Dotaz na pořadí podporovány v rozhraní API
-
-Příkazový řádek pořadí vrácená v odpovědi JSON je podporován pro úpravy pouze rozhraní API. 
+Pořadí zobrazení vrácená v odpovědi JSON je podporován pro úpravy pouze rozhraní API. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -16,11 +16,11 @@ ms.date: 12/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21e71e38cd8e2a6d627676cddd400f625452e449
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886335"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>Kurz: Integrace Azure Active Directory s poli
 
@@ -183,7 +183,7 @@ V této části se uživateli Britta Simon vytvoří pole. Pole podporuje zřizo
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [pole tým podpory](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

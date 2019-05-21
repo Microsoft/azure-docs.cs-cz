@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: b2e956b099022751712f96ab0b15aa57c752b458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c989f1115bc5a85bf09270c553ac1cb51bb4f170
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405252"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954699"
 ---
 # <a name="analyzer-names"></a>Názvy analyzátorů
 
@@ -43,10 +43,10 @@ V současné době jsou tři odlišné typy:
 V rámci daného typu ale jiné odborníků může Nesouhlasím na tom, jak by měl být analyzován určitého jevu.
 Na rozdíl od programovacích jazyků neexistuje žádná definice jasné a přesně jak to by mělo být provedeno.
 
-Například Představte si, že jsme se pokoušeli najít tokeny v angličtině větu "Mu nepovedlo přejděte."
+Například Představte si, že jsme se pokoušeli najít tokeny v angličtině větu "Neměli přejdou."
 Zvažte především, řetězec "neměli".
 Jeden možný výkladu je, že to byste rozdělit do dvou tokeny: "nebyl" a "not".
-Potom alternativní větu "mu není najdu" má stejnou sadu tokenů.
+Potom alternativní větu ", ne najdu" má stejnou sadu tokenů.
 Další možností je říct, že by měl být rozdělit na tokeny "nebyl" a "Nezobrazovat".
 Druhá možnost tokenu by normálně považovat za slova, ale tento přístup uchovává informace o surface řetězec, který může být někdy užitečné.
 Nebo možná tohoto snížení by měl být jediné slovo.

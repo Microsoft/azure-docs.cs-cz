@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b4360150064d2f42cc2dc2cc3ef9f7783a5cb175
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a4a8212906f384494a9e2e005eee8c4dbdfa14a3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866548"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954633"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -53,7 +53,7 @@ Zvolte hlasové talentu, jehož přirozeného hlasu je například. Je možné v
 
 Jediným nejdůležitějším faktorem pro výběr hlasu talentu je konzistence. Vašich nahrávek všechny zvukové jako byly provedeny v jednom dni ve stejné místnosti. Může přistupovat tato ideální prostřednictvím dobré záznam postupy a technologie.
 
-Talentu váš hlas je ta druhá půlka rovnice. Uživatel musí být schopni číst obsah s frekvence konzistentní vzhledem k aplikacím, úroveň hlasitosti, výšku a tón. Vymazat diction je nezbytnost. Talentu také musí být striktně řídit jeho výška variace, citové vliv a zkoušky prezentace řeči.
+Talentu váš hlas je ta druhá půlka rovnice. Musí být schopné mluvit s frekvence konzistentní vzhledem k aplikacím, úroveň hlasitosti, výšku a tón. Vymazat diction je nezbytnost. Talentu také musí být striktně řídit jejich výšku variace, citové vliv a zkoušky prezentace řeči.
 
 Záznam vlastní hlasové ukázky může být více fatiguing než jiné druhy práce hlasu. Většina talentu hlasové můžete zaznamenat pro dvě nebo tři hodiny denně. Pokud je to možné omezení relací na tři nebo čtyři za týden, dnem vypnout nevede.
 
@@ -117,7 +117,7 @@ Naštěstí je možné zcela se těmto problémům. Existuje mnoho zdrojů text,
 
 Skriptu na profesionální záznam studio, která se specializuje na záznam hlasu práci. Budou mít stánku záznam, správné zařízení a lidé provozovat ho. Vyplatí se skimp na záznam.
 
-Prodiskutujte projekt s pracovníkem technické záznamové sady studio a požadavkům na jeho poradenství. Záznam by měl mít žádné nebo téměř žádné komprese dynamických rozsahů (maximálně 4:1). Je velmi důležité, že zvuk mají konzistentní svazku a vysoký poměr signálu šumu a při zachování bez nežádoucí zvuky.
+Prodiskutujte projekt s pracovníkem technické záznamové sady studio a požadavkům na svá doporučení. Záznam by měl mít žádné nebo téměř žádné komprese dynamických rozsahů (maximálně 4:1). Je velmi důležité, že zvuk mají konzistentní svazku a vysoký poměr signálu šumu a při zachování bez nežádoucí zvuky.
 
 ### <a name="do-it-yourself"></a>Provést sami
 
@@ -131,7 +131,7 @@ Můžete také použít analogové mikrofon. Obsahuje mnoho pronájem nabízejí
 
 Nainstalujte mikrofon samostatné nebo Vida a pop filtru mikrofon k odstranění šumu z "plosive" souhláskami jako "p" a "b". Některé mikrofony součástí pozastavení připojení, který izoluje je od vibrace ve stojan, což je užitečné.
 
-Talentu hlasu musí zůstat na konzistentní vzdálenost od mikrofon. Použití pásky k označení, kde by měl uživatel stojí na dolní mez. Pokud se vám sedět dává přednost talentu, věnujte zvláštní pozornost monitorování vzdálenost povinná kontrola úrovně důvěryhodnosti a vyhnutí se zbytečnému vytváření řetězce.
+Talentu hlasu musí zůstat na konzistentní vzdálenost od mikrofon. K označení, kde by měl být používejte pásku na dolní mez. Pokud se vám sedět dává přednost talentu, věnujte zvláštní pozornost monitorování vzdálenost povinná kontrola úrovně důvěryhodnosti a vyhnutí se zbytečnému vytváření řetězce.
 
 Použijte v případě k uložení skriptu. Vyhněte se angling samostatné, takže ji můžete sledovat, zvuk směrem k mikrofonu.
 
@@ -158,12 +158,12 @@ V ideálním případě mají různí lidé slouží v rolích ředitel, inžen�
 
 ### <a name="before-the-session"></a>Před relací
 
-Aby se zabránilo plýtvání časem studio, spuštěn prostřednictvím skriptu pomocí vašeho talentu hlasového záznamu. Zatímco talentu hlasové přestane být obeznámeni s textem, nezíská zpřehlednit výslovnost neznámého slov.
+Aby se zabránilo plýtvání časem studio, spuštěn prostřednictvím skriptu pomocí vašeho talentu hlasového záznamu. Zatímco talentu hlasové přestane být obeznámeni s textem, můžete ukazují, výslovnost neznámého slov.
 
 > [!NOTE]
 > Většina studios záznam nabízejí elektronických zobrazení skriptů v záznamu z mýtných bran. V takovém případě zadejte poznámky průběh prezentace přímo do vašeho skriptu dokumentu. Stále můžete dělat poznámky během relace, i když kopii dokumentu. Většina technici kopii pevný příliš vhodné. A budete pořád potřebovat že třetí vytisknout kopii jako záložní pro talentu v případě, že počítač je vypnutý.
 
-Váš hlas talentu požádat aplikaci word chcete, aby oznámil v utterance ("rozhodnou slovo"). Řekněte mu, že chcete, fyzická čtení s žádné zvláštní důraz. Zvýraznění můžete přidat, pokud je syntetizovat řeči; neměl by být součástí původní záznam.
+Váš hlas talentu požádat aplikaci word chcete, aby oznámil v utterance ("rozhodnou slovo"). Informujte, který má fyzická čtení s žádné zvláštní důraz. Zvýraznění můžete přidat, pokud je syntetizovat řeči; neměl by být součástí původní záznam.
 
 Přímé talentu k vyslovte slova odděleně. Každé slovo skript by měl výraznější, jak je uvedená. Zvuky by neměly být vynechán nebo slurred společně, což je běžné v příležitostné řeči *Pokud byla napsána tak ve skriptu*.
 
@@ -196,7 +196,7 @@ Naslouchání úzce, použít sluchátka, talentů hlasové výkonu. Hledáte do
 
 Poznámka: převzít číslo nebo čas kód na váš skript pro každý utterance. Požádejte inženýr označit každý utterance ve tento záznam metadat nebo startovacího seznamu také.
 
-Bere regulární konce a poskytne můžete dát chvilku pauzu pomáhají vašeho talentu hlasové zachovat své hlasové v dobrém stavu.
+Bere regulární konce a poskytne můžete dát chvilku pauzu pomáhají vašeho talentu hlasové zachovat hlasu v dobrém stavu.
 
 ### <a name="after-the-session"></a>Po relaci
 

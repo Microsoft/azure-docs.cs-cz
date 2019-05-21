@@ -16,11 +16,11 @@ ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c38ccf8e1c2bee9695e629a2fc5e8e7b60c64a2a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879955"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>Kurz: Integrace Azure Active Directory s MindTickle
 
@@ -195,7 +195,7 @@ V této části je povolit Britta Simon k udělení přístupu k MindTickle pou�
 
 V této části se vytvoří uživateli Britta Simon v MindTickle. Podporuje MindTickle **zřizování uživatelů just-in-time**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi MindTickle, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

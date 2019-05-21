@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 7c3fc67dbeac71530d9c5ddedc609296023fe901
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a65994ffb2fc707c59e507cad71699211b6a64a5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796523"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896267"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Kurz: Oříznutí obrázku s SDK vizuální vyhledávání Bingu proC#
 
@@ -33,7 +33,7 @@ Tento kurz ukazuje, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* Libovolná edice [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 * Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0).
     - V Průzkumníku řešení v sadě Visual Studio, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet** z nabídky. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 4/05/2019
+ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1860b788b9f33a6a2ec806be68a67aa2df10cbd4
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831924"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914272"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použít insights token získat přehled o určité imagi
 
@@ -64,7 +64,7 @@ Příklady, které používají insights token najdete v tématu [jazyka C#](#us
 
 ### <a name="c-prerequisites"></a>C#požadované součásti
 
-- Upgrade kterékoli verze [Visual Studio 2017](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows.
+- Upgrade kterékoli verze [Visual Studio 2019](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows.
 - Předplatné Azure. Pro účely tohoto rychlého startu můžete použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
 
 ## <a name="run-the-application"></a>Spuštění aplikace

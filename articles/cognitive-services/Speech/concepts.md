@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1cbf1514ac5eba4e288ecb78944878217fc5ba3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60514993"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954521"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -32,7 +32,7 @@ Pokud je to poprvé, vytváříte aplikaci podporou řeči nebo pokud je prvním
 
 Přední mezi základními koncepty řeči je *zvukový datový proud*. Na rozdíl od stisknutí klávesy, která nastane v jednom okamžiku v čase a obsahuje informace o každé, žádost o mluvené slovo je rozdělena do stovek milisekund a obsahuje mnoho kilobajtů informace. Doba trvání mluvené slovo projevy představuje určité potíže vývojářům, kteří chtějí poskytovat jednoduchý a elegantní řeči pro svou aplikaci. Dnešní počítače a algoritmy provést před spuštěním akce určené k transkripci řeči na přibližně polovinu doby trvání utterance, tak 2sekundové utterance může být přepsána v přibližně 1 sekundu, ale všechny aplikace, ke které dojde 1 sekundu zpoždění při zpracování uživatele zjednodušené ani elegantní.
 
-Naštěstí způsoby "skrytí" určené k transkripci času prováděním určené k transkripci v jedné části utterance zatímco uživatel to mluví jiné části. Například rozdělením utterance 1 sekundu do 10 bloků 100 milisekund a provedením určené k transkripci na každý blok zase více než 450 celkem 500 milisekund vyžadované pro přepis může být "hidden" tak, aby uživatel neví, určené k transkripci je provádí během učitelského to mluví. Při přemýšlet o tom, v tomto příkladu mějte na paměti, že služba provádí určené k transkripci na předchozí 100 milisekund zvuk zatímco uživatel to mluví další 100, proto když uživatel zastaví vzato službu pouze muset přepisy zhruba 100 milisekundy zvuk k vygenerování výsledku.
+Naštěstí způsoby "skrytí" určené k transkripci času prováděním určené k transkripci v jedné části utterance zatímco uživatel to mluví jiné části. Například rozdělením utterance 1 sekundu do 10 bloků 100 milisekund a provedením určené k transkripci na každý blok zase více než 450 celkem 500 milisekund vyžadované pro přepis může být "hidden" tak, aby uživatel neví, určené k transkripci je provádí při jejich čtení. Při přemýšlet o tom, v tomto příkladu mějte na paměti, že služba provádí určené k transkripci na předchozí 100 milisekund zvuk zatímco uživatel to mluví další 100, proto když uživatel zastaví vzato službu pouze muset přepisy zhruba 100 milisekundy zvuk k vygenerování výsledku.
 
 K dosažení této uživatelské prostředí, je mluvené slovo zvuku informace shromážděné v blocích a přepisována jako uživatel mluví. Tyto zvukové bloky souhrnně z *zvukový datový proud*, a proces odesílání tyto zvukové bloků dat ve službě se nazývá *zvukový datový proud.* Zvukový datový proud je důležitou součástí jakékoli aplikace s podporou řeči; velikost deduplikačního bloku dat ladění a optimalizaci implementace streamování jsou některé z jejich činnost nejvíc ohrožují způsoby komfort uživatelů vaší aplikace.
 

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 4a030e1bf35f38b6aba859eb538eb7d7580d255d
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: bd68e2803b3b538011cfa37378890f2cc7b22223
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603123"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906992"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -26,8 +26,24 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Abyste mohli absolvovat tento rychlý start, musíte mít:
 - Přístup k rozpoznávání formuláře omezený přístup ve verzi Preview. Pokud chcete získat přístup k verzi preview, vyplňte a odešlete [žádost o přístup formulář Rozlišovač](https://aka.ms/FormRecognizerRequestAccess) formuláře.
 - [cURL](https://curl.haxx.se/windows/) nainstalované.
-- Klíč předplatného pro formulář Rozlišovače. Postupujte podle pokynů jednoúčelovou předplatné [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) předplatit Rozlišovač formuláře a získejte klíč. Nepoužívejte víc služeb předplatného, protože nezahrnuje službu rozpoznávání formuláře.
 - Sada aspoň pět formy stejného typu. Můžete použít [ukázkovou datovou sadou](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start.
+
+## <a name="create-a-form-recognizer-resource"></a>Vytvořit prostředek Rozlišovač formuláře
+
+Když je udělen přístup k použití modulu pro rozpoznávání formulář, dostanete Uvítacího e-mailu s několika odkazy a prostředky. Použijte odkaz "Webu Azure portal" v této zprávě otevřete na webu Azure portal a vytvořte prostředek formuláře Rozlišovače. V **vytvořit** podokně zadejte následující informace:
+
+|    |    |
+|--|--|
+| **Název** | Popisný název pro váš prostředek. Doporučujeme použít popisný název, například *MyNameFormRecognizer*. |
+| **Předplatné** | Vyberte předplatné Azure, která udělil přístup. |
+| **Umístění** | Umístění vaší instanci služby cognitive Services. Různá umístění mohou zavést latence, ale mít vliv na běhovou dostupnost vašeho prostředku. |
+| **Cenová úroveň** | Náklady na váš prostředek závisí na zvolené cenové úrovni a využití. Další informace najdete v tématu rozhraní API [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/).
+| **Skupina prostředků** | [Skupiny prostředků Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , která bude obsahovat váš prostředek. Můžete vytvořit novou skupinu nebo ho přidat do existující skupiny. |
+
+> [!IMPORTANT]
+> Za normálních okolností při vytváření prostředku služby Cognitive Services na webu Azure Portal, máte možnost vytvořit klíč víc služeb předplatného (použít napříč více služeb cognitive services) nebo klíč předplatného jednoúčelovou (používá se pouze s konkrétní služby cognitive Services). Ale protože Rozlišovač formuláře je verze preview, není zahrnutý v předplatném s více službami a jednoúčelovou předplatné nelze vytvořit, pokud nechcete použít odkaz uvedený v uvítacím e-mailu.
+
+Po dokončení nasazení prostředku Rozlišovač formuláře vyhledejte a vyberte ho z **všechny prostředky** seznamu na portálu. Vyberte **klíče** kartu k zobrazení klíče předplatného. Ani jeden klíč vám poskytne vaší aplikaci přístup k prostředku. Zkopírujte hodnotu **klíč 1**. Použijete ho v další části.
 
 ## <a name="train-a-form-recognizer-model"></a>Trénování modelu Rozlišovač formuláře
 
@@ -37,7 +53,7 @@ K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerec
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data.  
-1. Místo `<subscription key>` použijte váš klíč předplatného.
+1. Nahraďte `<subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"

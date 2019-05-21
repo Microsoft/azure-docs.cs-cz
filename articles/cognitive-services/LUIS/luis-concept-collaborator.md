@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812878"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956980"
 ---
 # <a name="collaborating-with-other-authors"></a>Spolupráce s jinými autory
 
@@ -52,7 +52,7 @@ Pokud chcete sdílet více aplikací s spolupracovníky, každé aplikaci, kter�
 ## <a name="manage-multiple-versions-inside-the-same-app"></a>Spravovat více verzí uvnitř stejné aplikace
 Začněte tím, že [klonování](luis-how-to-manage-versions.md#clone-a-version), od základní verze, pro jednotlivé autory. 
 
-Jednotlivé autory změní svou vlastní verzi aplikace. Jakmile jednotlivé autory s modelem spokojeni, exportujte soubory JSON nové verze.  
+Jednotlivé autory provede změny jejich vlastní verzi aplikace. Jakmile jednotlivé autory s modelem spokojeni, exportujte soubory JSON nové verze.  
 
 Exportované aplikace jsou soubory ve formátu JSON, které je možné porovnat změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace. 
 

@@ -16,11 +16,11 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6741cf58208e972c85d41f2fa657e7dd82cc4f2b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877679"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>Kurz: Integrace Azure Active Directory s Degreed
 
@@ -193,7 +193,7 @@ Neexistuje žádná položka akce pro vás v této části. Nový uživatel se v
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Degreed](mailto:admin@degreed.com).
 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
