@@ -819,51 +819,45 @@
       items:
         - name: Výstrahy
           items:
-            - name: Použití upozornění metrik
-              items:
-                - name: 'Vytvoření, zobrazení a správa upozornění metrik v Azure Monitoru'
-                  href: platform/alerts-metric.md
-                - name: 'Vytvoření, zobrazení a správa klasických upozornění metrik v Azure Monitoru'
-                  href: platform/alerts-classic-portal.md
-                - name: Upozornění metrik s dynamickými prahovými hodnotami
-                  href: platform/alerts-dynamic-thresholds.md
-                - name: Konfigurace upozornění metrik pro protokoly
-                  href: platform/alerts-metric-logs.md
-                - name: Vytvoření novějšího upozornění na metriku pomocí šablony Resource Manageru
-                  href: platform/alerts-metric-create-templates.md
-                - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
-                  href: platform/alerts-enable-template.md
-                - name: Nastavení klasického upozornění metrik pro volání webhooku
-                  href: platform/alerts-webhooks.md
-            - name: Použití upozornění protokolu
-              items:
-                - name: Konfigurace upozornění pro analytický dotaz
-                  href: platform/alerts-log.md
-                - name: Dotazy na upozornění protokolu
-                  href: platform/alerts-log-query.md
-                - name: Akce webhooku pro výstrahy protokolu
-                  href: platform/alerts-log-webhook.md
-                - name: Řešení potíží s výstrahami protokolu
-                  href: platform/alert-log-troubleshoot.md
-            - name: Použití upozornění protokolu aktivit
-              items:
-                - name: Konfigurace upozornění pro událost protokolu aktivit
-                  href: platform/alerts-activity-log.md
-                - name: Migrace na upozornění protokolu aktivit
-                  href: platform/migrate-management-alerts.md
-                - name: Konfigurace upozornění pro oznámení služby
-                  href: platform/alerts-activity-log-service-notifications.md
-            - name: Použití upozornění aplikací
+            - name: Pravidla upozornění aplikace
               items:
                 - name: Dostupnost
                   href: app/monitor-web-app-availability.md
                 - name: Upozornění metrik
                   href: app/alerts.md
-            - name: Použití skupin akcí s upozorněními
+            - name: Pravidla upozornění metriky platformy
               items:
-                - name: Vytvoření skupin akcí
+                - name: Správa upozornění metrik
+                  href: platform/alerts-metric.md
+                - name: Použití dynamických prahových hodnot
+                  href: platform/alerts-dynamic-thresholds.md
+                - name: Upozornění metrik pro protokoly
+                  href: platform/alerts-metric-logs.md
+                - name: Použití šablony Resource Manageru
+                  href: platform/alerts-metric-create-templates.md
+            - name: Pravidla upozornění protokolu
+              items:
+                - name: Konfigurace upozornění pro analytický dotaz
+                  href: platform/alerts-log.md
+                - name: Dotazy
+                  href: platform/alerts-log-query.md
+                - name: Akce webhooků
+                  href: platform/alerts-log-webhook.md
+                - name: Řešení potíží
+                  href: platform/alert-log-troubleshoot.md
+            - name: Pravidla upozornění protokolu aktivit
+              items:
+                - name: Upozornění pro událost protokolu aktivit
+                  href: platform/alerts-activity-log.md
+                - name: Migrace událostí správy na upozornění protokolu aktivit
+                  href: platform/migrate-management-alerts.md
+                - name: Upozornění na oznámení o stavu služby
+                  href: platform/alerts-activity-log-service-notifications.md
+            - name: Použití skupin akcí
+              items:
+                - name: Vytvoření skupiny akcí
                   href: platform/action-groups.md
-                - name: Další informace o schématu webhooků
+                - name: Schéma webhooku
                   href: platform/activity-log-alerts-webhook.md
                 - name: Definice běžných schémat upozornění
                   href: platform/alerts-common-schema-definitions.md
@@ -875,9 +869,9 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: Implementace akce aplikace logiky
                   href: platform/action-groups-logic-app.md
-            - name: Upozornění z Operations Manageru
+            - name: Řešení Alert Managementu
               href: platform/alert-management-solution.md
-            - name: Správa upozornění
+            - name: Uživatelské rozhraní upozornění
               items:
                 - name: Správa instancí upozornění
                   href: platform/alerts-managing-alert-instances.md
@@ -887,19 +881,31 @@
                   href: platform/alerts-managing-alert-states.md
                 - name: Správa upozornění z ostatních služeb monitorování
                   href: platform/alerts-managing-nagios-zabbix-scom.md
-            - name: Migrace klasických upozornění
+            - name: Migrace klasických pravidel upozornění
               items:
-                - name: Použití nástroje pro migraci
-                  href: platform/alerts-using-migration-tool.md
-                - name: Příprava pro migraci
+                - name: Příprava migrace
                   href: platform/alerts-prepare-migration.md
                 - name: Vysvětlení nástroje pro migraci
                   href: platform/alerts-understand-migration.md
+                - name: Použití nástroje pro migraci
+                  href: platform/alerts-using-migration-tool.md
+                - name: Správy klasických upozornění metrik
+                  href: platform/alerts-classic-portal.md
+                - name: Klasické upozornění metriky s využitím šablony Resource Manageru
+                  href: platform/alerts-enable-template.md
+                - name: Klasické upozornění metriky s voláním webhooku
+                  href: platform/alerts-webhooks.md
+        - name: Upozornění na stav služby v protokolu aktivit
+          items:
+            - name: Zobrazení oznámení
+              href: platform/service-notifications.md
+            - name: Konfigurace upozornění pro události oznámení
+              href: platform/alerts-activity-log-service-notifications.md
         - name: Automatické škálování
           items:
-            - name: Principy automatického škálování
+            - name: Názorný postup
               href: platform/autoscale-get-started.md
-            - name: Vysvětlení nastavení automatického škálování
+            - name: Nastavení
               href: platform/autoscale-understanding-settings.md
             - name: Osvědčené postupy
               href: platform/autoscale-best-practices.md
@@ -907,20 +913,14 @@
               href: platform/autoscale-common-metrics.md
             - name: Obvyklé scénáře
               href: platform/autoscale-common-scale-patterns.md
-            - name: Automatické škálování s použitím vlastních metrik
+            - name: Škálování s využitím vlastních metrik
               href: platform/autoscale-custom-metric.md
-            - name: Automatické škálování škálovacích sad virtuálních počítačů pomocí šablon Resource Manageru
-              href: platform/autoscale-virtual-machine-scale-sets.md
-            - name: Automatické škálování počítačů ve škálovací sadě virtuálních počítačů
+            - name: Škálování škálovacích sad virtuálních počítačů
               href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
-            - name: Konfigurace webhooků a e-mailových oznámení pro automatické škálování
+            - name: Škálování škálovacích sad virtuálních počítačů s využitím šablon Resource Manageru
+              href: platform/autoscale-virtual-machine-scale-sets.md
+            - name: Použití webhooků a e-mailových oznámení
               href: platform/autoscale-webhook-email.md
-        - name: Oznámení služby
-          items:
-            - name: Zobrazení oznámení služby
-              href: platform/service-notifications.md
-            - name: Konfigurace upozornění pro oznámení služby
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Správa služeb IT
           items:
             - name: IT Service Management Connector

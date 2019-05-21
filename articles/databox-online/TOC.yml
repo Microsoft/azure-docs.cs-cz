@@ -89,6 +89,8 @@
           items:
             - name: Výpočetní funkce Edge
               href: data-box-edge-manage-compute.md
+            - name: Síť výpočetních funkcí Edge
+              href: data-box-edge-extend-compute-access-modules.md
             - name: Sdílené složky
               href: data-box-edge-manage-shares.md
             - name: Uživatelé
