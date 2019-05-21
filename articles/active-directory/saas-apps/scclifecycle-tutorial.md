@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: df48cb2a0e8716c335fdb4915f0a364c373a6546
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565304"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Kurz: Integrace Azure Active Directory s životního cyklu SCC
 
@@ -198,7 +198,7 @@ Přiřazený uživatel se pokusí přihlásit do životního cyklu SCC, účet S
 > [!NOTE]
 > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 0cc94141d683f626d0654e2067135569710de330
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919901"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Kurz: Integrace Azure Active Directory s Yonyx interaktivní vodítka
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v Yonyx interaktivní vodí
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Yonyx interaktivní vodítka](mailto:support@yonyx.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

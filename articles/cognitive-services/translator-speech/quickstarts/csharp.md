@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
-ms.date: 3/5/2018
+ms.date: 04/26/2019
 ms.author: v-jaswel
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4fe4f651340ef54c2907192f3a96e9a017ab1dd
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827489"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910509"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Rychlý start: Translator Speech API sC#
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak použít rozhraní Translator Speech API k př
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.) Pokud používáte Mac OS nebo Linux můžete také použít textový editor [Visual Studio Code](https://code.visualstudio.com/Download) jako alternativu.
+Budete potřebovat [Visual Studio 2019](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.) Pokud používáte Mac OS nebo Linux můžete také použít textový editor [Visual Studio Code](https://code.visualstudio.com/Download) jako alternativu.
 
 Budete potřebovat soubor .wav s názvem „speak.wav“ ve stejné složce jako spustitelný soubor, který zkompilujete z níže uvedeného kódu. Tento soubor .wav musí být ve standardním 16bitovém, 16kHz monofonním formátu PCM.
 

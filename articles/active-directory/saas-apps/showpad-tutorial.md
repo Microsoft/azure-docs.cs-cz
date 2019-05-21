@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 90a9fec3dc5b7252a0eb9d4120336db168148583
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683515"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Kurz: Integrace Azure Active Directory s Showpad
 
@@ -208,7 +208,7 @@ V této části je povolit Britta Simon k udělení přístupu k Showpad použit
 
 V této části se vytvoří uživateli Britta Simon v Showpad. Showpad podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Showpad, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

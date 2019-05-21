@@ -5,15 +5,15 @@ author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 04/26/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a37b0b1a804851268fad30038388c20d2e4fb6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894386"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912691"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Použití knihovny BulkExecutor .NET pro grafy k provádění hromadných operací v rozhraní Gremlin API služby Azure Cosmos DB
 
@@ -114,7 +114,7 @@ e.AddProperty("customProperty", "value");
 ## <a name="sample-application"></a>Ukázková aplikace
 
 ### <a name="prerequisites"></a>Požadavky
-* Sada Visual Studio 2017 se sadou funkcí Vývoj pro Azure. Můžete začít zdarma se sadou [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/).
+* Visual Studio. 2019 s úlohou vývoj pro Azure. Můžete začít s [Visual Studio. 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) zdarma.
 * Předplatné Azure. [Tady si můžete vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativně si můžete na stránce [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) vytvořit účet databáze Cosmos DB bez předplatného Azure.
 * Databáze rozhraní Gremlin API služby Azure Cosmos DB s **neomezenou kolekcí**. Tato příručka ukazuje, jak začít s rozhraním [Gremlin API služby Azure Cosmos DB v .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. Další informace najdete na [stránce pro stažení Gitu](https://git-scm.com/downloads).

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a35a71896951e42b66f5b02998867d015923d29
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269907"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Kurz: Integrace Azure Active Directory s Tidemark
 
@@ -196,7 +196,7 @@ V této části je povolit Britta Simon k udělení přístupu k Tidemark použi
 
 V této části vytvoříte uživatele v Tidemark jako Britta Simon. Práce s [tým podpory Tidemark](http://www.tidemark.com/contact-us) přidat uživatele na platformě Tidemark. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

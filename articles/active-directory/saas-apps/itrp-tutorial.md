@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 343439bbf47914404c4598369926f2f02cf5c9af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60270681"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898116"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Integrace Azure Active Directory s ITRP
 
@@ -239,7 +239,7 @@ Povolení služby Azure AD uživatelům umožní přihlásit k ITRP, musí být 
 > [!NOTE]
 > Můžete použít jakékoli jiné ITRP uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných ITRP uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

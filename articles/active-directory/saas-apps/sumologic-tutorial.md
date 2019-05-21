@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 4edd445fe526b9be5c421b21b25f9b095c734f43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269890"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Kurz: Integrace Azure Active Directory s SumoLogic
 
@@ -252,7 +252,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit k SumoLogic, musí 
 > [!NOTE]
 > Můžete použít jakékoli jiné SumoLogic uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných SumoLogic uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

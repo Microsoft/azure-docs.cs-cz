@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc8431e2c45cc3bfdfa08dd0078220ab2d290309
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60315988"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Kurz: Integrace Azure Active Directory s Velpic SAML
 
@@ -239,7 +239,7 @@ Přihlaste se jako správce společnosti lokalitu Velpic SAML a proveďte násle
     
     f. Klikněte na **ULOŽIT**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 5bd7c5fe97d18d83f07db2b8b75ee556b0ad685d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277364"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Kurz: Integrace Azure Active Directory s skleníkových
 
@@ -210,7 +210,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do skleníkových, musí 
       >[!NOTE]
       >Držiteli účtu Azure Active Directory obdrží e-mailu včetně odkaz pro potvrzení účtu, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

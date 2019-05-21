@@ -16,11 +16,11 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88d181c2e761679d7f52208b2086404411bc2012
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60274270"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Kurz: Integrace Azure Active Directory s IdeaScale
 
@@ -242,7 +242,7 @@ Umožňuje uživatelům Azure AD k přihlášení do IdeaScale, musí být posky
 > [!NOTE]
 > Můžete použít jakékoli jiné IdeaScale uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných IdeaScale uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

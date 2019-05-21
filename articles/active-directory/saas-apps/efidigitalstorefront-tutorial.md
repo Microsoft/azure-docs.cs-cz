@@ -16,11 +16,11 @@ ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af9d475c4be2adae360d77b3effc758684d60175
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280067"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Kurz: Integrace Azure Active Directory s digitální StoreFront EFI
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v digitální StoreFront EFI. Práce s [tým podpory digitální StoreFront EFI](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) přidat uživatele na platformě digitální StoreFront EFI. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

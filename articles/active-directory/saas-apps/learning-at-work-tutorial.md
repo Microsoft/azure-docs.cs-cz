@@ -16,11 +16,11 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fd941e2c6d4b830bea6458e74fd27123b25efdf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60257928"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Kurz: Integrace Azure Active Directory s učení v práci
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v učení v práci. Práce s [učení na tým podpory pracovních](https://www.learninga-z.com/site/contact/support) přidat uživatele v učení na platformě práce. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

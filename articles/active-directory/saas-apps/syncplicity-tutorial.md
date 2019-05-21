@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 041f1e9706c7d815dad1a33104e7dd15b2cc3893
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270219"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>Kurz: Integrace Azure Active Directory s Syncplicity
 
@@ -235,7 +235,7 @@ Pro uživatele AAD, bude moct přihlásit musí být zřízená Syncplicity apli
 > [!NOTE]
 > Můžete použít jakékoli jiné Syncplicity uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Syncplicity uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

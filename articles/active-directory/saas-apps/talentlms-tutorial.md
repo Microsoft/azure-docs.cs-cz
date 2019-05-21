@@ -17,11 +17,11 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c17c055b79b8b90bd56a1dcd6472cf74d2512137
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922320"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Integrace Azure Active Directory s TalentLMS
 
@@ -242,7 +242,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k TalentLMS, mus
 > [!NOTE]
 > Můžete použít jakékoli jiné TalentLMS uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných TalentLMS uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

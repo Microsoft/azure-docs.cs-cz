@@ -4,15 +4,15 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2019
-ms.openlocfilehash: 19726330561abfad08aec3c4908c855616c6ee29
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 327654ca06a3997855d904414fa4258491ee6c88
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520903"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885026"
 ---
-### <a name="running-multiple-containers-on-the-same-host"></a>Spouštění více kontejnerů na stejném hostiteli
+### <a name="run-multiple-containers-on-the-same-host"></a>Spouštění více kontejnerů na stejném hostiteli
 
 Pokud máte v úmyslu spustit několik kontejnerů s vystavené porty, ujistěte se, že ke spuštění každý kontejner s jiným portem vystavené. Například spusťte první kontejner na portu 5000 a druhý kontejner na portu 5001.
 
-Můžete mít tento kontejner a kontejner různé služby Cognitive Services spuštěných na HOSTITELI, společně nebo může mít několik kontejnerů stejného kontejneru služby Cognitive Services.
+Může mít tento kontejner a kontejner různých služeb Azure Cognitive Services běží na HOSTITELI společně. Také může mít několik kontejnerů stejného kontejneru služeb Cognitive Services.

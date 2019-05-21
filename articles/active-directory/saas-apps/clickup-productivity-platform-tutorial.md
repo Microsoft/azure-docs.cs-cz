@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282640"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Kurz: Integrace Azure Active Directory s ClickUp produktivní platforma
 
@@ -205,7 +205,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
     > [!NOTE]
     > Uživatel dostane oznámení a má k přijetí pozvánky k aktivaci účtu.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.date: 12/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae59e6820214d1f3291f4d95a0bc7094f8b488d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856069"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Integrace Azure Active Directory s Palo Alto Networks - GlobalProtect
 
@@ -121,7 +121,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Palo Alto Networks - Global
 
     | Název | Zdrojový atribut|
     | ------|--------- |
-    | uživatelské jméno  | user.userprincipalname  |
+    | username  | user.userprincipalname  |
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -233,7 +233,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se vytvoří uživateli Britta Simon v Palo Alto Networks - GlobalProtect. Palo Alto Networks - GlobalProtect podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Palo Alto Networks - GlobalProtect, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

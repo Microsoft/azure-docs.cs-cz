@@ -16,11 +16,11 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 592d885656ee7753054f020f5768a75a5d43a489
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278698"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>Kurz: Integrace Azure Active Directory s FiscalNote
 
@@ -120,10 +120,10 @@ Ke konfiguraci Azure AD jednotné přihlašování s FiscalNote, proveďte násl
 
 6. Kromě toho výše FiscalNote aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| ----------------|
     | familyName| user.surname|
-    | e-mail| user.mail|
+    | email| user.mail|
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -219,7 +219,7 @@ V této části se vytvoří uživateli Britta Simon v FiscalNote. FiscalNote po
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory FiscalNote](mailto:support@fiscalnote.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

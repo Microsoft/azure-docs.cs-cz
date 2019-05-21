@@ -16,11 +16,11 @@ ms.date: 01/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7fbaad8ea3e242c79f06ac314f551bddd892d45
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852145"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Kurz: Integrace Azure Active Directory s Asset Bank
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v bance Asset. Asset Bank p
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Asset Bank](mailto:support@assetbank.co.uk).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60283825"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Kurz: Integrace Azure Active Directory s Asaně
 
@@ -208,7 +208,7 @@ V této části vytvořte uživatele Britta Simon v Asaně.
 
 3. Klikněte na tlačítko **odeslat pozvánku**. Nový uživatel obdrží e-mailu do svých e-mailový účet. uživatel bude muset vytvořit a ověřit účet.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

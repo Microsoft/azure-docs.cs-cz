@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: a2bfcdcef00889d12fb30cb6f16bf74e6ab2cbd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278339"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a>Kurz: Integrace Azure Active Directory s PostBeyond
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon k udělení přístupu k PostBeyond pou�
 
 V této části vytvoříte uživatele v PostBeyond jako Britta Simon. Práce s [tým podpory PostBeyond](mailto:sso@postbeyond.com) přidejte uživatele PostBeyond platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

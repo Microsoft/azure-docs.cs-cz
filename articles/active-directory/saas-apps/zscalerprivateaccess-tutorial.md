@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 3213667e95c1e5cb68a849d6031db9629e5b273b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692672"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65895978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Integrace s Azure Active Directory se Zscalerem privátní přístup (ZPA)
 
@@ -200,7 +200,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživateli Britta Simon v Zscalerem privátní přístup (ZPA). Spojte se prosím s [tým podpory Zscalerem privátní přístup (ZPA)](https://help.zscaler.com/zpa-submit-ticket) přidat uživatele na platformě Zscalerem privátní přístup (ZPA).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

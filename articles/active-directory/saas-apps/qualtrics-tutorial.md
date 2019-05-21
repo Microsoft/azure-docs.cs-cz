@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 5e7c1ce6ab217149acd3aed9e5268b70fbd664df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274178"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>Kurz: Integrace Azure Active Directory s Qualtrics
 
@@ -192,7 +192,7 @@ V této části je povolit Britta Simon k udělení přístupu k Qualtrics použ
 
 V této části se vytvoří uživateli Britta Simon v Qualtrics. Qualtrics podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Qualtrics, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

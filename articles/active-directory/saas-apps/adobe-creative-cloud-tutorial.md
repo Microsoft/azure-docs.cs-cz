@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285119"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Kurz: Integrace Azure Active Directory s Adobe Creative Cloud
 
@@ -118,11 +118,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s Adobe Creative Cloud, prove
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.mail
+    | E-mail | user.mail
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -253,7 +253,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Adobe Creative Cloud, 
    * V rámci aplikace klasické pracovní plochy nástroje > přihlášení
    * V rámci aplikace > Nápověda > přihlášení
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

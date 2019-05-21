@@ -16,11 +16,11 @@ ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 011991a3951adde9a0d062b40584caa74d172023
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918724"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Kurz: Integrace Azure Active Directory s Domo
 
@@ -137,8 +137,8 @@ Ke konfiguraci Azure AD jednotné přihlašování s Domo, proveďte následují
     | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | NameIdentifier | user.userprinicipalname |
-    | jméno | user.displayname |
-    | e-mail | user.mail |
+    | name | user.displayname |
+    | email | user.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -231,7 +231,7 @@ V této části je povolit Britta Simon k udělení přístupu k Domo použití 
 
 V této části se vytvoří uživateli Britta Simon v Domo. Domo podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Domo, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

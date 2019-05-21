@@ -17,11 +17,11 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e979410405aa9914b496b80d2ac783a67b480a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60375462"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65887884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workgrid"></a>Kurz: Integrace Azure Active Directory s Workgrid
 
@@ -190,7 +190,7 @@ V této části je povolit Britta Simon k udělení přístupu k Workgrid použi
 
 V této části se vytvoří uživateli Britta Simon v Workgrid. Workgrid podporuje just-in-time zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Workgrid, vytvoří se při pokusu o přístup k Workgrid nový.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

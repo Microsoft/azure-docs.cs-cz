@@ -16,11 +16,11 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b00e27a0620212fbc09f8b7d91d8f5b9d0971c8f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105713"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Kurz: Integrace Azure Active Directory s Samanage
 
@@ -237,7 +237,7 @@ V případě Samanage zřizování se ruční úlohy.
    >[!NOTE]
    >Držitel účtu Azure Active Directory bude dostávat e-mailu a odkaz potvrďte svůj účet, pak se změní na aktivní. Můžete použít jakékoli jiné Samanage uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Samanage ke zřízení služby Azure Active Directory uživatelské účty.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

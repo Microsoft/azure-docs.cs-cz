@@ -303,9 +303,9 @@
         - name: Informace
           href: speech-devices-sdk.md
         - name: Licence
-          href: speech-devices-sdk-license.md
+          href: 'https://aka.ms/sdsdk-license'
         - name: Oznámení třetích stran
-          href: devices-sdk-third-party-notices.md
+          href: 'https://aka.ms/sdsdk-toctpn'
     - name: Řešení potíží se sadou Speech SDK
       href: troubleshooting.md
     - name: Řešení potíže se sadou Speech Devices SDK

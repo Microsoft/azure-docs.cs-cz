@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e8b2b4d1a660fe2f1289bba6fa596d08ec824b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341389"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889983"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soloinsight-cloudgate-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Soloinsight CloudGate
 
@@ -225,7 +225,7 @@ Chcete-li vytvořit testovacího uživatele, vyberte **zaměstnanci** v hlavní 
 
 ![Zaměstnanec testu](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

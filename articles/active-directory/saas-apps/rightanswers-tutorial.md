@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: b45c88ddf3e4a5781e48641d26a9487e5861880c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688664"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Kurz: Integrace Azure Active Directory s RightAnswers
 
@@ -193,7 +193,7 @@ Uživatelé se automaticky vytvoří v případě potřeby během první jednotn
 > [!NOTE]
 > Můžete použít jakékoli jiné RightAnswers uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných RightAnswers uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 352ad9473a1c1a9360ddceb720ff968f4e97e012
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876648"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Integrace Azure Active Directory s Tableau Online
 
@@ -235,7 +235,7 @@ V této části vytvořte uživatele Britta Simon v Tableau Online.
 
 3. Klikněte na tlačítko **přidat uživatele**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

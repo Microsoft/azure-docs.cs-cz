@@ -17,11 +17,11 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c43a38a456eb0fce3f46409bd256f0fc42e8ade
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691442"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-security-fabric"></a>Kurz: Integrace Azure Active Directory s zabezpečení cloudových prostředků infrastruktury
 
@@ -195,7 +195,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v zabezpečení cloudových prostředků infrastruktury. Práce s [tým podpory zabezpečení cloudových prostředků infrastruktury](mailto:support@cloudlock.com) přidat uživatele na platformě zabezpečení cloudových prostředků infrastruktury. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

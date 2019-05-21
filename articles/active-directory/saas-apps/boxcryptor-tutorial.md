@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8dc04a307779b47b50cd16a81c0566b72bafab95
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860549"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Kurz: Integrace Azure Active Directory s Boxcryptor
 
@@ -183,7 +183,7 @@ V této části je povolit Britta Simon k udělení přístupu k Boxcryptor pou�
 
 V této části vytvoříte uživatele v Boxcryptor jako Britta Simon. Práce s [tým podpory Boxcryptor](mailto:support@boxcryptor.com) přidat uživatele nebo domény, který je nutný na seznamu povolených Boxcryptor platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Boxcryptor platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

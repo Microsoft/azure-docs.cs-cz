@@ -16,11 +16,11 @@ ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860376"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Kurz: Integrace Azure Active Directory s AppDynamics
 
@@ -212,7 +212,7 @@ Cílem této části je vytvořte uživatele Britta Simon v AppDynamics. AppDyna
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory AppDynamics klienta](https://www.appdynamics.com/support/).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

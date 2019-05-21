@@ -16,11 +16,11 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e6655c1f67b5655dbde8c04f09a664f64350e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60283758"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Kurz: Integrace Azure Active Directory s Ariba
 
@@ -180,7 +180,7 @@ V této části je povolit Britta Simon k udělení přístupu k Ariba použití
 
 V této části vytvoříte uživatele v Ariba jako Britta Simon. Spolupracovat s týmem podpory Ariba na **1-866-218-2155** přidejte uživatele, Ariba platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

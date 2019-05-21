@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999753"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Kurz: Integrace Azure Active Directory s přijetím Suite CX
 
@@ -196,7 +196,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon sady CX přijetím. Práce s [tým podpory přijetím Suite CX](mailto:support@foresee.com) k přidání uživatele nebo domény, který je nutný na seznamu povolených na platformě přijetím CX Suite. Pokud je doména přidána týmem, bude získat uživatelé automaticky přiřazeni k přijetím Suite CX platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ae1578a04bf6a94aeb5a7a3b64ac3ae722fe9ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285659"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896950"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>Kurz: Integrace Azure Active Directory s 15Five
 
@@ -208,7 +208,7 @@ Přihlaste se k 15Five Azure AD uživatelům umožnit, musí být poskytnuty do 
     > [!NOTE]
     > Držitel účtu Azure AD obdrží e-mailu včetně odkaz pro potvrzení účtu, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

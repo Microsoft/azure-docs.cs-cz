@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 35fc4e855ef53bd7e667fc8de7146916b4d05acb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 72505cfc0a86c00882de37c35dff61a12a9c3fbe
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407069"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Kurz: Integrace Azure Active Directory se službou DocuSign
 
@@ -178,7 +178,7 @@ Ke konfiguraci Azure AD jednotného přihlašování službou DocuSign, proveďt
 
     ![Konfiguruje se jednotné přihlašování.][62]
 
-    i. Zvolte pole, které chcete propojit s deklarací identity Azure AD. V tomto příkladu **emailaddress** deklarací identity je namapována na žádnou hodnotu **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Jedná se o výchozí název deklarace identity z Azure AD pro deklarace identity e-mailu a pak klikněte na tlačítko **Uložit**.
+    i. Zvolte pole, které chcete propojit s deklarací identity Azure AD. V tomto příkladu **emailaddress** deklarací identity je namapována na žádnou hodnotu **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Jedná se o výchozí název deklarace identity z Azure AD pro deklarace identity e-mailu a pak klikněte na tlačítko **Uložit**.
 
     ![Konfiguruje se jednotné přihlašování.][57]
 

@@ -16,11 +16,11 @@ ms.date: 12/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d55ae4077b3ec14cb8dc2226714b094574ed9522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905643"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Kurz: Integrace Azure Active Directory s Dropbox for Business
 
@@ -224,7 +224,7 @@ V této části se vytvoří uživateli Britta Simon v Dropboxu pro firmy. Dropb
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory obchodních klienta z Dropboxu](https://www.dropbox.com/business/contact)
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

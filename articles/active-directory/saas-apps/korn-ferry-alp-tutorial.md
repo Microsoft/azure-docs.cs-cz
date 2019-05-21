@@ -16,11 +16,11 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 426162d6655a107aad6fc7dd1081ca9352099449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261379"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>Kurz: Integrace Azure Active Directory s Korn Ferry ALP
 
@@ -187,7 +187,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v Korn Ferry ALP jako Britta Simon. Práce s [tým podpory Korn Ferry ALP](mailto:noreply@kornferry.com) přidat uživatele na platformě Korn Ferry ALP. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

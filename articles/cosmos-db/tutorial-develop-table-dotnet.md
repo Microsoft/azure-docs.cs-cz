@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: ce1af9c88bbdad96a22eb96abc26026abcad56cc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: cda9c4c914e4ec955d2009ce3f015bf7807027f6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793043"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922199"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB Table API a Azure Table storage pomocí .NET SDK
 
@@ -41,15 +41,15 @@ Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
 ## <a name="create-a-net-console-project"></a>Vytvořit projekt konzoly .NET
 
-V sadě Visual Studio vytvořte novou konzolovou aplikaci .NET. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v sadě Visual Studio 2017. Kroky u ostatních verzí sady Visual Studio jsou podobné. Můžete použít knihovnu tabulky Azure Cosmos DB z libovolného typu aplikace .NET, včetně Azure cloud service nebo do webové aplikace a desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
+V sadě Visual Studio vytvořte novou konzolovou aplikaci .NET. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v aplikaci Visual Studio 2019. Můžete použít knihovnu tabulky Azure Cosmos DB z libovolného typu aplikace .NET, včetně Azure cloud service nebo do webové aplikace a desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
 1. Vyberte **Soubor** > **Nový** > **Projekt**.
 
-1. Vyberte **nainstalované** > **Visual C#**   >  **aplikace (.NET Core) konzoly**.
+1. Zvolte **Konzolová aplikace (.NET Core)** a pak vyberte **Další**.
 
-1. V **název** pole, zadejte název pro vaši aplikaci, například **CosmosTableSamples** (můžete zadat jiný název podle potřeby).
+1. V **název projektu** pole, zadejte název pro vaši aplikaci, jako například **CosmosTableSamples**. (Je můžete zadat jiný název podle potřeby.)
 
-1. Vyberte **OK**.
+1. Vyberte **Vytvořit**.
 
 Všechny příklady kódu v této ukázce lze přidat do metody Main() vaší konzolové aplikace **Program.cs** souboru.
 

@@ -16,11 +16,11 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888123"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Integrace Azure Active Directory pomocí Adobe Sign
 
@@ -250,7 +250,7 @@ Povolení služby Azure AD uživatelům umožní přihlásit k Adobe Sign, musí
 >[!NOTE]
 >Držitel účtu Azure Active Directory obdrží e-mailu, který obsahuje odkaz pro potvrzení účtu, pak se změní na aktivní. 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

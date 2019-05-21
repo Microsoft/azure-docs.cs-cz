@@ -16,11 +16,11 @@ ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 05127e8ecfe68b4cb6330f838f252557bbd5e11d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272695"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Kurz: Integrace Azure Active Directory s Cisco Webex
 
@@ -251,7 +251,7 @@ V této části vytvořte uživatele Britta Simon v Cisco Webex. V této části
 
 6. V **přidat služby pro uživatele** okna, klikněte na tlačítko **Uložit** a potom **Dokončit**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

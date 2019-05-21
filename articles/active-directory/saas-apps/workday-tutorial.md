@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 36773fce18abe5e91f393e2e82e0fb5eb44bb3b4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601717"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Kurz: Integrace Azure Active Directory s aplikací Workday
 

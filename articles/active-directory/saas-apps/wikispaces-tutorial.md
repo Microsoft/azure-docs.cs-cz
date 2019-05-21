@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 1d57ec0299aa541d1642d77421e85c6fbdf070c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269057"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Kurz: Integrace Azure Active Directory s Wikispaces
 
@@ -210,7 +210,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit k Wikispaces, musí
 > [!NOTE]
 > Můžete použít jakékoli jiné Wikispaces uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Wikispaces uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

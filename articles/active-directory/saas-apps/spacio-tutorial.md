@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 295fc80c0b6d9a4554dc08d24d9167bea627144f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273613"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Integrace Azure Active Directory s Spacio
 
@@ -175,7 +175,7 @@ V této části je povolit Britta Simon k udělení přístupu k Spacio použit�
 
 V této části vytvoříte uživatele v Spacio jako Britta Simon. Práce s [tým podpory Spacio](mailto:support@spac.io) přidat uživatele na platformě Spacio. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

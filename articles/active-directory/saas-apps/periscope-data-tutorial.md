@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 878d9b40172313ac6c3d816cbf0da6aba5e18542
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617882"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Integrace Azure Active Directory s daty přes aplikaci Periscope
 
@@ -223,7 +223,7 @@ Přihlaste se k datům přes aplikaci Periscope Azure AD uživatelům umožnit, 
 
     d. Klikněte na tlačítko **přidat**.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

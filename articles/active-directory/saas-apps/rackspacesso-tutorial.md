@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: fd420ea3fc4faae7fe4510a72204d71acaa3549a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009921"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Rackspace
 
@@ -228,7 +228,7 @@ mapping:
 
 Zobrazit Rackspace [základy mapování atributů dokumentaci](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) Další příklady.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

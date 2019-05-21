@@ -9,81 +9,81 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 6fba9e6387e60f2156ee01461c3bba22405376fc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c45fd508c14c368c6c9057b9fdeea8df9d8a52c3
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729575"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905688"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 
-Rozhraní API Azure pro rozpoznávání tváře je služba Cognitive Services, která poskytuje algoritmy pro detekci, rozpoznávání a analýzu lidských tváří na obrázcích. Schopnost zpracovávat informace o lidských tvářích je důležitá v řadě různých scénářů softwaru, jako jsou zabezpečení, přirozené uživatelské rozhraní, analýza a správa obsahu obrázků, mobilní aplikace a robotika.
+Azure Cognitive Services Face API poskytuje algoritmy, které se používají ke zjištění, rozpoznat a analyzovat lidských tváří na obrázcích. Možnost zpracování lidské tváře v trestním řízení je důležité pro mnoho scénářů s jinou softwaru. Ukázkové scénáře jsou zabezpečení, přirozené uživatelské rozhraní, analýzu obsahu bitové kopie a správy, mobilní aplikace a robotika.
 
-Rozhraní API pro rozpoznávání tváře poskytuje několik různých funkcí, které jsou popsané v následujících částech. Přečtěte si další informace o jednotlivých.
+Rozhraní API pro rozpoznávání tváře nabízí několik různých funkcí. Každá funkce popsané v následujících částech. Přečtěte si další informace o nich.
 
 ## <a name="face-detection"></a>Rozpoznávání tváře
 
-Rozhraní API pro rozpoznávání tváře dokáže rozpoznat lidské tváře na obrázku a vrátit souřadnice obdélníků jejich výskytu. Rozpoznávání tváře můžete volitelně extrahovat řadu souvisejících s face atributům, jako je hlavní póza, pohlaví, věk, emoce, vousy a brýlí.
+Rozhraní API pro rozpoznávání tváře detekuje lidské tváře v obrázku a vrací obdélník souřadnice jejich umístění. Rozpoznávání tváře můžete volitelně extrahovat řadu atributy vztahující se k rozpoznávání tváře. Příklady jsou hlavní póza, pohlaví, věk, emoce, vousy a brýlí.
 
 > [!NOTE]
-> Funkce detekce obličeje je k dispozici také prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale pokud chcete s daty o tvářích provádět další operace, měli byste použít rozhraní API pro rozpoznávání tváře (tuto službu).
+> Je také k dispozici prostřednictvím funkce rozpoznávání tváře [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Pokud chcete další operace s daty pro rozpoznávání tváře, použijte rozhraní API pro rozpoznávání tváře, které je služba popisovaných v tomto článku.
 
-![Obrázek ženy a muže s vykreslenými obdélníky kolem jejich tváří a zobrazeným věkem a pohlavím](./Images/Face.detection.jpg)
+![Obrázek ženy a člověka, s obdélníky vykreslen kolem jejich tváří a stáří a zobrazí gender](./Images/Face.detection.jpg)
 
-Další informace o rozpoznávání tváří, najdete v článku [rozpoznávání tváře](concepts/face-detection.md) koncepty článku nebo přejděte [zjišťování rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) referenční dokumentaci.
+Další informace o rozpoznávání tváří, najdete v článku [rozpoznávání tváře](concepts/face-detection.md) koncepty článku. Viz také [zjišťování rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) referenční dokumentaci.
 
 ## <a name="face-verification"></a>Ověření tváře
 
-Rozhraní API pro ověřování provádí ověření dvou detekovaných tváří nebo jedné detekované tváře a jednoho objektu osob. Prakticky vyhodnotí, jestli dvě tváře patří stejné osobě. Toto je potenciálně užitečně ve scénářích zabezpečení. Další informace najdete v tématu [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [ověření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) referenční dokumentaci.
+Rozhraní API pro ověřování provádí ověření dvou detekovaných tváří nebo jedné detekované tváře a jednoho objektu osob. Prakticky vyhodnotí, jestli dvě tváře patří stejné osobě. Tato možnost je potenciálně užitečné v situacích, zabezpečení. Další informace najdete v tématu [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [ověření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) referenční dokumentaci.
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
-Rozhraní API pro vyhledání podobných přebírá cílový obličej a sadu kandidátských tváří a vyhledá menší sadu tváří, které se nejvíce podobají cílovému obličeji. Podporují se dva režimy – **matchPerson** a **matchFace**. Režim **matchPerson** vrátí podobné tváře po vyfiltrování stejné osoby (pomocí [rozhraní API pro ověřování](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)). Režim **matchFace** filtr pro stejnou osobu ignoruje a vrátí seznam podobných kandidátských tváří, které můžou, ale nemusí patřit stejné osobě.
+Vyhledání podobných API porovnává cílové tváře sadu Release candidate tváří najít menší sadu protokolovaných tváří, které vypadají podobně jako cíl rozpoznávání tváře. Dva režimy pro práci, matchPerson a matchFace, jsou podporovány. Režim matchPerson vrátí podobných tváří po filtruje pro stejné osobě pomocí [ověření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim matchFace ignoruje filtr tatáž osoba. Vrátí seznam podobných tváří Release candidate, jež mohou nebo nemusí patřit do stejné osobě.
 
-V následujícím příkladu je toto cílový obličej:
+Následující příklad ukazuje cílový typ písma:
 
 ![Usmívající se žena](./Images/FaceFindSimilar.QueryFace.jpg)
 
 A toto jsou kandidátské tváře:
 
-![Pět obrázků usmívajících se lidí. Obrázky (a) a (b) patří stejné osobě.](./Images/FaceFindSimilar.Candidates.jpg)
+![Pět obrázků usmívajících se lidí. Obrázky a b stejné osobě.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Režim **matchPerson** by při vyhledávání čtyř podobných tváří vrátil obrázky (a) a (b), na kterých je stejná osoba s cílovým obličejem. Režim **matchFace** vrátí obrázky (a), (b), (c) a (d) &mdash; přesně čtyři kandidáty, přestože na některých je jiná než cílová osoba a podobnost některých z nich je nízká. Další informace najdete v tématu [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [Najít podobné API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) referenční dokumentaci.
+Najít čtyři podobných tváří, vrátí hodnotu režimu matchPerson a b, která ukazují, stejná osoba jako cíl rozpoznávání tváře. Vrátí režim matchFace a, b, c a d, přesně čtyři kandidáty, i když některé nejsou stejná osoba jako cíl nebo mají nízké podobnosti. Další informace najdete v tématu [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [Najít podobné API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) referenční dokumentaci.
 
 ## <a name="face-grouping"></a>Seskupování tváří
 
-Rozhraní API pro seskupování rozdělí sadu neznámých tváří do několika skupin podle podobnosti. Každá skupina je vlastní disjunktní podmnožina původní sady tváří. Všechny tváře ve skupině pravděpodobně patří stejné osobě, ale pro jednu osobu může existovat několik různých skupin (odlišených podle jiného faktoru, například výrazu). Další informace najdete v tématu [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [skupiny rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) referenční dokumentaci.
+Rozhraní API pro seskupování rozdělí sadu neznámých tváří do několika skupin podle podobnosti. Každá skupina je vlastní disjunktní podmnožina původní sady tváří. Všechny tváří ve skupině se pravděpodobně patří stejné osobě. Může existovat několik různých skupin pro jedné osobě. Skupiny jsou rozlišené pomocí dalším faktorem, jako je například výrazu, např. Další informace najdete v tématu [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [skupiny rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) referenční dokumentaci.
 
 ## <a name="person-identification"></a>Identifikace osob
 
-Rozhraní API pro identifikaci je možné použít k identifikaci rozpoznané tváře v databázi lidí. To může být užitečné pro automatické označování obrázků v softwaru pro správu fotografií. Databázi vytvoříte předem a pak ji můžete v průběhu času upravovat.
+Rozhraní API pro identifikaci slouží k identifikaci zjištěné rozpoznávání tváře lidí v databázi. Tato funkce může být užitečná pro automatické image značek ve fotografii software pro správu. Předem vytvořit databázi a můžete ho upravit v čase.
 
-Následující obrázek znázorňuje příklad databáze myfriends. Každá skupina může obsahovat až 1 000 000 různých objektů osob a každý objekt osob může registrovat až 248 tváří.
+Následující obrázek ukazuje příklad databázi s názvem "myfriends." Každá skupina může obsahovat až 1 milión jinou osobu objekty. Každý objekt osob může registrovat až 248 tváří.
 
-![Mřížka se 3 sloupci pro různé osoby, z nichž každý obsahuje 3 řádky obrázků tváří](./Images/person.group.clare.jpg)
+![Mřížka s tři sloupce pro různé osoby, každý se třemi řádky obrázků pro rozpoznávání tváře](./Images/person.group.clare.jpg)
 
-Po vytvoření a natrénování databáze můžete proti této skupině provést identifikaci nově rozpoznané tváře. Pokud se tvář identifikuje jako jedna z osob ve skupině, pak se tento objekt osob vrátí.
+Po vytvoření databáze a školení, můžete provést identifikace proti skupině s novou zjištěné rozpoznávání tváře. Pokud se tvář identifikuje jako jedna z osob ve skupině, pak se tento objekt osob vrátí.
 
 Další informace o rozpoznávání osob, najdete v článku [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [identifikovat API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) referenční dokumentaci.
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
-[Použití kontejneru pro rozpoznávání tváře](face-how-to-install-containers.md) zjistit, rozpoznat a identifikujte tváře, nainstalováním standardizované kontejner Dockeru blíž ke svým datům.
+[Použití kontejneru pro rozpoznávání tváře](face-how-to-install-containers.md) zjistit, rozpoznat a identifikujte tváře nainstalováním standardizované kontejner Dockeru blíž ke svým datům.
 
 ## <a name="sample-apps"></a>Ukázkové aplikace
 
-Následující ukázkové aplikace ukazují několik způsobů použití rozhraní API pro rozpoznávání tváře.
+Následující ukázkové aplikace zobrazit několik způsobů, jak použít rozhraní API pro rozpoznávání tváře:
 
-- [Microsoft API pro rozpoznávání tváře: Klientská knihovna pro Windows a ukázka](https://github.com/Microsoft/Cognitive-Face-Windows) – aplikace WPF, který ukazuje několik scénářů pro rozpoznávání tváře detekce, analýza a identifikace.
-- [Aplikace pro UWP FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes) – aplikace pro Univerzální platformu Windows (UPW), která využívá identifikaci tváří společně s řečí, Cortanou, rukopisem a fotoaparátem ve scénáři sdílení rodinných poznámek.
+- [Microsoft API pro rozpoznávání tváře: Klientská knihovna pro Windows a ukázka](https://github.com/Microsoft/Cognitive-Face-Windows) je aplikace WPF, který ukazuje několik scénářů detekce, analýza a identifikace tváře.
+- [Aplikace pro UPW FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes) je, že používá pro rozpoznávání tváře identifikace spolu s řeči, Cortana, inkoustu a fotoaparát v případě řady Poznámka sdílení aplikace univerzální platformy Windows (UPW).
 
 ## <a name="data-privacy-and-security"></a>Ochrany osobních údajů a zabezpečení
 
-Stejně jako všechny služby Cognitive Services, měli vědět zásady společnosti Microsoft na zákaznická data vývojářům, kteří používají službu pro rozpoznávání tváře. Zobrazit [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na webu Microsoft Trust Center další informace.
+Stejně jako všechny prostředky služby Cognitive Services, musí mít přehled o zásady společnosti Microsoft na zákaznická data vývojáře, kteří používají službu pro rozpoznávání tváře. Další informace najdete v tématu [stránku služeb Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) na Microsoft Trust Center.
 
 ## <a name="next-steps"></a>Další postup
 
-Postupujte podle rychlého startu k implementaci jednoduchého scénáře detekce obličeje v kódu.
+Postup rychlého spuštění pro rozpoznávání tváře scénář implementovat v kódu:
 
-- [Rychlé zprovoznění: Rozpoznávání tváří v obrázku pomocí sady .NET SDK s C# ](quickstarts/csharp.md) (v jiných jazycích k dispozici)
+- [Rychlé zprovoznění: Rozpoznávání tváří v obrázku pomocí sady .NET SDK s C# ](quickstarts/csharp.md). Další jazyky jsou k dispozici.

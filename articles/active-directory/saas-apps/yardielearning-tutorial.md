@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a23b024737f6af1f6361983045037b325783518a
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564896"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Kurz: Integrace Azure Active Directory s Yardi hodnoceného
 
@@ -190,7 +190,7 @@ V této části se vytvoří uživateli Britta Simon v e-Yardi učení. Yardi ho
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory hodnoceného Yardi](mailto:elearning@yardi.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

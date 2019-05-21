@@ -16,11 +16,11 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9385ec6a86c24e619ffafdae67bc66f66e099f3b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117226"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Kurz: Integrace Azure Active Directory s 8 x 8 virtuálních Office
 
@@ -222,7 +222,7 @@ V této části se vytvoří uživateli Britta Simon v Office virtuální 8 x 8.
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory virtuální Office 8 x 8](https://www.8x8.com/about-us/contact-us).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e48e353df6c14ec24a01fe3b1852de2c6a0a3155
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843687"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Kurz: Integrace Azure Active Directory pomocí nástroje Sledování výkonu AppNeta
 
@@ -123,9 +123,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s monitorováním výkonu App
     | --------| ----------------|
     | Jméno| user.givenname|
     | Příjmení| user.surname|
-    | e-mail| user.userprincipalname|
-    | jméno| user.userprincipalname|
-    | skupiny  | user.assignedroles |
+    | email| user.userprincipalname|
+    | name| user.userprincipalname|
+    | skupin  | user.assignedroles |
     | telefon| user.telephonenumber |
     | název| user.jobtitle|
     | | |
@@ -227,7 +227,7 @@ V této části se vytvoří uživateli Britta Simon v nástroji Sledování vý
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory sledování výkonu AppNeta](mailto:support@appneta.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

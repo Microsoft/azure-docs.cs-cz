@@ -16,11 +16,11 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c0d595bcd96bb38021a2128138f7ee49f9b8354
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60283056"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Kurz: Integrace Azure Active Directory s Bime
 
@@ -232,7 +232,7 @@ Chcete-li povolit uživatele Azure AD se přihlaste k Bime, musí být poskytnut
 > [!NOTE]
 > Můžete použít jakékoli jiné Bime uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Bime uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

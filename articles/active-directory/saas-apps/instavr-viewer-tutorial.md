@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8acc835a7f18ee673f0857f65d49eed59638a6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271175"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Kurz: Integrace Azure Active Directory s InstaVR prohlížeč
 
@@ -209,7 +209,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se v prohlížeči InstaVR vytvoří uživateli Britta Simon. InstaVR prohlížeč podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatele v prohlížeči InstaVR ještě neexistuje, vytvoří se nový po ověření. Pokud budete mít jakékoli problémy, obraťte se prosím na [tým podpory InstaVR prohlížeč](mailto:contact@instavr.co).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 1. Otevřete nové okno webového prohlížeče a přihlaste na webu společnosti InstaVR prohlížeč jako správce.
 

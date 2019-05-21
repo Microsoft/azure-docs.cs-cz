@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: ffb5da8abd9673d4922aeb4854b3dfa80349f284
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60315718"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Kurz: Integrace Azure Active Directory s TargetProcess
 
@@ -223,7 +223,7 @@ V této části se vytvoří uživateli Britta Simon v TargetProcess. TargetProc
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory TargetProcess](mailto:support@targetprocess.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

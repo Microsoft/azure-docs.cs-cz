@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ec1fce18913d6763514abb80ceba471bf73d59ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60257885"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Kurz: Integrace Azure Active Directory s Lessonly.com
 
@@ -121,7 +121,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Lessonly.com, proveďte ná
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------  | ----------------|
     | urn:oid:2.5.4.42 | user.givenname |
     | urn:oid:2.5.4.4  | user.surname |
@@ -225,7 +225,7 @@ Neexistuje žádná položka akce pro vás v této části. Vytvoří se nový u
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Lessonly.com](mailto:support@lessonly.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

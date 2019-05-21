@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 1c3b95686b8c91552615a9014102fd6a14f8c385
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277064"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Integrace Azure Active Directory s Sprinklr
 
@@ -263,7 +263,7 @@ V této části je povolit Britta Simon k udělení přístupu k Sprinklr použi
 > [!NOTE]
 > Můžete použít jakékoli jiné Sprinklr uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Sprinklr zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

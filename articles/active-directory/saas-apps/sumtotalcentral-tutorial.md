@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d68c8a63dd3adaee0c04f5438f91da68f3903aea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262257"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>Kurz: Integrace Azure Active Directory s SumTotalCentral
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon k udělení přístupu k SumTotalCentral
 
 V této části vytvoříte uživatele v SumTotalCentral jako Britta Simon. Práce s [tým podpory SumTotalCentral](http://www.sumtotalsystems.com/support/) přidat uživatele na platformě SumTotalCentral. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

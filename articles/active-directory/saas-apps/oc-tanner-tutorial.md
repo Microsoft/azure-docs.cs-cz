@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 21cbef1532928d51ba0c9f11e80304933df505b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60242792"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Kurz: Integrace Azure Active Directory s O.C. Nováková - AppreciateHub
 
@@ -197,7 +197,7 @@ Cílem této části je vytvořte uživatele Britta Simon v O.C. Nováková - Ap
 
 Požádejte vašeho [O.C. Nováková - tým podpory AppreciateHub](mailto:sso@octanner.com) pro vytvoření uživatele, který má jako atribut nameID stejnou hodnotu jako uživatelské jméno Britta Simon ve službě Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

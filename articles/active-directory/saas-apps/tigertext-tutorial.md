@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 7507e5d23898fd069797c14d0fa18419b8345d78
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: MT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62736289"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Kurz: Integrace Azure Active Directory s TigerText zabezpečení Messenger
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon TigerText zabezpečení Messenger. Práce s [tým podpory zabezpečení Messenger TigerText](mailto:prosupport@tigertext.com) přidat jako uživatel ve službě Messenger zabezpečení TigerText Britta Simon. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

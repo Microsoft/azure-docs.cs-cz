@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 507a5d7209c2ae873bbfc2d9f5f5fa1c8fa17758
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846867"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65889569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>Kurz: Integrace Azure Active Directory s SmartFile
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon k udělení přístupu k SmartFile použ
 
 V této části vytvoříte uživatele v SmartFile jako Britta Simon. Práce s [tým podpory SmartFile](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication) přidat uživatele na platformě SmartFile. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

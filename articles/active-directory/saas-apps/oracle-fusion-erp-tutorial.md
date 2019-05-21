@@ -16,11 +16,11 @@ ms.date: 1/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ad7517765d824be600f019f76a1b067048b3a98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390885"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oracle-fusion-erp"></a>Kurz: Integrace Azure Active Directory s Oracle Fusion ERP
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v Oracle Fusion ERP. Práce s [tým podpory Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com) přidat uživatele na platformě Oracle Fusion ERP. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

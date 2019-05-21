@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: d5ecfcd249dd07dc94b3b17ea0a7a7de3559c681
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407942"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Integrace Azure Active Directory s TOPdesk – veřejné
 
@@ -193,7 +193,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TOPdesk – veřejné, prov
 
     c. Nahrát soubor loga jste získali v části z na tým podpory TOPdesk **ikona loga**, klikněte na tlačítko **Procházet**.
 
-    d. V **atribut uživatelského jména** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. V **atribut uživatelského jména** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     e. V **zobrazovaný název** textového pole zadejte název pro vaši konfiguraci.
 

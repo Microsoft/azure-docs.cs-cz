@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: c3a2a92eb01943ab87c12d3ffefc4999cd9ff518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277892"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898729"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Kurz: Integrace Azure Active Directory s Gigya
 
@@ -224,7 +224,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Gigya, musí být posk
     > Držitel účtu Azure Active Directory obdrží e-mailu, který obsahuje odkaz pro potvrzení účtu, pak se změní na aktivní.
     > 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

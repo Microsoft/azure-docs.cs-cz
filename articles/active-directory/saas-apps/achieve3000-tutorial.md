@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ddac8a87bb557daadf0a6ea0f1303545ec63d50
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835533"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65886599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>Kurz: Integrace Azure Active Directory s Achieve3000
 
@@ -214,7 +214,7 @@ V této části je povolit Britta Simon k udělení přístupu k Achieve3000 pou
 
 V této části vytvoříte uživatele v Achieve3000 jako Britta Simon. Práce s [tým podpory Achieve3000](https://www.achieve3000.com/contact-us/) přidat uživatele na platformě Achieve3000. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

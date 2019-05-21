@@ -16,11 +16,11 @@ ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842086"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65895877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Integrace Azure Active Directory s přiblížení
 
@@ -278,7 +278,7 @@ Chcete-li povolit Azure AD uživatelům přihlášení přiblížit, musí být 
 > [!NOTE]
 > Můžete použít jakékoli jiné přiblížení uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných přiblížení ke zřízení služby Azure Active Directory uživatelské účty.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

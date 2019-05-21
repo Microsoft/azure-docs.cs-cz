@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 5073961e15b3d0dcf0df0fd97d3f8a4568f79eb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60267434"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>Kurz: Integrace Azure Active Directory s Jive
 
@@ -214,7 +214,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Jive. Jive podporuje
 
 Pokud je potřeba ručně vytvořit uživatele, pracovat s [tým podpory Jive klienta](https://www.jivesoftware.com/services-support/) přidat uživatele na platformě Jive.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

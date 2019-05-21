@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 829e0c08191e3eeba9dc410dda74502dc9ada327
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60262010"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Kurz: Integrace s KnowBe4 školení o zabezpečení Azure Active Directory
 
@@ -195,7 +195,7 @@ Neexistuje žádná položka akce pro vás v této části. Nový uživatel se v
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory školení povědomí o zabezpečení KnowBe4](mailto:support@KnowBe4.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

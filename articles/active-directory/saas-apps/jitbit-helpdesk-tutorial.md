@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 851b28d10bdf0b2df67e1c0782a683e790b711bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60265160"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Integrace Azure Active Directory s Jitbit helpdesku
 
@@ -243,7 +243,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit se na technickou po
 > [!NOTE]
 > Další nástroje pro tvorbu účtu uživatele Jitbit helpdesku nebo rozhraní API poskytovaných Jitbit helpdesku můžete použít ke zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

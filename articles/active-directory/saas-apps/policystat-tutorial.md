@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 98ab9904f8afc5c74d9f043b0964bc56b49670cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335863"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Integrace Azure Active Directory s PolicyStat
 
@@ -124,7 +124,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s PolicyStat, proveďte násl
 
 6. Kromě toho výše PolicyStat aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
 
@@ -247,7 +247,7 @@ V této části se vytvoří uživateli Britta Simon v PolicyStat. PolicyStat po
 >[!NOTE]
 >Můžete použít jakékoli jiné PolicyStat uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných PolicyStat zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

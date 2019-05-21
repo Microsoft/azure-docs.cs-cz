@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: b1a60c4110d69aec7a384a869ce4a2841741e920
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275242"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>Kurz: Integrace Azure Active Directory s Nomadesk
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v Nomadesk. Nomadesk podpor
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Nomadesk](mailto:support@nomadesk.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

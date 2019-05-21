@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11cc42f9ed7e427620b22ce65365183bc62cc0be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891718"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>Kurz: Integrace Azure Active Directory s 4me
 
@@ -253,7 +253,7 @@ V této části se vytvoří uživateli Britta Simon v 4me. 4me podporuje zřizo
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory 4me](mailto:support@4me.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

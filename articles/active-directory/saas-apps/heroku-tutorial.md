@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78901524392c575fcb9e821650b392dcea28c8b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275919"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Kurz: Integrace Azure Active Directory s Heroku
 
@@ -205,7 +205,7 @@ Neexistuje žádná položka akce pro vás v této části. Vytvoření nového 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Heroku klienta](https://www.heroku.com/support).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

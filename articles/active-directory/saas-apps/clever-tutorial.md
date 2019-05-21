@@ -16,11 +16,11 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a4e128e7e8b39075d23d7d4fe2bdc856b030ea05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57874894"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Kurz: Integrace Azure Active Directory s Clever
 
@@ -233,7 +233,7 @@ V případě Clever, pracovat s [tým podpory klienta na dokonalá](https://clev
 >[!NOTE]
 >Můžete použít všechny ostatní uživatele na dokonalá účet nástroje pro tvorbu nebo rozhraní API poskytovaných Clever zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

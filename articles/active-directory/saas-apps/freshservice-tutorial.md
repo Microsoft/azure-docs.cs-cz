@@ -16,11 +16,11 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26f41165b94db8252d0094f2b082f3fc98cf01a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878019"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898624"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>Kurz: Integrace Azure Active Directory s Freshservice
 
@@ -244,7 +244,7 @@ Přihlaste se k FreshService Azure AD uživatelům umožnit, musí být poskytnu
 > [!NOTE]
 > Můžete použít jakékoli jiné FreshService uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných FreshService uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

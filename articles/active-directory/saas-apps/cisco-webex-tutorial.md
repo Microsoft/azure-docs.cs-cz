@@ -16,11 +16,11 @@ ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850005"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Kurz: Integrace Azure Active Directory s Cisco Webex schůzky
 
@@ -132,7 +132,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cisco Webex schůzky, prove
     | ---------------|  --------- |
     |   jméno    | user.givenname |
     |   Příjmení    | user.surname |
-    |   e-mail       | user.mail |
+    |   email       | user.mail |
     |   uid    | user.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -249,7 +249,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 Cílem této části je vytvořte uživatele Britta Simon v Cisco Webex schůzky. Podporuje Cisco Webex schůzky **just-in-time** zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Cisco Webex schůzky, je vytvořen nový při pokusu o přístup k Cisco Webex schůzky.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

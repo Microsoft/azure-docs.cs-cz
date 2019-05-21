@@ -7,18 +7,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 04/03/2019
-ms.openlocfilehash: f480aeb7e126cb6ab8286bbfbfb8441fefeb07ef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/16/2019
+ms.openlocfilehash: 09509b32320fb10b8ab3d563442b6d0fb44ad34e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716080"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909197"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight
 
 V tomto kurzu se dozvíte, jak vytvořit datový rámec ze souboru csv a jak spouštět interaktivní dotazy Spark SQL na [Apache Spark](https://spark.apache.org/) clusteru v Azure HDInsight. Ve Sparku je datový rámec distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Datový rámec je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
- 
+
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření datového rámce ze souboru CSV
@@ -26,7 +26,22 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončený rychlý start [Vytvoření clusteru Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+Cluster Apache Spark ve službě HDInsight. Zobrazit [vytvořit cluster Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
+
+## <a name="create-a-jupyter-notebook"></a>Vytvoření poznámkového bloku Jupyter
+
+Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s textem markdownu a provádět jednoduché vizualizace. 
+
+1. Upravte adresu URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` nahrazením `SPARKCLUSTER` s názvem vašeho clusteru Spark. Potom zadejte adresu URL upravených ve webovém prohlížeči. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
+
+2. Z Jupyter webové stránky, vyberte **nový** > **PySpark** vytvoření poznámkového bloku. 
+
+   ![Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL")
+
+   Nový poznámkový blok se vytvoří a otevře s názvem bez názvu (`Untitled.ipynb`).
+
+    > [!NOTE]  
+    > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Vytvoření datového rámce ze souboru CSV
 
@@ -34,13 +49,7 @@ Aplikace může vytvářet datové rámce přímo ze souborů nebo složek ve vz
     
 ![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
 
-
-1. Otevření poznámkového bloku Jupyter, kterou jste vytvořili v oddílu požadavky a vytvořte nový poznámkový blok s PySpark.
-
-    > [!NOTE]  
-    > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
-
-2. Do prázdné buňky poznámkového bloku vložte následující kód a stisknutím **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
+1. Vložte následující kód do prázdné buňky poznámkového bloku Jupyter a potom stiskněte klávesu **SHIFT + ENTER** spuštění kódu. Kód naimportuje typy potřebné pro tento scénář:
 
     ```python
     from pyspark.sql import *
@@ -51,7 +60,7 @@ Aplikace může vytvářet datové rámce přímo ze souborů nebo složek ve vz
 
     ![Stav interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stav interaktivního dotazu Spark SQL")
 
-3. Spuštěním následujícího kódu vytvořte datový rámec a dočasnou tabulku (**hvac**). 
+2. Spuštěním následujícího kódu vytvořte datový rámec a dočasnou tabulku (**hvac**). 
 
     ```python
     # Create a dataframe and table from sample data
@@ -94,11 +103,7 @@ Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-> [!div class="checklist"]
-> * Vytvořte datový rámec Apache Spark.
-> * Spouštění dotazů Spark SQL nad datovým rámcem
+V tomto kurzu jste zjistili, jak vytvořit datový rámec ze souboru csv a jak spouštět interaktivní dotazy Spark SQL proti clusteru Apache Spark v Azure HDInsight. Přejděte k dalšímu článku, pokud chcete zobrazit, jak můžete načíst data, která jste zaregistrovali v Apache Spark na nástroj pro analýzu BI, jako je Power BI.
 
-Přejděte k dalšímu článku, pokud chcete zobrazit, jak můžete načíst data, která jste zaregistrovali v Apache Spark na nástroj pro analýzu BI, jako je Power BI. 
 > [!div class="nextstepaction"]
 > [Analýza dat pomocí nástrojů BI](apache-spark-use-bi-tools.md)

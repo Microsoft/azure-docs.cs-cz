@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: bcad6232de7fa257b58fe6d84f2c2ff794b64589
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005413"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902254"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Kurz: Integrace Azure Active Directory sadou SilkRoad životnosti
 
@@ -274,7 +274,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon sady SilkRoad život. Práce s [tým podpory SilkRoad života Suite klienta](https://www.silkroad.com/locations/) přidat uživatele na platformě SilkRoad života Suite. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

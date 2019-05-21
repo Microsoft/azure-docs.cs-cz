@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62736422"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891206"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Kurz: Integrace Azure Active Directory s PageDNA
 
@@ -199,7 +199,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 Uživatel se jménem Britta Simon se teď vytvoří v PageDNA. Nemusíte dělat nic k vytvoření tohoto uživatele. PageDNA podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Pokud uživatel se jménem Britta Simon již neexistuje mezi PageDNA, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

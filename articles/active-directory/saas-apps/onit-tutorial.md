@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 56b3e42a65eb84ef6ee53b4ba16e5fafc4473405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60243780"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>Kurz: Integrace Azure Active Directory s Onit
 
@@ -118,9 +118,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Onit, proveďte následují
 
 6. Kromě toho výše Onit aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | email | user.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -260,7 +260,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Onit, musí být posky
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

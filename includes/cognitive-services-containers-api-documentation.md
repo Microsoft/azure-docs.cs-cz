@@ -1,26 +1,24 @@
 ---
 author: diberry
-ms.author: v-junlch
+ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/25/2019
-ms.date: 04/23/2019
-ms.openlocfilehash: 94e95864d8bac2d6dc0ff690a2a8f53bd2db5a40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/25/2019
+ms.openlocfilehash: f4925401235aedb341a7e29ca36b079126647f7b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598800"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885076"
 ---
-## <a name="validate-container-is-running"></a>Ověřit spuštění kontejneru 
+## <a name="validate-that-a-container-is-running"></a>Ověřit, jestli je spuštěná kontejneru 
 
-Existuje několik způsobů, jak ověřit kontejneru běží: 
+Existuje několik způsobů, jak ověřit, že je kontejner spuštěný. 
 
-|Žádost|Účel|
+|Požadavek|Účel|
 |--|--|
 |`http://localhost:5000/`|Poskytuje kontejner domovskou stránku.|
-|`http://localhost:5000/status`|Vyžádaný with GET, ověření kontejneru běží bez způsobení dotazu koncový bod. To lze použít pro Kubernetes [sondy aktivity a připravenosti](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
-|`http://localhost:5000/swagger`|Kontejner, poskytuje kompletní dokumentaci pro koncové body a také `Try it now` funkce. Tato funkce umožňuje zadat nastavení do webového formuláře HTML a proveďte dotaz bez nutnosti psát jakýkoli kód. Jakmile je k dispozici dotaz vrací hodnotu, například příkaz CURL k předvedení hlavičky protokolu HTTP a textu formátu potřebném. |
+|`http://localhost:5000/status`|Vyžádáno with GET, ověřte, že je kontejner spuštěný bez způsobení dotazu koncový bod. Tento požadavek může být použit pro Kubernetes [sondy aktivity a připravenosti](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
+|`http://localhost:5000/swagger`|Kontejner, poskytuje kompletní dokumentaci pro koncové body a `Try it now` funkce. Pomocí této funkce můžete zadat nastavení do webové formuláře HTML a provést dotaz bez nutnosti psát jakýkoli kód. Po dotaz vrátí, poskytuje příkazu CURL k příkladu prokázat, že hlavičky protokolu HTTP a text formátu, který vyžaduje. |
 
 ![Domovská stránka kontejneru](./media/cognitive-services-containers-api-documentation/container-webpage.png)
-

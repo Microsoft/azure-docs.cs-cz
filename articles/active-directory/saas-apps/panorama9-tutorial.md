@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ff26acc1050a6104525ec44304fd9fee21d6d3cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275569"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Kurz: Integrace Azure Active Directory s Panorama9
 
@@ -227,7 +227,7 @@ V případě Panorama9 zřizování se ruční úlohy.
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

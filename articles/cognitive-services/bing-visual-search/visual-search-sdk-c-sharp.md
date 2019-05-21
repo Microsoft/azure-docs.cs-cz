@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/16/2018
+ms.date: 05/15/2019
 ms.author: v-gedod
-ms.openlocfilehash: 130c8d94f3651caf9b8754569b67966af929ce46
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9fd693207b429ddc0a2bfdd772f4822f188ac3f7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796650"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884926"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Rychlý start: Získejte přehledy obrázků s využitím SDK vizuální vyhledávání Bingu proC#
 
@@ -23,7 +23,7 @@ Můžete začít získat přehledy obrázků ze služby pro vizuální vyhledáv
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 * Balíček NuGet pro vizuální vyhledávání. 
     - V Průzkumníku řešení v sadě Visual Studio klikněte pravým tlačítkem na projekt a v nabídce vyberte `Manage NuGet Packages`. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.VisualSearch`. Instalace balíčků NuGet nainstalovat také následující:

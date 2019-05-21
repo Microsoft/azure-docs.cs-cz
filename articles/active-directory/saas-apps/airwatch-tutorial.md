@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec8b575157dcf2fe8430f554798af62b966c78d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406703"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Kurz: Integrace Azure Active Directory s AirWatch
 
@@ -207,15 +207,15 @@ Ke konfiguraci Azure AD jednotné přihlašování s AirWatch, proveďte násled
 
     a. V **identifikátor objektu** textové pole, typ `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
-    b. V **uživatelské jméno** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. V **uživatelské jméno** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    c. V **zobrazovaný název** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. V **zobrazovaný název** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    d. V **křestní jméno** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. V **křestní jméno** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. V **příjmení** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. V **příjmení** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. V **e-mailu** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. V **e-mailu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     g. Klikněte na **Uložit**.
 

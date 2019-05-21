@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f65e7192bdcc148ba081d0de954b51535778e750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60282347"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900169"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>Kurz: Integrace Azure Active Directory s podporou vzdáleného Bomgar
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v Bomgar vzdálenou podporu
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [Bomgar vzdálenou podporu týmu podpory](https://www.bomgar.com/docs/index.htm#support).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

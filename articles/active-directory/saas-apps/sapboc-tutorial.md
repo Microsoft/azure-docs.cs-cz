@@ -16,11 +16,11 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894559"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Kurz: Integrace se SAP Business objekt cloudem Azure Active Directory
 
@@ -247,7 +247,7 @@ Chcete-li vytvořit uživatelský účet:
 
     g. Vyberte **Uložit** ikonu.    
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

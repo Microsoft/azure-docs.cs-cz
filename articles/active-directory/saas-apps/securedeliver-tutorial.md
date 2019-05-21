@@ -17,11 +17,11 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ca2e717e612973fa4c46c9ab4e70091d32fcf19
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713199"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Kurz: Integrace Azure Active Directory s ZABEZPEČENÉ DORUČOVÁNÍ
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v ZABEZPEČENÉ DORUČOVÁNÍ. Práce s [ZABEZPEČENÉ DORUČOVÁNÍ tým podpory](mailto:iw-sd-support@fujifilm.com) přidat uživatele na platformě ZABEZPEČENÉ DORUČOVÁNÍ. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,11 +16,11 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e331ea54a290bc794b04bb0d8e0ea653ef12bc19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279162"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898824"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Kurz: Integrace Azure Active Directory s Evidence.com
 
@@ -207,7 +207,7 @@ Pro uživatele Azure AD bude moct přihlásit musí být zřízený pro přístu
 
 5. **E-mailovou adresu** přidání uživatele, musí odpovídat uživatelské jméno uživatele ve službě Azure AD, který chcete poskytnout přístup. Pokud uživatelské jméno a e-mailové adresy nejsou stejnou hodnotu ve vaší organizaci, můžete použít **Evidence.com > atributy > Single Sign-On** části webu Azure portal, chcete-li změnit nameidenitifer odesílat Evidence.com bude e-mailovou adresu.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

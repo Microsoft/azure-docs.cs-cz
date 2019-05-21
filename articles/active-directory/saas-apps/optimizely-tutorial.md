@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 066847ff8428a5080e655712c1a6bbe504c5cdbc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257786"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: Integrace Azure Active Directory s Optimizely
 
@@ -120,7 +120,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Optimizely, proveďte násl
 
     | Název | Zdrojový atribut |
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | email | user.mail |
     
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -243,7 +243,7 @@ V této části vytvoříte uživatele v Optimizely jako Britta Simon.
 
 4. Obdrží tento uživatel e-mailová pozvánka. Pomocí e-mailovou adresu, mají se přihlaste k Optimizely.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

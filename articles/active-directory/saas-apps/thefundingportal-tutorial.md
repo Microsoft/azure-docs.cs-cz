@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 4f7edd13c07d24d5d5a12fb9973083db44f0211f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60314744"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901818"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Kurz: Integrace Azure Active Directory s financování portál
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s financování portál, prov
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------- | ---------------- |
     | externalId1 | user.extensionattribute1 |
     | | |
@@ -214,7 +214,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon The financování portálu. Práce s [tým podpory portálu financování](mailto:info@regenteducation.com) přidat uživatele na platformě financování portál. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

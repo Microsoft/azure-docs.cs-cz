@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: ac21071b958942d7d689f1e9c2c49f02a3599ac4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257888"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Kurz: Integrace Azure Active Directory s Trakstar
 
@@ -187,7 +187,7 @@ V této části je povolit Britta Simon k udělení přístupu k Trakstar použi
 
 V této části vytvoříte uživatele v Trakstar jako Britta Simon. Ve spolupráci se správcem Trakstar přidat uživatele na platformě Trakstar. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

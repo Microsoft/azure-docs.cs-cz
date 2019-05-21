@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27f54f9f520e464f9f6f401ce1e5c11e2ec68bc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60276473"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Kurz: Integrace Azure Active Directory s HappyFox
 
@@ -209,7 +209,7 @@ V této části je povolit Britta Simon k udělení přístupu k HappyFox použi
 
 V této části se vytvoří uživateli Britta Simon v HappyFox. HappyFox podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi HappyFox, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
