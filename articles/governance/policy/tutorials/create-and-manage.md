@@ -7,12 +7,12 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1a00d237ef94f73ebf59070d8160a7e5144b0ac8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c12345791e62aa99bd07dde7fc44dd52d0989941
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800562"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979168"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -42,11 +42,11 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
    ![Přiřazení definice zásady přiřazení stránce](../media/create-and-manage/select-assign-policy.png)
 
-1. Na stránce **Přiřadit zásadu** vyberte **Obor** tak, že kliknete na tři tečky a vyberete skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat.  Pak v dolní části stránky **Obor** klikněte na **Vybrat**.
+1. Na stránce **Přiřadit zásadu** vyberte **Obor** tak, že kliknete na tři tečky a vyberete skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Pak v dolní části stránky **Obor** klikněte na **Vybrat**.
 
    V tomto příkladu se používá předplatné **Contoso**. Vaše předplatné se bude lišit.
 
-1. Prostředky je možné vyloučit na základě **oboru**.  **Vyloučení** začínají na úrovni o jednu nižší, než je úroveň **oboru**. **Vyloučení** jsou volitelná, takže toto pole prozatím ponechte prázdné.
+1. Prostředky je možné vyloučit na základě **oboru**. **Vyloučení** začínají na úrovni o jednu nižší, než je úroveň **oboru**. **Vyloučení** jsou volitelná, takže toto pole prozatím ponechte prázdné.
 
 1. Výběrem tří teček **Definice zásady** otevřete seznam dostupných definic. Můžete nastavit filtr pro **Typ** definic zásad na *Předdefinované* a zobrazit všechny definice zásad a přečíst si jejich popisy.
 
@@ -54,7 +54,8 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
    ![Použití vyhledávacího filtru k vyhledání zásady](../media/create-and-manage/select-available-definition.png)
 
-1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte název *Vyžadovat SQL Server verze 12.0*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.  **Přiřazené podle** se automaticky vyplní podle toho, který je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
+1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte název *Vyžadovat SQL Server verze 12.0*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.
+   **Přiřazené podle** se automaticky vyplní podle toho, který je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
 1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být vráceny, pokud obsahuje zásady nebo iniciativa přiřazení zásad s [deployIfNotExists](../concepts/effects.md#deployifnotexists) vliv. Jak zásady používané pro účely tohoto kurzu není, ponechte prázdné. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
 
@@ -116,7 +117,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>Vytvoření definice zásady pomocí rozhraní REST API
 
-Zásadu můžete vytvořit i pomocí rozhraní REST API pro definice zásad. Toto rozhraní API umožňuje vytvářet a odstraňovat definice zásad a získávat informace o existujících definicích. Pokud chcete vytvořit definici zásady, použijte následující příklad:
+Zásady můžete vytvořit pomocí rozhraní REST API pro definice zásad Azure. Toto rozhraní API umožňuje vytvářet a odstraňovat definice zásad a získávat informace o existujících definicích. Pokud chcete vytvořit definici zásady, použijte následující příklad:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
@@ -156,7 +157,7 @@ Přiložte podobný text žádosti jako v následujícím příkladu:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Vytvoření definice zásady pomocí PowerShellu
 
-Než budete pokračovat k příkladu Powershellu, ujistěte se, že jste nainstalovali nejnovější verzi modulu Azure PowerShell Az. 
+Než budete pokračovat k příkladu Powershellu, ujistěte se, že jste nainstalovali nejnovější verzi modulu Azure PowerShell Az.
 
 Definici zásady můžete vytvořit pomocí rutiny `New-AzPolicyDefinition`.
 
@@ -369,13 +370,14 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
    ![Přiřazení definice ze stránky definice iniciativy](../media/create-and-manage/assign-definition.png)
 
-   Můžete také kliknout pravým tlačítkem na vybraný řádek nebo levým tlačítkem myši na tři tečky na konci řádku kontextové nabídky.  Pak vyberte **Přiřadit**.
+   Můžete také kliknout pravým tlačítkem na vybraný řádek nebo levým tlačítkem myši na tři tečky na konci řádku kontextové nabídky. Pak vyberte **Přiřadit**.
 
    ![Alternativní možnosti pro iniciativu](../media/create-and-manage/select-right-click.png)
 
 1. Vyplňte **zajištění zabezpečení: Přiřadit iniciativu** stránky zadáním následujících ukázkových údajů. Můžete použít vlastní údaje.
 
-   - Obor: Skupiny pro správu nebo předplatného, které jste si uložili iniciativa zaměřená na stane výchozí.  Obor můžete změnit a přiřadit tak iniciativu k předplatnému nebo ke skupině prostředků v rámci umístění pro uložení.
+   - Obor: Skupiny pro správu nebo předplatného, které jste si uložili iniciativa zaměřená na stane výchozí.
+     Obor můžete změnit a přiřadit tak iniciativu k předplatnému nebo ke skupině prostředků v rámci umístění pro uložení.
    - Vyloučení: Konfigurujte všechny prostředky v rámci oboru, aby se zabránilo přiřazení iniciativy se použily k nim.
    - Definice iniciativy a název úlohy: Získáte zabezpečené (předem vyplní názvem přiřazení iniciativy).
    - Popis: Toto přiřazení iniciativy je přizpůsobené k vynucování této skupiny definic zásad.
@@ -389,7 +391,8 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů**.
 
-1. Vyhledejte iniciativu **Zajištění zabezpečení**. Bude pravděpodobně stále v _stavu dodržování předpisů_ z **Nezahájeno**. Kliknutím na iniciativu zobrazte úplné podrobnosti o průběhu přiřazení.
+1. Vyhledejte iniciativu **Zajištění zabezpečení**. Bude pravděpodobně stále v _stavu dodržování předpisů_ z **Nezahájeno**.
+   Kliknutím na iniciativu zobrazte úplné podrobnosti o průběhu přiřazení.
 
    ![Dodržování předpisů iniciativy stránka – vyhodnocení nebylo zahájeno](../media/create-and-manage/compliance-status-not-started.png)
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3f19c442d0f5806147ee05b3f0d2d32740a8ecdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15cf3b1316cc35e22538ca353302c4a82d2d418b
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61439350"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979024"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC Tutorial: Vývoj webových aplikací pomocí služby Azure Cosmos DB
 

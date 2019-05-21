@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: monhaber
-ms.openlocfilehash: 6e8c10ecb85addf2ef6a995e3c0b8ac611343cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: 8fc287826d1a98b5d61229979544fdb3780455d4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612481"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967938"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
 Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům (VM) just-in-Time (JIT) omezuje vaše vystavení útokům umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
@@ -43,7 +43,7 @@ Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené 
 
 1. V hlavní nabídce služby Security Center, vyberte **Just-in-Time virtuální počítač přístup k** pod **POKROČILÁ OBRANA cloudu**.
 
-   ![Přístup k virtuálním počítačům podle potřeby][1]
+   ![Přístup k virtuálnímu počítači podle potřeby][1]
 
    **Přístup k virtuálním počítačům just-in-Time** poskytuje informace o stavu vašich virtuálních počítačů:
 

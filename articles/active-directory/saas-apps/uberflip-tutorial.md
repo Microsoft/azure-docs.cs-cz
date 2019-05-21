@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 69e86e486a9cdb058b972bda5176c14e15f4630a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55fa42eb1c35025b1008b3b5d26f61c243ff2b97
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865670"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Integrace Azure Active Directory s Uberflip
 
@@ -72,15 +72,15 @@ Konfigurace integrace Uberflip do služby Azure AD, budete muset přidat Uberfli
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s Uberflip podle testovacího uživatele s názvem **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit propojení mezi uživatele služby Azure AD a související uživatelské v Uberflip.
+V této části, konfigurace a testování Azure AD jednotné přihlašování s Uberflip podle testovacího uživatele s názvem **B Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit propojení mezi uživatele služby Azure AD a související uživatelské v Uberflip.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Uberflip, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  aby uživatelé mohli tuto funkci používat.
 1. **[Konfigurace Uberflip jednotného přihlašování](#configure-uberflip-single-sign-on)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Vytvořit testovacího uživatele Uberflip](#create-an-uberflip-test-user)**  tak, aby se uživatel s názvem Britta Simon v Uberflip, který je spojen s uživatele Azure AD s názvem Britta Simon.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
+1. **[Vytvořit testovacího uživatele Uberflip](#create-an-uberflip-test-user)**  tak, aby se uživatel s názvem Simon B. v Uberflip, který je spojen s uživatele Azure AD s názvem B. Simon.
 1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -136,7 +136,7 @@ Konfigurace jednotného přihlašování na straně Uberflip, je nutné odeslat 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
+V této části vytvoříte testovacího uživatele s názvem B. Simon na webu Azure Portal.
 
 1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory** > **uživatelé** > **všichni uživatelé**.
 
@@ -150,9 +150,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     ![V podokně uživatele](common/user-properties.png)
 
-    1. V **název** zadejte **BrittaSimon**.
+    1. V **název** zadejte **BSimon**.
   
-    1. V **uživatelské jméno** zadejte **BrittaSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BrittaSimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **BSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BSimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
@@ -160,7 +160,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k Uberflip.
+V této části povolíte B. Simon používat jednotné přihlašování Azure tím, že udělíte přístup k Uberflip.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **Uberflip**.
 
@@ -178,7 +178,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** vyberte **Britta Simon** v **uživatelé** seznamu a klikněte na tlačítko **vyberte** v dolní části podokna.
+1. V **uživatelů a skupin** vyberte **B Simon** v **uživatelé** seznamu a klikněte na tlačítko **vyberte** v dolní části podokna.
 
 1. Pokud očekáváte hodnotu do role kontrolní výraz SAML, pak v **vybrat roli** podokně, vyberte vhodnou roli pro uživatele ze seznamu. V dolní části podokna, zvolte **vyberte**.
 
@@ -186,7 +186,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-an-uberflip-test-user"></a>Vytvořit testovacího uživatele Uberflip
 
-Uživatel se jménem Britta Simon se teď vytvoří v Uberflip. Nemusíte dělat nic k vytvoření tohoto uživatele. Uberflip podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Pokud uživatel se jménem Britta Simon již neexistuje mezi Uberflip, vytvoří se nový po ověření.
+Uživatel se jménem B. Simon je nyní v Uberflip vytvořili. Nemusíte dělat nic k vytvoření tohoto uživatele. Uberflip podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Pokud uživatele s názvem B. Simon v Uberflip ještě neexistuje, vytvoří se nový po ověření.
 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [tým podpory Uberflip](mailto:support@uberflip.com).

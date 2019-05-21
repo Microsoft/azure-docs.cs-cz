@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 724d47695c2878caf6ae18e2622f72dc59767ea0
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
-ms.translationtype: HT
+ms.openlocfilehash: d42e266de9c958c8a71cc5fa680a78c2278cec6e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921709"
+ms.locfileid: "65956778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Kurz: Integrace Azure Active Directory s NetDocuments
 
@@ -109,7 +109,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s NetDocuments, proveďte ná
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a adresy URL odpovědi. ID úložiště je hodnota rovnou začít tématem CA-následuje přidružený k úložišti NetDocuments 8 kód znaku. Můžete zkontrolovat [dokument podpory NetDocuments Federated Identity](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) Další informace. Případně můžete kontaktovat [tým podpory NetDocuments klienta](https://support.netdocuments.com/hc/) k získání těchto hodnot, pokud máte dificulties konfigurace pomocí výše uvedených informací. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a adresy URL odpovědi. ID úložiště je hodnota rovnou začít tématem CA-následuje přidružený k úložišti NetDocuments 8 kód znaku. Můžete zkontrolovat [dokument podpory NetDocuments Federated Identity](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) Další informace. Případně můžete kontaktovat [tým podpory NetDocuments klienta](https://support.netdocuments.com/hc/) k získání těchto hodnot, pokud máte potíže konfigurace pomocí výše uvedených informací. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz 1: Předvídání úvěrového rizika'
+title: 'Kurz 1: Predikce úvěrového rizika'
 titleSuffix: Azure Machine Learning Studio
 description: Podrobný kurz ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio. Tento kurz je první částí z třídílné série.  Ukazuje, jak vytvořit pracovní prostor, odešle data a vytvořit nový experiment.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461067"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949790"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Kurz 1: Předpovědět úvěrové riziko - Azure Machine Learning Studio
 
@@ -78,7 +78,7 @@ Budete používat soubor s názvem **german.data**. Stáhněte si tento soubor n
 
 Web UCI poskytuje popis atributů vektoru funkce pro tato data. Tato data zahrnují finančním informacím, historie kreditu, stav pracovní a osobní údaje. Pro každý žadatel binární hodnocení byl daný označující, zda jsou nízké nebo vysoké úvěrové riziko. 
 
-Tato data použijete k natrénování modelu prediktivní analýzy. Až budete hotovi, váš model by měl být moct přijmout vektor funkce pro nové uživatele a předpovědět, jestli uživatel je nízké nebo vysoké úvěrové riziko.  
+Tato data použijete k natrénování modelu prediktivní analýzy. Až budete hotovi, váš model by měl být moct přijmout vektor funkce pro nové uživatele a předpovědět, jestli jsou nízké nebo vysoké úvěrové riziko.  
 
 Tady je zajímavé prvkem.
 

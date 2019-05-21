@@ -305,6 +305,12 @@
                       href: app/snapshot-debugger-troubleshoot.md
                 - name: Diagnostika
                   href: ../application-insights/app-insights-azure-diagnostics.md
+            - name: Jádro ASP.NET
+              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+              href: app/asp-net-core.md
+              items:
+                - name: ILogger
+                  href: app/ilogger.md
             - name: Aplikace v ASP.NET
               items:
                 - name: Webové aplikace
@@ -339,13 +345,6 @@
                   href: app/windows-services.md
                 - name: Plocha Windows
                   href: app/windows-desktop.md
-                - name: Jádro ASP.NET
-                  href: app/asp-net-core.md
-                  items:
-                    - name: Profiler pro linuxové aplikační služby (Preview)
-                      href: app/profiler-aspnetcore-linux.md
-                - name: ASP.NET Core bez sady Visual Studio
-                  href: app/asp-net-core-no-visualstudio.md
                 - name: Konzola
                   href: app/console.md
                 - name: Řídicí panel aplikací
@@ -356,8 +355,6 @@
                   href: app/asp-net-exceptions.md
                 - name: Trasování protokolů
                   href: app/asp-net-trace-logs.md
-                - name: ILogger
-                  href: app/ilogger.md
                 - name: Čítače výkonu
                   href: app/performance-counters.md
                 - name: Závislosti

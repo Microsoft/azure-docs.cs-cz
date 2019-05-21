@@ -75,9 +75,10 @@
       items:
         - name: Omezení přístupu s využitím virtuální sítě (Preview)
           href: container-registry-vnet.md
-        - name: Přehled ověřování
-          href: container-registry-authentication.md
+        - name: Authentication
           items:
+            - name: Přehled ověřování
+              href: container-registry-authentication.md
             - name: Ověřování instančních objektů
               href: container-registry-auth-service-principal.md
             - name: Ověřování spravovaných identit
@@ -143,3 +144,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
+    - name: Nejčastější dotazy
+      href: container-registry-faq.md

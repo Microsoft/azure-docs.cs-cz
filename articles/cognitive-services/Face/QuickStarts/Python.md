@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b8ca320b802ea81604aab08ee3aeb39df5781afd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3df6c34420369effe11ae5a7ec58eba595ffa471
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815459"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956998"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API pro rozpoznávání tváře a Python
 
@@ -51,6 +51,7 @@ V tomto rychlém startu Alternativně můžete spustit z příkazového řádku 
 
 ```python
 import requests
+import json
 
 subscription_key = None
 assert subscription_key

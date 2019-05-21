@@ -49,6 +49,7 @@
       items:
         - name: Úložiště
           href: storage-account-concept.md
+          displayName: Storage side encryption
         - name: Rozhraní API pro prostředky
           href: assets-concept.md
     - name: Kódování
@@ -169,6 +170,7 @@
       items:
         - name: Vytvoření účtu – rozhraní příkazového řádku
           href: create-account-cli-how-to.md
+          displayName: storage
         - name: Resetování přihlašovacích údajů k účtu – CLI
           href: cli-reset-account-credentials.md
         - name: Přístup k rozhraním API – rozhraní příkazového řádku

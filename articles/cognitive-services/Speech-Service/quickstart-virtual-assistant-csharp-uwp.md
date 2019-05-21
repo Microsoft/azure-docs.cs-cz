@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: e03cc45c5868f90dd1c2da0d7b4890fbf72c9899
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465632"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954814"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, UPW
 
@@ -353,7 +353,6 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     ![Snímek obrazovky s žádostí o oprávnění](media/sdk/qs-csharp-uwp-10-access-prompt.png "Spuštění aplikace s laděním")
 
 1. Vyberte **obraťte se na svého robota**a Mluvte anglickou fráze nebo větu do vašeho zařízení mikrofon. Hlasu je přenášet do kanálu s přímým přístupem řádku řeči a převede na text, který se zobrazí v okně.
-quickstart-cs-uwp-bot-successful-turn
 
     ![Snímek obrazovky úspěšně bot zapnout](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "zapnout úspěšné robota")
 

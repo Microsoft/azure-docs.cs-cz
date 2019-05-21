@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8092724a8ebf04342e00d054cc78fe26b48d2f82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fe436632eee12157dde2b082a5c77e67e7977cc
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65864003"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Kurz: Integrace Azure Active Directory s Boomi
 
@@ -251,12 +251,12 @@ Chcete-li povolit uživatele Azure AD se přihlaste k Boomi, musí být poskytnu
 
     d. Zadejte uživatele **federace**. Každý uživatel musí mít ID federace, která jednoznačně identifikuje uživatele v rámci účtu.
 
-    e. Přiřazení **standardní uživatel** role pro uživatele. Nepřiřazujte roli správce, protože, který by mu dát normální prostředí přístup, jakož i přístup pomocí jednotného přihlašování.
+    e. Přiřazení **standardní uživatel** role pro uživatele. Nepřiřazujte roli správce, protože, která by jim normální prostředí přístup, jakož i přístup pomocí jednotného přihlašování.
 
     f. Klikněte na **OK**.
 
     > [!NOTE]
-    > Uživatel nebude dostávat oznámení uvítací e-mail obsahující heslo, které lze použít pro přihlášení k účtu AtomSphere, protože své heslo je spravována prostřednictvím zprostředkovatele identity. Můžete použít jakékoli jiné Boomi uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Boomi uživatelským účtům, zřídit AAD.
+    > Uživatel nebude dostávat oznámení uvítací e-mail obsahující heslo, které lze použít pro přihlášení k účtu AtomSphere, protože heslo je spravována prostřednictvím zprostředkovatele identity. Můžete použít jakékoli jiné Boomi uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Boomi uživatelským účtům, zřídit AAD.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 

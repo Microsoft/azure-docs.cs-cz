@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 7507e5d23898fd069797c14d0fa18419b8345d78
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.openlocfilehash: 840b1fe55556cfd853e0928164891d6b21b17cc2
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888265"
+ms.locfileid: "65956861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Kurz: Integrace Azure Active Directory s TigerText zabezpečení Messenger
 
@@ -156,7 +156,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup ke službě Messenger zabezpečení TigerText.
+V této části je povolit Britta Simon poskytováním přístupu ke službě Messenger zabezpečení TigerText používat Azure jednotného přihlašování.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **TigerText zabezpečení Messenger**.
 

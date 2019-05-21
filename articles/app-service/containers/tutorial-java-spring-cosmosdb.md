@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: f86949c196507080b32771a1b5470e9911e3e5b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 069bc213695de813ad6b878db54f38a909efd1df
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768708"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956037"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java Spring a Azure Cosmos DB
 
@@ -79,7 +79,7 @@ Postupujte podle těchto kroků a vytvořte databázi Azure Cosmos DB v rámci v
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. Získejte klíč služby Azure Cosmos DB pro připojení k aplikaci. Zachovat he `primaryMasterKey`, `documentEndpoint` dosahu, kdykoli budete potřebovat v dalším kroku.
+4. Získejte klíč služby Azure Cosmos DB pro připojení k aplikaci. Zachovat `primaryMasterKey`, `documentEndpoint` dosahu, kdykoli budete potřebovat v dalším kroku.
 
     ```bash
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>

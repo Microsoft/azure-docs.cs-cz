@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190796"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962203"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridních připojení k Azure Active Directory pro spravované domény
 
@@ -178,12 +178,12 @@ Kromě toho je potřeba v zóně místního intranetu uživatele povolit možnos
 
 ### <a name="configure-seamless-sso"></a>Konfigurace bezproblémového jednotného přihlašování
 
-K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
+K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Pokud máte potíže s konfigurací bezproblémového jednotného přihlašování, najdete v článku [Poradce při potížích s Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně 
 
-Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z webu Download Center stáhnout a nainstalovat balíček Instalační služby systému Windows (.msi). Další informace získáte kliknutím [sem](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z webu Download Center stáhnout a nainstalovat balíček Instalační služby systému Windows (.msi). Další informace najdete v článku [řízení připojení k hybridní službě Azure AD. zařízení](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 
 ## <a name="verify-the-registration"></a>Ověření registrace

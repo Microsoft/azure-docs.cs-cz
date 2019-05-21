@@ -3,25 +3,23 @@ title: Vytvoření aplikační brány, která hostuje více webů – Azure CLI
 description: Přečtěte si, jak vytvořit v Azure CLI aplikační bránu, která hostuje více webů.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a1f1b464b2ac6fc62ea23a80a3887961ebe2d87e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9c99b534a40b5c87cf511c75ccdb19df4d9aaf63
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100713"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955633"
 ---
-# <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Kurz: Vytvoření služby application gateway, který je hostitelem více webů pomocí Azure CLI
+# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření služby application gateway, který je hostitelem více webů pomocí Azure CLI
 
-Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto kurzu definujete back-endové fondy adres pomocí škálovacích sad virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že jste vlastníkem více domén a používá příklady *www\.contoso.com* a *www\.fabrikam.com*.
+Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto článku definujte fondy adres back-end pomocí škálovací sady virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. Tento článek předpokládá, že jste vlastníkem více domén a používá příklady *www\.contoso.com* a *www\.fabrikam.com*.
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
@@ -33,8 +31,7 @@ V tomto kurzu se naučíte:
 
 ![Příklad směrování na více webů](./media/tutorial-multiple-sites-cli/scenario.png)
 
-
-Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-multiple-sites-powershell.md).
+Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -48,11 +45,11 @@ Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují 
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
 Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
@@ -254,15 +251,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvoření služby Application Gateway
-> * Vytvořit back-endové naslouchací procesy
-> * Vytvořit pravidla směrování
-> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit záznam CNAME v doméně
-
-> [!div class="nextstepaction"]
-> [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-cli.md)
+* [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-cli.md)

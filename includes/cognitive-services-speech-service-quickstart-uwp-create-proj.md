@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: b5c61ecb74c0fcdacc6024a74565f05b036e2ac6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65081222"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65954815"
 ---
 1. Spusťte Visual Studio 2017.
 
@@ -23,7 +23,7 @@ ms.locfileid: "65081222"
 
     ![Snímek obrazovky s dialogovým oknem Nový projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. Sada Speech SDK vyžaduje, aby aplikace byla vytvořená pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)**. V poli **Cílová verze** vyberte tuto nebo novější verzi a pak klikněte na **OK**.
+1. Sadou SDK pro řeč vyžaduje, aby vaše aplikace musí být sestaveny pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)**. V poli **Cílová verze** vyberte tuto nebo novější verzi a pak klikněte na **OK**.
 
     ![Snímek obrazovky s oknem Nový projekt univerzální platformy Windows](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 

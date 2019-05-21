@@ -3,33 +3,23 @@ title: Povolení Firewallu webových aplikací – Azure CLI
 description: Přečtěte si, jak s Azure CLI omezit webový provoz Firewallem webových aplikací v aplikační bráně.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1387dc5bb2cabf9a3078474564aadc81b28fd9a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1822fe032a7c7a6382dbae2cb9f7095d1d076008
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407084"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955488"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Povolení firewallu webových aplikací pomocí Azure CLI
 
-> [!div class="op_single_selector"]
->
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
->
-> 
+K omezení provozu [aplikační brány](overview.md) můžete použít [Firewall webových aplikací](waf-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací.
 
-K omezení provozu [aplikační brány](overview.md) můžete použít [Firewall webových aplikací](waf-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. 
-
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
@@ -39,13 +29,13 @@ V tomto kurzu se naučíte:
 
 ![Příklad firewallu webových aplikací](./media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
-Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
+Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](tutorial-restrict-web-traffic-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -148,7 +138,7 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
 
-V tomto kurzu používá aplikační brána k ukládání dat účet úložiště, aby bylo možné je rozpoznat a také z preventivních důvodů. Protokoly Azure monitoru nebo centra událostí můžete použít také k zaznamenání dat. 
+Application gateway v tomto článku se používá účet úložiště k ukládání dat pro účely detekce a ochrany před únikem informací. Protokoly Azure monitoru nebo centra událostí můžete použít také k zaznamenání dat. 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -196,18 +186,9 @@ az network public-ip show \
 Až nebudete skupinu prostředků, aplikační bránu a další související prostředky potřebovat, odeberte je.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG 
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nastavit síť
-> * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Vytvoření škálovací sady virtuálních počítačů
-> * Vytvořit účet úložiště a nakonfigurovat diagnostiku
-
-> [!div class="nextstepaction"]
-> [Vytvoření aplikační brány s ukončením protokolu SSL](./tutorial-ssl-cli.md)
+* [Vytvoření aplikační brány s ukončením protokolu SSL](./tutorial-ssl-cli.md)

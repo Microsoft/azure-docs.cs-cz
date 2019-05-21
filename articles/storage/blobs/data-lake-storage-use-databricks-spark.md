@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: ba198cbe0c362055f36cb4bdecf34a0dbad477a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b332c11e76ad335772cc607edcf569f896acb873
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788076"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951393"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 
@@ -48,7 +48,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
   > [!IMPORTANT]
   > Ujistěte se, že přiřazení role v rámci účtu úložiště Data Lake Storage Gen2. Roli můžete přiřadit do nadřazené skupiny prostředků nebo předplatného, ale se zobrazí chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
 
-  :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
+  :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a heslo hodnoty do textového souboru. Brzy ty budete potřebovat.
 
 ### <a name="download-the-flight-data"></a>Stažení letových údajů
 
@@ -82,11 +82,9 @@ V této části Vytvoření služby Azure Databricks s využitím webu Azure por
 
     ![Vytvoření pracovního prostoru Azure Databricks](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "vytvoření služby Azure Databricks")
 
-3. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
+3. Vytvoření účtu trvá několik minut. Pokud chcete monitorovat stav operace, zobrazte indikátor průběhu v horní části.
 
-4. Vytvoření účtu trvá několik minut. Během vytváření účtu na portálu se zobrazí **odesílá se nasazení pro Azure Databricks** dlaždice na pravé straně. Pokud chcete monitorovat stav operace, zobrazte indikátor průběhu v horní části.
-
-    ![Dlaždice nasazení Databricks](./media/data-lake-storage-use-databricks-spark/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
+4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Vytvoření clusteru Spark v Azure Databricks
 
@@ -179,7 +177,7 @@ Tyto hodnoty použijte k zástupné symboly uvedené.
    * Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
 
    > [!NOTE]
-   > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
+   > V produkčním prostředí, zvažte uložení hesla v Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto hesla. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
 
 19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2b701e618bdcbd50709360c55cfb9ceb68781ebc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127306"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969100"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -111,7 +111,7 @@ V tomto příkladu **Actual Cost Over Time** sestavy k odesílání oznámení, 
 
 Můžete také **metriku Cost Percentage vs. Rozpočet** prahová hodnota metriky vytvářet upozornění. To umožňuje zadejte prahové hodnoty jako procenta z rozpočtu místo částek.
 
-## <a name="export-data"></a>Exportovat data
+## <a name="export-data"></a>Exportuje data.
 
 Podobným způsobem, jako pro sestavy vytváříte upozornění, můžete také z jakékoli sestavy exportovat data. Například můžete chtít exportovat seznam účtů služby Cloudyn nebo jiná uživatelská data. Pokud chcete exportovat sestavu, otevřete ji a pak v pravé horní části sestavy klikněte na **Actions** (Akce). Mezi akce, které můžete chtít provést, patří **Export all report data** (Exportovat všechna data sestavy), abyste mohli informace stáhnout nebo vytisknout. Nebo můžete vybrat možnost **Schedule report** (Naplánovat sestavu) a naplánovat odeslání sestavy v e-mailu.
 

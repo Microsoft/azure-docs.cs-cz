@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7f6e6b262dccd5b68c5a55c3d96a894205df8933
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5c3546dbadf64786b398610c19ee7f8e9e740d51
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695891"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956833"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Kurz: Integrace Azure Active Directory s oblouk
 
@@ -243,9 +243,9 @@ Povolení služby Azure AD uživatelům umožní přihlásit k oblouk musí být
 
     ![Pozvat](./media/rollbar-tutorial/user3.png)
 
-1. Uživatel dostane pozvánku a po jeho přijetí učitelského vytvořené v systému.
+1. Uživatel dostane pozvánku a po jeho přijetí jsou vytvořeny v systému.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

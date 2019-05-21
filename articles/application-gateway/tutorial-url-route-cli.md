@@ -1,27 +1,27 @@
 ---
-title: Kurz – Směrování webového provozu na základě adresy URL – Azure CLI
-description: V tomto kurzu zjistíte, jak pomocí Azure CLI směrovat webový provoz na základě adresy URL do konkrétních škálovatelných fondů serverů.
+title: Směrování webového provozu na základě adresy URL – rozhraní příkazového řádku Azure
+description: V tomto článku najdete informace o směrování webových přenosů na základě adresy URL na konkrétní škálovatelné fondů serverů pomocí rozhraní příkazového řádku Azure.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 10/25/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c0954d1010a6cf5ef6f8edab1470588df9fba559
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006469"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955515"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Kurz: Směrování webového provozu na základě adresy URL pomocí Azure CLI
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
 
-Jako správce IT, který má na starosti správu webového provozu, chcete zákazníkům nebo uživatelům pomoct co nejrychleji získat informace, které potřebují. Jedním ze způsobů, jak můžete jejich prostředí optimalizovat, je směrovat různé druhy webového provozu do různých prostředků serveru. V tomto kurzu se dozvíte, jak pomocí Azure CLI nastavit a nakonfigurovat směrování služby Application Gateway pro různé typy provozu z vaší aplikace. Toto směrování pak bude na základě adresy URL směrovat provoz do různých fondů serverů.
+Jako správce IT, který má na starosti správu webového provozu, chcete zákazníkům nebo uživatelům pomoct co nejrychleji získat informace, které potřebují. Jedním ze způsobů, jak můžete jejich prostředí optimalizovat, je směrovat různé druhy webového provozu do různých prostředků serveru. V tomto článku se dozvíte, jak používat rozhraní příkazového řádku Azure k nastavení a konfigurace směrování Application Gateway pro různé typy provozu z vaší aplikace. Toto směrování pak bude na základě adresy URL směrovat provoz do různých fondů serverů.
 
 ![Příklad směrování na základě adresy URL](./media/tutorial-url-route-cli/scenario.png)
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření skupiny prostředků pro síťové prostředky, které budete potřebovat
@@ -31,13 +31,13 @@ V tomto kurzu se naučíte:
 > * Vytvoření škálovacích sad pro jednotlivé fondy, aby se mohly automaticky škálovat
 > * Spuštění testu, abyste mohli ověřit směrování různých typů provozu do správných fondů
 
-Pokud chcete, můžete tento kurz absolvovat s použitím [Azure PowerShellu](tutorial-url-route-powershell.md) nebo webu [Azure Portal](create-url-route-portal.md).
+Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](tutorial-url-route-powershell.md) nebo [webu Azure portal](create-url-route-portal.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat CLI místně, potřebujete k tomuto kurzu verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -165,7 +165,7 @@ az network application-gateway url-path-map rule create \
   --address-pool videoBackendPool
 ```
 
-### <a name="add-a-routing-rule"></a>Přidání pravidla směrování
+### <a name="add-a-routing-rule"></a>Přidat pravidlo směrování
 
 Pravidlo směrování přidruží mapy adres URL k dříve vytvořenému naslouchacímu procesu. Pomocí příkazu `az network application-gateway rule create` přidejte pravidlo *rule2*.
 
@@ -182,7 +182,7 @@ az network application-gateway rule create \
 
 ## <a name="create-vm-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
+V tomto článku vytvoříte tři škálovací sady virtuálních počítačů, které podporují tří fondů back-end, který jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -264,5 +264,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Vytvoření aplikační brány se směrováním založeným na cestě URL](./tutorial-url-redirect-cli.md)
+* [Vytvoření aplikační brány se směrováním založeným na cestě URL](./tutorial-url-redirect-cli.md)

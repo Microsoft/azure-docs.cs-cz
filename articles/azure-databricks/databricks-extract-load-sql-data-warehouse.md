@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/17/2019
-ms.openlocfilehash: 7c60b2ae3d403584822e694daf3357b86cba34d7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a6a681ace95f9bab3c77e4a0f9982a2281c778b8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864752"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966444"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
@@ -63,7 +63,7 @@ Než zahájíte tento kurz, proveďte tyto úlohy:
 
       Pokud byste radši chtěli použít seznam řízení přístupu (ACL) k přidružení objektu služby s konkrétní soubor nebo adresář, odkaz [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
+   * Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a heslo hodnoty do textového souboru. Brzy ty budete potřebovat.
 
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -103,11 +103,9 @@ V této části Vytvoření služby Azure Databricks s využitím webu Azure por
     |**Umístění**     | Vyberte **Západní USA 2**.  Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).      |
     |**Cenová úroveň**     |  Vyberte **standardní**.     |
 
-3. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
+3. Vytvoření účtu trvá několik minut. Pokud chcete monitorovat stav operace, zobrazte indikátor průběhu v horní části.
 
-4. Vytvoření účtu trvá několik minut. Během vytváření účtu na portálu se zobrazí **odesílá se nasazení pro Azure Databricks** dlaždice na pravé straně. Pokud chcete monitorovat stav operace, zobrazte indikátor průběhu v horní části.
-
-    ![Dlaždice nasazení Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
+4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Vytvoření clusteru Spark v Azure Databricks
 
@@ -154,8 +152,8 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    ```scala
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
@@ -167,17 +165,17 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. V tomto bloku kódu, nahraďte `application-id`, `authentication-id`, `tenant-id`, a `storage-account-name` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahraďte `file-system-name` hodnotu zástupného symbolu pomocí cokoli, co název chcete umožnit systému souborů.
+6. V tomto bloku kódu, nahraďte `appID`, `password`, `tenant-id`, a `storage-account-name` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahraďte `file-system-name` hodnotu zástupného symbolu pomocí cokoli, co název chcete umožnit systému souborů.
 
-   * `application-id`, A `authentication-id` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
+   * `appID`, A `password` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
 
    * `tenant-id` Je ze svého předplatného.
 
@@ -338,7 +336,7 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá Azure Blo
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Musíte mít vytvořený SQL data warehouse jako předpoklad.
+4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Musíte mít vytvořený SQL data warehouse jako předpoklad. Použijte plně kvalifikovaný název pro **dwServer**. Například, `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings

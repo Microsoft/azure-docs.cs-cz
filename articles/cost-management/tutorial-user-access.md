@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e9bd7fb147f9789120776bc603768b4ace59e693
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b309d54fae63f16574bb3799d77adfd89f91a57
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003837"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967077"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 

@@ -7,21 +7,21 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8689918bf33b0efdd9bbfabc6d3751672959c6bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9007b3f1d4eee436452a3fa75b2880b9e5be461
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233250"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955700"
 ---
-# <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Kurz: Vytvoření služby application gateway s ukončení protokolu SSL pomocí Azure CLI
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Vytvoření služby application gateway s ukončení protokolu SSL pomocí Azure CLI
 
 Pomocí Azure CLI můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro [ukončení protokolu SSL](ssl-overview.md), která pro back-endové servery používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
@@ -29,17 +29,17 @@ V tomto kurzu se naučíte:
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-ssl-powershell.md).
+Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](tutorial-ssl-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat CLI místně, potřebujete k tomuto kurzu verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
-V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto článku vytvořte certifikát podepsaný svým držitelem a soubor pfx pomocí příkazu openssl.
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -183,5 +183,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Vytvoření aplikační brány, která hostuje více webů](./tutorial-multiple-sites-cli.md)
+* [Vytvoření aplikační brány, která hostuje více webů](./tutorial-multiple-sites-cli.md)

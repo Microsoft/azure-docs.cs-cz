@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145060"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949602"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Kurz: Použití Azure CDN umožňuje vlastní doménu s protokolem SSL pro statický Web
 
@@ -44,8 +44,9 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) začít.
 1. V **nový koncový bod** části, vyplňte pole k vytvoření nového koncového bodu CDN.
 1. Zadejte název koncového bodu, jako například *mystaticwebsiteCDN*.
 1. Zadejte doménu webu jako název hostitele pro koncový bod CDN.
-1. Název počátečního hostitele, zadejte jste koncový bod statického webu. Pokud chcete najít váš koncový bod statického webu, přejděte na **statického webu** části vašeho účtu úložiště a kopírování koncového bodu. 
+1. Název počátečního hostitele, zadejte jste koncový bod statického webu. Pokud chcete najít váš koncový bod statického webu, přejděte na **statického webu** části vašeho účtu úložiště a kopírování koncového bodu (odebrat předchozí https://)
 1. Testování tak, že přejdete na koncový bod CDN *mywebsitecdn.azureedge.net* v prohlížeči.
+1. Dále ověřte, že přejdete na **nový koncový bod** v části Nastavení počátku zobrazíte, pokud typ zdroje je nastavený na *vlastní původ* a *název počátečního hostitele* zobrazí statické název koncového bodu webiste.
 
 ## <a name="enable-custom-domain-and-ssl"></a>Povolit vlastní domény a SSL
 

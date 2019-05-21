@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 29a842f7dfcf720f29fcff80d2e736893c824f5a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641085"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949553"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service s využitím modulu plug-in Jenkinse 
 
@@ -72,7 +72,7 @@ Před nastavením úlohy v Jenkinsu potřebujete plán služby Azure App Service
 
 
 1. Pomocí [příkazu Azure CLI](/cli/azure/appservice/plan#az-appservice-plan-create) `az appservice plan create` vytvořte plán služby App Service s cenovou úrovní **FREE**. Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Tyto prostředky sdílí všechny aplikace přiřazené k plánu služby App Service. Sdílené prostředky pomáhají šetřit náklady při hostování více aplikací.
-2. Vytvořte webovou aplikaci. Můžete použít [Azure Portal](/azure/app-service-web/web-sites-configure) nebo následující příkaz Azure CLI `az`:
+2. Vytvořte webovou aplikaci. Můžete použít [Azure Portal](/azure/app-service/configure-common) nebo následující příkaz Azure CLI `az`:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```

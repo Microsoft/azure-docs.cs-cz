@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/13/2019
+ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 836a3f3c17c4cf11ac972b7cc129fb3f83093024
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b446a3ebf92f6240d3bc02a148fbb8296efec926
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794032"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950715"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-for-advanced-deployment-flow"></a>Kurz: Transformace dat pomocí Azure Data Box Edge pro pokročilé nasazení toku
 
@@ -196,12 +196,14 @@ V této části přidáte do zařízení IoT Edge, které jste vytvořili vlastn
     
         ```
         {
-            "HostConfig": {
-            "Binds": [
-            "/home/hcsshares/mydbesmbedgelocalshare1:/home/input",
-            "/home/hcsshares/mydbesmbedgeshare1:/home/output"
+          "HostConfig": 
+          {
+           "Binds": 
+            [
+             "/home/hcsshares/mydbesmbedgelocalshare1:/home/input",
+             "/home/hcsshares/mydbesmbedgeshare1:/home/output"
             ]
-            }
+           }
         }
         ```
 

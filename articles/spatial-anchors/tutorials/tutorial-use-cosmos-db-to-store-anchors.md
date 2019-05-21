@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19c2298c9bda03acba28496a97c89c2a53e3c44e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681199"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964894"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: Sdílené složky Azure prostorových kotev vztahů mezi relacemi a zařízeními pomocí služby Azure Cosmos DB back-endu
 
@@ -70,7 +70,7 @@ Vyhledejte `StorageConnectionString` vlastnost a být stejný jako hodnotu nasta
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste použili službu Azure Cosmos DB sdílet identifikátory ukotvení napříč zařízeními. Další informace o tom, jak používat Azure prostorových kotvy vztahů v nové aplikace pro Android, pokračujte k dalšímu kurzu.
+V tomto kurzu jste použili službu Azure Cosmos DB sdílet identifikátory ukotvení napříč zařízeními. Další informace o tom, jak používat Azure prostorových kotvy v nové aplikace Unity HoloLens, pokračujte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Spuštění nové aplikace pro Android](./tutorial-new-android-app.md)
+> [Spuštění nové aplikace pro Android](./tutorial-new-unity-hololens-app.md)
