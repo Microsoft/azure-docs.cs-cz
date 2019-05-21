@@ -56,8 +56,8 @@ Pro Teradata propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Teradata** | Ano |
 | server | Název serveru Teradata. | Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi Teradata.<br/>Povolené hodnoty jsou: **Základní**, a **Windows**. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Teradata. | Ano |
+| authenticationType | Typ ověřování používaný pro připojení k databázi Teradata.<br/>Povolené hodnoty jsou: **Základní**, a **Windows**. | Ano |
+| username jméno | Zadejte uživatelské jméno pro připojení k databázi Teradata. | Ano |
 | password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
@@ -164,40 +164,40 @@ Při kopírování dat z Teradata, se používají následující mapování z T
 | Typ dat Teradata | Data factory dočasné datový typ |
 |:--- |:--- |
 | BigInt |Int64 |
-| Objekt blob |Byte[] |
+| Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| char |String |
+| Char |String |
 | Clob |String |
-| Datum |DateTime |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
-| Obrázek |String |
+| Graphic |String |
 | Integer |Int32 |
-| Interval den |TimeSpan |
-| Interval den na hodinu |TimeSpan |
-| Den intervalu minuty. |TimeSpan |
-| Den intervalu sekundy. |TimeSpan |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
 | Interval Hour |TimeSpan |
-| Interval hodinu, minutu |TimeSpan |
-| Hodina intervalu sekundy. |TimeSpan |
-| Interval minutu |TimeSpan |
-| Interval minuty, sekundy. |TimeSpan |
-| Interval měsíc |String |
-| Interval druhý |TimeSpan |
-| Interval rok |String |
-| Interval rok měsíc |String |
-| Číslo |Double |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Month |String |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Number |Double |
 | Period(Date) |String |
 | Period(Time) |String |
-| Období (čas s časovým pásmem) |String |
+| Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
-| Období (časové razítko s časovým pásmem) |String |
+| Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
-| Čas |TimeSpan |
-| Čas s časovým pásmem |String |
+| Time |TimeSpan |
+| Time With Time Zone |String |
 | Timestamp |DateTime |
-| Časové razítko s časovým pásmem |Datetimeoffset |
+| Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
