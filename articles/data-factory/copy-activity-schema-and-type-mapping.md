@@ -90,12 +90,12 @@ Následující vlastnosti jsou podporovány v rámci `translator`  ->  `mappings
 
 | Vlastnost | Popis                                                  | Požaduje se |
 | -------- | ------------------------------------------------------------ | -------- |
-| jméno     | Název sloupce zdrojem nebo jímkou.                           | Ano      |
-| Pořadí  | Index sloupce. Začněte s 1. <br>Použít a vyžaduje při použití oddělený text bez záhlaví řádku. | Ne       |
+| name     | Název sloupce zdrojem nebo jímkou.                           | Ano      |
+| ordinal  | Index sloupce. Začněte s 1. <br>Použít a vyžaduje při použití oddělený text bez záhlaví řádku. | Ne       |
 | path     | Výraz cesty JSON pro každé pole pro rozbalení nebo mapy. Platí pro hierarchických dat třeba MongoDB nebo rozhraní REST.<br>U polí v kořenovém objektu cesta JSON začíná s kořenem $; u polí uvnitř pole vybraného pomocí `collectionReference` vlastnost, cesta JSON začíná od prvku pole. | Ne       |
 | type     | Data Factory dočasné datový typ sloupce zdrojem nebo jímkou. | Ne       |
-| Jazyková verze  | Jazyková verze, ve sloupci zdrojem nebo jímkou. <br>Použít, když je typ `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne       |
-| formát   | Formátovací řetězec se použije, když je typ `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní data a řetězce formátu časových](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) o tom, jak formátovat datum a čas. | Ne       |
+| culture  | Jazyková verze, ve sloupci zdrojem nebo jímkou. <br>Použít, když je typ `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne       |
+| format   | Formátovací řetězec se použije, když je typ `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní data a řetězce formátu časových](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) o tom, jak formátovat datum a čas. | Ne       |
 
 Následující vlastnosti jsou podporovány v rámci `translator`  ->  `mappings` kromě objekt s `source` a `sink`:
 
@@ -287,7 +287,7 @@ Data Factory podporuje následující typy dočasné dat: Můžete zadat násled
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double
@@ -297,7 +297,7 @@ Data Factory podporuje následující typy dočasné dat: Můžete zadat násled
 * Int64
 * Single
 * String
-* Časový interval
+* Timespan
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit další články o aktivitě kopírování:
