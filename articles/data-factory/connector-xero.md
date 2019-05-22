@@ -50,7 +50,7 @@ Xero propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Xero** | Ano |
-| hostitel | Koncový bod serveru Xero (`api.xero.com`).  | Ano |
+| host | Koncový bod serveru Xero (`api.xero.com`).  | Ano |
 | consumerKey | Uživatelský klíč přidružený k aplikaci Xero. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | privateKey | Privátní klíč ze souboru .pem, který byl vygenerován pro vaši aplikaci privátní Xero, naleznete v tématu [vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka: **generovat privatekey.pem s numbits 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 se nepodporuje. Zahrnout veškerý text z soubor .pem, včetně endings(\n) řádku Unix, najdete v ukázce níže.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
