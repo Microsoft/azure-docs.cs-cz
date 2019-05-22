@@ -57,7 +57,7 @@
         - name: Přehled
           href: encoding-concept.md
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
-        - name: Rozhraní API pro transformace a úlohy
+        - name: Transformace a úlohy
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
         - name: Formáty kodéru úrovně Standard
@@ -74,7 +74,7 @@
         - name: Přehled
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyzing, presets, jobs'
-        - name: Rozhraní API pro transformace a úlohy
+        - name: Transformace a úlohy
           href: transforms-jobs-concept.md
         - name: Kódy chyb úlohy
           href: job-error-codes.md
@@ -85,15 +85,15 @@
           href: dynamic-packaging-overview.md
         - name: Dynamické manifesty
           href: filters-dynamic-manifest-overview.md
-        - name: Rozhraní API pro filtry
+        - name: Filtry
           href: filters-concept.md
-        - name: Rozhraní API pro koncové body streamování
+        - name: Koncové body streamování
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
-        - name: Rozhraní API pro lokátory streamování
+        - name: Lokátory streamování
           displayName: URLs
           href: streaming-locators-concept.md
-        - name: Rozhraní API pro zásady streamování
+        - name: Zásady streamování
           href: streaming-policy-concept.md
         - name: Kódy chyb koncových bodů streamování
           href: streaming-endpoint-error-codes.md
@@ -112,15 +112,15 @@
               href: widevine-license-template-overview.md
             - name: Licenční požadavky FairPlay
               href: fairplay-license-overview.md
-        - name: Rozhraní API pro zásady streamování
+        - name: Zásady streamování
           href: streaming-policy-concept.md
-        - name: Rozhraní API pro zásady symetrických klíčů
+        - name: Zásady symetrických klíčů
           href: content-key-policy-concept.md
     - name: Živé streamování
       items:
         - name: Přehled
           href: live-streaming-overview.md
-        - name: Živé události a rozhraní API pro živé výstupy
+        - name: Živé události a výstupy
           href: live-events-outputs-concept.md
         - name: Doporučené kodéry pro kódování v reálném čase
           href: recommended-on-premises-live-encoders.md

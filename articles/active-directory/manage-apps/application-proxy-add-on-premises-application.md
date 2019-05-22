@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/18/2019
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c82e810671c3a643e7fb2d019f58e70a07fe1e62
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783906"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015425"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -95,7 +95,7 @@ Povolit přístup k následujícím adresám URL:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů. |
 | login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Konektor používá tyto adresy URL během procesu registrace. |
 
-Můžete povolit připojení k \*. msappproxy.net a \*. servicebus.windows.net Pokud brána firewall nebo proxy server umožňuje DNS na seznam povolených. Pokud ne, je potřeba povolit přístup k [rozsahy IP adres Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Můžete povolit připojení k \*. msappproxy.net a \*. servicebus.windows.net Pokud brána firewall nebo proxy serveru vám umožní nakonfigurovat DNS povolit seznamy. Pokud ne, je potřeba povolit přístup k [rozsahy IP adres Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
 
 ## <a name="install-and-register-a-connector"></a>Instalace a registrace konektoru
 

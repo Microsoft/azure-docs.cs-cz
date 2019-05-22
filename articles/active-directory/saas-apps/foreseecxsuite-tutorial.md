@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 19c2ccab6685f53ba714298f66bc8e8821b4aa02
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898697"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Kurz: Integrace Azure Active Directory s přijetím Suite CX
 
@@ -194,7 +194,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-foresee-cx-suite-test-user"></a>Vytvořit testovacího uživatele přijetím Suite CX
 
-V této části vytvořte uživatele Britta Simon sady CX přijetím. Práce s [tým podpory přijetím Suite CX](mailto:support@foresee.com) k přidání uživatele nebo domény, který je nutný na seznamu povolených na platformě přijetím CX Suite. Pokud je doména přidána týmem, bude získat uživatelé automaticky přiřazeni k přijetím Suite CX platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon sady CX přijetím. Práce s [tým podpory přijetím Suite CX](mailto:support@foresee.com) přidat uživatele nebo doménu, která musí být přidaný do seznamu povolených položek pro platformu přijetím CX Suite. Pokud je doména přidána týmem, bude získat uživatelé automaticky přiřazeni k přijetím Suite CX platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 

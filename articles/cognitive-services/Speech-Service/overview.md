@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: e29e36807aff6c32f295c79c90d80c7d2b5b4bcc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510730"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002992"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
@@ -42,7 +42,9 @@ Tyto funkce tvoří hlasové služby Azure. Další informace o běžných pří
 Zjistěte, co je nového v hlasových služeb Azure.
 
 * . Května 2019 – dokumentace je nyní k dispozici pro [konverzace určené k transkripci](conversation-transcription-service.md), [přepis volání Center](call-center-transcription.md), a [virtuálních asistentů hlasové první](voice-first-virtual-assistants.md).
-* . Května 2019 – vydali řeči SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md).
+* . Května 2019.
+    * Vydáno řeči SDK 1.5.1. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md).
+    * Vydáno řeči SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md).
 * 2019. dubna – vydali sadou SDK pro řeč 1.4.0 s podporou pro převod textu na řeč (beta verze) jazyka C++, C#a Java na Windows a Linux. Kromě toho sada SDK teď podporuje formáty zvuku MP3 a díle/Ogg jazyka C++ a C# v Linuxu. Úplný seznam aktualizací, vylepšení a známých problémů najdete v tématu [poznámky k verzi](releasenotes.md).
 * 2019. března – nový koncový bod pro převod textu na ŘEČ, která vrací úplný seznam dostupných hlasy v určité oblasti je teď k dispozici. Kromě toho nové oblasti jsou nyní podporovány pro převod textu na ŘEČ. Další informace najdete v tématu [referenční dokumentace rozhraní API pro převod textu na řeč (REST)](rest-text-to-speech.md).
 

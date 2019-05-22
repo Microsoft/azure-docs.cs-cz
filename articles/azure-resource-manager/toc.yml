@@ -54,7 +54,7 @@
 - name: Koncepty
   items:
     - name: Struktura souborů šablon
-      displayName: 'parameters,variables,resources,outputs'
+      displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
     - name: Osvědčené postupy pro šablony
       href: template-best-practices.md

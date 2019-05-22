@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: 86ad938cd3d248ad907b3143342b0acf9ff15631
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 498246292b3cf591433a709139621b039ac3af33
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236893"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002168"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce C++ v systému macOS pomocí sady SDK pro řeč
 
@@ -31,7 +31,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.5.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.5.1`.
 
 Sadou SDK pro řeč pro macOS můžete stáhnout jako ZIP framework sada z https://aka.ms/csspeech/macosbinary.
 

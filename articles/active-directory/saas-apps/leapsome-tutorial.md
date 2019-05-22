@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 602e3145a003a0413287b08151abf472ecf4ade0
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: dbdf6847658e6a5a3999007f51b409e47a65e4cd
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406713"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Kurz: Integrace Azure Active Directory s Leapsome
 
@@ -126,10 +126,10 @@ Ke konfiguraci Azure AD jednotné přihlašování s Leapsome, proveďte násled
 
     | Název | Zdrojový atribut | Obor názvů |
     | ---------------| --------------- | --------- |  
-    | jméno | user.givenname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Příjmení | user.surname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | název | user.jobtitle | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Obrázek | Adresa URL obrázku zaměstnance. | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | jméno | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Příjmení | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | název | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Obrázek | Adresa URL obrázku zaměstnance. | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     > [!Note]
@@ -244,7 +244,7 @@ V této části je povolit Britta Simon k udělení přístupu k Leapsome použi
 
 ### <a name="create-leapsome-test-user"></a>Vytvoření Leapsome testovacího uživatele
 
-V této části vytvoříte uživatele v Leapsome jako Britta Simon. Práce s [tým podpory Leapsome klienta](mailto:support@leapsome.com) k přidání uživatele nebo domény, který je třeba přidat na seznam povolených Leapsome platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Leapsome platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Leapsome jako Britta Simon. Práce s [tým podpory Leapsome klienta](mailto:support@leapsome.com) k přidání uživatele nebo doménu, která musí být přidaný do seznamu povolených položek pro platformu Leapsome. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Leapsome platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 

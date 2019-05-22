@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc04a307779b47b50cd16a81c0566b72bafab95
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900704"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Kurz: Integrace Azure Active Directory s Boxcryptor
 
@@ -181,7 +181,7 @@ V této části je povolit Britta Simon k udělení přístupu k Boxcryptor pou�
 
 ### <a name="create-boxcryptor-test-user"></a>Vytvoření Boxcryptor testovacího uživatele
 
-V této části vytvoříte uživatele v Boxcryptor jako Britta Simon. Práce s [tým podpory Boxcryptor](mailto:support@boxcryptor.com) přidat uživatele nebo domény, který je nutný na seznamu povolených Boxcryptor platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Boxcryptor platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Boxcryptor jako Britta Simon. Práce s [tým podpory Boxcryptor](mailto:support@boxcryptor.com) přidat uživatele nebo doménu, která musí být přidaný do seznamu povolených položek pro platformu Boxcryptor. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Boxcryptor platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 91d4cf874d4d98735582d2690072e6a04683c1f5
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899642"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Integrace Azure Active Directory pomocí Adobe Sign
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí Adobe Sign, proveďte
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>Konfigurace Adobe Sign jednotného přihlašování
 
-1. Před konfigurací, obraťte se [tým podpory Adobe Sign klienta](https://helpx.adobe.com/in/contact/support.html) na seznam povolených vaši doménu v Adobe Sign. Tady je postup pro přidání domény:
+1. Před konfigurací, obraťte se [tým podpory Adobe Sign klienta](https://helpx.adobe.com/in/contact/support.html) přidat vaši doménu v Adobe Sign seznamu povolených tříd. Tady je postup pro přidání domény:
 
     a. [Tým podpory Adobe Sign klienta](https://helpx.adobe.com/in/contact/support.html) odešle náhodně vygenerovaný token. Pro vaši doménu token, který bude podobný tomuto: **adobe sign ověřovací = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 

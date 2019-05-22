@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: f25c3801553b0ac0c725170cda95f5c1eacc3637
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020738"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002338"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Objective-C v systému macOS pomocí sady SDK pro řeč
 
@@ -34,7 +34,7 @@ Než začnete, tady je seznam požadovaných součástí:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.5.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.5.1`.
 
 Cognitive Services sadou SDK pro řeč pro Mac se distribuuje jako sada framework.
 Je možné v projekty Xcode jako [CocoaPod](https://cocoapods.org/), nebo stažených z https://aka.ms/csspeech/macosbinary a propojení ručně. Tato příručka používá CocoaPod.
@@ -71,7 +71,7 @@ V následujících dialogových oknech proveďte následující výběry:
     ```
     target 'helloworld' do
         platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.0'
+        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
     end
     ```
 1. Přejděte `helloworld` adresář, v terminálu a spusťte tento příkaz `pod install`. Tím se vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode, která obsahuje ukázkovou aplikaci a sadou SDK pro řeč jako závislost. Tento pracovní prostor se použije v následujících tématech.
@@ -79,7 +79,8 @@ V následujících dialogových oknech proveďte následující výběry:
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
 1. Otevřít `helloworld.xcworkspace` pracovní prostor v Xcode.
-1. Nahraďte jeho obsah automaticky generované `AppDelegate.m` souboru podle: [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
+1. Nahraďte obsah automaticky vygenerovaného souboru `AppDelegate.m` následujícím kódem:  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f69ef2c7c260d8df918fb2495bded6910d6b17b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e994150f68c0f274c97c27fccc89f226bc8236cd
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707643"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Kurz: Integrace s Azure Active Directory s HRworks jednotného přihlašování
 
@@ -130,7 +130,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HRworks Single Sign-On, pro
 
 2. Klikněte na **správce** > **Základy** > **zabezpečení** > **jednotného přihlašování** z levé nabídky panelu a proveďte následující kroky:
 
-       ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure01.png)
+       ![Configure Single Sign-On](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
     a. Zkontrolujte, **použití jednotného přihlašování** pole.
 
@@ -138,7 +138,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HRworks Single Sign-On, pro
 
     c. Vyberte **jednotlivé NameID identifikátor** jako **hodnotu NameID**.
 
-    d. V poznámkovém bloku otevřete kód XML metadat, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **metadat** textového pole.
+    d. V poznámkovém bloku otevřete kód XML metadat, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **metadat** textového pole.
 
     e. Klikněte na **Uložit**.
 
@@ -202,7 +202,7 @@ Azure AD uživatelům umožnit přihlásit v k HRworks Single Sign-On, se musí 
 
 2. Klikněte na **správce** > **osoby** > **osoby** > **nové osobě** z levé části řádku nabídek.
 
-     ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 3. V automaticky otevíraném okně klikněte na **Další**.
 
@@ -212,7 +212,7 @@ Azure AD uživatelům umožnit přihlásit v k HRworks Single Sign-On, se musí 
     
     ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

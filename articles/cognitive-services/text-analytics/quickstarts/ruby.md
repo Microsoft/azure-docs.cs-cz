@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 3163b58a9b325f28ab253ca090314515cf82ccb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56a482ae4eab4cde3cf39fcc187b703f253e0cbb
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828071"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990250"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Ruby k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
@@ -32,7 +32,7 @@ Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-a
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Zjištění jazyka
+## <a name="detect-language"></a>Zjistit jazyk
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
@@ -211,7 +211,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrakce klíčových frází
+## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
@@ -308,7 +308,7 @@ puts JSON::pretty_generate (JSON (response.body))
 ```
 <a name="Entities"></a>
 
-## <a name="identify-entities"></a>Identifikace entit
+## <a name="entity-recognition"></a>Rozpoznávání entit
 
 Rozhraní API pro entity extrahuje entity v textovém dokumentu pomocí [metody Entities](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634). Následující příklad identifikuje entity pro anglické dokumenty.
 

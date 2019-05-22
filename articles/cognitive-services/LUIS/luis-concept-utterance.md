@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598406"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "65073160"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Porozumění projevy vhodné pro aplikace LUIS
 
@@ -74,13 +74,47 @@ Služba LUIS sestavení efektivní modely s projevy, které jsou vybrány pečli
 
 Je lepší začít s několika projevy, pak [zkontrolujte koncový bod projevy](luis-how-to-review-endpoint-utterances.md) správné záměru extrakci předpovědi a entity.
 
-## <a name="punctuation-marks"></a>Interpunkční znaménka
+## <a name="utterance-normalization"></a>Normalizace utterance
 
-Služba LUIS nebude ignorovat interpunkčních znamének, ve výchozím nastavení, protože některé klientské aplikace mohou klást na těchto známky význam. Zajistěte, aby že vaše příklad projevy pomocí interpunkce a bez interpunkce v pořadí pro obě styly vrátit stejné relativní skóre. Pokud interpunkční znaménka nemá žádný zvláštní význam v klientské aplikace, zvažte [je ignorována interpunkce](#ignoring-words-and-punctuation) pomocí vzorce. 
+Normalizace utterance je proces při trénování a predikcí se ignoruje účinky interpunkce a diakritických znamének.
 
-## <a name="ignoring-words-and-punctuation"></a>Ignoruje slova a interpunkce
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Utterance normalizace pro znaky s diakritikou a interpunkce
 
-Pokud chcete ignorovat slova nebo interpunkčním znaménkem v příkladu utterance, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s _Ignorovat_ syntaxe. 
+Normalizace utterance se definuje při vytvoření nebo import aplikace, protože jde o nastavení v souboru JSON aplikace. Nastavení normalizace utterance jsou ve výchozím nastavení vypnuta. 
+
+Znaky s diakritikou jsou značky nebo znaky v textu, jako je například: 
+
+```
+İ ı Ş Ğ ş ğ ö ü
+```
+
+Pokud vaše aplikace zapne normalizace, stanoví skóre **Test** podokno, dávky testů a dotazy na koncový bod se změní pro všechny projevy pomocí diakritická znaménka nebo interpunkční znaménka.
+
+Zapnout utterance normalizace pro znaky s diakritikou ani interpunkci v souboru aplikace LUIS JSON `settings` parametru.
+
+```JSON
+"settings": [
+    {"name": "NormalizePunctuation", "value": "true"},
+    {"name": "NormalizeDiacritics", "value": "true"}
+] 
+```
+
+Normalizace **interpunkční znaménka** znamená, že před seznámení s vašimi modely a před váš koncový bod získat předpovědět dotazy, rozdělení se odebere z projevy. 
+
+Normalizace **diakritiku** nahradí znaky s diakritikou v projevy regulární znaky. Příklad: `Je parle français` stane `Je parle francais`. 
+
+Normalizace neznamená, že není viz interpunkce a diakritických znamének v příkladu projevy nebo předpověď odpovědi, pouze že se mají ignorovat během trénování a predikcí.
+
+
+### <a name="punctuation-marks"></a>Interpunkční znaménka
+
+Pokud interpunkce není normalizovaná, LUIS není ignorovat interpunkčních znamének, ve výchozím nastavení, protože některé klientské aplikace mohou klást na těchto známky význam. Zajistěte, aby že vaše příklad projevy pomocí interpunkce a bez interpunkce v pořadí pro obě styly vrátit stejné relativní skóre. 
+
+Pokud interpunkční znaménka nemá žádný zvláštní význam v klientské aplikace, zvažte [je ignorována interpunkce](#utterance-normalization) podle normalizace interpunkce. 
+
+### <a name="ignoring-words-and-punctuation"></a>Ignoruje slova a interpunkce
+
+Pokud chcete ignorovat slova nebo interpunkční znaménka ve vzorech, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s _Ignorovat_ syntaxe hranaté závorky, `[]`. 
 
 ## <a name="training-utterances"></a>Projevy školení
 

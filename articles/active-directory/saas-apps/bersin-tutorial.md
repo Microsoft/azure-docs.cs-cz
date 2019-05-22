@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8ff026743ccda0a47ce176db51dbc7913376f46
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862388"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Kurz: Integrace Azure Active Directory s Bersin
 
@@ -51,7 +51,7 @@ V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jedno
 
 Konfigurace integrace Bersin do služby Azure AD, budete muset přidat Bersin z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Bersin z galerie, postupujte následovně:**
+**Chcete-li přidat Bersin z Galerie**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -100,7 +100,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Bersin, proveďte následuj
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, postupujte následovně:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
     ![Bersin domény a adresy URL jednotného přihlašování – informace](common/idp-identifier-relay.png)
 
@@ -132,7 +132,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Bersin, proveďte následuj
 
 ### <a name="configure-bersin-single-sign-on"></a>Konfigurace Bersin jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Bersin** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Bersin](mailto:ramansabde@gmail.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **Bersin** straně, odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Bersin](mailto:ramansabde@gmail.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -150,9 +150,9 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -181,13 +181,13 @@ V této části je povolit Britta Simon k udělení přístupu k Bersin použit�
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML, pak v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
 
 ### <a name="create-bersin-test-user"></a>Vytvoření Bersin testovacího uživatele
 
-V této části vytvoříte uživatele v Bersin jako Britta Simon. Práce s [tým podpory Bersin](mailto:USBersinServiceClient@deloitte.com) přidání uživatele v Bersin platformy nebo domény, který je nutný na seznamu povolených Bersin platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Bersin platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Bersin jako Britta Simon. Práce s [tým podpory Bersin](mailto:USBersinServiceClient@deloitte.com) v platformě Bersin nebo domény, která musí být přidaný do seznamu povolených položek pro platformu Bersin přidejte uživatele. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Bersin platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 

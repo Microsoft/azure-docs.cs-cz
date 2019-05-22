@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122536"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991627"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python
 
@@ -93,8 +93,8 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
     # Replace with your subscription key.
     subscription_key = "YOUR_SUBSCRIPTION_KEY"
 
-    # Instantiate the client.
-    client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
+    # Instantiate the client and replace with your endpoint.
+    client = WebSearchAPI(CognitiveServicesCredentials(subscription_key), base_url = "YOUR_ENDPOINT")
 
     # Make a request. Replace Yosemite if you'd like.
     web_data = client.web.search(query="Yosemite")
@@ -164,7 +164,9 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
         print("Didn't find any videos...")
     ```
 
-1. Hodnotu `subscription_key` nahraďte platným klíčem předplatného.
+1. Hodnotu `SUBSCRIPTION_KEY` nahraďte platným klíčem předplatného.
+
+1. Nahraďte `YOUR_ENDPOINT` s adresou url vašeho koncového bodu na portálu.
 
 1. Spusťte program. Například: `python your_program.py`.
 

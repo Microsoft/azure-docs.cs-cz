@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a86e63f17230ed30bd5ae164d2d17d65b5cde745
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408054"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Kurz: Integrace Azure Active Directory s konektorem Meta sítě
 
@@ -131,8 +131,8 @@ Ke konfiguraci Azure AD jednotné přihlašování s konektorem Meta sítě, pro
     | ---------------| --------------- | -------- |
     | jméno | user.givenname | |
     | Příjmení | user.surname | |
-    | emailaddress| user.mail| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | name | user.userprincipalname| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | telefon | user.telephonenumber | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -172,7 +172,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s konektorem Meta sítě, pro
 1. Otevření nové záložky v prohlížeči a přihlaste se k vašemu účtu správce konektoru Meta sítě.
     
     > [!NOTE]
-    > Konektor sítí meta je zabezpečení systému. Proto před přístupem k jejich portálu musíte získat vaše veřejné IP adresy přidat na seznam povolených na své straně. Chcete-li získat veřejnou IP adresu, postupujte níže uvedeném odkazu [tady](https://whatismyipaddress.com/). Poslat vaši IP adresu, které [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com) zobrazíte vašeho seznamu povolených IP adres.
+    > Konektor sítí meta je zabezpečení systému. Proto před přístupem k jejich portálu musíte získat svou veřejnou IP adresu do seznamu povolených položek na své straně. Chcete-li získat veřejnou IP adresu, postupujte níže uvedeném odkazu [tady](https://whatismyipaddress.com/). Poslat vaši IP adresu, které [tým podpory Meta sítě konektor klienta](mailto:support@metanetworks.com) získat vaše IP adresa přidá do seznamu povolených položek.
     
 2. Přejděte na **správce** a vyberte **nastavení**.
     

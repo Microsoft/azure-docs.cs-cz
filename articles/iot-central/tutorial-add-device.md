@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e9378f8d2b31bfed4c464951c427b1e9d00b7893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699376"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015232"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -348,7 +348,7 @@ V tomto kurzu jste se naučili:
 > * Porozumět, jak se klientský kód mapuje k aplikaci
 > * Nakonfigurovat klientský kód pro skutečné zařízení
 
-Teď, když jste se připojili skutečné zařízení do aplikace Azure IoT Central, tady jsou další navrhované kroky:
+Teď, když jste se připojili skutečné zařízení do aplikace Azure IoT Central, tady jsou některé další navrhované kroky.
 
 Jako operátor se naučíte tyto postupy:
 

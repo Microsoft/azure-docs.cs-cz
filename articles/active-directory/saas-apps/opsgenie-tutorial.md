@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f395ae51d51e56668482ad6c8d446bdd31050fea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98e4d1870c57c9718e2d4293157b21ead8ea44e1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870630"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Integrace Azure Active Directory s použitím OpsGenie
 
@@ -71,16 +71,16 @@ Konfigurace integrace použitím OpsGenie do služby Azure AD, budete muset při
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s použitím OpsGenie podle testu uživateli **Britta Simon**.
+V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s použitím OpsGenie podle testu uživateli **B. Simon**.
 Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v použitím OpsGenie.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s použitím OpsGenie, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace použitím OpsGenie Single Sign-On](#configure-opsgenie-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele použitím OpsGenie](#create-opsgenie-test-user)**  – Pokud chcete mít protějšek Britta Simon použitím OpsGenie, který je propojený s Azure AD reprezentace uživatele.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s B. Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit B. Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele použitím OpsGenie](#create-opsgenie-test-user)**  – Pokud chcete mít protějšek B. Simon v použitím OpsGenie, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -149,7 +149,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s použitím OpsGenie, prove�
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá B. Simon.
 
 1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
@@ -163,10 +163,10 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. V **název** zadat **B. Simon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole **bsimon@yourcompanydomain.extension**  
+    Například BSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -174,7 +174,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu použitím OpsGenie.
+V této části povolíte B. Simon používat jednotné přihlašování Azure díky udělení přístupu použitím OpsGenie.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **použitím OpsGenie**.
 
@@ -192,7 +192,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogové okno Vybrat **B. Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
 6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
@@ -200,7 +200,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-opsgenie-test-user"></a>Vytvořit testovacího uživatele použitím OpsGenie
 
-Cílem této části je vytvořte uživatele Britta Simon v použitím OpsGenie. 
+Cílem této části je vytvořte uživatele B. Simon v použitím OpsGenie. 
 
 1. V okně webového prohlížeče Přihlaste se jako správce tenanta použitím OpsGenie.
 
@@ -214,14 +214,14 @@ Cílem této části je vytvořte uživatele Britta Simon v použitím OpsGenie.
    
     ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-    a. V **e-mailu** textového pole zadejte e-mailovou adresu BrittaSimon zákazníky a vyřešené v Azure Active Directory.
+    a. V **e-mailu** textového pole zadejte e-mailovou adresu B. Simon zákazníky a vyřešené v Azure Active Directory.
    
-    b. V **jméno a příjmení** textové pole, typ **Britta Simon**.
+    b. V **jméno a příjmení** textové pole, typ **B. Simon**.
    
     c. Klikněte na **Uložit**. 
 
 >[!NOTE]
->Britta dostane e-mail s pokyny k nastavení svého profilu.
+>B. Simon dostane e-mail s pokyny pro nastavení svůj profil.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0879f9026276eb7149ae44906377a7b369e05116
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3e457ca29ebe086c6097528af5a9253446b757c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865302"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Kurz: Integrace Azure Active Directory s Vodeclic
 
@@ -191,7 +191,7 @@ V této části je povolit Britta Simon k udělení přístupu k Vodeclic použi
 V této části vytvoříte uživatele v Vodeclic jako Britta Simon. Práce s [tým podpory Vodeclic](mailto:hotline@vodeclic.com) přidat uživatele na platformě Vodeclic. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 > [!NOTE]
-> Podle požadavků aplikací můžete potřebovat získat seznam povolených adres vašeho počítače. Pro, které se provedou, budete chtít sdílet svou veřejnou IP adresu s [tým podpory Vodeclic](mailto:hotline@vodeclic.com).
+> Podle požadavků na aplikaci potřebujete získat váš počítač přidán do seznamu povolených položek. Pro, které se provedou, budete chtít sdílet svou veřejnou IP adresu s [tým podpory Vodeclic](mailto:hotline@vodeclic.com).
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
