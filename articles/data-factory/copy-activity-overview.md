@@ -131,12 +131,12 @@ Následující šablony aktivitu kopírování, která obsahuje úplný seznam p
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type aktivitu kopírování, která musí být nastavena: **kopírování** | Ano |
-| vstupy | Zadejte datovou sadu vytvoříte, která odkazuje na zdroj dat. Aktivitu kopírování, která podporuje pouze jeden vstup. | Ano |
-| výstupy | Zadejte datovou sadu vytvoříte, které body k datům jímky. Aktivitu kopírování, která podporuje pouze jeden výstup. | Ano |
+| inputs | Zadejte datovou sadu vytvoříte, která odkazuje na zdroj dat. Aktivitu kopírování, která podporuje pouze jeden vstup. | Ano |
+| outputs | Zadejte datovou sadu vytvoříte, které body k datům jímky. Aktivitu kopírování, která podporuje pouze jeden výstup. | Ano |
 | typeProperties | Skupina vlastností konfigurace aktivity kopírování. | Ano |
 | source | Zadejte typ zdroje kopie a odpovídající vlastnosti o tom, jak načíst data.<br/><br/>Přečtěte si podrobnosti v článku konektor uvedené v části "Vlastnosti aktivity kopírování" [podporovaných úložišť dat a formáty](#supported-data-stores-and-formats). | Ano |
-| jímka | Zadejte typ jímky kopírování a odpovídajících vlastností o tom, jak zapsat data.<br/><br/>Přečtěte si podrobnosti v článku konektor uvedené v části "Vlastnosti aktivity kopírování" [podporovaných úložišť dat a formáty](#supported-data-stores-and-formats). | Ano |
-| Translator | Zadejte mapování sloupce explicitní ze zdroje do jímky. Platí při kopírování chování nejde splnit vaše potřeby.<br/><br/>Další podrobnosti o [schéma a data mapování typu](copy-activity-schema-and-type-mapping.md). | Ne |
+| sink | Zadejte typ jímky kopírování a odpovídajících vlastností o tom, jak zapsat data.<br/><br/>Přečtěte si podrobnosti v článku konektor uvedené v části "Vlastnosti aktivity kopírování" [podporovaných úložišť dat a formáty](#supported-data-stores-and-formats). | Ano |
+| translator | Zadejte mapování sloupce explicitní ze zdroje do jímky. Platí při kopírování chování nejde splnit vaše potřeby.<br/><br/>Další podrobnosti o [schéma a data mapování typu](copy-activity-schema-and-type-mapping.md). | Ne |
 | dataIntegrationUnits | Zadejte powerfulness z [prostředí Azure Integration Runtime](concepts-integration-runtime.md) pro kopírování dat. Dříve označované jako cloudové jednotky přesunu dat (DMU). <br/><br/>Další podrobnosti o [jednotky integrace dat](copy-activity-performance.md#data-integration-units). | Ne |
 | parallelCopies | Zadejte paralelismu, který chcete použít při čtení dat ze zdroje a zápis dat do jímky aktivity kopírování.<br/><br/>Další podrobnosti o [paralelní kopírování](copy-activity-performance.md#parallel-copy). | Ne |
 | enableStaging<br/>stagingSettings | Zvolte připraví pomocný data ve službě blob storage namísto přímo kopírování dat ze zdroje do jímky.<br/><br/>Další užitečné scénáře a podrobnosti o konfiguraci z [fázovaného kopírování](copy-activity-performance.md#staged-copy). | Ne |
@@ -173,14 +173,14 @@ Podrobnosti provádění aktivity kopírování a výkonové charakteristiky se 
 
 | Název vlastnosti  | Popis | Jednotka |
 |:--- |:--- |:--- |
-| DataRead | Velikost dat číst ze zdroje | Hodnota Int64 v **bajtů** |
-| DataWritten | Velikost dat zapsaných do jímky | Hodnota Int64 v **bajtů** |
+| dataRead | Velikost dat číst ze zdroje | Hodnota Int64 v **bajtů** |
+| dataWritten | Velikost dat zapsaných do jímky | Hodnota Int64 v **bajtů** |
 | filesRead | Počet souborů, které jsou kopírovány při kopírování dat z úložiště souborů. | Hodnota Int64 (žádná jednotka) |
 | filesWritten | Počet souborů, které jsou kopírovány při kopírování dat do služby file storage. | Hodnota Int64 (žádná jednotka) |
 | rowsRead | Počet řádků, který je čten ze zdroje (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
 | rowsCopied | Počet řádků, které byly zkopírovány na jímky (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
 | rowsSkipped | Počet nekompatibilních řádků se přeskakuje. Funkci můžete zapnout pomocí nastavení "enableSkipIncompatibleRow" na hodnotu true. | Hodnota Int64 (žádná jednotka) |
-| Propustnost | Poměr, ve kterém se data přenáší. | Plovoucí desetinné číslo s desetinnou čárkou v **KB/s** |
+| throughput | Poměr, ve kterém se data přenáší. | Plovoucí desetinné číslo s desetinnou čárkou v **KB/s** |
 | copyDuration | Doba kopírování. | Hodnota Int32 v řádu sekund |
 | sourcePeakConnections | Nejvyšší počet souběžných připojení do zdrojového úložiště dat během kopírování. | Hodnota Int32 |
 | sinkPeakConnections| Nejvyšší počet souběžných připojení k úložišti dat jímky během kopírování.| Hodnota Int32 |
