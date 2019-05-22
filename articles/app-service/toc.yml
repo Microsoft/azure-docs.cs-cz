@@ -92,11 +92,11 @@
   items:
     - name: Konfigurace aplikace
       items:
-        - name: Použití nastavení aplikace
-          href: web-sites-configure.md
+        - name: Konfigurace běžných nastavení
+          href: configure-common.md
         - name: Konfigurace PHP
           href: web-sites-php-configure.md
-        - name: Příručka pro vývojáře v Javě
+        - name: Konfigurace Javy
           href: configure-language-java.md
         - name: Připojení k místním prostředkům
           href: web-sites-integrate-with-vnet.md

@@ -116,8 +116,9 @@
             - name: Nastavení zásad uchovávání informací a spuštění čisticích skriptů
               href: image-factory-set-retention-policy-cleanup.md
         - name: DevTest Labs v podniku
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: DevTest Labs v podnikovém měřítku
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Referenční architektura
               href: devtest-lab-reference-architecture.md
             - name: Vertikální navýšení kapacity nasazení DevTest Labs

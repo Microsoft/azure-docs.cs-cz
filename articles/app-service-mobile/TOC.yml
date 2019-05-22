@@ -157,8 +157,8 @@
               href: ../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
     - name: Spravovat
       items:
-        - name: Konfigurace
-          href: ../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: Konfigurace běžných nastavení
+          href: ../app-service/configure-common.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Vlastní domény
           items:
             - name: Zakoupení a konfigurace vlastních domén

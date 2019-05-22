@@ -21,13 +21,12 @@
     - name: Okruhy a peering
       href: expressroute-circuit-peerings.md
     - name: Umístění a partneři
-      href: expressroute-locations.md
       items:
         - name: Poskytovatelé podle umístění
           href: expressroute-locations-providers.md
         - name: Umístění podle poskytovatele
           href: expressroute-locations.md
-    - name: Informace o branách virtuální sítě
+    - name: Brána virtuální sítě ExpressRoute a FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: Požadavky
       href: expressroute-prerequisites.md

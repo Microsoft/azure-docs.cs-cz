@@ -18,19 +18,7 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: |
-    Přečtěte si, jak pomocí služeb Speech s rozhraním REST API nebo naší sadou Speech SDK můžete do vašich aplikací přidat funkce s podporou řeči. Speech SDK můžete využít k přidání následujících (i dalších) funkcí do vašich aplikací&colon; 
-    <div class="row" style="font-size:16px"><div class="column"><ul>
-    <li><b><a href="speech-to-text.md">Převod řeči na text</a></b> (speech-recognition/SR)</li>
-    <li><b><a href="speech-devices-sdk-create-kws.md">Vlastní aktivační slovo</a></b> (keyword-spotter/KWS)</li>
-    <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">Záměr</a></b></li>
-    <li><b><a href="speech-translation.md">Převod</a></b></li>
-    <li><b><a href="speech-container-howto.md">Místní kontejner</a></b></li></ul></div><div class="column"><ul>
-    <li><b><a href="text-to-speech.md">Převod textu na řeč</a></b> (TTS)</li>
-    <li><b><a href="conversation-transcription-service.md">Přepis konverzace</a></b> (CTS)</li>
-    <li><b><a href="how-to-phrase-lists.md">Přizpůsobení seznamu frází</a>/<a href="how-to-custom-speech.md">vlastní adaptace řeči</a></b></li>
-    <li><b><a href="voice-first-virtual-assistants.md">Hlasem aktivovaný virtuální asistent</a></b></li>
-    <li><b><a href="call-center-transcription.md">Přepis nahrávek z call centra</a></b></li></ul></div></div>
+  description: Použijte je s naší sadou Speech SDK nebo rozhraním REST API.
 sections:
   - items:
       - type: list
@@ -53,10 +41,26 @@ sections:
             image:
               src: ../media/index/i_guidelines.svg
             title: Speech Devices SDK
+  - title: Úvod
+    items:
+      - type: paragraph
+        text: |
+          Speech SDK můžete využít k přidání následujících (i dalších) funkcí do vašich aplikací&colon; 
+          <div class="row"><div class="column"><ul>
+          <li><b><a href="speech-to-text.md">Převod řeči na text</a></b> (speech-recognition/SR)</li>
+          <li><b><a href="speech-devices-sdk-create-kws.md">Vlastní aktivační slovo</a></b> (keyword-spotter/KWS)</li>
+          <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">Záměr</a></b></li>
+          <li><b><a href="speech-translation.md">Převod</a></b></li>
+          <li><b><a href="speech-container-howto.md">Místní kontejner</a></b></li></ul></div><div class="column"><ul>
+          <li><b><a href="text-to-speech.md">Převod textu na řeč</a></b> (TTS)</li>
+          <li><b><a href="conversation-transcription-service.md">Přepis konverzace</a></b> (CTS)</li>
+          <li><b><a href="how-to-phrase-lists.md">Přizpůsobení seznamu frází</a>/<a href="how-to-custom-speech.md">vlastní adaptace řeči</a></b></li>
+          <li><b><a href="voice-first-virtual-assistants.md">Hlasem aktivovaný virtuální asistent</a></b></li>
+          <li><b><a href="call-center-transcription.md">Přepis nahrávek z call centra</a></b></li></ul></div></div>
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
-        text: 'Další informace o stahování, instalaci a použití sady SDK výběrem příslušného odkazu <img src="media/index/link.jpg" height="15" width="15"></img>.<br/><br/>Všechny odkazy se šipkami <img src="media/index/link.jpg" height="15" width="15"></img> ve výchozím nastavení odkazují na rychlé zprovoznění převodu řeči na text. Odtud můžete vybrat další rychlá zprovoznění (<a href="scenario-availability.md">pokud jsou dostupná</a>), jako je převod textu na řeč nebo hlasem aktivovaný virtuální asistent.'
+        text: 'Další informace o stahování, instalaci a použití sady SDK výběrem příslušného odkazu <img src="media/index/link.jpg" height="15" width="15"></img>.<br/>Všechny odkazy se šipkami <img src="media/index/link.jpg" height="15" width="15"></img> ve výchozím nastavení odkazují na rychlé zprovoznění převodu řeči na text. Odtud můžete vybrat další rychlá zprovoznění (<a href="scenario-availability.md">pokud jsou dostupná</a>), jako je převod textu na řeč nebo hlasem aktivovaný virtuální asistent.'
       - type: table
         style: dataMatrix
         columns:

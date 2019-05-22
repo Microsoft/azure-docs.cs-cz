@@ -1,21 +1,47 @@
-- name: Dokumentace k OpenShiftu
-  href: index.md
-- name: Šablony Rychlý start
-  expanded: true
+- name: Azure Red Hat OpenShift
+  href: index.yml
+- name: Přehled
   items:
-    - name: 'OpenShift:  Komunitní šablona'
-      href: 'https://azure.microsoft.com/resources/templates/openshift-origin-rhel/'
+    - name: Informace o platformě Azure Red Hat OpenShift
+      href: intro-openshift.md
 - name: Kurzy
   items:
-    - name: Nasazení do virtuálních počítačů Azure
-      href: /azure/virtual-machines/linux/openshift-get-started
+    - name: Vytvoření a správa clusteru Azure Red Hat OpenShift
+      items:
+        - name: 1. Vytvoření clusteru Azure Red Hat OpenShift
+          href: tutorial-create-cluster.md
+        - name: 2. Škálování clusteru Azure Red Hat OpenShift
+          href: tutorial-scale-cluster.md
+        - name: 3. Odstranění clusteru Azure Red Hat OpenShift
+          href: tutorial-delete-cluster.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Nastavení vývojového prostředí Azure Red Hat OpenShift
+      href: howto-setup-environment.md
+      expanded: true
+      items:
+        - name: Vytvoření tenanta Azure AD
+          href: howto-create-tenant.md
+        - name: Vytvoření uživatele a objektu aplikace Azure AD
+          href: howto-aad-app-configuration.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift
+      href: /cli/azure/openshift
+    - name: Rozhraní REST API platformy Azure Red Hat OpenShift
+      href: /rest/api/openshift
 - name: Zdroje a prostředky
   items:
+    - name: Časté dotazy
+      href: openshift-faq.md
+    - name: Řešení potíží
+      href: troubleshoot.md
+    - name: Podporované prostředky
+      href: supported-resources.md
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Dokumentace k Red Hat OpenShiftu
+      href: 'https://docs.openshift.com/aro/welcome/index.html'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Šablona OpenShift Container
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: Web OpenShift
-      href: 'https://docs.openshift.org/latest/welcome/index.html'

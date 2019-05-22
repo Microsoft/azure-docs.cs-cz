@@ -5,12 +5,11 @@ metadata:
   title: 'Dokumentace ke službě Azure Application Gateway – kurzy, reference k rozhraní API'
   meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: application-gateway
-  author: davidmu1
-  manager: jeconnocfte
+  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 02/01/2018
-  ms.author: davidmu
+  ms.date: 5/20/2019
+  ms.author: victorh
 abstract:
   description: 'Naučte se nasadit kontroler doručování aplikací (ADC) Application Gateway jako službu. Kurzy, reference k rozhraním API a další dokumentace obsahují informace o tom, jak nastavit směrování na úrovni aplikace a vyrovnávání zatížení, což vám umožňuje vytvořit škálovatelný a vysoce dostupný webový front-end.'
 sections:
@@ -40,12 +39,12 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">Správa webového provozu s využitím služby Application Gateway</a>
-          - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">Omezení webového provozu pomocí firewallu webových aplikací ve službě Application Gateway</a>
-          - html: <a href="/azure/application-gateway/tutorial-ssl-cli">Povolení ukončení protokolu SSL ve službě Application Gateway</a>
-          - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">Hostování několika webů s využitím služby Application Gateway</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-route-cli">Směrování provozu na základě adresy URL ve službě Application Gateway</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Přesměrování provozu na konkrétní servery ve fondu služeb Application Gateway</a>
+          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Vytvoření aplikační brány s využitím firewallu webových aplikací</a>
+          - html: <a href="/azure/application-gateway/create-ssl-portal">Konfigurace aplikační brány s ukončením protokolu SSL</a>
+          - html: '<a href="/azure/application-gateway/create-multiple-sites-portal">Vytvoření a konfigurace aplikační brány, která hostuje více webů</a>'
+          - html: <a href="/azure/application-gateway/create-url-route-portal">Vytvoření aplikační brány s pravidly směrování založenými na cestě</a>
+          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Vytvoření aplikační brány se směrováním založeným na cestě URL</a>
+          - html: '<a href="/azure/application-gateway/tutorial-autoscale-ps">Vytvoření aplikační brány, která vylepšuje přístup k webovým aplikacím</a>'
   - title: Ukázky
     items:
       - type: paragraph

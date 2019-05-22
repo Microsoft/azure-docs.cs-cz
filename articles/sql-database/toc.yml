@@ -99,6 +99,16 @@
       href: sql-database-implement-geo-distributed-database.md
     - name: Nastavení synchronizace dat SQL v Azure
       href: sql-database-get-started-sql-data-sync.md
+    - name: Machine Learning Services
+      items:
+        - name: Vytvoření a nasazení prediktivního modelu v jazyce R
+          items:
+            - name: 1. Příprava dat
+              href: sql-database-tutorial-predictive-model-prepare-data.md
+            - name: 2. Vytvoření modelu
+              href: sql-database-tutorial-predictive-model-build-compare.md
+            - name: 3. Nasazení modelu
+              href: sql-database-tutorial-predictive-model-deploy.md
 - name: Ukázky
   items:
     - name: Ukázky kódů

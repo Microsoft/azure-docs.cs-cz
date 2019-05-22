@@ -59,7 +59,7 @@
       items:
         - name: Vysvětlení modulů Azure IoT Edge
           href: iot-edge-modules.md
-        - name: Agent Edge a vlastnosti centra
+        - name: Agent IoT Edge a vlastnosti centra
           href: module-edgeagent-edgehub.md
     - name: Vývoj
       items:
@@ -93,7 +93,7 @@
       href: iot-edge-glossary.md
 - name: Návody
   items:
-    - name: Registrace hraničního zařízení
+    - name: Registrace zařízení IoT Edge
       items:
         - name: portál Azure
           href: how-to-register-device-portal.md
@@ -145,7 +145,7 @@
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
-    - name: Použití hraničních zařízení jako bran
+    - name: Použití zařízení IoT Edge jako bran
       items:
         - name: Konfigurace transparentní brány
           href: how-to-create-transparent-gateway.md
@@ -159,6 +159,8 @@
       items:
         - name: Azure Blob Storage ve službě IoT Edge
           href: how-to-store-data-blob.md
+        - name: Nasazení modulů úložiště objektů blob
+          href: how-to-deploy-blob.md
     - name: Správa pomocí nástrojů DevOps
       items:
         - name: Azure DevOps Projects
@@ -189,7 +191,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: Azure IoT Edge
       items:
         - name: IoT Edge
           href: /azure/iot-edge

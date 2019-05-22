@@ -4,14 +4,14 @@ title: Dokumentace k databázi Azure Cosmos
 metadata:
   document_id: e77bd640-1036-8b31-955c-a2cc990c69a1
   title: 'Dokumentace k databázi Azure Cosmos – kurzy, reference k rozhraní API'
-  description: 'Naučte se pomocí databáze Azure Cosmos vytvářet globálně distribuované databáze s více modely. V kurzech se dozvíte, jak sestavit a dotazovat databáze dokumentů, klíčů a hodnot nebo grafů.'
+  description: 'Naučte se využívat Azure Cosmos DB, globálně distribuovanou databázovou službu s více modely. V kurzech se dozvíte, jak sestavit a dotazovat databáze dokumentů, klíčů a hodnot nebo grafů.'
   author: SnehaGunda
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  ms.date: 05/20/2019
 abstract:
-  description: 'Azure Cosmos DB je globálně distribuovaná a databázová služba pro více modelů, která dokumentační databáze, databáze typu klíč-hodnota, databáze širokých sloupců a databáze grafů. Naučte se používat Azure Cosmos DB prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
+  description: 'Azure Cosmos DB je plně spravovaná databázová služba s globální distribucí na klíč a transparentní multimasterovou replikací. Využijte možnost spouštět na transakčních datech ve vašich databázích globálně distribuované provozní analýzy a AI s nízkou latencí. Naučte se používat Azure Cosmos DB prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
   aside:
     image:
       alt: null
