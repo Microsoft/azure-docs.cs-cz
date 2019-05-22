@@ -7,12 +7,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f9dc6e98e184e6eeeca3a56ff4a28739369a3d24
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800485"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979668"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásad
 
@@ -46,12 +46,11 @@ Před vytvořením definice zásady, je důležité k porozumění záměru zás
 
 Vaše požadavky by se tak jasně identifikovat i "na" a stavy prostředku "nechcete mít".
 
-Když jsme nadefinovali očekávaný stav prostředku, jsme ještě není definované, co chceme, aby provedli s předpisy. Zásady podporuje řadu [účinky](../concepts/effects.md). V tomto kurzu definujeme požadavek jako brání vytváření prostředků, pokud nejsou kompatibilní se obchodní pravidla. Aby splnila tento cíl, použijeme [Odepřít](../concepts/effects.md#deny) vliv. Chceme také mít možnost dočasně pozastavit zásady pro konkrétní úlohy. V důsledku toho použijeme [zakázané](../concepts/effects.md#disabled) projeví a ujistěte se, vliv [parametr](../concepts/definition-structure.md#parameters) v definici zásad.
+Když jsme nadefinovali očekávaný stav prostředku, jsme ještě není definované, co chceme, aby provedli s předpisy. Zásady Azure podporuje řadu [účinky](../concepts/effects.md). V tomto kurzu definujeme požadavek jako brání vytváření prostředků, pokud nejsou kompatibilní se obchodní pravidla. Aby splnila tento cíl, použijeme [Odepřít](../concepts/effects.md#deny) vliv. Chceme také mít možnost dočasně pozastavit zásady pro konkrétní úlohy. V důsledku toho použijeme [zakázané](../concepts/effects.md#disabled) projeví a ujistěte se, vliv [parametr](../concepts/definition-structure.md#parameters) v definici zásad.
 
 ## <a name="determine-resource-properties"></a>Určení vlastností prostředku
 
-Založené na požadavcích, prostředků Azure k auditu pomocí zásad je účet úložiště.
-Ale nevíme, vlastnosti, které chcete použít v definici zásad. Zásady vyhodnotí proti JSON reprezentaci prostředku, proto budeme potřebovat k pochopení vlastností dostupných na tento prostředek.
+Založené na požadavcích, prostředků Azure k auditu službou Azure Policy je účet úložiště. Ale nevíme, vlastnosti, které chcete použít v definici zásad. Služba Azure Policy vyhodnocuje proti JSON reprezentaci prostředku, proto budeme potřebovat k pochopení vlastností dostupných na tento prostředek.
 
 Existuje mnoho způsobů, jak určit vlastnosti pro prostředek Azure. Podíváme se na každý pro účely tohoto kurzu:
 
@@ -121,8 +120,7 @@ V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nasta
 
 #### <a name="create-a-resource-in-the-portal"></a>Vytvořit prostředek na portálu
 
-Jiný způsob, jak na portálu je prostředí pro vytváření prostředků. Při vytváření účtu úložiště pomocí portálu, existuje možnost **Upřesnit** karta je **zabezpečení přenosu**.
-Tato vlastnost má _zakázané_ a _povoleno_ možnosti. Na informační ikonu má další text, který potvrzuje, že tato možnost je pravděpodobně vlastnost, kterou chceme. Ale na portálu nebude Řekněte nám, název vlastnosti na této obrazovce.
+Jiný způsob, jak na portálu je prostředí pro vytváření prostředků. Při vytváření účtu úložiště pomocí portálu, existuje možnost **Upřesnit** karta je **zabezpečení přenosu**. Tato vlastnost má _zakázané_ a _povoleno_ možnosti. Na informační ikonu má další text, který potvrzuje, že tato možnost je pravděpodobně vlastnost, kterou chceme. Ale na portálu nebude Řekněte nám, název vlastnosti na této obrazovce.
 
 Na **revize + vytvořit** karta, odkaz je v dolní části stránky a **stáhnout šablonu pro automatizaci**. Vyberete odkaz otevře šablonu, která se vytvoří prostředek, který jsme nakonfigurovali. V tomto případě vidíme dvou důležitých informací:
 
@@ -181,8 +179,7 @@ Ve výsledcích zobrazí alias nepodporuje účty úložiště s názvem **suppo
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-V prostředí Azure PowerShell `Get-AzPolicyAlias` rutina se používá k vyhledání prostředků aliasy.
-Budeme filtrovat pro **Microsoft.Storage** oboru názvů na základě informací jsme získali dříve o prostředků Azure.
+V prostředí Azure PowerShell `Get-AzPolicyAlias` rutina se používá k vyhledání prostředků aliasy. Budeme filtrovat pro **Microsoft.Storage** oboru názvů na základě informací jsme získali dříve o prostředků Azure.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -312,7 +309,8 @@ Graf prostředků Azure (Preview) umožňuje použít [Cloud Shell](https://shel
 
 ## <a name="determine-the-effect-to-use"></a>Ověření účinnosti zásad k použití
 
-Rozhodování o tom, co dělat s nekompatibilní prostředky je skoro tak důležité jako rozhodování o tom, co se má vyhodnocovat na prvním místě. Každé možné odpovědi neodpovídajících prostředků je volána [efekt](../concepts/effects.md). Ovládací prvky vliv, pokud přihlášení zdrojů nekompatibilní blokovaný, má data připojí, nebo má nasazení přidružený k uvedení prostředku zpět do vyhovujícího stavu.
+Rozhodování o tom, co dělat s nekompatibilní prostředky je skoro tak důležité jako rozhodování o tom, co se má vyhodnocovat na prvním místě. Každé možné odpovědi neodpovídajících prostředků je volána [efekt](../concepts/effects.md).
+Ovládací prvky vliv, pokud přihlášení zdrojů nekompatibilní blokovaný, má data připojí, nebo má nasazení přidružený k uvedení prostředku zpět do vyhovujícího stavu.
 
 V našem příkladu je odepřít účinek, který chceme, aby jako tudy nekompatibilní prostředky vytvořené v našem prostředí Azure. Auditování je první vhodná pro účinku zásad k určení vlivu zásad je před nastavením na odepřít. Jedním ze způsobů, aby se změna vliv jednotlivé přiřazení jednodušší je parametrizovat účinek. Zobrazit [parametry](#parameters) níže podrobnosti o tom.
 

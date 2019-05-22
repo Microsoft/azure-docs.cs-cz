@@ -1,15 +1,15 @@
 ---
-author: dlepow
+author: laurenhughes
 ms.service: batch
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: danlep
-ms.openlocfilehash: 7d90ccf55b10eff4299692b481a25ba4cdf41b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: lahugh
+ms.openlocfilehash: 14891acdbe9a0f810666ba54f8d63050a9330601
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616577"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955279"
 ---
 ## <a name="get-account-credentials"></a>Získání přihlašovacích údajů k účtu
 
