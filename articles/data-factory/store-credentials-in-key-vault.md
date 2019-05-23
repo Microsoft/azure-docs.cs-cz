@@ -79,7 +79,7 @@ Při konfiguraci pole v propojené službě odkazující na tajný kód trezoru 
 | type | Vlastnost typu pole musí být nastavena: **AzureKeyVaultSecret**. | Ano |
 | secretName | Název tajného kódu ve službě azure key vault. | Ano |
 | secretVersion | Verze tajného klíče ve službě azure key vault.<br/>Pokud není zadán, vždy používá nejnovější verzi tajného kódu.<br/>Je-li zadán, pak připevní na danou verzi.| Ne |
-| úložiště | Odkazuje na službu, který použijete k uložení přihlašovacích údajů propojené služby Azure Key Vault. | Ano |
+| store | Odkazuje na službu, který použijete k uložení přihlašovacích údajů propojené služby Azure Key Vault. | Ano |
 
 **Použití pro vytváření uživatelského rozhraní:**
 
