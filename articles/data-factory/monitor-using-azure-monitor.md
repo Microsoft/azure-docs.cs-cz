@@ -108,13 +108,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | storageAccountId |String | ID prostředku účtu úložiště, do které chcete posílat diagnostické protokoly |
 | serviceBusRuleId |String | Identifikátor služby Service bus pravidlo oboru názvů služby Service bus ve kterém by měl mít vytvořené pro streamování diagnostických protokolů služby Event Hubs. Toto pravidlo je ID ve formátu: "{služby Service bus ID prostředku} /authorizationrules/ {název klíče}".|
 | workspaceId | Komplexní typ | Pole zrna metriku času a jejich zásady uchovávání informací. V současné době je tato vlastnost prázdná. |
-|Průzkumníku metrik| Hodnoty parametrů, které se mají předat vyvolaný kanál spuštění kanálu| Mapování názvů parametrů hodnot argumentů v objektu JSON |
-| Protokoly| Komplexní typ| Název kategorie diagnostických protokolů pro typ prostředku. Pokud chcete získat seznam kategorií protokol diagnostiky pro prostředek, nejprve proveďte operaci NAČÍST nastavení diagnostiky. |
+|metrics metrik| Hodnoty parametrů, které se mají předat vyvolaný kanál spuštění kanálu| Mapování názvů parametrů hodnot argumentů v objektu JSON |
+| logs| Komplexní typ| Název kategorie diagnostických protokolů pro typ prostředku. Pokud chcete získat seznam kategorií protokol diagnostiky pro prostředek, nejprve proveďte operaci NAČÍST nastavení diagnostiky. |
 | category| String| Pole kategorie protokolu a jejich zásady uchovávání informací |
 | timeGrain | String | Členitost metriky, které jsou zachyceny ve formátu ISO 8601 doby trvání. Musí být PT1M (jednu minutu)|
-| povoleno| Boolean | Určuje, zda je povoleno shromažďování této kategorie metriky nebo protokolu pro tento prostředek|
-| parametru retentionPolicy.| Komplexní typ| Popisuje zásady uchovávání informací pro kategorii metrika nebo protokolu. Používá se pro pouze možnost účtu úložiště.|
-| dny| Int| Počet dnů uchování metriky nebo protokoly. Hodnota 0 protokoly uchovává po neomezenou dobu. Používá se pro pouze možnost účtu úložiště. |
+| enabled| Boolean | Určuje, zda je povoleno shromažďování této kategorie metriky nebo protokolu pro tento prostředek|
+| retentionPolicy| Komplexní typ| Popisuje zásady uchovávání informací pro kategorii metrika nebo protokolu. Používá se pro pouze možnost účtu úložiště.|
+| days| Int| Počet dnů uchování metriky nebo protokoly. Hodnota 0 protokoly uchovává po neomezenou dobu. Používá se pro pouze možnost účtu úložiště. |
 
 **Odpověď**
 
@@ -275,19 +275,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Vlastnost | Typ | Popis | Příklad: |
 | --- | --- | --- | --- |
-| Úroveň |String | Úroveň diagnostických protokolů. Úroveň 4 vždy platí pro spuštění protokoly aktivit. | `4`  |
+| Level |String | Úroveň diagnostických protokolů. Úroveň 4 vždy platí pro spuštění protokoly aktivit. | `4`  |
 | correlationId |String | Jedinečné ID pro sledování konkrétní žádost o ukončení až do konce | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Čas události v časový interval, formát UTC `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| ID spuštění aktivit | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | ID přidruženého prostředku pro objekt pro vytváření zdrojů dat | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategorie diagnostické protokoly. Nastavte tuto vlastnost na "ActivityRuns" | `ActivityRuns` |
-|úroveň| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
+|level| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
 |operationName| String |Název aktivitu se stavem. Pokud je ve stavu spuštění prezenčního signálu, je `MyActivity -`. Pokud je stav ukončení prezenčního signálu, je `MyActivity - Succeeded` s konečného stavu | `MyActivity - Succeeded` |
 |pipelineName| String | Název kanálu | `MyPipeline` |
 |activityName| String | Název aktivity | `MyActivity` |
 |start| String | Spuštění aktivity při spuštění v časový interval, formát UTC | `2017-06-26T20:55:29.5007959Z`|
-|konec| String | Ukončení aktivity spustit v časový interval, formátu UTC. Pokud aktivita nebyla skončila, ale (diagnostický protokol spuštění aktivity), výchozí hodnotu `1601-01-01T00:00:00Z` nastavena.  | `2017-06-26T20:55:29.5007959Z` |
+|end| String | Ukončení aktivity spustit v časový interval, formátu UTC. Pokud aktivita nebyla skončila, ale (diagnostický protokol spuštění aktivity), výchozí hodnotu `1601-01-01T00:00:00Z` nastavena.  | `2017-06-26T20:55:29.5007959Z` |
 
 ### <a name="pipeline-run-logs-attributes"></a>Atributy protokoly spuštění kanálu
 
@@ -321,17 +321,17 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Vlastnost | Typ | Popis | Příklad: |
 | --- | --- | --- | --- |
-| Úroveň |String | Úroveň diagnostických protokolů. Úroveň 4 platí pro spuštění protokoly aktivit. | `4`  |
+| Level |String | Úroveň diagnostických protokolů. Úroveň 4 platí pro spuštění protokoly aktivit. | `4`  |
 | correlationId |String | Jedinečné ID pro sledování konkrétní žádost o ukončení až do konce | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Čas události v časový interval, formát UTC `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | ID přidruženého prostředku pro objekt pro vytváření zdrojů dat | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategorie diagnostické protokoly. Nastavte tuto vlastnost na "PipelineRuns" | `PipelineRuns` |
-|úroveň| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
+|level| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
 |operationName| String |Název kanálu se stavem. "Kanál – bylo úspěšné" s konečný stav po dokončení spuštění kanálu| `MyPipeline - Succeeded` |
 |pipelineName| String | Název kanálu | `MyPipeline` |
 |start| String | Spuštění aktivity při spuštění v časový interval, formát UTC | `2017-06-26T20:55:29.5007959Z`|
-|konec| String | Konec aktivita se spustí v časový interval, formátu UTC. Pokud aktivita nebyla skončila, ale (diagnostický protokol spuštění aktivity), výchozí hodnotu `1601-01-01T00:00:00Z` nastavena.  | `2017-06-26T20:55:29.5007959Z` |
+|end| String | Konec aktivita se spustí v časový interval, formátu UTC. Pokud aktivita nebyla skončila, ale (diagnostický protokol spuštění aktivity), výchozí hodnotu `1601-01-01T00:00:00Z` nastavena.  | `2017-06-26T20:55:29.5007959Z` |
 |status| String | Konečný stav kanálu spuštěním (Succeeded nebo Failed) | `Succeeded`|
 
 ### <a name="trigger-run-logs-attributes"></a>Spuštění triggeru protokoly atributy
@@ -365,15 +365,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Vlastnost | Typ | Popis | Příklad: |
 | --- | --- | --- | --- |
-| Úroveň |String | Úroveň diagnostických protokolů. Nastavení úrovně 4 pro spuštění protokoly aktivit. | `4`  |
+| Level |String | Úroveň diagnostických protokolů. Nastavení úrovně 4 pro spuštění protokoly aktivit. | `4`  |
 | correlationId |String | Jedinečné ID pro sledování konkrétní žádost o ukončení až do konce | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Čas události v časový interval, formát UTC `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| String| ID spuštění aktivační události | `08587023010602533858661257311` |
 |resourceId| String | ID přidruženého prostředku pro objekt pro vytváření zdrojů dat | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategorie diagnostické protokoly. Nastavte tuto vlastnost na "PipelineRuns" | `PipelineRuns` |
-|úroveň| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
+|level| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
 |operationName| String |Název triggeru s konečného stavu, jestli se úspěšně aktivoval. "MyTrigger - bylo úspěšné" Pokud se úspěšně dokončil prezenčního signálu| `MyTrigger - Succeeded` |
-|Název aktivační události| String | Název triggeru | `MyTrigger` |
+|triggerName| String | Název triggeru | `MyTrigger` |
 |triggerType| String | Typ aktivační události (ruční aktivační události nebo aktivační událost plánovače) | `ScheduleTrigger` |
 |triggerEvent| String | Události triggeru | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |start| String | Spuštění triggeru fire v časový interval, formát UTC | `2017-06-26T20:55:29.5007959Z`|
