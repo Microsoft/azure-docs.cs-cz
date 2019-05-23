@@ -212,12 +212,12 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
    | Vlastnost | Vnořené pod | Popis |
    |:--- |:--- |:--- |
    | type | properties |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nacházejí v úložišti objektů blob. |
-   | linkedServiceName | formát |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
+   | linkedServiceName | format |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
    | folderPath | typeProperties | Určuje kontejner objektů blob a složku obsahující vstupní objekty blob. | 
    | fileName | typeProperties |Tato vlastnost je nepovinná. Pokud tuto vlastnost vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu se zpracovává jenom soubor input.log. |
-   | type | formát |Soubory protokolů jsou v textovém formátu, proto použijte hodnotu **TextFormat**. |
-   | columnDelimiter | formát |Sloupce v souborech protokolů jsou oddělené znakem čárky (`,`). |
-   | frequency/interval | dostupnosti |Frekvence je nastavená na hodnotu **Month** (Měsíc) a interval je **1**, takže vstupní řezy jsou dostupné jednou za měsíc. |
+   | type | format |Soubory protokolů jsou v textovém formátu, proto použijte hodnotu **TextFormat**. |
+   | columnDelimiter | format |Sloupce v souborech protokolů jsou oddělené znakem čárky (`,`). |
+   | frequency/interval | availability |Frekvence je nastavená na hodnotu **Month** (Měsíc) a interval je **1**, takže vstupní řezy jsou dostupné jednou za měsíc. |
    | external | properties | Pokud vstupní data negeneruje tento kanál, je tato vlastnost nastavená na hodnotu **true**. V tomto kurzu se soubor input.log pomocí tohoto kanálu negeneruje, takže je tato vlastnost nastavená na hodnotu **true**. |
 
     Další informace o těchto vlastnostech JSON najdete v tématu [Konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
