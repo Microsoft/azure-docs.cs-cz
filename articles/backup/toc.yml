@@ -21,6 +21,8 @@
       href: tutorial-restore-disk.md
     - name: Obnovení jednotlivých souborů
       href: tutorial-restore-files.md
+    - name: Zálohování SQL Serveru na virtuálním počítači Azure
+      href: tutorial-sql-backup.md
     - name: Zálohování Windows Serveru
       href: tutorial-backup-windows-server-to-azure.md
     - name: Obnovení souborů do Windows Serveru

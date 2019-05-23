@@ -257,6 +257,10 @@
       items:
         - name: Analýza úloh
           href: analyze-your-workload.md
+        - name: Správa a monitorování důležitosti úloh
+          href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+        - name: Konfigurace důležitosti úloh
+          href: sql-data-warehouse-how-to-configure-workload-importance.md
     - name: Správa a monitorování
       items:
         - name: Upgrade na Gen2

@@ -45,6 +45,8 @@
           href: publish-portal.md
         - name: Použití tajného kódu ze služby Key Vault
           href: key-vault-access.md
+        - name: Nasazení s využitím spravované identity
+          href: publish-managed-identity.md
     - name: Příjemci
       items:
         - name: Monitorování spravované aplikace

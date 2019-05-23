@@ -19,8 +19,8 @@
 - name: Koncepty
   expanded: false
   items:
-    - name: Základní ochrana
-      href: baseline-protection.md
+    - name: Zásady základní ochrany
+      href: concept-baseline-protection.md
     - name: Podmínky
       href: conditions.md
     - name: Podmínky umístění
@@ -38,6 +38,16 @@
       href: plan-conditional-access.md
     - name: Osvědčené postupy
       href: best-practices.md
+    - name: Základní zásady
+      items:
+        - name: Vyžadování MFA pro správce
+          href: howto-baseline-protect-administrators.md
+        - name: Ochrana koncových uživatelů
+          href: howto-baseline-protect-end-users.md
+        - name: Blokování starší verze ověřování
+          href: howto-baseline-protect-legacy-auth.md
+        - name: Vyžadování MFA pro správu služeb
+          href: howto-baseline-protect-azure.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
     - name: Migrace klasických zásad
