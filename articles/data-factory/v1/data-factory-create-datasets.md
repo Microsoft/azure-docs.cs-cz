@@ -81,12 +81,12 @@ Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| jméno |Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
+| name |Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
 | type |Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
-| Struktura |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [struktury datové sady](#Structure). |Ne |Není k dispozici |
+| structure |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [struktury datové sady](#Structure). |Ne |Není k dispozici |
 | typeProperties | Vlastnosti typu se liší pro každý typ (například: Azure Blob, tabulky Azure SQL). Podrobnosti o podporovaných typech a jejich vlastností najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
 | external | Logický příznak k určení, zda datové sady je explicitně vytvořen kanál datové továrny nebo ne. Pokud není aktuální kanál vytvoří vstupní datovou sadu pro aktivitu, můžete tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivity v kanálu.  |Ne |false (nepravda) |
-| dostupnosti | Definuje okno zpracování (například každou hodinu nebo každý den) nebo řezů model pro produkční prostředí datové sady. Každá jednotka data využívaná a produkovaná spuštění aktivity se nazývá datový řez. Pokud dostupnost výstupní datovou sadu je nastavena na hodnotu denně (frekvence - den, interval - 1), řez každý den. <br/><br/>Podrobnosti najdete v tématu dostupnosti datové sady. <br/><br/>Podrobnosti o datové sady, model dělení časového, najdete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
+| availability | Definuje okno zpracování (například každou hodinu nebo každý den) nebo řezů model pro produkční prostředí datové sady. Každá jednotka data využívaná a produkovaná spuštění aktivity se nazývá datový řez. Pokud dostupnost výstupní datovou sadu je nastavena na hodnotu denně (frekvence - den, interval - 1), řez každý den. <br/><br/>Podrobnosti najdete v tématu dostupnosti datové sady. <br/><br/>Podrobnosti o datové sady, model dělení časového, najdete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
 | policy |Definuje kritéria nebo podmínky, které musí splnit řezy datové sady. <br/><br/>Podrobnosti najdete v tématu [datovou sadu zásad](#Policy) oddílu. |Ne |Není k dispozici |
 
 ## <a name="dataset-example"></a>Příklad datové sady
@@ -193,10 +193,10 @@ Všechny sloupce struktury obsahují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název sloupce. |Ano |
+| name |Název sloupce. |Ano |
 | type |Datový typ sloupce.  |Ne |
-| Jazyková verze |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. |Ne |
-| formát |Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. |Ne |
+| culture verze |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. |Ne |
+| format |Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. |Ne |
 
 Podle následujících pokynů můžete určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** oddílu.
 
@@ -237,9 +237,9 @@ Následující tabulka popisuje vlastnosti, které můžete použít v části d
 | --- | --- | --- | --- |
 | frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: Minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
 | interval |Určuje multiplikátor pro četnost.<br/><br/>"Interval četnosti x" Určuje, jak často se řez. Například pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, byste měli nastavit interval na menší než 15. |Ano |Není k dispozici |
-| Styl |Určuje, zda by měl být řez na začátku nebo konci interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastavena na **měsíc**, a **styl** je nastavena na **EndOfInterval**, řez na poslední den v měsíci. Pokud **styl** je nastavena na **StartOfInterval**, řez v první den v měsíci.<br/><br/>Pokud **frekvence** je nastavena na **den**, a **styl** je nastavena na **EndOfInterval**, řez za poslední hodinu dne.<br/><br/>Pokud **frekvence** je nastavena na **hodinu**, a **styl** je nastavena na **EndOfInterval**, řez na konec hodiny. Například pro určitý řez dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
+| style |Určuje, zda by měl být řez na začátku nebo konci interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastavena na **měsíc**, a **styl** je nastavena na **EndOfInterval**, řez na poslední den v měsíci. Pokud **styl** je nastavena na **StartOfInterval**, řez v první den v měsíci.<br/><br/>Pokud **frekvence** je nastavena na **den**, a **styl** je nastavena na **EndOfInterval**, řez za poslední hodinu dne.<br/><br/>Pokud **frekvence** je nastavena na **hodinu**, a **styl** je nastavena na **EndOfInterval**, řez na konec hodiny. Například pro určitý řez dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
 | anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/>Všimněte si, že pokud se tato vlastnost je částí data, která jsou podrobnější než je zadaná četnost, podrobnější části jsou ignorovány. Například pokud **interval** je **každou hodinu** (frekvence: hour a interval je: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, pak části minuty a sekundy **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
-| Posun |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/>Všimněte si, že pokud mají oba **anchorDateTime** a **posun** jsou zadána, výsledkem je kombinované shift. |Ne |Není k dispozici |
+| offset |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/>Všimněte si, že pokud mají oba **anchorDateTime** a **posun** jsou zadána, výsledkem je kombinované shift. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
 Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řezy spustit v 12: 00 (půlnoc) koordinovaný univerzální čas (UTC). Pokud chcete čas spuštění jako čas UTC 6: 00, nastavte posun, jak je znázorněno v následujícím fragmentu kódu:
