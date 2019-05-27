@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848176"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966317"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy: zálohování virtuálních počítačů Azure
 
@@ -24,25 +24,25 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohován�
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Které imagí virtuálních počítačů je možné povolit pro zálohování při jejich vytváření?
 Při vytváření virtuálního počítače můžete povolit zálohování pro virtuální počítače spuštěné [podporované operační systémy](backup-support-matrix-iaas.md#supported-backup-actions)
- 
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Stojí zálohování součástí cena za virtuální počítače? 
+
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Stojí zálohování součástí cena za virtuální počítače?
 
 Ne. Náklady na zálohování jsou oddělené od nákladů virtuální počítač. Další informace o [ceny služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
- 
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Jaká oprávnění jsou vyžadována k povolení zálohování pro virtuální počítač? 
 
-Pokud jste Přispěvatel virtuálních počítačů, můžete povolit zálohování na virtuálním počítači. Pokud používáte vlastní roli, potřebujete následující oprávnění k povolení zálohování na virtuálním počítači: 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>Jaká oprávnění jsou vyžadována k povolení zálohování pro virtuální počítač?
 
-- Microsoft.RecoveryServices/Vaults/write 
-- Microsoft.RecoveryServices/Vaults/read 
-- Microsoft.RecoveryServices/locations/* 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
- 
+Pokud jste Přispěvatel virtuálních počítačů, můžete povolit zálohování na virtuálním počítači. Pokud používáte vlastní roli, potřebujete následující oprávnění k povolení zálohování na virtuálním počítači:
+
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
+
 Pokud váš trezor služby Recovery Services a virtuální počítač různých skupin prostředků, ujistěte se, že máte oprávnění k zápisu ve skupině prostředků pro trezor služby Recovery Services.  
 
 
@@ -140,3 +140,6 @@ Virtuální počítač je zálohovány pomocí plán a uchovávání nastavení 
 3. Znovu zapnout zálohy v trezoru stejného nebo nové.
 
 Virtuální počítač můžete obnovit z body obnovení k dispozici, které byly vytvořeny před přesunutím.
+
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>Existuje nějaké omezení počtu virtuálních počítačů, které je možné přidružit stejné zásady zálohování?
+Ano, platí limit 100 virtuálních počítačů, které může být přidružené ke stejné zásady zálohování portálu. Jsme doporučujeme, aby se pro více než 100 virtuálních počítačů, vytvoření více zásad zálohování pomocí stejného plánu nebo jiný plán.

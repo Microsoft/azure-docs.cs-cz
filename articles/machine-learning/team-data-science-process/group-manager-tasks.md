@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60305077"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950096"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Úlohy pro skupiny správce na týmovém projektu datové vědy
 
-Tohoto tématu jsou podrobněji popsány dále úlohy, které má správce skupiny pro provést hist / jeho organizace vědy data. Cílem je vytvořit prostředí pro spolupráci skupiny, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
+Tohoto tématu jsou podrobněji popsány dále úlohy, které správce skupiny je očekáván k dokončení pro svoji organizaci datové vědy. Cílem je vytvořit prostředí pro spolupráci skupiny, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 
 **Správce skupiny** je správce částí celé datové vědy v podniku. Datové vědy jednotky může mít několik týmů, z nichž každý pracuje na více projekty datových věd jednotlivou obchodní vertikálně. Správce skupiny může přenést své úkoly náhradní, ale úkoly spojené s rolí jsou stejné. Existuje šest hlavních úloh, jak je znázorněno v následujícím diagramu:
 

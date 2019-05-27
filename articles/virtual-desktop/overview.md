@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: b3192d848e77c59d0ff6950e647d1faf172484b5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606405"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965714"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co je Windows Virtual Desktop Preview? 
 
@@ -54,11 +54,6 @@ Můžete také přiřadit a připojení uživatelů k virtuálním klientům:
 
 Existuje několik věcí, které je potřeba nastavit virtuální plochy Windows a úspěšně připojit vaše uživatele pro své stolní počítače Windows a aplikací.
 
-Virtuální Desktop Windows aktuálně podporuje pouze následující dva operační systémy:
-
-* Windows 10 Enterprise více relací
-* Windows Server 2016
-
 Plánujeme přidat podporu pro následující operační systémy, takže se ujistěte, že máte [odpovídající licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro vaše uživatele, založené na stolní počítače a aplikace, máte v úmyslu nasadit:
 
 |Operační systém|Požadovaná licence|
@@ -78,9 +73,7 @@ Vaše infrastruktura potřebuje následující akce pro podporu virtuální ploc
 Virtuální počítače Azure, které vytvoříte pro virtuální plochy Windows musí být:
 
 * [Standard připojených k doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) nebo [AD připojená k hybridní službě](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuální počítače nemůže být připojená k AD Azure.
-* S některým z následujících podporovaných imagí operačního systému:
-  * Windows 10 Enterprise více relací
-  * Windows Server 2016
+* S některým z následujících [podporovány bitové kopie operačního systému](#supported-virtual-machine-os-image).
 
 >[!NOTE]
 >Pokud budete potřebovat předplatné Azure, můžete si [zaregistrovat k měsíční bezplatné zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste používat služby Azure AD Domain pro synchronizaci vašeho systému Windows Server Active Directory s Azure Active Directory.
@@ -92,6 +85,21 @@ Pro optimální výkon Ujistěte se, že vaše síť splňuje následující po�
 * Latence zpátečního převodu (požadavku) ze sítě klienta do oblasti Azure, kde byly nasazeny fondy hostitele by měl být kratší než 150 ms.
 * Síťový provoz může tok ohraničení mimo zemi nebo oblast, připojíte ke službě správy virtuálních počítačů, které hostování desktopů a aplikací.
 * Pokud chcete optimalizovat výkon sítě, doporučujeme, že jsou seřazena relace hostování virtuálních počítačů ve stejné oblasti Azure jako službu pro správu.
+
+## <a name="supported-remote-desktop-clients"></a>Podporované klienty vzdálené plochy
+
+Následující klienty vzdálené plochy podporuje virtuální plochy Windows:
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+
+## <a name="supported-virtual-machine-os-image"></a>Image virtuálního počítače podporovaný operační systém
+
+Virtuální Desktop Windows podporuje následující Image operačních systémů:
+
+* Windows 10 Enterprise více relací
+* Windows Server 2016
 
 ## <a name="provide-feedback"></a>Poslat názor
 

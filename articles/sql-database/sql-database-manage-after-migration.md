@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791502"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949918"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nové DBA v cloudu – správu vašich databází ve fondu a jeden ve službě Azure SQL Database
 
@@ -160,7 +160,7 @@ Pro ochranu vašich citlivých dat. vydávaných za pochodu a v klidovém stavu,
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Jak můžete omezit přístup k citlivým datům v databázi
 
-Každá aplikace má bit citlivá data v databázi, kterou je potřeba chránit tomu nebudou viditelné všem uživatelům. Některé pracovníky v rámci organizace potřebují k zobrazení těchto dat, ale ostatní by neměl moct zobrazit tato data. Jedním z příkladů je mezd zaměstnanců. Správce by ale potřebovat přístup k mzdové informace o jeho přímé podřízené, jednotlivé členy týmu by neměl mít přístup k informacím mzdy svých spolupracovníků. Další možností je dat vývojáři, kteří mohou interakci s důvěrnými osobními údaji během fází vývoje nebo testování, například čísla sociálního zabezpečení zákazníků. Tyto informace znovu nemusí být vystavená pro vývojáře. V takových případech citlivých dat buď musí maskována nebo nesmí být zveřejněné vůbec. SQL Database nabízí tyto dva přístupy umožňují zabránit neoprávněným uživatelům tomu nebudou moct prohlížet citlivá data:
+Každá aplikace má bit citlivá data v databázi, kterou je potřeba chránit tomu nebudou viditelné všem uživatelům. Některé pracovníky v rámci organizace potřebují k zobrazení těchto dat, ale ostatní by neměl moct zobrazit tato data. Jedním z příkladů je mezd zaměstnanců. Správce bude potřebovat přístup k mzdové informace pro své přímé podřízené ale, jednotlivé členy týmu by neměl mít přístup k informacím mzdy svých spolupracovníků. Další možností je dat vývojáři, kteří mohou interakci s důvěrnými osobními údaji během fází vývoje nebo testování, například čísla sociálního zabezpečení zákazníků. Tyto informace znovu nemusí být vystavená pro vývojáře. V takových případech citlivých dat buď musí maskována nebo nesmí být zveřejněné vůbec. SQL Database nabízí tyto dva přístupy umožňují zabránit neoprávněným uživatelům tomu nebudou moct prohlížet citlivá data:
 
 [Maskování dynamických dat](sql-database-dynamic-data-masking-get-started.md) je funkci maskování dat, která umožňuje omezit riziko ohrožení citlivých dat jejich maskováním pro neprivilegované uživatele na aplikační vrstvu. Můžete definovat pravidla maskování, které můžete společně tvoří masku maskování (například k zobrazení jenom poslední čtyři číslice národní SSN ID: XXX-XX-0000 a označit většina jako Xs) a určit, kteří uživatelé mají k vyloučení z maskování pravidla. Na běhu se stane, maskování a nejsou k dispozici pro různé kategorie dat různé funkce maskování. Dynamické maskování dat umožňuje automaticky rozpoznat citlivá data v databázi a pro ni nastavit maskování.
 

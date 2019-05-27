@@ -15,11 +15,11 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405018"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65956044"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -158,21 +158,21 @@ Tady jsou běžné chyby nebo problémy při použití Git k publikování pro a
 
 **Příčina:** K této chybě může dojít, pokud nebude funkční ani po aplikaci.
 
-**Řešení:** Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není dostupná, když webová aplikace zastavená.
+**Rozlišení**: Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není dostupná, když webová aplikace zastavená.
 
 ---
 **Příznak**: `Couldn't resolve host 'hostname'`
 
 **Příčina:** K této chybě může dojít, pokud bylo nesprávné informace o adrese zadali při vytváření vzdáleného "azure".
 
-**Řešení:** Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
+**Rozlišení**: Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
 
 ---
 **Příznak**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
 **Příčina:** K této chybě může dojít, pokud nechcete zadat větev během `git push`, nebo pokud jste nenastavili `push.default` hodnota v `.gitconfig`.
 
-**Řešení:** Spustit `git push` znovu, určení hlavní větve. Příklad:
+**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
 
 ```bash
 git push azure master
@@ -183,7 +183,7 @@ git push azure master
 
 **Příčina:** K této chybě může dojít, pokud se pokusíte vložit pouze hlavní větve na "azure" vzdálené.
 
-**Řešení:** Spustit `git push` znovu, určení hlavní větve. Příklad:
+**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
 
 ```bash
 git push azure master
@@ -194,7 +194,7 @@ git push azure master
 
 **Příčina:** Této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.
 
-**Řešení:** Změna konfigurace git v místním počítači lze zviditelnit postBuffer větší
+**Rozlišení**: Změna konfigurace git v místním počítači lze zviditelnit postBuffer větší
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -205,14 +205,14 @@ git config --global http.postBuffer 524288000
 
 **Příčina:** K této chybě může dojít, pokud nasazení aplikace v Node.js s _package.json_ soubor, který určuje další požadované moduly.
 
-**Řešení:** Další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
+**Rozlišení**: Další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
 
 * **Soubor package.json poškozený**: npm ERR! Nelze číst závislosti.
 * **Nativní modul, který nemá binární distribuce pro Windows**:
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 
-      NEBO
+      OR
   * `npm ERR! [modulename@version] preinstall: \make || gmake\`
 
 ## <a name="additional-resources"></a>Další prostředky

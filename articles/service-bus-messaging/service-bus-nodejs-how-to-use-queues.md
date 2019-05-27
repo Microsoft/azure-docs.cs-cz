@@ -1,5 +1,5 @@
 ---
-title: Jak používat fronty služby Service Bus v Node.js | Dokumentace Microsoftu
+title: Jak používat fronty služby Azure Service Bus v Node.js | Dokumentace Microsoftu
 description: Zjistěte, jak používat fronty Service Bus v Azure z aplikace Node.js.
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,22 +14,25 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1426b3d31159280ad9aac2dd240a5f083c40752d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60590015"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988307"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs"></a>Jak používat fronty služby Service Bus s využitím Node.js
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Jak používat fronty služby Service Bus pomocí Node.js a balíčku azure-sb
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+V tomto kurzu se dozvíte, jak vytvářet aplikace Node.js na odesílání a příjem zpráv z fronty služby Service Bus pomocí [azure-sb](https://www.npmjs.com/package/azure-sb) balíčku. Ukázky jsou napsané v jazyce JavaScript a používají na Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíčku.
 
-V tomto kurzu se dozvíte, jak vytvářet aplikace Node.js na odesílání a příjem zpráv z fronty Service Bus. Ukázky jsou napsané v jazyce JavaScript a používají modul Node.js Azure. 
+[Azure-sb](https://www.npmjs.com/package/azure-sb) balíček používá [rozhraní API REST pro Service Bus za běhu](/rest/api/servicebus/service-bus-runtime-rest). Získáte rychlejší prostředí pomocí nového [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíček, který používá, tím rychlejší [protokolu AMQP 1.0](service-bus-amqp-overview.md). Další informace o novém balíčku najdete v tématu [jak používat fronty služby Service Bus s využitím Node.js a @azure/service-bus balíčku](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), v opačném případě pokračujte ve čtení se dozvíte, jak používat [azure](https://www.npmjs.com/package/azure) balíčku.
 
 ## <a name="prerequisites"></a>Požadavky
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
+- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
     1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
     2. Vytvoření služby Service Bus **obor názvů**. 
     3. Získejte **připojovací řetězec**. 
@@ -46,7 +49,7 @@ Pokud chcete používat Azure Service Bus, stáhnout a použít balíček Node.j
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Získat balíček pomocí Node Package Manager (NPM)
 1. Použití **prostředí Windows PowerShell pro Node.js** příkazové okno Přejít na **c:\\uzel\\sbqueues\\WebRole1** složky, ve kterém jste vytvořili svou ukázku aplikace.
-2. Typ **npm nainstalujte azure** v příkazovém okně, které by měl vést výstup podobný následujícímu:
+2. Typ **npm nainstalujte azure** v příkazovém okně, které by měl vést výstup jako v následujícím příkladu:
 
     ```
     azure@0.7.5 node_modules\azure
@@ -147,12 +150,12 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [kvótách služby Service Bus][Service Bus quotas].
+Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Neexistuje žádné omezení na počet zpráv držených ve frontě, ale celková velikost zpráv držených ve frontě je limitu. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [kvótách služby Service Bus][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
 Přijme zprávy z fronty pomocí `receiveQueueMessage` metodu **ServiceBusService** objektu. Ve výchozím nastavení zprávy odstranění z fronty jako jsou načteny; však může číst (Náhled) a uzamčení zprávy bez odstranění z fronty tak, že nastavíte parametr volitelný `isPeekLock` k **true**.
 
-Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, ji budou pravděpodobně nenalezlo zprávu, která se spotřebovala před pádem vynechá.
+Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, není zpracování zprávy, když dojde k chybě. Informace o tom toto chování, vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, ji budou pravděpodobně nenalezlo zpráv, který byl obsazený selhání.
 
 Pokud `isPeekLock` parametr je nastaven na **true**, receive stane dvoufázového operaci, která umožňuje podporuje aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním `deleteMessage` metoda a poskytující zprávu, která se má odstranit jako parametr. `deleteMessage` Metoda označí zprávu jako spotřebovávanou a odstraní ji z fronty.
 
@@ -177,11 +180,14 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlockMessage` metodu **ServiceBusService** objektu. To způsobí, že služba Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlockMessage` metodu **ServiceBusService** objektu. To způsobí, že je služba Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
 
-K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak se Service Bus zprávu automaticky odemkne a nastavte ji k dispozici pro další přijetí.
+K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě a pokud aplikace zprávu před vypršením časového limitu zámku vyprší (například pokud aplikace spadne), pak se Service Bus zprávu automaticky odemkne a nastavte ji k dispozici pro další přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` metoda je volána, pak bude doručit víckrát do aplikace při restartování. To se často nazývá *zpracování nejméně jednou*, to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá o vlastnost zprávy **MessageId**, která je při každém pokusu o doručení stejné zprávy stejná.
+V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` metoda je volána, pak bude doručit víckrát do aplikace při restartování. Tento přístup se často nazývá *zpracování nejméně jednou*, to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud scénář nemůže tolerovat zpracování, pak vývojáři aplikace by měl přidat další logiku pro zpracování víckrát doručené zprávy. To se často opírá **MessageId** vlastnosti zprávy, která zůstanou konstantní pokusu o doručení.
+
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o fronty, naleznete v následujících zdrojích.

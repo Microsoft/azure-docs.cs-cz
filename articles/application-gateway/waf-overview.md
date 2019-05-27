@@ -4,15 +4,15 @@ description: Tento článek obsahuje přehled firewallu webových aplikací (WAF
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 2/22/2019
+ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 830513a03bd65ca14cb0938ae599a676f1bb3bca
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518180"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991402"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Firewall webových aplikací služby Azure Application Gateway
 
@@ -38,7 +38,7 @@ Tato část popisuje základní výhody, které poskytují Application Gateway a
 
 * Chrání vaše webové aplikace před webovými chybami zabezpečení a útoky bez nutnosti upravovat back endový kód.
 
-* Ochráníte více webových aplikací ve stejnou dobu. Instance služby Application Gateway může být hostitelem až 20 webů, které jsou chráněné bránou firewall webových aplikací.
+* Ochráníte více webových aplikací ve stejnou dobu. Instance služby Application Gateway může hostovat až 100 webů, které jsou chráněné bránou firewall webových aplikací.
 
 ### <a name="monitoring"></a>Monitorování
 
@@ -121,12 +121,19 @@ Waf služby Application Gateway může být nakonfigurován pro spouštění v t
 * **Režim ochrany před únikem informací**: Blokuje vniknutí a útoky, které pravidla zjišťování. Útočník obdrží výjimku "403 – neoprávněný přístup" a připojení se ukončí. Režim ochrany před únikem informací zaznamenává do protokolů WAF takové útoky.
 
 ### <a name="anomaly-scoring-mode"></a>Režim bodování anomálií
- 
+
 OWASP má dva režimy pro rozhodování o tom, jestli se mají blokovat provoz: Tradiční režim a režim vyhodnocování anomálií.
 
 V tradičním režimu se považuje za provozu, který odpovídá jakékoli pravidlo nezávisle na jiných pravidla shody. Tento režim je snadno pochopitelný. Ale chybí informace o tom, kolik pravidla odpovídají konkrétní žádost je omezení. Ano byla zavedena anomálií vyhodnocování režimu. Je výchozí nastavení pro OWASP 3. *x*.
 
 V režimu vyhodnocení anomálií provoz, který odpovídá jakékoli pravidlo není blokované okamžitě brána firewall je v režimu ochrany před únikem informací. Pravidla mají určité závažnosti: *Kritické*, *chyba*, *upozornění*, nebo *Všimněte si, že*. Které ovlivňuje závažnost číselnou hodnotu pro žádosti, která se nazývá hodnocení anomálie. Například jeden *upozornění* pravidla shody přispívá 3 na skóre. Jeden *kritický* pravidla shody přispívá 5.
+
+|Severity  |Hodnota  |
+|---------|---------|
+|Kritická     |5|
+|Chyba        |4|
+|Upozornění      |3|
+|Poznámka       |2|
 
 Je prahová hodnota 5 anomálií skóre blokuje komunikaci. Tak jediné *kritický* pravidlo je dostatečná pro waf služby Application Gateway blokovat žádost, i v režimu ochrany před únikem informací. Krom jedné *upozornění* pravidla shody jenom zvýší anomálií 3 skóre, která není k dispozici dostatek samostatně k blokování provozu.
 

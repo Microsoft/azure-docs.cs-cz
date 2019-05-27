@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: f2605ee5688a86de0a8e7d036aa63edd604c6538
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787201"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992051"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak používat fronty služby Service Bus pomocí Pythonu
 
@@ -121,6 +121,9 @@ Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb
 K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak se Service Bus zprávu automaticky odemkne a nastavte ji k dispozici pro další přijetí.
 
 V případě, že aplikace spadne po zpracování zprávy, ale předtím, než **odstranit** metoda je volána, pak bude doručit víckrát do aplikace při restartování. To se často nazývá **alespoň jedno zpracování**, to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá o vlastnost zprávy **MessageId**, která je při každém pokusu o doručení stejné zprávy stejná.
+
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili základy front Service Bus, najdete v těchto článcích se dozvíte víc.

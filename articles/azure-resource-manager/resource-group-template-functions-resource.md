@@ -1,23 +1,17 @@
 ---
 title: Funkce šablon Azure Resource Manageru – prostředky | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/09/2019
+ms.date: 05/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783003"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990764"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -175,7 +169,7 @@ Další seznam funkce mají různé formáty návratový. Pokud chcete zobrazit 
 
 Zadat zdroj podle použití názvu prostředku nebo [funkce resourceId](#resourceid). Při používání seznamu funkce do stejné šablony, který se nasazuje odkazovaných prostředků, použijte název prostředku.
 
-Pokud používáte **seznamu** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek. Pokud dojde k chybě **seznamu** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze když existuje prostředek. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) ukázkovou šablonu, která využívá Pokud a seznam s podmíněně nasazených prostředků.
+Pokud používáte **seznamu** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek. Pokud dojde k chybě **seznamu** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) ukázkovou šablonu, která využívá Pokud a seznam s podmíněně nasazených prostředků.
 
 ### <a name="example"></a>Příklad:
 
@@ -343,11 +337,11 @@ Každý typ prostředku vrátí různé vlastnosti pro odkaz na funkci. Funkce n
 
 Odkaz na funkci načte běhový stav již nasazený prostředek nebo prostředek nasazený v aktuální šablony. Tento článek ukazuje příklady pro oba scénáře. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Při odkazování na prostředek už nasazenou, zadejte ID prostředku a verze rozhraní API pro prostředek. Můžete určit platná verze rozhraní API pro prostředek v [referenčními informacemi k šablonám](/azure/templates/).
 
-Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení.
+Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení. Při použití s [vlastnost iterace](resource-group-create-multiple.md#property-iteration), můžete použít funkci odkaz pro `input` vzhledem k tomu, že výraz je přiřazená k vlastnosti prostředků. Nelze použít s `count` vzhledem k tomu, že počet musí být stanovena, bude vyřešený odkaz funkce.
 
 Pomocí funkce odkaz na implicitně deklarujete, jeden prostředek závisí na jiný prostředek, pokud je oba odkazované prostředky poskytnutém v rámci stejné šablony a reference na prostředek má název (není ID prostředku). Není nutné použít také vlastnost dependsOn. Funkce není vyhodnocen, dokud odkazované prostředky dokončení nasazení.
 
-Pokud používáte **odkaz** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek.  Pokud dojde k chybě **odkaz** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze když existuje prostředek. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která využívá Pokud a odkaz se podmíněně nasazených prostředků.
+Pokud používáte **odkaz** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek.  Pokud dojde k chybě **odkaz** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která využívá Pokud a odkaz se podmíněně nasazených prostředků.
 
 Pokud chcete zobrazit názvy a hodnoty pro typ prostředku, vytvořte šablonu, která vrátí objekt v část outputs. Pokud máte existující prostředek tohoto typu, šablony vrátí objekt bez nutnosti nasazovat žádné nové prostředky. 
 

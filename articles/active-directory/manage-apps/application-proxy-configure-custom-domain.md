@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e258670e863ff195190bae5cd50537e50d40d942
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4cc742a6b1a7f3fc78e8639206e06c2937f00c30
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825640"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956916"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastními doménami v Proxy aplikací Azure AD
 
@@ -71,7 +71,9 @@ Až budete mít tyto tři požadavky na Připraveno, použijte následující po
 ### <a name="certificate-format"></a>Formát certifikátu
 Neexistuje žádné omezení na certifikátu podpisu metody. Šifrování ECC (Elliptic Curve), alternativní název předmětu (SAN) a další běžné typy certifikátů jsou všechny podporované. 
 
-Certifikát se zástupným znakem slouží jako zástupný znak odpovídá požadované externí adresu URL. 
+Certifikát se zástupným znakem slouží jako zástupný znak odpovídá požadované externí adresu URL.
+
+Nelze použít certifikát vydaný vlastní infrastruktuře (PKI) z důvodu důležité informace o zabezpečení.
 
 ### <a name="changing-the-domain"></a>Změna domény
 V rozevíracím seznamu externí adresu URL pro vaši aplikaci se zobrazí všechny ověřené domény. Chcete-li změnit doménu, jen aktualizujte toto pole pro aplikaci. Pokud chcete doménu není v seznamu [ho přidat jako ověřenou doménou](../fundamentals/add-custom-domain.md). Pokud vyberete doméně, která nebude mít přidružený certifikát dosud, postupujte podle kroků 5 až 7 pro přidání certifikátu. Ujistěte se, že aktualizujte záznam DNS pro přesměrování z nové externí adresy URL. 

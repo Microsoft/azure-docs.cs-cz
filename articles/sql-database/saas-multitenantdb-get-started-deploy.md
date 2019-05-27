@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486069"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978532"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace s více tenanty
 
@@ -58,7 +58,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 ### <a name="plan-the-names"></a>Plánování názvy
 
 V krocích v této části zadáte *uživatele* hodnotu, která se používá k zajištění jsou globálně jedinečné názvy prostředků a název *skupiny prostředků* obsahující všechny prostředky vytvořené v rámci nasazení aplikace. Pro osoby s názvem *Ann Finley*, doporučujeme:
-- *Uživatel:* **af1**  *(její iniciály, a navíc číslici. Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
+- *Uživatel:* **af1***(iniciálami a číslice.   Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
 - *Skupina prostředků:* **wingtip-mt – af1** *(wingtip-mt označuje to horizontálně dělené aplikace s více tenanty. Přidávání af1 uživatelské jméno koreluje název skupiny prostředků s názvy prostředků, které obsahuje.)*
 
 Teď zvolte názvy a zapište si. 
@@ -210,7 +210,7 @@ Teď můžeme podívat na některé z nasazených prostředků:
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam skupin prostředků. Otevřete skupinu prostředků, kterou jste vytvořili při nasazení aplikace.
 
-   ![skupina prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
+   ![skupiny prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
 2. Klikněte na tlačítko **katalogu mt&lt;uživatele&gt;**  serveru. Server katalogu obsahuje dvě databáze s názvem *tenantcatalog* a *basetenantdb*. *Basetenantdb* databáze je databáze prázdnou šablonu. Chcete-li vytvořit novou databázi tenantů, je zkopírován, jestli se použije pro více tenantů nebo jen jednoho tenanta.
 

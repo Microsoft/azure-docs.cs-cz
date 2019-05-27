@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: adgera
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 23759a6c3d920e2b791a10ddd5ac5c5285ed1889
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c35633c9b25eafdb738ed591c7c7022fbd8149a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926611"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967824"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v Azure digitální dvojče
 

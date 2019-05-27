@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868723"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979350"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -85,7 +85,7 @@ Tyto podrobnosti vysvětlit, proč prostředek aktuálně nedodržují předpisy
 
 Následující matice mapuje každé možné _důvod_ na příslušný [podmínku](../concepts/definition-structure.md#conditions) v definici zásad:
 
-|Důvod | Podmínka |
+|Reason | Podmínka |
 |-|-|
 |Aktuální hodnota musí jako klíč obsahovat cílovou hodnotu. |containsKey nebo **není** notContainsKey |
 |Aktuální hodnota musí obsahovat cílovou hodnotu. |obsahuje nebo **není** notContains |
@@ -215,11 +215,11 @@ Jako součást nového **ve verzi public preview**, za posledních 14 dní histo
 
 1. Vyberte **historii změn (preview)** kartě **dodržování předpisů prostředkem** stránky. Seznam zjistila změny, pokud jsou zobrazeny všechny existují.
 
-   ![Karta historie změn zásad na stránce dodržování předpisů prostředkem](../media/determine-non-compliance/change-history-tab.png)
+   ![Azure karta Historie změn zásad na stránce dodržování předpisů prostředkem](../media/determine-non-compliance/change-history-tab.png)
 
 1. Vyberte jednu z nalezenými změnami. _Visual diff_ pro prostředek se zobrazí na **historii změn** stránky.
 
-   ![Historie změn zásad na stránce historie změn Visual rozdíl.](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Azure zásady změnit historii Visual změn na stránce historie změn](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _Visual diff_ formě identifikovat změny prostředku. Byly zjištěny změny nemusí souviset s aktuální stav dodržování předpisů prostředku.
 
@@ -228,7 +228,7 @@ Poskytuje data o historii změn [Azure Graph prostředků](../../resource-graph/
 ## <a name="next-steps"></a>Další postup
 
 - Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
-- Projděte si [strukturu definic zásad](../concepts/definition-structure.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
 - Pochopit postup [programové vytváření zásad](programmatically-create.md).
 - Zjistěte, jak [získat data o dodržování předpisů](getting-compliance-data.md).

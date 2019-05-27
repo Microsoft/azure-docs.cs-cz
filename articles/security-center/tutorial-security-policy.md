@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/05/2019
-ms.author: monhaber
-ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: v-mohabe
+ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236302"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967841"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -94,7 +94,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 > - Při zobrazení můžete přiřadit zásady, můžete zobrazit více přiřazení a vy vidíte, konfiguraci každé přiřazení sama o sobě.
 
 ## <a name="edit-security-policies"></a>Upravení zásad zabezpečení
-Můžete upravit výchozí zásady zabezpečení pro každé z vašich předplatných Azure a skupin pro správu v [Azure Policy](../governance/policy/tutorials/create-and-manage.md). Pokud chcete upravit zásady zabezpečení, musíte být vlastníkem, přispěvatelem nebo správcem zabezpečení daného předplatného nebo skupiny pro správu, která ho obsahuje.
+Ve službě [Azure Policy](../governance/policy/tutorials/create-and-manage.md) můžete upravit výchozí zásady zabezpečení pro každou z vašich skupin pro správu a každé z vašich předplatných Azure. Pokud chcete upravit zásady zabezpečení, musíte být vlastníkem, přispěvatelem nebo správcem zabezpečení daného předplatného nebo skupiny pro správu, která ho obsahuje.
 
 Pokyny o tom, jak upravit zásady zabezpečení ve službě Azure Policy najdete v tématu a [vytvoření a Správa zásad pro vynucování dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: rezas
-ms.openlocfilehash: 703e2c842fb42bad8aa112d84c516a29c2327378
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f39f184bdc09677e347a2691351309dd6483f467
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473503"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965390"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-amqp-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu AMQP
 
@@ -26,7 +26,7 @@ Pro připojení ke službě IoT Hub pomocí protokolu AMQP, může klient použ�
 
 Tyto informace se vyžaduje pro klienta služby:
 
-| Informace | Value | 
+| Informace | Hodnota | 
 |-------------|--------------|
 | Název hostitele služby IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Název klíče | `service` |
@@ -65,7 +65,7 @@ Zprávy typu cloud zařízení exchange mezi službou a IoT Hub, stejně jako me
 | Vytvořil(a) | Typ odkazu | Cesta odkazu | Popis |
 |------------|-----------|-----------|-------------|
 | Služba | Odesílatel odkaz | `/messages/devicebound` | C2D zprávy určené do zařízení jsou na tomto odkazu odeslaných službou. Zprávy odeslané přes tato spojení mají jejich `To` nastavenou na cestu propojení příjemce cílové zařízení: například `/devices/<deviceID>/messages/devicebound`. |
-| Služba | Příjemce odkaz | `/messages/serviceBound/feedback` | Dokončení, zamítnutí a zřeknutí zpětné vazby zprávy přicházející ze zařízení na tento odkaz přijaté službou. Zobrazit [tady](./iot-hub-devguide-messages-c2d.md#message-feedback) Další informace o zprávy se zpětnou vazbou. |
+| Služba | Příjemce odkaz | `/messages/serviceBound/feedback` | Dokončení, zamítnutí a zřeknutí zpětné vazby zprávy přicházející ze zařízení na tento odkaz přijaté službou. Další informace o zprávy se zpětnou vazbou, naleznete v tématu [tady](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Následující fragment kódu ukazuje, jak vytvořit zprávu C2D a odeslat do zařízení pomocí [uAMQP knihovny v jazyce Python](https://github.com/Azure/azure-uamqp-python).
 
@@ -127,11 +127,76 @@ Jak uvádíme výš, C2D zpětnou vazbu zpráva obsahuje typ obsahu `application
 * Klíč `originalMessageId` je součástí zpětné vazby text má ID původní zprávy C2D odeslaných službou. To lze použít ke korelaci zpětnou vazbu, která C2D zprávy.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Přijímat telemetrické zprávy (klient služby)
+Ve výchozím nastavení ukládá služby IoT Hub telemetrické zprávy zařízení přijaté v předdefinované centra událostí. Klient služby můžete použít protokol AMQP přijímat uložených událostí.
+
+V tomto případě klient služby nejprve musí připojit ke koncovému bodu služby IoT Hub a příjem adresu přesměrování do integrované služby Event Hubs. Zadaná adresa klienta služby pak používá pro připojení k integrované centra událostí.
+
+V každém kroku klient musí k dispozici následující údaje:
+* Přihlašovací údaje platné služby (token SAS služby).
+* Správně naformátovaný cestu k oddílu skupiny uživatelů chce načítat zprávy z. Pro ID skupiny a oddílu dané příjemce cesta má následující formát: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (výchozí skupina příjemců je `$Default`).
+* Volitelný predikát filtru k určení výchozí bod v oddílu (to může být ve formě časové razítko číslo, offset nebo zařazených do fronty pořadí).
+
+Fragment kódu níže používá [uAMQP knihovny v jazyce Python](https://github.com/Azure/azure-uamqp-python) k předvedení výše uvedené kroky.
+
+```python
+import json
+import uamqp
+import urllib
+import time
+
+# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+from helper import generate_sas_token
+
+iot_hub_name = '<iot-hub-name>'
+hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
+policy_name = 'service'
+access_key = '<primary-or-secondary-key>'
+operation = '/messages/events/ConsumerGroups/{consumer_group}/Partitions/{p_id}'.format(consumer_group='$Default', p_id=0)
+
+username = '{policy_name}@sas.root.{iot_hub_name}'.format(policy_name=policy_name, iot_hub_name=iot_hub_name)
+sas_token = generate_sas_token(hostname, access_key, policy_name)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+# Optional filtering predicates can be specified using endpiont_filter
+# Valid predicates include:
+# - amqp.annotation.x-opt-sequence-number
+# - amqp.annotation.x-opt-offset
+# - amqp.annotation.x-opt-enqueued-time
+# Set endpoint_filter variable to None if no filter is needed
+endpoint_filter = b'amqp.annotation.x-opt-sequence-number > 2995'
+
+# Helper function to set the filtering predicate on the source URI
+def set_endpoint_filter(uri, endpoint_filter=''):
+  source_uri = uamqp.address.Source(uri)
+  source_uri.set_filter(endpoint_filter)
+  return source_uri
+
+receive_client = uamqp.ReceiveClient(set_endpoint_filter(uri, endpoint_filter), debug=True)
+try:
+  batch = receive_client.receive_message_batch(max_batch_size=5)
+except uamqp.errors.LinkRedirect as redirect:
+  # Once a redirect error is received, close the original client and recreate a new one to the re-directed address
+  receive_client.close()
+
+  sas_auth = uamqp.authentication.SASTokenAuth.from_shared_access_key(redirect.address, policy_name, access_key)
+  receive_client = uamqp.ReceiveClient(set_endpoint_filter(redirect.address, endpoint_filter), auth=sas_auth, debug=True)
+
+# Start receiving messages in batches
+batch = receive_client.receive_message_batch(max_batch_size=5)
+for msg in batch:
+  print('*** received a message ***')
+  print(''.join(msg.get_data()))
+  print('\t: ' + str(msg.annotations['x-opt-sequence-number']))
+  print('\t: ' + str(msg.annotations['x-opt-offset']))
+  print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
+```
+
+Pro Identifikátor dané zařízení služby IoT Hub používá hodnoty hash ID zařízení k určení oddíl, který se k ukládání svých zpráv. Výše uvedeném fragmentu kódu ukazuje přijímání událostí z jedné těchto oddílů. Všimněte si však, že Typická aplikace často potřebuje k načtení událostí uložených ve všech oddílů centra událostí.
 
 
 ### <a name="additional-notes"></a>Další poznámky
 * Připojení AMQP k přerušení kvůli sítě poruchu nebo uplynutí ověřovací token (vygenerovat v kódu). Klient služby musí zpracovat tyto okolnosti a znovu navázat připojení a odkazy v případě potřeby. Pro případ vypršení platnosti tokenu ověřování může klient také aktivně obnovení tokenu před jeho vypršení platnosti, aby se zabránilo přímé připojení.
-* V některých případech musí být schopen správně zpracovat odkaz přesměrování klienta. V dokumentaci klienta protokolu AMQP o tom, jak to provést.
+* V některých případech musí být schopen správně zpracovat odkaz přesměrování klienta. V dokumentaci klienta protokolu AMQP o tom, jak zpracovat tuto operaci.
 
 ### <a name="receive-cloud-to-device-messages-device-and-module-client"></a>Příjem zpráv typu cloud zařízení (zařízení a modul klienta)
 AMQP odkazů použité na straně zařízení jsou následující:

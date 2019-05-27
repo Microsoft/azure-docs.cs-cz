@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 8cda617ca60a17fceaaa818480ff9bbaef46c3fd
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414056"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965984"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektura globálního přenosu sítě a virtuální sítě WAN
 
@@ -48,7 +48,7 @@ Obrázek 2 znázorňuje logické zobrazení a pomocí globální sítě, ve kter
 
 ## <a name="crossregion"></a>Připojení mezi různými oblastmi
 
-Pro organizace cloudovou stopou obvykle následuje nároky na fyzické. Většina podniků přístup do cloudu z oblasti nejblíž k jejich fyzické síti a uživatelů. Jeden z klíčů objekty zabezpečení architektury globální sítě je chcete povolit připojení mezi různými oblastmi mezi koncových bodů a síťové entity. Cloudovou stopou může zahrnovat více oblastí. To znamená, že provoz z větve, která je připojená ke cloudu v jedné oblasti můžete oslovit jiné větve nebo virtuální sítě v jiné oblasti.
+Pro organizace cloudovou stopou obvykle následuje nároky na fyzické. Většina podniků přístup do cloudu z oblasti nejblíž k jejich fyzické síti a uživatelů. Jeden z klíčů objekty zabezpečení architektury globální sítě je chcete povolit připojení mezi různými oblastmi mezi koncových bodů a síťové entity. Cloudovou stopou může zahrnovat více oblastí. To znamená, že provoz z větve, která je připojená ke cloudu v jedné oblasti můžete oslovit jiné větve nebo virtuální sítě v jiné oblasti pomocí připojení k rozbočovači centra, která je aktuálně ve verzi preview.
 
 ## <a name="any"></a>Any-to-any připojení
 
@@ -89,7 +89,7 @@ Cesta vzdáleného uživatele větve umožňuje vzdáleným uživatelům, kteř�
 
 ### <a name="vnetvnet"></a>Připojení typu VNet-to-VNet přenosu pomocí VNet peering
 
-Propojení virtuálních sítí mezi sebou za účelem podpory vícevrstvých aplikací, které jsou implementovány mezi několika virtuálními sítěmi, pomocí VNet peering. V tuto chvíli nepodporuje scénáři přenosu připojení typu VNet-to-VNet přes Azure virtuální sítě WAN, ale je na plány Azure do budoucna. Propojení virtuálních sítí pomocí VNet Peering je doporučená řešení pro virtuální sítě, které musejí být připojení k sobě navzájem. Další informace o metodě VNet peering najdete v tématu [přehled partnerských vztahů VNet](../virtual-network/virtual-network-peering-overview.md).
+Propojení virtuálních sítí mezi sebou za účelem podpory vícevrstvých aplikací, které jsou implementovány mezi několika virtuálními sítěmi, pomocí VNet peering. V tuto chvíli nepodporuje scénáři přenosu připojení typu VNet-to-VNet přes Azure virtuální sítě WAN, ale je na plány Azure do budoucna. Propojení virtuálních sítí pomocí VNet Peering je doporučená řešení pro virtuální sítě, které musejí být připojení k sobě navzájem. [Průchod branou](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (v rámci partnerského vztahu virtuální sítě) se nevyžaduje pro virtuální sítě WAN vzhledem k tomu, že virtuální sítě WAN automaticky umožňuje průchod bránou.
 
 ### <a name="globalreach"></a>ExpressRoute globálním dosahem
 

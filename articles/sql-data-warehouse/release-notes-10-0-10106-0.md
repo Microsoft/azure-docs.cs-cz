@@ -4,18 +4,18 @@ description: Zpráva k vydání verze pro Azure SQL Data Warehouse.
 services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792418"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988291"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -23,15 +23,11 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure 
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>Zkontrolujte verzi Azure SQL Data Warehouse
 
-Připojte se ke svému datovému skladu přes SQL Server Management Studio (SSMS) a spusťte následující syntaxi vrátí aktuální verzi služby SQL Data Warehouse.
-
-```sql
-SELECT @@VERSION AS 'SQL Data Warehouse';
-```
+Jak nové funkce se nasazuje pro všechny oblasti, Zkontrolujte prosím verzi nasazené instanci a nejnovější poznámky k verzi Azure SQL data Warehouse pro dostupnost funkcí. Pokud chcete zkontrolovat verzi Azure SQL data Warehouse, připojte se ke svému datovému skladu přes SQL Server Management Studio (SSMS) a spusťte `SELECT @@VERSION AS 'SQL Data Warehouse';` vrátí aktuální verzi Azure SQL data Warehouse.
 
 Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
-Použití data identifikovat pro potvrzení, který uvolní se nastavily pro Azure SQL Data Warehouse.
+Použití data identifikovat pro potvrzení, který uvolní se nastavily pro váš datový Sklad SQL Azure.
 
 ## <a name="may-2019"></a>. Května 2019.
 
@@ -39,7 +35,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro Azu
 | --- | --- |
 |**(Preview) maskování dynamických dat**|Dynamické maskování dat (DDM) tak, že maskuje ho na průběžné ve výsledcích dotazu na základě vámi definovaných pravidel maskování brání neoprávněnému přístupu k citlivým datům ve vašem datovém skladu. Další informace najdete v tématu [maskování dynamických dat SQL Database](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
 |**Důležitost úlohy nyní obecně dostupná**|Klasifikace úlohy správy a význam poskytují možnost k ovlivnění pořadí spuštění dotazů. Další informace o důležitosti pracovního vytížení, najdete v článku [klasifikace](sql-data-warehouse-workload-classification.md) a [význam](sql-data-warehouse-workload-importance.md) přehledové články v dokumentaci. Podívejte se [vytvořit ÚLOHU třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc také.<br/><br/>Zobrazit úlohy význam v akci v následující videa:<br/> -[Koncepty správy úloh](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8)|
-|**Další podpora T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro: </br> - [NA ČASOVÉ PÁSMO](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**Další podpora T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkce JSON**|Obchodní analytici teď můžete použít dobře známého jazyka T-SQL k dotazování a manipulaci s dokumenty, které jsou formátovány jako data JSON pomocí následující nové funkce JSON ve službě Azure Data Warehouse:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Sady výsledků dotazu do mezipaměti (Preview)**|Ukládání do mezipaměti sady výsledků umožňuje rychlé pomalejší doby odezvy při snížení čas strávený při vytváření přehledů pro specialisty na obchodní analýzu a generování sestav uživatelů. Další informace naleznete v tématu:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Příkaz ALTER DATABASE nastavit možnosti (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Sada výsledků dotazu nastavení ukládání do mezipaměti (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
 

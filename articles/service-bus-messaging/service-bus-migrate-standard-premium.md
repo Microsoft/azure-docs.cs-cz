@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687067"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991422"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrovat existující standardní obory názvů služby Azure Service Bus na úrovni premium
 Azure Service Bus nabízely dříve, obory názvů jenom na úrovni standard. Obory názvů jsou nastavení více tenantů, která jsou optimalizována pro prostředí pro vývojáře a Nízká propustnost. Úroveň premium nabízí vyhrazené prostředky na obor názvů pro předvídatelnou latenci a vyšší propustnost za pevnou cenu. Na úrovni premium je optimalizovaná pro vysokou propustnost a produkční prostředí, které vyžadují další podnikové funkce.
 
-Tento článek popisuje, jak migrovat obory názvů stávající úrovně standard na úroveň premium.
+Tento článek popisuje, jak migrovat obory názvů stávající úrovně standard na úroveň premium.  
 
 >[!WARNING]
 > Migrace je určena pro standardní obory názvů služby Service Bus upgradovat na úroveň premium. Nástroj pro migraci nepodporuje Downgrade.
@@ -33,6 +33,7 @@ Některé z bodů do mějte na paměti:
 - **Premium** oboru názvů by měl mít **žádné entity** v něm k úspěšné migraci. 
 - Všechny **entity** ve standardním oboru názvů jsou **zkopírovat** do oboru názvů úrovně premium během procesu migrace. 
 - Podporuje migraci **1 000 entity za jednotku zasílání zpráv** na úrovni premium. Chcete-li zjistit, kolik jednotek zasílání zpráv je třeba, začněte s počet entit, které mají na vaši aktuální standardní obor názvů. 
+- Nelze migrovat přímo z **úroveň basic** k **premier úrovně**, ale můžete provést tak nepřímo migrací z úrovně basic na standard první a poté úroveň ze standard na premium v dalším kroku.
 
 ## <a name="migration-steps"></a>Kroky migrace
 Některé podmínky jsou spojeny s procesem migrace. Seznamte se s následující kroky a snížení rizika vzniku chyby. Tyto kroky popisují proces migrace a podrobné informace jsou uvedeny v následující části.

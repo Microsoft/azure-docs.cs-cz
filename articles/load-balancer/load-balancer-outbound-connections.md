@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f9742d14fc14230f2424d005aa6aa8b1db3cece4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190172"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967732"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -34,7 +34,7 @@ Azure používá k provedení této funkce překlad síťových adres zdroje (SN
 Existuje více [odchozí scénáře](#scenarios). Tyto scénáře můžete kombinovat podle potřeby. Seznamte se s nimi pečlivě pro pochopení možností, omezení a vzory, která je použita k modelu nasazení a scénář aplikace. Přečtěte si pokyny pro [Správa těchto scénářů](#snatexhaust).
 
 >[!IMPORTANT] 
->Standardní nástroj pro vyrovnávání zatížení a standardní veřejnou IP adresu představí nové možnosti a různé chování odchozí připojení.  Nejsou stejná jako základní SKU.  Pokud chcete odchozí připojení při práci s standardní SKU, je nutné explicitně definovat ho pomocí standardní veřejné IP adresy nebo veřejného Load Balanceru úrovně Standard.  To zahrnuje vytváření odchozího připojení při používání a interní Load balanceru úrovně Standard.  Doporučujeme že vždy používat odchozí pravidla veřejný Load balancer úrovně Standard.  [Scénář 3](#defaultsnat) není k dispozici standardní SKU.  To znamená, když se používá interní Load balanceru úrovně Standard, musíte provést kroky k vytvoření odchozí připojení pro virtuální počítače v back-endového fondu, v případě potřeby odchozí připojení.  V kontextu odchozí připojení, jeden samostatný virtuální počítač, všechny Virtuálního počítače ve skupině dostupnosti, všechny instance VMSS se chovají jako skupinu. To znamená, pokud jeden virtuální počítač do skupiny dostupnosti je přidružený standardní SKU všechny instance virtuálních počítačů v rámci této skupiny dostupnosti teď chovat podle stejných pravidel jako by šlo přidružený standardní SKU, i v případě, že jednotlivé instance není přímo k ní přidružena.  Pečlivě si prostudujte tento celý dokument, abyste celkové koncepce, projděte si [Load balanceru úrovně Standard](load-balancer-standard-overview.md) rozdílů mezi SKU a kontrola [odchozí pravidla](load-balancer-outbound-rules-overview.md).  Použití odchozí pravidla umožňuje podrobné kontrolu nad všemi aspekty odchozí připojení.
+>Standardní nástroj pro vyrovnávání zatížení a standardní veřejnou IP adresu představí nové možnosti a různé chování odchozí připojení.  Nejsou stejná jako základní SKU.  Pokud chcete odchozí připojení při práci s standardní SKU, je nutné explicitně definovat ho pomocí standardní veřejné IP adresy nebo veřejného Load Balanceru úrovně Standard.  To zahrnuje vytváření odchozího připojení při používání interní Load balanceru úrovně Standard.  Doporučujeme že vždy používat odchozí pravidla veřejný Load balancer úrovně Standard.  [Scénář 3](#defaultsnat) není k dispozici standardní SKU.  To znamená, když se používá interní Load balanceru úrovně Standard, musíte provést kroky k vytvoření odchozí připojení pro virtuální počítače v back-endového fondu, v případě potřeby odchozí připojení.  V kontextu odchozí připojení, jeden samostatný virtuální počítač, všechny Virtuálního počítače ve skupině dostupnosti, všechny instance VMSS se chovají jako skupinu. To znamená, pokud jeden virtuální počítač do skupiny dostupnosti je přidružený standardní SKU všechny instance virtuálních počítačů v rámci této skupiny dostupnosti teď chovat podle stejných pravidel jako by šlo přidružený standardní SKU, i v případě, že jednotlivé instance není přímo k ní přidružena.  Pečlivě si prostudujte tento celý dokument, abyste celkové koncepce, projděte si [Load balanceru úrovně Standard](load-balancer-standard-overview.md) rozdílů mezi SKU a kontrola [odchozí pravidla](load-balancer-outbound-rules-overview.md).  Použití odchozí pravidla umožňuje podrobné kontrolu nad všemi aspekty odchozí připojení.
 
 ## <a name="scenarios"></a>Přehled scénářů
 

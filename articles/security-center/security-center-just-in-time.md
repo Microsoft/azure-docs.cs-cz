@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/28/2019
-ms.author: monhaber
-ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: v-mohabe
+ms.openlocfilehash: b07a89491343220c5c3411b5fc525f9b43f54e30
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758306"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968440"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 

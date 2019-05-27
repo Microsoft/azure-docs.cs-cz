@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/12/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 75c0deaa8bca94349091e3317e4ca70129bb4426
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794752"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991611"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -72,6 +72,7 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 * Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>
   **Tyto služby nejsou podporovány**:
     * CDN
+    * Branou Azure
     * Multi-factor Authentication
     * Traffic Manager
 
@@ -84,6 +85,7 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunity Azure ke službám Global Services)
 * Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.<br><br>**Tyto služby nejsou podporovány**:
     * CDN
+    * Branou Azure
     * Multi-factor Authentication
     * Traffic Manager
 
@@ -220,7 +222,7 @@ Ano. Přijímáme až 4000 předpon trasy pro soukromý partnerský vztah a 200 
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Existují omezení týkající se rozsahy IP adres, které můžu můžete inzerovat přes relaci protokolu BGP?
 
-Pro relace partnerského vztahu protokolu BGP Microsoft nepřijímáme privátní předpony (definice RFC1918).
+Pro relace partnerského vztahu protokolu BGP Microsoft nepřijímáme privátní předpony (definice RFC1918). Můžeme přijmout všechny velikost předpony (až /32) v Microsoftu a soukromého partnerského vztahu.
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co se stane, když překročím protokol BGP omezuje?
 
@@ -283,6 +285,26 @@ Odkazovat na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details
 ### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>Platí pro ExpressRoute premium kromě standardních poplatků za ExpressRoute?
 
 Ano. ExpressRoute premium poplatky nad rámec poplatků za okruhu ExpressRoute a poplatky, které musí poskytovatelem připojení.
+
+## <a name="expressroute-local"></a>Místní ExpressRoute
+### <a name="what-is-expressroute-local"></a>Co je místní ExpressRoute?
+Místní ExpressRoute je okruh SKU ExpressRoute. Klíčovou funkcí služby místní je, že místní circit na poskytuje umístění partnerského vztahu ExpressRoute přístup pouze k jedné nebo dvou oblastech Azure ve nebo blízko ní stejné metro. Naproti tomu standardní okruh poskytuje přístup ke všem Azure oblastem v geopolitické oblasti a úrovně Premium okruhu do všech oblastí Azure globálně. 
+
+### <a name="what-are-the-benefits-of-expressroute-local"></a>Jaké jsou výhody místní ExpressRoute?
+Zatímco budete muset platit odchozí přenos dat pro váš okruh Standard nebo Premium ExpressRoute, neplatíte odchozí přenosy dat samostatně pro váš okruh ExpressRoute místní. Jinak řečeno cena ExpressRoute místní zahrnuje poplatky za přenos dat. Místní ExpressRoute je úspornější řešení, pokud máte obrovské množství přenášených dat a přepnete data přes soukromé připojení k umístění partnerského vztahu ExpressRoute blízko vaší požadované oblasti Azure. 
+
+### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Jaké funkce jsou k dispozici a co nejsou při místním ExpressRoute?
+Ve srovnání s okruhem ExpressRoute standardní, místní okruhu mají stejnou sadu funkcí s výjimkou:
+* Obor přístupu k oblasti Azure, které není uvedeno výše
+* Globální dosah ExpressRoute není k dispozici na místní
+
+Místní ExpressRoute má také stejné omezení na prostředky (třeba počet virtuálních sítí jeden okruh) jako Standard. 
+
+### <a name="how-to-configure-expressroute-local"></a>Jak nakonfigurovat místní ExpressRoute? 
+Místní ExpressRoute je k dispozici na ExpressRoute přímo pouze. Proto napřed budete muset nakonfigurovat port přímo ExpressRoute. Po vytvoření přímo portovaný můžete vytvořit místní okruhu postupujte podle pokynů [tady](expressroute-howto-erdirect.md).
+
+### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Pokud je k dispozici místní ExpressRoute a které oblasti Azure je každý umístění partnerského vztahu namapována na
+Místní ExpressRoute je k dispozici na umístění partnerského vztahu, kde jsou jedné nebo dvou oblastech Azure podle zavřít. Není k dispozici v umístění partnerského vztahu tam, kde neexistuje žádné oblasti Azure v rámci této státu nebo provincie nebo země. Podrobnosti najdete na přesné mapování na [stránka umístění](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>ExpressRoute pro Office 365
 

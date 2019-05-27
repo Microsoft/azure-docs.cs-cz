@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415701"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977309"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
@@ -75,7 +75,7 @@ Každý z výše uvedených hesla se neshoduje s konkrétně zakázaných hesel 
 
 Porovnání podřetězců se používá v normalizovaných heslo zkontrolujte, zda uživatel je první a poslední pojmenovat stejně jako název tenanta (Všimněte si, že shoda názvu tenanta není Hotovo při ověřování hesla na řadič domény služby Active Directory).
 
-Příklad: Předpokládejme, že máme uživatele John Doe, který chce resetovat své heslo k "J0hn123fb". Po normalizace toto heslo by se mohla stát "john123fb". Porovnání podřetězců zjistí, že heslo obsahuje jméno uživatele "John". I v případě, že "J0hn123fb" nebyl konkrétně na buď seznam zakázaných hesel, odpovídající podřetězec nalezen "John" v hesle. Proto by odmítnuty toto heslo.
+Příklad: Předpokládejme, že máme uživatele, Pol, kdo chce, aby se resetování hesla na "P0l123fb". Po normalizace toto heslo by se mohla stát "pol123fb". Porovnání podřetězců zjistí, že heslo obsahuje jméno uživatele "Pol". I v případě, že "P0l123fb" nebyl konkrétně na buď seznam zakázaných hesel, odpovídající podřetězec nalezen "Pol" v hesle. Proto by odmítnuty toto heslo.
 
 #### <a name="score-calculation"></a>Výpočet skóre
 

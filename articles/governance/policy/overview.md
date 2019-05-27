@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2dd31ab29479fade21d27b8e2c23952f905f530a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60953085"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979159"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Přehled služby Azure Policy
 
@@ -28,7 +28,7 @@ Azure Policy je služba v Azure, která slouží k vytváření, přiřazování
 
 ## <a name="how-is-it-different-from-rbac"></a>Čím se to liší od RBAC?
 
-Existuje několik klíčových rozdílů mezi zásadami a řízení přístupu na základě role (RBAC). RBAC se zaměřuje na akce uživatelů v různých oborech. Můžete být přidáni do role přispěvatele pro skupinu prostředků, umožní vám provádět změny do této skupiny prostředků. Zásady se zaměřují na vlastnosti prostředků během nasazování a vlastnosti již existujících prostředků. Zásada určuje vlastnosti, jako jsou typy nebo umístění prostředků. Na rozdíl od RBAC, je povolit výchozí zásady a explicitní odepření systému.
+Existuje několik klíčových rozdílů mezi Azure Policy a řízení přístupu na základě role (RBAC). RBAC se zaměřuje na akce uživatelů v různých oborech. Můžete být přidáni do role přispěvatele pro skupinu prostředků, umožní vám provádět změny do této skupiny prostředků. Azure se zásady, zaměřuje na vlastnosti prostředků během nasazení a pro už existující prostředky. Služba Azure Policy určuje vlastnosti, jako jsou typy nebo umístění prostředků. Na rozdíl od RBAC, Azure Policy je povolit výchozí a explicitní odepření systému.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Oprávnění RBAC ve službě Azure Policy
 
@@ -37,7 +37,7 @@ Služba Azure Policy má několik oprávnění, která se označují jako operac
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. **Přispěvatel zásad prostředků (Preview)** role zahrnuje většinu operací zásad. **Vlastník** má úplná oprávnění. Obě **Přispěvatel** a **čtečky** můžete použít všechny zásady operací čtení, ale **Přispěvatel** můžete také aktivaci odstraňování problémů.
+Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. **Přispěvatel zásad prostředků (Preview)** role zahrnuje většinu operací Azure Policy. **Vlastník** má úplná oprávnění. Obě **Přispěvatel** a **čtečky** všechny další operace Azure Policy, můžete použít, ale **Přispěvatel** můžete také aktivaci odstraňování problémů.
 
 Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvořte [vlastní roli](../../role-based-access-control/custom-roles.md).
 
@@ -68,7 +68,7 @@ Přiřazení zásady je definice zásady, která byla přiřazena, aby proběhla
 
 Například v oboru předplatného můžete přiřadit zásadu, která brání vytváření síťových prostředků. Může vyloučit skupiny prostředků v tomto předplatném, která je určená pro síťovou infrastrukturu. Potom můžete udělit přístup k této skupině síťových prostředků uživatelům, kterým důvěřujete s vytvářením síťových prostředků.
 
-V jiné situaci můžete například chtít přiřadit zásady seznamu povolených typů prostředků na úrovni skupiny správy. A potom přiřadit mnohem mírnější zásady, které povolují více typů prostředků, u podřízené skupiny správy nebo dokonce přímo u předplatných. To ale nebude fungovat, protože zásady představují systém, kdy se explicitně zamítá. Místo toho musíte podřízenou skupinu správy nebo předplatné vyloučit z přiřazení zásad na úrovni skupiny správy. Potom přiřadíte mnohem mírnější zásady na úrovni podřízené skupiny správy nebo předplatného. Pokud je výsledkem nějaké zásady zamítnutí prostředku, pak jediný způsob, jak prostředek povolit, je změna zásad zamítnutí.
+Například můžete chtít přiřadit prostředek typu Povolit seznam zásad na úrovni skupiny správy. A potom přiřadit mnohem mírnější zásady, které povolují více typů prostředků, u podřízené skupiny správy nebo dokonce přímo u předplatných. To ale nebude fungovat, protože zásady představují systém, kdy se explicitně zamítá. Místo toho musíte podřízenou skupinu správy nebo předplatné vyloučit z přiřazení zásad na úrovni skupiny správy. Potom přiřadíte mnohem mírnější zásady na úrovni podřízené skupiny správy nebo předplatného. Pokud je výsledkem nějaké zásady zamítnutí prostředku, pak jediný způsob, jak prostředek povolit, je změna zásad zamítnutí.
 
 Další informace o nastavování definic a přiřazení zásad prostřednictvím portálu najdete v tématu [Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků v prostředí Azure](assign-policy-portal.md). K dispozici jsou také kroky pro [PowerShell](assign-policy-powershell.md) a [Azure CLI](assign-policy-azurecli.md).
 
@@ -115,7 +115,7 @@ V tomto scénáři máte při definování parametrů iniciativy pro **initiativ
 
 Při vytváření možnosti hodnoty v definici iniciativy, nemůžete zadat jinou hodnotu při přiřazení iniciativy, protože není na seznamu.
 
-## <a name="maximum-count-of-policy-objects"></a>Maximální počet objektů zásad
+## <a name="maximum-count-of-azure-policy-objects"></a>Maximální počet objektů zásad Azure
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -144,8 +144,8 @@ Následující přehled služby Azure Policy se týká sestavení 2018. Pro sní
 
 Získali jste přehled o službě Azure Policy a některých klíčových konceptech. Tady je návrh dalších kroků:
 
-- [Přiřazení definice zásady pomocí portálu](assign-policy-portal.md)
-- [Přiřazení definice zásady pomocí Azure CLI](assign-policy-azurecli.md)
-- [Přiřazení definice zásady pomocí PowerShellu](assign-policy-powershell.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](..//management-groups/overview.md)
-- Zobrazení stránky [Řízení prostředí Azure prostřednictvím Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) na webu Channel 9
+- [Přiřazení definice zásady pomocí portálu](assign-policy-portal.md).
+- [Přiřazení definice zásady pomocí Azure CLI](assign-policy-azurecli.md).
+- [Přiřazení definice zásady pomocí Powershellu](assign-policy-powershell.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](..//management-groups/overview.md).
+- Zobrazení [řízení prostředí Azure prostřednictvím Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) na webu Channel 9.

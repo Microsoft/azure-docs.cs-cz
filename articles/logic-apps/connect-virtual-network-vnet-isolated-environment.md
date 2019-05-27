@@ -7,14 +7,14 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.topic: conceptual
+ms.date: 05/20/2019
+ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544538"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961448"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
@@ -24,7 +24,7 @@ Pro scénáře, ve kterém logic apps a účty pro integraci potřebují příst
 
 Tento článek popisuje, jak k dokončení těchto úloh:
 
-* Nastavení porty ve vaší virtuální sítí Azure tak prostřednictvím prostředí integrační služby (ISE) mohou projít provoz mezi podsítěmi ve virtuální síti.
+* Ujistěte se, že jsou otevřené žádné nezbytné porty ve virtuální síti, tak, aby provoz můžete přecházet mezi prostředí integrační služby (ISE) napříč podsítěmi v dané virtuální síti.
 
 * Vytvořte prostředí integrační služby (ISE).
 
@@ -60,11 +60,13 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
 
 <a name="ports"></a>
 
-## <a name="set-up-network-ports"></a>Nastavte síťové porty
+## <a name="check-network-ports"></a>Zkontrolujte síťové porty
 
-Prostředí integrační služby (ISE) fungovat správně a zůstat přístupný, musí mít určité porty, které jsou k dispozici ve vaší virtuální síti. Jinak pokud kterýkoliv z těchto portů je k dispozici, může ztratit přístup k vaší ISE, což může přestat pracovat. Při použití ISE ve virtuální síti běžný problém instalační program má jeden nebo více portů blokované. Pro připojení mezi vaší ISE a cílový systém konektor, který můžete použít také může mít vlastní požadavky na porty. Například pokud komunikovat s FTP systémem pomocí konektoru služby FTP, ujistěte se, že port, který používáte v systému FTP, jako je například 21 portu pro odesílání příkazů, je k dispozici.
+Při použití prostředí integrační služby (ISE) s virtuální sítí běžný problém instalační program má jeden nebo více portů blokované. Konektory, které používáte pro vytvoření připojení mezi vaší ISE a cílový systém také může mít vlastní požadavky na porty. Například pokud komunikovat s FTP systémem pomocí konektoru služby FTP, ujistěte se, že port, který používáte v systému FTP, jako je například 21 portu pro odesílání příkazů, je k dispozici.
 
-K řízení provozu mezi podsítěmi virtuální sítě nasadíte kdekoli vašeho ISE, můžete nastavit [skupiny zabezpečení sítě](../virtual-network/security-overview.md) pro tyto podsítě podle [filtrování síťového provozu mezi podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Tyto tabulky popisují porty ve vaší virtuální síti, která používá vaše ISE a kde získat používají tyto porty. [Značky služeb Resource Manageru](../virtual-network/security-overview.md#service-tags) představuje skupinu předpon IP adres, které pomáhá minimalizovat složitost při vytváření pravidel zabezpečení.
+Pokud chcete řídit provoz mezi podsítěmi ve virtuální síti, kde nasadíte ISE, můžete nastavit [skupiny zabezpečení sítě](../virtual-network/security-overview.md) podle [filtrování síťového provozu mezi podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Vaše ISE však musí mít specifické porty otevřete ve virtuální síti, která používá skupiny zabezpečení sítě. Tímto způsobem, vaše ISE zůstane dostupný a může fungovat správně tak, aby neztratili přístup k vaší ISE. Jinak pokud nejsou k dispozici všechny požadované porty, vaše ISE přestane fungovat.
+
+Tyto tabulky popisují porty ve vaší virtuální síti, která používá vaše ISE a kde získat používají tyto porty. [Značky služeb Resource Manageru](../virtual-network/security-overview.md#service-tags) představuje skupinu předpon IP adres, které pomáhá minimalizovat složitost při vytváření pravidel zabezpečení.
 
 > [!IMPORTANT]
 > Pro interní komunikace uvnitř podsítě ISE vyžaduje otevření všechny porty v rámci těchto podsítí.

@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: e943dbff71fdbd98773587c8ac5a62dd081b49a2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a392f8b11a7ab1ad72f4da289c54e34b022f1ea6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698867"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990313"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rychlý start: Vytvoření tématu služby Service Bus a odběrů tématu pomocí webu Azure portal
 V tomto rychlém startu použijete Azure portal k vytvoření tématu služby Service Bus a pak vytvořte odběry tohoto tématu. 
@@ -31,7 +31,8 @@ Témata a odběry Service Bus umožňují škálovat pro zpracování velkého p
 
 [!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
 Zjistěte, jak odesílat zprávy do tématu a příjem těchto zpráv prostřednictvím předplatného, najdete v následujícím článku: vyberte programovací jazyk v obsahu. 

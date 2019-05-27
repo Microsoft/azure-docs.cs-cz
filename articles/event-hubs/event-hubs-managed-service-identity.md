@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746883"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978483"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Spravované identity pro prostředky Azure pomocí služby Event Hubs
 
@@ -27,8 +27,28 @@ Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runti
 Jakmile je přidružen k spravovanou identitu, klient služby Event Hubs můžete provést všechny schválené operace. Povolení uděleno tím, že přidružíte spravovanou identitu s rolí služby Event Hubs. 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role a oprávnění
+Můžete přidat na spravovanou identitu **vlastník dat Event Hubs** role obor názvů služby Event Hubs. Tato role poskytuje identitu, úplné řízení (pro správu a operace s daty) na všechny entity v oboru názvů.
 
-Spravovaná identita lze přidat pouze do "Vlastník" nebo "Přispěvatel" rolí obor názvů služby Event Hubs, která udělují oprávnění Úplné řízení identit na všechny entity v oboru názvů. Ale správy, které operace, které změní topologie obor názvů jsou zpočátku podporované pouze když Azure Resource Manageru. Není nativní správu rozhraní REST centra událostí. Tato podpora také znamená, že nelze použít klienta rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt v rámci spravovanou identitu. 
+>[!IMPORTANT]
+> Dříve podporován spravované identity k přidání **vlastníka** nebo **Přispěvatel** role. Nicméně oprávnění pro přístup k datům **vlastníka** a **Přispěvatel** role už jsou zachované. Pokud používáte **vlastníka** nebo **Přispěvatel** role, přepínače na **vlastník dat Event Hubs** role.
+
+Pokud chcete používat nová předdefinovaná role, postupujte takto: 
+
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+2. Přejděte do oboru názvů služby Event Hubs.
+3. Na **Event Hubs Namespace** stránce **přístup Control(IAM)** v levé nabídce.
+4. Na **řízení přístupu (IAM)** stránce **přidat** v **přidat přiřazení role** oddílu. 
+
+    ![Přidejte tlačítko přiřazení role](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. Na **přidat přiřazení role** stránce, proveďte následující kroky: 
+    1. Pro **Role**vyberte **Azure Event Hubs Data vlastníka**. 
+    2. Vyberte **identity** mají být přidány do role.
+    3. Vyberte **Uložit**. 
+
+        ![Role vlastník dat centra událostí](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. Přepněte **přiřazení rolí** stránce a ověřit, že uživatel je přidán do **Azure Event Hubs Data vlastníka** role. 
+
+    ![Potvrďte, že uživatel je přidán do role](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Event Hubs pomocí spravované identity pro prostředky Azure
 
@@ -54,7 +74,7 @@ Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Act
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Vytvoření nového oboru názvů služby Event Hubs
 
-Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které nabízí podporu verze preview pro spravované identity pro prostředky Azure: **USA – východ**, **USA – východ 2**, nebo **západní Evropa**. 
+Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md). 
 
 Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat přiřazení role** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**. Spravovaná identita pro webové aplikace teď má přístup k oboru názvů Event Hubs a do centra událostí, kterou jste vytvořili dřív. 
 

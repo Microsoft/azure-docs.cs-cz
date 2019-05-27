@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d345645337d070be15346b245bfaecd1cabc7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45ff198f55ff769667cfaef2dd8665d2c34314e9
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415402"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987765"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS 2.0
 
@@ -85,7 +85,7 @@ Povolili jste ověřování IIS, ale abyste mohli provádět předběžné ově�
 3. Pokud uživatelé zadají své uživatelské jméno ve formátu „doména\uživatelské jméno“, Server musí být schopný při vytváření dotazu LDAP oddělit doménu od uživatelského jména. To můžete udělat nastavením registrů.
 4. Na 64bitovém serveru otevřete editor registrů a přejděte na HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. Pokud jste na 32bitovém serveru, odeberte „Wow6432Node“ z cesty. Vytvořte klíč registru typu DWORD s názvem „UsernameCxz_stripPrefixDomain“ a nastavte hodnotu na 1. Azure Multi-Factor Authentication teď zabezpečuje proxy server služby AD FS.
 
-Ověřte, že se uživatelé naimportovali z Active Directory do Serveru. Pokud chcete vytvořit bílou listinu interních IP adres, aby při přihlašování k webu z těchto umístění nebylo potřeba dvoustupňové ověření, projděte si část [Důvěryhodné IP adresy](#trusted-ips).
+Ověřte, že se uživatelé naimportovali z Active Directory do Serveru. Zobrazit [část důvěryhodné IP adresy](#trusted-ips) Pokud byste chtěli povolit interních IP adres tak, aby při přihlašování k webu z těchto umístění není potřeba dvoustupňové ověření.
 
 ![Editor registru pro konfiguraci nastavení společnosti](./media/howto-mfaserver-adfs-2/reg.png)
 
@@ -109,15 +109,17 @@ AD FS můžete zabezpečit, i když se server proxy AD FS nepoužívá. Nainstal
 
 Azure Multi-Factor Authentication teď zabezpečuje službu AD FS.
 
-Ověřte, že se uživatelé naimportovali z Active Directory do Serveru. Pokud chcete vytvořit bílou listinu interních IP adres, aby při přihlašování k webu z těchto umístění nebylo potřeba dvoustupňové ověření, projděte si část Důvěryhodné IP adresy.
+Ověřte, že se uživatelé naimportovali z Active Directory do Serveru. Pokud chcete povolit interních IP adres tak, aby při přihlašování k webu z těchto umístění není potřeba dvoustupňové ověřování, přečtěte si část důvěryhodné IP adresy.
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
+
 Důvěryhodné IP adresy umožňují uživatelům obejít ověřování Azure Multi-Factor Authentication u požadavků webů pocházejících z konkrétní IP adresy nebo podsítě. Můžete třeba chtít vyloučit uživatele z dvoustupňového ověření, když se přihlásí z kanceláře. V takovém případě zadáte podsíť kanceláře jako položku důvěryhodných IP adres.
 
 ### <a name="to-configure-trusted-ips"></a>Konfigurace důvěryhodných adres IP
+
 1. V části ověření služby IIS klikněte na kartu **Důvěryhodné IP adresy**.
 2. Klikněte na tlačítko **Přidat...** .
 3. Jakmile se zobrazí dialogové okno Přidat důvěryhodné IP adresy, vyberte přepínač **Jedna IP adresa**, **Rozsah IP adres** nebo **Podsíť**.
-4. Zadejte IP adresu, rozsah IP adres nebo podsíť, které chcete zařadit na seznam povolených adres. Pokud zadáváte podsíť, vyberte příslušnou síťovou masku a klikněte na tlačítko **OK**. Seznam důvěryhodných adres IP se přidal.
+4. Zadejte IP adresu, rozsah IP adres nebo podsíť, která má být povolený. Pokud zadáváte podsíť, vyberte příslušnou síťovou masku a klikněte na tlačítko **OK**.
 
 ![Konfigurovat důvěryhodné IP adresy MFA server](./media/howto-mfaserver-adfs-2/trusted.png)

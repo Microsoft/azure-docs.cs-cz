@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003006"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991382"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -60,14 +60,14 @@ Služba Cost Management podporuje následující předdefinované role pro každ
 - [**Vlastník** ](../role-based-access-control/built-in-roles.md#owner) – můžete zobrazit náklady a spravovat všechno včetně konfigurace náklady.
 - [**Přispěvatel** ](../role-based-access-control/built-in-roles.md#contributor) – můžete zobrazit náklady a spravovat všechno včetně konfigurace náklady, s výjimkou řízení přístupu.
 - [**Čtečka** ](../role-based-access-control/built-in-roles.md#reader) – vše, včetně konfigurace a nákladech můžete zobrazit, ale nemůže provádět žádné změny.
-- [**Přispěvatel správy nákladů** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) – můžete zobrazit náklady a náklady na konfiguraci můžete spravovat.
-- [**Cost Management čtečky** ](../role-based-access-control/built-in-roles.md#cost-management-reader) – můžete zobrazit náklady na data a konfigurace.
+- [**Přispěvatel správy nákladů** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) – můžete zobrazit náklady, spravovat náklady na konfiguraci a zobrazení doporučení.
+- [**Cost Management čtečky** ](../role-based-access-control/built-in-roles.md#cost-management-reader) – můžou zobrazovat data nákladů, náklady na konfiguraci a zobrazit doporučení.
 
 Přispěvatel Cost Management je doporučená role nejnižších oprávnění. Umožňuje uživatelům přístup k vytváření a Správa rozpočtů a exportuje do více efektivně, monitorování a vytváření sestav na náklady. Náklady na správu přispěvatelé může také vyžadovat další role, které podporují scénáře správy náklady na začátku do konce. Zvažte následující scénáře:
 
 - **Fungují při překročení rozpočty** – náklady na správu přispěvatelé také potřebují přístup k vytvořit a spravovat skupiny akcí automaticky reagovat na Nadlimitní využití. Zvažte možnost udělení [Přispěvatel monitorování](../role-based-access-control/built-in-roles.md#monitoring-contributor) do skupiny prostředků, která obsahuje skupiny akcí při překročení prahové hodnoty. Automatizace konkrétní akce vyžaduje další role pro určité služby, použití, například služby Automation a Azure Functions.
 - **Plánování nákladů export dat** – náklady na správu přispěvatelé také potřebovat přístup ke správě účtů úložiště naplánování export můžete kopírovat data do účtu úložiště. Zvažte možnost udělení [Přispěvatel účtů úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor) do skupiny prostředků, který obsahuje úložiště se exportuje účtu, kde informací o nákladech.
-- **Zobrazení doporučení nákladově úspornému** – náklady na správu čtenáři a přispěvatelé nemají přístup k doporučení ve výchozím nastavení. Přístup k doporučení vyžaduje přístup ke čtení pro jednotlivé prostředky. Zvažte možnost udělení [čtečky](../role-based-access-control/built-in-roles.md#reader) nebo [specifickou pro službu role](../role-based-access-control/built-in-roles.md#built-in-role-descriptions).
+- **Zobrazení doporučení nákladově úspornému** – náklady na správu čtenáři a přispěvatelé Cost Management mají přístup k *zobrazení* nákladů doporučení ve výchozím nastavení. Přístup tak, aby fungoval na doporučení k nákladům však vyžaduje přístup k jednotlivým prostředkům. Zvažte možnost udělení [specifickou pro službu role](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) Pokud budete chtít pracovat s náklady na základě doporučení.
 
 ## <a name="enterprise-agreement-scopes"></a>Obory smlouvy Enterprise
 

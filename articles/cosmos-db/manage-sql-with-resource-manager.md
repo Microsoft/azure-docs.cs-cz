@@ -1,27 +1,27 @@
 ---
-title: Šablony Azure Resource Manageru pro službu Azure Cosmos DB
-description: Pomocí šablon Azure Resource Manageru k vytvoření a konfigurace služby Azure Cosmos DB.
+title: Vytvoření a Správa služby Azure Cosmos DB pomocí šablon Azure Resource Manageru
+description: Použití šablon Azure Resource Manageru k vytvoření a konfigurace služby Azure Cosmos DB pro SQL (Core) rozhraní API
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: f61a9246b1edc5ac10b64f32cc27fd51dcedde94
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: a3798ac0c73c7bc6c4012dbb089275254f4c3504
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077752"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968833"
 ---
-# <a name="create-azure-cosmos-db-core-sql-api-resources-from-a-resource-manager-template"></a>Vytvoření prostředků Azure Cosmos DB Core (SQL) rozhraní API pomocí šablony Resource Manageru
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB SQL (Core) rozhraní API pomocí šablon Azure Resource Manageru
 
-Zjistěte, jak vytvořit prostředky Azure Cosmos DB pomocí šablony Azure Resource Manageru. Následující příklad vytvoří účet služby Azure Cosmos DB ze [šablona Azure Quickstart](https://aka.ms/sql-arm-qs). Tato šablona vytvoří účet Azure Cosmos se dvěma kontejnery, které sdílejí propustnost 400 RU/s na úrovni databáze.
+## Vytvořit účet Azure Cosmos, databáze a kontejner. <a id="create-resource"></a>
 
-Tady je kopie šablony:
+Vytvořte prostředky služby Azure Cosmos DB pomocí šablony Azure Resource Manageru. Tato šablona vytvoří účet Azure Cosmos se dvěma kontejnery, které sdílejí propustnost 400 RU/s na úrovni databáze. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 
-## <a name="deploy-via-powershell"></a>Nasazení přes PowerShell
+### <a name="deploy-via-powershell"></a>Nasazení přes PowerShell
 
 K nasazení šablony Resource Manageru pomocí Powershellu, **kopírování** skriptu a vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
 
@@ -40,6 +40,8 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json" `
+    -accountName $accountName `
+    -location $location `
     -primaryRegion $primaryRegion `
     -secondaryRegion $secondaryRegion `
     -databaseName $databaseName `
@@ -49,11 +51,9 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
 ```
 
-Pokud se rozhodnete použít místně nainstalovanou verzi Powershellu místo ze služby Azure Cloud shell, budete muset [nainstalovat](/powershell/azure/install-az-ps) modulu Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. 
+Pokud se rozhodnete použít místně nainstalovanou verzi Powershellu místo ze služby Azure Cloud shell, budete muset [nainstalovat](/powershell/azure/install-az-ps) modulu Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`.
 
-V předchozím příkladu neodkazujete šablonu, která je uložena v Githubu. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
-
-## <a name="deploy-via-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
+### <a name="deploy-via-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
 
 Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
 
@@ -78,7 +78,86 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 `az cosmosdb show` Příkaz zobrazí nově vytvořeného účtu Azure Cosmos po jeho zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo použití cloud shell, přečtěte si téma [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) článku.
 
-V předchozím příkladu neodkazujete šablonu, která je uložena v Githubu. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+## Aktualizovat propustnost (RU/s) na databázi <a id="database-ru-update"></a>
+
+Následující šablony se aktualizuje propustnosti databáze. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-database-ru-update/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+
+[!code-json[cosmosdb-sql-database-ru-update](~/quickstart-templates/101-cosmosdb-sql-database-ru-update/azuredeploy.json)]
+
+### <a name="deploy-database-template-via-powershell"></a>Nasazení šablony databáze prostřednictvím prostředí PowerShell
+
+K nasazení šablony Resource Manageru pomocí Powershellu, **kopírování** skriptu a vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$accountName = Read-Host -Prompt "Enter the account name"
+$databaseName = Read-Host -Prompt "Enter the database name"
+$throughput = Read-Host -Prompt "Enter new throughput for database"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-database-ru-update/azuredeploy.json" `
+    -accountName $accountName `
+    -databaseName $databaseName `
+    -throughput $throughput
+```
+
+### <a name="deploy-database-template-via-azure-cli"></a>Nasazení šablony databáze s využitím rozhraní příkazového řádku Azure
+
+Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-database-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
+```
+
+## Aktualizovat kontejner propustnost (RU/s) <a id="container-ru-update"></a>
+
+Následující šablony se aktualizuje propustnosti kontejneru. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-ru-update/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+
+[!code-json[cosmosdb-sql-container-ru-update](~/quickstart-templates/101-cosmosdb-sql-container-ru-update/azuredeploy.json)]
+
+### <a name="deploy-container-template-via-powershell"></a>Nasazení šablony kontejneru s využitím Powershellu
+
+K nasazení šablony Resource Manageru pomocí Powershellu, **kopírování** skriptu a vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$accountName = Read-Host -Prompt "Enter the account name"
+$databaseName = Read-Host -Prompt "Enter the database name"
+$containerName = Read-Host -Prompt "Enter the container name"
+$throughput = Read-Host -Prompt "Enter new throughput for container"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-ru-update/azuredeploy.json" `
+    -accountName $accountName `
+    -databaseName $databaseName `
+    -containerName $containerName `
+    -throughput $throughput
+```
+
+### <a name="deploy-container-template-via-azure-cli"></a>Nasazení šablony kontejneru prostřednictvím rozhraní příkazového řádku Azure
+
+Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+
+```azurecli-interactive
+read -p 'Enter the Resource Group name: ' resourceGroupName
+read -p 'Enter the account name: ' accountName
+read -p 'Enter the database name: ' databaseName
+read -p 'Enter the container name: ' containerName
+read -p 'Enter the new throughput: ' throughput
+
+az group deployment create --resource-group $resourceGroupName \
+   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-ru-update/azuredeploy.json \
+   --parameters accountName=$accountName databaseName=$databaseName containerName=$containerName throughput=$throughput
+```
 
 ## <a name="next-steps"></a>Další kroky
 

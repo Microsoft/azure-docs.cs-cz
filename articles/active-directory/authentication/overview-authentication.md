@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38bc2f138a8e56fc56b48ccdaf0636a93138f95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2f53243e49cc961f50ef09cf43a7ed174a82a9c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413984"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65997267"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Které metody ověřování jsou dostupné?
 
@@ -50,6 +50,10 @@ Samoobslužné resetování hesla zahrnuje:
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Použitím metod ověřování schválených správcem pomáhá Azure MFA chránit přístup k datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>Další postup
 

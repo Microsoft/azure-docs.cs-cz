@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472246"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979629"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -31,11 +31,18 @@ Aplikace, která používá Azure AD RBAC není potřeba zpracovat pravidla SAS 
 
 ## <a name="service-bus-roles-and-permissions"></a>Role služby Service Bus a oprávnění
 
-Počáteční verze public Preview můžete pouze přidat účty služby Azure AD a instanční objekty "Vlastník" nebo "Přispěvatel" rolí v oboru názvů služby Service Bus Messaging. Tato operace udělují oprávnění Úplné řízení všech entit v oboru názvů identity. Operace správy, které se mění topologii obor názvů jsou zpočátku pouze podporované i když Azure resource management a ne přes rozhraní nativní Správa služby Service Bus REST. Tato podpora také znamená, že rozhraní .NET Framework client [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt nelze použít s účtem služby Azure AD.
+Azure poskytuje níže uvedené vestavěné role RBAC pro autorizaci přístupu k oboru názvů služby Service Bus:
+
+* [Vlastník služby Service Bus dat (preview)](../role-based-access-control/built-in-roles.md#service-bus-data-owner): Umožňuje přístup k datům pro obor názvů služby Service Bus a jeho entit (fronty, témata, odběry a filtry)
+
+>[!IMPORTANT]
+> Dříve podporován spravovanou identitu pro přidání **"Vlastník"** nebo **"Přispěvatel"** role.
+>
+> Nicméně oprávnění pro přístup k datům **"Vlastník"** a **"Přispěvatel"** role se už zachované. Pokud jste používali **"Vlastník"** nebo **"Přispěvatel"** role a ty pak bude muset být přizpůsobena využívat **"Vlastník dat služby Service Bus"** role.
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény Azure AD pomocí služby Service Bus
 
-Následující část popisuje kroky potřebné k vytvoření a spuštění ukázkové aplikace, který zobrazí výzvu k zadání interaktivní Azure AD přihlášení uživatele, jak udělit přístup k Service Bus s daným uživatelským účtem a tom, jak použít tuto identitu pro přístup k Event Hubs.
+Následující část popisuje kroky potřebné k vytvoření a spuštění ukázkové aplikace, který zobrazí výzvu k zadání interaktivní Azure AD uživateli umožní přihlásit, jak udělit přístup k Service Bus s daným uživatelským účtem a tom, jak použít tuto identitu pro přístup k Event Hubs.
 
 Tento úvod popisuje jednoduchou konzolovou aplikaci, [kód, pro který je na Githubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl).
 
@@ -47,7 +54,7 @@ Pokud chcete vytvořit zvláštní účet pro tento scénář [postupujte podle 
 
 ### <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
 
-Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md) v jedné oblasti Azure, které mají podporu náhledu pro RBAC: **USA – východ**, **USA – východ 2**, nebo **západní Evropa**.
+Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md).
 
 Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat přiřazení role** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**.
 
@@ -67,7 +74,7 @@ Před spuštěním ukázky, upravte soubor App.config a v závislosti na scéná
 
 - `tenantId`: Nastavte na **TenantId** hodnotu.
 - `clientId`: Nastavte na **ApplicationId** hodnotu.
-- `clientSecret`: Pokud se chcete přihlásit pomocí tajného klíče klienta, vytvořte ho ve službě Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Přidejte také aplikaci v rámci **řízení přístupu (IAM)** v oboru názvů, kterou jste vytvořili dřív.
+- `clientSecret`: Pokud chcete k přihlášení pomocí tajného klíče klienta, vytvořte ho ve službě Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Přidejte také aplikaci v rámci **řízení přístupu (IAM)** v oboru názvů, kterou jste vytvořili dřív.
 - `serviceBusNamespaceFQDN`: Nastavte úplný název DNS váš nově vytvořený obor názvů služby Service Bus; například `example.servicebus.windows.net`.
 - `queueName`: Nastavte název fronty, kterou jste vytvořili.
 - Identifikátor URI pro přesměrování, který jste zadali ve vaší aplikaci v předchozích krocích.

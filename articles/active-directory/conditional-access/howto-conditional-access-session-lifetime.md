@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766875"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988583"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace ověřování relace správy s podmíněným přístupem
 
@@ -50,7 +50,7 @@ Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživ
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurace řízení relace ověřování
 
-Podmíněný přístup je schopnost Azure AD Premium a vyžaduje licenci premium. Pokud chcete další informace o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements-for-using-conditional-access)
+Podmíněný přístup je schopnost Azure AD Premium a vyžaduje licenci premium. Pokud chcete další informace o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
 > Pokud používáte [konfigurovatelné životnost tokenu](../develop/active-directory-configurable-token-lifetimes.md) funkce aktuálně ve verzi public preview, mějte prosím na paměti, že nepodporujeme vytvoříte dva různé zásady pro stejného uživatele nebo aplikaci kombinaci: jednu s tuto funkci a jinou s Funkce konfigurovat doba platnosti tokenu. Společnost Microsoft plánuje vyřadit z provozu funkci konfigurovatelné doby života tokenů na 15. října a nahraďte ji metodou funkce podmíněného přístupu ověřování relace správy.  
@@ -66,7 +66,7 @@ Podmíněný přístup je schopnost Azure AD Premium a vyžaduje licenci premium
 1. Přejděte na **ovládacích prvků přístupu** > **relace** a klikněte na tlačítko **frekvence přihlášení**
 1. Do prvního textového pole zadejte požadovaná hodnota dnů a hodin
 1. Vyberte hodnotu **hodin** nebo **dnů** z rozevíracího seznamu
-1. Uložit zásadu
+1. Uložení zásady
 
 ![Zásady podmíněného přístupu, které jsou nakonfigurované pro přihlášení v možnosti četnost](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 076e3b41a50681e453c1a07575ac6cb7071d97d2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500630"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992025"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure CLI
 Tento rychlý start popisuje způsob odesílání a příjem zpráv pomocí Service Bus pomocí Azure CLI a knihovny Service Bus v Javě. Pokud vás zajímají techničtější podrobnosti, můžete si [přečíst vysvětlení](#understand-the-sample-code) klíčových prvků vzorového kódu.
@@ -366,6 +366,9 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 }
 ```
+
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: a90475cfd1d166b8fae1c2b872cbbb9d48b50392
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785811"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953120"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Správa výpočetních služeb v Azure Data Box hranici
 
@@ -129,24 +129,6 @@ Pomocí následujících kroků na webu Azure Portal k synchronizaci přístupov
 
 3. Po dokončení synchronizace zavřete dialogové okno.
 
-## <a name="enable-a-network-interface-for-compute"></a>Povolení síťového rozhraní pro službu compute
-
-Můžete potřebovat pro přístup k modulu běžícího ve vašem zařízení Data Box Edge. Pro přístup k modulu externě, je potřeba přiřadit IP adresu do síťového rozhraní na zařízení. Můžete spravovat tyto compute nastavení z vašeho místního webového uživatelského rozhraní.
-
-Proveďte následující kroky na vaší místního webového uživatelského rozhraní a zadejte nastavení výpočetní prostředky.
-
-1. V místním webovém uživatelském rozhraní, přejděte na **konfigurace > Compute nastavení**.  
-
-2. **Povolit** síťové rozhraní, které chcete použít pro připojení k modulům výpočetní prostředky na zařízení. 
-
-    - Pokud používáte statické IP adresy, zadejte IP adresu pro síťové rozhraní.
-    - Pokud používáte DHCP, pak IP adres automaticky přiřadí.
-
-3. Vyberte **použít** aplikaci nastavení.
-
-    ![Povolení nastavení výpočetní prostředky](media/data-box-edge-manage-compute/compute-settings-1.png)
-
-
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si, jak [spravovat uživatele pomocí webu Azure Portal](data-box-edge-manage-users.md).
+- Zjistěte, jak [spravovat hraniční výpočetní síti pomocí webu Azure portal](data-box-edge-extend-compute-access-modules.md).

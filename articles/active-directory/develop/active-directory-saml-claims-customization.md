@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764653"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950993"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -47,7 +47,7 @@ Existují dva možné důvody, proč může být potřeba upravit deklarací ide
 Chcete-li upravit NameID (hodnota identifikátoru název):
 
 1. Otevřít **název hodnota identifikátoru** stránky.
-1. Vyberte atribut nebo transformace, kterou chcete použít pro atribut. Volitelně můžete zadat požadovaný formát má deklarace identity NameID mít.
+1. Vyberte atribut nebo transformace, kterou chcete použít pro atribut. Volitelně můžete zadat požadovaný formát pro deklaraci NameID mít.
 
    ![Upravit hodnotu NameID (identifikátor názvu)](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
@@ -75,7 +75,7 @@ Vyberte požadovaný zdroj `NameIdentifier` (nebo NameID) deklarace identity. M�
 
 | Název | Popis |
 |------|-------------|
-| E-mail | E-mailovou adresu uživatele |
+| Email | E-mailovou adresu uživatele |
 | userprincipalName | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, která je synchronizovaná z místní služby Azure AD |
 | ID objektu | ID objektu uživatele ve službě Azure AD |

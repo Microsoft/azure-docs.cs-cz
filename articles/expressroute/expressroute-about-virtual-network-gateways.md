@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18615cf737eedcd188fd59d2aa98482210b9333a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367939"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991590"
 ---
-# <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
-Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Bránu virtuální sítě můžete použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se zaměřuje na brány virtuální sítě ExpressRoute a obsahuje informace o SKU, zvýšily výkon s SKU a brány typů.
+# <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Brána virtuální sítě ExpressRoute a FastPath
+Připojení vaší virtuální sítí Azure a vaší místní sítě prostřednictvím ExpressRoute, musíte nejprve vytvořte bránu virtuální sítě. Bránu virtuální sítě má dva účely: exchange IP trasy mezi sítěmi a směrovat síťový provoz. Tento článek vysvětluje typy bran, skladové položky brány a odhadovanou výkonu skladová jednotka potřebuje. Tento článek také popisuje ExpressRoute [FastPath](#fastpath), funkce, která umožňuje síťový provoz z vaší místní sítě k obejití brány virtuální sítě ke zlepšení výkonu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -59,6 +59,15 @@ Zónově redundantní brány používají konkrétní nové SKU brány pro brán
 
 Nové SKU brány podporovat i jiné možnosti nasazení, aby co nejlépe odpovídaly vašim potřebám. Při vytváření brány virtuální sítě pomocí nové SKU brány, máte také možnost k nasazení brány v konkrétní zóně. To se označuje jako brána oblastmi. Při nasazení oblastmi brány všechny instance brány jsou nasazené ve stejné zóně dostupnosti.
 
+## <a name="fastpath"></a>FastPath
+Brána virtuální sítě ExpressRoute je navržená pro výměnu směrování sítě a směrování síťového provozu. FastPath slouží ke zlepšení výkonu cesty dat mezi vaší místní sítí a virtuální sítí. Při povolení FastPath odesílá síťový provoz přímo do virtuálních počítačů ve virtuální síti, obcházení brány. 
+
+Je k dispozici na FastPath [ExpressRoute přímo](expressroute-erdirect-about.md) pouze. Jinými slovy, můžete povolit tuto funkci pouze tehdy, pokud jste [připojte svou virtuální síť](expressroute-howto-linkvnet-arm.md) pro okruh ExpressRoute vytvořený na port přímo ExpressRoute. FastPath nadále vyžaduje bránu virtuální sítě má být vytvořen pro výměnu tras mezi virtuální sítí a místní sítí. Brána virtuální sítě musí být Ultra výkon nebo ErGw3AZ.
+
+FastPath nepodporuje následující funkce:
+* Uživatelem definovaná TRASA v podsíti brány: Pokud použijete trasu UDR do podsítě brány virtuální sítě síťový provoz z vaší místní sítě bude pokračovat k odeslání do brány virtuální sítě.
+* Partnerský vztah virtuální sítě: Pokud máte jiné virtuální sítě v partnerském vztahu s ten, který je připojená k ExpressRoute síťový provoz z vaší místní sítě k jiné virtuální sítě (například takzvané "Paprsků" virtuální sítě) budou i nadále odešlou do virtuální sítě brány. Alternativním řešením je se přímo připojit všechny virtuální sítě k okruhu ExpressRoute.
+
 ## <a name="resources"></a>Rutiny Powershellu a rozhraní REST API
 Pro další zdroje technických informací a požadavky na konkrétní syntaxe při použití rozhraní REST API a rutin prostředí PowerShell pro konfiguraci brány virtuální sítě naleznete na následujících stránkách:
 
@@ -73,3 +82,5 @@ Zobrazit [přehled ExpressRoute](expressroute-introduction.md) pro další infor
 Zobrazit [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) pro další informace o vytváření brány ExpressRoute.
 
 Zobrazit [vytvořit bránu virtuální sítě zónově redundantní](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) pro další informace o konfiguraci brány zónově redundantní.
+
+Zobrazit [propojení virtuální sítě pro ExpressRoute](expressroute-howto-linkvnet-arm.md) Další informace o tom, jak povolit FastPath. 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073010"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124273"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -109,8 +109,8 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 |Typ balíčku|Rozhraní API pro dotazy koncového bodu|Dostupnost dotazu|Formát názvu souboru balíčku|
 |--|--|--|--|
 |Trénovaný|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Staging|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
-|Výroba|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Fázování|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
+|Provozní|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Přejmenovat, změnit, přepsat ani dekomprimovat soubory balíčku LUIS.
@@ -255,6 +255,10 @@ Další [příklady](luis-container-configuration.md#example-docker-run-commands
 > Hodnota ApiKey **klíč** je dostupná na Azure a z klíče a koncových bodů stránky na portálu služby LUIS `Cognitive Services` stránka s materiály pro klíče.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+## <a name="endpoint-apis-supported-by-the-container"></a>Koncový bod rozhraní API podporuje kontejneru
+
+Obě verze 2 a [V3 (Preview)](luis-migration-api-v3.md) verze rozhraní API jsou k dispozici s kontejnerem. 
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncový bod kontejneru predikcí
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 09898ac7dd4a6f3ee9cf0ea26ded607a8673b9f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438240"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987702"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -91,7 +91,7 @@ Tento problém opětovným připojením v linuxového jádra je opravená jako s
 
 Však nemusí být tyto změny přenést ještě do Linuxových distribucí. V následující oblíbených Linuxových jádrech jsou tato oprava a ostatní opravy opětovné připojení: 4.4.40 4.8.16 a 4.9.1. Tato oprava můžete získat díky upgradu na některou z těchto verzí doporučené jádra.
 
-### <a name="workaround"></a>Alternativní řešení
+### <a name="workaround"></a>Alternativní řešení:
 
 Tento problém můžete vyřešit tak, že zadáte pevné připojení. Pevné připojení vynutí klient čekat, dokud se naváže spojení nebo dokud explicitně je přerušeno. Můžete ji chcete-li zabránit chybám z důvodu vypršení časových limitů sítě. Toto řešení však může způsobit neomezené čekání. Buďte připraveni zastavit připojení podle potřeby.
 
@@ -144,13 +144,15 @@ Chcete-li zkontrolovat, zda je zakázáno ukládání do mezipaměti, vyhledejte
 
 **Mezipaměti = none** označuje, že je zakázáno ukládání do mezipaměti. Připojte sdílenou složku s použitím výchozí příkaz připojení nebo tak, že explicitně přidáte **mezipaměti = striktní** je povolena možnost připojení příkaz, kterým zajistíte, že ukládání do mezipaměti výchozí nebo "přísné" režim ukládání do mezipaměti.
 
-V některých případech **serverino** možností připojení může způsobit, že **ls** příkaz ke spuštění stat – pro každý záznam adresáře. Toto chování způsobí snížení výkonu už nabízíte velké objemy adresáře. Možnosti připojení můžete zkontrolovat ve vaší **/etc/fstab** položky:
+V některých případech **serverino** možností připojení může způsobit, že **ls** příkaz ke spuštění stat – pro každý záznam adresáře. Toto chování způsobí snížení výkonu už nabízíte velké adresáře. Možnosti připojení můžete zkontrolovat ve vaší **/etc/fstab** položky:
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 Můžete také zkontrolovat, zda se právě využívají správné možnosti pro spuštění **sudo připojení | grep cifs** příkazu a zkontrolujete jeho výstup. Následuje příklad výstupu:
 
-`//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+```
+//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
+```
 
 Pokud **mezipaměti = striktní** nebo **serverino** možnost je k dispozici, odpojte a znovu připojit soubory Azure pomocí příkazu připojení z [dokumentaci](../storage-how-to-use-files-linux.md). Potom spusťte opětovnou kontrolu, která **/etc/fstab** položka má správné možnosti.
 
@@ -163,7 +165,7 @@ Na platformách Linux/Unix **cp -p** příkaz selže, pokud různí uživatelé 
 
 Příznak force **f** v COPYFILE výsledkem provádění **cp -p -f** v systému Unix. Tento příkaz také selže zachovat časové razítko souboru, kterou nevlastníte.
 
-### <a name="workaround"></a>Alternativní řešení
+### <a name="workaround"></a>Alternativní řešení:
 
 Použijte uživatelský účet úložiště pro kopírování souborů:
 
@@ -245,6 +247,8 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 ```
 
 Potom můžete vytvořit symbolických odkazů na jako navrhované [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
+
+[!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 

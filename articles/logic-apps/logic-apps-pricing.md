@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
-ms.date: 03/25/2019
-ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.date: 05/22/2019
+ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544557"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990189"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -92,11 +92,15 @@ Když zakážete, aplikace logiky, všechny aktuálně spuštěné instance mů�
 Ceny za spotřebu se vztahuje na [účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md) kde můžete prozkoumat, vývoj a testování [B2B a EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování XML](logic-apps-enterprise-integration-xml.md) funkce v Azure Logic Apps bez Další poplatky.
 Může mít jeden účet pro integraci v každé oblasti Azure. Každý účet pro integraci můžete ukládat konkrétní [počet artefaktů](../logic-apps/logic-apps-limits-and-config.md), mezi které patří obchodní partnery, smlouvy, map, schémata, sestavení, certifikáty, konfigurace dávek a tak dále.
 
-Služba Azure Logic Apps nabízí také účty pro integraci Basic a Standard s podporovaná smlouvou SLA aplikace logiky. Tady je způsoby, jak můžete zvolit, jestli se má používat účet integrace Basic nebo Standard:
+Služba Azure Logic Apps nabízí účty pro integraci Free, Basic a Standard. Na úrovních Basic a Standard jsou podporovány Logic Apps smlouvu o úrovni služeb (SLA), zatímco úroveň Free není podporováno smlouvou SLA a má omezení propustnosti a využití.
 
-* Účtů integrace úrovně Basic použijte, pokud právě chcete zpracování zpráv nebo fungují jako partner malé firmy, která má vztah obchodního partnera s větší obchodní entitě.
+Volba mezi Free, Basic nebo Standard účet integrace:
 
-* Účty integrace úrovně Standard použijte, pokud máte složitější vztahy B2B a chcete zvýšit počet entit, které můžete spravovat.
+* **Bezplatné**: Pro když budete chtít zkusit průzkumného testování scénářů, nikoli produkčních scénářů.
+
+* **Základní**: Má pouze zpracování zpráv nebo tak, aby fungoval jako partnerský server pro malé firmy, která má vztah obchodního partnera s větší obchodní entitě.
+
+* **Standard**: Když máte složitější vztahy B2B a vyšší počet entit, které je potřeba spravujte.
 
 Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
 

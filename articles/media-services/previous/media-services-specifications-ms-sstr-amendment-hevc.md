@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: b26252ddda7997bebd730bb4c1007f76b3e645a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9756920d25891dbe6b71fa24c06ed8f0c8eabb0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60650705"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963249"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Technologie Smooth Streaming protokolu (MS-SSTR) změně pro HEVC 
 
@@ -40,11 +40,11 @@ Následující termíny jsou definovány v *[MS-GLOS]*:
 
 Následující termíny jsou specifické pro tento dokument:
 
->  **čas sestavení:** Čas ukázku je uvedena na klientovi, jak jsou definovány v [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
+>  **čas sestavení:** Čas ukázku je uvedena na klientovi, jak jsou definovány v [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
 >   **CENC**: Běžné šifrování jako definovaný v [ISO/IEC 23001-7] druhé vydání.
 > 
->   **Čas dekódování:** Čas ukázku je potřeba se dekódovat na klientovi, jak jsou definovány v [[ISO/IEC https://go.microsoft.com/fwlink/?LinkId=18369514496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   **Čas dekódování:** Čas ukázku je potřeba se dekódovat na klientovi, jak jsou definovány v [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
 **fragment:** Nezávisle na sobě ke stažení jednotka **média** , která zahrnuje jednu nebo více **ukázky**.
 
@@ -52,11 +52,11 @@ Následující termíny jsou specifické pro tento dokument:
 > 
 >   **manifest:** Metadata o **prezentace** umožňuje získat klientským k podání žádostí o **média**. **médium:** Komprimovaných dat zvuk, video a text klient používá k přehrávání **prezentace**. **Formát médií:** Dobře definovaný formát pro uvádění zvuku nebo videa jako komprimovaný **ukázka**.
 > 
->   **prezentace:** Sada všech **datové proudy** a související metadata potřebná k přehrání videa jeden. **Žádost:** Zpráva HTTP odeslaných z klienta na server, jak jsou definovány v [[RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372) **Odpověď:** Zpráva HTTP odeslaných ze serveru klientovi, jak jsou definovány v [[RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **prezentace:** Sada všech **datové proudy** a související metadata potřebná k přehrání videa jeden. **Žádost:** Zpráva HTTP odeslaných z klienta na server, jak jsou definovány v [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **odpovědi:** Zpráva HTTP odeslaných ze serveru klientovi, jak jsou definovány v [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
 >   **Ukázka:** Nejmenší základní jednotku (jako je například rámec), ve kterém **média** jsou uložena a zpracována.
 > 
->   **MŮŽE BY MĚL, MUSÍ, BY NEMĚLA, NENÍ NUTNÉ:** Tyto podmínky (v všechna písmena velká) se používají, jak je popsáno v [[RFC2119].](https://go.microsoft.com/fwlink/?LinkId=90317) Všechny příkazy volitelné chování použijte buď může SHOULD nebo by neměl.
+>   **MŮŽE BY MĚL, MUSÍ, BY NEMĚLA, NENÍ NUTNÉ:** Tyto podmínky (v všechna písmena velká) se používají, jak je popsáno v [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) všechny příkazy volitelné chování použijte buď může SHOULD nebo by neměl.
 
 ## <a name="12-references"></a>1.2 odkazy
 

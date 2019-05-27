@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ceaf4d3db71d99c3e87157f9847312fdf4000026
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245256"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991788"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Analýzy mediálních služeb na platformě Media Services 
 
@@ -58,7 +58,6 @@ Media Analytics může pomoct organizacím a podnikům glean nové poznatky z vi
 
 * **Volání centra**. I s nástupem sociálních médií stále zákazníka volání Centra usnadnění vysoké procento transakce služby zákazníkům. Kódování v této zvuková data je velké množství informací o zákaznících, které můžou být analyzována s cílem dosáhnout vyšší spokojenost zákazníků. Pomocí Media Indexer organizace můžete extrahovat text a vytváření vyhledávacích indexů a řídicí panely. Potom extrahovat intelligence kolem častých stížností zdroje stížností a další relevantní data.
 * **Moderování obsahu uživatelem generovaný**. Z sdělovacích výstupy pro oddělení policejních jednotek řada organizací má veřejnou portály, které přijímají uživatelem generovaný médií, jako jsou videa a obrázků. Množství obsahu může vystoupat z důvodu neočekávané události. V těchto scénářích je obtížné provádět efektivní ruční kontroly obsahu pro vhodnost. Zákazníci můžou využívají službu moderování obsahu a zaměřte se na obsah, který je vhodný.
-* **Sledování**. S nárůstem v použití kamer IP obsahuje rostoucí seznam sledování videa. Ruční kontrolu dozoru video je čas náročné a náchylné k lidským chybám. Media Analytics poskytuje služby, jako je detekce pohybu, rozpoznávání tváří a Hyperlapse pro proces kontroly, Správa a vytváření odvozené jednodušší.
 
 ## <a name="media-analytics-media-processors"></a>Analýzy mediálních služeb procesory médií
 Tato část uvádí procesory médií Media Analytics a ukazuje, jak získat objekt procesoru (PP) médií pomocí .NET nebo REST.
@@ -66,7 +65,6 @@ Tato část uvádí procesory médií Media Analytics a ukazuje, jak získat obj
 ### <a name="mp-names"></a>Názvy sady Management Pack
 * Azure Media Indexer 2 Preview
 * Azure Media Indexer
-* Azure Media Hyperlapse
 * Azure Media Face Detector
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
@@ -126,7 +124,7 @@ Odpověď:
 ## <a name="demos"></a>Ukázky
 Zobrazit [ukázek Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články

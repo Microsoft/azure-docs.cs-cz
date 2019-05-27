@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f8827ac290393c9f394c3b13149555a1a2aa6df9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927489"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000152"
 ---
-# <a name="common-security-attributes-for-azure-service-bus-relay"></a>Běžné atributy zabezpečení pro Azure Service Bus Relay
+# <a name="security-attributes-for-azure-service-bus-relay"></a>Atributy zabezpečení pro Azure Service Bus Relay
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do Azure Service Bus Relay.
+Tento článek popisuje atributy zabezpečení integrované do Azure Service Bus Relay.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -40,7 +40,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Izolace sítě a podporu funkce brány firewall| Ne |  |
 | Vynucené tunelování podpory| neuvedeno | Relay je tunelu TLS  |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

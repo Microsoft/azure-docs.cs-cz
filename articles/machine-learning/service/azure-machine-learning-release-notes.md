@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 892b9bc63f9f2d9abc7108587a7bf929473e4648
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779433"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989852"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -30,6 +30,24 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 ### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning sady SDK pro Python v1.0.39
 + **Změny**
   + Možnost konfigurace spuštění auto_prepare_environment je zastaralé, s automatickým připravit se stávají výchozí.
+
+## <a name="2019-05-08"></a>2019-05-08
+
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Sada SDK v1.1.3 pro přípravu dat Azure Machine Learning
+
++ **Nové funkce**
+  + Přidání podpory pro čtení z databáze PostgresSQL, tak, že volání read_postgresql nebo pomocí datového úložiště.
+    + Příklady v návody:
+      + [Příjem dat poznámkového bloku](https://aka.ms/aml-data-prep-ingestion-nb)
+      + [Úložiště dat poznámkového bloku](https://aka.ms/aml-data-prep-datastore-nb)
+
++ **Opravy chyb a vylepšení**
+  + Oprava problémů s převod typu sloupce:
+  + Nyní správně převede logická nebo číselný sloupec logický sloupec.
+  + Nyní se selhání při pokusu o nastavení sloupec date na typ date.
+  + Vylepšené JoinType typy a průvodní dokumentaci. Při připojování dva toky dat, je nyní zadat jeden z těchto typů spojení:
+    + ŽÁDNÁ, NEODPOVÍDÁ, VNITŘNÍ, UNMATCHLEFT, LEFTANTI, LEFTOUTER, UNMATCHRIGHT, RIGHTANTI, RIGHTOUTER, FULLANTI, ÚPLNÉ.
+  + Vylepšený datový typ odvozování rozpoznat další formáty kalendářního data.
 
 ## <a name="2019-05-06"></a>2019-05-06
 
@@ -367,7 +385,7 @@ Služba Azure Machine Learning je teď obecně dostupná.
 V této verzi nové spravované výpočetní prostředí pomocí oznamujeme [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute). Tato cílové výpočetní prostředí nahradí výpočetní prostředky Azure Batch AI pro Azure Machine Learning. 
 
 Tato cílového výpočetního prostředí:
-+ Slouží k odvozování model školení a batch
++ Se používá pro model školení a batch odvození/bodování
 + Je výpočetní single - do více - node
 + Správa clusteru a úlohy plánování pro uživatele
 + Pravidla automatického škálování provedou ve výchozím nastavení

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3c02e80016e43bdd83218851de5ceb72be7f268
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 822cbc7401de90d63f9079561ced0dfbb911fa2c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320051"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989441"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
@@ -131,8 +131,8 @@ Deklarujte proměnné, které chcete použít. Použijte následující příkla
 Nakonfigurujte a vytvořte bránu virtuální sítě pro svou virtuální síť.
 
 * Parametr -GatewayType musí mít hodnotu **Vpn** a parametr -VpnType musí mít hodnotu **RouteBased**.
-* -VpnClientProtocol se používá k zadání typů tunelů, které chcete povolit. Dostupné jsou dvě možnosti, **SSTP** a **IKEv2**. Můžete si vybrat, jestli povolíte jednu z nich nebo obě. Pokud chcete povolit obě, zadejte oba názvy oddělené čárkou. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOS a OS X budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP.
-* "Základní" skladová položka brány virtuální sítě nepodporuje ověřování IKEv2 ani RADIUS. Pokud plánujete s Mac klienti připojovat k virtuální síti, nepoužívejte základní SKU.
+* -VpnClientProtocol se používá k zadání typů tunelů, které chcete povolit. Možnosti tunelového propojení jsou **OpenVPN, SSTP** a **IKEv2**. Můžete povolit jeden z nich nebo libovolnou podporovanou kombinaci. Pokud chcete povolit více typů, pak zadejte jména oddělená čárkami. OpenVPN a SSTP není možné současně. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOS a OS X budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP. OpenVPN klienta můžete použít pro připojení k OpenVPN Typ tunelového propojení.
+* "Základní" skladová položka brány virtuální sítě nepodporuje ověřování IKEv2, OpenVPN ani RADIUS. Pokud plánujete s Mac klienti připojovat k virtuální síti, nepoužívejte základní SKU.
 * Dokončení brány VPN může trvat až 45 minut v závislosti na vybrané [skladové jednotce brány](vpn-gateway-about-vpn-gateway-settings.md). Tento příklad používá IKEv2.
 
 ```azurepowershell-interactive

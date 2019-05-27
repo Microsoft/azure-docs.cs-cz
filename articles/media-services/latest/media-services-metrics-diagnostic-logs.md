@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728840"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964766"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Monitorování metrik služby Media Services a diagnostické protokoly
 
-[Azure Monitor](../../azure-monitor/overview.md) umožňuje monitorování metrik a diagnostické protokoly, které vám pomohou pochopit, jaký výkon vašich aplikací. Všechna data shromážděná službou Azure Monitor se vejde do jednoho ze dvou základních typů, metrik a protokolů. Můžete sledovat diagnostické protokoly služby Media Services a vytvořte si upozornění a oznámení o shromážděných metrik a protokolů. Můžete vizualizovat a analyzovat data metrik s využitím [Průzkumníka metrik](../../azure-monitor/platform/metrics-getting-started.md). Můžete odeslat protokoly do [služby Azure Storage](https://azure.microsoft.com/services/storage/), Streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/), nebo použít služby 3. stran.
+[Azure Monitor](../../azure-monitor/overview.md) umožňuje monitorování metrik a diagnostické protokoly, které vám pomohou pochopit, jaký výkon vašich aplikací. Všechna data shromážděná službou Azure Monitor se vejde do jednoho ze dvou základních typů, metriky a protokoly. Můžete sledovat diagnostické protokoly služby Media Services a vytvořte si upozornění a oznámení o shromážděných metrik a protokolů. Můžete vizualizovat a analyzovat data metrik s využitím [Průzkumníka metrik](../../azure-monitor/platform/metrics-getting-started.md). Můžete odeslat protokoly do [služby Azure Storage](https://azure.microsoft.com/services/storage/), Streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/), nebo použít služby 3. stran.
 
 Podrobný přehled najdete v tématu [metrik Azure monitoru](../../azure-monitor/platform/data-platform.md) a [Azure Monitor diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md).
 
@@ -34,11 +34,11 @@ Metriky se budou shromažďovat v pravidelných intervalech, zda hodnoty. Jsou u
 
 V současné době následující Media Services [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) metriky jsou emitovány Azure:
 
-|Název|Popis|
-|---|---|
-|Požadavky|Poskytuje podrobnosti o celkový počet požadavků, které jsou obsluhovány pomocí koncového bodu streamování.|
-|Výchozí přenos|Celkový počet bajtů výchozí přenos. Například bajtů streamují koncový bod streamování.|
-|Úspěchu celkovou latencí do| Poskytuje informace o komplexní latence úspěšných požadavků.|
+|Metrika|Display name|Popis|
+|---|---|---|
+|Požadavky|Požadavky|Poskytuje podrobnosti o celkový počet požadavků, které jsou obsluhovány pomocí koncového bodu streamování.|
+|Výchozí přenos|Výchozí přenos|Celkový počet bajtů výchozí přenos. Například bajtů streamují koncový bod streamování.|
+|SuccessE2ELatency|Úspěchu celkovou latencí do| Poskytuje informace o komplexní latence úspěšných požadavků.|
 
 Například získat metriky "Výchozí přenos dat" pomocí rozhraní příkazového řádku, spustili byste následující `az monitor metrics` příkazu rozhraní příkazového řádku:
 

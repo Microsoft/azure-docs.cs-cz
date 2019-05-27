@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277714"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979518"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
 
@@ -63,7 +63,7 @@ V následující tabulce je seznam nástrojů pro místní použít na všech po
 
 ### <a name="validation-frequency"></a>Frekvence ověření
 
-Klient hosta konfigurace kontroluje nový obsah každých 5 minut. Po přijetí hosta přiřazení nastavení kontroluje v intervalech 15 minut. Výsledky se posílají hosta konfigurace zprostředkovatele prostředků poté, co se dokončí auditu. Když zásadu [vyhodnocení trigger](../how-to/get-compliance-data.md#evaluation-triggers) dojde, stav počítače se zapisují do hostovaného konfigurace zprostředkovatele prostředků. To způsobí, že Azure Policy k vyhodnocení vlastností Azure Resource Manageru. Vyhodnocení zásad na vyžádání načte poslední hodnotu z hosta konfigurace zprostředkovatele prostředků. Ale neaktivuje nové auditu konfigurace v rámci virtuálního počítače.
+Klient hosta konfigurace kontroluje nový obsah každých 5 minut. Po přijetí hosta přiřazení nastavení kontroluje v intervalech 15 minut. Výsledky se posílají hosta konfigurace zprostředkovatele prostředků poté, co se dokončí auditu. Když zásadu [vyhodnocení trigger](../how-to/get-compliance-data.md#evaluation-triggers) dojde, stav počítače se zapisují do hostovaného konfigurace zprostředkovatele prostředků. To způsobí, že Azure Policy k vyhodnocení vlastností Azure Resource Manageru. Zkušební verzi Azure Policy na vyžádání načte poslední hodnotu z hosta konfigurace zprostředkovatele prostředků. Ale neaktivuje nové auditu konfigurace v rámci virtuálního počítače.
 
 ### <a name="supported-client-types"></a>Podporované klientské typy
 
@@ -74,13 +74,13 @@ Následující tabulka uvádí seznam podporovaný operační systém v imagích
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |credativ|Debian|8, 9|
 |Microsoft|Windows Server|Datového centra 2012, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Klient Windows|Windows 10|
+|Microsoft|Klient systému Windows|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SuSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Konfigurace typu Host můžete auditovat uzly, které běží podporovaný operační systém.  Pokud chcete auditovat virtuální počítače, které používají vlastní image, budete muset duplicitní **DeployIfNotExists** definice a upravovat **Pokud** část vaší vlastnosti bitové kopie.
+> Konfigurace typu Host můžete auditovat uzly, které běží podporovaný operační systém. Pokud chcete auditovat virtuální počítače, které používají vlastní image, budete muset duplicitní **DeployIfNotExists** definice a upravovat **Pokud** část vaší vlastnosti bitové kopie.
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
@@ -93,9 +93,7 @@ Ke komunikaci s poskytovatelem prostředků konfigurace hostovaného v Azure, vi
 Pro seznamy adres IP, si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Potřebujete povolit odchozí přístup k IP adresy ve stejné oblasti, ve které jsou nasazené virtuální počítače.
 
 > [!NOTE]
-> Soubor XML adres Azure Datacenter IP obsahuje rozsahy IP adres, které se používají v datacentrech Microsoft Azure. Soubor obsahuje rozsahy compute, SQL a úložiště.
-> Aktualizovaný soubor každý týden se zveřejňuje. Soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Nové rozsahy, které se zobrazují v souboru nejsou používány v datových centrech alespoň jeden týden.
-> Je vhodné Stáhněte nový soubor XML každý týden. Potom aktualizujte váš web pro zajištění správné identifikace služeb spuštěných v Azure. Uživatelé Azure ExpressRoute upozorňujeme ale, že tento soubor se používá k aktualizaci inzerování protokolu BGP (Border Gateway) prostoru Azure probíhá první týden každého měsíce.
+> Soubor XML adres Azure Datacenter IP obsahuje rozsahy IP adres, které se používají v datacentrech Microsoft Azure. Soubor obsahuje rozsahy compute, SQL a úložiště. Aktualizovaný soubor každý týden se zveřejňuje. Soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Nové rozsahy, které se zobrazují v souboru nejsou používány v datových centrech alespoň jeden týden. Je vhodné Stáhněte nový soubor XML každý týden. Potom aktualizujte váš web pro zajištění správné identifikace služeb spuštěných v Azure. Uživatelé Azure ExpressRoute upozorňujeme ale, že tento soubor se používá k aktualizaci inzerování protokolu BGP (Border Gateway) prostoru Azure probíhá první týden každého měsíce.
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na konfiguraci hosta definice
 
@@ -140,7 +138,7 @@ Ukázky pro konfiguraci zásad hosta jsou k dispozici v následujících umíst�
 ## <a name="next-steps"></a>Další postup
 
 - Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
-- Projděte si [strukturu definic zásad](definition-structure.md).
+- Projděte si [strukturu definic Azure Policy](definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).
 - Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md).
 - Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).

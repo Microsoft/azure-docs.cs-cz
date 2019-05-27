@@ -4,14 +4,14 @@ description: Další informace o konceptech správy přístupů ovládacího prv
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 133181fcc76d759a57725df1ff965966f3797399
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ccb9afb528edf67b29c781217ca1de97b81e017
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446473"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969220"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Tento článek obsahuje základní informace o zabezpečení přístupu k datům
 
 Azure Cosmos DB používá dva typy klíče k ověřování uživatelů a získání přístupu k jeho datům a prostředkům. 
 
-|Typ klíče|Zdroje a prostředky|
+|Typ klíče|Prostředky|
 |---|---|
 |[Hlavní klíče](#master-keys) |Používá pro správu prostředků: databáze účtů, databází, uživatelů a oprávnění|
 |[Tokeny prostředků](#resource-tokens)|Používá pro prostředky aplikace: kontejnery, dokumenty, přílohy, uložené procedury, triggery a uživatelem definovanými funkcemi|

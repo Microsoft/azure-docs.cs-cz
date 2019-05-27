@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 9ef32273c007e7319b7f6df99f3d904f805c31f2
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 82678091c1d0b71e6209f6d03e9d1a0ca60fe03e
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550913"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992173"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Řešení potíží pro Azure Red Hat OpenShift
 
@@ -23,10 +23,6 @@ Tento článek podrobně popisuje některé běžné problémy při vytváření
 
 Pokud Azure Red Hat OpenShift vytváření clusteru s použitím `az` rozhraní příkazového řádku příkaz selže, to zkusíte znovu vytvořit budou i nadále nezdaří.
 Použití `az openshift delete` odstranění selhání clusteru, pak vytvořte zcela nový cluster.
-
-## <a name="untrusted-azure-red-hat-openshift-server-certificate"></a>Nedůvěryhodný certifikát serveru Azure Red Hat OpenShift
-
-OpenShift konzoly používá certifikát podepsaný svým držitelem. Po zobrazení výzvy v prohlížeči, obejít upozornění a "nedůvěryhodné" potvrzení.
 
 ## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Skryté skupinu prostředků clusteru Azure Red Hat OpenShift
 

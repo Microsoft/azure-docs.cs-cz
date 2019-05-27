@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2842a365cdf25a6b19f655f6397d62ecb9a723b0
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 48524020940149f6c67f4859f23c03eea140454b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406876"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991482"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí ve
 1. Zjistěte, jak vytvořit Centrum událostí, najdete v článku [dokumentace ke službě Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 1. Do vyhledávacího pole vyhledejte **Event Hubs**. Ve vráceném seznamu vyberte **Event Hubs**.
 1. Vyberte Centrum událostí.
-1. Když vytvoříte Centrum událostí, ve skutečnosti vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centra událostí v rámci oboru názvů, v nabídce v části **entity**, vytvoření centra událostí.  
+1. Když vytvoříte Centrum událostí, kterou vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centra událostí v rámci oboru názvů, v nabídce v části **entity**, vytvoření centra událostí.  
 
     [![Přehled služby event hubs](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
 
@@ -42,13 +42,13 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí ve
 1. Ujistěte se, že vytváříte skupinu příjemců, kterou používá výhradně váš zdroj událostí Time Series Insights.
 
     > [!IMPORTANT]
-    > Zajistěte, aby že tuto skupinu příjemců není používán jinou službu (například úlohy Azure Stream Analytics nebo jiné prostředí Time Series Insights). Pokud skupinu příjemců je použit jinými služby, operace čtení jsou negativně ovlivněna pro toto prostředí i pro jiné služby. Pokud používáte **$Default** jako skupinu příjemců jinými čtenáři může potenciálně opakovaně používat vaše skupina uživatelů.
+    > Zajistěte, aby že tuto skupinu příjemců není používán jinou službu, jako je například úlohy Azure Stream Analytics nebo jiné prostředí Time Series Insights. Pokud skupinu příjemců je použit jinými služby, operace čtení jsou negativně ovlivněna pro toto prostředí i pro jiné služby. Pokud používáte **$Default** jako skupinu příjemců jinými čtenáři může potenciálně opakovaně používat vaše skupina uživatelů.
 
 1. V nabídce v části **nastavení**vyberte **zásady sdíleného přístupu**a pak vyberte **přidat**.
 
     [![Vyberte zásady sdíleného přístupu a pak vyberte tlačítko Přidat](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
 
-1. V **přidat nové zásady sdíleného přístupu** podokně vytvoření sdíleného přístupu s názvem **zásady MySendPolicy**. Tato zásada sdíleného přístupu budete používat k odesílání událostí C# příklady dále v tomto článku.
+1. V **přidat nové zásady sdíleného přístupu** podokně vytvoření sdíleného přístupu s názvem **zásady MySendPolicy**. Pomocí této zásady sdíleného přístupu k odesílání událostí C# příklady dále v tomto článku.
 
     [![Do pole Název zásady zadejte zásady MySendPolicy](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
 
@@ -70,7 +70,7 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
 
 1. Vyberte Centrum událostí.
 
-1. Přejděte na **sdílené zásady přístupu** > **RootManageSharedAccessKey**. Zkopírujte hodnotu **připojení stingu – primární klíč**.
+1. Přejděte na **sdílené zásady přístupu** > **RootManageSharedAccessKey**. Zkopírujte hodnotu **připojovací řetězec – primární klíč**.
 
     [![Zkopírujte hodnotu primárního klíče připojovací řetězec](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
 
@@ -81,7 +81,7 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
 
 1. Vyberte **Kliknutím spustíte**. Simulátor generuje instance JSON, které můžete použít přímo.
 
-1. Vraťte se do vašeho centra událostí na webu Azure Portal. Na **přehled** stránky, měli byste vidět nové události přijímá centra událostí.
+1. Vraťte se do vašeho centra událostí na webu Azure Portal. Na **přehled** stránku, uvidíte nové události, které dostávají v Centru událostí.
 
     [![Stránka Přehled centra událostí, který zobrazuje metriky pro Centrum událostí](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
 

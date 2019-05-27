@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e30308ac2cda643cc0157f5e718157f6599751d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76f457b7d577fb2a08bbcc386328ce4d8e59f902
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60501003"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979622"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
@@ -32,7 +32,7 @@ Tento rychlý start vyžaduje, abyste pro místní používání a instalaci roz
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pomocí Azure CLI zaregistrujte poskytovatele prostředků Policy Insights. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
+Registrace poskytovatele prostředků Azure Policy Insights pomocí Azure CLI. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'
@@ -54,7 +54,7 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 Předchozí příkaz používá následující informace:
 
-- **Name** – skutečný název přiřazení.  V tomto příkladu je použitý název *audit-vm-manageddisks*.
+- **Name** – skutečný název přiřazení. V tomto příkladu je použitý název *audit-vm-manageddisks*.
 - **DisplayName** – zobrazovaný název přiřazení zásady. V tomto případě používáte *Audit virtuálních počítačů bez spravovaných disků přiřazení*.
 - **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V takovém případě je ID definice zásady *Audit virtuálních počítačů, které nepoužívají spravované disky*. ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupinu prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.

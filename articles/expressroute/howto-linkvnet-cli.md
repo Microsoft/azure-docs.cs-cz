@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: anzaman,cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a6f16df4b827538c1f8bdb9b7382ed06d543b62
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883075"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991516"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -139,6 +139,32 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 **K uvolnění ověření připojení**
 
 Povolení můžete uvolnit tak, že odstraníte okruh ExpressRoute k virtuální síti, která odkazuje připojení.
+
+## <a name="modify-a-virtual-network-connection"></a>Upravit připojení k virtuální síti
+Můžete aktualizovat některé vlastnosti připojení k virtuální síti. 
+
+**Chcete-li aktualizovat váhy připojení**
+
+Virtuální síť lze připojit k více okruhům ExpressRoute. Může se zobrazit stejné předpony z více než jeden okruh ExpressRoute. Zvolte připojení, které chcete posílat provoz určený pro tuto předponu můžete změnit *RoutingWeight* připojení. Provoz se pošle na připojení s nejvyšším *RoutingWeight*.
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
+```
+
+Rozsah *RoutingWeight* je od 0 do 32 000. Výchozí hodnota je 0.
+
+## <a name="configure-expressroute-fastpath"></a>Konfigurace ExpressRoute FastPath 
+Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Pokud váš okruh ExpressRoute není v [ExpressRoute přímo](expressroute-erdirect-about.md) a bránu virtuálního newtork je Ultra výkon nebo ErGw3AZ. FastPath zlepšuje preformance cesty dat jako jsou pakety za sekundu a připojení za sekundu mezi místní sítí a virtuální sítí. 
+
+> [!NOTE] 
+> Pokud již máte připojení k virtuální síti, ale ještě nepovolili FastPath musíte odstranit připojení virtuální sítě a vytvořte novou. 
+> 
+>  
+
+```azurecli
+az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
+```
+
 
 ## <a name="next-steps"></a>Další postup
 

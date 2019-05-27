@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abef7815effcf420c8a0065ed46ce3c16c19ebe0
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714186"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991770"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -390,6 +390,9 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
     ![Délka fronty][queue-message-receive]
 
 Blahopřejeme! Vytvořili jste frontu, do této fronty jste odeslali sadu zpráv a ze stejné fronty jste tyto zprávy přijali.
+
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
 

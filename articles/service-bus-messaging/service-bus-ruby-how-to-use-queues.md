@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48f60b7c07cc16b4d9994d5644069fdcb4881e0a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474585"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991878"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Jak používat fronty služby Service Bus pomocí Ruby
 
@@ -96,6 +96,9 @@ Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb
 K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), Service Bus zprávu automaticky odemkne a díky tomu k dispozici pro další přijetí.
 
 V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete_queue_message()` metoda je volána, pak je víckrát do aplikace při restartování. Tento proces se často nazývá *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá `message_id` vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
+
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
 Naučili jste se základy front Service Bus, další informace se dozvíte na následujících odkazech.

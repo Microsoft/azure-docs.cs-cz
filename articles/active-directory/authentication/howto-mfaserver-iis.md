@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6404356edca606d78656011b9dec654e9f29edd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a019aaec270fe1beb3914e7ab388fce9a701bcc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415021"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988609"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurace serveru Azure Multi-Factor Authentication pro webové aplikace IIS
 
@@ -63,7 +63,7 @@ Pro zabezpečení webové aplikace služby IIS, která používá integrované H
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Povolit moduly plug-in služby IIS a server Azure Multi-Factor Authentication
 
-Po konfiguraci nastavení a adres URL založených na formulářích nebo adres URL ověřování HTTP musíte vybrat umístění, kde by se měly moduly plug-in Azure Multi-Factor Authentication IIS nahrát a povolit ve službě IIS. Použijte následující postup:
+Po konfiguraci nastavení a adres URL založených na formulářích nebo adres URL ověřování HTTP musíte vybrat umístění, kde by se měly moduly plug-in Azure Multi-Factor Authentication IIS nahrát a povolit ve službě IIS. Pomocí následujícího postupu:
 
 1. Pokud používáte IIS 6, klikněte na kartu **ISAPI**. Vyberte web, pod kterým se webová aplikace spouští (třeba výchozí web), a pro tento web povolte modul plug-in filtru ISAPI Azure Multi-Factor Authentication.
 2. Pokud používáte IIS 7 nebo vyšší, klikněte na kartu **Nativní modul**. Vyberte servery, weby nebo aplikace a povolte modul plug-in IIS na požadovaných úrovních.
@@ -76,4 +76,4 @@ Důvěryhodné IP adresy umožňují uživatelům obejít ověřování Azure Mu
 1. V části ověření služby IIS klikněte na kartu **Důvěryhodné IP adresy**.
 2. Klikněte na tlačítko **Add** (Přidat).
 3. Jakmile se zobrazí dialogové okno Přidat důvěryhodné IP adresy, vyberte přepínač **Samostatná IP adresa**, **Rozsah IP adres** nebo **Podsíť**.
-4. Zadejte IP adresu, rozsah IP adres nebo podsíť, které chcete zařadit na seznam povolených adres. Pokud zadáváte podsíť, vyberte příslušnou síťovou masku a klikněte na **OK**. Seznam povolených adres byl přidán.
+4. Zadejte IP adresu, rozsah IP adres nebo podsíť, která má být povolený. Pokud zadáváte podsíť, vyberte příslušnou síťovou masku a klikněte na **OK**.

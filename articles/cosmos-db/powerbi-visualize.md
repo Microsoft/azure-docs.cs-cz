@@ -4,14 +4,14 @@ description: Pomocí tohoto kurzu Power BI importovat JSON, vytvořit Chytré se
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76531de279dfe6e9b73b3895f0ef63c4c88b63cd
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929592"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979011"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB pomocí konektoru služby Power BI
 
@@ -168,7 +168,7 @@ Následující uvádí základní kroky k vytvoření jednoduché interaktivní 
 Sdílet tuto sestavu, musíte mít účet na PowerBI.com.
 
 1. V Power BI Desktopu, klikněte na **Domů** pásu karet.
-2. Klikněte na **Publikovat**.  Zobrazí se výzva k zadání uživatelského jména a hesla pro váš účet na PowerBI.com.
+2. Klikněte na tlačítko **publikovat**.  Zobrazí se výzva k zadání uživatelského jména a hesla pro váš účet na PowerBI.com.
 3. Po ověření přihlašovacích údajů k cílové službě, kterou jste vybrali po publikování sestavy.
 4. Klikněte na tlačítko **otevřít 'PowerBITutorial.pbix"v Power BI** vidět a sdílet tuto sestavu na PowerBI.com.
    

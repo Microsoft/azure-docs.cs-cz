@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: b33561ad80207a5d649ac1fd497c9d6c7add78c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fe472b8a19b45d7f7b00a8f858c9179d6ee51999
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723985"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951578"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database služby Machine Learning s jazykem R (preview)
 
@@ -49,9 +49,7 @@ Nejběžnější balíčky R open source jsou předem nainstalované ve službě
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR je primární knihovna pro škálovatelné R. funkce v této knihovně patří mezi nejčastěji používaná. Transformace dat a manipulaci s statistického shrnutí, vizualizace a mnoho forem modelování a analýzy jsou součástí těchto knihoven. Kromě toho funkce v těchto knihoven automaticky distribuují úlohy napříč dostupná jádra pro paralelní zpracování, umožňuje pracovat na bloky dat, která jsou koordinuje a spravuje výpočetní modul. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML přidá algoritmů strojového učení k vytvoření vlastních modelů pro analýzu textu, Analýza obrázků a analýza mínění. |
 
-<!-- Add this back when the new package-related article is written
-In addition to the pre-installed packages, you can [install additional packages](sql-database-quickstart-r-create-script.md#add-a-package).
--->
+Kromě předem nainstalovaných balíčků, můžete [instalace dalších balíčků](sql-database-machine-learning-services-add-r-packages.md).
 
 <a name="signup"></a>
 

@@ -111,5 +111,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: "Poznámky k\_verzi"
       href: ReleaseNotes.md

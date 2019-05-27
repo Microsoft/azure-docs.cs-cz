@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: aac60d3d4fd154847bdfae3dfb590b947e861e9e
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130768"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978823"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace do služby Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -95,7 +95,7 @@ Další informace najdete v tématu [Kudu dokumentaci](https://github.com/projec
 
 ## <a name="deploy-war-file"></a>Nasazení souboru WAR
 
-K nasazení souboru WAR do služby App Service, odešlete požadavek POST https://<app_name>.scm.azurewebsites.net/api/wardeploy. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication. 
+K nasazení souboru WAR do služby App Service, odeslat požadavek POST do `https://<app_name>.scm.azurewebsites.net/api/wardeploy`. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication.
 
 HTTP BASIC authentication je nutné přihlašovací údaje pro nasazení služby App Service. Jak nastavit přihlašovací údaje pro nasazení najdete v tématu [nastavit a resetovat přihlašovací údaje na úrovni uživatele](deploy-configure-credentials.md#userscope).
 
@@ -117,7 +117,7 @@ $password = "<deployment_password>"
 $filePath = "<war_file_path>"
 $apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "application/octet-stream"
 ```
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
@@ -126,7 +126,7 @@ Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64A
 
 Pro pokročilejší scénáře nasazení, zkuste [nasazení do Azure pomocí Gitu](deploy-local-git.md). Nasazení z Gitu do Azure umožňuje správu verzí, obnovení balíčku, nástroj MSBuild a další.
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další materiály
 
 * [Kudu: Nasazení ze souboru zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Přihlašovací údaje pro nasazení služby Azure App Service](deploy-ftp.md)

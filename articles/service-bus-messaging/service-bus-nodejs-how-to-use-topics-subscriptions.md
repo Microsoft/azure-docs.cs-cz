@@ -14,18 +14,23 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591808"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992096"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js a balíčku azure-sb
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+V tomto kurzu se dozvíte, jak vytvářet aplikace Node.js na odesílání zpráv do tématu služby Service Bus a příjem zpráv z odběru služby Service Bus pomocí [azure-sb](https://www.npmjs.com/package/azure-sb) balíčku. Ukázky jsou napsané v jazyce JavaScript a používají na Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíčku.
 
-Tato příručka popisuje, jak používat témata služby Service Bus a odběrů v aplikacích Node.js. Mezi popsané scénáře patří:
+[Azure-sb](https://www.npmjs.com/package/azure-sb) balíček používá [rozhraní API REST pro Service Bus za běhu](/rest/api/servicebus/service-bus-runtime-rest). Získáte rychlejší prostředí pomocí nového [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíček, který používá, tím rychlejší [protokolu AMQP 1.0](service-bus-amqp-overview.md). Další informace o novém balíčku najdete v tématu [jak používat témata a odběry Service Bus s využitím Node.js a @azure/service-bus balíčku](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), v opačném případě pokračujte ve čtení se dozvíte, jak používat [azure](https://www.npmjs.com/package/azure) balíčku.
+
+Zde popsané scénáře patří:
 
 - Vytváření témat a odběrů 
 - Vytváření filtrů odběrů 
@@ -36,8 +41,8 @@ Tato příručka popisuje, jak používat témata služby Service Bus a odběrů
 Další informace o tématech a odběrech najdete v tématu [další kroky](#next-steps) oddílu.
 
 ## <a name="prerequisites"></a>Požadavky
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření služby Service Bus **obor názvů** dostanete **připojovací řetězec**.
+- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření služby Service Bus **obor názvů** dostanete **připojovací řetězec**.
 
     > [!NOTE]
     > Vytvoříte **tématu** a **předplatné** do tématu pomocí **Node.js** v tomto rychlém startu. 
@@ -330,7 +335,10 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 });
 ```
 
-## <a name="next-steps"></a>Další kroky
+> [!NOTE]
+> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili základy témat sběrnice Service Bus, použijte tyto odkazy na další informace.
 
 * Zobrazit [fronty, témata a odběry][Queues, topics, and subscriptions].

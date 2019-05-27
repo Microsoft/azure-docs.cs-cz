@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406132"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953372"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Pomocí webu Azure portal ke správě vašeho disku Data Box
 
@@ -71,12 +71,12 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
     ![Odstranění objednávky Data Box Disku 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
+3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na tlačítko **odstranit**.
 
      ![Odstranění objednávky Data Box Disku 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Stažení expedičního štítku
+## <a name="download-shipping-label"></a>Stáhnout expediční štítek
 
 Pokud se zpětný expediční štítek zaslaný s vašimi disky někam zatoulá nebo ztratí, můžete si expediční štítek stáhnout. 
 
@@ -103,9 +103,9 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
+## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
 
-Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Jiný uživatel zase může potřebovat oznámení o dokončení kopírování dat, aby mohl zkontrolovat, jestli se data nacházejí na účtu služby Azure Storage, a potom je odstranit ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
+Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Jiný uživatel možná muset být informováni, když se kopírování dat dokončí, abyste mohli ověřit, že data jsou v účtu úložiště Azure před odstraněním ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
 
 Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 

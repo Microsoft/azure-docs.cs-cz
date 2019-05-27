@@ -7,13 +7,13 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: adgera
-ms.openlocfilehash: 49b073952b0923b940204b19680dcc9a1ffa44b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-adgera
+ms.openlocfilehash: 797dfc44b9897920f9fd74346ee01e4b157a4ce8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926077"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967779"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
@@ -74,7 +74,7 @@ V dalším kroku nastavení a konfigurace nástroje Postman pro získání token
     | Adresa URL pro zpětné volání | `https://www.getpostman.com/oauth2/callback` |
     | Ověřovací adresa URL | Použití **autorizace URL** z kroku 2 |
     | ID klienta | Použití **ID aplikace** pro aplikace Azure Active Directory, který byl vytvořen nebo k jinému účelu z předchozí části |
-    | Rozsah | Ponechte prázdné |
+    | Scope | Ponechte prázdné |
     | Stav | Ponechte prázdné |
     | Ověřování klientů | `Send as Basic Auth header` |
 
