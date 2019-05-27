@@ -40,6 +40,8 @@
               href: connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Koncepty
       items:
+        - name: Globální síť WAN Microsoftu
+          href: azure-network.md
         - name: Virtuální sítě
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vyrovnávání zatížení sítě
@@ -54,7 +56,7 @@
           href: ../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Místní připojení k síti vyhrazené síti
           href: ../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json
-- name: Začínáme
+- name: Rychlý start
   items:
     - name: Vytvoření první virtuální sítě
       href: ../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json

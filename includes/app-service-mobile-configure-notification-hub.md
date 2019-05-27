@@ -4,16 +4,16 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 0a74079677a084b2d4e8221cf5a74b356126811d
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: da3793c428c624ce3a224cbd7606ab26c4a50803
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817454"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140297"
 ---
 Funkce Mobile Apps služby Azure App Service používá [Azure Notification Hubs] k odesílání nabízených oznámení, tak se konfigurace centra oznámení pro mobilní aplikace.
 
-1. V webu [Azure Portal], přejděte na stránku **App Services**a pak vyberte váš back-end aplikací. V části **nastavení**vyberte **Push**.
+1. V [Azure Portal], přejděte na stránku **App Services**a pak vyberte váš back-end aplikací. V části **nastavení**vyberte **Push**.
 2. Chcete-li přidat prostředek centra oznámení do aplikace, **připojit**. Můžete buď vytvořit centrum nebo připojení k existující.
 
     ![Konfigurace rozbočovače](./media/app-service-mobile-create-notification-hub/configure-hub-flow.png)

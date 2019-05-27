@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 9fa76c9637a6dcdca48bf45e8ee2aa9305a4f64f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522195"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130459"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
@@ -85,7 +85,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 Než se podíváme do aplikace pomocí funkcí stavu pro jeden virtuální počítač nebo skupinu virtuálních počítačů, je důležité, že poskytujeme stručný úvod, takže víte, jak je uvedené informace a co představují vizualizace.  
 
-## <a name="view-health-directly-from-a-virtual-machine"></a>Zobrazit stav přímo z virtuálního počítače 
+### <a name="view-health-directly-from-a-virtual-machine"></a>Zobrazit stav přímo z virtuálního počítače 
 
 Chcete-li zobrazit stav virtuálního počítače Azure, vyberte **Insights (preview)** v levém podokně virtuální počítač. Na stránce přehledu virtuálního počítače **stavu** je ve výchozím nastavení otevřít a zobrazuje stav virtuálního počítače.  
 
@@ -96,11 +96,21 @@ Na **stavu** karta, v části **stavu virtuálního počítače hosta**, tato ta
 Stavy definované pro virtuální počítač jsou popsány v následující tabulce: 
 
 |Ikona |Stav |Význam |
-|-----|-------------|------------|
+|-----|-------------|---------------|
 | |V pořádku |Stav je v pořádku, pokud je v rámci podmínky definované stavu, o žádných problémech zjistila pro virtuální počítač a funguje podle potřeby. S nadřazené souhrnné monitorování stavu zobrazí souhrn po up a odráží nejlepší a nejhorší stav podřízených.|
 | |Kritická |Stav je velmi důležité, pokud není v podmínce definované stavu označující, že byly zjištěny jeden nebo více problémů, které je třeba řešit, aby bylo možné obnovit normální funkce. S nadřazené souhrnné monitorování stavu zobrazí souhrn po up a odráží nejlepší a nejhorší stav podřízených.|
 | |Upozornění |Stav je upozornění. Pokud je mezi dvěma prahovými hodnotami podmínky definované stavu, kde jeden udává *upozornění* stavu a druhý je uvedeno *kritický* stavu (tři prahové hodnoty stavu health můžete nakonfigurovat), nebo při, nekritické problém je zjištěna, což může způsobit kritické problémy, pokud nebyl vyřešen. S nadřazené souhrnné monitorování, pokud jeden nebo více podřízených je ve stavu upozornění, pak bude odrážet nadřazené *upozornění* stavu. Pokud je podřízený, který je v *kritický* a jiné podřízené v *upozornění* stavu, nadřazené souhrn se zobrazí stav *kritický*.|
-| |Neznámé |Stav je v *neznámý* stav, když stav nelze vypočítat z několika důvodů, například není možné ke shromažďování dat, služba neinicializované atd. Tento stav se nedá konfigurovat.| 
+| |Neznámé |Stav je *neznámý* při nelze vypočítat z několika důvodů. Viz následující poznámka pod čarou <sup>1</sup> pro další podrobnosti a možná řešení je vyřešit. |
+
+<sup>1</sup> the Neznámý stav je způsobeno tím, k následujícím problémům:
+
+- Byla překonfigurována agenta a sestavy do pracovního prostoru už zadaný, když bylo povoleno monitorování Azure pro virtuální počítače. Konfigurace agenta na generování sestav do pracovního prostoru najdete [přidání nebo odebrání pracovního prostoru](../platform/agent-manage.md#adding-or-removing-a-workspace).
+- Virtuální počítač se odstranil.
+- Pracovní prostor přidružený k monitorování Azure pro virtuální počítače se odstraní. K obnovení pracovního prostoru, pokud máte smlouvu Premier support výhody, můžete otevřít žádost o podporu s [Premier](https://premier.microsoft.com/).
+- Řešení závislostí se odstranily. Chcete-li znovu povolit ServiceMap a InfrastructureInsights řešení ve vašem pracovním prostoru Log Analytics, můžete přeinstalovat pomocí [šablony Azure Resource Manageru](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions) , který má k dispozici nebo pomocí možnosti konfigurace pracovního prostoru na Získejte kartu spuštěno.
+- Virtuální počítač byl vypnut.
+- Služba Azure virtuální počítač nedostupný nebo právě probíhá údržba se.
+- Pracovní prostor [limitu uchovávání dat nebo dat o denním](../platform/manage-cost-storage.md) je splněna.
 
 Výběr **zobrazit stav diagnostiky** se otevře stránka zobrazuje všechny součásti virtuálního počítače, přidruženého stavu kritéria, změny stavů a další závažné potíže, se kterými monitorování součásti související se virtuální počítač. Další informace najdete v tématu [stav diagnostiky](#health-diagnostics). 
 
@@ -108,7 +118,7 @@ V části **stav součásti** části, v tabulce jsou uvedeny souhrnné stav pri
 
 Při přístupu ke stavu z virtuálního počítače Azure s operačním systémem Windows, stav horní, pět základních Windows služby jsou uvedeny v části **Core services stavu**.  Výběrem některého ze služeb otevře stránku s výpisem stavu kritéria sledování této komponentě a jeho stav.  Kliknutím na název stavu kritéria otevře se podokno vlastností a odtud můžete zkontrolovat podrobnosti o konfiguraci, včetně Pokud kritéria stavu má odpovídající Azure Monitor alert definované. Další informace najdete v tématu [stav diagnostiky a práci s kritéria](#health-diagnostics).  
 
-## <a name="aggregate-virtual-machine-perspective"></a>Perspektiva agregační virtuálního počítače
+### <a name="aggregate-virtual-machine-perspective"></a>Perspektiva agregační virtuálního počítače
 
 Chcete-li zobrazit shromažďování stavu pro všechny virtuální počítače ve skupině prostředků, ze seznamu navigace na portálu vyberte **Azure Monitor** a pak vyberte **virtuálních počítačů (preview)**.  
 
@@ -154,7 +164,7 @@ Můžete přejít k další dolů zobrazíte, která instance nejsou v pořádku
 
 ## <a name="health-diagnostics"></a>Stav diagnostiky
 
-Thge **stav diagnostiky** stránka umožňuje vizualizovat modelu stavu virtuálního počítače, výpis všech součástí virtuálního počítače, související kritéria, změny stavu a další závažné potíže identifikovaný monitorované součásti související k virtuálnímu počítači.
+**Stav diagnostiky** stránka umožňuje vizualizovat modelu stavu virtuálního počítače, výpis všech součástí virtuálního počítače, související kritéria, změny stavu a další závažné potíže identifikovaný monitorované součásti související k virtuálnímu počítači.
 
 ![Příklad stránky stav diagnostiky pro virtuální počítač](./media/vminsights-health/health-diagnostics-page-01.png)
 
@@ -343,7 +353,7 @@ K povolení nebo zakázání výstrahy pro konkrétní stav kritéria, vlastnost
 Azure Monitor stavu virtuálních počítačů podporuje SMS a e-mailová oznámení při výstrahy jsou generovány, když nebude kritéria stavu v pořádku. Konfigurace oznámení, budete muset poznamenejte si název skupiny akcí, který je nakonfigurován k odeslání serveru SMS nebo e-mailové oznámení. 
 
 >[!NOTE]
->Tato akce je potřeba provést pro každý virtuální počítač monitorovaný, která chcete dostávat oznámení.
+>Tato akce je třeba provést pro každý virtuální počítač monitorovaný, že chcete dostávat oznámení, se nevztahují na všechny virtuální počítače ve skupině prostředků.  
 
 1. V okně terminálu zadejte **armclient.exe přihlášení**. To vás vyzve k přihlášení do Azure.
 

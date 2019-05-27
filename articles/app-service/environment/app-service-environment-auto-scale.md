@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769325"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955964"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatické škálování a App Service Environment v1
 
@@ -63,7 +63,7 @@ Automatické škálování aplikace služby App Service environment lze ukázat 
 Tento článek vysvětluje všechny nezbytné požadavky při nastavení automatického škálování. Tento článek vás provede interakcí, které souvisejí při zohlednit na automatické škálování služby App Service Environment, které jsou hostované ve službě App Service Environment.
 
 ### <a name="scenario-introduction"></a>Scénář Úvod
-Frank je pro organizace, který migroval do služby App Service environment část zátěží, které spravuje správce systému.
+Frank je správce systému pro organizace, který migroval část zátěží, které spravují do služby App Service environment.
 
 Prostředí App Service je nakonfigurované pro ruční škálování následujícím způsobem:
 

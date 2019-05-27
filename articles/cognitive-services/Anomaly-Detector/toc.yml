@@ -60,6 +60,8 @@
       href: 'https://aka.ms/adregion'
     - name: Architektura referenčních řešení
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
 - name: Podpora
   items:
     - name: Získat podporu

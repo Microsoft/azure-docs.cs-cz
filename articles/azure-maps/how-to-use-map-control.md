@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c346c51db2c06c2ef91b101255076b811dfea9e7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: aa923fa7e2d5e673e6a2db2b349e54d433d1817b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869747"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957273"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
@@ -68,7 +68,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </body>
     ```
 
-5. Inicializace mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Použít vlastní klíč účtu Azure Maps nebo přihlašovací údaje Azure Active Directory (AAD) k ověřování pomocí mapování [možnosti ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md). **Jazyk** Určuje jazyk, který chcete použít pro popisky mapy a ovládací prvky. Další informace o podporovaných jazyků najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
+5. Inicializace mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Předejte `id` mapy `<div>` nebo `HTMLElement` (například `document.getElementById('myMap')`) jako první parametr při vytváření instance objektu `Map` třídy. Použít vlastní klíč účtu Azure Maps nebo přihlašovací údaje Azure Active Directory (AAD) k ověřování pomocí mapování [možnosti ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md). **Jazyk** Určuje jazyk, který chcete použít pro popisky mapy a ovládací prvky. Další informace o podporovaných jazyků najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
 
     ```HTML
     <script type="text/javascript">

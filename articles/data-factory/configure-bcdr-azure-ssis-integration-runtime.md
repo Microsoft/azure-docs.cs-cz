@@ -14,11 +14,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66120437"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration Runtime pomocí Azure SQL Database pro geografické replikace a převzetí služeb při selhání
 
@@ -52,11 +52,11 @@ Tato část se týká, když je splněna jedna z následujících podmínek:
 
 - Prostředí Azure-SSIS IR odkazuje na primární server koncového bodu skupiny převzetí služeb při selhání. Tento koncový bod se změní, když dojde k převzetí služeb při selhání.
 
-  NEBO
+  OR
 
 - Server Azure SQL Database má nakonfigurovanou pravidlo koncový bod služby virtuální sítě.
 
-  NEBO
+  OR
 
 - Databázový server je spravované instanci SQL Database nakonfigurovaná s virtuální sítí.
 
@@ -107,6 +107,6 @@ Vezměte v úvahu tyto další možnosti konfigurace pro prostředí Azure-SSIS 
 
 - [Konfigurace prostředí Azure-SSIS Integration Runtime pro vysoký výkon](configure-azure-ssis-integration-runtime-performance.md)
 
-- [Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
+- [Přizpůsobení nastavení pro Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 - [Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)

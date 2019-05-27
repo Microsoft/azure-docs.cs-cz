@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276486"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979315"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
-Tento článek vás provede programově vytváření a Správa zásad. Definice zásad u vašich prostředků vynucují různá pravidla a efekty. Vynucení zajišťuje, že prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni.
+Tento článek vás provede programově vytváření a Správa zásad. Azure definice zásad u vašich prostředků vynucují různá pravidla a efekty. Vynucení zajišťuje, že prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni.
 
 Informace o dodržování předpisů najdete v tématu [získávají data dodržování předpisů](getting-compliance-data.md).
 
@@ -31,13 +31,13 @@ Než začnete, ujistěte se, že jsou splněny následující požadavky:
 
 1. Aktualizujte na nejnovější verzi modulu Azure Powershellu. Zobrazit [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) podrobné informace. Další informace o nejnovější verzi najdete v tématu [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
-1. Zaregistrujte poskytovatele prostředků Policy Insights pomocí prostředí Azure PowerShell k ověření, že vaše předplatné spolupracuje s poskytovateli prostředků. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění k provedení operace akce registrace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
+1. Registrace poskytovatele prostředků Azure Policy Insights pomocí Azure Powershellu pro ověření, že vaše předplatné spolupracuje s poskytovateli prostředků. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění k provedení operace akce registrace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md).
 
 1. Pokud jste tak dosud neučinili, nainstalujte Azure CLI. Můžete získat nejnovější verzi na [instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows).
 
@@ -148,7 +148,7 @@ Pomocí následujícího postupu můžete vytvořit definici zásady.
 
    Nahraďte {subscriptionId} předchozí ID předplatného nebo {managementGroupId} s ID vašich [skupiny pro správu](../../management-groups/overview.md).
 
-   Další informace o struktuře dotazu naleznete v tématu [definice zásad – vytvořit nebo aktualizovat](/rest/api/resources/policydefinitions/createorupdate) a [definice zásad – vytvoření nebo aktualizace ve skupině pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   Další informace o struktuře dotazu naleznete v tématu [definice zásad Azure – vytvoření nebo aktualizace](/rest/api/resources/policydefinitions/createorupdate) a [definice zásad – vytvoření nebo aktualizace ve skupině pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 Použijte následující postup k vytvoření přiřazení zásady a přiřazení definice zásady na úrovni skupiny prostředků.
 
@@ -230,7 +230,7 @@ Pokud chcete vytvořit definici zásady, použijte následující postup:
    - Předplatné – `/subscriptions/{subID}`
    - Skupina pro správu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Můžete získat ID definice zásady pomocí Powershellu pomocí následujícího příkazu:
+ID definice zásady Azure můžete získat pomocí následujícího příkazu Powershellu:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -251,5 +251,5 @@ Projděte si následující články pro další informace o příkazech a dotaz
 - [Prostředky Azure REST API](/rest/api/resources/)
 - [Moduly Azure Powershellu](/powershell/module/az.resources/#policies)
 - [Zásady příkazy rozhraní příkazového řádku Azure](/cli/azure/policy?view=azure-cli-latest)
-- [Poskytovatel prostředků Insights zásad reference k rozhraní REST API](/rest/api/policy-insights)
-- [Uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md)
+- [Azure poskytovatele prostředků Policy Insights reference k rozhraní REST API](/rest/api/policy-insights)
+- [Uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386314"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148182"
 ---
 Počet datových disků můžete připojit k virtuálnímu počítači Azure. Založené na škálovatelnost a výkonnostní cíle pro datové disky Virtuálního počítače, můžete určit počet a typ disku, který je potřeba splnit vaše požadavky na kapacitu a výkon.
 
@@ -20,7 +20,7 @@ Počet datových disků můžete připojit k virtuálnímu počítači Azure. Za
 
 Následující tabulka ukazuje výchozí a maximální počet prostředků na oblast a předplatné
 
-> | Prostředek | Výchozí omezení  | Maximální omezení |
+> | Resource | Výchozí omezení  | Maximální omezení |
 > | --- | --- | --- |
 > | Spravované disky úrovně Standard | 25,000 | 50,000 |
 > | Spravované disky SSD úrovně Standard | 25,000 | 50,000 |

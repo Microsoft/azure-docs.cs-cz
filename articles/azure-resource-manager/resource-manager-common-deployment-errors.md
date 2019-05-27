@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405517"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128564"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení potíží s běžnými chybami nasazení v Azure pomocí Azure Resource Manageru
 
@@ -30,7 +30,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 
 ## <a name="error-codes"></a>Kódy chyb
 
-| Kód chyby | Omezení rizik | Další informace |
+| Kód chyby | Zmírnění | Další informace |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Postupujte podle omezení názvů pro účty úložiště. | [Rozpoznání názvu účtu úložiště](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Zkontrolujte vlastnosti účtu úložiště k dispozici. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -63,7 +63,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 | MissingRegistrationForLocation | Zkontrolujte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zaregistrujte předplatné u poskytovatele prostředků. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Zkontrolujte stav registrace poskytovatele prostředků. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
-| NotFound | Pravděpodobně se pokoušíte nasadit souběžně s nadřazeném prostředku závislý prostředek. Zaškrtněte, pokud budete muset přidat závislost. | [Řešení závislostí](resource-manager-not-found-errors.md) |
+| Nenalezeno | Pravděpodobně se pokoušíte nasadit souběžně s nadřazeném prostředku závislý prostředek. Zaškrtněte, pokud budete muset přidat závislost. | [Řešení závislostí](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Nasazení je pokus o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upravte nasazení tak, aby neopustí kvóty. V opačném případě zvažte žádosti o změnu do vaší kvóty. | [Vyřešit kvóty](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Ujistěte se, že nadřazený prostředek existuje před vytvořením podřízené prostředky. | [Vyřešit nadřazený prostředek](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Možná jste vybrali heslo příliš mnoho znaků nebo může mít převést hodnotu heslo na zabezpečený řetězec před předáním jako parametr. Pokud šablona obsahuje **zabezpečený řetězec** parametr, není nutné převést hodnotu na zabezpečený řetězec. Zadejte hodnotu hesla jako text. |  |

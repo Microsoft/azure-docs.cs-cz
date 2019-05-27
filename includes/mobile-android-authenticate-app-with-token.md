@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440059"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141024"
 ---
 Předchozí příklad ukázal standardní přihlášení, které vyžaduje klient kontaktovat zprostředkovatele identity a back-end služeb Azure při každém spuštění aplikace. Tato metoda je neefektivní a může mít související s problémy, pokud mnoho zákazníků, pokuste se spustit aplikaci současně. Lepším řešením je ukládat do mezipaměti autorizační token vrácený služby Azure a zkuste použít první před použitím u založené na zprostředkovatele přihlášení.
 

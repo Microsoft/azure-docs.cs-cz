@@ -16,11 +16,11 @@ ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: eddccc9897380e3ff47de49771a617bf6cacc407
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138421"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Kurz: Vytvoření PHP a MySQL aplikaci v Azure
 
@@ -349,7 +349,7 @@ V tomto kroku nasadíte aplikaci PHP připojenou k MySQL do služby Azure App Se
 
 [!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-### <a name="configure-database-settings"></a>Konfigurace nastavení databáze
+### <a name="configure-database-settings"></a>Konfiguruje nastavení databáze.
 
 Jak jsme už uvedli, k databázi MySQL Azure se můžete připojit pomocí proměnných prostředí ve službě App Service.
 

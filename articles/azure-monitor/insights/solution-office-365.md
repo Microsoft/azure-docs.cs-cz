@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58794015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130612"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -94,19 +94,19 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
 1. Vyberte **požadovaná oprávnění** v **nastavení** nabídky a pak klikněte na tlačítko **přidat**.
 1. Klikněte na tlačítko **vyberte rozhraní API** a potom **rozhraní API pro správu Office 365**. Klikněte na tlačítko **rozhraní API pro správu Office 365**. Klikněte na **Vybrat**.
 
-    ![Vybrat rozhraní API](media/solution-office-365/select-api.png)
+    ![Vyberte rozhraní API](media/solution-office-365/select-api.png)
 
 1. V části **vyberte oprávnění** vyberte následující možnosti pro obě **oprávnění aplikace** a **delegovaná oprávnění**:
    - Přečíst informace o stavu služby pro organizaci
    - Čtení dat o aktivitách pro vaši organizaci
    - Přečíst sestavy aktivit pro organizaci
 
-     ![Vybrat rozhraní API](media/solution-office-365/select-permissions.png)
+     ![Vyberte rozhraní API](media/solution-office-365/select-permissions.png)
 
 1. Klikněte na tlačítko **vyberte** a potom **provádí**.
 1. Klikněte na tlačítko **udělit oprávnění** a potom klikněte na tlačítko **Ano** žádost o ověření.
 
-    ![Udělení oprávnění](media/solution-office-365/grant-permissions.png)
+    ![Udělit oprávnění](media/solution-office-365/grant-permissions.png)
 
 ### <a name="add-a-key-for-the-application"></a>Přidat klíč pro aplikaci
 
@@ -388,7 +388,7 @@ At line:12 char:18
 
 ```
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat řešení pro správu](solutions.md#remove-a-monitoring-solution). To shromažďovaných dat z Office 365 do služby Azure Monitor ale nezastaví. Pomocí následujícího postupu zrušit odběr služeb Office 365 a shromažďování dat ukončit.
 
@@ -515,7 +515,7 @@ Klikněte na **Office 365** otevřete dlaždici **Office 365** řídicího panel
 | Sloupec | Popis |
 |:--|:--|
 | Operace | Poskytuje informace o aktivní uživatelé za všechny monitorované předplatných Office 365. Také budete moci zobrazit počet aktivit, ke kterým dochází v čase.
-| Výměna | Zobrazí rozpis aktivity systému Exchange Server, například přidat poštovní schránku oprávnění nebo nastavení poštovní schránky. |
+| Exchange | Zobrazí rozpis aktivity systému Exchange Server, například přidat poštovní schránku oprávnění nebo nastavení poštovní schránky. |
 | SharePoint | Zobrazuje nejvyšší aktivity, že uživatelé provádět na dokumentů služby SharePoint. Při podrobné analýze z této dlaždice na stránce vyhledávání zobrazuje podrobnosti o těchto činností, jako je například cílového dokumentu a umístění této aktivity. Například v případě události přístup k souboru se budete moci naleznete v dokumentu, která se právě využívají, jeho přidružený účet názvu a IP adresy. |
 | Azure Active Directory | Obsahuje hlavní uživatelské aktivity, jako je například resetování hesla uživatele a pokusů o přihlášení. Při podrobné analýze, bude moct zobrazit podrobnosti o těchto činností, jako výsledný stav. Toto je nejčastěji užitečné, pokud chcete monitorovat podezřelé aktivity ve službě Azure Active Directory. |
 
@@ -530,18 +530,18 @@ Mají všechny záznamy vytvořené v pracovním prostoru Log Analytics ve služ
 
 Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
 | Type | *OfficeActivity* |
 | Když | IP adresa zařízení použitá při protokolování aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
-| OfficeWorkload | Služby Office 365, odkazující na záznam.<br><br>AzureActiveDirectory<br>Výměna<br>SharePoint|
+| OfficeWorkload | Služby Office 365, odkazující na záznam.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |
 | Kódu organizace | Identifikátor GUID pro tenanta Office 365 vaší organizace. Tato hodnota bude vždy stejné pro svou organizaci, bez ohledu na služby Office 365, ve kterém se vyskytuje. |
 | RecordType | Typ operace provést. |
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, částečně úspěšném nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Normální<br>Rezervováno<br>ServicePrincipal<br>Systémový |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Normální<br>Vyhrazený<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base
@@ -610,7 +610,7 @@ Tyto záznamy se vytvoří, když dojde ke změně konfigurace systému Exchange
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Určuje, zda rutina byla spuštěna uživatelem ve vaší organizaci, mají pracovníci společnosti Microsoft datacenter nebo účet služby datacenter nebo delegovaný správce. Hodnota False označuje, že rutina byla spuštěna uživatelem ve vaší organizaci. Hodnotu True označuje, že byl rutinu spustit personál datového centra, účet služby datacenter nebo delegovaný správce. |
 | ModifiedObjectResolvedName |  Toto je popisný název objektu, který změnil tuto rutinu. To je zaznamenána pouze v případě, že rutina upraví objekt. |
@@ -625,7 +625,7 @@ Tyto záznamy jsou vytvořeny při poštovní schránky systému Exchange se pro
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
 | ClientInfoString | Informace o e-mailovém klientovi, který byl použit k provedení této operace, jako je například verze prohlížeče, verze aplikace Outlook a informace o mobilních zařízeních. |
 | Client_IPAddress | IP adresa zařízení, která byla použita při operaci protokolu byla zaznamenána. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
@@ -648,7 +648,7 @@ Tyto záznamy jsou vytvořeny při vytvoření položky auditu poštovních schr
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
 | Položka | Představuje položku, na kterém se provedla operaci | 
 | SendAsUserMailboxGuid | Identifikátor GUID Exchange poštovní schránku, která se použila k odeslání e-mailu. |
@@ -663,7 +663,7 @@ Tyto záznamy jsou vytvořeny při skupiny Exchange se provedly změny nebo dopl
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Informace o jednotlivých položkách ve skupině. |
 | CrossMailboxOperations | Označuje, že operace nepodílí více než jedné poštovní schránky. |

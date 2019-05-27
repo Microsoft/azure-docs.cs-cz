@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133325"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141252"
 ---
 Z důvodu průběžného vývoje nemusí v nástroji Android Studio nainstalovanou verzi sady SDK pro Android odpovídat verzi v kódu. Sady Android SDK odkazované v tomto kurzu je verze 26, nejnovější v době zápisu. Zvýšit číslo verze a zobrazí nové verze sady SDK, doporučujeme používat nejnovější dostupná verze.
 

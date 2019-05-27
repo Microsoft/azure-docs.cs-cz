@@ -4,15 +4,15 @@ description: Provádět hromadné operace ve službě Azure Cosmos DB pomocí hr
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 05/21/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: e0176af0ce77e9306f6f0031122f8ba8a7b27e61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f37e7f508805dcdc20626dddf6d27768e4ab0b01
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894464"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978688"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny prováděcí modul hromadného služby Azure Cosmos DB
  

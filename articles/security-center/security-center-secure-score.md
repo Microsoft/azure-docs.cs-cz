@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: monhaber
-ms.openlocfilehash: 22791fc43ff17d56e1f51e7f7737a10109f47c59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: c23c9a2b9af1947c397b96431ae3c3bcd0e30aaa
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906195"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968302"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Zlepšení hodnotíte zabezpečení ve službě Azure Security Center
 
@@ -43,7 +43,7 @@ Své skóre můžete zobrazit celkové zabezpečení:
 
 1. Na řídicím panelu Azure, klikněte na tlačítko **Security Center** a potom klikněte na tlačítko **zabezpečené skóre**.
 2. V horní části uvidíte Secure skóre stručný přehled:
-   - **Celkové zabezpečení skóre** představuje skóre na zásady na vybrané předplatné
+   - **Celkové bezpečnostní skóre** představuje skóre pro zásady a pro zvolené předplatné.
    - **Skóre zabezpečení podle kategorie** se dozvíte, které prostředky vyžadují pozornost na maximum
    - **Nejčastějších doporučení zabezpečení podle skóre dopad** vám poskytne seznam doporučení, která vylepší vaše zabezpečené skóre na maximum, pokud jejich implementaci.
  
@@ -52,7 +52,7 @@ Své skóre můžete zobrazit celkové zabezpečení:
 3. V následující tabulce vidíte každé z vašich předplatných a celkově zabezpečené skóre pro každý.
 
    > [!NOTE]
-   > Součet zabezpečené skóre každé předplatné se nerovná celkové zabezpečení skóre. Zabezpečené skóre se počítají na základě poměru mezi prostředky v pořádku a vaše celkové množství prostředků podle doporučení, nikoli součet zabezpečené hodnocení ve vašich předplatných. 
+   > Součet skóre zabezpečení u jednotlivých předplatných se nerovná celkovému skóre zabezpečení. Skóre zabezpečení se počítá na základě poměru mezi prostředky, které jsou v pořádku, a vašimi celkovými prostředky v rámci doporučení, nikoli jako součet skóre zabezpečení napříč předplatnými. 
    >
 4. Klikněte na tlačítko **zobrazit doporučení** zobrazíte doporučení pro dané předplatné, které může napravit pro zlepšení zabezpečení skóre.
 4. V seznamu doporučení uvidíte, že pro každé doporučení je sloupec, který představuje **zabezpečení skóre dopad**. Toto číslo představuje kolik hodnotíte celkové zabezpečení zlepší, pokud budete postupovat podle doporučení. Například na obrazovce níže, pokud jste **náprava ohrožení zabezpečení v kontejneru konfigurace zabezpečení**, zabezpečené skóre zvýší o 35 body.
@@ -65,9 +65,9 @@ Své skóre můžete zobrazit celkové zabezpečení:
 
 Kromě toho chcete-li zobrazit jednotlivé zabezpečené skóre, můžete najít v rámci okna individuální doporučení.  
 
-**Doporučení zabezpečení skóre** se počítají na základě poměru mezi prostředky v dobrém stavu a celkové množství prostředků. Pokud celkový počet prostředků rovná počtu prostředků v pořádku, můžete získat maximální zabezpečené skóre doporučení 50. A pokuste se získat zabezpečené skóre blíže na maximální skóre, opravte doporučeného prostředků není v pořádku.
+**Doporučené skóre zabezpečení** se počítá na základě poměru mezi prostředky, které jsou v pořádku, a vašimi celkovými prostředky. Pokud se počet prostředků, které jsou v pořádku, rovná celkovému počtu prostředků, bude mít maximální skóre zabezpečení u doporučení hodnotu 50. Pokuste se dosáhnout skóre zabezpečení, které bude blíže maximální hodnotě tak, že opravíte prostředky, které nejsou v pořádku, podle následujících doporučení.
 
-**Dopad doporučení** vás informuje, kolik zlepšuje zabezpečení skóre Pokud použijete doporučené kroky. Například, pokud vaše zabezpečené skóre je 42 a **dopad doporučení** je + 3, provedením kroků v doporučení zlepšit vaše skóre se 45.
+**Dopad doporučení** vám dává informace, o kolik se zlepší skóre zabezpečení, pokud použijete doporučený postup. Pokud je například vaše skóre zabezpečení 42 a **Dopad doporučení** je +3, zvýšíte provedením kroků v doporučení skóre na hodnotu 45.
 
 Doporučení ukazuje hrozby, který je přístupný vašich úloh, pokud nejsou přijata nápravných kroků.
 

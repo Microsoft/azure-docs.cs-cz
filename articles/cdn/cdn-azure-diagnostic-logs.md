@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66125924"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -242,55 +242,55 @@ Postupujte podle těchto kroků pro přidání Azure Monitor, řešení pro moni
 
 3. V **monitorování a správa** stránce **zobrazit všechny**.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/15_See-all.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/15_See-all.png)
 
 4. CDN do vyhledávacího pole Hledat.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/16_Search-for.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/16_Search-for.png)
 
 5. Vyberte **Azure CDN Core Analytics**. 
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/17_Core-analytics.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
 6. Po výběru **vytvořit**, zobrazí se výzva k vytvoření nového pracovního prostoru Log Analytics nebo použijte již existující. 
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/18_Adding-solution.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
 7. Vyberte pracovní prostor, který jste vytvořili před. Potom musíte přidat účet automation.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/19_Add-automation.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/19_Add-automation.png)
 
 8. Na následující obrazovce se zobrazí formulář účtu automation, který musíte vyplnit. 
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/20_Automation.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/20_Automation.png)
 
 9. Po vytvoření účtu automation, budete chtít přidat vaše řešení. Vyberte tlačítko **Vytvořit**.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/21_Ready.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/21_Ready.png)
 
 10. Vaše řešení je nyní přidán do pracovního prostoru. Vraťte se do řídicího panelu Azure portal.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/22_Dashboard.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/22_Dashboard.png)
 
     Vyberte pracovní prostor Log Analytics, který jste vytvořili, přejděte do pracovního prostoru. 
 
 11. Vyberte **portál OMS** dlaždici zobrazíte nové řešení.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/23_workspace.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/23_workspace.png)
 
 12. Na portálu by měla vypadat jako na následujícím obrázku:
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/24_OMS-solution.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
     Vyberte jednu z dlaždice zobrazíte několik zobrazení o vašich datech.
 
-    ![Zobrazit všechno](./media/cdn-diagnostics-log/25_Interior-view.png)
+    ![Zobrazit vše](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     Můžete posunout doleva nebo doprava, pokud chcete zobrazit další dlaždice představující jednotlivá zobrazení k datům. 
 
     Vyberte jednu z dlaždice zobrazíte další podrobnosti o vašich datech.
 
-     ![Zobrazit všechno](./media/cdn-diagnostics-log/26_Further-detail.png)
+     ![Zobrazit vše](./media/cdn-diagnostics-log/26_Further-detail.png)
 
 ### <a name="offers-and-pricing-tiers"></a>Nabídky a cenové úrovně
 

@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.openlocfilehash: 99f6de4d0441594c09e5e8c29834b90aeb1d43a6
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 05/21/2019
+ms.openlocfilehash: 3f6eca30379eb8890695df946f1d7e697cb3f7d7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586474"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979048"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Rychlý start: Migrace stávající webové aplikace Node.js s MongoDB ke službě Azure Cosmos DB 
 
@@ -106,7 +106,7 @@ Pokud používáte Azure Cloud Shell, klikněte na **Vyzkoušet** a postupujte 
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet Azure Cosmos DB
 
 Vytvořit účet Cosmos s [az cosmosdb vytvořit](/cli/azure/cosmosdb#az-cosmosdb-create) příkazu.
 

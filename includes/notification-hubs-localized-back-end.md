@@ -9,11 +9,11 @@ ms.date: 04/02/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: c15d695e072e72c6e7be6dcf49f3ea049a9b70b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560459"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66152394"
 ---
 Pokud odešlete šablonu oznámení, stačí zadat sadu vlastností. V tomto scénáři obsahují sadu vlastností lokalizovanou verzi aktuální novinky.
 

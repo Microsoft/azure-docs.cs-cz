@@ -5,27 +5,28 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 02/21/2019
+ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 38f2dd301ddc2a5f8d28322856b2011bd2034c30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3b1019d45f4fee60e0e197f283ef38f4f3fca875
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472212"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143071"
 ---
 Tady jsou omezení využití a další omezení služby Azure Active Directory (Azure AD).
 
-| Kategorie | Omezení |
+| Category | Omezení |
 | --- | --- |
 | Adresáře | Jeden uživatel může jako člen nebo host patřit do maximálně 500 adresářů služby Azure AD.<br/>Jeden uživatel může vytvořit maximálně 20 adresářů. |
 | Domény | Nemůžete přidat víc než 900 názvů spravovaných domén. Pokud pro všechny domény nastavíte federaci s využitím místní služby Active Directory, můžete v každém adresáři přidat maximálně 450 názvů domén. |
-| Objekty |<ul><li>Uživatelé edice Free služby Azure Active Directory mohou v jednom adresáři vytvořit maximálně 500 000 objektů.</li><li>Uživatelé, kteří nejsou správci, můžou vytvořit maximálně 250 objektů. Do této kvóty se započítávají aktivní objekty i odstraněné objekty, které jsou k dispozici pro obnovení. Pro obnovení jsou k dispozici jenom objekty odstraněné před méně než 30 dny. Odstraněné objekty, které už nejsou k dispozici pro obnovení, se do této kvóty po dobu 30 dnů započítávají jednou čtvrtinou. Možná bude vhodné [přiřadit roli správce](../articles/active-directory/users-groups-roles/directory-assign-admin-roles.md) uživatelům, kteří nejsou správci a kteří budou pravděpodobně v rámci svých běžných povinností tuto kvótu překračovat.</li></ul> |
+| Objekty |<ul><li>Uživatelé edice Free služby Azure Active Directory mohou ve výchozím nastavení v jednom adresáři vytvořit maximálně 50 000 objektů. Pokud máte alespoň jednu ověřenou doménu, výchozí kvóta adresářové služby v Azure AD se zvyšuje na 300 000 objektů. </li><li>Uživatelé, kteří nejsou správci, můžou vytvořit maximálně 250 objektů. Do této kvóty se započítávají aktivní objekty i odstraněné objekty, které jsou k dispozici pro obnovení. Pro obnovení jsou k dispozici jenom objekty odstraněné před méně než 30 dny. Odstraněné objekty, které už nejsou k dispozici pro obnovení, se do této kvóty po dobu 30 dnů započítávají jednou čtvrtinou. Možná bude vhodné [přiřadit roli správce](../articles/active-directory/users-groups-roles/directory-assign-admin-roles.md) uživatelům, kteří nejsou správci a kteří budou pravděpodobně v rámci svých běžných povinností tuto kvótu překračovat.</li></ul> |
 | Rozšíření schématu |<ul><li>Rozšíření řetězcového typu (String) mohou mít maximálně 256 znaků. </li><li>Rozšíření binárního typu (Binary) jsou omezena na 256 bajtů.</li><li>K libovolnému objektu je možné zapsat jenom 100 hodnot rozšíření (v rámci *všech* typů a *všech* aplikací).</li><li>Rozšířit pomocí atributů typu String nebo Binary s jednou hodnotou se dají jenom entity User, Group, TenantDetail, Device, Application a ServicePrincipal.</li><li>Rozšíření schématu jsou k dispozici jenom v rozhraní Graph API verze 1.21 Preview. Pro registraci rozšíření musí aplikace mít přístup k zápisu.</li></ul> |
 | Aplikace |Vlastníky jedné aplikace může být maximálně 100 uživatelů. |
 | Skupiny |<ul><li>Vlastníky jedné skupiny může být maximálně 100 uživatelů.</li><li>Členy jedné skupiny může být libovolný počet objektů.</li><li>Uživatel může být členem libovolného počtu skupin.</li><li>Počet členů ve skupině, které můžete synchronizovat z místní služby Active Directory do Azure Active Directory pomocí služby Azure AD Connect, je omezený na 50 000.</li></ul> |
+| Proxy aplikací | <ul><li>Maximálně 500 transakcí za sekundu na aplikaci Proxy aplikací</li><li>Maximálně 750 transakcí za sekundu pro příslušného tenanta</li></ul><br/>Transakce je definován jako jeden http požadavku a odpovědi pro prostředek jedinečný. Když omezené, klienti obdrží odpověď 429 (příliš mnoho požadavků). |
 | Přístupový panel |<ul><li>Počet aplikací, které se zobrazí na přístupovém panelu pro jednoho uživatele, není nijak omezený. To platí pro uživatele s přiřazenými licencemi pro Azure AD Premium nebo Enterprise Mobility Suite.</li><li>Jednotliví uživatelé mohou na přístupovém panelu zobrazit maximálně 10 dlaždic aplikací. Tento limit platí pro uživatele s přiřazenými licencemi pro edice Free nebo Azure AD Basic služby Azure Active Directory. Příklady dlaždic aplikací zahrnují Box, Salesforce nebo Dropbox. Toto omezení se nevztahuje na účty správců.</li></ul> |
-| Reports | V jednotlivých sestavách je možné zobrazit nebo stáhnout maximálně 1 000 řádků. Veškerá další data se oříznou. |
+| Sestavy | V jednotlivých sestavách je možné zobrazit nebo stáhnout maximálně 1 000 řádků. Veškerá další data se oříznou. |
 | Jednotky pro správu | Objekt může být členem maximálně 30 jednotek pro správu. |
 | Oprávnění a role správce | <li>Skupinu nejde přidat jako vlastníka.<li>Skupinu nejde přiřadit roli.<li>Výchozí nastavení nejde změnit s výjimkou přepínačů tenanta, které jsou uživatelským nastavením v Azure AD. |

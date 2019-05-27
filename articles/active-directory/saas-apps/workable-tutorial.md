@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c025cdeb-786c-4aab-abd1-132907007f7e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49c5194f75ad973514a3ec015ef29c1d6f48330a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a13d2a62c64ea114e45b49e38eda0ddc686fe7cf
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382822"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Kurz: Integrace Azure Active Directory s Workable
 
@@ -68,7 +69,7 @@ Konfigurace integrace Workable do služby Azure AD, budete muset přidat Workabl
 
 4. Do vyhledávacího pole zadejte **Workable**vyberte **Workable** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Funkční v seznamu výsledků](common/search-new-app.png)
+    ![Funkční v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -80,8 +81,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Workable, kter�
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace funkční Single Sign-On](#configure-workable-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit funkční testovacího uživatele](#create-workable-test-user)**  – Pokud chcete mít protějšek Britta Simon Workable, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit funkční testovacího uživatele](#create-workable-test-user)**  – Pokud chcete mít protějšek Britta Simon Workable, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -127,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Workable, proveďte násled
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -141,7 +142,7 @@ Pokud chcete povolit jednotné přihlašování v Workable, obraťte se na funk�
 
 3. Adresa URL – odhlášení
 
-Jakmile Single Sign On je povolen, funkční account manažera vám dá vědět a můžete použít [Workable na stránku jednotné přihlašování](https://www.workable.com/sso/signin) se přihlásit pomocí vašeho účtu funkční subdomény.
+Jakmile Single Sign On je povolen, funkční account manažera vám dá vědět a můžete použít [Workable na stránku jednotné přihlašování](https://id.workable.com/sso/signin) se přihlásit pomocí vašeho účtu funkční subdomény.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -161,8 +162,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -198,7 +198,7 @@ V této části je povolit Britta Simon k udělení přístupu k Workable použi
 
 V této části se vytvoří uživateli Britta Simon v Workable. Funkční podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Workable, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

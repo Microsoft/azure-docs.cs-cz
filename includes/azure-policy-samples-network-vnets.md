@@ -9,11 +9,11 @@ ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
 ms.openlocfilehash: f93e22012a4855257f5372c1fc1dbc05ad29a6cd
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318215"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155616"
 ---
 ### <a name="virtual-networks"></a>Virtuální sítě
 

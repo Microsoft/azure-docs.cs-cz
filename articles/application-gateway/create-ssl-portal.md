@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 4/17/2019
 ms.author: victorh
 ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677846"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134412"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončení protokolu SSL pomocí webu Azure portal
 
@@ -106,7 +106,7 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 
 V tomto příkladu vytvoříte dva virtuální počítače použít jako servery back-endu pro službu application gateway. Také nainstalujte IIS na virtuálních počítačích, chcete-li ověřit, že službu application gateway se úspěšně vytvořil.
 
-### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 1. Vyberte **Nový**.
 2. Vyberte **Výpočty** a potom v seznamu Doporučené vyberte **Windows Server 2016 Datacenter**.
@@ -114,7 +114,7 @@ V tomto příkladu vytvoříte dva virtuální počítače použít jako servery
 
     - *myVM1* – název virtuálního počítače.
     - *azureuser* – uživatelské jméno správce.
-    - *Azure123456!* – heslo.
+    - *Azure123456!* heslo.
     - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
 
 4. Vyberte **OK**.

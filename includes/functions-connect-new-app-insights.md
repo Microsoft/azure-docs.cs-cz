@@ -9,11 +9,11 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403657"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131429"
 ---
 Funkce výrazně zjednodušuje integraci Application Insights přidat do aplikace function app z [Azure Portal].
 
@@ -30,7 +30,7 @@ Funkce výrazně zjednodušuje integraci Application Insights přidat do aplikac
     | **Název** | Jedinečný název aplikace | Je nejjednodušší použijte stejný název jako aplikace function app, který musí být jedinečný v rámci vašeho předplatného. | 
     | **Umístění** | Západní Evropa | Pokud je to možné, použijte stejný [oblasti](https://azure.microsoft.com/regions/) jako vaši aplikaci function app, nebo blízko ho. |
 
-1. Vyberte **OK**. Prostředek Application Insights se vytvoří ve stejné skupině prostředků a předplatném jako aplikace function app. Po dokončení vytváření, zavřete okno Application Insights.
+1. Zvolte **OK**. Prostředek Application Insights se vytvoří ve stejné skupině prostředků a předplatném jako aplikace function app. Po dokončení vytváření, zavřete okno Application Insights.
 
 1. Po návratu do aplikace function app, vyberte **nastavení aplikace**a přejděte dolů k položce **nastavení aplikace**. Když se zobrazí nastavení s názvem `APPINSIGHTS_INSTRUMENTATIONKEY`, znamená to, zda je povoleno integrace Application Insights pro vaši aplikaci funkcí spuštěnou v Azure.
 

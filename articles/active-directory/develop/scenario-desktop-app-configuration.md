@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/o7/2019
+ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadcae393128d9721f2c988f713af07913c5fd1d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545510"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121886"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikace klasické pracovní plochy, že volání webových rozhraní API – konfigurace kódu
 
@@ -38,7 +38,7 @@ Z kódu hlediska, aplikací klasické pracovní plochy jsou veřejné klientské
 
 ### <a name="exclusively-by-code"></a>Výhradně pomocí kódu
 
-Následující kód vytvoří instanci aplikace veřejným klientem přihlašování uživatelů ve veřejném cloudu Microsoft Azure, pomocí jejich pracovních a školních účtů nebo svých osobních účtů Microsoft.
+Následující kód vytvoří instanci aplikace veřejným klientem přihlašování uživatelů ve veřejném cloudu Microsoft Azure, s pracovní a školní účet nebo osobní účet Microsoft.
 
 ```CSharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -50,8 +50,8 @@ Pokud máte v úmyslu používat interaktivní ověřování, jak je znázorněn
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri(PublicClientApplicationBuilder.DefaultInteractiveDesktopRedirectUri)
-         .Build();
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .Build();
 ```
 
 ### <a name="using-configuration-files"></a>Pomocí konfiguračních souborů
@@ -61,7 +61,8 @@ Následující kód vytvoří instanci aplikace veřejným klientem z objekt kon
 ```CSharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
-    .Build();
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .Build();
 ```
 
 ### <a name="more-elaborated-configuration"></a>Více elaborované konfigurace
@@ -71,6 +72,7 @@ Můžete efektivitě aplikace sestavení tak, že přidáte počet parametrů. N
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
         .WithAadAuthority(AzureCloudInstance.AzureUsGovernment,
                          AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
@@ -167,6 +169,7 @@ Nyní jak vytvořit aplikaci, stejně musíte napsat následující kód:
 ```CSharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
+           .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
            .Build();
 ```
 

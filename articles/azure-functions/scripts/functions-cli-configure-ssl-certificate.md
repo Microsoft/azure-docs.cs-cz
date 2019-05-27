@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/03/2013
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84cc4e92419e683f8d2c29883b26148fdef23356
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee655dc39fbe7d0e3eb5cb41b091aea24d8dbea3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325717"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131292"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>Vazba vlastního certifikátu SSL na aplikaci funkcí
 
@@ -27,7 +27,7 @@ Tento ukázkový skript vytvoří ve službě App Service aplikaci funkcí se so
 * Platný soubor .PFX a heslo pro certifikát SSL, který chcete nahrát a svázat.
 * Mít nakonfigurovaný záznam A ve vlastní doméně, která odkazuje na výchozí název domény vaší webové aplikace. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure Web Apps](https://aka.ms/appservicecustomdns).
 
-Pokud chcete vytvořit vazbu certifikátu SSL, vaše aplikace funkcí musí být vytvořená v plánu služby App Service, a ne v plánu Consumption.
+K vytvoření vazby certifikátu SSL, musí být vaše aplikace funkcí vytvořená v plánu Premium nebo plán služby App Service a ne v plánu Consumption.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

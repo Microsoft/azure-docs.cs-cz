@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 7c6e7d8bb407b0ffeb320ebfe9e2639feb303800
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603408"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131399"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -52,51 +52,51 @@ Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x.
 
 ### <a name="v2"></a>Verze 2.x
 
-Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Je třeba nejprve nainstalovat rozhraní .NET Core 2.x SDK.
+Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). 
+
+> [!IMPORTANT]
+> Můžete obejít požadavek pro instalaci .NET Core 2.x SDK pomocí [rozšíření sady].
 
 #### <a name="windows-npm"></a>Windows
 
 Následující kroky pomocí npm nainstalujte základní nástroje na Windows. Můžete také použít [Chocolatey](https://chocolatey.org/). Další informace najdete v tématu [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Nainstalujte [.NET Core 2.x SDK pro Windows](https://www.microsoft.com/net/download/windows).
+1. Nainstalujte [Node.js], což zahrnuje npm. Pro verzi 2.x nástroje pouze Node.js 8.5 a novější verze podporují.
 
-2. Nainstalujte [Node.js], což zahrnuje npm. Pro verzi 2.x nástroje pouze Node.js 8.5 a novější verze podporují.
-
-3. Instalace balíčku Core Tools:
+1. Instalace balíčku Core Tools:
 
     ```bash
     npm install -g azure-functions-core-tools
     ```
+1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro Windows](https://www.microsoft.com/net/download/windows).
 
 #### <a name="brew"></a>MacOS pomocí Homebrew
 
 Následující kroky pomocí Homebrew v systému macOS nainstalujte základní nástroje.
 
-1. Nainstalujte [.NET Core 2.x sady SDK pro macOS](https://www.microsoft.com/net/download/macos).
+1. Nainstalujte [Homebrew](https://brew.sh/), pokud ještě není nainstalovaná.
 
-2. Nainstalujte [Homebrew](https://brew.sh/), pokud ještě není nainstalovaná.
-
-3. Instalace balíčku Core Tools:
+1. Instalace balíčku Core Tools:
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
+1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro macOS](https://www.microsoft.com/net/download/macos).
+
 
 #### <a name="linux"></a> Linux (Ubuntu nebo Debian) pomocí APT
 
 Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nástrojů pro jádra na vaší distribuci Linuxu Ubuntu nebo Debian. Pro jiné distribuce Linuxu najdete v článku [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Nainstalujte [.NET Core 2.x SDK pro Linux](https://www.microsoft.com/net/download/linux).
-
-2. Zaregistrujte jako důvěryhodný kód product key společnosti Microsoft:
+1. Zaregistrujte jako důvěryhodný kód product key společnosti Microsoft:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-3. Ověřte, že váš server se systémem Ubuntu s některým z příslušné verze z tabulky níže. Pokud chcete přidat zdroje apt, spusťte:
+1. Ověřte, že váš server se systémem Ubuntu s některým z příslušné verze z tabulky níže. Pokud chcete přidat zdroje apt, spusťte:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -110,11 +110,12 @@ Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nás
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mátová 18    | `xenial`  |
 
-4. Instalace balíčku Core Tools:
+1. Instalace balíčku Core Tools:
 
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
 
@@ -186,6 +187,7 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
   "Host": {
     "LocalHttpPort": 7071,
     "CORS": "*"
+    "CORSCredentials": true
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -200,6 +202,7 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
 | **`Host`** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. |
 | **`LocalHttpPort`** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |
 | **`CORS`** | Určuje původ, odkud můžou pro [prostředků mezi zdroji (CORS) pro sdílení obsahu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje jsou dodávány jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporován, umožňující žádosti z původu. |
+| **`CORSCredentials`** |  Nastavte na hodnotu true, chcete-li povolit `withCredentials` žádosti |
 | **`ConnectionStrings`** | Nepoužívejte připojovací řetězce, používá funkce vazby této kolekce. Tato kolekce používá pouze rozhraní, které obvykle získat připojovací řetězce z `ConnectionStrings` část konfigurační soubor, třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci nejsou publikovány do Azure s jinými nastaveními aplikace. Musíte explicitně přidat tyto hodnoty `Connection strings` kolekce vaše nastavení aplikace function app. Pokud vytváříte [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** na portálu u vašich připojení. |
 
 Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v sekci proměnných prostředí z těchto témat reference specifická pro jazyk:
@@ -500,3 +503,4 @@ Do souboru žádost chybu nebo funkce [otevřete problém na Githubu](https://gi
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[rozšíření sady]: functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles

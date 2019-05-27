@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 0b0e03b163d4de7a441bb7d2714be23b58c95028
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561255"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170359"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -98,15 +98,57 @@ Premium Storage ukládání do mezipaměti: Podporováno
 
 Akcelerátor zápisu: [Podporuje se](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
+Mv2 řady funkcí vysokou propustnost, nízká latence, namapuje přímo místní úložiště NVMe, které běží na hyper-threaded Intel® Xeon® Platinum procesoru 8180 M 2,5 GHz (Skylake) prostřednictvím všechny základní základní frekvenci 2,5 GHz a frekvenci maximální turbo 3.8 GHz. Všechny velikosti virtuálních počítačů řady Mv2 můžete využívat trvalé disky úrovně standard a premium. Instance Mv2-series jsou optimalizované pro paměť velikosti virtuálních počítačů nabízí bezkonkurenční výpočetní výkon pro podporu velkých databází v paměti a úlohami. nabízí vysoký poměr paměti procesoru, která je ideální pro servery relačních databází, velkými mezipaměťmi a v paměti Analytics. 
+
 |Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4 096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
-| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4 096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4 096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
+| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4 096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16 000 |
 
 Funkce technologie Intel® Hyper-Threading Mv2-series Virtuálních počítačů  
 
-<sup>1</sup> tyto velkých virtuálních procesorů se vyžaduje jednu z těchto podporovaných hostovaných operačních systémů: Windows Server 2016, Windows Server. 2019, SLES 12 SP4, SLES 15 a RHEL 7.6
+<sup>1</sup> tyto velké virtuální počítače vyžadovat jeden z těchto podporovaných hostovaných operačních systémů: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
+<sup>2</sup> Mv2-series virtuálních počítačů 2. generace pouze. Pokud používáte Linux, najdete v části Jak najít a vybrat bitovou kopii operačního systému SUSE Linux.
+
+#### <a name="find-a-suse-image"></a>Najít image operačního systému SUSE
+
+Na webu Azure Portal vyberte vhodnou image operačního systému SUSE Linux: 
+
+1. Na webu Azure Portal, vyberte **vytvořit prostředek** 
+1. Vyhledejte "SUSE SAP" 
+1. SLES pro SAP 2. generace Image jsou dostupné jako buď s průběžnými platbami nebo použít vlastní předplatné (BYOS). Ve výsledcích hledání rozbalte kategorii požadovanou image:
+
+    * SUSE Linux Enterprise Server (SLES) pro SAP
+    * SUSE Linux Enterprise Server (SLES) pro SAP (BYOS)
+    
+1. Image SUSE kompatibilní s Mv2-series mají předponu názvu `GEN2:`. Následující Image operačního systému SUSE jsou k dispozici pro virtuální počítače řady Mv2:
+
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 pro aplikace SAP
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 pro aplikace SAP
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 pro aplikace SAP (BYOS)
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 pro aplikace SAP (BYOS)
+
+#### <a name="select-a-suse-image-via-azure-cli"></a>Vybrat bitovou kopii operačního systému SUSE prostřednictvím rozhraní příkazového řádku Azure
+
+Chcete-li zobrazit seznam aktuálně dostupných SLES pro SAP image pro virtuální počítače řady Mv2, použijte tuto [ `az vm image list` ](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) příkaz:
+
+```azurecli
+az vm image list --output table --publisher SUSE --sku gen2 --all
+```
+
+Příkaz vstupů tuto chvíli k dispozici virtuální počítače generace 2 k dispozici od společnosti SUSE pro virtuální počítače řady Mv2. 
+
+Příklad výstupu:
+
+```
+Offer          Publisher  Sku          Urn                                        Version
+-------------  ---------  -----------  -----------------------------------------  ----------
+SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
+SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
+```
 
 ## <a name="m-series"></a>M-Series 
 

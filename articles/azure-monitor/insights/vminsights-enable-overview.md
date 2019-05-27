@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 4eb07b29f68c5f495bdbe5e23f5b226480b66661
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 76d18b6a942ed9b8c6871b0ff7cbc1c83917ada4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524067"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130469"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Povolit monitorování Azure pro virtuální počítače (preview)
 
@@ -76,10 +76,10 @@ Následující tabulka uvádí operační systémy Windows a Linuxem, které jso
 
 |Verze operačního systému |Výkon |Maps |Zdraví |
 |-----------|------------|-----|-------|
-|Windows Server 2019 | X | X | |
+|Windows Server 2019 | X | X | X |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
-|Windows Server 2012 R2 | X | X | |
+|Windows Server 2012 R2 | X | X | X |
 |Windows Server 2012 | X | X | |
 |Windows Server 2008 R2 | X | X| |
 |Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |

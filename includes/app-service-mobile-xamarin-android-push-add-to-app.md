@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 3ced8c9fdadf547ec234c6d1bd5f3ddb8af7bc05
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817459"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140267"
 ---
 1. Vytvořte novou třídu v projektu volá `ToDoBroadcastReceiver`.
 2. Přidejte následující příkazy using do **ToDoBroadcastReceiver** třídy:
@@ -109,7 +109,7 @@ ms.locfileid: "42817459"
     }
     ```
 
-    Tato metoda používá ID registrace vrácené GCM registraci v Azure pro nabízená oznámení. Značky lze přidat pouze k registraci po jeho vytvoření. Další informace najdete v tématu [postupy: Přidání značek na instalaci zařízení chcete povolit nabízená značky](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Tato metoda používá ID registrace vrácené GCM registraci v Azure pro nabízená oznámení. Značky lze přidat pouze k registraci po jeho vytvoření. Další informace najdete v tématu [jak: Přidání značek na instalaci zařízení chcete povolit nabízená značky](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
 
 7. Přepsat **OnMessage** metoda **PushHandlerService** následujícím kódem:
 

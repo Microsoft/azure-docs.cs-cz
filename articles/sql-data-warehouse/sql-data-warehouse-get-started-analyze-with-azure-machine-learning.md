@@ -2,20 +2,20 @@
 title: Analýza dat pomocí Azure Machine Learning | Dokumentace Microsoftu
 description: Pomocí Azure Machine Learning sestavte prediktivní model Machine Learning založený na datech uložených v datovém skladu SQL Azure.
 services: sql-data-warehouse
-author: anumjs
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: integration
 ms.date: 03/22/2019
-ms.author: anjangsh
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f9500adc6871c4c9f81c32bf456bc36cf91db4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61439896"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860829"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ Po úspěšném dokončení experimentu klikněte v dolní části modulu Reader
 ![Zobrazení naimportovaných dat][3]
 
 ## <a name="2-clean-the-data"></a>2. Vymazání dat
-Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důležité. Použijte následující postup:
+Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důležité. To uděláte takto:
 
 1. Přetáhněte **výběr sloupců v datové sadě** modul v rámci **transformace dat. < manipulaci s** na plátno. Připojení tohoto modulu **Import dat** modulu.
 2. V podokně vlastností klikněte na **Launch column selector** (Spustit selektor sloupců) a určete sloupce, které se mají odstranit.

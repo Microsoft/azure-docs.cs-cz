@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228399"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978803"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Spravované identity pro prostředky Azure pomocí služby Service Bus 
 
@@ -29,7 +29,23 @@ Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runti
 
 ## <a name="service-bus-roles-and-permissions"></a>Role služby Service Bus a oprávnění
 
-Spravovaná identita lze přidat pouze do role "Vlastník" nebo "Přispěvatel" oboru názvů služby Service Bus. Zajišťuje úplné řízení identit na všechny entity v oboru názvů. Ale správy, které operace, které změní topologie obor názvů jsou zpočátku podporované pouze když Azure Resource Manageru. Není nativní správu rozhraní REST pro Service Bus. Tato podpora také znamená, že nelze použít klienta rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo .NET Standard klienta [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) objektů v rámci spravovanou identitu.
+Spravovanou identitu můžete přidat do role "Vlastník dat služby Service Bus" oboru názvů služby Service Bus. Uděluje identitu, úplné řízení (pro správu a operace s daty) na všechny entity v oboru názvů.
+
+>[!IMPORTANT]
+> Dříve podporován spravovanou identitu pro přidání **"Vlastník"** nebo **"Přispěvatel"** role.
+>
+> Nicméně oprávnění pro přístup k datům **"Vlastník"** a **"Přispěvatel"** role se už zachované. Pokud jste používali **"Vlastník"** nebo **"Přispěvatel"** role a ty pak bude muset být přizpůsobena využívat **"Vlastník dat služby Service Bus"** role.
+
+Pokud chcete použít novou integrovanou roli, dokončete prosím níže uvedený postup –
+
+1. Pokračujte [webu Azure portal](https://portal.azure.com)
+2. Přejděte do oboru názvů služby Service Bus, ve které máte aktuálně instalace role "Vlastník" nebo "Přispěvatel".
+3. V levé nabídce klikněte na "Control(IAM) přístup".
+4. Přejít k přidání nové přiřazení role, jak je uvedeno níže
+
+    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
+
+5. Klikněte na "Uložit" se uložit přiřazení nové role.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Service Bus pomocí spravované identity pro prostředky Azure
 
@@ -51,7 +67,7 @@ Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Act
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>Vytvořit nový obor názvů zasílání zpráv Service Bus
 
-Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md) v jedné oblasti Azure, které mají podporu náhledu pro RBAC: **USA – východ**, **USA – východ 2**, nebo **západní Evropa**. 
+Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md). 
 
 Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat přiřazení role** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
 

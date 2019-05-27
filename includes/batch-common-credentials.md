@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: lahugh
 ms.openlocfilehash: 14891acdbe9a0f810666ba54f8d63050a9330601
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955279"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127336"
 ---
 ## <a name="get-account-credentials"></a>Získání přihlašovacích údajů k účtu
 

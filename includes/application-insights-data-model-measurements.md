@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900510"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131036"
 ---
 Kolekce vlastních měření. Použijte tuto kolekci do sestavy s názvem měření přidružené položky telemetrie. Typické případy použití jsou:
 - Velikost datové části Telemetrických závislostí

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38b5b233d21c0c5d79d7bcb6a145e6232b238b0e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738884"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133125"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Začlenění řešení Update Management, Change Tracking a Inventory z virtuálního počítače Azure
 
@@ -59,7 +59,7 @@ Při přidání počítače do Update Management, Change Tracking nebo řešení
 
 Přejděte do svého pracovního prostoru. V části **Obecné**vyberte **uložená hledání**. V následující tabulce jsou uvedeny dva uložená hledání, které jsou používány těmito řešeními:
 
-|Název     |Kategorie  |Alias  |
+|Název     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
@@ -104,6 +104,8 @@ Pokud jste použili spouštění/zastavování virtuálních počítačů špič
 * Spouštět a zastavovat sady runbook plány virtuálního počítače
 * Spuštění a zastavení sad runbook virtuálního počítače
 * Proměnné
+
+Také je můžete také zrušit propojení pracovního prostoru ve svém účtu Automation z pracovního prostoru Log Analytics. Ve svém pracovním prostoru, vyberte **účtu Automation** pod **související prostředky**. Na stránce účtu Automation vyberte **zrušení propojení účtu**.
 
 ## <a name="next-steps"></a>Další postup
 

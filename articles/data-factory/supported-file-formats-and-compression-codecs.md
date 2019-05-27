@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 6af5c8cdad00802052f08be844f77d36420da3c9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142375"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165944"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -29,7 +29,7 @@ Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (biná
 * [Formát Avro](#avro-format)
 
 > [!TIP]
-> Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně jak metadata je určen na základě svého nastavení formátu souboru a tipy na tom, kdy k určení [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure-or-schema) oddílu.
+> Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md).
 
 ## <a name="text-format"></a>Formát textu
 
@@ -409,7 +409,7 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 }
 ```
 
-## <a name="parquet-format"></a>Formát Parquet
+## <a name="parquet-format"></a>Formát parquet
 
 >[!NOTE]
 >Data Factory zavedeny nové datset formát Parquet, přečtěte si téma [formát Parquet](format-parquet.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.

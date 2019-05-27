@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fe06e7081e4e3691aeb054985f9f2f3f6dc7d19e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d6753b319bc5bc4cbda18fe486695e5b0266acae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794981"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66169656"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
-Prostředky, které jsou pro nekompatibilní **deployIfNotExists** zásady můžou být přepnuté do vyhovujícího stavu prostřednictvím **nápravy**. Náprava dosahuje tím, že zásady spouštění **deployIfNotExists** vliv na stávající prostředky přiřazené zásady. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy zásadám.
+Prostředky, které jsou pro nekompatibilní **deployIfNotExists** zásady můžou být přepnuté do vyhovujícího stavu prostřednictvím **nápravy**. Náprava dosahuje tím, že Azure Policy pro spuštění **deployIfNotExists** vliv na stávající prostředky přiřazené zásady. Tento článek popisuje kroky potřebné k pochopení a odstraňování problémů můžete využít Azure Policy provádět.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Jak funguje opravy zabezpečení
 
-Při spuštění zásad šablony **deployIfNotExists** definice zásad, dělá to pomocí [se identita spravované](../../../active-directory/managed-identities-azure-resources/overview.md).
-Zásady vytvoří spravované identity pro každé přiřazení, ale musí mít podrobné informace o rolích udělit spravovaná identita. Pokud spravovaná identita chybí role, zobrazí se tato chyba během přiřazení zásady nebo iniciativa. Během používání portálu, zásady automaticky udělí spravovanou identitu uvedené role po zahájení přiřazení.
+Spuštění šablony Azure Policy **deployIfNotExists** definice zásad, dělá to pomocí [se identita spravované](../../../active-directory/managed-identities-azure-resources/overview.md).
+Služba Azure Policy vytvoří spravované identity pro každé přiřazení, ale musí mít podrobné informace o rolích udělit spravovaná identita. Pokud spravovaná identita chybí role, zobrazí se tato chyba během přiřazení zásady nebo iniciativa. Když na portálu Azure Policy automaticky udělí spravovanou identitu uvedené role po zahájení přiřazení.
 
 ![Spravovaná identita - chybějící role](../media/remediate-resources/missing-role.png)
 
@@ -39,7 +39,7 @@ Prvním krokem je definování role, která **deployIfNotExists** potřebuje k �
 "details": {
     ...
     "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
         "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
     ]
 }
@@ -57,7 +57,7 @@ Get-AzRoleDefinition -Name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>Ručně nakonfigurovat spravované identity
 
-Při vytváření přiřazení pomocí portálu, zásady vygeneruje spravovanou identitu i mu udělí role definované v **roleDefinitionIds**. Za těchto podmínek je třeba provést postup pro vytvoření spravované identity a přiřadit oprávnění ručně:
+Při vytváření přiřazení pomocí portálu Azure Policy vygeneruje spravovanou identitu i mu udělí role definované v **roleDefinitionIds**. Za těchto podmínek je třeba provést postup pro vytvoření spravované identity a přiřadit oprávnění ručně:
 
 - Při používání sady SDK (jako je Azure PowerShell)
 - Když se upraví prostředek mimo rozsah přiřazení pomocí šablony
@@ -126,7 +126,8 @@ Přidání role pro toto přiřazení spravovanou identitu, postupujte podle tě
 
 1. Klikněte na tlačítko **řízení přístupu (IAM)** odkaz na stránce prostředků a klikněte na tlačítko **+ přidat přiřazení role** v horní části stránku řízení přístupu.
 
-1. Vyberte vhodnou roli, která odpovídá **roleDefinitionIds** z definice zásady. Ponechte **přiřadit přístup k** nastavenou na výchozí hodnotu "Azure AD uživatele, skupiny nebo aplikace". V **vyberte** pole, vložte nebo napište část ID prostředku přiřazení dříve nachází. Po dokončení hledání, klikněte na objekt se stejným názvem vyberte ID a klikněte na **Uložit**.
+1. Vyberte vhodnou roli, která odpovídá **roleDefinitionIds** z definice zásady.
+   Ponechte **přiřadit přístup k** nastavenou na výchozí hodnotu "Azure AD uživatele, skupiny nebo aplikace". V **vyberte** pole, vložte nebo napište část ID prostředku přiřazení dříve nachází. Po dokončení hledání, klikněte na objekt se stejným názvem vyberte ID a klikněte na **Uložit**.
 
 ## <a name="create-a-remediation-task"></a>Vytvořte úlohu nápravy
 
@@ -193,9 +194,9 @@ Další rutiny nápravy a příklady najdete v tématu [Az.PolicyInsights](/powe
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Zkontrolujte [struktura definic zásad](../concepts/definition-structure.md)
-- Kontrola [Principy účinky zásad](../concepts/effects.md)
-- Pochopit postup [programové vytváření zásad](programmatically-create.md)
-- Zjistěte, jak [získat data o dodržování předpisů](getting-compliance-data.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
+- Pochopit postup [programové vytváření zásad](programmatically-create.md).
+- Zjistěte, jak [získat data o dodržování předpisů](getting-compliance-data.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

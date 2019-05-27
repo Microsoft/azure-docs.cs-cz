@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730374"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66129031"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Nasazení šablony ze služby Cloud Shell
 
@@ -19,11 +19,11 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 
-   ![Výběr skupiny prostředků](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![Vybrat skupinu prostředků](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
 
 1. Vyberte účet úložiště pro službu Cloud Shell.
 
-   ![Výběr účtu úložiště](./media/resource-manager-cloud-shell-deploy/select-storage.png)
+   ![Vybrat účet úložiště](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
 1. Vyberte **Objekty blob**.
 
@@ -31,7 +31,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Vyberte **+ Kontejner**.
 
-   ![Přidání kontejneru](./media/resource-manager-cloud-shell-deploy/add-container.png)
+   ![Přidat kontejner](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
 1. Zadejte svůj kontejner názvu a úroveň přístupu. Ukázková šablona v tomto článku obsahuje žádné citlivé informace, takže povolit anonymní přístup pro čtení. Vyberte **OK**.
 
@@ -47,7 +47,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Vyhledejte a nahrajte vaši šablonu.
 
-   ![Nahrání souboru](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
+   ![Nahrát soubor](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
 1. Po odeslal, vyberte šablonu.
 

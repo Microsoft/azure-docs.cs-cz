@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192280"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966393"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -118,3 +118,15 @@ Omezení názvů jsou implementovány pomocí platformy Azure a AKS. Pokud náze
 
 * AKS *MC_* kombinuje název skupiny prostředků název skupiny prostředků a název prostředku. Automaticky generované syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby Zkraťte délku názvu skupiny prostředků nebo název clusteru AKS.
 * *DnsPrefix* musí začínat a končit jenom alfanumerické hodnoty. Platné znaky zahrnují hodnoty alfanumerické znaky a spojovníky (-). *DnsPrefix* nemůže obsahovat speciální znaky, jako je tečka (.).
+
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Chyby zobrazuje při pokusu o vytvoření, aktualizaci, škálování, odstranit nebo upgrade clusteru, který operace není povolena, protože probíhá jiná operace.
+
+*Tato pomoc s řešením potíží se přesměruje z aka.ms/aks čekající – operace*
+
+Operace clusteru jsou omezené při stále probíhá předchozí operace. Chcete-li získat podrobný stav clusteru, použijte `az aks show -g myResourceGroup -n myAKSCluster -o table` příkazu. Podle potřeby použijte skupinu prostředků a název clusteru AKS.
+
+Na základě výstupu stavu clusteru:
+
+* Pokud se cluster nachází v libovolném stavu zřizování jiné než *Succeeded* nebo *neúspěšné*, počkejte, dokud operace (*upgrade / aktualizaci / vytvoření / škálování / odstranění / migrace*) ukončí. Po dokončení předchozí operace a zkuste to znovu nejnovější operaci clusteru.
+
+* Pokud cluster má selhání upgradu, postupujte podle kroků uvedených [jsem přijetí chyby, které se cluster je ve stavu selhání a upgradu, nebo škálování nebude fungovat, dokud se nevyřeší](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).

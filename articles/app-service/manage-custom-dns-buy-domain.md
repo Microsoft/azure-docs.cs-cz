@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619716"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978880"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
@@ -201,7 +201,9 @@ Přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předch
 
 ## <a name="renew-the-domain"></a>Obnovit doménu
 
-Doména služby App Service, které jste si zakoupili je platný jeden rok od okamžiku nákupu. Ve výchozím nastavení doména nenakonfiguruje automaticky obnovit tím vaším způsobem platby pro příští rok. Pokud chcete vypnout automatické obnovení, nebo pokud chcete ručně obnovit vaší domény, postupujte podle kroků v tomto poli.
+Doména služby App Service, které jste si zakoupili je platný jeden rok od okamžiku nákupu. Ve výchozím nastavení doména nenakonfiguruje automaticky obnovit tím vaším způsobem platby pro příští rok. Můžete ručně obnovit váš název domény.
+
+Pokud chcete vypnout automatické obnovení, nebo pokud chcete ručně obnovit vaší domény, postupujte podle kroků v tomto poli.
 
 V **App Services** kartu, klikněte na název vaší aplikace, vyberte **nastavení**a pak vyberte **vlastní domény**.
 
@@ -211,11 +213,25 @@ V **domén služby App Service** části, vyberte doménu, kterou chcete konfigu
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-V levém navigačním panelu domény, vyberte **obnovení domény**. Chcete-li zastavit automatické prodlužování platnosti vaší domény, vyberte **vypnout**a potom **Uložit**. 
+V levém navigačním panelu domény, vyberte **obnovení domény**. Chcete-li zastavit automatické prodlužování platnosti vaší domény, vyberte **vypnout**a potom **Uložit**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-Chcete-li ručně obnovit vaši doménu, vyberte **obnovení domény**. Nicméně toto tlačítko není aktivní až 90 dní před vypršením platnosti domény.
+Chcete-li ručně obnovit vaši doménu, vyberte **obnovení domény**. Toto tlačítko však není aktivní předtím než [90 dní před vypršením platnosti domény](#when-domain-expires).
+
+Pokud obnovení vaší domény je úspěšný, zobrazí se oznámení e-mailem do 24 hodin.
+
+## <a name="when-domain-expires"></a>Kdy vyprší platnost domény
+
+Azure se zabývá vypršení platnosti, případně vypršela jeho platnost domény služby App Service následujícím způsobem:
+
+* Pokud je zakázáno automatické obnovení: 90 dnů před vypršením platnosti domény, se vám je odeslán oznamovací e-mail obnovení a **obnovení domény** je tlačítko aktivovat na portálu.
+* Pokud je povoleno automatické obnovení: Den po datu vypršení platnosti domény Azure pokusí účtovat Obnova názvu domény.
+* Pokud dojde k chybě během automatického obnovení (například vaší karty strženy platnost), nebo pokud je zakázáno automatické obnovení a umožňují domény vyprší, Azure vás upozorní na vypršení platnosti domény a parků název vaší domény. Je možné [ručně obnovit](#renew-the-domain) vaší domény.
+* V den 4. až 12 dnů po vypršení platnosti Azure vám pošle e-mailů další oznámení. Je možné [ručně obnovit](#renew-the-domain) vaší domény.
+* Dne 19. po vypršení platnosti vaše doména zůstává sporu ale stala předmětem uplatnění poplatek. Můžete volat zákaznickou podporu o obnovení název domény, v souladu s žádné použitelné obnovení a uplatnění poplatky.
+* Azure dne 25 po vypršení platnosti, umístí vaší domény pro aukce se službou aukce oboru názvu domény. Můžete volat zákaznickou podporu o obnovení název domény, v souladu s žádné použitelné obnovení a uplatnění poplatky.
+* 30 den po vypršení platnosti vy už moct uplatnit vaší domény.
 
 <a name="custom"></a>
 

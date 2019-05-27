@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2e1288885476aeeba01f966b615c23c5fe51081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261009"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Kurz: Integrace Azure Active Directory s pozemního váhou klienta
 
@@ -87,7 +87,7 @@ Konfigurace integrace pozemního váhou klienta do služby Azure AD, budete muse
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí pozemního váhou klienta na základě testovací uživatele nazývá "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování s váhou klienta pozemního podle testovacího uživatele nazývá "B. Simon".
 
 Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek v klientovi pozemního váhou je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v klientovi pozemního váhou.
 
@@ -97,8 +97,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí pozemníh
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s omezenou skupinou.
-1. **[Vytvoření zkušebního uživatele pozemního váhou](#creating-a-land-gorilla-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Vytvoření zkušebního uživatele pozemního váhou](#creating-a-land-gorilla-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s B. Simon.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit B. Simon používat Azure AD jednotného přihlašování.
 1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -150,7 +150,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure Management portal volá Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele v portálu pro správu Azure volá B. Simon.
 
 ![Vytvoření uživatele Azure AD][100]
 
@@ -172,9 +172,9 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure Ma
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textové pole, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **B. Simon**.
 
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** B. Simon.
 
     c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
@@ -186,11 +186,11 @@ Spojte se prosím s [pozemního váhou tým podpory](https://www.landgorilla.com
     
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup do klienta pozemního váhou.
+V této části povolíte B. Simon používat jednotné přihlašování Azure udělením přístupu k pozemního váhou klienta.
 
 ![Přiřadit uživatele][200] 
 
-**Britta Simon přiřadit pozemního váhou klienta, proveďte následující kroky:**
+**B. Simon přiřadit pozemního váhou klienta, proveďte následující kroky:**
 
 1. Na portálu Azure Management portal, otevřete zobrazení aplikací a přejděte do zobrazení adresáře přejít na **podnikové aplikace** klikněte **všechny aplikace**.
 
@@ -208,7 +208,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][203]
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **B. Simon** v seznamu uživatelů.
 
 1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 

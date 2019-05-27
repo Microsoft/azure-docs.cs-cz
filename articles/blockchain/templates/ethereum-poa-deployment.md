@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274786"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66126368"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
 
@@ -262,7 +262,7 @@ Výkon sítě bude mít vliv na virtuální počítač a vrstva úložiště.  D
   ---|---|---|---|---
   F1|SSD úrovně Standard|nízká|nízká|Vysoká
   D2_v3|SSD úrovně Standard|středně silné|středně silné|středně silné
-  F16s|Premium SSD|Vysoká|Vysoká|nízká
+  F16s|SSD úrovně Premium|Vysoká|Vysoká|nízká
 
 Ukázkové nasazení se zobrazí pod: ![velikost a výkon sítě](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -277,7 +277,7 @@ Podrobný popis každého parametru takto:
 ID člena W3C|ID přidružené k kolizí, aby každý člen účastnících se sítě konsorcia slouží ke konfiguraci adresní prostory IP adres. V případě privátní sítě musí být ID člena jedinečná napříč různými organizacemi ve stejné síti.  Unique – člen ID je potřeba i v případě, že stejné organizace nasadí do víc oblastí. Poznamenejte si hodnotu tohoto parametru vzhledem k tomu je potřeba sdílet s ostatními spojovacího členy zajistit, že není žádná kolizí.|0-255|Není k dispozici
 ID sítě|ID sítě pro síť consortium ethereum během nasazení.  Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť.|5 - 999,999,999|10101010
 Adresa správce ethereum během|Adresa účtu Etherea, který slouží k účasti v PoA zásad správného řízení.  Doporučujeme používat MetaMask ke generování adresy Etherea.|42 alfanumerických znaků počínaje 0 x|Není k dispozici
-Upřesnit možnosti|Rozšířené možnosti pro ethereum během nastavení|Povolit nebo zakázat|Zakázat
+Upřesnit možnosti|Rozšířené možnosti pro ethereum během nastavení|Povolit nebo zakázat|Vypnout
 Veřejná IP adresa (Upřesnit možnosti = Enable)|Nasadí sítě bránou virtuální sítě a odebere partnerského vztahu přístup. Pokud je vybraná tato možnost, všichni členové musíte použít pro připojení brány virtuální sítě jako kompatibilní.|Veřejnou IP adresu privátní virtuální sítě|Veřejná IP adresa
 Blokovat plynu Limit (Upřesnit možnosti = Enable)|Omezit plynu počáteční blok sítě|Všechny číselné|50000000
 Autorizovat dobu blokování (sekundy)|Frekvence, ve kterém se vytvoří prázdný bloky při neexistují transakce v síti. Rychlejší neodvolatelnost zúčtování ale náklady na úložiště vyšší budou mít vyšší frekvence.|Všechny číselné|15
@@ -293,7 +293,7 @@ V okně monitorování umožňuje nakonfigurovat prostředek protokoly Azure mon
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
-Monitorování|Možnost povolit monitorování|Povolit nebo zakázat|Povolení
+Monitorování|Možnost povolit monitorování|Povolit nebo zakázat|Zapnout
 Připojte se k existující protokoly Azure monitoru|Vytvořit novou instanci protokoly Azure monitoru nebo připojit k existující instanci|Vytvořit nový nebo existující připojení|Vytvořit nový
 Monitorování umístění (připojit k existující protokoly Azure monitoru = vytvořit nový)|Oblast, kde na nový Azure Monitor protokoly instance se nasadí.|Azure Monitor všechny protokoly oblastí|Není k dispozici
 ID pracovního prostoru log analytics existující (připojit k existující protokoly Azure monitoru = připojte se k existující)|ID pracovního prostoru z existující Azure Monitor protokoly instance||Není k dispozici
@@ -413,7 +413,7 @@ $MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
-### <a name="service-monitoring"></a>Monitorování služeb
+### <a name="service-monitoring"></a>Sledování služby
 
 Můžete najít na portálu Azure Monitor odkaz v e-mailu nasazení nebo vyhledání parametru ve výstupu nasazení \[OMS\_portál\_URL\].
 

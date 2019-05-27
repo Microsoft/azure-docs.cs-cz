@@ -10,27 +10,27 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 35ab2d36a5d6c9977398fdbc16ba22eb1d9656a4
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5a4085f713d66859a464ab59b00d856921db8ec3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65229845"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124482"
 ---
-# <a name="example-how-to-use-the-large-scale-feature"></a>Příklad: Jak používat funkci ve velkém měřítku
+# <a name="example-use-the-large-scale-feature"></a>Příklad: Použití funkce ve velkém měřítku
 
-Tento průvodce je pokročilá článek o tom, jak škálovat z existujících **jeden objekt PersonGroup** a **FaceList** k **LargePersonGroup** a **LargeFaceList**v uvedeném pořadí. Tento průvodce ukazuje, proces migrace a předpokládá základní znalost **jeden objekt PersonGroup**, **FaceList**, [Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) operace a rozpoznávání tváře funkce. Zobrazit [rozpoznávání tváře](../concepts/face-recognition.md) koncepční příručku a zjistěte další informace o těchto.
+Tento průvodce je pokročilá článek o tom, jak vertikálně navýšit kapacitu z existujících objektů jeden objekt PersonGroup a FaceList LargePersonGroup a LargeFaceList objektů, v uvedeném pořadí. Tato příručka ukazuje, proces migrace. Předpokládá základní znalost jeden objekt PersonGroup a FaceList objekty [Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) operace a funkce rozpoznávání tváře. Další informace o těchto tématech najdete v tématu [rozpoznávání tváře](../concepts/face-recognition.md) koncepční průvodce.
 
-LargePersonGroup a LargeFaceList se souhrnně označují jako operace ve velkém měřítku. LargePersonGroup může obsahovat až 1 000 000 osob, každou s maximálně 248 tváří a LargeFaceList může obsahovat až 1 000 000 tváří. Rozsáhlé operace jsou podobné konvenční jeden objekt PersonGroup a FaceList ale mít několik významných rozdílů kvůli novou architekturu. 
+LargePersonGroup a LargeFaceList se souhrnně označují jako operace ve velkém měřítku. LargePersonGroup může obsahovat až 1 milion osob, každou s maximálně 248 tváří. LargeFaceList může obsahovat až 1 milión tváří. Rozsáhlé operace jsou podobné konvenční jeden objekt PersonGroup a FaceList ale několik rozdílů kvůli novou architekturu. 
 
-Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře.
+Ukázky jsou napsané v C# pomocí klientské knihovny Azure Cognitive Services Face API.
 
 > [!NOTE]
-> Pokud chcete ve velkém měřítku povolit vyhledávání tváří pro příkazy Identification a FindSimilar, budete muset zavést operaci Train, která kolekce LargeFaceList a LargePersonGroup předzpracuje. Doba trénování může v závislosti na kapacitě trvat pár vteřin nebo i půl hodiny. Během trénování můžete příkazy Identification a FindSimilar stále používat, pokud jste už někdy dřív školení úspěšně dokončili. Nevýhodou však je, že dokud se trénink ve velkém měřítku nedokončí, nově přidané osoby či tváře se ve výsledcích nezobrazí.
+> Pokud chcete povolit hledání výkonu tváří pro identifikaci a FindSimilar ve velkém měřítku, představují operace trénování se předběžně zpracovat LargeFaceList a LargePersonGroup. Čas školení se liší od sekund přibližně půl hodiny na základě skutečné kapacity. Během období školení je možné provést rozpoznání a FindSimilar Pokud úspěšné školení provozní bylo provedeno před. Nevýhodou je, nový přidaný osob a tváří nezobrazí ve výsledcích až do dokončení nové po migraci k trénování ve velkém měřítku.
 
 ## <a name="step-1-initialize-the-client-object"></a>Krok 1: Inicializace objektu klienta
 
-Když používáte klientskou knihovnu rozhraní API pro rozpoznávání tváře, klíč a koncový bod předplatného se předávají prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
+Při použití klientské knihovny rozhraní API pro rozpoznávání tváře, klíč předplatného a koncový bod předplatného se předává v konstruktoru třídy FaceServiceClient. Příklad:
 
 ```CSharp
 string SubscriptionKey = "<Subscription Key>";
@@ -39,24 +39,24 @@ string SubscriptionRegion = "https://westcentralus.api.cognitive.microsoft.com/f
 FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, SubscriptionRegion);
 ```
 
-Klíč předplatného s odpovídajícím koncovým bodem můžete získat z webu Marketplace nebo z portálu Azure Portal.
-Přečtěte si téma [Předplatná](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
+Klíč předplatného s jeho odpovídající koncový bod, najdete na webu Azure Marketplace na webu Azure Portal.
+Další informace najdete v tématu [předplatná](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
 ## <a name="step-2-code-migration"></a>Krok 2: Migrace kódu
 
-Tato část se zaměřuje pouze na migraci implementace PersonGroup/FaceList do LargePersonGroup/LargeFaceList. I když LargePersonGroup/LargeFaceList se liší od jeden objekt PersonGroup nebo FaceList v návrhu a interní implementaci, rozhraní API jsou podobné z důvodu zpětné kompatibility.
+Tato část se zaměřuje na tom, jak migrovat jeden objekt PersonGroup nebo FaceList implementace LargePersonGroup nebo LargeFaceList. I když LargePersonGroup nebo LargeFaceList se liší od jeden objekt PersonGroup nebo FaceList v návrhu a interní implementaci, rozhraní API jsou podobné z důvodu zpětné kompatibility.
 
-Migrace dat není podporovaná, místo ní budete muset kolekce LargePersonGroup/LargeFaceList znovu vytvořit.
+Migrace dat se nepodporuje. Můžete znovu vytvořit LargePersonGroup nebo LargeFaceList místo.
 
-### <a name="migrate-persongroup-to-largepersongroup"></a>Migrovat jeden objekt PersonGroup LargePersonGroup
+### <a name="migrate-a-persongroup-to-a-largepersongroup"></a>Migrace jeden objekt PersonGroup LargePersonGroup
 
-Migrace z jeden objekt PersonGroup do LargePersonGroup je jednoduchý, protože sdílejí přesně stejné operace na úrovni skupiny.
+Migrace z jeden objekt PersonGroup do LargePersonGroup je jednoduché. Sdílejí přesně stejné operace na úrovni skupiny.
 
-U implementace týkající se PersonGroup/Person je potřeba změnit pouze cesty rozhraní API nebo třídu/modul sady SDK na LargePersonGroup a LargePersonGroup Person.
+Pro jeden objekt PersonGroup nebo osoba související implementace je nutné změnit cesty k rozhraní API nebo sady SDK a modul třídy LargePersonGroup a LargePersonGroup osoby.
 
-Budete muset přidat všechny tváří a osoby z jeden objekt PersonGroup do nové LargePersonGroup. Zobrazit [tom, jak přidat čelí](how-to-add-faces.md) pro referenci.
+Přidejte všechny tváří a osoby z jeden objekt PersonGroup nové LargePersonGroup. Další informace najdete v tématu [přidat tváří](how-to-add-faces.md).
 
-### <a name="migrate-facelist-to-largefacelist"></a>Migrace FaceList LargeFaceList
+### <a name="migrate-a-facelist-to-a-largefacelist"></a>Migrace FaceList LargeFaceList
 
 | Rozhraní API kolekce FaceList | Rozhraní API kolekce LargeFaceList |
 |:---:|:---:|
@@ -68,7 +68,7 @@ Budete muset přidat všechny tváří a osoby z jeden objekt PersonGroup do nov
 | - | Trénovat |
 | - | Get Training Status |
 
-Předchozí tabulka je srovnáním operací na úrovni seznamu mezi kolekcemi FaceList a LargeFaceList. Jak můžete vidět, kolekce LargeFaceList přináší v porovnání s kolekcí FaceList nové operace Train a Get Training Status. Kolekce FaceList operaci Train nevyžaduje, ale trénování kolekce LargeFaceList je podmínkou pro operaci [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237). Následující fragment kódu je pomocná funkce, která počká na trénování kolekce LargeFaceList.
+Předchozí tabulka je srovnáním operací na úrovni seznamu mezi kolekcemi FaceList a LargeFaceList. Jak je znázorněno, LargeFaceList obsahuje nové operace trénování a získat školení stavu, ve srovnání s FaceList. Školení LargeFaceList je podmínkou [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) operace. Není vyžadováno pro FaceList školení. Následující fragment kódu je pomocná funkce čekat na školení LargeFaceList:
 
 ```CSharp
 /// <summary>
@@ -118,7 +118,7 @@ private static async Task TrainLargeFaceList(
 }
 ```
 
-Typické použití FaceList s přidáváním tváří a FindSimilar dříve by vypadat nějak takto:
+Typické použití FaceList přidaných ploch a FindSimilar dříve, hledá vypadat asi takto:
 
 ```CSharp
 // Create a FaceList.
@@ -151,7 +151,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-Při migraci ho do LargeFaceList, by měl být následující:
+Při migraci ho do LargeFaceList, stane se následující:
 
 ```CSharp
 // Create a LargeFaceList.
@@ -188,44 +188,47 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-Jak je vidět výše, správa dat a operace FindSimilar jsou téměř stejné. Jediným rozdílem je, že kolekce LargeFaceList k fungování operace FindSimilar vyžaduje aktuální předzpracování operací Train.
+Jak už jsme ukázali Správa dat a další část FindSimilar je téměř stejný. Jedinou výjimkou je, že funkce předběžného zpracování operace trénování, musíte dokončit v LargeFaceList FindSimilar funguje.
 
 ## <a name="step-3-train-suggestions"></a>Krok 3: Trénování návrhy
 
-Přestože operace Train urychluje operace [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), doba trénování může zejména při přechodu na velké měřítko trvat. Odhadovanou dobu trénování najdete podle měřítka v následující tabulce:
+I když urychluje operace trénování [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), odkážete čas školení, zejména v případě, že se chystá se velkého rozsahu. Školení odhadovaný čas v různých měřítek je uvedené v následující tabulce.
 
-| Měřítko (tváře nebo osoby) | Odhadovaná doba trénování |
+| Škálování pro tváří nebo osoby | Školení odhadovaný čas |
 |:---:|:---:|
-| 1 000 | 1–2 s |
-| 10,000 | 5–10 s |
-| 100 000 | 1–2 min |
-| 1 000 000 | 10–30 min |
+| 1 000 | 1-2 s |
+| 10,000 | 5 až 10 sekundu |
+| 100 000 | 1 až 2 minuty |
+| 1 000 000 | 10 – 30 min |
 
-Pokud chcete funkce velkého měřítka lépe využít, doporučujeme zvážit některé z následujících strategií.
+Jak lépe využít funkci ve velkém měřítku, doporučujeme následující strategie.
 
-## <a name="step-31-customize-time-interval"></a>Krok 3.1: Upravit časový interval
+### <a name="step-31-customize-time-interval"></a>Krok 3.1: Upravit časový interval
 
-Jak je vidět v příkazu `TrainLargeFaceList()`, existuje parametr `timeIntervalInMilliseconds`, který odloží nekončící ověřování stavu trénování. U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady. Časový interval byste měli přizpůsobit podle očekávané kapacity kolekce LargeFaceList.
+Jak je znázorněno v `TrainLargeFaceList()`, je časový interval v milisekundách pro odložené proces kontroly stavu nekonečné školení. U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady. Upravte časový interval podle očekávané kapacitu LargeFaceList.
 
-Stejné strategie platí také pro LargePersonGroup. Například při školení LargePersonGroup s 1 000 000 osob `timeIntervalInMilliseconds` může být 60 000 (interval 1 minuta).
+Stejné strategie platí také pro LargePersonGroup. Například při trénování LargePersonGroup s 1 milion osob `timeIntervalInMilliseconds` asi 60 000, což je interval 1 minuta.
 
-## <a name="step-32-small-scale-buffer"></a>Krok 3.2 Malá vyrovnávací paměť
+### <a name="step-32-small-scale-buffer"></a>Krok 3.2: Rozsáhlé vyrovnávací paměti
 
-Osoby nebo tváře můžete v kolekci LargePersonGroup či LargeFaceList vyhledávat pouze po trénování. V dynamickém scénáři se mohou nové osoby či tváře přidávat neustále a může být potřeba je okamžitě dohledat, ale trénink může trvat příliš dlouho. Tento problém můžete zmírnit použitím velmi malé kolekce LargePersonGroup či LargeFaceList, která bude sloužit jako vyrovnávací paměť pro nově přidané položky. Trénování této vyrovnávací paměti bude trvat kratší dobu, protože je mnohem menší, takže okamžité vyhledávání by zde mělo fungovat. Tuto vyrovnávací paměť můžete použít v kombinaci s tréninkem hlavní kolekce LargePersonGroup či LargeFaceList a spouštět hlavní trénování v mnohem delších intervalech – například jednou denně uprostřed noci.
+Osoby nebo tváří LargePersonGroup nebo LargeFaceList je možné prohledávat pouze po se školení. V případě dynamických nové osoby nebo plochy se neustále přidávají a musí být okamžitě prohledávatelná dosud školení může trvat déle, než je potřeba. 
+
+Ke zmírnění tohoto problému, používejte velmi rozsáhlé LargePersonGroup nebo LargeFaceList jako vyrovnávací paměť pouze pro nově přidané položky. Tuto vyrovnávací paměť trvá kratší čas pro učení z důvodu menší velikost. Možnost okamžitého vyhledávání na této dočasné vyrovnávací paměti by mělo fungovat. Pomocí této vyrovnávací paměti v kombinaci s přípravou na hlavní LargePersonGroup nebo LargeFaceList spuštěním hlavní školení na sparser intervalu. Příkladem mohou být uprostřed noci a každý den.
 
 Příklad pracovního postupu:
-1. Vytvořte hlavní kolekci LargePersonGroup nebo LargeFaceList a kolekci vyrovnávací paměti LargePersonGroup nebo LargeFaceList. Kolekce vyrovnávací paměti slouží pouze k přidávání nově přidaných osob nebo tváří.
-1. Přidejte nové osoby či tváře do hlavní kolekce i kolekce vyrovnávací paměti.
-1. Trénujte pouze kolekci vyrovnávací paměti a použijte krátký interval, abyste měli jistotu, že nově přidané položky bude možné vyhledat.
-1. Zavolejte příkaz Identification nebo FindSimilar jak u hlavní kolekce, tak i u kolekce vyrovnávací paměti, a výsledky slučte.
-1. Když se bude velikost kolekce vyrovnávací paměti blížit prahové hodnotě nebo když bude systém nečinný, vytvořte novou vyrovnávací paměť a spusťte trénování hlavní kolekce.
-1. Po dokončení trénování hlavní kolekce kolekci vyrovnávací paměti odstraňte.
 
-## <a name="step-33-standalone-training"></a>Krok 3.3 samostatné školení
+1. Vytvořte hlavní LargePersonGroup nebo LargeFaceList, což je hlavní sada. Vytvořte zásobník LargePersonGroup nebo LargeFaceList, což je kolekce vyrovnávací paměti. Vyrovnávací paměti kolekce je určena pouze pro nově přidané osoby nebo plochy.
+1. Přidáte nový osoby nebo tváří do hlavní kolekce a kolekce vyrovnávací paměti.
+1. Kolekce vyrovnávací paměti s intervalem krátkého formátu času k zajištění, že nově přidané položky se projeví pouze trénování.
+1. Identifikace volání nebo FindSimilar proti kolekci hlavní a kolekci vyrovnávací paměti. Sloučit výsledky.
+1. Pokud velikost vyrovnávací paměti kolekce zvyšuje prahové hodnoty nebo na nečinnost systému, vytvořte novou kolekci vyrovnávací paměti. Aktivace operace trénování na hlavní kolekce.
+1. Po dokončení operace trénování na hlavní sada, odstraňte starý kolekci vyrovnávací paměti.
 
-Pokud je poměrně dlouhá latence přijatelná, není nutné trénování spouštět ihned po přidání nových dat. Místo toho můžete operaci Train oddělit od hlavní logiky a spouštět ji pravidelně. Tato strategie je vhodná u dynamických scénářů s přijatelnou latencí a můžete ji použít u statických scénářů, abyste frekvenci trénování ještě víc snížili.
+### <a name="step-33-standalone-training"></a>Krok 3.3: Samostatné školení
 
-Předpokládejme, že existuje funkce `TrainLargePersonGroup` podobná funkci `TrainLargeFaceList`. Obvyklá implementace metody samostatného školení na LargePersonGroup vyvoláním [ `Timer` ](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) třídy v `System.Timers` by být:
+Pokud poměrně dlouhé latence je přijatelná, není nutné spouštěcí správné operace trénování, poté, co přidáte nová data. Místo toho můžete operaci Train oddělit od hlavní logiky a spouštět ji pravidelně. Tato strategie je vhodná pro scénáře dynamických s přijatelnou latencí. Lze použít ke statické scénářům další snížení frekvence trénování.
+
+Předpokládejme, že je `TrainLargePersonGroup` funkce podobné `TrainLargeFaceList`. Obvyklá implementace samostatné školení na LargePersonGroup vyvoláním [ `Timer` ](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) třídy v `System.Timers` je:
 
 ```CSharp
 private static void Main()
@@ -235,15 +238,15 @@ private static void Main()
     const string LargePersonGroupName = "MyLargePersonGroupDisplayName";
     FaceServiceClient.CreateLargePersonGroupAsync(LargePersonGroupId, LargePersonGroupName).Wait();
 
-    // Setup a standalone training at regular intervals.
-    const int TimeIntervalForStatus = 1000 * 60; // 1 minute interval for getting training status.
-    const double TimeIntervalForTrain = 1000 * 60 * 60; // 1 hour interval for training.
+    // Set up standalone training at regular intervals.
+    const int TimeIntervalForStatus = 1000 * 60; // 1-minute interval for getting training status.
+    const double TimeIntervalForTrain = 1000 * 60 * 60; // 1-hour interval for training.
     var trainTimer = new Timer(TimeIntervalForTrain);
     trainTimer.Elapsed += (sender, args) => TrainTimerOnElapsed(LargePersonGroupId, TimeIntervalForStatus);
     trainTimer.AutoReset = true;
     trainTimer.Enabled = true;
 
-    // Other operations like creating persons, adding faces and Identification except for Train.
+    // Other operations like creating persons, adding faces, and identification, except for Train.
     // ...
 }
 
@@ -253,18 +256,18 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-Další informace o správě dat a implementacích souvisejících s identifikací naleznete v článcích o [přidávání tváří](how-to-add-faces.md) a [identifikaci tváří v obrázku](HowtoIdentifyFacesinImage.md).
+Další informace o správě dat a souvisejícím s identifikace implementace najdete v tématu [přidat tváří](how-to-add-faces.md) a [identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md).
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste se naučili, jak migrovat existující kód (ne data) kolekce PersonGroup nebo FaceList do kolekce LargePersonGroup či LargeFaceList:
+V této příručce jste zjistili, jak migrovat existující jeden objekt PersonGroup nebo FaceList kód, ne data do LargePersonGroup nebo LargeFaceList:
 
-- Kolekce LargePersonGroup a LargeFaceList fungují podobně jako kolekce PersonGroup a FaceList, ale kolekce LargeFaceList vyžaduje operaci Train.
-- Dynamická aktualizace dat vyžaduje u rozsáhlých datových sad vhodnou strategii.
+- LargePersonGroup a LargeFaceList fungují podobně jako jeden objekt PersonGroup nebo FaceList, s tím rozdílem, že operace trénování nevyžadovala LargeFaceList.
+- Provést řádné strategie trénování k aktualizaci dynamických dat pro rozsáhlé datové sady.
 
 ## <a name="next-steps"></a>Další postup
 
 Použijte postupy příručku a zjistěte, jak přidat tváří jeden objekt PersonGroup nebo provedení operace identifikovat na jeden objekt PersonGroup.
 
-- [Postup přidání tváří](how-to-add-faces.md)
-- [Postup identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)
+- [Přidat tváří](how-to-add-faces.md)
+- [Identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)

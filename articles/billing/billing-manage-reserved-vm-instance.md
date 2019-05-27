@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994944"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127139"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -70,7 +70,7 @@ Delegovat správu přístupu k rezervaci:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** > **rezervace** do seznamu rezervace, které máte přístup.
 3. Vyberte rezervace, které chcete delegovat přístup ostatním uživatelům.
-4. Vyberte **Řízení přístupu (IAM)**.
+4. Vyberte **řízení přístupu (IAM)**.
 5. Vyberte **přidat přiřazení role** > **Role** > **vlastníka**. Pokud chcete udělit omezený přístup, vyberte jinou roli.
 6. Zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka.
 7. Vyberte uživatele a pak vyberte **Uložit**.

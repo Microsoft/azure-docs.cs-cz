@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/26/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: cc910359b5519d2cf1bd8a8bf019924dff660362
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73caa57fe7e721d69091bfb6ee74f7d88baf1ba3
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891041"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979089"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Vytvoření webové aplikace .NET pomocí rozhraní API služby Azure Cosmos DB pro MongoDB 
 
@@ -34,7 +34,7 @@ Tento rychlý start ukazuje, jak vytvořit účet Cosmos s [rozhraní API služb
 
 Ke spuštění ukázky, budete potřebovat [sady Visual Studio](https://www.visualstudio.com/downloads/) a platný účet služby Azure Cosmos DB.
 
-Pokud ještě nemáte sadu Visual Studio, stáhněte si sadu [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/), součástí jejíž instalace je i sada funkcí **Vývoj pro ASP.NET a web**.
+Pokud ještě nemáte Visual Studio, stáhněte si [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/) s **vývoj pro ASP.NET a web** úlohy instalace.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343030"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129153"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupiny prostředků a prostředků na úrovni předplatného
 
@@ -211,7 +211,7 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
 }
 ```
 
-## <a name="create-policies"></a>Vytvoření zásad
+## <a name="create-policies"></a>Vytvořit zásady
 
 ### <a name="assign-policy"></a>Přiřadit zásady
 

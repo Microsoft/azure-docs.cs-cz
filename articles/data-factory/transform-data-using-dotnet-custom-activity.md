@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165961"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -102,11 +102,11 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 
 | Vlastnost              | Popis                              | Požaduje se |
 | :-------------------- | :--------------------------------------- | :------- |
-| jméno                  | Název aktivity v kanálu     | Ano      |
+| name                  | Název aktivity v kanálu     | Ano      |
 | description           | Text popisující, jakým způsobem aktivita naloží.  | Ne       |
-| type                  | Pro vlastní aktivitu, typ aktivity je **vlastní**. | Ano      |
+| Typ                  | Pro vlastní aktivitu, typ aktivity je **vlastní**. | Ano      |
 | linkedServiceName     | Propojená služba se službou Azure Batch. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.  | Ano      |
-| command               | Příkaz vlastní aplikace, který se spustí. Pokud aplikace je již k dispozici na uzlech fondu Azure Batch, můžete přeskočit resourceLinkedService a folderPath. Například můžete zadat příkaz, který má být `cmd /c dir`, která je nativně podporuje uzlu Windows fondu služby Batch. | Ano      |
+| Příkaz               | Příkaz vlastní aplikace, který se spustí. Pokud aplikace je již k dispozici na uzlech fondu Azure Batch, můžete přeskočit resourceLinkedService a folderPath. Například můžete zadat příkaz, který má být `cmd /c dir`, která je nativně podporuje uzlu Windows fondu služby Batch. | Ano      |
 | resourceLinkedService | Propojená služba Azure Storage do účtu úložiště, kde je uložený vlastní aplikace | Ne&#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všechny její závislosti<br/><br/>Pokud máte závislosti uložena v podsložkách – to znamená, že v hierarchickou strukturu složek v části *folderPath* – struktura složek se sloučí aktuálně, když soubory se zkopírují do služby Azure Batch. To znamená všechny soubory se zkopírují do jediné složky žádné podsložky. Chcete-li tento problém vyřešit, zvažte komprese souborů, kopírování komprimovaného souboru a pak rozzipovávání vlastního kódu do požadovaného umístění. | Ne&#42;       |
 | referenceObjects      | Pole z existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON tak váš vlastní kód může odkazovat na prostředky služby Data Factory | Ne       |
@@ -342,7 +342,7 @@ Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity 
 |Jak je definován vlastní logiku      |Tím, že poskytuje spustitelný soubor      |Implementací knihovny DLL .NET      |
 |Prostředí pro spouštění vlastní logiky      |Windows nebo Linux      |Windows (.NET Framework 4.5.2)      |
 |Spouštění skriptů      |Podporuje spouštění skriptů přímo (například "cmd /c odezvu hello world" na virtuálním počítači Windows)      |Vyžaduje implementaci v knihovně DLL .NET      |
-|Datová sada, povinné      |Nepovinné      |Požadované aktivity zřetězit a předávají informace      |
+|Datová sada, povinné      |Volitelná      |Požadované aktivity zřetězit a předávají informace      |
 |Předávání informací z aktivity do vlastní logiku      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (Vlastnosti)      |Prostřednictvím ExtendedProperties (Vlastnosti), vstupní a výstupní datové sady      |
 |Načtení informací vlastní logiku      |Analyzuje activity.json linkedServices.json a datasets.json uloženy ve stejné složce spustitelného souboru      |Pomocí sady .NET SDK (rámce .NET 4.5.2)      |
 |Protokolování      |Zapisuje přímo do STDOUT      |Implementace protokolovací nástroj v knihovně DLL .NET      |

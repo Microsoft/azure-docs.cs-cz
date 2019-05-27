@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264239"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165525"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otevření portů TCP v bráně Windows Firewall pro výchozí instanci databázového stroje
 1. Pomocí Vzdálené plochy se připojte k virtuálnímu počítači. Podrobné pokyny pro připojení k virtuálnímu počítači najdete v tématu věnovaném [otevření virtuálního počítače SQL pomocí Vzdálené plochy](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
@@ -26,12 +26,12 @@ ms.locfileid: "51264239"
 6. Klikněte na **Další**.
 7. V dialogovém okně **Akce** vyberte **Povolit připojení** a potom klikněte na **Další**.
    
-    **Poznámka k zabezpečení:** Výběr nastavení **Povolit připojení, je-li zabezpečené** může zvýšit úroveň zabezpečení. Tuto možnost vyberte, pokud chcete konfigurovat další možnosti zabezpečení ve vašem prostředí.
+    **Poznámka k zabezpečení:** Výběr **povolit připojení, je-li zabezpečené** může zvýšit úroveň zabezpečení. Tuto možnost vyberte, pokud chcete konfigurovat další možnosti zabezpečení ve vašem prostředí.
    
     ![Povolení připojení](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
 8. V dialogovém okně **Profil** vyberte **Veřejný**, **Privátní** a **Doména**. Pak klikněte na tlačítko **Další**.
    
-    **Poznámka k zabezpečení:** Výběr možnosti **Veřejný** umožní přístup přes internet. Pokud je to možné, vybírejte vždy restriktivnější profil.
+    **Poznámka k zabezpečení:**  Výběr **veřejné** umožňuje přístup přes internet. Pokud je to možné, vybírejte vždy restriktivnější profil.
    
     ![Veřejný profil](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
 9. V dialogovém okně **Název** zadejte název a popis pro toto pravidlo a potom klikněte na **Dokončit**.
@@ -55,7 +55,7 @@ Databázový stroj SQL Serveru nemůže používat ověřování systému Window
 1. Zůstaňte připojeni k virtuálnímu počítači a na úvodní stránce zadejte **SQL Server Management Studio** a klikněte na vybranou ikonu.
    
     Při prvním otevření sady Management Studio se musí vytvořit uživatelské prostředí sady Management Studio. Tato operace může chvíli trvat.
-2. Management Studio zobrazí dialogové okno **Připojit k serveru**. Do pole **Název serveru** zadejte název virtuálního počítače, který se má připojit k databázovému stroji s využitím Průzkumníka objektů. (Místo názvu virtuálního počítače můžete také jako **název serveru** použít text **(local)** nebo jednu tečku). Vyberte **ověřování Windows**a nechat ***název_virtuálního_počítače * \your_local_administrator** v **uživatelské jméno** pole. Klikněte na **Připojit**.
+2. Management Studio zobrazí dialogové okno **Připojit k serveru**. Do pole **Název serveru** zadejte název virtuálního počítače, který se má připojit k databázovému stroji s využitím Průzkumníka objektů. (Místo názvu virtuálního počítače můžete také jako **název serveru** použít text **(local)** nebo jednu tečku). Vyberte **ověřování Windows**a nechat ***your_VM_name\your_local_administrator*** v **uživatelské jméno** pole. Klikněte na **Připojit**.
    
     ![Připojení k serveru](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. V Průzkumníku objektů systému SQL Server klikněte pravým tlačítkem na název instance SQL Serveru (název virtuálního počítače) a potom klikněte na **Vlastnosti**.

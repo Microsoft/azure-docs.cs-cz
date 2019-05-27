@@ -5,11 +5,11 @@ ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
 ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60200176"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66125195"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachování souborů ve službě Azure Cloud Shell
 Cloud Shell využívá Azure File storage pro uchovávání souborů napříč relacemi. Při počátečním spuštění Cloud Shell zobrazí výzvu k přidružení nové nebo existující sdílenou složku uchovávání souborů napříč relacemi.

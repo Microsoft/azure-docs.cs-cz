@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6e88d8f1c16e7c73f5c62325e41701e6f0ea97fb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728088"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967961"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -57,7 +57,7 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 1. Vývojáři dat místní prostředí integration runtime v rámci služby Azure data factory vytvoří pomocí rutiny prostředí PowerShell. Na webu Azure portal v současné době nepodporuje tuto funkci.
 2. Vývojáři dat vytvoří propojené služby pro do místního úložiště dat tak, že zadáte instancí modulu runtime integrace v místním prostředí, který se má používat pro připojení k úložišti dat.
 3. Uzel v místním prostředí integration runtime šifruje přihlašovací údaje s použitím Windows Data Protection Application Programming rozhraní (DPAPI) a uloží pověření místně. Více uzlů se nastavují pro vysokou dostupnost, přihlašovací údaje jsou další synchronizaci na jiných uzlech. Každý uzel šifruje přihlašovací údaje pomocí rozhraní DPAPI a ukládá je místně. Synchronizace přihlašovacích údajů je transparentní pro vývojáře, data a zařizuje služba v místním prostředí IR.    
-4. Služba Data Factory komunikuje s modulem runtime integrace v místním prostředí pro plánování a Správa úloh prostřednictvím *řídicí kanál* , který používá sdílené fronty Azure Service Bus. Pokud úlohu aktivity musí být spuštěn, Data Factory zařadí do fronty požadavek spolu s žádné přihlašovací údaje (v případě přihlašovací údaje nejsou již uloženy v místním prostředí integration runtime). Místní prostředí integration runtime zahajuje úlohy po dotazování fronty.
+4. Služba Data Factory komunikuje s modulem runtime integrace v místním prostředí pro plánování a Správa úloh prostřednictvím *řídicí kanál* , který používá sdílené [Azure Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay). Pokud úlohu aktivity musí být spuštěn, Data Factory zařadí do fronty požadavek spolu s žádné přihlašovací údaje (v případě přihlašovací údaje nejsou již uloženy v místním prostředí integration runtime). Místní prostředí integration runtime zahajuje úlohy po dotazování fronty.
 5. Místní prostředí integration runtime kopíruje data z místního úložiště do cloudového úložiště, nebo naopak v závislosti na konfiguraci aktivitu kopírování v datovém kanálu. Pro tento krok místní prostředí integration runtime přímo komunikuje s služeb cloudového úložiště, jako je úložiště objektů Blob v Azure přes zabezpečený kanál (HTTPS).
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Předpoklady pro použití v místním prostředí IR
@@ -126,11 +126,11 @@ Po instalaci softwaru místní prostředí integration runtime z můžete přidr
 
 ### <a name="scale-considerations"></a>Důležité informace o škálování
 
-#### <a name="scale-out"></a>Horizontální navýšení kapacity
+#### <a name="scale-out"></a>Horizontálně navýšit kapacitu
 
 Když je málo dostupné paměti na místní prostředí IR a využití CPU je vysoké, přidání nového uzlu pomáhá horizontální navýšení kapacity zatížení napříč počítači. Pokud aktivity selhávají, protože jste vypršení časového limitu nebo protože uzel v místním prostředí IR je offline, pomůže, pokud chcete přidat uzel do brány.
 
-#### <a name="scale-up"></a>Vertikální navýšení kapacity
+#### <a name="scale-up"></a>Škálovat nahoru
 
 Pokud nejsou dostupné paměti a procesoru využívá dobře, ale spuštění souběžných úloh se blíží limitu, by měla vertikálně navýšit kapacitu zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu, když aktivity jsou vypršení časového limitu, protože místní prostředí IR je přetížena. Jak je znázorněno na následujícím obrázku, můžete zvýšit maximální kapacita pro uzel:  
 

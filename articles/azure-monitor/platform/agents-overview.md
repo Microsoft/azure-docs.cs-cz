@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922838"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977569"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -30,7 +30,7 @@ Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy da
 Tento článek popisuje rozdíly mezi nimi a jejich funkce v pořadí, abyste mohli určit, která bude podporovat správy služeb IT nebo obecné požadavků na monitorování.  
 
 ## <a name="azure-diagnostic-extension"></a>Diagnostické rozšíření Azure
-[Rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md) (označované jako rozšíření Windows Azure diagnostiky (WAD) nebo Linux Azure Diagnostic (LAD)), který byl poskytnut pro Azure Cloud Services od stala všeobecně dostupná v 2010 je agent, který dodává simple shromažďování diagnostických dat z výpočetním prostředkem Azure jako virtuální počítač a zachována do služby Azure storage. Jakmile se v úložišti, jste se rozhodli zobrazení s jedním z několika dostupných nástrojů, jako například [Průzkumníku serveru v sadě Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) a [Průzkumníka služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+[Rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md) (označované jako rozšíření Windows Azure diagnostiky (WAD) nebo Linux Azure Diagnostic (LAD)), který byl poskytnut pro Azure Cloud Services od stala všeobecně dostupná v 2010 je agent, který dodává simple shromažďování diagnostických dat z výpočetním prostředkem Azure jako virtuální počítač a zachována do služby Azure storage. Jakmile se v úložišti, budete chtít zobrazit s jedním z několika dostupných nástrojů, jako například [Průzkumníku serveru v sadě Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) a [Průzkumníka služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Můžete shromažďovat:
 
@@ -59,7 +59,7 @@ U rozšířené monitorování, které je potřeba shromažďovat více než met
 Agenta Log Analytics byste měli použít, když chcete:
 
 * Shromažďovat data z nejrůznějších zdrojů, jak v rámci Azure, dalších poskytovatelů cloudových a místních prostředků. 
-* Pomocí jednoho z Azure monitoru, například monitorování řešení [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md), [monitorování Azure pro kontejnery](../insights/container-insights-overview.md)atd.  
+* Použijte jednu z Azure monitoru, například monitorování řešení [monitorování Azure pro virtuální počítače](../insights/vminsights-overview.md), [monitorování Azure pro kontejnery](../insights/container-insights-overview.md)atd.  
 * Použijte jednu z jiných služeb Azure pro správu, jako [Azure Security Center](../../security-center/security-center-intro.md), [Azure Automation](../../automation/automation-intro.md)atd.
 
 Dříve byly spojeny několik služeb Azure jako *Operations Management Suite*, a v důsledku agenta Log Analytics je sdílen mezi službami, včetně Azure Security Center a Azure Automation.  To zahrnuje úplnou sadu funkcí, které nabízejí, poskytování komplexní správu virtuálních počítačů Azure prostřednictvím jejich životního cyklu.  Některé příklady jsou:

@@ -6,14 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/15/2018
-ms.author: victorh
+origin.date: 08/15/2018
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314513"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66133707"
 ---
 # <a name="renew-application-gateway-certificates"></a>Prodloužit platnost certifikátů aplikační brány
 
@@ -25,7 +26,7 @@ Můžete obnovit certifikát přidružený naslouchací proces buď na webu Azur
 
 Prodloužit platnost certifikátu naslouchací proces z portálu, přejděte na naslouchací procesy pro brány vaší aplikace. Klikněte na naslouchací proces, který se má certifikát, který je potřeba obnovit a potom klikněte na **obnovit nebo upravit vybraný certifikát**.
 
-![Prodloužit platnost certifikátu](media/renew-certificate/ssl-cert.png)
+![Prodloužit platnost certifikátu](./media/renew-certificate/ssl-cert.png)
 
 Nahrát nový certifikát PFX, pojmenujte ho, zadejte heslo a potom klikněte na tlačítko **Uložit**.
 
@@ -35,7 +36,7 @@ Nahrát nový certifikát PFX, pojmenujte ho, zadejte heslo a potom klikněte na
 
 K obnovení certifikátu pomocí prostředí Azure PowerShell, použijte tento skript:
 
-```azurepowershell-interactive
+```azurepowershell
 $appgw = Get-AzApplicationGateway `
   -ResourceGroupName <ResourceGroup> `
   -Name <AppGatewayName>
@@ -52,15 +53,17 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 ## <a name="azure-cli"></a>Azure CLI
 
-```azurecli-interactive
-az network application-gateway ssl-cert update \
-  -n "<CertName>" \
-  --gateway-name "<AppGatewayName>" \
-  -g "ResourceGroupName>" \
-  --cert-file <PathToCerFile> \
+```azurecli
+az network application-gateway ssl-cert update `
+  -n "<CertName>" `
+  --gateway-name "<AppGatewayName>" `
+  -g "ResourceGroupName>" `
+  --cert-file <PathToCerFile> `
   --cert-password "<password>"
 ```
 
 ## <a name="next-steps"></a>Další postup
 
 Další konfigurace přesměrování zpracování SSL pomocí Azure Application Gateway najdete v tématu [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-portal.md)
+
+<!-- Update_Description: code update -->

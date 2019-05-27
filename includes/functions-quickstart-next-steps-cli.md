@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: b1df6063ffc6f428311edc7528d4ddba8700a3be
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134013"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132369"
 ---
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si další informace o místním vývoji funkcí Azure Functions pomocí nástrojů Azure Functions Core.
 

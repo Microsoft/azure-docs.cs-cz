@@ -16,11 +16,11 @@ ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550180"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127517"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -64,16 +64,16 @@ Nemusíte zadávat skupiny zabezpečení sítě na úrovni podsítě, protože B
 
 **Příchozí pravidla zabezpečení**
 
-| Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
+| Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| neuvedeno | `BatchNodeManagement` [Značky služby](../articles/virtual-network/security-overview.md#service-tags) | * | Všechny | 29876–29877 | TCP | Povolit |
-| Uživatel zdrojové IP adresy pro vzdálený přístup k výpočetním uzlům a/nebo výpočetní uzel podsíť pro úkoly s více instancemi Linux, v případě potřeby. | neuvedeno | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
+| neuvedeno | `BatchNodeManagement` [Značky služby](../articles/virtual-network/security-overview.md#service-tags) | * | Vše | 29876–29877 | TCP | Povolit |
+| Uživatel zdrojové IP adresy pro vzdálený přístup k výpočetním uzlům a/nebo výpočetní uzel podsíť pro úkoly s více instancemi Linux, v případě potřeby. | neuvedeno | * | Vše | 3389 (Windows), 22 (Linux) | TCP | Povolit |
 
 **Odchozí pravidla zabezpečení**
 
-| Zdroj | Zdrojové porty | Cíl | Značka cílové služby | Protocol (Protokol) | Akce |
+| Zdroj | Zdrojové porty | Cíl | Značka cílové služby | Protocol | Akce |
 | --- | --- | --- | --- | --- | --- |
-| Všechny | 443 | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ve stejné oblasti jako účet Batch a virtuální síť)  | Všechny | Povolit |
+| Vše | 443 | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ve stejné oblasti jako účet Batch a virtuální síť)  | Vše | Povolit |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Fondy v konfigurace služby Cloud Services
 
@@ -97,13 +97,13 @@ Nakonfigurujte příchozí provoz na portu 3389 pro Windows, pokud potřebujete 
 
 **Příchozí pravidla zabezpečení**
 
-| Zdrojové IP adresy | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
+| Zdrojové IP adresy | Zdrojové porty | Cíl | Cílové porty | Protocol | Akce |
 | --- | --- | --- | --- | --- | --- |
-Všechny <br /><br />Přestože to efektivně vyžaduje „povolit vše“, služba Batch použije pravidlo seznamu ACL na úrovni každého uzlu, které filtruje všechny IP adresy, které nejsou služby Batch. | * | Všechny | 10100, 20100, 30100 | TCP | Povolit |
-| Volitelné, pokud chcete povolit přístup protokolu RDP do výpočetních uzlů. | * | Všechny | 3389 | TCP | Povolit |
+Vše <br /><br />Přestože to efektivně vyžaduje „povolit vše“, služba Batch použije pravidlo seznamu ACL na úrovni každého uzlu, které filtruje všechny IP adresy, které nejsou služby Batch. | * | Vše | 10100, 20100, 30100 | TCP | Povolit |
+| Volitelné, pokud chcete povolit přístup protokolu RDP do výpočetních uzlů. | * | Vše | 3389 | TCP | Povolit |
 
 **Odchozí pravidla zabezpečení**
 
-| Zdroj | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
+| Zdroj | Zdrojové porty | Cíl | Cílové porty | Protocol | Akce |
 | --- | --- | --- | --- | --- | --- |
-| Všechny | * | Všechny | 443  | Všechny | Povolit |
+| Vše | * | Vše | 443  | Vše | Povolit |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4ff596cdafd348288187b0cd9b32f7b4c2d275
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cafe81a1b5ab6d26e71eff05e355d2ed79c4d5e7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823377"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119383"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit kombinovat zabezpečení informace o registraci (preview)
 
@@ -43,7 +43,7 @@ Dokončete tyto kroky pro povolení kombinovaná registrace:
 > Od března 2019 se nebudou k dispozici pro Vícefaktorové ověřování a samoobslužné resetování HESLA uživatelů v tenantech bezplatné a zkušební verze Azure AD možnosti telefonního hovoru. Zprávy SMS, nejsou touto změnou ovlivněny. Možnosti telefonního hovoru bude stále k dispozici uživatelům v placené tenantů Azure AD.
 
 > [!NOTE]
-> Po povolení kombinovaná registrace, uživatelé, kteří registrace nebo potvrzení telefonního čísla nebo mobilních aplikací prostřednictvím nového prostředí můžete využít pro Vícefaktorové ověřování a samoobslužné resetování HESLA, pokud tyto metody jsou povolené Vícefaktorové ověřování a samoobslužné resetování HESLA zásady. Pokud zakážete pak toto prostředí, na stránce uživatelé přejít na předchozí registrace samoobslužného resetování HESLA `https:/aka.ms/ssprsetup` budou muset provádět ověřování službou Multi-Factor Authentication před přístupem na stránce.
+> Po povolení kombinovaná registrace, uživatelé, kteří registrace nebo potvrzení telefonního čísla nebo mobilních aplikací prostřednictvím nového prostředí můžete využít pro Vícefaktorové ověřování a samoobslužné resetování HESLA, pokud tyto metody jsou povolené Vícefaktorové ověřování a samoobslužné resetování HESLA zásady. Pokud zakážete pak toto prostředí, na stránce uživatelé přejít na předchozí registrace samoobslužného resetování HESLA `https://aka.ms/ssprsetup` budou muset provádět ověřování službou Multi-Factor Authentication před přístupem na stránce.
 
 Pokud jste nakonfigurovali web k zóně Assignment List v Internet Exploreru, musí být ve stejné zóně následující weby:
 

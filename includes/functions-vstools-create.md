@@ -5,16 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 03/05/2019
-ms.date: 03/25/2019
-ms.author: v-junlch
+ms.date: 03/05/2019
+ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403647"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131833"
 ---
 Šablona projektu Azure Functions v sadě Visual Studio vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Můžete použít aplikaci function app na skupiny funkce jako logickou jednotku pro správu, nasazování a sdílení prostředků.
 
@@ -39,4 +38,3 @@ ms.locfileid: "60403647"
     > Ujistěte se, že nastavíte **přístupová práva** k `Anonymous`. Pokud se rozhodnete výchozí úroveň `Function`, je nutné k dispozici [klíč funkce](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
     
 4. Vyberte **OK** vytvořit projekt funkcí a funkci aktivovanou protokolem HTTP.
-

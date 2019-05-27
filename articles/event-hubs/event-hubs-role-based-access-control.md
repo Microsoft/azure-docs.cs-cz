@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343456"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978315"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -27,8 +27,13 @@ Pro Azure Event Hubs, Správa oborů názvů a všech souvisejících prostředk
 Aplikace, která používá Azure AD RBAC není potřeba zpracovat pravidla SAS a klíče nebo jiné přístupové tokeny specifické pro službu Event Hubs. Klientská aplikace komunikuje se službou Azure AD k navázání kontext ověřování a získá přístupový token pro službu Event Hubs. S uživatelskými účty domény, které vyžadují interaktivního přihlášení aplikace nikdy zpracovává všechny přihlašovací údaje přímo.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role a oprávnění
+Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu pro obor názvů služby Event Hubs:
 
-Počáteční verze public Preview můžete pouze přidat účty služby Azure AD a instanční objekty "Vlastník" nebo "Přispěvatel" rolí obor názvů služby Event Hubs. Tato operace udělují oprávnění Úplné řízení všech entit v oboru názvů identity. Operace správy, které se mění topologii obor názvů jsou zpočátku pouze podporované i když Azure resource management a ne přes rozhraní nativní Správa Event Hubs REST. Tato podpora také znamená, že rozhraní .NET Framework client [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt nelze použít s účtem služby Azure AD.  
+[Event Hubs vlastník dat (Preview)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) role umožňuje přístup k datům na obor názvů služby Event Hubs a jeho entit (fronty, témata, odběry a filtry)
+
+>[!IMPORTANT]
+> Dříve podporován spravované identity k přidání **vlastníka** nebo **Přispěvatel** role. Nicméně oprávnění pro přístup k datům **vlastníka** a **Přispěvatel** role už jsou zachované. Pokud používáte **vlastníka** nebo **Přispěvatel** role, přepínače na **vlastník dat Event Hubs** role.
+
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény Azure AD pomocí služby Event Hubs
 
@@ -44,7 +49,7 @@ Pokud chcete vytvořit zvláštní účet pro tento scénář [postupujte podle 
 
 ### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které podporují službu Event Hubs ve verzi preview pro RBAC: **USA – východ**, **USA – východ 2**, nebo **západní Evropa**. 
+Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md). 
 
 Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat přiřazení role** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**. Uživatelský účet má teď přístup k oboru názvů služby Event Hubs a do centra událostí, kterou jste vytvořili dřív.
  

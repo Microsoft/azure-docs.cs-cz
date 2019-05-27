@@ -10,11 +10,11 @@ ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744036"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132228"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
@@ -27,7 +27,7 @@ Tento článek předpokládá, že vytváříte novou aplikaci funkcí.
 
 1. V **Azure: Funkce** oblasti, vyberte nasazení na ikonu aplikace Function App.
 
-    ![Nastavení aplikace funkcí](./media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![Nastavení Function App](./media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Pokud nejsou přihlášeni, zobrazí se výzva k **přihlášení k Azure**. Můžete také **vytvořit si bezplatný účet Azure**. Po úspěšném přihlášení z prohlížeče přejděte zpět do Visual Studio Code. 
 

@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413704"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000101"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (preview)
+
+> [!Important]
+> Funkce automatického škálování funguje jenom pro Spark, Hive a MapReduce clustery, které jsou vytvořené po 8. května 2019. 
 
 Funkce automatického škálování clusteru Azure HDInsight se automaticky škáluje, počet pracovních uzlů v clusteru nahoru a dolů. Momentálně nelze škálovat jiné typy uzlů v clusteru.  Při vytváření nového clusteru HDInsight můžete nastavit minimální a maximální počet pracovních uzlů. Automatické škálování pak monitoruje analytics zatížení požadavků na prostředky a počet uzlů pracovního procesu se škáluje směrem nahoru nebo dolů. Neexistuje žádné další poplatky za tuto funkci.
 
 ## <a name="cluster-compatibility"></a>Kompatibilita clusteru
-
-> [!Important]
-> Funkce automatického škálování funguje jenom pro clustery vytvořené po zveřejnění funkce v května 2019. Nebude fungovat pro už existující clustery.
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
@@ -189,6 +189,25 @@ Vytvoříte clusteru služby HDInsight s automatickým Škálováním založené
 Chcete-li povolit automatické škálování na spuštěný cluster, vyberte **velikost clusteru** pod **nastavení**. Pak klikněte na tlačítko **povolit automatické škálování**. Vyberte typ automatického škálování má a zadejte možnosti pro změnu velikosti na základě zatížení nebo na plán. Nakonec klikněte na tlačítko **Uložit**.
 
 ![Povolit možnost automatického škálování na základě plánu uzlu pracovního procesu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+
+## <a name="best-practices"></a>Osvědčené postupy
+
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>Výběr škálování na základě zatížení nebo na plán
+
+Před provedením rozhodnutí na těchto režimech zvolit vezměte v úvahu následující faktory:
+
+* Načíst odchylka: nemá zatížení clusteru postupujte podle vzoru konzistentní vzhledem k aplikacím v určitých časech v konkrétní dny. V opačném případě zatížení na základě plánování je lepší volbou.
+* Smlouva SLA požadavky: Škálování automatického škálování je reaktivní místo prediktivní. Při spuštění zatížení pro zvýšení a kdy clusteru musí být v jeho Cílová velikost bude mít dostatek zpoždění mezi? Pokud existují přísných požadavků SLA a zatížení je dlouhodobý známé vzor, podle plánu je lepší volbou.
+
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Vezměte v úvahu latence škálování nahoru nebo dolů operace
+
+Může trvat 10 až 20 minut, než se škálování na dokončení operace. Při nastavování vlastní plán, naplánujte pro toto zpoždění. Například pokud potřebujete velikost clusteru bude 20 v 9:00:00, nastavte aktivační událost plánovače na dřívější čas, jako je například 8:30:00 tak, aby operace škálování dokončena v 9:00:00.
+
+### <a name="preparation-for-scaling-down"></a>Příprava pro škálování
+
+Během procesu škálování clusteru bude automatické škálování vyřadit z provozu uzly podle cílovou velikost. Pokud se na tyto uzly jsou spuštěné úlohy, automatické škálování počká, až jsou úlohy dokončeny. Protože každý pracovní uzel také slouží role v HDFS, dočasná data budou posunuty na zbývající uzly. Proto vám by měl Ujistěte se, že není dostatek místa na zbývající uzly k hostování dočasná data. 
+
+Spuštěné úlohy budou ke spuštění a dokončení. K naplánování jako za normálních okolností s menším počtem dostupných pracovních uzlů počká, úlohy čekající na vyřízení.
 
 ## <a name="monitoring"></a>Monitorování
 

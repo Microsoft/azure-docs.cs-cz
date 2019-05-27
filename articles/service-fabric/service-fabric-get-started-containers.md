@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
 ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66119103"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -450,13 +450,13 @@ Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci pu
 
 Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Příklad: containercluster.westus2.cloudapp.azure.com:19000. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
-Klikněte na **Publikovat**.
+Klikněte na tlačítko **publikovat**.
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je webový nástroj pro kontrolu a správu aplikací a uzlů v clusteru Service Fabric. Otevřete prohlížeč, přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ a postupujte podle pokynů k nasazení aplikace. Aplikace se nasadí, ale je v chybovém stavu, dokud se image nestáhne na uzlech clusteru (což může trvat nějakou dobu, v závislosti na velikosti image): ![Chyba][1]
 
 Aplikace je připravena, jakmile se ocitne v ```Ready``` stavu: ![Připraveno][2]
 
-Otevřete prohlížeč a přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:8081. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Otevřete prohlížeč a přejděte do http://containercluster.westus2.cloudapp.azure.com:8081. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ## <a name="clean-up"></a>Vyčištění
 

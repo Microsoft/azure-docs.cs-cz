@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b9fe723ca13cbee0e31b14e60a6bd740d2a282df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779291"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979551"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -100,7 +100,8 @@ Parametr má následující vlastnosti, které se používají v definici zásad
   - `displayName`: Popisný název na portálu pro parametr nezobrazuje.
   - `strongType`: (Volitelné) Při přiřazení definice zásady na portálu. Obsahuje seznam vědět kontextu. Další informace najdete v tématu [strongType](#strongtype).
   - `assignPermissions`: (Volitelné) Nastavit jako _true_ mít webu Azure portal vytvořit přiřazení role při přiřazování zásady. Tato vlastnost je užitečná v případě, že chcete přiřadit oprávnění mimo rozsah přiřazení. Existuje jedno přiřazení role na definici role v zásadách (nebo jednotlivou definice role ve všech zásad v rámci iniciativy). Hodnota parametru musí být platný prostředek nebo oboru.
-- `defaultValue`: (Volitelné) Nastaví hodnotu parametru v přiřazení-li zadána žádná hodnota. Vyžadováno při aktualizaci existující definice zásad, který je přiřazen.
+- `defaultValue`: (Volitelné) Nastaví hodnotu parametru v přiřazení-li zadána žádná hodnota.
+  Vyžadováno při aktualizaci existující definice zásad, který je přiřazen.
 - `allowedValues`: (Volitelné) Poskytuje pole hodnot, které přijímá parametr během přiřazení.
 
 Například můžete definovat definici zásady možné omezit místa, kde můžete nasadit prostředky. Může být parametr pro tuto definici zásady **allowedLocations**. Tento parametr by jednotlivé přiřazení definice zásady používá k omezení přijatelných hodnot. Použití **strongType** poskytuje vylepšené prostředí při dokončení přiřazení prostřednictvím portálu:
@@ -268,8 +269,7 @@ Podporovány jsou následující pole:
 - Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]`, a `tags[tag.with.dots]` stále přijatelné způsoby deklarace pole Klíčová slova.
-> Upřednostňované výrazy jsou však výše.
+> `tags.<tagName>`, `tags[tagName]`, a `tags[tag.with.dots]` stále přijatelné způsoby deklarace pole Klíčová slova. Upřednostňované výrazy jsou však výše.
 
 #### <a name="use-tags-with-parameters"></a>Použití značek s parametry
 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 1ab6bb069f60f4d2dbb4cfaecda54c3c2ef20adc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806428"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117344"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search pomocí poznámkových bloků Jupyter Pythonu
 > [!div class="op_single_selector"]
@@ -26,17 +26,17 @@ ms.locfileid: "65806428"
 > * [Azure Portal](search-create-index-portal.md)
 > 
 
-Vytvoření poznámkového bloku Jupyter, který vytvoří, načte a dotazuje Azure Search [index](search-what-is-an-index.md) pomocí Pythonu a [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvářet vlastní krok za krokem poznámkového bloku. Volitelně můžete spustit Poznámkový blok dokončení. Chcete-li stáhnout kopii, přejděte na [úložiště Azure-Search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvoření poznámkového bloku Jupyter, který vytvoří, načte a dotazy index Azure Search pomocí Pythonu a [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit poznámkový blok krok za krokem, od začátku. Alternativně můžete spustit Poznámkový blok dokončení. Chcete-li stáhnout kopii, přejděte na [úložiště Azure-Search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete, a pak si [zaregistrujte službu Azure Search](search-create-service-portal.md).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tyto služby a nástroje se používají v tomto rychlém startu. 
 
-+ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
-
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), poskytování Python 3.x a poznámkové bloky Jupyter.
+
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
 
 ## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
@@ -67,9 +67,9 @@ Otevřete Poznámkový blok Jupyter a ověřit připojení z místní pracovní 
 1. V druhé buňce vstupní požadavek prvky, které budou konstanty u každého požadavku. Platné hodnoty nahraďte název vyhledávací služby (YOUR-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (YOUR-ADMIN-API-KEY). 
 
    ```python
-    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
-    api_version = '?api-version=2019-05-06'
-    headers = {'Content-Type': 'application/json',
+   endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
+   api_version = '?api-version=2019-05-06'
+   headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
@@ -98,7 +98,6 @@ Pokud používáte portál, index, musí existovat ve službě můžete načíst
 Kolekce polí definuje strukturu *dokumentu*. Požadované elementy indexu patří název a kolekci polí. Každé pole má název, typ a atributy, které určují, jak se používá (například, zda je fulltextově prohledávatelné, filtrovatelné nebo retrievable ve výsledcích hledání). V rámci indexu, jeden z pole typu `Edm.String` musí být určena jako *klíč* pro identitu dokumentu.
 
 Tento index má název "hotelů pírovat" a definice polí, kterou vidíte níže. Je podmnožinou větší [indexu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) použít v dalších kurzech. Jsme oříznut v tomto rychlém startu pro zkrácení.
-
 
 1. V další buňky vložte následující příklad do buňky zadejte schéma. 
 
@@ -152,7 +151,7 @@ Tento index má název "hotelů pírovat" a definice polí, kterou vidíte níž
 
 Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adresy URL vašeho indexu. Rozhraní REST API je [přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na Githubu.
 
-1. V nové buňky poskytují tři dokumenty, které odpovídají schématu indexu. Zadejte akci nahrávání pro každý dokument.
+1. V nové buňky zadejte čtyři dokumenty, které odpovídají schématu indexu. Zadejte akci nahrávání pro každý dokument.
 
     ```python
     documents = {
@@ -212,7 +211,25 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
-        }
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "4",
+        "HotelName": "Sublime Cliff Hotel",
+        "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+        "Description_fr": "Le sublime Cliff Hotel est situé au coeur du centre historique de sublime dans un quartier extrêmement animé et vivant, à courte distance de marche des sites et monuments de la ville et est entouré par l'extraordinaire beauté des églises, des bâtiments, des commerces et Monuments. Sublime Cliff fait partie d'un Palace 1800 restauré avec amour.",
+        "Category": "Boutique",
+        "Tags": [ "concierge", "view", "24-hour front desk service" ],
+        "ParkingIncluded": "true",
+        "LastRenovationDate": "1960-02-06T00:00:00Z",
+        "Rating": 4.60,
+        "Address": {
+            "StreetAddress": "7400 San Pedro Ave",
+            "City": "San Antonio",
+            "StateProvince": "TX",
+            "PostalCode": "78216",
+            "Country": "USA"
+       }
       }
      ]
     }
@@ -242,6 +259,10 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
            {'errorMessage': None,
             'key': '3',
             'status': True,
+            'statusCode': 201}]},
+           {'errorMessage': None,
+            'key': '4',
+            'status': True,
             'statusCode': 201}]}
      ```
 
@@ -266,7 +287,7 @@ Tento krok ukazuje, jak zadávat dotazy na index pomocí [REST API služby Searc
    pprint(query)
    ```
 
-   Výsledky by měly vypadat podobně jako následující výstup.
+   Výsledky by měly vypadat podobně jako následující výstup. Výsledky jsou unranked (search.score = 1.0) vzhledem k tomu, že jsme neposkytli všechna kritéria tak, aby odpovídaly na.
 
    ```
    {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
@@ -279,14 +300,17 @@ Tento krok ukazuje, jak zadávat dotazy na index pomocí [REST API služby Searc
                'HotelName': 'Twin Dome Motel'},
               {'@search.score': 1.0,
                'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'}]}
+               'HotelName': 'Triple Landscape Hotel'},
+              {'@search.score': 1.0,
+               'HotelId': '4',
+               'HotelName': 'Sublime Cliff Hotel'}]}
    ```
 
-3. Zkuste několik další příklady dotazů syntaxe získat představu. Můžete použít filtr, vzít první dva výsledky, řadit podle konkrétní pole, nebo 
+3. Zkuste několik další příklady dotazů syntaxe získat představu. Můžete použít filtr, vzít první dva výsledky nebo seřadit podle určitého pole.
 
    + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
 
-   + `searchstring = '&search=hotel&$top=2&$select=HotelId,HotelName,Description'`
+   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
 
    + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
 
@@ -311,7 +335,7 @@ pprint(index_list)
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o syntaxi dotazů a scénáře.
+Tento rychlý start využívá jako zjednodušení, zkrácenou verzi indexu Hotels. Můžete vytvořit na plnou verzi pro vyzkoušení najdete další zajímavé dotazy. Plná verze a všechny dokumenty 50 získáte spuštěním **importovat data** Průvodce výběrem *hotels-sample* ze zdrojů dat integrovanou ukázkovou.
 
 > [!div class="nextstepaction"]
-> [Vytvoření základního dotazu](search-query-overview.md)
+> [Rychlé zprovoznění: Vytvoření indexu na webu Azure Portal](search-get-started-portal.md)

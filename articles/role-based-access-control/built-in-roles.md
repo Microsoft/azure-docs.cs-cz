@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ce23b891decd20db239e653702533ac7af21b980
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5d964ebd40ac1bd8817bc93d5e4f78096f221be2
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073342"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977763"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -37,7 +37,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | --- | --- |
 | [Vlastník](#owner) | Umožňuje správu všech položek včetně přístupu k prostředkům. |
 | [Přispěvatel](#contributor) | Umožňuje správu všech položek kromě přístupu k prostředkům. |
-| [Čtenář](#reader) | Umožňuje zobrazit všechny položky, ale ne provádět změny. |
+| [Reader](#reader) | Umožňuje zobrazit všechny položky, ale ne provádět změny. |
 | [AcrDelete](#acrdelete) | acr delete |
 | [AcrImageSigner](#acrimagesigner) | podepisující osoba image ACR |
 | [AcrPull](#acrpull) | acr pull |
@@ -56,12 +56,14 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Avere – operátor](#avere-operator) | Avere vFXT cluster používat ke správě clusteru |
 | [Role Správce služby Azure Kubernetes Cluster](#azure-kubernetes-service-cluster-admin-role) | Akce výpisu přihlašovacích údajů správce clusteru |
 | [Role uživatele Cluster Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Akce výpisu přihlašovacích údajů uživatele clusteru |
+| [Azure Maps Data Reader (Preview)](#azure-maps-data-reader-preview) | Udělí přístup ke čtení dat souvisejících s mapami z účtu Azure Maps. |
 | [Vlastník registrace Azure Stack](#azure-stack-registration-owner) | Umožňuje spravovat registrace Azure Stack. |
 | [Přispěvatel zálohování](#backup-contributor) | Umožňuje spravovat službu zálohování, ale neumožňuje vytvářet trezory a udělovat přístup ostatním uživatelům. |
 | [Operátor zálohování](#backup-operator) | Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytváření trezorů a udělování přístupu jiným uživatelům. |
 | [Čtenář záloh](#backup-reader) | Může zobrazovat služby zálohování, ale nemůže provádět změny. |
 | [Čtenář fakturace](#billing-reader) | Povolí přístup pro čtení fakturačních údajů. |
 | [BizTalk Contributor](#biztalk-contributor) | Umožňuje správu služeb BizTalk, ale ne přístup k nim. |
+| [Přístup k uzlu Blockchain člena (Preview)](#blockchain-member-node-access-preview) | Umožňuje pro přístup k Blockchainu členskými uzly |
 | [Přispěvatel koncového bodu CDN](#cdn-endpoint-contributor) | Může spravovat koncové body CDN, ale nemůže udělovat přístup jiným uživatelům. |
 | [Čtenář koncového bodu CDN](#cdn-endpoint-reader) | Může zobrazovat koncové body CDN, ale nemůže je měnit. |
 | [Přispěvatel profilu CDN](#cdn-profile-contributor) | Může spravovat profily CDN a jejich koncové body, ale nemůže udělovat přístup jiným uživatelům. |
@@ -86,6 +88,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [DevTest Labs User](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) | Můžete spravovat účty služby Azure Cosmos DB. Azure Cosmos DB je dříve DocumentDB. |
+| [Vlastník dat Event Hubs](#event-hubs-data-owner) | Umožňuje úplný přístup k prostředkům Azure Event Hubs | 
 | [Přispěvatel EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Umožňuje spravovat operace předplatných událostí Event Gridu. |
 | [Čtečka EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umožňuje číst předplatná událostí Event Gridu. |
 | [HDInsight Cluster – operátor](#hdinsight-cluster-operator) | Umožňuje číst a upravovat konfigurace clusterů HDInsight. |
@@ -116,6 +119,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Správce zabezpečení](#security-admin) | Ve službě Security Center jenom: Můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
 | [Správce zabezpečení (starší verze)](#security-manager-legacy) | Toto je starší verze role. Místo toho použijte Správce zabezpečení |
 | [Čtenář zabezpečení](#security-reader) | Ve službě Security Center jenom: Můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
+| [Vlastník dat služby Service Bus](#service-bus-data-owner) | Umožňuje úplný přístup k prostředkům Azure Service Bus |
 | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje spravovat službu Site Recovery, ale ne vytvářet trezory a přiřazovat role. |
 | [Operátor Site Recovery](#site-recovery-operator) | Umožňuje provádět převzetí služeb při selhání a navrácení služeb po obnovení, ale žádné jiné operace správy služby Site Recovery. |
 | [Čtenář Site Recovery](#site-recovery-reader) | Umožňuje zobrazovat stav služby Site Recovery, ale ne provádět jiné operace správy. |
@@ -427,7 +431,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
-## <a name="automation-operator"></a>Operátor služby Automation
+## <a name="automation-operator"></a>Operátor Automation
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,6 +575,21 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | *None* |  |
 > | **DataActions** |  |
 > | *None* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="azure-maps-data-reader-preview"></a>Čtenář dat Azure Maps (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Udělí přístup ke čtení dat souvisejících s mapami z účtu Azure Maps. |
+> | **ID** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | **Akce** |  |
+> | *None* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.Maps/accounts/data/read | Uděluje přístup pro čtení dat do účtu mapy. |
 > | **NotDataActions** |  |
 > | *None* |  |
 
@@ -815,6 +834,21 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="blockchain-member-node-access-preview"></a>Přístup k uzlu Blockchain člena (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje pro přístup k Blockchainu členskými uzly |
+> | **ID** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
+> | **Akce** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | Načte nebo vypíše existující Blockchain člen transakce uzel (uzly). |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | Se připojí k uzlu Blockchain člen transakce. |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="cdn-endpoint-contributor"></a>Přispěvatel koncového bodu CDN
 > [!div class="mx-tableFixed"]
 > | | |
@@ -932,7 +966,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **ID** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Autorizace pro čtení |
-> | Microsoft.ClassicStorage/storageAccounts/* | Vytvoření a Správa účtů úložiště |
+> | Microsoft.ClassicStorage/storageAccounts/* | Vytvoření a správa účtů úložiště |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
@@ -1139,6 +1173,8 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Resources/subscriptions/read | Získá výpis předplatných. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Advisor/configurations/read | Získání konfigurace |
+> | Microsoft.Advisor/recommendations/read | Doporučení pro čtení |
 > | **notActions** |  |
 > | *None* |  |
 > | **DataActions** |  |
@@ -1159,6 +1195,8 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Resources/subscriptions/read | Získá výpis předplatných. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Advisor/configurations/read | Získání konfigurace |
+> | Microsoft.Advisor/recommendations/read | Doporučení pro čtení |
 > | **notActions** |  |
 > | *None* |  |
 > | **DataActions** |  |
@@ -1198,6 +1236,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | Vypíše nešifrované přihlašovací údaje související s objednávkou. |
 > | Microsoft.Databox/locations/availableSkus/action | Tato metoda vrací seznam dostupných skladových položek. |
+> | Microsoft.Databox/locations/validateAddress/action | Ověří dodací adresu a nabídne alternativní adresy, pokud jsou nějaké k dispozici. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
@@ -1299,6 +1338,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.DevTestLab/*/read | Číst vlastnosti služby testovacího prostředí |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Deklarace identity náhodný nárokovatelný virtuální počítač v testovacím prostředí. |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | Vytvoření virtuálních počítačů v testovacím prostředí. |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | Zajistěte, aby že aktuální uživatel nemá platný profil v testovacím prostředí. |
 > | Microsoft.DevTestLab/labs/formulas/delete | Odstraňte vzorce. |
 > | Microsoft.DevTestLab/labs/formulas/read | Další vzorce. |
 > | Microsoft.DevTestLab/labs/formulas/write | Přidat nebo upravit vzorce. |
@@ -1369,6 +1409,22 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="event-hubs-data-owner"></a>Vlastník dat Event Hubs
+
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje úplný přístup k prostředkům Azure Event Hubs. |
+> | **ID** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **Akce** |  |
+> | Microsoft.EventHubs/* | Umožňuje úplnou správu přístup k oboru názvů služby Event Hubs |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHubs/* | Umožňuje úplný přístup k datům na obor názvů služby Event Hubs |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="eventgrid-eventsubscription-contributor"></a>Přispěvatel EventSubscription Event Gridu
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1426,6 +1482,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Resources/deployments/operations/read | Načte nebo vypíše operace nasazení. |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
 > | *None* |  |
@@ -2019,6 +2076,22 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="service-bus-data-owner"></a>Vlastník dat služby Service Bus
+
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje úplný přístup k prostředkům Azure Service Bus. |
+> | **ID** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **Akce** |  |
+> | Microsoft.ServiceBus/* | Umožňuje úplnou správu přístup k oboru názvů služby Service Bus |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/* | Umožňuje úplný přístup k datům na obor názvů služby Service Bus |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="site-recovery-contributor"></a>Přispěvatel Site Recovery
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2431,7 +2504,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
-> | Microsoft.Storage/storageAccounts/* | Vytvoření a Správa účtů úložiště |
+> | Microsoft.Storage/storageAccounts/* | Vytvoření a správa účtů úložiště |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
 > | *None* |  |
@@ -2482,7 +2555,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Poskytuje úplný přístup ke kontejnery objektů blob v Azure Storage a data, včetně přiřazování řízení přístupu POSIX. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
 > | **ID** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akce** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/* | Úplná oprávnění v kontejnerech.  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* | Úplná oprávnění v kontejnerech. |
 > | **notActions** |  |
 > | *None* |  |
 > | **DataActions** |  |
@@ -2608,7 +2681,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
-## <a name="user-access-administrator"></a>Správce přístupu uživatelů
+## <a name="user-access-administrator"></a>Správce uživatelských přístupů
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

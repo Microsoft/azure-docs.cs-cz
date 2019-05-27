@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: e087a1db008422aeec8fd4e073a7476eebe4d54b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729403"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140621"
 ---
 1. Přihlaste se k webu [Azure Portal].
 2. Vyberte **+ nová** > **Web + mobilní zařízení** > **mobilní aplikace**a potom zadejte název pro back-endu Mobile Apps.

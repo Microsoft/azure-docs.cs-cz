@@ -12,11 +12,11 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167183"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpečení zpráv B2B s certifikáty
 
@@ -50,7 +50,7 @@ Použití *veřejný certifikát* ve službě logic apps, které mají funkce B2
    | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Název** | <*název certifikátu*> | Název vašeho certifikátu, který je "publicCert" v tomto příkladu | 
-   | **Typ certifikátu** | Public | Typ certifikátu. |
+   | **Typ certifikátu** | Veřejné | Typ certifikátu. |
    | **Certifikát** | <*Název souboru certifikátu*> | Najděte a vyberte soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle **certifikát** pole. |
    ||||
 
@@ -89,7 +89,7 @@ Po definování vlastností v [smlouvy](logic-apps-enterprise-integration-agreem
    | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Název** | <*název certifikátu*> | Název vašeho certifikátu, který je "privateCert" v tomto příkladu | 
-   | **Typ certifikátu** | Private | Typ certifikátu. |
+   | **Typ certifikátu** | Privátní | Typ certifikátu. |
    | **Certifikát** | <*Název souboru certifikátu*> | Najděte a vyberte soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle **certifikát** pole. | 
    | **Skupina prostředků** | <*integration-account-resource-group*> | Účet integrace skupinu prostředků, která je "MyResourceGroup" v tomto příkladu | 
    | **Key Vault** | <*Název trezoru klíčů*> | Název vaší službou Azure key vault. |

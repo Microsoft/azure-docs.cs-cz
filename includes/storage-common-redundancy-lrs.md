@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 32032f729283cb3f2a786412b563fdee88ba4c8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 124f5c01b7718f729094de1c02391946ff50cef4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729610"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113760"
 ---
 Místně redundantní úložiště (LRS) zajišťuje alespoň 99,999999999 % (11 nines) odolnosti objektů v průběhu daného roku. LRS poskytuje tento objekt odolnosti replikuje vaše data na jednotce škálování úložiště. Datové centrum, nachází v oblasti, ve kterém jste vytvořili účet úložiště hostuje jednotce škálování úložiště. Žádost o zápis do účtu úložiště LRS skončí úspěšně, až data se zapisují do všech replik. Každá replika se nachází v samostatných doménách selhání a upgradovacích doménách v jednotce škálování úložiště.
 
@@ -22,4 +22,4 @@ Jednotky škálování úložiště je kolekce stojany uzlů úložiště. Domé
 LRS se možnost replikace nejnižší náklady a nabízí nejnižší odolnosti ve srovnání s další možnosti. Pokud dojde k havárii úrovni datacentra (třeba fire nebo zahlcení), všechny repliky může být ztracené nebo neobnovitelná. Chcete-li toto riziko snížit, společnost Microsoft doporučuje používat zónově redundantní úložiště (ZRS) nebo geograficky redundantní úložiště (GRS).
 
 * Pokud aplikace ukládá data, která můžou být snadno znovu vytvořena Pokud dojde ke ztrátě dat, můžete zvolit LRS.
-* Některé aplikace jsou omezeny na replikaci dat pouze v rámci země z důvodu požadavků na data zásad správného řízení. V některých případech může být spárovaných oblastí, ve kterých se data replikují pro účty GRS v jiné zemi. Další informace o spárovaných oblastí najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
+* Některé aplikace jsou omezeny na replikaci dat pouze v rámci zemi/oblast dat požadavky zásad správného řízení. V některých případech může být spárovaných oblastí, ve kterých se data replikují pro účty GRS v jiné zemi/oblast. Další informace o spárovaných oblastí najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).

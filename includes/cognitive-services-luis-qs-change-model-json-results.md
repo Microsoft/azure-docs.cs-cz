@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: 15047b9782ea86b91ba78e0d745c67892fdc8b76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710193"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124118"
 ---
 Pole `response` pro přidání ukázkových promluv označuje úspěch nebo neúspěch každé takové promluvy s vlastností `hasError`. Následující odpověď JSON ukazuje, že obě promluvy byly přidány úspěšně. 
 

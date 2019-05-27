@@ -7,12 +7,12 @@ ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498759"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979332"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytvořit zásady pro vlastnosti pole pro prostředky Azure
 
@@ -207,9 +207,9 @@ Další informace najdete v tématu [přidat příklady](../concepts/effects.md#
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Zkontrolujte [struktura definic zásad](../concepts/definition-structure.md)
-- Kontrola [Principy účinky zásad](../concepts/effects.md)
-- Pochopit postup [programové vytváření zásad](programmatically-create.md)
-- Zjistěte, jak [opravit nekompatibilní prostředky](remediate-resources.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
+- Pochopit postup [programové vytváření zásad](programmatically-create.md).
+- Zjistěte, jak [nápravě nekompatibilních prostředků](remediate-resources.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

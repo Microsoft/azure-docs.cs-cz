@@ -115,3 +115,5 @@
       href: language-support.md
     - name: Analýzy pro rozhraní API Bingu pro vyhledávání obrázků
       href: bing-image-stats.md
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 79459be30a5a2018dc82486a84895b1a954941bc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62114324"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140460"
 ---
 1. V [webu Azure portal](https://portal.azure.com/)vyberte **Procházet vše** > **App Services**. Potom vyberte Mobile Apps back-endu. V části **nastavení**vyberte **App Service Push**. Vyberte název vašeho centra oznámení.
 2. Přejděte na **Windows (WNS)**. Zadejte **klíč zabezpečení** (tajný klíč klienta) a **SID balíčku** , který jste získali z web služeb Live Services. V dalším kroku vyberte **Uložit**.

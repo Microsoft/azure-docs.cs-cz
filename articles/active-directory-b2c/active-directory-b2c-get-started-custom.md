@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 05/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a66d45028b9fbf9c421b10ffb7863fcb9be5bec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f4ecc01f42d491f5d9d967b9983e773c1df22298
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779845"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986819"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "65779845"
 ## <a name="add-signing-and-encryption-keys"></a>Přidejte klíče pro podepisování a šifrování
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Klikněte na tlačítko **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant. 
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Klikněte na tlačítko **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant. 
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
 
@@ -70,17 +70,17 @@ Azure AD B2C, musíte k registraci dvě aplikace, které se používají k regis
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrace aplikace IdentityExperienceFramework
 
-1. Zvolte **všechny služby** v levém horním rohu webu Azure portal, vyhledejte a vyberte **registrace aplikací**.
-2. Vyberte **Registrace nové aplikace**.
-3. Pro **název**, zadejte `IdentityExperienceFramework`.
-4. Pro **typ aplikace**, zvolte **webové aplikace nebo rozhraní API**.
-5. Pro **přihlašovací adresa URL**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je název domény tenanta Azure AD B2C.
-6. Klikněte na možnost **Vytvořit**. 
-7. Po jeho vytvoření, zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Zvolte **všechny služby** v levém horním rohu webu Azure portal, vyhledejte a vyberte **Azure Active Directory**.
+2. V nabídce vyberte **registrace aplikací (starší verze)**.
+3. Vyberte **Registrace nové aplikace**.
+4. Pro **název**, zadejte `IdentityExperienceFramework`.
+5. Pro **typ aplikace**, zvolte **webové aplikace nebo rozhraní API**.
+6. Pro **přihlašovací adresa URL**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je název domény tenanta Azure AD B2C. Všechny adresy URL by měla nyní být pomocí [b2clogin.com](b2clogin.md).
+7. Klikněte na možnost **Vytvořit**. Po jeho vytvoření, zkopírujte ID aplikace a uložte ho pro pozdější použití.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrace aplikace ProxyIdentityExperienceFramework
 
-1. Vyberte **registrace aplikací**a pak vyberte **registrace nové aplikace**.
+1. V **registrace aplikací (starší verze)** vyberte **registrace nové aplikace**.
 2. Pro **název**, zadejte `ProxyIdentityExperienceFramework`.
 3. Pro **typ aplikace**, zvolte **nativní**.
 4. Pro **identifikátor URI pro přesměrování**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `yourtenant` je váš tenant Azure AD B2C.

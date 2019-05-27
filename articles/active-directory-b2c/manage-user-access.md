@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f4f2b93316c87a5e8ba572ca2b584dbd13f6536c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228016"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956946"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Pokud je uživatel identifikován jako za, můžete nastavit tok uživatele v Az
 
 - **Odeslat do aplikace bez znaménka tokenu JSON**: Azure AD B2C upozorní aplikaci, že uživatel je za a obsahuje informace o stavu uživatele svolení rodičů. Aplikace pak pokračuje s použitím obchodních pravidel. JSON token nedokončí úspěšné ověřování s aplikací. Aplikace musí zpracovat neověřený uživatel podle deklarací identity zahrnuje do tokenu JSON, které mohou zahrnovat **název**, **e-mailu**, **ageGroup**a **consentProvidedForMinor**.
 
-- **Zablokuje uživateli**: Pokud je uživatel za a nebyl zadán svolení rodičů, Azure AD B2C můžete upozornit uživatele, že uživatel je blokován. Žádný token vystaven, zablokuje se přístup a uživatelský účet není vytvořeno během registrace cesty. K implementaci toto oznámení, poskytují vhodné obsahu stránky HTML/CSS informovat uživatele a k dispozici odpovídající možnosti. V žádosti o nové registrace není potřeba žádná další akce.
+- **Zablokuje uživateli**: Pokud je uživatel za a nebyl zadán svolení rodičů, Azure AD B2C můžete upozornit uživatele, že je blokované. Žádný token vystaven, zablokuje se přístup a uživatelský účet není vytvořeno během registrace cesty. K implementaci toto oznámení, poskytují vhodné obsahu stránky HTML/CSS informovat uživatele a k dispozici odpovídající možnosti. V žádosti o nové registrace není potřeba žádná další akce.
 
 ## <a name="get-parental-consent"></a>Získat svolení rodičů
 
@@ -48,7 +48,7 @@ Následuje příklad pro shromažďování svolení rodičů tok uživatele:
 
 1. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) identifikuje uživatele jako datový typ za operace a vrací data uživatele do aplikace v podobě bez znaménka tokenu JSON.
 
-2. Aplikace zpracovává tokenu JSON a zobrazí obrazovku nezletilý oznamující mu, vyžaduje se souhlas rodiče a vyžádání souhlasu nadřazeného online. 
+2. Aplikace zpracovává tokenu JSON a zobrazí obrazovku nezletilý oznamující, vyžaduje se souhlas rodiče a vyžádání souhlasu nadřazeného online. 
 
 3. Azure AD B2C zobrazí přihlašovací cestu, že uživatel může přihlásit k obvykle a vydá token k aplikaci, která je nastavena na zahrnují **legalAgeGroupClassification = "minorWithParentalConsent"**. Aplikace shromažďuje e-mailovou adresu nadřazeného elementu a ověřuje, zda nadřazené Dospělý. K tomu použije důvěryhodného zdroje, například národní office, ověřování licencí nebo platební karty důkazu ID. Pokud je ověření úspěšné, aplikace vyzve nezletilé osoby k přihlášení pomocí Azure AD B2C tok uživatele. Pokud byl odepřen souhlasu (například pokud **legalAgeGroupClassification = "minorWithoutParentalConsent"**), Azure AD B2C vrátí token JSON (ne přihlášení) k restartování procesu souhlasu aplikace. Je možné Volitelně můžete k přizpůsobení toku uživatele tak, aby za nebo dospělého lze získat přístup k účtu menší odesláním registrační kód menší e-mailovou adresu nebo e-mailovou adresu pro dospělé v záznamu.
 

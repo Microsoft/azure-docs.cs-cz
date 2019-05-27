@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270449"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128707"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Pole a objektu funkce pro šablony Azure Resource Manageru
 
@@ -197,7 +197,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | Int | 1 |
-| objectOutput | Objekt | {"first": "Výchozí"} |
+| objectOutput | Object | {"first": "Výchozí"} |
 | arrayOutput | Pole | [1] |
 | emptyOutput | Bool | True |
 
@@ -338,7 +338,7 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obs
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu k vyhledání. |
+| container |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu k vyhledání. |
 | itemToFind |Ano |řetězec nebo int |Hodnota k vyhledání. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -403,11 +403,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | False |
+| stringFalse | Bool | False (Nepravda) |
 | objectTrue | Bool | True |
-| objectFalse | Bool | False |
+| objectFalse | Bool | False (Nepravda) |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| arrayFalse | Bool | False (Nepravda) |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -630,7 +630,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | String | jeden |
+| arrayOutput | String | jedna |
 | stringOutput | String | O |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -709,7 +709,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| objectOutput | Objekt | {"jedna": "a", "tři": "c"} |
+| objectOutput | Object | {"jedna": "a", "tři": "c"} |
 | arrayOutput | Pole | ["dvě", "tři"] |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -733,7 +733,7 @@ Vrátí objekt JSON.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec |Hodnota pro převod do formátu JSON. |
+| arg1 |Ano |string |Hodnota pro převod do formátu JSON. |
 
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -781,9 +781,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| jsonOutput | Objekt | {"a": "b"} |
-| nullOutput | Logická hodnota | True |
-| paramOutput | Objekt | {"a": "ukázka hodnotu"}
+| jsonOutput | Object | {"a": "b"} |
+| nullOutput | Boolean | True |
+| paramOutput | Object | {"a": "ukázka hodnotu"}
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1011,7 +1011,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min
+## <a name="min"></a>min.
 `min(arg1)`
 
 Vrátí minimální hodnotu z pole celých čísel nebo čárkami oddělený seznam celých čísel.
@@ -1363,7 +1363,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| objectOutput | Objekt | {"jedna": "a", "2": "b", "tři": "c2", "čtyři": "d", "5": "e"} |
+| objectOutput | Object | {"jedna": "a", "2": "b", "tři": "c2", "čtyři": "d", "5": "e"} |
 | arrayOutput | Pole | ["jedna", "dvě", "tři", "čtyři"] |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:

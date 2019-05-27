@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747757"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953031"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpečně instalaci a provozování váš Azure Data Box
 ![Ikona upozornění](./media/data-box-safety/warning_icon.png)
@@ -116,7 +116,7 @@ Oprávnění uživatele k používání zařízení může zrušit změny nebo z
 
 ![Všimněte si ikony](./media/data-box-safety/notice_icon.png) **oznámení:** 
 
-Toto zařízení byly testovány a najít pro dosažení souladu s omezeními třídy A digitální zařízení, se zapojením – část 15 FCC pravidel. Tato omezení jsou navržené tak zajistit přiměřené ochranu před škodlivým rušení při zařízení je provozována v komerčním prostředí. Toto zařízení generuje, používá a můžete radiate frekvenci energie a, pokud není nainstalovaná a použít v souladu s návodem, může to způsobit škodlivých rušení přepínač komunikace. Operace tato zařízení v obytné oblasti by mohla způsobit škodlivých rušení, ve kterém případ uživatel bude muset opravit rušení na své náklady.
+Toto zařízení byly testovány a najít pro dosažení souladu s omezeními třídy A digitální zařízení, se zapojením – část 15 FCC pravidel. Tato omezení jsou navržené tak zajistit přiměřené ochranu před škodlivým rušení při zařízení je provozována v komerčním prostředí. Toto zařízení generuje, používá a můžete radiate frekvenci energie a, pokud není nainstalovaná a použít v souladu s návodem, může to způsobit škodlivých rušení přepínač komunikace. Operace tato zařízení v obytné oblasti by mohla způsobit škodlivých rušení, ve kterém případ uživatel bude muset opravit rušení na vlastní náklady.
 
 Tato zařízení v souladu se část 15 FCC pravidel a oborové Kanada licence výjimkou RSS normě. Operace je v souladu s následující dvě podmínky: (1) toto zařízení nemůže způsobit škodlivé rušení a (2) zařízení, musíte přijmout všechny přijaté rušení, včetně rušení, který může způsobit neočekávané chování zařízení.
 

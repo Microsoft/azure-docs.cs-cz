@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 8874039d148cc89d3f47979370e64dd78777f268
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 790d095cfb1b59aed1b9014fc474f9ad6e1b3328
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325744"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131307"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Mapování vlastní domény na aplikaci funkcí
 
-Tento ukázkový skript vytvoří v plánu služby App Service aplikaci funkcí a potom ji namapuje na vámi poskytnutou vlastní doménu. Pokud je vaše aplikace funkcí hostovaná v [plánu služby App Service](../functions-scale.md#app-service-plan), můžete vlastní doménu namapovat pomocí záznamu CNAME nebo A. Pro aplikace funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) se podporuje pouze možnost CNAME. Tento příklad vytvoří plán služby App Service a k namapování domény vyžaduje záznam A. 
+Tento ukázkový skript vytvoří v plánu služby App Service aplikaci funkcí a potom ji namapuje na vámi poskytnutou vlastní doménu. Když je aplikaci funkcí hostované v [plán Premium](../functions-scale.md#premium-plan-public-preview) nebo [plán služby App Service](../functions-scale.md#app-service-plan), můžete namapovat vlastní doménu pomocí záznamu A nebo záznam CNAME. Pro aplikace funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) se podporuje pouze možnost CNAME. Tento příklad vytvoří plán služby App Service a k namapování domény vyžaduje záznam A. 
 
 Pokud chcete tento ukázkový skript spustit, musíte už mít nakonfigurovaný záznam A ve vlastní doméně, která odkazuje na výchozí název domény vaší webové aplikace. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure Web Apps](https://aka.ms/appservicecustomdns). 
 

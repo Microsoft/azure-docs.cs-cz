@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
 ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135536"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -210,7 +210,7 @@ V protokolu výkonu se vygeneruje pouze v případě, že je povolená pro každ
 |RequestCount     | Počet požadavků, které obsluhují.        |
 |latence | Průměrná latence (v milisekundách) žádostí z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí.|
-|Propustnost| Průměrná propustnost od poslední protokolu v bajtech za sekundu.|
+|throughput| Průměrná propustnost od poslední protokolu v bajtech za sekundu.|
 
 ```json
 {
@@ -248,8 +248,8 @@ Brány firewall protokolu se vytvoří pouze v případě, že je povolená pro 
 |ruleSetType     | Typ sady pravidel. Je k dispozici hodnota OWASP.        |
 |ruleSetVersion     | Verze se používá sada pravidel. Dostupné jsou hodnoty 2.2.9 a 3.0.     |
 |RuleId     | ID pravidla spouštěcí události.        |
-|zpráva     | Uživatelsky přívětivé zprávu pro aktivační událost. Další podrobnosti jsou uvedeny v části Podrobnosti.        |
-|action     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
+|message     | Uživatelsky přívětivé zprávu pro aktivační událost. Další podrobnosti jsou uvedeny v části Podrobnosti.        |
+|akce     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
 |Web     | Web, pro který byl vygenerován v protokolu. V současné době pouze globální je uvedené, protože pravidla jsou globální.|
 |Podrobnosti     | Podrobnosti o spouštěcí události.        |
 |details.Message     | Popis pravidla.        |

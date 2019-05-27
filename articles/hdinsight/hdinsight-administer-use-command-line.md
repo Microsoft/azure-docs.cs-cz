@@ -1,110 +1,98 @@
 ---
-title: Správa clusterů Apache Hadoop pomocí rozhraní příkazového řádku Classic Azure – Azure HDInsight
-description: Další informace o použití Azure classic CLI můžete spravovat clustery systému Apache Hadoop v Azure HDInsight.
+title: Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
+description: Zjistěte, jak pomocí Azure CLI ke správě clusterů Azure HDInsight. Typy clusterů patří Apache Hadoop, Spark, HBase, Storm, Kafka, Interactive Query a služby ML.
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/13/2019
 ms.author: tyfox
-ms.openlocfilehash: 94ef5a60ecc5d943d78b16a386660049cc52d82e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7c12831c43762ddc776e8d5701f002be97992cbc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694465"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859963"
 ---
-# <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Správa clusterů Apache Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure Classic
+# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
+
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Další informace o použití [rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md) ke správě [Apache Hadoop](https://hadoop.apache.org/) clustery v Azure HDInsight. Rozhraní příkazového řádku classic je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux.
+Další informace o použití [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ke správě clusterů Azure HDInsight. Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
-* **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Azure Classic CLI** -naleznete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md) pro informace o instalaci a konfiguraci.
-* **Připojení k Azure**, pomocí následujícího příkazu:
+* Azure CLI. Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) kroky.
 
-    ```cli
-    azure login
-    ```
-  
-    Další informace týkající se ověřování pomocí pracovního nebo školního účtu najdete v tématu [připojení k předplatnému Azure z rozhraní příkazového řádku Azure Classic](/cli/azure/authenticate-azure-cli).
-* **Přepněte do režimu Azure Resource Manager**, a to pomocí následujícího příkazu:
-  
-    ```cli
-    azure config mode arm
-    ```
+* Cluster Apache Hadoop v HDInsight. Zobrazit [Začínáme s HDInsight v Linuxu](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-Chcete-li zobrazit nápovědu, použijte **-h** přepnout.  Příklad:
+## <a name="connect-to-azure"></a>Připojení k Azure
 
-```cli
-azure hdinsight cluster create -h
+Přihlaste se ke svému předplatnému Azure. Pokud plánujete použít Azure Cloud Shell, pak stačí vybrat **vyzkoušet** v pravém horním rohu bloku kódu. Jinak zadejte následující příkaz:
+
+```azurecli-interactive
+az login
+
+# If you have multiple subscriptions, set the one to use
+# az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="create-clusters-with-the-cli"></a>Vytvoření clusterů pomocí rozhraní příkazového řádku
-Zobrazit [vytváření clusterů v HDInsight pomocí rozhraní příkazového řádku Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+## <a name="list-clusters"></a>Výpis clusterů
 
-## <a name="list-and-show-cluster-details"></a>Seznam a zobrazit podrobnosti o clusteru
-Seznam a zobrazit podrobnosti o clusteru, použijte následující příkazy:
+Použití [seznam hdinsight az](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) pro seznam clusterů. Upravte příkazy pod nahrazením `RESOURCE_GROUP_NAME` s názvem vaší skupiny prostředků, zadejte příkaz:
 
-```cli
-azure hdinsight cluster list
-azure hdinsight cluster show <Cluster Name>
+```azurecli-interactive
+# List all clusters in the current subscription
+az hdinsight list
+
+# List only cluster name and its resource group
+az hdinsight list --query "[].{Cluster:name, ResourceGroup:resourceGroup}" --output table
+
+# List all cluster for your resource group
+az hdinsight list --resource-group RESOURCE_GROUP_NAME
+
+# List all cluster names for your resource group
+az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:name}" --output table
 ```
 
-![Příkazového řádku zobrazit seznam clusterů][image-cli-clusterlisting]
+## <a name="show-cluster"></a>Zobrazení clusteru
+
+Použití [az hdinsight zobrazit](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) zobrazuje informace pro zadaný cluster. Upravte následující příkaz tak, že nahradíte `RESOURCE_GROUP_NAME`, a `CLUSTER_NAME` relevantní informace, zadejte příkaz:
+
+```azurecli-interactive
+az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
+```
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
-Pomocí následujícího příkazu odstraňte cluster:
 
-```cli
-azure hdinsight cluster delete <Cluster Name>
+Použití [az hdinsight odstranit](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) zadaný cluster odstranit. Upravte následující příkaz tak, že nahradíte `RESOURCE_GROUP_NAME`, a `CLUSTER_NAME` relevantní informace, zadejte příkaz:
+
+```azurecli-interactive
+az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 ```
 
 Můžete také odstranit cluster tak, že odstraníte skupinu prostředků, která obsahuje clusteru. Poznámka: Tato akce odstraní všechny prostředky ve skupině, včetně výchozího účtu úložiště.
 
-```cli
-azure group delete <Resource Group Name>
+```azurecli-interactive
+az group delete --name RESOURCE_GROUP_NAME
 ```
 
 ## <a name="scale-clusters"></a>Škálování clusterů
-Chcete-li změnit velikost clusteru Apache Hadoop:
 
-```cli
-azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-```
+Použití [změnit velikost az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) ke změně velikosti zadaný cluster HDInsight zadané velikosti. Upravte následující příkaz tak, že nahradíte `RESOURCE_GROUP_NAME`, a `CLUSTER_NAME` příslušné informace. Nahraďte `TARGET_INSTANCE_COUNT` s požadovaný počet uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [clusterů HDInsight škálování](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
 
-
-## <a name="enabledisable-http-access-for-a-cluster"></a>Povolí nebo zakáže přístup protokolu HTTP pro cluster
-
-```cli
-azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <password>
-azure hdinsight cluster disable-http-access [options] <Cluster Name>
+```azurecli-interactive
+az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 V tomto článku jste zjistili, jak provádět různé úlohy správy clusteru HDInsight. Další informace naleznete v následujících článcích:
 
 * [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md)
-* [Správa HDInsight pomocí Azure Powershellu][hdinsight-admin-powershell]
-* [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Jak používat rozhraní příkazového řádku Azure Classic][azure-command-line-tools]
-
-[azure-command-line-tools]: ../cli-install-nodejs.md
-[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-
-[image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
-[image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
-[image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
-[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/command-line-list-of-clusters.png "Seznam a zobrazení clusterů"
+* [Správa HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md)
+* [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)

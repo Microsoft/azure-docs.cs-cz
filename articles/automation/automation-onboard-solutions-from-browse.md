@@ -9,18 +9,18 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6359d57a1f4cce6ec89fd76ef343b515cafae6e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738977"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133145"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
 Azure Automation poskytuje řešení ke správě aktualizací zabezpečení operačního systému, sledování změn a inventáře, co je nainstalována na počítačích. Existuje několik způsobů, jak připojit počítače, můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), z vaší [účtu Automation](automation-onboard-solutions-from-automation-account.md), při procházení virtuální počítače, nebo podle [runbook](automation-onboard-solutions.md). Tento článek popisuje připojení těchto řešení při procházení virtuálních počítačů v Azure.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
@@ -59,27 +59,10 @@ Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí
 
 ![Žádný pracovní prostor](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
-
-V následující tabulce jsou uvedeny podporované mapování:
-
-|**Oblasti pracovního prostoru log Analytics**|**Oblasti služby Azure Automation**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
-
-<sup>2</sup> z důvodu omezení kapacity oblast není k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostory účty Automation a Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
+> [!NOTE]
+> Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
+>
+> Seznam podporovaných mapování dvojic najdete v tématu [mapování oblast pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 
@@ -122,6 +105,8 @@ Pokud jste použili spouštění/zastavování virtuálních počítačů špič
 * Spuštění a zastavení sad runbook virtuálního počítače
 * Proměnné
 
+Také je můžete také zrušit propojení pracovního prostoru ve svém účtu Automation z pracovního prostoru Log Analytics. Ve svém pracovním prostoru, vyberte **účtu Automation** pod **související prostředky**. Na stránce účtu Automation vyberte **zrušení propojení účtu**.
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Při připojování více počítačů, může být počítače, které se zobrazují jako **nelze povolit**. Existují různé důvody, proč nemusí být některé počítače povolená. V následujících částech se dozvíte možným příčinám **nelze povolit** stavu na virtuálním počítači při pokusu o připojení.
@@ -152,7 +137,7 @@ Při připojování více počítačů, může být počítače, které se zobra
 
 **Příčina:** Virtuální počítače, které používají model nasazení classic se nepodporují.
 
-**Řešení**: Virtuální počítač Migrate na modelu nasazení resource manager. Zjistěte, jak to provést, najdete v článku [migrace prostředků modelu nasazení classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Řešení**: Virtuální počítač Migrate na modelu nasazení Resource Manager. Zjistěte, jak to provést, najdete v článku [migrace prostředků modelu nasazení classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuální počítač je zastavený. (přidělení zrušeno)
 

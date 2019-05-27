@@ -10,25 +10,25 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 04fe9251ba124ed5d218daf915339c7f84efdeb6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 83aef90702e4a4cc4fd9bdfda486841f9b2a63a4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704194"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124502"
 ---
-# <a name="how-to-add-faces-to-a-persongroup"></a>Postup přidání tváří jeden objekt PersonGroup
+# <a name="add-faces-to-a-persongroup"></a>Přidat tváří jeden objekt PersonGroup
 
-Tato příručka ukazuje osvědčené postupy pro přidávání velkého množství osob a tváří na jeden objekt PersonGroup objekt. Stejné strategie platí také pro LargePersonGroup FaceList a LargeFaceList. Tato ukázka je napsána v C# vytvořeného v klientské knihovně .NET API pro rozpoznávání tváře.
+Tato příručka ukazuje, jak přidat velké množství osob a tváří na jeden objekt PersonGroup objekt. Stejné strategie platí také pro LargePersonGroup FaceList a LargeFaceList objekty. Tato ukázka je napsána v C# pomocí klientské knihovny Azure Cognitive Services Face API .NET.
 
 ## <a name="step-1-initialization"></a>Krok 1: Inicializace
 
-Následující kód deklaruje několik proměnných a implementuje přidejte pomocnou funkci rozhraním pro rozpoznávání tváře naplánování požadavků.
+Následující kód deklaruje několik proměnných a implementuje přidejte pomocnou funkci rozhraním pro rozpoznávání tváře naplánování požadavků:
 
 - `PersonCount` je celkový počet osob.
 - `CallLimitPerSecond` je maximální počet volání za sekundu podle úrovně předplatného.
 - `_timeStampQueue` je fronta zaznamenávající časová razítka požadavků.
-- `await WaitCallLimitPerSecondAsync()` počká, než bude platné odeslat další požadavek.
+- `await WaitCallLimitPerSecondAsync()` počká, až je platný odeslat další požadavek.
 
 ```csharp
 const int PersonCount = 10000;
@@ -66,7 +66,7 @@ Při použití klientské knihovny, je nutné předat do konstruktoru třídy Fa
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Klíč předplatného můžete získat z webu Marketplace nebo z portálu Azure Portal. Přečtěte si téma [Předplatná](https://www.microsoft.com/cognitive-services/sign-up).
+Klíč předplatného najdete na webu Azure Marketplace na webu Azure Portal. Další informace najdete v tématu [předplatná](https://www.microsoft.com/cognitive-services/sign-up).
 
 ## <a name="step-3-create-the-persongroup"></a>Krok 3: Vytvořte jeden objekt PersonGroup
 
@@ -80,9 +80,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-to-the-persongroup"></a>Krok 4: Vytvoření osoby, které mají jeden objekt PersonGroup
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>Krok 4: Vytvoření osob pro jeden objekt PersonGroup
 
-Osoby se vytváří současně, a aby nedošlo k překročení limitu volání, používá se příkaz `await WaitCallLimitPerSecondAsync()`.
+Osob jsou vytvořeny současně, a `await WaitCallLimitPerSecondAsync()` platí také pro nedošlo k překročení limitu volání.
 
 ```csharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -97,8 +97,8 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Přidat tváře osoby
 
-Přidávání tváří různým osobám se zpracovává souběžně, ale u konkrétní osoby je sekvenční.
-Opět se vyvolává příkaz `await WaitCallLimitPerSecondAsync()`, aby se zajistilo, že frekvence žádostí nepřekročí limit.
+Přidat do jiné osoby tváří souběžného zpracování. Tváří, které jsou přidány pro jeden konkrétní osobu, která se provádějí postupně.
+Opět `await WaitCallLimitPerSecondAsync()` se vyvolá, aby Ujistěte se, že frekvence požadavku v rámci oboru omezení.
 
 ```csharp
 Parallel.For(0, PersonCount, async i =>
@@ -120,21 +120,21 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="summary"></a>Souhrn
 
-V tomto průvodci jste se naučili vytvořit kolekci PersonGroup s velkým množstvím osob a tváří. Několik připomenutí:
+V této příručce jste zjistili, procesem vytvoření jeden objekt PersonGroup s velké množství osob a tváří. Několik připomenutí:
 
-- Tato strategie platí taky u kolekcí FaceList a LargePersonGroup.
-- Přidávání či odstraňování obličejů je možné v různých kolekcích FaceList nebo Person z kolekce LargePersonGroup zpracovávat souběžně.
-- Stejné operace u jedné konkrétní kolekce FaceList nebo Person z kolekce LargePersonGroup byste měli provádět sekvenčně.
-- Abychom zbytečně nezabíhali do podrobností, přeskočili jsme v tomto průvodci potenciální výjimky. Pokud chcete zlepšit robustnost, měli byste použít vhodné zásady opakování.
+- Tato strategie platí také pro FaceLists a LargePersonGroups.
+- Přidání nebo odstranění tváří různých FaceLists nebo osobám v LargePersonGroups souběžného zpracování.
+- Přidání nebo odstranění tváře, abyste jeden konkrétní FaceList nebo osoba LargePersonGroup se provádějí postupně.
+- Pro zjednodušení je vynecháno zpracování potenciální výjimky v této příručce. Pokud chcete vylepšit další odolnosti, použijte zásady opakování správné.
 
-Následující odkazy slouží jako rychlé připomenutí dříve vysvětlených funkcí:
+Následující funkce byly vysvětlení a jsme vám ukázali:
 
-- Vytvoření kolekcí PersonGroups pomocí rozhraní API [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
-- Vytvoření osob pomocí rozhraní API [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
-- Přidání tváří osobám pomocí rozhraní API [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)
+- Vytvoření s použitím objektů Persongroup [jeden objekt PersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) rozhraní API.
+- S vytvořením osob [vytvořit jeden objekt PersonGroup uživatele –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) rozhraní API.
+- Přidat tváře osoby pomocí [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) rozhraní API.
 
 ## <a name="related-topics"></a>Související témata
 
-- [Postup identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)
-- [Postup rozpoznávání tváří v obrázku](HowtoDetectFacesinImage.md)
-- [Postup použití funkce ve velkém měřítku](how-to-use-large-scale.md)
+- [Identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)
+- [Rozpoznávání tváří v obrázku](HowtoDetectFacesinImage.md)
+- [Použít funkci ve velkém měřítku](how-to-use-large-scale.md)

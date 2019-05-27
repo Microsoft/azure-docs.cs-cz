@@ -7,14 +7,14 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 6e1ac5dfd1972e406a1bd8dcd26e6aef2c4ea6d1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919866"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142519"
 ---
-# <a name="refresh-with-logic-apps"></a>Aktualizovat pomocí funkce Logic Apps
+# <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
 Pomocí Logic Apps a volání REST, můžete provádět operace aktualizace automatizované data v tabulkové modely vaší analýzy Azure, včetně synchronizace repliky jen pro čtení pro horizontální navýšení kapacity dotazu.
 
@@ -65,15 +65,15 @@ Nakonfigurujte aktivitu protokolu HTTP následujícím způsobem:
 
 |Vlastnost  |Hodnota  |
 |---------|---------|
-|**Metoda**     |POST         |
-|**URI**     | https://*vaší oblasti server*/servers/*jako název serveru*/models/*název databáze*/ <br /> <br /> Například: https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
-|**Hlavičky**     |   Typ obsahu, application/json <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**– Metoda**     |POST         |
+|**URI**     | https://*vaší oblasti server*/servers/*jako název serveru*/models/*název databáze*/ <br /> <br /> Například: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
+|**Záhlaví**     |   Typ obsahu, application/json <br /> <br />  ![Záhlaví](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o tvořící tělo požadavku najdete v tématu [asynchronní aktualizace pomocí REST API – příspěvek /refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Ověřování**     |Active Directory OAuth         |
 |**tenanta**     |Zadejte vaše ID Tenanta služby Azure Active Directory         |
 |**Cílová skupina**     |https://*.asazure.windows.net         |
 |**ID klienta**     |Zadejte vaše ClientID název instančního objektu         |
-|**Typ přihlašovacích údajů**     |Tajný kód         |
+|**Typ přihlašovacích údajů**     |Secret         |
 |**Tajný kód**     |Zadejte název tajný klíč instančního objektu         |
 
 Příklad:

@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 10/18/2018
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b13c57728c43e02f7ebf9d7730d82d681f5fc1f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364316"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965875"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
 ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
@@ -59,8 +59,11 @@ Když se připojíte k Microsoftu v jednom z našich [umístění partnerského 
 
 Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným v oblastech Severní Evropa a Západní Evropa. Přehled geopolitických oblastí, přidružených oblastí cloudu Microsoftu a odpovídajících umístění partnerských vztahů ExpressRoute najdete v článku [Partneři ExpressRoute a umístění partnerského vztahu](expressroute-locations.md).
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globální připojení s doplňkem ExpressRoute Premium
-Můžete povolit funkci doplňku ExpressRoute Premium, abyste rozšířili připojení přes geopolitické hranice. Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným ve všech oblastech po celém světě (národní cloudy jsou vyloučeny). Můžete přistupovat ke službám nasazeným v oblastech Jižní Amerika nebo Austrálie stejným způsobem, jakým přistupujete k oblastem Severní Evropa a Západní Evropa.
+### <a name="global-connectivity-with-expressroute-premium"></a>Globální připojení s ExpressRoute Premium
+Můžete povolit [ExpressRoute Premium](expressroute-faqs.md) abyste rozšířili připojení přes geopolitické hranice. Pokud se například připojíte k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným ve všech oblastech po celém světě (národní cloudy jsou vyloučeny). Můžete přistupovat ke službám nasazeným v oblastech Jižní Amerika nebo Austrálie stejným způsobem, jakým přistupujete k oblastem Severní Evropa a Západní Evropa.
+
+### <a name="local-connectivity-with-expressroute-local"></a>Místní připojení s ExpressRoute místní
+Můžete přenést data za výhodnou cenu tím, že [místní SKU](expressroute-faqs.md) Pokud je možné přenést data do umístění služby ExpressRoute téměř požadovanou oblast Azure. Přenos dat s místní, je součástí poplatek za ExpressRoute portu. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Propojení místních lokalit pomocí ExpressRoute Global Reach
 Můžete povolit ExpressRoute Global Reach pro výměnu dat mezi místními lokalitami díky propojení okruhů ExpressRoute. Pokud třeba máte soukromé datacentrum v Kalifornii připojené k ExpressRoute v Silicon Valley a jiné soukromé datacentrum v Texasu připojené k ExpressRoute v Dallasu, pomocí ExpressRoute Global Reach můžete svá soukromá datacentra propojit prostřednictvím dvou okruhů ExpressRoute. Provoz mezi datacentry bude procházet přes síť Microsoftu.

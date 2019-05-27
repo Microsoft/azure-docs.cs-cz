@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266972"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128648"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerické funkce pro šablony Azure Resource Manageru
 
@@ -40,7 +40,7 @@ Resource Manager poskytuje následující funkce pro práci s celými čísly:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>add
+## <a name="add"></a>přidat
 `add(operand1, operand2)`
 
 Vrací součet dvou celých čísel zadaná.
@@ -120,7 +120,7 @@ Vrátí index iterace smyčky.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| loopName | Ne | řetězec | Název smyčky pro získání iterace. |
+| loopName | Ne | string | Název smyčky pro získání iterace. |
 | Posun |Ne |int |Číslo, které má přidat do iterace založený na nule hodnoty. |
 
 ### <a name="remarks"></a>Poznámky
@@ -386,7 +386,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min
+## <a name="min"></a>min.
 `min (arg1)`
 
 Vrátí minimální hodnotu z pole celých čísel nebo čárkami oddělený seznam celých čísel.
