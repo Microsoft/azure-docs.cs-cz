@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/13/2019
-ms.openlocfilehash: f244a67abab5c7f8cd14277f87f055ac6d48b8d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762433"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978018"
 ---
-# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters"></a>Konfigurace omezení odchozího síťového provozu pro clustery Azure HDInsight
+# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Konfigurace omezení odchozího síťového provozu pro clustery Azure HDInsight (Preview)
 
 Tento článek popisuje kroky pro zabezpečit odchozí provoz z vašeho clusteru HDInsight pomocí Brána Firewall služby Azure. Následující postup předpokládá, že se konfigurace brány Firewall Azure pro stávajícího clusteru. Pokud nasazujete nový cluster a za bránou firewall, nejprve vytvořte HDInsight cluster a podsíť a pak postupujte podle kroků v této příručce.
 
@@ -27,7 +27,7 @@ Existuje několik závislostí, které vyžadují příchozí provoz. Řízení 
 
 Odchozí provoz závislostí HDInsight jsou téměř úplně definovány pomocí plně kvalifikovaných názvů domén, které nejsou statické IP adresy za nimi stojí. Chybějící statické adresy znamená, že skupiny zabezpečení sítě (Nsg) nelze použít pro uzamčení odchozího provozu z clusteru. Adresy změnit dostatečně často, že jeden nelze nastavit pravidla založená na aktuální překlad a, který slouží k nastavení pravidla skupiny zabezpečení sítě.
 
-Řešení zabezpečení odchozí adresy je použití zařízení brány firewall, která můžete řídit odchozí provoz na základě názvů domén. Brány Firewall na Azure můžete omezit odchozí přenosy HTTP i HTTPS založené na plně kvalifikovaný název domény cílový.
+Řešení zabezpečení odchozí adresy je použití zařízení brány firewall, která můžete řídit odchozí provoz na základě názvů domén. Brány Firewall na Azure můžete omezit odchozí přenosy HTTP i HTTPS založené na plně kvalifikovaný název domény cílového nebo [plně kvalifikovaný název domény značky](https://docs.microsoft.com/azure/firewall/fqdn-tags).
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurace brány Firewall na Azure pomocí HDInsight
 
@@ -80,7 +80,7 @@ Na **přidat kolekci pravidel aplikace** obrazovky, proveďte následující kro
         1. Zadejte `https:443` pod **protokol: Port** a `sqm.telemetry.microsoft.com` pod **cílit na plně kvalifikované názvy domény**.
     1. Pokud váš clusteru je zajištěná WASB a nepoužíváte výše uvedené koncové body služby, přidejte pravidlo pro WASB:
         1. V **Target plně kvalifikované názvy domény** části, zadejte **název**a nastavte **zdrojové adresy** k `*`.
-        1. Zadejte `wasb` pod **protokol: Port** a `*` pod **cílit na plně kvalifikované názvy domény**.
+        1. Zadejte `http` nebo [https] podle toho, pokud používáte wasb: / / nebo wasbs: / / pod **protokol: Port** a adresa url účtu úložiště v rámci **Target plně kvalifikované názvy domény**.
 1. Klikněte na tlačítko **Add** (Přidat).
 
 ![Název: Zadejte podrobnosti o aplikaci pravidla kolekce](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)

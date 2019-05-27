@@ -4,14 +4,14 @@ description: Tento článek vysvětluje, jak optimalizovat propustnost náklady 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 280d389875d5ac951e0a846f3331ea727176b5e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929015"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967301"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte náklady zřízenou propustnost v databázi Azure Cosmos DB
 
@@ -58,7 +58,7 @@ Jak je znázorněno v následující tabulce, v závislosti na výběru rozhran�
 |SQL API|Databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
 |Rozhraní Cassandra API|Prostor klíčů|Table|
-|Rozhraní Gremlin API|Databázový účet|Graph|
+|Rozhraní Gremlin API|Databázový účet|Graf|
 |Rozhraní Table API|Databázový účet|Table|
 
 Podle zřizování propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristiky vašich úloh. Jak už bylo zmíněno dříve, můžete prostřednictvím kódu programu a při každé zvýšení počtu čas nebo snížit vaše zřízená propustnost pro buď jednotlivé kontejnery nebo souhrnně mezi sadu kontejnerů. Podle elastické škálování propustnosti jako změny pracovního vytížení, platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sadu kontejnerů distribuovaná napříč několika oblastmi, pak propustnost můžete nakonfigurovat v kontejneru nebo sadu kontejnerů je zaručeno, které musí být dostupné ve všech oblastech.

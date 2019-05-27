@@ -6,44 +6,42 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: tisande
-ms.openlocfilehash: 3ba547aea9034777fe76f3c911efd2648f6184fa
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
-ms.translationtype: MT
+ms.openlocfilehash: 48d0c7a022ff568582637aac36a377ca022a413c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514796"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977360"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotaz SQL pro službu Azure Cosmos DB
 
-Poddotaz je dotaz vnořené jiný dotaz. Poddotazu se také nazývá vnitřní dotaz nebo vnitřní vyberte a příkazu, který obsahuje poddotaz je obvykle volána vnější dotaz.
+Poddotaz je dotaz vnořené jiný dotaz. Poddotazu se také nazývá vnitřní dotaz nebo vnitřní vyberte. Příkaz, který obsahuje poddotaz je obvykle volána vnější dotaz.
 
-Existují dva typy poddotazů:
+Tento článek popisuje SQL poddotazy a jejich běžné případy použití ve službě Azure Cosmos DB.
 
-* Korelační – poddotaz korelační je poddotaz vnější dotaz odkazoval na hodnoty. Poddotazu se vyhodnotí jednou pro každý řádek, který je zpracován vnější dotaz.
+## <a name="types-of-subqueries"></a>Typy poddotazů
 
-* Korelační non - A jiných korelovaných poddotaz je poddotaz, který je nezávislý na vnější dotaz a mohou být provedeny na svůj vlastní bez spoléhání se na vnější dotaz.
+Existují dva hlavní typy poddotazy:
+
+* **Korelační**: Poddotaz, který odkazuje na hodnoty z vnější dotaz. Poddotazu se vyhodnotí jednou pro každý řádek, který zpracovává vnější dotaz.
+* **Korelační**: Poddotaz, která je nezávislá vnější dotaz. Může běžet na svůj vlastní bez nutnosti spoléhat se na vnější dotaz.
 
 > [!NOTE]
 > Azure Cosmos DB podporuje pouze korelační poddotazy.
 
-## <a name="types-of-subqueries"></a>Typy poddotazů
+Poddotazy lze dále rozdělit na základě počtu řádků a sloupců, které vracejí. Existují tři typy:
+* **Tabulka**: Vrátí více řádků a více sloupců.
+* **Vícehodnotový**: Vrátí více řádků a jeden sloupec.
+* **Skalární**: Vrátí jeden řádek a jeden sloupec.
 
-Poddotazy lze dále rozdělit na základě počtu řádků a sloupců, které vracejí. Existují tři různé typy:
-1.  **Tabulka**: Vrátí více řádků a více sloupců
-2.  **Vícehodnotový**: Vrátí více řádků a jeden sloupec
-3.  **Skalární**: Vrátí jeden řádek a jeden sloupec
-
-> [!NOTE]
-> Azure Cosmos DB podporuje více hodnotami a skalární poddotazů
-
-Azure Cosmos DB SQL dotazy vrátit vždy jeden sloupec (hodnotu jednoduché nebo komplexní dokumentu). Proto pouze s více hodnotami a skalární poddotazy výše se dají použít ve službě Azure Cosmos DB. Vícehodnotový poddotaz jde použít jenom v klauzuli FROM jako relační výraz poddotaz skalární můžete využít jako skalární výraz, který v POLOŽKU nebo klauzuli WHERE nebo jako relační výraz v klauzuli FROM.
+Dotazy SQL ve službě Azure Cosmos DB je vždycky vrátí jeden sloupec (hodnotu jednoduché nebo komplexní dokumentu). Proto pouze s více hodnotami a skalární poddotazy se dají použít ve službě Azure Cosmos DB. Vícehodnotový poddotaz můžete použít jenom v klauzuli FROM jako relační výraz. Skalární poddotaz můžete použít jako skalární výraz, který v POLOŽKU nebo klauzuli WHERE, nebo jako relační výraz v klauzuli FROM.
 
 
 ## <a name="multi-value-subqueries"></a>Poddotazy s více hodnotami
 
-Vícehodnotový poddotazy vrátit sadu dokumentů a používají se vždycky v rámci klauzule FROM. Používají se pro:
+Vícehodnotový poddotazy vrátit sadu dokumentů a používají se vždycky v rámci klauzule FROM. Slouží pro:
 
-* Optimalizace spojení výrazů 
+* Optimalizace spojení výrazů. 
 * Po vyhodnocení výrazů nákladné a odkazuje na více než jednou.
 
 ### <a name="optimize-join-expressions"></a>Optimalizace spojení výrazů
@@ -62,9 +60,11 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-Pro tento dotaz bude odpovídat indexu všechny dokumenty, které má značku s názvem "počáteční vzorec", obsah položky s hodnotou mezi 0 a 10 a poskytování obsahu položky dobu větší než 1. Tady výrazu spojení se ale provést smíšený produkt všechny položky značky, živin a porcí polí pro každý odpovídající dokument před použitím filtru. Klauzule WHERE potom použije filtr predikát pro každou < c, t, n, s > řazené kolekce členů. Například pokud odpovídající dokumentu 10 položek v každém ze tří polí, ji bude rozbalen do 1 × 10 x 10 x 10 (například 1000) řazené kolekce členů. Poddotazy pomocí zde, může pomoct odfiltrováním položek pole připojené k doméně před spojením s další výraz.
+Pro tento dotaz bude odpovídat indexu všechny dokumenty, které má značku s názvem "počáteční vzorec." Je obsah položky s hodnotou 0 až 10 a poskytování obsahu položky dobu větší než 1. Tady výrazu JOIN provede mezi produkty všechny položky značky, živin a porcí pole pro každý odpovídající dokument před použitím filtru. 
 
-Tento dotaz je ekvivalentní ten výše, ale využívá poddotazy:
+Klauzule WHERE potom použije filtr predikát pro každou < c, t, n, s > řazené kolekce členů. Například pokud odpovídající dokumentu 10 položek v každém ze tří polí, ji bude rozbalen do 1 × 10 x 10 x 10 (1000) řazené kolekce členů. Poddotazy Tady můžete pomoci v odfiltrováním položek pole připojené k doméně před spojením s další výraz.
+
+Tento dotaz je ekvivalentní s předchozím histogramem ale používá poddotazy:
 
 ```sql
 SELECT Count(1) AS Count
@@ -74,13 +74,13 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-Za předpokladu, že pouze jedna položka v poli značky odpovídá filtru, a pět položek živin a porcí pole, spojení výrazů se rozbalí a 1 × 1 × 5 × 5 = 25 položek na rozdíl od 1 000 položek v prvním dotazu.
+Předpokládají, že pouze jedna položka v poli značky odpovídá filtru, a je pět položek pro živin a porcí pole. SPOJENÍ výrazů se pak rozšířit na 1 × 1 × 5 × 5 = 25 položky, na rozdíl od 1 000 položek v prvním dotazu.
 
 ### <a name="evaluate-once-and-reference-many-times"></a>Hodnocení jednou a odkaz v mnoha případech
 
-Poddotazy může pomoct optimalizovat dotazy s nákladné například uživatelem definované funkce (UDF) nebo komplexní řetězec nebo aritmetických výrazů. Vyhodnocení výrazu jednou, ale na něj odkazovat v mnoha případech můžete použít poddotaz spolu s výrazu JOIN.
+Poddotazy může pomoct optimalizovat dotazy s nákladné výrazy, jako je například uživatelem definované funkce (UDF), komplexní řetězce nebo aritmetických výrazech. Vyhodnocení výrazu jednou, ale na něj odkazovat v mnoha případech můžete použít poddotaz spolu s výrazu JOIN.
 
-Následující dotaz je vyhodnocen UDF GetMaxNutritionValue dvakrát:
+Spuštění následujícího dotazu UDF `GetMaxNutritionValue` dvakrát:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -88,7 +88,7 @@ FROM c
 WHERE udf.GetMaxNutritionValue(c.nutrients) > 100
 ```
 
-Tady je ekvivalentní dotazu, který provede UDF pouze jednou:
+Tady je ekvivalentní dotazu, který spouští UDF pouze jednou:
 
 ```sql
 SELECT TOP 1000 c.id, MaxNutritionValue
@@ -98,7 +98,7 @@ WHERE MaxNutritionValue > 100
 ``` 
 
 > [!NOTE] 
-> Zadané chování mezi produkty spojení výrazů, pokud by mohla UDF výraz vyhodnocen na nedefinovaný, měli byste zajistit, že vždy výrazu spojení vytváří jeden řádek tak, že vrací objekt z poddotazu, nikoli hodnotu přímo.
+> Mějte na paměti mezi produkty chování spojení výrazů. Pokud UDF výraz lze vyhodnotit na nedefinovaný, měli byste zajistit, že výraz spojení vždy vytvoří jeden řádek tak, že vrací objekt z poddotazu, nikoli hodnotu přímo.
 >
 
 Tady je podobný příklad, který vrací objekt, nikoli hodnotu:
@@ -110,7 +110,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-Přístup není omezena pouze na funkce UDF, ale spíše na libovolný výraz potenciálně nákladné. Například jsme mohli využít stejným způsobem s matematické funkce avg:
+Tento přístup není omezena pouze na funkce UDF. Platí pro libovolný výraz potenciálně nákladné. Například můžete provést stejný přístup s matematické funkce `avg`:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -121,8 +121,9 @@ WHERE AvgNutritionValue > 80
 
 ### <a name="mimic-join-with-external-reference-data"></a>Napodobení spojení s daty externího odkazu
 
-Často musíte odkazovat na statická data, která se mění jen zřídka, jako jsou jednotky měření nebo kódy zemí. U těchto dat je vhodnější není duplicitní pro každý dokument. Zabránění tato duplikace ušetříte na úložišti a zvýšit výkon zápisu udržováním menší velikost dokumentu. Poddotaz je možné tak, aby napodoboval sémantiky vnitřního spojení s kolekcí referenční data zde.
-Zvažte například tuto sadu referenční data.
+Potřebujete často odkazují na statická data, která se mění jen zřídka, jako jsou jednotky měření nebo kódy zemí. Je lepší nepoužívat duplicitní taková data pro každý dokument. Zabránění tato duplikace ušetříte na úložišti a zvýšit výkon zápisu udržováním menší velikost dokumentu. Můžete tak, aby napodoboval sémantiky vnitřního spojení s kolekcí referenčních dat poddotaz.
+
+Zvažte například tuto sadu referenční data:
 
 | **Jednotka** | **Název**            | **Násobitel** | **Základní jednotka** |
 | -------- | ------------------- | -------------- | ------------- |
@@ -145,7 +146,7 @@ Zvažte například tuto sadu referenční data.
 | IU       | Mezinárodní jednotky |                |               |
 
 
-Následující dotaz napodobuje propojení s těmito daty, takže můžeme přidat název jednotky do výstupu:
+Následující dotaz napodobuje propojení s těmito daty tak, že přidáte název jednotky do výstupu:
 
 ```sql
 SELECT TOP 10 n.id, n.description, n.nutritionValue, n.units, r.name
@@ -177,8 +178,9 @@ WHERE n.units = r.unit
 
 ## <a name="scalar-subqueries"></a>Skalární poddotazů
 
-Poddotaz skalární výraz, který je poddotaz, který se vyhodnotí na hodnotu single. Hodnota výrazu poddotaz skalární hodnotu projekce (klauzule SELECT) poddotazu.  Poddotaz skalární výraz, který lze použít na mnoha místech skalární výraz, který je platný. Pro instanci poddotaz skalární lze použít v jakékoli výraz v obou POLOŽKU a klauzule WHERE.
-Nicméně pomocí poddotazu skalární vždy nepomůže optimalizovat. Například předávání skalární poddotaz jako argument systémem nebo uživatelem definované funkce nepřináší žádné výhody v spotřebu RU nebo latence.
+Poddotaz skalární výraz, který je poddotaz, který se vyhodnotí na hodnotu single. Hodnota výrazu poddotaz skalární hodnotu projekce (klauzule SELECT) poddotazu.  Poddotaz skalární výraz, který můžete použít na mnoha místech, kde skalární výraz, který je platný. Například můžete použít skalární poddotaz v jakékoli výraz v obou POLOŽKU a klauzule WHERE.
+
+Skalární poddotazu není vždy pomoci optimalizovat, i když. Například předávání skalární poddotaz jako argument systémem nebo uživatelem definované funkce nepřináší žádné výhody v spotřeby prostředků jednotky (RU) nebo latence.
 
 Skalární poddotazy můžete dále dělí jako:
 * Skalární poddotazy jednoduchý výraz
@@ -186,7 +188,7 @@ Skalární poddotazy můžete dále dělí jako:
 
 ### <a name="simple-expression-scalar-subqueries"></a>Skalární poddotazy jednoduchý výraz
 
-Skalární poddotaz jednoduchý výraz je korelační poddotazu, který obsahuje klauzuli SELECT, který neobsahuje žádné agregační výrazy. Tyto poddotazy poskytuje výhody žádné optimalizace, protože kompilátor převede je do jedné větší jednoduchý výraz. Neexistuje žádný korelační kontext mezi vnitřní a vnější dotaz.
+Skalární poddotaz jednoduchý výraz je poddotaz korelační klauzule SELECT, který neobsahuje žádné agregační výrazy. Tyto poddotazy poskytuje výhody žádné optimalizace, protože kompilátor převede je do jedné větší jednoduchý výraz. Neexistuje žádný korelační kontext mezi vnitřní a vnější dotazů.
 
 Tady je několik příkladů:
 
@@ -196,7 +198,7 @@ Tady je několik příkladů:
 SELECT 1 AS a, 2 AS b
 ```
 
-Tento dotaz může být přepsán, pomocí poddotazu skalární jednoduchý výraz pro:
+Tento dotaz, můžete přepsat pomocí skalární poddotaz jednoduchý výraz:
 
 ```sql
 SELECT (SELECT VALUE 1) AS a, (SELECT VALUE 2) AS b
@@ -217,7 +219,7 @@ SELECT TOP 5 Concat('id_', f.id) AS id
 FROM food f
 ```
 
-Tento dotaz může být přepsán, pomocí poddotazu skalární jednoduchý výraz pro:
+Tento dotaz, můžete přepsat pomocí skalární poddotaz jednoduchý výraz:
 
 ```sql
 SELECT TOP 5 (SELECT VALUE Concat('id_', f.id)) AS id
@@ -243,7 +245,7 @@ SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : und
 FROM food f
 ```
 
-Tento dotaz může být přepsán, pomocí poddotazu skalární jednoduchý výraz pro:
+Tento dotaz, můžete přepsat pomocí skalární poddotaz jednoduchý výraz:
 
 ```sql
 SELECT TOP 10 f.id, (SELECT f.description WHERE Contains(f.description, 'fruit')).description
@@ -262,7 +264,7 @@ Výstup dotazu:
 ]
 ```
 
-## <a name="aggregate-scalar-subqueries"></a>Agregační skalární poddotazů
+### <a name="aggregate-scalar-subqueries"></a>Agregační skalární poddotazů
 
 Agregační skalární poddotaz je poddotazu obsahuje agregační funkci v projekci nebo filtr, který se vyhodnotí jako jedinou hodnotu.
 
@@ -292,7 +294,7 @@ Výstup dotazu:
 
 **Příklad 2**
 
-Poddotaz s více výrazy agregační funkce:
+Tady je poddotaz s více výrazy agregační funkce:
 
 ```sql
 SELECT TOP 5 f.id, (
@@ -317,7 +319,7 @@ Výstup dotazu:
 
 **Příklad 3**
 
-Dotaz s agregační poddotaz v projekci a filtr:
+Tady je dotaz s agregační poddotaz v projekci a filtr:
 
 ```sql
 SELECT TOP 5 
@@ -339,7 +341,7 @@ Výstup dotazu:
 ]
 ```
 
-Více ideální způsob, jak napsat tento dotaz je spojit poddotazu a odkazovat na alias v obou SELECT poddotazu a klauzule WHERE. Tento dotaz je mnohem efektivnější, protože budeme muset provést poddotazu, pouze v rámci příkazu join a ne v projekci i filtru.
+Více ideální způsob, jak napsat tento dotaz je spojit poddotazu a odkazovat na alias v obou SELECT poddotazu a klauzule WHERE. Tento dotaz je mnohem efektivnější, protože je nutné provést poddotazu, pouze v rámci příkazu join a ne v projekci i filtru.
 
 ```sql
 SELECT TOP 5 f.id, count_mg
@@ -348,27 +350,28 @@ JOIN (SELECT VALUE Count(1) FROM n IN f.nutrients WHERE n.units = 'mg') AS count
 WHERE count_mg > 20
 ```
 
-### <a name="exists-expression"></a>Výraz EXISTS
+#### <a name="exists-expression"></a>Výraz EXISTS
 
-Azure Cosmos DB podporuje výrazy EXISTS. Toto je agregované skalární poddotaz integrované do SQL API služby Azure Cosmos DB. EXISTS je logický výraz, který přijímá poddotaz výrazy a vrátí hodnotu true, pokud poddotaz vrátí všechny řádky; v opačném případě vrátí hodnotu false.
-Protože rozhraní SQL API služby Azure Cosmos DB nerozlišuje mezi logické výrazy a další skalární výrazy, EXISTS je možné v obou POLOŽKU a klauzule WHERE. To je rozdíl oproti T-SQL, kde je omezen na filtr logický výraz (třeba EXISTS, mezi a).
+Azure Cosmos DB podporuje výrazy EXISTS. Toto je agregované skalární poddotaz integrované do SQL API služby Azure Cosmos DB. EXISTS je logický výraz, který přijímá poddotaz výrazy a vrátí hodnotu true, pokud poddotaz vrátí všechny řádky. V opačném případě vrátí hodnotu false.
 
-Když poddotaz EXISTS vrací jedinou hodnotu, která není definována, EXISTS vyhodnotí na hodnotu false. Zvažte například následující dotaz, který se vyhodnotí na hodnotu false:
+Protože SQL API služby Azure Cosmos DB nerozlišují varianty logické výrazy a další skalární výrazy, můžete použít existuje v obou POLOŽKU a klauzule WHERE. To je rozdíl oproti T-SQL, kde je omezen na filtr logický výraz (například EXISTS, mezi a).
+
+Pokud existuje poddotaz vrátí jednu hodnotu, která má nedefinované, existuje vyhodnotí na hodnotu false. Zvažte například následující dotaz, který se vyhodnotí na hodnotu false:
 ```sql
 SELECT EXISTS (SELECT VALUE undefined)
 ```   
 
 
-Ale pokud je vynechán VALUE – klíčové slovo in poddotaz výše tak dotaz vyhodnotí na hodnotu true:
+Pokud je vynechán VALUE – klíčové slovo v předchozím poddotazu, dotaz bude vyhodnocen na hodnotu true:
 ```sql
 SELECT EXISTS (SELECT undefined) 
 ```
 
-Poddotaz bude zahrnovat seznam hodnot v seznamu select v objektu. Pokud vybraný seznam neobsahuje žádné hodnoty, poddotazu vrátí jednu hodnotu "{}' který je definován a proto existuje vyhodnotí jako true.
+Poddotaz bude zahrnovat seznam hodnot ve vybraném seznamu v objektu. Pokud vybraný seznam neobsahuje žádné hodnoty, poddotazu vrátí jednu hodnotu "{}". Tato hodnota je definován, takže EXISTS vyhodnotí jako true.
 
-### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>Příklad: Přepis adres ARRAY_CONTAINS a spojení jako EXISTS
+#### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>Příklad: Přepis adres ARRAY_CONTAINS a spojení jako EXISTS
 
-Běžným případem použití z ARRAY_CONTAINS je vyfiltrovat dokumentu existenci položku v poli. V tomto případě jsme se kontroluje Pokud pole značky obsahuje položku s názvem oranžově.
+Běžným případem použití z ARRAY_CONTAINS je vyfiltrovat dokumentu existenci položku v poli. V tomto případě jsme už kontroluje se, zda pole značky obsahuje položku s názvem "oranžovou."
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -376,7 +379,7 @@ FROM food f
 WHERE ARRAY_CONTAINS(f.tags, {name: 'orange'})
 ```
 
-Stejný dotaz může být přepsána tak, aby používala EXISTS:
+Stejný dotaz, který bude použit EXISTS je možné přepsat:
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -384,9 +387,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Kromě toho je ARRAY_CONTAINS pouze schopna provést kontrolu, pokud je hodnota rovna libovolný prvek v poli. Podle potřeby složitější filtry jsou pole vlastností spojení je povinný.
+Kromě toho ARRAY_CONTAINS může vrátit pouze pokud je hodnota rovna libovolný prvek v poli. Pokud potřebujete složitější filtry u pole vlastností, pomocí spojení.
 
-Vezměte v úvahu následující dotaz, filtry založené na jednotkách a nutritionValue vlastnosti v poli: 
+Vezměte v úvahu následující dotaz, který filtruje na základě jednotek a `nutritionValue` vlastnosti pole: 
 
 ```sql
 SELECT VALUE c.description
@@ -397,7 +400,7 @@ WHERE n.units= "mg" AND n.nutritionValue > 0
 
 Pro jednotlivé dokumenty v kolekci probíhá mezi produkty s jeho prvky pole. Tato operace JOIN umožňuje můžete filtrovat podle vlastností v rámci pole. Tento dotaz spotřebu RU však bude významný. Například pokud 1 000 dokumentů 100 položek v každé pole, se bude rozbalen do 1 000 × 100 (to znamená 100 000) řazené kolekce členů.
 
-Pomocí `EXISTS` tomuto problému předejít této nákladné mezi produkty:
+Pomocí EXISTS může pomoct vyhnout této nákladné mezi produkty:
 
 ```sql
 SELECT VALUE c.description
@@ -409,9 +412,9 @@ WHERE EXISTS(
 )
 ```
 
-V tomto případě můžeme filtrovat podle pole elementů v rámci existuje poddotaz. Pokud k elementu pole odpovídá filtru, a potom jsme projektu a `EXISTS` vyhodnotí jako true.
+V takovém případě můžete filtrovat podle pole elementů v rámci existuje poddotaz. Pokud k elementu pole odpovídá filtru, potom projektových a EXISTS vyhodnotí jako true.
 
-Můžeme také alias EXISTS odkazovat v projekci:
+Můžete také alias EXISTS odkazovat v projekci:
 
 ```sql
 SELECT TOP 1 c.description, EXISTS(
@@ -432,9 +435,9 @@ Výstup dotazu:
 ]
 ```
 
-### <a name="array-expression"></a>Výraz pole
+#### <a name="array-expression"></a>Výraz pole
 
-`ARRAY` Výraz lze použít k projekci výsledků dotazu jako pole. Tento výraz jde použít jenom v klauzuli SELECT dotazu.
+Chcete-li promítnout výsledky dotazu jako pole můžete použít výraz pole. Můžete použít tento výraz jenom v klauzuli SELECT dotazu.
 
 ```sql
 SELECT TOP 1   f.id, ARRAY(SELECT VALUE t.name FROM t in f.tags) AS tagNames
@@ -457,7 +460,7 @@ Výstup dotazu:
 ]
 ```
 
-Stejně jako u jiných poddotazy filtry se `ARRAY` výrazu jsou možné.
+Stejně jako u jiných poddotazy, je možné filtry se výraz pole.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t FROM t in c.tags WHERE t.name != 'infant formula') AS tagNames
