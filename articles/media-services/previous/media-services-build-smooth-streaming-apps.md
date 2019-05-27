@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466038"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949622"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit využívající Smooth Streaming aplikace Windows Store  
 
@@ -507,7 +507,7 @@ Stejné události jsou k dispozici na adaptivní správce úroveň zdroje, kter�
    ```
 
    > [!NOTE]
-   > CoreDispatcher slouží ke změnám vlákno uživatelského rozhraní od jiných vlákno uživatelského rozhraní. V případě problémové místo v dispečerského vlákna můžete použít dispečer poskytované učitelského si klade za cíl k aktualizaci prvku uživatelského rozhraní pro vývojáře.  Příklad:
+   > CoreDispatcher slouží ke změnám vlákno uživatelského rozhraní od jiných vlákno uživatelského rozhraní. V případě problémové místo v dispečerského vlákna můžete použít dispečer poskytované mají v úmyslu aktualizovat prvek uživatelského rozhraní pro vývojáře.  Příklad:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -847,7 +847,7 @@ Prezentace technologie Smooth Streaming může obsahovat více videosoubory zak�
          </ListBox>
          </StackPanel>
    ```
-3. Stisknutím klávesy **CTRL + S** se uložit změny he
+3. Stisknutím klávesy **CTRL + S** k uložení změn
 
 ### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
@@ -1027,7 +1027,7 @@ Dokončili jste Lekce 4.  V této lekci se přidat funkci, která zvolte stop.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Další materiály:

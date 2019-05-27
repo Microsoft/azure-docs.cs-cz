@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: ae1f5f9148fa516c98d78afdd57887d4279f92dc
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827687"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952931"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -51,7 +51,7 @@ Navázat připojení pomocí jedné z následujících možností:
 
 - **Povolit rozsahy IP adres Azure datacenter**. Tato možnost umožňuje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) v souboru pro stažení. Pro přístup k skupinu zabezpečení sítě (NSG), použijte rutinu Set-AzureNetworkSecurityRule. Pokud jste na seznam povolených pouze oblasti konkrétní IP adresy, budete také potřebovat do seznamu povolených IP adres služby Azure Active Directory (Azure AD) služby, značky, pokud chcete povolit ověřování.
 
-- **Povolit přístup pomocí značek NSG**. Pokud používáte skupiny zabezpečení sítě k omezení připojení, tato možnost přidá do vaší skupiny NSG, která umožňuje odchozí přístup ke službě Azure Backup pomocí značky AzureBackup pravidlo. Kromě této značky, budete také potřebovat odpovídající [pravidla](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags) pro službu Azure AD a Azure Storage umožňující připojení k ověřování a dat přenosu. Značka AzureBackup je pouze aktuálně dostupné v prostředí PowerShell. Chcete-li vytvořit pravidlo s použitím AzureBackup značky:
+- **Povolit přístup pomocí značek NSG**. Pokud používáte skupiny zabezpečení sítě k omezení připojení, tato možnost přidá do vaší skupiny NSG, která umožňuje odchozí přístup ke službě Azure Backup pomocí značky AzureBackup pravidlo. Kromě této značky, budete také potřebovat odpovídající [pravidla](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro službu Azure AD a Azure Storage umožňující připojení k ověřování a dat přenosu. Značka AzureBackup je pouze aktuálně dostupné v prostředí PowerShell. Chcete-li vytvořit pravidlo s použitím AzureBackup značky:
 
     - Přidat přihlašovací údaje pro účet Azure a aktualizujte národních cloudů<br/>
     `Add-AzureRmAccount`
@@ -67,7 +67,7 @@ Navázat připojení pomocí jedné z následujících možností:
 
   - Uložit skupinu zabezpečení sítě<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
-- **Povolit přístup s použitím značky Azure bránu Firewall**. Pokud používáte Firewall služby Azure, vytvořte pravidlo aplikace pomocí AzureBackup [plně kvalifikovaný název domény značka](https://docs.microsoft.com/en-us/azure/firewall/fqdn-tags). To umožňuje odchozí přístup ke službě Azure Backup.
+- **Povolit přístup s použitím značky Azure bránu Firewall**. Pokud používáte Firewall služby Azure, vytvořte pravidlo aplikace pomocí AzureBackup [plně kvalifikovaný název domény značka](https://docs.microsoft.com/azure/firewall/fqdn-tags). To umožňuje odchozí přístup ke službě Azure Backup.
 - **Nasazení HTTP proxy server pro směrování provozu**. Při zálohování databáze serveru SQL Server na Virtuálním počítači Azure, rozšíření zálohování na virtuálním počítači pomocí rozhraní API HTTPS příkazy pro správu odesílat data do služby Azure Storage a Azure Backup. Rozšíření zálohování také používá Azure AD pro ověřování. Směrování provozu linka záložního telefonu pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření jsou jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
 
 Možnosti připojení patří následující výhody a nevýhody:
