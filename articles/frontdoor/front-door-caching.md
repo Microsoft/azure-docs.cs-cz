@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306134"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962913"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Ukládání do mezipaměti službou Azure přední dveře
 Následující dokument pro branou určuje chování pomocí pravidel směrování, které mají povolené ukládání do mezipaměti.
@@ -101,7 +101,7 @@ Vymazat mezipaměť na branou jsou malá a velká písmena. Kromě toho jsou nez
 ## <a name="cache-expiration"></a>Doba vypršení platnosti mezipaměti
 Následující pořadí záhlaví se používá k určení, jak dlouho bude položka uložená v našich mezipaměti:</br>
 1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: Parametr maxage =\<sekund >
+2. Cache-Control: max-age =\<sekund >
 3. Vypršení platnosti: \<http datum >
 
 Hlavičky Cache-Control odpovědi, které označují, že odpověď nebudou zapisována do mezipaměti jako je například Cache-Control: privátní, Cache-Control: no-cache a Cache-Control: no-store jsou zachované. Pokud na serveru POP pro stejnou adresu URL jsou vydávaných za pochodu více požadavků, jsou však může sdílet odpovědi. Pokud je k dispozici žádné Cache-Control výchozí chování je, že AFD bude ukládat do mezipaměti prostředků pro X doba kde X je náhodně vyberou se mezi 1 až 3 dny.
