@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: 89df3a981ba3710e848f834c303772e94e10b139
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947184"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000977"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway
 
@@ -69,7 +69,7 @@ Služba Application gateway podporuje tyto proměnné serveru:
 | client_port                | Port klienta.                                                  |
 | client_tcp_rtt             | Informace o klientovi připojení TCP. K dispozici v systémech, které podporují parametr TCP_INFO soketu. |
 | client_user                | Při použití ověřování pomocí protokolu HTTP pro ověřování zadat uživatelské jméno. |
-| hostitel                       | V tomto pořadí priorit: název hostitele z řádku požadavek, název hostitele z pole hlavičky požadavku hostitele nebo odpovídající žádost o název serveru. |
+| host                       | V tomto pořadí priorit: název hostitele z řádku požadavek, název hostitele z pole hlavičky požadavku hostitele nebo odpovídající žádost o název serveru. |
 | cookie_*název*              | *Název* souboru cookie.                                            |
 | http_method                | Metoda použitá k odeslání požadavku adresa URL. Třeba získat nebo odeslat. |
 | http_status                | Stav relace. Například 200, 400 nebo 403.                       |
@@ -157,9 +157,7 @@ Můžete si vyzkoušet požadavku nebo odpovědi hlavičku HTTP přítomnost pro
 
 - Názvy záhlaví může obsahovat libovolný alfanumerické znaky a symboly konkrétní jak jsou definovány v [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Aktuálně nepodporujeme podtržítko (\_) speciálního znaku v hlavičce názvy.
 
-## <a name="need-help"></a>Potřebujete pomoc?
-
-Kontaktujte nás na adrese [ AGHeaderRewriteHelp@microsoft.com ](mailto:AGHeaderRewriteHelp@microsoft.com) Pokud potřebujete pomoc s touto funkcí.
+- Pokud odpověď má více záhlaví s názvem, potom přepsáním hodnotu jedné z těchto záhlaví způsobí vyřazením dalších hlaviček odpovědi.
 
 ## <a name="next-steps"></a>Další postup
 

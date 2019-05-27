@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 528d2fd5b26e06478078711405bd5b9ca51feeda
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721916"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860004"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -43,7 +43,7 @@ Vyberte název vašeho clusteru z [ **clustery HDInsight** ](#showClusters) str�
 | Položka| Popis |
 |---|---|
 |Přesunout|Cluster se přesune do jiné skupiny prostředků nebo do jiného předplatného.|
-|Odstranění|Odstraní cluster. |
+|Odstranit|Odstraní cluster. |
 |Obnovení|Aktualizuje zobrazení.|
 
 **Levé nabídky:**  
@@ -54,7 +54,7 @@ Vyberte název vašeho clusteru z [ **clustery HDInsight** ](#showClusters) str�
     |Přehled|Obsahuje obecné informace pro váš cluster.|
     |Protokol aktivit|Zobrazení a dotazování protokolů aktivit.|
     |Řízení přístupu (IAM)|Použití přiřazení rolí.  Zobrazit [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
-    |Značky|Umožňuje nastavit páry klíč/hodnota k definování vlastní taxonomii z vašich cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a pak použít společné hodnoty pro všechny služby související s konkrétním projektu.|
+    |Tags|Umožňuje nastavit páry klíč/hodnota k definování vlastní taxonomii z vašich cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a pak použít společné hodnoty pro všechny služby související s konkrétním projektu.|
     |Diagnostikovat a řešit problémy|Zobrazte informace o odstraňování potíží.|
     |Rychlý start|Zobrazí informace, které vám pomůže začít používat HDInsight.|
     |Nástroje|Nápověda pro HDInsight související nástroje.|
@@ -72,7 +72,7 @@ Vyberte název vašeho clusteru z [ **clustery HDInsight** ](#showClusters) str�
     |Akce skriptů|Spouštění skriptů Bash v clusteru. Zobrazit [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).|
     |Externí metaúložiště|Zobrazení [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/) metaúložiště. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru.|
     |Partner HDInsight|Přidat nebo odebrat aktuální HDInsight Partner.|
-    |Vlastnosti|Zobrazení [vlastnosti clusteru](#properties).|
+    |Vlastnost|Zobrazení [vlastnosti clusteru](#properties).|
     |Zámky|Přidáte zámek proti zabránit clusteru se změnily nebo odstranily.|
     |Automatizační skript|Zobrazení a export šablony Azure Resource Manageru pro cluster. V současné době jde exportovat jenom účet závislého úložiště Azure. Zobrazit [clustery založené na Linuxu se vytvořit Apache Hadoop v HDInsight pomocí šablon Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
 
@@ -89,7 +89,7 @@ Vyberte název vašeho clusteru z [ **clustery HDInsight** ](#showClusters) str�
 
     | Položka| Popis |
     |---|---|
-    |Stav prostředků|Zobrazit [přehled Azure resource health](../service-health/resource-health-overview.md).|
+    |Stav prostředku|Zobrazit [přehled Azure resource health](../service-health/resource-health-overview.md).|
     |Nová žádost o podporu|Umožňuje vytvořit lístek podpory s podporou Microsoftu.|
 
 ## <a name="properties"></a> Vlastnosti clusteru
@@ -204,7 +204,7 @@ Existuje mnoho způsobů, které můžete naprogramovat procesu:
 
 * Uživatel Azure Data Factory. Zobrazit [vytvořit na vyžádání založené na Linuxu Apache Hadoop clusterů v HDInsight pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) pro vytváření HDInsight na vyžádání propojené služby.
 * Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](hdinsight-analyze-flight-delay-data-linux.md).
-* Pomocí příkazového řádku Azure Classic. Zobrazit [HDInsight Správa clusterů pomocí rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md).
+* Pomocí Azure CLI. Zobrazit [spravovat Azure HDInsight clusterů pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md).
 * Použití sady HDInsight .NET SDK. Zobrazit [úlohy odeslání Apache Hadoop](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Informace o cenách najdete v části [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Pokud chcete odstranit cluster z portálu, přečtěte si téma [odstranění clusterů](#delete-clusters)
@@ -284,7 +284,7 @@ Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto
 * Oozie
 * Templeton
 
-Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělení přístupu pomocí [rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) a [prostředí Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
+Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělení přístupu pomocí [prostředí Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
 
 ## <a name="find-the-subscription-id"></a>Najít ID předplatného
 Každý cluster se váže k předplatnému Azure.  ID je viditelná z předplatného Azure [clusteru domovskou stránku](#homePage).
@@ -316,7 +316,7 @@ Zobrazit [HDInsight Správa clusterů pomocí webového uživatelského rozhran�
 V tomto článku jste se naučili některé základní funkce pro správu. Další informace naleznete v následujících článcích:
 
 * [Správa HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md)
-* [Správa HDInsight pomocí příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md)
+* [Správa HDInsight pomocí Azure CLI](hdinsight-administer-use-command-line.md)
 * [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Další informace o pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Podrobnosti o použití rozhraní Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

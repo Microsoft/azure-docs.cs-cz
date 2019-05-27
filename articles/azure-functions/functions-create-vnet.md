@@ -3,137 +3,171 @@ title: Integrace Azure Functions s Azure virtual network
 description: Podrobný kurz, který vám ukáže, jak se připojit ke službě Azure virtual network funkce
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: article
-ms.date: 4/11/2019
-ms.author: alkarche
-ms.openlocfilehash: 96ab479d3373eb6e575a00898f7007a4df252e39
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 5/03/2019
+ms.author: alkarche, glenga
+ms.openlocfilehash: 07c7d7fb682708bf813820440d9c790c28b1f3e5
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125667"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834631"
 ---
-# <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integrace aplikace function app s Azure virtual network
+# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: integrate funkce do služby Azure virtual network
 
-V tomto kurzu se dozvíte, jak pomocí služby Azure Functions pro připojení k prostředkům ve virtuální síti Azure.
+V tomto kurzu se dozvíte, jak pomocí služby Azure Functions pro připojení k prostředkům ve virtuální síti Azure. vytvoříte funkci, která má přístup k oběma Internetu a do virtuálního počítače s Wordpressem ve virtuální síti.
 
-V tomto kurzu nasadíme webu z Wordpressu na virtuálním počítači ve virtuální síti, která není přístupný z Internetu. Pak nasadíme funkce s přístupem k Internetu a virtuální sítě. Použijeme tuto funkci pro přístup k prostředkům z webu WordPress nasazené ve virtuální síti.
+> [!div class="checklist"]
+> * Vytvoření aplikace funkcí v plánu Premium
+> * Nasazení webu z Wordpressu na virtuální počítač ve virtuální síti
+> * Připojení aplikace function app k virtuální síti
+> * Vytvoření funkce proxy pro přístup k prostředkům WordPress
+> * Žádost o soubor WordPress z virtuální sítě
 
-Další informace o tom, jak systém funguje, najdete v řešení potíží a pokročilá konfigurace [integrujte svou aplikaci s Azure virtual network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet). Služba Azure functions v plánu Premium mají stejné možnosti hostování jako webové aplikace, tak všechny funkce a omezení v tomto článku použít u funkcí.
+> [!NOTE]  
+> Tento kurz vytvoří aplikaci funkcí v plánu Premium. Tento plán hostování je aktuálně ve verzi preview. Další informace najdete v tématu [plán Premium].
 
 ## <a name="topology"></a>Topologie
 
- ![Uživatelské rozhraní pro integrace služby virtual network][1]
+Následující diagram znázorňuje architekturu řešení, kterou vytvoříte:
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>Vytvoření virtuálního počítače ve virtuální síti
+ ![Uživatelské rozhraní pro integrace služby virtual network](./media/functions-create-vnet/topology.png)
 
-Pokud chcete začít, vytvoříme předem nakonfigurovaných virtuálních počítačů, na kterém běží WordPress ve virtuální síti. 
+Funkce spuštěné v plánu Premium mají stejné možnosti hostování jako webové aplikace ve službě Azure App Service, který zahrnuje funkci integrace virtuální sítě. Další informace o integrace virtuální sítě, včetně řešení potíží a pokročilá konfigurace, najdete v článku [integrujte svou aplikaci s Azure virtual network](../app-service/web-sites-integrate-with-vnet.md).
 
-Zvolili jsme WordPress na virtuálním počítači, protože je jedním z nejlevnější prostředky, které je možné nasadit ve virtuální síti. Všimněte si, že tento scénář může také pracovat s jakýmikoli prostředky ve virtuální síti, jako je například rozhraní REST API služby App Service Environment a dalšími službami Azure.
+## <a name="prerequisites"></a>Požadavky
 
-1. Přejděte na web Azure Portal.
-2. Přidat nový prostředek tak, že otevřete **vytvořit prostředek** okno.
-3. Vyhledejte "[WordPress LEMP7 Max Performance na CentOS](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure)" a otevřete okno pro jeho vytvoření. 
-4. Na **Základy** kartu, nakonfigurujte virtuální počítač s následujícími informacemi:
-    1. Vytvořte novou skupinu prostředků pro tento virtuální počítač, aby vymazání prostředků jednodušší na konci tohoto kurzu. Tady s ukázkovým používáme "Kurzu funkce virtuální sítě".
-    1. Zadejte jedinečný název virtuálního počítače. Jako příklad používáme "Připojení typu VNET-Wordpress".
-    1. Vyberte oblast co nejblíže k vám.
-    1. Vyberte velikost jako B1s (1 virtuální procesor, 1 GB paměti).
-    1. Pro účet správce vyberte ověřování pomocí hesla a zadejte jedinečné uživatelské jméno a heslo. V tomto kurzu nebudete potřebovat k přihlášení k virtuálnímu počítači, pokud potřebujete řešit.
-    
-        ![Základní informace o kartě pro vytvoření virtuálního počítače](./media/functions-create-vnet/create-vm-1.png)
+Pro účely tohoto kurzu je důležité se napřed seznámit IP adresování a zapojení podsítě. Můžete začít s [tohoto článku, který obsahuje základní informace o přidělování adres a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho že další články a videa jsou k dispozici online.
 
-1. Přesunout **sítě** kartě a zadejte následující informace:
-    1.  Vytvořte novou virtuální síť.
-    1.  Zadejte rozsah privátních adres a podsítí v rámci tohoto rozsahu adres. Velikost podsítě určí, kolik virtuálních počítačů můžete použít v plánu služby App Service. Pokud jsou pro vás, nová IP adresování a zapojení podsítě je [dokument, který vysvětluje](https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Přidělování IP adres a podsítí jsou důležité v tomto scénáři, proto doporučujeme, abyste si několik článků a videí, několik online dokud má smysl. 
-    
-        V tomto příkladu jsme se rozhodli použít 10.10.0.0/16 síť s podsítí 10.10.1.0/24. Jsme předimenzování a použití /16 podsítě vzhledem k tomu, že je snadno spočítat podsítě, které jsou k dispozici v síti 10.10.0.0/16.
-        
-        <img src="./media/functions-create-vnet/create-vm-2.png" width="700">
-
-1. Zpět na **sítě** kartu, nastavte veřejnou IP adresu na **žádný**. Tento krok bude nasazení virtuálního počítače s přístupem k virtuální síti.
-       
-    <img src="./media/functions-create-vnet/create-vm-2-1.png" width="700">
-
-7. Vytvoření virtuálního počítače. Tento proces bude trvat přibližně 5 minut.
-8. Po vytvoření virtuálního počítače, přejděte do jeho **sítě** kartu a poznamenejte si privátní IP adresu pro pozdější. Virtuální počítač by neměl mít veřejnou IP adresu.
-
-    ![14]
-
-Teď máte webu z Wordpressu nasazené výhradně ve vaší virtuální síti. Tento web není přístupný z veřejného Internetu.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Vytvoření aplikace funkcí v plánu Premium
 
-Dalším krokem je vytvoření aplikace funkcí v plánu Premium. Plán Premium přináší měřítku a bez serveru všechny výhody vyhrazený plán služby App Service. Aplikace Function App vytvořena prostřednictvím plánu Consumption nepodporují integrace služby virtual network.
+Nejprve vytvoříte aplikaci function app v [plán Premium]. Tento plán umožňuje škálování bez serveru při současné podpoře integrace služby virtual network.
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-## <a name="connect-your-function-app-to-your-virtual-network"></a>Připojit vaši aplikaci function app k virtuální síti
+Aplikace function app na řídicí panel můžete připnout tak, že vyberete ikonu připínáčku v pravém horním rohu. Připnutí usnadňuje po vytvoření virtuálního počítače se vraťte k této aplikace function app.
 
-Pomocí webu z Wordpressu hostování souborů z v rámci vaší virtuální sítě můžete teď připojení aplikace function app k virtuální síti.
+## <a name="create-a-vm-inside-a-virtual-network"></a>Vytvoření virtuálního počítače ve virtuální síti
 
-1.  Na portálu pro danou aplikaci funkcí z předchozího kroku vyberte **funkce platformy**. Potom vyberte **sítě**.
+Dále vytvořte předem nakonfigurovaných virtuálních počítačů, na kterém běží WordPress ve virtuální síti ([WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) ve společnosti Jetware). WordPress virtuálního počítače se používá z důvodu jeho s nízkými náklady a pohodlí. Tento scénář stejné spolupracuje s jakýmkoliv prostředkům ve virtuální síti, jako je například rozhraní REST API služby App Service Environment a dalšími službami Azure. 
 
-    <img src="./media/functions-create-vnet/networking-0.png" width="850">
+1. Na portálu, vyberte **+ vytvořit prostředek** na levém navigačním podokně hledání zadejte do pole `WordPress LEMP7 Max Performance`, a stiskněte klávesu Enter.
 
-1.  Vyberte **klepnutím sem můžete nakonfigurovat** pod **integrace virtuální sítě**.
+1. Zvolte **Wordpress LEMP Max Performance** ve výsledcích hledání. Vyberte plán softwaru **Wordpress LEMP Max Performance pro CentOS** jako **plán softwaru** a vyberte **vytvořit**.
+
+1. V **Základy** kartu, použijte nastavení virtuálního počítače uvedená v tabulce pod obrázkem:
+
+    ![Základní informace o kartě pro vytvoření virtuálního počítače](./media/functions-create-vnet/create-vm-1.png)
+
+    | Nastavení      | Navrhovaná hodnota  | Popis      |
+    | ------------ | ---------------- | ---------------- |
+    | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se prostředky vytvoří. | 
+    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Zvolte `myResourceGroup`, nebo skupinu prostředků, který jste vytvořili pomocí aplikace function app. Stejnou skupinu prostředků pro aplikace function app, WordPress virtuálního počítače a plán hostování usnadňuje vyčištění prostředků po dokončení tohoto kurzu. |
+    | **Název virtuálního počítače** | VNET-Wordpress | Název virtuálního počítače musí být jedinečný ve skupině prostředků |
+    | **[Region](https://azure.microsoft.com/regions/)** | (Evropa) Západní Evropa | Zvolte oblast blízko vás nebo blízko ní. funkce, které přistupují k virtuálnímu počítači. |
+    | **Velikost** | B1s | Zvolte **změnit velikost** a potom vyberte image standardní B1s, který má 1 virtuálních procesorů a 1 GB paměti. |
+    | **Typ ověřování** | Heslo | Pokud chcete použít ověřování pomocí hesla, musíte zadat také **uživatelské jméno**, zabezpečené **heslo**a potom **potvrzení hesla**. V tomto kurzu nebudete potřebovat k přihlášení k virtuálnímu počítači, pokud potřebujete řešit. |
+
+1. Zvolte **sítě** kartu a v části Konfigurace virtuální sítě vyberte **vytvořit nový**.
+
+1. V **vytvořit virtuální síť**, použijte nastavení v tabulce pod obrázkem:
+
+    ![Karta síť se o vytvoření virtuálního počítače](./media/functions-create-vnet/create-vm-2.png)
+
+    | Nastavení      | Navrhovaná hodnota  | Popis      |
+    | ------------ | ---------------- | ---------------- |
+    | **Název** | myResourceGroup-vnet | Můžete použít výchozí název vygenerované pro vaši virtuální síť. |
+    | **Rozsah adres** | 10.10.0.0/16 | Použijte rozsah jednu adresu pro virtuální síť. |
+    | **Název podsítě** | Kurz – Net | Název podsítě. |
+    | **Rozsah adres** (podsítě) | 10.10.1.0/24   | Velikost podsítě určuje, kolik rozhraní lze přidat do podsítě. Tato podsíť se používá ve Web WordPress.  A `/24` podsítě poskytuje 254 hostiteli adresy. |
+
+1. Vyberte **OK** při vytváření virtuální sítě.
+
+1. Zpátky **sítě** , vyberte **žádný** pro **veřejnou IP adresu**.
+
+1. Zvolte **správu** kartu, pak v **účet úložiště diagnostiky**, zvolte účet úložiště, který jste vytvořili pomocí aplikace function app.
+
+1. Vyberte **Zkontrolovat a vytvořit**. Po dokončení ověření, vyberte **vytvořit**. Virtuální počítač vytvořit proces trvá několik minut. Vytvořený virtuální počítač pouze přístup k virtuální síti.
+
+1. Po vytvoření virtuálního počítače, zvolte **přejít k prostředku** zobrazíte stránku pro nový virtuální počítač, klikněte na tlačítko **sítě** pod **nastavení**.
+
+1. Ověřte, že neexistuje žádná **veřejnou IP adresu**. Poznamenejte si **privátní IP**, který použijete k připojení k virtuálnímu počítači z aplikace function app.
+
+    ![Nastavení sítě na virtuálním počítači](./media/functions-create-vnet/vm-networking.png)
+
+Teď máte webu z Wordpressu nasazené výhradně ve vaší virtuální síti. Tento web není přístupný z veřejného Internetu.
+
+## <a name="connect-your-function-app-to-the-virtual-network"></a>Připojit vaši aplikaci function app k virtuální síti
+
+S WordPress lokality, kde běží na virtuálním počítači ve virtuální síti můžete teď k této virtuální síti připojit vaši aplikaci function app.
+
+1. Ve vaší nové aplikaci function app, vyberte **funkce platformy** > **sítě**.
+
+    ![Vyberte sítě do aplikace function App](./media/functions-create-vnet/networking-0.png)
+
+1. V části **integrace virtuální sítě**vyberte **klepnutím sem můžete nakonfigurovat**.
 
     ![Stav pro konfiguraci sítě](./media/functions-create-vnet/Networking-1.png)
 
 1. Na stránce integrace virtuální sítě vyberte **přidání virtuální sítě (preview)**.
 
-    <img src="./media/functions-create-vnet/networking-2.png" width="600"> 
-    
-1.  Vytvořte novou podsíť pro funkci a plán služby App Service použít. Všimněte si, že velikost podsítě omezí celkový počet virtuálních počítačů, které můžete přidat do plánu služby App Service. Virtuální síť bude automaticky směrovat provoz mezi podsítěmi ve virtuální síti, takže nezáleží, že funkce je v jiné podsíti, z vašeho virtuálního počítače. 
-    
-    <img src="./media/functions-create-vnet/networking-3.png" width="600">
+    ![Přidání integrace virtuální sítě ve verzi preview](./media/functions-create-vnet/networking-2.png)
 
-## <a name="create-a-function-that-accesses-a-resource-in-your-virtual-network"></a>Vytvořit funkci, která se získá přístup k prostředku ve virtuální síti
+1. V **stav síťových funkcí**, použijte nastavení v tabulce pod obrázkem:
 
-Aplikace function app můžete nyní přístup k virtuální síti s náš web WordPress. Proto vytvoříme pomocí funkce pro přístup k souboru a obsluhovat zpět uživateli. V tomto příkladu použijeme webu z Wordpressu jako proxy server a rozhraní API jako volání funkce vzhledem k tomu, že jsou oba usnadňuje nastavení a vizualizace. 
+    ![Definovat virtuální sítě app – funkce](./media/functions-create-vnet/networking-3.png)
 
-Stejně snadno můžete použít jakékoli jiné rozhraní API nasazené ve virtuální síti. Můžete také použít jinou funkci s kódem, který provede volání rozhraní API pro rozhraní API nasazené ve vaší virtuální síti. Instance systému SQL Server nasazeny v rámci vaší virtuální sítě je ideální příklad.
+    | Nastavení      | Navrhovaná hodnota  | Popis      |
+    | ------------ | ---------------- | ---------------- |
+    | **Virtual Network** | MyResourceGroup-vnet | Tato virtuální síť je ta, kterou jste vytvořili dříve. |
+    | **Podsíť** | Vytvořit novou podsíť | Vytvořte podsíť ve virtuální síti pro aplikaci function app používat. Integrace virtuální sítě musí být nakonfigurován pro použití prázdnou podsíť. Nevadí, že vaše funkce použijte jinou podsíť než váš virtuální počítač. Virtuální sítě automaticky směruje provoz mezi těmito dvěma podsítěmi. |
+    | **Název podsítě** | Net – funkce | Název nové podsítě. |
+    | **Blok adres virtuální sítě** | 10.10.0.0/16 | Zvolte stejný blok adres používané web WordPress. Měli byste mít pouze jeden blok adres definované. |
+    | **Rozsah adres** | 10.10.2.0/24   | Velikost podsítě omezí celkový počet instancí, které vaše aplikace funkcí plánu Premium můžete škálovat na. Tento příklad používá `/24` podsíť s 254 hostiteli k dispozici adresy. Tato podsíť je nadměrně zřízených, ale snadno spočítat. |
 
-1. Na portálu otevřete aplikaci function app v předchozím kroku.
-1. Vytvořit proxy tak, že vyberete **proxy** > **+**.
+1. Vyberte **OK** přidat podsíť. Zavřete integrace virtuální sítě a stav síťových funkcí stránky se vraťte na stránku aplikace funkce.
 
-    <img src="./media/functions-create-vnet/new-proxy.png" width="250">
+Aplikace function app teď přístup k virtuální síti, ve kterém je spuštěn web WordPress. Dále použijete [proxy služby Azure Functions](functions-proxies.md) vrátit soubor z webu WordPress.
 
-1. Nakonfigurujte název proxy serveru a směrování. Tento příklad používá "/ zařízení" jako trasu.
-1. Zadejte vaše lokalita WordPress IP z předchozí a nastavit **URL back-end** do `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
-    
-    <img src="./media/functions-create-vnet/create-proxy.png" width="900">
+## <a name="create-a-proxy-to-access-vm-resources"></a>Vytvořit proxy pro přístup k prostředkům virtuálního počítače
 
-Teď když zkusíte navštivte adresu URL back-end přímo zadáním nebo vložením do na nové kartě prohlížeče, na stránce by vypršení časového limitu. Je to proto, že vaše lokalita WordPress je připojený k vaší virtuální sítě a nikoli po Internetu. Pokud vložíte adresu URL vašeho proxy serveru do prohlížeče, měli byste vidět obrázku zařízení (získaných z webu WordPress) uvnitř virtuální sítě. 
+Integrace virtuální sítě povolené můžete vytvořit proxy serveru ve vaší aplikaci funkcí ke směrování žádostí na virtuální počítač provozovaný ve virtuální síti.
 
-Aplikace function app je připojený k Internetu a virtuální sítí. Proxy server je přijímání žádosti přes veřejný internet a pak funguje jako jednoduchý proxy server HTTP pro předávání tohoto požadavku podél do virtuální sítě. Proxy server potom předává požadavky odpověď zpět do prostřednictvím veřejného Internetu. 
+1. V aplikaci function app, vyberte **proxy** > **+**, potom použijte nastavení proxy v tabulce pod obrázkem:
 
-<img src="./media/functions-create-vnet/plant.png" width="900">
+    ![Definujte nastavení proxy serveru](./media/functions-create-vnet/create-proxy.png)
+
+    | Nastavení  | Navrhovaná hodnota  | Popis      |
+    | -------- | ---------------- | ---------------- |
+    | **Název** | Zařízení | Název může obsahovat libovolnou hodnotu. Používá se k identifikaci proxy serveru. |
+    | **Šablona trasy** | /Plant | Trasy, která se mapuje na prostředek virtuálního počítače. |
+    | **Adresa URL back-endu** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Nahraďte `<YOUR_VM_IP>` s IP adresou vašeho virtuálního počítače WordPress, který jste vytvořili dříve. Toto mapování vrátí jeden soubor z webu. |
+
+1. Vyberte **vytvořit** přidání proxy serveru pro vaši aplikaci function app.
+
+## <a name="try-it-out"></a>Vyzkoušet
+
+1. V prohlížeči se pokusí o přístup k adresu URL jste použili jako **URL back-end**. Podle očekávání, vyprší časový limit žádosti. Vzhledem k tomu, že vaše lokalita WordPress je připojený jenom k vaší virtuální sítě a nikoli po Internetu, dojde k vypršení časového limitu.
+
+1. Kopírovat **adresu URL proxy serveru** hodnotu nový proxy server a vložte ji do adresního řádku prohlížeče. Vrácené obrázek je z webu WordPress spuštěných ve virtuální síti.
+
+    ![Soubor obrázku zařízení vrácená z webu WordPress](./media/functions-create-vnet/plant.png)
+
+Aplikace function app je připojený k Internetu a virtuální sítí. Proxy server je přijímání žádosti přes veřejný internet a pak funguje jako jednoduchý proxy server HTTP pro předávání tento požadavek na připojené virtuální sítě. Proxy server potom předává požadavky odpověď zpět do veřejně přes internet.
+
+[!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-Funkce běžící v plánu Premium sdílet stejnou základní infrastruktury služby App Service jako webové aplikace v plánech PremiumV2. V dokumentaci pro webové aplikace se vztahuje na funkce plánu Premium.
+V tomto kurzu se web WordPress slouží jako rozhraní API, která je volána pomocí proxy aplikace function App. Tento scénář je dobré kurz, protože je snadné nastavení a vizualizace. Můžete použít jakékoli jiné rozhraní API nasazené ve virtuální síti. Může také jste vytvořili funkci s kódem, který volá rozhraní API nasazené ve virtuální síti. Vyzkoušet realističtější scénář je funkce, která používá data klientských rozhraní API volat instanci systému SQL Server nasazený ve virtuální síti.
 
-* [Další informace o možnosti sítě v funkce](./functions-networking-options.md)
-* [Přečtěte si funkce sítě – nejčastější dotazy](./functions-networking-faq.md)
-* [Další informace o virtuálních sítí v Azure](../virtual-network/virtual-networks-overview.md)
-* [Povolit další síťové funkce a ovládací prvek s App Service Environment](../app-service/environment/intro.md)
-* [Připojení k jednotlivým místním prostředkům bez nutnosti změn brány firewall pomocí hybridních připojení](../app-service/app-service-hybrid-connections.md)
-* [Další informace o proxy služby Functions](./functions-proxies.md)
+Funkce běžící v plánu Premium sdílet stejnou základní infrastruktury služby App Service jako webové aplikace v plánech PremiumV2. V dokumentaci k [webové aplikace ve službě Azure App Service](../app-service/overview.md) se vztahuje na funkce plánu Premium.
 
-<!--Image references -->
-[1]: ./media/functions-create-vnet/topology.png
-[2]: ./media/functions-create-vnet/create-function-app.png
-[3]: ./media/functions-create-vnet/create-app-service-plan.png
-[4]: ./media/functions-create-vnet/configure-vnet.png
-[5]: ./media/functions-create-vnet/create-vm-1.png
-[6]: ./media/functions-create-vnet/create-vm-2.png
-[7]: ./media/functions-create-vnet/create-vm-2-1.png
-[8]: ./media/functions-create-vnet/networking-1.png
-[9]: ./media/functions-create-vnet/networking-2.png
-[10]: ./media/functions-create-vnet/networking-3.png
-[11]: ./media/functions-create-vnet/new-proxy.png
-[12]: ./media/functions-create-vnet/create-proxy.png
-[14]: ./media/functions-create-vnet/vm-networking.png
+> [!div class="nextstepaction"]
+> [Další informace o možnosti sítě v funkce](./functions-networking-options.md)
+
+[Plán Premium]: functions-scale.md#premium-plan-public-preview

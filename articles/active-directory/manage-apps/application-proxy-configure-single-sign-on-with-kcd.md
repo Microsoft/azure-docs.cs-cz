@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 05/17/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214d984388869431453267ef18ebf6eb976bc496
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783522"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859628"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -59,7 +59,8 @@ Konfigurace služby Active Directory se liší v závislosti na tom, zda váš k
 2. Vyberte server se službou konektoru.
 3. Klikněte pravým tlačítkem a vyberte **vlastnosti** > **delegování**.
 4. Vyberte **důvěřovat tomuto počítači pro delegování pouze určeným službám**. 
-5. V části **služby, ke kterým může tento účet předložit delegovaná pověření** přidejte hodnotu hlavního názvu služby identity aplikačního serveru. To umožňuje konektoru Proxy aplikace k zosobnění uživatelů ve službě AD aplikací definované v seznamu.
+5. Vyberte **použití libovolného protokolu pro ověřování**.
+6. V části **služby, ke kterým může tento účet předložit delegovaná pověření** přidejte hodnotu hlavního názvu služby identity aplikačního serveru. To umožňuje konektoru Proxy aplikace k zosobnění uživatelů ve službě AD aplikací definované v seznamu.
 
    ![Snímek obrazovky okna Vlastnosti Connector 1JÁDROVÉ](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287886"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864457"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -100,7 +100,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Aplikace
 - Stav přihlášení
 - Podmíněný přístup
-- Datum
+- Date
 
 ![Aktivita přihlašování](./media/concept-sign-ins/04.png "Aktivita přihlašování")
 
@@ -110,16 +110,16 @@ Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.
 
 Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
 
-- Vše
+- Všechny
 - Úspěch
-- Selhání
+- Chyba
 
 **Podmíněného přístupu** filtr umožňuje vybrat stav zásad certifikační Autority pro přihlášení:
 
-- Vše
+- Všechny
 - Nevztahuje se.
 - Úspěch
-- Selhání
+- Chyba
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
@@ -131,21 +131,28 @@ Možné hodnoty:
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:
-
-- Prohlížeč      
-- Exchange ActiveSync (podporované)               
-- Exchange ActiveSync (nepodporované)
-- Ostatní klienti               
-    - IMAP
-    - MAPI
-    - Starší klienti Office
-    - POP
-    - SMTP
-
-
+Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:  
 ![Aktivita přihlašování](./media/concept-sign-ins/12.png "Aktivita přihlašování")
 
+- **Prohlížeč**  
+    Tento filtr zobrazí všechny události, kde pokusy o přihlášení provedených pomocí prohlížeče toky.
+- **Exchange ActiveSync (podporované)**  
+    Tento filtr zobrazí všech pokusů o přihlášení, kde byla provedena protokolu Exchange ActiveSync (EAS) z podporovaných platformách, jako je iOS, Android a Windows Phone.
+- **Exchange ActiveSync (nepodporováno)**  
+    Tento filtr zobrazí všech pokusů o přihlášení, kde byla provedena protokolu EAS z nepodporované platformy jako distribuce Linuxu.
+- **Mobilní aplikace a Desktopoví klienti** tento filtr zobrazí všech pokusů o přihlášení, které nebyly pomocí prohlížeče toky. To může být mobilní aplikace z libovolné platformy s využitím libovolného protokolu nebo z aplikace klasické pracovní plochy klienta, jako je Office na Windows nebo MacOS.
+  
+- **Ostatní klienti**
+    - **IMAP**  
+        Starší verze poštovní klient k načtení e-mailů pomocí protokolu IMAP.
+    - **MAPI**  
+        Office 2013, kde je povolená ADAL a používá rozhraní MAPI.
+    - **Starší klienti Office**  
+        Office 2013 v její výchozí konfiguraci, kde není povoleno ADAL který používá rozhraní MAPI nebo Office 2016, kde byla zakázána ADAL.
+    - **POP**  
+        Starší verze poštovní klient pomocí POP3 načíst e-mailu.
+    - **SMTP**  
+        Starší verze poštovní klient pomocí protokolu SMTP pro odeslání e-mailu.
 
 ## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
 
@@ -191,8 +198,8 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Klient
 - Location
 - IP adresa
-- Datum
-- Vyžaduje se MFA
+- Date
+- Vyžaduje se MFA.
 - Stav přihlášení
 
 > [!NOTE]

@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 02/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5cc86c40f56cee28ff6a6912acd67961285bffc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2410787c3307136f827ea7fc34df9a545a59cbf4
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025313"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850907"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Spravovat přístup k pracovnímu prostoru Azure Machine Learning
 
@@ -28,7 +28,7 @@ Pracovní prostor služby Azure Machine Learning je prostředek Azure. Stejně j
 
 | Role | Úroveň přístupu |
 | --- | --- |
-| **Čtenář** | Jen pro čtení akce v pracovním prostoru. Čtenáři můžou seznamu a zobrazení prostředků v pracovním prostoru, ale nelze vytvořit nebo aktualizovat tyto prostředky. |
+| **Reader** | Jen pro čtení akce v pracovním prostoru. Čtenáři můžou seznamu a zobrazení prostředků v pracovním prostoru, ale nelze vytvořit nebo aktualizovat tyto prostředky. |
 | **Přispěvatel** | Zobrazit, vytvořit, upravit nebo odstranit, (kde je to možné) prostředky v pracovním prostoru. Například přispěvatelé můžete vytvořit nový experiment, vytvořit nebo připojit výpočetního clusteru, odeslat spuštění a nasazení webové služby. |
 | **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit, (kde je to možné) prostředky v pracovním prostoru. Kromě toho můžete změnit přiřazení rolí. |
 
@@ -67,7 +67,7 @@ Pokud předdefinované role nestačí, můžete vytvořit vlastní role. Může 
 
 Chcete-li vytvořit vlastní roli, nejprve vytvořte role definiční soubor JSON, který určuje oprávnění a obor pro roli. Následující příklad definuje vlastní roli s názvem "Mezi odborníky přes Data" oboru na úrovni konkrétní pracovní prostor:
 
-:`data_scientist_role.json`
+`data_scientist_role.json` :
 ```json
 {
     "Name": "Data Scientist",
@@ -113,5 +113,5 @@ Další informace najdete v tématu [vlastní role pro prostředky Azure](/azure
 ## <a name="next-steps"></a>Další postup
 
 - [Podnikové zabezpečení – přehled](concept-enterprise-security.md)
-- [Bezpečné spuštění experimentů a odvozování ve virtuální síti](how-to-enable-virtual-network.md)
+- [Bezpečné spuštění experimentů a odvození/skóre uvnitř virtuální sítě](how-to-enable-virtual-network.md)
 - [Kurz: Trénování modelů](tutorial-train-models-with-aml.md)

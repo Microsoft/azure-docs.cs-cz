@@ -10,18 +10,18 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19873256f8253fff75cfd42df7b876106a9e98e5
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 70f9c34957b977aff9fc6211bf79415ed9abe255
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464793"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016510"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
-V tomto článku se dozvíte, jak používat rozšíření pro Azure Machine Learning pro Visual Studio Code k trénování a nasadit strojového učení a hloubkového učení modelů s použitím služby Azure Machine Learning ve Visual Studio Code.
+V tomto článku se dozvíte, jak používat rozšíření pro Azure Machine Learning pro Visual Studio Code k trénování a strojové učení a hloubkového učení modely nasazení.
 
-Služba Azure Machine Learning poskytuje podporu pro experimenty, které spouštíte místně tak na cílových výpočetních prostředí vzdálené. Každý experimentu je můžete udržovat přehled o různých spuštění často potřebujete zavádět postupně vyzkoušet s různými technikami, hyperparameters a další. Azure Machine Learning slouží ke sledování vlastní metriky a experimentovat spuštění, aktivace reprodukovatelnost datové vědy a umožňuje audity.
+[Služby Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje podporu pro experimenty, které spouštíte místně a ve vzdáleném cílových výpočetních prostředí. Každý experimentu je můžete udržovat přehled o různých spuštění často potřebujete zavádět postupně vyzkoušet s různými technikami, hyperparameters a další. Azure Machine Learning slouží ke sledování vlastní metriky a experimentovat spuštění, aktivace reprodukovatelnost datové vědy a umožňuje audity.
 
 Můžete také nasadit tyto modely pro vaše potřeby testovacím nebo produkčním prostředí.
 
@@ -69,13 +69,13 @@ Chcete-li nainstalovat rozšíření Azure Machine Learning:
 
    ![Vyberte interpret](./media/vscode-tools-for-ai/python.png)
 
-1. V pravém dolním rohu okna zobrazí se upozornění, označující, že sada SDK Azure Machine Learning se automaticky instaluje. Nově vytvořený prostředí Pythonu je místní a privátní a má požadavky Visual Studio Code pro práci se službou Azure Machine Learning.
+1. V pravém dolním rohu okna, zobrazí se upozornění, což indikuje, že [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) se instaluje automaticky. Nově vytvořený prostředí Pythonu je místní a privátní a má požadavky Visual Studio Code pro práci se službou Azure Machine Learning.
 
    ![Nainstalujte aplikaci Azure Machine Learning sady SDK pro Python](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Začínáme se službou Azure Machine Learning
 
-Před zahájením školení a nasazení modelů strojového učení ve Visual Studio Code, je potřeba vytvořit [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md#workspace) v cloudu. Tento pracovní prostor bude obsahovat vaše modely a prostředky. 
+Před zahájením školení a nasazení modelů strojového učení ve Visual Studio Code, je potřeba vytvořit [pracovního prostoru služby Azure Machine Learning](concept-workspace.md) v cloudu. Tento pracovní prostor bude obsahovat vaše modely a prostředky. 
 
 Vytvoření pracovního prostoru a přidat váš první experiment s využitím:
 

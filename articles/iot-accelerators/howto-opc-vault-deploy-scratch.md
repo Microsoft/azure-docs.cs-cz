@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450325"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835151"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>Nasazení služby OPC Vault od nuly
 
@@ -45,7 +45,7 @@ Konfigurační soubor v úložišti odkazuje na některé proměnné prostředí
 
 Visual Studio vám umožňuje rychle otevřete aplikaci bez použití příkazového řádku bez konfigurace něco mimo rozhraní IDE.
 
-Kroky, pomocí sady Visual Studio 2017:
+Ke spuštění a ladění aplikace pomocí sady Visual Studio:
 
 1. Otevřete řešení pomocí `iot-opc-gds-service.sln` souboru.
 

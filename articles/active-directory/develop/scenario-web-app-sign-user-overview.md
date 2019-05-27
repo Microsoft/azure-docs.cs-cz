@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b46df5e4ec8352b47f744a507fad702c37aa5fba
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6ce534c6eeecba220fd829be829caa679df52055
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075097"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833089"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scénář: Webové aplikace, který se přihlásí uživatelé
+# <a name="scenario-web-app-that-signs-in-users"></a>Scénář: Webová aplikace, která přihlašuje uživatele
 
 Přečtěte si všechno, co potřebujete k vytvoření webové aplikace, které uživatelé přihlásí s platformou identity Microsoft.
 
@@ -40,7 +40,7 @@ Pokud chcete vytvořit váš první přenosné () webové aplikace ASP.NET Core,
 Pokud chcete Zůstaňte s přední ASP.NET, vyzkoušejte si následující kurz:
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: ASP.NET Core, které uživatelé přihlásí webová aplikace](quickstart-v2-aspnet-webapp.md)
+> [Rychlé zprovoznění: Technologie ASP.NET webové aplikace, které uživatelé přihlásí](quickstart-v2-aspnet-webapp.md)
 
 ## <a name="overview"></a>Přehled
 

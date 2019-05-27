@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 51f6fb8c0dc1450a39173fafb0d71efc9a59a536
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c07da0121b8e350c55b139901d56cfe2133386d
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60431198"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864501"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
 Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci.
 
-V tomto článku se dozvíte, jak pomocí nástrojů sady Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci Hello World. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
+V tomto článku se dozvíte, jak používat nástroje Visual Studio 2019 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world". Kód funkce potom publikujete do Azure. Tyto nástroje jsou k dispozici jako součást sady funkcí vývoj pro Azure v aplikaci Visual Studio 2019.
 
 ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -34,7 +34,7 @@ Toto téma obsahuje [video](#watch-the-video), které ilustruje stejný základn
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte [Visual Studio 2017](https://azure.microsoft.com/downloads/) a ujistěte se, že máte nainstalovanou i sadu funkcí **Azure Development**.
+* Nainstalujte [Visual Studio 2019](https://azure.microsoft.com/downloads/) a ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha.
 
 * Přesvědčte se, že máte [nejnovější nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version).
 

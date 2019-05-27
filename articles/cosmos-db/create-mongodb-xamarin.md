@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890579"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860342"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Sestavení aplikace Xamarin.Forms s .NET SDK a rozhraní API služby Azure Cosmos DB pro MongoDB
 
@@ -34,7 +34,7 @@ Tento rychlý start ukazuje, jak vytvořit [Cosmos účet byl konfigurován s ro
 
 Pro spuštění ukázky budete potřebovat sadu [Visual Studio](https://www.visualstudio.com/downloads/) nebo [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/) a platný účet služby Azure Cosmos DB.
 
-Pokud ještě nemáte sadu Visual Studio, stáhněte si sadu [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/), součástí jejíž instalace je i sada funkcí **Vývoj mobilních aplikací pomocí .NET**.
+Pokud ještě nemáte Visual Studio, stáhněte si [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/) s **vývoj mobilních aplikací pomocí .NET** úlohy instalace.
 
 Pokud chcete raději pracovat na Macu, stáhněte si [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/) a spusťte instalaci.
 
@@ -164,7 +164,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-### <a name="visual-studio-2017"></a>Visual Studio 2017
+### <a name="visual-studio-2019"></a>Visual Studio 2019
 
 1. V sadě Visual Studio postupně klikněte v **Průzkumníku řešení** pravým tlačítkem na jednotlivé projekty a potom klikněte na **Spravovat balíčky NuGet**.
 2. Klikněte na **Obnovit všechny balíčky NuGet**.

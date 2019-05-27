@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 8e6783bb56f55949824e4ce94c85145f53dd9f4b
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: a58e059e800b13d01ba8e50880bd75077d4418ae
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523962"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833968"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -78,6 +78,9 @@ Pro úspěšné připojení k doméně proveďte následující akce na každém
 3. Vyberte **název_počítače**vyberte **změnit nastavení**a pak vyberte **změn...**
 4. Vyberte **domény** a pak zadejte doménu služby Active Directory ve virtuální síti.
 5. Ověření pomocí účtu domény, který má oprávnění k připojení k doméně počítače.
+
+    >[!NOTE]
+    > Pokud jste se zapojili vaše virtuální počítače do prostředí Azure AD Domain Services, ujistěte se, že vaše doména uživatel připojit také členem skupiny [skupiny Správci AAD DC](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrace virtuálních počítačů do fondu hostitele Windows virtuální plochy, ve verzi Preview
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 96e3a24b0c9f9ab21652ffcd1b29deeb512581e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202612"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833987"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
@@ -54,7 +54,7 @@ Existuje několik pravidel pro uspořádání vašich šablon Azure Resource Man
     ![Soubory šablon klíč Azure Resource Manageru](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - Pokud chcete použít hodnoty parametrů definované v souboru parametrů, musí mít název souboru parametrů `azuredeploy.parameters.json`.
-- Při použití parametrů `_artifactsLocation` a `_artifactsLocationSasToken` vytvořit hodnotu identifikátoru URI parametersLink, a umožnil DevTest Labs k automatické správě vnořené šablony. Další informace najdete v tématu [jak službě Azure DevTest Labs usnadňuje vnořené Resource Manageru šablony nasazení pro testovací prostředí](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/).
+- Při použití parametrů `_artifactsLocation` a `_artifactsLocationSasToken` vytvořit hodnotu identifikátoru URI parametersLink, a umožnil DevTest Labs k automatické správě vnořené šablony. Další informace najdete v tématu [nasazení vnořených šablon Azure Resource Manageru pro testovací prostředí](deploy-nested-template-environments.md).
 - Metadata lze definovat za účelem zadejte zobrazovaný název šablony a popis. Tato metadata musí být v souboru s názvem `metadata.json`. Soubor metadat následující příklad ukazuje, jak zadat zobrazovaný název a popis: 
 
     ```json

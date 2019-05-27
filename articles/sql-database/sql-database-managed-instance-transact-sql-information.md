@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 08920a25fc7213a773ef0d76a5daddbab3f765c2
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866866"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852152"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -115,7 +115,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>Přihlašovací údaj
+### <a name="credential"></a>Pověření
 
 Pouze Azure Key Vault a `SHARED ACCESS SIGNATURE` identity podporují. Uživatelé Windows se nepodporují.
 
@@ -471,7 +471,7 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 
 ### <a name="tempdb-size"></a>Velikost databáze TEMPDB
 
-Maximální velikost souboru z `tempdb` nemůže být větší než 24 GB na jádro v úrovni General Purpose. Maximální počet `tempdb` velikost na vrstvu pro důležité obchodní informace je omezena s velikostí úložiště instancí. `tempdb` Databáze je vždy rozdělit na 12 datových souborů. Tento maximální velikost jednoho souboru se nedá změnit, a nové soubory mohou být přidány do `tempdb`. Některé dotazy může vrátit chybu, pokud je nutné více než 24 GB na jádro v `tempdb`.
+Maximální velikost souboru z `tempdb` nemůže být větší než 24 GB na jádro v úrovni General Purpose. Maximální počet `tempdb` velikost na vrstvu pro důležité obchodní informace je omezena s velikostí úložiště instancí. `tempdb` Databáze je vždy rozdělit na 12 datových souborů. Tento maximální velikost jednoho souboru se nedá změnit, a nové soubory nelze přidat do `tempdb`. Některé dotazy může vrátit chybu, pokud je nutné více než 24 GB na jádro v `tempdb`. `tempdb` je vždy znovu vytvořen jako prázdná databáze při spuštění instance nebo převzetí služeb při selhání a jakékoli změně v `tempdb` se nezachová. 
 
 ### <a name="cant-restore-contained-database"></a>Nelze obnovit databáze s omezením
 

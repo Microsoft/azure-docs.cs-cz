@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458706"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019773"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
 K nasazení šablony Azure, můžete provádět úlohy v různých fázích: Kopírovat sestavení, testování, do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.
@@ -93,7 +93,7 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
       
       Pokud používáte Azure CLI, použijte:
       
-      `azure account show`
+      `az account show`
    8. Chcete-li získat ID instančního objektu služby, klíč instančního objektu a ID Tenanta, postupujte podle postupu [vytvoření aplikace Active Directory a instančního objektu pomocí portálu](active-directory/develop/howto-create-service-principal-portal.md) nebo [ověřování instančního objektu pomocí Azure Resource Manager](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Přidejte ID instančního objektu služby, klíč instančního objektu a ID Tenanta hodnoty, které mají **přidat předplatné Azure** dialogové okno a potom vyberte **OK** tlačítko.
       

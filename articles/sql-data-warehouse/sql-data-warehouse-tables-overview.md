@@ -2,20 +2,20 @@
 title: Návrh tabulky – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Úvod do navrhování tabulek ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 03/15/2019
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1073e1b4ad38c4b05c9195cf4ea16ade7416fbce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474962"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851578"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek ve službě Azure SQL Data Warehouse
 
@@ -43,7 +43,7 @@ Chcete-li zobrazit uspořádání tabulek v SQL Data Warehouse, že můžete pou
 | WideWorldImportersDW tabulky  | Typ tabulky | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
 | Město | Dimenze | wwi.DimCity |
-| Objednání | Fakt | wwi.FactOrder |
+| Pořadí | Fakt | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Tabulka trvalosti 
@@ -92,7 +92,7 @@ Tabulka kategorie často určuje, kterou možnost zvolte pro distribuci v tabulc
 |:---------------|:--------------------|
 | Fakt           | Použijte distribuci algoritmus hash s clusterovaným indexem columnstore. Dvě tabulky hash jsou připojená na stejný sloupec distribuce zlepšuje výkon. |
 | Dimenze      | Použití replikuje menší tabulky. Pokud tabulky je příliš velký pro uložení na jednotlivých výpočetních uzlech, pomocí algoritmu hash distribuce. |
-| Staging        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí příkazu CTAS je rychlá. Jakmile jsou data v pracovní tabulce, použijte INSERT... Vyberte pro přesun dat do produkčních tabulek. |
+| Fázování        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí příkazu CTAS je rychlá. Jakmile jsou data v pracovní tabulce, použijte INSERT... Vyberte pro přesun dat do produkčních tabulek. |
 
 ## <a name="table-partitions"></a>Oddíly tabulky
 Dělenou tabulku ukládá a provede operace s řádky tabulky podle oblasti dat. Například tabulky může být dělené podle dne, měsíce nebo roku. Může zlepšit výkon dotazů pomocí eliminace oddílů, který omezuje dotazu prohledávání dat v rámci oddílu. Můžete také spravovat dat prostřednictvím přepínání oddílů. Protože je již distribuovaných dat ve službě SQL Data Warehouse, příliš mnoho oddílů může zpomalit výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).  Při přepnutí do tabulky oddílu oddíly, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET ve vašich [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) příkazu, pokud jsou existující data k oříznutí. Níže přepínače kód v denní Transformovaná data do SalesFact přepíše všechna existující data. 

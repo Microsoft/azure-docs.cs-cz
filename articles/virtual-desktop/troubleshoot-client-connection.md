@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522942"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833573"
 ---
 # <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
 
@@ -28,9 +28,9 @@ Potvrďte, že existuje připojení k Internetu je tak, že otevřete jiným web
 
 Použití **nslookup** potvrďte DNS můžete vyřešit plně kvalifikovaný název domény:
 
-    ```cmd
-    nslookup rdweb.wvd.microsoft.com
-    ```
+```cmd
+nslookup rdweb.wvd.microsoft.com
+```
 
 Zkuste se připojit pomocí jiného klienta, jako je klientem služby Vzdálená plocha pro Windows 7 nebo Windows 10 a zkontrolujte Pokud můžete otevřít webový klient.
 
@@ -54,7 +54,7 @@ Zkuste se připojit pomocí jiného klienta, jako je klientem služby Vzdálená
 
 1. Restartujte prohlížeč.
 2. Soubory cookie v prohlížeči vymazat. Zobrazit [odstranění souborů cookie v Internet Exploreru](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Prohlížeč vymazat mezipaměť. Zobrazit [vymazat mezipaměť prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
+3. Smažte mezipaměť prohlížeče. Zobrazit [vymazat mezipaměť prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
 4. Otevřít prohlížeč v privátním režimu.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení
@@ -74,7 +74,7 @@ Pokud webový klient zachová vás vyzve k zadání přihlašovacích údajů, p
 1. Potvrďte správnost adresy URL webového klienta.
 2. Potvrďte, že přihlašovací údaje jsou vázané na adresu URL prostředí virtuálního klienta Windows.
 3. Soubory cookie v prohlížeči vymazat. Zobrazit [odstranění souborů cookie v Internet Exploreru](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Prohlížeč vymazat mezipaměť. Zobrazit [vymazat mezipaměť prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
+4. Smažte mezipaměť prohlížeče. Zobrazit [vymazat mezipaměť prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
 5. Otevřít prohlížeč v privátním režimu.
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo nelze otevřít
@@ -111,20 +111,20 @@ Postupujte podle těchto obecné pokyny pro řešení potíží pro kódy chyb p
 4. Pomocí **Get-RdsHostPool** a **Get-RdsSessionHost** rutiny, potvrďte, že Poradce při potížích se provádí na správného hostitele fondu.
 5. Spusťte následující příkaz k získání seznamu všech neúspěšných aktivit typu připojení pro zadané časové okno:
 
-    ```cmd
+    ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
 6. Použití **ActivityId** z výstupu předchozí rutiny, spusťte následující příkaz:
 
-    ```
+    ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
 7. Tento příkaz vytváří výstup podobný výstup najdete níž. Použití **ErrorCodeSymbolic** a **ErrorMessage** řešení potíží s původní příčinu.
 
-    ```
+    ```PowerShell
     ErrorSource       : <Source>
     ErrorOperation    : <Operation>
     ErrorCode         : <Error code>
@@ -159,7 +159,7 @@ Uživatele můžete začít klienty vzdálené plochy a je možné ověřit, ale
 
 Potvrďte, že uživatel hlášení problémů byla přiřazena do skupiny aplikací s použitím tohoto příkazového řádku:
 
-```cmd
+```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 1589c938e635ccff02f94a176b7fc886dbccb779
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51494acaa393493e567e0fcbb359756bdab21503
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894531"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860891"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření webové aplikace ASP.NET se pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Tento rychlý start používá verzi 3.0 + .NET SDK služby Azure Cosmos DB.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ujistěte se, že povolíte **vývoj pro Azure** zatížení při instalaci sady Visual Studio.
+Pokud ještě nemáte nainstalované Visual Studio 2019, můžete stáhnout a použít **bezplatné** [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/). Ujistěte se, že povolíte **vývoj pro Azure** zatížení při instalaci sady Visual Studio.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -120,7 +120,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
-2. V sadě Visual Studio 2017 otevřete **web.config** souboru. 
+2. V sadě Visual Studio, otevřete **web.config** souboru. 
 
 3. Zkopírujte hodnotu identifikátoru URI z portálu (pomocí tlačítka kopírování) a nastavte ji jako hodnotu ``endpoint`` klíčů v souboru web.config. 
 

@@ -16,11 +16,11 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165680"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro Azure Virtual Machines (Resource Manager)
 
@@ -107,8 +107,8 @@ Máte virtuálního počítače SQL serveru, který obsahuje počet velkých dat
 
 V pondělí povolíte automatizované zálohování v2 s následujícím nastavením:
 
-- Plán zálohování: Manual
-- Frekvence úplného zálohování: Denně
+- Plán zálohování: Ručně
+- Frekvence úplného zálohování: Den
 - Čas spuštění úplného zálohování: 22:00
 - Časový interval úplného zálohování: 6 hodin
 

@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d02318db4deae6f0a6acdae9382ce47116c95110
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 416bebc070cfcad52c6180e65f0066c46c826cbe
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800856"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849652"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
@@ -72,7 +72,7 @@ Další informace najdete v tématu [nasazovat modely](how-to-deploy-and-where.m
 
 ### <a name="iot-edge-devices"></a>Zařízení IoT Edge
 
-Modely můžete použít se zařízeními IoT prostřednictvím **modulů Azure IoT Edge**. Moduly IoT Edge se nasadí do hardwarové zařízení, která povolí odvozování na zařízení.
+Modely můžete použít se zařízeními IoT prostřednictvím **modulů Azure IoT Edge**. Moduly IoT Edge se nasadí do hardwarových zařízení, která umožňuje odvození nebo model vyhodnocení na zařízení.
 
 Další informace najdete v tématu [nasazovat modely](how-to-deploy-and-where.md).
 

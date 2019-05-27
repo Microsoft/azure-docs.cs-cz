@@ -1,7 +1,7 @@
 ---
 title: Nasazovat modely na FPGA
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak nasadit webovou službu s modelem FPGA službou Azure Machine Learning pro odvozování mimořádně nízkou latenci a systémem.
+description: Zjistěte, jak nasadit webovou službu pomocí modelu běží na FPGA službou Azure Machine Learning pro odvození mimořádně nízkou latencí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 249a21bf9eeb3913826971fd1aae136197d264c4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8d667d45e1831e0fcc939d302a16f63d4a282963
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149614"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852036"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Nasazení modelu jako webové služby na FPGA s využitím služby Azure Machine Learning
 
-Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](concept-accelerate-with-fpgas.md) s Azure Machine Learning Hardware Accelerated modely. Použití FPGA poskytuje mimořádně nízkou latenci odvozování, dokonce i s velikostí jedné dávce.
+Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](concept-accelerate-with-fpgas.md) s Azure Machine Learning Hardware Accelerated modely. Použití FPGA poskytuje mimořádně nízkou latenci odvození, dokonce i s velikostí jedné dávce. Odvození nebo vyhodnocení modelu je fáze použití nasazený model pro predikci, obvykle na produkční data.
 
 Tyto modely jsou aktuálně k dispozici:
   - ResNet 50
@@ -162,7 +162,7 @@ print(output_tensors)
 > [!IMPORTANT]
 > Uložit vstup a výstup tensors, protože je budete potřebovat pro převod a odvozování požadavků na modely.
 
-Dostupné modely a odpovídající třídění výchozí výstupní tensors jsou níže, což je, co můžete využít při odvozování Pokud jste použili výchozí třídění.
+Dostupné modely a odpovídající třídění výchozí výstupní tensors jsou níže, což je, co byste použili pro odvození Pokud jste použili výchozí třídění.
 
 + Resnet50 QuantizedResnet50 ``
 output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"

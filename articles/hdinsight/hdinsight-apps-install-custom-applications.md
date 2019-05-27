@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec2e53624ad48650f922439c5f16d1cf1f25c280
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706383"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859814"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop v Azure HDInsight
 
@@ -116,8 +116,8 @@ Z portálu můžete také odstranit cluster nebo odstranit skupinu prostředků,
 ### <a name="use-azure-powershell"></a>Použití Azure Powershell
 Pomocí Azure PowerShell můžete odstranit cluster nebo skupinu prostředků. Viz téma [Odstranění clusterů pomocí Azure PowerShell](hdinsight-administer-use-powershell.md#delete-clusters).
 
-### <a name="use-azure-classic-cli"></a>Použití Azure Classic CLI
-Pomocí rozhraní příkazového řádku Azure Classic, můžete odstranit cluster nebo odstranit skupinu prostředků. Zobrazit [odstranění clusterů pomocí rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md#delete-clusters).
+### <a name="use-azure-cli"></a>Použití Azure CLI
+Pomocí Azure CLI můžete odstranit cluster nebo skupinu prostředků. Viz téma [Odstranění clusterů pomocí Azure CLI](hdinsight-administer-use-command-line.md#delete-clusters).
 
 ## <a name="next-steps"></a>Další postup
 * [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak vyvíjet šablony Resource Manageru pro nasazení aplikací HDInsight.

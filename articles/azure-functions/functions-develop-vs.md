@@ -1,6 +1,6 @@
 ---
 title: Vývoj pomocí sady Visual Studio Azure Functions | Dokumentace Microsoftu
-description: Zjistěte, jak vyvíjet a testovat funkce Azure s využitím Azure Functions Tools for Visual Studio 2017.
+description: Zjistěte, jak vyvíjet a testovat funkce Azure s využitím Azure Functions Tools pro Visual Studio 2019.
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403658"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864533"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
-Azure Functions Tools for Visual Studio 2017 je rozšířením pro Visual Studio, která umožňuje vývoj, testování a nasazení funkce jazyka C# do Azure. Pokud toto prostředí je první s využitím Azure Functions, další informace najdete v [Úvod do služby Azure Functions](functions-overview.md).
+Azure Functions Tools for Visual Studio 2019 je rozšířením pro Visual Studio, která umožňuje vývoj, testování a nasazení C# funkce do Azure. Pokud toto prostředí je první s využitím Azure Functions, další informace najdete v [Úvod do služby Azure Functions](functions-overview.md).
 
 Nástroje Azure Functions nabízí následující výhody: 
 
@@ -29,16 +29,16 @@ Nástroje Azure Functions nabízí následující výhody:
 * Vývoj a nasazení předem kompilovaných funkcí jazyka C#. Předem splněny functions poskytuje lepší studený start výkonu než založených na skriptech funkcí jazyka C#. 
 * Kód vaší funkce v jazyce C# přitom má všechny výhody vývoj sady Visual Studio. 
 
-Tento článek obsahuje podrobné informace o tom, jak používat Azure Functions Tools for Visual Studio 2017 na vývoj C# funkce a publikovat je do Azure. Předtím, než se pustíte do čtení tohoto článku, měli byste pokračovat [funkce Rychlý start pro Visual Studio](functions-create-your-first-function-visual-studio.md). 
+Tento článek obsahuje podrobnosti o tom, jak používat Azure Functions Tools for Visual Studio 2019 k vývoji C# funkce a publikovat je do Azure. Předtím, než se pustíte do čtení tohoto článku, měli byste pokračovat [funkce Rychlý start pro Visual Studio](functions-create-your-first-function-visual-studio.md). 
 
 > [!IMPORTANT]
 > Nekombinujte místní vývoj pomocí portálu ve stejné aplikaci function app. Při publikování z místní projekt aplikace function app, procesu nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nástroje Azure Functions je součástí sady funkcí vývoj pro Azure [Visual Studio 2017 verze 15.5](https://www.visualstudio.com/vs/), nebo novější. Ujistěte se, že zahrnete **vývoj pro Azure** úloh v instalaci sady Visual Studio 2017:
+Nástroje Azure Functions je součástí sady funkcí vývoj pro Azure [Visual Studio 2017](https://www.visualstudio.com/vs/), nebo novější. Ujistěte se, že zahrnete **vývoj pro Azure** úlohy v instalaci sady Visual Studio 2019:
 
-![Instalace sady Visual Studio 2017 se sadou funkcí Vývoj pro Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Nainstalovat Visual Studio 2019 s úlohou vývoj pro Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 Ujistěte se, že Visual Studio je aktuální a že používáte [nejnovější verzi](#check-your-tools-version) nástrojů Azure Functions.
 
@@ -181,11 +181,11 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 Další informace o používání nástrojů Azure Functions Core najdete v tématu [kódu a testování Azure functions místně](functions-run-local.md).
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-to-azure"></a>Publikovat do Azure
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Nastavení aplikace funkcí
+## <a name="function-app-settings"></a>Nastavení Function App
 
 Všechna nastavení, které jste přidali v kroku local.settings.json musí být rovněž přidán do aplikace function app v Azure. Tato nastavení nejsou automaticky nahraje při publikování tohoto projektu.
 

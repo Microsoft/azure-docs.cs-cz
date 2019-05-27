@@ -5,18 +5,21 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: pabutler
-ms.openlocfilehash: 8817c8aa7d5d589be5e03cdd04e3a505d7e2be21
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 2195c9a5e1f0d3683ea8cf6564d97cbabd072f81
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941662"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834199"
 ---
 # <a name="update-an-existing-saas-application-offer"></a>Aktualizace stávající nabídky SaaS aplikace
 
 Existují různé typy aktualizací, které můžete chtít provést pro vaši nabídku poté, co je publikována a je v provozu. Všechny změny provedené v nové verzi nabídky by měla uložit a publikovat jej odrážejí na webu Marketplace. Tento článek popisuje postup přes různé aspekty vaší nabídky SaaS v aktualizaci [portál partnerů cloudu](https://cloudpartner.azure.com/).
+
+> [!IMPORTANT] 
+> SaaS nabízejí funkce migruje na [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Všechny nové zdroje musí pomocí partnerského centra pro vytvoření nové nabídky SaaS a správu existující nabídky.  Aktuální vydavatele se nabídky SaaS se batchwise migrují z portál partnerů cloudu do partnerského centra.  Portál partnerů cloudu se zobrazí stavové zprávy k označení, když se konkrétní stávající nabídky migrovaly.
 
 Tady je několik důvodů, proč můžete chtít aktualizovat vaši nabídku, jako například:
 

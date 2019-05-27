@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 362df8cee163bcd2d1dac73c650e42ee4f0f7751
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920102"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864807"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
 
@@ -69,7 +69,7 @@ Zablokujete určitému uživateli, postupujte podle následujících kroků.
 
 ## <a name="reset-a-user-password"></a>Resetování hesla uživatele
 
-Programová práce s uživatelskými účty, najdete v článku [entitu uživatele](https://docs.microsoft.com/rest/api/apimanagement/user) v dokumentaci [rozhraní API služby REST pro správu](/rest/api/apimanagement/) odkaz. Pokud chcete resetovat heslo uživatelského účtu na určitou hodnotu, můžete použít [aktualizaci uživatele](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operaci a zadejte požadované heslo.
+Prostřednictvím kódu programu pracovat s uživatelskými účty, najdete v dokumentaci pro entitu uživatele v [REST API služby API Management](/rest/api/apimanagement/) odkaz. Pokud chcete resetovat heslo uživatelského účtu na určitou hodnotu, můžete použít [aktualizaci uživatele](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operaci a zadejte požadované heslo.
 
 ## <a name="next-steps"></a>Další kroky
 Po vytvoření účtu pro vývojáře, můžete ho přidružit k rolím a jeho přihlášení k odběru produktů a rozhraní API. Další informace najdete v tématu [postup vytvoření a používání skupin][How to create and use groups].

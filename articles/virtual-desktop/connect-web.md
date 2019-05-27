@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142453"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834017"
 ---
-# <a name="connect-from-a-web-browser"></a>Připojte se z webového prohlížeče
+# <a name="connect-from-a-web-browser"></a>Připojení z webového prohlížeče
 
 Webový klient umožňuje přístup k prostředkům Windows Preview virtuální plochy z webového prohlížeče bez zdlouhavé instalační proces.
 
@@ -38,6 +38,6 @@ Zatímco by mělo fungovat libovolný prohlížeč HTML5 umožňující oficiál
 V prohlížeči přejděte [virtuální plochy Windows webový klient](https://rdweb.wvd.microsoft.com/webclient) a přihlaste se pomocí uživatelského účtu.
 
 >[!NOTE]
->Pokud již jste přihlášeni pomocí účtu služby Azure AD, který je jiný než ten, který chcete použít pro virtuální plochy Windows, budete muset odhlásit nebo použijte privátním okně prohlížeče.
+>Pokud už jste přihlášení pomocí jiného Azure Active Directory účtu než ten, který chcete použít pro virtuální plochy Windows, musí odhlásit nebo použít privátním okně prohlížeče.
 
 Po přihlášení, měli byste vidět seznam prostředků. Prostředky můžete spustit tak, že je vyberete jako normální aplikaci v **všechny prostředky** kartu.

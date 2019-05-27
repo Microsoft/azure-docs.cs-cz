@@ -2,21 +2,21 @@
 title: Vytváření, aktualizaci statistiky – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Doporučení a příklady pro vytváření a aktualizaci statistik optimalizaci dotazu na tabulky ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 05/09/2018
-ms.author: kevin
-ms.reviewer: jrasnick
+ms.author: xiaoyul
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 7ef5c0a4e6694e9babcb3054831e88d9edceae85
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937275"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851529"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statistika tabulky ve službě Azure SQL Data Warehouse
 
@@ -77,7 +77,7 @@ Toto jsou doporučení aktualizaci statistiky:
 
 |||
 |-|-|
-| **Četnosti aktualizací statistik**  | Konzervativní: Denně </br> Po načtení nebo transformace dat |
+| **Četnosti aktualizací statistik**  | Konzervativní: Den </br> Po načtení nebo transformace dat |
 | **Vzorkování** |  Menší než 1 miliarda řádků, použijte výchozí vzorkování (20 procent). </br> S více než 1 miliarda řádků použijte dvě procenta vzorkování. |
 
 Jedním ze základních otázek požádat, pokud řešíte potíže s dotazu je, **"Je statistika aktuální?"**
@@ -469,7 +469,7 @@ AND     st.[user_created] = 1
 
 Příkaz DBCC SHOW_STATISTICS() zobrazuje data ukládaná v rámci objektu statistiky. Tato data k dispozici ve třech částech:
 
-- Hlavička
+- Záhlaví
 - Hustota vektoru
 - Histogram
 

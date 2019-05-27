@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c99125d1d17f85e9767dca6d108005e598561cc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 17aaff1a6da2c18e9b1d915f61844635b1ad130b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545678"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001445"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -199,14 +199,15 @@ V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat
 
 ### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Registrace vaší aplikace na webu Azure Portal a pak přidejte informace o jeho *web.config*
 
-1. Abyste mohli zaregistrovat aplikaci, přejděte na [Microsoft Azure Portal – Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
-2. Vyberte **Registrace nové aplikace**.
-3. Zadejte název své aplikace.
-4. Vložte *adresu URL protokolu SSL* projektu sady Visual Studio do pole **Přihlašovací adresa URL**. Tato adresa URL je také automaticky přidán do seznamu adres URL odpovědí pro aplikaci, kterou jste registrace.
-5. Aplikaci zaregistrujte výběrem možnosti **Vytvořit**. Tato akce vás převede zpět do seznamu aplikací.
-6. Nyní vyhledejte a vyberte aplikaci, kterou jste právě vytvořili, a otevřete její vlastnosti.
-7. Zkopírujte identifikátor GUID v části **ID aplikace** do schránky.
-8. Vraťte se do sady Visual Studio a v `web.config`, nahraďte `Enter_the_Application_Id_here` s ID aplikace z aplikace, které jste zaregistrovali.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+2. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+3. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
+4. Vyberte **registrace nové**.
+5. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
+6. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
+7. Vyberte **webové** platformu v rámci **identifikátor URI pro přesměrování** tématu a nastavte hodnotu na projekt aplikace Visual Studio *adresa URL protokolu SSL* (umístění, na který Azure AD vrátí tokeny).
+78. Až budete hotovi, vyberte **Zaregistrovat**. V aplikaci **přehled** stránky, zkopírujte **ID aplikace (klient)** hodnotu.
+9. Vraťte se do sady Visual Studio a v `web.config`, nahraďte `Enter_the_Application_Id_here` s ID aplikace z aplikace, které jste zaregistrovali.
 
 > [!TIP]
 > Pokud máte účet nakonfigurovaný na přístup k více adresářům, nezapomeňte vybrat správný adresář pro organizaci, pro kterou chcete aplikaci zaregistrovat. Klikněte na název účtu v pravém horním rohu webu Azure Portal a potom zkontrolujte vybraný adresář, jak je uvedeno na obrázku:<br/>![Výběr správného adresáře](./media/quickstart-v1-aspnet-webapp/tenantselector.png)

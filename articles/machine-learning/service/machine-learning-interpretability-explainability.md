@@ -10,25 +10,25 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/29/2019
-ms.openlocfilehash: 62d51a0075d8b6864e4b10fa6c1eb423a440d6d0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926439"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851998"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Model interpretability službou Azure Machine Learning
 
 V tomto článku se dozvíte postupy vysvětlují, proč váš model provedené předpovědi udělal spolu s balíčkem interpretability sady Azure Machine Learning Python SDK.
 
 Použití tříd a metod v tomto balíčku, můžete získat:
-+ Interpretability na skutečné datové sady ve velkém měřítku, během doby trénování a odvozování. 
++ Interpretability na skutečné datové sady ve velkém měřítku, během trénování a odvozování. 
 + Interaktivní vizualizace pro pomoc při zjišťování vzory v datech a vysvětlení chvíli školení
 + Funkce hodnot závažnosti: nezpracovaná a analyzován funkce
 
 Během fáze školení v cyklu vývoje můžete použít Návrháře modelů a nástroje pro vyhodnocení vysvětlit výstup z modelu zúčastněných stran k vytvoření vztahu důvěryhodnosti.  Používá taky informace o modelu pro ladění, ověřování chování modelu odpovídá své cíle a ke kontrole posun.
 
-Během fáze odvozování odborníci přes data, můžete použít interpretability vysvětlit předpovědí na uživatele, kteří používají váš model. Například, proč modelu odepřít úvěru hypoteční nebo předpovídat, že investice portfolia s sebou nese vyšší riziko?
+Odvození nebo vyhodnocení modelu je fáze použití nasazený model pro predikci, obvykle na produkční data. V této fázi odborníci přes data mohou vysvětlovat výsledný předpovědí na uživatele, kteří používají váš model. Například, proč modelu odepřít úvěru hypoteční nebo předpovídat, že investice portfolia s sebou nese vyšší riziko?
 
 Použití těchto nabídky, se vysvětlují modelů strojového učení **globálně na všechny data**, nebo **místně na konkrétní datový bod** pomocí technologií stavu techniky snadným ovládáním a škálovatelným způsobem.
 
@@ -287,7 +287,7 @@ clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
 tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x_train, features=dataset_feature_names, classes=dataset_classes, transformations=transformations)
 ```
 
-## <a name="interpretability-in-inferencing"></a>Interpretability v odvozování
+## <a name="interpretability-in-inference"></a>Interpretability v odvození
 
 Vysvětlení, se dají nasadit spolu s původním modelu a je možné při vyhodnocování čas zadání informací o místní vysvětlení. Proces nasazení bodování vysvětlení je podobný modelu a zahrnuje následující kroky:
 

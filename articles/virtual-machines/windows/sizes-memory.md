@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/13/2019
+ms.date: 05/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: 2f9bbcf8864c08761ba71e7997f0d997b9a38aef
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: d21d420dd80e69f0b90c9853a9eab96d66c3df0d
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561088"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834133"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 

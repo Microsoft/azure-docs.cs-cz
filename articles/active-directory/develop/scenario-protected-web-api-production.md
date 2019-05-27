@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a748bb0fb44b3fae50426b56f2076f1a9730657
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075577"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833112"
 ---
 # <a name="protected-web-api---move-to-production"></a>Chráněné webové rozhraní API – Přesun do produkčního prostředí
 
@@ -38,7 +38,7 @@ Další informace o volání rozhraní API pro příjem dat:
 Další informace najdete kurzy a ukázky:
 
 > [!div class="nextstepaction"]
-> [Kurz webové rozhraní API ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+> [Webové rozhraní API kurz ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
 
 > [!div class="nextstepaction"]
-> [Ukázka rozhraní ASP.NET Web API](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+> [Ukázkové webové rozhraní API technologie ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

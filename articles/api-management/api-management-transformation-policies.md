@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 565bcfa6c2f8a3da2ac16df0016b5adc54e27380
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: b3f86147eb91e874d5317204ca05fb45628414d3
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407598"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833415"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -375,7 +375,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 #### <a name="convert-json-to-soap-using-a-liquid-template"></a>Převést JSON na SOAP pomocí šablony Liquid.
 ```xml
 <set-body template="liquid">
-    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
         <soap:Body>
             <GetOpenOrders>
                 <cust>{{body.getOpenOrders.cust}}</cust>
@@ -405,7 +405,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
-|šablona|Umožňuje změnit režim šablon, které nastavení zásad textu se spustí v. Momentálně je jediná podporovaná hodnota:<br /><br />-liquid – nastavení těla zásad bude používat modul šablon liquid. |Ne|kapaliny|
+|šablona|Umožňuje změnit režim šablon, které nastavení zásad textu se spustí v. Momentálně je jediná podporovaná hodnota:<br /><br />-liquid – nastavení těla zásad bude používat modul šablon liquid. |Ne||
 
 Pro přístup k informacím o žádost a odpověď, Liquid šablony lze svázat objekt kontextu s následujícími vlastnostmi: <br />
 <pre>context.

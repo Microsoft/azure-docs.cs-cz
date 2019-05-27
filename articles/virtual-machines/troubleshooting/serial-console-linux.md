@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
-ms.author: harijay
-ms.openlocfilehash: 9577a81af3da98c6e8802c586ec468a6e44e46cf
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.author: alsin
+ms.openlocfilehash: fe08569937dc29ecbc66da1cb2c431cca11a8580
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442042"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835106"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure konzoly sériového portu pro Linux
 
@@ -84,7 +84,7 @@ Konzola sériového portu je k dispozici na základě jednotlivé instance pro �
 ## <a name="serial-console-linux-distribution-availability"></a>Sériové konzoly Linux distribuční dostupnosti
 Konzole sériového portu správně fungovala musí být hostovaný operační systém nakonfigurované pro čtení a zápis zpráv konzoly sériového portu. Většina [distribucí Linuxu schválených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Výběr **konzoly sériového portu** v **podpora a řešení potíží** části webu Azure portal poskytuje přístup ke konzole sériového portu.
 
-Distribuce      | Přístup ke konzole sériového portu
+Distribuce      | Přístup k sériové konzole
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
 CentOS      | Přístup ke konzole sériového portu ve výchozím nastavení povolená.

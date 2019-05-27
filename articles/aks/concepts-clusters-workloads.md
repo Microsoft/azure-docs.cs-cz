@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230145"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850535"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -70,9 +70,9 @@ Ke spuštění vaší aplikace a podpůrných služeb, budete potřebovat Kubern
 
 Velikost virtuálního počítače Azure pro uzly definuje počet procesorů, kolik paměti a velikosti a typu úložiště (jako třeba vysoce výkonné SSD nebo HDD pravidelných). Pokud očekáváte, třeba pro aplikace, které vyžadují kopírování velkých objemů procesoru a paměti nebo vysoce výkonné úložiště, podle toho naplánujte velikost uzlu. Můžete také škálovat počet uzlů ve vašem clusteru AKS podle potřeby.
 
-Ve službě AKS image virtuálního počítače pro uzly ve vašem clusteru momentálně založené na Ubuntu Linuxu. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
+Ve službě AKS image virtuálního počítače pro uzly v clusteru je aktuálně podle Ubuntu Linux nebo Windows Server 2019. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
 
-Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a možnosti konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Moby, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
+Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a možnosti konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete použít modul runtime kontejneru než Moby, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
@@ -104,6 +104,27 @@ Uzlů se stejnou konfigurací jsou seskupeny do *fondy uzlů*. Kubernetes cluste
 Při škálování nebo upgrade clusteru AKS, akce se provádí na výchozí fond uzlů. Můžete také vertikálně nebo upgradovat fondu konkrétní uzel. Pro upgrade operace naplánováno spuštěné kontejnery na jiných uzlech ve fondu uzlů, dokud se úspěšně upgradoval na všech uzlech.
 
 Další informace o tom, jak používat více fondy uzlů ve službě AKS najdete v tématu [vytvořit a spravovat více fondy uzlů clusteru ve službě AKS][use-multiple-node-pools].
+
+### <a name="node-selectors"></a>Uzel selektorů.
+
+V clusteru AKS, který obsahuje více fondy uzlů budete muset zjistit Plánovač Kubernetes, které uzlu fondu, který chcete použít pro daný prostředek. Například neměli spouštět kontrolery příchozího přenosu dat na uzlech serveru systému Windows (aktuálně ve verzi preview ve službě AKS). Uzel selektory umožňují definovat různé parametry, jako je například uzel operačního systému, ve kterém má být naplánováno pod ovládací prvek.
+
+V následujícím základním příkladu naplánuje instance NGINX na uzlu Linuxu pomocí modulu pro výběr uzlu *"beta.kubernetes.io/os": linux*:
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+Další informace o tom, jak ovládací prvek, kde je naplánované podů, naleznete v tématu [osvědčené postupy pro Plánovač pokročilé funkce ve službě AKS][operator-best-practices-advanced-scheduler].
 
 ## <a name="pods"></a>Podů
 
@@ -248,3 +269,4 @@ Tento článek popisuje některé základní součásti Kubernetes a jak se vzta
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

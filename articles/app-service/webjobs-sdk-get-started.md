@@ -13,34 +13,34 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198622"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864836"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
-Tento článek popisuje, jak používat Visual Studio 2017 k vytvoření projektu Azure WebJobs SDK, ji spustit místně a pak nasadit ji do [služby Azure App Service](overview.md). Je projekt vytvoříte konzolovou aplikaci .NET Core, který používá verzi 3.x sada WebJobs SDK. Pokud vás zajímá verze 2.x, který používá rozhraní .NET Framework, viz [vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service](webjobs-dotnet-deploy-vs.md).
+Tento článek popisuje, jak používat Visual Studio 2019 k vytvoření projektu Azure WebJobs SDK, ji spustit místně a pak nasadit ji do [služby Azure App Service](overview.md). Je projekt vytvoříte konzolovou aplikaci .NET Core, který používá verzi 3.x sada WebJobs SDK. Pokud vás zajímá verze 2.x, který používá rozhraní .NET Framework, viz [vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 Další informace o práci se sadou WebJobs SDK najdete v tématu [použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech](webjobs-sdk-how-to.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Instalace sady Visual Studio 2017](/visualstudio/install/) s **vývoj pro Azure** pracovního vytížení. Pokud už máte sadu Visual Studio, ale nemají úlohy, přidejte úlohu tak, že vyberete **nástroje > Získejte nástroje a funkce**.
+* [Nainstalovat Visual Studio 2019](/visualstudio/install/) s **vývoj pro Azure** pracovního vytížení. Pokud už máte sadu Visual Studio, ale nemají úlohy, přidejte úlohu tak, že vyberete **nástroje > Získejte nástroje a funkce**.
 
 * Musíte mít [účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) publikovat WebJobs SDK projektu do Azure.
 
-## <a name="create-a-project"></a>Vytvoření projektu
+## <a name="create-a-project"></a>Vytvořit projekt
 
-1. V sadě Visual Studio, vyberte **soubor > Nový > projekt**.
+1. V sadě Visual Studio, vyberte **vytvořte nový projekt**.
 
-2. Vyberte **.NET Core > aplikace (.NET Core) konzoly**.
+2. Vyberte **aplikace (.NET Core) konzoly**.
 
-3. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **OK**.
+3. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **vytvořit**.
 
-   ![Dialogové okno Nový projekt](./media/webjobs-sdk-get-started/new-project.png)
+   ![Dialogové okno nového projektu](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="webjobs-nuget-packages"></a>Balíčky NuGet pro webové úlohy
 
@@ -171,7 +171,7 @@ Počínaje verzí 3.x, je nutné explicitně nainstalovat rozšíření vazby ú
                     });
     ```
 
-## <a name="create-a-function"></a>Vytvoření funkce
+## <a name="create-a-function"></a>Vytvořit funkci
 
 1. Klikněte pravým tlačítkem na projekt, vyberte **přidat** > **novou položku...** , zvolte **třídy**, pojmenujte novou C# soubor třídy *Functions.cs*a vyberte **přidat**.
 

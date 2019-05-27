@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 648dc462477570a692eff588c558a18a3121e4e7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025258"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851031"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Co jsou pole programmable gate Array (FPGA)
 
@@ -35,11 +35,11 @@ Následující diagram a tabulka ukazují, jak porovnat FPGA do dalších proces
 |Specifické pro aplikaci integrovaného okruhy|ASICs|Vlastní okruhů, jako je Google TensorFlow procesoru jednotek (TPU) zadejte maximální efektivitou. Nedá se změnit podle vašich aktuálních potřeb.|
 |Pole programmable gate Array|FPGA|FPGA, jako jsou dostupné v Azure, poskytují výkon blízko ASICs. Jsou také znovupoužitelných a flexibilní v průběhu času implementovat nové logiku.|
 |Grafické procesory|Grafické procesory|Oblíbené volba pro výpočty AI. GPU nabízejí možnosti paralelního zpracování, což rychlejší při vykreslování obrázků než procesory.|
-|Jednotky zpracování – střed|Procesory|Pro obecné účely procesory, není ideální pro grafiku a zpracování videa výkon.|
+|Jednotky zpracování – střed|Počet procesorů|Pro obecné účely procesory, není ideální pro grafiku a zpracování videa výkon.|
 
 FPGA v Azure jsou založené na zařízeních společnosti Intel FPGA, které datových vědců a vývojářů, použijte k urychlení výpočtů v reálném čase AI. Tato architektura povolené FPGA nabízí výkon, flexibilitu a velikost a je k dispozici v Azure.
 
-FPGA umožňují dosáhnout nízké latence pro požadavky v reálném čase odvozování. Asynchronní požadavků (dávkování) nejsou potřeba. Dávkové zpracování může způsobit latence, protože více dat je potřeba zpracovat. Implementace neuronových sítí procesory nevyžadují dávkování; latence proto může být v mnoha případech nižší ve srovnání s procesory CPU a GPU.
+FPGA umožňují dosáhnout požadavky s nízkou latencí pro odvození v reálném čase (nebo vyhodnocení modelu). Asynchronní požadavků (dávkování) nejsou potřeba. Dávkové zpracování může způsobit latence, protože více dat je potřeba zpracovat. Implementace neuronových sítí procesory nevyžadují dávkování; latence proto může být v mnoha případech nižší ve srovnání s procesory CPU a GPU.
 
 ### <a name="reconfigurable-power"></a>Znovupoužitelných napájení
 Můžete změnit konfiguraci FPGA pro různé typy modelů strojového učení. Díky této flexibilitě usnadňuje zrychlení aplikací založených na nejvíce optimální číselná přesnost a používá model paměti. Vzhledem k tomu FPGA znovupoužitelných, abyste mohli zůstat aktuální s požadavky rychle se měnící algoritmy AI.

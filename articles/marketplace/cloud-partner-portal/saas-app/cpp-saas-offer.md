@@ -5,20 +5,24 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: pabutler
-ms.openlocfilehash: 81e33bf37750dd869c3b52be5b2bca49820f47d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941901"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835058"
 ---
 # <a name="azure-saas-application-offer"></a>Nabídka Azure aplikace SaaS
 
 Tato část vysvětluje, jak publikovat software jako služba (SaaS) aplikací nabídka na <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>.
 
-Aplikace SaaS použijte, pokud vaše řešení se nasadí ve vlastním předplatném Azure a Zákazníci se připojují prostřednictvím rozhraní návrhu a správě testování aplikace. <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory (AAD)</a> umožňuje využít vaše stávající zkušební prostředí.
+> [!IMPORTANT] 
+> SaaS nabízejí funkce migruje na [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Všechny nové zdroje musí pomocí partnerského centra pro vytvoření nové nabídky SaaS a správu existující nabídky.  Aktuální vydavatele se nabídky SaaS se batchwise migrují z portál partnerů cloudu do partnerského centra.  Portál partnerů cloudu se zobrazí stavové zprávy k označení, když se konkrétní stávající nabídky migrovaly.
+
+
+Aplikace SaaS použijte, pokud vaše řešení se nasadí ve vlastním předplatném Azure a Zákazníci se přihlašovat pomocí rozhraní návrhu a správě k otestování aplikace. <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory (AAD)</a> umožňuje využít vaše stávající zkušební prostředí.
 
 ## <a name="benefits"></a>Výhody
 

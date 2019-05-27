@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7cdd185cddbd2403b72ff0e06530913af0b031de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233122"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833913"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Použití služeb Platform-as-a-Service (PaaS) ve službě Azure DevTest Labs
 PaaS je podporované ve službě DevTest Labs prostřednictvím funkce prostředí. Předem nakonfigurovaných šablon Azure Resource Manageru v úložišti Git podporuje prostředí v DevTest Labs. Prostředí může obsahovat prostředky PaaS a IaaS. Umožňují vám k vytváření komplexních systémů, které mohou obsahovat prostředky Azure, jako je například virtuálních počítačů, databází, virtuálních sítí a webových aplikací, které jsou přizpůsobené vzájemnou spolupráci. Tyto šablony umožňují konzistentní nasazení a lepší správu prostředí s využitím správy zdrojového kódu. 
@@ -53,7 +53,7 @@ Existuje informací vlastního testovacího prostředí, které je mimo skupinu 
 [Prostředí připojení k virtuální síti testovacího prostředí](connect-environment-lab-virtual-network.md) článek popisuje, jak upravit šablony Resource Manageru pro použití `$(LabSubnetId)` token. Po vytvoření prostředí `$(LabSubnetId)` token je nahrazen první podsíť označit kde **použití ve virtuálním počítači vytvořit** je možnost nastavená na **true**. To umožňuje naše prostředí pro použití dříve vytvořili sítě. Pokud chcete používat stejné šablony Resource Manageru v prostředí v testu jako přípravným a produkčním prostředím, použijte `$(LabSubnetId)` jako výchozí hodnotu v parametru šablony Resource Manageru. 
 
 #### <a name="environment-storage-account"></a>Účet úložiště prostředí
-DevTest Labs podporuje použití [vnořené šablony Resource Manageru](../azure-resource-manager/resource-group-linked-templates.md). [Jak službě Azure DevTest Labs usnadňuje vnořené Resource Manageru šablony nasazení pro testovací prostředí](https://azure.microsoft.com/updates/azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments) článek vysvětluje, jak používat `_artifactsLocation` a `_artifactsLocationSasToken` tokeny vytvořit identifikátor URI pro šablony v Resource Manageru stejné složce jako nebo ve složce vnořené hlavní šablony. Další informace o těchto dvou tokenů, najdete v článku **artefakty nasazení** část [Azure Resource Manageru – Průvodce ověřenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
+DevTest Labs podporuje použití [vnořené šablony Resource Manageru](../azure-resource-manager/resource-group-linked-templates.md). [[Nasazení vnořených šablon Azure Resource Manageru pro testovací prostředí](deploy-nested-template-environments.md) článek vysvětluje, jak používat `_artifactsLocation` a `_artifactsLocationSasToken` tokeny ve stejné složce jako nebo vnořený vytvořit identifikátor URI pro šablony Resource Manageru složka hlavní šablony. Další informace o těchto dvou tokenů, najdete v článku **artefakty nasazení** část [Azure Resource Manageru – Průvodce ověřenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
 
 ## <a name="user-experience"></a>Činnost koncového uživatele
 

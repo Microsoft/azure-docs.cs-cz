@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
-ms.date: 09/24/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f0806a1d68cd2cede1ae51f0a50a8125c1e7c8b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819580"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66016542"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Vytvoření a správa pracovních prostorů služby Azure Machine Learning
 
-V tomto článku budete vytvářet, zobrazení a odstranění [ **pracovních prostorů služby Azure Machine Learning** ](concept-azure-machine-learning-architecture.md#workspace) na webu Azure Portal pro [služby Azure Machine Learning](overview-what-is-azure-ml.md).  Můžete také vytvářet a odstraňovat pracovní prostory [pomocí rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) nebo [pomocí kódu Python](https://aka.ms/aml-sdk).
+V tomto článku budete vytvářet, zobrazení a odstranění [ **pracovních prostorů služby Azure Machine Learning** ](concept-workspace.md) na webu Azure Portal pro [služby Azure Machine Learning](overview-what-is-azure-ml.md).  Můžete také vytvářet a odstraňovat pracovní prostory [pomocí rozhraní příkazového řádku](reference-azure-machine-learning-cli.md), [pomocí kódu Python](https://aka.ms/aml-sdk) nebo [prostřednictvím rozšíření VS Codu](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru 
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
 Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
@@ -30,7 +30,7 @@ Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Po
 
 ## <a name="view"></a>Zobrazení pracovního prostoru
 
-1. V levém horním rohu portálu, vyberte **všechny služby**. 
+1. V levém horním rohu portálu, vyberte **všechny služby**.
 
 1. V **všechny služby** pole filtru, typu **služby machine learning service**.  
 
@@ -49,8 +49,7 @@ Použijte tlačítko Odstranit v horní části pracovního prostoru, který chc
 
   ![Tlačítko Odstranit](media/how-to-manage-workspace/delete-workspace.png)
 
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 

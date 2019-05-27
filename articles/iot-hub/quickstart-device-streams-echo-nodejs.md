@@ -1,5 +1,5 @@
 ---
-title: Pro zařízení Azure IoT Hub datové proudy rychlý úvod k Node.js (preview) | Dokumentace Microsoftu
+title: Komunikace na zařízení aplikaci v Node.js prostřednictvím datových proudů zařízení služby IoT Hub (preview) | Dokumentace Microsoftu
 description: V tomto rychlém startu spustíte aplikací Node.js straně služby, které komunikuje s zařízení IoT prostřednictvím datového proudu zařízení.
 author: rezasherafat
 manager: briz
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 0ad9986c2d4d9e44d13f37fe2aa1629373f4841a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: HT
+ms.openlocfilehash: 9a123c35620cd82059eb08d370939761f7c2fe69
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595148"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834053"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace na zařízení aplikaci v Node.js prostřednictvím datových proudů zařízení služby IoT Hub (preview)
 
@@ -23,7 +23,11 @@ ms.locfileid: "65595148"
 
 Microsoft Azure IoT Hub v současné době podporuje datové proudy zařízení jako [funkce ve verzi preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Ve verzi public preview je v sady Node.js SDK podporuje pouze datové proudy zařízení na straně služby. Tento rychlý start v důsledku toho pokrývá jenom pokyny ke spuštění aplikace straně služby. Když spustíte doprovodné aplikace straně zařízení, která je k dispozici v [C rychlý Start](./quickstart-device-streams-echo-c.md) nebo [ C# rychlý Start](./quickstart-device-streams-echo-csharp.md) vodítka.
+[Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Ve verzi public preview je v sady Node.js SDK podporuje pouze datové proudy zařízení na straně služby. Tento rychlý start v důsledku toho pokrývá jenom pokyny ke spuštění aplikace straně služby. Doprovodné aplikace na straně zařízení by měl spustit z jednoho z následujících šablon rychlý start:
+
+* [Komunikaci s aplikací pro zařízení v jazyce C prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-c.md)
+
+* [Komunikaci s aplikací pro zařízení v C# prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-csharp.md).
 
 Aplikace Node.js straně služby v tomto rychlém startu má následující funkce:
 
@@ -41,12 +45,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Ve verzi preview streamovaných zařízení je momentálně podporována pouze pro vytvoření centra IoT hub v těchto oblastech:
 
-  - **USA (střed)**
-  - **Střed USA – EUAP**
+*  **USA (střed)**
+
+*  **Střed USA – EUAP**
 
 Ke spuštění aplikace straně služby v rámci tohoto rychlého startu budete potřebovat Node.js v10.x.x nebo novějším na vývojovém počítači.
 
-Node.js můžete stáhnout pro různé platformy z [Node.js.org](https://nodejs.org).
+Node.js můžete stáhnout pro různé platformy z [Nodejs.org](https://nodejs.org).
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -62,13 +67,11 @@ az extension add --name azure-cli-iot-ext
 
 Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Node.js z webu https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip a extrahujte archiv ZIP.
 
-
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub-device-streams.md)]
-
+[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
@@ -86,7 +89,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
-2. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+2. Potřebujete také *připojovací řetězec služby*, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
     **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
 
@@ -98,53 +101,59 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>Komunikaci mezi zařízením a službou prostřednictvím datových proudů zařízení
+
+V této části spuštění aplikace straně zařízení a aplikace straně služby a komunikaci mezi nimi.
 
 ### <a name="run-the-device-side-application"></a>Spuštění aplikace straně zařízení
 
-Jak už bylo zmíněno dříve, SDK IoT Hub pro Node.js na straně služby podporuje pouze datové proudy zařízení. Pro aplikace na straně zařízení, použijte k dispozici v doprovodných zařízení programy [rychlý start C](./quickstart-device-streams-echo-c.md) nebo [ C# rychlý Start](./quickstart-device-streams-echo-csharp.md) vodítka. Zajistěte, aby že aplikace na straně zařízení se systémem než budete pokračovat k dalšímu kroku.
+Jak už bylo zmíněno dříve, SDK IoT Hub pro Node.js na straně služby podporuje pouze datové proudy zařízení. Pro aplikace na straně zařízení použijte doprovodných zařízení programu k dispozici v jednom z těchto rychlých startů:
 
+   * [Komunikaci s aplikací pro zařízení v jazyce C prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-c.md)
+
+   * [Komunikaci s aplikací pro zařízení v C# prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-csharp.md)
+
+Zajistěte, aby že aplikace na straně zařízení se systémem než budete pokračovat k dalšímu kroku.
 
 ### <a name="run-the-service-side-application"></a>Spuštění aplikace straně služby
 
 Za předpokladu, že aplikace na straně zařízení se systémem, postupujte podle pokynů ke spuštění aplikace straně služby v Node.js:
 
-- Zadejte své přihlašovací údaje služby a ID zařízení jako proměnné prostředí.
-  ```
-  # In Linux
-  export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
-  export STREAMING_TARGET_DEVICE="MyDevice"
+* Zadejte své přihlašovací údaje služby a ID zařízení jako proměnné prostředí.
+ 
+   ```
+   # In Linux
+   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export STREAMING_TARGET_DEVICE="MyDevice"
 
-  # In Windows
-  SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
-  SET STREAMING_TARGET_DEVICE=MyDevice
-  ```
-  Změna `MyDevice` ID zařízení jste zvolili pro vaše zařízení.
-
-- Přejděte na `Quickstarts/device-streams-service` ve vašich rozzipovaný projekt složky a spusťte ukázku pomocí uzlu.
-  ```
-  cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
+   # In Windows
+   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET STREAMING_TARGET_DEVICE=MyDevice
+   ```
   
-  # Install the preview service SDK, and other dependencies
-  npm install azure-iothub@streams-preview
-  npm install
+   Změna `MyDevice` ID zařízení jste zvolili pro vaše zařízení.
 
-  node echo.js
-  ```
+* Přejděte na `Quickstarts/device-streams-service` ve vašich rozzipovaný projekt složky a spusťte ukázku pomocí uzlu.
 
-Na konci posledního kroku program straně služeb opraví, zahájí se stream do vašeho zařízení a po vytvoření se odeslat vyrovnávací paměti řetězce ke službě prostřednictvím datového proudu. V této ukázce program straně služby jednoduše čte stdin, v terminálu a odesílá je do zařízení, což bude potom vracení ho. Tento příklad ukazuje úspěšné obousměrnou komunikaci mezi těmito dvěma aplikacemi.
+   ```
+   cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
+    
+   # Install the preview service SDK, and other dependencies
+   npm install azure-iothub@streams-preview
+   npm install
 
-Na straně služby výstupu konzoly: ![alternativní text](./media/quickstart-device-streams-echo-nodejs/service-console-output.PNG "výstupu na straně služby konzoly")
+   node echo.js
+   ```
 
+Na konci posledního kroku program straně služeb opraví, zahájí se stream do vašeho zařízení a po vytvoření se odeslat vyrovnávací paměti řetězce ke službě prostřednictvím datového proudu. V této ukázce straně služby program jednoduše načte `stdin` na terminálu a odesílá je do zařízení, což bude potom vracení ho. Tento příklad ukazuje úspěšné obousměrnou komunikaci mezi těmito dvěma aplikacemi.
+
+![Výstup na konzole na straně služby](./media/quickstart-device-streams-echo-nodejs/service-console-output.png)
 
 Program lze pak ukončit stisknutím kombinace kláves zadejte znovu.
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
-
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
 ## <a name="next-steps"></a>Další postup
 

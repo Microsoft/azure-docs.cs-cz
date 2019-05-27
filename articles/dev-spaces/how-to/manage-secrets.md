@@ -9,12 +9,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686436"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851431"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s prostorem vývoj Azure
 
@@ -24,7 +24,7 @@ Azure Dev prostory poskytují dvě možnosti pro ukládání tajných kódů dop
  
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: values.dev.yaml
 1. Otevřít VS Code s projektem, který je povolený pro Azure Dev mezery.
-2. Přidejte do ní soubor _values.dev.yaml_ ve stejné složce jako existující _values.yaml_ a definovat tajného klíče a hodnoty, jako v následujícím příkladu:
+2. Přidejte do ní soubor _values.dev.yaml_ ve stejné složce jako existující _azds.yaml_ a definovat tajného klíče a hodnoty, jako v následujícím příkladu:
 
     ```yaml
     secrets:
@@ -34,12 +34,13 @@ Azure Dev prostory poskytují dvě možnosti pro ukládání tajných kódů dop
         key: "secretkeyhere"
     ```
      
-3. Aktualizace _azds.yaml_ říct prostory Azure Dev do nové _values.dev.yaml_ souboru. Chcete-li to provést, přidejte tuto konfiguraci v části configurations.develop.container:
+3. _azds.yaml_ už odkazuje _values.dev.yaml_ souboru, pokud existuje. Pokud dáváte přednost jiný název souboru, aktualizujte část install.values:
 
     ```yaml
-           container:
-             values:
-             - "charts/webfrontend/values.dev.yaml"
+    install:
+      values:
+      - values.dev.yaml?
+      - secrets.dev.yaml?
     ```
  
 4. Upravte kód služby k odkazování na tyto tajné kódy jako proměnné prostředí, jako v následujícím příkladu:
@@ -76,17 +77,17 @@ Azure Dev prostory poskytují dvě možnosti pro ukládání tajných kódů dop
           set:
             secrets:
               redis:
-                port: "$REDIS_PORT_DEV"
-                host: "$REDIS_HOST_DEV"
-                key: "$REDIS_KEY_DEV"
+                port: "$REDIS_PORT"
+                host: "$REDIS_HOST"
+                key: "$REDIS_KEY"
     ```
      
 2.  Vytvoření _.env_ ve stejné složce jako soubor _azds.yaml_. Zadejte tajných kódů pomocí standardní klíč = hodnota notace. Není potvrzení _.env_ soubor do správy zdrojového kódu. (Pokud chcete vynechat ze správy zdrojových kódů v systémy správy verzí z gitu, přidejte ji tak _.gitignore_ souboru.) Následující příklad ukazuje _.env_ souboru:
 
     ```
-    REDIS_PORT_DEV=3333
-    REDIS_HOST_DEV=myredishost
-    REDIS_KEY_DEV=myrediskey
+    REDIS_PORT=3333
+    REDIS_HOST=myredishost
+    REDIS_KEY=myrediskey
     ```
 2.  Upravte zdrojový kód služby tak, aby odkazovaly těchto tajných kódů v kódu, jako v následujícím příkladu:
 

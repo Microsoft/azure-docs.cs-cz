@@ -2,21 +2,20 @@
 title: Třídy prostředků pro správu úloh – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Pokyny k používání třídy prostředků ke správě souběžnosti a výpočetní prostředky pro dotazy ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-origin.date: 03/15/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 05/22/2019
+ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75bd6e8071717ba755b71f51afcd884539049489
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475078"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165984"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků ve službě Azure SQL Data Warehouse
 
@@ -80,18 +79,19 @@ Dynamický prostředek třídy jsou implementovány pomocí tyto předdefinovan�
 
 Při digging do podrobností třídy dynamické prostředků na Gen1, existuje několik podrobností, které přidávají další složitosti k pochopení jejich chování:
 
-- Třída prostředků smallrc funguje s modelem pevné paměti jako statický prostředek třídy.  Dotazy Smallrc dynamicky nelze získat větší množství paměti, jako je vyšší úroveň služby.
+**Na Gen1**
+- Třída prostředků smallrc funguje s modelem pevné paměti jako statický prostředek třídy.  Dotazy Smallrc dynamicky nelze získat větší množství paměti, jako je vyšší úroveň služby. 
 - Měnit úrovně služeb, k dispozici dotazu souběžnosti Přejít nahoru nebo dolů.
-- Škálování úrovně služby neposkytuje proporční změna je paměť přidělená pro stejné třídy prostředků.
+- Škálování úrovně služeb neposkytuje proporční změna je paměť přidělená pro stejné třídy prostředků.
 
-Na **Gen2 pouze**, dynamický prostředek třídy jsou skutečně dynamické adresy bodů uvedených výše.  Nové pravidlo je 3-10-22-70 pro procento přidělení paměti pro třídy prostředků (krátkodobé používání) – střední velké xlarge **bez ohledu na úroveň služeb**.  Níže uvedená tabulka obsahuje konsolidované podrobné informace o procenta přidělení paměti a minimální počet souběžných dotazů, na kterých běží, bez ohledu na úrovni služby.
+**Při Gen2**, dynamický prostředek třídy jsou skutečně dynamické adresy bodů uvedených výše.  Nové pravidlo je 3-10-22-70 pro procento přidělení paměti pro třídy prostředků (krátkodobé používání) – střední velké xlarge **bez ohledu na úroveň služeb**.  Níže uvedená tabulka obsahuje konsolidované podrobné informace o procenta přidělení paměti a minimální počet souběžných dotazů, na kterých běží, bez ohledu na úrovni služby.
 
 | Třída prostředku | Procento paměti | Minimální počet souběžných dotazů |
 |:--------------:|:-----------------:|:----------------------:|
 | smallrc        | 3%                | 32                     |
 | mediumrc       | 10 %               | 10                     |
 | largerc        | 22%               | 4                      |
-| xlargerc       | 70 %               | 1                      |
+| xlargerc       | 70%               | 1                      |
 
 ### <a name="default-resource-class"></a>Výchozí třídy prostředků
 
@@ -116,7 +116,7 @@ Tyto operace se řídí třídy prostředků:
 - Vyberte (při dotazování tabulky uživatelů)
 - Příkaz ALTER INDEX - znovu SESTAVIT nebo REORGANIZOVAT
 - PŘÍKAZ ALTER TABLE OPĚTOVNÉ SESTAVENÍ
-- VYTVOŘENÍ INDEXU
+- CREATE INDEX
 - VYTVOŘIT CLUSTEROVANÝ INDEX COLUMNSTORE
 - VYTVOŘENÍ TABLE AS SELECT (CTAS)
 - Načítání dat
@@ -134,7 +134,7 @@ Následující příkazy jsou vyloučené z třídy prostředků a vždy spoušt
 - Vytvořit nebo DROP TABLE
 - PŘÍKAZ ALTER TABLE... PŘEPÍNAČE, ROZDĚLIT nebo sloučit oddíl
 - PŘÍKAZ ALTER INDEX DISABLE
-- ODSTRANIT INDEX
+- DROP INDEX
 - Vytvoření, aktualizace nebo použít příkaz DROP STATISTICS
 - TRUNCATE TABLE
 - PŘÍKAZ ALTER AUTORIZACE
@@ -942,7 +942,6 @@ Další informace o správě uživatelů a zabezpečení najdete v tématu [zabe
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:../sql-database/sql-database-manage-logins.md
+[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-<!-- Update_Description: update link, wording update-->

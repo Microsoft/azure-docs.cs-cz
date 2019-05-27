@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a4702ac0f70e3fc280501cd9524ccbfb528678
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 807045089f70e117d46754412d974be7fba5a77a
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546252"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832499"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašování uživatelů, získat tokeny pro volání rozhraní API, jako je například Microsoft Graphu nebo rozhraní API, která jste vytvořili vývojáři. Skládá se z ověřovací služba, open source knihoven, registrace aplikace a konfigurace (prostřednictvím portálu pro vývojáře a aplikace API), dokumentaci pro vývojáře, ukázky rychlý start, ukázky, kurzy, Průvodce postupy, a Další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
+Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašování uživatelů, získat tokeny pro volání rozhraní API, jako je například Microsoft Graphu nebo rozhraní API, která jste vytvořili vývojáři. Skládá se z ověřovací služba, open source knihoven, registrace aplikace a konfigurace (prostřednictvím portálu pro vývojáře a aplikace API), dokumentaci pro vývojáře, ukázky rychlý start, ukázky, kurzy, Průvodce postupy, a Další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 
 Až dosud Většina vývojářů pracovali s platformou Azure AD verze 1.0 a ověření pracovních a školních účtů (zřídit ve službě Azure AD) vyžádáním tokenů z koncového bodu Azure AD v1.0, pomocí Azure AD Authentication Library (ADAL), webu Azure portal registrace aplikace a konfigurace a Azure AD Graph API pro konfiguraci aplikace prostřednictvím kódu programu.
 

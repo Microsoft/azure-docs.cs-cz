@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/26/2019
-ms.openlocfilehash: 58b4acb3ebfc1ff22c04dafb3063f197d2866311
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 74146242ef4084e5990027117689bb1371c3f272
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005841"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832196"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Python)
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Pythonu. Microsoft Azure IoT SDK pro Python v současné době podporují pouze konkrétní verze jazyka Python pro každou platformu. Další informace najdete v tématu [Python SDK – soubor Readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-V tomto rychlém startu se předpokládá, že používáte vývojový počítač s Windows. Pro systémy Windows, pouze [Python 3.6.x](https://www.python.org/downloads/release/python-368/) je podporována. To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je váš systém architekturu procesoru, 32 bitů, potom instalační program stáhnout x86; pro 64bitovou architekturu stáhněte si instalační program x86 – x 64. Dále ověřte, jestli [Microsoft Visual C++ Redistributable pro Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) pro architektury (x86 nebo x64) je nainstalována.
+V tomto rychlém startu se předpokládá, že používáte vývojový počítač s Windows. Pro systémy Windows, pouze [Python 3.6.x](https://www.python.org/downloads/release/python-368/) je podporována. To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je váš systém architekturu procesoru, 32 bitů, potom instalační program stáhnout x86; pro 64bitovou architekturu stáhněte si instalační program x86 – x 64. Dále ověřte, jestli [Microsoft Visual C++ Redistributable pro Visual Studio 2015 – 2017 a 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) pro architektury (x86 nebo x64) je nainstalována.
 
 Python si můžete stáhnout pro jiné platformy z [Python.org](https://www.python.org/downloads/).
 

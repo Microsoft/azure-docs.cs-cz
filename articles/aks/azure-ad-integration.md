@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 026c0eefc0c4fe31e72ecad91a4a7b558f367487
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a6ed8ec37a3b20ccdbd2b013ba308518d8e3b97c
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192109"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849877"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace služby Azure Active Directory s Azure Kubernetes Service
 
@@ -23,7 +23,6 @@ V tomto článku se dozvíte, jak nasadit požadavky pro Azure AD a AKS a pak Na
 Platí následující omezení:
 
 - Azure AD jde Povolit jenom při vytváření nové, RBAC s podporou clusteru. Nejde povolit Azure AD v existujícím clusteru AKS.
-- *Host* uživatelů ve službě Azure AD, například jako v případě, že používáte federované přihlášení z jiného adresáře, nejsou podporovány.
 
 ## <a name="authentication-details"></a>Podrobnosti o ověřování
 
@@ -114,6 +113,10 @@ Druhá aplikace Azure AD se používá při přihlášení s využitím rozhran�
         Když úspěšně udělena oprávnění se zobrazí následující oznámení na portálu:
 
         ![Oznámení o úspěšném oprávnění udělená](media/aad-integration/permissions-granted.png)
+
+1. V levém navigačním panelu na aplikaci Azure AD, vyberte **ověřování**.
+
+    * V části **výchozí typ klienta**vyberte **Ano** k *klienta považovat za veřejné klienta*.
 
 1. V levém navigačním panelu aplikace Azure AD, poznamenejte si **ID aplikace**. Při nasazování clusteru služby Azure AD povolené AKS, tato hodnota se označuje jako `Client application ID`.
 
@@ -242,13 +245,14 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.13.5
 Jakmile budete hotovi, je uložit do mezipaměti ověřovací token. Jsou pouze získat k přihlášení při tokenu vypršela nebo znovu vytvořit konfigurační soubor Kubernetes.
 
 Pokud po úspěšném přihlášení se zobrazuje zprávy o chybě autorizace, zkontrolujte, zda:
-1. Uživatel se přihlašujete jako není hostované v instanci Azure AD (v tomto scénáři se často stává, pokud používáte federovaný účet z jiného adresáře).
-2. Uživatel není členem více než 200 skupin.
-3. Tajný kód definovaný v registrace aplikace pro server neodpovídá hodnotě nakonfigurované pomocí--aad-server-app-tajného klíče
 
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
+
+1. Jste definovali ID odpovídající objektu nebo UPN, podle toho, zda uživatelský účet je ve stejném tenantovi Azure AD, nebo ne.
+2. Uživatel není členem více než 200 skupin.
+3. Tajný kód definovaný v registrace aplikace pro server odpovídá hodnotě nakonfigurované pomocí `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Další postup
 

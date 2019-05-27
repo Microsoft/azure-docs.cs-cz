@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d7fd41657394e006957392f37ec1a258b33c8c6
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: beee76bdc443b3a66b4500b83d228075b84eed1e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413870"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864766"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro službu Web Apps v Azure
 
@@ -38,9 +38,9 @@ Tady jsou některé možnosti publikování kódu webové aplikace:
 
 Další informace najdete v tématu [nasazení aplikace do služby App Service](deploy-local-git.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Při pokusu nasadit ze sady Visual Studio se zobrazit chybová zpráva. Jak to můžu vyřešit?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Při pokusu nasadit ze sady Visual Studio se zobrazit chybová zpráva. Jak vyřešit tuto chybu?
 
-Pokud se zobrazí následující zpráva, pravděpodobně používáte starší verzi sady SDK: "Při nasazení pro prostředek"YourResourceName"ve skupině prostředků 'YourResourceGroup' došlo k chybě: MissingRegistrationForLocation: Předplatné není zaregistrované pro typ prostředku "součástí" umístění "USA". Přeregistrujte prosím tohoto zprostředkovatele. Pokud chcete mít přístup do tohoto umístění." 
+Pokud se zobrazí následující zpráva, pravděpodobně používáte starší verzi sady SDK: "Při nasazení pro prostředek"YourResourceName"ve skupině prostředků 'YourResourceGroup' došlo k chybě: MissingRegistrationForLocation: Předplatné není zaregistrované pro typ prostředku "součástí" umístění "USA". Zopakujte registraci u tohoto poskytovatele pro přístup do tohoto umístění." 
 
 Pokud chcete tuto chybu vyřešit, upgradujte [nejnovější sadu SDK](https://azure.microsoft.com/downloads/). Pokud se zobrazí tato zpráva a máte nejnovější sadu SDK, odešlete žádost o podporu.
 
@@ -59,7 +59,7 @@ Informace o struktuře souborů z aplikace app Service najdete v tématu [strukt
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Jak můžu vyřešit, "FTP chyba 550 – tady není dostatek místa na disku" při pokusu serveru FTP soubory?
 
-Pokud se zobrazí tato zpráva, je pravděpodobné, že používáte do disková kvóta v plánu služby pro vaši webovou aplikaci. Možná budete muset vertikálně navýšit kapacitu na vyšší úroveň služby na základě vašich potřeb místa na disku. Další informace o cenách plány a omezení prostředků, najdete v části [ceny služeb App Service](https://azure.microsoft.com/pricing/details/app-service/).
+Pokud se zobrazí tato zpráva, je pravděpodobné, že máte disková kvóta v plánu služby pro vaši webovou aplikaci. Možná budete muset vertikálně navýšit kapacitu na vyšší úroveň služby na základě vašich potřeb místa na disku. Další informace o cenách plány a omezení prostředků, najdete v části [ceny služeb App Service](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Jak nastavit průběžné nasazování pro svou webovou aplikaci služby App Service?
 
@@ -69,7 +69,7 @@ Můžete nastavit průběžné nasazování z několika zdrojů, včetně Azure 
 
 Pomoc při zjišťování problémů s průběžným nasazováním z Githubu nebo Bitbucketu, naleznete v tématu [zkoumání průběžné nasazování](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>Můžu nelze FTP na svém webu a publikování vlastní kód. Jak to můžu vyřešit?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Můžu nelze FTP na svém webu a publikování vlastní kód. Jak vyřešit tento problém?
 
 Chcete-li vyřešit problémy s FTP:
 

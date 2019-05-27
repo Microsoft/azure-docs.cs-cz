@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3a1525d7b1f9c0a0b6516014ea83fb8abd0376
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 3d139efaa8e6de4861dc8e885bd22a426fde6c94
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544827"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833044"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Přehled Microsoft identity platform (v2.0)
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které všechny Microsoft identity Přihlaste se a získat tokeny pro volání APIs Microsoftu, jako je například Microsoft Graphu nebo rozhraní API, která jste vytvořili vývojáři. Platforma Microsoft identity se skládá ze:
+Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které všechny Microsoft identity Přihlaste se a získat tokeny pro volání APIs Microsoftu, jako je například Microsoft Graphu nebo rozhraní API, která jste vytvořili vývojáři. Platforma Microsoft identity se skládá ze:
 
 - **Kompatibilní se standardní ověřovací službu OAuth 2.0 a OpenID Connect** , který umožňuje vývojářům k ověření libovolné identitě společnosti Microsoft, včetně:
   - Pracovní nebo školní účty (poskytované prostřednictvím Azure AD)
@@ -79,4 +79,4 @@ Jakmile budete připraveni ke spuštění vaší aplikace do **produkčního pro
 
 ## <a name="learn-more"></a>Další informace
 
-Pokud jste měli v úmyslu vytvořit aplikaci určenou pro zákazníky, který se přihlásí sociálních sítí a místní identity, podívejte se na [přehled Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Pokud máte v plánu jak vytvořit webovou aplikaci určenou pro zákazníky, který se přihlásí sociálních sítí a místní identity, najdete v článku [přehled Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
