@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: fc8877ed23b408ea041de67018a71cc203c5e8c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182400"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162035"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Publikovat do vlastního tématu pro Azure Event Grid
 
@@ -39,7 +39,7 @@ Koncový bod vlastního tématu pomocí Azure Powershellu, použijte:
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 
 V požadavku, zahrnují hodnotu záhlaví s názvem `aeg-sas-key` , který obsahuje klíč pro ověřování.
 
@@ -103,7 +103,7 @@ Po odeslání do tématu koncového bodu, neobdrží odpověď. Odpověď je sta
 |Úspěch  | 200 OK  |
 |Data události mají nesprávný formát | 400 – Chybný požadavek |
 |Neplatný přístupový klíč | 401 Neautorizováno |
-|Nesprávný koncového bodu | 404 – Nenalezeno |
+|Nesprávný koncového bodu | 404 Nenalezeno |
 |Pole nebo události překračuje omezení velikosti | Moc velký 413 datové části |
 
 Text zprávy pro chyby, má následující formát:

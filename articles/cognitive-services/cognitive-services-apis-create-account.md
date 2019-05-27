@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: b5adb5b8bddd0f379ac581f3268f0121791cf0bc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 831f1d22c4da215bed3ed55b659332aa3b57472b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546374"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145948"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 
@@ -92,6 +92,8 @@ Po vytvoření prostředku můžete přistupovat ji z řídicího panelu Azure P
 V prostředku služeb Cognitive Services, můžete použít adresu URL koncového bodu a klíče **přehled** části a začněte s vytvářením rozhraní API volá ve svých aplikacích.
 
 ![Obrazovka prostředky](media/cognitive-services-apis-create-account/resourceScreen.png)
+
+Poznamenejte si umístění a klíče. Klíče můžete získat tak, že vyberete **klíče** pod **správy prostředků**.
 
 ## <a name="next-steps"></a>Další postup
 

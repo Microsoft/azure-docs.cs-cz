@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081079"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66147038"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověřování pomocí protokolu RADIUS: PowerShell
 
@@ -22,7 +22,7 @@ Brána VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojen
 
 Připojení VPN typu P2S se zahájí ze zařízení se systémem Windows nebo Mac. Klienti při připojování mohou využít následující metody ověřování: 
 
-* Server RADIUS
+* Server protokolu RADIUS
 * Brána VPN nativního ověřování certifikátů
 
 Tento článek pomůže vám nakonfigurovat konfiguraci P2S s ověřováním pomocí protokolu RADIUS server. Pokud chcete ověřit, místo toho použít certifikáty generované a VPN gateway nativního ověřování certifikátů, přečtěte si téma [konfigurace připojení typu Point-to-Site k virtuální síti pomocí sítě VPN gateway nativního ověřování certifikátů](vpn-gateway-howto-point-to-site-rm-ps.md).

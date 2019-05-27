@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: a5d29e77f6ba10ed3069cb3f5a3c8089f49c237d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423168"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140594"
 ---
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** v levé nabídce a vyberte **Notification Hubs** v **Mobile** oddílu. Vyberte hvězdičku (`*`) vedle názvu služby a přidejte ji tak **Oblíbené** části v nabídce vlevo. Po **Notification Hubs** se přidá do **Oblíbené**, vyberte v nabídce vlevo. 

@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546719"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145872"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Zadejte sdílený Galerie obrázků:
 
@@ -128,7 +128,7 @@ Doporučujeme, abyste sdílení na úrovni Galerie pro dosažení co nejlepšíc
 Image můžete také sdílet, ve velkém měřítku, mezi tenanty používající registrace aplikace s více tenanty. Další informace o sdílení imagí mezi tenanty najdete v tématu [sdílet Galerie imagí virtuálních počítačů tenantů Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Fakturace
-Neexistuje žádné další poplatky za využívání služby Shared Galerie obrázků. Účtuje se pro následující prostředky:
+Za použití služby galerie sdílených obrázků se neúčtují žádné poplatky navíc. Účtuje se pro následující prostředky:
 - Náklady na úložiště ukládání verzí sdílených bitových kopií. Cena závisí na počtu replik verze image a počtem oblastí verze se replikuje do. Například pokud máte 2 bitových kopií a obě se replikují do 3 oblasti, pak jste se změní za 6 spravované disky na základě jejich velikosti. Další informace najdete v tématu [cenami služby Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Poplatky za výchozí přenos dat sítě pro replikaci první verze image ze zdrojové oblasti na replikovaných oblastech. Následující repliky jsou zpracovány v rámci oblasti, takže se neúčtují žádné další poplatky. 
 

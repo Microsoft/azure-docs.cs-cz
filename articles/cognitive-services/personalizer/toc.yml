@@ -24,7 +24,7 @@
       displayName: 'best practice, design'
     - name: Základní koncepce
       items:
-        - name: 'Funkce: Akce a kontext'
+        - name: Kontext a akce funkcí
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
         - name: Odměny
@@ -65,6 +65,8 @@
   items:
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Plány Azure do budoucna
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: Ceny

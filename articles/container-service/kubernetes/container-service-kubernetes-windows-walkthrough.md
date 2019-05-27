@@ -10,11 +10,11 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659384"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148786"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes pro kontejnery Windows
 
@@ -183,7 +183,7 @@ Pokud si chcete zobrazit úvodní stránku ISS na externí IP adrese, můžete p
 ![Obrázek přechodu na službu IIS](./media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
 
 
-## <a name="delete-cluster"></a>Odstranění clusteru
+## <a name="delete-cluster"></a>Odstranit cluster
 Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive 

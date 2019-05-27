@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: cf5713fecd354f1e1d2c0ce7d28439b5b8b785ec
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 6d2ed8ba13fac03a60d9a0730776bc8348876b62
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153419"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153575"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -149,7 +149,7 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
 4. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    EXEC sp_addrolemember db_owner, [your application name];
     ```
 
 5. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
@@ -199,7 +199,7 @@ Použití spravované identity ověřování, postupujte podle těchto kroků:
 3. **Identita spravované objekt pro vytváření dat nezbytná oprávnění udělit** obvyklým způsobem pro uživatele serveru SQL a další. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    EXEC sp_addrolemember db_owner, [your Data Factory name];
     ```
 
 5. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
@@ -375,7 +375,7 @@ Ke zkopírování dat do Azure SQL Data Warehouse, nastavte typ jímky v aktivit
 | rejectValue | Určuje číslo nebo procentuální podíl řádků, které mohou být odmítnuty předtím, než se dotaz nezdaří.<br/><br/>Další informace o společnosti PolyBase možnosti odmítnutí v části argumenty [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Povolené hodnoty jsou 0 (výchozí), 1, 2, atd. |Ne |
 | rejectType | Určuje, zda **rejectValue** možnost je hodnotu literálu nebo procenta.<br/><br/>Povolené hodnoty jsou **hodnotu** (výchozí) a **procento**. | Ne |
 | rejectSampleValue | Určuje počet řádků, načtěte před PolyBase přepočítá procento pozice zamítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2, atd. | Ano, pokud **rejectType** je **procento**. |
-| useTypeDefault | Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí). | Ne |
+| useTypeDefault | Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Povolené hodnoty jsou **True** a **False** (výchozí).<br><br>**Zobrazit [tipy pro řešení potíží](#polybase-troubleshooting) související se toto nastavení.** | Ne |
 | writeBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **celé číslo** (počet řádků). Ve výchozím nastavení služby Data Factory dynamicky určí příslušné batch velikost podle velikosti řádku. | Ne |
 | writeBatchTimeout | Čekací doba pro dávkové operace insert dokončit před uplynutím časového limitu. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Data Warehouse při každém spuštění. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
@@ -405,6 +405,9 @@ Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/
 * Pokud vaše zdrojová data nejsou v **objektů Blob v Azure, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2**a **formát je PolyBase kompatibilní**, můžete použít aktivitu kopírování, která přímo vyvolat PolyBase nechejte systém Azure SQL Data Warehouse načíst data ze zdroje. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)**.
 * Pokud zdrojové úložiště dat a formát polybase původně nepodporuje, použijte **[fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase)** místo toho funkci. Funkce dvoufázové instalace kopírování také poskytuje vyšší propustnost. Automaticky převádí data do formátu kompatibilním PolyBase. A ukládá data do úložiště objektů Blob v Azure. Pak načte data do SQL Data Warehouse.
 
+>[!TIP]
+>Další informace najdete na [osvědčené postupy pro použití technologie PolyBase](#best-practices-for-using-polybase).
+
 ### <a name="direct-copy-by-using-polybase"></a>Kopírování s přímým přístupem pomocí PolyBase
 
 SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2. Pokud vaše zdrojová data splňuje kritéria popsané v této části, zkopírovat přímo ze zdrojového úložiště dat do Azure SQL Data Warehouse pomocí PolyBase. Jinak použijte [fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase).
@@ -418,9 +421,12 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 
     | Typ úložiště podporované zdroje dat | Podporovaný typ ověřování zdroje |
     |:--- |:--- |
-    | [Azure Blob](connector-azure-blob-storage.md) | Ověření pomocí klíče účtu |
+    | [Azure Blob](connector-azure-blob-storage.md) | Ověření klíče účtu, spravovanou identitu ověřování |
     | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Ověřování instančních objektů |
-    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověření pomocí klíče účtu |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověření klíče účtu, spravovanou identitu ověřování |
+
+    >[!IMPORTANT]
+    >Pokud koncový bod služby virtuální sítě se nakonfigurují službě Azure Storage, je potřeba použít spravovanou identitu ověřování. Odkazovat na [dopadu koncové body služby virtuální sítě pomocí služby Azure storage](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
 
 2. **Formát zdrojových dat** je **Parquet**, **ORC**, nebo **oddělený text**, s následující konfigurací:
 
@@ -515,9 +521,28 @@ Použití technologie PolyBase, musí mít uživatel, který načte data do SQL 
 
 ### <a name="row-size-and-data-type-limits"></a>Velikost řádku a datový typ omezení
 
-Načítání PolyBase jsou omezené na řádky, které jsou menší než 1 MB. Nelze načíst do VARCHR(MAX) či NVARCHAR(MAX) nebo VARBINARY(MAX). Další informace najdete v tématu [limity kapacity služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+Načítání PolyBase jsou omezené na řádky, které jsou menší než 1 MB. Nelze použít k načtení do služby VARCHR(MAX) či NVARCHAR(MAX) nebo VARBINARY(MAX). Další informace najdete v tématu [limity kapacity služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
 Pokud zdroj dat má řádky větší než 1 MB, můžete chtít svisle rozdělit do několika malých ty zdrojové tabulky. Ujistěte se, že největší velikost každého řádku nepřekračuje limit. Menší tabulky můžete pak načíst pomocí PolyBase a sloučeny ve službě Azure SQL Data Warehouse.
+
+Můžete také pro data s takové širokých sloupců, můžete bez PolyBase načíst data pomocí ADF, tím, že vypíná "Povolit PolyBase" nastavení.
+
+### <a name="polybase-troubleshooting"></a>Řešení potíží s PolyBase
+
+**Načítání do desítkové sloupec**
+
+Pokud vaše zdrojová data nejsou ve formátu textu a obsahuje prázdné hodnoty, které mají být načtena do SQL Data Warehouse desítkové sloupec, můžete narazit na následující chybu:
+
+```
+ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
+```
+
+Řešením je zrušte výběr "**výchozího typu použití**" možnost jímky aktivity kopírování (jako NEPRAVDA) -> Nastavení PolyBase. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+)" je nativní konfigurace PolyBase, která určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načte data z textového souboru. 
+
+**Ostatní**
+
+Další problémy knonw PolyBase, najdete v tématu [řešení potíží s Azure SQL Data Warehouse PolyBase zatížení](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
 
 ### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků SQL Data Warehouse
 
@@ -558,6 +583,9 @@ Další podrobnosti o [zdroje transformace](data-flow-source.md) a [jímky trans
 
 Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používají následující mapování z Azure SQL Data Warehouse datových typů na Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) se dozvíte, jak aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
+>[!TIP]
+>Odkazovat na [typy tabulkových dat ve službě Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md) článek věnovaný tomu, SQL data Warehouse podporované datové typy a řešení u těch, které jsou podporovány.
+
 | Azure SQL Data Warehouse datový typ | Data Factory dočasné datový typ |
 |:--- |:--- |
 | bigint | Int64 |
@@ -575,7 +603,6 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | int | Int32 |
 | money | Decimal |
 | nchar | String, Char[] |
-| ntext | String, Char[] |
 | numeric | Decimal |
 | nvarchar | String, Char[] |
 | real | Single |
@@ -583,15 +610,11 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | smalldatetime | DateTime |
 | smallint | Int16 |
 | smallmoney | Decimal |
-| sql_variant | Object |
-| text | String, Char[] |
 | time | TimeSpan |
-| časové razítko | Byte[] |
 | tinyint | Byte |
 | uniqueidentifier | Guid |
 | varbinary | Byte[] |
 | varchar | String, Char[] |
-| xml | Xml |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky, aktivita kopírování ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

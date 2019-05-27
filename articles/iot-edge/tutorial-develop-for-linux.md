@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e5b34171af53a72ef231bb8beb758b7ff97cf5d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576779"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146707"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Linuxem
 
@@ -51,7 +51,7 @@ V následující tabulce jsou uvedeny podporované vývojové scénáře pro **k
 | **Architektura zařízení Linux** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
 | **Služby Azure** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Jazyky** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
 
 V tomto kurzu se dozvíte, jaké kroky vývoje pro Visual Studio Code. Pokud místo toho můžete využít Visual Studio 2017, použijte pokyny v [použít Visual Studio 2017 na vývoj a ladění modulů Azure IoT Edge](how-to-visual-studio-develop-module.md).
 

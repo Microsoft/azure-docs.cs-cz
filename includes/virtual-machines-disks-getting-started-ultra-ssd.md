@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 495326c172f900dc8bcff78b0df38f2cb64ed27e
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 326382339e2b4aeaa488d3d7f76b7ff35f9bc620
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546524"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147777"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Povolit a nasadit Azure ultra SSD disky (preview)
 
@@ -27,7 +27,7 @@ Po schválení, budete muset určit, které zóny dostupnosti jsou in, aby bylo 
 
 PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
-CLI: `az vm list-skus --resource-type disks --query “[?name==UltraSSD_LRS]”`
+CLI: `az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].locationInfo"`
 
 Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pro nasazení v oblasti východní USA 2. X může být buď 1, 2 nebo 3.
 

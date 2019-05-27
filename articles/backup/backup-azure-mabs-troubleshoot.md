@@ -6,66 +6,80 @@ author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 05/21/2019
 ms.author: kasinh
-ms.openlocfilehash: 22507a1b89c6a7d6867e9b669e1a2e70106a4e41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: aa039680be1e88d74cad63eba17d7f3aa89ea49f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228271"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000426"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
 Řešení potíží s chybami, které zaznamenáte při používání Azure Backup serveru pomocí informací v následujících tabulkách.
 
+## <a name="basic-troubleshooting"></a>Základní řešení potíží
+
+Doporučujeme provést ověření, než začnete řešení potíží s Microsoft Azure Backup Server (MABS):
+
+- [Ujistěte se, že Agent Microsoft Azure Recovery Services (MARS) je aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](https://aka.ms/AB-A4dp50)
+- Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte a zkuste operaci zopakovat
+- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](https://aka.ms/AB-AA4dwtt)
+- Pokud se registrace se nedaří, zajistěte, že server, na které se pokoušíte nainstalovat Azure Backup Server není již zaregistrován jiný trezor
+- Pokud nabízená instalace selže, zkontrolujte, jestli už agent DPM neexistuje. Pokud agent existuje, odinstalujte ho a pak instalaci opakujte.
+- [Zajištění, aby službě Azure Backup nepřekáží jiný proces nebo antivirový software](https://aka.ms/AA4nyr4)<br>
+- Ujistěte se, že je na serveru MAB spuštěná služba agenta SQL a že je nastavená na automatický režim.<br>
+
+
 ## <a name="invalid-vault-credentials-provided"></a>Neplatné přihlašovací údaje úložiště k dispozici
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Registrace do trezoru | Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje nesouvisí s využitím služby recovery. | Doporučená akce: <br> <ul><li> Stáhněte si nejnovější soubor s přihlašovacími údaji z trezoru a zkuste to znovu. <br>(NEBO)</li> <li> Pokud předchozí akci nefungovalo, zkusit stáhnout přihlašovací údaje na jiný místní adresář nebo vytvořit nový trezor. <br>(NEBO)</li> <li> Zkuste aktualizovat datum a čas nastavení, jak je popsáno v [tento blog](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/). <br>(NEBO)</li> <li> Zkontrolujte, jestli c:\windows\temp má více než 65000 soubory. Přesunutí zastaralých souborů do jiného umístění nebo odstranění položek ve složce Temp. <br>(NEBO)</li> <li> Zkontrolujte stav certifikáty. <br> a. Otevřít **spravovat certifikáty počítače** (v Ovládacích panelech). <br> b. Rozbalte **osobní** uzel a jeho podřízeným uzlem **certifikáty**.<br> c.  Odeberte certifikát **Windows Azure Tools**. <br> d. Opakujte registraci ve službě Azure Backup klienta. <br> (NEBO) </li> <li> Zaškrtněte, pokud chcete zjistit, jestli všechny zásady skupiny na místě. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>Replika je nekonzistentní.
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Backup | Replika je nekonzistentní. | Ověřte, že je zapnutá možnost kontroly automatické kontroly konzistence v Průvodci skupiny ochrany. Další informace o příčinách nekonzistence repliky a relevantní doporučení, najdete v článku Microsoft TechNet [replika je nekonzistentní](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> V případě zálohování stavu systému/úplné obnovení systému ověřte, že zálohování Windows serveru je nainstalovaná na chráněném serveru.</li><li> Zkontrolujte problémy související s místa ve fondu úložiště DPM na serveru aplikace DPM nebo Microsoft Azure Backup a přidělení úložiště podle potřeby.</li><li> Kontrola stavu služby Stínová kopie svazku na chráněném serveru. Pokud je v zakázaném stavu, nastavte ji spustit ručně. Spusťte službu na serveru. Pak přejděte zpět do konzoly aplikace DPM nebo Microsoft Azure Backup serveru a spusťte synchronizaci s úlohou kontroly konzistence.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Vytvoření bodu obnovení online se nezdařilo
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Backup | Vytvoření bodu obnovení online se nezdařilo | **Chybová zpráva**: Windows Azure Backup Agent nemohl vytvořit snímek vybraného svazku. <br> **Alternativní řešení**: Zvětšete místo na svazku bodu obnovení a repliky.<br> <br> **Chybová zpráva**: Windows Azure Backup Agent nemůže připojit ke službě obengine <br> **Alternativní řešení**: Ověřte, OBEngine existuje v seznamu služeb spuštěných v počítači. Pokud není spuštěná služba OBEngine, použijte příkaz "net start OBEngine" spustit službu OBEngine. <br> <br> **Chybová zpráva**: Šifrovací heslo pro tento server není nastaven. Nakonfigurujte prosím šifrovací heslo. <br> **Alternativní řešení**: Zkuste nakonfigurovat šifrovací heslo. Pokud selže, proveďte následující kroky: <br> <ol><li>Ověřte, zda pomocné umístění existuje. Toto je umístění, které je uvedený v registru **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, s názvem **ScratchLocation** by měla existovat.</li><li> Pokud pomocné umístění existuje, zkuste se znovu zaregistrovat pomocí staré heslo. *Pokaždé, když konfigurujete šifrovací heslo, uložte ho na bezpečném místě.*</li><ol>|
 
 ## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Zadané přihlašovací údaje trezoru se liší od trezor, který server je zaregistrovaný.
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
-| Obnovení | **Kód chyby:**: Chyba CBPServerRegisteredVaultDontMatchWithCurrent/trezoru přihlašovací údaje: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezor, který server je zaregistrovaný. | **Příčina:** K tomuto problému dochází, když se pokoušíte obnovit soubory z původního serveru pomocí možnosti externí DPM pro obnovení na alternativní server, a pokud nejsou přidruženy stejný server, který se obnovuje a původní server z zálohovaná data byla Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li vyřešit tento problém zajistit jak původní a alternativní server byly zaregistrovány do stejného trezoru.|
+| Obnovení | **Kód chyby:**: Chyba CBPServerRegisteredVaultDontMatchWithCurrent/trezoru přihlašovací údaje: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezor, který server je zaregistrovaný. | **Příčina:** K tomuto problému dochází, když se pokoušíte obnovit soubory z původního serveru pomocí možnosti externí DPM pro obnovení na alternativní server, a pokud nejsou přidruženy stejný server, který se obnovuje a původní server z zálohovaná data byla Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** k vyřešení tohoto problému zkontrolujte i původní a alternativní server je zaregistrovaný do stejného trezoru.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Selhání úlohy vytvoření bodu obnovení online pro virtuální počítač VMware
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Backup | Selhání úlohy vytvoření bodu obnovení online pro virtuální počítač VMware. Aplikace DPM narazila na chybu ve VMware při pokusu získat informace o sledování změn ve. Kód chyby - FileFaultFault (ID 33621) |  <ol><li> Resetování CTK ve VMware příslušných virtuálních počítačích.</li> <li>Zkontrolujte, že nezávislé disku není místo ve VMware.</li> <li>Zastavte ochranu pro ovlivněné virtuální počítače a znovu nastavit ochranu s **aktualizovat** tlačítko. </li><li>Spuštění kopie pro ovlivněné virtuální počítače.</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operace agenta se nezdařila kvůli chybě komunikace s službu DPM agent coordinator na serveru
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Odesílání agenty na chráněných serverech | Operace agenta se nezdařila kvůli chybě komunikace se službou DPM Agent Coordinator na \<ServerName >. | **Pokud nebude fungovat Doporučená akce uvedené v rámci produktu, proveďte následující kroky**: <ul><li> Pokud připojujete počítače z nedůvěryhodné domény, postupujte podle [tyto kroky](https://technet.microsoft.com/library/hh757801(v=sc.12).aspx). <br> (NEBO) </li><li> Pokud připojujete počítač v důvěryhodné doméně, řešení potíží pomocí kroků uvedených v [tento blog](https://blogs.technet.microsoft.com/dpm/2012/02/06/data-protection-manager-agent-network-troubleshooting/). <br>(NEBO)</li><li> Zkuste zakázat antivirový v rámci řešení potíží. Pokud se problém vyřeší, upravit nastavení pro antivirovou ochranu jak je navrženo v [v tomto článku](https://technet.microsoft.com/library/hh757911.aspx).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalační program nemohl aktualizovat metadata registru
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 |-----------|---------------|------------|
-|Instalace | Instalační program nemohl aktualizovat metadata registru. Toto selhání aktualizace by mohlo vést k overusage spotřebu úložiště. Abyste tomu předešli, aktualizujte položku registru ReFS. | Upravit klíč registru **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**. Nastavte hodnotu Dword na 1. |
+|Instalace | Instalační program nemohl aktualizovat metadata registru. Toto selhání aktualizace by mohlo vést k overusage spotřebu úložiště. Aby se předešlo této aktualizace položku registru ReFS. | Upravit klíč registru **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**. Nastavte hodnotu Dword na 1. |
 |Instalace | Instalační program nemohl aktualizovat metadata registru. Toto selhání aktualizace by mohlo vést k overusage spotřebu úložiště. Abyste tomu předešli, aktualizujte položku registru Volume SnapOptimization. | Vytvořte klíč registru **SOFTWARE\Microsoft Data Protection Manager\Configuration\VolSnapOptimization\WriteIds** s prázdnou řetězcovou hodnotu. |
 
 ## <a name="registration-and-agent-related-issues"></a>Registrace a problémů souvisejících s agenty
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Odesílání agenty na chráněných serverech | Přihlašovací údaje, které jsou určené pro server jsou neplatné. | **Pokud nebude fungovat doporučenou akci, která se zobrazí v rámci produktu, proveďte následující kroky**: <br> Pokuste se ručně nainstalovat agenta ochrany na provozním serveru, jak je uvedeno v [v tomto článku](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual).|
 | Azure Backup Agent se nemohl připojit ke službě Azure Backup (ID: 100050) | Azure Backup Agent nemohl připojit ke službě Azure Backup. | **Pokud nebude fungovat doporučenou akci, která se zobrazí v rámci produktu, proveďte následující kroky**: <br>1. Spusťte na příkazovém řádku se zvýšenými oprávněními: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Otevře se okno aplikace Internet Explorer. <br/> 2. Přejděte na **nástroje** > **Možnosti Internetu** > **připojení** > **nastavení místní sítě**. <br/> 3. Ověřte nastavení proxy serveru pro systémový účet. Nastavit Proxy IP adresy a portu. <br/> 4. Zavřete aplikaci Internet Explorer.|
@@ -74,7 +88,7 @@ ms.locfileid: "61228271"
 
 ## <a name="configuring-protection-group"></a>Konfigurace skupiny ochrany
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Konfigurace skupin ochrany | Aplikace DPM se nepodařil výčet součásti aplikace v chráněném počítači (název chráněného počítače). | Vyberte **aktualizovat** na obrazovce konfigurace skupiny ochrany uživatelského rozhraní na příslušné úrovni datasource/součásti. |
 | Konfigurace skupin ochrany | Ochranu nelze nakonfigurovat. | Pokud je chráněný server SQL server, ověřte, že oprávnění role správce byla poskytnutá těmto osobám systémový účet (NTAuthority\System) v chráněném počítači jak je popsáno v [v tomto článku](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
@@ -83,18 +97,18 @@ ms.locfileid: "61228271"
 
 ## <a name="backup"></a>Backup
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Backup | Při běhu úlohy došlo k neočekávané chybě. Zařízení není připraveno. | **Pokud nebude fungovat doporučenou akci, která se zobrazí v rámci produktu, proveďte následující kroky:** <br> <ul><li>Nastavte úložiště stínové kopie místo na neomezený počet položek ve skupině ochrany a potom spustíte kontrolu konzistence.<br></li> (NEBO) <li>Zkuste odstranit stávající ochranu skupiny a vytváření nových skupin více. Všechny nové skupiny ochrany by měl mít jednotlivé položky v něm.</li></ul> |
 | Backup | Pokud zálohujete jenom stav systému, ověřte, zda je dostatek volného místa na chráněném počítači pro uložení zálohy stavu systému. | <ol><li>Ověřte, že zálohování Windows serveru je nainstalovaný v chráněném počítači.</li><li>Ověřte, zda je dostatek místa na chráněném počítači stavu systému. Nejjednodušší způsob, jak ověřit, že to je přejít na chráněném počítači otevřete zálohování Windows serveru, klikněte na tlačítko prostřednictvím výběry a vyberte BMR. Uživatelské rozhraní pak zjistíte, kolik místa je povinný. Otevřít **WSB** > **místní záloha** > **plán zálohování** > **Vybrat konfiguraci zálohování**  >  **Plnou instalaci systému server** (zobrazí se velikost). Tato velikost slouží k ověření.</li></ol>
-| Backup | Selhání zálohování pro úplné obnovení systému | Pokud je velká velikost BMR, přesunout některé soubory aplikace do jednotky operačního systému a zkuste to znovu. |
-| Backup | Možné znovunastavení ochrany virtuálních počítačů VMware na nový Server Microsoft Azure Backup není uveden jako dostupné pro přidání. | Vlastnosti VMware jsou nasměrovaného na staré, vyřazené instance Microsoft Azure Backup serveru. Řešení tohoto problému:<br><ol><li>V systému VCenter (SC-VMM ekvivalent), přejděte na **Souhrn** kartu a potom do **vlastní atributy**.</li>  <li>Odstraňte název staré Microsoft Azure Backup serveru z **DPMServer** hodnotu.</li>  <li>Vraťte se do Microsoft Azure Backup serveru novou verzi a upravovat stránky  Po výběru **aktualizovat** tlačítko se zobrazí zaškrtávací políčko podle potřeby, přidejte do ochrany virtuálního počítače.</li></ol> |
+| Backup | Selhání zálohování BMR | Pokud je velká velikost BMR, přesunout některé soubory aplikace do jednotky operačního systému a zkuste to znovu. |
+| Backup | Možné znovunastavení ochrany virtuálních počítačů VMware na nový Server Microsoft Azure Backup není uveden jako dostupné pro přidání. | Vlastnosti VMware jsou nasměrovaného na staré, vyřazené instance Microsoft Azure Backup serveru. K vyřešení tohoto problému:<br><ol><li>V systému VCenter (SC-VMM ekvivalent), přejděte na **Souhrn** kartu a potom do **vlastní atributy**.</li>  <li>Odstraňte název staré Microsoft Azure Backup serveru z **DPMServer** hodnotu.</li>  <li>Vraťte se do Microsoft Azure Backup serveru novou verzi a upravovat stránky  Po výběru **aktualizovat** tlačítko se zobrazí zaškrtávací políčko podle potřeby, přidejte do ochrany virtuálního počítače.</li></ol> |
 | Backup | Chyba při přístupu k soubory nebo sdílené složky | Zkuste upravit nastavení pro antivirovou ochranu jak je navrženo v článku na webu TechNet [spuštění antivirového softwaru na serveru DPM](https://technet.microsoft.com/library/hh757911.aspx).|
 
 
 ## <a name="change-passphrase"></a>Změnit heslo
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Změnit heslo |Tento bezpečnostní kód PIN, který jste zadali, je nesprávná. Zadejte správný bezpečnostní kód PIN k dokončení této operace. |**Příčina:**<br/> Tato chyba nastane, pokud zadáte neplatný nebo vypršelo bezpečnostní kód PIN, když provádíte důležité operace (jako je například změna přístupové heslo). <br/>**Doporučená akce:**<br/> K dokončení operace, je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k webu Azure portal a přejděte do trezoru služby Recovery Services. Pak přejděte na **nastavení** > **vlastnosti** > **vygenerovat bezpečnostní kód PIN**. Chcete-li změnit heslo, použijte tento PIN kód. |
 | Změnit heslo |Operace se nezdařila. ID: 120002 |**Příčina:**<br/>K této chybě dochází, pokud jsou povolené nastavení zabezpečení, nebo když se pokusíte změnit heslo, pokud používáte nepodporované verze.<br/>**Doporučená akce:**<br/> Chcete-li změnit heslo, musíte nejprve aktualizovat agenta zálohování na minimální verzi, která je 2.0.9052. Také musíte aktualizovat Azure Backup serveru na minimum update 1 a pak zadejte platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste na webu Azure portal a přejděte do trezoru služby Recovery Services. Pak přejděte na **nastavení** > **vlastnosti** > **vygenerovat bezpečnostní kód PIN**. Chcete-li změnit heslo, použijte tento PIN kód. |
@@ -102,6 +116,6 @@ ms.locfileid: "61228271"
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
-| Operace | Podrobnosti o chybě | Alternativní řešení |
+| Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Nastavení e-mailová oznámení pomocí účtu Office 365 |ID chyby: 2013| **Příčina:**<br> Chcete-li použít účet Office 365 <br>**Doporučená akce:**<ol><li> Nejprve zkontrolujte je, že "umožnit anonymní Relay na přijímat konektor" pro server aplikace DPM je nastavený na serveru Exchange. Další informace o tom, jak nastavit tuto konfiguraci najdete v tématu [povolit anonymní Relay konektoru přijímat](https://technet.microsoft.com/library/bb232021.aspx) na webu TechNet.</li> <li> Pokud nemůžete použít interní předávání SMTP a muset nastavit pomocí serveru služeb Office 365, můžete nastavit IIS bude přenos. Nakonfigurujte server DPM za účelem [předávání SMTP k O365, pomocí služby IIS](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **DŮLEŽITÉ:** Nezapomeňte použít uživatel\@domain.com formátu a *není* doména\uživatel.<br><br><li>Bod DPM použít název místního serveru jako serveru SMTP port 587. Pak nasměrovat ho na e-mailu uživatele, který do e-mailů by měl pocházet z.<li> Uživatelské jméno a heslo na stránce instalace aplikace DPM SMTP by měl být pro doménový účet v doméně, tj. aplikace DPM v. </li><br> **POZNÁMKA:** Když změníte adresu serveru SMTP, proveďte změnu nová nastavení, zavřete dialogové okno nastavení a poté znovu otevřít Ujistěte se, že odráží novou hodnotu.  Nové nastavení se projeví, takže jeho otestování. Díky tomu je osvědčeným postupem nemusí vždy způsobit jednoduše mění a testování.<br><br>Kdykoli během tohoto procesu můžete vymazat nastavení zavření konzoly aplikace DPM a úpravou těchto klíčů registru: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> odstranit SMTPPassword a SMTPUserName klíče**. Přidáním zpět do uživatelského rozhraní při znovu spusťte.

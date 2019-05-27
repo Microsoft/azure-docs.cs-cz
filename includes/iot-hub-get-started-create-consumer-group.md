@@ -5,11 +5,11 @@ ms.author: robinsh
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 57a5de4c590ff98429aa1d4a0b96cebed6084a0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780012"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146442"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidat skupinu uživatelů do služby IoT hub
 

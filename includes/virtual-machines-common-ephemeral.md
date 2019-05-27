@@ -9,13 +9,13 @@ ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468349"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145924"
 ---
-Dočasné disky s operačním systémem jsou vytvořené v místním úložišti virtuální počítač (VM) a není trvalý do vzdáleného úložiště Azure. Dočasné disky s operačním systémem fungují dobře u bezstavových úloh, kdy aplikace jsou odolné proti selhání jednotlivých virtuálních počítačů, ale více jde o dobu potřebnou pro rozsáhlá nasazení nebo dobu obnovení z Image jednotlivých instancí virtuálních počítačů. Je také vhodné pro aplikace nasazené pomocí modelu nasazení classic, přesunout do modelu nasazení Resource Manager. Pomocí disku s operačním systémem dočasné by dodržovat nižší latence čtení a zápisu na disk s operačním systémem a rychlejší obnovení z Image virtuálního počítače. Kromě toho je disk s operačním systémem dočasné zdarma, vám být účtovány žádné náklady na úložiště pro disk s operačním systémem. 
+Dočasné disky s operačním systémem jsou vytvořené v místním úložišti virtuální počítač (VM) a není trvalý do vzdáleného úložiště Azure. Dočasné disky s operačním systémem fungují dobře u bezstavových úloh, kdy aplikace jsou odolné proti selhání jednotlivých virtuálních počítačů, ale více jde o dobu potřebnou pro rozsáhlá nasazení nebo dobu obnovení z Image jednotlivých instancí virtuálních počítačů. Je také vhodné pro aplikace nasazené pomocí modelu nasazení classic, přesunout do modelu nasazení Resource Manager. U dočasných disků s operačním systémem se projevuje nižší latence čtení/zápisu na disk s operačním systémem a rychlejší obnovení virtuálního počítače z image. Kromě toho je disk s operačním systémem dočasné zdarma, vám být účtovány žádné náklady na úložiště pro disk s operačním systémem. 
  
 Klíčové funkce dočasné disky jsou: 
 - Může se použít s Tržiště imagí i vlastních imagí.

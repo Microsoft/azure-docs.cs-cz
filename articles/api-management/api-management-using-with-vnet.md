@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
 ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006042"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66141427"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -55,7 +55,7 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 
    * **Externí**: brány a vývojářského portálu API Management, jsou přístupné z veřejného Internetu prostřednictvím externím vyrovnáváním zatížení. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 
-     ![Veřejný partnerský vztah][api-management-vnet-public]
+     ![Veřejné partnerské vztahy][api-management-vnet-public]
 
    * **Interní**: brány a vývojářského portálu API Management je přístupný jenom v rámci virtuální sítě prostřednictvím interního nástroje load balancer. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 

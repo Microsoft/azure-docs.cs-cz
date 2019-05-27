@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905533"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134639"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurace aplikační brány s koncovým bodem interní služby load balancer (ILB)
 
@@ -63,14 +63,14 @@ Back-endového fondu se používá k směrovat požadavky do back-end serverů, 
 2. Instalace služby IIS na virtuálních počítačích a ověřte, že službu application gateway vytvořil úspěšně.
 3. Přidání serverů back-endu do back-endový fond.
 
-### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 1. Klikněte na možnost **Nové**.
 2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
 3. Zadejte pro virtuální počítač tyto hodnoty:
    - *myVM1* – název virtuálního počítače.
    - *azureuser* – uživatelské jméno správce.
-   - *Azure123456!* – heslo.
+   - *Azure123456!* heslo.
    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
 4. Klikněte na **OK**.
 5. Vyberte **DS1_V2** pro velikost virtuálního počítače a klikněte na tlačítko **vyberte**.

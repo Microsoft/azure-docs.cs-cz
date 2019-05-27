@@ -17,11 +17,11 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 68c69413322d87fc557686701c474730d2ed8405
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358281"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136880"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Aplikace služby App Service se připojit ke službě Cosmos DB pomocí rozhraní příkazového řádku
 

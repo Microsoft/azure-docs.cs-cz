@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e3110e4018e214e7e7aa591b811246369c029ecd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38940947"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66163511"
 ---
 Vytvoření IoT Hubu pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
 1. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
@@ -36,7 +36,7 @@ Vytvoření IoT Hubu pomocí webu Azure Portal:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Cenová úroveň a úroveň škálování | F1 Free. V jednom předplatném můžete mít pouze jedno centrum úrovně Free. |
+    | Úroveň ceny a škálování | F1 Free. V jednom předplatném můžete mít pouze jedno centrum úrovně Free. |
     | Jednotky služby IoT Hub | 1 |
 
     ![Nastavení centra 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 141aacc71d129bb45dc53774af876d5b07b7fc86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d4d3d9a3ff57a7a388e9703d0d145d8ce6eafd12
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466445"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143010"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Pomocí ovládacích prvků přístupu na základě rolí Azure definují přístup k konfigurační soubor Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -41,15 +41,17 @@ Jsou dvě předdefinované role:
     * Umožňuje přístup ke *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* volání rozhraní API. Toto volání rozhraní API [uvádí přihlašovacích údajů uživatele clusteru][api-cluster-user].
     * Soubory ke stažení *kubeconfig* pro *clusterUser* role.
 
-## <a name="assign-role-permissions-to-a-user"></a>Přiřadit oprávnění role uživatele
+Tyto role RBAC je použít na služby Azure Active Directory (AD) uživatele nebo skupiny.
 
-Chcete-li uživateli přiřadit jednu z rolí Azure, získejte ID prostředku clusteru AKS a ID uživatelského účtu. Příkazy v následujícím příkladu proveďte následující kroky:
+## <a name="assign-role-permissions-to-a-user-or-group"></a>Přiřadit oprávnění role uživatele nebo skupiny
+
+Chcete-li přiřadit jednu z dostupných rolí, získejte ID prostředku clusteru AKS a ID účtu uživatele Azure AD nebo skupiny. Příkazy v následujícím příkladu proveďte následující kroky:
 
 * Získá ID prostředku clusteru pomocí [az aks zobrazit] [ az-aks-show] příkazu pro cluster s názvem *myAKSCluster* v *myResourceGroup* Skupina prostředků. Zadejte vlastní název skupiny clusterů a prostředků podle potřeby.
-* Používá [zobrazit účet az] [ az-account-show] a [az ad uživateli zobrazit] [ az-ad-user-show] příkazy získat vaše ID uživatele.
+* Používá [zobrazit účet az] [ az-account-show] a [az ad uživateli zobrazit] [ az-ad-user-show] příkazy k získání vaším ID uživatele.
 * Nakonec se přiřadí role pomocí [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu.
 
-Následující příklad přiřadí *Role správce pro Cluster Azure Kubernetes Service*:
+Následující příklad přiřadí *Role správce pro Cluster Azure Kubernetes Service* pro jednotlivý uživatelský účet:
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -65,6 +67,9 @@ az role assignment create \
     --scope $AKS_CLUSTER \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
+
+> [!TIP]
+> Pokud chcete přiřadit oprávnění ke skupině Azure AD, aktualizujte `--assignee` parametr s ID objektu skupiny, ne účet uživatele, jak je znázorněno v předchozím příkladu. Chcete-li získat ID objektu skupiny, použijte [az ad skupiny zobrazit] [ az-ad-group-show] příkazu. Následující příklad získá ID objektu skupiny Azure AD s názvem *appdev*: `az ad group show --group appdev --query objectId -o tsv`
 
 Předchozí přiřazení můžete změnit *Role uživatele clusteru* podle potřeby.
 
@@ -120,7 +125,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>Odebrat oprávnění role
 
-Chcete-li odebrat přiřazení rolí, použijte [odstranit přiřazení role az] [ az-role-assignment-delete] příkazu. Zadejte ID účtu a ID prostředku clusteru získaný v předchozích příkazech:
+Chcete-li odebrat přiřazení rolí, použijte [odstranit přiřazení role az] [ az-role-assignment-delete] příkazu. Zadejte ID účtu a ID prostředku clusteru získaný v předchozích příkazech. Pokud jste přiřadili roli do skupiny, ne účet uživatele, zadejte příslušné skupiny objekt ID místo ID objektu účtu `--assignee` parametr:
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
@@ -148,3 +153,4 @@ Pro zvýšení zabezpečení přístupu ke clusterům AKS [integrace ověření 
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
 [aad-integration]: azure-ad-integration.md
+[az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show

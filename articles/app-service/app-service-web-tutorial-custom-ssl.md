@@ -16,11 +16,11 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487732"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138688"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Upgrade cenové úrovně aplikace
 > * Vytvoření vazby vlastního certifikátu ke službě App Service
 > * Obnovení certifikátů
-> * Vynucení HTTPS
+> * Vynucení protokolu HTTPS
 > * Vynucení protokolu TLS 1.1/1.2
 > * Automatizace správy protokolu TLS pomocí skriptů
 
@@ -122,11 +122,11 @@ V části **Soubor certifikátu PFX** vyberte svůj soubor PFX. Do pole **Heslo 
 
 Klikněte na **Odeslat**.
 
-![Nahrání certifikátu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
+![Nahrát certifikát](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
 Jakmile App Service dokončí nahrávání certifikátu, zobrazí se certifikát na stránce **Nastavení SSL**.
 
-![Nahraný certifikát](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![Certifikát se odeslal](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
 ### <a name="bind-your-ssl-certificate"></a>Vytvoření vazby certifikátu SSL
 
@@ -185,13 +185,13 @@ Vaše příchozí IP adresa se může změnit při odstranění vazby, a to i v 
 2. Vytvořte vazbu nového certifikátu k požadované vlastní doméně. Starý certifikát neodstraňujte. Tato akce nahradí tuto vazbu (místo aby odebrala vazbu původní).
 3. Odstraňte starý certifikát. 
 
-## <a name="enforce-https"></a>Vynucení HTTPS
+## <a name="enforce-https"></a>Vynucení protokolu HTTPS
 
 Ve výchozím nastavení každý uživatel dál přístup k aplikaci pomocí protokolu HTTP. Všechny požadavky HTTP můžete přesměrovat na port HTTPS.
 
 Na stránce vaší aplikace v levém navigačním panelu vyberte **nastavení SSL**. Pak v části **Pouze HTTPS** vyberte **Zapnuto**.
 
-![Vynucení HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
+![Vynucení protokolu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
 Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Příklad:
 
@@ -266,7 +266,7 @@ Pokud vaše aplikace potřebuje pro přístup ke vzdáleným prostředkům jako 
 
 Další informace o načtení a použití veřejného certifikátu v aplikaci najdete v tématu věnovaném [použití certifikátu SSL v kódu aplikace ve službě Azure App Service](app-service-web-ssl-cert-load.md). Veřejné certifikáty můžete použít příliš s aplikacemi ve službě App Service Environment. Pokud potřebujete uloží certifikát do úložiště LocalMachine certifikátů, musíte použít aplikaci ve službě App Service Environment. Další informace najdete v tématu [konfigurace veřejných certifikátů pro vaše aplikace app Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
-![Nahrání veřejného certifikátu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
+![Nahrát veřejný certifikát](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -276,7 +276,7 @@ V tomto kurzu jste se naučili:
 > * Upgrade cenové úrovně aplikace
 > * Vytvoření vazby vlastního certifikátu ke službě App Service
 > * Obnovení certifikátů
-> * Vynucení HTTPS
+> * Vynucení protokolu HTTPS
 > * Vynucení protokolu TLS 1.1/1.2
 > * Automatizace správy protokolu TLS pomocí skriptů
 

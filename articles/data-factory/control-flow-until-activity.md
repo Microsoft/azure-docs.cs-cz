@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447468"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155169"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do aktivity ve službě Azure Data Factory
 Dokud aktivita poskytuje stejné funkce, která DNT – dokud opakování ve smyčce struktura obsahuje v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
@@ -54,11 +54,11 @@ Dokud aktivita poskytuje stejné funkce, která DNT – dokud opakování ve smy
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název `Until` aktivity. | String | Ano
-type | Musí být nastaveno na **dokud**. | String | Ano
+name | Název `Until` aktivity. | String | Ano
+Typ | Musí být nastaveno na **dokud**. | String | Ano
 Výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | výraz.  | Ano
 timeout | Provést – až do smyčky vyprší po určeném čase. | řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dnů. | Ne
-Aktivity | Sadu aktivit, které jsou prováděny, dokud je výraz vyhodnocen `true`. | Pole aktivit. |  Ano
+Činnosti | Sadu aktivit, které jsou prováděny, dokud je výraz vyhodnocen `true`. | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1
 

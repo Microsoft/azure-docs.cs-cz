@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480489"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159290"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -131,6 +131,8 @@ Stream Analytics v současné době nepodporuje při deserializaci AVRO zprávy 
 > [!NOTE]
 > Stream Analytics nepodporuje přidávání obsahu do existujícího souboru objektu blob. Stream Analytics se zobrazí každý soubor jenom jednou a nebudou zpracovány všechny změny, ke kterým dochází v souboru po úloze má číst data. Osvědčeným postupem je odeslat veškerá data pro soubor blob najednou a pak přidejte další události do souboru objektu blob různých, nové.
 > 
+
+Stream Analytics pro přeskočení čtení několik objektů BLOB ve výjimečných případech může vést k najednou nahrává velký počet objektů BLOB. Doporučuje se k nahrání objektů BLOB aspoň 2 sekundy do úložiště objektů Blob. Pokud tato možnost není vhodná, můžete k velkým svazkům datového proudu událostí služby Event Hubs. 
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurace úložiště objektů Blob jako vstupní datový proud 
 

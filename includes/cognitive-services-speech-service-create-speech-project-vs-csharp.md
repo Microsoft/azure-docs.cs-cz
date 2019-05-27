@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
 ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619680"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145499"
 ---
 1. Spusťte Visual Studio 2017.
 
@@ -35,7 +35,7 @@ ms.locfileid: "60619680"
 
    ![Přijetí licence](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "Přijetí licence")
 
-    Až se balíček nainstaluje, v konzole Správce balíčků se zobrazí potvrzení.
+    Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.
 
 1. Dalším krokem je vytvoření konfigurace platformy, která odpovídá architektuře počítače, které používáte k sestavení a spuštění aplikace konzoly. V panelu nabídky vyberte **sestavení** > **nástroje Configuration Manager...** .
 

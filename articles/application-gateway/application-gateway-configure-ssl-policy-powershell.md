@@ -6,14 +6,15 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/3/2018
-ms.author: victorh
+origin.date: 12/03/2018
+ms.date: 04/15/2019
+ms.author: v-junlch
 ms.openlocfilehash: e6ba429d3e94f43cf21e6b76b7ef3644ca28fb19
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58169166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136045"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace protokolu SSL verze zásad a šifer sady ve službě Application Gateway
 
@@ -147,19 +148,19 @@ Následující příklad vytvoří novou aplikační bránu s předem definovan�
 
 ```powershell
 # Create a resource group
-$rg = New-AzResourceGroup -Name ContosoRG -Location "East US"
+$rg = New-AzResourceGroup -Name ContosoRG -Location "China North"
 
 # Create a subnet for the application gateway
 $subnet = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
 # Create a virtual network with a 10.0.0.0/16 address space
-$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location "China North" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 # Retrieve the subnet object for later use
 $subnet = $vnet.Subnets[0]
 
 # Create a public IP address
-$publicip = New-AzPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location "East US" -AllocationMethod Dynamic
+$publicip = New-AzPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location "China North" -AllocationMethod Dynamic
 
 # Create an ip configuration object
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -193,7 +194,7 @@ $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity
 $policy = New-AzApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401S
 
 # Create the application gateway.
-$appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
+$appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "China North" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualizace existující aplikační bráně pomocí předdefinované zásady protokolu SSL
@@ -225,3 +226,5 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 ## <a name="next-steps"></a>Další postup
 
 Navštivte [přehled přesměrování ve službě Application Gateway](application-gateway-redirect-overview.md) informace o přesměrování provozu HTTP na koncový bod HTTPS.
+
+<!-- Update_Description: wording update -->

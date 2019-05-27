@@ -6,14 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
-ms.author: victorh
+origin.date: 08/06/2018
+ms.date: 04/16/2019
+ms.author: v-junlch
 ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120546"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135190"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -59,7 +60,7 @@ Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfi
 | Adresa URL testu |http://127.0.0.1:\<port\>/ |Cesta URL |
 | Interval |30 |Množství času během několika sekund se má čekat před dalším sondu stavu se odesílají.|
 | Časový limit |30 |Množství času v sekundách application gateway čeká na odpověď testu před označením testu jako není v pořádku. Pokud test vrátí jako v pořádku, odpovídající back-endu okamžitě označen jako v pořádku.|
-| Prahová hodnota špatného stavu |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota pro poškozený stav |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 > [!NOTE]
 > Port, který je stejný port jako nastavení HTTP back-end.
@@ -83,12 +84,12 @@ Následující tabulka obsahuje definice pro vlastnosti sondu stavu vlastní.
 | Vlastnosti testu | Popis |
 | --- | --- |
 | Název |Název testu. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
-| Protocol (Protokol) |Protokol používaný k posílání sondy. Test paměti používá protokol definované v nastavení HTTP back-end |
+| Protocol |Protokol používaný k posílání sondy. Test paměti používá protokol definované v nastavení HTTP back-end |
 | Hostitel |Název hostitele k odeslání testu. Použít pouze v případě více webů je nakonfigurovaná ve službě Application Gateway, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od názvu hostitele virtuálního počítače. |
-| Cesta |Relativní cesta testu. Platná cesta začíná od "/". |
+| `Path` |Relativní cesta testu. Platná cesta začíná od "/". |
 | Interval |Interval testu paměti v sekundách. Tato hodnota je časový interval mezi dvěma po sobě jdoucích sondy. |
 | Časový limit |Časový limit testu v sekundách. Pokud není přijetí platné odpovědi během tohoto období časového limitu testu označen jako neúspěšný.  |
-| Prahová hodnota špatného stavu |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota pro poškozený stav |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 > [!IMPORTANT]
 > Pokud služba Application Gateway je nakonfigurována pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
@@ -104,3 +105,5 @@ Kromě toho nelze blokovat odchozí připojení k Internetu a musí být povolen
 Po získání informací o monitorování stavu Application Gateway, můžete nakonfigurovat [sondu stavu vlastní](application-gateway-create-probe-portal.md) na webu Azure Portal nebo [sondu stavu vlastní](application-gateway-create-probe-ps.md) pomocí Powershellu a Azure Resource Manageru model nasazení.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
+
+<!-- Update_Description: wording update -->

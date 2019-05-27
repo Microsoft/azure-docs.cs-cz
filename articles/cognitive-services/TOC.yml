@@ -23,6 +23,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Aktualizace služeb

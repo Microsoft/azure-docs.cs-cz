@@ -2,15 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 12/12/2018
-ms.date: 04/01/2019
-ms.author: v-biyu
+ms.date: 12/12/2018
+ms.author: erhopf
 ms.openlocfilehash: 6e49db90aa9e9f933a190425afbafd15e0057fca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621073"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146064"
 ---
 1. Spusťte Visual Studio 2017.
 
@@ -20,7 +19,7 @@ ms.locfileid: "60621073"
 
    V opačném případě zaškrtněte políčko **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core** a vyberte **Změnit** v pravém dolním rohu dialogového okna. Instalace nové funkce bude chvíli trvat.
 
-1. Vytvořte novou konzolovou aplikaci v jazyce Visual C# pro rozhraní .NET Core. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C#** > **.NET Core** v levém podokně. Pak vyberte **Konzolová aplikace (.NET Core)**. Jako název projektu zadejte *helloworld*.
+1. Vytvořte novou konzolovou aplikaci v jazyce Visual C# pro rozhraní .NET Core. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C#**  >  **.NET Core** v levém podokně. Pak vyberte **Konzolová aplikace (.NET Core)** . Jako název projektu zadejte *helloworld*.
 
    ![Snímek obrazovky s dialogovým oknem Nový projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-01-new-console-app.png "Vytvoření konzolové aplikace Visual C# (.NET Core)")
 
@@ -36,4 +35,4 @@ ms.locfileid: "60621073"
 
    ![Snímek obrazovky s dialogovým oknem Souhlas s podmínkami licence](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "Přijetí licence")
 
-Až se balíček nainstaluje, v konzole Správce balíčků se zobrazí potvrzení.
+Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.

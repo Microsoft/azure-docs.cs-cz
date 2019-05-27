@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: 3d8a3297fba43004db817e6b077f7b292fb917cb
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9085d5ee21b1e955b7d9416a379ee730ba26ad3e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454333"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150144"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení Azure VPN Gateway k několika místním založené na zásadách zařízením VPN pomocí Powershellu
 
@@ -71,7 +71,7 @@ Pracovní postup pro povolení tato připojení:
 3. Když vytvoříte připojení typu S2S nebo VNet-to-VNet, použijte zásady a **povolit selektory provozu na základě zásad** připojení
 4. Pokud se připojení vytvoří, můžete použít nebo aktualizovat zásady na existující připojení
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 

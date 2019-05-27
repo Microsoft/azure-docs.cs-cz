@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739168"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133189"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -32,27 +32,10 @@ Zvolte pracovní prostor Log Analytics a účet Automation a klikněte na tlač�
 
 ![Začlenění řešení Inventory](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
-
-V následující tabulce jsou uvedeny podporované mapování:
-
-|**Oblasti pracovního prostoru log Analytics**|**Oblasti služby Azure Automation**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
-
-<sup>2</sup> z důvodu omezení kapacity oblast není k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostory účty Automation a Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
+> [!NOTE]
+> Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
+>
+> Seznam podporovaných mapování dvojic najdete v tématu [mapování oblast pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
 Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 
@@ -82,7 +65,7 @@ Když počítač se přidá do Update Management nebo Change Tracking a Inventor
 
 Přejděte do účtu Automation a vyberte **uložená hledání** pod **Obecné**. Dvě uložené výsledky hledání používat tato řešení můžete vidět v následující tabulce:
 
-|Název     |Kategorie  |Alias  |
+|Název     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
@@ -161,6 +144,8 @@ Pokud jste použili spuštění a zastavení virtuálních počítačů špičku
 * Spouštět a zastavovat sady runbook plány virtuálního počítače
 * Spuštění a zastavení sad runbook virtuálního počítače
 * Proměnné
+
+Také je můžete také zrušit propojení pracovního prostoru ve svém účtu Automation z pracovního prostoru Log Analytics. Ve svém pracovním prostoru, vyberte **účtu Automation** pod **související prostředky**. Na stránce účtu Automation vyberte **zrušení propojení účtu**.
 
 ## <a name="next-steps"></a>Další postup
 

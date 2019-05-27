@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0587782cbfa31f7b397b950a752040cc678cf7d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0de4da5792553b8e61ce8116988dc0d0b2c55488
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576637"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130991"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -149,6 +149,8 @@ Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights
 * Výstup podrobné protokoly, upravte konfigurační soubor: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` a přidejte `<add key="TraceLevel" value="All" />` k `appsettings`.
 Restartujte monitorování stavu.
 
+* Monitorování stavu je aplikace .NET můžete také povolit [trasování .net tak, že přidáte odpovídající diagnostiky do konfiguračního souboru](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Například v některých scénářích může být užitečné, pokud chcete zobrazit, co se děje na úrovni sítě podle [Konfigurace trasování sítě](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+
 ### <a name="insufficient-permissions"></a>Nedostatečná oprávnění
   
 * Na serveru, pokud se zobrazí zpráva o „nedostatečných oprávněních“, zkuste následující postup:
@@ -184,7 +186,7 @@ Podpora operačního systému pro sledování stavu Application Insights na serv
 * Windows server 2012 R2
 * Windows Server 2016
 
-s nejnovější aktualizací SP a rozhraním .NET Framework 4.5
+s nejnovější aktualizací SP a rozhraní .NET Framework 4.5 (monitorování stavu je postavená na tuto verzi rozhraní framework)
 
 Na straně klienta: Windows 7, 8, 8.1 a 10, znovu s rozhraním .NET Framework 4.5
 
@@ -276,7 +278,9 @@ Když vyberete webovou aplikaci pro instrumentaci pomocí Monitorování stavu:
 
 ### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakou verzi Application Insights SDK monitorování stavu instalace?
 
-V současné době můžete monitorování stavu nainstalovat pouze sadu SDK Application Insights verze 2.3 nebo 2.4.
+V současné době můžete monitorování stavu nainstalovat pouze sadu SDK Application Insights verze 2.3 nebo 2.4. 
+
+Application Insights SDK verze 2.4 je [poslední verze pro podporu rozhraní .NET 4.0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) která byla [konce řádku. ledna 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Proto v současné době monitorování stavu slouží k instrumentaci aplikace rozhraní .NET 4.0. 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Je potřeba spustit Monitorování stavu při každé aktualizaci aplikace?
 

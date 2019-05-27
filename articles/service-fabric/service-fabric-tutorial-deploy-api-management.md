@@ -16,11 +16,11 @@ ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: 92b1e95598da27f0b7d7df30dfa4a82824b4a48c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799452"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66158193"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integraci služby API Management s využitím Service Fabric v Azure
 
@@ -45,7 +45,7 @@ Než začnete:
 * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
 * Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte sadu [Visual Studio 2017](https://www.visualstudio.com) a sady funkcí **Vývoj pro Azure**, **Vývoj pro ASP.NET a web** a **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
-## <a name="network-topology"></a>Síťová topologie
+## <a name="network-topology"></a>Topologie sítě
 
 Teď, když máte zabezpečené [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasazení služby API Management k virtuální síti (VNET) v podsíti a skupině zabezpečení sítě určených pro službu API Management. Pro účely tohoto článku je nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a skupiny zabezpečení sítě, které jste nastavili v šabloně API Management Resource Manager [kurzu ke clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) Tento článek nasadí následující topologie do Azure, ve kterém Služba API Management a Service Fabric v podsítích stejné virtuální síti jsou:
 
@@ -201,7 +201,7 @@ Vyplňte následující prázdné parametry v souboru *apim.parameters.json* pro
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Developer|
+|apimSku|Vývojář|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |

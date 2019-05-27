@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
 ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445060"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146558"
 ---
 ## <a name="automatic-device-management"></a>Automatická správa zařízení
 Automatická správa zařízení ve službě Azure IoT Hub umožňuje automatizovat mnoho opakovaných a složité úlohy správy flotily nebo velké zařízení přes celého jejich životního cyklu. Automatická správa zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definují požadovanou konfiguraci a nechat pokaždé, když se do rozsahu sem přišli aktualizaci zařízení služby IoT Hub.  Se skládá z [automatické konfigurace](../articles/iot-hub/iot-hub-auto-device-config.md) a [automatické nasazení IoT Edge](../articles/iot-edge/how-to-deploy-monitor.md).

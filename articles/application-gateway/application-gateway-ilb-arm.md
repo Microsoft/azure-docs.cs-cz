@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2018
 ms.author: victorh
-ms.openlocfilehash: 3b9108e08e1b1ad13fac75d00816755043d84672
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 70b350e228785e47a41cb83ce0d80b93c8a601c1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308716"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135222"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření služby application gateway se interní nástroj pro vyrovnávání zatížení (ILB)
 
@@ -27,7 +27,7 @@ Služba Azure Application Gateway se dá nakonfigurovat pomocí virtuální IP a
 
 Tenhle článek vás provede kroky konfigurace aplikační brány s ILB.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -59,13 +59,13 @@ Toto jsou kroky, které se musí provést k vytvoření služby Application Gate
 
 Ujistěte se, že jste přepnuli režim prostředí PowerShell tak, aby se mohly použít rutiny Azure Resource Manageru. Další informace jsou k dispozici v části [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 ```powershell
 Connect-AzAccount
 ```
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Zkontrolujte předplatná pro příslušný účet.
 
@@ -75,7 +75,7 @@ Get-AzSubscription
 
 Zobrazí se výzva k ověření pomocí přihlašovacích údajů.
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 
 Zvolte předplatné Azure, které chcete použít.
 
@@ -99,7 +99,7 @@ V předchozím příkladu jsme vytvořili skupinu prostředků s názvem "appgw-
 
 Následující příklad ukazuje, jak vytvořit virtuální síť pomocí Resource Managera:
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 ```powershell
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -107,7 +107,7 @@ $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 1
 
 Tento krok rozsah adres 10.0.0.0/24 přiřadí proměnné podsítě se použije k vytvoření virtuální sítě.
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
@@ -115,7 +115,7 @@ $vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Locati
 
 Tento krok vytvoří virtuální síť s názvem "appgwvnet" ve skupině prostředků "appgw-rg" pro oblast západní USA pomocí předpony 10.0.0.0/16 s podsítí 10.0.0.0/24.
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 
 ```powershell
 $subnet = $vnet.subnets[0]
@@ -125,7 +125,7 @@ Tento krok se přiřadí objekt podsítě k proměnné $subnet pro další kroky
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Vytvoření objektu konfigurace služby Application Gateway
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -133,7 +133,7 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $
 
 Tento krok vytvoří konfigurace IP aplikační brány s názvem "gatewayIP01". Při spuštění služby Application Gateway se předá IP adresa z nakonfigurované podsítě a síťový provoz se bude směrovat na IP adresy ve fondu back-end IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 ```powershell
 $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
@@ -141,7 +141,7 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddres
 
 Tento krok nakonfiguruje fond back-end IP adres s názvem "pool01" s IP adresami "10.1.1.8, 10.1.1.9, 10.1.1.10". Jsou to IP adresy, které přijímají síťový provoz, který přichází z koncového bodu front-end IP adresy. Předchozí IP adresy nahradíte vlastními aplikačními koncovými body IP adresy.
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 
 ```powershell
 $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
@@ -210,7 +210,7 @@ Pokud chcete odstranit aplikační bránu, musíte provést následující kroky
 2. Pomocí rutiny `Remove-AzApplicationGateway` bránu odeberte.
 3. Zkontrolujte odstranění brány pomocí rutiny `Get-AzureApplicationGateway`.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 Získejte objekt služby Application Gateway a přidružte ho k proměnné „$getgw“.
 
@@ -218,7 +218,7 @@ Získejte objekt služby Application Gateway a přidružte ho k proměnné „$g
 $getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Pomocí rutiny `Stop-AzApplicationGateway` zastavte službu Application Gateway. Tento příklad ukazuje, `Stop-AzApplicationGateway` rutiny na prvním řádku, následovanou výstupem.
 

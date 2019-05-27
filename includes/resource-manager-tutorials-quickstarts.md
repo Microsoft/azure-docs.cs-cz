@@ -15,11 +15,11 @@ ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
 ms.openlocfilehash: 8c5347b412475b86222acabb76b88baaceb7645a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589390"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66129002"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
 
@@ -27,7 +27,7 @@ V následujících rychlých startech a kurzech se naučíte vyvíjet šablony R
 
 - Šablony Rychlý start
 
-    |Název|Popis|
+    |Titul|Popis|
     |------|-----|
     |[Použití portálu Azure Portal](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)|Vygenerovat šablonu na portálu a seznamte se s procesem úpravy a nasazení šablony.|
     |[Použití Visual Studio Code](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Vytváření a úpravy šablon pomocí Visual Studio Code a postup nasazování šablon pomocí služby Azure Cloud Shell|
@@ -35,7 +35,7 @@ V následujících rychlých startech a kurzech se naučíte vyvíjet šablony R
 
 - Kurzy
 
-    |Název|Popis|
+    |Titul|Popis|
     |------|-----|
     |[Využití referenčních informací k šablonám](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|Při vývoji šablon můžete využít referenční dokumentaci k šablonám. V tomto kurzu zjistíte schéma účtu úložiště a pomocí těchto informací vytvoříte šifrovaný účet úložiště.|
     |[Vytvoření víc instancí](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|Můžete vytvořit více instancí prostředků Azure. V tomto kurzu vytvoříte více instancí účtu úložiště.|

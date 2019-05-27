@@ -9,11 +9,11 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448390"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143395"
 ---
 ## <a name="access-the-virtual-machine"></a>Přístup k virtuálnímu počítači
 
@@ -23,7 +23,7 @@ Následující kroky ukazují, jak nakonfigurovat virtuální počítač Azure u
 
 1. Zobrazit obsah skupiny prostředků obsahující prostředky akcelerátoru řešení:
 
-    ```azurecli
+    ```azurecli-interactive
     az resource list -g contoso-simulation -o table
     ```
 
@@ -31,7 +31,7 @@ Následující kroky ukazují, jak nakonfigurovat virtuální počítač Azure u
 
 1. Aktualizujte skupinu zabezpečení sítě umožňující přístup SSH. Následující příkaz předpokládá, že je název skupiny zabezpečení sítě **contoso simulace nsg** --tuto hodnotu nahraďte název skupiny zabezpečení sítě:
 
-    ```azurecli
+    ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
@@ -39,13 +39,13 @@ Následující kroky ukazují, jak nakonfigurovat virtuální počítač Azure u
 
 1. Aktualizovat heslo pro **azureuser** účet na virtuálním počítači na heslo, budete vědět. Zvolte vlastní heslo, když spustíte následující příkaz:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm user update --name vm-vikxv --username azureuser --password YOURSECRETPASSWORD  -g contoso-simulation
     ```
 
 1. Zjistit veřejnou IP adresu vašeho virtuálního počítače. Následující příkaz předpokládá, že název virtuálního počítače je **vm vikxv** --tuto hodnotu nahraďte názvem virtuálního počítače, které jste si poznamenali dříve:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm list-ip-addresses --name vm-vikxv -g contoso-simulation -o table
     ```
 

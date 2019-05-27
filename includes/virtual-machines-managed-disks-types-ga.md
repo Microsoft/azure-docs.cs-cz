@@ -9,11 +9,11 @@ ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 30df480eb314594cbc4d949302aff11e6d764b6f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65815548"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147803"
 ---
 ## <a name="premium-ssd"></a>SSD úrovně Premium
 

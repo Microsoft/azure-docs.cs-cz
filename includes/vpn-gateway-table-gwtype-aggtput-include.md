@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/05/2018
+ms.date: 05/22/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 555a8e3e92dc1d12cb7c6d6e06d2511f15a2c862
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 211935aac56dff8d6e524706c416c126b1a0c3b8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679357"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159411"
 ---
-|**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **Připojení P2S<br> IKEv2** | **Srovnávací test<br>agregované propustnosti** | **BGP** |
+|**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **P2S<br> připojení IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** |
 |---       | ---        | ---       | ---            | ---       | --- |
 |**Basic** | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se|
 |**VpnGw1**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno |

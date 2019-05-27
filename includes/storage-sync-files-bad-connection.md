@@ -9,11 +9,11 @@ ms.date: 07/08/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 359347e41264711a6ac0fa4d2dd0c3633590e917
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488021"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159876"
 ---
 Této chybě může dojít, když není přístupný ze serveru pro službu Azure File Sync. Odstranění této chyby z práce prostřednictvím následujících kroků:
 

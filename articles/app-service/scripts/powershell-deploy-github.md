@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: e4daa27fa7ea441e571adcf0e90dfcab8b5e3256
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a15b75fd623978753876b582d32294f706336ae8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110383"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136458"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Vytvoření webové aplikace a nasazení kódu z GitHubu
 

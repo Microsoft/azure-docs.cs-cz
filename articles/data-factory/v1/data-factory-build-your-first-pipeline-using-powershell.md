@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb546808951b2797044f3ba83b5a48c59fa48539
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146884"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -58,17 +58,17 @@ V tomto kroku vytvoříte pomocí prostředí Azure PowerShell objekt pro vytvá
 
 1. Otevřete prostředí Azure PowerShell a spusťte následující příkaz. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu. Pokud ho zavřete a znovu otevřete, tyto příkazy bude potřeba znovu spustit.
    * Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal.
-    ```PowerShell
-    Connect-AzAccount
-    ```    
+     ```PowerShell
+     Connect-AzAccount
+     ```    
    * Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet.
-    ```PowerShell
-    Get-AzSubscription  
-    ```
+     ```PowerShell
+     Get-AzSubscription  
+     ```
    * Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Mělo by to být stejné předplatné, které jste použili na webu Azure Portal.
-    ```PowerShell
-    Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
-    ```     
+     ```PowerShell
+     Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
+     ```     
 2. Spuštěním následujícího příkazu vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**:
     
     ```PowerShell
@@ -80,7 +80,7 @@ V tomto kroku vytvoříte pomocí prostředí Azure PowerShell objekt pro vytvá
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
     ```
-Je třeba počítat s následujícím:
+   Je třeba počítat s následujícím:
 
 * Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba **Název objektu pro vytváření dat FirstDataFactoryPSH není k dispozici**, název změňte (třeba na název váš_název_FirstDataFactoryPSH). Při provádění postupů v tomto kurzu potom tento název používejte místo názvu ADFTutorialFactoryPSH. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
 * Instance služby Data Factory můžete vytvářet jenom tehdy, když jste přispěvatelem/správcem předplatného Azure.
@@ -218,7 +218,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
    | Vlastnost | Popis |
    |:--- |:--- |
-   | type |Vlastnost type je nastavená na hodnotu AzureBlob, protože se data nachází ve službě Azure Blob Storage. |
+   | Typ |Vlastnost type je nastavená na hodnotu AzureBlob, protože se data nachází ve službě Azure Blob Storage. |
    | linkedServiceName |Odkazuje na službu StorageLinkedService, kterou jste vytvořili předtím. |
    | fileName |Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto případě se zpracovává jenom soubor input.log. |
    | type |Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |
@@ -416,6 +416,7 @@ V tomto kurzu jste vytvořili objekt pro zpracování dat Azure, který zpracov�
 V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Jak používat aktivitu kopírování ke kopírování dat z objektu Blob Azure do Azure SQL najdete v tématu [kurzu: Kopírování dat z objektu Blob Azure do Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Viz také
+
 | Téma | Popis |
 |:--- |:--- |
 | [Referenční informace o rutinách služby Data Factory](/powershell/module/az.datafactory) |Tady najdete rozsáhlou dokumentaci o rutinách služby Data Factory. |

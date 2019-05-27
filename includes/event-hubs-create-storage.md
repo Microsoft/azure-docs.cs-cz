@@ -9,11 +9,11 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684663"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66154553"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro agenta Event Processor Host
 Event Processor Host je inteligentní agent, který zjednodušuje přijímání událostí ze služby Event Hubs tím, že spravuje trvalé kontrolní body a paralelní příjmy. K vytváření kontrolních bodů vyžaduje Event Processor Host účet úložiště. Následující příklad ukazuje, jak vytvořit účet úložiště a získat jeho klíče pro přístup:
@@ -22,7 +22,7 @@ Event Processor Host je inteligentní agent, který zjednodušuje přijímání 
 
 2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
    
-    ![Výběr účtu úložiště](./media/event-hubs-create-storage/create-storage1.png)
+    ![Zvolit účet úložiště](./media/event-hubs-create-storage/create-storage1.png)
 
 3. Na stránce **Vytvořit účet úložiště** proveďte následující kroky: 
 

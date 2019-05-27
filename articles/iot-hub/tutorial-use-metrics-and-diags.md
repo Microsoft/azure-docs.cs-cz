@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 12/15/2018
+ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8bcc72cf151b085c7f65b6c600a49642cd330bac
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248826"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66162309"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: Nastavení a použití metrik a diagnostických protokolů pomocí služby IoT hub
 
@@ -274,7 +274,7 @@ Nebyla migrována do služby IoT Hub [metriky ve službě Azure Monitor](/azure/
 
 Dříve v části nastavení skriptu jste vytvořili zařízení pro simulaci pomocí zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-cloud do centra IoT.  
 
-Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Tento odkaz stáhne úložiště s několika aplikacemi v. řešení, které hledáte, je v iot-hub/kurzy/směrování/SimulatedDevice /.
+Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Tento odkaz stáhne úložiště s několika aplikacemi v. řešení, které hledáte, je v iot-hub/kurzy/směrování /.
 
 Dvojím kliknutím na soubor řešení (SimulatedDevice.sln) otevřete kód v sadě Visual Studio a otevřete Program.cs. Nahraďte `{iot hub hostname}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
 
@@ -298,7 +298,7 @@ Spusťte konzolovou aplikaci. Počkejte několik minut (10 – 15). Zobrazí se 
 
 ### <a name="see-the-metrics-in-the-portal"></a>Zobrazení metrik na portálu
 
-Otevřete metriky z řídicího panelu. Změnit časové hodnoty, abyste *posledních 30 minut* se časové intervaly z *1 minuta*. Zobrazuje telemetrické zprávy odeslané a celkový počet zpráv používaných v grafu s poslední číslice v dolní části grafu. 
+Otevřete metriky z řídicího panelu. Změnit časové hodnoty, abyste *posledních 30 minut* se časové intervaly z *1 minuta*. Zobrazuje telemetrické zprávy odeslané a celkový počet zpráv používaných v grafu s poslední číslice v dolní části grafu.
 
    ![Snímek obrazovky zobrazující metriky.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
@@ -385,4 +385,4 @@ V tomto kurzu jste zjistili, jak používat diagnostické protokoly a metriky pr
 V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT. 
 
 > [!div class="nextstepaction"]
-[Konfigurace zařízení z back-endové služby](tutorial-device-twins.md)
+> [Konfigurace zařízení z back-endové služby](tutorial-device-twins.md)

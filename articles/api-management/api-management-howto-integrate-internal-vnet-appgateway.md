@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
 ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66141667"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
 
@@ -88,7 +88,7 @@ V této příručce se také zveřejňujeme **portál pro vývojáře** externí
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 Přihlášení k Azure
 
@@ -98,7 +98,7 @@ Connect-AzAccount
 
 Ověření pomocí přihlašovacích údajů.
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Vyberte požadované předplatné.
 
@@ -107,7 +107,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000" # GUID of your Azure su
 Get-AzSubscription -Subscriptionid $subscriptionId | Select-AzSubscription
 ```
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 
 Vytvořte skupinu prostředků (pokud používáte některou ze stávajících skupin prostředků, můžete tenhle krok přeskočit).
 
@@ -123,7 +123,7 @@ Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umí
 
 Následující příklad ukazuje, jak vytvořit virtuální síť pomocí zdroj správce.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 Přiřaďte rozsah adres 10.0.0.0/24 proměnné podsítě, která má být použit pro službu Application Gateway při vytváření virtuální sítě.
 
@@ -131,7 +131,7 @@ Přiřaďte rozsah adres 10.0.0.0/24 proměnné podsítě, která má být použ
 $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
 ```
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Přiřaďte 10.0.1.0/24 rozsah adres proměnné podsítě, která má být použit pro službu API Management při vytváření virtuální sítě.
 
@@ -139,7 +139,7 @@ Přiřaďte 10.0.1.0/24 rozsah adres proměnné podsítě, která má být použ
 $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
 ```
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 
 Vytvoření virtuální sítě s názvem **appgwvnet** ve skupině prostředků **apim-appGw-RG** pro oblast západní USA. Pomocí předpony 10.0.0.0/16 s podsítí 10.0.0.0/24 a 10.0.1.0/24.
 
@@ -160,7 +160,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Následující příklad ukazuje, jak vytvořit služby API Management ve virtuální síti nakonfigurovat interní pouze pro přístup.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 Vytvořte virtuální síť pro správu rozhraní API objektu pomocí podsítě $apimsubnetdata vytvořili výše.
 
@@ -168,7 +168,7 @@ Vytvořte virtuální síť pro správu rozhraní API objektu pomocí podsítě 
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Vytvoření služby API Management ve virtuální síti.
 
@@ -183,7 +183,7 @@ Po úspěšném výše uvedený příkaz najdete [konfiguraci DNS vyžadovaných
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Nastavení vlastního názvu domény ve službě API Management
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 Inicializujte následující proměnné s podrobnostmi o certifikáty pomocí privátního klíče pro domény. V tomto příkladu budeme používat `api.contoso.net` a `portal.contoso.net`.  
 
@@ -200,7 +200,7 @@ $certPwd = ConvertTo-SecureString -String $gatewayCertPfxPassword -AsPlainText -
 $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainText -Force
 ```
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Vytvořte a nastavte název hostitele objektů konfigurace proxy serveru a na portálu.  
 
@@ -227,7 +227,7 @@ IP adresa je ke službě Application Gateway přiřazena při spuštění služb
 
 Před vytvořením služby Application Gateway musí být nastaveny všechny položky konfigurace. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 
 Vytvořte konfiguraci IP adresy služby Application Gateway s názvem **gatewayIP01**. Při spuštění služby Application Gateway se předá IP adresa z nakonfigurované podsítě a síťový provoz se bude směrovat na IP adresy ve fondu back-end IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
 
@@ -235,7 +235,7 @@ Vytvořte konfiguraci IP adresy služby Application Gateway s názvem **gatewayI
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
 ```
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 
 Nakonfigurujte port front-end IP pro koncový bod veřejné IP adresy. Tento port je port, který koncoví uživatelé připojit.
 
@@ -243,7 +243,7 @@ Nakonfigurujte port front-end IP pro koncový bod veřejné IP adresy. Tento por
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 
 Nakonfigurujte IP adresu front-endu s koncovým bodem s veřejnou IP adresou.
 

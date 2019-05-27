@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: bb03e4b5b04a0272d8fa9b032da5adb50878b620
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 51a75ee7bf87c38e3916bdbc8d85abcfb14dca8b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811569"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140323"
 ---
 1. V [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **Procházet vše** > **App Services**a potom klikněte na back-endu Mobile Apps. V části **nastavení**, klikněte na tlačítko **App Service Push**a potom klikněte na název vašeho centra oznámení.
 2. Přejděte na **Google (GCM)**, zadejte **klíč serveru** hodnotu, která jste získali z Firebase v předchozím postupu a potom klikněte na **Uložit**.

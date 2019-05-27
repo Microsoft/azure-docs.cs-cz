@@ -9,14 +9,14 @@ ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a123ed45b5857aa40fc9853a95c528833ba8aa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60548664"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66152417"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse s využitím Azure Data Factory
 
@@ -179,9 +179,9 @@ V datové továrně **pusťme se do práce** stránce **vytvořit kanál ze šab
             "properties": {
                "sapOpenHubMaxRequestId": {
                   "type": "string"
-               },
-               "type": "object"
-            }
+               }
+            },
+            "type": "object"
          }
          ```
 

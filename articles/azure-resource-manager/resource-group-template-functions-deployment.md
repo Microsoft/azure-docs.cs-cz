@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128665"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Nasazení funkce pro šablony Azure Resource Manageru 
 
@@ -167,7 +167,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definovaný v sek
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Název parametru |Ano |řetězec |Název parametru se vraťte. |
+| Název parametru |Ano |string |Název parametru se vraťte. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -256,7 +256,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | stringOutput | String | Možnost 1 |
 | intOutput | Int | 1 |
-| objectOutput | Objekt | {"jedna": "a", "2": "b"} |
+| objectOutput | Object | {"jedna": "a", "2": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
 | crossOutput | String | Možnost 1 |
 
@@ -360,7 +360,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1", "vlastnost2": "hodnota2"} |
+| exampleOutput4 |  Object | {"vlastnost1": "hodnota1", "vlastnost2": "hodnota2"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 

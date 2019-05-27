@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268700"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128684"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Porovnání funkcí šablon Azure Resource Manageru
 
@@ -250,7 +250,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | False (Nepravda) |
 | checkStrings | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -326,7 +326,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False |
+| checkInts | Bool | False (Nepravda) |
 | checkStrings | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -403,7 +403,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | False (Nepravda) |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -479,7 +479,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False |
+| checkStrings | Bool | False (Nepravda) |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 

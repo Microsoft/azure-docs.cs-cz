@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/16/2019
+ms.date: 5/22/2019
 ms.author: victorh
-ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827422"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986872"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatické škálování a zónově redundantní služba Application Gateway 
 
@@ -93,8 +93,6 @@ Cena za jednotku kapacity = 744(hours) * Max (výpočetní jednotky Max(25/50 fo
 
 Celková cena = 267.84 $ + $85.71 = $353.55
 
-[Stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/) bude aktualizován tak, aby odrážela ceny na 14. května 2019. Fakturace je naplánováno spuštění na 1. června 2019.
-
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Škálování Application Gateway a WAF v2
 
 Waf služby Application Gateway a dá se škálovat ve dvou režimech:
@@ -138,7 +136,7 @@ Následující tabulka porovnává funkce, které jsou dostupné v jednotlivých
 |Uživatelem definovanou trasou (UDR) na podsítě Application Gateway.|Nepodporuje se|
 |Skupina NSG pro rozsah portu pro příchozí spojení| -65200 až 65535. pro Standard_v2 SKU<br>-65503 až 65534 pro standardní SKU.<br>Další informace najdete v tématu [nejčastější dotazy k](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Metriky Azure je třeba použít.|
-|Fakturace|Fakturace naplánováno ke spuštění na 1. června 2019.|
+|Fakturace|Fakturace naplánováno ke spuštění na 1. července 2019.|
 |Režim FIPS|Ty nejsou aktuálně podporovány.|
 |Režim pouze ILB|To není aktuálně podporováno. Veřejné a režim ILB společně se nepodporuje.|
 |Integrace sledování sítě|Nepodporuje se.|

@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803749"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141212"
 ---
 Použijte postup odpovídající typu vašeho projektu back-end&mdash;buď [.NET back-endu](#dotnet) nebo [back-end Node.js](#nodejs).
 

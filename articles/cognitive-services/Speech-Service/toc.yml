@@ -195,14 +195,14 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: Z rozhraní Translator Speech API
           href: how-to-migrate-from-translator-speech-api.md
-    - name: Využití místních kontejnerů
+    - name: Použití kontejnerů
       items:
-        - name: Instalace a provoz místních kontejnerů
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+        - name: Instalace a spuštění kontejnerů
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
           href: speech-container-howto.md
         - name: Konfigurace kontejnerů
           href: speech-container-configuration.md
-          displayName: 'docker, container, billing, apikey, pull, logging'
+          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
 - name: Ukázky
   items:
     - name: Speech SDK
@@ -314,6 +314,8 @@
       href: support.md
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Ochrana osobních údajů a soubory cookie

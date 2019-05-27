@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
 ms.openlocfilehash: af61d975b540787b9b54d9fdea66773c10aeb6ac
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020782"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145444"
 ---
 1. Spusťte Visual Studio 2017.
 
@@ -48,4 +48,4 @@ ms.locfileid: "65020782"
 
     ![Snímek obrazovky s dialogovým oknem Přijetí licence](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-05-nuget-license.png)
 
-Až se balíček nainstaluje, v konzole Správce balíčků se zobrazí potvrzení.
+Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.
