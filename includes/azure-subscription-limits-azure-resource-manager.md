@@ -9,13 +9,13 @@ ms.date: 04/22/2019
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 712b70960e09a9c2b0e7a998bc0bddbc28c1e112
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733804"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146226"
 ---
-| Prostředek | Výchozí omezení | Maximální omezení |
+| Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Počet virtuálních počítačů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |25 000<sup>1</sup> v jedné oblasti. |25 000 na oblast. |
 | Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> v jedné oblasti. | Kontaktujte podporu. |
@@ -26,7 +26,7 @@ ms.locfileid: "64733804"
 | [Skupiny dostupnosti](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na předplatné |2 000 na oblast. |2 000 na oblast. |
 | Azure velikost požadavku rozhraní API Resource Manageru |4,194,304 bajtů. |4,194,304 bajtů. |
 | Značek na předplatné<sup>2</sup> |Neomezený počet. |Neomezený počet. |
-| Jedinečné výpočty značek na předplatné<sup>2</sup> | 10 000 | 10 000 |
+| Jedinečné výpočty značek na předplatné<sup>2</sup> | 10,000 | 10,000 |
 | [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |NENÍ K DISPOZICI<sup>3</sup> |NENÍ K DISPOZICI<sup>3</sup> |
 | [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |NENÍ K DISPOZICI<sup>3</sup> |NENÍ K DISPOZICI<sup>3</sup> |
 | [Nasazení na úrovni předplatného](../articles/azure-resource-manager/deploy-to-subscription.md) podle umístění | 800<sup>4</sup> | 800 |

@@ -2,19 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-network
-author: rockboyfor
+author: genlin
 ms.service: virtual-network
 ms.topic: include
-origin.date: 04/13/2018
-ms.date: 06/11/2018
-ms.author: v-yeche
+ms.date: 04/13/2018
+ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 40b81904daabfdad7e45571d8ab86cf32cac8964
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743349"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170877"
 ---
 ## <a name="scenario"></a>Scénář
 Abychom vám lépe předvedli vytvoření trasy definované uživatelem, tento dokument používá následující scénář:
@@ -29,3 +28,4 @@ V tomto scénáři vytvoříte jeden uživatelem definovaná TRASA pro *front-en
   * **RouteToFrontend**. Tato trasa odesílá veškerý provoz do front-endové podsítě **FW1** virtuálního počítače.
 
 Kombinací tyto trasy se zajistí, že veškerý provoz směřující z jedné podsítě do druhé prochází k **FW1** virtuální počítač, který je používán jako virtuální zařízení. Musíte také zapnout pro předávání IP **FW1** virtuálního počítače, aby může přijímat provoz směřující do ostatních virtuálních počítačů.
+

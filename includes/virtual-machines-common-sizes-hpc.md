@@ -9,11 +9,11 @@ ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198952"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145835"
 ---
 Virtuální počítače Azure řady H-series (VM) jsou určeny k vedení třídy výkon, škálovatelnost MPI a cenově výhodné řešení pro různé úlohy HPC v reálném světě.
 
@@ -25,24 +25,24 @@ Virtuální počítače hybridní připojení i HB funkce 100 Gb/s InfiniBand ED
 
 Virtuální počítače řady H-series jsou optimalizované pro aplikace s využitím vysoké frekvence procesoru nebo velké paměti na základních požadavků. Řada H-series virtuálních počítačů funkci 8 nebo 16 Intel Xeon E5 2667 v3 procesoru jader, 7 nebo 14 GB paměti RAM na jádro procesoru a žádné hyperthreadingem. Řada H-series, funkcí, 56 Gb/s Mellanox díky technologii FDR InfiniBand v systému souborů fat neblokující strom konfigurace pro konzistentní výkon RDMA. Virtuální počítače řady H-series podporují Intel MPI 5.x a MS-MPI.
 
-## <a name="hb-series"></a>HB-series
+## <a name="hb-series"></a>Řada HB
 
 Premium Storage: Storage úrovně Premium podporované ukládání do mezipaměti: Podporováno
 
 | Velikost | Virtuální procesory | Procesor | Paměť (GB) | Šířka pásma paměti GB/s | Základní frekvenci procesoru (GHz) | Frekvence všech jader (GHz, ve špičce) | Jednojádrový frekvence (GHz, ve špičce) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální ethernetové síťové adaptéry |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Vše | 700 | 4 | 1 |
+| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Všechny | 700 | 4 | 1 |
 
 <br>
 
-## <a name="hc-series"></a>Hybridní připojení series
+## <a name="hc-series"></a>Řada HC
 
 Premium Storage: Storage úrovně Premium podporované ukládání do mezipaměti: Podporováno
 
 
 | Velikost | Virtuální procesory | Procesor | Paměť (GB) | Šířka pásma paměti GB/s | Základní frekvenci procesoru (GHz) | Frekvence všech jader (GHz, ve špičce) | Jednojádrový frekvence (GHz, ve špičce) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální ethernetové síťové adaptéry |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Vše | 700 | 4 | 1 |
+| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Všechny | 700 | 4 | 1 |
 
 
 <br>

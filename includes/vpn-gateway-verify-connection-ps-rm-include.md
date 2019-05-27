@@ -2,25 +2,24 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 10/17/2018
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 10/17/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456331"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150032"
 ---
 Můžete ověřit, že vaše připojení bylo úspěšné, že pomocí rutiny "Get-AzVirtualNetworkGatewayConnection", s nebo bez něj "-Debug". 
 
 1. Použijte následující příklad rutiny a nakonfigurujte hodnoty tak, aby odpovídaly vašemu prostředí. Po zobrazení výzvy vyberte možnost „A“, abyste spustili „vše“. V příkladu odkazuje -Name na název připojení, které chcete testovat.
 
-   ```azurepowershell
+   ```azurepowershell-interactive
    Get-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
 2. Po dokončení zpracování rutiny si prohlédněte hodnoty. Ve výše uvedeném příkladu se zobrazí stav připojení Připojeno a vy vidíte příchozí a odchozí bajty.

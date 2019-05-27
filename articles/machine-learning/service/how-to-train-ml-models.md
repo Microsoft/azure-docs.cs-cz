@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818495"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153598"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trénování modelů Azure Machine Learning pomocí odhad
 
@@ -26,7 +26,7 @@ Pro usnadnění hloubkového učení tréninku modelu, Azure Machine Learning Py
 
 ## <a name="train-with-an-estimator"></a>Trénování s odhadu
 
-Po vytvoření vaší [pracovní prostor](concept-azure-machine-learning-architecture.md#workspace) a nastavit váš [vývojové prostředí](how-to-configure-environment.md), trénování modelu ve službě Azure Machine Learning zahrnuje následující kroky:  
+Po vytvoření vaší [pracovní prostor](concept-workspace.md) a nastavit váš [vývojové prostředí](how-to-configure-environment.md), trénování modelu ve službě Azure Machine Learning zahrnuje následující kroky:  
 1. Vytvoření [cílové výpočetní prostředí vzdálené](how-to-set-up-training-targets.md) (Poznámka: místního počítače můžete také použít jako cílové výpočetní prostředí)
 2. Nahrajte vaše [trénovacích dat](how-to-access-data.md) do úložiště dat (volitelné)
 3. Vytvoření vašeho [cvičný skript](tutorial-train-models-with-aml.md#create-a-training-script)
@@ -119,6 +119,10 @@ Nakonec odešlete úlohu učení:
 run = experiment.submit(estimator)
 print(run.get_portal_url())
 ```
+
+## <a name="github-tracking-and-integration"></a>GitHub sledování a integrace
+
+Při spuštění školení spustit, pokud je zdrojový adresář místního úložiště Git, informace o úložišti jsou uloženy v historii spuštění. Například aktuální ID potvrzení pro úložiště se zaznamená jako část historie.
 
 ## <a name="examples"></a>Příklady
 Poznámkový blok, který zobrazuje základní informace o odhadu vzor naleznete v tématu:

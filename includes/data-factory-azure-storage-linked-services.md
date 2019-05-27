@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500861"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146920"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 **Propojenou službu Azure Storage** umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí **klíč účtu**, který nabízí služby data factory a globální přístup ke službě Azure Storage. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu Azure Storage.
@@ -17,7 +17,7 @@ ms.locfileid: "58500861"
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type |Vlastnost type musí být nastavená na: **AzureStorage** |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
+| connectionString |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
 
 Najdete v následující části najdete postup zobrazení nebo kopírování klíč účtu pro službu Azure Storage: [Přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
 

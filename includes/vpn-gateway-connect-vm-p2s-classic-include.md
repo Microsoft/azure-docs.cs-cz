@@ -2,19 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 12/06/2018
-ms.date: 12/24/2018
-ms.author: v-jay
+ms.date: 12/06/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845451"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157663"
 ---
 Vytvořte připojení ke vzdálené ploše pro připojení k virtuálnímu počítači, který je nasazený do virtuální sítě. Je nejlepší způsob, jak ověřit, že se že můžete připojit k virtuálnímu počítači připojit pomocí jeho privátní IP adresu místo názvu počítače. Tímto způsobem testujete zobrazíte, pokud je možné připojit, zda není správně nakonfigurovaný překlad názvů. 
 

@@ -7,14 +7,14 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 1897193f0ae781029a7303c42ca8eeaa51389892
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920579"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142795"
 ---
-# <a name="refresh-with-azure-automation"></a>Aktualizace pomocí služby Azure Automation
+# <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
 Pomocí Azure Automation a Powershellové Runbooky provedením automatizovaných datových operace aktualizace na vašich tabulkových modelů analýzy Azure.  
 
@@ -148,8 +148,8 @@ Chcete-li využívají sadu runbook pomocí služby Azure Data Factory, nejprve 
 |Vlastnost  |Hodnota  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Název databáze Azure Analysis Services <br/> Příklad: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |Typ aktualizace provádět. <br/> Příklad: Úplná         |
+|**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**DatabaseRefreshType**     |Typ aktualizace provádět. <br/> Příklad: Úplný         |
 
 Příklad JSON textu:
 

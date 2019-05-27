@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 6085eb2b520217c4e678a75032e8a1cb4b9343ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 904bd884bc09c1e2016f55ffc8e1e9f635974ac7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581071"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157694"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Použití spravovaných disků v šablonách Azure Resource Manageru
 
@@ -202,7 +202,7 @@ V rámci objektu VM odkazujete na objekt disk, který chcete připojit. Určení
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Vytvoření spravované skupiny dostupnosti s virtuálními počítači pomocí spravovaných disků
 
-Vytvoření spravované skupiny dostupnosti s virtuálními počítači pomocí spravované disky, přidejte `sku` objektu na dostupnosti prostředků a nastavit `name` vlastnost `Aligned`. Tato vlastnost zajistí, že disky pro každý virtuální počítač jsou dostatečně izolované od sebe navzájem k Vyhýbejte se jediným bodů selhání. Všimněte si také, `apiVersion` pro dostupnosti prostředků je nastavena na `2017-03-30`.
+Vytvoření spravované skupiny dostupnosti s virtuálními počítači pomocí spravované disky, přidejte `sku` objektu na dostupnosti prostředků a nastavit `name` vlastnost `Aligned`. Tato vlastnost zajistí, že disky pro každý virtuální počítač jsou dostatečně izolované od sebe navzájem k Vyhýbejte se jediným bodů selhání. Všimněte si také, `apiVersion` pro dostupnosti prostředků je nastavena na `2018-10-01`.
 
 ```json
 {

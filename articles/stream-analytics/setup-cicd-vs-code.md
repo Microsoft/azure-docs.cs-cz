@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7fe46712d610d881c21653461d12e4f8efecb468
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827872"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158509"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>Průběžnou integraci a vývoj s použitím balíčku npm Stream Analytics CI/CD
 Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení pomocí balíčku npm Azure Stream Analytics CI/CD.
@@ -22,10 +22,14 @@ Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení 
 
 Můžete povolit průběžnou integraci a nasazování pro úlohy Azure Stream Analytics pomocí **Azure Stream Analytics. streamanalytics cicd** balíčku npm. Poskytuje nástroje pro generování šablon Azure Resource Manageru z balíčku npm [projekty Stream Analytics Visual Studio Code](quick-create-vs-code.md). Můžete použít ve Windows, macOS a Linuxu bez instalace Visual Studio Code.
 
-Jakmile budete mít [stáhli balíček](https://www.npmjs.com/package/azure-streamanalytics-cicd), použijte následující příkaz pro výstup šablony Azure Resource Manageru. Pokud **outputPath** neurčíte, šablony se umístí do **nasadit** ve složce projektu **bin** složky.
+Jakmile budete mít [stáhli balíček](https://www.npmjs.com/package/azure-streamanalytics-cicd), použijte následující příkaz pro výstup šablony Azure Resource Manageru. **ScriptPath** argument je absolutní cesta k **asaql** souboru ve vašem projektu. Ujistěte se, asaproj.json a JobConfig.json soubory jsou ve stejné složce pomocí souboru skriptu. Pokud **outputPath** neurčíte, šablony se umístí do **nasadit** ve složce projektu **bin** složky.
 
 ```powershell
-asa-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+```
+Příklad (v systému macOS)
+```powershell
+azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
 Když projekt Stream Analytics Visual Studio Code sestavena úspěšně, generuje následující dvě šablony soubory Azure Resource Manageru v rámci **bin / [ladění/maloobchodní] / Deploy** složky: 
@@ -38,7 +42,7 @@ Když projekt Stream Analytics Visual Studio Code sestavena úspěšně, generuj
 
        [ProjectName].JobTemplate.parameters.json   
 
-Výchozí parametry v souboru parameters.JSON tímto se z nastavení projektu sady Visual Studio. Pokud chcete nasadit do jiného prostředí, nahraďte parametry odpovídajícím způsobem.
+Výchozí parametry v souboru parameters.JSON tímto se z nastavení projektu Visual Studio Code. Pokud chcete nasadit do jiného prostředí, nahraďte parametry odpovídajícím způsobem.
 
 > [!NOTE]
 > Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu null. Jste **požadované** nastavit hodnoty před nasazením do cloudu.

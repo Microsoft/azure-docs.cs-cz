@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153468"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Pokud aktivita ve službě Azure Data Factory podmínky
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`. 
@@ -66,8 +66,8 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivita podmínky if. | String | Ano
-type | Musí být nastaveno na **IfCondition** | String | Ano
+name | Název aktivita podmínky if. | String | Ano
+Typ | Musí být nastaveno na **IfCondition** | String | Ano
 Výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s výsledkem typu boolean | Ano
 ifTrueActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `true`. | Pole | Ano
 ifFalseActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `false`. | Pole | Ano

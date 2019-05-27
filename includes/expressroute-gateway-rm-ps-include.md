@@ -9,11 +9,11 @@ ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366371"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158757"
 ---
 Kroky pro tuto úlohu použijte na základě hodnot v seznamu následující odkaz Konfigurace virtuální sítě. Další nastavení a názvy jsou také popsány v tomto seznamu. I když můžeme přidat proměnné na základě hodnot v tomto seznamu, budeme není přímo v žádném z kroků, pomocí tohoto seznamu. Můžete zkopírovat seznam, aby používal jako odkaz, nahraďte hodnoty vlastními.
 

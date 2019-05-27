@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860277"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149602"
 ---
 ## <a name="preparing-for-updates"></a>Příprava pro aktualizace
 Budete muset před zkontrolovat a nainstalovat aktualizaci, proveďte následující kroky:

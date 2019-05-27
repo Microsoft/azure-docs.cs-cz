@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821335"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151186"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpečení podnikové třídy pro službu Azure Machine Learning
 
@@ -83,12 +83,12 @@ Každý pracovní prostor obsahuje také související systém přiřadil spravo
 
 Další informace o spravovaných identit najdete v tématu [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-| Prostředek | Oprávnění |
+| Resource | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel | 
 | Účet úložiště | Přispěvatel dat v objektech blob služby Storage | 
 | Key Vault | Přístup ke všem certifikátům klíče, tajné kódy, | 
-| Azure Container Registry | Přispěvatel | 
+| Registr kontejneru Azure | Přispěvatel | 
 | Skupiny prostředků, která obsahuje tento pracovní prostor | Přispěvatel | 
 | Skupina prostředků obsahující trezor klíčů (Pokud je jiný než ten, který obsahuje pracovní prostor) | Přispěvatel | 
 
@@ -101,7 +101,7 @@ Služba Azure Machine Learning se vytvoří další aplikace (název začíná a
 
 Služba Azure Machine Learning spoléhá na ostatní služby Azure pro výpočetní prostředky. Výpočetní prostředky (cílových výpočetních prostředí) se používají k trénování a nasazování modelů. Tyto výpočetní cíle lze vytvořit ve virtuální síti. Například můžete použít virtuální počítač Microsoft datové vědy pro trénování modelu a poté model nasaďte do Azure Kubernetes Service (AKS).  
 
-Další informace najdete v tématu [spuštění experimentů a odvozování ve virtuální síti](how-to-enable-virtual-network.md).
+Další informace najdete v tématu [spuštění experimentů a odvození ve virtuální síti](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Šifrování dat
 
@@ -154,7 +154,7 @@ Následující diagram znázorňuje pracovní postup vytvoření pracovního pro
 Uživatel přihlásí do Azure AD z kteréhokoli z podporovaných klientů služby Azure Machine Learning (rozhraní příkazového řádku, Python SDK, Azure portal) a požádá o příslušného tokenu Azure Resource Manageru.  Uživatel pak zavolá Azure Resource Manageru vytvořit pracovní prostor.  Azure Resource Manageru kontakty Azure Machine Learning služby poskytovatele prostředků se zřídit pracovní prostor.  Další prostředky se vytvoří v předplatném zákazníka během vytváření pracovního prostoru:
 * Trezor klíčů (k ukládání tajných klíčů)
 * Účet služby Azure Storage (včetně objektů Blob a sdílení souborů)
-* Služba Azure Container Registry (k ukládání imagí dockeru pro odvozování a experimentování ve službě)
+* Služba Azure Container Registry (k ukládání imagí dockeru pro odvození/bodování a experimentování ve službě)
 * Application Insights (pro ukládání telemetrických dat)
 
 Další výpočetní prostředí, připojený k pracovnímu prostoru (služby Azure Kubernetes Service, virtuálních počítačů atd.) můžete také zřídí zákazníci podle potřeby. 
@@ -172,7 +172,7 @@ Následující diagram znázorňuje školení pracovního postupu.
 * Služba Azure Machine Learning se volá s ID snímku pro kód snímku uloženy výše
 * Azure Machine Learning, které vytvoří službu spustit ID (volitelné) a token služby Azure Machine Learning, který později používá cílových výpočetních prostředí jako Machine Learning výpočetní/VM ke komunikaci zpět do služby Azure Machine Learning
 * Můžete použít buď spravované výpočetní prostředí (např.) Machine Learning Compute) nebo nespravované výpočetní výkon (např.) Virtuální počítač) ke spuštění trénovací úlohy. Tok dat je vysvětleno pro oba scénáře níže:
-* (Virtuální počítač/HDInsight/místní funkce – přistupovat pomocí přihlašovací údaje pro SSH ve službě Key Vault v předplatném Microsoft) Služba Azure Machine Learning běží kód pro správu na cílové výpočetní prostředí, které:
+* (Virtuální počítač/HDInsight – přistupovat pomocí přihlašovací údaje pro SSH ve službě Key Vault v předplatném Microsoft) Služba Azure Machine Learning běží kód pro správu na cílové výpočetní prostředí, které:
     1.  Připraví prostředí (Poznámka: Docker je možnost i pro virtuální počítač/místní funkce. Viz kroky pro Machine Learning Compute pochopit, jak spuštění experimentu na funguje kontejneru dockeru níže)
     2.  Soubory ke stažení kódu
     3.  Nastaví proměnné prostředí nebo konfigurace
@@ -189,7 +189,7 @@ Tento krok se zobrazí ve službě flow, kde školení compute zápisy *spustit 
 ![Snímek obrazovky znázorňující vytvoření pracovního prostoru pracovního postupu](./media/enterprise-readiness/training-and-metrics.png)
 
 ### <a name="creating-web-services"></a>Vytváření webových služeb
-Následující diagram znázorňuje odvozování pracovního postupu, ve kterém je model nasadit jako webovou službu.
+Následující diagram znázorňuje odvození pracovního postupu. Odvození nebo vyhodnocení modelu je fáze použití nasazený model pro predikci, obvykle na produkční data.
 Viz podrobnosti níže:
 * Uživatel zaregistruje model s použitím klienta, jako jsou sady SDK Azure ML
 * Uživatel vytvoří image pomocí modelu, skóre souboru a další závislosti modelu

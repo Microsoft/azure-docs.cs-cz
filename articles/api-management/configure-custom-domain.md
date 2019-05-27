@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693596"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141304"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény 
 
@@ -36,8 +36,6 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 + Instanci služby APIM. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
 + Název vlastní domény, který vlastníte. Vlastní název domény, který chcete použít, musíte si opatřili samostatně a hostovaný na serveru DNS. Toto téma neposkytuje pokyny o tom, jak hostovat vlastní název domény.
 + Musíte mít platný certifikát s veřejným i privátním klíčem (. PFX). Subjektu nebo alternativní název subjektu (SAN) musí odpovídat názvu domény (díky tomu APIM umožní bezpečně vystavit adresy URL přes protokol SSL).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Nastavení vlastního názvu domény pomocí webu Azure portal
 

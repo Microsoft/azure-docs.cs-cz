@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137781"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162079"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Graph prostředků
 
@@ -43,7 +43,7 @@ Graf prostředků Azure můžete:
 ## <a name="how-resource-graph-is-kept-current"></a>Jak prostředků grafu je udržovat je aktuální
 
 Když se aktualizuje prostředek Azure, diagram zdrojů obdrží oznámení pomocí Správce prostředků změny.
-Prostředek grafu pak aktualizuje svou databázi. Prostředek grafu také provádí běžný _úplnou kontrolu_. Tato kontrola zajišťuje, že data grafu prostředků aktuální v případě zmeškaných oznámení nebo pokud je prostředek aktualizován mimo Resource Manageru.
+Prostředek grafu pak aktualizuje svou databázi. Prostředek grafu také provádí běžný _úplnou kontrolu_. Tato kontrola zajišťuje, že data grafu prostředků aktuální Pokud zmeškaných oznámení nebo pokud je prostředek aktualizován mimo Resource Manageru.
 
 ## <a name="the-query-language"></a>Dotazovací jazyk
 
@@ -63,9 +63,15 @@ Pokud chcete používat Resource Graph, musíte mít odpovídající oprávněn�
 
 ## <a name="throttling"></a>Throttling
 
-Jako bezplatná služba se dotazy do grafu prostředků omezují zajištění nejlepší prostředí a odpovědi pro všechny zákazníky. Pokud vaše organizace chce používat rozhraní Graph API prostředku ve velkém měřítku a častých dotazů, použijte portál "Názory" na stránce prostředků grafu. Nezapomeňte zadat váš obchodní případ a zaškrtněte políčko "Microsoft může poslat e-mail o svůj názor" v pořadí pro tým, který se vás kontaktovat.
+Jako bezplatná služba se dotazy do grafu prostředků omezují zajištění nejlepší prostředí a odpovědi pro všechny zákazníky. Pokud vaše organizace chce používat rozhraní Graph API prostředku ve velkém měřítku a častých dotazů, používat portál "Názory" z [stránka portálu prostředků grafu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
+Zadejte váš obchodní případ a zaškrtněte políčko "Microsoft může poslat e-mail o svůj názor" v pořadí pro tým, který se vás kontaktovat.
 
-Prostředek grafu omezuje na úrovni tenanta. Služba přepsání a nastaví `x-ms-ratelimit-remaining-tenant-reads` hlavičku odpovědi k označení zbývající dotazuje uživatelem v rámci tenanta k dispozici. Prostředek grafu obnoví kvóty každých 5 sekund namísto každou hodinu. Další informace najdete v tématu [požadavky omezení využití sítě Správce prostředků](../../azure-resource-manager/resource-manager-request-limits.md).
+Prostředek grafu omezuje dotazy na úrovni uživatele. Odpověď služby obsahuje následující hlavičky protokolu HTTP:
+
+- `x-ms-user-quota-remaining` (int): Zbývající kvóta zdrojů pro uživatele. Tato hodnota se mapuje na počet dotazů.
+- `x-ms-user-quota-resets-after` (hh:mm:ss): Doba trvání, dokud se resetuje využití kvóty uživatele
+
+Další informace najdete v tématu [požadavky omezení využití sítě Správce prostředků](../../azure-resource-manager/resource-manager-request-limits.md).
 
 ## <a name="running-your-first-query"></a>Spusťte váš první dotaz
 

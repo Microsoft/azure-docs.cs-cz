@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c24bbb9433e4164d4b2f6ce1ac7bd726cc36356
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506907"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142643"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Ve verzi Preview – vytváření a správě více fondy uzlů pro cluster Azure Kubernetes Service (AKS)
 
@@ -332,7 +332,7 @@ Pouze podů, které mají tento barvu použít můžete naplánovat na uzly v *g
 
 V tomto článku jste vytvořili cluster AKS, který obsahuje uzly založený na grafickém procesoru. Abyste snížili náklady na zbytečné, můžete chtít odstranit *gpunodepool*, nebo celého clusteru AKS.
 
-Chcete-li odstranit fond uzlů založený na grafickém procesoru, použijte [odstranit fond uzlů az aks] [ az-aks-nodepool-delete] příkaz, jak je znázorněno v následujícím příkladu:
+Chcete-li odstranit fond uzlů založený na grafickém procesoru, použijte [az aks nodepool odstranit] [ az-aks-nodepool-delete] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
@@ -348,8 +348,10 @@ az group delete --name myResourceGroup --yes --no-wait
 
 V tomto článku jste zjistili, jak vytvořit a spravovat více fondy uzlů v clusteru AKS. Další informace o tom, jak řídit podů mezi fondy uzlů najdete v tématu [osvědčené postupy pro Plánovač pokročilé funkce ve službě AKS][operator-best-practices-advanced-scheduler].
 
+Vytvořit a používat fondy uzlů kontejneru Windows serveru najdete v tématu [vytvoříte kontejner Windows Server ve službě AKS][aks-windows].
+
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -376,3 +378,4 @@ V tomto článku jste zjistili, jak vytvořit a spravovat více fondy uzlů v cl
 [install-azure-cli]: /cli/azure/install-azure-cli
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[aks-windows]: windows-container-cli.md

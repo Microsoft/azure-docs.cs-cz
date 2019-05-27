@@ -1,5 +1,5 @@
 ---
-title: Prozkoumejte a připravit data (třídu datové sady)
+title: Prozkoumejte a transformace dat (třídu datové sady)
 titleSuffix: Azure Machine Learning service
 description: Zkoumání dat pomocí souhrnnou statistiku a připravit data prostřednictvím čištění dat, transformaci a vytváření funkcí
 services: machine-learning
@@ -10,17 +10,17 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/19
-ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/23/2019
+ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603152"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146299"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Prozkoumejte a příprava dat pomocí třídy datové sady (Preview)
 
-Zjistěte, jak zkoumat a příprava dat pomocí [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). [Datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) třídy (preview) umožňuje prozkoumat a připravit data tím, že poskytuje funkce jako například: vzorkování, souhrnné statistiky a inteligentní transformace. Kroky transformace jsou uloženy v [definicích datových sad](how-to-manage-dataset-definitions.md) s vysoce škálovatelnou způsobem zpracovávat několik velkých souborů, různých schémat.
+Zjistěte, jak zkoumat a příprava dat pomocí Azure ml datových sad balíčku v [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). [Datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) třídy (preview) umožňuje prozkoumat a připravit data tím, že poskytuje funkce jako například: vzorkování, souhrnné statistiky a inteligentní transformace. Kroky transformace jsou uloženy v [definicích datových sad](how-to-manage-dataset-definitions.md) s vysoce škálovatelnou způsobem zpracovávat několik velkých souborů, různých schémat.
 
 > [!Important]
 > Některé třídy datové sady (preview) mají závislosti [azureml přípravy](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) balíčku (GA). Při transformaci funkcí lze provést přímo s GA'ed [Data Prep funkce](how-to-transform-data.md), doporučujeme obálky balíček datové sady jsou popsané v tomto článku, pokud vytváříte nové řešení. Sady Azure Machine Learning dat (preview) umožňuje nejen transformace dat, ale také [dat snímků](how-to-create-dataset-snapshots.md) a ukládat [definice verzí datové sady](how-to-manage-dataset-definitions.md). Datové sady je další verze sady SDK přípravy dat nabídky Rozšířené funkce pro správu datových sad v řešení AI.
@@ -33,7 +33,7 @@ K prozkoumání a připravit data, budete potřebovat:
 
 * Pracovní prostor služby Azure Machine Learning. Zobrazit [vytvořit pracovní prostor služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
 
-* Sady SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější). Pro instalaci nebo aktualizaci na nejnovější verzi sady SDK, naleznete v tématu [nainstalovat nebo aktualizovat sadu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* Sady SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější), která obsahuje balíček azureml datové sady. Pro instalaci nebo aktualizaci na nejnovější verzi sady SDK, naleznete v tématu [nainstalovat nebo aktualizovat sadu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 * Azure Machine Learning přípravy dat sady SDK. Pro instalaci nebo aktualizaci na nejnovější verzi, najdete v článku [nainstalovat nebo aktualizovat sadu SDK pro Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
 

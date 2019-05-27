@@ -6,12 +6,12 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b36302e349327354e31ef4ea5adb9842d04ed4f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c1c33cab46082d1d3b748b45b40a7928801b2e55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149348"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151265"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -649,6 +649,12 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                     <h3>Azure Stack</h3>
                                     <ul>
                                         <li>
+                                            <a href="/azure-stack">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-stack/">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Operátor Azure Stacku</p>
@@ -658,6 +664,11 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             <a href="/azure/azure-stack/user">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Uživatel Azure Stacku</p>
+                                            </a>
+                                        </li>                                        <li>
+                                            <a href="/azure-stack/asdk/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack Development Kit (ASDK)</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -5959,6 +5970,25 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                         <a href="#stack">Azure Stack</a>
                         <ul id="stack" class="cardsA">
                             <li>
+                                <a href="/azure-stack">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Stack</h3>
+                                                    <p>Rozšíření možností a služeb Azure v místním prostředí pro vytváření a nasazování hybridních cloudových a hraničních aplikací napříč hranicemi cloudu</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-stack/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -5970,7 +6000,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Operátor Azure Stacku</h3>
-                                                    <p>Doručování služeb Azure z vlastního datového centra s využitím této nové hybridní cloudové platformy</p>
+                                                    <p>Další informace o správě infrastruktury integrovaných systémů Azure Stacku a o postupu při nabízení služeb</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5989,6 +6019,23 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             <div class="cardText">
                                                 <h3>Uživatel Azure Stacku</h3>
                                                 <p>Použití služeb a sestavování aplikací pro Azure Stack</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure-stack/asdk/">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure-stack.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Azure Stack Development Kit (ASDK)</h3>
+                                                <p>Neprodukční prostředí pro testování a vyhodnocení</p>
                                             </div>
                                         </div>
                                     </div>

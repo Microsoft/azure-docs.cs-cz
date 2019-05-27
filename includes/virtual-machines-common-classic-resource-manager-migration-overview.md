@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 289912e1519a68ae607ace7766e35731af0016b9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929365"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158269"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager
 Tento článek popisuje, jak migrovat infrastrukturu jako službu (IaaS) prostředky z Classicu na modely nasazení Resource Manager a podrobnosti o tom, jak připojit prostředky z dva modely nasazení, které společně existovat ve vašem předplatném pomocí virtuální sítě brány Site-to-site. Další informace o [výhody a funkce Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -27,7 +27,7 @@ Téměř všechny funkce z modelu nasazení classic jsou podporovány pro comput
 Při migraci jsou podporovány tyto klasické prostředky IaaS
 
 * Virtuální počítače
-* Skupiny dostupnosti
+* Sady dostupnosti
 * Cloud Services s využitím Virtual Machines
 * Účty úložiště
 * Virtuální sítě
@@ -131,5 +131,4 @@ Následující konfigurace nejsou aktuálně podporovány.
 | Azure HDInsight |Virtuální sítě, které obsahují služby HDInsight |To není aktuálně podporováno. |
 | Microsoft Dynamics Lifecycle Services |Virtuální sítě, které obsahují virtuální počítače, které jsou spravovány Dynamics Lifecycle Services |To není aktuálně podporováno. |
 | Azure AD Domain Services |Virtuální sítě, které obsahují služby Azure AD Domain services |To není aktuálně podporováno. |
-| Azure RemoteApp |Virtuální sítě, které obsahují nasazení vzdálené aplikace RemoteApp Azure |To není aktuálně podporováno. |
 | Azure API Management |Virtuální sítě, které obsahují nasazení Azure API Management |To není aktuálně podporováno. Migrace virtuální sítě IaaS, změňte virtuální síť nasazení API Management, což je žádná operace výpadek. |
