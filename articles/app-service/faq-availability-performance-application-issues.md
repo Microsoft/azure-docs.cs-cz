@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3dd61ae9298a03ce0cbb9e9a5b143229c15ea9bb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786378"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955764"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastějších dotazech týkajících se výkonu aplikace pro Web Apps v Azure
 
@@ -161,7 +161,7 @@ Zvažte možnost 64bitové procesy, můžete využít ve vaší roli webového p
 
 Všimněte si také, že 64bitové prostředí vyžaduje plán služby Basic nebo Standard. Zdarma a sdílené plány vždy spustit v 32bitovém prostředí.
 
-Další informace najdete v tématu [konfigurují webové aplikace ve službě App Service](web-sites-configure.md).
+Další informace najdete v tématu [konfigurují webové aplikace ve službě App Service](configure-common.md).
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>Proč moje žádosti o časový limit po sekundách 230?
 

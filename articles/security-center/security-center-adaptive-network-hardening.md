@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
-ms.author: monhaber
-ms.openlocfilehash: cede54f69fbeec5e01c17d84436bdc4c9ee91002
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: 17f01d89598d99425d157e4c9c31e64ab1ccbcda
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60706564"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966982"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní sítě posílení zabezpečení v Azure Security Center
 Zjistěte, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.

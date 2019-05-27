@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fa82c2397b4c2601cdd943158054e1c8efb6b57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1be2966cf568fc5101fb0d887f0d55a8a1876d0
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596350"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952499"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurace privátních IP adres pro virtuální počítač (Classic) pomocí Powershellu
 
@@ -117,7 +117,7 @@ Očekávaný výstup:
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Postup přidání statické privátní IP adresu do existujícího virtuálního počítače
-Přidat statickou privátní IP adresa na virtuální počítač vytvořený pomocí skriptu výše, o následující příkaz:
+Přidání statické privátní IP adresu pro virtuální počítač vytvořený pomocí výše uvedeného skriptu, spusťte následující příkaz:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |

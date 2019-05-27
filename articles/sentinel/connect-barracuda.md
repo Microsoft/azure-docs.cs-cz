@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6b0285903537dafb004b5aca033b50560247c605
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd45be69ec29fdcd00710b7366348846f325b151
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204465"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921980"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Připojit zařízení Barracuda 
 
@@ -27,14 +27,14 @@ ms.locfileid: "65204465"
 > Azure Sentinel je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Barracuda Firewall webových aplikací (WAF) konektoru můžete snadno připojit vaše protokoly Barracuda s vaší Azure Sentinelu zobrazení řídicích panelů, vytvářet vlastní výstrahy a zlepší. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení. Azure Sentinel využívá nativní integraci mezi službami **Barracuda** a Microsoft Azure OMS zajistit bezproblémovou integraci. 
+Barracuda Firewall webových aplikací (WAF) konektoru můžete snadno připojit vaše protokoly Barracuda s vaší Azure Sentinelu zobrazení řídicích panelů, vytvářet vlastní výstrahy a zlepší. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení. Azure Sentinel využívá nativní integraci mezi službami **Barracuda** a agenta Microsoft Monitoring Agent zajistit bezproblémovou integraci. 
 
 
 > [!NOTE]
 > Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Konfigurace a připojení Barracuda WAF
-Barracuda Web Application Firewall můžete integrovat a exportovat protokoly přímo do Azure Sentinelu prostřednictvím Azure OMS serveru.
+Barracuda Web Application Firewall můžete integrovat a exportovat protokoly přímo do Azure Sentinelu prostřednictvím agenta Microsoft Monitoring Agent.
 1. Přejděte na [toku konfiguraci Barracuda WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)a postupujte podle pokynů k nastavení připojení, s použitím těchto parametrů:
     - **ID pracovního prostoru**: Zkopírujte hodnotu ID vašeho pracovního prostoru na stránce Azure Sentinelu Barracuda konektoru.
     - **Primární klíč**: Zkopírujte hodnotu primárního klíče na stránce Azure Sentinelu Barracuda konektoru.

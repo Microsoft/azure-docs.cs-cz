@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 577f370c3be0f232be4e6628dd6754c4164ab93f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785264"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952862"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Ověření e-mailu jednorázové heslo (preview)
 
@@ -64,7 +64,7 @@ Můžete zobrazit uživatele typu Host, kteří používají ověřování pomoc
 > Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou dál možné ověřit pomocí jednorázového hesla. Pokud chcete aktualizovat své metody ověřování, můžete odstranit jeho uživatelský účet guest a znovu je pozvat.
 
 ### <a name="example"></a>Příklad:
-Uživatel typu Host alexdoe@gmail.com organizace pozvaný ke společnosti Fabrikam, který nemá nastavení federace služby Google. Alex nemá účet Microsoft. Zobrazí mu pro ověřování jednorázovým heslem.
+Uživatel typu Host alexdoe@gmail.com organizace pozvaný ke společnosti Fabrikam, který nemá nastavení federace služby Google. Alex nemá účet Microsoft. Obdrží pro ověřování jednorázovým heslem.
 
 ## <a name="opting-in-to-the-preview"></a>Vyjádření výslovného souhlasu ve verzi Preview 
 Může trvat několik minut, než akce opt-in se projeví. Poté použije pouze nově pozvaným uživatelům, kteří splňují podmínky výše ověřování jednorázovým heslem. Uživatelé typu Host, kteří dříve uplatnit pozvání bude nadále používat stejnou metodu ověření.

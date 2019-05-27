@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/11/2019
-ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.date: 05/20/2019
+ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823321"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951478"
 ---
 # <a name="sql-database-serverless-preview"></a>Bez serveru SQL Database (preview)
 
@@ -81,7 +81,22 @@ Obecně jsou databáze spustit na počítači s dostatečnou kapacitu k splňuj�
 
 ### <a name="memory-management"></a>Správa paměti
 
-Paměť pro databáze bez serveru je uvolněn více často pro zřízené databáze. Toto chování je potřeba řízení nákladů ve službě bez serveru. Na rozdíl od zřízených výpočetních je uvolnit paměť z mezipaměti SQL z databáze bez serveru při nízkém využití procesoru nebo mezipaměť.
+Paměť pro databáze bez serveru je uvolněn více často než u databází, zřízených výpočetních. Toto chování je potřeba řízení nákladů ve službě bez serveru a může ovlivnit výkon.
+
+#### <a name="cache-reclaiming"></a>Opětovné získání do mezipaměti
+
+Na rozdíl od zřízených výpočetních databází je uvolnit paměť z mezipaměti SQL z databáze bez serveru při nízkém využití procesoru nebo mezipaměť.
+
+- Využití mezipaměti se považuje za nízkou, pokud celková velikost nejčastěji naposledy použité spadající do určité položky mezipaměti pod prahovou hodnotu pro určitou dobu.
+- Když se aktivuje mezipaměti recyklaci, cílovou velikost mezipaměti je postupně omezit na zlomek původní velikost a opětovné získání pokračuje pouze pokud zůstává na nízké využití.
+- Pokud dojde k mezipaměti recyklaci, zásady pro výběr položky mezipaměti vyřazení je stejné zásady výběru jako u databáze zřízených výpočetních při přetížení paměti je vysoká.
+- Velikost mezipaměti je nikdy snížit pod minimální velikost paměti definované minimální virtuálních jader, kterého lze nakonfigurovat.
+
+V bez serveru a zřízení výpočetních databází, mezipaměti, kterou položky mohou vyřadit, pokud se používá všechny dostupné paměti.
+
+#### <a name="cache-hydration"></a>Dosazení dat do mezipaměti
+
+Mezipaměti SQL roste, jak načíst data z disku stejným způsobem a se stejnou rychlostí jako zřízené databáze. Když je zaneprázdněná databáze, do mezipaměti může růst bez omezení až po limit maximální paměti.
 
 ## <a name="autopause-and-autoresume"></a>Autopause a autoresume
 
@@ -115,7 +130,7 @@ Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje 
 
 ### <a name="connectivity"></a>Možnosti připojení
 
-Když bez serveru databáze je pozastavená, bude při prvním přihlášení databázi obnovit a vrátí chybu s informacemi o tom, že databáze je k dispozici s kódem chyby 40613. Po obnovení databáze přihlášení je nutné zopakovat k navázání připojení. Databáze klientů se logika opakovaných pokusů připojení by neměl muset upravit.
+Pokud databáze bez serveru je pozastavený, bude při prvním přihlášení databázi obnovit a vrátí chybu s informacemi o tom, že databáze je k dispozici s kódem chyby 40613. Po obnovení databáze přihlášení je nutné zopakovat k navázání připojení. Databáze klientů se logika opakovaných pokusů připojení by neměl muset upravit.
 
 ### <a name="latency"></a>Latence
 
@@ -267,7 +282,7 @@ Objem výpočtů, účtuje se maximální využití procesoru a paměti použív
 - **Fakturována částka ($)**: cena za jednotku – VCORE úrovně * max (min virtuálních jader, používá virtuální jádra, minimální paměť GB * 1/3 paměti využité GB * 1/3) 
 - **Četnost fakturace**: Za sekundu
 
-Jednotková cena vcore v náklady na vcore za sekundu. Odkazovat [stránce s cenami za Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) pro konkrétní jednotkové ceny v dané oblasti.
+Jednotková cena vCore v náklady na vCore za sekundu. Odkazovat [stránce s cenami za Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) pro konkrétní jednotkové ceny v dané oblasti.
 
 Objem výpočtů účtuje je zveřejněný prostřednictvím následující metriky:
 
@@ -277,9 +292,9 @@ Objem výpočtů účtuje je zveřejněný prostřednictvím následující metr
 
 Toto množství se počítá každou sekundu a agregovat více než 1 minuta.
 
-Vezměte v úvahu bez serveru databáze nakonfigurované s 1 min vcore a 4 maximální počet virtuálních jader.  To odpovídá přibližně 3 GB paměti min a max 12 GB paměti.  Předpokládejme, že automatického pozastavení zpoždění je nastavená na 6 hodin a databázové úlohy je aktivní během prvních 2 hodin období 24 hodin a jinak neaktivní.    
+Vezměte v úvahu bez serveru databáze nakonfigurované s 1 min vCore a 4 maximální počet virtuálních jader.  To odpovídá přibližně 3 GB paměti min a max 12 GB paměti.  Předpokládejme, že automatického pozastavení zpoždění je nastavená na 6 hodin a databázové úlohy je aktivní během prvních 2 hodin období 24 hodin a jinak neaktivní.    
 
-V takovém případě databáze se účtuje za výpočetní prostředky a úložiště během prvních 8 hodin.  I když je databáze od neaktivní po 2 hodiny, se pořád účtuje za výpočetní výkon v dalších 6 hodin, které jsou založené na minimální výpočetní prostředky, které jsou zřízené databáze je online.  Pouze úložiště se účtuje zbytek období 24 hodin, zatímco databáze je pozastavená.
+V takovém případě databáze se účtuje za výpočetní prostředky a úložiště během prvních 8 hodin.  I když je databáze aktivní spuštění po druhé hodiny, se pořád účtuje za výpočetní výkon v dalších 6 hodin, které jsou založené na minimální výpočetní prostředky, které jsou zřízené databáze je online.  Pouze úložiště se účtuje zbytek období 24 hodin, zatímco databáze je pozastavená.
 
 Přesněji řečeno výpočetní faktury v tomto příkladu se vypočítává takto:
 
@@ -291,7 +306,7 @@ Přesněji řečeno výpočetní faktury v tomto příkladu se vypočítává ta
 |8:00-24:00|0|0|Žádné výpočty účtují pozastaveno|0 vCore sekund|
 |VCore celkový počet sekund účtovat po dobu 24 hodin||||50400 vCore sekund|
 
-Předpokládejme, že je cena ze jednotku výpočetních je $0.000073/vCore/second.  Výpočetní účtuje za toto období 24 hodin se produkt výpočetní jednotky ceny a vcore sekundy účtuje: $0.000073/vCore/second * $3.68 = 50400 vCore sekund
+Předpokládejme, že je cena ze jednotku výpočetních je $0.000073/vCore/second.  Výpočetní účtuje za toto období 24 hodin se produkt výpočetní jednotky ceny a vCore sekundy účtuje: $0.000073/vCore/second * $3.68 = 50400 vCore sekund
 
 ## <a name="available-regions"></a>Dostupné oblasti
 

@@ -5,19 +5,21 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 05/20/2019
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 0bbb200bdfeb88b774f561d537edc71e60b3994f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b96c1ada1ebb1bc53f7f55311c69a3cdc04f7574
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471442"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956445"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
 Azure Kubernetes Service (AKS) je spravovaná služba, která vám umožní rychle nasadit a spravovat clustery Kubernetes. V tomto rychlém startu nasadíte cluster AKS pomocí Azure CLI. V clusteru je spustí vícekontejnerová aplikace, která obsahuje webový front-end a Redis instance. Zobrazí se postup sledování stavu clusteru a podů, na kterých běží vaše aplikace.
+
+Pokud chcete používat kontejnery Windows serveru (aktuálně ve verzi preview ve službě AKS), přečtěte si téma [vytvoření clusteru AKS, který podporuje kontejnery Windows serveru][windows-container-cli].
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -27,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.52 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -93,7 +95,7 @@ Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.9.11
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
@@ -249,11 +251,11 @@ Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje násl
 
 ![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough/monitor-containers.png)
 
-Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
+Pokud chcete zobrazit protokoly pro `azure-vote-front` pod, zvolte možnost **zobrazit v analytics**a pak vyberte **zobrazit protokoly kontejneru** odkaz na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
 
 ![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
 
-## <a name="delete-cluster"></a>Odstranění clusteru
+## <a name="delete-cluster"></a>Odstranit cluster
 
 Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete][az-group-delete].
 
@@ -272,7 +274,7 @@ V tomto rychlém startu předem vytvořené Image kontejnerů byly použity k vy
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci.  [Přístup k řídicímu panelu Kubernetes webové] [ kubernetes-dashboard] pro cluster, který jste právě vytvořili.
+V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. Můžete také [přístup k řídicímu panelu Kubernetes webové] [ kubernetes-dashboard] pro váš cluster AKS.
 
 Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
 
@@ -302,3 +304,4 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
 [kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-container-cli]: windows-container-cli.md

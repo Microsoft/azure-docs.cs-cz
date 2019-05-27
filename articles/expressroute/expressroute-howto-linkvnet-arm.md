@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: b0ae3d5b2c60badfb9b59820b1e0b85383e524ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366333"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950365"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Připojení virtuální sítě k okruhu ExpressRoute
 > [!div class="op_single_selector"]
@@ -175,6 +175,20 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 ```
 
 Rozsah *RoutingWeight* je od 0 do 32 000. Výchozí hodnota je 0.
+
+## <a name="configure-expressroute-fastpath"></a>Konfigurace ExpressRoute FastPath 
+Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Pokud váš okruh ExpressRoute není v [ExpressRoute přímo](expressroute-erdirect-about.md) a bránu virtuálního newtork je Ultra výkon nebo ErGw3AZ. FastPath zlepšuje preformance cesty dat jako jsou pakety za sekundu a připojení za sekundu mezi místní sítí a virtuální sítí. 
+
+> [!NOTE] 
+> Pokud již máte připojení k virtuální síti, ale ještě nepovolili FastPath musíte odstranit připojení virtuální sítě a vytvořte novou. 
+> 
+>  
+
+```azurepowershell-interactive 
+$circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
+$gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
+$connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

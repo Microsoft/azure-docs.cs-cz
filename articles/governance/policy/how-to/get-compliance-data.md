@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 050f301b55c718e80c1b4157639bd9dce506f6ba
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263763"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979493"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získat data o dodržování předpisů prostředků Azure
 
-Jednou z největších výhod Azure Policy je insight a ovládací prvky, které nabízí v porovnání s prostředky v rámci předplatného nebo [skupiny pro správu](../../management-groups/overview.md) předplatných. Tento ovládací prvek lze uplatnit v mnoha různými způsoby, jako je například brání prostředky vytváří v nesprávném umístění vynucovat použití značky běžné a jednotné, nebo auditování stávající prostředky pro odpovídající konfigurace a nastavení. Ve všech případech se data vygeneruje zásady, aby vám pomohl pochopit stavu dodržování předpisů vašeho prostředí.
+Jednou z největších výhod Azure Policy je insight a ovládací prvky, které nabízí v porovnání s prostředky v rámci předplatného nebo [skupiny pro správu](../../management-groups/overview.md) předplatných. Tento ovládací prvek lze uplatnit v mnoha různými způsoby, jako je například brání prostředky vytváří v nesprávném umístění vynucovat použití značky běžné a jednotné, nebo auditování stávající prostředky pro odpovídající konfigurace a nastavení. Ve všech případech se data vytvářeny pomocí zásad Azure umožňuje porozumět stavu dodržování předpisů vašeho prostředí.
 
 Přístup k informacím o dodržování předpisů, generovaných zásady a přiřazení iniciativ několika způsoby:
 
@@ -33,7 +33,7 @@ Před zobrazením metody k vytvoření sestavy dodržování předpisů, Podíve
 
 ## <a name="evaluation-triggers"></a>Vyhodnocení aktivační události
 
-Jsou k dispozici v výsledky cyklus dokončené vyhodnocení `Microsoft.PolicyInsights` poskytovatele prostředků prostřednictvím `PolicyStates` a `PolicyEvents` operace. Další informace týkající se operací rozhraní API REST Insights zásad najdete v tématu [Policy Insights](/rest/api/policy-insights/).
+Jsou k dispozici v výsledky cyklus dokončené vyhodnocení `Microsoft.PolicyInsights` poskytovatele prostředků prostřednictvím `PolicyStates` a `PolicyEvents` operace. Další informace týkající se operací REST API služby Insights zásad Azure najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/).
 
 Hodnocení přiřazených zásad a iniciativy nastat v důsledku různých událostí:
 
@@ -88,7 +88,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Jak funguje dodržování předpisů
 
-V přiřazení, prostředek je **nekompatibilní** pokud jeho není postupujte z pravidel zásady nebo iniciativa. Následující tabulka ukazuje, jak různé zásady účinky pracovat s vyhodnocením podmínek pro výsledný stav dodržování předpisů:
+V přiřazení, prostředek je **nekompatibilní** pokud jeho není postupujte z pravidel zásady nebo iniciativa.
+Následující tabulka ukazuje, jak různé zásady účinky pracovat s vyhodnocením podmínek pro výsledný stav dodržování předpisů:
 
 | Stav prostředku | Efekt | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
@@ -114,7 +115,7 @@ Kromě **kompatibilní** a **nekompatibilní**, zásady a prostředky mají tři
 - **Nezahájeno**: Pro zásadu nebo prostředek nebyl zahájen cyklus hodnocení.
 - **Nezaregistrováno**: Poskytovatel prostředků zásad Azure není zaregistrovaný nebo přihlášený účet nemá oprávnění ke čtení dat dodržování předpisů.
 
-Použije zásady **typ** a **název** polí do definice pro určení, zda je prostředek shoda. Když odpovídá na prostředek, je považován za příslušné a je ve stavu buď **kompatibilní** nebo **nekompatibilní**. Pokud **typ** nebo **název** je jediná vlastnost v definici, pak všechny prostředky jsou považovány za použitelné a jsou vyhodnocovány.
+Používá služba Azure Policy **typ** a **název** polí do definice pro určení, zda je prostředek shoda. Když odpovídá na prostředek, je považován za příslušné a je ve stavu buď **kompatibilní** nebo **nekompatibilní**. Pokud **typ** nebo **název** je jediná vlastnost v definici, pak všechny prostředky jsou považovány za použitelné a jsou vyhodnocovány.
 
 Procentní hodnoty dodržování předpisů se určí **kompatibilní** prostředky podle _celkový počet prostředků_.
 _Celkový počet prostředků_ je definován jako součet hodnot **kompatibilní**, **nekompatibilní**, a **konfliktní** prostředky. Celkové dodržování předpisů čísla jsou součet různé prostředky, které jsou **kompatibilní** dělený součet všech různých zdrojů. Na následujícím obrázku jsou 20 různých prostředků, které jsou k dispozici a je pouze jedna **nekompatibilní**. Celkové dodržování předpisů prostředkem je 95 % (19 z 20).
@@ -123,23 +124,22 @@ _Celkový počet prostředků_ je definován jako součet hodnot **kompatibilní
 
 ## <a name="portal"></a>Portál
 
-Na webu Azure portal prezentuje grafické prostředí vizualizace a pochopení stavu dodržování předpisů ve vašem prostředí. Na **zásady** stránky, **přehled** možnost obsahuje podrobnosti o dostupných oborů dodržování zásad a iniciativy. Stav dodržování předpisů a počet na přiřazení obsahuje graf zobrazující dodržování předpisů za posledních sedm dní.
-**Dodržování předpisů** stránka obsahuje řadu tytéž informace (s výjimkou graf), ale poskytnout další filtrování a řazení možnosti.
+Na webu Azure portal prezentuje grafické prostředí vizualizace a pochopení stavu dodržování předpisů ve vašem prostředí. Na **zásady** stránky, **přehled** možnost obsahuje podrobnosti o dostupných oborů dodržování zásad a iniciativy. Stav dodržování předpisů a počet na přiřazení obsahuje graf zobrazující dodržování předpisů za posledních sedm dní. **Dodržování předpisů** stránka obsahuje řadu tytéž informace (s výjimkou graf), ale poskytnout další filtrování a řazení možnosti.
 
-![Příklad stránky zásad dodržování předpisů](../media/getting-compliance-data/compliance-page.png)
+![Příklad stránky dodržování zásad Azure](../media/getting-compliance-data/compliance-page.png)
 
 Protože zásady nebo iniciativa lze přiřadit k různým oborům, tabulka obsahuje obor pro každé přiřazení a typ definice, která byla přiřazena. Jsou k dispozici také počet nekompatibilních prostředků a nekompatibilní zásady pro každé přiřazení. Kliknutím na zásady nebo iniciativa v tabulce poskytuje hlubší pohled na dodržování předpisů pro tento konkrétní přiřazení.
 
-![Příklad stránky s podrobnostmi zásad dodržování předpisů](../media/getting-compliance-data/compliance-details.png)
+![Příklad stránky s podrobnostmi o Azure zásad dodržování předpisů](../media/getting-compliance-data/compliance-details.png)
 
 Seznam prostředků **dodržování předpisů prostředkem** karta zobrazuje stav vyhodnocení stávající prostředky pro aktuálního přiřazení. Výchozí nastavení na kartě **nekompatibilní**, ale dají se filtrovat.
 Události (připojit, audit, odepření, nasazení) aktivuje požadavek na vytvoření prostředku se zobrazí pod **události** kartu.
 
-![Příklad událostí dodržování zásad](../media/getting-compliance-data/compliance-events.png)
+![Příklad událostí dodržování zásad Azure](../media/getting-compliance-data/compliance-events.png)
 
 Klikněte pravým tlačítkem na řadu událostí, které chcete shromažďovat další podrobnosti o a vyberte **zobrazit protokoly aktivit**. Na stránce Protokol aktivit se otevře a je předem vyfiltrované na hledání zobrazující podrobnosti pro přiřazení a události. Protokol aktivit obsahuje další kontext a informace o těchto událostech.
 
-![Příklad protokolu aktivit zásad dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
+![Příklad protokolu aktivit Azure zásad dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>Vysvětlení nedodržení předpisů
 
@@ -149,7 +149,7 @@ Když je určena jako zdroje **neodpovídajících**, mnoho důvodů, proč je t
 
 ## <a name="command-line"></a>Příkazový řádek
 
-Stejné informace, které jsou k dispozici na portálu můžete načíst pomocí rozhraní REST API (včetně [ARMClient](https://github.com/projectkudu/ARMClient)) nebo Azure Powershellu. Úplné podrobnosti o rozhraní REST API najdete v tématu [Policy Insights](/rest/api/policy-insights/) odkaz. Stránky s referenčními informacemi rozhraní REST API služby jste zelené tlačítko "Vyzkoušet" na každé operace, která umožňuje vyzkoušet přímo v prohlížeči.
+Stejné informace, které jsou k dispozici na portálu můžete načíst pomocí rozhraní REST API (včetně [ARMClient](https://github.com/projectkudu/ARMClient)) nebo Azure Powershellu. Úplné podrobnosti o rozhraní REST API najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/) odkaz. Stránky s referenčními informacemi rozhraní REST API služby jste zelené tlačítko "Vyzkoušet" na každé operace, která umožňuje vyzkoušet přímo v prohlížeči.
 
 Pokud chcete použít v následujících příkladech v prostředí Azure PowerShell, vytvořte ověřovací token s tímto kódem v příkladu. Nahraďte řetězec v příkladech se načíst objekt JSON, který pak může být analyzován $restUri.
 
@@ -178,7 +178,7 @@ $response
 
 ### <a name="summarize-results"></a>Shrnutí výsledků
 
-Pomocí rozhraní REST API shrnutí může provádět kontejneru, definice nebo přiřazení. Tady je příklad sumarizace na úrovni předplatného pomocí zásad Insight [shrnutí pro předplatné](/rest/api/policy-insights/policystates/summarizeforsubscription):
+Pomocí rozhraní REST API shrnutí může provádět kontejneru, definice nebo přiřazení. Tady je příklad sumarizace na úrovni předplatného pomocí přehled zásad Azure [shrnutí pro předplatné](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -288,11 +288,12 @@ Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:
 }
 ```
 
-Další informace o dotazování události zásad najdete v článku [události zásad](/rest/api/policy-insights/policyevents) článku.
+Další informace o dotazování události zásad najdete v článku [události zásad Azure](/rest/api/policy-insights/policyevents) článku.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Modul Azure Powershellu pro zásady je dostupná v galerii prostředí PowerShell jako [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights). Použití modulu PowerShellGet, můžete nainstalovat pomocí modulu `Install-Module -Name Az.PolicyInsights` (ujistěte se, že máte nejnovější [prostředí Azure PowerShell](/powershell/azure/install-az-ps) nainstalovaný):
+Modul Azure Powershellu pro Azure Policy je dostupná v galerii prostředí PowerShell jako [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
+Použití modulu PowerShellGet, můžete nainstalovat pomocí modulu `Install-Module -Name Az.PolicyInsights` (ujistěte se, že máte nejnovější [prostředí Azure PowerShell](/powershell/azure/install-az-ps) nainstalovaný):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -417,13 +418,13 @@ Trent Baker
 
 Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [řešení Activity Log Analytics](../../../azure-monitor/platform/collect-activity-logs.md) vázané na předplatné, můžete také zobrazit výsledky nedodržení předpisů pomocí cyklu hodnocení jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi protokolů Azure Monitor lze nastavit upozornění sledování nedodržení předpisů.
 
-![Zásady dodržování předpisů pomocí protokolů z Azure monitoru](../media/getting-compliance-data/compliance-loganalytics.png)
+![Azure dodržování zásad pomocí protokolů z Azure monitoru](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Zkontrolujte [struktura definic zásad](../concepts/definition-structure.md)
-- Kontrola [Principy účinky zásad](../concepts/effects.md)
-- Pochopit postup [programové vytváření zásad](programmatically-create.md)
-- Zjistěte, jak [opravit nekompatibilní prostředky](remediate-resources.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
+- Pochopit postup [programové vytváření zásad](programmatically-create.md).
+- Zjistěte, jak [nápravě nekompatibilních prostředků](remediate-resources.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

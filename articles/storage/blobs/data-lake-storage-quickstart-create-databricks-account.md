@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: c5c69ded05e5ec6d1df6bd2befb4fe89417bae06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6d153ff0e4f32c352694f51953c6955fae7f12f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849467"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949681"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
   > [!IMPORTANT]
   > Ujistěte se, že přiřazení role v rámci účtu úložiště Data Lake Storage Gen2. Roli můžete přiřadit do nadřazené skupiny prostředků nebo předplatného, ale se zobrazí chyby související s oprávněními, dokud tato přiřazení rolí se rozšíří do účtu úložiště.
 
-  :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a hodnoty klíče ověřování do textového souboru. Brzy ty budete potřebovat.
+  :heavy_check_mark: Při provádění kroků v [získání hodnot pro přihlášení](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) část článku, vložte ID tenanta, ID aplikace a heslo hodnoty do textového souboru. Brzy ty budete potřebovat.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -62,11 +62,9 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Umístění**     | Vyberte **Západní USA 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    Vyberte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
+3. Vytvoření účtu trvá několik minut. Pokud chcete monitorovat stav operace, zobrazte indikátor průběhu v horní části.
 
-3. Trvá si trochu času vytvořit pracovní prostor. Při vytváření pracovního prostoru **odesílá se nasazení pro Azure Databricks** dlaždici se zobrazí na pravé straně. Pokud chcete zobrazit nadpis, budete muset posunout doprava na řídicím panelu. Je také indikátor průběhu, který se zobrazí v horní části obrazovky. Průběh můžete sledovat v obou oblastech.
-
-    ![Dlaždice nasazení Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
+4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
@@ -111,8 +109,8 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
@@ -123,7 +121,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
     > [!NOTE]
     > Tento blok kódu přímo má přístup k Data Lake Gen2 koncový bod pomocí OAuth, ale existují jiné způsoby připojení k vašemu účtu Data Lake Storage Gen2 pracovního prostoru Databricks. Můžete třeba připojit systém souborů pomocí OAuth nebo přímý přístup pomocí sdíleného klíče. <br>Mezi příklady těchto přístupů najdete v tématu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
 
-5. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili při vytváření instančního objektu v tomto bloku kódu. Nastavte `file-system-name` hodnotu zástupného symbolu cokoli, co můžete pojmenovat chcete umožnit systému souborů.
+5. V tomto bloku kódu, nahraďte `storage-account-name`, `appID`, `password`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili při vytváření instančního objektu v tomto bloku kódu. Nastavte `file-system-name` hodnotu zástupného symbolu cokoli, co můžete pojmenovat chcete umožnit systému souborů.
 
     > [!NOTE]
     > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.

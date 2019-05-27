@@ -2,20 +2,20 @@
 title: Zobrazení systému – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Obsahuje odkazy na dokumentaci k zobrazení systému podporované ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: query
 ms.date: 06/13/2018
-ms.author: twounder
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a172f469ef3ff1107179dcd7a8d501cfe6d70049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6687a279b9992d31e3529aaf47054b3cb5c6d0eb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475826"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873435"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Systémová zobrazení, které jsou podporované ve službě Azure SQL Data Warehouse
 Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.

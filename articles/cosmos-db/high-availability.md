@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak službu Azure Cosmos DB poskytuje vyso
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 3/24/2019
+ms.date: 05/21/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1e866560ceab342f08a98ba3db05980a2b0947d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74e2d7901d127c9dd7edd8509e5bba082c4ad220
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888505"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978970"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 

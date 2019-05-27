@@ -4,27 +4,17 @@ description: Získejte odpovědi na nejčastější dotazy ohledně služby Azur
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e4ae9b7c96677ce494bea31a49b8db83d6bcb3c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793788"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954145"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
-
-### <a name="what-happened-to-the-documentdb-api"></a>Co se stalo s rozhraním API DocumentDB?
-
-Rozhraní API DocumentDB služby Azure Cosmos DB nebo SQL (DocumentDB) rozhraní API se teď označuje jako rozhraní SQL API služby Azure Cosmos DB. Nemusíte nic, aby pokračoval vaší aplikace vytvořené pomocí rozhraní DocumentDB API změnit. Funkce zůstala stejná.
-
-Pokud máte účet DocumentDB API před, teď máte účet rozhraní SQL API beze změny na vaši fakturaci.
-
-### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Co se stalo s Azure DocumentDB jako služba?
-
-Služba Azure DocumentDB je teď součástí služby Azure Cosmos DB a se projevuje ve formě rozhraní SQL API. Aplikace sestavené s Azure DocumentDB, poběží beze změny rozhraní API služby Azure Cosmos DB SQL. Cosmos DB také implementuje [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) a [Azure Table Storage](table-introduction.md) svážete protokoly přímo ve službě. To umožňuje bod ovladače klienta (a nástroje) pro běžně používané NoSQL API přímo k databázi Cosmos.
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Co jsou typické případy použití pro službu Azure Cosmos DB?
 
@@ -32,9 +22,9 @@ Azure Cosmos DB je dobrou volbou pro nové webové, mobilní a herní zařízen�
 
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak služby Azure Cosmos DB nabízí předvídatelný výkon?
 
-A [jednotky žádosti](request-units.md) (RU) je míra propustnosti ve službě Azure Cosmos DB. Propustnost 1 RU odpovídá propustnosti operace GET 1 KB dokumentu. Všechny operace ve službě Azure Cosmos DB, včetně čtení, zápisů, dotazů SQL a spouštění uložených procedur, je přiřazená deterministická RU hodnota, která je založena na požadované propustnosti pro dokončení operace. Místo přemýšlení o procesoru, vstupu/výstupu a paměti a jak každý ovlivňují propustnost aplikace, si můžete představit jako jedinou měrnou RU.
+A [jednotky žádosti](request-units.md) (RU) je míra propustnosti ve službě Azure Cosmos DB. Propustnost 1RU odpovídá propustnosti operace GET 1 KB dokumentu. Všechny operace ve službě Azure Cosmos DB, včetně čtení, zápisů, dotazů SQL a spouštění uložených procedur, je přiřazená deterministická RU hodnota, která je založena na požadované propustnosti pro dokončení operace. Místo přemýšlení o procesoru, vstupu/výstupu a paměti a jak každý ovlivňují propustnost aplikace, si můžete představit jako jedinou měrnou RU.
 
-Každý kontejner Azure Cosmos DB můžete nakonfigurovat se zřízenou propustností z hlediska rezervovaných jednotek propustnosti za sekundu. Pro aplikace jakéhokoli rozsahu můžete srovnávací testy k měření své RU hodnoty jednotlivých požadavků a zřídit kontejner pro zpracování celkový součet jednotek žádosti napříč všemi požadavky. Můžete také vertikálně navýšit kapacitu nebo snížit kapacitu propustnosti vašeho kontejneru jako potřebám vaší aplikace. Další informace o jednotkách žádosti a nápovědu k určování vaše potřeby ohledně kontejnerů, zkuste [propustnost Kalkulačka](https://www.documentdb.com/capacityplanner).
+Každý kontejner Azure Cosmos můžete nakonfigurovat se zřízenou propustností z hlediska rezervovaných jednotek propustnosti za sekundu. Pro aplikace jakéhokoli rozsahu můžete srovnávací testy k měření své RU hodnoty jednotlivých požadavků a zřídit kontejner pro zpracování celkový součet jednotek žádosti napříč všemi požadavky. Můžete také vertikálně navýšit kapacitu nebo snížit kapacitu propustnosti vašeho kontejneru jako potřebám vaší aplikace. Další informace o jednotkách žádosti a nápovědu k určování vaše potřeby ohledně kontejnerů, zkuste [propustnost Kalkulačka](https://www.documentdb.com/capacityplanner).
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak služby Azure Cosmos DB podporuje různé datové modely, jako je například klíč/hodnota, úložiště se sloupcovou strukturou, dokument a graf?
 
@@ -91,8 +81,9 @@ Zobrazovat zkuste Azure Cosmos DB předplatná na webu Azure Portal vedle jinýc
 
 Vyzkoušejte Azure Cosmos DB odběratelům platí následující podmínky:
 
-* Jeden kontejner na předplatné pro účty SQL, rozhraní Gremlin API a tabulky.
-* Až 3 kolekce na předplatné pro účty MongoDB.
+* Jeden [zřízenou propustnosti kontejneru](./set-throughput.md#set-throughput-on-a-container) na předplatné pro účty SQL, rozhraní Gremlin API a tabulky.
+* Až tři [kolekce zřízené propustnosti](./set-throughput.md#set-throughput-on-a-container) na předplatné pro účty MongoDB.
+* Jeden [databáze zřízená propustnost](./set-throughput.md#set-throughput-on-a-database) na jedno předplatné. Zřízenou propustnost databáze může obsahovat libovolný počet kontejnerů uvnitř.
 * Kapacita 10 GB úložiště.
 * Globální replikace je k dispozici v následujících [oblastí Azure](https://azure.microsoft.com/regions/): Střed USA, Severní Evropa a jihovýchodní Asie
 * Maximální propustnost 5 tis. RU/s při zřizování na úrovni kontejneru.
@@ -530,7 +521,7 @@ Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automati
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače?
 
-Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Nejvíce nativních ovladačů Apache Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: Nelze najít žádné metody"Chyba?
 
@@ -755,7 +746,7 @@ Ano, pomocí syntaxe regulárních k vytvoření oddílu složený klíč.
 
 Ne, ve verzi preview nepodporuje stabilní zavaděče.
 
-### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>Místní cluster cassandra se dají párovat pomocí rozhraní Apache Cassandra API služby Azure Cosmos DB?
+### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Cluster Apache Cassandra v místním se dají párovat s rozhraním Cassandra API služby Azure Cosmos DB?
 
 V této službě Azure Cosmos DB má optimalizované prostředí pro prostředí cloud bez režijní náklady na operace. Pokud požadujete párování, odeslat e-mail na adresu [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) s popisem vaší situaci.
 

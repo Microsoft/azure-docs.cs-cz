@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: bf1d810733df4eaae17d092caba42888a63cc59f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919250"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950599"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Pomocí webu Azure portal ke správě vašeho zařízení Azure Data Box
 
@@ -53,7 +53,7 @@ Pokud chcete naklonovat objednávku, proveďte následující kroky.
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
 
-## <a name="delete-order"></a>Odstranění objednávky
+## <a name="delete-order"></a>Odstranit objednávku
 
 Po dokončení objednávky můžete chtít objednávku odstranit. Objednávka obsahuje vaše osobní údaje jako jméno, adresu a kontaktní údaje. Při odstranění objednávky se tyto osobní údaje odstraní.
 
@@ -65,9 +65,9 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
     ![Odstranění první objednávky Data Boxu](media/data-box-portal-admin/delete-order1.png)
 
-3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
+3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na tlačítko **odstranit**.
 
-## <a name="download-shipping-label"></a>Stažení expedičního štítku
+## <a name="download-shipping-label"></a>Stáhnout expediční štítek
 
 Pokud displej E-ink vašeho Data Boxu nefunguje a nezobrazuje zpětný expediční štítek, budete možná muset expediční štítek stáhnout. 
 
@@ -75,7 +75,7 @@ Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
 1.  Přejděte na **Přehled > Stáhnout expediční štítek**. Tato možnost je dostupná teprve po odeslání zařízení. 
 
-    ![Stažení expedičního štítku](media/data-box-portal-admin/download-shipping-label.png)
+    ![Stáhnout expediční štítek](media/data-box-portal-admin/download-shipping-label.png)
 
 2.  Tato akce stáhne následující zpětný expediční štítek. Štítek uložte a vytiskněte ho. Štítek přeložte a vložte do průhledného obalu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
 
@@ -95,9 +95,9 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
+## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
 
-Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Jiný uživatel zase může potřebovat oznámení o dokončení kopírování dat, aby mohl zkontrolovat, jestli se data nacházejí na účtu služby Azure Storage, a potom je odstranit ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
+Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Jiný uživatel možná muset být informováni, když se kopírování dat dokončí, abyste mohli ověřit, že data jsou v účtu úložiště Azure před odstraněním ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
 
 Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
@@ -110,7 +110,7 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
     ![Úprava podrobností o oznámení 2](media/data-box-portal-admin/edit-notification-details2.png)
 
 
-## <a name="download-order-history"></a>Stažení historie objednávky
+## <a name="download-order-history"></a>Stáhnout historii objednávek
 
 Po dokončení objednávky Data Boxu se vymažou data na discích zařízení. Po vyčištění zařízení si na webu Azure Portal můžete stáhnout historii objednávky.
 

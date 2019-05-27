@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 735be71faecb9882b13f6f536d43715139d0f4db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071985"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956474"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytváření a používání trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -39,6 +39,8 @@ Každý cluster AKS obsahuje dvě třídy předem vytvořené úložiště, nako
     * Storage úrovně Standard je založená na jednotkách HDD a poskytuje nákladově efektivní úložiště se zachováním výkonu. Disky Standard jsou ideální pro nákladově efektivní vývoj a testování.
 * *Spravované premium* třídu úložiště zřídí disku Azure na úrovni premium.
     * Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Pokud uzlů AKS ve vašem clusteru používat premium storage, vyberte *spravované premium* třídy.
+    
+Tyto výchozí třídy úložiště neumožňuje aktualizace velikosti svazku po vytvoření. Chcete-li povolit tuto možnost, přidejte *allowVolumeExpansion: true* řádek do jedné ze tříd výchozí úložiště nebo vytvořte vlastní vlastní úložiště třídy. Můžete upravit existující pomocí třídy úložiště `kubectl edit sc` příkazu. Další informace o třídách úložiště a vytváření youor vlastní najdete v tématu [možnosti úložiště pro aplikace ve službě AKS][storage-class-concepts].
 
 Použití [kubectl get sc] [ kubectl-get] příkazu naleznete v tématu třídy předem vytvořené úložiště. Následující příklad ukazuje předem vytvořit třídy úložiště k dispozici v rámci clusteru AKS:
 
@@ -86,7 +88,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Použít trvalý svazek
 
-Po vytvoření deklarace identity trvalý svazek a disku úspěšně zřízený, pod je možné vytvořit s přístupem k disku. Následující manifest vytvoří základní pod NGINX, která používá deklarace identity trvalý svazek s názvem *azure managed Disks* připojení Azure disku v cestě `/mnt/azure`.
+Po vytvoření deklarace identity trvalý svazek a disku úspěšně zřízený, pod je možné vytvořit s přístupem k disku. Následující manifest vytvoří základní pod NGINX, která používá deklarace identity trvalý svazek s názvem *azure managed Disks* připojení Azure disku v cestě `/mnt/azure`. Pro systém Windows Server kontejnery (aktuálně ve verzi preview ve službě AKS), zadejte *mountPath* pomocí konvence cestu Windows, například *"D:"*.
 
 Vytvořte soubor s názvem `azure-pvc-disk.yaml`a zkopírujte do následující manifestu.
 
@@ -279,3 +281,4 @@ Další informace o Kubernetes trvalé svazky s využitím disků v Azure.
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
+[storage-class-concepts]: concepts-storage.md#storage-classes

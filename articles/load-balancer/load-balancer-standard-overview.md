@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734507"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957486"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
@@ -226,7 +226,6 @@ Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [ce
 - Skladové jednotky se nedají mutable. Nejde změnit skladovou Položku na existující prostředek.
 - Prostředek virtuální počítač samostatné skupiny dostupnosti prostředků nebo prostředek škálovací sady virtuálních počítačů může odkazovat na jeden SKU, nikdy obojí.
 - Pravidlo nástroje pro vyrovnávání zatížení nemůžou zahrnovat dvě virtuální sítě.  Front-Endů a jejich související back-endových instancí se musí nacházet ve stejné virtuální síti.  
-- Front-endů nástroje pro vyrovnávání zatížení nejsou přístupné napříč globální vnet peering.
 - [Přesunout předplatné operace](../azure-resource-manager/resource-group-move-resources.md) nejsou podporovány pro standardní SKU LB a PIP prostředky.
 - Webových rolí pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft může být přístupný, když kvůli vedlejším účinkem z jak pre-VNet služeb a další platformy služby funkce se používá jenom interní Load balanceru úrovně Standard. Nesmí spoléhat na to, jak funkcím služby sebe samu ani na základní platformě můžete změnit bez předchozího upozornění. Musíte vždy předpokládat, je potřeba vytvořit [odchozí připojení](load-balancer-outbound-connections.md) explicitně potřeby při použití interní Load balanceru úrovně Standard pouze.
 - Load Balancer je produkt TCP nebo UDP určený k vyrovnávání zatížení a přesměrování portů pro tyto konkrétní protokoly IP.  Pravidla vyrovnávání zatížení a příchozí pravidla překladu adres (NAT) se podporují pro protokoly TCP a UDP, ale nikoli pro ostatní protokoly IP včetně protokolu ICMP. Load Balancer neukončuje datovou část toku protokolu UDP ani TCP, nereaguje na ni, ani s ní neprovádí jiné interakce. Nejedná se o proxy server. Úspěšné ověření připojení k front-endem přijme místo integrované s stejný protokol použitý v zatížení vyrovnávání nebo příchozí pravidlo NAT (TCP nebo UDP) _a_ alespoň jeden z vašich virtuálních počítačů musí generovat odpověď pro klienta Chcete-li zobrazit odpověď z front-endem.  Nepřijímá odpověď integrovaných z front-endu nástroje pro vyrovnávání zatížení Určuje, že žádné virtuální počítače nebyly schopné reagovat.  Není možné pracovat s nástroji pro vyrovnávání zatížení front-endu bez virtuální počítač, který je schopný reagovat.  To platí i pro odchozí připojení, kde se [maskovací SNAT portů](load-balancer-outbound-connections.md#snat) podporuje pouze pro protokoly TCP a UDP – všechny ostatní protokoly IP včetně protokolu ICMP také selžou.  Pokud chcete tento problém zmírnit, přiřaďte veřejnou IP adresu na úrovni instance.

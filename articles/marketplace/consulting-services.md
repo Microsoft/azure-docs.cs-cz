@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938314"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964115"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytuje partnerů Microsoftu, cíl připojení zákazníků služby na podporu a rozšiřují jejich používání Azure a obchodních cílů. 
@@ -30,7 +30,7 @@ Prodejní místa jsou v souladu s cílovým skupinám na místě a produkty spol
 |Řešení podle Relevance     |Technické aplikace vytvořené pro nebo založené na Azure|Obchodní aplikace, které využívají / rozšíření D365, Power BI, O365, Azure. (Dokončení doplňku nebo doplněk aplikace)|
 |Možnosti publikování     |Obraťte se na mě, zkušební verze, Transact nebo konzultační služby|Kontaktujte mě, zkušební verze nebo konzultační služby|
 |V prostředí produktu      |Portál pro správu Azure|Dynamics 365, Office 365, klientské aplikace Office| 
-|Ostatní      |Místní publikování pomocí služby Azure Stack|Konzultační služby Dynamics a Power BI|
+|Další      |Místní publikování pomocí služby Azure Stack|Konzultační služby Dynamics a Power BI|
 
 Nabídky služeb, které jsou založeny na Microsoft Dynamics 365, Office 365 a Power BI mají nárok na uvedené na AppSource. Další informace najdete v tématu [Microsoft AppSource konzultačních služeb pokyny pro výpis](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
@@ -80,7 +80,7 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 Konzultační služby na trh bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálie. Katalogy pro ostatní země/oblasti bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak se zaregistrovat pro konzultační služby v Azure Marketplace a AppSource
-Začněte tím, že [registrace](https://azuremarketplace.microsoft.com/sell/signup) údaje o společnosti na webu Marketplace. Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
+Začněte tím, že [registrace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) údaje o společnosti na webu Marketplace. Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
 
 **Co chcete očekávat po registraci** The Onboardingový tým vás bude kontaktovat do 1 – 3 pracovních dnů s uvítací e-mail, který bude obsahovat přihlašovací údaje pro váš portál partnerů cloudu (CPP). [Portál partnerů cloudu](https://cloudpartner.azure.com) je portál výpis nabídka, kde vydavatelé odesílat informacích o a odesílání. 
 

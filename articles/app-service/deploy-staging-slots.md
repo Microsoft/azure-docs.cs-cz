@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137884"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955876"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -217,7 +217,7 @@ Při použití [Auto-Swap](#Auto-Swap), některé aplikace mohou vyžadovat akce
 
 Další informace o přizpůsobení `applicationInitialization` prvku, naleznete v tématu [nejběžnějších selhání prohození slotu nasazení a jak je opravit](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-Můžete také přizpůsobit chování zahřívání s jednou nebo více z následujících [nastavení aplikace](web-sites-configure.md):
+Můžete také přizpůsobit chování zahřívání s jednou nebo více z následujících [nastavení aplikace](configure-common.md):
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Cesta k odeslání příkazu ping trvala Příprava na váš web. Přidáte nastavení aplikace tak, že zadáte vlastní cestu, která začíná s lomítkem, jako hodnotu. Například, `/statuscheck`. Výchozí hodnota je `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Platný kódy odpovědí protokolu HTTP pro operace zahřívání. Přidáte nastavení aplikace s čárkou oddělený seznam kódů HTTP. Příklad: `200,202` . Pokud vrácený kód stavu není v seznamu, zastaví se zahřívání a přepnutí operace. Ve výchozím nastavení všechny kódy odpovědí jsou platné.
@@ -289,7 +289,7 @@ Prostředí Azure PowerShell je modul, který obsahuje rutiny pro správu Azure 
 Informace o instalaci a konfiguraci prostředí Azure PowerShell a na ověřování prostředí Azure PowerShell ve vašem předplatném Azure, najdete v části [instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).  
 
 - - -
-### <a name="create-web-app"></a>Vytvoření webové aplikace
+### <a name="create-web-app"></a>Vytvořit webovou aplikaci
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```

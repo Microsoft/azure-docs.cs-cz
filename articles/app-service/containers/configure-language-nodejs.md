@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919786"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956176"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace v Node.js v Linuxu pro Azure App Service
 
@@ -137,7 +137,7 @@ Jakmile budete hotovi s laděním, ukončete ladicí program výběrem **odpojit
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-Ve službě App Service můžete [nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) mimo kód vaší aplikace. Potom můžete přistupovat pomocí standardní vzor Node.js. Například pro přístup k nastavení aplikace volá `NODE_ENV`, použijte následující kód:
+Ve službě App Service můžete [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Potom můžete přistupovat pomocí standardní vzor Node.js. Například pro přístup k nastavení aplikace volá `NODE_ENV`, použijte následující kód:
 
 ```javascript
 process.env.NODE_ENV
@@ -253,7 +253,7 @@ Když pracovní aplikace v Node.js ve službě App Service se chová jinak nebo 
     - V závislosti na vaší *package.json*, mohou být nainstalovány jiné balíčky k provozním režimu (`dependencies` vs. `devDependencies`).
     - Některá webová rozhraní může nasadit statické soubory jinak než v provozním režimu.
     - Některá webová rozhraní může používat vlastní spouštěcí skripty, při spuštění v produkčním režimu.
-- Spuštění aplikace ve službě App Service v režimu pro vývoj. Například v [MEAN.js](https://meanjs.org/), aplikaci můžete nastavit do režimu pro vývoj v modulu runtime [nastavení `NODE_ENV` nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Spuštění aplikace ve službě App Service v režimu pro vývoj. Například v [MEAN.js](https://meanjs.org/), aplikaci můžete nastavit do režimu pro vývoj v modulu runtime [nastavení `NODE_ENV` nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ## <a name="next-steps"></a>Další postup
 

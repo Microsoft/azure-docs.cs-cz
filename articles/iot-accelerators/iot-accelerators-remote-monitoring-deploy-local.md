@@ -3,17 +3,17 @@ title: Nasazení řešení vzdáleného monitorování místně (přes Visual St
 description: Tato příručka ukazuje, jak do svého místního počítače pomocí sady Visual Studio pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150954"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967505"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio
 
@@ -60,9 +60,9 @@ Spuštěním následujícího příkazu spusťte kontejner Dockeru pro službu p
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>Nasadit všechny mikroslužby v místním počítači
 
-Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorování v sadě Visual Studio 2017:
+Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorování v sadě Visual Studio:
 
-1. Launch Visual Studio 2017
+1. Spusťte sadu Visual Studio.
 1. Otevřít **vzdálené monitoring.sln** řešení **služby** složky místní kopie úložiště.
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na řešení a potom na **vlastnosti**.
 1. Vyberte **společná nastavení > projekt po spuštění**.

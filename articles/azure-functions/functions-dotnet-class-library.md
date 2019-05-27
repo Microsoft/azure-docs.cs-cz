@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107089"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872785"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -29,16 +29,16 @@ Služba Azure Functions podporuje C# a C# skript programovacích jazyků. Pokud 
 Tento článek předpokládá, že jste již přečíst následující články:
 
 * [Příručka pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions Visual Studio 2017 Tools](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd – funkce
 
 V sadě Visual Studio **Azure Functions** vytvoří šablonu projektu C# projekt knihovny tříd, který obsahuje následující soubory:
 
 * [Host.JSON](functions-host-json.md) – ukládá nastavení konfigurace, které ovlivňují všechny funkce v projektu při spuštění místně nebo v Azure.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) – ukládá nastavení aplikace a připojovacích řetězců, které se používají při místním spuštění. Tento soubor obsahuje tajných kódů a není publikována do vaší aplikace funkcí v Azure. Místo toho musíte [přidat nastavení aplikace pro vaši aplikaci function app](functions-develop-vs.md#function-app-settings).
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) – ukládá nastavení aplikace a připojovacích řetězců, které se používají při místním spuštění. Tento soubor obsahuje tajných kódů a není publikována do vaší aplikace funkcí v Azure. Místo toho [přidat nastavení aplikace pro vaši aplikaci function app](functions-develop-vs.md#function-app-settings).
 
-Při sestavování projektu strukturu složek, který bude vypadat jako následující vygenerované v sestavení výstupního adresáře:
+Při sestavení projektu struktury složek, která vypadá jako v následujícím příkladu se vygeneruje v adresáři výstupu sestavení:
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ Při sestavování projektu strukturu složek, který bude vypadat jako následu
  | - host.json
 ```
 
-Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2017).
+Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
 
 > [!IMPORTANT]
 > Vytvoří proces sestavení *function.json* souboru pro každou funkci. To *function.json* souboru neměl být upravován přímo. Nelze změnit konfiguraci vazby nebo zakázat funkci úpravou tohoto souboru. Zjistěte, jak zakázat funkce, najdete v článku [zakázání funkce](disable-function.md#functions-2x---c-class-libraries).
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` Atribut určí metodu jako vstupní bod funkce. Název musí být jedinečný v rámci projektu, začínat písmenem a obsahovat jenom písmena, číslice, `_` a `-`, až 127 znaků. Šablony projektů často vytvořit metodu s názvem `Run`, ale název metody, který může být libovolný platný C# název metody.
+`FunctionName` Atribut určí metodu jako vstupní bod funkce. Název musí být jedinečný v rámci projektu, začínat písmenem a obsahovat jenom písmena, číslice, `_`, a `-`, až 127 znaků. Šablony projektů často vytvořit metodu s názvem `Run`, ale název metody, který může být libovolný platný C# název metody.
 
 Aktivační atribut určuje typ aktivační události a sváže vstupní data pro parametr metody. Aktivuje funkci příklad zprávy fronty a zpráva fronty se předá metodě v `myQueueItem` parametru.
 
@@ -181,7 +181,7 @@ Stejného balíčku se používá pro verzi 1.x a 2.x modul runtime služby Func
 </ItemGroup>
 ```
 
-Mezi `Sdk` závislosti balíčků jsou triggery a vazby. 1.x projekt odkazuje na 1.x triggery a vazby, protože jsou cíleny na rozhraní.NET Framework, zatímco 2.x triggerů a vazeb cílit na .NET Core.
+Mezi `Sdk` závislosti balíčků jsou triggery a vazby. 1.x projekt odkazuje na 1.x triggery a vazby, protože tyto triggery a vazby cíleny na rozhraní.NET Framework, zatímco 2.x triggerů a vazeb cílit na .NET Core.
 
 `Sdk` Balíček závisí také na [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), nepřímo v [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Tyto závislosti Ujistěte se, že váš projekt používá verze tyto balíčky, které pracují s modulem runtime verze funkce, která projekt cílí. Například `Newtonsoft.Json` má verze 11 pro rozhraní .NET Framework 4.6.1, ale modul runtime služby Functions, který cílí na .NET Framework 4.6.1 je kompatibilní jenom s `Newtonsoft.Json` 9.0.1. Takže kódu funkce v daném projektu má také použít `Newtonsoft.Json` 9.0.1.
 

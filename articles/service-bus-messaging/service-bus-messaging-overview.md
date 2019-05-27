@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863214"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988489"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
@@ -29,7 +29,7 @@ Mezi běžné scénáře zasílání zpráv patří:
 * Témata a předplatná: povoluje vztahy 1:*n* mezi vydavateli a odběrateli.
 * Relace zpráv: implementuje pracovní postupy, které vyžadují řazení zpráv nebo odložení zpráv.
 
-## <a name="namespaces"></a>Obory názvů
+## <a name="namespaces"></a>Názvové prostory
 
 Obor názvů je kontejner oboru pro všechny součásti zasílání zpráv. Součástí jednoho oboru názvů může být několik front a témat, přičemž obory názvů často slouží jako kontejnery aplikací.
 
@@ -129,3 +129,4 @@ Pokud chcete začít používat zasílání zpráv služby Service Bus, podívej
 * Přečtěte si další informace o úrovních [Standard a Premium](https://azure.microsoft.com/pricing/details/service-bus/) služby Azure Service Bus a jejich cenách.
 * [Výkon a latence úrovně Premium služby Azure Service Bus](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * Vyzkoušejte rychlé starty v [.NET](service-bus-dotnet-get-started-with-queues.md), [Javě](service-bus-java-how-to-use-queues.md) nebo [JMS](service-bus-java-how-to-use-jms-api-amqp.md).
+* [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

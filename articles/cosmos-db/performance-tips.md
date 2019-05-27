@@ -4,14 +4,14 @@ description: Další možnosti konfigurace klienta pro zvýšení výkonu datab�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/24/2018
+ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: e03fa427227bed745b53d43aaebc4dc58ad5bb9d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097891"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953781"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -48,8 +48,8 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
      |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
      |---------|---------|---------|---------|
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
-     |Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
+     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
+     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
 
      Azure Cosmos DB nabízí jednoduchý a otevřené rozhraní RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také RESTful svůj model komunikace a je dostupný prostřednictvím klienta .NET SDK. Přímé TCP i protokol HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosu. Pro zajištění nejlepšího výkonu použijte protokol TCP, pokud je to možné.
 
@@ -164,7 +164,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
  
 1. **Vyloučit cesty nevyužité indexování pro rychlejší zápisy**
 
-    Zásady indexování cosmos DB můžete také zadat které dokumentu cesty pro zahrnutí nebo vyloučení z indexování s využitím indexování cesty (IndexingPolicy.IncludedPaths a IndexingPolicy.ExcludedPaths). Použití indexování cesty může nabídnout zápisu lepší výkon a dolní index úložiště pro scénáře, ve kterých vzory dotazů znám předem, jako jsou indexování náklady přímo korelační počtu jedinečné cesty indexované.  Například následující kód ukazuje, jak vyloučit celý oddíl dokumenty (označovaný také jako podstrom) z indexování pomocí "*" zástupný znak.
+    Zásady indexování cosmos DB můžete také zadat které dokumentu cesty pro zahrnutí nebo vyloučení z indexování s využitím indexování cesty (IndexingPolicy.IncludedPaths a IndexingPolicy.ExcludedPaths). Použití indexování cesty může nabídnout zápisu lepší výkon a dolní index úložiště pro scénáře, ve kterých vzory dotazů znám předem, jako jsou indexování náklady přímo korelační počtu jedinečné cesty indexované.  Například následující kód ukazuje postup vyloučení celý oddíl dokumentů (Podstrom) z indexování pomocí "*" zástupný znak.
 
     ```csharp
     var collection = new DocumentCollection { Id = "excludedPathCollection" };

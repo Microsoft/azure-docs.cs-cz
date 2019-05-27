@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: raynew
-ms.openlocfilehash: c91629d24267d280edefdb7530e2614eb7be89fd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4500f4c53ed2731e9f96add97018b16d83f9d304
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704883"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955116"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Z VMware do architektury pro zotavení po havárii Azure
 
@@ -45,7 +45,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použi
         - **Uchování bodu obnovení**. Toto nastavení určuje, jak daleko zpět v čase, který chcete vrátit, když dojde k přerušení. Maximální doba uchování ve službě premium storage je 24 hodin. Na úložiště úrovně standard je 72 hodin. 
         - **Snímky konzistentní s**. Snímky konzistentní s aplikací může trvat každých 1 až 12 hodin v závislosti na potřebách aplikace. Snímky jsou snímky objektů blob v Azure standardní. Agent Mobility spuštěný na virtuálním počítači požádá o snímek služby VSS v souladu se toto nastavení a záložek, které odkazují bodu v čase jako aplikace konzistentní vzhledem k aplikacím ve streamu replikace.
 
-2. Provoz replikuje do služby Azure storage veřejné koncové body přes internet. Alternativně můžete použít Azure ExpressRoute s [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering). Přenos replikačních dat přes virtuální privátní síť site-to-site (VPN) z místní lokality do Azure se nepodporuje.
+2. Provoz replikuje do služby Azure storage veřejné koncové body přes internet. Alternativně můžete použít Azure ExpressRoute s [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Přenos replikačních dat přes virtuální privátní síť site-to-site (VPN) z místní lokality do Azure se nepodporuje.
 3. Po dokončení počáteční replikace začne probíhat rozdílová replikace do Azure. Sledované změny se pro počítač se odesílají na procesní server.
 4. Komunikace se stane, následujícím způsobem:
 

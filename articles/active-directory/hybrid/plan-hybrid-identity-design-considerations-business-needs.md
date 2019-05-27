@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7711c3476ac9118406a86430e5ade238bec2c028
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918621"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950893"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na identity pro vaše řešení hybridní identity
 Prvním krokem při navrhování řešení s hybridní identitou je určit požadavky organizace obchodní, který bude využívání tohoto řešení.  Hybridní identita Spustí podpůrnou roli (podporuje jiná řešení cloudových tím, že poskytuje ověřování) a přejde k poskytuje nové a zajímavé funkce, které odhalují nových úloh pro uživatele.  Požadavky na návrh hybridní identity, bude určovat tyto úlohy nebo služby, které chcete přijmout pro vaše uživatele.  Tyto služby a úlohy muset využít hybridní identity v místním prostředí i v cloudu.  
 
-Musíte si projít klíčové aspekty podniku, aby co je nyní požadavek a co společnost plánuje do budoucna. Pokud nemáte dlouhodobou strategii pro návrhu hybridní identity, zda je pravděpodobné, že vaše řešení nebude škálovatelné podle mění a rostou potřeby firmy.   T má obrázek níže ukazuje příklad hybridní identity architektury a úlohy, které jsou odemykají pro uživatele. Toto je jenom pro příklad nové možnosti, které můžete odemknout a dodávají s strategii plné hybridní identity. 
+Musíte si projít klíčové aspekty podniku, aby co je nyní požadavek a co společnost plánuje do budoucna. Pokud nemáte dlouhodobou strategii pro návrhu hybridní identity, zda je pravděpodobné, že vaše řešení nebude škálovatelné podle mění a rostou potřeby firmy. Následující diagram ukazuje příklad hybridní identity architektury a úlohy, které jsou odemykají pro uživatele. Toto je jenom pro příklad nové možnosti, které můžete odemknout a dodávají s strategii plné hybridní identity. 
 
 Některé součásti, které jsou součástí architektury hybridní identity ![architektura hybridní identity](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 

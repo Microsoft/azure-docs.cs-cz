@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 6be1d2b1e68c52d45a42027be5f6d69cc2c25adc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509931"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957026"
 ---
 # <a name="smart-contract-integration-patterns"></a>Vzory integrace inteligentní kontraktu
 
@@ -180,7 +180,7 @@ V tomto modelu, kde zprávu ve standardním formátu nelze odeslat přímo, komu
 
 Běžné scénáře integrace je zahrnutí telemetrická data načtená ze senzorů v inteligentní kontraktu. Na základě dat od snímačů, může chytrých kontraktů informovaně akcí a mění stav kontraktu.
 
-Například pokud truck doručování lékařství jeho teploty soar 110 stupňů, ho může mít vliv efektivitu léku a může způsobit problém bezpečnost veřejnosti není-li zjištěna a odebírat dodavatelský řetězec. Pokud ovladač urychlení jejich automobilu na 100 mil za hodinu, výsledné informace senzor způsobovat zrušení pojištění jeho pojištění zprostředkovatelem. Pokud auta automobilu pronájmů, může GPS data označují, když ovladač pokazilo mimo daným územím předmětem jejich pronájem smlouvy a účtovat snížení.
+Například pokud truck doručování lékařství jeho teploty soar 110 stupňů, ho může mít vliv efektivitu léku a může způsobit problém bezpečnost veřejnosti není-li zjištěna a odebírat dodavatelský řetězec. Pokud ovladač urychlení jejich automobilu na 100 mil za hodinu, výsledné informace senzor způsobovat zrušení pojištění podle poskytovatele pojištění. Pokud auta automobilu pronájmů, může GPS data označují, když ovladač pokazilo mimo daným územím předmětem jejich pronájem smlouvy a účtovat snížení.
 
 Výzvou je, že tyto senzory můžete poskytování dat na základě konstantní a není vhodné pro všechna tato data posílat inteligentní kontraktu. Typickým přístupem je omezit počet zpráv odeslaných do blockchainu při současném dodávání všechny zprávy do sekundárního úložiště. Například doručení zpráv obdržela pouze pevně zadaném intervalu, třeba jednou za hodinu a omezením hodnota spadá mimo dohodnuté na rozsah pro inteligentní kontrakt. Kontrola hodnoty, které spadají mimo tolerance, zajistí, že k datům souvisejícím s kontrakty obchodní logiky přijme a spustit. Kontrola hodnotu v intervalu potvrdí, že senzor je stále hlásí. Všechna data se odesílají do sekundární vytváření sestav úložiště umožňující širší sestavy, analýzy a machine learningu. Například při získávání údajů snímačů přes pro GPS nemusí být požadovaný každou minutu pro inteligentní smlouvy, poskytuje zajímavá data, který se má použít v sestavách nebo mapování tras.
 

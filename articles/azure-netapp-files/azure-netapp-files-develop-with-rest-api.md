@@ -12,18 +12,25 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 05/17/2019
 ms.author: b-juche
-ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087236"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957042"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Vývoj pro soubory Azure NetApp pomocí rozhraní REST API 
 
 Rozhraní REST API pro službu Azure NetApp Files definuje operace HTTP s prostředky, jako je NetApp účtu, kapacity fondu, svazky a snímků. Tento článek vám pomůže začít pracovat s použitím REST API služby soubory Azure NetApp.
+
+## <a name="azure-netapp-files-rest-api-specification"></a>Azure specifikace NetApp rozhraní REST API
+
+Specifikace REST API pro Azure NetApp Files se publikuje prostřednictvím [Githubu](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
+
+`https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
+
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Přístup k rozhraní REST API služby soubory Azure NetApp  
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/20/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311937"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967236"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migraci na smlouvu Enterprise pro smlouvy zákazníků společnosti Microsoft
 
@@ -176,7 +176,7 @@ Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodno
 | AccountNameAccountOwnerId a AccountOwnerEmail | neuvedeno | Vytvoření odběru se nesleduje. Použijte invoiceSectionName (stejné jako departmentName). |
 | Další informace | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Všimněte si, že tyto vlastnosti jsou opaky. Pokud isAzureCreditEnabled hodnotu true, bude ChargesBilledSeparately vracet hodnotu false. |
-| Využité množství | množství | &nbsp; |
+| Využité množství | quantity | &nbsp; |
 | Využívaná služba | consumedService | Přesné řetězcové hodnoty se mohou lišit. |
 | ID využívané služby | Žádný | &nbsp; |
 | Nákladové středisko | costCenter | &nbsp; |
@@ -199,7 +199,7 @@ Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodno
 | Číslo objednávky | Žádný | &nbsp;  |
 | PartNumber | Žádný | Použijte meterId a productOrderName k jednoznačné identifikaci ceny. |
 | Název plánu | productOrderName | &nbsp;  |
-| Produkt | Produkt |   |
+| Product | Product |   |
 | ID produktu | productId | Přesné řetězcové hodnoty se liší. |
 | Název vydavatele | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |
@@ -216,7 +216,7 @@ Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodno
 | GUID odběru | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | Název odběru | subscriptionName | &nbsp;  |
-| Značky | tags | Vlastnosti značky se vztahují na kořenový objekt, nikoli na vnořené vlastnosti. |
+| Tags | značky | Vlastnosti značky se vztahují na kořenový objekt, nikoli na vnořené vlastnosti. |
 | Měrná jednotka | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
 | usageEndDate | date | &nbsp;  |
 | Rok | Žádný | Analyzuje rok od data. |
@@ -436,7 +436,7 @@ Starší vlastnosti [rozhraní API Azure Resource Manageru cena list](/rest/api/
 | Podkategorie měřiče | meterSubCategory | Název dílčí klasifikace v rámci kategorie měřiče. Podle klasifikace rozdílů mezi sadu základních funkcí ve službě. Například základní SQL DB vs. standardní databázi SQL. |
 | Oblast měřiče | meterRegion | &nbsp;  |
 | Jednotka | _Není k dispozici_ | Může být analyzován z unitOfMeasure. |
-| Jednotka měření | unitOfMeasure | &nbsp;  |
+| Měrná jednotka | unitOfMeasure | &nbsp;  |
 | Číslo části | _Není k dispozici_ | Místo partNumber použijte k jednoznačné identifikaci cena za fakturační profil productOrderName a MeterId. Na faktuře MCA místo partNumber v MCA faktury jsou uvedena pole. |
 | Jednotková cena | UnitPrice | Cena za jednotku smlouvy zákazníka se společností Microsoft. |
 | Kód měny | pricingCurrency | Microsoft zákaznických smluv představují ceny v měně ceny a fakturace měny. Kód měny je stejný jako pricingCurrency ve smlouvách Microsoft zákazníka. |

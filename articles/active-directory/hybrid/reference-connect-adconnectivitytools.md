@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1084a3e546a234739fbede46612dce96537c7d4a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454638"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950638"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADConnectivityTools
 
@@ -36,7 +36,7 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>POPIS
 
 Spustí místní testy připojení Dns.
-Aby bylo možné nakonfigurovat konektor služby Active Directory, uživatel musí mít obě překlad názvů pro he\she doménové struktury se pokouší připojit k stejně jako v řadičích domény přidružené k této doménové struktuře.
+Aby bylo možné nakonfigurovat konektor služby Active Directory, uživatel musí mít obě překlad názvů pro doménovou strukturu, že se pokoušíte připojit k stejně jako v řadičích domény přidružené k této doménové struktuře.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Pokud uživatel není pomocí služby DNS, které jsou poskytované sítě služby Active Directory / přihlášení řadiče domény a pak he\she chtít přeskočit kontroly port 53.
+Pokud uživatel není pomocí služby DNS, které jsou poskytované sítě služby Active Directory / přihlášení řadiče domény a pak se může být vhodné pro přeskočení kontroly port 53.
 Uživatel musí být stále nemůže přeložit _.ldap._tcp. \<forestfqdn\> v pořadí pro konfiguraci konektoru služby Active Directory proběhla úspěšně.
 
 ```yml

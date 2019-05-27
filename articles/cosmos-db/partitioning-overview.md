@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
-ms.openlocfilehash: e88be8e7b94566ff94dd94a8679f8ade9d54c0b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.openlocfilehash: 7d252aed830e24719be2112391f0e77d9a6ff9c5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60928698"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953727"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 

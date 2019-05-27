@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: f0eb2f7358e8fb1564275e1de510f302d2eef90b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500936"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916971"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
@@ -46,7 +46,7 @@ V tomto článku provedete následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [nastavení služby IoT Hub Device Provisioning pomocí webu Azure portal](./quick-setup-auto-provision.md) rychlý start.
-* Visual Studio 2015 nebo [Visual Studio 2017](https://www.visualstudio.com/vs/) s povolenou sadou funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s ["vývoj desktopových aplikací pomocí C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -508,12 +508,12 @@ V následující tabulce jsou uvedeny očekávané scénáře a výsledky kódy 
 
 | Scénář | Výsledek registrace ze služby zřizování | Zřizování výsledky sady SDK |
 | -------- | --------------------------------------------- | ------------------------ |
-| Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Výsledný stav: Přiřazené  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
-| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Selhalo<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Webhook vrátí 401 Neautorizováno | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Výsledný stav: Přiřazená  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
+| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Nezdařilo se<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook vrátí 401 Neautorizováno | Výsledný stav: Nezdařilo se<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
 | Jednotlivé registrace byl vytvořen za účelem zakázání zařízení | Výsledný stav: Zakázáno | Sada SDK vrátí PROV_DEVICE_RESULT_DISABLED |
 | Webhook vrátí kód chyby: > = 429 | Orchestrace distribučních bodů se bude opakovat několikrát. Zásady opakování je aktuálně:<br><br>&nbsp;&nbsp;-Počet opakování: 10<br>&nbsp;&nbsp;-Počátečního intervalu: 1s<br>&nbsp;&nbsp;-Inkrementace: 9s | Sada SDK bude chybu ignorovat a odeslat další get stavová zpráva v zadaném čase |
-| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Nezdařilo se<br><br>Kód chyby: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

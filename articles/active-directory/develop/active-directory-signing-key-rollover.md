@@ -17,15 +17,15 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47430b4bd2f7fa6811785247ae6cd4f6df6f8f5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f809fa856d39096a85dcc205d8211ba3551eeb48
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546127"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962849"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
-Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů a v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
+Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče nespotřebujete v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Přehled podpisových klíčů ve službě Azure AD
 Azure AD používá založená na standardech kryptografie využívající veřejný klíč k navázání vztahu důvěryhodnosti mezi samostatně a aplikace, které ji používají. V praxi to funguje, následujícím způsobem: Azure AD používá podpisového klíče, které obsahuje pár veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD pro ověřování Azure AD vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaná pomocí jeho privátní klíč, před odesláním zpět do aplikace Azure AD. Pokud chcete ověřit, že je token platný a pocházející ze ze služby Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejný klíč vystavený službou Azure AD, která je součástí vašeho tenanta [dokument zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) nebo SAML / WS-Fed [dokument metadat federace](azure-ad-federation-metadata.md).
@@ -43,7 +43,7 @@ Způsob, jakým aplikace zpracovává výměny klíčů, závisí na proměnné,
 * [Webová aplikace / Ochrana prostředků pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middleware rozhraní API](#owin)
 * [Webové aplikace nebo API Ochrana prostředků pomocí .NET Core OpenID Connect nebo JwtBearerAuthentication middlewaru](#owincore)
 * [Webová aplikace / Ochrana prostředků pomocí Node.js passport-azure-ad modulu rozhraní API](#passport)
-* [Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo Visual Studio 2017](#vs2015)
+* [Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo novější](#vs2015)
 * [Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2013](#vs2013)
 * Webové rozhraní API v ochraně prostředků a vytvořené pomocí sady Visual Studio 2013
 * [Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2012](#vs2012)
@@ -128,8 +128,8 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo Visual Studio 2017
-Pokud vaše aplikace byla sestavena pomocí šablony webové aplikace v sadě Visual Studio 2015 nebo Visual Studio 2017 a jste vybrali **pracovní a školní účty** z **změna ověřování** nabídky, už má logiku potřebnou k výměně klíče umožňují automaticky zpracovat. Tato logika součástí middleware OWIN OpenID Connect načítá a ukládá do mezipaměti klíče z dokument zjišťování OpenID Connect a je pravidelně aktualizuje.
+### <a name="vs2015"></a>Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo novější
+Pokud vaše aplikace byla sestavena pomocí šablony webové aplikace v sadě Visual Studio 2015 nebo novější a vyberete **pracovní nebo školní účty** z **změna ověřování** nabídky, už je nezbytné logika zpracování výměny klíčů automaticky. Tato logika součástí middleware OWIN OpenID Connect načítá a ukládá do mezipaměti klíče z dokument zjišťování OpenID Connect a je pravidelně aktualizuje.
 
 Pokud ručně přidáte ověřování do vašeho řešení, nemusí mít vaše aplikace logiky nezbytné výměny klíčů. Budete muset napsat sami, nebo postupujte podle kroků v [webových aplikací / rozhraní API pomocí jiné knihovny nebo ručně implementaci některý z podporovaných protokolů](#other).
 

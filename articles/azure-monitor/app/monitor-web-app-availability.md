@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76bbcd6fa400111514ec3496005a28ec28ae6ab7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205374"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977904"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -175,8 +175,8 @@ Vyberte **zobrazit podrobnosti o testu** z konkrétní testovací zobrazíte jeh
 
 Při provádění údržby služby může být vhodné zakázat testy dostupnosti nebo pravidla upozornění, která jsou s nimi spojená.
 
-![Zakázat webový test](./media/monitor-web-app-availability/6disable.png)
-![upravit test](./media/monitor-web-app-availability/8edittest.png)
+![Zakázat webový test](./media/monitor-web-app-availability/6disable.png)  
+![Upravit test](./media/monitor-web-app-availability/8edittest.png)
 
 ## <a name="failures"></a>Pokud se zobrazí chyby
 Klikněte na červenou tečku.

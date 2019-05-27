@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 05/13/2019
+ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dae280f86abce47bfcc029f4d81e4ca3a7b696f4
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: f3907cbc46bd226ef8e90d2061f2d36b2afabf8a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595431"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957150"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 
@@ -70,7 +70,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ShortParsingBusyThreads|Vlákna: Zaneprázdněná vlákna krátkého parsování|Count|Průměr|Počet zaneprázdněných vláken ve fondu vláken krátkého parsování.|ServerResourceType|
 |ShortParsingIdleThreads|Vlákna: Nečinná vlákna krátkého parsování|Count|Průměr|Počet nečinných vláken ve fondu vláken krátkého parsování.|ServerResourceType|
 |ShortParsingJobQueueLength|Vlákna: Krátkého parsování délka fronty úloh|Count|Průměr|Počet úloh ve frontě fondu vláken krátkého parsování.|ServerResourceType|
-|memory_thrashing_metric|Thrashing paměti|Procenta|Průměr|Průměrný thrashing paměti.|ServerResourceType|
+|memory_thrashing_metric|Thrashing paměti|Percent|Průměr|Průměrný thrashing paměti.|ServerResourceType|
 |mashup_engine_qpu_metric|QPU modulu M|Count|Průměr|Využití QPU procesy modulu mashupu|ServerResourceType|
 |mashup_engine_memory_metric|Paměť modulu M|B|Průměr|Využití paměti procesy modulu mashupu|ServerResourceType|
 
@@ -84,7 +84,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |FailedRequests|Požadavky na brány po nezdařeném nasazení|Count|celkem|Počet selhání v požadavky brány|Umístění, název hostitele|
 |OtherRequests|Ostatní požadavky brány|Count|celkem|Počet ostatní požadavky brány|Umístění, název hostitele|
 |Trvání|Celková doba trvání požadavků na bránu|Milisekund|Průměr|Celková doba trvání z požadavky brány v milisekundách|Umístění, název hostitele|
-|Kapacita|Kapacita|Procenta|Průměr|Metriky využití pro službu ApiManagement|Location|
+|Kapacita|Kapacita|Percent|Průměr|Metriky využití pro službu ApiManagement|Location|
 |EventHubTotalEvents|Celkový počet EventHub události|Count|celkem|Počet událostí odeslaných do centra událostí|Location|
 |EventHubSuccessfulEvents|Úspěšné EventHub události|Count|celkem|Počet úspěšných událostí centra událostí|Location|
 |EventHubTotalFailedEvents|Události centra událostí se nezdařilo|Count|celkem|Počet neúspěšných událostí centra událostí|Location|
@@ -154,12 +154,12 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |totalkeys|Celkový počet klíčů|Count|Maximum||ShardId|
 |expiredkeys|Prošlé klíče|Count|celkem||ShardId|
 |usedmemory|Použitá paměť|B|Maximum||ShardId|
-|usedmemorypercentage|Procento využité paměti|Procenta|Maximum||ShardId|
+|usedmemorypercentage|Procento využité paměti|Percent|Maximum||ShardId|
 |usedmemoryRss|Využitá paměť RSS|B|Maximum||ShardId|
-|serverLoad|Zatížení serveru|Procenta|Maximum||ShardId|
+|serverLoad|Zatížení serveru|Percent|Maximum||ShardId|
 |cacheWrite|Zápis do mezipaměti|BytesPerSecond|Maximum||ShardId|
 |cacheRead|Čtení z mezipaměti|BytesPerSecond|Maximum||ShardId|
-|percentProcessorTime|Procesor|Procenta|Maximum||ShardId|
+|percentProcessorTime|Procesor|Percent|Maximum||ShardId|
 |cacheLatency|Mezipaměť latence mikrosekundy (Preview)|Count|Průměr||ShardId SampleType|
 |chyby|Chyby|Count|Maximum||ShardId, ErrorType|
 |connectedclients0|Připojených klientů (horizontálních oddílů 0)|Count|Maximum||Žádné dimenze|
@@ -174,10 +174,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys0|Prošlé klíče (horizontálních oddílů 0)|Count|celkem||Žádné dimenze|
 |usedmemory0|Využitá paměť (horizontálních oddílů 0)|B|Maximum||Žádné dimenze|
 |usedmemoryRss0|Využitá paměť RSS (horizontálních oddílů 0)|B|Maximum||Žádné dimenze|
-|serverLoad0|Zatížení serveru (horizontálních oddílů 0)|Procenta|Maximum||Žádné dimenze|
+|serverLoad0|Zatížení serveru (horizontálních oddílů 0)|Percent|Maximum||Žádné dimenze|
 |cacheWrite0|Zápis do mezipaměti (horizontálních oddílů 0)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead0|Čtení z mezipaměti (horizontálních oddílů 0)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime0|Procesor (horizontálních oddílů 0)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime0|Procesor (horizontálních oddílů 0)|Percent|Maximum||Žádné dimenze|
 |connectedclients1|Připojených klientů (horizontálních oddílů 1)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed1|Celkový počet operací (horizontálních oddílů 1)|Count|celkem||Žádné dimenze|
 |cachehits1|Přístupy do mezipaměti (horizontálních oddílů 1)|Count|celkem||Žádné dimenze|
@@ -190,10 +190,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys1|Prošlé klíče (horizontálních oddílů 1)|Count|celkem||Žádné dimenze|
 |usedmemory1|Využitá paměť (horizontálních oddílů 1)|B|Maximum||Žádné dimenze|
 |usedmemoryRss1|Využitá paměť RSS (horizontálních oddílů 1)|B|Maximum||Žádné dimenze|
-|serverLoad1|Zatížení serveru (horizontálních oddílů 1)|Procenta|Maximum||Žádné dimenze|
+|serverLoad1|Zatížení serveru (horizontálních oddílů 1)|Percent|Maximum||Žádné dimenze|
 |cacheWrite1|Zápis do mezipaměti (horizontálních oddílů 1)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead1|Čtení z mezipaměti (horizontálních oddílů 1)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime1|Procesor (horizontálních oddílů 1)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime1|Procesor (horizontálních oddílů 1)|Percent|Maximum||Žádné dimenze|
 |connectedclients2|Připojených klientů (horizontálních oddílů 2)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed2|Celkový počet operací (horizontálních oddílů 2)|Count|celkem||Žádné dimenze|
 |cachehits2|Přístupy do mezipaměti (horizontálních oddílů 2)|Count|celkem||Žádné dimenze|
@@ -206,10 +206,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys2|Prošlé klíče (horizontálních oddílů 2)|Count|celkem||Žádné dimenze|
 |usedmemory2|Využitá paměť (horizontálních oddílů 2)|B|Maximum||Žádné dimenze|
 |usedmemoryRss2|Využitá paměť RSS (horizontálních oddílů 2)|B|Maximum||Žádné dimenze|
-|serverLoad2|Zatížení serveru (horizontálních oddílů 2)|Procenta|Maximum||Žádné dimenze|
+|serverLoad2|Zatížení serveru (horizontálních oddílů 2)|Percent|Maximum||Žádné dimenze|
 |cacheWrite2|Zápis do mezipaměti (horizontálních oddílů 2)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead2|Čtení z mezipaměti (horizontálních oddílů 2)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime2|Procesor (horizontálních oddílů 2)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime2|Procesor (horizontálních oddílů 2)|Percent|Maximum||Žádné dimenze|
 |connectedclients3|Připojených klientů (horizontálních oddílů 3)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed3|Celkový počet operací (horizontálních oddílů 3)|Count|celkem||Žádné dimenze|
 |cachehits3|Přístupy do mezipaměti (horizontálních oddílů 3)|Count|celkem||Žádné dimenze|
@@ -222,10 +222,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys3|Prošlé klíče (horizontálních oddílů 3)|Count|celkem||Žádné dimenze|
 |usedmemory3|Využitá paměť (horizontálních oddílů 3)|B|Maximum||Žádné dimenze|
 |usedmemoryRss3|Využitá paměť RSS (horizontálních oddílů 3)|B|Maximum||Žádné dimenze|
-|serverLoad3|Zatížení serveru (horizontálních oddílů 3)|Procenta|Maximum||Žádné dimenze|
+|serverLoad3|Zatížení serveru (horizontálních oddílů 3)|Percent|Maximum||Žádné dimenze|
 |cacheWrite3|Zápis do mezipaměti (horizontálních oddílů 3)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead3|Čtení z mezipaměti (horizontálních oddílů 3)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime3|Procesor (horizontálních oddílů 3)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime3|Procesor (horizontálních oddílů 3)|Percent|Maximum||Žádné dimenze|
 |connectedclients4|Připojených klientů (horizontálních oddílů 4)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed4|Celkový počet operací (horizontálních oddílů 4)|Count|celkem||Žádné dimenze|
 |cachehits4|Přístupy do mezipaměti (horizontálních oddílů 4)|Count|celkem||Žádné dimenze|
@@ -238,10 +238,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys4|Prošlé klíče (horizontálních oddílů 4)|Count|celkem||Žádné dimenze|
 |usedmemory4|Využitá paměť (horizontálních oddílů 4)|B|Maximum||Žádné dimenze|
 |usedmemoryRss4|Využitá paměť RSS (horizontálních oddílů 4)|B|Maximum||Žádné dimenze|
-|serverLoad4|Server Load (Shard 4)|Procenta|Maximum||Žádné dimenze|
+|serverLoad4|Server Load (Shard 4)|Percent|Maximum||Žádné dimenze|
 |cacheWrite4|Zápis do mezipaměti (horizontálních oddílů 4)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead4|Čtení z mezipaměti (horizontálních oddílů 4)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime4|Procesor (horizontálních oddílů 4)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime4|Procesor (horizontálních oddílů 4)|Percent|Maximum||Žádné dimenze|
 |connectedclients5|Připojených klientů (horizontální oddíl 5)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed5|Celkový počet operací (horizontální oddíl 5)|Count|celkem||Žádné dimenze|
 |cachehits5|Přístupy do mezipaměti (horizontální oddíl 5)|Count|celkem||Žádné dimenze|
@@ -254,10 +254,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys5|Prošlé klíče (horizontální oddíl 5)|Count|celkem||Žádné dimenze|
 |usedmemory5|Využitá paměť (horizontální oddíl 5)|B|Maximum||Žádné dimenze|
 |usedmemoryRss5|Využitá paměť RSS (horizontální oddíl 5)|B|Maximum||Žádné dimenze|
-|serverLoad5|Zatížení serveru (horizontální oddíl 5)|Procenta|Maximum||Žádné dimenze|
+|serverLoad5|Zatížení serveru (horizontální oddíl 5)|Percent|Maximum||Žádné dimenze|
 |cacheWrite5|Zápis do mezipaměti (horizontální oddíl 5)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead5|Čtení z mezipaměti (horizontální oddíl 5)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime5|Procesor (horizontální oddíl 5)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime5|Procesor (horizontální oddíl 5)|Percent|Maximum||Žádné dimenze|
 |connectedclients6|Připojených klientů (horizontální oddíl 6)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed6|Celkový počet operací (horizontální oddíl 6)|Count|celkem||Žádné dimenze|
 |cachehits6|Přístupy do mezipaměti (horizontální oddíl 6)|Count|celkem||Žádné dimenze|
@@ -270,10 +270,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys6|Prošlé klíče (horizontální oddíl 6)|Count|celkem||Žádné dimenze|
 |usedmemory6|Využitá paměť (horizontální oddíl 6)|B|Maximum||Žádné dimenze|
 |usedmemoryRss6|Využitá paměť RSS (horizontální oddíl 6)|B|Maximum||Žádné dimenze|
-|serverLoad6|Zatížení serveru (horizontální oddíl 6)|Procenta|Maximum||Žádné dimenze|
+|serverLoad6|Zatížení serveru (horizontální oddíl 6)|Percent|Maximum||Žádné dimenze|
 |cacheWrite6|Zápis do mezipaměti (horizontální oddíl 6)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead6|Čtení z mezipaměti (horizontální oddíl 6)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime6|Procesor (horizontální oddíl 6)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime6|Procesor (horizontální oddíl 6)|Percent|Maximum||Žádné dimenze|
 |connectedclients7|Připojených klientů (horizontální oddíl 7)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed7|Celkový počet operací (horizontální oddíl 7)|Count|celkem||Žádné dimenze|
 |cachehits7|Přístupy do mezipaměti (horizontální oddíl 7)|Count|celkem||Žádné dimenze|
@@ -286,10 +286,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys7|Prošlé klíče (horizontální oddíl 7)|Count|celkem||Žádné dimenze|
 |usedmemory7|Využitá paměť (horizontální oddíl 7)|B|Maximum||Žádné dimenze|
 |usedmemoryRss7|Využitá paměť RSS (horizontální oddíl 7)|B|Maximum||Žádné dimenze|
-|serverLoad7|Server Load (Shard 7)|Procenta|Maximum||Žádné dimenze|
+|serverLoad7|Server Load (Shard 7)|Percent|Maximum||Žádné dimenze|
 |cacheWrite7|Zápis do mezipaměti (horizontální oddíl 7)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead7|Čtení z mezipaměti (horizontální oddíl 7)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime7|Procesor (horizontální oddíl 7)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime7|Procesor (horizontální oddíl 7)|Percent|Maximum||Žádné dimenze|
 |connectedclients8|Připojených klientů (horizontální oddíl 8)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed8|Celkový počet operací (horizontální oddíl 8)|Count|celkem||Žádné dimenze|
 |cachehits8|Přístupy do mezipaměti (horizontální oddíl 8)|Count|celkem||Žádné dimenze|
@@ -302,10 +302,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys8|Prošlé klíče (horizontální oddíl 8)|Count|celkem||Žádné dimenze|
 |usedmemory8|Využitá paměť (horizontální oddíl 8)|B|Maximum||Žádné dimenze|
 |usedmemoryRss8|Využitá paměť RSS (horizontální oddíl 8)|B|Maximum||Žádné dimenze|
-|serverLoad8|Zatížení serveru (horizontální oddíl 8)|Procenta|Maximum||Žádné dimenze|
+|serverLoad8|Zatížení serveru (horizontální oddíl 8)|Percent|Maximum||Žádné dimenze|
 |cacheWrite8|Zápis do mezipaměti (horizontální oddíl 8)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead8|Čtení z mezipaměti (horizontální oddíl 8)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime8|Procesor (horizontální oddíl 8)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime8|Procesor (horizontální oddíl 8)|Percent|Maximum||Žádné dimenze|
 |connectedclients9|Připojených klientů (horizontální oddíl 9)|Count|Maximum||Žádné dimenze|
 |totalcommandsprocessed9|Celkový počet operací (horizontální oddíl 9)|Count|celkem||Žádné dimenze|
 |cachehits9|Přístupy do mezipaměti (horizontální oddíl 9)|Count|celkem||Žádné dimenze|
@@ -318,10 +318,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |expiredkeys9|Prošlé klíče (horizontální oddíl 9)|Count|celkem||Žádné dimenze|
 |usedmemory9|Využitá paměť (horizontální oddíl 9)|B|Maximum||Žádné dimenze|
 |usedmemoryRss9|Využitá paměť RSS (horizontální oddíl 9)|B|Maximum||Žádné dimenze|
-|serverLoad9|Zatížení serveru (horizontální oddíl 9)|Procenta|Maximum||Žádné dimenze|
+|serverLoad9|Zatížení serveru (horizontální oddíl 9)|Percent|Maximum||Žádné dimenze|
 |cacheWrite9|Zápis do mezipaměti (horizontální oddíl 9)|BytesPerSecond|Maximum||Žádné dimenze|
 |cacheRead9|Čtení z mezipaměti (horizontální oddíl 9)|BytesPerSecond|Maximum||Žádné dimenze|
-|percentProcessorTime9|Procesor (horizontální oddíl 9)|Procenta|Maximum||Žádné dimenze|
+|percentProcessorTime9|Procesor (horizontální oddíl 9)|Percent|Maximum||Žádné dimenze|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
@@ -403,10 +403,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Odchozí toky|Odchozí toky (Preview)|Count|Průměr|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz odcházející z virtuálního počítače).|Žádné dimenze|
 |Maximální rychlost vytváření příchozích toků|Maximální rychlost vytváření příchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz do virtuálního počítače)|Žádné dimenze|
 |Maximální rychlost vytváření odchozích toků|Maximální rychlost vytváření odchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (provoz z virtuálního počítače)|Žádné dimenze|
-|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Úspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Procenta|Průměr|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka (LUN)|
-|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Neúspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Procenta|Průměr|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka (LUN)|
-|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Procenta|Průměr|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Žádné dimenze|
-|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Procenta|Průměr|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Žádné dimenze|
+|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Úspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Průměr|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka (LUN)|
+|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Neúspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Průměr|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka (LUN)|
+|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Průměr|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Žádné dimenze|
+|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Průměr|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Žádné dimenze|
 |Celkový příchozí síťový provoz|Celkový příchozí síťový provoz|B|celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
 |Celkový odchozí síťový provoz|Celkový odchozí síťový provoz|B|celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
 
@@ -447,10 +447,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Odchozí toky|Odchozí toky (Preview)|Count|Průměr|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz odcházející z virtuálního počítače).|VMName|
 |Maximální rychlost vytváření příchozích toků|Maximální rychlost vytváření příchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření příchozích toků (provoz do virtuálního počítače)|VMName|
 |Maximální rychlost vytváření odchozích toků|Maximální rychlost vytváření odchozích toků (Preview)|CountPerSecond|Průměr|Maximální rychlost vytváření odchozích toků (provoz z virtuálního počítače)|VMName|
-|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Úspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Procenta|Průměr|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka, VMName|
-|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Neúspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Procenta|Průměr|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka, VMName|
-|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Procenta|Průměr|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|VMName|
-|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Procenta|Průměr|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|VMName|
+|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Úspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Průměr|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka, VMName|
+|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Neúspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Průměr|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Logická jednotka, VMName|
+|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Průměr|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|VMName|
+|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Průměr|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|VMName|
 |Celkový příchozí síťový provoz|Celkový příchozí síťový provoz|B|celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|VMName|
 |Celkový odchozí síťový provoz|Celkový odchozí síťový provoz|B|celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|VMName|
 
@@ -532,8 +532,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |CloudUploadThroughput|Propustnost nahrávání cloudu|BytesPerSecond|Průměr|Propustnost cloudu při nahrávání do Azure během období vykazování|Žádné dimenze|
 |CloudReadThroughput|Propustnost cloudu při stahování|BytesPerSecond|Průměr|Propustnost cloudu při stahování do Azure během období vykazování|Žádné dimenze|
 |BytesUploadedToCloud|Nahrané cloudové bajty (zařízení)|B|Průměr|Celkový počet bajtů, který se nahrál do Azure ze zařízení během období vykazování|Žádné dimenze|
-|HyperVVirtualProcessorUtilization|Výpočetní funkce Edge – procento využití procesoru|Procenta|Průměr|Využití procesoru v procentech|InstanceName|
-|HyperVMemoryUtilization|Výpočetní funkce Edge – využití paměti|Procenta|Průměr|Množství využité paměti RAM|InstanceName|
+|HyperVVirtualProcessorUtilization|Výpočetní funkce Edge – procento využití procesoru|Percent|Průměr|Využití procesoru v procentech|InstanceName|
+|HyperVMemoryUtilization|Výpočetní funkce Edge – využití paměti|Percent|Průměr|Množství využité paměti RAM|InstanceName|
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
@@ -552,7 +552,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ActivitySucceededRuns|Úspěšné běhy metriky aktivity|Count|celkem||ActivityType, PipelineName, FailureType, název|
 |TriggerFailedRuns|Se nezdařilo metrika spuštění aktivační události|Count|celkem||Název, FailureType|
 |TriggerSucceededRuns|Aktivační událost metriky spuštění bylo úspěšné|Count|celkem||Název, FailureType|
-|IntegrationRuntimeCpuPercentage|Využití Integration runtime – procesor|Procenta|Průměr||IntegrationRuntimeName, NodeName|
+|IntegrationRuntimeCpuPercentage|Využití Integration runtime – procesor|Percent|Průměr||IntegrationRuntimeName, NodeName|
 |IntegrationRuntimeAvailableMemory|Integration runtime – paměť k dispozici|B|Průměr||IntegrationRuntimeName, NodeName|
 |MaxAllowedResourceCount|Entity maximální povolený počet|Count|Maximum||Žádné dimenze|
 |MaxAllowedFactorySizeInGbUnits|Maximální povolený továrny velikost (GB unit)|Count|Maximum||Žádné dimenze|
@@ -584,13 +584,13 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento CPU|Procenta|Průměr|Procento CPU|Žádné dimenze|
-|memory_percent|Paměť v procentech|Procenta|Průměr|Paměť v procentech|Žádné dimenze|
-|io_consumption_percent|V/v úrovně procent|Procenta|Průměr|V/v úrovně procent|Žádné dimenze|
-|storage_percent|Procento úložiště|Procenta|Průměr|Procento úložiště|Žádné dimenze|
+|cpu_percent|Procento CPU|Percent|Průměr|Procento CPU|Žádné dimenze|
+|memory_percent|Paměť v procentech|Percent|Průměr|Paměť v procentech|Žádné dimenze|
+|io_consumption_percent|V/v úrovně procent|Percent|Průměr|V/v úrovně procent|Žádné dimenze|
+|storage_percent|Procento úložiště|Percent|Průměr|Procento úložiště|Žádné dimenze|
 |storage_used|Využité úložiště|B|Průměr|Využité úložiště|Žádné dimenze|
 |storage_limit|Limit úložiště.|B|Průměr|Limit úložiště.|Žádné dimenze|
-|serverlog_storage_percent|Procento úložiště protokolů serveru|Procenta|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
+|serverlog_storage_percent|Procento úložiště protokolů serveru|Percent|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
 |active_connections|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
@@ -604,13 +604,13 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento CPU|Procenta|Průměr|Procento CPU|Žádné dimenze|
-|memory_percent|Paměť v procentech|Procenta|Průměr|Paměť v procentech|Žádné dimenze|
-|io_consumption_percent|V/v úrovně procent|Procenta|Průměr|V/v úrovně procent|Žádné dimenze|
-|storage_percent|Procento úložiště|Procenta|Průměr|Procento úložiště|Žádné dimenze|
+|cpu_percent|Procento CPU|Percent|Průměr|Procento CPU|Žádné dimenze|
+|memory_percent|Paměť v procentech|Percent|Průměr|Paměť v procentech|Žádné dimenze|
+|io_consumption_percent|V/v úrovně procent|Percent|Průměr|V/v úrovně procent|Žádné dimenze|
+|storage_percent|Procento úložiště|Percent|Průměr|Procento úložiště|Žádné dimenze|
 |storage_used|Využité úložiště|B|Průměr|Využité úložiště|Žádné dimenze|
 |storage_limit|Limit úložiště.|B|Průměr|Limit úložiště.|Žádné dimenze|
-|serverlog_storage_percent|Procento úložiště protokolů serveru|Procenta|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
+|serverlog_storage_percent|Procento úložiště protokolů serveru|Percent|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
 |active_connections|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
@@ -624,13 +624,13 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento CPU|Procenta|Průměr|Procento CPU|Žádné dimenze|
-|memory_percent|Paměť v procentech|Procenta|Průměr|Paměť v procentech|Žádné dimenze|
-|io_consumption_percent|V/v úrovně procent|Procenta|Průměr|V/v úrovně procent|Žádné dimenze|
-|storage_percent|Procento úložiště|Procenta|Průměr|Procento úložiště|Žádné dimenze|
+|cpu_percent|Procento CPU|Percent|Průměr|Procento CPU|Žádné dimenze|
+|memory_percent|Paměť v procentech|Percent|Průměr|Paměť v procentech|Žádné dimenze|
+|io_consumption_percent|V/v úrovně procent|Percent|Průměr|V/v úrovně procent|Žádné dimenze|
+|storage_percent|Procento úložiště|Percent|Průměr|Procento úložiště|Žádné dimenze|
 |storage_used|Využité úložiště|B|Průměr|Využité úložiště|Žádné dimenze|
 |storage_limit|Limit úložiště.|B|Průměr|Limit úložiště.|Žádné dimenze|
-|serverlog_storage_percent|Procento úložiště protokolů serveru|Procenta|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
+|serverlog_storage_percent|Procento úložiště protokolů serveru|Percent|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
 |active_connections|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
@@ -645,10 +645,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procento CPU|Procenta|Průměr|Procento CPU|Žádné dimenze|
-|memory_percent|Paměť v procentech|Procenta|Průměr|Paměť v procentech|Žádné dimenze|
+|cpu_percent|Procento CPU|Percent|Průměr|Procento CPU|Žádné dimenze|
+|memory_percent|Paměť v procentech|Percent|Průměr|Paměť v procentech|Žádné dimenze|
 |vstupně-výstupních operací|IOPS|Count|Průměr|V/v operací za sekundu|Žádné dimenze|
-|storage_percent|Procento úložiště|Procenta|Průměr|Procento úložiště|Žádné dimenze|
+|storage_percent|Procento úložiště|Percent|Průměr|Procento úložiště|Žádné dimenze|
 |storage_used|Využité úložiště|B|Průměr|Využité úložiště|Žádné dimenze|
 |active_connections|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
 |network_bytes_egress|Síťové výstupy|B|celkem|Odchozí síťový provoz mezi aktivních připojení|Žádné dimenze|
@@ -747,7 +747,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MongoRequests|Požadavky mongo|Count|Count|Počet zpracovaných požadavků Mongo|Název databáze, CollectionName, oblast, CommandName, kód chyby|
 |ProvisionedThroughput|Zřízená propustnost|Count|Maximum|Zřízená propustnost|DatabaseName CollectionName|
 |ReplicationLatency|P99 Latence replikace|Milisekundy|Průměr|Latencí P99 replikace mezi zdrojovou a cílovou oblastí pro účet povolenou geografickou|SourceRegion TargetRegion|
-|ServiceAvailability|Dostupnost služby|Procenta|Průměr|Dostupnost účtu požadavky na jednu hodinu, den nebo měsíc členitosti|Žádné dimenze|
+|ServiceAvailability|Dostupnost služby|Percent|Průměr|Dostupnost účtu požadavky na jednu hodinu, den nebo měsíc členitosti|Žádné dimenze|
 |TotalRequestUnits|Celkový požadavek jednotky|Count|celkem|Požadavku že spotřebované jednotky|Název databáze, CollectionName, oblast, StatusCode, typ operace|
 |TotalRequests|Požadavky celkem|Count|Count|Počet zpracovaných požadavků|Název databáze, CollectionName, oblast, StatusCode, typ operace|
 
@@ -839,7 +839,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |CaptureBacklog|Zachytit backlog (Preview)|Count|celkem|Zachytit backlog pro Microsoft.EventHub (Preview)|Žádné dimenze|
 |CapturedMessages|Zachycené zprávy (Preview)|Count|celkem|Zachycené zprávy pro Microsoft.EventHub (Preview)|Žádné dimenze|
 |CapturedBytes|Zachycené bajty (Preview)|B|celkem|Zachycené bajty pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|Procesor|Procesor (Preview)|Procenta|Maximum|Využití procesoru pro cluster centra událostí v procentech|Role|
+|Procesor|Procesor (Preview)|Percent|Maximum|Využití procesoru pro cluster centra událostí v procentech|Role|
 |AvailableMemory|Dostupná paměť (Preview)|Count|Maximum|Paměť dostupná clusteru centra událostí v bajtech|Role|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
@@ -848,12 +848,6 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |GatewayRequests|Požadavky brány|Count|celkem|Počet požadavků brány|ClusterDnsName, HttpStatus|
 |CategorizedGatewayRequests|Požadavky brány podle kategorií|Count|celkem|Počet požadavků brány podle kategorií (1xx/2xx nebo 3xx/4xx a 5xx)|ClusterDnsName, HttpStatus|
-|Automatické škálování|Metriky automatického škálování|Count|Maximum|Metriky automatického škálování|Název_dns_clusteru MetricName|
-|AllocatedMB|Přidělené MB|Count|Maximum|Přidělené MB|Název_dns_clusteru MetricName|
-|AvailableMB|Dostupné MB|Count|Maximum|Dostupné MB|Název_dns_clusteru MetricName|
-|AppsPending|Čekající aplikace|Count|Maximum|Čekající aplikace|Název_dns_clusteru MetricName|
-|AppsRunning|Spuštěné aplikace|Count|Maximum|Spuštěné aplikace|Název_dns_clusteru MetricName|
-|AppsSubmitted|Odeslané aplikace|Count|Maximum|Odeslané aplikace|Název_dns_clusteru MetricName|
 |NumActiveWorkers|Počet aktivních pracovních procesů|Count|Maximum|Počet aktivních pracovních procesů|Název_dns_clusteru MetricName|
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
@@ -889,8 +883,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |performanceCounters/requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Průměr|Počet všech žádostí na aplikaci za sekundu z ASP.NET|cloud/roleInstance|
 |performanceCounters/exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Průměr|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET|cloud/roleInstance|
 |performanceCounters/processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Průměr|Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu|cloud/roleInstance|
-|čítače výkonu nebo processCpuPercentage|Proces – procesor|Procenta|Průměr|Procento uplynulého času, že všechna vlákna procesu používala procesor pro spouštění instrukcí. To se může lišit od 0 do 100. Tato Metrika vyjadřuje výkon samotného procesu w3wp.|cloud/roleInstance|
-|čítače výkonu nebo processorCpuPercentage|Čas procesoru|Procenta|Průměr|Procento času, které procesor stráví na nečinných vláknech|cloud/roleInstance|
+|čítače výkonu nebo processCpuPercentage|Proces – procesor|Percent|Průměr|Procento uplynulého času, že všechna vlákna procesu používala procesor pro spouštění instrukcí. To se může lišit od 0 do 100. Tato Metrika vyjadřuje výkon samotného procesu w3wp.|cloud/roleInstance|
+|čítače výkonu nebo processorCpuPercentage|Čas procesoru|Percent|Průměr|Procento času, které procesor stráví na nečinných vláknech|cloud/roleInstance|
 |čítače výkonu nebo memoryAvailableBytes|Dostupná paměť|B|Průměr|Okamžitě dostupná fyzická paměť pro přidělení procesu nebo pro systémové použití|cloud/roleInstance|
 |performanceCounters/processPrivateBytes|Privátní bajty procesu|B|Průměr|Paměť exkluzivně přiřazená k procesům monitorované aplikace|cloud/roleInstance|
 |požadavky a doba trvání|Doba odezvy serveru|Milisekundy|Průměr|Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
@@ -914,15 +908,15 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ClusterDataCapacityFactor|Využití mezipaměti|Procenta|Průměr|Úroveň využití v rámci clusteru|Žádné dimenze|
+|ClusterDataCapacityFactor|Využití mezipaměti|Percent|Průměr|Úroveň využití v rámci clusteru|Žádné dimenze|
 |QueryDuration|Doba trvání dotazu|Milisekund|Průměr|Dotazy doba trvání v sekundách|QueryStatus|
-|IngestionsLoadFactor|Ingestování využití|Procenta|Průměr|Poměr používané ingestování sloty v clusteru|Žádné dimenze|
+|IngestionsLoadFactor|Ingestování využití|Percent|Průměr|Poměr používané ingestování sloty v clusteru|Žádné dimenze|
 |IsEngineAnsweringQuery|Zachování|Count|Průměr|Kontrola správnosti označuje, že cluster odpoví na dotazy|Žádné dimenze|
 |IngestCommandOriginalSizeInMb|Ingestování svazek (v MB)|Count|celkem|Celkový objem přijatých dat do clusteru (v MB)|Žádné dimenze|
 |IngestedEventAgeSeconds|Latence příjmu dat (v sekundách)|Sekundy|Průměr|Ingestování čas ze zdroje (například je zpráva EventHub) do clusteru během několika sekund|Žádné dimenze|
 |EventRecievedFromEventHub|Události byly zpracovány (pro službu Event Hubs)|Count|celkem|Počet události byly zpracovány v clusteru při ingestování z centra událostí|Žádné dimenze|
 |IngestionResult|Příjem výsledků|Count|Count|Počet operací příjmu|IngestionResultDetails|
-|EngineCPU|Procesor|Procenta|Průměr|Úroveň využití procesoru|Žádné dimenze|
+|EngineCPU|Procesor|Percent|Průměr|Úroveň využití procesoru|Žádné dimenze|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -942,7 +936,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |RunLatency|Latence běhu|Sekundy|Průměr|Latence dokončených běhů pracovního postupu.|Žádné dimenze|
 |RunSuccessLatency|Latence úspěšných běhů|Sekundy|Průměr|Latence úspěšných běhů pracovního postupu.|Žádné dimenze|
 |RunThrottledEvents|Omezené události běhu|Count|celkem|Počet akcí pracovního postupu nebo omezených událostí triggeru.|Žádné dimenze|
-|RunFailurePercentage|Procento selhání spuštění|Procenta|celkem|Procento neúspěšných spuštění pracovních postupů|Žádné dimenze|
+|RunFailurePercentage|Procento selhání spuštění|Percent|celkem|Procento neúspěšných spuštění pracovních postupů|Žádné dimenze|
 |ActionsStarted|Spuštěné akce |Count|celkem|Počet spuštěných akcí pracovního postupu.|Žádné dimenze|
 |ActionsCompleted|Dokončené akce |Count|celkem|Počet dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionsSucceeded|Úspěšné akce |Count|celkem|Počet úspěšných akcí pracovního postupu.|Žádné dimenze|
@@ -984,7 +978,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |RunSuccessLatency|Latence úspěšných běhů|Sekundy|Průměr|Latence úspěšných běhů pracovního postupu.|Žádné dimenze|
 |RunThrottledEvents|Omezené události běhu|Count|celkem|Počet akcí pracovního postupu nebo omezených událostí triggeru.|Žádné dimenze|
 |RunStartThrottledEvents|Omezené události spuštění|Count|celkem|Počet omezených událostí spuštění pracovního postupu|Žádné dimenze|
-|RunFailurePercentage|Procento selhání spuštění|Procenta|celkem|Procento neúspěšných spuštění pracovních postupů|Žádné dimenze|
+|RunFailurePercentage|Procento selhání spuštění|Percent|celkem|Procento neúspěšných spuštění pracovních postupů|Žádné dimenze|
 |ActionsStarted|Spuštěné akce |Count|celkem|Počet spuštěných akcí pracovního postupu.|Žádné dimenze|
 |ActionsCompleted|Dokončené akce |Count|celkem|Počet dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionsSucceeded|Úspěšné akce |Count|celkem|Počet úspěšných akcí pracovního postupu.|Žádné dimenze|
@@ -1003,10 +997,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |TriggerFireLatency|Latence při vyvolání triggeru |Sekundy|Průměr|Latence aktivovaných triggerů pracovního postupu.|Žádné dimenze|
 |TriggerSuccessLatency|Latence úspěšného triggeru |Sekundy|Průměr|Latence úspěšných triggerů pracovního postupu.|Žádné dimenze|
 |TriggerThrottledEvents|Omezené události triggeru|Count|celkem|Počet omezených událostí triggeru pracovního postupu.|Žádné dimenze|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Využití procesoru pracovního postupu pro prostředí integrační služby|Procenta|Průměr|Využití procesoru pracovního postupu pro prostředí integrační služby|Žádné dimenze|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Využití paměti pracovního postupu pro prostředí integrační služby|Procenta|Průměr|Využití paměti pracovního postupu pro prostředí integrační služby|Žádné dimenze|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Využití procesoru konektoru pro prostředí integrační služby|Procenta|Průměr|Využití procesoru konektoru pro prostředí integrační služby|Žádné dimenze|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Využití paměti konektoru pro prostředí integrační služby|Procenta|Průměr|Využití paměti konektoru pro prostředí integrační služby|Žádné dimenze|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|Využití procesoru pracovního postupu pro prostředí integrační služby|Percent|Průměr|Využití procesoru pracovního postupu pro prostředí integrační služby|Žádné dimenze|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Využití paměti pracovního postupu pro prostředí integrační služby|Percent|Průměr|Využití paměti pracovního postupu pro prostředí integrační služby|Žádné dimenze|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Využití procesoru konektoru pro prostředí integrační služby|Percent|Průměr|Využití procesoru konektoru pro prostředí integrační služby|Žádné dimenze|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Využití paměti konektoru pro prostředí integrační služby|Percent|Průměr|Využití paměti konektoru pro prostředí integrační služby|Žádné dimenze|
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
@@ -1088,7 +1082,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |QueryVolume|Množství dotazů|Count|celkem|Počet dotazů, které jsou zpracovány pro zónu DNS|Žádné dimenze|
 |RecordSetCount|Record Set Count|Count|Maximum|Počet sad záznamů v zóně DNS|Žádné dimenze|
-|RecordSetCapacityUtilization|Sada záznamů využití kapacity|Procenta|Maximum|Procento kapacity sady záznamů využívaných zóny DNS|Žádné dimenze|
+|RecordSetCapacityUtilization|Sada záznamů využití kapacity|Percent|Maximum|Procento kapacity sady záznamů využívaných zóny DNS|Žádné dimenze|
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
@@ -1188,7 +1182,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ProbesFailedPercent|% Testů paměti se nezdařilo|Procenta|Průměr|% testy monitorování připojení se nezdařilo|Žádné dimenze|
+|ProbesFailedPercent|% Testů paměti se nezdařilo|Percent|Průměr|% testy monitorování připojení se nezdařilo|Žádné dimenze|
 |AverageRoundtripMs|Střední Doba odezvy (ms)|Milisekundy|Průměr|Průměrná síťové operace round-trip doba (ms) pro připojení k monitorování mezi zdrojem a cílem odeslané testy paměti|Žádné dimenze|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
@@ -1201,7 +1195,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |BackendRequestCount|Počet požadavků back-endu|Count|celkem|Počet požadavků odesílat back-endů proxy HTTP/S|HttpStatus, HttpStatusGroup, Backend|
 |BackendRequestLatency|Odezva back-endu požadavku|Milisekundy|Průměr|Čas počítají na základě když byla vyslána žádost proxy HTTP/S back-endu dokud proxy HTTP/S poslední bajt odpovědi přijaté z back-endu|Back-end|
 |TotalLatency|Celková latence|Milisekundy|Průměr|Čas počítají na základě když žádost klienta byla přijata službou proxy HTTP/S dokud klient potvrzení poslední bajt odpovědi z proxy serveru HTTP/S|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendHealthPercentage|Procento stav back-endu|Procenta|Průměr|Procento úspěšných stavů testy z proxy serveru HTTP/S na back-EndY|Back-endu, Bezproblémových|
+|BackendHealthPercentage|Procento stav back-endu|Percent|Průměr|Procento úspěšných stavů testy z proxy serveru HTTP/S na back-EndY|Back-endu, Bezproblémových|
 |WebApplicationFirewallRequestCount|Počet požadavků brány Firewall webových aplikací|Count|celkem|Počet žádostí klienta zpracovaných rozhraním firewallu webových aplikací|PolicyName, Název_pravidla, akce|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
@@ -1355,7 +1349,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |QueryPoolJobQueueLength|Vlákna: Délka fronty úloh fondu dotazů|Count|Průměr|Počet úloh ve frontě fondu vláken dotazů.|Žádné dimenze|
 |qpu_high_utilization_metric|Vysoké využití QPU|Count|celkem|Vysoké využití QPU za poslední minutu, 1 pro využití vysoké QPU, jinak 0|Žádné dimenze|
 |memory_metric|Memory (Paměť)|B|Průměr|Paměť. Rozsah 0 – 3 GB pro A1, 0 – 5 GB pro A2, A3 0 až 10 GB, 0-25 GB pro A4, 0 – 50 GB pro A5 a 0 – 100 GB pro A6|Žádné dimenze|
-|memory_thrashing_metric|Thrashing paměti|Procenta|Průměr|Průměrný thrashing paměti.|Žádné dimenze|
+|memory_thrashing_metric|Thrashing paměti|Percent|Průměr|Průměrný thrashing paměti.|Žádné dimenze|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
@@ -1381,7 +1375,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |SearchLatency|Latence vyhledávání|Sekundy|Průměr|Hledání Průměrná latence pro službu search|Žádné dimenze|
 |SearchQueriesPerSecond|Vyhledávací dotazy za sekundu|CountPerSecond|Průměr|Vyhledávací dotazy za sekundu pro vyhledávací službu|Žádné dimenze|
-|ThrottledSearchQueriesPercentage|Procento omezených vyhledávacích dotazů|Procenta|Průměr|Procento vyhledávacích dotazů, které byly omezené služby search|Žádné dimenze|
+|ThrottledSearchQueriesPercentage|Procento omezených vyhledávacích dotazů|Percent|Průměr|Procento vyhledávacích dotazů, které byly omezené služby search|Žádné dimenze|
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
@@ -1400,8 +1394,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ActiveMessages|Počet aktivních zpráv ve frontě nebo tématu (Preview)|Count|Průměr|Počet aktivních zpráv ve frontě nebo tématu (Preview)|EntityName|
 |DeadletteredMessages|Počet nedoručených zpráv ve frontě nebo tématu (Preview)|Count|Průměr|Počet nedoručených zpráv ve frontě nebo tématu (Preview)|EntityName|
 |ScheduledMessages|Počet plánovaných zpráv ve frontě nebo tématu (Preview)|Count|Průměr|Počet plánovaných zpráv ve frontě nebo tématu (Preview)|EntityName|
-|CPUXNS|Využití CPU na obor názvů|Procenta|Maximum|Metrika využití procesoru v oboru názvů služby Service Bus na úrovni Premium |Žádné dimenze|
-|WSXNS|Využití paměti na obor názvů|Procenta|Maximum|Metrika využití paměti v oboru názvů služby Service Bus na úrovni Premium |Žádné dimenze|
+|CPUXNS|Využití CPU na obor názvů|Percent|Maximum|Metrika využití procesoru v oboru názvů služby Service Bus na úrovni Premium |Žádné dimenze|
+|WSXNS|Využití paměti na obor názvů|Percent|Maximum|Metrika využití paměti v oboru názvů služby Service Bus na úrovni Premium |Žádné dimenze|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1411,8 +1405,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |AllocatedMemory|AllocatedMemory|B|Průměr|Paměť přidělená pro tento kontejner v MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ActualCpu|ActualCpu|Count|Průměr|Skutečné využití procesoru v jednotkách millicore|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ActualMemory|ActualMemory|B|Průměr|Skutečné využití paměti v MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|CpuUtilization|CpuUtilization|Procenta|Průměr|Využití procesoru pro tento kontejner jako procento AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|MemoryUtilization|MemoryUtilization|Procenta|Průměr|Využití procesoru pro tento kontejner jako procento AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
+|CpuUtilization|CpuUtilization|Percent|Průměr|Využití procesoru pro tento kontejner jako procento AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
+|MemoryUtilization|MemoryUtilization|Percent|Průměr|Využití procesoru pro tento kontejner jako procento AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ApplicationStatus|ApplicationStatus|Count|Průměr|Stav aplikace Service Fabric mřížky|ApplicationName, stav|
 |ServiceStatus|ServiceStatus|Count|Průměr|Stav služby aplikace Service Fabric mřížky|ApplicationName, Status, ServiceName|
 |ServiceReplicaStatus|ServiceReplicaStatus|Count|Průměr|Stav služby repliky aplikace Service Fabric mřížky|ApplicationName, Status, ServiceName, ServiceReplicaName|
@@ -1427,70 +1421,70 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MessageCount|Počet zpráv|Count|celkem|Celkový počet zpráv.|Žádné dimenze|
 |InboundTraffic|Příchozí provoz|B|celkem|Příchozí provoz služby|Žádné dimenze|
 |OutboundTraffic|Odchozí provoz|B|celkem|Odchozí provoz služby|Žádné dimenze|
-|UserErrors|Chyby uživatele|Procenta|Maximum|Procento chyb uživatele|Žádné dimenze|
-|SystemErrors|Chyby systému|Procenta|Maximum|Procento chyb systému|Žádné dimenze|
+|UserErrors|Chyby uživatele|Percent|Maximum|Procento chyb uživatele|Žádné dimenze|
+|SystemErrors|Chyby systému|Percent|Maximum|Procento chyb systému|Žádné dimenze|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procentuální využití procesoru|Procenta|Průměr|Procentuální využití procesoru|Žádné dimenze|
-|physical_data_read_percent|Procento V/V dat|Procenta|Průměr|Procento V/V dat|Žádné dimenze|
-|log_write_percent|Procento V/V protokolu|Procenta|Průměr|Procento V/V protokolu|Žádné dimenze|
-|dtu_consumption_percent|Procento DTU|Procenta|Průměr|Procento DTU|Žádné dimenze|
+|cpu_percent|Procentuální využití procesoru|Percent|Průměr|Procentuální využití procesoru|Žádné dimenze|
+|physical_data_read_percent|Procento V/V dat|Percent|Průměr|Procento V/V dat|Žádné dimenze|
+|log_write_percent|Procento V/V protokolu|Percent|Průměr|Procento V/V protokolu|Žádné dimenze|
+|dtu_consumption_percent|Procento DTU|Percent|Průměr|Procento DTU|Žádné dimenze|
 |úložiště|Využitý datový prostor|B|Maximum|Celkovou velikost databáze|Žádné dimenze|
 |connection_successful|Úspěšná připojení|Count|celkem|Úspěšná připojení|Žádné dimenze|
 |connection_failed|Chyba připojení|Count|celkem|Chyba připojení|Žádné dimenze|
 |blocked_by_firewall|Blokovaná bránou Firewall|Count|celkem|Blokovaná bránou Firewall|Žádné dimenze|
 |Zablokování|Zablokování|Count|celkem|Zablokování|Žádné dimenze|
-|storage_percent|Procento využité dat|Procenta|Maximum|Procento velikosti databáze|Žádné dimenze|
-|xtp_storage_percent|Procento úložiště OLTP v paměti|Procenta|Průměr|Procento úložiště OLTP v paměti|Žádné dimenze|
-|workers_percent|Procento prac. procesů|Procenta|Průměr|Procento prac. procesů|Žádné dimenze|
-|sessions_percent|Procento relací|Procenta|Průměr|Procento relací|Žádné dimenze|
+|storage_percent|Procento využité dat|Percent|Maximum|Procento velikosti databáze|Žádné dimenze|
+|xtp_storage_percent|Procento úložiště OLTP v paměti|Percent|Průměr|Procento úložiště OLTP v paměti|Žádné dimenze|
+|workers_percent|Procento prac. procesů|Percent|Průměr|Procento prac. procesů|Žádné dimenze|
+|sessions_percent|Procento relací|Percent|Průměr|Procento relací|Žádné dimenze|
 |dtu_limit|Omezení jednotek DTU|Count|Průměr|Omezení jednotek DTU|Žádné dimenze|
 |dtu_used|DTU použít|Count|Průměr|DTU použít|Žádné dimenze|
 |cpu_limit|Limit procesoru|Count|Průměr|Limit procesoru|Žádné dimenze|
 |cpu_used|Využití procesoru|Count|Průměr|Využití procesoru|Žádné dimenze|
 |dwu_limit|Limit jednotky|Count|Maximum|Limit jednotky|Žádné dimenze|
-|dwu_consumption_percent|Procento DWU|Procenta|Maximum|Procento DWU|Žádné dimenze|
+|dwu_consumption_percent|Procento DWU|Percent|Maximum|Procento DWU|Žádné dimenze|
 |dwu_used|Použít DWU|Count|Maximum|Použít DWU|Žádné dimenze|
-|dw_cpu_percent|Úrovni uzlu DW procento využití procesoru|Procenta|Průměr|Úrovni uzlu DW procento využití procesoru|DwLogicalNodeId|
-|dw_physical_data_read_percent|Procento datových v/v úrovně uzlu DW|Procenta|Průměr|Procento datových v/v úrovně uzlu DW|DwLogicalNodeId|
-    |cache_hit_percent|Procenta přístupů do mezipaměti|Procenta|Maximum|Procenta přístupů do mezipaměti|Žádné dimenze|
-|cache_used_percent|Procento použitá mezipaměť|Procenta|Maximum|Procento použitá mezipaměť|Žádné dimenze|
-|local_tempdb_usage_percent|Procento místní databáze tempdb|Procenta|Průměr|Procento místní databáze tempdb|Žádné dimenze|
+|dw_cpu_percent|Úrovni uzlu DW procento využití procesoru|Percent|Průměr|Úrovni uzlu DW procento využití procesoru|DwLogicalNodeId|
+|dw_physical_data_read_percent|Procento datových v/v úrovně uzlu DW|Percent|Průměr|Procento datových v/v úrovně uzlu DW|DwLogicalNodeId|
+    |cache_hit_percent|Procenta přístupů do mezipaměti|Percent|Maximum|Procenta přístupů do mezipaměti|Žádné dimenze|
+|cache_used_percent|Procento použitá mezipaměť|Percent|Maximum|Procento použitá mezipaměť|Žádné dimenze|
+|local_tempdb_usage_percent|Procento místní databáze tempdb|Percent|Průměr|Procento místní databáze tempdb|Žádné dimenze|
 |app_cpu_billed|Aplikace fakturovaná podle procesoru|Count|celkem|Aplikace fakturovaná podle procesoru|Žádné dimenze|
-|app_cpu_percent|Procento využití procesoru aplikace|Procenta|Průměr|Procento využití procesoru aplikace|Žádné dimenze|
-|app_memory_percent|Procento využité paměti aplikace|Procenta|Průměr|Procento využité paměti aplikace|Žádné dimenze|
+|app_cpu_percent|Procento využití procesoru aplikace|Percent|Průměr|Procento využití procesoru aplikace|Žádné dimenze|
+|app_memory_percent|Procento využité paměti aplikace|Percent|Průměr|Procento využité paměti aplikace|Žádné dimenze|
 |allocated_data_storage|Přidělený datový prostor|B|Průměr|Přidělený datový prostor|Žádné dimenze|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|cpu_percent|Procentuální využití procesoru|Procenta|Průměr|Procentuální využití procesoru|Žádné dimenze|
-|physical_data_read_percent|Procento V/V dat|Procenta|Průměr|Procento V/V dat|Žádné dimenze|
-|log_write_percent|Procento V/V protokolu|Procenta|Průměr|Procento V/V protokolu|Žádné dimenze|
-|dtu_consumption_percent|Procento DTU|Procenta|Průměr|Procento DTU|Žádné dimenze|
-|storage_percent|Procento využité dat||Procenta|Průměr|Procento úložiště|Žádné dimenze|
-|workers_percent|Procento prac. procesů|Procenta|Průměr|Procento prac. procesů|Žádné dimenze|
-|sessions_percent|Procento relací|Procenta|Průměr|Procento relací|Žádné dimenze|
+|cpu_percent|Procentuální využití procesoru|Percent|Průměr|Procentuální využití procesoru|Žádné dimenze|
+|physical_data_read_percent|Procento V/V dat|Percent|Průměr|Procento V/V dat|Žádné dimenze|
+|log_write_percent|Procento V/V protokolu|Percent|Průměr|Procento V/V protokolu|Žádné dimenze|
+|dtu_consumption_percent|Procento DTU|Percent|Průměr|Procento DTU|Žádné dimenze|
+|storage_percent|Procento využité dat||Percent|Průměr|Procento úložiště|Žádné dimenze|
+|workers_percent|Procento prac. procesů|Percent|Průměr|Procento prac. procesů|Žádné dimenze|
+|sessions_percent|Procento relací|Percent|Průměr|Procento relací|Žádné dimenze|
 |eDTU_limit|omezení eDTU|Count|Průměr|omezení eDTU|Žádné dimenze|
 |storage_limit|Maximální velikost dat|B|Průměr|Limit úložiště.|Žádné dimenze|
 |eDTU_used|použít eDTU|Count|Průměr|použít eDTU|Žádné dimenze|
 |storage_used|Využitý datový prostor|B|Průměr|Využité úložiště|Žádné dimenze|
-|xtp_storage_percent|Procento úložiště OLTP v paměti|Procenta|Průměr|Procento úložiště OLTP v paměti|Žádné dimenze|
+|xtp_storage_percent|Procento úložiště OLTP v paměti|Percent|Průměr|Procento úložiště OLTP v paměti|Žádné dimenze|
 |cpu_limit|Limit procesoru|Count|Průměr|Limit procesoru|Žádné dimenze|
 |cpu_used|Využití procesoru|Count|Průměr|Využití procesoru|Žádné dimenze|
 |allocated_data_storage|Přidělený datový prostor|B|Průměr|Přidělený datový prostor|Žádné dimenze|
-|allocated_data_storage_percent|Procento přidělené místo na data|Procenta|Maximum|Procento přidělené místo na data|Žádné dimenze|
+|allocated_data_storage_percent|Procento přidělené místo na data|Percent|Maximum|Procento přidělené místo na data|Žádné dimenze|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |virtual_core_count|Počet virtuálních jader|Count|Průměr|Počet virtuálních jader|Žádné dimenze|
-|avg_cpu_percent|Průměrné procento CPU|Procenta|Průměr|Průměrné procento CPU|Žádné dimenze|
+|avg_cpu_percent|Průměrné procento CPU|Percent|Průměr|Průměrné procento CPU|Žádné dimenze|
 |reserved_storage_mb|Vyhrazený úložný prostor|Count|Průměr|Vyhrazený úložný prostor|Žádné dimenze|
 |storage_space_used_mb|Prostor úložiště využitý|Count|Průměr|Prostor úložiště využitý|Žádné dimenze|
 |io_requests|Počet žádostí v/v úrovně|Count|Průměr|Počet žádostí v/v úrovně|Žádné dimenze|
@@ -1581,7 +1575,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ResourceUtilization|% využití SU|Procenta|Maximum|% využití SU|LogicalName, PartitionId|
+|ResourceUtilization|% využití SU|Percent|Maximum|% využití SU|LogicalName, PartitionId|
 |Situací|Vstupní události|Count|celkem|Vstupní události|LogicalName, PartitionId|
 |InputEventBytes|Bajty vstupních událostí|B|celkem|Bajty vstupních událostí|LogicalName, PartitionId|
 |LateInputEvents|Pozdní vstupní události|Count|celkem|Pozdní vstupní události|LogicalName, PartitionId|
@@ -1654,8 +1648,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuPercentage|Procento CPU|Procenta|Průměr|Procento CPU|Instance|
-|MemoryPercentage|Procento paměti|Procenta|Průměr|Procento paměti|Instance|
+|CpuPercentage|Procento CPU|Percent|Průměr|Procento CPU|Instance|
+|MemoryPercentage|Procento paměti|Percent|Průměr|Procento paměti|Instance|
 |DiskQueueLength|Délka fronty disku|Count|Průměr|Délka fronty disku|Instance|
 |HttpQueueLength|Délka fronty HTTP|Count|Průměr|Délka fronty HTTP|Instance|
 |BytesReceived|Vstupní data|B|celkem|Vstupní data|Instance|
@@ -1782,8 +1776,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Http4xx|HTTP 4xx|Count|celkem|HTTP 4xx|Instance|
 |Http5xx|Chyby serveru HTTP|Count|celkem|Chyby serveru HTTP|Instance|
 |AverageResponseTime|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
-|CpuPercentage|Procento CPU|Procenta|Průměr|Procento CPU|Instance|
-|MemoryPercentage|Procento paměti|Procenta|Průměr|Procento paměti|Instance|
+|CpuPercentage|Procento CPU|Percent|Průměr|Procento CPU|Instance|
+|MemoryPercentage|Procento paměti|Percent|Průměr|Procento paměti|Instance|
 |DiskQueueLength|Délka fronty disku|Count|Průměr|Délka fronty disku|Instance|
 |HttpQueueLength|Délka fronty HTTP|Count|Průměr|Délka fronty HTTP|Instance|
 |ActiveRequests|Aktivní požadavky|Count|celkem|Aktivní požadavky|Instance|
@@ -1799,8 +1793,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Hodnoty WorkersTotal|Celkový počet pracovních procesů|Count|Průměr|Celkový počet pracovních procesů|Žádné dimenze|
 |WorkersAvailable|Dostupné pracovní procesy|Count|Průměr|Dostupné pracovní procesy|Žádné dimenze|
 |Workersused za|Využité pracovní procesy|Count|Průměr|Využité pracovní procesy|Žádné dimenze|
-|CpuPercentage|Procento CPU|Procenta|Průměr|Procento CPU|Instance|
-|MemoryPercentage|Procento paměti|Procenta|Průměr|Procento paměti|Instance|
+|CpuPercentage|Procento CPU|Percent|Průměr|Procento CPU|Instance|
+|MemoryPercentage|Procento paměti|Percent|Průměr|Procento paměti|Instance|
 
 ## <a name="next-steps"></a>Další postup
 * [Přečtěte si informace o metriky ve službě Azure Monitor](data-platform.md)

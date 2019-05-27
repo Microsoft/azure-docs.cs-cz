@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: 8d024e0bc90724892bc53f8895b270716ad0cefc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61000962"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967748"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Zotavení po havárii mezi oblastmi pro účty pro integraci B2B v Azure Logic Apps
 
@@ -62,7 +62,7 @@ Kontinuita podnikových procesů v účtu integrace Logic Apps poskytuje podporu
 
 Během události po havárii, pokud primární oblast není k dispozici zajišťuje nepřetržitý chod podniků, směrovat přenos dat do sekundární oblasti. Pomáhá sekundární oblasti a obchodní k obnovení funkce rychle dosáhnout RPO/RTO dohodnutých jejich partnery. Také minimalizuje úsilí při převzetí služeb při selhání z jedné oblasti do jiné oblasti. 
 
-Neexistuje očekávaná latence při kopírování kontrolních čísel od primární oblasti do sekundární oblasti. Vyhněte se odesílání duplicitní vygenerovanému ovládacímu prvku čísla partnerům během události po havárii, doporučujeme zvýšit kontrolních čísel v sekundární oblasti smluv s použitím [rutin prostředí PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).
+Neexistuje očekávaná latence při kopírování kontrolních čísel od primární oblasti do sekundární oblasti. Vyhněte se odesílání duplicitní vygenerovanému ovládacímu prvku čísla partnerům během události po havárii, doporučujeme zvýšit kontrolních čísel v sekundární oblasti smluv s použitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Vrátit zpět na primární oblast událost po havárii
 
@@ -70,7 +70,7 @@ Chcete-li vrátit do primární oblasti až bude k dispozici, postupujte takto:
 
 1. Zastavte příjem zpráv od partnerů v sekundární oblasti.  
 
-2. Zvýšit číslo vygenerovaný ovládací prvek pro všechny primární oblasti smlouvy s použitím [rutin prostředí PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).  
+2. Zvýšit číslo vygenerovaný ovládací prvek pro všechny primární oblasti smlouvy s použitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
 
 3. Směrovat přenos dat ze sekundární oblasti do primární oblasti.
 

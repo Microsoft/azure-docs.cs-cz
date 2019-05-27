@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405721"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951102"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datové úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview
 
@@ -120,7 +120,7 @@ Time Series Insights publikuje až dvě kopie každé události ve vašem účtu
 
 Kromě toho Time Series Insights repartitions soubory Parquet optimalizovat pro rozhraní API, doba Series Insights. Nedávno repartitioned souboru se také uloží.
 
-Ve verzi public Preview se data uložená v účtu služby Azure storage po neomezenou dobu.
+Ve verzi public preview se data uložená v účtu služby Azure storage po neomezenou dobu.
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>Psaní a úpravy objektů BLOB Time Series Insights
 
@@ -146,7 +146,7 @@ Přistupovat k datům v tři hlavní způsoby:
 
 ### <a name="data-deletion"></a>Odstranění dat
 
-Neodstraňovat objekty BLOB, protože čas Series Insights ve verzi Preview uchovává metadata o objektech BLOB v něm.
+Neodstraňovat objekty BLOB. Nejenom že jsou užitečná pro auditování a správu záznam vaše data, času Series Insights ve verzi Preview uchovává metadata objektu blob v rámci jednotlivých objektů blob.
 
 ## <a name="time-series-insights-data-ingress"></a>Čas příchozího přenosu dat Series Insights
 
@@ -177,7 +177,7 @@ Podporované typy souborů patří:
 
 ### <a name="scale"></a>Škálovat
 
-Čas Series Insights ve verzi Preview podporuje škálování počáteční příchozího přenosu dat z až 6 Mega bajtů za sekundu (MB/s) pro každé prostředí. Probíhá škálování rozšířenou podporu. Plánujeme aktualizovat tak, aby odrážely těchto vylepšení naši dokumentaci
+Čas Series Insights ve verzi Preview podporuje měřítku počáteční příchozí přenos dat až 1 Mega bajtů za sekundu (MB/s) pro každé prostředí. Probíhá škálování rozšířenou podporu. Plánujeme aktualizovat tak, aby odrážely těchto vylepšení naší dokumentaci.
 
 ## <a name="next-steps"></a>Další postup
 

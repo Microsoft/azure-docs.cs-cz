@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdfd8fd642120f4e829de8fbb013f85aea2a9484
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825565"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956901"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -59,7 +59,7 @@ Pomocí rozšíření prohlížeče MyApps všechny interní adresy URL, které 
 
 Uživatel musí na tuto funkci použít, stáhněte si rozšíření a být přihlášení. Není pro správci a uživatelé nepotřebují žádnou další konfiguraci. 
 
-Další informace, včetně postupu konfigurace této možnosti najdete v tématu [rozšíření prohlížeče MyApps](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentaci.
+Další informace, včetně postupu konfigurace této možnosti najdete v tématu [rozšíření prohlížeče MyApps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentaci.
 
 ### <a name="option-3-link-translation-setting"></a>Možnost 3: Nastavení překladu odkaz 
 

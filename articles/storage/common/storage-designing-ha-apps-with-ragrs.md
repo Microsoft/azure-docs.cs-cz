@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205503"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951314"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -54,7 +54,7 @@ Při navrhování aplikace za RA-GRS, mějte na paměti tyto klíčové body:
 
 Navržené řešení se předpokládá, že je přijatelné vrácení potenciálně zastaralých dat volající aplikace. Vzhledem k tomu, že data v sekundární oblasti jsou nakonec konzistentní, je možné, že může být primární oblasti nedostupný, před dokončením příkazu se aktualizace do sekundární oblasti, které se replikují.
 
-Předpokládejme například, zákazník odešle aktualizaci úspěšně, ale selže primární oblast předtím, než se šíří aktualizace do sekundární oblasti. Když zákazník požádá o načtení dat zpět, dostane zastaralá data ze sekundární oblasti místo aktualizovaná data. Při návrhu aplikace, musíte rozhodnout, jestli je to přijatelné a pokud ano, jak bude zpráva zákazníka. 
+Předpokládejme například, zákazník odešle aktualizaci úspěšně, ale selže primární oblast předtím, než se šíří aktualizace do sekundární oblasti. Když zákazník požádá o načtení dat zpět, obdrží tento uživatel zastaralá data ze sekundární oblasti místo aktualizovaná data. Při návrhu aplikace, musíte rozhodnout, jestli je to přijatelné a pokud ano, jak bude zpráva zákazníka. 
 
 Dále v tomto článku vám ukážeme, jak zkontrolovat poslední čas synchronizace pro sekundární data ke kontrole, jestli je aktuální sekundární.
 
@@ -197,7 +197,7 @@ Třetí scénář, při použití příkazu ping primární koncový bod úloži
 
 Geograficky redundantní účet úložiště jen pro čtení funguje tak, že replikuje transakce z primární oblasti do sekundární. Tento proces replikace zaručuje, že data v sekundární oblasti jsou *konzistentní*. To znamená, že všechny transakce v primární oblasti se server zobrazí v sekundární oblasti, ale, že možná s menší prodlevou před zobrazením a, že neexistuje žádná záruka transakce jsou doručeny do sekundární oblasti ve stejném pořadí, ve kterém jsou původně byly použity v primární oblasti. Pokud vaše transakce jsou doručeny do sekundární oblasti mimo pořadí, můžete *může* vezměte v úvahu vaše data v sekundární oblasti, kterou chcete být v nekonzistentním stavu, dokud služba zachytává.
 
-Následující tabulka znázorňuje příklad co může nastat při aktualizaci podrobnosti zaměstnance, aby jí členem *správci* role. Pro účely tohoto příkladu, k tomu je potřeba je aktualizovat **zaměstnance** entity a aktualizovat **role správce** entity s počtem celkový počet správců. Všimněte si, jak aktualizace jsou použity mimo pořadí v sekundární oblasti.
+Následující tabulka znázorňuje příklad co může nastat při aktualizaci podrobnosti zaměstnance, aby se daly členem *správci* role. Pro účely tohoto příkladu, k tomu je potřeba je aktualizovat **zaměstnance** entity a aktualizovat **role správce** entity s počtem celkový počet správců. Všimněte si, jak aktualizace jsou použity mimo pořadí v sekundární oblasti.
 
 | **čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **výsledek** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 

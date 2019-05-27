@@ -1,41 +1,36 @@
 ---
-title: Rozhraní REST API deklarací výměny jako krok Orchestrace v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Téma v Azure Active Directory B2C vlastní zásady, které se integrují s rozhraním API.
+title: Rozhraní REST API deklarací výměny – Azure Active Directory B2C | Dokumentace Microsoftu
+description: Výměna deklarací rozhraní REST API přidejte do vlastních zásad v Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/24/2017
+ms.date: 05/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0a29bcbd3142be577d4cf1f64ff8c9921010bba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e705c12782310597ea14d5253aba8b6a1a004e6d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688012"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952792"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Průvodce: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako krok Orchestrace
+# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Přidání rozhraní REST API služby výměny deklarací identity do vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Rozhraní prostředí pro Identity (IEF), které je základem Azure Active Directory B2C (Azure AD B2C) umožňuje identity pro vývojáře k integraci interakci se rozhraní RESTful API v cestě uživatele.  
+Můžete přidat interakci s rozhraní RESTful API do vaší [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C. Tento článek ukazuje, jak vytvořit cestu uživatele Azure AD B2C, který spolupracuje s služby typu REST.
 
-Na konci tohoto návodu bude možné vytvořit cestu uživatele Azure AD B2C, který spolupracuje s služby typu REST.
-
-IEF odesílá data jako deklarace identity a přijímá data zpět v deklaracích identity. Výměna deklarací identit rozhraní REST API:
+Interakce zahrnuje výměna deklarací identit informací mezi deklarace rozhraní REST API a Azure AD B2C. Výměna deklarací identity mají následující vlastnosti:
 
 - Může sloužit jako krok Orchestrace.
 - Externí akce můžete aktivovat. To například protokolovat událost v externí databázi.
 - Je možné načíst hodnotu a uloží je v uživatelské databázi.
+- Můžete změnit tok spouštění. 
 
-Přijaté deklarací identity můžete použít později změnit tok spouštění.
-
-Můžete také navrhnout zásahu jako profil ověření. Další informace najdete v tématu [názorný postup: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele](active-directory-b2c-rest-api-validation-custom.md).
-
-Tento scénář je, že když uživatel provede úpravy profilu, chceme:
+Scénář, který je reprezentován v tomto článku obsahuje následující akce:
 
 1. Vyhledání uživatele v externím systému.
 2. Získejte Město, ve kterém je tento uživatel zaregistrovaný.
@@ -43,180 +38,170 @@ Tento scénář je, že když uživatel provede úpravy profilu, chceme:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klient služby Azure AD B2C nakonfigurovaný tak, aby dokončit místní účet přihlášení-registrace/přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
-- Koncový bod rozhraní REST API pro interakci s. Tento návod používá aplikace webhooku jednoduchou funkci Azure jako příklad.
-- *Doporučené*: Dokončení [rozhraní REST API deklarací návod exchange jako krok ověření](active-directory-b2c-rest-api-validation-custom.md).
+- Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md).
+- Koncový bod rozhraní REST API pro interakci s. Tento článek používá jednoduché Azure fungovat jako příklad. Vytvoření funkce Azure Functions najdete v tématu [vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
-## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Příprava – funkce rozhraní REST API
+## <a name="prepare-the-api"></a>Příprava rozhraní API
 
-> [!NOTE]
-> Instalace funkce rozhraní REST API je mimo rámec tohoto článku. [Služba Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) poskytuje vynikající toolkit k vytvoření služby RESTful v cloudu.
+V této části můžete připravit funkce Azure získat hodnotu pro `email`a pak se vraťte hodnotu `city` , který je možné pomocí Azure AD B2C, jako deklarace identity.
 
-Nastavíme, která bude přijímat deklarace identity volá funkci Azure `email`a potom vrátí deklaraci identity `city` s přiřazenou hodnotou `Redmond`. Ukázka funkce Azure Functions je na [Githubu](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Změna souboru run.csx pro funkci Azure, kterou jste vytvořili pomocí následujícího kódu: 
 
-`userMessage` Deklarace identity, která vrací funkce Azure Functions je volitelné v tomto kontextu, a IEF ho budou ignorovat. Potenciálně slouží jako zpráv do aplikace a budou zobrazovat uživateli později.
-
-```csharp
-if (requestContentAsJObject.email == null)
+```
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
-    return request.CreateResponse(HttpStatusCode.BadRequest);
-}
+  log.LogInformation("C# HTTP trigger function processed a request.");
+  string email = req.Query["email"];
+  string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+  dynamic data = JsonConvert.DeserializeObject(requestBody);
+  email = email ?? data?.email;
 
-var email = ((string) requestContentAsJObject.email).ToLower();
-
-return request.CreateResponse<ResponseContent>(
-    HttpStatusCode.OK,
-    new ResponseContent
-    {
+  return email != null
+    ? (ActionResult)new OkObjectResult(
+      new ResponseContent
+      {
         version = "1.0.0",
         status = (int) HttpStatusCode.OK,
-        userMessage = "User Found",
         city = "Redmond"
-    },
-    new JsonMediaTypeFormatter(),
-    "application/json");
+      })
+      : new BadRequestObjectResult("Please pass an email on the query string or in the request body");
+}
+
+public class ResponseContent
+{
+    public string version { get; set; }
+    public int status { get; set; }
+    public string city {get; set; }
+}
 ```
 
-Aplikaci Azure function app umožňuje snadno získat adresu URL funkce, která obsahuje identifikátor konkrétní funkce. V takovém případě je adresa URL: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Můžete ho použít pro testování.
+## <a name="configure-the-claims-exchange"></a>Konfigurace výměna deklarací identit
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Krok 2: Výměna deklarací identit RESTful API nakonfigurovat jako technický profil v souboru TrustFrameworExtensions.xml
+Technický profil obsahuje konfiguraci exchange deklarace identity. 
 
-Technický profil je úplná konfigurace exchange požadované službou RESTful. Otevřete soubor TrustFrameworkExtensions.xml a přidejte následující fragment kódu XML uvnitř `<ClaimsProvider>` elementu.
-
-> [!NOTE]
-> Následující kód XML, poskytovatele RESTful `Version=1.0.0.0` označen jako protokol. Vezměte v úvahu ji jako funkci, která bude komunikovat s externí služby. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+Otevřít *TrustFrameworkExtensions.xml* a přidejte následující prvky XML uvnitř **ClaimsProvider** elementu.
 
 ```XML
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
-        <TechnicalProfile Id="AzureFunctions-LookUpLoyaltyWebHook">
-            <DisplayName>Check LookUpLoyalty Web Hook Azure Function</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
-                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
-                <Item Key="AuthenticationType">None</Item>
-                <Item Key="SendClaimsIn">Body</Item>
-                <Item Key="AllowInsecureAuthInProduction">true</Item>
-            </Metadata>
-            <InputClaims>
-                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
-            </InputClaims>
-            <OutputClaims>
-                <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
-            </OutputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-        </TechnicalProfile>
-    </TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="AzureFunctions-WebHook">
+      <DisplayName>Azure Function Web Hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
+        <Item Key="AuthenticationType">None</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-`<InputClaims>` Element definuje deklarace, které se odešlou z IEF ke službě REST. V tomto příkladu obsah deklarace identity `givenName` se odešlou do služby REST jako deklarace identity `email`.  
+**InputClaims** element definuje deklarace identity, které se odesílají do služby REST. V tomto příkladu je hodnota deklarace identity `givenName` se odesílají službě REST jako deklarace identity `email`. **OutputClaims** element definuje deklarace, které se očekává, že ze služby REST.
 
-`<OutputClaims>` Element definuje deklarace, které IEF bude očekávat od služby REST. Bez ohledu na počet deklarace identity získané IEF bude používat jenom ty, které jsou identifikovány tady. V tomto příkladu se deklarace identity přijata jako `city` budou zmapována do IEF deklarace identity volá `city`.
+## <a name="add-the-claim-definition"></a>Přidat definici deklarací identity
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 3: Přidá novou deklaraci `city` schématu souboru TrustFrameworkExtensions.xml
-
-Deklarace identity `city` není ještě definovány kdekoli v našich schématu. Ano, přidejte definici uvnitř elementu `<BuildingBlocks>`. Můžete najít tento prvek na začátku souboru TrustFrameworkExtensions.xml.
+Přidejte definici pro `city` uvnitř **BuildingBlocks** elementu. Můžete najít tento prvek na začátku souboru TrustFrameworkExtensions.xml.
 
 ```XML
 <BuildingBlocks>
-    <!--The claimtype city must be added to the TrustFrameworkPolicy-->
-    <!-- You can add new claims in the BASE file Section III, or in the extensions file-->
-    <ClaimsSchema>
-        <ClaimType Id="city">
-            <DisplayName>City</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your city</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
-    </ClaimsSchema>
+  <ClaimsSchema>
+    <ClaimType Id="city">
+      <DisplayName>City</DisplayName>
+      <DataType>string</DataType>
+      <UserHelpText>Your city</UserHelpText>
+      <UserInputType>TextBox</UserInputType>
+    </ClaimType>
+  </ClaimsSchema>
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Krok 4: Obsahovat výměna deklarací identit služby REST, jak je na vaší cestě uživatelské úpravy profilu v TrustFrameworkExtensions.xml krok Orchestrace
+## <a name="add-an-orchestration-step"></a>Přidat na krok Orchestrace
 
-Přidejte krok k profilu úpravy cesty uživatele, poté, co uživatel byl ověřen (kroků Orchestrace 1 až 4 v následující kód XML) a uživatel zadal aktualizovaný profil informací (krok 5).
+Existuje řada případů použití, kde volání rozhraní REST API je možné jako krok Orchestrace. Jako krok Orchestrace ho lze použít jako aktualizace externího systému poté, co uživatel úspěšně dokončí úlohu, jako první registraci nebo jako aktualizace profilu udržovat synchronizované informace. V takovém případě se používá k posílení údaje do aplikace po upravit profil.
 
-> [!NOTE]
-> Existuje řada případů použití, kde volání rozhraní REST API je možné jako krok Orchestrace. Jako krok Orchestrace ho lze použít jako aktualizace externího systému poté, co uživatel úspěšně dokončí úlohu, jako první registraci nebo jako aktualizace profilu udržovat synchronizované informace. V takovém případě se používá k posílení údaje do aplikace po upravit profil.
-
-Kopírování profil upravit uživatelský kód cestu XML ze souboru TrustFrameworkBase.xml do souboru TrustFrameworkExtensions.xml uvnitř `<UserJourneys>` elementu. Pak proveďte změny v kroku 6.
+Přidání kroku do cesty uživatele úpravy profilu. Jakmile se uživatel ověřen (kroků Orchestrace 1 až 4 v následující kód XML), a uživatel zadal aktualizovaný profil informací (krok 5). Kopírování profil upravovat kód XML cesty uživatele z *TrustFrameworkBase.xml* soubor do vašeho *TrustFrameworkExtensions.xml* soubor uvnitř **Userjourney** element. Pak proveďte změny v kroku 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
-    <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
-    </ClaimsExchanges>
+  <ClaimsExchanges>
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
-> [!IMPORTANT]
-> Pokud pořadí se neshoduje s vaší verzí, ujistěte se, že vloží kód jako krok před `ClaimsExchange` typ `SendClaims`.
-
-Poslední XML pro cestu uživatele by měl vypadat nějak takto:
+Poslední XML pro cestu uživatele by měl vypadat jako v tomto příkladu:
 
 ```XML
 <UserJourney Id="ProfileEdit">
-    <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-            <ClaimsProviderSelections>
-                <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
-                <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-            </ClaimsProviderSelections>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-            <ClaimsExchanges>
-                <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
-                <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
-            <Preconditions>
-                <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-                    <Value>authenticationSource</Value>
-                    <Value>localAccountAuthentication</Value>
-                    <Action>SkipThisOrchestrationStep</Action>
-                </Precondition>
-            </Preconditions>
-            <ClaimsExchanges>
-                <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
-            <Preconditions>
-                <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-                    <Value>authenticationSource</Value>
-                    <Value>socialIdpAuthentication</Value>
-                    <Action>SkipThisOrchestrationStep</Action>
-                </Precondition>
-            </Preconditions>
-            <ClaimsExchanges>
-                <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="5" Type="ClaimsExchange">
-            <ClaimsExchanges>
-                <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <!-- Add a step 6 to the user journey before the JWT token is created-->
-        <OrchestrationStep Order="6" Type="ClaimsExchange">
-            <ClaimsExchanges>
-                <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-    </OrchestrationSteps>
-    <ClientDefinition ReferenceId="DefaultWeb" />
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+      <ClaimsProviderSelections>
+        <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
+        <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
+      </ClaimsProviderSelections>
+    </OrchestrationStep>
+    <OrchestrationStep Order="2" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+        <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="3" Type="ClaimsExchange">
+      <Preconditions>
+        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+          <Value>authenticationSource</Value>
+          <Value>localAccountAuthentication</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <ClaimsExchanges>
+        <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="4" Type="ClaimsExchange">
+      <Preconditions>
+        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+          <Value>authenticationSource</Value>
+          <Value>socialIdpAuthentication</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <ClaimsExchanges>
+        <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="5" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <!-- Add a step 6 to the user journey before the JWT token is created-->
+    <OrchestrationStep Order="6" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+  </OrchestrationSteps>
+  <ClientDefinition ReferenceId="DefaultWeb" />
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 5: Přidat deklaraci identity `city` k předávající straně zásad souborů, takže deklarace identity se odešlou do vaší aplikace
+## <a name="add-the-claim"></a>Přidání deklarace identity
 
-Upravte soubor ProfileEdit.xml předávající stranu a upravovat `<TechnicalProfile Id="PolicyProfile">` prvek přidejte následující: `<OutputClaim ClaimTypeReferenceId="city" />`.
+Upravit *ProfileEdit.xml* a přidejte `<OutputClaim ClaimTypeReferenceId="city" />` k **OutputClaims** elementu.
 
-Po přidání nové deklarace technický profil vypadá takto:
+Po přidání nové deklarace technický profil bude vypadat jako v tomto příkladu:
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -229,17 +214,15 @@ Po přidání nové deklarace technický profil vypadá takto:
 </TechnicalProfile>
 ```
 
-## <a name="step-6-upload-your-changes-and-test"></a>Krok 6: Odešlete své změny a otestovat
+## <a name="upload-your-changes-and-test"></a>Odešlete své změny a otestovat
 
-Přepište existující verze zásad.
+1. (Volitelné:) Uložte stávající verzi (stažením) souborů než budete pokračovat.
+2. Nahrát *TrustFrameworkExtensions.xml* a *ProfileEdit.xml* a vybrat, zda chcete přepsat existující soubor.
+3. Vyberte **B2C_1A_ProfileEdit**.
+4. Pro **vyberte aplikaci** na stránce Přehled vlastních zásad, vyberte webovou aplikaci s názvem *webapp1* , které jste dříve zaregistrovali. Ujistěte se, že **adresy URL odpovědi** je `https://jwt.ms`.
+4. Vyberte **spustit nyní**. Přihlaste se pomocí přihlašovacích údajů k účtu a klikněte na tlačítko **pokračovat**.
 
-1.  (Volitelné:) Uložte stávající verzi (stažením) souboru rozšíření předtím, než budete pokračovat. Pokud chcete zachovat počáteční složitost nízké, doporučujeme nahrávat více verzí souboru rozšíření.
-2.  (Volitelné:) Přejmenujte novou verzi ID zásad pro soubor zásad upravit tak, že změníte `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
-3.  Nahrání souboru rozšíření.
-4.  Nahrajte soubor zásad upravit poskytovatele prostředků.
-5.  Použití **Run Now** testování zásad. Zkontrolujte token, který IEF vrátí do aplikace.
-
-Pokud všechno je správně nastavené, token, který bude obsahovat nové deklarace `city`, s hodnotou `Redmond`.
+Pokud všechno je správně nastavené, token, který zahrnuje novou deklaraci `city`, s hodnotou `Redmond`.
 
 ```JSON
 {
@@ -249,7 +232,7 @@ Pokud všechno je správně nastavené, token, který bude obsahovat nové dekla
   "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
   "sub": "a58e7c6c-7535-4074-93da-b0023fbaf3ac",
   "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
-  "acr": "b2c_1a_trustframeworkprofileedit",
+  "acr": "b2c_1a_profileedit",
   "nonce": "defaultNonce",
   "iat": 1493049692,
   "auth_time": 1493049692,
@@ -259,6 +242,5 @@ Pokud všechno je správně nastavené, token, který bude obsahovat nové dekla
 
 ## <a name="next-steps"></a>Další postup
 
-[Použití rozhraní REST API jako krok ověření](active-directory-b2c-rest-api-validation-custom.md)
-
-[Upravit profil upravit sbírat dodatečné informace od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+- Můžete také navrhnout zásahu jako profil ověření. Další informace najdete v tématu [názorný postup: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele](active-directory-b2c-rest-api-validation-custom.md).
+- [Upravit profil upravit sbírat dodatečné informace od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)

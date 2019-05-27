@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/05/2019
-ms.openlocfilehash: e1b5ade470e3041fc15a8f71db76a4004a33f765
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/20/2019
+ms.openlocfilehash: 432ddf6e0fea0d6de3c24dc853502dca303ce693
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142670"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954556"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>Rychlý start: Vytvoření webové aplikace .NET pomocí rozhraní SQL API účtu ve službě Azure Cosmos DB
 
@@ -35,15 +35,15 @@ V tomto rychlém startu použijete Průzkumníka dat na webu Azure Portal k vytv
 
 ## <a name="prerequisites"></a>Požadavky
 
-Visual Studio 2017 s pracovním postupem vývoj pro Azure, nainstalované
-- Můžete stáhnout a použít **bezplatné** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**. 
+Visual Studio 2019 s pracovním postupem vývoj pro Azure, nainstalované
+- Můžete stáhnout a použít **bezplatné** [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**. 
 
 Předplatného Azure nebo Bezplatný zkušební účet Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -62,8 +62,8 @@ Průzkumník dat na webu Azure Portal slouží k vytvoření databáze a kolekce
     
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**Id databáze**|ToDoList|Zadejte *ToDoList* jako název nové databáze. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery.|
-    |**Id kolekce**|Items|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.|
+    |**ID databáze**|ToDoList|Zadejte *ToDoList* jako název nové databáze. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery.|
+    |**ID kolekce**|Položky|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázku popsanou v tomto článku používá */category* jako klíč oddílu.|
     |**Propustnost**|400|Ponechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
     
@@ -72,7 +72,7 @@ Průzkumník dat na webu Azure Portal slouží k vytvoření databáze a kolekce
 1.  Vyberte **OK**. 
     Průzkumník dat zobrazí novou databázi a kolekci.
     
-    ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a tabulku](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
+    ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a kolekci](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
 ## <a name="add-data-to-your-database"></a>Přidat data do databáze
 

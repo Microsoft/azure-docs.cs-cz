@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
 ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66147460"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevřete porty pro cluster Service Fabric
 

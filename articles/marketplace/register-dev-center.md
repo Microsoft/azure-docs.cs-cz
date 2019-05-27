@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 559b5a519a48d4aa8022961a59f6f29cef28f948
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1caa523b2bc43b7b3690e01f589aecf18fd3da9e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937585"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965111"
 ---
 # <a name="register-in-dev-center"></a>Registrace na webu Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -156,7 +156,7 @@ Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomoc�
   > Zkontrolujte, že PSČ je správně zadán příliš. Je města, PSČ ověření.
 
 * **Jak získám propagační kód?**
-  > Dokončení [Marketplace registrace](https://azuremarketplace.microsoft.com/en-us/sell/signup) formuláře příjem propagační kód Dev Center.
+  > Dokončení [Marketplace registrace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) formuláře příjem propagační kód Dev Center. V tématu Jak [vytvořit účet v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) Další informace.
  
 * **Co mám čekat po dokončení registrace?**
   > Vyhledání e-mailu z verify@microsoft.com s řádkem předmětu "vyžaduje se akce: Ověření vaší e-mailový účet Microsoft". Klikněte na odkaz pro citlivé ověření času k dokončení registrace. *Pokud jste neobdrželi e-mailu za 24 hodin, zkontrolujte složky spamu.*

@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1d7bb72dab622cd0b18d1da1aa34a651e1443997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365073"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964258"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurace ExpressRoute přímo
 
@@ -224,9 +224,11 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 
 Ve výchozím nastavení můžete vytvořit v rámci předplatného, ve kterém je prostředek přímo ExpressRoute 10 okruhy. To jde navýšit o podporu. Které nesou odpovědnost za sledování zřízená a využité šířky pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku a využívaných šířky pásma fyzického využití základní fyzické rozhraní.
 
-Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Jsou to: 40Gbps a 100Gbps.
+Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Toto jsou: 40Gbps a 100Gbps.
 
-Je možné vytvářet okruhy úrovně Standard nebo premium. Standardní okruhy jsou zahrnutá v ceně, zatímco okruhy premium mají svou cenu na základě šířky pásma vybrané. Okruhy lze vytvořit pouze jako měřená, jako neomezená nepodporuje přímé ExpressRoute.
+**SkuTier** může být místní, Standard nebo Premium.
+
+**SkuFamily** musí být MeteredData jako neomezená nepodporuje přímé ExpressRoute.
 
 Vytvoření okruhu ExpressRoute přímo prostředku.
 

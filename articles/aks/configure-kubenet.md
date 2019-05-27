@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073994"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956386"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -22,6 +22,9 @@ Ve výchozím nastavení, AKS clusterů použijte [kubenet][kubenet], a virtuál
 S [služby Azure Container síťové rozhraní (CNI)][cni-networking], každý pod získá IP adresu z podsítě a je přístupný přímo. Tyto IP adresy musí být jedinečný v rámci prostor vaší sítě a je třeba se připravit předem. Každý uzel má parametr konfigurace pro maximální počet podů, které podporuje. Ekvivalentní počet IP adres na jedno uzlu jsou pak ještě před zahájením vyhrazené pro tento uzel. Tento přístup vyžaduje více plánování a často vede k vyčerpání IP adresu nebo nutnosti znovu sestavovat clusterů ve větší podsíť, jak rostou vaše požadavky aplikace růst.
 
 V tomto článku se dozvíte, jak používat *kubenet* sítě a vytvořit podsítě virtuální sítě pro AKS cluster. Další informace o možnostech sítě a důležité informace najdete v tématu [síť koncepty pro Kubernetes a AKS][aks-network-concepts].
+
+> [!WARNING]
+> Pokud chcete používat fondy uzlů Windows serveru (aktuálně ve verzi preview ve službě AKS), je nutné použít Azure CNI. Použití kubenet jako model pro sítě není k dispozici pro kontejnery Windows serveru.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -149,6 +152,8 @@ Tyto rozsahy IP adres jsou také definovány jako součást clusteru vytvořit p
     * Tento rozsah adres musí být dostatečně velký, aby mohla pojmout množství uzly, které plánujete škálovat až. Tento rozsah adres nelze změnit, až se cluster nasazuje, pokud potřebujete další adresy pro další uzly.
     * Rozsah IP adres pod slouží k přiřazení */24* adresní prostor k jednotlivým uzlům v clusteru. V následujícím příkladu *– pod cidr* z *192.168.0.0/16* přiřadí první uzel *192.168.0.0/24*, druhý uzel *192.168.1.0/24*a třetí uzly *192.168.2.0/24*.
     * Jako škálování clusteru nebo upgrady Platforma Azure nadále jste rozsah IP adres pod přiřadit každého nového uzlu.
+    
+* *– Adresa mostu docker* umožňuje uzlů AKS komunikovat s základní platformy pro správu. Tato IP adresa nesmí být v rozsahu IP adres virtuální sítě clusteru a nesmí překrývat s rozsahy jiných adres používané ve vaší síti.
 
 ```azurecli-interactive
 az aks create \

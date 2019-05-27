@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/20/2019
 ms.author: danlep
-ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582410"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977203"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatizace operačního systému a rozhraní framework opravy chyb s úlohami služby ACR
 
@@ -94,6 +94,16 @@ Můžete například vytvořit vícekrokové úlohy, která automatizuje násled
 Vícekrokové úlohy umožňují rozdělit sestavování, spouštění a testování bitovou kopii do více možností složení kroků s podporou závislost mezi kroku. Pomocí vícekrokových úkolů do úlohy služby ACR budete mít podrobnější kontrolu nad bitové kopie sestavení, testování a operační systém a framework opravy chyb pracovních postupů.
 
 Další informace o vícekrokových úkolů v [spuštění několika kroky sestavení, testování a opravu úkoly v úlohách ACR](container-registry-tasks-multi-step.md).
+
+## <a name="view-task-logs"></a>Zobrazit protokoly úloh
+
+Každé spuštění úkolu vygeneruje výstup protokolu, který si můžete prohlédnout k určení, zda kroky úlohy proběhla úspěšně. Pokud používáte [az acr sestavení](/cli/azure/acr#az-acr-build), [az acr spustit](/cli/azure/acr#az-acr-run), nebo [az acr úlohy](/cli/azure/acr/task#az-acr-task-run) příkaz k aktivaci úlohy, výstup protokolu pro úlohu spustit se streamují do konzole také ukládají a později načítání. Zobrazit protokoly pro úlohu spustit na portálu Azure portal, nebo použijte [protokoly úlohy az acr](/cli/azure/acr/task#az-acr-task-logs) příkazu.
+
+Od července 2019 se data pro spuštění úloh v registru a bude zachován ve výchozím nastavení po dobu 30 dnů a pak automaticky odstraněna. Pokud chcete archivovat data pro úlohu spustit, povolte archivaci pomocí [az acr úlohy aktualizace spuštění](/cli/azure/acr/task#az-acr-task-update-run) příkazu. Následující příklad povolí archivace pro úlohu spustit *cf11* v registru *myregistry*.
+
+```azurecli
+az acr task update-run --registry myregistry --run-id cf11 --no-archive false
+```
 
 ## <a name="next-steps"></a>Další postup
 

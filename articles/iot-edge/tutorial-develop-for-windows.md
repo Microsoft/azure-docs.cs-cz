@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6b629c7b8a6addbb2ef6f9ced58d4db656ad2480
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 631338c0217eb61f4f98cd06ffa16cb2500f246b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576793"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146737"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -49,7 +49,7 @@ V následující tabulce jsou uvedeny podporované vývojové scénáře pro **k
 | - | ------------------ | ------------------ |
 | **Služby Azure** | Azure Functions <br> Azure Stream Analytics |   |
 | **Jazyky** | C#(ladění není podporované) | C <br> C# |
-| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
 
 Tomto kurzu se naučíte postup vývoje pro Visual Studio 2017. Pokud místo toho můžete využít Visual Studio Code, použijte pokyny v [použít Visual Studio Code k vývoji a ladění modulů Azure IoT Edge](how-to-vs-code-develop-module.md).
 
@@ -100,7 +100,7 @@ Použití rozšíření IoT pro Visual Studio 2017 k vývoji moduly IoT Edge. Ta
 
    * Vývoj pro Azure
    * Vývoj desktopových aplikací pomocí C++
-   * Vývoj aplikací pro různé platformy pomocí rozhraní .NET Core
+   * Vývoj pro různé platformy .NET core
 
 1. Pokud již máte Visual Studio 2017 na vývojovém počítači, ujistěte se, že je jeho verze 15.7 nebo novější. Postupujte podle kroků v [upravit Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2017) přidat požadovaná zatížení, pokud je ještě nemáte.
 
@@ -128,7 +128,7 @@ Rozšíření nástroje Azure IoT Edge poskytuje šablony projektů pro všechny
 
 2. Vyberte **Soubor** > **Nový** > **Projekt**. 
 
-3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení, nebo přijměte výchozí nastavení **AzureIoTEdgeApp1**. Vyberte **OK** a vytvořte projekt. 
+3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení, nebo přijměte výchozí nastavení **AzureIoTEdgeApp1**. Vyberte **OK** pro vytvoření projektu. 
 
    ![Vytvořte nový projekt Azure IoT Edge](./media/tutorial-develop-for-windows/new-project.png)
 

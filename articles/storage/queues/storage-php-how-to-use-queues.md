@@ -10,12 +10,12 @@ ms.date: 01/11/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: b827894c633c425220bf94be1f51c52d464bd79b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 4ff54f9ca20c101de55bec2c7acf914c17bd7709
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410454"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951208"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Používání úložiště Queue z PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -87,7 +87,7 @@ UseDevelopmentStorage=true
 K vytvoření klienta služby Azure Queue, budete muset použít **QueueRestProxy** třídy. Můžete použít některou z následujících postupů:
 
 * Předejte řetězec připojení přímo k němu.
-* Použití proměnných prostředí ve vaší webové aplikaci pro uložení připojovacího řetězce. Zobrazit [konfigurační nastavení aplikace Azure web](../../app-service/web-sites-configure.md) dokumentu Konfigurace připojovacích řetězců.
+* Použití proměnných prostředí ve vaší webové aplikaci pro uložení připojovacího řetězce. Zobrazit [konfigurační nastavení aplikace Azure web](../../app-service/configure-common.md) dokumentu Konfigurace připojovacích řetězců.
 Ve zde uvedených příkladech se připojovací řetězec předává přímo.
 
 ```php

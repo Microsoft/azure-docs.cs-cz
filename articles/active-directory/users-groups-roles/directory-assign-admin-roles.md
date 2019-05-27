@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 1107a6df92bf577cd60b9ad31627219da8e1a388
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823566"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956542"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -335,14 +335,14 @@ Povoleno zobrazení, nastavení a obnovit informace metody ověřování pro vš
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 
-### <a name="b2c-user-flow-administrator"></a>Správce toku uživatele B2C
+### <a name="b2c-user-flow-administrator"></a>Správce uživatelských toků B2C
 Vytvářejte a spravujte všechny aspekty toky uživatelů.
 
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.b2c/userFlows/allTasks | Přečíst a nakonfigurovat toky uživatelů v Azure Active Directory B2C. |
 
-### <a name="b2c-user-flow-attribute-administrator"></a>Správce B2C uživatelů toku atributů
+### <a name="b2c-user-flow-attribute-administrator"></a>Správce atributů uživatelských toků B2C
 Vytvoření a správa atribut schématu, která je k dispozici pro všechny toky uživatelů.
 
 | **Akce** | **Popis** |
@@ -367,7 +367,7 @@ Vytvářejte a spravujte zásady důvěryhodnosti framework v architekturu rozhr
 Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -385,7 +385,7 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
 Můžete získat přístup a správa desktopovým nástrojům pro správu a službám, včetně Intune.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -458,7 +458,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používají identity Azure AD.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -524,7 +524,7 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure AD a Office 365.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -558,7 +558,7 @@ Může spravovat funkce podmíněného přístupu.
 Může spravovat všechny aspekty produktu Dynamics 365.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -575,7 +575,7 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace zákazníka.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -705,7 +705,7 @@ Může číst a zapisovat informace základní adresář. Pro udělení přístu
 Může spravovat všechny aspekty produktu Exchange.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -765,7 +765,7 @@ Může resetovat hesla uživatelů, kteří nejsou správci, a správců technic
 Může spravovat všechny aspekty produktu Azure Information Protection.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -781,7 +781,7 @@ Může spravovat všechny aspekty produktu Azure Information Protection.
 Může spravovat všechny aspekty produktu Intune.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -829,7 +829,7 @@ Můžete spravovat licence na produkty na uživatele a skupiny.
 Může spravovat všechny aspekty produktu Skype pro firmy.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -846,7 +846,7 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Office 365. 
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -859,7 +859,7 @@ Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Offi
 Nepoužívejte – nejsou určené pro obecné použití.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -891,7 +891,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
 Nepoužívejte – nejsou určené pro obecné použití.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -925,7 +925,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
 Může spravovat všechny aspekty produktu Power BI.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -955,7 +955,7 @@ Může zobrazovat, nastavovat a resetovat informace o metodě ověření pro jak
 Můžou Spravovat přiřazení rolí ve službě Azure AD a všechny aspekty služby Privileged Identity Management.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -968,7 +968,7 @@ Můžou Spravovat přiřazení rolí ve službě Azure AD a všechny aspekty slu
 Může číst sestavy o přihlašování a auditech.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -984,7 +984,7 @@ Může číst sestavy o přihlašování a auditech.
 Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve službě Azure AD a Office 365.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1013,7 +1013,7 @@ Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve slu
 Může číst bezpečnostní údaje a sestavy v Azure AD a Office 365.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1033,7 +1033,7 @@ Může číst bezpečnostní údaje a sestavy v Azure AD a Office 365.
 Může číst informace o stavu služby a spravovat lístky podpory.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1049,7 +1049,7 @@ Může číst informace o stavu služby a spravovat lístky podpory.
 Může spravovat všechny aspekty služby SharePoint.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1072,7 +1072,7 @@ Může spravovat všechny aspekty služby SharePoint.
 Může spravovat funkce volání a schůzek ve službě Microsoft Teams.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1089,7 +1089,7 @@ Může spravovat funkce volání a schůzek ve službě Microsoft Teams.
 Může řešit potíže s komunikací ve službě Teams pomocí rozšířených nástrojů.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1103,7 +1103,7 @@ Může řešit potíže s komunikací ve službě Teams pomocí rozšířených 
 Může řešit potíže s komunikací ve službě Teams pomocí základních nástrojů.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1117,7 +1117,7 @@ Může řešit potíže s komunikací ve službě Teams pomocí základních ná
 Může spravovat službu Microsoft Teams.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 

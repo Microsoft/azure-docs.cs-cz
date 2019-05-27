@@ -5,18 +5,18 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 09/05/2018
+ms.date: 05/20/2019
 ms.author: lbosq
-ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f5d90f8b825b7076a1a5122dbef3c8b2990e216
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888620"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954257"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Gremlin API
 
-[Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba s více modely od Microsoftu pro klíčové aplikace. Databáze pro více modelů podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. Rozhraní Gremlin API databáze Azure Cosmos DB se používá k ukládání dat grafu a práci s nimi. Rozhraní Gremlin API podporuje modelování dat grafu a nabízí rozhraní API k procházení dat grafu.
+[Azure Cosmos DB](introduction.md) je globálně distribuovaná a vícemodelová databázová služba od Microsoftu pro klíčové aplikace. Je vícemodelová databáze a podporuje dokument, klíč hodnota, graf a úložiště se sloupcovou strukturou datových modelů. Rozhraní Gremlin API databáze Azure Cosmos DB se používá k ukládání dat grafu a práci s nimi. Rozhraní Gremlin API podporuje modelování dat grafu a nabízí rozhraní API k procházení dat grafu.
 
 Tento článek obsahuje přehled rozhraní Gremlin API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Grafy můžete dotazovat s latencí v řádu milisekund a snadno rozvíjet strukturu a schéma grafu. K dotazování služby Azure Cosmos DB můžete použít jazyk pro procházení grafů [Apache TinkerPop](https://tinkerpop.apache.org) nebo [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 

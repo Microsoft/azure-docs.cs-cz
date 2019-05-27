@@ -2,20 +2,20 @@
 title: Připojovací řetězce pro službu Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Připojovací řetězce pro službu SQL Data Warehouse
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 057e412857feb39069c55bb9905c83dcea7cbd4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f7843714395664b98383c32911de40ca064779e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402645"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873635"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Připojovací řetězce pro službu Azure SQL Data Warehouse
 Můžete připojit k SQL Data Warehouse pomocí několika různých aplikačních protokolů, jako [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] a [JDBC][JDBC]. Níže je několik příkladů řetězců připojení pro každý protokol.  Na webu Azure portal můžete také použít k sestavení připojovacího řetězce.  Pokud chcete vytvořit váš připojovací řetězec pomocí webu Azure portal, přejděte do okna vaší databáze v části *Essentials* klikněte na *zobrazit databázové připojovací řetězce*.

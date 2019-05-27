@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2f3d08a32384cea815f096f51b24eea596d0d118
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871161"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949824"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Jak indexovat rozsáhlým datovým sadám ve službě Azure Search
 
@@ -67,7 +67,7 @@ Pro jiné rutiny, výpočetně náročné požadavky indexování – napříkla
 Paralelní zpracování má tyto prvky:
 
 + Rozdělit zdroje dat napříč více kontejnery nebo více virtuální složky uvnitř stejného kontejneru. 
-+ Mapovat každou mini datové sady do svého vlastního [zdroj dat.](https://docs.microsoft.com/rest/api/searchservice/create-data-source), spárované do svého vlastního [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
++ Mapovat každou mini datové sady do svého vlastního [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source), spárované do svého vlastního [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 + Pro kognitivního vyhledávání odkazují na stejný [dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) v každé definice indexeru.
 + Zápis do stejné cílovým indexem vyhledávání. 
 + Naplánujte všechny indexery ke spuštění ve stejnou dobu.

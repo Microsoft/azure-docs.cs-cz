@@ -8,12 +8,12 @@ ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 407e25b7bb1a2220448c9701bbef208195c50b63
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003693"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953110"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Správa datových prostředků ve službě Azure Data Catalog
 ## <a name="introduction"></a>Úvod
@@ -52,7 +52,7 @@ Pokud už ho vlastní datový prostředek, nemůže ostatním uživatelům jedno
 ### <a name="remove-owners"></a>Odebrat vlastníky
 Stejně jako jakékoli vlastník majetku můžete přidat spoluvlastníky, můžete odebrat všechny vlastník majetku jakékoli spoluvlastníka.
 
-Vlastníka prostředku, který odebere sebe jako vlastníka již nemůže spravovat assetu. Pokud neexistují žádné spoluvlastníků, vlastník majetku odebere sebe jako vlastníka prostředku se vrátí do nevlastněný stavu.
+Vlastníka prostředku, který odebere sami jako vlastníka již nemůže spravovat assetu. Pokud neexistují žádné spoluvlastníků, vlastník majetku odebere sami jako vlastníka prostředku se vrátí do nevlastněný stavu.
 
 ## <a name="control-visibility"></a>Přehled ovládacího prvku
 Vlastníky datového prostředku můžete řídit viditelnost datových prostředků, které vlastní. Chcete-li omezit viditelnost jako výchozí, ve kterém všichni uživatelé katalogu Data Catalog může zjištění a zobrazení datovému assetu, vlastník majetku můžete přepínat viditelnost nastavení z **Everyone** k **vlastníci a tito uživatelé** v vlastnosti pro prostředek. Vlastníci poté můžete přidat konkrétního uživatele a skupiny zabezpečení.

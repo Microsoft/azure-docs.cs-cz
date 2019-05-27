@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 9006590583f0ef52bbce716529534f8bce6f47c5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6516b11bf5d4d4c4e5406a3e6e0cce3189796d33
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780366"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956410"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI s ve službě Azure Kubernetes Service (AKS)
 
@@ -41,6 +41,7 @@ IP adresy pro uzly clusteru a podů přidělují v zadané podsíti ve virtuáln
 > Počet IP adres vyžaduje by měl obsahovat důležité informace o upgradu a operace škálování. Pokud nastavíte rozsah IP adres pro podporu pouze pevný počet uzlů, nelze upgradovat nebo škálování clusteru.
 >
 > - Pokud jste **upgradovat** clusteru AKS, nový uzel se nasadí do clusteru. Služby a úlohy začíná běžet na novém uzlu a starší uzel odebrán z clusteru. Tento proces postupného upgradu vyžaduje minimálně jeden další blok IP adres k dispozici. Počet vašich uzlu je pak `n + 1`.
+>   - Tento faktor je zvlášť důležité, pokud používáte fondy uzlů Windows serveru (aktuálně ve verzi preview ve službě AKS). Uzly Windows serveru ve službě AKS se nedá použít automatické aktualizace Windows, místo toho proveďte upgrade na fond uzlů. Tento upgrade nasadí nové uzly s nejnovější 2019 serveru okno základní uzel image a zabezpečení opravami. Další informace o upgradu fond uzlů Windows serveru, naleznete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 >
 > - Pokud jste **škálování** cluster AKS, nový uzel se nasadí do clusteru. Služby a úlohy začíná běžet na novém uzlu. Váš rozsah IP adres je potřeba zohlednit důležité informace, jak chcete vertikálně navýšit kapacitu počtu uzlů a podů, které cluster může podporovat. Jeden další uzel pro upgrade operace by měla být zahrnuty. Počet vašich uzlu je pak `n + number-of-additional-scaled-nodes-you-anticipate + 1`.
 
@@ -68,7 +69,7 @@ Maximální počet podů na jeden uzel v clusteru AKS je 250. *Výchozí* maxim�
 
 ### <a name="configure-maximum---new-clusters"></a>Nakonfigurujte maximální - nových clusterů
 
-Budete moct nakonfigurovat maximální počet podů na uzel *pouze v době nasazení clusteru*. Pokud nasadíte pomocí Azure CLI nebo pomocí šablony Resource Manageru, můžete nastavit maximální podů každý uzel hodnotu podle potřeby v rámci následující `maxPods` pokyny:
+Budete moct nakonfigurovat maximální počet podů na uzel *pouze v době nasazení clusteru*. Pokud provádíte nasazení pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Resource Manageru, můžete nastavit maximální podů každý uzel hodnotu až 250.
 
 | Sítě | Minimální | Maximum |
 | -- | :--: | :--: |
@@ -76,8 +77,7 @@ Budete moct nakonfigurovat maximální počet podů na uzel *pouze v době nasaz
 | Kubenet | 30 | 110 |
 
 > [!NOTE]
-> Minimální hodnota v tabulce výše se vynucuje striktně službou AKS.
-Nelze nastavit hodnotu maxPods nižší než minimální jako to uděláte tak můžete zabránit clusteru spuštění.
+> Minimální hodnota v tabulce výše se vynucuje striktně službou AKS. Nelze nastavit hodnotu maxPods nižší než minimální jako to uděláte tak můžete zabránit clusteru spuštění.
 
 * **Azure CLI**: Zadejte `--max-pods` argument při nasazování clusteru s [az aks vytvořit] [ az-aks-create] příkazu. Maximální hodnota je 250.
 * **Šablony Resource Manageru**: Zadejte `maxPods` vlastnost [ManagedClusterAgentPoolProfile] objektu při nasazování clusteru pomocí šablony Resource Manageru. Maximální hodnota je 250.
@@ -114,7 +114,7 @@ Při vytváření clusteru AKS pomocí Azure CLI můžete také nakonfigurovat A
 
 Nejprve Získejte ID prostředku podsítě pro existující podsíť, do které budou připojeny clusteru AKS:
 
-```console
+```azurecli-interactive
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
@@ -125,7 +125,7 @@ $ az network vnet subnet list \
 
 Použití [az aks vytvořit] [ az-aks-create] příkazů `--network-plugin azure` argument k vytvoření clusteru pomocí rozšířeného sítě. Aktualizace `--vnet-subnet-id` hodnotu s ID podsítě shromážděných v předchozím kroku:
 
-```azurecli
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -133,7 +133,8 @@ az aks create \
     --vnet-subnet-id <subnet-id> \
     --docker-bridge-address 172.17.0.1/16 \
     --dns-service-ip 10.2.0.10 \
-    --service-cidr 10.2.0.0/24
+    --service-cidr 10.2.0.0/24 \
+    --generate-ssh-keys
 ```
 
 ## <a name="configure-networking---portal"></a>Konfigurace sítě – portál
@@ -211,3 +212,4 @@ Clustery Kubernetes vytvořili pomocí modulu AKS podporovat [kubenet] [ kubenet
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -8,12 +8,12 @@ ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 3a66c8c5963972828723dd74ffe560a0e2240165
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001932"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953183"
 ---
 # <a name="how-to-annotate-data-sources"></a>Postup přidání poznámek ke zdrojům dat
 ## <a name="introduction"></a>Úvod
@@ -27,9 +27,9 @@ Data Catalog rozpozná, že různí uživatelé mají různých perspektiv na po
 * Správce databáze ví plán zálohování pro všechny databáze a systému windows povolené zpracování ETL.
 * Vlastníka systému ví, uživatelé můžou žádat o přístup ke zdroji dat procesu.
 * Společnosti steward data ví, jak namapovat prostředky a atributy ve zdroji dat do datového modelu enterprise.
-* Analytik ví, jak se používají data v rámci obchodní procesy, které mu podporuje.
+* Analytik ví, jak se používají data v rámci obchodní procesy, které podporují.
 
-Každá z těchto perspektiv je vhodné a Data Catalog používá crowdsourcingový přístup k metadatům, která umožňuje každému z nich zachytit a poskytne ucelený přehled o registrovaných datových zdrojů. Pomocí portálu pro katalog dat, každý uživatel přidávat a upravovat své vlastní poznámky, nebudou moct zobrazit poznámky k dispozici jinými uživateli.
+Každá z těchto perspektiv je vhodné a Data Catalog používá crowdsourcingový přístup k metadatům, která umožňuje každému z nich zachytit a poskytne ucelený přehled o registrovaných datových zdrojů. Pomocí portálu pro Data Catalog, každý uživatel přidávat a upravovat své vlastní poznámky, nebudou moct zobrazit poznámky k dispozici jinými uživateli.
 
 ## <a name="different-types-of-annotations"></a>Různé druhy poznámky
 Data Catalog podporuje následující typy poznámky:

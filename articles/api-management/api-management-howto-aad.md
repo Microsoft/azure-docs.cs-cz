@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 422c2a8a61b1df36b452c153aa6cd78ba7e2dcef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d267ff3a43438d9fe6e4e21f0ac023cfa6675f19
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723639"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956299"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorizace vývojářských účtů pomocí Azure AD
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Vyberte ![šipka](./media/api-management-howto-aad/arrow.png).
+2. Vybrat ![šipka](./media/api-management-howto-aad/arrow.png).
 3. Typ **api** do vyhledávacího pole.
 4. Vyberte **služby API Management**.
 5. Vyberte instanci služby API Management.
@@ -61,21 +61,22 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 14.  Po registraci aplikace zkopírovat **ID aplikace (klient)** z **přehled** stránky. 
 15. Vraťte se do instance služby API Management. V **přidat zprostředkovatele identity** okně Vložit **ID aplikace (klient)** hodnoty do **ID klienta** pole.
 16. Přepněte zpět do konfigurace služby Azure AD, vyberte **certifikáty a tajné kódy** pod **spravovat**. Vyberte **nový tajný kód klienta** tlačítko. Zadejte hodnotu do **popis**, vyberte možnosti pro **Expires** a zvolte **přidat**. Zkopírujte hodnotu tajného kódu klienta před opuštěním stránky. Budete je potřebovat v dalším kroku. 
-17. Vraťte se do instance služby API Management, vložte tajný klíč do **tajný kód klienta** pole.
+17. V části **spravovat**vyberte **ověřování** a pak vyberte **tokeny typu ID** pod **implicitní udělení**
+18. Vraťte se do instance služby API Management, vložte tajný klíč do **tajný kód klienta** pole.
 
     > [!IMPORTANT]
     > Zkontrolujte prosím, že aktualizace **tajný kód klienta** vypršení platnosti klíče. 
     >  
     >
 
-18. **Přidat zprostředkovatele identity** okno obsahuje také **povolené Tenantů** textového pole. Existuje zadejte domény instancí Azure AD, ke kterým chcete udělit přístup k rozhraním API instance služby API Management. Více domén můžete oddělit vložení znaků newline, mezerami nebo čárkami.
+19. **Přidat zprostředkovatele identity** okno obsahuje také **povolené Tenantů** textového pole. Existuje zadejte domény instancí Azure AD, ke kterým chcete udělit přístup k rozhraním API instance služby API Management. Více domén můžete oddělit vložení znaků newline, mezerami nebo čárkami.
 
 > [!NOTE]
 > Můžete zadat více doménách **povolené Tenantů** části. Než každý uživatel může přihlásit z jiné domény než původní doménu, ve kterém byl zaregistrován aplikace, globálním správcem jiné doméně, musí udělit oprávnění pro aplikaci pro přístup k datům adresáře. Udělení oprávnění globálního správce by měl:. Přejděte na `https://<URL of your developer portal>/aadadminconsent` (například https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Zadejte název domény, které chtějí poskytnout přístup k tenantovi Azure AD.
 > c. Vyberte **odeslat**. 
 
-19.  Po zadání požadované konfigurace, vyberte **přidat**.
+20.  Po zadání požadované konfigurace, vyberte **přidat**.
 
 Po uložení změn, uživatelů ve službě Azure AD zadané instance můžete přihlásit k portálu pro vývojáře pomocí následujících kroků v [přihlásit k portálu pro vývojáře pomocí účtu služby Azure AD](#log_in_to_dev_portal).
 

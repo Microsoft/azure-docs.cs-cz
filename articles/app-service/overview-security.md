@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838956"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955741"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
 
@@ -105,7 +105,7 @@ Mít bezpečný přístup k místním prostředkům, jako jsou databáze, třemi
 
 ## <a name="application-secrets"></a>Tajných klíčů aplikací
 
-Neukládejte tajných klíčů aplikací, jako je například přihlašovací údaje databáze, tokeny rozhraní API a privátní klíče do kódu nebo konfiguračního souboru. Obecně uznávaný přístup je pro přístup k nim jako [proměnné prostředí](https://wikipedia.org/wiki/Environment_variable) standardním způsobem v jazyce podle výběru. Ve službě App Service, je způsob, jak definovat proměnné prostředí prostřednictvím [nastavení aplikace](web-sites-configure.md#app-settings) (a hlavně pro aplikace .NET, [připojovací řetězce](web-sites-configure.md#connection-strings)). Nastavení aplikace a připojovacích řetězců jsou uloženy v zašifrované podobě v Azure a máte dešifrovat jenom před se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče jsou pravidelně otočen.
+Neukládejte tajných klíčů aplikací, jako je například přihlašovací údaje databáze, tokeny rozhraní API a privátní klíče do kódu nebo konfiguračního souboru. Obecně uznávaný přístup je pro přístup k nim jako [proměnné prostředí](https://wikipedia.org/wiki/Environment_variable) standardním způsobem v jazyce podle výběru. Ve službě App Service, je způsob, jak definovat proměnné prostředí prostřednictvím [nastavení aplikace](configure-common.md#configure-app-settings) (a hlavně pro aplikace .NET, [připojovací řetězce](configure-common.md#configure-connection-strings)). Nastavení aplikace a připojovacích řetězců jsou uloženy v zašifrované podobě v Azure a máte dešifrovat jenom před se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče jsou pravidelně otočen.
 
 Alternativně můžete integrovat aplikace služby App Service s využitím [Azure Key Vault](/azure/key-vault/) pro správu rozšířené tajných kódů. Podle [přístup k trezoru klíčů na spravovanou identitu](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace app Service mít bezpečný přístup, tajné kódy, které potřebujete.
 

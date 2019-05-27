@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381263"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950826"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategie přijetí životního cyklu hybridní identity
 V této úloze budete definovat strategie správy identit pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v [určit úlohy správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -42,7 +42,7 @@ Pomocí řešení správy přístupu vhodné účet vaší organizace můžete s
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 Přístup na základě rolí používá role (RBAC) řídit a zřizování zásad k vyhodnocení, testování a vynucování obchodních procesů a pravidel pro udělení přístupu uživatelům. Klíče správci vytvořit zásady zřizování a přiřazení uživatelů k rolím a, které definují sadu oprávnění k prostředkům pro tyto role. RBAC rozšiřuje řešení správy identit použijte procesy na software a snížit ručního zásahu uživatele v procesu zřizování.
-Azure AD RBAC umožňuje společnosti chcete omezit počet operací, které jednotlivec můžete dělat, když má přístup k webu Azure portal. Pomocí RBAC pro řízení přístupu k portálu správce IT certifikační autority delegovat přístup pomocí následujících postupů správy přístupu:
+Azure AD RBAC umožňuje společnosti chcete omezit počet operací, které můžete provést jednotlivec, jakmile budou mít přístup k webu Azure portal. Pomocí RBAC pro řízení přístupu k portálu správce IT certifikační autority delegovat přístup pomocí následujících postupů správy přístupu:
 
 * **Přiřazení role na základě skupin**: Přístup můžete přiřadit skupinám Azure AD, které se synchronizují z vaší místní služby Active Directory. To umožňuje využít stávající investice, které vaše organizace provedla v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny pro správu služby Azure AD Premium.
 * **Využijte vestavěné role v Azure**: Můžete použít tři role – vlastník, Přispěvatel a Čtenář, ujistěte se, že uživatelé a skupiny mají oprávnění pouze úlohy, které potřebují ke své práci.
@@ -86,7 +86,7 @@ Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uži
 
 Na následujícím obrázku je příklad souhrnný přehled procesu synchronizace identit.
 
-![Sync](./media/plan-hybrid-identity-design-considerations/identitysync.png)
+![Synchronizovat](./media/plan-hybrid-identity-design-considerations/identitysync.png)
 
 Procesu synchronizace identit
 

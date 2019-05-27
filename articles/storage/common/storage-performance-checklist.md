@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 904b9b8ba98be5e14b1d769a0e1d8c2d6084e24d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477284"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951169"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
 Od verze služby Microsoft Azure Storage Microsoft vyvinul několik osvědčených postupů pro použití těchto služeb v podobě výkonných a tento článek slouží ke sloučení vašich nejdůležitějších z nich do kontrolní seznam ve stylu seznamu. Záměr tohoto článku je k ověření, že používají osvědčených postupů pomocí služby Azure Storage vývojářům aplikací pomáhá a aby to pomohl ostatním identifikovat dalších osvědčených postupů, zvažte využití. Tento článek nebude pokoušet o zahrnují všechny možné optimalizace výkonu a škálovatelnosti – ty, které jsou malá v jejich dopadu nebo lze široce aplikovat vyloučí. Do té míry, že během návrhu lze předpovídat chování aplikace, je vhodné ponechat v paměti již v rané fázi k Vyhněte se návrhům, které se spustí o problémech s výkonem.  
 
-Všem vývojářům aplikací pomocí služby Azure Storage zabere čas v tomto článku a zkontrolujte, že jeho aplikace následuje všech osvědčených postupů uvedených níže.  
+Všem vývojářům aplikací pomocí služby Azure Storage zabere čas v tomto článku a zkontrolujte, že jejich aplikace následuje všech osvědčených postupů uvedených níže.  
 
 ## <a name="checklist"></a>Kontrolní seznam
 Tento článek slouží k uspořádání osvědčených postupů do následujících skupin. Osvědčené postupy platí pro:  
@@ -29,7 +29,7 @@ Tento článek slouží k uspořádání osvědčených postupů do následujíc
 * Tabulky
 * Fronty  
 
-| Hotovo | Oblast | Kategorie | Otázka |
+| Hotovo | Oblast | Category | Otázka |
 | --- | --- | --- | --- |
 | &nbsp; | Všechny služby |Cíle škálovatelnosti |[Je vaše aplikace navržená tak, aby blíží cíle škálovatelnosti?](#subheading1) |
 | &nbsp; | Všechny služby |Cíle škálovatelnosti |[Slouží k povolení lepší služby Vyrovnávání zatížení svých zásad vytváření názvů?](#subheading47) |
@@ -38,8 +38,8 @@ Tento článek slouží k uspořádání osvědčených postupů do následujíc
 | &nbsp; | Všechny služby |Sítě |[Klientská aplikace se nachází "u" účet úložiště?](#subheading4) |
 | &nbsp; | Všechny služby |Distribuce obsahu |[Používáte pro distribuci obsahu CDN?](#subheading5) |
 | &nbsp; | Všechny služby |Přímý přístup do klienta |[Používáte umožňující přímý přístup k úložišti místo proxy SAS a CORS?](#subheading6) |
-| &nbsp; | Všechny služby |Ukládání do mezipaměti |[Je vaše aplikace ukládání do mezipaměti dat, který se opakovaně používá změny jen zřídka?](#subheading7) |
-| &nbsp; | Všechny služby |Ukládání do mezipaměti |[Je vaše aplikace dávkové aktualizace (je do mezipaměti na straně klienta a odesláním v větší sady)?](#subheading8) |
+| &nbsp; | Všechny služby |Mezipaměť |[Je vaše aplikace ukládání do mezipaměti dat, který se opakovaně používá změny jen zřídka?](#subheading7) |
+| &nbsp; | Všechny služby |Mezipaměť |[Je vaše aplikace dávkové aktualizace (je do mezipaměti na straně klienta a odesláním v větší sady)?](#subheading8) |
 | &nbsp; | Všechny služby |.NET Configuration |[Nakonfigurovali jste vašeho klienta pro použití dostatečný počet souběžných připojení?](#subheading9) |
 | &nbsp; | Všechny služby |.NET Configuration |[Nakonfigurovali jste .NET použijte dostatečný počet vláken?](#subheading10) |
 | &nbsp; | Všechny služby |.NET Configuration |[Používáte .NET 4.5 nebo novější, která zvýšil uvolňování paměti?](#subheading11) |
@@ -159,7 +159,7 @@ Další informace o SAS najdete v tématu [sdílené přístupové podpisy, čá
 
 Další informace o CORS, najdete v části [podporu sdílení prostředků mezi zdroji (CORS) pro služby Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
-### <a name="caching"></a>Ukládání do mezipaměti
+### <a name="caching"></a>Mezipaměť
 #### <a name="subheading7"></a>Získání dat
 Po získání dat ze služby je obecně lepší než dvakrát pro spolupráci. Podívejte se na příklad z webové aplikace MVC s ve webové roli, která již načtena 50 MB blob ze služby storage, která bude sloužit jako obsah pro uživatele. Aplikace může potom získá tohoto stejného objektu blob pokaždé, když si uživatel vyžádá ji nebo ji může ukládat do mezipaměti je místně na disk a opakovaně používat jeho verzi v mezipaměti pro následné požadavky uživatelů. Kromě toho vždy, když si uživatel vyžádá data, aplikace by mohla vydávání příkazů GET s podmíněnou hlavičku pro čas změny, které by se tak získání celého objektu blob, pokud byl změněn. Práce s entitami tabulku můžete použít tento stejný vzor.  
 

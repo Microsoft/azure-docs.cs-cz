@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: d0479b834f814616e44a1888ab8b958990610820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611704"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951771"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Vynutit ověřování Multi-Factor Authentication (MFA) pro správce předplatného
 
@@ -22,7 +22,7 @@ Při vytváření vašeho správce, včetně vašeho účtu globálního správc
 Běžné úkony správy můžete provést pomocí přiřazení rolí správce konkrétní – třeba hesla správce nebo správce systému Exchange – pro uživatelské účty všech zaměstnanců IT podle potřeby.
 Kromě toho umožňuje [Azure Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) správce přidá druhou vrstvu zabezpečení uživatelská přihlášení a transakce. Azure MFA pomáhá také IT snížit pravděpodobnost, že ohrožení zabezpečení přihlašovacích údajů budou mít přístup k datům organizace.
 
-Příklad: Vynutit Azure MFA pro uživatele a nakonfigurujte ho na použití jako ověřovací prostřednictvím telefonního hovoru nebo textové zprávy. Pokud dojde k ohrožení přihlašovacích údajů uživatele, útočník nebudou mít přístup k jakémukoli prostředku, protože nebude mít přístup k telefonu uživatele. Organizace, které nepřidáte další vrstvy ochrany identit budou náchylnější k útoku krádeží přihlašovacích údajů, což může vést k ohrožení dat.
+Příklad: Vynucení vícefaktorového ověřování Azure pro vaše uživatele a nakonfigurujte ho na použití jako ověřovací prostřednictvím telefonního hovoru nebo textové zprávy. Pokud dojde k ohrožení přihlašovacích údajů uživatele, útočník nebudou mít přístup k jakémukoli prostředku, protože nebudou mít přístup k telefonu uživatele. Organizace, které nepřidáte další vrstvy ochrany identit budou náchylnější k útoku krádeží přihlašovacích údajů, což může vést k ohrožení dat.
 
 Pro organizace, které chcete zachovat ověřování celý ovládací prvek místní jeden alternativou je použití [Azure Multi-Factor Authentication Server](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-server), také nazývané "MFA v místním". Pomocí této metody bude stále budete moci vynutit ověřování Multi-Factor Authentication, a zajistit přitom ochranu MFA serveru v místním prostředí.
 

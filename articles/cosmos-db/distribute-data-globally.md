@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: b90e495e0901c0caa14d9451f365e17f6c075e2b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/20/2019
+ms.openlocfilehash: e58a8cd286e4d416dd5f4e6d3fddedf1897fed1c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65070791"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954171"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB – přehled
 
@@ -21,7 +21,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba, která zajiš
 
 Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure. Snížit latenci, umístění dat blízko kde jsou vaši uživatelé. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Cosmos DB transparentně replikuje data do všech oblastí, přidružených k účtu Cosmos. Poskytuje jeden systémový obraz globálně distribuovanou databázi Azure Cosmos a kontejnerů, které vaše aplikace může číst a zapisovat do místně. 
 
-Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli možnostmi multihomingu, které nativně poskytuje službu.
+Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. K přidání nebo odebrání oblasti se nevyžaduje pozastavení ani opětovné nasazení vaší aplikace. Pokračuje k zajištění vysoké dostupnosti neustále kvůli možnostmi multihomingu, které nativně poskytuje službu.
 
 ![Topologie nasazení s vysokou dostupností](./media/distribute-data-globally/deployment-topology.png)
 

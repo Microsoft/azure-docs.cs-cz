@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2d57e619ec17e183bc8c9bb155f3e111f43b85f1
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138131"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952487"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows do Azure monitoru
 
@@ -54,9 +54,9 @@ Před instalací agenta Log Analytics pro Windows, budete potřebovat ID pracovn
 Konfigurace používání [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokol pro komunikaci mezi agentem Windows a službě Log Analytics, můžete postupovat podle postupem uvedeným níže povolte předtím, než je agent nainstalovaný na virtuálním počítači nebo později.   
 
 1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
-2. Vytvořit podklíč pod **protokoly** pro TLS 1.2 **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
-3. Vytvoření **klienta** podklíče pod podklíčem verze protokolu TLS 1.2 jste vytvořili dříve. Například **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
-4. Vytvořte následující hodnoty DWORD pod **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
+2. Vytvořit podklíč pod **protokoly** pro TLS 1.2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
+3. Vytvoření **klienta** podklíče pod podklíčem verze protokolu TLS 1.2 jste vytvořili dříve. Například **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
+4. Vytvořte následující hodnoty DWORD pod **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
 
     * **Povolené** [hodnota = 1]
     * **DisabledByDefault** [hodnota = 0]  

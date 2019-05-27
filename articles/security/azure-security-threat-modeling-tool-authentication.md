@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610884"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951707"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpečení rámce: Ověřování | Zmírnění rizik 
 
@@ -41,7 +41,7 @@ ms.locfileid: "60610884"
 
 ## <a id="standard-authn-web-app"></a>Zvažte možnost použít standardní ověřovací mechanismus ověřování do webové aplikace
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -52,7 +52,7 @@ ms.locfileid: "60610884"
 
 ## <a id="handle-failed-authn"></a>Aplikace musí zvládnout bezpečně scénáře selhání ověření
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -63,7 +63,7 @@ ms.locfileid: "60610884"
 
 ## <a id="step-up-adaptive-authn"></a>Povolit krok nahoru nebo Adaptivní ověřování
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -74,7 +74,7 @@ ms.locfileid: "60610884"
 
 ## <a id="admin-interface-lockdown"></a>Ujistěte se, že jsou správně uzamčena rozhraní pro správu
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -85,7 +85,7 @@ ms.locfileid: "60610884"
 
 ## <a id="forgot-pword-fxn"></a>Implementace zapomněli jste heslo funkce bezpečně
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -96,18 +96,18 @@ ms.locfileid: "60610884"
 
 ## <a id="pword-account-policy"></a>Ujistěte se, že jsou implementovány zásady hesla a účtu
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| Podrobnosti | <p>Zásady účet a heslo v souladu s organizační zásady a osvědčené postupy by měla být implementována.</p><p>Chcete-li chránit před útoky hrubou silou a opakovaně uhodnout slovníku na základě: Chcete-li zajistit, aby uživatelé vytvářet složité heslo (například minimální délku 12 znaky, alfanumerické a speciální znaky) musí být implementované zásady silné heslo.</p><p>Zásady uzamčení účtu může implementovat následujícím způsobem:</p><ul><li>**Obnovitelně uzamčení:** To může být dobrou volbou pro ochranu před útoky hrubou silou vaši uživatelé. Například pokaždé, když uživatel zadá chybné heslo třikrát aplikace může zamknout účet minutu Pokud chcete zpomalit proces hrubou vynucení jeho hesla. Díky tomu je méně ziskové útočníkovi, aby bylo možné pokračovat. Pokud byste chtěli implementace pevné protiopatření uzamčení v tomto příkladu by dosáhnout "DOS" podle trvale uzamčení účtů. Alternativně může aplikace generovat ověřování jednorázovým HESLEM (jeden čas heslo) a odesílají je out-of-band (prostřednictvím e-mailu, sms atd.) pro uživatele. K implementaci test CAPTCHA. po dosažení prahové hodnoty počtu neúspěšných pokusů o přihlášení může být jiný přístup.</li><li>**Pevné uzamčení:** Tento typ uzamčení bude použito při každém zjištění napadení svoji aplikaci a čítač mu prostřednictvím trvale uzamčení jeho účet, dokud odpovědi tým měl čas jejich forenzní uživatele. Po dokončení tohoto procesu můžete dát uživateli zpět jeho účet nebo provést další právní akce proti mu. Tento typ přístupu přináší útočník zabrání další pronikající svoji aplikaci a infrastruktuře.</li></ul><p>Chránit před útoky zaměřenými na výchozí a předvídatelné účty, ověřte, že všechny klíče a hesla replaceable a jsou vygenerována nebo nahradit po instalaci.</p><p>Pokud má aplikace pro automatické generování hesel, zajistěte, aby vygenerované hesla se náhodný a mají vysokou entropie.</p>|
+| Podrobnosti | <p>Zásady účet a heslo v souladu s organizační zásady a osvědčené postupy by měla být implementována.</p><p>Chcete-li chránit před útoky hrubou silou a opakovaně uhodnout slovníku na základě: Chcete-li zajistit, aby uživatelé vytvářet složité heslo (například minimální délku 12 znaky, alfanumerické a speciální znaky) musí být implementované zásady silné heslo.</p><p>Zásady uzamčení účtu může implementovat následujícím způsobem:</p><ul><li>**Obnovitelně uzamčení:** To může být dobrou volbou pro ochranu před útoky hrubou silou vaši uživatelé. Například pokaždé, když uživatel zadá chybné heslo třikrát aplikace může zamknout účet minutu Pokud chcete zpomalit proces hrubou vynucení hesla díky tomu je méně ziskové útočníkovi, aby bylo možné pokračovat. Pokud byste chtěli implementace pevné protiopatření uzamčení v tomto příkladu by dosáhnout "DOS" podle trvale uzamčení účtů. Alternativně může aplikace generovat ověřování jednorázovým HESLEM (jeden čas heslo) a odesílají je out-of-band (prostřednictvím e-mailu, sms atd.) pro uživatele. K implementaci test CAPTCHA. po dosažení prahové hodnoty počtu neúspěšných pokusů o přihlášení může být jiný přístup.</li><li>**Pevné uzamčení:** Tento typ uzamčení bude použito při každém zjištění napadení svoji aplikaci a čítač je prostřednictvím trvale uzamčení účtu do odpovědi tým měl čas jejich forenzní uživatele. Po dokončení tohoto procesu můžete dát uživateli zpět svůj účet nebo provést další právní akce před nimi. Tento typ přístupu přináší útočník zabrání další pronikající svoji aplikaci a infrastruktuře.</li></ul><p>Chránit před útoky zaměřenými na výchozí a předvídatelné účty, ověřte, že všechny klíče a hesla replaceable a jsou vygenerována nebo nahradit po instalaci.</p><p>Pokud má aplikace pro automatické generování hesel, zajistěte, aby vygenerované hesla se náhodný a mají vysokou entropie.</p>|
 
 ## <a id="controls-username-enum"></a>Implementace ovládacích prvků, aby se zabránilo výčet uživatelské jméno
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -118,7 +118,7 @@ ms.locfileid: "60610884"
 
 ## <a id="win-authn-sql"></a>Pokud je to možné, používejte ověřování Windows pro připojení k serveru SQL Server
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -129,7 +129,7 @@ ms.locfileid: "60610884"
 
 ## <a id="aad-authn-sql"></a>Pokud je to možné, použijte ověřování Azure Active Directory pro připojení k SQL Database
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -140,7 +140,7 @@ ms.locfileid: "60610884"
 
 ## <a id="authn-account-pword"></a>Při použití režimu ověřování SQL, ujistěte se, že účet a heslo, zásady se vynucují na SQL serveru
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -151,7 +151,7 @@ ms.locfileid: "60610884"
 
 ## <a id="autn-contained-db"></a>Nepoužívejte ověřování serveru SQL v databázích s omezením
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -162,7 +162,7 @@ ms.locfileid: "60610884"
 
 ## <a id="authn-sas-tokens"></a>Podle zařízení ověřování přihlašovacích údajů a tokeny SaS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Centrum událostí Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -173,7 +173,7 @@ ms.locfileid: "60610884"
 
 ## <a id="multi-factor-azure-admin"></a>Povolit ověřování Azure Multi-Factor Authentication pro správce Azure
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Azure | 
 | **SDL fáze**               | Nasazení |  
@@ -184,7 +184,7 @@ ms.locfileid: "60610884"
 
 ## <a id="anon-access-cluster"></a>Omezit anonymní přístup ke clusteru Service Fabric
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Nasazení |  
@@ -195,7 +195,7 @@ ms.locfileid: "60610884"
 
 ## <a id="fabric-cn-nn"></a>Ujistěte se, že certifikát klienta uzlu Service Fabric se liší od certifikátu mezi uzly
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Nasazení |  
@@ -206,7 +206,7 @@ ms.locfileid: "60610884"
 
 ## <a id="aad-client-fabric"></a>Použít AAD k ověřování klientů pro clustery service fabric
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Nasazení |  
@@ -217,7 +217,7 @@ ms.locfileid: "60610884"
 
 ## <a id="fabric-cert-ca"></a>Ujistěte se, že service fabric certifikáty jsou získány z schválené certifikační autority (CA)
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Nasazení |  
@@ -228,7 +228,7 @@ ms.locfileid: "60610884"
 
 ## <a id="standard-authn-id"></a>Použít standardní ověřovací scénáře podporované serverem Identity
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Sestavení |  
@@ -239,7 +239,7 @@ ms.locfileid: "60610884"
 
 ## <a id="override-token"></a>Přepsat výchozí token mezipaměti serveru identit se škálovatelnou alternativu
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Nasazení |  
@@ -250,7 +250,7 @@ ms.locfileid: "60610884"
 
 ## <a id="binaries-signed"></a>Ujistěte se, že binární soubory nasazené aplikace jsou digitálně podepsané
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -261,7 +261,7 @@ ms.locfileid: "60610884"
 
 ## <a id="msmq-queues"></a>Povolení ověřování při připojování ke službě MSMQ fronty ve WCF
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -301,7 +301,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 ## <a id="message-none"></a>Nebyl typ clientCredentialType zpráv WCF není nastavený na hodnotu none
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -317,7 +317,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 ## <a id="transport-none"></a>Nebyl typ clientCredentialType přenosu WCF není nastavený na hodnotu none
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -333,9 +333,9 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 ## <a id="authn-secure-api"></a>Ujistěte se, že standardní ověřování techniky se používají k zabezpečení webových rozhraní API
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
@@ -344,7 +344,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 ## <a id="authn-aad"></a>Použít standardní ověřovací scénáře podporované službou Azure Active Directory
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure AD | 
 | **SDL fáze**               | Sestavení |  
@@ -355,7 +355,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 ## <a id="adal-scalable"></a>Přepsat výchozí mezipaměť tokenů ADAL s škálovatelnou alternativu
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure AD | 
 | **SDL fáze**               | Sestavení |  
@@ -366,7 +366,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 ## <a id="tokenreplaycache-adal"></a>Ujistěte se, že TokenReplayCache se používá při prevenci opakování tokenů ověřování ADAL
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure AD | 
 | **SDL fáze**               | Sestavení |  
@@ -427,7 +427,7 @@ Pamatujte, že otestovat efektivitu této konfigurace, přihlaste se k místní 
 
 ## <a id="adal-oauth2"></a>Spravovat žádosti o tokeny od klientů OAuth2 k AAD pomocí knihovny ADAL (nebo místní AD)
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure AD | 
 | **SDL fáze**               | Sestavení |  
@@ -438,7 +438,7 @@ Pamatujte, že otestovat efektivitu této konfigurace, přihlaste se k místní 
 
 ## <a id="authn-devices-field"></a>Ověřování zařízení připojování k bráně pole
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Sestavení |  
@@ -449,7 +449,7 @@ Pamatujte, že otestovat efektivitu této konfigurace, přihlaste se k místní 
 
 ## <a id="authn-devices-cloud"></a>Ujistěte se, že se ověření zařízení připojující se k Cloudová brána
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  
@@ -549,7 +549,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="authn-cred"></a>Použít pověření ověřování podle zařízení
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | IoT Cloud Gateway  | 
 | **SDL fáze**               | Sestavení |  
@@ -560,7 +560,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="req-containers-anon"></a>Ujistěte se, že jsou uvedeny pouze požadované kontejnerům a objektům BLOB anonymní přístup pro čtení
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -571,7 +571,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="limited-access-sas"></a>Udělit omezený přístup k objektům ve službě Azure storage pomocí SAS nebo SAP
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  

@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 9026b561f52b2d43fff2d3e36ba569d7b62a4684
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 8a0fe87703c9fb471174c761a6e8296e6e7a37ec
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069025"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952100"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Řešení problémů s připojením ke službě Azure Database for PostgreSQL – jeden Server
 
@@ -53,7 +53,7 @@ Pokud aplikace trvale nepodaří připojit ke službě Azure Database for Postgr
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroky při řešení problémů trvalého připojení
 
 1. Nastavit [pravidla brány firewall](howto-manage-firewall-using-portal.md) by klientovi umožňoval IP adresu. Pro dočasné pouze pro účely testování nastavte pravidla brány firewall pomocí 0.0.0.0 jako počáteční IP adresa a jako koncovou IP adresu použijete 255.255.255.255. Otevře se server pro všechny IP adresy. Pokud to řeší problém s připojením, odeberte toto pravidlo a vytvořte pravidlo brány firewall pro odpovídajícím způsobem omezené IP adresu nebo rozsah adres.
-2. Na všechny brány firewall mezi klientem a Internetu Ujistěte se, že port 3306 je otevřený pro odchozí připojení.
+2. Na všechny brány firewall mezi klientem a Internetu Ujistěte se, že port 5432 je otevřený pro odchozí připojení.
 3. Ověřte připojovací řetězec a další nastavení připojení.
 4. Kontrola stavu služeb v řídicím panelu. Pokud si myslíte, dojde k oblastnímu výpadku, přečtěte si téma [přehled kontinuity obchodních procesů ve službě Azure Database for PostgreSQL](concepts-business-continuity.md) pokyny k obnovení do nové oblasti.
 

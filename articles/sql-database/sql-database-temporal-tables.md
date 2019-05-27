@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbb2458e73330a09124c00cebe3eb7bcaba5408d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614109"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951497"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasnými tabulkami ve službě Azure SQL Database
 
@@ -109,7 +109,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Pravidelně spouštět vaše úlohy
 Hlavní výhodou dočasných tabulek je, že není nutné změnit nebo upravit svůj web v žádný způsob, jak provádět sledování změn. Po vytvoření dočasných tabulek se transparentně zachovat předchozí verze řádků pokaždé, když provedete změny na vašich datech. 
 
-Aby bylo možné plně využívat automatické sledování změn pro tento konkrétní scénář, teď právě aktualizovat sloupec **PagesVisited** pokaždé, když se po ukončení jeho/její relace na webu pro uživatele:
+Aby bylo možné plně využívat automatické sledování změn pro tento konkrétní scénář, teď právě aktualizovat sloupec **PagesVisited** pokaždé, když uživatel ukončí jejich relaci na webu:
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 

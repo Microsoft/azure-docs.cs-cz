@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853138"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956219"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití služby Key Vault odkazy pro App Service a Azure Functions (preview)
 
@@ -67,7 +67,7 @@ Další možností:
 
 ## <a name="source-application-settings-from-key-vault"></a>Nastavení zdroje aplikace z trezoru klíčů
 
-Odkazy na služby Key Vault můžete použít jako hodnoty pro [nastavení aplikace](web-sites-configure.md#app-settings), díky tomu můžete zachovat tajné kódy ve službě Key Vault místo konfiguraci webu. Nastavení aplikace jsou bezpečně v klidovém stavu zašifrovaná, ale pokud potřebujete možnosti správy tajných kódů, by měly patřit do služby Key Vault.
+Odkazy na služby Key Vault můžete použít jako hodnoty pro [nastavení aplikace](configure-common.md#configure-app-settings), díky tomu můžete zachovat tajné kódy ve službě Key Vault místo konfiguraci webu. Nastavení aplikace jsou bezpečně v klidovém stavu zašifrovaná, ale pokud potřebujete možnosti správy tajných kódů, by měly patřit do služby Key Vault.
 
 Použití služby Key Vault odkaz pro nastavení aplikace, nastavte odkaz jako hodnotu daného nastavení. Vaše aplikace může odkazovat na tajný kód prostřednictvím jeho klíč jako za normálních okolností. Nejsou potřeba žádné změny kódu.
 
