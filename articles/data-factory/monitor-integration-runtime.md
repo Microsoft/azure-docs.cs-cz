@@ -12,11 +12,11 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122615"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:
@@ -38,14 +38,14 @@ Rutina vrátí různé informace pro různé typy prostředí integration runtim
 ## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
 Výpočetní prostředek pro prostředí Azure integration runtime je plně spravovaná Elasticky v Azure. Následující tabulka obsahuje popis vlastností vrácené **Get-AzDataFactoryV2IntegrationRuntime** příkaz:
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnost
 Následující tabulka obsahuje popisy vlastností vrací rutina pro prostředí Azure integration runtime:
 
 | Vlastnost | Popis |
 -------- | ------------- | 
 | Název | Název modulu runtime integrace se službou Azure. |  
 | Stav | Stav prostředí Azure integration runtime. | 
-| Umístění | Umístění prostředí Azure integration runtime. Podrobnosti o umístění prostředí Azure integration runtime najdete v tématu [Úvod do prostředí integration runtime](concepts-integration-runtime.md). |
+| Location | Umístění prostředí Azure integration runtime. Podrobnosti o umístění prostředí Azure integration runtime najdete v tématu [Úvod do prostředí integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Název objektu pro vytváření dat, které patří prostředí Azure integration runtime. | 
 | ResourceGroupName | Název skupiny prostředků, které patří služby data factory.  |
 | Popis | Popis prostředí integration runtime.  |
@@ -64,7 +64,7 @@ Tato část obsahuje popis vlastností vrací Rutina Get-AzDataFactoryV2Integrat
 > [!NOTE] 
 > Vrácený vlastností a stavu obsahují informace o celkové místní prostředí integration runtime a každý uzel v modulu runtime.  
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnost
 
 Následující tabulka obsahuje popis vlastností pro monitorování **každý uzel**:
 
@@ -72,7 +72,7 @@ Následující tabulka obsahuje popis vlastností pro monitorování **každý u
 | -------- | ----------- | 
 | Název | Název místního prostředí integration runtime a uzlů s ním spojená. Uzel je místní počítač Windows, který má místní prostředí integration runtime na něm nainstalován. |  
 | Status | Stav celkové místní prostředí integration runtime a každý uzel. Příklad: Online/Offline/Limited/atd. Informace o tyto stavy najdete v další části. | 
-| Verze | Verze modulu runtime integrace v místním prostředí a každý uzel. Verzi modulu runtime integrace v místním prostředí je určen na základě verze Většina uzlů ve skupině. Pokud jsou uzly s různými verzemi v nastavení místního prostředí integration runtime, pouze uzly se stejným číslem verze jako logický v místním prostředí integration runtime funkce správně. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže). | 
+| Version | Verze modulu runtime integrace v místním prostředí a každý uzel. Verzi modulu runtime integrace v místním prostředí je určen na základě verze Většina uzlů ve skupině. Pokud jsou uzly s různými verzemi v nastavení místního prostředí integration runtime, pouze uzly se stejným číslem verze jako logický v místním prostředí integration runtime funkce správně. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže). | 
 | Dostupná paměť | Dostupná paměť na uzel v místním prostředí integration runtime. Tato hodnota je snímek téměř v reálném čase. | 
 | Využití procesoru | Využití procesoru uzlu místního prostředí integration runtime. Tato hodnota je snímek téměř v reálném čase. |
 | Síť (vstup/výstup) | Využití sítě uzel v místním prostředí integration runtime. Tato hodnota je snímek téměř v reálném čase. | 
@@ -97,7 +97,7 @@ Následující tabulka uvádí možné stavy uzel v místním prostředí integr
 | Online | Uzel je připojen ke službě Data Factory. |
 | Offline | Uzel je offline. |
 | Upgrade | Uzel je automaticky aktualizuje. |
-| Omezená | Kvůli problému připojením. Může být způsobeno problém 8050 portu HTTP, problém se službou Service bus připojení nebo problém synchronizace s přihlašovacími údaji. |
+| Omezené | Kvůli problému připojením. Může být způsobeno problém 8050 portu HTTP, problém se službou Service bus připojení nebo problém synchronizace s přihlašovacími údaji. |
 | Neaktivní | Uzel je v konfiguraci se liší od konfigurace dalších většinou uzlů. |
 
 Uzlem může být neaktivní, pokud se nemůže připojit k ostatním uzlům.
@@ -110,7 +110,7 @@ Následující tabulka obsahuje možné stavy z místního prostředí integrati
 | Třeba registrace | Žádný uzel ještě zaregistrován do tohoto modulu runtime integrace v místním prostředí. |
 | Online | Všechny uzly jsou online. |
 | Offline | Žádný uzel je online. |
-| Omezená | Ne všechny uzly v tomto modulu runtime integrace v místním prostředí jsou v dobrém stavu. Tento stav se upozornění, že některé uzly jsou pravděpodobně mimo provoz. Tento stav může být způsobeno problém synchronizace s přihlašovacími údaji na dispečerský/pracovní uzel. |
+| Omezené | Ne všechny uzly v tomto modulu runtime integrace v místním prostředí jsou v dobrém stavu. Tento stav se upozornění, že některé uzly jsou pravděpodobně mimo provoz. Tento stav může být způsobeno problém synchronizace s přihlašovacími údaji na dispečerský/pracovní uzel. |
 
 Použití **Get-AzDataFactoryV2IntegrationRuntimeMetric** rutina pro načtení datové části JSON obsahující na podrobné v místním prostředí integration runtime vlastnosti a hodnoty jejich snímku v době spuštění rutiny.
 
@@ -155,7 +155,7 @@ Ukázkový výstup (předpokládá, že existují dva uzly, které jsou přidru�
 ## <a name="azure-ssis-integration-runtime"></a>Prostředí Azure-SSIS Integration Runtime
 Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure virtual machines (nebo uzlů) vyhrazených ke spouštění balíčků služby SSIS. Nejde spustit všechny ostatní aktivity služby Azure Data Factory. Po zřízení, se můžete dotazovat její vlastnosti a sledovat její konkrétní uzel celkové/stavy.
 
-### <a name="properties"></a>Vlastnosti
+### <a name="properties"></a>Vlastnost
 
 | Vlastnost/Status | Popis |
 | --------------- | ----------- |
@@ -164,7 +164,7 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 | OtherErrors | Uzel konkrétních užitečné chyb v prostředí Azure-SSIS integration runtime. |
 | LastOperation | Výsledek poslední operace spustit/zastavit na prostředí Azure-SSIS integration runtime s chybami užitečné, pokud se něco nepovedlo. |
 | Stav | Celkový stav (počáteční/počáteční/spuštění/zastavení/zastavená) z prostředí Azure-SSIS integration runtime. |
-| Umístění | Umístění prostředí Azure-SSIS integration runtime. |
+| Location | Umístění prostředí Azure-SSIS integration runtime. |
 | NodeSize | Velikost každého uzlu vašeho prostředí Azure-SSIS integration runtime. |
 | NodeCount | Počet uzlů v prostředí Azure-SSIS integration runtime. |
 | MaxParallelExecutionsPerNode | Počet paralelních úloh na uzlu v prostředí Azure-SSIS integration runtime. |
@@ -187,7 +187,7 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 | Status | Popis |
 | ------ | ----------- | 
 | Spouštění | Připravuje se tento uzel. |
-| K dispozici. | Tento uzel je připravená k nasazení a spouštění balíčků služby SSIS. |
+| K dispozici | Tento uzel je připravená k nasazení a spouštění balíčků služby SSIS. |
 | Recyklace | Je tento uzel se opravit nebo restartování. |
 | Není dostupný | Tento uzel není připravená k nasazení a spouštění balíčků služby SSIS a obsahuje užitečné chyby nebo problémy, které by se dala přeložit. |
 

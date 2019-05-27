@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795932"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957331"
 ---
 # <a name="clustering-point-data"></a>Clustering datového bodu
 
@@ -33,7 +33,7 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15 
 });
@@ -46,9 +46,9 @@ var datasource = new atlas.source.DataSource(null, {
 
 | Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;funkce&lt;geometrie, všechny&gt; \| obrazce&gt; | Načte podřízených objektů daného clusteru na další úroveň přiblížení. Tyto podřízené objekty může být kombinací obrazců a subclusters. Subclusters bude funkce s vlastnostmi odpovídající ClusteredProperties. |
+| getClusterChildren(clusterId: number) | Promise&lt;pole&lt;funkce&lt;geometrie, všechny&gt; \| obrazce&gt;&gt; | Načte podřízených objektů daného clusteru na další úroveň přiblížení. Tyto podřízené objekty může být kombinací obrazců a subclusters. Subclusters bude funkce s vlastnostmi odpovídající ClusteredProperties. |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;číslo&gt; | Vypočítá úroveň přiblížení, ve kterém bude clusteru spusťte rozšíření nebo rozdělit. |
-| getClusterLeaves (clusterId: čísla, limit: čísla, posun: číslo) | Promise&lt;funkce&lt;geometrie, všechny&gt; \| obrazce&gt; | Načte všechny body v clusteru. Nastavte `limit` vrátí podmnožinu body a použít `offset` na stránku body. |
+| getClusterLeaves (clusterId: čísla, limit: čísla, posun: číslo) | Promise&lt;pole&lt;funkce&lt;geometrie, všechny&gt; \| obrazce&gt;&gt; | Načte všechny body v clusteru. Nastavte `limit` vrátí podmnožinu body a použít `offset` na stránku body. |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Zobrazit clustery pomocí bublinu vrstvy.
 
@@ -89,7 +89,7 @@ Při výskytu události myši na vrstvu, která obsahují clusterovaná data bod
 | Cluster | Boolean | Označuje, pokud funkce představuje cluster. |
 | cluster_id | string | Jedinečné ID pro cluster, který jde použít s zdroj dat `getClusterExpansionZoom`, `getClusterChildren`, a `getClusterLeaves` metody. |
 | point_count | číslo | Počet bodů, které obsahuje cluster. |
-| point_count_abbreviated | string | Řetězec, který se zkrátí point_count hodnotu, pokud je dlouhý. (například 4 000 stane 4 kB) |
+| point_count_abbreviated | string | Řetězec, který se zkrátí `point_count` hodnotu, pokud je dlouhá. (například 4 000 stane 4 kB) |
 
 V tomto příkladu přebírá vrstvu bublinu, která vykreslí body clusteru a přidá událost click, která při aktivaci, vypočítat a přiblížení mapy na další úroveň přiblížení, jakou clusteru přeruší od sebe pomocí `getClusterExpansionZoom` metodu `DataSource` třídy a `cluster_id` vlastnost kliknutí na datový bod v clusteru. 
 

@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse poznámky k verzi ze srpna 2018 | Dokumentace Microsoftu
 description: Zpráva k vydání verze pro Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 08/13/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 9547380d4636c1a72add9dab7a9eed850abd0307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: f0840e9b91c81b8a99e8c736c3c5db082c92fe76
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474993"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912206"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Srpen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v srpna 2018.
@@ -30,7 +30,7 @@ Můžete zobrazit podrobnosti jednotlivých kategorií můžete zobrazit doporu�
 
 ## <a name="bug-fixes"></a>Opravy chyb
 
-| Název | Popis |
+| Titul | Popis |
 |:---|:---|
 | **Při překročení maximálního limitu počtu rozdělení potenciální chyby dotazu** |Při překročení limitu rozdělení souboru horní mez 1 milion stroj SQL pro výpis způsobila neošetřenou výjimku a všechny dotazy se nezdařilo. Tato oprava problém řešený správně zpracování výjimek a vrátit chybu, aniž by to způsobilo dotazů. |
 | **Větší ExternalMoveReadersPerNode výchozí hodnotu pro zlepšení výkonu načítání** |Tento problém byl způsobený ExternalMoveReadersPerNode nastavení vlastnosti nejsou synchronizovány s využitím service fabric nastavení. Tento regresní způsobit snížení výkonu zatížení Gen2. Oprava přináší výkon načítání Gen2 za parametry optimalizované návrhu.|

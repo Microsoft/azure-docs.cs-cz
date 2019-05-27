@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d533e6aac9ae1a486d018414a86a9dc3fe742c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294276"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956926"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizovat)?
 
@@ -147,44 +147,44 @@ Na obrázku výše je automaticky shrnutý směrného plánu flow pro Identity P
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře 
 
-Pojďme se podívat na příklad Sarah, Zaměstnanec společnosti Contoso. 
+Pojďme se podívat na příklad zaměstnanec společnosti Contoso. 
 
-1. Sarah se pokusí přihlásit k Exchangi Online z prohlížeče sítě Tor. Při přihlašování Azure AD detekuje v reálném čase rizikové události. 
+1. Zaměstnanec se pokusí přihlásit k Exchangi Online z prohlížeče sítě Tor. Při přihlašování Azure AD detekuje v reálném čase rizikové události. 
 
-2. Azure AD zjistí, že Sarah je přihlášení z anonymní IP adresy, aktivuje se úroveň střední riziko přihlášení. 
+2. Azure AD zjistí, že zaměstnanec je přihlášení z anonymní IP adresy, aktivuje úroveň střední riziko přihlášení. 
 
-3. Sarah je vystaven výzvu k MFA, protože společnosti Contoso IT správce nakonfiguroval zásady podmíněného přístupu Identity Protection rizika přihlášení. Tato zásada vyžaduje vícefaktorové ověřování pro střední a vyšší riziko přihlášení. 
+3. Zaměstnanec je vystaven výzvu k MFA, protože společnosti Contoso IT správce nakonfiguroval zásady podmíněného přístupu Identity Protection rizika přihlášení. Tato zásada vyžaduje vícefaktorové ověřování pro střední a vyšší riziko přihlášení. 
 
-4. Sarah prochází vícefaktorové ověřování výzvy a má přístup k Exchangi Online a úroveň rizika uživatele na Sarah se nemění. 
+4. Zaměstnanec předává řádku MFA a má přístup k Exchangi Online a jejich úroveň rizika uživatele se nemění. 
 
-Co se stalo na pozadí? Požadavek na přihlášení v prohlížeči Tor aktivuje v reálném čase rizika přihlašování ve službě Azure AD pro anonymní IP adresy. Po zpracování požadavku služby Azure AD použít zásady rizik přihlašování nakonfigurovat ve službě Identity Protection, protože úroveň rizika přihlášení Sarah pro splnění prahové hodnoty (střední). Protože Sarah měl dříve zaregistrovaný pro MFA, byla moct reagovat na a předat ověřovacím testem MFA. Její schopnost úspěšně ověřovacím testem MFA předat signál, aby Azure AD, že byla pravděpodobně oprávněné identity vlastníka a její úroveň rizika uživatele nezvyšuje. 
+Co se stalo na pozadí? Požadavek na přihlášení v prohlížeči Tor aktivuje v reálném čase rizika přihlašování ve službě Azure AD pro anonymní IP adresy. Po zpracování požadavku služby Azure AD použít zásady rizik přihlašování nakonfigurovat ve službě Identity Protection, protože úroveň rizika přihlášení zaměstnance splnění prahové hodnoty (střední). Protože měl zaměstnanec dříve zaregistrovali pro vícefaktorové ověřování, studenti mohli reagovat na a předat ověřovacím testem MFA. Jejich schopnost úspěšně ověřovacím testem MFA předat signál, aby Azure AD, že byly pravděpodobně vlastníka oprávněné identity a jejich úroveň rizika uživatele nezvyšuje. 
 
 
-Ale co když Sarah nebyl jeden pokoušel se přihlásit? 
+Ale co když zaměstnanec nebyl jeden pokoušel se přihlásit? 
 
-1. Škodlivý objekt actor s přihlašovacími údaji vaší Sarah pokusí přihlásit k účtu Exchange Online pro Sarah z prohlížeče Tor vzhledem k tomu, že se snaží skrýt jejich IP adresu. 
+1. Škodlivý objekt actor s přihlašovacími údaji zaměstnance se pokusí přihlásit ke svému účtu Exchange Online z prohlížeče Tor, protože se snaží skrýt jejich IP adresu. 
 
 2. Azure AD zjistí, že pokus o přihlášení z anonymní IP adresy, aktivuje se v reálném čase rizika přihlášení. 
 
 3. Škodlivý objekt actor je vystaven výzvu k MFA, protože správce společnosti Contoso IT nakonfigurované Identity Protection přihlášení riziko zásady podmíněného přístupu tak, aby vyžadovala vícefaktorové ověřování při střední a vyšší riziko přihlášení. 
 
-4. Škodlivý objekt actor ověřovacím testem MFA se nezdaří a nemá přístup k účtu Sarah pro Exchange Online. 
+4. Škodlivý objekt actor ověřovacím testem MFA se nezdaří a nemá přístup k systému Exchange Online účtem zaměstnance. 
 
-5. Neúspěšné MFA řádku aktivuje rizikovou událost, aby se zaznamenávaly, vyvolání jeho Sarah uživatelského rizika pro budoucí přihlášení. 
+5. Neúspěšné MFA řádku aktivuje rizikovou událost, aby se zaznamenávaly, zvýšení jejich uživatelského rizika pro budoucí přihlášení. 
 
-Teď, když škodlivý objekt actor došlo k pokusu o přístup k účtu na Sarah, Podívejme se, co se stane při příštím Sarah se pokusí přihlásit. 
+Teď, když škodlivý objekt actor došlo k pokusu o přístup k účtu na Sarah, Podívejme se, co se stane při příštím zaměstnance se pokusí přihlásit. 
 
-1. Sarah se pokusí přihlásit k Exchangi Online z Outlooku. Při přihlašování Azure AD detekuje v reálném čase rizikové události, stejně jako jakékoli předchozí uživatelského rizika. 
+1. Zaměstnanec se pokusí přihlásit k Exchangi Online z Outlooku. Při přihlašování Azure AD detekuje v reálném čase rizikové události, stejně jako jakékoli předchozí uživatelského rizika. 
 
 2. Azure AD nezjistí v reálném čase rizika přihlášení, ale zachytí vysokého uživatelského rizika z důvodu posledních rizikovou aktivitu v předchozí scénáře.  
 
-3. Sarah je vystaven výzva k zadání hesla resetovat, protože společnosti Contoso na správce IT nakonfiguroval zásady rizik uživatelů Identity Protection vyžadovat změnu hesla při přihlášení uživatele s vysokým rizikem. 
+3. Zaměstnanec je vystaven výzva k zadání hesla resetovat, protože společnosti Contoso na správce IT nakonfiguroval zásady rizik uživatelů Identity Protection vyžadovat změnu hesla při přihlášení uživatele s vysokým rizikem. 
 
-4. Protože Sarah je zaregistrovaný pro samoobslužné resetování HESLA a vícefaktorové ověřování, které úspěšně obnoví své heslo. 
+4. Protože je zaměstnanec zaregistrovaný pro samoobslužné resetování HESLA a vícefaktorové ověřování, jsou úspěšně obnoví své heslo. 
 
-5. Resetovat své heslo, přihlašovací údaje pro Sarah už dojde k ohrožení a vrátí jeho identita do bezpečného stavu. 
+5. Resetování hesla, zaměstnance přihlašovací údaje jsou již dojde k ohrožení bezpečnosti a jejich identity vrátí do bezpečného stavu. 
 
-6. Sarah na předchozí rizikové události jsou vyřešeny a její úroveň rizika uživatele je automaticky obnovit jako odpověď na zmírnění ohrožení zabezpečení přihlašovacích údajů. 
+6. Zaměstnance předchozí rizikové události jsou vyřešeny a její úroveň rizika uživatele je automaticky obnovit jako odpověď na zmírnění ohrožení zabezpečení přihlašovacích údajů. 
 
 ## <a name="how-do-i-configure-identity-protection"></a>Jak konfigurovat Identity Protection? 
 

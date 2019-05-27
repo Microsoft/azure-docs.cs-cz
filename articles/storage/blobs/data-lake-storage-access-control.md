@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233990"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949575"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -150,7 +150,7 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 #### <a name="the-owning-group"></a>Vlastnící skupina
 
-V seznamech ACL POSIX je přidružený každý uživatel *primární skupina*. Uživatel "Alice" může například patřit do skupiny "finance". Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
+V seznamech ACL POSIX je přidružený každý uživatel *primární skupina*. Uživatel "Alice" může například patřit do skupiny "finance". Alice může patřit do několika skupin, ale jedna skupina je vždy určena jako svou primární skupinu. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazuje se vlastnící skupina pro nový soubor nebo adresář
 

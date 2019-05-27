@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 186bd272fdca20475686847dc4e86b8ad50e5e41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c302b18e34533a564904562ed39879bbe37b82ca
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61257319"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908194"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Python SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -35,7 +35,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
-1. Ujistěte se, že na svém počítači máte nainstalovanou sadu [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) nebo [Visual Studio 2017](https://www.visualstudio.com/vs/). Pro vaši instalaci sady Visual Studio musíte mít povolenou sadu funkcí Vývoj desktopových aplikací pomocí C++.
+1. Ujistěte se, že jste si nainstalovali buď [sady Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější, se "vývoj desktopových aplikací pomocí C++" úloh pro instalaci sady Visual Studio povoleno.
 
 1. Stáhněte a nainstalujte [sestavovací systém CMake](https://cmake.org/download/).
 
@@ -74,15 +74,15 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 1. Otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho v sadě Visual Studio.
 
-2. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. Spusťte řešení. V okně výstupu se zobrazí **_Ověřovací klíč_** a **_ID registrace_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. 
+1. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. Spusťte řešení. V okně výstupu se zobrazí **_Ověřovací klíč_** a **_ID registrace_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. 
 
     ![Nastavení TPM](./media/python-quick-create-simulated-device/tpm-setup.png)
 
-3. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
+1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
 
-4. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a nahoře klikněte na tlačítko **Přidat jednotlivou registraci**. 
+1. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a nahoře klikněte na tlačítko **Přidat jednotlivou registraci**. 
 
-5. V části **Přidat registraci** zadejte následující informace:
+1. V části **Přidat registraci** zadejte následující informace:
    - Jako *Mechanismus* ověření identity vyberte **TPM**.
    - Zadejte *ID registrace* a *Ověřovací klíč* pro zařízení TPM. 
    - Vyberte centrum IoT propojené s vaší zřizovací službou.
@@ -100,7 +100,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 1. Stáhněte a nainstalujte [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnných prostředí pro konkrétní platformu.
     - Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++](https://www.microsoft.com/download/confirmation.aspx?id=48145).
 
-2. Pomocí [těchto pokynů](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) sestavte balíčky Pythonu.
+1. Pomocí [těchto pokynů](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) sestavte balíčky Pythonu.
 
    > [!NOTE]
    > Pokud používáte `build_client.cmd`, nezapomeňte použít příznak `--use-tpm-simulator`.
@@ -108,13 +108,13 @@ V tomto článku si předvedeme jednotlivé registrace.
    > [!NOTE]
    > Pokud používáte `pip`, nezapomeňte nainstalovat také balíček `azure-iot-provisioning-device-client`. Poznámka: vydané balíčky PIP skutečně využívají TPM, a ne simulátor. Pokud chcete použít simulátor, musíte je zkompilovat ze zdroje s použitím příznaku `--use-tpm-simulator`.
 
-3. Přejděte do složky s ukázkami.
+1. Přejděte do složky s ukázkami.
 
     ```cmd/sh
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-4. Pomocí svého integrovaného vývojového prostředí (IDE) pro Python upravte skript Pythonu **provisioning\_device\_client\_sample.py**. Proměnné *GLOBAL\_PROV\_URI* a *ID\_SCOPE* změňte na hodnoty, které jste si poznamenali dříve. Ujistěte se také, že *SECURITY\_DEVICE\_TYPE* je nastaven na `ProvisioningSecurityDeviceType.TPM`.
+1. Pomocí svého integrovaného vývojového prostředí (IDE) pro Python upravte skript Pythonu **provisioning\_device\_client\_sample.py**. Proměnné *GLOBAL\_PROV\_URI* a *ID\_SCOPE* změňte na hodnoty, které jste si poznamenali dříve. Ujistěte se také, že *SECURITY\_DEVICE\_TYPE* je nastaven na `ProvisioningSecurityDeviceType.TPM`.
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -125,17 +125,17 @@ V tomto článku si předvedeme jednotlivé registrace.
 
     ![Informace o službě](./media/python-quick-create-simulated-device/extract-dps-endpoints.png)
 
-5. Spusťte ukázku. 
+1. Spusťte ukázku. 
 
     ```cmd/sh
     python provisioning_device_client_sample.py
     ```
 
-6. Všimněte si zpráv, které simulují spouštění zařízení a jeho připojování ke službě Device Provisioning pro získání informací o vašem centru IoT. 
+1. Všimněte si zpráv, které simulují spouštění zařízení a jeho připojování ke službě Device Provisioning pro získání informací o vašem centru IoT. 
 
     ![Úspěšná registrace](./media/python-quick-create-simulated-device/registration-success.png)
 
-7. Po úspěšném zřízení simulovaného zařízení pro centrum IoT propojené se zřizovací službou se ID zařízení zobrazí v okně **Device Explorer** centra.
+1. Po úspěšném zřízení simulovaného zařízení pro centrum IoT propojené se zřizovací službou se ID zařízení zobrazí v okně **Device Explorer** centra.
 
     ![Zařízení je zaregistrované u centra IoT](./media/python-quick-create-simulated-device/hubregistration.png) 
 

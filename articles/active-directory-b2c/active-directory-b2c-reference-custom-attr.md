@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4debd5408abda7e6ae7a7ebf2210fb69210582ae
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 629b872f78a30592fc00cb268066970b12b20561
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687930"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952801"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování uživatelských atributů, které v Azure Active Directory B2C
 
  Každá aplikace určených pro zákazníky má jedinečné požadavky, které je potřeba shromáždit informace. Váš tenant Azure Active Directory (Azure AD) B2C se dodává s integrovanou sadou informací uložených v atributech, například křestní jméno, příjmení, Město a PSČ. S Azure AD B2C můžete rozšířit sadu atributů, které jsou uložené na každý účet zákazníka. 
  
- Můžete vytvořit vlastní atributy [webu Azure portal](https://portal.azure.com/) a jejich použití v toky registraci uživatelů, toky registrace nebo přihlašování uživatelů nebo toky uživatelů pro upravování profilu. Může číst a zapisovat pomocí těchto atributů [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Použití vlastních atributů v Azure AD B2C [Azure AD Graph API adresáře schématu rozšíření](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+ Můžete vytvořit vlastní atributy [webu Azure portal](https://portal.azure.com/) a jejich použití v toky registraci uživatelů, toky registrace nebo přihlašování uživatelů nebo toky uživatelů pro upravování profilu. Může číst a zapisovat pomocí těchto atributů [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Použití vlastních atributů v Azure AD B2C [Azure AD Graph API adresáře schématu rozšíření](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).  
+
+> [!NOTE]
+> Podpora pro novější [Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) pro dotazování na Azure AD B2C tenanta je stále ve vývoji.
+>
 
 ## <a name="create-a-custom-attribute"></a>Vytvoření vlastního atributu
 
@@ -41,7 +45,8 @@ ms.locfileid: "64687930"
 7. Volitelně můžete zadat **popis** k informačním účelům. 
 8. Klikněte na možnost **Vytvořit**.
 
-Vlastní atribut je nyní k dispozici v seznamu **atributy uživatele** a pro použití ve svých tocích uživatelů. Vlastní atribut je jen pro vytvoří při prvním se používá v toku uživatele, a ne v případě, že ho přidáte do seznamu **atributy uživatele**.
+Vlastní atribut je nyní k dispozici v seznamu **atributy uživatele** a pro použití ve svých tocích uživatelů. Vlastní atribut je jen pro vytvoří při prvním se používá v toku uživatele, a ne v případě, že ho přidáte do seznamu **atributy uživatele**. 
+
 
 ## <a name="use-a-custom-attribute-in-your-user-flow"></a>Použít vlastní atribut ve svém toku uživatele
 
@@ -51,5 +56,5 @@ Vlastní atribut je nyní k dispozici v seznamu **atributy uživatele** a pro po
 5. Vyberte **deklarace identit aplikace** a pak vyberte vlastní atribut. 
 6. Klikněte na **Uložit**.
 
-Můžete použít **spustit tok uživatele** funkci na tok uživatele. Chcete-li ověřit uživatelské prostředí. Teď byste měli vidět **ShoeSize** v seznam atributů shromážděných během registrace cesty a vidět ji v tokenu odesílaných zpět do aplikace.
+Po vytvoření nového uživatele pomocí tok uživatele, která využívá nově vytvořený vlastní atribut objektu může být dotazována v [Azure AD Graph Explorer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart). Případně můžete použít [ **spustit tok uživatele** ](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) funkci na tok uživatele. Chcete-li ověřit uživatelské prostředí. Teď byste měli vidět **ShoeSize** v seznam atributů shromážděných během registrace cesty a vidět ji v tokenu odesílaných zpět do aplikace. 
 

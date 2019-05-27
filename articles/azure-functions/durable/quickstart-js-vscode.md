@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61381933"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921347"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první funkce trvalý v jazyce JavaScript
 
@@ -54,7 +54,7 @@ Nejprve vytvořte funkci aktivovanou protokolem HTTP, který se spustí Orchestr
 
 1. Z **Azure: Funkce**, zvolte ikonu Create Function.
 
-    ![Vytvoření funkce](./media/quickstart-js-vscode/create-function.png)
+    ![Vytvořit funkci](./media/quickstart-js-vscode/create-function.png)
 
 2. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**.
 
@@ -117,7 +117,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 2. Pokud chcete funkci otestovat, nastavte zarážku v kódu funkce a stiskněte klávesu F5, abyste spustili projekt aplikace funkcí. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**. Pokud je toto vaše první přihlášení pomocí Durable Functions, instalaci rozšíření Durable Functions a sestavení může trvat několik sekund.
 
     > [!NOTE]
-    > JavaScript Durable Functions vyžaduje verzi **1.7.0** nebo větší **Microsoft.Azure.WebJobs.Extensions.DurableTask** rozšíření. Ověřit verzi rozšíření Durable Functions ve vaší `extensions.csproj` soubor splňuje tento požadavek. Pokud tomu tak není, zastavte aplikaci function app, změnit verzi a stiskněte klávesu F5 a restartujte aplikaci function app.
+    > JavaScript Durable Functions vyžaduje verzi **1.7.0** nebo větší **Microsoft.Azure.WebJobs.Extensions.DurableTask** rozšíření. Spuštěním následujícího příkazu z kořenové složky vaší aplikace Azure Functions k instalaci rozšíření Durable Functions `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

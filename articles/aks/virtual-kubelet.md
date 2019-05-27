@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023712"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956287"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -26,13 +26,35 @@ Při použití zprostředkovatele Virtual Kubelet pro Azure Container Instances,
 >
 > Virtual Kubelet je experimentální opensourcový projekt a by měla sloužit jako takové. Abyste mohli přispívat, soubor problémů a přečtěte si další informace o virtual kubelet, najdete v článku [projektu z Githubu Virtual Kubelet][vk-github].
 
-## <a name="prerequisite"></a>Požadavek
+## <a name="before-you-begin"></a>Než začnete
 
 Tento dokument předpokládá, že máte AKS cluster. Pokud potřebujete AKS cluster, přečtěte si [rychlý start Azure Kubernetes Service (AKS)][aks-quick-start].
 
 Musíte také Azure CLI verze **2.0.33** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Chcete-li nainstalovat Virtual Kubelet [Helm](https://docs.helm.sh/using_helm/#installing-helm) je také nutný.
+
+### <a name="register-container-instances-feature-provider"></a>Registrace poskytovatele funkce Container Instances
+
+Pokud jste dříve nepoužili služby Azure Container Instance (ACI), zaregistrujte poskytovatele služby s vaším předplatným. Stav registrace poskytovatele ACI pomocí příkazu [az provider list] [az provider list], můžete zjistit, jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+*Microsoft.ContainerInstance* poskytovatele hlásit jako *registrované*, jak je znázorněno v následujícím příkladu výstupu:
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+Pokud poskytovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [az registrovat poskytovatele] [az provider register], jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ### <a name="for-rbac-enabled-clusters"></a>Pro clustery s podporou RBAC
 

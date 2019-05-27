@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66116995"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí Azure Powershellu
 
@@ -21,7 +21,7 @@ Modul Azure PowerShell slouží k vytváření a správě prostředků Azure pom
 
 Úlohy příklad přečte streamovaná data ze služby IoT Hub device. Online simulátor Raspberry Pi vygeneruje vstupní data. Potom úlohu Stream Analytics transformuje data pomocí dotazovací jazyk Stream Analytics k filtrování zpráv s teplotu vyšší než 27. A konečně zapíše výsledný výstupních událostí do souboru v úložišti objektů blob.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

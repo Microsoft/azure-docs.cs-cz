@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 32537426b7b9b1a7015610fc0c3e2dd7c3efa49b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806203"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851249"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
@@ -386,7 +386,7 @@ Microsoft může zbavte se složité nastavování si testovací jízdu hostová
 
 - **Maximální počet souběžných testovací verze** (povinné): Nastavení maximálního počtu zákazníků, které můžou používat vaše testovací verze najednou. Každý souběžných uživatelských spotřebuje licenci Dynamics 365, testovací verze je aktivní, takže budete muset zajistit, že máte dostatek licencí, které jsou k dispozici pro podporu maximální nastavený limit. Doporučená hodnota 3 – 5.
 
-- **Doba trvání test drivu** (povinné): Zadejte dobu, kterou Test Drive zůstane aktivní, tak, že definujete počet hodin. Po tomto počtu hodin bude relace ukončit a už nebude používat jednu licenci. Doporučujeme, abyste hodnotu 2 až 24 hodin v závislosti na složitosti vaší nabídky. V této hodnotě duration může pouze tipu sady podle celočíselný počet hodin (např.) hodin "2", "1,5" je neplatný).  Uživatel může požádat o novou relaci, dojde k jejich spuštění mimo časový limit a chtějí mít přístup k testovací verze.
+- **Doba trvání test drivu** (povinné): Zadejte dobu, která Test Drive zůstane aktivní, tak, že definujete počet hodin. Po tomto počtu hodin bude relace ukončit a už nebude používat jednu licenci. Doporučujeme, abyste hodnotu 2 až 24 hodin v závislosti na složitosti vaší nabídky. V této hodnotě duration může pouze tipu sady podle celočíselný počet hodin (např.) hodin "2", "1,5" je neplatný).  Uživatel může požádat o novou relaci, dojde k jejich spuštění mimo časový limit a chtějí mít přístup k testovací verze.
 
 - **Adresa URL instance** (povinné): Adresa URL, kde se zákazník začne jejich testovací verze. Obvykle adresu URL vaší instance Dynamics 365, používající vaši aplikaci s ukázkovými daty nainstalovaná (třeba https://testdrive.crm.dynamics.com).
 

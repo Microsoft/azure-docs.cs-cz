@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/19/2018
-ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445591"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901023"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure
  
@@ -22,11 +22,11 @@ Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání d
  
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete. 
  
-* [Testovací cluster a databázi](create-cluster-database-portal.md)
+* [Testovací cluster a databáze](create-cluster-database-portal.md).
  
-* [Ukázková aplikace](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , který generuje data a odesílá je do Kafka
+* [Ukázková aplikace](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , který generuje data a odesílá je do systému Kafka.
 
-* [Visual Studio 2017 verze 15.3.2 nebo vyšší](https://www.visualstudio.com/vs/) ke spuštění ukázkové aplikace
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) na spuštění ukázkové aplikace.
  
 ## <a name="kafka-connector-setup"></a>Instalace konektoru Kafka
 
@@ -57,7 +57,7 @@ V kořenovém adresáři *kafka jímky azure kusto*, spusťte:
 mvn clean compile assembly:single
 ```
 
-### <a name="deploy"></a>Nasazení 
+### <a name="deploy"></a>Nasadit 
 
 Načtení modulu plug-in do Kafka. Příklad nasazení pomocí dockeru najdete tady [kafka jímky azure kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  

@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230927"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954942"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -84,7 +84,7 @@ Explicitní odstranění je, když Azure správce odstraní uživatele nebo adre
 Data, která se nepřistupovalo po dobu jednoho roku ("uchovávání doba"), bude zacházeno jako zastaralé a můžou se odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nesmí být dřívější než 90 dní. Zastaralá data může být konkrétní sadu nastavení Windows/aplikace nebo všechna nastavení pro uživatele. Příklad:
 
 * Pokud se žádná zařízení získat přístup ke kolekci konkrétní nastavení (například aplikace se odebere ze zařízení nebo skupinu nastavení, jako je například "Motiv" je zakázaná pro všechny uživatele zařízení), pak tuto kolekci zastarávají po uplynutí doby uchování a může dojít k odstranění . 
-* Pokud uživatele po vypnutí nastavení synchronizace ve všech jeho zařízeních, pak žádná data nastavení budou mít přístup, a všechna nastavení data pro tohoto uživatele se stane zastaralou a po dobu uchování, můžou se odstranit. 
+* Pokud uživatel vypnul synchronizace nastavení na svých zařízeních, pak žádná data nastavení budou mít přístup, a všechna nastavení data pro tohoto uživatele se stane zastaralou a po dobu uchování, můžou se odstranit. 
 * Pokud správce Azure AD directory vypne Enterprise State Roaming pro celý adresář, pak všichni uživatelé adresáře se zastaví, synchronizovat nastavení a všechna nastavení data pro všechny uživatele budou zastaralá a můžou se odstranit po uplynutí doby uchování. 
 
 ### <a name="deleted-data-recovery"></a>Obnovení odstraněných dat

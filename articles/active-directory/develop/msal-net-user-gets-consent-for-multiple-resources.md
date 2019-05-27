@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7d24a1e14cfbb1163ab78b94dd36ec288dce50
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e8bd9a86d5ec0d39a7f1c26adac52f41e6420283
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544053"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121985"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Uživatel získá souhlas pro několik prostředků pomocí MSAL.NET
 Koncový bod Microsoft identity platform neumožňuje získání tokenu pro několik prostředků najednou. Při použití knihovna Microsoft Authentication Library pro .NET (MSAL.NET), obory parametr v metodě získání tokenu může obsahovat jenom obory pro jeden prostředek. Však můžete předem souhlasíte s předem několik prostředků tak, že zadáte další obory pomocí `.WithExtraScopeToConsent` metodě Tvůrce.
@@ -32,8 +32,8 @@ Koncový bod Microsoft identity platform neumožňuje získání tokenu pro něk
 
 Například pokud máte dva prostředky, které mají 2 obory každé:
 
-- https://mytenant.onmicrosoft.com/customerapi (s 2 obory `customer.read` a `customer.write`)
-- https://mytenant.onmicrosoft.com/vendorapi (s 2 obory `vendor.read` a `vendor.write`)
+- protokol https:\//mytenant.onmicrosoft.com/customerapi (s 2 obory `customer.read` a `customer.write`)
+- protokol https:\//mytenant.onmicrosoft.com/vendorapi (s 2 obory `vendor.read` a `vendor.write`)
 
 Měli byste použít `.WithExtraScopeToConsent` modifikátor, který má *extraScopesToConsent* parametru, jak je znázorněno v následujícím příkladu:
 

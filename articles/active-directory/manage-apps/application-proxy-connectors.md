@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f337ea9d55a119c3aec6e94649cdbf049f99e9d6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783683"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113089"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -87,7 +87,9 @@ Další informace o skupinách konektoru najdete v tématu [publikování aplika
 
 ## <a name="capacity-planning"></a>Plánování kapacity 
 
-Je důležité, abyste měli jistotu, že jste naplánovali dostatečnou kapacitu mezi konektorů pro zpracování očekávaného provozu. V obecné, tím víc uživatelů, které máte, tím větší počítače s budete potřebovat. Níže je, že dokáže zpracovat tabulka poskytuje přehled svazku různých počítačích. Všimněte si je všechny založené na očekávaný transakce za druhé (TPS) místo uživatelem od použití vzorů se liší a nelze jej použít pro předpověď zatížení. Bude také některé rozdíly, na základě velikosti odpovědi a doba odezvy aplikace back-end – větší velikosti odpovědi a pomalejší doby odezvy bude účtovat nižší TPS Max. Doporučujeme, abyste s další počítače tak, aby náklad napříč počítači o 50 %. Kapacita navíc zajistí, abyste měli vysokou dostupnost a odolnost proti chybám.
+Je důležité, abyste měli jistotu, že jste naplánovali dostatečnou kapacitu mezi konektorů pro zpracování očekávaného provozu. Doporučujeme vám, že má každá skupina konektor aspoň dva konektory k poskytování vysoké dostupnosti a škálování. V případě, že budete muset služby počítače v libovolném bodě je mít tři konektory optimální. 
+
+V obecné, tím víc uživatelů, které máte, tím větší počítače s budete potřebovat. Níže je tabulka poskytuje přehled svazku a očekávaná latence, kterou může zpracovávat jiné počítače. Všimněte si je všechny založené na očekávaný transakce za druhé (TPS) místo uživatelem od použití vzorů se liší a nelze jej použít pro předpověď zatížení. Bude také některé rozdíly, na základě velikosti odpovědi a doba odezvy aplikace back-end – větší velikosti odpovědi a pomalejší doby odezvy bude účtovat nižší TPS Max. Doporučujeme také s další počítače tak, aby náklad napříč počítači vždy poskytuje dostatek vyrovnávací paměti. Kapacita navíc zajistí, abyste měli vysokou dostupnost a odolnost proti chybám.
 
 |Jádra|Paměť RAM|Byl očekáván latence (MS)-P99|Maximální počet TPS|
 | ----- | ----- | ----- | ----- |

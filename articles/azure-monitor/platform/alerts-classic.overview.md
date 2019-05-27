@@ -5,14 +5,14 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/29/2018
+ms.date: 05/19/2018
 ms.author: robb
-ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96183e22f0aeafc681a782e7d3d8bd29a6ec9617
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776615"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914709"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
@@ -24,7 +24,7 @@ Výstrahy umožňují nakonfigurovat podmínky nad daty a informováni o podmín
 
 ## <a name="old-and-new-alerting-capabilities"></a>Staré a nové možnosti upozorňování
 
-V minulosti, které Azure Monitor, Application Insights, Log Analytics a stavy služeb samostatných upozorňování. Azure přesčas, vylepšené a kombinaci uživatelského rozhraní a výstrahy různými způsoby. Stále probíhá sloučení. Výstrahy
+V minulosti, které Azure Monitor, Application Insights, Log Analytics a stavy služeb samostatných upozorňování. Azure přesčas, vylepšené a kombinaci uživatelského rozhraní a výstrahy různými způsoby. Stále probíhá sloučení.
 
 Upozornění classic můžete zobrazit pouze na obrazovce uživatele klasických upozornění na webu Azure Portal. Získat z této obrazovky **zobrazit upozornění classic** tlačítko na obrazovce oznámení. 
 

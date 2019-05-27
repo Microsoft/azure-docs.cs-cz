@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7e3b1496890a4b97fc435b49ab9bf282134d1a6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61254338"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910813"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ Následující návod obsahuje podrobné pokyny pro vytváření vlastní aktivi
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Návod: vytvoření vlastní aktivity
 ### <a name="prerequisites"></a>Požadavky
-* Visual Studio 2012/2013/2015
+* Visual Studio 2012/2013/2015/2017
 * Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/) a nainstalujte ji.
 
 ### <a name="azure-batch-prerequisites"></a>Požadavky služby Azure Batch
@@ -97,13 +97,13 @@ Tato metoda přebírá čtyři parametry:
 
 Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budoucnu. Tato funkce není dosud implementována, proto vrátí prázdný slovník z metody.
 
-### <a name="procedure"></a>Postup
+### <a name="procedure"></a>Procedura
 1. Vytvoření **knihovny tříd .NET** projektu.
    <ol type="a">
-     <li>Spuštění <b>Visual Studio 2017</b> nebo <b>Visual Studio 2015</b> nebo <b>Visual Studio 2013</b> nebo <b>Visual Studio 2012</b>.</li>
+     <li>Spusťte sadu Visual Studio.</li>
      <li>Klikněte na <b>Soubor</b>, přejděte na <b>Nový</b> a klikněte na <b>Projekt</b>.</li>
      <li>Rozbalte <b>Šablony</b> a vyberte <b>Visual C#</b>. V tomto názorném postupu použijete C#, ale můžete použít libovolný jazyk .NET k vývoji vlastní aktivity.</li>
-     <li>Vyberte <b>knihovny tříd</b> ze seznamu typů projektů napravo. V sadě VS 2017, zvolte <b>knihovna tříd (.NET Framework)</b> </li>
+     <li>Vyberte <b>knihovny tříd</b> ze seznamu typů projektů napravo. V sadě Visual Studio, zvolte <b>knihovna tříd (.NET Framework)</b> </li>
      <li>Zadejte <b>MyDotNetActivity</b> pro <b>název</b>.</li>
      <li>Vyberte <b>C:\ADFGetStarted</b> pro <b>umístění</b>.</li>
      <li>Projekt vytvoříte kliknutím na <b>OK</b>.</li>

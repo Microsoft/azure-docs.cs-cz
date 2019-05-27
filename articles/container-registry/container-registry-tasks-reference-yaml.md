@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: d50d5bc91fbb86e5c0c3d2acc3b55c7d02c71723
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192267"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954469"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenční dokumentace úlohy ACR: YAML
 
@@ -79,7 +79,7 @@ az configure --defaults acr=myregistry
 
 Vlastnosti úlohy se obvykle zobrazuje v horní části `acr-task.yaml` souborů a jsou globální vlastnosti, které se vztahují během úplné spuštění kroky úloh. Některé z těchto globálních vlastností mohou přepsat v rámci jednoho kroku.
 
-| Vlastnost | Type | Nepovinné | Popis | Přepsání podporována | Výchozí hodnota |
+| Vlastnost | Type | Volitelná | Popis | Přepsání podporována | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | Ano | Verze `acr-task.yaml` sdílené, jak analyzovat služba ACR úkoly. Během úlohy služby ACR se snaží udržovat zpětnou kompatibilitu, tato hodnota umožňuje ACR úkoly pro zachování kompatibility v rámci definovaných verze. Pokud tento parametr zadán, výchozí hodnota je na nejnovější verzi. | Ne | Žádný |
 | `stepTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které můžete spustit krok. Pokud je zadaná vlastnost na úkol, nastaví výchozí `timeout` vlastnost všechny kroky. Pokud `timeout` je zadána vlastnost v kroku, přepíše vlastnost poskytnuté úlohou. | Ano | 600 (10 minut) |
@@ -92,17 +92,17 @@ Vlastnosti úlohy se obvykle zobrazuje v horní části `acr-task.yaml` souborů
 
 Tajného kódu objektu má následující vlastnosti.
 
-| Vlastnost | Type | Nepovinné | Popis | Výchozí hodnota |
+| Vlastnost | Type | Volitelná | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | Ne | Identifikátor tajného klíče. | Žádný |
-| `akv` | string | Ano | Azure Key Vaultu (AKV) Adresa URL tajného kódu. | Žádný |
+| `keyvault` | string | Ano | Adresu URL tajného kódu trezoru klíčů Azure. | Žádný |
 | `clientID` | string | Ano | ID klienta o přiřazení uživatele spravované identity pro prostředky Azure. | Žádný |
 
 ### <a name="network"></a>síť
 
 Objekt sítě má následující vlastnosti.
 
-| Vlastnost | Type | Nepovinné | Popis | Výchozí hodnota |
+| Vlastnost | Type | Volitelná | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | string | Ne | Název sítě. | Žádný |
 | `driver` | string | Ano | Ovladač při správě sítě. | Žádný |
@@ -135,7 +135,7 @@ steps:
 
 `build` Typ kroku podporuje parametry v následující tabulce. `build` Typ kroku také podporuje všechny možnosti sestavení [sestavení dockeru](https://docs.docker.com/engine/reference/commandline/build/) příkazu, jako například `--build-arg` k nastavení proměnných čas sestavení.
 
-| Parametr | Popis | Nepovinné |
+| Parametr | Popis | Volitelná |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | Určuje plně kvalifikovaný `image:tag` sestavené Image.<br /><br />Jako bitové kopie mohou být použity pro vnitřní úloha ověření, jako jsou například funkční testy, ne všechny bitové kopie vyžadují `push` do registru. Však k instanci image v rámci provádění úloh, bitovou kopii potřebuje název, který má odkazovat.<br /><br />Na rozdíl od `az acr build`, spouštění úloh ACR neposkytuje výchozí nabízených oznámení chování. S úlohami služby ACR předpokládá scénář výchozí možnost sestavení, ověření a potom nasdílejte image. Zobrazit [nabízených](#push) jak volitelně nabízených integrované Image. | Ano |
 | `-f` &#124; `--file` | Určuje soubor Dockerfile předán `docker build`. Pokud není zadán, výchozí soubor Dockerfile v kořenovém adresáři kontextu považován za. K určení souboru Dockerfile, předejte název souboru kořeni kontextu. | Ano |
@@ -147,26 +147,26 @@ steps:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Nepovinné |
-| `disableWorkingDirectoryOverride` | bool | Nepovinné |
-| `entryPoint` | string | Nepovinné |
-| `env` | [řetězec, řetězec,...] | Nepovinné |
-| `expose` | [řetězec, řetězec,...] | Nepovinné |
-| `id` | string | Nepovinné |
-| `ignoreErrors` | bool | Nepovinné |
-| `isolation` | string | Nepovinné |
-| `keep` | bool | Nepovinné |
-| `network` | objekt | Nepovinné |
-| `ports` | [řetězec, řetězec,...] | Nepovinné |
-| `pull` | bool | Nepovinné |
-| `repeat` | int | Nepovinné |
-| `retries` | int | Nepovinné |
-| `retryDelay` | int (sekundy) | Nepovinné |
-| `secret` | objekt | Nepovinné |
-| `startDelay` | int (sekundy) | Nepovinné |
-| `timeout` | int (sekundy) | Nepovinné |
-| `when` | [řetězec, řetězec,...] | Nepovinné |
-| `workingDirectory` | string | Nepovinné |
+| `detach` | bool | Volitelná |
+| `disableWorkingDirectoryOverride` | bool | Volitelná |
+| `entryPoint` | string | Volitelná |
+| `env` | [řetězec, řetězec,...] | Volitelná |
+| `expose` | [řetězec, řetězec,...] | Volitelná |
+| `id` | string | Volitelná |
+| `ignoreErrors` | bool | Volitelná |
+| `isolation` | string | Volitelná |
+| `keep` | bool | Volitelná |
+| `network` | Objekt | Volitelná |
+| `ports` | [řetězec, řetězec,...] | Volitelná |
+| `pull` | bool | Volitelná |
+| `repeat` | int | Volitelná |
+| `retries` | int | Volitelná |
+| `retryDelay` | int (sekundy) | Volitelná |
+| `secret` | Objekt | Volitelná |
+| `startDelay` | int (sekundy) | Volitelná |
+| `timeout` | int (sekundy) | Volitelná |
+| `when` | [řetězec, řetězec,...] | Volitelná |
+| `workingDirectory` | string | Volitelná |
 
 ### <a name="examples-build"></a>Příklady: sestavení
 
@@ -219,12 +219,12 @@ steps:
 
 | | | |
 | -------- | ---- | -------- |
-| `env` | [řetězec, řetězec,...] | Nepovinné |
-| `id` | string | Nepovinné |
-| `ignoreErrors` | bool | Nepovinné |
-| `startDelay` | int (sekundy) | Nepovinné |
-| `timeout` | int (sekundy) | Nepovinné |
-| `when` | [řetězec, řetězec,...] | Nepovinné |
+| `env` | [řetězec, řetězec,...] | Volitelná |
+| `id` | string | Volitelná |
+| `ignoreErrors` | bool | Volitelná |
+| `startDelay` | int (sekundy) | Volitelná |
+| `timeout` | int (sekundy) | Volitelná |
+| `when` | [řetězec, řetězec,...] | Volitelná |
 
 ### <a name="examples-push"></a>Příklady: nabízených oznámení
 
@@ -264,26 +264,26 @@ steps:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Nepovinné |
-| `disableWorkingDirectoryOverride` | bool | Nepovinné |
-| `entryPoint` | string | Nepovinné |
-| `env` | [řetězec, řetězec,...] | Nepovinné |
-| `expose` | [řetězec, řetězec,...] | Nepovinné |
-| `id` | string | Nepovinné |
-| `ignoreErrors` | bool | Nepovinné |
-| `isolation` | string | Nepovinné |
-| `keep` | bool | Nepovinné |
-| `network` | objekt | Nepovinné |
-| `ports` | [řetězec, řetězec,...] | Nepovinné |
-| `pull` | bool | Nepovinné |
-| `repeat` | int | Nepovinné |
-| `retries` | int | Nepovinné |
-| `retryDelay` | int (sekundy) | Nepovinné |
-| `secret` | objekt | Nepovinné |
-| `startDelay` | int (sekundy) | Nepovinné |
-| `timeout` | int (sekundy) | Nepovinné |
-| `when` | [řetězec, řetězec,...] | Nepovinné |
-| `workingDirectory` | string | Nepovinné |
+| `detach` | bool | Volitelná |
+| `disableWorkingDirectoryOverride` | bool | Volitelná |
+| `entryPoint` | string | Volitelná |
+| `env` | [řetězec, řetězec,...] | Volitelná |
+| `expose` | [řetězec, řetězec,...] | Volitelná |
+| `id` | string | Volitelná |
+| `ignoreErrors` | bool | Volitelná |
+| `isolation` | string | Volitelná |
+| `keep` | bool | Volitelná |
+| `network` | Objekt | Volitelná |
+| `ports` | [řetězec, řetězec,...] | Volitelná |
+| `pull` | bool | Volitelná |
+| `repeat` | int | Volitelná |
+| `retries` | int | Volitelná |
+| `retryDelay` | int (sekundy) | Volitelná |
+| `secret` | Objekt | Volitelná |
+| `startDelay` | int (sekundy) | Volitelná |
+| `timeout` | int (sekundy) | Volitelná |
+| `when` | [řetězec, řetězec,...] | Volitelná |
+| `workingDirectory` | string | Volitelná |
 
 Podrobnosti těchto vlastností můžete najít [vlastnosti krok úlohy](#task-step-properties) části tohoto článku.
 
@@ -362,7 +362,7 @@ S použitím standardu `docker run` obrázku referenční konvence `cmd` imagí 
 
 Každý typ kroku podporuje několik vlastností, které jsou vhodné pro její typ. Následující tabulka definuje všechny vlastnosti k dispozici krok. Ne všechny typy krok podporují všechny vlastnosti. Které z těchto vlastností jsou dostupné pro každý typ kroku najdete v tématu [cmd](#cmd), [sestavení](#build), a [nabízených](#push) krok oddíly typu odkazu.
 
-| Vlastnost | Type | Nepovinné | Popis | Výchozí hodnota |
+| Vlastnost | Type | Volitelná | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Ano | Určuje, zda by měl kontejneru odpojit při spuštění. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Ano | Zda chcete zakázat `workingDirectory` přepsat funkci. Toto použijte v kombinaci s `workingDirectory` mít plnou kontrolu nad kontejneru pracovní adresář. | `false` |
@@ -373,14 +373,14 @@ Každý typ kroku podporuje několik vlastností, které jsou vhodné pro její 
 | `ignoreErrors` | bool | Ano | Zda se má označit krok jako úspěšný bez ohledu na to, zda došlo k chybě během spuštění kontejneru. | `false` |
 | `isolation` | string | Ano | Úroveň izolace kontejneru. | `default` |
 | `keep` | bool | Ano | Určuje, zda se uchovávají po spuštění kontejneru na krok. | `false` |
-| `network` | objekt | Ano | Identifikuje síť, ve kterém se kontejner spustí. | Žádný |
+| `network` | Objekt | Ano | Identifikuje síť, ve kterém se kontejner spustí. | Žádný |
 | `ports` | [řetězec, řetězec,...] | Ano | Pole porty, které se publikují v kontejneru do hostitele. |  Žádný |
 | `pull` | bool | Ano | Určuje, zda vynutit kontejneru o přijetí změn před provedením zabránili jakékoli chování ukládání do mezipaměti. | `false` |
 | `privileged` | bool | Ano | Určuje, zda spuštění kontejneru v privilegovaném režimu. | `false` |
 | `repeat` | int | Ano | Počet opakovaných pokusů opakovat spuštění kontejneru. | 0 |
 | `retries` | int | Ano | Počet opakování pokusu o selhání spuštění kontejneru. Má pouze pokus opakovat Pokud zbývá nenulový ukončovací kód kontejneru. | 0 |
 | `retryDelay` | int (sekundy) | Ano | Zpoždění v sekundách mezi opakování pokusů o spouštění kontejneru. | 0 |
-| `secret` | objekt | Ano | Určuje tajný kód trezoru klíčů Azure nebo spravovanou identitu pro prostředky Azure. | Žádný |
+| `secret` | Objekt | Ano | Určuje tajný kód trezoru klíčů Azure nebo spravovanou identitu pro prostředky Azure. | Žádný |
 | `startDelay` | int (sekundy) | Ano | Počet sekund bude trvat zpoždění spuštění kontejneru. | 0 |
 | `timeout` | int (sekundy) | Ano | Maximální počet sekund před ukončuje se dá provádět krok. | 600 |
 | [`when`](#example-when) | [řetězec, řetězec,...] | Ano | Nakonfiguruje pro krok závislost na jeden nebo více dalších kroků v úloze. | Žádný |

@@ -3,20 +3,20 @@ title: Předpověď záměry
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvořte vlastní aplikaci, který bude předpovídat záměru uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
-author: diberry
-manager: nitinme
+author: lingliw
+manager: digimobile
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
-ms.author: diberry
+ms.date: 04/19/19
+ms.author: v-lingwu
 ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66123954"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Sestavení aplikace LUIS k určení záměry uživatele
 
@@ -239,3 +239,7 @@ Pokračovat v této aplikaci [přidání jednoduchý seznam entit a frází](lui
 
 > [!div class="nextstepaction"]
 > [Přidání předem připravených záměrů a entit do této aplikace](luis-tutorial-prebuilt-intents-entities.md)
+
+
+
+

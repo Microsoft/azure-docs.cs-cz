@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
@@ -14,15 +13,16 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/18/2019
-ms.author: dadobali
+ms.author: brandwe
+ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32cc373421e6b04737f40dc987b10c6ace858e17
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: b3802d8f92913e416cc6a80f899179fde80cec30
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937339"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962587"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS
 
@@ -44,7 +44,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 > * [Ruční] [Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > Registrace vaší aplikace
 > 1. Přejděte k novému [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) podokně.
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
@@ -52,7 +52,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://aka.ms/MobileAppReg) stránky.
@@ -213,7 +213,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 #### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Při získávání tokenu interaktivně
 
-Některé situace vyžadují uživatelům interakci s platformou identity Microsoft. V těchto případech může být potřeba zvolit svůj účet, zadejte své přihlašovací údaje nebo vaší aplikace oprávnění vyjádřit souhlas koncového uživatele. Například: 
+Některé situace vyžadují uživatelům interakci s platformou identity Microsoft. V těchto případech může být potřeba zvolit svůj účet, zadejte své přihlašovací údaje nebo vaší aplikace oprávnění vyjádřit souhlas koncového uživatele. Například 
 
 * Při prvním přihlášení uživatele k aplikaci
 * Pokud uživatel obnoví svoje heslo, bude nutné k zadání přihlašovacích údajů 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 194902cfa2992e4370b68bf140ec3a5e03f364ca
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597701"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957458"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaného experimentů v ML v Pythonu
 
@@ -158,11 +158,9 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 Můžete zadat samostatné trénování a ověření nastavení prostřednictvím get_data() nebo přímo v `AutoMLConfig` metody.
 
-## <a name="cross-validation-split-options"></a>Možností rozdělení, křížového ověření
-
 ### <a name="k-folds-cross-validation"></a>K přeložení křížové ověření
 
-Použití `n_cross_validations` nastavení určuje počet křížové ověření. Trénovací datové sady se náhodně rozdělit na `n_cross_validations` složení stejnou velikost. Při každé křížového ověření round jeden složení se použije pro ověřování modelů trénovaných na zbývající složení. Tento proces se opakuje pro `n_cross_validations` zaokrouhlí dokud každý fold se jednou nepoužije jako sada ověření. Průměrné skóre napříč všemi `n_cross_validations` zaokrouhlí se ohlásí, a odpovídající modelu budou retrained na celém trénovací datové sady. 
+Použití `n_cross_validations` nastavení určuje počet křížové ověření. Trénovací datové sady se náhodně rozdělit na `n_cross_validations` složení stejnou velikost. Při každé křížového ověření round jeden složení se použije pro ověřování modelů trénovaných na zbývající složení. Tento proces se opakuje pro `n_cross_validations` zaokrouhlí dokud každý fold se jednou nepoužije jako sada ověření. Průměrné skóre napříč všemi `n_cross_validations` zaokrouhlí se ohlásí, a odpovídající modelu budou retrained na celém trénovací datové sady.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo křížové ověření (opakované náhodné dílčí vzorkování)
 
@@ -188,7 +186,7 @@ Zobrazit [webu GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/ma
 
 ## <a name="configure-your-experiment-settings"></a>Konfigurovat nastavení testu
 
-Existuje několik možností, které můžete použít ke konfiguraci vašeho automatizované experimentu strojového učení. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu. Zobrazit [AutoMLConfig třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) zobrazit úplný seznam parametrů.  
+Existuje několik možností, které můžete použít ke konfiguraci vašeho automatizované experimentu strojového učení. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu. Zobrazit [AutoMLConfig třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) zobrazit úplný seznam parametrů.
 
 Možné příklady:
 
@@ -221,7 +219,7 @@ Možné příklady:
 
 Třemi hlavními `task` hodnoty parametrů určit seznam algoritmy, které chcete použít.  Použití `whitelist` nebo `blacklist` parametry pokročilejší úpravy iteracím dostupné algoritmy, které mají zahrnout nebo vyloučit. Seznam podporovaných modelech najdete na [SupportedAlgorithms třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py).
 
-## <a name="primary-metric"></a>Primární metriku
+### <a name="primary-metric"></a>Primární metriku
 Primární metric; jak je znázorněno výše uvedených příkladech určuje metriky, které se použijí při cvičení modelu pro optimalizaci. Primární metriky, které můžete vybrat se určuje podle typu úkolu, který zvolíte. Níže je seznam dostupných metrik.
 
 |Klasifikace | Regrese | Vytváření prognóz časových řad
@@ -232,15 +230,15 @@ Primární metric; jak je znázorněno výše uvedených příkladech určuje me
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-## <a name="data-preprocessing--featurization"></a>Předzpracování dat a snadné
+### <a name="data-preprocessing--featurization"></a>Předzpracování dat a snadné
 
-V každé automatizované experimentu strojového učení, vaše data jsou [automaticky škálovat a normalized](concept-automated-ml.md#preprocess) umožňující výkonné algoritmy.  Ale můžete také povolit další předzpracování/snadné, jako je například chybějící hodnoty imputace, kódování a transformace. [Další informace o tom, jaké snadné je součástí](how-to-create-portal-experiments.md#preprocess). 
+V každé automatizované experimentu strojového učení, vaše data jsou [automaticky škálovat a normalized](concept-automated-ml.md#preprocess) umožňující výkonné algoritmy.  Ale můžete také povolit další předzpracování/snadné, jako je například chybějící hodnoty imputace, kódování a transformace. [Další informace o tom, jaké snadné je součástí](how-to-create-portal-experiments.md#preprocess).
 
 Chcete-li povolit tuto snadné, zadejte `"preprocess": True` pro [ `AutoMLConfig` třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
-## <a name="time-series-forecasting"></a>Vytváření prognóz časových řad
+### <a name="time-series-forecasting"></a>Vytváření prognóz časových řad
 Pro typ Prognózování úloh čas řady je nutné definovat další parametry.
-1. time_column_name – Toto je povinný parametr, který definuje název sloupce do řady obsahující datum a čas trénovací data. 
+1. time_column_name – Toto je povinný parametr, který definuje název sloupce do řady obsahující datum a čas trénovací data.
 1. max_horizon – Určuje dobu, kterou chcete předpovědět navýšení kapacity podle periodicitu trénovací data. Například pokud máte trénovacích dat s zrna denní dobu, můžete definovat jak daleko out ve dnech modelu pro trénování.
 1. grain_column_names – ten definuje název sloupce, které obsahují data jednotlivých časových řad v trénovací data. Například pokud prognózy prodeje konkrétní značku ve storu byste definovali úložiště a značky sloupců jako sloupců intervalem.
 
@@ -287,60 +285,16 @@ run = experiment.submit(automl_config, show_output=True)
 >Závislosti jsou nejprve nainstalována na nový počítač.  Může trvat až 10 minut, než se zobrazí výstup.
 >Nastavení `show_output` k `True` výsledků ve výstupu se zobrazí se v konzole.
 
-## <a name="exit-criteria"></a>Výstupní kritéria 
+### <a name="exit-criteria"></a>Výstupní kritéria
 Existuje několik možností můžete definovat na dokončení experimentu.
-1. Žádná kritéria – Pokud nedefinujete některý ukončete parametry testu bude pokračovat, dokud se žádné další krok se provádí na primární metriku. 
+1. Žádná kritéria – Pokud nedefinujete některý ukončete parametry testu bude pokračovat, dokud se žádné další krok se provádí na primární metriku.
 1. Počet iterací - definujete počet iterací pro experiment ke spuštění. Můžete si volitelné přidat iteration_timeout_minutes k definování časového limitu během několika minut za každé iterace.
 1. Ukončit po dobu - pomocí experiment_timeout_minutes v nastavení, které můžete definovat dobu v minutách by experiment pokračovat v běhu.
 1. Ukončete po skóre se dosáhlo - pomocí experiment_exit_score, které můžete provést experiment po skóre na základě primární metriky se dosáhlo.
 
-## <a name="explore-model-metrics"></a>Zkoumání metrik model
-Ve widgetu nebo vložené můžete zobrazit výsledky, pokud jste v poznámkovém bloku. Zobrazit [sledovat a posuzovat modely](how-to-track-experiments.md#view-run-details) další podrobnosti.
+### <a name="explore-model-metrics"></a>Zkoumání metrik model
 
-
-### <a name="classification-metrics"></a>Klasifikace metriky
-Tyto metriky jsou uloženy v každé iteraci pro úlohu klasifikace.
-
-|Metrika|Popis|Výpočet|Další parametry
---|--|--|--|
-AUC_Macro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Makro je aritmetický průměr AUC pro každou třídu.  | [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "makro"|
-AUC_Micro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Micro je vypočítán globálně kombinací pravdivě pozitivní i falešně pozitivních výsledků z každé třídě| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "micro"|
-AUC_Weighted  | AUC je oblasti pod křivkou charakteristiku provozní příjemce. Váha je aritmetický průměr skóre pro každou třídu váženo podle počtu true instancí každé třídy| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Průměrná = "váha"
-accuracy|Přesnost je procento předpokládané popisky, které přesně odpovídají true popisky. |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Žádný|
-average_precision_score_macro|Průměrná přesnost shrnuje křivky přesnosti a úplnosti jako vážený průměr přesnosti dosáhnout při každé prahové hodnotě, zvýšení spojené s vracením z předchozí prahové hodnoty použít jako váhu. Aritmetický průměr přesnost skóre každé třídy je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Průměrná = "makro"|
-average_precision_score_micro|Průměrná přesnost shrnuje křivky přesnosti a úplnosti jako vážený průměr přesnosti dosáhnout při každé prahové hodnotě, zvýšení spojené s vracením z předchozí prahové hodnoty použít jako váhu. Micro je vypočítán globálně pomocí kombinace pravdivě pozitivní i falešně pozitivních výsledků při každé odříznutí|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Průměrná = "micro"|
-average_precision_score_weighted|Průměrná přesnost shrnuje křivky přesnosti a úplnosti jako vážený průměr přesnosti dosáhnout při každé prahové hodnotě, zvýšení spojené s vracením z předchozí prahové hodnoty použít jako váhu. Váha je aritmetický průměr přesnost průměrné skóre pro každou třídu váženo podle počtu true instancí každé třídy|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Průměrná = "váha"|
-balanced_accuracy|Vyvážený přesnost je aritmetický průměr o odvolání pro každou třídu.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "makro"|
-f1_score_macro|F1 skóre je průměr přesnosti a odvolání. Aritmetický průměr skóre F1 pro každou třídu je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Průměrná = "makro"|
-f1_score_micro|F1 skóre je průměr přesnosti a odvolání. Micro je vypočítán globálně výpočtem celkového pravdivě pozitivní, falešně negativní a počet falešně pozitivních výsledků|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Průměrná = "micro"|
-f1_score_weighted|F1 skóre je průměr přesnosti a odvolání. Vážený průměr třídy frekvence skóre F1 pro každou třídu|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Průměrná = "váha"|
-log_loss|Toto je ztráta funkce použitá v logistické regrese (multinomial) a rozšíření jako jsou neuronové sítě definované jako záporné pravděpodobnost protokolu true popisků zadaný pravděpodobnostní třídění předpovědi. Jeden vzorek hodnotou true, pokud popisek yt v {0,1} a odhad pravděpodobnosti yp této yt = 1, ztráta protokolu je – protokolování P (yt&#124;yp) =-(yt log(yp) + (1 - yt) protokolu (1 - yp))|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Žádný|
-norm_macro_recall|Normalizovaná si možná Vzpomínáte – makro je makro si možná Vzpomínáte, normalizovaná tak, aby náhodná výkonu má skóre 0 a ideální výkon má skóre 1. Toho dosáhnete pomocí norm_macro_recall: = (recall_score_macro - R) /(1-R), kde R je očekávané hodnotě recall_score_macro pro náhodné predikcí (tj, R = 0,5 pro binární klasifikaci) a R=(1/C) problémů klasifikace C – třída|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "makro" a potom (recall_score_macro - R) /(1-R), kde R je očekávané hodnotě recall_score_macro pro náhodné predikcí (tj, R = 0,5 pro binární klasifikaci) a R=(1/C) problémů klasifikace C – třída|
-precision_score_macro|Přesnost je procento prvky označeny jako určité třídy, které jsou ve skutečnosti v dané třídě. Aritmetický průměr přesnosti pro každou třídu je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "makro"|
-precision_score_micro|Přesnost je procento prvky označeny jako určité třídy, které jsou ve skutečnosti v dané třídě. Micro je vypočítán globálně výpočtem celkového pravdivě pozitivní a počet falešně pozitivních výsledků|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "micro"|
-precision_score_weighted|Přesnost je procento prvky označeny jako určité třídy, které jsou ve skutečnosti v dané třídě. Váha je aritmetický průměr přesnosti pro každou třídu váženo podle počtu true instancí každé třídy|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Průměrná = "váha"|
-recall_score_macro|Odvolání je procento prvky ve skutečnosti určité třídy, které jsou správně označené. Aritmetický průměr o odvolání pro každou třídu je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "makro"|
-recall_score_micro|Odvolání je procento prvky ve skutečnosti určité třídy, které jsou správně označené. Micro je vypočítán globálně výpočtem celkového pravdivě pozitivní, falešně negativní|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "micro"|
-recall_score_weighted|Odvolání je procento prvky ve skutečnosti určité třídy, které jsou správně označené. Váha je aritmetický průměr o odvolání pro každou třídu váženo podle počtu true instancí každé třídy|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Průměrná = "váha"|
-weighted_accuracy|Vážený přesnost je přesnost, kde je rovna podíl true instancí v tomto příkladu true třídě váhou na každý příklad|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight je rovna poměr této třídy pro každý prvek v cílovém vektor|
-
-### <a name="regression-and-time-series-forecasting-metrics"></a>Regrese a čas řady metrik prognózy
-Tyto metriky jsou uloženy v každé iteraci pro regresní nebo Prognózování úloh.
-
-|Metrika|Popis|Výpočet|Další parametry
---|--|--|--|
-explained_variance|Bylo vysvětleno odchylky je poměr, ke kterému matematické modelu účty pro variantu dané datové sady. Je, že procento snížení odchylku původní data, která mají odchylku chyby. Pokud chyby je 0, je roven bylo vysvětleno variance.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Žádný|
-r2_score|R2 je koeficient stanovení nebo snížení procenta v porovnání s modelem směrný plán, který zobrazí průměr kvadratických chyb. Pokud chyby je 0, je roven bylo vysvětleno variance.|[Výpočet](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Žádný|
-spearman_correlation|Korelace spearman je nonparametric míra monotonicity vztah mezi dvěma datovými sadami. Na rozdíl od korelace Pearson korelace Spearman nepředpokládá, že oba datové sady mají obvykle distribuovat. Stejně jako ostatní koeficienty korelace ten se pohybuje mezi -1 a + 1 hodnotou 0 zdání žádnou souvislost. Korelací mezi -1 nebo + 1 implikují přesné monotónní relace. Pozitivní korelace neznamená, že jako x zvýšení zločinců se stejně y. Negativní korelace znamenají, že jako x zvyšují v pořadí, y snižuje.|[Výpočet](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Žádný|
-mean_absolute_error|To znamenat, že absolutní chyba je očekávaná hodnota absolutní hodnota rozdílu mezi cílem a do predikce.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Žádný|
-normalized_mean_absolute_error|Normalizovaná střední absolutní chyba je střední absolutní chyba rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Rozdělit podle rozsahu dat|
-median_absolute_error|Střední absolutní chyba je Medián všech absolutních rozdílů mezi cílem a do predikce. To je robustní odlehlé hodnoty.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Žádný|
-normalized_median_absolute_error|Normalizovaná střední absolutní chyba je střední absolutní chyba rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Rozdělit podle rozsahu dat|
-root_mean_squared_error|Kořenové bude kvadratická chyba odmocninu očekávané kvadratickému rozdílu mezi cílem a do predikce.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Žádný|
-normalized_root_mean_squared_error|Normalizovaná kořenové bude kvadratická chyba kořenové střední kvadratické chyby rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Rozdělit podle rozsahu dat|
-root_mean_squared_log_error|Kořenové znamenat protokolu kvadratických chyb je odmocninu očekávané kvadratická chyba logaritmické|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádný|
-normalized_root_mean_squared_log_error|Normalizované kořenové mean ve čtverci protokolu chyba je chyba mean ve čtverci protokolu kořenové rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
-
+Ve widgetu nebo vložené můžete zobrazit výsledky školení, pokud jste v poznámkovém bloku. Zobrazit [sledovat a posuzovat modely](how-to-track-experiments.md#view-run-details) další podrobnosti.
 
 ## <a name="understand-automated-ml-models"></a>Vysvětlení automatizované modelů ML
 
@@ -358,7 +312,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Vytváření automatizovaných funkcí
 
-Zobrazit seznam předběžného zpracování a [automatizované vytváření funkcí](concept-automated-ml.md#preprocess) , který se stane, když předzpracování = True.  
+Zobrazit seznam předběžného zpracování a [automatizované vytváření funkcí](concept-automated-ml.md#preprocess) , který se stane, když předzpracování = True.
 
 Podívejte se například:
 + Existují 4 vstupní funkce: (Číselné) B (číselné), (číselné) C, D (DateTime)
@@ -370,7 +324,7 @@ Použijte tyto 2 rozhraní API v prvním kroku vybavené modelu lépe porozumět
 
 + Rozhraní API 1: `get_engineered_feature_names()` vrátí seznam názvů inženýrství funkcí.
 
-  Použití: 
+  Použití:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -382,11 +336,11 @@ Použijte tyto 2 rozhraní API v prvním kroku vybavené modelu lépe porozumět
   Tento seznam obsahuje všechny názvy inženýrství funkce.
 
   >[!Note]
-  >Použít "timeseriestransformer" pro úkol = Prognózování, použijte jiný "datatransformer' pro"regrese"nebo"klasifikaci"úloh. 
+  >Použít "timeseriestransformer" pro úkol = Prognózování, použijte jiný "datatransformer' pro"regrese"nebo"klasifikaci"úloh.
 
 + Rozhraní API 2: `get_featurization_summary()` Vrátí souhrn pro všechny vstupní funkce snadné.
 
-  Použití: 
+  Použití:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -417,16 +371,16 @@ Použijte tyto 2 rozhraní API v prvním kroku vybavené modelu lépe porozumět
     'EngineeredFeatureCount': 11,
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
-  
+
    Kde:
-   
+
    |Výstup|Definice|
    |----|--------|
-   |RawFeatureName|Název vstupu funkce/sloupce z datové sady k dispozici.| 
+   |RawFeatureName|Název vstupu funkce/sloupce z datové sady k dispozici.|
    |TypeDetected|Zjištěné datovým typem vstupu funkce.|
    |Vyřadit|Označuje, zda vstupní funkce byla zahozena, nebo použít.|
    |EngineeringFeatureCount|Mnoho funkcí, které jsou generovány pomocí transformace engineering automatická funkce.|
-   |Transformace|Seznam transformací použít k zadání funkce, které chcete generovat inženýrství funkce.|  
+   |Transformace|Seznam transformací použít k zadání funkce, které chcete generovat inženýrství funkce.|
 
 ### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Škálování/normalizace a algoritmus hypermeter hodnotami:
 
@@ -451,108 +405,36 @@ def print_model(model, prefix=""):
         else:
             pprint(step[1].get_params())
             print()
-                
+
 print_model(fitted_model)
 ```
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup pro kanálu pomocí konkrétní algoritmus (LogisticRegression s RobustScalar, v tomto případě).
 
-+ Kanál pomocí konkrétní algoritmus (LogisticRegression s RobustScalar v tomto případě):
+```
+RobustScaler
+{'copy': True,
+'quantile_range': [10, 90],
+'with_centering': True,
+'with_scaling': True}
 
-  ```
-  RobustScaler
-  {'copy': True,
-   'quantile_range': [10, 90],
-   'with_centering': True,
-   'with_scaling': True}
-  
-  LogisticRegression
-  {'C': 0.18420699693267145,
-   'class_weight': 'balanced',
-   'dual': False,
-   'fit_intercept': True,
-   'intercept_scaling': 1,
-   'max_iter': 100,
-   'multi_class': 'multinomial',
-   'n_jobs': 1,
-   'penalty': 'l2',
-   'random_state': None,
-   'solver': 'newton-cg',
-   'tol': 0.0001,
-   'verbose': 0,
-   'warm_start': False}
-  ```
-  
-+ Kanál skupiny stromů přístup: V takovém případě je kompletu 2 různých kanálů
+LogisticRegression
+{'C': 0.18420699693267145,
+'class_weight': 'balanced',
+'dual': False,
+'fit_intercept': True,
+'intercept_scaling': 1,
+'max_iter': 100,
+'multi_class': 'multinomial',
+'n_jobs': 1,
+'penalty': 'l2',
+'random_state': None,
+'solver': 'newton-cg',
+'tol': 0.0001,
+'verbose': 0,
+'warm_start': False}
+```
 
-  ```
-  prefittedsoftvotingclassifier
-  {'estimators': ['1', '18'],
-  'weights': [0.6666666666666667,
-              0.3333333333333333]}
-
-  1 - RobustScaler
-  {'copy': True,
-   'quantile_range': [25, 75],
-   'with_centering': True,
-   'with_scaling': False}
-  
-  1 - LightGBMClassifier
-  {'boosting_type': 'gbdt',
-   'class_weight': None,
-   'colsample_bytree': 0.2977777777777778,
-   'importance_type': 'split',
-   'learning_rate': 0.1,
-   'max_bin': 30,
-   'max_depth': 5,
-   'min_child_samples': 6,
-   'min_child_weight': 5,
-   'min_split_gain': 0.05263157894736842,
-   'n_estimators': 200,
-   'n_jobs': 1,
-   'num_leaves': 176,
-   'objective': None,
-   'random_state': None,
-   'reg_alpha': 0.2631578947368421,
-   'reg_lambda': 0,
-   'silent': True,
-   'subsample': 0.8415789473684211,
-   'subsample_for_bin': 200000,
-   'subsample_freq': 0,
-   'verbose': -10}
-  
-  18 - StandardScalerWrapper
-  {'class_name': 'StandardScaler',
-   'copy': True,
-   'module_name': 'sklearn.preprocessing.data',
-   'with_mean': True,
-   'with_std': True}
-  
-  18 - LightGBMClassifier
-  {'boosting_type': 'goss',
-   'class_weight': None,
-   'colsample_bytree': 0.2977777777777778,
-   'importance_type': 'split',
-   'learning_rate': 0.07894947368421053,
-   'max_bin': 30,
-   'max_depth': 6,
-   'min_child_samples': 47,
-   'min_child_weight': 0,
-   'min_split_gain': 0.2631578947368421,
-   'n_estimators': 400,
-   'n_jobs': 1,
-   'num_leaves': 14,
-   'objective': None,
-   'random_state': None,
-   'reg_alpha': 0.5789473684210527,
-   'reg_lambda': 0.7894736842105263,
-   'silent': True,
-   'subsample': 1,
-   'subsample_for_bin': 200000,
-   'subsample_freq': 0,
-   'verbose': -10}
-  ```
-  
 <a name="explain"></a>
 
 ## <a name="explain-the-model-interpretability"></a>Vysvětlují modelu (interpretability)

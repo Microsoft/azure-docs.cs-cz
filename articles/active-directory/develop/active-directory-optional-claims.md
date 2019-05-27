@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593289e64c0f9cd13251a0f7b47b860158100b36
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544563"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119728"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD
 
@@ -125,6 +125,9 @@ Tento objekt OptionalClaims způsobí, že token ID, který je vrácen do klient
 ## <a name="configuring-optional-claims"></a>Konfigurace nepovinných deklarací identity
 
 Nepovinných deklarací identity pro vaši aplikaci můžete nakonfigurovat tak, že upravíte manifest aplikace (viz následující příklad). Další informace najdete v tématu [pochopení článku manifestu aplikace Azure AD](reference-app-manifest.md).
+
+> [!IMPORTANT]
+> Přístupové tokeny jsou **vždy** vygenerované pomocí manifest z prostředků, ne klienta.  Ano v požadavku `...scope=https://graph.microsoft.com/user.read...` prostředek je v grafu.  Díky tomu se přístupový token je vytvořený pomocí manifest grafu, není klienta manifestu.  Změna manifestu pro vaši aplikaci nikdy nezpůsobí tokeny graf vypadat jinak.  Pokud chcete ověřit, zda vaše `accessToken` změny jsou aktivní, požádat o token pro vaši aplikaci, nikoli jiné aplikaci.  
 
 **Ukázka schéma:**
 

@@ -1,23 +1,23 @@
 ---
 title: 'Konfigurace partnerského vztahu pro okruh – ExpressRoute: Azure | Dokumentace Microsoftu'
-description: Tento článek vás provede kroky pro vytváření a zřizování soukromého a veřejného partnerského vztahu a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
+description: Tento článek popisuje kroky pro vytvoření a zřízení ExpressRoute privátní partnerský vztah Microsoftu. Tento článek také ukazuje, jak zkontrolovat stav, aktualizace nebo odstranění partnerských vztahů pro okruh.
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: cherylmc
+ms.date: 05/20/2019
+ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: e1f94b7b2ab71afaa40831446e5e5aede00db7b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f6061710fb15d4183bd42a82c4bd269a69fc9be2
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570848"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964439"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
-Tento článek pomůže při vytváření a správě konfigurace směrování pro okruh ExpressRoute v modelu nasazení Resource Manageru pomocí webu Azure portal. Můžete také zkontrolovat stav, update nebo delete a zrušit jejich zřízení partnerských vztahů pro okruh ExpressRoute. Pokud chcete použít jinou metodu pro práci se váš okruh, vyberte článek z následujícího seznamu:
+Tento článek pomůže při vytváření a správě konfigurace směrování pro okruh ExpressRoute Azure Resource Manageru (ARM), pomocí webu Azure portal. Můžete také zkontrolovat stav, update nebo delete a zrušit jejich zřízení partnerských vztahů pro okruh ExpressRoute. Pokud chcete použít jinou metodu pro práci se váš okruh, vyberte článek z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
@@ -29,12 +29,12 @@ Tento článek pomůže při vytváření a správě konfigurace směrování pr
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
 > 
 
-Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (soukromý Azure, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o směrování domény a vztahy, naleznete v tématu [o okruzích a partnerské vztahy](expressroute-circuit-peerings.md).
+Můžete nakonfigurovat soukromý Azure a partnerský vztah Microsoftu pro okruh ExpressRoute (veřejný partnerský vztah Azure je zastaralé pro nové okruhy). Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o směrování domény a vztahy, naleznete v tématu [o okruzích a partnerské vztahy](expressroute-circuit-peerings.md).
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
 * Před zahájením konfigurace se ujistěte, že jste si přečetli stránku s [předpoklady](expressroute-prerequisites.md), stránku s [požadavky směrování](expressroute-routing.md) a stránku s [pracovními postupy](expressroute-workflows.md).
-* Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být ve stavu zřízený a povolený pro, abyste mohli spouštět rutiny v následujících částech.
+* Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený vaším poskytovatelem připojení. Abyste mohli nakonfigurovat partnerský vztah (s), musí být okruh ExpressRoute ve stavu zřízený a povolený. 
 * Pokud máte v plánu používat sdílený klíč s algoritmem MD5 hash, je potřeba použít na oba konce tunelu a omezit počet alfanumerických znaků na maximálně 25. Speciální znaky se nepodporují. 
 
 Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejícími služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IPVPN, např. MPLS), svého poskytovatele připojení, konfiguruje a spravuje směrování za vás. 
@@ -55,7 +55,7 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
 
 ### <a name="to-create-microsoft-peering"></a>Vytvoření partnerského vztahu Microsoftu
 
-1. Nakonfigurujte okruh ExpressRoute. Než budete dál pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení partnerského vztahu Microsoftu pro můžete povolit. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace.
+1. Nakonfigurujte okruh ExpressRoute. Než budete dál pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení partnerského vztahu Microsoftu pro můžete povolit. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Ale pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte v dalších krocích.
 
    ![seznam partnerský vztah Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Nakonfigurujte partnerský vztah Microsoftu pro okruh. Před pokračováním se ujistěte, že máte k dispozici následující informace.
@@ -85,7 +85,7 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
    ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
 
-1. Po konfigurace úspěšně přijatá, vypadá podobně jako na následujícím obrázku:
+1. Po konfigurace úspěšně přijatá, zobrazí se vám něco podobně jako na následujícím obrázku:
 
    ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
@@ -113,9 +113,9 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
 
 ### <a name="to-create-azure-private-peering"></a>Vytvoření soukromého partnerského vztahu Azure
 
-1. Nakonfigurujte okruh ExpressRoute. Než budete pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace.
+1. Nakonfigurujte okruh ExpressRoute. Než budete pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Ale pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte v dalších krocích.
 
-   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![Seznam](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Nakonfigurujte soukromý partnerský vztah Azure pro okruh. Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
 
    * Podsíť /30 pro primární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače.

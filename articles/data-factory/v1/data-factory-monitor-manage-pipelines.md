@@ -14,11 +14,11 @@ ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122845"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí webu Azure portal a Powershellu
 > [!div class="op_single_selector"]
@@ -107,10 +107,10 @@ Kolekce obsahuje nějaké řezy datové sady ve službě data factory může mí
 <td>ActivityResume</td><td>Aktivita je pozastavená a řezy nelze spustit, dokud nebude obnoven aktivity.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Je o provádění aktivity.</td>
+<td>Zkusit znovu</td><td>Je o provádění aktivity.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření se ještě nespustilo.</td>
+<td>Ověřování</td><td>Ověření se ještě nespustilo.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověření čeká se na opakování pokusu.</td>
@@ -123,13 +123,13 @@ Kolekce obsahuje nějaké řezy datové sady ve službě data factory může mí
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Selhalo</td><td>Vypršel časový limit</td><td>Provádění aktivity trvalo déle, než povoluje aktivitou.</td>
+<td rowspan="4">Nezdařilo se</td><td>Vypršel časový limit</td><td>Provádění aktivity trvalo déle, než povoluje aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez bylo zrušeno uživatelem.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření selhalo.</td>
+<td>Ověřování</td><td>Ověření selhalo.</td>
 </tr>
 <tr>
 <td>-</td><td>Vygenerovat nebo ověřit řez se nezdařilo.</td>

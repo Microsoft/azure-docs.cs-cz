@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146169"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961440"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -32,10 +32,10 @@ Zónově redundantní úložiště je obecně dostupná v těchto oblastech:
 - Francie – střed
 - Japonsko – východ
 - Velká Británie – jih
+- USA – střed
 - USA – východ
 - USA – východ 2
 - USA – západ 2
-- USA – střed
 
 Microsoft nadále povolit ZRS v dalších oblastech Azure. Zkontrolujte [aktualizace služby Azure](https://azure.microsoft.com/updates/) stránky pravidelně informace o nové oblasti.
 
@@ -75,6 +75,7 @@ Mějte na paměti následující omezení migrace za provozu:
 - Můžete migrovat pouze data v rámci stejné oblasti. Pokud chcete migrovat data do účtu ZRS nachází v jiné než účet zdrojové oblasti, je nutné provést ruční migraci.
 - Pouze typy účtů úložiště úrovně standard podporují migraci za provozu. Účty služby Premium storage je potřeba migrovat ručně.
 - Migrace za provozu z ZRS LRS, GRS nebo RA-GRS se nepodporuje. Je potřeba ručně přesun dat do nové nebo existující účet úložiště.
+- Spravované disky jsou dostupné jenom pro LRS a nejde migrovat na ZRS. Pro integraci s dostupností sady viz [Úvod do služby Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets). Snímky a Image můžete ukládat u služby Standard Managed SSD Disks na standardní HDD úložiště a [vybrat mezi LRS a ZRS možnosti](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 Můžete požádat o migraci za provozu prostřednictvím [portál podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Z portálu vyberte účet úložiště, který chcete převést na ZRS.
 1. Vyberte **novou žádost o podporu**
@@ -96,7 +97,7 @@ Pracovník podpory bude vás kontaktovat a poskytnout pomoc, které potřebujete
 
 **Mám naplánovat, žádné prostoje během migrace?**
 
-Neexistuje žádné prostoje způsobené migrace. Během migrace za provozu můžete pokračovat v účtu úložiště při migraci dat mezi zdrojovou a cílovou razítka úložiště. Během procesu migrace máte stejnou úroveň odolnosti a smlouva SLA o dostupnosti, jako je obvyklým způsobem.
+Neexistuje žádné prostoje způsobené migrace. Během migrace za provozu můžete pokračovat v používání svého účtu úložiště, zatímco vaše data jsou migrována mezi zdrojovým a cílovým razítka úložiště. Během procesu migrace máte stejnou úroveň odolnosti a smlouva SLA o dostupnosti, jako je obvyklým způsobem.
 
 **Je k dispozici žádné ztráty dat spojené s migrací?**
 

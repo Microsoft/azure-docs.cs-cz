@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
+ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561994"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952884"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu
 
@@ -24,16 +24,18 @@ V současné době služby Event Grid odesílá každé události jednotlivě od
 
 ## <a name="retry-schedule-and-duration"></a>Plán opakování a dobu trvání
 
-Event Grid používá zásady opakování exponenciálního omezení rychlosti pro doručování událostí. Pokud koncový bod nereaguje nebo vrací kód chyby, služby Event Grid se opakuje doručování na jak kapacita systému dovolí podle následujícího plánu:
+Event Grid počká 30 sekund pro odpověď po doručení zprávy. Po 30 sekund Pokud ještě koncový bod odpověděl, zprávy do fronty pro opakování. Event Grid používá zásady opakování exponenciálního omezení rychlosti pro doručování událostí. Event Grid opakování doručování na jak kapacita systému dovolí podle následujícího plánu:
 
-1. 10 sekund
-1. 30 sekund
-1. 1 minuta
-1. 5 minut
-1. 10 minut
-1. 30 minut
-1. 1 hodina
-1. Každou hodinu po dobu až 24 hodin
+- 10 sekund
+- 30 sekund
+- 1 minutu
+- 5 minut
+- 10 minut
+- 30 minut
+- 1 hodina
+- Každou hodinu po dobu až 24 hodin
+
+Pokud koncový bod odpoví během 3 minut, služby Event Grid se pokusí o odebrání události z fronty opakování na jak kapacita systému dovolí, ale duplicitní hodnoty může i nadále přijímat.
 
 Služby Event Grid přidá všechny kroky opakovat malé náhodné a může tj přeskočte určité opakovaných pokusů, pokud koncový bod je konzistentně není v pořádku, mimo provoz delší dobu, nebo se zdá být předešla zahlcení.
 
@@ -72,12 +74,12 @@ Následující kódy odpovědi HTTP označuje, že pokus o doručení událostí
 
 - 400 – Chybný požadavek
 - 401 Neautorizováno
-- 404 – Nenalezeno
+- 404 Nenalezeno
 - 408 časový limit žádosti
 - Entita 413 požadavku je moc velká
 - Identifikátor URI 414 příliš dlouhý
 - 429 příliš mnoho požadavků
-- 500 – Interní chyba serveru
+- Chyba 500 interní Server
 - 503 – Nedostupná služba
 - 504 – Časový limit brány
 

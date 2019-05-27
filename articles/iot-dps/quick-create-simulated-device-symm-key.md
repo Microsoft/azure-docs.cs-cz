@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 93fc426d9de027100e70502bcf6ea3aad2c44e10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31e71e942d7bd3f7a9739eeb83bd3ed250bb2c61
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363758"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909012"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů
 
@@ -34,7 +34,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio 2015 nebo [Visual Studio 2017](https://www.visualstudio.com/vs/) s povolenou sadou funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s ["vývoj desktopových aplikací pomocí C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 

@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6a62e75fadad14148f5f82da3a213d4b13cbe343
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12ccff3676cb35ac27126360dbcf5a1b9b3e131f
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61250805"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914146"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Python SDK pro zařízení pro službu IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -34,7 +34,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
-1. Ujistěte se, že na svém počítači máte nainstalovanou sadu [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) nebo [Visual Studio 2017](https://www.visualstudio.com/vs/). Pro vaši instalaci sady Visual Studio musíte mít povolenou sadu funkcí Vývoj desktopových aplikací pomocí C++.
+1. Ujistěte se, že jste si nainstalovali buď [sady Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější, se "vývoj desktopových aplikací pomocí C++" úloh pro instalaci sady Visual Studio povoleno.
 
 2. Stáhněte a nainstalujte [sestavovací systém CMake](https://cmake.org/download/).
 

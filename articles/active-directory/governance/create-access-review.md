@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247144"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113510"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
 
@@ -30,8 +30,11 @@ Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro 
 
 ## <a name="prerequisites"></a>Požadavky
 
+- Azure AD Premium P2
 - [Kontroly přístupu povolena](access-reviews-overview.md)
 - Globální správce nebo Správce uživatelů
+
+Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Vytvořte jeden nebo více kontroly přístupu
 
@@ -77,9 +80,13 @@ Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro 
 
     ![Vytvoření kontroly přístupu – kontroloři](./media/create-access-review/reviewers.png)
 
-1. V **programy** vyberte program, který chcete použít. Jak sledovat a shromažďovat kontroly přístupu pro různé účely jejich uspořádáním do programů může zjednodušit. **Výchozí Program** je vždy k dispozici, nebo můžete vytvořit v jiné aplikaci. Například můžete mít jeden program pro každou dodržování předpisů iniciativy nebo obchodní cíle.
+1. V **programy** vyberte program, který chcete použít. **Výchozí Program** je vždy k dispozici.
 
     ![Vytvoření kontroly přístupu – programy](./media/create-access-review/programs.png)
+
+    Jak sledovat a shromažďovat kontroly přístupu pro různé účely jejich uspořádáním do programů může zjednodušit. Každý kontroly přístupu lze propojit do programu. Potom při přípravě sestavy pro auditor můžete soustředit na kontroly přístupu v oboru pro konkrétní iniciativy. Programy a výsledky kontroly přístupu jsou viditelné pro uživatele v globální správce, Správce uživatelů, správce zabezpečení nebo roli Čtenář zabezpečení.
+
+    Pokud chcete zobrazit seznam aplikací, přejít na úroveň kontroly stránky a vyberte **programy**. Pokud jste globální správce nebo role uživatele správce, můžete vytvořit další programy. Například můžete mít jeden program pro každou dodržování předpisů iniciativy nebo obchodní cíle. Pokud už nepotřebujete programu a nemá žádné ovládací prvky na sebe, můžete ho odstranit.
 
 ### <a name="upon-completion-settings"></a>Nastavení činností po dokončení
 
@@ -110,6 +117,8 @@ Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro 
 
 1. Nastavte **připomenutí** k **povolit** bude Azure AD posílala připomenutí kontroly přístupu v průběhu kontrolorům, kteří nedokončili svoji kontrolu.
 
+    Ve výchozím nastavení Azure AD automaticky pošle připomenutí revidujícím, kteří ještě neodpověděli, po uplynutí poloviny času.
+
 ## <a name="start-the-access-review"></a>Zahájení kontroly přístupu
 
 Po zadání nastavení pro kontroly přístupu, klikněte na tlačítko **Start**. Kontroly přístupu se zobrazí v seznamu se indikátor stavu.
@@ -118,19 +127,7 @@ Po zadání nastavení pro kontroly přístupu, klikněte na tlačítko **Start*
 
 Ve výchozím nastavení Azure AD pošle e-mail revidující krátce po spuštění kontroly. Pokud se rozhodnete odeslat e-mailu se službou Azure AD, nezapomeňte informovat revidující, které čeká na všesměrově jejich dokončení kontroly přístupu. Je možné zobrazit pokyny k [kontrolovat přístup skupinám nebo aplikacím](perform-access-review.md). Pokud kontrolu pro hosty kontrolovat svůj vlastní přístup, je zobrazit pokyny k [zkontrolujte přístup skupinám nebo aplikacím](review-your-access.md).
 
-Pokud jsou některé z revidující hosté, hosté upozorněni prostřednictvím e-mailu jenom v případě, že jste již přijetí svou pozvánku.
-
-## <a name="manage-the-access-review"></a>Správa kontroly přístupu.
-
-Průběh můžete sledovat, jak recenzenti dokončí své recenze **přehled** stránky kontroly přístupu. Žádné přístupová práva jsou změněny v adresáři, dokud [se kontrola dokončí](complete-access-review.md).
-
-![Průběh kontroly přístupu](./media/create-access-review/overview-progress.png)
-
-Pokud je to jednorázové kontroly, po období kontroly přístupu je nad nebo správce zastavení kontroly přístupu, postupujte podle pokynů v [dokončení kontroly přístupu skupinám nebo aplikacím](complete-access-review.md) chcete zobrazit a použít výsledky.  
-
-Ke správě řadu přístup kontroly, přejděte na kontrolu přístupu a budete najít připravované výskyty v naplánované kontroly a upravit koncové datum nebo přidání nebo odebrání revidujících odpovídajícím způsobem.
-
-Na základě vašeho výběru v **nastavení činností po dokončení**, se automaticky použít se spustí po koncové datum kontrola nebo když ručně zastavte kontrolu. Stav kontroly se změní z **dokončeno** prostřednictvím průběžných stavů například **použití** a nakonec do stavu **použito**. Měli byste očekávat zobrazíte zamítnutým uživatelům, pokud existuje, odebírán z přiřazení skupiny členství nebo aplikaci za několik minut.
+Pokud jste přiřadili hosté jako revidující a jejich nepřijali pozvánku, se nebude vzhledem k tomu, musí nejdřív přijmout pozvánku před revizí přijde e-mail od kontroly přístupu.
 
 ## <a name="create-reviews-via-apis"></a>Vytvoření kontroly prostřednictvím rozhraní API
 

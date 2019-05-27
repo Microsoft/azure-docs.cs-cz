@@ -9,11 +9,11 @@ ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416276"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119224"
 ---
 V následující tabulce jsou uvedeny dostupné oblasti jsou podporované pro funkce, které jsou obecné dostupnosti.
 

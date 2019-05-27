@@ -27,8 +27,6 @@
           href: manage-guest-access-with-access-reviews.md
         - name: Správa přístupu uživatelů s využitím kontrol
           href: manage-user-access-with-access-reviews.md
-        - name: Správa programů a jejich řízení
-          href: manage-programs-controls.md
         - name: Správa uživatelů vyloučených z podmíněného přístupu
           href: conditional-access-exclusion.md
 - name: Návody
@@ -64,8 +62,6 @@
               href: review-your-access.md
             - name: Dokončení kontroly přístupu
               href: complete-access-review.md
-            - name: Načtení výsledků kontroly přístupu
-              href: retrieve-access-review.md
         - name: Role Azure AD
           items:
             - name: Vytvoření kontroly přístupu

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: jopapa
 ms.openlocfilehash: f2ec39cc4f9a18a0738f8041e4948e8db02b302f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65917050"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120872"
 ---
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 

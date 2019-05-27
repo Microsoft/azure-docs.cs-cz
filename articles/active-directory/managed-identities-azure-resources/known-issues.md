@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e958aa82eb1e2fbf21a44df333533c6da058a966
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1a6797c7bd0c6bd8ce8d3f51b42cb4c2b1338fd6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448481"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950478"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
@@ -81,6 +81,11 @@ Ne. Pokud je předplatné přesunout do jiného adresáře, budete muset ručně
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Můžete použít spravovanou identitu pro přístup k prostředku v jiném tenantovi/adresáři?
 
 Ne. Spravované identity aktuálně nepodporují adresář různé scénáře. 
+
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu prostředku? 
+
+- Systém přiřadil spravovaná identita: Za prostředek nepotřebujete oprávnění zapisovat. Příklad: Microsoft.Compute/virtualMachines/write nebo tato akce je součástí prostředků konkrétní předdefinované role, jako jsou [Přispěvatel virtuálních počítačů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Uživatelsky přiřazené identity spravované: Za prostředek nepotřebujete oprávnění zapisovat. Příklad: Microsoft.Compute/virtualMachines/write. Kromě [operátor spravovaných identit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) přiřazení role přes spravovanou identitu. 
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak je restartovat spravované identity pro rozšíření prostředků Azure?
 V některých verzích systému Linux a Windows Pokud rozšíření zastaví, následující rutiny můžou sloužit k ho restartovat ručně:

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165532"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115507"
 ---
 Pokud budete mít adresu URL sdíleného přístupového podpisu (SAS), který uděluje přístup k prostředkům v účtu úložiště, můžete SAS v připojovacím řetězci. Protože sdíleného přístupového podpisu obsahuje informace potřebné k ověření požadavku, připojovací řetězec pomocí SAS poskytuje protokol koncového bodu služby a přihlašovací údaje potřebné pro přístup k prostředku.
 

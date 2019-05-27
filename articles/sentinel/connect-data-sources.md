@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b54c4ef1b188896a70cf8b2f9352d0b76874fd50
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5d8d97aefa2efadae70c976b8a1876b2c7d8f1c1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204291"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921938"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -53,7 +53,7 @@ Podporuje následující datové připojení metody Sentinelu Azure:
 - **Externí řešení přes rozhraní API**: Některé zdroje dat jsou připojené připojených zdrojů dat pomocí rozhraní API, která jsou k dispozici. Většina zabezpečení technologie obvykle poskytují sadu rozhraní API, pomocí kterého se dá načíst protokoly událostí. Rozhraní API pro připojení k Azure Sentinelu a shromažďovat konkrétní datové typy a odeslat do služby Azure Log Analytics. Zařízení připojené přes rozhraní API patří:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Externí řešení prostřednictvím agenta**: Azure Sentinel může být připojen k všechny ostatní zdroje dat, které můžete provádět, streamování v reálném čase protokolů pomocí protokolu Syslog, prostřednictvím agenta. <br>Většina zařízení pomocí protokolu Syslog odesílat zprávy o událostech, které zahrnují protokolu samostatně a data o protokolu. Formát protokoly se liší, ale většina zařízení podporují standardní formát cef (Common Event Format). <br>Agent Azure Sentinelu, která je založena na agenta OMS, převede CEF ve formátu protokoly do formátu, který je možné ingestovat službou Log Analytics. V závislosti na typu zařízení je agent nainstalovaný přímo na zařízení nebo na vyhrazeném serveru Linux. Agenta pro Linux přes protokol UDP. přijímá události z procesu démona Syslogu, ale v případech, kde je očekávána počítač s Linuxem ke shromažďování k velkému počtu události procesu Syslog, odešlou přes TCP z procesu démona Syslogu na agenta a z něj ke službě Log Analytics.
+- **Externí řešení prostřednictvím agenta**: Azure Sentinel může být připojen k všechny ostatní zdroje dat, které můžete provádět, streamování v reálném čase protokolů pomocí protokolu Syslog, prostřednictvím agenta. <br>Většina zařízení pomocí protokolu Syslog odesílat zprávy o událostech, které zahrnují protokolu samostatně a data o protokolu. Formát protokoly se liší, ale většina zařízení podporují standardní formát cef (Common Event Format). <br>Agent Azure Sentinelu, která je založena na agenta Microsoft Monitoring Agent, převede protokoly ve formátu CEF do formátu, který je možné ingestovat službou Log Analytics. V závislosti na typu zařízení je agent nainstalovaný přímo na zařízení nebo na vyhrazeném serveru Linux. Agenta pro Linux přes protokol UDP. přijímá události z procesu démona Syslogu, ale v případech, kde je očekávána počítač s Linuxem ke shromažďování k velkému počtu události procesu Syslog, odešlou přes TCP z procesu démona Syslogu na agenta a z něj ke službě Log Analytics.
     - Brány firewall, proxy servery a koncové body:
         - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)

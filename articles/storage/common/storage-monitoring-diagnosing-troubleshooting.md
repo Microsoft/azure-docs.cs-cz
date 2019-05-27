@@ -9,12 +9,12 @@ ms.date: 05/11/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ccafa3431e12b036346c4fd654b2978dc9021471
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192170"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912331"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -426,7 +426,7 @@ Pokud **PercentThrottlingError** metrika způsobit nárůst Procento požadavků
 Zvýšení **PercentThrottlingError** často dochází ve stejnou dobu jako nárůst počtu požadavků na úložiště, nebo když jste původně zátěžové testování vaší aplikace. To může také projevit v klientovi jako "503 Server zaneprázdněn" nebo "časový limit 500 operace" HTTP stavové zprávy z operace úložiště.
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>Přechodné zvýšení u PercentThrottlingError
-Pokud se vám zobrazují špičky v hodnotě **PercentThrottlingError** , který se shoduje s období vysoké aktivity pro aplikaci, implementujte exponenciální (nikoli lineární) regresní strategii opakování v klientovi. Regresní opakovaných pokusů snižovat zatížení okamžité oddílu a Nápověda aplikace vyhlazení špiček v provozu. Další informace o tom, jak implementovat zásady opakování s využitím klientské knihovny pro úložiště najdete v tématu [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy).
+Pokud se vám zobrazují špičky v hodnotě **PercentThrottlingError** , který se shoduje s období vysoké aktivity pro aplikaci, implementujte exponenciální (nikoli lineární) regresní strategii opakování v klientovi. Regresní opakovaných pokusů snižovat zatížení okamžité oddílu a Nápověda aplikace vyhlazení špiček v provozu. Další informace o tom, jak implementovat zásady opakování s využitím klientské knihovny pro úložiště najdete v tématu [obor názvů Microsoft.Azure.Storage.RetryPolicies](/dotnet/api/microsoft.azure.storage.retrypolicies).
 
 > [!NOTE]
 > Může se zobrazit také špičky v hodnotě **PercentThrottlingError** , který není časově shodovala se zastávkami období vysoké aktivity pro aplikaci: nejpravděpodobnější příčinou je služba úložiště, přesun oddílů, aby zlepšil Vyrovnávání zatížení.
@@ -469,15 +469,15 @@ Pokud vaše klientská aplikace způsobuje chyby HTTP 403 (Zakázáno), pravděp
 
 | Zdroj | Podrobnosti | Podrobnosti | ID žádosti klienta | Operace text |
 | --- | --- | --- | --- | --- |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab-… |Spouští se operace s umístěním primární umístění režim PrimaryOnly podle. |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Synchronní požadavek na spuštění <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Čekání na odpověď. |
-| Microsoft.WindowsAzure.Storage |Upozornění |2 |85d077ab -… |Došlo k výjimce při čekání na odpověď: Vzdálený server vrátil chybu: 403 Zakázáno. |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Byla přijata odpověď. Stavový kód 403, ID žádosti = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = ETag =. |
-| Microsoft.WindowsAzure.Storage |Upozornění |2 |85d077ab -… |Během operace došlo k výjimce: Vzdálený server vrátil chybu: Zakázáno (403)... |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Kontroluje se, pokud byste operaci opakovat. Počet opakování 0, stavový kód HTTP 403, výjimka = = vzdálený server vrátil chybu: Zakázáno (403)... |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Následujícího umístění je nastavená na primární, na základě umístění režimu. |
-| Microsoft.WindowsAzure.Storage |Chyba |1 |85d077ab -… |Zásady opakování pro opakování nepovolil. Došlo k selhání s vzdálený server vrátil chybu: 403 Zakázáno. |
+| Microsoft.Azure.Storage |Informace |3 |85d077ab-… |Spouští se operace s umístěním primární umístění režim PrimaryOnly podle. |
+| Microsoft.Azure.Storage |Informace |3 |85d077ab -… |Synchronní požadavek na spuštění <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |Informace |3 |85d077ab -… |Čekání na odpověď. |
+| Microsoft.Azure.Storage |Upozornění |2 |85d077ab -… |Došlo k výjimce při čekání na odpověď: Vzdálený server vrátil chybu: 403 Zakázáno. |
+| Microsoft.Azure.Storage |Informace |3 |85d077ab -… |Byla přijata odpověď. Stavový kód 403, ID žádosti = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = ETag =. |
+| Microsoft.Azure.Storage |Upozornění |2 |85d077ab -… |Během operace došlo k výjimce: Vzdálený server vrátil chybu: Zakázáno (403)... |
+| Microsoft.Azure.Storage |Informace |3 |85d077ab -… |Kontroluje se, pokud byste operaci opakovat. Počet opakování 0, stavový kód HTTP 403, výjimka = = vzdálený server vrátil chybu: Zakázáno (403)... |
+| Microsoft.Azure.Storage |Informace |3 |85d077ab -… |Následujícího umístění je nastavená na primární, na základě umístění režimu. |
+| Microsoft.Azure.Storage |Chyba |1 |85d077ab -… |Zásady opakování pro opakování nepovolil. Došlo k selhání s vzdálený server vrátil chybu: 403 Zakázáno. |
 
 V tomto scénáři které byste měli prozkoumat, proč je SAS token vyprší před klient odešle token do serveru:
 

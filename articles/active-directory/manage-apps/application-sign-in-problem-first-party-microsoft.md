@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825215"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956845"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -87,7 +87,7 @@ Toto jsou některé běžné problémy, které lidé tyto problémy při jejich 
 
 - Pro **Microsoft** **aplikace, které nevyžadují licenci**, tady jsou některé další možnosti ke kontrole:
 
-  * Pokud aplikace požaduje **oprávnění na úrovni uživatele** (například "přístup k poštovní schránky uživatele"), ujistěte se, že uživatel přihlásil k aplikaci a byla provedena **operace vyjádření souhlasu uživatele** umožňuje aplikaci získat přístup k jeho datům.
+  * Pokud aplikace požaduje **oprávnění na úrovni uživatele** (například "přístup k poštovní schránky uživatele"), ujistěte se, že uživatel přihlásil k aplikaci a byla provedena **operace vyjádření souhlasu uživatele** umožňuje aplikaci přístup ke svým datům.
 
   * Pokud aplikace požaduje **oprávnění na úrovni správce** (například "přístup k poštovním schránkám všechny uživatele"), ujistěte se, že byla provedena jako globální správce **operace schválením na úrovni správce jménem všech uživatelů** v organizaci.
 

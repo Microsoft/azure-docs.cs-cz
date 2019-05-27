@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: diberry
 ms.openlocfilehash: a65b075e89180441eecfb420130bfd1e47b277a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597524"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66123579"
 ---
 Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientské aplikaci, musíte aplikaci publikovat do koncového bodu. 
 

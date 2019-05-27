@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682109"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896861"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit v Azure AD ve službě Azure Monitor
 
@@ -107,6 +107,23 @@ Následující tabulka obsahuje odhad měsíčních nákladů na základní cent
 | Přihlášení | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Aspekty náklady na protokoly Azure monitoru
+
+
+
+| Kategorie protokolu       | Počet uživatelů | Počet událostí za den | Událostí za měsíc (30 dnů) | Cena za měsíc v USD (est.) |
+| :--                | ---             | ---            | ---                        | --:                          |
+| Audit a přihlášení | 100 000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| Auditování              | 100 000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| Přihlášení           | 100 000         | 15,000,000     | 450,000,000                |  $847.28                     |
+
+
+
+
+
+
+
+
+
 
 Náklady související se správou protokoly Azure monitoru najdete v tématu [spravovat náklady pomocí řízení objemu dat a uchovávání protokolů Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 

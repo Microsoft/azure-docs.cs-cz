@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2018
+ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203535"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911240"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
 
@@ -186,8 +186,8 @@ Protokoly toku omezení rizik útoků umožní zkontrolovat zhoršení provozu p
 1. Chcete-li zobrazit data protokolů toku v řídicím panelu Azure analytics, můžete importovat ukázkový řídicí panel z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Protokoly toku bude mít tahle pole: 
-- Zdrojová IP adresa
-- Cílová IP adresa
+- IP adresa zdroje
+- Cíl IP
 - Zdrojový port 
 - Cílový port 
 - Typ protokolu 
@@ -203,6 +203,19 @@ Microsoft uzavřel partnerství s [BreakingPoint Cloud](https://www.ixiacom.com/
 - Optimalizace procesu reakce na incidenty v rámci útoky DDoS
 - Dodržování předpisů dokument před útoky DDoS
 - Trénování vaše týmy zabezpečení sítě
+
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Zobrazit upozornění před útoky DDoS protection ve službě Azure Security Center
+
+Azure Security Center poskytuje seznam [výstrahy zabezpečení](/azure/security-center/security-center-managing-and-responding-alerts), informace, které vám pomůže posoudit a opravovat problémy. Pomocí této funkce získáte jednotný přehled o výstrahách, včetně výstrahy související s útoky DDoS a akce ke zmírnění tohoto útoku v téměř v čase.
+Existují dva určitá upozornění, že se zobrazí všechny DDoS útoku detekci a zmírnění distribuovaných útoků:
+
+- **Zjištěna útoky DDoS pro veřejné IP adresy**: Tato výstraha se vygeneruje, když služba DDoS protection zjistí, že jeden z veřejné IP adresy je cíl s útoky DDoS.
+- **Zmírnit útoky DDoS pro veřejné IP adresy**: Tato výstraha se vygeneruje, když byla zmírnit útok na veřejnou IP adresu.
+Chcete-li zobrazit výstrahy, otevřete **Security Center** na webu Azure Portal. V části **ochrana před internetovými útoky**vyberte **výstrahy zabezpečení**. Následující snímek obrazovky ukazuje příklad výstrahy útoku DDoS.
+
+![Před útoky DDoS upozornění ve službě Azure Security Center](./media/manage-ddos-protection/ddos-alert-asc.png)
+
+Výstrahy obsahují obecné informace o veřejnou IP adresu, která je v části útoku, geografická a informace analýzy hrozeb a kroky nápravy.
 
 ## <a name="permissions"></a>Oprávnění
 

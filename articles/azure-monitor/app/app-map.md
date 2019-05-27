@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba4643118c5d90b91c3e51d569e9a628c84159fc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780019"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964039"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -94,7 +94,9 @@ Chcete-li zobrazit aktivní výstrahy a základní pravidla, které způsobují 
 
 Mapa aplikace používá **název cloudové role** vlastnost k identifikaci komponenty na mapě. Vlastnost názvu role cloud sadu SDK Application Insights automaticky přidá do telemetrických dat, protože ho vygeneroval komponenty. Sada SDK se například přidat název webového serveru nebo název role služby pro vlastnost název cloudové role. Existují však případy, kde můžete chtít potlačit výchozí hodnotu. Název cloudové role přepsat a změňte, co zobrazí na mapě aplikace:
 
-### <a name="net"></a>.NET
+### <a name="netnet-core"></a>.NET/.NET Core
+
+**Napište vlastní TelemetryInitializer, jak je uvedeno níže.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -117,9 +119,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**Načíst vaše inicializátor**
+**Inicializátor zatížení pro aktivní TelemetryConfiguration**
 
-In ApplicationInsights.config:
+In ApplicationInsights.config :
 
 ```xml
     <ApplicationInsights>
@@ -131,7 +133,10 @@ In ApplicationInsights.config:
     </ApplicationInsights>
 ```
 
-Je alternativní metoda pro vytvoření instance inicializátoru v kódu, například v souboru Global.aspx.cs:
+> [!NOTE]
+> Přidáváním inicializátoru pomocí `ApplicationInsights.config` není platný pro aplikace ASP.NET Core.
+
+K vytvoření instance inicializátoru v kódu, například v souboru Global.aspx.cs je alternativní metoda pro ASP.NET Web apps:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -141,6 +146,17 @@ Je alternativní metoda pro vytvoření instance inicializátoru v kódu, např�
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+    }
+```
+
+Pro [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) aplikace, přidání nového `TelemetryInitializer` se provádí tak, že přidáte do kontejneru injektáž závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodu vaše `Startup.cs` třídy.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
     }
 ```
 

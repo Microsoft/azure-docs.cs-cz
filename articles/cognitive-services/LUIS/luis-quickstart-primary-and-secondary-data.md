@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526558"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66124154"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahovat názvy s jednoduchou entitu a seznam fráze
 
@@ -31,7 +31,7 @@ Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo fráz�
 > * Importovat ukázková aplikace
 > * Přidat jednoduchou entitu 
 > * Přidat seznam frázi a zvýšit tak signál slova
-> * Trénování 
+> * Trénovat 
 > * Publikování 
 > * Zjistit záměry a entity z koncového bodu
 

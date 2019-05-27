@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 802e177b6f3844abe4d24c26b7ea2d0d4fb1688c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 53eb5fc9389d913ecacec3729a06e47a1c2bf56b
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697015"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864551"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrace rozšíření vazby Azure Functions
 
-Od verze Azure Functions 2.x, [vazby](./functions-triggers-bindings.md) jsou k dispozici jako samostatné balíčky z modul runtime služby functions. Když funkce .NET přístup vazby prostřednictvím balíčků NuGet, sady rozšíření povolit další funkce přístupu k všechny vazby prostřednictvím nastavení konfigurace.
+V Azure Functions verzi 2.x, [vazby](./functions-triggers-bindings.md) jsou k dispozici jako samostatné balíčky z modul runtime služby functions. Když funkce .NET přístup vazby prostřednictvím balíčků NuGet, sady rozšíření povolit další funkce přístupu k všechny vazby prostřednictvím nastavení konfigurace.
 
-Vezměte v úvahu následující položky týkající se rozšíření vazby:
+Zvažte následující body související s vazbou rozšíření:
 
-- Rozšíření vazby nejsou explicitně registrován ve funkcích 1.x kromě případů, kdy [vytváření C# knihovny tříd pomocí sady Visual Studio 2017](#local-csharp).
+- Rozšíření vazby nejsou explicitně registrován ve funkcích 1.x kromě případů, kdy [vytváření C# knihovny tříd pomocí Visual Studio 2019](#local-csharp).
 
-- Aktivační události HTTP a časovač se podporují ve výchozím nastavení a nevyžadují žádná rozšíření.
+- Aktivační události HTTP a časovač se podporují ve výchozím nastavení a nevyžadují rozšíření.
 
 Následující tabulka udává, kdy a jak zaregistrujete vazby.
 
@@ -33,7 +33,7 @@ Následující tabulka udává, kdy a jak zaregistrujete vazby.
 |-------------------------|------------------------------------|------------------------------------|
 |portál Azure|Automaticky|Automaticky|
 |Jazyky mimo rozhraní .NET nebo místním vývojovém základní nástroje pro Azure|Automaticky|[Použití nástrojů Azure Functions Core a rozšíření sady](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
-|Knihovny tříd C# pomocí sady Visual Studio 2017|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2017)|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2017)|
+|C#knihovny tříd pomocí Visual Studio 2019|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2019)|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2019)|
 |Knihovny tříd C# pomocí nástroje Visual Studio Code|neuvedeno|[Použití .NET Core CLI](#c-class-library-with-visual-studio-code)|
 
 ## <a name="local-development-with-azure-functions-core-tools-and-extension-bundles"></a>Místní vývoj s Azure Functions Core Tools a rozšíření sady
@@ -41,9 +41,9 @@ Následující tabulka udává, kdy a jak zaregistrujete vazby.
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 <a name="local-csharp"></a>
-## <a name="c-class-library-with-visual-studio-2017"></a>Knihovny tříd C# pomocí sady Visual Studio 2017
+## <a name="c-class-library-with-visual-studio-2019"></a>C#knihovny tříd pomocí Visual Studio 2019
 
-V **Visual Studio 2017**, balíčky můžete nainstalovat z konzoly Správce balíčků pro použití [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) příkaz, jak je znázorněno v následujícím příkladu:
+V **Visual Studio 2019**, balíčky můžete nainstalovat z konzoly Správce balíčků pro použití [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) příkaz, jak je znázorněno v následujícím příkladu:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>

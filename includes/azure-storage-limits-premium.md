@@ -9,11 +9,11 @@ ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65751527"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114808"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Úložiště objektů blob bloku výkon úrovně Premium
 

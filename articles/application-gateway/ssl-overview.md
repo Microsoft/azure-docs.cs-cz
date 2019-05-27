@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715214"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849809"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s aplikační bránou
 
@@ -36,7 +36,7 @@ Ke konfiguraci ukončení protokolu SSL, certifikát SSL je potřeba přidat k n
 Pro připojení SSL pro práci je potřeba zajistit, že certifikát SSL splňuje následující podmínky:
 
 - Aktuální datum a čas je v rámci "Platnost od" a rozsah dat "Platí pro" na certifikátu.
-- Tento "běžný název certifikátu" (CN) odpovídá hlavičku hostitele v žádosti. Například, pokud klient posílá požadavek na `https://www.contoso.com/`, musí to být CN `www.contoso.com`.
+- Běžný název certifikátu (CN) odpovídá hlavičce hostitele v požadavku. Například pokud klient posílá požadavek na `https://www.contoso.com/`, musí být CN `www.contoso.com`.
 
 ### <a name="certificates-supported-for-ssl-termination"></a>Certifikáty, které jsou podporovány pro ukončení protokolu SSL
 
@@ -48,6 +48,9 @@ Služba Application gateway podporuje následující typy certifikátů:
 - Certifikáty podepsané svým držitelem: Klientský prohlížeč nepovažujete tyto certifikáty a upozorní uživatele, že certifikát virtuální služby není součástí řetěz certifikátů. Certifikáty podepsané svým držitelem jsou vhodné pro testování a prostředí, kde správci řídit klienti mohou bezpečně obejít upozornění zabezpečení prohlížeče. Úlohy v produkčním prostředí byste nikdy neměli používat certifikáty podepsané svým držitelem.
 
 Další informace najdete v tématu [konfiguraci ukončení protokolu SSL s aplikační bránou](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+
+### <a name="size-of-the-certificate"></a>Velikost certifikátu
+Soubor Personal Information Exchange (PFX) s informacemi o certifikátu SSL by neměl být více než 10 KB.
 
 ## <a name="end-to-end-ssl-encryption"></a>Koncové šifrování protokolu SSL
 

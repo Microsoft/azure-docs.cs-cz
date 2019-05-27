@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: 1b130dff9d290dcce566570fd015d227d44a1310
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9654fd66faa1f745f25494e8b54625a92eb1745b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191897"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111629"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí Powershellu
 

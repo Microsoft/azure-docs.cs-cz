@@ -15,16 +15,18 @@ ms.topic: conceptual
 ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
-ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8686b9296c8b1d7c5232e2e46a0e66a9896656b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442534"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113022"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure AD Application Proxy
 
-Proxy aplikací služby Azure Active Directory (Azure AD) je řešení nákladově efektivní a zabezpečený vzdálený přístup pro místní aplikace. Poskytuje cestu k okamžitý přechod pro "Cloud první" organizacím spravovat přístup k starší verze místních aplikací, které zatím nejsou schopny použití moderních protokoly. Další úvodní informace najdete v tématu [co je Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) a [jak funguje Proxy aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+Proxy aplikací služby Azure Active Directory (Azure AD) je řešení nákladově efektivní a zabezpečený vzdálený přístup pro místní aplikace. Poskytuje cestu k okamžitý přechod pro "Cloud první" organizacím spravovat přístup k starší verze místních aplikací, které zatím nejsou schopny použití moderních protokoly. Další úvodní informace najdete v tématu [co je Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+
+Proxy aplikací se doporučuje že vzdáleným uživatelům udělíte přístup k interním prostředkům. Proxy aplikace nahrazuje potřebu síť VPN nebo reverzního proxy serveru pro tyto případy použití vzdáleného přístupu. Není určena pro uživatele, kteří jsou v podnikové síti. Tito uživatelé, kteří používají Proxy aplikace přístup k intranetu setkat s problémy s výkonem nežádoucí.
 
 Tento článek obsahuje prostředky, které je potřeba naplánovat, provozovat a spravovat Azure AD Application Proxy. 
 
@@ -41,25 +43,30 @@ Je potřeba splnit následující požadavky před zahájením implementace. Zob
    * Virtuální počítač hostovaný v rámci jakékoli řešení hypervisoru
    * Virtuální počítač hostovaný v Azure a umožňuje odchozí připojení ke službě Proxy aplikací.
 
-Zobrazit [pochopit Proxy aplikace Azure AD konektory](application-proxy-connectors.md) podrobnější přehled.
+* Zobrazit [pochopit Proxy aplikace Azure AD konektory](application-proxy-connectors.md) podrobnější přehled.
 
-   * Konektor hostitelem musí [povolit pro protokol TLS 1.2](application-proxy-add-on-premises-application.md) před instalací konektory.
+     * Konektor stroje musí [povolit pro protokol TLS 1.2](application-proxy-add-on-premises-application.md) před instalací konektory.
 
-   * Pokud je to možné, nasaďte konektorů [stejné síti](application-proxy-network-topology.md) a segment jako servery back endové webové aplikace. Doporučujeme nasadit konektor hostitele po dokončení zjišťování aplikací.
+     * Pokud je to možné, nasaďte konektorů [stejné síti](application-proxy-network-topology.md) a segment jako servery back endové webové aplikace. Doporučujeme nasadit konektorů po dokončení zjišťování aplikací.
+     * Doporučujeme vám, že má každá skupina konektor aspoň dva konektory k poskytování vysoké dostupnosti a škálování. V případě, že budete muset služby počítače v libovolném bodě je mít tři konektory optimální. Zkontrolujte [tabulce kapacitní konektor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) který usnadní rozhodování o tom, jaký typ počítače chcete konektory nainstalovat. Konektor budou mít větší počítače další vyrovnávací paměti a výkonné.
 
-* **Přístup k nastavení sítě**: Azure AD Application Proxy konektory [pokusí připojit k Azure přes protokol HTTPS (TCP Port 443) a protokolu HTTP (TCP Port 80)](application-proxy-add-on-premises-application.md). 
+* **Přístup k nastavení sítě**: Azure AD Application Proxy konektory [připojení k Azure přes protokol HTTPS (TCP Port 443) a protokolu HTTP (TCP Port 80)](application-proxy-add-on-premises-application.md). 
 
    * Ukončující konektor přenosů TLS se nepodporuje a nebudou moct spojnice navázáním zabezpečeného kanálu pomocí jejich příslušných koncových bodů Proxy aplikace Azure.
 
    * Vyhněte se všechny formy kontroly vložené na odchozí komunikaci protokolu TLS mezi konektory a Azure. Interní kontroly mezi konektoru a back-endu aplikace je možné, ale může snížit uživatelské prostředí a v důsledku toho se nedoporučuje.
 
-   * Vyrovnávání zatížení z konektorů Proxy sami je také podporována, nebo dokonce nezbytné.
+   * Konektorů samotné služby Vyrovnávání zatížení je také podporována, nebo dokonce nezbytné.
 
 ### <a name="important-considerations-before-configuring-azure-ad-application-proxy"></a>Důležité informace před konfigurací Azure AD Application Proxy
 
 Aby bylo možné konfigurovat a implementovat Proxy aplikací Azure AD musí být splněny následující požadavky core.
 
 *  **Registrace Azure**: Před nasazením proxy aplikací, musí být identit uživatelů synchronizované z místního adresáře nebo přímo v rámci vašich tenantů Azure AD. Umožňuje synchronizaci identit Azure AD pro předběžné ověření uživatelů před udělením přístupu k Proxy aplikace publikované aplikace a mít informace potřebné uživatelské identifikátor provádět jednotné přihlašování (SSO).
+
+* **Podmíněný přístup požadavky**: Nedoporučujeme, protože to zvyšuje latenci, která bude mít dopad na uživatele pomocí Proxy aplikace přístup k intranetu. Doporučujeme používat Proxy aplikací se zásadami předběžné ověření a podmíněného přístupu pro vzdálený přístup z Internetu.  Přístup k poskytování je podmíněný přístup pro použití v intranetu k modernizaci aplikací tak mohou diretly ověřování pomocí AAD. Odkazovat na [zdroje pro migraci aplikací do AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) Další informace. 
+
+* **Omezení služby**: K ochraně proti jsou overconsumption prostředků jednotlivé tenanty existuje omezení nastavte jednotlivé aplikace a tenanta. Do těchto omezeních najdete v tématu [limity a omezení služby Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Tato omezení jsou založené na srovnávací test mnohem vyšší než svazku typickému využití a poskytuje dostatek vyrovnávací paměti pro většinu nasazení.
 
 * **Veřejný certifikát**: Pokud používáte vlastní názvy domén, musíte pořídit veřejný certifikát vydaný jiného subjektu než Microsoft důvěryhodné certifikační autority. V závislosti na požadavcích organizace získat certifikát může nějakou dobu trvat a doporučujeme zahájením procesu napravovat nejvíce. Proxy aplikací Azure podporuje standard, [zástupný znak](application-proxy-wildcard.md), nebo certifikáty založené na síti SAN.
 
@@ -73,13 +80,11 @@ Aby bylo možné konfigurovat a implementovat Proxy aplikací Azure AD musí bý
 
 * **Práva správce a role**
 
-   * **Instalace konektoru** vyžaduje oprávnění místního správce k Windows serveru, který se instaluje na. Také vyžaduje minimálně role správce aplikace k ověření a zaregistrovat instanci konektoru pro vašeho tenanta Azure AD. 
+   * **Instalace konektoru** vyžaduje oprávnění místního správce k Windows serveru, který se instaluje na. Také budete potřebovat minimálně *správce aplikace* role k ověření a zaregistrovat instanci konektoru pro vašeho tenanta Azure AD. 
 
    * **Publikování aplikací a správa** vyžadují *správce aplikace* role. Správci aplikace mohou spravovat všechny aplikace v adresáři, včetně registrace, nastavení jednotného přihlašování, uživatele a přiřazení skupin a licencování, nastavení Proxy aplikací a vyjádření souhlasu. To není udělit schopnost spravovat podmíněný přístup. *Správce cloudové aplikace* role má všechny schopnosti nástroje Správce aplikace s tím rozdílem, že neumožňuje správu nastavení Proxy aplikací.
 
-* **Licencování**: Proxy aplikací je k dispozici prostřednictvím předplatného Azure AD Basic. Odkazovat [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) úplný seznam licencování možnosti a funkce. 
-
-* Zvýšení oprávnění role může být nutné získat oprávnění správce aplikace prostřednictvím [Privileged Identity Manager](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) (PIM), tak zkontrolujte, že váš účet je vhodné. 
+* **Licencování**: Proxy aplikací je k dispozici prostřednictvím předplatného Azure AD Basic. Odkazovat [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) úplný seznam licencování možnosti a funkce.  
 
 ### <a name="application-discovery"></a>Zjišťování aplikací
 
@@ -107,9 +112,9 @@ Níže jsou oblasti, pro které byste měli definovat obchodní požadavky vaš�
 
  **Přístup**
 
-* Domény a uživatelů Azure AD můžete přístup k publikovaným aplikacím bezpečně pomocí bezproblémového jednotného přihlašování (SSO) při zařízení připojená k pomocí libovolného připojených k doméně nebo Azure AD.
+* Vzdálení uživatelé s přidaní do domény nebo uživatelé zařízení připojených k Azure AD můžete přístup k publikovaným aplikacím bezpečně pomocí bezproblémového jednotného přihlašování (SSO).
 
-* Uživatelé s schválené osobních zařízeních mít bezpečný přístup k publikovaným aplikacím předpokladu, že jsou zaregistrovaná v MFA a zaregistrovali aplikaci Microsoft Authenticator na jejich mobilního telefonu jako metodu ověřování.
+* Vzdálení uživatelé s schválené osobních zařízeních mít bezpečný přístup k publikovaným aplikacím předpokladu, že jsou zaregistrovaná v MFA a zaregistrovali aplikaci Microsoft Authenticator na jejich mobilního telefonu jako metodu ověřování.
 
 **Zásady správného řízení** 
 
@@ -164,7 +169,7 @@ Následující prvky návrhu by měl zvýšit úspěchu pilotního nasazení imp
 
 ### <a name="deploy-application-proxy"></a>Nasazení služby Proxy aplikací
 
-Postup nasazení Proxy aplikací jsou popsané v tomto [kurz pro přidání lokální aplikace pro vzdálený přístup](application-proxy-add-on-premises-application.md). Pokud nebude instalace úspěšná, vyberte **Poradce při potížích s Proxy aplikací** na portálu nebo pomocí Průvodce odstraňováním potíží[problémů s instalací konektorem agenta aplikačního proxy serveru](application-proxy-connector-installation-problem.md).
+Postup nasazení Proxy aplikací jsou popsané v tomto [kurz pro přidání lokální aplikace pro vzdálený přístup](application-proxy-add-on-premises-application.md). Pokud nebude instalace úspěšná, vyberte **Poradce při potížích s Proxy aplikací** na portálu nebo pomocí Průvodce odstraňováním potíží [problémů s instalací konektorem agenta aplikačního proxy serveru](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Publikování aplikace prostřednictvím Proxy aplikací
 
@@ -174,7 +179,7 @@ Můžete také publikovat aplikace pomocí [Powershellu](https://docs.microsoft.
 
 Níže jsou uvedeny některé doporučené postupy při publikování aplikace:
 
-* **Pomocí skupin konektorů**: Přiřadíte skupinu konektorů, který je určený pro publikování každé příslušné aplikace.
+* **Pomocí skupin konektorů**: Přiřadíte skupinu konektorů, který je určený pro publikování každé příslušné aplikace. Doporučujeme vám, že má každá skupina konektor aspoň dva konektory k poskytování vysoké dostupnosti a škálování. V případě, že budete muset služby počítače v libovolném bodě je mít tři konektory optimální. Podívejte se taky [publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů](application-proxy-connector-groups.md) zobrazíte, jak můžete také použít skupiny konektorů k segmentaci své konektory pomocí sítě nebo umístění.
 
 * **Nastavit časový limit pro back-endu aplikace**: Toto nastavení je užitečné v situacích, kde aplikace může vyžadovat více než 75 sekund na zpracování klientská transakce. Například když klient odešle dotaz na webovou aplikaci, která funguje jako front-endu do databáze. Front-endu, odešle tento dotaz na jeho databáze back-end server a čeká na odpověď, ale době obdrží odpověď na straně klienta konverzace vyprší časový limit. Nastavení časového limitu pro dlouhý poskytuje 180 sekund déle transakce dokončí.
 
@@ -190,7 +195,7 @@ Níže jsou uvedeny některé doporučené postupy při publikování aplikace:
 
 * **Překládat adresy URL v těle žádosti**: Pokud chcete odkazy z této aplikace, které mají být převedeny do odpovědí zpět do klienta, zapněte překlad odkazu tělo aplikace pro aplikaci. Pokud je povoleno, tato funkce poskytuje nejlepší pokus úsilí při překladu všechny vnitřní propojení, které Proxy aplikace vyhledá v odpovědi HTML a CSS vracené klientům. Je užitečné při publikování aplikací, které obsahují pevně zakódované absolutní nebo NetBIOS shortname odkazů v obsahu nebo aplikací s obsahem, který odkazuje na další místní aplikace.
 
-Pro scénáře, ve kterém publikované aplikace odkazy na další publikované aplikace povolte překlad odkazu nebo každou aplikaci tak, abyste měli kontrolu nad komfortem při uživatele na úrovni pro aplikaci.
+Pro scénáře, ve kterém publikované aplikace odkazy na další publikované aplikace povolte překlad odkazu pro každou aplikaci, abyste měli kontrolu nad komfortem při uživatele na úrovni pro aplikaci.
 
 Předpokládejme například, že budete mít tři aplikace publikované prostřednictvím Proxy aplikací, které jsou všechny se navzájem propojují: Výhody, náklady a cesty, plus čtvrtý aplikace, zpětnou vazbu, která není publikované prostřednictvím Proxy aplikací.
 
@@ -225,7 +230,7 @@ Po publikování vaší aplikace bude dostupná tak, že zadáte jeho externí a
 
 ### <a name="enable-pre-authentication"></a>Povolit předběžné ověření
 
-Ověřte, že aplikace je přístupná prostřednictvím Proxy aplikací. 
+Ověřte, že je vaše aplikace přístupné prostřednictvím Proxy aplikací, přístupu přes externí adresu URL. 
 
 1. Přejděte do **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** a zvolte aplikaci, kterou chcete spravovat.
 
@@ -233,7 +238,7 @@ Ověřte, že aplikace je přístupná prostřednictvím Proxy aplikací.
 
 3. V **předběžné ověření** pole, použijte rozevírací seznam a vyberte **Azure Active Directory**a vyberte **Uložit**.
 
-Pomocí předběžného ověřování povoleno vyzve vás Azure AD pro ověřování a pak back endové aplikace by měl také vás vyzkouším Pokud vyžaduje ověření. Změna předběžné ověření z průchod do služby Azure AD také nakonfiguruje externí adresu URL pomocí protokolu HTTPS, takže jakékoli aplikace pro protokol HTTP ve výchozím nastavení bude nyní zabezpečen pomocí protokolu HTTPS.
+Pomocí předběžného ověřování povoleno Azure AD vyzve uživatele nejprve pro ověření a pokud jednotného přihlašování je configued pak back endové aplikace se také ověří uživatele před udělením přístupu k aplikaci. Změna režimu předběžné ověření z průchod do služby Azure AD také nakonfiguruje externí adresu URL pomocí protokolu HTTPS, takže jakékoli aplikace pro protokol HTTP ve výchozím nastavení bude nyní zabezpečen pomocí protokolu HTTPS.
 
 ### <a name="enable-single-sign-on"></a>Povolit jednotné přihlašování
 
@@ -241,7 +246,7 @@ Jednotné přihlašování poskytuje nejlepší uživatelské prostředí a zabe
 
 Výběr **průchozí** možnost umožňuje uživatelům přístup k publikované aplikaci, aniž byste museli ověření do služby Azure AD.
 
-Provádí se jednotné přihlašování je možné jenom že pokud Azure AD můžete identifikovat uživatele, žádosti o přístup k prostředku, takže aplikace musí být nakonfigurován pro předběžné ověřování uživatelů při přístupu pro jednotné přihlašování do funkce, v opačném případě možnosti jednotného přihlašování se deaktivuje.
+Provádí se jednotné přihlašování je možné jenom že pokud Azure AD můžete identifikovat uživatele, žádosti o přístup k prostředku, takže vaše aplikace musí být nakonfigurován pro předběžné ověřování uživatelů pomocí Azure AD při přístupu pro jednotné přihlašování funkci, v opačném případě možnosti jednotného přihlašování se deaktivuje.
 
 Čtení [jednotné přihlašování k aplikacím ve službě Azure AD](what-is-single-sign-on.md) vám pomůže vybrat nejvhodnější metodu jednotného přihlašování, při konfiguraci vašich aplikací.
 
@@ -265,7 +270,7 @@ Tyto funkce slouží k podpoře Azure AD Application Proxy:
 
 * Na základě rizik podmíněného přístupu: Chraňte svoje data před hackery se zlými úmysly s [zásady podmíněného přístupu na základě rizik](https://www.microsoft.com/cloud-platform/conditional-access) , který lze použít na všechny aplikace a uživatele, zda v místním nebo v cloudu.
 
-* Panel služby Azure AD aplikace: Proxy aplikací služby nasazené, a aplikace bezpečně publikovat nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Zvyšte svou produktivitu pomocí samoobslužné funkce, jako je například možnost žádat o přístup k nové aplikace a skupiny nebo spravovat přístup k těmto prostředkům jménem jiných uživatelů, až [přístupového panelu](https://aka.ms/AccessPanelDPDownload).
+* Azure AD Access Panel: Proxy aplikací služby nasazené, a aplikace bezpečně publikovat nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Zvyšte svou produktivitu pomocí samoobslužné funkce, jako je například možnost žádat o přístup k nové aplikace a skupiny nebo spravovat přístup k těmto prostředkům jménem jiných uživatelů, až [přístupového panelu](https://aka.ms/AccessPanelDPDownload).
 
 ## <a name="manage-your-implementation"></a>Správu vaší implementace.
 
@@ -290,7 +295,7 @@ Azure AD můžete poskytování dalších přehledů o zřizování využití a 
 
 #### <a name="application-audit-logs"></a>Protokoly auditu aplikací
 
-Tyto protokoly jsou podrobně popsané přihlášení do aplikace nakonfigurované se službou Proxy aplikací, jakož i informace o zařízení a uživatele, kteří používají aplikaci. Jsou umístění na webu Azure Portal a rozhraní API auditu.
+Tyto protokoly poskytuje podrobné informace o přihlašování k aplikacím nakonfigurovaná s Proxy aplikací a zařízení a uživatele, kteří používají aplikaci. Protokoly auditu se nachází na webu Azure Portal a rozhraní API auditu pro export.
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Protokoly událostí Windows a čítače výkonu
 
@@ -300,7 +305,7 @@ Konektory mají správce a relace protokoly. Protokoly správce obsahují klíč
 
 Další informace o běžných problémech a způsob jejich řešení s naší příručce ke [řešení potíží s](application-proxy-troubleshoot.md) chybové zprávy. 
 
-Tyto články pokrývat běžné scénáře, ale můžete také vytvořit vlastní průvodci odstraňováním potíží pro podpora v organizaci. 
+V následujících článcích zahrnují běžné scénáře, které lze použít také k vytvoření průvodce řešením potíží pro podpora v organizaci. 
 
 * [Potíže při zobrazování stránky aplikace](application-proxy-page-appearance-broken-problem.md)
 * [Načítání aplikace trvá příliš dlouho](application-proxy-page-load-speed-problem.md)

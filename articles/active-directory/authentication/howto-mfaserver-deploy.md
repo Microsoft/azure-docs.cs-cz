@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 05/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415112"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956579"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -27,6 +27,9 @@ ms.locfileid: "60415112"
 Teď, když jsme zjistili, jestli se má použít místní Multi-Factor Authentication Server, se můžeme dát do toho. Tato stránka popisuje novou instalaci serveru a jeho nastavení pro spolupráci s místní službou Active Directory. Pokud už máte nainstalovaný server MFA a chcete provést upgrade, přečtěte si téma [Upgrade na nejnovější verzi Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-upgrade.md). Pokud hledáte informace pouze o instalaci webové služby, přečtěte si téma [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-mobileapp.md).
 
 ## <a name="plan-your-deployment"></a>Plánování nasazení
+
+> [!WARNING]
+> Počínaje březnem 2019 MFA Server soubory ke stažení budou k dispozici pouze pro placené tenanty. Bezplatné nebo zkušební tenanti se už moct stažení nebo vygenerování a použití přihlašovacích údajů pro aktivaci.
 
 Před stažením Azure Multi-Factor Authentication Serveru se zamyslete nad tím, jaké jsou vaše požadavky na zatížení a vysokou dostupnost. Tyto informace použijte k rozhodnutí, jak a kde provést nasazení.
 
@@ -74,7 +77,7 @@ Každý server MFA musí být schopný komunikovat na odchozím portu 443 s těm
 
 Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsahy IP adres:
 
-| Podsíť IP | Síťová maska | Rozsah IP adres |
+| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
@@ -90,6 +93,9 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 
 ## <a name="download-the-mfa-server"></a>Stažení MFA Serveru
 
+> [!WARNING]
+> Počínaje březnem 2019 MFA Server soubory ke stažení budou k dispozici pouze pro placené tenanty. Bezplatné nebo zkušební tenanti se už moct stažení nebo vygenerování a použití přihlašovacích údajů pro aktivaci.
+
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
@@ -102,9 +108,6 @@ Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication S
 5. Ponechte tuto stránku otevřenou, protože se k ní vrátíme po spuštění instalačního programu.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Instalace a konfigurace MFA Serveru
-
-> [!WARNING]
-> Počínaje březnem 2019 MFA Server soubory ke stažení budou k dispozici pouze pro placené tenanty. Bezplatné nebo zkušební tenanti se už moct stažení nebo vygenerování a použití přihlašovacích údajů pro aktivaci.
 
 Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte se, že server, na kterém ho chcete nainstalovat, splňuje požadavky uvedené v části věnované plánování.
 

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 5ac6603be087e887e3304f6a7e14aa063863e1dd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796456"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952134"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení služby Security Center nabízí (2019 dne)
 
@@ -160,9 +160,9 @@ Pokud máte existující propojená řešení, doporučujeme vám přejít na Az
 
 ## Upravit konfigurace zabezpečení pro zásady zabezpečení<a name="menu_securityconfigurations"></a>
 
-Azure Security Center monitoruje konfigurace zabezpečení s použitím sady [víc než 150 doporučená pravidla](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). pro posílení zabezpečení operačního systému. Tato pravidla se týkají brány firewall, auditování, zásady pro hesla a další. Pokud na počítači se zjistilo, že zranitelné konfigurace jim, Security Center vygeneruje doporučení k zabezpečení. [Konfigurační obrazovce pro úpravy zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfigurace zabezpečení operačního systému ve službě Security Center.
+Azure Security Center monitoruje konfigurace zabezpečení s použitím sady [víc než 150 doporučená pravidla](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). pro posílení zabezpečení operačního systému. Tato pravidla se týkají brány firewall, auditování, zásady pro hesla a další. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení. [Konfigurační obrazovce pro úpravy zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfigurace zabezpečení operačního systému ve službě Security Center.
 
-Tuto funkci ve verzi preview jsme už po vyřazení.
+Tuto funkci ve verzi preview jsme už po vyřazení. Pokud po datu vyřazení chcete resetovat konfiguraci zabezpečení zpět na výchozí hodnoty, můžete tak učinit pomocí rozhraní API nebo Powershellu pomocí [postupujte podle pokynů](https://aka.ms/ascresetsecurityconfigurations)
 
 ![Upravit konfigurace zabezpečení][17]
 

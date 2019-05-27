@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 82ee9d04785fc0f6ac534428bf411ca0fe3204ad
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601507"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952680"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předponu veřejné IP adresy
 
@@ -50,7 +50,7 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
    |Předplatné|Ano|Musí existovat ve stejném [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, který chcete přidružit k veřejnou IP adresu.|
    |Skupina prostředků|Ano|Může existovat ve stejné nebo různé [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, který chcete přidružit k veřejnou IP adresu.|
    |Název|Ano|Název musí být jedinečný v rámci skupiny prostředků, kterou vyberete.|
-   |Oblast|Ano|Musí existovat ve stejném [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy budete přiřazovat adresy z rozsahu. Předpona je aktuálně je ve verzi preview v střed USA – Západ, USA – Západ, USA – západ 2, střed USA, Severní Evropa, západní Evropa a jihovýchodní Asie.|
+   |Oblast|Ano|Musí existovat ve stejném [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy budete přiřazovat adresy z rozsahu.|
    |Velikost předpony|Ano| Velikost předpony, které potřebujete. A/28 nebo 16 IP adres je výchozí nastavení.
 
 **Příkazy**
@@ -73,6 +73,13 @@ Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpo
    |Název|Ano|Název veřejné IP adresy musí být jedinečný v rámci skupiny prostředků, kterou vyberete.|
    |Časový limit nečinnosti (minuty)|Ne|Kolik minut nechat připojení TCP nebo HTTP otevřené bez nutnosti spoléhat se na klientských počítačích k odesílání zpráv keep-alive. |
    |Popisek názvu DNS|Ne|Musí být jedinečný v rámci oblasti Azure vytvořit název v (v rámci všech předplatných a všechny zákazníky). Azure automaticky zaregistruje názvem a IP adresou ve své službě DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí, jako výchozí podsíť *location.cloudapp.azure.com* (Pokud je umístění je vyberete) k názvu zadáte, chcete-li vytvořit plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS pomocí Azure veřejnou IP adresu](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+
+Případně můžete použít rozhraní příkazového řádku a PS příkazy pod pomocí--veřejných předpon adres ip (CLI) a prostředek - PublicIpPrefix (PS) parametry k vytvoření veřejné IP adresy. 
+
+|Tool|Příkaz|
+|---|---|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Zobrazit nebo odstranit předponu
 

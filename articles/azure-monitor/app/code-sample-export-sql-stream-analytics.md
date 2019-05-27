@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eecd2a50607fa42562a9ae6a7fb950a253655a45
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60904583"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872710"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Průvodce: Export do SQL z Application Insights s použitím Stream Analytics
 Tento článek popisuje, jak přesunout vaše telemetrická data z [Azure Application Insights] [ start] do služby Azure SQL database s použitím [průběžný Export] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -179,10 +179,10 @@ Pokud chcete získat název a iKey prostředku Application Insights, otevřete E
 
 > [!TIP]
 > Použijte ukázkové funkce pro kontrolu vstupní cesta jste správně nastavili. Pokud selže: Zkontrolujte, jestli data v úložišti pro ukázkové časový rozsah, který jste zvolili. Upravte definici vstupní a zkontrolujte nastavení účtu úložiště, předpona cesty a datum formátu správně.
-> 
-> 
-> ## <a name="set-query"></a>Sady dotazů
-> Otevřete část dotazu:
+
+ 
+## <a name="set-query"></a>Sady dotazů
+Otevřete část dotazu:
 
 Nahraďte výchozí dotaz pomocí:
 

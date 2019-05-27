@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: b8c564ef2de22555930f998ccd9918b252d35f17
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8947637a42adfca12268c3f84e208079768870e0
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541699"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921216"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 
@@ -315,8 +315,6 @@ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure
 `quota-by-key` Zásada vynucuje obnovitelných nebo doba života volání svazku a/nebo šířku pásma kvóty, na základě za klíč. Klíč může obsahovat libovolné řetězcovou hodnotu a se většinou poskytuje pomocí výrazů zásad. Volitelný krok podmínku lze přidat k určení, které požadavky by měla být započítává kvóty. Pokud více zásad by zvýšit stejnou hodnotu klíče, je pouze jednou zvýší na požadavek. Při dosažení limitu volání volající obdrží `403 Forbidden` stavového kódu odpovědi.
 
 Další informace a příklady těchto zásad najdete v tématu [pokročilé omezování požadavků pomocí Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
-
-> [Výrazy zásad](api-management-policy-expressions.md) nelze použít v některém z atributů zásad pro tyto zásady.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 

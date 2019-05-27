@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 78a290d8136f8804e853d36a9bc95571625ed89c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c80e9953a24504c4ad324ce077b741e60a52b1fb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880279"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908013"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -30,26 +30,18 @@ ms.locfileid: "60880279"
 V tomto článku najdete informace o tom, jak pomocí sady .NET SDK provádět ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1. Ověřování služba služba s Data Lake Storage Gen1 pomocí sady .NET SDK, přečtěte si téma [ověřování služba služba Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* **Visual Studio 2013, 2015 nebo 2017**. Níže uvedené pokyny používají sadu Visual Studio 2017.
+* **Visual Studio 2013 nebo novější**. Níže uvedené pokyny používají Visual Studio 2019.
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Vytvoření aplikace Azure Active Directory "Nativní"**. Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
-1. Otevřete Visual Studio a vytvořte konzolovou aplikaci.
-2. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**.
-3. V části **Nový projekt** zadejte nebo vyberte tyto hodnoty:
+1. V sadě Visual Studio, vyberte **souboru** nabídce **nový**a potom **projektu**.
+2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+3. V **název projektu**, zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
 
-   | Vlastnost | Hodnota |
-   | --- | --- |
-   | Kategorie |Šablony/Visual C#/Windows |
-   | Šablona |Konzolová aplikace |
-   | Název |VytvořeníAplikaceADL |
-
-4. Projekt vytvoříte kliknutím na **OK**.
-
-5. Přidejte do projektu balíčky NuGet.
+4. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.
    2. Ujistěte se, že na kartě **Správce balíčků NuGet** je položka **Zdroj balíčku** nastavena na hodnotu **nuget.org** a že je zaškrtnuto políčko **Zahrnout předběžné verze**.
@@ -61,8 +53,8 @@ V tomto článku najdete informace o tom, jak pomocí sady .NET SDK provádět o
         ![Přidání zdroje NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Vytvoření nového účtu Azure Data Lake")
    4. Zavřete **Správce balíčků NuGet**.
 
-6. Otevřít **Program.cs**
-7. Nahraďte na pomocí příkazů s následujícími řádky:
+5. Otevřít **Program.cs**
+6. Nahraďte na pomocí příkazů s následujícími řádky:
 
     ```csharp
     using System;

@@ -282,7 +282,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |pipelineRunId| String| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | ID přidruženého prostředku pro objekt pro vytváření zdrojů dat | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategorie diagnostické protokoly. Nastavte tuto vlastnost na "ActivityRuns" | `ActivityRuns` |
-|level| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
+|úroveň| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
 |operationName| String |Název aktivitu se stavem. Pokud je ve stavu spuštění prezenčního signálu, je `MyActivity -`. Pokud je stav ukončení prezenčního signálu, je `MyActivity - Succeeded` s konečného stavu | `MyActivity - Succeeded` |
 |pipelineName| String | Název kanálu | `MyPipeline` |
 |activityName| String | Název aktivity | `MyActivity` |
@@ -327,7 +327,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |runId| String| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | ID přidruženého prostředku pro objekt pro vytváření zdrojů dat | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategorie diagnostické protokoly. Nastavte tuto vlastnost na "PipelineRuns" | `PipelineRuns` |
-|level| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
+|úroveň| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
 |operationName| String |Název kanálu se stavem. "Kanál – bylo úspěšné" s konečný stav po dokončení spuštění kanálu| `MyPipeline - Succeeded` |
 |pipelineName| String | Název kanálu | `MyPipeline` |
 |start| String | Spuštění aktivity při spuštění v časový interval, formát UTC | `2017-06-26T20:55:29.5007959Z`|
@@ -371,7 +371,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |triggerId| String| ID spuštění aktivační události | `08587023010602533858661257311` |
 |resourceId| String | ID přidruženého prostředku pro objekt pro vytváření zdrojů dat | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategorie diagnostické protokoly. Nastavte tuto vlastnost na "PipelineRuns" | `PipelineRuns` |
-|level| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
+|úroveň| String | Úroveň diagnostických protokolů. Nastavte tuto vlastnost na "Informační" | `Informational` |
 |operationName| String |Název triggeru s konečného stavu, jestli se úspěšně aktivoval. "MyTrigger - bylo úspěšné" Pokud se úspěšně dokončil prezenčního signálu| `MyTrigger - Succeeded` |
 |triggerName| String | Název triggeru | `MyTrigger` |
 |triggerType| String | Typ aktivační události (ruční aktivační události nebo aktivační událost plánovače) | `ScheduleTrigger` |

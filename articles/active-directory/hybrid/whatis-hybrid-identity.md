@@ -1,6 +1,6 @@
 ---
-title: Připojení Active Directory s Azure Active Directory | Dokumenty Microsoft
-description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD.
+title: Co je hybridní identity s Azure Active Directory?
+description: Hybridní identita má společnou uživatelskou identitu pro ověřování a autorizaci v místním prostředí i v cloudu.
 keywords: Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory
 services: active-directory
 author: billmath
@@ -9,24 +9,26 @@ ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6393d363c85fd22b28a3bc2ac5ef02047ebaacf0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784354"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896832"
 ---
-# <a name="what-is-hybrid-identity"></a>Co je hybridní identita?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Co je hybridní identity s Azure Active Directory?
 
-Dnes, podniky a společnosti se častěji stávají směs místních a cloudových aplikací.  Uživatelé, kteří potřebují přístup k těmto aplikacím v místním prostředí i v cloudu. Tento požadavek se stal náročné scénáře. 
+Dnes, podniky a společnosti se častěji stávají směs místních a cloudových aplikací.  Uživatelé, kteří potřebují přístup k těmto aplikacím v místním prostředí i v cloudu. Správa uživatelů místně a v cloudu představuje náročné scénáře. 
 
 Řešení identit společnosti Microsoft zahrnují místní a cloudové funkce.  Tato řešení vytvořit společnou uživatelskou identitu pro ověřování a autorizaci ke všem prostředkům, bez ohledu na umístění. To označujeme **hybridní identita**.
 
-K dosažení hybridní identity, jedním ze tří způsobů ověřování je možné, v závislosti na scénáře.   Jsou tři metody: 
+Pomocí hybridních identit do služby Azure AD a hybridní identity management tyto scénáře stát je to možné.
+
+K dosažení hybridní identity s Azure AD, jedním ze tří způsobů ověřování je možné, v závislosti na scénáře.   Jsou tři metody: 
 
 - **[Synchronizace hodnot hash hesel (PHS)](whatis-phs.md)**  
 - **[Předávací ověřování (PTA)](how-to-connect-pta.md)**  

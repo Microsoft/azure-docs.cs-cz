@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 402c85e7902c8c2f612ad6c777d8f6773a4d0ca3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854863"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956116"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace aplikace v Ruby v Linuxu pro Azure App Service
 
@@ -65,7 +65,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-Ve službě App Service můžete [nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) mimo kód vaší aplikace. Pak můžete přistupovat pomocí standardu [ENV ['< cesta name >']](https://ruby-doc.org/core-2.3.3/ENV.html) vzor. Například pro přístup k nastavení aplikace volá `WEBSITE_SITE_NAME`, použijte následující kód:
+Ve službě App Service můžete [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak můžete přistupovat pomocí standardu [ENV ['< cesta name >']](https://ruby-doc.org/core-2.3.3/ENV.html) vzor. Například pro přístup k nastavení aplikace volá `WEBSITE_SITE_NAME`, použijte následující kód:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -82,7 +82,7 @@ Při nasazení [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-serv
 
 ### <a name="use---without-flag"></a>Pomocí parametru--bez příznaku
 
-Ke spuštění `bundle install` s [– bez](https://bundler.io/man/bundle-install.1.html) příznak, nastavte `BUNDLE_WITHOUT` [nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) na seznam skupin oddělený čárkami. Například následující příkaz nastaví ji na `development,test`.
+Ke spuštění `bundle install` s [– bez](https://bundler.io/man/bundle-install.1.html) příznak, nastavte `BUNDLE_WITHOUT` [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na seznam skupin oddělený čárkami. Například následující příkaz nastaví ji na `development,test`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
@@ -92,7 +92,7 @@ Pokud je toto nastavení definované pak modul pro nasazení spouští `bundle i
 
 ### <a name="precompile-assets"></a>Předkompilovat prostředky
 
-Kroky po nasazení není ve výchozím nastavení předkompilovat prostředky. Chcete-li zapnout předkompilace asset, nastavte `ASSETS_PRECOMPILE` [nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) k `true`. Potom příkaz `bundle exec rake --trace assets:precompile` běží na konci kroky po nasazení. Příklad:
+Kroky po nasazení není ve výchozím nastavení předkompilovat prostředky. Chcete-li zapnout předkompilace asset, nastavte `ASSETS_PRECOMPILE` [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) k `true`. Potom příkaz `bundle exec rake --trace assets:precompile` běží na konci kroky po nasazení. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -121,7 +121,7 @@ Spuštění procesu můžete přizpůsobit následujícími způsoby:
 Server Rails v kontejneru Ruby ve výchozím nastavení, spustí v provozním režimu a [předpokládá, že prostředky předkompilovány a webový server obsluhuje](https://guides.rubyonrails.org/asset_pipeline.html#in-production). K poskytování statických prostředků ze serveru Rails, musíte udělat dvě věci:
 
 - **Předkompilovat prostředky** - [předkompilovat statické prostředky místně](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) a nasazovat je ručně. Nebo nechat ji zpracovat místo toho modul pro nasazení (viz [předkompilovat prostředky](#precompile-assets).
-- **Povolit zpracování statických souborů** – Pokud chcete obsluhovat statické prostředky z kontejneru Ruby, nastavte `RAILS_SERVE_STATIC_FILES` [nastavit `RAILS_SERVE_STATIC_FILES` nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) k `true`. Příklad:
+- **Povolit zpracování statických souborů** – Pokud chcete obsluhovat statické prostředky z kontejneru Ruby, nastavte `RAILS_SERVE_STATIC_FILES` [nastavit `RAILS_SERVE_STATIC_FILES` nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) k `true`. Příklad:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -129,13 +129,13 @@ Server Rails v kontejneru Ruby ve výchozím nastavení, spustí v provozním re
 
 ### <a name="run-in-non-production-mode"></a>Spustit v režimu o neprodukční
 
-Ve výchozím nastavení spustí v provozním režimu Rails server. Pokud chcete spustit v režimu pro vývoj, například nastavit `RAILS_ENV` [nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) k `development`.
+Ve výchozím nastavení spustí v provozním režimu Rails server. Pokud chcete spustit v režimu pro vývoj, například nastavit `RAILS_ENV` [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) k `development`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Však samotný toto nastavení způsobí, že server Rails spustit v režimu pro vývoj, který přijímá localhost pouze požadavky a není přístupná mimo svůj kontejner. Pro příjem požadavků vzdáleného klienta, nastavte `APP_COMMAND_LINE` [nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) k `rails server -b 0.0.0.0`. Tato nastavení aplikace, které umožňuje spuštění vlastního příkazu v kontejneru Ruby. Příklad:
+Však samotný toto nastavení způsobí, že server Rails spustit v režimu pro vývoj, který přijímá localhost pouze požadavky a není přístupná mimo svůj kontejner. Pro příjem požadavků vzdáleného klienta, nastavte `APP_COMMAND_LINE` [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) k `rails server -b 0.0.0.0`. Tato nastavení aplikace, které umožňuje spuštění vlastního příkazu v kontejneru Ruby. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -143,7 +143,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secretkeybase-manually"></a>Nastavit secret_key_base ručně
 
-Vlastní `secret_key_base` místo služby App Service vytvořit za vás, nastavte hodnotu `SECRET_KEY_BASE` [nastavení aplikace, které](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) s hodnotu, kterou chcete. Příklad:
+Vlastní `secret_key_base` místo služby App Service vytvořit za vás, nastavte hodnotu `SECRET_KEY_BASE` [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) s hodnotu, kterou chcete. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"
