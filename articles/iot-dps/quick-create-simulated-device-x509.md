@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2a27ec63ea4ae25823c604612bd3bcf3a057da61
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: ae5a1708b56db45bec38a4482b5dfd936bdedd4a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "61249944"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901232"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rychlý start: Zřízení simulovaného zařízení X.509 pomocí sady Azure IoT C SDK
 
@@ -35,7 +35,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio 2015 nebo [Visual Studio 2017](https://www.visualstudio.com/vs/) s povolenou sadou funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s ["vývoj desktopových aplikací pomocí C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 

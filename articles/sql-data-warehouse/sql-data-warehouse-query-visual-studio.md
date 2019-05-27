@@ -2,20 +2,20 @@
 title: Připojení k Azure SQL Data Warehouse – VSTS | Dokumentace Microsoftu
 description: Dotazování SQL Data Warehouse pomocí sady Visual Studio.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 564a30767f650e4ead025acb22e518eb0da55bd4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6aa707d3c63b7ead6db94f84ebd9214302cc7367
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476355"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873733"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Připojení k SQL Data Warehouse pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]

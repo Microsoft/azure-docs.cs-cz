@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: f26391e36e3208996160fffad01e39ec2f182318
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a9f8066896134072665c3f5b325e033b638bf094
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130856"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000998"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Nasazení aplikace duálním zásobníkem protokolu IPv6 v Azure – prostředí PowerShell (Preview)
 
@@ -149,9 +149,9 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
   -BackendPort 80
 ```
 
-### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
+### <a name="create-load-balancer"></a>Vytvořit nástroj pro vyrovnávání zatížení
 
-Vytvořte Load balanceru úrovně Basic s [nové AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejný Load balancer úrovně Basic s názvem *myLoadBalancer* pomocí protokolu IPv4 a IPv6 konfigurací protokolu IP front-endu, back-endové fondy, sondy stavu, Vyrovnávání zatížení pravidel a NAT pravidel, které jste vytvořili v předchozí kroky:
+Vytvořte Load balanceru úrovně Basic s [nové AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejný Load balancer úrovně Basic s názvem *myLoadBalancer* pomocí front-endové IP adresy IPv4 a IPv6 konfigurace back-endové fondy a pravidla Vyrovnávání zatížení, které jste vytvořili v předchozích krocích:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -182,7 +182,7 @@ $avset = New-AzAvailabilitySet `
   -Sku aligned
 ```
 
-### <a name="create-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
+### <a name="create-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
 
 Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příchozí a odchozí komunikaci ve vaší virtuální síti.
 

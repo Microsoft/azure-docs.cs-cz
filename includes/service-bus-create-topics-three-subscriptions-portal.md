@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ace42278269ff6af31902dbecead81329815af12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60333430"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111091"
 ---
 ## <a name="create-a-topic-using-the-azure-portal"></a>Vytvoření tématu pomocí webu Azure Portal
 1. Na **služby Service Bus Namespace** stránce **témata** v nabídce vlevo.

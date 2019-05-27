@@ -1,10 +1,15 @@
 ---
+author: diberry
+ms.author: diberry
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 01/02/2019
 ms.openlocfilehash: ffd17f7a641e1481aa4c88f8b2eb12ec11fa7d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599395"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116769"
 ---
 Fluentd je open source kolekce pro jednotné přihlašování. `Fluentd` Nastavení spravovat připojení kontejneru [Fluentd](https://www.fluentd.org) serveru. Kontejner obsahuje poskytovatele Fluentd protokolování, který umožňuje zapisovat protokoly kontejneru a volitelně data metriky Fluentd server.
 

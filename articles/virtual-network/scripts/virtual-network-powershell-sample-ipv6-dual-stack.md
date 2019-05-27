@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: 87c80857a1d4321768d9e0cdefa48d06c4d16a52
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: 627ff40361b562630f05c70823e9ad2c7ef711e0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761476"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002235"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Konfigurace koncových bodů protokolu IPv6 v ukázkový skript virtuální sítě (preview)
 
@@ -257,7 +257,6 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)  | Vytvoří nástroj pro vyrovnávání zatížení Azure. |
 | [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) | Vytvoří sondu nástroje pro vyrovnávání zatížení. Sonda nástroje pro vyrovnávání zatížení se používá k monitorování jednotlivých virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Pokud nějaký virtuální počítač přestane být přístupný, nebude se do něj směrovat provoz. |
 | [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) | Vytvoří pravidlo nástroje pro vyrovnávání zatížení. V této ukázce se vytvoří pravidlo pro port 80. Když nástroj pro vyrovnávání zatížení přijme přenos HTTP, přesměruje ho na port 80 některého z virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. |
-| [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) | Vytvoří pravidlo překladu adres (NAT) nástroje pro vyrovnávání zatížení.  Pravidla NAT mapují port nástroje pro vyrovnávání zatížení na port na virtuálním počítači. V této ukázce se vytvoří pravidlo NAT pro provoz SSH do všech virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení.  |
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Vytvoří skupinu zabezpečení sítě (NSG), což je hranice zabezpečení mezi internetem a virtuálním počítačem. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Vytvoří pravidlo NSG, které povolí příchozí provoz. V této ukázce se otevře port 22 pro provoz SSH. |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Vytvoří virtuální síťovou kartu a připojí ji k virtuální síti, podsíti a skupině NSG. |

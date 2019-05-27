@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 04/19/2019
-ms.openlocfilehash: ca43a6cff6a32a30d93e42f6a6624439b2fe83a7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/21/2019
+ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696532"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66016447"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Vytvořit pracovní prostor služby Azure Machine Learning
 
-Pokud chcete používat službu Azure Machine Learning, je nutné [ **pracovního prostoru služby Azure Machine Learning**](concept-azure-machine-learning-architecture.md#workspace).  Tento pracovní prostor je prostředek nejvyšší úrovně služby a vám poskytne centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte. 
+Pokud chcete používat službu Azure Machine Learning, je nutné [ **pracovního prostoru služby Azure Machine Learning**](concept-workspace.md).  Tento pracovní prostor je prostředek nejvyšší úrovně služby a vám poskytne centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte. 
 
 V tomto článku se dozvíte, jak vytvořit pracovní prostor pomocí některé z těchto metod: 
 * [Webu Azure portal](#portal) rozhraní
@@ -33,7 +33,7 @@ Pokud chcete použít skript, který nastavení automatizovaných strojového u�
 
 Při vytváření pracovního prostoru jsou přidány následující prostředky Azure, automaticky (pokud jsou regionálně dostupné):
  
-- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Chcete-li minimalizovat náklady, je služba ACR **opožděné načtení** dokud se nevytvoří nasazení bitové kopie.
 - [Azure Storage](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)

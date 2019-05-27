@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05fb277564f72e62a4cdacc12a16cce229b2befc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61045819"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872747"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -165,3 +165,9 @@ Fakturace pro plán Consumption je podrobně popsaný na [stránce s cenami za A
 Můžete najít užitečné dotazy a informace o tom, jak vysvětlení faktury za spotřebu [na nejčastější dotazy týkající se fakturace](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Stránce s cenami za Azure Functions]: https://azure.microsoft.com/pricing/details/functions
+
+## <a name="service-limits"></a>Omezení služby
+
+Následující tabulka uvádí omezení, které se vztahují na aplikace function App, když běží v různých plány hostování:
+
+[!INCLUDE [functions-limits](../../includes/functions-limits.md)]

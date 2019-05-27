@@ -1,24 +1,23 @@
 ---
-title: Běžné atributy zabezpečení pro službu Azure API Management
+title: Atributy zabezpečení pro službu Azure API Management
 description: Kontrolní seznam společné atributy zabezpečení za vaše rozhodnutí vyzkoušet API Management
 services: api-management
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 040d628f9fe89f68a1c5ab91a1522c6a3cb724d9
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64508141"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001096"
 ---
-# <a name="common-security-attributes-for-api-management"></a>Běžné atributy zabezpečení pro službu API Management
+# <a name="security-attributes-for-api-management"></a>Atributy zabezpečení pro službu API Management
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do API managementu.
+Tento článek popisuje atributy zabezpečení integrované do API managementu.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -30,7 +29,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Šifrování během přenosu:<ul><li>Express route šifrování</li><li>Ve virtuální síti šifrování</li><li>Šifrování virtuálními sítěmi</ul>| Ano | [Express Route](../expressroute/index.yml) a zajišťuje šifrování pro virtuální síť [sítě Azure](../virtual-network/index.yml). |
 | Šifrování klíče zpracování (CMK, BYOK, atd.)| Ne | Všechny šifrovací klíče jsou za instanci služby a spravované služby. |
 | Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |
-| Šifrované volání rozhraní API| Ano | Volání rovina správy se provádějí přes [Azure Resource Manageru](../azure-resource-manager/index.yml) přes protokol TLS. Vyžaduje se platný webový token JSON (JWT).  Volání roviny dat je možné svázat s TLS a jeden z podporovaných ověřovací mechanismy, které (např. klientský certifikát nebo tokenů JWT).
+| Šifrované volání rozhraní API| Ano | Volání rovina správy se provádějí přes [Azure Resource Manageru](../azure-resource-manager/index.yml) přes protokol TLS. Vyžaduje se platný webový token JSON (JWT).  Volání roviny dat je možné svázat s TLS a jeden z podporovaných ověřovací mechanismy, které (například klientský certifikát nebo tokenů JWT).
  |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
@@ -42,7 +41,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Izolace sítě a podporu funkce brány firewall| Ano | Použití skupin zabezpečení sítě (NSG) a Azure Application Gateway (nebo jiné softwarové zařízení) v uvedeném pořadí. |
 | Vynucené tunelování podpory| Ano | Sítě Azure poskytují vynucené tunelování. |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -75,4 +74,4 @@ Tato část popisuje běžné chyby, které nemají vliv na Azure API Management
 
 | Chyba zabezpečení               | Popis                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ticketbleed (CVE 2016 9244) | Ticketbleed je chyba v implementaci TLS SessionTicket rozšíření v některé produkty F5. To umožňuje úniku ("vykrvení") až 31 bajtů dat z neinicializované paměti. To je způsobeno zásobníku TLS odsazení ID relace, předat z klienta, se data tak, aby 32 bitů dlouhý. |
+| Ticketbleed (CVE 2016 9244) | Ticketbleed je chyba v implementaci TLS SessionTicket rozšíření v některé produkty F5. To umožňuje úniku ("vykrvení") až 31 bajtů dat z neinicializované paměti. To je způsobeno zásobníku TLS odsazení ID relace, předat z klienta, se data tak, aby 32 bitů. |

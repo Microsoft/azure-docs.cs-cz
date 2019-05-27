@@ -5,16 +5,16 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 26ff592ea0d0a57049ae11a981fe8d8e77ca876f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606943"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001743"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
 
@@ -393,8 +393,12 @@ Pro data, která upraví a získat přístup k pravidelně v průběhu svého ž
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Můžu vytvořit novou zásadu, proč nejsou akce okamžité spuštění?**  
+**Můžu vytvořit novou zásadu, proč akce nelze spustit okamžitě?**  
 Platforma se spustí jednou denně zásady životního cyklu. Jakmile nakonfigurujete zásadu, může trvat až 24 hodin pro některé akce, aby běžel poprvé.  
+
+**Můžu ručně rehydrated archivovaného objektu blob, jak mohu zabránit jeho přesouvaných zpět do archivní úrovně dočasně?**  
+Když se objekt blob přesune z jedné přístup vrstvy na jinou úroveň přístupu, nedojde ke změně jeho čas poslední změny. Pokud ručně dosazení archivovaného objektu blob do horké úrovně, to by přesunuta zpět do archivní úrovně modul správy životního cyklu. Je možné zabránit tím, že zakážete pravidlo, které má vliv na tento objekt blob dočasně. Objekt blob můžete zkopírovat do jiného umístění, pokud potřebuje zůstat v horké úrovni trvale. Pravidla můžete znovu povolit, pokud objekt blob můžete bezpečně přesunout zpět do archivní úrovně. 
+
 
 ## <a name="next-steps"></a>Další postup
 

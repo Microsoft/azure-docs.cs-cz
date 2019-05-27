@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 03/29/2019
+ms.date: 05/21/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7700efb7bfdb60c8f8f82b442cf01aae691f2fc3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.openlocfilehash: e6afd342a27fa13ae79e037e6e42e582dd9856cc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595567"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015299"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
 Azure Application Insights umožňuje snadné monitorování webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. 
 
-Tento rychlý start vás provede přidáním sady Application Insights SDK do existující webové aplikace ASP.NET Core. Další informace o konfiguraci Application Insights bez sady Visual Studio checkout [článku](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio).
+Tento rychlý start vás provede přidáním sady Application Insights SDK do existující webové aplikace ASP.NET Core. Další informace o konfiguraci Application Insights bez sady Visual Studio checkout [článku](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -98,6 +98,10 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 5. Na levém klikněte na **metriky**. Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostředků. Můžete kliknout na **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, jejich výšku, paletu barev, seskupení a metriky. Například můžete vytvořit graf, který zobrazuje čas načítání stránky prohlížeče průměrné výběrem "Doba načítání stránek prohlížečem" z metrik rozevíracího seznamu a "Avg" z agregace. Další informace o Průzkumníku metrik Azure návštěvě [Začínáme s Průzkumníkem metrik Azure](../../azure-monitor/platform/metrics-getting-started.md).
 
      ![Karta metriky: Průměrná prohlížeči stránku zatížení grafu](./media/dotnetcore-quick-start/8metrics.png)
+
+## <a name="video"></a>Video
+
+- Externí krok za krokem videu o [konfigurace Application Insights pomocí .NET Core a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) úplně od začátku.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.

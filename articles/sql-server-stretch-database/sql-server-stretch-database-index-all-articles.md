@@ -3,43 +3,43 @@ title: Všechna témata týkající se služby SQL Server Stretch Database | Dok
 description: Tabulka všechna témata týkající se služby Azure s názvem SQL Server Stretch Database, které existují v https://azure.microsoft.com/documentation/articles/, název a popis.
 services: sql-server-stretch-database
 documentationcenter: ''
-author: DouglasL
-manager: jhubbard
-editor: MightyPen
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
 ms.service: sql-server-stretch-database
 ms.workload: sql-server-stretch-database
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/05/2016
-ms.author: DouglasL
-ms.openlocfilehash: 02089d69ec8e049b2d0d0daf1c76875a9ebab403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: blazem-msft
+ms.author: blazem
+ms.reviewer: jroth
+manager: jroth
+ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708800"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003028"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Všechna témata týkající se služby Azure SQL Server Stretch Database
 Toto téma obsahuje přehled každé téma, která se vztahuje přímo **SQL Server Stretch Database** služby Azure. Tato webová stránka pro klíčová slova můžete hledat pomocí **Ctrl + F**, a najděte témata aktuální vás zajímají.
 
 ## <a name="get-started"></a>Začínáme
-| &nbsp; | Název | Popis |
+| &nbsp; | Titul | Popis |
 | ---:|:--- |:--- |
 | 1 |[Identifikace databází a tabulek pro Stretch Database spuštěním služby Stretch Database Advisor](sql-server-stretch-database-identify-databases.md) |Zjistěte, jak můžete určit databáze a tabulky, které jsou kandidáty pro Stretch Database. |
 | 2 |[Omezení pro Stretch Database](sql-server-stretch-database-limitations.md) |Další informace o omezeních pro Stretch Database. |
 | 3 |[Přehled služby Stretch Database](sql-server-stretch-database-overview.md) |Zjistěte, jak funkce Stretch Database migruje vaše studená data transparentně a bezpečně do cloudu Microsoft Azure. |
 | 4 |[Začínáme spuštěním Průvodce Stretch Database povolit](sql-server-stretch-database-wizard.md) |Naučte se nakonfigurovat databázi pro funkci Stretch Database spuštěním průvodce povolením funkce Stretch pro databázi. |
 
-## <a name="enable"></a>Povolení
-| &nbsp; | Název | Popis |
+## <a name="enable"></a>Zapnout
+| &nbsp; | Titul | Popis |
 | ---:|:--- |:--- |
 | 5 |[Povolení funkce Stretch Database pro databázi](sql-server-stretch-database-enable-database.md) |Zjistěte, jak nakonfigurovat databázi pro Stretch Database. |
 | 6 |[Povolení funkce Stretch Database pro tabulku](sql-server-stretch-database-enable-table.md) |Zjistěte, jak nakonfigurovat tabulku pro Stretch Database. |
 | 7 |[Výběr řádků k migraci pomocí funkce filtru (Stretch Database)](sql-server-stretch-database-predicate-function.md) |Zjistěte, jak vybrat řádky k migraci pomocí funkce filtru. |
 
 ## <a name="manage"></a>Spravovat
-| &nbsp; | Název | Popis |
+| &nbsp; | Titul | Popis |
 | ---:|:--- |:--- |
 | 8 |[Zakázat Stretch Database a vrácení vzdálených dat](sql-server-stretch-database-disable.md) |Zjistěte, jak zakázat Stretch Database pro tabulku a volitelně vrácení vzdálených dat. |
 | 9 |[Správa a řešení potíží s funkcí Stretch Database](sql-server-stretch-database-manage.md) |Zjistěte, jak Správa a řešení potíží Stretch Database. |
@@ -47,13 +47,13 @@ Toto téma obsahuje přehled každé téma, která se vztahuje přímo **SQL Ser
 | 11 |[Pozastavení a obnovení migrace dat (Stretch Database)](sql-server-stretch-database-pause.md) |Informace o pozastavení nebo obnovení migrace dat do Azure. |
 
 ## <a name="security"></a>Zabezpečení
-| &nbsp; | Název | Popis |
+| &nbsp; | Titul | Popis |
 | ---:|:--- |:--- |
 | 12 |[Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure](sql-server-stretch-database-encryption-tde.md) |Povolit transparentní šifrování dat (TDE) pro SQL Server Stretch Database v Azure |
 | 13 |[Povolit transparentní šifrování dat (TDE) pro Stretch Database v Azure (Transact-SQL)](sql-server-stretch-database-tde-tsql.md) |Povolit transparentní šifrování dat (TDE) pro SQL Server Stretch Database na Azure TSQL |
 
 ## <a name="backup-and-recovery"></a>Backup a obnovení
-| &nbsp; | Název | Popis |
+| &nbsp; | Titul | Popis |
 | ---:|:--- |:--- |
 | 14 |[Zálohování databází s povolenou funkcí Stretch](sql-server-stretch-database-backup.md) |Zjistěte, jak zálohovat Stretch\-povolena databáze. |
 | 15 |[Obnovení databází s povolenou funkcí Stretch](sql-server-stretch-database-restore.md) |Zjistěte, jak obnovit Stretch\-povolena databáze. |

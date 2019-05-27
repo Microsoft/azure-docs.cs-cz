@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8682a335372a1516be49b35400a2605f08d6b45e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830083"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872998"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý start: Použití mezipaměti Azure pro Redis s Pythonem
 
@@ -46,7 +46,7 @@ Tento rychlý start ukazuje, jak se připojit k Azure Cache pro Redis s Pythonem
 
 [Redis-py](https://github.com/andymccurdy/redis-py) rozhraní Python pro mezipaměť Azure je pro Redis. Pomocí nástroje pro správu balíčků Pythonu *pip* nainstalujte balíček redis-py. 
 
-Následující příklad pomocí *pip3* pro Python3 nainstaluje balíček redis-py ve Windows 10 s použitím příkazového řádku sady Visual Studio 2017 Developer spuštěného se zvýšenými oprávněními správce.
+Následující příklad používá *pip3* pro pythonu3 redis-py balíček nainstalovat ve Windows 10 pomocí Visual Studio. 2019 příkazový řádek vývojáře spuštěná se zvýšenými oprávněními správce.
 
     pip3 install redis
 

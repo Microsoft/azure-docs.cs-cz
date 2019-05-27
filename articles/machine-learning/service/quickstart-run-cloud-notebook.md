@@ -8,24 +8,25 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/02/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c15b9aa0bde704ad3665375d1c1a5bb8a1d32cf
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: HT
+ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604127"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015273"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
-Vytvoření serveru založené na cloudu Poznámkový blok a pak ho použít.  V tomto rychlém startu spustíte kódu v Pythonu, který se přihlásí hodnoty [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md). Pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning. 
+Nemusíte nic instalovat.  Začínáme se službou Azure Machine Learning pomocí poznámkového bloku spravovaného serveru v cloudu. Pokud chcete místo toho do prostředí Pythonu nainstalujte sadu SDK, přečtěte si téma [rychlý start: Začínáme s Azure Machine Learning pomocí serveru Poznámkový blok](quickstart-run-local-notebook.md).
 
-Tento rychlý start ukazuje, jak vytvořit prostředek v cloudu ve vašem pracovním prostoru Azure Machine Learning nakonfigurovanou prostředí Pythonu potřebné ke spuštění Azure Machine Learning. Místo toho použít vlastní prostředí, najdete v článku [rychlý start: Začínáme s Azure Machine Learning pomocí serveru Poznámkový blok](quickstart-run-local-notebook.md).  
+Tento rychlý start ukazuje, jak můžete použít [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md) k udržení přehledu o vašich se strojovým učením.  Vytvoříte [poznámkového bloku virtuálního počítače (Preview)](how-to-configure-environment.md#notebookvm), zabezpečené, založené na cloudu Azure pracovní stanice, které poskytuje server poznámkového bloku Jupyter, JupyterLab a plně připravený ML prostředí. Potom spusťte Poznámkový blok Python na tomto virtuálním počítači, který hodnoty do protokolu do pracovního prostoru.
 
 V tomto rychlém startu jste pomocí následujících kroků:
 
-* Vytvoření nového poznámkového bloku založené na cloudu serveru ve vašem pracovním prostoru.
+* Vytvoření pracovního prostoru
+* Vytvoření poznámkového bloku virtuálního počítače ve vašem pracovním prostoru.
 * Spuštění webového rozhraní Jupyter.
 * Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.
 * Spuštění poznámkového bloku.
@@ -35,11 +36,11 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Pokud máte pracovní prostor služby Azure Machine Learning service, pokračujte [další části](#create-a-cloud-based-notebook-server). V opačném případě vytvořte si ho teď.
+Pokud máte pracovní prostor služby Azure Machine Learning service, pokračujte [další části](#create-notebook). V opačném případě vytvořte si ho teď.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-a-cloud-based-notebook-server"></a>Vytvoření serveru založené na cloudu poznámkového bloku
+## <a name="create-notebook"></a>Vytvoření poznámkového bloku virtuálního počítače
 
  V pracovním prostoru vytvořit prostředek v cloudu a začněte využívat poznámkové bloky Jupyter. Tento prostředek poskytuje cloudové platformy předem nakonfigurovaným programem všechno, co potřebujete ke spuštění služby Azure Machine Learning.
 
@@ -59,6 +60,7 @@ Pokud máte pracovní prostor služby Azure Machine Learning service, pokračujt
     ![Vytvoření nového virtuálního počítače](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Počkejte přibližně 4 až 5 minut, dokud se stav změní na **systémem**.
+
 
 ## <a name="launch-jupyter-web-interface"></a>Spuštění webové rozhraní Jupyter
 
@@ -143,6 +145,7 @@ Můžete také zachovat skupinu prostředků, ale odstranění jednoho pracovní
 
 V tomto rychlém startu jste dokončili tyto úlohy:
 
+* Vytvoření pracovního prostoru
 * Vytvoření poznámkového bloku virtuálního počítače.
 * Spuštění webového rozhraní Jupyter.
 * Otevřete Poznámkový blok, který obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích.

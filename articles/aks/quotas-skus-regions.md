@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: iainfou
-ms.openlocfilehash: abeb9ef6e467b62cf7332e01e1b77c710b9ba4f4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8d4ed8f791858747814972bcf16a9672a7f12610
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072875"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901451"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóty, omezení velikosti virtuálního počítače a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)
 
-Všechny služby Azure zahrnují určitá výchozí omezení a kvóty pro prostředky a funkce. Pro velikost uzlu některých virtuálních počítačů (VM) skladové položky jsou pak s omezením pomocí specifikátoru pro použití.
+Všechny služby Azure nastavit výchozí omezení a kvóty pro prostředky a funkce. Určité skladové položky virtuálních počítačů (VM) se také pro použití s omezeným přístupem.
 
-Tento článek podrobně popisuje výchozí limity prostředků pro prostředky Azure Kubernetes Service (AKS) a také dostupnost služby AKS v oblastech Azure.
+Tento článek podrobně popisuje výchozí limity prostředků pro prostředky Azure Kubernetes Service (AKS) a dostupnost služby AKS v oblastech Azure.
 
 ## <a name="service-quotas-and-limits"></a>Kvóty a omezení služeb
 
@@ -26,11 +26,14 @@ Tento článek podrobně popisuje výchozí limity prostředků pro prostředky 
 
 ## <a name="provisioned-infrastructure"></a>Zřízená infrastruktura
 
-Na zřízenou infrastrukturu se vztahují všechny další omezení sítě, výpočtů a úložiště. Příslušná omezení najdete v tématu [Omezení služby a předplatného Azure](../azure-subscription-service-limits.md).
+Na zřízenou infrastrukturu se vztahují všechny další omezení sítě, výpočtů a úložiště. Příslušná omezení najdete v části [předplatného Azure a omezení služeb](../azure-subscription-service-limits.md).
+
+> [!IMPORTANT]
+> Při upgradu clusteru AKS se dočasně spotřebuje další prostředky. Tyto prostředky zahrnují dostupnými IP adresami v podsíti virtuální sítě nebo kvóty virtuálních procesorů virtuálního počítače. Pokud používáte Windows Server kontejnery (aktuálně ve verzi preview ve službě AKS), je pouze doporučené přístup k nejnovější aktualizace pro uzly k provedení operace upgradu. Proces upgradu selhání clusteru může znamenat, že nemáte k dispozici IP adresy místo nebo virtuálních procesorů kvóty pro zpracování těchto dočasné prostředků. Další informace o procesu upgradu uzlu Windows serveru najdete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 
 ## <a name="restricted-vm-sizes"></a>Omezené velikosti virtuálních počítačů
 
-Každý uzel v clusteru AKS obsahuje pevně dané množství výpočetních prostředků, jako jsou virtuální procesor a paměť. Pokud některý uzel AKS obsahuje dostatek výpočetní prostředky, pody nemusí správně spustit. Chcete-li zajistit požadované *kube-system* podů a vaše aplikace můžete spolehlivě naplánovat, následující skladové položky virtuálních počítačů nelze použít ve službě AKS:
+Každý uzel v clusteru AKS obsahuje pevně dané množství výpočetních prostředků, jako jsou virtuální procesor a paměť. Pokud některý uzel AKS obsahuje dostatek výpočetní prostředky, pody nemusí podařit správně spustit. Chcete-li zajistit požadované *kube-system* podů a vaše aplikace je možné spolehlivě naplánovat, nepoužívejte následující skladové položky virtuálních počítačů ve službě AKS:
 
 - Standard_A0
 - Standard_A1
@@ -48,7 +51,7 @@ Nejnovější seznam, kde můžete nasadit a spustit clustery naleznete v témat
 
 ## <a name="next-steps"></a>Další postup
 
-Některé výchozí limity a kvóty je možné zvýšit. Pokud si chcete vyžádat zvýšení jednoho nebo několika prostředků, které takové zvýšení podporují, odešlete [žádost o podporu Azure][azure-support] (jako **typ problému** vyberte kvótu).
+Některé výchozí limity a kvóty je možné zvýšit. Pokud váš prostředek podporuje zvýšení, požádat o zvýšení prostřednictvím [žádost o podporu Azure] [ azure-support] (pro **typ problému**vyberte **kvóty** ).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
@@ -56,3 +59,4 @@ Některé výchozí limity a kvóty je možné zvýšit. Pokud si chcete vyžád
 
 <!-- LINKS - Internal -->
 [vm-skus]: ../virtual-machines/linux/sizes.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: ed6a50ee68d39e6e0d01b405eb02edd6d4c93613
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407587"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003099"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace v jazyce PHP Linuxem pro Azure App Service
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-Ve službě App Service můžete [nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) mimo kód vaší aplikace. Pak můžete přistupovat pomocí standardu [getenv()](https://secure.php.net/manual/function.getenv.php) vzor. Například pro přístup k nastavení aplikace volá `DB_HOST`, použijte následující kód:
+Ve službě App Service můžete [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak můžete přistupovat pomocí standardu [getenv()](https://secure.php.net/manual/function.getenv.php) vzor. Například pro přístup k nastavení aplikace volá `DB_HOST`, použijte následující kód:
 
 ```php
 getenv("DB_HOST")
@@ -147,7 +147,7 @@ Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné 
 > Nejlepší způsob, jak zobrazit verze PHP a aktuální *php.ini* konfigurace je pro volání [phpinfo()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
 >
 
-### <a name="customize-non-phpinisystem-directives"></a>Přizpůsobení bez PHP_INI_SYSTEM direktivy
+### <a name="Customize-non-PHP_INI_SYSTEM directives"></a>Přizpůsobení bez PHP_INI_SYSTEM direktivy
 
 Přizpůsobení PHP_INI_USER PHP_INI_PERDIR a PHP_INI_ALL direktivy (naleznete v tématu [php.ini direktivy](https://www.php.net/manual/ini.list.php)), přidejte *.htaccess* souboru do kořenového adresáře aplikace.
 
@@ -237,7 +237,7 @@ Když pracovní aplikace v PHP ve službě App Service se chová jinak nebo obsa
     - V závislosti na vaší *composer.json*, mohou být nainstalovány jiné balíčky k provozním režimu (`require` vs. `require-dev`).
     - Některá webová rozhraní může nasadit statické soubory jinak než v provozním režimu.
     - Některá webová rozhraní může používat vlastní spouštěcí skripty, při spuštění v produkčním režimu.
-- Spusťte aplikaci ve službě App Service v režimu ladění. Například v [Laravel](https://meanjs.org/), můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí pomocí [nastavení `APP_DEBUG` nastavení aplikace nastavte na `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Spusťte aplikaci ve službě App Service v režimu ladění. Například v [Laravel](https://meanjs.org/), můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí pomocí [nastavení `APP_DEBUG` nastavení aplikace nastavte na `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ### <a name="robots933456"></a>robots933456
 

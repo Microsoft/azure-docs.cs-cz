@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes s kontejnery, mikroslužby a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Java, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: f39fc0a7094941bb44fbe717879b3a2179c3be25
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800884"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979127"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v Javě na použití Azure Dev prostorů Kubernetes
 
@@ -41,7 +41,7 @@ Je potřeba vytvořit v clusteru AKS [podporované oblasti](https://docs.microso
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolit Azure Dev mezery ve vašem clusteru AKS
@@ -122,7 +122,7 @@ Chcete-li zrušit `azds up` příkazu *Ctrl + c*, služba bude pokračovat ve sl
 Pokud chcete nasadit aktualizovanou verzi vaší služby, můžete aktualizovat všechny soubory ve vašem projektu a znovu spustit `azds up` příkazu. Příklad:
 
 1. Pokud `azds up` je pořád spuštěný, stiskněte klávesu *Ctrl + c*.
-1. Aktualizace [řádek 16 v `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L16) na:
+1. Aktualizace [řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) na:
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -178,17 +178,17 @@ Klikněte na tlačítko *ladění* pak *Zastavit ladění* zastavit ladicí prog
 
 Spusťte svoji službu v režimu ladění *spusťte Program Java (AZDS)*.
 
-Přejděte zpět na *Explorer* zobrazení kliknutím *zobrazení* pak *Explorer*. Otevřít `src/main/java/com/ms/sample/webfrontend/Application.java` a klikněte na tlačítko někam na řádek 16 umístěte kurzor existuje. Chcete-li nastavit zarážku přístupů *F9* nebo klikněte na tlačítko *ladění* pak *Přepnout zarážku*.
+Přejděte zpět na *Explorer* zobrazení kliknutím *zobrazení* pak *Explorer*. Otevřít `src/main/java/com/ms/sample/webfrontend/Application.java` a klikněte na tlačítko někde na řádku 19 umístěte kurzor existuje. Chcete-li nastavit zarážku přístupů *F9* nebo klikněte na tlačítko *ladění* pak *Přepnout zarážku*.
 
-Otevřete svou službu v prohlížeči a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se do Visual Studio Code a podívejte se, že se zvýrazní řádek 16. Nastavit zarážku bylo pozastaveno služby na řádku 16. A to obnovit ji, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
+Otevřete svou službu v prohlížeči a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se do Visual Studio Code a podívejte se, že se zvýrazní řádek 19. Nastavit zarážku bylo pozastaveno služby na řádku 19. A to obnovit ji, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
 
 Při spuštění služby v Kubernetes s připojen jiný ladicí program, máte plný přístup k ladění informace, jako je zásobník volání, místní proměnné a informace o výjimce.
 
-Odeberte zarážku vložením kurzor na řádku 16 v `src/main/java/com/ms/sample/webfrontend/Application.java` a stisknout *F9*.
+Odeberte zarážku vložením kurzor na řádku 19 v `src/main/java/com/ms/sample/webfrontend/Application.java` a stisknout *F9*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu ze sady Visual Studio Code
 
-Zatímco služba je spuštěna v režimu ladění, aktualizujte řádek 16 v `src/main/java/com/ms/sample/webfrontend/Application.java`. Příklad:
+Zatímco služba je spuštěna v režimu ladění, aktualizujte řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`. Příklad:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

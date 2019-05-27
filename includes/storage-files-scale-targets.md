@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.openlocfilehash: 213ecee34df46c0a408e7034a07ab864c96b340b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65751549"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114536"
 ---
 | Resource | Standardní sdílené složky | Premium sdílené složky (preview) |
 |----------|---------------|------------------------------------------|

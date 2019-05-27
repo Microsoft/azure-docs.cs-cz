@@ -2,20 +2,19 @@
 title: Zřízení simulovaného zařízení TPM pro službu Azure IoT Hub pomocí jazyka C | Dokumentace Microsoftu
 description: V tomto rychlém startu se používají jednotlivé registrace. V tomto rychlém startu vytvoříte a zřídíte simulované zařízení TPM pomocí sady SDK pro zařízení jazyka C pro službu Azure IoT Hub Device Provisioning.
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e705ce17f0f09d341f2c650dfaccbbad60da14c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca6914967d855123c70bf746a9d68d2e045e76d9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262768"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908670"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rychlý start: Zřízení simulovaného zařízení TPM pomocí sady Azure IoT C SDK
 
@@ -35,7 +34,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio 2015 nebo [Visual Studio 2017](https://www.visualstudio.com/vs/) s povolenou sadou funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s ["vývoj desktopových aplikací pomocí C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 

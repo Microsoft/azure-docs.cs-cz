@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730405"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872390"
 ---
 # <a name="test-your-app-in-azure"></a>Testování aplikace v Azure 
-Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest Labs pomocí. Nejprve nastavení sdílené složky v testovacím prostředí a připojit jako disk na svém místním vývojovém počítači a virtuálních počítačů v testovacím prostředí. Pak Nasaďte aplikaci do sdílené složky tak, aby aplikaci můžete spustit na virtuálním počítači v testovacím prostředí pomocí sady Visual Studio 2017.  
+Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest Labs pomocí. Nejprve nastavení sdílené složky v testovacím prostředí a připojit jako disk na svém místním vývojovém počítači a virtuálních počítačů v testovacím prostředí. Pak Nasaďte aplikaci do sdílené složky tak, aby aplikaci můžete spustit na virtuálním počítači v testovacím prostředí pomocí Visual Studio 2019.  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest 
 ## <a name="publish-your-app-from-visual-studio"></a>Publikování aplikace ze sady Visual Studio
 V této části publikování aplikace ze sady Visual Studio do testovacího virtuálního počítače v cloudu.
 
-1. Vytvoření desktop nebo webové aplikace pomocí sady Visual Studio 2017.
+1. Vytvoření desktop nebo webové aplikace pomocí Visual Studio 2019.
 2. Sestavení aplikace.
 3. K publikování aplikace, klikněte pravým tlačítkem na projekt v **Průzkumníka řešení**a vyberte **publikovat**. 
 4. V **Průvodci publikováním**, zadejte **jednotky** , který je namapovaný na sdílené složce.

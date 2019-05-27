@@ -10,402 +10,379 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/03/2018
+ms.date: 05/21/2019
 ms.author: mbullwin
-ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8522b1d0a8f8466870966d3f11ce66f7bf15672b
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693702"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016369"
 ---
-# <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
+# <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro aplikace ASP.NET Core
 
-Azure Application Insights poskytuje podrobné monitorování webové aplikace na úrovni kódu. Můžete snadno monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé.
+Tento článek popisuje, jak povolit Application Insights pro [ASP.NET Core](https://docs.microsoft.com/aspnet/core) aplikace. Pokud provedete všechny pokyny v tomto článku, Application Insights začne shromažďování požadavky, závislosti, výjimky, čítače výkonu, prezenční signály a protokoly z aplikace ASP.NET Core. Ukázková aplikace je [aplikace MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) cílení `netcoreapp2.2`, ale tyto pokyny platí pro všechny aplikace ASP.NET Core.
 
-Tento článek vás provede kroky k vytvoření vzorku ASP.NET Core [Razor Pages](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) aplikace v sadě Visual Studio. Je také ukazuje, jak začít monitorovat pomocí Application Insights.
+## <a name="supported-scenarios"></a>Podporované scénáře
+
+[Application Insights SDK (Software Development Kit) pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) může sledovat vaše aplikace bez ohledu na to, kdy nebo jak při spuštění aplikace. Pokud vaše aplikace běží a má síťové připojení k Azure, se můžou shromažďovat telemetrii. To znamená, že monitorování pomocí Application Insights je podporován všude, kde se podporuje .NET Core. Tato podpora zahrnuje všechny operačního systému (Windows, Linux, Mac), metodu hostování (vs v procesu mimo proces), metoda nasazení (závisí na architektuře vs samostatná), webový Server (IIS, Kestrel), hostující platforma (Azure Web Apps, virtuální počítač Azure, Docker, Azure Kubernetes Service (AKS) a tak dále.) nebo integrované vývojové prostředí (Visual Studio, VS Code, příkazový řádek.)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- .NET core 2.0.0 SDK nebo novější
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) verze 15.7.3 nebo novější, s úlohou vývoj pro ASP.NET a web
+- Funkční aplikace ASP.NET Core. Postupujte podle [příručku Začínáme s ASP.NET Core získávání](https://docs.microsoft.com/aspnet/core/getting-started/) k vytvoření aplikace ASP.NET Core, v případě potřeby.
+- Platný Instrumentační klíč Application Insights, který je vyžadován pro odeslání všech telemetrických dat do služby Application Insights. Postupujte podle [vytvořit prostředek pokyny](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) a vytvořte nový prostředek Application Insights v případě potřeby získat Instrumentační klíč.
 
-## <a name="create-an-aspnet-core-project-in-visual-studio"></a>Vytvoření projektu aplikace ASP.NET Core v sadě Visual Studio
+## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Povolit telemetrii Application Insights na straně serveru (Visual Studio)
 
-1. Klikněte pravým tlačítkem na **Visual Studio 2017**a pak vyberte **spustit jako správce**.
-2. Vyberte **souboru** > **nové** > **projektu** (Ctrl + Shift + N).
+1. Otevřete svůj projekt v sadě Visual Studio.
 
-   ![Snímek obrazovky sady Visual Studio nový projekt](./media/asp-net-core/001-new-project.png)
+    > [!TIP]
+    > Při krok není povinný může být užitečné nastavit správu zdrojového kódu pro váš projekt, takže můžete sledovat všechny změny provedené v Application Insights. Umožňuje vybrat ovládací prvek zdroje **souboru** > **přidat do správy zdrojových kódů**.
 
-3. Rozbalte **Visual C#**. Vyberte **.NET Core** > **webová aplikace ASP.NET Core**. Zadejte název projektu a název řešení a pak vyberte **vytvořit nové úložiště Git**.
+2. Vyberte **projektu** > **přidat Telemetrii Application Insights**.
 
-   ![Průvodce novým projektem snímek obrazovky sady Visual Studio](./media/asp-net-core/002-asp-net-core-web-application.png)
+3. Vyberte **Začínáme**. (V závislosti na vaší verzi sady Visual Studio, text se mohou mírně lišit. Mají některé starší verze **začít zdarma** tlačítko místo.)
 
-4. Vyberte **.NET Core** > **ASP.NET Core 2.0** **webovou aplikaci** > **OK**.
+4. Vyberte své předplatné a pak vyberte **prostředků** > **zaregistrovat**.
 
-    ![Výběr šablony projektu nový snímek obrazovky sady Visual Studio](./media/asp-net-core/003-web-application.png)
+5. Po přidání Application Insights do projektu, zaškrtněte, pokud chcete potvrdit, že používáte nejnovější stabilní verzi sady SDK. Přejděte na **projektu** > **spravovat balíčky NuGet** > **Microsoft.ApplicationInsights.AspNetCore** > v případě potřeby vyberte **Aktualizace**.
 
-## <a name="application-insights-search"></a>Hledání Application Insights
+     ![Snímek obrazovky spravovat obrazovce balíček NuGet s vybrána pro aktualizaci balíčku Application Insights](./media/asp-net-core/update-nuget-package.png)
 
-V aplikaci Visual Studio 2015 Update 2 nebo novější s projektu aplikace ASP.NET Core 2 + na základě můžete využít výhod [hledání Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio), ještě než explicitně přidat Application Insights do projektu.
+6. Pokud a volitelný popis tlačítka a přidá projekt do správy zdrojového kódu můžete přejít k **zobrazení** > **Team Exploreru** > **změny** a Vyberte jednotlivých souborů pro rozdílové zobrazení změn provedených v přidání telemetrie Application Insights.
 
-K otestování této funkce:
+## <a name="enable-application-insights-server-side-telemetry-without-visual-studio"></a>Povolit telemetrii Application Insights na straně serveru (bez sady Visual Studio)
 
-1. Spuštění aplikace. Ke spuštění vaší aplikace, vyberte **služby IIS Express** ikonu (![snímek obrazovky sady Visual Studio služby IIS Express ikonu](./media/asp-net-core/004-iis-express.png)).
+1. Nainstalujte [balíček NuGet sady SDK pro Application Insights pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore). Doporučujeme vždy používat nejnovější stabilní verzi. Kompletní poznámky k verzi sady SDK můžete najít na [otevřete úložiště zdrojového kódu GitHub](https://github.com/Microsoft/ApplicationInsights-aspnetcore/releases).
 
-2. Vyberte **zobrazení** > **jiných Windows** > **hledání Application Insights**.
-
-   ![Snímek obrazovky sady Visual Studio diagnostické nástroje Výběr](./media/asp-net-core/005-view-other-windows-search.png)
-
-3. V současné době je dostupná jenom pro místní analýzu telemetrii relace ladění. Chcete-li plně povolte Application Insights, vyberte **připravenost Telemetrie** v horním pravém rohu, nebo úplné kroků uvedených v následující části.
-
-   ![Snímek obrazovky sady Visual Studio Application Insights hledání](./media/asp-net-core/006-search.png)
-
-> [!NOTE]
-> Další informace o jak Visual Studio světla do funkce jako [hledání Application Insights](../../azure-monitor/app/visual-studio.md) a [CodeLens](../../azure-monitor/app/visual-studio-codelens.md) místně předtím, než přidáte Application Insights do projektu ASP.NET Core, najdete v článku [ Hledání Application Insights pokračování](#application-insights-search-continued).
-
-## <a name="add-application-insights-telemetry"></a>Přidání Telemetrie Application Insights
-
-1. Vyberte **projektu** > **přidat Telemetrii Application Insights**. (Nebo můžete kliknout pravým tlačítkem **připojené služby**a pak vyberte **přidat připojenou službu**.)
-
-    ![Snímek obrazovky sady Visual Studio nový výběr projektu](./media/asp-net-core/007-project-add-telemetry.png)
-
-2. Vyberte **Začínáme**. (V závislosti na vaší verzi sady Visual Studio, text se mohou mírně lišit. Mají některé starší verze **začít zdarma** tlačítko místo.)
-
-    ![Snímek obrazovky z Application Insights Začínáme tlačítko](./media/asp-net-core/008-get-started.png)
-
-3. Vyberte své předplatné a pak vyberte **prostředků** > **zaregistrovat**.
-
-## <a name="changes-made-to-your-project"></a>Změny provedené v projektu
-
-Application Insights je nízkou režii. Zkontrolovat změny do svého projektu tak, že přidáte telemetrii Application Insights:
-
-Vyberte **zobrazení** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > **změny**
-
-- Zobrazí se čtyři celkový počet změn:
-
-  ![Snímek obrazovky se soubory změnit tak, že přidáte Application Insights](./media/asp-net-core/009-changes.png)
-
-- Vytvoření jednoho souboru:
-
-  - _ConnectedService.json_
-
-    ```json
-    {
-     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-     "Version": "8.12.10405.1",
-     "GettingStartedDocument": {
-       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-     }
-    }
-    ```
-
-- Tři soubory jsou změny (Další poznámky přidané zvýrazněte změny):
-
-  - _appsettings.json_:
-
-    ```json
-    {
-      "Logging": {
-        "IncludeScopes": false,
-        "LogLevel": {
-          "Default": "Warning"
-        }
-      },
-    // Changes to file post adding Application Insights Telemetry:
-      "ApplicationInsights": {
-        "InstrumentationKey": "10101010-1010-1010-1010-101010101010"
-      }
-    }
-    //
-    ```
-
-  - _ContosoDotNetCore.csproj_:
+    Následující fragment kódu ukazuje změny se přidají do vašeho projektu `.csproj` souboru.
 
     ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-      <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-    <!--Changes to file post adding Application Insights Telemetry:-->
-        <ApplicationInsightsResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsResourceId>
-        <ApplicationInsightsAnnotationResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsAnnotationResourceId>
-    <!---->
-      </PropertyGroup>
-      <ItemGroup>
-    <!--Changes to file post adding Application Insights Telemetry:-->
-        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
-    <!---->
-        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-      </ItemGroup>
-      <ItemGroup>
-        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-      </ItemGroup>
-    <!--Changes to file post adding Application Insights Telemetry:-->
-      <ItemGroup>
-        <WCFMetadata Include="Connected Services" />
-      </ItemGroup>
-    <!---->
-    </Project>
+        <ItemGroup>
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.1" />
+        </ItemGroup>
     ```
 
-  -  _Program.cs_:
+2. Přidat `services.AddApplicationInsightsTelemetry();` k `ConfigureServices()` metoda ve vaší `Startup` třídy. Úplný příklad níže.
 
-      ```csharp
-      using System;
-      using System.Collections.Generic;
-      using System.IO;
-      using System.Linq;
-      using System.Threading.Tasks;
-      using Microsoft.AspNetCore;
-      using Microsoft.AspNetCore.Hosting;
-      using Microsoft.Extensions.Configuration;
-      using Microsoft.Extensions.Logging;
+    ```csharp
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // The following line enables Application Insights telemetry collection.
+            services.AddApplicationInsightsTelemetry();
+    
+            // code adding other services for your application
+            services.AddMvc();
+        }
+    ```
 
-      namespace DotNetCore
-      {
-          public class Program
-          {
-              public static void Main(string[] args)
-              {
-                  BuildWebHost(args).Run();
-              }
+3. Nastavte klíč instrumentace.
 
-              public static IWebHost BuildWebHost(string[] args) =>
-                  WebHost.CreateDefaultBuilder(args)
-      // Change to file post adding Application Insights Telemetry:
-                      .UseApplicationInsights()
-      //
-                      .UseStartup<Startup>()
-                      .Build();
+    I když je možné zadat Instrumentační klíč jako argument `AddApplicationInsightsTelemetry`, doporučujeme zadat Instrumentační klíč v konfiguraci. Následující znázorňuje způsob zadávání instrumentačního klíče v `appsettings.json`. Ujistěte se, že `appsettings.json` zkopírována do kořenové složky aplikace při publikování.
+
+    ```json
+        {
+          "ApplicationInsights": {
+            "InstrumentationKey": "putinstrumentationkeyhere"
+          },
+          "Logging": {
+            "LogLevel": {
+              "Default": "Warning"
+            }
           }
-      }
-      ```
+        }
+    ```
 
-## <a name="send-ilogger-logs-to-application-insights"></a>Odeslání protokolů s ILogger Application Insights
+    Klíč instrumentace můžete také můžete také uvést v některém z následujících proměnných prostředí.
 
-Application Insights podporuje zachytávající protokoly se odeslaly prostřednictvím objektu ILogger. Nastavení protokolování checkout ukázky kódu [tady](https://docs.microsoft.com/azure/azure-monitor/app/ilogger).
+    APPINSIGHTS_INSTRUMENTATIONKEY
 
-## <a name="synthetic-transactions-with-powershell"></a>Syntetické transakce s využitím Powershellu
+    ApplicationInsights:InstrumentationKey
 
-K automatizaci požadavky na vaši aplikaci za použití syntetických transakcí:
+    Příklad:
 
-1. Ke spuštění vaší aplikace, vyberte ![Snímek obrazovky sady Visual Studio ikonu IIS Express](./media/asp-net-core/004-iis-express.png) icon.
+    `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
-2. Zkopírujte adresu URL z adresního řádku prohlížeče. Adresa URL je ve formátu `http://localhost:<port number>`.
+    `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-   ![Snímek obrazovky s prohlížeči adresu URL do adresního řádku](./media/asp-net-core/0013-copy-url.png)
+    `APPINSIGHTS_INSTRUMENTATIONKEY` Obvykle se používá k určení Instrumentační klíč pro aplikace nasazené do služby Azure Web Apps.
 
-3. Spusťte následující smyčka prostředí PowerShell pro vytvoření 100 syntetické transakce pomocí aplikace pro vaše testy. Změňte číslo portu po `localhost:` tak, aby odpovídaly adresu URl, kterou jste zkopírovali v předchozím kroku. Příklad:
+    > [!NOTE]
+    > Instrumentačním klíčem zadaný ve službě wins kódu přes proměnnou prostředí `APPINSIGHTS_INSTRUMENTATIONKEY`, které služby wins za další možnosti.
 
-   ```powershell
-   for ($i = 0 ; $i -lt 100; $i++)
-   {
-    Invoke-WebRequest -uri http://localhost:50984/
-   }
-   ```
+## <a name="run-your-application"></a>Spustit aplikaci
 
-## <a name="open-the-application-insights-portal"></a>Otevřít portál Application Insights
+ Spusťte aplikaci a požadavky na ni. Telemetrická data by teď měly začít odesílaných do Application Insights. Následující telemetrická data se automaticky shromažďují pomocí Application Insights SDK.
 
-Po spuštění příkazů prostředí PowerShell v předchozí části, otevřete službu Application Insights, chcete-li zobrazit transakce a potvrďte, že se shromažďují data. 
+|Požadavky a závislosti |Podrobnosti|
+|---------------|-------|
+|Požadavky | Příchozích webových požadavků do vaší aplikace. |
+|Http/Https | Volání s `HttpClient`. |
+|SQL | Volání s `SqlClient`. |
+|[Úložiště Azure](https://www.nuget.org/packages/WindowsAzure.Storage/) | Volání s klienta úložiště Azure. |
+|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Verze 1.1.0 a vyšší. |
+|[Klientská sada SDK pro služby Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Verze 3.0.0 a vyšší. |
+|Azure Cosmos DB | Pokud se používá HTTP/HTTPS, pouze sledována automaticky. Režim TCP nebude zachycena Application Insights. |
 
-V nabídce sady Visual Studio vyberte **projektu** > **Application Insights** > **otevřít portál Application Insights**.
+### <a name="performance-counters"></a>Čítače výkonu
 
-   ![Snímek obrazovky Přehled služby Application Insights](./media/asp-net-core/010-portal.png)
+Podpora pro [čítače výkonu](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/) v ASP.NET Core je omezená na následující
+
+   * Sada SDK verze 2.4.1 a nad shromažďuje čítače výkonu, pokud je aplikace spuštěná ve službě Azure Web App (Windows)
+   * Sada SDK verze 2.7.0-beta3 a nad shromažďuje čítače výkonu, pokud aplikace běží ve Windows a cílení `NETSTANDARD2.0` nebo vyšší.
+   * Pro aplikace cílené na rozhraní .NET Framework čítače výkonu jsou podporovány ve všech verzích SDK.
+   * Tento článek bude aktualizován, když se přidá podpora čítače výkonu v systému Linux.
+
+### <a name="ilogger-logs"></a>ILogger protokoly
+
+[Protokoly ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger) závažnosti `Warning` nebo výše jsou automaticky zachycené ze sady SDK verze 2.7.0-beta3 nebo vyšší.
+
+### <a name="live-metrics"></a>Live Metrics
+
+Může trvat několik minut, než se telemetrická data začnou zobrazovat na portálu. Chcete-li rychle zkontrolovat, zda vše funguje, je nejvhodnější použít [Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)při posílání požadavků na běžící aplikaci.
+
+## <a name="enable-client-side-telemetry-for-web-applications"></a>Povolit Telemetrii na straně klienta pro webové aplikace
+
+Výše uvedené kroky jsou dostatečné pro začal shromažďovat telemetrii na straně serveru. Pokud má vaše aplikace komponenty na straně klienta, postupujte podle následujících kroků a spustit shromažďování [telemetrii jejich využívání](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview) z něj.
+
+1. V `_ViewImports.cshtml`, přidejte vkládání:
+
+    ```cshtml
+        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+    ```
+
+2. V `_Layout.cshtml`, vložit na konec HtmlHelper `<head>` oddílu, ale před veškerým skriptem. Vlastní telemetrii jazyka JavaScript, které chcete do sestavy ze stránky by měl vloží po tento fragment kódu:
+
+    ```cshtml
+        @Html.Raw(JavaScriptSnippet.FullScript)
+        </head>
+    ```
+
+`.cshtml` Názvy souborů uvedené výše jsou z výchozí šablony aplikace MVC. Nakonec správně povolit monitorování na straně klienta pro vaši aplikaci, je třeba fragment kódu jazyka JavaScript v `<head>` části všech stránek aplikace, kterou chcete monitorovat. Pro tuto šablonu aplikace javascriptový fragment kódu pro přidání `_Layout.cshtml` bude efektivně dosažení tohoto cíle. Pokud váš projekt nemá tento konkrétní soubor můžete přesto přidat [monitorování na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/website-monitoring). By stačí potřebovat buď přidat jazyka JavaScript do souboru ekvivalentní ovládací prvky `<head>` všech stránek v rámci vaší aplikace, případně můžete přidat fragment kódu pro více jednotlivých stránek, i když to by bylo obtížné udržovat a není obecně doporučené.
+
+## <a name="configuring-application-insights-sdk"></a>Konfigurace Application Insights SDK
+
+Application Insights SDK pro ASP.NET Core je možné přizpůsobit pro změnu výchozí konfigurace. Uživatele sadu SDK Application Insights technologie ASP.NET pravděpodobně mají zkušenosti s pomocí konfigurace `ApplicationInsights.config`, nebo tak, že upravíte `TelemetryConfiguration.Active`. Pro ASP.NET Core se provádí konfigurace odlišně. ASP.NET Core SDK je přidané do aplikace a nakonfigurovat pomocí integrované technologie ASP.NET Core [injektáž závislostí](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Téměř všechny změny konfigurace se provádějí v `ConfigureServices()` metodu vaše `Startup.cs` třídy, pokud není uvedeno jinak. Použijte následující části obsahují další informace.
 
 > [!NOTE]
-> V předchozím ukázkovém snímku obrazovky **Live Stream**, **doba načtení zobrazení stránky**, a **neúspěšné požadavky** nejsou shromažďovány. Následující části vás provede kroky pro přidání každý z nich. Pokud již shromažďujete **Live Stream** a **doba načtení zobrazení stránky**, pouze pro, proveďte kroky **neúspěšné požadavky**.
+>  Mění se konfigurace tak, že upravíte `TelemetryConfiguration.Active` se nedoporučuje v aplikacích ASP.NET Core.
 
-## <a name="collect-failed-requests-live-stream-and-page-view-load-time"></a>Shromažďovat neúspěšné požadavky, Live Stream a doba načtení zobrazení stránky
+### <a name="configuring-using-applicationinsightsserviceoptions"></a>Konfigurace pomocí ApplicationInsightsServiceOptions
 
-### <a name="failed-requests"></a>Neúspěšné požadavky
+Je možné změnit několik běžných nastavení předáním `ApplicationInsightsServiceOptions` k `AddApplicationInsightsTelemetry`. Příklad je uveden níže.
 
-Technicky je shromažďováno neúspěšné požadavky, ale žádné neúspěšné žádosti ještě nedošlo. Pokud chcete urychlit proces, můžete přidat vlastní výjimky do existujícího projektu k simulaci reálné výjimky. Pokud vaše aplikace stále běží v sadě Visual Studio, než budete pokračovat, vyberte **Zastavit ladění** (Shift + F5).
-
-1. V **Průzkumníka řešení**, rozbalte **stránky** > **About.cshtml**a pak otevřete *About.cshtml.cs*.
-
-   ![Snímek obrazovky Průzkumníka řešení sady Visual Studio](./media/asp-net-core/011-about.png)
-
-2. Přidat výjimku v rámci ``Message=``a potom uložte změny do souboru.
-
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-
-    namespace DotNetCore.Pages
+```csharp
+    public void ConfigureServices(IServiceCollection services)
     {
-        public class AboutModel : PageModel
-        {
-            public string Message { get; set; }
+        Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions aiOptions
+                    = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+        // Disables adaptive sampling.
+        aiOptions.EnableAdaptiveSampling = false;
 
-            public void OnGet()
-            {
-                Message = "Your application description page.";
-                throw new Exception("Test Exception");
-            }
+        // Disables QuickPulse (Live Metrics stream).
+        aiOptions.EnableQuickPulseMetricStream = false;
+        services.AddApplicationInsightsTelemetry(aiOptions);
+    }
+```
+
+Přesný seznam konfigurovatelných nastavení v `ApplicationInsightsServiceOptions` najdete [tady](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs).
+
+### <a name="sampling"></a>Vzorkování
+
+Application Insights SDK pro ASP.NET Core podporuje FixedRate a adaptivní vzorkování. Ve výchozím nastavení je povolené adaptivní vzorkování. Postupujte podle našich [pokyny na adaptivním vzorkování](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications), chcete-li další informace o konfiguraci vzorkování pro aplikace ASP.NET Core.
+
+### <a name="adding-telemetryinitializers"></a>Přidání TelemetryInitializers
+
+[Inicializátory telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) se používají, když chcete definovat globální vlastnosti, které se odesílají s veškerou telemetrii.
+
+Chcete-li přidat nový `TelemetryInitializer`, přidat do kontejneru DependencyInjection, jak je znázorněno níže. `TelemetryInitializer`s DependencyInjection kontejneru přidá neexistoval, použije sada SDK automaticky.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
+    }
+```
+
+### <a name="removing-telemetryinitializers"></a>Odebrání TelemetryInitializers
+
+Chcete-li odebrat všechny nebo konkrétní TelemetryInitializers, které jsou k dispozici ve výchozím nastavení, použijte následující ukázkový kód **po** volání `AddApplicationInsightsTelemetry()`.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+
+        // Remove a specific built-in TelemetryInitializer
+        var tiToRemove = services.FirstOrDefault<ServiceDescriptor>
+                         (t => t.ImplementationType == typeof(AspNetCoreEnvironmentTelemetryInitializer));
+        if (tiToRemove != null)
+        {
+            services.Remove(tiToRemove);
+        }
+
+        // Remove all initializers
+        // This requires importing namespace using Microsoft.Extensions.DependencyInjection.Extensions;
+        services.RemoveAll(typeof(ITelemetryInitializer));
+    }
+```
+
+### <a name="adding-telemetryprocessors"></a>Přidání TelemetryProcessors
+
+Procesory vlastní telemetrická data mohou být přidány do `TelemetryConfiguration` pomocí metody rozšíření `AddApplicationInsightsTelemetryProcessor` na `IServiceCollection`. Procesory telemetrická data se používají v [rozšířené filtrování scénáře](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor) povolit pro více přímou kontrolu nad co je zahrnuty nebo vyloučeny ze telemetrická data odesílat do služby Application Insights. Pomocí následujícího příkladu.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<MyFirstCustomTelemetryProcessor>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<MySecondCustomTelemetryProcessor>();
+    }
+```
+
+### <a name="configuring-or-removing-default-telemetrymodules"></a>Konfigurace a odebrání výchozí telemetrymodules následující
+
+Application Insights využívá telemetrická data moduly jako způsob, jak [automatické shromažďování užitečné informace](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies) o konkrétních úloh bez nutnosti další konfigurace.
+
+Následující moduly automaticky kolekce jsou ve výchozím nastavení povolené a odpovídáte za automaticky shromažďuje telemetrická data. Může být zakázán a nakonfigurovat tak, aby změnit výchozí chování.
+
+* `RequestTrackingTelemetryModule`
+* `DependencyTrackingTelemetryModule`
+* `PerformanceCollectorModule`
+* `QuickPulseTelemetryModule`
+* `AppServicesHeartbeatTelemetryModule`
+* `AzureInstanceMetadataTelemetryModule`
+
+Ke konfiguraci žádné výchozí `TelemetryModule`, použijte metodu rozšíření `ConfigureTelemetryModule<T>` na `IServiceCollection` jak je znázorněno v následujícím příkladu.
+
+```csharp
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+
+        // The following configures DependencyTrackingTelemetryModule.
+        // Similarly, any other default modules can be configured.
+        services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) =>
+                        {
+                            module.EnableW3CHeadersInjection = true;
+                        });
+
+        // The following removes PerformanceCollectorModule to disable perf-counter collection.
+        // Similarly, any other default modules can be removed.
+        var performanceCounterService = services.FirstOrDefault<ServiceDescriptor>(t => t.ImplementationType == typeof(PerformanceCollectorModule));
+        if (performanceCounterService != null)
+        {
+         services.Remove(performanceCounterService);
         }
     }
-    ```
+```
 
-### <a name="live-stream"></a>Live Stream
+### <a name="configuring-telemetry-channel"></a>Konfigurace Telemetrie kanálu
 
-Pro přístup k funkci Live Stream z Application Insights s ASP.NET Core, aktualizujte balíčky NuGet Microsoft.ApplicationInsights.AspNetCore 2.2.0.
+Výchozí kanál používá `ServerTelemetryChannel`. Může být přepsána následující příklad níže.
 
-V sadě Visual Studio, vyberte **projektu** > **spravovat balíčky NuGet** > **Microsoft.ApplicationInsights.AspNetCore** > (verze) **2.2.0** > **aktualizace**.
+```csharp
+using Microsoft.ApplicationInsights.Channel;
 
-  ![Snímek obrazovky Správce balíčků NuGet](./media/asp-net-core/012-nuget-update.png)
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // use the following to replace the default channel with InMemoryChannel.
+        // this can also be applied to ServerTelemetryChannel as well.
+        services.AddSingleton(typeof(ITelemetryChannel), new InMemoryChannel() {MaxTelemetryBufferCapacity = 19898 });
 
-Zobrazí se více výzvy k potvrzení. Přečíst a přijmout vyjadřujete souhlas se změnami.
+        services.AddApplicationInsightsTelemetry();
+    }
+```
 
-### <a name="page-view-load-time"></a>Doba načtení zobrazení stránky
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-1. V sadě Visual Studio, přejděte na **Průzkumníka řešení** > **stránky**. Je třeba upravit dva soubory: *Layout.cshtml* a *ViewImports.cshtml*.
+### <a name="i-want-to-track-additional-telemetry-other-than-the-auto-collected-telemetry-how-do-i-do-it"></a>Chci sledovat další telemetrické údaje než automaticky shromažďovat telemetrická data. Jak to udělám?
 
-2. V *ViewImports.cshtml*, přidejte tento kód:
+Získání instance `TelemetryClient` tím, že pomocí konstruktoru vkládání a volat požadované `TrackXXX()` metoda na něj. Není doporučeno vytvořit novou `TelemetryClient` instancí aplikace ASP.NET Core jako instanci typu singleton `TelemetryClient` je už zaregistrovaný do kontejnerů DI, který sdílí `TelemetryConfiguration` se zbytkem telemetrická data. Vytvoření nového `TelemetryClient` instance se doporučuje jenom v případě, že má samostatné konfigurace od zbytku telemetrická data. Následující příklad ukazuje, jak sledovat další telemetrické údaje z kontroleru.
 
-   ```csharp
-   @using Microsoft.ApplicationInsights.AspNetCore
-   @inject JavaScriptSnippet snippet
-   ```
+```csharp
+using Microsoft.ApplicationInsights;
 
-3. V *Layout.cshtml*, přidejte následující kód před ``</head>`` značky a před všechny ostatní skripty:
+public class HomeController : Controller
+{
+    private TelemetryClient telemetry;
 
-    ```csharp
-    @Html.Raw(snippet.FullScript)
-    ```
+    // use constructor injection to get TelemetryClient instance
+    public HomeController(TelemetryClient telemetry)
+    {
+        this.telemetry = telemetry;
+    }
 
-### <a name="test-failed-requests-page-view-load-time-and-live-stream"></a>Neúspěšné požadavky, doba načtení zobrazení stránky, testování a Live Stream
+    public IActionResult Index()
+    {
+        // call required TrackXXX method.
+        this.telemetry.TrackEvent("HomePageRequested");
+        return View();
+    }
+```
 
-Pro testování a potvrďte, že vše funguje:
+ Odkazovat na [vlastní metriky reference k rozhraní API služby Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/) popis vlastních dat, vytváření sestav ve službě Application Insights.
 
-1. Spuštění aplikace. Ke spuštění vaší aplikace, vyberte ![Snímek obrazovky sady Visual Studio ikonu IIS Express](./media/asp-net-core/004-iis-express.png) icon.
+### <a name="some-visual-studio-templates-used-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Některé šablony sady Visual Studio využít UseApplicationInsights() rozšiřující metoda na IWebHostBuilder Application Insights. Toto použití je stále platný?
 
-2. Přejděte **o** stránky k aktivaci výjimku testu. (Pokud jste v režimu ladění v sadě Visual Studio, vyberte **pokračovat** výjimky objeví ve službě Application Insights.)
+Povolením Application Insights s touto metodou je platný a se používá v sadě Visual Studio v rámci zprovozňování a také rozšíření webové aplikace Azure. Doporučujeme však použít `services.AddApplicationInsightsTelemetry()` poskytuje přetížení k řízení určitou konfiguraci. Jak interně to samé udělejte metody, pokud není žádná vlastní konfigurace použije, volání buď je v pořádku.
 
-3. Znovu spusťte simulované skriptu transakce PowerShell, který jste použili dříve. (Může být potřeba upravit číslo portu ve skriptu.)
+### <a name="i-am-deploying-my-aspnet-core-application-to-azure-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>Můžu jsem nasazení Moje aplikace ASP.NET Core do Azure Web Apps. Měli stále povolit rozšíření Application Insights z webových aplikací?
 
-4. Pokud **přehled** stránce v aplikacích Insights není stále otevřen v nabídce sady Visual Studio, vyberte **projektu** > **Application Insights**  >  **Otevřít portál Application Insights**. 
+Pokud sada SDK je nainstalovaná v okamžiku sestavení, jak je znázorněno v tomto článku, není nutné k povolení rozšíření Application Insights z portálu služby App Service. I v případě, že rozšíření je nainstalované, bude opět vypnout, když zjistí, že sada SDK je už přidané do aplikace. Povolením Application Insights z rozšíření není instalaci a aktualizaci sady SDK. Povolením Application Insights podle tohoto článku je ale flexibilnější z důvodů níže.
+   * Telemetrie Application Insights bude pokračovat v práci:
+       * Všechny operační systémy – Windows, Linuxu a macu.
+       * Publikovat všechny režimy – samostatná nebo závisí na architektuře.
+       * Všechny cílové architektury, včetně úplné rozhraní .NET Framework.
+       * Všechny možnosti hostování – webové aplikace Azure, virtuálních počítačů, Linux, kontejnery, AKS, mimo Azure.
+   * Telemetrii můžete zobrazit místně, při ladění ze sady Visual Studio.
+   * Umožňuje používat další vlastní telemetrická data sledování `TrackXXX()` rozhraní API.
+   * Máte plnou kontrolu nad konfigurace.
 
-   > [!TIP]
-   > Pokud nevidíte nové přenosy dat, zkontrolujte hodnotu **časový rozsah**a pak vyberte **aktualizovat**.
+### <a name="can-i-enable-application-insights-monitoring-using-tools-like-status-monitor"></a>Můžete povolit monitorování pomocí nástrojů, jako je monitorování stavu Application Insights?
 
-   ![Snímek obrazovky okna přehledu](./media/asp-net-core/0019-overview-updated.png)
+Ne. [Monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) a jejím nahrazení nadcházející [monitorování stavu v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) technologie ASP.NET v současné době podporuje pouze 4.x.
 
-5. Vyberte **Live Stream**.
+### <a name="i-have-an-aspnet-core-20-application-isnt-application-insights-automatically-enabled-without-me-doing-anything"></a>Mám aplikaci ASP.NET Core 2.0. Není Application Insights automaticky povoleno bez mi teď zrovna nic nedělá?
 
-   ![Snímek obrazovky s Live Metrics Stream](./media/asp-net-core/0020-live-metrics-stream.png)
+`Microsoft.AspNetCore.All` 2.0 Microsoft.aspnetcore.all zahrnuté sadu SDK Application Insights (verze 2.1.0), a pokud spustíte aplikaci v ladicím programu sady Visual Studio, Visual Studio Application Insights umožňuje a zobrazuje telemetrická data místně v samotném integrovaném vývojovém prostředí. Telemetrie nebyla proto odeslána do služby Application Insights, výslovně uvedeno Instrumentační klíč. Doporučujeme následující pokyny v tomto článku pro povolení Application Insights, i pro 2.0 aplikace.
 
-   (Pokud váš skript prostředí PowerShell je stále spuštěna, měli byste vidět živé metriky. Pokud váš skript prostředí PowerShell byla zastavena, spusťte znovu skript pro otevřete Live Stream.)
+### <a name="i-run-my-application-in-linux-are-all-features-supported-in-linux-as-well"></a>Spustit aplikaci v Linuxu. Všechny funkce podporuje Linux i?
 
-## <a name="application-insights-sdk-comparison"></a>Porovnání Application Insights SDK
+* Ano. Podpora funkce sady SDK je stejná ve všech platformách, s následujícími výjimkami:
 
-Intenzivně pracuje produktové skupiny Application Insights k dosažení parity funkcí mezi [úplné rozhraní .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) a .NET Core SDK. 2.2.0 vydání [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) pro Application Insights uzavírá velké rozdíly mezi funkcemi.
+    * Čítače výkonu se zatím nepodporují v Non-Windows.
+    * I když `ServerTelemetryChannel` je povolená ve výchozím nastavení, pokud je aplikace spuštěna v systému Linux nebo MacOS, kanál neprovádí automatické vytváření složky místní úložiště dočasně zachovat telemetrická data, pokud existují problémy se sítí. Toto omezení způsobí, že telemetrická data ztratí, pokud jsou dočasné síť nebo server problémy. Alternativní řešení tohoto problému je pro uživatele nakonfigurovat místní složku pro kanál, jak je znázorněno níže.
 
-Následující tabulka popisuje další rozdíly a kompromisy mezi [.NET a .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server):
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
-   | Porovnání sady SDK | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
-  |:-- | :-------------: |:------------------------:|:----------------------:|
-   | **Živé metriky**      | **+** |**-** | **+** |
-   | **Telemetrie kanálu serveru** | **+** |**-** | **+**|
-   |**Adaptivní vzorkování**| **+** | **-** | **+**|
-   | **Volání závislostí SQL**     | **+** |**-** | **+**|
-   | **Čítače výkonu*** | **+** | **-**| **-**|
-
-Čítače výkonu v tomto kontextu najdete [čítače výkonu na straně serveru](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) , jako jsou procesor, paměť a využití disku.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // The following will configure channel to use the given folder to temporarily
+        // store telemetry items during network or application insights server issues.
+        // User should ensure that the given folder already exists,
+        // and that application has read/write permissions.
+        services.AddSingleton(typeof(ITelemetryChannel),
+                                new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
+        services.AddApplicationInsightsTelemetry();
+    }
+```
 
 ## <a name="open-source-sdk"></a>Open source sad SDK
 [Číst a přidávat do kódu](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="application-insights-search-continued"></a>Pokračovat v hledání Application Insights
-
-Tato část vám umožňují lépe pochopit, jak funguje hledání Application Insights v sadě Visual Studio pro projekt ASP.NET Core 2. Tento způsob, jak to funguje i v případě, že jste si nenainstalovali explicitně balíčky Application Insights NuGet ještě. Může být také užitečné si prohlédněte si výstup ladění.
-
-Pokud hledáte výstup pro slovo _insight_, jsou zvýrazněny výsledky podobné následujícím:
-
-```DebugOutput
-'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.aspnetcore.applicationinsights.hostingstartup\2.0.3\lib\netcoreapp2.0\Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll'.
-'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.applicationinsights.aspnetcore\2.1.1\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll'.
-
-Application Insights Telemetry (unconfigured): {"name":"Microsoft.ApplicationInsights.Dev.Message","time":"2018-06-03T17:32:38.2796801Z","tags":{"ai.location.ip":"127.0.0.1","ai.operation.name":"DEBUG /","ai.internal.sdkVersion":"aspnet5c:2.1.1","ai.application.ver":"1.0.0.0","ai.cloud.roleInstance":"CONTOSO-SERVER","ai.operation.id":"de85878e-4618b05bad11b5a6","ai.internal.nodeName":"CONTOSO-SERVER","ai.operation.parentId":"|de85878e-4618b05bad11b5a6."},"data":{"baseType":"MessageData","baseData":{"ver":2,"message":"Request starting HTTP/1.1 DEBUG http://localhost:53022/  0","severityLevel":"Information","properties":{"AspNetCoreEnvironment":"Development","Protocol":"HTTP/1.1","CategoryName":"Microsoft.AspNetCore.Hosting.Internal.WebHost","Host":"localhost:53022","Path":"/","Scheme":"http","ContentLength":"0","DeveloperMode":"true","Method":"DEBUG"}}}}
-```
-
-Ve výstupu načte CoreCLR dvě sestavení: 
-
-- _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_
-- _Microsoft.ApplicationInsights.AspNetCore.dll_.
-
-_Nenakonfigurováno_ odkaz v každé instanci telemetrii Application Insights označuje, že tato aplikace není přidružený k Instrumentační klíč. Data, která se vygeneruje, když vaše aplikace běží neposílají se do Azure. Data jsou k dispozici pouze pro místní hledání a analýzu.
-
-Funkce je možné, v části protože balíček NuGet _metabalíček_ trvá [ _Microsoft.ASPNetCoreApplicationInsights.HostingStartup_ ](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1) jako závislost.
-
-![Snímek obrazovky s NuGet graf závislostí pro metabalíček](./media/asp-net-core/013-dependency.png)
-
-Mimo sadu Visual Studio kterou jste dříve upravovali projektu aplikace ASP.NET Core v VSCode nebo jiném editoru, tato sestavení by zatížení automaticky během ladění Pokud jste nepřidali explicitně Application Insights do projektu.
-
-V sadě Visual Studio, ale tento osvětlení si místní funkce Application Insights z externí sestavení se provádí pomocí [IHostingStartup rozhraní](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1). Rozhraní dynamicky přidá Application Insights během ladění.
-
-Další informace o rozšíření aplikace ze [externího sestavení v ASP.NET Core s IHostingStartup](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/platform-specific-configuration?view=aspnetcore-2.1). 
-
-### <a name="disable-application-insights-in-visual-studio-net-core-projects"></a>Zakázat Application Insights v projektech Visual Studio .NET Core
-
-I když hledání automatické nahoru světla služby Application Insights zobrazuje telemetrii ladění vygeneruje, když jste neočekávali, že je možné, že dojde k záměně mohou být užitečné, funkce.
-
-Pokud právě zakazuje generování telemetrie je dostačující, můžete přidat tento blok kódu do **nakonfigurovat** metodu vaše _Startup.cs_ souboru:
-
-```csharp
-  var configuration = app.ApplicationServices.GetService<Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration>();
-            configuration.DisableTelemetry = true;
-            if (env.IsDevelopment())
-```
-
-CoreCLR je stále načítá _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_ a _Microsoft.ApplicationInsights.AspNetCore.dll_, ale nic nedělají soubory.
-
-Pokud chcete úplně vypnout Application Insights v projektu Visual Studio .NET Core, upřednostňovanou metodou je výběr **nástroje** > **možnosti**  >   **Projekty a řešení** > **webových projektů**. Vyberte **zakázat místní Application Insights pro webové projekty ASP.NET Core** zaškrtávací políčko. Tato funkce přidané ve verzi 15.6 Visual Studio.
-
-![Snímek obrazovky z možnosti okno webových projektů sady Visual Studio obrazovky](./media/asp-net-core/014-disable.png)
-
-Pokud používáte starší verzi sady Visual Studio a chcete úplně odebrat všechna sestavení, které byly načteny prostřednictvím *IHostingStartup*, máte dvě možnosti:
-
-* Přidat `.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")` k _Program.cs_:
-
-  ```csharp
-  using System;
-  using System.Collections.Generic;
-  using System.IO;
-  using System.Linq;
-  using System.Threading.Tasks;
-  using Microsoft.AspNetCore;
-  using Microsoft.AspNetCore.Hosting;
-  using Microsoft.Extensions.Configuration;
-  using Microsoft.Extensions.Logging;
-
-  namespace DotNetCore
-  {
-      public class Program
-      {
-          public static void Main(string[] args)
-          {
-              BuildWebHost(args).Run();
-          }
-
-          public static IWebHost BuildWebHost(string[] args) =>
-              WebHost.CreateDefaultBuilder(args)
-                  .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
-                  .UseStartup<Startup>()
-                  .Build();
-      }
-  }
-  ```
-
-* Přidat ``"ASPNETCORE_preventHostingStartup": "True"`` k _launchSettings.json_ proměnné prostředí.
-
-Problém s některou z těchto metod je, že se nemusíte zakážou pouze služba Application Insights. Nic v sadě Visual Studio, který používal metody také zakázat *IHostingStartup* funkce světla nahoru.
-
 ## <a name="video"></a>Video
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
+- Externí krok za krokem videu o [konfigurace Application Insights pomocí .NET Core a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) úplně od začátku.
 
 ## <a name="next-steps"></a>Další postup
 * [Prozkoumejte toky uživatelů](../../azure-monitor/app/usage-flows.md) pochopit, jak uživatelé procházejí vaši aplikaci.

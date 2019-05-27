@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7868b52fee991d4b9323fa0b7969aeca4dc83cdb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711950"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001460"
 ---
-# <a name="common-security-attributes-for-azure-storage"></a>Běžné atributy zabezpečení pro službu Azure Storage
+# <a name="security-attributes-for-azure-storage"></a>Atributy zabezpečení pro službu Azure Storage
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do služby Azure Storage. 
+Tento článek popisuje atributy zabezpečení integrované do služby Azure Storage. 
 
 [!INCLUDE [Security Attributes Header](../../../includes/security-attributes-header.md)]
 
@@ -41,7 +41,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Izolace sítě a podporu funkce brány firewall| Ano | |
 | Vynucené tunelování podpory| neuvedeno |  |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

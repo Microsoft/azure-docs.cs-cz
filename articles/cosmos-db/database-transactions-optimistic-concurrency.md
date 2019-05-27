@@ -4,21 +4,21 @@ description: Tento článek popisuje databázové transakce a optimistického ř
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889351"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978991"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
 
 Databázové transakce poskytují bezpečné a předvídatelné programovací model řešit souběžných změny v datech. Tradičních relačních databází, jako je SQL Server, umožňuje psát obchodní logiku pomocí uložené procedury a triggery, odeslat ho na server pro spuštění přímo uvnitř databázového stroje. Pomocí tradičních relačních databází, je nutné řešit dva různé programovací jazyky (netransakční) aplikačního programovacího jazyka, jako je JavaScript, Python, C#, Java, atd. a transakční programovací jazyk ( například T-SQL), která nativně provádí databáze.
 
-Databázový stroj ve službě Azure Cosmos DB podporuje úplnou kyseliny (atomicitu, konzistence, izolaci, odolnosti) kompatibilní s transakcí s izolací snímku. Všechny databázové operace v rámci oboru kontejneru [logický oddíl](partition-data.md) jsou transakčně spouštět přímo z databázového stroje, který je hostitelem repliky oddílu. Obě tyto operace zahrnují operace čtení a zápisu (aktualizuje jednu nebo více položek v rámci logického oddílu). Následující tabulka ilustruje různé operace a transakce typech:
+Databázový stroj ve službě Azure Cosmos DB podporuje úplnou kyseliny (atomicitu, konzistence, izolaci, odolnosti) kompatibilní s transakcí s izolací snímku. Všechny databázové operace v rámci oboru kontejneru [logický oddíl](partition-data.md) jsou transakčně spouštět přímo z databázového stroje, který je hostitelem repliky oddílu. Obě tyto operace zahrnují operace čtení a zápisu (aktualizuje jednu nebo více položek v rámci logického oddílu). Následující tabulka ilustruje různé operace a typy transakcí:
 
 | **Operace**  | **Typ operace** | **Jeden nebo více položek transakce** |
 |---------|---------|---------|
@@ -33,11 +33,11 @@ Databázový stroj ve službě Azure Cosmos DB podporuje úplnou kyseliny (atomi
 | Spustit uloženou proceduru | Zápis a čtení | Transakce více položek |
 | Provádění procedury sloučení zahájené systému | Zápis | Transakce více položek |
 | Systém zahájené spuštění odstranění položky podle vypršení platnosti (TTL) položky | Zápis | Transakce více položek |
-| Čtení | Čtení | Transakce jedné položky |
-| Kanál změn | Čtení | Transakce více položek |
-| Stránkovaná pro čtení | Čtení | Transakce více položek |
-| Stránkovaných dotazů | Čtení | Transakce více položek |
-| Spuštění UDF jako součást stránkovaných dotazů | Čtení | Transakce více položek |
+| Číst | Číst | Transakce jedné položky |
+| Kanál změn | Číst | Transakce více položek |
+| Stránkovaná pro čtení | Číst | Transakce více položek |
+| Stránkovaných dotazů | Číst | Transakce více položek |
+| Spuštění UDF jako součást stránkovaných dotazů | Číst | Transakce více položek |
 
 ## <a name="multi-item-transactions"></a>Transakce více položek
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874545"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111525"
 ---
 ## <a name="webapi-project"></a>Projektem WebAPI
 1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v **oznamování uživatelům pomocí** kurzu.
@@ -91,5 +91,5 @@ ms.locfileid: "60874545"
 Všimněte si, `Post` metoda nyní neodešle oznámení s informační zprávou. Odešle nezpracovaná oznámení, která obsahuje pouze ID oznámení a nikoliv citlivého obsahu. Také ujistěte se, že chcete přidat komentář operace odeslání pro platformy, pro které nemáte přihlašovací údaje nakonfigurované v centru oznámení, jako jsou způsobí chyby.
 
 1. Nyní jsme se znovu nasadit tuto aplikaci na web Azure aby byla přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku a poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na **Publikovat**.
+2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku a poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
 

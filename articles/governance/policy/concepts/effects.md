@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498810"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116204"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 
@@ -30,7 +30,7 @@ Aktuálně existuje šest efekty, které jsou podporovány v definici zásad:
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
-Požadavky na vytvoření nebo aktualizace prostředku prostřednictvím Azure Resource Manageru se vyhodnocují zásady nejprve. Zásady vytvoří seznam všech přiřazení, které použít na prostředek a potom je vyhodnocen jako prostředek pro každou definici. Zásady zpracuje několik efektů ještě před požadavek na příslušné poskytovatele prostředků. Tím zabráníte zbytečnému zpracování přes poskytovatele prostředků, pokud prostředek nesplňuje ovládací prvky zásad navržených zásad správného řízení.
+Požadavky na vytvoření nebo aktualizace prostředku prostřednictvím Azure Resource Manageru jsou vyhodnocovány pomocí zásad Azure nejprve. Služba Azure Policy vytvoří seznam všech přiřazení, které použít na prostředek a potom je vyhodnocen jako prostředek pro každou definici. Služba Azure Policy zpracovává několik efektů ještě před požadavek na příslušné poskytovatele prostředků. Tím zabráníte zbytečnému zpracování přes poskytovatele prostředků, pokud prostředek nesplňuje navrženého zásad správného řízení ovládacích prvků o službě Azure Policy.
 
 - **Zakázané** je nejprve zkontrolována k určení, pokud by se mělo vyhodnotit pravidlo zásad.
 - **Připojit** se pak vyhodnocuje. Od té doby připojení může změnit požadavek, změny provedené pomocí připojení může zabránit auditu nebo odepřít efekt spouštět.
@@ -88,8 +88,7 @@ Příklad 2: Dvě **pole/hodnota** páry připojit sady značek.
 }
 ```
 
-Příklad 3: Jeden **pole/hodnota** párovat pomocí non -**[\*]**
-[alias](definition-structure.md#aliases) s polem **hodnota** nastavit pravidla IP účet úložiště. Když non -**[\*]** alias je pole, připojí vliv **hodnota** jako celého pole. Pokud pole již existuje, dojde k události odepřít z konflikt.
+Příklad 3: Jeden **pole/hodnota** párovat pomocí non -**[\*]** [alias](definition-structure.md#aliases) s polem **hodnotu** nastavování pravidel IP pro účet úložiště. Když non -**[\*]** alias je pole, připojí vliv **hodnota** jako celého pole. Pokud pole již existuje, dojde k události odepřít z konflikt.
 
 ```json
 "then": {
@@ -119,7 +118,7 @@ Příklad 4: Jeden **pole/hodnota** párovat pomocí **[\*]** [alias](definition
 }
 ```
 
-## <a name="deny"></a>Odepřít
+## <a name="deny"></a>Odepření
 
 Odepřít se používá při prevenci požadavkem na prostředky, které neodpovídá definované standardů prostřednictvím definice zásad a požadavek selže.
 
@@ -149,7 +148,7 @@ Audit se používá k vytvoření upozorňovací událost v protokolu aktivit p�
 
 ### <a name="audit-evaluation"></a>Auditovat hodnocení
 
-Auditování je poslední efekt ověřena pomocí zásad během vytvoření či aktualizaci prostředku. Zásady pak odešle prostředku u poskytovatele prostředků. Audit funguje stejně v případě požadavkem na prostředky a cyklu hodnocení. Zásady se přidá `Microsoft.Authorization/policies/audit/action` operace do protokolu aktivit a označí prostředků jako nedodržující předpisy.
+Auditování je poslední efekt ověřena pomocí Azure Policy během vytvoření či aktualizaci prostředku. Služba Azure Policy pak odešle prostředku u poskytovatele prostředků. Audit funguje stejně v případě požadavkem na prostředky a cyklu hodnocení. Služba Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operace do protokolu aktivit a označí prostředků jako nedodržující předpisy.
 
 ### <a name="audit-properties"></a>Vlastnosti auditu
 
@@ -171,7 +170,7 @@ AuditIfNotExists povolí auditování pro prostředky, které odpovídají **Pok
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists hodnocení
 
-AuditIfNotExists běží po poskytovatele prostředků byla zpracována žádost o vytvoření nebo aktualizace prostředků a vrátil stavový kód úspěchu. Audit nastane, pokud neexistují žádné související prostředky nebo pokud prostředky definované **ExistenceCondition** není vyhodnocen na hodnotu true. Přidá zásad `Microsoft.Authorization/policies/audit/action` operace na aktivitu protokolu stejným způsobem jako audit vliv. Když se aktivuje, prostředek, který splnil **Pokud** podmínka je prostředek, který je označeno jako nedodržující předpisy.
+AuditIfNotExists běží po poskytovatele prostředků byla zpracována žádost o vytvoření nebo aktualizace prostředků a vrátil stavový kód úspěchu. Audit nastane, pokud neexistují žádné související prostředky nebo pokud prostředky definované **ExistenceCondition** není vyhodnocen na hodnotu true. Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operace na aktivitu protokolu stejným způsobem jako audit vliv. Když se aktivuje, prostředek, který splnil **Pokud** podmínka je prostředek, který je označeno jako nedodržující předpisy.
 
 ### <a name="auditifnotexists-properties"></a>Vlastnosti AuditIfNotExists
 
@@ -300,7 +299,7 @@ Příklad: Vyhodnotí jako databáze SQL serveru k určení, zda je povoleno tra
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
         "roleDefinitionIds": [
-            "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
         ],
         "existenceCondition": {
@@ -369,9 +368,9 @@ Vyhodnotí se jednotlivě každé přiřazení. V důsledku toho není přílež
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Zkontrolujte [struktura definic zásad](definition-structure.md)
-- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md)
-- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md)
-- Zjistěte, jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [strukturu definic Azure Policy](definition-structure.md).
+- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md).
+- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Zjistěte, jak [nápravě nekompatibilních prostředků](../how-to/remediate-resources.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/overview.md).

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878847"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908073"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak k provádění operací systému souborů ve s
 Pokyny, jak provádět operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* **Visual Studio 2013, 2015 nebo 2017**. Níže uvedené pokyny používají sadu Visual Studio 2017.
+* **Visual Studio 2013 nebo novější**. Níže uvedené pokyny používají Visual Studio 2019.
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -41,19 +41,11 @@ Pokyny, jak provádět operace správy účtů v Data Lake Storage Gen1 pomocí 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
 Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted), vás provede procesem vytvoření souborů v úložišti, zřetězení souborů, stažení souboru a nakonec odstranění některých souborů v úložišti. Tato část článku vás provede hlavními částmi kódu.
 
-1. Otevřete Visual Studio a vytvořte konzolovou aplikaci.
-2. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**.
-3. V části **Nový projekt** zadejte nebo vyberte tyto hodnoty:
+1. V sadě Visual Studio, vyberte **souboru** nabídce **nový**a potom **projektu**.
+2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+3. V **název projektu**, zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
 
-   | Vlastnost | Hodnota |
-   | --- | --- |
-   | Kategorie |Šablony/Visual C#/Windows |
-   | Šablona |Konzolová aplikace |
-   | Název |VytvořeníAplikaceADL |
-
-4. Projekt vytvoříte kliknutím na **OK**.
-
-5. Přidejte do projektu balíčky NuGet.
+4. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.
    2. Ujistěte se, že na kartě **Správce balíčků NuGet** je položka **Zdroj balíčku** nastavena na hodnotu **nuget.org** a že je zaškrtnuto políčko **Zahrnout předběžné verze**.
@@ -64,7 +56,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
     
       Zavřete **Správce balíčků NuGet**.
 
-6. Otevřete soubor **Program.cs**, odstraňte stávající kód a potom vložte následující příkazy, čímž přidáte odkazy na obory názvů.
+5. Otevřete soubor **Program.cs**, odstraňte stávající kód a potom vložte následující příkazy, čímž přidáte odkazy na obory názvů.
 
         using System;
         using System.IO;using System.Threading;
@@ -78,7 +70,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
         using Microsoft.Azure.DataLake.Store;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. Deklarujte proměnné, jak je znázorněno níže, a nahraďte zástupné symboly příslušnými hodnotami. Také se ujistěte, že na počítači existuje místní cesta a název souboru, které tady zadáte.
+6. Deklarujte proměnné, jak je znázorněno níže, a nahraďte zástupné symboly příslušnými hodnotami. Také se ujistěte, že na počítači existuje místní cesta a název souboru, které tady zadáte.
 
         namespace SdkSample
         {
@@ -139,7 +131,7 @@ Následující fragment kódu přečte obsah souboru v Data Lake Storage Gen1.
         }
     }
 
-## <a name="get-file-properties"></a>Získání vlastností souboru
+## <a name="get-file-properties"></a>Načíst vlastnosti souboru
 Následující fragment kódu vrátí vlastnosti přidružené k souboru nebo adresáři.
 
     // Get file properties
@@ -172,7 +164,7 @@ Následující fragment kódu rekurzivně odstraní adresář a všechny jeho po
     // Delete a directory and all its subdirectories and files
     client.DeleteRecursive("/Test");
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 Tady je několik ukázek, jak používat sadu SDK pro Data Lake Storage Gen1 systému souborů.
 * [Základní ukázka na Githubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Pokročilá ukázka na Githubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)

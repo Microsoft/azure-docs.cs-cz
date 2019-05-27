@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 290b548f31a967d514b09e4de775b12de7703b07
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7499dbe1f3f0b89a11814ad1b65a52bb9ba9fd05
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782944"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016060"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Chyba "Nelze přistupovat k této podnikové aplikace" při použití aplikace Proxy aplikací
 
@@ -77,7 +77,7 @@ K ověření aplikace je přiřazený k pracovní skupině konektorů:
 
 1. Otevřete aplikaci tak, že přejdete na portálu **Azure Active Directory**, pak kliknete na **podnikové aplikace**, pak **všechny aplikace.** Otevřete aplikaci a pak vyberte **Proxy aplikací** v levé nabídce.
 
-2. Podívejte se na pole Skupina konektorů. Pokud ve skupině nejsou žádné aktivní konektory, zobrazí se upozornění. Pokud se nezobrazí žádné upozornění, přejděte na "ověřit všechny požadované porty jsou povolené".
+2. Podívejte se na pole Skupina konektorů. Pokud ve skupině nejsou žádné aktivní konektory, zobrazí se upozornění. Pokud se nezobrazí žádné upozornění, přejděte na ověřte všechny požadované porty jsou povolené.
 
 3. Pokud chybného se zobrazuje skupina konektorů, pomocí rozevírací nabídky vyberte správné skupině a potvrďte, že už se nezobrazují žádné upozornění. Pokud se zobrazuje odpovídající skupinu konektorů, klikněte na upozornění otevřete stránku se správou konektoru.
 
@@ -87,11 +87,11 @@ K ověření aplikace je přiřazený k pracovní skupině konektorů:
 
    * Stáhněte si nový konektor pro tuto skupinu: Z této stránky můžete získat odkaz na [si stáhli nový konektor](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Nainstalujte Connector na počítači s přístupem na dohled back-end aplikace. Obvykle je konektor nainstalovaný na stejném serveru jako aplikace. Použijte ke stažení konektoru odkaz ke stažení konektoru na cílovém počítači. V dalším kroku klikněte na tlačítko konektoru a ujistěte se, že patří do správné skupině. pomocí "Skupina konektorů" rozevíracího seznamu.
 
-   * Prozkoumejte neaktivní konektoru: Pokud se konektor zobrazí jako neaktivní, se nepovedlo se kontaktovat službu. Tato chyba je obvykle kvůli některé požadované porty budou blokovány. Chcete-li tento problém vyřešit, přejděte na "ověřit všechny požadované porty jsou povolené."
+   * Prozkoumejte neaktivní konektoru: Pokud se konektor zobrazí jako neaktivní, se nepovedlo se kontaktovat službu. Tato chyba je obvykle kvůli některé požadované porty budou blokovány. Chcete-li vyřešit tento problém, přejdeme ke ověřte všechny požadované porty jsou povolené.
 
 Po použití těchto kroků zkontrolujte, že aplikace je přiřazenou ke skupině se práce konektory, otestujte aplikaci znovu spustit. Pokud stále nefunguje, pokračujte k další části.
 
-## <a name="check-all-required-ports-are-whitelisted"></a>Zkontrolujte všechny požadované porty jsou povolené
+## <a name="check-all-required-ports-are-open"></a>Zkontrolujte všechny požadované porty jsou otevřené
 
 Pokud chcete ověřit, že všechny požadované porty jsou otevřeny, naleznete v dokumentaci na porty. Pokud jsou otevřené požadované porty, přejděte k další části.
 

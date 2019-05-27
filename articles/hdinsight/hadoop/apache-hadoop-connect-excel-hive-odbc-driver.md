@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 37fed781629351475b384ac843a588bdaf7b5b66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 100482496df2db1bff07a070bb82c6811208cfd4
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718158"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891309"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k systému Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 
@@ -99,7 +99,7 @@ V tomto článku jste zjistili, jak načíst data ze služby HDInsight do Excelu
 
 * [Vizualizace dat pomocí Microsoft Power BI v Azure HDInsight s Apache Hive](apache-hadoop-connect-hive-power-bi.md).
 * [Vizualizace dat Interactive Query Hive pomocí Power BI v Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v HDInsight Azure](./../hdinsight-connect-hive-zeppelin.md).
+* [Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v HDInsight Azure](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](apache-hadoop-connect-excel-power-query.md).
 * [Připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
 * [Pomocí nástroje Azure HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md).

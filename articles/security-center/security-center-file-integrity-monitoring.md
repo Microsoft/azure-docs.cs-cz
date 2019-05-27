@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
-ms.author: monhaber
-ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-mohabe
+ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705594"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968800"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -112,7 +112,7 @@ Výběr filtru v horní části řídicího panelu, vám umožní použít časo
 
 **Prohledávání protokolů** otevře při zadání názvu počítače do vyhledávacího pole nebo vyberte počítač, který je uvedený na kartě počítače. Hledání v protokolu se zobrazí všechny změny provedené během vybraného časového období pro počítač. Můžete rozbalit změnu pro další informace.
 
-![Prohledávání protokolů][8]
+![Hledání v protokolu][8]
 
 **Změny** karta (viz následující obrázek) obsahuje všechny změny pracovního prostoru během vybraného časového období. Pro každou entitu, která byla změněna, seznamy řídicích panelů:
 

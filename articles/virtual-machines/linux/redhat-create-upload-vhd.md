@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d5e9c6c8a104c16d1ff4e96929ff47ed6fd5ff6
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771171"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966110"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
-V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou popsané v tomto článku jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou popsané v tomto článku jsou virtuální počítače Hyper-V, na základě jádra (KVM) a VMware. Další informace o požadavky zakládající nárok pro účast v programu Red Hat Cloud Access najdete v tématu [Red Hat Cloud Access web](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [systémem RHEL v Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
+V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou popsané v tomto článku jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou popsané v tomto článku jsou virtuální počítače Hyper-V, na základě jádra (KVM) a VMware. Další informace o požadavky zakládající nárok pro účast v programu Red Hat Cloud Access najdete v tématu [Red Hat Cloud Access web](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [systémem RHEL v Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsoby, jak automatizovat vytváření RHEL imagí najdete v článku [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače založeného na Red Hat ve Správci technologie Hyper-V
 
@@ -110,7 +110,7 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
 
-    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a zda ho může vyprázdnit při zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a zda ho může vyprázdnit Pokud je zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -124,6 +124,8 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -193,7 +195,7 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
 
-    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a pokud je zrušení zřízení virtuálního počítače může být vyprázdněna. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -207,6 +209,8 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -315,7 +319,7 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
         # chkconfig waagent on
 
-1. Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v **/etc/waagent.conf** odpovídajícím způsobem:
+1. Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a pokud je zrušení zřízení virtuálního počítače může být vyprázdněna. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v **/etc/waagent.conf** odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -329,6 +333,8 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -464,7 +470,7 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
 
-    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a pokud je zrušení zřízení virtuálního počítače může být vyprázdněna. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -478,6 +484,8 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -593,7 +601,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
 1. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
 
-    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a pokud je zrušení zřízení virtuálního počítače může být vyprázdněna. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -607,6 +615,8 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
 1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -707,7 +717,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
 1. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
 
-    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat velikosti odkládacího souboru s použitím disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Mějte na paměti, disku místního prostředku je dočasný disk a pokud je zrušení zřízení virtuálního počítače může být vyprázdněna. Po instalaci agenta Azure Linux v předchozím kroku, upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -721,6 +731,8 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
 1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -875,7 +887,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
         NM_CONTROLLED=no
         EOF
 
-        # Deprovision and prepare for Azure
+        # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
 
         %end

@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232542"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110793"
 ---
 ## <a name="set-expiration"></a>Nastavit vypršení platnosti
 
